@@ -90,3 +90,46 @@ window.V10_PASSAGES['Unit 3-3'] = {
  auditNote:'v9内蔵VOCABのニューホライズン中1 Unit 3-3を単元境界まで照合。hallway / luck / win / next / near / park / station / practice / go / where / hard / under / when’s / where’s / Good luck. を確認し、次のIDからSounds and Letters 3へ切り替わることも確認した。本文では新出語を全部使うための水増しをせず、テニス練習という1場面に自然に必要な語だけを使用。practice は登録どおり動詞用法に限定した。',
  vocabAudit:true,manualSlashAudit:true,manualMeaningAudit:true,manualQuestionAudit:true
 };
+
+window.V10_PASSAGES['Unit 4-1'] = {
+ id:'V10-NH-G1-U4-1-001',textbook:'ニューホライズン',grade:'1',section:'Unit 4-1',level:'HOP',title:'A Puppy from New Zealand',
+ sentences:[
+  'This is a puppy.',
+  'This is a cat.',
+  'They are small.',
+  'Are they from New Zealand?',
+  'No, they are not.',
+  'The puppy is from New Zealand.',
+  'The cat is from Japan.',
+  'Really?',
+  'Yes.',
+  'I want to visit New Zealand someday.',
+  'Great!'
+ ],
+ fullTranslation:'「これは子イヌです。」「こちらはネコです。」「どちらも小さいです。」「この2匹はニュージーランド出身ですか。」「いいえ、そうではありません。」「子イヌはニュージーランド出身です。」「ネコは日本出身です。」「本当？」「うん。」「いつかニュージーランドを訪れたいな。」「いいね！」',
+ slashRows:[
+  {en:'This is / a puppy.',jp:'これは〜です / 1匹の子イヌ'},
+  {en:'This is / a cat.',jp:'これは〜です / 1匹のネコ'},
+  {en:'They are / small.',jp:'それらは〜です / 小さい'},
+  {en:'Are they from / New Zealand?',jp:'それらは〜出身ですか / ニュージーランド'},
+  {en:'No, / they are not.',jp:'いいえ / そうではありません'},
+  {en:'The puppy is from / New Zealand.',jp:'その子イヌは〜出身です / ニュージーランド'},
+  {en:'The cat is from / Japan.',jp:'そのネコは〜出身です / 日本'},
+  {en:'Really?',jp:'本当？'},
+  {en:'Yes.',jp:'うん。'},
+  {en:'I want to visit / New Zealand / someday.',jp:'私は訪れたいです / ニュージーランドを / いつか'},
+  {en:'Great!',jp:'いいね！'}
+ ],
+ questions:[
+  {prompt:'1. 子イヌとネコは大きいですか、小さいですか。本文から英語で1語抜き出しなさい。',answer:'small',evidence:'They are small.',evidenceJp:'それらは小さいです。',reason:'They が子イヌとネコの2つを受け、small が大きさを表しています。'},
+  {prompt:'2. 子イヌとネコは両方ともニュージーランド出身ですか。本文に合うように Yes / No で答えなさい。',answer:'No',evidence:'Are they from New Zealand? / No, they are not.',evidenceJp:'それらはニュージーランド出身ですか。／いいえ、そうではありません。',reason:'they を主語にした質問に No, they are not. と答えています。'},
+  {prompt:'3. 子イヌはどこの出身ですか。英語で答えなさい。',answer:'New Zealand',evidence:'The puppy is from New Zealand.',evidenceJp:'その子イヌはニュージーランド出身です。',reason:'from の後ろに子イヌの出身地があります。'},
+  {prompt:'4. ネコはどこの出身ですか。英語で答えなさい。',answer:'Japan',evidence:'The cat is from Japan.',evidenceJp:'そのネコは日本出身です。',reason:'from の後ろにネコの出身地があります。'},
+  {prompt:'5. 話し手はいつニュージーランドを訪れたいですか。本文から英語で答えなさい。',answer:'someday',evidence:'I want to visit New Zealand someday.',evidenceJp:'私はいつかニュージーランドを訪れたいです。',reason:'someday が訪れたい時を表しています。'}
+ ],
+ allowedWords:[
+  ['New Zealand','Unit 4-1'],['puppy','Unit 4-1'],['they','Unit 4-1'],['someday','Unit 4-1'],['Japan','Unit 4-1'],['visit','Unit 4-1'],['cat','Sounds and Letters 0 cumulative'],['small','Sounds and Letters 3 cumulative'],['are','Unit 1-3 cumulative'],['from / the','Unit 1-1 cumulative'],['not','Unit 1-2 cumulative'],['want to','Unit 1-1 cumulative'],['really','Unit 2-2 cumulative'],['great','Unit 1-2 cumulative'],['this / a / is / no / yes / I','cumulative / elementary']
+ ],
+ auditNote:'v9内蔵VOCABのUnit 4-1をid2179〜2192まで照合し、id2193からUnit 4-2へ切り替わることを確認。animal / puppy の複数形を自動生成せず、Sounds and Letters 0で明示登録済みのcatとUnit 4-1のpuppyを並べてtheyの指示対象を明確化。many / a lot of / How many ...? は未確認複数形を要求するため、この本文では無理に使用していない。',
+ vocabAudit:true,manualSlashAudit:true,manualMeaningAudit:true,manualQuestionAudit:true
+};
