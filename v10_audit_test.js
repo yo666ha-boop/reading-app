@@ -96,8 +96,13 @@ for(const m of all){if(ids.has(m.id)) fail(`duplicate id: ${m.id} (${ids.get(m.i
 
 const stage=fs.readFileSync('v10_stage1.html','utf8');
 for(const f of [...SUN_FILES,...NH_FILES]) if(!stage.includes(`src="${f}"`)) fail(`stage does not load ${f}`,errors);
+if(!stage.includes('id="major"')) fail('stage missing major-unit selector',errors);
+if(!stage.includes('小単元上限')) fail('stage missing minor-section ceiling selector label',errors);
+if(stage.includes('id="period"')) fail('month/period filter must remain removed',errors);
+if(!stage.includes('function majorOf(section)')) fail('stage missing textbook-aware major-unit mapping',errors);
 
 console.log(`AUDIT passages=${all.length} sunshine=${Object.keys(sun).length} new_horizon=${Object.keys(nh).length}`);
 console.log(`COVERAGE sunshine=${EXPECTED_SUN.length}/${EXPECTED_SUN.length} new_horizon=${EXPECTED_NH.length}/${EXPECTED_NH.length}`);
+console.log('UI textbook>grade>major>minor=enabled month_filter=removed');
 if(errors.length){console.error(`AUDIT FAIL ${errors.length}`);for(const e of errors)console.error(`- ${e}`);process.exit(1);}
-console.log('AUDIT PASS: exact section coverage, structural release gates, evidence links, IDs, counts, and stage loading are consistent.');
+console.log('AUDIT PASS: exact section coverage, UI hierarchy, structural release gates, evidence links, IDs, counts, and stage loading are consistent.');
