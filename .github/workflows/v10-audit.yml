@@ -1,0 +1,23 @@
+name: v10 passage audit
+
+on:
+  push:
+    branches: [v10-rebuild]
+    paths:
+      - 'v10_*.js'
+      - 'v10_stage1.html'
+      - '.github/workflows/v10-audit.yml'
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Audit all v10 passages
+        run: node v10_audit_test.js
