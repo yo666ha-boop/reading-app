@@ -12,7 +12,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Yu Gothic",sans-serif;margin:
 <div class="wrap">
 <section class="panel">
 <h1>長文読解問題作成アプリ v10 再構築</h1>
-<div class="muted">GitHub再構築用 stage1。月フィルタなし。単元上限までの累積語彙を前提に、手作業監査済み本文だけを表示します。</div>
+<div class="muted">GitHub再構築用 stage1。月フィルタなし。小学生既習語＋選択単元上限までの教科書語彙だけを既習扱いし、手作業監査済み本文だけを表示します。</div>
 <div class="row" style="margin-top:12px">
 <label>教科書 <select id="textbook"><option>サンシャイン</option></select></label>
 <label>学年 <select id="grade"><option value="1">中1</option></select></label>
@@ -39,41 +39,62 @@ const MASTER={
  title:'My English Book',
  sentences:[
   'This is my English book.',
-  'The book is in my room.',
-  'I read this book.',
-  'I see a dog in the book.',
-  'I see a cat, too.',
-  'The dog is great.',
-  'The cat is great, too.',
+  'Really?',
+  'Yes.',
+  'This is a dog.',
+  'I see.',
+  'This is a cat, too.',
+  'Great!',
   'I write “dog” in my notebook.',
-  'I write “cat” in my notebook.',
+  'I write “cat” in my notebook, too.',
   'I can read “dog”.',
-  'I can read “cat”.',
-  'This is really great.'
+  'I can read “cat”, too.',
+  'Great!'
  ],
- fullTranslation:'これは私の英語の本です。その本は私の部屋にあります。私はこの本を読みます。本の中に犬が見えます。ねこも見えます。犬はすてきです。ねこもすてきです。私はノートに「dog」と書きます。「cat」とも書きます。私は「dog」を読むことができます。「cat」も読むことができます。これは本当にすてきです。',
+ fullTranslation:'「これは私の英語の本です。」「本当に？」「うん。」「これは犬です。」「なるほど。」「これはねこでもあります。」「すごい！」「私はノートに dog と書きます。」「cat もノートに書きます。」「私は dog を読むことができます。」「cat も読むことができます。」「すごい！」',
  slashRows:[
   {en:'This is / my English book.',jp:'これは〜です / 私の英語の本'},
-  {en:'The book is / in my room.',jp:'その本はあります / 私の部屋に'},
-  {en:'I read / this book.',jp:'私は読みます / この本を'},
-  {en:'I see / a dog / in the book.',jp:'私は見つけます / 犬を / その本の中に'},
-  {en:'I see / a cat, too.',jp:'私は見つけます / ねこも'},
-  {en:'The dog is / great.',jp:'その犬は〜です / すてきな'},
-  {en:'The cat is / great, too.',jp:'そのねこも〜です / すてきな'},
-  {en:'I write / “dog” / in my notebook.',jp:'私は書きます / 「dog」と / 私のノートに'},
-  {en:'I write / “cat” / in my notebook.',jp:'私は書きます / 「cat」と / 私のノートに'},
+  {en:'Really?',jp:'本当に？'},
+  {en:'Yes.',jp:'うん。'},
+  {en:'This is / a dog.',jp:'これは〜です / 犬'},
+  {en:'I see.',jp:'なるほど。'},
+  {en:'This is / a cat, too.',jp:'これは〜です / ねこでも'},
+  {en:'Great!',jp:'すごい！'},
+  {en:'I write “dog” / in my notebook.',jp:'私は「dog」と書きます / 私のノートに'},
+  {en:'I write “cat” / in my notebook, too.',jp:'私は「cat」と書きます / 私のノートにも'},
   {en:'I can read / “dog”.',jp:'私は読むことができます / 「dog」を'},
-  {en:'I can read / “cat”.',jp:'私は読むことができます / 「cat」を'},
-  {en:'This is / really great.',jp:'これは〜です / 本当にすてきな'}
+  {en:'I can read / “cat”, too.',jp:'私は読むことができます / 「cat」も'},
+  {en:'Great!',jp:'すごい！'}
  ],
  questions:[
-  {prompt:'1. 「私」が読んでいるものを本文から答えなさい。',answer:'my English book',evidence:'This is my English book. / I read this book.',evidenceJp:'これは私の英語の本です。／私はこの本を読みます。',reason:'最初の文で「これ」が英語の本だと示し、3文目でその本を読むと書かれています。'},
-  {prompt:'2. 本の中で「私」が見つけた動物を2つ答えなさい。',answer:'a dog and a cat',evidence:'I see a dog in the book. / I see a cat, too.',evidenceJp:'私は本の中に犬を見つけます。／ねこも見つけます。',reason:'4文目と5文目に、見つけた動物が1つずつ書かれています。'},
-  {prompt:'3. 「私」はノートに何と書きましたか。2つ答えなさい。',answer:'dog and cat',evidence:'I write “dog” in my notebook. / I write “cat” in my notebook.',evidenceJp:'私はノートに「dog」と書きます。／「cat」と書きます。',reason:'8文目と9文目が、そのまま答えの根拠です。'},
-  {prompt:'4. 最後に「私」はこの本についてどう感じていますか。本文中の1語で答えなさい。',answer:'great',evidence:'This is really great.',evidenceJp:'これは本当にすてきです。',reason:'最終文の great が、本に対する評価を表しています。'}
+  {prompt:'1. 最初に見せているものは何ですか。本文から英語で答えなさい。',answer:'my English book',evidence:'This is my English book.',evidenceJp:'これは私の英語の本です。',reason:'最初の文で、見せているものをそのまま説明しています。'},
+  {prompt:'2. 本の中で取り上げている動物を2つ、英語で答えなさい。',answer:'dog and cat',evidence:'This is a dog. / This is a cat, too.',evidenceJp:'これは犬です。／これはねこでもあります。',reason:'4文目と6文目に動物が1つずつ出ています。'},
+  {prompt:'3. ノートに書いた英単語を2つ答えなさい。',answer:'dog and cat',evidence:'I write “dog” in my notebook. / I write “cat” in my notebook, too.',evidenceJp:'私はノートに dog と書きます。／cat もノートに書きます。',reason:'8文目と9文目が、ノートに書いた語を直接示しています。'},
+  {prompt:'4. 「私」が読める2つの語を答えなさい。',answer:'dog and cat',evidence:'I can read “dog”. / I can read “cat”, too.',evidenceJp:'私は dog を読むことができます。／cat も読むことができます。',reason:'10文目と11文目で、can read の後ろに読める語が示されています。'}
  ],
- allowedWords:['I','see','great','too','really','this','is','my','English','book','the','in','room','read','a','dog','cat','write','notebook','can','and'],
- vocabAudit:true, manualSlashAudit:true, manualMeaningAudit:true, manualQuestionAudit:true
+ allowedWords:[
+  {word:'I',source:'Get Ready 2'},
+  {word:'great',source:'Get Ready 2'},
+  {word:'too',source:'Get Ready 2'},
+  {word:'really',source:'Get Ready 2'},
+  {word:'I see.',source:'Get Ready 2 phrase'},
+  {word:'this',source:'elementary'},
+  {word:'is',source:'elementary'},
+  {word:'my',source:'elementary'},
+  {word:'English',source:'elementary'},
+  {word:'book',source:'elementary'},
+  {word:'yes',source:'elementary'},
+  {word:'a',source:'elementary'},
+  {word:'dog',source:'elementary'},
+  {word:'cat',source:'elementary'},
+  {word:'write',source:'elementary'},
+  {word:'in',source:'elementary'},
+  {word:'notebook',source:'elementary'},
+  {word:'can',source:'elementary'},
+  {word:'read',source:'elementary'}
+ ],
+ vocabAudit:true, manualSlashAudit:true, manualMeaningAudit:true, manualQuestionAudit:true,
+ auditNote:'Get Ready 2 の see は「わかる」の語義で登録されているため、視覚動詞 see a dog としては使用していない。I see. の会話表現だけを使用。'
 };
 function releaseCheck(m){return m.sentences.length>=10 && m.slashRows.length===m.sentences.length && m.vocabAudit && m.manualSlashAudit && m.manualMeaningAudit && m.manualQuestionAudit;}
 function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
@@ -84,7 +105,7 @@ function render(){
  document.getElementById('slash').innerHTML=`<h2>英文解釈</h2><div class="notice">単語置換ではなく、本文ごとに意味のまとまりを手作業で確定しています。</div>${MASTER.slashRows.map(r=>`<div class="slash"><div class="enline">${esc(r.en)}</div><div class="jpline">${esc(r.jp)}</div></div>`).join('')}<h3>自然な全訳</h3><div>${esc(MASTER.fullTranslation)}</div>`;
  document.getElementById('questions').innerHTML=`<h2>問題</h2>${MASTER.questions.map(q=>`<div class="q">${esc(q.prompt)}</div>`).join('')}`;
  document.getElementById('answers').innerHTML=`<h2>解答・解説</h2>${MASTER.questions.map(q=>`<div class="q"><strong>${esc(q.prompt)}</strong><div><b>答え：</b>${esc(q.answer)}</div><div class="evidence"><b>根拠英文：</b>${esc(q.evidence)}<br><b>根拠の意味：</b>${esc(q.evidenceJp)}<br><b>なぜ：</b>${esc(q.reason)}</div></div>`).join('')}`;
- document.getElementById('audit').innerHTML=`<h2>品質監査</h2><ul><li>文数：${MASTER.sentences.length}（10文以上）</li><li>自動水増し：なし</li><li>自動スラッシュ生成：なし</li><li>月フィルタ：なし</li><li>語彙監査：${MASTER.vocabAudit?'済':'未'}</li><li>意味・流れ監査：${MASTER.manualMeaningAudit?'済':'未'}</li><li>スラッシュ監査：${MASTER.manualSlashAudit?'済':'未'}</li><li>設問監査：${MASTER.manualQuestionAudit?'済':'未'}</li><li>許可語彙：${MASTER.allowedWords.map(esc).join(' / ')}</li></ul><div class="muted">このstage1はGet Ready 2のみ。Get Ready 3以降は監査完了後に順次追加します。</div>`;
+ document.getElementById('audit').innerHTML=`<h2>品質監査</h2><ul><li>文数：${MASTER.sentences.length}（10文以上）</li><li>自動水増し：なし</li><li>自動スラッシュ生成：なし</li><li>月フィルタ：なし</li><li>語彙監査：${MASTER.vocabAudit?'済':'未'}</li><li>意味・流れ監査：${MASTER.manualMeaningAudit?'済':'未'}</li><li>スラッシュ監査：${MASTER.manualSlashAudit?'済':'未'}</li><li>設問監査：${MASTER.manualQuestionAudit?'済':'未'}</li></ul><div class="notice">${esc(MASTER.auditNote)}</div><h3>使用語彙と出典区分</h3><div class="muted">${MASTER.allowedWords.map(x=>`${esc(x.word)}［${esc(x.source)}］`).join(' / ')}</div><div class="muted" style="margin-top:12px">このstage1はGet Ready 2のみ。Get Ready 3以降は監査完了後に順次追加します。</div>`;
 }
 document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.tabpage').forEach(p=>p.classList.add('hidden'));document.getElementById(b.dataset.tab).classList.remove('hidden');}));
 render();
