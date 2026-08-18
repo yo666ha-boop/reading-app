@@ -9,7 +9,10 @@ window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
    Object.assign(target,window.V10_INTERACTION_META_P1P3||{});window.V10_INTERACTION_META=target;
    load('v10_interaction_metadata_sun_p4_p6.js',()=>{
     Object.assign(target,window.V10_INTERACTION_META_P4P6||{});window.V10_INTERACTION_META=target;
-    if(typeof window.render==='function')window.render();
+    load('v10_interaction_metadata_sun_p7_p8.js',()=>{
+     Object.assign(target,window.V10_INTERACTION_META_P7P8||{});window.V10_INTERACTION_META=target;
+     if(typeof window.render==='function')window.render();
+    });
    });
   });
  });
