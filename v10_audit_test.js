@@ -59,7 +59,7 @@ const errors=[];
 const sun=load(SUN_FILES);
 const nh=load(NH_FILES);
 if(Object.keys(sun).length!==5) fail(`Sunshine count expected 5, got ${Object.keys(sun).length}`,errors);
-if(Object.keys(nh).length!==21) fail(`New Horizon count expected 21, got ${Object.keys(nh).length}`,errors);
+if(Object.keys(nh).length!==22) fail(`New Horizon count expected 22, got ${Object.keys(nh).length}`,errors);
 auditSet('SS',sun,errors);auditSet('NH',nh,errors);
 const all=[...Object.values(sun),...Object.values(nh)];
 const ids=new Map();
