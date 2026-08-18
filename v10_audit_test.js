@@ -1,7 +1,7 @@
 const fs=require('fs');
 const vm=require('vm');
 
-const SUN_FILES=['v10_data_sunshine_g1.js'];
+const SUN_FILES=['v10_data_sunshine_g1.js','v10_data_sunshine_g1_program1.js'];
 const NH_FILES=[
  'v10_data_newhorizon_g1.js',
  'v10_data_newhorizon_g1_unit1_2.js',
@@ -61,7 +61,7 @@ function auditSet(label,data,errors){
 const errors=[];
 const sun=load(SUN_FILES);
 const nh=load(NH_FILES);
-if(Object.keys(sun).length!==5) fail(`Sunshine count expected 5, got ${Object.keys(sun).length}`,errors);
+if(Object.keys(sun).length!==8) fail(`Sunshine count expected 8, got ${Object.keys(sun).length}`,errors);
 if(Object.keys(nh).length!==31) fail(`New Horizon count expected 31, got ${Object.keys(nh).length}`,errors);
 auditSet('SS',sun,errors);auditSet('NH',nh,errors);
 const all=[...Object.values(sun),...Object.values(nh)];
