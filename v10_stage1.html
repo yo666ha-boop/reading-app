@@ -12,11 +12,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Yu Gothic",sans-serif;margin:
 <div class="wrap">
 <section class="panel">
 <h1>長文読解問題作成アプリ v10 再構築</h1>
-<div class="muted">GitHub再構築中。月フィルタなし。小学生既習語＋選択単元上限までの累積教科書語彙だけを既習扱いし、手作業監査済み本文だけを表示します。</div>
+<div class="muted">GitHub再構築中。月フィルタなし。小学生既習語＋選択した小単元上限までの累積教科書語彙だけを既習扱いし、手作業監査済み本文だけを表示します。</div>
 <div class="row" style="margin-top:12px">
 <label>教科書 <select id="textbook"><option value="サンシャイン">サンシャイン</option><option value="ニューホライズン">ニューホライズン</option></select></label>
 <label>学年 <select id="grade"><option value="1">中1</option></select></label>
-<label>単元上限 <select id="section"></select></label>
+<label>大単元 <select id="major"></select></label>
+<label>小単元上限 <select id="section"></select></label>
 </div>
 <div id="gate" style="margin-top:12px"></div>
 <div id="masterCount" class="muted" style="margin-top:8px"></div>
@@ -81,11 +82,35 @@ function releaseProblems(m){
 function releaseCheck(m){return releaseProblems(m).length===0;}
 function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
 function passages(){return DATASETS[document.getElementById('textbook').value]||{};}
+function majorOf(section){
+ const textbook=document.getElementById('textbook').value;
+ if(textbook==='ニューホライズン'){
+  if(section==='Unit 0')return 'Unit 0';
+  const m=section.match(/^Unit\s+(\d+)-/);return m?`Unit ${m[1]}`:section;
+ }
+ if(section.startsWith('Get Ready '))return 'Get Ready';
+ const p=section.match(/^PROGRAM\s+(\d+)-/);return p?`PROGRAM ${p[1]}`:section;
+}
 function correctionsFor(m){return VOCAB_CORRECTIONS.filter(x=>x.textbook===m.textbook&&String(x.grade)===String(m.grade)&&x.section===m.section);}
-function initSections(){const p=passages(),s=document.getElementById('section'),old=s.value;s.innerHTML='';Object.keys(p).forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=k;s.appendChild(o);});if(old&&p[old])s.value=old;const total=Object.values(DATASETS).reduce((n,d)=>n+Object.keys(d).length,0);document.getElementById('masterCount').textContent=`この教科書の監修済みマスター候補：${Object.keys(p).length}本 / 現在合計：${total}本`;render();}
+function initMajors(){
+ const p=passages(),major=document.getElementById('major'),old=major.value;
+ const majors=[];Object.keys(p).forEach(k=>{const m=majorOf(k);if(!majors.includes(m))majors.push(m);});
+ major.innerHTML='';majors.forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=k;major.appendChild(o);});
+ if(old&&majors.includes(old))major.value=old;
+ initSections();
+}
+function initSections(){
+ const p=passages(),major=document.getElementById('major').value,s=document.getElementById('section'),old=s.value;
+ const keys=Object.keys(p).filter(k=>majorOf(k)===major);
+ s.innerHTML='';keys.forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=k;s.appendChild(o);});
+ if(old&&keys.includes(old))s.value=old;
+ const total=Object.values(DATASETS).reduce((n,d)=>n+Object.keys(d).length,0);
+ document.getElementById('masterCount').textContent=`この大単元：${keys.length}本 / この教科書：${Object.keys(p).length}本 / 現在合計：${total}本`;
+ render();
+}
 function current(){return passages()[document.getElementById('section').value];}
 function render(){const m=current();if(!m){document.getElementById('gate').innerHTML='<span class="warn">本文マスターがありません</span>';['passage','slash','questions','answers','audit'].forEach(id=>document.getElementById(id).innerHTML='');return;}const problems=releaseProblems(m),released=problems.length===0,cor=correctionsFor(m);document.getElementById('gate').innerHTML=released?'<span class="badge">release:true</span> <span class="ok">品質ゲート通過</span>':'<span class="warn">release:false</span>';document.getElementById('passage').innerHTML=`<h2>${esc(m.title)}</h2><div class="meta">${esc(m.id)} / ${esc(m.textbook)} / 中${esc(m.grade)} / ${esc(m.section)} / ${esc(m.level)}</div><ol class="en">${m.sentences.map(s=>`<li>${esc(s)}</li>`).join('')}</ol><h3>自然な全訳</h3><div>${esc(m.fullTranslation)}</div>`;document.getElementById('slash').innerHTML=`<h2>英文解釈</h2><div class="notice">単語置換ではなく、本文ごとに意味のまとまりを手作業で確定しています。</div>${m.slashRows.map(r=>`<div class="slash"><div class="enline">${esc(r.en)}</div><div class="jpline">${esc(r.jp)}</div></div>`).join('')}<h3>自然な全訳</h3><div>${esc(m.fullTranslation)}</div>`;document.getElementById('questions').innerHTML=`<h2>問題</h2>${m.questions.map(q=>`<div class="q">${esc(q.prompt)}</div>`).join('')}`;document.getElementById('answers').innerHTML=`<h2>解答・解説</h2>${m.questions.map(q=>`<div class="q"><strong>${esc(q.prompt)}</strong><div><b>答え：</b>${esc(q.answer)}</div><div class="evidence"><b>根拠英文：</b>${esc(q.evidence)}<br><b>根拠の意味：</b>${esc(q.evidenceJp)}<br><b>なぜ：</b>${esc(q.reason)}</div></div>`).join('')}`;document.getElementById('audit').innerHTML=`<h2>品質監査</h2><ul><li>文数：${m.sentences.length}（10文以上）</li><li>本文文数＝スラッシュ行数：${m.sentences.length===m.slashRows.length?'一致':'不一致'}</li><li>設問数：${m.questions.length}</li><li>設問5項目完全性：${m.questions.every(q=>filled(q.prompt)&&filled(q.answer)&&filled(q.evidence)&&filled(q.evidenceJp)&&filled(q.reason))?'OK':'NG'}</li><li>自動水増し：なし</li><li>自動スラッシュ生成：なし</li><li>月フィルタ：なし</li><li>語彙監査：${m.vocabAudit?'済':'未'}</li><li>意味・流れ監査：${m.manualMeaningAudit?'済':'未'}</li><li>スラッシュ監査：${m.manualSlashAudit?'済':'未'}</li><li>設問監査：${m.manualQuestionAudit?'済':'未'}</li><li>教科書確認済み語彙補正：${cor.length}件</li></ul>${problems.length?`<div class="fail"><b>releaseを止めている項目：</b><br>${problems.map(esc).join('<br>')}</div>`:'<div class="ok">自動releaseゲート検出：0件</div>'}<div class="notice" style="margin-top:10px">${esc(m.auditNote)}</div>${cor.map(x=>`<div class="correction"><b>${esc(x.english)}</b>：${esc(x.japanese)}<br>根拠：${esc(x.basis)}<br>扱い：${esc(x.rule)}</div>`).join('')}<h3>使用語彙と出典区分</h3><div class="muted">${m.allowedWords.map(x=>`${esc(x[0])}［${esc(x[1])}］`).join(' / ')}</div>`;}
-document.getElementById('textbook').addEventListener('change',initSections);document.getElementById('section').addEventListener('change',render);document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.tabpage').forEach(p=>p.classList.add('hidden'));document.getElementById(b.dataset.tab).classList.remove('hidden');}));initSections();
+document.getElementById('textbook').addEventListener('change',initMajors);document.getElementById('grade').addEventListener('change',initMajors);document.getElementById('major').addEventListener('change',initSections);document.getElementById('section').addEventListener('change',render);document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.tabpage').forEach(p=>p.classList.add('hidden'));document.getElementById(b.dataset.tab).classList.remove('hidden');}));initMajors();
 </script>
 </body>
 </html>
