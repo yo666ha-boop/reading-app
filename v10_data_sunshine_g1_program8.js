@@ -17,7 +17,7 @@ window.V10_PASSAGES['PROGRAM 8-1']={
   'We have the fruit in our bag.',
   'We go home together.'
  ],
- fullTranslation:'「新年おめでとう！ 父と私はスーパーマーケットへ行きます。スーパーマーケットは混んでいて忙しいです。私たちにはくだものが必要です。カキが必要です。ブドウが必要です。モモが必要です。パイナップルが必要です。イチゴが必要です。私はうれしいです。父もうれしいです。くだものは私たちのかばんの中にあります。私たちはいっしょに家へ帰ります。」',
+ fullTranslation:'「新年おめでとう！ 父と私はスーパーマーケットへ行きます。スーパーマーケットは忙しいです。私たちにはくだものが必要です。カキが必要です。ブドウが必要です。モモが必要です。パイナップルが必要です。イチゴが必要です。私はうれしいです。父もうれしいです。くだものは私たちのかばんの中にあります。私たちはいっしょに家へ帰ります。」',
  slashRows:[
   {en:'Happy New Year!',jp:'新年おめでとう！'},
   {en:'My dad and I / go to / the supermarket.',jp:'父と私は / 行きます / スーパーマーケットへ'},
@@ -44,7 +44,7 @@ window.V10_PASSAGES['PROGRAM 8-1']={
   ['bathroom / shower / persimmon / grape / need / supermarket / air / peach / pineapple / strawberry / happy / busy / Happy New Year!','PROGRAM 8-1: id572-584'],
   ['fruit','PROGRAM 4-3 cumulative'],['dad','PROGRAM 7-1 cumulative'],['bag / go / home / together / have / our / my / I / the / is / we / a / am / too / in','cumulative / elementary']
  ],
- auditNote:'v9内蔵VOCABでPROGRAM 8-1をid572〜584まで照合し、id585からPROGRAM 8-2へ切り替わることを確認。supermarket / need / fruit類 / happy / busy / Happy New Year!を新年の買い物1場面に統合。bathroom / shower / airは場面を散らすため未使用。複数形の自動生成はしていない。',
+ auditNote:'v9内蔵VOCABでPROGRAM 8-1をid572〜584まで照合し、id585からPROGRAM 8-2へ切り替わることを確認。supermarket / need / fruit類 / happy / busy / Happy New Year!を新年の買い物1場面に統合。全訳もbusyを過剰解釈せず「忙しい」と本文どおりに修正。bathroom / shower / airは場面を散らすため未使用。複数形の自動生成はしていない。',
  vocabAudit:true,manualSlashAudit:true,manualMeaningAudit:true,manualQuestionAudit:true
 };
 
@@ -57,7 +57,7 @@ window.V10_PASSAGES['PROGRAM 8-2']={
   'I feel happy.',
   'My friend is happy, too.',
   'We are still busy.',
-  'We prepare cake.',
+  'We prepare a cake.',
   'Why don’t we listen to music?',
   'Great!',
   'We listen to music together.',
@@ -65,7 +65,7 @@ window.V10_PASSAGES['PROGRAM 8-2']={
   'The countdown is great.',
   'Today is a great day.'
  ],
- fullTranslation:'「今日は晴れです。友達と私は家にいます。私たちはカウントダウンの準備をします。私はうれしく感じます。友達もうれしいです。私たちはまだ忙しいです。ケーキを準備します。」「音楽を聞きませんか。」「いいね！」「私たちはいっしょに音楽を聞きます。ケーキを少し食べます。カウントダウンはすばらしいです。今日はすばらしい日です。」',
+ fullTranslation:'「今日は晴れです。友達と私は家にいます。私たちはカウントダウンの準備をします。私はうれしく感じます。友達もうれしいです。私たちはまだ忙しいです。ケーキを1つ準備します。」「音楽を聞きませんか。」「いいね！」「私たちはいっしょに音楽を聞きます。ケーキを少し食べます。カウントダウンはすばらしいです。今日はすばらしい日です。」',
  slashRows:[
   {en:'Today is / sunny.',jp:'今日は〜です / 晴れの'},
   {en:'My friend and I / are at home.',jp:'友達と私は / 家にいます'},
@@ -73,7 +73,7 @@ window.V10_PASSAGES['PROGRAM 8-2']={
   {en:'I feel / happy.',jp:'私は感じます / うれしく'},
   {en:'My friend is / happy, too.',jp:'私の友達も〜です / うれしい'},
   {en:'We are / still busy.',jp:'私たちは〜です / まだ忙しい'},
-  {en:'We prepare / cake.',jp:'私たちは準備します / ケーキを'},
+  {en:'We prepare / a cake.',jp:'私たちは準備します / ケーキを1つ'},
   {en:'Why don’t we / listen to / music?',jp:'〜しませんか / 聞く / 音楽を'},
   {en:'Great!',jp:'いいね！'},
   {en:'We listen to / music / together.',jp:'私たちは聞きます / 音楽を / いっしょに'},
@@ -92,7 +92,7 @@ window.V10_PASSAGES['PROGRAM 8-2']={
   ['countdown / feel / prepare / still / listen / sunny / today / Why don’t we ～? / listen to ～','PROGRAM 8-2: id585-593'],
   ['happy / busy','PROGRAM 8-1 cumulative'],['cake / a little','PROGRAM 7-2 cumulative'],['music / friend / home / together / have / my / I / is / we / are / at / for / a / too / great / the / day','cumulative / elementary']
  ],
- auditNote:'v9内蔵VOCABでPROGRAM 8-2をid585〜593まで照合し、id594からPROGRAM 8-3へ切り替わることを確認。countdown / prepare / feel / still / sunny / today / Why don’t we ～? / listen to ～を新年のカウントダウン準備1場面に統合。進行形・過去形を自動生成していない。',
+ auditNote:'v9内蔵VOCABでPROGRAM 8-2をid585〜593まで照合し、id594からPROGRAM 8-3へ切り替わることを確認。countdown / prepare / feel / still / sunny / today / Why don’t we ～? / listen to ～を新年のカウントダウン準備1場面に統合。We prepare cake.は不自然さを避けて既習冠詞を使うWe prepare a cake.へ修正。進行形・過去形を自動生成していない。',
  vocabAudit:true,manualSlashAudit:true,manualMeaningAudit:true,manualQuestionAudit:true
 };
 
