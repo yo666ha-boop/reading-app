@@ -61,7 +61,7 @@ function auditSet(label,data,errors){
 const errors=[];
 const sun=load(SUN_FILES);
 const nh=load(NH_FILES);
-if(Object.keys(sun).length!==11) fail(`Sunshine count expected 11, got ${Object.keys(sun).length}`,errors);
+if(Object.keys(sun).length!==14) fail(`Sunshine count expected 14, got ${Object.keys(sun).length}`,errors);
 if(Object.keys(nh).length!==31) fail(`New Horizon count expected 31, got ${Object.keys(nh).length}`,errors);
 auditSet('SS',sun,errors);auditSet('NH',nh,errors);
 const all=[...Object.values(sun),...Object.values(nh)];
