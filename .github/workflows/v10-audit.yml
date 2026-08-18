@@ -35,8 +35,9 @@ jobs:
           node v10_dom_test.js >> v10_audit_report.txt 2>&1; code2=$?
           node v10_interaction_audit.js >> v10_audit_report.txt 2>&1; code3=$?
           node v10_stage2_dom_test.js >> v10_audit_report.txt 2>&1; code4=$?
+          node v10_g2_audit.js >> v10_audit_report.txt 2>&1; code5=$?
           code=0
-          if [ "$code1" -ne 0 ] || [ "$code2" -ne 0 ] || [ "$code3" -ne 0 ] || [ "$code4" -ne 0 ]; then code=1; fi
+          if [ "$code1" -ne 0 ] || [ "$code2" -ne 0 ] || [ "$code3" -ne 0 ] || [ "$code4" -ne 0 ] || [ "$code5" -ne 0 ]; then code=1; fi
           cat v10_audit_report.txt
           echo "code=$code" >> "$GITHUB_OUTPUT"
           exit 0
