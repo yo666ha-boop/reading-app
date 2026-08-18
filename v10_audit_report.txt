@@ -7,5 +7,20 @@ INTERACTION reviewed_masters=69 alternate_questions=290
 INTERACTION_COVERAGE masters=69/69
 INTERACTION PASS: all 69 masters have reviewed genres and hand-authored B question sets with verbatim evidence links.
 STAGE2 DOM PASS: genre selection, same-major fallback, unavailable-genre stop, A/B question switching, textbook switching, and print control behave correctly.
-G2 AUDIT sunshine=9/9 alternate_questions=45
-G2 AUDIT PASS: Sunshine Program 1 through 3 passages, slash rows, A/B questions, evidence links, genres, and release flags are consistent.
+v10_data_sunshine_g2_program4.js:21
+ auditNote:'Google Sheet正本でPROGRAM 4-2をID3054〜3066まで直接照合。must / mustn’t / garbage / forest / protect / ruleを森のルールという1場面で使用。hallway / turn down / volume / emotionalは話題を散らすため未使用。',
+          ^
+
+SyntaxError: Unexpected token ':'
+    at new Script (node:vm:117:7)
+    at createScript (node:vm:269:10)
+    at Object.runInContext (node:vm:300:10)
+    at loadMany (/home/runner/work/reading-app/reading-app/v10_g2_audit.js:3:94)
+    at Object.<anonymous> (/home/runner/work/reading-app/reading-app/v10_g2_audit.js:4:12)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+
+Node.js v20.20.2
