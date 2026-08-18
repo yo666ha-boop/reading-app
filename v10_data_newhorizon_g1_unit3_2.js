@@ -63,7 +63,7 @@ window.V10_PASSAGES['Unit 3-3'] = {
  ],
  fullTranslation:'「どこでテニスを練習するの？」「公園の近くでテニスを練習するよ。」「その公園は駅の近くなの？」「うん、そうだよ。」「放課後にその公園へ行くの？」「うん、行くよ。」「友達と練習するよ。」「一生懸命練習するんだ。」「勝ちたいんだ。」「本当？」「うん。」「がんばってね。」「ありがとう。」',
  slashRows:[
-  {en:'Where do you practice / tennis?',jp:'どこであなたは練習しますか / テニスを'},
+  {en:'Where / do you practice / tennis?',jp:'どこで / あなたは練習しますか / テニスを'},
   {en:'I practice tennis / near the park.',jp:'私はテニスを練習します / 公園の近くで'},
   {en:'Is the park / near the station?',jp:'その公園は〜ですか / 駅の近くに'},
   {en:'Yes, / it is.',jp:'はい / そうです'},
@@ -85,7 +85,7 @@ window.V10_PASSAGES['Unit 3-3'] = {
   {prompt:'5. 話し手は何をしたいと言っていますか。本文から英語で答えなさい。',answer:'win',evidence:'I want to win.',evidenceJp:'私は勝ちたいです。',reason:'want to の後ろの win がしたいことを表しています。'}
  ],
  allowedWords:[
-  ['where','Unit 3-3'],['practice','Unit 3-3'],['near','Unit 3-3'],['park','Unit 3-3'],['station','Unit 3-3'],['hard','Unit 3-3'],['win','Unit 3-3'],['Good luck.','Unit 3-3 phrase'],['after school','Unit 3-2 cumulative'],['friend / with','Unit 1-2 cumulative'],['want to','Unit 1-1 cumulative'],['tennis','Unit 0 cumulative'],['really','Unit 2-2 cumulative'],['Thank you.','Unit 2-3 cumulative'],['do / you / I / is / yes / it / my / the / to','cumulative / elementary']
+  ['where','Unit 3-3'],['practice','Unit 3-3'],['near','Unit 3-3'],['park','Unit 3-3'],['station','Unit 3-3'],['go','Unit 3-3'],['hard','Unit 3-3'],['win','Unit 3-3'],['Good luck.','Unit 3-3 phrase'],['after school','Unit 3-2 cumulative'],['friend / with','Unit 1-2 cumulative'],['want to','Unit 1-1 cumulative'],['tennis','Unit 0 cumulative'],['really','Unit 2-2 cumulative'],['Thank you.','Unit 2-3 cumulative'],['do / you / I / is / yes / it / my / the / to','cumulative / elementary']
  ],
  auditNote:'v9内蔵VOCABのニューホライズン中1 Unit 3-3を単元境界まで照合。hallway / luck / win / next / near / park / station / practice / go / where / hard / under / when’s / where’s / Good luck. を確認し、次のIDからSounds and Letters 3へ切り替わることも確認した。本文では新出語を全部使うための水増しをせず、テニス練習という1場面に自然に必要な語だけを使用。practice は登録どおり動詞用法に限定した。',
  vocabAudit:true,manualSlashAudit:true,manualMeaningAudit:true,manualQuestionAudit:true
