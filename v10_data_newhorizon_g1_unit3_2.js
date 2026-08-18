@@ -133,3 +133,46 @@ window.V10_PASSAGES['Unit 4-1'] = {
  auditNote:'v9内蔵VOCABのUnit 4-1をid2179〜2192まで照合し、id2193からUnit 4-2へ切り替わることを確認。animal / puppy の複数形を自動生成せず、Sounds and Letters 0で明示登録済みのcatとUnit 4-1のpuppyを並べてtheyの指示対象を明確化。many / a lot of / How many ...? は未確認複数形を要求するため、この本文では無理に使用していない。',
  vocabAudit:true,manualSlashAudit:true,manualMeaningAudit:true,manualQuestionAudit:true
 };
+
+window.V10_PASSAGES['Unit 4-2'] = {
+ id:'V10-NH-G1-U4-2-001',textbook:'ニューホライズン',grade:'1',section:'Unit 4-2',level:'HOP',title:'Basketball in the Afternoon',
+ sentences:[
+  'Is basketball your favorite sport?',
+  'Yes, it is.',
+  'Do you practice basketball?',
+  'Yes, I do.',
+  'When do you practice?',
+  'I practice in the afternoon.',
+  'Do you practice with your friend?',
+  'Yes, I do.',
+  'I practice with my friend.',
+  'Sounds great.',
+  'Thank you.'
+ ],
+ fullTranslation:'「バスケットボールはあなたの好きなスポーツですか。」「はい、そうです。」「バスケットボールを練習しますか。」「はい、します。」「いつ練習しますか。」「午後に練習します。」「友達と練習しますか。」「はい、します。」「友達といっしょに練習します。」「楽しそうだね。」「ありがとう。」',
+ slashRows:[
+  {en:'Is basketball / your favorite sport?',jp:'バスケットボールは〜ですか / あなたの好きなスポーツ'},
+  {en:'Yes, / it is.',jp:'はい / そうです'},
+  {en:'Do you practice / basketball?',jp:'あなたは練習しますか / バスケットボールを'},
+  {en:'Yes, / I do.',jp:'はい / します'},
+  {en:'When / do you practice?',jp:'いつ / あなたは練習しますか'},
+  {en:'I practice / in the afternoon.',jp:'私は練習します / 午後に'},
+  {en:'Do you practice / with your friend?',jp:'あなたは練習しますか / あなたの友達といっしょに'},
+  {en:'Yes, / I do.',jp:'はい / します'},
+  {en:'I practice / with my friend.',jp:'私は練習します / 私の友達といっしょに'},
+  {en:'Sounds / great.',jp:'〜そうですね / とても楽しそう'},
+  {en:'Thank you.',jp:'ありがとう。'}
+ ],
+ questions:[
+  {prompt:'1. 話し手の好きなスポーツは何ですか。本文から英語で答えなさい。',answer:'basketball',evidence:'Is basketball your favorite sport? / Yes, it is.',evidenceJp:'バスケットボールはあなたの好きなスポーツですか。／はい、そうです。',reason:'favorite sport をたずねる文に Yes, it is. と答えているため、basketball が好きなスポーツです。'},
+  {prompt:'2. 話し手はバスケットボールを練習しますか。本文に合うように Yes / No で答えなさい。',answer:'Yes',evidence:'Do you practice basketball? / Yes, I do.',evidenceJp:'バスケットボールを練習しますか。／はい、します。',reason:'練習するかどうかの質問に Yes, I do. と答えています。'},
+  {prompt:'3. 話し手はいつ練習しますか。本文から英語で答えなさい。',answer:'in the afternoon',evidence:'I practice in the afternoon.',evidenceJp:'私は午後に練習します。',reason:'in the afternoon が練習する時間帯を表しています。'},
+  {prompt:'4. 話し手はだれと練習しますか。本文から英語で答えなさい。',answer:'my friend',evidence:'I practice with my friend.',evidenceJp:'私は友達といっしょに練習します。',reason:'with my friend が練習する相手を示しています。'},
+  {prompt:'5. 相手はその話を聞いてどう言っていますか。本文から英語で抜き出しなさい。',answer:'Sounds great.',evidence:'Sounds great.',evidenceJp:'楽しそうだね。',reason:'Unit 4-2の Sounds ... の型に既習の great を入れた反応です。'}
+ ],
+ allowedWords:[
+  ['afternoon','Unit 4-2'],['sport','Unit 4-2'],['basketball','Unit 4-2'],['Sounds ...','Unit 4-2 phrase'],['favorite','Unit 3-1 cumulative'],['when','Unit 3-2 cumulative'],['practice','Unit 3-3 cumulative'],['friend / with','Unit 1-2 cumulative'],['great','Unit 1-2 cumulative'],['your / it','Unit 2-3 cumulative'],['in','Unit 1-3 cumulative'],['Thank you.','Unit 2-3 cumulative'],['do / you / I / yes / is / my / the','cumulative / elementary']
+ ],
+ auditNote:'v9内蔵VOCABのUnit 4-2をid2193〜2203まで照合し、id2204からUnit 4-3へ切り替わることを確認。Unit 4-2のlikeは「〜のような」の語義であり、既習の「好き」と混同しない。three等の数字は今回の照合で明示登録を確認できなかったためo’clock / a.m. / p.m.を無理に使わず、確認済みのafternoonで時を表現した。Sounds ... は登録済みの型に既習語greatを入れてSounds great.として使用。',
+ vocabAudit:true,manualSlashAudit:true,manualMeaningAudit:true,manualQuestionAudit:true
+};
