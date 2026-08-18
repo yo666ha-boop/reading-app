@@ -22,6 +22,23 @@ const NH_FILES=[
  'v10_data_newhorizon_g1_unit10_1.js'
 ];
 
+const EXPECTED_SUN=[
+ 'Get Ready 2','Get Ready 3','Get Ready 4','Get Ready 5','Get Ready 6',
+ 'PROGRAM 1-1','PROGRAM 1-2','PROGRAM 1-3',
+ 'PROGRAM 2-1','PROGRAM 2-2','PROGRAM 2-3',
+ 'PROGRAM 3-1','PROGRAM 3-2','PROGRAM 3-3',
+ 'PROGRAM 4-1','PROGRAM 4-2','PROGRAM 4-3',
+ 'PROGRAM 5-1','PROGRAM 5-2','PROGRAM 5-3',
+ 'PROGRAM 6-1','PROGRAM 6-2','PROGRAM 6-3',
+ 'PROGRAM 7-1','PROGRAM 7-2','PROGRAM 7-3',
+ 'PROGRAM 8-1','PROGRAM 8-2','PROGRAM 8-3',
+ 'PROGRAM 9-1','PROGRAM 9-2','PROGRAM 9-3','PROGRAM 9-4',
+ 'PROGRAM 10-1','PROGRAM 10-2','PROGRAM 10-3','PROGRAM 10-4',
+ 'Step 6 / Our Project 3 / Power-Up 6'
+];
+const EXPECTED_NH=['Unit 0'];
+for(let u=1;u<=10;u++) for(let p=1;p<=3;p++) EXPECTED_NH.push(`Unit ${u}-${p}`);
+
 function load(files){
  const ctx={window:{}};
  vm.createContext(ctx);
@@ -33,6 +50,13 @@ function load(files){
 }
 function filled(v){return typeof v==='string'&&v.trim().length>0;}
 function fail(msg,errors){errors.push(msg);}
+function auditExactSections(label,data,expected,errors){
+ const actual=Object.keys(data);
+ const missing=expected.filter(x=>!actual.includes(x));
+ const unexpected=actual.filter(x=>!expected.includes(x));
+ if(missing.length) fail(`${label}: missing sections: ${missing.join(', ')}`,errors);
+ if(unexpected.length) fail(`${label}: unexpected sections: ${unexpected.join(', ')}`,errors);
+}
 function auditSet(label,data,errors){
  for(const [key,m] of Object.entries(data)){
   const tag=`${label}/${key}`;
@@ -61,8 +85,10 @@ function auditSet(label,data,errors){
 const errors=[];
 const sun=load(SUN_FILES);
 const nh=load(NH_FILES);
-if(Object.keys(sun).length!==38) fail(`Sunshine count expected 38, got ${Object.keys(sun).length}`,errors);
-if(Object.keys(nh).length!==31) fail(`New Horizon count expected 31, got ${Object.keys(nh).length}`,errors);
+if(Object.keys(sun).length!==EXPECTED_SUN.length) fail(`Sunshine count expected ${EXPECTED_SUN.length}, got ${Object.keys(sun).length}`,errors);
+if(Object.keys(nh).length!==EXPECTED_NH.length) fail(`New Horizon count expected ${EXPECTED_NH.length}, got ${Object.keys(nh).length}`,errors);
+auditExactSections('Sunshine',sun,EXPECTED_SUN,errors);
+auditExactSections('New Horizon',nh,EXPECTED_NH,errors);
 auditSet('SS',sun,errors);auditSet('NH',nh,errors);
 const all=[...Object.values(sun),...Object.values(nh)];
 const ids=new Map();
@@ -72,5 +98,6 @@ const stage=fs.readFileSync('v10_stage1.html','utf8');
 for(const f of [...SUN_FILES,...NH_FILES]) if(!stage.includes(`src="${f}"`)) fail(`stage does not load ${f}`,errors);
 
 console.log(`AUDIT passages=${all.length} sunshine=${Object.keys(sun).length} new_horizon=${Object.keys(nh).length}`);
+console.log(`COVERAGE sunshine=${EXPECTED_SUN.length}/${EXPECTED_SUN.length} new_horizon=${EXPECTED_NH.length}/${EXPECTED_NH.length}`);
 if(errors.length){console.error(`AUDIT FAIL ${errors.length}`);for(const e of errors)console.error(`- ${e}`);process.exit(1);}
-console.log('AUDIT PASS: structural release gates, evidence links, IDs, counts, and stage loading are consistent.');
+console.log('AUDIT PASS: exact section coverage, structural release gates, evidence links, IDs, counts, and stage loading are consistent.');
