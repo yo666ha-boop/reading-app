@@ -16,22 +16,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Yu Gothic",sans-serif;margin:
 <div class="row" style="margin-top:12px">
 <label>教科書 <select id="textbook"><option>サンシャイン</option></select></label>
 <label>学年 <select id="grade"><option value="1">中1</option></select></label>
-<label>単元上限 <select id="section"><option>Get Ready 2</option><option>Get Ready 3</option></select></label>
+<label>単元上限 <select id="section"><option>Get Ready 2</option><option>Get Ready 3</option><option>Get Ready 4</option></select></label>
 </div>
 <div id="gate" style="margin-top:12px"></div>
 </section>
 <section class="panel tabs row">
-<button data-tab="passage" class="active">本文</button>
-<button data-tab="slash">英文解釈</button>
-<button data-tab="questions">問題</button>
-<button data-tab="answers">解答・解説</button>
-<button data-tab="audit">品質監査</button>
+<button data-tab="passage" class="active">本文</button><button data-tab="slash">英文解釈</button><button data-tab="questions">問題</button><button data-tab="answers">解答・解説</button><button data-tab="audit">品質監査</button>
 </section>
-<section id="passage" class="panel tabpage"></section>
-<section id="slash" class="panel tabpage hidden"></section>
-<section id="questions" class="panel tabpage hidden"></section>
-<section id="answers" class="panel tabpage hidden"></section>
-<section id="audit" class="panel tabpage hidden"></section>
+<section id="passage" class="panel tabpage"></section><section id="slash" class="panel tabpage hidden"></section><section id="questions" class="panel tabpage hidden"></section><section id="answers" class="panel tabpage hidden"></section><section id="audit" class="panel tabpage hidden"></section>
 </div>
 <script>
 const PASSAGES={
@@ -39,29 +31,25 @@ const PASSAGES={
  id:'V10-SUN-G1-GR2-001',textbook:'サンシャイン',grade:'1',section:'Get Ready 2',level:'HOP',title:'My English Book',
  sentences:['This is my English book.','Really?','Yes.','This is a dog.','I see.','This is a cat, too.','Great!','I write “dog” in my notebook.','I write “cat” in my notebook, too.','I can read “dog”.','I can read “cat”, too.','Great!'],
  fullTranslation:'「これは私の英語の本です。」「本当に？」「うん。」「これは犬です。」「なるほど。」「これはねこでもあります。」「すごい！」「私はノートに dog と書きます。」「cat もノートに書きます。」「私は dog を読むことができます。」「cat も読むことができます。」「すごい！」',
- slashRows:[
-  {en:'This is / my English book.',jp:'これは〜です / 私の英語の本'},{en:'Really?',jp:'本当に？'},{en:'Yes.',jp:'うん。'},{en:'This is / a dog.',jp:'これは〜です / 犬'},{en:'I see.',jp:'なるほど。'},{en:'This is / a cat, too.',jp:'これは〜です / ねこでも'},{en:'Great!',jp:'すごい！'},{en:'I write “dog” / in my notebook.',jp:'私は「dog」と書きます / 私のノートに'},{en:'I write “cat” / in my notebook, too.',jp:'私は「cat」と書きます / 私のノートにも'},{en:'I can read / “dog”.',jp:'私は読むことができます / 「dog」を'},{en:'I can read / “cat”, too.',jp:'私は読むことができます / 「cat」も'},{en:'Great!',jp:'すごい！'}],
- questions:[
-  {prompt:'1. 最初に見せているものは何ですか。本文から英語で答えなさい。',answer:'my English book',evidence:'This is my English book.',evidenceJp:'これは私の英語の本です。',reason:'最初の文で、見せているものをそのまま説明しています。'},
-  {prompt:'2. 本の中で取り上げている動物を2つ、英語で答えなさい。',answer:'dog and cat',evidence:'This is a dog. / This is a cat, too.',evidenceJp:'これは犬です。／これはねこでもあります。',reason:'4文目と6文目に動物が1つずつ出ています。'},
-  {prompt:'3. ノートに書いた英単語を2つ答えなさい。',answer:'dog and cat',evidence:'I write “dog” in my notebook. / I write “cat” in my notebook, too.',evidenceJp:'私はノートに dog と書きます。／cat もノートに書きます。',reason:'8文目と9文目が、ノートに書いた語を直接示しています。'},
-  {prompt:'4. 「私」が読める2つの語を答えなさい。',answer:'dog and cat',evidence:'I can read “dog”. / I can read “cat”, too.',evidenceJp:'私は dog を読むことができます。／cat も読むことができます。',reason:'10文目と11文目で、can read の後ろに読める語が示されています。'}],
- allowedWords:[['I','Get Ready 2'],['great','Get Ready 2'],['too','Get Ready 2'],['really','Get Ready 2'],['I see.','Get Ready 2 phrase'],['this','elementary'],['is','elementary'],['my','elementary'],['English','elementary'],['book','elementary'],['yes','elementary'],['a','elementary'],['dog','elementary'],['cat','elementary'],['write','elementary'],['in','elementary'],['notebook','elementary'],['can','elementary'],['read','elementary']],
- auditNote:'Get Ready 2 の see は「わかる」の語義で登録されているため、視覚動詞 see a dog としては使用していない。I see. の会話表現だけを使用。',vocabAudit:true,manualSlashAudit:true,manualMeaningAudit:true,manualQuestionAudit:true
+ slashRows:[{en:'This is / my English book.',jp:'これは〜です / 私の英語の本'},{en:'Really?',jp:'本当に？'},{en:'Yes.',jp:'うん。'},{en:'This is / a dog.',jp:'これは〜です / 犬'},{en:'I see.',jp:'なるほど。'},{en:'This is / a cat, too.',jp:'これは〜です / ねこでも'},{en:'Great!',jp:'すごい！'},{en:'I write “dog” / in my notebook.',jp:'私は「dog」と書きます / 私のノートに'},{en:'I write “cat” / in my notebook, too.',jp:'私は「cat」と書きます / 私のノートにも'},{en:'I can read / “dog”.',jp:'私は読むことができます / 「dog」を'},{en:'I can read / “cat”, too.',jp:'私は読むことができます / 「cat」も'},{en:'Great!',jp:'すごい！'}],
+ questions:[{prompt:'1. 最初に見せているものは何ですか。本文から英語で答えなさい。',answer:'my English book',evidence:'This is my English book.',evidenceJp:'これは私の英語の本です。',reason:'最初の文で、見せているものをそのまま説明しています。'},{prompt:'2. 本の中で取り上げている動物を2つ、英語で答えなさい。',answer:'dog and cat',evidence:'This is a dog. / This is a cat, too.',evidenceJp:'これは犬です。／これはねこでもあります。',reason:'4文目と6文目に動物が1つずつ出ています。'},{prompt:'3. ノートに書いた英単語を2つ答えなさい。',answer:'dog and cat',evidence:'I write “dog” in my notebook. / I write “cat” in my notebook, too.',evidenceJp:'私はノートに dog と書きます。／cat もノートに書きます。',reason:'8文目と9文目が、ノートに書いた語を直接示しています。'},{prompt:'4. 「私」が読める2つの語を答えなさい。',answer:'dog and cat',evidence:'I can read “dog”. / I can read “cat”, too.',evidenceJp:'私は dog を読むことができます。／cat も読むことができます。',reason:'10文目と11文目で、can read の後ろに読める語が示されています。'}],
+ allowedWords:[['I','Get Ready 2'],['great','Get Ready 2'],['too','Get Ready 2'],['really','Get Ready 2'],['I see.','Get Ready 2 phrase'],['this','elementary'],['is','elementary'],['my','elementary'],['English','elementary'],['book','elementary'],['yes','elementary'],['a','elementary'],['dog','elementary'],['cat','elementary'],['write','elementary'],['in','elementary'],['notebook','elementary'],['can','elementary'],['read','elementary']],auditNote:'Get Ready 2 の see は「わかる」の語義で登録されているため、視覚動詞 see a dog としては使用していない。I see. の会話表現だけを使用。',vocabAudit:true,manualSlashAudit:true,manualMeaningAudit:true,manualQuestionAudit:true
 },
 'Get Ready 3':{
  id:'V10-SUN-G1-GR3-001',textbook:'サンシャイン',grade:'1',section:'Get Ready 3',level:'HOP',title:'English at School',
  sentences:['What subject do you like?','I like English.','Really?','Yes.','Do you have your English book?','Yes, I do.','I have my English book.','Can you read English?','Yes, I can.','Great!','I like English, too.','Really?'],
  fullTranslation:'「あなたは何の教科が好きですか。」「私は英語が好きです。」「本当に？」「うん。」「あなたは自分の英語の本を持っていますか。」「はい、持っています。」「私は自分の英語の本を持っています。」「あなたは英語を読むことができますか。」「はい、できます。」「すごい！」「私も英語が好きです。」「本当に？」',
- slashRows:[
-  {en:'What subject / do you like?',jp:'何の教科が / あなたは好きですか'},{en:'I like / English.',jp:'私は好きです / 英語が'},{en:'Really?',jp:'本当に？'},{en:'Yes.',jp:'うん。'},{en:'Do you have / your English book?',jp:'あなたは持っていますか / あなたの英語の本を'},{en:'Yes, / I do.',jp:'はい / 持っています'},{en:'I have / my English book.',jp:'私は持っています / 私の英語の本を'},{en:'Can you read / English?',jp:'あなたは読むことができますか / 英語を'},{en:'Yes, / I can.',jp:'はい / できます'},{en:'Great!',jp:'すごい！'},{en:'I like / English, too.',jp:'私も好きです / 英語が'},{en:'Really?',jp:'本当に？'}],
- questions:[
-  {prompt:'1. 最初の人が好きな教科は何ですか。英語で答えなさい。',answer:'English',evidence:'I like English.',evidenceJp:'私は英語が好きです。',reason:'2文目が好きな教科を直接答えています。'},
-  {prompt:'2. 英語の本を持っていますか。本文に合うように Yes / No で答えなさい。',answer:'Yes',evidence:'Do you have your English book? / Yes, I do.',evidenceJp:'あなたは英語の本を持っていますか。／はい、持っています。',reason:'質問の直後に Yes, I do. と答えているためです。'},
-  {prompt:'3. 英語を読むことができますか。本文に合うように Yes / No で答えなさい。',answer:'Yes',evidence:'Can you read English? / Yes, I can.',evidenceJp:'あなたは英語を読むことができますか。／はい、できます。',reason:'Can you ...? に対して Yes, I can. と答えています。'},
-  {prompt:'4. 2人に共通して好きなものは何ですか。英語で答えなさい。',answer:'English',evidence:'I like English. / I like English, too.',evidenceJp:'私は英語が好きです。／私も英語が好きです。',reason:'too が「〜も」を表し、2人とも英語が好きだと分かります。'}],
- allowedWords:[['what','Get Ready 3'],['subject','Get Ready 3'],['you','Get Ready 3'],['do','Get Ready 3'],['like','Get Ready 3'],['your','Get Ready 3'],['have','Get Ready 3'],['can','Get Ready 3'],['I','Get Ready 2 cumulative'],['really','Get Ready 2 cumulative'],['great','Get Ready 2 cumulative'],['too','Get Ready 2 cumulative'],['yes','elementary'],['English','elementary'],['book','elementary'],['my','elementary'],['read','elementary']],
- auditNote:'Get Ready 3 の追加語と Get Ready 2 までの累積語、小学生既習語だけで構成。自動的な活用形追加やサポート語の既習扱いは使用していない。',vocabAudit:true,manualSlashAudit:true,manualMeaningAudit:true,manualQuestionAudit:true
+ slashRows:[{en:'What subject / do you like?',jp:'何の教科が / あなたは好きですか'},{en:'I like / English.',jp:'私は好きです / 英語が'},{en:'Really?',jp:'本当に？'},{en:'Yes.',jp:'うん。'},{en:'Do you have / your English book?',jp:'あなたは持っていますか / あなたの英語の本を'},{en:'Yes, / I do.',jp:'はい / 持っています'},{en:'I have / my English book.',jp:'私は持っています / 私の英語の本を'},{en:'Can you read / English?',jp:'あなたは読むことができますか / 英語を'},{en:'Yes, / I can.',jp:'はい / できます'},{en:'Great!',jp:'すごい！'},{en:'I like / English, too.',jp:'私も好きです / 英語が'},{en:'Really?',jp:'本当に？'}],
+ questions:[{prompt:'1. 最初の人が好きな教科は何ですか。英語で答えなさい。',answer:'English',evidence:'I like English.',evidenceJp:'私は英語が好きです。',reason:'2文目が好きな教科を直接答えています。'},{prompt:'2. 英語の本を持っていますか。本文に合うように Yes / No で答えなさい。',answer:'Yes',evidence:'Do you have your English book? / Yes, I do.',evidenceJp:'あなたは英語の本を持っていますか。／はい、持っています。',reason:'質問の直後に Yes, I do. と答えているためです。'},{prompt:'3. 英語を読むことができますか。本文に合うように Yes / No で答えなさい。',answer:'Yes',evidence:'Can you read English? / Yes, I can.',evidenceJp:'あなたは英語を読むことができますか。／はい、できます。',reason:'Can you ...? に対して Yes, I can. と答えています。'},{prompt:'4. 2人に共通して好きなものは何ですか。英語で答えなさい。',answer:'English',evidence:'I like English. / I like English, too.',evidenceJp:'私は英語が好きです。／私も英語が好きです。',reason:'too が「〜も」を表し、2人とも英語が好きだと分かります。'}],
+ allowedWords:[['what','Get Ready 3'],['subject','Get Ready 3'],['you','Get Ready 3'],['do','Get Ready 3'],['like','Get Ready 3'],['your','Get Ready 3'],['have','Get Ready 3'],['can','Get Ready 3'],['I','Get Ready 2 cumulative'],['really','Get Ready 2 cumulative'],['great','Get Ready 2 cumulative'],['too','Get Ready 2 cumulative'],['yes','elementary'],['English','elementary'],['book','elementary'],['my','elementary'],['read','elementary']],auditNote:'Get Ready 3 の追加語と Get Ready 2 までの累積語、小学生既習語だけで構成。自動的な活用形追加やサポート語の既習扱いは使用していない。',vocabAudit:true,manualSlashAudit:true,manualMeaningAudit:true,manualQuestionAudit:true
+},
+'Get Ready 4':{
+ id:'V10-SUN-G1-GR4-001',textbook:'サンシャイン',grade:'1',section:'Get Ready 4',level:'HOP',title:'Basketball in the Gym',
+ sentences:['I like basketball.','I am in the basketball club.','I practice in the gym.','I practice every day.','I can run.','I can jump high.','I can shoot the ball.','Basketball is very exciting.','Do you like basketball?','Yes, I do.','Let’s play basketball together.','Great!','I enjoy basketball.'],
+ fullTranslation:'私はバスケットボールが好きです。私はバスケットボール部に入っています。体育館で練習します。毎日練習します。私は走ることができます。高くジャンプすることもできます。ボールをシュートすることもできます。バスケットボールはとてもわくわくするスポーツです。「あなたはバスケットボールが好きですか。」「はい、好きです。」「いっしょにバスケットボールをしよう。」「いいね！」「私はバスケットボールを楽しんでいます。」',
+ slashRows:[{en:'I like / basketball.',jp:'私は好きです / バスケットボールが'},{en:'I am / in the basketball club.',jp:'私はいます / バスケットボール部に'},{en:'I practice / in the gym.',jp:'私は練習します / 体育館で'},{en:'I practice / every day.',jp:'私は練習します / 毎日'},{en:'I can run.',jp:'私は走ることができます。'},{en:'I can jump / high.',jp:'私はジャンプできます / 高く'},{en:'I can shoot / the ball.',jp:'私はシュートできます / そのボールを'},{en:'Basketball is / very exciting.',jp:'バスケットボールは〜です / とてもわくわくする'},{en:'Do you like / basketball?',jp:'あなたは好きですか / バスケットボールが'},{en:'Yes, / I do.',jp:'はい / 好きです'},{en:'Let’s play / basketball / together.',jp:'いっしょにしよう / バスケットボールを / いっしょに'},{en:'Great!',jp:'いいね！'},{en:'I enjoy / basketball.',jp:'私は楽しみます / バスケットボールを'}],
+ questions:[{prompt:'1. 「私」は何部に入っていますか。英語で答えなさい。',answer:'the basketball club',evidence:'I am in the basketball club.',evidenceJp:'私はバスケットボール部に入っています。',reason:'2文目の in the basketball club が所属する部を示しています。'},{prompt:'2. どこで練習しますか。英語で答えなさい。',answer:'in the gym',evidence:'I practice in the gym.',evidenceJp:'私は体育館で練習します。',reason:'3文目の in the gym が練習場所です。'},{prompt:'3. どのくらいの頻度で練習しますか。本文から英語で抜き出しなさい。',answer:'every day',evidence:'I practice every day.',evidenceJp:'私は毎日練習します。',reason:'every day が練習の頻度を表しています。'},{prompt:'4. 「私」ができることを3つ、日本語で答えなさい。',answer:'走ること・高くジャンプすること・ボールをシュートすること',evidence:'I can run. / I can jump high. / I can shoot the ball.',evidenceJp:'走ることができます。／高くジャンプできます。／ボールをシュートできます。',reason:'5〜7文目で can の後ろに3つの動作が並んでいます。'}],
+ allowedWords:[['basketball','Get Ready 4'],['club','Get Ready 4'],['practice','Get Ready 4'],['gym','Get Ready 4'],['every day','Get Ready 4 phrase'],['run','Get Ready 4'],['jump','Get Ready 4'],['high','Get Ready 4'],['shoot','Get Ready 4'],['ball','Get Ready 4'],['very','Get Ready 4'],['exciting','Get Ready 4'],['together','Get Ready 4'],['let’s','Get Ready 4'],['enjoy','Get Ready 4'],['in','Get Ready 4'],['the','Get Ready 4'],['I','cumulative'],['like','Get Ready 3 cumulative'],['can','Get Ready 3 cumulative'],['do','Get Ready 3 cumulative'],['you','Get Ready 3 cumulative'],['yes','elementary'],['am','elementary'],['great','Get Ready 2 cumulative']],auditNote:'Get Ready 4 の部活・動作語を中心に、バスケ部での練習から友だちを誘うまでを1場面で構成。三単現・過去形など未習活用は使用していない。',vocabAudit:true,manualSlashAudit:true,manualMeaningAudit:true,manualQuestionAudit:true
 }
 };
 function releaseCheck(m){return m.sentences.length>=10&&m.slashRows.length===m.sentences.length&&m.vocabAudit&&m.manualSlashAudit&&m.manualMeaningAudit&&m.manualQuestionAudit;}
