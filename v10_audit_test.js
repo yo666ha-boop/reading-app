@@ -17,7 +17,8 @@ const NH_FILES=[
  'v10_data_newhorizon_g1_unit5_3.js',
  'v10_data_newhorizon_g1_unit6_1.js',
  'v10_data_newhorizon_g1_unit7_1.js',
- 'v10_data_newhorizon_g1_unit8_1.js'
+ 'v10_data_newhorizon_g1_unit8_1.js',
+ 'v10_data_newhorizon_g1_unit9_1.js'
 ];
 
 function load(files){
@@ -60,7 +61,7 @@ const errors=[];
 const sun=load(SUN_FILES);
 const nh=load(NH_FILES);
 if(Object.keys(sun).length!==5) fail(`Sunshine count expected 5, got ${Object.keys(sun).length}`,errors);
-if(Object.keys(nh).length!==25) fail(`New Horizon count expected 25, got ${Object.keys(nh).length}`,errors);
+if(Object.keys(nh).length!==26) fail(`New Horizon count expected 26, got ${Object.keys(nh).length}`,errors);
 auditSet('SS',sun,errors);auditSet('NH',nh,errors);
 const all=[...Object.values(sun),...Object.values(nh)];
 const ids=new Map();
