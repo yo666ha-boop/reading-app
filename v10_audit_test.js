@@ -1,7 +1,7 @@
 const fs=require('fs');
 const vm=require('vm');
 
-const SUN_FILES=['v10_data_sunshine_g1.js','v10_data_sunshine_g1_program1.js','v10_data_sunshine_g1_program2.js','v10_data_sunshine_g1_program4.js','v10_data_sunshine_g1_program5.js','v10_data_sunshine_g1_program6.js','v10_data_sunshine_g1_program7.js','v10_data_sunshine_g1_program8.js'];
+const SUN_FILES=['v10_data_sunshine_g1.js','v10_data_sunshine_g1_program1.js','v10_data_sunshine_g1_program2.js','v10_data_sunshine_g1_program4.js','v10_data_sunshine_g1_program5.js','v10_data_sunshine_g1_program6.js','v10_data_sunshine_g1_program7.js','v10_data_sunshine_g1_program8.js','v10_data_sunshine_g1_program9.js'];
 const NH_FILES=[
  'v10_data_newhorizon_g1.js',
  'v10_data_newhorizon_g1_unit1_2.js',
@@ -61,7 +61,7 @@ function auditSet(label,data,errors){
 const errors=[];
 const sun=load(SUN_FILES);
 const nh=load(NH_FILES);
-if(Object.keys(sun).length!==29) fail(`Sunshine count expected 29, got ${Object.keys(sun).length}`,errors);
+if(Object.keys(sun).length!==33) fail(`Sunshine count expected 33, got ${Object.keys(sun).length}`,errors);
 if(Object.keys(nh).length!==31) fail(`New Horizon count expected 31, got ${Object.keys(nh).length}`,errors);
 auditSet('SS',sun,errors);auditSet('NH',nh,errors);
 const all=[...Object.values(sun),...Object.values(nh)];
