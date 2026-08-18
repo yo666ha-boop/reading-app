@@ -2,3 +2,4 @@ AUDIT passages=69 sunshine=38 new_horizon=31
 COVERAGE sunshine=38/38 new_horizon=31/31
 UI textbook>grade>major>minor=enabled month_filter=removed
 AUDIT PASS: exact section coverage, UI hierarchy, structural release gates, evidence links, IDs, counts, and stage loading are consistent.
+DOM PASS: textbook > grade > major > minor selectors render and switch correctly; passage, answers, audit, and release gate render without browser errors.
