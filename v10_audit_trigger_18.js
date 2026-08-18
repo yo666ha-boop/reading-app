@@ -1,1 +1,1 @@
-// Consolidated audit trigger: reviewed interaction metadata = 60 masters; Sunshine all 38 + New Horizon through Unit 7.
+// Consolidated audit trigger: all 69 masters reviewed for genre and alternate question sets.
