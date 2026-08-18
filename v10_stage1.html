@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>長文読解問題作成アプリ v10 rebuild stage1</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Yu Gothic",sans-serif;margin:0;background:#f5f7fb;color:#1f2937}.wrap{max-width:980px;margin:0 auto;padding:18px}.panel{background:#fff;border:1px solid #d8dee9;border-radius:16px;padding:18px;margin-bottom:14px}.row{display:flex;gap:10px;flex-wrap:wrap}select,button{padding:10px 12px;border-radius:10px;border:1px solid #cbd5e1;background:#fff}button{font-weight:700;cursor:pointer}.tabs button.active{background:#0f172a;color:#fff}.muted{color:#667085;font-size:13px;line-height:1.7}.ok{color:#166534;font-weight:800}.warn{color:#92400e;font-weight:800}.en{font-size:18px;line-height:1.9}.slash{padding:10px 0;border-bottom:1px dashed #e5e7eb}.slash .enline{font-weight:700}.slash .jpline{margin-top:4px;color:#374151}.q{padding:12px 0;border-bottom:1px solid #eef2f7}.evidence{background:#f8fafc;border-left:4px solid #94a3b8;padding:10px;margin-top:8px}.hidden{display:none}.badge{display:inline-block;padding:4px 9px;border-radius:999px;background:#dcfce7;color:#166534;font-size:12px;font-weight:800}.meta{font-size:13px;color:#475569;line-height:1.8}h1{font-size:24px;margin:0 0 8px}h2{font-size:20px;margin-top:0}.notice{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:12px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="panel">
+<h1>長文読解問題作成アプリ v10 再構築</h1>
+<div class="muted">GitHub再構築用 stage1。月フィルタなし。単元上限までの累積語彙を前提に、手作業監査済み本文だけを表示します。</div>
+<div class="row" style="margin-top:12px">
+<label>教科書 <select id="textbook"><option>サンシャイン</option></select></label>
+<label>学年 <select id="grade"><option value="1">中1</option></select></label>
+<label>単元上限 <select id="section"><option>Get Ready 2</option></select></label>
+</div>
+<div id="gate" style="margin-top:12px"></div>
+</section>
+<section class="panel tabs row">
+<button data-tab="passage" class="active">本文</button>
+<button data-tab="slash">英文解釈</button>
+<button data-tab="questions">問題</button>
+<button data-tab="answers">解答・解説</button>
+<button data-tab="audit">品質監査</button>
+</section>
+<section id="passage" class="panel tabpage"></section>
+<section id="slash" class="panel tabpage hidden"></section>
+<section id="questions" class="panel tabpage hidden"></section>
+<section id="answers" class="panel tabpage hidden"></section>
+<section id="audit" class="panel tabpage hidden"></section>
+</div>
+<script>
+const MASTER={
+ id:'V10-SUN-G1-GR2-001', textbook:'サンシャイン', grade:'1', section:'Get Ready 2', level:'HOP',
+ title:'My English Book',
+ sentences:[
+  'This is my English book.',
+  'The book is in my room.',
+  'I read this book.',
+  'I see a dog in the book.',
+  'I see a cat, too.',
+  'The dog is great.',
+  'The cat is great, too.',
+  'I write “dog” in my notebook.',
+  'I write “cat” in my notebook.',
+  'I can read “dog”.',
+  'I can read “cat”.',
+  'This is really great.'
+ ],
+ fullTranslation:'これは私の英語の本です。その本は私の部屋にあります。私はこの本を読みます。本の中に犬が見えます。ねこも見えます。犬はすてきです。ねこもすてきです。私はノートに「dog」と書きます。「cat」とも書きます。私は「dog」を読むことができます。「cat」も読むことができます。これは本当にすてきです。',
+ slashRows:[
+  {en:'This is / my English book.',jp:'これは〜です / 私の英語の本'},
+  {en:'The book is / in my room.',jp:'その本はあります / 私の部屋に'},
+  {en:'I read / this book.',jp:'私は読みます / この本を'},
+  {en:'I see / a dog / in the book.',jp:'私は見つけます / 犬を / その本の中に'},
+  {en:'I see / a cat, too.',jp:'私は見つけます / ねこも'},
+  {en:'The dog is / great.',jp:'その犬は〜です / すてきな'},
+  {en:'The cat is / great, too.',jp:'そのねこも〜です / すてきな'},
+  {en:'I write / “dog” / in my notebook.',jp:'私は書きます / 「dog」と / 私のノートに'},
+  {en:'I write / “cat” / in my notebook.',jp:'私は書きます / 「cat」と / 私のノートに'},
+  {en:'I can read / “dog”.',jp:'私は読むことができます / 「dog」を'},
+  {en:'I can read / “cat”.',jp:'私は読むことができます / 「cat」を'},
+  {en:'This is / really great.',jp:'これは〜です / 本当にすてきな'}
+ ],
+ questions:[
+  {prompt:'1. 「私」が読んでいるものを本文から答えなさい。',answer:'my English book',evidence:'This is my English book. / I read this book.',evidenceJp:'これは私の英語の本です。／私はこの本を読みます。',reason:'最初の文で「これ」が英語の本だと示し、3文目でその本を読むと書かれています。'},
+  {prompt:'2. 本の中で「私」が見つけた動物を2つ答えなさい。',answer:'a dog and a cat',evidence:'I see a dog in the book. / I see a cat, too.',evidenceJp:'私は本の中に犬を見つけます。／ねこも見つけます。',reason:'4文目と5文目に、見つけた動物が1つずつ書かれています。'},
+  {prompt:'3. 「私」はノートに何と書きましたか。2つ答えなさい。',answer:'dog and cat',evidence:'I write “dog” in my notebook. / I write “cat” in my notebook.',evidenceJp:'私はノートに「dog」と書きます。／「cat」と書きます。',reason:'8文目と9文目が、そのまま答えの根拠です。'},
+  {prompt:'4. 最後に「私」はこの本についてどう感じていますか。本文中の1語で答えなさい。',answer:'great',evidence:'This is really great.',evidenceJp:'これは本当にすてきです。',reason:'最終文の great が、本に対する評価を表しています。'}
+ ],
+ allowedWords:['I','see','great','too','really','this','is','my','English','book','the','in','room','read','a','dog','cat','write','notebook','can','and'],
+ vocabAudit:true, manualSlashAudit:true, manualMeaningAudit:true, manualQuestionAudit:true
+};
+function releaseCheck(m){return m.sentences.length>=10 && m.slashRows.length===m.sentences.length && m.vocabAudit && m.manualSlashAudit && m.manualMeaningAudit && m.manualQuestionAudit;}
+function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function render(){
+ const released=releaseCheck(MASTER);
+ document.getElementById('gate').innerHTML=released?'<span class="badge">release:true</span> <span class="ok">品質ゲート通過</span>':'<span class="warn">release:false</span>';
+ document.getElementById('passage').innerHTML=`<h2>${esc(MASTER.title)}</h2><div class="meta">${MASTER.id} / ${MASTER.textbook} / 中${MASTER.grade} / ${MASTER.section} / ${MASTER.level}</div><ol class="en">${MASTER.sentences.map(s=>`<li>${esc(s)}</li>`).join('')}</ol><h3>自然な全訳</h3><div>${esc(MASTER.fullTranslation)}</div>`;
+ document.getElementById('slash').innerHTML=`<h2>英文解釈</h2><div class="notice">単語置換ではなく、本文ごとに意味のまとまりを手作業で確定しています。</div>${MASTER.slashRows.map(r=>`<div class="slash"><div class="enline">${esc(r.en)}</div><div class="jpline">${esc(r.jp)}</div></div>`).join('')}<h3>自然な全訳</h3><div>${esc(MASTER.fullTranslation)}</div>`;
+ document.getElementById('questions').innerHTML=`<h2>問題</h2>${MASTER.questions.map(q=>`<div class="q">${esc(q.prompt)}</div>`).join('')}`;
+ document.getElementById('answers').innerHTML=`<h2>解答・解説</h2>${MASTER.questions.map(q=>`<div class="q"><strong>${esc(q.prompt)}</strong><div><b>答え：</b>${esc(q.answer)}</div><div class="evidence"><b>根拠英文：</b>${esc(q.evidence)}<br><b>根拠の意味：</b>${esc(q.evidenceJp)}<br><b>なぜ：</b>${esc(q.reason)}</div></div>`).join('')}`;
+ document.getElementById('audit').innerHTML=`<h2>品質監査</h2><ul><li>文数：${MASTER.sentences.length}（10文以上）</li><li>自動水増し：なし</li><li>自動スラッシュ生成：なし</li><li>月フィルタ：なし</li><li>語彙監査：${MASTER.vocabAudit?'済':'未'}</li><li>意味・流れ監査：${MASTER.manualMeaningAudit?'済':'未'}</li><li>スラッシュ監査：${MASTER.manualSlashAudit?'済':'未'}</li><li>設問監査：${MASTER.manualQuestionAudit?'済':'未'}</li><li>許可語彙：${MASTER.allowedWords.map(esc).join(' / ')}</li></ul><div class="muted">このstage1はGet Ready 2のみ。Get Ready 3以降は監査完了後に順次追加します。</div>`;
+}
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.tabpage').forEach(p=>p.classList.add('hidden'));document.getElementById(b.dataset.tab).classList.remove('hidden');}));
+render();
+</script>
+</body>
+</html>
