@@ -3,9 +3,8 @@ COVERAGE sunshine=38/38 new_horizon=31/31
 UI textbook>grade>major>minor=enabled month_filter=removed
 AUDIT PASS: exact section coverage, UI hierarchy, structural release gates, evidence links, IDs, counts, and stage loading are consistent.
 DOM PASS: textbook > grade > major > minor selectors render and switch correctly; passage, answers, audit, and release gate render without browser errors.
-INTERACTION reviewed_masters=0 alternate_questions=0
-INTERACTION FAIL 1
-- reviewed interaction masters expected 9, got 0
+INTERACTION reviewed_masters=18 alternate_questions=72
+INTERACTION PASS: reviewed genres and hand-authored B question sets are structurally valid and evidence-linked.
 STAGE2 DOM FAIL: Error: diary did not select GR6
     at assert (/home/runner/work/reading-app/reading-app/v10_stage2_dom_test.js:2:90)
     at /home/runner/work/reading-app/reading-app/v10_stage2_dom_test.js:4:87
