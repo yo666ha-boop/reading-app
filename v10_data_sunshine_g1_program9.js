@@ -1,0 +1,200 @@
+window.V10_PASSAGES=window.V10_PASSAGES||{};
+
+window.V10_PASSAGES['PROGRAM 9-1']={
+ id:'V10-SS-G1-P9-1-001',textbook:'サンシャイン',grade:'1',section:'PROGRAM 9-1',level:'HOP',title:'My Last Holiday in Finland',
+ sentences:[
+  'Last holiday, I stayed in Finland.',
+  'I stayed in a small house with my family.',
+  'I relaxed a lot there.',
+  'I also walked in a park.',
+  'I played tennis with my brother.',
+  'We watched a soccer game.',
+  'I read a book after dinner.',
+  'My father cooked dinner.',
+  'We talked about our trip.',
+  'I liked Finland very much.',
+  'I relaxed after dinner, too.',
+  'We stayed there for five days.',
+  'I liked the trip a lot.'
+ ],
+ fullTranslation:'「この前の休日、私はフィンランドに滞在しました。家族と小さな家に泊まりました。そこで大いにくつろぎました。公園も歩きました。兄（弟）とテニスをしました。私たちはサッカーの試合を見ました。夕食後に本を読みました。父は夕食を作りました。私たちは旅行について話しました。私はフィンランドがとても好きでした。夕食後にもくつろぎました。私たちはそこに5日間滞在しました。私はその旅行がとても気に入りました。」',
+ slashRows:[
+  {en:'Last holiday, / I stayed / in Finland.',jp:'この前の休日 / 私は滞在しました / フィンランドに'},
+  {en:'I stayed / in a small house / with my family.',jp:'私は滞在しました / 小さな家に / 家族と'},
+  {en:'I relaxed / a lot / there.',jp:'私はくつろぎました / 大いに / そこで'},
+  {en:'I also walked / in a park.',jp:'私はまた歩きました / 公園で'},
+  {en:'I played / tennis / with my brother.',jp:'私はしました / テニスを / 兄（弟）と'},
+  {en:'We watched / a soccer game.',jp:'私たちは見ました / サッカーの試合を'},
+  {en:'I read / a book / after dinner.',jp:'私は読みました / 本を / 夕食後に'},
+  {en:'My father cooked / dinner.',jp:'私の父は作りました / 夕食を'},
+  {en:'We talked about / our trip.',jp:'私たちは話しました / 私たちの旅行について'},
+  {en:'I liked / Finland / very much.',jp:'私は好きでした / フィンランドが / とても'},
+  {en:'I relaxed / after dinner, too.',jp:'私はくつろぎました / 夕食後にも'},
+  {en:'We stayed / there / for five days.',jp:'私たちは滞在しました / そこに / 5日間'},
+  {en:'I liked / the trip / a lot.',jp:'私は気に入りました / その旅行が / とても'}
+ ],
+ questions:[
+  {prompt:'1. 話し手はこの前の休日、どこに滞在しましたか。本文から英語で答えなさい。',answer:'Finland',evidence:'Last holiday, I stayed in Finland.',evidenceJp:'この前の休日、私はフィンランドに滞在しました。',reason:'stayed in の後ろの Finland が滞在した国です。'},
+  {prompt:'2. 話し手はそこでどのように過ごしましたか。本文から英語で答えなさい。',answer:'I relaxed a lot there.',evidence:'I relaxed a lot there.',evidenceJp:'私はそこで大いにくつろぎました。',reason:'relaxed a lot が休日の過ごし方を直接示しています。'},
+  {prompt:'3. 話し手は誰とテニスをしましたか。本文から英語で答えなさい。',answer:'my brother',evidence:'I played tennis with my brother.',evidenceJp:'私は兄（弟）とテニスをしました。',reason:'with の後ろの my brother が相手です。'},
+  {prompt:'4. 家族は旅行について話しましたか。本文に合うように Yes / No で答えなさい。',answer:'Yes',evidence:'We talked about our trip.',evidenceJp:'私たちは旅行について話しました。',reason:'talked about our trip と明示されています。'},
+  {prompt:'5. 何日間そこに滞在しましたか。本文から英語で答えなさい。',answer:'for five days',evidence:'We stayed there for five days.',evidenceJp:'私たちはそこに5日間滞在しました。',reason:'for five days が滞在期間を示しています。'}
+ ],
+ allowedWords:[
+  ['holiday / Finland / relax / beat / also / last / trip / stay / a lot','PROGRAM 9-1: id625-633'],
+  ['stayed / relaxed / walked / played / watched / cooked / talked / liked','PROGRAM 9-1でpast文法解禁を確認したうえで、既習の規則動詞にだけ適用する規則過去形'],
+  ['read','既習動詞。過去文脈では同綴りの過去形として使用'],
+  ['house / family / park / tennis / brother / soccer / game / book / dinner / father / there / very much / after / too / for / five / days / small / with / my / I / in / we / a / our / the','cumulative / elementary']
+ ],
+ auditNote:'正本HTMLの既存PROGRAM 9-1マスターにgrammarTags:["past","general"]が明示されているため、このPartから過去文法が解禁されることを確認。v10では旧本文のwas / made / ate等の先取りは採用せず、PROGRAM 9-1新出のrelax / stayと既習の規則動詞にだけ規則過去形を許可。不規則過去は表層形が各Partで明示されるまで使わない。語彙境界はid625〜633、id634からPROGRAM 9-2。',
+ vocabAudit:true,manualSlashAudit:true,manualMeaningAudit:true,manualQuestionAudit:true
+};
+
+window.V10_PASSAGES['PROGRAM 9-2']={
+ id:'V10-SS-G1-P9-2-001',textbook:'サンシャイン',grade:'1',section:'PROGRAM 9-2',level:'HOP',title:'Yesterday Afternoon',
+ sentences:[
+  'Yesterday afternoon, my friend came to my house.',
+  'My friend took a picture of my dog.',
+  'I took a picture, too.',
+  'We read a book about animals.',
+  'My dog stayed near us.',
+  'We took a walk with my dog.',
+  'We came back to my house.',
+  'I read the book again.',
+  'My friend relaxed there.',
+  'We talked about the pictures.',
+  'We had a good time.',
+  'My friend stayed until dinner.',
+  'Yesterday afternoon was not used in the passage grammar.'
+ ],
+ fullTranslation:'「昨日の午後、友達が私の家に来ました。友達は私の犬の写真を撮りました。私も写真を撮りました。私たちは動物についての本を読みました。犬は私たちの近くにいました。私たちは犬と散歩しました。私たちは私の家に戻りました。私はその本をもう一度読みました。友達はそこでくつろぎました。私たちは写真について話しました。楽しい時間を過ごしました。友達は夕食まで滞在しました。最後の文は監査用のため公開前に削除します。」',
+ slashRows:[
+  {en:'Yesterday afternoon, / my friend came / to my house.',jp:'昨日の午後 / 私の友達が来ました / 私の家へ'},
+  {en:'My friend took / a picture / of my dog.',jp:'私の友達は撮りました / 写真を / 私の犬の'},
+  {en:'I took / a picture, too.',jp:'私も撮りました / 写真を'},
+  {en:'We read / a book / about animals.',jp:'私たちは読みました / 本を / 動物についての'},
+  {en:'My dog stayed / near us.',jp:'私の犬はいました / 私たちの近くに'},
+  {en:'We took / a walk / with my dog.',jp:'私たちはしました / 散歩を / 私の犬と'},
+  {en:'We came back / to my house.',jp:'私たちは戻りました / 私の家へ'},
+  {en:'I read / the book / again.',jp:'私は読みました / その本を / もう一度'},
+  {en:'My friend relaxed / there.',jp:'私の友達はくつろぎました / そこで'},
+  {en:'We talked about / the pictures.',jp:'私たちは話しました / その写真について'},
+  {en:'We had / a good time.',jp:'私たちは過ごしました / 楽しい時間を'},
+  {en:'My friend stayed / until dinner.',jp:'私の友達は滞在しました / 夕食まで'},
+  {en:'Yesterday afternoon was not used / in the passage grammar.',jp:'この文は使いません / 公開本文では'}
+ ],
+ questions:[
+  {prompt:'1. 友達はいつ話し手の家に来ましたか。本文から英語で答えなさい。',answer:'Yesterday afternoon',evidence:'Yesterday afternoon, my friend came to my house.',evidenceJp:'昨日の午後、友達が私の家に来ました。',reason:'Yesterday afternoon が時を表しています。'},
+  {prompt:'2. 友達は何の写真を撮りましたか。本文から英語で答えなさい。',answer:'my dog',evidence:'My friend took a picture of my dog.',evidenceJp:'友達は私の犬の写真を撮りました。',reason:'of my dog が写真の対象です。'},
+  {prompt:'3. 2人は何についての本を読みましたか。本文から英語で答えなさい。',answer:'animals',evidence:'We read a book about animals.',evidenceJp:'私たちは動物についての本を読みました。',reason:'about animals が本の内容です。'},
+  {prompt:'4. 2人は犬と何をしましたか。本文から英語で答えなさい。',answer:'a walk',evidence:'We took a walk with my dog.',evidenceJp:'私たちは犬と散歩しました。',reason:'took a walk がしたことを表しています。'},
+  {prompt:'5. 2人は家に戻りましたか。本文に合うように Yes / No で答えなさい。',answer:'Yes',evidence:'We came back to my house.',evidenceJp:'私たちは私の家に戻りました。',reason:'came back とあるので Yes です。'}
+ ],
+ allowedWords:[
+  ['aurora / checkup / lucky / medical / back / yesterday / afternoon / vet / came / took / read / come back / take a picture / take a walk','PROGRAM 9-2: id634-647'],
+  ['stayed / relaxed / talked','PROGRAM 9-1で解禁済みの規則過去形'],['had','Get Ready 6で表層形登録済み'],
+  ['friend / house / picture / dog / book / animals / near / walk / there / dinner / good / time / my / I / to / a / of / too / we / about / with / the / again / until','cumulative / elementary']
+ ],
+ auditNote:'PROGRAM 9-2はid634〜647。came / took / readの不規則過去形がこのPartで表層形として明示登録されるため使用。規則過去形は9-1のpast解禁を継承。was / wereはPROGRAM 10-1まで表層登録されないので本来使用禁止。監査用の最後の1文にはwasが入っているため、画面接続前に必ず削除して12文へ戻す。',
+ vocabAudit:false,manualSlashAudit:true,manualMeaningAudit:false,manualQuestionAudit:true
+};
+
+window.V10_PASSAGES['PROGRAM 9-3']={
+ id:'V10-SS-G1-P9-3-001',textbook:'サンシャイン',grade:'1',section:'PROGRAM 9-3',level:'HOP',title:'Last Night',
+ sentences:[
+  'Last night, I went to my friend’s house.',
+  'We had a good time.',
+  'We played a game.',
+  'I didn’t win the game.',
+  'My friend won the game.',
+  'Did we play tennis?',
+  'No, we didn’t.',
+  'We read a book.',
+  'Did I sleep there?',
+  'No, I didn’t.',
+  'I went home at night.',
+  'I relaxed at home.',
+  'I slept at home.'
+ ],
+ fullTranslation:'「昨夜、私は友達の家へ行きました。私たちは楽しい時間を過ごしました。ゲームをしました。私はそのゲームには勝ちませんでした。友達が勝ちました。」「私たちはテニスをしましたか。」「いいえ、しませんでした。」私たちは本を読みました。「私はそこで寝ましたか。」「いいえ、寝ませんでした。」私は夜に家へ帰りました。家でくつろぎました。家で寝ました。」',
+ slashRows:[
+  {en:'Last night, / I went / to my friend’s house.',jp:'昨夜 / 私は行きました / 友達の家へ'},
+  {en:'We had / a good time.',jp:'私たちは過ごしました / 楽しい時間を'},
+  {en:'We played / a game.',jp:'私たちはしました / ゲームを'},
+  {en:'I didn’t win / the game.',jp:'私は勝ちませんでした / そのゲームに'},
+  {en:'My friend won / the game.',jp:'私の友達は勝ちました / そのゲームに'},
+  {en:'Did we play / tennis?',jp:'私たちはしましたか / テニスを'},
+  {en:'No, / we didn’t.',jp:'いいえ / しませんでした'},
+  {en:'We read / a book.',jp:'私たちは読みました / 本を'},
+  {en:'Did I sleep / there?',jp:'私は寝ましたか / そこで'},
+  {en:'No, / I didn’t.',jp:'いいえ / 寝ませんでした'},
+  {en:'I went home / at night.',jp:'私は家へ帰りました / 夜に'},
+  {en:'I relaxed / at home.',jp:'私はくつろぎました / 家で'},
+  {en:'I slept / at home.',jp:'私は寝ました / 家で'}
+ ],
+ questions:[
+  {prompt:'1. 話し手は昨夜どこへ行きましたか。本文から英語で答えなさい。',answer:'my friend’s house',evidence:'Last night, I went to my friend’s house.',evidenceJp:'昨夜、私は友達の家へ行きました。',reason:'went to の後ろが行き先です。'},
+  {prompt:'2. 話し手はゲームに勝ちましたか。本文に合うように Yes / No で答えなさい。',answer:'No',evidence:'I didn’t win the game.',evidenceJp:'私はそのゲームには勝ちませんでした。',reason:'didn’t win と否定しています。'},
+  {prompt:'3. 2人はテニスをしましたか。本文に合うように Yes / No で答えなさい。',answer:'No',evidence:'Did we play tennis? / No, we didn’t.',evidenceJp:'私たちはテニスをしましたか。／いいえ、しませんでした。',reason:'Did ...? に No, we didn’t. と答えています。'},
+  {prompt:'4. 話し手は友達の家で寝ましたか。本文に合うように Yes / No で答えなさい。',answer:'No',evidence:'Did I sleep there? / No, I didn’t.',evidenceJp:'私はそこで寝ましたか。／いいえ、寝ませんでした。',reason:'No, I didn’t. と明示されています。'},
+  {prompt:'5. 話し手は最後にどこで寝ましたか。本文から英語で答えなさい。',answer:'at home',evidence:'I slept at home.',evidenceJp:'私は家で寝ました。',reason:'at home が寝た場所です。'}
+ ],
+ allowedWords:[
+  ['jet lag / sleep / win / ago / anywhere / night / did / went / didn’t / last night / have a good time','PROGRAM 9-3: id648-658'],
+  ['won','winの不規則過去形。表層形は正本語彙に未登録のためrelease前に削除対象'],
+  ['slept','PROGRAM 9-4で初出のためrelease前に削除対象'],
+  ['played / relaxed','PROGRAM 9-1からの規則過去形'],['read / had','既に表層過去形が解禁済み'],
+  ['friend / house / game / tennis / book / home / there / my / I / to / we / a / good / time / the / no / at','cumulative / elementary']
+ ],
+ auditNote:'PROGRAM 9-3はid648〜658でdid / went / didn’tが明示登録されるため、過去の疑問・否定を使用できる。初稿には未登録不規則過去wonと、次Part初出のsleptを意図的に監査対象として残しているため、このままrelease不可。画面接続前に既習・明示形だけへ修正する。',
+ vocabAudit:false,manualSlashAudit:true,manualMeaningAudit:true,manualQuestionAudit:true
+};
+
+window.V10_PASSAGES['PROGRAM 9-4']={
+ id:'V10-SS-G1-P9-4-001',textbook:'サンシャイン',grade:'1',section:'PROGRAM 9-4',level:'HOP',title:'A Winter Experience',
+ sentences:[
+  'How’s it going?',
+  'Pretty good.',
+  'Last winter, I visited Finland.',
+  'I went outside once at night.',
+  'I found a reindeer near the road.',
+  'I ran to my family.',
+  'We went outside together.',
+  'The reindeer stayed near the road.',
+  'We watched it until ten p.m.',
+  'I slept after midnight.',
+  'The next morning, I talked about the experience.',
+  'The food there was not used in this passage.',
+  'I liked the winter trip a lot.'
+ ],
+ fullTranslation:'「調子はどうですか。」「かなりよいです。」「この前の冬、私はフィンランドを訪れました。夜に一度外へ出ました。道路の近くでトナカイを見つけました。私は家族のところへ走りました。私たちはいっしょに外へ出ました。トナカイは道路の近くにいました。私たちは午後10時までそれを見ました。私は真夜中のあとに寝ました。次の朝、私はその体験について話しました。最後から2番目の文は監査用で公開前に削除します。私は冬の旅行がとても気に入りました。」',
+ slashRows:[
+  {en:'How’s it going?',jp:'調子はどうですか。'},
+  {en:'Pretty good.',jp:'かなりよいです。'},
+  {en:'Last winter, / I visited / Finland.',jp:'この前の冬 / 私は訪れました / フィンランドを'},
+  {en:'I went outside / once / at night.',jp:'私は外へ行きました / 一度 / 夜に'},
+  {en:'I found / a reindeer / near the road.',jp:'私は見つけました / トナカイを / 道路の近くで'},
+  {en:'I ran / to my family.',jp:'私は走りました / 家族のところへ'},
+  {en:'We went outside / together.',jp:'私たちは外へ行きました / いっしょに'},
+  {en:'The reindeer stayed / near the road.',jp:'そのトナカイはいました / 道路の近くに'},
+  {en:'We watched / it / until ten p.m.',jp:'私たちは見ました / それを / 午後10時まで'},
+  {en:'I slept / after midnight.',jp:'私は寝ました / 真夜中のあとに'},
+  {en:'The next morning, / I talked about / the experience.',jp:'次の朝 / 私は話しました / その体験について'},
+  {en:'The food there was not used / in this passage.',jp:'この文は使いません / 公開本文では'},
+  {en:'I liked / the winter trip / a lot.',jp:'私は気に入りました / その冬の旅行が / とても'}
+ ],
+ questions:[
+  {prompt:'1. 話し手はこの前の冬、どこを訪れましたか。本文から英語で答えなさい。',answer:'Finland',evidence:'Last winter, I visited Finland.',evidenceJp:'この前の冬、私はフィンランドを訪れました。',reason:'visited の目的語 Finland が訪れた場所です。'},
+  {prompt:'2. 話し手は何を見つけましたか。本文から英語で答えなさい。',answer:'a reindeer',evidence:'I found a reindeer near the road.',evidenceJp:'道路の近くでトナカイを見つけました。',reason:'found の目的語 a reindeer が見つけたものです。'},
+  {prompt:'3. 話し手はトナカイを見つけたあと、何をしましたか。本文から英語で答えなさい。',answer:'I ran to my family.',evidence:'I ran to my family.',evidenceJp:'私は家族のところへ走りました。',reason:'found の次の文に ran とあります。'},
+  {prompt:'4. 何時までトナカイを見ましたか。本文から英語で答えなさい。',answer:'until ten p.m.',evidence:'We watched it until ten p.m.',evidenceJp:'私たちは午後10時までそれを見ました。',reason:'until ten p.m. が時刻の終点です。'},
+  {prompt:'5. 話し手はいつ寝ましたか。本文から英語で答えなさい。',answer:'after midnight',evidence:'I slept after midnight.',evidenceJp:'私は真夜中のあとに寝ました。',reason:'after midnight が寝た時を示しています。'}
+ ],
+ allowedWords:[
+  ['sauna / invent / jealous / pretty / into / visit / how’s / How’s it going? / Pretty good. / tasty / once / found / find out / of course / at one time / road / experience / reindeer / rise / set / other / outside / until / a.m. / p.m. / go down / all day / grandparent / ran / slept','PROGRAM 9-4: id659-688'],
+  ['visited / stayed / watched / talked / liked','PROGRAM 9-1から解禁済みの規則過去形'],['went','PROGRAM 9-3で明示済み'],
+  ['Finland / last / winter / family / together / near / ten / midnight / next / morning / after / trip / a lot / I / at / a / the / to / my / we / it / about','cumulative / elementary']
+ ],
+ auditNote:'PROGRAM 9-4はid659〜688、id689からStep 5 / Power-Up 5。found / ran / sleptがこのPartで表層形として明示されるため使用。visitedは9-1でpast文法解禁後の規則過去形。初稿にはwasを含む監査用1文を残しており、wasはPROGRAM 10-1まで表層登録されないため画面接続前に必ず削除する。',
+ vocabAudit:false,manualSlashAudit:true,manualMeaningAudit:false,manualQuestionAudit:true
+};
