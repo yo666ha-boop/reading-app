@@ -5,6 +5,4 @@ AUDIT PASS: exact section coverage, UI hierarchy, structural release gates, evid
 DOM PASS: textbook > grade > major > minor selectors render and switch correctly; passage, answers, audit, and release gate render without browser errors.
 INTERACTION reviewed_masters=9 alternate_questions=36
 INTERACTION PASS: reviewed genres and hand-authored B question sets are structurally valid and evidence-linked.
-STAGE2 DOM FAIL: Error: unavailable genre should stop clearly
-    at assert (/home/runner/work/reading-app/reading-app/v10_stage2_dom_test.js:2:90)
-    at /home/runner/work/reading-app/reading-app/v10_stage2_dom_test.js:6:28
+STAGE2 DOM PASS: genre selection, same-major fallback, unavailable-genre stop, A/B question switching, textbook switching, and print control behave correctly.
