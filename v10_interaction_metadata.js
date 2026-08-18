@@ -13,7 +13,10 @@ window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
      Object.assign(target,window.V10_INTERACTION_META_P7P8||{});window.V10_INTERACTION_META=target;
      load('v10_interaction_metadata_sun_p9_p10.js',()=>{
       Object.assign(target,window.V10_INTERACTION_META_P9P10||{});window.V10_INTERACTION_META=target;
-      if(typeof window.render==='function')window.render();
+      load('v10_interaction_metadata_nh_u2_u4.js',()=>{
+       Object.assign(target,window.V10_INTERACTION_META_NH_U2U4||{});window.V10_INTERACTION_META=target;
+       if(typeof window.render==='function')window.render();
+      });
      });
     });
    });
