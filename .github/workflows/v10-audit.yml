@@ -6,6 +6,7 @@ on:
     paths:
       - 'v10_*.js'
       - 'v10_stage1.html'
+      - 'v10_stage2.html'
       - '.github/workflows/v10-audit.yml'
   workflow_dispatch:
 
@@ -30,12 +31,12 @@ jobs:
         run: |
           set +e
           : > v10_audit_report.txt
-          node v10_audit_test.js >> v10_audit_report.txt 2>&1
-          code1=$?
-          node v10_dom_test.js >> v10_audit_report.txt 2>&1
-          code2=$?
+          node v10_audit_test.js >> v10_audit_report.txt 2>&1; code1=$?
+          node v10_dom_test.js >> v10_audit_report.txt 2>&1; code2=$?
+          node v10_interaction_audit.js >> v10_audit_report.txt 2>&1; code3=$?
+          node v10_stage2_dom_test.js >> v10_audit_report.txt 2>&1; code4=$?
           code=0
-          if [ "$code1" -ne 0 ] || [ "$code2" -ne 0 ]; then code=1; fi
+          if [ "$code1" -ne 0 ] || [ "$code2" -ne 0 ] || [ "$code3" -ne 0 ] || [ "$code4" -ne 0 ]; then code=1; fi
           cat v10_audit_report.txt
           echo "code=$code" >> "$GITHUB_OUTPUT"
           exit 0
