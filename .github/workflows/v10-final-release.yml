@@ -58,10 +58,17 @@ jobs:
         continue-on-error: true
         run: npm install --no-save --no-package-lock jsdom@24.1.3 playwright@1.55.0
 
-      - name: Install browser engines
+      - name: Install browser engines and host libraries
         id: browsers
         continue-on-error: true
-        run: timeout 360s npx playwright install chromium firefox webkit
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -f /etc/apt/apt-mirrors.txt ]; then
+            printf '%s\n' 'https://archive.ubuntu.com/ubuntu' | sudo tee /etc/apt/apt-mirrors.txt >/dev/null
+          fi
+          timeout 360s npx playwright install-deps chromium firefox webkit
+          timeout 360s npx playwright install chromium firefox webkit
 
       - name: Run release candidate regression suite
         id: regression
