@@ -5,7 +5,8 @@ window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
  window.V10_RUNTIME_LOAD_PROGRESS='start';window.V10_RUNTIME_LOAD_ERROR='';
  const load=(src,done)=>{window.V10_RUNTIME_LOAD_PROGRESS='loading:'+src;const s=document.createElement('script');s.src=src;s.onload=()=>{window.V10_RUNTIME_LOAD_PROGRESS='loaded:'+src;done()};s.onerror=()=>{window.V10_RUNTIME_LOAD_ERROR='failed:'+src;window.V10_RUNTIME_LOAD_PROGRESS='error:'+src;done()};document.head.appendChild(s)};
  const dataset=(g,book)=>g==='1'?(book==='サンシャイン'?(window.V10_SUNSHINE_G1||{}):(window.V10_NEWHORIZON_G1||{})):g==='2'?(book==='サンシャイン'?(window.V10_PASSAGES_G2_SS||{}):(window.V10_PASSAGES_G2_NH||{})):(book==='サンシャイン'?(window.V10_PASSAGES_G3_SS||{}):(window.V10_PASSAGES_G3_NH||{}));
- const gradeFor=(book,sec,m)=>{const ev=m&&Array.isArray(m.questionSetB)&&m.questionSetB[0]&&m.questionSetB[0].evidence;const hits=[];for(const g of ['1','2','3']){const p=dataset(g,book)[sec];if(p&&(!ev||(p.sentences||[]).includes(ev)))hits.push(g)}return hits.length===1?hits[0]:''};
+ const evidenceParts=m=>(m&&Array.isArray(m.questionSetB)?m.questionSetB:[]).flatMap(q=>String(q&&q.evidence||'').split(' / ').map(x=>x.trim()).filter(Boolean));
+ const gradeFor=(book,sec,m)=>{const ev=evidenceParts(m),hits=[];for(const g of ['1','2','3']){const p=dataset(g,book)[sec],s=p&&Array.isArray(p.sentences)?p.sentences:[];if(p&&ev.every(x=>s.includes(x)))hits.push(g)}return hits.length===1?hits[0]:''};
  const mergeObj=obj=>{Object.assign(target,obj);for(const[k,m]of Object.entries(obj||{})){const parts=k.split('|');if(parts.length===2){const[gbook,sec]=parts,g=gradeFor(gbook,sec,m);if(g)target[gbook+'|'+g+'|'+sec]=m}}};
  const chunks=[
   ['v10_interaction_metadata_initial.js',()=>window.V10_INTERACTION_META],
