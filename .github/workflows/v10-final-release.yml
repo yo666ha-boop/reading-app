@@ -27,6 +27,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: v10-rebuild
 
       - uses: actions/setup-node@v4
         with:
@@ -43,20 +45,10 @@ jobs:
             echo "artifact_name=v10-stage2-release-20260819"
           } > v10_final_release_run.txt
 
-      - name: Publish run marker early
-        continue-on-error: true
+      - name: Record run marker in report
         shell: bash
         run: |
-          set +e
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add v10_final_release_run.txt
-          if ! git diff --cached --quiet; then
-            git commit -m "Record active v10 final release run [skip ci]"
-            git pull --rebase origin v10-rebuild
-            git push
-          fi
-          exit 0
+          echo "RUN MARKER PREPARED: ${GITHUB_RUN_ID}" | tee -a v10_final_release_report.txt
 
       - name: Semantic human-reading gate
         id: semantic
@@ -204,6 +196,7 @@ jobs:
         if: always()
         shell: bash
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add v10_final_release_report.txt v10_final_release_run.txt
@@ -211,8 +204,10 @@ jobs:
           if [ "${{ steps.publish.outcome }}" = success ]; then git add index.html; fi
           if ! git diff --cached --quiet; then
             git commit -m "Record v10 final release validation and publish index [skip ci]"
-            git pull --rebase origin v10-rebuild
-            git push
+            git stash push -u -m "v10-final-release-transient" || true
+            git fetch origin v10-rebuild
+            git rebase origin/v10-rebuild
+            git push origin HEAD:v10-rebuild
           fi
 
       - name: Fail final release when any gate failed
