@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mikami Math Problem Bank Record",
+  "type": "object",
+  "required": [
+    "problem_id",
+    "source",
+    "grade",
+    "unit_major",
+    "unit_minor",
+    "problem_text_original",
+    "answer_original",
+    "audit_status"
+  ],
+  "properties": {
+    "problem_id": {"type": "string"},
+    "source": {"enum": ["実力錬成", "スタンダード", "WinPass"]},
+    "source_file": {"type": "string"},
+    "source_page": {"type": ["integer", "null"]},
+    "source_number": {"type": ["string", "null"]},
+    "grade": {"enum": [1, 2, 3]},
+    "unit_major": {"type": "string"},
+    "unit_minor": {"type": "string"},
+    "skill_tags": {"type": "array", "items": {"type": "string"}},
+    "prerequisite_tags": {"type": "array", "items": {"type": "string"}},
+    "difficulty": {"enum": ["基礎", "標準", "応用", "未判定"]},
+    "problem_type": {"type": "string"},
+    "problem_text_original": {"type": "string"},
+    "problem_text_canonical": {"type": ["string", "null"]},
+    "figure_refs": {"type": "array", "items": {"type": "string"}},
+    "answer_original": {"type": ["string", "null"]},
+    "answer_verified": {"type": ["string", "null"]},
+    "solution_verified": {"type": ["string", "null"]},
+    "audit_status": {
+      "enum": [
+        "UNPROCESSED",
+        "MATCH",
+        "ANSWER_MISMATCH",
+        "MISSING_ANSWER",
+        "MISSING_PROBLEM",
+        "NUMBER_SHIFT",
+        "INSUFFICIENT_CONDITION",
+        "FIGURE_MISSING",
+        "MULTIPLE_ANSWERS",
+        "NEEDS_HUMAN_REVIEW"
+      ]
+    },
+    "audit_notes": {"type": "array", "items": {"type": "string"}},
+    "duplicate_group": {"type": ["string", "null"]},
+    "similarity_group": {"type": ["string", "null"]},
+    "variant_policy": {
+      "enum": ["NUMBER_SWAP", "CONDITION_SWAP", "FIGURE_SWAP", "STRUCTURAL_VARIANT", "NO_AUTO_VARIANT", "UNASSESSED"]
+    },
+    "variant_constraints": {"type": "array", "items": {"type": "string"}},
+    "canonical_status": {"enum": ["DRAFT", "AUDITED", "CANONICAL", "REJECTED"]}
+  }
+}
