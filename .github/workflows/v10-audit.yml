@@ -28,7 +28,7 @@ jobs:
       - name: Repair generated runtime-map parenthesis defects and syntax-check every repair
         shell: bash
         run: |
-          node v10_one_time_fix_131_140.js
+          if [ -f v10_one_time_fix_131_140.js ]; then node v10_one_time_fix_131_140.js; fi
           node <<'NODE'
           const fs=require('fs');
           const files=fs.readdirSync('.').filter(f=>/^v10_semantic_runtime_repairs_\d{3}_\d{3}\.js$/.test(f));
@@ -39,6 +39,19 @@ jobs:
           console.log('runtime syntax repairs changed='+changed.join(','));
           NODE
           for f in v10_semantic_runtime_repairs_[0-9][0-9][0-9]_[0-9][0-9][0-9].js; do node --check "$f"; done
+      - name: Make stage2 metadata lookup grade-aware
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs=require('fs');const f='v10_stage2.html';let s=fs.readFileSync(f,'utf8');
+          const oldChoose="const f=keys.filter(x=>(META[$('textbook').value+'|'+x]?.genre||'')===p);";
+          const newChoose="const f=keys.filter(x=>((META[$('textbook').value+'|'+$('grade').value+'|'+x]||META[$('textbook').value+'|'+x])?.genre||'')===p);";
+          const oldRender="const meta=META[$('textbook').value+'|'+currentKey]||{};";
+          const newRender="const meta=META[$('textbook').value+'|'+$('grade').value+'|'+currentKey]||META[$('textbook').value+'|'+currentKey]||{};";
+          if(s.includes(oldChoose))s=s.replace(oldChoose,newChoose);
+          if(s.includes(oldRender))s=s.replace(oldRender,newRender);
+          fs.writeFileSync(f,s);
+          NODE
       - name: Audit all v10 passages and UI
         id: audit
         shell: bash
@@ -66,14 +79,14 @@ jobs:
           cat v10_audit_report.txt
           echo "code=$code" >> "$GITHUB_OUTPUT"
           exit 0
-      - name: Commit audit report and deterministic syntax repairs
+      - name: Commit audit report and deterministic repairs
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add v10_audit_report.txt v10_semantic_runtime_repairs_*.js
+          git add v10_audit_report.txt v10_semantic_runtime_repairs_*.js v10_stage2.html
           if ! git diff --cached --quiet; then
-            git commit -m "Update v10 audit and repair runtime syntax [skip ci]"
+            git commit -m "Update v10 audit and effective runtime fixes [skip ci]"
             git push
           fi
       - name: Fail when audit fails
