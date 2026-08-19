@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mikami-juku.local/math-bank/app-record.schema.json",
+  "title": "Mikami Math App Record",
+  "type": "object",
+  "required": [
+    "id", "grade", "unit", "difficulty", "source", "question", "answer",
+    "explanation", "figure_refs", "variant_group", "audit"
+  ],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "grade": {"type": "integer", "enum": [1,2,3]},
+    "unit": {
+      "type": "object",
+      "required": ["major", "minor"],
+      "properties": {
+        "major": {"type": "string", "minLength": 1},
+        "minor": {"type": "string", "minLength": 1},
+        "tags": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      },
+      "additionalProperties": false
+    },
+    "difficulty": {"type": "string", "enum": ["basic", "standard", "advanced", "unknown"]},
+    "source": {
+      "type": "object",
+      "required": ["book", "document", "original_no", "is_generated_variant"],
+      "properties": {
+        "book": {"type": "string", "enum": ["Winpass", "実力錬成", "Standard", "generated"]},
+        "document": {"type": "string"},
+        "original_no": {"type": ["string", "null"]},
+        "is_generated_variant": {"type": "boolean"},
+        "parent_id": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "question": {"type": "string", "minLength": 1},
+    "answer": {"type": "string", "minLength": 1},
+    "explanation": {"type": "string"},
+    "figure_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "variant_group": {"type": ["string", "null"]},
+    "prerequisites": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "audit": {
+      "type": "object",
+      "required": ["problem_answer_verified", "structure_verified", "figure_refs_verified"],
+      "properties": {
+        "problem_answer_verified": {"type": "boolean"},
+        "structure_verified": {"type": "boolean"},
+        "figure_refs_verified": {"type": "boolean"},
+        "notes": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
