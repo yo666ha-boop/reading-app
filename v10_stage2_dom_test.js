@@ -20,3 +20,4 @@ change(w,tb,'ニューホライズン');assert(vals(major).includes('Unit 6'),'G
 
 change(w,grade,'1');assert(vals(major).includes('Unit 10'),'switching back to G1 did not restore NH G1 majors');assert(!vals(major).includes('Unit 0')||vals(major).includes('Unit 10'),'G1 selector corrupted after grade switch');
 assert(vals(pattern).join(',')==='all,diary,notice,email,report','pattern options changed');assert(d.getElementById('printBtn'),'print control missing');assert(errs.length===0,`browser errors: ${errs.join(' | ')}`);console.log('STAGE2 DOM PASS: completed metadata/runtime load; G1/G2/G3 selection, genre fallback, final repaired titles, A/B switching, release gates, and print control behave correctly.');dom.window.close()})().catch(e=>{console.error(`STAGE2 DOM FAIL: ${e.stack||e}`);process.exit(1)});
+// final regression refresh 2026-08-19
