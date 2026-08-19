@@ -1,7 +1,7 @@
 {
   "project": "mikami-math-problem-bank",
-  "status": "APP_LAYER_PREPARED_PENDING_FINAL_ARTIFACT_REVERIFY",
-  "current_stage": "APP_DATA_LAYER",
+  "status": "APP_MVP_SHELL_PREPARED_PENDING_FINAL_ARTIFACT_REVERIFY",
+  "current_stage": "APP_MVP_PREP",
   "source_archives": [
     {"name": "中学実力錬成データ.zip", "status": "COMPLETION_RECORDED_BUT_NOT_REVERIFIED_THIS_RUN"},
     {"name": "スタンダードデータ.zip", "status": "COMPLETION_RECORDED_BUT_NOT_REVERIFIED_THIS_RUN"},
@@ -35,10 +35,11 @@
     "file-role-and-grade-classifier",
     "github-actions-inventory-and-classification",
     "app-record-schema",
-    "app-record-validator"
+    "app-record-validator",
+    "app-mvp-index-shell"
   ],
-  "last_completed_batch": "prepare-app-record-contract-and-validator",
-  "next_batch": "reverify-final-artifact-and-convert-to-app-records",
+  "last_completed_batch": "prepare-app-mvp-index-shell",
+  "next_batch": "reverify-final-artifact-convert-1231-and-wire-app-records",
   "counts": {
     "files_discovered": 0,
     "problems_extracted": 0,
@@ -49,24 +50,35 @@
     "canonical_records": 0,
     "app_records_verified": 0
   },
-  "resume_rule": "Do not trust stale checkpoint or completion claim over real files. Reverify final artifact first; then convert only verified records. Never restart completed app-layer preparation.",
-  "blocking_issue": "Transient local runtime ClientError prevented direct verification of the recorded final ZIP and audit JSON in this run. File Library search did not surface the final artifact. GitHub checkpoint was stale relative to the later completion record, so completion remains provisional until direct artifact verification succeeds.",
-  "last_retry_jst": "2026-08-20T07:08:00+09:00",
+  "resume_rule": "Do not trust completion claim over real files. Reverify final artifact first; then convert only verified records. Do not redo completed app-layer or MVP-shell preparation.",
+  "blocking_issue": "Transient local runtime ClientError again prevented direct verification of final ZIP and audit JSON. App MVP shell was prepared without inserting any unverified/fake problem data.",
+  "last_retry_jst": "2026-08-20T08:08:23+09:00",
   "last_retry_result": "TRANSIENT_RUNTIME_FILE_ACCESS_ERROR",
   "github_branch": "math-problem-bank-bootstrap",
   "github_main_touched": false,
+  "github_commits_this_run": [
+    "e1a60debdaac297ba0d59b2d804a442c21efe1b8"
+  ],
   "run_result": {
     "PASS": [
       "GitHub isolation branch accessible",
-      "App record schema committed",
-      "App record validator committed",
-      "Checkpoint reconciled to require artifact re-verification"
+      "Existing app record schema and validator confirmed",
+      "Minimal math app shell committed",
+      "Grade filter prepared",
+      "Unit filter prepared",
+      "Difficulty filter prepared",
+      "Random question count selection prepared",
+      "Per-question answer reveal prepared",
+      "Print layout prepared",
+      "No fake or unverified problem records inserted",
+      "main untouched"
     ],
     "FAIL_OR_BLOCKED": [
       "Direct final ZIP existence/content verification",
       "Direct MATHBANK_FINAL_AUDIT_V2.json verification",
       "1231-record app conversion",
-      "Validator execution against real app records"
+      "Validator execution against real app records",
+      "Real-data browser verification"
     ]
   }
 }
