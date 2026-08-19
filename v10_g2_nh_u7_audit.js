@@ -16,7 +16,7 @@ const rt1=[' protect ',' material ',' cover ',' marble ',' jewel ','because of',
 const rt2=[' sunrise ',' crater ',' cloud ',' climb ',' campaign ','a large amount of',' bath ','more and more',' cleanup ',' recently ',' trail ',' forever ',' tourist '];
 const afterUnit=['how much',' goods ',' size ',' customer ',' price ',' clerk ',' medium ',' under ',' agree ','traffic jam',' against ',' tourism ',' develop ',' industry ',' environment ',' discussion ',' review ',' crime ',' pollute ',' possible ',' increase ','due to',' destroy ',' therefore ',' choose ',' attract ','be afraid of',' point ','be concerned about',' value ',' became ',' university ','come true',' dream ',' understood ',' convenience ',' return ',' berry ',' lose ',' tradition ',' invite ',' wilderness ',' hunt ',' severe '];
 const future={
- 'Unit 7-1':[' plant ',' heritage ',' hometown ',' conference ',' diversity ',' mixed ',' floral ',' general ',' fantastic ',' cultural ',...rt1,...rt2,...afterUnit],
+ 'Unit 7-1':[' plant ',' hometown ',' conference ',' diversity ',' mixed ',' floral ',' general ',' fantastic ',' cultural ',...rt1,...rt2,...afterUnit],
  'Unit 7-2':[...rt1,...rt2,...afterUnit],
  'Unit 7-3':[...rt2,...afterUnit],
  'Unit 7-4':afterUnit
