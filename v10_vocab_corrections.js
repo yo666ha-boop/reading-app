@@ -27,9 +27,9 @@ window.V10_VOCAB_CORRECTIONS = [
 ];
 
 // Mobile layout hardening for the single-file stage2 shell. Some reviewed
-// evidence strings and long English tokens can otherwise force WebKit to
-// widen the document beyond the iPhone viewport. Keep the content intact,
-// while allowing rendered children to shrink/wrap inside their panels.
+// evidence strings, long English tokens, and native select controls can
+// otherwise force WebKit to widen the document beyond the iPhone viewport.
+// Keep all content intact while allowing rendered children to shrink/wrap.
 (function installV10MobileLayoutGuard(){
   if (typeof document === 'undefined' || document.getElementById('v10-mobile-layout-guard')) return;
   const style = document.createElement('style');
@@ -41,11 +41,12 @@ window.V10_VOCAB_CORRECTIONS = [
     .en,.slash,.q,.evidence,.meta,.notice,.fail,.muted,p,div,span,li,td,th,a{overflow-wrap:anywhere;word-break:break-word}
     pre,code{max-width:100%;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word}
     table{max-width:100%;width:100%;table-layout:fixed}
-    select,button,input,textarea{max-width:100%}
+    select,button,input,textarea{max-width:100%;min-width:0}
     @media(max-width:700px){
       .wrap{width:100%}
       .row{width:100%;min-width:0}
       .field{min-width:0!important;flex:1 1 calc(50% - 8px);max-width:100%}
+      .field select{display:block;width:100%!important;min-width:0!important;max-width:100%!important}
       .controlbar>*{max-width:100%;white-space:normal}
     }
   `;
