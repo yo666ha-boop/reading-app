@@ -94,6 +94,17 @@ jobs:
           cat v10_stage2_release_20260819.sha256
           cd ..
 
+      - name: Prepare publish index from validated stage2
+        id: publish
+        continue-on-error: true
+        if: steps.deps.outcome == 'success' && steps.browsers.outcome == 'success' && steps.regression.outcome == 'success' && steps.coverage.outcome == 'success' && steps.browserprint.outcome == 'success' && steps.package.outcome == 'success'
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp v10_stage2.html index.html
+          cmp -s index.html v10_stage2.html
+          echo "PUBLISH INDEX PASS: index.html is byte-identical to validated v10_stage2.html" | tee -a v10_final_release_report.txt
+
       - name: Summarize outcomes
         if: always()
         shell: bash
@@ -106,20 +117,22 @@ jobs:
             echo "coverage=${{ steps.coverage.outcome }}"
             echo "browserprint=${{ steps.browserprint.outcome }}"
             echo "package=${{ steps.package.outcome }}"
+            echo "publish=${{ steps.publish.outcome }}"
           } | tee -a v10_final_release_report.txt
           if [ "${{ steps.deps.outcome }}" = success ] && \
              [ "${{ steps.browsers.outcome }}" = success ] && \
              [ "${{ steps.regression.outcome }}" = success ] && \
              [ "${{ steps.coverage.outcome }}" = success ] && \
              [ "${{ steps.browserprint.outcome }}" = success ] && \
-             [ "${{ steps.package.outcome }}" = success ]; then
-            echo "V10 FINAL RELEASE PASS: regression suite, 168/168 coverage, Chromium, Firefox, WebKit-iPhone, print CSS, A4 PDF generation, dependency completeness, and offline ZIP packaging all passed." | tee -a v10_final_release_report.txt
+             [ "${{ steps.package.outcome }}" = success ] && \
+             [ "${{ steps.publish.outcome }}" = success ]; then
+            echo "V10 FINAL RELEASE PASS: regression suite, 168/168 coverage, Chromium, Firefox, WebKit-iPhone, print CSS, A4 PDF generation, dependency completeness, offline ZIP packaging, and publish index preparation all passed." | tee -a v10_final_release_report.txt
           else
             echo "V10 FINAL RELEASE FAIL" | tee -a v10_final_release_report.txt
           fi
 
       - name: Upload release ZIP
-        if: steps.deps.outcome == 'success' && steps.browsers.outcome == 'success' && steps.regression.outcome == 'success' && steps.coverage.outcome == 'success' && steps.browserprint.outcome == 'success' && steps.package.outcome == 'success'
+        if: steps.deps.outcome == 'success' && steps.browsers.outcome == 'success' && steps.regression.outcome == 'success' && steps.coverage.outcome == 'success' && steps.browserprint.outcome == 'success' && steps.package.outcome == 'success' && steps.publish.outcome == 'success'
         uses: actions/upload-artifact@v4
         with:
           name: v10-stage2-release-20260819
@@ -132,7 +145,7 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: Commit final validation report
+      - name: Commit final validation report and publish index
         if: always()
         shell: bash
         run: |
@@ -140,11 +153,12 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add v10_final_release_report.txt
           if [ -f v10_final_browser_print_report.txt ]; then git add v10_final_browser_print_report.txt; fi
+          if [ "${{ steps.publish.outcome }}" = success ]; then git add index.html; fi
           if ! git diff --cached --quiet; then
-            git commit -m "Record v10 final release validation [skip ci]"
+            git commit -m "Record v10 final release validation and publish index [skip ci]"
             git push
           fi
 
       - name: Fail final release when any gate failed
-        if: steps.deps.outcome != 'success' || steps.browsers.outcome != 'success' || steps.regression.outcome != 'success' || steps.coverage.outcome != 'success' || steps.browserprint.outcome != 'success' || steps.package.outcome != 'success'
+        if: steps.deps.outcome != 'success' || steps.browsers.outcome != 'success' || steps.regression.outcome != 'success' || steps.coverage.outcome != 'success' || steps.browserprint.outcome != 'success' || steps.package.outcome != 'success' || steps.publish.outcome != 'success'
         run: exit 1
