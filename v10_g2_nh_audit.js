@@ -1,9 +1,9 @@
 const fs=require('fs');const vm=require('vm');
 function filled(v){return typeof v==='string'&&v.trim().length>0}
 function load(files,key){const c={window:{}};vm.createContext(c);for(const f of files){if(!fs.existsSync(f))throw new Error(`missing ${f}`);vm.runInContext(fs.readFileSync(f,'utf8'),c,{filename:f})}return c.window[key]||{}}
-const data=load(['v10_data_newhorizon_g2_unit0_1.js','v10_data_newhorizon_g2_unit0_1_fix.js','v10_data_newhorizon_g2_unit0_1_fix2.js','v10_data_newhorizon_g2_unit2.js','v10_data_newhorizon_g2_unit3.js','v10_data_newhorizon_g2_unit3_fix.js','v10_data_newhorizon_g2_unit4.js','v10_data_newhorizon_g2_unit4_fix.js'],'V10_PASSAGES_G2_NH');
-const meta=Object.assign({},load(['v10_interaction_metadata_nh_g2_u0_u1.js'],'V10_INTERACTION_META_G2_NH_U01'),load(['v10_interaction_metadata_nh_g2_u2.js'],'V10_INTERACTION_META_G2_NH_U2'),load(['v10_interaction_metadata_nh_g2_u3.js'],'V10_INTERACTION_META_G2_NH_U3'),load(['v10_interaction_metadata_nh_g2_u4.js'],'V10_INTERACTION_META_G2_NH_U4'));
-const expected=['Unit 0','Unit 1-1','Unit 1-2','Unit 1-3','Unit 1-4','Unit 2-1','Unit 2-2','Unit 2-3','Unit 2-4','Unit 3-1','Unit 3-2','Unit 3-3','Unit 3-4','Unit 4-1','Unit 4-2','Unit 4-3','Unit 4-4'];
+const data=load(['v10_data_newhorizon_g2_unit0_1.js','v10_data_newhorizon_g2_unit0_1_fix.js','v10_data_newhorizon_g2_unit0_1_fix2.js','v10_data_newhorizon_g2_unit2.js','v10_data_newhorizon_g2_unit3.js','v10_data_newhorizon_g2_unit3_fix.js','v10_data_newhorizon_g2_unit4.js','v10_data_newhorizon_g2_unit4_fix.js','v10_data_newhorizon_g2_unit5.js'],'V10_PASSAGES_G2_NH');
+const meta=Object.assign({},load(['v10_interaction_metadata_nh_g2_u0_u1.js'],'V10_INTERACTION_META_G2_NH_U01'),load(['v10_interaction_metadata_nh_g2_u2.js'],'V10_INTERACTION_META_G2_NH_U2'),load(['v10_interaction_metadata_nh_g2_u3.js'],'V10_INTERACTION_META_G2_NH_U3'),load(['v10_interaction_metadata_nh_g2_u4.js'],'V10_INTERACTION_META_G2_NH_U4'),load(['v10_interaction_metadata_nh_g2_u5.js'],'V10_INTERACTION_META_G2_NH_U5'));
+const expected=['Unit 0','Unit 1-1','Unit 1-2','Unit 1-3','Unit 1-4','Unit 2-1','Unit 2-2','Unit 2-3','Unit 2-4','Unit 3-1','Unit 3-2','Unit 3-3','Unit 3-4','Unit 4-1','Unit 4-2','Unit 4-3','Unit 4-4','Unit 5-1','Unit 5-2','Unit 5-3','Unit 5-4'];
 const errors=[];let bq=0;
 for(const k of expected)if(!data[k])errors.push(`missing passage ${k}`);for(const k of Object.keys(data))if(!expected.includes(k))errors.push(`unexpected passage ${k}`);
 for(const [section,m] of Object.entries(data)){
@@ -28,12 +28,16 @@ const future={
  'Unit 3-3':['understand','clap','adjust','story','speed','necessary','sentence','glad','loud','difficult','clearly','from now on','again and again','homestay','have to','must '],
  'Unit 3-4':['homestay','have to','must ','shower','limit','should','carefully','elderly'],
  'Unit 4-1':['must ','must not','mustn’t','shower','limit','should','carefully','take off','elderly','couldn’t','in the future'],
- 'Unit 4-2':['should','carefully','take off','nothing','in the future','plate','feeling','each other','couple','couldn’t','elderly','explain','listen to','kept','in the end','felt']
+ 'Unit 4-2':['should','carefully','take off','nothing','in the future','plate','feeling','each other','couple','couldn’t','elderly','explain','listen to','kept','in the end','felt'],
+ 'Unit 5-1':['both ','paper','thanks to','right-handed','tap','left-handed','staff','over here','be sure','regardless of','young','remove','wheelchair','professor','childhood','sign','center','presentation','barrier','baggage','ability','baby','disabled','the elderly','american','spread','accessible','than ','quiz','trivia','court','more ','skill','most ','curling','survey','strategy','in conclusion','better','percent','best','half','then','graph','according to','feedback','delivery','data','topic','slide','clear'],
+ 'Unit 5-2':['be sure','regardless of','young','remove','wheelchair','professor','childhood','sign','center','presentation','barrier','baggage','ability','baby','disabled','the elderly','american','spread','accessible','than ','quiz','trivia','court','more ','skill','most ','curling','survey','strategy','in conclusion','better','percent','best','half','then','graph','according to','feedback','delivery','data','topic','slide','clear'],
+ 'Unit 5-3':['sign','center','presentation','barrier','baggage','ability','baby','disabled','the elderly','american','spread','accessible','than ','quiz','trivia','court','more ','skill','most ','curling','survey','strategy','in conclusion','better','percent','best','half','then','graph','according to','feedback','delivery','data','topic','slide','clear'],
+ 'Unit 5-4':['than ','quiz','trivia','court','more ','skill','most ','curling','survey','strategy','in conclusion','better','percent','best','half','then','graph','according to','feedback','delivery','data','topic','slide','clear']
 };
 for(const [section,terms] of Object.entries(future)){const t=` ${text(section)} `;for(const term of terms)if(t.includes(term))errors.push(`NH2/${section}: future-vocab leak ${term.trim()}`)}
-const forbidden=['visited','showed','learned','gave','tried','used','pictures','languages','tourists','victims','badges','materials','flavors','toppings','variations','choice','saving','hands','eating'];
+const forbidden=['visited','showed','learned','gave','tried','used','pictures','languages','tourists','victims','badges','materials','flavors','toppings','variations','choice','saving','hands','eating','facilities','ways'];
 for(const [section,m] of Object.entries(data)){const t=(m.sentences||[]).join(' ').toLowerCase();for(const term of forbidden)if(new RegExp(`\\b${term}\\b`).test(t))errors.push(`NH2/${section}: unsupported form ${term}`)}
 console.log(`G2 NH AUDIT passages=${Object.keys(data).length}/${expected.length} alternate_questions=${bq}`);
-console.log('G2 NH CANONICAL v7=Unit0 + Unit1-2 four parts + Unit3 shared Part1,2 split into 3-1/3-2 + Unit4 ReadThink1,2 shared split into 4-3/4-4; v9 labels preserved');
+console.log('G2 NH CANONICAL v7=Unit0 + Unit1-2 four parts + Unit3 shared Part1,2 split into 3-1/3-2 + Unit4 ReadThink1,2 shared split into 4-3/4-4 + Unit5 ReadThink1,2 shared split into 5-3/5-4; v9 labels preserved');
 if(errors.length){console.error(`G2 NH AUDIT FAIL ${errors.length}`);for(const e of errors)console.error(`- ${e}`);process.exit(1)}
-console.log('G2 NH AUDIT PASS: Unit 0 through Unit 4 passages, slash rows, A/B questions, evidence links, genres, release flags, morphology guard, and chronological vocab gates are consistent.');
+console.log('G2 NH AUDIT PASS: Unit 0 through Unit 5 passages, slash rows, A/B questions, evidence links, genres, release flags, morphology guard, and chronological vocab gates are consistent.');
