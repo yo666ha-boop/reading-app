@@ -9,7 +9,7 @@ const audits=[
  'v10_g3_nh_u6_audit.js',
  'v10_g3_ss_p1_audit.js',
  'v10_g3_ss_p2_audit.js',
- 'v10_g3_ss_p3_audit.js',
+ 'v10_g3_ss_p3_audit2.js',
  'v10_g3_ss_p4_audit.js'
 ];
 let ok=true;let out=[];
