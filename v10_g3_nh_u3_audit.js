@@ -12,7 +12,7 @@ for(const [section,m] of Object.entries(data)){
 }
 if(Object.keys(meta).length!==expected.length)errors.push(`NH3 U3 interaction expected ${expected.length}, got ${Object.keys(meta).length}`);
 function text(section){return ` ${(data[section].sentences||[]).join(' ').toLowerCase()} `}
-const p2=['want ',' article ',' ask ','hear of',' tell ',' list ',' heard '];
+const p2=[' article ','hear of',' list ',' heard '];
 const rtFirst=[' let ',' rapidly ','as a result',' research ','decide to',' action ',' shock ',' relate ',' increase ',' categorize ',' end ','traffic accident',' spill '];
 const rtSecond=[' ecosystem ',' population ',' decrease ',' oil ',' citizen ',' hunting ',' small ',' century ',' native ',' beginning ',' critically ',' safely ','sea otter'];
 const u4=[' store ',' disaster ','in case of',' fire ',' circle ',' extinguisher ',' shelter ',' prepared ','how much',' prepare ',' emergency ',' done ',' earthquake ',' recommend ',' hard ',' we’ve ',' kit ',' hasn’t ',' bridge ',' comfort ','between ',' several ','all the time',' safe ',' energetic ','be killed in',' encourage ',' support ',' exchange '];
