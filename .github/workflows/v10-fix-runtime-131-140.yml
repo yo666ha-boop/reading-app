@@ -1,0 +1,42 @@
+name: fix v10 runtime 131-140 syntax
+
+on:
+  push:
+    branches: [v10-rebuild]
+    paths:
+      - '.github/workflows/v10-fix-runtime-131-140.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Repair exact missing parenthesis
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          const f='v10_semantic_runtime_repairs_131_140.js';
+          let s=fs.readFileSync(f,'utf8');
+          const bad="z.prompt.replace(/^\\d+\\.\\s*/,''}))};}window.V10_INTERACTION_META_SEMANTIC_REPAIRS_131_140=meta;})();";
+          const good="z.prompt.replace(/^\\d+\\.\\s*/,''})))};}window.V10_INTERACTION_META_SEMANTIC_REPAIRS_131_140=meta;})();";
+          if(!s.includes(bad)) throw new Error('expected malformed suffix not found');
+          s=s.replace(bad,good);
+          fs.writeFileSync(f,s);
+          NODE
+          node --check v10_semantic_runtime_repairs_131_140.js
+      - name: Commit syntax repair
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add v10_semantic_runtime_repairs_131_140.js
+          git commit -m "Fix runtime repair 131-140 syntax" || exit 0
+          git push
