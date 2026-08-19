@@ -15,7 +15,8 @@ window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
   ['v10_semantic_runtime_repairs_001_010.js',()=>window.V10_INTERACTION_META_SEMANTIC_REPAIRS],
   ['v10_semantic_runtime_repairs_011_020.js',()=>window.V10_INTERACTION_META_SEMANTIC_REPAIRS_011_020],
   ['v10_semantic_runtime_repairs_021_030.js',()=>window.V10_INTERACTION_META_SEMANTIC_REPAIRS_021_030],
-  ['v10_semantic_runtime_repairs_031_040.js',()=>window.V10_INTERACTION_META_SEMANTIC_REPAIRS_031_040]
+  ['v10_semantic_runtime_repairs_031_040.js',()=>window.V10_INTERACTION_META_SEMANTIC_REPAIRS_031_040],
+  ['v10_semantic_runtime_repairs_041_050.js',()=>window.V10_INTERACTION_META_SEMANTIC_REPAIRS_041_050]
  ];
  let i=0;
  const next=()=>{
