@@ -1,11 +1,11 @@
 V10 FINAL RELEASE VALIDATION
-head=6242342aee4af6596585439fa9eb2bc29887e619
+head=2ef13831bebabe464523ea8b55f1dbd369694ee4
 === v10_semantic_human_audit.txt ===
 V10 SEMANTIC HUMAN AUDIT
 status=HOLD
 required_passages=168
 sentence_review_complete=168
-rewrite_blueprint_complete=70
+rewrite_blueprint_complete=80
 implementation_pushed_through=70
 prose_repaired=20
 translation_synchronized=20
@@ -14,7 +14,7 @@ A_question_sets_synchronized=20
 B_question_sets_synchronized=20
 rendered_repair_verified=20
 human_meaning_approved=20
-phase=VERIFY_RENDERED_REPAIRS_021_070_THEN_CONTINUE_071
+phase=IMPLEMENT_SYNC_071_080_THEN_CONTINUE_081
 
 PURPOSE
 Structural, vocabulary, and browser tests can pass even when a passage is unnatural or semantically incoherent. V10 must not be released until every one of the 168 passages has been read as teaching material, the final English has been deliberately planned before editing, all prose problems have been repaired, and all dependent translations/slashes/questions have been synchronized.
@@ -38,37 +38,35 @@ REPAIR METHOD — REQUIRED FOR EVERY BATCH
 
 COMPLETED BEFORE THIS RUN
 - 001-020 planned, implemented, synchronized and rendered-verified.
-- 021-050 planned and synchronized runtime repair batches created/loaded, but their generated semantic_passages dump remains stale and no durable regression report is present.
+- 021-070 planning and synchronized implementation pushed; verification remains conservative because generated semantic dump/regression report has not refreshed.
 
 COMPLETED THIS RUN
-- Reconfirmed v10_semantic_batch_regression_report.txt is still absent, so verified counters were not increased without evidence.
-- Attempted an independent local branch checkout for direct Node regression, but the execution environment could not resolve github.com; treated as verification infrastructure unavailable rather than as a content failure.
-- Read sentence-review findings and current rendered passages 051-060.
-- Created rewrite_blueprints/v10_rewrite_blueprint_051_060.md before implementation.
-- Created v10_semantic_runtime_repairs_051_060.js with synchronized final prose, natural translation, slash rows, A questions/answers/evidence/evidenceJp/reasons and B metadata; loaded it through v10_interaction_metadata.js.
-- Read sentence-review findings and current rendered passages 061-070.
-- Created and vocabulary-tightened rewrite_blueprints/v10_rewrite_blueprint_061_070.md before implementation.
-- Created v10_semantic_runtime_repairs_061_070.js with synchronized New Horizon 061-069 and Sunshine G2 passage 070; loaded it through v10_interaction_metadata.js.
-- Planning and implementation are now pushed through passage 070.
+- Re-read the durable audit checkpoint and confirmed the true current point was planning/implementation through 070, not the older 021 checkpoint.
+- Confirmed v10_semantic_batch_regression_report.txt is still absent; did not inflate rendered/verified counters.
+- Read sentence_review_batches/v10_sentence_review_071_080.txt and current semantic_passages/v10_semantic_071.txt through v10_semantic_080.txt.
+- Created rewrite_blueprints/v10_rewrite_blueprint_071_080.md before any effective-data edit.
+- Designed all ten final English passages 071-080 to remove unclear speakers, vocabulary stitching, abstract slogan chains, duplicated eating/fundraising logic, undefined charity roles, nonexistent story references, and must/mustn’t drill inventories.
 
 CURRENT STAGE
-- Final English planning complete through passage 070.
-- Synchronized implementation pushed through passage 070.
-- Last genuinely rendered/regression-verified passage remains 020 because the semantic dump/regression workflow has not refreshed the runtime-loaded repairs.
+- Final English planning complete through passage 080.
+- Synchronized implementation remains pushed through passage 070.
+- Last genuinely rendered/regression-verified passage remains 020 because the semantic dump/regression workflow has not refreshed runtime-loaded repairs.
 - main remains untouched and release status stays HOLD.
 
 REMAINING WORK
-- Highest priority whenever verification becomes available: re-render effective passages 021-070, run stage2 DOM + full 168 coverage/B-set regression, and repair the first concrete failure before increasing verified counters.
-- Do not wait idly for that infrastructure: continue passage order with 071-080 blueprint first, then synchronized implementation, then 081-090, etc., while keeping verified counters conservative.
+- Implement and synchronize passages 071-080 from the completed blueprint: prose, natural full translation, slash rows, A and B question sets with evidence/evidenceJp/reasons, then load the repair batch.
+- Re-render/verify 021 onward as soon as verification infrastructure produces a durable report; repair the first concrete failure before increasing verified counters.
+- Continue 081-090 blueprint first, then implementation, and continue without stopping through 168.
 - After 168/168 planning/implementation: full vocabulary/grammar/coverage/browser/print regressions and a final semantic read-through.
 
 NEXT START
-1. Check again whether v10_semantic_batch_regression_report.txt or a refreshed semantic_passages dump exists.
-2. If it exists, verify 021 onward and advance counters only through the last proven-good passage.
-3. If it is still unavailable, continue from sentence_review_batches/v10_sentence_review_071_080.txt: inspect passages 071-080, create rewrite_blueprints/v10_rewrite_blueprint_071_080.md first, then implement/synchronize v10_semantic_runtime_repairs_071_080.js and load it.
+1. Create v10_semantic_runtime_repairs_071_080.js from rewrite_blueprints/v10_rewrite_blueprint_071_080.md.
+2. Synchronize natural Japanese translation, slash rows, A and B questions/answers/evidence/evidenceJp/reasons for every passage 071-080.
+3. Load the batch from v10_interaction_metadata.js.
+4. If verification report remains unavailable, immediately continue with sentence_review_batches/v10_sentence_review_081_090.txt and blueprint 081-090 rather than waiting.
 
 NEXT ENGINEERING STAGE
-Continue 071-080, then subsequent ten-passage batches without stopping at a completed batch. Preserve status=HOLD and do not touch main.
+Implement/synchronize 071-080, then continue 081 onward. Preserve status=HOLD and do not touch main.
 
 RELEASE CONDITION
 Keep HOLD until all 168 are planned/repaired/synchronized and genuinely re-rendered/verified, technical regression gates pass, and the two unavailable sample PDFs are recovered/used or that blocker is explicitly resolved by the user.
