@@ -45,8 +45,9 @@ jobs:
           node v10_g3_nh_u4_audit.js >> v10_audit_report.txt 2>&1; code12=$?
           node v10_g3_nh_u5_audit.js >> v10_audit_report.txt 2>&1; code13=$?
           node v10_g3_nh_u6_audit.js >> v10_audit_report.txt 2>&1; code14=$?
+          node v10_g3_ss_p1_audit.js >> v10_audit_report.txt 2>&1; code15=$?
           code=0
-          if [ "$code1" -ne 0 ] || [ "$code2" -ne 0 ] || [ "$code3" -ne 0 ] || [ "$code4" -ne 0 ] || [ "$code5" -ne 0 ] || [ "$code6" -ne 0 ] || [ "$code7" -ne 0 ] || [ "$code8" -ne 0 ] || [ "$code9" -ne 0 ] || [ "$code10" -ne 0 ] || [ "$code11" -ne 0 ] || [ "$code12" -ne 0 ] || [ "$code13" -ne 0 ] || [ "$code14" -ne 0 ]; then code=1; fi
+          if [ "$code1" -ne 0 ] || [ "$code2" -ne 0 ] || [ "$code3" -ne 0 ] || [ "$code4" -ne 0 ] || [ "$code5" -ne 0 ] || [ "$code6" -ne 0 ] || [ "$code7" -ne 0 ] || [ "$code8" -ne 0 ] || [ "$code9" -ne 0 ] || [ "$code10" -ne 0 ] || [ "$code11" -ne 0 ] || [ "$code12" -ne 0 ] || [ "$code13" -ne 0 ] || [ "$code14" -ne 0 ] || [ "$code15" -ne 0 ]; then code=1; fi
           cat v10_audit_report.txt
           echo "code=$code" >> "$GITHUB_OUTPUT"
           exit 0
