@@ -28,6 +28,7 @@ jobs:
       - name: Repair generated runtime-map parenthesis defects and syntax-check every repair
         shell: bash
         run: |
+          node v10_one_time_fix_131_140.js
           node <<'NODE'
           const fs=require('fs');
           const files=fs.readdirSync('.').filter(f=>/^v10_semantic_runtime_repairs_\d{3}_\d{3}\.js$/.test(f));
