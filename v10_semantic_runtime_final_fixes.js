@@ -31,7 +31,7 @@
     u42.sentences.push('We are happy after practice.');
     u42.fullTranslation=String(u42.fullTranslation||'')+' 練習のあと、私たちはうれしいです。';
     u42.slashRows=u42.slashRows||[];
-    u42.slashRows.push({en:'We are happy / after practice.',jp:'私たちはうれしいです / 練習のあと'});
+    u42.slashRows.push({en:'We are happy after practice.',jp:'練習のあと、私たちはうれしいです。'});
     u42.auditNote=String(u42.auditNote||'')+' 7文で止まっていたため、同じバスケットボール練習場面の自然な終結文を1文追加。';
   }
 
@@ -60,13 +60,11 @@
   // ----- Meaning-chunk slash reading -----
   const wc=s=>String(s).trim().split(/\s+/).filter(Boolean).length;
   const clean=s=>String(s||'').replace(/\s+/g,' ').trim();
-  const startsInitial=s=>/^(When|While|After|Before|If|Because|Although|Since|As|During|At|In|On|Near|From|For|With|Without|By|Today|Yesterday|Tomorrow|Recently|First|Then|Next|Finally|At first|In the end)\b/i.test(s);
+  const startsInitial=s=>/^(When|While|After|Before|If|Because|Although|Since|As|During|At|In|On|Near|From|For|With|Without|By|At first|In the end)\b/i.test(s);
 
-  function splitOne(seg,re,mode){
+  function splitOne(seg,re){
     const m=re.exec(seg);if(!m)return null;
-    let pos=m.index;
-    if(mode==='after')pos=m.index+m[0].length;
-    const a=clean(seg.slice(0,pos)),b=clean(seg.slice(pos));
+    const a=clean(seg.slice(0,m.index)),b=clean(seg.slice(m.index));
     if(wc(a)<2||wc(b)<2)return null;
     return [a,b];
   }
@@ -78,20 +76,17 @@
     const comma=s.indexOf(', ');
     if(comma>0){
       const left=s.slice(0,comma+1),right=s.slice(comma+2);
-      if(startsInitial(left)&&wc(left)<=7&&wc(right)>=3)parts=[left, right];
+      // Never create a one-word chunk such as "Today, / ..." or "First, / ...".
+      if(startsInitial(left)&&wc(left)>=2&&wc(left)<=7&&wc(right)>=3)parts=[left,right];
       else if(/,\s+(but|so|and|yet)\s+/i.test(s)){
         const m=/,\s+(but|so|and|yet)\s+/i.exec(s);parts=[clean(s.slice(0,m.index+1)),clean(s.slice(m.index+2))];
       }
     }
     if(parts.length===1){
-      const patterns=[
-        /\s+(because|although|while|when|if|since)\s+/i,
-        /\s+that\s+/i
-      ];
-      for(const re of patterns){const z=splitOne(s,re,'before');if(z&&wc(z[0])>=3&&wc(z[1])>=3){parts=z;break;}}
+      for(const re of [/\s+(because|although|while|when|if|since)\s+/i,/\s+that\s+/i]){
+        const z=splitOne(s,re);if(z&&wc(z[0])>=3&&wc(z[1])>=3){parts=z;break;}
+      }
     }
-    // A long trailing time/place phrase is a useful forward-reading unit, but never cut
-    // immediately after be / an auxiliary / a determiner / a transitive core verb.
     if(parts.length<3){
       const idx=parts.length-1,seg=parts[idx];
       if(wc(seg)>=8){
@@ -122,20 +117,16 @@
   function oldJpParts(s){return String(s||'').split(/\s*\/\s*/).map(x=>clean(x.replace(/〜/g,''))).filter(Boolean);}
   function slashJapanese(natural,old,count){
     natural=clean(natural);if(count<=1)return natural||stripOldJp(old);
-    // Prefer natural Japanese punctuation because it preserves the supplied translation.
     const comma=[];for(let i=0;i<natural.length;i++)if(natural[i]==='、')comma.push(i);
     if(comma.length>=count-1){
       const cuts=comma.slice(0,count-1),arr=[];let from=0;
       for(const p of cuts){arr.push(natural.slice(from,p+1).trim());from=p+1;}
       arr.push(natural.slice(from).trim());if(arr.every(Boolean))return arr.join(' / ');
     }
-    // Existing rows were already in forward order. Reuse them only when their number of
-    // units matches the newly approved English meaning chunks; otherwise merge extras.
     let op=oldJpParts(old);
     if(op.length===count)return op.join(' / ');
     while(op.length>count){const b=op.pop(),a=op.pop();op.push(clean(a+' '+b));}
     if(op.length===count)return op.join(' / ');
-    // Last resort: keep the Japanese natural rather than invent an unnatural fake division.
     return natural||stripOldJp(old);
   }
 
@@ -146,13 +137,19 @@
       const old=Array.isArray(p.slashRows)?p.slashRows:[];
       const jp=japaneseSentences(p.fullTranslation);
       p.slashRows=p.sentences.map((s,i)=>{
-        const en=slashEnglish(s),n=en.split(' / ').length;
         const natural=jp.length===p.sentences.length?jp[i]:'';
-        const j=slashJapanese(natural,old[i]&&old[i].jp,n);
+        let en=slashEnglish(s),n=en.split(' / ').length;
+        let j=slashJapanese(natural,old[i]&&old[i].jp,n);
+        // Do not invent a slash boundary unless the Japanese forward-reading line can
+        // represent the same number of meaning units. Conservative unsplit is preferable
+        // to a grammatically or semantically false split.
+        if(n>1&&String(j).split(/\s*\/\s*/).filter(Boolean).length!==n){
+          en=clean(s);j=natural||stripOldJp(old[i]&&old[i].jp);n=1;
+        }
         rows++;return {en,jp:j};
       });
       p.slashReadingVersion='meaning-chunks-v2';
-      p.auditNote=String(p.auditNote||'')+' スラッシュは文法記号ではなく前から意味を取れる自然な意味単位で再構成。短い基本文は無理に分割せず、be+補語・助動詞+動詞・動詞+短い目的語を分断しない。';
+      p.auditNote=String(p.auditNote||'')+' スラッシュは文法記号ではなく前から意味を取れる自然な意味単位で再構成。短い基本文は無理に分割せず、be+補語・助動詞+動詞・動詞+短い目的語を分断しない。日本語側が同じ意味単位に対応できない場合は無理に切らない。';
       rebuilt++;
     }
   }
