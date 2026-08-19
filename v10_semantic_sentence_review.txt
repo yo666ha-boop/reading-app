@@ -1,83 +1,125 @@
 V10 SENTENCE-FIRST HUMAN REVIEW
 status=IN_PROGRESS
 scope=168 rendered passages
-reviewed_passages=20
+reviewed_passages=50
 sentence_review_only=true
 questions_slash_review_deferred=true
 
 RULE
 First judge the English passage itself as reading material. Do not let vocabulary-gate PASS, grammar-gate PASS, slash consistency, or question consistency override an unnatural passage. Questions/slashes are reviewed only after the passage is accepted or rewritten.
 
-PASSAGE 001 | 中1 Sunshine Get Ready 2 | REWRITE
-Current flow: English book -> dog -> cat -> notebook -> can read.
-Problems: speaker roles are invisible; “This is a dog / This is a cat” does not clearly mean pictures in the book; the dialogue is a sequence of target expressions rather than a natural mini-scene; repeated Great! is filler. Keep the English-book scene, but rebuild it as one clear classroom/book-sharing exchange.
+PASSAGE 001-020
+Previously reviewed. Verdict totals: REWRITE_MAJOR=9, REWRITE=6, LIGHT_REWRITE=5, PASS_AS_IS=0. Detailed reasons preserved in prior revision history.
 
-PASSAGE 002 | 中1 Sunshine Get Ready 3 | REWRITE
-Problems: “Do you have your English book? / Yes, I do. / I have my English book.” is redundant drill English; “Can you read English?” then “I like English, too. / Really?” does not form a natural ending. Rebuild as one short conversation about an English class/book.
+PASSAGE 021 | 中1 Sunshine PROGRAM 6-1 | REWRITE
+Problems: “This is a detective / That is a pirate / This is a monster” reads like pointing at flashcards, not discussing a story. The first speaker gives all three preferences, then the unexplained “How about...?” exchange repeats the same preferences with unclear speaker roles. Rebuild as two friends comparing favorite characters, with identifiable turns and less repetition.
 
-PASSAGE 003 | 中1 Sunshine Get Ready 4 | LIGHT_REWRITE
-Strength: basketball topic is consistent.
-Problems: it changes from first-person report to an unlabeled Q&A and then back to first-person; “I enjoy basketball.” is a weak final sentence after “Let’s play ... / Great!”. Keep one speaker format or clearly coherent dialogue and give it a natural ending.
+PASSAGE 022 | 中1 Sunshine PROGRAM 6-2 | REWRITE
+Strength: park/Saturday is one setting.
+Problems: “I read there / ride my bicycle there / friend and I go together / We practice hard there” never says what they practice, so the activity sequence feels assembled rather than developed. “always ... on Saturday” and “every Saturday” duplicate each other. Rebuild around one clear Saturday purpose at the park, with reading/riding only if they support that purpose.
 
-PASSAGE 004 | 中1 Sunshine Get Ready 5 | REWRITE
-Problems: “Do you like the zoo?” asks about the place, then “What do you like?” abruptly means animals; animal names are then listed through repeated like-patterns. It reads as vocabulary practice, not a coherent conversation. Rebuild around choosing a favorite animal at the zoo.
+PASSAGE 023 | 中1 Sunshine PROGRAM 6-3 | LIGHT_REWRITE
+Strength: Kenya school commute is a coherent explanatory topic with a sensible general order.
+Problems: “They want to be safe” is a vague inference rather than a concrete part of the commute; “At school, the children are safe” oversimplifies; “The walk is amazing” is a weak/odd evaluation after describing danger. Keep the topic but make the description factual and end with a more natural reflection.
 
-PASSAGE 005 | 中1 Sunshine Get Ready 6 | REWRITE_MAJOR
-Problems: lunch/pizza is disconnected from the zoo; five consecutive “I saw ...” sentences are a vocabulary list; present-tense likes/Q&A are appended after the past-tense zoo visit without a natural conversational frame. Rebuild as a single zoo-visit diary/story with a beginning, one or two notable animals/events, and an ending.
+PASSAGE 024 | 中1 Sunshine PROGRAM 7-1 | REWRITE_MAJOR
+Problems: college/research is followed by a map-like inventory (library, museum, shopping mall, house), then hunger/restaurant/food, then “usually go home after dinner.” The “house” has no role; research has no connection to the outing; “usually” conflicts with what reads like one specific outing. This is several vocabulary clusters stitched together. Rebuild as one visit to Dad’s college, perhaps campus tour -> nearby museum/library -> meal -> home.
 
-PASSAGE 006 | 中1 Sunshine PROGRAM 1-1 | REWRITE
-Problems: self-introduction is a list of independent facts: not shy/friendly -> teacher -> music/trumpet -> Wednesday -> school -> basketball. The facts are grammatical but do not develop as a reading passage. Rebuild around “my school life” or “music club” and keep only facts that support that one topic.
+PASSAGE 025 | 中1 Sunshine PROGRAM 7-2 | LIGHT_REWRITE
+Strength: trip to cake shop by bus has a clear beginning, middle, and return home.
+Problems: “We come to the shop” is unnatural here; “We have cake together” followed by “I have a little cake” repeats the eating action; being “full” after only “a little cake” is possible but narratively thin. Tighten arrival/eating sequence and give the outing a more natural ending.
 
-PASSAGE 007 | 中1 Sunshine PROGRAM 1-2 | REWRITE_MAJOR
-Problems: “I’m from Australia. I’m not from Japan. I’m not from the U.S.” is obvious negative-form drilling, not natural communication; teacher/Japan/friendly/school facts are appended without development. Rebuild as an Australian student introducing themself to a Japanese class; one country comparison/reference is enough.
+PASSAGE 026 | 中1 Sunshine PROGRAM 7-3 | REWRITE_MAJOR
+Problems: quokka -> koala -> bamboo -> turtle -> quokka -> friend guide -> scenery is a zoo vocabulary tour, not a developed passage. “The koala is next to a bamboo grove” is also an odd zoological association, and “I want to come here someday” conflicts with the speaker already being at/seeing this zoo (“Look at the quokka,” “My friend can show me around”). Rebuild as an actual zoo visit centered on seeing the quokka, with consistent viewpoint/time.
 
-PASSAGE 008 | 中1 Sunshine PROGRAM 1-3 | REWRITE_MAJOR
-Problems: city -> new class -> quiet/cheerful -> math/science/Japanese -> movies -> teacher -> want to be friendly. This is vocabulary dumping inside a self-introduction. “I’m quiet” and “I want to be friendly” could support a new-student story, but the unrelated subject/movie list should not dominate. Rebuild around the first day in a new class.
+PASSAGE 027 | 中1 Sunshine PROGRAM 8-1 | REWRITE_MAJOR
+Problems: five consecutive “We need a ...” fruit sentences are pure vocabulary dumping. “Happy New Year!” has no meaningful connection to why these particular fruits are needed; “I am happy / My dad is happy” is unsupported filler. Rebuild around a New Year meal/party shopping purpose and mention only a few needed items naturally.
 
-PASSAGE 009 | 中1 Sunshine PROGRAM 2-1 | REWRITE_MAJOR
-Problems: after-school bicycle ride -> go home -> read/watch tennis -> “I don’t watch tennis after school.” The last statement conflicts with the preceding after-school/home timeline if home activities occur after school. Tennis is also unrelated to the bicycle/town topic. Rebuild as one after-school bicycle routine; remove contradictory/unrelated drill sentences.
+PASSAGE 028 | 中1 Sunshine PROGRAM 8-2 | REWRITE
+Strength: preparing for a countdown is one event.
+Problems: sunny weather is irrelevant to an at-home countdown; “I feel happy / friend is happy / still busy” is list-like; “prepare a cake” is less natural than make/buy/get a cake depending allowed vocabulary; “The countdown is great / Today is a great day” is a generic doubled ending. Rebuild as preparation -> music/cake -> countdown -> natural reaction.
 
-PASSAGE 010 | 中1 Sunshine PROGRAM 2-2 | REWRITE_MAJOR
-Problems: time sequence is disordered: before dinner -> after dinner -> weekend bicycle ride -> before dinner again -> after dinner again. Study, tennis, bicycle, town, cleaning are mixed without a single narrative center. Rebuild chronologically, either as a weekend day routine or a study routine, not both as separate vocabulary clusters.
+PASSAGE 029 | 中1 Sunshine PROGRAM 8-3 | REWRITE_MAJOR
+Problems: midnight market starts plausibly, then tuna/oyster price, French pastry chef, a “tiny figure” of unexplained origin/ownership that the speaker simply puts in a bag, family preference, and “January is great.” The figure action can imply taking someone else’s object. “January is great” is disconnected. This is severe vocabulary stitching. Rebuild around one night-market experience; any souvenir/figure must be clearly bought/given/owned.
 
-PASSAGE 011 | 中1 Sunshine PROGRAM 2-3 | REWRITE_MAJOR
-Problems: “I have a question. / Sure. / This pencil is for you.” contains no actual question and is semantically broken. The pencil/two/break/tomorrow sequence looks like words forced into the dialogue. Rebuild as two students drawing together during a break; if “question” is kept, the question must actually follow.
+PASSAGE 030 | 中1 Sunshine PROGRAM 9-1 | REWRITE_MAJOR
+Problems: Finland holiday is a sequence of generic allowed past-tense actions (relaxed, walked, tennis, soccer game, book, dinner, talked), with no Finland-specific experience or event. “I relaxed” is repeated, and “liked Finland / liked the trip” repeats the conclusion. Rebuild as one memorable holiday day/experience with chronology and a concrete focal event.
 
-PASSAGE 012 | 中1 Sunshine PROGRAM 3-1 | REWRITE
-Problems: ski family list switches abruptly to mother/grandparents dancing. It is a can/can’t inventory rather than a winter-family passage. Rebuild around a winter family outing or around family talents, but do not mix two unrelated ability lists.
+PASSAGE 031 | 中1 Sunshine PROGRAM 9-2 | REWRITE
+Strength: friend visits house, dog/photo/walk can form one afternoon scene.
+Problems: koala book is unrelated to dog/photo/walk; after returning, “I read the book again / friend relaxed / talked about picture / relaxed a lot / friend stayed” becomes repetitive filler. Rebuild around friend photographing the dog and taking it for a walk, with one natural indoor activity before/after.
 
-PASSAGE 013 | 中1 Sunshine PROGRAM 3-2 | REWRITE_MAJOR
-Problems: French -> guitar -> skating -> magic trick -> after-school practice -> guitar -> skating. This is a direct vocabulary/Can-you checklist. Rebuild around planning one after-school activity; only abilities relevant to the plan should remain.
+PASSAGE 032 | 中1 Sunshine PROGRAM 9-3 | REWRITE_MAJOR
+Problems: a past-tense diary suddenly asks itself “Did we play tennis? No” and “Did I sleep there? No,” which are obvious grammar drills rather than narration or natural dialogue. Remove self-questioning; narrate what actually happened at the friend’s house in chronological order.
 
-PASSAGE 014 | 中1 Sunshine PROGRAM 3-3 | LIGHT_REWRITE
-Strength: rescue robot is one coherent topic and its abilities mostly support that topic.
-Problems: “people in a tree” is awkward; “Good luck!” has no clear addressee; “The robot is in our show” and the closing “Our show is great” need a clearer school-show context. Keep the robot passage but improve the setup and ending.
+PASSAGE 033 | 中1 Sunshine PROGRAM 9-4 | LIGHT_REWRITE
+Strength: Finland/reindeer encounter has a genuine event and chronology.
+Problems: opening “How’s it going? Pretty good.” is disconnected from the first-person trip narrative unless framed as a conversation; “went outside once” is oddly quantified; watching a reindeer until 10 p.m. needs a little plausibility/context. Keep the reindeer story, remove or integrate the greeting, and tighten details.
 
-PASSAGE 015 | 中1 Sunshine PROGRAM 4-1 | LIGHT_REWRITE
-Strength: one picture/animal-identification scene.
-Problems: “Look at that ant.” immediately before “Is that a butterfly?” is logically odd because the speaker has already identified it as an ant. The sequence should be “Look at that. Is that a butterfly? ... No, that is an ant.” Rebuild that local exchange; the rest of the scene can stay close to the current structure.
+PASSAGE 034 | 中1 Sunshine PROGRAM 10-1 | REWRITE_MAJOR
+Problems: Grandma “had an awesome idea,” but the idea is never stated; immediately “We finished my homework together,” so the central event is missing. “We were at home after that” repeats known location; “Grandma was fine / I was fine / We were happy” is filler. Rebuild around the actual idea/help that changes the tired/sleepy homework situation.
 
-PASSAGE 016 | 中1 Sunshine PROGRAM 4-2 | REWRITE
-Problems: one unexplained picture contains a runner/classmate, a famous street singer, and the speaker’s teacher on a court. These people have no relationship, so the passage is another noun-list hidden inside a picture description. Rebuild the picture around one event/place where the people logically belong together, or reduce it to one or two related people.
+PASSAGE 035 | 中1 Sunshine PROGRAM 10-2 | LIGHT_REWRITE
+Strength: theater/movie outing is coherent and chronological.
+Problems: “The theater wasn’t busy / quiet” is fine but “I wasn’t tired / friend wasn’t sleepy” is arbitrary negative-form practice unrelated to the movie; “My house wasn’t far” is another grammar-target fact without narrative purpose; “The theater was great” is less natural than evaluating the movie/evening. Keep the outing and remove forced negatives.
 
-PASSAGE 017 | 中1 Sunshine PROGRAM 4-3 | LIGHT_REWRITE
-Strength: fruit guessing game is a single scene.
-Problems: speaker turns are not identifiable, so “I got it!” is ambiguous; “I have a question.” is a weak opening for a guessing game; after two guesses the sudden offer “Would you like a banana?” needs a small transition. Keep the game but make the conversational roles/flow natural.
+PASSAGE 036 | 中1 Sunshine PROGRAM 10-3 | REWRITE
+Problems: comic -> friend calls -> comic discussion is coherent, but then internet surfing -> English textbook -> textbook location -> call friend again -> homework is a second vocabulary cluster. “My textbook was on my desk” has no narrative function. Rebuild around the phone call leading naturally from comic discussion to shared homework/study, or choose one focus.
 
-PASSAGE 018 | 中1 Sunshine PROGRAM 5-1 | REWRITE_MAJOR
-Problems: pajama/home-economics topic is interrupted by “Does he like curry and rice?” with no relation to the design; repeated Does he like...? / Yes, he does. is drill structure; “Does he like this design? Yes” followed later by “He doesn’t like this long design” is ambiguous because it is not clear whether they are two designs. Rebuild around choosing/making a pajama design only.
+PASSAGE 037 | 中1 Sunshine PROGRAM 10-4 | REWRITE
+Strength: broken-sleigh event gives a real problem and resolution structure.
+Problems: after the breakdown, a raccoon dog appears without consequence; a quilt “in a closet” in an unexplained small house raises ownership/access questions; “We had hot water” is unnatural as the key warming action. Keep sleigh accident -> seek shelter/help -> warm/safe, but remove decorative vocabulary that does not serve the rescue.
 
-PASSAGE 019 | 中1 Sunshine PROGRAM 5-2 | LIGHT_REWRITE
-Strength: ice-hockey player/photo is a consistent topic.
-Problems: “Does he like his clothes?” is not a natural fact to ask about a player; “His clothes are yellow” should be framed as uniform/team colors if vocabulary permits; the ending “This picture is great” is generic. Keep the player/team scene and remove the forced clothes-like question.
+PASSAGE 038 | 中1 Sunshine Step 6 / Our Project 3 / Power-Up 6 | REWRITE_MAJOR
+Problems: letter begins with school performance, then famous street/view/card/book location/hobby/music/miss you. The recipient Anna is never connected to the event; “My hobby is music” is an unrelated self-introduction fact; “card from the street” is unclear; “I miss you” arrives without relationship/context. Rebuild as an actual letter to Anna about one event, with a reason for writing and a coherent closing.
 
-PASSAGE 020 | 中1 Sunshine PROGRAM 5-3 | REWRITE_MAJOR
-Problems: charity event is at the elementary school, but the passage then says “We spend time at the hospital” without explaining how the event connects to the visit; “We talk about the children” is vague; proud/support statements are repeated; “We can support all the children” is an unjustified overclaim. Rebuild chronologically: school charity activity -> what they collect/do -> hospital/children connection -> reflection.
+PASSAGE 039 | 中1 New Horizon Unit 0 | REWRITE
+Problems: basic first-meeting dialogue is plausible, but “Yes, I do. I like tennis.” redundantly repeats the answer, and identical “Nice to meet you” lines plus final “Good!” make it feel like a pattern drill. Keep first meeting -> shared tennis interest, but make the exchange shorter and more conversational.
 
-SUMMARY 001-020
-REWRITE_MAJOR=9
-REWRITE=6
-LIGHT_REWRITE=5
+PASSAGE 040 | 中1 New Horizon Unit 1-1 | REWRITE
+Problems: self-introduction shifts into an unlabeled interviewer asking “Do you like Japanese sweets?” then back to Leonardo’s tennis-club wish; speaker roles are unclear. Japanese sweets and tennis can both be interests, but the question/answer format interrupts the introduction. Rebuild either as Leonardo’s continuous self-introduction or a clearly two-speaker welcome conversation.
+
+PASSAGE 041 | 中1 New Horizon Unit 1-2 | LIGHT_REWRITE
+Strength: rugby interest -> does not play rugby -> shared soccer participation is a natural contrast/discovery.
+Problems: “No, I don’t. I don’t play rugby.” is redundant drill repetition; two “Great!” reactions are generic. Remove repeated negative and give the shared-soccer discovery a more natural reaction/ending.
+
+PASSAGE 042 | 中1 New Horizon Unit 1-3 | LIGHT_REWRITE
+Strength: comics/anime/art club connect naturally, and the second speaker contrasts with swimming lessons.
+Problems: first speaker’s identity/turns are not marked, and “Are you an anime fan?” is somewhat redundant after comics but acceptable. “Great!” is generic. Keep structure, clarify turns and end naturally.
+
+PASSAGE 043 | 中1 New Horizon Unit 2-1 | REWRITE_MAJOR
+Problems: title promises “teacher and team,” but Ms. Brown’s introduction and Leo/tennis-team introduction are unrelated. Both teacher and team are called “cool” with no supporting detail. This is two grammar/person-description clusters stitched together. Rebuild around one classroom introduction where Ms. Brown introduces Leo/the team for a reason, or choose one subject.
+
+PASSAGE 044 | 中1 New Horizon Unit 2-2 | LIGHT_REWRITE
+Strength: father/Chinese food and ability question form one coherent conversation.
+Problems: “I like Chinese food. Do you like Chinese food?” makes speaker roles unclear; “My father can. Really? Yes.” can work but needs identifiable turns. Keep the cooking topic and make the dialogue roles explicit/natural.
+
+PASSAGE 045 | 中1 New Horizon Unit 2-3 | LIGHT_REWRITE
+Strength: returning two lost classroom items is one clear scene.
+Problems: the entire Here you are / Thank you / You’re welcome sequence is repeated verbatim for the second item, making it drill-like; final “Great!” is unnecessary. Combine the return of the two items more naturally while preserving target expressions once.
+
+PASSAGE 046 | 中1 New Horizon Unit 3-1 | LIGHT_REWRITE
+Strength: one favorite comic character is discussed consistently.
+Problems: “Is she interesting? ... kind ... brave” then “Why ...? She’s interesting and cool” repeats interesting and shifts traits rather than developing the reason. “Great!” is generic. Consolidate the character description into a natural reason for liking her.
+
+PASSAGE 047 | 中1 New Horizon Unit 3-2 | REWRITE
+Problems: online English study is a coherent topic, but “My friend and I study English after school” repeats already stated information. Then “Do you walk after school?” abruptly introduces walking only to consume walk/too. Rebuild around the online study routine; walking can be a natural transition home only if connected.
+
+PASSAGE 048 | 中1 New Horizon Unit 3-3 | LIGHT_REWRITE
+Strength: tennis practice location/time/partner/goal is one coherent conversation.
+Problems: “Really? Yes.” after “I want to win” is a weak reaction; practice is repeated several times. Keep the scene, vary/compress repeated practice statements, and make the encouragement follow naturally.
+
+PASSAGE 049 | 中1 New Horizon Unit 4-1 | REWRITE_MAJOR
+Problems: puppy and cat are assigned national origins as if they were people, with no adoption/travel context; “Are they from New Zealand? No” is a grammar exercise rather than a plausible question. The speaker then wants to visit New Zealand solely because a puppy is “from” there. Rebuild around animals at a home/shelter/photo with a plausible New Zealand connection, or use people/items for origin practice.
+
+PASSAGE 050 | 中1 New Horizon Unit 4-2 | LIGHT_REWRITE
+Strength: favorite basketball -> practice time -> practice partner is a coherent short interview.
+Problems: “Do you practice ...? Yes” pattern repeats, and “Sounds great. Thank you.” is a weak close for ordinary practice information. Compress the repeated yes/no exchange and end with a goal/event/encouragement if vocabulary permits.
+
+SUMMARY 001-050
+REWRITE_MAJOR=19
+REWRITE=15
+LIGHT_REWRITE=16
 PASS_AS_IS=0
 
-Important finding: 20/20 passages need at least some prose-level correction. This confirms that prior structural/vocabulary audits were not sufficient for reading-material quality. Continue sentence-first review through 168 before doing the question/slash pass.
+Important finding: 50/50 passages need at least some prose-level correction. The dominant failure modes are vocabulary-list stitching, drill-like Q/A repetition, unclear speaker roles, unsupported generic endings, and facts inserted solely to exercise a grammar form. Continue sentence-first review from passage 051; do not rewrite prose or touch questions/slashes until all 168 have verdicts.
