@@ -1,0 +1,23 @@
+{
+  "project": "mikami-math-problem-bank",
+  "status": "BLOCKED_ON_LOCAL_ZIP_ACCESS",
+  "current_stage": "ZIP_INVENTORY",
+  "source_archives": [
+    {"name": "中学実力錬成データ.zip", "status": "PENDING"},
+    {"name": "スタンダードデータ.zip", "status": "PENDING"},
+    {"name": "winpassデータ.zip", "status": "PENDING"}
+  ],
+  "last_completed_batch": null,
+  "next_batch": "inventory-all-archives",
+  "counts": {
+    "files_discovered": 0,
+    "problems_extracted": 0,
+    "answers_extracted": 0,
+    "pairs_matched": 0,
+    "pairs_verified": 0,
+    "mismatches": 0,
+    "canonical_records": 0
+  },
+  "resume_rule": "Never restart completed batches. Resume from next_batch and append audit logs.",
+  "blocking_issue": "Local/container execution currently returns ClientResponseError before ZIP listing/extraction. Do not infer archive contents until direct access succeeds."
+}
