@@ -31,10 +31,10 @@ const wc=s=>norm(s).split(/\s+/).filter(Boolean).length;
    if(ep.length>1&&jpParts.length!==ep.length)errs.push(`${tag2}: EN/JP chunk count ${ep.length}/${jpParts.length}: ${en} || ${jp}`);
    for(const x of ep)if(wc(x)<2&&ep.length>1&&!/^(Yes|No|Really|Great|However|Then|Next|Finally)[,.!?]?$/i.test(x))errs.push(`${tag2}: one-word fragment: ${en}`);
    for(let k=0;k<ep.length-1;k++){
-     const left=ep[k],right=ep[k+1],lw=lastWord(left);
-     if(/^(?:am|is|are|was|were|be|been|being|can|could|will|would|shall|should|may|might|must)$/i.test(lw))errs.push(`${tag2}: core grammar split: ${en}`);
+     const left=ep[k],right=ep[k+1],lw=lastWord(left),closedClause=/,\s*$/.test(left);
+     if(/^(?:am|is|are|was|were|be|been|being|can|could|will|would|shall|should|may|might|must)$/i.test(lw)&&!closedClause)errs.push(`${tag2}: core grammar split: ${en}`);
      if(/^(?:a|an|the|my|your|his|her|our|their|this|these|those)$/i.test(lw))errs.push(`${tag2}: determiner split: ${en}`);
-     if(objectVerbs.has(lw)&&!prepStart.test(right))errs.push(`${tag2}: likely verb/object split: ${en}`);
+     if(objectVerbs.has(lw)&&!prepStart.test(right)&&!closedClause)errs.push(`${tag2}: likely verb/object split: ${en}`);
    }
    if(/\bmade\s*\/\s*from\b/i.test(en))errs.push(`${tag2}: participle phrase split: ${en}`);
    if(/\b(?:is|are|was|were|am)\s*\/\s*/i.test(en))errs.push(`${tag2}: be/complement split: ${en}`);
