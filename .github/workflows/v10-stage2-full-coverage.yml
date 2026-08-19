@@ -20,6 +20,10 @@ jobs:
         with:
           node-version: '20'
       - run: npm install --no-save --no-package-lock jsdom@24.1.3
+      - name: Repair runtime 131-140 and syntax-check semantic repairs
+        run: |
+          node v10_one_time_fix_131_140.js
+          for f in v10_semantic_runtime_repairs_[0-9][0-9][0-9]_[0-9][0-9][0-9].js; do node --check "$f"; done
       - name: Audit all 168 stage2 masters
         id: audit
         shell: bash
@@ -27,17 +31,20 @@ jobs:
           set +e
           node v10_stage2_full_coverage_test.js > v10_stage2_full_coverage_report.txt 2>&1
           code=$?
+          node v10_semantic_runtime_audit.js >> v10_stage2_full_coverage_report.txt 2>&1
+          code2=$?
+          if [ "$code2" -ne 0 ]; then code=1; fi
           cat v10_stage2_full_coverage_report.txt
           echo "code=$code" >> "$GITHUB_OUTPUT"
           exit 0
-      - name: Commit full coverage report
+      - name: Commit full coverage report and repaired runtime
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add v10_stage2_full_coverage_report.txt
+          git add v10_stage2_full_coverage_report.txt v10_semantic_runtime_repairs_131_140.js
           if ! git diff --cached --quiet; then
-            git commit -m "Update stage2 full coverage report [skip ci]"
+            git commit -m "Update 168 coverage and repair runtime 131-140 [skip ci]"
             git push
           fi
       - name: Fail when coverage audit fails
