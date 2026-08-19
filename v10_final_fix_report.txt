@@ -3,8 +3,5 @@ G3 SS P3 CANONICAL v7=PROGRAM3 3-1 / 3-2 / 3-3 exact source partitions; PROGRAM4
 G3 SS P3 AUDIT PASS: Program 3 passages, slash rows, A/B questions, evidence links, release flags, morphology guard, chronological partitions, and Program 4 future-vocab gate are consistent.
 SEMANTIC RUNTIME AUDIT total=168/168 runtime_repair_entries=168/168 A_questions=834 B_questions=672
 SEMANTIC RUNTIME AUDIT PASS: all 168 directly applied repairs have synchronized sentence/slash/A+B/evidence structures.
-STAGE2 DOM FAIL: Error: G3 Sunshine P7-3 render failed
-    at assert (/home/runner/work/reading-app/reading-app/v10_stage2_dom_test.js:2:90)
-    at /home/runner/work/reading-app/reading-app/v10_stage2_dom_test.js:23:317
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+STAGE2 DOM PASS: completed metadata/runtime load; G1/G2/G3 selection, genre fallback, final repaired titles, A/B switching, release gates, and print control behave correctly.
 STAGE2 FULL COVERAGE PASS (semantic runtime verified): 1|サンシャイン=38 / 1|ニューホライズン=31 / 2|サンシャイン=24 / 2|ニューホライズン=29 / 3|サンシャイン=21 / 3|ニューホライズン=25 / total=168 / B-sets=168
