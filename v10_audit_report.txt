@@ -8,7 +8,8 @@ INTERACTION_COVERAGE masters=69/69
 INTERACTION PASS: all 69 masters have reviewed genres and hand-authored B question sets with verbatim evidence links.
 STAGE2 DOM FAIL: Error: G1 Sunshine diary did not select GR6
     at assert (/home/runner/work/reading-app/reading-app/v10_stage2_dom_test.js:2:90)
-    at /home/runner/work/reading-app/reading-app/v10_stage2_dom_test.js:6:87
+    at /home/runner/work/reading-app/reading-app/v10_stage2_dom_test.js:7:129
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
 G2 AUDIT sunshine=24/24 alternate_questions=120
 G2 CANONICAL v7_structure=PROGRAM1-8_x_3parts old_v9_x4=excluded
 G2 AUDIT PASS: Sunshine Program 1 through 8 passages, slash rows, A/B questions, evidence links, genres, release flags, and v7 canonical 3-part coverage are consistent.
@@ -42,13 +43,380 @@ G3 NH U6 AUDIT PASS: Unit 6 passages, slash rows, A/B questions, evidence links,
 G3 SS P1 AUDIT passages=3/3 alternate_questions=15
 G3 SS P1 CANONICAL v7=PROGRAM1 1-1 / 1-2 / 1-3 exact source partitions; PROGRAM2 vocabulary gated
 G3 SS P1 AUDIT PASS: Program 1 passages, slash rows, A/B questions, evidence links, release flags, morphology guard, chronological partitions, and Program 2 future-vocab gate are consistent.
-SEMANTIC RUNTIME AUDIT FAIL: v10_semantic_runtime_repairs_141_150.js:12
-];const slash=s=>s.includes(', ')?s.replace(', ',', / '):s;const mk=(x,s,j)=>({prompt:x[0],answer:x[1],evidence:s[x[2]],evidenceJp:j[x[2]],reason:'本文の該当文から確認できます。'});const meta={};for(const[n,b,sec,title,s,j,qq]of data){const target=b==='SS'?window.V10_PASSAGES_G3_SS:window.V10_PASSAGES_G3_NH;if(!target[sec])throw new Error('Missing G3 passage '+b+' '+sec);const questions=qq.map(x=>mk(x,s,j));Object.assign(target[sec],{title,sentences:s,fullTranslation:j.join(''),slashRows:s.map((e,i)=>({en:slash(e),jp:j[i].replace('、','、 / ')})),questions,auditNote:'Passage '+n+': sentence-first blueprintに基づき、1つの場面・話題へ再構成。'});const book=b==='SS'?'サンシャイン':'ニューホライズン';meta[book+'|'+sec]={genre:'report',questionSetB:[questions[4],questions[2],questions[0],questions[3]].map((z,i)=>({...z,prompt:(i+1)+'. '+z.prompt.replace(/^\d+\.\s*/,''}))};}window.V10_INTERACTION_META_SEMANTIC_REPAIRS_141_150=meta;})();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^^
-
-SyntaxError: missing ) after argument list
-    at new Script (node:vm:117:7)
-    at createScript (node:vm:269:10)
-    at Object.runInContext (node:vm:300:10)
-    at /home/runner/work/reading-app/reading-app/v10_semantic_runtime_audit.js:13:97
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+SEMANTIC RUNTIME AUDIT total=168/168 runtime_repairs=76/168 A_questions=834 B_questions=672
+SEMANTIC RUNTIME AUDIT FAIL 375
+- 1|サンシャイン|PROGRAM 1-1 BQ1: evidence not verbatim: She tells us that her mother made it this morning.
+- 1|サンシャイン|PROGRAM 1-1 BQ2: evidence not verbatim: Emi opens a small bag and takes out a colorful bento.
+- 1|サンシャイン|PROGRAM 1-1 BQ3: evidence not verbatim: It is noon at school.
+- 1|サンシャイン|PROGRAM 1-1 BQ4: evidence not verbatim: Her bento has rice, egg, and vegetables.
+- 1|サンシャイン|PROGRAM 1-2 BQ1: evidence not verbatim: While we eat, my friend tells me about the marathon.
+- 1|サンシャイン|PROGRAM 1-2 BQ2: evidence not verbatim: The bento has rice, vegetables, and a small portion of eel.
+- 1|サンシャイン|PROGRAM 1-2 BQ3: evidence not verbatim: My friend runs in a marathon today.
+- 1|サンシャイン|PROGRAM 1-2 BQ4: evidence not verbatim: My friend is hungry after the long race.
+- 1|サンシャイン|PROGRAM 1-3 BQ1: evidence not verbatim: I want to try a new kind of bento next time.
+- 1|サンシャイン|PROGRAM 1-3 BQ2: evidence not verbatim: My friend has eaten eel before.
+- 1|サンシャイン|PROGRAM 1-3 BQ3: evidence not verbatim: I have eaten a homemade bento many times.
+- 1|サンシャイン|PROGRAM 1-3 BQ4: evidence not verbatim: Popular bentos can sell out at noon at a shop near our school.
+- 1|サンシャイン|PROGRAM 2-1 BQ1: evidence not verbatim: Sleep tight tonight.
+- 1|サンシャイン|PROGRAM 2-1 BQ2: evidence not verbatim: A lack of sleep can affect your health.
+- 1|サンシャイン|PROGRAM 2-1 BQ3: evidence not verbatim: You’ve just finished your homework.
+- 1|サンシャイン|PROGRAM 2-1 BQ4: evidence not verbatim: Take at least a few minutes to relax quietly.
+- 1|サンシャイン|PROGRAM 2-2 BQ1: evidence not verbatim: Right now, I feel better in the morning.
+- 1|サンシャイン|PROGRAM 2-2 BQ2: evidence not verbatim: My plan is based on a regular sleep time.
+- 1|サンシャイン|PROGRAM 2-2 BQ3: evidence not verbatim: I started a sleep diary in April.
+- 1|サンシャイン|PROGRAM 2-2 BQ4: evidence not verbatim: I have followed this plan for two months.
+- 1|サンシャイン|PROGRAM 2-3 BQ1: evidence not verbatim: As a result, the room becomes quiet and dark.
+- 1|サンシャイン|PROGRAM 2-3 BQ2: evidence not verbatim: First, we dry our hair before bed.
+- 1|サンシャイン|PROGRAM 2-3 BQ3: evidence not verbatim: Our team is on a tour for a tournament.
+- 1|サンシャイン|PROGRAM 2-3 BQ4: evidence not verbatim: The hotel room is bright, so we turn off the main light.
+- 1|サンシャイン|PROGRAM 3-1 BQ1: evidence not verbatim: Ken’s picture will be on our event poster.
+- 1|サンシャイン|PROGRAM 3-1 BQ2: evidence not verbatim: Aya draws an octopus.
+- 1|サンシャイン|PROGRAM 3-1 BQ3: evidence not verbatim: My class must make a poster for the event.
+- 1|サンシャイン|PROGRAM 3-1 BQ4: evidence not verbatim: In the end, we choose the kangaroo.
+- 1|サンシャイン|PROGRAM 3-2 BQ1: evidence not verbatim: Tomorrow, he wants to go beyond that record.
+- 1|サンシャイン|PROGRAM 3-2 BQ2: evidence not verbatim: The runner drinks water and rests in the shade.
+- 1|サンシャイン|PROGRAM 3-2 BQ3: evidence not verbatim: An athlete in our town will take part in a race tomorrow.
+- 1|サンシャイン|PROGRAM 3-2 BQ4: evidence not verbatim: His progress has been incredible.
+- 1|サンシャイン|PROGRAM 3-3 BQ1: evidence not verbatim: His development takes time, but he can see progress.
+- 1|サンシャイン|PROGRAM 3-3 BQ2: evidence not verbatim: The trainer also explains the importance of breathing.
+- 1|サンシャイン|PROGRAM 3-3 BQ3: evidence not verbatim: A good diet is the base of the plan.
+- 1|サンシャイン|PROGRAM 3-3 BQ4: evidence not verbatim: Rest is also an important part of the plan.
+- 1|サンシャイン|PROGRAM 4-1 BQ1: evidence not verbatim: After the meal, I want to learn some signs myself.
+- 1|サンシャイン|PROGRAM 4-1 BQ2: evidence not verbatim: My friend does not know the sign, so she uses a simple gesture.
+- 1|サンシャイン|PROGRAM 4-1 BQ3: evidence not verbatim: My friend and I are at a restaurant during our travel.
+- 1|サンシャイン|PROGRAM 4-1 BQ4: evidence not verbatim: They understand each other without a long conversation.
+- 1|サンシャイン|PROGRAM 4-2 BQ1: evidence not verbatim: The guide is used widely by visitors to our school.
+- 1|サンシャイン|PROGRAM 4-2 BQ2: evidence not verbatim: The guide also has a part about sign language.
+- 1|サンシャイン|PROGRAM 4-2 BQ3: evidence not verbatim: Our school has an official guide for a new user.
+- 1|サンシャイン|PROGRAM 4-2 BQ4: evidence not verbatim: My friend and I use the guide to find the school office.
+- 1|サンシャイン|PROGRAM 4-3 BQ1: evidence not verbatim: I now understand why a wide, barrier-free space can help many people.
+- 1|サンシャイン|PROGRAM 4-3 BQ2: evidence not verbatim: A hand rail runs along the wall.
+- 1|サンシャイン|PROGRAM 4-3 BQ3: evidence not verbatim: My friend and I enter a barrier-free facility for an event.
+- 1|サンシャイン|PROGRAM 4-3 BQ4: evidence not verbatim: A student from Asia introduces ASL as one type of sign language.
+- 1|サンシャイン|PROGRAM 5-1 BQ1: evidence not verbatim: The information is limited, so we compare it with the speech.
+- 1|サンシャイン|PROGRAM 5-1 BQ2: evidence not verbatim: They crushed cacao and used it to make a drink.
+- 1|サンシャイン|PROGRAM 5-1 BQ3: evidence not verbatim: Our class listens to a speech about the original use of cacao.
+- 1|サンシャイン|PROGRAM 5-1 BQ4: evidence not verbatim: Later, cacao reached Europe.
+- 1|サンシャイン|PROGRAM 5-2 BQ1: evidence not verbatim: We do not use the graph to explain the history of chocolate.
+- 1|サンシャイン|PROGRAM 5-2 BQ2: evidence not verbatim: It also compares British people with other European people.
+- 1|サンシャイン|PROGRAM 5-2 BQ3: evidence not verbatim: Our class studies a graph about chocolate consumption.
+- 1|サンシャイン|PROGRAM 5-2 BQ4: evidence not verbatim: The graph helps us see a pattern in chocolate consumption.
+- 1|サンシャイン|PROGRAM 5-3 BQ1: evidence not verbatim: At the end, I choose the fair trade package.
+- 1|サンシャイン|PROGRAM 5-3 BQ2: evidence not verbatim: Some farmers can be forced to sell cacao for an unfair price.
+- 1|サンシャイン|PROGRAM 5-3 BQ3: evidence not verbatim: I look for a fair trade chocolate package at a store.
+- 1|サンシャイン|PROGRAM 5-3 BQ4: evidence not verbatim: I check the fair trade mark and the price on each package.
+- 1|サンシャイン|PROGRAM 6-1 BQ1: evidence not verbatim: A map shows where the trash gathers.
+- 1|サンシャイン|PROGRAM 6-1 BQ2: evidence not verbatim: A plastic bottle can also get caught in a net.
+- 1|サンシャイン|PROGRAM 6-1 BQ3: evidence not verbatim: A Canadian researcher studies a patch in the ocean.
+- 1|サンシャイン|PROGRAM 6-1 BQ4: evidence not verbatim: In one area, the amount can be more than a ton.
+- 1|サンシャイン|PROGRAM 6-2 BQ1: evidence not verbatim: He changed the design to improve the system.
+- 1|サンシャイン|PROGRAM 6-2 BQ2: evidence not verbatim: Then he thought about a system for collecting plastic.
+- 1|サンシャイン|PROGRAM 6-2 BQ3: evidence not verbatim: At the age of sixteen, a boy saw a large amount of trash at a beach.
+- 1|サンシャイン|PROGRAM 6-2 BQ4: evidence not verbatim: He wrote the idea in a notebook and showed it to his family.
+- 1|サンシャイン|PROGRAM 6-3 BQ1: evidence not verbatim: We make a small plan to reduce single-use waste at school.
+- 1|サンシャイン|PROGRAM 6-3 BQ2: evidence not verbatim: At school, I decide not to throw my mug away after one use.
+- 1|サンシャイン|PROGRAM 6-3 BQ3: evidence not verbatim: A fish can swallow small pieces of plastic.
+- 1|サンシャイン|PROGRAM 6-3 BQ4: evidence not verbatim: I wash the mug and use it many times.
+- 1|サンシャイン|PROGRAM 7-1 BQ1: evidence not verbatim: A dream that once felt far away may come true through the robot.
+- 1|サンシャイン|PROGRAM 7-1 BQ2: evidence not verbatim: One day, the robot visits a museum far away.
+- 1|サンシャイン|PROGRAM 7-1 BQ3: evidence not verbatim: A patient has a disease and must stay in his hospital room.
+- 1|サンシャイン|PROGRAM 7-1 BQ4: evidence not verbatim: He imagines using the robot to visit another place abroad someday.
+- 1|サンシャイン|PROGRAM 7-2 BQ1: evidence not verbatim: That can be useful, but it does not replace human care.
+- 1|サンシャイン|PROGRAM 7-2 BQ2: evidence not verbatim: A mask or a simple face cannot show every emotion.
+- 1|サンシャイン|PROGRAM 7-2 BQ3: evidence not verbatim: These days, AI can control many kinds of machines.
+- 1|サンシャイン|PROGRAM 7-2 BQ4: evidence not verbatim: A robot can send a message or music to someone far away.
+- 1|サンシャイン|PROGRAM 7-3 BQ1: evidence not verbatim: Rather than replace people, the robot should help people connect.
+- 1|サンシャイン|PROGRAM 7-3 BQ2: evidence not verbatim: Human relationships are still important.
+- 1|サンシャイン|PROGRAM 7-3 BQ3: evidence not verbatim: An inventor wants to help a person who is often alone.
+- 1|サンシャイン|PROGRAM 7-3 BQ4: evidence not verbatim: A password protects the communication system.
+- 1|サンシャイン|PROGRAM 8-1 BQ1: evidence not verbatim: The notebook is sold at this store.
+- 1|サンシャイン|PROGRAM 8-1 BQ2: evidence not verbatim: “I did not know recycled stationery was sold here.” “Me neither.”
+- 1|サンシャイン|PROGRAM 8-1 BQ3: evidence not verbatim: We read the message again.
+- 1|サンシャイン|PROGRAM 8-1 BQ4: evidence not verbatim: We think about peace.
+- 1|サンシャイン|PROGRAM 8-2 BQ1: evidence not verbatim: It was built for peace.
+- 1|サンシャイン|PROGRAM 8-2 BQ2: evidence not verbatim: We read the story at the monument.
+- 1|サンシャイン|PROGRAM 8-2 BQ3: evidence not verbatim: We think about the victim.
+- 1|サンシャイン|PROGRAM 8-2 BQ4: evidence not verbatim: We want peace for everyone.
+- 1|サンシャイン|PROGRAM 8-3 BQ1: evidence not verbatim: Our class has a project about old tin.
+- 1|サンシャイン|PROGRAM 8-3 BQ2: evidence not verbatim: The tin is so thin that we can fold it.
+- 1|サンシャイン|PROGRAM 8-3 BQ3: evidence not verbatim: Each badge has a peace message.
+- 1|サンシャイン|PROGRAM 8-3 BQ4: evidence not verbatim: I wear the badge at school.
+- 1|ニューホライズン|Unit 0 BQ1: evidence not verbatim: Finally, I understand a new side of Yuki.
+- 1|ニューホライズン|Unit 0 BQ2: evidence not verbatim: She explains that she practices songs after school.
+- 1|ニューホライズン|Unit 0 BQ3: evidence not verbatim: My classmate Yuki shows us a picture from a musical.
+- 1|ニューホライズン|Unit 0 BQ4: evidence not verbatim: She says she enjoys working with other people.
+- 1|ニューホライズン|Unit 1-1 BQ1: evidence not verbatim: Because neither of us has been there, we choose Hokkaido as our next trip.
+- 1|ニューホライズン|Unit 1-1 BQ2: evidence not verbatim: My friend has never been to Hokkaido.
+- 1|ニューホライズン|Unit 1-1 BQ3: evidence not verbatim: I have been to Kyoto once.
+- 1|ニューホライズン|Unit 1-1 BQ4: evidence not verbatim: I have never been there either.
+- 1|ニューホライズン|Unit 1-2 BQ1: evidence not verbatim: The visitor’s experience helps us learn something new about Japanese culture.
+- 1|ニューホライズン|Unit 1-2 BQ2: evidence not verbatim: Then he shows us a picture from his trip.
+- 1|ニューホライズン|Unit 1-2 BQ3: evidence not verbatim: He says that he has been there once.
+- 1|ニューホライズン|Unit 1-2 BQ4: evidence not verbatim: The picture shows a style of regional fashion he saw in Kyoto.
+- 1|ニューホライズン|Unit 1-3 BQ1: evidence not verbatim: These qualities help Japanese animation reach people in many countries.
+- 1|ニューホライズン|Unit 1-3 BQ2: evidence not verbatim: Others give a positive message about friendship or courage.
+- 1|ニューホライズン|Unit 1-3 BQ3: evidence not verbatim: Japanese animation is enjoyed by both children and adults around the world.
+- 1|ニューホライズン|Unit 1-3 BQ4: evidence not verbatim: Another reason is the quality of the drawing.
+- 1|ニューホライズン|Unit 2-1 BQ1: evidence not verbatim: I want to finish it tonight.
+- 1|ニューホライズン|Unit 2-1 BQ2: evidence not verbatim: I have just learned that a low price can hide a problem in production.
+- 1|ニューホライズン|Unit 2-1 BQ3: evidence not verbatim: I am reading an interview with an ethical-fashion designer.
+- 1|ニューホライズン|Unit 2-1 BQ4: evidence not verbatim: I answer, “Not yet.”
+- 1|ニューホライズン|Unit 2-2 BQ1: evidence not verbatim: The newer design uses less new material.
+- 1|ニューホライズン|Unit 2-2 BQ2: evidence not verbatim: She first tried the idea with a small accessory.
+- 1|ニューホライズン|Unit 2-2 BQ3: evidence not verbatim: Our class talks with an accessory designer online.
+- 1|ニューホライズン|Unit 2-2 BQ4: evidence not verbatim: Since then, she has continued to improve the design.
+- 1|ニューホライズン|Unit 2-3 BQ1: evidence not verbatim: The company checks the quality before selling the new product.
+- 1|ニューホライズン|Unit 2-3 BQ2: evidence not verbatim: Some wool from old products is cleaned and used again.
+- 1|ニューホライズン|Unit 2-3 BQ3: evidence not verbatim: The company collects old clothes from customers.
+- 1|ニューホライズン|Unit 2-3 BQ4: evidence not verbatim: The company uses the reused material in a new design.
+- 1|ニューホライズン|Unit 3-1 BQ1: evidence not verbatim: Protecting the remaining forest is an important challenge.
+- 1|ニューホライズン|Unit 3-1 BQ2: evidence not verbatim: The population is now in danger.
+- 1|ニューホライズン|Unit 3-1 BQ3: evidence not verbatim: Our class studies an endangered animal that lives in a forest.
+- 1|ニューホライズン|Unit 3-1 BQ4: evidence not verbatim: If the decline continues, the animal may face extinction.
+- 1|ニューホライズン|Unit 3-2 BQ1: evidence not verbatim: We ask our teacher to let us share the article with the class.
+- 1|ニューホライズン|Unit 3-2 BQ2: evidence not verbatim: I want my friend to read the part about the animal’s habitat.
+- 1|ニューホライズン|Unit 3-2 BQ3: evidence not verbatim: I read an article about an endangered animal near our town.
+- 1|ニューホライズン|Unit 3-2 BQ4: evidence not verbatim: I tell her to look at the map in the article.
+- 1|ニューホライズン|Unit 3-3 BQ1: evidence not verbatim: The researchers suggest signs and safer crossing points in the most dangerous areas.
+- 1|ニューホライズン|Unit 3-3 BQ2: evidence not verbatim: The number of accidents increases when animals cross the road to find food.
+- 1|ニューホライズン|Unit 3-3 BQ3: evidence not verbatim: Researchers study an animal population living near a busy road.
+- 1|ニューホライズン|Unit 3-3 BQ4: evidence not verbatim: Their data relate heavy traffic to a clear danger for the animals.
+- 1|ニューホライズン|Unit 4-1 BQ1: evidence not verbatim: After every item is checked, we put the map and checklist in an easy-to-find place.
+- 1|ニューホライズン|Unit 4-1 BQ2: evidence not verbatim: We prepare enough drinking water for several days.
+- 1|ニューホライズン|Unit 4-1 BQ3: evidence not verbatim: First, we mark the nearest shelter on the map.
+- 1|ニューホライズン|Unit 4-1 BQ4: evidence not verbatim: We keep important phone numbers with the checklist.
+- 1|ニューホライズン|Unit 4-2: sentences short
+- 1|ニューホライズン|Unit 4-2 BQ1: evidence not verbatim: My friend has not prepared a kit yet.
+- 1|ニューホライズン|Unit 4-2 BQ2: evidence not verbatim: Water is the first item on my checklist because it is essential.
+- 1|ニューホライズン|Unit 4-2 BQ3: evidence not verbatim: I have started preparing an emergency kit for an earthquake.
+- 1|ニューホライズン|Unit 4-2 BQ4: evidence not verbatim: The bag must not become too heavy to carry.
+- 1|ニューホライズン|Unit 4-3 BQ1: evidence not verbatim: Residents can now use the bridge as the main route to the shelter.
+- 1|ニューホライズン|Unit 4-3 BQ2: evidence not verbatim: On the day it reopened, students helped guide elderly people along the route.
+- 1|ニューホライズン|Unit 4-3 BQ3: evidence not verbatim: After a serious disaster, one bridge to the community shelter was damaged.
+- 1|ニューホライズン|Unit 4-3 BQ4: evidence not verbatim: The community also held a quiet moment to remember people who had died.
+- 1|ニューホライズン|Unit 5-1 BQ1: evidence not verbatim: We decide to research that question next.
+- 1|ニューホライズン|Unit 5-1 BQ2: evidence not verbatim: The leader believed that people could challenge unfair systems without attacking others.
+- 1|ニューホライズン|Unit 5-1 BQ3: evidence not verbatim: Our history class studies a national leader whose image appears on a banknote.
+- 1|ニューホライズン|Unit 5-1 BQ4: evidence not verbatim: This idea influenced many supporters.
+- 1|ニューホライズン|Unit 5-2 BQ1: evidence not verbatim: The campaign became part of a wider fight for rights and independence.
+- 1|ニューホライズン|Unit 5-2 BQ2: evidence not verbatim: Some people joined a peaceful protest.
+- 1|ニューホライズン|Unit 5-2 BQ3: evidence not verbatim: A group of people faced an unfair rule that limited one of their rights.
+- 1|ニューホライズン|Unit 5-2 BQ4: evidence not verbatim: The leader also began a fast to show how serious the issue was.
+- 1|ニューホライズン|Unit 5-3 BQ1: evidence not verbatim: Public pressure grew, and the government later changed the law.
+- 1|ニューホライズン|Unit 5-3 BQ2: evidence not verbatim: Police later arrested some protesters for breaking the rule.
+- 1|ニューホライズン|Unit 5-3 BQ3: evidence not verbatim: A lawyer learned about a law that treated one group unfairly.
+- 1|ニューホライズン|Unit 5-3 BQ4: evidence not verbatim: The lawyer was also sent to jail for a short time.
+- 1|ニューホライズン|Unit 6-1 BQ1: evidence not verbatim: We know one backpack cannot solve every problem.
+- 1|ニューホライズン|Unit 6-1 BQ2: evidence not verbatim: Then we collected a notebook, pencils, and other school supplies.
+- 1|ニューホライズン|Unit 6-1 BQ3: evidence not verbatim: I found an unused backpack at home.
+- 1|ニューホライズン|Unit 6-1 BQ4: evidence not verbatim: Our teacher explained that the project would support students abroad.
+- 1|ニューホライズン|Unit 6-2 BQ1: evidence not verbatim: We hope the supplies will be useful at school.
+- 1|ニューホライズン|Unit 6-2 BQ2: evidence not verbatim: We also write a short message to go with the donation.
+- 1|ニューホライズン|Unit 6-2 BQ3: evidence not verbatim: The backpack will be sent to a partner program in Afghanistan.
+- 1|ニューホライズン|Unit 6-2 BQ4: evidence not verbatim: So far, our project is small, but every item has a clear purpose.
+- 1|ニューホライズン|Unit 6-3 BQ1: evidence not verbatim: A teacher there will decide how the books are used.
+- 1|ニューホライズン|Unit 6-3 BQ2: evidence not verbatim: We look at a globe to find the country and learn about the school first.
+- 1|ニューホライズン|Unit 6-3 BQ3: evidence not verbatim: Our class joins a literacy-support project with a partner school abroad.
+- 1|ニューホライズン|Unit 6-3 BQ4: evidence not verbatim: We pack the books carefully for air delivery.
+- 1|ニューホライズン|Unit 7-1 BQ1: evidence not verbatim: Our teacher shows us a forest region on a world map.
+- 1|ニューホライズン|Unit 7-1 BQ2: evidence not verbatim: Protecting the region can also protect that species.
+- 1|ニューホライズン|Unit 7-1 BQ3: evidence not verbatim: UNESCO uses a selection process to decide whether a site qualifies.
+- 1|ニューホライズン|Unit 7-1 BQ4: evidence not verbatim: I write one question about the region.
+- 1|ニューホライズン|Unit 7-2 BQ1: evidence not verbatim: Many different plants grow in a small area.
+- 1|ニューホライズン|Unit 7-2 BQ2: evidence not verbatim: Its floral world is fantastic.
+- 1|ニューホライズン|Unit 7-2 BQ3: evidence not verbatim: It is also different from a mixed site, which has both natural and cultural value.
+- 1|ニューホライズン|Unit 7-2 BQ4: evidence not verbatim: In general, World Heritage sites can have different kinds of value.
+- 1|ニューホライズン|Unit 7-3 BQ1: evidence not verbatim: Their goal is to keep the white marble beautiful.
+- 1|ニューホライズン|Unit 7-3 BQ2: evidence not verbatim: Because of pollution, the white marble can turn dark.
+- 1|ニューホライズン|Unit 7-3 BQ3: evidence not verbatim: Its main material is white marble.
+- 1|ニューホライズン|Unit 7-3 BQ4: evidence not verbatim: The government works to reduce pollution around the site.
+- 1|ニューホライズン|Unit 9-1: sentences short
+- 2|サンシャイン|PROGRAM 1-1 BQ1: evidence not verbatim: She tells us that her mother made it this morning.
+- 2|サンシャイン|PROGRAM 1-1 BQ2: evidence not verbatim: Emi opens a small bag and takes out a colorful bento.
+- 2|サンシャイン|PROGRAM 1-1 BQ3: evidence not verbatim: It is noon at school.
+- 2|サンシャイン|PROGRAM 1-1 BQ4: evidence not verbatim: Her bento has rice, egg, and vegetables.
+- 2|サンシャイン|PROGRAM 1-2 BQ1: evidence not verbatim: While we eat, my friend tells me about the marathon.
+- 2|サンシャイン|PROGRAM 1-2 BQ2: evidence not verbatim: The bento has rice, vegetables, and a small portion of eel.
+- 2|サンシャイン|PROGRAM 1-2 BQ3: evidence not verbatim: My friend runs in a marathon today.
+- 2|サンシャイン|PROGRAM 1-2 BQ4: evidence not verbatim: My friend is hungry after the long race.
+- 2|サンシャイン|PROGRAM 1-3 BQ1: evidence not verbatim: I want to try a new kind of bento next time.
+- 2|サンシャイン|PROGRAM 1-3 BQ2: evidence not verbatim: My friend has eaten eel before.
+- 2|サンシャイン|PROGRAM 1-3 BQ3: evidence not verbatim: I have eaten a homemade bento many times.
+- 2|サンシャイン|PROGRAM 1-3 BQ4: evidence not verbatim: Popular bentos can sell out at noon at a shop near our school.
+- 2|サンシャイン|PROGRAM 2-1 BQ1: evidence not verbatim: Sleep tight tonight.
+- 2|サンシャイン|PROGRAM 2-1 BQ2: evidence not verbatim: A lack of sleep can affect your health.
+- 2|サンシャイン|PROGRAM 2-1 BQ3: evidence not verbatim: You’ve just finished your homework.
+- 2|サンシャイン|PROGRAM 2-1 BQ4: evidence not verbatim: Take at least a few minutes to relax quietly.
+- 2|サンシャイン|PROGRAM 2-2 BQ1: evidence not verbatim: Right now, I feel better in the morning.
+- 2|サンシャイン|PROGRAM 2-2 BQ2: evidence not verbatim: My plan is based on a regular sleep time.
+- 2|サンシャイン|PROGRAM 2-2 BQ3: evidence not verbatim: I started a sleep diary in April.
+- 2|サンシャイン|PROGRAM 2-2 BQ4: evidence not verbatim: I have followed this plan for two months.
+- 2|サンシャイン|PROGRAM 2-3 BQ1: evidence not verbatim: As a result, the room becomes quiet and dark.
+- 2|サンシャイン|PROGRAM 2-3 BQ2: evidence not verbatim: First, we dry our hair before bed.
+- 2|サンシャイン|PROGRAM 2-3 BQ3: evidence not verbatim: Our team is on a tour for a tournament.
+- 2|サンシャイン|PROGRAM 2-3 BQ4: evidence not verbatim: The hotel room is bright, so we turn off the main light.
+- 2|サンシャイン|PROGRAM 3-1 BQ1: evidence not verbatim: Ken’s picture will be on our event poster.
+- 2|サンシャイン|PROGRAM 3-1 BQ2: evidence not verbatim: Aya draws an octopus.
+- 2|サンシャイン|PROGRAM 3-1 BQ3: evidence not verbatim: My class must make a poster for the event.
+- 2|サンシャイン|PROGRAM 3-1 BQ4: evidence not verbatim: In the end, we choose the kangaroo.
+- 2|サンシャイン|PROGRAM 3-2 BQ1: evidence not verbatim: Tomorrow, he wants to go beyond that record.
+- 2|サンシャイン|PROGRAM 3-2 BQ2: evidence not verbatim: The runner drinks water and rests in the shade.
+- 2|サンシャイン|PROGRAM 3-2 BQ3: evidence not verbatim: An athlete in our town will take part in a race tomorrow.
+- 2|サンシャイン|PROGRAM 3-2 BQ4: evidence not verbatim: His progress has been incredible.
+- 2|サンシャイン|PROGRAM 3-3 BQ1: evidence not verbatim: His development takes time, but he can see progress.
+- 2|サンシャイン|PROGRAM 3-3 BQ2: evidence not verbatim: The trainer also explains the importance of breathing.
+- 2|サンシャイン|PROGRAM 3-3 BQ3: evidence not verbatim: A good diet is the base of the plan.
+- 2|サンシャイン|PROGRAM 3-3 BQ4: evidence not verbatim: Rest is also an important part of the plan.
+- 2|サンシャイン|PROGRAM 4-1 BQ1: evidence not verbatim: After the meal, I want to learn some signs myself.
+- 2|サンシャイン|PROGRAM 4-1 BQ2: evidence not verbatim: My friend does not know the sign, so she uses a simple gesture.
+- 2|サンシャイン|PROGRAM 4-1 BQ3: evidence not verbatim: My friend and I are at a restaurant during our travel.
+- 2|サンシャイン|PROGRAM 4-1 BQ4: evidence not verbatim: They understand each other without a long conversation.
+- 2|サンシャイン|PROGRAM 4-2 BQ1: evidence not verbatim: The guide is used widely by visitors to our school.
+- 2|サンシャイン|PROGRAM 4-2 BQ2: evidence not verbatim: The guide also has a part about sign language.
+- 2|サンシャイン|PROGRAM 4-2 BQ3: evidence not verbatim: Our school has an official guide for a new user.
+- 2|サンシャイン|PROGRAM 4-2 BQ4: evidence not verbatim: My friend and I use the guide to find the school office.
+- 2|サンシャイン|PROGRAM 4-3 BQ1: evidence not verbatim: I now understand why a wide, barrier-free space can help many people.
+- 2|サンシャイン|PROGRAM 4-3 BQ2: evidence not verbatim: A hand rail runs along the wall.
+- 2|サンシャイン|PROGRAM 4-3 BQ3: evidence not verbatim: My friend and I enter a barrier-free facility for an event.
+- 2|サンシャイン|PROGRAM 4-3 BQ4: evidence not verbatim: A student from Asia introduces ASL as one type of sign language.
+- 2|サンシャイン|PROGRAM 5-1 BQ1: evidence not verbatim: The information is limited, so we compare it with the speech.
+- 2|サンシャイン|PROGRAM 5-1 BQ2: evidence not verbatim: They crushed cacao and used it to make a drink.
+- 2|サンシャイン|PROGRAM 5-1 BQ3: evidence not verbatim: Our class listens to a speech about the original use of cacao.
+- 2|サンシャイン|PROGRAM 5-1 BQ4: evidence not verbatim: Later, cacao reached Europe.
+- 2|サンシャイン|PROGRAM 5-2 AQ5: evidence not verbatim: After the drill, we talk about the rule. We decide to remember it.
+- 2|サンシャイン|PROGRAM 5-2 BQ1: evidence not verbatim: We do not use the graph to explain the history of chocolate.
+- 2|サンシャイン|PROGRAM 5-2 BQ2: evidence not verbatim: It also compares British people with other European people.
+- 2|サンシャイン|PROGRAM 5-2 BQ3: evidence not verbatim: Our class studies a graph about chocolate consumption.
+- 2|サンシャイン|PROGRAM 5-2 BQ4: evidence not verbatim: The graph helps us see a pattern in chocolate consumption.
+- 2|サンシャイン|PROGRAM 5-3 BQ1: evidence not verbatim: At the end, I choose the fair trade package.
+- 2|サンシャイン|PROGRAM 5-3 BQ2: evidence not verbatim: Some farmers can be forced to sell cacao for an unfair price.
+- 2|サンシャイン|PROGRAM 5-3 BQ3: evidence not verbatim: I look for a fair trade chocolate package at a store.
+- 2|サンシャイン|PROGRAM 5-3 BQ4: evidence not verbatim: I check the fair trade mark and the price on each package.
+- 2|サンシャイン|PROGRAM 6-1 BQ1: evidence not verbatim: A map shows where the trash gathers.
+- 2|サンシャイン|PROGRAM 6-1 BQ2: evidence not verbatim: A plastic bottle can also get caught in a net.
+- 2|サンシャイン|PROGRAM 6-1 BQ3: evidence not verbatim: A Canadian researcher studies a patch in the ocean.
+- 2|サンシャイン|PROGRAM 6-1 BQ4: evidence not verbatim: In one area, the amount can be more than a ton.
+- 2|サンシャイン|PROGRAM 6-2 BQ1: evidence not verbatim: He changed the design to improve the system.
+- 2|サンシャイン|PROGRAM 6-2 BQ2: evidence not verbatim: Then he thought about a system for collecting plastic.
+- 2|サンシャイン|PROGRAM 6-2 BQ3: evidence not verbatim: At the age of sixteen, a boy saw a large amount of trash at a beach.
+- 2|サンシャイン|PROGRAM 6-2 BQ4: evidence not verbatim: He wrote the idea in a notebook and showed it to his family.
+- 2|サンシャイン|PROGRAM 6-3 BQ1: evidence not verbatim: We make a small plan to reduce single-use waste at school.
+- 2|サンシャイン|PROGRAM 6-3 BQ2: evidence not verbatim: At school, I decide not to throw my mug away after one use.
+- 2|サンシャイン|PROGRAM 6-3 BQ3: evidence not verbatim: A fish can swallow small pieces of plastic.
+- 2|サンシャイン|PROGRAM 6-3 BQ4: evidence not verbatim: I wash the mug and use it many times.
+- 2|サンシャイン|PROGRAM 7-1 BQ1: evidence not verbatim: A dream that once felt far away may come true through the robot.
+- 2|サンシャイン|PROGRAM 7-1 BQ2: evidence not verbatim: One day, the robot visits a museum far away.
+- 2|サンシャイン|PROGRAM 7-1 BQ3: evidence not verbatim: A patient has a disease and must stay in his hospital room.
+- 2|サンシャイン|PROGRAM 7-1 BQ4: evidence not verbatim: He imagines using the robot to visit another place abroad someday.
+- 2|サンシャイン|PROGRAM 7-2 BQ1: evidence not verbatim: That can be useful, but it does not replace human care.
+- 2|サンシャイン|PROGRAM 7-2 BQ2: evidence not verbatim: A mask or a simple face cannot show every emotion.
+- 2|サンシャイン|PROGRAM 7-2 BQ3: evidence not verbatim: These days, AI can control many kinds of machines.
+- 2|サンシャイン|PROGRAM 7-2 BQ4: evidence not verbatim: A robot can send a message or music to someone far away.
+- 2|サンシャイン|PROGRAM 7-3 BQ1: evidence not verbatim: Rather than replace people, the robot should help people connect.
+- 2|サンシャイン|PROGRAM 7-3 BQ2: evidence not verbatim: Human relationships are still important.
+- 2|サンシャイン|PROGRAM 7-3 BQ3: evidence not verbatim: An inventor wants to help a person who is often alone.
+- 2|サンシャイン|PROGRAM 7-3 BQ4: evidence not verbatim: A password protects the communication system.
+- 2|サンシャイン|PROGRAM 8-1 BQ2: evidence not verbatim: “I did not know recycled stationery was sold here.” “Me neither.”
+- 2|ニューホライズン|Unit 0 BQ1: evidence not verbatim: Finally, I understand a new side of Yuki.
+- 2|ニューホライズン|Unit 0 BQ2: evidence not verbatim: She explains that she practices songs after school.
+- 2|ニューホライズン|Unit 0 BQ3: evidence not verbatim: My classmate Yuki shows us a picture from a musical.
+- 2|ニューホライズン|Unit 0 BQ4: evidence not verbatim: She says she enjoys working with other people.
+- 2|ニューホライズン|Unit 1-1 BQ1: evidence not verbatim: Because neither of us has been there, we choose Hokkaido as our next trip.
+- 2|ニューホライズン|Unit 1-1 BQ2: evidence not verbatim: My friend has never been to Hokkaido.
+- 2|ニューホライズン|Unit 1-1 BQ3: evidence not verbatim: I have been to Kyoto once.
+- 2|ニューホライズン|Unit 1-1 BQ4: evidence not verbatim: I have never been there either.
+- 2|ニューホライズン|Unit 1-2 BQ1: evidence not verbatim: The visitor’s experience helps us learn something new about Japanese culture.
+- 2|ニューホライズン|Unit 1-2 BQ2: evidence not verbatim: Then he shows us a picture from his trip.
+- 2|ニューホライズン|Unit 1-2 BQ3: evidence not verbatim: He says that he has been there once.
+- 2|ニューホライズン|Unit 1-2 BQ4: evidence not verbatim: The picture shows a style of regional fashion he saw in Kyoto.
+- 2|ニューホライズン|Unit 1-3 BQ1: evidence not verbatim: These qualities help Japanese animation reach people in many countries.
+- 2|ニューホライズン|Unit 1-3 BQ2: evidence not verbatim: Others give a positive message about friendship or courage.
+- 2|ニューホライズン|Unit 1-3 BQ3: evidence not verbatim: Japanese animation is enjoyed by both children and adults around the world.
+- 2|ニューホライズン|Unit 1-3 BQ4: evidence not verbatim: Another reason is the quality of the drawing.
+- 2|ニューホライズン|Unit 1-4 BQ1: evidence not verbatim: The two forms are not the same, and the historical connection is not simple.
+- 2|ニューホライズン|Unit 1-4 BQ2: evidence not verbatim: This sequence can give us a feeling of movement.
+- 2|ニューホライズン|Unit 1-4 BQ3: evidence not verbatim: Our class studies an old Japanese picture scroll.
+- 2|ニューホライズン|Unit 1-4 BQ4: evidence not verbatim: Modern animation also creates movement by showing drawings in sequence.
+- 2|ニューホライズン|Unit 2-1 BQ1: evidence not verbatim: I want to finish it tonight.
+- 2|ニューホライズン|Unit 2-1 BQ2: evidence not verbatim: I have just learned that a low price can hide a problem in production.
+- 2|ニューホライズン|Unit 2-1 BQ3: evidence not verbatim: I am reading an interview with an ethical-fashion designer.
+- 2|ニューホライズン|Unit 2-1 BQ4: evidence not verbatim: I answer, “Not yet.”
+- 2|ニューホライズン|Unit 2-2 BQ1: evidence not verbatim: The newer design uses less new material.
+- 2|ニューホライズン|Unit 2-2 BQ2: evidence not verbatim: She first tried the idea with a small accessory.
+- 2|ニューホライズン|Unit 2-2 BQ3: evidence not verbatim: Our class talks with an accessory designer online.
+- 2|ニューホライズン|Unit 2-2 BQ4: evidence not verbatim: Since then, she has continued to improve the design.
+- 2|ニューホライズン|Unit 2-3 BQ1: evidence not verbatim: The company checks the quality before selling the new product.
+- 2|ニューホライズン|Unit 2-3 BQ2: evidence not verbatim: Some wool from old products is cleaned and used again.
+- 2|ニューホライズン|Unit 2-3 BQ3: evidence not verbatim: The company collects old clothes from customers.
+- 2|ニューホライズン|Unit 2-3 BQ4: evidence not verbatim: The company uses the reused material in a new design.
+- 2|ニューホライズン|Unit 2-4 BQ1: evidence not verbatim: Consumers can use this information when they choose clothing.
+- 2|ニューホライズン|Unit 2-4 BQ2: evidence not verbatim: Second, companies need to think carefully about the materials they use.
+- 2|ニューホライズン|Unit 2-4 BQ3: evidence not verbatim: First, workers need fair wages and safe labor conditions.
+- 2|ニューホライズン|Unit 2-4 BQ4: evidence not verbatim: Leather and fur also raise questions about animals and production methods.
+- 2|ニューホライズン|Unit 3-1 BQ1: evidence not verbatim: Protecting the remaining forest is an important challenge.
+- 2|ニューホライズン|Unit 3-1 BQ2: evidence not verbatim: The population is now in danger.
+- 2|ニューホライズン|Unit 3-1 BQ3: evidence not verbatim: Our class studies an endangered animal that lives in a forest.
+- 2|ニューホライズン|Unit 3-1 BQ4: evidence not verbatim: If the decline continues, the animal may face extinction.
+- 2|ニューホライズン|Unit 3-2 BQ1: evidence not verbatim: We ask our teacher to let us share the article with the class.
+- 2|ニューホライズン|Unit 3-2 BQ2: evidence not verbatim: I want my friend to read the part about the animal’s habitat.
+- 2|ニューホライズン|Unit 3-2 BQ3: evidence not verbatim: I read an article about an endangered animal near our town.
+- 2|ニューホライズン|Unit 3-2 BQ4: evidence not verbatim: I tell her to look at the map in the article.
+- 2|ニューホライズン|Unit 3-3 AQ4: evidence not verbatim: It found a pear. Then it found a plum.
+- 2|ニューホライズン|Unit 3-3 BQ1: evidence not verbatim: The researchers suggest signs and safer crossing points in the most dangerous areas.
+- 2|ニューホライズン|Unit 3-3 BQ2: evidence not verbatim: The number of accidents increases when animals cross the road to find food.
+- 2|ニューホライズン|Unit 3-3 BQ3: evidence not verbatim: Researchers study an animal population living near a busy road.
+- 2|ニューホライズン|Unit 3-3 BQ4: evidence not verbatim: Their data relate heavy traffic to a clear danger for the animals.
+- 2|ニューホライズン|Unit 3-4 BQ1: evidence not verbatim: The history shows why conservation needs both protection and long-term research.
+- 2|ニューホライズン|Unit 3-4 BQ2: evidence not verbatim: Oil can damage an otter’s fur and make survival difficult.
+- 2|ニューホライズン|Unit 3-4 BQ3: evidence not verbatim: Heavy hunting caused the population to fall sharply.
+- 2|ニューホライズン|Unit 3-4 BQ4: evidence not verbatim: Researchers studied the remaining population and its role in the ecosystem.
+- 2|ニューホライズン|Unit 4-1 BQ1: evidence not verbatim: After every item is checked, we put the map and checklist in an easy-to-find place.
+- 2|ニューホライズン|Unit 4-1 BQ2: evidence not verbatim: We prepare enough drinking water for several days.
+- 2|ニューホライズン|Unit 4-1 BQ3: evidence not verbatim: First, we mark the nearest shelter on the map.
+- 2|ニューホライズン|Unit 4-1 BQ4: evidence not verbatim: We keep important phone numbers with the checklist.
+- 2|ニューホライズン|Unit 4-2 AQ2: evidence not verbatim: We must save water in this house. For that reason, I must take a short shower.
+- 2|ニューホライズン|Unit 4-2 BQ1: evidence not verbatim: My friend has not prepared a kit yet.
+- 2|ニューホライズン|Unit 4-2 BQ2: evidence not verbatim: Water is the first item on my checklist because it is essential.
+- 2|ニューホライズン|Unit 4-2 BQ3: evidence not verbatim: I have started preparing an emergency kit for an earthquake.
+- 2|ニューホライズン|Unit 4-2 BQ4: evidence not verbatim: The bag must not become too heavy to carry.
+- 2|ニューホライズン|Unit 4-3 BQ1: evidence not verbatim: Residents can now use the bridge as the main route to the shelter.
+- 2|ニューホライズン|Unit 4-3 BQ2: evidence not verbatim: On the day it reopened, students helped guide elderly people along the route.
+- 2|ニューホライズン|Unit 4-3 BQ3: evidence not verbatim: After a serious disaster, one bridge to the community shelter was damaged.
+- 2|ニューホライズン|Unit 4-3 BQ4: evidence not verbatim: The community also held a quiet moment to remember people who had died.
+- 2|ニューホライズン|Unit 4-4 BQ1: evidence not verbatim: A longer-term support program began after the immediate relief work.
+- 2|ニューホライズン|Unit 4-4 BQ2: evidence not verbatim: One volunteer found a family with a child who needed water and food.
+- 2|ニューホライズン|Unit 4-4 BQ3: evidence not verbatim: After a crisis, some roads in the town were blocked.
+- 2|ニューホライズン|Unit 4-4 BQ4: evidence not verbatim: Other volunteers exchanged information about people who still needed help.
+- 2|ニューホライズン|Unit 5-1 BQ1: evidence not verbatim: We decide to research that question next.
+- 2|ニューホライズン|Unit 5-1 BQ2: evidence not verbatim: The leader believed that people could challenge unfair systems without attacking others.
+- 2|ニューホライズン|Unit 5-1 BQ3: evidence not verbatim: Our history class studies a national leader whose image appears on a banknote.
+- 2|ニューホライズン|Unit 5-1 BQ4: evidence not verbatim: This idea influenced many supporters.
+- 2|ニューホライズン|Unit 5-2 BQ1: evidence not verbatim: The campaign became part of a wider fight for rights and independence.
+- 2|ニューホライズン|Unit 5-2 BQ2: evidence not verbatim: Some people joined a peaceful protest.
+- 2|ニューホライズン|Unit 5-2 BQ3: evidence not verbatim: A group of people faced an unfair rule that limited one of their rights.
+- 2|ニューホライズン|Unit 5-2 BQ4: evidence not verbatim: The leader also began a fast to show how serious the issue was.
+- 2|ニューホライズン|Unit 5-3 BQ1: evidence not verbatim: Public pressure grew, and the government later changed the law.
+- 2|ニューホライズン|Unit 5-3 BQ2: evidence not verbatim: Police later arrested some protesters for breaking the rule.
+- 2|ニューホライズン|Unit 5-3 BQ3: evidence not verbatim: A lawyer learned about a law that treated one group unfairly.
+- 2|ニューホライズン|Unit 5-3 BQ4: evidence not verbatim: The lawyer was also sent to jail for a short time.
+- 2|ニューホライズン|Unit 5-4 BQ1: evidence not verbatim: People later remembered the protest as a legacy of peaceful political action.
+- 2|ニューホライズン|Unit 5-4 BQ2: evidence not verbatim: Supporters walked together to a public market outside the town.
+- 2|ニューホライズン|Unit 5-4 BQ3: evidence not verbatim: People in one region had to pay an unfair tax on an everyday product.
+- 2|ニューホライズン|Unit 5-4 BQ4: evidence not verbatim: The tax was not removed immediately, but the campaign became an important part of a larger independence movement.
+- 2|ニューホライズン|Unit 6-1 BQ1: evidence not verbatim: We know one backpack cannot solve every problem.
+- 2|ニューホライズン|Unit 6-1 BQ2: evidence not verbatim: Then we collected a notebook, pencils, and other school supplies.
+- 2|ニューホライズン|Unit 6-1 BQ3: evidence not verbatim: I found an unused backpack at home.
+- 2|ニューホライズン|Unit 6-1 BQ4: evidence not verbatim: Our teacher explained that the project would support students abroad.
+- 2|ニューホライズン|Unit 6-2 BQ1: evidence not verbatim: We hope the supplies will be useful at school.
+- 2|ニューホライズン|Unit 6-2 BQ2: evidence not verbatim: We also write a short message to go with the donation.
+- 2|ニューホライズン|Unit 6-2 BQ3: evidence not verbatim: The backpack will be sent to a partner program in Afghanistan.
+- 2|ニューホライズン|Unit 6-2 BQ4: evidence not verbatim: So far, our project is small, but every item has a clear purpose.
+- 2|ニューホライズン|Unit 6-3 BQ1: evidence not verbatim: A teacher there will decide how the books are used.
+- 2|ニューホライズン|Unit 6-3 BQ2: evidence not verbatim: We look at a globe to find the country and learn about the school first.
+- 2|ニューホライズン|Unit 6-3 BQ3: evidence not verbatim: Our class joins a literacy-support project with a partner school abroad.
+- 2|ニューホライズン|Unit 6-3 BQ4: evidence not verbatim: We pack the books carefully for air delivery.
+- 2|ニューホライズン|Unit 6-4 BQ1: evidence not verbatim: This kind of interdependence is part of daily life.
+- 2|ニューホライズン|Unit 6-4 BQ2: evidence not verbatim: The coat was made in a third country and then shipped to Japan.
+- 2|ニューホライズン|Unit 6-4 BQ3: evidence not verbatim: Our class studies the trade history of one coat sold in a local shop.
+- 2|ニューホライズン|Unit 6-4 BQ4: evidence not verbatim: This one product crossed more than one border before reaching the customer.
+- runtime repair metadata expected 168 got 76
