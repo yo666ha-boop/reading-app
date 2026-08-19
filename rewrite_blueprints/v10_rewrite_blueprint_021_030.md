@@ -60,7 +60,7 @@ Final English:
 4. A library is near the college.
 5. A museum is near the library.
 6. My dad and I go to the museum.
-7. After the museum, I am hungry.
+7. After that, I am hungry.
 8. My dad is hungry, too.
 9. We go to a restaurant near the college.
 10. I have a pork sandwich.
