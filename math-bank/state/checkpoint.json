@@ -3,20 +3,20 @@
   "status": "WAITING_FOR_SOURCE_ARCHIVES",
   "current_stage": "ZIP_INVENTORY",
   "source_archives": [
-    {
-      "name": "中学実力錬成データ.zip",
-      "status": "PENDING"
-    },
-    {
-      "name": "スタンダードデータ.zip",
-      "status": "PENDING"
-    },
-    {
-      "name": "winpassデータ.zip",
-      "status": "PENDING"
-    }
+    {"name": "中学実力錬成データ.zip", "status": "PENDING"},
+    {"name": "スタンダードデータ.zip", "status": "PENDING"},
+    {"name": "winpassデータ.zip", "status": "PENDING"}
   ],
-  "last_completed_batch": null,
+  "prepared_stages": [
+    "canonical-problem-schema",
+    "checkpoint-resume-state",
+    "zip-inventory-script",
+    "normalized-unit-taxonomy",
+    "problem-answer-audit-rules",
+    "file-role-and-grade-classifier",
+    "github-actions-inventory-and-classification"
+  ],
+  "last_completed_batch": "bootstrap-file-classification-pipeline",
   "next_batch": "inventory-all-archives",
   "counts": {
     "files_discovered": 0,
@@ -28,7 +28,7 @@
     "canonical_records": 0
   },
   "resume_rule": "Never restart completed batches. Resume from next_batch and append audit logs.",
-  "blocking_issue": "Missing source archives: 中学実力錬成データ.zip, スタンダードデータ.zip, winpassデータ.zip",
-  "last_retry_jst": "2026-08-19T20:11:31+09:00",
+  "blocking_issue": "Missing source archives in GitHub branch source directory; the chat runtime still cannot read the mounted ZIP bytes because local execution returns ClientResponseError.",
+  "last_retry_jst": "2026-08-19T23:06:00+09:00",
   "last_retry_result": "TRANSIENT_RUNTIME_FILE_ACCESS_ERROR"
 }
