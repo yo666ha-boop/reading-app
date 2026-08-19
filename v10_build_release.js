@@ -44,3 +44,4 @@ const readme=[
 ].join('\n');
 fs.writeFileSync(path.join(out,'README.txt'),readme);
 console.log(`RELEASE BUILD PASS files=${local.length+3} scripts=${local.length} out=${out}`);
+// Release gate trigger: rerun after WebKit native-control overflow containment fix.
