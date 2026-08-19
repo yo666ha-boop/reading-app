@@ -1,11 +1,11 @@
 V10 FINAL RELEASE VALIDATION
-head=8942d0b32c4843bdd7daff4aa1e137446db4636a
+head=58e05f2ae5f3f3a63fdb71c04fb6b45e8817da61
 === v10_semantic_human_audit.txt ===
 V10 SEMANTIC HUMAN AUDIT
 status=HOLD
 required_passages=168
 sentence_review_complete=168
-rewrite_blueprint_complete=20
+rewrite_blueprint_complete=40
 prose_repaired=20
 translation_synchronized=20
 slash_synchronized=20
@@ -13,7 +13,7 @@ A_question_sets_synchronized=20
 B_question_sets_synchronized=20
 rendered_repair_verified=20
 human_meaning_approved=20
-phase=PROSE_REWRITE_CONTINUE_021
+phase=VERIFY_021_030_THEN_IMPLEMENT_031_040
 
 PURPOSE
 Structural, vocabulary, and browser tests can pass even when a passage is unnatural or semantically incoherent. V10 must not be released until every one of the 168 passages has been read as teaching material, the final English has been deliberately planned before editing, all prose problems have been repaired, and all dependent translations/slashes/questions have been synchronized.
@@ -33,16 +33,31 @@ REPAIR METHOD — REQUIRED FOR EVERY BATCH
 2. Check one scene/topic, sentence-to-sentence flow, chronology, speaker/reference clarity, and a natural ending where the vocabulary ceiling allows it.
 3. Never add a word or grammar form just to consume the available list.
 4. Only after the English is fixed, implement prose + natural Japanese full translation + slash rows + A questions/answers/evidence/evidenceJp/reasons + B questions/answers/evidence/evidenceJp/reasons as one synchronized repair set.
-5. Re-render actual stage2 data, then run DOM/full-coverage/B-set regressions before advancing the release gate.
+5. Re-render actual stage2 data, then run DOM/full-coverage/B-set regressions before advancing the verified counters.
 
-REPAIR CHECKPOINT
-- 001-010 planned first in rewrite_blueprints/v10_rewrite_blueprint_001_010.md and implemented by v10_semantic_runtime_repairs_001_010.js.
-- 011-020 planned first in rewrite_blueprints/v10_rewrite_blueprint_011_020.md and implemented by v10_semantic_runtime_repairs_011_020.js.
-- v10_interaction_metadata.js loads both semantic repair batches after the base A/B metadata. The dataset objects are mutated through the existing Sunshine G1 object references, so the effective rendered stage2 app receives the repaired passages without editing a shadowed source file.
-- Semantic dump workflow regenerated the effective passage files after both batches. Spot verification of rendered 001-010 and 011/018/020 confirms the planned prose, full translation, slash rows, A and B evidence are actually present in the rendered app. The workflow has also been strengthened so future repair pushes run v10_stage2_dom_test.js and v10_stage2_full_coverage_test.js and persist a durable regression report on PASS.
+COMPLETED THIS RUN
+- Confirmed the prior durable checkpoint: 001-020 remain fully planned, repaired, synchronized and rendered-verified.
+- Confirmed rewrite_blueprints/v10_rewrite_blueprint_021_030.md exists and is the planning gate for passages 021-030.
+- Created v10_semantic_runtime_repairs_021_030.js with synchronized prose, full translation, slash rows, A questions/answers/evidence/reasons and B metadata for passages 021-030.
+- Updated v10_interaction_metadata.js so the 021-030 repair batch loads after the base metadata and previous semantic repair batches.
+- Created rewrite_blueprints/v10_rewrite_blueprint_031_040.md, so the final English for passages 031-040 is decided before implementation.
 
-NEXT
-Start passage 021. Before implementation, create rewrite_blueprints/v10_rewrite_blueprint_021_030.md. Then synchronize prose -> translation -> slash -> A/B questions/evidence/reasons. Continue in passage order to 168 without skipping the planning step.
+CURRENT STAGE
+- 021-030 implementation is pushed but NOT YET counted as verified because the durable semantic render/regression report has not yet surfaced on the branch.
+- 031-040 blueprint is ready and must not be bypassed.
+
+REMAINING WORK
+- First verify the actual rendered 021-030 output and the DOM/full-coverage/B-set regressions. If any vocabulary/grammar/evidence problem appears, revise the 021-030 blueprint first when the planned English itself must change, then repair and rerun.
+- Once 021-030 passes, advance all synchronized/verified counters from 20 to 30.
+- Then implement 031-040 exactly from rewrite_blueprints/v10_rewrite_blueprint_031_040.md, synchronizing prose -> translation -> slash -> A/B questions/evidence/reasons, then re-render and regress.
+- Continue the same plan-first process for 041-050 and onward through 168.
+- After 168/168 semantic repair, run the complete technical/browser/print release gates. Keep main unchanged until final release conditions are satisfied.
+
+NEXT START POINT
+1. Check whether v10_semantic_batch_regression_report.txt and refreshed semantic_passages for source commits containing v10_semantic_runtime_repairs_021_030.js have appeared.
+2. If PASS and rendered 021-030 match the blueprint, set repaired/synchronized/rendered/human counters to 30 and proceed directly to implementing 031-040.
+3. If the report is missing or failed, inspect the exact workflow/run failure or effective rendered mismatch and fix from the first failing passage without discarding completed work.
+4. After 031-040 is verified, create the 041-050 blueprint and continue. Do not stop merely because one batch is complete.
 
 RELEASE CONDITION
 Keep HOLD until all 168 are planned/repaired/synchronized, technical regression gates pass, and the two unavailable sample PDFs are recovered/used or that blocker is explicitly resolved by the user.
