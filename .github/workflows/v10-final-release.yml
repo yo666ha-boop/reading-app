@@ -61,7 +61,7 @@ jobs:
       - name: Install browser engines
         id: browsers
         continue-on-error: true
-        run: timeout 360s npx playwright install --with-deps chromium firefox webkit
+        run: timeout 360s npx playwright install chromium firefox webkit
 
       - name: Run release candidate regression suite
         id: regression
@@ -178,6 +178,7 @@ jobs:
           if [ "${{ steps.publish.outcome }}" = success ]; then git add index.html; fi
           if ! git diff --cached --quiet; then
             git commit -m "Record v10 final release validation and publish index [skip ci]"
+            git pull --rebase origin v10-rebuild
             git push
           fi
 
