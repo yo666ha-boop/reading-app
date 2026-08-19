@@ -2,11 +2,8 @@ name: v10 slash quality
 on:
   push:
     branches: [v10-slash-rebuild]
-    paths:
-      - 'v10_semantic_runtime_final_fixes.js'
-      - 'v10_slash_quality_audit.js'
-      - '.github/workflows/v10-slash-quality.yml'
-      - 'v10_stage2.html'
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
