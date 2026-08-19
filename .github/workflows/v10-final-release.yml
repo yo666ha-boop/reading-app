@@ -12,6 +12,10 @@ on:
       - 'v10_stage2_full_coverage_test.js'
   workflow_dispatch:
 
+concurrency:
+  group: v10-final-release-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
