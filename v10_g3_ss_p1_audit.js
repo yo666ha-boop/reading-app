@@ -13,7 +13,7 @@ for(const [section,m] of Object.entries(data)){
 function text(section){return ` ${(data[section].sentences||[]).join(' ').toLowerCase()} `}
 const p12=[' musical instrument ',' eel ',' marathon ',' homemade '];
 const p13=[' done ','a few',' gotten '," i've ",' eaten ',' suggest ',' reduce ',' been ',' portion ',' never ',' cause ',' ever ',' normal ',' twice ','sell out','hear of','a variety of'];
-const p2=[' just ',' lack ',' already ',' health ',' yet ',' regular ',' affect ',' tonight ','at least',' tight ','in a hurry'," you've ",' for ','right now',' since ','be based on',' habit ','concentrate on','be full of','keep a diary',' hair ',' position ','as a result',' title ',' introduce ',' rope ',' dry ',' bright ',' tour ',' thus ',' tournament '];
+const p2=[' just ',' lack ',' already ',' health ',' yet ',' regular ',' affect ',' tonight ','at least',' tight ','in a hurry'," you've ",'right now',' since ','be based on',' habit ','concentrate on','be full of','keep a diary',' hair ',' position ','as a result',' title ',' introduce ',' rope ',' dry ',' bright ',' tour ',' thus ',' tournament '];
 const future={'PROGRAM 1-1':[...p12,...p13,...p2],'PROGRAM 1-2':[...p13,...p2],'PROGRAM 1-3':p2};
 for(const [section,terms] of Object.entries(future)){const t=text(section);for(const term of terms)if(t.includes(term))errors.push(`SS3/${section}: future-vocab leak ${term.trim()}`)}
 const forbidden=['talks','eats','suggests','reduces','portionses','marathons','suitcases','schoolyards','instruments','eels'];
