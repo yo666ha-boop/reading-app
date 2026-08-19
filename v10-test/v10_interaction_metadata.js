@@ -12,7 +12,8 @@ window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
   ['v10_interaction_metadata_nh_u2_u4.js',()=>window.V10_INTERACTION_META_NH_U2U4],
   ['v10_interaction_metadata_nh_u5_u7.js',()=>window.V10_INTERACTION_META_NH_U5U7],
   ['v10_interaction_metadata_nh_u8_u10.js',()=>window.V10_INTERACTION_META_NH_U8U10],
-  ['v10_semantic_runtime_repairs_001_010.js',()=>window.V10_INTERACTION_META_SEMANTIC_REPAIRS]
+  ['v10_semantic_runtime_repairs_001_010.js',()=>window.V10_INTERACTION_META_SEMANTIC_REPAIRS],
+  ['v10_semantic_runtime_repairs_011_020.js',()=>window.V10_INTERACTION_META_SEMANTIC_REPAIRS_011_020]
  ];
  let i=0;
  const next=()=>{
