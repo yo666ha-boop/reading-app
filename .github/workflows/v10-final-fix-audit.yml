@@ -6,6 +6,11 @@ on:
     paths:
       - 'v10_apply_final_runtime_fixes.js'
       - '.github/workflows/v10-final-fix-audit.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'v10_apply_final_runtime_fixes.js'
+      - '.github/workflows/v10-final-fix-audit.yml'
   workflow_dispatch:
 
 permissions:
@@ -41,6 +46,7 @@ jobs:
           echo "code=$code" >> "$GITHUB_OUTPUT"
           exit 0
       - name: Persist fixes and report
+        if: github.event_name == 'push'
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
