@@ -20,8 +20,8 @@ REFERENCE MATERIALS
 - unit1_textbook_booklet_sample_latest.docx : AVAILABLE AND REVIEWED; textbook-level natural dialogue/story continuity
 - 2026-04-26 supplied legacy reading-app premium/human-reviewed corpus : AVAILABLE AND REVIEWED; concrete model for sentence-to-sentence flow, small problem/change, and natural ending
 - canonical NH/SS 2026 vocabulary master : vocabulary chronology ceiling only; never a checklist to consume
-- 英語長文基本.pdf : NOT CURRENTLY SURFACED; do not claim inspected
-- 英語長文基本解答.pdf : NOT CURRENTLY SURFACED; do not claim inspected
+- 英語長文基本.pdf : NOT CURRENTLY SURFACED; File Library search on 2026-08-19 returned no matching PDF; do not claim inspected
+- 英語長文基本解答.pdf : NOT CURRENTLY SURFACED; File Library search on 2026-08-19 returned no matching PDF; do not claim inspected
 
 SENTENCE-FIRST AUDIT
 168/168 complete. Detailed verdicts are in v10_semantic_sentence_review.txt and sentence_review_batches/.
@@ -39,31 +39,41 @@ COMPLETED THROUGH CURRENT CHECKPOINT
 - Runtime/effective repair batches v10_semantic_runtime_repairs_001_010.js through v10_semantic_runtime_repairs_161_168.js: 168/168 created and connected through v10_interaction_metadata.js.
 - Prose, natural Japanese full translation, slash rows, A questions/answers/evidence/evidenceJp/reasons and B questionSetB synchronization: 168/168 implemented.
 - main remains untouched. PR #1 must remain draft/unmerged. status remains HOLD.
-- Existing stage2 full-coverage report records 168/168 sections and B-set availability 168/168, but this predates the strengthened semantic-runtime marker checks and is not sufficient by itself to advance rendered verification.
-- Added v10_semantic_runtime_audit.js and wired it into v10-audit workflow to audit the effective post-repair state.
-- First runtime-audit attempt timed out while waiting for the asynchronous metadata loader; this was diagnosed as an audit-harness timing problem rather than a passage-content verdict.
-- Reworked v10_semantic_runtime_audit.js to deterministically execute every repair file directly against the loaded stage2 passage globals, merge all repair B-metadata maps, and verify 168 total passages, translations, slash row counts, A/B question fields and verbatim evidence links.
+- Added deterministic v10_semantic_runtime_audit.js to execute all repair files over the effective stage2 data instead of trusting only pre-repair unit audits.
+- Effective audit exposed a generated JavaScript tail defect in v10_semantic_runtime_repairs_131_140.js and the same pattern in 141-150. The generated-map missing parenthesis was fixed durably in 131-140, 141-150, 151-160 and 161-168, and the audit workflow now syntax-checks every runtime repair file before tests.
+- After syntax repair, the effective audit reached all 168 passages and exposed a second real architecture issue: repair B-metadata used keys such as textbook|section, so identical PROGRAM/Unit section names across G1/G2/G3 could overwrite one another.
+- v10_interaction_metadata.js was changed to infer the matching grade from the B evidence and effective passage, and to register textbook|grade|section keys while keeping legacy keys for compatibility.
+- v10_stage2_dom_test.js was strengthened to wait for full runtime metadata loading and to assert final repaired titles, not stale pre-repair titles.
+- v10-audit workflow now contains a deterministic patch for stage2.html so genre/B lookup prefers textbook|grade|section and falls back to the legacy key only for compatibility. The workflow also includes G3 Sunshine P2-P7 audits and the 168-section full-coverage test.
 
 CURRENT STAGE
-Post-rewrite effective-runtime regression. The 168/168 content implementation is complete; technical verification is now the gating stage.
+Post-rewrite effective-runtime regression. Content work is 168/168; the current blocker is technical verification of the grade-aware metadata lookup and refreshed aggregate regression results.
+
+CURRENT CONCRETE FINDINGS
+1. Runtime syntax defects in the generated 131-168 tail pattern were real and are now repaired in repository repair files.
+2. B-question metadata collision across grades was real: the app lookup used textbook|section while G2/G3 static metadata already supports textbook|grade|section. Loader-side grade indexing is now committed.
+3. The latest durable v10_audit_report.txt visible at this checkpoint is stale relative to the newest fixes: it still reports the old G1 Sunshine GR6 failure and pre-grade-aware B evidence collisions. Do not treat those old failures as the verdict on the newest code.
+4. The latest durable v10_stage2.html observed before checkpoint write still had its previous blob SHA, so the workflow-generated grade-aware lookup patch must be confirmed as committed before increasing rendered verification counters.
+5. File Library search did not surface 英語長文基本.pdf or 英語長文基本解答.pdf.
 
 REMAINING WORK
-- Confirm the deterministic semantic-runtime audit result and fix any concrete failures.
-- Make vocabulary/prerequisite-grammar regression operate on the effective post-repair text, not only the pre-repair base data; repair any leaks or unsupported forms found.
-- Resolve the existing stage2 DOM regression failure (G1 Sunshine diary/GR6 selection) or prove the test expectation stale and correct the regression accordingly.
-- Run 168 coverage, B-set, DOM/browser and print/release-candidate regressions against the final effective state.
-- Perform final semantic/read-through gate and advance rendered_repair_verified / human_meaning_approved only from durable evidence.
-- Keep main unchanged until all technical gates pass.
-- 英語長文基本.pdf / 英語長文基本解答.pdf remain unavailable; do not claim they were read. If they remain a final publication condition after all other gates pass, record them as the sole external publication blocker and require explicit resolution before main release.
+- First confirm that stage2.html has durably received the grade-aware META lookup and that the newest aggregate report is from that code.
+- Re-run/confirm deterministic semantic-runtime audit. Required result: 168/168 effective passages, 168 repaired B metadata entries correctly associated by grade, all A/B evidence verbatim, slash row counts synchronized.
+- Confirm stage2 DOM G1 Sunshine GR6 genre selection after grade-aware metadata lookup; then verify representative G2/G3 final repaired titles and A/B switching.
+- Confirm G3 Sunshine P2-P7 vocabulary/morphology/chronology audits in the aggregate report, then extend effective vocabulary/prerequisite-grammar checking if static-base audits do not cover repaired prose.
+- Run the 168 full-coverage test, final browser/print tests, release-candidate/final-release gates, and final semantic read-through.
+- Advance rendered_repair_verified and human_meaning_approved only from durable evidence.
+- Keep main untouched throughout.
+- If all technical/content gates pass while the two sample PDFs remain unavailable, retain HOLD with those PDFs as the explicit external publication blocker pending user resolution.
 
 NEXT START
-1. Read the newest v10_audit_report.txt after the deterministic runtime audit commit and identify the first concrete failure.
-2. If semantic runtime audit passes, build/run effective vocabulary + prerequisite-grammar checks.
-3. Fix stage2 DOM regression, then run full browser/print/release-candidate checks.
-4. Update this checkpoint with durable PASS counts/results; do not stop merely because one sub-stage completes.
+1. Fetch v10_stage2.html and verify the code prefers META[textbook|grade|section].
+2. Fetch newest v10_audit_report.txt; ignore older report content by comparing commit/file SHA to the newest workflow-generated changes.
+3. Fix the first current failure, not a stale one.
+4. Continue through effective vocab/grammar -> DOM -> 168 coverage -> browser/print -> release candidate -> final semantic gate without stopping at an intermediate PASS.
 
 NEXT ENGINEERING STAGE
-Effective-runtime verification -> effective vocabulary/grammar regression -> DOM regression -> browser/print/release candidate -> final semantic/publication gate.
+Confirm grade-aware stage2 commit -> effective-runtime A/B/evidence PASS -> effective vocabulary/grammar -> DOM/full coverage -> browser/print/release candidate -> final semantic/publication gate.
 
 RELEASE CONDITION
 Keep HOLD until all 168 are planned/repaired/synchronized and genuinely re-rendered/verified, technical regression gates pass, and the two unavailable sample PDFs are recovered/used or that blocker is explicitly resolved by the user.
