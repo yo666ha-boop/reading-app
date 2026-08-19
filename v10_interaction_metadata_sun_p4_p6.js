@@ -30,18 +30,18 @@ window.V10_INTERACTION_META_P4P6={
  {prompt:'3. 行事について持っているものは何ですか。英語で答えなさい。',answer:'a photo',evidence:'We have a photo of the event.',evidenceJp:'行事の写真があります。',reason:'have の目的語が a photo です。'},
  {prompt:'4. 病院で何を過ごしますか。英語で答えなさい。',answer:'time',evidence:'We spend time at the hospital.',evidenceJp:'病院で時間を過ごします。',reason:'spend の目的語が time です。'}]},
 'サンシャイン|PROGRAM 6-1':{genre:'email',questionSetB:[
- {prompt:'1. 話し手が好きだと言うものとして、最初に出てくるものは何ですか。英語で答えなさい。',answer:'this story',evidence:'I like this story.',evidenceJp:'私はこの物語が好きです。',reason:'最初の like の目的語が this story です。'},
- {prompt:'2. 海賊も好きだと分かる英文を本文から1文抜き出しなさい。',answer:'I like him, too.',evidence:'I like him, too.',evidenceJp:'彼も好きです。',reason:'pirate の直後で him が海賊を指し、too が「〜も」を表しています。'},
- {prompt:'3. 探偵と海賊について、最後に何をしていますか。英語で答えなさい。',answer:'talk about the detective and the pirate',evidence:'We talk about the detective and the pirate.',evidenceJp:'私たちは探偵と海賊について話します。',reason:'talk about の後ろに2人が並んでいます。'},
- {prompt:'4. モンスターについての好みは強いですか。本文の英語表現を使って答えなさい。',answer:'not very much',evidence:'I don’t like the monster very much.',evidenceJp:'私はそのモンスターはあまり好きではありません。',reason:'don’t ... very much が「あまり〜ない」を表しています。'}]},
+ {prompt:'1. 物語の中で、探偵の次に紹介される人物は何ですか。英語で答えなさい。',answer:'a pirate',evidence:'That is a pirate.',evidenceJp:'あれは海賊です。',reason:'探偵の次の文で a pirate が紹介されています。'},
+ {prompt:'2. 海賊も好きだと分かる英文を本文から1文抜き出しなさい。',answer:'I like the pirate, too.',evidence:'I like the pirate, too.',evidenceJp:'私は海賊も好きです。',reason:'too が「〜も」を表しています。'},
+ {prompt:'3. モンスターについての好みは強いですか。本文の英語表現を使って答えなさい。',answer:'not very much',evidence:'I don’t like the monster very much.',evidenceJp:'私はそのモンスターはあまり好きではありません。',reason:'don’t ... very much が「あまり〜ない」を表しています。'},
+ {prompt:'4. 話し手は友達と何について話しますか。英語で答えなさい。',answer:'the story',evidence:'My friend and I talk about the story.',evidenceJp:'友達と私はその物語について話します。',reason:'talk about の後ろに the story があります。'}]},
 'サンシャイン|PROGRAM 6-2':{genre:'diary',questionSetB:[
- {prompt:'1. 話し手は公園へどの時間帯に行きますか。本文から英語で1語抜き出しなさい。',answer:'early',evidence:'I go to the park early.',evidenceJp:'私は早い時間に公園へ行きます。',reason:'early が行く時間の様子を表しています。'},
- {prompt:'2. 公園で読むこともありますか。本文に合うように Yes / No で答えなさい。',answer:'Yes',evidence:'I read there, too.',evidenceJp:'そこで本も読みます。',reason:'read there と明示されています。'},
+ {prompt:'1. 話し手は公園へどの時間帯に行きますか。本文から英語で1語抜き出しなさい。',answer:'early',evidence:'I go there early.',evidenceJp:'私は早い時間にそこへ行きます。',reason:'early が行く時間の様子を表しています。'},
+ {prompt:'2. 公園で読むこともありますか。本文に合うように Yes / No で答えなさい。',answer:'Yes',evidence:'I read there.',evidenceJp:'私はそこで本を読みます。',reason:'read there と明示されています。'},
  {prompt:'3. ときどき公園で何に乗りますか。英語で答えなさい。',answer:'my bicycle',evidence:'I sometimes ride my bicycle there.',evidenceJp:'ときどきそこで自転車に乗ります。',reason:'ride の目的語が my bicycle です。'},
- {prompt:'4. 公園はどのような場所ですか。本文から英語で1語抜き出しなさい。',answer:'quiet',evidence:'The park is quiet.',evidenceJp:'公園は静かです。',reason:'quiet が公園の様子です。'}]},
+ {prompt:'4. 2人は公園でどのように練習しますか。本文から英語で1語抜き出しなさい。',answer:'hard',evidence:'We practice hard there.',evidenceJp:'私たちはそこで一生懸命練習します。',reason:'hard が練習のしかたを表しています。'}]},
 'サンシャイン|PROGRAM 6-3':{genre:'report',questionSetB:[
- {prompt:'1. 子どもたちはどのくらい歩きますか。本文から英語で答えなさい。',answer:'for one hour',evidence:'They walk for one hour.',evidenceJp:'彼らは1時間歩きます。',reason:'for one hour が歩く時間を表しています。'},
- {prompt:'2. 親は何のために祈ることができますか。英語で答えなさい。',answer:'for safety',evidence:'A parent can pray for safety.',evidenceJp:'親は安全を祈ることができます。',reason:'for safety が祈る目的です。'},
+ {prompt:'1. 子どもたちはどのくらい歩きますか。本文から英語で答えなさい。',answer:'for one hour',evidence:'They walk for one hour to school.',evidenceJp:'彼らは学校まで1時間歩きます。',reason:'for one hour が歩く時間を表しています。'},
+ {prompt:'2. サバンナはどのようなことがありますか。本文から英語で1語抜き出しなさい。',answer:'dangerous',evidence:'The savanna can be dangerous.',evidenceJp:'サバンナは危険なことがあります。',reason:'dangerous がサバンナの危険性を表しています。'},
  {prompt:'3. 話し手は子どもたちについて誰に伝えたいですか。英語で答えなさい。',answer:'my friend',evidence:'I want to tell my friend about them.',evidenceJp:'友達に彼らのことを伝えたいです。',reason:'tell の相手が my friend です。'},
- {prompt:'4. 子どもたちは学校では安全ですか。本文に合うように Yes / No で答えなさい。',answer:'Yes',evidence:'The children are safe at school.',evidenceJp:'子どもたちは学校では安全です。',reason:'safe at school と明示されています。'}]}
+ {prompt:'4. 子どもたちは学校では安全ですか。本文に合うように Yes / No で答えなさい。',answer:'Yes',evidence:'At school, the children are safe.',evidenceJp:'学校では子どもたちは安全です。',reason:'safe at school と同じ内容が明示されています。'}]}
 };
