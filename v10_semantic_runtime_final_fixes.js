@@ -72,6 +72,13 @@
 
   function splitTrailingPP(seg){
     if(wc(seg)<6)return null;
+    // A reduced relative/participle phrase belongs together: "a notebook / made from recycled paper",
+    // not the misleading "a notebook made / from recycled paper".
+    const madeFrom=/\s+made\s+from\s+/i.exec(seg);
+    if(madeFrom){
+      const a=clean(seg.slice(0,madeFrom.index)),b=clean(seg.slice(madeFrom.index+1));
+      if(wc(a)>=3&&wc(b)>=3)return [a,b];
+    }
     const re=/\s+(in|at|on|with|for|from|about|after|before|during|near|around|along|by)\s+/ig;
     const hits=[];let m;while((m=re.exec(seg)))hits.push(m);
     for(const h of hits){
@@ -97,9 +104,7 @@
     const comma=s.indexOf(', ');
     if(comma>0){
       const left=s.slice(0,comma+1),right=s.slice(comma+2);
-      // Never create a one-word chunk such as "Today, / ..." or "First, / ...".
       if(startsInitial(left)&&wc(left)>=2&&wc(left)<=7&&wc(right)>=3)parts=[left,right];
-      // and is intentionally excluded: ", and" is very often only a noun/list boundary.
       else if(/,\s+(but|so|yet)\s+/i.test(s)){
         const m=/,\s+(but|so|yet)\s+/i.exec(s);parts=[clean(s.slice(0,m.index+1)),clean(s.slice(m.index+2))];
       }
@@ -109,9 +114,6 @@
         const z=splitOne(s,re);if(z&&wc(z[0])>=3&&wc(z[1])>=3){parts=z;break;}
       }
     }
-    // A complete core such as "I write dog" may be followed by a place/time phrase.
-    // This preserves the useful model "I write dog / in my notebook" without ever
-    // producing the bad model "I write / dog".
     if(parts.length===1){const z=splitTrailingPP(parts[0]);if(z)parts=z;}
     if(parts.length<3){
       const idx=parts.length-1,z=splitTrailingTime(parts[idx]);
@@ -154,9 +156,6 @@
         const natural=jp.length===p.sentences.length?jp[i]:'';
         let en=slashEnglish(s),n=en.split(' / ').length;
         let j=slashJapanese(natural,old[i]&&old[i].jp,n);
-        // Do not invent a slash boundary unless the Japanese forward-reading line can
-        // represent the same number of meaning units. Conservative unsplit is preferable
-        // to a grammatically or semantically false split.
         if(n>1&&String(j).split(/\s*\/\s*/).filter(Boolean).length!==n){
           en=clean(s);j=natural||stripOldJp(old[i]&&old[i].jp);n=1;
         }
