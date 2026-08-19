@@ -1,0 +1,69 @@
+name: v10 publish preview
+
+on:
+  push:
+    branches: [v10-rebuild]
+    paths:
+      - '.github/workflows/v10-publish-preview.yml'
+      - 'v10_stage2.html'
+      - 'v10_build_release.js'
+      - 'v10_vocab_corrections.js'
+      - 'v10_data_*.js'
+      - 'v10_interaction_metadata*.js'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: v10-preview-publish
+  cancel-in-progress: true
+
+jobs:
+  publish-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout v10 test branch
+        uses: actions/checkout@v4
+        with:
+          ref: v10-rebuild
+          path: src
+
+      - name: Build runtime-only preview package
+        working-directory: src
+        run: node v10_build_release.js
+
+      - name: Checkout production branch without replacing production index
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: site
+
+      - name: Publish under /v10-test only
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf site/v10-test
+          mkdir -p site/v10-test
+          cp -R src/release/v10_stage2_release/. site/v10-test/
+          {
+            echo "TEST PREVIEW ONLY"
+            echo "source_branch=v10-rebuild"
+            echo "source_sha=${GITHUB_SHA}"
+            echo "published_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          } > site/v10-test/PREVIEW_SOURCE.txt
+          test -f site/v10-test/index.html
+          test -f site/v10-test/v10_vocab_corrections.js
+
+      - name: Commit preview folder to main
+        working-directory: site
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add v10-test
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish v10 test preview [skip ci]"
+            git push origin main
+          fi
