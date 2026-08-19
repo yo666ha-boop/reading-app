@@ -61,6 +61,7 @@
   const wc=s=>String(s).trim().split(/\s+/).filter(Boolean).length;
   const clean=s=>String(s||'').replace(/\s+/g,' ').trim();
   const startsInitial=s=>/^(When|While|After|Before|If|Because|Although|Since|As|During|At|In|On|Near|From|For|With|Without|By|At first|In the end)\b/i.test(s);
+  const badLeftEnd=/\b(?:am|is|are|was|were|be|been|being|can|could|will|would|shall|should|may|might|must|do|does|did|have|has|had|a|an|the|my|your|his|her|our|their|this|these|those)$/i;
 
   function splitOne(seg,re){
     const m=re.exec(seg);if(!m)return null;
@@ -69,17 +70,38 @@
     return [a,b];
   }
 
+  function splitTrailingPP(seg){
+    if(wc(seg)<6)return null;
+    const re=/\s+(in|at|on|with|for|from|about|after|before|during|near|around|along|by)\s+/ig;
+    const hits=[];let m;while((m=re.exec(seg)))hits.push(m);
+    for(const h of hits){
+      const a=clean(seg.slice(0,h.index)),b=clean(seg.slice(h.index));
+      if(wc(a)>=2&&wc(b)>=2&&!badLeftEnd.test(a))return [a,b];
+    }
+    return null;
+  }
+
+  function splitTrailingTime(seg){
+    if(wc(seg)<4)return null;
+    const re=/\s+(every day|every morning|every night|this morning|that morning|last night|next time|right now|in the morning|in the afternoon|in the evening|at night|after school|after practice|before school|before bed)\.?$/i;
+    const m=re.exec(seg);if(!m)return null;
+    const a=clean(seg.slice(0,m.index)),b=clean(seg.slice(m.index));
+    if(wc(a)>=2&&wc(b)>=2&&!badLeftEnd.test(a))return [a,b];
+    return null;
+  }
+
   function slashEnglish(sentence){
     const s=clean(sentence);
-    if(wc(s)<=6)return s;
+    if(wc(s)<=5)return s;
     let parts=[s];
     const comma=s.indexOf(', ');
     if(comma>0){
       const left=s.slice(0,comma+1),right=s.slice(comma+2);
       // Never create a one-word chunk such as "Today, / ..." or "First, / ...".
       if(startsInitial(left)&&wc(left)>=2&&wc(left)<=7&&wc(right)>=3)parts=[left,right];
-      else if(/,\s+(but|so|and|yet)\s+/i.test(s)){
-        const m=/,\s+(but|so|and|yet)\s+/i.exec(s);parts=[clean(s.slice(0,m.index+1)),clean(s.slice(m.index+2))];
+      // and is intentionally excluded: ", and" is very often only a noun/list boundary.
+      else if(/,\s+(but|so|yet)\s+/i.test(s)){
+        const m=/,\s+(but|so|yet)\s+/i.exec(s);parts=[clean(s.slice(0,m.index+1)),clean(s.slice(m.index+2))];
       }
     }
     if(parts.length===1){
@@ -87,21 +109,13 @@
         const z=splitOne(s,re);if(z&&wc(z[0])>=3&&wc(z[1])>=3){parts=z;break;}
       }
     }
+    // A complete core such as "I write dog" may be followed by a place/time phrase.
+    // This preserves the useful model "I write dog / in my notebook" without ever
+    // producing the bad model "I write / dog".
+    if(parts.length===1){const z=splitTrailingPP(parts[0]);if(z)parts=z;}
     if(parts.length<3){
-      const idx=parts.length-1,seg=parts[idx];
-      if(wc(seg)>=8){
-        const tails=[
-          /\s+(every day|every morning|every night|this morning|that morning|last night|next time|right now|in the morning|in the afternoon|in the evening|at night|after school|after practice|before school|before bed)\.?$/i,
-          /\s+(around|near|along|inside|outside)\s+the\s+[A-Za-z][A-Za-z'’.-]*(?:\s+[A-Za-z][A-Za-z'’.-]*)?\.?$/i
-        ];
-        for(const re of tails){
-          const m=re.exec(seg);if(!m)continue;
-          const a=clean(seg.slice(0,m.index)),b=clean(seg.slice(m.index));
-          if(wc(a)>=4&&wc(b)>=2&&!/(?:\b(?:am|is|are|was|were|be|been|being|can|could|will|would|should|must|may|might|do|does|did|have|has|had)|\b(?:like|love|see|saw|eat|ate|read|write|play|visit|make|made|take|took|buy|bought|want|need|know|ask|tell|told|choose|chose|open|put))$/i.test(a)){
-            parts.splice(idx,1,a,b);break;
-          }
-        }
-      }
+      const idx=parts.length-1,z=splitTrailingTime(parts[idx]);
+      if(z)parts.splice(idx,1,...z);
     }
     return parts.map(clean).join(' / ');
   }
@@ -149,7 +163,7 @@
         rows++;return {en,jp:j};
       });
       p.slashReadingVersion='meaning-chunks-v2';
-      p.auditNote=String(p.auditNote||'')+' スラッシュは文法記号ではなく前から意味を取れる自然な意味単位で再構成。短い基本文は無理に分割せず、be+補語・助動詞+動詞・動詞+短い目的語を分断しない。日本語側が同じ意味単位に対応できない場合は無理に切らない。';
+      p.auditNote=String(p.auditNote||'')+' スラッシュは文法記号ではなく前から意味を取れる自然な意味単位で再構成。短い基本文は無理に分割せず、be+補語・助動詞+動詞・動詞+短い目的語を分断しない。場所・時・理由などは主節を壊さない範囲で前から読める単位に分け、日本語側が同じ意味単位に対応できない場合は無理に切らない。';
       rebuilt++;
     }
   }
