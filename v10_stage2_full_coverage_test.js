@@ -41,3 +41,4 @@ function change(w,el,v){el.value=v;el.dispatchEvent(new w.Event('change',{bubble
  console.log(`STAGE2 FULL COVERAGE PASS: ${summary.join(' / ')} / total=${total} / B-sets=${bEnabled}`);
  dom.window.close();
 })().catch(e=>{console.error(`STAGE2 FULL COVERAGE FAIL: ${e.stack||e}`);process.exit(1)});
+// 2026-08-19 semantic repairs 168/168 regression trigger
