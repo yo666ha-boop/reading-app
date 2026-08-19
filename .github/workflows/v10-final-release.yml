@@ -30,6 +30,12 @@ jobs:
         run: |
           echo "V10 FINAL RELEASE VALIDATION" > v10_final_release_report.txt
           echo "head=${GITHUB_SHA}" >> v10_final_release_report.txt
+          {
+            echo "run_id=${GITHUB_RUN_ID}"
+            echo "run_attempt=${GITHUB_RUN_ATTEMPT}"
+            echo "head=${GITHUB_SHA}"
+            echo "artifact_name=v10-stage2-release-20260819"
+          } > v10_final_release_run.txt
 
       - name: Install test dependencies
         id: deps
@@ -151,7 +157,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add v10_final_release_report.txt
+          git add v10_final_release_report.txt v10_final_release_run.txt
           if [ -f v10_final_browser_print_report.txt ]; then git add v10_final_browser_print_report.txt; fi
           if [ "${{ steps.publish.outcome }}" = success ]; then git add index.html; fi
           if ! git diff --cached --quiet; then
