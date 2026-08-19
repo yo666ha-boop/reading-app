@@ -1,0 +1,31 @@
+{
+  "version":"2026-08-19-v1",
+  "status_order":["UNPROCESSED","PAIR_CANDIDATE","PAIR_MATCHED","AUTO_VERIFIED","HUMAN_REVIEW","CANONICAL"],
+  "error_codes":{
+    "ANSWER_MISMATCH":"元解答と再計算結果が一致しない",
+    "ANSWER_MISSING":"問題に対応する解答が見つからない",
+    "QUESTION_MISSING":"解答に対応する問題が見つからない",
+    "NUMBER_SHIFT":"問題番号と解答番号にずれの疑い",
+    "CONDITION_INSUFFICIENT":"条件不足で一意に解けない",
+    "FIGURE_MISSING":"解答に必要な図・表・グラフが不足",
+    "MULTIPLE_VALID_ANSWERS":"複数の正答が成立する",
+    "UNIT_AMBIGUOUS":"学年・単元の自動分類が曖昧",
+    "SOURCE_TEXT_UNCERTAIN":"文字化け・欠損等で原文確認が必要",
+    "HUMAN_REVIEW_REQUIRED":"自動検証のみで正本化しない"
+  },
+  "verification_rules":[
+    "元教材の解答を正解と仮定しない",
+    "問題文・条件・図を確認して独立に再計算する",
+    "数値が一致しても式・単位・近似条件・解の範囲まで確認する",
+    "証明・作図・記述は単純な文字列一致で合格にしない",
+    "図形問題は図がなくても解けるかを確認し、必要ならFIGURE_MISSINGとする",
+    "出典名・元ファイル・元ページ・元番号は正本化後も保持する",
+    "類題は原問題を上書きせず別IDで追加する",
+    "重複問題は削除せずsame_pattern_groupで関連付ける"
+  ],
+  "canonical_gate":{
+    "required":["source","grade","unit_id","question_text","verified_answer","verification_status"],
+    "allowed_verification_status":["AUTO_VERIFIED","HUMAN_VERIFIED"],
+    "forbidden_errors":["ANSWER_MISMATCH","CONDITION_INSUFFICIENT","FIGURE_MISSING","SOURCE_TEXT_UNCERTAIN"]
+  }
+}
