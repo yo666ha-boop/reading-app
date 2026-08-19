@@ -1,12 +1,31 @@
 {
   "project": "mikami-math-problem-bank",
-  "status": "WAITING_FOR_SOURCE_ARCHIVES",
-  "current_stage": "ZIP_INVENTORY",
+  "status": "APP_LAYER_PREPARED_PENDING_FINAL_ARTIFACT_REVERIFY",
+  "current_stage": "APP_DATA_LAYER",
   "source_archives": [
-    {"name": "中学実力錬成データ.zip", "status": "PENDING"},
-    {"name": "スタンダードデータ.zip", "status": "PENDING"},
-    {"name": "winpassデータ.zip", "status": "PENDING"}
+    {"name": "中学実力錬成データ.zip", "status": "COMPLETION_RECORDED_BUT_NOT_REVERIFIED_THIS_RUN"},
+    {"name": "スタンダードデータ.zip", "status": "COMPLETION_RECORDED_BUT_NOT_REVERIFIED_THIS_RUN"},
+    {"name": "winpassデータ.zip", "status": "COMPLETION_RECORDED_BUT_NOT_REVERIFIED_THIS_RUN"}
   ],
+  "recorded_completion_claim": {
+    "original_records": 1124,
+    "winpass": 570,
+    "実力錬成": 237,
+    "standard": 317,
+    "generated_variants": 107,
+    "final_records": 1231,
+    "documents_covered": 140,
+    "blank_questions": 0,
+    "blank_answers": 0,
+    "exact_duplicates": 0,
+    "figure_ref_failures": 0,
+    "math_structure_failures": 0,
+    "variant_recalc_pass": "107/107",
+    "markdown_table_repairs": 33,
+    "true_source_text_repairs": 2,
+    "artifact": "/mnt/data/みかみ塾数学問題バンク_最終完成版_20260820.zip",
+    "audit": "/mnt/data/mathbank_run/MATHBANK_FINAL_AUDIT_V2.json"
+  },
   "prepared_stages": [
     "canonical-problem-schema",
     "checkpoint-resume-state",
@@ -14,10 +33,12 @@
     "normalized-unit-taxonomy",
     "problem-answer-audit-rules",
     "file-role-and-grade-classifier",
-    "github-actions-inventory-and-classification"
+    "github-actions-inventory-and-classification",
+    "app-record-schema",
+    "app-record-validator"
   ],
-  "last_completed_batch": "bootstrap-file-classification-pipeline",
-  "next_batch": "inventory-all-archives",
+  "last_completed_batch": "prepare-app-record-contract-and-validator",
+  "next_batch": "reverify-final-artifact-and-convert-to-app-records",
   "counts": {
     "files_discovered": 0,
     "problems_extracted": 0,
@@ -25,10 +46,27 @@
     "pairs_matched": 0,
     "pairs_verified": 0,
     "mismatches": 0,
-    "canonical_records": 0
+    "canonical_records": 0,
+    "app_records_verified": 0
   },
-  "resume_rule": "Never restart completed batches. Resume from next_batch and append audit logs.",
-  "blocking_issue": "Missing source archives in GitHub branch source directory; the chat runtime still cannot read the mounted ZIP bytes because local execution returns ClientResponseError.",
-  "last_retry_jst": "2026-08-19T23:06:00+09:00",
-  "last_retry_result": "TRANSIENT_RUNTIME_FILE_ACCESS_ERROR"
+  "resume_rule": "Do not trust stale checkpoint or completion claim over real files. Reverify final artifact first; then convert only verified records. Never restart completed app-layer preparation.",
+  "blocking_issue": "Transient local runtime ClientError prevented direct verification of the recorded final ZIP and audit JSON in this run. File Library search did not surface the final artifact. GitHub checkpoint was stale relative to the later completion record, so completion remains provisional until direct artifact verification succeeds.",
+  "last_retry_jst": "2026-08-20T07:08:00+09:00",
+  "last_retry_result": "TRANSIENT_RUNTIME_FILE_ACCESS_ERROR",
+  "github_branch": "math-problem-bank-bootstrap",
+  "github_main_touched": false,
+  "run_result": {
+    "PASS": [
+      "GitHub isolation branch accessible",
+      "App record schema committed",
+      "App record validator committed",
+      "Checkpoint reconciled to require artifact re-verification"
+    ],
+    "FAIL_OR_BLOCKED": [
+      "Direct final ZIP existence/content verification",
+      "Direct MATHBANK_FINAL_AUDIT_V2.json verification",
+      "1231-record app conversion",
+      "Validator execution against real app records"
+    ]
+  }
 }
