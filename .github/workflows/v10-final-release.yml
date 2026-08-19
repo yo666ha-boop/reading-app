@@ -26,17 +26,27 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Initialize report
+        run: |
+          echo "V10 FINAL RELEASE VALIDATION" > v10_final_release_report.txt
+          echo "head=${GITHUB_SHA}" >> v10_final_release_report.txt
+
       - name: Install test dependencies
+        id: deps
+        continue-on-error: true
         run: npm install --no-save --no-package-lock jsdom@24.1.3 playwright@1.55.0
 
       - name: Install browser engines
+        id: browsers
+        continue-on-error: true
         run: npx playwright install --with-deps chromium firefox webkit
 
       - name: Run release candidate regression suite
+        id: regression
+        continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
-          : > v10_final_release_report.txt
           for f in \
             v10_audit_test.js \
             v10_dom_test.js \
@@ -54,6 +64,8 @@ jobs:
           echo "FINAL REGRESSION SUITE PASS" | tee -a v10_final_release_report.txt
 
       - name: Recheck all 168 stage2 masters
+        id: coverage
+        continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
@@ -61,6 +73,8 @@ jobs:
           node v10_stage2_full_coverage_test.js 2>&1 | tee v10_stage2_full_coverage_report.txt | tee -a v10_final_release_report.txt
 
       - name: Cross-browser and print validation
+        id: browserprint
+        continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
@@ -68,6 +82,8 @@ jobs:
           node v10_final_browser_print_test.js 2>&1 | tee v10_final_browser_print_report.txt | tee -a v10_final_release_report.txt
 
       - name: Build offline release package
+        id: package
+        continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
@@ -77,9 +93,33 @@ jobs:
           sha256sum v10_stage2_release_20260819.zip > v10_stage2_release_20260819.sha256
           cat v10_stage2_release_20260819.sha256
           cd ..
-          echo "V10 FINAL RELEASE PASS: regression suite, 168/168 coverage, Chromium, Firefox, WebKit-iPhone, print CSS, A4 PDF generation, dependency completeness, and offline ZIP packaging all passed." | tee -a v10_final_release_report.txt
+
+      - name: Summarize outcomes
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "=== STEP OUTCOMES ==="
+            echo "deps=${{ steps.deps.outcome }}"
+            echo "browsers=${{ steps.browsers.outcome }}"
+            echo "regression=${{ steps.regression.outcome }}"
+            echo "coverage=${{ steps.coverage.outcome }}"
+            echo "browserprint=${{ steps.browserprint.outcome }}"
+            echo "package=${{ steps.package.outcome }}"
+          } | tee -a v10_final_release_report.txt
+          if [ "${{ steps.deps.outcome }}" = success ] && \
+             [ "${{ steps.browsers.outcome }}" = success ] && \
+             [ "${{ steps.regression.outcome }}" = success ] && \
+             [ "${{ steps.coverage.outcome }}" = success ] && \
+             [ "${{ steps.browserprint.outcome }}" = success ] && \
+             [ "${{ steps.package.outcome }}" = success ]; then
+            echo "V10 FINAL RELEASE PASS: regression suite, 168/168 coverage, Chromium, Firefox, WebKit-iPhone, print CSS, A4 PDF generation, dependency completeness, and offline ZIP packaging all passed." | tee -a v10_final_release_report.txt
+          else
+            echo "V10 FINAL RELEASE FAIL" | tee -a v10_final_release_report.txt
+          fi
 
       - name: Upload release ZIP
+        if: steps.deps.outcome == 'success' && steps.browsers.outcome == 'success' && steps.regression.outcome == 'success' && steps.coverage.outcome == 'success' && steps.browserprint.outcome == 'success' && steps.package.outcome == 'success'
         uses: actions/upload-artifact@v4
         with:
           name: v10-stage2-release-20260819
@@ -93,12 +133,18 @@ jobs:
           retention-days: 30
 
       - name: Commit final validation report
+        if: always()
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add v10_final_release_report.txt v10_final_browser_print_report.txt
+          git add v10_final_release_report.txt
+          if [ -f v10_final_browser_print_report.txt ]; then git add v10_final_browser_print_report.txt; fi
           if ! git diff --cached --quiet; then
             git commit -m "Record v10 final release validation [skip ci]"
             git push
           fi
+
+      - name: Fail final release when any gate failed
+        if: steps.deps.outcome != 'success' || steps.browsers.outcome != 'success' || steps.regression.outcome != 'success' || steps.coverage.outcome != 'success' || steps.browserprint.outcome != 'success' || steps.package.outcome != 'success'
+        run: exit 1
