@@ -25,3 +25,7 @@ G3 NH U0-U1 AUDIT PASS: Unit 0 through Unit 1 passages, slash rows, A/B question
 G3 NH U2 AUDIT passages=4/4 alternate_questions=20
 G3 NH U2 CANONICAL v7=Part1 -> 2-1 / Part2 -> 2-2 / ReadThink1,2 shared pool split first-half -> 2-3 and second-half -> 2-4; Unit3 vocabulary gated
 G3 NH U2 AUDIT PASS: Unit 2 passages, slash rows, A/B questions, evidence links, release flags, morphology guard, shared-pool chronology, and Unit3 future-vocab gate are consistent.
+G3 NH U3 AUDIT passages=4/4 alternate_questions=20
+G3 NH U3 CANONICAL v7=Part1 -> 3-1 / Part2 -> 3-2 / ReadThink1,2 shared pool split first-half -> 3-3 and second-half + sea otter textbook term -> 3-4; Unit4 vocabulary gated
+G3 NH U3 AUDIT FAIL 1
+- NH3/Unit 3-1: future-vocab leak want
