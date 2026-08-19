@@ -13,7 +13,7 @@ for(const [n,sec,title,s,j,qq] of data){
   const questions=qq.map(x=>mk(x,s,j));
   Object.assign(window.V10_PASSAGES_G3_SS[sec],{title,sentences:s,fullTranslation:j.join(''),slashRows:s.map((e,i)=>({en:slash(e),jp:j[i].replace('、','、 / ')})),questions,auditNote:'Passage '+n+': sentence-first blueprintに基づき、1つの場面・話題へ再構成。'});
   const b=[questions[4],questions[2],questions[0],questions[3]];
-  meta['サンシャイン|'+sec]={genre:'report',questionSetB:b.map((z,i)=>({...z,prompt:(i+1)+'. '+z.prompt.replace(/^\\d+\\.\\s*/,'')))};
+  meta['サンシャイン|'+sec]={genre:'report',questionSetB:b.map((z,i)=>({...z,prompt:(i+1)+'. '+z.prompt.replace(/^\\d+\\.\\s*/,'')}))};
 }
 window.V10_INTERACTION_META_SEMANTIC_REPAIRS_131_140=meta;
 })();`;
