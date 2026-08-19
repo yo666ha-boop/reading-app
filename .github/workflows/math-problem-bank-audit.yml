@@ -1,0 +1,44 @@
+name: Math Problem Bank Audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - math-problem-bank-bootstrap
+    paths:
+      - 'math-bank/source/**'
+      - 'math-bank/scripts/**'
+      - 'math-bank/schema/**'
+      - '.github/workflows/math-problem-bank-audit.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Inventory source archives
+        run: python math-bank/scripts/inventory.py
+
+      - name: Commit checkpoint and manifest
+        if: always()
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add math-bank/state/checkpoint.json math-bank/out/archive_manifest.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'update math problem bank inventory checkpoint'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
