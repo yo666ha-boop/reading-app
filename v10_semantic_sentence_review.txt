@@ -1,0 +1,66 @@
+V10 SENTENCE-FIRST HUMAN REVIEW
+status=IN_PROGRESS
+scope=168 rendered passages
+reviewed_passages=15
+sentence_review_only=true
+questions_slash_review_deferred=true
+
+RULE
+First judge the English passage itself as reading material. Do not let vocabulary-gate PASS, grammar-gate PASS, slash consistency, or question consistency override an unnatural passage. Questions/slashes are reviewed only after the passage is accepted or rewritten.
+
+PASSAGE 001 | 中1 Sunshine Get Ready 2 | REWRITE
+Current flow: English book -> dog -> cat -> notebook -> can read.
+Problems: speaker roles are invisible; “This is a dog / This is a cat” does not clearly mean pictures in the book; the dialogue is a sequence of target expressions rather than a natural mini-scene; repeated Great! is filler. Keep the English-book scene, but rebuild it as one clear classroom/book-sharing exchange.
+
+PASSAGE 002 | 中1 Sunshine Get Ready 3 | REWRITE
+Problems: “Do you have your English book? / Yes, I do. / I have my English book.” is redundant drill English; “Can you read English?” then “I like English, too. / Really?” does not form a natural ending. Rebuild as one short conversation about an English class/book.
+
+PASSAGE 003 | 中1 Sunshine Get Ready 4 | LIGHT_REWRITE
+Strength: basketball topic is consistent.
+Problems: it changes from first-person report to an unlabeled Q&A and then back to first-person; “I enjoy basketball.” is a weak final sentence after “Let’s play ... / Great!”. Keep one speaker format or clearly coherent dialogue and give it a natural ending.
+
+PASSAGE 004 | 中1 Sunshine Get Ready 5 | REWRITE
+Problems: “Do you like the zoo?” asks about the place, then “What do you like?” abruptly means animals; animal names are then listed through repeated like-patterns. It reads as vocabulary practice, not a coherent conversation. Rebuild around choosing a favorite animal at the zoo.
+
+PASSAGE 005 | 中1 Sunshine Get Ready 6 | REWRITE_MAJOR
+Problems: lunch/pizza is disconnected from the zoo; five consecutive “I saw ...” sentences are a vocabulary list; present-tense likes/Q&A are appended after the past-tense zoo visit without a natural conversational frame. Rebuild as a single zoo-visit diary/story with a beginning, one or two notable animals/events, and an ending.
+
+PASSAGE 006 | 中1 Sunshine PROGRAM 1-1 | REWRITE
+Problems: self-introduction is a list of independent facts: not shy/friendly -> teacher -> music/trumpet -> Wednesday -> school -> basketball. The facts are grammatical but do not develop as a reading passage. Rebuild around “my school life” or “music club” and keep only facts that support that one topic.
+
+PASSAGE 007 | 中1 Sunshine PROGRAM 1-2 | REWRITE_MAJOR
+Problems: “I’m from Australia. I’m not from Japan. I’m not from the U.S.” is obvious negative-form drilling, not natural communication; teacher/Japan/friendly/school facts are appended without development. Rebuild as an Australian student introducing themself to a Japanese class; one country comparison/reference is enough.
+
+PASSAGE 008 | 中1 Sunshine PROGRAM 1-3 | REWRITE_MAJOR
+Problems: city -> new class -> quiet/cheerful -> math/science/Japanese -> movies -> teacher -> want to be friendly. This is vocabulary dumping inside a self-introduction. “I’m quiet” and “I want to be friendly” could support a new-student story, but the unrelated subject/movie list should not dominate. Rebuild around the first day in a new class.
+
+PASSAGE 009 | 中1 Sunshine PROGRAM 2-1 | REWRITE_MAJOR
+Problems: after-school bicycle ride -> go home -> read/watch tennis -> “I don’t watch tennis after school.” The last statement conflicts with the preceding after-school/home timeline if home activities occur after school. Tennis is also unrelated to the bicycle/town topic. Rebuild as one after-school bicycle routine; remove contradictory/unrelated drill sentences.
+
+PASSAGE 010 | 中1 Sunshine PROGRAM 2-2 | REWRITE_MAJOR
+Problems: time sequence is disordered: before dinner -> after dinner -> weekend bicycle ride -> before dinner again -> after dinner again. Study, tennis, bicycle, town, cleaning are mixed without a single narrative center. Rebuild chronologically, either as a weekend day routine or a study routine, not both as separate vocabulary clusters.
+
+PASSAGE 011 | 中1 Sunshine PROGRAM 2-3 | REWRITE_MAJOR
+Problems: “I have a question. / Sure. / This pencil is for you.” contains no actual question and is semantically broken. The pencil/two/break/tomorrow sequence looks like words forced into the dialogue. Rebuild as two students drawing together during a break; if “question” is kept, the question must actually follow.
+
+PASSAGE 012 | 中1 Sunshine PROGRAM 3-1 | REWRITE
+Problems: ski family list switches abruptly to mother/grandparents dancing. It is a can/can’t inventory rather than a winter-family passage. Rebuild around a winter family outing or around family talents, but do not mix two unrelated ability lists.
+
+PASSAGE 013 | 中1 Sunshine PROGRAM 3-2 | REWRITE_MAJOR
+Problems: French -> guitar -> skating -> magic trick -> after-school practice -> guitar -> skating. This is a direct vocabulary/Can-you checklist. Rebuild around planning one after-school activity; only abilities relevant to the plan should remain.
+
+PASSAGE 014 | 中1 Sunshine PROGRAM 3-3 | LIGHT_REWRITE
+Strength: rescue robot is one coherent topic and its abilities mostly support that topic.
+Problems: “people in a tree” is awkward; “Good luck!” has no clear addressee; “The robot is in our show” and the closing “Our show is great” need a clearer school-show context. Keep the robot passage but improve the setup and ending.
+
+PASSAGE 015 | 中1 Sunshine PROGRAM 4-1 | LIGHT_REWRITE
+Strength: one picture/animal-identification scene.
+Problems: “Look at that ant.” immediately before “Is that a butterfly?” is logically odd because the speaker has already identified it as an ant. The sequence should be “Look at that. Is that a butterfly? ... No, that is an ant.” Rebuild that local exchange; the rest of the scene can stay close to the current structure.
+
+SUMMARY 001-015
+REWRITE_MAJOR=7
+REWRITE=5
+LIGHT_REWRITE=3
+PASS_AS_IS=0
+
+Important finding: 15/15 passages need at least some prose-level correction. This confirms that prior structural/vocabulary audits were not sufficient for reading-material quality. Continue sentence-first review through 168 before doing the question/slash pass.
