@@ -2,16 +2,16 @@ V10 SEMANTIC HUMAN AUDIT
 status=HOLD
 required_passages=168
 sentence_review_complete=168
-rewrite_blueprint_complete=90
-implementation_pushed_through=90
-prose_repaired=20
-translation_synchronized=20
-slash_synchronized=20
-A_question_sets_synchronized=20
-B_question_sets_synchronized=20
+rewrite_blueprint_complete=168
+implementation_pushed_through=168
+prose_repaired=168
+translation_synchronized=168
+slash_synchronized=168
+A_question_sets_synchronized=168
+B_question_sets_synchronized=168
 rendered_repair_verified=20
 human_meaning_approved=20
-phase=PLAN_IMPLEMENT_091_100_THEN_CONTINUE
+phase=POST_REWRITE_EFFECTIVE_RUNTIME_REGRESSION
 
 PURPOSE
 Structural, vocabulary, and browser tests can pass even when a passage is unnatural or semantically incoherent. V10 must not be released until every one of the 168 passages has been read as teaching material, the final English has been deliberately planned before editing, all prose problems have been repaired, and all dependent translations/slashes/questions have been synchronized.
@@ -33,40 +33,37 @@ REPAIR METHOD — REQUIRED FOR EVERY BATCH
 4. Only after the English is fixed, implement prose + natural Japanese full translation + slash rows + A questions/answers/evidence/evidenceJp/reasons + B questions/answers/evidence/evidenceJp/reasons as one synchronized repair set.
 5. Re-render actual stage2 data, then run DOM/full-coverage/B-set regressions before advancing the verified counters.
 
-COMPLETED BEFORE THIS RUN
-- 001-020 planned, implemented, synchronized and rendered-verified.
-- 021-070 planned and synchronized implementation pushed; verification counters remain conservative because the generated semantic dump/regression report has not refreshed.
-- 071-080 final English blueprint had been created, but runtime implementation had not yet been pushed.
-
-COMPLETED THIS RUN
-- Confirmed the durable checkpoint and branch v10-rebuild before editing.
-- Created v10_semantic_runtime_repairs_071_080.js from the existing 071-080 blueprint, including prose, natural Japanese translation, slash rows, A questions and synchronized B questionSetB metadata for all ten passages.
-- Added the 071-080 repair batch to v10_interaction_metadata.js.
-- Read sentence_review_batches/v10_sentence_review_081_090.txt and current semantic_passages/v10_semantic_081.txt through v10_semantic_090.txt.
-- Created rewrite_blueprints/v10_rewrite_blueprint_081_090.md before effective-data edits.
-- Created v10_semantic_runtime_repairs_081_090.js with synchronized prose, translation, slash rows, A and B evidence/reasons for all ten passages.
-- Added the 081-090 repair batch to v10_interaction_metadata.js.
-- main remains untouched and status remains HOLD.
+COMPLETED THROUGH CURRENT CHECKPOINT
+- Sentence-first human review: 168/168.
+- Final-English blueprints in rewrite_blueprints/: 168/168.
+- Runtime/effective repair batches v10_semantic_runtime_repairs_001_010.js through v10_semantic_runtime_repairs_161_168.js: 168/168 created and connected through v10_interaction_metadata.js.
+- Prose, natural Japanese full translation, slash rows, A questions/answers/evidence/evidenceJp/reasons and B questionSetB synchronization: 168/168 implemented.
+- main remains untouched. PR #1 must remain draft/unmerged. status remains HOLD.
+- Existing stage2 full-coverage report records 168/168 sections and B-set availability 168/168, but this predates the strengthened semantic-runtime marker checks and is not sufficient by itself to advance rendered verification.
+- Added v10_semantic_runtime_audit.js and wired it into v10-audit workflow to audit the effective post-repair state.
+- First runtime-audit attempt timed out while waiting for the asynchronous metadata loader; this was diagnosed as an audit-harness timing problem rather than a passage-content verdict.
+- Reworked v10_semantic_runtime_audit.js to deterministically execute every repair file directly against the loaded stage2 passage globals, merge all repair B-metadata maps, and verify 168 total passages, translations, slash row counts, A/B question fields and verbatim evidence links.
 
 CURRENT STAGE
-- Final English planning complete through passage 090.
-- Synchronized implementation pushed through passage 090.
-- Last genuinely rendered/regression-verified passage remains 020 until runtime verification infrastructure produces a durable refreshed report.
+Post-rewrite effective-runtime regression. The 168/168 content implementation is complete; technical verification is now the gating stage.
 
 REMAINING WORK
-- Continue immediately with 091-100: read the existing sentence-review batch and current semantic passages, create the final-English blueprint first, then implement prose/translation/slash/A/B synchronization and load the repair batch.
-- Continue the same cycle through 168 without waiting on the missing regression report.
-- When verification infrastructure is available, re-render/verify 021 onward; repair the first concrete failure before increasing verified counters.
-- After 168/168 planning/implementation: full vocabulary/grammar/coverage/browser/print regressions and a final semantic read-through.
+- Confirm the deterministic semantic-runtime audit result and fix any concrete failures.
+- Make vocabulary/prerequisite-grammar regression operate on the effective post-repair text, not only the pre-repair base data; repair any leaks or unsupported forms found.
+- Resolve the existing stage2 DOM regression failure (G1 Sunshine diary/GR6 selection) or prove the test expectation stale and correct the regression accordingly.
+- Run 168 coverage, B-set, DOM/browser and print/release-candidate regressions against the final effective state.
+- Perform final semantic/read-through gate and advance rendered_repair_verified / human_meaning_approved only from durable evidence.
+- Keep main unchanged until all technical gates pass.
+- 英語長文基本.pdf / 英語長文基本解答.pdf remain unavailable; do not claim they were read. If they remain a final publication condition after all other gates pass, record them as the sole external publication blocker and require explicit resolution before main release.
 
 NEXT START
-1. Read sentence_review_batches/v10_sentence_review_091_100.txt and semantic_passages/v10_semantic_091.txt onward.
-2. Create rewrite_blueprints/v10_rewrite_blueprint_091_100.md first.
-3. Implement v10_semantic_runtime_repairs_091_100.js and add it to v10_interaction_metadata.js.
-4. Continue 101 onward without stopping.
+1. Read the newest v10_audit_report.txt after the deterministic runtime audit commit and identify the first concrete failure.
+2. If semantic runtime audit passes, build/run effective vocabulary + prerequisite-grammar checks.
+3. Fix stage2 DOM regression, then run full browser/print/release-candidate checks.
+4. Update this checkpoint with durable PASS counts/results; do not stop merely because one sub-stage completes.
 
 NEXT ENGINEERING STAGE
-Plan/implement/synchronize 091-100, then continue through 168. Preserve status=HOLD and do not touch main.
+Effective-runtime verification -> effective vocabulary/grammar regression -> DOM regression -> browser/print/release candidate -> final semantic/publication gate.
 
 RELEASE CONDITION
 Keep HOLD until all 168 are planned/repaired/synchronized and genuinely re-rendered/verified, technical regression gates pass, and the two unavailable sample PDFs are recovered/used or that blocker is explicitly resolved by the user.
