@@ -1,0 +1,62 @@
+name: v10 semantic dump
+
+on:
+  push:
+    branches: [v10-rebuild]
+    paths:
+      - '.github/workflows/v10-semantic-dump.yml'
+      - 'v10_semantic_dump.js'
+      - 'v10_stage2.html'
+      - 'v10_stage2_dom_test.js'
+      - 'v10_stage2_full_coverage_test.js'
+      - 'v10_data_*.js'
+      - 'v10_interaction_metadata*.js'
+      - 'v10_semantic_runtime_repairs_*.js'
+      - 'rewrite_blueprints/*.md'
+  workflow_dispatch:
+
+concurrency:
+  group: v10-semantic-dump-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  dump-and-regress:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-save --no-package-lock jsdom@24.1.3
+      - name: Render all 168 semantic passages
+        run: node v10_semantic_dump.js
+      - name: Stage2 DOM regression
+        shell: bash
+        run: node v10_stage2_dom_test.js | tee /tmp/v10_dom.txt
+      - name: Stage2 exhaustive 168-passage coverage/B-set regression
+        shell: bash
+        run: node v10_stage2_full_coverage_test.js | tee /tmp/v10_coverage.txt
+      - name: Write durable regression report
+        shell: bash
+        run: |
+          {
+            echo 'V10 SEMANTIC BATCH REGRESSION PASS'
+            echo 'source_commit=${{ github.sha }}'
+            cat /tmp/v10_dom.txt
+            cat /tmp/v10_coverage.txt
+          } > v10_semantic_batch_regression_report.txt
+      - name: Commit rendered semantic dump and regression report
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add v10_semantic_render_dump.txt semantic_chunks/*.txt semantic_passages/*.txt v10_semantic_batch_regression_report.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh v10 semantic render/regression [skip ci]"
+            git pull --rebase origin v10-rebuild
+            git push
+          fi

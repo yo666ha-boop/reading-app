@@ -1,0 +1,24 @@
+name: v10 G3 Sunshine P3 audit
+
+on:
+  push:
+    branches: [v10-rebuild]
+    paths:
+      - 'v10_data_sunshine_g3_program3*.js'
+      - 'v10_interaction_metadata_sun_g3_p3.js'
+      - 'v10_g3_ss_p3_audit.js'
+      - '.github/workflows/v10-g3-ss-p3-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node v10_g3_ss_p3_audit.js

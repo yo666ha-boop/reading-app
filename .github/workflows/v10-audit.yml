@@ -1,0 +1,110 @@
+name: v10 passage audit
+
+on:
+  push:
+    branches: [v10-rebuild]
+    paths:
+      - 'v10_*.js'
+      - 'v10_stage1.html'
+      - 'v10_stage2.html'
+      - '.github/workflows/v10-audit.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'v10_*.js'
+      - 'v10_stage1.html'
+      - 'v10_stage2.html'
+      - '.github/workflows/v10-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install DOM test dependency
+        run: npm install --no-save --no-package-lock jsdom@24.1.3
+      - name: Repair generated runtime-map parenthesis defects and syntax-check every repair
+        shell: bash
+        run: |
+          if [ -f v10_one_time_fix_131_140.js ]; then node v10_one_time_fix_131_140.js; fi
+          node <<'NODE'
+          const fs=require('fs');
+          const files=fs.readdirSync('.').filter(f=>/^v10_semantic_runtime_repairs_\d{3}_\d{3}\.js$/.test(f));
+          const bad="replace(/^\\d+\\.\\s*/,''}))};}";
+          const good="replace(/^\\d+\\.\\s*/,'')}))};}";
+          let changed=[];
+          for(const f of files){let s=fs.readFileSync(f,'utf8');if(s.includes(bad)){s=s.split(bad).join(good);fs.writeFileSync(f,s);changed.push(f)}}
+          console.log('runtime syntax repairs changed='+changed.join(','));
+          NODE
+          for f in v10_semantic_runtime_repairs_[0-9][0-9][0-9]_[0-9][0-9][0-9].js; do node --check "$f"; done
+      - name: Make stage2 metadata lookup grade-aware
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs=require('fs');const f='v10_stage2.html';let s=fs.readFileSync(f,'utf8');
+          const oldChoose="const f=keys.filter(x=>(META[$('textbook').value+'|'+x]?.genre||'')===p);";
+          const newChoose="const f=keys.filter(x=>((META[$('textbook').value+'|'+$('grade').value+'|'+x]||META[$('textbook').value+'|'+x])?.genre||'')===p);";
+          const oldRender="const meta=META[$('textbook').value+'|'+currentKey]||{};";
+          const newRender="const meta=META[$('textbook').value+'|'+$('grade').value+'|'+currentKey]||META[$('textbook').value+'|'+currentKey]||{};";
+          if(s.includes(oldChoose))s=s.replace(oldChoose,newChoose);
+          if(s.includes(oldRender))s=s.replace(oldRender,newRender);
+          fs.writeFileSync(f,s);
+          NODE
+      - name: Audit all v10 passages and UI
+        id: audit
+        shell: bash
+        run: |
+          set +e
+          : > v10_audit_report.txt
+          node v10_audit_test.js >> v10_audit_report.txt 2>&1; code1=$?
+          node v10_dom_test.js >> v10_audit_report.txt 2>&1; code2=$?
+          node v10_interaction_audit.js >> v10_audit_report.txt 2>&1; code3=$?
+          node v10_stage2_dom_test.js >> v10_audit_report.txt 2>&1; code4=$?
+          node v10_g2_audit.js >> v10_audit_report.txt 2>&1; code5=$?
+          node v10_g2_nh_audit.js >> v10_audit_report.txt 2>&1; code6=$?
+          node v10_g2_nh_u6_audit.js >> v10_audit_report.txt 2>&1; code7=$?
+          node v10_g2_nh_u7_audit.js >> v10_audit_report.txt 2>&1; code8=$?
+          node v10_g3_nh_u0_u1_audit.js >> v10_audit_report.txt 2>&1; code9=$?
+          node v10_g3_nh_u2_audit.js >> v10_audit_report.txt 2>&1; code10=$?
+          node v10_g3_nh_u3_audit.js >> v10_audit_report.txt 2>&1; code11=$?
+          node v10_g3_nh_u4_audit.js >> v10_audit_report.txt 2>&1; code12=$?
+          node v10_g3_nh_u5_audit.js >> v10_audit_report.txt 2>&1; code13=$?
+          node v10_g3_nh_u6_audit.js >> v10_audit_report.txt 2>&1; code14=$?
+          node v10_g3_ss_p1_audit.js >> v10_audit_report.txt 2>&1; code15=$?
+          node v10_g3_ss_p2_audit.js >> v10_audit_report.txt 2>&1; code16=$?
+          node v10_g3_ss_p3_audit.js >> v10_audit_report.txt 2>&1; code17=$?
+          node v10_g3_ss_p4_audit.js >> v10_audit_report.txt 2>&1; code18=$?
+          node v10_g3_ss_p5_audit.js >> v10_audit_report.txt 2>&1; code19=$?
+          node v10_g3_ss_p6_audit.js >> v10_audit_report.txt 2>&1; code20=$?
+          node v10_g3_ss_p7_audit.js >> v10_audit_report.txt 2>&1; code21=$?
+          node v10_semantic_runtime_audit.js >> v10_audit_report.txt 2>&1; code22=$?
+          node v10_stage2_full_coverage_test.js >> v10_audit_report.txt 2>&1; code23=$?
+          code=0
+          for c in $code1 $code2 $code3 $code4 $code5 $code6 $code7 $code8 $code9 $code10 $code11 $code12 $code13 $code14 $code15 $code16 $code17 $code18 $code19 $code20 $code21 $code22 $code23; do if [ "$c" -ne 0 ]; then code=1; fi; done
+          cat v10_audit_report.txt
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Commit audit report and deterministic repairs
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add v10_audit_report.txt v10_semantic_runtime_repairs_*.js v10_stage2.html
+          if ! git diff --cached --quiet; then
+            git commit -m "Update v10 audit and effective runtime fixes [skip ci]"
+            git pull --rebase origin v10-rebuild
+            git push
+          fi
+      - name: Fail when audit fails
+        if: steps.audit.outputs.code != '0'
+        run: exit 1

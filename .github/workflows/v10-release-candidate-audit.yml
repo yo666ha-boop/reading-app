@@ -1,0 +1,71 @@
+name: v10 release candidate audit
+
+on:
+  push:
+    branches: [v10-rebuild]
+    paths:
+      - '.github/workflows/v10-release-candidate-audit.yml'
+      - 'v10_stage2.html'
+      - 'v10_stage2_dom_test.js'
+      - 'v10_g3_progress_audit.js'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install DOM dependency
+        run: npm install --no-save --no-package-lock jsdom@24.1.3
+      - name: Run full release audit
+        id: audit
+        shell: bash
+        run: |
+          set +e
+          : > v10_release_candidate_report.txt
+          run_test() {
+            echo "=== $1 ===" >> v10_release_candidate_report.txt
+            node "$1" >> v10_release_candidate_report.txt 2>&1
+            return $?
+          }
+          code=0
+          for f in \
+            v10_audit_test.js \
+            v10_dom_test.js \
+            v10_interaction_audit.js \
+            v10_stage2_dom_test.js \
+            v10_g2_audit.js \
+            v10_g2_nh_audit.js \
+            v10_g2_nh_u6_audit.js \
+            v10_g2_nh_u7_audit.js \
+            v10_g3_progress_audit.js
+          do
+            run_test "$f" || code=1
+          done
+          if [ "$code" -eq 0 ]; then
+            echo "V10 RELEASE CANDIDATE PASS: G1/G2 regressions, G3 46-core coverage, stage2 G1-G3 switching, A/B sets, evidence links, vocabulary gates, and browser DOM checks are consistent." >> v10_release_candidate_report.txt
+          else
+            echo "V10 RELEASE CANDIDATE FAIL" >> v10_release_candidate_report.txt
+          fi
+          cat v10_release_candidate_report.txt
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Commit release audit report
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add v10_release_candidate_report.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "Update v10 release candidate report [skip ci]"
+            git push
+          fi
+      - name: Fail when release audit fails
+        if: steps.audit.outputs.code != '0'
+        run: exit 1

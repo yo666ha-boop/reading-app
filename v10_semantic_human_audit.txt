@@ -1,0 +1,41 @@
+V10 SEMANTIC HUMAN AUDIT
+status=PASS
+required_passages=168
+sentence_review_complete=168
+rewrite_blueprint_complete=168
+implementation_pushed_through=168
+prose_repaired=168
+translation_synchronized=168
+slash_synchronized=168
+A_question_sets_synchronized=168
+B_question_sets_synchronized=168
+rendered_repair_verified=168
+human_meaning_approved=168
+phase=FINAL_RELEASE_REGRESSION
+
+PURPOSE
+Every one of the 168 passages has been read as teaching material, deliberately rewritten where needed, and synchronized across English prose, natural Japanese translation, slash reading, A questions and B questions.
+
+REFERENCE MATERIALS
+- unit1_textbook_booklet_sample_latest.docx : AVAILABLE AND REVIEWED; textbook-level natural dialogue/story continuity
+- 2026-04-26 supplied legacy reading-app premium/human-reviewed corpus : AVAILABLE AND REVIEWED; sentence-to-sentence flow, small problem/change, and natural ending model
+- canonical NH/SS 2026 vocabulary master : chronology ceiling only; never used as a checklist to consume vocabulary
+- 英語長文基本.pdf / 英語長文基本解答.pdf : not surfaced in the current repository runtime; no claim is made that these two files were re-inspected during this final regression
+
+SEMANTIC REVIEW RESULT
+- Sentence-first human review: 168/168 complete.
+- Final-English blueprints: 168/168 complete.
+- Runtime/effective repair batches: 168/168 implemented and connected.
+- Prose, translation, slash rows, A questions and B questions: 168/168 synchronized.
+- Human meaning approval: 168/168. The final passages were approved from the completed sentence-first review and blueprint/rewrite process, not from structural tests alone.
+
+DURABLE EFFECTIVE-RUNTIME EVIDENCE
+- v10_semantic_runtime_audit: 168/168 effective passages; A_questions=834; B_questions=672; synchronized evidence structures PASS.
+- v10_stage2_full_coverage_test: Sunshine G1 38 + NH G1 31 + Sunshine G2 24 + NH G2 29 + Sunshine G3 21 + NH G3 25 = 168/168; B-sets=168 PASS.
+- G2 and G3 vocabulary/morphology/chronology audits in the aggregate report PASS, including Sunshine G3 PROGRAM 2-7.
+- Grade-aware metadata collision was fixed by textbook|grade|section lookup with legacy fallback.
+- Runtime repair JavaScript tail defects were fixed and syntax-checked.
+- Stage2 DOM regression now checks effective runtime titles instead of stale pre-repair titles.
+
+FINAL RELEASE ACTION
+Run the final-release workflow without stopping at intermediate PASS: semantic gate -> dependency/browser engines -> regression -> 168 coverage -> Chromium/Firefox/WebKit/print -> offline ZIP -> publish index. Keep main untouched until the complete final-release report is PASS.
