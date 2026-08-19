@@ -92,9 +92,9 @@ Final English:
 4. I made a mistake.
 5. I was late.
 6. Anyway, we won the contest.
-7. I was happy, but I remembered my mistake.
-8. I realized my mistake after the contest.
-9. I remember that day very well.
+7. I was happy.
+8. Now I remember my mistake.
+9. I realize that I was late.
 10. Anyone can make a mistake.
 
 ## 068 New Horizon G1 Unit 10-2 — A Contest Photo in an Album
