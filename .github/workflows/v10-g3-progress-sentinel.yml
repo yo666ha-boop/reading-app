@@ -1,0 +1,56 @@
+name: v10 G3 progress sentinel
+
+on:
+  push:
+    branches: [v10-rebuild]
+    paths:
+      - 'v10_data_newhorizon_g3_*.js'
+      - 'v10_interaction_metadata_nh_g3_*.js'
+      - 'v10_g3_nh_*.js'
+      - 'v10_data_sunshine_g3_*.js'
+      - 'v10_interaction_metadata_sun_g3_*.js'
+      - 'v10_g3_ss_*.js'
+      - 'v10_g3_progress_audit.js'
+      - '.github/workflows/v10-g3-progress-sentinel.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run aggregate audit
+        id: audit
+        shell: bash
+        run: |
+          set +e
+          node v10_g3_progress_audit.js > /tmp/g3_report.txt 2>&1
+          code=$?
+          cat /tmp/g3_report.txt
+          rm -f v10_g3_PROGRESS_PASS.txt v10_g3_PROGRESS_FAIL.txt
+          if [ "$code" -eq 0 ]; then
+            cp /tmp/g3_report.txt v10_g3_PROGRESS_PASS.txt
+          else
+            cp /tmp/g3_report.txt v10_g3_PROGRESS_FAIL.txt
+          fi
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Commit sentinel
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A v10_g3_PROGRESS_PASS.txt v10_g3_PROGRESS_FAIL.txt 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Update v10 G3 progress sentinel [skip ci]"
+            git push
+          fi
+      - name: Fail when audit fails
+        if: steps.audit.outputs.code != '0'
+        run: exit 1
