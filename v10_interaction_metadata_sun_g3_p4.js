@@ -16,5 +16,5 @@ window.V10_INTERACTION_META_G3_SS_P4={
  {prompt:'2. 壁に沿って何がありますか。本文から英語で答えなさい。',answer:'a hand rail',evidence:'A hand rail is along the wall.',evidenceJp:'壁に沿って手すりがあります。',reason:'along the wall の主語が A hand rail です。'},
  {prompt:'3. お客さんは何を指さすことができますか。本文から英語で答えなさい。',answer:'a sign',evidence:'The customer can point at a sign.',evidenceJp:'そのお客さんは表示を指さすことができます。',reason:'point at の後ろが a sign です。'},
  {prompt:'4. ドアはどのように開くことができますか。本文から英語で1語抜き出しなさい。',answer:'automatically',evidence:'A door can open automatically.',evidenceJp:'ドアは自動的に開くことができます。',reason:'automatically が開き方を表す副詞です。'},
- {prompt:'5. アメリカ手話について話す生徒はどこから来ていますか。本文から英語で答えなさい。',answer:'Asia',evidence:'A student from Asia talks about ASL.',evidenceJp:'アジア出身の生徒がアメリカ手話について話します。',reason:'from の後ろが Asia です。'}]}
+ {prompt:'5. アメリカ手話について話す生徒はどこから来ていますか。本文から英語で答えなさい。',answer:'Asia',evidence:'A student from Asia can talk about ASL.',evidenceJp:'アジア出身の生徒はアメリカ手話について話すことができます。',reason:'from の後ろが Asia です。'}]}
 };
