@@ -10,6 +10,7 @@ on:
       - 'v10_stage2.html'
       - 'v10_stage2_dom_test.js'
       - 'v10_stage2_full_coverage_test.js'
+      - 'v10_vocab_corrections.js'
   workflow_dispatch:
 
 concurrency:
@@ -40,6 +41,17 @@ jobs:
             echo "head=${GITHUB_SHA}"
             echo "artifact_name=v10-stage2-release-20260819"
           } > v10_final_release_run.txt
+
+      - name: Publish run marker early
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add v10_final_release_run.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "Record active v10 final release run [skip ci]"
+            git push
+          fi
 
       - name: Install test dependencies
         id: deps
