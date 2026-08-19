@@ -26,9 +26,9 @@ Final English:
 4. I can use it again.
 5. This is a paper straw.
 6. I use the paper straw at a cafe.
-7. I like both straws.
-8. I want to reduce waste.
-9. I use the reusable straw many times.
+7. I like the reusable straw.
+8. I like the paper straw, too.
+9. I want to reduce waste.
 
 ## 063 New Horizon G1 Unit 8-3 — A Well for the Village
 Decision: REWRITE_MAJOR. Make the causal chain explicit: far river -> collect money/work -> well -> clean water -> happiness.
@@ -54,7 +54,7 @@ Final English:
 4. I like snowboarding very much.
 5. After snowboarding, I went back home.
 6. I want to go back to the mountain someday.
-7. The vacation was special for me.
+7. I like this vacation very much.
 
 ## 065 New Horizon G1 Unit 9-2 — A New Year Card in English
 Decision: REWRITE_MAJOR. Put card-writing and rice cake into the same New Year scene; use `Good for you!` for the actual achievement of writing the card in English.
@@ -67,7 +67,7 @@ Final English:
 5. “Yes, I did.”
 6. “Good for you!”
 7. “Thank you.”
-8. It was a special New Year for me.
+8. This New Year is special for me.
 
 ## 066 New Horizon G1 Unit 9-3 — New Year’s Day with My Grandparent
 Decision: REWRITE. Narrate the experience chronologically and keep only one natural follow-up question.
@@ -108,8 +108,8 @@ Final English:
 5. It can bring back my memory of the contest.
 6. My heart can beat fast when I see it.
 7. I remember our mistake.
-8. I remember our win, too.
-9. This picture is special for me.
+8. I remember that we won, too.
+9. This picture is important to me.
 
 ## 069 New Horizon G1 Unit 10-3 — A Camping Trip
 Decision: LIGHT_REWRITE. Keep one past camping sequence and one concrete reaction; remove back-to-back negative-question drills.
