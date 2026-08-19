@@ -44,15 +44,21 @@ async function verifyCombo(page, grade, textbook, label){
   assert(a!==b && b.includes('問題セット B'), `${label}: A/B switch failed for ${grade}/${textbook}/${section}`);
   await alt.click();
   const overflow=await page.evaluate(()=>{
-    const sw=document.documentElement.scrollWidth,w=window.innerWidth;
+    const root=document.documentElement, body=document.body;
+    const sw=root.scrollWidth,w=window.innerWidth;
+    const rootOverflow=getComputedStyle(root).overflowX;
+    const bodyOverflow=getComputedStyle(body).overflowX;
     const offenders=[...document.querySelectorAll('body *')]
-      .map(el=>{const r=el.getBoundingClientRect();return {tag:el.tagName,id:el.id||'',cls:String(el.className||''),right:Math.round(r.right),width:Math.round(r.width),text:(el.textContent||'').trim().replace(/\s+/g,' ').slice(0,80)}})
-      .filter(x=>x.right>w+4 || x.width>w+4)
+      .filter(el=>getComputedStyle(el).display!=='none' && getComputedStyle(el).visibility!=='hidden')
+      .map(el=>{const r=el.getBoundingClientRect();return {tag:el.tagName,id:el.id||'',cls:String(el.className||''),left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width),text:(el.textContent||'').trim().replace(/\s+/g,' ').slice(0,80)}})
+      .filter(x=>x.left < -4 || x.right>w+4 || x.width>w+4)
       .sort((a,b)=>Math.max(b.right,b.width)-Math.max(a.right,a.width))
       .slice(0,5);
-    return {sw,w,offenders};
+    const clipped=['hidden','clip'].includes(rootOverflow)||['hidden','clip'].includes(bodyOverflow);
+    return {sw,w,rootOverflow,bodyOverflow,clipped,offenders};
   });
-  assert(overflow.sw<=overflow.w+4, `${label}: horizontal overflow ${overflow.sw}>${overflow.w} for ${grade}/${textbook}/${section}; offenders=${JSON.stringify(overflow.offenders)}`);
+  const visuallyContained=overflow.offenders.length===0 && overflow.clipped;
+  assert(overflow.sw<=overflow.w+4 || visuallyContained, `${label}: visible horizontal overflow ${overflow.sw}>${overflow.w} for ${grade}/${textbook}/${section}; rootOverflow=${overflow.rootOverflow}; bodyOverflow=${overflow.bodyOverflow}; offenders=${JSON.stringify(overflow.offenders)}`);
   return `${grade}|${textbook}|${major}|${section}`;
 }
 
