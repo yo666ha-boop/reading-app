@@ -24,5 +24,4 @@ G3 NH CANONICAL v7=Unit0 + Unit1 Part1,2 shared pool split into 1-1/1-2 + ReadTh
 G3 NH U0-U1 AUDIT PASS: Unit 0 through Unit 1 passages, slash rows, A/B questions, evidence links, release flags, morphology guard, unsupported-lexeme guard, and chronological Unit2 vocabulary gate are consistent.
 G3 NH U2 AUDIT passages=4/4 alternate_questions=20
 G3 NH U2 CANONICAL v7=Part1 -> 2-1 / Part2 -> 2-2 / ReadThink1,2 shared pool split first-half -> 2-3 and second-half -> 2-4; Unit3 vocabulary gated
-G3 NH U2 AUDIT FAIL 1
-- NH3/Unit 2-3: future-vocab leak action
+G3 NH U2 AUDIT PASS: Unit 2 passages, slash rows, A/B questions, evidence links, release flags, morphology guard, shared-pool chronology, and Unit3 future-vocab gate are consistent.
