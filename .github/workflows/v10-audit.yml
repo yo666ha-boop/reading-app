@@ -73,9 +73,16 @@ jobs:
           node v10_g3_nh_u5_audit.js >> v10_audit_report.txt 2>&1; code13=$?
           node v10_g3_nh_u6_audit.js >> v10_audit_report.txt 2>&1; code14=$?
           node v10_g3_ss_p1_audit.js >> v10_audit_report.txt 2>&1; code15=$?
-          node v10_semantic_runtime_audit.js >> v10_audit_report.txt 2>&1; code16=$?
+          node v10_g3_ss_p2_audit.js >> v10_audit_report.txt 2>&1; code16=$?
+          node v10_g3_ss_p3_audit.js >> v10_audit_report.txt 2>&1; code17=$?
+          node v10_g3_ss_p4_audit.js >> v10_audit_report.txt 2>&1; code18=$?
+          node v10_g3_ss_p5_audit.js >> v10_audit_report.txt 2>&1; code19=$?
+          node v10_g3_ss_p6_audit.js >> v10_audit_report.txt 2>&1; code20=$?
+          node v10_g3_ss_p7_audit.js >> v10_audit_report.txt 2>&1; code21=$?
+          node v10_semantic_runtime_audit.js >> v10_audit_report.txt 2>&1; code22=$?
+          node v10_stage2_full_coverage_test.js >> v10_audit_report.txt 2>&1; code23=$?
           code=0
-          if [ "$code1" -ne 0 ] || [ "$code2" -ne 0 ] || [ "$code3" -ne 0 ] || [ "$code4" -ne 0 ] || [ "$code5" -ne 0 ] || [ "$code6" -ne 0 ] || [ "$code7" -ne 0 ] || [ "$code8" -ne 0 ] || [ "$code9" -ne 0 ] || [ "$code10" -ne 0 ] || [ "$code11" -ne 0 ] || [ "$code12" -ne 0 ] || [ "$code13" -ne 0 ] || [ "$code14" -ne 0 ] || [ "$code15" -ne 0 ] || [ "$code16" -ne 0 ]; then code=1; fi
+          for c in $code1 $code2 $code3 $code4 $code5 $code6 $code7 $code8 $code9 $code10 $code11 $code12 $code13 $code14 $code15 $code16 $code17 $code18 $code19 $code20 $code21 $code22 $code23; do if [ "$c" -ne 0 ]; then code=1; fi; done
           cat v10_audit_report.txt
           echo "code=$code" >> "$GITHUB_OUTPUT"
           exit 0
