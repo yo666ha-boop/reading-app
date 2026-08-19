@@ -12,7 +12,8 @@ const audits=[
  'v10_g3_ss_p3_audit2.js',
  'v10_g3_ss_p4_audit.js',
  'v10_g3_ss_p5_audit.js',
- 'v10_g3_ss_p6_audit.js'
+ 'v10_g3_ss_p6_audit.js',
+ 'v10_g3_ss_p7_audit.js'
 ];
 let ok=true;let out=[];
 for(const f of audits){
@@ -24,7 +25,8 @@ for(const f of audits){
  if(r.status!==0)ok=false;
 }
 out.push('G3 COVERAGE New Horizon core=25 passages (Unit0-6)');
-out.push('G3 COVERAGE Sunshine reviewed=18 passages (PROGRAM1-6); PROGRAM7 pending');
+out.push('G3 COVERAGE Sunshine core=21 passages (PROGRAM1-7)');
+out.push('G3 CORE TOTAL=46 passages');
 out.push(`G3 PROGRESS ${ok?'PASS':'FAIL'}`);
 console.log(out.join('\n'));
 process.exit(ok?0:1);
