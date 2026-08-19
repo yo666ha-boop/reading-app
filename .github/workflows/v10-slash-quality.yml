@@ -1,0 +1,26 @@
+name: v10 slash quality
+on:
+  push:
+    branches: [v10-slash-rebuild]
+    paths:
+      - 'v10_semantic_runtime_final_fixes.js'
+      - 'v10_slash_quality_audit.js'
+      - '.github/workflows/v10-slash-quality.yml'
+      - 'v10_stage2.html'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  slash-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-save --no-package-lock jsdom@24.1.3
+      - name: Existing semantic runtime regression
+        run: node v10_semantic_runtime_audit.js
+      - name: Meaning-chunk slash quality gate
+        run: node v10_slash_quality_audit.js
