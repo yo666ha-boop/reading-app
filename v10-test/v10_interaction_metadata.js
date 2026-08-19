@@ -8,6 +8,11 @@ window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
  const evidenceParts=m=>(m&&Array.isArray(m.questionSetB)?m.questionSetB:[]).flatMap(q=>String(q&&q.evidence||'').split(' / ').map(x=>x.trim()).filter(Boolean));
  const gradeFor=(book,sec,m)=>{const ev=evidenceParts(m),hits=[];for(const g of ['1','2','3']){const p=dataset(g,book)[sec],s=p&&Array.isArray(p.sentences)?p.sentences:[];if(p&&ev.every(x=>s.includes(x)))hits.push(g)}return hits.length===1?hits[0]:''};
  const mergeObj=obj=>{Object.assign(target,obj);for(const[k,m]of Object.entries(obj||{})){const parts=k.split('|');if(parts.length===2){const[gbook,sec]=parts,g=gradeFor(gbook,sec,m);if(g)target[gbook+'|'+g+'|'+sec]=m}}};
+ // v10_stage2.html historically reads book|section. Keep those legacy aliases pointed at
+ // the currently selected grade as well, so grade collisions cannot surface even before
+ // the HTML itself is migrated to the grade-aware lookup.
+ const syncPlainToSelectedGrade=()=>{const el=document.getElementById('grade');if(!el)return;const g=String(el.value||'1');for(const[k,m]of Object.entries(target)){const p=k.split('|');if(p.length>=3&&p[1]===g){const book=p[0],sec=p.slice(2).join('|');target[book+'|'+sec]=m}}};
+ const gradeEl=document.getElementById('grade');if(gradeEl)gradeEl.addEventListener('change',syncPlainToSelectedGrade,true);
  const chunks=[
   ['v10_interaction_metadata_initial.js',()=>window.V10_INTERACTION_META],
   ['v10_interaction_metadata_sun_p1_p3.js',()=>window.V10_INTERACTION_META_P1P3],
@@ -38,7 +43,7 @@ window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
  ];
  let i=0;
  const next=()=>{
-  if(i>=chunks.length){window.V10_INTERACTION_META=target;window.V10_RUNTIME_LOAD_PROGRESS='complete';if(typeof window.render==='function')window.render();return;}
+  if(i>=chunks.length){window.V10_INTERACTION_META=target;syncPlainToSelectedGrade();window.V10_RUNTIME_LOAD_PROGRESS='complete';if(typeof window.render==='function')window.render();return;}
   const [src,getObj]=chunks[i++];
   load(src,()=>{try{const obj=getObj()||{};window.V10_INTERACTION_META=target;mergeObj(obj)}catch(e){window.V10_RUNTIME_LOAD_ERROR='merge:'+src+':'+String(e&&e.message||e)}next();});
  };
