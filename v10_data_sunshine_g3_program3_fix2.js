@@ -1,1 +1,12 @@
-(()=>{const m=window.V10_PASSAGES_G3_SS['PROGRAM 3-3'];m.sentences[6]='Development can take time.';m.slashRows[6]={en:'Development / can take / time.',jp:'発達には / かかることがあります / 時間が'};m.fullTranslation='「私たちにはトレーニングのためのよい基礎が必要です。トレーナーは簡単な食事を勧めることができます。栄養のある食事は運動選手にとって大切です。その選手は食事を注意深く確認できます。よい呼吸も大切です。悪い呼吸はトレーニング中に問題を引き起こすことがあります。発達には時間がかかることがあります。失敗は運動選手に何かを教えることがあります。トレーナーは休息の重要性を説明できます。その選手はトレーニング計画に注意深く従うことができます。よい食事はトレーニングを支えることができます。注意深い呼吸はレース中の選手を助けることができます。」';m.auditNote+=' Development needsをcan takeへ修正し、残る自動三単現を除去。';})();
+(()=>{
+ const m2=window.V10_PASSAGES_G3_SS['PROGRAM 3-2'];
+ m2.sentences[8]='Practice can sometimes be boring.';
+ m2.slashRows[8]={en:'Practice can sometimes be / boring.',jp:'練習は時には〜のことがあります / 退屈'};
+ m2.fullTranslation=String(m2.fullTranslation||'').replace('トレーニングは時には退屈なこともあります。','練習は時には退屈なこともあります。');
+ m2.auditNote+=' PROGRAM 3-3新出のtrainingを先取りしていた1文を既習practiceへ修正。';
+ const m=window.V10_PASSAGES_G3_SS['PROGRAM 3-3'];
+ m.sentences[6]='Development can take time.';
+ m.slashRows[6]={en:'Development / can take / time.',jp:'発達には / かかることがあります / 時間が'};
+ m.fullTranslation='「私たちにはトレーニングのためのよい基礎が必要です。トレーナーは簡単な食事を勧めることができます。栄養のある食事は運動選手にとって大切です。その選手は食事を注意深く確認できます。よい呼吸も大切です。悪い呼吸はトレーニング中に問題を引き起こすことがあります。発達には時間がかかることがあります。失敗は運動選手に何かを教えることがあります。トレーナーは休息の重要性を説明できます。その選手はトレーニング計画に注意深く従うことができます。よい食事はトレーニングを支えることができます。注意深い呼吸はレース中の選手を助けることができます。」';
+ m.auditNote+=' Development needsをcan takeへ修正し、残る自動三単現を除去。';
+})();
