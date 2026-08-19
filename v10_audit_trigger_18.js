@@ -1,1 +1,1 @@
-// Consolidated audit trigger: all 69 masters reviewed for genre and alternate question sets.
+// Consolidated audit trigger: all 168 semantic repairs implemented; rerun grade-safe effective-runtime regression 2026-08-19.
