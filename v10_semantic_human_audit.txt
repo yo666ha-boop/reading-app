@@ -1,8 +1,10 @@
 V10 SEMANTIC HUMAN AUDIT
 status=HOLD
 required_passages=168
+reviewed_for_meaning=10
 human_meaning_approved=0
 rewritten_pending_full_audit=3
+needs_rewrite_detected=4
 
 PURPOSE
 This gate exists because structural/vocabulary/browser tests can pass even when a passage is unnatural or semantically incoherent. V10 must not be released until every one of the 168 passages has been read as an actual teaching text, not merely token-checked.
@@ -11,7 +13,7 @@ REFERENCE MATERIALS THAT MUST BE USED
 - 英語長文基本.pdf : passage construction / natural flow / reading-problem model
 - 英語長文基本解答.pdf : slash-reading / translation / answer-explanation model
 - unit1_textbook_booklet_sample_latest.docx : textbook-level natural dialogue/story continuity
-- 2026-04-26 supplied legacy reading-app corpus: premium passages marked polished_human_review_notes_v2 / human_expanded_checked_v3, including coherent story-first texts such as A Pen for My Friend, Today...country-card class scene, My Father Cooks Curry, Yesterday at the Library, and the school-event story. Use these as an additional concrete model for sentence-to-sentence flow, small problem/change, ending, and comprehension-question quality.
+- 2026-04-26 supplied legacy reading-app corpus: premium passages marked polished_human_review_notes_v2 / human_expanded_checked_v3, including coherent story-first texts such as A Pen for My Friend, the country-card English-class scene, My Father Cooks Curry, Yesterday at the Library, and the school-event story. Use these as an additional concrete model for sentence-to-sentence flow, small problem/change, ending, and comprehension-question quality.
 - canonical NH/SS 2026 vocabulary master : vocabulary chronology only; it is NOT a requirement to consume every available word
 
 CURRENT REFERENCE AVAILABILITY
@@ -36,11 +38,23 @@ HUMAN AUDIT CRITERIA FOR EACH PASSAGE
 11. A and B question sets must remain valid after any rewrite.
 12. The result should resemble the quality and instructional purpose of the supplied long-reading examples, not a list of short unrelated example sentences.
 
+FIRST HUMAN-READ BLOCK: 1-10 / 168
+- 1 Get Ready 2: no major semantic break detected; final approval deferred until sample-PDF comparison.
+- 2 Get Ready 3: no major semantic break detected; final approval deferred.
+- 3 Get Ready 4: one basketball scene; no major semantic break detected; final approval deferred.
+- 4 Get Ready 5: simple zoo dialogue; keep under review for naturalness at this early vocabulary ceiling.
+- 5 Get Ready 6: REWRITE REQUIRED. Lunch/pizza, animal list, then unsupported speaker-style preference exchange create a flat vocabulary-dump flow. Rebuild as one zoo-visit scene.
+- 6 PROGRAM 1-1: self-introduction is semantically coherent; final approval deferred.
+- 7 PROGRAM 1-2: REWRITE REQUIRED. The consecutive “not from Japan / not from the U.S.” statements are only contrast drills and are unnatural in a self-introduction. Remove drill-like negative-country padding and keep one natural introduction.
+- 8 PROGRAM 1-3: coherent new-student self-introduction, but somewhat list-like; keep under review against the long-reading samples.
+- 9 PROGRAM 2-1: REWRITE REQUIRED. Bicycle/town scene is interrupted by unrelated tennis-watching and a forced negative sentence. Keep the after-school bicycle → home flow only.
+- 10 PROGRAM 2-2: REWRITE REQUIRED. The timeline jumps from before dinner to after dinner to bicycle riding and back to before/after dinner. Reorder into a real weekend timeline and synchronize A/B questions.
+
 CURRENT REWRITE WORK
 - サンシャイン 中1 PROGRAM 6-1: rewritten; pending final sample-based approval
 - サンシャイン 中1 PROGRAM 6-2: rewritten; pending final sample-based approval
 - サンシャイン 中1 PROGRAM 6-3: rewritten; pending final sample-based approval
-- Actual rendered 168-passage corpus has been exported and split into 10-passage human-review chunks under semantic_chunks/ so every passage can be read in sequence rather than sampled.
+- Actual rendered 168-passage corpus has been exported, split into 10-passage chunks, and also split into 168 individual files under semantic_passages/ so every passage can be read in sequence rather than sampled.
 
 RELEASE CONDITION
-Change status to PASS only after all 168 passages are individually checked against the criteria above, translations/slashes/questions are synchronized, the two long-reading sample PDFs have been recovered and used as references, and human_meaning_approved=168.
+Change status to PASS only after all 168 passages are individually checked against the criteria above, all detected problems are rewritten, translations/slashes/questions are synchronized, the two long-reading sample PDFs have been recovered and used as references, and human_meaning_approved=168.
