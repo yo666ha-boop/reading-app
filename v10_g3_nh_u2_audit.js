@@ -1,8 +1,8 @@
 const fs=require('fs');const vm=require('vm');
 function filled(v){return typeof v==='string'&&v.trim().length>0}
 function load(files,key){const c={window:{}};vm.createContext(c);for(const f of files){if(!fs.existsSync(f))throw new Error(`missing ${f}`);vm.runInContext(fs.readFileSync(f,'utf8'),c,{filename:f})}return c.window[key]||{}}
-const data=load(['v10_data_newhorizon_g3_unit2.js','v10_data_newhorizon_g3_unit2_fix.js','v10_data_newhorizon_g3_unit2_fix2.js','v10_data_newhorizon_g3_unit2_fix3.js'],'V10_PASSAGES_G3_NH');
-const meta=load(['v10_interaction_metadata_nh_g3_u2.js'],'V10_INTERACTION_META_G3_NH_U2');
+const data=load(['v10_data_newhorizon_g3_unit2.js','v10_data_newhorizon_g3_unit2_fix.js','v10_data_newhorizon_g3_unit2_fix2.js','v10_data_newhorizon_g3_unit2_fix3.js','v10_data_newhorizon_g3_unit2_fix4.js'],'V10_PASSAGES_G3_NH');
+const meta=load(['v10_interaction_metadata_nh_g3_u2.js','v10_interaction_metadata_nh_g3_u2_fix.js'],'V10_INTERACTION_META_G3_NH_U2');
 const expected=['Unit 2-1','Unit 2-2','Unit 2-3','Unit 2-4'];const errors=[];let bq=0;
 for(const k of expected)if(!data[k])errors.push(`missing passage ${k}`);for(const k of Object.keys(data))if(!expected.includes(k))errors.push(`unexpected passage ${k}`);
 for(const [section,m] of Object.entries(data)){
