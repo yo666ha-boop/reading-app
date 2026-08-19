@@ -25,6 +25,18 @@ jobs:
           node-version: '20'
       - name: Install DOM test dependency
         run: npm install --no-save --no-package-lock jsdom@24.1.3
+      - name: Repair known runtime 131-140 syntax defect
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          const f='v10_semantic_runtime_repairs_131_140.js';
+          let s=fs.readFileSync(f,'utf8');
+          const bad="replace(/^\\d+\\.\\s*/,''}))};}window.V10_INTERACTION_META_SEMANTIC_REPAIRS_131_140";
+          const good="replace(/^\\d+\\.\\s*/,'')}))};}window.V10_INTERACTION_META_SEMANTIC_REPAIRS_131_140";
+          if(s.includes(bad)){s=s.replace(bad,good);fs.writeFileSync(f,s)}
+          NODE
+          node --check v10_semantic_runtime_repairs_131_140.js
       - name: Audit all v10 passages and UI
         id: audit
         shell: bash
@@ -52,14 +64,14 @@ jobs:
           cat v10_audit_report.txt
           echo "code=$code" >> "$GITHUB_OUTPUT"
           exit 0
-      - name: Commit audit report
+      - name: Commit audit report and deterministic syntax repair
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add v10_audit_report.txt
+          git add v10_audit_report.txt v10_semantic_runtime_repairs_131_140.js
           if ! git diff --cached --quiet; then
-            git commit -m "Update v10 audit report [skip ci]"
+            git commit -m "Update v10 audit and repair runtime syntax [skip ci]"
             git push
           fi
       - name: Fail when audit fails
