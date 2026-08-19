@@ -8,11 +8,9 @@ function filled(v){return typeof v==='string'&&v.trim().length>0}
  await new Promise((res,rej)=>{const t=setTimeout(()=>rej(new Error('window load timeout')),25000);dom.window.addEventListener('load',()=>{clearTimeout(t);res()},{once:true})});
  const w=dom.window,ctx=dom.getInternalVMContext();
  const chunks=[];for(let n=1;n<=151;n+=10)chunks.push(`v10_semantic_runtime_repairs_${String(n).padStart(3,'0')}_${String(n+9).padStart(3,'0')}.js`);chunks.push('v10_semantic_runtime_repairs_161_168.js');
- const ordered=[];for(const f of chunks){if(f.includes('091_100'))ordered.push('v10_semantic_runtime_repairs_091_100_alias.js');ordered.push(f)}
+ const ordered=[];for(const f of chunks){if(f.includes('091_100'))ordered.push('v10_semantic_runtime_repairs_091_100_alias.js');ordered.push(f)}ordered.push('v10_semantic_runtime_final_fixes.js');
  for(const f of ordered){if(!fs.existsSync(f))throw new Error(`missing runtime repair ${f}`);vm.runInContext(fs.readFileSync(f,'utf8'),ctx,{filename:f})}
 
- // Keep each repair metadata map separate. Section names repeat across grades, so flattening
- // them by book|section would overwrite G1/G2/G3 entries and create false evidence errors.
  const repairMetaObjects=[];
  for(const k of Object.keys(w)){
   if(/^V10_INTERACTION_META_SEMANTIC_REPAIRS(?:_\d{3}_\d{3})?$/.test(k)&&w[k]&&typeof w[k]==='object')repairMetaObjects.push([k,w[k]])
