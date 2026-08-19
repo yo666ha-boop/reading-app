@@ -43,8 +43,16 @@ async function verifyCombo(page, grade, textbook, label){
   const b=(await page.locator('#questions').innerText()).trim();
   assert(a!==b && b.includes('問題セット B'), `${label}: A/B switch failed for ${grade}/${textbook}/${section}`);
   await alt.click();
-  const overflow=await page.evaluate(()=>({sw:document.documentElement.scrollWidth,w:window.innerWidth}));
-  assert(overflow.sw<=overflow.w+4, `${label}: horizontal overflow ${overflow.sw}>${overflow.w} for ${grade}/${textbook}/${section}`);
+  const overflow=await page.evaluate(()=>{
+    const sw=document.documentElement.scrollWidth,w=window.innerWidth;
+    const offenders=[...document.querySelectorAll('body *')]
+      .map(el=>{const r=el.getBoundingClientRect();return {tag:el.tagName,id:el.id||'',cls:String(el.className||''),right:Math.round(r.right),width:Math.round(r.width),text:(el.textContent||'').trim().replace(/\s+/g,' ').slice(0,80)}})
+      .filter(x=>x.right>w+4 || x.width>w+4)
+      .sort((a,b)=>Math.max(b.right,b.width)-Math.max(a.right,a.width))
+      .slice(0,5);
+    return {sw,w,offenders};
+  });
+  assert(overflow.sw<=overflow.w+4, `${label}: horizontal overflow ${overflow.sw}>${overflow.w} for ${grade}/${textbook}/${section}; offenders=${JSON.stringify(overflow.offenders)}`);
   return `${grade}|${textbook}|${major}|${section}`;
 }
 
