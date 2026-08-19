@@ -1,21 +1,22 @@
 V10 FINAL RELEASE VALIDATION
-head=b908e4238db46cf4ab908a8dc50ce5796a195ba6
+head=8942d0b32c4843bdd7daff4aa1e137446db4636a
 === v10_semantic_human_audit.txt ===
 V10 SEMANTIC HUMAN AUDIT
 status=HOLD
 required_passages=168
 sentence_review_complete=168
-rewrite_blueprint_complete=10
-prose_repaired=10
-translation_synchronized=10
-slash_synchronized=10
-A_question_sets_synchronized=10
-B_question_sets_synchronized=10
-human_meaning_approved=10
-phase=PROSE_REWRITE_CONTINUE_011
+rewrite_blueprint_complete=20
+prose_repaired=20
+translation_synchronized=20
+slash_synchronized=20
+A_question_sets_synchronized=20
+B_question_sets_synchronized=20
+rendered_repair_verified=20
+human_meaning_approved=20
+phase=PROSE_REWRITE_CONTINUE_021
 
 PURPOSE
-Structural, vocabulary, and browser tests can pass even when a passage is unnatural or semantically incoherent. V10 must not be released until every one of the 168 passages has been read as teaching material, all prose problems have been repaired, and all dependent translations/slashes/questions have been synchronized.
+Structural, vocabulary, and browser tests can pass even when a passage is unnatural or semantically incoherent. V10 must not be released until every one of the 168 passages has been read as teaching material, the final English has been deliberately planned before editing, all prose problems have been repaired, and all dependent translations/slashes/questions have been synchronized.
 
 REFERENCE MATERIALS
 - unit1_textbook_booklet_sample_latest.docx : AVAILABLE AND REVIEWED; textbook-level natural dialogue/story continuity
@@ -27,11 +28,21 @@ REFERENCE MATERIALS
 SENTENCE-FIRST AUDIT
 168/168 complete. Detailed verdicts are in v10_semantic_sentence_review.txt and sentence_review_batches/.
 
+REPAIR METHOD — REQUIRED FOR EVERY BATCH
+1. Decide the final English passage first in rewrite_blueprints/ before touching the effective app data.
+2. Check one scene/topic, sentence-to-sentence flow, chronology, speaker/reference clarity, and a natural ending where the vocabulary ceiling allows it.
+3. Never add a word or grammar form just to consume the available list.
+4. Only after the English is fixed, implement prose + natural Japanese full translation + slash rows + A questions/answers/evidence/evidenceJp/reasons + B questions/answers/evidence/evidenceJp/reasons as one synchronized repair set.
+5. Re-render actual stage2 data, then run DOM/full-coverage/B-set regressions before advancing the release gate.
+
 REPAIR CHECKPOINT
-Passages 001-010 were planned first in rewrite_blueprints/v10_rewrite_blueprint_001_010.md. The planned English has now been implemented and synchronized for full translation, slash rows, A questions and B metadata. Effective Sunshine G1 load order applies the semantic repair before the V10_SUNSHINE_G1 dataset snapshot. The existing v10_semantic_runtime_repairs_001_010.js also contains synchronized B metadata/runtime repair support loaded by v10_interaction_metadata.js.
+- 001-010 planned first in rewrite_blueprints/v10_rewrite_blueprint_001_010.md and implemented by v10_semantic_runtime_repairs_001_010.js.
+- 011-020 planned first in rewrite_blueprints/v10_rewrite_blueprint_011_020.md and implemented by v10_semantic_runtime_repairs_011_020.js.
+- v10_interaction_metadata.js loads both semantic repair batches after the base A/B metadata. The dataset objects are mutated through the existing Sunshine G1 object references, so the effective rendered stage2 app receives the repaired passages without editing a shadowed source file.
+- Semantic dump workflow regenerated the effective passage files after both batches. Spot verification of rendered 001-010 and 011/018/020 confirms the planned prose, full translation, slash rows, A and B evidence are actually present in the rendered app. The workflow has also been strengthened so future repair pushes run v10_stage2_dom_test.js and v10_stage2_full_coverage_test.js and persist a durable regression report on PASS.
 
 NEXT
-Start passage 011. Before implementation, create the next durable rewrite blueprint. Then synchronize prose -> translation -> slash -> A/B questions/evidence/reasons and validate the rendered effective stage2 data. Continue in passage order to 168.
+Start passage 021. Before implementation, create rewrite_blueprints/v10_rewrite_blueprint_021_030.md. Then synchronize prose -> translation -> slash -> A/B questions/evidence/reasons. Continue in passage order to 168 without skipping the planning step.
 
 RELEASE CONDITION
 Keep HOLD until all 168 are planned/repaired/synchronized, technical regression gates pass, and the two unavailable sample PDFs are recovered/used or that blocker is explicitly resolved by the user.
