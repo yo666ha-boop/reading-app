@@ -38,6 +38,10 @@ G3 SS P3 AUDIT PASS: Program 3 passages, slash rows, A/B questions, evidence lin
 G3 SS P4 AUDIT passages=3/3 alternate_questions=15
 G3 SS P4 CANONICAL v7=PROGRAM4 4-1 / 4-2 / 4-3 exact source partitions + PROGRAM4 textbook-body pool; PROGRAM5 vocabulary gated
 G3 SS P4 AUDIT PASS: Program 4 passages, slash rows, A/B questions, evidence links, release flags, morphology guard, chronological partitions, textbook-body pool, and Program 5 future-vocab gate are consistent.
+=== v10_g3_ss_p5_audit.js ===
+G3 SS P5 AUDIT passages=3/3 alternate_questions=15
+G3 SS P5 CANONICAL v7=PROGRAM5 5-1 / 5-2 / 5-3 exact source partitions; PROGRAM6 vocabulary gated
+G3 SS P5 AUDIT PASS: Program 5 passages, slash rows, A/B questions, evidence links, release flags, morphology guard, chronological partitions, and Program 6 future-vocab gate are consistent.
 G3 COVERAGE New Horizon core=25 passages (Unit0-6)
-G3 COVERAGE Sunshine reviewed=12 passages (PROGRAM1-4); PROGRAM5-7 pending
+G3 COVERAGE Sunshine reviewed=15 passages (PROGRAM1-5); PROGRAM6-7 pending
 G3 PROGRESS PASS
