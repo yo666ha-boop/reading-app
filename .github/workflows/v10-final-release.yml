@@ -61,7 +61,7 @@ jobs:
       - name: Install browser engines
         id: browsers
         continue-on-error: true
-        run: npx playwright install --with-deps chromium firefox webkit
+        run: timeout 360s npx playwright install --with-deps chromium firefox webkit
 
       - name: Run release candidate regression suite
         id: regression
