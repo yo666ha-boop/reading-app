@@ -7,8 +7,12 @@ on:
       - '.github/workflows/v10-semantic-dump.yml'
       - 'v10_semantic_dump.js'
       - 'v10_stage2.html'
+      - 'v10_stage2_dom_test.js'
+      - 'v10_stage2_full_coverage_test.js'
       - 'v10_data_*.js'
       - 'v10_interaction_metadata*.js'
+      - 'v10_semantic_runtime_repairs_*.js'
+      - 'rewrite_blueprints/*.md'
   workflow_dispatch:
 
 concurrency:
@@ -19,7 +23,7 @@ permissions:
   contents: write
 
 jobs:
-  dump:
+  dump-and-regress:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -28,7 +32,12 @@ jobs:
         with:
           node-version: '20'
       - run: npm install --no-save --no-package-lock jsdom@24.1.3
-      - run: node v10_semantic_dump.js
+      - name: Render all 168 semantic passages
+        run: node v10_semantic_dump.js
+      - name: Stage2 DOM regression
+        run: node v10_stage2_dom_test.js
+      - name: Stage2 exhaustive 168-passage coverage/B-set regression
+        run: node v10_stage2_full_coverage_test.js
       - name: Commit rendered semantic dump
         shell: bash
         run: |
