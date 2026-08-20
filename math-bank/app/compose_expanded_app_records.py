@@ -18,32 +18,37 @@ def sha256_path(path: Path) -> str:
     return h.hexdigest()
 
 
+def atomic_json(path: Path, obj: object) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text(json.dumps(obj, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    tmp.replace(path)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("base")
     ap.add_argument("expanded")
     ap.add_argument("output")
     ap.add_argument("--report", default="math-bank/state/variant-expansion-latest.json")
+    ap.add_argument("--base-snapshot", default="math-bank/app/base-app-records.json")
     ap.add_argument("--require-full-parent-coverage", action="store_true")
     ns = ap.parse_args()
 
     base_path = Path(ns.base)
     layer_path = Path(ns.expanded)
     out_path = Path(ns.output)
+    snapshot_path = Path(ns.base_snapshot)
     base = load_records(base_path)
     variants, provenance, base_sha = load_layer(layer_path)
-    validation = validate_layer(
-        base,
-        variants,
-        provenance,
-        require_full_parent_coverage=ns.require_full_parent_coverage,
-    )
+    validation = validate_layer(base, variants, provenance, require_full_parent_coverage=ns.require_full_parent_coverage)
 
+    # Preserve the exact 1231-record canonical app conversion separately from the
+    # dynamically composed app dataset. Canonical provenance is verified against
+    # this immutable snapshot; expanded provenance is verified independently.
+    atomic_json(snapshot_path, base)
     composed = base + variants
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = out_path.with_suffix(out_path.suffix + ".tmp")
-    tmp.write_text(json.dumps(composed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    tmp.replace(out_path)
+    atomic_json(out_path, composed)
 
     report = {
         "status": "PASS",
@@ -51,6 +56,8 @@ def main() -> int:
         "recorded_at_utc": datetime.now(timezone.utc).isoformat(),
         "base_file": str(base_path),
         "base_file_sha256": sha256_path(base_path),
+        "base_snapshot_file": str(snapshot_path),
+        "base_snapshot_sha256": sha256_path(snapshot_path),
         "base_canonical_zip_sha256_anchor": base_sha,
         "expanded_layer_file": str(layer_path),
         "expanded_layer_sha256": sha256_path(layer_path),
@@ -67,14 +74,11 @@ def main() -> int:
         "uncovered_parent_count": validation["uncovered_parent_count"],
         "uncovered_parent_ids": validation["uncovered_parent_ids"],
         "require_full_parent_coverage": ns.require_full_parent_coverage,
-        "publication_expansion_ready": bool(
-            validation["uncovered_parent_count"] == 0 and validation["expanded_verified_variants"] >= 1124
-        ),
-        "policy": "Base canonical records are immutable. Only independently recalculated, audited, parent-linked expanded variants are appended.",
+        "publication_expansion_ready": bool(validation["uncovered_parent_count"] == 0 and validation["expanded_verified_variants"] >= 1124),
+        "policy": "Canonical BASE is preserved separately. Only independently recalculated, audited, parent-linked expanded variants are appended to the runtime dataset.",
     }
     report_path = Path(ns.report)
-    report_path.parent.mkdir(parents=True, exist_ok=True)
-    report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    atomic_json(report_path, report)
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0
 
