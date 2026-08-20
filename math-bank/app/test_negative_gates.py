@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import copy
 import json
 import subprocess
 import sys
@@ -8,6 +7,7 @@ import tempfile
 import zipfile
 from pathlib import Path
 
+import build_release_bundle as release_bundle
 from recover_canonical_app_records import local_figure_ref
 
 ROOT = Path(__file__).resolve().parent
@@ -130,6 +130,36 @@ with tempfile.TemporaryDirectory() as td_raw:
     bad["grade"] = True
     must_validator_reject(td, bad, "grade_bool")
 
+    # 7) Release packaging must reject a missing local figure and include a present one.
+    old_release_root = release_bundle.ROOT
+    try:
+        release_bundle.ROOT = td
+        rec = valid_original()
+        rec["figure_refs"] = ["figures/missing.png"]
+        try:
+            release_bundle.collect_figure_assets([rec])
+        except ValueError as e:
+            if "missing local figure asset" not in str(e):
+                raise
+        else:
+            raise SystemExit("FAIL release gate accepted missing local figure")
+
+        figure_dir = td / "figures"
+        figure_dir.mkdir(parents=True, exist_ok=True)
+        sample = figure_dir / "sample.png"
+        sample.write_bytes(b"test-image-placeholder")
+        rec["figure_refs"] = ["figures/sample.png"]
+        assets, external_count = release_bundle.collect_figure_assets([rec])
+        if assets != [sample] or external_count != 0:
+            raise SystemExit("FAIL release gate did not collect local figure asset exactly")
+
+        rec["figure_refs"] = ["https://example.invalid/sample.png"]
+        assets, external_count = release_bundle.collect_figure_assets([rec])
+        if assets or external_count != 1:
+            raise SystemExit("FAIL release gate external figure accounting")
+    finally:
+        release_bundle.ROOT = old_release_root
+
 print("PASS_NEGATIVE_GATES")
 print("fake_zip_hash_bypass=REJECTED")
 print("partial_161_promotion=REJECTED")
@@ -138,3 +168,5 @@ print("strict_validator_invalid_data=REJECTED")
 print("figure_path_traversal=REJECTED")
 print("figure_non_image_payload=REJECTED")
 print("validator_browser_shape_parity_negatives=REJECTED")
+print("release_missing_local_figure=REJECTED")
+print("release_present_local_figure=COLLECTED")
