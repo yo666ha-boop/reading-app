@@ -10,8 +10,8 @@ from pathlib import Path
 CANONICAL_ZIP_SHA256 = "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175"
 EXPECTED = 1231
 APP_REQUIRED = {
-    "id", "grade", "unit", "skill", "question_format", "difficulty", "source",
-    "question", "answer", "explanation", "figure_refs", "variant_group", "audit",
+    "id", "grade", "unit", "title", "skill", "question_format", "difficulty", "source",
+    "question", "choices", "answer", "explanation", "figure_refs", "variant_group", "audit",
 }
 RECORDED_CORE = {"id", "stage", "unit", "title", "q", "choices", "ans", "explanation"}
 IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".avif"}
@@ -113,12 +113,14 @@ def inspect_zip(path: Path) -> dict:
                         **profile,
                         "stage_types": top_types(rows, "stage"),
                         "unit_types": top_types(rows, "unit"),
+                        "title_types": top_types(rows, "title"),
+                        "choices_types": top_types(rows, "choices"),
                         "source_types": top_types(rows, "source"),
                         "figure_refs_types": top_types(rows, "figure_refs"),
                         "exact_1231": len(rows) == EXPECTED,
                     }
                     if candidate["exact_1231"] and candidate["app_required_common"]:
-                        candidate["classification"] = "EXACT_1231_APP_SCHEMA_CANDIDATE"
+                        candidate["classification"] = "EXACT_1231_APP_SCHEMA_CANDIDATE_WITH_TITLE_CHOICES"
                     elif candidate["exact_1231"] and candidate["recorded_core_common"]:
                         candidate["classification"] = "EXACT_1231_RECORDED_Q_ANS_CORE_CANDIDATE"
                     elif candidate["exact_1231"]:
@@ -146,7 +148,7 @@ def inspect_zip(path: Path) -> dict:
         "image_members_count": len(image_members),
         "image_members_sample": sorted(image_members)[:50],
         "next_action": (
-            "Run strict app validator/recovery only if an exact app-schema candidate exists; "
+            "Run strict app validator/recovery only if an exact app-schema candidate preserving title+choices exists; "
             "otherwise derive a deterministic mapping only from recovered canonical fields, loader, audit, and metadata files."
         ),
     })
