@@ -5,6 +5,7 @@ on:
     paths-ignore:
       - 'PUBLIC_RUNTIME_DIAG.txt'
       - 'PUBLIC_PUBLISH_STATUS.txt'
+      - 'FINAL_PUBLIC_VALIDATION.txt'
       - 'AUTOMATION_CHECKPOINT.md'
   workflow_dispatch:
 permissions:
@@ -15,7 +16,7 @@ concurrency:
 jobs:
   diagnose:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -23,36 +24,51 @@ jobs:
           node-version: '20'
       - run: |
           npm install --no-save --no-package-lock playwright@1.55.0
-          npx playwright install --with-deps chromium
-      - name: Diagnose public runtime and persist exact state
+          npx playwright install --with-deps chromium webkit
+      - name: Diagnose live public runtime, iPhone and A4 print
         shell: bash
         run: |
           set +e
           node > /tmp/diag.txt 2>&1 <<'NODE'
-          const {chromium}=require('playwright');
-          (async()=>{
-            const b=await chromium.launch({headless:true});
-            const p=await b.newPage();
-            const consoleErrors=[],requestsFailed=[];
-            p.on('pageerror',e=>consoleErrors.push('pageerror:'+String(e)));
-            p.on('console',m=>{if(m.type()==='error')consoleErrors.push('console:'+m.text())});
-            p.on('requestfailed',r=>requestsFailed.push(r.url()+' :: '+(r.failure()&&r.failure().errorText)));
-            const url='https://yo666ha-boop.github.io/reading-app/?diag='+Date.now();
-            const r=await p.goto(url,{waitUntil:'domcontentloaded',timeout:90000});
-            console.log('http='+(r&&r.status()));
-            try{await p.waitForFunction(()=>['complete','validation-error'].includes(window.V10_RUNTIME_LOAD_PROGRESS),{timeout:120000})}catch(e){console.log('wait_error='+e.message)}
-            const state=await p.evaluate(()=>{
+          const {chromium,webkit}=require('playwright');
+          const expected=[
+            'A Canadian researcher studies a patch / in the ocean.',
+            'It is said / that a lot / of trash can gather there.',
+            'The researcher finds / that the trash is mostly plastic.',
+            'A bottle can float / for a long time / and move / into the patch.'
+          ];
+          function assert(c,m){if(!c)throw new Error(m)}
+          async function state(page){
+            await page.waitForFunction(()=>['complete','validation-error'].includes(window.V10_RUNTIME_LOAD_PROGRESS),{timeout:120000});
+            return await page.evaluate(()=>{
               const sets=[window.V10_SUNSHINE_G1||{},window.V10_NEWHORIZON_G1||{},window.V10_PASSAGES_G2_SS||{},window.V10_PASSAGES_G2_NH||{},window.V10_PASSAGES_G3_SS||{},window.V10_PASSAGES_G3_NH||{}];
-              const all=sets.flatMap(d=>Object.entries(d));
-              const bad=all.filter(([sec,x])=>x.slashReadingVersion!=='reference-book-minimum-rules-20260820'||x.slashReferenceAudit!=='PASS_REFERENCE_20260820').map(([sec,x])=>({sec,ver:x&&x.slashReadingVersion,audit:x&&x.slashReferenceAudit}));
+              const all=sets.flatMap(d=>Object.values(d));
+              const bad=all.filter(x=>x.slashReadingVersion!=='reference-book-minimum-rules-20260820'||x.slashReferenceAudit!=='PASS_REFERENCE_20260820');
               const p61=(window.V10_PASSAGES_G3_SS||{})['PROGRAM 6-1'];
-              return {progress:window.V10_RUNTIME_LOAD_PROGRESS,error:window.V10_RUNTIME_LOAD_ERROR||'',build:window.V10_RUNTIME_BUILD||'',count:all.length,badCount:bad.length,bad:bad.slice(0,20),p61:p61&&p61.slashRows&&p61.slashRows.slice(0,4).map(x=>x.en),audit:window.V10_REFERENCE_SLASH_AUDIT||null,lock:document.getElementById('v10RuntimeLock')&&document.getElementById('v10RuntimeLock').innerText};
+              return {progress:window.V10_RUNTIME_LOAD_PROGRESS,error:window.V10_RUNTIME_LOAD_ERROR||'',build:window.V10_RUNTIME_BUILD||'',count:all.length,badCount:bad.length,p61:p61&&p61.slashRows&&p61.slashRows.slice(0,4).map(x=>x.en),audit:window.V10_REFERENCE_SLASH_AUDIT||null};
             });
-            console.log('state='+JSON.stringify(state));
-            console.log('consoleErrors='+JSON.stringify(consoleErrors));
-            console.log('requestFailed='+JSON.stringify(requestsFailed.slice(0,50)));
-            await b.close();
-          })().catch(e=>{console.error('fatal='+(e.stack||e));process.exitCode=1});
+          }
+          async function selectLast(page,sel){const v=await page.locator(sel+' option').evaluateAll(x=>x.map(o=>o.value));assert(v.length,sel+' empty');await page.selectOption(sel,v[v.length-1]);return v[v.length-1]}
+          async function combos(page,label){
+            let n=0;
+            for(const g of ['1','2','3'])for(const book of ['サンシャイン','ニューホライズン']){
+              await page.selectOption('#grade',g);await page.selectOption('#textbook',book);await page.selectOption('#pattern','all');await selectLast(page,'#major');await selectLast(page,'#section');await page.waitForTimeout(80);
+              assert((await page.locator('#passage').innerText()).trim().length>40,label+' passage empty '+g+'/'+book);
+              assert((await page.locator('#slash').innerText()).includes('英文解釈'),label+' slash empty '+g+'/'+book);
+              const o=await page.evaluate(()=>({sw:document.documentElement.scrollWidth,w:window.innerWidth}));assert(o.sw<=o.w+4,label+' overflow '+JSON.stringify(o)+' '+g+'/'+book);n++;
+            }
+            return n;
+          }
+          async function run(type,label,viewport,doPrint){
+            const b=await type.launch({headless:true});const p=await b.newPage({viewport});const errs=[];const req=[];
+            p.on('pageerror',e=>errs.push('pageerror:'+String(e)));p.on('console',m=>{if(m.type()==='error')errs.push('console:'+m.text())});p.on('requestfailed',r=>req.push(r.url()+'::'+(r.failure()&&r.failure().errorText)));
+            const r=await p.goto('https://yo666ha-boop.github.io/reading-app/?diag='+Date.now()+'&engine='+label,{waitUntil:'domcontentloaded',timeout:90000});assert(r&&r.ok(),label+' HTTP '+(r&&r.status()));
+            const s=await state(p);assert(s.progress==='complete',label+' progress '+s.progress+' '+s.error);assert(!s.error,label+' error '+s.error);assert(s.count===168,label+' count '+s.count);assert(s.badCount===0,label+' stale '+s.badCount);assert(JSON.stringify(s.p61)===JSON.stringify(expected),label+' p61 '+JSON.stringify(s.p61));assert(s.audit&&s.audit.passagesAudited===168&&s.audit.lastCompleted===168,label+' audit marker');
+            const comboCount=await combos(p,label);let pdfBytes=0;
+            if(doPrint){await p.emulateMedia({media:'print'});const st=await p.evaluate(()=>({screen:[...document.querySelectorAll('.screen-only')].every(e=>getComputedStyle(e).display==='none'),tabs:[...document.querySelectorAll('.tabs')].every(e=>getComputedStyle(e).display==='none'),passage:getComputedStyle(document.querySelector('#passage')).display,slash:getComputedStyle(document.querySelector('#slash')).display,questions:getComputedStyle(document.querySelector('#questions')).display,answers:getComputedStyle(document.querySelector('#answers')).display,audit:getComputedStyle(document.querySelector('#audit')).display}));assert(st.screen&&st.tabs,label+' print controls');for(const k of ['passage','slash','questions','answers'])assert(st[k]==='block',label+' print '+k+' '+st[k]);assert(st.audit==='none',label+' print audit '+st.audit);const pdf=await p.pdf({format:'A4',printBackground:true,margin:{top:'10mm',right:'10mm',bottom:'10mm',left:'10mm'}});pdfBytes=pdf.length;assert(pdfBytes>15000,label+' PDF '+pdfBytes)}
+            assert(errs.length===0,label+' browser errors '+errs.join(' | '));assert(req.length===0,label+' request failures '+req.join(' | '));console.log(label+'_PASS state='+JSON.stringify(s)+' combos='+comboCount+'/6 pdfBytes='+pdfBytes);await b.close();
+          }
+          (async()=>{await run(chromium,'CHROMIUM',{width:1440,height:1000},true);await run(webkit,'WEBKIT_IPHONE',{width:390,height:844},false);console.log('PUBLIC_FINAL_PASS_168_168_CHROMIUM_WEBKIT_IPHONE_A4')})().catch(e=>{console.error('PUBLIC_FINAL_FAIL '+(e.stack||e));process.exitCode=1});
           NODE
           code=$?
           {
