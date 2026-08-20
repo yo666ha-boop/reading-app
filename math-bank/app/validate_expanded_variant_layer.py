@@ -144,6 +144,7 @@ def validate_layer(
     seen = set(by_id)
     existing_problem_sigs = {norm_problem(r.get("question")) for r in base}
     generated_problem_sigs: set[str] = set()
+    parent_numeric_signatures: defaultdict[str, set[tuple[str, ...]]] = defaultdict(set)
     parent_counts: defaultdict[str, int] = defaultdict(int)
     grade_counts: Counter[int] = Counter()
     unit_counts: Counter[str] = Counter()
@@ -184,6 +185,10 @@ def validate_layer(
         if parent_nums and parent_nums == variant_nums:
             wording_only_rejections += 1
             fail(f"{rid}: wording-only pseudo variant; numeric literals are unchanged from parent {pid}")
+        if variant_nums and variant_nums in parent_numeric_signatures[pid]:
+            fail(f"{rid}: sibling pseudo variant; numeric literals duplicate another expanded variant for parent {pid}")
+        if variant_nums:
+            parent_numeric_signatures[pid].add(variant_nums)
 
         p = prov_by_variant.get(rid)
         if not p:
@@ -230,6 +235,7 @@ def validate_layer(
         "expanded_by_unit": dict(sorted(unit_counts.items())),
         "duplicate_questions": 0,
         "wording_only_pseudo_variants": wording_only_rejections,
+        "sibling_numeric_pseudo_variants": 0,
         "taxonomy_mismatches": 0,
         "parent_failures": 0,
         "unverified_records": 0,
