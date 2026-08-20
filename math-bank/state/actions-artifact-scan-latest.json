@@ -5,19 +5,164 @@
   "expected_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "required_paired_audit": "MATHBANK_FINAL_AUDIT_V2.json",
   "created_since": "2026-08-19T00:00:00Z",
-  "all_artifacts_seen": 126,
-  "candidate_artifacts": 126,
+  "all_artifacts_seen": 127,
+  "candidate_artifacts": 127,
   "canonical_hits": 0,
   "audit_name_hits": 0,
   "valid_audit_hits": 0,
   "paired_recovery_hits": 0,
   "recovery_hint_hits": 0,
-  "download_failures": 0,
-  "all_members_sha256_checked": 550,
-  "all_member_bytes_hashed": 252599590,
+  "download_failures": 1,
+  "all_members_sha256_checked": 551,
+  "all_member_bytes_hashed": 246263685,
   "zip_signature_members": 3,
   "oversize_members_skipped": 0,
   "artifacts": [
+    {
+      "artifact_id": 9410770620,
+      "name": "github-pages",
+      "size_in_bytes": 1456408,
+      "created_at": "2026-08-20T14:30:00Z",
+      "updated_at": "2026-08-20T14:30:00Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32380477268,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "main",
+        "head_sha": "93315386306b3b13ce865a9a380d99823148de38"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 6891520,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1456408
+    },
+    {
+      "artifact_id": 9410713593,
+      "name": "math-browser-regression-diagnostics",
+      "size_in_bytes": 986,
+      "created_at": "2026-08-20T14:28:33Z",
+      "updated_at": "2026-08-20T14:28:33Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32380013093,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "01b1be2adf0c050f1f33310056eec9bf3c164e4a"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 2,
+        "members_sha256_checked": 2,
+        "member_bytes_hashed": 2655,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 986
+    },
+    {
+      "artifact_id": 9410664571,
+      "name": "github-pages",
+      "size_in_bytes": 1456409,
+      "created_at": "2026-08-20T14:27:18Z",
+      "updated_at": "2026-08-20T14:27:18Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32380209606,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "main",
+        "head_sha": "f0753d51ef4b377a9e13a4d917ce179823c88865"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 6891520,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1456409
+    },
+    {
+      "artifact_id": 9410639115,
+      "name": "github-pages",
+      "size_in_bytes": 1456560,
+      "created_at": "2026-08-20T14:26:38Z",
+      "updated_at": "2026-08-20T14:26:38Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32380146550,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "main",
+        "head_sha": "788c2989b0f2b0379c0ab43a38a04041d1b4d22c"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 6891520,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1456560
+    },
+    {
+      "artifact_id": 9410608815,
+      "name": "github-pages",
+      "size_in_bytes": 1456535,
+      "created_at": "2026-08-20T14:25:51Z",
+      "updated_at": "2026-08-20T14:25:51Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32380072190,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "main",
+        "head_sha": "317e263f346e397cae3f2e414d145eb26d56a2ce"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 6891520,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1456535
+    },
     {
       "artifact_id": 9410585442,
       "name": "math-browser-regression-diagnostics",
@@ -3454,136 +3599,15 @@
         "head_branch": "main",
         "head_sha": "a252895b7580b790056d9b69347e8bba627422ed"
       },
-      "downloaded": true,
+      "downloaded": false,
       "interesting_members": [],
       "canonical_sha_hits": [],
       "valid_final_audit_hits": [],
       "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 1,
-        "members_sha256_checked": 1,
-        "member_bytes_hashed": 6799360,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 1401554
-    },
-    {
-      "artifact_id": 9391734137,
-      "name": "github-pages",
-      "size_in_bytes": 1400103,
-      "created_at": "2026-08-20T03:07:24Z",
-      "updated_at": "2026-08-20T03:07:24Z",
-      "expired": false,
-      "workflow_run": {
-        "id": 32327078724,
-        "repository_id": 1211918933,
-        "head_repository_id": 1211918933,
-        "head_branch": "main",
-        "head_sha": "1af6567d7ade00178ffd41d24c142ff60a8ca5ba"
-      },
-      "downloaded": true,
-      "interesting_members": [],
-      "canonical_sha_hits": [],
-      "valid_final_audit_hits": [],
-      "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 1,
-        "members_sha256_checked": 1,
-        "member_bytes_hashed": 6799360,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 1400103
-    },
-    {
-      "artifact_id": 9391679935,
-      "name": "github-pages",
-      "size_in_bytes": 1398767,
-      "created_at": "2026-08-20T03:04:38Z",
-      "updated_at": "2026-08-20T03:04:38Z",
-      "expired": false,
-      "workflow_run": {
-        "id": 32326898215,
-        "repository_id": 1211918933,
-        "head_repository_id": 1211918933,
-        "head_branch": "main",
-        "head_sha": "05986142a714b894ab93076a9ae5a61130b735f9"
-      },
-      "downloaded": true,
-      "interesting_members": [],
-      "canonical_sha_hits": [],
-      "valid_final_audit_hits": [],
-      "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 1,
-        "members_sha256_checked": 1,
-        "member_bytes_hashed": 6789120,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 1398767
-    },
-    {
-      "artifact_id": 9391631172,
-      "name": "github-pages",
-      "size_in_bytes": 1392507,
-      "created_at": "2026-08-20T03:02:15Z",
-      "updated_at": "2026-08-20T03:02:15Z",
-      "expired": false,
-      "workflow_run": {
-        "id": 32326756547,
-        "repository_id": 1211918933,
-        "head_repository_id": 1211918933,
-        "head_branch": "main",
-        "head_sha": "f7aac58f3ca311f6dd3f9b2e65bc0ef695cd75d9"
-      },
-      "downloaded": true,
-      "interesting_members": [],
-      "canonical_sha_hits": [],
-      "valid_final_audit_hits": [],
-      "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 1,
-        "members_sha256_checked": 1,
-        "member_bytes_hashed": 6768640,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 1392507
-    },
-    {
-      "artifact_id": 9391616030,
-      "name": "github-pages",
-      "size_in_bytes": 1386205,
-      "created_at": "2026-08-20T03:01:33Z",
-      "updated_at": "2026-08-20T03:01:33Z",
-      "expired": false,
-      "workflow_run": {
-        "id": 32326712119,
-        "repository_id": 1211918933,
-        "head_repository_id": 1211918933,
-        "head_branch": "main",
-        "head_sha": "db20598854793324cf412d16049cb39e5fe4a191"
-      },
-      "downloaded": true,
-      "interesting_members": [],
-      "canonical_sha_hits": [],
-      "valid_final_audit_hits": [],
-      "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 1,
-        "members_sha256_checked": 1,
-        "member_bytes_hashed": 6748160,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 1386205
+      "member_scan_metrics": {},
+      "errors": [
+        "curl rc=22: curl: (22) The requested URL returned error: 404\n"
+      ]
     },
     {
       "artifact_id": 9370221269,
@@ -3698,6 +3722,6 @@
     }
   ],
   "recovered_files": [],
-  "completed_at_utc": "2026-08-20T14:26:12.046162+00:00",
+  "completed_at_utc": "2026-08-20T14:32:11.826922+00:00",
   "policy": "Every member under the size cap is SHA-256 checked regardless of filename/extension. Nested archives are detected by ZIP signature. Exact immutable SHA plus one unambiguous valid final audit from the same Actions artifact is required; no reconstruction."
 }
