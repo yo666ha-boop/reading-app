@@ -10,6 +10,7 @@ on:
       - 'math-bank/app/compose_expanded_app_records.py'
       - 'math-bank/app/test_expanded_variant_layer.py'
       - 'math-bank/app/upgrade_index_for_expanded_variants.py'
+      - 'math-bank/app/upgrade_browser_regression_for_expanded_variants.py'
       - 'math-bank/app/verified-expanded-variants.json'
 
 concurrency:
@@ -31,6 +32,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
 
       - name: Compile expanded variant pipeline
         run: |
@@ -39,42 +43,63 @@ jobs:
             math-bank/app/validate_expanded_variant_layer.py \
             math-bank/app/compose_expanded_app_records.py \
             math-bank/app/test_expanded_variant_layer.py \
-            math-bank/app/upgrade_index_for_expanded_variants.py
+            math-bank/app/upgrade_index_for_expanded_variants.py \
+            math-bank/app/upgrade_browser_regression_for_expanded_variants.py \
+            math-bank/app/check_app_shell.py
 
       - name: Run positive and negative expanded variant gates
         working-directory: math-bank/app
         run: python test_expanded_variant_layer.py
 
-      - name: Upgrade app UI and runtime gate from frozen 1231 to dynamic verified variants
+      - name: Upgrade app UI and runtime gate to dynamic verified variants
         run: python math-bank/app/upgrade_index_for_expanded_variants.py
 
-      - name: Assert expansion-mode app contract
+      - name: Upgrade synthetic browser fixture to include expanded variants
+        run: python math-bank/app/upgrade_browser_regression_for_expanded_variants.py
+
+      - name: Assert expansion-mode app and browser contracts
         run: |
           python - <<'PY'
           from pathlib import Path
-          p=Path('math-bank/app/index.html')
-          s=p.read_text(encoding='utf-8')
-          required=[
+          app=Path('math-bank/app/index.html').read_text(encoding='utf-8')
+          browser=Path('math-bank/app/browser_regression.mjs').read_text(encoding='utf-8')
+          required_app=[
             'const BASELINE={original:1124,baselineVariant:107',
             'variant>=BASELINE.baselineVariant',
             'taxonomyFail===0',
             '拡張ゲート PASS',
             '追加${a.expandedVariant}問',
           ]
-          forbidden=[
+          forbidden_app=[
             'const CANONICAL={total:1231',
             '以外は追加しません',
             'rs.length===CANONICAL.total',
             '正本1231問の完全ゲート',
           ]
-          for x in required:
-            assert x in s, f'missing expansion app token: {x}'
-          for x in forbidden:
-            assert x not in s, f'frozen gate still present: {x}'
-          print('PASS_APP_DYNAMIC_VERIFIED_VARIANT_GATE')
+          required_browser=[
+            'rows.length !== 1234',
+            'TEST-XVAR-',
+            "includes('基準データ未接続')",
+            "includes('拡張ゲート PASS')",
+            "includes('追加3問')",
+            "includes('候補 1234問')",
+            "includes('類題 110問')",
+          ]
+          forbidden_browser=["候補 1231問", "既存類題 107問", "正本データ未接続"]
+          for x in required_app:
+            assert x in app, f'missing expansion app token: {x}'
+          for x in forbidden_app:
+            assert x not in app, f'frozen app gate still present: {x}'
+          for x in required_browser:
+            assert x in browser, f'missing expanded browser token: {x}'
+          for x in forbidden_browser:
+            assert x not in browser, f'frozen browser token still present: {x}'
+          print('PASS_APP_AND_BROWSER_DYNAMIC_VERIFIED_VARIANT_CONTRACT')
           PY
+          node --check math-bank/app/browser_regression.mjs
+          python math-bank/app/check_app_shell.py
 
-      - name: Persist upgraded app and tested expansion state
+      - name: Persist upgraded app browser and tested expansion state
         shell: bash
         run: |
           python - <<'PY'
@@ -89,9 +114,10 @@ jobs:
             'app_dynamic_expansion_gate':'PASS',
             'expanded_validator':'PASS_POSITIVE_NEGATIVE_TESTS',
             'expanded_composer':'IMPLEMENTED',
+            'synthetic_browser_expansion_fixture':'READY_1124_ORIGINAL_110_VARIANT_TOTAL_1234',
             'expanded_verified_variants':len(json.loads(Path('math-bank/app/verified-expanded-variants.json').read_text(encoding='utf-8')).get('variants',[])),
             'publication_ready':False,
-            'next':'recover exact base records; generate independently recalculated variants from each actual parent; compose and run real browser/A4 regression'
+            'next':'recover actual verified base records; generate independently recalculated variants from each real parent; compose and run real browser/A4 regression'
           })
           p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           PY
@@ -99,13 +125,15 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           mkdir -p /tmp/math-expanded
           cp math-bank/app/index.html /tmp/math-expanded/index.html
+          cp math-bank/app/browser_regression.mjs /tmp/math-expanded/browser_regression.mjs
           cp math-bank/state/variant-expansion-latest.json /tmp/math-expanded/variant-expansion-latest.json
           git fetch origin math-problem-bank-bootstrap
           git reset --hard origin/math-problem-bank-bootstrap
           cp /tmp/math-expanded/index.html math-bank/app/index.html
+          cp /tmp/math-expanded/browser_regression.mjs math-bank/app/browser_regression.mjs
           cp /tmp/math-expanded/variant-expansion-latest.json math-bank/state/variant-expansion-latest.json
-          git add math-bank/app/index.html math-bank/state/variant-expansion-latest.json
+          git add math-bank/app/index.html math-bank/app/browser_regression.mjs math-bank/state/variant-expansion-latest.json
           if ! git diff --cached --quiet; then
-            git commit -m 'math app: enable dynamic verified variant expansion'
+            git commit -m 'math app: enable expanded verified variant browser regression'
             git push origin HEAD:math-problem-bank-bootstrap
           fi
