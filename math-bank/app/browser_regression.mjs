@@ -206,6 +206,8 @@ async function runCase(browserType, name, viewport) {
       await page.evaluate(() => document.body.classList.add('print-answers'));
     }
 
+    // page.pdf may reset the emulated medium after generation; reassert print media before checking computed print CSS.
+    await page.emulateMedia({ media: 'print' });
     const answerPrint = await page.locator('.answer').evaluate(el => getComputedStyle(el).display);
     if (answerPrint === 'none') fail(`${name}: answer print CSS still hides answer`);
     await page.evaluate(() => document.body.classList.remove('print-answers'));
