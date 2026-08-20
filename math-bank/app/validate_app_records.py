@@ -27,6 +27,8 @@ def text(value: object) -> str:
 
 
 def validate_record(r: dict, seen_ids: set[str]) -> None:
+    if not isinstance(r, dict):
+        fail("record must be object")
     missing = REQUIRED - set(r)
     if missing:
         fail(f"{r.get('id', '<no-id>')}: missing {sorted(missing)}")
@@ -36,7 +38,9 @@ def validate_record(r: dict, seen_ids: set[str]) -> None:
     if rid in seen_ids:
         fail(f"duplicate id: {rid}")
     seen_ids.add(rid)
-    if r["grade"] not in VALID_GRADES:
+
+    grade = r["grade"]
+    if isinstance(grade, bool) or not isinstance(grade, int) or grade not in VALID_GRADES:
         fail(f"{rid}: invalid grade")
     if r["difficulty"] not in VALID_DIFFICULTY:
         fail(f"{rid}: invalid difficulty")
@@ -50,16 +54,36 @@ def validate_record(r: dict, seen_ids: set[str]) -> None:
         fail(f"{rid}: blank answer")
     if not isinstance(r["explanation"], str):
         fail(f"{rid}: explanation must be string")
+    if not (r["variant_group"] is None or isinstance(r["variant_group"], str)):
+        fail(f"{rid}: variant_group must be string or null")
+
+    prerequisites = r.get("prerequisites")
+    if prerequisites is not None:
+        if (
+            not isinstance(prerequisites, list)
+            or any(not isinstance(x, str) for x in prerequisites)
+            or len(prerequisites) != len(set(prerequisites))
+        ):
+            fail(f"{rid}: invalid/duplicate prerequisites")
+
     unit = r["unit"]
     if not isinstance(unit, dict) or not text(unit.get("major")) or not text(unit.get("minor")):
         fail(f"{rid}: invalid unit")
     tags = unit.get("tags", [])
     if not isinstance(tags, list) or any(not isinstance(x, str) for x in tags) or len(tags) != len(set(tags)):
         fail(f"{rid}: invalid/duplicate unit tags")
+
     source = r["source"]
     if not isinstance(source, dict) or source.get("book") not in VALID_BOOKS:
         fail(f"{rid}: invalid source")
-    generated = bool(source.get("is_generated_variant"))
+    if not isinstance(source.get("is_generated_variant"), bool):
+        fail(f"{rid}: source.is_generated_variant must be bool")
+    if not isinstance(source.get("document"), str):
+        fail(f"{rid}: source.document must be string")
+    if not (source.get("original_no") is None or isinstance(source.get("original_no"), str)):
+        fail(f"{rid}: source.original_no must be string or null")
+
+    generated = source["is_generated_variant"]
     if generated:
         if source.get("book") != "generated":
             fail(f"{rid}: generated variant must use source.book=generated")
@@ -67,9 +91,11 @@ def validate_record(r: dict, seen_ids: set[str]) -> None:
             fail(f"{rid}: generated variant without parent_id")
     elif source.get("book") == "generated":
         fail(f"{rid}: source.book=generated but is_generated_variant=false")
+
     figs = r["figure_refs"]
     if not isinstance(figs, list) or any(not isinstance(x, str) or not x.strip() for x in figs) or len(figs) != len(set(figs)):
         fail(f"{rid}: invalid/duplicate figure_refs")
+
     audit = r["audit"]
     if not isinstance(audit, dict):
         fail(f"{rid}: invalid audit")
@@ -91,7 +117,13 @@ def load_records(p: Path) -> list[dict]:
                     fail(f"line {i}: invalid JSON: {e}")
         return records
     obj = json.loads(p.read_text(encoding="utf-8"))
-    return obj if isinstance(obj, list) else obj.get("records", [])
+    if isinstance(obj, list):
+        return obj
+    if isinstance(obj, dict):
+        records = obj.get("records", [])
+        if isinstance(records, list):
+            return records
+    fail("top-level JSON must be an array or object with records array")
 
 
 def main(path: str, strict: bool = True) -> int:
@@ -103,8 +135,8 @@ def main(path: str, strict: bool = True) -> int:
     for r in records:
         validate_record(r, seen)
 
-    generated = [r for r in records if r["source"].get("is_generated_variant")]
-    originals = [r for r in records if not r["source"].get("is_generated_variant")]
+    generated = [r for r in records if r["source"]["is_generated_variant"]]
+    originals = [r for r in records if not r["source"]["is_generated_variant"]]
     original_counts = Counter(r["source"]["book"] for r in originals)
     grades = Counter(r["grade"] for r in records)
 
@@ -113,7 +145,7 @@ def main(path: str, strict: bool = True) -> int:
         parent_id = r["source"].get("parent_id")
         if parent_id not in by_id:
             fail(f"{r['id']}: parent_id not found: {parent_id}")
-        if by_id[parent_id]["source"].get("is_generated_variant"):
+        if by_id[parent_id]["source"]["is_generated_variant"]:
             fail(f"{r['id']}: parent_id points to generated variant")
 
     if strict:
