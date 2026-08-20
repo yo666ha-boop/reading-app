@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parent
 OUT = ROOT.parent / "release"
 DATA = ROOT / "app-records.json"
 PROVENANCE = ROOT / "canonical-provenance.json"
+AUDIT = ROOT / "MATHBANK_FINAL_AUDIT_V2.json"
 INDEX = ROOT / "index.html"
 VALIDATOR = ROOT / "validate_app_records.py"
 
@@ -33,6 +34,20 @@ def load_records() -> list[dict]:
     if not isinstance(rows, list):
         raise ValueError("app-records.json does not contain a records list")
     return rows
+
+
+def validate_final_audit() -> dict:
+    if not AUDIT.is_file():
+        raise ValueError("MATHBANK_FINAL_AUDIT_V2.json is required for strict release")
+    if AUDIT.name != "MATHBANK_FINAL_AUDIT_V2.json":
+        raise ValueError("final audit filename mismatch")
+    try:
+        obj = json.loads(AUDIT.read_text(encoding="utf-8"))
+    except Exception as e:
+        raise ValueError(f"final audit is not valid JSON: {e}") from e
+    if not isinstance(obj, dict):
+        raise ValueError("final audit must be a JSON object")
+    return obj
 
 
 def collect_figure_assets(records: list[dict]) -> tuple[list[Path], int]:
@@ -76,6 +91,11 @@ def main() -> int:
     except Exception as e:
         raise SystemExit(f"FAIL canonical provenance release gate: {e}")
 
+    try:
+        validate_final_audit()
+    except Exception as e:
+        raise SystemExit(f"FAIL final canonical audit release gate: {e}")
+
     records = load_records()
     choice_records = sum(1 for r in records if isinstance(r.get("choices"), list) and len(r["choices"]) > 0)
     title_records = sum(1 for r in records if isinstance(r.get("title"), str))
@@ -94,6 +114,7 @@ def main() -> int:
     shutil.copy2(INDEX, OUT / "index.html")
     shutil.copy2(DATA, OUT / "app-records.json")
     shutil.copy2(PROVENANCE, OUT / "canonical-provenance.json")
+    shutil.copy2(AUDIT, OUT / "MATHBANK_FINAL_AUDIT_V2.json")
 
     for src in figure_assets:
         rel = src.relative_to(ROOT)
@@ -101,9 +122,14 @@ def main() -> int:
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dest)
 
-    payload_files = [OUT / "index.html", OUT / "app-records.json", OUT / "canonical-provenance.json"] + [OUT / src.relative_to(ROOT) for src in figure_assets]
+    payload_files = [
+        OUT / "index.html",
+        OUT / "app-records.json",
+        OUT / "canonical-provenance.json",
+        OUT / "MATHBANK_FINAL_AUDIT_V2.json",
+    ] + [OUT / src.relative_to(ROOT) for src in figure_assets]
     manifest = {
-        "release_gate": "STRICT_CANONICAL_1231_PROVENANCE_TITLE_CHOICES_AND_FIGURE_ASSETS_PASS",
+        "release_gate": "STRICT_CANONICAL_1231_PROVENANCE_FINAL_AUDIT_TITLE_CHOICES_AND_FIGURE_ASSETS_PASS",
         "records": 1231,
         "original": 1124,
         "variants": 107,
@@ -112,6 +138,9 @@ def main() -> int:
         "choice_records": choice_records,
         "title_choices_preservation_required": True,
         "canonical_provenance_required": True,
+        "canonical_final_audit_required": True,
+        "canonical_final_audit_filename": AUDIT.name,
+        "canonical_final_audit_sha256": sha256(AUDIT),
         "canonical_provenance_status": provenance_result["status"],
         "canonical_zip_sha256": provenance_result["canonical_zip_sha256"],
         "canonical_member": provenance_result["canonical_member"],
@@ -137,6 +166,8 @@ def main() -> int:
 
     print("PASS_RELEASE_BUNDLE")
     print("canonical_provenance=PASS")
+    print("canonical_final_audit=PASS")
+    print(f"canonical_final_audit_sha256={sha256(AUDIT)}")
     print(f"canonical_zip_sha256={provenance_result['canonical_zip_sha256']}")
     print(f"provenance_method={provenance_result['method']}")
     print(f"records={len(records)}")
