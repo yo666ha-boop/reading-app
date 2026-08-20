@@ -1,7 +1,7 @@
 name: v10 slash quality
 on:
   push:
-    branches: [v10-slash-rebuild, v10-reference-slash-audit]
+    branches: [main, v10-slash-rebuild, v10-reference-slash-audit]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -17,16 +17,10 @@ jobs:
         with:
           node-version: '20'
       - run: npm install --no-save --no-package-lock jsdom@24.1.3 playwright@1.55.0
+      - name: Reference runtime 168 validation
+        run: node v10_reference_runtime_audit.js
       - name: Authoritative reference sample gate
         run: node v10_reference_slash_gate.js
-      - name: Dump all current 168 slash rows for reference re-audit
-        run: node v10_reference_runtime_dump.js
-      - name: Existing semantic runtime regression
-        run: node v10_semantic_runtime_audit.js
-      - name: Legacy meaning-chunk slash quality gate
-        run: node v10_slash_quality_audit.js
-      - name: Consolidated 091-168 final audit coverage
-        run: node v10_final_audit_091_168_static_test.js
       - name: Stage2 full 168 coverage
         run: node v10_stage2_full_coverage_test.js
       - name: Stage2 DOM regression
@@ -37,28 +31,44 @@ jobs:
           npx playwright install chromium firefox webkit
       - name: Cross-browser and print validation
         run: node v10_final_browser_print_test.js
-      - name: Public GitHub Pages runtime smoke
+      - name: Public GitHub Pages reference runtime smoke
         shell: bash
         run: |
           set -euo pipefail
-          curl -fsSL --retry 6 --retry-delay 5 https://yo666ha-boop.github.io/reading-app/v10_vocab_slash_manual_091_168.js -o /tmp/audit.js
-          grep -q 'Expected 78 audited passages' /tmp/audit.js
+          curl -fsSL --retry 8 --retry-delay 8 'https://yo666ha-boop.github.io/reading-app/?ci=20260820-reference' -o /tmp/public-index.html
+          grep -q 'v10_interaction_metadata.js?v=20260820-2055-reference' /tmp/public-index.html
           node <<'NODE'
-          const {chromium}=require('playwright');
-          (async()=>{
-            const b=await chromium.launch({headless:true});
-            const p=await b.newPage();
+          const {chromium,webkit}=require('playwright');
+          async function check(browserType,label){
+            const b=await browserType.launch({headless:true});
+            const p=await b.newPage(label==='webkit'?{viewport:{width:390,height:844}}:{});
             const errs=[];
             p.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
             p.on('pageerror',e=>errs.push(String(e)));
-            const r=await p.goto('https://yo666ha-boop.github.io/reading-app/',{waitUntil:'networkidle',timeout:60000});
-            if(!r||!r.ok())throw new Error('public page HTTP '+(r&&r.status()));
-            await p.waitForFunction(()=>window.V10_RUNTIME_LOAD_PROGRESS==='complete',{timeout:60000});
-            const state=await p.evaluate(()=>({progress:window.V10_RUNTIME_LOAD_PROGRESS,error:window.V10_RUNTIME_LOAD_ERROR||'',audit:window.V10_FINAL_AUDIT_091_168||null,title:document.title,body:document.body&&document.body.innerText.slice(0,200)}));
-            console.log(JSON.stringify(state));
-            if(state.error)throw new Error('runtime loader error '+state.error);
-            if(!state.audit||state.audit.audited!==78)throw new Error('public audit marker missing');
-            if(errs.length)throw new Error('public browser errors '+errs.join(' | '));
+            const r=await p.goto('https://yo666ha-boop.github.io/reading-app/?ci=20260820-reference',{waitUntil:'networkidle',timeout:90000});
+            if(!r||!r.ok())throw new Error(label+' public page HTTP '+(r&&r.status()));
+            await p.waitForFunction(()=>window.V10_RUNTIME_LOAD_PROGRESS==='complete',{timeout:90000});
+            const state=await p.evaluate(()=>{
+              const sets=[window.V10_SUNSHINE_G1||{},window.V10_NEWHORIZON_G1||{},window.V10_PASSAGES_G2_SS||{},window.V10_PASSAGES_G2_NH||{},window.V10_PASSAGES_G3_SS||{},window.V10_PASSAGES_G3_NH||{}];
+              const all=sets.flatMap(d=>Object.entries(d));
+              const bad=all.filter(([sec,x])=>x.slashReadingVersion!=='reference-book-minimum-rules-20260820'||x.slashReferenceAudit!=='PASS_REFERENCE_20260820');
+              const p61=(window.V10_PASSAGES_G3_SS||{})['PROGRAM 6-1'];
+              return {progress:window.V10_RUNTIME_LOAD_PROGRESS,error:window.V10_RUNTIME_LOAD_ERROR||'',count:all.length,bad:bad.slice(0,5).map(x=>x[0]),p61:p61&&p61.slashRows&&p61.slashRows.slice(0,4).map(x=>x.en),audit:window.V10_REFERENCE_SLASH_AUDIT||null,title:document.title};
+            });
+            console.log(label,JSON.stringify(state));
+            const exp=[
+              'A Canadian researcher studies a patch / in the ocean.',
+              'It is said / that a lot / of trash can gather there.',
+              'The researcher finds / that the trash is mostly plastic.',
+              'A bottle can float / for a long time / and move / into the patch.'
+            ];
+            if(state.error)throw new Error(label+' runtime loader error '+state.error);
+            if(state.count!==168)throw new Error(label+' public passage count '+state.count+'/168');
+            if(state.bad.length)throw new Error(label+' public stale reference rows '+state.bad.join(','));
+            if(JSON.stringify(state.p61)!==JSON.stringify(exp))throw new Error(label+' PROGRAM 6-1 mismatch '+JSON.stringify(state.p61));
+            if(!state.audit||state.audit.passagesAudited!==168||state.audit.lastCompleted!==168)throw new Error(label+' 168 reference audit marker missing');
+            if(errs.length)throw new Error(label+' public browser errors '+errs.join(' | '));
             await b.close();
-          })().catch(e=>{console.error(e.stack||e);process.exit(1)});
+          }
+          (async()=>{await check(chromium,'chromium');await check(webkit,'webkit')})().catch(e=>{console.error(e.stack||e);process.exit(1)});
           NODE
