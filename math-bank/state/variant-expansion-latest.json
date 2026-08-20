@@ -14,18 +14,24 @@
   "expanded_parent_target": 1124,
   "manual_generation_queue": "BUILDER_CONSERVATIVE_CLASSIFICATION_AND_EXACT_PARENT_SHA256_BINDING_PASS_WAITING_FOR_EXACT_BASE",
   "parent_read_binding": {
-    "status": "PASS_IN_EXPANDED_WORKFLOW",
+    "status": "PASS_QUEUE_THROUGH_PUBLICATION_VALIDATOR",
     "algorithm": "sha256(canonical-json-sort-keys)",
     "queue_field": "parent_record_sha256",
-    "purpose": "Bind every future generation queue row to the exact verified parent record that was actually read; content changes produce a different fingerprint."
+    "provenance_field": "parent_record_sha256",
+    "validator_enforcement": "required_nonblank_and_exact_match_to_current_verified_parent_record",
+    "negative_tests": [
+      "stale_or_changed_parent_record_sha256_rejected",
+      "missing_parent_record_sha256_rejected"
+    ],
+    "purpose": "Bind every generated variant from parent-first queue through final publication validation to the exact verified parent record actually read."
   },
   "base_canonical_zip_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "base_canonical_pair_recovered": false,
   "app_dynamic_expansion_gate": "PASS",
-  "expanded_validator": "PASS_POSITIVE_NEGATIVE_TESTS",
+  "expanded_validator": "PASS_POSITIVE_NEGATIVE_AND_PARENT_FINGERPRINT_TESTS",
   "expanded_composer": "IMPLEMENTED",
-  "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_TESTS",
-  "validator_test_status": "PASS_EXPANDED_WORKFLOW_AFTER_CI_EXPECTATION_FIX",
+  "generation_queue_builder": "PASS_SHARED_PARENT_FINGERPRINT_IMPLEMENTATION_WITH_VALIDATOR",
+  "validator_test_status": "PASS_EXPANDED_WORKFLOW_AFTER_PARENT_FINGERPRINT_PUBLICATION_GATE",
   "synthetic_browser_expansion_fixture": "READY_1124_ORIGINAL_110_VARIANT_TOTAL_1234",
   "latest_implementation_commits": {
     "validator_surface_change_gate": "646b434af4bb5c54159f7475cf4128bfcaf66d00",
@@ -35,12 +41,16 @@
     "expanded_ci_and_queue_test": "2af5d618e0dfa50bfbf59c950638e925f2cc784e",
     "parent_fingerprint_queue": "986d460bd8e0f3eec97a71edc743bcd9f1892ee4",
     "parent_fingerprint_test": "a73b1a73655aeb95773213904708b4e46dd36107",
-    "expanded_workflow_state_commit_after_parent_fingerprint": "84596f05de88215becae7cdf633d660615c181dd"
+    "publication_parent_fingerprint_validator": "1ad63a78390c38e2ca91e5e97309cc18f16f66c1",
+    "publication_parent_fingerprint_negative_tests": "3a300bc7a3fcbf5535bb20ec16fb5aa52df10e63",
+    "validator_contract_token_followup": "d25ed6c81443bae65a5ebb2aa0341bf3e92ccbdf",
+    "shared_fingerprint_queue_implementation": "fe0a59771db20a0f1da582f761bcb5d78076cda9",
+    "expanded_workflow_state_commit_after_gate": "9dbeb87ab568b08ef96d8c040c0e7e2a365f6db6"
   },
   "base_recovery": {
-    "actions_artifacts_seen": 133,
-    "actions_members_sha256_checked": 564,
-    "actions_bytes_hashed": 253438935,
+    "actions_artifacts_seen": 134,
+    "actions_members_sha256_checked": 566,
+    "actions_bytes_hashed": 253441545,
     "actions_download_failures": 0,
     "actions_canonical_hits": 0,
     "actions_valid_audit_hits": 0,
@@ -49,12 +59,19 @@
     "latest_auto_complete_result": "cancelled_not_negative_evidence",
     "latest_auto_complete_triggering_sha": "9f7192917d6614adb2e7cd8e38026755aecf9993",
     "git_history_exact_coverage_complete": false,
+    "git_history_pair_hits": 0,
     "release_pair_hits": 0,
-    "file_library_exact_zip_or_audit_hits_this_run": 0,
-    "google_drive_exact_zip_hits_this_run": 0,
-    "google_drive_exact_audit_hits_this_run": 0
+    "policy": "cancelled/timeout/incomplete coverage is never absence evidence"
+  },
+  "last_confirmed_ci": {
+    "workflow": "Math Problem Bank Audit",
+    "run_id": 32394997414,
+    "triggering_sha": "a73b1a73655aeb95773213904708b4e46dd36107",
+    "overall_result": "success",
+    "synthetic_browser": "success",
+    "real_canonical_browser": "blocked_expected_exact_base_absent"
   },
   "publication_ready": false,
-  "next": "recover actual verified base records; generate independently recalculated variants from each real parent; compose and run real browser/A4 regression",
-  "recorded_at_utc": "2026-08-20T17:57:17.158902+00:00"
+  "next": "continue exact BASE recovery; once exact BASE records are recovered, SHA/audit validate, run the fingerprint-bound queue, generate only parent-read independently recalculated variants, and preserve parent_record_sha256 in every generation provenance record",
+  "recorded_at_utc": "2026-08-20T17:59:00Z"
 }
