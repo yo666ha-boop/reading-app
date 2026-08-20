@@ -21,8 +21,8 @@ async function injectCanonicalFixture(page) {
         i++;
         const grade = i <= 400 ? 1 : (i <= 800 ? 2 : 3);
         const rid = `TEST-ORIG-${String(i).padStart(4, '0')}`;
-        originals.push({ rid, grade, hasChoices, minor: grade === 1 ? '正負の数' : (grade === 2 ? '式の計算' : '多項式') });
         const hasChoices = i % 10 === 0;
+        originals.push({ rid, grade, hasChoices, minor: grade === 1 ? '正負の数' : (grade === 2 ? '式の計算' : '多項式') });
         rows.push({
           id: rid,
           grade,
