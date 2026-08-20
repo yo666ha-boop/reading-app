@@ -68,14 +68,9 @@ def strict_validate_rows(rows: list[dict]) -> tuple[bool, str]:
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Recover only an exact already-verified 1231-record math app dataset.")
-    ap.add_argument("source", help="Canonical ZIP, JSON, or JSONL")
+    ap = argparse.ArgumentParser(description="Recover only the already-verified canonical 1231-record math app dataset.")
+    ap.add_argument("source", help="Canonical ZIP, or separately verified JSON/JSONL")
     ap.add_argument("--output", default=str(Path(__file__).with_name("app-records.json")))
-    ap.add_argument(
-        "--expected-zip-sha256",
-        default=CANONICAL_ZIP_SHA256,
-        help="Known final ZIP SHA-256. Enforced for ZIP input; use empty string only for a separately verified non-ZIP source.",
-    )
     args = ap.parse_args()
 
     source = Path(args.source)
@@ -83,16 +78,16 @@ def main() -> int:
         raise SystemExit(f"BLOCKED: source not found: {source}")
 
     source_sha256 = sha256_file(source)
-    if source.suffix.lower() == ".zip" and args.expected_zip_sha256:
-        expected = args.expected_zip_sha256.lower().strip()
-        if source_sha256.lower() != expected:
+    if source.suffix.lower() == ".zip":
+        # ZIP identity is immutable. There is intentionally no CLI override for this value.
+        if source_sha256.lower() != CANONICAL_ZIP_SHA256:
             print(json.dumps({
                 "status": "BLOCKED",
                 "source": str(source),
                 "reason": "ZIP_SHA256_MISMATCH",
                 "actual_sha256": source_sha256,
-                "expected_sha256": expected,
-                "policy": "do not inspect/promote a ZIP that is not the recorded final canonical artifact"
+                "expected_sha256": CANONICAL_ZIP_SHA256,
+                "policy": "ZIP input must be the recorded final canonical artifact; hash bypass is not allowed"
             }, ensure_ascii=False, indent=2))
             return 4
 
@@ -125,7 +120,6 @@ def main() -> int:
             if ok:
                 out.parent.mkdir(parents=True, exist_ok=True)
                 out.write_text(json.dumps(rows, ensure_ascii=False, indent=2), encoding="utf-8")
-                # Re-run against the actual promoted path; promotion is complete only after this succeeds.
                 validate_main(str(out), strict=True)
                 print(json.dumps({
                     "status": "PASS",
