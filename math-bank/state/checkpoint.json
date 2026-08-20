@@ -1,6 +1,6 @@
 {
   "project": "mikami-math-problem-bank",
-  "status": "APP_SHELL_HARDENED_CANONICAL_HASH_PINNED_PENDING_1231_RECOVERY",
+  "status": "APP_BROWSER_STRICT_GATE_HARDENED_PENDING_EXACT_1231_RECOVERY",
   "current_stage": "EXACT_1231_RECOVERY_STRICT_VALIDATION_AND_WIRING",
   "canonical": {
     "final_records": 1231,
@@ -33,38 +33,43 @@
     "do_not_reconstruct_from_old_or_partial_files": true,
     "do_not_promote_partial_161_dataset": true,
     "zip_candidate_must_match_recorded_sha256": true,
+    "zip_hash_override_allowed": false,
     "app_records_must_pass_strict_validator": true,
+    "browser_gate_must_check_structure_audit_and_parent_links": true,
     "github_main_touched": false
   },
   "今回完了した内容": [
-    "Rechecked local /mnt/data access; runtime still returned ClientResponseError",
-    "Re-searched File Library by final ZIP/audit names, canonical counts, and intermediate authoritative names; no exact canonical artifact recovered",
-    "Searched Google Drive by final name, math problem bank terms, 1231, recent files, ZIP mime type, and recorded intermediate names; no canonical math ZIP/audit recovered",
-    "Recovered the recorded final ZIP SHA-256 from prior completion history and pinned it as the canonical identity key",
-    "Updated recover_canonical_app_records.py so ZIP input is rejected before promotion when SHA-256 differs from the recorded final artifact",
-    "Added CANONICAL_RECOVERY_KEYS.json with counts, hash, audit path, and no-reconstruction policy",
-    "Added check_recovery_contract.py to prevent checksum/count/policy drift",
-    "Updated GitHub Actions so recovery contract and app shell gates run on relevant branch changes",
-    "Existing app hardening retained: filters, search, random/source order, answer display, A4 problem/answer print, localStorage, figure refs, manual JSON import, canonical browser gate, strict validator, recovery pass-through gate",
+    "Retried local/container and Python execution; both still return ClientResponseError",
+    "Kept exact canonical recovery search results: final ZIP/audit and authoritative intermediate names still not recovered from File Library or Google Drive",
+    "Made final ZIP SHA-256 verification non-bypassable in recover_canonical_app_records.py; ZIP candidates cannot disable or override the recorded hash",
+    "Added negative recovery tests for fake same-name ZIP, known 161-record partial JSON, malformed 1231-count JSON, and strict-validator invalid data",
+    "Added the negative gates to GitHub Actions",
+    "Audited the actual current index.html blob and found the browser canonical gate was weaker than the Python strict validator",
+    "Strengthened browser canonicalAudit to check grade, difficulty, unit, skill, question format, source structure, question/answer, explanation, variant_group, tags/prerequisites, figure_refs structure, all three audit verification flags, and generated-parent existence/original-parent relationship",
+    "Changed browser gate so draw/reroll/answer-display/print remain locked unless the complete browser strict gate passes",
+    "Fixed source-book filtering so generated variants follow their parent original's book instead of disappearing whenever a book filter is selected",
+    "Changed manual JSON parse failure to clear records and previously rendered questions so stale canonical output cannot remain visible after a failed import",
+    "Expanded check_app_shell.py to enforce the new browser strict-gate, parent-book filter, stale-import clearing, and JavaScript syntax contract",
     "main remained untouched"
   ],
-  "現在どの工程にいるか": "The app/UI/validation/recovery shell is completion-ready. Work is at exact canonical 1231 recovery and wiring. The canonical ZIP identity is now cryptographically pinned, so a similarly named or count-matching substitute cannot be promoted.",
+  "現在どの工程にいるか": "App shell, UI safety, browser canonical validation, Python strict validation, recovery identity, and negative rejection gates are hardened. The remaining data-critical step is recovery of the already-completed exact 1231-record canonical artifact and wiring it as app-records.json.",
   "残っている作業": [
     "Recover exact canonical ZIP and MATHBANK_FINAL_AUDIT_V2.json",
     "Verify recovered ZIP SHA-256 equals eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
-    "Run recover_canonical_app_records.py and strict validate_app_records.py",
+    "Run recover_canonical_app_records.py and strict validate_app_records.py on the real data",
     "Wire exact app-records.json",
-    "Verify figure_refs/math rendering on all real records",
-    "Run iPhone/Fire/PC responsive regression with real data",
-    "Run A4 question/answer print regression with real data",
+    "Verify all figure_refs and mathematical rendering with real records",
+    "Run iPhone/Fire/PC responsive regression with real records",
+    "Run A4 question/answer print regression with real records",
     "Prepare isolated publication target without touching reading-app main",
-    "Run public URL real-data test",
-    "Package final app ZIP, audit report, and final checkpoint"
+    "Run final public-URL real-data test",
+    "Package final app ZIP, final audit report, and final checkpoint"
   ],
-  "次回どこから開始するか": "Immediately recheck canonical artifact availability using filename, SHA-256 recovery key, audit filename, and recorded intermediate names. If found, run hash verification -> strict recovery -> strict validator -> wire app-records.json without stopping. If still unavailable, inspect CI/app gates and continue non-data publication/regression preparation without inventing records.",
-  "次に進むべき工程": "After exact 1231 wiring completes, immediately advance to real-data figure/math audit -> device regression -> print regression -> isolated publication -> public URL test -> final package.",
+  "次回どこから開始するか": "First recheck exact canonical artifact/audit availability. If recovered, immediately execute hash verification -> strict recovery -> strict validator -> app-records wiring. If still unavailable, inspect CI evidence for the newest shell/recovery/negative gates and continue non-data browser/publication preparation without inventing records.",
+  "次に進むべき工程": "After exact 1231 wiring, continue without stopping through figure/math audit -> device regression -> A4 print regression -> isolated publication -> public URL real-data test -> final package/audit.",
   "recovery_search_results": {
     "local_runtime": "CLIENT_RESPONSE_ERROR",
+    "python_runtime": "CLIENT_RESPONSE_ERROR",
     "file_library_exact_final": false,
     "file_library_intermediate_names": false,
     "google_drive_exact_final": false,
@@ -76,13 +81,14 @@
   "github": {
     "repository": "yo666ha-boop/reading-app",
     "branch": "math-problem-bank-bootstrap",
-    "latest_known_head_before_checkpoint_update": "c92195231609a1d2d397d8457895f429b19a9daf",
+    "main_touched": false,
     "commits_this_immediate_run": [
-      "9bdc6cb535620c24783b9bc5ed82652dddce18db",
-      "de313cb263d1799e4241ded70956abdb33bba03f",
-      "a74537ce73394c7f0dead3ed9b87d796deeca20d",
-      "c92195231609a1d2d397d8457895f429b19a9daf"
+      "999764b92fbaade3cfc862a0bed1088bbaeb84c3",
+      "ccaaf1be3e8a0ae17b451355b95fd39a803c0fe0",
+      "3c530e31a265b4c3ea78c1fd049fed934200c8c3",
+      "0b28681798d824969d64424b285e99db92fd1232",
+      "a53bc5e32bd11073ab15d2822f524d72ce15da32"
     ]
   },
-  "resume_rule": "If current stage is unfinished, continue from this exact point. When a stage passes, do not stop; immediately advance to the next stage until the full math app is completed. Errors/timeouts must preserve the last completed point and resume from it next run."
+  "resume_rule": "If current stage is unfinished, continue from this exact point. If exact data recovery/wiring passes, immediately advance to real-data regressions and publication. Never stop merely because one substage completed; full app completion is the only completion condition."
 }
