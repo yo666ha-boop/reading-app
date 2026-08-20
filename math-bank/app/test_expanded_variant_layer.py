@@ -140,7 +140,8 @@ def main() -> None:
         path.write_text(json.dumps(layer, ensure_ascii=False), encoding="utf-8")
         assert json.loads(path.read_text(encoding="utf-8"))["variants"][0]["id"] == "X0001"
 
-    print("PASS_EXPANDED_VARIANT_LAYER_STRICT_PARENT_TAXONOMY_RECALC_DUPLICATE_SURFACE_CHANGE_PARENT_FINGERPRINT_GATES")
+    print("PASS_EXPANDED_VARIANT_LAYER_STRICT_PARENT_TAXONOMY_RECALC_DUPLICATE_SURFACE_CHANGE_GATES")
+    print("PASS_EXPANDED_VARIANT_PARENT_RECORD_SHA256_BINDING_GATE")
 
 
 if __name__ == "__main__":
