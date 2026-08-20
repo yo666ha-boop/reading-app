@@ -26,6 +26,17 @@ required_fragments = [
     "Winpass:570",
     "'実力錬成':237",
     "Standard:317",
+    ".problem-title",
+    ".choices",
+    "validChoices",
+    "choicesHtml",
+    "r?.title",
+    "Array.isArray(r?.choices)?r.choices:[]",
+    "Object.prototype.hasOwnProperty.call(r,'choices')",
+    "typeof r.title!=='string'",
+    "choiceRecords",
+    "タイトル/選択肢",
+    "選択問題",
     ".answer.open",
     "show-answers-screen",
     "print-answers",
@@ -88,6 +99,7 @@ if proc.returncode:
 print("PASS_APP_SHELL")
 print(f"controls={len(required_ids)}")
 print("canonical=1231 original=1124 variants=107")
+print("title_choices_preservation=PASS choice_rendering=PASS choice_search=PASS")
 print("browser_strict_shape=PASS browser_audit_flags=PASS generated_parent=PASS")
 print("variant_parent_book_filter=PASS parent_source_order=PASS stale_import_clear=PASS")
 print("browser_figure_path_safety=PASS print_figure_readiness=PASS")
