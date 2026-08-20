@@ -3,7 +3,7 @@
 status: IN_PROGRESS
 phase: VOCAB_AND_SLASH_HUMAN_AUDIT
 started_at_jst: 2026-08-20 11:00
-last_manual_progress_jst: 2026-08-20 11:57+
+last_manual_progress_jst: 2026-08-20 12:00+
 
 ## Current verified baseline
 - Semantic passage rebuild: 168/168 previously completed.
@@ -27,46 +27,61 @@ last_manual_progress_jst: 2026-08-20 11:57+
 Project learning manual example: `I went to the park / to play baseball / with my friends / yesterday.`
 
 ## Progress
-- vocabulary_final_audited: 40/168
-- slash_human_audited: 40/168
+- vocabulary_final_audited: 50/168
+- slash_human_audited: 50/168
 - passages_rewritten_this_phase: 0
 - notes_confirmed: 0
 
 ## This run completed
-- Resumed immediately from passage 031 and completed human vocabulary + slash review through passage 040.
-- Inspected the actual rendered semantic passages 031-040 before writing overrides.
-- Rechecked source vocabulary gates for PROGRAM 9, PROGRAM 10/Step 6, New Horizon Unit 0 and Unit 1-1. Explicit source gates confirmed the relevant section/cumulative/past-form/proper-name allowances; no unavoidable student note was found.
-- Created `v10_vocab_slash_manual_031_040.js` and connected it as the last human-audit chunk in `v10_interaction_metadata.js`.
-- Created detailed ledger `v10_vocab_slash_manual_audit_031_040.md`.
-- Corrected widespread grammar-drill slash patterns: removed be/complement splits, verb+short-object splits, can/verb splits, and speaker-label splits. Retained slashes only for actual chronology/place/company/topic/beneficiary chunks.
-- No vocabulary-driven English rewrite was required in 031-040; existing synchronized translations and A/B evidence remain unchanged.
+- Re-read the latest GitHub checkpoint first. It had already advanced to passage 040, so no duplicate edits were made to 031-040.
+- Inspected actual rendered semantic passages 041-050 sequentially.
+- Completed human vocabulary + slash review for New Horizon G1 Unit 1-2 through Unit 4-2.
+- No vocabulary-driven English rewrite or unavoidable student note was required in 041-050 under the established canonical/reviewed gate baseline.
+- Created `v10_vocab_slash_manual_041_050.js` and loaded it after `v10_vocab_slash_manual_031_040.js`, preserving final human overrides after all automatic semantic fixes.
+- Created detailed ledger `v10_vocab_slash_manual_audit_041_050.md`.
+- Removed grammar-drill slash splits across 041-050: be+complement, can+verb+object, ordinary verb+short-object, question frames, fixed expressions, and simple short clauses now remain intact. Slashes are retained only for real time/place/company/topic/manner chunks.
+- English text remained unchanged, so natural translations and A/B questions/answers/evidence/reasons remain synchronized.
 
 ## Completed audit ranges
 - 001-010 COMPLETE
 - 011-020 COMPLETE
 - 021-030 COMPLETE
 - 031-040 COMPLETE
+- 041-050 COMPLETE
 
 ## Current phase
 VOCAB_AND_SLASH_HUMAN_AUDIT
 
+## Completed work
+- Vocabulary final audit and human slash audit: 001-050.
+- Manual final-loader overrides connected through `v10_vocab_slash_manual_041_050.js`.
+
 ## Remaining work
-- Continue passage 041 through 168 sequentially.
+- Continue passage 051 through 168 sequentially.
 - For each passage: vocabulary classification -> rewrite only if genuinely needed -> synchronize dependent content -> human slash review.
 - After 168/168: full vocabulary/grammar/slash/A+B/coverage/DOM/browser/print regression.
 - After regression: verify public main/GitHub Pages and both print modes.
 
 ## Exact stop point this run
-Passage 040 New Horizon G1 Unit 1-1 completed and committed. Passage 041 has not yet been human-audited in this phase.
+Passage 050 New Horizon G1 Unit 4-2 completed and committed. Passage 051 has not yet been human-audited in this phase.
 
 ## Next start point
-Passage 041 New Horizon G1 Unit 1-2.
+Passage 051 New Horizon G1 Unit 4-3.
 
 ## Next phase after current
-Continue sequentially 041-168 -> FULL_REGRESSION -> PUBLIC_VERIFY
+Continue sequentially 051-168 -> FULL_REGRESSION -> PUBLIC_VERIFY
 
 ## Final-purpose remaining major stages
-1. Human vocabulary + slash audit 041-168.
+1. Human vocabulary + slash audit 051-168.
 2. Repair/synchronize any genuine vocabulary failures found.
 3. Full automated and browser/print regression after 168/168.
 4. Public Pages verification and unresolved-failure repair loop.
+
+## Latest run status
+- vocabulary audit: 50/168
+- slash human audit: 50/168
+- vocabulary-driven English rewrites: 0
+- notes confirmed: 0
+- latest manual override: `v10_vocab_slash_manual_041_050.js`
+- latest ledger: `v10_vocab_slash_manual_audit_041_050.md`
+- unresolved errors: none identified in passages 041-050 during this run
