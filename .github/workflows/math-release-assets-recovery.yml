@@ -1,0 +1,127 @@
+name: Math Release Assets Recovery
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-release-assets-recovery.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: math-release-assets-recovery
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  recover-release-assets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile exact release recovery and completion gates
+        run: |
+          python -m py_compile \
+            math-bank/app/scan_github_release_assets.py \
+            math-bank/app/complete_from_exact_canonical.py \
+            math-bank/app/build_release_bundle.py \
+            math-bank/app/verify_publish_readiness.py
+          node --check math-bank/app/browser_real_regression.mjs
+      - name: Content-addressed scan of all GitHub Release assets and nested members
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python math-bank/app/scan_github_release_assets.py
+      - name: Detect exact release pair
+        id: pair
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import hashlib
+          from pathlib import Path
+          z=Path('math-bank/recovered-release/みかみ塾数学問題バンク_最終完成版_20260820.zip')
+          a=Path('math-bank/recovered-release/MATHBANK_FINAL_AUDIT_V2.json')
+          expected='eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175'
+          ok=z.is_file() and a.is_file() and hashlib.sha256(z.read_bytes()).hexdigest()==expected
+          print(f'pair_found={str(ok).lower()}')
+          PY
+      - name: Atomic exact canonical completion from release pair
+        if: steps.pair.outputs.pair_found == 'true'
+        id: wiring
+        shell: bash
+        run: |
+          set +e
+          python math-bank/app/complete_from_exact_canonical.py \
+            'math-bank/recovered-release/みかみ塾数学問題バンク_最終完成版_20260820.zip' \
+            'math-bank/recovered-release/MATHBANK_FINAL_AUDIT_V2.json'
+          rc=$?
+          set -e
+          if [ "$rc" -eq 0 ]; then echo 'wiring_ready=true' >> "$GITHUB_OUTPUT"; \
+          elif [ "$rc" -eq 3 ]; then echo 'wiring_ready=false' >> "$GITHUB_OUTPUT"; \
+          else exit "$rc"; fi
+      - name: Install browsers only after successful wiring
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Start isolated real app
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: |
+          python3 -m http.server 8771 --bind 127.0.0.1 --directory math-bank/app >/tmp/math-release-real-http.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8771/index.html >/dev/null && exit 0; sleep 1; done
+          cat /tmp/math-release-real-http.log
+          exit 1
+      - name: Real 1231 four-browser and six-A4 regression
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        env:
+          MATH_APP_BASE_URL: http://127.0.0.1:8771/index.html
+          MATH_REAL_DATA_PATH: math-bank/app/app-records.json
+          MATH_REAL_BROWSER_REPORT: math-bank/state/browser-real-regression-latest.json
+          MATH_REAL_PDF_DIR: math-bank/state/real-print-regression
+        run: node math-bank/app/browser_real_regression.mjs
+      - name: Strict release and PUBLICATION_READY
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: |
+          python math-bank/app/build_release_bundle.py
+          python math-bank/app/verify_publish_readiness.py --pdf-root math-bank/state/real-print-regression
+      - name: Upload release recovery evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-release-assets-recovery-evidence
+          path: |
+            math-bank/state/github-release-scan-latest.json
+            math-bank/recovered-release/
+            math-bank/state/canonical-completion-latest.json
+            math-bank/state/browser-real-regression-latest.json
+            math-bank/state/real-print-regression/
+            math-bank/みかみ塾数学問題アプリ_公開候補.zip
+            math-bank/release/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Persist release scan state race-safely
+        if: always()
+        run: |
+          mkdir -p /tmp/math-release-state
+          cp math-bank/state/github-release-scan-latest.json /tmp/math-release-state/ 2>/dev/null || true
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin math-problem-bank-bootstrap
+          git reset --hard origin/math-problem-bank-bootstrap
+          mkdir -p math-bank/state
+          cp /tmp/math-release-state/*.json math-bank/state/ 2>/dev/null || true
+          git add math-bank/state/github-release-scan-latest.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'record math Release asset recovery scan'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
