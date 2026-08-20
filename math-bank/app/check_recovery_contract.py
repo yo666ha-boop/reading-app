@@ -9,11 +9,13 @@ STATE = ROOT.parent / "state" / "CANONICAL_RECOVERY_KEYS.json"
 RECOVERY = ROOT / "recover_canonical_app_records.py"
 INSPECTOR = ROOT / "inspect_canonical_artifact.py"
 VALIDATOR = ROOT / "validate_app_records.py"
+SCHEMA = ROOT / "app-record.schema.json"
 
 keys = json.loads(STATE.read_text(encoding="utf-8"))
 recovery = RECOVERY.read_text(encoding="utf-8")
 inspector = INSPECTOR.read_text(encoding="utf-8")
 validator = VALIDATOR.read_text(encoding="utf-8")
+schema = SCHEMA.read_text(encoding="utf-8")
 
 expected_hash = keys["canonical_zip"]["sha256"]
 expected = keys["expected_counts"]
@@ -31,6 +33,10 @@ checks = {
     "winpass_count_in_validator": '"Winpass": 570' in validator,
     "jitsuryoku_count_in_validator": '"実力錬成": 237' in validator,
     "standard_count_in_validator": '"Standard": 317' in validator,
+    "title_required_in_validator": '"title"' in validator.split("REQUIRED =", 1)[1].split("}", 1)[0],
+    "choices_required_in_validator": '"choices"' in validator.split("REQUIRED =", 1)[1].split("}", 1)[0],
+    "title_required_in_schema": '"title"' in schema,
+    "choices_required_in_schema": '"choices"' in schema,
     "partial_161_rejected": bool(policy.get("do_not_promote_partial_161_dataset")),
     "no_reconstruction": bool(policy.get("do_not_reconstruct_from_old_or_partial_files")),
     "no_guess_mapping": bool(policy.get("do_not_guess_canonical_to_app_mapping")),
@@ -38,7 +44,7 @@ checks = {
     "zip_hash_required": bool(policy.get("zip_input_must_match_recorded_sha256")),
     "legacy_core_detector_present": "RECORDED_CANONICAL_CORE_1231_DETECTED_APP_MAPPING_NOT_VERIFIED" in recovery,
     "inspector_q_ans_classifier_present": "EXACT_1231_RECORDED_Q_ANS_CORE_CANDIDATE" in inspector,
-    "inspector_app_classifier_present": "EXACT_1231_APP_SCHEMA_CANDIDATE" in inspector,
+    "inspector_app_classifier_preserves_title_choices": "EXACT_1231_APP_SCHEMA_CANDIDATE_WITH_TITLE_CHOICES" in inspector,
     "core_fields_match_recovery": all(repr(field) in recovery or f'"{field}"' in recovery for field in core_fields),
     "core_fields_match_inspector": all(repr(field) in inspector or f'"{field}"' in inspector for field in core_fields),
 }
@@ -53,6 +59,7 @@ if not re.fullmatch(r"[0-9a-f]{64}", expected_hash):
 print("PASS_RECOVERY_CONTRACT")
 print(f"canonical_zip_sha256={expected_hash}")
 print(f"records={expected['final_records']} original={expected['original_records']} variants={expected['generated_variants']}")
+print("title_choices_preservation=REQUIRED")
 print("partial_161_promotion=REJECTED")
 print("old_partial_reconstruction=REJECTED")
 print("legacy_q_ans_core=DETECT_ONLY_NO_GUESS_MAPPING")
