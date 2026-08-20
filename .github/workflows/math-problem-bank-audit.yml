@@ -40,8 +40,8 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Compile app validation, recovery, inspection, conversion, provenance, scanner, and release tools
-        run: python -m py_compile math-bank/app/validate_app_records.py math-bank/app/recover_canonical_app_records.py math-bank/app/inspect_canonical_artifact.py math-bank/app/convert_verified_canonical_to_app.py math-bank/app/validate_canonical_provenance.py math-bank/app/scan_canonical_candidates.py math-bank/app/scan_actions_artifacts.py math-bank/app/check_app_shell.py math-bank/app/check_recovery_contract.py math-bank/app/test_negative_gates.py math-bank/app/test_verified_converter.py math-bank/app/build_release_bundle.py
+      - name: Compile app validation recovery inspection conversion provenance scanner release and publish tools
+        run: python -m py_compile math-bank/app/validate_app_records.py math-bank/app/recover_canonical_app_records.py math-bank/app/inspect_canonical_artifact.py math-bank/app/convert_verified_canonical_to_app.py math-bank/app/validate_canonical_provenance.py math-bank/app/scan_canonical_candidates.py math-bank/app/scan_actions_artifacts.py math-bank/app/check_app_shell.py math-bank/app/check_recovery_contract.py math-bank/app/test_negative_gates.py math-bank/app/test_verified_converter.py math-bank/app/build_release_bundle.py math-bank/app/verify_publish_readiness.py
 
       - name: Check browser regression script syntax
         run: node --check math-bank/app/browser_regression.mjs && node --check math-bank/app/browser_real_regression.mjs
@@ -52,7 +52,7 @@ jobs:
       - name: Check canonical recovery contract
         run: python math-bank/app/check_recovery_contract.py
 
-      - name: Run negative data/recovery gates
+      - name: Run negative data recovery gates
         run: python math-bank/app/test_negative_gates.py
 
       - name: Run verified deterministic converter and provenance regression
@@ -233,6 +233,13 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Download real browser PDF diagnostics from this run
+        if: ${{ hashFiles('math-bank/app/app-records.json') != '' }}
+        uses: actions/download-artifact@v4
+        with:
+          name: math-browser-regression-diagnostics
+          path: /tmp/math-browser-regression
+
       - name: Build strict release only after REAL canonical browser PASS
         shell: bash
         run: |
@@ -253,8 +260,14 @@ jobs:
           print('PASS_REAL_CANONICAL_BROWSER_GATE_FOR_RELEASE')
           PY
           python math-bank/app/build_release_bundle.py
+          PDF_ROOT="$(dirname "$(find /tmp/math-browser-regression -type f -name 'grade1-questions.pdf' -print -quit)")"
+          if [ -z "$PDF_ROOT" ] || [ ! -d "$PDF_ROOT" ]; then
+            echo 'FAIL strict release: real A4 PDF artifact directory missing'
+            exit 1
+          fi
+          python math-bank/app/verify_publish_readiness.py --pdf-root "$PDF_ROOT"
 
-      - name: Preserve strict release bundle after REAL browser PASS
+      - name: Preserve strict release bundle after REAL browser and publication readiness PASS
         if: ${{ hashFiles('math-bank/app/app-records.json') != '' }}
         uses: actions/upload-artifact@v4
         with:
@@ -263,7 +276,6 @@ jobs:
             math-bank/みかみ塾数学問題アプリ_公開候補.zip
             math-bank/release/
             math-bank/state/browser-real-regression-latest.json
-            math-bank/state/real-print-regression/
           if-no-files-found: error
           retention-days: 30
 
@@ -356,6 +368,9 @@ jobs:
                   real_browser = 'invalid_report'
           if canonical_present and real_browser != 'success':
               browser = 'failure'
+          publication_ready = Path('math-bank/release/PUBLICATION_READY.json').is_file()
+          if canonical_present and not publication_ready:
+              release = 'failure'
           overall = 'success' if app == 'success' and artifact_scan == 'success' and browser == 'success' and release == 'success' and inventory == 'success' else 'failure'
           try:
               current_head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
@@ -369,6 +384,7 @@ jobs:
               'browser_regression': browser,
               'real_canonical_browser_regression': real_browser,
               'strict_release_after_browser': release,
+              'publication_ready': publication_ready,
               'inventory_and_classify': inventory,
               'triggering_sha': os.environ.get('TRIGGERING_SHA', ''),
               'branch_head_when_recorded': current_head,
@@ -376,7 +392,7 @@ jobs:
               'run_attempt': os.environ.get('RUN_ATTEMPT', ''),
               'recorded_at_utc': datetime.now(timezone.utc).isoformat(),
               'canonical_app_records_present': canonical_present,
-              'strict_release_artifact_expected': canonical_present and real_browser == 'success',
+              'strict_release_artifact_expected': canonical_present and real_browser == 'success' and publication_ready,
               'canonical_recovery_hit_present': Path('math-bank/recovered/みかみ塾数学問題バンク_最終完成版_20260820.zip').is_file(),
           }
           path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
