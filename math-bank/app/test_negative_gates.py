@@ -97,8 +97,11 @@ with tempfile.TemporaryDirectory() as td_raw:
     if p.returncode == 0 or "FAIL:" not in (p.stdout + p.stderr):
         raise SystemExit(f"FAIL strict validator negative case rc={p.returncode}\n{p.stdout}\n{p.stderr}")
 
-    # 5) Figure references cannot escape the app directory or masquerade as non-image payloads.
-    for ref in ("../index.html", "figures/../../index.html", "/etc/passwd", "figures\\evil.png", "index.html", "app-records.json", "figures/script.js"):
+    # 5) Figure references cannot escape the app directory, use unsupported schemes, or masquerade as non-image payloads.
+    for ref in (
+        "../index.html", "figures/../../index.html", "/etc/passwd", "figures\\evil.png",
+        "index.html", "app-records.json", "figures/script.js", "ftp://example.invalid/sample.png"
+    ):
         must_reject_figure_ref(ref)
     if local_figure_ref("figures/sample.png") is None:
         raise SystemExit("FAIL safe local figure ref rejected")
@@ -167,6 +170,7 @@ print("malformed_1231_promotion=REJECTED")
 print("strict_validator_invalid_data=REJECTED")
 print("figure_path_traversal=REJECTED")
 print("figure_non_image_payload=REJECTED")
+print("figure_unsupported_scheme=REJECTED")
 print("validator_browser_shape_parity_negatives=REJECTED")
 print("release_missing_local_figure=REJECTED")
 print("release_present_local_figure=COLLECTED")
