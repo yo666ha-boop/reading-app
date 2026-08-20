@@ -97,6 +97,21 @@ async function setSelect(page, id, value) {
   await page.selectOption(`#${id}`, value);
 }
 
+function assertA4Pdf(buffer, label) {
+  if (!Buffer.isBuffer(buffer) || buffer.length < 5000) fail(`${label}: PDF too small or missing (${buffer?.length ?? 0} bytes)`);
+  if (buffer.subarray(0, 5).toString('ascii') !== '%PDF-') fail(`${label}: missing PDF header`);
+  const ascii = buffer.toString('latin1');
+  const boxes = [...ascii.matchAll(/\/MediaBox\s*\[\s*0\s+0\s+([0-9.]+)\s+([0-9.]+)\s*\]/g)];
+  if (!boxes.length) fail(`${label}: MediaBox not found`);
+  for (const m of boxes) {
+    const w = Number(m[1]);
+    const h = Number(m[2]);
+    const portraitA4 = Math.abs(w - 595.28) < 3 && Math.abs(h - 841.89) < 3;
+    if (!portraitA4) fail(`${label}: non-A4 MediaBox ${w}x${h}`);
+  }
+  return { bytes: buffer.length, pages: boxes.length };
+}
+
 async function runCase(browserType, name, viewport) {
   const browser = await browserType.launch({ headless: true });
   const context = await browser.newContext({ viewport });
@@ -176,7 +191,21 @@ async function runCase(browserType, name, viewport) {
       answer: getComputedStyle(document.querySelector('.answer')).display,
     }));
     if (questionPrint.controls !== 'none' || questionPrint.answer !== 'none') fail(`${name}: question print CSS mismatch ${JSON.stringify(questionPrint)}`);
-    await page.evaluate(() => document.body.classList.add('print-answers'));
+
+    // Chromium can produce a real PDF; verify both question and answer sheets are actual portrait A4 PDFs.
+    let pdf = null;
+    if (name === 'chromium-desktop') {
+      const questionPdf = await page.pdf({ printBackground: true, preferCSSPageSize: true });
+      const question = assertA4Pdf(questionPdf, `${name}: question PDF`);
+      await page.evaluate(() => document.body.classList.add('print-answers'));
+      const answerPdf = await page.pdf({ printBackground: true, preferCSSPageSize: true });
+      const answer = assertA4Pdf(answerPdf, `${name}: answer PDF`);
+      if (question.pages < 1 || answer.pages < 1) fail(`${name}: PDF page count invalid`);
+      pdf = { question, answer };
+    } else {
+      await page.evaluate(() => document.body.classList.add('print-answers'));
+    }
+
     const answerPrint = await page.locator('.answer').evaluate(el => getComputedStyle(el).display);
     if (answerPrint === 'none') fail(`${name}: answer print CSS still hides answer`);
     await page.evaluate(() => document.body.classList.remove('print-answers'));
@@ -186,7 +215,7 @@ async function runCase(browserType, name, viewport) {
     if (overflow.scrollWidth > overflow.width + 1) fail(`${name}: horizontal overflow ${JSON.stringify(overflow)}`);
     if (pageErrors.length) fail(`${name}: page errors ${JSON.stringify(pageErrors)}`);
 
-    return { name, viewport, gate: 'PASS', choices: 'PASS', sourceOrder: 'PASS', settings: 'PASS', figure: 'PASS', printCss: 'PASS', overflow };
+    return { name, viewport, gate: 'PASS', choices: 'PASS', sourceOrder: 'PASS', settings: 'PASS', figure: 'PASS', printCss: 'PASS', pdf: pdf ?? 'not-applicable', overflow };
   } finally {
     await context.close();
     await browser.close();
