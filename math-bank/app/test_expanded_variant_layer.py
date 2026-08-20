@@ -91,6 +91,7 @@ def main() -> None:
     assert report["expanded_parent_coverage"] == 1
     assert report["composed_total"] == 1232
     assert report["wording_only_pseudo_variants"] == 0
+    assert report["sibling_numeric_pseudo_variants"] == 0
     assert report["parent_fingerprint_mismatches"] == 0
 
     bad = copy.deepcopy(good); bad["id"] = "X0002"; bad["audit"]["problem_answer_verified"] = False
@@ -114,6 +115,23 @@ def main() -> None:
         lambda: validate_layer(base, [pseudo], [provenance("X0006", parent)]),
         "wording-only pseudo variant",
     )
+
+    sibling = copy.deepcopy(good)
+    sibling["id"] = "X0007"
+    sibling["question"] = "次を求めよ：(-7)+15"
+    sibling["answer"] = "8"
+    expect_fail(
+        lambda: validate_layer(base, [good, sibling], [p, provenance("X0007", parent)]),
+        "sibling pseudo variant",
+    )
+
+    distinct_sibling = copy.deepcopy(good)
+    distinct_sibling["id"] = "X0008"
+    distinct_sibling["question"] = "(-6)+17 を計算しなさい。"
+    distinct_sibling["answer"] = "11"
+    report_two = validate_layer(base, [good, distinct_sibling], [p, provenance("X0008", parent)])
+    assert report_two["expanded_verified_variants"] == 2
+    assert report_two["expanded_parent_coverage"] == 1
 
     badp = provenance(good["id"], parent); badp["independent_recalculation"] = False
     expect_fail(lambda: validate_layer(base, [good], [badp]), "independent_recalculation must be true")
@@ -142,6 +160,7 @@ def main() -> None:
 
     print("PASS_EXPANDED_VARIANT_LAYER_STRICT_PARENT_TAXONOMY_RECALC_DUPLICATE_SURFACE_CHANGE_GATES")
     print("PASS_EXPANDED_VARIANT_PARENT_RECORD_SHA256_BINDING_GATE")
+    print("PASS_EXPANDED_VARIANT_SIBLING_NUMERIC_PSEUDO_DUPLICATE_GATE")
 
 
 if __name__ == "__main__":
