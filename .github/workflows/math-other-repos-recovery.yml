@@ -139,15 +139,24 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
 
-      - name: Persist other-repo recovery state
+      - name: Persist other-repo recovery state without dirty rebase race
         if: always()
         shell: bash
         run: |
+          mkdir -p /tmp/math-other-recovery-state
+          if [ -f math-bank/state/other-repos-history-scan-latest.json ]; then
+            cp math-bank/state/other-repos-history-scan-latest.json /tmp/math-other-recovery-state/
+          fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin math-problem-bank-bootstrap
+          git reset --hard origin/math-problem-bank-bootstrap
+          mkdir -p math-bank/state
+          if [ -f /tmp/math-other-recovery-state/other-repos-history-scan-latest.json ]; then
+            cp /tmp/math-other-recovery-state/other-repos-history-scan-latest.json math-bank/state/
+          fi
           git add -- math-bank/state/other-repos-history-scan-latest.json 2>/dev/null || true
           if ! git diff --cached --quiet; then
             git commit -m 'record other-repo math canonical recovery scan'
-            git pull --rebase origin math-problem-bank-bootstrap || true
             git push origin HEAD:math-problem-bank-bootstrap
           fi
