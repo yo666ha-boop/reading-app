@@ -1,0 +1,47 @@
+name: v10 reference minimum rule audit
+on:
+  push:
+    branches: [v10-reference-slash-audit]
+    paths-ignore:
+      - v10_reference_minimum_rule_report.txt
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v10-reference-slash-audit
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-save --no-package-lock jsdom@24.1.3
+      - name: Repair stale reference snapshots and loader order
+        shell: bash
+        run: |
+          node v10_reference_repair_stale_files.js
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add v10_reference_slash_manual_051_060.js v10_reference_slash_manual_141_150.js v10_interaction_metadata.js
+          if ! git diff --cached --quiet; then
+            git commit -m "Repair stale reference slash snapshots"
+            git push origin HEAD:v10-reference-slash-audit
+          fi
+      - name: Reference minimum-rule full 168 audit and persist report
+        shell: bash
+        run: |
+          set +e
+          node v10_reference_minimum_rule_audit.js > v10_reference_minimum_rule_report.txt 2>&1
+          code=$?
+          cat v10_reference_minimum_rule_report.txt
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add v10_reference_minimum_rule_report.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "Update minimum-rule slash audit report"
+            git push origin HEAD:v10-reference-slash-audit || true
+          fi
+          exit $code
