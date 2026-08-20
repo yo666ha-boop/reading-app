@@ -1,7 +1,7 @@
-REFERENCE MINIMUM RULE AUDIT passages=168/168 rows=1854 reference_marked=158/168 slashes=1754 unsplit_rows=639 stale=10
-STALE REFERENCE PASSAGES: 53,61,62,63,64,67,68,70,141,145
-REFERENCE MINIMUM RULE FAIL 109
-- STALE_REFERENCE_PASSAGES 53,61,62,63,64,67,68,70,141,145
+REFERENCE MINIMUM RULE AUDIT passages=168/168 rows=1854 reference_marked=165/168 slashes=1776 unsplit_rows=624 stale=3
+STALE REFERENCE PASSAGES: 53,141,145
+REFERENCE MINIMUM RULE FAIL 84
+- STALE_REFERENCE_PASSAGES 53,141,145
 - 1|サンシャイン|PROGRAM 3-3#3: BOUNDARY_BEFORE_SO_MISSED :: I am so excited.
 - 1|サンシャイン|PROGRAM 4-2#6: BOUNDARY_BEFORE_AND_MISSED :: He is / on the track and field team.
 - 1|サンシャイン|PROGRAM 4-2#10: BOUNDARY_BEFORE_AND_MISSED :: Is he / on the track and field team?
@@ -16,30 +16,6 @@ REFERENCE MINIMUM RULE FAIL 109
 - 1|ニューホライズン|Unit 5-2#9: BOUNDARY_BEFORE_ABOUT_MISSED :: Does he write about the dolphin?
 - 1|ニューホライズン|Unit 5-2#10: COMMA_BOUNDARY_MISSED :: Yes, he does.
 - 1|ニューホライズン|Unit 5-3#5: BOUNDARY_BEFORE_OF_MISSED :: A fried egg is / on top of the dish.
-- 1|ニューホライズン|Unit 8-1#1: BOUNDARY_BEFORE_IN_MISSED :: This is a volunteer in Kenya.
-- 1|ニューホライズン|Unit 8-1#2: BOUNDARY_BEFORE_IN_MISSED :: The children are in need.
-- 1|ニューホライズン|Unit 8-1#5: COMMA_BOUNDARY_MISSED :: I respect him, too.
-- 1|ニューホライズン|Unit 8-1#6: BOUNDARY_BEFORE_TO_MISSED :: I want to become a volunteer.
-- 1|ニューホライズン|Unit 8-1#7: BOUNDARY_BEFORE_TO_MISSED :: I want to teach children / someday.
-- 1|ニューホライズン|Unit 8-1#8: BOUNDARY_BEFORE_TO_MISSED :: I want to do my best.
-- 1|ニューホライズン|Unit 8-2#7: COMMA_BOUNDARY_MISSED :: I like the paper straw, too.
-- 1|ニューホライズン|Unit 8-2#8: BOUNDARY_BEFORE_TO_MISSED :: I want to reduce waste.
-- 1|ニューホライズン|Unit 8-3#2: BOUNDARY_BEFORE_FROM_MISSED :: The river is far from the village.
-- 1|ニューホライズン|Unit 8-3#4: BOUNDARY_BEFORE_IN_MISSED :: A group is in the village.
-- 1|ニューホライズン|Unit 8-3#5: BOUNDARY_BEFORE_TO_MISSED :: They want to build a well.
-- 1|ニューホライズン|Unit 9-1#1: BOUNDARY_BEFORE_TO_MISSED :: During vacation, / I went to a mountain.
-- 1|ニューホライズン|Unit 9-1#7: BOUNDARY_BEFORE_TO_MISSED :: I want to go back to the mountain / someday.
-- 1|ニューホライズン|Unit 9-1#7: BOUNDARY_BEFORE_TO_MISSED :: I want to go back to the mountain / someday.
-- 1|ニューホライズン|Unit 10-1#2: BOUNDARY_BEFORE_IN_MISSED :: I was in the chorus.
-- 1|ニューホライズン|Unit 10-2#1: BOUNDARY_BEFORE_AT_MISSED :: Hey, / look at this album.
-- 1|ニューホライズン|Unit 10-2#2: BOUNDARY_BEFORE_ON_MISSED :: It is on my desk.
-- 1|ニューホライズン|Unit 10-2#4: BOUNDARY_BEFORE_FROM_MISSED :: This picture is from the chorus contest.
-- 1|ニューホライズン|Unit 10-2#8: COMMA_BOUNDARY_MISSED :: I remember the contest, too.
-- 2|サンシャイン|PROGRAM 1-1#3: BOUNDARY_BEFORE_TO_MISSED :: I move to a new city.
-- 2|サンシャイン|PROGRAM 1-1#5: BOUNDARY_BEFORE_AT_MISSED :: The party is at my house.
-- 2|サンシャイン|PROGRAM 1-1#8: BOUNDARY_BEFORE_ABOUT_MISSED :: We talk about our school.
-- 2|サンシャイン|PROGRAM 1-1#9: BOUNDARY_BEFORE_TO_MISSED :: I want to see my friends / again.
-- 2|サンシャイン|PROGRAM 1-1#11: COMMA_BOUNDARY_MISSED :: The party is special, too.
 - 2|サンシャイン|PROGRAM 4-2#3: BOUNDARY_BEFORE_OF_MISSED :: First of all, / we must protect the forest.
 - 2|サンシャイン|PROGRAM 4-3#3: BOUNDARY_BEFORE_OF_MISSED :: First of all, / we must be / on time.
 - 2|サンシャイン|PROGRAM 5-3#9: BOUNDARY_BEFORE_WHILE_MISSED :: After a while, / I finish my work.
@@ -108,5 +84,4 @@ REFERENCE MINIMUM RULE FAIL 109
 - 3|ニューホライズン|Unit 6-2#7: BOUNDARY_BEFORE_TO_MISSED :: We send the backpack / through the program / rather / than to an unknown person.
 - 3|ニューホライズン|Unit 6-3#9: TOO_FEW_SLASHES_LONG_SENTENCE words=10 :: A teacher there will decide how the books are used.
 - BROWSER Uncaught [Error: Row mismatch 53]
-- BROWSER Uncaught [Error: Row mismatch 61]
 - BROWSER Uncaught [Error: English mismatch 141#9: Probably, the project can help other patients, too. <> Probably, the project can help other patients too.]
