@@ -94,6 +94,55 @@ def batch_metadata(oids: list[str]) -> dict[str, tuple[str, int]]:
     return meta
 
 
+class BlobBatchReader:
+    """Keep one git cat-file process alive so exhaustive SHA scans do not spawn a process per blob."""
+
+    def __init__(self) -> None:
+        self.proc = subprocess.Popen(
+            ["git", "cat-file", "--batch"],
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+        if self.proc.stdin is None or self.proc.stdout is None:
+            raise RuntimeError("failed to open git cat-file --batch pipes")
+
+    def read(self, oid: str) -> bytes:
+        assert self.proc.stdin is not None and self.proc.stdout is not None
+        self.proc.stdin.write(oid.encode("ascii") + b"\n")
+        self.proc.stdin.flush()
+        header = self.proc.stdout.readline()
+        if not header:
+            raise RuntimeError(f"cat-file batch ended before {oid}")
+        parts = header.rstrip(b"\n").split()
+        if len(parts) != 3 or parts[1] != b"blob":
+            raise RuntimeError(f"unexpected cat-file batch header for {oid}: {header[:200]!r}")
+        size = int(parts[2])
+        data = self.proc.stdout.read(size)
+        sep = self.proc.stdout.read(1)
+        if len(data) != size or sep != b"\n":
+            raise RuntimeError(f"short/malformed cat-file batch payload for {oid}")
+        return data
+
+    def close(self) -> None:
+        if self.proc.stdin is not None and not self.proc.stdin.closed:
+            self.proc.stdin.close()
+        stderr = self.proc.stderr.read() if self.proc.stderr is not None else b""
+        rc = self.proc.wait()
+        if rc:
+            raise RuntimeError(f"git cat-file --batch failed rc={rc}: {stderr.decode('utf-8','replace')[:1000]}")
+
+    def __enter__(self) -> "BlobBatchReader":
+        return self
+
+    def __exit__(self, exc_type, exc, tb) -> None:
+        try:
+            self.close()
+        except Exception:
+            if exc is None:
+                raise
+
+
 def likely_candidate_path(path: str) -> bool:
     low = path.lower()
     name = Path(path).name
@@ -137,12 +186,18 @@ def tree_entries(commit: str) -> list[tuple[str, str]]:
 def commits_retaining_blob(zip_oid: str, known_paths: list[str]) -> list[str]:
     commits = [x.strip() for x in run("git", "rev-list", "--all").stdout.splitlines() if x.strip()]
     retaining: list[str] = []
+    if known_paths:
+        for commit in commits:
+            for p in known_paths:
+                proc = run("git", "ls-tree", commit, "--", p, check=False)
+                if proc.returncode == 0 and zip_oid in proc.stdout:
+                    retaining.append(commit)
+                    break
+        return retaining
+    # Exact SHA hits are extremely rare; if path metadata is missing, fall back to an exhaustive tree check.
     for commit in commits:
-        for p in known_paths:
-            proc = run("git", "ls-tree", commit, "--", p, check=False)
-            if proc.returncode == 0 and zip_oid in proc.stdout:
-                retaining.append(commit)
-                break
+        if any(oid == zip_oid for oid, _ in tree_entries(commit)):
+            retaining.append(commit)
     return retaining
 
 
@@ -227,6 +282,7 @@ def main() -> int:
         "all_blobs_sha256_checked": 0,
         "all_blob_bytes_hashed": 0,
         "oversize_blobs_skipped": 0,
+        "blob_read_mode": "single_persistent_git_cat_file_batch_process",
         "canonical_blob_hits": [],
         "lfs_pointer_hits": [],
         "lfs_exact_object_recovered": False,
@@ -240,28 +296,28 @@ def main() -> int:
 
     exact_hits: list[tuple[str, bytes, list[str]]] = []
     lfs_exact_paths: list[tuple[str, list[str]]] = []
-    for oid in blob_oids:
-        size = meta[oid][1]
-        paths = sorted(paths_by_oid.get(oid, set()))
-        for p in paths:
-            if any(h.lower() in p.lower() for h in RECOVERY_HINTS):
-                report["recovery_hint_paths"].append({"oid": oid, "path": p, "size": size})
-        if size > MAX_BLOB_BYTES:
-            report["oversize_blobs_skipped"] += 1
-            continue
-        data = git_bytes("cat-file", "blob", oid)
-        report["all_blobs_sha256_checked"] += 1
-        report["all_blob_bytes_hashed"] += len(data)
-        digest = sha256_bytes(data)
-        if digest == EXPECTED_SHA256:
-            report["canonical_blob_hits"].append({"oid": oid, "sha256": digest, "bytes": len(data), "paths": paths})
-            exact_hits.append((oid, data, paths))
-        pointer = parse_lfs_pointer(data)
-        if pointer and pointer[0] == EXPECTED_SHA256:
-            report["lfs_pointer_hits"].append({"pointer_blob_oid": oid, "lfs_oid_sha256": pointer[0], "lfs_size": pointer[1], "paths": paths})
-            lfs_exact_paths.append((oid, paths))
-        if any(Path(p).name == AUDIT_FILENAME for p in paths) and valid_json_object(data):
-            report["global_audit_blob_candidates"].append({"oid": oid, "sha256": digest, "bytes": len(data), "paths": paths})
+    readable_oids = [oid for oid in blob_oids if meta[oid][1] <= MAX_BLOB_BYTES]
+    report["oversize_blobs_skipped"] = len(blob_oids) - len(readable_oids)
+    with BlobBatchReader() as reader:
+        for oid in readable_oids:
+            size = meta[oid][1]
+            paths = sorted(paths_by_oid.get(oid, set()))
+            for p in paths:
+                if any(h.lower() in p.lower() for h in RECOVERY_HINTS):
+                    report["recovery_hint_paths"].append({"oid": oid, "path": p, "size": size})
+            data = reader.read(oid)
+            report["all_blobs_sha256_checked"] += 1
+            report["all_blob_bytes_hashed"] += len(data)
+            digest = sha256_bytes(data)
+            if digest == EXPECTED_SHA256:
+                report["canonical_blob_hits"].append({"oid": oid, "sha256": digest, "bytes": len(data), "paths": paths})
+                exact_hits.append((oid, data, paths))
+            pointer = parse_lfs_pointer(data)
+            if pointer and pointer[0] == EXPECTED_SHA256:
+                report["lfs_pointer_hits"].append({"pointer_blob_oid": oid, "lfs_oid_sha256": pointer[0], "lfs_size": pointer[1], "paths": paths})
+                lfs_exact_paths.append((oid, paths))
+            if any(Path(p).name == AUDIT_FILENAME for p in paths) and valid_json_object(data):
+                report["global_audit_blob_candidates"].append({"oid": oid, "sha256": digest, "bytes": len(data), "paths": paths})
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     for stale in (OUT_DIR / EXPECTED_FILENAME, OUT_DIR / AUDIT_FILENAME):
@@ -310,6 +366,7 @@ def main() -> int:
                     break
 
     OUT_REPORT.parent.mkdir(parents=True, exist_ok=True)
+    report["completed_at_utc"] = datetime.now(timezone.utc).isoformat()
     OUT_REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0
