@@ -13,7 +13,7 @@ EXPECTED_RECORDS = 1231
 EXPECTED_ORIGINAL = 1124
 EXPECTED_VARIANTS = 107
 EXPECTED_BROWSERS = {"chromium-desktop", "firefox-desktop", "webkit-iphone", "chromium-fire"}
-EXPECTED_RELEASE_GATE = "STRICT_CANONICAL_1231_PROVENANCE_FINAL_AUDIT_TITLE_CHOICES_AND_FIGURE_ASSETS_PASS"
+EXPECTED_RELEASE_GATE = "STRICT_CANONICAL_1231_PROVENANCE_FINAL_AUDIT_TITLE_CHOICES_FIGURE_ASSETS_AND_INLINE_MARKER_RENDERER_PASS"
 
 
 def sha256(path: Path) -> str:
@@ -80,6 +80,7 @@ def verify_release_zip(bundle: Path, release_manifest: dict) -> dict:
         raise ValueError(f"missing strict release ZIP: {bundle}")
     required = {
         "index.html",
+        "render_figure_markers.js",
         "app-records.json",
         "canonical-provenance.json",
         "MATHBANK_FINAL_AUDIT_V2.json",
@@ -93,13 +94,18 @@ def verify_release_zip(bundle: Path, release_manifest: dict) -> dict:
         embedded_manifest = json.loads(zf.read("release-manifest.json").decode("utf-8"))
         if embedded_manifest != release_manifest:
             raise ValueError("embedded release-manifest differs from release directory manifest")
+        if release_manifest.get("inline_figure_marker_renderer_required") is not True:
+            raise ValueError("release manifest does not require inline figure marker renderer")
+        renderer_hash = require_hash(release_manifest.get("inline_figure_marker_renderer_sha256"), "inline renderer sha256")
+        if release_manifest.get("files", {}).get("render_figure_markers.js") != renderer_hash:
+            raise ValueError("inline renderer manifest SHA mismatch")
         for member, expected_hash in release_manifest.get("files", {}).items():
             if member not in names:
                 raise ValueError(f"release ZIP missing manifest member: {member}")
             actual = hashlib.sha256(zf.read(member)).hexdigest()
             if actual != expected_hash:
                 raise ValueError(f"release ZIP member SHA mismatch: {member}")
-    return {"bundle_sha256": sha256(bundle), "zip_members": len(names)}
+    return {"bundle_sha256": sha256(bundle), "zip_members": len(names), "inline_figure_marker_renderer_sha256": renderer_hash}
 
 
 def main() -> int:
@@ -157,6 +163,11 @@ def main() -> int:
                 raise ValueError(f"browser overflow evidence invalid: {r.get('name')}")
             if r.get("pageErrors") != []:
                 raise ValueError(f"browser pageErrors not empty: {r.get('name')}")
+            marker = r.get("inlineMarker")
+            if not isinstance(marker, dict) or marker.get("raw_marker_leaks") != 0 or marker.get("marker_errors") != 0:
+                raise ValueError(f"inline marker evidence invalid: {r.get('name')}")
+            if marker.get("figure_readiness_failures") != 0:
+                raise ValueError(f"inline figure readiness failures: {r.get('name')}")
 
         pdf_result = verify_pdf_artifact(browser, pdf_root)
         bundle_result = verify_release_zip(bundle, manifest)
@@ -172,6 +183,7 @@ def main() -> int:
             "real_browser_all_unit_filters": True,
             "real_browser_all_variant_source_order": True,
             "real_figure_fetch_gate": True,
+            "inline_figure_marker_gate": True,
             "a4_pdf_evidence": pdf_result,
             "release_bundle": bundle_result,
         }
