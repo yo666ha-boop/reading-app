@@ -36,13 +36,16 @@ jobs:
           node-version: '22'
 
       - name: Compile app validation and recovery tools
-        run: python -m py_compile math-bank/app/validate_app_records.py math-bank/app/recover_canonical_app_records.py math-bank/app/check_app_shell.py math-bank/app/check_recovery_contract.py
+        run: python -m py_compile math-bank/app/validate_app_records.py math-bank/app/recover_canonical_app_records.py math-bank/app/check_app_shell.py math-bank/app/check_recovery_contract.py math-bank/app/test_negative_gates.py
 
       - name: Check app shell and JavaScript syntax
         run: python math-bank/app/check_app_shell.py
 
       - name: Check canonical recovery contract
         run: python math-bank/app/check_recovery_contract.py
+
+      - name: Run negative data/recovery gates
+        run: python math-bank/app/test_negative_gates.py
 
       - name: Strict canonical 1231 validator when data exists
         shell: bash
