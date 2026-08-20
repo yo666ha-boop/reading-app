@@ -6,16 +6,24 @@ from collections import Counter
 from pathlib import Path
 
 REQUIRED = {
-    "id", "grade", "unit", "difficulty", "source", "question", "answer",
-    "explanation", "figure_refs", "variant_group", "audit"
+    "id", "grade", "unit", "skill", "question_format", "difficulty", "source",
+    "question", "answer", "explanation", "figure_refs", "variant_group", "audit"
 }
 VALID_GRADES = {1, 2, 3}
 VALID_DIFFICULTY = {"basic", "standard", "advanced", "unknown"}
 VALID_BOOKS = {"Winpass", "実力錬成", "Standard", "generated"}
+EXPECTED_FINAL_RECORDS = 1231
+EXPECTED_ORIGINAL_RECORDS = 1124
+EXPECTED_GENERATED_VARIANTS = 107
+EXPECTED_BY_SOURCE_ORIGINAL = {"Winpass": 570, "実力錬成": 237, "Standard": 317}
 
 
 def fail(msg: str) -> None:
     raise ValueError(msg)
+
+
+def text(value: object) -> str:
+    return value.strip() if isinstance(value, str) else ""
 
 
 def validate_record(r: dict, seen_ids: set[str]) -> None:
@@ -23,7 +31,7 @@ def validate_record(r: dict, seen_ids: set[str]) -> None:
     if missing:
         fail(f"{r.get('id', '<no-id>')}: missing {sorted(missing)}")
     rid = r["id"]
-    if not isinstance(rid, str) or not rid.strip():
+    if not text(rid):
         fail("blank id")
     if rid in seen_ids:
         fail(f"duplicate id: {rid}")
@@ -32,20 +40,39 @@ def validate_record(r: dict, seen_ids: set[str]) -> None:
         fail(f"{rid}: invalid grade")
     if r["difficulty"] not in VALID_DIFFICULTY:
         fail(f"{rid}: invalid difficulty")
-    if not isinstance(r["question"], str) or not r["question"].strip():
+    if not text(r["skill"]):
+        fail(f"{rid}: blank skill")
+    if not text(r["question_format"]):
+        fail(f"{rid}: blank question_format")
+    if not text(r["question"]):
         fail(f"{rid}: blank question")
-    if not isinstance(r["answer"], str) or not r["answer"].strip():
+    if not text(r["answer"]):
         fail(f"{rid}: blank answer")
+    if not isinstance(r["explanation"], str):
+        fail(f"{rid}: explanation must be string")
     unit = r["unit"]
-    if not isinstance(unit, dict) or not str(unit.get("major", "")).strip() or not str(unit.get("minor", "")).strip():
+    if not isinstance(unit, dict) or not text(unit.get("major")) or not text(unit.get("minor")):
         fail(f"{rid}: invalid unit")
+    tags = unit.get("tags", [])
+    if not isinstance(tags, list) or any(not isinstance(x, str) for x in tags) or len(tags) != len(set(tags)):
+        fail(f"{rid}: invalid/duplicate unit tags")
     source = r["source"]
     if not isinstance(source, dict) or source.get("book") not in VALID_BOOKS:
         fail(f"{rid}: invalid source")
     generated = bool(source.get("is_generated_variant"))
-    if generated and not source.get("parent_id"):
-        fail(f"{rid}: generated variant without parent_id")
+    if generated:
+        if source.get("book") != "generated":
+            fail(f"{rid}: generated variant must use source.book=generated")
+        if not text(source.get("parent_id")):
+            fail(f"{rid}: generated variant without parent_id")
+    elif source.get("book") == "generated":
+        fail(f"{rid}: source.book=generated but is_generated_variant=false")
+    figs = r["figure_refs"]
+    if not isinstance(figs, list) or any(not isinstance(x, str) or not x.strip() for x in figs) or len(figs) != len(set(figs)):
+        fail(f"{rid}: invalid/duplicate figure_refs")
     audit = r["audit"]
+    if not isinstance(audit, dict):
+        fail(f"{rid}: invalid audit")
     for key in ("problem_answer_verified", "structure_verified", "figure_refs_verified"):
         if not isinstance(audit.get(key), bool):
             fail(f"{rid}: audit.{key} must be bool")
@@ -53,44 +80,78 @@ def validate_record(r: dict, seen_ids: set[str]) -> None:
         fail(f"{rid}: unverified audit gate")
 
 
-def main(path: str) -> int:
-    p = Path(path)
-    seen: set[str] = set()
-    records = []
+def load_records(p: Path) -> list[dict]:
     if p.suffix == ".jsonl":
+        records = []
         for i, line in enumerate(p.read_text(encoding="utf-8").splitlines(), 1):
             if line.strip():
                 try:
                     records.append(json.loads(line))
                 except Exception as e:
                     fail(f"line {i}: invalid JSON: {e}")
-    else:
-        obj = json.loads(p.read_text(encoding="utf-8"))
-        records = obj if isinstance(obj, list) else obj.get("records", [])
+        return records
+    obj = json.loads(p.read_text(encoding="utf-8"))
+    return obj if isinstance(obj, list) else obj.get("records", [])
+
+
+def main(path: str, strict: bool = True) -> int:
+    p = Path(path)
+    seen: set[str] = set()
+    records = load_records(p)
     if not records:
         fail("no records")
     for r in records:
         validate_record(r, seen)
-    counts = Counter(r["source"]["book"] for r in records)
+
+    generated = [r for r in records if r["source"].get("is_generated_variant")]
+    originals = [r for r in records if not r["source"].get("is_generated_variant")]
+    original_counts = Counter(r["source"]["book"] for r in originals)
     grades = Counter(r["grade"] for r in records)
-    generated = sum(1 for r in records if r["source"].get("is_generated_variant"))
-    print(json.dumps({
+
+    by_id = {r["id"]: r for r in records}
+    for r in generated:
+        parent_id = r["source"].get("parent_id")
+        if parent_id not in by_id:
+            fail(f"{r['id']}: parent_id not found: {parent_id}")
+        if by_id[parent_id]["source"].get("is_generated_variant"):
+            fail(f"{r['id']}: parent_id points to generated variant")
+
+    if strict:
+        if len(records) != EXPECTED_FINAL_RECORDS:
+            fail(f"final record count {len(records)} != {EXPECTED_FINAL_RECORDS}")
+        if len(originals) != EXPECTED_ORIGINAL_RECORDS:
+            fail(f"original record count {len(originals)} != {EXPECTED_ORIGINAL_RECORDS}")
+        if len(generated) != EXPECTED_GENERATED_VARIANTS:
+            fail(f"generated variant count {len(generated)} != {EXPECTED_GENERATED_VARIANTS}")
+        for book, expected in EXPECTED_BY_SOURCE_ORIGINAL.items():
+            actual = original_counts.get(book, 0)
+            if actual != expected:
+                fail(f"original source count {book}={actual} != {expected}")
+
+    result = {
         "status": "PASS",
+        "strict_canonical_gate": strict,
         "records": len(records),
-        "by_source": counts,
-        "by_grade": grades,
-        "generated_variants": generated,
-        "unique_ids": len(seen)
-    }, ensure_ascii=False, indent=2, default=dict))
+        "original_records": len(originals),
+        "generated_variants": len(generated),
+        "original_by_source": dict(original_counts),
+        "by_grade": dict(grades),
+        "unique_ids": len(seen),
+        "blank_questions": 0,
+        "blank_answers": 0,
+        "verified_audit_gates": len(records),
+    }
+    print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("usage: validate_app_records.py <records.json|records.jsonl>", file=sys.stderr)
+    args = sys.argv[1:]
+    if not args or len(args) > 2 or (len(args) == 2 and args[1] != "--non-strict"):
+        print("usage: validate_app_records.py <records.json|records.jsonl> [--non-strict]", file=sys.stderr)
         raise SystemExit(2)
     try:
-        raise SystemExit(main(sys.argv[1]))
+        raise SystemExit(main(args[0], strict=(len(args) == 1)))
     except Exception as e:
         print(f"FAIL: {e}", file=sys.stderr)
         raise SystemExit(1)
