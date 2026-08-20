@@ -1,12 +1,16 @@
 {
   "project": "mikami-math-problem-bank",
-  "status": "SOURCE_ARCHIVES_RECOVERED_REBUILDING_ORIGINAL_1124",
-  "current_stage": "RECONSTRUCT_ORIGINALS_FROM_140_CANONICAL_DOCX",
+  "status": "APP_REGRESSION_PASS_PENDING_EXACT_1231_RECOVERY",
+  "current_stage": "EXACT_1231_RECOVERY_STRICT_VALIDATION_AND_WIRING",
   "canonical": {
     "final_records": 1231,
     "original_records": 1124,
     "generated_variants": 107,
-    "original_by_source": {"Winpass": 570, "実力錬成": 237, "Standard": 317},
+    "original_by_source": {
+      "Winpass": 570,
+      "実力錬成": 237,
+      "Standard": 317
+    },
     "documents_covered": 140,
     "blank_questions": 0,
     "blank_answers": 0,
@@ -18,55 +22,65 @@
     "zip_recorded_path": "/mnt/data/みかみ塾数学問題バンク_最終完成版_20260820.zip",
     "zip_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
     "audit_filename": "MATHBANK_FINAL_AUDIT_V2.json",
-    "recovery_hints": ["winpass_verified_union570_authoritative_norm_20260820", "jitsuren_verified_union225_complete27_20260820"],
-    "required_content_fields_hint": ["id", "stage", "unit", "title", "q", "choices", "ans", "explanation"]
-  },
-  "source_recovery": {
-    "source_archives_recovered": true,
-    "source_state_file": "math-bank/state/source-recovery-latest.json",
-    "source_zip_sha256": {
-      "winpassデータ.zip": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
-      "中学実力錬成データ.zip": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33",
-      "スタンダードデータ.zip": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6"
-    },
-    "docx_before_sha_dedupe": 246,
-    "canonical_unique_docs": 140,
-    "canonical_by_source": {"Winpass": 81, "実力錬成": 27, "Standard": 32},
-    "partial_verified_winpass_seed": 161,
-    "partial_seed_promoted": false,
-    "preliminary_marker_atoms_not_promoted": {"Winpass": 221, "実力錬成": 174, "Standard": 231}
+    "recovery_hints": [
+      "winpass_verified_union570_authoritative_norm_20260820",
+      "jitsuren_verified_union225_complete27_20260820"
+    ],
+    "required_content_fields_hint": [
+      "id",
+      "stage",
+      "unit",
+      "title",
+      "q",
+      "choices",
+      "ans",
+      "explanation"
+    ]
   },
   "今回完了した内容": [
-    "Recovered all three original source ZIPs from File Library duplicate entries after indexed search had failed",
-    "Materialized and SHA-256 verified winpassデータ.zip, 中学実力錬成データ.zip and スタンダードデータ.zip",
-    "Re-extracted 246 DOCX and reproduced the historical SHA dedupe exactly: 140 canonical documents = Winpass81 + 実力錬成27 + Standard32",
-    "Read the actual historical winpass_verified_union161.json seed: 161 verified atoms across 32 files / 47 main blocks; kept it seed-only and did not promote it as canonical",
-    "Reimplemented OOXML extraction including Word math m:t and own-paragraph semantics; confirmed documents contain question and answer halves and tandem-repeat answer prefixes",
-    "Ran preliminary cross-source marker extraction: Winpass221 / 実力錬成174 / Standard231; explicitly marked incomplete and non-promotable",
-    "Confirmed final exact ZIP and final audit themselves remain unrecovered; no fake 1231 or new variants created"
+    "Re-read branch HEAD 089bc7d1fb31baf797fb4777523cfdab00fe2c6a, checkpoint, ci-latest, browser-regression-latest and math-bank/app before work",
+    "Verified latest recorded CI remains success: run 32334260276, triggering SHA 806e97f254421f9ecf04148322ef31aa8d70a9ac; app shell/data gate, browser regression and inventory all success",
+    "Verified browser-regression-latest remains synthetic_fixture_only=true / canonical_data_written=false; Chromium, Firefox, WebKit iPhone and Chromium Fire all PASS with zero horizontal overflow/page errors and Chromium A4 question/answer PDFs 1 page each",
+    "Re-searched /mnt/data and File Library for exact final ZIP, exact SHA identity, final audit and both recovery hints; no exact canonical artifact recovered",
+    "Corrected recovery policy: recovered three source archives and 161 partial records are diagnostic evidence only and are forbidden as canonical reconstruction/promotion inputs",
+    "Hardened recovery contract to fail if source-recovery state becomes promotable, leaves diagnostic-only mode, or reintroduces source-rebuild/reconstruct language",
+    "Did not create variants, did not reconstruct 1124/1231 from source archives, did not promote the 161 partial dataset, and did not touch main"
   ],
-  "現在どの工程にいるか": "The missing-source blocker is removed. Rebuild exact 1124 originals from the recovered 140 canonical DOCX, using verified structural evidence and source-specific parsers.",
+  "現在どの工程にいるか": "Exact immutable 1231 ZIP/audit recovery remains the sole data blocker. Source archives are retained only as non-canonical forensic evidence. App/recovery/provenance gates continue to be hardened without inventing replacement data.",
   "残っている作業": [
-    "Build Winpass source-specific parser and validate every recovered atom against verified 161 seed before expanding toward historical 570",
-    "Build 実力錬成 source-specific parser including unified answer-summary blocks, tables and special documents; reconcile toward historical 237 and recovery hint union225",
-    "Build Standard source-specific marker/table parser and special-document handling; reconcile toward historical 317",
-    "Recover or prove the exact existing 107 variants without generating new variants",
-    "Rebuild final 1231 only after exact originals/variants have per-record evidence and run strict audit/provenance gates",
-    "Wire exact app records + figure assets, run real-1231 device/A4 regression, strict release and public URL test"
+    "Recover exact canonical ZIP and MATHBANK_FINAL_AUDIT_V2.json",
+    "Require exact ZIP SHA-256 eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175 before any promotion",
+    "Run inspect_canonical_artifact.py and analyze_canonical_mapping_evidence.py on the recovered exact ZIP",
+    "Direct strict pass-through only for actual exact 1231 app schema with title/choices; otherwise require complete verified per-ID metadata and no-guess deterministic conversion",
+    "Generate/validate canonical provenance, wire exact app-records plus local figure assets and final audit",
+    "Run real-1231 browser/device/figure/math/A4 regression, build strict release, isolated publication and public URL real-data test"
   ],
-  "次回どこから開始するか": "Read source-recovery-latest.json and current parser outputs first; do not repeat source ZIP search. Continue Winpass parser validation against verified_union161, then Jitsuren and Standard.",
-  "次に進むべき工程": "Winpass exact reconstruction -> Jitsuren exact reconstruction -> Standard exact reconstruction -> exact 1124 audit -> recover existing 107 variants -> strict 1231 provenance/audit -> real app regression -> release/public test.",
+  "次回どこから開始するか": "Read branch HEAD/ci-latest/browser-regression-latest and source-recovery-latest first. Retry exact ZIP/audit recovery. Do not resume source-archive reconstruction. If exact ZIP is recovered, SHA-check immediately and run artifact inspection/evidence tools before any mapping or wiring.",
+  "次に進むべき工程": "Exact artifact recovery -> immutable SHA/member/schema/figure inspection -> direct strict pass-through or fully proven deterministic mapping -> provenance + final audit -> real data wiring -> real 1231 browser/device/A4 regression -> strict release -> isolated publication -> public URL test -> final package.",
   "実PASS_FAIL_エラー_成果物_URL": {
-    "source_archives_recovered": true,
-    "source_inventory_246_to_140": "PASS",
-    "source_counts_81_27_32": "PASS",
-    "winpass_verified_seed_records": 161,
-    "exact_final_zip_recovered": false,
+    "branch_head_before_this_change": "089bc7d1fb31baf797fb4777523cfdab00fe2c6a",
+    "latest_ci_triggering_sha": "806e97f254421f9ecf04148322ef31aa8d70a9ac",
+    "latest_ci_run_id": 32334260276,
+    "latest_ci_overall_result": "success",
+    "inventory_and_classify": "success",
+    "app_shell_and_data_gate": "success",
+    "browser_regression": "success",
+    "browser_fixture": "synthetic_fixture_only",
+    "browser_environments": [
+      "chromium-desktop",
+      "firefox-desktop",
+      "webkit-iphone-390x844",
+      "chromium-fire-800x1280"
+    ],
+    "horizontal_overflow": 0,
+    "page_errors": 0,
+    "a4_question_pdf_pages": 1,
+    "a4_answer_pdf_pages": 1,
+    "exact_zip_recovered": false,
     "final_audit_recovered": false,
     "canonical_app_records_present": false,
-    "latest_ci_run_id": 32334260276,
-    "latest_ci_triggering_sha": "806e97f254421f9ecf04148322ef31aa8d70a9ac",
-    "latest_ci_overall_result": "success",
+    "source_archives_recovery_mode": "DIAGNOSTIC_ONLY_NON_CANONICAL",
+    "source_archive_reconstruction_allowed": false,
     "main_touched": false
   },
   "resume_rule": "Do not stop at a substage. Full app completion is the only completion condition."

@@ -1,16 +1,31 @@
 {
   "project": "mikami-math-problem-bank",
-  "status": "SOURCE_ARCHIVES_RECOVERED_REBUILDING_ORIGINAL_1124",
+  "status": "SOURCE_ARCHIVES_RECOVERED_DIAGNOSTIC_ONLY",
+  "mode": "DIAGNOSTIC_ONLY_NON_CANONICAL",
+  "promotable_to_canonical": false,
   "source_archives": {
-    "winpassデータ.zip": {"sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf", "bytes": 8296042},
-    "中学実力錬成データ.zip": {"sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33", "bytes": 7287279},
-    "スタンダードデータ.zip": {"sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6", "bytes": 9689250}
+    "winpassデータ.zip": {
+      "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+      "bytes": 8296042
+    },
+    "中学実力錬成データ.zip": {
+      "sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33",
+      "bytes": 7287279
+    },
+    "スタンダードデータ.zip": {
+      "sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6",
+      "bytes": 9689250
+    }
   },
   "inventory": {
     "docx_before_sha_dedupe": 246,
     "canonical_unique_docs": 140,
     "duplicate_docx": 106,
-    "canonical_by_source": {"Winpass": 81, "実力錬成": 27, "Standard": 32},
+    "canonical_by_source": {
+      "Winpass": 81,
+      "実力錬成": 27,
+      "Standard": 32
+    },
     "matches_historical_140_document_checkpoint": true
   },
   "recovery_evidence": {
@@ -19,22 +34,33 @@
     "partial_verified_winpass_blocks": 47,
     "partial_dataset_is_canonical": false,
     "partial_dataset_promotion_forbidden": true,
-    "historical_target_originals": {"Winpass": 570, "実力錬成": 237, "Standard": 317, "total": 1124},
+    "historical_target_originals": {
+      "Winpass": 570,
+      "実力錬成": 237,
+      "Standard": 317,
+      "total": 1124
+    },
     "historical_variants": 107,
     "historical_final": 1231,
     "canonical_final_zip_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175"
   },
-  "parser_findings": {
+  "diagnostic_findings": {
     "word_math_m_t_required": true,
     "own_paragraph_extraction_required": true,
     "question_and_answer_halves_detected": true,
     "tandem_repeat_prefix_answer_blocks_detected": true,
-    "preliminary_marker_atoms_not_promoted": {"Winpass": 221, "実力錬成": 174, "Standard": 231},
-    "reason_preliminary_is_incomplete": "tables, figures, markerless subquestions, nested textboxes and special documents need source-specific parsing"
+    "note": "These findings are recovery evidence only. They must not be used to reconstruct, substitute, or promote a canonical 1231 dataset."
   },
   "special_documents_from_historical_checkpoint": [
-    "25astandardt1suhy000312.docx", "25astandardt1suhy000313.docx", "25astandardt1suhy000314.docx", "25astandardt1suhy000523.docx", "25astandardt1suhy000631.docx",
-    "25jitsurent1suhy000520.docx", "25jitsurent1suhy000521.docx", "25winpasst1suhy000521.docx", "25winpasst1suhy000522.docx"
+    "25astandardt1suhy000312.docx",
+    "25astandardt1suhy000313.docx",
+    "25astandardt1suhy000314.docx",
+    "25astandardt1suhy000523.docx",
+    "25astandardt1suhy000631.docx",
+    "25jitsurent1suhy000520.docx",
+    "25jitsurent1suhy000521.docx",
+    "25winpasst1suhy000521.docx",
+    "25winpasst1suhy000522.docx"
   ],
-  "next": "Build and validate source-specific OOXML parsers against the 161 verified Winpass seed and historical recovery hints, then reconcile exact originals to 570/237/317 without fabricating records."
+  "next": "Retry exact canonical ZIP/audit recovery only. If and only if the ZIP matches the recorded SHA-256, inspect actual members/schema/figures and proceed through strict provenance. Otherwise keep app/recovery gates hardened and do not reconstruct canonical data from these archives."
 }
