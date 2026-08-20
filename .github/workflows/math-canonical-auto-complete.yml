@@ -190,7 +190,7 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: Persist observable auto-completion state
+      - name: Persist observable auto-completion state without dirty rebase race
         if: always()
         env:
           PAIR_FOUND: ${{ steps.pair.outputs.pair_found }}
@@ -204,7 +204,6 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
         shell: bash
         run: |
-          git pull --rebase origin math-problem-bank-bootstrap || true
           python - <<'PY'
           import json,os
           from datetime import datetime,timezone
@@ -223,20 +222,39 @@ jobs:
             'recorded_at_utc':datetime.now(timezone.utc).isoformat(),'canonical_pair_found':truth(os.environ.get('PAIR_FOUND','')),
             'recovery_source':os.environ.get('RECOVERY_SOURCE','none') or 'none',
             'actions_artifact_pair_hits':actions.get('paired_recovery_hits') if isinstance(actions,dict) else None,
+            'actions_all_members_sha256_checked':actions.get('all_members_sha256_checked') if isinstance(actions,dict) else None,
             'git_history_pair_hits':len(history.get('paired_recovery_hits',[])) if isinstance(history,dict) else None,
             'git_history_canonical_blob_hits':len(history.get('canonical_blob_hits',[])) if isinstance(history,dict) else None,
             'git_history_lfs_pointer_hits':len(history.get('lfs_pointer_hits',[])) if isinstance(history,dict) else None,
             'git_history_all_blobs_sha256_checked':history.get('all_blobs_sha256_checked') if isinstance(history,dict) else None,
             'github_release_pair_hits':len(releases.get('paired_recovery_hits',[])) if isinstance(releases,dict) else None,
             'github_release_canonical_hits':releases.get('canonical_hits') if isinstance(releases,dict) else None,
+            'github_release_nested_members_sha256_checked':releases.get('nested_members_sha256_checked') if isinstance(releases,dict) else None,
             'wiring_ready':truth(os.environ.get('WIRING_READY','')),'mapping_metadata_required':truth(os.environ.get('MAPPING_METADATA_REQUIRED','')),
             'publication_ready':Path('math-bank/release/PUBLICATION_READY.json').is_file(),
             'strict_release_created':Path('math-bank/みかみ塾数学問題アプリ_公開候補.zip').is_file(),
             'completion_status':completion.get('status') if isinstance(completion,dict) else None,
             'policy':'No reconstruction, no guessed metadata, no partial-161 or diagnostic-1271 promotion.'}
-          out=Path('math-bank/state/auto-complete-latest.json');out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          tmp=Path('/tmp/math-auto-state');tmp.mkdir(parents=True,exist_ok=True)
+          files={
+            'actions-artifact-scan-latest.json':actions,
+            'git-history-scan-latest.json':history,
+            'github-release-scan-latest.json':releases,
+            'auto-complete-latest.json':payload,
+          }
+          for name,obj in files.items():
+            if obj is not None:
+              (tmp/name).write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           print(json.dumps(payload,ensure_ascii=False,indent=2))
           PY
-          git config user.name 'github-actions[bot]'; git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- math-bank/state/auto-complete-latest.json math-bank/state/git-history-scan-latest.json math-bank/state/github-release-scan-latest.json 2>/dev/null || true
-          if ! git diff --cached --quiet; then git commit -m 'record math canonical auto-completion state'; git push origin HEAD:math-problem-bank-bootstrap; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin math-problem-bank-bootstrap
+          git reset --hard origin/math-problem-bank-bootstrap
+          mkdir -p math-bank/state
+          for f in /tmp/math-auto-state/*.json; do [ -e "$f" ] || continue; cp "$f" math-bank/state/; done
+          git add -- math-bank/state/auto-complete-latest.json math-bank/state/actions-artifact-scan-latest.json math-bank/state/git-history-scan-latest.json math-bank/state/github-release-scan-latest.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'record math canonical auto-completion state'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
