@@ -1,0 +1,69 @@
+name: public runtime diagnose
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'PUBLIC_RUNTIME_DIAG.txt'
+      - 'PUBLIC_PUBLISH_STATUS.txt'
+      - 'AUTOMATION_CHECKPOINT.md'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: public-runtime-diagnose
+  cancel-in-progress: true
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Diagnose public runtime and persist exact state
+        shell: bash
+        run: |
+          set +e
+          node > /tmp/diag.txt 2>&1 <<'NODE'
+          const {chromium}=require('playwright');
+          (async()=>{
+            const b=await chromium.launch({headless:true});
+            const p=await b.newPage();
+            const consoleErrors=[],requestsFailed=[];
+            p.on('pageerror',e=>consoleErrors.push('pageerror:'+String(e)));
+            p.on('console',m=>{if(m.type()==='error')consoleErrors.push('console:'+m.text())});
+            p.on('requestfailed',r=>requestsFailed.push(r.url()+' :: '+(r.failure()&&r.failure().errorText)));
+            const url='https://yo666ha-boop.github.io/reading-app/?diag='+Date.now();
+            const r=await p.goto(url,{waitUntil:'domcontentloaded',timeout:90000});
+            console.log('http='+(r&&r.status()));
+            try{await p.waitForFunction(()=>['complete','validation-error'].includes(window.V10_RUNTIME_LOAD_PROGRESS),{timeout:120000})}catch(e){console.log('wait_error='+e.message)}
+            const state=await p.evaluate(()=>{
+              const sets=[window.V10_SUNSHINE_G1||{},window.V10_NEWHORIZON_G1||{},window.V10_PASSAGES_G2_SS||{},window.V10_PASSAGES_G2_NH||{},window.V10_PASSAGES_G3_SS||{},window.V10_PASSAGES_G3_NH||{}];
+              const all=sets.flatMap(d=>Object.entries(d));
+              const bad=all.filter(([sec,x])=>x.slashReadingVersion!=='reference-book-minimum-rules-20260820'||x.slashReferenceAudit!=='PASS_REFERENCE_20260820').map(([sec,x])=>({sec,ver:x&&x.slashReadingVersion,audit:x&&x.slashReferenceAudit}));
+              const p61=(window.V10_PASSAGES_G3_SS||{})['PROGRAM 6-1'];
+              return {progress:window.V10_RUNTIME_LOAD_PROGRESS,error:window.V10_RUNTIME_LOAD_ERROR||'',build:window.V10_RUNTIME_BUILD||'',count:all.length,badCount:bad.length,bad:bad.slice(0,20),p61:p61&&p61.slashRows&&p61.slashRows.slice(0,4).map(x=>x.en),audit:window.V10_REFERENCE_SLASH_AUDIT||null,lock:document.getElementById('v10RuntimeLock')&&document.getElementById('v10RuntimeLock').innerText};
+            });
+            console.log('state='+JSON.stringify(state));
+            console.log('consoleErrors='+JSON.stringify(consoleErrors));
+            console.log('requestFailed='+JSON.stringify(requestsFailed.slice(0,50)));
+            await b.close();
+          })().catch(e=>{console.error('fatal='+(e.stack||e));process.exitCode=1});
+          NODE
+          code=$?
+          {
+            echo "checked_at_utc=$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+            echo "source_sha=${GITHUB_SHA}"
+            echo "exit_code=$code"
+            cat /tmp/diag.txt
+          } > PUBLIC_RUNTIME_DIAG.txt
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add PUBLIC_RUNTIME_DIAG.txt
+          git commit -m 'Record public runtime diagnostics [skip ci]' || true
+          git push origin HEAD:main || true
+          exit 0
