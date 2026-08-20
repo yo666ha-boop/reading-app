@@ -7,6 +7,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 HTML = ROOT / "index.html"
+FIGURE_RENDERER = ROOT / "render_figure_markers.js"
+FIGURE_TEST = ROOT / "test_render_figure_markers.mjs"
 text = HTML.read_text(encoding="utf-8")
 
 required_ids = [
@@ -80,10 +82,21 @@ required_fragments = [
     "figure_refs_verified!==true",
     "parentBookOf(r)===book",
     "以前の表示を破棄しました",
+    "render_figure_markers.js",
+    "MikamiMathFigureMarkers",
+    "markerHtml",
+    "markerRefsForRecord",
+    "markerFail",
+    "本文内図版マーカー",
+    "data-inline-figure=\"1\"",
+    "#list img[data-inline-figure=\"1\"]",
 ]
 missing_fragments = [x for x in required_fragments if x not in text]
 if missing_fragments:
     raise SystemExit(f"FAIL missing app behavior fragments: {missing_fragments}")
+
+if not FIGURE_RENDERER.is_file() or not FIGURE_TEST.is_file():
+    raise SystemExit("FAIL inline figure marker renderer/test file missing")
 
 scripts = re.findall(r"<script(?:\s[^>]*)?>(.*?)</script>", text, flags=re.S | re.I)
 if not scripts:
@@ -96,13 +109,25 @@ proc = subprocess.run(["node", "--check", temp], text=True, capture_output=True)
 if proc.returncode:
     raise SystemExit(f"FAIL node --check\n{proc.stdout}\n{proc.stderr}")
 
+for target in (FIGURE_RENDERER, FIGURE_TEST):
+    proc = subprocess.run(["node", "--check", str(target)], text=True, capture_output=True)
+    if proc.returncode:
+        raise SystemExit(f"FAIL node --check {target.name}\n{proc.stdout}\n{proc.stderr}")
+
+proc = subprocess.run(["node", str(FIGURE_TEST)], text=True, capture_output=True)
+if proc.returncode:
+    raise SystemExit(f"FAIL inline figure marker regression\n{proc.stdout}\n{proc.stderr}")
+if "PASS_RENDER_FIGURE_MARKERS_NON_MUTATING_SAFE" not in proc.stdout:
+    raise SystemExit(f"FAIL inline figure marker PASS token missing\n{proc.stdout}")
+
 print("PASS_APP_SHELL")
 print(f"controls={len(required_ids)}")
 print("canonical=1231 original=1124 variants=107")
 print("title_choices_preservation=PASS choice_rendering=PASS choice_search=PASS")
 print("browser_strict_shape=PASS browser_audit_flags=PASS generated_parent=PASS")
 print("variant_parent_book_filter=PASS parent_source_order=PASS stale_import_clear=PASS")
-print("browser_figure_path_safety=PASS print_figure_readiness=PASS")
+print("browser_figure_path_safety=PASS print_figure_readiness=PASS inline_marker_gate=PASS")
+print("inline_marker_non_mutating_render=PASS unsafe_or_unregistered_marker_rejected=PASS")
 print("dynamic_filter_settings_restore=PASS difficulty_labels=PASS count_clamp=PASS")
 print("search=PASS json_import=PASS per_question_answer=PASS print_reset=PASS")
 print("javascript_syntax=PASS")
