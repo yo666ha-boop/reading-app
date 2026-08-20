@@ -31,6 +31,7 @@ def main() -> None:
         "const BASELINE={original:1124,baselineVariant:107,source:{Winpass:570,'実力錬成':237,Standard:317}};",
     )
     s = replace_once(s, "`既存類題 ${f.filter(isVariant).length}問`", "`類題 ${f.filter(isVariant).length}問`")
+    s = replace_once(s, "${isVariant(r)?'既存類題':'原問題'}", "${isVariant(r)?'類題':'原問題'}")
     s = replace_once(
         s,
         "let duplicate=0,blankQ=0,blankA=0,original=0,variant=0,invalid=0,auditFail=0,parentFail=0,figureFail=0,markerFail=0,choiceRecords=0;",
@@ -58,13 +59,18 @@ def main() -> None:
     )
     s = replace_once(
         s,
-        "` / 親 ${a.parentFail} / 図版 ${a.figureFail} / 図版マーカー ${a.markerFail}`",
-        "` / 親 ${a.parentFail} / 分類 ${a.taxonomyFail} / 図版 ${a.figureFail} / 図版マーカー ${a.markerFail}`",
+        "/ 親 ${a.parentFail} / 図版 ${a.figureFail} / 図版マーカー ${a.markerFail}",
+        "/ 親 ${a.parentFail} / 分類 ${a.taxonomyFail} / 図版 ${a.figureFail} / 図版マーカー ${a.markerFail}",
     )
     s = replace_once(
         s,
         "else clearOutput('正本1231問の完全ゲートを通過していないため、出題・解答表示・印刷はロックしています。')",
         "else clearOutput('検証済み原問題1124問と親子・分類・監査ゲートを通過していないため、出題・解答表示・印刷はロックしています。')",
+    )
+    s = replace_once(
+        s,
+        "正本データ未接続：最終1231問の再確認後に接続します。手動JSON読込も利用できます。",
+        "基準データ未接続：検証済み原問題1124問＋類題レイヤーを接続後に利用できます。手動JSON読込も利用できます。",
     )
     PATH.write_text(s, encoding="utf-8")
     print("PASS_INDEX_EXPANDED_VARIANT_DYNAMIC_GATE_UPGRADE")
