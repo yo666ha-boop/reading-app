@@ -1,0 +1,257 @@
+name: Math Git Heads Tags Fast Sharded Recovery
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-git-heads-tags-fast-sharded-recovery.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: math-git-heads-tags-fast-sharded-recovery
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  prepare-history:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+          fetch-tags: true
+      - name: Build one fully verified all-ref bundle and immutable readable OID list
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -s .git/shallow ]; then git fetch --unshallow origin; fi
+          git fetch --force --prune --tags origin '+refs/heads/*:refs/remotes/origin/*' '+refs/tags/*:refs/tags/*'
+          test ! -s .git/shallow
+          git fsck --full --strict
+          mkdir -p /tmp/math-fast-history
+          git bundle create /tmp/math-fast-history/reading-app-all-heads-tags.bundle --all
+          git bundle verify /tmp/math-fast-history/reading-app-all-heads-tags.bundle
+          rm -rf /tmp/math-fast-history/selftest
+          git init --quiet /tmp/math-fast-history/selftest
+          git -C /tmp/math-fast-history/selftest fetch --quiet /tmp/math-fast-history/reading-app-all-heads-tags.bundle '+refs/*:refs/*'
+          git -C /tmp/math-fast-history/selftest fsck --full --strict
+          python - <<'PY'
+          import hashlib,json,subprocess
+          from datetime import datetime,timezone
+          from pathlib import Path
+          MAX=500*1024*1024
+          def inventory(base):
+              rows=subprocess.check_output(base+['rev-list','--objects','--all'],text=True).splitlines()
+              oids=sorted({r.split(' ',1)[0] for r in rows if r.strip()})
+              p=subprocess.run(base+['cat-file','--batch-check=%(objectname) %(objecttype) %(objectsize)'],input='\n'.join(oids)+'\n',text=True,stdout=subprocess.PIPE,check=True)
+              blobs=[]; readable=[]
+              for line in p.stdout.splitlines():
+                  q=line.split()
+                  if len(q)==3 and q[1]=='blob':
+                      size=int(q[2]); blobs.append((q[0],size))
+                      if size<=MAX: readable.append((q[0],size))
+              return blobs,readable
+          src_blobs,src_readable=inventory(['git'])
+          imp_blobs,imp_readable=inventory(['git','-C','/tmp/math-fast-history/selftest'])
+          if src_blobs!=imp_blobs or src_readable!=imp_readable:
+              raise SystemExit(f'FAIL immutable bundle inventory mismatch src={len(src_blobs)}/{len(src_readable)} imported={len(imp_blobs)}/{len(imp_readable)}')
+          root=Path('/tmp/math-fast-history')
+          bundle=root/'reading-app-all-heads-tags.bundle'
+          (root/'readable-oids.tsv').write_text(''.join(f'{oid}\t{size}\n' for oid,size in src_readable),encoding='utf-8')
+          obj={
+              'workflow':'Math Git Heads Tags Fast Sharded Recovery',
+              'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
+              'recovery_mode':'full_history_bundle_precomputed_oid_then_16_way_fast_fanout',
+              'bundle_sha256':hashlib.sha256(bundle.read_bytes()).hexdigest(),
+              'bundle_bytes':bundle.stat().st_size,
+              'source_repository_shallow':False,
+              'bundle_full_fsck_pass':True,
+              'bundle_all_ref_selftest_pass':True,
+              'manifest_source_blob_oids_total':len(src_blobs),
+              'manifest_readable_blob_oids_total':len(src_readable),
+              'selftest_imported_readable_blob_oids_total':len(imp_readable),
+              'readable_oid_list_sha256':hashlib.sha256((root/'readable-oids.tsv').read_bytes()).hexdigest(),
+          }
+          (root/'manifest.json').write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(obj,ensure_ascii=False,indent=2))
+          PY
+          rm -rf /tmp/math-fast-history/selftest
+      - uses: actions/upload-artifact@v4
+        with:
+          name: math-git-heads-tags-fast-prefetched-history
+          path: /tmp/math-fast-history/
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 0
+
+  scan-shard:
+    needs: prepare-history
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: math-git-heads-tags-fast-prefetched-history
+          path: /tmp/math-fast-history
+      - name: Import proven bundle without repeated fsck and SHA-scan exact OID partition
+        env:
+          MATH_GIT_SHARD_COUNT: '16'
+          MATH_GIT_SHARD_INDEX: ${{ matrix.shard }}
+          MATH_GIT_READABLE_OID_LIST: /tmp/math-fast-history/readable-oids.tsv
+          MATH_GIT_SHARD_REPORT: ${{ github.workspace }}/math-bank/state/git-heads-tags-fast-shards/shard-${{ matrix.shard }}.json
+          MATH_GIT_SHARD_RECOVERED: ${{ github.workspace }}/math-bank/recovered-git-heads-tags-fast-shards/shard-${{ matrix.shard }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json,os,subprocess,sys
+          from pathlib import Path
+          root=Path('/tmp/math-fast-history')
+          m=json.loads((root/'manifest.json').read_text(encoding='utf-8'))
+          bundle=root/'reading-app-all-heads-tags.bundle'
+          oid_list=root/'readable-oids.tsv'
+          if hashlib.sha256(bundle.read_bytes()).hexdigest()!=m['bundle_sha256']:
+              raise SystemExit('bundle SHA mismatch')
+          if hashlib.sha256(oid_list.read_bytes()).hexdigest()!=m['readable_oid_list_sha256']:
+              raise SystemExit('OID list SHA mismatch')
+          repo=root/'repo'
+          subprocess.run(['rm','-rf',str(repo)],check=True)
+          subprocess.run(['git','init','--quiet',str(repo)],check=True)
+          subprocess.run(['git','-C',str(repo),'fetch','--quiet',str(bundle),'+refs/*:refs/*'],check=True)
+          os.chdir(repo)
+          sys.path.insert(0,str(Path(os.environ['GITHUB_WORKSPACE'])/'math-bank/app'))
+          import scan_git_history_shard_fast as fast
+          raise SystemExit(fast.main())
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: math-git-heads-tags-fast-shard-${{ matrix.shard }}
+          path: |
+            math-bank/state/git-heads-tags-fast-shards/
+            math-bank/recovered-git-heads-tags-fast-shards/
+          if-no-files-found: warn
+          retention-days: 30
+
+  aggregate:
+    if: always()
+    needs: [prepare-history, scan-shard]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 1
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: math-git-heads-tags-fast-shard-*
+          path: /tmp/math-fast-shards
+          merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: math-git-heads-tags-fast-prefetched-history
+          path: /tmp/math-fast-history
+      - name: Require exact all-ref 16-way coverage and preserve exact pair
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          expected='eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175'
+          m=json.loads(Path('/tmp/math-fast-history/manifest.json').read_text(encoding='utf-8'))
+          objs=[]
+          for p in Path('/tmp/math-fast-shards').rglob('shard-*.json'):
+              try: objs.append(json.loads(p.read_text(encoding='utf-8')))
+              except Exception: pass
+          idx=sorted({o.get('shard_index') for o in objs if isinstance(o.get('shard_index'),int)})
+          totals={o.get('readable_blob_oids_total') for o in objs}
+          readable=next(iter(totals)) if len(totals)==1 else None
+          assigned=sum(int(o.get('assigned_blob_oids') or 0) for o in objs)
+          checked=sum(int(o.get('all_blobs_sha256_checked') or 0) for o in objs)
+          target=int(m.get('manifest_readable_blob_oids_total') or -1)
+          complete=(bool(m.get('bundle_full_fsck_pass')) and bool(m.get('bundle_all_ref_selftest_pass')) and idx==list(range(16)) and readable==target and assigned==target and checked==target)
+          hits=sum(len(o.get('canonical_blob_hits') or []) for o in objs)
+          lfs=sum(len(o.get('lfs_pointer_hits') or []) for o in objs)
+          pairs=sum(len(o.get('paired_recovery_hits') or []) for o in objs)
+          dest=Path('math-bank/recovered-git-heads-tags'); dest.mkdir(parents=True,exist_ok=True)
+          z=dest/'みかみ塾数学問題バンク_最終完成版_20260820.zip'; a=dest/'MATHBANK_FINAL_AUDIT_V2.json'
+          z.unlink(missing_ok=True); a.unlink(missing_ok=True); source=None
+          for zp in Path('/tmp/math-fast-shards').rglob('みかみ塾数学問題バンク_最終完成版_20260820.zip'):
+              ap=zp.with_name('MATHBANK_FINAL_AUDIT_V2.json')
+              if ap.is_file() and hashlib.sha256(zp.read_bytes()).hexdigest()==expected:
+                  shutil.copy2(zp,z); shutil.copy2(ap,a); source=str(zp); break
+          pair=z.is_file() and a.is_file()
+          out={
+              'workflow':'Math Git Heads Tags Fast Sharded Recovery',
+              'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
+              'recovery_mode':'full_history_bundle_precomputed_oid_then_16_way_fast_fanout',
+              'bundle_sha256':m.get('bundle_sha256'),
+              'bundle_bytes':m.get('bundle_bytes'),
+              'bundle_full_fsck_pass':m.get('bundle_full_fsck_pass'),
+              'bundle_all_ref_selftest_pass':m.get('bundle_all_ref_selftest_pass'),
+              'source_repository_shallow':m.get('source_repository_shallow'),
+              'manifest_source_blob_oids_total':m.get('manifest_source_blob_oids_total'),
+              'manifest_readable_blob_oids_total':target,
+              'selftest_imported_readable_blob_oids_total':m.get('selftest_imported_readable_blob_oids_total'),
+              'shard_indexes_completed':idx,
+              'shards_completed':len(idx),
+              'readable_blob_oids_total':readable,
+              'assigned_blob_oids_total':assigned,
+              'all_blobs_sha256_checked':checked,
+              'all_blob_bytes_hashed':sum(int(o.get('all_blob_bytes_hashed') or 0) for o in objs),
+              'exact_coverage_complete':complete,
+              'canonical_blob_hits':hits,
+              'lfs_pointer_hits':lfs,
+              'paired_recovery_hits':pairs,
+              'canonical_pair_found':pair,
+              'pair_source':source,
+              'expected_sha256':expected,
+              'scope':'all full-history branch/tag refs from one fully fsck-verified immutable bundle; precomputed readable OID list partitioned exactly once across 16 shards; no repeated shard fsck'
+          }
+          Path('/tmp/math-git-heads-tags-sharded-recovery-latest.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(out,ensure_ascii=False,indent=2))
+          if not complete: raise SystemExit('FAIL exact fast shard coverage incomplete')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: math-git-heads-tags-fast-sharded-summary
+          path: |
+            /tmp/math-git-heads-tags-sharded-recovery-latest.json
+            math-bank/recovered-git-heads-tags/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Persist aggregate state race-safely
+        if: always()
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin math-problem-bank-bootstrap
+          git reset --hard origin/math-problem-bank-bootstrap
+          mkdir -p math-bank/state
+          cp /tmp/math-git-heads-tags-sharded-recovery-latest.json math-bank/state/ 2>/dev/null || true
+          git add -- math-bank/state/math-git-heads-tags-sharded-recovery-latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'record fast exact all-ref math recovery state'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
