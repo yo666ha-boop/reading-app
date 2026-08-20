@@ -35,11 +35,12 @@
   "今回完了した内容": [
     "Rechecked GitHub branch HEAD and confirmed all work remains isolated on math-problem-bank-bootstrap; main untouched",
     "Rechecked math-bank/app and confirmed strict validator, canonical recovery contract, negative gates, strict browser gate, and UI shell remain present",
-    "Re-searched File Library/conversation scope for the exact final ZIP, final audit, and recorded intermediate names; exact canonical artifact still not recovered",
+    "Re-searched File Library/conversation scope for exact final ZIP/audit/intermediate names; exact canonical artifact still not recovered",
     "Re-searched Google Drive for the final canonical ZIP name; no matching file recovered",
-    "Added build_release_bundle.py, which refuses to build unless exact app-records.json exists and passes the strict validator",
-    "Release builder now emits a release manifest with SHA-256 hashes and a publication candidate ZIP only after strict canonical 1231 validation",
-    "Updated GitHub Actions so the release builder must block with rc=3 while exact canonical data is absent, and must build only after strict data validation passes",
+    "Added build_release_bundle.py; it refuses publication unless exact app-records.json exists and passes strict validation",
+    "Added release-manifest SHA-256 generation and publication ZIP creation after strict canonical validation only",
+    "Updated GitHub Actions to require the release builder to block with rc=3 before exact canonical data wiring",
+    "Attempted a second local/container execution of the branch regression files; container DNS could not resolve raw.githubusercontent.com, so no false PASS was recorded",
     "No fake ZIP, 161-record partial data, malformed 1231 data, new variants, or reconstructed old data were promoted"
   ],
   "現在どの工程にいるか": "Exact canonical data recovery remains the only data-critical blocker. App shell, browser/Python strict gates, negative gates, recovery identity, and release packaging pipeline are ready.",
@@ -56,17 +57,19 @@
     "Run public URL real-data test",
     "Package final ZIP/audit/checkpoint"
   ],
-  "次回どこから開始するか": "Recheck exact canonical artifact/audit availability first. On recovery, immediately run hash verification -> canonical recovery -> strict validator -> app-records wiring -> real-data regressions without stopping.",
+  "次回どこから開始するか": "Recheck exact canonical artifact/audit availability first. On recovery, immediately run hash verification -> canonical recovery -> strict validator -> app-records wiring -> real-data regressions without stopping. Also retry local branch regression if container networking has recovered.",
   "次に進むべき工程": "After exact 1231 wiring, continue through figure/math audit -> iPhone/Fire/PC -> A4 print -> strict release bundle -> isolated publication -> public URL test -> final package.",
   "実PASS_FAIL_エラー_成果物_URL": {
-    "branch_head_before_checkpoint": "7a8ecb3f12a36cfc9280360df0780200bc9b0173",
-    "new_release_builder_commit": "2b9eae0914f24898eb203ed6b0e6b36f46fe2a20",
+    "release_builder_commit": "2b9eae0914f24898eb203ed6b0e6b36f46fe2a20",
     "workflow_release_gate_commit": "7a8ecb3f12a36cfc9280360df0780200bc9b0173",
+    "checkpoint_commit_before_this_update": "d509a3b5bd33f83e0ae289bfb0f0db1f3c7f601c",
     "exact_zip_recovered": false,
     "final_audit_recovered": false,
     "file_library_exact_final": false,
     "google_drive_exact_final": false,
     "release_data_gate": "BLOCKED_EXPECTED_UNTIL_EXACT_1231",
+    "local_container_regression_retry": "TRANSIENT_FAIL_DNS_RAW_GITHUB",
+    "github_combined_status_on_checkpoint_commit": "NO_STATUSES_RETURNED",
     "main_touched": false
   },
   "resume_rule": "Never stop at a substage. Full app completion is the only completion condition."
