@@ -3,11 +3,7 @@
   "mode": "BASE_CANONICAL_PLUS_VERIFIED_EXPANDED_VARIANTS",
   "goal": "全1124原問題に最低1問の新規検証済み類題を追加し、安全な決定論的問題は2〜3問へ拡張して数学プリント作成アプリへ接続する",
   "base_original_target": 1124,
-  "base_original_by_source": {
-    "Winpass": 570,
-    "実力錬成": 237,
-    "Standard": 317
-  },
+  "base_original_by_source": {"Winpass": 570, "実力錬成": 237, "Standard": 317},
   "baseline_verified_variants": 107,
   "expanded_verified_variants": 0,
   "expanded_parent_coverage": 0,
@@ -22,15 +18,11 @@
   },
   "generation_queue_coverage_gate": {
     "status": "PASS_STRICT_VALIDATED_EXPANDED_COVERAGE_ONLY",
-    "behavior": "An existing expanded variant may suppress its parent from the uncovered queue only after validate_layer passes the complete parent/taxonomy/audit/provenance/recalculation/duplicate gates.",
-    "invalid_existing_variant_behavior": "FAIL_CLOSED_DO_NOT_CREATE_FAKE_PARENT_COVERAGE",
-    "implementation_commit": "8ef2f120d06dd9d145efab3514b4d4bba7a45380",
-    "negative_test_commit": "1259993fa7de5bb0816ae1861db60364998d4108",
-    "workflow_persist_commit": "a34ee62a104185469e3284ed5bdd20835a78da2e"
+    "behavior": "Only fully validated expanded variants can suppress a parent from the uncovered queue; invalid variants fail closed and cannot fake coverage."
   },
   "sibling_surface_change_gate": {
     "status": "PASS_WORKFLOW_PERSISTED_AFTER_TEST_COMMIT",
-    "behavior": "Multiple expanded variants for the same parent may not reuse the same numeric-token signature under different wording; this prevents 2-3 target variants from being fake sibling paraphrases.",
+    "behavior": "Same-parent expanded siblings may not reuse the same numeric-token signature under different wording.",
     "validator_commit": "2884ec5680fa1ee1982cc46f3a4b7d8884eb428e",
     "test_commit": "b67d7fc3577929079c5af150f0f0ee94aaaf8986",
     "expanded_workflow_persist_commit": "e529303da14bba13b1351963d14e8e33e69cab1e"
@@ -42,33 +34,41 @@
   "expanded_composer": "IMPLEMENTED_WITH_IMMUTABLE_BASE_SNAPSHOT",
   "dynamic_release_contract": "PASS_SOURCE_CONTRACT_WAITING_FOR_REAL_BASE_AND_FULL_COVERAGE",
   "base_recovery": {
-    "actions_artifacts_seen": 139,
-    "actions_members_sha256_checked": 576,
-    "actions_bytes_hashed": 253454595,
+    "actions_artifacts_seen": 162,
+    "actions_members_sha256_checked": 605,
+    "actions_bytes_hashed": 259912724,
     "actions_download_failures": 0,
     "actions_canonical_hits": 0,
     "actions_valid_audit_hits": 0,
     "actions_pair_hits": 0,
-    "reading_app_last_completed_shards": 16,
-    "reading_app_last_manifest_readable_blob_oids_total": 1874,
-    "reading_app_last_shard_readable_blob_oids_total": 565,
-    "git_history_exact_coverage_complete": false,
-    "all_ref_import_fix_commit": "a32e8bb7bbd9f22cdd020a59bdf4ecf1fa629eab",
-    "all_ref_import_fix_status": "IMPLEMENTED_AND_TRIGGERED; CURRENT STORED AGGREGATE IS STILL PRE-FIX MANIFEST_MISMATCH",
-    "policy": "cancelled/timeout/incomplete or manifest-mismatched coverage is never absence evidence"
+    "old_all_ref_run_id": "32416703779",
+    "old_all_ref_manifest_readable_blob_oids_total": 1876,
+    "old_all_ref_selftest_imported_readable_blob_oids_total": 1876,
+    "old_all_ref_shards_completed": 0,
+    "old_all_ref_exact_coverage_complete": false,
+    "old_all_ref_failure_mode": "all_16_shards_hit_30_minute_limit_before_reports_due_repeated_per_shard_full_fsck",
+    "fast_scanner_commit": "e71fb9539332435209260ad2eddeeac6266a8a19",
+    "fast_recovery_workflow_commit": "b7a21420f38401c38e23fd216e13bc135ced1cc6",
+    "fast_recovery_mode": "full_history_bundle_precomputed_oid_then_16_way_fast_fanout",
+    "fast_recovery_status": "IMPLEMENTED_AND_PUSHED_AWAITING_TERMINAL_AGGREGATE",
+    "pr_refs_count": 4,
+    "pr_refs_manifest_readable_blob_oids_total": 1419,
+    "pr_refs_shards_completed": 0,
+    "pr_refs_exact_coverage_complete": false,
+    "policy": "cancelled/timeout/incomplete coverage is never absence evidence"
   },
   "browser_A4": {
-    "synthetic_browser": "PASS_FOUR_ENVIRONMENTS_LAST_CONFIRMED_BY_MATH_AUDIT",
+    "latest_math_audit_run_id": "32418059694",
+    "synthetic_browser": "PASS_FOUR_ENVIRONMENTS",
     "real_canonical_browser": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT",
     "real_A4_six_pdfs": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT"
   },
   "publication_ready": false,
   "branch": "math-problem-bank-bootstrap",
-  "source_head_before_checkpoint": "b370dc0ef079ef23843a218b8d52ff28fff76d7e",
-  "recorded_at_utc": "2026-08-20T21:26:08.117521+00:00",
+  "source_head_before_state_write": "508f3a2235be99a517b1b5994350f5e23016c065",
+  "recorded_at_utc": "2026-08-20T22:04:00Z",
   "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_TESTS",
-  "synthetic_browser_expansion_fixture": "READY_1124_ORIGINAL_110_VARIANT_TOTAL_1234",
-  "next": "recover actual verified base records; run exact safe generator first; extend parser only with independently provable structures; resolve remaining manual parents; compose and run real browser/A4 regression",
   "safe_exact_generator": "PASS_ARITHMETIC_AND_LINEAR_EQUATION_PARENT_RECALC_PLUS_INDEPENDENT_VARIANT_VERIFY",
-  "safe_exact_generator_scope": "SIGNED_INTEGER_BINARY_ARITHMETIC_AND_FIRST_DEGREE_EQUATIONS_ONLY; FIGURE_CHOICE_PROSE_UNPROVEN_FAIL_CLOSED"
+  "safe_exact_generator_scope": "SIGNED_INTEGER_BINARY_ARITHMETIC_AND_FIRST_DEGREE_EQUATIONS_ONLY; FIGURE_CHOICE_PROSE_UNPROVEN_FAIL_CLOSED",
+  "next": "read terminal fast all-ref recovery aggregate; if exact pair appears validate and wire BASE immediately; otherwise complete PR-ref exact recovery, then generate only from actual verified parent records"
 }
