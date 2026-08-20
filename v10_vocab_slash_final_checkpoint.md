@@ -5,67 +5,59 @@ phase: VOCAB_AND_SLASH_HUMAN_AUDIT
 started_at_jst: 2026-08-20 11:00
 last_manual_progress_jst: 2026-08-20 12:00+
 
-## Current verified baseline
+## Baseline and rules
 - Semantic passage rebuild: 168/168 previously completed.
-- Student print mode: English passage + current questions only; Japanese translation/slash/answers/evidence/explanations excluded.
-- Teacher print mode: passage + translation + slash reading + current questions + answers/evidence/explanations.
-- Canonical vocabulary basis: NH/SS 2026 vocabulary master plus passage-level reviewed `allowedWords` classifications recording exact-section, cumulative, textbook-confirmed, and elementary words.
-- Missing keyword-table rows alone are not proof that a reviewed elementary/textbook word is out of scope.
-- Existing automated vocabulary/chronology/slash gates are not sufficient for this final pass; human review is required.
+- Student print: English passage + current questions only. Teacher print: passage + translation + slash + same questions + answers/evidence/explanations.
+- Vocabulary basis: canonical NH/SS 2026 master + reviewed exact-section/cumulative/textbook-confirmed/elementary gates; grammar/form chronology is checked too.
+- Slash basis: front-to-back meaning chunks; do not break be+complement, auxiliary+verb, simple verb+short object, article+noun, or fixed phrases.
 
 ## Progress
-- vocabulary_final_audited: 50/168
-- slash_human_audited: 50/168
-- passages_rewritten_this_phase: 2
+- vocabulary_final_audited: 60/168
+- slash_human_audited: 60/168
+- passages_rewritten_this_phase: 6
 - notes_confirmed: 0
 
 ## This run completed
-- Re-read latest checkpoint and continued from 041.
-- Human vocabulary + slash audit completed for 041-050.
-- 041-048: vocabulary PASS under explicit reviewed section/cumulative gates; human slash rows corrected to preserve natural phrase units.
-- 049 New Horizon G1 Unit 4-1: genuine vocabulary chronology failure found and repaired. Canonical NH/SS 2026 master places `picture` in NH G1 Unit4 Part2, later than Unit4-1. The Unit4-1 source audit also explicitly forbids auto-generating plural `animals`. Rewrote the passage without `picture`/`animals` using already-available vocabulary, then synchronized full translation, slash rows, A questions/answers/evidence/reasons and B metadata. No note required.
-- 050 New Horizon G1 Unit 4-2: genuine grammar chronology failure found and repaired. `will` in `We will practice again tomorrow.` was not available at Unit4-2. Rebuilt the passage using cumulative Unit3-3/Unit4-2 vocabulary, then synchronized translation, slash, A/B questions/answers/evidence/reasons. No note required.
-- Final effective runtime repairs for 041-050 are in `v10_vocab_slash_manual_041_050.js`, content SHA `469fd9f7961f730a9e19b40378383fcc3c68e09c` (repair commit `1af6567d7ade00178ffd41d24c142ff60a8ca5ba`).
-- Corrected detailed ledger: `v10_vocab_slash_manual_audit_041_050.md`, commit `a252895b7580b790056d9b69347e8bba627422ed`.
-- Loader confirmed to include `v10_vocab_slash_manual_041_050.js` as the last human-audit chunk after automatic final fixes and earlier manual ranges.
+- 041-050 ledger/checkpoint was corrected after genuine failures were found in 049/050; cumulative rewrites there = 2.
+- Continued immediately through 051-060 instead of stopping at 050.
+- Inspected actual semantic passages 051-060 and the applicable New Horizon source gates for Unit 4-3, Unit 5-1/2/3, Unit 6-1/2/3, Unit 7-1/2/3.
+- 051 Unit 4-3: removed `story`, which is not introduced in NH G1 by this point. `read` is already canonical from NH1 Pre-step/Unit2. Repaired to `Read this, please.` and synchronized translation/A/B/slash.
+- 052 Unit 5-1: source gate explicitly licenses `enjoy ...ing`; replaced broader `I enjoy my work.` with `My work is interesting.` and updated translation/slash.
+- 053 Unit 5-2: removed unverified `water`; rebuilt related A/B questions and synchronized translation/slash/evidence.
+- 054 Unit 5-3: vocabulary/slash PASS, no rewrite.
+- 055 Unit 6-1: vocabulary/slash PASS, no rewrite.
+- 056 Unit 6-2: vocabulary/slash PASS, no rewrite.
+- 057 Unit 6-3: `first` is canonical cumulative (NH1 Unit3), but `Then` was not supported by checked canonical/gate evidence. Replaced with `I use the towel after the cushion.` using cumulative Unit3-2 `after`; synchronized A/B/translation/slash.
+- 058 Unit 7-1: vocabulary/slash PASS.
+- 059 Unit 7-2: vocabulary/slash PASS.
+- 060 Unit 7-3: vocabulary/slash PASS; `plan` is cumulative from Unit7-1 and Unit7-3 explicitly supplies mom/dad/palace/travel/exciting/we’re.
+- Created final runtime layer `v10_vocab_slash_manual_051_060.js`, commit `7657a377bb63392db9d044808ea28a4286ae3db4`.
+- Updated loader so 051-060 runs after 041-050 and all automatic semantic layers, commit `e897f1bd6fe6c8045a4b7099a6bf41307da14bfb`.
+- Created detailed ledger `v10_vocab_slash_manual_audit_051_060.md`, commit `51e56ff88ac496971cd97ef2a8c54543ae5560bc`.
 
-## Completed audit ranges
+## Completed ranges
 - 001-010 COMPLETE
 - 011-020 COMPLETE
 - 021-030 COMPLETE
 - 031-040 COMPLETE
-- 041-050 COMPLETE (049/050 rewritten during final vocabulary audit)
+- 041-050 COMPLETE (049/050 rewritten)
+- 051-060 COMPLETE (051/052/053/057 rewritten)
 
 ## Current phase
 VOCAB_AND_SLASH_HUMAN_AUDIT
 
-## Remaining work
-- Continue passage 051 through 168 sequentially.
-- For each passage: word-by-word vocabulary/grammar chronology -> rewrite only if genuinely needed -> synchronize dependent content -> human slash review.
-- Re-render/DOM verify the newly repaired 049/050 and future manual batches; do not rely only on old static semantic dump files.
-- After 168/168: full vocabulary/grammar/slash/A+B/coverage/DOM/browser/print regression.
-- After regression: public main/GitHub Pages and both print modes verification.
-
-## Exact stop point this run
-Passage 050 New Horizon G1 Unit 4-2 has been human-audited and the genuine vocabulary/grammar leaks were repaired in the final runtime layer. Passage 051 has not yet been audited in this phase.
+## Exact stop point
+Passage 060 New Horizon G1 Unit 7-3 completed. Passage 061 has not yet been human-audited in this phase.
 
 ## Next start point
-Passage 051 New Horizon G1 Unit 4-3.
+Passage 061.
 
-## Next phase after current
-Continue sequentially 051-168 -> FULL_REGRESSION -> PUBLIC_VERIFY
+## Remaining major work
+1. Human vocabulary + slash audit 061-168.
+2. Repair/synchronize genuine vocabulary/grammar failures as found.
+3. Update semantic render/regression workflow so final manual override files on main are exercised, then re-render final passages and verify DOM/coverage.
+4. Full vocabulary/grammar/slash/A+B/browser/print regression after 168/168.
+5. Public GitHub Pages verification; repair/retest loop until no unresolved failure.
 
-## Final-purpose remaining major stages
-1. Human vocabulary + slash audit 051-168.
-2. Repair/synchronize any genuine vocabulary failures found.
-3. Re-render/DOM verification of final manual overrides.
-4. Full automated and browser/print regression after 168/168.
-5. Public Pages verification and unresolved-failure repair loop.
-
-## Latest status
-- vocabulary audit: 50/168
-- slash human audit: 50/168
-- vocabulary-driven English rewrites: 2
-- notes confirmed: 0
-- next: 051
-- unresolved: old static semantic dump for 049/050 still reflects pre-final-manual text until re-render workflow is run/updated; runtime final loader has the repaired data.
+## Current unresolved verification item
+Static `semantic_passages/*.txt` files predate the newest final manual runtime layers. The runtime loader is connected through 060, but a main-branch render/regression path still needs to be enabled/run before claiming actual dump/browser verification of these newest overrides.
