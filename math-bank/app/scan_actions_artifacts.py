@@ -23,8 +23,10 @@ RECOVERY_HINTS = (
 )
 CREATED_SINCE = "2026-08-19T00:00:00Z"
 MAX_ARTIFACT_BYTES = 500 * 1024 * 1024
+MAX_MEMBER_BYTES = 500 * 1024 * 1024
 MAX_NESTED_ZIP_BYTES = 250 * 1024 * 1024
 MAX_NESTED_DEPTH = 3
+MAX_UNCOMPRESSED_BYTES_PER_ARCHIVE = 2 * 1024 * 1024 * 1024
 OUT_REPORT = Path("math-bank/state/actions-artifact-scan-latest.json")
 OUT_RECOVERY = Path("math-bank/recovered")
 
@@ -80,25 +82,55 @@ def valid_audit_bytes(data: bytes) -> bool:
     return isinstance(obj, dict)
 
 
+def is_zip_payload(data: bytes) -> bool:
+    if len(data) < 4 or data[:2] != b"PK":
+        return False
+    try:
+        return zipfile.is_zipfile(io.BytesIO(data))
+    except Exception:
+        return False
+
+
 def scan_zip_payload(
     payload: bytes,
     prefix: str = "",
     depth: int = 0,
-) -> tuple[list[dict], list[tuple[str, bytes]], list[tuple[str, bytes]], list[str]]:
+) -> tuple[list[dict], list[tuple[str, bytes]], list[tuple[str, bytes]], list[str], dict]:
     entries: list[dict] = []
     canonical_hits: list[tuple[str, bytes]] = []
     audit_hits: list[tuple[str, bytes]] = []
     errors: list[str] = []
+    metrics = {
+        "members_seen": 0,
+        "members_sha256_checked": 0,
+        "member_bytes_hashed": 0,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0,
+    }
     if depth > MAX_NESTED_DEPTH:
-        return entries, canonical_hits, audit_hits, errors
+        return entries, canonical_hits, audit_hits, errors, metrics
     try:
         with zipfile.ZipFile(io.BytesIO(payload)) as zf:
+            declared_total = sum(i.file_size for i in zf.infolist() if not i.is_dir())
+            if declared_total > MAX_UNCOMPRESSED_BYTES_PER_ARCHIVE:
+                errors.append(
+                    f"archive declared uncompressed bytes {declared_total} exceeds cap {MAX_UNCOMPRESSED_BYTES_PER_ARCHIVE}: {prefix or '<artifact>'}"
+                )
             for info in zf.infolist():
                 if info.is_dir():
                     continue
+                metrics["members_seen"] += 1
                 full_name = f"{prefix}{info.filename}"
-                is_zip = info.filename.lower().endswith(".zip")
-                if not is_zip and not member_interest(info.filename):
+                basename = Path(info.filename).name
+                if info.file_size > MAX_MEMBER_BYTES:
+                    metrics["oversize_members_skipped"] += 1
+                    if member_interest(info.filename):
+                        entries.append({
+                            "name": full_name,
+                            "bytes": info.file_size,
+                            "depth": depth,
+                            "skipped": "member exceeds scan size cap",
+                        })
                     continue
                 try:
                     data = zf.read(info)
@@ -106,28 +138,38 @@ def scan_zip_payload(
                     errors.append(f"read {full_name}: {e}")
                     continue
                 digest = sha256_bytes(data)
-                entry = {
-                    "name": full_name,
-                    "bytes": len(data),
-                    "sha256": digest,
-                    "depth": depth,
-                }
-                entries.append(entry)
-                if is_zip and digest == EXPECTED_SHA256:
+                metrics["members_sha256_checked"] += 1
+                metrics["member_bytes_hashed"] += len(data)
+                zip_signature = is_zip_payload(data)
+                if zip_signature:
+                    metrics["zip_signature_members"] += 1
+                interesting = member_interest(info.filename) or digest == EXPECTED_SHA256 or zip_signature
+                if interesting:
+                    entries.append({
+                        "name": full_name,
+                        "bytes": len(data),
+                        "sha256": digest,
+                        "depth": depth,
+                        "zip_signature": zip_signature,
+                    })
+                # Canonical identity is content-addressed. Filename and extension are irrelevant.
+                if digest == EXPECTED_SHA256:
                     canonical_hits.append((full_name, data))
-                if Path(info.filename).name == AUDIT_HINT and valid_audit_bytes(data):
+                if basename == AUDIT_HINT and valid_audit_bytes(data):
                     audit_hits.append((full_name, data))
-                if is_zip and depth < MAX_NESTED_DEPTH and len(data) <= MAX_NESTED_ZIP_BYTES:
-                    child_entries, child_canonical, child_audits, child_errors = scan_zip_payload(
+                if zip_signature and depth < MAX_NESTED_DEPTH and len(data) <= MAX_NESTED_ZIP_BYTES:
+                    child_entries, child_canonical, child_audits, child_errors, child_metrics = scan_zip_payload(
                         data, prefix=full_name + "!/", depth=depth + 1
                     )
                     entries.extend(child_entries)
                     canonical_hits.extend(child_canonical)
                     audit_hits.extend(child_audits)
                     errors.extend(child_errors)
+                    for k in metrics:
+                        metrics[k] += child_metrics[k]
     except zipfile.BadZipFile as e:
         errors.append(f"bad zip {prefix or '<artifact>'}: {e}")
-    return entries, canonical_hits, audit_hits, errors
+    return entries, canonical_hits, audit_hits, errors, metrics
 
 
 def inspect_artifact(artifact: dict) -> tuple[dict, list[tuple[str, bytes]], list[tuple[str, bytes]]]:
@@ -144,6 +186,7 @@ def inspect_artifact(artifact: dict) -> tuple[dict, list[tuple[str, bytes]], lis
         "canonical_sha_hits": [],
         "valid_final_audit_hits": [],
         "paired_recovery_eligible": False,
+        "member_scan_metrics": {},
         "errors": [],
     }
     canonical_hits: list[tuple[str, bytes]] = []
@@ -152,8 +195,9 @@ def inspect_artifact(artifact: dict) -> tuple[dict, list[tuple[str, bytes]], lis
         raw = request_bytes(artifact["archive_download_url"])
         result["downloaded"] = True
         result["archive_download_bytes"] = len(raw)
-        entries, canonical_hits, audit_hits, errors = scan_zip_payload(raw)
+        entries, canonical_hits, audit_hits, errors, metrics = scan_zip_payload(raw)
         result["interesting_members"] = entries
+        result["member_scan_metrics"] = metrics
         result["canonical_sha_hits"] = [
             {"name": name, "bytes": len(data), "sha256": sha256_bytes(data)}
             for name, data in canonical_hits
@@ -201,7 +245,7 @@ def main() -> int:
     candidates.sort(key=lambda a: a.get("created_at", ""), reverse=True)
 
     report = {
-        "scan": "github_actions_artifacts_for_exact_math_canonical",
+        "scan": "github_actions_artifacts_all_members_content_addressed_for_exact_math_canonical",
         "repo": REPO,
         "expected_filename": EXPECTED_FILENAME,
         "expected_sha256": EXPECTED_SHA256,
@@ -215,10 +259,14 @@ def main() -> int:
         "paired_recovery_hits": 0,
         "recovery_hint_hits": 0,
         "download_failures": 0,
+        "all_members_sha256_checked": 0,
+        "all_member_bytes_hashed": 0,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0,
         "artifacts": [],
         "recovered_files": [],
         "completed_at_utc": datetime.now(timezone.utc).isoformat(),
-        "policy": "Discovery only. ZIP identity requires immutable SHA-256. Automatic completion requires the exact ZIP and one unambiguous valid MATHBANK_FINAL_AUDIT_V2.json from the same Actions artifact.",
+        "policy": "Every member under the size cap is SHA-256 checked regardless of filename/extension. Nested archives are detected by ZIP signature. Exact immutable SHA plus one unambiguous valid final audit from the same Actions artifact is required; no reconstruction.",
     }
 
     OUT_RECOVERY.mkdir(parents=True, exist_ok=True)
@@ -229,6 +277,11 @@ def main() -> int:
         item, canonical_hits, audit_hits = inspect_artifact(artifact)
         if not item["downloaded"]:
             report["download_failures"] += 1
+        metrics = item.get("member_scan_metrics") or {}
+        report["all_members_sha256_checked"] += int(metrics.get("members_sha256_checked") or 0)
+        report["all_member_bytes_hashed"] += int(metrics.get("member_bytes_hashed") or 0)
+        report["zip_signature_members"] += int(metrics.get("zip_signature_members") or 0)
+        report["oversize_members_skipped"] += int(metrics.get("oversize_members_skipped") or 0)
         for member in item["interesting_members"]:
             low = member["name"].lower()
             if AUDIT_HINT.lower() in low:
@@ -261,14 +314,13 @@ def main() -> int:
                 "audit_sha256": sha256_bytes(audit_data),
                 "same_artifact_pair": True,
             })
-            # The newest qualifying artifact wins. Stop after one exact, unambiguous pair
-            # so two different historical audits can never be silently mixed.
             report["artifacts"].append(item)
             break
 
         report["artifacts"].append(item)
 
     OUT_REPORT.parent.mkdir(parents=True, exist_ok=True)
+    report["completed_at_utc"] = datetime.now(timezone.utc).isoformat()
     OUT_REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0
