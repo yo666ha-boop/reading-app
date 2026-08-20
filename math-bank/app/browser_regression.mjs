@@ -192,24 +192,26 @@ async function runCase(browserType, name, viewport) {
     }));
     if (questionPrint.controls !== 'none' || questionPrint.answer !== 'none') fail(`${name}: question print CSS mismatch ${JSON.stringify(questionPrint)}`);
 
-    // Chromium can produce a real PDF; verify both question and answer sheets are actual portrait A4 PDFs.
+    // Chromium generates real PDFs. Assert answer visibility before PDF generation because the app intentionally removes print-answers on afterprint.
     let pdf = null;
     if (name === 'chromium-desktop') {
       const questionPdf = await page.pdf({ printBackground: true, preferCSSPageSize: true });
       const question = assertA4Pdf(questionPdf, `${name}: question PDF`);
       await page.evaluate(() => document.body.classList.add('print-answers'));
+      await page.emulateMedia({ media: 'print' });
+      const answerPrintBeforePdf = await page.locator('.answer').evaluate(el => getComputedStyle(el).display);
+      if (answerPrintBeforePdf === 'none') fail(`${name}: answer print CSS hides answer before PDF generation`);
       const answerPdf = await page.pdf({ printBackground: true, preferCSSPageSize: true });
       const answer = assertA4Pdf(answerPdf, `${name}: answer PDF`);
       if (question.pages < 1 || answer.pages < 1) fail(`${name}: PDF page count invalid`);
       pdf = { question, answer };
     } else {
       await page.evaluate(() => document.body.classList.add('print-answers'));
+      await page.emulateMedia({ media: 'print' });
+      const answerPrint = await page.locator('.answer').evaluate(el => getComputedStyle(el).display);
+      if (answerPrint === 'none') fail(`${name}: answer print CSS still hides answer`);
     }
 
-    // page.pdf may reset the emulated medium after generation; reassert print media before checking computed print CSS.
-    await page.emulateMedia({ media: 'print' });
-    const answerPrint = await page.locator('.answer').evaluate(el => getComputedStyle(el).display);
-    if (answerPrint === 'none') fail(`${name}: answer print CSS still hides answer`);
     await page.evaluate(() => document.body.classList.remove('print-answers'));
     await page.emulateMedia({ media: 'screen' });
 
