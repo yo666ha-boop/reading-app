@@ -19,9 +19,11 @@ jobs:
       - run: npm install --no-save --no-package-lock jsdom@24.1.3 playwright@1.55.0
       - name: Authoritative reference sample gate
         run: node v10_reference_slash_gate.js
+      - name: Dump all current 168 slash rows for reference re-audit
+        run: node v10_reference_runtime_dump.js
       - name: Existing semantic runtime regression
         run: node v10_semantic_runtime_audit.js
-      - name: Meaning-chunk slash quality gate
+      - name: Legacy meaning-chunk slash quality gate
         run: node v10_slash_quality_audit.js
       - name: Consolidated 091-168 final audit coverage
         run: node v10_final_audit_091_168_static_test.js
