@@ -14,7 +14,7 @@ const norm=s=>String(s||'').replace(/\s+/g,' ').trim();
   }
   files.push('v10_semantic_runtime_repairs_161_168.js');
   files.push('v10_semantic_runtime_final_fixes.js');
-  files.push('v10_vocab_slash_manual_004_010.js','v10_vocab_slash_manual_011_020.js','v10_vocab_slash_manual_021_030.js','v10_vocab_slash_manual_031_040.js','v10_vocab_slash_manual_041_050.js','v10_vocab_slash_manual_051_060.js','v10_vocab_slash_manual_061_070.js','v10_vocab_slash_manual_071_080.js','v10_vocab_slash_manual_081_090.js','v10_vocab_slash_manual_091_168.js','v10_vocab_slash_manual_corrections.js');
+  files.push('v10_vocab_slash_manual_004_010.js','v10_vocab_slash_manual_011_020.js','v10_vocab_slash_manual_021_030.js','v10_vocab_slash_manual_031_040.js','v10_vocab_slash_manual_041_050.js','v10_vocab_slash_manual_051_060.js','v10_vocab_slash_manual_061_070.js','v10_vocab_slash_manual_071_080.js','v10_vocab_slash_manual_081_090.js','v10_vocab_slash_manual_091_168.js','v10_vocab_slash_manual_corrections.js','v10_reference_slash_manual_001_168.js');
   for(const f of files){
     if(!fs.existsSync(f)) throw new Error('missing '+f);
     vm.runInContext(fs.readFileSync(f,'utf8'),ctx,{filename:f});
@@ -31,7 +31,7 @@ const norm=s=>String(s||'').replace(/\s+/g,' ').trim();
       for(let i=0;i<ss.length;i++){
         rows++;
         const r=rr[i]||{};
-        console.log('ROW|'+pi+'|'+(i+1)+'|'+JSON.stringify({sentence:norm(ss[i]),en:norm(r.en),jp:norm(r.jp)}));
+        console.log('ROW|'+pi+'|'+(i+1)+'|'+JSON.stringify({sentence:norm(ss[i]),en:norm(r.en),jp:norm(r.jp),referenceAudit:p.slashReferenceAudit||''}));
       }
     }
   }
