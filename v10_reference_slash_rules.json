@@ -1,12 +1,168 @@
 {
-  "verified_complete": false,
+  "verified_complete": true,
   "source_files": [
     "英語長文基本.pdf",
     "英語長文基本解答.pdf"
   ],
-  "reference_pages_read": 0,
-  "reference_files_read": 0,
+  "reference_pages_read": 56,
+  "reference_files_read": 2,
+  "source_page_counts": {
+    "英語長文基本.pdf": 46,
+    "英語長文基本解答.pdf": 10
+  },
   "passages_target": 168,
-  "rules": [],
-  "note": "Do not set verified_complete=true until both authoritative reference PDFs have been recovered and read from first page to last page. Generic slash-reading rules are not accepted as a substitute."
+  "reference_method": "Use the unslashed problem text in 英語長文基本.pdf together with the corresponding slash-reading presentation in 英語長文基本解答.pdf. The answer book is authoritative for slash placement and Japanese chunk correspondence. Preserve the reference's relatively fine front-to-back chunking; do not replace it with generic grammar heuristics.",
+  "rules": [
+    {
+      "id": "R01_FINE_FRONT_TO_BACK_CHUNKS",
+      "rule": "Use relatively fine meaning chunks so a learner can process the English from left to right. Long sentences should normally contain multiple slashes when the reference would separate meaningful units. Do not leave most longer sentences unsplit."
+    },
+    {
+      "id": "R02_TIME_PLACE_DURATION",
+      "rule": "Time, place, duration and other readable adjuncts are often separate chunks.",
+      "examples": [
+        "I visited America / last year / and stayed there / for two months.",
+        "I read books / at home / on Saturday, / and I went to see a movie, Love with Me, / on Sunday.",
+        "We practice / from Monday / to Saturday."
+      ]
+    },
+    {
+      "id": "R03_PURPOSE_INFINITIVE",
+      "rule": "Purpose infinitives are commonly separated from the preceding core clause.",
+      "examples": [
+        "I went to school / to study English.",
+        "I'm going to the playground / to practice soccer.",
+        "My sister is coming / to see me."
+      ]
+    },
+    {
+      "id": "R04_SUBORDINATE_CLAUSES",
+      "rule": "Because, if, when and similar subordinate clauses are separated when they form a clear reading unit, including clause-first structures.",
+      "examples": [
+        "I'm glad to meet you / because you can speak English very well.",
+        "If you are interested, / you should go / on a weekday.",
+        "Well, / after you watch the game today, / if you like our team, / you can join us."
+      ]
+    },
+    {
+      "id": "R05_COORDINATION",
+      "rule": "Coordinated clauses and major coordinated units are frequently separated. Conjunctions/discourse connectives may remain with the next unit or stand as a short chunk when the reference does so.",
+      "examples": [
+        "The movie is very popular, / so a lot of people go to see it / on the weekend.",
+        "It will start / at four, / and we will play / at our playground.",
+        "So, / I think, / about five or six days a week, / after school."
+      ]
+    },
+    {
+      "id": "R06_PREPOSITIONAL_AND_AGENT_PHRASES",
+      "rule": "Prepositional phrases and passive-agent phrases may be separated as their own reading chunks. Do not impose a generic ban on splitting a predicate before a following prepositional phrase.",
+      "examples": [
+        "I went to see it / with my friends.",
+        "The book was written / by a famous writer.",
+        "We saw many kinds of animals / from all over the world."
+      ]
+    },
+    {
+      "id": "R07_CONTENT_CLAUSES_AND_THOUGHT",
+      "rule": "Verbs of knowing/thinking can be followed by a separate content-clause chunk when the reference does so.",
+      "examples": [
+        "I didn't know / that there is a soccer team / in this school.",
+        "I think / I'm good at playing soccer / because I practiced hard."
+      ]
+    },
+    {
+      "id": "R08_DISCOURSE_MARKERS",
+      "rule": "Short discourse markers, greetings and response units are frequently isolated when they help left-to-right processing.",
+      "examples": [
+        "Yes, / can I help you?",
+        "Also, / I'm in the English club / in this school.",
+        "Well, / I stayed at home / on Saturday / because it was raining.",
+        "Sure. / I'll talk to my team / about it."
+      ]
+    },
+    {
+      "id": "R09_QUESTIONS_AND_VOCATIVES",
+      "rule": "Questions may be split before time/place adjuncts and vocatives, rather than being kept as one whole sentence.",
+      "examples": [
+        "What did you do / last Sunday, / Kenta?",
+        "What did you do / on the weekend, / Tina?",
+        "How about going there / next Sunday?"
+      ]
+    },
+    {
+      "id": "R10_SUBJECT_PREDICATE_CAN_SPLIT",
+      "rule": "The reference sometimes separates a long subject or predicate/complement sequence for reading support. Therefore generic rules such as 'never split be + complement' are not authoritative.",
+      "examples": [
+        "Playing in bad weather / isn't difficult / for me."
+      ]
+    },
+    {
+      "id": "R11_SHORT_SENTENCES_NOT_FORCED",
+      "rule": "Do not mechanically force a slash into every short/simple sentence. Some complete short sentences remain unsplit in the reference when no extra reading chunk is useful.",
+      "examples": [
+        "You speak English very well.",
+        "The other team is from the school in the next town.",
+        "Have you ever played soccer?"
+      ]
+    },
+    {
+      "id": "R12_MULTI_SENTENCE_TURNS",
+      "rule": "Within one dialogue turn, slashes can separate complete neighboring sentences as well as sentence-internal chunks.",
+      "examples": [
+        "I'm his brother. / My name is Paul. / Nice to meet you.",
+        "It was very exciting. / I went to see it / with my friends. / They liked it, too."
+      ]
+    },
+    {
+      "id": "R13_JAPANESE_ALIGNMENT",
+      "rule": "The Japanese reading-support line must correspond chunk-for-chunk in the same left-to-right order. It is a front-to-back support gloss, not merely an unrelated natural full translation placed underneath."
+    },
+    {
+      "id": "R14_NO_WORD_COUNT_ALGORITHM",
+      "rule": "Slash placement is determined from the reference's reading units, not a fixed word-count interval. Density should resemble the supplied answer-book examples across HOP/STEP/JUMP levels."
+    }
+  ],
+  "benchmark_examples": [
+    {
+      "reference_page": 1,
+      "english": "Thank you. / I visited America / last year / and stayed there / for two months.",
+      "purpose": "core + time + coordination + duration"
+    },
+    {
+      "reference_page": 2,
+      "english": "I went to school / to study English. / Also, / I'm in the English club / in this school.",
+      "purpose": "purpose infinitive + discourse marker + place"
+    },
+    {
+      "reference_page": 3,
+      "english": "What did you do / last Sunday, / Kenta?",
+      "purpose": "question + time + vocative"
+    },
+    {
+      "reference_page": 4,
+      "english": "If you are interested, / you should go / on a weekday. / The movie is very popular, / so a lot of people go to see it / on the weekend.",
+      "purpose": "if clause + main clause + time + result coordination + time"
+    },
+    {
+      "reference_page": 5,
+      "english": "The book was written / by a famous writer.",
+      "purpose": "passive predicate + agent phrase"
+    },
+    {
+      "reference_page": 7,
+      "english": "I played soccer / at school / in Canada / for three years.",
+      "purpose": "core + place + country + duration"
+    },
+    {
+      "reference_page": 8,
+      "english": "I didn't know / that there is a soccer team / in this school.",
+      "purpose": "reporting verb + content clause + place"
+    },
+    {
+      "reference_page": 9,
+      "english": "Playing in bad weather / isn't difficult / for me.",
+      "purpose": "long subject + predicate + complement"
+    }
+  ],
+  "note": "Both supplied files were available in the conversation on 2026-08-20 and were inspected as rendered pages. The earlier generic 168/168 slash COMPLETE state remains invalid; re-audit all 168 passages against these reference-derived rules."
 }
