@@ -1,12 +1,7 @@
 {
   "project": "mikami-math-problem-bank",
-  "status": "APP_MVP_SHELL_PREPARED_PENDING_FINAL_ARTIFACT_REVERIFY",
-  "current_stage": "APP_MVP_PREP",
-  "source_archives": [
-    {"name": "中学実力錬成データ.zip", "status": "COMPLETION_RECORDED_BUT_NOT_REVERIFIED_THIS_RUN"},
-    {"name": "スタンダードデータ.zip", "status": "COMPLETION_RECORDED_BUT_NOT_REVERIFIED_THIS_RUN"},
-    {"name": "winpassデータ.zip", "status": "COMPLETION_RECORDED_BUT_NOT_REVERIFIED_THIS_RUN"}
-  ],
+  "status": "APP_SHELL_COMPLETE_PENDING_CANONICAL_1231_REVERIFY",
+  "current_stage": "APP_CANONICAL_DATA_WIRING_WAIT",
   "recorded_completion_claim": {
     "original_records": 1124,
     "winpass": 570,
@@ -26,59 +21,100 @@
     "artifact": "/mnt/data/みかみ塾数学問題バンク_最終完成版_20260820.zip",
     "audit": "/mnt/data/mathbank_run/MATHBANK_FINAL_AUDIT_V2.json"
   },
-  "prepared_stages": [
-    "canonical-problem-schema",
-    "checkpoint-resume-state",
-    "zip-inventory-script",
-    "normalized-unit-taxonomy",
-    "problem-answer-audit-rules",
-    "file-role-and-grade-classifier",
-    "github-actions-inventory-and-classification",
-    "app-record-schema",
-    "app-record-validator",
-    "app-mvp-index-shell"
+  "canonical_policy": {
+    "freeze_final_record_count": 1231,
+    "do_not_generate_new_variants": true,
+    "do_not_rewrite_existing_verified_content": true,
+    "original_expected": 1124,
+    "variant_expected": 107,
+    "original_by_source_expected": {"Winpass": 570, "実力錬成": 237, "Standard": 317}
+  },
+  "app_implemented": [
+    "grade filter",
+    "major genre filter",
+    "minor unit filter",
+    "skill filter",
+    "difficulty filter",
+    "question format filter",
+    "original/verified-variant selector",
+    "source-book filter",
+    "question count",
+    "random selection",
+    "same-condition reroll",
+    "source-order selection",
+    "per-question answer reveal",
+    "show/hide all screen answers",
+    "A4 question print mode",
+    "A4 answer print mode",
+    "print UI suppression",
+    "name/date/score fields",
+    "settings persistence via localStorage",
+    "figure_refs rendering",
+    "responsive layout",
+    "canonical 1231 browser-side gate",
+    "canonical strict Python validator gate"
   ],
-  "last_completed_batch": "prepare-app-mvp-index-shell",
-  "next_batch": "reverify-final-artifact-convert-1231-and-wire-app-records",
+  "app_schema_changes": [
+    "skill required",
+    "question_format required"
+  ],
+  "validator_strict_gate": {
+    "final_records": 1231,
+    "original_records": 1124,
+    "generated_variants": 107,
+    "original_by_source": {"Winpass": 570, "実力錬成": 237, "Standard": 317},
+    "duplicate_ids": 0,
+    "blank_questions": 0,
+    "blank_answers": 0,
+    "generated_parent_must_exist": true,
+    "all_audit_gates_must_be_true": true
+  },
+  "artifact_reverify": {
+    "local_artifact_present_this_run": false,
+    "local_audit_present_this_run": false,
+    "file_library_exact_artifact_found": false,
+    "file_library_exact_audit_found": false,
+    "library_search_found_only_partial_app_checkpoint": true,
+    "result": "CANONICAL_FINAL_ARTIFACT_NOT_RECOVERED_THIS_RUN"
+  },
+  "tests_this_run": {
+    "javascript_syntax": "PASS_NODE_CHECK",
+    "chromium_responsive_print": "TRANSIENT_RUNTIME_TIMEOUT_NOT_COUNTED_AS_APP_FAIL",
+    "real_1231_data_validator": "BLOCKED_UNTIL_CANONICAL_ARTIFACT_RECOVERY",
+    "real_1231_browser_test": "BLOCKED_UNTIL_CANONICAL_ARTIFACT_RECOVERY"
+  },
   "counts": {
-    "files_discovered": 0,
-    "problems_extracted": 0,
-    "answers_extracted": 0,
-    "pairs_matched": 0,
-    "pairs_verified": 0,
-    "mismatches": 0,
-    "canonical_records": 0,
+    "canonical_records_reverified_this_run": 0,
     "app_records_verified": 0
   },
-  "resume_rule": "Do not trust completion claim over real files. Reverify final artifact first; then convert only verified records. Do not redo completed app-layer or MVP-shell preparation.",
-  "blocking_issue": "Transient local runtime ClientError again prevented direct verification of final ZIP and audit JSON. App MVP shell was prepared without inserting any unverified/fake problem data.",
-  "last_retry_jst": "2026-08-20T08:08:23+09:00",
-  "last_retry_result": "TRANSIENT_RUNTIME_FILE_ACCESS_ERROR",
   "github_branch": "math-problem-bank-bootstrap",
   "github_main_touched": false,
   "github_commits_this_run": [
-    "e1a60debdaac297ba0d59b2d804a442c21efe1b8"
+    "be6171d192a6bdaad00a9ecb093c996ac96ad3b3",
+    "d702dd349a39c2ab8a9866835b88becf73d44000",
+    "0c04fe73c32c76c7c626d6d9d6784012acb3afd7"
   ],
+  "last_completed_batch": "finish-app-ui-schema-validator-shell-with-canonical-gates",
+  "next_batch": "recover-final-artifact-convert-exact-1231-run-strict-validator-wire-app-records",
+  "resume_rule": "Use only the fixed final 1231-record canonical artifact. Do not add new variants or reconstruct missing canonical content from old/partial files. If artifact remains unavailable, continue only app/test/publication preparation that does not invent records.",
+  "blocking_issue": "The previously completed final canonical ZIP and MATHBANK_FINAL_AUDIT_V2.json are not present in this execution filesystem and were not found by exact Library/conversation search. No substitute dataset was promoted.",
   "run_result": {
     "PASS": [
-      "GitHub isolation branch accessible",
-      "Existing app record schema and validator confirmed",
-      "Minimal math app shell committed",
-      "Grade filter prepared",
-      "Unit filter prepared",
-      "Difficulty filter prepared",
-      "Random question count selection prepared",
-      "Per-question answer reveal prepared",
-      "Print layout prepared",
-      "No fake or unverified problem records inserted",
-      "main untouched"
+      "Single canonical math route maintained",
+      "main untouched",
+      "App filter/selection/print/settings shell expanded to completion-ready state",
+      "Strict 1231 canonical validator implemented",
+      "Browser-side canonical count/source gate implemented",
+      "JavaScript syntax check passed",
+      "No fake/unverified records inserted"
     ],
-    "FAIL_OR_BLOCKED": [
-      "Direct final ZIP existence/content verification",
-      "Direct MATHBANK_FINAL_AUDIT_V2.json verification",
-      "1231-record app conversion",
-      "Validator execution against real app records",
-      "Real-data browser verification"
+    "BLOCKED": [
+      "Canonical ZIP re-verification",
+      "Canonical audit JSON re-verification",
+      "Exact 1231 app-record conversion",
+      "Strict validator PASS on real 1231 records",
+      "Real-data responsive/print regression",
+      "Public URL real-data test"
     ]
   }
 }
