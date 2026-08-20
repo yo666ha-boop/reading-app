@@ -28,9 +28,9 @@
   "base_canonical_zip_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "base_canonical_pair_recovered": false,
   "app_dynamic_expansion_gate": "PASS",
-  "expanded_validator": "PASS_POSITIVE_NEGATIVE_AND_PARENT_FINGERPRINT_TESTS",
+  "expanded_validator": "PASS_POSITIVE_NEGATIVE_TESTS",
   "expanded_composer": "IMPLEMENTED",
-  "generation_queue_builder": "PASS_SHARED_PARENT_FINGERPRINT_IMPLEMENTATION_WITH_VALIDATOR",
+  "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_TESTS",
   "validator_test_status": "PASS_EXPANDED_WORKFLOW_AFTER_PARENT_FINGERPRINT_PUBLICATION_GATE",
   "synthetic_browser_expansion_fixture": "READY_1124_ORIGINAL_110_VARIANT_TOTAL_1234",
   "latest_implementation_commits": {
@@ -72,6 +72,6 @@
     "real_canonical_browser": "blocked_expected_exact_base_absent"
   },
   "publication_ready": false,
-  "next": "continue exact BASE recovery; once exact BASE records are recovered, SHA/audit validate, run the fingerprint-bound queue, generate only parent-read independently recalculated variants, and preserve parent_record_sha256 in every generation provenance record",
-  "recorded_at_utc": "2026-08-20T17:59:00Z"
+  "next": "recover actual verified base records; generate independently recalculated variants from each real parent; compose and run real browser/A4 regression",
+  "recorded_at_utc": "2026-08-20T18:54:05.415161+00:00"
 }
