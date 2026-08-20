@@ -12,13 +12,21 @@
   "expanded_verified_variants": 0,
   "expanded_parent_coverage": 0,
   "expanded_parent_target": 1124,
-  "manual_generation_queue": "BUILDER_CONSERVATIVE_CLASSIFICATION_AND_EXACT_PARENT_SHA256_BINDING_PASS_WAITING_FOR_EXACT_BASE",
+  "manual_generation_queue": "WAITING_FOR_EXACT_BASE; FIGURE_CHOICE_UNPROVEN_STRUCTURES_REMAIN_MANUAL",
   "parent_read_binding": {
     "status": "PASS_QUEUE_THROUGH_PUBLICATION_VALIDATOR",
     "algorithm": "sha256(canonical-json-sort-keys)",
     "queue_field": "parent_record_sha256",
     "provenance_field": "parent_record_sha256",
     "validator_enforcement": "required_nonblank_and_exact_match_to_current_verified_parent_record"
+  },
+  "generation_queue_coverage_gate": {
+    "status": "PASS_STRICT_VALIDATED_EXPANDED_COVERAGE_ONLY",
+    "behavior": "An existing expanded variant may suppress its parent from the uncovered queue only after validate_layer passes the complete parent/taxonomy/audit/provenance/recalculation/duplicate gates.",
+    "invalid_existing_variant_behavior": "FAIL_CLOSED_DO_NOT_CREATE_FAKE_PARENT_COVERAGE",
+    "implementation_commit": "8ef2f120d06dd9d145efab3514b4d4bba7a45380",
+    "negative_test_commit": "1259993fa7de5bb0816ae1861db60364998d4108",
+    "workflow_persist_commit": "a34ee62a104185469e3284ed5bdd20835a78da2e"
   },
   "base_canonical_zip_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "base_canonical_pair_recovered": false,
@@ -27,9 +35,9 @@
   "expanded_composer": "IMPLEMENTED_WITH_IMMUTABLE_BASE_SNAPSHOT",
   "dynamic_release_contract": "PASS_SOURCE_CONTRACT_WAITING_FOR_REAL_BASE_AND_FULL_COVERAGE",
   "base_recovery": {
-    "actions_artifacts_seen": 134,
-    "actions_members_sha256_checked": 566,
-    "actions_bytes_hashed": 253441545,
+    "actions_artifacts_seen": 139,
+    "actions_members_sha256_checked": 576,
+    "actions_bytes_hashed": 253454595,
     "actions_download_failures": 0,
     "actions_canonical_hits": 0,
     "actions_valid_audit_hits": 0,
@@ -38,15 +46,15 @@
     "policy": "cancelled/timeout/incomplete coverage is never absence evidence"
   },
   "browser_A4": {
-    "synthetic_browser": "PASS_PREVIOUSLY_CONFIRMED_FOUR_ENVIRONMENTS",
+    "synthetic_browser": "PASS_FOUR_ENVIRONMENTS_LAST_CONFIRMED_BY_MATH_AUDIT",
     "real_canonical_browser": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT",
     "real_A4_six_pdfs": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT"
   },
   "publication_ready": false,
   "branch": "math-problem-bank-bootstrap",
-  "source_head_before_checkpoint": "aa337bf3b5f3d3c4f45b8bdc557ba724cdd9bc0f",
-  "recorded_at_utc": "2026-08-20T19:58:01.844823+00:00",
-  "next": "recover actual verified base records; generate independently recalculated variants from each real parent; compose and run real browser/A4 regression",
-  "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_TESTS",
-  "synthetic_browser_expansion_fixture": "READY_1124_ORIGINAL_110_VARIANT_TOTAL_1234"
+  "source_head_before_checkpoint": "a34ee62a104185469e3284ed5bdd20835a78da2e",
+  "recorded_at_utc": "2026-08-20T20:00:00Z",
+  "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_PARENT_FINGERPRINT_AND_STRICT_VALIDATED_COVERAGE_TESTS",
+  "synthetic_browser_expansion_fixture": "READY_1124_ORIGINAL_110_VARIANT_TOTAL_1234",
+  "next": "Continue exact BASE recovery. On exact pair, validate ZIP SHA/audit, build the strict validated uncovered-parent queue from actual BASE, generate/recalculate only safe parent-bound variants, resolve manual cases until 1124/1124 coverage, then real browser/A4 and dynamic strict release."
 }
