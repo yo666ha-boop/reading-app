@@ -35,6 +35,7 @@
     "Committed parent fingerprint implementation as 986d460bd8e0f3eec97a71edc743bcd9f1892ee4 and its regression test as a73b1a73655aeb95773213904708b4e46dd36107.",
     "The Math Expanded Variant Layer workflow ran through its persist step after those commits and produced bot state commit 84596f05de88215becae7cdf633d660615c181dd, proving the compile/tests/app contract path did not regress.",
     "Actions canonical recovery state advanced to 133 artifacts, 564 members and 253438935 bytes SHA-256 checked with 0 download failures, but canonical ZIP hit=0, valid audit hit=0 and pair hit=0.",
+    "Re-ran exact canonical recovery outside GitHub: File Library returned no relevant exact ZIP/audit candidate; Google Drive returned 0 results for the exact canonical ZIP name and 0 results for MATHBANK_FINAL_AUDIT_V2.",
     "Latest canonical auto-complete run 32383596244 is cancelled and therefore is not absence evidence; Git history exact coverage remains incomplete.",
     "No expanded variant was fabricated because exact BASE parent records are still absent. No 161 partial set, diagnostic 1271 raw set, guessed Winpass mapping or reconstructed BASE was promoted. main remains untouched."
   ],
@@ -74,6 +75,9 @@
     "latest_actions_canonical_hits": 0,
     "latest_actions_valid_audit_hits": 0,
     "latest_actions_pair_hits": 0,
+    "file_library_exact_zip_or_audit_hits_this_run": 0,
+    "google_drive_exact_zip_hits_this_run": 0,
+    "google_drive_exact_audit_hits_this_run": 0,
     "git_history_exact_coverage_complete": false,
     "git_history_pair_hits": 0,
     "release_pair_hits": 0,
@@ -95,7 +99,7 @@
     "parent_fingerprint_implementation_commit": "986d460bd8e0f3eec97a71edc743bcd9f1892ee4",
     "parent_fingerprint_test_commit": "a73b1a73655aeb95773213904708b4e46dd36107",
     "expanded_workflow_state_commit": "84596f05de88215becae7cdf633d660615c181dd",
-    "variant_state_update_commit": "30f2454555a498c76fbf49429651b5e704c5a9d8",
+    "variant_state_external_search_commit": "ceac52318cd1305bd419a254a4ed437716cb5c95",
     "main_touched": false
   },
   "現在どの工程にいるか": "Expanded app/validator/composer/queue CI gates are passing, and generation queue entries are now cryptographically bound to the exact parent record read. Exact BASE ZIP+audit recovery remains the blocker before any real parent generation can start.",
@@ -107,9 +111,9 @@
     "Reach 1124/1124 new expanded-parent coverage, compose dynamic app-records, then run real Chromium/Firefox/WebKit iPhone/Chromium Fire, all filters/search/parent-source/figures and six A4 grade1/2/3 question/answer PDFs.",
     "Run strict release, verify PUBLICATION_READY, then isolated public URL operation and print verification."
   ],
-  "正確停止点": "Parent-first queue is now SHA-256-bound to exact parent content and its regression gate passed in the expanded workflow. BASE canonical ZIP+audit is still unrecovered, so expanded variants remain 0 and parent coverage remains 0/1124 by design.",
-  "次回どこから開始するか": "Read live HEAD, ci-latest, variant-expansion-latest, browser and canonical recovery states. Continue exact BASE recovery first. If exact BASE appears, SHA/audit-validate and wire immediately, run the fingerprint-bound queue, and start verified parent-by-parent generation in the same run.",
+  "正確停止点": "Parent-first queue is now SHA-256-bound to exact parent content and its regression gate passed in the expanded workflow. File Library and Drive exact searches also produced no canonical pair this run. BASE canonical ZIP+audit is still unrecovered, so expanded variants remain 0 and parent coverage remains 0/1124 by design.",
+  "次回どこから開始するか": "Read live HEAD, ci-latest, variant-expansion-latest, browser and canonical recovery states. Continue reading-app heads/tags exact-coverage recovery and Actions delta recovery. If exact BASE appears, SHA/audit-validate and wire immediately, run the fingerprint-bound queue, and start verified parent-by-parent generation in the same run.",
   "次に進むべき工程": "exact BASE recovery -> SHA/audit validation -> BASE wiring -> fingerprint-bound real parent queue -> verified expanded generation/manual resolution -> 1124/1124 coverage -> real browser/A4 -> strict release -> PUBLICATION_READY -> isolated public verification",
-  "recorded_at_utc": "2026-08-20T17:04:00Z",
+  "recorded_at_utc": "2026-08-20T17:10:00Z",
   "resume_rule": "Do not stop at inspection/status reporting. Continue implementation/recovery/generation to the execution limit. Never reconstruct BASE data or generate from an unseen parent."
 }
