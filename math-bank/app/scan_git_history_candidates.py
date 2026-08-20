@@ -43,7 +43,12 @@ def valid_json_object(data: bytes) -> bool:
 
 
 def fetch_all_remote_history() -> dict:
-    result = {"heads_fetch_rc": None, "tags_fetch_rc": None}
+    result = {
+        "heads_fetch_rc": None,
+        "tags_fetch_rc": None,
+        "pull_heads_fetch_rc": None,
+        "pull_merges_fetch_rc": None,
+    }
     heads = run(
         "git", "fetch", "origin", "+refs/heads/*:refs/remotes/origin/*", "--force", "--prune",
         check=False,
@@ -51,6 +56,16 @@ def fetch_all_remote_history() -> dict:
     result["heads_fetch_rc"] = heads.returncode
     tags = run("git", "fetch", "origin", "+refs/tags/*:refs/tags/*", "--force", check=False)
     result["tags_fetch_rc"] = tags.returncode
+    pull_heads = run(
+        "git", "fetch", "origin", "+refs/pull/*/head:refs/remotes/origin/pull/*/head", "--force",
+        check=False,
+    )
+    result["pull_heads_fetch_rc"] = pull_heads.returncode
+    pull_merges = run(
+        "git", "fetch", "origin", "+refs/pull/*/merge:refs/remotes/origin/pull/*/merge", "--force",
+        check=False,
+    )
+    result["pull_merges_fetch_rc"] = pull_merges.returncode
     return result
 
 
@@ -194,7 +209,6 @@ def commits_retaining_blob(zip_oid: str, known_paths: list[str]) -> list[str]:
                     retaining.append(commit)
                     break
         return retaining
-    # Exact SHA hits are extremely rare; if path metadata is missing, fall back to an exhaustive tree check.
     for commit in commits:
         if any(oid == zip_oid for oid, _ in tree_entries(commit)):
             retaining.append(commit)
@@ -256,6 +270,10 @@ def pair_with_audit_from_tree(zip_identity: str, zip_data: bytes, zip_paths: lis
     return False
 
 
+def ref_count(prefix: str) -> int:
+    return len([x for x in run("git", "for-each-ref", "--format=%(refname)", prefix).stdout.splitlines() if x.strip()])
+
+
 def main() -> int:
     if not Path(".git").exists():
         print("BLOCKED: run inside a full Git checkout", file=sys.stderr)
@@ -268,14 +286,23 @@ def main() -> int:
     blob_oids = [oid for oid in all_oids if meta.get(oid, (None, 0))[0] == "blob"]
     named_candidate_oids = {oid for oid in blob_oids if any(likely_candidate_path(p) for p in paths_by_oid.get(oid, set()))}
 
+    pull_ref_names = [
+        x for x in run("git", "for-each-ref", "--format=%(refname)", "refs/remotes/origin/pull/").stdout.splitlines()
+        if x.strip()
+    ]
     report = {
-        "scan": "git_history_all_remote_branches_all_reachable_blob_scan_for_exact_math_canonical",
+        "scan": "git_history_all_remote_branches_tags_and_pull_refs_all_reachable_blob_scan_for_exact_math_canonical",
         "expected_filename": EXPECTED_FILENAME,
         "expected_sha256": EXPECTED_SHA256,
         "required_paired_audit": AUDIT_FILENAME,
         "remote_fetch": fetch_result,
-        "remote_branches_seen": len([x for x in run("git", "for-each-ref", "--format=%(refname)", "refs/remotes/origin/").stdout.splitlines() if x.strip()]),
-        "tags_seen": len([x for x in run("git", "tag", "--list").stdout.splitlines() if x.strip()]),
+        "remote_branches_seen": len([
+            x for x in run("git", "for-each-ref", "--format=%(refname)", "refs/remotes/origin/").stdout.splitlines()
+            if x.strip() and "/pull/" not in x
+        ]),
+        "tags_seen": ref_count("refs/tags/"),
+        "pull_head_refs_seen": len([x for x in pull_ref_names if x.endswith("/head")]),
+        "pull_merge_refs_seen": len([x for x in pull_ref_names if x.endswith("/merge")]),
         "reachable_objects_total": len(all_oids),
         "reachable_blob_oids": len(blob_oids),
         "named_candidate_oids": len(named_candidate_oids),
@@ -291,7 +318,7 @@ def main() -> int:
         "retaining_commits_checked": 0,
         "paired_recovery_hits": [],
         "completed_at_utc": datetime.now(timezone.utc).isoformat(),
-        "policy": "Every reachable blob from every fetched remote branch/tag under the size cap is SHA-256 checked regardless of filename. LFS pointers to the canonical SHA are detected. Pairing requires one valid final audit in the same historical tree. No source reconstruction.",
+        "policy": "Every reachable blob from every fetched remote branch, tag and GitHub PR head/merge ref under the size cap is SHA-256 checked regardless of filename. LFS pointers to the canonical SHA are detected. Pairing requires one valid final audit in the same historical tree. No source reconstruction.",
     }
 
     exact_hits: list[tuple[str, bytes, list[str]]] = []
