@@ -5,48 +5,19 @@
   "expected_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "required_paired_audit": "MATHBANK_FINAL_AUDIT_V2.json",
   "created_since": "2026-08-19T00:00:00Z",
-  "all_artifacts_seen": 135,
-  "candidate_artifacts": 135,
+  "all_artifacts_seen": 134,
+  "candidate_artifacts": 134,
   "canonical_hits": 0,
   "audit_name_hits": 0,
   "valid_audit_hits": 0,
   "paired_recovery_hits": 0,
   "recovery_hint_hits": 0,
   "download_failures": 0,
-  "all_members_sha256_checked": 568,
-  "all_member_bytes_hashed": 253444155,
+  "all_members_sha256_checked": 566,
+  "all_member_bytes_hashed": 253441545,
   "zip_signature_members": 3,
   "oversize_members_skipped": 0,
   "artifacts": [
-    {
-      "artifact_id": 9416302761,
-      "name": "math-browser-regression-diagnostics",
-      "size_in_bytes": 1009,
-      "created_at": "2026-08-20T16:59:11Z",
-      "updated_at": "2026-08-20T16:59:11Z",
-      "expired": false,
-      "workflow_run": {
-        "id": 32394974785,
-        "repository_id": 1211918933,
-        "head_repository_id": 1211918933,
-        "head_branch": "math-problem-bank-bootstrap",
-        "head_sha": "986d460bd8e0f3eec97a71edc743bcd9f1892ee4"
-      },
-      "downloaded": true,
-      "interesting_members": [],
-      "canonical_sha_hits": [],
-      "valid_final_audit_hits": [],
-      "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 2,
-        "members_sha256_checked": 2,
-        "member_bytes_hashed": 2610,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 1009
-    },
     {
       "artifact_id": 9414163621,
       "name": "math-browser-regression-diagnostics",
@@ -3959,6 +3930,6 @@
     }
   ],
   "recovered_files": [],
-  "completed_at_utc": "2026-08-20T17:01:17.621033+00:00",
+  "completed_at_utc": "2026-08-20T16:31:34.056900+00:00",
   "policy": "Every member under the size cap is SHA-256 checked regardless of filename/extension. Nested archives are detected by ZIP signature. Exact immutable SHA plus one unambiguous valid final audit from the same Actions artifact is required; no reconstruction."
 }
