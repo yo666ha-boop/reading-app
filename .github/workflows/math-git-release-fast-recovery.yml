@@ -1,0 +1,94 @@
+name: Math Git Release Fast Recovery
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-git-release-fast-recovery.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: math-git-release-fast-recovery
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile current scanners
+        run: python -m py_compile math-bank/app/scan_git_history_candidates.py math-bank/app/scan_github_release_assets.py
+      - name: Scan all branch tag PR refs Git blobs and LFS using persistent batch reader
+        run: python math-bank/app/scan_git_history_candidates.py
+      - name: Scan release assets content-addressed
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python math-bank/app/scan_github_release_assets.py
+      - name: Persist terminal scan evidence race-safely
+        if: always()
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          TRIGGERING_SHA: ${{ github.sha }}
+          JOB_STATUS: ${{ job.status }}
+        shell: bash
+        run: |
+          mkdir -p /tmp/math-gr-state
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          from datetime import datetime,timezone
+          def load(p):
+            try:return json.loads(Path(p).read_text(encoding='utf-8'))
+            except:return None
+          h=load('math-bank/state/git-history-scan-latest.json')
+          r=load('math-bank/state/github-release-scan-latest.json')
+          p={
+            'workflow':'Math Git Release Fast Recovery',
+            'run_id':os.environ.get('RUN_ID'),
+            'run_attempt':os.environ.get('RUN_ATTEMPT'),
+            'triggering_sha':os.environ.get('TRIGGERING_SHA'),
+            'job_status':os.environ.get('JOB_STATUS'),
+            'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
+            'git_all_blobs_sha256_checked':h.get('all_blobs_sha256_checked') if isinstance(h,dict) else None,
+            'git_blob_bytes_hashed':h.get('all_blob_bytes_hashed') if isinstance(h,dict) else None,
+            'git_canonical_blob_hits':len(h.get('canonical_blob_hits',[])) if isinstance(h,dict) else None,
+            'git_lfs_pointer_hits':len(h.get('lfs_pointer_hits',[])) if isinstance(h,dict) else None,
+            'git_audit_candidates':len(h.get('global_audit_blob_candidates',[])) if isinstance(h,dict) else None,
+            'git_pair_hits':len(h.get('paired_recovery_hits',[])) if isinstance(h,dict) else None,
+            'release_assets_seen':r.get('assets_seen') if isinstance(r,dict) else None,
+            'release_canonical_hits':r.get('canonical_hits') if isinstance(r,dict) else None,
+            'release_valid_audit_hits':r.get('valid_audit_hits') if isinstance(r,dict) else None,
+            'release_pair_hits':len(r.get('paired_recovery_hits',[])) if isinstance(r,dict) else None,
+            'exact_pair_found':bool((isinstance(h,dict) and h.get('paired_recovery_hits')) or (isinstance(r,dict) and r.get('paired_recovery_hits'))),
+            'policy':'Exact SHA only; no source reconstruction.'
+          }
+          out=Path('/tmp/math-gr-state')
+          (out/'git-release-fast-recovery-latest.json').write_text(json.dumps(p,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          for src,name in [('math-bank/state/git-history-scan-latest.json','git-history-scan-latest.json'),('math-bank/state/github-release-scan-latest.json','github-release-scan-latest.json')]:
+            s=Path(src)
+            if s.is_file():(out/name).write_bytes(s.read_bytes())
+          print(json.dumps(p,ensure_ascii=False,indent=2))
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin math-problem-bank-bootstrap
+          git reset --hard origin/math-problem-bank-bootstrap
+          mkdir -p math-bank/state
+          cp /tmp/math-gr-state/*.json math-bank/state/
+          git add -- math-bank/state/git-release-fast-recovery-latest.json math-bank/state/git-history-scan-latest.json math-bank/state/github-release-scan-latest.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'record fast Git and release math recovery state'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
