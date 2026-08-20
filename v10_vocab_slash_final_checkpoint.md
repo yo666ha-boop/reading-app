@@ -3,38 +3,30 @@
 status: IN_PROGRESS
 phase: VOCAB_AND_SLASH_HUMAN_AUDIT
 started_at_jst: 2026-08-20 11:00
-last_manual_progress_jst: 2026-08-20 12:00+
+last_manual_progress_jst: 2026-08-20 12:59+
 
 ## Baseline and rules
 - Semantic passage rebuild: 168/168 previously completed.
 - Student print: English passage + current questions only. Teacher print: passage + translation + slash + same questions + answers/evidence/explanations.
 - Vocabulary basis: canonical NH/SS 2026 master + reviewed exact-section/cumulative/textbook-confirmed/elementary gates; grammar/form chronology is checked too.
-- Slash basis: front-to-back meaning chunks; do not break be+complement, auxiliary+verb, simple verb+short object, article+noun, or fixed phrases.
+- Slash basis: front-to-back meaning chunks; do not break be+complement, auxiliary+verb, simple verb+short object, article+noun, fixed/phrasal units, or object-complement structures.
 
 ## Progress
-- vocabulary_final_audited: 70/168
-- slash_human_audited: 70/168
+- vocabulary_final_audited: 80/168
+- slash_human_audited: 80/168
 - passages_rewritten_this_phase: 12
 - notes_confirmed: 0
 
 ## This run completed
-- Corrected the 051-060 ledger after a broader cumulative source check proved passage 053 `water` is valid from `Sounds and Letters 3 cumulative`. Restored `The dolphin is in the water.` through final correction layer `v10_vocab_slash_manual_corrections.js`; passage 053 is no longer counted as a rewrite.
-- Therefore genuine rewrites through 060 = 5: 049, 050, 051, 052, 057.
-- Continued immediately through 061-070 instead of stopping at 060.
-- 061 Unit 8-1: removed uncertain bare `help them`; retained clearly licensed teach/respect/become/in need/do my best content; A/B/translation/slash synchronized.
-- 062 Unit 8-2: removed premature `again` (canonical introduction later in Unit 8 Stage Activity 2) and unapproved plural `Straws` in title; rebuilt/synchronized.
-- 063 Unit 8-3: removed auto-generated positive 3sg `wants`; rebuilt as `A group is in the village. They want to build a well.`; synchronized.
-- 064 Unit 9-1: replaced premature past be `was` with present `is`; Unit 9-1 explicitly unlocks met/went/saw, while `was` is introduced at Unit 10-1.
-- 065 Unit 9-2: vocabulary/slash PASS.
-- 066 Unit 9-3: vocabulary/slash PASS; `again` is cumulative by this point.
-- 067 Unit 10-1: removed unreviewed `that` complement clause after `realize`; reflection remains through `remember my mistake`.
-- 068 Unit 10-2: replaced unreviewed `I remember that we won, too.` with `I remember the contest, too.` and synchronized A/B/translation/slash.
-- 069 Unit 10-3: vocabulary/slash PASS.
-- 070 Sunshine G2 PROGRAM 1-1: removed too-early `news` (canonical Sunshine G2 Reading 1, later than PROGRAM 1-1) and replaced first sentence with `I have a special plan.`; translation/slash synchronized.
-- Genuine rewrites in 061-070 = 7. Cumulative genuine rewrites = 12.
-- `v10_vocab_slash_manual_061_070.js` summary corrected to rewritten=7, commit `8a4a5eed1909b71afbaa69467392a191ea0deee5`.
-- `v10_interaction_metadata.js` now loads `v10_vocab_slash_manual_061_070.js` and then `v10_vocab_slash_manual_corrections.js` LAST, commit `9033feab42d5c4fc38ae6e013f1e5953981e7277`. This makes final manual decisions authoritative over earlier semantic/automatic layers.
-- Detailed ledgers corrected/created: `v10_vocab_slash_manual_audit_051_060.md` commit `1a591382024e364fc1558ed153e28c25595c3460`; `v10_vocab_slash_manual_audit_061_070.md` commit `48815cd6a8f0a2b11cd63577e1379f77928af2fb`.
+- Read the latest GitHub checkpoint first and correctly skipped the stale requested restart at passage 031; main had already reached 070/168.
+- Confirmed starting HEAD `32a0f554e1cde3f93f26506a2764b182f7cec98e` (`Advance final vocabulary and slash audit through passage 070`). No Actions workflow run was attached to that HEAD.
+- Human-audited passages 071-080 (Sunshine G2 PROGRAM 1-2 through PROGRAM 4-2) for final vocabulary chronology/morphology and model-aligned slash reading.
+- Vocabulary: all ten passages passed final re-read against the existing reviewed Sunshine G2 chronological gates; no genuine future-vocabulary failure, passage rewrite, or student note was confirmed in 071-080.
+- Slash: repaired widespread mechanical cuts. Examples removed include `I will leave / this town`, `I am / a bit worried`, `You can text / me`, `We help / each other`, `I can carry / it`, `My friend can guide / me`, and `We must keep / the forest / clean`.
+- Kept meaningful forward-reading boundaries for time/place adjuncts, content clauses, subordinate clauses, and longer modifiers where they help comprehension without breaking core grammar units.
+- Added final runtime layer `v10_vocab_slash_manual_071_080.js`, commit `c32c7691ecfc60742c748cf2c26655a643cf55ec`.
+- Updated `v10_interaction_metadata.js` so `v10_vocab_slash_manual_071_080.js` loads after 061-070 and before `v10_vocab_slash_manual_corrections.js`, commit `40e618f62d42247c53b49f5b8373f562ac17a580`. Final correction layer remains LAST.
+- Added detailed ledger `v10_vocab_slash_manual_audit_071_080.md`, commit `2a1e170cb604bf9da2b29937075129ff02cb5a52`.
 
 ## Completed ranges
 - 001-010 COMPLETE
@@ -44,22 +36,39 @@ last_manual_progress_jst: 2026-08-20 12:00+
 - 041-050 COMPLETE
 - 051-060 COMPLETE (053 false alarm restored; genuine rewrites 051/052/057)
 - 061-070 COMPLETE (genuine rewrites 061/062/063/064/067/068/070)
+- 071-080 COMPLETE (vocabulary rewrites 0; slash final human repair applied)
 
 ## Current phase
 VOCAB_AND_SLASH_HUMAN_AUDIT
 
+## Completed phase work
+- Final human vocabulary + slash audit: 001-080/168.
+- Final manual runtime layers connected through passage 080.
+- Detailed ledgers durable through passage 080.
+
 ## Exact stop point
-Passage 070 Sunshine G2 PROGRAM 1-1 completed, synchronized, connected to final runtime loader, and durably recorded. Passage 071 has not yet been human-audited in this phase.
+Passage 080 Sunshine G2 PROGRAM 4-2 completed and connected to the final runtime loader. Passage 081 has not yet been human-audited in this final phase.
 
 ## Next start point
-Passage 071.
+Passage 081.
 
-## Remaining major work
-1. Human vocabulary + slash audit 071-168.
-2. Repair/synchronize genuine vocabulary/grammar failures as found.
-3. Update semantic render/regression workflow so final manual override files on main are exercised; re-render final passages and verify DOM/coverage.
-4. Full vocabulary/grammar/slash/A+B/browser/print regression after 168/168.
-5. Public GitHub Pages verification; repair/retest loop until no unresolved failure.
+## Remaining work
+- Human vocabulary + slash audit 081-168 (88 passages).
+- Repair/synchronize genuine vocabulary/grammar failures as found, including translation/slash/A+B/evidence/reason in the same change set.
+- After 168/168, update/run the semantic render/regression path so all final manual override files are exercised and final rendered passages are dumped/verified.
+- Full vocabulary/grammar chronology, sentence/slash correspondence, A/B evidence integrity, 168/168 coverage, DOM, browser, and print regression.
+- Verify public GitHub Pages actual display plus student/teacher print behavior; repair/retest until no unresolved failure.
+
+## Next engineering step
+Continue directly with passages 081-090. Do not repeat 001-080. After that range, create `v10_vocab_slash_manual_081_090.js`, its detailed ledger, connect it immediately before the final correction layer, and advance this checkpoint.
 
 ## Current unresolved verification item
-Static `semantic_passages/*.txt` files predate the newest final manual runtime layers. The runtime loader is now connected through passage 070, including the final correction layer, but a main-branch render/regression path still needs to be enabled/run before claiming actual rendered-dump/browser verification of the newest overrides.
+Static `semantic_passages/*.txt` files predate the newest final manual runtime layers. Runtime loading is now connected through passage 080, but a main-branch render/regression path still needs to be enabled/run before claiming rendered-dump/browser verification of the newest overrides.
+
+## Latest PASS/FAIL and artifacts
+- Manual vocabulary final audit: PASS through 080/168.
+- Human slash audit: PASS through 080/168 after manual override repair.
+- Notes confirmed: 0.
+- Cumulative genuine vocabulary/grammar rewrites in this phase: 12.
+- New artifacts this run: `v10_vocab_slash_manual_071_080.js`, `v10_vocab_slash_manual_audit_071_080.md`.
+- No new full browser/print regression claimed in this run; that remains a later required phase after 168/168.
