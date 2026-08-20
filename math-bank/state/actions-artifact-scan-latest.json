@@ -4,13 +4,33 @@
   "expected_filename": "みかみ塾数学問題バンク_最終完成版_20260820.zip",
   "expected_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "created_since": "2026-08-19T00:00:00Z",
-  "all_artifacts_seen": 46,
-  "candidate_artifacts": 46,
+  "all_artifacts_seen": 47,
+  "candidate_artifacts": 47,
   "canonical_hits": 0,
   "audit_name_hits": 0,
   "recovery_hint_hits": 0,
   "download_failures": 0,
   "artifacts": [
+    {
+      "artifact_id": 9398313956,
+      "name": "math-browser-regression-diagnostics",
+      "size_in_bytes": 997,
+      "created_at": "2026-08-20T08:01:51Z",
+      "updated_at": "2026-08-20T08:01:51Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32346717617,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "5eb347b3fd3c0b8049dfc11a928b4516de9c0c6d"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "errors": [],
+      "archive_download_bytes": 997
+    },
     {
       "artifact_id": 9398239423,
       "name": "math-browser-regression-diagnostics",
@@ -954,6 +974,6 @@
     }
   ],
   "recovered_files": [],
-  "completed_at_utc": "2026-08-20T08:01:02.428492+00:00",
+  "completed_at_utc": "2026-08-20T08:02:15.813905+00:00",
   "policy": "discovery only; exact canonical ZIP promotion requires immutable SHA-256 match"
 }
