@@ -1,6 +1,6 @@
 {
   "project": "mikami-math-problem-bank",
-  "status": "EXHAUSTIVE_RECOVERY_AUTO_COMPLETION_RUNNING_PENDING_EXACT_1231_CANONICAL_PAIR",
+  "status": "IMMEDIATE_EXHAUSTIVE_AUTO_COMPLETION_TRIGGERED_PENDING_EXACT_1231_CANONICAL_PAIR",
   "current_stage": "EXACT_1231_RECOVERY_STRICT_VALIDATION_AND_WIRING",
   "canonical": {
     "final_records": 1231,
@@ -21,39 +21,28 @@
     "recovery_hints": ["winpass_verified_union570_authoritative_norm_20260820", "jitsuren_verified_union225_complete27_20260820"]
   },
   "今回完了した内容": [
-    "Continued manual work continuously instead of stopping for the hourly task; hourly scheduling is now only a resume safety net",
-    "Moved the hourly resume task to minute 55 and kept it enabled; GitHub push-triggered auto completion is the faster immediate continuation layer",
-    "Proved Math Canonical Auto Complete actually runs from a math-branch state push: run 32348411491 completed success with canonical_pair_found=false, actions pair hits 0, Git-history pair hits 0, Git-history canonical blob hits 0, publication_ready=false",
-    "Read git-history-scan-latest from that proven run: 2163 reachable path objects, 116 named candidate blobs actually SHA-checked, no canonical SHA hit, no final-audit blob, no recovery hint and no pair",
-    "Added all-reachable-blob SHA scanning so Git history recovery no longer depends on filename or extension; canonical ZIP renamed or extensionless can still be detected",
-    "Added Git LFS pointer detection for oid sha256 equal to the immutable canonical SHA, plus LFS object materialization when available",
-    "Hardened history scan to check every historical commit retaining an exact ZIP/pointer, so an audit added in a later commit while ZIP stayed unchanged is not missed",
-    "Hardened history fetch to explicitly fetch refs/heads/* and tags before rev-list, covering every accessible remote branch/tag rather than trusting checkout refspec",
-    "Added GitHub Release asset scanner: direct release assets and nested ZIPs up to depth 3 are hashed; automatic recovery requires the exact canonical ZIP SHA plus one unambiguous valid MATHBANK_FINAL_AUDIT_V2.json from the same release",
-    "Integrated Actions artifact, all-branch Git history/LFS and GitHub Release recovery into Math Canonical Auto Complete; any verified pair flows directly to one-shot wiring -> real 1231 browser/A4 -> strict release -> PUBLICATION_READY",
-    "Verified Math Problem Bank Audit run 32348822857 for triggering SHA 7c748e8252421697d8f04b5ab3da0cdf8c76f037: overall/app/artifact scan/synthetic browser/release gate/inventory success; real canonical blocked_expected only because exact app-records is absent",
-    "Observed and diagnosed an earlier intermediate run 32348683623 where app-shell was cancelled by rapid later pushes; subsequent latest run completed success, confirming cancellation rather than code failure",
-    "Re-searched prior personal completion records for final ZIP member names, 717->570 authoritative ID set, 107 parent table and metadata artifact; none of those exact artifacts were recorded, so no guessed reconstruction was introduced",
-    "Tried File Library content-based search by the historical canonical core shape and 3-source counts; retrieval currently returned RetrievalClientResponseError and is scheduled for retry",
-    "Local /mnt/data runtime remains ClientResponseError; exact historical local paths remain retry targets",
-    "main remains untouched; 161 partial, 1271 diagnostic raw slots, inferred 147 deletions and new variants remain prohibited"
+    "Kept current-turn work active instead of waiting for the hourly resume task",
+    "Read latest branch HEAD/checkpoint/auto-complete state and confirmed exact canonical pair is still not wired",
+    "Found a continuity defect: checkpoint pushes did not trigger Math Canonical Auto Complete, so the latest exhaustive recovery configuration was not guaranteed to rerun immediately",
+    "Updated .github/workflows/math-canonical-auto-complete.yml so math-bank/state/checkpoint.json pushes trigger immediate exhaustive auto completion",
+    "This checkpoint commit is the first deliberate immediate trigger after that workflow fix",
+    "Immediate auto completion now rescans Actions artifacts + every reachable Git blob/all remote branches/tags + Git LFS + GitHub Release assets; an exact ZIP+audit pair flows in the same run through atomic wiring -> real1231 browser/A4 -> strict release -> PUBLICATION_READY",
+    "main remains untouched; no guessed reconstruction, no partial161/diagnostic1271 promotion, no new variants"
   ],
-  "現在どの工程にいるか": "The app and final validation/release pipeline are prepared. Exact immutable ZIP+final-audit recovery is still the canonical data blocker. Exhaustive recovery now covers local/File Library/Drive/current GitHub/Actions artifacts/all accessible remote branches+tags/all reachable Git blobs/Git LFS/GitHub Release assets. The newest all-branch/all-blob/LFS/Release auto-completion run is in progress and must be read from auto-complete-latest before claiming its result.",
+  "現在どの工程にいるか": "Immediate exhaustive canonical recovery has been triggered from checkpoint. Read auto-complete-latest next; if an exact immutable ZIP+final-audit pair is found, continue through one-shot wiring and all real-data gates without stopping.",
   "残っている作業": [
-    "Observe the newest auto-complete-latest run that includes all-remote-branch/all-blob/LFS and GitHub Release scans; use actual scan counts/hits and fix any failure without guessing data",
-    "Retry local runtime and File Library when their ClientResponseError clears",
-    "Recover exact canonical ZIP plus MATHBANK_FINAL_AUDIT_V2.json from any verified source",
+    "Read the newly triggered auto-complete run result and its actions/git-history/LFS/github-release scan metrics",
+    "Retry local runtime and File Library/Drive exact canonical recovery in parallel",
+    "Recover exact canonical ZIP plus MATHBANK_FINAL_AUDIT_V2.json from a verified source",
     "Require exact canonical SHA before promotion",
-    "Run complete_from_exact_canonical.py; direct current app schema if present, otherwise only full explicit verified per-ID metadata mapping with no defaults/inference",
-    "Atomically wire real app-records/provenance/audit/figures after staging PASS",
-    "Run full real 1231 all-record/device/filter/figure/A4 regression",
+    "Run complete_from_exact_canonical.py and atomic wiring",
+    "Run full real1231 device/filter/figure/A4 regression",
     "Build strict release only after real regression PASS and require PUBLICATION_READY",
-    "Publish to isolated target only after PUBLICATION_READY, run public URL real-data test, package final ZIP/audit/checkpoint"
+    "Publish isolated target only after PUBLICATION_READY, then public URL real-data test and final package"
   ],
-  "次回どこから開始するか": "Read HEAD, ci-latest, auto-complete-latest, git-history-scan-latest and github-release-scan-latest. If the newest auto run is complete, use its exact pair/recovery source/all-blob/LFS/release metrics. If a verified pair exists, continue in the same execution through one-shot atomic wiring, real 1231 browser/A4, strict release and PUBLICATION_READY without stopping.",
-  "次に進むべき工程": "newest exhaustive auto-scan proof -> exact pair recovery -> SHA/member/schema inspection -> direct strict pass-through or fully verified deterministic mapping -> atomic wiring -> real1231 browser/A4 -> strict release -> PUBLICATION_READY -> isolated publication -> public URL test -> final package",
+  "次回どこから開始するか": "Read HEAD and math-bank/state/auto-complete-latest.json. If triggering SHA corresponds to this checkpoint or a newer state, use actual pair/scan results. If pair exists, proceed immediately to atomic wiring -> real1231 browser/A4 -> release -> PUBLICATION_READY.",
+  "次に進むべき工程": "new immediate exhaustive auto-scan proof -> exact pair recovery -> SHA/member/schema inspection -> direct strict pass-through or fully verified deterministic mapping -> atomic wiring -> real1231 browser/A4 -> strict release -> PUBLICATION_READY -> isolated publication -> public URL test -> final package",
   "実PASS_FAIL_エラー_成果物_URL": {
-    "last_proven_audit_triggering_sha": "7c748e8252421697d8f04b5ab3da0cdf8c76f037",
     "last_proven_audit_run_id": 32348822857,
     "last_proven_audit_result": "success",
     "last_proven_auto_complete_run_id": 32348411491,
@@ -63,20 +52,15 @@
     "last_proven_git_history_named_candidate_blobs_checked": 116,
     "last_proven_git_history_canonical_hits": 0,
     "last_proven_git_history_audit_hits": 0,
-    "all_blob_lfs_scanner_commit": "8759c0c49c3c97e90e14a9a88c73dad797fe01f4",
-    "github_release_scanner_commit": "325108d3faea966da8d0f6b97e08f62ae02c3132",
-    "release_integrated_auto_workflow_commit": "9c00d50859f7b076ca6691476993f84639a93c50",
-    "all_remote_branches_scanner_commit": "7c748e8252421697d8f04b5ab3da0cdf8c76f037",
-    "newest_exhaustive_auto_run_status": "PENDING_OBSERVATION",
+    "auto_complete_checkpoint_trigger_fix_commit": "7c0e85d5e708be575dcef9a2a2d8a31539edc78b",
+    "immediate_triggered_at_jst": "2026-08-20T17:47:00+09:00",
     "real_canonical_browser_regression": "blocked_expected",
     "publication_ready": false,
     "exact_zip_recovered": false,
     "final_audit_recovered": false,
     "canonical_app_records_present": false,
-    "local_runtime": "CLIENT_RESPONSE_ERROR",
-    "file_library_latest_content_search": "RETRIEVAL_CLIENT_RESPONSE_ERROR",
     "source_archive_reconstruction_allowed": false,
     "main_touched": false
   },
-  "resume_rule": "Do not wait for the hourly task while the current turn can still execute. Continue manually as far as possible. GitHub state-push auto completion is the immediate automation layer; the hourly task is the resume safety net if the turn/workflow stops. Full app completion is the only completion condition."
+  "resume_rule": "Do not wait for the hourly task while the current turn can still execute. Continue manually as far as possible. Checkpoint pushes now trigger immediate GitHub auto completion; the hourly task is only the resume safety net. Full app completion is the only completion condition."
 }
