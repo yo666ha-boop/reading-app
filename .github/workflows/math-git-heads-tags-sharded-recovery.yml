@@ -1,0 +1,142 @@
+name: Math Git Heads Tags Sharded Recovery
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-git-heads-tags-sharded-recovery.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: math-git-heads-tags-sharded-recovery
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  scan-shard:
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+          fetch-tags: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Scan assigned blobs from all fetched branch and tag history
+        env:
+          MATH_GIT_SHARD_COUNT: '16'
+          MATH_GIT_SHARD_INDEX: ${{ matrix.shard }}
+          MATH_GIT_SHARD_REPORT: math-bank/state/git-heads-tags-shards/shard-${{ matrix.shard }}.json
+          MATH_GIT_SHARD_RECOVERED: math-bank/recovered-git-heads-tags-shards/shard-${{ matrix.shard }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import os,sys
+          sys.path.insert(0,'math-bank/app')
+          import scan_git_history_shard as shard
+          # checkout --fetch-depth=0 already fetched every repository head plus tags.
+          # PR heads in this repo are all backed by visible head branches; an exact binary ZIP
+          # cannot be invented by a synthetic merge tree. Avoid the wildcard PR ref fetch that
+          # was proven to consume the whole timeout before hashing began.
+          shard.core.fetch_all_remote_history=lambda:{'mode':'full_heads_and_tags_from_checkout','extra_pr_fetch_skipped':True}
+          raise SystemExit(shard.main())
+          PY
+      - name: Upload shard evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-git-heads-tags-shard-${{ matrix.shard }}
+          path: |
+            math-bank/state/git-heads-tags-shards/
+            math-bank/recovered-git-heads-tags-shards/
+          if-no-files-found: warn
+          retention-days: 30
+
+  aggregate:
+    if: always()
+    needs: scan-shard
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: math-git-heads-tags-shard-*
+          path: /tmp/math-ht-shards
+          merge-multiple: true
+      - name: Verify full branch/tag blob coverage and normalize pair
+        id: agg
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import hashlib,json,shutil,sys
+          from pathlib import Path
+          from datetime import datetime,timezone
+          expected='eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175'
+          objs=[]
+          for p in Path('/tmp/math-ht-shards').rglob('shard-*.json'):
+            try: objs.append(json.loads(p.read_text(encoding='utf-8')))
+            except: pass
+          idx=sorted({o.get('shard_index') for o in objs if isinstance(o.get('shard_index'),int)})
+          totals={o.get('readable_blob_oids_total') for o in objs}
+          readable=next(iter(totals)) if len(totals)==1 else None
+          assigned=sum(int(o.get('assigned_blob_oids') or 0) for o in objs)
+          checked=sum(int(o.get('all_blobs_sha256_checked') or 0) for o in objs)
+          complete=idx==list(range(16)) and readable is not None and assigned==readable and checked==readable
+          hits=sum(len(o.get('canonical_blob_hits') or []) for o in objs)
+          lfs=sum(len(o.get('lfs_pointer_hits') or []) for o in objs)
+          pairs=sum(len(o.get('paired_recovery_hits') or []) for o in objs)
+          dest=Path('math-bank/recovered-git-heads-tags'); dest.mkdir(parents=True,exist_ok=True)
+          z=dest/'みかみ塾数学問題バンク_最終完成版_20260820.zip'; a=dest/'MATHBANK_FINAL_AUDIT_V2.json'
+          z.unlink(missing_ok=True); a.unlink(missing_ok=True); source=None
+          for zp in Path('/tmp/math-ht-shards').rglob('みかみ塾数学問題バンク_最終完成版_20260820.zip'):
+            ap=zp.with_name('MATHBANK_FINAL_AUDIT_V2.json')
+            if ap.is_file() and hashlib.sha256(zp.read_bytes()).hexdigest()==expected:
+              shutil.copy2(zp,z); shutil.copy2(ap,a); source=str(zp); break
+          pair=z.is_file() and a.is_file()
+          summary={'workflow':'Math Git Heads Tags Sharded Recovery','recorded_at_utc':datetime.now(timezone.utc).isoformat(),'shard_indexes_completed':idx,'shards_completed':len(idx),'readable_blob_oids_total':readable,'assigned_blob_oids_total':assigned,'all_blobs_sha256_checked':checked,'all_blob_bytes_hashed':sum(int(o.get('all_blob_bytes_hashed') or 0) for o in objs),'exact_coverage_complete':complete,'canonical_blob_hits':hits,'lfs_pointer_hits':lfs,'paired_recovery_hits':pairs,'canonical_pair_found':pair,'pair_source':source,'expected_sha256':expected,'scope':'all repository branch heads and tags fetched by actions/checkout fetch-depth=0; PR head branches are already visible branches in this repository; synthetic merge refs excluded from exact binary ZIP search'}
+          Path('/tmp/math-git-heads-tags-sharded-recovery-latest.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(f'coverage_complete={str(complete).lower()}'); print(f'pair_found={str(pair).lower()}')
+          print(json.dumps(summary,ensure_ascii=False,indent=2),file=sys.stderr)
+          if not complete: raise SystemExit('FAIL branch/tag shard coverage incomplete')
+          PY
+      - name: Upload aggregate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-git-heads-tags-sharded-summary
+          path: |
+            /tmp/math-git-heads-tags-sharded-recovery-latest.json
+            math-bank/recovered-git-heads-tags/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Persist aggregate state
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin math-problem-bank-bootstrap
+          git reset --hard origin/math-problem-bank-bootstrap
+          mkdir -p math-bank/state
+          cp /tmp/math-git-heads-tags-sharded-recovery-latest.json math-bank/state/ 2>/dev/null || true
+          git add math-bank/state/math-git-heads-tags-sharded-recovery-latest.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'record exhaustive branch tag math recovery state'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
