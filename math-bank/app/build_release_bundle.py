@@ -9,10 +9,12 @@ import zipfile
 from pathlib import Path
 
 from recover_canonical_app_records import local_figure_ref
+from validate_canonical_provenance import validate_provenance
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT.parent / "release"
 DATA = ROOT / "app-records.json"
+PROVENANCE = ROOT / "canonical-provenance.json"
 INDEX = ROOT / "index.html"
 VALIDATOR = ROOT / "validate_app_records.py"
 
@@ -56,6 +58,8 @@ def main() -> int:
         return 3
     if not INDEX.is_file():
         raise SystemExit("FAIL missing index.html")
+    if not PROVENANCE.is_file():
+        raise SystemExit("FAIL canonical-provenance.json is required; strict counts alone cannot prove canonical identity")
 
     proc = subprocess.run(
         [sys.executable, str(VALIDATOR), str(DATA)],
@@ -66,6 +70,11 @@ def main() -> int:
         print(proc.stdout)
         print(proc.stderr, file=sys.stderr)
         raise SystemExit("FAIL strict canonical validator rejected release data")
+
+    try:
+        provenance_result = validate_provenance(PROVENANCE, DATA, ROOT)
+    except Exception as e:
+        raise SystemExit(f"FAIL canonical provenance release gate: {e}")
 
     records = load_records()
     choice_records = sum(1 for r in records if isinstance(r.get("choices"), list) and len(r["choices"]) > 0)
@@ -84,6 +93,7 @@ def main() -> int:
     OUT.mkdir(parents=True)
     shutil.copy2(INDEX, OUT / "index.html")
     shutil.copy2(DATA, OUT / "app-records.json")
+    shutil.copy2(PROVENANCE, OUT / "canonical-provenance.json")
 
     for src in figure_assets:
         rel = src.relative_to(ROOT)
@@ -91,9 +101,9 @@ def main() -> int:
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dest)
 
-    payload_files = [OUT / "index.html", OUT / "app-records.json"] + [OUT / src.relative_to(ROOT) for src in figure_assets]
+    payload_files = [OUT / "index.html", OUT / "app-records.json", OUT / "canonical-provenance.json"] + [OUT / src.relative_to(ROOT) for src in figure_assets]
     manifest = {
-        "release_gate": "STRICT_CANONICAL_1231_TITLE_CHOICES_AND_FIGURE_ASSETS_PASS",
+        "release_gate": "STRICT_CANONICAL_1231_PROVENANCE_TITLE_CHOICES_AND_FIGURE_ASSETS_PASS",
         "records": 1231,
         "original": 1124,
         "variants": 107,
@@ -101,6 +111,13 @@ def main() -> int:
         "choices_field_records": choices_field_records,
         "choice_records": choice_records,
         "title_choices_preservation_required": True,
+        "canonical_provenance_required": True,
+        "canonical_provenance_status": provenance_result["status"],
+        "canonical_zip_sha256": provenance_result["canonical_zip_sha256"],
+        "canonical_member": provenance_result["canonical_member"],
+        "canonical_member_sha256": provenance_result["canonical_member_sha256"],
+        "app_records_sha256": provenance_result["app_records_sha256"],
+        "provenance_method": provenance_result["method"],
         "local_figure_assets": len(figure_assets),
         "external_figure_refs": external_figure_refs,
         "files": {
@@ -119,6 +136,9 @@ def main() -> int:
             zf.write(p, arcname=p.relative_to(OUT).as_posix())
 
     print("PASS_RELEASE_BUNDLE")
+    print("canonical_provenance=PASS")
+    print(f"canonical_zip_sha256={provenance_result['canonical_zip_sha256']}")
+    print(f"provenance_method={provenance_result['method']}")
     print(f"records={len(records)}")
     print(f"title_records={title_records}")
     print(f"choices_field_records={choices_field_records}")
