@@ -34,6 +34,9 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Compile app validation and recovery tools
+        run: python -m py_compile math-bank/app/validate_app_records.py math-bank/app/recover_canonical_app_records.py math-bank/app/check_app_shell.py
+
       - name: Check app shell and JavaScript syntax
         run: python math-bank/app/check_app_shell.py
 
