@@ -1,0 +1,104 @@
+name: public release verify
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'PUBLIC_PUBLISH_STATUS.txt'
+      - 'AUTOMATION_CHECKPOINT.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: public-release-verify
+  cancel-in-progress: true
+
+jobs:
+  verify-public:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install browsers
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium webkit
+      - name: Verify published GitHub Pages and record result
+        shell: bash
+        run: |
+          set +e
+          BASE='https://yo666ha-boop.github.io/reading-app'
+          MARKER='PUBLIC_RELEASE_20260820_2309.txt'
+          ok=0
+          for i in $(seq 1 12); do
+            if curl -fsSL --max-time 30 "$BASE/$MARKER?try=$i" -o /tmp/marker.txt \
+              && grep -q 'main includes reference-based slash corrections for 168/168 passages' /tmp/marker.txt \
+              && curl -fsSL --max-time 30 "$BASE/?release=20260820-2309-$i" -o /tmp/index.html \
+              && grep -q 'v10_interaction_metadata.js?v=20260820-2055-reference' /tmp/index.html; then
+              ok=1
+              break
+            fi
+            sleep 15
+          done
+          if [ "$ok" -ne 1 ]; then
+            code=21
+            detail='STATIC_PUBLISH_NOT_VISIBLE'
+          else
+            node <<'NODE'
+          const {chromium,webkit}=require('playwright');
+          const base='https://yo666ha-boop.github.io/reading-app/?release=20260820-2309-runtime';
+          const expected=[
+            'A Canadian researcher studies a patch / in the ocean.',
+            'It is said / that a lot / of trash can gather there.',
+            'The researcher finds / that the trash is mostly plastic.',
+            'A bottle can float / for a long time / and move / into the patch.'
+          ];
+          async function check(type,label){
+            const b=await type.launch({headless:true});
+            const p=await b.newPage(label==='webkit'?{viewport:{width:390,height:844}}:{});
+            const errors=[];
+            p.on('pageerror',e=>errors.push(String(e)));
+            p.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+            const r=await p.goto(base+'&b='+label,{waitUntil:'networkidle',timeout:90000});
+            if(!r||!r.ok())throw new Error(label+' HTTP '+(r&&r.status()));
+            await p.waitForFunction(()=>window.V10_RUNTIME_LOAD_PROGRESS==='complete',{timeout:90000});
+            const state=await p.evaluate(()=>{
+              const sets=[window.V10_SUNSHINE_G1||{},window.V10_NEWHORIZON_G1||{},window.V10_PASSAGES_G2_SS||{},window.V10_PASSAGES_G2_NH||{},window.V10_PASSAGES_G3_SS||{},window.V10_PASSAGES_G3_NH||{}];
+              const all=sets.flatMap(d=>Object.values(d));
+              const bad=all.filter(x=>x.slashReadingVersion!=='reference-book-minimum-rules-20260820'||x.slashReferenceAudit!=='PASS_REFERENCE_20260820');
+              const p61=(window.V10_PASSAGES_G3_SS||{})['PROGRAM 6-1'];
+              return {progress:window.V10_RUNTIME_LOAD_PROGRESS,error:window.V10_RUNTIME_LOAD_ERROR||'',count:all.length,bad:bad.length,p61:p61&&p61.slashRows&&p61.slashRows.slice(0,4).map(x=>x.en),audit:window.V10_REFERENCE_SLASH_AUDIT||null};
+            });
+            console.log(label,JSON.stringify(state));
+            if(state.error)throw new Error(label+' loader '+state.error);
+            if(state.count!==168)throw new Error(label+' count '+state.count+'/168');
+            if(state.bad!==0)throw new Error(label+' stale '+state.bad);
+            if(JSON.stringify(state.p61)!==JSON.stringify(expected))throw new Error(label+' PROGRAM 6-1 '+JSON.stringify(state.p61));
+            if(!state.audit||state.audit.passagesAudited!==168||state.audit.lastCompleted!==168)throw new Error(label+' audit marker missing');
+            if(errors.length)throw new Error(label+' browser errors '+errors.join(' | '));
+            await b.close();
+          }
+          (async()=>{await check(chromium,'chromium');await check(webkit,'webkit')})().catch(e=>{console.error(e.stack||e);process.exit(1)});
+          NODE
+            code=$?
+            if [ "$code" -eq 0 ]; then detail='PUBLIC_RUNTIME_PASS_CHROMIUM_WEBKIT_168_168'; else detail='PUBLIC_RUNTIME_FAIL'; fi
+          fi
+          now=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
+          {
+            echo "checked_at_utc=$now"
+            echo "source_sha=${GITHUB_SHA}"
+            echo "result=$detail"
+            echo "expected_passages=168"
+            echo "expected_program_6_1=A Canadian researcher studies a patch / in the ocean."
+          } > PUBLIC_PUBLISH_STATUS.txt
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add PUBLIC_PUBLISH_STATUS.txt
+          git commit -m 'Record public release verification [skip ci]' || true
+          git push origin HEAD:main || true
+          exit "$code"
