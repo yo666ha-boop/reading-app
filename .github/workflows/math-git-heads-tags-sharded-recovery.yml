@@ -25,7 +25,7 @@ jobs:
           ref: math-problem-bank-bootstrap
           fetch-depth: 0
           fetch-tags: true
-      - name: Fetch complete branch and tag history, build bundle, and self-test it
+      - name: Fetch complete branch and tag history, build bundle, and prove all refs survive import
         shell: bash
         run: |
           set -euo pipefail
@@ -44,36 +44,52 @@ jobs:
           git bundle create /tmp/math-history/reading-app-all-heads-tags.bundle --all
           git bundle verify /tmp/math-history/reading-app-all-heads-tags.bundle
           rm -rf /tmp/math-history/selftest
-          git clone --quiet /tmp/math-history/reading-app-all-heads-tags.bundle /tmp/math-history/selftest
+          git init --quiet /tmp/math-history/selftest
+          git -C /tmp/math-history/selftest fetch --quiet \
+            /tmp/math-history/reading-app-all-heads-tags.bundle '+refs/*:refs/*'
           git -C /tmp/math-history/selftest fsck --full --strict
           python - <<'PY'
           import hashlib,json,subprocess
           from datetime import datetime,timezone
           from pathlib import Path
+          MAX=500*1024*1024
           bundle=Path('/tmp/math-history/reading-app-all-heads-tags.bundle')
+          def blob_inventory(repo=None):
+            base=['git'] if repo is None else ['git','-C',repo]
+            rows=subprocess.check_output(base+['rev-list','--objects','--all'],text=True).splitlines()
+            oids=sorted({r.split(' ',1)[0] for r in rows if r.strip()})
+            if not oids: return [],[]
+            proc=subprocess.run(base+['cat-file','--batch-check=%(objectname) %(objecttype) %(objectsize)'],input='\n'.join(oids)+'\n',text=True,stdout=subprocess.PIPE,check=True)
+            blobs=[]; readable=[]
+            for line in proc.stdout.splitlines():
+              parts=line.split()
+              if len(parts)!=3 or parts[1]!='blob': continue
+              blobs.append(parts[0])
+              if int(parts[2])<=MAX: readable.append(parts[0])
+            return sorted(blobs),sorted(readable)
+          source_blobs,source_readable=blob_inventory()
+          imported_blobs,imported_readable=blob_inventory('/tmp/math-history/selftest')
+          if imported_blobs != source_blobs:
+            missing=sorted(set(source_blobs)-set(imported_blobs))
+            extra=sorted(set(imported_blobs)-set(source_blobs))
+            raise SystemExit(f'FAIL all-ref bundle import blob mismatch source={len(source_blobs)} imported={len(imported_blobs)} missing={len(missing)} extra={len(extra)}')
+          if imported_readable != source_readable:
+            raise SystemExit('FAIL readable blob inventory differs after bundle all-ref import')
           refs=subprocess.check_output(['git','for-each-ref','--format=%(refname)'],text=True).splitlines()
-          blobs=subprocess.check_output(['git','rev-list','--objects','--all'],text=True).splitlines()
-          oids=[]
-          for line in blobs:
-            oid=line.split(' ',1)[0]
-            try:
-              if subprocess.check_output(['git','cat-file','-t',oid],text=True).strip()=='blob':
-                oids.append(oid)
-            except subprocess.CalledProcessError:
-              pass
-          selftest_count=int(subprocess.check_output(
-            ['git','-C','/tmp/math-history/selftest','rev-list','--objects','--all','--count'],
-            text=True).strip())
+          imported_refs=subprocess.check_output(['git','-C','/tmp/math-history/selftest','for-each-ref','--format=%(refname)'],text=True).splitlines()
           obj={
             'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
             'bundle_sha256':hashlib.sha256(bundle.read_bytes()).hexdigest(),
             'bundle_bytes':bundle.stat().st_size,
             'refs_count':len(refs),
-            'readable_blob_oids_total':len(set(oids)),
-            'selftest_clone_pass':True,
-            'selftest_reachable_object_count':selftest_count,
+            'imported_refs_count':len(imported_refs),
+            'source_blob_oids_total':len(source_blobs),
+            'readable_blob_oids_total':len(source_readable),
+            'selftest_imported_blob_oids_total':len(imported_blobs),
+            'selftest_imported_readable_blob_oids_total':len(imported_readable),
+            'selftest_all_refs_import_pass':True,
             'source_repository_shallow':False,
-            'scope':'all repository branch heads and tags after full-history non-shallow fetch; bundle was independently cloned and git-fsck verified before shard fan-out'
+            'scope':'all repository branch heads and tags after full-history non-shallow fetch; bundle was imported with +refs/*:refs/* and exact blob inventories were proven equal before shard fan-out'
           }
           Path('/tmp/math-history/manifest.json').write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           print(json.dumps(obj,ensure_ascii=False,indent=2))
@@ -107,7 +123,7 @@ jobs:
         with:
           name: math-git-heads-tags-prefetched-history
           path: /tmp/math-history
-      - name: Verify full bundle and scan assigned blobs without network history refetch
+      - name: Import every bundle ref and scan assigned blobs without network history refetch
         env:
           MATH_GIT_SHARD_COUNT: '16'
           MATH_GIT_SHARD_INDEX: ${{ matrix.shard }}
@@ -125,18 +141,21 @@ jobs:
           actual=hashlib.sha256(bundle.read_bytes()).hexdigest()
           if actual != manifest['bundle_sha256']:
             raise SystemExit(f'bundle SHA mismatch: {actual} != {manifest["bundle_sha256"]}')
-          if not manifest.get('selftest_clone_pass') or manifest.get('source_repository_shallow'):
-            raise SystemExit('bundle provenance did not pass full-history self-test')
-          subprocess.run(['git','clone','--quiet',str(bundle),'/tmp/math-history/repo'],check=True)
-          subprocess.run(['git','-C','/tmp/math-history/repo','fsck','--full','--strict'],check=True)
-          os.chdir('/tmp/math-history/repo')
+          if not manifest.get('selftest_all_refs_import_pass') or manifest.get('source_repository_shallow'):
+            raise SystemExit('bundle provenance did not pass full-history all-ref self-test')
+          repo=Path('/tmp/math-history/repo')
+          subprocess.run(['rm','-rf',str(repo)],check=True)
+          subprocess.run(['git','init','--quiet',str(repo)],check=True)
+          subprocess.run(['git','-C',str(repo),'fetch','--quiet',str(bundle),'+refs/*:refs/*'],check=True)
+          subprocess.run(['git','-C',str(repo),'fsck','--full','--strict'],check=True)
+          os.chdir(repo)
           sys.path.insert(0,str(workspace/'math-bank/app'))
           import scan_git_history_shard as shard
           shard.core.fetch_all_remote_history=lambda:{
-            'mode':'prefetched_bundle_all_heads_tags_full_history',
+            'mode':'prefetched_bundle_all_refs_full_history',
             'bundle_sha256':actual,
             'network_refetch':False,
-            'selftest_clone_pass':True,
+            'selftest_all_refs_import_pass':True,
           }
           raise SystemExit(shard.main())
           PY
@@ -185,17 +204,15 @@ jobs:
           manifest=json.loads(Path('/tmp/math-history/manifest.json').read_text(encoding='utf-8'))
           objs=[]
           for p in Path('/tmp/math-ht-shards').rglob('shard-*.json'):
-            try:
-              objs.append(json.loads(p.read_text(encoding='utf-8')))
-            except Exception:
-              pass
+            try: objs.append(json.loads(p.read_text(encoding='utf-8')))
+            except Exception: pass
           idx=sorted({o.get('shard_index') for o in objs if isinstance(o.get('shard_index'),int)})
           totals={o.get('readable_blob_oids_total') for o in objs}
           readable=next(iter(totals)) if len(totals)==1 else None
           assigned=sum(int(o.get('assigned_blob_oids') or 0) for o in objs)
           checked=sum(int(o.get('all_blobs_sha256_checked') or 0) for o in objs)
           complete=(
-            bool(manifest.get('selftest_clone_pass')) and
+            bool(manifest.get('selftest_all_refs_import_pass')) and
             not bool(manifest.get('source_repository_shallow')) and
             idx==list(range(16)) and readable is not None and
             readable==int(manifest.get('readable_blob_oids_total') or -1) and
@@ -205,8 +222,7 @@ jobs:
           lfs=sum(len(o.get('lfs_pointer_hits') or []) for o in objs)
           pairs=sum(len(o.get('paired_recovery_hits') or []) for o in objs)
           dest=Path('math-bank/recovered-git-heads-tags'); dest.mkdir(parents=True,exist_ok=True)
-          z=dest/'みかみ塾数学問題バンク_最終完成版_20260820.zip'
-          a=dest/'MATHBANK_FINAL_AUDIT_V2.json'
+          z=dest/'みかみ塾数学問題バンク_最終完成版_20260820.zip'; a=dest/'MATHBANK_FINAL_AUDIT_V2.json'
           z.unlink(missing_ok=True); a.unlink(missing_ok=True); source=None
           for zp in Path('/tmp/math-ht-shards').rglob('みかみ塾数学問題バンク_最終完成版_20260820.zip'):
             ap=zp.with_name('MATHBANK_FINAL_AUDIT_V2.json')
@@ -216,12 +232,14 @@ jobs:
           summary={
             'workflow':'Math Git Heads Tags Sharded Recovery',
             'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
-            'recovery_mode':'full_history_prefetch_bundle_selftest_then_16_way_fanout',
+            'recovery_mode':'full_history_bundle_all_ref_import_then_16_way_fanout',
             'bundle_sha256':manifest.get('bundle_sha256'),
             'bundle_bytes':manifest.get('bundle_bytes'),
-            'bundle_selftest_clone_pass':manifest.get('selftest_clone_pass'),
+            'bundle_all_ref_selftest_pass':manifest.get('selftest_all_refs_import_pass'),
             'source_repository_shallow':manifest.get('source_repository_shallow'),
+            'manifest_source_blob_oids_total':manifest.get('source_blob_oids_total'),
             'manifest_readable_blob_oids_total':manifest.get('readable_blob_oids_total'),
+            'selftest_imported_readable_blob_oids_total':manifest.get('selftest_imported_readable_blob_oids_total'),
             'shard_indexes_completed':idx,
             'shards_completed':len(idx),
             'readable_blob_oids_total':readable,
@@ -235,14 +253,12 @@ jobs:
             'canonical_pair_found':pair,
             'pair_source':source,
             'expected_sha256':expected,
-            'scope':'full branch/tag history only; exact coverage requires self-tested non-shallow bundle plus 16/16 shards and manifest/readable/assigned/checked equality'
+            'scope':'all full-history branch/tag refs imported from the immutable bundle; exact coverage requires all-ref selftest plus 16/16 shards and manifest/readable/assigned/checked equality'
           }
           Path('/tmp/math-git-heads-tags-sharded-recovery-latest.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-          print(f'coverage_complete={str(complete).lower()}')
-          print(f'pair_found={str(pair).lower()}')
+          print(f'coverage_complete={str(complete).lower()}'); print(f'pair_found={str(pair).lower()}')
           print(json.dumps(summary,ensure_ascii=False,indent=2),file=sys.stderr)
-          if not complete:
-            raise SystemExit('FAIL full-history branch/tag shard coverage incomplete')
+          if not complete: raise SystemExit('FAIL full-history all-ref shard coverage incomplete')
           PY
       - name: Upload aggregate evidence
         if: always()
@@ -265,6 +281,6 @@ jobs:
           cp /tmp/math-git-heads-tags-sharded-recovery-latest.json math-bank/state/ 2>/dev/null || true
           git add math-bank/state/math-git-heads-tags-sharded-recovery-latest.json 2>/dev/null || true
           if ! git diff --cached --quiet; then
-            git commit -m 'record full-history branch tag math recovery state'
+            git commit -m 'record all-ref full-history math recovery state'
             git push origin HEAD:math-problem-bank-bootstrap
           fi
