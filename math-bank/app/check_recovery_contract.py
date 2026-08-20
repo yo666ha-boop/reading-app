@@ -11,6 +11,10 @@ INSPECTOR = ROOT / "inspect_canonical_artifact.py"
 CONVERTER = ROOT / "convert_verified_canonical_to_app.py"
 VALIDATOR = ROOT / "validate_app_records.py"
 SCHEMA = ROOT / "app-record.schema.json"
+REQUIRED_CONVERTER_META_FIELDS = (
+    "grade", "unit", "skill", "question_format", "difficulty", "source",
+    "figure_refs", "variant_group", "audit",
+)
 
 keys = json.loads(STATE.read_text(encoding="utf-8"))
 recovery = RECOVERY.read_text(encoding="utf-8")
@@ -54,7 +58,7 @@ checks = {
     "converter_copies_choices": '"choices": row["choices"]' in converter,
     "converter_copies_question": '"question": row["q"]' in converter,
     "converter_copies_answer": '"answer": row["ans"]' in converter,
-    "converter_no_default_get_for_required_metadata": all(f'meta["{field}"]' in converter for field in REQUIRED_META_FIELDS),
+    "converter_no_default_get_for_required_metadata": all(f'meta["{field}"]' in converter for field in REQUIRED_CONVERTER_META_FIELDS),
     "core_fields_match_recovery": all(repr(field) in recovery or f'"{field}"' in recovery for field in core_fields),
     "core_fields_match_inspector": all(repr(field) in inspector or f'"{field}"' in inspector for field in core_fields),
 }
