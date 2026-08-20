@@ -1,0 +1,176 @@
+name: Math Canonical Auto Complete
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows:
+      - Math Problem Bank Audit
+    types:
+      - completed
+    branches:
+      - math-problem-bank-bootstrap
+
+concurrency:
+  group: math-canonical-auto-complete
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  canonical-auto-complete:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout isolated math branch
+        uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Compile one-shot completion and release gates
+        run: |
+          python -m py_compile \
+            math-bank/app/scan_actions_artifacts.py \
+            math-bank/app/complete_from_exact_canonical.py \
+            math-bank/app/inspect_canonical_artifact.py \
+            math-bank/app/analyze_canonical_mapping_evidence.py \
+            math-bank/app/recover_canonical_app_records.py \
+            math-bank/app/convert_verified_canonical_to_app.py \
+            math-bank/app/validate_app_records.py \
+            math-bank/app/validate_canonical_provenance.py \
+            math-bank/app/build_release_bundle.py \
+            math-bank/app/verify_publish_readiness.py
+          node --check math-bank/app/browser_real_regression.mjs
+
+      - name: Re-scan all recent Actions artifacts for exact ZIP plus paired final audit
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python math-bank/app/scan_actions_artifacts.py
+
+      - name: Decide whether immutable canonical pair exists
+        id: pair
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import hashlib
+          from pathlib import Path
+          expected = 'eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175'
+          z = Path('math-bank/recovered/みかみ塾数学問題バンク_最終完成版_20260820.zip')
+          a = Path('math-bank/recovered/MATHBANK_FINAL_AUDIT_V2.json')
+          ok = z.is_file() and a.is_file()
+          if ok:
+              h = hashlib.sha256(z.read_bytes()).hexdigest()
+              ok = h == expected
+          print(f'pair_found={str(ok).lower()}')
+          PY
+
+      - name: Record no-pair state without reconstructing data
+        if: steps.pair.outputs.pair_found != 'true'
+        run: |
+          echo 'CANONICAL_PAIR_NOT_RECOVERED: no exact immutable ZIP plus paired final audit is available.'
+          echo 'No reconstruction, no 161 promotion, no 1271 diagnostic promotion, and no new variants will be performed.'
+
+      - name: Run one-shot exact canonical wiring
+        if: steps.pair.outputs.pair_found == 'true'
+        id: wiring
+        shell: bash
+        run: |
+          set +e
+          python math-bank/app/complete_from_exact_canonical.py \
+            'math-bank/recovered/みかみ塾数学問題バンク_最終完成版_20260820.zip' \
+            'math-bank/recovered/MATHBANK_FINAL_AUDIT_V2.json'
+          rc=$?
+          set -e
+          if [ "$rc" -eq 0 ]; then
+            echo 'wiring_ready=true' >> "$GITHUB_OUTPUT"
+            echo 'mapping_metadata_required=false' >> "$GITHUB_OUTPUT"
+          elif [ "$rc" -eq 3 ]; then
+            echo 'wiring_ready=false' >> "$GITHUB_OUTPUT"
+            echo 'mapping_metadata_required=true' >> "$GITHUB_OUTPUT"
+            echo 'CANONICAL_ZIP_RECOVERED_BUT_VERIFIED_METADATA_REQUIRED: no guessed mapping will be used.'
+          else
+            echo "FAIL one-shot canonical wiring rc=$rc"
+            exit "$rc"
+          fi
+
+      - name: Preserve canonical recovery and inspection diagnostics
+        if: steps.pair.outputs.pair_found == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: mikami-math-canonical-auto-complete-diagnostics
+          path: |
+            math-bank/recovered/
+            math-bank/state/actions-artifact-scan-latest.json
+            math-bank/state/canonical-inspection-latest.json
+            math-bank/state/canonical-mapping-evidence-latest.json
+            math-bank/state/canonical-completion-latest.json
+            math-bank/app/app-records.json
+            math-bank/app/canonical-provenance.json
+            math-bank/app/MATHBANK_FINAL_AUDIT_V2.json
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Install Playwright only after canonical wiring PASS
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium firefox webkit
+
+      - name: Start isolated real-data math app server
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        shell: bash
+        run: |
+          python3 -m http.server 8766 --bind 127.0.0.1 --directory math-bank/app >/tmp/math-real-http.log 2>&1 &
+          echo $! >/tmp/math-real-http.pid
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8766/index.html >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/math-real-http.log || true
+          exit 1
+
+      - name: Run full REAL canonical 1231 browser and print regression
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        env:
+          MATH_APP_BASE_URL: http://127.0.0.1:8766/index.html
+          MATH_REAL_DATA_PATH: math-bank/app/app-records.json
+          MATH_REAL_BROWSER_REPORT: math-bank/state/browser-real-regression-latest.json
+          MATH_REAL_PDF_DIR: math-bank/state/real-print-regression
+        run: node math-bank/app/browser_real_regression.mjs
+
+      - name: Build strict release only after REAL 1231 PASS
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: python math-bank/app/build_release_bundle.py
+
+      - name: Require PUBLICATION_READY with actual PDF hashes and release member hashes
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: |
+          python math-bank/app/verify_publish_readiness.py \
+            --pdf-root math-bank/state/real-print-regression
+
+      - name: Preserve completed strict release
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: mikami-math-auto-completed-release
+          path: |
+            math-bank/みかみ塾数学問題アプリ_公開候補.zip
+            math-bank/release/
+            math-bank/state/browser-real-regression-latest.json
+            math-bank/state/real-print-regression/
+            math-bank/state/canonical-completion-latest.json
+          if-no-files-found: error
+          retention-days: 30
