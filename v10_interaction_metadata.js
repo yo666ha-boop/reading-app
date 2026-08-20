@@ -65,7 +65,8 @@ window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
   ['v10_reference_slash_manual_141_150.js',()=>({})],
   ['v10_reference_slash_manual_151_160.js',()=>({})],
   ['v10_reference_slash_manual_161_168.js',()=>({})],
-  ['v10_reference_slash_manual_999_recovery.js',()=>({})]
+  ['v10_reference_slash_manual_999_recovery.js',()=>({})],
+  ['v10_reference_slash_manual_zz_corrections.js',()=>({})]
  ];
  let i=0;
  const next=()=>{

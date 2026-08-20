@@ -10,7 +10,18 @@
   {en:'This is my blog.',jp:'これは私のブログです。'},{en:'I am a local guide.',jp:'私は地元のガイドです。'},{en:'I like nature very much.',jp:'私は自然がとても好きです。'},{en:'This is a local spot.',jp:'ここは地元のスポットです。'},{en:'It is beautiful.',jp:'きれいな場所です。'},{en:'I work here / as a local guide.',jp:'私はここで働いています / 地元のガイドとして'},{en:'I write / about this local spot.',jp:'私は書きます / この地元のスポットについて'},{en:'I enjoy working / as a guide.',jp:'私は働くことを楽しんでいます / ガイドとして'},{en:'I like this blog, / too.',jp:'私はこのブログが好きです / 〜もまた'},{en:'My work is interesting.',jp:'私の仕事はおもしろいです。'}
  ],52);
  setAudit(d,'Unit 5-2',[
-  {en:'This is his blog.',jp:'これは彼のブログです。'},{en:'The blog is / about his life.',jp:'そのブログは〜です / 彼の生活について'},{en:'He has a beautiful dolphin picture there.',jp:'彼はそこに美しいイルカの写真を持っています。'},{en:'Does he like the picture?',jp:'彼はその写真が好きですか。'},{en:'Yes, / he does.',jp:'はい / 好きです'},{en:'He can swim.',jp:'彼は泳ぐことができます。'},{en:'He doesn’t surf.',jp:'彼はサーフィンをしません。'},{en:'Does he write / about the dolphin?',jp:'彼は書きますか / そのイルカについて'},{en:'Yes, / he does.',jp:'はい / 書きます'},{en:'The picture is very beautiful.',jp:'その写真はとても美しいです。'},{en:'The blog is interesting.',jp:'そのブログはおもしろいです。'}
+  {en:'This is his blog.',jp:'これは彼のブログです。'},
+  {en:'The blog is / about his life.',jp:'そのブログは〜です / 彼の生活について'},
+  {en:'He has a beautiful dolphin picture there.',jp:'彼はそこに美しいイルカの写真を持っています。'},
+  {en:'Does he like the picture?',jp:'彼はその写真が好きですか。'},
+  {en:'Yes, / he does.',jp:'はい / 好きです'},
+  {en:'The dolphin is / in the water.',jp:'そのイルカはいます / 水の中に'},
+  {en:'He can swim.',jp:'彼は泳ぐことができます。'},
+  {en:'He doesn’t surf.',jp:'彼はサーフィンをしません。'},
+  {en:'Does he write / about the dolphin?',jp:'彼は書きますか / そのイルカについて'},
+  {en:'Yes, / he does.',jp:'はい / 書きます'},
+  {en:'The picture is very beautiful.',jp:'その写真はとても美しいです。'},
+  {en:'The blog is interesting.',jp:'そのブログはおもしろいです。'}
  ],53);
  setAudit(d,'Unit 5-3',[
   {en:'My brother / and I look / at a cafe website.',jp:'兄 / そして私は見ます / カフェのウェブサイトを'},{en:'The cafe is popular.',jp:'そのカフェは人気があります。'},{en:'The owner is friendly.',jp:'そのオーナーは親切です。'},{en:'This dish is wonderful.',jp:'この料理はすばらしいです。'},{en:'A fried egg is / on top of the dish.',jp:'目玉焼きがあります / その料理の上に'},{en:'“Do you know this cafe?”',jp:'「このカフェを知っていますか。」'},{en:'“No, / I don’t.”',jp:'「いいえ / 知りません」'},{en:'“Look / at this dish.”',jp:'「見て / この料理を」'},{en:'“Wonderful!”',jp:'「すばらしい！」'},{en:'“I want / to visit the cafe.”',jp:'「私は望んでいます / そのカフェを訪れることを」'},{en:'“Great!”',jp:'「いいね！」'}

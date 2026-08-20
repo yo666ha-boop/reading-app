@@ -12,7 +12,7 @@
   {en:'He can move the robot / and look / around the room.',jp:'彼はロボットを動かせます / そして見て回れます / 部屋の中を'},
   {en:'For a short time, / he feels / as if he is visiting the museum himself.',jp:'短い時間 / 彼は感じます / 自分自身が博物館を訪れているように'},
   {en:'He imagines using the robot / to visit another place abroad someday.',jp:'彼はロボットを使うことを想像します / いつか外国の別の場所を訪れるために'},
-  {en:'Probably, / the project can help other patients, / too.',jp:'おそらく / このプロジェクトはほかの患者を助けられます / 〜もまた'},
+  {en:'Probably, / the project can help other patients too.',jp:'おそらく / このプロジェクトはほかの患者も助けられます'},
   {en:'A dream / that once felt far away may come true / through the robot.',jp:'夢が / かつて遠く感じられた実現するかもしれません / ロボットを通して'},
   {en:'The project gives the patient a new way / to connect / with the world.',jp:'このプロジェクトは患者に新しい方法を与えます / つながるための / 世界と'}
  ],141);
@@ -59,10 +59,10 @@
  setAudit(n3,'Unit 1-1',[
   {en:'My friend / and I compare places we have visited / in Japan.',jp:'私の友達 / そして私は訪れたことのある場所を比べます / 日本で'},
   {en:'I have been / to Kyoto once.',jp:'私は行ったことがあります / 京都に1度'},
-  {en:'My friend has been / to Kyoto, / too.',jp:'友達も行ったことがあります / 京都に / 〜もまた'},
+  {en:'My friend has been / to Kyoto too.',jp:'友達も行ったことがあります / 京都にも'},
   {en:'I have also been / to Osaka twice.',jp:'私は行ったこともあります / 大阪に2度'},
   {en:'My friend has never been / to Hokkaido.',jp:'友達は行ったことが一度もありません / 北海道へ'},
-  {en:'I have never been there, / either.',jp:'私もそこへ行ったことがありません / 〜もまた'},
+  {en:'I have never been there either.',jp:'私もそこへ行ったことがありません。'},
   {en:'We talk / about what we enjoyed / in Kyoto / and Osaka.',jp:'私たちは話します / 楽しんだことについて / 京都で / そして大阪で'},
   {en:'Then we look / at a picture / of Hokkaido.',jp:'それから私たちは見ます / 写真を / 北海道の'},
   {en:'“Have you ever wanted / to go there?” I ask.',jp:'「今まで望んだことがある / そこへ行くことを？」と私はたずねます'},
