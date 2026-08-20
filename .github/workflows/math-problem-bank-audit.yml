@@ -35,8 +35,8 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Compile app validation and recovery tools
-        run: python -m py_compile math-bank/app/validate_app_records.py math-bank/app/recover_canonical_app_records.py math-bank/app/check_app_shell.py math-bank/app/check_recovery_contract.py math-bank/app/test_negative_gates.py
+      - name: Compile app validation, recovery, and release tools
+        run: python -m py_compile math-bank/app/validate_app_records.py math-bank/app/recover_canonical_app_records.py math-bank/app/check_app_shell.py math-bank/app/check_recovery_contract.py math-bank/app/test_negative_gates.py math-bank/app/build_release_bundle.py
 
       - name: Check app shell and JavaScript syntax
         run: python math-bank/app/check_app_shell.py
@@ -54,6 +54,23 @@ jobs:
             python math-bank/app/validate_app_records.py math-bank/app/app-records.json
           else
             echo 'CANONICAL_DATA_GATE_BLOCKED_EXPECTED: math-bank/app/app-records.json is not committed yet'
+          fi
+
+      - name: Strict release bundle gate
+        shell: bash
+        run: |
+          if [ -f math-bank/app/app-records.json ]; then
+            python math-bank/app/build_release_bundle.py
+          else
+            set +e
+            python math-bank/app/build_release_bundle.py
+            rc=$?
+            set -e
+            if [ "$rc" -ne 3 ]; then
+              echo "FAIL release builder must block with rc=3 before exact canonical data is wired"
+              exit 1
+            fi
+            echo 'PASS_RELEASE_BLOCKED_UNTIL_EXACT_1231'
           fi
 
   inventory-and-classify:
