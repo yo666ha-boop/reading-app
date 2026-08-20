@@ -17,6 +17,8 @@ EXPECTED_SHA256 = "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398
 EXPECTED_FILENAME = "みかみ塾数学問題バンク_最終完成版_20260820.zip"
 AUDIT_FILENAME = "MATHBANK_FINAL_AUDIT_V2.json"
 MAX_ASSET_BYTES = 500 * 1024 * 1024
+MAX_MEMBER_BYTES = 500 * 1024 * 1024
+MAX_NESTED_ZIP_BYTES = 250 * 1024 * 1024
 MAX_NESTED_DEPTH = 3
 OUT_REPORT = Path("math-bank/state/github-release-scan-latest.json")
 OUT_DIR = Path("math-bank/recovered-release")
@@ -52,37 +54,57 @@ def valid_audit(data: bytes) -> bool:
         return False
 
 
-def scan_nested_zip(data: bytes, prefix: str = "", depth: int = 0) -> tuple[list[dict], list[tuple[str, bytes]], list[tuple[str, bytes]]]:
+def is_zip_payload(data: bytes) -> bool:
+    if len(data) < 4 or data[:2] != b"PK":
+        return False
+    try:
+        return zipfile.is_zipfile(io.BytesIO(data))
+    except Exception:
+        return False
+
+
+def scan_nested_zip(data: bytes, prefix: str = "", depth: int = 0) -> tuple[list[dict], list[tuple[str, bytes]], list[tuple[str, bytes]], dict]:
     entries: list[dict] = []
     zip_hits: list[tuple[str, bytes]] = []
     audit_hits: list[tuple[str, bytes]] = []
+    metrics = {"members_seen": 0, "members_sha256_checked": 0, "member_bytes_hashed": 0, "zip_signature_members": 0, "oversize_members_skipped": 0}
     if depth > MAX_NESTED_DEPTH:
-        return entries, zip_hits, audit_hits
+        return entries, zip_hits, audit_hits, metrics
     try:
         with zipfile.ZipFile(io.BytesIO(data)) as zf:
             for info in zf.infolist():
                 if info.is_dir():
                     continue
+                metrics["members_seen"] += 1
                 name = f"{prefix}{info.filename}"
                 basename = Path(info.filename).name
-                is_zip = info.filename.lower().endswith(".zip")
-                if not is_zip and basename != AUDIT_FILENAME:
+                if info.file_size > MAX_MEMBER_BYTES:
+                    metrics["oversize_members_skipped"] += 1
                     continue
                 payload = zf.read(info)
                 digest = sha256_bytes(payload)
-                entries.append({"name": name, "bytes": len(payload), "sha256": digest, "depth": depth})
-                if is_zip and digest == EXPECTED_SHA256:
+                metrics["members_sha256_checked"] += 1
+                metrics["member_bytes_hashed"] += len(payload)
+                zip_signature = is_zip_payload(payload)
+                if zip_signature:
+                    metrics["zip_signature_members"] += 1
+                if digest == EXPECTED_SHA256 or basename == AUDIT_FILENAME or zip_signature:
+                    entries.append({"name": name, "bytes": len(payload), "sha256": digest, "depth": depth, "zip_signature": zip_signature})
+                # Exact identity is content-addressed; a renamed or extensionless ZIP is still recoverable.
+                if digest == EXPECTED_SHA256:
                     zip_hits.append((name, payload))
                 if basename == AUDIT_FILENAME and valid_audit(payload):
                     audit_hits.append((name, payload))
-                if is_zip and depth < MAX_NESTED_DEPTH and len(payload) <= MAX_ASSET_BYTES:
-                    child_entries, child_zips, child_audits = scan_nested_zip(payload, name + "!/", depth + 1)
+                if zip_signature and depth < MAX_NESTED_DEPTH and len(payload) <= MAX_NESTED_ZIP_BYTES:
+                    child_entries, child_zips, child_audits, child_metrics = scan_nested_zip(payload, name + "!/", depth + 1)
                     entries.extend(child_entries)
                     zip_hits.extend(child_zips)
                     audit_hits.extend(child_audits)
+                    for k in metrics:
+                        metrics[k] += child_metrics[k]
     except zipfile.BadZipFile:
         pass
-    return entries, zip_hits, audit_hits
+    return entries, zip_hits, audit_hits, metrics
 
 
 def list_releases() -> list[dict]:
@@ -104,7 +126,7 @@ def main() -> int:
 
     releases = list_releases()
     report = {
-        "scan": "github_release_assets_for_exact_math_canonical",
+        "scan": "github_release_assets_all_members_content_addressed_for_exact_math_canonical",
         "repo": REPO,
         "expected_sha256": EXPECTED_SHA256,
         "required_paired_audit": AUDIT_FILENAME,
@@ -112,12 +134,17 @@ def main() -> int:
         "assets_seen": 0,
         "assets_downloaded": 0,
         "download_failures": 0,
+        "asset_sha256_checked": 0,
+        "nested_members_sha256_checked": 0,
+        "nested_member_bytes_hashed": 0,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0,
         "canonical_hits": 0,
         "valid_audit_hits": 0,
         "paired_recovery_hits": [],
         "releases": [],
         "completed_at_utc": datetime.now(timezone.utc).isoformat(),
-        "policy": "Release recovery only. Exact canonical ZIP requires immutable SHA-256; automatic completion requires one unambiguous valid final audit in the same release. No reconstruction.",
+        "policy": "Every release asset and nested member under the cap is SHA-256 checked regardless of filename/extension; nested archives are detected by ZIP signature. Pairing still requires exact immutable SHA plus one unambiguous valid final audit in the same release. No reconstruction.",
     }
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -152,6 +179,7 @@ def main() -> int:
                 "downloaded": False,
                 "errors": [],
                 "nested_interesting": [],
+                "nested_scan_metrics": {},
             }
             size = int(asset.get("size") or 0)
             if size > MAX_ASSET_BYTES:
@@ -163,6 +191,7 @@ def main() -> int:
                 item["downloaded"] = True
                 item["downloaded_bytes"] = len(payload)
                 report["assets_downloaded"] += 1
+                report["asset_sha256_checked"] += 1
                 digest = sha256_bytes(payload)
                 item["sha256"] = digest
                 if digest == EXPECTED_SHA256:
@@ -172,16 +201,22 @@ def main() -> int:
                 if Path(str(asset.get("name") or "")).name == AUDIT_FILENAME and valid_audit(payload):
                     release_audits[digest] = (str(asset.get("name")), payload)
                     release_item["audit_hits"].append({"name": asset.get("name"), "sha256": digest, "bytes": len(payload)})
-                nested, zip_hits, audit_hits = scan_nested_zip(payload, f"{asset.get('name')}!/")
-                item["nested_interesting"] = nested
-                for name, data in zip_hits:
-                    d = sha256_bytes(data)
-                    release_zips[d] = (name, data)
-                    release_item["canonical_hits"].append({"name": name, "sha256": d, "bytes": len(data)})
-                for name, data in audit_hits:
-                    d = sha256_bytes(data)
-                    release_audits[d] = (name, data)
-                    release_item["audit_hits"].append({"name": name, "sha256": d, "bytes": len(data)})
+                if is_zip_payload(payload):
+                    nested, zip_hits, audit_hits, metrics = scan_nested_zip(payload, f"{asset.get('name')}!/")
+                    item["nested_interesting"] = nested
+                    item["nested_scan_metrics"] = metrics
+                    report["nested_members_sha256_checked"] += metrics["members_sha256_checked"]
+                    report["nested_member_bytes_hashed"] += metrics["member_bytes_hashed"]
+                    report["zip_signature_members"] += metrics["zip_signature_members"]
+                    report["oversize_members_skipped"] += metrics["oversize_members_skipped"]
+                    for name, nested_data in zip_hits:
+                        d = sha256_bytes(nested_data)
+                        release_zips[d] = (name, nested_data)
+                        release_item["canonical_hits"].append({"name": name, "sha256": d, "bytes": len(nested_data)})
+                    for name, audit_data in audit_hits:
+                        d = sha256_bytes(audit_data)
+                        release_audits[d] = (name, audit_data)
+                        release_item["audit_hits"].append({"name": name, "sha256": d, "bytes": len(audit_data)})
             except Exception as e:
                 report["download_failures"] += 1
                 item["errors"].append(str(e))
@@ -214,6 +249,7 @@ def main() -> int:
         report["releases"].append(release_item)
 
     OUT_REPORT.parent.mkdir(parents=True, exist_ok=True)
+    report["completed_at_utc"] = datetime.now(timezone.utc).isoformat()
     OUT_REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0
