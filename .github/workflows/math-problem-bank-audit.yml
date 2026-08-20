@@ -9,12 +9,43 @@ on:
       - 'math-bank/source/**'
       - 'math-bank/scripts/**'
       - 'math-bank/schema/**'
+      - 'math-bank/app/**'
       - '.github/workflows/math-problem-bank-audit.yml'
 
 permissions:
   contents: write
 
 jobs:
+  app-shell-and-data-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Check app shell and JavaScript syntax
+        run: python math-bank/app/check_app_shell.py
+
+      - name: Strict canonical 1231 validator when data exists
+        shell: bash
+        run: |
+          if [ -f math-bank/app/app-records.json ]; then
+            python math-bank/app/validate_app_records.py math-bank/app/app-records.json
+          else
+            echo 'CANONICAL_DATA_GATE_BLOCKED_EXPECTED: math-bank/app/app-records.json is not committed yet'
+          fi
+
   inventory-and-classify:
     runs-on: ubuntu-latest
     steps:
@@ -28,19 +59,23 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Inventory source archives
-        run: python math-bank/scripts/inventory.py
+      - name: Inventory and classify only when source archives exist
+        shell: bash
+        run: |
+          if find math-bank/source -maxdepth 1 -type f -name '*.zip' -print -quit 2>/dev/null | grep -q .; then
+            python math-bank/scripts/inventory.py
+            python math-bank/scripts/classify_manifest.py
+          else
+            echo 'SOURCE_ARCHIVES_NOT_PRESENT: skipping source inventory; canonical 1231 recovery remains the data blocker'
+          fi
 
-      - name: Classify files
-        run: python math-bank/scripts/classify_manifest.py
-
-      - name: Commit checkpoint and outputs
+      - name: Commit checkpoint and outputs if changed
         if: always()
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add math-bank/state/checkpoint.json math-bank/out/archive_manifest.json math-bank/out/file_classification.json || true
+          git add math-bank/state/checkpoint.json math-bank/out/archive_manifest.json math-bank/out/file_classification.json 2>/dev/null || true
           if ! git diff --cached --quiet; then
             git commit -m 'update math problem bank audit checkpoint'
             git push origin HEAD:math-problem-bank-bootstrap
