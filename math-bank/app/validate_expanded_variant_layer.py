@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 from collections import Counter, defaultdict
@@ -14,7 +15,7 @@ EXPECTED_ORIGINALS = 1124
 EXPECTED_BASELINE_VARIANTS = 107
 EXPECTED_ORIGINAL_BY_SOURCE = {"Winpass": 570, "実力錬成": 237, "Standard": 317}
 REQUIRED_PROVENANCE = {
-    "variant_id", "parent_id", "generator", "generation_method", "verification_method", "verified_at"
+    "variant_id", "parent_id", "parent_record_sha256", "generator", "generation_method", "verification_method", "verified_at"
 }
 NUMBER_RE = re.compile(r"(?<![A-Za-z_])[-+]?\d+(?:\.\d+)?(?:/\d+(?:\.\d+)?)?")
 
@@ -25,6 +26,20 @@ def fail(msg: str) -> None:
 
 def text(v: object) -> str:
     return v.strip() if isinstance(v, str) else ""
+
+
+def canonical_parent_bytes(parent: dict) -> bytes:
+    """Stable serialization used to bind generation provenance to the exact parent record read."""
+    return json.dumps(
+        parent,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+
+
+def parent_record_sha256(parent: dict) -> str:
+    return hashlib.sha256(canonical_parent_bytes(parent)).hexdigest()
 
 
 def norm_problem(v: object) -> str:
@@ -121,7 +136,7 @@ def validate_layer(
             fail(f"provenance[{i}] blank variant_id/parent_id")
         if vid in prov_by_variant:
             fail(f"duplicate provenance for {vid}")
-        for key in ("generator", "generation_method", "verification_method", "verified_at"):
+        for key in ("parent_record_sha256", "generator", "generation_method", "verification_method", "verified_at"):
             if not text(p.get(key)):
                 fail(f"provenance {vid}: blank {key}")
         prov_by_variant[vid] = p
@@ -164,9 +179,6 @@ def validate_layer(
             fail(f"{rid}: question duplicates another expanded variant")
         generated_problem_sigs.add(sig)
 
-        # If the parent contains numeric literals, a new variant must actually change at
-        # least one numeric literal. Rewording the same numbers is not a substantive
-        # mathematical variant and is rejected even when the full text differs.
         parent_nums = numeric_tokens(parent.get("question"))
         variant_nums = numeric_tokens(r.get("question"))
         if parent_nums and parent_nums == variant_nums:
@@ -178,6 +190,9 @@ def validate_layer(
             fail(f"{rid}: missing provenance")
         if text(p.get("parent_id")) != pid:
             fail(f"{rid}: provenance parent_id mismatch")
+        expected_parent_sha = parent_record_sha256(parent)
+        if text(p.get("parent_record_sha256")) != expected_parent_sha:
+            fail(f"{rid}: provenance parent_record_sha256 mismatch for exact parent {pid}")
         independent = p.get("independent_recalculation")
         if independent is not True:
             fail(f"{rid}: independent_recalculation must be true")
@@ -219,6 +234,7 @@ def validate_layer(
         "parent_failures": 0,
         "unverified_records": 0,
         "provenance_failures": 0,
+        "parent_fingerprint_mismatches": 0,
         "require_full_parent_coverage": require_full_parent_coverage,
     }
     return result
