@@ -5,8 +5,8 @@
   "expected_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "required_paired_audit": "MATHBANK_FINAL_AUDIT_V2.json",
   "created_since": "2026-08-19T00:00:00Z",
-  "all_artifacts_seen": 54,
-  "candidate_artifacts": 54,
+  "all_artifacts_seen": 55,
+  "candidate_artifacts": 55,
   "canonical_hits": 0,
   "audit_name_hits": 0,
   "valid_audit_hits": 0,
@@ -14,6 +14,28 @@
   "recovery_hint_hits": 0,
   "download_failures": 0,
   "artifacts": [
+    {
+      "artifact_id": 9399038864,
+      "name": "math-browser-regression-diagnostics",
+      "size_in_bytes": 997,
+      "created_at": "2026-08-20T08:26:16Z",
+      "updated_at": "2026-08-20T08:26:16Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32348683623,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "325108d3faea966da8d0f6b97e08f62ae02c3132"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "errors": [],
+      "archive_download_bytes": 997
+    },
     {
       "artifact_id": 9398990553,
       "name": "math-browser-regression-diagnostics",
@@ -1225,6 +1247,6 @@
     }
   ],
   "recovered_files": [],
-  "completed_at_utc": "2026-08-20T08:25:12.394706+00:00",
+  "completed_at_utc": "2026-08-20T08:27:01.029781+00:00",
   "policy": "Discovery only. ZIP identity requires immutable SHA-256. Automatic completion requires the exact ZIP and one unambiguous valid MATHBANK_FINAL_AUDIT_V2.json from the same Actions artifact."
 }
