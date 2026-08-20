@@ -1,6 +1,10 @@
 {
   "workflow": "Math Git Heads Tags Sharded Recovery",
-  "recorded_at_utc": "2026-08-20T12:49:14.508740+00:00",
+  "recorded_at_utc": "2026-08-20T13:59:03.626879+00:00",
+  "recovery_mode": "prefetch_once_git_bundle_then_16_way_fanout",
+  "bundle_sha256": "237c4eb6495279e3bbbed29c5baa54341b39d9e59d995318dd2fe516206407a6",
+  "bundle_bytes": 2894058,
+  "manifest_readable_blob_oids_total": 1492,
   "shard_indexes_completed": [],
   "shards_completed": 0,
   "readable_blob_oids_total": null,
@@ -14,5 +18,5 @@
   "canonical_pair_found": false,
   "pair_source": null,
   "expected_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
-  "scope": "all repository branch heads and tags fetched by actions/checkout fetch-depth=0; PR head branches are already visible branches in this repository; synthetic merge refs excluded from exact binary ZIP search"
+  "scope": "all repository branch heads and tags fetched exactly once in prepare job and distributed by immutable Git bundle; exact coverage requires 16/16 shards plus manifest/readable/assigned/checked equality"
 }
