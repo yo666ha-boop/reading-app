@@ -1,0 +1,19 @@
+{
+  "workflow": "Math Git History Sharded Recovery",
+  "recorded_at_utc": "2026-08-20T12:03:29.066189+00:00",
+  "shard_count_expected": 16,
+  "shard_indexes_completed": [],
+  "shards_completed": 0,
+  "readable_blob_oids_total": null,
+  "assigned_blob_oids_total": 0,
+  "all_blobs_sha256_checked": 0,
+  "all_blob_bytes_hashed": 0,
+  "exact_coverage_complete": false,
+  "canonical_blob_hits": 0,
+  "lfs_pointer_hits": 0,
+  "paired_recovery_hits": 0,
+  "canonical_pair_found": false,
+  "pair_source": null,
+  "expected_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
+  "policy": "16 shards partition every readable reachable blob exactly once; no reconstruction."
+}
