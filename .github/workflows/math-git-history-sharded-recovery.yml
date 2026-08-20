@@ -1,0 +1,210 @@
+name: Math Git History Sharded Recovery
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - 'math-bank/app/scan_git_history_shard.py'
+      - '.github/workflows/math-git-history-sharded-recovery.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: math-git-history-sharded-recovery
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  scan-shard:
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile sharded scanner
+        run: python -m py_compile math-bank/app/scan_git_history_candidates.py math-bank/app/scan_git_history_shard.py
+      - name: Exhaustively SHA-256 check assigned reachable blobs
+        env:
+          MATH_GIT_SHARD_COUNT: '16'
+          MATH_GIT_SHARD_INDEX: ${{ matrix.shard }}
+        run: python math-bank/app/scan_git_history_shard.py
+      - name: Upload shard evidence and any exact pair
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-git-history-shard-${{ matrix.shard }}
+          path: |
+            math-bank/state/git-history-shards/
+            math-bank/recovered-git-history-shards/
+          if-no-files-found: warn
+          retention-days: 30
+
+  aggregate-and-complete:
+    if: always()
+    needs: scan-shard
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Download all shard evidence
+        uses: actions/download-artifact@v4
+        with:
+          pattern: math-git-history-shard-*
+          path: /tmp/math-git-shards
+          merge-multiple: true
+      - name: Aggregate exact coverage and recover canonical pair if present
+        id: aggregate
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import hashlib,json,shutil
+          from pathlib import Path
+          from datetime import datetime,timezone
+          expected='eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175'
+          reports=sorted(Path('/tmp/math-git-shards').rglob('shard-*.json'))
+          objs=[]
+          for p in reports:
+            try: objs.append(json.loads(p.read_text(encoding='utf-8')))
+            except Exception: pass
+          indexes=sorted({x.get('shard_index') for x in objs if isinstance(x.get('shard_index'),int)})
+          total_assigned=sum(int(x.get('assigned_blob_oids') or 0) for x in objs)
+          total_checked=sum(int(x.get('all_blobs_sha256_checked') or 0) for x in objs)
+          bytes_hashed=sum(int(x.get('all_blob_bytes_hashed') or 0) for x in objs)
+          readable_totals={x.get('readable_blob_oids_total') for x in objs}
+          readable_total=next(iter(readable_totals)) if len(readable_totals)==1 else None
+          exact_hits=sum(len(x.get('canonical_blob_hits') or []) for x in objs)
+          lfs_hits=sum(len(x.get('lfs_pointer_hits') or []) for x in objs)
+          pair_hits=sum(len(x.get('paired_recovery_hits') or []) for x in objs)
+          complete=(indexes==list(range(16)) and readable_total is not None and total_assigned==readable_total and total_checked==readable_total)
+          dest=Path('math-bank/recovered-git-history'); dest.mkdir(parents=True,exist_ok=True)
+          outz=dest/'みかみ塾数学問題バンク_最終完成版_20260820.zip'
+          outa=dest/'MATHBANK_FINAL_AUDIT_V2.json'
+          outz.unlink(missing_ok=True); outa.unlink(missing_ok=True)
+          pair_source=None
+          for z in Path('/tmp/math-git-shards').rglob('みかみ塾数学問題バンク_最終完成版_20260820.zip'):
+            a=z.with_name('MATHBANK_FINAL_AUDIT_V2.json')
+            if a.is_file() and hashlib.sha256(z.read_bytes()).hexdigest()==expected:
+              shutil.copy2(z,outz); shutil.copy2(a,outa); pair_source=str(z); break
+          pair_found=outz.is_file() and outa.is_file()
+          summary={
+            'workflow':'Math Git History Sharded Recovery',
+            'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
+            'shard_count_expected':16,
+            'shard_indexes_completed':indexes,
+            'shards_completed':len(indexes),
+            'readable_blob_oids_total':readable_total,
+            'assigned_blob_oids_total':total_assigned,
+            'all_blobs_sha256_checked':total_checked,
+            'all_blob_bytes_hashed':bytes_hashed,
+            'exact_coverage_complete':complete,
+            'canonical_blob_hits':exact_hits,
+            'lfs_pointer_hits':lfs_hits,
+            'paired_recovery_hits':pair_hits,
+            'canonical_pair_found':pair_found,
+            'pair_source':pair_source,
+            'expected_sha256':expected,
+            'policy':'16 shards partition every readable reachable blob exactly once; no reconstruction.'
+          }
+          Path('/tmp/math-git-shards-summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(f'coverage_complete={str(complete).lower()}')
+          print(f'pair_found={str(pair_found).lower()}')
+          print(json.dumps(summary,ensure_ascii=False,indent=2),file=__import__('sys').stderr)
+          if not complete: raise SystemExit('FAIL: exhaustive shard coverage incomplete')
+          PY
+      - name: Atomic exact canonical completion
+        if: steps.aggregate.outputs.pair_found == 'true'
+        id: wiring
+        shell: bash
+        run: |
+          set +e
+          python math-bank/app/complete_from_exact_canonical.py \
+            'math-bank/recovered-git-history/みかみ塾数学問題バンク_最終完成版_20260820.zip' \
+            'math-bank/recovered-git-history/MATHBANK_FINAL_AUDIT_V2.json'
+          rc=$?
+          set -e
+          if [ "$rc" -eq 0 ]; then
+            echo 'wiring_ready=true' >> "$GITHUB_OUTPUT"
+          elif [ "$rc" -eq 3 ]; then
+            echo 'wiring_ready=false' >> "$GITHUB_OUTPUT"
+            echo 'EXACT_PAIR_FOUND_BUT_VERIFIED_METADATA_REQUIRED; no inference.'
+          else
+            exit "$rc"
+          fi
+      - name: Install real browser engines after successful wiring
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Start isolated canonical app server
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: |
+          python3 -m http.server 8769 --bind 127.0.0.1 --directory math-bank/app >/tmp/math-shard-real-http.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8769/index.html >/dev/null && exit 0; sleep 1; done
+          cat /tmp/math-shard-real-http.log
+          exit 1
+      - name: Full real 1231 four-browser and A4 regression
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        env:
+          MATH_APP_BASE_URL: http://127.0.0.1:8769/index.html
+          MATH_REAL_DATA_PATH: math-bank/app/app-records.json
+          MATH_REAL_BROWSER_REPORT: math-bank/state/browser-real-regression-latest.json
+          MATH_REAL_PDF_DIR: math-bank/state/real-print-regression
+        run: node math-bank/app/browser_real_regression.mjs
+      - name: Build strict release and PUBLICATION_READY
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: |
+          python math-bank/app/build_release_bundle.py
+          python math-bank/app/verify_publish_readiness.py --pdf-root math-bank/state/real-print-regression
+      - name: Upload aggregate recovery evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-git-history-sharded-recovery-summary
+          path: |
+            /tmp/math-git-shards-summary.json
+            math-bank/recovered-git-history/
+            math-bank/state/canonical-inspection-latest.json
+            math-bank/state/canonical-mapping-evidence-latest.json
+            math-bank/state/canonical-completion-latest.json
+            math-bank/state/browser-real-regression-latest.json
+            math-bank/state/real-print-regression/
+            math-bank/みかみ塾数学問題アプリ_公開候補.zip
+            math-bank/release/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Persist aggregate terminal state race-safely
+        if: always()
+        run: |
+          mkdir -p /tmp/math-shard-state
+          cp /tmp/math-git-shards-summary.json /tmp/math-shard-state/git-history-sharded-recovery-latest.json 2>/dev/null || true
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin math-problem-bank-bootstrap
+          git reset --hard origin/math-problem-bank-bootstrap
+          mkdir -p math-bank/state
+          cp /tmp/math-shard-state/*.json math-bank/state/ 2>/dev/null || true
+          git add math-bank/state/git-history-sharded-recovery-latest.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'record exhaustive sharded math Git recovery state'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
