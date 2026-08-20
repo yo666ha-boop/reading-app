@@ -14,39 +14,10 @@
   "recovery_hint_hits": 0,
   "download_failures": 0,
   "all_members_sha256_checked": 484,
-  "all_member_bytes_hashed": 211050412,
+  "all_member_bytes_hashed": 210456492,
   "zip_signature_members": 3,
   "oversize_members_skipped": 0,
   "artifacts": [
-    {
-      "artifact_id": 9405012070,
-      "name": "github-pages",
-      "size_in_bytes": 1544455,
-      "created_at": "2026-08-20T11:44:01Z",
-      "updated_at": "2026-08-20T11:44:01Z",
-      "expired": false,
-      "workflow_run": {
-        "id": 32365216465,
-        "repository_id": 1211918933,
-        "head_repository_id": 1211918933,
-        "head_branch": "main",
-        "head_sha": "e0d9469abf1389b7a3bf62373c4d21f949c21b9e"
-      },
-      "downloaded": true,
-      "interesting_members": [],
-      "canonical_sha_hits": [],
-      "valid_final_audit_hits": [],
-      "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 1,
-        "members_sha256_checked": 1,
-        "member_bytes_hashed": 7270400,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 1544455
-    },
     {
       "artifact_id": 9404350985,
       "name": "math-other-repos-recovery-diagnostics",
@@ -2136,6 +2107,35 @@
       "archive_download_bytes": 1367832
     },
     {
+      "artifact_id": 9390683665,
+      "name": "github-pages",
+      "size_in_bytes": 1366072,
+      "created_at": "2026-08-20T02:14:59Z",
+      "updated_at": "2026-08-20T02:14:59Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32323933989,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "main",
+        "head_sha": "8900d554cfdf98340d2537552ccd3bb47144d8a5"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 6676480,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1366072
+    },
+    {
       "artifact_id": 9370221269,
       "name": "v10-stage2-release-20260819",
       "size_in_bytes": 491342,
@@ -2248,6 +2248,6 @@
     }
   ],
   "recovered_files": [],
-  "completed_at_utc": "2026-08-20T11:48:12.607174+00:00",
+  "completed_at_utc": "2026-08-20T11:42:57.098866+00:00",
   "policy": "Every member under the size cap is SHA-256 checked regardless of filename/extension. Nested archives are detected by ZIP signature. Exact immutable SHA plus one unambiguous valid final audit from the same Actions artifact is required; no reconstruction."
 }
