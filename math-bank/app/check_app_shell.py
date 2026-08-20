@@ -31,6 +31,12 @@ required_fragments = [
     "print-answers",
     "afterprint",
     "localStorage",
+    "SETTINGS_KEY",
+    "readSettings",
+    "setStoredValue",
+    "restoreSettings",
+    "setStoredValue('major',x.major)",
+    "setStoredValue('minor',x.minor)",
     "正本JSONを読込",
     "app-records.json",
     "canonicalAudit",
@@ -79,5 +85,6 @@ print("canonical=1231 original=1124 variants=107")
 print("browser_strict_shape=PASS browser_audit_flags=PASS generated_parent=PASS")
 print("variant_parent_book_filter=PASS stale_import_clear=PASS")
 print("browser_figure_path_safety=PASS print_figure_readiness=PASS")
+print("dynamic_filter_settings_restore=PASS")
 print("search=PASS json_import=PASS per_question_answer=PASS print_reset=PASS")
 print("javascript_syntax=PASS")
