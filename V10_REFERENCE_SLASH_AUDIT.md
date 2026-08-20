@@ -3,6 +3,7 @@
 status: REOPENED
 phase: SOURCE_REFERENCE_RECOVERY_AND_RULE_EXTRACTION
 started_at_jst: 2026-08-20 19:18+
+last_run_jst: 2026-08-20 19:25+
 branch: v10-reference-slash-audit
 
 ## Why the previous COMPLETE state is invalid
@@ -61,10 +62,13 @@ From the user screenshot:
 - Multiple longer neighboring sentences contain no slash at all, showing that the current global slash density/rules are too sparse relative to the reference target.
 
 ## Current source-recovery status
-- File Library exact-name/semantic searches: reference PDFs not returned in this execution.
-- Connected Google Drive exact-name search: reference PDFs not found.
-- GitHub repository: reference PDFs are not stored in the repo.
-- Current app/runtime and prior audit evidence: recovered.
+### 2026-08-20 19:25+ retry
+- Re-read this checkpoint before work.
+- File Library searched again with exact names and semantic combinations for `英語長文基本`, `英語長文基本解答`, `スラッシュリーディング`, and `長文問題 見本`.
+- The two required PDFs were still not returned. The search instead returned the current app `index.html` and unrelated study-method materials.
+- GitHub branch contents were inspected again; the reference PDFs are not stored in `v10-reference-slash-audit`.
+- Current app/runtime is present and recoverable; `index.html` loads the full grade/textbook data modules and the slash display.
+- No reference-derived edits were made, because doing so before opening the two PDFs would violate the explicit no-guessing requirement.
 
 This missing-reference state must never be papered over by guessing. Continue source recovery first; once the reference PDFs are available, proceed through all 168 passages without stopping at batch boundaries.
 
@@ -78,4 +82,4 @@ This missing-reference state must never be papered over by guessing. Continue so
 - final regression: NOT STARTED
 
 ## Resume point
-Recover/open `英語長文基本.pdf` and `英語長文基本解答.pdf`, then begin page-1-to-final-page extraction. Do not resume the old generic 168/168 COMPLETE state.
+Recover/open `英語長文基本.pdf` and `英語長文基本解答.pdf`, then begin page-1-to-final-page extraction. Do not resume the old generic 168/168 COMPLETE state. If the PDFs become accessible, immediately continue through rule extraction and the 168-passage audit without pausing for a progress-only report.
