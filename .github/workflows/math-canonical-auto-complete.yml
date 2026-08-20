@@ -21,7 +21,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: read
+  contents: write
   actions: read
 
 jobs:
@@ -33,6 +33,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: math-problem-bank-bootstrap
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -180,3 +181,65 @@ jobs:
             math-bank/state/canonical-completion-latest.json
           if-no-files-found: error
           retention-days: 30
+
+      - name: Persist observable auto-completion state
+        if: always()
+        env:
+          PAIR_FOUND: ${{ steps.pair.outputs.pair_found }}
+          WIRING_READY: ${{ steps.wiring.outputs.wiring_ready }}
+          MAPPING_METADATA_REQUIRED: ${{ steps.wiring.outputs.mapping_metadata_required }}
+          JOB_STATUS: ${{ job.status }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          TRIGGERING_SHA: ${{ github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+        shell: bash
+        run: |
+          git pull --rebase origin math-problem-bank-bootstrap || true
+          python - <<'PY'
+          import json
+          import os
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          def truthy(value):
+              return str(value).lower() == 'true'
+
+          completion = None
+          completion_path = Path('math-bank/state/canonical-completion-latest.json')
+          if completion_path.is_file():
+              try:
+                  completion = json.loads(completion_path.read_text(encoding='utf-8'))
+              except Exception:
+                  completion = {'status': 'INVALID_COMPLETION_REPORT'}
+
+          publication_ready = Path('math-bank/release/PUBLICATION_READY.json').is_file()
+          strict_release = Path('math-bank/みかみ塾数学問題アプリ_公開候補.zip').is_file()
+          payload = {
+              'workflow': 'Math Canonical Auto Complete',
+              'run_id': os.environ.get('RUN_ID', ''),
+              'run_attempt': os.environ.get('RUN_ATTEMPT', ''),
+              'event_name': os.environ.get('EVENT_NAME', ''),
+              'triggering_sha': os.environ.get('TRIGGERING_SHA', ''),
+              'job_status_at_record': os.environ.get('JOB_STATUS', ''),
+              'recorded_at_utc': datetime.now(timezone.utc).isoformat(),
+              'canonical_pair_found': truthy(os.environ.get('PAIR_FOUND', '')),
+              'wiring_ready': truthy(os.environ.get('WIRING_READY', '')),
+              'mapping_metadata_required': truthy(os.environ.get('MAPPING_METADATA_REQUIRED', '')),
+              'publication_ready': publication_ready,
+              'strict_release_created': strict_release,
+              'completion_status': completion.get('status') if isinstance(completion, dict) else None,
+              'policy': 'No reconstruction, no guessed metadata, no partial-161 or diagnostic-1271 promotion.'
+          }
+          out = Path('math-bank/state/auto-complete-latest.json')
+          out.parent.mkdir(parents=True, exist_ok=True)
+          out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print(json.dumps(payload, ensure_ascii=False, indent=2))
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- math-bank/state/auto-complete-latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'record math canonical auto-completion state'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
