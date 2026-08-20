@@ -1,7 +1,7 @@
 name: v10 slash quality
 on:
   push:
-    branches: [v10-slash-rebuild]
+    branches: [v10-slash-rebuild, v10-reference-slash-audit]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -17,6 +17,8 @@ jobs:
         with:
           node-version: '20'
       - run: npm install --no-save --no-package-lock jsdom@24.1.3 playwright@1.55.0
+      - name: Authoritative reference sample gate
+        run: node v10_reference_slash_gate.js
       - name: Existing semantic runtime regression
         run: node v10_semantic_runtime_audit.js
       - name: Meaning-chunk slash quality gate
