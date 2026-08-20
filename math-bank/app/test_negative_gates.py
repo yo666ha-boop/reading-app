@@ -32,6 +32,7 @@ def valid_original() -> dict:
         "id": "NEG-BASE-001",
         "grade": 1,
         "unit": {"major": "数と式", "minor": "正負の数", "tags": []},
+        "title": "確認問題",
         "skill": "計算",
         "question_format": "計算",
         "difficulty": "basic",
@@ -43,6 +44,7 @@ def valid_original() -> dict:
             "parent_id": None,
         },
         "question": "1+1を計算しなさい。",
+        "choices": None,
         "answer": "2",
         "explanation": "",
         "figure_refs": [],
@@ -133,6 +135,22 @@ with tempfile.TemporaryDirectory() as td_raw:
     bad["grade"] = True
     must_validator_reject(td, bad, "grade_bool")
 
+    bad = valid_original()
+    del bad["title"]
+    must_validator_reject(td, bad, "missing_title")
+
+    bad = valid_original()
+    del bad["choices"]
+    must_validator_reject(td, bad, "missing_choices")
+
+    bad = valid_original()
+    bad["choices"] = "A / B"
+    must_validator_reject(td, bad, "choices_non_array")
+
+    bad = valid_original()
+    bad["choices"] = ["A", ""]
+    must_validator_reject(td, bad, "blank_choice")
+
     # 7) Release packaging must reject a missing local figure and include a present one.
     old_release_root = release_bundle.ROOT
     try:
@@ -194,6 +212,8 @@ print("figure_path_traversal=REJECTED")
 print("figure_non_image_payload=REJECTED")
 print("figure_unsupported_scheme=REJECTED")
 print("validator_browser_shape_parity_negatives=REJECTED")
+print("missing_title_or_choices=REJECTED")
+print("invalid_choices=REJECTED")
 print("release_missing_local_figure=REJECTED")
 print("release_present_local_figure=COLLECTED")
 print("legacy_canonical_1231_detected_without_guess_promotion=PASS")
