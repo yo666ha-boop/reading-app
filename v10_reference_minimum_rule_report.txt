@@ -1,7 +1,7 @@
-REFERENCE MINIMUM RULE AUDIT passages=168/168 rows=1854 reference_marked=155/168 slashes=1743 unsplit_rows=648 stale=13
-STALE REFERENCE PASSAGES: 51,52,53,57,61,62,63,64,67,68,70,141,145
-REFERENCE MINIMUM RULE FAIL 120
-- STALE_REFERENCE_PASSAGES 51,52,53,57,61,62,63,64,67,68,70,141,145
+REFERENCE MINIMUM RULE AUDIT passages=168/168 rows=1854 reference_marked=158/168 slashes=1754 unsplit_rows=639 stale=10
+STALE REFERENCE PASSAGES: 53,61,62,63,64,67,68,70,141,145
+REFERENCE MINIMUM RULE FAIL 109
+- STALE_REFERENCE_PASSAGES 53,61,62,63,64,67,68,70,141,145
 - 1|サンシャイン|PROGRAM 3-3#3: BOUNDARY_BEFORE_SO_MISSED :: I am so excited.
 - 1|サンシャイン|PROGRAM 4-2#6: BOUNDARY_BEFORE_AND_MISSED :: He is / on the track and field team.
 - 1|サンシャイン|PROGRAM 4-2#10: BOUNDARY_BEFORE_AND_MISSED :: Is he / on the track and field team?
@@ -10,23 +10,12 @@ REFERENCE MINIMUM RULE FAIL 120
 - 1|サンシャイン|Step 6 / Our Project 3 / Power-Up 6#1: COMMA_BOUNDARY_MISSED :: Dear Anna,
 - 1|サンシャイン|Step 6 / Our Project 3 / Power-Up 6#13: COMMA_BOUNDARY_MISSED :: Best wishes,
 - 1|ニューホライズン|Unit 1-3#8: BOUNDARY_BEFORE_ABOUT_MISSED :: How about you?
-- 1|ニューホライズン|Unit 4-3#3: COMMA_BOUNDARY_MISSED :: Yes, I am.
-- 1|ニューホライズン|Unit 4-3#5: BOUNDARY_BEFORE_TO_MISSED :: Please come to the front.
-- 1|ニューホライズン|Unit 4-3#6: COMMA_BOUNDARY_MISSED :: Read this, please.
-- 1|ニューホライズン|Unit 4-3#7: COMMA_BOUNDARY_MISSED :: Look at me, please.
-- 1|ニューホライズン|Unit 4-3#7: BOUNDARY_BEFORE_AT_MISSED :: Look at me, please.
-- 1|ニューホライズン|Unit 4-3#9: COMMA_BOUNDARY_MISSED :: Yes, it is.
-- 1|ニューホライズン|Unit 5-1#7: BOUNDARY_BEFORE_ABOUT_MISSED :: I write about this local spot.
-- 1|ニューホライズン|Unit 5-1#9: COMMA_BOUNDARY_MISSED :: I like this blog, too.
 - 1|ニューホライズン|Unit 5-2#2: BOUNDARY_BEFORE_ABOUT_MISSED :: The blog is about his life.
 - 1|ニューホライズン|Unit 5-2#5: COMMA_BOUNDARY_MISSED :: Yes, he does.
 - 1|ニューホライズン|Unit 5-2#6: BOUNDARY_BEFORE_IN_MISSED :: The dolphin is in the water.
 - 1|ニューホライズン|Unit 5-2#9: BOUNDARY_BEFORE_ABOUT_MISSED :: Does he write about the dolphin?
 - 1|ニューホライズン|Unit 5-2#10: COMMA_BOUNDARY_MISSED :: Yes, he does.
 - 1|ニューホライズン|Unit 5-3#5: BOUNDARY_BEFORE_OF_MISSED :: A fried egg is / on top of the dish.
-- 1|ニューホライズン|Unit 6-3#4: COMMA_BOUNDARY_MISSED :: It is a prop, too.
-- 1|ニューホライズン|Unit 6-3#8: BOUNDARY_BEFORE_OR_MISSED :: Which do you like, / the cushion or the towel?
-- 1|ニューホライズン|Unit 6-3#10: BOUNDARY_BEFORE_AND_MISSED :: The cushion and the towel are different.
 - 1|ニューホライズン|Unit 8-1#1: BOUNDARY_BEFORE_IN_MISSED :: This is a volunteer in Kenya.
 - 1|ニューホライズン|Unit 8-1#2: BOUNDARY_BEFORE_IN_MISSED :: The children are in need.
 - 1|ニューホライズン|Unit 8-1#5: COMMA_BOUNDARY_MISSED :: I respect him, too.
@@ -118,6 +107,6 @@ REFERENCE MINIMUM RULE FAIL 120
 - 3|ニューホライズン|Unit 5-3#7: BOUNDARY_BEFORE_AFTER_MISSED :: Even after his release, / he continued / to defend free speech / and equal treatment.
 - 3|ニューホライズン|Unit 6-2#7: BOUNDARY_BEFORE_TO_MISSED :: We send the backpack / through the program / rather / than to an unknown person.
 - 3|ニューホライズン|Unit 6-3#9: TOO_FEW_SLASHES_LONG_SENTENCE words=10 :: A teacher there will decide how the books are used.
-- BROWSER Uncaught [Error: English mismatch 51#6: Read this English story, please. <> Read this, please.]
+- BROWSER Uncaught [Error: Row mismatch 53]
 - BROWSER Uncaught [Error: Row mismatch 61]
 - BROWSER Uncaught [Error: English mismatch 141#9: Probably, the project can help other patients, too. <> Probably, the project can help other patients too.]
