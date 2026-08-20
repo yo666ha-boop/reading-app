@@ -1,0 +1,111 @@
+name: Math Expanded Variant Layer
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-expanded-variant-layer.yml'
+      - 'math-bank/app/validate_expanded_variant_layer.py'
+      - 'math-bank/app/compose_expanded_app_records.py'
+      - 'math-bank/app/test_expanded_variant_layer.py'
+      - 'math-bank/app/upgrade_index_for_expanded_variants.py'
+      - 'math-bank/app/verified-expanded-variants.json'
+
+concurrency:
+  group: math-expanded-variant-layer
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  validate-and-upgrade-app:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile expanded variant pipeline
+        run: |
+          python -m py_compile \
+            math-bank/app/validate_app_records.py \
+            math-bank/app/validate_expanded_variant_layer.py \
+            math-bank/app/compose_expanded_app_records.py \
+            math-bank/app/test_expanded_variant_layer.py \
+            math-bank/app/upgrade_index_for_expanded_variants.py
+
+      - name: Run positive and negative expanded variant gates
+        working-directory: math-bank/app
+        run: python test_expanded_variant_layer.py
+
+      - name: Upgrade app UI and runtime gate from frozen 1231 to dynamic verified variants
+        run: python math-bank/app/upgrade_index_for_expanded_variants.py
+
+      - name: Assert expansion-mode app contract
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('math-bank/app/index.html')
+          s=p.read_text(encoding='utf-8')
+          required=[
+            'const BASELINE={original:1124,baselineVariant:107',
+            'variant>=BASELINE.baselineVariant',
+            'taxonomyFail===0',
+            '拡張ゲート PASS',
+            '追加${a.expandedVariant}問',
+          ]
+          forbidden=[
+            'const CANONICAL={total:1231',
+            '以外は追加しません',
+            'rs.length===CANONICAL.total',
+            '正本1231問の完全ゲート',
+          ]
+          for x in required:
+            assert x in s, f'missing expansion app token: {x}'
+          for x in forbidden:
+            assert x not in s, f'frozen gate still present: {x}'
+          print('PASS_APP_DYNAMIC_VERIFIED_VARIANT_GATE')
+          PY
+
+      - name: Persist upgraded app and tested expansion state
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from datetime import datetime,timezone
+          from pathlib import Path
+          p=Path('math-bank/state/variant-expansion-latest.json')
+          d=json.loads(p.read_text(encoding='utf-8')) if p.exists() else {}
+          d.update({
+            'status':'IN_PROGRESS_BASE_RECOVERY_THEN_VARIANT_GENERATION',
+            'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
+            'app_dynamic_expansion_gate':'PASS',
+            'expanded_validator':'PASS_POSITIVE_NEGATIVE_TESTS',
+            'expanded_composer':'IMPLEMENTED',
+            'expanded_verified_variants':len(json.loads(Path('math-bank/app/verified-expanded-variants.json').read_text(encoding='utf-8')).get('variants',[])),
+            'publication_ready':False,
+            'next':'recover exact base records; generate independently recalculated variants from each actual parent; compose and run real browser/A4 regression'
+          })
+          p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          mkdir -p /tmp/math-expanded
+          cp math-bank/app/index.html /tmp/math-expanded/index.html
+          cp math-bank/state/variant-expansion-latest.json /tmp/math-expanded/variant-expansion-latest.json
+          git fetch origin math-problem-bank-bootstrap
+          git reset --hard origin/math-problem-bank-bootstrap
+          cp /tmp/math-expanded/index.html math-bank/app/index.html
+          cp /tmp/math-expanded/variant-expansion-latest.json math-bank/state/variant-expansion-latest.json
+          git add math-bank/app/index.html math-bank/state/variant-expansion-latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'math app: enable dynamic verified variant expansion'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
