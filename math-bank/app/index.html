@@ -90,7 +90,7 @@ function sourceBook(r){return r?.source?.book??''}
 function sourceAnchor(r){if(!isVariant(r))return r;const p=recordById.get(r?.source?.parent_id);return p&&!isVariant(p)?p:r}
 function parentBookOf(r){return sourceBook(sourceAnchor(r))}
 function labelDifficulty(v){return ({basic:'基礎',standard:'標準',advanced:'発展',unknown:'未分類'})[v]??v}
-function saveSettings(){try{localStorage.setItem(SETTINGS_KEY,JSON.stringify(Object.fromEntries(IDS.map(id=>[id,$(id).value]))))}catch{}}
+function saveSettings(){if(!records.length)return;try{localStorage.setItem(SETTINGS_KEY,JSON.stringify(Object.fromEntries(IDS.map(id=>[id,$(id).value]))))}catch{}}
 function readSettings(){try{const x=JSON.parse(localStorage.getItem(SETTINGS_KEY)||'{}');return isObj(x)?x:{}}catch{return {}}}
 function setStoredValue(id,value){if(value===null||value===undefined)return;const el=$(id),v=String(value);if(id==='search'){el.value=v;return}if(id==='count'){el.value=String(Math.max(1,Math.min(200,Number(v)||10)));return}if([...el.options].some(o=>o.value===v))el.value=v}
 function restoreSettings(){const x=readSettings();for(const id of ['grade','kind','count','order','search'])setStoredValue(id,x[id]);refreshFilters();setStoredValue('major',x.major);refreshFilters();setStoredValue('minor',x.minor);refreshFilters();for(const id of ['skill','difficulty','qformat','book'])setStoredValue(id,x[id]);updateSummary();saveSettings()}
