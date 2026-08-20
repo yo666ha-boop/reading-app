@@ -1,6 +1,6 @@
 REFERENCE MINIMUM RULE AUDIT passages=168/168 rows=1854 reference_marked=167/168 slashes=1794 unsplit_rows=614 stale=3
 STALE REFERENCE PASSAGES: 53,141,145
-REFERENCE MINIMUM RULE FAIL 27
+REFERENCE MINIMUM RULE FAIL 28
 - STALE_REFERENCE_PASSAGES 53,141,145
 - 1|サンシャイン|PROGRAM 3-3#3: CONJUNCTION_BOUNDARY_BEFORE_SO_MISSED :: I am so excited.
 - 2|サンシャイン|PROGRAM 7-3#13: PREPOSITION_BOUNDARY_BEFORE_AT_MISSED :: Its activity is different / in the daytime / and at nighttime.
@@ -27,4 +27,5 @@ REFERENCE MINIMUM RULE FAIL 27
 - 3|ニューホライズン|Unit 6-2#7: PREPOSITION_BOUNDARY_BEFORE_TO_MISSED :: We send the backpack / through the program / rather / than to an unknown person.
 - BROWSER Uncaught [Error: Row mismatch 53]
 - BROWSER Uncaught [Error: English mismatch 141#9: Probably, the project can help other patients, too. <> Probably, the project can help other patients too.]
+- BROWSER Uncaught [Error: Recovery unknown English 145#6: I have never been there either.]
 - BROWSER reference-load v10_reference_slash_manual_999_recovery.js: Recovery unknown English 145#6: I have never been there either.
