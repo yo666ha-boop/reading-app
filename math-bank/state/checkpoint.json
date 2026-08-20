@@ -1,6 +1,6 @@
 {
   "project": "mikami-math-problem-bank",
-  "status": "APP_BROWSER_STRICT_GATE_HARDENED_PENDING_EXACT_1231_RECOVERY",
+  "status": "RELEASE_PIPELINE_READY_PENDING_EXACT_1231_RECOVERY",
   "current_stage": "EXACT_1231_RECOVERY_STRICT_VALIDATION_AND_WIRING",
   "canonical": {
     "final_records": 1231,
@@ -19,12 +19,7 @@
     "zip_filename": "みかみ塾数学問題バンク_最終完成版_20260820.zip",
     "zip_recorded_path": "/mnt/data/みかみ塾数学問題バンク_最終完成版_20260820.zip",
     "zip_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
-    "audit_filename": "MATHBANK_FINAL_AUDIT_V2.json",
-    "audit_recorded_path": "/mnt/data/mathbank_run/MATHBANK_FINAL_AUDIT_V2.json",
-    "recorded_intermediate_names": [
-      "winpass_verified_union570_authoritative_norm_20260820",
-      "jitsuren_verified_union225_complete27_20260820"
-    ]
+    "audit_filename": "MATHBANK_FINAL_AUDIT_V2.json"
   },
   "policy": {
     "freeze_final_record_count": 1231,
@@ -35,60 +30,44 @@
     "zip_candidate_must_match_recorded_sha256": true,
     "zip_hash_override_allowed": false,
     "app_records_must_pass_strict_validator": true,
-    "browser_gate_must_check_structure_audit_and_parent_links": true,
     "github_main_touched": false
   },
   "今回完了した内容": [
-    "Retried local/container and Python execution; both still return ClientResponseError",
-    "Kept exact canonical recovery search results: final ZIP/audit and authoritative intermediate names still not recovered from File Library or Google Drive",
-    "Made final ZIP SHA-256 verification non-bypassable in recover_canonical_app_records.py; ZIP candidates cannot disable or override the recorded hash",
-    "Added negative recovery tests for fake same-name ZIP, known 161-record partial JSON, malformed 1231-count JSON, and strict-validator invalid data",
-    "Added the negative gates to GitHub Actions",
-    "Audited the actual current index.html blob and found the browser canonical gate was weaker than the Python strict validator",
-    "Strengthened browser canonicalAudit to check grade, difficulty, unit, skill, question format, source structure, question/answer, explanation, variant_group, tags/prerequisites, figure_refs structure, all three audit verification flags, and generated-parent existence/original-parent relationship",
-    "Changed browser gate so draw/reroll/answer-display/print remain locked unless the complete browser strict gate passes",
-    "Fixed source-book filtering so generated variants follow their parent original's book instead of disappearing whenever a book filter is selected",
-    "Changed manual JSON parse failure to clear records and previously rendered questions so stale canonical output cannot remain visible after a failed import",
-    "Expanded check_app_shell.py to enforce the new browser strict-gate, parent-book filter, stale-import clearing, and JavaScript syntax contract",
-    "main remained untouched"
+    "Rechecked GitHub branch HEAD and confirmed all work remains isolated on math-problem-bank-bootstrap; main untouched",
+    "Rechecked math-bank/app and confirmed strict validator, canonical recovery contract, negative gates, strict browser gate, and UI shell remain present",
+    "Re-searched File Library/conversation scope for the exact final ZIP, final audit, and recorded intermediate names; exact canonical artifact still not recovered",
+    "Re-searched Google Drive for the final canonical ZIP name; no matching file recovered",
+    "Added build_release_bundle.py, which refuses to build unless exact app-records.json exists and passes the strict validator",
+    "Release builder now emits a release manifest with SHA-256 hashes and a publication candidate ZIP only after strict canonical 1231 validation",
+    "Updated GitHub Actions so the release builder must block with rc=3 while exact canonical data is absent, and must build only after strict data validation passes",
+    "No fake ZIP, 161-record partial data, malformed 1231 data, new variants, or reconstructed old data were promoted"
   ],
-  "現在どの工程にいるか": "App shell, UI safety, browser canonical validation, Python strict validation, recovery identity, and negative rejection gates are hardened. The remaining data-critical step is recovery of the already-completed exact 1231-record canonical artifact and wiring it as app-records.json.",
+  "現在どの工程にいるか": "Exact canonical data recovery remains the only data-critical blocker. App shell, browser/Python strict gates, negative gates, recovery identity, and release packaging pipeline are ready.",
   "残っている作業": [
     "Recover exact canonical ZIP and MATHBANK_FINAL_AUDIT_V2.json",
-    "Verify recovered ZIP SHA-256 equals eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
-    "Run recover_canonical_app_records.py and strict validate_app_records.py on the real data",
+    "Verify ZIP SHA-256 equals eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
+    "Run recover_canonical_app_records.py and strict validate_app_records.py on real data",
     "Wire exact app-records.json",
-    "Verify all figure_refs and mathematical rendering with real records",
-    "Run iPhone/Fire/PC responsive regression with real records",
-    "Run A4 question/answer print regression with real records",
+    "Run figure/math real-data audit",
+    "Run iPhone/Fire/PC real-data regression",
+    "Run A4 question/answer print regression",
+    "Build strict release bundle and manifest",
     "Prepare isolated publication target without touching reading-app main",
-    "Run final public-URL real-data test",
-    "Package final app ZIP, final audit report, and final checkpoint"
+    "Run public URL real-data test",
+    "Package final ZIP/audit/checkpoint"
   ],
-  "次回どこから開始するか": "First recheck exact canonical artifact/audit availability. If recovered, immediately execute hash verification -> strict recovery -> strict validator -> app-records wiring. If still unavailable, inspect CI evidence for the newest shell/recovery/negative gates and continue non-data browser/publication preparation without inventing records.",
-  "次に進むべき工程": "After exact 1231 wiring, continue without stopping through figure/math audit -> device regression -> A4 print regression -> isolated publication -> public URL real-data test -> final package/audit.",
-  "recovery_search_results": {
-    "local_runtime": "CLIENT_RESPONSE_ERROR",
-    "python_runtime": "CLIENT_RESPONSE_ERROR",
+  "次回どこから開始するか": "Recheck exact canonical artifact/audit availability first. On recovery, immediately run hash verification -> canonical recovery -> strict validator -> app-records wiring -> real-data regressions without stopping.",
+  "次に進むべき工程": "After exact 1231 wiring, continue through figure/math audit -> iPhone/Fire/PC -> A4 print -> strict release bundle -> isolated publication -> public URL test -> final package.",
+  "実PASS_FAIL_エラー_成果物_URL": {
+    "branch_head_before_checkpoint": "7a8ecb3f12a36cfc9280360df0780200bc9b0173",
+    "new_release_builder_commit": "2b9eae0914f24898eb203ed6b0e6b36f46fe2a20",
+    "workflow_release_gate_commit": "7a8ecb3f12a36cfc9280360df0780200bc9b0173",
+    "exact_zip_recovered": false,
+    "final_audit_recovered": false,
     "file_library_exact_final": false,
-    "file_library_intermediate_names": false,
     "google_drive_exact_final": false,
-    "google_drive_recent_zip_since_2026_08_18": false,
-    "google_drive_intermediate_names": false,
-    "known_partial_checkpoint_records": 161,
-    "partial_promoted": false
+    "release_data_gate": "BLOCKED_EXPECTED_UNTIL_EXACT_1231",
+    "main_touched": false
   },
-  "github": {
-    "repository": "yo666ha-boop/reading-app",
-    "branch": "math-problem-bank-bootstrap",
-    "main_touched": false,
-    "commits_this_immediate_run": [
-      "999764b92fbaade3cfc862a0bed1088bbaeb84c3",
-      "ccaaf1be3e8a0ae17b451355b95fd39a803c0fe0",
-      "3c530e31a265b4c3ea78c1fd049fed934200c8c3",
-      "0b28681798d824969d64424b285e99db92fd1232",
-      "a53bc5e32bd11073ab15d2822f524d72ce15da32"
-    ]
-  },
-  "resume_rule": "If current stage is unfinished, continue from this exact point. If exact data recovery/wiring passes, immediately advance to real-data regressions and publication. Never stop merely because one substage completed; full app completion is the only completion condition."
+  "resume_rule": "Never stop at a substage. Full app completion is the only completion condition."
 }
