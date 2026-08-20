@@ -1,96 +1,90 @@
 # V10 Reference-Based Slash Audit
 
-status: REOPENED
-phase: SOURCE_REFERENCE_RECOVERY_AND_RULE_EXTRACTION
+status: ACTIVE
+phase: FULL_168_REFERENCE_REAUDIT
 started_at_jst: 2026-08-20 19:18+
-last_run_jst: 2026-08-20 19:25+
+last_run_jst: 2026-08-20 19:42+
 branch: v10-reference-slash-audit
 
 ## Why the previous COMPLETE state is invalid
-The previous final audit used a generic rule set described as `front-to-back meaning chunks` and reported:
+The previous final audit used a generic `front-to-back meaning chunks` rule set and reported:
 - passages: 168/168
 - rows: 1856
 - slashes: 450
 - unsplit rows: 1409
 
-A user-visible production example exposed that this is not sufficient and does not match the supplied long-reading reference material. The defect is not just one bad slash position: many longer sentences are left with no slash at all, while some existing cuts break a natural unit (example reported by the user: `The population is now / in danger.`).
+The user-visible production example showed that this generic pass is too sparse compared with the supplied reference. Therefore the old `slash_human_audited: 168/168 COMPLETE` is invalid for reference-quality approval.
 
-Therefore the previous `slash_human_audited: 168/168 COMPLETE` must not be treated as reference-quality approval.
+## Authoritative source of truth — now recovered and inspected
+The user re-supplied the exact reference pair in the conversation:
+- `英語長文基本.pdf` — 46 pages
+- `英語長文基本解答.pdf` — 10 pages
 
-## Source of truth
-The only allowed benchmark for this pass is the user-supplied reference pair:
-- `英語長文基本.pdf`
-- `英語長文基本解答.pdf`
+Both rendered page sets are available and were inspected. The answer book is authoritative for slash placement and the corresponding left-to-right Japanese support line. Total pages reviewed: 56.
 
-The second file was supplied specifically as the model for slash-reading placement and the corresponding Japanese reading/translation presentation.
+The previous assumption that these PDFs were still unavailable is obsolete. Do not return to source-recovery waiting.
 
-Do not substitute generic slash-reading theory for these files.
+## Reference-derived slash style
+The reference is noticeably finer than the old runtime. Representative examples from `英語長文基本解答.pdf` include:
+- `Thank you. / I visited America / last year / and stayed there / for two months.`
+- `I went to school / to study English. / Also, / I'm in the English club / in this school.`
+- `What did you do / last Sunday, / Kenta?`
+- `If you are interested, / you should go / on a weekday. / The movie is very popular, / so a lot of people go to see it / on the weekend.`
+- `The book was written / by a famous writer.`
+- `I played soccer / at school / in Canada / for three years.`
+- `I didn't know / that there is a soccer team / in this school.`
+- `Playing in bad weather / isn't difficult / for me.`
 
-## Required execution order
-1. Recover/open both reference PDFs.
-2. Review them from first page to last page.
-3. Extract an explicit reference rulebook from real examples:
-   - where slashes are inserted
-   - where they are intentionally omitted
-   - how fine/coarse the chunks are
-   - treatment of clauses, infinitives, prepositional phrases, conjunctions, modifiers, fixed expressions, complements, and short sentences
-   - how the Japanese line corresponds to each English chunk
-   - distinction between front-to-back reading support and natural full translation
-4. Build a benchmark set of representative examples from the PDFs.
-5. Re-audit all 168 passages from passage 001 through 168, sentence by sentence and slash row by slash row.
-6. Repair every mismatch; do not only patch examples found by the user.
-7. Recheck English/Japanese chunk alignment and natural full translation.
-8. Recheck A/B questions/evidence if any English sentence changes.
-9. Re-run vocabulary/grammar chronology, DOM, browser, iPhone-equivalent, and print checks.
-10. Only then mark the slash audit COMPLETE.
+Reference behavior:
+1. Use fine, useful left-to-right meaning chunks; do not leave most longer sentences unsplit.
+2. Time/place/duration phrases are frequently independent chunks.
+3. Purpose infinitives are commonly separated.
+4. If/because/when and other subordinate clauses are commonly separated.
+5. Major coordinated units and discourse markers may be separated.
+6. Prepositional and passive-agent phrases may form their own chunks.
+7. Content clauses after know/think may be separated.
+8. Short markers such as `Yes,`, `Well,`, `Also,`, `Sure.` may be isolated.
+9. Questions may split before time/place/vocative units.
+10. A generic rule such as “never split be + complement” is not authoritative; the reference itself has `Playing in bad weather / isn't difficult / for me.` and `The book was written / by a famous writer.`
+11. Short/simple complete sentences are not mechanically split; examples such as `You speak English very well.` and `Have you ever played soccer?` remain whole.
+12. Japanese support must follow the English chunk order and granularity; it is not merely a natural full translation placed below.
+13. No fixed word-count algorithm.
 
-## Failure categories to record
-- TOO_FEW_SLASHES
-- TOO_MANY_SLASHES
-- WRONG_BOUNDARY
-- FIXED_UNIT_SPLIT
-- CLAUSE_BOUNDARY_MISSED
-- MODIFIER_BOUNDARY_MISSED
-- EN_JP_CHUNK_MISMATCH
-- FRONT_READ_JP_UNNATURAL
-- NATURAL_TRANSLATION_MISMATCH
-- SHORT_SENTENCE_SHOULD_REMAIN_UNSPLIT
+Full rules and benchmark examples are recorded in `v10_reference_slash_rules.json` with:
+- `verified_complete: true`
+- `reference_files_read: 2`
+- `reference_pages_read: 56`
 
-## Confirmed production failure example
-From the user screenshot:
-- `The population is now / in danger.` -> current boundary is invalid because `in danger` is split from the predicate unit.
-- Multiple longer neighboring sentences contain no slash at all, showing that the current global slash density/rules are too sparse relative to the reference target.
+## Correction to earlier local diagnosis
+The main screenshot defect is the global slash density/style mismatch: several longer neighboring sentences are unsplit while the reference would normally break meaningful time/place/purpose/clause units.
 
-## Current source-recovery status
-### 2026-08-20 19:25+ retry
-- Re-read this checkpoint before work.
-- File Library searched again with exact names and semantic combinations for `英語長文基本`, `英語長文基本解答`, `スラッシュリーディング`, and `長文問題 見本`.
-- Google Drive was searched by exact title, broad `基本`, PDF type, and the historical late-April upload window.
-- GitHub branch/commit/tree searches were also checked for the two titles.
-- The two required PDFs were still not returned by the currently exposed indexes.
-- Current app/runtime and all 168 passage audit assets are present and recoverable.
-- No reference-derived slash edits were made, because doing so before opening the two PDFs would violate the explicit no-guessing requirement.
+Do **not** automatically reject `The population is now / in danger.` merely because a be/predicate sequence is split. The actual reference permits comparable predicate/prepositional splitting. That row must be judged in context against the reference style, not against the old generic ban.
 
-## Active engineering work completed in this run
-- Inspected `v10_slash_quality_audit.js` directly.
-- Confirmed the old gate validates generic structural heuristics (sentence preservation, short-sentence no-split rule, EN/JP chunk count, determiner/core-grammar/verb-object checks, selected hard-coded examples) but does not prove that the two authoritative PDFs were read or that their slash density/pattern was reproduced.
-- Added `v10_reference_slash_rules.json` as an explicit state file. It is intentionally `verified_complete: false` until both authoritative PDFs have been read fully and real reference rules/examples have been recorded.
-- Added `v10_reference_slash_gate.js`. It blocks the quality pipeline unless both exact source filenames are declared, `reference_files_read` is 2, page review is recorded, non-empty reference-derived rules exist, the 168-passage target remains intact, and `verified_complete` is true.
-- Updated `.github/workflows/v10-slash-quality.yml` so the `v10-reference-slash-audit` branch runs this authoritative-reference gate before the old semantic/slash/browser/print checks.
-- This prevents the old generic `168/168 COMPLETE` result from being accepted again while the actual reference PDFs are missing.
-
-This missing-reference state must never be papered over by guessing. Continue source recovery first; once the reference PDFs are available, proceed through all 168 passages without stopping at batch boundaries.
-
-## Progress checkpoint
-- reference PDFs opened: 0/2
-- reference pages reviewed: 0/?
-- reference rulebook: NOT YET EXTRACTED
-- benchmark examples: 0
-- passages re-audited against actual reference: 0/168
-- passages repaired in this pass: 0
+## Current engineering state
+Completed this pass:
+- actual references recovered: 2/2
+- actual reference pages reviewed: 56/56
+- reference rulebook: EXTRACTED
+- benchmark examples: RECORDED
 - false-complete prevention gate: INSTALLED
 - branch workflow reference gate: INSTALLED
+- automation resume prompt: UPDATED so it never goes back to “PDF missing”
+- passage 001 source/slash record opened for first reference-based re-audit
+
+Still required:
+1. Re-audit passages 001 through 168 sentence-by-sentence and slashRow-by-slashRow against the actual reference style.
+2. Repair TOO_FEW_SLASHES / TOO_MANY_SLASHES / WRONG_BOUNDARY / CLAUSE_BOUNDARY_MISSED / MODIFIER_BOUNDARY_MISSED / EN_JP_CHUNK_MISMATCH / FRONT_READ_JP_UNNATURAL / NATURAL_TRANSLATION_MISMATCH / SHORT_SENTENCE_SHOULD_REMAIN_UNSPLIT.
+3. Replace old generic quality heuristics where they conflict with the reference.
+4. Re-run full 168 coverage, vocabulary/grammar chronology, A/B evidence integrity, DOM, Chromium/Firefox/WebKit, iPhone-equivalent, A4 print, and public-page validation.
+5. Only then mark COMPLETE.
+
+## Progress checkpoint
+- reference PDFs opened: 2/2
+- reference pages reviewed: 56/56
+- reference rulebook: COMPLETE
+- passages opened in new reference pass: 1/168
+- passages fully re-audited/repaired in new reference pass: 0/168
 - final regression: NOT STARTED
 
 ## Resume point
-Recover/open `英語長文基本.pdf` and `英語長文基本解答.pdf`, then begin page-1-to-final-page extraction. Do not resume the old generic 168/168 COMPLETE state. If the PDFs become accessible, immediately continue through rule extraction and the 168-passage audit without pausing for a progress-only report.
+Continue passage 001 immediately using the reference-derived rules, then proceed 002 → 168 without stopping at artificial batch boundaries. If execution is interrupted, resume from the exact last completed passage/sentence recorded here and continue until final regression and public validation pass.
