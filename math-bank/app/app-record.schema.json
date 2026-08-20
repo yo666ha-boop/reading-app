@@ -4,8 +4,8 @@
   "title": "Mikami Math App Record",
   "type": "object",
   "required": [
-    "id", "grade", "unit", "skill", "question_format", "difficulty", "source",
-    "question", "answer", "explanation", "figure_refs", "variant_group", "audit"
+    "id", "grade", "unit", "title", "skill", "question_format", "difficulty", "source",
+    "question", "choices", "answer", "explanation", "figure_refs", "variant_group", "audit"
   ],
   "properties": {
     "id": {"type": "string", "minLength": 1},
@@ -20,6 +20,7 @@
       },
       "additionalProperties": false
     },
+    "title": {"type": "string"},
     "skill": {"type": "string", "minLength": 1},
     "question_format": {"type": "string", "minLength": 1},
     "difficulty": {"type": "string", "enum": ["basic", "standard", "advanced", "unknown"]},
@@ -36,6 +37,12 @@
       "additionalProperties": false
     },
     "question": {"type": "string", "minLength": 1},
+    "choices": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "array", "items": {"type": "string", "minLength": 1}}
+      ]
+    },
     "answer": {"type": "string", "minLength": 1},
     "explanation": {"type": "string"},
     "figure_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
