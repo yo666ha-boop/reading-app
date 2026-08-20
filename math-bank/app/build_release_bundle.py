@@ -8,6 +8,8 @@ import sys
 import zipfile
 from pathlib import Path
 
+from recover_canonical_app_records import local_figure_ref
+
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT.parent / "release"
 DATA = ROOT / "app-records.json"
@@ -21,6 +23,31 @@ def sha256(path: Path) -> str:
         for chunk in iter(lambda: f.read(1024 * 1024), b""):
             h.update(chunk)
     return h.hexdigest()
+
+
+def load_records() -> list[dict]:
+    obj = json.loads(DATA.read_text(encoding="utf-8"))
+    rows = obj if isinstance(obj, list) else obj.get("records", [])
+    if not isinstance(rows, list):
+        raise ValueError("app-records.json does not contain a records list")
+    return rows
+
+
+def collect_figure_assets(records: list[dict]) -> tuple[list[Path], int]:
+    local: dict[str, Path] = {}
+    external_count = 0
+    for r in records:
+        for ref in r.get("figure_refs", []):
+            rel = local_figure_ref(ref)
+            if rel is None:
+                external_count += 1
+                continue
+            key = rel.as_posix()
+            src = ROOT.joinpath(*rel.parts)
+            if not src.is_file():
+                raise ValueError(f"missing local figure asset: {key}")
+            local[key] = src
+    return [local[k] for k in sorted(local)], external_count
 
 
 def main() -> int:
@@ -40,20 +67,35 @@ def main() -> int:
         print(proc.stderr, file=sys.stderr)
         raise SystemExit("FAIL strict canonical validator rejected release data")
 
+    records = load_records()
+    try:
+        figure_assets, external_figure_refs = collect_figure_assets(records)
+    except Exception as e:
+        raise SystemExit(f"FAIL figure asset release gate: {e}")
+
     if OUT.exists():
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
     shutil.copy2(INDEX, OUT / "index.html")
     shutil.copy2(DATA, OUT / "app-records.json")
 
+    for src in figure_assets:
+        rel = src.relative_to(ROOT)
+        dest = OUT / rel
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(src, dest)
+
+    payload_files = [OUT / "index.html", OUT / "app-records.json"] + [OUT / src.relative_to(ROOT) for src in figure_assets]
     manifest = {
-        "release_gate": "STRICT_CANONICAL_1231_PASS",
+        "release_gate": "STRICT_CANONICAL_1231_AND_FIGURE_ASSETS_PASS",
         "records": 1231,
         "original": 1124,
         "variants": 107,
+        "local_figure_assets": len(figure_assets),
+        "external_figure_refs": external_figure_refs,
         "files": {
-            "index.html": sha256(OUT / "index.html"),
-            "app-records.json": sha256(OUT / "app-records.json"),
+            p.relative_to(OUT).as_posix(): sha256(p)
+            for p in sorted(payload_files, key=lambda x: x.relative_to(OUT).as_posix())
         },
     }
     manifest_path = OUT / "release-manifest.json"
@@ -63,10 +105,13 @@ def main() -> int:
     if zip_path.exists():
         zip_path.unlink()
     with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-        for name in ("index.html", "app-records.json", "release-manifest.json"):
-            zf.write(OUT / name, arcname=name)
+        for p in sorted((p for p in OUT.rglob("*") if p.is_file()), key=lambda x: x.relative_to(OUT).as_posix()):
+            zf.write(p, arcname=p.relative_to(OUT).as_posix())
 
     print("PASS_RELEASE_BUNDLE")
+    print(f"records={len(records)}")
+    print(f"local_figure_assets={len(figure_assets)}")
+    print(f"external_figure_refs={external_figure_refs}")
     print(f"bundle={zip_path}")
     print(f"bundle_sha256={sha256(zip_path)}")
     return 0
