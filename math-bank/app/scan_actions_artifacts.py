@@ -44,8 +44,6 @@ def request_json(url: str) -> dict:
 
 
 def request_bytes(url: str) -> bytes:
-    # curl strips credentials when GitHub redirects the authenticated artifact
-    # endpoint to a different storage host; urllib forwarded auth and produced 401.
     cmd = [
         "curl", "-fsSL",
         "-H", "Accept: application/vnd.github+json",
@@ -74,12 +72,25 @@ def member_interest(name: str) -> bool:
     )
 
 
-def scan_zip_payload(payload: bytes, prefix: str = "", depth: int = 0) -> tuple[list[dict], list[tuple[str, bytes]], list[str]]:
+def valid_audit_bytes(data: bytes) -> bool:
+    try:
+        obj = json.loads(data.decode("utf-8"))
+    except Exception:
+        return False
+    return isinstance(obj, dict)
+
+
+def scan_zip_payload(
+    payload: bytes,
+    prefix: str = "",
+    depth: int = 0,
+) -> tuple[list[dict], list[tuple[str, bytes]], list[tuple[str, bytes]], list[str]]:
     entries: list[dict] = []
-    hits: list[tuple[str, bytes]] = []
+    canonical_hits: list[tuple[str, bytes]] = []
+    audit_hits: list[tuple[str, bytes]] = []
     errors: list[str] = []
     if depth > MAX_NESTED_DEPTH:
-        return entries, hits, errors
+        return entries, canonical_hits, audit_hits, errors
     try:
         with zipfile.ZipFile(io.BytesIO(payload)) as zf:
             for info in zf.infolist():
@@ -94,28 +105,32 @@ def scan_zip_payload(payload: bytes, prefix: str = "", depth: int = 0) -> tuple[
                 except Exception as e:
                     errors.append(f"read {full_name}: {e}")
                     continue
+                digest = sha256_bytes(data)
                 entry = {
                     "name": full_name,
                     "bytes": len(data),
-                    "sha256": sha256_bytes(data),
+                    "sha256": digest,
                     "depth": depth,
                 }
                 entries.append(entry)
-                if is_zip and entry["sha256"] == EXPECTED_SHA256:
-                    hits.append((full_name, data))
+                if is_zip and digest == EXPECTED_SHA256:
+                    canonical_hits.append((full_name, data))
+                if Path(info.filename).name == AUDIT_HINT and valid_audit_bytes(data):
+                    audit_hits.append((full_name, data))
                 if is_zip and depth < MAX_NESTED_DEPTH and len(data) <= MAX_NESTED_ZIP_BYTES:
-                    child_entries, child_hits, child_errors = scan_zip_payload(
+                    child_entries, child_canonical, child_audits, child_errors = scan_zip_payload(
                         data, prefix=full_name + "!/", depth=depth + 1
                     )
                     entries.extend(child_entries)
-                    hits.extend(child_hits)
+                    canonical_hits.extend(child_canonical)
+                    audit_hits.extend(child_audits)
                     errors.extend(child_errors)
     except zipfile.BadZipFile as e:
         errors.append(f"bad zip {prefix or '<artifact>'}: {e}")
-    return entries, hits, errors
+    return entries, canonical_hits, audit_hits, errors
 
 
-def inspect_artifact(artifact: dict) -> tuple[dict, list[tuple[str, bytes]]]:
+def inspect_artifact(artifact: dict) -> tuple[dict, list[tuple[str, bytes]], list[tuple[str, bytes]]]:
     result = {
         "artifact_id": artifact.get("id"),
         "name": artifact.get("name"),
@@ -127,20 +142,37 @@ def inspect_artifact(artifact: dict) -> tuple[dict, list[tuple[str, bytes]]]:
         "downloaded": False,
         "interesting_members": [],
         "canonical_sha_hits": [],
+        "valid_final_audit_hits": [],
+        "paired_recovery_eligible": False,
         "errors": [],
     }
-    hits: list[tuple[str, bytes]] = []
+    canonical_hits: list[tuple[str, bytes]] = []
+    audit_hits: list[tuple[str, bytes]] = []
     try:
         raw = request_bytes(artifact["archive_download_url"])
         result["downloaded"] = True
         result["archive_download_bytes"] = len(raw)
-        entries, hits, errors = scan_zip_payload(raw)
+        entries, canonical_hits, audit_hits, errors = scan_zip_payload(raw)
         result["interesting_members"] = entries
-        result["canonical_sha_hits"] = [entry for entry in entries if entry["sha256"] == EXPECTED_SHA256]
+        result["canonical_sha_hits"] = [
+            {"name": name, "bytes": len(data), "sha256": sha256_bytes(data)}
+            for name, data in canonical_hits
+        ]
+        result["valid_final_audit_hits"] = [
+            {"name": name, "bytes": len(data), "sha256": sha256_bytes(data)}
+            for name, data in audit_hits
+        ]
+        canonical_unique = {sha256_bytes(data) for _, data in canonical_hits}
+        audit_unique = {sha256_bytes(data) for _, data in audit_hits}
+        result["paired_recovery_eligible"] = (
+            canonical_unique == {EXPECTED_SHA256} and len(audit_unique) == 1
+        )
+        if canonical_hits and len(audit_unique) > 1:
+            result["errors"].append("ambiguous final audit candidates with different SHA-256 values")
         result["errors"].extend(errors)
     except Exception as e:
         result["errors"].append(str(e))
-    return result, hits
+    return result, canonical_hits, audit_hits
 
 
 def main() -> int:
@@ -173,22 +205,28 @@ def main() -> int:
         "repo": REPO,
         "expected_filename": EXPECTED_FILENAME,
         "expected_sha256": EXPECTED_SHA256,
+        "required_paired_audit": AUDIT_HINT,
         "created_since": CREATED_SINCE,
         "all_artifacts_seen": len(artifacts),
         "candidate_artifacts": len(candidates),
         "canonical_hits": 0,
         "audit_name_hits": 0,
+        "valid_audit_hits": 0,
+        "paired_recovery_hits": 0,
         "recovery_hint_hits": 0,
         "download_failures": 0,
         "artifacts": [],
         "recovered_files": [],
         "completed_at_utc": datetime.now(timezone.utc).isoformat(),
-        "policy": "discovery only; exact canonical ZIP promotion requires immutable SHA-256 match",
+        "policy": "Discovery only. ZIP identity requires immutable SHA-256. Automatic completion requires the exact ZIP and one unambiguous valid MATHBANK_FINAL_AUDIT_V2.json from the same Actions artifact.",
     }
 
     OUT_RECOVERY.mkdir(parents=True, exist_ok=True)
+    for old in (OUT_RECOVERY / EXPECTED_FILENAME, OUT_RECOVERY / AUDIT_HINT):
+        old.unlink(missing_ok=True)
+
     for artifact in candidates:
-        item, hits = inspect_artifact(artifact)
+        item, canonical_hits, audit_hits = inspect_artifact(artifact)
         if not item["downloaded"]:
             report["download_failures"] += 1
         for member in item["interesting_members"]:
@@ -197,18 +235,37 @@ def main() -> int:
                 report["audit_name_hits"] += 1
             if any(h.lower() in low for h in RECOVERY_HINTS):
                 report["recovery_hint_hits"] += 1
-        for member_name, data in hits:
-            report["canonical_hits"] += 1
-            out = OUT_RECOVERY / EXPECTED_FILENAME
-            out.write_bytes(data)
+        report["canonical_hits"] += len(canonical_hits)
+        report["valid_audit_hits"] += len(audit_hits)
+
+        if item["paired_recovery_eligible"]:
+            canonical_by_hash = {sha256_bytes(data): (name, data) for name, data in canonical_hits}
+            audit_by_hash = {sha256_bytes(data): (name, data) for name, data in audit_hits}
+            canonical_name, canonical_data = canonical_by_hash[EXPECTED_SHA256]
+            audit_name, audit_data = next(iter(audit_by_hash.values()))
+            canonical_out = OUT_RECOVERY / EXPECTED_FILENAME
+            audit_out = OUT_RECOVERY / AUDIT_HINT
+            canonical_out.write_bytes(canonical_data)
+            audit_out.write_bytes(audit_data)
+            report["paired_recovery_hits"] += 1
             report["recovered_files"].append({
                 "source_artifact_id": artifact.get("id"),
                 "source_artifact_name": artifact.get("name"),
-                "member": member_name,
-                "path": str(out),
-                "bytes": len(data),
-                "sha256": sha256_bytes(data),
+                "canonical_member": canonical_name,
+                "canonical_path": str(canonical_out),
+                "canonical_bytes": len(canonical_data),
+                "canonical_sha256": sha256_bytes(canonical_data),
+                "audit_member": audit_name,
+                "audit_path": str(audit_out),
+                "audit_bytes": len(audit_data),
+                "audit_sha256": sha256_bytes(audit_data),
+                "same_artifact_pair": True,
             })
+            # The newest qualifying artifact wins. Stop after one exact, unambiguous pair
+            # so two different historical audits can never be silently mixed.
+            report["artifacts"].append(item)
+            break
+
         report["artifacts"].append(item)
 
     OUT_REPORT.parent.mkdir(parents=True, exist_ok=True)
