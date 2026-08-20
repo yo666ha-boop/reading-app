@@ -14,6 +14,12 @@ def replace_once(text: str, old: str, new: str) -> str:
 
 def main() -> None:
     s = PATH.read_text(encoding="utf-8")
+    if "const BASELINE={original:1124,baselineVariant:107" in s:
+        if "const CANONICAL={total:1231" in s or "rs.length===CANONICAL.total" in s:
+            raise RuntimeError("mixed frozen and expanded gate state")
+        print("PASS_INDEX_EXPANDED_VARIANT_DYNAMIC_GATE_ALREADY_ENABLED")
+        return
+
     s = replace_once(
         s,
         "正本1231問専用。原問題1124問＋検算済み類題107問以外は追加しません。問題文・選択肢・正答・解説を保持します。",
