@@ -145,6 +145,7 @@ async function runCase(browserType, name, viewport) {
     await setSelect(page, 'kind', 'both');
     await setSelect(page, 'order', 'source');
     await page.fill('#count', '20');
+    await page.locator('#count').press('Tab');
     await page.click('#draw');
     const firstIds = await page.locator('.problem').evaluateAll(els => els.slice(0, 4).map(el => el.dataset.id));
     if (firstIds[0] !== 'TEST-ORIG-0001' || firstIds[1] !== 'TEST-VAR-001') fail(`${name}: parent/variant source order mismatch ${JSON.stringify(firstIds)}`);
@@ -156,6 +157,7 @@ async function runCase(browserType, name, viewport) {
     await setSelect(page, 'difficulty', 'standard');
     await setSelect(page, 'qformat', '記述');
     await page.fill('#count', '17');
+    await page.locator('#count').press('Tab');
     await page.reload({ waitUntil: 'domcontentloaded' });
     await page.waitForFunction(() => document.querySelector('#status')?.textContent?.includes('正本データ未接続'));
     await injectCanonicalFixture(page);
@@ -164,8 +166,10 @@ async function runCase(browserType, name, viewport) {
     if (JSON.stringify(restored) !== JSON.stringify(expectedRestored)) fail(`${name}: settings restore mismatch ${JSON.stringify(restored)}`);
 
     // Print CSS contract: controls hidden; answers hidden on question print, visible on answer print.
+    await setSelect(page, 'qformat', '');
     await page.fill('#search', 'TEST-ORIG-0010');
     await page.click('#draw');
+    if ((await page.locator('.problem').count()) !== 1) fail(`${name}: print test choice problem did not render`);
     await page.emulateMedia({ media: 'print' });
     const questionPrint = await page.evaluate(() => ({
       controls: getComputedStyle(document.querySelector('.controls')).display,
