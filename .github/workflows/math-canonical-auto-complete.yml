@@ -45,7 +45,6 @@ jobs:
         run: |
           python -m py_compile \
             math-bank/app/scan_actions_artifacts.py \
-            math-bank/app/scan_git_history_candidates.py \
             math-bank/app/scan_github_release_assets.py \
             math-bank/app/complete_from_exact_canonical.py \
             math-bank/app/inspect_canonical_artifact.py \
@@ -63,15 +62,12 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: python math-bank/app/scan_actions_artifacts.py
 
-      - name: Scan every reachable Git blob and LFS pointer
-        run: python math-bank/app/scan_git_history_candidates.py
-
       - name: Scan GitHub release assets
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python math-bank/app/scan_github_release_assets.py
 
-      - name: Normalize exact canonical pair from any verified source
+      - name: Normalize exact canonical pair from active verified sources
         id: pair
         shell: bash
         run: |
@@ -84,7 +80,6 @@ jobs:
           final_audit=dest/'MATHBANK_FINAL_AUDIT_V2.json'
           sources=[
             ('actions_artifact',final_zip,final_audit),
-            ('git_history',Path('math-bank/recovered-git-history/みかみ塾数学問題バンク_最終完成版_20260820.zip'),Path('math-bank/recovered-git-history/MATHBANK_FINAL_AUDIT_V2.json')),
             ('github_release',Path('math-bank/recovered-release/みかみ塾数学問題バンク_最終完成版_20260820.zip'),Path('math-bank/recovered-release/MATHBANK_FINAL_AUDIT_V2.json')),
           ]
           found=False; source='none'
@@ -101,7 +96,8 @@ jobs:
       - name: No pair means no reconstruction
         if: steps.pair.outputs.pair_found != 'true'
         run: |
-          echo 'CANONICAL_PAIR_NOT_RECOVERED: no exact ZIP+audit pair in Actions, reachable Git/LFS, or releases.'
+          echo 'CANONICAL_PAIR_NOT_RECOVERED: no exact ZIP+audit pair in current Actions artifacts or GitHub releases.'
+          echo 'Branch/tag history and PR refs are already exhausted separately with exact coverage and pair0; do not rescan them here.'
           echo 'No reconstruction, no partial 161/diagnostic 1271 promotion, no new variants.'
 
       - name: One-shot exact canonical wiring
@@ -131,7 +127,6 @@ jobs:
           name: mikami-math-canonical-auto-complete-diagnostics
           path: |
             math-bank/recovered/
-            math-bank/recovered-git-history/
             math-bank/recovered-release/
             math-bank/state/actions-artifact-scan-latest.json
             math-bank/state/git-history-scan-latest.json
