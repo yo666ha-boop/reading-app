@@ -2,8 +2,26 @@ window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
 (function(){
  if(typeof document==='undefined')return;
  const target=window.V10_INTERACTION_META;
- window.V10_RUNTIME_LOAD_PROGRESS='start';window.V10_RUNTIME_LOAD_ERROR='';
- const load=(src,done)=>{window.V10_RUNTIME_LOAD_PROGRESS='loading:'+src;const s=document.createElement('script');s.src=src;s.onload=()=>{window.V10_RUNTIME_LOAD_PROGRESS='loaded:'+src;done()};s.onerror=()=>{window.V10_RUNTIME_LOAD_ERROR='failed:'+src;window.V10_RUNTIME_LOAD_PROGRESS='error:'+src;done()};document.head.appendChild(s)};
+ const BUILD='20260820-2055-reference';
+ window.V10_RUNTIME_BUILD=BUILD;
+ window.V10_RUNTIME_LOAD_PROGRESS='start';
+ window.V10_RUNTIME_LOAD_ERROR='';
+ const runtimeErrors=[];
+ window.addEventListener('error',e=>{const src=String(e&&e.filename||'');if(src.includes('v10_reference_slash_'))runtimeErrors.push(String(e&&e.message||e));});
+ const lock=document.createElement('div');
+ lock.id='v10RuntimeLock';
+ lock.style.cssText='position:fixed;inset:0;z-index:2147483647;background:rgba(255,255,255,.98);display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,"Yu Gothic",sans-serif;font-weight:800;font-size:18px;color:#0f172a;text-align:center;padding:24px';
+ lock.textContent='最新版の本文・スラッシュデータを読み込み中です…';
+ document.body.appendChild(lock);
+ const finishLock=(ok,msg)=>{if(ok){lock.remove();return}lock.style.color='#991b1b';lock.textContent='最新版データの読み込みに失敗しました。古いスラッシュは表示しません。\n'+msg};
+ const load=(src,done)=>{
+   window.V10_RUNTIME_LOAD_PROGRESS='loading:'+src;
+   const s=document.createElement('script');
+   s.src=src+(src.includes('?')?'&':'?')+'v='+encodeURIComponent(BUILD);
+   s.onload=()=>{window.V10_RUNTIME_LOAD_PROGRESS='loaded:'+src;done()};
+   s.onerror=()=>{window.V10_RUNTIME_LOAD_ERROR='failed:'+src;window.V10_RUNTIME_LOAD_PROGRESS='error:'+src;done()};
+   document.head.appendChild(s);
+ };
  const dataset=(g,book)=>g==='1'?(book==='サンシャイン'?(window.V10_SUNSHINE_G1||{}):(window.V10_NEWHORIZON_G1||{})):g==='2'?(book==='サンシャイン'?(window.V10_PASSAGES_G2_SS||{}):(window.V10_PASSAGES_G2_NH||{})):(book==='サンシャイン'?(window.V10_PASSAGES_G3_SS||{}):(window.V10_PASSAGES_G3_NH||{}));
  const evidenceParts=m=>(m&&Array.isArray(m.questionSetB)?m.questionSetB:[]).flatMap(q=>String(q&&q.evidence||'').split(' / ').map(x=>x.trim()).filter(Boolean));
  const gradeFor=(book,sec,m)=>{const ev=evidenceParts(m),hits=[];for(const g of ['1','2','3']){const p=dataset(g,book)[sec],s=p&&Array.isArray(p.sentences)?p.sentences:[];if(p&&ev.every(x=>s.includes(x)))hits.push(g)}return hits.length===1?hits[0]:''};
@@ -68,9 +86,26 @@ window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
   ['v10_reference_slash_manual_999_recovery.js',()=>({})],
   ['v10_reference_slash_manual_zz_corrections.js',()=>({})]
  ];
+ const validate=()=>{
+   const sets=[dataset('1','サンシャイン'),dataset('1','ニューホライズン'),dataset('2','サンシャイン'),dataset('2','ニューホライズン'),dataset('3','サンシャイン'),dataset('3','ニューホライズン')];
+   let count=0,marked=0;
+   for(const d of sets)for(const p of Object.values(d||{})){count++;if(p&&p.slashReferenceAudit==='PASS_REFERENCE_20260820'&&p.slashReadingVersion==='reference-book-minimum-rules-20260820')marked++;}
+   const p=(window.V10_PASSAGES_G3_SS||{})['PROGRAM 6-1'];
+   const expected='A Canadian researcher studies a patch / in the ocean.';
+   const productionOk=!!(p&&Array.isArray(p.slashRows)&&p.slashRows[0]&&String(p.slashRows[0].en||'').trim()===expected);
+   if(count!==168||marked!==168||!productionOk||runtimeErrors.length)throw new Error('reference runtime check count='+count+' marked='+marked+' production='+productionOk+' runtimeErrors='+runtimeErrors.join(' | '));
+ };
  let i=0;
  const next=()=>{
-  if(i>=chunks.length){window.V10_INTERACTION_META=target;syncPlainToSelectedGrade();window.V10_RUNTIME_LOAD_PROGRESS='complete';if(typeof window.render==='function')window.render();return;}
+  if(i>=chunks.length){
+    try{
+      validate();
+      window.V10_INTERACTION_META=target;syncPlainToSelectedGrade();window.V10_RUNTIME_LOAD_PROGRESS='complete';window.V10_RUNTIME_LOAD_ERROR='';
+      if(typeof window.render==='function')window.render();
+      finishLock(true,'');
+    }catch(e){window.V10_RUNTIME_LOAD_ERROR=String(e&&e.message||e);window.V10_RUNTIME_LOAD_PROGRESS='validation-error';finishLock(false,window.V10_RUNTIME_LOAD_ERROR)}
+    return;
+  }
   const [src,getObj]=chunks[i++];
   load(src,()=>{try{const obj=getObj()||{};window.V10_INTERACTION_META=target;mergeObj(obj)}catch(e){window.V10_RUNTIME_LOAD_ERROR='merge:'+src+':'+String(e&&e.message||e)}next();});
  };
