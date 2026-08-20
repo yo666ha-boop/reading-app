@@ -61,6 +61,8 @@ const CANONICAL={total:1231,original:1124,variant:107,source:{Winpass:570,'実�
 const VALID_GRADES=new Set([1,2,3]);
 const VALID_DIFFICULTY=new Set(['basic','standard','advanced','unknown']);
 const VALID_BOOKS=new Set(['Winpass','実力錬成','Standard','generated']);
+const SAFE_EXTERNAL_FIGURE_SCHEMES=new Set(['http','https','data','blob']);
+const SAFE_LOCAL_FIGURE_EXTENSIONS=new Set(['.png','.jpg','.jpeg','.webp','.gif','.svg','.avif']);
 let records=[], currentRows=[], dataSource='未接続', recordById=new Map();
 const $=id=>document.getElementById(id);
 const IDS=['grade','major','minor','skill','difficulty','qformat','kind','book','count','order','search'];
@@ -69,6 +71,16 @@ function txt(v){return typeof v==='string'?v.trim():''}
 function esc(s){return String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;')}
 function uniq(xs){return [...new Set(xs.filter(v=>v!==null&&v!==undefined&&String(v).trim()!==''))].sort((a,b)=>String(a).localeCompare(String(b),'ja',{numeric:true}))}
 function setOptions(el,vals){const keep=el.value;el.innerHTML='<option value="">すべて</option>'+vals.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('');if(vals.map(String).includes(keep))el.value=keep}
+function safeFigureRef(ref){
+  const s=txt(ref);if(!s)return false;
+  if(s.startsWith('//'))return true;
+  const scheme=s.match(/^([A-Za-z][A-Za-z0-9+.-]*):/);if(scheme)return SAFE_EXTERNAL_FIGURE_SCHEMES.has(scheme[1].toLowerCase());
+  let path=s.split(/[?#]/,1)[0];try{path=decodeURIComponent(path)}catch{return false}
+  if(!path||path.startsWith('/')||path.includes('\\'))return false;
+  const parts=path.split('/');if(parts.some(p=>!p||p==='.'||p==='..'))return false;
+  const name=parts[parts.length-1];const dot=name.lastIndexOf('.');if(dot<0)return false;
+  return SAFE_LOCAL_FIGURE_EXTENSIONS.has(name.slice(dot).toLowerCase());
+}
 function isVariant(r){return !!r?.source?.is_generated_variant}
 function majorOf(r){return r?.unit?.major??''}
 function minorOf(r){return r?.unit?.minor??''}
@@ -84,7 +96,7 @@ function filtered(){const g=$('grade').value,maj=$('major').value,min=$('minor')
 function shuffle(a){const x=[...a];for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]]}return x}
 function sourceSort(a,b){const ka=[a?.grade,parentBookOf(a),a?.source?.document??'',a?.source?.original_no??'',a?.id].join('|');const kb=[b?.grade,parentBookOf(b),b?.source?.document??'',b?.source?.original_no??'',b?.id].join('|');return ka.localeCompare(kb,'ja',{numeric:true})}
 function selectRows(){let f=filtered();const n=Math.max(1,Math.min(200,Number($('count').value)||10));if($('order').value==='random')f=shuffle(f);else f=[...f].sort(sourceSort);return f.slice(0,n)}
-function figuresHtml(r){return (r?.figure_refs||[]).length?`<div class="figures">${r.figure_refs.map(ref=>`<img src="${esc(ref)}" alt="図版 ${esc(r.id)}" loading="lazy" onerror="this.dataset.loadError='1'">`).join('')}</div>`:''}
+function figuresHtml(r){return (r?.figure_refs||[]).length?`<div class="figures">${r.figure_refs.map(ref=>`<img src="${esc(ref)}" alt="図版 ${esc(r.id)}" loading="eager" onload="this.dataset.loadOk='1'" onerror="this.dataset.loadError='1'">`).join('')}</div>`:''}
 function clearOutput(message){currentRows=[];document.body.classList.remove('show-answers-screen','print-answers');$('toggleAnswers').textContent='画面の解答を表示';document.querySelector('.paper-title').textContent='数学 問題プリント';$('list').innerHTML=`<div class="empty">${esc(message)}</div>`;$('printCount').textContent='0問'}
 function render(rows){currentRows=rows;document.body.classList.remove('show-answers-screen');$('toggleAnswers').textContent='画面の解答を表示';if(!rows.length){clearOutput('条件に合う問題がありません。');return}
 $('list').innerHTML=rows.map((r,i)=>`<div class="problem" data-id="${esc(r.id)}"><div class="meta">${i+1}. ID ${esc(r.id)} / 中${esc(r.grade)} / ${esc(majorOf(r))} › ${esc(minorOf(r))} / ${esc(r.skill)} / ${esc(labelDifficulty(r.difficulty))} / ${esc(r.question_format)} / ${isVariant(r)?'既存類題':'原問題'} / ${esc(parentBookOf(r))}</div><div class="q">${esc(r.question)}</div>${figuresHtml(r)}<button class="answer-toggle" data-i="${i}">解答を表示</button><div class="answer" id="a${i}"><strong>解答：</strong>${esc(r.answer)}${r.explanation?'\n\n<strong>解説：</strong>'+esc(r.explanation):''}</div></div>`).join('');
@@ -110,16 +122,17 @@ function canonicalAudit(rs){
     if(r.prerequisites!==undefined&&(!Array.isArray(r.prerequisites)||r.prerequisites.some(x=>typeof x!=='string')||new Set(r.prerequisites).size!==r.prerequisites.length))invalid++;
     const source=r.source;if(!isObj(source)||!VALID_BOOKS.has(source?.book)||typeof source?.is_generated_variant!=='boolean'||typeof source?.document!=='string'||!(source?.original_no===null||typeof source?.original_no==='string'))invalid++;
     const generated=isVariant(r);if(generated){variant++;if(source?.book!=='generated'||!txt(source?.parent_id))invalid++}else{original++;if(src[source?.book]===undefined)invalid++;else src[source.book]++}
-    const figs=r.figure_refs;if(!Array.isArray(figs)||figs.some(x=>!txt(x))||new Set(figs).size!==figs.length)figureFail++;
+    const figs=r.figure_refs;if(!Array.isArray(figs)||figs.some(x=>!safeFigureRef(x))||new Set(figs).size!==figs.length)figureFail++;
     const audit=r.audit;if(!isObj(audit)||audit.problem_answer_verified!==true||audit.structure_verified!==true||audit.figure_refs_verified!==true)auditFail++;
   }
   for(const r of rs){if(!isObj(r)||!isVariant(r))continue;const p=byId.get(txt(r.source?.parent_id));if(!p||isVariant(p))parentFail++}
   const pass=rs.length===CANONICAL.total&&original===CANONICAL.original&&variant===CANONICAL.variant&&duplicate===0&&blankQ===0&&blankA===0&&invalid===0&&auditFail===0&&parentFail===0&&figureFail===0&&Object.keys(CANONICAL.source).every(k=>src[k]===CANONICAL.source[k]);
   return {pass,total:rs.length,original,variant,duplicate,blankQ,blankA,invalid,auditFail,parentFail,figureFail,src}
 }
-function showGate(a){$('gate').className='data-gate '+(a.pass?'pass':'fail');$('gate').textContent=a.pass?'正本ゲート PASS：1231問・構造/監査/親子関係まで確認':'正本ゲート未達：データを公開完成版として扱いません';for(const id of ['draw','redraw','toggleAnswers','printQuestions','printAnswers'])$(id).disabled=!a.pass}
-function acceptRecords(rs,source){records=Array.isArray(rs)?rs:[];recordById=new Map(records.filter(isObj).map(r=>[txt(r.id),r]).filter(([id])=>id));dataSource=source;const a=canonicalAudit(records);$('status').className='status '+(a.pass?'good':'warn');$('status').textContent=`${source} / 読込 ${a.total}問 / 原 ${a.original} / 類題 ${a.variant} / 重複 ${a.duplicate} / 空問 ${a.blankQ} / 空答 ${a.blankA} / 構造 ${a.invalid} / 監査 ${a.auditFail} / 親 ${a.parentFail} / 図版構造 ${a.figureFail}`;loadSettings();refreshFilters();showGate(a);if(a.pass)render(selectRows());else clearOutput('正本1231問の完全ゲートを通過していないため、出題・解答表示・印刷はロックしています。')}
-function printMode(answers){if(!currentRows.length)return;document.body.classList.toggle('print-answers',answers);document.querySelector('.paper-title').textContent=answers?'数学 解答プリント':'数学 問題プリント';window.print()}
+function showGate(a){$('gate').className='data-gate '+(a.pass?'pass':'fail');$('gate').textContent=a.pass?'正本ゲート PASS：1231問・構造/監査/親子関係/図版パスまで確認':'正本ゲート未達：データを公開完成版として扱いません';for(const id of ['draw','redraw','toggleAnswers','printQuestions','printAnswers'])$(id).disabled=!a.pass}
+function acceptRecords(rs,source){records=Array.isArray(rs)?rs:[];recordById=new Map(records.filter(isObj).map(r=>[txt(r.id),r]).filter(([id])=>id));dataSource=source;const a=canonicalAudit(records);$('status').className='status '+(a.pass?'good':'warn');$('status').textContent=`${source} / 読込 ${a.total}問 / 原 ${a.original} / 類題 ${a.variant} / 重複 ${a.duplicate} / 空問 ${a.blankQ} / 空答 ${a.blankA} / 構造 ${a.invalid} / 監査 ${a.auditFail} / 親 ${a.parentFail} / 図版 ${a.figureFail}`;loadSettings();refreshFilters();showGate(a);if(a.pass)render(selectRows());else clearOutput('正本1231問の完全ゲートを通過していないため、出題・解答表示・印刷はロックしています。')}
+function figurePrintReadiness(){const imgs=[...document.querySelectorAll('#list .figures img')];const failed=imgs.filter(img=>img.dataset.loadError==='1'||(img.complete&&img.naturalWidth===0));const pending=imgs.filter(img=>!img.complete);return {images:imgs.length,failed:failed.length,pending:pending.length,ready:failed.length===0&&pending.length===0}}
+function printMode(answers){if(!currentRows.length)return;const f=figurePrintReadiness();if(!f.ready){$('status').className='status warn';$('status').textContent=f.failed?`印刷中止：表示中の図版 ${f.failed}件が読み込めません。`:`印刷待機：図版 ${f.pending}件の読み込み完了後にもう一度印刷してください。`;return}document.body.classList.toggle('print-answers',answers);document.querySelector('.paper-title').textContent=answers?'数学 解答プリント':'数学 問題プリント';window.print()}
 window.addEventListener('afterprint',()=>{document.body.classList.remove('print-answers');document.querySelector('.paper-title').textContent='数学 問題プリント'});
 IDS.filter(id=>id!=='search').forEach(id=>$(id).addEventListener('change',()=>{refreshFilters();saveSettings()}));$('search').addEventListener('input',()=>{updateSummary();saveSettings()});
 $('draw').onclick=()=>render(selectRows());$('redraw').onclick=()=>render(selectRows());$('toggleAnswers').onclick=()=>{const on=document.body.classList.toggle('show-answers-screen');$('toggleAnswers').textContent=on?'画面の解答を隠す':'画面の解答を表示'};$('printQuestions').onclick=()=>printMode(false);$('printAnswers').onclick=()=>printMode(true);
