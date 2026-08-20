@@ -9,9 +9,12 @@ on:
       - 'math-bank/app/validate_expanded_variant_layer.py'
       - 'math-bank/app/compose_expanded_app_records.py'
       - 'math-bank/app/test_expanded_variant_layer.py'
+      - 'math-bank/app/build_variant_generation_queue.py'
+      - 'math-bank/app/test_variant_generation_queue.py'
       - 'math-bank/app/upgrade_index_for_expanded_variants.py'
       - 'math-bank/app/upgrade_browser_regression_for_expanded_variants.py'
       - 'math-bank/app/verified-expanded-variants.json'
+      - 'math-bank/app/check_app_shell.py'
 
 concurrency:
   group: math-expanded-variant-layer
@@ -43,6 +46,8 @@ jobs:
             math-bank/app/validate_expanded_variant_layer.py \
             math-bank/app/compose_expanded_app_records.py \
             math-bank/app/test_expanded_variant_layer.py \
+            math-bank/app/build_variant_generation_queue.py \
+            math-bank/app/test_variant_generation_queue.py \
             math-bank/app/upgrade_index_for_expanded_variants.py \
             math-bank/app/upgrade_browser_regression_for_expanded_variants.py \
             math-bank/app/check_app_shell.py
@@ -50,6 +55,10 @@ jobs:
       - name: Run positive and negative expanded variant gates
         working-directory: math-bank/app
         run: python test_expanded_variant_layer.py
+
+      - name: Run conservative parent queue classification gates
+        working-directory: math-bank/app
+        run: python test_variant_generation_queue.py
 
       - name: Upgrade app UI and runtime gate to dynamic verified variants
         run: python math-bank/app/upgrade_index_for_expanded_variants.py
@@ -114,6 +123,7 @@ jobs:
             'app_dynamic_expansion_gate':'PASS',
             'expanded_validator':'PASS_POSITIVE_NEGATIVE_TESTS',
             'expanded_composer':'IMPLEMENTED',
+            'generation_queue_builder':'PASS_CONSERVATIVE_CLASSIFICATION_TESTS',
             'synthetic_browser_expansion_fixture':'READY_1124_ORIGINAL_110_VARIANT_TOTAL_1234',
             'expanded_verified_variants':len(json.loads(Path('math-bank/app/verified-expanded-variants.json').read_text(encoding='utf-8')).get('variants',[])),
             'publication_ready':False,

@@ -135,7 +135,7 @@ if proc.returncode or "PASS_RENDER_FIGURE_MARKERS_NON_MUTATING_SAFE" not in proc
     raise SystemExit(f"FAIL inline figure marker regression\n{proc.stdout}\n{proc.stderr}")
 
 proc = subprocess.run(["python", str(EXPANDED_TEST)], cwd=ROOT, text=True, capture_output=True)
-if proc.returncode or "PASS_EXPANDED_VARIANT_LAYER_STRICT_PARENT_TAXONOMY_RECALC_DUPLICATE_GATES" not in proc.stdout:
+if proc.returncode or "PASS_EXPANDED_VARIANT_LAYER_STRICT_PARENT_TAXONOMY_RECALC_DUPLICATE_SURFACE_CHANGE_GATES" not in proc.stdout:
     raise SystemExit(f"FAIL expanded variant layer regression\n{proc.stdout}\n{proc.stderr}")
 
 print("PASS_APP_SHELL")
