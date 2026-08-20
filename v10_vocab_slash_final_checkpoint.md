@@ -3,7 +3,7 @@
 status: IN_PROGRESS
 phase: VOCAB_AND_SLASH_HUMAN_AUDIT
 started_at_jst: 2026-08-20 11:00
-last_manual_progress_jst: 2026-08-20 11:35+
+last_manual_progress_jst: 2026-08-20 11:57+
 
 ## Current verified baseline
 - Semantic passage rebuild: 168/168 previously completed.
@@ -27,29 +27,46 @@ last_manual_progress_jst: 2026-08-20 11:35+
 Project learning manual example: `I went to the park / to play baseball / with my friends / yesterday.`
 
 ## Progress
-- vocabulary_final_audited: 30/168
-- slash_human_audited: 30/168
+- vocabulary_final_audited: 40/168
+- slash_human_audited: 40/168
 - passages_rewritten_this_phase: 0
 - notes_confirmed: 0
 
 ## This run completed
-- Continued immediately from passage 004 without waiting for the hourly task and advanced the post-release quality audit through passage 030.
-- Detailed ledgers complete: `v10_vocab_slash_manual_audit_001_010.md`, `v10_vocab_slash_manual_audit_011_020.md`, `v10_vocab_slash_manual_audit_021_030.md`.
-- Manual runtime overrides active: `v10_vocab_slash_manual_004_010.js`, `v10_vocab_slash_manual_011_020.js`, `v10_vocab_slash_manual_021_030.js`.
-- Loader order updated so these files run after `v10_semantic_runtime_final_fixes.js`, preventing the older automatic slash rebuild from overwriting the human-reviewed rows.
-- 001-030 vocabulary review currently finds no unavoidable note requirement and no vocabulary-driven English rewrite. The final English text therefore remains unchanged in this phase; only slash-reading rows were corrected where needed.
-- Human slash review removes grammar-drill splitting and preserves multiword meaning units such as be+complement, can+verb, talk about, far from, famous for, show around, listen to, and verb+short object.
+- Resumed immediately from passage 031 and completed human vocabulary + slash review through passage 040.
+- Inspected the actual rendered semantic passages 031-040 before writing overrides.
+- Rechecked source vocabulary gates for PROGRAM 9, PROGRAM 10/Step 6, New Horizon Unit 0 and Unit 1-1. Explicit source gates confirmed the relevant section/cumulative/past-form/proper-name allowances; no unavoidable student note was found.
+- Created `v10_vocab_slash_manual_031_040.js` and connected it as the last human-audit chunk in `v10_interaction_metadata.js`.
+- Created detailed ledger `v10_vocab_slash_manual_audit_031_040.md`.
+- Corrected widespread grammar-drill slash patterns: removed be/complement splits, verb+short-object splits, can/verb splits, and speaker-label splits. Retained slashes only for actual chronology/place/company/topic/beneficiary chunks.
+- No vocabulary-driven English rewrite was required in 031-040; existing synchronized translations and A/B evidence remain unchanged.
+
+## Completed audit ranges
+- 001-010 COMPLETE
+- 011-020 COMPLETE
+- 021-030 COMPLETE
+- 031-040 COMPLETE
 
 ## Current phase
 VOCAB_AND_SLASH_HUMAN_AUDIT
 
 ## Remaining work
-- Continue passage 031 through 168 sequentially.
+- Continue passage 041 through 168 sequentially.
 - For each passage: vocabulary classification -> rewrite only if genuinely needed -> synchronize dependent content -> human slash review.
-- After 168/168 run full vocabulary/grammar/slash/A+B/coverage/DOM/browser/print/public regression.
+- After 168/168: full vocabulary/grammar/slash/A+B/coverage/DOM/browser/print regression.
+- After regression: verify public main/GitHub Pages and both print modes.
+
+## Exact stop point this run
+Passage 040 New Horizon G1 Unit 1-1 completed and committed. Passage 041 has not yet been human-audited in this phase.
 
 ## Next start point
-Passage 031 Sunshine G1 PROGRAM 9-2. Inspect final effective text and reviewed vocabulary gate, then human-review each slash row against the model.
+Passage 041 New Horizon G1 Unit 1-2.
 
 ## Next phase after current
-Continue sequentially 031-168 -> FULL_REGRESSION -> PUBLIC_VERIFY
+Continue sequentially 041-168 -> FULL_REGRESSION -> PUBLIC_VERIFY
+
+## Final-purpose remaining major stages
+1. Human vocabulary + slash audit 041-168.
+2. Repair/synchronize any genuine vocabulary failures found.
+3. Full automated and browser/print regression after 168/168.
+4. Public Pages verification and unresolved-failure repair loop.
