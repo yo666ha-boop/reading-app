@@ -1,0 +1,282 @@
+name: Math PR Refs Sharded Recovery
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-pr-refs-sharded-recovery.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: math-pr-refs-sharded-recovery
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  prepare-pr-history:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+      - name: Fetch every PR head and merge ref in bounded batches
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/math-pr-history
+          git ls-remote origin 'refs/pull/*/head' 'refs/pull/*/merge' > /tmp/math-pr-history/ls-remote.txt
+          python - <<'PY'
+          import subprocess
+          from pathlib import Path
+          rows=[]
+          for line in Path('/tmp/math-pr-history/ls-remote.txt').read_text().splitlines():
+            if not line.strip(): continue
+            sha,ref=line.split('\t',1)
+            if ref.endswith('/head'):
+              local='refs/math-pr/'+ref[len('refs/pull/'):]
+            elif ref.endswith('/merge'):
+              local='refs/math-pr/'+ref[len('refs/pull/'):]
+            else:
+              continue
+            rows.append((ref,local))
+          for i in range(0,len(rows),20):
+            batch=rows[i:i+20]
+            cmd=['git','fetch','--force','--no-tags','origin']+[f'+{r}:{l}' for r,l in batch]
+            print('FETCH_BATCH',i//20+1,'SIZE',len(batch),flush=True)
+            subprocess.run(cmd,check=True)
+          Path('/tmp/math-pr-history/refspecs.txt').write_text('\n'.join(f'{r}\t{l}' for r,l in rows)+'\n')
+          print('PR_REFS_FETCHED',len(rows))
+          PY
+          git fsck --full --strict
+          python - <<'PY'
+          import subprocess
+          from pathlib import Path
+          refs=subprocess.check_output(['git','for-each-ref','--format=%(refname)','refs/math-pr/'],text=True).splitlines()
+          if not refs:
+            Path('/tmp/math-pr-history/no-pr-refs').write_text('NO_PR_REFS\n')
+            raise SystemExit(0)
+          subprocess.run(['git','bundle','create','/tmp/math-pr-history/pr-refs.bundle',*refs],check=True)
+          subprocess.run(['git','bundle','verify','/tmp/math-pr-history/pr-refs.bundle'],check=True)
+          PY
+          if [ -f /tmp/math-pr-history/pr-refs.bundle ]; then
+            rm -rf /tmp/math-pr-history/selftest
+            git init --quiet /tmp/math-pr-history/selftest
+            git -C /tmp/math-pr-history/selftest fetch --quiet /tmp/math-pr-history/pr-refs.bundle '+refs/*:refs/*'
+            git -C /tmp/math-pr-history/selftest fsck --full --strict
+          fi
+          python - <<'PY'
+          import hashlib,json,subprocess
+          from datetime import datetime,timezone
+          from pathlib import Path
+          MAX=500*1024*1024
+          def inventory(repo_args):
+            rows=subprocess.check_output(repo_args+['rev-list','--objects','--all'],text=True).splitlines()
+            oids=sorted({r.split(' ',1)[0] for r in rows if r.strip()})
+            if not oids:return ([],[])
+            p=subprocess.run(repo_args+['cat-file','--batch-check=%(objectname) %(objecttype) %(objectsize)'],input='\n'.join(oids)+'\n',text=True,stdout=subprocess.PIPE,check=True)
+            blobs=[]; readable=[]
+            for line in p.stdout.splitlines():
+              q=line.split()
+              if len(q)==3 and q[1]=='blob':
+                blobs.append(q[0])
+                if int(q[2])<=MAX: readable.append(q[0])
+            return sorted(blobs),sorted(readable)
+          pr_refs=subprocess.check_output(['git','for-each-ref','--format=%(refname)','refs/math-pr/'],text=True).splitlines()
+          if not pr_refs:
+            obj={'recorded_at_utc':datetime.now(timezone.utc).isoformat(),'pr_refs_count':0,'source_blob_oids_total':0,'readable_blob_oids_total':0,'selftest_all_refs_import_pass':True,'scope':'no PR refs returned by origin'}
+          else:
+            # Build a temporary repo containing only the PR refs to compute exactly the same reachable set as the bundle.
+            src='/tmp/math-pr-history/source-only'
+            subprocess.run(['rm','-rf',src],check=True)
+            subprocess.run(['git','init','--quiet',src],check=True)
+            for ref in pr_refs:
+              sha=subprocess.check_output(['git','rev-parse',ref],text=True).strip()
+              subprocess.run(['git','-C',src,'update-ref',ref,sha],check=False)
+            # update-ref above cannot see source objects; instead compare bundle selftest inventory to the source repo using rev-list on explicit PR refs.
+            rows=subprocess.check_output(['git','rev-list','--objects',*pr_refs],text=True).splitlines()
+            oids=sorted({r.split(' ',1)[0] for r in rows if r.strip()})
+            meta=subprocess.run(['git','cat-file','--batch-check=%(objectname) %(objecttype) %(objectsize)'],input='\n'.join(oids)+'\n',text=True,stdout=subprocess.PIPE,check=True)
+            source_blobs=[]; source_readable=[]
+            for line in meta.stdout.splitlines():
+              q=line.split()
+              if len(q)==3 and q[1]=='blob':
+                source_blobs.append(q[0])
+                if int(q[2])<=MAX: source_readable.append(q[0])
+            imported_blobs,imported_readable=inventory(['git','-C','/tmp/math-pr-history/selftest'])
+            source_blobs=sorted(set(source_blobs)); source_readable=sorted(set(source_readable))
+            if imported_blobs!=source_blobs or imported_readable!=source_readable:
+              raise SystemExit(f'FAIL PR bundle inventory mismatch source={len(source_blobs)} imported={len(imported_blobs)} readable={len(source_readable)}/{len(imported_readable)}')
+            b=Path('/tmp/math-pr-history/pr-refs.bundle')
+            obj={
+              'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
+              'pr_refs_count':len(pr_refs),
+              'bundle_sha256':hashlib.sha256(b.read_bytes()).hexdigest(),
+              'bundle_bytes':b.stat().st_size,
+              'source_blob_oids_total':len(source_blobs),
+              'readable_blob_oids_total':len(source_readable),
+              'selftest_imported_blob_oids_total':len(imported_blobs),
+              'selftest_imported_readable_blob_oids_total':len(imported_readable),
+              'selftest_all_refs_import_pass':True,
+              'scope':'all GitHub refs/pull/*/head and refs/pull/*/merge returned by origin, full commit closure, self-tested before shard fan-out'
+            }
+          Path('/tmp/math-pr-history/manifest.json').write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n')
+          print(json.dumps(obj,ensure_ascii=False,indent=2))
+          PY
+          rm -rf /tmp/math-pr-history/selftest /tmp/math-pr-history/source-only
+      - uses: actions/upload-artifact@v4
+        with:
+          name: math-pr-refs-prefetched-history
+          path: /tmp/math-pr-history/
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 0
+
+  scan-shard:
+    needs: prepare-pr-history
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: math-pr-refs-prefetched-history
+          path: /tmp/math-pr-history
+      - name: Import PR bundle and SHA-scan this shard
+        env:
+          MATH_GIT_SHARD_COUNT: '16'
+          MATH_GIT_SHARD_INDEX: ${{ matrix.shard }}
+          MATH_GIT_SHARD_REPORT: ${{ github.workspace }}/math-bank/state/pr-ref-shards/shard-${{ matrix.shard }}.json
+          MATH_GIT_SHARD_RECOVERED: ${{ github.workspace }}/math-bank/recovered-pr-ref-shards/shard-${{ matrix.shard }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json,os,subprocess,sys
+          from pathlib import Path
+          workspace=Path(os.environ['GITHUB_WORKSPACE'])
+          manifest=json.loads(Path('/tmp/math-pr-history/manifest.json').read_text())
+          repo=Path('/tmp/math-pr-history/repo')
+          subprocess.run(['rm','-rf',str(repo)],check=True)
+          subprocess.run(['git','init','--quiet',str(repo)],check=True)
+          if manifest.get('pr_refs_count',0):
+            bundle=Path('/tmp/math-pr-history/pr-refs.bundle')
+            if hashlib.sha256(bundle.read_bytes()).hexdigest()!=manifest['bundle_sha256']:
+              raise SystemExit('PR bundle SHA mismatch')
+            subprocess.run(['git','-C',str(repo),'fetch','--quiet',str(bundle),'+refs/*:refs/*'],check=True)
+          os.chdir(repo)
+          sys.path.insert(0,str(workspace/'math-bank/app'))
+          import scan_git_history_shard as shard
+          shard.core.fetch_all_remote_history=lambda:{'mode':'prefetched_pr_refs_bundle','network_refetch':False,'selftest_all_refs_import_pass':True}
+          raise SystemExit(shard.main())
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: math-pr-ref-shard-${{ matrix.shard }}
+          path: |
+            math-bank/state/pr-ref-shards/
+            math-bank/recovered-pr-ref-shards/
+          if-no-files-found: warn
+          retention-days: 30
+
+  aggregate:
+    if: always()
+    needs: [prepare-pr-history, scan-shard]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 1
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: math-pr-ref-shard-*
+          path: /tmp/math-pr-shards
+          merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: math-pr-refs-prefetched-history
+          path: /tmp/math-pr-history
+      - name: Require exact 16-shard PR-ref coverage
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from datetime import datetime,timezone
+          from pathlib import Path
+          m=json.loads(Path('/tmp/math-pr-history/manifest.json').read_text())
+          objs=[]
+          for p in Path('/tmp/math-pr-shards').rglob('shard-*.json'):
+            try: objs.append(json.loads(p.read_text()))
+            except Exception: pass
+          idx=sorted({o.get('shard_index') for o in objs if isinstance(o.get('shard_index'),int)})
+          totals={o.get('readable_blob_oids_total') for o in objs}
+          readable=next(iter(totals)) if len(totals)==1 else None
+          assigned=sum(int(o.get('assigned_blob_oids') or 0) for o in objs)
+          checked=sum(int(o.get('all_blobs_sha256_checked') or 0) for o in objs)
+          target=int(m.get('readable_blob_oids_total') or 0)
+          complete=(idx==list(range(16)) and readable==target and assigned==target and checked==target and bool(m.get('selftest_all_refs_import_pass')))
+          pair_hits=sum(len(o.get('paired_recovery_hits') or []) for o in objs)
+          canonical_hits=sum(len(o.get('canonical_blob_hits') or []) for o in objs)
+          lfs_hits=sum(len(o.get('lfs_pointer_hits') or []) for o in objs)
+          out={
+            'workflow':'Math PR Refs Sharded Recovery',
+            'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
+            'pr_refs_count':m.get('pr_refs_count'),
+            'manifest_readable_blob_oids_total':target,
+            'shard_indexes_completed':idx,
+            'shards_completed':len(idx),
+            'readable_blob_oids_total':readable,
+            'assigned_blob_oids_total':assigned,
+            'all_blobs_sha256_checked':checked,
+            'all_blob_bytes_hashed':sum(int(o.get('all_blob_bytes_hashed') or 0) for o in objs),
+            'exact_coverage_complete':complete,
+            'canonical_blob_hits':canonical_hits,
+            'lfs_pointer_hits':lfs_hits,
+            'paired_recovery_hits':pair_hits,
+            'canonical_pair_found':pair_hits>0,
+            'expected_sha256':'eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175',
+            'scope':'all refs/pull/*/head and refs/pull/*/merge reachable blobs, exact 16-way partition'
+          }
+          Path('/tmp/math-pr-refs-sharded-recovery-latest.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
+          print(json.dumps(out,ensure_ascii=False,indent=2))
+          if not complete: raise SystemExit('FAIL PR-ref exact coverage incomplete')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: math-pr-refs-sharded-summary
+          path: /tmp/math-pr-refs-sharded-recovery-latest.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Persist PR-ref recovery state
+        if: always()
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin math-problem-bank-bootstrap
+          git reset --hard origin/math-problem-bank-bootstrap
+          mkdir -p math-bank/state
+          cp /tmp/math-pr-refs-sharded-recovery-latest.json math-bank/state/ 2>/dev/null || true
+          git add math-bank/state/math-pr-refs-sharded-recovery-latest.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'record PR-ref math canonical recovery state'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
