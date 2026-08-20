@@ -38,8 +38,7 @@
         body.print-student #audit{display:none!important}
         body.print-student #passage,
         body.print-student #questions{display:block!important}
-        body.print-student #passage h3,
-        body.print-student #passage h3 + div{display:none!important}
+        body.print-student .student-print-hide{display:none!important}
         body.print-teacher #audit{display:none!important}
         body.print-teacher #passage,
         body.print-teacher #slash,
@@ -60,7 +59,32 @@
     const wrap=document.querySelector('.wrap');
     if(wrap) wrap.insertBefore(label,wrap.firstChild);
 
+    let studentHidden=[];
+
+    function markStudentOnlyHidden(){
+      studentHidden=[];
+      const passage=document.getElementById('passage');
+      if(!passage) return;
+      const heading=[...passage.querySelectorAll('h3')].find(el=>el.textContent.trim()==='自然な全訳');
+      const body=heading&&heading.nextElementSibling;
+      [heading,body].filter(Boolean).forEach(el=>{
+        studentHidden.push({el,display:el.style.display,priority:el.style.getPropertyPriority('display')});
+        el.classList.add('student-print-hide');
+        el.style.setProperty('display','none','important');
+      });
+    }
+
+    function restoreStudentHidden(){
+      studentHidden.forEach(({el,display,priority})=>{
+        el.classList.remove('student-print-hide');
+        if(display) el.style.setProperty('display',display,priority||'');
+        else el.style.removeProperty('display');
+      });
+      studentHidden=[];
+    }
+
     const cleanup=()=>{
+      restoreStudentHidden();
       document.body.classList.remove('print-student','print-teacher');
       label.textContent='';
     };
@@ -69,10 +93,13 @@
       cleanup();
       const isStudent=mode==='student';
       document.body.classList.add(isStudent?'print-student':'print-teacher');
+      if(isStudent) markStudentOnlyHidden();
       label.textContent=isStudent?'生徒用プリント（英文本文・問題）':'解答・解説プリント（本文・訳・問題・解答・解説）';
       window.addEventListener('afterprint',cleanup,{once:true});
       window.addEventListener('focus',()=>setTimeout(cleanup,300),{once:true});
-      requestAnimationFrame(()=>window.print());
+      // Force style/layout calculation before opening print preview (important on Safari/iOS).
+      void document.body.offsetHeight;
+      setTimeout(()=>window.print(),80);
     }
 
     student.addEventListener('click',()=>runPrint('student'));
