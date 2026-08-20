@@ -21,7 +21,7 @@ async function injectCanonicalFixture(page) {
         i++;
         const grade = i <= 400 ? 1 : (i <= 800 ? 2 : 3);
         const rid = `TEST-ORIG-${String(i).padStart(4, '0')}`;
-        originals.push({ rid, grade });
+        originals.push({ rid, grade, hasChoices, minor: grade === 1 ? '正負の数' : (grade === 2 ? '式の計算' : '多項式') });
         const hasChoices = i % 10 === 0;
         rows.push({
           id: rid,
@@ -60,11 +60,11 @@ async function injectCanonicalFixture(page) {
     for (let n = 1; n <= 107; n++) {
       i++;
       const parent = originals[n - 1];
-      const hasChoices = i % 10 === 0;
+      const hasChoices = parent.hasChoices;
       rows.push({
         id: `TEST-VAR-${String(n).padStart(3, '0')}`,
         grade: parent.grade,
-        unit: { major: '数と式', minor: '正負の数', tags: ['TEST_ONLY_BROWSER_FIXTURE'] },
+        unit: { major: '数と式', minor: parent.minor, tags: ['TEST_ONLY_BROWSER_FIXTURE'] },
         title: `テスト専用類題 ${n}`,
         skill: '計算',
         question_format: hasChoices ? '選択' : '記述',
@@ -90,7 +90,40 @@ async function injectCanonicalFixture(page) {
         },
       });
     }
-    if (rows.length !== 1231) throw new Error(`fixture count ${rows.length}`);
+    for (let n = 1; n <= 3; n++) {
+      i++;
+      const parent = originals[198 + n];
+      const hasChoices = parent.hasChoices;
+      rows.push({
+        id: `TEST-XVAR-${String(n).padStart(3, '0')}`,
+        grade: parent.grade,
+        unit: { major: '数と式', minor: parent.minor, tags: ['TEST_ONLY_BROWSER_FIXTURE', 'EXPANDED_VARIANT'] },
+        title: `テスト専用追加類題 ${n}`,
+        skill: '計算',
+        question_format: hasChoices ? '選択' : '記述',
+        difficulty: 'standard',
+        source: {
+          book: 'generated',
+          document: 'TEST_ONLY_EXPANDED_VARIANT',
+          original_no: null,
+          is_generated_variant: true,
+          parent_id: parent.rid,
+        },
+        question: `ブラウザ回帰専用追加類題 ${n}`,
+        choices: hasChoices ? ['選択肢A', '選択肢B', '選択肢C'] : null,
+        answer: hasChoices ? '選択肢B' : String(2000 + n),
+        explanation: `ブラウザ回帰専用追加類題解説 ${n}`,
+        figure_refs: [],
+        variant_group: parent.rid,
+        prerequisites: [],
+        audit: {
+          problem_answer_verified: true,
+          structure_verified: true,
+          figure_refs_verified: true,
+        },
+      });
+    }
+    if (rows.length !== 1234) throw new Error(`fixture count ${rows.length}`);
     window.acceptRecords(rows, 'TEST_ONLY_BROWSER_MEMORY_FIXTURE');
   }, { svgData: SVG_DATA });
   await page.waitForFunction(() => document.querySelector('#gate')?.textContent?.includes('PASS'));
@@ -129,17 +162,17 @@ async function runCase(browserType, name, viewport) {
 
     phase = 'initial-load';
     await page.goto(BASE_URL, { waitUntil: 'domcontentloaded' });
-    await page.waitForFunction(() => document.querySelector('#status')?.textContent?.includes('正本データ未接続'));
+    await page.waitForFunction(() => document.querySelector('#status')?.textContent?.includes('基準データ未接続'));
     const rendererLoaded = await page.evaluate(() => !!window.MikamiMathFigureMarkers?.renderCanonicalText);
     if (!rendererLoaded) fail(`${name}: inline figure marker renderer not loaded`);
 
     phase = 'canonical-fixture-injection';
     await injectCanonicalFixture(page);
     const gate = await page.textContent('#gate');
-    if (!gate?.includes('PASS') || !gate.includes('タイトル/選択肢') || !gate.includes('本文内図版マーカー')) fail(`${name}: canonical gate did not pass with title/choices/markers`);
+    if (!gate?.includes('拡張ゲート PASS') || !gate.includes('追加3問')) fail(`${name}: expanded gate did not pass with dynamic verified variants: ${gate}`);
     const summary = await page.textContent('#summary');
-    if (!summary?.includes('候補 1231問') || !summary.includes('原問題 1124問') || !summary.includes('既存類題 107問')) {
-      fail(`${name}: canonical summary mismatch: ${summary}`);
+    if (!summary?.includes('候補 1234問') || !summary.includes('原問題 1124問') || !summary.includes('類題 110問')) {
+      fail(`${name}: expanded summary mismatch: ${summary}`);
     }
 
     phase = 'inline-figure-marker-readiness';
@@ -201,7 +234,7 @@ async function runCase(browserType, name, viewport) {
 
     phase = 'settings-reload';
     await page.reload({ waitUntil: 'domcontentloaded' });
-    await page.waitForFunction(() => document.querySelector('#status')?.textContent?.includes('正本データ未接続'));
+    await page.waitForFunction(() => document.querySelector('#status')?.textContent?.includes('基準データ未接続'));
     await injectCanonicalFixture(page);
     const restored = await page.evaluate(() => Object.fromEntries(['grade','major','minor','skill','difficulty','qformat','book','count','order'].map(id => [id, document.getElementById(id).value])));
     const expectedRestored = { grade:'1', major:'数と式', minor:'正負の数', skill:'計算', difficulty:'standard', qformat:'記述', book:'Winpass', count:'17', order:'source' };
