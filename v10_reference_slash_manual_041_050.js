@@ -99,23 +99,23 @@
   {en:'Thank you.',jp:'ありがとう。'}
  ],48);
  setAudit(d,'Unit 4-1',[
-  {en:'This is a picture / from New Zealand.',jp:'これは写真です / ニュージーランドの'},
-  {en:'A puppy is / in the picture.',jp:'子イヌがいます / 写真の中に'},
-  {en:'A cat is / in the picture, / too.',jp:'ネコがいます / 写真の中に / 〜もまた'},
-  {en:'They are small.',jp:'それらは小さいです。'},
-  {en:'They are animals.',jp:'それらは動物です。'},
-  {en:'I like the puppy / and the cat.',jp:'私はその子イヌが好きです / そしてネコも'},
+  {en:'This is a puppy.',jp:'これは子イヌです。'},
+  {en:'This is a cat, / too.',jp:'こちらはネコです / 〜もまた'},
+  {en:'They are small.',jp:'どちらも小さいです。'},
+  {en:'I like the puppy.',jp:'私はその子イヌが好きです。'},
+  {en:'I like the cat, / too.',jp:'私はネコが好きです / 〜もまた'},
+  {en:'They are / in New Zealand.',jp:'2匹はいます / ニュージーランドに'},
   {en:'I want / to visit New Zealand someday.',jp:'私は望んでいます / いつかニュージーランドを訪れることを'},
   {en:'New Zealand is interesting.',jp:'ニュージーランドはおもしろそうです。'}
  ],49);
  setAudit(d,'Unit 4-2',[
   {en:'Basketball is my favorite sport.',jp:'バスケットボールは私のいちばん好きなスポーツです。'},
   {en:'I practice basketball / in the afternoon.',jp:'私はバスケットボールを練習します / 午後に'},
-  {en:'My friend / and I practice together.',jp:'私の友達 / そして私はいっしょに練習します'},
+  {en:'My friend / and I practice basketball.',jp:'私の友達 / そして私はバスケットボールを練習します'},
+  {en:'We practice / near the park.',jp:'私たちは練習します / 公園の近くで'},
   {en:'We practice hard.',jp:'私たちは一生懸命練習します。'},
   {en:'We want / to win.',jp:'私たちは望んでいます / 勝つことを'},
-  {en:'We like basketball very much.',jp:'私たちはバスケットボールがとても好きです。'},
-  {en:'We will practice again tomorrow.',jp:'私たちは明日もまた練習します。'},
+  {en:'We like basketball.',jp:'私たちはバスケットボールが好きです。'},
   {en:'Basketball is great.',jp:'バスケットボールはすばらしいです。'}
  ],50);
  window.V10_REFERENCE_SLASH_AUDIT={version:'2026-08-20',passagesAudited:50,total:168,lastCompleted:50,minimumRuleImageConfirmed:true};
