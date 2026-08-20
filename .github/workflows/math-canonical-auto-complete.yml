@@ -2,6 +2,12 @@ name: Math Canonical Auto Complete
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - math-problem-bank-bootstrap
+    paths:
+      - 'math-bank/state/actions-artifact-scan-latest.json'
+      - 'math-bank/state/ci-latest.json'
   workflow_run:
     workflows:
       - Math Problem Bank Audit
