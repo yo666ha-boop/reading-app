@@ -15,6 +15,7 @@ EXPECTED = 1231
 CANONICAL_ZIP_SHA256 = "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175"
 EXTERNAL_SCHEMES = {"http", "https", "data", "blob"}
 ALLOWED_LOCAL_FIGURE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".avif"}
+RECORDED_CANONICAL_CORE_FIELDS = {"id", "stage", "unit", "title", "q", "choices", "ans", "explanation"}
 
 
 def sha256_file(path: Path) -> str:
@@ -56,6 +57,10 @@ def shape_hint(rows: list[dict]) -> str:
         return "empty"
     first = rows[0] if isinstance(rows[0], dict) else {}
     return ",".join(sorted(first.keys())[:30])
+
+
+def has_recorded_canonical_core(rows: list[dict]) -> bool:
+    return bool(rows) and all(isinstance(r, dict) and RECORDED_CANONICAL_CORE_FIELDS <= set(r) for r in rows)
 
 
 def strict_validate_rows(rows: list[dict]) -> tuple[bool, str]:
@@ -169,7 +174,7 @@ def promote(rows: list[dict], assets: dict[PurePosixPath, Path], out: Path) -> N
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Recover only the already-verified canonical 1231-record math app dataset.")
+    ap = argparse.ArgumentParser(description="Recover only the already-verified canonical 1231-record math dataset without guessing a conversion.")
     ap.add_argument("source", help="Canonical ZIP, or separately verified JSON/JSONL")
     ap.add_argument("--output", default=str(Path(__file__).with_name("app-records.json")))
     args = ap.parse_args()
@@ -216,7 +221,13 @@ def main() -> int:
                 continue
             ok, reason = strict_validate_rows(rows)
             if not ok:
-                report["result"] = reason
+                if has_recorded_canonical_core(rows):
+                    report["result"] = "RECORDED_CANONICAL_CORE_1231_DETECTED_APP_MAPPING_NOT_VERIFIED"
+                    report["recorded_core_fields"] = sorted(RECORDED_CANONICAL_CORE_FIELDS)
+                    report["strict_app_validator_reason"] = reason
+                    report["policy"] = "Do not guess stage/unit/source/skill/difficulty/format/figure/variant mappings. Preserve canonical content and require a verified deterministic app mapping."
+                else:
+                    report["result"] = reason
                 reports.append(report)
                 continue
             try:
@@ -249,7 +260,7 @@ def main() -> int:
         "status": "BLOCKED",
         "source": str(source),
         "source_sha256": source_sha256,
-        "reason": "No exact 1231-record candidate passed strict data + figure-asset gates. No output was promoted.",
+        "reason": "No exact 1231-record candidate passed strict app data + figure-asset gates. Recorded canonical q/ans schema candidates are reported but never guessed into app schema.",
         "candidates": reports
     }, ensure_ascii=False, indent=2))
     return 3
