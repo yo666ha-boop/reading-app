@@ -74,10 +74,13 @@ def strict_validate_rows(rows: list[dict]) -> tuple[bool, str]:
 def local_figure_ref(ref: str) -> PurePosixPath | None:
     ref = ref.strip()
     parts = urlsplit(ref)
-    if parts.scheme.lower() in EXTERNAL_SCHEMES or parts.netloc:
+    scheme = parts.scheme.lower()
+    if scheme in EXTERNAL_SCHEMES:
         return None
-    if parts.scheme:
+    if scheme:
         raise ValueError(f"unsupported figure URL scheme: {ref}")
+    if parts.netloc:
+        return None
     raw = unquote(parts.path)
     if not raw or raw.startswith("/") or "\\" in raw:
         raise ValueError(f"unsafe/absolute figure ref: {ref}")
