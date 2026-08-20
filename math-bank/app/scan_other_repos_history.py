@@ -202,6 +202,40 @@ def recover_lfs(work: Path) -> bytes | None:
     return None
 
 
+def fetch_visible_refs(work: Path, item: dict) -> None:
+    """Fetch branch/tag plus GitHub pull-request refs so deleted PR branches remain recoverable.
+
+    This expands recovery coverage only. Nothing found here is promoted unless the exact immutable
+    SHA-256 is present and a single valid final audit is found in the same historical tree.
+    """
+    fetches = [
+        ("heads", "+refs/heads/*:refs/remotes/origin/*"),
+        ("tags", "+refs/tags/*:refs/tags/*"),
+        ("pull_heads", "+refs/pull/*/head:refs/remotes/origin/pull/*/head"),
+        ("pull_merges", "+refs/pull/*/merge:refs/remotes/origin/pull/*/merge"),
+    ]
+    item["ref_fetch"] = {}
+    for label, refspec in fetches:
+        proc = git(work, "fetch", "origin", refspec, "--force", check=False)
+        item["ref_fetch"][label] = {
+            "returncode": proc.returncode,
+            "stderr_tail": proc.stderr[-500:] if proc.returncode else "",
+        }
+    item["remote_branches"] = len([
+        x for x in git(work, "for-each-ref", "--format=%(refname)", "refs/remotes/origin/").stdout.splitlines()
+        if x.strip() and "/pull/" not in x
+    ])
+    item["tags"] = len([x for x in git(work, "tag", "--list").stdout.splitlines() if x.strip()])
+    item["pull_head_refs"] = len([
+        x for x in git(work, "for-each-ref", "--format=%(refname)", "refs/remotes/origin/pull/").stdout.splitlines()
+        if x.strip().endswith("/head")
+    ])
+    item["pull_merge_refs"] = len([
+        x for x in git(work, "for-each-ref", "--format=%(refname)", "refs/remotes/origin/pull/").stdout.splitlines()
+        if x.strip().endswith("/merge")
+    ])
+
+
 def scan_repo(repo: str, temp_root: Path) -> tuple[dict, dict | None]:
     work = temp_root / repo.split("/", 1)[1].replace("-", "dash")
     url = f"https://github.com/{repo}.git"
@@ -211,6 +245,8 @@ def scan_repo(repo: str, temp_root: Path) -> tuple[dict, dict | None]:
         "clone_rc": clone.returncode,
         "remote_branches": 0,
         "tags": 0,
+        "pull_head_refs": 0,
+        "pull_merge_refs": 0,
         "reachable_objects": 0,
         "reachable_blobs": 0,
         "sha256_checked": 0,
@@ -226,10 +262,7 @@ def scan_repo(repo: str, temp_root: Path) -> tuple[dict, dict | None]:
         item["errors"].append(clone.stderr[-1000:])
         return item, None
 
-    git(work, "fetch", "origin", "+refs/heads/*:refs/remotes/origin/*", "--force", "--prune", check=False)
-    git(work, "fetch", "origin", "+refs/tags/*:refs/tags/*", "--force", check=False)
-    item["remote_branches"] = len([x for x in git(work, "for-each-ref", "--format=%(refname)", "refs/remotes/origin/").stdout.splitlines() if x.strip()])
-    item["tags"] = len([x for x in git(work, "tag", "--list").stdout.splitlines() if x.strip()])
+    fetch_visible_refs(work, item)
     paths = rev_objects(work)
     oids = sorted(paths)
     meta = batch_meta(work, oids)
@@ -279,13 +312,13 @@ def main() -> int:
     for p in (OUT_DIR / EXPECTED_FILENAME, OUT_DIR / AUDIT_FILENAME):
         p.unlink(missing_ok=True)
     report = {
-        "scan": "all_other_owned_repo_histories_for_exact_math_canonical",
+        "scan": "all_other_owned_repo_histories_and_pull_refs_for_exact_math_canonical",
         "expected_sha256": EXPECTED_SHA256,
         "required_paired_audit": AUDIT_FILENAME,
         "repos": [],
         "paired_recovery_hits": [],
         "completed_at_utc": None,
-        "policy": "Existing immutable artifact recovery only. Every reachable blob under the cap in the two other owned repositories is SHA-256 checked with persistent batch readers; no reconstruction or guessed mapping.",
+        "policy": "Existing immutable artifact recovery only. Every reachable blob under the cap across branches, tags and fetchable GitHub PR head/merge refs in the two other owned repositories is SHA-256 checked with persistent batch readers; no reconstruction or guessed mapping.",
     }
     with tempfile.TemporaryDirectory() as td:
         root = Path(td)
