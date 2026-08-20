@@ -1,0 +1,153 @@
+name: Math Other Repos Canonical Recovery
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - math-problem-bank-bootstrap
+    paths:
+      - 'math-bank/app/scan_other_repos_history.py'
+      - '.github/workflows/math-other-repos-recovery.yml'
+
+concurrency:
+  group: math-other-repos-canonical-recovery
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  recover-other-repos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout math branch
+        uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Compile recovery and completion tools
+        run: |
+          python -m py_compile \
+            math-bank/app/scan_other_repos_history.py \
+            math-bank/app/complete_from_exact_canonical.py \
+            math-bank/app/inspect_canonical_artifact.py \
+            math-bank/app/analyze_canonical_mapping_evidence.py \
+            math-bank/app/recover_canonical_app_records.py \
+            math-bank/app/convert_verified_canonical_to_app.py \
+            math-bank/app/validate_app_records.py \
+            math-bank/app/validate_canonical_provenance.py \
+            math-bank/app/build_release_bundle.py \
+            math-bank/app/verify_publish_readiness.py
+          node --check math-bank/app/browser_real_regression.mjs
+
+      - name: Scan every reachable blob and LFS pointer in the other two owned repos
+        run: python math-bank/app/scan_other_repos_history.py
+
+      - name: Detect exact ZIP plus audit pair
+        id: pair
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import hashlib
+          from pathlib import Path
+          z=Path('math-bank/recovered-other-repos/みかみ塾数学問題バンク_最終完成版_20260820.zip')
+          a=Path('math-bank/recovered-other-repos/MATHBANK_FINAL_AUDIT_V2.json')
+          expected='eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175'
+          ok=z.is_file() and a.is_file() and hashlib.sha256(z.read_bytes()).hexdigest()==expected
+          print(f'pair_found={str(ok).lower()}')
+          PY
+
+      - name: No pair means no reconstruction
+        if: steps.pair.outputs.pair_found != 'true'
+        run: echo 'NO_EXACT_CANONICAL_PAIR_IN_OTHER_OWNED_REPOS; no reconstruction or partial promotion.'
+
+      - name: One-shot exact canonical wiring
+        if: steps.pair.outputs.pair_found == 'true'
+        id: wiring
+        shell: bash
+        run: |
+          set +e
+          python math-bank/app/complete_from_exact_canonical.py \
+            'math-bank/recovered-other-repos/みかみ塾数学問題バンク_最終完成版_20260820.zip' \
+            'math-bank/recovered-other-repos/MATHBANK_FINAL_AUDIT_V2.json'
+          rc=$?
+          set -e
+          if [ "$rc" -eq 0 ]; then
+            echo 'wiring_ready=true' >> "$GITHUB_OUTPUT"
+          elif [ "$rc" -eq 3 ]; then
+            echo 'wiring_ready=false' >> "$GITHUB_OUTPUT"
+            echo 'EXACT_CANONICAL_RECOVERED_BUT_VERIFIED_METADATA_REQUIRED; no guessed mapping.'
+          else
+            exit "$rc"
+          fi
+
+      - name: Install Playwright after exact wiring
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium firefox webkit
+
+      - name: Start real app server
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        shell: bash
+        run: |
+          python3 -m http.server 8767 --bind 127.0.0.1 --directory math-bank/app >/tmp/math-other-real-http.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8767/index.html >/dev/null && exit 0; sleep 1; done
+          cat /tmp/math-other-real-http.log
+          exit 1
+
+      - name: Full real 1231 browser and A4 regression
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        env:
+          MATH_APP_BASE_URL: http://127.0.0.1:8767/index.html
+          MATH_REAL_DATA_PATH: math-bank/app/app-records.json
+          MATH_REAL_BROWSER_REPORT: math-bank/state/browser-real-regression-latest.json
+          MATH_REAL_PDF_DIR: math-bank/state/real-print-regression
+        run: node math-bank/app/browser_real_regression.mjs
+
+      - name: Build strict release and require publication readiness
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: |
+          python math-bank/app/build_release_bundle.py
+          python math-bank/app/verify_publish_readiness.py --pdf-root math-bank/state/real-print-regression
+
+      - name: Upload recovery diagnostics and completed release if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-other-repos-recovery-diagnostics
+          path: |
+            math-bank/state/other-repos-history-scan-latest.json
+            math-bank/recovered-other-repos/
+            math-bank/state/canonical-inspection-latest.json
+            math-bank/state/canonical-mapping-evidence-latest.json
+            math-bank/state/canonical-completion-latest.json
+            math-bank/state/browser-real-regression-latest.json
+            math-bank/state/real-print-regression/
+            math-bank/みかみ塾数学問題アプリ_公開候補.zip
+            math-bank/release/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Persist other-repo recovery state
+        if: always()
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- math-bank/state/other-repos-history-scan-latest.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'record other-repo math canonical recovery scan'
+            git pull --rebase origin math-problem-bank-bootstrap || true
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
