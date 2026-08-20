@@ -107,3 +107,60 @@ jobs:
             git commit -m 'update math problem bank audit checkpoint'
             git push origin HEAD:math-problem-bank-bootstrap
           fi
+
+  record-ci-result:
+    if: always()
+    needs:
+      - app-shell-and-data-gate
+      - inventory-and-classify
+    runs-on: ubuntu-latest
+    env:
+      APP_RESULT: ${{ needs['app-shell-and-data-gate'].result }}
+      INVENTORY_RESULT: ${{ needs['inventory-and-classify'].result }}
+      TRIGGERING_SHA: ${{ github.sha }}
+      RUN_ID: ${{ github.run_id }}
+      RUN_ATTEMPT: ${{ github.run_attempt }}
+    steps:
+      - name: Checkout latest math branch
+        uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+
+      - name: Persist CI result
+        shell: bash
+        run: |
+          git pull --ff-only origin math-problem-bank-bootstrap || true
+          python - <<'PY'
+          import json
+          import os
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          path = Path('math-bank/state/ci-latest.json')
+          path.parent.mkdir(parents=True, exist_ok=True)
+          app = os.environ.get('APP_RESULT', 'unknown')
+          inventory = os.environ.get('INVENTORY_RESULT', 'unknown')
+          overall = 'success' if app == 'success' and inventory == 'success' else 'failure'
+          payload = {
+              'workflow': 'Math Problem Bank Audit',
+              'overall_result': overall,
+              'app_shell_and_data_gate': app,
+              'inventory_and_classify': inventory,
+              'triggering_sha': os.environ.get('TRIGGERING_SHA', ''),
+              'run_id': os.environ.get('RUN_ID', ''),
+              'run_attempt': os.environ.get('RUN_ATTEMPT', ''),
+              'recorded_at_utc': datetime.now(timezone.utc).isoformat(),
+              'canonical_app_records_present': Path('math-bank/app/app-records.json').is_file(),
+          }
+          path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print(json.dumps(payload, ensure_ascii=False, indent=2))
+          PY
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- math-bank/state/ci-latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'record math app CI result'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
