@@ -1,9 +1,13 @@
 {
-  "status": "IN_PROGRESS",
+  "status": "IN_PROGRESS_BASE_RECOVERY_THEN_VARIANT_GENERATION",
   "mode": "BASE_CANONICAL_PLUS_VERIFIED_EXPANDED_VARIANTS",
   "goal": "全1124原問題に最低1問の新規検証済み類題を追加し、安全な決定論的問題は2〜3問へ拡張して数学プリント作成アプリへ接続する",
   "base_original_target": 1124,
-  "base_original_by_source": {"Winpass": 570, "実力錬成": 237, "Standard": 317},
+  "base_original_by_source": {
+    "Winpass": 570,
+    "実力錬成": 237,
+    "Standard": 317
+  },
   "baseline_verified_variants": 107,
   "expanded_verified_variants": 0,
   "expanded_parent_coverage": 0,
@@ -11,9 +15,10 @@
   "manual_generation_queue": "PENDING_BASE_RECORD_RECOVERY",
   "base_canonical_zip_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "base_canonical_pair_recovered": false,
-  "app_dynamic_expansion_gate": "IMPLEMENTING",
-  "expanded_validator": "IMPLEMENTED_PENDING_CI",
-  "expanded_composer": "IMPLEMENTED_PENDING_CI",
+  "app_dynamic_expansion_gate": "PASS",
+  "expanded_validator": "PASS_POSITIVE_NEGATIVE_TESTS",
+  "expanded_composer": "IMPLEMENTED",
   "publication_ready": false,
-  "next": "run expanded-layer tests, patch app from fixed 1231 gate to dynamic verified-variant gate, continue exact base recovery, then generate/recalculate variants from actual parent records"
+  "next": "recover exact base records; generate independently recalculated variants from each actual parent; compose and run real browser/A4 regression",
+  "recorded_at_utc": "2026-08-20T14:25:14.423409+00:00"
 }
