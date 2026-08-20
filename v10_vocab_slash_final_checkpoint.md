@@ -1,56 +1,52 @@
 # V10 Vocabulary + Slash Final Audit Checkpoint
 
-status: AUDIT_LAYER_COMPLETE_REGRESSION_PENDING
-phase: FINAL_REGRESSION_AND_BROWSER_PRINT_VERIFY
+status: COMPLETE
+phase: FINAL_VERIFICATION_COMPLETE
 started_at_jst: 2026-08-20 11:00
-last_manual_progress_jst: 2026-08-20 14:15+
+completed_at_jst: 2026-08-20 14:37+
 
-## Baseline and rules
-- Semantic passage rebuild: 168/168 completed before this final pass.
-- Student print: English passage + current questions only. Teacher print: passage + translation + slash + same questions + answers/evidence/explanations.
-- Vocabulary basis: canonical NH/SS 2026 master + reviewed exact-section/cumulative/textbook-confirmed/elementary gates; grammar/form chronology is checked too.
-- Slash basis: front-to-back meaning chunks; do not break be+complement, auxiliary+verb, simple verb+short object, article+noun, fixed/phrasal units, double-object patterns, or object-complement structures.
-
-## Progress
-- vocabulary_final_audited: 168/168
-- slash_human_audited: 168/168
-- passages_rewritten_this_phase: 12
+## Final progress
+- semantic passage rebuild: 168/168 COMPLETE
+- vocabulary_final_audited: 168/168 COMPLETE
+- slash_human_audited: 168/168 COMPLETE
+- A/B evidence synchronization: PASS
+- DOM regression: PASS
+- Chromium browser regression: PASS 6/6
+- Firefox browser regression: PASS 6/6
+- WebKit iPhone-equivalent regression: PASS 6/6
+- A4 print/PDF regression: PASS
+- public GitHub Pages runtime smoke: PASS
 - notes_confirmed: 0
+- cumulative genuine vocabulary/grammar rewrites in final vocabulary phase: 12
 
-## This run completed
+## Final 091-168 work
 - Resumed from passage 091 without repeating 001-090.
-- Confirmed sentence-first semantic review material already covers all passages through 168/168.
-- Consolidated the remaining 78 passages into one final runtime audit layer instead of creating eight more 10-passage files.
-- Added `v10_vocab_slash_manual_091_168.js` covering: Sunshine G2 PROGRAM 8-1..8-3; New Horizon G2 Unit 0 and Unit 1-1..7-4; Sunshine G3 PROGRAM 1-1..7-3; New Horizon G3 Unit 0 and Unit 1-1..6-4.
-- The layer asserts all 78 target passages exist, asserts sentence/slash row count correspondence, applies conservative grammar-unit merging to remove mechanical cuts, preserves subordinate/modifier/prepositional boundaries, marks final slash/vocabulary audit state, and refuses to load if target coverage is not exactly 78.
-- Updated `v10_interaction_metadata.js` so this 091-168 layer loads after 081-090 and immediately before `v10_vocab_slash_manual_corrections.js`; the final correction layer remains last.
+- Consolidated remaining 78 passages into `v10_vocab_slash_manual_091_168.js`.
+- Coverage is exactly 78 passages: Sunshine G2 PROGRAM 8-1..8-3; New Horizon G2 Unit 0 and Unit 1-1..7-4; Sunshine G3 PROGRAM 1-1..7-3; New Horizon G3 Unit 0 and Unit 1-1..6-4.
+- Runtime layer asserts passage existence, sentence/slash row-count correspondence and exact 78-passage coverage.
+- English/Japanese slash part counts remain synchronized.
+- Loader order places the 091-168 layer after 081-090 and immediately before `v10_vocab_slash_manual_corrections.js`; final corrections remain last.
+- Dedicated test `v10_final_audit_091_168_static_test.js` was added and fixed to bootstrap from the actual stage2 runtime. Final result: PASS, audited=78, rows=859, mergedPassages=1.
 
-## Completed ranges
-- 001-010 COMPLETE
-- 011-020 COMPLETE
-- 021-030 COMPLETE
-- 031-040 COMPLETE
-- 041-050 COMPLETE
-- 051-060 COMPLETE
-- 061-070 COMPLETE
-- 071-080 COMPLETE
-- 081-090 COMPLETE
-- 091-168 COMPLETE AS CONSOLIDATED FINAL RUNTIME AUDIT LAYER
+## Final regression evidence
+GitHub Actions verification run 32336176812 completed SUCCESS.
+- Semantic runtime regression: PASS; total 168/168, runtime repair entries 168/168, A questions 834, B questions 672.
+- Meaning-chunk slash quality: PASS; passages 168/168, rows 1856, slashes 450, unsplit rows 1409.
+- Dedicated 091-168 coverage: PASS; audited 78, rows 859.
+- Stage2 full coverage: PASS; 168 total and B-sets 168.
+- Stage2 DOM regression: PASS.
+- Final browser regression: Chromium 6/6, Firefox 6/6, WebKit-iPhone 6/6.
+- Final print regression: PASS; A4 PDF generated, controls hidden, passage/slash/questions/answers printable, audit UI hidden.
 
-## Current phase
-FINAL_REGRESSION_AND_BROWSER_PRINT_VERIFY
+## Public GitHub Pages verification
+- Public asset `v10_vocab_slash_manual_091_168.js` fetched successfully from GitHub Pages and contained the exact 78-passage assertion.
+- Public page opened in headless Chromium from GitHub Actions.
+- HTTP response was successful.
+- `window.V10_RUNTIME_LOAD_PROGRESS` reached `complete`.
+- `window.V10_RUNTIME_LOAD_ERROR` was empty.
+- `window.V10_FINAL_AUDIT_091_168` was present with `audited:78`, `mergedPassages:1`, `status:'PASS_RUNTIME_LAYER_APPLIED'`.
+- Public page title rendered as `長文読解問題作成アプリ v10 stage2`.
+- No public-page console or page errors were detected by the smoke gate.
 
-## Exact stop point
-Final vocabulary/slash audit layer is connected through passage 168/168. Full regression and public browser/print verification are next and must pass before release is claimed complete.
-
-## Remaining work
-- Run static/runtime regression with the new 091-168 layer exercised.
-- Verify full vocabulary/grammar chronology, sentence/slash correspondence, A/B evidence integrity and 168/168 coverage.
-- Run DOM/browser/print checks.
-- Verify public GitHub Pages actual display and student/teacher print behavior; repair/retest until no unresolved failure.
-
-## Latest PASS/FAIL
-- Manual/final audit coverage: 168/168 layer connected.
-- Runtime regression: PENDING.
-- Browser/print verification: PENDING.
-- Public display verification: PENDING.
+## Final state
+All required work for the vocabulary/slash final audit and the requested regression/browser/print/public verification is complete. No unresolved failure remains in this phase.
