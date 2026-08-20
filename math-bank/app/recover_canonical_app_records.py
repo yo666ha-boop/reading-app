@@ -3,14 +3,17 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import shutil
 import tempfile
 import zipfile
-from pathlib import Path
+from pathlib import Path, PurePosixPath
+from urllib.parse import unquote, urlsplit
 
 from validate_app_records import main as validate_main
 
 EXPECTED = 1231
 CANONICAL_ZIP_SHA256 = "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175"
+EXTERNAL_SCHEMES = {"http", "https", "data", "blob"}
 
 
 def sha256_file(path: Path) -> str:
@@ -67,6 +70,98 @@ def strict_validate_rows(rows: list[dict]) -> tuple[bool, str]:
         tmp.unlink(missing_ok=True)
 
 
+def local_figure_ref(ref: str) -> PurePosixPath | None:
+    ref = ref.strip()
+    parts = urlsplit(ref)
+    if parts.scheme.lower() in EXTERNAL_SCHEMES or parts.netloc:
+        return None
+    if parts.scheme:
+        raise ValueError(f"unsupported figure URL scheme: {ref}")
+    raw = unquote(parts.path)
+    if not raw or raw.startswith("/") or "\\" in raw:
+        raise ValueError(f"unsafe/absolute figure ref: {ref}")
+    rel = PurePosixPath(raw)
+    if any(part in {"", ".", ".."} for part in rel.parts):
+        raise ValueError(f"unsafe figure ref path: {ref}")
+    return rel
+
+
+def figure_refs(rows: list[dict]) -> tuple[list[PurePosixPath], int]:
+    local: dict[str, PurePosixPath] = {}
+    external = 0
+    for r in rows:
+        for ref in r.get("figure_refs", []):
+            rel = local_figure_ref(ref)
+            if rel is None:
+                external += 1
+            else:
+                local[rel.as_posix()] = rel
+    return [local[k] for k in sorted(local)], external
+
+
+def resolve_asset(rel: PurePosixPath, candidate: Path, extracted_root: Path | None, source: Path) -> Path | None:
+    direct: list[Path] = []
+    roots = [candidate.parent]
+    if extracted_root is not None:
+        roots.append(extracted_root)
+    if source.suffix.lower() != ".zip":
+        roots.append(source.parent)
+    for root in roots:
+        p = root.joinpath(*rel.parts)
+        if p.is_file():
+            direct.append(p.resolve())
+    unique_direct = list(dict.fromkeys(direct))
+    if unique_direct:
+        hashes = {sha256_file(p) for p in unique_direct}
+        if len(hashes) == 1:
+            return unique_direct[0]
+        raise ValueError(f"ambiguous figure asset with different contents: {rel.as_posix()}")
+
+    if extracted_root is None:
+        return None
+    suffix = rel.as_posix()
+    matches = []
+    for p in extracted_root.rglob(rel.name):
+        if not p.is_file():
+            continue
+        rp = p.relative_to(extracted_root).as_posix()
+        if rp == suffix or rp.endswith("/" + suffix):
+            matches.append(p.resolve())
+    matches = list(dict.fromkeys(matches))
+    if not matches:
+        return None
+    hashes = {sha256_file(p) for p in matches}
+    if len(hashes) != 1:
+        raise ValueError(f"ambiguous figure asset suffix with different contents: {suffix}")
+    return matches[0]
+
+
+def resolve_all_assets(rows: list[dict], candidate: Path, extracted_root: Path | None, source: Path) -> tuple[dict[PurePosixPath, Path], int]:
+    refs, external_count = figure_refs(rows)
+    resolved: dict[PurePosixPath, Path] = {}
+    missing: list[str] = []
+    for rel in refs:
+        p = resolve_asset(rel, candidate, extracted_root, source)
+        if p is None:
+            missing.append(rel.as_posix())
+        else:
+            resolved[rel] = p
+    if missing:
+        sample = ", ".join(missing[:10])
+        raise ValueError(f"missing local figure assets {len(missing)}: {sample}")
+    return resolved, external_count
+
+
+def promote(rows: list[dict], assets: dict[PurePosixPath, Path], out: Path) -> None:
+    out.parent.mkdir(parents=True, exist_ok=True)
+    for rel, src in assets.items():
+        dest = out.parent.joinpath(*rel.parts)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(src, dest)
+    out.write_text(json.dumps(rows, ensure_ascii=False, indent=2), encoding="utf-8")
+    validate_main(str(out), strict=True)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="Recover only the already-verified canonical 1231-record math app dataset.")
     ap.add_argument("source", help="Canonical ZIP, or separately verified JSON/JSONL")
@@ -78,22 +173,21 @@ def main() -> int:
         raise SystemExit(f"BLOCKED: source not found: {source}")
 
     source_sha256 = sha256_file(source)
-    if source.suffix.lower() == ".zip":
-        # ZIP identity is immutable. There is intentionally no CLI override for this value.
-        if source_sha256.lower() != CANONICAL_ZIP_SHA256:
-            print(json.dumps({
-                "status": "BLOCKED",
-                "source": str(source),
-                "reason": "ZIP_SHA256_MISMATCH",
-                "actual_sha256": source_sha256,
-                "expected_sha256": CANONICAL_ZIP_SHA256,
-                "policy": "ZIP input must be the recorded final canonical artifact; hash bypass is not allowed"
-            }, ensure_ascii=False, indent=2))
-            return 4
+    if source.suffix.lower() == ".zip" and source_sha256.lower() != CANONICAL_ZIP_SHA256:
+        print(json.dumps({
+            "status": "BLOCKED",
+            "source": str(source),
+            "reason": "ZIP_SHA256_MISMATCH",
+            "actual_sha256": source_sha256,
+            "expected_sha256": CANONICAL_ZIP_SHA256,
+            "policy": "ZIP input must be the recorded final canonical artifact; hash bypass is not allowed"
+        }, ensure_ascii=False, indent=2))
+        return 4
 
     out = Path(args.output)
     reports: list[dict] = []
     with tempfile.TemporaryDirectory() as td:
+        extracted_root = Path(td) if source.suffix.lower() == ".zip" else None
         try:
             candidates = candidate_files(source, Path(td))
         except zipfile.BadZipFile as e:
@@ -115,30 +209,41 @@ def main() -> int:
                 reports.append(report)
                 continue
             ok, reason = strict_validate_rows(rows)
-            report["result"] = reason
+            if not ok:
+                report["result"] = reason
+                reports.append(report)
+                continue
+            try:
+                assets, external_count = resolve_all_assets(rows, p, extracted_root, source)
+            except Exception as e:
+                report["result"] = f"FIGURE_ASSET_GATE_FAIL: {e}"
+                reports.append(report)
+                continue
+            report["result"] = "PASS_STRICT_1231_AND_FIGURE_ASSETS"
+            report["local_figure_assets"] = len(assets)
+            report["external_figure_refs"] = external_count
             reports.append(report)
-            if ok:
-                out.parent.mkdir(parents=True, exist_ok=True)
-                out.write_text(json.dumps(rows, ensure_ascii=False, indent=2), encoding="utf-8")
-                validate_main(str(out), strict=True)
-                print(json.dumps({
-                    "status": "PASS",
-                    "source": str(source),
-                    "source_sha256": source_sha256,
-                    "canonical_zip_sha256_verified": source.suffix.lower() != ".zip" or source_sha256.lower() == CANONICAL_ZIP_SHA256,
-                    "promoted_candidate": str(p),
-                    "output": str(out),
-                    "output_sha256": sha256_file(out),
-                    "records": EXPECTED,
-                    "policy": "no transformation/no invented records; exact strict app-schema pass-through only"
-                }, ensure_ascii=False, indent=2))
-                return 0
+            promote(rows, assets, out)
+            print(json.dumps({
+                "status": "PASS",
+                "source": str(source),
+                "source_sha256": source_sha256,
+                "canonical_zip_sha256_verified": source.suffix.lower() != ".zip" or source_sha256.lower() == CANONICAL_ZIP_SHA256,
+                "promoted_candidate": str(p),
+                "output": str(out),
+                "output_sha256": sha256_file(out),
+                "records": EXPECTED,
+                "local_figure_assets_copied": len(assets),
+                "external_figure_refs": external_count,
+                "policy": "no transformation/no invented records; strict app-schema pass-through plus exact figure-asset preservation"
+            }, ensure_ascii=False, indent=2))
+            return 0
 
     print(json.dumps({
         "status": "BLOCKED",
         "source": str(source),
         "source_sha256": source_sha256,
-        "reason": "No exact 1231-record candidate passed the strict app validator. No output was promoted.",
+        "reason": "No exact 1231-record candidate passed strict data + figure-asset gates. No output was promoted.",
         "candidates": reports
     }, ensure_ascii=False, indent=2))
     return 3
