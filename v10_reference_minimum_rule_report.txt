@@ -1,30 +1,11 @@
-REFERENCE MINIMUM RULE AUDIT passages=168/168 rows=1854 reference_marked=165/168 slashes=1776 unsplit_rows=624 stale=3
+REFERENCE MINIMUM RULE AUDIT passages=168/168 rows=1854 reference_marked=167/168 slashes=1794 unsplit_rows=614 stale=3
 STALE REFERENCE PASSAGES: 53,141,145
-REFERENCE MINIMUM RULE FAIL 45
+REFERENCE MINIMUM RULE FAIL 27
 - STALE_REFERENCE_PASSAGES 53,141,145
 - 1|サンシャイン|PROGRAM 3-3#3: CONJUNCTION_BOUNDARY_BEFORE_SO_MISSED :: I am so excited.
-- 1|ニューホライズン|Unit 5-2#2: PREPOSITION_BOUNDARY_BEFORE_ABOUT_MISSED :: The blog is about his life.
-- 1|ニューホライズン|Unit 5-2#5: COMMA_BOUNDARY_MISSED :: Yes, he does.
-- 1|ニューホライズン|Unit 5-2#6: PREPOSITION_BOUNDARY_BEFORE_IN_MISSED :: The dolphin is in the water.
-- 1|ニューホライズン|Unit 5-2#9: PREPOSITION_BOUNDARY_BEFORE_ABOUT_MISSED :: Does he write about the dolphin?
-- 1|ニューホライズン|Unit 5-2#10: COMMA_BOUNDARY_MISSED :: Yes, he does.
 - 2|サンシャイン|PROGRAM 7-3#13: PREPOSITION_BOUNDARY_BEFORE_AT_MISSED :: Its activity is different / in the daytime / and at nighttime.
 - 3|サンシャイン|PROGRAM 2-1#7: PREPOSITION_BOUNDARY_BEFORE_AT_MISSED :: Take at least a few minutes / to relax quietly.
 - 3|サンシャイン|PROGRAM 6-1#11: PREPOSITION_BOUNDARY_BEFORE_BEHIND_MISSED :: We talk / about how / to leave less plastic behind.
-- 3|サンシャイン|PROGRAM 7-1#1: CONJUNCTION_BOUNDARY_BEFORE_AND_MISSED :: A patient has a disease and must stay / in his hospital room.
-- 3|サンシャイン|PROGRAM 7-1#3: PREPOSITION_BOUNDARY_BEFORE_WITH_MISSED :: The patient can control the robot with a computer through a network.
-- 3|サンシャイン|PROGRAM 7-1#3: PREPOSITION_BOUNDARY_BEFORE_THROUGH_MISSED :: The patient can control the robot with a computer through a network.
-- 3|サンシャイン|PROGRAM 7-1#4: COMMA_BOUNDARY_MISSED :: One day, the robot visits a museum far away.
-- 3|サンシャイン|PROGRAM 7-1#5: CONJUNCTION_BOUNDARY_BEFORE_AND_MISSED :: The patient watches the museum / from his room and talks with a guide.
-- 3|サンシャイン|PROGRAM 7-1#5: PREPOSITION_BOUNDARY_BEFORE_WITH_MISSED :: The patient watches the museum / from his room and talks with a guide.
-- 3|サンシャイン|PROGRAM 7-1#6: CONJUNCTION_BOUNDARY_BEFORE_AND_MISSED :: He can move the robot and look / around the room.
-- 3|サンシャイン|PROGRAM 7-1#7: PREPOSITION_BOUNDARY_BEFORE_AS_MISSED :: For a short time, / he feels as if he is visiting the museum himself.
-- 3|サンシャイン|PROGRAM 7-1#8: PREPOSITION_BOUNDARY_BEFORE_TO_MISSED :: He imagines using the robot to visit another place abroad someday.
-- 3|サンシャイン|PROGRAM 7-1#9: COMMA_BOUNDARY_MISSED :: Probably, the project can help other patients too.
-- 3|サンシャイン|PROGRAM 7-1#10: RELATIVE_OR_CONTENT_THAT_BOUNDARY_MISSED :: A dream that once felt far away may come true through the robot.
-- 3|サンシャイン|PROGRAM 7-1#10: PREPOSITION_BOUNDARY_BEFORE_THROUGH_MISSED :: A dream that once felt far away may come true through the robot.
-- 3|サンシャイン|PROGRAM 7-1#11: PREPOSITION_BOUNDARY_BEFORE_TO_MISSED :: The project gives the patient a new way to connect with the world.
-- 3|サンシャイン|PROGRAM 7-1#11: PREPOSITION_BOUNDARY_BEFORE_WITH_MISSED :: The project gives the patient a new way to connect with the world.
 - 3|ニューホライズン|Unit 0#5: RELATIVE_OR_CONTENT_THAT_BOUNDARY_MISSED :: I did not know that / before.
 - 3|ニューホライズン|Unit 1-1#1: CONJUNCTION_BOUNDARY_BEFORE_AND_MISSED :: My friend and I compare places we have visited in Japan.
 - 3|ニューホライズン|Unit 1-1#1: PREPOSITION_BOUNDARY_BEFORE_IN_MISSED :: My friend and I compare places we have visited in Japan.
@@ -46,3 +27,4 @@ REFERENCE MINIMUM RULE FAIL 45
 - 3|ニューホライズン|Unit 6-2#7: PREPOSITION_BOUNDARY_BEFORE_TO_MISSED :: We send the backpack / through the program / rather / than to an unknown person.
 - BROWSER Uncaught [Error: Row mismatch 53]
 - BROWSER Uncaught [Error: English mismatch 141#9: Probably, the project can help other patients, too. <> Probably, the project can help other patients too.]
+- BROWSER reference-load v10_reference_slash_manual_999_recovery.js: Recovery unknown English 145#6: I have never been there either.
