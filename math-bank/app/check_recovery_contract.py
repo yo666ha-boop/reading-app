@@ -8,12 +8,14 @@ ROOT = Path(__file__).resolve().parent
 STATE = ROOT.parent / "state" / "CANONICAL_RECOVERY_KEYS.json"
 RECOVERY = ROOT / "recover_canonical_app_records.py"
 INSPECTOR = ROOT / "inspect_canonical_artifact.py"
+CONVERTER = ROOT / "convert_verified_canonical_to_app.py"
 VALIDATOR = ROOT / "validate_app_records.py"
 SCHEMA = ROOT / "app-record.schema.json"
 
 keys = json.loads(STATE.read_text(encoding="utf-8"))
 recovery = RECOVERY.read_text(encoding="utf-8")
 inspector = INSPECTOR.read_text(encoding="utf-8")
+converter = CONVERTER.read_text(encoding="utf-8")
 validator = VALIDATOR.read_text(encoding="utf-8")
 schema = SCHEMA.read_text(encoding="utf-8")
 
@@ -45,6 +47,14 @@ checks = {
     "legacy_core_detector_present": "RECORDED_CANONICAL_CORE_1231_DETECTED_APP_MAPPING_NOT_VERIFIED" in recovery,
     "inspector_q_ans_classifier_present": "EXACT_1231_RECORDED_Q_ANS_CORE_CANDIDATE" in inspector,
     "inspector_app_classifier_preserves_title_choices": "EXACT_1231_APP_SCHEMA_CANDIDATE_WITH_TITLE_CHOICES" in inspector,
+    "converter_requires_verified_metadata": "verified_metadata" in converter and "REQUIRED_META_FIELDS" in converter,
+    "converter_no_guess_block": "BLOCKED_NO_GUESS_MAPPING" in converter,
+    "converter_content_preservation": "assert_content_preserved" in converter,
+    "converter_copies_title": '"title": row["title"]' in converter,
+    "converter_copies_choices": '"choices": row["choices"]' in converter,
+    "converter_copies_question": '"question": row["q"]' in converter,
+    "converter_copies_answer": '"answer": row["ans"]' in converter,
+    "converter_no_default_get_for_required_metadata": all(f'meta["{field}"]' in converter for field in REQUIRED_META_FIELDS),
     "core_fields_match_recovery": all(repr(field) in recovery or f'"{field}"' in recovery for field in core_fields),
     "core_fields_match_inspector": all(repr(field) in inspector or f'"{field}"' in inspector for field in core_fields),
 }
@@ -63,4 +73,5 @@ print("title_choices_preservation=REQUIRED")
 print("partial_161_promotion=REJECTED")
 print("old_partial_reconstruction=REJECTED")
 print("legacy_q_ans_core=DETECT_ONLY_NO_GUESS_MAPPING")
+print("verified_deterministic_converter=REQUIRED_NO_DEFAULTS")
 print("canonical_zip_inspection_before_mapping=REQUIRED")
