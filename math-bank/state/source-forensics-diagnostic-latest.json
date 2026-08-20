@@ -1,0 +1,47 @@
+{
+  "project": "mikami-math-problem-bank",
+  "mode": "DIAGNOSTIC_ONLY_NON_CANONICAL",
+  "promotable_to_canonical": false,
+  "recorded_at": "2026-08-20T16:06:00+09:00",
+  "source_inventory": {
+    "canonical_unique_docs": 140,
+    "by_source": {"Winpass": 81, "実力錬成": 27, "Standard": 32}
+  },
+  "diagnostic_source_slots": {
+    "Winpass_raw_scoring_slots": 717,
+    "実力錬成": 237,
+    "Standard": 317,
+    "combined_raw_slots": 1271
+  },
+  "winpass_diagnostic_quality": {
+    "questions_present": "717/717",
+    "answers_present": "717/717",
+    "text_answers": 676,
+    "figure_answer_records": 41,
+    "figure_pending": 0,
+    "figure_asset_files": 32,
+    "missing_figure_assets": 0,
+    "obvious_marker_short_header_question_defects_remaining": 0,
+    "source_evidence_question_repairs": 35,
+    "stage4_answer_complete_sha256": "b532d64f83bb0cb0444a6b556e2490a9b56366d5c3916256ae2e96572eb1abe3",
+    "stage5_question_repair_sha256": "c50053ba1765e81e256aaa95b67f94071cec3b6bb625deef801b71b0af5ae984",
+    "answer_asset_index_sha256": "0e96efc7097c61ddfc1c5218da90e7ea92cbb4fd0a1e9babccfcad3756731af2"
+  },
+  "combined_diagnostic_quality": {
+    "questions_present": "1271/1271",
+    "answers_present": "1271/1271",
+    "blank_questions": 0,
+    "blank_answers": 0,
+    "figure_refs": 41,
+    "missing_figure_refs": 0,
+    "combined_diagnostic_sha256": "16c71b87744a3c00bb29b53d63bdaf727feaae86a5d7a505b83920c8dfefc63a"
+  },
+  "important_source_findings": [
+    "All 41 Winpass graphical answer slots were recovered from rendered answer pages or embedded EMF answer artwork.",
+    "Embedded EMF answer artwork fully resolved previously pending construction documents 25winpasst1suhy000417, 000521 and 000522, plus the two pending main1 drawing components in 000625.",
+    "The historical partial Winpass161 seed contains several answer-block spill errors; source answer-table structure is treated as stronger forensic evidence, but neither source-derived diagnostic data nor the seed is canonical.",
+    "Simple exact/fuzzy duplicate-only explanations do not safely explain Winpass raw717 to historical canonical570; authoritative final normalization is still unrecovered and must not be guessed."
+  ],
+  "canonical_blocker": "Exact immutable final1231 ZIP/audit or authoritative Winpass570 normalization evidence remains unrecovered. Diagnostic source-derived records must not be promoted, substituted, or released as canonical data.",
+  "main_touched": false
+}
