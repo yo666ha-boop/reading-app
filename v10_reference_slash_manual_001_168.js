@@ -2,16 +2,28 @@
 // This file is loaded after all older semantic/vocab slash layers and is extended continuously through passage 168.
 (function(){
   const PASS='PASS_REFERENCE_20260820';
-  function setAudit(data,section,rows,passageNo){
-    const p=data&&data[section];
-    if(!p) throw new Error('Missing reference-audit passage '+passageNo+': '+section);
+  function checkRows(p,rows,passageNo,section){
     if(!Array.isArray(p.sentences)||rows.length!==p.sentences.length) throw new Error('Reference slash row mismatch passage '+passageNo+': '+section+' '+rows.length+'/'+((p.sentences||[]).length));
     for(let i=0;i<rows.length;i++){
       const deSlash=String(rows[i].en||'').replace(/\s*\/\s*/g,' ').replace(/\s+/g,' ').trim();
       const sentence=String(p.sentences[i]||'').replace(/\s+/g,' ').trim();
       if(deSlash!==sentence) throw new Error('Reference slash changes English passage '+passageNo+' row '+(i+1)+': '+deSlash+' <> '+sentence);
     }
+  }
+  function setAudit(data,section,rows,passageNo){
+    const p=data&&data[section];
+    if(!p) throw new Error('Missing reference-audit passage '+passageNo+': '+section);
+    checkRows(p,rows,passageNo,section);
     p.slashRows=rows;
+    p.slashReadingVersion='reference-book-20260820';
+    p.slashReferenceAudit=PASS;
+    p.slashReferencePassageNo=passageNo;
+  }
+  function markExisting(data,section,passageNo){
+    const p=data&&data[section];
+    if(!p) throw new Error('Missing reference-audit passage '+passageNo+': '+section);
+    const rows=Array.isArray(p.slashRows)?p.slashRows:[];
+    checkRows(p,rows,passageNo,section);
     p.slashReadingVersion='reference-book-20260820';
     p.slashReferenceAudit=PASS;
     p.slashReferencePassageNo=passageNo;
@@ -34,7 +46,7 @@
     {en:'Great!',jp:'すごい！'}
   ],1);
 
-  // 002 — the reference does not split a short simple core merely to separate WH/object, verb/object, or Yes + auxiliary.
+  // 002 — short/simple core remains whole; no artificial WH/object or verb/object split.
   setAudit(sun1,'Get Ready 3',[
     {en:'What subject do you like?',jp:'何の教科が好きですか。'},
     {en:'I like English.',jp:'私は英語が好きです。'},
@@ -63,5 +75,15 @@
     {en:'Great!',jp:'いいね！'}
   ],3);
 
-  window.V10_REFERENCE_SLASH_AUDIT={version:'2026-08-20',passagesAudited:3,total:168,lastCompleted:3};
+  // 004-010 — re-read against the supplied answer-book model. Existing final rows already match its pattern:
+  // short/simple clauses whole; place/time/companion/contrast units separated where useful.
+  markExisting(sun1,'Get Ready 5',4);
+  markExisting(sun1,'Get Ready 6',5);
+  markExisting(sun1,'PROGRAM 1-1',6);
+  markExisting(sun1,'PROGRAM 1-2',7);
+  markExisting(sun1,'PROGRAM 1-3',8);
+  markExisting(sun1,'PROGRAM 2-1',9);
+  markExisting(sun1,'PROGRAM 2-2',10);
+
+  window.V10_REFERENCE_SLASH_AUDIT={version:'2026-08-20',passagesAudited:10,total:168,lastCompleted:10};
 })();
