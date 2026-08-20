@@ -1,6 +1,13 @@
 from __future__ import annotations
 
-from build_variant_generation_queue import classify_parent, parent_record_sha256
+import copy
+
+from build_variant_generation_queue import (
+    classify_parent,
+    parent_record_sha256,
+    validated_covered_parent_ids,
+)
+from test_expanded_variant_layer import make_base, provenance, rec as expanded_rec
 
 
 def parent(**overrides):
@@ -39,6 +46,15 @@ def assert_bucket(row, expected_bucket: str, expected_reason: str) -> None:
     bucket, reason = classify_parent(row)
     assert bucket == expected_bucket, (bucket, reason)
     assert reason == expected_reason, (bucket, reason)
+
+
+def expect_fail(fn, needle: str) -> None:
+    try:
+        fn()
+    except Exception as e:
+        assert needle in str(e), (needle, repr(e))
+        return
+    raise AssertionError(f"expected failure containing {needle!r}")
 
 
 def main() -> None:
@@ -95,7 +111,34 @@ def main() -> None:
     p3["answer"] = "9"
     assert parent_record_sha256(p1) != parent_record_sha256(p3)
 
+    # A parent may be removed from the generation queue only after the existing
+    # expanded record passes the full strict layer validator. A malformed or
+    # unverified record must fail closed instead of silently creating fake coverage.
+    base = make_base()
+    exact_parent = base[0]
+    good = expanded_rec(
+        "Q0001",
+        "generated",
+        generated=True,
+        parent=exact_parent["id"],
+        question="(-7)+15 を計算しなさい。",
+    )
+    good["answer"] = "8"
+    covered, report = validated_covered_parent_ids(base, [good], [provenance(good["id"], exact_parent)])
+    assert covered == {exact_parent["id"]}
+    assert report["expanded_verified_variants"] == 1
+    assert report["expanded_parent_coverage"] == 1
+
+    bad = copy.deepcopy(good)
+    bad["id"] = "Q0002"
+    bad["audit"]["problem_answer_verified"] = False
+    expect_fail(
+        lambda: validated_covered_parent_ids(base, [bad], [provenance(bad["id"], exact_parent)]),
+        "unverified audit gate",
+    )
+
     print("PASS_VARIANT_GENERATION_QUEUE_CONSERVATIVE_CLASSIFICATION_AND_PARENT_FINGERPRINT")
+    print("PASS_VARIANT_GENERATION_QUEUE_COUNTS_ONLY_STRICTLY_VALIDATED_EXPANDED_COVERAGE")
 
 
 if __name__ == "__main__":
