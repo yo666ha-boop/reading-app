@@ -1,7 +1,7 @@
 (()=>{const m=window.V10_INTERACTION_META_G3_NH_U6&&window.V10_INTERACTION_META_G3_NH_U6['ニューホライズン|3|Unit 6-4'];if(!m)return;m.questionSetB[2]={prompt:'3. 1つの場所の人々は別の場所の人々とどのような関係になれますか。本文から英語で1語抜き出しなさい。',answer:'interdependent',evidence:'People from one place can be interdependent with people from another place.',evidenceJp:'1つの場所の人々は別の場所の人々と相互依存することができます。',reason:'状態を表す語が interdependent です。'};})();
 
 // Separate print modes for classroom use.
-// Student sheet: passage + current questions only.
+// Student sheet: English passage + current questions only. No Japanese translation, slash reading, answers, evidence, or explanations.
 // Teacher sheet: passage + slash/translation + current questions + answers/explanations.
 (()=>{
   function installPrintModes(){
@@ -16,7 +16,7 @@
     student.id='studentPrintBtn';
     student.type='button';
     student.textContent='生徒用プリント';
-    student.title='本文と問題だけを印刷';
+    student.title='英文本文と問題だけを印刷';
 
     const teacher=document.createElement('button');
     teacher.id='teacherPrintBtn';
@@ -38,6 +38,8 @@
         body.print-student #audit{display:none!important}
         body.print-student #passage,
         body.print-student #questions{display:block!important}
+        body.print-student #passage h3,
+        body.print-student #passage h3 + div{display:none!important}
         body.print-teacher #audit{display:none!important}
         body.print-teacher #passage,
         body.print-teacher #slash,
@@ -67,7 +69,7 @@
       cleanup();
       const isStudent=mode==='student';
       document.body.classList.add(isStudent?'print-student':'print-teacher');
-      label.textContent=isStudent?'生徒用プリント（本文・問題）':'解答・解説プリント（本文・訳・問題・解答・解説）';
+      label.textContent=isStudent?'生徒用プリント（英文本文・問題）':'解答・解説プリント（本文・訳・問題・解答・解説）';
       window.addEventListener('afterprint',cleanup,{once:true});
       window.addEventListener('focus',()=>setTimeout(cleanup,300),{once:true});
       requestAnimationFrame(()=>window.print());
