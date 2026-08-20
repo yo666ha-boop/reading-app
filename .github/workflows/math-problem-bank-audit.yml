@@ -13,6 +13,10 @@ on:
       - 'math-bank/state/CANONICAL_RECOVERY_KEYS.json'
       - '.github/workflows/math-problem-bank-audit.yml'
 
+concurrency:
+  group: math-problem-bank-audit-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
@@ -87,6 +91,45 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+  browser-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Playwright and browser engines
+        shell: bash
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium firefox webkit
+
+      - name: Start isolated math app server
+        shell: bash
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory math-bank/app >/tmp/math-app-http.log 2>&1 &
+          echo $! >/tmp/math-app-http.pid
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8765/index.html >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/math-app-http.log || true
+          exit 1
+
+      - name: Run Chromium Firefox WebKit shell regression
+        env:
+          MATH_APP_BASE_URL: http://127.0.0.1:8765/index.html
+        run: node math-bank/app/browser_regression.mjs
+
   inventory-and-classify:
     runs-on: ubuntu-latest
     steps:
@@ -126,10 +169,12 @@ jobs:
     if: always()
     needs:
       - app-shell-and-data-gate
+      - browser-regression
       - inventory-and-classify
     runs-on: ubuntu-latest
     env:
       APP_RESULT: ${{ needs['app-shell-and-data-gate'].result }}
+      BROWSER_RESULT: ${{ needs['browser-regression'].result }}
       INVENTORY_RESULT: ${{ needs['inventory-and-classify'].result }}
       TRIGGERING_SHA: ${{ github.sha }}
       RUN_ID: ${{ github.run_id }}
@@ -148,20 +193,28 @@ jobs:
           python - <<'PY'
           import json
           import os
+          import subprocess
           from datetime import datetime, timezone
           from pathlib import Path
 
           path = Path('math-bank/state/ci-latest.json')
           path.parent.mkdir(parents=True, exist_ok=True)
           app = os.environ.get('APP_RESULT', 'unknown')
+          browser = os.environ.get('BROWSER_RESULT', 'unknown')
           inventory = os.environ.get('INVENTORY_RESULT', 'unknown')
-          overall = 'success' if app == 'success' and inventory == 'success' else 'failure'
+          overall = 'success' if app == 'success' and browser == 'success' and inventory == 'success' else 'failure'
+          try:
+              current_head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          except Exception:
+              current_head = ''
           payload = {
               'workflow': 'Math Problem Bank Audit',
               'overall_result': overall,
               'app_shell_and_data_gate': app,
+              'browser_regression': browser,
               'inventory_and_classify': inventory,
               'triggering_sha': os.environ.get('TRIGGERING_SHA', ''),
+              'branch_head_when_recorded': current_head,
               'run_id': os.environ.get('RUN_ID', ''),
               'run_attempt': os.environ.get('RUN_ATTEMPT', ''),
               'recorded_at_utc': datetime.now(timezone.utc).isoformat(),
