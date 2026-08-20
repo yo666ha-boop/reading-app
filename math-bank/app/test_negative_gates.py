@@ -58,12 +58,22 @@ def valid_original() -> dict:
     }
 
 
-def must_validator_reject(td: Path, record: dict, label: str) -> None:
+def validator_process(td: Path, record: dict, label: str) -> subprocess.CompletedProcess[str]:
     path = td / f"validator_{label}.json"
     path.write_text(json.dumps([record], ensure_ascii=False), encoding="utf-8")
-    p = run(str(VALIDATOR), str(path), "--non-strict")
+    return run(str(VALIDATOR), str(path), "--non-strict")
+
+
+def must_validator_reject(td: Path, record: dict, label: str) -> None:
+    p = validator_process(td, record, label)
     if p.returncode == 0 or "FAIL:" not in (p.stdout + p.stderr):
         raise SystemExit(f"FAIL validator accepted {label}\n{p.stdout}\n{p.stderr}")
+
+
+def must_validator_accept(td: Path, record: dict, label: str) -> None:
+    p = validator_process(td, record, label)
+    if p.returncode != 0 or '"status": "PASS"' not in p.stdout:
+        raise SystemExit(f"FAIL validator rejected {label}\n{p.stdout}\n{p.stderr}")
 
 
 with tempfile.TemporaryDirectory() as td_raw:
@@ -151,6 +161,24 @@ with tempfile.TemporaryDirectory() as td_raw:
     bad["choices"] = ["A", ""]
     must_validator_reject(td, bad, "blank_choice")
 
+    bad = valid_original()
+    bad["figure_refs"] = ["../secret.png"]
+    must_validator_reject(td, bad, "unsafe_figure_ref")
+
+    bad = valid_original()
+    bad["question"] = "図を見て答えなさい。[[IMAGE:figures/missing.png]]"
+    must_validator_reject(td, bad, "inline_marker_unregistered")
+
+    bad = valid_original()
+    bad["question"] = "図を見て答えなさい。[[IMAGE:../secret.png]]"
+    bad["figure_refs"] = ["../secret.png"]
+    must_validator_reject(td, bad, "inline_marker_unsafe")
+
+    good = valid_original()
+    good["question"] = "図を見て答えなさい。[[IMAGE:figures/sample.png]]"
+    good["figure_refs"] = ["figures/sample.png"]
+    must_validator_accept(td, good, "inline_marker_registered_safe")
+
     # 7) Release packaging must reject a missing local figure and include a present one.
     old_release_root = release_bundle.ROOT
     try:
@@ -214,6 +242,9 @@ print("figure_unsupported_scheme=REJECTED")
 print("validator_browser_shape_parity_negatives=REJECTED")
 print("missing_title_or_choices=REJECTED")
 print("invalid_choices=REJECTED")
+print("inline_marker_unregistered=REJECTED")
+print("inline_marker_unsafe=REJECTED")
+print("inline_marker_registered_safe=PASS")
 print("release_missing_local_figure=REJECTED")
 print("release_present_local_figure=COLLECTED")
 print("legacy_canonical_1231_detected_without_guess_promotion=PASS")
