@@ -68,6 +68,12 @@ def main() -> int:
         raise SystemExit("FAIL strict canonical validator rejected release data")
 
     records = load_records()
+    choice_records = sum(1 for r in records if isinstance(r.get("choices"), list) and len(r["choices"]) > 0)
+    title_records = sum(1 for r in records if isinstance(r.get("title"), str))
+    choices_field_records = sum(1 for r in records if "choices" in r)
+    if title_records != len(records) or choices_field_records != len(records):
+        raise SystemExit("FAIL release title/choices preservation gate")
+
     try:
         figure_assets, external_figure_refs = collect_figure_assets(records)
     except Exception as e:
@@ -87,10 +93,14 @@ def main() -> int:
 
     payload_files = [OUT / "index.html", OUT / "app-records.json"] + [OUT / src.relative_to(ROOT) for src in figure_assets]
     manifest = {
-        "release_gate": "STRICT_CANONICAL_1231_AND_FIGURE_ASSETS_PASS",
+        "release_gate": "STRICT_CANONICAL_1231_TITLE_CHOICES_AND_FIGURE_ASSETS_PASS",
         "records": 1231,
         "original": 1124,
         "variants": 107,
+        "title_records": title_records,
+        "choices_field_records": choices_field_records,
+        "choice_records": choice_records,
+        "title_choices_preservation_required": True,
         "local_figure_assets": len(figure_assets),
         "external_figure_refs": external_figure_refs,
         "files": {
@@ -110,6 +120,9 @@ def main() -> int:
 
     print("PASS_RELEASE_BUNDLE")
     print(f"records={len(records)}")
+    print(f"title_records={title_records}")
+    print(f"choices_field_records={choices_field_records}")
+    print(f"choice_records={choice_records}")
     print(f"local_figure_assets={len(figure_assets)}")
     print(f"external_figure_refs={external_figure_refs}")
     print(f"bundle={zip_path}")
