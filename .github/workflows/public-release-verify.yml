@@ -18,7 +18,7 @@ concurrency:
 jobs:
   verify-public:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -27,7 +27,9 @@ jobs:
       - name: Install browsers
         run: |
           npm install --no-save --no-package-lock playwright@1.55.0
-          npx playwright install --with-deps chromium webkit
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Final local browser and A4 print gate
+        run: node v10_final_browser_print_test.js
       - name: Verify published GitHub Pages and record result
         shell: bash
         run: |
@@ -93,6 +95,7 @@ jobs:
             echo "checked_at_utc=$now"
             echo "source_sha=${GITHUB_SHA}"
             echo "result=$detail"
+            echo "local_browser_print=PASS_CHROMIUM_FIREFOX_WEBKIT_IPHONE_A4"
             echo "expected_passages=168"
             echo "expected_program_6_1=A Canadian researcher studies a patch / in the ocean."
           } > PUBLIC_PUBLISH_STATUS.txt
