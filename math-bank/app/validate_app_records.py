@@ -6,8 +6,8 @@ from collections import Counter
 from pathlib import Path
 
 REQUIRED = {
-    "id", "grade", "unit", "skill", "question_format", "difficulty", "source",
-    "question", "answer", "explanation", "figure_refs", "variant_group", "audit"
+    "id", "grade", "unit", "title", "skill", "question_format", "difficulty", "source",
+    "question", "choices", "answer", "explanation", "figure_refs", "variant_group", "audit"
 }
 VALID_GRADES = {1, 2, 3}
 VALID_DIFFICULTY = {"basic", "standard", "advanced", "unknown"}
@@ -42,6 +42,8 @@ def validate_record(r: dict, seen_ids: set[str]) -> None:
     grade = r["grade"]
     if isinstance(grade, bool) or not isinstance(grade, int) or grade not in VALID_GRADES:
         fail(f"{rid}: invalid grade")
+    if not isinstance(r["title"], str):
+        fail(f"{rid}: title must be string")
     if r["difficulty"] not in VALID_DIFFICULTY:
         fail(f"{rid}: invalid difficulty")
     if not text(r["skill"]):
@@ -50,6 +52,12 @@ def validate_record(r: dict, seen_ids: set[str]) -> None:
         fail(f"{rid}: blank question_format")
     if not text(r["question"]):
         fail(f"{rid}: blank question")
+
+    choices = r["choices"]
+    if choices is not None:
+        if not isinstance(choices, list) or any(not isinstance(x, str) or not x.strip() for x in choices):
+            fail(f"{rid}: choices must be null or a list of nonblank strings")
+
     if not text(r["answer"]):
         fail(f"{rid}: blank answer")
     if not isinstance(r["explanation"], str):
@@ -139,6 +147,7 @@ def main(path: str, strict: bool = True) -> int:
     originals = [r for r in records if not r["source"]["is_generated_variant"]]
     original_counts = Counter(r["source"]["book"] for r in originals)
     grades = Counter(r["grade"] for r in records)
+    choice_records = sum(1 for r in records if isinstance(r["choices"], list) and len(r["choices"]) > 0)
 
     by_id = {r["id"]: r for r in records}
     for r in generated:
@@ -171,6 +180,8 @@ def main(path: str, strict: bool = True) -> int:
         "unique_ids": len(seen),
         "blank_questions": 0,
         "blank_answers": 0,
+        "choice_records": choice_records,
+        "title_and_choices_preserved": len(records),
         "verified_audit_gates": len(records),
     }
     print(json.dumps(result, ensure_ascii=False, indent=2))
