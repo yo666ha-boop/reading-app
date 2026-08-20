@@ -1,13 +1,3 @@
-REFERENCE MINIMUM RULE AUDIT passages=168/168 rows=1854 reference_marked=168/168 slashes=1810 unsplit_rows=606 stale=3
-STALE REFERENCE PASSAGES: 53,141,145
-REFERENCE MINIMUM RULE FAIL 10
-- STALE_REFERENCE_PASSAGES 53,141,145
-- 1|サンシャイン|PROGRAM 3-3#3: CONJUNCTION_BOUNDARY_BEFORE_SO_MISSED :: I am so excited.
-- 2|サンシャイン|PROGRAM 7-3#13: PREPOSITION_BOUNDARY_BEFORE_AT_MISSED :: Its activity is different / in the daytime / and at nighttime.
-- 3|サンシャイン|PROGRAM 2-1#7: PREPOSITION_BOUNDARY_BEFORE_AT_MISSED :: Take at least a few minutes / to relax quietly.
-- 3|サンシャイン|PROGRAM 6-1#11: PREPOSITION_BOUNDARY_BEFORE_BEHIND_MISSED :: We talk / about how / to leave less plastic behind.
-- 3|ニューホライズン|Unit 0#5: RELATIVE_OR_CONTENT_THAT_BOUNDARY_MISSED :: I did not know that / before.
-- 3|ニューホライズン|Unit 4-1#8: PREPOSITION_BOUNDARY_BEFORE_TO_MISSED :: After every item is checked, / we put the map / and checklist / in an easy-to-find place.
-- 3|ニューホライズン|Unit 6-2#7: PREPOSITION_BOUNDARY_BEFORE_TO_MISSED :: We send the backpack / through the program / rather / than to an unknown person.
-- BROWSER Uncaught [Error: Row mismatch 53]
-- BROWSER Uncaught [Error: English mismatch 141#9: Probably, the project can help other patients, too. <> Probably, the project can help other patients too.]
+REFERENCE MINIMUM RULE AUDIT passages=168/168 rows=1854 reference_marked=168/168 slashes=1810 unsplit_rows=606 stale=0
+REFERENCE MINIMUM RULE FAIL 1
+- 3|サンシャイン|PROGRAM 6-1#6: PREPOSITION_BOUNDARY_BEFORE_BEHIND_MISSED :: A net left behind can hurt / or kill an animal.
