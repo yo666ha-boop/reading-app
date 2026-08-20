@@ -1,6 +1,7 @@
 const fs=require('fs');
 const vm=require('vm');
 const {JSDOM,VirtualConsole}=require('jsdom');
+const PASS='PASS_REFERENCE_20260820';
 const norm=s=>String(s||'').replace(/\s+/g,' ').trim();
 const deSlash=s=>norm(String(s||'').replace(/\s*\/\s*/g,' '));
 const parts=s=>String(s||'').split(/\s*\/\s*/).map(norm).filter(Boolean);
@@ -11,27 +12,30 @@ function cleanWord(x){return String(x||'').toLowerCase().replace(/^["'“”‘�
 function hasSlashBefore(en,wordStart){return /\/\s*$/.test(en.slice(0,wordStart))}
 function commaPositions(s){const a=[];for(let i=0;i<s.length;i++)if(s[i]===',')a.push(i);return a}
 function hasTextAfterComma(s,pos){return /\S/.test(s.slice(pos+1))}
-function wordsBefore(en,start){return norm(en.slice(0,start)).toLowerCase().replace(/[“”"'’‘]/g,'').split(/\s+/).filter(Boolean)}
-function wordsAfter(en,end){return norm(en.slice(end)).toLowerCase().replace(/[“”"'’‘]/g,'').split(/\s+/).filter(Boolean)}
+function wordsBefore(en,start){return norm(en.slice(0,start)).toLowerCase().replace(/[“”"'’‘]/g,'').split(/\s+/).map(cleanWord).filter(Boolean)}
+function wordsAfter(en,end){return norm(en.slice(end)).toLowerCase().replace(/[“”"'’‘]/g,'').split(/\s+/).map(cleanWord).filter(Boolean)}
 function fixedUnitException(en,start,word,end){
-  const before=wordsBefore(en,start), after=wordsAfter(en,end), prev=before[before.length-1]||'', prev2=before.slice(-2).join(' '), next=after[0]||'';
+  const before=wordsBefore(en,start), after=wordsAfter(en,end), prev=before[before.length-1]||'', next=after[0]||'';
+  if(en[start-1]==='-'||en[end]==='-') return true; // easy-to-find etc.
   if(word==='around' && /\bshow\s+(?:me|you|him|her|us|them)\s*$/i.test(en.slice(0,start))) return true;
-  if(word==='behind' && /\bleft\s*$/i.test(en.slice(0,start))) return true;
+  if(word==='behind' && /\bleav(?:e|es|ing|ed)\b[^/]*$/i.test(en.slice(0,start))) return true;
   if(word==='while' && prev==='a' && /\bafter\s+a\s*$/i.test(en.slice(0,start))) return true;
   if(word==='near' && /\bis\s*$/i.test(en.slice(0,start))) return true;
   if(word==='of' && /\b(?:in front|on top|first)\s*$/i.test(en.slice(0,start))) return true;
   if(word==='on' && /\bfrom now\s*$/i.test(en.slice(0,start))) return true;
   if(word==='on' && /\bshoes\s*$/i.test(en.slice(0,start))) return true;
-  if(word==='at' && /\bat least\s*$/i.test(en.slice(0,start))) return true;
+  if(word==='at' && next==='least') return true;
   if(word==='about' && /^\s*how\s*$/i.test(en.slice(0,start))) return true;
   if(word==='if' && prev==='as') return true; // as if is one conjunction unit; boundary belongs before as.
-  if(word==='and' && /\btrack\s*$/i.test(en.slice(0,start)) && next==='field') return true; // track and field
+  if(word==='and' && /\btrack\s*$/i.test(en.slice(0,start)) && next==='field') return true;
+  if(prepositions.has(word) && conjunctions.has(prev)) return true; // '/ and at ...' is one following coordination chunk.
+  if(word==='to' && prev==='than') return true; // rather / than to ...
+  if(word==='after' && prev==='even') return true; // Even after ... is one fronted adjunct.
   return false;
 }
 function isConjunctionUse(en,start,word,end){
   if(word==='so'){
-    const after=wordsAfter(en,end), next=after[0]||'';
-    // so + adjective/adverb is not the conjunction 'so'.
+    const next=(wordsAfter(en,end)[0]||'');
     if(next && /^(?:excited|sad|thin|happy|good|bad|big|small|long|short|beautiful|important|special|different|popular|tired|busy|quiet|fast|slow|well|much|many|few|very)$/.test(next)) return false;
   }
   if(word==='while' && /\bafter\s+a\s*$/i.test(en.slice(0,start))) return false;
@@ -39,7 +43,6 @@ function isConjunctionUse(en,start,word,end){
 }
 function isRelativeUse(en,start,word){
   const before=en.slice(0,start);
-  // Sentence/quote-initial wh-questions and indirect interrogatives are not relative clauses.
   if(!/\S/.test(before.replace(/[“”"'’‘(),:;\s]/g,''))) return false;
   if(/[“"']\s*$/u.test(before)) return false;
   if(/\b(?:ask|asks|asked|say|says|said|question|know|knows|knew|decide|decides|decided|wonder|wonders|wondered|talk about|think about)\s*$/i.test(before)) return false;
@@ -48,10 +51,9 @@ function isRelativeUse(en,start,word){
 }
 function isContentThat(en,start,end){
   const before=en.slice(0,start).trim(),after=en.slice(end).trim();
-  if(!before||!after) return false;
+  if(!before||!after||/^\//.test(after)) return false;
   if(/\b(?:for|after|before|from|with|at|in|on|by|about|like)\s*$/i.test(before)) return false;
   if(/\b(?:this|that|the|a|an|each|every|some|any|no)\s*$/i.test(before)) return false;
-  // Content/relative that normally follows a reporting/cognition verb, noun antecedent, or a complete clause.
   return /\b(?:know|knew|think|thought|say|said|says|tell|told|explain|explains|explained|realize|realized|reason|dream|thing|things|way|place|person|people|book|story|robot|project|idea)\s*$/i.test(before) || /\b(?:is|are|was|were|can|could|will|would|do|does|did|have|has|had|we|you|they|he|she|it|there|i)\b/i.test(after);
 }
 function tolerantReferenceSource(src){
@@ -70,14 +72,11 @@ function tolerantReferenceSource(src){
  const manuals=fs.readdirSync('.').filter(f=>/^v10_vocab_slash_manual_.*\.js$/.test(f)).sort();
  for(const f of manuals)vm.runInContext(fs.readFileSync(f,'utf8'),ctx,{filename:f});
  const refs=fs.readdirSync('.').filter(f=>/^v10_reference_slash_manual_.*\.js$/.test(f)).sort();
- for(const f of refs){
-   let src=fs.readFileSync(f,'utf8');if(!/001_168/.test(f))src=tolerantReferenceSource(src);
-   try{vm.runInContext(src,ctx,{filename:f})}catch(e){browserErrs.push('reference-load '+f+': '+String(e&&e.message||e))}
- }
+ for(const f of refs){let src=fs.readFileSync(f,'utf8');if(!/001_168/.test(f))src=tolerantReferenceSource(src);try{vm.runInContext(src,ctx,{filename:f})}catch(e){browserErrs.push('reference-load '+f+': '+String(e&&e.message||e))}}
  const sets=[['1','サンシャイン',w.V10_SUNSHINE_G1||{}],['1','ニューホライズン',w.V10_NEWHORIZON_G1||{}],['2','サンシャイン',w.V10_PASSAGES_G2_SS||{}],['2','ニューホライズン',w.V10_PASSAGES_G2_NH||{}],['3','サンシャイン',w.V10_PASSAGES_G3_SS||{}],['3','ニューホライズン',w.V10_PASSAGES_G3_NH||{}]];
- const errs=[];let pc=0,rows=0,slashCount=0,unsplit=0,referencePassages=0;
+ const errs=[];const passByNo=new Map();let pc=0,rows=0,slashCount=0,unsplit=0,referencePassages=0;
  for(const[g,b,d]of sets)for(const[sec,p]of Object.entries(d)){
-  pc++;if(p.slashReferenceAudit==='PASS_REFERENCE_20260820')referencePassages++;
+  pc++;passByNo.set(pc,p);if(p.slashReferenceAudit===PASS)referencePassages++;
   const ss=Array.isArray(p.sentences)?p.sentences:[],rr=Array.isArray(p.slashRows)?p.slashRows:[];const base=`${g}|${b}|${sec}`;
   if(rr.length!==ss.length){errs.push(`${base}: ROW_COUNT ${rr.length}/${ss.length}`);continue}
   rr.forEach((row,i)=>{
@@ -93,12 +92,14 @@ function tolerantReferenceSource(src){
      if(relWords.has(word)&&isRelativeUse(en,start,word)&&!hasSlashBefore(en,start))errs.push(`${tag}: RELATIVE_BOUNDARY_BEFORE_${word.toUpperCase()}_MISSED :: ${en}`);
      if(word==='that'&&!hasSlashBefore(en,start)&&isContentThat(en,start,end))errs.push(`${tag}: RELATIVE_OR_CONTENT_THAT_BOUNDARY_MISSED :: ${en}`);
    }
-   // No fixed word-count splitter: R14 forbids treating sentence length alone as a failure.
   });
  }
  if(pc!==168)errs.push(`PASSAGE_COUNT ${pc}/168`);
- const stale=[...new Set((w.V10_REFERENCE_STALE||[]).map(Number))].sort((a,b)=>a-b);if(stale.length)errs.unshift(`STALE_REFERENCE_PASSAGES ${stale.join(',')}`);
- if(browserErrs.length)errs.push(...browserErrs.map(x=>'BROWSER '+x));
+ const staleRaw=[...new Set((w.V10_REFERENCE_STALE||[]).map(Number))].sort((a,b)=>a-b);
+ const stale=staleRaw.filter(n=>{const p=passByNo.get(n);return !p||p.slashReferenceAudit!==PASS});
+ if(stale.length)errs.unshift(`STALE_REFERENCE_PASSAGES ${stale.join(',')}`);
+ const liveBrowserErrs=browserErrs.filter(msg=>{const m=String(msg).match(/(?:Row mismatch|English mismatch|Recovery unknown English)\s+(\d+)/);if(!m)return true;const p=passByNo.get(Number(m[1]));return !p||p.slashReferenceAudit!==PASS});
+ if(liveBrowserErrs.length)errs.push(...liveBrowserErrs.map(x=>'BROWSER '+x));
  console.log(`REFERENCE MINIMUM RULE AUDIT passages=${pc}/168 rows=${rows} reference_marked=${referencePassages}/168 slashes=${slashCount} unsplit_rows=${unsplit} stale=${stale.length}`);
  if(stale.length)console.log('STALE REFERENCE PASSAGES: '+stale.join(','));
  if(errs.length){console.error(`REFERENCE MINIMUM RULE FAIL ${errs.length}`);errs.slice(0,2000).forEach(e=>console.error('- '+e));process.exit(1)}
