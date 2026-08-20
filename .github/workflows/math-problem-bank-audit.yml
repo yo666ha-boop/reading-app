@@ -35,8 +35,8 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Compile app validation, recovery, inspection, and release tools
-        run: python -m py_compile math-bank/app/validate_app_records.py math-bank/app/recover_canonical_app_records.py math-bank/app/inspect_canonical_artifact.py math-bank/app/check_app_shell.py math-bank/app/check_recovery_contract.py math-bank/app/test_negative_gates.py math-bank/app/build_release_bundle.py
+      - name: Compile app validation, recovery, inspection, conversion, and release tools
+        run: python -m py_compile math-bank/app/validate_app_records.py math-bank/app/recover_canonical_app_records.py math-bank/app/inspect_canonical_artifact.py math-bank/app/convert_verified_canonical_to_app.py math-bank/app/check_app_shell.py math-bank/app/check_recovery_contract.py math-bank/app/test_negative_gates.py math-bank/app/test_verified_converter.py math-bank/app/build_release_bundle.py
 
       - name: Check app shell and JavaScript syntax
         run: python math-bank/app/check_app_shell.py
@@ -46,6 +46,9 @@ jobs:
 
       - name: Run negative data/recovery gates
         run: python math-bank/app/test_negative_gates.py
+
+      - name: Run verified deterministic converter regression
+        run: python math-bank/app/test_verified_converter.py
 
       - name: Strict canonical 1231 validator when data exists
         shell: bash
