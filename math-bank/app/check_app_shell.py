@@ -9,6 +9,10 @@ ROOT = Path(__file__).resolve().parent
 HTML = ROOT / "index.html"
 FIGURE_RENDERER = ROOT / "render_figure_markers.js"
 FIGURE_TEST = ROOT / "test_render_figure_markers.mjs"
+EXPANDED_VALIDATOR = ROOT / "validate_expanded_variant_layer.py"
+EXPANDED_COMPOSER = ROOT / "compose_expanded_app_records.py"
+EXPANDED_TEST = ROOT / "test_expanded_variant_layer.py"
+EXPANDED_LAYER = ROOT / "verified-expanded-variants.json"
 text = HTML.read_text(encoding="utf-8")
 
 required_ids = [
@@ -22,12 +26,16 @@ if missing:
     raise SystemExit(f"FAIL missing controls: {missing}")
 
 required_fragments = [
-    "total:1231",
     "original:1124",
-    "variant:107",
+    "baselineVariant:107",
     "Winpass:570",
     "'実力錬成':237",
     "Standard:317",
+    "variant>=BASELINE.baselineVariant",
+    "taxonomyFail===0",
+    "expandedVariant:Math.max(0,variant-BASELINE.baselineVariant)",
+    "拡張ゲート PASS",
+    "追加${a.expandedVariant}問",
     ".problem-title",
     ".choices",
     "validChoices",
@@ -37,7 +45,6 @@ required_fragments = [
     "Object.prototype.hasOwnProperty.call(r,'choices')",
     "typeof r.title!=='string'",
     "choiceRecords",
-    "タイトル/選択肢",
     "選択問題",
     ".answer.open",
     "show-answers-screen",
@@ -56,7 +63,6 @@ required_fragments = [
     "labelDifficulty",
     "setOptions($('difficulty'),uniq(base.map(r=>r?.difficulty)),labelDifficulty)",
     "Math.max(1,Math.min(200",
-    "正本JSONを読込",
     "app-records.json",
     "canonicalAudit",
     "sourceSort",
@@ -76,6 +82,7 @@ required_fragments = [
     "印刷待機：図版",
     "auditFail",
     "parentFail",
+    "taxonomyFail",
     "figureFail",
     "problem_answer_verified!==true",
     "structure_verified!==true",
@@ -95,8 +102,18 @@ missing_fragments = [x for x in required_fragments if x not in text]
 if missing_fragments:
     raise SystemExit(f"FAIL missing app behavior fragments: {missing_fragments}")
 
-if not FIGURE_RENDERER.is_file() or not FIGURE_TEST.is_file():
-    raise SystemExit("FAIL inline figure marker renderer/test file missing")
+for forbidden in (
+    "const CANONICAL={total:1231",
+    "rs.length===CANONICAL.total",
+    "以外は追加しません",
+    "正本1231問の完全ゲート",
+):
+    if forbidden in text:
+        raise SystemExit(f"FAIL frozen-1231 behavior remains: {forbidden}")
+
+for target in (FIGURE_RENDERER, FIGURE_TEST, EXPANDED_VALIDATOR, EXPANDED_COMPOSER, EXPANDED_TEST, EXPANDED_LAYER):
+    if not target.is_file():
+        raise SystemExit(f"FAIL required math app file missing: {target.name}")
 
 scripts = re.findall(r"<script(?:\s[^>]*)?>(.*?)</script>", text, flags=re.S | re.I)
 if not scripts:
@@ -115,14 +132,16 @@ for target in (FIGURE_RENDERER, FIGURE_TEST):
         raise SystemExit(f"FAIL node --check {target.name}\n{proc.stdout}\n{proc.stderr}")
 
 proc = subprocess.run(["node", str(FIGURE_TEST)], text=True, capture_output=True)
-if proc.returncode:
+if proc.returncode or "PASS_RENDER_FIGURE_MARKERS_NON_MUTATING_SAFE" not in proc.stdout:
     raise SystemExit(f"FAIL inline figure marker regression\n{proc.stdout}\n{proc.stderr}")
-if "PASS_RENDER_FIGURE_MARKERS_NON_MUTATING_SAFE" not in proc.stdout:
-    raise SystemExit(f"FAIL inline figure marker PASS token missing\n{proc.stdout}")
+
+proc = subprocess.run(["python", str(EXPANDED_TEST)], cwd=ROOT, text=True, capture_output=True)
+if proc.returncode or "PASS_EXPANDED_VARIANT_LAYER_STRICT_PARENT_TAXONOMY_RECALC_DUPLICATE_GATES" not in proc.stdout:
+    raise SystemExit(f"FAIL expanded variant layer regression\n{proc.stdout}\n{proc.stderr}")
 
 print("PASS_APP_SHELL")
-print(f"controls={len(required_ids)}")
-print("canonical=1231 original=1124 variants=107")
+print("base_originals=1124 baseline_variants=107 expanded_variants=dynamic_verified_only")
+print("expanded_parent_taxonomy_recalc_provenance_duplicate_gates=PASS")
 print("title_choices_preservation=PASS choice_rendering=PASS choice_search=PASS")
 print("browser_strict_shape=PASS browser_audit_flags=PASS generated_parent=PASS")
 print("variant_parent_book_filter=PASS parent_source_order=PASS stale_import_clear=PASS")
