@@ -6,11 +6,7 @@
     "final_records": 1231,
     "original_records": 1124,
     "generated_variants": 107,
-    "original_by_source": {
-      "Winpass": 570,
-      "実力錬成": 237,
-      "Standard": 317
-    },
+    "original_by_source": {"Winpass": 570, "実力錬成": 237, "Standard": 317},
     "documents_covered": 140,
     "blank_questions": 0,
     "blank_answers": 0,
@@ -22,56 +18,42 @@
     "zip_recorded_path": "/mnt/data/みかみ塾数学問題バンク_最終完成版_20260820.zip",
     "zip_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
     "audit_filename": "MATHBANK_FINAL_AUDIT_V2.json",
-    "recovery_hints": [
-      "winpass_verified_union570_authoritative_norm_20260820",
-      "jitsuren_verified_union225_complete27_20260820"
-    ],
-    "required_content_fields_hint": [
-      "id",
-      "stage",
-      "unit",
-      "title",
-      "q",
-      "choices",
-      "ans",
-      "explanation"
-    ]
+    "recovery_hints": ["winpass_verified_union570_authoritative_norm_20260820", "jitsuren_verified_union225_complete27_20260820"],
+    "required_content_fields_hint": ["id", "stage", "unit", "title", "q", "choices", "ans", "explanation"]
   },
   "今回完了した内容": [
-    "Re-read branch HEAD 089bc7d1fb31baf797fb4777523cfdab00fe2c6a, checkpoint, ci-latest, browser-regression-latest and math-bank/app before work",
-    "Verified latest recorded CI remains success: run 32334260276, triggering SHA 806e97f254421f9ecf04148322ef31aa8d70a9ac; app shell/data gate, browser regression and inventory all success",
-    "Verified browser-regression-latest remains synthetic_fixture_only=true / canonical_data_written=false; Chromium, Firefox, WebKit iPhone and Chromium Fire all PASS with zero horizontal overflow/page errors and Chromium A4 question/answer PDFs 1 page each",
-    "Re-searched /mnt/data and File Library for exact final ZIP, exact SHA identity, final audit and both recovery hints; no exact canonical artifact recovered",
-    "Corrected recovery policy: recovered three source archives and 161 partial records are diagnostic evidence only and are forbidden as canonical reconstruction/promotion inputs",
-    "Hardened recovery contract to fail if source-recovery state becomes promotable, leaves diagnostic-only mode, or reintroduces source-rebuild/reconstruct language",
-    "Did not create variants, did not reconstruct 1124/1231 from source archives, did not promote the 161 partial dataset, and did not touch main"
+    "Re-read actual branch HEAD/checkpoint/ci-latest/browser-regression-latest/math-bank/app before work",
+    "Re-searched /mnt/data and File Library for exact final ZIP, final audit and both recovery hints; no exact canonical artifact was recovered",
+    "Corrected recovery state so the recovered three source archives and 161 partial Winpass records are DIAGNOSTIC_ONLY_NON_CANONICAL and explicitly not promotable",
+    "Hardened check_recovery_contract.py so CI fails if source recovery becomes promotable, leaves diagnostic-only mode, or reintroduces source rebuild/reconstruct instructions",
+    "Published one isolated-branch commit aacb22bdb97536c461f5f6e2d51258119a5a1653 without touching main",
+    "Verified actual CI run 32338768939 for triggering SHA aacb22bdb97536c461f5f6e2d51258119a5a1653 completed success: app_shell_and_data_gate=success, browser_regression=success, inventory_and_classify=success",
+    "Verified browser regression remains synthetic fixture only: Chromium desktop / Firefox desktop / WebKit iPhone 390x844 / Chromium Fire 800x1280 all PASS, horizontal overflow 0, pageErrors 0; Chromium A4 question and answer PDFs are 1 page each",
+    "Verified CI recording bot advanced branch HEAD to a07dc66cd5c0208ef784c241484e5181b7cc600c",
+    "Did not create variants, did not reconstruct 1124/1231 from source archives, did not promote 161 partial data, and did not touch main"
   ],
-  "現在どの工程にいるか": "Exact immutable 1231 ZIP/audit recovery remains the sole data blocker. Source archives are retained only as non-canonical forensic evidence. App/recovery/provenance gates continue to be hardened without inventing replacement data.",
+  "現在どの工程にいるか": "Exact immutable 1231 ZIP/audit recovery remains the sole data blocker. Source archives are now contractually forensic-only; the app/recovery gate is green after the stricter no-reconstruction guard.",
   "残っている作業": [
     "Recover exact canonical ZIP and MATHBANK_FINAL_AUDIT_V2.json",
     "Require exact ZIP SHA-256 eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175 before any promotion",
     "Run inspect_canonical_artifact.py and analyze_canonical_mapping_evidence.py on the recovered exact ZIP",
     "Direct strict pass-through only for actual exact 1231 app schema with title/choices; otherwise require complete verified per-ID metadata and no-guess deterministic conversion",
-    "Generate/validate canonical provenance, wire exact app-records plus local figure assets and final audit",
+    "Generate/validate canonical provenance and final audit linkage, wire exact app-records plus local figure assets",
     "Run real-1231 browser/device/figure/math/A4 regression, build strict release, isolated publication and public URL real-data test"
   ],
-  "次回どこから開始するか": "Read branch HEAD/ci-latest/browser-regression-latest and source-recovery-latest first. Retry exact ZIP/audit recovery. Do not resume source-archive reconstruction. If exact ZIP is recovered, SHA-check immediately and run artifact inspection/evidence tools before any mapping or wiring.",
+  "次回どこから開始するか": "Read branch HEAD a07dc66cd5c0208ef784c241484e5181b7cc600c or newer, ci-latest, browser-regression-latest and source-recovery-latest first. Retry exact ZIP/audit recovery. Do not resume source-archive reconstruction. If exact ZIP is recovered, SHA-check immediately and run artifact inspection/evidence tools before mapping or wiring.",
   "次に進むべき工程": "Exact artifact recovery -> immutable SHA/member/schema/figure inspection -> direct strict pass-through or fully proven deterministic mapping -> provenance + final audit -> real data wiring -> real 1231 browser/device/A4 regression -> strict release -> isolated publication -> public URL test -> final package.",
   "実PASS_FAIL_エラー_成果物_URL": {
-    "branch_head_before_this_change": "089bc7d1fb31baf797fb4777523cfdab00fe2c6a",
-    "latest_ci_triggering_sha": "806e97f254421f9ecf04148322ef31aa8d70a9ac",
-    "latest_ci_run_id": 32334260276,
+    "branch_head_after_ci_record": "a07dc66cd5c0208ef784c241484e5181b7cc600c",
+    "change_commit": "aacb22bdb97536c461f5f6e2d51258119a5a1653",
+    "latest_ci_triggering_sha": "aacb22bdb97536c461f5f6e2d51258119a5a1653",
+    "latest_ci_run_id": 32338768939,
     "latest_ci_overall_result": "success",
     "inventory_and_classify": "success",
     "app_shell_and_data_gate": "success",
     "browser_regression": "success",
     "browser_fixture": "synthetic_fixture_only",
-    "browser_environments": [
-      "chromium-desktop",
-      "firefox-desktop",
-      "webkit-iphone-390x844",
-      "chromium-fire-800x1280"
-    ],
+    "browser_environments": ["chromium-desktop", "firefox-desktop", "webkit-iphone-390x844", "chromium-fire-800x1280"],
     "horizontal_overflow": 0,
     "page_errors": 0,
     "a4_question_pdf_pages": 1,
