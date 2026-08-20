@@ -3,6 +3,7 @@
 // slash before prepositions/conjunctions, before infinitive to+verb, after commas, and chunk-aligned Japanese.
 (function(){
  const PASS='PASS_REFERENCE_20260820';
+ const VERSION='reference-book-minimum-rules-20260820';
  function setAudit(data,section,rows,n){
    const p=data&&data[section];if(!p)throw new Error('Missing final reference correction '+n+': '+section);
    if(rows.length!==(p.sentences||[]).length)throw new Error('Final correction row mismatch '+n+' '+rows.length+'/'+((p.sentences||[]).length));
@@ -14,7 +15,7 @@
      const jc=String(rows[i].jp||'').split(/\s*\/\s*/).filter(Boolean).length;
      if(ec!==jc)throw new Error('Final correction EN/JP chunks '+n+'#'+(i+1)+' '+ec+'/'+jc);
    }
-   p.slashRows=rows;p.slashReadingVersion='reference-book-minimum-rules-20260820-final';p.slashReferenceAudit=PASS;p.slashReferencePassageNo=n;
+   p.slashRows=rows;p.slashReadingVersion=VERSION;p.slashReferenceAudit=PASS;p.slashReferencePassageNo=n;
  }
  const n1=window.V10_NEWHORIZON_G1||{},s3=window.V10_PASSAGES_G3_SS||{},n3=window.V10_PASSAGES_G3_NH||{};
  setAudit(n1,'Unit 5-2',[
@@ -58,8 +59,8 @@
    {en:'Because neither / of us has been there, / we choose Hokkaido / as our next trip.',jp:'どちらも〜でないので / 私たちのうちそこへ行ったことが / 私たちは北海道を選びます / 次の旅行先として'}
  ],145);
  const p146=n3['Unit 1-2'];
- if(p146&&Array.isArray(p146.slashRows)&&p146.slashRows.length===p146.sentences.length){p146.slashRows[6]={en:'He explains / when people wear it / and why he found it interesting.',jp:'彼は説明します / 人々がいつそれを着るか / そしてなぜ興味深いと思ったかも'};p146.slashReadingVersion='reference-book-minimum-rules-20260820-final';p146.slashReferenceAudit=PASS;p146.slashReferencePassageNo=146;}
+ if(p146&&Array.isArray(p146.slashRows)&&p146.slashRows.length===p146.sentences.length){p146.slashRows[6]={en:'He explains / when people wear it / and why he found it interesting.',jp:'彼は説明します / 人々がいつそれを着るか / そしてなぜ興味深いと思ったかも'};p146.slashReadingVersion=VERSION;p146.slashReferenceAudit=PASS;p146.slashReferencePassageNo=146;}
  const p155=n3['Unit 5-3'];
- if(p155&&Array.isArray(p155.slashRows)&&p155.slashRows.length===p155.sentences.length){const i=6,s=String(p155.sentences[i]||'');if(s==='Even after his release, he continued to defend free speech and equal treatment.'){p155.slashRows[i]={en:'Even / after his release, / he continued / to defend free speech / and equal treatment.',jp:'〜でさえ / 釈放後 / 彼は続けました / 言論の自由を守ることを / そして平等な扱いを'};p155.slashReadingVersion='reference-book-minimum-rules-20260820-final';p155.slashReferenceAudit=PASS;p155.slashReferencePassageNo=155;}}
+ if(p155&&Array.isArray(p155.slashRows)&&p155.slashRows.length===p155.sentences.length){const i=6,s=String(p155.sentences[i]||'');if(s==='Even after his release, he continued to defend free speech and equal treatment.'){p155.slashRows[i]={en:'Even / after his release, / he continued / to defend free speech / and equal treatment.',jp:'〜でさえ / 釈放後 / 彼は続けました / 言論の自由を守ることを / そして平等な扱いを'};p155.slashReadingVersion=VERSION;p155.slashReferenceAudit=PASS;p155.slashReferencePassageNo=155;}}
  window.V10_REFERENCE_SLASH_FINAL_CORRECTIONS={version:'2026-08-20',passages:[53,141,145,146,155],status:'APPLIED'};
 })();
