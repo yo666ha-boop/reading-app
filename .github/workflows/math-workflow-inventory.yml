@@ -1,0 +1,64 @@
+name: Math Workflow Run Inventory
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-workflow-inventory.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: math-workflow-run-inventory
+  cancel-in-progress: false
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Query recent Actions runs for the isolated math branch
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          from pathlib import Path
+          from datetime import datetime, timezone
+          repo=os.environ['REPO']; token=os.environ['GITHUB_TOKEN']
+          url=f'https://api.github.com/repos/{repo}/actions/runs?branch=math-problem-bank-bootstrap&per_page=100'
+          req=urllib.request.Request(url,headers={'Authorization':f'Bearer {token}','Accept':'application/vnd.github+json','User-Agent':'mikami-math-workflow-inventory'})
+          with urllib.request.urlopen(req,timeout=30) as r: obj=json.load(r)
+          wanted={'Math Problem Bank Audit','Math Canonical Auto Complete','Math Other Repos Canonical Recovery','Math Canonical Fast Recovery','Math Git Release Fast Recovery','Math Other Repos Artifact Inventory','Math Workflow Run Inventory'}
+          rows=[]
+          for x in obj.get('workflow_runs',[]):
+            if x.get('name') not in wanted: continue
+            rows.append({k:x.get(k) for k in ['id','name','event','status','conclusion','head_branch','head_sha','run_number','run_attempt','created_at','updated_at','html_url']})
+          p={'recorded_at_utc':datetime.now(timezone.utc).isoformat(),'branch':'math-problem-bank-bootstrap','runs':rows}
+          Path('/tmp/math-workflow-runs-latest.json').write_text(json.dumps(p,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(p,ensure_ascii=False,indent=2))
+          PY
+      - name: Persist run inventory race-safely
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin math-problem-bank-bootstrap
+          git reset --hard origin/math-problem-bank-bootstrap
+          mkdir -p math-bank/state
+          cp /tmp/math-workflow-runs-latest.json math-bank/state/
+          git add math-bank/state/math-workflow-runs-latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'record math workflow run inventory'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
