@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from collections import Counter
 from datetime import datetime, timezone
@@ -8,6 +9,20 @@ from pathlib import Path
 
 from validate_app_records import load_records
 from validate_expanded_variant_layer import base_gate, load_layer
+
+
+def canonical_parent_bytes(parent: dict) -> bytes:
+    """Stable serialization used to bind queue/provenance work to the exact parent record read."""
+    return json.dumps(
+        parent,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+
+
+def parent_record_sha256(parent: dict) -> str:
+    return hashlib.sha256(canonical_parent_bytes(parent)).hexdigest()
 
 
 def classify_parent(parent: dict) -> tuple[str, str]:
@@ -53,6 +68,7 @@ def main() -> int:
         reason_counts[reason] += 1
         queue.append({
             "parent_id": pid,
+            "parent_record_sha256": parent_record_sha256(parent),
             "grade": parent["grade"],
             "book": parent["source"]["book"],
             "document": parent["source"]["document"],
@@ -70,11 +86,12 @@ def main() -> int:
 
     report = {
         "status": "PASS",
-        "policy": "Parent-first conservative planning only; this file does not generate or promote variants.",
+        "policy": "Parent-first conservative planning only; each queue row is SHA-256-bound to the exact verified parent record read, and this file does not generate or promote variants.",
         "recorded_at_utc": datetime.now(timezone.utc).isoformat(),
         "base_originals": len(originals),
         "already_covered_parents": len(set(by_id).intersection(covered)),
         "uncovered_parent_queue_count": len(queue),
+        "parent_fingerprint_algorithm": "sha256(canonical-json-sort-keys)",
         "bucket_counts": dict(sorted(bucket_counts.items())),
         "reason_counts": dict(sorted(reason_counts.items())),
         "queue": queue,
