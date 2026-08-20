@@ -12,6 +12,8 @@ from urllib.parse import unquote, urlsplit
 from validate_app_records import main as validate_main
 
 EXPECTED = 1231
+EXPECTED_ORIGINAL = 1124
+EXPECTED_VARIANTS = 107
 CANONICAL_ZIP_SHA256 = "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175"
 EXTERNAL_SCHEMES = {"http", "https", "data", "blob"}
 ALLOWED_LOCAL_FIGURE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".avif"}
@@ -163,28 +165,68 @@ def resolve_all_assets(rows: list[dict], candidate: Path, extracted_root: Path |
     return resolved, external_count
 
 
-def promote(rows: list[dict], assets: dict[PurePosixPath, Path], out: Path) -> None:
+def promote_from_exact_zip(
+    rows: list[dict],
+    assets: dict[PurePosixPath, Path],
+    external_count: int,
+    out: Path,
+    provenance_out: Path,
+    source: Path,
+    candidate: Path,
+    extracted_root: Path,
+) -> dict:
     out.parent.mkdir(parents=True, exist_ok=True)
-    for rel, src in assets.items():
+    asset_entries: list[dict] = []
+    for rel, src in sorted(assets.items(), key=lambda item: item[0].as_posix()):
         dest = out.parent.joinpath(*rel.parts)
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dest)
+        asset_entries.append({"path": rel.as_posix(), "sha256": sha256_file(dest)})
+
     out.write_text(json.dumps(rows, ensure_ascii=False, indent=2), encoding="utf-8")
     validate_main(str(out), strict=True)
+    member_name = candidate.relative_to(extracted_root).as_posix()
+    provenance = {
+        "status": "VERIFIED_CANONICAL_APP_WIRING",
+        "method": "direct_app_schema_from_exact_zip",
+        "canonical_zip_filename": source.name,
+        "canonical_zip_sha256": CANONICAL_ZIP_SHA256,
+        "canonical_member": member_name,
+        "canonical_member_sha256": sha256_file(candidate),
+        "app_records_sha256": sha256_file(out),
+        "records": EXPECTED,
+        "original_records": EXPECTED_ORIGINAL,
+        "generated_variants": EXPECTED_VARIANTS,
+        "source_identity_verified": True,
+        "schema_mapping_applied": False,
+        "title_preserved": True,
+        "choices_preserved": True,
+        "question_preserved": True,
+        "answer_preserved": True,
+        "explanation_preserved": True,
+        "figure_assets_verified": True,
+        "local_figure_assets": asset_entries,
+        "external_figure_refs": external_count,
+    }
+    provenance_out.parent.mkdir(parents=True, exist_ok=True)
+    provenance_out.write_text(json.dumps(provenance, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return provenance
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Recover only the already-verified canonical 1231-record math dataset without guessing a conversion.")
-    ap.add_argument("source", help="Canonical ZIP, or separately verified JSON/JSONL")
+    ap.add_argument("source", help="Exact canonical ZIP for promotion; JSON/JSONL inputs are inspection-only and can never be promoted")
     ap.add_argument("--output", default=str(Path(__file__).with_name("app-records.json")))
+    ap.add_argument("--provenance-output", default="")
     args = ap.parse_args()
 
     source = Path(args.source)
     if not source.is_file():
         raise SystemExit(f"BLOCKED: source not found: {source}")
 
+    is_zip = source.suffix.lower() == ".zip"
     source_sha256 = sha256_file(source)
-    if source.suffix.lower() == ".zip" and source_sha256.lower() != CANONICAL_ZIP_SHA256:
+    if is_zip and source_sha256.lower() != CANONICAL_ZIP_SHA256:
         print(json.dumps({
             "status": "BLOCKED",
             "source": str(source),
@@ -196,9 +238,11 @@ def main() -> int:
         return 4
 
     out = Path(args.output)
+    provenance_out = Path(args.provenance_output) if args.provenance_output else out.with_name("canonical-provenance.json")
     reports: list[dict] = []
+    strict_nonzip_candidate = False
     with tempfile.TemporaryDirectory() as td:
-        extracted_root = Path(td) if source.suffix.lower() == ".zip" else None
+        extracted_root = Path(td) if is_zip else None
         try:
             candidates = candidate_files(source, Path(td))
         except zipfile.BadZipFile as e:
@@ -230,40 +274,56 @@ def main() -> int:
                     report["result"] = reason
                 reports.append(report)
                 continue
+
+            if not is_zip:
+                strict_nonzip_candidate = True
+                report["result"] = "BLOCKED_STRICT_APP_JSON_WITHOUT_CANONICAL_ZIP_IDENTITY"
+                report["policy"] = "A standalone JSON/JSONL can be inspected but cannot establish identity with the immutable final ZIP and cannot create app-records.json."
+                reports.append(report)
+                continue
+
+            assert extracted_root is not None
             try:
                 assets, external_count = resolve_all_assets(rows, p, extracted_root, source)
             except Exception as e:
                 report["result"] = f"FIGURE_ASSET_GATE_FAIL: {e}"
                 reports.append(report)
                 continue
-            report["result"] = "PASS_STRICT_1231_AND_FIGURE_ASSETS"
+            report["result"] = "PASS_STRICT_1231_FIGURES_AND_CANONICAL_ZIP_IDENTITY"
             report["local_figure_assets"] = len(assets)
             report["external_figure_refs"] = external_count
             reports.append(report)
-            promote(rows, assets, out)
+            provenance = promote_from_exact_zip(rows, assets, external_count, out, provenance_out, source, p, extracted_root)
             print(json.dumps({
                 "status": "PASS",
                 "source": str(source),
                 "source_sha256": source_sha256,
-                "canonical_zip_sha256_verified": source.suffix.lower() != ".zip" or source_sha256.lower() == CANONICAL_ZIP_SHA256,
-                "promoted_candidate": str(p),
+                "canonical_zip_sha256_verified": True,
+                "promoted_candidate": p.relative_to(extracted_root).as_posix(),
                 "output": str(out),
                 "output_sha256": sha256_file(out),
+                "provenance": str(provenance_out),
+                "provenance_method": provenance["method"],
                 "records": EXPECTED,
                 "local_figure_assets_copied": len(assets),
                 "external_figure_refs": external_count,
-                "policy": "no transformation/no invented records; strict app-schema pass-through plus exact safe figure-asset preservation"
+                "policy": "exact final ZIP identity + no transformation + strict app schema + title/choices/content + figure assets"
             }, ensure_ascii=False, indent=2))
             return 0
 
-    print(json.dumps({
+    result = {
         "status": "BLOCKED",
         "source": str(source),
         "source_sha256": source_sha256,
-        "reason": "No exact 1231-record candidate passed strict app data + figure-asset gates. Recorded canonical q/ans schema candidates are reported but never guessed into app schema.",
-        "candidates": reports
-    }, ensure_ascii=False, indent=2))
-    return 3
+        "reason": (
+            "A strict standalone app JSON candidate was found but cannot be promoted without exact canonical ZIP identity."
+            if strict_nonzip_candidate else
+            "No exact 1231-record candidate passed the required canonical recovery gates. Recorded q/ans core candidates are detect-only and never guessed into app schema."
+        ),
+        "candidates": reports,
+    }
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 6 if strict_nonzip_candidate else 3
 
 
 if __name__ == "__main__":
