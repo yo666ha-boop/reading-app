@@ -97,7 +97,6 @@
       label.textContent=isStudent?'生徒用プリント（英文本文・問題）':'解答・解説プリント（本文・訳・問題・解答・解説）';
       window.addEventListener('afterprint',cleanup,{once:true});
       window.addEventListener('focus',()=>setTimeout(cleanup,300),{once:true});
-      // Force style/layout calculation before opening print preview (important on Safari/iOS).
       void document.body.offsetHeight;
       setTimeout(()=>window.print(),80);
     }
@@ -108,4 +107,52 @@
 
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',installPrintModes,{once:true});
   else installPrintModes();
+})();
+
+// Final vocabulary/slash human audit: passages 001-002.
+// Remove words not present in the canonical cumulative Sunshine vocabulary master
+// when the same meaning can be expressed naturally with already learned language.
+(()=>{
+  const data=window.V10_SUNSHINE_G1||{};
+  function metaTargets(section){
+    const key='サンシャイン|1|'+section;
+    const out=[];
+    const maps=[window.V10_INTERACTION_META_SEMANTIC_REPAIRS_001_010,window.V10_INTERACTION_META];
+    for(const m of maps) if(m&&m[key]&&!out.includes(m[key])) out.push(m[key]);
+    return out;
+  }
+
+  const p1=data['Get Ready 2'];
+  if(p1){
+    p1.sentences=['This is my English book.','Really?','Yes.','This is a dog.','I see.','This is a cat, too.','I write “dog”.','I write “cat”, too.','I can read “dog”.','I can read “cat”, too.','Great!'];
+    p1.fullTranslation='「これは私の英語の本です。」「本当に？」「うん。」「これは犬です。」「なるほど。」「これはねこでもあります。」「私は dog と書きます。」「cat も書きます。」「私は dog を読むことができます。」「cat も読むことができます。」「すごい！」';
+    p1.slashRows=[
+      {en:'This is my English book.',jp:'これは私の英語の本です。'},
+      {en:'Really?',jp:'本当に？'},{en:'Yes.',jp:'うん。'},
+      {en:'This is a dog.',jp:'これは犬です。'},{en:'I see.',jp:'なるほど。'},
+      {en:'This is a cat, too.',jp:'これはねこでもあります。'},
+      {en:'I write “dog”.',jp:'私は dog と書きます。'},
+      {en:'I write “cat”, too.',jp:'cat も書きます。'},
+      {en:'I can read “dog”.',jp:'私は dog を読むことができます。'},
+      {en:'I can read “cat”, too.',jp:'cat も読むことができます。'},
+      {en:'Great!',jp:'すごい！'}
+    ];
+    if(Array.isArray(p1.questions)&&p1.questions[2]){
+      p1.questions[2]={prompt:'3. 書いた英単語を2つ答えなさい。',answer:'dog and cat',evidence:'I write “dog”. / I write “cat”, too.',evidenceJp:'私は dog と書きます。／cat も書きます。',reason:'write の後ろに dog と cat が示されています。'};
+    }
+    for(const m of metaTargets('Get Ready 2')) if(Array.isArray(m.questionSetB)&&m.questionSetB[2]) m.questionSetB[2]={prompt:'3. 「私」は dog と書きますか。本文に合うように Yes / No で答えなさい。',answer:'Yes',evidence:'I write “dog”.',evidenceJp:'私は dog と書きます。',reason:'write “dog” と明示されています。'};
+    p1.vocabFinalAudit='PASS_REWRITE_NOTES_0';
+    p1.slashHumanAudit='PASS_MODEL_ALIGNED';
+  }
+
+  const p2=data['Get Ready 3'];
+  if(p2){
+    p2.sentences=['What do you like?','I like English.','Really?','Yes.','Do you have your English book?','Yes, I do.','Can you read English?','Yes, I can.','Great!','I like English, too.'];
+    p2.fullTranslation='「何が好きですか。」「私は英語が好きです。」「本当に？」「うん。」「英語の本を持っていますか。」「はい、持っています。」「英語を読むことができますか。」「はい、できます。」「すごい！」「私も英語が好きです。」';
+    p2.slashRows=p2.sentences.map((en,i)=>({en,jp:['何が好きですか。','私は英語が好きです。','本当に？','うん。','英語の本を持っていますか。','はい、持っています。','英語を読むことができますか。','はい、できます。','すごい！','私も英語が好きです。'][i]}));
+    if(Array.isArray(p2.questions)&&p2.questions[0]) p2.questions[0]={prompt:'1. 最初の人が好きなものは何ですか。英語で答えなさい。',answer:'English',evidence:'I like English.',evidenceJp:'私は英語が好きです。',reason:'最初の質問への答えで、好きなものを直接示しています。'};
+    for(const m of metaTargets('Get Ready 3')) if(Array.isArray(m.questionSetB)&&m.questionSetB[0]) m.questionSetB[0]={prompt:'1. “What do you like?” に対する答えの英文を本文から1文抜き出しなさい。',answer:'I like English.',evidence:'I like English.',evidenceJp:'私は英語が好きです。',reason:'好きなものを直接答えています。'};
+    p2.vocabFinalAudit='PASS_REWRITE_NOTES_0';
+    p2.slashHumanAudit='PASS_MODEL_ALIGNED';
+  }
 })();
