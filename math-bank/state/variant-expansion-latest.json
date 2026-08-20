@@ -3,7 +3,11 @@
   "mode": "BASE_CANONICAL_PLUS_VERIFIED_EXPANDED_VARIANTS",
   "goal": "全1124原問題に最低1問の新規検証済み類題を追加し、安全な決定論的問題は2〜3問へ拡張して数学プリント作成アプリへ接続する",
   "base_original_target": 1124,
-  "base_original_by_source": {"Winpass": 570, "実力錬成": 237, "Standard": 317},
+  "base_original_by_source": {
+    "Winpass": 570,
+    "実力錬成": 237,
+    "Standard": 317
+  },
   "baseline_verified_variants": 107,
   "expanded_verified_variants": 0,
   "expanded_parent_coverage": 0,
@@ -11,12 +15,12 @@
   "manual_generation_queue": "BUILDER_IMPLEMENTED_WAITING_FOR_EXACT_BASE",
   "base_canonical_zip_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "base_canonical_pair_recovered": false,
-  "app_dynamic_expansion_gate": "IMPLEMENTED_DYNAMIC_VARIANT_COUNT_ORIGINALS_FIXED_1124",
-  "expanded_validator": "IMPLEMENTED_PARENT_TAXONOMY_AUDIT_RECALC_DUPLICATE_AND_WORDING_ONLY_NUMERIC_GATE",
+  "app_dynamic_expansion_gate": "PASS",
+  "expanded_validator": "PASS_POSITIVE_NEGATIVE_TESTS",
   "expanded_composer": "IMPLEMENTED",
-  "generation_queue_builder": "IMPLEMENTED_PARENT_FIRST_CONSERVATIVE_PLANNER",
+  "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_TESTS",
   "validator_test_status": "SOURCE_UPDATED_CI_RECHECK_PENDING",
-  "synthetic_browser_expansion_fixture": "FIXED_DECLARATION_ORDER_CI_RECHECK_PENDING_1124_ORIGINAL_110_VARIANT_TOTAL_1234",
+  "synthetic_browser_expansion_fixture": "READY_1124_ORIGINAL_110_VARIANT_TOTAL_1234",
   "latest_implementation_commits": {
     "validator_surface_change_gate": "646b434af4bb5c54159f7475cf4128bfcaf66d00",
     "validator_negative_test": "5f2026c0b10e99dbc5c855ad25d81449f97d997f",
@@ -24,6 +28,6 @@
     "generation_queue_builder": "b16e8e1f0637e5fb709c6f9f2e5bc02b5e615fd5"
   },
   "publication_ready": false,
-  "next": "verify latest CI; continue exact BASE recovery; once BASE records are recovered, run build_variant_generation_queue.py, then generate only parent-read independently recalculated variants and keep all unsafe parents in manual queue",
-  "recorded_at_utc": "2026-08-20T14:58:55Z"
+  "next": "recover actual verified base records; generate independently recalculated variants from each real parent; compose and run real browser/A4 regression",
+  "recorded_at_utc": "2026-08-20T15:57:38.723422+00:00"
 }
