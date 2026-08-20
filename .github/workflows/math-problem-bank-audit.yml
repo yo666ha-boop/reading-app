@@ -10,6 +10,7 @@ on:
       - 'math-bank/scripts/**'
       - 'math-bank/schema/**'
       - 'math-bank/app/**'
+      - 'math-bank/state/CANONICAL_RECOVERY_KEYS.json'
       - '.github/workflows/math-problem-bank-audit.yml'
 
 permissions:
@@ -35,10 +36,13 @@ jobs:
           node-version: '22'
 
       - name: Compile app validation and recovery tools
-        run: python -m py_compile math-bank/app/validate_app_records.py math-bank/app/recover_canonical_app_records.py math-bank/app/check_app_shell.py
+        run: python -m py_compile math-bank/app/validate_app_records.py math-bank/app/recover_canonical_app_records.py math-bank/app/check_app_shell.py math-bank/app/check_recovery_contract.py
 
       - name: Check app shell and JavaScript syntax
         run: python math-bank/app/check_app_shell.py
+
+      - name: Check canonical recovery contract
+        run: python math-bank/app/check_recovery_contract.py
 
       - name: Strict canonical 1231 validator when data exists
         shell: bash
