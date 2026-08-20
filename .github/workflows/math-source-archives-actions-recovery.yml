@@ -1,0 +1,63 @@
+name: Math Source Archives Actions Recovery
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - 'math-bank/app/scan_actions_for_math_source_archives.py'
+      - '.github/workflows/math-source-archives-actions-recovery.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: math-source-archives-actions-recovery
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile exact source-archive scanner
+        run: python -m py_compile math-bank/app/scan_actions_artifacts.py math-bank/app/scan_actions_for_math_source_archives.py
+      - name: Scan every unexpired Actions artifact member and nested ZIP for the three exact source SHAs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python math-bank/app/scan_actions_for_math_source_archives.py
+      - name: Upload recovered source archives and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-source-archives-recovery-evidence
+          path: |
+            math-bank/state/source-archive-actions-scan-latest.json
+            math-bank/recovered-source-archives/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Persist scan state race-safely without committing source archives
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p /tmp/math-source-state
+          cp math-bank/state/source-archive-actions-scan-latest.json /tmp/math-source-state/ 2>/dev/null || true
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin math-problem-bank-bootstrap
+          git reset --hard origin/math-problem-bank-bootstrap
+          mkdir -p math-bank/state
+          cp /tmp/math-source-state/source-archive-actions-scan-latest.json math-bank/state/ 2>/dev/null || true
+          git add math-bank/state/source-archive-actions-scan-latest.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'record exact math source archive recovery scan'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
