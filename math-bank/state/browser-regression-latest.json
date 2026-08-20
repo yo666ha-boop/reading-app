@@ -1,0 +1,102 @@
+{
+  "workflow_test": "Math Problem Bank Browser Regression",
+  "overall_result": "success",
+  "base_url": "http://127.0.0.1:8765/index.html",
+  "synthetic_fixture_only": true,
+  "canonical_data_written": false,
+  "results": [
+    {
+      "name": "chromium-desktop",
+      "status": "success",
+      "phase": "complete",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "gate": "PASS",
+      "choices": "PASS",
+      "sourceOrder": "PASS",
+      "settings": "PASS",
+      "figure": "PASS",
+      "printCss": "PASS",
+      "pdf": {
+        "question": {
+          "bytes": 83726,
+          "pages": 1
+        },
+        "answer": {
+          "bytes": 108513,
+          "pages": 1
+        }
+      },
+      "overflow": {
+        "width": 1280,
+        "scrollWidth": 1280
+      },
+      "pageErrors": []
+    },
+    {
+      "name": "firefox-desktop",
+      "status": "success",
+      "phase": "complete",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "gate": "PASS",
+      "choices": "PASS",
+      "sourceOrder": "PASS",
+      "settings": "PASS",
+      "figure": "PASS",
+      "printCss": "PASS",
+      "pdf": "not-applicable",
+      "overflow": {
+        "width": 1280,
+        "scrollWidth": 1280
+      },
+      "pageErrors": []
+    },
+    {
+      "name": "webkit-iphone",
+      "status": "success",
+      "phase": "complete",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "gate": "PASS",
+      "choices": "PASS",
+      "sourceOrder": "PASS",
+      "settings": "PASS",
+      "figure": "PASS",
+      "printCss": "PASS",
+      "pdf": "not-applicable",
+      "overflow": {
+        "width": 390,
+        "scrollWidth": 390
+      },
+      "pageErrors": []
+    },
+    {
+      "name": "chromium-fire",
+      "status": "success",
+      "phase": "complete",
+      "viewport": {
+        "width": 800,
+        "height": 1280
+      },
+      "gate": "PASS",
+      "choices": "PASS",
+      "sourceOrder": "PASS",
+      "settings": "PASS",
+      "figure": "PASS",
+      "printCss": "PASS",
+      "pdf": "not-applicable",
+      "overflow": {
+        "width": 800,
+        "scrollWidth": 800
+      },
+      "pageErrors": []
+    }
+  ]
+}
