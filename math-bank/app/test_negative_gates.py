@@ -7,6 +7,8 @@ import tempfile
 import zipfile
 from pathlib import Path
 
+from recover_canonical_app_records import local_figure_ref
+
 ROOT = Path(__file__).resolve().parent
 RECOVERY = ROOT / "recover_canonical_app_records.py"
 VALIDATOR = ROOT / "validate_app_records.py"
@@ -14,6 +16,14 @@ VALIDATOR = ROOT / "validate_app_records.py"
 
 def run(*args: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run([sys.executable, *args], text=True, capture_output=True)
+
+
+def must_reject_figure_ref(ref: str) -> None:
+    try:
+        local_figure_ref(ref)
+    except ValueError:
+        return
+    raise SystemExit(f"FAIL unsafe figure ref was accepted: {ref}")
 
 
 with tempfile.TemporaryDirectory() as td:
@@ -49,8 +59,18 @@ with tempfile.TemporaryDirectory() as td:
     if p.returncode == 0 or "FAIL:" not in (p.stdout + p.stderr):
         raise SystemExit(f"FAIL strict validator negative case rc={p.returncode}\n{p.stdout}\n{p.stderr}")
 
+    # 5) Figure references cannot escape the app directory or masquerade as non-image payloads.
+    for ref in ("../index.html", "figures/../../index.html", "/etc/passwd", "figures\\evil.png", "index.html", "app-records.json", "figures/script.js"):
+        must_reject_figure_ref(ref)
+    if local_figure_ref("figures/sample.png") is None:
+        raise SystemExit("FAIL safe local figure ref rejected")
+    if local_figure_ref("https://example.invalid/sample.png") is not None:
+        raise SystemExit("FAIL external figure ref treated as local")
+
 print("PASS_NEGATIVE_GATES")
 print("fake_zip_hash_bypass=REJECTED")
 print("partial_161_promotion=REJECTED")
 print("malformed_1231_promotion=REJECTED")
 print("strict_validator_invalid_data=REJECTED")
+print("figure_path_traversal=REJECTED")
+print("figure_non_image_payload=REJECTED")
