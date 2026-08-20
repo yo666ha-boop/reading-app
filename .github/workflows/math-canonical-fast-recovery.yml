@@ -1,0 +1,234 @@
+name: Math Canonical Fast Recovery
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - math-problem-bank-bootstrap
+    paths:
+      - '.github/workflows/math-canonical-fast-recovery.yml'
+
+concurrency:
+  group: math-canonical-fast-recovery
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  recover-current-reading-app:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout current isolated math branch with full history
+        uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Compile current recovery and completion gates
+        run: |
+          python -m py_compile \
+            math-bank/app/scan_actions_artifacts.py \
+            math-bank/app/scan_git_history_candidates.py \
+            math-bank/app/scan_github_release_assets.py \
+            math-bank/app/complete_from_exact_canonical.py \
+            math-bank/app/inspect_canonical_artifact.py \
+            math-bank/app/analyze_canonical_mapping_evidence.py \
+            math-bank/app/recover_canonical_app_records.py \
+            math-bank/app/convert_verified_canonical_to_app.py \
+            math-bank/app/validate_app_records.py \
+            math-bank/app/validate_canonical_provenance.py \
+            math-bank/app/build_release_bundle.py \
+            math-bank/app/verify_publish_readiness.py
+          node --check math-bank/app/browser_real_regression.mjs
+
+      - name: Content-addressed scan of all recent Actions artifact members
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python math-bank/app/scan_actions_artifacts.py
+
+      - name: Batch SHA scan of every reachable branch tag PR-ref Git blob and LFS pointer
+        run: python math-bank/app/scan_git_history_candidates.py
+
+      - name: Content-addressed scan of all GitHub Release assets
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python math-bank/app/scan_github_release_assets.py
+
+      - name: Normalize exact ZIP plus final audit from verified recovery source
+        id: pair
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import hashlib, shutil
+          from pathlib import Path
+          expected='eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175'
+          dest=Path('math-bank/recovered-fast'); dest.mkdir(parents=True,exist_ok=True)
+          out_z=dest/'みかみ塾数学問題バンク_最終完成版_20260820.zip'
+          out_a=dest/'MATHBANK_FINAL_AUDIT_V2.json'
+          sources=[
+            ('actions',Path('math-bank/recovered/みかみ塾数学問題バンク_最終完成版_20260820.zip'),Path('math-bank/recovered/MATHBANK_FINAL_AUDIT_V2.json')),
+            ('git_history',Path('math-bank/recovered-git-history/みかみ塾数学問題バンク_最終完成版_20260820.zip'),Path('math-bank/recovered-git-history/MATHBANK_FINAL_AUDIT_V2.json')),
+            ('release',Path('math-bank/recovered-release/みかみ塾数学問題バンク_最終完成版_20260820.zip'),Path('math-bank/recovered-release/MATHBANK_FINAL_AUDIT_V2.json')),
+          ]
+          found=False; source='none'
+          for label,z,a in sources:
+            if z.is_file() and a.is_file() and hashlib.sha256(z.read_bytes()).hexdigest()==expected:
+              shutil.copy2(z,out_z); shutil.copy2(a,out_a); found=True; source=label; break
+          print(f'pair_found={str(found).lower()}')
+          print(f'recovery_source={source}')
+          PY
+
+      - name: No exact pair means no reconstruction
+        if: steps.pair.outputs.pair_found != 'true'
+        run: echo 'NO_EXACT_CANONICAL_PAIR; source reconstruction and partial promotion remain prohibited.'
+
+      - name: Atomic exact canonical wiring
+        if: steps.pair.outputs.pair_found == 'true'
+        id: wiring
+        shell: bash
+        run: |
+          set +e
+          python math-bank/app/complete_from_exact_canonical.py \
+            'math-bank/recovered-fast/みかみ塾数学問題バンク_最終完成版_20260820.zip' \
+            'math-bank/recovered-fast/MATHBANK_FINAL_AUDIT_V2.json'
+          rc=$?
+          set -e
+          if [ "$rc" -eq 0 ]; then
+            echo 'wiring_ready=true' >> "$GITHUB_OUTPUT"
+          elif [ "$rc" -eq 3 ]; then
+            echo 'wiring_ready=false' >> "$GITHUB_OUTPUT"
+            echo 'EXACT_PAIR_RECOVERED_BUT_VERIFIED_METADATA_REQUIRED; no inference.'
+          else
+            exit "$rc"
+          fi
+
+      - name: Install Playwright after exact wiring only
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium firefox webkit
+
+      - name: Start isolated real canonical app server
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        shell: bash
+        run: |
+          python3 -m http.server 8768 --bind 127.0.0.1 --directory math-bank/app >/tmp/math-fast-real-http.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8768/index.html >/dev/null && exit 0; sleep 1; done
+          cat /tmp/math-fast-real-http.log
+          exit 1
+
+      - name: Full real canonical 1231 four-browser and six-A4 regression
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        env:
+          MATH_APP_BASE_URL: http://127.0.0.1:8768/index.html
+          MATH_REAL_DATA_PATH: math-bank/app/app-records.json
+          MATH_REAL_BROWSER_REPORT: math-bank/state/browser-real-regression-latest.json
+          MATH_REAL_PDF_DIR: math-bank/state/real-print-regression
+        run: node math-bank/app/browser_real_regression.mjs
+
+      - name: Strict release and PUBLICATION_READY
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: |
+          python math-bank/app/build_release_bundle.py
+          python math-bank/app/verify_publish_readiness.py --pdf-root math-bank/state/real-print-regression
+
+      - name: Upload recovery and finalization evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-canonical-fast-recovery-evidence
+          path: |
+            math-bank/state/actions-artifact-scan-latest.json
+            math-bank/state/git-history-scan-latest.json
+            math-bank/state/github-release-scan-latest.json
+            math-bank/recovered/
+            math-bank/recovered-git-history/
+            math-bank/recovered-release/
+            math-bank/recovered-fast/
+            math-bank/state/canonical-inspection-latest.json
+            math-bank/state/canonical-mapping-evidence-latest.json
+            math-bank/state/canonical-completion-latest.json
+            math-bank/state/browser-real-regression-latest.json
+            math-bank/state/real-print-regression/
+            math-bank/みかみ塾数学問題アプリ_公開候補.zip
+            math-bank/release/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Persist fast recovery terminal evidence race-safely
+        if: always()
+        env:
+          PAIR_FOUND: ${{ steps.pair.outputs.pair_found }}
+          RECOVERY_SOURCE: ${{ steps.pair.outputs.recovery_source }}
+          WIRING_READY: ${{ steps.wiring.outputs.wiring_ready }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          TRIGGERING_SHA: ${{ github.sha }}
+          JOB_STATUS: ${{ job.status }}
+        shell: bash
+        run: |
+          mkdir -p /tmp/math-fast-state
+          python - <<'PY'
+          import json,os
+          from datetime import datetime,timezone
+          from pathlib import Path
+          def load(p):
+            try:return json.loads(Path(p).read_text(encoding='utf-8'))
+            except:return None
+          actions=load('math-bank/state/actions-artifact-scan-latest.json')
+          hist=load('math-bank/state/git-history-scan-latest.json')
+          rel=load('math-bank/state/github-release-scan-latest.json')
+          payload={
+            'workflow':'Math Canonical Fast Recovery',
+            'run_id':os.environ.get('RUN_ID'),
+            'run_attempt':os.environ.get('RUN_ATTEMPT'),
+            'triggering_sha':os.environ.get('TRIGGERING_SHA'),
+            'job_status':os.environ.get('JOB_STATUS'),
+            'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
+            'canonical_pair_found':str(os.environ.get('PAIR_FOUND','')).lower()=='true',
+            'recovery_source':os.environ.get('RECOVERY_SOURCE') or 'none',
+            'wiring_ready':str(os.environ.get('WIRING_READY','')).lower()=='true',
+            'publication_ready':Path('math-bank/release/PUBLICATION_READY.json').is_file(),
+            'actions_artifacts_seen':actions.get('all_artifacts_seen') if isinstance(actions,dict) else None,
+            'actions_members_sha256_checked':actions.get('all_members_sha256_checked') if isinstance(actions,dict) else None,
+            'actions_pair_hits':actions.get('paired_recovery_hits') if isinstance(actions,dict) else None,
+            'git_all_blobs_sha256_checked':hist.get('all_blobs_sha256_checked') if isinstance(hist,dict) else None,
+            'git_canonical_blob_hits':len(hist.get('canonical_blob_hits',[])) if isinstance(hist,dict) else None,
+            'git_lfs_pointer_hits':len(hist.get('lfs_pointer_hits',[])) if isinstance(hist,dict) else None,
+            'git_pair_hits':len(hist.get('paired_recovery_hits',[])) if isinstance(hist,dict) else None,
+            'release_assets_seen':rel.get('assets_seen') if isinstance(rel,dict) else None,
+            'release_canonical_hits':rel.get('canonical_hits') if isinstance(rel,dict) else None,
+            'release_pair_hits':len(rel.get('paired_recovery_hits',[])) if isinstance(rel,dict) else None,
+            'policy':'Exact SHA plus valid audit only; no reconstruction, no partial-161/diagnostic-1271 promotion.'
+          }
+          out=Path('/tmp/math-fast-state')
+          (out/'fast-recovery-latest.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          for src,name in [
+            ('math-bank/state/actions-artifact-scan-latest.json','actions-artifact-scan-latest.json'),
+            ('math-bank/state/git-history-scan-latest.json','git-history-scan-latest.json'),
+            ('math-bank/state/github-release-scan-latest.json','github-release-scan-latest.json')]:
+            p=Path(src)
+            if p.is_file():(out/name).write_bytes(p.read_bytes())
+          print(json.dumps(payload,ensure_ascii=False,indent=2))
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin math-problem-bank-bootstrap
+          git reset --hard origin/math-problem-bank-bootstrap
+          mkdir -p math-bank/state
+          cp /tmp/math-fast-state/*.json math-bank/state/
+          git add -- math-bank/state/fast-recovery-latest.json math-bank/state/actions-artifact-scan-latest.json math-bank/state/git-history-scan-latest.json math-bank/state/github-release-scan-latest.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'record fast math canonical recovery state'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
