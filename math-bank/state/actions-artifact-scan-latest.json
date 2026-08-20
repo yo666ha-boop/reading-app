@@ -5,19 +5,77 @@
   "expected_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "required_paired_audit": "MATHBANK_FINAL_AUDIT_V2.json",
   "created_since": "2026-08-19T00:00:00Z",
-  "all_artifacts_seen": 130,
-  "candidate_artifacts": 130,
+  "all_artifacts_seen": 132,
+  "candidate_artifacts": 132,
   "canonical_hits": 0,
   "audit_name_hits": 0,
   "valid_audit_hits": 0,
   "paired_recovery_hits": 0,
   "recovery_hint_hits": 0,
   "download_failures": 0,
-  "all_members_sha256_checked": 558,
-  "all_member_bytes_hashed": 253429410,
+  "all_members_sha256_checked": 562,
+  "all_member_bytes_hashed": 253436325,
   "zip_signature_members": 3,
   "oversize_members_skipped": 0,
   "artifacts": [
+    {
+      "artifact_id": 9411951787,
+      "name": "math-browser-regression-diagnostics",
+      "size_in_bytes": 1009,
+      "created_at": "2026-08-20T15:00:10Z",
+      "updated_at": "2026-08-20T15:00:10Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32383355453,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "8683711f35969cef573639387187f62ccafe145f"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 2,
+        "members_sha256_checked": 2,
+        "member_bytes_hashed": 2610,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1009
+    },
+    {
+      "artifact_id": 9411891922,
+      "name": "math-browser-regression-diagnostics",
+      "size_in_bytes": 1183,
+      "created_at": "2026-08-20T14:58:37Z",
+      "updated_at": "2026-08-20T14:58:37Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32383166173,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "5f2026c0b10e99dbc5c855ad25d81449f97d997f"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 2,
+        "members_sha256_checked": 2,
+        "member_bytes_hashed": 4305,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1183
+    },
     {
       "artifact_id": 9411840132,
       "name": "math-browser-regression-diagnostics",
@@ -3814,6 +3872,6 @@
     }
   ],
   "recovered_files": [],
-  "completed_at_utc": "2026-08-20T14:58:49.586777+00:00",
+  "completed_at_utc": "2026-08-20T15:02:06.287025+00:00",
   "policy": "Every member under the size cap is SHA-256 checked regardless of filename/extension. Nested archives are detected by ZIP signature. Exact immutable SHA plus one unambiguous valid final audit from the same Actions artifact is required; no reconstruction."
 }
