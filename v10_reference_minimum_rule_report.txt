@@ -1,11 +1,11 @@
-REFERENCE MINIMUM RULE AUDIT ERROR: v10_reference_slash_manual_041_050.js:4
+REFERENCE MINIMUM RULE AUDIT ERROR: v10_reference_slash_manual_051_060.js:4
  function setAudit(data,section,rows,n){const p=data&&data[section];if(!p)throw new Error('Missing reference passage '+n+': '+section);if(rows.length!==(p.sentences||[]).length)throw new Error('Row mismatch '+n);for(let i=0;i<rows.length;i++){const e=String(rows[i].en||'').replace(/\s*\/\s*/g,' ').replace(/\s+/g,' ').trim(),s=String(p.sentences[i]||'').replace(/\s+/g,' ').trim();if(e!==s)throw new Error('English mismatch '+n+'#'+(i+1)+': '+e+' <> '+s);const ec=String(rows[i].en||'').split(/\s*\/\s*/).filter(Boolean).length,jc=String(rows[i].jp||'').split(/\s*\/\s*/).filter(Boolean).length;if(ec!==jc)throw new Error('EN/JP chunks '+n+'#'+(i+1)+' '+ec+'/'+jc)}p.slashRows=rows;p.slashReadingVersion='reference-book-minimum-rules-20260820';p.slashReferenceAudit=PASS;p.slashReferencePassageNo=n}
                                                                                                                                                                                                                                                                                                                                                                                                        ^
 
-Error: English mismatch 49#1: This is a picture from New Zealand. <> This is a puppy.
-    at setAudit (v10_reference_slash_manual_041_050.js:4:398)
-    at v10_reference_slash_manual_041_050.js:101:2
-    at v10_reference_slash_manual_041_050.js:122:3
+Error: English mismatch 51#6: Read this English story, please. <> Read this, please.
+    at setAudit (v10_reference_slash_manual_051_060.js:4:398)
+    at v10_reference_slash_manual_051_060.js:6:2
+    at v10_reference_slash_manual_051_060.js:37:3
     at Script.runInContext (node:vm:149:12)
     at Object.runInContext (node:vm:301:6)
     at /home/runner/work/reading-app/reading-app/v10_reference_minimum_rule_audit.js:28:25
