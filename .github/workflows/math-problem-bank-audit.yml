@@ -35,8 +35,8 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Compile app validation, recovery, and release tools
-        run: python -m py_compile math-bank/app/validate_app_records.py math-bank/app/recover_canonical_app_records.py math-bank/app/check_app_shell.py math-bank/app/check_recovery_contract.py math-bank/app/test_negative_gates.py math-bank/app/build_release_bundle.py
+      - name: Compile app validation, recovery, inspection, and release tools
+        run: python -m py_compile math-bank/app/validate_app_records.py math-bank/app/recover_canonical_app_records.py math-bank/app/inspect_canonical_artifact.py math-bank/app/check_app_shell.py math-bank/app/check_recovery_contract.py math-bank/app/test_negative_gates.py math-bank/app/build_release_bundle.py
 
       - name: Check app shell and JavaScript syntax
         run: python math-bank/app/check_app_shell.py
@@ -72,6 +72,17 @@ jobs:
             fi
             echo 'PASS_RELEASE_BLOCKED_UNTIL_EXACT_1231'
           fi
+
+      - name: Preserve strict release bundle as workflow artifact
+        if: ${{ hashFiles('math-bank/app/app-records.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: mikami-math-app-strict-release
+          path: |
+            math-bank/みかみ塾数学問題アプリ_公開候補.zip
+            math-bank/release/
+          if-no-files-found: error
+          retention-days: 30
 
   inventory-and-classify:
     runs-on: ubuntu-latest
@@ -152,6 +163,7 @@ jobs:
               'run_attempt': os.environ.get('RUN_ATTEMPT', ''),
               'recorded_at_utc': datetime.now(timezone.utc).isoformat(),
               'canonical_app_records_present': Path('math-bank/app/app-records.json').is_file(),
+              'strict_release_artifact_expected': Path('math-bank/app/app-records.json').is_file(),
           }
           path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
           print(json.dumps(payload, ensure_ascii=False, indent=2))
