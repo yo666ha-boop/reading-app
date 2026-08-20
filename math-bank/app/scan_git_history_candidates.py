@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import hashlib
 import json
-import os
 import subprocess
 import sys
 from collections import defaultdict
@@ -22,18 +21,11 @@ OUT_DIR = Path("math-bank/recovered-git-history")
 
 
 def run(*args: str, text: bool = True, check: bool = True) -> subprocess.CompletedProcess:
-    return subprocess.run(
-        args,
-        text=text,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        check=check,
-    )
+    return subprocess.run(args, text=text, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=check)
 
 
 def git_bytes(*args: str) -> bytes:
-    proc = run("git", *args, text=False)
-    return proc.stdout
+    return run("git", *args, text=False).stdout
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -55,17 +47,9 @@ def parse_rev_list_objects() -> dict[str, set[str]]:
         if not line.strip():
             continue
         parts = line.split(" ", 1)
-        oid = parts[0]
-        path = parts[1] if len(parts) == 2 else ""
-        if path:
-            paths_by_oid[oid].add(path)
+        if len(parts) == 2 and parts[1]:
+            paths_by_oid[parts[0]].add(parts[1])
     return paths_by_oid
-
-
-def object_type_size(oid: str) -> tuple[str, int] | None:
-    proc = run("git", "cat-file", "--batch-check=%(objecttype) %(objectsize)", check=False)
-    # This helper is intentionally unused in the hot path; see batch_metadata.
-    return None
 
 
 def batch_metadata(oids: list[str]) -> dict[str, tuple[str, int]]:
@@ -73,10 +57,7 @@ def batch_metadata(oids: list[str]) -> dict[str, tuple[str, int]]:
         return {}
     proc = subprocess.Popen(
         ["git", "cat-file", "--batch-check=%(objectname) %(objecttype) %(objectsize)"],
-        stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        text=True,
+        stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
     )
     assert proc.stdin is not None and proc.stdout is not None
     proc.stdin.write("\n".join(oids) + "\n")
@@ -85,9 +66,8 @@ def batch_metadata(oids: list[str]) -> dict[str, tuple[str, int]]:
     for line in proc.stdout:
         parts = line.strip().split()
         if len(parts) == 3:
-            oid, typ, size = parts
             try:
-                meta[oid] = (typ, int(size))
+                meta[parts[0]] = (parts[1], int(parts[2]))
             except ValueError:
                 pass
     stderr = proc.stderr.read() if proc.stderr is not None else ""
@@ -110,13 +90,6 @@ def likely_candidate_path(path: str) -> bool:
     )
 
 
-def commits_containing_change_of_object(oid: str) -> list[str]:
-    proc = run("git", "log", "--all", f"--find-object={oid}", "--format=%H", check=False)
-    if proc.returncode:
-        return []
-    return list(dict.fromkeys(x.strip() for x in proc.stdout.splitlines() if x.strip()))
-
-
 def tree_entries(commit: str) -> list[tuple[str, str]]:
     raw = git_bytes("ls-tree", "-r", "-z", commit)
     out: list[tuple[str, str]] = []
@@ -128,10 +101,32 @@ def tree_entries(commit: str) -> list[tuple[str, str]]:
             _, typ, oid_b = head.split(b" ", 2)
         except ValueError:
             continue
-        if typ != b"blob":
-            continue
-        out.append((oid_b.decode("ascii"), path_b.decode("utf-8", "replace")))
+        if typ == b"blob":
+            out.append((oid_b.decode("ascii"), path_b.decode("utf-8", "replace")))
     return out
+
+
+def commits_retaining_blob(zip_oid: str, known_paths: list[str]) -> list[str]:
+    """Return every reachable commit whose tree still contains the exact ZIP blob.
+
+    We intentionally do not rely only on `git log --find-object`: an audit may be added
+    in a later commit while the ZIP remains unchanged, and that later commit would not
+    necessarily be reported as a change of the ZIP object.
+    """
+    commits = [x.strip() for x in run("git", "rev-list", "--all").stdout.splitlines() if x.strip()]
+    retaining: list[str] = []
+    for commit in commits:
+        # Fast path: check historical paths known for this blob.
+        found = False
+        for p in known_paths:
+            proc = run("git", "ls-tree", commit, "--", p, check=False)
+            if proc.returncode == 0 and zip_oid in proc.stdout:
+                found = True
+                break
+        if not found:
+            continue
+        retaining.append(commit)
+    return retaining
 
 
 def main() -> int:
@@ -139,14 +134,9 @@ def main() -> int:
         print("BLOCKED: run inside a full Git checkout", file=sys.stderr)
         return 2
 
-    # Make deleted files reachable from remote branches/tags when the runner has permission.
     run("git", "fetch", "--all", "--tags", "--force", check=False)
-
     paths_by_oid = parse_rev_list_objects()
-    candidate_oids = sorted(
-        oid for oid, paths in paths_by_oid.items()
-        if any(likely_candidate_path(p) for p in paths)
-    )
+    candidate_oids = sorted(oid for oid, paths in paths_by_oid.items() if any(likely_candidate_path(p) for p in paths))
     meta = batch_metadata(candidate_oids)
 
     report = {
@@ -161,14 +151,13 @@ def main() -> int:
         "canonical_blob_hits": [],
         "global_audit_blob_candidates": [],
         "recovery_hint_paths": [],
+        "retaining_commits_checked": 0,
         "paired_recovery_hits": [],
         "completed_at_utc": datetime.now(timezone.utc).isoformat(),
-        "policy": "History recovery only. Exact ZIP requires immutable SHA-256. Automatic pairing requires a valid MATHBANK_FINAL_AUDIT_V2.json in the same historical commit. No source reconstruction.",
+        "policy": "History recovery only. Exact ZIP requires immutable SHA-256. Pairing checks every reachable commit retaining the exact ZIP and requires one valid MATHBANK_FINAL_AUDIT_V2.json in the same tree. No source reconstruction.",
     }
 
     exact_hits: list[tuple[str, bytes, list[str]]] = []
-    audit_blobs: dict[str, tuple[bytes, set[str]]] = {}
-
     for oid in candidate_oids:
         typ_size = meta.get(oid)
         if not typ_size or typ_size[0] != "blob":
@@ -185,47 +174,39 @@ def main() -> int:
         report["candidate_blobs_checked"] += 1
         digest = sha256_bytes(data)
         if digest == EXPECTED_SHA256:
-            hit = {"oid": oid, "sha256": digest, "bytes": len(data), "paths": paths}
-            report["canonical_blob_hits"].append(hit)
+            report["canonical_blob_hits"].append({"oid": oid, "sha256": digest, "bytes": len(data), "paths": paths})
             exact_hits.append((oid, data, paths))
         if any(Path(p).name == AUDIT_FILENAME for p in paths) and valid_json_object(data):
-            audit_blobs[oid] = (data, set(paths))
-            report["global_audit_blob_candidates"].append({
-                "oid": oid,
-                "sha256": digest,
-                "bytes": len(data),
-                "paths": paths,
-            })
+            report["global_audit_blob_candidates"].append({"oid": oid, "sha256": digest, "bytes": len(data), "paths": paths})
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     for stale in (OUT_DIR / EXPECTED_FILENAME, OUT_DIR / AUDIT_FILENAME):
         stale.unlink(missing_ok=True)
 
     for zip_oid, zip_data, zip_paths in exact_hits:
-        commits = commits_containing_change_of_object(zip_oid)
-        for commit in commits:
+        for commit in commits_retaining_blob(zip_oid, zip_paths):
+            report["retaining_commits_checked"] += 1
             entries = tree_entries(commit)
             audits: dict[str, tuple[str, bytes]] = {}
-            zip_present = False
+            if not any(oid == zip_oid for oid, _ in entries):
+                continue
             for oid, path in entries:
-                if oid == zip_oid:
-                    zip_present = True
                 if Path(path).name != AUDIT_FILENAME:
                     continue
                 try:
-                    data = git_bytes("cat-file", "blob", oid)
+                    audit_data = git_bytes("cat-file", "blob", oid)
                 except Exception:
                     continue
-                if valid_json_object(data):
-                    audits[sha256_bytes(data)] = (path, data)
-            if not zip_present or len(audits) != 1:
+                if valid_json_object(audit_data):
+                    audits[sha256_bytes(audit_data)] = (path, audit_data)
+            if len(audits) != 1:
                 continue
             audit_sha, (audit_path, audit_data) = next(iter(audits.items()))
             zip_out = OUT_DIR / EXPECTED_FILENAME
             audit_out = OUT_DIR / AUDIT_FILENAME
             zip_out.write_bytes(zip_data)
             audit_out.write_bytes(audit_data)
-            pair = {
+            report["paired_recovery_hits"].append({
                 "commit": commit,
                 "canonical_blob_oid": zip_oid,
                 "canonical_paths": zip_paths,
@@ -236,8 +217,7 @@ def main() -> int:
                 "audit_bytes": len(audit_data),
                 "canonical_output": str(zip_out),
                 "audit_output": str(audit_out),
-            }
-            report["paired_recovery_hits"].append(pair)
+            })
             break
         if report["paired_recovery_hits"]:
             break
