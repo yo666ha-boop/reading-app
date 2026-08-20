@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
-import shutil
 import tempfile
 import zipfile
 from pathlib import Path
@@ -10,6 +10,15 @@ from pathlib import Path
 from validate_app_records import main as validate_main
 
 EXPECTED = 1231
+CANONICAL_ZIP_SHA256 = "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175"
+
+
+def sha256_file(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
 
 
 def load_json_records(path: Path) -> list[dict] | None:
@@ -62,16 +71,46 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="Recover only an exact already-verified 1231-record math app dataset.")
     ap.add_argument("source", help="Canonical ZIP, JSON, or JSONL")
     ap.add_argument("--output", default=str(Path(__file__).with_name("app-records.json")))
+    ap.add_argument(
+        "--expected-zip-sha256",
+        default=CANONICAL_ZIP_SHA256,
+        help="Known final ZIP SHA-256. Enforced for ZIP input; use empty string only for a separately verified non-ZIP source.",
+    )
     args = ap.parse_args()
 
     source = Path(args.source)
     if not source.is_file():
         raise SystemExit(f"BLOCKED: source not found: {source}")
 
+    source_sha256 = sha256_file(source)
+    if source.suffix.lower() == ".zip" and args.expected_zip_sha256:
+        expected = args.expected_zip_sha256.lower().strip()
+        if source_sha256.lower() != expected:
+            print(json.dumps({
+                "status": "BLOCKED",
+                "source": str(source),
+                "reason": "ZIP_SHA256_MISMATCH",
+                "actual_sha256": source_sha256,
+                "expected_sha256": expected,
+                "policy": "do not inspect/promote a ZIP that is not the recorded final canonical artifact"
+            }, ensure_ascii=False, indent=2))
+            return 4
+
     out = Path(args.output)
     reports: list[dict] = []
     with tempfile.TemporaryDirectory() as td:
-        for p in candidate_files(source, Path(td)):
+        try:
+            candidates = candidate_files(source, Path(td))
+        except zipfile.BadZipFile as e:
+            print(json.dumps({
+                "status": "BLOCKED",
+                "source": str(source),
+                "reason": f"BAD_ZIP: {e}",
+                "source_sha256": source_sha256,
+            }, ensure_ascii=False, indent=2))
+            return 5
+
+        for p in candidates:
             rows = load_json_records(p)
             if rows is None:
                 continue
@@ -91,8 +130,11 @@ def main() -> int:
                 print(json.dumps({
                     "status": "PASS",
                     "source": str(source),
+                    "source_sha256": source_sha256,
+                    "canonical_zip_sha256_verified": source.suffix.lower() != ".zip" or source_sha256.lower() == CANONICAL_ZIP_SHA256,
                     "promoted_candidate": str(p),
                     "output": str(out),
+                    "output_sha256": sha256_file(out),
                     "records": EXPECTED,
                     "policy": "no transformation/no invented records; exact strict app-schema pass-through only"
                 }, ensure_ascii=False, indent=2))
@@ -101,6 +143,7 @@ def main() -> int:
     print(json.dumps({
         "status": "BLOCKED",
         "source": str(source),
+        "source_sha256": source_sha256,
         "reason": "No exact 1231-record candidate passed the strict app validator. No output was promoted.",
         "candidates": reports
     }, ensure_ascii=False, indent=2))
