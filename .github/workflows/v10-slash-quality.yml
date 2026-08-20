@@ -21,6 +21,8 @@ jobs:
         run: node v10_semantic_runtime_audit.js
       - name: Meaning-chunk slash quality gate
         run: node v10_slash_quality_audit.js
+      - name: Consolidated 091-168 final audit coverage
+        run: node v10_final_audit_091_168_static_test.js
       - name: Stage2 full 168 coverage
         run: node v10_stage2_full_coverage_test.js
       - name: Stage2 DOM regression
