@@ -16,6 +16,7 @@ EXPECTED_ORIGINAL_BY_SOURCE = {"Winpass": 570, "実力錬成": 237, "Standard": 
 REQUIRED_PROVENANCE = {
     "variant_id", "parent_id", "generator", "generation_method", "verification_method", "verified_at"
 }
+NUMBER_RE = re.compile(r"(?<![A-Za-z_])[-+]?\d+(?:\.\d+)?(?:/\d+(?:\.\d+)?)?")
 
 
 def fail(msg: str) -> None:
@@ -30,6 +31,11 @@ def norm_problem(v: object) -> str:
     s = text(v)
     s = re.sub(r"\s+", " ", s)
     return s.casefold()
+
+
+def numeric_tokens(v: object) -> tuple[str, ...]:
+    """Return normalized numeric literals used to reject wording-only pseudo variants."""
+    return tuple(NUMBER_RE.findall(text(v).replace("−", "-").replace("＋", "+")))
 
 
 def load_layer(path: Path) -> tuple[list[dict], list[dict], str]:
@@ -126,6 +132,7 @@ def validate_layer(
     parent_counts: defaultdict[str, int] = defaultdict(int)
     grade_counts: Counter[int] = Counter()
     unit_counts: Counter[str] = Counter()
+    wording_only_rejections = 0
 
     for r in variants:
         validate_record(r, seen)
@@ -156,6 +163,15 @@ def validate_layer(
         if sig in generated_problem_sigs:
             fail(f"{rid}: question duplicates another expanded variant")
         generated_problem_sigs.add(sig)
+
+        # If the parent contains numeric literals, a new variant must actually change at
+        # least one numeric literal. Rewording the same numbers is not a substantive
+        # mathematical variant and is rejected even when the full text differs.
+        parent_nums = numeric_tokens(parent.get("question"))
+        variant_nums = numeric_tokens(r.get("question"))
+        if parent_nums and parent_nums == variant_nums:
+            wording_only_rejections += 1
+            fail(f"{rid}: wording-only pseudo variant; numeric literals are unchanged from parent {pid}")
 
         p = prov_by_variant.get(rid)
         if not p:
@@ -198,6 +214,7 @@ def validate_layer(
         "expanded_by_grade": dict(sorted(grade_counts.items())),
         "expanded_by_unit": dict(sorted(unit_counts.items())),
         "duplicate_questions": 0,
+        "wording_only_pseudo_variants": wording_only_rejections,
         "taxonomy_mismatches": 0,
         "parent_failures": 0,
         "unverified_records": 0,
