@@ -94,5 +94,5 @@
     {en:'I want to see my friends / again.',jp:'私は友達に会いたいです / また'},{en:'This town is special / for me.',jp:'この町は特別です / 私にとって'},{en:'The party is special, too.',jp:'そのパーティーも特別です。'}
   ]);
 
-  window.V10_VOCAB_SLASH_MANUAL_061_070={passages:10,vocabAudited:10,slashAudited:10,rewritten:6,notes:0};
+  window.V10_VOCAB_SLASH_MANUAL_061_070={passages:10,vocabAudited:10,slashAudited:10,rewritten:7,notes:0};
 })();
