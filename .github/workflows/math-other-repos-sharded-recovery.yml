@@ -1,0 +1,290 @@
+name: Math Other Repos Sharded Recovery
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-other-repos-sharded-recovery.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: math-other-repos-sharded-recovery
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  scan-shard:
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - repo: yo666ha-boop/-
+            slug: shogi
+          - repo: yo666ha-boop/english-vocab-app
+            slug: english-vocab-app
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exhaustively SHA-256 check assigned blobs from target repo
+        env:
+          TARGET_REPO: ${{ matrix.target.repo }}
+          TARGET_SLUG: ${{ matrix.target.slug }}
+          SHARD_INDEX: ${{ matrix.shard }}
+          SHARD_COUNT: '16'
+        shell: bash
+        run: |
+          python - <<'PY'
+          from __future__ import annotations
+          import hashlib,json,os,sys,tempfile
+          from datetime import datetime,timezone
+          from pathlib import Path
+          sys.path.insert(0,'math-bank/app')
+          import scan_other_repos_history as core
+
+          repo=os.environ['TARGET_REPO']; slug=os.environ['TARGET_SLUG']
+          shard=int(os.environ['SHARD_INDEX']); count=int(os.environ['SHARD_COUNT'])
+          out=Path(f'math-bank/state/other-repos-history-shards/{slug}-shard-{shard:02d}.json')
+          rec=Path(f'math-bank/recovered-other-repos-shards/{slug}-shard-{shard:02d}')
+          rec.mkdir(parents=True,exist_ok=True)
+          report={
+            'scan':'other_owned_repo_exhaustive_sha256_shard','repo':repo,'slug':slug,
+            'shard_count':count,'shard_index':shard,'expected_sha256':core.EXPECTED_SHA256,
+            'reachable_objects':0,'reachable_blobs':0,'readable_blob_oids_total':0,
+            'assigned_blob_oids':0,'sha256_checked':0,'bytes_hashed':0,'oversize_skipped_total':0,
+            'canonical_hits':[],'lfs_pointer_hits':[],'audit_blob_candidates':[],
+            'paired_recovery_hits':[],'ref_fetch':{},'completed_at_utc':None,
+            'policy':'Across all 16 shards every readable reachable blob is assigned exactly once. Exact canonical SHA plus one valid same-tree final audit only; no reconstruction.'
+          }
+          with tempfile.TemporaryDirectory() as td:
+            work=Path(td)/'repo'
+            clone=core.run(['git','clone','--no-checkout',f'https://github.com/{repo}.git',str(work)],check=False)
+            report['clone_rc']=clone.returncode
+            if clone.returncode:
+              report['clone_error']=clone.stderr[-1000:]
+            else:
+              item={}
+              core.fetch_visible_refs(work,item)
+              report['ref_fetch']=item.get('ref_fetch',{})
+              report['remote_branches']=item.get('remote_branches')
+              report['tags']=item.get('tags')
+              report['pull_head_refs']=item.get('pull_head_refs')
+              report['pull_merge_refs']=item.get('pull_merge_refs')
+              paths=core.rev_objects(work); oids=sorted(paths); meta=core.batch_meta(work,oids)
+              blobs=[oid for oid in oids if meta.get(oid,(None,0))[0]=='blob']
+              readable=[oid for oid in blobs if meta[oid][1] <= core.MAX_BLOB_BYTES]
+              assigned=[oid for pos,oid in enumerate(readable) if pos % count == shard]
+              report['reachable_objects']=len(oids); report['reachable_blobs']=len(blobs)
+              report['readable_blob_oids_total']=len(readable); report['assigned_blob_oids']=len(assigned)
+              report['oversize_skipped_total']=len(blobs)-len(readable)
+              exact=[]; lfs=[]
+              with core.BlobBatchReader(work) as reader:
+                for oid in assigned:
+                  data=reader.read(oid); digest=hashlib.sha256(data).hexdigest()
+                  report['sha256_checked']+=1; report['bytes_hashed']+=len(data)
+                  pths=sorted(paths.get(oid,set()))
+                  if digest==core.EXPECTED_SHA256:
+                    report['canonical_hits'].append({'oid':oid,'paths':pths,'bytes':len(data)})
+                    exact.append((oid,data))
+                  pointer=core.parse_lfs_pointer(data)
+                  if pointer and pointer[0]==core.EXPECTED_SHA256:
+                    report['lfs_pointer_hits'].append({'oid':oid,'paths':pths,'lfs_size':pointer[1]})
+                    lfs.append(oid)
+                  if any(Path(p).name==core.AUDIT_FILENAME for p in pths) and core.valid_audit(data):
+                    report['audit_blob_candidates'].append({'oid':oid,'paths':pths,'sha256':digest,'bytes':len(data)})
+              pair=None
+              for oid,data in exact:
+                pair=core.find_pair(work,oid,data)
+                if pair: break
+              if pair is None and lfs:
+                lfs_data=core.recover_lfs(work)
+                if lfs_data is not None:
+                  for oid in lfs:
+                    pair=core.find_pair(work,oid,lfs_data,lfs_pointer=True)
+                    if pair: break
+              if pair:
+                z=pair.pop('zip_data'); a=pair.pop('audit_data')
+                zp=rec/core.EXPECTED_FILENAME; ap=rec/core.AUDIT_FILENAME
+                zp.write_bytes(z); ap.write_bytes(a)
+                pair.update({'repo':repo,'canonical_output':str(zp),'audit_output':str(ap)})
+                report['paired_recovery_hits'].append(pair)
+          report['completed_at_utc']=datetime.now(timezone.utc).isoformat()
+          out.parent.mkdir(parents=True,exist_ok=True)
+          out.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          if report.get('clone_rc') not in (0,None): raise SystemExit(2)
+          if report['sha256_checked'] != report['assigned_blob_oids']:
+            raise SystemExit('FAIL assigned blob coverage incomplete')
+          PY
+      - name: Upload shard evidence and any recovered exact pair
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-other-repo-${{ matrix.target.slug }}-shard-${{ matrix.shard }}
+          path: |
+            math-bank/state/other-repos-history-shards/
+            math-bank/recovered-other-repos-shards/
+          if-no-files-found: warn
+          retention-days: 30
+
+  aggregate-and-complete:
+    if: always()
+    needs: scan-shard
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Download all other-repo shard evidence
+        uses: actions/download-artifact@v4
+        with:
+          pattern: math-other-repo-*-shard-*
+          path: /tmp/math-other-shards
+          merge-multiple: true
+      - name: Verify exhaustive coverage and normalize exact pair
+        id: aggregate
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import hashlib,json,shutil,sys
+          from pathlib import Path
+          from datetime import datetime,timezone
+          expected='eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175'
+          objs=[]
+          for p in sorted(Path('/tmp/math-other-shards').rglob('*-shard-*.json')):
+            try: objs.append(json.loads(p.read_text(encoding='utf-8')))
+            except Exception: pass
+          repo_summaries=[]; complete=True
+          for repo,slug in [('yo666ha-boop/-','shogi'),('yo666ha-boop/english-vocab-app','english-vocab-app')]:
+            rs=[x for x in objs if x.get('repo')==repo]
+            indexes=sorted({x.get('shard_index') for x in rs if isinstance(x.get('shard_index'),int)})
+            totals={x.get('readable_blob_oids_total') for x in rs}
+            readable=next(iter(totals)) if len(totals)==1 else None
+            assigned=sum(int(x.get('assigned_blob_oids') or 0) for x in rs)
+            checked=sum(int(x.get('sha256_checked') or 0) for x in rs)
+            ok=(indexes==list(range(16)) and readable is not None and assigned==readable and checked==readable)
+            complete=complete and ok
+            repo_summaries.append({
+              'repo':repo,'slug':slug,'shards_completed':len(indexes),'shard_indexes':indexes,
+              'readable_blob_oids_total':readable,'assigned_blob_oids_total':assigned,
+              'sha256_checked':checked,'bytes_hashed':sum(int(x.get('bytes_hashed') or 0) for x in rs),
+              'canonical_hits':sum(len(x.get('canonical_hits') or []) for x in rs),
+              'lfs_pointer_hits':sum(len(x.get('lfs_pointer_hits') or []) for x in rs),
+              'paired_recovery_hits':sum(len(x.get('paired_recovery_hits') or []) for x in rs),
+              'exact_coverage_complete':ok
+            })
+          dest=Path('math-bank/recovered-other-repos'); dest.mkdir(parents=True,exist_ok=True)
+          zp=dest/'みかみ塾数学問題バンク_最終完成版_20260820.zip'; ap=dest/'MATHBANK_FINAL_AUDIT_V2.json'
+          zp.unlink(missing_ok=True); ap.unlink(missing_ok=True); pair_source=None
+          for z in Path('/tmp/math-other-shards').rglob('みかみ塾数学問題バンク_最終完成版_20260820.zip'):
+            a=z.with_name('MATHBANK_FINAL_AUDIT_V2.json')
+            if a.is_file() and hashlib.sha256(z.read_bytes()).hexdigest()==expected:
+              shutil.copy2(z,zp); shutil.copy2(a,ap); pair_source=str(z); break
+          pair_found=zp.is_file() and ap.is_file()
+          summary={
+            'workflow':'Math Other Repos Sharded Recovery','recorded_at_utc':datetime.now(timezone.utc).isoformat(),
+            'exact_coverage_complete':complete,'repos':repo_summaries,'canonical_pair_found':pair_found,
+            'pair_source':pair_source,'expected_sha256':expected,
+            'policy':'Exact SHA plus valid same-tree final audit only; no reconstruction.'
+          }
+          Path('/tmp/math-other-shards-summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(f'coverage_complete={str(complete).lower()}')
+          print(f'pair_found={str(pair_found).lower()}')
+          print(json.dumps(summary,ensure_ascii=False,indent=2),file=sys.stderr)
+          if not complete: raise SystemExit('FAIL other-repo exhaustive shard coverage incomplete')
+          PY
+      - name: Atomic exact canonical wiring
+        if: steps.aggregate.outputs.pair_found == 'true'
+        id: wiring
+        shell: bash
+        run: |
+          set +e
+          python math-bank/app/complete_from_exact_canonical.py \
+            'math-bank/recovered-other-repos/みかみ塾数学問題バンク_最終完成版_20260820.zip' \
+            'math-bank/recovered-other-repos/MATHBANK_FINAL_AUDIT_V2.json'
+          rc=$?
+          set -e
+          if [ "$rc" -eq 0 ]; then
+            echo 'wiring_ready=true' >> "$GITHUB_OUTPUT"
+          elif [ "$rc" -eq 3 ]; then
+            echo 'wiring_ready=false' >> "$GITHUB_OUTPUT"
+            echo 'EXACT_PAIR_FOUND_BUT_VERIFIED_METADATA_REQUIRED; no inference.'
+          else
+            exit "$rc"
+          fi
+      - name: Install real browser engines after successful wiring
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Start isolated canonical app server
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: |
+          python3 -m http.server 8770 --bind 127.0.0.1 --directory math-bank/app >/tmp/math-other-shard-real-http.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8770/index.html >/dev/null && exit 0; sleep 1; done
+          cat /tmp/math-other-shard-real-http.log
+          exit 1
+      - name: Full real 1231 four-browser and A4 regression
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        env:
+          MATH_APP_BASE_URL: http://127.0.0.1:8770/index.html
+          MATH_REAL_DATA_PATH: math-bank/app/app-records.json
+          MATH_REAL_BROWSER_REPORT: math-bank/state/browser-real-regression-latest.json
+          MATH_REAL_PDF_DIR: math-bank/state/real-print-regression
+        run: node math-bank/app/browser_real_regression.mjs
+      - name: Strict release and publication readiness
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: |
+          python math-bank/app/build_release_bundle.py
+          python math-bank/app/verify_publish_readiness.py --pdf-root math-bank/state/real-print-regression
+      - name: Upload aggregate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-other-repos-sharded-recovery-summary
+          path: |
+            /tmp/math-other-shards-summary.json
+            math-bank/recovered-other-repos/
+            math-bank/state/canonical-inspection-latest.json
+            math-bank/state/canonical-mapping-evidence-latest.json
+            math-bank/state/canonical-completion-latest.json
+            math-bank/state/browser-real-regression-latest.json
+            math-bank/state/real-print-regression/
+            math-bank/みかみ塾数学問題アプリ_公開候補.zip
+            math-bank/release/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Persist aggregate terminal state race-safely
+        if: always()
+        run: |
+          mkdir -p /tmp/math-other-shard-state
+          cp /tmp/math-other-shards-summary.json /tmp/math-other-shard-state/other-repos-history-sharded-recovery-latest.json 2>/dev/null || true
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin math-problem-bank-bootstrap
+          git reset --hard origin/math-problem-bank-bootstrap
+          mkdir -p math-bank/state
+          cp /tmp/math-other-shard-state/*.json math-bank/state/ 2>/dev/null || true
+          git add math-bank/state/other-repos-history-sharded-recovery-latest.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'record exhaustive sharded other-repo math recovery state'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
