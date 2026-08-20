@@ -10,13 +10,13 @@ permissions:
 jobs:
   slash-quality:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install --no-save --no-package-lock jsdom@24.1.3
+      - run: npm install --no-save --no-package-lock jsdom@24.1.3 playwright@1.55.0
       - name: Existing semantic runtime regression
         run: node v10_semantic_runtime_audit.js
       - name: Meaning-chunk slash quality gate
@@ -27,3 +27,9 @@ jobs:
         run: node v10_stage2_full_coverage_test.js
       - name: Stage2 DOM regression
         run: node v10_stage2_dom_test.js
+      - name: Install browser engines
+        run: |
+          npx playwright install-deps chromium firefox webkit
+          npx playwright install chromium firefox webkit
+      - name: Cross-browser and print validation
+        run: node v10_final_browser_print_test.js
