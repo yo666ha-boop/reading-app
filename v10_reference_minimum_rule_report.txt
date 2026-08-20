@@ -1,87 +1,48 @@
 REFERENCE MINIMUM RULE AUDIT passages=168/168 rows=1854 reference_marked=165/168 slashes=1776 unsplit_rows=624 stale=3
 STALE REFERENCE PASSAGES: 53,141,145
-REFERENCE MINIMUM RULE FAIL 84
+REFERENCE MINIMUM RULE FAIL 45
 - STALE_REFERENCE_PASSAGES 53,141,145
-- 1|サンシャイン|PROGRAM 3-3#3: BOUNDARY_BEFORE_SO_MISSED :: I am so excited.
-- 1|サンシャイン|PROGRAM 4-2#6: BOUNDARY_BEFORE_AND_MISSED :: He is / on the track and field team.
-- 1|サンシャイン|PROGRAM 4-2#10: BOUNDARY_BEFORE_AND_MISSED :: Is he / on the track and field team?
-- 1|サンシャイン|PROGRAM 7-3#3: BOUNDARY_BEFORE_AROUND_MISSED :: My friend can show me around.
-- 1|サンシャイン|PROGRAM 8-3#4: BOUNDARY_BEFORE_OF_MISSED :: We are / in front of a food stand.
-- 1|サンシャイン|Step 6 / Our Project 3 / Power-Up 6#1: COMMA_BOUNDARY_MISSED :: Dear Anna,
-- 1|サンシャイン|Step 6 / Our Project 3 / Power-Up 6#13: COMMA_BOUNDARY_MISSED :: Best wishes,
-- 1|ニューホライズン|Unit 1-3#8: BOUNDARY_BEFORE_ABOUT_MISSED :: How about you?
-- 1|ニューホライズン|Unit 5-2#2: BOUNDARY_BEFORE_ABOUT_MISSED :: The blog is about his life.
+- 1|サンシャイン|PROGRAM 3-3#3: CONJUNCTION_BOUNDARY_BEFORE_SO_MISSED :: I am so excited.
+- 1|ニューホライズン|Unit 5-2#2: PREPOSITION_BOUNDARY_BEFORE_ABOUT_MISSED :: The blog is about his life.
 - 1|ニューホライズン|Unit 5-2#5: COMMA_BOUNDARY_MISSED :: Yes, he does.
-- 1|ニューホライズン|Unit 5-2#6: BOUNDARY_BEFORE_IN_MISSED :: The dolphin is in the water.
-- 1|ニューホライズン|Unit 5-2#9: BOUNDARY_BEFORE_ABOUT_MISSED :: Does he write about the dolphin?
+- 1|ニューホライズン|Unit 5-2#6: PREPOSITION_BOUNDARY_BEFORE_IN_MISSED :: The dolphin is in the water.
+- 1|ニューホライズン|Unit 5-2#9: PREPOSITION_BOUNDARY_BEFORE_ABOUT_MISSED :: Does he write about the dolphin?
 - 1|ニューホライズン|Unit 5-2#10: COMMA_BOUNDARY_MISSED :: Yes, he does.
-- 1|ニューホライズン|Unit 5-3#5: BOUNDARY_BEFORE_OF_MISSED :: A fried egg is / on top of the dish.
-- 2|サンシャイン|PROGRAM 4-2#3: BOUNDARY_BEFORE_OF_MISSED :: First of all, / we must protect the forest.
-- 2|サンシャイン|PROGRAM 4-3#3: BOUNDARY_BEFORE_OF_MISSED :: First of all, / we must be / on time.
-- 2|サンシャイン|PROGRAM 5-3#9: BOUNDARY_BEFORE_WHILE_MISSED :: After a while, / I finish my work.
-- 2|サンシャイン|PROGRAM 7-3#11: BOUNDARY_BEFORE_NEAR_MISSED :: Though an enemy is near, / it can stay safe there.
-- 2|サンシャイン|PROGRAM 7-3#13: BOUNDARY_BEFORE_AT_MISSED :: Its activity is different / in the daytime / and at nighttime.
-- 2|サンシャイン|PROGRAM 8-2#5: BOUNDARY_BEFORE_SO_MISSED :: The story is so sad / that we are quiet.
-- 2|サンシャイン|PROGRAM 8-3#4: BOUNDARY_BEFORE_SO_MISSED :: The tin is so thin / that we can fold it.
-- 2|ニューホライズン|Unit 1-1#6: BOUNDARY_BEFORE_AROUND_MISSED :: My friend is going / to show me around the city.
-- 2|ニューホライズン|Unit 3-4#1: COMMA_BOUNDARY_MISSED :: Dear Ms. Brown,
-- 2|ニューホライズン|Unit 3-4#9: BOUNDARY_BEFORE_ON_MISSED :: From now on, / I will practice every day.
-- 2|ニューホライズン|Unit 3-4#12: COMMA_BOUNDARY_MISSED :: Sincerely yours,
-- 2|ニューホライズン|Unit 4-2#3: RELATIVE_OR_CONTENT_THAT_BOUNDARY_MISSED :: For that reason, / I must take a short shower.
-- 2|ニューホライズン|Unit 4-2#7: TOO_FEW_SLASHES_LONG_SENTENCE words=10 :: My host explains how long I can use the shower.
-- 2|ニューホライズン|Unit 4-4#2: BOUNDARY_BEFORE_ON_MISSED :: On the first evening, / I entered the house / with my shoes on.
-- 2|ニューホライズン|Unit 4-4#10: RELATIVE_OR_CONTENT_THAT_BOUNDARY_MISSED :: After that, / I followed the rule every day.
-- 2|ニューホライズン|Unit 6-1#6: RELATIVE_BOUNDARY_BEFORE_WHICH_MISSED :: I ask, / “Which court is longer?”
-- 2|ニューホライズン|Unit 6-2#2: RELATIVE_BOUNDARY_BEFORE_WHICH_MISSED :: We ask one question: “Which sport do you like best?”
-- 2|ニューホライズン|Unit 6-2#2: TOO_FEW_SLASHES_LONG_SENTENCE words=10 :: We ask one question: “Which sport do you like best?”
-- 2|ニューホライズン|Unit 6-2#8: RELATIVE_BOUNDARY_BEFORE_WHICH_MISSED :: We do not say which sport needs the most skill.
-- 2|ニューホライズン|Unit 6-2#8: TOO_FEW_SLASHES_LONG_SENTENCE words=10 :: We do not say which sport needs the most skill.
-- 2|ニューホライズン|Unit 7-1#6: TOO_FEW_SLASHES_LONG_SENTENCE words=12 :: This natural value is one reason the site may meet a standard.
-- 3|サンシャイン|PROGRAM 1-3#5: TOO_FEW_SLASHES_LONG_SENTENCE words=10 :: “Have you ever eaten a very colorful bento?” I ask.
-- 3|サンシャイン|PROGRAM 2-1#7: BOUNDARY_BEFORE_AT_MISSED :: Take at least a few minutes / to relax quietly.
-- 3|サンシャイン|PROGRAM 3-1#8: RELATIVE_BOUNDARY_BEFORE_WHOSE_MISSED :: Someone asks, / “Whose picture is the kangaroo?”
-- 3|サンシャイン|PROGRAM 3-1#10: RELATIVE_BOUNDARY_BEFORE_WHICH_MISSED :: We talk / about which mascot fits the event best.
-- 3|サンシャイン|PROGRAM 6-1#6: BOUNDARY_BEFORE_BEHIND_MISSED :: A net left behind can hurt / or kill an animal.
-- 3|サンシャイン|PROGRAM 6-1#11: BOUNDARY_BEFORE_BEHIND_MISSED :: We talk / about how / to leave less plastic behind.
-- 3|サンシャイン|PROGRAM 7-1#1: BOUNDARY_BEFORE_AND_MISSED :: A patient has a disease and must stay / in his hospital room.
-- 3|サンシャイン|PROGRAM 7-1#3: BOUNDARY_BEFORE_WITH_MISSED :: The patient can control the robot with a computer through a network.
-- 3|サンシャイン|PROGRAM 7-1#3: BOUNDARY_BEFORE_THROUGH_MISSED :: The patient can control the robot with a computer through a network.
-- 3|サンシャイン|PROGRAM 7-1#3: TOO_FEW_SLASHES_LONG_SENTENCE words=12 :: The patient can control the robot with a computer through a network.
+- 2|サンシャイン|PROGRAM 7-3#13: PREPOSITION_BOUNDARY_BEFORE_AT_MISSED :: Its activity is different / in the daytime / and at nighttime.
+- 3|サンシャイン|PROGRAM 2-1#7: PREPOSITION_BOUNDARY_BEFORE_AT_MISSED :: Take at least a few minutes / to relax quietly.
+- 3|サンシャイン|PROGRAM 6-1#11: PREPOSITION_BOUNDARY_BEFORE_BEHIND_MISSED :: We talk / about how / to leave less plastic behind.
+- 3|サンシャイン|PROGRAM 7-1#1: CONJUNCTION_BOUNDARY_BEFORE_AND_MISSED :: A patient has a disease and must stay / in his hospital room.
+- 3|サンシャイン|PROGRAM 7-1#3: PREPOSITION_BOUNDARY_BEFORE_WITH_MISSED :: The patient can control the robot with a computer through a network.
+- 3|サンシャイン|PROGRAM 7-1#3: PREPOSITION_BOUNDARY_BEFORE_THROUGH_MISSED :: The patient can control the robot with a computer through a network.
 - 3|サンシャイン|PROGRAM 7-1#4: COMMA_BOUNDARY_MISSED :: One day, the robot visits a museum far away.
-- 3|サンシャイン|PROGRAM 7-1#5: BOUNDARY_BEFORE_AND_MISSED :: The patient watches the museum / from his room and talks with a guide.
-- 3|サンシャイン|PROGRAM 7-1#5: BOUNDARY_BEFORE_WITH_MISSED :: The patient watches the museum / from his room and talks with a guide.
-- 3|サンシャイン|PROGRAM 7-1#6: BOUNDARY_BEFORE_AND_MISSED :: He can move the robot and look / around the room.
-- 3|サンシャイン|PROGRAM 7-1#7: BOUNDARY_BEFORE_AS_MISSED :: For a short time, / he feels as if he is visiting the museum himself.
-- 3|サンシャイン|PROGRAM 7-1#7: BOUNDARY_BEFORE_IF_MISSED :: For a short time, / he feels as if he is visiting the museum himself.
-- 3|サンシャイン|PROGRAM 7-1#8: BOUNDARY_BEFORE_TO_MISSED :: He imagines using the robot to visit another place abroad someday.
-- 3|サンシャイン|PROGRAM 7-1#8: TOO_FEW_SLASHES_LONG_SENTENCE words=11 :: He imagines using the robot to visit another place abroad someday.
+- 3|サンシャイン|PROGRAM 7-1#5: CONJUNCTION_BOUNDARY_BEFORE_AND_MISSED :: The patient watches the museum / from his room and talks with a guide.
+- 3|サンシャイン|PROGRAM 7-1#5: PREPOSITION_BOUNDARY_BEFORE_WITH_MISSED :: The patient watches the museum / from his room and talks with a guide.
+- 3|サンシャイン|PROGRAM 7-1#6: CONJUNCTION_BOUNDARY_BEFORE_AND_MISSED :: He can move the robot and look / around the room.
+- 3|サンシャイン|PROGRAM 7-1#7: PREPOSITION_BOUNDARY_BEFORE_AS_MISSED :: For a short time, / he feels as if he is visiting the museum himself.
+- 3|サンシャイン|PROGRAM 7-1#8: PREPOSITION_BOUNDARY_BEFORE_TO_MISSED :: He imagines using the robot to visit another place abroad someday.
 - 3|サンシャイン|PROGRAM 7-1#9: COMMA_BOUNDARY_MISSED :: Probably, the project can help other patients too.
-- 3|サンシャイン|PROGRAM 7-1#10: BOUNDARY_BEFORE_THROUGH_MISSED :: A dream that once felt far away may come true through the robot.
-- 3|サンシャイン|PROGRAM 7-1#10: TOO_FEW_SLASHES_LONG_SENTENCE words=13 :: A dream that once felt far away may come true through the robot.
-- 3|サンシャイン|PROGRAM 7-1#11: BOUNDARY_BEFORE_TO_MISSED :: The project gives the patient a new way to connect with the world.
-- 3|サンシャイン|PROGRAM 7-1#11: BOUNDARY_BEFORE_WITH_MISSED :: The project gives the patient a new way to connect with the world.
-- 3|サンシャイン|PROGRAM 7-1#11: TOO_FEW_SLASHES_LONG_SENTENCE words=13 :: The project gives the patient a new way to connect with the world.
-- 3|ニューホライズン|Unit 1-1#1: BOUNDARY_BEFORE_AND_MISSED :: My friend and I compare places we have visited in Japan.
-- 3|ニューホライズン|Unit 1-1#1: BOUNDARY_BEFORE_IN_MISSED :: My friend and I compare places we have visited in Japan.
-- 3|ニューホライズン|Unit 1-1#1: TOO_FEW_SLASHES_LONG_SENTENCE words=11 :: My friend and I compare places we have visited in Japan.
-- 3|ニューホライズン|Unit 1-1#2: BOUNDARY_BEFORE_TO_MISSED :: I have been to Kyoto once.
-- 3|ニューホライズン|Unit 1-1#3: BOUNDARY_BEFORE_TO_MISSED :: My friend has been to Kyoto too.
-- 3|ニューホライズン|Unit 1-1#4: BOUNDARY_BEFORE_TO_MISSED :: I have also been to Osaka twice.
-- 3|ニューホライズン|Unit 1-1#5: BOUNDARY_BEFORE_TO_MISSED :: My friend has never been to Hokkaido.
-- 3|ニューホライズン|Unit 1-1#7: BOUNDARY_BEFORE_ABOUT_MISSED :: We talk about what we enjoyed in Kyoto and Osaka.
-- 3|ニューホライズン|Unit 1-1#7: BOUNDARY_BEFORE_IN_MISSED :: We talk about what we enjoyed in Kyoto and Osaka.
-- 3|ニューホライズン|Unit 1-1#7: BOUNDARY_BEFORE_AND_MISSED :: We talk about what we enjoyed in Kyoto and Osaka.
-- 3|ニューホライズン|Unit 1-1#7: TOO_FEW_SLASHES_LONG_SENTENCE words=10 :: We talk about what we enjoyed in Kyoto and Osaka.
-- 3|ニューホライズン|Unit 1-1#8: BOUNDARY_BEFORE_AT_MISSED :: Then we look at a picture of Hokkaido.
-- 3|ニューホライズン|Unit 1-1#8: BOUNDARY_BEFORE_OF_MISSED :: Then we look at a picture of Hokkaido.
-- 3|ニューホライズン|Unit 1-1#9: BOUNDARY_BEFORE_TO_MISSED :: “Have you ever wanted to go there?” I ask.
-- 3|ニューホライズン|Unit 1-1#11: BOUNDARY_BEFORE_OF_MISSED :: Because neither of us has been there, / we choose Hokkaido as our next trip.
-- 3|ニューホライズン|Unit 1-1#11: BOUNDARY_BEFORE_AS_MISSED :: Because neither of us has been there, / we choose Hokkaido as our next trip.
-- 3|ニューホライズン|Unit 1-2#7: BOUNDARY_BEFORE_WHEN_MISSED :: He explains when people wear it / and why he found it interesting.
-- 3|ニューホライズン|Unit 2-2#3: TOO_FEW_SLASHES_LONG_SENTENCE words=10 :: I ask how long she has used this recycling idea.
-- 3|ニューホライズン|Unit 4-1#8: BOUNDARY_BEFORE_TO_MISSED :: After every item is checked, / we put the map / and checklist / in an easy-to-find place.
-- 3|ニューホライズン|Unit 5-3#7: BOUNDARY_BEFORE_AFTER_MISSED :: Even after his release, / he continued / to defend free speech / and equal treatment.
-- 3|ニューホライズン|Unit 6-2#7: BOUNDARY_BEFORE_TO_MISSED :: We send the backpack / through the program / rather / than to an unknown person.
-- 3|ニューホライズン|Unit 6-3#9: TOO_FEW_SLASHES_LONG_SENTENCE words=10 :: A teacher there will decide how the books are used.
+- 3|サンシャイン|PROGRAM 7-1#10: RELATIVE_OR_CONTENT_THAT_BOUNDARY_MISSED :: A dream that once felt far away may come true through the robot.
+- 3|サンシャイン|PROGRAM 7-1#10: PREPOSITION_BOUNDARY_BEFORE_THROUGH_MISSED :: A dream that once felt far away may come true through the robot.
+- 3|サンシャイン|PROGRAM 7-1#11: PREPOSITION_BOUNDARY_BEFORE_TO_MISSED :: The project gives the patient a new way to connect with the world.
+- 3|サンシャイン|PROGRAM 7-1#11: PREPOSITION_BOUNDARY_BEFORE_WITH_MISSED :: The project gives the patient a new way to connect with the world.
+- 3|ニューホライズン|Unit 0#5: RELATIVE_OR_CONTENT_THAT_BOUNDARY_MISSED :: I did not know that / before.
+- 3|ニューホライズン|Unit 1-1#1: CONJUNCTION_BOUNDARY_BEFORE_AND_MISSED :: My friend and I compare places we have visited in Japan.
+- 3|ニューホライズン|Unit 1-1#1: PREPOSITION_BOUNDARY_BEFORE_IN_MISSED :: My friend and I compare places we have visited in Japan.
+- 3|ニューホライズン|Unit 1-1#2: PREPOSITION_BOUNDARY_BEFORE_TO_MISSED :: I have been to Kyoto once.
+- 3|ニューホライズン|Unit 1-1#3: PREPOSITION_BOUNDARY_BEFORE_TO_MISSED :: My friend has been to Kyoto too.
+- 3|ニューホライズン|Unit 1-1#4: PREPOSITION_BOUNDARY_BEFORE_TO_MISSED :: I have also been to Osaka twice.
+- 3|ニューホライズン|Unit 1-1#5: PREPOSITION_BOUNDARY_BEFORE_TO_MISSED :: My friend has never been to Hokkaido.
+- 3|ニューホライズン|Unit 1-1#7: PREPOSITION_BOUNDARY_BEFORE_ABOUT_MISSED :: We talk about what we enjoyed in Kyoto and Osaka.
+- 3|ニューホライズン|Unit 1-1#7: PREPOSITION_BOUNDARY_BEFORE_IN_MISSED :: We talk about what we enjoyed in Kyoto and Osaka.
+- 3|ニューホライズン|Unit 1-1#7: CONJUNCTION_BOUNDARY_BEFORE_AND_MISSED :: We talk about what we enjoyed in Kyoto and Osaka.
+- 3|ニューホライズン|Unit 1-1#8: PREPOSITION_BOUNDARY_BEFORE_AT_MISSED :: Then we look at a picture of Hokkaido.
+- 3|ニューホライズン|Unit 1-1#8: PREPOSITION_BOUNDARY_BEFORE_OF_MISSED :: Then we look at a picture of Hokkaido.
+- 3|ニューホライズン|Unit 1-1#9: PREPOSITION_BOUNDARY_BEFORE_TO_MISSED :: “Have you ever wanted to go there?” I ask.
+- 3|ニューホライズン|Unit 1-1#11: PREPOSITION_BOUNDARY_BEFORE_OF_MISSED :: Because neither of us has been there, / we choose Hokkaido as our next trip.
+- 3|ニューホライズン|Unit 1-1#11: PREPOSITION_BOUNDARY_BEFORE_AS_MISSED :: Because neither of us has been there, / we choose Hokkaido as our next trip.
+- 3|ニューホライズン|Unit 1-2#7: CONJUNCTION_BOUNDARY_BEFORE_WHEN_MISSED :: He explains when people wear it / and why he found it interesting.
+- 3|ニューホライズン|Unit 4-1#8: PREPOSITION_BOUNDARY_BEFORE_TO_MISSED :: After every item is checked, / we put the map / and checklist / in an easy-to-find place.
+- 3|ニューホライズン|Unit 5-3#7: PREPOSITION_BOUNDARY_BEFORE_AFTER_MISSED :: Even after his release, / he continued / to defend free speech / and equal treatment.
+- 3|ニューホライズン|Unit 6-2#7: PREPOSITION_BOUNDARY_BEFORE_TO_MISSED :: We send the backpack / through the program / rather / than to an unknown person.
 - BROWSER Uncaught [Error: Row mismatch 53]
 - BROWSER Uncaught [Error: English mismatch 141#9: Probably, the project can help other patients, too. <> Probably, the project can help other patients too.]
