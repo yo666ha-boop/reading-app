@@ -3,11 +3,7 @@
   "mode": "BASE_CANONICAL_PLUS_VERIFIED_EXPANDED_VARIANTS",
   "goal": "全1124原問題に最低1問の新規検証済み類題を追加し、安全な決定論的問題は2〜3問へ拡張して数学プリント作成アプリへ接続する",
   "base_original_target": 1124,
-  "base_original_by_source": {
-    "Winpass": 570,
-    "実力錬成": 237,
-    "Standard": 317
-  },
+  "base_original_by_source": {"Winpass": 570, "実力錬成": 237, "Standard": 317},
   "baseline_verified_variants": 107,
   "expanded_verified_variants": 0,
   "expanded_parent_coverage": 0,
@@ -18,34 +14,24 @@
     "algorithm": "sha256(canonical-json-sort-keys)",
     "queue_field": "parent_record_sha256",
     "provenance_field": "parent_record_sha256",
-    "validator_enforcement": "required_nonblank_and_exact_match_to_current_verified_parent_record",
-    "negative_tests": [
-      "stale_or_changed_parent_record_sha256_rejected",
-      "missing_parent_record_sha256_rejected"
-    ],
-    "purpose": "Bind every generated variant from parent-first queue through final publication validation to the exact verified parent record actually read."
+    "validator_enforcement": "required_nonblank_and_exact_match_to_current_verified_parent_record"
   },
   "base_canonical_zip_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "base_canonical_pair_recovered": false,
   "app_dynamic_expansion_gate": "PASS",
   "expanded_validator": "PASS_POSITIVE_NEGATIVE_TESTS",
-  "expanded_composer": "IMPLEMENTED",
-  "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_TESTS",
-  "validator_test_status": "PASS_EXPANDED_WORKFLOW_AFTER_PARENT_FINGERPRINT_PUBLICATION_GATE",
-  "synthetic_browser_expansion_fixture": "READY_1124_ORIGINAL_110_VARIANT_TOTAL_1234",
-  "latest_implementation_commits": {
-    "validator_surface_change_gate": "646b434af4bb5c54159f7475cf4128bfcaf66d00",
-    "validator_negative_test": "5f2026c0b10e99dbc5c855ad25d81449f97d997f",
-    "browser_fixture_fix": "8683711f35969cef573639387187f62ccafe145f",
-    "generation_queue_builder": "b16e8e1f0637e5fb709c6f9f2e5bc02b5e615fd5",
-    "expanded_ci_and_queue_test": "2af5d618e0dfa50bfbf59c950638e925f2cc784e",
-    "parent_fingerprint_queue": "986d460bd8e0f3eec97a71edc743bcd9f1892ee4",
-    "parent_fingerprint_test": "a73b1a73655aeb95773213904708b4e46dd36107",
-    "publication_parent_fingerprint_validator": "1ad63a78390c38e2ca91e5e97309cc18f16f66c1",
-    "publication_parent_fingerprint_negative_tests": "3a300bc7a3fcbf5535bb20ec16fb5aa52df10e63",
-    "validator_contract_token_followup": "d25ed6c81443bae65a5ebb2aa0341bf3e92ccbdf",
-    "shared_fingerprint_queue_implementation": "fe0a59771db20a0f1da582f761bcb5d78076cda9",
-    "expanded_workflow_state_commit_after_gate": "9dbeb87ab568b08ef96d8c040c0e7e2a365f6db6"
+  "expanded_composer": "IMPLEMENTED_WITH_IMMUTABLE_BASE_SNAPSHOT",
+  "dynamic_release_contract": {
+    "status": "IMPLEMENTED_SOURCE_AND_CI_GATE_ADDED_AWAITING_LATEST_RUN_CONFIRMATION",
+    "base_snapshot": "math-bank/app/base-app-records.json",
+    "runtime_composition": "BASE + verified-expanded-variants",
+    "canonical_provenance_validates_base_snapshot": true,
+    "expanded_provenance_validates_dynamic_layer": true,
+    "full_1124_parent_coverage_required": true,
+    "minimum_expanded_variants": 1124,
+    "fixed_release_total_1231_removed": true,
+    "fixed_publication_variant_107_removed": true,
+    "implementation_commits": ["9cee05b87e9a2696f72f9e05d97ca90b0d6fc14d","f6f8812f400ea096a51c25ff06f2e1d809c7c01d","b1aedc6a458e49bbb6c16bf7ee1c47a5a457074b","aa337bf3b5f3d3c4f45b8bdc557ba724cdd9bc0f"]
   },
   "base_recovery": {
     "actions_artifacts_seen": 134,
@@ -55,23 +41,17 @@
     "actions_canonical_hits": 0,
     "actions_valid_audit_hits": 0,
     "actions_pair_hits": 0,
-    "latest_auto_complete_run_id": 32383596244,
-    "latest_auto_complete_result": "cancelled_not_negative_evidence",
-    "latest_auto_complete_triggering_sha": "9f7192917d6614adb2e7cd8e38026755aecf9993",
     "git_history_exact_coverage_complete": false,
-    "git_history_pair_hits": 0,
-    "release_pair_hits": 0,
     "policy": "cancelled/timeout/incomplete coverage is never absence evidence"
   },
-  "last_confirmed_ci": {
-    "workflow": "Math Problem Bank Audit",
-    "run_id": 32394997414,
-    "triggering_sha": "a73b1a73655aeb95773213904708b4e46dd36107",
-    "overall_result": "success",
-    "synthetic_browser": "success",
-    "real_canonical_browser": "blocked_expected_exact_base_absent"
+  "browser_A4": {
+    "synthetic_browser": "PASS_PREVIOUSLY_CONFIRMED_FOUR_ENVIRONMENTS",
+    "real_canonical_browser": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT",
+    "real_A4_six_pdfs": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT"
   },
   "publication_ready": false,
-  "next": "recover actual verified base records; generate independently recalculated variants from each real parent; compose and run real browser/A4 regression",
-  "recorded_at_utc": "2026-08-20T18:54:05.415161+00:00"
+  "branch": "math-problem-bank-bootstrap",
+  "source_head_before_checkpoint": "aa337bf3b5f3d3c4f45b8bdc557ba724cdd9bc0f",
+  "recorded_at_utc": "2026-08-20T18:59:00Z",
+  "next": "Confirm latest expanded CI after dynamic release conversion; continue exact BASE recovery. On exact pair, SHA/audit validate, compose immutable BASE snapshot + expanded layer, generate independently verified variants to 1124/1124 parent coverage, then real browser/A4 and dynamic strict release."
 }
