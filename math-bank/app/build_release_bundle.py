@@ -17,6 +17,7 @@ DATA = ROOT / "app-records.json"
 PROVENANCE = ROOT / "canonical-provenance.json"
 AUDIT = ROOT / "MATHBANK_FINAL_AUDIT_V2.json"
 INDEX = ROOT / "index.html"
+FIGURE_RENDERER = ROOT / "render_figure_markers.js"
 VALIDATOR = ROOT / "validate_app_records.py"
 
 
@@ -73,6 +74,8 @@ def main() -> int:
         return 3
     if not INDEX.is_file():
         raise SystemExit("FAIL missing index.html")
+    if not FIGURE_RENDERER.is_file():
+        raise SystemExit("FAIL render_figure_markers.js is required by index.html and strict release")
     if not PROVENANCE.is_file():
         raise SystemExit("FAIL canonical-provenance.json is required; strict counts alone cannot prove canonical identity")
 
@@ -112,6 +115,7 @@ def main() -> int:
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
     shutil.copy2(INDEX, OUT / "index.html")
+    shutil.copy2(FIGURE_RENDERER, OUT / "render_figure_markers.js")
     shutil.copy2(DATA, OUT / "app-records.json")
     shutil.copy2(PROVENANCE, OUT / "canonical-provenance.json")
     shutil.copy2(AUDIT, OUT / "MATHBANK_FINAL_AUDIT_V2.json")
@@ -124,12 +128,13 @@ def main() -> int:
 
     payload_files = [
         OUT / "index.html",
+        OUT / "render_figure_markers.js",
         OUT / "app-records.json",
         OUT / "canonical-provenance.json",
         OUT / "MATHBANK_FINAL_AUDIT_V2.json",
     ] + [OUT / src.relative_to(ROOT) for src in figure_assets]
     manifest = {
-        "release_gate": "STRICT_CANONICAL_1231_PROVENANCE_FINAL_AUDIT_TITLE_CHOICES_AND_FIGURE_ASSETS_PASS",
+        "release_gate": "STRICT_CANONICAL_1231_PROVENANCE_FINAL_AUDIT_TITLE_CHOICES_FIGURE_ASSETS_AND_INLINE_MARKER_RENDERER_PASS",
         "records": 1231,
         "original": 1124,
         "variants": 107,
@@ -139,6 +144,8 @@ def main() -> int:
         "title_choices_preservation_required": True,
         "canonical_provenance_required": True,
         "canonical_final_audit_required": True,
+        "inline_figure_marker_renderer_required": True,
+        "inline_figure_marker_renderer_sha256": sha256(FIGURE_RENDERER),
         "canonical_final_audit_filename": AUDIT.name,
         "canonical_final_audit_sha256": sha256(AUDIT),
         "canonical_provenance_status": provenance_result["status"],
@@ -167,6 +174,8 @@ def main() -> int:
     print("PASS_RELEASE_BUNDLE")
     print("canonical_provenance=PASS")
     print("canonical_final_audit=PASS")
+    print("inline_figure_marker_renderer=PASS")
+    print(f"inline_figure_marker_renderer_sha256={sha256(FIGURE_RENDERER)}")
     print(f"canonical_final_audit_sha256={sha256(AUDIT)}")
     print(f"canonical_zip_sha256={provenance_result['canonical_zip_sha256']}")
     print(f"provenance_method={provenance_result['method']}")
