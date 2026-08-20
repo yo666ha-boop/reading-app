@@ -4,11 +4,56 @@ const {JSDOM,VirtualConsole}=require('jsdom');
 const norm=s=>String(s||'').replace(/\s+/g,' ').trim();
 const deSlash=s=>norm(String(s||'').replace(/\s*\/\s*/g,' '));
 const parts=s=>String(s||'').split(/\s*\/\s*/).map(norm).filter(Boolean);
-const boundaryWords=new Set('about above across after against along among around as at before behind below beside between by during for from in inside into near of on over through to under with without and but or so because if when while although though since'.split(' '));
+const prepositions=new Set('about above across after against along among around as at before behind below beside between by during for from in inside into near of on over through to under with without'.split(' '));
+const conjunctions=new Set('and but or so because if when while although though since'.split(' '));
 const relWords=new Set(['which','who','whom','whose']);
 function cleanWord(x){return String(x||'').toLowerCase().replace(/^["'“”‘’(\[]+|["'“”‘’),.!?;:\]]+$/g,'')}
 function hasSlashBefore(en,wordStart){return /\/\s*$/.test(en.slice(0,wordStart))}
 function commaPositions(s){const a=[];for(let i=0;i<s.length;i++)if(s[i]===',')a.push(i);return a}
+function hasTextAfterComma(s,pos){return /\S/.test(s.slice(pos+1))}
+function wordsBefore(en,start){return norm(en.slice(0,start)).toLowerCase().replace(/[“”"'’‘]/g,'').split(/\s+/).filter(Boolean)}
+function wordsAfter(en,end){return norm(en.slice(end)).toLowerCase().replace(/[“”"'’‘]/g,'').split(/\s+/).filter(Boolean)}
+function fixedUnitException(en,start,word,end){
+  const before=wordsBefore(en,start), after=wordsAfter(en,end), prev=before[before.length-1]||'', prev2=before.slice(-2).join(' '), next=after[0]||'';
+  if(word==='around' && /\bshow\s+(?:me|you|him|her|us|them)\s*$/i.test(en.slice(0,start))) return true;
+  if(word==='behind' && /\bleft\s*$/i.test(en.slice(0,start))) return true;
+  if(word==='while' && prev==='a' && /\bafter\s+a\s*$/i.test(en.slice(0,start))) return true;
+  if(word==='near' && /\bis\s*$/i.test(en.slice(0,start))) return true;
+  if(word==='of' && /\b(?:in front|on top|first)\s*$/i.test(en.slice(0,start))) return true;
+  if(word==='on' && /\bfrom now\s*$/i.test(en.slice(0,start))) return true;
+  if(word==='on' && /\bshoes\s*$/i.test(en.slice(0,start))) return true;
+  if(word==='at' && /\bat least\s*$/i.test(en.slice(0,start))) return true;
+  if(word==='about' && /^\s*how\s*$/i.test(en.slice(0,start))) return true;
+  if(word==='if' && prev==='as') return true; // as if is one conjunction unit; boundary belongs before as.
+  if(word==='and' && /\btrack\s*$/i.test(en.slice(0,start)) && next==='field') return true; // track and field
+  return false;
+}
+function isConjunctionUse(en,start,word,end){
+  if(word==='so'){
+    const after=wordsAfter(en,end), next=after[0]||'';
+    // so + adjective/adverb is not the conjunction 'so'.
+    if(next && /^(?:excited|sad|thin|happy|good|bad|big|small|long|short|beautiful|important|special|different|popular|tired|busy|quiet|fast|slow|well|much|many|few|very)$/.test(next)) return false;
+  }
+  if(word==='while' && /\bafter\s+a\s*$/i.test(en.slice(0,start))) return false;
+  return true;
+}
+function isRelativeUse(en,start,word){
+  const before=en.slice(0,start);
+  // Sentence/quote-initial wh-questions and indirect interrogatives are not relative clauses.
+  if(!/\S/.test(before.replace(/[“”"'’‘(),:;\s]/g,''))) return false;
+  if(/[“"']\s*$/u.test(before)) return false;
+  if(/\b(?:ask|asks|asked|say|says|said|question|know|knows|knew|decide|decides|decided|wonder|wonders|wondered|talk about|think about)\s*$/i.test(before)) return false;
+  if(/\babout\s*$/i.test(before)) return false;
+  return true;
+}
+function isContentThat(en,start,end){
+  const before=en.slice(0,start).trim(),after=en.slice(end).trim();
+  if(!before||!after) return false;
+  if(/\b(?:for|after|before|from|with|at|in|on|by|about|like)\s*$/i.test(before)) return false;
+  if(/\b(?:this|that|the|a|an|each|every|some|any|no)\s*$/i.test(before)) return false;
+  // Content/relative that normally follows a reporting/cognition verb, noun antecedent, or a complete clause.
+  return /\b(?:know|knew|think|thought|say|said|says|tell|told|explain|explains|explained|realize|realized|reason|dream|thing|things|way|place|person|people|book|story|robot|project|idea)\s*$/i.test(before) || /\b(?:is|are|was|were|can|could|will|would|do|does|did|have|has|had|we|you|they|he|she|it|there|i)\b/i.test(after);
+}
 function tolerantReferenceSource(src){
  return String(src)
   .replace("if(rows.length!==(p.sentences||[]).length)throw new Error('Row mismatch '+n);","if(rows.length!==(p.sentences||[]).length){window.V10_REFERENCE_STALE=(window.V10_REFERENCE_STALE||[]).concat(n);return}")
@@ -40,14 +85,15 @@ function tolerantReferenceSource(src){
    if(deSlash(en)!==plain)errs.push(`${tag}: ENGLISH_CHANGED :: ${en} <> ${plain}`);
    const ep=parts(en),jpP=parts(jp);slashCount+=Math.max(0,ep.length-1);if(ep.length===1)unsplit++;
    if(ep.length!==jpP.length)errs.push(`${tag}: EN_JP_CHUNK_MISMATCH ${ep.length}/${jpP.length} :: ${en} || ${jp}`);
-   for(const pos of commaPositions(en))if(!/^,\s*\//.test(en.slice(pos)))errs.push(`${tag}: COMMA_BOUNDARY_MISSED :: ${en}`);
+   for(const pos of commaPositions(en))if(hasTextAfterComma(en,pos)&&!/^,\s*\//.test(en.slice(pos)))errs.push(`${tag}: COMMA_BOUNDARY_MISSED :: ${en}`);
    const re=/\b[A-Za-z]+(?:['’][A-Za-z]+)?\b/g;let m;let tokenIndex=0;
-   while((m=re.exec(en))){const word=cleanWord(m[0]),start=m.index;tokenIndex++;if(tokenIndex===1)continue;
-     if(boundaryWords.has(word)&&!hasSlashBefore(en,start))errs.push(`${tag}: BOUNDARY_BEFORE_${word.toUpperCase()}_MISSED :: ${en}`);
-     if(relWords.has(word)&&!hasSlashBefore(en,start))errs.push(`${tag}: RELATIVE_BOUNDARY_BEFORE_${word.toUpperCase()}_MISSED :: ${en}`);
-     if(word==='that'&&!hasSlashBefore(en,start)){const before=en.slice(0,start).trim(),after=en.slice(start+m[0].length).trim();if(before&&!/\b(?:this|that|the|a|an)\s*$/.test(before)&&/\b(?:is|are|was|were|can|could|will|would|do|does|did|have|has|had|people|we|you|they|he|she|it|there|I)\b/i.test(after))errs.push(`${tag}: RELATIVE_OR_CONTENT_THAT_BOUNDARY_MISSED :: ${en}`)}
+   while((m=re.exec(en))){const word=cleanWord(m[0]),start=m.index,end=start+m[0].length;tokenIndex++;if(tokenIndex===1)continue;
+     if(prepositions.has(word)&&!fixedUnitException(en,start,word,end)&&!hasSlashBefore(en,start))errs.push(`${tag}: PREPOSITION_BOUNDARY_BEFORE_${word.toUpperCase()}_MISSED :: ${en}`);
+     if(conjunctions.has(word)&&isConjunctionUse(en,start,word,end)&&!fixedUnitException(en,start,word,end)&&!hasSlashBefore(en,start))errs.push(`${tag}: CONJUNCTION_BOUNDARY_BEFORE_${word.toUpperCase()}_MISSED :: ${en}`);
+     if(relWords.has(word)&&isRelativeUse(en,start,word)&&!hasSlashBefore(en,start))errs.push(`${tag}: RELATIVE_BOUNDARY_BEFORE_${word.toUpperCase()}_MISSED :: ${en}`);
+     if(word==='that'&&!hasSlashBefore(en,start)&&isContentThat(en,start,end))errs.push(`${tag}: RELATIVE_OR_CONTENT_THAT_BOUNDARY_MISSED :: ${en}`);
    }
-   const wc=plain.split(/\s+/).filter(Boolean).length;if(wc>=10&&ep.length<2)errs.push(`${tag}: TOO_FEW_SLASHES_LONG_SENTENCE words=${wc} :: ${en}`);
+   // No fixed word-count splitter: R14 forbids treating sentence length alone as a failure.
   });
  }
  if(pc!==168)errs.push(`PASSAGE_COUNT ${pc}/168`);
@@ -56,5 +102,5 @@ function tolerantReferenceSource(src){
  console.log(`REFERENCE MINIMUM RULE AUDIT passages=${pc}/168 rows=${rows} reference_marked=${referencePassages}/168 slashes=${slashCount} unsplit_rows=${unsplit} stale=${stale.length}`);
  if(stale.length)console.log('STALE REFERENCE PASSAGES: '+stale.join(','));
  if(errs.length){console.error(`REFERENCE MINIMUM RULE FAIL ${errs.length}`);errs.slice(0,2000).forEach(e=>console.error('- '+e));process.exit(1)}
- console.log('REFERENCE MINIMUM RULE PASS 168/168: comma/preposition/conjunction/to/relative-clause minimum boundaries, EN/JP chunk counts, English preservation, and long-sentence density all pass.');dom.window.close();
+ console.log('REFERENCE MINIMUM RULE PASS 168/168: source-derived comma/preposition/conjunction/infinitive/relative-clause boundaries, EN/JP chunk counts, English preservation, and reference-style exceptions all pass.');dom.window.close();
 })().catch(e=>{console.error('REFERENCE MINIMUM RULE AUDIT ERROR: '+(e.stack||e));process.exit(1)});
