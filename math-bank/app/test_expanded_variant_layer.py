@@ -46,6 +46,10 @@ def make_base() -> list[dict]:
         for _ in range(count):
             seq += 1
             originals.append(rec(f"O{seq:04d}", book))
+    # Give one fixture parent a real numeric math statement so we can test the
+    # wording-only pseudo-variant gate without depending on its record id.
+    originals[0]["question"] = "(-8)+13 を計算しなさい。"
+    originals[0]["answer"] = "5"
     variants = []
     for i in range(107):
         p = originals[i]
@@ -79,13 +83,15 @@ def expect_fail(fn, needle: str) -> None:
 def main() -> None:
     base = make_base()
     parent = base[0]
-    good = rec("X0001", "generated", generated=True, parent=parent["id"], question="(-8)+13 を計算しなさい。")
+    good = rec("X0001", "generated", generated=True, parent=parent["id"], question="(-7)+15 を計算しなさい。")
+    good["answer"] = "8"
     p = provenance(good["id"], parent["id"])
 
     report = validate_layer(base, [good], [p])
     assert report["expanded_verified_variants"] == 1
     assert report["expanded_parent_coverage"] == 1
     assert report["composed_total"] == 1232
+    assert report["wording_only_pseudo_variants"] == 0
 
     bad = copy.deepcopy(good); bad["id"] = "X0002"; bad["audit"]["problem_answer_verified"] = False
     expect_fail(lambda: validate_layer(base, [bad], [provenance("X0002", parent["id"])]), "unverified audit gate")
@@ -98,6 +104,15 @@ def main() -> None:
 
     bad = copy.deepcopy(good); bad["id"] = "X0005"; bad["question"] = parent["question"]
     expect_fail(lambda: validate_layer(base, [bad], [provenance("X0005", parent["id"])]), "duplicates base data")
+
+    pseudo = copy.deepcopy(good)
+    pseudo["id"] = "X0006"
+    pseudo["question"] = "計算して答えなさい：(-8)+13"
+    pseudo["answer"] = "5"
+    expect_fail(
+        lambda: validate_layer(base, [pseudo], [provenance("X0006", parent["id"])]),
+        "wording-only pseudo variant",
+    )
 
     badp = provenance(good["id"], parent["id"]); badp["independent_recalculation"] = False
     expect_fail(lambda: validate_layer(base, [good], [badp]), "independent_recalculation must be true")
@@ -115,7 +130,7 @@ def main() -> None:
         path.write_text(json.dumps(layer, ensure_ascii=False), encoding="utf-8")
         assert json.loads(path.read_text(encoding="utf-8"))["variants"][0]["id"] == "X0001"
 
-    print("PASS_EXPANDED_VARIANT_LAYER_STRICT_PARENT_TAXONOMY_RECALC_DUPLICATE_GATES")
+    print("PASS_EXPANDED_VARIANT_LAYER_STRICT_PARENT_TAXONOMY_RECALC_DUPLICATE_SURFACE_CHANGE_GATES")
 
 
 if __name__ == "__main__":
