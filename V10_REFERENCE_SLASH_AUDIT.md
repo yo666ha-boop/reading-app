@@ -65,10 +65,19 @@ From the user screenshot:
 ### 2026-08-20 19:25+ retry
 - Re-read this checkpoint before work.
 - File Library searched again with exact names and semantic combinations for `英語長文基本`, `英語長文基本解答`, `スラッシュリーディング`, and `長文問題 見本`.
-- The two required PDFs were still not returned. The search instead returned the current app `index.html` and unrelated study-method materials.
-- GitHub branch contents were inspected again; the reference PDFs are not stored in `v10-reference-slash-audit`.
-- Current app/runtime is present and recoverable; `index.html` loads the full grade/textbook data modules and the slash display.
-- No reference-derived edits were made, because doing so before opening the two PDFs would violate the explicit no-guessing requirement.
+- Google Drive was searched by exact title, broad `基本`, PDF type, and the historical late-April upload window.
+- GitHub branch/commit/tree searches were also checked for the two titles.
+- The two required PDFs were still not returned by the currently exposed indexes.
+- Current app/runtime and all 168 passage audit assets are present and recoverable.
+- No reference-derived slash edits were made, because doing so before opening the two PDFs would violate the explicit no-guessing requirement.
+
+## Active engineering work completed in this run
+- Inspected `v10_slash_quality_audit.js` directly.
+- Confirmed the old gate validates generic structural heuristics (sentence preservation, short-sentence no-split rule, EN/JP chunk count, determiner/core-grammar/verb-object checks, selected hard-coded examples) but does not prove that the two authoritative PDFs were read or that their slash density/pattern was reproduced.
+- Added `v10_reference_slash_rules.json` as an explicit state file. It is intentionally `verified_complete: false` until both authoritative PDFs have been read fully and real reference rules/examples have been recorded.
+- Added `v10_reference_slash_gate.js`. It blocks the quality pipeline unless both exact source filenames are declared, `reference_files_read` is 2, page review is recorded, non-empty reference-derived rules exist, the 168-passage target remains intact, and `verified_complete` is true.
+- Updated `.github/workflows/v10-slash-quality.yml` so the `v10-reference-slash-audit` branch runs this authoritative-reference gate before the old semantic/slash/browser/print checks.
+- This prevents the old generic `168/168 COMPLETE` result from being accepted again while the actual reference PDFs are missing.
 
 This missing-reference state must never be papered over by guessing. Continue source recovery first; once the reference PDFs are available, proceed through all 168 passages without stopping at batch boundaries.
 
@@ -79,6 +88,8 @@ This missing-reference state must never be papered over by guessing. Continue so
 - benchmark examples: 0
 - passages re-audited against actual reference: 0/168
 - passages repaired in this pass: 0
+- false-complete prevention gate: INSTALLED
+- branch workflow reference gate: INSTALLED
 - final regression: NOT STARTED
 
 ## Resume point
