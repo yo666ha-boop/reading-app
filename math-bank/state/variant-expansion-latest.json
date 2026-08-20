@@ -12,13 +12,19 @@
   "expanded_verified_variants": 0,
   "expanded_parent_coverage": 0,
   "expanded_parent_target": 1124,
-  "manual_generation_queue": "BUILDER_AND_CONSERVATIVE_CLASSIFICATION_TESTS_PASS_WAITING_FOR_EXACT_BASE",
+  "manual_generation_queue": "BUILDER_CONSERVATIVE_CLASSIFICATION_AND_EXACT_PARENT_SHA256_BINDING_PASS_WAITING_FOR_EXACT_BASE",
+  "parent_read_binding": {
+    "status": "PASS_IN_EXPANDED_WORKFLOW",
+    "algorithm": "sha256(canonical-json-sort-keys)",
+    "queue_field": "parent_record_sha256",
+    "purpose": "Bind every future generation queue row to the exact verified parent record that was actually read; content changes produce a different fingerprint."
+  },
   "base_canonical_zip_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "base_canonical_pair_recovered": false,
   "app_dynamic_expansion_gate": "PASS",
   "expanded_validator": "PASS_POSITIVE_NEGATIVE_TESTS",
   "expanded_composer": "IMPLEMENTED",
-  "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_TESTS",
+  "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_AND_PARENT_FINGERPRINT_TESTS",
   "validator_test_status": "PASS_EXPANDED_WORKFLOW_AFTER_CI_EXPECTATION_FIX",
   "synthetic_browser_expansion_fixture": "READY_1124_ORIGINAL_110_VARIANT_TOTAL_1234",
   "latest_implementation_commits": {
@@ -27,22 +33,25 @@
     "browser_fixture_fix": "8683711f35969cef573639387187f62ccafe145f",
     "generation_queue_builder": "b16e8e1f0637e5fb709c6f9f2e5bc02b5e615fd5",
     "expanded_ci_and_queue_test": "2af5d618e0dfa50bfbf59c950638e925f2cc784e",
-    "expanded_workflow_state_commit": "8094c75b523b19aa67e0aa9745f4e6c6eadb5cb5"
+    "parent_fingerprint_queue": "986d460bd8e0f3eec97a71edc743bcd9f1892ee4",
+    "parent_fingerprint_test": "a73b1a73655aeb95773213904708b4e46dd36107",
+    "expanded_workflow_state_commit_after_parent_fingerprint": "84596f05de88215becae7cdf633d660615c181dd"
   },
   "base_recovery": {
-    "actions_artifacts_seen": 131,
-    "actions_members_sha256_checked": 560,
-    "actions_bytes_hashed": 253433715,
+    "actions_artifacts_seen": 133,
+    "actions_members_sha256_checked": 564,
+    "actions_bytes_hashed": 253438935,
     "actions_download_failures": 0,
     "actions_canonical_hits": 0,
     "actions_valid_audit_hits": 0,
     "actions_pair_hits": 0,
-    "latest_auto_complete_run_id": 32383480104,
+    "latest_auto_complete_run_id": 32383596244,
     "latest_auto_complete_result": "cancelled_not_negative_evidence",
+    "latest_auto_complete_triggering_sha": "9f7192917d6614adb2e7cd8e38026755aecf9993",
     "git_history_exact_coverage_complete": false,
     "release_pair_hits": 0
   },
   "publication_ready": false,
-  "next": "recover actual verified base records; generate independently recalculated variants from each real parent; compose and run real browser/A4 regression",
-  "recorded_at_utc": "2026-08-20T16:58:35.712237+00:00"
+  "next": "continue exact BASE recovery; once exact BASE records are recovered, SHA/audit validate, run the now parent-fingerprint-bound queue, then generate only parent-read independently recalculated variants and preserve each parent_record_sha256 in generation provenance",
+  "recorded_at_utc": "2026-08-20T17:02:00Z"
 }
