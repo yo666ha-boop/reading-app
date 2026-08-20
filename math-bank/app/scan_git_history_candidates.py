@@ -42,6 +42,18 @@ def valid_json_object(data: bytes) -> bool:
     return isinstance(obj, dict)
 
 
+def fetch_all_remote_history() -> dict:
+    result = {"heads_fetch_rc": None, "tags_fetch_rc": None}
+    heads = run(
+        "git", "fetch", "origin", "+refs/heads/*:refs/remotes/origin/*", "--force", "--prune",
+        check=False,
+    )
+    result["heads_fetch_rc"] = heads.returncode
+    tags = run("git", "fetch", "origin", "+refs/tags/*:refs/tags/*", "--force", check=False)
+    result["tags_fetch_rc"] = tags.returncode
+    return result
+
+
 def parse_rev_list_objects() -> dict[str, set[str]]:
     proc = run("git", "rev-list", "--objects", "--all")
     paths_by_oid: dict[str, set[str]] = defaultdict(set)
@@ -135,7 +147,6 @@ def commits_retaining_blob(zip_oid: str, known_paths: list[str]) -> list[str]:
 
 
 def recover_lfs_object_if_available() -> Path | None:
-    # GitHub-hosted runners normally include git-lfs. This is discovery-only; failure is fine.
     if run("git", "lfs", "version", check=False).returncode != 0:
         return None
     run("git", "lfs", "fetch", "--all", check=False)
@@ -145,7 +156,6 @@ def recover_lfs_object_if_available() -> Path | None:
     expected_path = root / EXPECTED_SHA256[:2] / EXPECTED_SHA256[2:4] / EXPECTED_SHA256
     if expected_path.is_file() and sha256_bytes(expected_path.read_bytes()) == EXPECTED_SHA256:
         return expected_path
-    # Defend against alternate LFS layout/version.
     for p in root.rglob(EXPECTED_SHA256):
         if p.is_file() and sha256_bytes(p.read_bytes()) == EXPECTED_SHA256:
             return p
@@ -196,7 +206,7 @@ def main() -> int:
         print("BLOCKED: run inside a full Git checkout", file=sys.stderr)
         return 2
 
-    run("git", "fetch", "--all", "--tags", "--force", check=False)
+    fetch_result = fetch_all_remote_history()
     paths_by_oid = parse_rev_list_objects()
     all_oids = sorted(paths_by_oid)
     meta = batch_metadata(all_oids)
@@ -204,10 +214,13 @@ def main() -> int:
     named_candidate_oids = {oid for oid in blob_oids if any(likely_candidate_path(p) for p in paths_by_oid.get(oid, set()))}
 
     report = {
-        "scan": "git_history_all_reachable_blob_scan_for_exact_math_canonical",
+        "scan": "git_history_all_remote_branches_all_reachable_blob_scan_for_exact_math_canonical",
         "expected_filename": EXPECTED_FILENAME,
         "expected_sha256": EXPECTED_SHA256,
         "required_paired_audit": AUDIT_FILENAME,
+        "remote_fetch": fetch_result,
+        "remote_branches_seen": len([x for x in run("git", "for-each-ref", "--format=%(refname)", "refs/remotes/origin/").stdout.splitlines() if x.strip()]),
+        "tags_seen": len([x for x in run("git", "tag", "--list").stdout.splitlines() if x.strip()]),
         "reachable_objects_total": len(all_oids),
         "reachable_blob_oids": len(blob_oids),
         "named_candidate_oids": len(named_candidate_oids),
@@ -222,7 +235,7 @@ def main() -> int:
         "retaining_commits_checked": 0,
         "paired_recovery_hits": [],
         "completed_at_utc": datetime.now(timezone.utc).isoformat(),
-        "policy": "History recovery only. Every reachable Git blob under the size cap is SHA-256 checked regardless of filename. Git LFS pointers to the canonical SHA are detected. Pairing requires one valid final audit in the same historical tree. No source reconstruction.",
+        "policy": "Every reachable blob from every fetched remote branch/tag under the size cap is SHA-256 checked regardless of filename. LFS pointers to the canonical SHA are detected. Pairing requires one valid final audit in the same historical tree. No source reconstruction.",
     }
 
     exact_hits: list[tuple[str, bytes, list[str]]] = []
@@ -241,13 +254,11 @@ def main() -> int:
         report["all_blob_bytes_hashed"] += len(data)
         digest = sha256_bytes(data)
         if digest == EXPECTED_SHA256:
-            hit = {"oid": oid, "sha256": digest, "bytes": len(data), "paths": paths}
-            report["canonical_blob_hits"].append(hit)
+            report["canonical_blob_hits"].append({"oid": oid, "sha256": digest, "bytes": len(data), "paths": paths})
             exact_hits.append((oid, data, paths))
         pointer = parse_lfs_pointer(data)
         if pointer and pointer[0] == EXPECTED_SHA256:
-            hit = {"pointer_blob_oid": oid, "lfs_oid_sha256": pointer[0], "lfs_size": pointer[1], "paths": paths}
-            report["lfs_pointer_hits"].append(hit)
+            report["lfs_pointer_hits"].append({"pointer_blob_oid": oid, "lfs_oid_sha256": pointer[0], "lfs_size": pointer[1], "paths": paths})
             lfs_exact_paths.append((oid, paths))
         if any(Path(p).name == AUDIT_FILENAME for p in paths) and valid_json_object(data):
             report["global_audit_blob_candidates"].append({"oid": oid, "sha256": digest, "bytes": len(data), "paths": paths})
@@ -260,21 +271,16 @@ def main() -> int:
         if pair_with_audit_from_tree(oid, data, paths, report):
             break
 
-    # LFS pointers store the canonical content hash, so if such a pointer exists, try to
-    # materialize the exact LFS object. We still do not promote it without a paired audit.
     if not report["paired_recovery_hits"] and lfs_exact_paths:
         lfs_path = recover_lfs_object_if_available()
         if lfs_path is not None:
             report["lfs_exact_object_recovered"] = True
             lfs_data = lfs_path.read_bytes()
-            # The historical tree contains the pointer blob, not the binary blob. Pair
-            # against commits retaining the pointer and then save the materialized ZIP.
             for pointer_oid, paths in lfs_exact_paths:
                 for commit in commits_retaining_blob(pointer_oid, paths):
                     report["retaining_commits_checked"] += 1
-                    entries = tree_entries(commit)
                     audits: dict[str, tuple[str, bytes]] = {}
-                    for oid, path in entries:
+                    for oid, path in tree_entries(commit):
                         if Path(path).name != AUDIT_FILENAME:
                             continue
                         data = git_bytes("cat-file", "blob", oid)
