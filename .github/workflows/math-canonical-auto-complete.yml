@@ -45,6 +45,7 @@ jobs:
         run: |
           python -m py_compile \
             math-bank/app/scan_actions_artifacts.py \
+            math-bank/app/scan_actions_artifacts_delta.py \
             math-bank/app/scan_github_release_assets.py \
             math-bank/app/complete_from_exact_canonical.py \
             math-bank/app/inspect_canonical_artifact.py \
@@ -57,10 +58,10 @@ jobs:
             math-bank/app/verify_publish_readiness.py
           node --check math-bank/app/browser_real_regression.mjs
 
-      - name: Scan recent Actions artifacts
+      - name: Scan only new or changed Actions artifacts while reusing exact prior evidence
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: python math-bank/app/scan_actions_artifacts.py
+        run: python math-bank/app/scan_actions_artifacts_delta.py
 
       - name: Scan GitHub release assets
         env:
@@ -218,6 +219,8 @@ jobs:
             'recovery_source':os.environ.get('RECOVERY_SOURCE','none') or 'none',
             'actions_artifact_pair_hits':actions.get('paired_recovery_hits') if isinstance(actions,dict) else None,
             'actions_all_members_sha256_checked':actions.get('all_members_sha256_checked') if isinstance(actions,dict) else None,
+            'actions_reused_verified_artifacts':actions.get('reused_verified_artifacts') if isinstance(actions,dict) else None,
+            'actions_downloaded_artifacts_this_run':actions.get('downloaded_artifacts_this_run') if isinstance(actions,dict) else None,
             'git_history_pair_hits':len(history.get('paired_recovery_hits',[])) if isinstance(history,dict) else None,
             'git_history_canonical_blob_hits':len(history.get('canonical_blob_hits',[])) if isinstance(history,dict) else None,
             'git_history_lfs_pointer_hits':len(history.get('lfs_pointer_hits',[])) if isinstance(history,dict) else None,
