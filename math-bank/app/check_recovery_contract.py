@@ -7,27 +7,40 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 STATE = ROOT.parent / "state" / "CANONICAL_RECOVERY_KEYS.json"
 RECOVERY = ROOT / "recover_canonical_app_records.py"
+INSPECTOR = ROOT / "inspect_canonical_artifact.py"
 VALIDATOR = ROOT / "validate_app_records.py"
 
 keys = json.loads(STATE.read_text(encoding="utf-8"))
 recovery = RECOVERY.read_text(encoding="utf-8")
+inspector = INSPECTOR.read_text(encoding="utf-8")
 validator = VALIDATOR.read_text(encoding="utf-8")
 
 expected_hash = keys["canonical_zip"]["sha256"]
 expected = keys["expected_counts"]
+policy = keys["policy"]
+core_fields = set(keys["recorded_prior_core_shape_hint"]["required_fields"])
 
 checks = {
     "zip_sha256_in_recovery_tool": expected_hash in recovery,
+    "zip_sha256_in_inspector": expected_hash in inspector,
     "final_records_in_recovery_tool": str(expected["final_records"]) in recovery,
+    "final_records_in_inspector": str(expected["final_records"]) in inspector,
     "final_records_in_validator": f'EXPECTED_FINAL_RECORDS = {expected["final_records"]}' in validator,
     "original_records_in_validator": f'EXPECTED_ORIGINAL_RECORDS = {expected["original_records"]}' in validator,
     "variants_in_validator": f'EXPECTED_GENERATED_VARIANTS = {expected["generated_variants"]}' in validator,
     "winpass_count_in_validator": '"Winpass": 570' in validator,
     "jitsuryoku_count_in_validator": '"実力錬成": 237' in validator,
     "standard_count_in_validator": '"Standard": 317' in validator,
-    "partial_161_rejected": bool(keys["policy"].get("do_not_promote_partial_161_dataset")),
-    "no_reconstruction": bool(keys["policy"].get("do_not_reconstruct_from_old_or_partial_files")),
-    "zip_hash_required": bool(keys["policy"].get("zip_input_must_match_recorded_sha256")),
+    "partial_161_rejected": bool(policy.get("do_not_promote_partial_161_dataset")),
+    "no_reconstruction": bool(policy.get("do_not_reconstruct_from_old_or_partial_files")),
+    "no_guess_mapping": bool(policy.get("do_not_guess_canonical_to_app_mapping")),
+    "inspect_before_mapping": bool(policy.get("inspect_actual_zip_members_before_mapping")),
+    "zip_hash_required": bool(policy.get("zip_input_must_match_recorded_sha256")),
+    "legacy_core_detector_present": "RECORDED_CANONICAL_CORE_1231_DETECTED_APP_MAPPING_NOT_VERIFIED" in recovery,
+    "inspector_q_ans_classifier_present": "EXACT_1231_RECORDED_Q_ANS_CORE_CANDIDATE" in inspector,
+    "inspector_app_classifier_present": "EXACT_1231_APP_SCHEMA_CANDIDATE" in inspector,
+    "core_fields_match_recovery": all(repr(field) in recovery or f'"{field}"' in recovery for field in core_fields),
+    "core_fields_match_inspector": all(repr(field) in inspector or f'"{field}"' in inspector for field in core_fields),
 }
 
 failed = [name for name, ok in checks.items() if not ok]
@@ -42,3 +55,5 @@ print(f"canonical_zip_sha256={expected_hash}")
 print(f"records={expected['final_records']} original={expected['original_records']} variants={expected['generated_variants']}")
 print("partial_161_promotion=REJECTED")
 print("old_partial_reconstruction=REJECTED")
+print("legacy_q_ans_core=DETECT_ONLY_NO_GUESS_MAPPING")
+print("canonical_zip_inspection_before_mapping=REQUIRED")
