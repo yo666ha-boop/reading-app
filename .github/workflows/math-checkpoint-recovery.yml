@@ -1,0 +1,191 @@
+name: Math 2140 Checkpoint Recovery
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-checkpoint-recovery.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: math-2140-checkpoint-recovery
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  recover-checkpoint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Search every visible Git ref path for checkpoint and recovery-key names
+        shell: bash
+        run: |
+          set +e
+          git fetch origin '+refs/heads/*:refs/remotes/origin/*' --force --prune
+          git fetch origin '+refs/tags/*:refs/tags/*' --force
+          git fetch origin '+refs/pull/*/head:refs/remotes/origin/pull/*/head' --force
+          git fetch origin '+refs/pull/*/merge:refs/remotes/origin/pull/*/merge' --force
+          set -e
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          from datetime import datetime, timezone
+          needles=[
+            'みかみ塾数学問題バンク_継続チェックポイント_20260819_2140.zip',
+            'winpass_verified_union570_authoritative_norm_20260820',
+            'jitsuren_verified_union225_complete27_20260820',
+            'FINAL_INVENTORY.md','FULL_AUDIT.md','QUALITY_REPORT.md','QUALITY_SUMMARY.md'
+          ]
+          p=subprocess.run(['git','rev-list','--objects','--all'],text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=True)
+          hits=[]
+          for line in p.stdout.splitlines():
+            parts=line.split(' ',1)
+            if len(parts)!=2: continue
+            oid,path=parts
+            if any(n.lower() in path.lower() for n in needles):
+              hits.append({'oid':oid,'path':path})
+          out={'scan':'all_visible_git_ref_paths_for_2140_checkpoint','needles':needles,'path_hits':hits,'recorded_at_utc':datetime.now(timezone.utc).isoformat()}
+          Path('/tmp/math-2140-git-path-hits.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(out,ensure_ascii=False,indent=2))
+          # If the exact checkpoint ZIP itself is a Git blob, recover it by path regardless of blob SHA.
+          exact=[h for h in hits if h['path'].endswith('みかみ塾数学問題バンク_継続チェックポイント_20260819_2140.zip')]
+          if exact:
+            data=subprocess.check_output(['git','cat-file','blob',exact[0]['oid']])
+            d=Path('/tmp/recovered-2140'); d.mkdir(parents=True,exist_ok=True)
+            (d/'みかみ塾数学問題バンク_継続チェックポイント_20260819_2140.zip').write_bytes(data)
+          PY
+
+      - name: Scan all recent reading-app Actions artifact and nested ZIP member names for checkpoint
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          from __future__ import annotations
+          import hashlib, io, json, os, urllib.request, urllib.error, zipfile
+          from pathlib import Path
+          from datetime import datetime, timezone
+
+          repo=os.environ['GITHUB_REPOSITORY']; token=os.environ['GITHUB_TOKEN']
+          checkpoint='みかみ塾数学問題バンク_継続チェックポイント_20260819_2140.zip'
+          hints=['winpass_verified_union570_authoritative_norm_20260820','jitsuren_verified_union225_complete27_20260820','FINAL_INVENTORY.md','FULL_AUDIT.md','QUALITY_REPORT.md','QUALITY_SUMMARY.md']
+          headers={'Authorization':f'Bearer {token}','Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','User-Agent':'mikami-math-2140-recovery'}
+          def get_json(url):
+            with urllib.request.urlopen(urllib.request.Request(url,headers=headers),timeout=60) as r:return json.load(r)
+          def get_bytes(url,accept='application/octet-stream'):
+            h=dict(headers); h['Accept']=accept
+            with urllib.request.urlopen(urllib.request.Request(url,headers=h),timeout=180) as r:return r.read()
+          def scan_zip(data,prefix='',depth=0):
+            rows=[]; recovered=[]
+            if depth>3:return rows,recovered
+            try:
+              with zipfile.ZipFile(io.BytesIO(data)) as z:
+                for info in z.infolist():
+                  if info.is_dir() or info.file_size>500*1024*1024:continue
+                  name=f'{prefix}{info.filename}'; base=Path(info.filename).name
+                  interesting=(base==checkpoint or any(h.lower() in name.lower() for h in hints))
+                  payload=None
+                  if interesting or (info.file_size<=250*1024*1024):
+                    payload=z.read(info)
+                  if interesting:
+                    rows.append({'name':name,'bytes':len(payload),'sha256':hashlib.sha256(payload).hexdigest(),'depth':depth})
+                    if base==checkpoint:recovered.append((name,payload))
+                  if payload and len(payload)>=4 and payload[:2]==b'PK' and len(payload)<=250*1024*1024:
+                    try:
+                      if zipfile.is_zipfile(io.BytesIO(payload)):
+                        a,b=scan_zip(payload,name+'!/',depth+1); rows.extend(a); recovered.extend(b)
+                    except Exception:pass
+            except Exception:pass
+            return rows,recovered
+
+          artifacts=[]
+          for page in range(1,11):
+            obj=get_json(f'https://api.github.com/repos/{repo}/actions/artifacts?per_page=100&page={page}')
+            batch=obj.get('artifacts') or []
+            artifacts.extend(batch)
+            if len(batch)<100:break
+          report={'scan':'actions_all_artifact_member_names_for_2140_checkpoint','artifacts_seen':len(artifacts),'artifacts_downloaded':0,'download_failures':0,'hits':[],'checkpoint_recovered':False,'recorded_at_utc':None}
+          dest=Path('/tmp/recovered-2140'); dest.mkdir(parents=True,exist_ok=True)
+          for a in artifacts:
+            if a.get('expired'):continue
+            try:
+              data=get_bytes(a['archive_download_url'])
+              report['artifacts_downloaded']+=1
+              rows,recovered=scan_zip(data,f"artifact:{a.get('id')}:{a.get('name')}!/")
+              if rows:report['hits'].append({'artifact_id':a.get('id'),'artifact_name':a.get('name'),'workflow_run':a.get('workflow_run'),'members':rows})
+              if recovered and not report['checkpoint_recovered']:
+                name,payload=recovered[0]
+                (dest/checkpoint).write_bytes(payload)
+                report['checkpoint_recovered']=True
+                report['checkpoint_source']={'artifact_id':a.get('id'),'artifact_name':a.get('name'),'member':name,'sha256':hashlib.sha256(payload).hexdigest(),'bytes':len(payload)}
+            except Exception as e:
+              report['download_failures']+=1
+          report['recorded_at_utc']=datetime.now(timezone.utc).isoformat()
+          Path('/tmp/math-2140-actions-scan.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+
+      - name: Inspect recovered checkpoint ZIP contents without promoting anything
+        if: ${{ hashFiles('/tmp/recovered-2140/みかみ塾数学問題バンク_継続チェックポイント_20260819_2140.zip') != '' }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib,json,zipfile
+          from pathlib import Path
+          from datetime import datetime,timezone
+          p=Path('/tmp/recovered-2140/みかみ塾数学問題バンク_継続チェックポイント_20260819_2140.zip')
+          rows=[]
+          with zipfile.ZipFile(p) as z:
+            for i in z.infolist():
+              if i.is_dir():continue
+              data=z.read(i)
+              rows.append({'name':i.filename,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
+          out={'checkpoint_filename':p.name,'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'member_count':len(rows),'members':rows,'promoted':False,'recorded_at_utc':datetime.now(timezone.utc).isoformat()}
+          Path('/tmp/math-2140-checkpoint-inspection.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(out,ensure_ascii=False,indent=2))
+          PY
+
+      - name: Upload 2140 recovery evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-2140-checkpoint-recovery-evidence
+          path: |
+            /tmp/math-2140-git-path-hits.json
+            /tmp/math-2140-actions-scan.json
+            /tmp/math-2140-checkpoint-inspection.json
+            /tmp/recovered-2140/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Persist terminal 2140 recovery state race-safely
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p /tmp/math-2140-state
+          cp /tmp/math-2140-git-path-hits.json /tmp/math-2140-state/ 2>/dev/null || true
+          cp /tmp/math-2140-actions-scan.json /tmp/math-2140-state/ 2>/dev/null || true
+          cp /tmp/math-2140-checkpoint-inspection.json /tmp/math-2140-state/ 2>/dev/null || true
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin math-problem-bank-bootstrap
+          git reset --hard origin/math-problem-bank-bootstrap
+          mkdir -p math-bank/state
+          cp /tmp/math-2140-state/*.json math-bank/state/ 2>/dev/null || true
+          git add math-bank/state/math-2140-*.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'record math 2140 checkpoint recovery scan'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
