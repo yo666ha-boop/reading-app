@@ -8,6 +8,7 @@ on:
     paths:
       - 'math-bank/state/actions-artifact-scan-latest.json'
       - 'math-bank/state/ci-latest.json'
+      - 'math-bank/state/checkpoint.json'
   workflow_run:
     workflows:
       - Math Problem Bank Audit
