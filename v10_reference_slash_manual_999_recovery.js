@@ -30,7 +30,6 @@
   'Does he write about the dolphin?':row('Does he write / about the dolphin?','彼は書きますか / そのイルカについて'),
   'The picture is very beautiful.':row('The picture is very beautiful.','その写真はとても美しいです。'),
   'The blog is interesting.':row('The blog is interesting.','そのブログはおもしろいです。'),
-  // Older 13-sentence runtime variant, supported without changing its English.
   'He has a dolphin picture there.':row('He has a dolphin picture there.','彼はそこにイルカの写真を持っています。'),
   'Does he swim?':row('Does he swim?','彼は泳ぎますか。'),
   'Does he surf?':row('Does he surf?','彼はサーフィンをしますか。'),
@@ -63,6 +62,7 @@
   'My friend has been to Kyoto, too.':row('My friend has been / to Kyoto, / too.','友達も行ったことがあります / 京都に / 〜もまた'),
   'I have also been to Osaka twice.':row('I have also been / to Osaka twice.','私は行ったこともあります / 大阪に2度'),
   'My friend has never been to Hokkaido.':row('My friend has never been / to Hokkaido.','友達は行ったことが一度もありません / 北海道へ'),
+  'I have never been there either.':row('I have never been there either.','私もそこへ行ったことがありません。'),
   'I have never been there, either.':row('I have never been there, / either.','私もそこへ行ったことがありません / 〜もまた'),
   'We talk about what we enjoyed in Kyoto and Osaka.':row('We talk / about what we enjoyed / in Kyoto / and Osaka.','私たちは話します / 楽しんだことについて / 京都で / そして大阪で'),
   'Then we look at a picture of Hokkaido.':row('Then we look / at a picture / of Hokkaido.','それから私たちは見ます / 写真を / 北海道の'),
