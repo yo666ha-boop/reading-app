@@ -42,7 +42,7 @@
       <button id="printAnswers">解答をA4印刷</button>
     </div>
     <div class="import-row">
-      <div class="screen-only-note">公開時は app-records.json を自動読込。再確認中は正本JSONを手動読込して同じゲートで検証できます。</div>
+      <div class="screen-only-note">公開時は app-records.json を自動読込。再確認中は正本JSONを手動読込して同じ完全ゲートで検証できます。</div>
       <div><input id="importFile" type="file" accept="application/json,.json"><button id="importButton" type="button">正本JSONを読込</button></div>
     </div>
     <div id="summary" class="summary"></div>
@@ -58,9 +58,14 @@
 <script>
 const DATA_URL='./app-records.json';
 const CANONICAL={total:1231,original:1124,variant:107,source:{Winpass:570,'実力錬成':237,Standard:317}};
-let records=[], currentRows=[], dataSource='未接続';
+const VALID_GRADES=new Set([1,2,3]);
+const VALID_DIFFICULTY=new Set(['basic','standard','advanced','unknown']);
+const VALID_BOOKS=new Set(['Winpass','実力錬成','Standard','generated']);
+let records=[], currentRows=[], dataSource='未接続', recordById=new Map();
 const $=id=>document.getElementById(id);
 const IDS=['grade','major','minor','skill','difficulty','qformat','kind','book','count','order','search'];
+function isObj(v){return !!v&&typeof v==='object'&&!Array.isArray(v)}
+function txt(v){return typeof v==='string'?v.trim():''}
 function esc(s){return String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;')}
 function uniq(xs){return [...new Set(xs.filter(v=>v!==null&&v!==undefined&&String(v).trim()!==''))].sort((a,b)=>String(a).localeCompare(String(b),'ja',{numeric:true}))}
 function setOptions(el,vals){const keep=el.value;el.innerHTML='<option value="">すべて</option>'+vals.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('');if(vals.map(String).includes(keep))el.value=keep}
@@ -68,31 +73,58 @@ function isVariant(r){return !!r?.source?.is_generated_variant}
 function majorOf(r){return r?.unit?.major??''}
 function minorOf(r){return r?.unit?.minor??''}
 function sourceBook(r){return r?.source?.book??''}
+function parentBookOf(r){if(!isVariant(r))return sourceBook(r);const p=recordById.get(r?.source?.parent_id);return p&&!isVariant(p)?sourceBook(p):''}
 function labelDifficulty(v){return ({basic:'基礎',standard:'標準',advanced:'発展',unknown:'未分類'})[v]??v}
-function saveSettings(){try{localStorage.setItem('mikami-math-app-settings-v3',JSON.stringify(Object.fromEntries(IDS.map(id=>[id,$(id).value]))))}catch{}}
-function loadSettings(){try{const x=JSON.parse(localStorage.getItem('mikami-math-app-settings-v3')||'{}');IDS.forEach(id=>{if(x[id]!=null)$(id).value=x[id]})}catch{}}
-function cascadeBase(stop){let a=records;const g=$('grade').value;if(g)a=a.filter(r=>String(r.grade)===g);if(stop==='grade')return a;const maj=$('major').value;if(maj)a=a.filter(r=>majorOf(r)===maj);if(stop==='major')return a;const min=$('minor').value;if(min)a=a.filter(r=>minorOf(r)===min);return a}
-function refreshFilters(){setOptions($('major'),uniq(cascadeBase('grade').map(majorOf)));setOptions($('minor'),uniq(cascadeBase('major').map(minorOf)));const base=cascadeBase('minor');setOptions($('skill'),uniq(base.map(r=>r.skill)));setOptions($('difficulty'),uniq(base.map(r=>r.difficulty)));setOptions($('qformat'),uniq(base.map(r=>r.question_format)));setOptions($('book'),uniq(records.filter(r=>!isVariant(r)).map(sourceBook)));updateSummary();saveSettings()}
-function matchSearch(r,q){if(!q)return true;const hay=[r.id,r.question,r.answer,r.explanation,majorOf(r),minorOf(r),r.skill,r.question_format,sourceBook(r),...(r.unit?.tags||[])].join('\n').toLowerCase();return hay.includes(q.toLowerCase())}
-function filtered(){const g=$('grade').value,maj=$('major').value,min=$('minor').value,skill=$('skill').value,d=$('difficulty').value,qf=$('qformat').value,kind=$('kind').value,book=$('book').value,q=$('search').value.trim();return records.filter(r=>(!g||String(r.grade)===g)&&(!maj||majorOf(r)===maj)&&(!min||minorOf(r)===min)&&(!skill||r.skill===skill)&&(!d||r.difficulty===d)&&(!qf||r.question_format===qf)&&(kind==='both'||(kind==='original'&&!isVariant(r))||(kind==='variant'&&isVariant(r)))&&(!book||(isVariant(r)?false:sourceBook(r)===book))&&matchSearch(r,q))}
+function saveSettings(){try{localStorage.setItem('mikami-math-app-settings-v4',JSON.stringify(Object.fromEntries(IDS.map(id=>[id,$(id).value]))))}catch{}}
+function loadSettings(){try{const x=JSON.parse(localStorage.getItem('mikami-math-app-settings-v4')||'{}');IDS.forEach(id=>{if(x[id]!=null)$(id).value=x[id]})}catch{}}
+function cascadeBase(stop){let a=records;const g=$('grade').value;if(g)a=a.filter(r=>String(r?.grade)===g);if(stop==='grade')return a;const maj=$('major').value;if(maj)a=a.filter(r=>majorOf(r)===maj);if(stop==='major')return a;const min=$('minor').value;if(min)a=a.filter(r=>minorOf(r)===min);return a}
+function refreshFilters(){setOptions($('major'),uniq(cascadeBase('grade').map(majorOf)));setOptions($('minor'),uniq(cascadeBase('major').map(minorOf)));const base=cascadeBase('minor');setOptions($('skill'),uniq(base.map(r=>r?.skill)));setOptions($('difficulty'),uniq(base.map(r=>r?.difficulty)));setOptions($('qformat'),uniq(base.map(r=>r?.question_format)));setOptions($('book'),uniq(records.filter(r=>!isVariant(r)).map(sourceBook)));updateSummary();saveSettings()}
+function matchSearch(r,q){if(!q)return true;const hay=[r?.id,r?.question,r?.answer,r?.explanation,majorOf(r),minorOf(r),r?.skill,r?.question_format,parentBookOf(r),...(r?.unit?.tags||[])].join('\n').toLowerCase();return hay.includes(q.toLowerCase())}
+function filtered(){const g=$('grade').value,maj=$('major').value,min=$('minor').value,skill=$('skill').value,d=$('difficulty').value,qf=$('qformat').value,kind=$('kind').value,book=$('book').value,q=$('search').value.trim();return records.filter(r=>(!g||String(r?.grade)===g)&&(!maj||majorOf(r)===maj)&&(!min||minorOf(r)===min)&&(!skill||r?.skill===skill)&&(!d||r?.difficulty===d)&&(!qf||r?.question_format===qf)&&(kind==='both'||(kind==='original'&&!isVariant(r))||(kind==='variant'&&isVariant(r)))&&(!book||parentBookOf(r)===book)&&matchSearch(r,q))}
 function shuffle(a){const x=[...a];for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]]}return x}
-function sourceSort(a,b){const ka=[a.grade,sourceBook(a),a.source?.document??'',a.source?.original_no??'',a.id].join('|');const kb=[b.grade,sourceBook(b),b.source?.document??'',b.source?.original_no??'',b.id].join('|');return ka.localeCompare(kb,'ja',{numeric:true})}
+function sourceSort(a,b){const ka=[a?.grade,parentBookOf(a),a?.source?.document??'',a?.source?.original_no??'',a?.id].join('|');const kb=[b?.grade,parentBookOf(b),b?.source?.document??'',b?.source?.original_no??'',b?.id].join('|');return ka.localeCompare(kb,'ja',{numeric:true})}
 function selectRows(){let f=filtered();const n=Math.max(1,Math.min(200,Number($('count').value)||10));if($('order').value==='random')f=shuffle(f);else f=[...f].sort(sourceSort);return f.slice(0,n)}
-function figuresHtml(r){return (r.figure_refs||[]).length?`<div class="figures">${r.figure_refs.map(ref=>`<img src="${esc(ref)}" alt="図版 ${esc(r.id)}" loading="lazy" onerror="this.dataset.loadError='1'">`).join('')}</div>`:''}
-function render(rows){currentRows=rows;document.body.classList.remove('show-answers-screen');$('toggleAnswers').textContent='画面の解答を表示';if(!rows.length){$('list').innerHTML='<div class="empty">条件に合う問題がありません。</div>';$('printCount').textContent='0問';return}
-$('list').innerHTML=rows.map((r,i)=>`<div class="problem" data-id="${esc(r.id)}"><div class="meta">${i+1}. ID ${esc(r.id)} / 中${esc(r.grade)} / ${esc(majorOf(r))} › ${esc(minorOf(r))} / ${esc(r.skill)} / ${esc(labelDifficulty(r.difficulty))} / ${esc(r.question_format)} / ${isVariant(r)?'既存類題':'原問題'}${!isVariant(r)?' / '+esc(sourceBook(r)):''}</div><div class="q">${esc(r.question)}</div>${figuresHtml(r)}<button class="answer-toggle" data-i="${i}">解答を表示</button><div class="answer" id="a${i}"><strong>解答：</strong>${esc(r.answer)}${r.explanation?'\n\n<strong>解説：</strong>'+esc(r.explanation):''}</div></div>`).join('');
+function figuresHtml(r){return (r?.figure_refs||[]).length?`<div class="figures">${r.figure_refs.map(ref=>`<img src="${esc(ref)}" alt="図版 ${esc(r.id)}" loading="lazy" onerror="this.dataset.loadError='1'">`).join('')}</div>`:''}
+function clearOutput(message){currentRows=[];document.body.classList.remove('show-answers-screen','print-answers');$('toggleAnswers').textContent='画面の解答を表示';document.querySelector('.paper-title').textContent='数学 問題プリント';$('list').innerHTML=`<div class="empty">${esc(message)}</div>`;$('printCount').textContent='0問'}
+function render(rows){currentRows=rows;document.body.classList.remove('show-answers-screen');$('toggleAnswers').textContent='画面の解答を表示';if(!rows.length){clearOutput('条件に合う問題がありません。');return}
+$('list').innerHTML=rows.map((r,i)=>`<div class="problem" data-id="${esc(r.id)}"><div class="meta">${i+1}. ID ${esc(r.id)} / 中${esc(r.grade)} / ${esc(majorOf(r))} › ${esc(minorOf(r))} / ${esc(r.skill)} / ${esc(labelDifficulty(r.difficulty))} / ${esc(r.question_format)} / ${isVariant(r)?'既存類題':'原問題'} / ${esc(parentBookOf(r))}</div><div class="q">${esc(r.question)}</div>${figuresHtml(r)}<button class="answer-toggle" data-i="${i}">解答を表示</button><div class="answer" id="a${i}"><strong>解答：</strong>${esc(r.answer)}${r.explanation?'\n\n<strong>解説：</strong>'+esc(r.explanation):''}</div></div>`).join('');
 document.querySelectorAll('.answer-toggle').forEach(b=>b.onclick=()=>{const a=document.getElementById('a'+b.dataset.i);const on=a.classList.toggle('open');b.textContent=on?'解答を隠す':'解答を表示'});$('printCount').textContent=`${rows.length}問`;updateConditionLine()}
 function updateConditionLine(){const parts=[];if($('grade').value)parts.push(`中${$('grade').value}`);for(const id of ['major','minor','skill','difficulty','qformat','kind','book']){const el=$(id);if(el.value&&el.value!=='both')parts.push(el.options[el.selectedIndex]?.textContent||el.value)}if($('search').value.trim())parts.push(`検索:${$('search').value.trim()}`);$('conditionLine').textContent=parts.join(' / ')||'全範囲'}
 function updateSummary(){const f=filtered();$('summary').innerHTML=[`候補 ${f.length}問`,`原問題 ${f.filter(r=>!isVariant(r)).length}問`,`既存類題 ${f.filter(isVariant).length}問`,`データ ${dataSource}`].map(x=>`<span class="pill">${esc(x)}</span>`).join('');updateConditionLine()}
-function canonicalAudit(rs){const ids=new Set();let duplicate=0,blankQ=0,blankA=0,original=0,variant=0;const src={Winpass:0,'実力錬成':0,Standard:0};for(const r of rs){if(ids.has(r.id))duplicate++;ids.add(r.id);if(!String(r.question||'').trim())blankQ++;if(!String(r.answer||'').trim())blankA++;if(isVariant(r))variant++;else{original++;if(src[sourceBook(r)]!=null)src[sourceBook(r)]++}}const pass=rs.length===CANONICAL.total&&original===CANONICAL.original&&variant===CANONICAL.variant&&duplicate===0&&blankQ===0&&blankA===0&&Object.keys(CANONICAL.source).every(k=>src[k]===CANONICAL.source[k]);return {pass,total:rs.length,original,variant,duplicate,blankQ,blankA,src}}
-function showGate(a){$('gate').className='data-gate '+(a.pass?'pass':'fail');$('gate').textContent=a.pass?'正本ゲート PASS：1231問（原1124＋既存類題107）':'正本ゲート未達：データを公開完成版として扱いません';for(const id of ['draw','redraw','printQuestions','printAnswers'])$(id).disabled=!a.pass}
-function acceptRecords(rs,source){records=rs;dataSource=source;const a=canonicalAudit(records);$('status').className='status '+(a.pass?'good':'warn');$('status').textContent=`${source} / 読込 ${a.total}問 / 原問題 ${a.original} / 既存類題 ${a.variant} / 重複ID ${a.duplicate} / 空問題 ${a.blankQ} / 空解答 ${a.blankA}`;loadSettings();refreshFilters();showGate(a);if(a.pass)render(selectRows());else{currentRows=[];$('list').innerHTML='<div class="empty">正本1231問の完全ゲートを通過していないため、出題・印刷はロックしています。</div>';$('printCount').textContent='0問'}}
+function canonicalAudit(rs){
+  const ids=new Set(),byId=new Map();let duplicate=0,blankQ=0,blankA=0,original=0,variant=0,invalid=0,auditFail=0,parentFail=0,figureFail=0;const src={Winpass:0,'実力錬成':0,Standard:0};
+  for(const r of rs){if(!isObj(r)){invalid++;continue}const rid=txt(r.id);if(!rid){invalid++;continue}if(ids.has(rid))duplicate++;ids.add(rid);byId.set(rid,r)}
+  for(const r of rs){
+    if(!isObj(r)){continue}
+    const rid=txt(r.id);if(!rid)continue;
+    if(!VALID_GRADES.has(r.grade))invalid++;
+    if(!VALID_DIFFICULTY.has(r.difficulty))invalid++;
+    if(!txt(r.skill))invalid++;
+    if(!txt(r.question_format))invalid++;
+    if(!txt(r.question)){blankQ++;invalid++}
+    if(!txt(r.answer)){blankA++;invalid++}
+    if(typeof r.explanation!=='string')invalid++;
+    if(!(r.variant_group===null||typeof r.variant_group==='string'))invalid++;
+    const unit=r.unit;if(!isObj(unit)||!txt(unit.major)||!txt(unit.minor))invalid++;
+    const tags=unit?.tags??[];if(!Array.isArray(tags)||tags.some(x=>typeof x!=='string')||new Set(tags).size!==tags.length)invalid++;
+    if(r.prerequisites!==undefined&&(!Array.isArray(r.prerequisites)||r.prerequisites.some(x=>typeof x!=='string')||new Set(r.prerequisites).size!==r.prerequisites.length))invalid++;
+    const source=r.source;if(!isObj(source)||!VALID_BOOKS.has(source?.book)||typeof source?.is_generated_variant!=='boolean'||typeof source?.document!=='string'||!(source?.original_no===null||typeof source?.original_no==='string'))invalid++;
+    const generated=isVariant(r);if(generated){variant++;if(source?.book!=='generated'||!txt(source?.parent_id))invalid++}else{original++;if(src[source?.book]===undefined)invalid++;else src[source.book]++}
+    const figs=r.figure_refs;if(!Array.isArray(figs)||figs.some(x=>!txt(x))||new Set(figs).size!==figs.length)figureFail++;
+    const audit=r.audit;if(!isObj(audit)||audit.problem_answer_verified!==true||audit.structure_verified!==true||audit.figure_refs_verified!==true)auditFail++;
+  }
+  for(const r of rs){if(!isObj(r)||!isVariant(r))continue;const p=byId.get(txt(r.source?.parent_id));if(!p||isVariant(p))parentFail++}
+  const pass=rs.length===CANONICAL.total&&original===CANONICAL.original&&variant===CANONICAL.variant&&duplicate===0&&blankQ===0&&blankA===0&&invalid===0&&auditFail===0&&parentFail===0&&figureFail===0&&Object.keys(CANONICAL.source).every(k=>src[k]===CANONICAL.source[k]);
+  return {pass,total:rs.length,original,variant,duplicate,blankQ,blankA,invalid,auditFail,parentFail,figureFail,src}
+}
+function showGate(a){$('gate').className='data-gate '+(a.pass?'pass':'fail');$('gate').textContent=a.pass?'正本ゲート PASS：1231問・構造/監査/親子関係まで確認':'正本ゲート未達：データを公開完成版として扱いません';for(const id of ['draw','redraw','toggleAnswers','printQuestions','printAnswers'])$(id).disabled=!a.pass}
+function acceptRecords(rs,source){records=Array.isArray(rs)?rs:[];recordById=new Map(records.filter(isObj).map(r=>[txt(r.id),r]).filter(([id])=>id));dataSource=source;const a=canonicalAudit(records);$('status').className='status '+(a.pass?'good':'warn');$('status').textContent=`${source} / 読込 ${a.total}問 / 原 ${a.original} / 類題 ${a.variant} / 重複 ${a.duplicate} / 空問 ${a.blankQ} / 空答 ${a.blankA} / 構造 ${a.invalid} / 監査 ${a.auditFail} / 親 ${a.parentFail} / 図版構造 ${a.figureFail}`;loadSettings();refreshFilters();showGate(a);if(a.pass)render(selectRows());else clearOutput('正本1231問の完全ゲートを通過していないため、出題・解答表示・印刷はロックしています。')}
 function printMode(answers){if(!currentRows.length)return;document.body.classList.toggle('print-answers',answers);document.querySelector('.paper-title').textContent=answers?'数学 解答プリント':'数学 問題プリント';window.print()}
 window.addEventListener('afterprint',()=>{document.body.classList.remove('print-answers');document.querySelector('.paper-title').textContent='数学 問題プリント'});
 IDS.filter(id=>id!=='search').forEach(id=>$(id).addEventListener('change',()=>{refreshFilters();saveSettings()}));$('search').addEventListener('input',()=>{updateSummary();saveSettings()});
 $('draw').onclick=()=>render(selectRows());$('redraw').onclick=()=>render(selectRows());$('toggleAnswers').onclick=()=>{const on=document.body.classList.toggle('show-answers-screen');$('toggleAnswers').textContent=on?'画面の解答を隠す':'画面の解答を表示'};$('printQuestions').onclick=()=>printMode(false);$('printAnswers').onclick=()=>printMode(true);
-$('importButton').onclick=()=>$('importFile').click();$('importFile').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{const obj=JSON.parse(await f.text());const rs=Array.isArray(obj)?obj:(obj.records||[]);if(!Array.isArray(rs))throw new Error('records array not found');acceptRecords(rs,`手動JSON:${f.name}`)}catch(err){$('status').className='status warn';$('status').textContent=`JSON読込失敗：${err.message}`;showGate({pass:false})}finally{e.target.value=''}});
-fetch(DATA_URL,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('app-records.json not available');return r.json()}).then(d=>acceptRecords(Array.isArray(d)?d:(d.records||[]),'app-records.json')).catch(e=>{$('status').className='status warn';$('status').textContent='正本データ未接続：最終1231問の再確認後に接続します。手動JSON読込も利用できます。';dataSource='未接続';updateSummary();showGate({pass:false});console.warn(e)});
+$('importButton').onclick=()=>$('importFile').click();$('importFile').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{const obj=JSON.parse(await f.text());const rs=Array.isArray(obj)?obj:(obj.records||[]);if(!Array.isArray(rs))throw new Error('records array not found');acceptRecords(rs,`手動JSON:${f.name}`)}catch(err){records=[];recordById=new Map();dataSource='読込失敗';$('status').className='status warn';$('status').textContent=`JSON読込失敗：${err.message}`;refreshFilters();showGate({pass:false});clearOutput('JSONの読込に失敗したため、以前の表示を破棄しました。')}finally{e.target.value=''}});
+fetch(DATA_URL,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('app-records.json not available');return r.json()}).then(d=>acceptRecords(Array.isArray(d)?d:(d.records||[]),'app-records.json')).catch(e=>{records=[];recordById=new Map();$('status').className='status warn';$('status').textContent='正本データ未接続：最終1231問の再確認後に接続します。手動JSON読込も利用できます。';dataSource='未接続';refreshFilters();showGate({pass:false});clearOutput('正本データを読み込むと、ここに問題が表示されます。');console.warn(e)});
 </script>
 </body>
 </html>
