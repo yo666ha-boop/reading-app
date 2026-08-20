@@ -15,11 +15,17 @@
   "manual_generation_queue": "PENDING_BASE_RECORD_RECOVERY",
   "base_canonical_zip_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "base_canonical_pair_recovered": false,
-  "app_dynamic_expansion_gate": "PASS",
-  "expanded_validator": "PASS_POSITIVE_NEGATIVE_TESTS",
+  "app_dynamic_expansion_gate": "IMPLEMENTED_DYNAMIC_VARIANT_COUNT_ORIGINALS_FIXED_1124",
+  "expanded_validator": "IMPLEMENTED_PARENT_TAXONOMY_AUDIT_RECALC_DUPLICATE_AND_WORDING_ONLY_NUMERIC_GATE",
   "expanded_composer": "IMPLEMENTED",
+  "validator_test_status": "SOURCE_UPDATED_CI_RECHECK_PENDING",
+  "synthetic_browser_expansion_fixture": "FIXED_DECLARATION_ORDER_CI_RECHECK_PENDING_1124_ORIGINAL_110_VARIANT_TOTAL_1234",
+  "latest_implementation_commits": {
+    "validator_surface_change_gate": "646b434af4bb5c54159f7475cf4128bfcaf66d00",
+    "validator_negative_test": "5f2026c0b10e99dbc5c855ad25d81449f97d997f",
+    "browser_fixture_fix": "8683711f35969cef573639387187f62ccafe145f"
+  },
   "publication_ready": false,
-  "next": "recover actual verified base records; generate independently recalculated variants from each real parent; compose and run real browser/A4 regression",
-  "recorded_at_utc": "2026-08-20T14:56:25.057194+00:00",
-  "synthetic_browser_expansion_fixture": "READY_1124_ORIGINAL_110_VARIANT_TOTAL_1234"
+  "next": "allow CI to verify the hardened expanded layer and fixed 4-environment synthetic browser; continue exact BASE recovery; once BASE records are recovered, build per-parent generation/manual queues and generate only independently recalculated verified variants",
+  "recorded_at_utc": "2026-08-20T14:58:55Z"
 }
