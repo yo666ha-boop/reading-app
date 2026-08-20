@@ -163,6 +163,28 @@ with tempfile.TemporaryDirectory() as td_raw:
     finally:
         release_bundle.ROOT = old_release_root
 
+    # 8) The recorded legacy canonical q/ans shape must be detected but never guessed/promoted into app schema.
+    legacy = td / "legacy_canonical_1231.json"
+    legacy_rows = [
+        {
+            "id": f"LEGACY-{i:04d}",
+            "stage": "中1",
+            "unit": "正負の数",
+            "title": "確認問題",
+            "q": "1+1を計算しなさい。",
+            "choices": None,
+            "ans": "2",
+            "explanation": "1+1=2",
+        }
+        for i in range(1, 1232)
+    ]
+    legacy.write_text(json.dumps(legacy_rows, ensure_ascii=False), encoding="utf-8")
+    legacy_out = td / "legacy_promoted.json"
+    p = run(str(RECOVERY), str(legacy), "--output", str(legacy_out))
+    combined = p.stdout + p.stderr
+    if p.returncode != 3 or "RECORDED_CANONICAL_CORE_1231_DETECTED_APP_MAPPING_NOT_VERIFIED" not in combined or legacy_out.exists():
+        raise SystemExit(f"FAIL legacy canonical detection/no-guess gate rc={p.returncode}\n{p.stdout}\n{p.stderr}")
+
 print("PASS_NEGATIVE_GATES")
 print("fake_zip_hash_bypass=REJECTED")
 print("partial_161_promotion=REJECTED")
@@ -174,3 +196,4 @@ print("figure_unsupported_scheme=REJECTED")
 print("validator_browser_shape_parity_negatives=REJECTED")
 print("release_missing_local_figure=REJECTED")
 print("release_present_local_figure=COLLECTED")
+print("legacy_canonical_1231_detected_without_guess_promotion=PASS")
