@@ -3,7 +3,6 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-import shutil
 import subprocess
 import tempfile
 from collections import defaultdict
@@ -94,6 +93,49 @@ def batch_meta(work: Path, oids: list[str]) -> dict[str, tuple[str, int]]:
     return meta
 
 
+class BlobBatchReader:
+    def __init__(self, work: Path) -> None:
+        self.proc = subprocess.Popen(
+            ["git", "-C", str(work), "cat-file", "--batch"],
+            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        )
+        if self.proc.stdin is None or self.proc.stdout is None:
+            raise RuntimeError("failed to open git cat-file --batch")
+
+    def read(self, oid: str) -> bytes:
+        assert self.proc.stdin is not None and self.proc.stdout is not None
+        self.proc.stdin.write(oid.encode("ascii") + b"\n")
+        self.proc.stdin.flush()
+        header = self.proc.stdout.readline()
+        parts = header.rstrip(b"\n").split()
+        if len(parts) != 3 or parts[1] != b"blob":
+            raise RuntimeError(f"unexpected batch header for {oid}: {header[:200]!r}")
+        size = int(parts[2])
+        data = self.proc.stdout.read(size)
+        sep = self.proc.stdout.read(1)
+        if len(data) != size or sep != b"\n":
+            raise RuntimeError(f"malformed batch payload for {oid}")
+        return data
+
+    def close(self) -> None:
+        if self.proc.stdin is not None and not self.proc.stdin.closed:
+            self.proc.stdin.close()
+        stderr = self.proc.stderr.read() if self.proc.stderr is not None else b""
+        rc = self.proc.wait()
+        if rc:
+            raise RuntimeError(f"git cat-file --batch rc={rc}: {stderr.decode('utf-8','replace')[:500]}")
+
+    def __enter__(self) -> "BlobBatchReader":
+        return self
+
+    def __exit__(self, exc_type, exc, tb) -> None:
+        try:
+            self.close()
+        except Exception:
+            if exc is None:
+                raise
+
+
 def tree_entries(work: Path, commit: str) -> list[tuple[str, str]]:
     raw = git_bytes(work, "ls-tree", "-r", "-z", commit)
     entries: list[tuple[str, str]] = []
@@ -174,6 +216,7 @@ def scan_repo(repo: str, temp_root: Path) -> tuple[dict, dict | None]:
         "sha256_checked": 0,
         "bytes_hashed": 0,
         "oversize_skipped": 0,
+        "blob_read_mode": "single_persistent_git_cat_file_batch_process",
         "canonical_hits": [],
         "lfs_pointer_hits": [],
         "audit_blob_candidates": [],
@@ -196,24 +239,23 @@ def scan_repo(repo: str, temp_root: Path) -> tuple[dict, dict | None]:
 
     exact: list[tuple[str, bytes]] = []
     lfs_oids: list[str] = []
-    for oid in blobs:
-        size = meta[oid][1]
-        if size > MAX_BLOB_BYTES:
-            item["oversize_skipped"] += 1
-            continue
-        data = git_bytes(work, "cat-file", "blob", oid)
-        item["sha256_checked"] += 1
-        item["bytes_hashed"] += len(data)
-        digest = sha256_bytes(data)
-        if digest == EXPECTED_SHA256:
-            item["canonical_hits"].append({"oid": oid, "paths": sorted(paths.get(oid, set())), "bytes": len(data)})
-            exact.append((oid, data))
-        pointer = parse_lfs_pointer(data)
-        if pointer and pointer[0] == EXPECTED_SHA256:
-            item["lfs_pointer_hits"].append({"oid": oid, "paths": sorted(paths.get(oid, set())), "lfs_size": pointer[1]})
-            lfs_oids.append(oid)
-        if any(Path(p).name == AUDIT_FILENAME for p in paths.get(oid, set())) and valid_audit(data):
-            item["audit_blob_candidates"].append({"oid": oid, "paths": sorted(paths.get(oid, set())), "sha256": digest, "bytes": len(data)})
+    readable = [oid for oid in blobs if meta[oid][1] <= MAX_BLOB_BYTES]
+    item["oversize_skipped"] = len(blobs) - len(readable)
+    with BlobBatchReader(work) as reader:
+        for oid in readable:
+            data = reader.read(oid)
+            item["sha256_checked"] += 1
+            item["bytes_hashed"] += len(data)
+            digest = sha256_bytes(data)
+            if digest == EXPECTED_SHA256:
+                item["canonical_hits"].append({"oid": oid, "paths": sorted(paths.get(oid, set())), "bytes": len(data)})
+                exact.append((oid, data))
+            pointer = parse_lfs_pointer(data)
+            if pointer and pointer[0] == EXPECTED_SHA256:
+                item["lfs_pointer_hits"].append({"oid": oid, "paths": sorted(paths.get(oid, set())), "lfs_size": pointer[1]})
+                lfs_oids.append(oid)
+            if any(Path(p).name == AUDIT_FILENAME for p in paths.get(oid, set())) and valid_audit(data):
+                item["audit_blob_candidates"].append({"oid": oid, "paths": sorted(paths.get(oid, set())), "sha256": digest, "bytes": len(data)})
 
     for oid, data in exact:
         pair = find_pair(work, oid, data)
@@ -243,7 +285,7 @@ def main() -> int:
         "repos": [],
         "paired_recovery_hits": [],
         "completed_at_utc": None,
-        "policy": "Existing immutable artifact recovery only. Every reachable blob under the cap in the two other owned repositories is SHA-256 checked; no reconstruction or guessed mapping.",
+        "policy": "Existing immutable artifact recovery only. Every reachable blob under the cap in the two other owned repositories is SHA-256 checked with persistent batch readers; no reconstruction or guessed mapping.",
     }
     with tempfile.TemporaryDirectory() as td:
         root = Path(td)
