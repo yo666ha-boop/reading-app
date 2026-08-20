@@ -5,19 +5,570 @@
   "expected_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "required_paired_audit": "MATHBANK_FINAL_AUDIT_V2.json",
   "created_since": "2026-08-19T00:00:00Z",
-  "all_artifacts_seen": 168,
-  "candidate_artifacts": 168,
+  "all_artifacts_seen": 187,
+  "candidate_artifacts": 187,
   "canonical_hits": 0,
   "audit_name_hits": 0,
   "valid_audit_hits": 0,
   "paired_recovery_hits": 0,
   "recovery_hint_hits": 0,
   "download_failures": 0,
-  "all_members_sha256_checked": 616,
-  "all_member_bytes_hashed": 262571675,
+  "all_members_sha256_checked": 638,
+  "all_member_bytes_hashed": 265938916,
   "zip_signature_members": 3,
   "oversize_members_skipped": 0,
   "artifacts": [
+    {
+      "artifact_id": 9426096408,
+      "name": "math-browser-regression-diagnostics",
+      "size_in_bytes": 1009,
+      "created_at": "2026-08-20T22:00:36Z",
+      "updated_at": "2026-08-20T22:00:36Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422120052,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "e71fb9539332435209260ad2eddeeac6266a8a19"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 2,
+        "members_sha256_checked": 2,
+        "member_bytes_hashed": 2610,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1009
+    },
+    {
+      "artifact_id": 9426088669,
+      "name": "math-git-heads-tags-fast-sharded-summary",
+      "size_in_bytes": 871,
+      "created_at": "2026-08-20T22:00:19Z",
+      "updated_at": "2026-08-20T22:00:19Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422162529,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b7a21420f38401c38e23fd216e13bc135ced1cc6"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 1344,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 871
+    },
+    {
+      "artifact_id": 9426084226,
+      "name": "math-git-heads-tags-fast-shard-11",
+      "size_in_bytes": 793,
+      "created_at": "2026-08-20T22:00:10Z",
+      "updated_at": "2026-08-20T22:00:10Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422162529,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b7a21420f38401c38e23fd216e13bc135ced1cc6"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 920,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 793
+    },
+    {
+      "artifact_id": 9426084109,
+      "name": "math-git-heads-tags-fast-shard-7",
+      "size_in_bytes": 793,
+      "created_at": "2026-08-20T22:00:09Z",
+      "updated_at": "2026-08-20T22:00:09Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422162529,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b7a21420f38401c38e23fd216e13bc135ced1cc6"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 919,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 793
+    },
+    {
+      "artifact_id": 9426083934,
+      "name": "math-git-heads-tags-fast-shard-4",
+      "size_in_bytes": 793,
+      "created_at": "2026-08-20T22:00:09Z",
+      "updated_at": "2026-08-20T22:00:09Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422162529,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b7a21420f38401c38e23fd216e13bc135ced1cc6"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 918,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 793
+    },
+    {
+      "artifact_id": 9426083929,
+      "name": "math-git-heads-tags-fast-shard-15",
+      "size_in_bytes": 794,
+      "created_at": "2026-08-20T22:00:09Z",
+      "updated_at": "2026-08-20T22:00:09Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422162529,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b7a21420f38401c38e23fd216e13bc135ced1cc6"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 919,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 794
+    },
+    {
+      "artifact_id": 9426083790,
+      "name": "math-git-heads-tags-fast-shard-14",
+      "size_in_bytes": 795,
+      "created_at": "2026-08-20T22:00:09Z",
+      "updated_at": "2026-08-20T22:00:09Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422162529,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b7a21420f38401c38e23fd216e13bc135ced1cc6"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 920,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 795
+    },
+    {
+      "artifact_id": 9426083632,
+      "name": "math-git-heads-tags-fast-shard-10",
+      "size_in_bytes": 794,
+      "created_at": "2026-08-20T22:00:08Z",
+      "updated_at": "2026-08-20T22:00:08Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422162529,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b7a21420f38401c38e23fd216e13bc135ced1cc6"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 920,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 794
+    },
+    {
+      "artifact_id": 9426083217,
+      "name": "math-git-heads-tags-fast-shard-6",
+      "size_in_bytes": 794,
+      "created_at": "2026-08-20T22:00:07Z",
+      "updated_at": "2026-08-20T22:00:07Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422162529,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b7a21420f38401c38e23fd216e13bc135ced1cc6"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 919,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 794
+    },
+    {
+      "artifact_id": 9426083160,
+      "name": "math-git-heads-tags-fast-shard-9",
+      "size_in_bytes": 793,
+      "created_at": "2026-08-20T22:00:07Z",
+      "updated_at": "2026-08-20T22:00:07Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422162529,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b7a21420f38401c38e23fd216e13bc135ced1cc6"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 919,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 793
+    },
+    {
+      "artifact_id": 9426082542,
+      "name": "math-git-heads-tags-fast-shard-5",
+      "size_in_bytes": 793,
+      "created_at": "2026-08-20T22:00:06Z",
+      "updated_at": "2026-08-20T22:00:06Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422162529,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b7a21420f38401c38e23fd216e13bc135ced1cc6"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 919,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 793
+    },
+    {
+      "artifact_id": 9426082411,
+      "name": "math-git-heads-tags-fast-shard-0",
+      "size_in_bytes": 793,
+      "created_at": "2026-08-20T22:00:06Z",
+      "updated_at": "2026-08-20T22:00:06Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422162529,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b7a21420f38401c38e23fd216e13bc135ced1cc6"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 919,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 793
+    },
+    {
+      "artifact_id": 9426082297,
+      "name": "math-git-heads-tags-fast-shard-12",
+      "size_in_bytes": 793,
+      "created_at": "2026-08-20T22:00:06Z",
+      "updated_at": "2026-08-20T22:00:06Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422162529,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b7a21420f38401c38e23fd216e13bc135ced1cc6"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 920,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 793
+    },
+    {
+      "artifact_id": 9426082125,
+      "name": "math-git-heads-tags-fast-shard-8",
+      "size_in_bytes": 793,
+      "created_at": "2026-08-20T22:00:05Z",
+      "updated_at": "2026-08-20T22:00:05Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422162529,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b7a21420f38401c38e23fd216e13bc135ced1cc6"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 918,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 793
+    },
+    {
+      "artifact_id": 9426082045,
+      "name": "math-git-heads-tags-fast-shard-2",
+      "size_in_bytes": 793,
+      "created_at": "2026-08-20T22:00:05Z",
+      "updated_at": "2026-08-20T22:00:05Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422162529,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b7a21420f38401c38e23fd216e13bc135ced1cc6"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 919,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 793
+    },
+    {
+      "artifact_id": 9426081611,
+      "name": "math-git-heads-tags-fast-shard-13",
+      "size_in_bytes": 795,
+      "created_at": "2026-08-20T22:00:04Z",
+      "updated_at": "2026-08-20T22:00:04Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422162529,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b7a21420f38401c38e23fd216e13bc135ced1cc6"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 920,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 795
+    },
+    {
+      "artifact_id": 9426081608,
+      "name": "math-git-heads-tags-fast-shard-3",
+      "size_in_bytes": 793,
+      "created_at": "2026-08-20T22:00:04Z",
+      "updated_at": "2026-08-20T22:00:04Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422162529,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b7a21420f38401c38e23fd216e13bc135ced1cc6"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 919,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 793
+    },
+    {
+      "artifact_id": 9426081587,
+      "name": "math-git-heads-tags-fast-shard-1",
+      "size_in_bytes": 791,
+      "created_at": "2026-08-20T22:00:04Z",
+      "updated_at": "2026-08-20T22:00:04Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422162529,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b7a21420f38401c38e23fd216e13bc135ced1cc6"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 919,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 791
+    },
+    {
+      "artifact_id": 9426077549,
+      "name": "math-git-heads-tags-fast-prefetched-history",
+      "size_in_bytes": 3349004,
+      "created_at": "2026-08-20T21:59:56Z",
+      "updated_at": "2026-08-20T21:59:56Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32422162529,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b7a21420f38401c38e23fd216e13bc135ced1cc6"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 3,
+        "members_sha256_checked": 3,
+        "member_bytes_hashed": 3348580,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 3349004
+    },
     {
       "artifact_id": 9425979317,
       "name": "math-pr-refs-sharded-summary",
@@ -4916,6 +5467,6 @@
     }
   ],
   "recovered_files": [],
-  "completed_at_utc": "2026-08-20T22:00:06.908953+00:00",
+  "completed_at_utc": "2026-08-20T22:03:05.134205+00:00",
   "policy": "Every member under the size cap is SHA-256 checked regardless of filename/extension. Nested archives are detected by ZIP signature. Exact immutable SHA plus one unambiguous valid final audit from the same Actions artifact is required; no reconstruction."
 }
