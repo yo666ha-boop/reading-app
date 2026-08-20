@@ -11,6 +11,8 @@ on:
       - 'math-bank/app/test_expanded_variant_layer.py'
       - 'math-bank/app/build_variant_generation_queue.py'
       - 'math-bank/app/test_variant_generation_queue.py'
+      - 'math-bank/app/build_release_bundle.py'
+      - 'math-bank/app/verify_publish_readiness.py'
       - 'math-bank/app/upgrade_index_for_expanded_variants.py'
       - 'math-bank/app/upgrade_browser_regression_for_expanded_variants.py'
       - 'math-bank/app/verified-expanded-variants.json'
@@ -48,6 +50,8 @@ jobs:
             math-bank/app/test_expanded_variant_layer.py \
             math-bank/app/build_variant_generation_queue.py \
             math-bank/app/test_variant_generation_queue.py \
+            math-bank/app/build_release_bundle.py \
+            math-bank/app/verify_publish_readiness.py \
             math-bank/app/upgrade_index_for_expanded_variants.py \
             math-bank/app/upgrade_browser_regression_for_expanded_variants.py \
             math-bank/app/check_app_shell.py
@@ -59,6 +63,26 @@ jobs:
       - name: Run conservative parent queue classification gates
         working-directory: math-bank/app
         run: python test_variant_generation_queue.py
+
+      - name: Assert dynamic release contract
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          composer=Path('math-bank/app/compose_expanded_app_records.py').read_text(encoding='utf-8')
+          release=Path('math-bank/app/build_release_bundle.py').read_text(encoding='utf-8')
+          ready=Path('math-bank/app/verify_publish_readiness.py').read_text(encoding='utf-8')
+          assert 'base-app-records.json' in composer
+          assert 'base-app-records.json' in release
+          assert 'verified-expanded-variants.json' in release
+          assert 'require_full_parent_coverage=True' in release
+          assert 'expanded_count < 1124' in release
+          assert 'STRICT_BASE_1231_PLUS_DYNAMIC_VERIFIED_EXPANDED_VARIANTS' in release
+          assert 'EXPECTED_RECORDS = 1231' not in ready
+          assert 'EXPECTED_VARIANTS = 107' not in ready
+          assert 'expanded_parent_coverage' in ready
+          assert 'records != EXPECTED_ORIGINAL + EXPECTED_BASELINE_VARIANTS + expanded' in ready
+          print('PASS_DYNAMIC_EXPANDED_RELEASE_CONTRACT')
+          PY
 
       - name: Upgrade app UI and runtime gate to dynamic verified variants
         run: python math-bank/app/upgrade_index_for_expanded_variants.py
@@ -122,7 +146,8 @@ jobs:
             'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
             'app_dynamic_expansion_gate':'PASS',
             'expanded_validator':'PASS_POSITIVE_NEGATIVE_TESTS',
-            'expanded_composer':'IMPLEMENTED',
+            'expanded_composer':'IMPLEMENTED_WITH_IMMUTABLE_BASE_SNAPSHOT',
+            'dynamic_release_contract':'PASS_SOURCE_CONTRACT_WAITING_FOR_REAL_BASE_AND_FULL_COVERAGE',
             'generation_queue_builder':'PASS_CONSERVATIVE_CLASSIFICATION_TESTS',
             'synthetic_browser_expansion_fixture':'READY_1124_ORIGINAL_110_VARIANT_TOTAL_1234',
             'expanded_verified_variants':len(json.loads(Path('math-bank/app/verified-expanded-variants.json').read_text(encoding='utf-8')).get('variants',[])),
