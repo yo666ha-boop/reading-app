@@ -1,6 +1,6 @@
 {
   "project": "mikami-math-problem-bank",
-  "status": "APP_SHELL_COMPLETE_PENDING_CANONICAL_1231_REVERIFY",
+  "status": "APP_SHELL_HARDENED_PENDING_CANONICAL_1231_RECOVERY",
   "current_stage": "APP_CANONICAL_DATA_WIRING_WAIT",
   "recorded_completion_claim": {
     "original_records": 1124,
@@ -25,10 +25,27 @@
     "freeze_final_record_count": 1231,
     "do_not_generate_new_variants": true,
     "do_not_rewrite_existing_verified_content": true,
+    "do_not_promote_partial_161_dataset": true,
     "original_expected": 1124,
     "variant_expected": 107,
     "original_by_source_expected": {"Winpass": 570, "実力錬成": 237, "Standard": 317}
   },
+  "completed_this_run": [
+    "Reconfirmed the isolated branch and prior canonical checkpoint before editing",
+    "Fixed per-question answer reveal: .answer.open now displays correctly",
+    "Added problem-bank full-text search across ID/question/answer/explanation/unit/skill/format/book/tags",
+    "Added manual canonical JSON import path that still requires the exact 1231 canonical browser gate",
+    "Kept draw/reroll/print locked for any partial or noncanonical dataset",
+    "Added afterprint cleanup so answer-print mode and title are reset reliably",
+    "Raised selectable question count ceiling to 200",
+    "Added check_app_shell.py regression checker for required controls, canonical constants and JavaScript syntax",
+    "Added recover_canonical_app_records.py strict recovery gate: ZIP/JSON/JSONL candidates are promoted only when exactly 1231 records pass the existing strict validator; no transformation or invented records",
+    "Expanded GitHub Actions to compile all app validation/recovery tools and run app-shell/JavaScript checks on app changes",
+    "Changed source-inventory CI to skip safely when source ZIPs are absent instead of confusing that absence with an app failure",
+    "Retried local canonical artifact access; execution layer still returned ClientResponseError",
+    "Rechecked File Library; exact canonical ZIP/audit still not recovered, only an older partial app checkpoint with builtin_data_count=161 was found and was not promoted",
+    "main remained untouched"
+  ],
   "app_implemented": [
     "grade filter",
     "major genre filter",
@@ -38,7 +55,8 @@
     "question format filter",
     "original/verified-variant selector",
     "source-book filter",
-    "question count",
+    "problem-bank text search",
+    "question count up to 200",
     "random selection",
     "same-condition reroll",
     "source-order selection",
@@ -47,16 +65,17 @@
     "A4 question print mode",
     "A4 answer print mode",
     "print UI suppression",
+    "afterprint state reset",
     "name/date/score fields",
     "settings persistence via localStorage",
     "figure_refs rendering",
     "responsive layout",
+    "manual JSON import",
     "canonical 1231 browser-side gate",
-    "canonical strict Python validator gate"
-  ],
-  "app_schema_changes": [
-    "skill required",
-    "question_format required"
+    "canonical strict Python validator gate",
+    "strict canonical recovery/pass-through gate",
+    "app-shell regression checker",
+    "GitHub Actions app gate"
   ],
   "validator_strict_gate": {
     "final_records": 1231,
@@ -72,46 +91,68 @@
   "artifact_reverify": {
     "local_artifact_present_this_run": false,
     "local_audit_present_this_run": false,
+    "local_access_result": "CLIENT_RESPONSE_ERROR",
     "file_library_exact_artifact_found": false,
     "file_library_exact_audit_found": false,
-    "library_search_found_only_partial_app_checkpoint": true,
+    "partial_checkpoint_found": true,
+    "partial_checkpoint_builtin_data_count": 161,
+    "partial_checkpoint_promoted": false,
     "result": "CANONICAL_FINAL_ARTIFACT_NOT_RECOVERED_THIS_RUN"
   },
   "tests_this_run": {
-    "javascript_syntax": "PASS_NODE_CHECK",
-    "chromium_responsive_print": "TRANSIENT_RUNTIME_TIMEOUT_NOT_COUNTED_AS_APP_FAIL",
+    "previous_javascript_syntax": "PASS_NODE_CHECK",
+    "new_ci_compile_and_shell_gate": "PUSHED_AWAITING_OBSERVABLE_ACTION_RESULT",
     "real_1231_data_validator": "BLOCKED_UNTIL_CANONICAL_ARTIFACT_RECOVERY",
-    "real_1231_browser_test": "BLOCKED_UNTIL_CANONICAL_ARTIFACT_RECOVERY"
+    "real_1231_browser_test": "BLOCKED_UNTIL_CANONICAL_ARTIFACT_RECOVERY",
+    "real_1231_print_test": "BLOCKED_UNTIL_CANONICAL_ARTIFACT_RECOVERY"
   },
   "counts": {
     "canonical_records_reverified_this_run": 0,
-    "app_records_verified": 0
+    "app_records_verified": 0,
+    "partial_records_known_elsewhere": 161,
+    "partial_records_accepted_as_canonical": 0
   },
   "github_branch": "math-problem-bank-bootstrap",
   "github_main_touched": false,
   "github_commits_this_run": [
-    "be6171d192a6bdaad00a9ecb093c996ac96ad3b3",
-    "d702dd349a39c2ab8a9866835b88becf73d44000",
-    "0c04fe73c32c76c7c626d6d9d6784012acb3afd7"
+    "aef0d34085df6c10e4d61e37544d85d358f14607",
+    "df404f94911a1497789facbd96f81f28f4f29c18",
+    "b45e0276a9421099d175401f66716a83cd6dd07c",
+    "1cba736197cf8f7a2b7c9ddb996992ca5b8828c9",
+    "af9bb1cbac9e900907f387b5a427971b9b17079b"
   ],
-  "last_completed_batch": "finish-app-ui-schema-validator-shell-with-canonical-gates",
-  "next_batch": "recover-final-artifact-convert-exact-1231-run-strict-validator-wire-app-records",
-  "resume_rule": "Use only the fixed final 1231-record canonical artifact. Do not add new variants or reconstruct missing canonical content from old/partial files. If artifact remains unavailable, continue only app/test/publication preparation that does not invent records.",
-  "blocking_issue": "The previously completed final canonical ZIP and MATHBANK_FINAL_AUDIT_V2.json are not present in this execution filesystem and were not found by exact Library/conversation search. No substitute dataset was promoted.",
+  "current_stage_detail": "The app shell and safety gates are now completion-ready. The only data-critical blocker is recovery of the already-completed exact 1231-record canonical artifact/audit. No partial dataset is allowed to unlock the app.",
+  "remaining_work": [
+    "Recover and reverify the exact final canonical ZIP and MATHBANK_FINAL_AUDIT_V2.json",
+    "Run strict recovery gate and create exact app-records.json only from a candidate that passes all 1231 gates",
+    "Run validate_app_records.py against the real 1231 records",
+    "Verify all figure_refs and math rendering with real data",
+    "Run iPhone/Fire/PC responsive regression with real data",
+    "Run A4 question/answer print regression with real data",
+    "Prepare isolated publication target without touching reading-app main",
+    "Run final public-URL real-data test",
+    "Package final app ZIP, audit report and final checkpoint"
+  ],
+  "next_start_point": "First recheck canonical ZIP/audit availability. If recovered, immediately run recover_canonical_app_records.py -> strict validator -> wire app-records.json. If still unavailable, inspect the latest GitHub Actions result and continue only non-data publication/regression preparation without inventing records.",
+  "next_stage": "EXACT_1231_RECOVERY_STRICT_VALIDATION_AND_WIRING",
+  "last_completed_batch": "harden-app-shell-add-search-import-recovery-gates-and-ci",
+  "next_batch": "recover-exact-1231-run-strict-validator-wire-real-data",
+  "resume_rule": "If the current stage is unfinished, resume from this exact point. If it completes, immediately advance to real-data browser/print regression, then isolated publication, public URL test, final package and audit. Do not stop at an intermediate stage.",
+  "blocking_issue": "The already-completed exact 1231 canonical ZIP and audit are not accessible in the current execution filesystem and were not found by exact File Library search. Container/local execution currently returns ClientResponseError. This is a recovery/access blocker, not permission to reconstruct or replace the canonical dataset.",
   "run_result": {
     "PASS": [
       "Single canonical math route maintained",
       "main untouched",
-      "App filter/selection/print/settings shell expanded to completion-ready state",
-      "Strict 1231 canonical validator implemented",
-      "Browser-side canonical count/source gate implemented",
-      "JavaScript syntax check passed",
-      "No fake/unverified records inserted"
+      "App UI and safety gates hardened",
+      "Known per-question answer display bug fixed",
+      "Search and manual canonical JSON import added",
+      "Strict no-invention recovery tool added",
+      "CI app checks added",
+      "Partial 161 dataset explicitly rejected as canonical"
     ],
     "BLOCKED": [
-      "Canonical ZIP re-verification",
-      "Canonical audit JSON re-verification",
-      "Exact 1231 app-record conversion",
+      "Canonical ZIP/audit recovery",
+      "Exact 1231 app-record promotion",
       "Strict validator PASS on real 1231 records",
       "Real-data responsive/print regression",
       "Public URL real-data test"
