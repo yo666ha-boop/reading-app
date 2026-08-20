@@ -11,6 +11,8 @@ on:
       - 'math-bank/app/test_expanded_variant_layer.py'
       - 'math-bank/app/build_variant_generation_queue.py'
       - 'math-bank/app/test_variant_generation_queue.py'
+      - 'math-bank/app/generate_safe_verified_variants.py'
+      - 'math-bank/app/test_safe_verified_variant_generator.py'
       - 'math-bank/app/build_release_bundle.py'
       - 'math-bank/app/verify_publish_readiness.py'
       - 'math-bank/app/upgrade_index_for_expanded_variants.py'
@@ -50,6 +52,8 @@ jobs:
             math-bank/app/test_expanded_variant_layer.py \
             math-bank/app/build_variant_generation_queue.py \
             math-bank/app/test_variant_generation_queue.py \
+            math-bank/app/generate_safe_verified_variants.py \
+            math-bank/app/test_safe_verified_variant_generator.py \
             math-bank/app/build_release_bundle.py \
             math-bank/app/verify_publish_readiness.py \
             math-bank/app/upgrade_index_for_expanded_variants.py \
@@ -64,6 +68,10 @@ jobs:
         working-directory: math-bank/app
         run: python test_variant_generation_queue.py
 
+      - name: Run exact safe arithmetic and linear-equation generator gates
+        working-directory: math-bank/app
+        run: python test_safe_verified_variant_generator.py
+
       - name: Assert dynamic release contract
         run: |
           python - <<'PY'
@@ -71,6 +79,7 @@ jobs:
           composer=Path('math-bank/app/compose_expanded_app_records.py').read_text(encoding='utf-8')
           release=Path('math-bank/app/build_release_bundle.py').read_text(encoding='utf-8')
           ready=Path('math-bank/app/verify_publish_readiness.py').read_text(encoding='utf-8')
+          generator=Path('math-bank/app/generate_safe_verified_variants.py').read_text(encoding='utf-8')
           assert 'base-app-records.json' in composer
           assert 'base-app-records.json' in release
           assert 'verified-expanded-variants.json' in release
@@ -81,7 +90,11 @@ jobs:
           assert 'EXPECTED_VARIANTS = 107' not in ready
           assert 'expanded_parent_coverage' in ready
           assert 'records != EXPECTED_ORIGINAL + EXPECTED_BASELINE_VARIANTS + expanded' in ready
-          print('PASS_DYNAMIC_EXPANDED_RELEASE_CONTRACT')
+          assert 'independent_recalculation' in generator
+          assert 'binary_parent_answer_not_exactly_recalculated' in generator
+          assert 'linear_parent_answer_not_exactly_recalculated' in generator
+          assert 'unsupported_safe_generation' in generator
+          print('PASS_DYNAMIC_EXPANDED_RELEASE_AND_SAFE_GENERATOR_CONTRACT')
           PY
 
       - name: Upgrade app UI and runtime gate to dynamic verified variants
@@ -149,10 +162,12 @@ jobs:
             'expanded_composer':'IMPLEMENTED_WITH_IMMUTABLE_BASE_SNAPSHOT',
             'dynamic_release_contract':'PASS_SOURCE_CONTRACT_WAITING_FOR_REAL_BASE_AND_FULL_COVERAGE',
             'generation_queue_builder':'PASS_CONSERVATIVE_CLASSIFICATION_TESTS',
+            'safe_exact_generator':'PASS_ARITHMETIC_AND_LINEAR_EQUATION_PARENT_RECALC_PLUS_INDEPENDENT_VARIANT_VERIFY',
+            'safe_exact_generator_scope':'SIGNED_INTEGER_BINARY_ARITHMETIC_AND_FIRST_DEGREE_EQUATIONS_ONLY; FIGURE_CHOICE_PROSE_UNPROVEN_FAIL_CLOSED',
             'synthetic_browser_expansion_fixture':'READY_1124_ORIGINAL_110_VARIANT_TOTAL_1234',
             'expanded_verified_variants':len(json.loads(Path('math-bank/app/verified-expanded-variants.json').read_text(encoding='utf-8')).get('variants',[])),
             'publication_ready':False,
-            'next':'recover actual verified base records; generate independently recalculated variants from each real parent; compose and run real browser/A4 regression'
+            'next':'recover actual verified base records; run exact safe generator first; extend parser only with independently provable structures; resolve remaining manual parents; compose and run real browser/A4 regression'
           })
           p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           PY
