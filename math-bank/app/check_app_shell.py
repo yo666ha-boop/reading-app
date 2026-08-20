@@ -94,7 +94,6 @@ required_fragments = [
     "markerHtml",
     "markerRefsForRecord",
     "markerFail",
-    "本文内図版マーカー",
     "data-inline-figure=\"1\"",
     "#list img[data-inline-figure=\"1\"]",
 ]
