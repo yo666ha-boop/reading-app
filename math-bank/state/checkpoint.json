@@ -1,7 +1,7 @@
 {
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_EXPANDED_VARIANT_APP_AND_BASE_RECOVERY",
-  "current_stage": "BRANCH_TAG_EXACT_RECOVERY_COMPLETE_PAIR0_PR_REFS_FAST_RECOVERY_TRIGGERED",
+  "current_stage": "BRANCH_TAG_AND_PR_REFS_EXACT_RECOVERY_COMPLETE_PAIR0_REPAIRED_AUTO_COMPLETE_TRIGGERED",
   "base_canonical": {
     "records": 1231,
     "original_records": 1124,
@@ -23,13 +23,13 @@
     "manual_generation_queue": "WAITING_FOR_EXACT_BASE_PARENT_RECORDS"
   },
   "今回完了した内容": [
-    "Re-read live HEAD/checkpoint/variant state/recovery state before acting.",
-    "Confirmed Math Git Heads Tags Fast Sharded Recovery reached terminal exact coverage: recovery_mode=full_history_bundle_precomputed_oid_then_16_way_fast_fanout, full fsck/selftest PASS, source/imported/readable inventory 1901/1901, 16/16 shards, assigned=checked=1901, 25454572 bytes hashed, canonical hits 0, LFS hits 0, pair hits 0, exact_coverage_complete=true.",
-    "Closed the branch/tag Git-history path as valid negative evidence. The earlier 1876/1876 prepare plus 0/16 cancelled run remains historical only and is not used as absence evidence.",
-    "Re-read PR-ref recovery state: 4 PR refs, 1419 readable blobs, 0/16 and exact_coverage_complete=false, so the old PR run remains incomplete evidence.",
-    "Reworked .github/workflows/math-pr-refs-sharded-recovery.yml to use the already verified fast scanner: one prepare-stage full fsck/bundle verify/all-ref selftest, immutable readable OID list with SHA binding, then 16 shards hash exact OID partitions without repeated per-shard fsck.",
-    "The PR workflow still requires 16/16 and manifest/readable/assigned/checked equality; exact SHA and recovered audit pairing are preserved. The workflow change commit is 4ca408c376d7ceb17674db3d81ff2caaddbe416a and its push triggers the PR-ref recovery path.",
-    "No BASE record or expanded variant was fabricated. main remains untouched."
+    "Re-read live branch HEAD, checkpoint, variant state, PR recovery, Actions recovery, CI and auto-complete state before acting.",
+    "Confirmed PR-only recovery reached terminal exact coverage with recovery_mode=verified_pr_bundle_precomputed_oid_then_16_way_fast_fanout: 4 refs, 1419 readable blobs, 16/16 shards, assigned=checked=1419, 18140592 bytes hashed, canonical hits 0, LFS hits 0, pair hits 0, exact_coverage_complete=true.",
+    "Closed PR-only refs as valid negative evidence. Together with branch/tag exact coverage 1901/1901 pair0, all Git refs in reading-app are now exhaustively covered by the dedicated exact scanners.",
+    "Read latest Actions content-addressed recovery: 205 artifacts, 660 members, 268671020 bytes hashed, download failures 0, exact canonical hits 0, valid audit hits 0, pair hits 0.",
+    "Diagnosed Math Canonical Auto Complete run 32426427311: completed as cancelled after the 45-minute job bound while redundantly rerunning the expensive full reachable-Git scan even though exact branch/tag and PR recovery were already independently complete.",
+    "Repaired .github/workflows/math-canonical-auto-complete.yml so auto-complete no longer repeats exhaustive Git history. It now scans current Actions artifacts plus GitHub releases, while exact Git absence evidence comes from the separately completed branch/tag and PR-ref states. Fix commit: 500de8c3c94de8f38ff71e3d9f59b53ed7d61859.",
+    "Updated variant-expansion state with PR exact coverage, Actions 205-artifact coverage and the repaired auto-complete policy. No BASE or variant was fabricated; main remains untouched."
   ],
   "実装済み機能": {
     "dynamic_variant_app_gate": true,
@@ -52,15 +52,16 @@
     "dynamic_strict_release_gate": true,
     "dynamic_publication_ready_gate": true,
     "fast_exact_all_ref_shard_scanner": true,
-    "fast_exact_pr_ref_shard_scanner": true
+    "fast_exact_pr_ref_shard_scanner": true,
+    "auto_complete_no_redundant_full_git_scan": true
   },
   "BASE回収状況": {
     "exact_zip_recovered": false,
     "final_audit_recovered": false,
     "canonical_pair_found": false,
-    "latest_actions_artifacts_seen": 162,
-    "latest_actions_members_sha256_checked": 605,
-    "latest_actions_bytes_hashed": 259912724,
+    "latest_actions_artifacts_seen": 205,
+    "latest_actions_members_sha256_checked": 660,
+    "latest_actions_bytes_hashed": 268671020,
     "latest_actions_download_failures": 0,
     "latest_actions_pair_hits": 0,
     "branch_tag_recovery_mode": "full_history_bundle_precomputed_oid_then_16_way_fast_fanout",
@@ -74,17 +75,26 @@
     "branch_tag_lfs_pointer_hits": 0,
     "branch_tag_pair_hits": 0,
     "branch_tag_path_status": "COMPLETE_VALID_NEGATIVE_EVIDENCE",
+    "pr_refs_recovery_mode": "verified_pr_bundle_precomputed_oid_then_16_way_fast_fanout",
     "pr_refs_count": 4,
-    "pr_refs_previous_manifest_readable_blob_oids_total": 1419,
-    "pr_refs_previous_shards_completed": 0,
-    "pr_refs_previous_exact_coverage_complete": false,
-    "pr_refs_fast_workflow_commit": "4ca408c376d7ceb17674db3d81ff2caaddbe416a",
-    "pr_refs_fast_status": "IMPLEMENTED_PUSHED_TRIGGERED_AWAITING_TERMINAL_AGGREGATE",
+    "pr_refs_manifest_readable_blob_oids_total": 1419,
+    "pr_refs_shards_completed": 16,
+    "pr_refs_assigned_blob_oids_total": 1419,
+    "pr_refs_all_blobs_sha256_checked": 1419,
+    "pr_refs_all_blob_bytes_hashed": 18140592,
+    "pr_refs_exact_coverage_complete": true,
+    "pr_refs_canonical_hits": 0,
+    "pr_refs_lfs_pointer_hits": 0,
+    "pr_refs_pair_hits": 0,
+    "pr_refs_path_status": "COMPLETE_VALID_NEGATIVE_EVIDENCE",
     "other_owned_repos": "2_repos_x_16_of_16_exact_complete_pair0_no_rerun_needed_without_change",
+    "auto_complete_previous_run_id": "32426427311",
+    "auto_complete_previous_run_result": "cancelled_at_45_minute_bound_not_absence_evidence",
+    "auto_complete_fix_commit": "500de8c3c94de8f38ff71e3d9f59b53ed7d61859",
     "policy": "cancelled/timeout/incomplete coverage is never absence evidence"
   },
   "CI_browser_A4": {
-    "latest_saved_math_audit_run_id": "32418059694",
+    "latest_saved_math_audit_run_id": "32422120052",
     "latest_saved_math_audit_result": "success",
     "browser_regression": "success_synthetic_four_environments",
     "real_canonical_browser_regression": "blocked_expected_exact_base_absent",
@@ -94,21 +104,21 @@
   },
   "branch_commit": {
     "branch": "math-problem-bank-bootstrap",
-    "head_before_checkpoint_write": "4ca408c376d7ceb17674db3d81ff2caaddbe416a",
-    "pr_refs_fast_workflow_commit": "4ca408c376d7ceb17674db3d81ff2caaddbe416a",
+    "auto_complete_fix_commit": "500de8c3c94de8f38ff71e3d9f59b53ed7d61859",
+    "variant_state_commit": "fc18de4f294154214da05d53943d8a0a098bfa01",
     "main_touched": false
   },
-  "現在どの工程にいるか": "Exact BASE recovery remains the blocker. Branch/tag history is now completely and validly exhausted with pair0. PR-only refs are the next active Git recovery surface and have been converted to the fast exact OID-partition architecture.",
+  "現在どの工程にいるか": "Exact BASE recovery remains the only blocker before parent-bound generation. Git branch/tag and PR refs are now both completely exhausted with exact pair0. Active recovery is limited to newer Actions artifacts, GitHub releases and any newly available external exact pair source.",
   "残っている作業": [
-    "Read terminal Math PR Refs Sharded Recovery aggregate and require 16/16 plus manifest/readable/assigned/checked equality. If pair found, validate and wire BASE immediately; if exact complete pair0, close PR-ref path as valid negative evidence.",
-    "Continue Actions artifact delta recovery only for artifacts newer than the latest complete 162-artifact scan.",
+    "Verify repaired Math Canonical Auto Complete reaches terminal success without the redundant full Git scan and inspect its Actions/release metrics.",
+    "Continue Actions artifact delta recovery only when new artifacts appear; do not rescan already exhausted Git refs unless refs actually change.",
     "Recover exact BASE ZIP plus valid MATHBANK_FINAL_AUDIT_V2.json and recheck SHA-256 before wiring.",
     "Run strict fingerprint-bound uncovered-parent queue on actual 1124 originals, generate independently recalculated safe variants and individually resolve manual figure/choice/unsupported cases until 1124/1124 coverage.",
     "Compose dynamic app-records, run real Chromium/Firefox/WebKit iPhone/Chromium Fire plus six A4 PDFs, then strict release/PUBLICATION_READY and isolated public verification."
   ],
-  "正確停止点": "Branch/tag exact scan is complete at 1901/1901 and pair0. PR refs old state remains 0/16 incomplete, but fast PR-ref recovery has been implemented and triggered by commit 4ca408c376d7ceb17674db3d81ff2caaddbe416a. Exact BASE remains unrecovered; expanded variants=0 and parent coverage=0/1124 by design.",
-  "次回どこから開始するか": "Read live HEAD and math-bank/state/math-pr-refs-sharded-recovery-latest.json first. If recovery_mode=verified_pr_bundle_precomputed_oid_then_16_way_fast_fanout and exact_coverage_complete=true, act on canonical_pair_found immediately. Otherwise inspect current PR workflow jobs/logs and repair the exact failing stage rather than reporting only.",
-  "次に進むべき工程": "PR-ref exact recovery -> Actions delta recovery if new artifacts -> exact BASE pair -> SHA/audit validation -> immutable BASE snapshot + dynamic compose -> fingerprint-bound generation queue -> verified generation/recalculation -> 1124/1124 coverage -> real browser/A4 -> strict release -> PUBLICATION_READY -> isolated public verification",
-  "recorded_at_utc": "2026-08-20T22:58:00Z",
+  "正確停止点": "Branch/tag exact scan is complete at 1901/1901 pair0 and PR refs exact scan is complete at 1419/1419 pair0. Actions scan is complete through 205 artifacts/660 members pair0. The previous auto-complete run was cancelled at its 45-minute bound due to redundant full Git scanning; that workflow has now been repaired and this checkpoint update triggers the repaired path.",
+  "次回どこから開始するか": "Read live HEAD, auto-complete-latest.json and latest workflow state first. Require the repaired auto-complete to finish without full Git rescan. If pair found, validate/wire BASE immediately; if pair0, continue only genuinely new Actions/release/external recovery surfaces.",
+  "次に進むべき工程": "repaired auto-complete terminal result -> Actions/release delta recovery -> exact BASE pair -> SHA/audit validation -> immutable BASE snapshot + dynamic compose -> fingerprint-bound generation queue -> verified generation/recalculation -> 1124/1124 coverage -> real browser/A4 -> strict release -> PUBLICATION_READY -> isolated public verification",
+  "recorded_at_utc": "2026-08-20T23:54:00Z",
   "resume_rule": "Do not stop at inspection/status reporting. Never reconstruct BASE data or generate from an unseen parent. Invalid/unverified expanded records and sibling same-number paraphrases must never count as parent coverage."
 }
