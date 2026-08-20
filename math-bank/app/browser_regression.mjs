@@ -42,7 +42,7 @@ async function injectCanonicalFixture(page) {
             is_generated_variant: false,
             parent_id: null,
           },
-          question: `ブラウザ回帰専用問題 ${i}`,
+          question: i === 1 ? `ブラウザ回帰専用問題 ${i}\n[[IMAGE:${svgData}]]\n図の直後の文` : `ブラウザ回帰専用問題 ${i}`,
           choices: hasChoices ? ['選択肢A', '選択肢B', '選択肢C'] : null,
           answer: hasChoices ? '選択肢B' : String(i),
           explanation: `ブラウザ回帰専用解説 ${i}`,
@@ -130,26 +130,42 @@ async function runCase(browserType, name, viewport) {
     phase = 'initial-load';
     await page.goto(BASE_URL, { waitUntil: 'domcontentloaded' });
     await page.waitForFunction(() => document.querySelector('#status')?.textContent?.includes('正本データ未接続'));
+    const rendererLoaded = await page.evaluate(() => !!window.MikamiMathFigureMarkers?.renderCanonicalText);
+    if (!rendererLoaded) fail(`${name}: inline figure marker renderer not loaded`);
 
     phase = 'canonical-fixture-injection';
     await injectCanonicalFixture(page);
     const gate = await page.textContent('#gate');
-    if (!gate?.includes('PASS') || !gate.includes('タイトル/選択肢')) fail(`${name}: canonical gate did not pass with title/choices`);
+    if (!gate?.includes('PASS') || !gate.includes('タイトル/選択肢') || !gate.includes('本文内図版マーカー')) fail(`${name}: canonical gate did not pass with title/choices/markers`);
     const summary = await page.textContent('#summary');
     if (!summary?.includes('候補 1231問') || !summary.includes('原問題 1124問') || !summary.includes('既存類題 107問')) {
       fail(`${name}: canonical summary mismatch: ${summary}`);
     }
 
-    phase = 'figure-readiness';
+    phase = 'inline-figure-marker-readiness';
     await page.fill('#search', 'TEST-ORIG-0001');
     await page.click('#draw');
-    await page.waitForSelector('.figures img');
+    await page.waitForSelector('.inline-figure img[data-inline-figure="1"]');
     await page.waitForFunction(() => {
-      const img = document.querySelector('.figures img');
+      const img = document.querySelector('.inline-figure img[data-inline-figure="1"]');
       return img && img.complete;
     });
-    const figureReady = await page.evaluate(() => window.figurePrintReadiness());
-    if (!figureReady.ready || figureReady.failed !== 0 || figureReady.pending !== 0) fail(`${name}: figure readiness failed ${JSON.stringify(figureReady)}`);
+    const markerState = await page.evaluate(() => ({
+      rawMarkerVisible: document.querySelector('.q')?.textContent?.includes('[[IMAGE:') || false,
+      inlineImages: document.querySelectorAll('.inline-figure img[data-inline-figure="1"]').length,
+      duplicateStandaloneImages: document.querySelectorAll('.figures img').length,
+      markerErrors: document.querySelectorAll('[data-figure-marker-error="1"]').length,
+      qText: document.querySelector('.q')?.textContent || '',
+      readiness: window.figurePrintReadiness(),
+    }));
+    if (markerState.rawMarkerVisible) fail(`${name}: raw [[IMAGE:...]] marker leaked to visible question`);
+    if (markerState.inlineImages !== 1) fail(`${name}: inline marker rendered ${markerState.inlineImages} images instead of 1`);
+    if (markerState.duplicateStandaloneImages !== 0) fail(`${name}: inline marker ref was rendered again as standalone figure`);
+    if (markerState.markerErrors !== 0) fail(`${name}: valid inline marker produced marker error`);
+    if (!markerState.qText.includes('図の直後の文')) fail(`${name}: text after inline marker was lost`);
+    if (!markerState.readiness.ready || markerState.readiness.failed !== 0 || markerState.readiness.pending !== 0 || markerState.readiness.images !== 1) {
+      fail(`${name}: inline figure readiness failed ${JSON.stringify(markerState.readiness)}`);
+    }
 
     phase = 'title-choices-answer';
     await page.fill('#search', 'TEST-ORIG-0010');
@@ -193,15 +209,20 @@ async function runCase(browserType, name, viewport) {
 
     phase = 'print-css-question';
     await setSelect(page, 'qformat', '');
-    await page.fill('#search', 'TEST-ORIG-0010');
+    await page.fill('#search', 'TEST-ORIG-0001');
     await page.click('#draw');
-    if ((await page.locator('.problem').count()) !== 1) fail(`${name}: print test choice problem did not render`);
+    await page.waitForSelector('.inline-figure img[data-inline-figure="1"]');
+    await page.waitForFunction(() => document.querySelector('.inline-figure img')?.complete === true);
+    if ((await page.locator('.problem').count()) !== 1) fail(`${name}: print marker problem did not render`);
+    const beforePrintReadiness = await page.evaluate(() => window.figurePrintReadiness());
+    if (!beforePrintReadiness.ready || beforePrintReadiness.images !== 1) fail(`${name}: marker figure not print-ready`);
     await page.emulateMedia({ media: 'print' });
     const questionPrint = await page.evaluate(() => ({
       controls: getComputedStyle(document.querySelector('.controls')).display,
       answer: getComputedStyle(document.querySelector('.answer')).display,
+      inlineImage: getComputedStyle(document.querySelector('.inline-figure img')).display,
     }));
-    if (questionPrint.controls !== 'none' || questionPrint.answer !== 'none') fail(`${name}: question print CSS mismatch ${JSON.stringify(questionPrint)}`);
+    if (questionPrint.controls !== 'none' || questionPrint.answer !== 'none' || questionPrint.inlineImage === 'none') fail(`${name}: question print CSS mismatch ${JSON.stringify(questionPrint)}`);
 
     let pdf = null;
     if (name === 'chromium-desktop') {
@@ -242,6 +263,7 @@ async function runCase(browserType, name, viewport) {
       sourceOrder: 'PASS',
       settings: 'PASS',
       figure: 'PASS',
+      inlineFigureMarker: 'PASS',
       printCss: 'PASS',
       pdf: pdf ?? 'not-applicable',
       overflow,
