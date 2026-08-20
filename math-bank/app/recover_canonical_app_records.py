@@ -14,6 +14,7 @@ from validate_app_records import main as validate_main
 EXPECTED = 1231
 CANONICAL_ZIP_SHA256 = "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175"
 EXTERNAL_SCHEMES = {"http", "https", "data", "blob"}
+ALLOWED_LOCAL_FIGURE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".avif"}
 
 
 def sha256_file(path: Path) -> str:
@@ -83,6 +84,8 @@ def local_figure_ref(ref: str) -> PurePosixPath | None:
     rel = PurePosixPath(raw)
     if any(part in {"", ".", ".."} for part in rel.parts):
         raise ValueError(f"unsafe figure ref path: {ref}")
+    if rel.suffix.lower() not in ALLOWED_LOCAL_FIGURE_EXTENSIONS:
+        raise ValueError(f"unsupported local figure file type: {ref}")
     return rel
 
 
@@ -235,7 +238,7 @@ def main() -> int:
                 "records": EXPECTED,
                 "local_figure_assets_copied": len(assets),
                 "external_figure_refs": external_count,
-                "policy": "no transformation/no invented records; strict app-schema pass-through plus exact figure-asset preservation"
+                "policy": "no transformation/no invented records; strict app-schema pass-through plus exact safe figure-asset preservation"
             }, ensure_ascii=False, indent=2))
             return 0
 
