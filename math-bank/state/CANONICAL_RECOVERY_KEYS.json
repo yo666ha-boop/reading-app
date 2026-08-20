@@ -29,11 +29,17 @@
     "markdown_table_repairs": 33,
     "true_source_text_repairs": 2
   },
+  "recorded_prior_core_shape_hint": {
+    "required_fields": ["id", "stage", "unit", "title", "q", "choices", "ans", "explanation"],
+    "status": "historical completion requirement; use only to detect a candidate until the actual final ZIP members/schema are inspected"
+  },
   "policy": {
     "do_not_reconstruct_from_old_or_partial_files": true,
     "do_not_promote_partial_161_dataset": true,
     "do_not_generate_new_variants": true,
+    "do_not_guess_canonical_to_app_mapping": true,
     "zip_input_must_match_recorded_sha256": true,
+    "inspect_actual_zip_members_before_mapping": true,
     "app_records_must_pass_strict_1231_validator": true
   }
 }
