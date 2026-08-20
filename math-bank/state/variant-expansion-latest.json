@@ -3,7 +3,11 @@
   "mode": "BASE_CANONICAL_PLUS_VERIFIED_EXPANDED_VARIANTS",
   "goal": "全1124原問題に最低1問の新規検証済み類題を追加し、安全な決定論的問題は2〜3問へ拡張して数学プリント作成アプリへ接続する",
   "base_original_target": 1124,
-  "base_original_by_source": {"Winpass": 570, "実力錬成": 237, "Standard": 317},
+  "base_original_by_source": {
+    "Winpass": 570,
+    "実力錬成": 237,
+    "Standard": 317
+  },
   "baseline_verified_variants": 107,
   "expanded_verified_variants": 0,
   "expanded_parent_coverage": 0,
@@ -21,18 +25,7 @@
   "app_dynamic_expansion_gate": "PASS",
   "expanded_validator": "PASS_POSITIVE_NEGATIVE_TESTS",
   "expanded_composer": "IMPLEMENTED_WITH_IMMUTABLE_BASE_SNAPSHOT",
-  "dynamic_release_contract": {
-    "status": "IMPLEMENTED_SOURCE_AND_CI_GATE_ADDED_AWAITING_LATEST_RUN_CONFIRMATION",
-    "base_snapshot": "math-bank/app/base-app-records.json",
-    "runtime_composition": "BASE + verified-expanded-variants",
-    "canonical_provenance_validates_base_snapshot": true,
-    "expanded_provenance_validates_dynamic_layer": true,
-    "full_1124_parent_coverage_required": true,
-    "minimum_expanded_variants": 1124,
-    "fixed_release_total_1231_removed": true,
-    "fixed_publication_variant_107_removed": true,
-    "implementation_commits": ["9cee05b87e9a2696f72f9e05d97ca90b0d6fc14d","f6f8812f400ea096a51c25ff06f2e1d809c7c01d","b1aedc6a458e49bbb6c16bf7ee1c47a5a457074b","aa337bf3b5f3d3c4f45b8bdc557ba724cdd9bc0f"]
-  },
+  "dynamic_release_contract": "PASS_SOURCE_CONTRACT_WAITING_FOR_REAL_BASE_AND_FULL_COVERAGE",
   "base_recovery": {
     "actions_artifacts_seen": 134,
     "actions_members_sha256_checked": 566,
@@ -52,6 +45,8 @@
   "publication_ready": false,
   "branch": "math-problem-bank-bootstrap",
   "source_head_before_checkpoint": "aa337bf3b5f3d3c4f45b8bdc557ba724cdd9bc0f",
-  "recorded_at_utc": "2026-08-20T18:59:00Z",
-  "next": "Confirm latest expanded CI after dynamic release conversion; continue exact BASE recovery. On exact pair, SHA/audit validate, compose immutable BASE snapshot + expanded layer, generate independently verified variants to 1124/1124 parent coverage, then real browser/A4 and dynamic strict release."
+  "recorded_at_utc": "2026-08-20T19:57:47.154610+00:00",
+  "next": "recover actual verified base records; generate independently recalculated variants from each real parent; compose and run real browser/A4 regression",
+  "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_TESTS",
+  "synthetic_browser_expansion_fixture": "READY_1124_ORIGINAL_110_VARIANT_TOTAL_1234"
 }
