@@ -12,6 +12,7 @@ INSPECTOR = ROOT / "inspect_canonical_artifact.py"
 CONVERTER = ROOT / "convert_verified_canonical_to_app.py"
 VALIDATOR = ROOT / "validate_app_records.py"
 SCHEMA = ROOT / "app-record.schema.json"
+SCANNER = ROOT / "scan_canonical_candidates.py"
 REQUIRED_CONVERTER_META_FIELDS = (
     "grade", "unit", "skill", "question_format", "difficulty", "source",
     "figure_refs", "variant_group", "audit",
@@ -24,6 +25,7 @@ inspector = INSPECTOR.read_text(encoding="utf-8")
 converter = CONVERTER.read_text(encoding="utf-8")
 validator = VALIDATOR.read_text(encoding="utf-8")
 schema = SCHEMA.read_text(encoding="utf-8")
+scanner = SCANNER.read_text(encoding="utf-8") if SCANNER.exists() else ""
 
 expected_hash = keys["canonical_zip"]["sha256"]
 expected = keys["expected_counts"]
@@ -75,6 +77,10 @@ checks = {
     "source_archives_not_promotable": source_promotable is False,
     "source_archives_diagnostic_only": (not source_recovery_state) or source_mode == "DIAGNOSTIC_ONLY_NON_CANONICAL",
     "source_rebuild_path_disabled": not source_rebuild_language,
+    "candidate_scanner_present": bool(scanner),
+    "candidate_scanner_pins_exact_sha": expected_hash in scanner,
+    "candidate_scanner_is_discovery_only": "Discovery only. Never promotes, converts, reconstructs, or rewrites canonical data." in scanner,
+    "candidate_scanner_rejects_same_name_hash_mismatch": "same_name_sha_mismatch" in scanner and "exact_zip_candidates" in scanner,
 }
 
 failed = [name for name, ok in checks.items() if not ok]
@@ -95,3 +101,4 @@ print("source_archive_rebuild_path=DISABLED")
 print("legacy_q_ans_core=DETECT_ONLY_NO_GUESS_MAPPING")
 print("verified_deterministic_converter=REQUIRED_NO_DEFAULTS")
 print("canonical_zip_inspection_before_mapping=REQUIRED")
+print("canonical_candidate_scanner=DISCOVERY_ONLY_EXACT_SHA_REQUIRED")
