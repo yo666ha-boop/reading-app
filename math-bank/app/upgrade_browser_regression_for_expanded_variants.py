@@ -14,6 +14,11 @@ def once(s: str, old: str, new: str) -> str:
 
 def main() -> None:
     s = PATH.read_text(encoding="utf-8")
+    if "TEST-XVAR-" in s and "rows.length !== 1234" in s and "追加3問" in s:
+        if "候補 1231問" in s or "既存類題 107問" in s or "正本データ未接続" in s:
+            raise RuntimeError("mixed frozen and expanded browser fixture state")
+        print("PASS_BROWSER_REGRESSION_EXPANDED_VARIANT_FIXTURE_ALREADY_ENABLED")
+        return
 
     s = once(
         s,
