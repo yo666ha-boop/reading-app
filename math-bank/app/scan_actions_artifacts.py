@@ -4,6 +4,7 @@ import hashlib
 import io
 import json
 import os
+import subprocess
 import sys
 import urllib.request
 import zipfile
@@ -22,6 +23,8 @@ RECOVERY_HINTS = (
 )
 CREATED_SINCE = "2026-08-19T00:00:00Z"
 MAX_ARTIFACT_BYTES = 500 * 1024 * 1024
+MAX_NESTED_ZIP_BYTES = 250 * 1024 * 1024
+MAX_NESTED_DEPTH = 3
 OUT_REPORT = Path("math-bank/state/actions-artifact-scan-latest.json")
 OUT_RECOVERY = Path("math-bank/recovered")
 
@@ -41,13 +44,20 @@ def request_json(url: str) -> dict:
 
 
 def request_bytes(url: str) -> bytes:
-    req = urllib.request.Request(url)
-    req.add_header("Accept", "application/vnd.github+json")
-    req.add_header("X-GitHub-Api-Version", "2022-11-28")
+    # curl strips credentials when GitHub redirects the authenticated artifact
+    # endpoint to a different storage host; urllib forwarded auth and produced 401.
+    cmd = [
+        "curl", "-fsSL",
+        "-H", "Accept: application/vnd.github+json",
+        "-H", "X-GitHub-Api-Version: 2022-11-28",
+    ]
     if TOKEN:
-        req.add_header("Authorization", f"Bearer {TOKEN}")
-    with urllib.request.urlopen(req, timeout=120) as resp:
-        return resp.read()
+        cmd += ["-H", f"Authorization: Bearer {TOKEN}"]
+    cmd.append(url)
+    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=120)
+    if proc.returncode:
+        raise RuntimeError(f"curl rc={proc.returncode}: {proc.stderr.decode('utf-8', 'replace')[:500]}")
+    return proc.stdout
 
 
 def recent_enough(created_at: str) -> bool:
@@ -62,6 +72,47 @@ def member_interest(name: str) -> bool:
         or EXPECTED_FILENAME.lower() in low
         or any(h.lower() in low for h in RECOVERY_HINTS)
     )
+
+
+def scan_zip_payload(payload: bytes, prefix: str = "", depth: int = 0) -> tuple[list[dict], list[tuple[str, bytes]], list[str]]:
+    entries: list[dict] = []
+    hits: list[tuple[str, bytes]] = []
+    errors: list[str] = []
+    if depth > MAX_NESTED_DEPTH:
+        return entries, hits, errors
+    try:
+        with zipfile.ZipFile(io.BytesIO(payload)) as zf:
+            for info in zf.infolist():
+                if info.is_dir():
+                    continue
+                full_name = f"{prefix}{info.filename}"
+                is_zip = info.filename.lower().endswith(".zip")
+                if not is_zip and not member_interest(info.filename):
+                    continue
+                try:
+                    data = zf.read(info)
+                except Exception as e:
+                    errors.append(f"read {full_name}: {e}")
+                    continue
+                entry = {
+                    "name": full_name,
+                    "bytes": len(data),
+                    "sha256": sha256_bytes(data),
+                    "depth": depth,
+                }
+                entries.append(entry)
+                if is_zip and entry["sha256"] == EXPECTED_SHA256:
+                    hits.append((full_name, data))
+                if is_zip and depth < MAX_NESTED_DEPTH and len(data) <= MAX_NESTED_ZIP_BYTES:
+                    child_entries, child_hits, child_errors = scan_zip_payload(
+                        data, prefix=full_name + "!/", depth=depth + 1
+                    )
+                    entries.extend(child_entries)
+                    hits.extend(child_hits)
+                    errors.extend(child_errors)
+    except zipfile.BadZipFile as e:
+        errors.append(f"bad zip {prefix or '<artifact>'}: {e}")
+    return entries, hits, errors
 
 
 def inspect_artifact(artifact: dict) -> tuple[dict, list[tuple[str, bytes]]]:
@@ -83,24 +134,10 @@ def inspect_artifact(artifact: dict) -> tuple[dict, list[tuple[str, bytes]]]:
         raw = request_bytes(artifact["archive_download_url"])
         result["downloaded"] = True
         result["archive_download_bytes"] = len(raw)
-        with zipfile.ZipFile(io.BytesIO(raw)) as outer:
-            for info in outer.infolist():
-                if info.is_dir() or not member_interest(info.filename):
-                    continue
-                try:
-                    data = outer.read(info)
-                except Exception as e:
-                    result["errors"].append(f"read {info.filename}: {e}")
-                    continue
-                entry = {
-                    "name": info.filename,
-                    "bytes": len(data),
-                    "sha256": sha256_bytes(data),
-                }
-                result["interesting_members"].append(entry)
-                if info.filename.lower().endswith(".zip") and entry["sha256"] == EXPECTED_SHA256:
-                    result["canonical_sha_hits"].append(entry)
-                    hits.append((info.filename, data))
+        entries, hits, errors = scan_zip_payload(raw)
+        result["interesting_members"] = entries
+        result["canonical_sha_hits"] = [entry for entry in entries if entry["sha256"] == EXPECTED_SHA256]
+        result["errors"].extend(errors)
     except Exception as e:
         result["errors"].append(str(e))
     return result, hits
@@ -142,6 +179,7 @@ def main() -> int:
         "canonical_hits": 0,
         "audit_name_hits": 0,
         "recovery_hint_hits": 0,
+        "download_failures": 0,
         "artifacts": [],
         "recovered_files": [],
         "completed_at_utc": datetime.now(timezone.utc).isoformat(),
@@ -151,6 +189,8 @@ def main() -> int:
     OUT_RECOVERY.mkdir(parents=True, exist_ok=True)
     for artifact in candidates:
         item, hits = inspect_artifact(artifact)
+        if not item["downloaded"]:
+            report["download_failures"] += 1
         for member in item["interesting_members"]:
             low = member["name"].lower()
             if AUDIT_HINT.lower() in low:
