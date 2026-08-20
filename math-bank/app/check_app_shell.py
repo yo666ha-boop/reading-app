@@ -34,7 +34,19 @@ required_fragments = [
     "正本JSONを読込",
     "app-records.json",
     "canonicalAudit",
-    "source-order selection" if False else "sourceSort",
+    "sourceSort",
+    "parentBookOf",
+    "VALID_GRADES",
+    "VALID_DIFFICULTY",
+    "VALID_BOOKS",
+    "auditFail",
+    "parentFail",
+    "figureFail",
+    "problem_answer_verified!==true",
+    "structure_verified!==true",
+    "figure_refs_verified!==true",
+    "parentBookOf(r)===book",
+    "以前の表示を破棄しました",
 ]
 missing_fragments = [x for x in required_fragments if x not in text]
 if missing_fragments:
@@ -54,5 +66,7 @@ if proc.returncode:
 print("PASS_APP_SHELL")
 print(f"controls={len(required_ids)}")
 print("canonical=1231 original=1124 variants=107")
+print("browser_strict_shape=PASS browser_audit_flags=PASS generated_parent=PASS")
+print("variant_parent_book_filter=PASS stale_import_clear=PASS")
 print("search=PASS json_import=PASS per_question_answer=PASS print_reset=PASS")
 print("javascript_syntax=PASS")
