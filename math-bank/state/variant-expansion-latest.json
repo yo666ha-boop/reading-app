@@ -24,7 +24,7 @@
   "app_dynamic_expansion_gate": "PASS",
   "expanded_validator": "PASS_POSITIVE_NEGATIVE_TESTS",
   "expanded_composer": "IMPLEMENTED",
-  "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_AND_PARENT_FINGERPRINT_TESTS",
+  "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_TESTS",
   "validator_test_status": "PASS_EXPANDED_WORKFLOW_AFTER_CI_EXPECTATION_FIX",
   "synthetic_browser_expansion_fixture": "READY_1124_ORIGINAL_110_VARIANT_TOTAL_1234",
   "latest_implementation_commits": {
@@ -55,6 +55,6 @@
     "google_drive_exact_audit_hits_this_run": 0
   },
   "publication_ready": false,
-  "next": "continue exact BASE recovery; once exact BASE records are recovered, SHA/audit validate, run the now parent-fingerprint-bound queue, then generate only parent-read independently recalculated variants and preserve each parent_record_sha256 in generation provenance",
-  "recorded_at_utc": "2026-08-20T17:08:00Z"
+  "next": "recover actual verified base records; generate independently recalculated variants from each real parent; compose and run real browser/A4 regression",
+  "recorded_at_utc": "2026-08-20T17:57:03.030920+00:00"
 }
