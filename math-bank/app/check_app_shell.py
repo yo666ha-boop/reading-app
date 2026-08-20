@@ -39,6 +39,16 @@ required_fragments = [
     "VALID_GRADES",
     "VALID_DIFFICULTY",
     "VALID_BOOKS",
+    "SAFE_EXTERNAL_FIGURE_SCHEMES",
+    "SAFE_LOCAL_FIGURE_EXTENSIONS",
+    "safeFigureRef",
+    "figs.some(x=>!safeFigureRef(x))",
+    "figurePrintReadiness",
+    "loading=\"eager\"",
+    "dataset.loadError",
+    "naturalWidth===0",
+    "印刷中止：表示中の図版",
+    "印刷待機：図版",
     "auditFail",
     "parentFail",
     "figureFail",
@@ -68,5 +78,6 @@ print(f"controls={len(required_ids)}")
 print("canonical=1231 original=1124 variants=107")
 print("browser_strict_shape=PASS browser_audit_flags=PASS generated_parent=PASS")
 print("variant_parent_book_filter=PASS stale_import_clear=PASS")
+print("browser_figure_path_safety=PASS print_figure_readiness=PASS")
 print("search=PASS json_import=PASS per_question_answer=PASS print_reset=PASS")
 print("javascript_syntax=PASS")
