@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from collections import Counter
-from pathlib import Path
+from pathlib import Path, PurePosixPath
+from urllib.parse import unquote, urlsplit
 
 REQUIRED = {
     "id", "grade", "unit", "title", "skill", "question_format", "difficulty", "source",
@@ -16,6 +18,9 @@ EXPECTED_FINAL_RECORDS = 1231
 EXPECTED_ORIGINAL_RECORDS = 1124
 EXPECTED_GENERATED_VARIANTS = 107
 EXPECTED_BY_SOURCE_ORIGINAL = {"Winpass": 570, "実力錬成": 237, "Standard": 317}
+EXTERNAL_FIGURE_SCHEMES = {"http", "https", "data", "blob"}
+ALLOWED_LOCAL_FIGURE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".avif"}
+IMAGE_MARKER_RE = re.compile(r"\[\[IMAGE:([^\]\r\n]+)\]\]")
 
 
 def fail(msg: str) -> None:
@@ -24,6 +29,43 @@ def fail(msg: str) -> None:
 
 def text(value: object) -> str:
     return value.strip() if isinstance(value, str) else ""
+
+
+def safe_figure_ref(ref: str) -> bool:
+    try:
+        raw_ref = ref.strip()
+        if raw_ref.startswith("//"):
+            return True
+        parts = urlsplit(raw_ref)
+        scheme = parts.scheme.lower()
+        if scheme in EXTERNAL_FIGURE_SCHEMES:
+            return True
+        if scheme:
+            return False
+        if parts.netloc:
+            return True
+        raw = unquote(parts.path)
+        if not raw or raw.startswith("/") or "\\" in raw:
+            return False
+        rel = PurePosixPath(raw)
+        if any(part in {"", ".", ".."} for part in rel.parts):
+            return False
+        return rel.suffix.lower() in ALLOWED_LOCAL_FIGURE_EXTENSIONS
+    except Exception:
+        return False
+
+
+def marker_refs(r: dict) -> list[str]:
+    out: list[str] = []
+    for field in ("question", "answer", "explanation"):
+        value = r.get(field)
+        if not isinstance(value, str):
+            continue
+        for match in IMAGE_MARKER_RE.finditer(value):
+            ref = match.group(1).strip()
+            if ref and ref not in out:
+                out.append(ref)
+    return out
 
 
 def validate_record(r: dict, seen_ids: set[str]) -> None:
@@ -101,8 +143,22 @@ def validate_record(r: dict, seen_ids: set[str]) -> None:
         fail(f"{rid}: source.book=generated but is_generated_variant=false")
 
     figs = r["figure_refs"]
-    if not isinstance(figs, list) or any(not isinstance(x, str) or not x.strip() for x in figs) or len(figs) != len(set(figs)):
+    if (
+        not isinstance(figs, list)
+        or any(not isinstance(x, str) or not x.strip() for x in figs)
+        or len(figs) != len(set(figs))
+    ):
         fail(f"{rid}: invalid/duplicate figure_refs")
+    unsafe_refs = [ref for ref in figs if not safe_figure_ref(ref)]
+    if unsafe_refs:
+        fail(f"{rid}: unsafe/unsupported figure_refs: {unsafe_refs}")
+    markers = marker_refs(r)
+    missing_markers = [ref for ref in markers if ref not in figs]
+    unsafe_markers = [ref for ref in markers if not safe_figure_ref(ref)]
+    if missing_markers:
+        fail(f"{rid}: inline image marker is not registered in figure_refs: {missing_markers}")
+    if unsafe_markers:
+        fail(f"{rid}: unsafe inline image marker: {unsafe_markers}")
 
     audit = r["audit"]
     if not isinstance(audit, dict):
@@ -148,6 +204,12 @@ def main(path: str, strict: bool = True) -> int:
     original_counts = Counter(r["source"]["book"] for r in originals)
     grades = Counter(r["grade"] for r in records)
     choice_records = sum(1 for r in records if isinstance(r["choices"], list) and len(r["choices"]) > 0)
+    marker_records = sum(1 for r in records if marker_refs(r))
+    marker_occurrences = sum(
+        len(IMAGE_MARKER_RE.findall(str(r.get(field, ""))))
+        for r in records
+        for field in ("question", "answer", "explanation")
+    )
 
     by_id = {r["id"]: r for r in records}
     for r in generated:
@@ -183,6 +245,10 @@ def main(path: str, strict: bool = True) -> int:
         "choice_records": choice_records,
         "title_and_choices_preserved": len(records),
         "verified_audit_gates": len(records),
+        "figure_ref_path_safety": "PASS",
+        "inline_figure_marker_registration": "PASS",
+        "inline_marker_records": marker_records,
+        "inline_marker_occurrences": marker_occurrences,
     }
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0
