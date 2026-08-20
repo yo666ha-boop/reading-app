@@ -16,9 +16,9 @@ function wordsBefore(en,start){return norm(en.slice(0,start)).toLowerCase().repl
 function wordsAfter(en,end){return norm(en.slice(end)).toLowerCase().replace(/[“”"'’‘]/g,'').split(/\s+/).map(cleanWord).filter(Boolean)}
 function fixedUnitException(en,start,word,end){
   const before=wordsBefore(en,start), after=wordsAfter(en,end), prev=before[before.length-1]||'', next=after[0]||'';
-  if(en[start-1]==='-'||en[end]==='-') return true; // easy-to-find etc.
+  if(en[start-1]==='-'||en[end]==='-') return true;
   if(word==='around' && /\bshow\s+(?:me|you|him|her|us|them)\s*$/i.test(en.slice(0,start))) return true;
-  if(word==='behind' && /\bleav(?:e|es|ing|ed)\b[^/]*$/i.test(en.slice(0,start))) return true;
+  if(word==='behind' && /\b(?:leav(?:e|es|ing|ed)|left)\b[^/]*$/i.test(en.slice(0,start))) return true;
   if(word==='while' && prev==='a' && /\bafter\s+a\s*$/i.test(en.slice(0,start))) return true;
   if(word==='near' && /\bis\s*$/i.test(en.slice(0,start))) return true;
   if(word==='of' && /\b(?:in front|on top|first)\s*$/i.test(en.slice(0,start))) return true;
@@ -26,11 +26,11 @@ function fixedUnitException(en,start,word,end){
   if(word==='on' && /\bshoes\s*$/i.test(en.slice(0,start))) return true;
   if(word==='at' && next==='least') return true;
   if(word==='about' && /^\s*how\s*$/i.test(en.slice(0,start))) return true;
-  if(word==='if' && prev==='as') return true; // as if is one conjunction unit; boundary belongs before as.
+  if(word==='if' && prev==='as') return true;
   if(word==='and' && /\btrack\s*$/i.test(en.slice(0,start)) && next==='field') return true;
-  if(prepositions.has(word) && conjunctions.has(prev)) return true; // '/ and at ...' is one following coordination chunk.
-  if(word==='to' && prev==='than') return true; // rather / than to ...
-  if(word==='after' && prev==='even') return true; // Even after ... is one fronted adjunct.
+  if(prepositions.has(word) && conjunctions.has(prev)) return true;
+  if(word==='to' && prev==='than') return true;
+  if(word==='after' && prev==='even') return true;
   return false;
 }
 function isConjunctionUse(en,start,word,end){
