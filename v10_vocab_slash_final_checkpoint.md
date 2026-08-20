@@ -27,29 +27,29 @@ last_manual_progress_jst: 2026-08-20 11:35+
 Project learning manual example: `I went to the park / to play baseball / with my friends / yesterday.`
 
 ## Progress
-- vocabulary_final_audited: 20/168
-- slash_human_audited: 20/168
+- vocabulary_final_audited: 30/168
+- slash_human_audited: 30/168
 - passages_rewritten_this_phase: 0
 - notes_confirmed: 0
 
 ## This run completed
-- Continued immediately from 004 and completed the human vocabulary + slash review through passage 020.
-- 004-010: manual runtime slash overrides created in `v10_vocab_slash_manual_004_010.js`; detailed ledger `v10_vocab_slash_manual_audit_001_010.md` complete 10/10.
-- 011-020: manual runtime slash overrides created in `v10_vocab_slash_manual_011_020.js`; detailed ledger `v10_vocab_slash_manual_audit_011_020.md` complete 10/10.
-- Loader updated so both manual override files load after `v10_semantic_runtime_final_fixes.js`; therefore human-reviewed slash rows override the earlier automatic slash rebuild.
-- No vocabulary-driven English rewrite was required in 004-020. Reviewed section/cumulative/elementary vocabulary gates remained valid and no student-facing note was needed.
-- Human slash review removed widespread grammar-drill splits (`be / complement`, `like / object`, `can VERB / object`) and retained slashes only for real meaning chunks such as time/place adjuncts or clause boundaries.
+- Continued immediately from passage 004 without waiting for the hourly task and advanced the post-release quality audit through passage 030.
+- Detailed ledgers complete: `v10_vocab_slash_manual_audit_001_010.md`, `v10_vocab_slash_manual_audit_011_020.md`, `v10_vocab_slash_manual_audit_021_030.md`.
+- Manual runtime overrides active: `v10_vocab_slash_manual_004_010.js`, `v10_vocab_slash_manual_011_020.js`, `v10_vocab_slash_manual_021_030.js`.
+- Loader order updated so these files run after `v10_semantic_runtime_final_fixes.js`, preventing the older automatic slash rebuild from overwriting the human-reviewed rows.
+- 001-030 vocabulary review currently finds no unavoidable note requirement and no vocabulary-driven English rewrite. The final English text therefore remains unchanged in this phase; only slash-reading rows were corrected where needed.
+- Human slash review removes grammar-drill splitting and preserves multiword meaning units such as be+complement, can+verb, talk about, far from, famous for, show around, listen to, and verb+short object.
 
 ## Current phase
 VOCAB_AND_SLASH_HUMAN_AUDIT
 
 ## Remaining work
-- Continue passage 021 through 168 in sequence.
+- Continue passage 031 through 168 sequentially.
 - For each passage: vocabulary classification -> rewrite only if genuinely needed -> synchronize dependent content -> human slash review.
 - After 168/168 run full vocabulary/grammar/slash/A+B/coverage/DOM/browser/print/public regression.
 
 ## Next start point
-Passage 021 Sunshine G1 PROGRAM 6-1. Inspect the final effective passage and its reviewed vocabulary gate, then replace any remaining grammar-drill slash splits with model-aligned meaning chunks.
+Passage 031 Sunshine G1 PROGRAM 9-2. Inspect final effective text and reviewed vocabulary gate, then human-review each slash row against the model.
 
 ## Next phase after current
-Continue sequentially 021-168 -> FULL_REGRESSION -> PUBLIC_VERIFY
+Continue sequentially 031-168 -> FULL_REGRESSION -> PUBLIC_VERIFY
