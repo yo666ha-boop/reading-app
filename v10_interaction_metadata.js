@@ -41,7 +41,8 @@ window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
   ['v10_vocab_slash_manual_004_010.js',()=>({})],
   ['v10_vocab_slash_manual_011_020.js',()=>({})],
   ['v10_vocab_slash_manual_021_030.js',()=>({})],
-  ['v10_vocab_slash_manual_031_040.js',()=>({})]
+  ['v10_vocab_slash_manual_031_040.js',()=>({})],
+  ['v10_vocab_slash_manual_041_050.js',()=>({})]
  ];
  let i=0;
  const next=()=>{
