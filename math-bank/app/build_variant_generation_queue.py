@@ -7,7 +7,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from validate_app_records import load_records
-from validate_expanded_variant_layer import base_gate, load_layer, parent_record_sha256
+from validate_expanded_variant_layer import (
+    base_gate,
+    load_layer,
+    parent_record_sha256,
+    validate_layer,
+)
 
 
 def classify_parent(parent: dict) -> tuple[str, str]:
@@ -25,6 +30,26 @@ def classify_parent(parent: dict) -> tuple[str, str]:
     return "manual_generation_queue", "structure_not_proven_safe_for_automatic_generation"
 
 
+def validated_covered_parent_ids(
+    base: list[dict], variants: list[dict], provenance: list[dict]
+) -> tuple[set[str], dict]:
+    """Only a layer that passes the strict expanded validator may suppress a parent from the queue."""
+    report = validate_layer(base, variants, provenance, require_full_parent_coverage=False)
+    covered = {
+        r["source"]["parent_id"]
+        for r in variants
+        if isinstance(r, dict)
+        and isinstance(r.get("source"), dict)
+        and r["source"].get("parent_id")
+    }
+    if len(covered) != report["expanded_parent_coverage"]:
+        raise ValueError(
+            "validated expanded coverage mismatch: "
+            f"derived={len(covered)} report={report['expanded_parent_coverage']}"
+        )
+    return covered, report
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("base")
@@ -34,12 +59,8 @@ def main() -> int:
 
     base = load_records(Path(ns.base))
     by_id, originals, _ = base_gate(base)
-    variants, _, _ = load_layer(Path(ns.expanded))
-    covered = {
-        r.get("source", {}).get("parent_id")
-        for r in variants
-        if isinstance(r, dict) and r.get("source", {}).get("parent_id")
-    }
+    variants, provenance, _ = load_layer(Path(ns.expanded))
+    covered, expanded_validation = validated_covered_parent_ids(base, variants, provenance)
 
     queue = []
     bucket_counts: Counter[str] = Counter()
@@ -71,9 +92,11 @@ def main() -> int:
 
     report = {
         "status": "PASS",
-        "policy": "Parent-first conservative planning only; each queue row is SHA-256-bound to the exact verified parent record read using the same implementation enforced by the publication validator, and this file does not generate or promote variants.",
+        "policy": "Parent-first conservative planning only; only variants that pass the strict expanded validator may count as covered, each queue row is SHA-256-bound to the exact verified parent record read using the same implementation enforced by the publication validator, and this file does not generate or promote variants.",
         "recorded_at_utc": datetime.now(timezone.utc).isoformat(),
         "base_originals": len(originals),
+        "validated_existing_expanded_variants": expanded_validation["expanded_verified_variants"],
+        "validated_existing_parent_coverage": expanded_validation["expanded_parent_coverage"],
         "already_covered_parents": len(set(by_id).intersection(covered)),
         "uncovered_parent_queue_count": len(queue),
         "parent_fingerprint_algorithm": "sha256(canonical-json-sort-keys)",
