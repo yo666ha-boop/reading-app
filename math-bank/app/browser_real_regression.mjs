@@ -19,6 +19,9 @@ function localFigureRef(ref) {
   if (/^(https?:|data:|blob:|\/\/)/i.test(s)) return null;
   return s.split(/[?#]/, 1)[0];
 }
+function markerCount(text) {
+  return typeof text === 'string' ? [...text.matchAll(/\[\[IMAGE:([^\]\r\n]+)\]\]/g)].length : 0;
+}
 
 if (!fs.existsSync(DATA_PATH)) {
   console.log('REAL_CANONICAL_BROWSER_BLOCKED_EXPECTED: app-records.json is absent');
@@ -60,6 +63,8 @@ const staticCoverage = {
   local_figure_refs: uniq(rows.flatMap(r => (r.figure_refs || []).map(localFigureRef).filter(Boolean))),
   external_figure_refs: rows.flatMap(r => r.figure_refs || []).filter(ref => localFigureRef(ref) === null).length,
   grade_major_minor_combinations: uniq(rows.map(r => `${r.grade}\u0000${r.unit.major}\u0000${r.unit.minor}`)).length,
+  inline_marker_occurrences: rows.reduce((n,r) => n + markerCount(r?.question) + markerCount(r?.answer) + markerCount(r?.explanation), 0),
+  inline_marker_records: rows.filter(r => markerCount(r?.question) + markerCount(r?.answer) + markerCount(r?.explanation) > 0).length,
 };
 
 function assertA4Pdf(buffer, label) {
@@ -79,6 +84,10 @@ async function waitGate(page) {
   await page.waitForFunction(() => document.querySelector('#gate')?.textContent?.includes('PASS'), { timeout: 30000 });
   const status = await page.textContent('#status');
   if (!status?.includes('app-records.json')) fail(`real data source not reported: ${status}`);
+  const gate = await page.textContent('#gate');
+  if (!gate?.includes('本文内図版マーカー')) fail(`real gate lacks marker validation: ${gate}`);
+  const rendererLoaded = await page.evaluate(() => !!window.MikamiMathFigureMarkers?.renderCanonicalText);
+  if (!rendererLoaded) fail('real inline figure marker renderer not loaded');
   const summary = await page.textContent('#summary');
   if (!summary?.includes('候補 1231問') || !summary.includes('原問題 1124問') || !summary.includes('既存類題 107問')) {
     fail(`real summary mismatch: ${summary}`);
@@ -89,6 +98,10 @@ async function renderAllRecordsInChunks(page, chunkSize = 100) {
   let rendered = 0;
   let renderedChoices = 0;
   let renderedFigures = 0;
+  let inlineImages = 0;
+  let rawMarkerLeaks = 0;
+  let markerErrors = 0;
+  let figureReadinessFailures = 0;
   for (let start = 0; start < rows.length; start += chunkSize) {
     const chunk = rows.slice(start, start + chunkSize);
     await page.evaluate(chunkRows => window.render(chunkRows), chunk);
@@ -104,15 +117,45 @@ async function renderAllRecordsInChunks(page, chunkSize = 100) {
     if (choiceCount !== expectedChoices) fail(`DOM chunk ${start}: choices ${choiceCount} != ${expectedChoices}`);
     const expectedFigures = chunk.reduce((n,r) => n + (Array.isArray(r.figure_refs) ? r.figure_refs.length : 0), 0);
     if (expectedFigures) {
-      await page.waitForFunction(() => [...document.querySelectorAll('#list .figures img')].every(img => img.complete), null, { timeout: 30000 });
-      const figureState = await page.evaluate(() => window.figurePrintReadiness());
-      if (!figureState.ready || figureState.failed || figureState.pending) fail(`DOM chunk ${start}: figure load failed ${JSON.stringify(figureState)}`);
+      await page.waitForFunction(() => [...document.querySelectorAll('#list .figures img,#list img[data-inline-figure="1"]')].every(img => img.complete), null, { timeout: 30000 });
+    }
+    const markerState = await page.evaluate(() => {
+      const list = document.querySelector('#list');
+      const readiness = window.figurePrintReadiness();
+      return {
+        rawMarkerLeaks: (list?.textContent?.match(/\[\[IMAGE:/g) || []).length,
+        markerErrors: list?.querySelectorAll('[data-figure-marker-error="1"]').length || 0,
+        inlineImages: list?.querySelectorAll('img[data-inline-figure="1"]').length || 0,
+        standaloneImages: list?.querySelectorAll('.figures img').length || 0,
+        readiness,
+      };
+    });
+    if (markerState.rawMarkerLeaks) fail(`DOM chunk ${start}: raw marker leaked ${markerState.rawMarkerLeaks}`);
+    if (markerState.markerErrors) fail(`DOM chunk ${start}: marker errors ${markerState.markerErrors}`);
+    if (!markerState.readiness.ready || markerState.readiness.failed || markerState.readiness.pending) {
+      figureReadinessFailures++;
+      fail(`DOM chunk ${start}: figure load failed ${JSON.stringify(markerState.readiness)}`);
+    }
+    if (markerState.readiness.images !== markerState.inlineImages + markerState.standaloneImages) {
+      fail(`DOM chunk ${start}: figure readiness count mismatch ${JSON.stringify(markerState)}`);
     }
     rendered += chunk.length;
     renderedChoices += choiceCount;
     renderedFigures += expectedFigures;
+    inlineImages += markerState.inlineImages;
+    rawMarkerLeaks += markerState.rawMarkerLeaks;
+    markerErrors += markerState.markerErrors;
   }
-  return { rendered, renderedChoices, renderedFigures, chunks: Math.ceil(rows.length / chunkSize) };
+  return {
+    rendered,
+    renderedChoices,
+    renderedFigures,
+    inline_images_rendered: inlineImages,
+    raw_marker_leaks: rawMarkerLeaks,
+    marker_errors: markerErrors,
+    figure_readiness_failures: figureReadinessFailures,
+    chunks: Math.ceil(rows.length / chunkSize),
+  };
 }
 
 async function testEveryUnitFilter(page) {
@@ -127,6 +170,7 @@ async function testEveryUnitFilter(page) {
     if (!m || Number(m[1]) < 1) fail(`unit filter empty for 中${grade}/${major}/${minor}: ${summary}`);
     await page.click('#draw');
     if ((await page.locator('.problem').count()) < 1) fail(`unit draw empty for 中${grade}/${major}/${minor}`);
+    if ((await page.locator('[data-figure-marker-error="1"]').count()) !== 0) fail(`unit draw marker error for 中${grade}/${major}/${minor}`);
     tested++;
   }
   await page.selectOption('#grade', '');
@@ -170,6 +214,7 @@ async function testSearchSamples(page) {
     if (count !== 1) fail(`ID search ${id}: count ${count}`);
     const renderedId = await page.locator('.problem').getAttribute('data-id');
     if (renderedId !== id) fail(`ID search ${id}: got ${renderedId}`);
+    if ((await page.locator('[data-figure-marker-error="1"]').count()) !== 0) fail(`ID search ${id}: marker error`);
     tested++;
   }
   await page.fill('#search','');
@@ -220,7 +265,8 @@ async function printGradeSamples(page, name) {
     await page.fill('#search','');
     await page.click('#draw');
     if ((await page.locator('.problem').count()) < 1) fail(`grade ${grade}: no print rows`);
-    await page.waitForFunction(() => [...document.querySelectorAll('#list .figures img')].every(img => img.complete));
+    await page.waitForFunction(() => [...document.querySelectorAll('#list .figures img,#list img[data-inline-figure="1"]')].every(img => img.complete));
+    if ((await page.locator('[data-figure-marker-error="1"]').count()) !== 0) fail(`grade ${grade}: marker error before print`);
     const readiness = await page.evaluate(() => window.figurePrintReadiness());
     if (!readiness.ready) fail(`grade ${grade}: figures not print-ready ${JSON.stringify(readiness)}`);
     await page.emulateMedia({ media: 'print' });
@@ -257,6 +303,14 @@ async function runCase(browserType, name, viewport) {
 
     phase = 'all-record-dom-render';
     const dom = await renderAllRecordsInChunks(page);
+    const inlineMarker = {
+      source_marker_occurrences: staticCoverage.inline_marker_occurrences,
+      source_marker_records: staticCoverage.inline_marker_records,
+      inline_images_rendered: dom.inline_images_rendered,
+      raw_marker_leaks: dom.raw_marker_leaks,
+      marker_errors: dom.marker_errors,
+      figure_readiness_failures: dom.figure_readiness_failures,
+    };
     phase = 'all-unit-filter-combinations';
     const units = await testEveryUnitFilter(page);
     phase = 'dimension-filters';
@@ -273,7 +327,7 @@ async function runCase(browserType, name, viewport) {
     const overflow = await page.evaluate(() => ({ width: innerWidth, scrollWidth: document.documentElement.scrollWidth }));
     if (overflow.scrollWidth > overflow.width + 1) fail(`${name}: horizontal overflow ${JSON.stringify(overflow)}`);
     if (pageErrors.length) fail(`${name}: page errors ${JSON.stringify(pageErrors)}`);
-    return { name, status:'success', phase:'complete', viewport, dom, units, dimensions, search, sourceOrder, figures, pdf, overflow, pageErrors };
+    return { name, status:'success', phase:'complete', viewport, dom, inlineMarker, units, dimensions, search, sourceOrder, figures, pdf, overflow, pageErrors };
   } catch (error) {
     return { name, status:'failure', phase, viewport, error:error instanceof Error ? error.message : String(error), stack:error instanceof Error ? error.stack : '', pageErrors };
   } finally {
