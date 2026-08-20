@@ -16,7 +16,7 @@
   "base_canonical_zip_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "base_canonical_pair_recovered": false,
   "app_dynamic_expansion_gate": "PASS",
-  "expanded_validator": "PASS_POSITIVE_NEGATIVE_TESTS_IN_EXPANDED_WORKFLOW",
+  "expanded_validator": "PASS_POSITIVE_NEGATIVE_TESTS",
   "expanded_composer": "IMPLEMENTED",
   "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_TESTS",
   "validator_test_status": "PASS_EXPANDED_WORKFLOW_AFTER_CI_EXPECTATION_FIX",
@@ -43,6 +43,6 @@
     "release_pair_hits": 0
   },
   "publication_ready": false,
-  "next": "continue exact BASE recovery; once exact BASE records are recovered, SHA/audit validate, run parent queue builder, then generate only parent-read independently recalculated variants and keep unsafe parents in manual queue",
-  "recorded_at_utc": "2026-08-20T15:59:00Z"
+  "next": "recover actual verified base records; generate independently recalculated variants from each real parent; compose and run real browser/A4 regression",
+  "recorded_at_utc": "2026-08-20T16:58:35.712237+00:00"
 }
