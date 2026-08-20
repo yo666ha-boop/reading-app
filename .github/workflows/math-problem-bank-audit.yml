@@ -43,6 +43,9 @@ jobs:
       - name: Compile app validation, recovery, inspection, conversion, provenance, scanner, and release tools
         run: python -m py_compile math-bank/app/validate_app_records.py math-bank/app/recover_canonical_app_records.py math-bank/app/inspect_canonical_artifact.py math-bank/app/convert_verified_canonical_to_app.py math-bank/app/validate_canonical_provenance.py math-bank/app/scan_canonical_candidates.py math-bank/app/scan_actions_artifacts.py math-bank/app/check_app_shell.py math-bank/app/check_recovery_contract.py math-bank/app/test_negative_gates.py math-bank/app/test_verified_converter.py math-bank/app/build_release_bundle.py
 
+      - name: Check browser regression script syntax
+        run: node --check math-bank/app/browser_regression.mjs && node --check math-bank/app/browser_real_regression.mjs
+
       - name: Check app shell and JavaScript syntax
         run: python math-bank/app/check_app_shell.py
 
@@ -64,11 +67,11 @@ jobs:
             echo 'CANONICAL_DATA_GATE_BLOCKED_EXPECTED: math-bank/app/app-records.json is not committed yet'
           fi
 
-      - name: Strict release bundle gate
+      - name: Verify release builder remains blocked before canonical data
         shell: bash
         run: |
           if [ -f math-bank/app/app-records.json ]; then
-            python math-bank/app/build_release_bundle.py
+            echo 'RELEASE_BUILD_DEFERRED: strict release is built only after REAL canonical browser regression passes'
           else
             set +e
             python math-bank/app/build_release_bundle.py
@@ -80,17 +83,6 @@ jobs:
             fi
             echo 'PASS_RELEASE_BLOCKED_UNTIL_EXACT_1231'
           fi
-
-      - name: Preserve strict release bundle as workflow artifact
-        if: ${{ hashFiles('math-bank/app/app-records.json') != '' }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: mikami-math-app-strict-release
-          path: |
-            math-bank/みかみ塾数学問題アプリ_公開候補.zip
-            math-bank/release/
-          if-no-files-found: error
-          retention-days: 30
 
   actions-artifact-recovery-scan:
     runs-on: ubuntu-latest
@@ -136,7 +128,7 @@ jobs:
 
   browser-regression:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -169,35 +161,109 @@ jobs:
           cat /tmp/math-app-http.log || true
           exit 1
 
-      - name: Run Chromium Firefox WebKit shell regression
+      - name: Run synthetic Chromium Firefox WebKit shell regression
         env:
           MATH_APP_BASE_URL: http://127.0.0.1:8765/index.html
           MATH_BROWSER_REPORT: math-bank/state/browser-regression-latest.json
         run: node math-bank/app/browser_regression.mjs
 
+      - name: Run REAL canonical 1231 browser regression when data exists
+        shell: bash
+        env:
+          MATH_APP_BASE_URL: http://127.0.0.1:8765/index.html
+          MATH_REAL_DATA_PATH: math-bank/app/app-records.json
+          MATH_REAL_BROWSER_REPORT: math-bank/state/browser-real-regression-latest.json
+          MATH_REAL_PDF_DIR: math-bank/state/real-print-regression
+        run: |
+          if [ -f math-bank/app/app-records.json ]; then
+            node math-bank/app/browser_real_regression.mjs
+          else
+            cat > math-bank/state/browser-real-regression-latest.json <<'JSON'
+          {
+            "workflow_test": "Math Problem Bank REAL Canonical Browser Regression",
+            "overall_result": "blocked_expected",
+            "synthetic_fixture_only": false,
+            "canonical_data_written": false,
+            "reason": "exact canonical app-records.json is not wired yet"
+          }
+          JSON
+            echo 'REAL_CANONICAL_BROWSER_BLOCKED_EXPECTED'
+          fi
+
       - name: Persist browser regression diagnostics
         if: always()
         shell: bash
         run: |
-          if [ ! -f math-bank/state/browser-regression-latest.json ]; then
-            echo 'browser regression report was not produced'
-            exit 0
-          fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- math-bank/state/browser-regression-latest.json
+          git add -- math-bank/state/browser-regression-latest.json math-bank/state/browser-real-regression-latest.json 2>/dev/null || true
           if ! git diff --cached --quiet; then
-            git commit -m 'record math browser regression result'
+            git commit -m 'record math browser regression results'
             git pull --rebase origin math-problem-bank-bootstrap
             git push origin HEAD:math-problem-bank-bootstrap
           fi
 
       - name: Upload browser regression diagnostics
-        if: always() && hashFiles('math-bank/state/browser-regression-latest.json') != ''
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: math-browser-regression-diagnostics
-          path: math-bank/state/browser-regression-latest.json
+          path: |
+            math-bank/state/browser-regression-latest.json
+            math-bank/state/browser-real-regression-latest.json
+            math-bank/state/real-print-regression/
+          if-no-files-found: warn
+          retention-days: 30
+
+  strict-release-after-browser:
+    if: always()
+    needs:
+      - app-shell-and-data-gate
+      - browser-regression
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout latest math branch
+        uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Build strict release only after REAL canonical browser PASS
+        shell: bash
+        run: |
+          git pull --ff-only origin math-problem-bank-bootstrap || true
+          if [ ! -f math-bank/app/app-records.json ]; then
+            echo 'STRICT_RELEASE_BLOCKED_EXPECTED: exact canonical app-records.json is absent'
+            exit 0
+          fi
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('math-bank/state/browser-real-regression-latest.json')
+          if not p.is_file():
+              raise SystemExit('FAIL strict release: real canonical browser report missing')
+          obj = json.loads(p.read_text(encoding='utf-8'))
+          if obj.get('overall_result') != 'success' or obj.get('synthetic_fixture_only') is not False or obj.get('canonical_data_written') is not True:
+              raise SystemExit('FAIL strict release: real canonical browser gate is not PASS')
+          print('PASS_REAL_CANONICAL_BROWSER_GATE_FOR_RELEASE')
+          PY
+          python math-bank/app/build_release_bundle.py
+
+      - name: Preserve strict release bundle after REAL browser PASS
+        if: ${{ hashFiles('math-bank/app/app-records.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: mikami-math-app-strict-release
+          path: |
+            math-bank/みかみ塾数学問題アプリ_公開候補.zip
+            math-bank/release/
+            math-bank/state/browser-real-regression-latest.json
+            math-bank/state/real-print-regression/
           if-no-files-found: error
           retention-days: 30
 
@@ -242,12 +308,14 @@ jobs:
       - app-shell-and-data-gate
       - actions-artifact-recovery-scan
       - browser-regression
+      - strict-release-after-browser
       - inventory-and-classify
     runs-on: ubuntu-latest
     env:
       APP_RESULT: ${{ needs['app-shell-and-data-gate'].result }}
       ARTIFACT_SCAN_RESULT: ${{ needs['actions-artifact-recovery-scan'].result }}
       BROWSER_RESULT: ${{ needs['browser-regression'].result }}
+      RELEASE_RESULT: ${{ needs['strict-release-after-browser'].result }}
       INVENTORY_RESULT: ${{ needs['inventory-and-classify'].result }}
       TRIGGERING_SHA: ${{ github.sha }}
       RUN_ID: ${{ github.run_id }}
@@ -275,8 +343,20 @@ jobs:
           app = os.environ.get('APP_RESULT', 'unknown')
           artifact_scan = os.environ.get('ARTIFACT_SCAN_RESULT', 'unknown')
           browser = os.environ.get('BROWSER_RESULT', 'unknown')
+          release = os.environ.get('RELEASE_RESULT', 'unknown')
           inventory = os.environ.get('INVENTORY_RESULT', 'unknown')
-          overall = 'success' if app == 'success' and artifact_scan == 'success' and browser == 'success' and inventory == 'success' else 'failure'
+          canonical_present = Path('math-bank/app/app-records.json').is_file()
+          real_browser = 'blocked_expected'
+          real_report = Path('math-bank/state/browser-real-regression-latest.json')
+          if real_report.is_file():
+              try:
+                  robj = json.loads(real_report.read_text(encoding='utf-8'))
+                  real_browser = robj.get('overall_result', 'unknown')
+              except Exception:
+                  real_browser = 'invalid_report'
+          if canonical_present and real_browser != 'success':
+              browser = 'failure'
+          overall = 'success' if app == 'success' and artifact_scan == 'success' and browser == 'success' and release == 'success' and inventory == 'success' else 'failure'
           try:
               current_head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
           except Exception:
@@ -287,14 +367,16 @@ jobs:
               'app_shell_and_data_gate': app,
               'actions_artifact_recovery_scan': artifact_scan,
               'browser_regression': browser,
+              'real_canonical_browser_regression': real_browser,
+              'strict_release_after_browser': release,
               'inventory_and_classify': inventory,
               'triggering_sha': os.environ.get('TRIGGERING_SHA', ''),
               'branch_head_when_recorded': current_head,
               'run_id': os.environ.get('RUN_ID', ''),
               'run_attempt': os.environ.get('RUN_ATTEMPT', ''),
               'recorded_at_utc': datetime.now(timezone.utc).isoformat(),
-              'canonical_app_records_present': Path('math-bank/app/app-records.json').is_file(),
-              'strict_release_artifact_expected': Path('math-bank/app/app-records.json').is_file(),
+              'canonical_app_records_present': canonical_present,
+              'strict_release_artifact_expected': canonical_present and real_browser == 'success',
               'canonical_recovery_hit_present': Path('math-bank/recovered/みかみ塾数学問題バンク_最終完成版_20260820.zip').is_file(),
           }
           path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
