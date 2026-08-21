@@ -1,7 +1,7 @@
 {
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_EXPANDED_VARIANT_APP_AND_BASE_RECOVERY",
-  "current_stage": "EXACT_BASE_RECOVERY_PAIR0_PARALLELOGRAM_AREA_SAFE_ENGINE_ADDED",
+  "current_stage": "EXACT_BASE_RECOVERY_PAIR0_TRAPEZOID_AREA_SAFE_ENGINE_ADDED",
   "base_canonical": {
     "records": 1231,
     "original_records": 1124,
@@ -22,15 +22,15 @@
     "manual_generation_queue": "READY_TO_MATERIALIZE_FROM_EXACT_BASE_ONLY"
   },
   "今回完了した内容": [
-    "Reread live branch HEAD, checkpoint, variant state, Actions incremental recovery, auto-complete and Math Audit state before changing anything.",
-    "Confirmed exact BASE pair is still unrecovered; no partial-161, diagnostic-1271 or Winpass717 candidate was promoted.",
-    "Confirmed Actions incremental recovery advanced to 247 artifacts / 231 candidates / 231 verified reuse / 0 new download / 726 members SHA-256 checked / failures0 / canonical-audit-pair0.",
-    "Confirmed latest Math Problem Bank Audit run 32494931453 succeeded on triggering SHA 74b8456c1838fe843462134af30047da64ee35fe; synthetic four-environment browser PASS while real BASE browser/A4 remain blocked_expected only because exact BASE is absent.",
-    "Implemented a new fail-closed parallelogram-area safe variant engine for one explicit same-unit integer base/height parent asking only for parallelogram area.",
-    "Parent and generated answers are independently verified by area=base*height plus both inverse identities area/base=height and area/height=base. Wrong answer, perimeter, mixed-unit, figure, choice, unknown-side and unsupported contexts fail closed.",
-    "Integrated parallelogram_area into unified generation, added positive/negative regression coverage, and added it to unified CI compile/persist contract.",
-    "Math Safe Unified Variant Generation run 32495053540 passed on triggering SHA d2ed0d366bab8d8a958485ea3133318421687038 and persisted parallelogram_area in unified-safe-variant-generation-latest.json.",
-    "No actual BASE variants were generated; expanded variants remain 0 and parent coverage remains 0/1124 because exact BASE parents are still unavailable. main remains untouched."
+    "Reread live branch HEAD, checkpoint, variant state, CI, actions recovery and auto-complete before changing anything.",
+    "Confirmed exact BASE pair is still unrecovered and no partial-161, diagnostic-1271 or Winpass717 candidate was promoted.",
+    "Confirmed latest Actions exact scan state is 250 artifacts / 220 candidates / 219 verified reuse / 1 downloaded delta / 718 members SHA-256 checked / download failures0 / canonical-audit-pair0.",
+    "Implemented fail-closed safe_trapezoid_area_variant_engine.py for one explicit same-unit integer upper-base/lower-base/height parent asking only for trapezoid area.",
+    "Parent and generated answers are recalculated by (upper+lower)*height/2 and independently verified by 2*area=(upper+lower)*height. Wrong answer, half-integer answer, mixed-unit, perimeter, figure and choice parents fail closed.",
+    "Integrated trapezoid_area into unified generation and added direct plus unified-adapter positive/negative regression coverage.",
+    "Updated unified CI compile/run/persist contract to include trapezoid_area.",
+    "Math Safe Unified Variant Generation run 32500504108 passed on triggering SHA ee1fe6e442c5df43bf3979e18f7d520aee0a66fc and persisted state in bot commit 2c35dc1ee729b21955abadd8f6934b501456a621.",
+    "No actual BASE variants were generated; expanded variants remain 0 and parent coverage remains 0/1124 because exact BASE parents are unavailable. main remains untouched."
   ],
   "BASE回収状況": {
     "canonical_pair_found": false,
@@ -43,18 +43,18 @@
     "github_commit_comments": {"comments": 0, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "github_wiki": {"remote_exists": false, "exact_coverage_complete": true, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "owner_public_gists": {"gists": 0, "exact_coverage_complete": true, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
-    "actions_incremental": {"all_artifacts_seen": 247, "candidate_artifacts": 231, "reused_verified_artifacts": 231, "downloaded_artifacts_this_run": 0, "members_sha256_checked": 726, "bytes_hashed": 166192306, "download_failures": 0, "canonical_hits": 0, "valid_audit_hits": 0, "pair_hits": 0},
+    "actions_incremental": {"all_artifacts_seen": 250, "candidate_artifacts": 220, "reused_verified_artifacts": 219, "downloaded_artifacts_this_run": 1, "members_sha256_checked": 718, "bytes_hashed": 69718856, "download_failures": 0, "canonical_hits": 0, "valid_audit_hits": 0, "pair_hits": 0},
     "source_archives_actions_exact": {"artifacts_seen": 239, "candidate_artifacts": 227, "members_sha256_checked": 715, "member_bytes_hashed": 195163315, "download_failures": 0, "oversize_members_skipped": 0, "errors": 0, "exact_coverage_complete": true, "unique_target_hits": 0, "all_three_recovered": false, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
-    "latest_auto_complete": {"run_id": "32490026821", "result": "success", "actions_members_sha256_checked": 726, "actions_reused_verified_artifacts": 231, "actions_downloaded_artifacts_this_run": 0, "actions_pair_hits": 0, "release_pair_hits": 0, "issue_pr_pair_hits": 0, "wiring_ready": false, "publication_ready": false},
+    "latest_auto_complete": {"run_id": "32495205001", "result": "success", "actions_members_sha256_checked": 718, "actions_reused_verified_artifacts": 219, "actions_downloaded_artifacts_this_run": 1, "actions_pair_hits": 0, "release_pair_hits": 0, "issue_pr_pair_hits": 0, "wiring_ready": false, "publication_ready": false},
     "file_library_exact_pair": false,
     "google_drive_exact_pair": false,
     "policy": "cancelled/timeout/incomplete coverage is never absence evidence; no reconstruction; no partial-161 or diagnostic-1271 promotion"
   },
   "expanded_generation_capability": {
     "status": "PASS_CI",
-    "run_id": "32495053540",
-    "triggering_sha": "d2ed0d366bab8d8a958485ea3133318421687038",
-    "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "rectangle_area", "triangle_area", "parallelogram_area", "binary_arithmetic_exact", "linear_equation_exact"],
+    "run_id": "32500504108",
+    "triggering_sha": "ee1fe6e442c5df43bf3979e18f7d520aee0a66fc",
+    "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "rectangle_area", "triangle_area", "parallelogram_area", "trapezoid_area", "binary_arithmetic_exact", "linear_equation_exact"],
     "actual_base_variants_generated": 0,
     "actual_parent_records_required": true,
     "parent_record_sha256_required": true,
@@ -65,9 +65,7 @@
     "minimum_per_parent_default": 1,
     "safe_target_per_parent_default": 3,
     "unsupported_manual_shortfall_only": true,
-    "rectangle_area_exact_product_and_inverse_identity": true,
-    "triangle_area_exact_half_product_and_doubled_area_identity": true,
-    "parallelogram_area_exact_product_and_inverse_identity": true
+    "trapezoid_area_exact_half_sum_product_and_doubled_area_identity": true
   },
   "quality_gates": {
     "audit3_required": true,
@@ -81,7 +79,7 @@
     "full_1124_parent_coverage_required": true
   },
   "CI_browser_A4": {
-    "latest_saved_math_audit_run_id": "32494931453",
+    "latest_saved_math_audit_run_id": "32495030817",
     "latest_saved_math_audit_result": "success",
     "browser_regression": "success_synthetic_four_environments",
     "real_canonical_browser_regression": "blocked_expected_exact_base_absent",
@@ -91,23 +89,23 @@
   },
   "branch_commit": {
     "branch": "math-problem-bank-bootstrap",
-    "parallelogram_area_engine": "74b8456c1838fe843462134af30047da64ee35fe",
-    "parallelogram_area_unified_integration": "5baf676f24354c07c9c6504ce2582c1b6ef728eb",
-    "parallelogram_area_regression_tests": "de465570db8e6c7c0731be2aa3fa16ef25071832",
-    "parallelogram_area_ci_contract": "d2ed0d366bab8d8a958485ea3133318421687038",
-    "unified_ci_persist": "c1886f768ae87f9d3486a16bdfe73dfe587d42c0",
+    "trapezoid_area_engine": "2b61a1099766cdf86d4d1682db3629a0f9f53cca",
+    "trapezoid_area_unified_integration": "3b39de692853fe8302141f690d7fe0b63e289c74",
+    "trapezoid_area_tests": "ee1fe6e442c5df43bf3979e18f7d520aee0a66fc",
+    "trapezoid_area_ci_contract": "6a53c09de5f6e3da5442d0b8e4447e195afbb7bb",
+    "unified_ci_persist": "2c35dc1ee729b21955abadd8f6934b501456a621",
     "main_touched": false
   },
-  "現在どの工程にいるか": "Exact canonical BASE ZIP+audit recovery remains the blocker. Safe unified generation now also covers a narrow exact parallelogram-area class while retaining fail-closed behavior.",
+  "現在どの工程にいるか": "Exact canonical BASE ZIP+audit recovery remains the blocker. Unified safe generation now also covers a narrow exact trapezoid-area class while retaining fail-closed behavior.",
   "残っている作業": [
     "Continue exact canonical recovery only for genuinely new/changed deltas or newly discovered surfaces.",
     "Recover exact canonical ZIP plus valid MATHBANK_FINAL_AUDIT_V2 and recheck SHA-256.",
-    "Inspect/wire immutable BASE, run adaptive unified safe generation including rectangle, triangle and parallelogram area, materialize fingerprint-bound manual queue and strictly validate manual variants.",
+    "Inspect/wire immutable BASE, run adaptive unified safe generation including trapezoid area, materialize fingerprint-bound manual queue and strictly validate manual variants.",
     "Reach 1124/1124 parent coverage, compose dynamic app records, run real four-browser and A4x6 tests, strict release, PUBLICATION_READY and isolated public verification."
   ],
-  "正確停止点": "Canonical recovery remains pair0 at latest Actions 247/231 with 726 members checked and failures0. Parallelogram-area safe generation has passed unified CI, but actual generation remains intentionally 0 because exact BASE parents remain unavailable.",
-  "次回どこから開始するか": "Reread live HEAD/checkpoint/variant/CI/actions/auto-complete. If exact canonical pair appears, immediately validate/wire BASE and run adaptive unified generation including parallelogram_area plus fingerprint-bound manual queue. Otherwise process only new exact-recovery deltas and continue fail-closed completion work.",
+  "正確停止点": "Canonical recovery remains pair0 at latest exact Actions state 250/220 with 718 members checked and failures0. Trapezoid-area safe generation passed unified CI, but actual generation remains intentionally 0 because exact BASE parents remain unavailable.",
+  "次回どこから開始するか": "Reread live HEAD/checkpoint/variant/CI/actions/auto-complete. If exact canonical pair appears, immediately validate/wire BASE and run adaptive unified generation including trapezoid_area plus fingerprint-bound manual queue. Otherwise process only new exact-recovery deltas and continue fail-closed completion work.",
   "次に進むべき工程": "new exact recovery delta/surface -> exact BASE pair -> SHA/audit validation -> immutable BASE wiring -> adaptive verified auto generation -> fingerprint-bound manual queue -> 1124/1124 -> real browser/A4 -> strict release -> PUBLICATION_READY -> isolated public verification",
-  "recorded_at_utc": "2026-08-21T14:59:30Z",
+  "recorded_at_utc": "2026-08-21T16:01:00Z",
   "resume_rule": "Never reconstruct BASE or generate from unseen parents. Invalid/unverified variants never count as coverage."
 }
