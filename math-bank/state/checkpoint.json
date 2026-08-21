@@ -1,7 +1,7 @@
 {
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_EXPANDED_VARIANT_APP_AND_BASE_RECOVERY",
-  "current_stage": "EXACT_BASE_RECOVERY_PAIR0_PLUS_UNIFIED_SAFE_GENERATION_READY",
+  "current_stage": "EXACT_BASE_RECOVERY_PAIR0_PLUS_UNIFIED_SAFE_GENERATION_AND_MANUAL_QUEUE_READY",
   "base_canonical": {
     "records": 1231,
     "original_records": 1124,
@@ -20,18 +20,18 @@
     "expanded_verified_variants": 0,
     "expanded_parent_coverage": 0,
     "publication_requires_full_parent_coverage": true,
-    "manual_generation_queue": "WAITING_FOR_EXACT_BASE_PARENT_RECORDS"
+    "manual_generation_queue": "READY_TO_MATERIALIZE_FROM_EXACT_BASE_ONLY"
   },
   "今回完了した内容": [
-    "Reread live HEAD/checkpoint/variant/CI/recovery before writes and followed the newest branch state.",
-    "Confirmed exact BASE pair is still unrecovered; branch/tag 1901/1901 and PR refs 1419/1419 remain exact-complete pair0 negative evidence.",
-    "Confirmed latest incremental Actions artifact evidence: 233 artifacts seen, 221 candidate artifacts reused, 0 redownloaded this run, 704 members SHA-256 checked, download failures 0, canonical/audit/pair hits 0.",
-    "Implemented generate_all_safe_verified_variants.py as one fail-closed execution layer over affine, single-draw probability, proportion, percentage, simple average, exact binary arithmetic and exact first-degree equation engines.",
-    "Unified driver only consumes actual BASE records loaded from disk, binds every promoted candidate to parent_record_sha256 and keeps the strict expanded validator as the final promotion gate.",
-    "Added integration regression covering all specialized engines, exact arithmetic/equation fallback, wrong-parent-answer rejection, figure rejection and choice rejection.",
-    "Added non-cancelling Math Safe Unified Variant Generation CI; run 32465658533 succeeded and persisted state at commit a24cf73827e7b980e3f04c50605fecce74856eab.",
-    "actual_base_variants_generated remains 0 because exact BASE is absent; no unseen-parent generation occurred.",
-    "Updated variant-expansion state with unified execution layer and latest recovery/CI evidence. main remains untouched."
+    "Reread live branch HEAD, checkpoint, variant state, Actions recovery state and auto-complete state before changing anything.",
+    "Confirmed exact BASE pair remains unrecovered; no 161/1271/717 diagnostic data was promoted.",
+    "Observed newer auto-complete run 32465843569 success: 236 artifacts seen, 224 candidates, 223 verified reuse, 1 new/changed artifact downloaded, 710 members SHA-256 checked, download failures 0, canonical/audit/pair hits 0.",
+    "Kept branch/tag 1901/1901 and PR refs 1419/1419 exact-complete pair0 as valid negative evidence; unchanged exact-complete surfaces were not redundantly rescanned.",
+    "Extended generate_all_safe_verified_variants.py with a fingerprint-bound manual queue for every actual BASE parent unsupported by the proven automatic engines.",
+    "Manual tasks contain parent_id, exact parent_record_sha256, missing variant count, taxonomy/format metadata and figure/choice references, but deliberately contain no generated question or answer.",
+    "Added regression proving unsupported/wrong-answer/figure/choice parents become SHA-bound manual tasks and that a changed parent changes the manual task fingerprint.",
+    "Unified CI run 32470337695 succeeded on triggering SHA 4ed7f108ba3629eed2c3dd01ce89c1c08791b1f3 and persisted fingerprint_bound_manual_queue=true plus strict-validator-before-coverage guarantees.",
+    "actual_base_variants_generated remains 0 because the exact BASE is absent. main remains untouched."
   ],
   "BASE回収状況": {
     "exact_zip_recovered": false,
@@ -46,20 +46,25 @@
     "github_commit_comments": {"comments":0,"pair_hits":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "github_wiki": {"remote_exists":false,"exact_coverage_complete":true,"pair_hits":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "owner_public_gists": {"gists":0,"exact_coverage_complete":true,"pair_hits":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
-    "actions_incremental": {"all_artifacts_seen":233,"candidate_artifacts":221,"reused_verified_artifacts":221,"downloaded_artifacts_this_run":0,"members_sha256_checked":704,"bytes_hashed":195149031,"download_failures":0,"canonical_hits":0,"valid_audit_hits":0,"pair_hits":0},
-    "latest_auto_complete": {"run_id":"32461192367","result":"success","actions_members_sha256_checked":704,"actions_reused_verified_artifacts":221,"actions_downloaded_artifacts_this_run":0,"actions_pair_hits":0,"release_pair_hits":0,"issue_pr_pair_hits":0,"wiring_ready":false,"publication_ready":false},
+    "actions_incremental": {"all_artifacts_seen":236,"candidate_artifacts":224,"reused_verified_artifacts":223,"downloaded_artifacts_this_run":1,"members_sha256_checked":710,"bytes_hashed":195156861,"download_failures":0,"canonical_hits":0,"valid_audit_hits":0,"pair_hits":0},
+    "latest_auto_complete": {"run_id":"32465843569","result":"success","actions_members_sha256_checked":710,"actions_reused_verified_artifacts":223,"actions_downloaded_artifacts_this_run":1,"actions_pair_hits":0,"release_pair_hits":0,"issue_pr_pair_hits":0,"wiring_ready":false,"publication_ready":false},
     "file_library_exact_pair": false,
     "google_drive_exact_pair": false,
     "policy": "cancelled/timeout/incomplete coverage is never absence evidence; exact-complete unchanged surfaces are not redundantly rescanned"
   },
   "expanded_generation_capability": {
-    "unified_safe_generation": {"status":"PASS_CI","run_id":"32465658533","triggering_sha":"6ecfea04c9835a8735446b95dff6b7d3531ed5e7","engines":["affine","single_draw_probability","proportion","percentage","simple_average","binary_arithmetic_exact","linear_equation_exact"],"actual_base_variants_generated":0,"actual_parent_records_required":true,"strict_validator_promotion_gate":true},
-    "binary_arithmetic_and_linear_equation": "PASS_PARENT_RECALC_AND_INDEPENDENT_VERIFY",
-    "affine": {"status":"PASS_CI","run_id":"32445176580","actual_base_variants_generated":0},
-    "single_draw_probability": {"status":"PASS_CI","run_id":"32448770858","actual_base_variants_generated":0},
-    "proportion": {"status":"PASS_CI","run_id":"32452655967","actual_base_variants_generated":0},
-    "percentage": {"status":"PASS_CI","run_id":"32456322984","actual_base_variants_generated":0},
-    "simple_average": {"status":"PASS_CI","run_id":"32461087792","actual_base_variants_generated":0}
+    "unified_safe_generation": {
+      "status":"PASS_CI",
+      "run_id":"32470337695",
+      "triggering_sha":"4ed7f108ba3629eed2c3dd01ce89c1c08791b1f3",
+      "engines":["affine","single_draw_probability","proportion","percentage","simple_average","binary_arithmetic_exact","linear_equation_exact"],
+      "actual_base_variants_generated":0,
+      "actual_parent_records_required":true,
+      "strict_validator_promotion_gate":true,
+      "fingerprint_bound_manual_queue":true,
+      "manual_queue_contains_generated_problem_text":false,
+      "manual_queue_requires_strict_validation_before_coverage":true
+    }
   },
   "quality_gates": {
     "parent_record_sha256_binding": true,
@@ -81,29 +86,27 @@
     "real_A4_six_pdfs": "blocked_expected_exact_base_absent",
     "publication_ready": false,
     "audit_cancel_in_progress": false,
-    "unified_safe_generation_ci_run_id": "32465658533",
+    "unified_safe_generation_ci_run_id": "32470337695",
     "unified_safe_generation_ci_result": "success"
   },
   "branch_commit": {
     "branch": "math-problem-bank-bootstrap",
-    "unified_driver": "9bcbe54485fec10ad289221ddb58ca33c64dbd26",
-    "unified_tests": "aaf312a7f6b1482d5b874c2feaa72679c6cbb4c8",
-    "unified_ci_workflow": "6ecfea04c9835a8735446b95dff6b7d3531ed5e7",
-    "unified_ci_persist": "a24cf73827e7b980e3f04c50605fecce74856eab",
-    "variant_state_commit": "ec1de6801219b4cf5897cd701bfe5530de16a605",
+    "manual_queue_driver_commit": "1e1276a331583163cb1df9c3a8db3c0afe182814",
+    "manual_queue_test_commit": "8476bfd5f35e7269e96bf1c9005660b5cd050386",
+    "manual_queue_ci_contract_commit": "4ed7f108ba3629eed2c3dd01ce89c1c08791b1f3",
     "main_touched": false
   },
-  "現在どの工程にいるか": "Exact BASE recovery remains the blocker before actual-parent generation. Unified safe execution is now CI-proven and ready to run immediately on fingerprint-bound actual parents once the exact pair is recovered.",
+  "現在どの工程にいるか": "Exact BASE recovery remains the blocker. Automatic safe generation and the fingerprint-bound manual fallback are both CI-proven and ready to consume only actual BASE parents.",
   "残っている作業": [
     "Continue exact recovery only for genuinely new/changed deltas or newly discovered recoverable surfaces.",
     "Recover exact canonical ZIP plus valid MATHBANK_FINAL_AUDIT_V2 and recheck SHA-256.",
-    "After exact pair, inspect/wire immutable BASE and build fingerprint-bound uncovered-parent queue.",
-    "Run the unified safe driver against exact-matching actual parents, then manually resolve unsupported figure/choice/other structures, and reach 1124/1124 validated parent coverage.",
-    "Compose dynamic app records; run real Chromium/Firefox/WebKit iPhone/Chromium Fire, all filters/search/parent-source/figures, A4x6, strict release, PUBLICATION_READY and isolated public verification."
+    "After exact pair, inspect/wire immutable BASE and run the unified safe driver against fingerprint-bound actual parents.",
+    "Materialize the new manual queue for every unsupported actual parent, review exact parent/figures/choices, and validate all manual variants through the same strict expanded validator.",
+    "Reach 1124/1124 validated parent coverage, compose dynamic app records, run real Chromium/Firefox/WebKit iPhone/Chromium Fire and A4x6, then strict release, PUBLICATION_READY and isolated public verification."
   ],
-  "正確停止点": "Unified safe generation run 32465658533 succeeded across all currently proven safe engines. Exact BASE pair remains unrecovered. Expanded variants 0, parent coverage 0/1124, manual queue waiting for exact BASE; real browser/A4/publication remain blocked_expected solely by BASE absence.",
-  "次回どこから開始するか": "Reread live HEAD/checkpoint/variant/CI/actions/auto-complete. If exact pair appears, immediately validate and wire BASE, build the fingerprint-bound queue and run the unified safe driver against actual parents; otherwise process only new exact recovery deltas and provable fail-closed capability/integration work.",
-  "次に進むべき工程": "new exact recovery delta/surface -> exact BASE pair -> SHA/audit validation -> immutable BASE snapshot/app wiring -> fingerprint-bound uncovered-parent queue -> unified verified generation/recalculation -> manual cases -> 1124/1124 coverage -> real browser/A4 -> strict release -> PUBLICATION_READY -> isolated public verification",
-  "recorded_at_utc": "2026-08-21T09:01:30Z",
+  "正確停止点": "Unified manual-queue safety contract passed CI run 32470337695. Exact BASE pair remains unrecovered. Expanded variants 0, parent coverage 0/1124; real browser/A4/publication remain blocked_expected only by exact BASE absence.",
+  "次回どこから開始するか": "Reread live HEAD/checkpoint/variant/CI/actions/auto-complete. If exact pair appears, immediately validate/wire BASE and run unified automatic generation plus fingerprint-bound manual queue materialization against actual parents. Otherwise process only new recovery deltas and provable fail-closed completion work.",
+  "次に進むべき工程": "new exact recovery delta/surface -> exact BASE pair -> SHA/audit validation -> immutable BASE snapshot/app wiring -> unified verified automatic generation -> fingerprint-bound manual queue -> strict validation -> 1124/1124 coverage -> real browser/A4 -> strict release -> PUBLICATION_READY -> isolated public verification",
+  "recorded_at_utc": "2026-08-21T09:58:00Z",
   "resume_rule": "Do not stop at status-only work. Never reconstruct BASE or generate from unseen parents. Invalid/unverified variants never count as coverage."
 }
