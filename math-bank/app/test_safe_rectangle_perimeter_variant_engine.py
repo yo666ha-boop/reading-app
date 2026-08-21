@@ -16,6 +16,9 @@ def parent(**overrides):
 def main() -> None:
     ok, reason = can_generate(parent())
     assert ok and reason == "rectangle_integer_cm_perimeter_exact"
+    direct = parent(question="たて8cm、横5cmの長方形の周の長さは何cmですか。")
+    ok, reason = can_generate(direct)
+    assert ok and reason == "rectangle_integer_cm_perimeter_exact"
     rows, evidence, _ = generate(parent(), 3)
     assert len(rows) == 3 and len(evidence) == 3
     sigs = {tuple(row["numeric_signature"]) for row in rows}
