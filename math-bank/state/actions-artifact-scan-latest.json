@@ -5,19 +5,106 @@
   "expected_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "required_paired_audit": "MATHBANK_FINAL_AUDIT_V2.json",
   "created_since": "2026-08-19T00:00:00Z",
-  "all_artifacts_seen": 214,
-  "candidate_artifacts": 214,
+  "all_artifacts_seen": 217,
+  "candidate_artifacts": 217,
   "canonical_hits": 0,
   "audit_name_hits": 0,
   "valid_audit_hits": 0,
   "paired_recovery_hits": 0,
   "recovery_hint_hits": 0,
   "download_failures": 0,
-  "all_members_sha256_checked": 678,
-  "all_member_bytes_hashed": 277995688,
+  "all_members_sha256_checked": 684,
+  "all_member_bytes_hashed": 278147229,
   "zip_signature_members": 3,
   "oversize_members_skipped": 0,
   "artifacts": [
+    {
+      "artifact_id": 9431706166,
+      "name": "math-commit-comment-recovery-diagnostics",
+      "size_in_bytes": 1143,
+      "created_at": "2026-08-21T02:11:04Z",
+      "updated_at": "2026-08-21T02:11:04Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32438936988,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "c51cd45dd10b624115ffcb45c82a3f600187d9f0"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 2,
+        "members_sha256_checked": 2,
+        "member_bytes_hashed": 1214,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1143
+    },
+    {
+      "artifact_id": 9431677158,
+      "name": "math-browser-regression-diagnostics",
+      "size_in_bytes": 1009,
+      "created_at": "2026-08-21T02:09:33Z",
+      "updated_at": "2026-08-21T02:09:33Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32438746390,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "a9e0ff59390dcbeda4d77d098466418507aaca8a"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 2,
+        "members_sha256_checked": 2,
+        "member_bytes_hashed": 2610,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1009
+    },
+    {
+      "artifact_id": 9431670781,
+      "name": "math-actions-log-recovery-diagnostics",
+      "size_in_bytes": 11799,
+      "created_at": "2026-08-21T02:09:12Z",
+      "updated_at": "2026-08-21T02:09:12Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32438821150,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "99193b9e6aeb9273a255de44432563252f48aeda"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 2,
+        "members_sha256_checked": 2,
+        "member_bytes_hashed": 147717,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 11799
+    },
     {
       "artifact_id": 9431646182,
       "name": "math-actions-log-recovery-diagnostics",
@@ -6250,6 +6337,6 @@
     }
   ],
   "recovered_files": [],
-  "completed_at_utc": "2026-08-21T02:11:14.388904+00:00",
+  "completed_at_utc": "2026-08-21T02:13:57.294498+00:00",
   "policy": "Every member under the size cap is SHA-256 checked regardless of filename/extension. Nested archives are detected by ZIP signature. Exact immutable SHA plus one unambiguous valid final audit from the same Actions artifact is required; no reconstruction."
 }
