@@ -1,7 +1,7 @@
 {
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_EXPANDED_VARIANT_APP_AND_BASE_RECOVERY",
-  "current_stage": "EXACT_BASE_RECOVERY_PAIR0_RECTANGLE_PERIMETER_UNIFIED_CI_RETRIGGERED_PENDING",
+  "current_stage": "EXACT_BASE_RECOVERY_PAIR0_RECTANGLE_PERIMETER_UNIFIED_PERSIST_HARDENED_RETRIGGER_PENDING",
   "base_canonical": {
     "records": 1231,
     "original_records": 1124,
@@ -22,13 +22,11 @@
     "manual_generation_queue": "READY_TO_MATERIALIZE_FROM_EXACT_BASE_ONLY"
   },
   "今回完了した内容": [
-    "最新HEAD/checkpoint/variant/unified/CI/auto-complete/actions recoveryを実読し、共有正本へ追従。run開始時HEADは95be8001c68bd724218001173d6fe6c963bd70c5。",
-    "通常Math Auditは98c237cトリガーのrun 32530942815がsuccess。app shell、Actions recovery、synthetic browser、inventory、strict release blocking contractは成功。実BASE browser/A4はexact BASE未接続のためblocked_expected。",
-    "最新Auto Completeはrun 32531004897 success。Actions exact deltaは266 artifacts / 236 candidates / 236 verified reuse / download0 / 750 members / 69,760,616 bytes / failure0 / canonical0 / valid audit0 / pair0。",
-    "branch/tag recovery stateを実読し、full non-shallow history・bundle full fsck・all-ref selftest・1901/1901 readable/assigned/checked・16/16・exact_coverage_complete=true・pair0を再確認。旧1874対565不具合結果は使わず、現在の1901 exact-completeだけをnegative evidenceとして維持。",
-    "File Libraryを完成ZIP名・audit名・指定SHAで再検索したがexact pair候補なし。Google Driveも完成ZIP名とMATHBANK_FINAL_AUDIT_V2を再検索して0件。途中版や診断版は昇格していない。",
-    "Unified stateは依然run 32525969515の旧persistでrectangle_perimeter未記録だったためPASS扱いせず、workflow保存stateへrectangle_perimeter_parent_metadata_preservation_required=trueを追加して再トリガー。commit b5578cf041995cb7c9cee1cbc84ebb7944e439cf。",
-    "variant-expansion stateを最新recovery値・最新Audit・b5578cf pending terminal地点へ更新。commit 3242cf9ab6fe4e53543e755ff92ce6cdb0f13824。mainは未変更。"
+    "最新HEAD/checkpoint/variant/unified/auto-completeを実読し共有正本へ追従。開始時HEADはc8e053eea78441a733491becbd065af16f7f8270。",
+    "最新Auto Complete run 32535276871 successを確認。Actions exact deltaは267 artifacts / 237 candidates / 236 verified reuse / 新規・変更1 download / 752 members / 69,763,226 bytes / failure0 / canonical0 / valid audit0 / pair0。",
+    "Unified persisted stateが依然run 32525969515の旧stateでrectangle_perimeter未記録であることを再確認。未確認PASSとして扱っていない。",
+    "Unified workflowのstate persistを強化。persist_schema_version=2、rectangle_perimeter_direct_question_wording_supported=trueを保存契約へ追加し、push競合リトライを4回から6回へ増加。commit 2e655360a3d349e4922914b3cea9163827ccc860。これによりworkflowを明示的に再トリガー。",
+    "variant-expansion stateを最新recovery値とCI persistence hardening地点へ更新。commit 4cf11aceb2e6ed10b4b65e88315c86b0ec3538ae。mainは未変更。"
   ],
   "BASE回収状況": {
     "canonical_pair_found": false,
@@ -37,17 +35,18 @@
     "other_owned_repos": "2_repos_x_16_of_16_exact_complete_pair0_no_rerun_without_change",
     "github_release": {"releases": 0, "assets": 0, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "github_issue_pr_attachment": {"pair_hits": 0, "errors": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
-    "actions_incremental": {"all_artifacts_seen": 266, "candidate_artifacts": 236, "reused_verified_artifacts": 236, "downloaded_artifacts_this_run": 0, "members_sha256_checked": 750, "bytes_hashed": 69760616, "download_failures": 0, "canonical_hits": 0, "valid_audit_hits": 0, "pair_hits": 0},
-    "latest_auto_complete": {"run_id": "32531004897", "result": "success", "actions_members_sha256_checked": 750, "actions_reused_verified_artifacts": 236, "actions_downloaded_artifacts_this_run": 0, "actions_pair_hits": 0, "wiring_ready": false, "publication_ready": false},
+    "actions_incremental": {"all_artifacts_seen": 267, "candidate_artifacts": 237, "reused_verified_artifacts": 236, "downloaded_artifacts_this_run": 1, "members_sha256_checked": 752, "bytes_hashed": 69763226, "download_failures": 0, "canonical_hits": 0, "valid_audit_hits": 0, "pair_hits": 0},
+    "latest_auto_complete": {"run_id": "32535276871", "result": "success", "actions_members_sha256_checked": 752, "actions_reused_verified_artifacts": 236, "actions_downloaded_artifacts_this_run": 1, "actions_pair_hits": 0, "wiring_ready": false, "publication_ready": false},
     "file_library_exact_pair": false,
     "google_drive_exact_pair": false,
     "policy": "cancelled/timeout/incomplete coverage is never absence evidence; no reconstruction; no partial-161 or diagnostic-1271 promotion"
   },
   "expanded_generation_capability": {
-    "status": "RECTANGLE_PERIMETER_METADATA_GATE_CI_RETRIGGERED_PENDING_TERMINAL_PERSIST",
+    "status": "RECTANGLE_PERIMETER_PERSIST_HARDENED_RETRIGGER_PENDING_TERMINAL",
     "last_persisted_pass_run_id": "32525969515",
     "last_persisted_pass_triggering_sha": "31d04a3dcc64d4227a88e10a882e4169a9528d6d",
-    "latest_contract_commit": "b5578cf041995cb7c9cee1cbc84ebb7944e439cf",
+    "latest_contract_commit": "2e655360a3d349e4922914b3cea9163827ccc860",
+    "persist_schema_version_target": 2,
     "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "rectangle_area", "rectangle_perimeter", "square_area", "triangle_area", "parallelogram_area", "trapezoid_area", "rectangular_prism_volume", "cube_volume", "speed_distance", "binary_arithmetic_exact", "linear_equation_exact"],
     "actual_base_variants_generated": 0,
     "actual_parent_records_required": true,
@@ -59,7 +58,9 @@
     "safe_target_per_parent_default": 3,
     "rectangle_perimeter_exact_double_sum_and_two_inverse_identities": true,
     "rectangle_perimeter_parent_metadata_preservation_test": true,
-    "rectangle_perimeter_parent_metadata_persist_contract": true
+    "rectangle_perimeter_parent_metadata_persist_contract": true,
+    "rectangle_perimeter_direct_question_wording_persist_contract": true,
+    "persist_push_retry_count": 6
   },
   "CI_browser_A4": {
     "latest_audit_run_id": "32530942815",
@@ -74,22 +75,22 @@
   },
   "branch_commit": {
     "branch": "math-problem-bank-bootstrap",
-    "run_start_head": "95be8001c68bd724218001173d6fe6c963bd70c5",
-    "unified_state_persist_retrigger": "b5578cf041995cb7c9cee1cbc84ebb7944e439cf",
-    "variant_state_commit": "3242cf9ab6fe4e53543e755ff92ce6cdb0f13824",
+    "run_start_head": "c8e053eea78441a733491becbd065af16f7f8270",
+    "unified_state_persistence_hardening": "2e655360a3d349e4922914b3cea9163827ccc860",
+    "variant_state_commit": "4cf11aceb2e6ed10b4b65e88315c86b0ec3538ae",
     "main_touched": false
   },
-  "現在どの工程にいるか": "Exact canonical BASE ZIP+audit recovery remains the blocker. Rectangle-perimeter unified CI was explicitly retriggered with a persisted metadata-preservation contract; terminal persisted Unified state is still pending observation.",
+  "現在どの工程にいるか": "Exact canonical BASE ZIP+audit recovery remains the blocker. Rectangle-perimeter Unified CI persistence was hardened and explicitly retriggered; terminal persisted state is still pending observation.",
   "残っている作業": [
-    "b5578cf以降のUnified CI terminal result/persistを確認し、失敗なら即ログ確認・修正。",
+    "2e655360以降のUnified CI terminal result/persistを確認し、失敗なら即ログ確認・修正。",
     "新規/変更分だけexact canonical recoveryを継続。",
     "exact canonical ZIP+MATHBANK_FINAL_AUDIT_V2 pair回収後SHA再確認、immutable BASE配線。",
     "実1124親へadaptive safe generation＋fingerprint-bound manual queue、strict validationで1124/1124へ到達。",
     "real four-browser + A4x6 + strict release + PUBLICATION_READY + isolated public verification。"
   ],
-  "正確停止点": "Canonical recovery pair0 at 266 artifacts / 236 candidates / 750 members / failures0. branch/tag exact coverage is valid at 1901/1901, PR refs exact coverage 1419/1419. Unified persisted state is still the old run 32525969515; b5578cf retrigger is pushed and must not be counted PASS until terminal persist appears.",
-  "次回どこから開始するか": "live HEAD/checkpoint/variant/unified-CI/actions/auto-completeを再読し、まずb5578cf以降のUnified terminal persistを確認。exact pairが出ていれば即BASE配線へ。",
+  "正確停止点": "Canonical recovery pair0 at 267 artifacts / 237 candidates / 752 members / failures0. branch/tag exact coverage 1901/1901 and PR refs 1419/1419 remain valid. Unified persisted state is still old run 32525969515; commit 2e655360 hardened persistence and retriggered it, but terminal persist has not yet been observed.",
+  "次回どこから開始するか": "live HEAD/checkpoint/variant/unified-CI/actions/auto-completeを再読し、まず2e655360以降のUnified terminal persistを確認。exact pairが出ていれば即BASE配線へ。",
   "次に進むべき工程": "terminal rectangle-perimeter unified CI -> new exact recovery delta -> exact BASE pair -> SHA/audit validation -> immutable BASE wiring -> adaptive verified auto generation -> fingerprint-bound manual queue -> 1124/1124 -> real browser/A4 -> strict release -> PUBLICATION_READY -> isolated public verification",
-  "recorded_at_utc": "2026-08-21T23:01:00Z",
+  "recorded_at_utc": "2026-08-21T23:58:30Z",
   "resume_rule": "Never reconstruct BASE or generate from unseen parents. Invalid/unverified variants never count as coverage."
 }
