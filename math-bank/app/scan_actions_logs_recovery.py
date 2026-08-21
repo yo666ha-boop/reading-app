@@ -109,6 +109,33 @@ def downloadable(url: str) -> bool:
     return any(host == suffix or host.endswith("." + suffix) for suffix in ALLOWED_DOWNLOAD_HOST_SUFFIXES)
 
 
+def blank_item(run: dict) -> dict:
+    return {
+        "run_id": run.get("id"),
+        "name": run.get("name"),
+        "event": run.get("event"),
+        "status": run.get("status"),
+        "conclusion": run.get("conclusion"),
+        "head_sha": run.get("head_sha"),
+        "created_at": run.get("created_at"),
+        "updated_at": run.get("updated_at"),
+        "log_members_seen": 0,
+        "text_members_scanned": 0,
+        "hint_lines_seen": 0,
+        "candidate_urls_seen": 0,
+        "candidate_urls_downloaded": 0,
+        "candidate_bytes_hashed": 0,
+        "canonical_hits": 0,
+        "valid_audit_hits": 0,
+        "hint_lines": [],
+        "candidate_urls": [],
+        "downloads": [],
+        "scan_complete": False,
+        "deferred_nonterminal": False,
+        "errors": [],
+    }
+
+
 def main() -> int:
     if not TOKEN:
         print("BLOCKED: GITHUB_TOKEN is required")
@@ -147,6 +174,8 @@ def main() -> int:
         "expected_sha256": EXPECTED_SHA256,
         "required_paired_audit": AUDIT_FILENAME,
         "runs_seen": len(runs),
+        "completed_runs_eligible": sum(1 for r in runs if r.get("status") == "completed"),
+        "runs_deferred_nonterminal": sum(1 for r in runs if r.get("status") != "completed"),
         "runs_reused": 0,
         "runs_downloaded_this_run": 0,
         "runs_log_download_failures": 0,
@@ -159,10 +188,11 @@ def main() -> int:
         "canonical_hits": 0,
         "valid_audit_hits": 0,
         "paired_recovery_hits": 0,
+        "exact_log_coverage_complete": False,
         "runs": [],
         "recovered_files": [],
         "completed_at_utc": None,
-        "policy": "Workflow logs are used only as an exact clue surface. No data reconstruction. A recovered BASE still requires the exact canonical SHA plus one valid named audit from the same workflow run clue context.",
+        "policy": "Only completed workflow runs are eligible for log absence evidence. Nonterminal runs, including the scanner's own current run, are explicitly deferred rather than counted as download failures. No data reconstruction; recovery requires exact canonical SHA plus one valid named audit from the same workflow-run clue context.",
     }
 
     OUT_RECOVERY.mkdir(parents=True, exist_ok=True)
@@ -170,6 +200,12 @@ def main() -> int:
         p.unlink(missing_ok=True)
 
     for run in runs:
+        if run.get("status") != "completed":
+            item = blank_item(run)
+            item["deferred_nonterminal"] = True
+            report["runs"].append(item)
+            continue
+
         key = (int(run.get("id") or 0), str(run.get("updated_at") or ""))
         if key in cached:
             item = cached[key]
@@ -179,29 +215,7 @@ def main() -> int:
                 report[metric] += int(item.get(metric) or 0)
             continue
 
-        item = {
-            "run_id": run.get("id"),
-            "name": run.get("name"),
-            "event": run.get("event"),
-            "status": run.get("status"),
-            "conclusion": run.get("conclusion"),
-            "head_sha": run.get("head_sha"),
-            "created_at": run.get("created_at"),
-            "updated_at": run.get("updated_at"),
-            "log_members_seen": 0,
-            "text_members_scanned": 0,
-            "hint_lines_seen": 0,
-            "candidate_urls_seen": 0,
-            "candidate_urls_downloaded": 0,
-            "candidate_bytes_hashed": 0,
-            "canonical_hits": 0,
-            "valid_audit_hits": 0,
-            "hint_lines": [],
-            "candidate_urls": [],
-            "downloads": [],
-            "scan_complete": False,
-            "errors": [],
-        }
+        item = blank_item(run)
         report["runs_downloaded_this_run"] += 1
         try:
             payload = curl_bytes(f"{API}/repos/{REPO}/actions/runs/{run['id']}/logs", timeout=180)
@@ -282,6 +296,12 @@ def main() -> int:
             report[metric] += int(item.get(metric) or 0)
         report["runs"].append(item)
 
+    eligible_items = [i for i in report["runs"] if not i.get("deferred_nonterminal")]
+    report["exact_log_coverage_complete"] = bool(
+        len(eligible_items) == report["completed_runs_eligible"]
+        and report["runs_log_download_failures"] == 0
+        and all(i.get("scan_complete") is True and not i.get("errors") for i in eligible_items)
+    )
     report["completed_at_utc"] = datetime.now(timezone.utc).isoformat()
     OUT_REPORT.parent.mkdir(parents=True, exist_ok=True)
     OUT_REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
