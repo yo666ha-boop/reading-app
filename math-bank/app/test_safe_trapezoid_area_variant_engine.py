@@ -2,8 +2,11 @@ from __future__ import annotations
 
 import copy
 
+from generate_all_safe_verified_variants import generate_parent as generate_unified
 from safe_trapezoid_area_variant_engine import generate
 from test_expanded_variant_layer import make_base
+
+NOW = "2026-08-22T00:55:00+09:00"
 
 
 def parent(question: str, answer: str) -> dict:
@@ -28,6 +31,13 @@ def main() -> None:
     assert all(r["question"] != good["question"] for r in rows)
     assert all("2*area == (upper+lower)*height PASS" == e["independent_check"] for e in evidence)
 
+    unified_rows, unified_prov, unified_reason = generate_unified(good, 3, NOW)
+    assert unified_reason.startswith("specialized:trapezoid_area:")
+    assert len(unified_rows) == len(unified_prov) == 3
+    assert all(r["source"]["parent_id"] == good["id"] for r in unified_rows)
+    assert all(p["independent_recalculation"] is True for p in unified_prov)
+    assert all("trapezoid_area_exact_half_sum_product_and_doubled_area_identity" in p["verification_evidence"] for p in unified_prov)
+
     wrong = parent("上底6cm、下底10cm、高さ5cmの台形の面積を求めなさい。", "41cm²")
     assert generate(wrong, 1)[0] == []
 
@@ -49,6 +59,7 @@ def main() -> None:
     assert generate(choice, 1)[0] == []
 
     print("PASS_SAFE_TRAPEZOID_AREA_EXACT_RECALCULATION_AND_DOUBLED_AREA_IDENTITY")
+    print("PASS_SAFE_TRAPEZOID_AREA_UNIFIED_ADAPTER_PARENT_BINDING_AND_EVIDENCE")
     print("PASS_SAFE_TRAPEZOID_AREA_WRONG_HALF_MIXED_PERIMETER_FIGURE_CHOICE_FAIL_CLOSED")
 
 
