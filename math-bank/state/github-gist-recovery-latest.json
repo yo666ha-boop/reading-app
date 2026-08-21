@@ -1,0 +1,29 @@
+{
+  "scan": "owner_public_gists_exact_math_canonical_recovery",
+  "owner": "yo666ha-boop",
+  "expected_filename": "みかみ塾数学問題バンク_最終完成版_20260820.zip",
+  "expected_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
+  "required_audit": "MATHBANK_FINAL_AUDIT_V2.json",
+  "gists_seen": 0,
+  "files_seen": 0,
+  "file_bytes_hashed": 0,
+  "text_surfaces_seen": 0,
+  "candidate_urls_seen": 0,
+  "candidate_urls_downloaded": 0,
+  "candidate_bytes_hashed": 0,
+  "canonical_hits": [],
+  "valid_audit_hits": [],
+  "paired_recovery_hits": [],
+  "text_exact_filename_mentions": 0,
+  "text_audit_mentions": 0,
+  "text_expected_sha_mentions": 0,
+  "errors": [
+    {
+      "scope": "gist_enumeration",
+      "error": "HTTP Error 403: Forbidden"
+    }
+  ],
+  "exact_coverage_complete": false,
+  "recorded_at_utc": "2026-08-21T02:14:19.970341+00:00",
+  "policy": "Every public gist file is fetched and SHA-256 checked; GitHub-hosted URLs near canonical/audit/SHA mentions are also hashed. Pairing requires exact canonical SHA plus one valid named audit within the same gist. No reconstruction."
+}
