@@ -38,10 +38,10 @@
   "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_TESTS",
   "unified_safe_generation": {
     "status": "PASS_CI",
-    "run_id": "32511024296",
-    "triggering_sha": "b26ea86d54870eb34e963ab4e6a4d30964ba9ae7",
+    "run_id": "32515745854",
+    "triggering_sha": "b3d1aa7651bd6dd91f7b3e16d1b3da4eaa060d21",
     "driver": "generate_all_safe_verified_variants.py",
-    "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "rectangle_area", "triangle_area", "parallelogram_area", "trapezoid_area", "rectangular_prism_volume", "speed_distance", "binary_arithmetic_exact", "linear_equation_exact"],
+    "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "rectangle_area", "square_area", "triangle_area", "parallelogram_area", "trapezoid_area", "rectangular_prism_volume", "speed_distance", "binary_arithmetic_exact", "linear_equation_exact"],
     "actual_base_variants_generated": 0,
     "actual_parent_records_required": true,
     "parent_record_sha256_required": true,
@@ -54,6 +54,7 @@
     "minimum_per_parent_default": 1,
     "safe_target_per_parent_default": 3,
     "unsupported_manual_shortfall_only": true,
+    "square_area_exact_product_and_integer_square_root_identity": true,
     "rectangular_prism_volume_exact_product_and_three_inverse_identities": true
   },
   "manual_queue_contract": {
@@ -67,12 +68,12 @@
   },
   "base_recovery": {
     "actions_latest_confirmed": {
-      "all_artifacts_seen": 254,
-      "candidate_artifacts": 224,
-      "reused_verified_artifacts": 224,
-      "downloaded_artifacts_this_run": 0,
-      "members_sha256_checked": 726,
-      "member_bytes_hashed": 69729296,
+      "all_artifacts_seen": 257,
+      "candidate_artifacts": 227,
+      "reused_verified_artifacts": 226,
+      "downloaded_artifacts_this_run": 1,
+      "members_sha256_checked": 732,
+      "member_bytes_hashed": 69737126,
       "download_failures": 0,
       "pair_hits": 0
     },
@@ -93,12 +94,13 @@
   "publication_ready": false,
   "branch": "math-problem-bank-bootstrap",
   "latest_commits": {
-    "rectangular_prism_engine": "23922c5125674633397598dd568c6e46f2bf45a6",
-    "rectangular_prism_test": "add53bd484f14615e7af51a1abd18c0865487903",
-    "rectangular_prism_unified_integration": "a4283229f419af84c6ea3e34fc6df427ce593584",
-    "rectangular_prism_ci_contract": "b26ea86d54870eb34e963ab4e6a4d30964ba9ae7",
-    "unified_ci_persist": "978a5bb039c341cf934692aa9a46ce50bdb4c9d8"
+    "square_area_engine": "dfc1d1f9725f02c826df311574896a1cc8b9153c",
+    "square_area_unified_integration": "6740af6a780b547d03988165af33362e6279401a",
+    "square_area_test": "bb6dd16b6c5d18fb21c75b022a330732d821cc75",
+    "square_area_adapter_test": "7d091579efd970ab909b8b82673b259ddbf1a2bd",
+    "square_area_ci_contract": "b3d1aa7651bd6dd91f7b3e16d1b3da4eaa060d21",
+    "unified_ci_persist": "7e8a2148f87ebc6d168be0d70480247084920388"
   },
-  "recorded_at_utc": "2026-08-21T18:00:00Z",
-  "next": "Reread live exact recovery delta first. If exact pair appears, validate/wire BASE immediately. Otherwise continue fail-closed completion work; unified safe generation now includes exact rectangular-prism volume parents."
+  "recorded_at_utc": "2026-08-21T18:55:30Z",
+  "next": "Reread live exact recovery delta first. If exact pair appears, validate/wire BASE immediately. Otherwise continue fail-closed completion work; unified safe generation now includes exact square-area parents."
 }
