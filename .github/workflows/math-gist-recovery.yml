@@ -1,0 +1,140 @@
+name: Math Gist Recovery
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - math-problem-bank-bootstrap
+    paths:
+      - 'math-bank/app/scan_owner_gists_recovery.py'
+      - '.github/workflows/math-gist-recovery.yml'
+
+concurrency:
+  group: math-gist-recovery
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile exact gist recovery path
+        run: |
+          python -m py_compile \
+            math-bank/app/scan_owner_gists_recovery.py \
+            math-bank/app/complete_from_exact_canonical.py \
+            math-bank/app/build_release_bundle.py \
+            math-bank/app/verify_publish_readiness.py
+          node --check math-bank/app/browser_real_regression.mjs
+      - name: Scan owner public gists
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python math-bank/app/scan_owner_gists_recovery.py
+      - name: Detect exact pair
+        id: pair
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import hashlib
+          from pathlib import Path
+          z=Path('math-bank/recovered-gist/みかみ塾数学問題バンク_最終完成版_20260820.zip')
+          a=Path('math-bank/recovered-gist/MATHBANK_FINAL_AUDIT_V2.json')
+          expected='eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175'
+          print(f"pair_found={str(z.is_file() and a.is_file() and hashlib.sha256(z.read_bytes()).hexdigest()==expected).lower()}")
+          PY
+      - name: Normalize exact gist pair
+        if: steps.pair.outputs.pair_found == 'true'
+        run: |
+          mkdir -p math-bank/recovered
+          cp 'math-bank/recovered-gist/みかみ塾数学問題バンク_最終完成版_20260820.zip' 'math-bank/recovered/みかみ塾数学問題バンク_最終完成版_20260820.zip'
+          cp 'math-bank/recovered-gist/MATHBANK_FINAL_AUDIT_V2.json' 'math-bank/recovered/MATHBANK_FINAL_AUDIT_V2.json'
+      - name: One-shot exact canonical wiring
+        if: steps.pair.outputs.pair_found == 'true'
+        id: wiring
+        shell: bash
+        run: |
+          set +e
+          python math-bank/app/complete_from_exact_canonical.py \
+            'math-bank/recovered/みかみ塾数学問題バンク_最終完成版_20260820.zip' \
+            'math-bank/recovered/MATHBANK_FINAL_AUDIT_V2.json'
+          rc=$?
+          set -e
+          if [ "$rc" -eq 0 ]; then echo 'wiring_ready=true' >> "$GITHUB_OUTPUT";
+          elif [ "$rc" -eq 3 ]; then echo 'wiring_ready=false' >> "$GITHUB_OUTPUT"; echo 'VERIFIED_METADATA_REQUIRED_NO_GUESSING';
+          else exit "$rc"; fi
+      - name: Install browsers after exact wiring
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Start real-data app server
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: |
+          python3 -m http.server 8766 --bind 127.0.0.1 --directory math-bank/app >/tmp/math-real-http.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8766/index.html >/dev/null && exit 0; sleep 1; done
+          cat /tmp/math-real-http.log; exit 1
+      - name: Full real browser and A4 regression
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        env:
+          MATH_APP_BASE_URL: http://127.0.0.1:8766/index.html
+          MATH_REAL_DATA_PATH: math-bank/app/app-records.json
+          MATH_REAL_BROWSER_REPORT: math-bank/state/browser-real-regression-latest.json
+          MATH_REAL_PDF_DIR: math-bank/state/real-print-regression
+        run: node math-bank/app/browser_real_regression.mjs
+      - name: Strict release and publication gate
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        run: |
+          python math-bank/app/build_release_bundle.py
+          python math-bank/app/verify_publish_readiness.py --pdf-root math-bank/state/real-print-regression
+      - name: Preserve gist recovery diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-gist-recovery-diagnostics
+          path: |
+            math-bank/state/github-gist-recovery-latest.json
+            math-bank/recovered-gist/
+            math-bank/recovered/
+            math-bank/state/canonical-inspection-latest.json
+            math-bank/state/canonical-mapping-evidence-latest.json
+            math-bank/state/canonical-completion-latest.json
+            math-bank/state/browser-real-regression-latest.json
+            math-bank/state/real-print-regression/
+            math-bank/release/
+            math-bank/みかみ塾数学問題アプリ_公開候補.zip
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Persist gist recovery state
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p /tmp/math-gist-state
+          if [ -f math-bank/state/github-gist-recovery-latest.json ]; then
+            cp math-bank/state/github-gist-recovery-latest.json /tmp/math-gist-state/
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin math-problem-bank-bootstrap
+          git reset --hard origin/math-problem-bank-bootstrap
+          mkdir -p math-bank/state
+          if [ -f /tmp/math-gist-state/github-gist-recovery-latest.json ]; then
+            cp /tmp/math-gist-state/github-gist-recovery-latest.json math-bank/state/
+            git add -- math-bank/state/github-gist-recovery-latest.json
+          fi
+          if ! git diff --cached --quiet; then
+            git commit -m 'record math gist recovery state'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
