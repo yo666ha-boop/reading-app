@@ -23,13 +23,16 @@
   "safe_exact_generator_scope": "SIGNED_INTEGER_BINARY_ARITHMETIC_AND_FIRST_DEGREE_EQUATIONS_ONLY; FIGURE_CHOICE_PROSE_UNPROVEN_FAIL_CLOSED",
   "safe_affine_exact_engine": "PASS_PARENT_RECALC_PLUS_INDEPENDENT_INVERSE_CHECK",
   "safe_affine_exact_engine_scope": "STRICT_SINGLE_AFFINE_FORMULA_PLUS_SINGLE_X_VALUE_ONLY; RATIONAL_ARITHMETIC; FIGURE_CHOICE_AMBIGUOUS_FAIL_CLOSED",
-  "safe_affine_exact_engine_integration": "CAPABILITY_READY_NOT_PROMOTED_UNTIL_EXACT_BASE; actual parent formats must pass parser and strict expanded validator before coverage",
   "safe_affine_exact_engine_commit": "89207efc2ac683580ae90e5f742621e58475be36",
   "safe_affine_test_commit": "c6b7cdd5446f22b557bff33cbfca229580965418",
   "safe_affine_workflow_commit": "f2899028e01d2233c0de5e95aa538a70082a9e31",
   "safe_affine_ci": {"run_id":"32445176580","result":"success","actual_base_variants_generated":0},
+  "safe_single_draw_probability_engine": "PASS_PARENT_RECALC_PLUS_INDEPENDENT_COMPLEMENT_CHECK",
+  "safe_single_draw_probability_scope": "STRICT_TWO_COLOR_ONE_DRAW_ONLY; EXACT_FRACTION_ARITHMETIC; FIGURE_CHOICE_MULTI_DRAW_REPLACEMENT_AMBIGUOUS_FAIL_CLOSED",
+  "safe_single_draw_probability_commits": {"engine":"12b7b1c1db0669c5d72fcc65674586c993e9656a","parser_fix":"4e30747e9c4dd5e3156b59fd267f7f00b3caad2a","tests":"1d14dad37fe1846776f464811fd7c5f8e7ad8a36","workflow":"ece5a50f5dff50a13233147b2ec84033e46bbbef"},
+  "safe_single_draw_probability_ci": {"run_id":"32448770858","result":"success","actual_base_variants_generated":0},
   "base_recovery": {
-    "actions_latest_delta": {"all_artifacts_seen":224,"candidate_artifacts":220,"reused_verified_artifacts":219,"downloaded_artifacts_this_run":1,"members_sha256_checked":694,"bytes_hashed":250698021,"download_failures":0,"canonical_hits":0,"valid_audit_hits":0,"pair_hits":0},
+    "actions_latest_delta": {"all_artifacts_seen":226,"candidate_artifacts":221,"reused_verified_artifacts":220,"downloaded_artifacts_this_run":1,"members_sha256_checked":697,"bytes_hashed":243791241,"download_failures":0,"canonical_hits":0,"valid_audit_hits":0,"pair_hits":0},
     "actions_prior_full_retained_evidence": {"artifacts":223,"members":696,"bytes_hashed":278159091,"pair_hits":0,"note":"Retained earlier exact evidence; latest incremental candidate universe excludes noncandidate artifacts, so lower latest byte/member totals are not evidence loss."},
     "actions_incremental_mode": "ACTIVE_IN_NORMAL_AUDIT_AND_AUTO_COMPLETE",
     "branch_tag_exact": {"readable_blobs":1901,"shards_completed":16,"sha256_checked":1901,"bytes_hashed":25454572,"exact_coverage_complete":true,"pair_hits":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
@@ -43,15 +46,13 @@
     "owner_public_gists": {"gists_seen":0,"files_seen":0,"pair_hits":0,"errors":0,"exact_coverage_complete":true,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "file_library_exact_pair": false,
     "google_drive_exact_pair": false,
-    "fresh_drive_search_2026_08_21": {"canonical_filename_hits":0,"audit_name_hits":0},
-    "fresh_file_library_search_2026_08_21": "no exact canonical filename/audit/SHA candidate returned",
     "latest_saved_auto_complete": {"run_id":"32442125116","result":"success","pair":false,"reused":223,"downloaded":0},
     "policy": "cancelled/timeout/incomplete coverage is never absence evidence; exact-complete unchanged surfaces are not redundantly rescanned"
   },
-  "browser_A4": {"latest_saved_math_audit_run_id":"32445146864","latest_saved_math_audit_result":"success","latest_saved_math_audit_triggering_sha":"89207efc2ac683580ae90e5f742621e58475be36","synthetic_browser":"PASS_FOUR_ENVIRONMENTS","real_canonical_browser":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT","real_A4_six_pdfs":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT"},
+  "browser_A4": {"latest_saved_math_audit_run_id":"32445156586","latest_saved_math_audit_result":"success","latest_saved_math_audit_triggering_sha":"c6b7cdd5446f22b557bff33cbfca229580965418","synthetic_browser":"PASS_FOUR_ENVIRONMENTS","real_canonical_browser":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT","real_A4_six_pdfs":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT"},
   "publication_ready": false,
   "branch": "math-problem-bank-bootstrap",
-  "source_head_before_state_write": "f2899028e01d2233c0de5e95aa538a70082a9e31",
-  "recorded_at_utc": "2026-08-21T03:59:00Z",
-  "next": "Reread live exact recovery delta first. If exact pair appears, validate/wire BASE immediately and generate only from actual fingerprint-bound parents. Otherwise keep extending only independently provable fail-closed generator shapes; no unseen-parent variants."
+  "source_head_before_state_write": "17d7326ee8364c7ab9abbb95d25d5ff23643a549",
+  "recorded_at_utc": "2026-08-21T04:59:00Z",
+  "next": "Reread live exact recovery delta first. If exact pair appears, validate/wire BASE immediately and generate only from actual fingerprint-bound parents. Otherwise continue only independently provable fail-closed generator shapes; no unseen-parent variants."
 }
