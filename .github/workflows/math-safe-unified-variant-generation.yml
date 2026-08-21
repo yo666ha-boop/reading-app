@@ -41,6 +41,7 @@ jobs:
             math-bank/app/safe_percentage_variant_engine.py \
             math-bank/app/safe_average_variant_engine.py \
             math-bank/app/safe_rectangle_area_variant_engine.py \
+            math-bank/app/safe_triangle_area_variant_engine.py \
             math-bank/app/test_generate_all_safe_verified_variants.py
       - name: Run unified positive and negative regression
         working-directory: math-bank/app
@@ -61,7 +62,7 @@ jobs:
             'run_id':os.environ['RUN_ID'],
             'triggering_sha':os.environ['TRIGGERING_SHA'],
             'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
-            'engines':['affine','single_draw_probability','proportion','percentage','simple_average','rectangle_area','binary_arithmetic_exact','linear_equation_exact'],
+            'engines':['affine','single_draw_probability','proportion','percentage','simple_average','rectangle_area','triangle_area','binary_arithmetic_exact','linear_equation_exact'],
             'actual_base_variants_generated':0,
             'base_required_before_actual_generation':True,
             'parent_record_sha256_required':True,
@@ -76,6 +77,7 @@ jobs:
             'safe_target_per_parent_default':3,
             'unsupported_manual_shortfall_only':True,
             'rectangle_area_exact_product_and_inverse_identity':True,
+            'triangle_area_exact_half_product_and_doubled_area_identity':True,
           }
           p.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           PY
