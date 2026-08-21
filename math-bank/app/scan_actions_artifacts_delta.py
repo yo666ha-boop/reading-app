@@ -2,9 +2,8 @@ from __future__ import annotations
 
 import json
 from datetime import datetime, timezone
-from pathlib import Path
 
-import scan_actions_artifacts as base
+import scan_actions_artifacts_full as base
 
 
 def load_previous() -> dict:
@@ -141,7 +140,6 @@ def main() -> int:
         report["valid_audit_hits"] += len(item.get("valid_final_audit_hits") or [])
 
         if item.get("paired_recovery_eligible"):
-            # Pair-eligible cached items are deliberately never reused, so exact bytes are available here.
             canonical_by_hash = {base.sha256_bytes(data): (name, data) for name, data in canonical_hits}
             audit_by_hash = {base.sha256_bytes(data): (name, data) for name, data in audit_hits}
             if base.EXPECTED_SHA256 in canonical_by_hash and len(audit_by_hash) == 1:
