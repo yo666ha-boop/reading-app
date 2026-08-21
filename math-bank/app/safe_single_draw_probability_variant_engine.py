@@ -4,8 +4,8 @@ from __future__ import annotations
 
 The engine accepts only an actual parent record describing exactly two colored
 ball counts (red/white), one draw, and a probability target for one of those
-colors.  It proves the parent's stated answer by exact Fraction arithmetic
-before returning deterministic numeric substitutions.  Figure/choice,
+colors. It proves the parent's stated answer by exact Fraction arithmetic
+before returning deterministic numeric substitutions. Figure/choice,
 multiple-draw, replacement, simultaneous-draw, and ambiguous prose are rejected.
 The repository's strict expanded-layer validator remains the promotion gate.
 """
@@ -22,8 +22,9 @@ COUNT_RE = {
 }
 TARGET_RE = re.compile(r"(?P<color>赤(?:い)?玉|白(?:い)?玉)(?:が|を)?\s*出る確率")
 ANSWER_RE = re.compile(r"^(?:P\s*=\s*)?(?P<p>\d+\s*/\s*\d+|0|1)$", re.IGNORECASE)
-ONE_DRAW_RE = re.compile(r"(?:玉を|1個を|一個を)?\s*(?:1|一)個\s*(?:取り出|取(?:り)?出|選)" )
-UNSAFE_RE = re.compile(r"(?:2|二)個|(?:2|二)回|同時|戻さ|もどさ|復元|続けて|連続")
+ONE_DRAW_RE = re.compile(r"(?:玉を\s*)?(?:1|一)個\s*(?:取り出|取(?:り)?出|選)")
+MULTI_DRAW_RE = re.compile(r"(?:玉を\s*)?(?:2|二|3|三|4|四|5|五)個\s*(?:取り出|取(?:り)?出|選)")
+UNSAFE_RE = re.compile(r"(?:2|二|3|三)回\s*(?:取り出|取(?:り)?出|選)|同時に|戻さ|もどさ|復元|続けて|連続して")
 
 
 def _norm(value: object) -> str:
@@ -53,7 +54,7 @@ def _parse_parent(parent: dict):
         return None
 
     q = _norm(parent.get("question"))
-    if UNSAFE_RE.search(q):
+    if MULTI_DRAW_RE.search(q) or UNSAFE_RE.search(q):
         return None
     if len(ONE_DRAW_RE.findall(q)) != 1:
         return None
@@ -79,7 +80,7 @@ def _parse_parent(parent: dict):
     if stated is None or stated != expected:
         return None
 
-    # Independent identities separate from the direct favorable/total formula.
+    # Independent identity check separate from the direct favorable/total formula.
     other = white if target == "red" else red
     complement = Fraction(other, total)
     if expected + complement != 1:
