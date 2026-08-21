@@ -1,7 +1,7 @@
 {
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_EXPANDED_VARIANT_APP_AND_BASE_RECOVERY",
-  "current_stage": "EXACT_BASE_RECOVERY_PAIR0_PLUS_SOURCE_ARCHIVE_ACTIONS_EXACT_SCAN_COMPLETE",
+  "current_stage": "EXACT_BASE_RECOVERY_PAIR0_SOURCE_ARCHIVE_ACTIONS_EXACT_COMPLETE",
   "base_canonical": {
     "records": 1231,
     "original_records": 1124,
@@ -15,80 +15,75 @@
   },
   "expanded_variant_goal": {
     "parent_target": 1124,
-    "minimum_new_verified_variant_per_parent": 1,
-    "safe_deterministic_target_per_parent": "2-3 where independently recalculable",
     "expanded_verified_variants": 0,
     "expanded_parent_coverage": 0,
-    "publication_requires_full_parent_coverage": true,
+    "minimum_new_verified_variant_per_parent": 1,
+    "safe_deterministic_target_per_parent": "2-3 where independently recalculable",
     "manual_generation_queue": "READY_TO_MATERIALIZE_FROM_EXACT_BASE_ONLY"
   },
   "今回完了した内容": [
-    "Reread live branch HEAD, checkpoint, variant state, CI, canonical auto-complete and Actions recovery state before changing anything.",
-    "Confirmed newer canonical Actions evidence: 237 artifacts seen, 225 candidates, 225 verified reuse, 712 members SHA-256 checked, pair0.",
-    "Rechecked File Library and Google Drive for the exact canonical ZIP/audit pair; no exact pair was found and no partial diagnostic dataset was promoted.",
-    "Activated the previously unpersisted exact recovery path for the three original source archives in GitHub Actions artifacts and increased the workflow timeout from 25 to 45 minutes so incomplete timeout cannot be mistaken for absence.",
-    "Exact source-archive Actions scan completed and persisted: 238 artifacts seen, 226 candidate artifacts downloaded, 714 members SHA-256 checked, 195162081 member bytes hashed, 3 nested ZIP members inspected, download failures 0, oversize skips 0, errors 0, target SHA hits 0.",
-    "Therefore the GitHub Actions artifact surface is valid negative evidence for all three exact original source archive SHAs at that scan point.",
-    "Upgraded scan_actions_for_math_source_archives.py to incremental exact-content-addressed reuse keyed by artifact id+size+updated_at, while refusing reuse for prior hit/error/oversize evidence and adding exact_coverage_complete semantics for future runs.",
-    "No unseen BASE parent was used for variant generation. expanded variants remain 0 and parent coverage remains 0/1124. main remains untouched."
+    "Reread live HEAD/checkpoint/variant/CI/canonical recovery before work.",
+    "Rechecked File Library and Google Drive for exact canonical ZIP/audit; exact pair remains absent and no 161/1271/717 diagnostic data was promoted.",
+    "Canonical Actions delta advanced to 239 artifacts, 227 candidates, 225 verified reuse, 2 new/changed downloads, 715 members SHA-256 checked, download failures 0, canonical/audit/pair hits 0.",
+    "Activated the exact Actions recovery path for the three original source archives and increased its timeout to 45 minutes so timeout cannot become false absence evidence.",
+    "First exact source run completed with 238 artifacts / 226 candidates / 714 members / 195162081 member bytes, failures 0, errors 0, oversize 0, exact source SHA hits 0.",
+    "Upgraded source recovery to incremental content-addressed reuse keyed by artifact id+size+updated_at; prior hit/error/oversize evidence is never reused as negative evidence.",
+    "Second source run completed with the new scanner: 239 artifacts / 227 candidates / 715 members / 195163315 member bytes / failures 0 / errors 0 / oversize 0 / exact_coverage_complete=true / source SHA hits 0.",
+    "No unseen BASE parent was used for generation. Expanded variants remain 0 and parent coverage remains 0/1124. main remains untouched."
   ],
   "BASE回収状況": {
-    "exact_zip_recovered": false,
-    "final_audit_recovered": false,
     "canonical_pair_found": false,
-    "branch_tag": {"readable_blobs": 1901, "shards_completed": 16, "checked": 1901, "bytes_hashed": 25454572, "exact_coverage_complete": true, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
-    "pr_refs": {"refs": 4, "readable_blobs": 1419, "shards_completed": 16, "checked": 1419, "bytes_hashed": 18140592, "exact_coverage_complete": true, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
-    "other_owned_repos": "2_repos_x_16_of_16_exact_complete_pair0_no_rerun_needed_without_change",
-    "github_release_saved_state": "0 releases / 0 assets / pair0",
+    "branch_tag": {"readable_blobs": 1901, "checked": 1901, "shards_completed": 16, "exact_coverage_complete": true, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
+    "pr_refs": {"refs": 4, "readable_blobs": 1419, "checked": 1419, "shards_completed": 16, "exact_coverage_complete": true, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
+    "other_owned_repos": "2_repos_x_16_of_16_exact_complete_pair0_no_rerun_without_change",
+    "github_release": {"releases": 0, "assets": 0, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "github_issue_pr_attachment": {"pair_hits": 0, "errors": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "github_actions_logs": {"eligible_completed_runs": 220, "log_members": 1870, "candidate_urls": 0, "log_failures": 0, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "github_commit_comments": {"comments": 0, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "github_wiki": {"remote_exists": false, "exact_coverage_complete": true, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "owner_public_gists": {"gists": 0, "exact_coverage_complete": true, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
-    "actions_incremental": {"all_artifacts_seen": 237, "candidate_artifacts": 225, "reused_verified_artifacts": 225, "downloaded_artifacts_this_run": 0, "members_sha256_checked": 712, "download_failures": 0, "canonical_hits": 0, "valid_audit_hits": 0, "pair_hits": 0},
+    "actions_incremental": {"all_artifacts_seen": 239, "candidate_artifacts": 227, "reused_verified_artifacts": 225, "downloaded_artifacts_this_run": 2, "members_sha256_checked": 715, "bytes_hashed": 195163315, "download_failures": 0, "canonical_hits": 0, "valid_audit_hits": 0, "pair_hits": 0},
     "source_archives_actions_exact": {
       "targets": {
         "winpassデータ.zip": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
         "中学実力錬成データ.zip": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33",
         "スタンダードデータ.zip": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6"
       },
-      "artifacts_seen": 238,
-      "candidate_artifacts": 226,
-      "artifacts_downloaded": 226,
-      "members_sha256_checked": 714,
-      "member_bytes_hashed": 195162081,
+      "artifacts_seen": 239,
+      "candidate_artifacts": 227,
+      "artifacts_downloaded_this_run": 227,
+      "reused_verified_artifacts": 0,
+      "members_sha256_checked": 715,
+      "member_bytes_hashed": 195163315,
       "nested_zip_members": 3,
       "download_failures": 0,
       "oversize_members_skipped": 0,
       "errors": 0,
+      "exact_coverage_complete": true,
       "unique_target_hits": 0,
       "all_three_recovered": false,
-      "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE_AT_SCAN_POINT",
-      "persist_commit": "36fd39a1b7f17704fbc4119c0ea4a6cfbd18c00f",
-      "incremental_scanner_commit": "52afaa25447c6583643168aa4d38ff3d877cf3fb"
+      "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE",
+      "first_persist_commit": "36fd39a1b7f17704fbc4119c0ea4a6cfbd18c00f",
+      "incremental_scanner_commit": "52afaa25447c6583643168aa4d38ff3d877cf3fb",
+      "exact_coverage_persist_commit": "d80357123dc87f0fdb3b1398c7d0ca53a3ac7d95"
     },
     "latest_auto_complete": {"run_id": "32470410383", "result": "success", "actions_members_sha256_checked": 712, "actions_reused_verified_artifacts": 225, "actions_downloaded_artifacts_this_run": 0, "actions_pair_hits": 0, "release_pair_hits": 0, "issue_pr_pair_hits": 0, "wiring_ready": false, "publication_ready": false},
     "file_library_exact_pair": false,
     "google_drive_exact_pair": false,
-    "policy": "cancelled/timeout/incomplete coverage is never absence evidence; exact-complete unchanged surfaces are not redundantly rescanned; no 161/1271/717 diagnostic promotion"
+    "policy": "cancelled/timeout/incomplete coverage is never absence evidence; no reconstruction; no partial diagnostic promotion"
   },
   "expanded_generation_capability": {
-    "unified_safe_generation": {
-      "status": "PASS_CI",
-      "run_id": "32470337695",
-      "triggering_sha": "4ed7f108ba3629eed2c3dd01ce89c1c08791b1f3",
-      "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "binary_arithmetic_exact", "linear_equation_exact"],
-      "actual_base_variants_generated": 0,
-      "actual_parent_records_required": true,
-      "strict_validator_promotion_gate": true,
-      "fingerprint_bound_manual_queue": true,
-      "manual_queue_contains_generated_problem_text": false,
-      "manual_queue_requires_strict_validation_before_coverage": true
-    }
+    "status": "PASS_CI",
+    "run_id": "32470337695",
+    "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "binary_arithmetic_exact", "linear_equation_exact"],
+    "actual_base_variants_generated": 0,
+    "actual_parent_records_required": true,
+    "parent_record_sha256_required": true,
+    "strict_validator_promotion_gate": true,
+    "fingerprint_bound_manual_queue": true,
+    "manual_queue_contains_generated_question_or_answer": false
   },
   "quality_gates": {
-    "parent_record_sha256_binding": true,
-    "strict_validated_coverage_only": true,
     "audit3_required": true,
     "independent_recalculation_required": true,
     "verification_evidence_required": true,
@@ -96,6 +91,7 @@
     "exact_duplicate_rejected": true,
     "parent_same_numeric_wording_only_rejected": true,
     "same_parent_sibling_numeric_signature_reuse_rejected": true,
+    "strict_validated_coverage_only": true,
     "full_1124_parent_coverage_required": true
   },
   "CI_browser_A4": {
@@ -105,30 +101,25 @@
     "real_canonical_browser_regression": "blocked_expected_exact_base_absent",
     "real_A4_six_pdfs": "blocked_expected_exact_base_absent",
     "publication_ready": false,
-    "audit_cancel_in_progress": false,
-    "unified_safe_generation_ci_run_id": "32470337695",
-    "unified_safe_generation_ci_result": "success"
+    "audit_cancel_in_progress": false
   },
   "branch_commit": {
     "branch": "math-problem-bank-bootstrap",
-    "head_before_checkpoint_update": "52afaa25447c6583643168aa4d38ff3d877cf3fb",
     "source_archive_timeout_commit": "cc8fa3114f1cd754b5b704b05f087c0af6e35721",
-    "source_archive_scan_persist_commit": "36fd39a1b7f17704fbc4119c0ea4a6cfbd18c00f",
     "source_archive_incremental_commit": "52afaa25447c6583643168aa4d38ff3d877cf3fb",
+    "source_archive_exact_coverage_persist_commit": "d80357123dc87f0fdb3b1398c7d0ca53a3ac7d95",
     "main_touched": false
   },
-  "現在どの工程にいるか": "Exact canonical BASE ZIP+audit recovery remains the blocker. All proven safe generation and manual-queue layers are ready but remain prohibited from consuming unseen parents.",
+  "現在どの工程にいるか": "Exact canonical BASE ZIP+audit recovery remains the blocker; automatic and manual variant layers are ready but forbidden from unseen parents.",
   "残っている作業": [
-    "Continue exact canonical recovery only for new/changed deltas or newly discovered recoverable surfaces.",
-    "Let the new incremental source-archive scan persist exact_coverage_complete semantics for future delta runs; do not reinterpret the current zero hits beyond the completed Actions artifact surface.",
+    "Continue exact canonical recovery only for genuinely new/changed deltas or newly discovered surfaces.",
     "Recover exact canonical ZIP plus valid MATHBANK_FINAL_AUDIT_V2 and recheck SHA-256.",
-    "After exact pair, inspect/wire immutable BASE and run unified safe generation against fingerprint-bound actual parents.",
-    "Materialize manual queue for unsupported actual parents and validate all manual variants through the same strict expanded validator.",
-    "Reach 1124/1124 validated parent coverage, compose dynamic app records, run real Chromium/Firefox/WebKit iPhone/Chromium Fire and A4x6, then strict release, PUBLICATION_READY and isolated public verification."
+    "Inspect/wire immutable BASE, run unified safe generation, materialize fingerprint-bound manual queue and strictly validate manual variants.",
+    "Reach 1124/1124 parent coverage, compose dynamic app records, run real four-browser and A4x6 tests, strict release, PUBLICATION_READY and isolated public verification."
   ],
-  "正確停止点": "Exact source-archive Actions scan completed with 226/226 candidate artifacts downloaded, 714 members checked, failures/errors/oversize 0 and all three source SHA hits 0. Canonical BASE pair remains unrecovered. Expanded variants 0; parent coverage 0/1124.",
-  "次回どこから開始するか": "Reread live HEAD/checkpoint/variant/CI/actions/auto-complete/source-archive state. If exact canonical pair appears, immediately validate/wire BASE and run unified generation plus fingerprint-bound manual queue. Otherwise process only genuinely new recovery deltas and fail-closed completion work.",
-  "次に進むべき工程": "new exact recovery delta/surface -> exact BASE pair -> SHA/audit validation -> immutable BASE snapshot/app wiring -> unified verified automatic generation -> fingerprint-bound manual queue -> strict validation -> 1124/1124 coverage -> real browser/A4 -> strict release -> PUBLICATION_READY -> isolated public verification",
-  "recorded_at_utc": "2026-08-21T10:58:30Z",
-  "resume_rule": "Do not stop at status-only work. Never reconstruct BASE or generate from unseen parents. Invalid/unverified variants never count as coverage."
+  "正確停止点": "Source archive Actions path is exact-complete negative evidence at 239 artifacts / 227 candidates / 715 members with all three source SHA hits 0. Canonical BASE pair remains unrecovered. Expanded variants 0; parent coverage 0/1124.",
+  "次回どこから開始するか": "Reread live HEAD/checkpoint/variant/CI/actions/auto-complete/source-archive state. If exact canonical pair appears, immediately validate/wire BASE and run unified generation plus manual queue. Otherwise process only new recovery deltas and fail-closed completion work.",
+  "次に進むべき工程": "new exact recovery delta/surface -> exact BASE pair -> SHA/audit validation -> immutable BASE wiring -> verified auto generation -> fingerprint-bound manual queue -> 1124/1124 -> real browser/A4 -> strict release -> PUBLICATION_READY -> isolated public verification",
+  "recorded_at_utc": "2026-08-21T11:01:00Z",
+  "resume_rule": "Never reconstruct BASE or generate from unseen parents. Invalid/unverified variants never count as coverage."
 }
