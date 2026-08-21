@@ -67,6 +67,9 @@ jobs:
             'independent_recalculation_required':True,
             'strict_validator_remains_promotion_gate':True,
             'figure_choice_unsupported_fail_closed':True,
+            'fingerprint_bound_manual_queue':True,
+            'manual_queue_contains_no_generated_question_or_answer':True,
+            'manual_queue_requires_same_strict_validator_before_coverage':True,
           }
           p.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           PY
