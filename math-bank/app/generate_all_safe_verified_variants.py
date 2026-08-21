@@ -20,6 +20,7 @@ from generate_safe_verified_variants import (
 )
 from safe_affine_variant_engine import generate as generate_affine
 from safe_average_variant_engine import generate as generate_average
+from safe_parallelogram_area_variant_engine import generate as generate_parallelogram_area
 from safe_percentage_variant_engine import generate as generate_percentage
 from safe_proportion_variant_engine import generate as generate_proportion
 from safe_rectangle_area_variant_engine import generate as generate_rectangle_area
@@ -44,6 +45,7 @@ SPECIALIZED_ENGINES = (
     ("simple_average", generate_average),
     ("rectangle_area", generate_rectangle_area),
     ("triangle_area", generate_triangle_area),
+    ("parallelogram_area", generate_parallelogram_area),
 )
 
 
