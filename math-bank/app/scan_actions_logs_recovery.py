@@ -16,6 +16,7 @@ REPO = os.environ.get("GITHUB_REPOSITORY", "yo666ha-boop/reading-app")
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
 API = "https://api.github.com"
 BRANCH = "math-problem-bank-bootstrap"
+SELF_WORKFLOW_NAME = "Math Actions Log Recovery"
 EXPECTED_FILENAME = "みかみ塾数学問題バンク_最終完成版_20260820.zip"
 EXPECTED_SHA256 = "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175"
 AUDIT_FILENAME = "MATHBANK_FINAL_AUDIT_V2.json"
@@ -31,6 +32,8 @@ MAX_RUNS = 500
 MAX_LOG_ARCHIVE_BYTES = 250 * 1024 * 1024
 MAX_TEXT_MEMBER_BYTES = 40 * 1024 * 1024
 MAX_CANDIDATE_DOWNLOAD_BYTES = 500 * 1024 * 1024
+MAX_HINT_SAMPLES = 40
+MAX_URL_SAMPLES = 25
 OUT_REPORT = Path("math-bank/state/actions-log-recovery-latest.json")
 OUT_RECOVERY = Path("math-bank/recovered-actions-log")
 URL_RE = re.compile(r"https?://[^\s<>\]\[\)\(\"']+")
@@ -39,6 +42,7 @@ ALLOWED_DOWNLOAD_HOST_SUFFIXES = (
     "githubusercontent.com",
     "objects.githubusercontent.com",
 )
+INFORMATIONAL_HOSTS = {"github.blog"}
 
 
 def curl_bytes(url: str, timeout: int = 120) -> bytes:
@@ -69,44 +73,9 @@ def sha256(data: bytes) -> str:
 
 def valid_audit(data: bytes) -> bool:
     try:
-        obj = json.loads(data.decode("utf-8"))
+        return isinstance(json.loads(data.decode("utf-8")), dict)
     except Exception:
         return False
-    return isinstance(obj, dict)
-
-
-def load_previous() -> dict:
-    try:
-        obj = json.loads(OUT_REPORT.read_text(encoding="utf-8"))
-        return obj if isinstance(obj, dict) else {}
-    except Exception:
-        return {}
-
-
-def reusable_run(item: dict) -> bool:
-    return bool(
-        item.get("scan_complete") is True
-        and not item.get("errors")
-        and not item.get("candidate_download_errors")
-    )
-
-
-def run_key(item: dict) -> tuple[int, str]:
-    return int(item.get("run_id") or 0), str(item.get("updated_at") or "")
-
-
-def candidate_urls_from_text(text: str, hint_lines: list[dict]) -> list[str]:
-    urls: set[str] = set()
-    lines = text.splitlines()
-    for idx, line in enumerate(lines):
-        lower = line.lower()
-        matched = [h for h in HINTS if h.lower() in lower]
-        if not matched:
-            continue
-        hint_lines.append({"line_number": idx + 1, "matched": matched, "text": line[:2000]})
-        for near in lines[max(0, idx - 2): min(len(lines), idx + 3)]:
-            urls.update(u.rstrip(".,;:") for u in URL_RE.findall(near))
-    return sorted(urls)
 
 
 def host_of(url: str) -> str:
@@ -118,27 +87,80 @@ def downloadable(url: str) -> bool:
     return any(host == suffix or host.endswith("." + suffix) for suffix in ALLOWED_DOWNLOAD_HOST_SUFFIXES)
 
 
-def blank_item(run: dict) -> dict:
+def load_previous_cache() -> dict[tuple[int, str], dict]:
+    try:
+        previous = json.loads(OUT_REPORT.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    out: dict[tuple[int, str], dict] = {}
+    for item in previous.get("run_cache", previous.get("runs", [])):
+        if not isinstance(item, dict):
+            continue
+        if item.get("scan_complete") is not True or item.get("errors") or item.get("candidate_download_errors"):
+            continue
+        key = (int(item.get("run_id") or 0), str(item.get("updated_at") or ""))
+        out[key] = compact_item(item)
+    return out
+
+
+def compact_item(item: dict) -> dict:
+    keys = (
+        "run_id", "name", "status", "conclusion", "head_sha", "updated_at",
+        "log_members_seen", "text_members_scanned", "hint_lines_seen",
+        "candidate_urls_seen", "candidate_urls_downloaded", "candidate_bytes_hashed",
+        "canonical_hits", "valid_audit_hits", "candidate_urls", "downloads",
+        "candidate_download_errors", "errors", "scan_complete",
+    )
+    return {k: item.get(k) for k in keys}
+
+
+def scan_text(text: str, member: str, hint_samples: list[dict]) -> tuple[int, set[str], int]:
+    lines = text.splitlines()
+    hint_count = 0
+    urls: set[str] = set()
+    informational_ignored = 0
+    for idx, line in enumerate(lines):
+        lower = line.lower()
+        matched = [h for h in HINTS if h.lower() in lower]
+        if not matched:
+            continue
+        hint_count += 1
+        if len(hint_samples) < MAX_HINT_SAMPLES:
+            hint_samples.append({
+                "member": member,
+                "line_number": idx + 1,
+                "matched": matched,
+                "text": line[:1200],
+            })
+        for near in lines[max(0, idx - 2): min(len(lines), idx + 3)]:
+            for raw in URL_RE.findall(near):
+                url = raw.rstrip(".,;:")
+                if host_of(url) in INFORMATIONAL_HOSTS:
+                    informational_ignored += 1
+                    continue
+                urls.add(url)
+    return hint_count, urls, informational_ignored
+
+
+def new_item(run: dict) -> dict:
     return {
-        "run_id": run.get("id"), "name": run.get("name"), "event": run.get("event"),
-        "status": run.get("status"), "conclusion": run.get("conclusion"),
-        "head_sha": run.get("head_sha"), "created_at": run.get("created_at"),
+        "run_id": run.get("id"), "name": run.get("name"), "status": run.get("status"),
+        "conclusion": run.get("conclusion"), "head_sha": run.get("head_sha"),
         "updated_at": run.get("updated_at"), "log_members_seen": 0,
         "text_members_scanned": 0, "hint_lines_seen": 0, "candidate_urls_seen": 0,
         "candidate_urls_downloaded": 0, "candidate_bytes_hashed": 0,
-        "canonical_hits": 0, "valid_audit_hits": 0, "hint_lines": [],
-        "candidate_urls": [], "downloads": [], "candidate_download_errors": [],
-        "scan_complete": False, "deferred_nonterminal": False, "errors": [],
+        "canonical_hits": 0, "valid_audit_hits": 0, "candidate_urls": [],
+        "downloads": [], "candidate_download_errors": [], "errors": [], "scan_complete": False,
     }
 
 
 def add_metrics(report: dict, item: dict) -> None:
-    for metric in (
+    for key in (
         "log_members_seen", "text_members_scanned", "hint_lines_seen",
         "candidate_urls_seen", "candidate_urls_downloaded", "candidate_bytes_hashed",
         "canonical_hits", "valid_audit_hits",
     ):
-        report[metric] += int(item.get(metric) or 0)
+        report[key] += int(item.get(key) or 0)
 
 
 def main() -> int:
@@ -159,31 +181,37 @@ def main() -> int:
         page += 1
     runs = runs[:MAX_RUNS]
 
-    previous = load_previous()
-    cached = {
-        run_key(item): item for item in previous.get("runs", [])
-        if isinstance(item, dict) and reusable_run(item)
-    }
+    ignored_self = [r for r in runs if r.get("name") == SELF_WORKFLOW_NAME]
+    evidence_runs = [r for r in runs if r.get("name") != SELF_WORKFLOW_NAME]
+    completed = [r for r in evidence_runs if r.get("status") == "completed"]
+    deferred = [r for r in evidence_runs if r.get("status") != "completed"]
+    cache = load_previous_cache()
+
     report = {
         "scan": "github_actions_workflow_logs_exact_math_canonical_recovery_clues",
         "repo": REPO, "branch": BRANCH, "created_since": CREATED_SINCE,
         "expected_filename": EXPECTED_FILENAME, "expected_sha256": EXPECTED_SHA256,
         "required_paired_audit": AUDIT_FILENAME, "runs_seen": len(runs),
-        "completed_runs_eligible": sum(1 for r in runs if r.get("status") == "completed"),
-        "runs_deferred_nonterminal": sum(1 for r in runs if r.get("status") != "completed"),
+        "runs_ignored_self_workflow": len(ignored_self),
+        "completed_runs_eligible": len(completed), "runs_deferred_nonterminal": len(deferred),
         "runs_reused": 0, "runs_downloaded_this_run": 0, "runs_log_download_failures": 0,
         "log_members_seen": 0, "text_members_scanned": 0, "hint_lines_seen": 0,
-        "candidate_urls_seen": 0, "candidate_urls_downloaded": 0,
-        "candidate_download_failures": 0, "candidate_urls_skipped_untrusted_host": 0,
-        "candidate_bytes_hashed": 0, "canonical_hits": 0, "valid_audit_hits": 0,
-        "paired_recovery_hits": 0, "exact_log_text_coverage_complete": False,
+        "informational_urls_ignored": 0, "candidate_urls_seen": 0,
+        "candidate_urls_downloaded": 0, "candidate_download_failures": 0,
+        "candidate_urls_skipped_untrusted_host": 0, "candidate_bytes_hashed": 0,
+        "canonical_hits": 0, "valid_audit_hits": 0, "paired_recovery_hits": 0,
+        "exact_log_text_coverage_complete": False,
         "exact_candidate_download_coverage_complete": False,
-        "candidate_url_hosts": {}, "candidate_url_samples": [], "runs": [],
-        "recovered_files": [], "completed_at_utc": None,
+        "candidate_url_hosts": {}, "candidate_url_samples": [], "hint_samples": [],
+        "deferred_nonterminal_runs": [
+            {"run_id": r.get("id"), "name": r.get("name"), "head_sha": r.get("head_sha")}
+            for r in deferred
+        ],
+        "run_cache": [], "recovered_files": [], "completed_at_utc": None,
         "policy": (
-            "Only completed workflow runs are eligible for log absence evidence. Nonterminal runs are deferred. "
-            "Every allowlisted GitHub-hosted candidate URL must download and hash successfully for candidate-download coverage; "
-            "non-allowlisted hosts are surfaced separately and never treated as negative evidence. No reconstruction."
+            "The scanner's own workflow is excluded because it was created after the canonical artifact and only echoes scanner output. "
+            "github.blog runner notices are informational noise, not recovery candidates. Only completed non-self runs are absence evidence. "
+            "All remaining candidate URLs must be safely classifiable/downloadable; no reconstruction."
         ),
     }
     host_counts: Counter[str] = Counter()
@@ -193,35 +221,35 @@ def main() -> int:
     for p in (OUT_RECOVERY / EXPECTED_FILENAME, OUT_RECOVERY / AUDIT_FILENAME):
         p.unlink(missing_ok=True)
 
-    for run in runs:
-        if run.get("status") != "completed":
-            item = blank_item(run); item["deferred_nonterminal"] = True
-            report["runs"].append(item); continue
-
+    for run in completed:
         key = (int(run.get("id") or 0), str(run.get("updated_at") or ""))
-        if key in cached:
-            item = cached[key]; report["runs_reused"] += 1
+        if key in cache:
+            item = cache[key]
+            report["runs_reused"] += 1
         else:
-            item = blank_item(run); report["runs_downloaded_this_run"] += 1
+            item = new_item(run)
+            report["runs_downloaded_this_run"] += 1
             try:
                 payload = curl_bytes(f"{API}/repos/{REPO}/actions/runs/{run['id']}/logs", timeout=180)
                 if len(payload) > MAX_LOG_ARCHIVE_BYTES:
                     raise RuntimeError(f"log archive exceeds {MAX_LOG_ARCHIVE_BYTES} bytes")
+                found_urls: set[str] = set()
                 with zipfile.ZipFile(io.BytesIO(payload)) as zf:
                     for info in zf.infolist():
-                        if info.is_dir(): continue
+                        if info.is_dir():
+                            continue
                         item["log_members_seen"] += 1
                         if info.file_size > MAX_TEXT_MEMBER_BYTES:
-                            item["errors"].append(f"oversize log member skipped: {info.filename} {info.file_size}"); continue
+                            item["errors"].append(f"oversize log member skipped: {info.filename} {info.file_size}")
+                            continue
                         text = zf.read(info).decode("utf-8", "replace")
                         item["text_members_scanned"] += 1
-                        hints: list[dict] = []
-                        urls = candidate_urls_from_text(text, hints)
-                        for h in hints: h["member"] = info.filename
-                        item["hint_lines"].extend(hints); item["candidate_urls"].extend(urls)
-                item["candidate_urls"] = sorted(set(item["candidate_urls"]))
-                item["hint_lines_seen"] = len(item["hint_lines"])
-                item["candidate_urls_seen"] = len(item["candidate_urls"])
+                        count, urls, ignored = scan_text(text, info.filename, report["hint_samples"])
+                        item["hint_lines_seen"] += count
+                        report["informational_urls_ignored"] += ignored
+                        found_urls.update(urls)
+                item["candidate_urls"] = sorted(found_urls)
+                item["candidate_urls_seen"] = len(found_urls)
 
                 canonical_payloads: list[tuple[str, bytes]] = []
                 audit_payloads: list[tuple[str, bytes]] = []
@@ -233,17 +261,23 @@ def main() -> int:
                     except Exception as exc:
                         item["candidate_download_errors"].append({"url": url, "error": str(exc)[:500]})
                         continue
-                    digest = sha256(data); item["candidate_urls_downloaded"] += 1
+                    digest = sha256(data)
+                    item["candidate_urls_downloaded"] += 1
                     item["candidate_bytes_hashed"] += len(data)
-                    rec = {"url": url, "downloaded": True, "bytes": len(data), "sha256": digest}
+                    rec = {"url": url, "bytes": len(data), "sha256": digest}
                     if digest == EXPECTED_SHA256:
-                        item["canonical_hits"] += 1; canonical_payloads.append((url, data)); rec["canonical_exact_sha"] = True
+                        item["canonical_hits"] += 1
+                        canonical_payloads.append((url, data))
+                        rec["canonical_exact_sha"] = True
                     if AUDIT_FILENAME.lower() in url.lower() and valid_audit(data):
-                        item["valid_audit_hits"] += 1; audit_payloads.append((url, data)); rec["valid_named_audit"] = True
+                        item["valid_audit_hits"] += 1
+                        audit_payloads.append((url, data))
+                        rec["valid_named_audit"] = True
                     item["downloads"].append(rec)
 
                 if canonical_payloads and len(audit_payloads) == 1:
-                    canon_url, canon_data = canonical_payloads[0]; audit_url, audit_data = audit_payloads[0]
+                    canon_url, canon_data = canonical_payloads[0]
+                    audit_url, audit_data = audit_payloads[0]
                     (OUT_RECOVERY / EXPECTED_FILENAME).write_bytes(canon_data)
                     (OUT_RECOVERY / AUDIT_FILENAME).write_bytes(audit_data)
                     report["paired_recovery_hits"] += 1
@@ -255,24 +289,27 @@ def main() -> int:
                     })
                 item["scan_complete"] = not item["errors"] and not item["candidate_download_errors"]
             except Exception as exc:
-                item["errors"].append(str(exc)[:1000]); report["runs_log_download_failures"] += 1
+                item["errors"].append(str(exc)[:1000])
+                report["runs_log_download_failures"] += 1
 
         for url in item.get("candidate_urls", []):
             host_counts[host_of(url) or "<none>"] += 1
-            if len(url_samples) < 25 and url not in url_samples: url_samples.append(url)
-            if not downloadable(url): report["candidate_urls_skipped_untrusted_host"] += 1
+            if len(url_samples) < MAX_URL_SAMPLES and url not in url_samples:
+                url_samples.append(url)
+            if not downloadable(url):
+                report["candidate_urls_skipped_untrusted_host"] += 1
         report["candidate_download_failures"] += len(item.get("candidate_download_errors") or [])
-        add_metrics(report, item); report["runs"].append(item)
+        add_metrics(report, item)
+        report["run_cache"].append(compact_item(item))
         if report["paired_recovery_hits"]:
             break
 
-    eligible = [i for i in report["runs"] if not i.get("deferred_nonterminal")]
     report["candidate_url_hosts"] = dict(sorted(host_counts.items()))
     report["candidate_url_samples"] = url_samples
     report["exact_log_text_coverage_complete"] = bool(
-        len(eligible) == report["completed_runs_eligible"]
+        len(report["run_cache"]) == len(completed)
         and report["runs_log_download_failures"] == 0
-        and all(not i.get("errors") for i in eligible)
+        and all(not i.get("errors") for i in report["run_cache"])
     )
     report["exact_candidate_download_coverage_complete"] = bool(
         report["exact_log_text_coverage_complete"]
@@ -282,7 +319,7 @@ def main() -> int:
     report["completed_at_utc"] = datetime.now(timezone.utc).isoformat()
     OUT_REPORT.parent.mkdir(parents=True, exist_ok=True)
     OUT_REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({k: v for k, v in report.items() if k not in {"runs"}}, ensure_ascii=False, indent=2))
+    print(json.dumps({k: v for k, v in report.items() if k != "run_cache"}, ensure_ascii=False, indent=2))
     return 0
 
 
