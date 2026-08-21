@@ -1,0 +1,80 @@
+name: Math Safe Proportion Variant Engine
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-safe-proportion-variant-engine.yml'
+      - 'math-bank/app/safe_proportion_variant_engine.py'
+      - 'math-bank/app/test_safe_proportion_variant_engine.py'
+
+concurrency:
+  group: math-safe-proportion-variant-engine
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  verify-proportion-engine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile exact proportion engine
+        run: python -m py_compile math-bank/app/safe_proportion_variant_engine.py math-bank/app/test_safe_proportion_variant_engine.py
+
+      - name: Run parent-proof and fail-closed proportion gates
+        working-directory: math-bank/app
+        run: python test_safe_proportion_variant_engine.py
+
+      - name: Persist proportion engine verification state
+        if: always()
+        env:
+          JOB_STATUS: ${{ job.status }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          TRIGGERING_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from datetime import datetime, timezone
+          from pathlib import Path
+          data = {
+            'workflow': 'Math Safe Proportion Variant Engine',
+            'run_id': os.environ['RUN_ID'],
+            'run_attempt': os.environ['RUN_ATTEMPT'],
+            'triggering_sha': os.environ['TRIGGERING_SHA'],
+            'result': os.environ['JOB_STATUS'],
+            'recorded_at_utc': datetime.now(timezone.utc).isoformat(),
+            'scope': 'strict_single_explicit_positive_integer_proportion_with_exactly_one_x',
+            'parent_answer_recalculation_required': True,
+            'independent_cross_product_check_required': True,
+            'figure_choice_ambiguous_multi_expression_fail_closed': True,
+            'actual_base_variants_generated': 0,
+            'policy': 'Capability test only until exact BASE is recovered; never fabricate from unseen parents.'
+          }
+          p=Path('math-bank/state/proportion-variant-engine-latest.json')
+          p.write_text(json.dumps(data, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          mkdir -p /tmp/proportion-state
+          cp math-bank/state/proportion-variant-engine-latest.json /tmp/proportion-state/state.json
+          git fetch origin math-problem-bank-bootstrap
+          git reset --hard origin/math-problem-bank-bootstrap
+          mkdir -p math-bank/state
+          cp /tmp/proportion-state/state.json math-bank/state/proportion-variant-engine-latest.json
+          git add -- math-bank/state/proportion-variant-engine-latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'record safe proportion variant engine CI result'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
