@@ -1,7 +1,7 @@
 {
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_EXPANDED_VARIANT_APP_AND_BASE_RECOVERY",
-  "current_stage": "EXACT_BASE_RECOVERY_PAIR0_RECTANGLE_PERIMETER_SAFE_ENGINE_ADDED_LATEST_UNIFIED_CI_PENDING",
+  "current_stage": "EXACT_BASE_RECOVERY_PAIR0_RECTANGLE_PERIMETER_METADATA_GATE_TRIGGERED_CI_PENDING",
   "base_canonical": {
     "records": 1231,
     "original_records": 1124,
@@ -22,18 +22,14 @@
     "manual_generation_queue": "READY_TO_MATERIALIZE_FROM_EXACT_BASE_ONLY"
   },
   "今回完了した内容": [
-    "最新HEAD/checkpoint/variant/CI/recovery/auto-completeを実読して共有正本へ追従。",
+    "最新HEAD/checkpoint/variant/unified state/auto-complete/actions exact deltaを実読して共有正本へ追従。",
+    "HEADはrun開始時2a32f2e1d64b2bd5dd0b120f8fe74e24a3bdd745で、前回checkpointより先のAuto Complete run 32526900065 successを発見。",
+    "Actions exact deltaは266 artifacts / 236 candidates / 236 verified reuse / download0 / 750 members / 69,760,616 bytes / failure0 / canonical0 / valid audit0 / pair0へ前進。Auto Complete側では直前差分1 artifactをdownload後、750 members確認・pair0。",
     "exact BASE ZIP+audit pairは未回収。161途中版、1271 diagnostic、Winpass717候補を昇格せず、未読parentから類題生成もしていない。",
-    "Actions exact deltaは265 artifacts / 235 candidates / 235 verified reuse / download0 / 748 members / 69,758,006 bytes / failure0 / canonical0 / valid audit0 / pair0まで前進。",
-    "Auto Complete run 32526653794 success。748 members / reuse235 / download0 / pair0、wiring_ready=false、publication_ready=false。",
-    "File Library exact filename/audit/SHAとGoogle Drive exact ZIP/audit名を再検索しpair0を確認。",
-    "通常Math Auditは最新run 32526547483 success。app gate、Actions recovery、synthetic four-browser、strict blocking contract、inventory success。real canonical browser/A4はBASE未接続のためblocked_expected。",
-    "safe_rectangle_perimeter_variant_engine.pyを追加。P=2×(縦+横)の親解答再計算に加え、P/2-縦=横、P/2-横=縦の2独立逆算を必須化。",
-    "誤答、figure、choice、面積、辺逆算、混在単位、正方形等をfail-closed。親と兄弟の同一numeric signatureは禁止。",
-    "「周の長さは何cmですか」の通常表現を過剰rejectしないよう修正しpositive regressionを追加。",
-    "rectangle_perimeterを統合生成driverへ接続し、parent_record_sha256伝播とindependent_recalculationを検証するunified adapter testを追加。",
-    "Unified Variant CIへ新engine/direct wording/adapter testを接続しstate push retryも追加。最新rectangle-perimeter-inclusive contract commit 96c9812d1d59771616406d44bf78086a45e2fc60。最新contractのterminal persistはまだ観測できていないためPASSとは未記載。",
-    "math-problem-bank-audit.ymlのcancel-in-progress:falseを確認。旧failed runはscan不在証拠ではなくstate commit段階failureとして切り分け、新しいaudit successを確認。mainは未変更。"
+    "branch/tag 1901/1901・PR refs 1419/1419 exact complete pair0、other owned repos 2repo×16/16 pair0、Release 0 assets、issue/PR attachment pair0の既存negative evidenceを維持。",
+    "Unified stateがまだrun 32525969515の旧persistでrectangle_perimeter未記録だったため、長方形周長adapterを強化。parent_record_sha256だけでなくtaxonomy/difficulty/format/choices/figure_refsの親メタデータ保持、親と同じ数値表面を使わないことを回帰gateへ追加。",
+    "新gate commit 98c237c626dd468db21b995474434edad15a8787 をmath-problem-bank-bootstrapへ投入し、Unified workflowを再トリガー。terminal persistはまだ未観測なのでPASSとは扱っていない。",
+    "variant-expansion stateを最新recovery値と98c237c pending-CI地点へ更新。mainは未変更。"
   ],
   "BASE回収状況": {
     "canonical_pair_found": false,
@@ -42,17 +38,17 @@
     "other_owned_repos": "2_repos_x_16_of_16_exact_complete_pair0_no_rerun_without_change",
     "github_release": {"releases": 0, "assets": 0, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "github_issue_pr_attachment": {"pair_hits": 0, "errors": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
-    "actions_incremental": {"all_artifacts_seen": 265, "candidate_artifacts": 235, "reused_verified_artifacts": 235, "downloaded_artifacts_this_run": 0, "members_sha256_checked": 748, "bytes_hashed": 69758006, "download_failures": 0, "canonical_hits": 0, "valid_audit_hits": 0, "pair_hits": 0},
-    "latest_auto_complete": {"run_id": "32526653794", "result": "success", "actions_members_sha256_checked": 748, "actions_reused_verified_artifacts": 235, "actions_downloaded_artifacts_this_run": 0, "actions_pair_hits": 0, "wiring_ready": false, "publication_ready": false},
+    "actions_incremental": {"all_artifacts_seen": 266, "candidate_artifacts": 236, "reused_verified_artifacts": 236, "downloaded_artifacts_this_run": 0, "members_sha256_checked": 750, "bytes_hashed": 69760616, "download_failures": 0, "canonical_hits": 0, "valid_audit_hits": 0, "pair_hits": 0},
+    "latest_auto_complete": {"run_id": "32526900065", "result": "success", "actions_members_sha256_checked": 750, "actions_reused_verified_artifacts": 235, "actions_downloaded_artifacts_this_run": 1, "actions_pair_hits": 0, "wiring_ready": false, "publication_ready": false},
     "file_library_exact_pair": false,
     "google_drive_exact_pair": false,
     "policy": "cancelled/timeout/incomplete coverage is never absence evidence; no reconstruction; no partial-161 or diagnostic-1271 promotion"
   },
   "expanded_generation_capability": {
-    "status": "LATEST_RECTANGLE_PERIMETER_CONTRACT_TRIGGERED_CI_PREVIOUS_STATE_PASS",
+    "status": "RECTANGLE_PERIMETER_METADATA_GATE_COMMITTED_NEW_UNIFIED_CI_PENDING",
     "last_persisted_pass_run_id": "32525969515",
     "last_persisted_pass_triggering_sha": "31d04a3dcc64d4227a88e10a882e4169a9528d6d",
-    "latest_contract_commit": "96c9812d1d59771616406d44bf78086a45e2fc60",
+    "latest_contract_commit": "98c237c626dd468db21b995474434edad15a8787",
     "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "rectangle_area", "rectangle_perimeter", "square_area", "triangle_area", "parallelogram_area", "trapezoid_area", "rectangular_prism_volume", "cube_volume", "speed_distance", "binary_arithmetic_exact", "linear_equation_exact"],
     "actual_base_variants_generated": 0,
     "actual_parent_records_required": true,
@@ -62,7 +58,8 @@
     "adaptive_safe_target_planning": true,
     "minimum_per_parent_default": 1,
     "safe_target_per_parent_default": 3,
-    "rectangle_perimeter_exact_double_sum_and_two_inverse_identities": true
+    "rectangle_perimeter_exact_double_sum_and_two_inverse_identities": true,
+    "rectangle_perimeter_parent_metadata_preservation_test": true
   },
   "CI_browser_A4": {
     "latest_audit_run_id": "32526547483",
@@ -77,27 +74,22 @@
   },
   "branch_commit": {
     "branch": "math-problem-bank-bootstrap",
-    "rectangle_perimeter_engine": "31d04a3dcc64d4227a88e10a882e4169a9528d6d",
-    "rectangle_perimeter_unified_integration": "494fe4be2d95cfd13b711e4eac5a494521db0a46",
-    "rectangle_perimeter_ci_contract": "b57879a6061d428fd4b33d70c3446b7a4d525a9d",
-    "rectangle_perimeter_direct_wording_fix": "a0fa9911308a82c33c8db59fb938f78af7f7a682",
-    "rectangle_perimeter_direct_wording_test": "a7a5cb518dca378e5f13324c09288fd2e69b1345",
-    "rectangle_perimeter_unified_adapter_test": "1731987e94114e120c746cb5644e0d2ce06f97f7",
-    "rectangle_perimeter_adapter_ci_contract": "96c9812d1d59771616406d44bf78086a45e2fc60",
-    "variant_state_commit": "656ce5f653b8889d1ccf5d69737aee67ee4ab789",
+    "run_start_head": "2a32f2e1d64b2bd5dd0b120f8fe74e24a3bdd745",
+    "rectangle_perimeter_metadata_gate": "98c237c626dd468db21b995474434edad15a8787",
+    "variant_state_commit": "c1299f9cf15f13bce2256ee9de71a37540a4adf9",
     "main_touched": false
   },
-  "現在どの工程にいるか": "Exact canonical BASE ZIP+audit recovery remains the blocker. Safe generation includes exact rectangle perimeter parents; newest perimeter-inclusive unified CI terminal persistence is still pending observation.",
+  "現在どの工程にいるか": "Exact canonical BASE ZIP+audit recovery remains the blocker. Rectangle-perimeter unified metadata preservation gate has been committed and its new Unified CI terminal persist is pending observation.",
   "残っている作業": [
-    "Newest rectangle-perimeter-inclusive unified CI terminal result/persistを確認し、失敗なら即修正。",
+    "98c237c以降のUnified CI terminal result/persistを確認し、失敗なら即修正。",
     "新規/変更分だけexact canonical recoveryを継続。",
     "exact canonical ZIP+MATHBANK_FINAL_AUDIT_V2 pair回収後SHA再確認、immutable BASE配線。",
     "実1124親へadaptive safe generation＋fingerprint-bound manual queue、strict validationで1124/1124へ到達。",
     "real four-browser + A4x6 + strict release + PUBLICATION_READY + isolated public verification。"
   ],
-  "正確停止点": "Canonical recovery pair0 at 265 artifacts / 235 candidates / 748 members / failures0. Rectangle-perimeter engine/integration/direct-wording/adapterはcommit済み。最新perimeter-inclusive unified CI terminal persistのみ未観測なので未PASS扱い。",
-  "次回どこから開始するか": "live HEAD/checkpoint/variant/unified-CI/actions/auto-completeを再読し、まず96c9812d1d59771616406d44bf78086a45e2fc60以降のunified terminal stateを確認。exact pairが出ていれば即BASE配線へ。",
+  "正確停止点": "Canonical recovery pair0 at 266 artifacts / 236 candidates / 750 members / failures0. Rectangle-perimeter metadata preservation gate commit 98c237c is pushed; newest Unified terminal persist is not yet observed and is not counted as PASS.",
+  "次回どこから開始するか": "live HEAD/checkpoint/variant/unified-CI/actions/auto-completeを再読し、まず98c237c以降のUnified terminal stateを確認。exact pairが出ていれば即BASE配線へ。",
   "次に進むべき工程": "terminal rectangle-perimeter unified CI -> new exact recovery delta -> exact BASE pair -> SHA/audit validation -> immutable BASE wiring -> adaptive verified auto generation -> fingerprint-bound manual queue -> 1124/1124 -> real browser/A4 -> strict release -> PUBLICATION_READY -> isolated public verification",
-  "recorded_at_utc": "2026-08-21T21:09:00Z",
+  "recorded_at_utc": "2026-08-21T22:01:00Z",
   "resume_rule": "Never reconstruct BASE or generate from unseen parents. Invalid/unverified variants never count as coverage."
 }
