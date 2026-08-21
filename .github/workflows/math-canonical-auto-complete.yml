@@ -9,6 +9,8 @@ on:
       - 'math-bank/state/actions-artifact-scan-latest.json'
       - 'math-bank/state/ci-latest.json'
       - 'math-bank/state/checkpoint.json'
+      - 'math-bank/app/scan_github_issue_pr_attachments.py'
+      - '.github/workflows/math-canonical-auto-complete.yml'
   workflow_run:
     workflows:
       - Math Problem Bank Audit
@@ -22,6 +24,8 @@ concurrency:
 permissions:
   contents: write
   actions: read
+  issues: read
+  pull-requests: read
 
 jobs:
   canonical-auto-complete:
@@ -47,6 +51,7 @@ jobs:
             math-bank/app/scan_actions_artifacts.py \
             math-bank/app/scan_actions_artifacts_delta.py \
             math-bank/app/scan_github_release_assets.py \
+            math-bank/app/scan_github_issue_pr_attachments.py \
             math-bank/app/complete_from_exact_canonical.py \
             math-bank/app/inspect_canonical_artifact.py \
             math-bank/app/analyze_canonical_mapping_evidence.py \
@@ -68,6 +73,11 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: python math-bank/app/scan_github_release_assets.py
 
+      - name: Scan GitHub issue and PR attachment links
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python math-bank/app/scan_github_issue_pr_attachments.py
+
       - name: Normalize exact canonical pair from active verified sources
         id: pair
         shell: bash
@@ -82,6 +92,7 @@ jobs:
           sources=[
             ('actions_artifact',final_zip,final_audit),
             ('github_release',Path('math-bank/recovered-release/みかみ塾数学問題バンク_最終完成版_20260820.zip'),Path('math-bank/recovered-release/MATHBANK_FINAL_AUDIT_V2.json')),
+            ('github_issue_pr_attachment',Path('math-bank/recovered-issue-pr/みかみ塾数学問題バンク_最終完成版_20260820.zip'),Path('math-bank/recovered-issue-pr/MATHBANK_FINAL_AUDIT_V2.json')),
           ]
           found=False; source='none'
           for label,z,a in sources:
@@ -97,7 +108,7 @@ jobs:
       - name: No pair means no reconstruction
         if: steps.pair.outputs.pair_found != 'true'
         run: |
-          echo 'CANONICAL_PAIR_NOT_RECOVERED: no exact ZIP+audit pair in current Actions artifacts or GitHub releases.'
+          echo 'CANONICAL_PAIR_NOT_RECOVERED: no exact ZIP+audit pair in current Actions artifacts, GitHub releases, or issue/PR attachments.'
           echo 'Branch/tag history and PR refs are already exhausted separately with exact coverage and pair0; do not rescan them here.'
           echo 'No reconstruction, no partial 161/diagnostic 1271 promotion, no new variants.'
 
@@ -129,9 +140,11 @@ jobs:
           path: |
             math-bank/recovered/
             math-bank/recovered-release/
+            math-bank/recovered-issue-pr/
             math-bank/state/actions-artifact-scan-latest.json
             math-bank/state/git-history-scan-latest.json
             math-bank/state/github-release-scan-latest.json
+            math-bank/state/github-issue-pr-attachment-scan-latest.json
             math-bank/state/canonical-inspection-latest.json
             math-bank/state/canonical-mapping-evidence-latest.json
             math-bank/state/canonical-completion-latest.json
@@ -211,6 +224,7 @@ jobs:
           actions=load('math-bank/state/actions-artifact-scan-latest.json')
           history=load('math-bank/state/git-history-scan-latest.json')
           releases=load('math-bank/state/github-release-scan-latest.json')
+          issue_pr=load('math-bank/state/github-issue-pr-attachment-scan-latest.json')
           completion=load('math-bank/state/canonical-completion-latest.json')
           payload={
             'workflow':'Math Canonical Auto Complete','run_id':os.environ.get('RUN_ID',''),'run_attempt':os.environ.get('RUN_ATTEMPT',''),
@@ -228,6 +242,12 @@ jobs:
             'github_release_pair_hits':len(releases.get('paired_recovery_hits',[])) if isinstance(releases,dict) else None,
             'github_release_canonical_hits':releases.get('canonical_hits') if isinstance(releases,dict) else None,
             'github_release_nested_members_sha256_checked':releases.get('nested_members_sha256_checked') if isinstance(releases,dict) else None,
+            'github_issue_pr_items_seen':issue_pr.get('issues_and_pulls_seen') if isinstance(issue_pr,dict) else None,
+            'github_issue_pr_text_surfaces_seen':issue_pr.get('text_surfaces_seen') if isinstance(issue_pr,dict) else None,
+            'github_issue_pr_candidate_links_seen':issue_pr.get('candidate_links_seen') if isinstance(issue_pr,dict) else None,
+            'github_issue_pr_candidate_links_downloaded':issue_pr.get('candidate_links_downloaded') if isinstance(issue_pr,dict) else None,
+            'github_issue_pr_candidate_bytes_hashed':issue_pr.get('candidate_bytes_hashed') if isinstance(issue_pr,dict) else None,
+            'github_issue_pr_pair_hits':len(issue_pr.get('paired_recovery_hits',[])) if isinstance(issue_pr,dict) else None,
             'wiring_ready':truth(os.environ.get('WIRING_READY','')),'mapping_metadata_required':truth(os.environ.get('MAPPING_METADATA_REQUIRED','')),
             'publication_ready':Path('math-bank/release/PUBLICATION_READY.json').is_file(),
             'strict_release_created':Path('math-bank/みかみ塾数学問題アプリ_公開候補.zip').is_file(),
@@ -238,6 +258,7 @@ jobs:
             'actions-artifact-scan-latest.json':actions,
             'git-history-scan-latest.json':history,
             'github-release-scan-latest.json':releases,
+            'github-issue-pr-attachment-scan-latest.json':issue_pr,
             'auto-complete-latest.json':payload,
           }
           for name,obj in files.items():
@@ -251,7 +272,7 @@ jobs:
           git reset --hard origin/math-problem-bank-bootstrap
           mkdir -p math-bank/state
           for f in /tmp/math-auto-state/*.json; do [ -e "$f" ] || continue; cp "$f" math-bank/state/; done
-          git add -- math-bank/state/auto-complete-latest.json math-bank/state/actions-artifact-scan-latest.json math-bank/state/git-history-scan-latest.json math-bank/state/github-release-scan-latest.json 2>/dev/null || true
+          git add -- math-bank/state/auto-complete-latest.json math-bank/state/actions-artifact-scan-latest.json math-bank/state/git-history-scan-latest.json math-bank/state/github-release-scan-latest.json math-bank/state/github-issue-pr-attachment-scan-latest.json 2>/dev/null || true
           if ! git diff --cached --quiet; then
             git commit -m 'record math canonical auto-completion state'
             git push origin HEAD:math-problem-bank-bootstrap
