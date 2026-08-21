@@ -38,7 +38,7 @@ def _parse_parent(parent: dict):
     if "長方形" not in q or not any(token in q for token in ("周の長さ", "周りの長さ", "まわりの長さ")):
         return None
     blocked = (
-        "面積", "何cmですか", "何cmでしょう", "辺の長さ", "一辺", "mと", "mm", "km", "図", "グラフ",
+        "面積", "辺の長さ", "一辺", "mと", "mm", "km", "図", "グラフ",
         "正方形", "対角線", "比", "縮尺",
     )
     if any(token in q for token in blocked):
