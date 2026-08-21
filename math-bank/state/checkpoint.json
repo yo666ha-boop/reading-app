@@ -25,14 +25,14 @@
   "今回完了した内容": [
     "Re-read live branch HEAD, checkpoint, variant-expansion state, CI, auto-complete state, Actions artifact state and recovery states before doing work.",
     "Confirmed live HEAD had advanced beyond the previous chat checkpoint via github-actions state commits; followed the newer branch state rather than overwriting it.",
-    "Confirmed latest canonical auto-complete saved state run 32434553396 was success with canonical_pair_found=false; Actions had advanced to 207 artifacts / 664 members / 268676240 bytes hashed, pair0.",
-    "Confirmed the normal Math Problem Bank Audit recovered from the prior transient Actions-scan failure: run 32438104196 is success, app shell/actions scan/synthetic browser/strict release/inventory all success; real canonical browser remains blocked_expected because exact BASE is absent.",
+    "Confirmed normal Math Problem Bank Audit run 32438104196 completed success: app shell, Actions scan, synthetic browser, strict release-after-browser and inventory all success; real canonical browser remains blocked_expected because exact BASE is absent.",
+    "Confirmed latest canonical auto-complete run 32438316776 completed success with canonical_pair_found=false. Actions delta advanced to 208 artifacts / 666 members / 268678850 bytes hashed, 0 download failures and pair0; 207 prior artifacts were reused and only 1 new artifact was downloaded.",
     "Re-searched File Library by exact canonical ZIP name, audit name, exact SHA and original-source terms; no exact canonical pair was returned and no partial dataset was promoted.",
     "Re-searched Google Drive by exact canonical ZIP name and MATHBANK_FINAL_AUDIT_V2; both returned 0 results.",
     "Added a genuinely new exact recovery surface: GitHub Actions workflow-run log archives. Implemented math-bank/app/scan_actions_logs_recovery.py in commit ecd998af81156ce3287f5687aaca13691377ad60.",
     "The new scanner enumerates branch workflow runs since 2026-08-19, scans bounded log members for the exact ZIP filename, exact SHA, audit filename and authoritative recovery hints, records nearby URLs, hashes only allowlisted GitHub-hosted candidate downloads, and requires exact canonical SHA plus one valid named audit from the same workflow-run clue context. It never reconstructs data.",
-    "Added Math Actions Log Recovery workflow in commit 80bc6fce71adf6dd802edc17fef56ff91ac61446. It runs the log scan with cancel-in-progress=false and, if an exact pair is recovered, immediately invokes complete_from_exact_canonical, real four-browser/A4 regression, strict release and PUBLICATION_READY gates rather than stopping at a hit report.",
-    "Updated variant expansion state to include the new recovery surface. Expanded variants remain 0 and parent coverage 0/1124 because exact BASE parents are still unavailable; no unseen-parent variant was fabricated.",
+    "Added Math Actions Log Recovery workflow in commit 80bc6fce71adf6dd802edc17fef56ff91ac61446. It runs with cancel-in-progress=false and, if an exact pair is recovered, immediately invokes complete_from_exact_canonical, real four-browser/A4 regression, strict release and PUBLICATION_READY gates rather than stopping at a hit report.",
+    "Synced variant expansion state through commit b87867a7c60235af459c9ecf3bbb67bd6d65efe5. Expanded variants remain 0 and parent coverage 0/1124 because exact BASE parents are still unavailable; no unseen-parent variant was fabricated.",
     "main remains untouched."
   ],
   "実装済み機能": {
@@ -66,11 +66,13 @@
     "exact_zip_recovered": false,
     "final_audit_recovered": false,
     "canonical_pair_found": false,
-    "latest_actions_artifacts_seen": 207,
-    "latest_actions_members_sha256_checked": 664,
-    "latest_actions_bytes_hashed": 268676240,
+    "latest_actions_artifacts_seen": 208,
+    "latest_actions_members_sha256_checked": 666,
+    "latest_actions_bytes_hashed": 268678850,
     "latest_actions_download_failures": 0,
     "latest_actions_pair_hits": 0,
+    "latest_actions_reused_verified_artifacts": 207,
+    "latest_actions_downloaded_artifacts_this_run": 1,
     "branch_tag_manifest_readable_blob_oids_total": 1901,
     "branch_tag_shards_completed": 16,
     "branch_tag_assigned_blob_oids_total": 1901,
@@ -103,9 +105,9 @@
     },
     "file_library_exact_pair": false,
     "google_drive_exact_pair": false,
-    "auto_complete_latest_run_id": "32434553396",
+    "auto_complete_latest_run_id": "32438316776",
     "auto_complete_latest_run_result": "success",
-    "auto_complete_latest_triggering_sha": "06ad95753d8c5f686a79c3fee04031a6d4e5e1da",
+    "auto_complete_latest_triggering_sha": "0d5f8d2ff8ce728cc2700f3c4b3b29fa5ea73ab5",
     "policy": "cancelled/timeout/incomplete coverage is never absence evidence"
   },
   "CI_browser_A4": {
@@ -120,10 +122,10 @@
   },
   "branch_commit": {
     "branch": "math-problem-bank-bootstrap",
-    "head_before_checkpoint_write": "aeb3dcc472803cb10ce42c4f7261062f77f612ef",
+    "head_before_checkpoint_write": "b87867a7c60235af459c9ecf3bbb67bd6d65efe5",
     "actions_log_scanner_commit": "ecd998af81156ce3287f5687aaca13691377ad60",
     "actions_log_workflow_commit": "80bc6fce71adf6dd802edc17fef56ff91ac61446",
-    "variant_state_commit": "aeb3dcc472803cb10ce42c4f7261062f77f612ef",
+    "variant_state_commit": "b87867a7c60235af459c9ecf3bbb67bd6d65efe5",
     "main_touched": false
   },
   "現在どの工程にいるか": "Exact BASE recovery remains the only blocker before real-parent variant generation. Closed exact Git/ref/artifact/release/issue-PR surfaces remain pair0; the newly added Actions workflow-log clue surface is the current active recovery path.",
@@ -134,9 +136,9 @@
     "Run strict fingerprint-bound uncovered-parent queue on actual 1124 originals, generate independently recalculated safe variants and individually resolve manual figure/choice/unsupported cases until 1124/1124 coverage.",
     "Compose dynamic app-records, run real Chromium/Firefox/WebKit iPhone/Chromium Fire plus six A4 PDFs, then strict release/PUBLICATION_READY and isolated public verification."
   ],
-  "正確停止点": "Actions-log recovery scanner and workflow are committed and the first real run has been triggered by the workflow-file push, but math-bank/state/actions-log-recovery-latest.json has not yet appeared at the time of this checkpoint. Therefore no claim of Actions-log absence is made. Latest normal audit is success run 32438104196; exact BASE pair is still unrecovered.",
+  "正確停止点": "Actions-log recovery scanner/workflow are committed and the first real run was triggered by the workflow-file push, but math-bank/state/actions-log-recovery-latest.json has not yet appeared at this checkpoint. Therefore no claim of Actions-log absence is made. Latest normal audit is success run 32438104196; latest auto-complete is success run 32438316776 with 208 artifacts / 666 members pair0; exact BASE remains unrecovered.",
   "次回どこから開始するか": "Read live HEAD and math-bank/state/actions-log-recovery-latest.json first. If the first log scan is terminal, process any exact canonical/audit clues immediately; if pair0 with complete/error-free coverage, record that surface closed and move to the next genuinely unscanned exact source.",
   "次に進むべき工程": "Actions-log terminal scan -> exact recovery delta/source -> exact BASE pair -> SHA/audit validation -> immutable BASE snapshot + dynamic compose -> fingerprint-bound generation queue -> verified generation/recalculation -> 1124/1124 coverage -> real browser/A4 -> strict release -> PUBLICATION_READY -> isolated public verification",
-  "recorded_at_utc": "2026-08-21T02:12:00Z",
+  "recorded_at_utc": "2026-08-21T02:18:00Z",
   "resume_rule": "Do not stop at inspection/status reporting. Never reconstruct BASE data or generate from an unseen parent. Invalid/unverified expanded records and sibling same-number paraphrases must never count as parent coverage."
 }
