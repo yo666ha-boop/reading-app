@@ -108,6 +108,29 @@ def generate_parent(parent: dict, count: int, now: str) -> tuple[list[dict], lis
     return _adapt_specialized(parent, count, now)
 
 
+def generation_request(existing_count: int, *, minimum_per_parent: int, safe_target_per_parent: int) -> tuple[int, int]:
+    """Plan generation without inflating the manual queue.
+
+    Every parent must reach ``minimum_per_parent``. Parents accepted by a
+    deterministic fail-closed engine are *attempted* up to
+    ``safe_target_per_parent``. If no safe engine accepts the parent, only the
+    minimum shortfall becomes manual work; unsupported parents are never forced
+    to have 2-3 hand-written variants merely because safe parents can.
+    """
+    if existing_count < 0:
+        raise ValueError("existing_count must be non-negative")
+    if minimum_per_parent not in (1, 2, 3):
+        raise ValueError("minimum_per_parent must be 1, 2, or 3")
+    if safe_target_per_parent not in (1, 2, 3):
+        raise ValueError("safe_target_per_parent must be 1, 2, or 3")
+    if safe_target_per_parent < minimum_per_parent:
+        raise ValueError("safe_target_per_parent must be >= minimum_per_parent")
+
+    attempt_count = max(0, safe_target_per_parent - existing_count)
+    manual_missing_if_unsupported = max(0, minimum_per_parent - existing_count)
+    return attempt_count, manual_missing_if_unsupported
+
+
 def manual_queue_entry(parent: dict, *, missing_count: int, reason: str) -> dict:
     """Create a review task bound to the exact parent that was actually read.
 
@@ -142,10 +165,26 @@ def main() -> int:
     ap.add_argument("base")
     ap.add_argument("expanded")
     ap.add_argument("output")
-    ap.add_argument("--target-per-parent", type=int, default=1, choices=(1, 2, 3))
+    ap.add_argument(
+        "--target-per-parent",
+        type=int,
+        default=1,
+        choices=(1, 2, 3),
+        help="Minimum verified new variants required for every original parent.",
+    )
+    ap.add_argument(
+        "--safe-target-per-parent",
+        type=int,
+        default=3,
+        choices=(1, 2, 3),
+        help="Target for parents accepted by a deterministic fail-closed engine.",
+    )
     ap.add_argument("--report")
     ap.add_argument("--manual-queue")
     ns = ap.parse_args()
+
+    if ns.safe_target_per_parent < ns.target_per_parent:
+        ap.error("--safe-target-per-parent must be >= --target-per-parent")
 
     base = load_records(Path(ns.base))
     _, originals, _ = base_gate(base)
@@ -161,16 +200,27 @@ def main() -> int:
     generated_provenance: list[dict] = []
     manual_queue: list[dict] = []
     reasons = Counter()
+    safe_target_parents = 0
     for parent in originals:
-        need = max(0, ns.target_per_parent - counts[parent["id"]])
-        if need == 0:
-            reasons["already_at_target"] += 1
+        attempt_need, manual_need = generation_request(
+            counts[parent["id"]],
+            minimum_per_parent=ns.target_per_parent,
+            safe_target_per_parent=ns.safe_target_per_parent,
+        )
+        if attempt_need == 0:
+            reasons["already_at_safe_target"] += 1
             continue
-        new_rows, new_prov, reason = generate_parent(parent, need, now)
+
+        new_rows, new_prov, reason = generate_parent(parent, attempt_need, now)
         reasons[reason] += 1
         if not new_rows:
-            manual_queue.append(manual_queue_entry(parent, missing_count=need, reason=reason))
+            if manual_need:
+                manual_queue.append(manual_queue_entry(parent, missing_count=manual_need, reason=reason))
+            else:
+                reasons["unsupported_but_minimum_already_satisfied"] += 1
             continue
+
+        safe_target_parents += 1
         generated.extend(new_rows)
         generated_provenance.extend(new_prov)
 
@@ -194,7 +244,8 @@ def main() -> int:
             "base_canonical_sha256": BASE_CANONICAL_SHA256,
             "recorded_at_utc": now,
             "policy": "Actual BASE parents only; every task is fingerprint-bound and contains no generated question. Manual output must pass the same strict validator before counting as coverage.",
-            "target_per_parent": ns.target_per_parent,
+            "minimum_per_parent": ns.target_per_parent,
+            "safe_target_per_parent": ns.safe_target_per_parent,
             "manual_parent_count": len(manual_queue),
             "tasks": manual_queue,
         }
@@ -203,13 +254,15 @@ def main() -> int:
     report = {
         "status": "PASS",
         "recorded_at_utc": now,
-        "policy": "Actual BASE parents only. Specialized exact engines first, exact arithmetic/linear fallback second, unsupported structures become fingerprint-bound manual tasks. Strict expanded validator is the promotion gate.",
+        "policy": "Actual BASE parents only. Every parent requires the minimum target; deterministic safe parents are expanded toward the safe target; unsupported structures become fingerprint-bound manual tasks only for their minimum shortfall. Strict expanded validator is the promotion gate.",
         "base_originals": len(originals),
         "existing_expanded_variants": len(variants),
         "newly_generated_verified_variants": len(generated),
         "expanded_total": len(out_layer["variants"]),
         "expanded_parent_coverage": final_report["expanded_parent_coverage"],
-        "target_per_parent": ns.target_per_parent,
+        "minimum_per_parent": ns.target_per_parent,
+        "safe_target_per_parent": ns.safe_target_per_parent,
+        "safe_target_parents_generated_this_run": safe_target_parents,
         "manual_parent_count": len(manual_queue),
         "manual_missing_variant_count": sum(row["missing_verified_variants"] for row in manual_queue),
         "generation_reason_counts": dict(sorted(reasons.items())),
