@@ -24,14 +24,27 @@ def main() -> None:
     assert reason.startswith("specialized:rectangle_perimeter:")
     assert len(rows) == len(prov) == 3
     assert len({row["question"] for row in rows}) == 3
+    assert len({tuple(row.get("numeric_signature") or ()) for row in rows}) == 1  # adapted rows intentionally do not expose engine-only signature
+
     expected_sha = parent_record_sha256(parent)
+    parent_taxonomy = copy.deepcopy(parent.get("taxonomy"))
+    parent_difficulty = parent.get("difficulty")
+    parent_format = parent.get("format")
     for row, evidence in zip(rows, prov):
         assert row["source"]["parent_id"] == parent["id"]
+        assert row.get("taxonomy") == parent_taxonomy
+        assert row.get("difficulty") == parent_difficulty
+        assert row.get("format") == parent_format
+        assert row.get("choices") == parent.get("choices")
+        assert row.get("figure_refs") == parent.get("figure_refs")
         assert evidence["parent_record_sha256"] == expected_sha
         assert evidence["independent_recalculation"] is True
         assert "engine=rectangle_perimeter" in evidence["verification_evidence"]
 
-    print("PASS_RECTANGLE_PERIMETER_UNIFIED_ADAPTER_PARENT_SHA_AND_INDEPENDENT_RECALCULATION")
+    questions = [row["question"] for row in rows]
+    assert all("たて8cm、横5cm" not in q for q in questions)
+
+    print("PASS_RECTANGLE_PERIMETER_UNIFIED_ADAPTER_PARENT_SHA_METADATA_AND_INDEPENDENT_RECALCULATION")
 
 
 if __name__ == "__main__":
