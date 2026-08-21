@@ -1,8 +1,8 @@
 {
   "status": "PASS_CI",
-  "run_id": "32479726785",
-  "triggering_sha": "81e3945f2acd88cdb8b0903f299576278f90a4de",
-  "recorded_at_utc": "2026-08-21T11:59:23.840457+00:00",
+  "run_id": "32479761032",
+  "triggering_sha": "9356bb5fc1675deef396669dff1487d23bba413b",
+  "recorded_at_utc": "2026-08-21T11:59:53.740454+00:00",
   "engines": [
     "affine",
     "single_draw_probability",
@@ -20,5 +20,9 @@
   "figure_choice_unsupported_fail_closed": true,
   "fingerprint_bound_manual_queue": true,
   "manual_queue_contains_no_generated_question_or_answer": true,
-  "manual_queue_requires_same_strict_validator_before_coverage": true
+  "manual_queue_requires_same_strict_validator_before_coverage": true,
+  "adaptive_safe_target_planning": true,
+  "minimum_per_parent_default": 1,
+  "safe_target_per_parent_default": 3,
+  "unsupported_manual_shortfall_only": true
 }
