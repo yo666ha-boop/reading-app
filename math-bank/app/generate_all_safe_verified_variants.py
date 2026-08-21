@@ -25,6 +25,7 @@ from safe_percentage_variant_engine import generate as generate_percentage
 from safe_proportion_variant_engine import generate as generate_proportion
 from safe_rectangle_area_variant_engine import generate as generate_rectangle_area
 from safe_single_draw_probability_variant_engine import generate as generate_probability
+from safe_trapezoid_area_variant_engine import generate as generate_trapezoid_area
 from safe_triangle_area_variant_engine import generate as generate_triangle_area
 from validate_app_records import load_records
 from validate_expanded_variant_layer import (
@@ -46,6 +47,7 @@ SPECIALIZED_ENGINES = (
     ("rectangle_area", generate_rectangle_area),
     ("triangle_area", generate_triangle_area),
     ("parallelogram_area", generate_parallelogram_area),
+    ("trapezoid_area", generate_trapezoid_area),
 )
 
 
