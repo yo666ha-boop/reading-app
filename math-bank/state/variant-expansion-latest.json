@@ -37,11 +37,12 @@
   "dynamic_release_contract": "PASS_SOURCE_CONTRACT_WAITING_FOR_REAL_BASE_AND_FULL_COVERAGE",
   "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_TESTS",
   "unified_safe_generation": {
-    "status": "PASS_CI",
-    "run_id": "32521010135",
-    "triggering_sha": "0f48c00a6e196f91d664973d7051eee9b2d15a96",
+    "status": "LATEST_RECTANGLE_PERIMETER_CONTRACT_TRIGGERED_CI; PREVIOUS_UNIFIED_STATE_PASS",
+    "last_persisted_pass_run_id": "32525969515",
+    "last_persisted_pass_triggering_sha": "31d04a3dcc64d4227a88e10a882e4169a9528d6d",
+    "latest_contract_commit": "96c9812d1d59771616406d44bf78086a45e2fc60",
     "driver": "generate_all_safe_verified_variants.py",
-    "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "rectangle_area", "square_area", "triangle_area", "parallelogram_area", "trapezoid_area", "rectangular_prism_volume", "cube_volume", "speed_distance", "binary_arithmetic_exact", "linear_equation_exact"],
+    "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "rectangle_area", "rectangle_perimeter", "square_area", "triangle_area", "parallelogram_area", "trapezoid_area", "rectangular_prism_volume", "cube_volume", "speed_distance", "binary_arithmetic_exact", "linear_equation_exact"],
     "actual_base_variants_generated": 0,
     "actual_parent_records_required": true,
     "parent_record_sha256_required": true,
@@ -54,9 +55,9 @@
     "minimum_per_parent_default": 1,
     "safe_target_per_parent_default": 3,
     "unsupported_manual_shortfall_only": true,
-    "square_area_exact_product_and_integer_square_root_identity": true,
-    "rectangular_prism_volume_exact_product_and_three_inverse_identities": true,
-    "cube_volume_exact_product_and_integer_cube_root_identity": true
+    "rectangle_perimeter_exact_double_sum_and_two_inverse_identities": true,
+    "rectangle_perimeter_direct_question_wording_supported": true,
+    "rectangle_perimeter_unified_adapter_test_added": true
   },
   "manual_queue_contract": {
     "status": "PASS_CI",
@@ -69,12 +70,12 @@
   },
   "base_recovery": {
     "actions_latest_confirmed": {
-      "all_artifacts_seen": 259,
-      "candidate_artifacts": 229,
-      "reused_verified_artifacts": 228,
+      "all_artifacts_seen": 263,
+      "candidate_artifacts": 233,
+      "reused_verified_artifacts": 232,
       "downloaded_artifacts_this_run": 1,
-      "members_sha256_checked": 736,
-      "member_bytes_hashed": 69742346,
+      "members_sha256_checked": 744,
+      "member_bytes_hashed": 69752786,
       "download_failures": 0,
       "pair_hits": 0
     },
@@ -87,21 +88,26 @@
     "google_drive_exact_pair": false,
     "policy": "cancelled/timeout/incomplete coverage is never absence evidence; exact-complete unchanged surfaces are not redundantly rescanned; no partial diagnostic promotion"
   },
-  "browser_A4": {
+  "CI_browser_A4": {
+    "latest_audit_run_id": "32526022103",
+    "audit_result": "success",
+    "actions_artifact_recovery_scan": "success",
     "synthetic_browser": "PASS_FOUR_ENVIRONMENTS",
     "real_canonical_browser": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT",
-    "real_A4_six_pdfs": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT"
+    "real_A4_six_pdfs": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT",
+    "publication_ready": false
   },
   "publication_ready": false,
   "branch": "math-problem-bank-bootstrap",
   "latest_commits": {
-    "cube_volume_engine": "bdce741af8ea5339f21e22e5fd7f8c3a65ffbacf",
-    "cube_volume_unified_integration": "3ef721101c1fd4fe22e19b9c3cae5999dc1e88ea",
-    "cube_volume_test": "e56527ac0fc9925bfe84eef109379daf9c40bb48",
-    "cube_volume_adapter_test": "0464b280b1028a323e9b54f290ab1cdad79ef6dc",
-    "cube_volume_ci_contract": "0f48c00a6e196f91d664973d7051eee9b2d15a96",
-    "unified_ci_persist": "78b4c59697c0dc4f185178a05b792477d457fb30"
+    "rectangle_perimeter_engine": "31d04a3dcc64d4227a88e10a882e4169a9528d6d",
+    "rectangle_perimeter_unified_integration": "494fe4be2d95cfd13b711e4eac5a494521db0a46",
+    "rectangle_perimeter_ci_contract": "b57879a6061d428fd4b33d70c3446b7a4d525a9d",
+    "rectangle_perimeter_direct_wording_fix": "a0fa9911308a82c33c8db59fb938f78af7f7a682",
+    "rectangle_perimeter_direct_wording_test": "a7a5cb518dca378e5f13324c09288fd2e69b1345",
+    "rectangle_perimeter_unified_adapter_test": "1731987e94114e120c746cb5644e0d2ce06f97f7",
+    "rectangle_perimeter_adapter_ci_contract": "96c9812d1d59771616406d44bf78086a45e2fc60"
   },
-  "recorded_at_utc": "2026-08-21T19:57:40Z",
-  "next": "Reread live exact recovery delta first. If exact pair appears, validate/wire BASE immediately. Otherwise continue fail-closed completion work; unified safe generation now also includes exact cube-volume parents."
+  "recorded_at_utc": "2026-08-21T21:04:00Z",
+  "next": "Reread live unified CI state and exact recovery delta first. If exact pair appears, validate/wire BASE immediately. Otherwise continue only fail-closed completion work while preserving expanded variants 0 until actual parents are available."
 }
