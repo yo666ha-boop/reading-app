@@ -5,21 +5,50 @@
   "expected_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "required_paired_audit": "MATHBANK_FINAL_AUDIT_V2.json",
   "created_since": "2026-08-19T00:00:00Z",
-  "all_artifacts_seen": 231,
-  "candidate_artifacts": 219,
+  "all_artifacts_seen": 232,
+  "candidate_artifacts": 220,
   "reused_verified_artifacts": 219,
-  "downloaded_artifacts_this_run": 0,
+  "downloaded_artifacts_this_run": 1,
   "canonical_hits": 0,
   "audit_name_hits": 0,
   "valid_audit_hits": 0,
   "paired_recovery_hits": 0,
   "recovery_hint_hits": 0,
   "download_failures": 0,
-  "all_members_sha256_checked": 700,
-  "all_member_bytes_hashed": 195143811,
+  "all_members_sha256_checked": 702,
+  "all_member_bytes_hashed": 195146421,
   "zip_signature_members": 3,
   "oversize_members_skipped": 0,
   "artifacts": [
+    {
+      "artifact_id": 9437417196,
+      "name": "math-browser-regression-diagnostics",
+      "size_in_bytes": 1009,
+      "created_at": "2026-08-21T06:57:12Z",
+      "updated_at": "2026-08-21T06:57:12Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32456310687,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "0a5616c9f695e5679d3ca6cb93e5a3b75a0ccef5"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 2,
+        "members_sha256_checked": 2,
+        "member_bytes_hashed": 2610,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1009
+    },
     {
       "artifact_id": 9437387367,
       "name": "math-browser-regression-diagnostics",
@@ -6397,6 +6426,6 @@
     }
   ],
   "recovered_files": [],
-  "completed_at_utc": "2026-08-21T06:56:21.525220+00:00",
+  "completed_at_utc": "2026-08-21T06:57:13.974547+00:00",
   "policy": "Artifact results are reused only when artifact id, size, and updated_at match exactly, the previous download completed without errors, and the artifact was not pair-eligible. New or changed artifacts are downloaded and every member under the size cap is SHA-256 checked. Exact immutable SHA plus one unambiguous valid final audit from the same artifact remains required; no reconstruction."
 }
