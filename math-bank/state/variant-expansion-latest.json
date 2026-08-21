@@ -38,10 +38,10 @@
   "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_TESTS",
   "unified_safe_generation": {
     "status": "PASS_CI",
-    "run_id": "32495053540",
-    "triggering_sha": "d2ed0d366bab8d8a958485ea3133318421687038",
+    "run_id": "32500504108",
+    "triggering_sha": "ee1fe6e442c5df43bf3979e18f7d520aee0a66fc",
     "driver": "generate_all_safe_verified_variants.py",
-    "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "rectangle_area", "triangle_area", "parallelogram_area", "binary_arithmetic_exact", "linear_equation_exact"],
+    "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "rectangle_area", "triangle_area", "parallelogram_area", "trapezoid_area", "binary_arithmetic_exact", "linear_equation_exact"],
     "actual_base_variants_generated": 0,
     "actual_parent_records_required": true,
     "parent_record_sha256_required": true,
@@ -56,7 +56,8 @@
     "unsupported_manual_shortfall_only": true,
     "rectangle_area_exact_product_and_inverse_identity": true,
     "triangle_area_exact_half_product_and_doubled_area_identity": true,
-    "parallelogram_area_exact_product_and_inverse_identity": true
+    "parallelogram_area_exact_product_and_inverse_identity": true,
+    "trapezoid_area_exact_half_sum_product_and_doubled_area_identity": true
   },
   "manual_queue_contract": {
     "status": "PASS_CI",
@@ -69,12 +70,12 @@
   },
   "base_recovery": {
     "actions_latest_confirmed": {
-      "all_artifacts_seen": 247,
-      "candidate_artifacts": 231,
-      "reused_verified_artifacts": 231,
-      "downloaded_artifacts_this_run": 0,
-      "members_sha256_checked": 726,
-      "member_bytes_hashed": 166192306,
+      "all_artifacts_seen": 250,
+      "candidate_artifacts": 220,
+      "reused_verified_artifacts": 219,
+      "downloaded_artifacts_this_run": 1,
+      "members_sha256_checked": 718,
+      "member_bytes_hashed": 69718856,
       "download_failures": 0,
       "pair_hits": 0
     },
@@ -102,11 +103,11 @@
     "owner_public_gists": {"gists_seen": 0, "exact_coverage_complete": true, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "file_library_exact_pair": false,
     "google_drive_exact_pair": false,
-    "latest_saved_auto_complete": {"run_id": "32490026821", "result": "success", "pair": false, "members_sha256_checked": 726, "reused": 231, "downloaded": 0},
+    "latest_saved_auto_complete": {"run_id": "32495205001", "result": "success", "pair": false, "members_sha256_checked": 718, "reused": 219, "downloaded": 1},
     "policy": "cancelled/timeout/incomplete coverage is never absence evidence; exact-complete unchanged surfaces are not redundantly rescanned; no partial diagnostic promotion"
   },
   "browser_A4": {
-    "latest_saved_math_audit_run_id": "32494931453",
+    "latest_saved_math_audit_run_id": "32495030817",
     "latest_saved_math_audit_result": "success",
     "synthetic_browser": "PASS_FOUR_ENVIRONMENTS",
     "real_canonical_browser": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT",
@@ -115,12 +116,12 @@
   "publication_ready": false,
   "branch": "math-problem-bank-bootstrap",
   "latest_commits": {
-    "parallelogram_area_engine": "74b8456c1838fe843462134af30047da64ee35fe",
-    "parallelogram_area_unified_integration": "5baf676f24354c07c9c6504ce2582c1b6ef728eb",
-    "parallelogram_area_regression_tests": "de465570db8e6c7c0731be2aa3fa16ef25071832",
-    "parallelogram_area_ci_contract": "d2ed0d366bab8d8a958485ea3133318421687038",
-    "unified_ci_persist": "c1886f768ae87f9d3486a16bdfe73dfe587d42c0"
+    "trapezoid_area_engine": "2b61a1099766cdf86d4d1682db3629a0f9f53cca",
+    "trapezoid_area_unified_integration": "3b39de692853fe8302141f690d7fe0b63e289c74",
+    "trapezoid_area_tests": "ee1fe6e442c5df43bf3979e18f7d520aee0a66fc",
+    "trapezoid_area_ci_contract": "6a53c09de5f6e3da5442d0b8e4447e195afbb7bb",
+    "unified_ci_persist": "2c35dc1ee729b21955abadd8f6934b501456a621"
   },
-  "recorded_at_utc": "2026-08-21T14:59:00Z",
-  "next": "Reread live exact recovery delta first. If exact pair appears, validate/wire BASE immediately. Otherwise continue fail-closed completion work; unified safe generation now includes exact parallelogram area parents."
+  "recorded_at_utc": "2026-08-21T16:00:00Z",
+  "next": "Reread live exact recovery delta first. If exact pair appears, validate/wire BASE immediately. Otherwise continue fail-closed completion work; unified safe generation now includes exact trapezoid-area parents."
 }
