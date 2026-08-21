@@ -25,6 +25,7 @@ from safe_parallelogram_area_variant_engine import generate as generate_parallel
 from safe_percentage_variant_engine import generate as generate_percentage
 from safe_proportion_variant_engine import generate as generate_proportion
 from safe_rectangle_area_variant_engine import generate as generate_rectangle_area
+from safe_rectangle_perimeter_variant_engine import generate as generate_rectangle_perimeter
 from safe_rectangular_prism_volume_variant_engine import generate as generate_rectangular_prism_volume
 from safe_single_draw_probability_variant_engine import generate as generate_probability
 from safe_speed_distance_variant_engine import generate as generate_speed_distance
@@ -49,6 +50,7 @@ SPECIALIZED_ENGINES = (
     ("percentage", generate_percentage),
     ("simple_average", generate_average),
     ("rectangle_area", generate_rectangle_area),
+    ("rectangle_perimeter", generate_rectangle_perimeter),
     ("square_area", generate_square_area),
     ("triangle_area", generate_triangle_area),
     ("parallelogram_area", generate_parallelogram_area),
