@@ -70,6 +70,10 @@ jobs:
             'fingerprint_bound_manual_queue':True,
             'manual_queue_contains_no_generated_question_or_answer':True,
             'manual_queue_requires_same_strict_validator_before_coverage':True,
+            'adaptive_safe_target_planning':True,
+            'minimum_per_parent_default':1,
+            'safe_target_per_parent_default':3,
+            'unsupported_manual_shortfall_only':True,
           }
           p.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           PY
