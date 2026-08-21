@@ -1,7 +1,7 @@
 {
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_EXPANDED_VARIANT_APP_AND_BASE_RECOVERY",
-  "current_stage": "EXACT_BASE_RECOVERY_PAIR0_SQUARE_AREA_SAFE_ENGINE_ADDED",
+  "current_stage": "EXACT_BASE_RECOVERY_PAIR0_CUBE_VOLUME_SAFE_ENGINE_ADDED_AND_CI_PASS",
   "base_canonical": {
     "records": 1231,
     "original_records": 1124,
@@ -22,14 +22,14 @@
     "manual_generation_queue": "READY_TO_MATERIALIZE_FROM_EXACT_BASE_ONLY"
   },
   "今回完了した内容": [
-    "Reread live branch HEAD, checkpoint, variant state, Actions recovery and auto-complete state before changing anything.",
-    "Confirmed exact BASE pair remains unrecovered and no partial-161, diagnostic-1271 or Winpass717 candidate was promoted.",
-    "Confirmed Actions exact scan advanced beyond the prior checkpoint to 257 artifacts / 227 candidates / 226 verified reuse / 1 new-or-changed download / 732 members SHA-256 checked / failures0 / pair0.",
-    "Implemented safe_square_area_variant_engine.py for one exact positive integer-cm side parent asking only for square area.",
-    "Parent and generated answers are recalculated by A=s^2 and independently verified by exact integer square-root identity. Wrong answer, perimeter, reverse side-length, mixed unit, figure and choice parents fail closed.",
-    "Integrated square_area into generate_all_safe_verified_variants.py and added dedicated engine plus unified-adapter regression tests.",
-    "Updated unified CI compile/test/state contract and confirmed Math Safe Unified Variant Generation run 32515745854 PASS on triggering SHA b3d1aa7651bd6dd91f7b3e16d1b3da4eaa060d21.",
-    "Unified CI persisted commit 7e8a2148f87ebc6d168be0d70480247084920388. Actual BASE variants remain intentionally 0 because exact parents are unavailable. main remains untouched."
+    "Reread live branch HEAD, checkpoint, variant state, Actions recovery, auto-complete and CI before changing anything.",
+    "Confirmed exact BASE pair remains unrecovered; no partial-161, diagnostic-1271 or Winpass717 candidate was promoted.",
+    "Confirmed Actions exact recovery advanced to 259 artifacts / 229 candidates / 228 verified reuse / 1 new-or-changed download / 736 members SHA-256 checked / failures0 / canonical0 / valid-audit0 / pair0.",
+    "Implemented safe_cube_volume_variant_engine.py for exact integer-cm cube-volume parents only, with V=s^3 parent/variant recalculation and exact integer cube-root inverse identity.",
+    "Added fail-closed negative tests for wrong answer, figure, choices, surface area, reverse side-length, mixed units and ambiguous duplicate-side wording.",
+    "Integrated cube_volume into generate_all_safe_verified_variants.py and added a unified adapter test enforcing parent_record_sha256 and independent recalculation evidence.",
+    "Updated unified CI to compile/run cube tests and persist cube_volume capability. Math Safe Unified Variant Generation run 32521010135 PASS on triggering SHA 0f48c00a6e196f91d664973d7051eee9b2d15a96.",
+    "Math Problem Bank Audit run 32520859725 PASS: app shell, Actions recovery, synthetic browser and inventory passed; real canonical browser remains blocked_expected because exact BASE is absent. main remains untouched."
   ],
   "BASE回収状況": {
     "canonical_pair_found": false,
@@ -38,17 +38,17 @@
     "other_owned_repos": "2_repos_x_16_of_16_exact_complete_pair0_no_rerun_without_change",
     "github_release": {"releases": 0, "assets": 0, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "github_issue_pr_attachment": {"pair_hits": 0, "errors": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
-    "actions_incremental": {"all_artifacts_seen": 257, "candidate_artifacts": 227, "reused_verified_artifacts": 226, "downloaded_artifacts_this_run": 1, "members_sha256_checked": 732, "bytes_hashed": 69737126, "download_failures": 0, "canonical_hits": 0, "valid_audit_hits": 0, "pair_hits": 0},
-    "latest_auto_complete": {"run_id": "32511121113", "result": "success", "actions_members_sha256_checked": 732, "actions_reused_verified_artifacts": 226, "actions_downloaded_artifacts_this_run": 1, "actions_pair_hits": 0, "release_pair_hits": 0, "issue_pr_pair_hits": 0, "wiring_ready": false, "publication_ready": false},
+    "actions_incremental": {"all_artifacts_seen": 259, "candidate_artifacts": 229, "reused_verified_artifacts": 228, "downloaded_artifacts_this_run": 1, "members_sha256_checked": 736, "bytes_hashed": 69742346, "download_failures": 0, "canonical_hits": 0, "valid_audit_hits": 0, "pair_hits": 0},
+    "latest_auto_complete": {"run_id": "32515838316", "result": "success", "actions_members_sha256_checked": 734, "actions_reused_verified_artifacts": 228, "actions_downloaded_artifacts_this_run": 0, "actions_pair_hits": 0, "release_pair_hits": 0, "issue_pr_pair_hits": 0, "wiring_ready": false, "publication_ready": false},
     "file_library_exact_pair": false,
     "google_drive_exact_pair": false,
     "policy": "cancelled/timeout/incomplete coverage is never absence evidence; no reconstruction; no partial-161 or diagnostic-1271 promotion"
   },
   "expanded_generation_capability": {
     "status": "PASS_CI",
-    "run_id": "32515745854",
-    "triggering_sha": "b3d1aa7651bd6dd91f7b3e16d1b3da4eaa060d21",
-    "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "rectangle_area", "square_area", "triangle_area", "parallelogram_area", "trapezoid_area", "rectangular_prism_volume", "speed_distance", "binary_arithmetic_exact", "linear_equation_exact"],
+    "run_id": "32521010135",
+    "triggering_sha": "0f48c00a6e196f91d664973d7051eee9b2d15a96",
+    "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "rectangle_area", "square_area", "triangle_area", "parallelogram_area", "trapezoid_area", "rectangular_prism_volume", "cube_volume", "speed_distance", "binary_arithmetic_exact", "linear_equation_exact"],
     "actual_base_variants_generated": 0,
     "actual_parent_records_required": true,
     "parent_record_sha256_required": true,
@@ -57,9 +57,11 @@
     "adaptive_safe_target_planning": true,
     "minimum_per_parent_default": 1,
     "safe_target_per_parent_default": 3,
-    "square_area_exact_product_and_integer_square_root_identity": true
+    "cube_volume_exact_product_and_integer_cube_root_identity": true
   },
   "CI_browser_A4": {
+    "latest_audit_run_id": "32520859725",
+    "audit_result": "success",
     "browser_regression": "success_synthetic_four_environments",
     "real_canonical_browser_regression": "blocked_expected_exact_base_absent",
     "real_A4_six_pdfs": "blocked_expected_exact_base_absent",
@@ -68,24 +70,24 @@
   },
   "branch_commit": {
     "branch": "math-problem-bank-bootstrap",
-    "square_area_engine": "dfc1d1f9725f02c826df311574896a1cc8b9153c",
-    "square_area_unified_integration": "6740af6a780b547d03988165af33362e6279401a",
-    "square_area_tests": "bb6dd16b6c5d18fb21c75b022a330732d821cc75",
-    "square_area_adapter_test": "7d091579efd970ab909b8b82673b259ddbf1a2bd",
-    "square_area_ci_contract": "b3d1aa7651bd6dd91f7b3e16d1b3da4eaa060d21",
-    "unified_ci_persist": "7e8a2148f87ebc6d168be0d70480247084920388",
+    "cube_volume_engine": "bdce741af8ea5339f21e22e5fd7f8c3a65ffbacf",
+    "cube_volume_unified_integration": "3ef721101c1fd4fe22e19b9c3cae5999dc1e88ea",
+    "cube_volume_tests": "e56527ac0fc9925bfe84eef109379daf9c40bb48",
+    "cube_volume_adapter_test": "0464b280b1028a323e9b54f290ab1cdad79ef6dc",
+    "cube_volume_ci_contract": "0f48c00a6e196f91d664973d7051eee9b2d15a96",
+    "unified_ci_persist": "78b4c59697c0dc4f185178a05b792477d457fb30",
     "main_touched": false
   },
-  "現在どの工程にいるか": "Exact canonical BASE ZIP+audit recovery remains the blocker. Unified safe generation now also covers a narrow exact square-area class while retaining fail-closed behavior.",
+  "現在どの工程にいるか": "Exact canonical BASE ZIP+audit recovery remains the blocker. Unified fail-closed safe generation now also covers exact cube-volume parents.",
   "残っている作業": [
     "Continue exact canonical recovery only for genuinely new/changed deltas or newly discovered surfaces.",
     "Recover exact canonical ZIP plus valid MATHBANK_FINAL_AUDIT_V2 and recheck SHA-256.",
-    "Inspect/wire immutable BASE, run adaptive unified safe generation including square_area, materialize fingerprint-bound manual queue and strictly validate manual variants.",
+    "Inspect/wire immutable BASE, run adaptive unified safe generation including cube_volume, materialize fingerprint-bound manual queue and strictly validate manual variants.",
     "Reach 1124/1124 parent coverage, compose dynamic app records, run real four-browser and A4x6 tests, strict release, PUBLICATION_READY and isolated public verification."
   ],
-  "正確停止点": "Canonical recovery remains pair0 at exact Actions state 257/227 with 732 members checked and failures0. square_area passed unified CI, but actual generation remains 0 because exact BASE parents remain unavailable.",
-  "次回どこから開始するか": "Reread live HEAD/checkpoint/variant/CI/actions/auto-complete. If exact canonical pair appears, immediately validate/wire BASE and run adaptive unified generation including square_area plus fingerprint-bound manual queue. Otherwise process only new exact-recovery deltas and continue fail-closed completion work.",
+  "正確停止点": "Canonical recovery remains pair0 at exact Actions state 259/229 with 736 members checked and failures0. cube_volume passed unified CI, but actual generation remains 0 because exact BASE parents remain unavailable.",
+  "次回どこから開始するか": "Reread live HEAD/checkpoint/variant/CI/actions/auto-complete. If exact canonical pair appears, immediately validate/wire BASE and run adaptive unified generation including cube_volume plus fingerprint-bound manual queue. Otherwise process only new exact-recovery deltas and continue fail-closed completion work.",
   "次に進むべき工程": "new exact recovery delta/surface -> exact BASE pair -> SHA/audit validation -> immutable BASE wiring -> adaptive verified auto generation -> fingerprint-bound manual queue -> 1124/1124 -> real browser/A4 -> strict release -> PUBLICATION_READY -> isolated public verification",
-  "recorded_at_utc": "2026-08-21T18:56:00Z",
+  "recorded_at_utc": "2026-08-21T19:57:30Z",
   "resume_rule": "Never reconstruct BASE or generate from unseen parents. Invalid/unverified variants never count as coverage."
 }
