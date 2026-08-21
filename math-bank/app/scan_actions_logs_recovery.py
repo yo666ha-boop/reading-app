@@ -87,31 +87,45 @@ def downloadable(url: str) -> bool:
     return any(host == suffix or host.endswith("." + suffix) for suffix in ALLOWED_DOWNLOAD_HOST_SUFFIXES)
 
 
+def compact_item(item: dict) -> dict:
+    urls = [u for u in (item.get("candidate_urls") or []) if host_of(str(u)) not in INFORMATIONAL_HOSTS]
+    downloads = [d for d in (item.get("downloads") or []) if host_of(str(d.get("url") or "")) not in INFORMATIONAL_HOSTS]
+    download_errors = [
+        d for d in (item.get("candidate_download_errors") or [])
+        if host_of(str(d.get("url") or "")) not in INFORMATIONAL_HOSTS
+    ]
+    return {
+        "run_id": item.get("run_id"), "name": item.get("name"), "status": item.get("status"),
+        "conclusion": item.get("conclusion"), "head_sha": item.get("head_sha"),
+        "updated_at": item.get("updated_at"), "log_members_seen": int(item.get("log_members_seen") or 0),
+        "text_members_scanned": int(item.get("text_members_scanned") or 0),
+        "hint_lines_seen": int(item.get("hint_lines_seen") or 0),
+        "candidate_urls_seen": len(urls),
+        "candidate_urls_downloaded": sum(1 for d in downloads if d.get("sha256")),
+        "candidate_bytes_hashed": sum(int(d.get("bytes") or 0) for d in downloads if d.get("sha256")),
+        "canonical_hits": int(item.get("canonical_hits") or 0),
+        "valid_audit_hits": int(item.get("valid_audit_hits") or 0),
+        "candidate_urls": urls, "downloads": downloads,
+        "candidate_download_errors": download_errors,
+        "errors": item.get("errors") or [], "scan_complete": bool(item.get("scan_complete")),
+    }
+
+
 def load_previous_cache() -> dict[tuple[int, str], dict]:
     try:
         previous = json.loads(OUT_REPORT.read_text(encoding="utf-8"))
     except Exception:
         return {}
     out: dict[tuple[int, str], dict] = {}
-    for item in previous.get("run_cache", previous.get("runs", [])):
-        if not isinstance(item, dict):
+    for raw in previous.get("run_cache", previous.get("runs", [])):
+        if not isinstance(raw, dict):
             continue
+        item = compact_item(raw)
         if item.get("scan_complete") is not True or item.get("errors") or item.get("candidate_download_errors"):
             continue
         key = (int(item.get("run_id") or 0), str(item.get("updated_at") or ""))
-        out[key] = compact_item(item)
+        out[key] = item
     return out
-
-
-def compact_item(item: dict) -> dict:
-    keys = (
-        "run_id", "name", "status", "conclusion", "head_sha", "updated_at",
-        "log_members_seen", "text_members_scanned", "hint_lines_seen",
-        "candidate_urls_seen", "candidate_urls_downloaded", "candidate_bytes_hashed",
-        "canonical_hits", "valid_audit_hits", "candidate_urls", "downloads",
-        "candidate_download_errors", "errors", "scan_complete",
-    )
-    return {k: item.get(k) for k in keys}
 
 
 def scan_text(text: str, member: str, hint_samples: list[dict]) -> tuple[int, set[str], int]:
@@ -210,8 +224,8 @@ def main() -> int:
         "run_cache": [], "recovered_files": [], "completed_at_utc": None,
         "policy": (
             "The scanner's own workflow is excluded because it was created after the canonical artifact and only echoes scanner output. "
-            "github.blog runner notices are informational noise, not recovery candidates. Only completed non-self runs are absence evidence. "
-            "All remaining candidate URLs must be safely classifiable/downloadable; no reconstruction."
+            "github.blog runner notices are informational noise, not recovery candidates, including when inherited from prior cache. "
+            "Only completed non-self runs are absence evidence. All remaining candidate URLs must be safely classifiable/downloadable; no reconstruction."
         ),
     }
     host_counts: Counter[str] = Counter()
@@ -224,7 +238,7 @@ def main() -> int:
     for run in completed:
         key = (int(run.get("id") or 0), str(run.get("updated_at") or ""))
         if key in cache:
-            item = cache[key]
+            item = compact_item(cache[key])
             report["runs_reused"] += 1
         else:
             item = new_item(run)
