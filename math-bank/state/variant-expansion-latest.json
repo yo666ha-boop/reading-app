@@ -31,6 +31,10 @@
   "safe_proportion_scope": "STRICT_SINGLE_EXPLICIT_POSITIVE_INTEGER_A:B=C:D_WITH_EXACTLY_ONE_X; FIGURE_CHOICE_AMBIGUOUS_MULTI_EXPRESSION_FAIL_CLOSED",
   "safe_proportion_commits": {"engine":"a7d6a692ca7c0c56adc2284ca4b7f5b82f70f88a","tests":"4b7ee0f18f8e10f981b3a620b2fc69f07de49263","workflow":"35a665716eeebf8f6a54e5727d2031854748cd5e","ci_persist":"4119c370be5a596163a67a63fa0342a8348e0a26"},
   "safe_proportion_ci": {"run_id":"32452655967","result":"success","actual_base_variants_generated":0},
+  "safe_percentage_engine": "PASS_PARENT_RECALC_PLUS_INDEPENDENT_CROSS_MULTIPLICATION_CHECK",
+  "safe_percentage_scope": "STRICT_SINGLE_YEN_AMOUNT_TIMES_PERCENTAGE_ONLY; DISCOUNT_INCREASE_TAX_INTEREST_CONCENTRATION_FIGURE_CHOICE_AMBIGUOUS_FAIL_CLOSED",
+  "safe_percentage_commits": {"engine":"e7b6bca69906b164a7ac16b2e2cc27ebc8fa4867","tests":"0a5616c9f695e5679d3ca6cb93e5a3b75a0ccef5","workflow":"b3dc3cbc8c3065734221085f33f2b1209a94c834","ci_persist":"d65bf2f928529eee7d5e644cf033bfd5a4d4c2b8"},
+  "safe_percentage_ci": {"run_id":"32456322984","result":"success","actual_base_variants_generated":0},
   "base_recovery": {
     "actions_latest_delta": {"all_artifacts_seen":227,"candidate_artifacts":222,"reused_verified_artifacts":222,"downloaded_artifacts_this_run":0,"members_sha256_checked":699,"bytes_hashed":243793851,"download_failures":0,"canonical_hits":0,"valid_audit_hits":0,"pair_hits":0},
     "actions_prior_full_retained_evidence": {"artifacts":223,"members":696,"bytes_hashed":278159091,"pair_hits":0,"note":"Retained earlier exact evidence; latest incremental candidate universe excludes noncandidate artifacts, so lower latest byte/member totals are not evidence loss."},
@@ -49,10 +53,10 @@
     "latest_saved_auto_complete": {"run_id":"32442125116","result":"success","pair":false,"reused":223,"downloaded":0},
     "policy": "cancelled/timeout/incomplete coverage is never absence evidence; exact-complete unchanged surfaces are not redundantly rescanned"
   },
-  "browser_A4": {"latest_saved_math_audit_run_id":"32448758396","latest_saved_math_audit_result":"success","latest_saved_math_audit_triggering_sha":"4e30747e9c4dd5e3156b59fd267f7f00b3caad2a","synthetic_browser":"PASS_FOUR_ENVIRONMENTS","real_canonical_browser":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT","real_A4_six_pdfs":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT"},
+  "browser_A4": {"latest_saved_math_audit_run_id":"32452637080","latest_saved_math_audit_result":"success","latest_saved_math_audit_triggering_sha":"4b7ee0f18f8e10f981b3a620b2fc69f07de49263","synthetic_browser":"PASS_FOUR_ENVIRONMENTS","real_canonical_browser":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT","real_A4_six_pdfs":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT"},
   "publication_ready": false,
   "branch": "math-problem-bank-bootstrap",
-  "source_head_before_state_write": "4119c370be5a596163a67a63fa0342a8348e0a26",
-  "recorded_at_utc": "2026-08-21T06:02:00Z",
+  "source_head_before_state_write": "d65bf2f928529eee7d5e644cf033bfd5a4d4c2b8",
+  "recorded_at_utc": "2026-08-21T06:56:00Z",
   "next": "Reread live exact recovery delta first. If exact pair appears, validate/wire BASE immediately and generate only from actual fingerprint-bound parents. Otherwise continue only independently provable fail-closed generator shapes; no unseen-parent variants."
 }
