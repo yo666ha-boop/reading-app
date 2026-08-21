@@ -8,6 +8,7 @@ on:
       - 'math-bank/app/test_generate_all_safe_verified_variants.py'
       - 'math-bank/app/test_safe_trapezoid_area_variant_engine.py'
       - 'math-bank/app/test_safe_speed_distance_variant_engine.py'
+      - 'math-bank/app/test_speed_distance_unified_adapter.py'
       - 'math-bank/app/generate_safe_verified_variants.py'
       - 'math-bank/app/safe_*_variant_engine.py'
       - '.github/workflows/math-safe-unified-variant-generation.yml'
@@ -49,13 +50,15 @@ jobs:
             math-bank/app/safe_speed_distance_variant_engine.py \
             math-bank/app/test_generate_all_safe_verified_variants.py \
             math-bank/app/test_safe_trapezoid_area_variant_engine.py \
-            math-bank/app/test_safe_speed_distance_variant_engine.py
+            math-bank/app/test_safe_speed_distance_variant_engine.py \
+            math-bank/app/test_speed_distance_unified_adapter.py
       - name: Run unified positive and negative regression
         working-directory: math-bank/app
         run: |
           python test_generate_all_safe_verified_variants.py
           python test_safe_trapezoid_area_variant_engine.py
           python test_safe_speed_distance_variant_engine.py
+          python test_speed_distance_unified_adapter.py
       - name: Persist verified unified-engine state
         if: success()
         env:
