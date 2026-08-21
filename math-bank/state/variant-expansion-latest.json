@@ -19,25 +19,28 @@
   "expanded_composer": "IMPLEMENTED_WITH_IMMUTABLE_BASE_SNAPSHOT",
   "dynamic_release_contract": "PASS_SOURCE_CONTRACT_WAITING_FOR_REAL_BASE_AND_FULL_COVERAGE",
   "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_TESTS",
+  "unified_safe_generation": {
+    "status": "PASS_CI",
+    "run_id": "32465658533",
+    "triggering_sha": "6ecfea04c9835a8735446b95dff6b7d3531ed5e7",
+    "driver": "generate_all_safe_verified_variants.py",
+    "engines": ["affine","single_draw_probability","proportion","percentage","simple_average","binary_arithmetic_exact","linear_equation_exact"],
+    "actual_base_variants_generated": 0,
+    "actual_parent_records_required": true,
+    "parent_record_sha256_required": true,
+    "strict_validator_promotion_gate": true,
+    "figure_choice_unsupported_fail_closed": true
+  },
   "safe_engines": {
     "binary_arithmetic_and_linear_equation": "PASS_PARENT_RECALC_AND_INDEPENDENT_VERIFY",
     "affine": {"status":"PASS_CI","run_id":"32445176580","actual_base_variants_generated":0},
     "single_draw_probability": {"status":"PASS_CI","run_id":"32448770858","actual_base_variants_generated":0},
     "proportion": {"status":"PASS_CI","run_id":"32452655967","actual_base_variants_generated":0},
     "percentage": {"status":"PASS_CI","run_id":"32456322984","actual_base_variants_generated":0},
-    "simple_average": {
-      "status": "PASS_CI",
-      "run_id": "32461087792",
-      "triggering_sha": "2d94084d9a499ad95ecb8aa985fba87b32b7a2f9",
-      "scope": "strict single explicit 2-to-5 positive-integer list arithmetic mean only",
-      "parent_answer_recalculation": true,
-      "independent_sum_identity_check": true,
-      "weighted_missing_table_frequency_median_mode_figure_choice_ambiguous_fail_closed": true,
-      "actual_base_variants_generated": 0
-    }
+    "simple_average": {"status":"PASS_CI","run_id":"32461087792","scope":"strict single explicit 2-to-5 positive-integer list arithmetic mean only","parent_answer_recalculation":true,"independent_sum_identity_check":true,"weighted_missing_table_frequency_median_mode_figure_choice_ambiguous_fail_closed":true,"actual_base_variants_generated":0}
   },
   "base_recovery": {
-    "actions_latest_confirmed": {"members_sha256_checked":700,"download_failures":0,"pair_hits":0},
+    "actions_latest_confirmed": {"all_artifacts_seen":233,"candidate_artifacts":221,"reused_verified_artifacts":221,"downloaded_artifacts_this_run":0,"members_sha256_checked":704,"download_failures":0,"pair_hits":0},
     "branch_tag_exact": {"readable_blobs":1901,"shards_completed":16,"sha256_checked":1901,"exact_coverage_complete":true,"pair_hits":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "pr_refs_exact": {"refs":4,"readable_blobs":1419,"shards_completed":16,"sha256_checked":1419,"exact_coverage_complete":true,"pair_hits":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "other_owned_repos": "2_repos_x_16_of_16_exact_complete_pair0_no_rerun_needed_without_change",
@@ -49,13 +52,13 @@
     "owner_public_gists": {"gists_seen":0,"exact_coverage_complete":true,"pair_hits":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "file_library_exact_pair": false,
     "google_drive_exact_pair": false,
-    "latest_saved_auto_complete": {"run_id":"32456402885","result":"success","pair":false,"downloaded":2},
+    "latest_saved_auto_complete": {"run_id":"32461192367","result":"success","pair":false,"members_sha256_checked":704,"reused":221,"downloaded":0},
     "policy": "cancelled/timeout/incomplete coverage is never absence evidence; exact-complete unchanged surfaces are not redundantly rescanned"
   },
-  "browser_A4": {"latest_saved_math_audit_run_id":"32456310687","latest_saved_math_audit_result":"success","synthetic_browser":"PASS_FOUR_ENVIRONMENTS","real_canonical_browser":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT","real_A4_six_pdfs":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT"},
+  "browser_A4": {"latest_saved_math_audit_run_id":"32461071773","latest_saved_math_audit_result":"success","synthetic_browser":"PASS_FOUR_ENVIRONMENTS","real_canonical_browser":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT","real_A4_six_pdfs":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT"},
   "publication_ready": false,
   "branch": "math-problem-bank-bootstrap",
-  "average_engine_commits": {"engine":"89376f10718282b442e4204e1119dd61bbb63e37","tests":"563f855ceccea22259fa040a7072a3af50bcbbea","workflow":"2d94084d9a499ad95ecb8aa985fba87b32b7a2f9","ci_persist":"804c947a5d8871634c51da600b90557ce1e597ba"},
-  "recorded_at_utc": "2026-08-21T08:01:00Z",
-  "next": "Reread live exact recovery delta first. If exact pair appears, validate/wire BASE immediately and generate only from actual fingerprint-bound parents. Otherwise continue only independently provable fail-closed generator shapes; no unseen-parent variants."
+  "unified_generation_commits": {"driver":"9bcbe54485fec10ad289221ddb58ca33c64dbd26","tests":"aaf312a7f6b1482d5b874c2feaa72679c6cbb4c8","workflow":"6ecfea04c9835a8735446b95dff6b7d3531ed5e7","ci_persist":"a24cf73827e7b980e3f04c50605fecce74856eab"},
+  "recorded_at_utc": "2026-08-21T09:00:00Z",
+  "next": "Reread live exact recovery delta first. If exact pair appears, validate/wire BASE immediately and run unified safe driver only against actual fingerprint-bound parents; unsupported structures remain manual."
 }
