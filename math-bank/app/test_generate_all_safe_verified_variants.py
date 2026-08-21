@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import copy
 
-from generate_all_safe_verified_variants import generate_parent, manual_queue_entry
+from generate_all_safe_verified_variants import generation_request, generate_parent, manual_queue_entry
 from test_expanded_variant_layer import make_base
 from validate_expanded_variant_layer import parent_record_sha256
 
@@ -51,6 +51,20 @@ def _assert_manual_task(parent: dict, reason: str, missing: int) -> None:
 
 
 def main() -> None:
+    # The production goal is asymmetric: every parent needs >=1 new verified
+    # variant, but deterministic fail-closed parents should reach 2-3. The
+    # planner must therefore attempt 3 for safe parents without inflating the
+    # manual queue for unsupported parents from 1 required variant to 3.
+    assert generation_request(0, minimum_per_parent=1, safe_target_per_parent=3) == (3, 1)
+    assert generation_request(1, minimum_per_parent=1, safe_target_per_parent=3) == (2, 0)
+    assert generation_request(2, minimum_per_parent=1, safe_target_per_parent=3) == (1, 0)
+    assert generation_request(3, minimum_per_parent=1, safe_target_per_parent=3) == (0, 0)
+    try:
+        generation_request(0, minimum_per_parent=2, safe_target_per_parent=1)
+        raise AssertionError("safe target below minimum must fail")
+    except ValueError:
+        pass
+
     base = make_base()
     template = base[0]
 
@@ -112,6 +126,7 @@ def main() -> None:
     changed_task = manual_queue_entry(changed, missing_count=1, reason="manual")
     assert original_task["parent_record_sha256"] != changed_task["parent_record_sha256"]
 
+    print("PASS_UNIFIED_SAFE_VARIANT_ADAPTIVE_1_MINIMUM_3_SAFE_TARGET")
     print("PASS_UNIFIED_SAFE_VARIANT_ALL_SPECIALIZED_ENGINES")
     print("PASS_UNIFIED_SAFE_VARIANT_LEGACY_EXACT_FALLBACK")
     print("PASS_UNIFIED_SAFE_VARIANT_WRONG_ANSWER_FIGURE_CHOICE_FAIL_CLOSED")
