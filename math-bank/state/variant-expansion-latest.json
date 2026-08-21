@@ -22,10 +22,10 @@
   "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_TESTS",
   "unified_safe_generation": {
     "status": "PASS_CI",
-    "run_id": "32479761032",
-    "triggering_sha": "9356bb5fc1675deef396669dff1487d23bba413b",
+    "run_id": "32484469793",
+    "triggering_sha": "f5ed194e27d821a1d41c41438940ae4047448f22",
     "driver": "generate_all_safe_verified_variants.py",
-    "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "binary_arithmetic_exact", "linear_equation_exact"],
+    "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "rectangle_area", "binary_arithmetic_exact", "linear_equation_exact"],
     "actual_base_variants_generated": 0,
     "actual_parent_records_required": true,
     "parent_record_sha256_required": true,
@@ -37,7 +37,8 @@
     "adaptive_safe_target_planning": true,
     "minimum_per_parent_default": 1,
     "safe_target_per_parent_default": 3,
-    "unsupported_manual_shortfall_only": true
+    "unsupported_manual_shortfall_only": true,
+    "rectangle_area_exact_product_and_inverse_identity": true
   },
   "manual_queue_contract": {
     "status": "PASS_CI",
@@ -49,7 +50,7 @@
     "validated_manual_variant_required_before_parent_coverage": true
   },
   "base_recovery": {
-    "actions_latest_confirmed": {"all_artifacts_seen": 241, "candidate_artifacts": 229, "reused_verified_artifacts": 227, "downloaded_artifacts_this_run": 2, "members_sha256_checked": 718, "member_bytes_hashed": 195288966, "download_failures": 0, "pair_hits": 0},
+    "actions_latest_confirmed": {"all_artifacts_seen": 242, "candidate_artifacts": 229, "reused_verified_artifacts": 229, "downloaded_artifacts_this_run": 0, "members_sha256_checked": 719, "member_bytes_hashed": 188021176, "download_failures": 0, "pair_hits": 0},
     "source_archive_actions_exact": {"artifacts_seen": 239, "candidate_artifacts": 227, "members_sha256_checked": 715, "member_bytes_hashed": 195163315, "download_failures": 0, "oversize_members_skipped": 0, "errors": 0, "exact_coverage_complete": true, "unique_target_hits": 0, "all_three_recovered": false, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE", "incremental_scanner_commit": "52afaa25447c6583643168aa4d38ff3d877cf3fb"},
     "branch_tag_exact": {"readable_blobs": 1901, "shards_completed": 16, "sha256_checked": 1901, "exact_coverage_complete": true, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "pr_refs_exact": {"refs": 4, "readable_blobs": 1419, "shards_completed": 16, "sha256_checked": 1419, "exact_coverage_complete": true, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
@@ -62,18 +63,19 @@
     "owner_public_gists": {"gists_seen": 0, "exact_coverage_complete": true, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "file_library_exact_pair": false,
     "google_drive_exact_pair": false,
-    "latest_saved_auto_complete": {"run_id": "32475203047", "result": "success", "pair": false, "members_sha256_checked": 718, "reused": 227, "downloaded": 2},
+    "latest_saved_auto_complete": {"run_id": "32479872927", "result": "success", "pair": false, "members_sha256_checked": 719, "reused": 229, "downloaded": 0},
     "policy": "cancelled/timeout/incomplete coverage is never absence evidence; exact-complete unchanged surfaces are not redundantly rescanned; no partial diagnostic promotion"
   },
-  "browser_A4": {"latest_saved_math_audit_run_id": "32470309984", "latest_saved_math_audit_result": "success", "synthetic_browser": "PASS_FOUR_ENVIRONMENTS", "real_canonical_browser": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT", "real_A4_six_pdfs": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT"},
+  "browser_A4": {"latest_saved_math_audit_run_id": "32479726993", "latest_saved_math_audit_result": "success", "synthetic_browser": "PASS_FOUR_ENVIRONMENTS", "real_canonical_browser": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT", "real_A4_six_pdfs": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT"},
   "publication_ready": false,
   "branch": "math-problem-bank-bootstrap",
   "latest_commits": {
-    "adaptive_safe_target_driver": "7c87627d9422942dd5d74527f77de163170a4c71",
-    "adaptive_safe_target_tests": "81e3945f2acd88cdb8b0903f299576278f90a4de",
-    "adaptive_safe_target_ci_contract": "9356bb5fc1675deef396669dff1487d23bba413b",
-    "source_archive_incremental_scanner": "52afaa25447c6583643168aa4d38ff3d877cf3fb"
+    "rectangle_area_engine": "4c8d760d46e7881fdc542b5aa1845c4bf375e129",
+    "rectangle_area_unified_integration": "b62a38ce8bebe0e15818650a1fce174249b34b56",
+    "rectangle_area_regression_tests": "fdb56827362583e937f2d4e89e31d4e761fa1983",
+    "rectangle_area_ci_contract": "f5ed194e27d821a1d41c41438940ae4047448f22",
+    "unified_ci_persist": "9b9ceb49be0e4b91018d9929d150571497e0e9e9"
   },
-  "recorded_at_utc": "2026-08-21T12:00:30Z",
-  "next": "Reread live exact recovery delta first. If exact pair appears, validate/wire BASE immediately. Then run adaptive unified generation so every parent gets >=1 while deterministic safe parents reach up to 3, and materialize fingerprint-bound manual tasks only for true minimum shortfalls."
+  "recorded_at_utc": "2026-08-21T12:59:00Z",
+  "next": "Reread live exact recovery delta first. If exact pair appears, validate/wire BASE immediately. Then run adaptive unified generation including the new exact rectangle-area engine so every parent gets >=1 while deterministic safe parents reach up to 3, and materialize fingerprint-bound manual tasks only for true minimum shortfalls."
 }
