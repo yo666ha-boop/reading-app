@@ -22,6 +22,7 @@ from safe_affine_variant_engine import generate as generate_affine
 from safe_average_variant_engine import generate as generate_average
 from safe_percentage_variant_engine import generate as generate_percentage
 from safe_proportion_variant_engine import generate as generate_proportion
+from safe_rectangle_area_variant_engine import generate as generate_rectangle_area
 from safe_single_draw_probability_variant_engine import generate as generate_probability
 from validate_app_records import load_records
 from validate_expanded_variant_layer import (
@@ -40,6 +41,7 @@ SPECIALIZED_ENGINES = (
     ("proportion", generate_proportion),
     ("percentage", generate_percentage),
     ("simple_average", generate_average),
+    ("rectangle_area", generate_rectangle_area),
 )
 
 
