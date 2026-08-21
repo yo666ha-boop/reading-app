@@ -97,6 +97,7 @@ jobs:
           p=Path('math-bank/state/unified-safe-variant-generation-latest.json')
           payload={
             'status':'PASS_CI',
+            'persist_schema_version':2,
             'run_id':os.environ['RUN_ID'],
             'triggering_sha':os.environ['TRIGGERING_SHA'],
             'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
@@ -116,6 +117,7 @@ jobs:
             'unsupported_manual_shortfall_only':True,
             'rectangle_area_exact_product_and_inverse_identity':True,
             'rectangle_perimeter_exact_double_sum_and_two_inverse_identities':True,
+            'rectangle_perimeter_direct_question_wording_supported':True,
             'rectangle_perimeter_parent_metadata_preservation_required':True,
             'square_area_exact_product_and_integer_square_root_identity':True,
             'triangle_area_exact_half_product_and_doubled_area_identity':True,
@@ -132,8 +134,8 @@ jobs:
           git add -- math-bank/state/unified-safe-variant-generation-latest.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m 'record unified safe variant generation CI'
-          for i in 1 2 3 4; do
+          for i in 1 2 3 4 5 6; do
             git pull --rebase origin math-problem-bank-bootstrap && git push origin HEAD:math-problem-bank-bootstrap && exit 0
-            sleep $((i*3))
+            sleep $((i*4))
           done
           exit 1
