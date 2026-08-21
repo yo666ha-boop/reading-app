@@ -51,10 +51,6 @@ def _assert_manual_task(parent: dict, reason: str, missing: int) -> None:
 
 
 def main() -> None:
-    # The production goal is asymmetric: every parent needs >=1 new verified
-    # variant, but deterministic fail-closed parents should reach 2-3. The
-    # planner must therefore attempt 3 for safe parents without inflating the
-    # manual queue for unsupported parents from 1 required variant to 3.
     assert generation_request(0, minimum_per_parent=1, safe_target_per_parent=3) == (3, 1)
     assert generation_request(1, minimum_per_parent=1, safe_target_per_parent=3) == (2, 0)
     assert generation_request(2, minimum_per_parent=1, safe_target_per_parent=3) == (1, 0)
@@ -88,6 +84,9 @@ def main() -> None:
     average = _parent(template, pid="U-AVG", question="12、15、18の平均を求めなさい。", answer="15")
     _assert_generated(average, "simple_average")
 
+    rectangle = _parent(template, pid="U-RECT", question="たて4cm、横6cmの長方形の面積を求めなさい。", answer="24cm²")
+    _assert_generated(rectangle, "rectangle_area")
+
     arithmetic = _parent(template, pid="U-ARITH", question="(-3)+8 を計算しなさい。", answer="5")
     rows, prov, reason = generate_parent(arithmetic, 2, NOW)
     assert len(rows) == len(prov) == 2 and reason == "legacy:binary_arithmetic_exact"
@@ -101,6 +100,23 @@ def main() -> None:
     rows, prov, reason = generate_parent(wrong, 1, NOW)
     assert rows == [] and prov == [] and reason.startswith("unsupported_all_safe_engines:")
     _assert_manual_task(wrong, reason, 1)
+
+    rectangle_wrong = copy.deepcopy(rectangle)
+    rectangle_wrong["answer"] = "25cm²"
+    rows, prov, reason = generate_parent(rectangle_wrong, 1, NOW)
+    assert rows == [] and prov == [] and "rectangle_area_parent_not_exactly_parsed_and_verified" in reason
+
+    rectangle_perimeter = copy.deepcopy(rectangle)
+    rectangle_perimeter["question"] = "たて4cm、横6cmの長方形の周の長さを求めなさい。"
+    rectangle_perimeter["answer"] = "20cm"
+    rows, prov, reason = generate_parent(rectangle_perimeter, 1, NOW)
+    assert rows == [] and prov == [] and "rectangle_area_parent_not_exactly_parsed_and_verified" in reason
+
+    rectangle_mixed = copy.deepcopy(rectangle)
+    rectangle_mixed["question"] = "たて4cm、横6mの長方形の面積を求めなさい。"
+    rectangle_mixed["answer"] = "2400cm²"
+    rows, prov, reason = generate_parent(rectangle_mixed, 1, NOW)
+    assert rows == [] and prov == [] and "rectangle_area_parent_not_exactly_parsed_and_verified" in reason
 
     figure = copy.deepcopy(average)
     figure["figure_refs"] = ["figures/unknown.png"]
@@ -118,8 +134,6 @@ def main() -> None:
     task = manual_queue_entry(choice, missing_count=2, reason=reason)
     assert task["has_choices"] is True and task["choice_count"] == 4
 
-    # Fingerprint binding must detect a changed parent instead of silently
-    # carrying an old manual task forward.
     original_task = manual_queue_entry(figure, missing_count=1, reason="manual")
     changed = copy.deepcopy(figure)
     changed["answer"] = "16"
@@ -127,9 +141,9 @@ def main() -> None:
     assert original_task["parent_record_sha256"] != changed_task["parent_record_sha256"]
 
     print("PASS_UNIFIED_SAFE_VARIANT_ADAPTIVE_1_MINIMUM_3_SAFE_TARGET")
-    print("PASS_UNIFIED_SAFE_VARIANT_ALL_SPECIALIZED_ENGINES")
+    print("PASS_UNIFIED_SAFE_VARIANT_ALL_SPECIALIZED_ENGINES_INCLUDING_RECTANGLE_AREA")
     print("PASS_UNIFIED_SAFE_VARIANT_LEGACY_EXACT_FALLBACK")
-    print("PASS_UNIFIED_SAFE_VARIANT_WRONG_ANSWER_FIGURE_CHOICE_FAIL_CLOSED")
+    print("PASS_UNIFIED_SAFE_VARIANT_WRONG_ANSWER_RECTANGLE_PERIMETER_MIXED_UNIT_FIGURE_CHOICE_FAIL_CLOSED")
     print("PASS_UNIFIED_SAFE_VARIANT_FINGERPRINT_BOUND_MANUAL_QUEUE")
 
 
