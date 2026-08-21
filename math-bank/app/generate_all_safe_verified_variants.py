@@ -2,7 +2,7 @@ from __future__ import annotations
 
 """Unified fail-closed driver for all proven safe math variant engines.
 
-This driver only operates on actual BASE records loaded from disk.  It never
+This driver only operates on actual BASE records loaded from disk. It never
 constructs a parent record and never promotes a candidate unless the repository
 strict expanded-layer validator accepts the resulting full layer.
 """
@@ -93,8 +93,6 @@ def _adapt_specialized(parent: dict, count: int, now: str) -> tuple[list[dict], 
 
     legacy_variants, legacy_prov, legacy_reason = generate_legacy_exact(parent, count, now)
     if legacy_variants:
-        # Rewrite generator attribution so the final evidence identifies the
-        # actual unified execution path while preserving all exact proof text.
         for p in legacy_prov:
             p["generator"] = "generate_all_safe_verified_variants.py"
             p["generation_method"] = "legacy_exact_adapter:" + str(p.get("generation_method") or legacy_reason)
@@ -110,6 +108,35 @@ def generate_parent(parent: dict, count: int, now: str) -> tuple[list[dict], lis
     return _adapt_specialized(parent, count, now)
 
 
+def manual_queue_entry(parent: dict, *, missing_count: int, reason: str) -> dict:
+    """Create a review task bound to the exact parent that was actually read.
+
+    The queue deliberately contains no invented variant text. A human/manual
+    path must reopen the current BASE parent and its figures/choices, then emit
+    normal provenance that the strict expanded validator can verify.
+    """
+    source = parent.get("source") if isinstance(parent.get("source"), dict) else {}
+    taxonomy = parent.get("taxonomy") if isinstance(parent.get("taxonomy"), dict) else {}
+    return {
+        "parent_id": parent["id"],
+        "parent_record_sha256": parent_record_sha256(parent),
+        "missing_verified_variants": missing_count,
+        "reason": reason,
+        "grade": parent.get("grade"),
+        "genre": parent.get("genre"),
+        "unit": parent.get("unit"),
+        "skill": parent.get("skill"),
+        "difficulty": parent.get("difficulty"),
+        "format": parent.get("format"),
+        "taxonomy": taxonomy,
+        "source_name": source.get("name") or source.get("material") or source.get("book"),
+        "has_choices": bool(parent.get("choices")),
+        "choice_count": len(parent.get("choices") or []),
+        "figure_refs": list(parent.get("figure_refs") or []),
+        "manual_policy": "Read this exact fingerprint-bound parent and all referenced figures/choices; do not reconstruct unseen content. Promotion still requires the normal strict expanded validator.",
+    }
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("base")
@@ -117,6 +144,7 @@ def main() -> int:
     ap.add_argument("output")
     ap.add_argument("--target-per-parent", type=int, default=1, choices=(1, 2, 3))
     ap.add_argument("--report")
+    ap.add_argument("--manual-queue")
     ns = ap.parse_args()
 
     base = load_records(Path(ns.base))
@@ -131,6 +159,7 @@ def main() -> int:
     now = datetime.now(timezone.utc).isoformat()
     generated: list[dict] = []
     generated_provenance: list[dict] = []
+    manual_queue: list[dict] = []
     reasons = Counter()
     for parent in originals:
         need = max(0, ns.target_per_parent - counts[parent["id"]])
@@ -139,6 +168,9 @@ def main() -> int:
             continue
         new_rows, new_prov, reason = generate_parent(parent, need, now)
         reasons[reason] += 1
+        if not new_rows:
+            manual_queue.append(manual_queue_entry(parent, missing_count=need, reason=reason))
+            continue
         generated.extend(new_rows)
         generated_provenance.extend(new_prov)
 
@@ -156,16 +188,30 @@ def main() -> int:
     )
 
     Path(ns.output).write_text(json.dumps(out_layer, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if ns.manual_queue:
+        queue_payload = {
+            "schema_version": "1.0",
+            "base_canonical_sha256": BASE_CANONICAL_SHA256,
+            "recorded_at_utc": now,
+            "policy": "Actual BASE parents only; every task is fingerprint-bound and contains no generated question. Manual output must pass the same strict validator before counting as coverage.",
+            "target_per_parent": ns.target_per_parent,
+            "manual_parent_count": len(manual_queue),
+            "tasks": manual_queue,
+        }
+        Path(ns.manual_queue).write_text(json.dumps(queue_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
     report = {
         "status": "PASS",
         "recorded_at_utc": now,
-        "policy": "Actual BASE parents only. Specialized exact engines first, exact arithmetic/linear fallback second, unsupported structures remain manual. Strict expanded validator is the promotion gate.",
+        "policy": "Actual BASE parents only. Specialized exact engines first, exact arithmetic/linear fallback second, unsupported structures become fingerprint-bound manual tasks. Strict expanded validator is the promotion gate.",
         "base_originals": len(originals),
         "existing_expanded_variants": len(variants),
         "newly_generated_verified_variants": len(generated),
         "expanded_total": len(out_layer["variants"]),
         "expanded_parent_coverage": final_report["expanded_parent_coverage"],
         "target_per_parent": ns.target_per_parent,
+        "manual_parent_count": len(manual_queue),
+        "manual_missing_variant_count": sum(row["missing_verified_variants"] for row in manual_queue),
         "generation_reason_counts": dict(sorted(reasons.items())),
     }
     if ns.report:
