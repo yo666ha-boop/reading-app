@@ -90,6 +90,9 @@ def main() -> None:
     triangle = _parent(template, pid="U-TRI", question="底辺8cm、高さ6cmの三角形の面積を求めなさい。", answer="24cm²")
     _assert_generated(triangle, "triangle_area")
 
+    parallelogram = _parent(template, pid="U-PARA", question="底辺8cm、高さ5cmの平行四辺形の面積を求めなさい。", answer="40cm²")
+    _assert_generated(parallelogram, "parallelogram_area")
+
     arithmetic = _parent(template, pid="U-ARITH", question="(-3)+8 を計算しなさい。", answer="5")
     rows, prov, reason = generate_parent(arithmetic, 2, NOW)
     assert len(rows) == len(prov) == 2 and reason == "legacy:binary_arithmetic_exact"
@@ -138,6 +141,23 @@ def main() -> None:
     rows, prov, reason = generate_parent(triangle_mixed, 1, NOW)
     assert rows == [] and prov == [] and "triangle_area_parent_not_exactly_parsed_and_verified" in reason
 
+    parallelogram_wrong = copy.deepcopy(parallelogram)
+    parallelogram_wrong["answer"] = "41cm²"
+    rows, prov, reason = generate_parent(parallelogram_wrong, 1, NOW)
+    assert rows == [] and prov == [] and "parallelogram_area_parent_not_exactly_parsed_and_verified" in reason
+
+    parallelogram_perimeter = copy.deepcopy(parallelogram)
+    parallelogram_perimeter["question"] = "底辺8cm、高さ5cmの平行四辺形の周の長さを求めなさい。"
+    parallelogram_perimeter["answer"] = "26cm"
+    rows, prov, reason = generate_parent(parallelogram_perimeter, 1, NOW)
+    assert rows == [] and prov == [] and "parallelogram_area_parent_not_exactly_parsed_and_verified" in reason
+
+    parallelogram_mixed = copy.deepcopy(parallelogram)
+    parallelogram_mixed["question"] = "底辺8cm、高さ5mの平行四辺形の面積を求めなさい。"
+    parallelogram_mixed["answer"] = "4000cm²"
+    rows, prov, reason = generate_parent(parallelogram_mixed, 1, NOW)
+    assert rows == [] and prov == [] and "parallelogram_area_parent_not_exactly_parsed_and_verified" in reason
+
     figure = copy.deepcopy(average)
     figure["figure_refs"] = ["figures/unknown.png"]
     rows, prov, reason = generate_parent(figure, 1, NOW)
@@ -161,7 +181,7 @@ def main() -> None:
     assert original_task["parent_record_sha256"] != changed_task["parent_record_sha256"]
 
     print("PASS_UNIFIED_SAFE_VARIANT_ADAPTIVE_1_MINIMUM_3_SAFE_TARGET")
-    print("PASS_UNIFIED_SAFE_VARIANT_ALL_SPECIALIZED_ENGINES_INCLUDING_RECTANGLE_AND_TRIANGLE_AREA")
+    print("PASS_UNIFIED_SAFE_VARIANT_ALL_SPECIALIZED_ENGINES_INCLUDING_RECTANGLE_TRIANGLE_PARALLELOGRAM_AREA")
     print("PASS_UNIFIED_SAFE_VARIANT_LEGACY_EXACT_FALLBACK")
     print("PASS_UNIFIED_SAFE_VARIANT_WRONG_ANSWER_GEOMETRY_MIXED_UNIT_FIGURE_CHOICE_FAIL_CLOSED")
     print("PASS_UNIFIED_SAFE_VARIANT_FINGERPRINT_BOUND_MANUAL_QUEUE")
