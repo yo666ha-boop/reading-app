@@ -5,21 +5,50 @@
   "expected_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "required_paired_audit": "MATHBANK_FINAL_AUDIT_V2.json",
   "created_since": "2026-08-19T00:00:00Z",
-  "all_artifacts_seen": 223,
-  "candidate_artifacts": 223,
-  "reused_verified_artifacts": 223,
-  "downloaded_artifacts_this_run": 0,
+  "all_artifacts_seen": 224,
+  "candidate_artifacts": 220,
+  "reused_verified_artifacts": 219,
+  "downloaded_artifacts_this_run": 1,
   "canonical_hits": 0,
   "audit_name_hits": 0,
   "valid_audit_hits": 0,
   "paired_recovery_hits": 0,
   "recovery_hint_hits": 0,
   "download_failures": 0,
-  "all_members_sha256_checked": 696,
-  "all_member_bytes_hashed": 278159091,
+  "all_members_sha256_checked": 694,
+  "all_member_bytes_hashed": 250698021,
   "zip_signature_members": 3,
   "oversize_members_skipped": 0,
   "artifacts": [
+    {
+      "artifact_id": 9432793534,
+      "name": "math-browser-regression-diagnostics",
+      "size_in_bytes": 1009,
+      "created_at": "2026-08-21T03:05:28Z",
+      "updated_at": "2026-08-21T03:05:28Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 32442058249,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "a09e9088c33f577be312b25f8dc40ac3f6a9863d"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 2,
+        "members_sha256_checked": 2,
+        "member_bytes_hashed": 2610,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1009
+    },
     {
       "artifact_id": 9431835447,
       "name": "math-browser-regression-diagnostics",
@@ -6198,64 +6227,6 @@
       "archive_download_bytes": 656
     },
     {
-      "artifact_id": 9392099573,
-      "name": "github-pages",
-      "size_in_bytes": 1422684,
-      "created_at": "2026-08-20T03:25:54Z",
-      "updated_at": "2026-08-20T03:25:54Z",
-      "expired": false,
-      "workflow_run": {
-        "id": 32328169044,
-        "repository_id": 1211918933,
-        "head_repository_id": 1211918933,
-        "head_branch": "main",
-        "head_sha": "32a0f554e1cde3f93f26506a2764b182f7cec98e"
-      },
-      "downloaded": true,
-      "interesting_members": [],
-      "canonical_sha_hits": [],
-      "valid_final_audit_hits": [],
-      "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 1,
-        "members_sha256_checked": 1,
-        "member_bytes_hashed": 6881280,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 1422684
-    },
-    {
-      "artifact_id": 9392063169,
-      "name": "github-pages",
-      "size_in_bytes": 1416566,
-      "created_at": "2026-08-20T03:24:03Z",
-      "updated_at": "2026-08-20T03:24:03Z",
-      "expired": false,
-      "workflow_run": {
-        "id": 32328064537,
-        "repository_id": 1211918933,
-        "head_repository_id": 1211918933,
-        "head_branch": "main",
-        "head_sha": "8a4a5eed1909b71afbaa69467392a191ea0deee5"
-      },
-      "downloaded": true,
-      "interesting_members": [],
-      "canonical_sha_hits": [],
-      "valid_final_audit_hits": [],
-      "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 1,
-        "members_sha256_checked": 1,
-        "member_bytes_hashed": 6860800,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 1416566
-    },
-    {
       "artifact_id": 9392059404,
       "name": "math-browser-regression-diagnostics",
       "size_in_bytes": 656,
@@ -6312,64 +6283,6 @@
       },
       "errors": [],
       "archive_download_bytes": 656
-    },
-    {
-      "artifact_id": 9392001109,
-      "name": "github-pages",
-      "size_in_bytes": 1416611,
-      "created_at": "2026-08-20T03:21:06Z",
-      "updated_at": "2026-08-20T03:21:06Z",
-      "expired": false,
-      "workflow_run": {
-        "id": 32327885987,
-        "repository_id": 1211918933,
-        "head_repository_id": 1211918933,
-        "head_branch": "main",
-        "head_sha": "ff17af8932c8f181b39572b4c431ba86691c7b1d"
-      },
-      "downloaded": true,
-      "interesting_members": [],
-      "canonical_sha_hits": [],
-      "valid_final_audit_hits": [],
-      "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 1,
-        "members_sha256_checked": 1,
-        "member_bytes_hashed": 6860800,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 1416611
-    },
-    {
-      "artifact_id": 9391986371,
-      "name": "github-pages",
-      "size_in_bytes": 1415364,
-      "created_at": "2026-08-20T03:20:22Z",
-      "updated_at": "2026-08-20T03:20:22Z",
-      "expired": false,
-      "workflow_run": {
-        "id": 32327847656,
-        "repository_id": 1211918933,
-        "head_repository_id": 1211918933,
-        "head_branch": "main",
-        "head_sha": "64fec6313bc2f3eb0956ce20601054e9354c3253"
-      },
-      "downloaded": true,
-      "interesting_members": [],
-      "canonical_sha_hits": [],
-      "valid_final_audit_hits": [],
-      "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 1,
-        "members_sha256_checked": 1,
-        "member_bytes_hashed": 6860800,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 1415364
     },
     {
       "artifact_id": 9391980496,
@@ -6513,6 +6426,6 @@
     }
   ],
   "recovered_files": [],
-  "completed_at_utc": "2026-08-21T03:05:28.379440+00:00",
+  "completed_at_utc": "2026-08-21T03:56:39.235615+00:00",
   "policy": "Artifact results are reused only when artifact id, size, and updated_at match exactly, the previous download completed without errors, and the artifact was not pair-eligible. New or changed artifacts are downloaded and every member under the size cap is SHA-256 checked. Exact immutable SHA plus one unambiguous valid final audit from the same artifact remains required; no reconstruction."
 }
