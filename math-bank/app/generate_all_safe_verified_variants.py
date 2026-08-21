@@ -25,6 +25,7 @@ from safe_percentage_variant_engine import generate as generate_percentage
 from safe_proportion_variant_engine import generate as generate_proportion
 from safe_rectangle_area_variant_engine import generate as generate_rectangle_area
 from safe_single_draw_probability_variant_engine import generate as generate_probability
+from safe_speed_distance_variant_engine import generate as generate_speed_distance
 from safe_trapezoid_area_variant_engine import generate as generate_trapezoid_area
 from safe_triangle_area_variant_engine import generate as generate_triangle_area
 from validate_app_records import load_records
@@ -48,6 +49,7 @@ SPECIALIZED_ENGINES = (
     ("triangle_area", generate_triangle_area),
     ("parallelogram_area", generate_parallelogram_area),
     ("trapezoid_area", generate_trapezoid_area),
+    ("speed_distance", generate_speed_distance),
 )
 
 
@@ -117,14 +119,6 @@ def generate_parent(parent: dict, count: int, now: str) -> tuple[list[dict], lis
 
 
 def generation_request(existing_count: int, *, minimum_per_parent: int, safe_target_per_parent: int) -> tuple[int, int]:
-    """Plan generation without inflating the manual queue.
-
-    Every parent must reach ``minimum_per_parent``. Parents accepted by a
-    deterministic fail-closed engine are *attempted* up to
-    ``safe_target_per_parent``. If no safe engine accepts the parent, only the
-    minimum shortfall becomes manual work; unsupported parents are never forced
-    to have 2-3 hand-written variants merely because safe parents can.
-    """
     if existing_count < 0:
         raise ValueError("existing_count must be non-negative")
     if minimum_per_parent not in (1, 2, 3):
@@ -133,19 +127,12 @@ def generation_request(existing_count: int, *, minimum_per_parent: int, safe_tar
         raise ValueError("safe_target_per_parent must be 1, 2, or 3")
     if safe_target_per_parent < minimum_per_parent:
         raise ValueError("safe_target_per_parent must be >= minimum_per_parent")
-
     attempt_count = max(0, safe_target_per_parent - existing_count)
     manual_missing_if_unsupported = max(0, minimum_per_parent - existing_count)
     return attempt_count, manual_missing_if_unsupported
 
 
 def manual_queue_entry(parent: dict, *, missing_count: int, reason: str) -> dict:
-    """Create a review task bound to the exact parent that was actually read.
-
-    The queue deliberately contains no invented variant text. A human/manual
-    path must reopen the current BASE parent and its figures/choices, then emit
-    normal provenance that the strict expanded validator can verify.
-    """
     source = parent.get("source") if isinstance(parent.get("source"), dict) else {}
     taxonomy = parent.get("taxonomy") if isinstance(parent.get("taxonomy"), dict) else {}
     return {
@@ -173,24 +160,11 @@ def main() -> int:
     ap.add_argument("base")
     ap.add_argument("expanded")
     ap.add_argument("output")
-    ap.add_argument(
-        "--target-per-parent",
-        type=int,
-        default=1,
-        choices=(1, 2, 3),
-        help="Minimum verified new variants required for every original parent.",
-    )
-    ap.add_argument(
-        "--safe-target-per-parent",
-        type=int,
-        default=3,
-        choices=(1, 2, 3),
-        help="Target for parents accepted by a deterministic fail-closed engine.",
-    )
+    ap.add_argument("--target-per-parent", type=int, default=1, choices=(1, 2, 3))
+    ap.add_argument("--safe-target-per-parent", type=int, default=3, choices=(1, 2, 3))
     ap.add_argument("--report")
     ap.add_argument("--manual-queue")
     ns = ap.parse_args()
-
     if ns.safe_target_per_parent < ns.target_per_parent:
         ap.error("--safe-target-per-parent must be >= --target-per-parent")
 
@@ -198,7 +172,6 @@ def main() -> int:
     _, originals, _ = base_gate(base)
     variants, provenance_rows, _ = load_layer(Path(ns.expanded))
     validate_layer(base, variants, provenance_rows, require_full_parent_coverage=False)
-
     counts = defaultdict(int)
     for row in variants:
         counts[row["source"]["parent_id"]] += 1
@@ -210,15 +183,10 @@ def main() -> int:
     reasons = Counter()
     safe_target_parents = 0
     for parent in originals:
-        attempt_need, manual_need = generation_request(
-            counts[parent["id"]],
-            minimum_per_parent=ns.target_per_parent,
-            safe_target_per_parent=ns.safe_target_per_parent,
-        )
+        attempt_need, manual_need = generation_request(counts[parent["id"]], minimum_per_parent=ns.target_per_parent, safe_target_per_parent=ns.safe_target_per_parent)
         if attempt_need == 0:
             reasons["already_at_safe_target"] += 1
             continue
-
         new_rows, new_prov, reason = generate_parent(parent, attempt_need, now)
         reasons[reason] += 1
         if not new_rows:
@@ -227,54 +195,17 @@ def main() -> int:
             else:
                 reasons["unsupported_but_minimum_already_satisfied"] += 1
             continue
-
         safe_target_parents += 1
         generated.extend(new_rows)
         generated_provenance.extend(new_prov)
 
-    out_layer = {
-        "schema_version": "1.0",
-        "base_canonical_sha256": BASE_CANONICAL_SHA256,
-        "variants": variants + generated,
-        "provenance": provenance_rows + generated_provenance,
-    }
-    final_report = validate_layer(
-        base,
-        out_layer["variants"],
-        out_layer["provenance"],
-        require_full_parent_coverage=False,
-    )
-
+    out_layer = {"schema_version": "1.0", "base_canonical_sha256": BASE_CANONICAL_SHA256, "variants": variants + generated, "provenance": provenance_rows + generated_provenance}
+    final_report = validate_layer(base, out_layer["variants"], out_layer["provenance"], require_full_parent_coverage=False)
     Path(ns.output).write_text(json.dumps(out_layer, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if ns.manual_queue:
-        queue_payload = {
-            "schema_version": "1.0",
-            "base_canonical_sha256": BASE_CANONICAL_SHA256,
-            "recorded_at_utc": now,
-            "policy": "Actual BASE parents only; every task is fingerprint-bound and contains no generated question. Manual output must pass the same strict validator before counting as coverage.",
-            "minimum_per_parent": ns.target_per_parent,
-            "safe_target_per_parent": ns.safe_target_per_parent,
-            "manual_parent_count": len(manual_queue),
-            "tasks": manual_queue,
-        }
+        queue_payload = {"schema_version": "1.0", "base_canonical_sha256": BASE_CANONICAL_SHA256, "recorded_at_utc": now, "policy": "Actual BASE parents only; every task is fingerprint-bound and contains no generated question. Manual output must pass the same strict validator before counting as coverage.", "minimum_per_parent": ns.target_per_parent, "safe_target_per_parent": ns.safe_target_per_parent, "manual_parent_count": len(manual_queue), "tasks": manual_queue}
         Path(ns.manual_queue).write_text(json.dumps(queue_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-    report = {
-        "status": "PASS",
-        "recorded_at_utc": now,
-        "policy": "Actual BASE parents only. Every parent requires the minimum target; deterministic safe parents are expanded toward the safe target; unsupported structures become fingerprint-bound manual tasks only for their minimum shortfall. Strict expanded validator is the promotion gate.",
-        "base_originals": len(originals),
-        "existing_expanded_variants": len(variants),
-        "newly_generated_verified_variants": len(generated),
-        "expanded_total": len(out_layer["variants"]),
-        "expanded_parent_coverage": final_report["expanded_parent_coverage"],
-        "minimum_per_parent": ns.target_per_parent,
-        "safe_target_per_parent": ns.safe_target_per_parent,
-        "safe_target_parents_generated_this_run": safe_target_parents,
-        "manual_parent_count": len(manual_queue),
-        "manual_missing_variant_count": sum(row["missing_verified_variants"] for row in manual_queue),
-        "generation_reason_counts": dict(sorted(reasons.items())),
-    }
+    report = {"status": "PASS", "recorded_at_utc": now, "base_originals": len(originals), "existing_expanded_variants": len(variants), "newly_generated_verified_variants": len(generated), "expanded_total": len(out_layer["variants"]), "expanded_parent_coverage": final_report["expanded_parent_coverage"], "minimum_per_parent": ns.target_per_parent, "safe_target_per_parent": ns.safe_target_per_parent, "safe_target_parents_generated_this_run": safe_target_parents, "manual_parent_count": len(manual_queue), "manual_missing_variant_count": sum(row["missing_verified_variants"] for row in manual_queue), "generation_reason_counts": dict(sorted(reasons.items()))}
     if ns.report:
         Path(ns.report).write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
