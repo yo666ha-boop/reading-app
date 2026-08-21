@@ -44,21 +44,25 @@
     "validated_manual_variant_required_before_parent_coverage": true
   },
   "base_recovery": {
-    "actions_latest_confirmed": {"all_artifacts_seen": 237, "candidate_artifacts": 225, "reused_verified_artifacts": 225, "downloaded_artifacts_this_run": 0, "members_sha256_checked": 712, "download_failures": 0, "pair_hits": 0},
+    "actions_latest_confirmed": {"all_artifacts_seen": 239, "candidate_artifacts": 227, "reused_verified_artifacts": 225, "downloaded_artifacts_this_run": 2, "members_sha256_checked": 715, "member_bytes_hashed": 195163315, "download_failures": 0, "pair_hits": 0},
     "source_archive_actions_exact": {
-      "artifacts_seen": 238,
-      "candidate_artifacts": 226,
-      "artifacts_downloaded": 226,
-      "members_sha256_checked": 714,
-      "member_bytes_hashed": 195162081,
+      "artifacts_seen": 239,
+      "candidate_artifacts": 227,
+      "artifacts_downloaded_this_run": 227,
+      "reused_verified_artifacts": 0,
+      "members_sha256_checked": 715,
+      "member_bytes_hashed": 195163315,
       "nested_zip_members": 3,
       "download_failures": 0,
       "oversize_members_skipped": 0,
       "errors": 0,
+      "exact_coverage_complete": true,
       "unique_target_hits": 0,
-      "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE_AT_SCAN_POINT",
-      "persist_commit": "36fd39a1b7f17704fbc4119c0ea4a6cfbd18c00f",
-      "incremental_scanner_commit": "52afaa25447c6583643168aa4d38ff3d877cf3fb"
+      "all_three_recovered": false,
+      "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE",
+      "first_persist_commit": "36fd39a1b7f17704fbc4119c0ea4a6cfbd18c00f",
+      "incremental_scanner_commit": "52afaa25447c6583643168aa4d38ff3d877cf3fb",
+      "exact_coverage_persist_commit": "d80357123dc87f0fdb3b1398c7d0ca53a3ac7d95"
     },
     "branch_tag_exact": {"readable_blobs": 1901, "shards_completed": 16, "sha256_checked": 1901, "exact_coverage_complete": true, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "pr_refs_exact": {"refs": 4, "readable_blobs": 1419, "shards_completed": 16, "sha256_checked": 1419, "exact_coverage_complete": true, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
@@ -83,8 +87,10 @@
     "manual_queue_ci_contract": "4ed7f108ba3629eed2c3dd01ce89c1c08791b1f3",
     "source_archive_timeout": "cc8fa3114f1cd754b5b704b05f087c0af6e35721",
     "source_archive_scan_persist": "36fd39a1b7f17704fbc4119c0ea4a6cfbd18c00f",
-    "source_archive_incremental_scanner": "52afaa25447c6583643168aa4d38ff3d877cf3fb"
+    "source_archive_incremental_scanner": "52afaa25447c6583643168aa4d38ff3d877cf3fb",
+    "source_archive_exact_coverage_persist": "d80357123dc87f0fdb3b1398c7d0ca53a3ac7d95",
+    "checkpoint_latest": "83d34546416d4a3f8f31ce3dbba3c6a260475ac3"
   },
-  "recorded_at_utc": "2026-08-21T10:59:00Z",
+  "recorded_at_utc": "2026-08-21T11:02:00Z",
   "next": "Reread live exact recovery delta first. If exact pair appears, validate/wire BASE immediately, run unified safe generation against actual parents and materialize fingerprint-bound manual tasks for every unsupported parent. Otherwise continue only new exact-recovery deltas and fail-closed implementation work."
 }
