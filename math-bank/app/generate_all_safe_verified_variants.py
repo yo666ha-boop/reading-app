@@ -27,6 +27,7 @@ from safe_rectangle_area_variant_engine import generate as generate_rectangle_ar
 from safe_rectangular_prism_volume_variant_engine import generate as generate_rectangular_prism_volume
 from safe_single_draw_probability_variant_engine import generate as generate_probability
 from safe_speed_distance_variant_engine import generate as generate_speed_distance
+from safe_square_area_variant_engine import generate as generate_square_area
 from safe_trapezoid_area_variant_engine import generate as generate_trapezoid_area
 from safe_triangle_area_variant_engine import generate as generate_triangle_area
 from validate_app_records import load_records
@@ -47,6 +48,7 @@ SPECIALIZED_ENGINES = (
     ("percentage", generate_percentage),
     ("simple_average", generate_average),
     ("rectangle_area", generate_rectangle_area),
+    ("square_area", generate_square_area),
     ("triangle_area", generate_triangle_area),
     ("parallelogram_area", generate_parallelogram_area),
     ("trapezoid_area", generate_trapezoid_area),
