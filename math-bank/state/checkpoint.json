@@ -1,7 +1,7 @@
 {
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_EXPANDED_VARIANT_APP_AND_BASE_RECOVERY",
-  "current_stage": "EXACT_BASE_RECOVERY_PAIR0_RECTANGULAR_PRISM_SAFE_ENGINE_ADDED",
+  "current_stage": "EXACT_BASE_RECOVERY_PAIR0_SQUARE_AREA_SAFE_ENGINE_ADDED",
   "base_canonical": {
     "records": 1231,
     "original_records": 1124,
@@ -22,14 +22,14 @@
     "manual_generation_queue": "READY_TO_MATERIALIZE_FROM_EXACT_BASE_ONLY"
   },
   "今回完了した内容": [
-    "Reread live branch HEAD, checkpoint, variant state, Actions recovery, auto-complete and unified CI before changing anything.",
+    "Reread live branch HEAD, checkpoint, variant state, Actions recovery and auto-complete state before changing anything.",
     "Confirmed exact BASE pair remains unrecovered and no partial-161, diagnostic-1271 or Winpass717 candidate was promoted.",
-    "Confirmed Actions exact scan advanced to 254 artifacts / 224 candidates / 224 verified reuse / 0 downloads this run / 726 members SHA-256 checked / failures0 / pair0.",
-    "Implemented safe_rectangular_prism_volume_variant_engine.py for one exact integer-cm length/width/height parent asking only for rectangular-prism volume.",
-    "Parent and generated answers are recalculated by V=l*w*h and independently checked by all three inverse identities. Wrong answer, surface area, reverse dimension, mixed units, figure and choice parents fail closed.",
-    "Added positive/negative regression tests and integrated rectangular_prism_volume into generate_all_safe_verified_variants.py.",
-    "Updated unified CI compile/test/state contract and confirmed Math Safe Unified Variant Generation run 32511024296 PASS on triggering SHA b26ea86d54870eb34e963ab4e6a4d30964ba9ae7.",
-    "Unified CI persisted commit 978a5bb039c341cf934692aa9a46ce50bdb4c9d8. Actual BASE variants remain intentionally 0 because exact parents are unavailable. main remains untouched."
+    "Confirmed Actions exact scan advanced beyond the prior checkpoint to 257 artifacts / 227 candidates / 226 verified reuse / 1 new-or-changed download / 732 members SHA-256 checked / failures0 / pair0.",
+    "Implemented safe_square_area_variant_engine.py for one exact positive integer-cm side parent asking only for square area.",
+    "Parent and generated answers are recalculated by A=s^2 and independently verified by exact integer square-root identity. Wrong answer, perimeter, reverse side-length, mixed unit, figure and choice parents fail closed.",
+    "Integrated square_area into generate_all_safe_verified_variants.py and added dedicated engine plus unified-adapter regression tests.",
+    "Updated unified CI compile/test/state contract and confirmed Math Safe Unified Variant Generation run 32515745854 PASS on triggering SHA b3d1aa7651bd6dd91f7b3e16d1b3da4eaa060d21.",
+    "Unified CI persisted commit 7e8a2148f87ebc6d168be0d70480247084920388. Actual BASE variants remain intentionally 0 because exact parents are unavailable. main remains untouched."
   ],
   "BASE回収状況": {
     "canonical_pair_found": false,
@@ -38,17 +38,17 @@
     "other_owned_repos": "2_repos_x_16_of_16_exact_complete_pair0_no_rerun_without_change",
     "github_release": {"releases": 0, "assets": 0, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "github_issue_pr_attachment": {"pair_hits": 0, "errors": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
-    "actions_incremental": {"all_artifacts_seen": 254, "candidate_artifacts": 224, "reused_verified_artifacts": 224, "downloaded_artifacts_this_run": 0, "members_sha256_checked": 726, "bytes_hashed": 69729296, "download_failures": 0, "canonical_hits": 0, "valid_audit_hits": 0, "pair_hits": 0},
-    "latest_auto_complete": {"run_id": "32505640719", "result": "success", "actions_members_sha256_checked": 726, "actions_reused_verified_artifacts": 224, "actions_downloaded_artifacts_this_run": 0, "actions_pair_hits": 0, "release_pair_hits": 0, "issue_pr_pair_hits": 0, "wiring_ready": false, "publication_ready": false},
+    "actions_incremental": {"all_artifacts_seen": 257, "candidate_artifacts": 227, "reused_verified_artifacts": 226, "downloaded_artifacts_this_run": 1, "members_sha256_checked": 732, "bytes_hashed": 69737126, "download_failures": 0, "canonical_hits": 0, "valid_audit_hits": 0, "pair_hits": 0},
+    "latest_auto_complete": {"run_id": "32511121113", "result": "success", "actions_members_sha256_checked": 732, "actions_reused_verified_artifacts": 226, "actions_downloaded_artifacts_this_run": 1, "actions_pair_hits": 0, "release_pair_hits": 0, "issue_pr_pair_hits": 0, "wiring_ready": false, "publication_ready": false},
     "file_library_exact_pair": false,
     "google_drive_exact_pair": false,
     "policy": "cancelled/timeout/incomplete coverage is never absence evidence; no reconstruction; no partial-161 or diagnostic-1271 promotion"
   },
   "expanded_generation_capability": {
     "status": "PASS_CI",
-    "run_id": "32511024296",
-    "triggering_sha": "b26ea86d54870eb34e963ab4e6a4d30964ba9ae7",
-    "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "rectangle_area", "triangle_area", "parallelogram_area", "trapezoid_area", "rectangular_prism_volume", "speed_distance", "binary_arithmetic_exact", "linear_equation_exact"],
+    "run_id": "32515745854",
+    "triggering_sha": "b3d1aa7651bd6dd91f7b3e16d1b3da4eaa060d21",
+    "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "rectangle_area", "square_area", "triangle_area", "parallelogram_area", "trapezoid_area", "rectangular_prism_volume", "speed_distance", "binary_arithmetic_exact", "linear_equation_exact"],
     "actual_base_variants_generated": 0,
     "actual_parent_records_required": true,
     "parent_record_sha256_required": true,
@@ -57,7 +57,7 @@
     "adaptive_safe_target_planning": true,
     "minimum_per_parent_default": 1,
     "safe_target_per_parent_default": 3,
-    "rectangular_prism_volume_exact_product_and_three_inverse_identities": true
+    "square_area_exact_product_and_integer_square_root_identity": true
   },
   "CI_browser_A4": {
     "browser_regression": "success_synthetic_four_environments",
@@ -68,23 +68,24 @@
   },
   "branch_commit": {
     "branch": "math-problem-bank-bootstrap",
-    "rectangular_prism_engine": "23922c5125674633397598dd568c6e46f2bf45a6",
-    "rectangular_prism_tests": "add53bd484f14615e7af51a1abd18c0865487903",
-    "rectangular_prism_unified_integration": "a4283229f419af84c6ea3e34fc6df427ce593584",
-    "rectangular_prism_ci_contract": "b26ea86d54870eb34e963ab4e6a4d30964ba9ae7",
-    "unified_ci_persist": "978a5bb039c341cf934692aa9a46ce50bdb4c9d8",
+    "square_area_engine": "dfc1d1f9725f02c826df311574896a1cc8b9153c",
+    "square_area_unified_integration": "6740af6a780b547d03988165af33362e6279401a",
+    "square_area_tests": "bb6dd16b6c5d18fb21c75b022a330732d821cc75",
+    "square_area_adapter_test": "7d091579efd970ab909b8b82673b259ddbf1a2bd",
+    "square_area_ci_contract": "b3d1aa7651bd6dd91f7b3e16d1b3da4eaa060d21",
+    "unified_ci_persist": "7e8a2148f87ebc6d168be0d70480247084920388",
     "main_touched": false
   },
-  "現在どの工程にいるか": "Exact canonical BASE ZIP+audit recovery remains the blocker. Unified safe generation now also covers a narrow exact rectangular-prism volume class while retaining fail-closed behavior.",
+  "現在どの工程にいるか": "Exact canonical BASE ZIP+audit recovery remains the blocker. Unified safe generation now also covers a narrow exact square-area class while retaining fail-closed behavior.",
   "残っている作業": [
     "Continue exact canonical recovery only for genuinely new/changed deltas or newly discovered surfaces.",
     "Recover exact canonical ZIP plus valid MATHBANK_FINAL_AUDIT_V2 and recheck SHA-256.",
-    "Inspect/wire immutable BASE, run adaptive unified safe generation including rectangular_prism_volume, materialize fingerprint-bound manual queue and strictly validate manual variants.",
+    "Inspect/wire immutable BASE, run adaptive unified safe generation including square_area, materialize fingerprint-bound manual queue and strictly validate manual variants.",
     "Reach 1124/1124 parent coverage, compose dynamic app records, run real four-browser and A4x6 tests, strict release, PUBLICATION_READY and isolated public verification."
   ],
-  "正確停止点": "Canonical recovery remains pair0 at exact Actions state 254/224 with 726 members checked and failures0. rectangular_prism_volume passed unified CI, but actual generation remains 0 because exact BASE parents remain unavailable.",
-  "次回どこから開始するか": "Reread live HEAD/checkpoint/variant/CI/actions/auto-complete. If exact canonical pair appears, immediately validate/wire BASE and run adaptive unified generation including rectangular_prism_volume plus fingerprint-bound manual queue. Otherwise process only new exact-recovery deltas and continue fail-closed completion work.",
+  "正確停止点": "Canonical recovery remains pair0 at exact Actions state 257/227 with 732 members checked and failures0. square_area passed unified CI, but actual generation remains 0 because exact BASE parents remain unavailable.",
+  "次回どこから開始するか": "Reread live HEAD/checkpoint/variant/CI/actions/auto-complete. If exact canonical pair appears, immediately validate/wire BASE and run adaptive unified generation including square_area plus fingerprint-bound manual queue. Otherwise process only new exact-recovery deltas and continue fail-closed completion work.",
   "次に進むべき工程": "new exact recovery delta/surface -> exact BASE pair -> SHA/audit validation -> immutable BASE wiring -> adaptive verified auto generation -> fingerprint-bound manual queue -> 1124/1124 -> real browser/A4 -> strict release -> PUBLICATION_READY -> isolated public verification",
-  "recorded_at_utc": "2026-08-21T18:01:00Z",
+  "recorded_at_utc": "2026-08-21T18:56:00Z",
   "resume_rule": "Never reconstruct BASE or generate from unseen parents. Invalid/unverified variants never count as coverage."
 }
