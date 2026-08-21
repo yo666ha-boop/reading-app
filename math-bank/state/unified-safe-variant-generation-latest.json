@@ -1,8 +1,8 @@
 {
   "status": "PASS_CI",
-  "run_id": "32495030665",
-  "triggering_sha": "de465570db8e6c7c0731be2aa3fa16ef25071832",
-  "recorded_at_utc": "2026-08-21T14:58:21.060182+00:00",
+  "run_id": "32495053540",
+  "triggering_sha": "d2ed0d366bab8d8a958485ea3133318421687038",
+  "recorded_at_utc": "2026-08-21T14:58:37.771077+00:00",
   "engines": [
     "affine",
     "single_draw_probability",
@@ -11,6 +11,7 @@
     "simple_average",
     "rectangle_area",
     "triangle_area",
+    "parallelogram_area",
     "binary_arithmetic_exact",
     "linear_equation_exact"
   ],
@@ -28,5 +29,6 @@
   "safe_target_per_parent_default": 3,
   "unsupported_manual_shortfall_only": true,
   "rectangle_area_exact_product_and_inverse_identity": true,
-  "triangle_area_exact_half_product_and_doubled_area_identity": true
+  "triangle_area_exact_half_product_and_doubled_area_identity": true,
+  "parallelogram_area_exact_product_and_inverse_identity": true
 }
