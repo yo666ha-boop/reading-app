@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import copy
 
-from generate_all_safe_verified_variants import generate_parent
+from generate_all_safe_verified_variants import generate_parent, manual_queue_entry
 from test_expanded_variant_layer import make_base
 from validate_expanded_variant_layer import parent_record_sha256
 
@@ -40,6 +40,16 @@ def _assert_generated(parent: dict, expected_engine: str) -> None:
         assert evidence["generator"] == "generate_all_safe_verified_variants.py"
 
 
+def _assert_manual_task(parent: dict, reason: str, missing: int) -> None:
+    task = manual_queue_entry(parent, missing_count=missing, reason=reason)
+    assert task["parent_id"] == parent["id"]
+    assert task["parent_record_sha256"] == parent_record_sha256(parent)
+    assert task["missing_verified_variants"] == missing
+    assert task["reason"] == reason
+    assert "question" not in task and "answer" not in task
+    assert "generated" not in task
+
+
 def main() -> None:
     base = make_base()
     template = base[0]
@@ -64,8 +74,6 @@ def main() -> None:
     average = _parent(template, pid="U-AVG", question="12、15、18の平均を求めなさい。", answer="15")
     _assert_generated(average, "simple_average")
 
-    # Existing exact arithmetic / linear-equation generation remains available
-    # as the final fallback rather than being displaced by specialized engines.
     arithmetic = _parent(template, pid="U-ARITH", question="(-3)+8 を計算しなさい。", answer="5")
     rows, prov, reason = generate_parent(arithmetic, 2, NOW)
     assert len(rows) == len(prov) == 2 and reason == "legacy:binary_arithmetic_exact"
@@ -74,27 +82,40 @@ def main() -> None:
     rows, prov, reason = generate_parent(equation, 2, NOW)
     assert len(rows) == len(prov) == 2 and reason == "legacy:linear_equation_exact"
 
-    # Parent answer verification remains fail-closed through the unified path.
     wrong = copy.deepcopy(percentage)
     wrong["answer"] = "301円"
     rows, prov, reason = generate_parent(wrong, 1, NOW)
     assert rows == [] and prov == [] and reason.startswith("unsupported_all_safe_engines:")
+    _assert_manual_task(wrong, reason, 1)
 
-    # Structural uncertainty remains manual: no figure or choice parent can be
-    # auto-promoted merely because its visible text resembles a supported type.
     figure = copy.deepcopy(average)
     figure["figure_refs"] = ["figures/unknown.png"]
     rows, prov, reason = generate_parent(figure, 1, NOW)
     assert rows == [] and prov == [] and "figure_parent" in reason
+    _assert_manual_task(figure, reason, 1)
+    task = manual_queue_entry(figure, missing_count=1, reason=reason)
+    assert task["figure_refs"] == ["figures/unknown.png"]
 
     choice = copy.deepcopy(proportion)
     choice["choices"] = ["5", "6", "7", "8"]
-    rows, prov, reason = generate_parent(choice, 1, NOW)
+    rows, prov, reason = generate_parent(choice, 2, NOW)
     assert rows == [] and prov == [] and "choice_parent" in reason
+    _assert_manual_task(choice, reason, 2)
+    task = manual_queue_entry(choice, missing_count=2, reason=reason)
+    assert task["has_choices"] is True and task["choice_count"] == 4
+
+    # Fingerprint binding must detect a changed parent instead of silently
+    # carrying an old manual task forward.
+    original_task = manual_queue_entry(figure, missing_count=1, reason="manual")
+    changed = copy.deepcopy(figure)
+    changed["answer"] = "16"
+    changed_task = manual_queue_entry(changed, missing_count=1, reason="manual")
+    assert original_task["parent_record_sha256"] != changed_task["parent_record_sha256"]
 
     print("PASS_UNIFIED_SAFE_VARIANT_ALL_SPECIALIZED_ENGINES")
     print("PASS_UNIFIED_SAFE_VARIANT_LEGACY_EXACT_FALLBACK")
     print("PASS_UNIFIED_SAFE_VARIANT_WRONG_ANSWER_FIGURE_CHOICE_FAIL_CLOSED")
+    print("PASS_UNIFIED_SAFE_VARIANT_FINGERPRINT_BOUND_MANUAL_QUEUE")
 
 
 if __name__ == "__main__":
