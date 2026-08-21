@@ -1,14 +1,15 @@
 {
   "status": "PASS_CI",
-  "run_id": "32484447821",
-  "triggering_sha": "fdb56827362583e937f2d4e89e31d4e761fa1983",
-  "recorded_at_utc": "2026-08-21T12:58:14.114426+00:00",
+  "run_id": "32484469793",
+  "triggering_sha": "f5ed194e27d821a1d41c41438940ae4047448f22",
+  "recorded_at_utc": "2026-08-21T12:58:30.376740+00:00",
   "engines": [
     "affine",
     "single_draw_probability",
     "proportion",
     "percentage",
     "simple_average",
+    "rectangle_area",
     "binary_arithmetic_exact",
     "linear_equation_exact"
   ],
@@ -24,5 +25,6 @@
   "adaptive_safe_target_planning": true,
   "minimum_per_parent_default": 1,
   "safe_target_per_parent_default": 3,
-  "unsupported_manual_shortfall_only": true
+  "unsupported_manual_shortfall_only": true,
+  "rectangle_area_exact_product_and_inverse_identity": true
 }
