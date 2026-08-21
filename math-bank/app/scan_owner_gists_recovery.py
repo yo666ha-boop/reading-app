@@ -22,7 +22,9 @@ def request_json(url: str):
     req = urllib.request.Request(url)
     req.add_header("Accept", "application/vnd.github+json")
     req.add_header("X-GitHub-Api-Version", "2022-11-28")
-    if TOKEN: req.add_header("Authorization", f"Bearer {TOKEN}")
+    req.add_header("User-Agent", "math-canonical-recovery")
+    # GITHUB_TOKEN is repository-scoped and can return 403 for the public Gist API.
+    # Public Gists are intentionally enumerated anonymously; exact downloaded bytes are still SHA-256 checked.
     with urllib.request.urlopen(req, timeout=60) as resp: return json.load(resp)
 
 
@@ -43,8 +45,7 @@ def host_allowed(url: str) -> bool:
 
 
 def download(url: str) -> bytes:
-    cmd=['curl','-fsSL','--max-filesize',str(MAX_DOWNLOAD_BYTES)]
-    if TOKEN: cmd += ['-H',f'Authorization: Bearer {TOKEN}']
+    cmd=['curl','-fsSL','--max-filesize',str(MAX_DOWNLOAD_BYTES),'-H','User-Agent: math-canonical-recovery']
     cmd.append(url)
     p=subprocess.run(cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=180)
     if p.returncode: raise RuntimeError(p.stderr.decode('utf-8','replace')[:500])
@@ -67,7 +68,7 @@ def main() -> int:
       'candidate_urls_downloaded':0,'candidate_bytes_hashed':0,'canonical_hits':[],'valid_audit_hits':[],
       'paired_recovery_hits':[],'text_exact_filename_mentions':0,'text_audit_mentions':0,'text_expected_sha_mentions':0,
       'errors':[],'exact_coverage_complete':False,'recorded_at_utc':None,
-      'policy':'Every public gist file is fetched and SHA-256 checked; GitHub-hosted URLs near canonical/audit/SHA mentions are also hashed. Pairing requires exact canonical SHA plus one valid named audit within the same gist. No reconstruction.'}
+      'policy':'Public Gists are enumerated anonymously because the repository-scoped Actions token is not a Gist credential. Every public gist file is fetched and SHA-256 checked; GitHub-hosted URLs near canonical/audit/SHA mentions are also hashed. Pairing requires exact canonical SHA plus one valid named audit within the same gist. No reconstruction.'}
     try:
       gists=paged(f'{API}/users/{OWNER}/gists')
       report['gists_seen']=len(gists)
