@@ -15,6 +15,7 @@ on:
       - 'math-bank/app/test_safe_cube_volume_variant_engine.py'
       - 'math-bank/app/test_cube_volume_unified_adapter.py'
       - 'math-bank/app/test_safe_rectangle_perimeter_variant_engine.py'
+      - 'math-bank/app/test_rectangle_perimeter_unified_adapter.py'
       - 'math-bank/app/generate_safe_verified_variants.py'
       - 'math-bank/app/safe_*_variant_engine.py'
       - '.github/workflows/math-safe-unified-variant-generation.yml'
@@ -67,7 +68,8 @@ jobs:
             math-bank/app/test_square_area_unified_adapter.py \
             math-bank/app/test_safe_cube_volume_variant_engine.py \
             math-bank/app/test_cube_volume_unified_adapter.py \
-            math-bank/app/test_safe_rectangle_perimeter_variant_engine.py
+            math-bank/app/test_safe_rectangle_perimeter_variant_engine.py \
+            math-bank/app/test_rectangle_perimeter_unified_adapter.py
       - name: Run unified positive and negative regression
         working-directory: math-bank/app
         run: |
@@ -81,6 +83,7 @@ jobs:
           python test_safe_cube_volume_variant_engine.py
           python test_cube_volume_unified_adapter.py
           python test_safe_rectangle_perimeter_variant_engine.py
+          python test_rectangle_perimeter_unified_adapter.py
       - name: Persist verified unified-engine state
         if: success()
         env:
