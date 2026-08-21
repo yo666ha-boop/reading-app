@@ -9,26 +9,10 @@
   "expanded_parent_coverage": 0,
   "expanded_parent_target": 1124,
   "manual_generation_queue": "IMPLEMENTED_FINGERPRINT_BOUND; MATERIALIZES_ONLY_AFTER_EXACT_BASE",
-  "parent_read_binding": {
-    "status": "PASS_QUEUE_THROUGH_PUBLICATION_VALIDATOR",
-    "algorithm": "sha256(canonical-json-sort-keys)",
-    "queue_field": "parent_record_sha256",
-    "validator_enforcement": "required_nonblank_and_exact_match_to_current_verified_parent_record"
-  },
-  "generation_queue_coverage_gate": {
-    "status": "PASS_STRICT_VALIDATED_EXPANDED_COVERAGE_ONLY",
-    "behavior": "Only fully validated expanded variants can suppress a parent from the uncovered queue; invalid variants fail closed and cannot fake coverage."
-  },
-  "sibling_surface_change_gate": {
-    "status": "PASS",
-    "behavior": "Same-parent expanded siblings may not reuse the same numeric-token signature under different wording."
-  },
-  "adaptive_safe_target_gate": {
-    "status": "PASS_CI",
-    "minimum_per_parent": 1,
-    "safe_target_per_parent": 3,
-    "behavior": "All parents require at least one new verified variant. Parents accepted by deterministic fail-closed engines are expanded toward three. Unsupported parents enter manual queue only for the minimum shortfall."
-  },
+  "parent_read_binding": {"status": "PASS_QUEUE_THROUGH_PUBLICATION_VALIDATOR", "algorithm": "sha256(canonical-json-sort-keys)", "queue_field": "parent_record_sha256", "validator_enforcement": "required_nonblank_and_exact_match_to_current_verified_parent_record"},
+  "generation_queue_coverage_gate": {"status": "PASS_STRICT_VALIDATED_EXPANDED_COVERAGE_ONLY", "behavior": "Only fully validated expanded variants can suppress a parent from the uncovered queue; invalid variants fail closed and cannot fake coverage."},
+  "sibling_surface_change_gate": {"status": "PASS", "behavior": "Same-parent expanded siblings may not reuse the same numeric-token signature under different wording."},
+  "adaptive_safe_target_gate": {"status": "PASS_CI", "minimum_per_parent": 1, "safe_target_per_parent": 3, "behavior": "All parents require at least one new verified variant. Parents accepted by deterministic fail-closed engines are expanded toward three. Unsupported parents enter manual queue only for the minimum shortfall."},
   "base_canonical_zip_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "base_canonical_pair_recovered": false,
   "app_dynamic_expansion_gate": "PASS",
@@ -59,26 +43,10 @@
     "rectangle_perimeter_direct_question_wording_supported": true,
     "rectangle_perimeter_unified_adapter_test_added": true
   },
-  "manual_queue_contract": {
-    "status": "PASS_CI",
-    "task_fields": ["parent_id", "parent_record_sha256", "missing_verified_variants", "reason", "grade", "genre", "unit", "skill", "difficulty", "format", "taxonomy", "source_name", "has_choices", "choice_count", "figure_refs"],
-    "actual_parent_required": true,
-    "unseen_parent_reconstruction_forbidden": true,
-    "question_answer_generation_in_queue": false,
-    "parent_change_invalidates_fingerprint": true,
-    "validated_manual_variant_required_before_parent_coverage": true
-  },
+  "manual_queue_contract": {"status": "PASS_CI", "actual_parent_required": true, "unseen_parent_reconstruction_forbidden": true, "question_answer_generation_in_queue": false, "parent_change_invalidates_fingerprint": true, "validated_manual_variant_required_before_parent_coverage": true},
   "base_recovery": {
-    "actions_latest_confirmed": {
-      "all_artifacts_seen": 263,
-      "candidate_artifacts": 233,
-      "reused_verified_artifacts": 232,
-      "downloaded_artifacts_this_run": 1,
-      "members_sha256_checked": 744,
-      "member_bytes_hashed": 69752786,
-      "download_failures": 0,
-      "pair_hits": 0
-    },
+    "actions_latest_confirmed": {"all_artifacts_seen": 265, "candidate_artifacts": 235, "reused_verified_artifacts": 235, "downloaded_artifacts_this_run": 0, "members_sha256_checked": 748, "member_bytes_hashed": 69758006, "download_failures": 0, "pair_hits": 0},
+    "latest_auto_complete": {"run_id": "32526653794", "result": "success", "actions_members_sha256_checked": 748, "actions_reused_verified_artifacts": 235, "actions_downloaded_artifacts_this_run": 0, "pair_hits": 0, "wiring_ready": false, "publication_ready": false},
     "branch_tag_exact": {"readable_blobs": 1901, "shards_completed": 16, "sha256_checked": 1901, "exact_coverage_complete": true, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "pr_refs_exact": {"refs": 4, "readable_blobs": 1419, "shards_completed": 16, "sha256_checked": 1419, "exact_coverage_complete": true, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "other_owned_repos": "2_repos_x_16_of_16_exact_complete_pair0_no_rerun_needed_without_change",
@@ -88,26 +56,10 @@
     "google_drive_exact_pair": false,
     "policy": "cancelled/timeout/incomplete coverage is never absence evidence; exact-complete unchanged surfaces are not redundantly rescanned; no partial diagnostic promotion"
   },
-  "CI_browser_A4": {
-    "latest_audit_run_id": "32526022103",
-    "audit_result": "success",
-    "actions_artifact_recovery_scan": "success",
-    "synthetic_browser": "PASS_FOUR_ENVIRONMENTS",
-    "real_canonical_browser": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT",
-    "real_A4_six_pdfs": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT",
-    "publication_ready": false
-  },
+  "CI_browser_A4": {"latest_audit_run_id": "32526547483", "audit_result": "success", "actions_artifact_recovery_scan": "success", "synthetic_browser": "PASS_FOUR_ENVIRONMENTS", "real_canonical_browser": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT", "real_A4_six_pdfs": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT", "publication_ready": false},
   "publication_ready": false,
   "branch": "math-problem-bank-bootstrap",
-  "latest_commits": {
-    "rectangle_perimeter_engine": "31d04a3dcc64d4227a88e10a882e4169a9528d6d",
-    "rectangle_perimeter_unified_integration": "494fe4be2d95cfd13b711e4eac5a494521db0a46",
-    "rectangle_perimeter_ci_contract": "b57879a6061d428fd4b33d70c3446b7a4d525a9d",
-    "rectangle_perimeter_direct_wording_fix": "a0fa9911308a82c33c8db59fb938f78af7f7a682",
-    "rectangle_perimeter_direct_wording_test": "a7a5cb518dca378e5f13324c09288fd2e69b1345",
-    "rectangle_perimeter_unified_adapter_test": "1731987e94114e120c746cb5644e0d2ce06f97f7",
-    "rectangle_perimeter_adapter_ci_contract": "96c9812d1d59771616406d44bf78086a45e2fc60"
-  },
-  "recorded_at_utc": "2026-08-21T21:04:00Z",
+  "latest_commits": {"rectangle_perimeter_engine": "31d04a3dcc64d4227a88e10a882e4169a9528d6d", "rectangle_perimeter_unified_integration": "494fe4be2d95cfd13b711e4eac5a494521db0a46", "rectangle_perimeter_ci_contract": "b57879a6061d428fd4b33d70c3446b7a4d525a9d", "rectangle_perimeter_direct_wording_fix": "a0fa9911308a82c33c8db59fb938f78af7f7a682", "rectangle_perimeter_direct_wording_test": "a7a5cb518dca378e5f13324c09288fd2e69b1345", "rectangle_perimeter_unified_adapter_test": "1731987e94114e120c746cb5644e0d2ce06f97f7", "rectangle_perimeter_adapter_ci_contract": "96c9812d1d59771616406d44bf78086a45e2fc60"},
+  "recorded_at_utc": "2026-08-21T21:08:00Z",
   "next": "Reread live unified CI state and exact recovery delta first. If exact pair appears, validate/wire BASE immediately. Otherwise continue only fail-closed completion work while preserving expanded variants 0 until actual parents are available."
 }
