@@ -21,10 +21,10 @@
   "dynamic_release_contract": "PASS_SOURCE_CONTRACT_WAITING_FOR_REAL_BASE_AND_FULL_COVERAGE",
   "generation_queue_builder": "PASS_CONSERVATIVE_CLASSIFICATION_TESTS",
   "unified_safe_generation": {
-    "status": "LATEST_RECTANGLE_PERIMETER_CONTRACT_TRIGGERED_CI; PREVIOUS_UNIFIED_STATE_PASS",
+    "status": "RECTANGLE_PERIMETER_METADATA_GATE_COMMITTED; NEW_UNIFIED_CI_TRIGGERED_PENDING_TERMINAL_PERSIST",
     "last_persisted_pass_run_id": "32525969515",
     "last_persisted_pass_triggering_sha": "31d04a3dcc64d4227a88e10a882e4169a9528d6d",
-    "latest_contract_commit": "96c9812d1d59771616406d44bf78086a45e2fc60",
+    "latest_contract_commit": "98c237c626dd468db21b995474434edad15a8787",
     "driver": "generate_all_safe_verified_variants.py",
     "engines": ["affine", "single_draw_probability", "proportion", "percentage", "simple_average", "rectangle_area", "rectangle_perimeter", "square_area", "triangle_area", "parallelogram_area", "trapezoid_area", "rectangular_prism_volume", "cube_volume", "speed_distance", "binary_arithmetic_exact", "linear_equation_exact"],
     "actual_base_variants_generated": 0,
@@ -41,12 +41,12 @@
     "unsupported_manual_shortfall_only": true,
     "rectangle_perimeter_exact_double_sum_and_two_inverse_identities": true,
     "rectangle_perimeter_direct_question_wording_supported": true,
-    "rectangle_perimeter_unified_adapter_test_added": true
+    "rectangle_perimeter_unified_adapter_parent_sha_metadata_preservation_gate": true
   },
   "manual_queue_contract": {"status": "PASS_CI", "actual_parent_required": true, "unseen_parent_reconstruction_forbidden": true, "question_answer_generation_in_queue": false, "parent_change_invalidates_fingerprint": true, "validated_manual_variant_required_before_parent_coverage": true},
   "base_recovery": {
-    "actions_latest_confirmed": {"all_artifacts_seen": 265, "candidate_artifacts": 235, "reused_verified_artifacts": 235, "downloaded_artifacts_this_run": 0, "members_sha256_checked": 748, "member_bytes_hashed": 69758006, "download_failures": 0, "pair_hits": 0},
-    "latest_auto_complete": {"run_id": "32526653794", "result": "success", "actions_members_sha256_checked": 748, "actions_reused_verified_artifacts": 235, "actions_downloaded_artifacts_this_run": 0, "pair_hits": 0, "wiring_ready": false, "publication_ready": false},
+    "actions_latest_confirmed": {"all_artifacts_seen": 266, "candidate_artifacts": 236, "reused_verified_artifacts": 236, "downloaded_artifacts_this_run": 0, "members_sha256_checked": 750, "member_bytes_hashed": 69760616, "download_failures": 0, "pair_hits": 0},
+    "latest_auto_complete": {"run_id": "32526900065", "result": "success", "actions_members_sha256_checked": 750, "actions_reused_verified_artifacts": 235, "actions_downloaded_artifacts_this_run": 1, "pair_hits": 0, "wiring_ready": false, "publication_ready": false},
     "branch_tag_exact": {"readable_blobs": 1901, "shards_completed": 16, "sha256_checked": 1901, "exact_coverage_complete": true, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "pr_refs_exact": {"refs": 4, "readable_blobs": 1419, "shards_completed": 16, "sha256_checked": 1419, "exact_coverage_complete": true, "pair_hits": 0, "status": "COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "other_owned_repos": "2_repos_x_16_of_16_exact_complete_pair0_no_rerun_needed_without_change",
@@ -59,7 +59,7 @@
   "CI_browser_A4": {"latest_audit_run_id": "32526547483", "audit_result": "success", "actions_artifact_recovery_scan": "success", "synthetic_browser": "PASS_FOUR_ENVIRONMENTS", "real_canonical_browser": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT", "real_A4_six_pdfs": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT", "publication_ready": false},
   "publication_ready": false,
   "branch": "math-problem-bank-bootstrap",
-  "latest_commits": {"rectangle_perimeter_engine": "31d04a3dcc64d4227a88e10a882e4169a9528d6d", "rectangle_perimeter_unified_integration": "494fe4be2d95cfd13b711e4eac5a494521db0a46", "rectangle_perimeter_ci_contract": "b57879a6061d428fd4b33d70c3446b7a4d525a9d", "rectangle_perimeter_direct_wording_fix": "a0fa9911308a82c33c8db59fb938f78af7f7a682", "rectangle_perimeter_direct_wording_test": "a7a5cb518dca378e5f13324c09288fd2e69b1345", "rectangle_perimeter_unified_adapter_test": "1731987e94114e120c746cb5644e0d2ce06f97f7", "rectangle_perimeter_adapter_ci_contract": "96c9812d1d59771616406d44bf78086a45e2fc60"},
-  "recorded_at_utc": "2026-08-21T21:08:00Z",
-  "next": "Reread live unified CI state and exact recovery delta first. If exact pair appears, validate/wire BASE immediately. Otherwise continue only fail-closed completion work while preserving expanded variants 0 until actual parents are available."
+  "latest_commits": {"rectangle_perimeter_engine": "31d04a3dcc64d4227a88e10a882e4169a9528d6d", "rectangle_perimeter_unified_integration": "494fe4be2d95cfd13b711e4eac5a494521db0a46", "rectangle_perimeter_direct_wording_fix": "a0fa9911308a82c33c8db59fb938f78af7f7a682", "rectangle_perimeter_unified_adapter_test": "1731987e94114e120c746cb5644e0d2ce06f97f7", "rectangle_perimeter_adapter_ci_contract": "96c9812d1d59771616406d44bf78086a45e2fc60", "rectangle_perimeter_metadata_gate": "98c237c626dd468db21b995474434edad15a8787"},
+  "recorded_at_utc": "2026-08-21T22:00:00Z",
+  "next": "Confirm terminal persist for the 98c237c rectangle-perimeter metadata gate first; if failed, repair immediately. Continue exact recovery delta. If exact pair appears, validate and wire immutable BASE immediately."
 }
