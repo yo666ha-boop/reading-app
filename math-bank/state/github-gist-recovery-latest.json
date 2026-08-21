@@ -17,13 +17,8 @@
   "text_exact_filename_mentions": 0,
   "text_audit_mentions": 0,
   "text_expected_sha_mentions": 0,
-  "errors": [
-    {
-      "scope": "gist_enumeration",
-      "error": "HTTP Error 403: Forbidden"
-    }
-  ],
-  "exact_coverage_complete": false,
-  "recorded_at_utc": "2026-08-21T02:14:19.970341+00:00",
-  "policy": "Every public gist file is fetched and SHA-256 checked; GitHub-hosted URLs near canonical/audit/SHA mentions are also hashed. Pairing requires exact canonical SHA plus one valid named audit within the same gist. No reconstruction."
+  "errors": [],
+  "exact_coverage_complete": true,
+  "recorded_at_utc": "2026-08-21T02:15:01.460941+00:00",
+  "policy": "Public Gists are enumerated anonymously because the repository-scoped Actions token is not a Gist credential. Every public gist file is fetched and SHA-256 checked; GitHub-hosted URLs near canonical/audit/SHA mentions are also hashed. Pairing requires exact canonical SHA plus one valid named audit within the same gist. No reconstruction."
 }
