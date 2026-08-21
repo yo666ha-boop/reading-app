@@ -23,14 +23,15 @@
     "manual_generation_queue": "WAITING_FOR_EXACT_BASE_PARENT_RECORDS"
   },
   "今回完了した内容": [
-    "Reread live HEAD/checkpoint/variant/CI/recovery and followed the newest branch state before writes.",
-    "Kept branch/tag 1901/1901 and PR refs 1419/1419 exact-complete pair0 as valid negative evidence; no cancelled or incomplete path was treated as absence evidence.",
-    "Implemented safe_percentage_variant_engine.py for exactly one N円のP% expression that explicitly asks for the yen amount, with exact Fraction parent-answer proof before generation.",
-    "Added an independent amount*100 == base*percent proof, deterministic 1-3 distinct siblings, and fail-closed rejection for discount/increase/decrease/tax/interest/concentration, multiple-percent, figure, choice and ambiguous contexts.",
-    "Added regression tests and dedicated non-cancelling CI. Math Safe Percentage Variant Engine run 32456322984 succeeded; actual_base_variants_generated remains 0 because exact BASE is absent.",
-    "Updated variant-expansion state with the new percentage capability.",
-    "Checkpoint push triggered Math Canonical Auto Complete run 32456402885. It succeeded, downloaded only 2 new/changed artifacts, represented 700 SHA-checked members, found canonical pair0, release pair0, issue/PR attachment pair0, and did not wire or publish anything.",
-    "main remains untouched."
+    "Reread live HEAD/checkpoint/variant/CI/recovery before writes and followed the newest branch state.",
+    "Confirmed exact BASE pair is still unrecovered; branch/tag 1901/1901 and PR refs 1419/1419 remain exact-complete pair0 negative evidence.",
+    "Implemented safe_average_variant_engine.py for one explicit 2-to-5 positive-integer list asking only for the arithmetic mean.",
+    "Parent answer is recomputed with exact Fraction arithmetic and independently checked by mean*count == sum before any candidate generation.",
+    "Weighted averages, missing-value questions, tables/frequency distributions, median/mode, figures, choices, x/unknown and ambiguous prose fail closed.",
+    "Added deterministic 1-3 sibling generation with distinct numeric signatures plus positive/negative regression tests.",
+    "Added dedicated non-cancelling Math Safe Average Variant Engine workflow; run 32461087792 succeeded and persisted state at commit 804c947a5d8871634c51da600b90557ce1e597ba.",
+    "actual_base_variants_generated remains 0 because exact BASE is absent; no unseen-parent generation occurred.",
+    "Updated variant-expansion state. main remains untouched."
   ],
   "BASE回収状況": {
     "exact_zip_recovered": false,
@@ -40,24 +41,12 @@
     "pr_refs": {"refs":4,"readable_blobs":1419,"shards_completed":16,"checked":1419,"bytes_hashed":18140592,"exact_coverage_complete":true,"pair_hits":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "other_owned_repos": "2_repos_x_16_of_16_exact_complete_pair0_no_rerun_needed_without_change",
     "github_release_saved_state": "0 releases / 0 assets / pair0",
-    "github_issue_pr_attachment": {"items":4,"surfaces":4,"links":0,"errors":0,"pair_hits":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
-    "github_actions_logs": {"eligible_completed_runs":220,"log_members":1870,"candidate_urls":0,"log_failures":0,"pair_hits":0,"text_coverage_complete":true,"candidate_download_coverage_complete":true,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
-    "github_commit_comments": {"comments":0,"links":0,"errors":0,"pair_hits":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
-    "github_wiki": {"remote_exists":false,"refs":0,"blobs":0,"errors":0,"exact_coverage_complete":true,"pair_hits":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
-    "owner_public_gists": {"gists":0,"files":0,"errors":0,"exact_coverage_complete":true,"pair_hits":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
-    "latest_auto_complete": {
-      "run_id": "32456402885",
-      "triggering_sha": "8c1936d4d85020224bc2f5da930aa14cfead4a46",
-      "result": "success",
-      "actions_members_sha256_checked": 700,
-      "actions_reused_verified_artifacts": 217,
-      "actions_downloaded_artifacts_this_run": 2,
-      "actions_pair_hits": 0,
-      "release_pair_hits": 0,
-      "issue_pr_pair_hits": 0,
-      "wiring_ready": false,
-      "publication_ready": false
-    },
+    "github_issue_pr_attachment": {"pair_hits":0,"errors":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
+    "github_actions_logs": {"eligible_completed_runs":220,"log_members":1870,"candidate_urls":0,"log_failures":0,"pair_hits":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
+    "github_commit_comments": {"comments":0,"pair_hits":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
+    "github_wiki": {"remote_exists":false,"exact_coverage_complete":true,"pair_hits":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
+    "owner_public_gists": {"gists":0,"exact_coverage_complete":true,"pair_hits":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
+    "latest_auto_complete": {"run_id":"32456402885","result":"success","actions_members_sha256_checked":700,"actions_downloaded_artifacts_this_run":2,"actions_pair_hits":0,"release_pair_hits":0,"issue_pr_pair_hits":0,"wiring_ready":false,"publication_ready":false},
     "file_library_exact_pair": false,
     "google_drive_exact_pair": false,
     "policy": "cancelled/timeout/incomplete coverage is never absence evidence; exact-complete unchanged surfaces are not redundantly rescanned"
@@ -67,15 +56,8 @@
     "affine": {"status":"PASS_CI","run_id":"32445176580","actual_base_variants_generated":0},
     "single_draw_probability": {"status":"PASS_CI","run_id":"32448770858","actual_base_variants_generated":0},
     "proportion": {"status":"PASS_CI","run_id":"32452655967","actual_base_variants_generated":0},
-    "percentage": {
-      "status": "PASS_CI",
-      "run_id": "32456322984",
-      "scope": "strict single yen amount times percentage only",
-      "parent_answer_recalculation": true,
-      "independent_cross_multiplication_check": true,
-      "discount_increase_tax_interest_concentration_figure_choice_ambiguous_fail_closed": true,
-      "actual_base_variants_generated": 0
-    }
+    "percentage": {"status":"PASS_CI","run_id":"32456322984","actual_base_variants_generated":0},
+    "simple_average": {"status":"PASS_CI","run_id":"32461087792","scope":"strict single explicit 2-to-5 positive-integer list arithmetic mean only","parent_answer_recalculation":true,"independent_sum_identity_check":true,"weighted_missing_table_frequency_median_mode_figure_choice_ambiguous_fail_closed":true,"actual_base_variants_generated":0}
   },
   "quality_gates": {
     "parent_record_sha256_binding": true,
@@ -90,28 +72,26 @@
     "full_1124_parent_coverage_required": true
   },
   "CI_browser_A4": {
-    "latest_saved_math_audit_run_id": "32452637080",
+    "latest_saved_math_audit_run_id": "32456310687",
     "latest_saved_math_audit_result": "success",
-    "latest_saved_math_audit_triggering_sha": "4b7ee0f18f8e10f981b3a620b2fc69f07de49263",
     "browser_regression": "success_synthetic_four_environments",
     "real_canonical_browser_regression": "blocked_expected_exact_base_absent",
     "real_A4_six_pdfs": "blocked_expected_exact_base_absent",
     "publication_ready": false,
     "audit_cancel_in_progress": false,
-    "safe_percentage_ci_run_id": "32456322984",
-    "safe_percentage_ci_result": "success"
+    "safe_average_ci_run_id": "32461087792",
+    "safe_average_ci_result": "success"
   },
   "branch_commit": {
     "branch": "math-problem-bank-bootstrap",
-    "percentage_engine": "e7b6bca69906b164a7ac16b2e2cc27ebc8fa4867",
-    "percentage_tests": "0a5616c9f695e5679d3ca6cb93e5a3b75a0ccef5",
-    "percentage_ci_workflow": "b3dc3cbc8c3065734221085f33f2b1209a94c834",
-    "percentage_ci_persist": "d65bf2f928529eee7d5e644cf033bfd5a4d4c2b8",
-    "variant_state_commit": "f65e04c160f0332480546f1bb089fb24eecc580b",
-    "auto_complete_persist": "de1e99afee90fd99e17cb847f59da92afc178ac3",
+    "average_engine": "89376f10718282b442e4204e1119dd61bbb63e37",
+    "average_tests": "563f855ceccea22259fa040a7072a3af50bcbbea",
+    "average_ci_workflow": "2d94084d9a499ad95ecb8aa985fba87b32b7a2f9",
+    "average_ci_persist": "804c947a5d8871634c51da600b90557ce1e597ba",
+    "variant_state_commit": "af1ae15a4c799128845f3ad5312071df9c78d8ab",
     "main_touched": false
   },
-  "現在どの工程にいるか": "Exact BASE recovery remains the blocker before real-parent generation. Pair0 persists after the latest delta scan, so unseen-parent generation remains prohibited.",
+  "現在どの工程にいるか": "Exact BASE recovery remains the blocker before actual-parent generation. Pair0 persists; unseen-parent generation remains prohibited while safe exact engine coverage is expanded and tested.",
   "残っている作業": [
     "Continue exact recovery only for genuinely new/changed deltas or newly discovered recoverable surfaces.",
     "Recover exact canonical ZIP plus valid MATHBANK_FINAL_AUDIT_V2 and recheck SHA-256.",
@@ -119,9 +99,9 @@
     "Run safe engines only against exact-matching actual parents, manually resolve unsupported figure/choice/other structures, and reach 1124/1124 validated parent coverage.",
     "Compose dynamic app records; run real Chromium/Firefox/WebKit iPhone/Chromium Fire, all filters/search/parent-source/figures, A4x6, strict release, PUBLICATION_READY and isolated public verification."
   ],
-  "正確停止点": "Auto Complete run 32456402885 completed success after the checkpoint-triggered delta scan: 2 artifacts downloaded, 700 members represented, exact pair0. Percentage capability is CI-PASS. Expanded variants 0, parent coverage 0/1124, manual queue waiting for exact BASE. Real browser/A4/publication remain blocked_expected solely by BASE absence.",
+  "正確停止点": "Math Safe Average Variant Engine run 32461087792 succeeded. Exact BASE pair remains unrecovered. Expanded variants 0, parent coverage 0/1124, manual queue waiting for exact BASE; real browser/A4/publication remain blocked_expected solely by BASE absence.",
   "次回どこから開始するか": "Reread live HEAD/checkpoint/variant/CI/actions/auto-complete. If exact pair appears, immediately validate and wire BASE and start actual-parent generation; otherwise process only new exact deltas and provable fail-closed capability work.",
   "次に進むべき工程": "new exact recovery delta/surface -> exact BASE pair -> SHA/audit validation -> immutable BASE snapshot/app wiring -> fingerprint-bound uncovered-parent queue -> verified generation/recalculation/manual cases -> 1124/1124 coverage -> real browser/A4 -> strict release -> PUBLICATION_READY -> isolated public verification",
-  "recorded_at_utc": "2026-08-21T06:59:30Z",
+  "recorded_at_utc": "2026-08-21T08:02:30Z",
   "resume_rule": "Do not stop at status-only work. Never reconstruct BASE or generate from unseen parents. Invalid/unverified variants never count as coverage."
 }
