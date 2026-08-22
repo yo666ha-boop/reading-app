@@ -25,6 +25,7 @@ from safe_circle_circumference_variant_engine import generate as generate_circle
 from safe_cone_volume_variant_engine import generate as generate_cone_volume
 from safe_cube_volume_variant_engine import generate as generate_cube_volume
 from safe_cylinder_volume_variant_engine import generate as generate_cylinder_volume
+from safe_discount_price_variant_engine import generate as generate_discount_price
 from safe_inverse_proportion_variant_engine import generate as generate_inverse_proportion
 from safe_parallelogram_area_variant_engine import generate as generate_parallelogram_area
 from safe_percentage_variant_engine import generate as generate_percentage
@@ -51,6 +52,7 @@ SPECIALIZED_ENGINES = (
     ("single_draw_probability", generate_probability),
     ("proportion", generate_proportion),
     ("percentage", generate_percentage),
+    ("discount_price", generate_discount_price),
     ("simple_average", generate_average),
     ("rectangle_area", generate_rectangle_area),
     ("rectangle_perimeter", generate_rectangle_perimeter),
