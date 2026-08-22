@@ -62,9 +62,51 @@ SPECIALIZED_ENGINES = (
     ("speed_distance", generate_speed_distance),
 )
 
+PARENT_CONTRACT_FIELDS = (
+    "grade",
+    "unit",
+    "skill",
+    "difficulty",
+    "format",
+    "question_format",
+    "taxonomy",
+)
+AUDIT_TRUE_FIELDS = (
+    "problem_answer_verified",
+    "structure_verified",
+    "figure_refs_verified",
+)
+
 
 def _verification_evidence(engine_name: str, evidence: dict) -> str:
     return f"engine={engine_name}; " + json.dumps(evidence, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+
+
+def _assert_variant_parent_contract(parent: dict, variant: dict, provenance: dict, engine_name: str) -> None:
+    """Fail immediately if an adapter drifts from its exact parent contract."""
+    for field in PARENT_CONTRACT_FIELDS:
+        if variant.get(field) != parent.get(field):
+            raise AssertionError(f"{engine_name} parent contract mismatch: {field}")
+    if variant.get("choices") != parent.get("choices"):
+        raise AssertionError(f"{engine_name} parent contract mismatch: choices")
+    if list(variant.get("figure_refs") or []) != list(parent.get("figure_refs") or []):
+        raise AssertionError(f"{engine_name} parent contract mismatch: figure_refs")
+    source = variant.get("source") if isinstance(variant.get("source"), dict) else {}
+    if source.get("parent_id") != parent.get("id"):
+        raise AssertionError(f"{engine_name} parent contract mismatch: parent_id")
+    audit = variant.get("audit") if isinstance(variant.get("audit"), dict) else {}
+    for field in AUDIT_TRUE_FIELDS:
+        if audit.get(field) is not True:
+            raise AssertionError(f"{engine_name} parent contract mismatch: audit.{field}")
+    expected_sha = parent_record_sha256(parent)
+    if provenance.get("parent_id") != parent.get("id"):
+        raise AssertionError(f"{engine_name} provenance parent_id mismatch")
+    if provenance.get("parent_record_sha256") != expected_sha:
+        raise AssertionError(f"{engine_name} provenance parent fingerprint mismatch")
+    if provenance.get("independent_recalculation") is not True:
+        raise AssertionError(f"{engine_name} independent recalculation evidence missing")
+    if not provenance.get("verification_evidence"):
+        raise AssertionError(f"{engine_name} verification evidence missing")
 
 
 def _adapt_specialized(parent: dict, count: int, now: str) -> tuple[list[dict], list[dict], str]:
@@ -97,8 +139,7 @@ def _adapt_specialized(parent: dict, count: int, now: str) -> tuple[list[dict], 
             full["question"] = question
             full["answer"] = answer
             full["explanation"] = str(row.get("explanation") or "")
-            variants.append(full)
-            provenance.append({
+            prov = {
                 "variant_id": vid,
                 "parent_id": parent["id"],
                 "parent_record_sha256": parent_record_sha256(parent),
@@ -108,14 +149,20 @@ def _adapt_specialized(parent: dict, count: int, now: str) -> tuple[list[dict], 
                 "verified_at": now,
                 "independent_recalculation": True,
                 "verification_evidence": _verification_evidence(engine_name, evidence),
-            })
+            }
+            _assert_variant_parent_contract(parent, full, prov, engine_name)
+            variants.append(full)
+            provenance.append(prov)
         return variants, provenance, f"specialized:{engine_name}:{reason}"
 
     legacy_variants, legacy_prov, legacy_reason = generate_legacy_exact(parent, count, now)
     if legacy_variants:
-        for p in legacy_prov:
+        if len(legacy_variants) != len(legacy_prov):
+            raise AssertionError("legacy exact adapter returned incomplete provenance set")
+        for row, p in zip(legacy_variants, legacy_prov):
             p["generator"] = "generate_all_safe_verified_variants.py"
             p["generation_method"] = "legacy_exact_adapter:" + str(p.get("generation_method") or legacy_reason)
+            _assert_variant_parent_contract(parent, row, p, "legacy_exact")
         return legacy_variants, legacy_prov, f"legacy:{legacy_reason}"
 
     reasons.append(f"legacy:{legacy_reason}")
