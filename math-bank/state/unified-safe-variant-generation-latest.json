@@ -1,14 +1,15 @@
 {
-  "status": "PASS_CI",
-  "persist_schema_version": 8,
-  "run_id": "32543289058",
-  "triggering_sha": "540e1acb437474e9e6a3fce844304de503be5c9e",
-  "recorded_at_utc": "2026-08-22T01:26:31.181287+00:00",
+  "status": "FAIL_CI_DIAGNOSTIC",
+  "persist_schema_version": 9,
+  "run_id": "32543349691",
+  "triggering_sha": "49ad168f30b3871d0f6d2a167b71b94d58f1d3d7",
+  "recorded_at_utc": "2026-08-22T01:30:26.122424+00:00",
   "step_outcomes": {
     "compile": "success",
     "core": "success",
     "circle": "success",
     "cylinder": "success",
+    "cone": "failure",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
   },
@@ -29,6 +30,7 @@
     "rectangular_prism_volume",
     "cube_volume",
     "cylinder_volume_pi_3_14",
+    "cone_volume_pi_3_14",
     "speed_distance",
     "binary_arithmetic_exact",
     "linear_equation_exact"
@@ -69,6 +71,7 @@
   "circle_area_pi_3_14_exact_product_and_two_inverse_identities": true,
   "circle_circumference_pi_3_14_exact_product_and_two_inverse_identities": true,
   "cylinder_volume_pi_3_14_exact_product_and_inverse_identities": true,
+  "cone_volume_pi_3_14_exact_one_third_product_and_inverse_identities": true,
   "square_area_exact_product_and_integer_square_root_identity": true,
   "triangle_area_exact_half_product_and_doubled_area_identity": true,
   "parallelogram_area_exact_product_and_inverse_identity": true,
