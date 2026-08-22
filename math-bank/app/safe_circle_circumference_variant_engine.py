@@ -36,7 +36,7 @@ def _parse_parent(parent: dict):
         return None
     blocked = (
         "面積", "直径", "弧", "扇形", "おうぎ形", "中心角", "半円", "四分円",
-        "半径を求", "直径を求", "図", "グラフ", "mm", "km", "mの円",
+        "半径を求", "直径を求", "図", "グラフ", "mm", "km",
     )
     if any(token in q for token in blocked):
         return None
