@@ -36,7 +36,8 @@ def main() -> None:
         parent(figure_refs=["cone.svg"]),
         parent(choices=["56.52cm³", "169.56cm³"]),
         parent(question="半径3cm、高さ6cmの円柱の体積を、円周率を3.14として求めなさい。", answer="169.56cm³"),
-        parent(question="半径3cm、高さ5cmの円すいの体積を、円周率を3.14として求めなさい。", answer="47.1cm³"),
+        # r^2*h=20 is not divisible by 3, so this would require a repeating decimal and must fail closed.
+        parent(question="半径2cm、高さ5cmの円すいの体積を、円周率を3.14として求めなさい。", answer="20.933333cm³"),
         parent(question="直径6cm、高さ6cmの円すいの体積を、円周率を3.14として求めなさい。", answer="56.52cm³"),
         parent(question="半径3cm、高さ6cmの円すいの表面積を、円周率を3.14として求めなさい。", answer="56.52cm³"),
     ]
