@@ -1,9 +1,9 @@
 {
   "status": "PASS_CI",
-  "persist_schema_version": 11,
-  "run_id": "32553289895",
-  "triggering_sha": "b9e497716995a50a2a9dba97dbf6e63e9317d4a4",
-  "recorded_at_utc": "2026-08-22T05:02:22.914660+00:00",
+  "persist_schema_version": 12,
+  "run_id": "32553316122",
+  "triggering_sha": "8749b24302395ecac208d64e235b90cec86f502d",
+  "recorded_at_utc": "2026-08-22T05:02:58.863364+00:00",
   "step_outcomes": {
     "compile": "success",
     "core": "success",
@@ -12,12 +12,14 @@
     "cone": "success",
     "sphere": "success",
     "inverse_proportion": "success",
+    "pythagorean": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
   },
   "engines": [
     "affine",
     "inverse_proportion",
+    "pythagorean_hypotenuse",
     "single_draw_probability",
     "proportion",
     "percentage",
@@ -71,6 +73,7 @@
   "safe_target_per_parent_default": 3,
   "unsupported_manual_shortfall_only": true,
   "inverse_proportion_exact_division_and_product_identity": true,
+  "pythagorean_hypotenuse_exact_square_sum_and_two_inverse_identities": true,
   "rectangle_area_exact_product_and_inverse_identity": true,
   "rectangle_perimeter_exact_double_sum_and_two_inverse_identities": true,
   "circle_area_pi_3_14_exact_product_and_two_inverse_identities": true,
