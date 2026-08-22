@@ -1,0 +1,66 @@
+name: Math Wire Circle Circumference Unified
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-wire-circle-circumference.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: math-wire-circle-circumference-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  patch-test-commit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Wire circumference engine into unified driver exactly once
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('math-bank/app/generate_all_safe_verified_variants.py')
+          text=p.read_text(encoding='utf-8')
+          import_anchor='from safe_circle_area_variant_engine import generate as generate_circle_area\n'
+          import_new=import_anchor+'from safe_circle_circumference_variant_engine import generate as generate_circle_circumference\n'
+          if 'safe_circle_circumference_variant_engine' not in text:
+              if text.count(import_anchor) != 1:
+                  raise SystemExit('circle area import anchor mismatch')
+              text=text.replace(import_anchor,import_new,1)
+          tuple_anchor='    ("circle_area_pi_3_14", generate_circle_area),\n'
+          tuple_new=tuple_anchor+'    ("circle_circumference_pi_3_14", generate_circle_circumference),\n'
+          if '("circle_circumference_pi_3_14", generate_circle_circumference)' not in text:
+              if text.count(tuple_anchor) != 1:
+                  raise SystemExit('circle area tuple anchor mismatch')
+              text=text.replace(tuple_anchor,tuple_new,1)
+          p.write_text(text,encoding='utf-8')
+          PY
+      - name: Compile and test circumference integration
+        working-directory: math-bank/app
+        run: |
+          python -m py_compile generate_all_safe_verified_variants.py safe_circle_circumference_variant_engine.py test_safe_circle_circumference_variant_engine.py test_circle_circumference_unified_adapter.py
+          python test_safe_circle_circumference_variant_engine.py
+          python test_circle_circumference_unified_adapter.py
+      - name: Commit unified driver wiring
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- math-bank/app/generate_all_safe_verified_variants.py
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'wire circle circumference into unified variant generation'
+          for i in 1 2 3 4 5 6; do
+            git pull --rebase origin math-problem-bank-bootstrap && git push origin HEAD:math-problem-bank-bootstrap && exit 0
+            sleep $((i*4))
+          done
+          exit 1
