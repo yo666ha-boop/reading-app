@@ -24,17 +24,30 @@
   },
   "unified_safe_generation": {
     "last_terminal_status": "PASS_CI",
-    "last_terminal_schema": 10,
-    "last_terminal_run_id": "32550476704",
-    "last_terminal_triggering_sha": "57a00031ebd140c3c261c1796503917952272e93",
-    "sphere_engine_commit": "d9f39c35bf840c2db85db260ce887a2cb1088fff",
-    "sphere_regression_commit": "c312231c980620b02ad3537f3ba0cffb3b92c474",
-    "sphere_unified_wiring_commit": "258ac95f7c1be35ae97b8081f34280a66dc4fd2f",
-    "sphere_unified_adapter_commit": "2f9885a6962c0ab906dbfbe2e2d47f6fefd79af5",
-    "sphere_schema10_contract_commit": "57a00031ebd140c3c261c1796503917952272e93",
-    "new_this_run": "球の表面積A=4πr²と体積V=4/3πr³をpi=3.14・text-only・exact answer・独立逆算条件でfail-closed対応し、Unified schema10全step PASS。",
+    "last_terminal_schema": 12,
+    "last_terminal_run_id": "32553316122",
+    "last_terminal_triggering_sha": "8749b24302395ecac208d64e235b90cec86f502d",
+    "new_this_run": "反比例y=a/xの値代入と、直角三角形の三平方による斜辺計算をtext-only・exact answer・独立逆算条件でfail-closed対応し、Unified schema12全step PASS。",
+    "inverse_proportion": {
+      "engine_commit": "ff83754423eb542da040e12da8115271f317e8d6",
+      "test_commit": "a140c535ac330afd5fad493643bdf1cc96b27419",
+      "adapter_commit": "f7f89d06e4c4ebed1ab3963dda2362ec0fae64f8",
+      "unified_wiring_commit": "7402a473ef40dd6a7968074e62c487d5b28399b4",
+      "schema11_commit": "877ef8cc7466f8bf3bed91f9737096f72d9a162d",
+      "schema11_pass_run": "32553226475",
+      "exact_identity": "y=a/x plus x*y=a"
+    },
+    "pythagorean_hypotenuse": {
+      "engine_commit": "f5a48d0f8884953a3134ea0769b8affe3ae65684",
+      "test_commit": "d88b1a1e080b13e9db9df274aad771b1743b22ec",
+      "adapter_commit": "4ddc11799212d5632ec9be7e077dd4a972d7265b",
+      "unified_wiring_commit": "b9e497716995a50a2a9dba97dbf6e63e9317d4a4",
+      "schema12_commit": "8749b24302395ecac208d64e235b90cec86f502d",
+      "schema12_pass_run": "32553316122",
+      "exact_identity": "a^2+b^2=c^2 plus c^2-a^2=b^2 and c^2-b^2=a^2"
+    },
     "engines": [
-      "affine", "single_draw_probability", "proportion", "percentage", "simple_average",
+      "affine", "inverse_proportion", "pythagorean_hypotenuse", "single_draw_probability", "proportion", "percentage", "simple_average",
       "rectangle_area", "rectangle_perimeter", "circle_area_pi_3_14", "circle_circumference_pi_3_14",
       "square_area_and_perimeter", "triangle_area", "parallelogram_area", "trapezoid_area",
       "rectangular_prism_volume", "cube_volume", "cylinder_volume_pi_3_14", "cone_volume_pi_3_14",
@@ -49,27 +62,27 @@
   },
   "base_recovery": {
     "actions_latest_confirmed": {
-      "all_artifacts_seen": 289,
-      "candidate_artifacts": 259,
-      "reused_verified_artifacts": 257,
-      "downloaded_artifacts_this_run": 2,
-      "members_sha256_checked": 796,
-      "member_bytes_hashed": 69820646,
+      "all_artifacts_seen": 292,
+      "candidate_artifacts": 262,
+      "reused_verified_artifacts": 261,
+      "downloaded_artifacts_this_run": 1,
+      "members_sha256_checked": 802,
+      "member_bytes_hashed": 69828476,
       "download_failures": 0,
       "canonical_hits": 0,
       "valid_audit_hits": 0,
       "pair_hits": 0
     },
     "latest_auto_complete_saved": {
-      "run_id": "32547733862",
+      "run_id": "32550609711",
       "result": "success",
-      "actions_members_sha256_checked": 792,
-      "actions_reused_verified_artifacts": 257,
+      "actions_members_sha256_checked": 798,
+      "actions_reused_verified_artifacts": 260,
       "actions_downloaded_artifacts_this_run": 0,
       "pair_hits": 0,
       "wiring_ready": false,
       "publication_ready": false,
-      "note": "saved auto-complete is older than live Actions delta"
+      "note": "older than live Actions delta; checkpoint push should retrigger"
     },
     "branch_tag_exact": {"readable_blobs":1901,"checked":1901,"shards_completed":16,"exact_coverage_complete":true,"pair_hits":0},
     "pr_refs_exact": {"refs":4,"readable_blobs":1419,"checked":1419,"shards_completed":16,"exact_coverage_complete":true,"pair_hits":0},
@@ -78,11 +91,10 @@
     "github_issue_pr_attachments": "COMPLETE_PAIR0",
     "file_library_exact_pair": false,
     "google_drive_exact_pair": false,
-    "google_drive_rechecked_at_this_run": true,
     "policy": "No reconstruction; incomplete/cancelled evidence never proves absence; no 161/1271/Winpass717 promotion."
   },
   "CI_browser_A4": {
-    "latest_observed_audit_run_id": "32547675790",
+    "latest_observed_audit_run_id": "32553202552",
     "audit_result": "success",
     "synthetic_browser": "PASS_FOUR_ENVIRONMENTS",
     "real_canonical_browser": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT",
@@ -92,6 +104,6 @@
   },
   "publication_ready": false,
   "branch": "math-problem-bank-bootstrap",
-  "recorded_at_utc": "2026-08-22T04:05:00Z",
+  "recorded_at_utc": "2026-08-22T05:04:00Z",
   "next": "Continue exact recovery delta. Exact pair immediately triggers SHA/audit validation, immutable BASE wiring, actual 1124-parent adaptive generation, fingerprint-bound manual queue, strict validation, real browser/A4 and strict release."
 }
