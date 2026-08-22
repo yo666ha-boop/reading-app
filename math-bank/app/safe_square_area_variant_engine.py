@@ -1,13 +1,14 @@
 from __future__ import annotations
 
-"""Fail-closed exact engine for a narrow square-area parent shape.
+"""Fail-closed exact engine for narrow square area/perimeter parent shapes.
 
 Only actual parents that explicitly state exactly one positive integer side in
-cm, ask only for the area of a square, and have an exactly verified integer
-cm^2 answer are accepted. Parent and generated answers are recalculated by
-A=s^2 and independently checked by exact integer square-root identity.
-Figures, choices, mixed units, perimeter/diagonal/reverse questions and
-ambiguous multiple-side statements fail closed.
+cm and ask only for either the area or the perimeter of a square are accepted.
+Area answers are recalculated by A=s^2 and independently checked by exact integer
+square-root identity. Perimeter answers are recalculated by P=4*s and checked by
+P/4=s. Figures, real choices, mixed units, diagonal/reverse questions and
+ambiguous multiple-side statements fail closed. None and [] both represent a
+non-choice parent.
 """
 
 import hashlib
@@ -16,7 +17,8 @@ import math
 import re
 
 SIDE_RE = re.compile(r"(?:1辺|一辺)\s*(?P<side>\d+)\s*cm")
-ANSWER_RE = re.compile(r"^(?P<area>\d+)\s*(?:cm\^?2|cm²|㎠)$")
+AREA_ANSWER_RE = re.compile(r"^(?P<area>\d+)\s*(?:cm\^?2|cm²|㎠)$")
+PERIMETER_ANSWER_RE = re.compile(r"^(?P<perimeter>\d+)\s*cm$")
 
 
 def _norm(value: object) -> str:
@@ -37,13 +39,13 @@ def _parent_sha(parent: dict) -> str:
 def _parse_parent(parent: dict):
     if parent.get("figure_refs"):
         return None
-    if parent.get("choices") is not None:
+    if parent.get("choices"):
         return None
     q = _norm(parent.get("question"))
-    if "正方形" not in q or "面積" not in q:
+    if "正方形" not in q:
         return None
     blocked = (
-        "周", "周の長さ", "対角線", "辺の長さを", "一辺を", "1辺を", "図", "mm", "m²", "m2", "メートル",
+        "対角線", "辺の長さを", "一辺を", "1辺を", "図", "mm", "m²", "m2", "メートル",
     )
     if any(token in q for token in blocked):
         return None
@@ -54,25 +56,41 @@ def _parse_parent(parent: dict):
     side = int(match.group("side"))
     if side <= 0:
         return None
-    area = side * side
     answer = _norm(parent.get("answer")).replace(" ", "")
-    am = ANSWER_RE.fullmatch(answer)
-    if am is None or int(am.group("area")) != area:
+
+    asks_area = "面積" in q
+    asks_perimeter = any(token in q for token in ("周の長さ", "周りの長さ", "まわりの長さ"))
+    if asks_area == asks_perimeter:
         return None
-    root = math.isqrt(area)
-    if root * root != area or root != side:
+
+    if asks_area:
+        area = side * side
+        am = AREA_ANSWER_RE.fullmatch(answer)
+        if am is None or int(am.group("area")) != area:
+            return None
+        root = math.isqrt(area)
+        if root * root != area or root != side:
+            return None
+        return "area", match, side, area
+
+    perimeter = 4 * side
+    pm = PERIMETER_ANSWER_RE.fullmatch(answer)
+    if pm is None or int(pm.group("perimeter")) != perimeter:
         return None
-    return match, side, area
+    if perimeter % 4 != 0 or perimeter // 4 != side:
+        return None
+    return "perimeter", match, side, perimeter
 
 
 def can_generate(parent: dict) -> tuple[bool, str]:
-    if _parse_parent(parent) is not None:
-        return True, "square_integer_cm_area_exact"
+    parsed = _parse_parent(parent)
+    if parsed is not None:
+        return True, "square_integer_cm_area_exact" if parsed[0] == "area" else "square_integer_cm_perimeter_exact"
     if parent.get("figure_refs"):
         return False, "figure_parent"
-    if parent.get("choices") is not None:
+    if parent.get("choices"):
         return False, "choice_parent"
-    return False, "square_area_parent_not_exactly_parsed_and_verified"
+    return False, "square_parent_not_exactly_parsed_and_verified"
 
 
 def _variant_side(seed: int, index: int) -> int:
@@ -88,7 +106,7 @@ def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
         assert not ok
         return [], [], reason
 
-    match, parent_side, parent_area = parsed
+    mode, match, parent_side, parent_value = parsed
     q = _norm(parent.get("question"))
     seed = int(_parent_sha(parent)[:12], 16)
     seen: set[int] = set()
@@ -100,23 +118,44 @@ def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
         while side == parent_side or side in seen:
             side += 1
         seen.add(side)
-        area = side * side
-        root = math.isqrt(area)
-        if root * root != area or root != side:
-            raise AssertionError("square-root inverse identity failed")
         replacement = f"1辺{side}cm"
         new_question = q[:match.start()] + replacement + q[match.end():]
-        rows.append({
-            "question": new_question,
-            "answer": f"{area}cm²",
-            "explanation": f"正方形の面積=1辺×1辺より、{side}×{side}={area}cm²。平方根の逆算でも確認済み。",
-            "numeric_signature": (str(side),),
-        })
-        evidence.append({
-            "parent_sha256": _parent_sha(parent),
-            "method": "square_exact_product_and_integer_square_root_identity",
-            "parent_recalculation": f"{parent_side}×{parent_side}={parent_area}cm²",
-            "variant_recalculation": f"{side}×{side}={area}cm²",
-            "independent_check": "isqrt(A)^2 == A AND isqrt(A) == side PASS",
-        })
-    return rows, evidence, "square_integer_cm_area_exact"
+
+        if mode == "area":
+            value = side * side
+            root = math.isqrt(value)
+            if root * root != value or root != side:
+                raise AssertionError("square-root inverse identity failed")
+            rows.append({
+                "question": new_question,
+                "answer": f"{value}cm²",
+                "explanation": f"正方形の面積=1辺×1辺より、{side}×{side}={value}cm²。平方根の逆算でも確認済み。",
+                "numeric_signature": (str(side),),
+            })
+            evidence.append({
+                "parent_sha256": _parent_sha(parent),
+                "method": "square_exact_product_and_integer_square_root_identity",
+                "parent_recalculation": f"{parent_side}×{parent_side}={parent_value}cm²",
+                "variant_recalculation": f"{side}×{side}={value}cm²",
+                "independent_check": "isqrt(A)^2 == A AND isqrt(A) == side PASS",
+            })
+        else:
+            value = 4 * side
+            if value % 4 != 0 or value // 4 != side:
+                raise AssertionError("square perimeter inverse identity failed")
+            rows.append({
+                "question": new_question,
+                "answer": f"{value}cm",
+                "explanation": f"正方形の周の長さ=1辺×4より、{side}×4={value}cm。4で割る逆算でも確認済み。",
+                "numeric_signature": (str(side),),
+            })
+            evidence.append({
+                "parent_sha256": _parent_sha(parent),
+                "method": "square_perimeter_exact_quadruple_and_inverse_identity",
+                "parent_recalculation": f"{parent_side}×4={parent_value}cm",
+                "variant_recalculation": f"{side}×4={value}cm",
+                "independent_check": "perimeter/4 == side PASS",
+            })
+
+    reason = "square_integer_cm_area_exact" if mode == "area" else "square_integer_cm_perimeter_exact"
+    return rows, evidence, reason
