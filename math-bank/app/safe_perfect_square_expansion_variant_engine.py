@@ -38,15 +38,17 @@ def generate(parent,count):
     if parsed is None:
         ok,reason=can_generate(parent); assert not ok; return [],[],reason
     m,pa,pm,pc=parsed; q=_norm(parent.get("question")); seed=int(_sha(parent)[:12],16)
-    seen=set(); rows=[]; ev=[]
+    seen_abs=set(); rows=[]; ev=[]
     for i in range(1,count+1):
         a=_val(seed,i); bump=0
-        while a==pa or a in seen or a==0:
-            bump+=1; a += bump if a>0 else -bump
-        seen.add(a); mid=2*a; const=a*a
+        while abs(a)==abs(pa) or abs(a) in seen_abs or a==0:
+            bump+=1
+            sign=-1 if a<0 else 1
+            a=sign*(abs(a)+bump)
+        seen_abs.add(abs(a)); mid=2*a; const=a*a
         if (1,2*a,a*a)!=(1,mid,const): raise AssertionError("perfect square expansion identity failed")
         expr=f"(x{_signed(a)})²"; newq=q[:m.start()]+expr+q[m.end():]
         ans=f"x²{_signed(mid)}x{_signed(const)}"
-        rows.append({"question":newq,"answer":ans,"explanation":f"(x{_signed(a)})²=x²{_signed(2*a)}x{_signed(a*a)}。中央係数2aと定数a²を独立確認済み。","numeric_signature":(str(a),)})
-        ev.append({"parent_sha256":_sha(parent),"method":"perfect_square_expansion_double_and_square_coefficients","parent_recalculation":f"2a={pm}, a^2={pc}","variant_recalculation":f"2a={mid}, a^2={const}","independent_check":"expanded coefficients (1,2a,a^2) exactly match answer PASS"})
+        rows.append({"question":newq,"answer":ans,"explanation":f"(x{_signed(a)})²=x²{_signed(2*a)}x{_signed(a*a)}。中央係数2aと定数a²を独立確認済み。","numeric_signature":(str(abs(a)),)})
+        ev.append({"parent_sha256":_sha(parent),"method":"perfect_square_expansion_double_and_square_coefficients","parent_recalculation":f"2a={pm}, a^2={pc}","variant_recalculation":f"2a={mid}, a^2={const}","independent_check":"expanded coefficients (1,2a,a^2) exactly match answer PASS; absolute numeric surfaces unique across siblings"})
     return rows,ev,"perfect_square_integer_expansion_exact"
