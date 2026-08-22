@@ -33,6 +33,7 @@ from safe_mode_variant_engine import generate as generate_mode
 from safe_monic_quadratic_factorization_variant_engine import generate as generate_monic_quadratic_factorization
 from safe_parallelogram_area_variant_engine import generate as generate_parallelogram_area
 from safe_percentage_variant_engine import generate as generate_percentage
+from safe_perfect_square_expansion_variant_engine import generate as generate_perfect_square_expansion
 from safe_prime_factorization_variant_engine import generate as generate_prime_factorization
 from safe_proportion_variant_engine import generate as generate_proportion
 from safe_pythagorean_hypotenuse_variant_engine import generate as generate_pythagorean_hypotenuse
@@ -63,6 +64,7 @@ SPECIALIZED_ENGINES = (
     ("quadratic_square_equation", generate_quadratic_square_equation),
     ("difference_of_squares_factorization", generate_difference_of_squares_factorization),
     ("monic_quadratic_factorization", generate_monic_quadratic_factorization),
+    ("perfect_square_expansion", generate_perfect_square_expansion),
     ("binomial_expansion", generate_binomial_expansion),
     ("square_root_simplification", generate_square_root_simplification),
     ("integer_power", generate_integer_power),
