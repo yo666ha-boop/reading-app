@@ -32,7 +32,9 @@ def _parent_sha(parent: dict) -> str:
 def _parse_parent(parent: dict):
     if parent.get("figure_refs"):
         return None
-    if parent.get("choices") is not None:
+    # Empty lists are a valid no-choice representation. Only actual populated
+    # choices make the parent a choice problem and therefore unsafe here.
+    if parent.get("choices"):
         return None
     q = _norm(parent.get("question"))
     if "長方形" not in q or not any(token in q for token in ("周の長さ", "周りの長さ", "まわりの長さ")):
@@ -68,7 +70,7 @@ def can_generate(parent: dict) -> tuple[bool, str]:
         return True, "rectangle_integer_cm_perimeter_exact"
     if parent.get("figure_refs"):
         return False, "figure_parent"
-    if parent.get("choices") is not None:
+    if parent.get("choices"):
         return False, "choice_parent"
     return False, "rectangle_perimeter_parent_not_exactly_parsed_and_verified"
 
