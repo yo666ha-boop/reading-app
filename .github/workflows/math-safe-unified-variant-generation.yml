@@ -7,6 +7,7 @@ on:
       - 'math-bank/app/generate_all_safe_verified_variants.py'
       - 'math-bank/app/test_generate_all_safe_verified_variants.py'
       - 'math-bank/app/test_unified_parent_contract_gate.py'
+      - 'math-bank/app/test_legacy_empty_choices_exact_generation.py'
       - 'math-bank/app/test_safe_trapezoid_area_variant_engine.py'
       - 'math-bank/app/test_safe_speed_distance_variant_engine.py'
       - 'math-bank/app/test_speed_distance_unified_adapter.py'
@@ -65,6 +66,7 @@ jobs:
             math-bank/app/safe_speed_distance_variant_engine.py \
             math-bank/app/test_generate_all_safe_verified_variants.py \
             math-bank/app/test_unified_parent_contract_gate.py \
+            math-bank/app/test_legacy_empty_choices_exact_generation.py \
             math-bank/app/test_safe_trapezoid_area_variant_engine.py \
             math-bank/app/test_safe_speed_distance_variant_engine.py \
             math-bank/app/test_speed_distance_unified_adapter.py \
@@ -82,6 +84,7 @@ jobs:
         run: |
           python test_generate_all_safe_verified_variants.py
           python test_unified_parent_contract_gate.py
+          python test_legacy_empty_choices_exact_generation.py
           python test_safe_trapezoid_area_variant_engine.py
           python test_safe_speed_distance_variant_engine.py
           python test_speed_distance_unified_adapter.py
@@ -107,7 +110,7 @@ jobs:
           p=Path('math-bank/state/unified-safe-variant-generation-latest.json')
           payload={
             'status':'PASS_CI',
-            'persist_schema_version':4,
+            'persist_schema_version':5,
             'run_id':os.environ['RUN_ID'],
             'triggering_sha':os.environ['TRIGGERING_SHA'],
             'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
@@ -119,6 +122,7 @@ jobs:
             'strict_validator_remains_promotion_gate':True,
             'figure_choice_unsupported_fail_closed':True,
             'empty_list_non_choice_representation_supported':True,
+            'legacy_exact_empty_list_non_choice_supported':True,
             'unified_parent_contract_runtime_fail_closed':True,
             'unified_parent_contract_fields':['grade','unit','skill','difficulty','format','question_format','taxonomy','choices','figure_refs','source.parent_id','audit.problem_answer_verified','audit.structure_verified','audit.figure_refs_verified'],
             'fingerprint_bound_manual_queue':True,
