@@ -19,6 +19,15 @@ def main() -> None:
     direct = parent(question="たて8cm、横5cmの長方形の周の長さは何cmですか。")
     ok, reason = can_generate(direct)
     assert ok and reason == "rectangle_integer_cm_perimeter_exact"
+
+    # Some canonical records may represent a non-choice question with an empty
+    # list instead of null. That must remain a safe non-choice representation.
+    empty_choices = parent(choices=[])
+    ok, reason = can_generate(empty_choices)
+    assert ok and reason == "rectangle_integer_cm_perimeter_exact"
+    empty_rows, empty_evidence, _ = generate(empty_choices, 1)
+    assert len(empty_rows) == len(empty_evidence) == 1
+
     rows, evidence, _ = generate(parent(), 3)
     assert len(rows) == 3 and len(evidence) == 3
     sigs = {tuple(row["numeric_signature"]) for row in rows}
