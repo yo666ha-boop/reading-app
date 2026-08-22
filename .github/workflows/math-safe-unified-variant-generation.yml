@@ -1,51 +1,31 @@
 name: Math Safe Unified Variant Generation
 
 on:
+  workflow_dispatch:
   push:
     branches: [math-problem-bank-bootstrap]
     paths:
       - 'math-bank/app/generate_all_safe_verified_variants.py'
+      - 'math-bank/app/generate_safe_verified_variants.py'
+      - 'math-bank/app/safe_*_variant_engine.py'
+      - 'math-bank/app/test_safe_*_variant_engine.py'
+      - 'math-bank/app/test_*_unified_adapter.py'
       - 'math-bank/app/test_generate_all_safe_verified_variants.py'
       - 'math-bank/app/test_unified_parent_contract_gate.py'
       - 'math-bank/app/test_legacy_empty_choices_exact_generation.py'
-      - 'math-bank/app/test_safe_trapezoid_area_variant_engine.py'
-      - 'math-bank/app/test_safe_speed_distance_variant_engine.py'
-      - 'math-bank/app/test_speed_distance_unified_adapter.py'
-      - 'math-bank/app/test_safe_rectangular_prism_volume_variant_engine.py'
-      - 'math-bank/app/test_safe_square_area_variant_engine.py'
-      - 'math-bank/app/test_square_area_unified_adapter.py'
-      - 'math-bank/app/test_safe_cube_volume_variant_engine.py'
-      - 'math-bank/app/test_cube_volume_unified_adapter.py'
-      - 'math-bank/app/test_safe_rectangle_perimeter_variant_engine.py'
-      - 'math-bank/app/test_rectangle_perimeter_unified_adapter.py'
-      - 'math-bank/app/test_safe_circle_area_variant_engine.py'
-      - 'math-bank/app/test_circle_area_unified_adapter.py'
-      - 'math-bank/app/test_safe_circle_circumference_variant_engine.py'
-      - 'math-bank/app/test_circle_circumference_unified_adapter.py'
-      - 'math-bank/app/test_safe_cylinder_volume_variant_engine.py'
-      - 'math-bank/app/test_cylinder_volume_unified_adapter.py'
-      - 'math-bank/app/test_safe_cone_volume_variant_engine.py'
-      - 'math-bank/app/test_cone_volume_unified_adapter.py'
-      - 'math-bank/app/test_safe_sphere_variant_engine.py'
-      - 'math-bank/app/test_sphere_unified_adapter.py'
-      - 'math-bank/app/test_safe_inverse_proportion_variant_engine.py'
-      - 'math-bank/app/test_inverse_proportion_unified_adapter.py'
-      - 'math-bank/app/test_safe_pythagorean_hypotenuse_variant_engine.py'
-      - 'math-bank/app/test_pythagorean_hypotenuse_unified_adapter.py'
-      - 'math-bank/app/generate_safe_verified_variants.py'
-      - 'math-bank/app/safe_*_variant_engine.py'
       - '.github/workflows/math-safe-unified-variant-generation.yml'
-  workflow_dispatch:
 
 concurrency:
   group: math-safe-unified-variant-generation-${{ github.ref }}
   cancel-in-progress: false
+
 permissions:
   contents: write
+
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -54,182 +34,88 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
       - id: compile
-        name: Compile unified and specialized engines
+        name: Compile complete math app Python surface
         continue-on-error: true
+        run: python -m compileall -q math-bank/app
+
+      - id: specialized
+        name: Run every fail-closed specialized engine and unified adapter regression
+        if: steps.compile.outcome == 'success'
+        continue-on-error: true
+        working-directory: math-bank/app
+        shell: bash
         run: |
-          python -m py_compile \
-            math-bank/app/generate_all_safe_verified_variants.py \
-            math-bank/app/generate_safe_verified_variants.py \
-            math-bank/app/safe_affine_variant_engine.py \
-            math-bank/app/safe_inverse_proportion_variant_engine.py \
-            math-bank/app/safe_pythagorean_hypotenuse_variant_engine.py \
-            math-bank/app/safe_single_draw_probability_variant_engine.py \
-            math-bank/app/safe_proportion_variant_engine.py \
-            math-bank/app/safe_percentage_variant_engine.py \
-            math-bank/app/safe_average_variant_engine.py \
-            math-bank/app/safe_rectangle_area_variant_engine.py \
-            math-bank/app/safe_rectangle_perimeter_variant_engine.py \
-            math-bank/app/safe_circle_area_variant_engine.py \
-            math-bank/app/safe_circle_circumference_variant_engine.py \
-            math-bank/app/safe_square_area_variant_engine.py \
-            math-bank/app/safe_triangle_area_variant_engine.py \
-            math-bank/app/safe_parallelogram_area_variant_engine.py \
-            math-bank/app/safe_trapezoid_area_variant_engine.py \
-            math-bank/app/safe_rectangular_prism_volume_variant_engine.py \
-            math-bank/app/safe_cube_volume_variant_engine.py \
-            math-bank/app/safe_cylinder_volume_variant_engine.py \
-            math-bank/app/safe_cone_volume_variant_engine.py \
-            math-bank/app/safe_sphere_variant_engine.py \
-            math-bank/app/safe_speed_distance_variant_engine.py \
-            math-bank/app/test_generate_all_safe_verified_variants.py \
-            math-bank/app/test_unified_parent_contract_gate.py \
-            math-bank/app/test_legacy_empty_choices_exact_generation.py \
-            math-bank/app/test_safe_trapezoid_area_variant_engine.py \
-            math-bank/app/test_safe_speed_distance_variant_engine.py \
-            math-bank/app/test_speed_distance_unified_adapter.py \
-            math-bank/app/test_safe_rectangular_prism_volume_variant_engine.py \
-            math-bank/app/test_safe_square_area_variant_engine.py \
-            math-bank/app/test_square_area_unified_adapter.py \
-            math-bank/app/test_safe_cube_volume_variant_engine.py \
-            math-bank/app/test_cube_volume_unified_adapter.py \
-            math-bank/app/test_safe_rectangle_perimeter_variant_engine.py \
-            math-bank/app/test_rectangle_perimeter_unified_adapter.py \
-            math-bank/app/test_safe_circle_area_variant_engine.py \
-            math-bank/app/test_circle_area_unified_adapter.py \
-            math-bank/app/test_safe_circle_circumference_variant_engine.py \
-            math-bank/app/test_circle_circumference_unified_adapter.py \
-            math-bank/app/test_safe_cylinder_volume_variant_engine.py \
-            math-bank/app/test_cylinder_volume_unified_adapter.py \
-            math-bank/app/test_safe_cone_volume_variant_engine.py \
-            math-bank/app/test_cone_volume_unified_adapter.py \
-            math-bank/app/test_safe_sphere_variant_engine.py \
-            math-bank/app/test_sphere_unified_adapter.py \
-            math-bank/app/test_safe_inverse_proportion_variant_engine.py \
-            math-bank/app/test_inverse_proportion_unified_adapter.py \
-            math-bank/app/test_safe_pythagorean_hypotenuse_variant_engine.py \
-            math-bank/app/test_pythagorean_hypotenuse_unified_adapter.py
+          set -euo pipefail
+          count=0
+          for f in test_safe_*_variant_engine.py test_*_unified_adapter.py; do
+            [ -f "$f" ] || continue
+            echo "RUN $f"
+            python "$f"
+            count=$((count+1))
+          done
+          test "$count" -gt 0
+          echo "PASS_SPECIALIZED_AND_ADAPTER_TEST_COUNT=$count"
+
       - id: core
-        name: Run existing unified regression
+        name: Run unified generation regression
         if: steps.compile.outcome == 'success'
         continue-on-error: true
         working-directory: math-bank/app
-        run: |
-          python test_generate_all_safe_verified_variants.py
-          python test_safe_trapezoid_area_variant_engine.py
-          python test_safe_speed_distance_variant_engine.py
-          python test_speed_distance_unified_adapter.py
-          python test_safe_rectangular_prism_volume_variant_engine.py
-          python test_safe_square_area_variant_engine.py
-          python test_square_area_unified_adapter.py
-          python test_safe_cube_volume_variant_engine.py
-          python test_cube_volume_unified_adapter.py
-          python test_safe_rectangle_perimeter_variant_engine.py
-          python test_rectangle_perimeter_unified_adapter.py
-      - id: circle
-        name: Run circle regressions
-        if: steps.compile.outcome == 'success'
-        continue-on-error: true
-        working-directory: math-bank/app
-        run: |
-          python test_safe_circle_area_variant_engine.py
-          python test_circle_area_unified_adapter.py
-          python test_safe_circle_circumference_variant_engine.py
-          python test_circle_circumference_unified_adapter.py
-      - id: cylinder
-        name: Run cylinder-volume regressions
-        if: steps.compile.outcome == 'success'
-        continue-on-error: true
-        working-directory: math-bank/app
-        run: |
-          python test_safe_cylinder_volume_variant_engine.py
-          python test_cylinder_volume_unified_adapter.py
-      - id: cone
-        name: Run cone-volume regressions
-        if: steps.compile.outcome == 'success'
-        continue-on-error: true
-        working-directory: math-bank/app
-        run: |
-          python test_safe_cone_volume_variant_engine.py
-          python test_cone_volume_unified_adapter.py
-      - id: sphere
-        name: Run sphere area-volume regressions
-        if: steps.compile.outcome == 'success'
-        continue-on-error: true
-        working-directory: math-bank/app
-        run: |
-          python test_safe_sphere_variant_engine.py
-          python test_sphere_unified_adapter.py
-      - id: inverse_proportion
-        name: Run inverse-proportion regressions
-        if: steps.compile.outcome == 'success'
-        continue-on-error: true
-        working-directory: math-bank/app
-        run: |
-          python test_safe_inverse_proportion_variant_engine.py
-          python test_inverse_proportion_unified_adapter.py
-      - id: pythagorean
-        name: Run Pythagorean-hypotenuse regressions
-        if: steps.compile.outcome == 'success'
-        continue-on-error: true
-        working-directory: math-bank/app
-        run: |
-          python test_safe_pythagorean_hypotenuse_variant_engine.py
-          python test_pythagorean_hypotenuse_unified_adapter.py
+        run: python test_generate_all_safe_verified_variants.py
+
       - id: parent_contract
         name: Run unified runtime parent-contract regression
         if: steps.compile.outcome == 'success'
         continue-on-error: true
         working-directory: math-bank/app
         run: python test_unified_parent_contract_gate.py
+
       - id: legacy_empty_choices
         name: Run legacy empty-choice exact regression
         if: steps.compile.outcome == 'success'
         continue-on-error: true
         working-directory: math-bank/app
         run: python test_legacy_empty_choices_exact_generation.py
-      - name: Persist unified-engine CI diagnostics
+
+      - name: Persist unified-engine CI diagnostics with concurrent-push recovery
         if: always()
         env:
           RUN_ID: ${{ github.run_id }}
           TRIGGERING_SHA: ${{ github.sha }}
           COMPILE_OUTCOME: ${{ steps.compile.outcome }}
+          SPECIALIZED_OUTCOME: ${{ steps.specialized.outcome }}
           CORE_OUTCOME: ${{ steps.core.outcome }}
-          CIRCLE_OUTCOME: ${{ steps.circle.outcome }}
-          CYLINDER_OUTCOME: ${{ steps.cylinder.outcome }}
-          CONE_OUTCOME: ${{ steps.cone.outcome }}
-          SPHERE_OUTCOME: ${{ steps.sphere.outcome }}
-          INVERSE_PROPORTION_OUTCOME: ${{ steps.inverse_proportion.outcome }}
-          PYTHAGOREAN_OUTCOME: ${{ steps.pythagorean.outcome }}
           PARENT_CONTRACT_OUTCOME: ${{ steps.parent_contract.outcome }}
           LEGACY_EMPTY_CHOICES_OUTCOME: ${{ steps.legacy_empty_choices.outcome }}
+        shell: bash
         run: |
-          python - <<'PY'
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          write_state() {
+            python - <<'PY'
           import json, os
           from datetime import datetime, timezone
           from pathlib import Path
           outcomes={
             'compile':os.environ.get('COMPILE_OUTCOME','unknown'),
+            'specialized_and_adapters':os.environ.get('SPECIALIZED_OUTCOME','unknown'),
             'core':os.environ.get('CORE_OUTCOME','unknown'),
-            'circle':os.environ.get('CIRCLE_OUTCOME','unknown'),
-            'cylinder':os.environ.get('CYLINDER_OUTCOME','unknown'),
-            'cone':os.environ.get('CONE_OUTCOME','unknown'),
-            'sphere':os.environ.get('SPHERE_OUTCOME','unknown'),
-            'inverse_proportion':os.environ.get('INVERSE_PROPORTION_OUTCOME','unknown'),
-            'pythagorean':os.environ.get('PYTHAGOREAN_OUTCOME','unknown'),
             'parent_contract':os.environ.get('PARENT_CONTRACT_OUTCOME','unknown'),
             'legacy_empty_choices':os.environ.get('LEGACY_EMPTY_CHOICES_OUTCOME','unknown'),
           }
           all_pass=all(v=='success' for v in outcomes.values())
-          p=Path('math-bank/state/unified-safe-variant-generation-latest.json')
           payload={
             'status':'PASS_CI' if all_pass else 'FAIL_CI_DIAGNOSTIC',
-            'persist_schema_version':12,
+            'persist_schema_version':16,
             'run_id':os.environ['RUN_ID'],
             'triggering_sha':os.environ['TRIGGERING_SHA'],
             'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
             'step_outcomes':outcomes,
-            'engines':['affine','inverse_proportion','pythagorean_hypotenuse','single_draw_probability','proportion','percentage','simple_average','rectangle_area','rectangle_perimeter','circle_area_pi_3_14','circle_circumference_pi_3_14','square_area','triangle_area','parallelogram_area','trapezoid_area','rectangular_prism_volume','cube_volume','cylinder_volume_pi_3_14','cone_volume_pi_3_14','sphere_area_volume_pi_3_14','speed_distance','binary_arithmetic_exact','linear_equation_exact'],
+            'engine_test_discovery':'test_safe_*_variant_engine.py plus test_*_unified_adapter.py',
+            'engines':['affine','inverse_proportion','pythagorean_hypotenuse','square_root_simplification','single_draw_probability','proportion','percentage','discount_price','data_range','median','simple_average','rectangle_area','rectangle_perimeter','circle_area_pi_3_14','circle_circumference_pi_3_14','square_area_and_perimeter','triangle_area','parallelogram_area','trapezoid_area','rectangular_prism_volume','cube_volume','cylinder_volume_pi_3_14','cone_volume_pi_3_14','sphere_area_volume_pi_3_14','speed_distance','binary_arithmetic_exact','linear_equation_exact'],
             'actual_base_variants_generated':0,
             'base_required_before_actual_generation':True,
             'parent_record_sha256_required':True,
@@ -247,6 +133,10 @@ jobs:
             'minimum_per_parent_default':1,
             'safe_target_per_parent_default':3,
             'unsupported_manual_shortfall_only':True,
+            'median_sorted_middle_and_equal_side_count_identity':True,
+            'data_range_max_minus_min_and_inverse_identity':True,
+            'discount_price_fraction_and_cross_product_identity':True,
+            'square_root_exact_factorization_and_square_free_identity':True,
             'inverse_proportion_exact_division_and_product_identity':True,
             'pythagorean_hypotenuse_exact_square_sum_and_two_inverse_identities':True,
             'rectangle_area_exact_product_and_inverse_identity':True,
@@ -258,6 +148,7 @@ jobs:
             'sphere_area_pi_3_14_exact_4_pi_r2_inverse_identity':True,
             'sphere_volume_pi_3_14_exact_4_over_3_pi_r3_inverse_identity':True,
             'square_area_exact_product_and_integer_square_root_identity':True,
+            'square_perimeter_exact_four_side_and_inverse_identity':True,
             'triangle_area_exact_half_product_and_doubled_area_identity':True,
             'parallelogram_area_exact_product_and_inverse_identity':True,
             'trapezoid_area_exact_half_sum_product_and_doubled_area_identity':True,
@@ -265,39 +156,38 @@ jobs:
             'cube_volume_exact_product_and_integer_cube_root_identity':True,
             'speed_distance_exact_product_and_two_inverse_identities':True,
           }
+          p=Path('math-bank/state/unified-safe-variant-generation-latest.json')
+          p.parent.mkdir(parents=True,exist_ok=True)
           p.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           PY
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -- math-bank/state/unified-safe-variant-generation-latest.json
-          if ! git diff --cached --quiet; then
+          }
+          for attempt in 1 2 3 4 5 6; do
+            git fetch origin math-problem-bank-bootstrap
+            git reset --hard origin/math-problem-bank-bootstrap
+            write_state
+            git add -- math-bank/state/unified-safe-variant-generation-latest.json
+            if git diff --cached --quiet; then
+              exit 0
+            fi
             git commit -m 'record unified safe variant generation CI'
-            for i in 1 2 3 4 5 6; do
-              git pull --rebase origin math-problem-bank-bootstrap && git push origin HEAD:math-problem-bank-bootstrap && break
-              sleep $((i*4))
-            done
-          fi
+            if git push origin HEAD:math-problem-bank-bootstrap; then
+              exit 0
+            fi
+            sleep $((attempt*4))
+          done
+          exit 1
+
       - name: Enforce unified CI result
         if: always()
         env:
           COMPILE_OUTCOME: ${{ steps.compile.outcome }}
+          SPECIALIZED_OUTCOME: ${{ steps.specialized.outcome }}
           CORE_OUTCOME: ${{ steps.core.outcome }}
-          CIRCLE_OUTCOME: ${{ steps.circle.outcome }}
-          CYLINDER_OUTCOME: ${{ steps.cylinder.outcome }}
-          CONE_OUTCOME: ${{ steps.cone.outcome }}
-          SPHERE_OUTCOME: ${{ steps.sphere.outcome }}
-          INVERSE_PROPORTION_OUTCOME: ${{ steps.inverse_proportion.outcome }}
-          PYTHAGOREAN_OUTCOME: ${{ steps.pythagorean.outcome }}
           PARENT_CONTRACT_OUTCOME: ${{ steps.parent_contract.outcome }}
           LEGACY_EMPTY_CHOICES_OUTCOME: ${{ steps.legacy_empty_choices.outcome }}
         run: |
           test "$COMPILE_OUTCOME" = success
+          test "$SPECIALIZED_OUTCOME" = success
           test "$CORE_OUTCOME" = success
-          test "$CIRCLE_OUTCOME" = success
-          test "$CYLINDER_OUTCOME" = success
-          test "$CONE_OUTCOME" = success
-          test "$SPHERE_OUTCOME" = success
-          test "$INVERSE_PROPORTION_OUTCOME" = success
-          test "$PYTHAGOREAN_OUTCOME" = success
           test "$PARENT_CONTRACT_OUTCOME" = success
           test "$LEGACY_EMPTY_CHOICES_OUTCOME" = success
