@@ -213,7 +213,7 @@ def provenance(parent: dict, vid: str, method: str, evidence: str, now: str) -> 
 def generate_binary(parent: dict, count: int, now: str) -> tuple[list[dict], list[dict], str | None]:
     if parent.get("figure_refs"):
         return [], [], "figure_parent"
-    if parent.get("choices") is not None:
+    if parent.get("choices"):
         return [], [], "choice_parent"
     q = str(parent.get("question") or "")
     matches = list(BINARY_RE.finditer(norm_minus(q)))
@@ -271,7 +271,7 @@ def format_linear(a: int, signed_b: int, c: int, had_b_term: bool) -> str:
 def generate_linear(parent: dict, count: int, now: str) -> tuple[list[dict], list[dict], str | None]:
     if parent.get("figure_refs"):
         return [], [], "figure_parent"
-    if parent.get("choices") is not None:
+    if parent.get("choices"):
         return [], [], "choice_parent"
     q = norm_minus(str(parent.get("question") or ""))
     matches = list(LINEAR_RE.finditer(q))
