@@ -23,15 +23,23 @@
     "taxonomy_difficulty_choice_figure_preservation": true,
     "audit_three_true_required": true,
     "independent_recalculation_and_evidence_required": true,
-    "unified_runtime_parent_contract_fail_closed_added": true,
+    "unified_runtime_parent_contract_fail_closed": true,
     "unified_runtime_parent_contract_commit": "f6e173d1e03e2c042cca9adbede7ad4269f6b425",
-    "unified_runtime_parent_contract_negative_test_commit": "25a8cd991f4a24983f563b3ca39d60b32e6a25f6"
+    "unified_runtime_parent_contract_negative_test_commit": "25a8cd991f4a24983f563b3ca39d60b32e6a25f6",
+    "empty_list_non_choice_rectangle_and_legacy_exact_supported": true
   },
   "unified_safe_generation": {
-    "persisted_state_status": "OLD_PASS_ONLY_NEW_SCHEMA4_TERMINAL_NOT_YET_OBSERVED",
-    "last_persisted_pass_run_id": "32525969515",
-    "persist_schema_version_target": 4,
-    "latest_ci_contract_commit": "158a7feb9d378ef7a72e4bcff823db4898e42f9a",
+    "status": "PASS_CI",
+    "persist_schema_version": 6,
+    "run_id": "32542522297",
+    "triggering_sha": "ae1d92428e832f0f7fe022637dfcd94d1bbc1528",
+    "step_outcomes": {
+      "compile": "success",
+      "core": "success",
+      "circle": "success",
+      "parent_contract": "success",
+      "legacy_empty_choices": "success"
+    },
     "engines": [
       "affine", "single_draw_probability", "proportion", "percentage", "simple_average",
       "rectangle_area", "rectangle_perimeter", "circle_area_pi_3_14", "square_area",
@@ -39,14 +47,11 @@
       "cube_volume", "speed_distance", "binary_arithmetic_exact", "linear_equation_exact"
     ],
     "circle_area_engine_commit": "765964e7b308c2fefc14815db26fa56e9f21d85f",
-    "circle_area_test_commit": "cf800d3cdb88eb7da020d9c7816d5eb75a5859e1",
-    "circle_area_unified_adapter_commit": "f9531a94a585262c09e3a9778e7f78bd914bab2b",
-    "circle_area_pi_wording_false_rejection_fix_commit": "c7eb4572ab62727c953a70d1582c20212e381780",
+    "circle_area_pi_wording_fix_commit": "c7eb4572ab62727c953a70d1582c20212e381780",
     "rectangle_empty_choices_fix_commit": "5d26d8930bc5a8eb4ad17b6fd35ef19670f45d6a",
-    "rectangle_empty_choices_test_commit": "d0c2cfd919aabbb5a82251f1b362429b87693bd0",
-    "legacy_empty_choices_regression_commit": "8d28bfa98eb94de3d55b3cb980f26e83825b60f6",
-    "legacy_empty_choices_one_shot_fix_workflow_commit": "d72c116c2fca51761ba99c292690046c7e3cf253",
-    "legacy_empty_choices_fix_status": "WORKFLOW_TRIGGERED_PATCH_COMMIT_NOT_YET_OBSERVED",
+    "legacy_empty_choices_fix_verified": true,
+    "stale_rectangle_perimeter_core_test_fix_commit": "ae1d92428e832f0f7fe022637dfcd94d1bbc1528",
+    "diagnostic_persist_contract_commit": "619bdf48f351f913a4449ed4c7fdf1506eb53f6f",
     "actual_base_variants_generated": 0,
     "actual_parent_records_required": true,
     "minimum_per_parent_default": 1,
@@ -54,16 +59,26 @@
   },
   "base_recovery": {
     "actions_latest_confirmed": {
-      "all_artifacts_seen": 271,
-      "candidate_artifacts": 241,
-      "reused_verified_artifacts": 240,
+      "all_artifacts_seen": 274,
+      "candidate_artifacts": 244,
+      "reused_verified_artifacts": 243,
       "downloaded_artifacts_this_run": 1,
-      "members_sha256_checked": 760,
-      "member_bytes_hashed": 69773666,
+      "members_sha256_checked": 766,
+      "member_bytes_hashed": 69781496,
       "download_failures": 0,
       "canonical_hits": 0,
       "valid_audit_hits": 0,
       "pair_hits": 0
+    },
+    "latest_auto_complete": {
+      "run_id": "32542394435",
+      "result": "success",
+      "actions_members_sha256_checked": 766,
+      "actions_reused_verified_artifacts": 243,
+      "actions_downloaded_artifacts_this_run": 1,
+      "pair_hits": 0,
+      "wiring_ready": false,
+      "publication_ready": false
     },
     "branch_tag_exact": {"readable_blobs": 1901, "checked": 1901, "shards_completed": 16, "exact_coverage_complete": true, "pair_hits": 0},
     "pr_refs_exact": {"refs": 4, "readable_blobs": 1419, "checked": 1419, "shards_completed": 16, "exact_coverage_complete": true, "pair_hits": 0},
@@ -76,7 +91,7 @@
     "policy": "No reconstruction; incomplete/cancelled evidence never proves absence; no 161/1271/Winpass717 promotion."
   },
   "CI_browser_A4": {
-    "latest_observed_audit_run_id": "32542035684",
+    "latest_observed_audit_run_id": "32542283889",
     "audit_result": "success",
     "synthetic_browser": "PASS_FOUR_ENVIRONMENTS",
     "real_canonical_browser": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT",
@@ -85,6 +100,6 @@
   },
   "publication_ready": false,
   "branch": "math-problem-bank-bootstrap",
-  "recorded_at_utc": "2026-08-22T01:04:30Z",
-  "next": "Observe one-shot legacy empty-choice patch and Unified schema4 terminal persist; repair failures immediately. Continue exact recovery delta; exact BASE pair triggers immediate immutable wiring and real 1124-parent generation."
+  "recorded_at_utc": "2026-08-22T01:08:30Z",
+  "next": "Continue exact recovery delta. If canonical pair appears, validate SHA/audit and wire immutable BASE immediately, then run actual 1124-parent adaptive generation and strict coverage pipeline."
 }
