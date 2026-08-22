@@ -28,6 +28,7 @@ from safe_cylinder_volume_variant_engine import generate as generate_cylinder_vo
 from safe_data_range_variant_engine import generate as generate_data_range
 from safe_discount_price_variant_engine import generate as generate_discount_price
 from safe_gcd_variant_engine import generate as generate_gcd
+from safe_integer_power_variant_engine import generate as generate_integer_power
 from safe_interquartile_range_variant_engine import generate as generate_interquartile_range
 from safe_inverse_proportion_variant_engine import generate as generate_inverse_proportion
 from safe_lcm_variant_engine import generate as generate_lcm
@@ -61,6 +62,7 @@ SPECIALIZED_ENGINES = (
     ("pythagorean_hypotenuse", generate_pythagorean_hypotenuse),
     ("quadratic_square_equation", generate_quadratic_square_equation),
     ("square_root_simplification", generate_square_root_simplification),
+    ("integer_power", generate_integer_power),
     ("single_draw_probability", generate_probability),
     ("two_dice_sum_probability", generate_two_dice_sum_probability),
     ("gcd", generate_gcd),
