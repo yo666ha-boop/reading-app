@@ -1,0 +1,203 @@
+name: Math Wire Post Canonical Expansion
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-wire-post-canonical-expansion.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: math-wire-post-canonical-expansion-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  patch-test-commit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Patch canonical auto-complete expansion chain exactly once
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('.github/workflows/math-canonical-auto-complete.yml')
+          text=p.read_text(encoding='utf-8')
+
+          compile_anchor="""            math-bank/app/complete_from_exact_canonical.py \\
+            math-bank/app/inspect_canonical_artifact.py \\
+"""
+          compile_new="""            math-bank/app/complete_from_exact_canonical.py \\
+            math-bank/app/advance_exact_base_to_expanded_ready.py \\
+            math-bank/app/generate_all_safe_verified_variants.py \\
+            math-bank/app/compose_expanded_app_records.py \\
+            math-bank/app/validate_expanded_variant_layer.py \\
+            math-bank/app/inspect_canonical_artifact.py \\
+"""
+          if 'advance_exact_base_to_expanded_ready.py' not in text:
+              if text.count(compile_anchor)!=1:
+                  raise SystemExit('compile anchor mismatch')
+              text=text.replace(compile_anchor,compile_new,1)
+
+          # Existing real-browser/release steps must require expanded readiness,
+          # not merely canonical wiring. Do this before inserting expansion step.
+          old_cond="if: steps.wiring.outputs.wiring_ready == 'true'"
+          text=text.replace(old_cond,"if: steps.expansion.outputs.expansion_ready == 'true'")
+
+          preserve_anchor="""      - name: Preserve recovery diagnostics
+"""
+          expansion_step="""      - name: Advance exact BASE through verified expanded generation
+        if: steps.wiring.outputs.wiring_ready == 'true'
+        id: expansion
+        shell: bash
+        run: |
+          set +e
+          python math-bank/app/advance_exact_base_to_expanded_ready.py \\
+            --minimum-per-parent 1 \\
+            --safe-target-per-parent 3
+          rc=$?
+          set -e
+          if [ "$rc" -eq 0 ]; then
+            echo 'expansion_ready=true' >> "$GITHUB_OUTPUT"
+            echo 'manual_variants_required=false' >> "$GITHUB_OUTPUT"
+          elif [ "$rc" -eq 3 ]; then
+            echo 'expansion_ready=false' >> "$GITHUB_OUTPUT"
+            echo 'manual_variants_required=true' >> "$GITHUB_OUTPUT"
+            echo 'VERIFIED_SAFE_VARIANTS_PROGRESS_SAVED; fingerprint-bound manual parent work remains.'
+          else
+            exit "$rc"
+          fi
+
+"""
+          if 'Advance exact BASE through verified expanded generation' not in text:
+              if text.count(preserve_anchor)!=1:
+                  raise SystemExit('preserve diagnostics anchor mismatch')
+              text=text.replace(preserve_anchor,expansion_step+preserve_anchor,1)
+
+          diag_anchor="""            math-bank/state/canonical-completion-latest.json
+            math-bank/app/app-records.json
+"""
+          diag_new="""            math-bank/state/canonical-completion-latest.json
+            math-bank/state/post-canonical-expansion-latest.json
+            math-bank/state/auto-variant-generation-latest.json
+            math-bank/state/manual-variant-generation-queue.json
+            math-bank/state/variant-expansion-latest.json
+            math-bank/app/base-app-records.json
+            math-bank/app/verified-expanded-variants.json
+            math-bank/app/app-records.json
+"""
+          if 'math-bank/state/post-canonical-expansion-latest.json' not in text:
+              if text.count(diag_anchor)!=1:
+                  raise SystemExit('diagnostics path anchor mismatch')
+              text=text.replace(diag_anchor,diag_new,1)
+
+          env_anchor="""          MAPPING_METADATA_REQUIRED: ${{ steps.wiring.outputs.mapping_metadata_required }}
+          JOB_STATUS: ${{ job.status }}
+"""
+          env_new="""          MAPPING_METADATA_REQUIRED: ${{ steps.wiring.outputs.mapping_metadata_required }}
+          EXPANSION_READY: ${{ steps.expansion.outputs.expansion_ready }}
+          MANUAL_VARIANTS_REQUIRED: ${{ steps.expansion.outputs.manual_variants_required }}
+          JOB_STATUS: ${{ job.status }}
+"""
+          if 'EXPANSION_READY:' not in text:
+              if text.count(env_anchor)!=1:
+                  raise SystemExit('persist env anchor mismatch')
+              text=text.replace(env_anchor,env_new,1)
+
+          load_anchor="""          completion=load('math-bank/state/canonical-completion-latest.json')
+          payload={
+"""
+          load_new="""          completion=load('math-bank/state/canonical-completion-latest.json')
+          expansion=load('math-bank/state/post-canonical-expansion-latest.json')
+          manual_queue=load('math-bank/state/manual-variant-generation-queue.json')
+          generation=load('math-bank/state/auto-variant-generation-latest.json')
+          variant_state=load('math-bank/state/variant-expansion-latest.json')
+          payload={
+"""
+          if "expansion=load('math-bank/state/post-canonical-expansion-latest.json')" not in text:
+              if text.count(load_anchor)!=1:
+                  raise SystemExit('persist load anchor mismatch')
+              text=text.replace(load_anchor,load_new,1)
+
+          payload_anchor="""            'wiring_ready':truth(os.environ.get('WIRING_READY','')),'mapping_metadata_required':truth(os.environ.get('MAPPING_METADATA_REQUIRED','')),
+            'publication_ready':Path('math-bank/release/PUBLICATION_READY.json').is_file(),
+"""
+          payload_new="""            'wiring_ready':truth(os.environ.get('WIRING_READY','')),'mapping_metadata_required':truth(os.environ.get('MAPPING_METADATA_REQUIRED','')),
+            'expansion_ready':truth(os.environ.get('EXPANSION_READY','')),
+            'manual_variants_required':truth(os.environ.get('MANUAL_VARIANTS_REQUIRED','')),
+            'post_canonical_expansion_status':expansion.get('status') if isinstance(expansion,dict) else None,
+            'expanded_verified_variants':expansion.get('expanded_verified_variants') if isinstance(expansion,dict) else None,
+            'expanded_parent_coverage':expansion.get('expanded_parent_coverage') if isinstance(expansion,dict) else None,
+            'manual_parent_count':expansion.get('manual_parent_count') if isinstance(expansion,dict) else None,
+            'publication_ready':Path('math-bank/release/PUBLICATION_READY.json').is_file(),
+"""
+          if "'expansion_ready':" not in text:
+              if text.count(payload_anchor)!=1:
+                  raise SystemExit('payload anchor mismatch')
+              text=text.replace(payload_anchor,payload_new,1)
+
+          files_anchor="""            'github-issue-pr-attachment-scan-latest.json':issue_pr,
+            'auto-complete-latest.json':payload,
+"""
+          files_new="""            'github-issue-pr-attachment-scan-latest.json':issue_pr,
+            'post-canonical-expansion-latest.json':expansion,
+            'manual-variant-generation-queue.json':manual_queue,
+            'auto-variant-generation-latest.json':generation,
+            'variant-expansion-latest.json':variant_state,
+            'auto-complete-latest.json':payload,
+"""
+          if "'post-canonical-expansion-latest.json':expansion" not in text:
+              if text.count(files_anchor)!=1:
+                  raise SystemExit('state files anchor mismatch')
+              text=text.replace(files_anchor,files_new,1)
+
+          add_anchor="""          git add -- math-bank/state/auto-complete-latest.json math-bank/state/actions-artifact-scan-latest.json math-bank/state/git-history-scan-latest.json math-bank/state/github-release-scan-latest.json math-bank/state/github-issue-pr-attachment-scan-latest.json 2>/dev/null || true
+"""
+          add_new="""          git add -- math-bank/state/auto-complete-latest.json math-bank/state/actions-artifact-scan-latest.json math-bank/state/git-history-scan-latest.json math-bank/state/github-release-scan-latest.json math-bank/state/github-issue-pr-attachment-scan-latest.json math-bank/state/post-canonical-expansion-latest.json math-bank/state/manual-variant-generation-queue.json math-bank/state/auto-variant-generation-latest.json math-bank/state/variant-expansion-latest.json 2>/dev/null || true
+"""
+          if 'math-bank/state/manual-variant-generation-queue.json math-bank/state/auto-variant-generation-latest.json' not in text:
+              if text.count(add_anchor)!=1:
+                  raise SystemExit('git add anchor mismatch')
+              text=text.replace(add_anchor,add_new,1)
+
+          p.write_text(text,encoding='utf-8')
+          PY
+      - name: Verify patched workflow contracts
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          t=Path('.github/workflows/math-canonical-auto-complete.yml').read_text(encoding='utf-8')
+          required=[
+            'advance_exact_base_to_expanded_ready.py',
+            'Advance exact BASE through verified expanded generation',
+            "if: steps.expansion.outputs.expansion_ready == 'true'",
+            'manual_variants_required',
+            'post_canonical_expansion_status',
+            'manual-variant-generation-queue.json',
+          ]
+          for token in required:
+              assert token in t, token
+          assert "if: steps.wiring.outputs.wiring_ready == 'true'\n        id: expansion" in t
+          print('PASS_POST_CANONICAL_EXPANSION_AUTOCOMPLETE_WIRING_CONTRACT')
+          PY
+      - name: Commit canonical auto-complete wiring
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- .github/workflows/math-canonical-auto-complete.yml
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'wire verified expanded generation after canonical recovery'
+          for i in 1 2 3 4 5 6; do
+            git pull --rebase origin math-problem-bank-bootstrap && git push origin HEAD:math-problem-bank-bootstrap && exit 0
+            sleep $((i*4))
+          done
+          exit 1
