@@ -49,6 +49,7 @@ from safe_speed_distance_variant_engine import generate as generate_speed_distan
 from safe_sphere_variant_engine import generate as generate_sphere
 from safe_square_area_variant_engine import generate as generate_square_area
 from safe_square_root_simplification_variant_engine import generate as generate_square_root_simplification
+from safe_symmetric_linear_system_variant_engine import generate as generate_symmetric_linear_system
 from safe_tax_inclusive_price_variant_engine import generate as generate_tax_inclusive_price
 from safe_trapezoid_area_variant_engine import generate as generate_trapezoid_area
 from safe_triangle_area_variant_engine import generate as generate_triangle_area
@@ -58,6 +59,7 @@ from validate_expanded_variant_layer import BASE_CANONICAL_SHA256, base_gate, lo
 
 SPECIALIZED_ENGINES = (
     ("affine", generate_affine),
+    ("symmetric_linear_system", generate_symmetric_linear_system),
     ("inverse_proportion", generate_inverse_proportion),
     ("pythagorean_hypotenuse", generate_pythagorean_hypotenuse),
     ("quadratic_square_equation", generate_quadratic_square_equation),
