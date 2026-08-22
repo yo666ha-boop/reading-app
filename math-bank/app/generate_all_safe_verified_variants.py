@@ -43,6 +43,7 @@ from safe_speed_distance_variant_engine import generate as generate_speed_distan
 from safe_sphere_variant_engine import generate as generate_sphere
 from safe_square_area_variant_engine import generate as generate_square_area
 from safe_square_root_simplification_variant_engine import generate as generate_square_root_simplification
+from safe_tax_inclusive_price_variant_engine import generate as generate_tax_inclusive_price
 from safe_trapezoid_area_variant_engine import generate as generate_trapezoid_area
 from safe_triangle_area_variant_engine import generate as generate_triangle_area
 from validate_app_records import load_records
@@ -57,6 +58,7 @@ SPECIALIZED_ENGINES = (
     ("proportion", generate_proportion),
     ("percentage", generate_percentage),
     ("discount_price", generate_discount_price),
+    ("tax_inclusive_price", generate_tax_inclusive_price),
     ("data_range", generate_data_range),
     ("median", generate_median),
     ("mode", generate_mode),
