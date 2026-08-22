@@ -37,6 +37,7 @@ from safe_single_draw_probability_variant_engine import generate as generate_pro
 from safe_speed_distance_variant_engine import generate as generate_speed_distance
 from safe_sphere_variant_engine import generate as generate_sphere
 from safe_square_area_variant_engine import generate as generate_square_area
+from safe_square_root_simplification_variant_engine import generate as generate_square_root_simplification
 from safe_trapezoid_area_variant_engine import generate as generate_trapezoid_area
 from safe_triangle_area_variant_engine import generate as generate_triangle_area
 from validate_app_records import load_records
@@ -46,6 +47,7 @@ SPECIALIZED_ENGINES = (
     ("affine", generate_affine),
     ("inverse_proportion", generate_inverse_proportion),
     ("pythagorean_hypotenuse", generate_pythagorean_hypotenuse),
+    ("square_root_simplification", generate_square_root_simplification),
     ("single_draw_probability", generate_probability),
     ("proportion", generate_proportion),
     ("percentage", generate_percentage),
