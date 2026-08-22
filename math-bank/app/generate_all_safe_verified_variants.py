@@ -12,6 +12,7 @@ from generate_safe_verified_variants import generate_parent as generate_legacy_e
 from safe_absolute_value_variant_engine import generate as generate_absolute_value
 from safe_affine_variant_engine import generate as generate_affine
 from safe_average_variant_engine import generate as generate_average
+from safe_binomial_expansion_variant_engine import generate as generate_binomial_expansion
 from safe_circle_area_variant_engine import generate as generate_circle_area
 from safe_circle_circumference_variant_engine import generate as generate_circle_circumference
 from safe_cone_volume_variant_engine import generate as generate_cone_volume
@@ -60,6 +61,7 @@ SPECIALIZED_ENGINES = (
     ("pythagorean_hypotenuse", generate_pythagorean_hypotenuse),
     ("quadratic_square_equation", generate_quadratic_square_equation),
     ("monic_quadratic_factorization", generate_monic_quadratic_factorization),
+    ("binomial_expansion", generate_binomial_expansion),
     ("square_root_simplification", generate_square_root_simplification),
     ("integer_power", generate_integer_power),
     ("decimal_arithmetic", generate_decimal_arithmetic),
@@ -126,200 +128,77 @@ def _assert_variant_parent_contract(parent, variant, provenance, engine_name):
 
 
 def _adapt_specialized(parent, count, now):
-    reasons = []
-    for engine_name, engine in SPECIALIZED_ENGINES:
-        rows, evidence_rows, reason = engine(parent, count)
+    reasons=[]
+    for engine_name,engine in SPECIALIZED_ENGINES:
+        rows,evidence_rows,reason=engine(parent,count)
         if not rows:
             reasons.append(f"{engine_name}:{reason}")
             continue
-        if len(rows) != count or len(evidence_rows) != count:
+        if len(rows)!=count or len(evidence_rows)!=count:
             raise AssertionError(f"{engine_name} returned incomplete sibling set")
-        parent_sig = tuple(numeric_tokens(str(parent.get("question") or "")))
-        sibling_sigs = set()
-        variants = []
-        provenance = []
-        for index, (row, evidence) in enumerate(zip(rows, evidence_rows), 1):
-            question = str(row.get("question") or "")
-            answer = row.get("answer")
-            if not question or answer in (None, ""):
+        parent_sig=tuple(numeric_tokens(str(parent.get("question") or "")))
+        sibling_sigs=set(); variants=[]; provenance=[]
+        for index,(row,evidence) in enumerate(zip(rows,evidence_rows),1):
+            question=str(row.get("question") or ""); answer=row.get("answer")
+            if not question or answer in (None,""):
                 raise AssertionError(f"{engine_name} returned blank question/answer")
-            sig = tuple(numeric_tokens(question))
-            if sig == parent_sig or sig in sibling_sigs:
+            sig=tuple(numeric_tokens(question))
+            if sig==parent_sig or sig in sibling_sigs:
                 raise AssertionError(f"{engine_name} numeric surface collision")
-            sibling_sigs.add(sig)
-            method = f"specialized-{engine_name}-{reason}"
-            vid = variant_id(parent, method, index)
-            full = make_variant_base(parent, vid)
-            full["question"] = question
-            full["answer"] = answer
-            full["explanation"] = str(row.get("explanation") or "")
-            prov = {
-                "variant_id": vid,
-                "parent_id": parent["id"],
-                "parent_record_sha256": parent_record_sha256(parent),
-                "generator": "generate_all_safe_verified_variants.py",
-                "generation_method": method,
-                "verification_method": "specialized fail-closed exact parent recalculation plus independent engine identity check",
-                "verified_at": now,
-                "independent_recalculation": True,
-                "verification_evidence": _verification_evidence(engine_name, evidence),
-            }
-            _assert_variant_parent_contract(parent, full, prov, engine_name)
-            variants.append(full)
-            provenance.append(prov)
-        return variants, provenance, f"specialized:{engine_name}:{reason}"
-
-    rows, provenance, reason = generate_legacy_exact(parent, count, now)
+            sibling_sigs.add(sig); method=f"specialized-{engine_name}-{reason}"; vid=variant_id(parent,method,index); full=make_variant_base(parent,vid)
+            full["question"]=question; full["answer"]=answer; full["explanation"]=str(row.get("explanation") or "")
+            prov={"variant_id":vid,"parent_id":parent["id"],"parent_record_sha256":parent_record_sha256(parent),"generator":"generate_all_safe_verified_variants.py","generation_method":method,"verification_method":"specialized fail-closed exact parent recalculation plus independent engine identity check","verified_at":now,"independent_recalculation":True,"verification_evidence":_verification_evidence(engine_name,evidence)}
+            _assert_variant_parent_contract(parent,full,prov,engine_name); variants.append(full); provenance.append(prov)
+        return variants,provenance,f"specialized:{engine_name}:{reason}"
+    rows,provenance,reason=generate_legacy_exact(parent,count,now)
     if rows:
-        if len(rows) != len(provenance):
-            raise AssertionError("legacy exact adapter returned incomplete provenance set")
-        for row, prov in zip(rows, provenance):
-            prov["generator"] = "generate_all_safe_verified_variants.py"
-            prov["generation_method"] = "legacy_exact_adapter:" + str(prov.get("generation_method") or reason)
-            _assert_variant_parent_contract(parent, row, prov, "legacy_exact")
-        return rows, provenance, f"legacy:{reason}"
-    reasons.append(f"legacy:{reason}")
-    return [], [], "unsupported_all_safe_engines:" + "|".join(reasons)
+        if len(rows)!=len(provenance): raise AssertionError("legacy exact adapter returned incomplete provenance set")
+        for row,prov in zip(rows,provenance):
+            prov["generator"]="generate_all_safe_verified_variants.py"; prov["generation_method"]="legacy_exact_adapter:"+str(prov.get("generation_method") or reason); _assert_variant_parent_contract(parent,row,prov,"legacy_exact")
+        return rows,provenance,f"legacy:{reason}"
+    reasons.append(f"legacy:{reason}"); return [],[],"unsupported_all_safe_engines:"+"|".join(reasons)
 
 
-def generate_parent(parent, count, now):
-    if count not in (1, 2, 3):
-        raise ValueError("count must be 1, 2, or 3")
-    return _adapt_specialized(parent, count, now)
+def generate_parent(parent,count,now):
+    if count not in (1,2,3): raise ValueError("count must be 1, 2, or 3")
+    return _adapt_specialized(parent,count,now)
 
 
-def generation_request(existing_count, *, minimum_per_parent, safe_target_per_parent):
-    if existing_count < 0:
-        raise ValueError("existing_count must be non-negative")
-    if minimum_per_parent not in (1, 2, 3) or safe_target_per_parent not in (1, 2, 3) or safe_target_per_parent < minimum_per_parent:
-        raise ValueError("invalid target")
-    return max(0, safe_target_per_parent - existing_count), max(0, minimum_per_parent - existing_count)
+def generation_request(existing_count,*,minimum_per_parent,safe_target_per_parent):
+    if existing_count<0: raise ValueError("existing_count must be non-negative")
+    if minimum_per_parent not in (1,2,3) or safe_target_per_parent not in (1,2,3) or safe_target_per_parent<minimum_per_parent: raise ValueError("invalid target")
+    return max(0,safe_target_per_parent-existing_count),max(0,minimum_per_parent-existing_count)
 
 
-def manual_queue_entry(parent, *, missing_count, reason):
-    source = parent.get("source") if isinstance(parent.get("source"), dict) else {}
-    taxonomy = parent.get("taxonomy") if isinstance(parent.get("taxonomy"), dict) else {}
-    return {
-        "parent_id": parent["id"],
-        "parent_record_sha256": parent_record_sha256(parent),
-        "missing_verified_variants": missing_count,
-        "reason": reason,
-        "grade": parent.get("grade"),
-        "genre": parent.get("genre"),
-        "unit": parent.get("unit"),
-        "skill": parent.get("skill"),
-        "difficulty": parent.get("difficulty"),
-        "format": parent.get("format"),
-        "taxonomy": taxonomy,
-        "source_name": source.get("name") or source.get("material") or source.get("book"),
-        "has_choices": bool(parent.get("choices")),
-        "choice_count": len(parent.get("choices") or []),
-        "figure_refs": list(parent.get("figure_refs") or []),
-        "manual_policy": "Read this exact fingerprint-bound parent and all referenced figures/choices; do not reconstruct unseen content. Promotion still requires the normal strict expanded validator.",
-    }
+def manual_queue_entry(parent,*,missing_count,reason):
+    source=parent.get("source") if isinstance(parent.get("source"),dict) else {}; taxonomy=parent.get("taxonomy") if isinstance(parent.get("taxonomy"),dict) else {}
+    return {"parent_id":parent["id"],"parent_record_sha256":parent_record_sha256(parent),"missing_verified_variants":missing_count,"reason":reason,"grade":parent.get("grade"),"genre":parent.get("genre"),"unit":parent.get("unit"),"skill":parent.get("skill"),"difficulty":parent.get("difficulty"),"format":parent.get("format"),"taxonomy":taxonomy,"source_name":source.get("name") or source.get("material") or source.get("book"),"has_choices":bool(parent.get("choices")),"choice_count":len(parent.get("choices") or []),"figure_refs":list(parent.get("figure_refs") or []),"manual_policy":"Read this exact fingerprint-bound parent and all referenced figures/choices; do not reconstruct unseen content. Promotion still requires the normal strict expanded validator."}
 
 
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("base")
-    ap.add_argument("expanded")
-    ap.add_argument("output")
-    ap.add_argument("--target-per-parent", type=int, default=1, choices=(1, 2, 3))
-    ap.add_argument("--safe-target-per-parent", type=int, default=3, choices=(1, 2, 3))
-    ap.add_argument("--report")
-    ap.add_argument("--manual-queue")
-    ns = ap.parse_args()
-    if ns.safe_target_per_parent < ns.target_per_parent:
-        ap.error("--safe-target-per-parent must be >= --target-per-parent")
-
-    base = load_records(Path(ns.base))
-    _, originals, _ = base_gate(base)
-    variants, provenance_rows, _ = load_layer(Path(ns.expanded))
-    validate_layer(base, variants, provenance_rows, require_full_parent_coverage=False)
-    counts = defaultdict(int)
-    for row in variants:
-        counts[row["source"]["parent_id"]] += 1
-
-    now = datetime.now(timezone.utc).isoformat()
-    generated = []
-    generated_provenance = []
-    manual_queue = []
-    reasons = Counter()
-    safe_target_parents = 0
-
+    ap=argparse.ArgumentParser(); ap.add_argument("base"); ap.add_argument("expanded"); ap.add_argument("output"); ap.add_argument("--target-per-parent",type=int,default=1,choices=(1,2,3)); ap.add_argument("--safe-target-per-parent",type=int,default=3,choices=(1,2,3)); ap.add_argument("--report"); ap.add_argument("--manual-queue"); ns=ap.parse_args()
+    if ns.safe_target_per_parent<ns.target_per_parent: ap.error("--safe-target-per-parent must be >= --target-per-parent")
+    base=load_records(Path(ns.base)); _,originals,_=base_gate(base); variants,provenance_rows,_=load_layer(Path(ns.expanded)); validate_layer(base,variants,provenance_rows,require_full_parent_coverage=False)
+    counts=defaultdict(int)
+    for row in variants: counts[row["source"]["parent_id"]]+=1
+    now=datetime.now(timezone.utc).isoformat(); generated=[]; generated_provenance=[]; manual_queue=[]; reasons=Counter(); safe_target_parents=0
     for parent in originals:
-        attempt_need, manual_need = generation_request(
-            counts[parent["id"]],
-            minimum_per_parent=ns.target_per_parent,
-            safe_target_per_parent=ns.safe_target_per_parent,
-        )
-        if attempt_need == 0:
-            reasons["already_at_safe_target"] += 1
-            continue
-        new_rows, new_prov, reason = generate_parent(parent, attempt_need, now)
-        reasons[reason] += 1
+        attempt_need,manual_need=generation_request(counts[parent["id"]],minimum_per_parent=ns.target_per_parent,safe_target_per_parent=ns.safe_target_per_parent)
+        if attempt_need==0: reasons["already_at_safe_target"]+=1; continue
+        new_rows,new_prov,reason=generate_parent(parent,attempt_need,now); reasons[reason]+=1
         if not new_rows:
-            if manual_need:
-                manual_queue.append(manual_queue_entry(parent, missing_count=manual_need, reason=reason))
-            else:
-                reasons["unsupported_but_minimum_already_satisfied"] += 1
+            if manual_need: manual_queue.append(manual_queue_entry(parent,missing_count=manual_need,reason=reason))
+            else: reasons["unsupported_but_minimum_already_satisfied"]+=1
             continue
-        safe_target_parents += 1
-        generated.extend(new_rows)
-        generated_provenance.extend(new_prov)
-
-    out = {
-        "schema_version": "1.0",
-        "base_canonical_sha256": BASE_CANONICAL_SHA256,
-        "variants": variants + generated,
-        "provenance": provenance_rows + generated_provenance,
-    }
-    final = validate_layer(base, out["variants"], out["provenance"], require_full_parent_coverage=False)
-    Path(ns.output).write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
+        safe_target_parents+=1; generated.extend(new_rows); generated_provenance.extend(new_prov)
+    out={"schema_version":"1.0","base_canonical_sha256":BASE_CANONICAL_SHA256,"variants":variants+generated,"provenance":provenance_rows+generated_provenance}
+    final=validate_layer(base,out["variants"],out["provenance"],require_full_parent_coverage=False); Path(ns.output).write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     if ns.manual_queue:
-        Path(ns.manual_queue).write_text(
-            json.dumps(
-                {
-                    "schema_version": "1.0",
-                    "base_canonical_sha256": BASE_CANONICAL_SHA256,
-                    "recorded_at_utc": now,
-                    "policy": "Actual BASE parents only; every task is fingerprint-bound and contains no generated question. Manual output must pass the same strict validator before counting as coverage.",
-                    "minimum_per_parent": ns.target_per_parent,
-                    "safe_target_per_parent": ns.safe_target_per_parent,
-                    "manual_parent_count": len(manual_queue),
-                    "tasks": manual_queue,
-                },
-                ensure_ascii=False,
-                indent=2,
-            ) + "\n",
-            encoding="utf-8",
-        )
+        Path(ns.manual_queue).write_text(json.dumps({"schema_version":"1.0","base_canonical_sha256":BASE_CANONICAL_SHA256,"recorded_at_utc":now,"policy":"Actual BASE parents only; every task is fingerprint-bound and contains no generated question. Manual output must pass the same strict validator before counting as coverage.","minimum_per_parent":ns.target_per_parent,"safe_target_per_parent":ns.safe_target_per_parent,"manual_parent_count":len(manual_queue),"tasks":manual_queue},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    report={"status":"PASS","recorded_at_utc":now,"base_originals":len(originals),"existing_expanded_variants":len(variants),"newly_generated_verified_variants":len(generated),"expanded_total":len(out["variants"]),"expanded_parent_coverage":final["expanded_parent_coverage"],"minimum_per_parent":ns.target_per_parent,"safe_target_per_parent":ns.safe_target_per_parent,"safe_target_parents_generated_this_run":safe_target_parents,"manual_parent_count":len(manual_queue),"manual_missing_variant_count":sum(r["missing_verified_variants"] for r in manual_queue),"generation_reason_counts":dict(sorted(reasons.items()))}
+    if ns.report: Path(ns.report).write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    print(json.dumps(report,ensure_ascii=False,indent=2)); return 0
 
-    report = {
-        "status": "PASS",
-        "recorded_at_utc": now,
-        "base_originals": len(originals),
-        "existing_expanded_variants": len(variants),
-        "newly_generated_verified_variants": len(generated),
-        "expanded_total": len(out["variants"]),
-        "expanded_parent_coverage": final["expanded_parent_coverage"],
-        "minimum_per_parent": ns.target_per_parent,
-        "safe_target_per_parent": ns.safe_target_per_parent,
-        "safe_target_parents_generated_this_run": safe_target_parents,
-        "manual_parent_count": len(manual_queue),
-        "manual_missing_variant_count": sum(r["missing_verified_variants"] for r in manual_queue),
-        "generation_reason_counts": dict(sorted(reasons.items())),
-    }
-    if ns.report:
-        Path(ns.report).write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps(report, ensure_ascii=False, indent=2))
-    return 0
-
-
-if __name__ == "__main__":
-    try:
-        raise SystemExit(main())
-    except Exception as exc:
-        print(f"FAIL: {exc}")
-        raise SystemExit(1)
+if __name__=="__main__":
+    try: raise SystemExit(main())
+    except Exception as exc: print(f"FAIL: {exc}"); raise SystemExit(1)
