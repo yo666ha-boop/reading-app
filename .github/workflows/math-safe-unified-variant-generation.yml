@@ -6,6 +6,7 @@ on:
     paths:
       - 'math-bank/app/generate_all_safe_verified_variants.py'
       - 'math-bank/app/test_generate_all_safe_verified_variants.py'
+      - 'math-bank/app/test_unified_parent_contract_gate.py'
       - 'math-bank/app/test_safe_trapezoid_area_variant_engine.py'
       - 'math-bank/app/test_safe_speed_distance_variant_engine.py'
       - 'math-bank/app/test_speed_distance_unified_adapter.py'
@@ -63,6 +64,7 @@ jobs:
             math-bank/app/safe_cube_volume_variant_engine.py \
             math-bank/app/safe_speed_distance_variant_engine.py \
             math-bank/app/test_generate_all_safe_verified_variants.py \
+            math-bank/app/test_unified_parent_contract_gate.py \
             math-bank/app/test_safe_trapezoid_area_variant_engine.py \
             math-bank/app/test_safe_speed_distance_variant_engine.py \
             math-bank/app/test_speed_distance_unified_adapter.py \
@@ -79,6 +81,7 @@ jobs:
         working-directory: math-bank/app
         run: |
           python test_generate_all_safe_verified_variants.py
+          python test_unified_parent_contract_gate.py
           python test_safe_trapezoid_area_variant_engine.py
           python test_safe_speed_distance_variant_engine.py
           python test_speed_distance_unified_adapter.py
@@ -104,7 +107,7 @@ jobs:
           p=Path('math-bank/state/unified-safe-variant-generation-latest.json')
           payload={
             'status':'PASS_CI',
-            'persist_schema_version':3,
+            'persist_schema_version':4,
             'run_id':os.environ['RUN_ID'],
             'triggering_sha':os.environ['TRIGGERING_SHA'],
             'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
@@ -115,6 +118,9 @@ jobs:
             'independent_recalculation_required':True,
             'strict_validator_remains_promotion_gate':True,
             'figure_choice_unsupported_fail_closed':True,
+            'empty_list_non_choice_representation_supported':True,
+            'unified_parent_contract_runtime_fail_closed':True,
+            'unified_parent_contract_fields':['grade','unit','skill','difficulty','format','question_format','taxonomy','choices','figure_refs','source.parent_id','audit.problem_answer_verified','audit.structure_verified','audit.figure_refs_verified'],
             'fingerprint_bound_manual_queue':True,
             'manual_queue_contains_no_generated_question_or_answer':True,
             'manual_queue_requires_same_strict_validator_before_coverage':True,
