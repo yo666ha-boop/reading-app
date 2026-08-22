@@ -67,12 +67,13 @@ def main() -> None:
     affine = _parent(template, pid="U-AFF", question="一次関数 y=2x+3 で x=4 のときの y を求めなさい。", answer="y=11")
     _assert_generated(affine, "affine")
 
-    probability = _parent(
-        template,
-        pid="U-PROB",
-        question="赤玉が3個、白玉が2個入っている袋から、玉を1個取り出すとき、赤玉が出る確率を求めなさい。",
-        answer="3/5",
-    )
+    square_root = _parent(template, pid="U-SQRT", question="√72を簡単にしなさい。", answer="6√2")
+    _assert_generated(square_root, "square_root_simplification")
+    square_root_empty_choices = copy.deepcopy(square_root)
+    square_root_empty_choices["choices"] = []
+    _assert_generated(square_root_empty_choices, "square_root_simplification")
+
+    probability = _parent(template, pid="U-PROB", question="赤玉が3個、白玉が2個入っている袋から、玉を1個取り出すとき、赤玉が出る確率を求めなさい。", answer="3/5")
     _assert_generated(probability, "single_draw_probability")
 
     proportion = _parent(template, pid="U-RATIO", question="比例式 4:3=8:x の x を求めなさい。", answer="x=6")
@@ -106,6 +107,11 @@ def main() -> None:
     rows, prov, reason = generate_parent(wrong, 1, NOW)
     assert rows == [] and prov == [] and reason.startswith("unsupported_all_safe_engines:")
     _assert_manual_task(wrong, reason, 1)
+
+    bad_sqrt = copy.deepcopy(square_root)
+    bad_sqrt["answer"] = "3√8"
+    rows, prov, reason = generate_parent(bad_sqrt, 1, NOW)
+    assert rows == [] and prov == [] and "square_root_parent_not_exactly_parsed_and_verified" in reason
 
     rectangle_wrong = copy.deepcopy(rectangle)
     rectangle_wrong["answer"] = "25cm²"
@@ -186,7 +192,7 @@ def main() -> None:
     assert original_task["parent_record_sha256"] != changed_task["parent_record_sha256"]
 
     print("PASS_UNIFIED_SAFE_VARIANT_ADAPTIVE_1_MINIMUM_3_SAFE_TARGET")
-    print("PASS_UNIFIED_SAFE_VARIANT_ALL_SPECIALIZED_ENGINES_INCLUDING_RECTANGLE_PERIMETER")
+    print("PASS_UNIFIED_SAFE_VARIANT_SPECIALIZED_ENGINES_INCLUDING_SQUARE_ROOT")
     print("PASS_UNIFIED_SAFE_VARIANT_LEGACY_EXACT_FALLBACK")
     print("PASS_UNIFIED_SAFE_VARIANT_WRONG_ANSWER_GEOMETRY_MIXED_UNIT_FIGURE_CHOICE_FAIL_CLOSED")
     print("PASS_UNIFIED_SAFE_VARIANT_FINGERPRINT_BOUND_MANUAL_QUEUE")
