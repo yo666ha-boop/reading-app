@@ -23,6 +23,7 @@ from safe_average_variant_engine import generate as generate_average
 from safe_circle_area_variant_engine import generate as generate_circle_area
 from safe_circle_circumference_variant_engine import generate as generate_circle_circumference
 from safe_cube_volume_variant_engine import generate as generate_cube_volume
+from safe_cylinder_volume_variant_engine import generate as generate_cylinder_volume
 from safe_parallelogram_area_variant_engine import generate as generate_parallelogram_area
 from safe_percentage_variant_engine import generate as generate_percentage
 from safe_proportion_variant_engine import generate as generate_proportion
@@ -61,6 +62,7 @@ SPECIALIZED_ENGINES = (
     ("trapezoid_area", generate_trapezoid_area),
     ("rectangular_prism_volume", generate_rectangular_prism_volume),
     ("cube_volume", generate_cube_volume),
+    ("cylinder_volume_pi_3_14", generate_cylinder_volume),
     ("speed_distance", generate_speed_distance),
 )
 
