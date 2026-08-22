@@ -109,13 +109,13 @@ jobs:
           all_pass=all(v=='success' for v in outcomes.values())
           payload={
             'status':'PASS_CI' if all_pass else 'FAIL_CI_DIAGNOSTIC',
-            'persist_schema_version':19,
+            'persist_schema_version':20,
             'run_id':os.environ['RUN_ID'],
             'triggering_sha':os.environ['TRIGGERING_SHA'],
             'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
             'step_outcomes':outcomes,
             'engine_test_discovery':'test_safe_*_variant_engine.py plus test_*_unified_adapter.py',
-            'engines':['affine','inverse_proportion','pythagorean_hypotenuse','square_root_simplification','single_draw_probability','proportion','percentage','discount_price','tax_inclusive_price','data_range','median','mode','relative_frequency','simple_average','rectangle_area','rectangle_perimeter','circle_area_pi_3_14','circle_circumference_pi_3_14','square_area_and_perimeter','triangle_area','parallelogram_area','trapezoid_area','rectangular_prism_volume','cube_volume','cylinder_volume_pi_3_14','cone_volume_pi_3_14','sphere_area_volume_pi_3_14','speed_distance','binary_arithmetic_exact','linear_equation_exact'],
+            'engines':['affine','inverse_proportion','pythagorean_hypotenuse','square_root_simplification','single_draw_probability','proportion','percentage','discount_price','tax_inclusive_price','data_range','median','mode','relative_frequency','interquartile_range','simple_average','rectangle_area','rectangle_perimeter','circle_area_pi_3_14','circle_circumference_pi_3_14','square_area_and_perimeter','triangle_area','parallelogram_area','trapezoid_area','rectangular_prism_volume','cube_volume','cylinder_volume_pi_3_14','cone_volume_pi_3_14','sphere_area_volume_pi_3_14','speed_distance','binary_arithmetic_exact','linear_equation_exact'],
             'actual_base_variants_generated':0,
             'base_required_before_actual_generation':True,
             'parent_record_sha256_required':True,
@@ -136,6 +136,7 @@ jobs:
             'median_sorted_middle_and_equal_side_count_identity':True,
             'mode_unique_argmax_frequency_and_strict_max_count_identity':True,
             'relative_frequency_exact_fraction_and_cross_product_identity':True,
+            'interquartile_range_lower_upper_half_medians_and_double_difference_identity':True,
             'tax_inclusive_exact_fraction_and_tax_cross_product_identity':True,
             'data_range_max_minus_min_and_inverse_identity':True,
             'discount_price_fraction_and_cross_product_identity':True,
