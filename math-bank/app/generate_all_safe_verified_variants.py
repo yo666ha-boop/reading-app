@@ -20,6 +20,7 @@ from safe_cube_volume_variant_engine import generate as generate_cube_volume
 from safe_cylinder_volume_variant_engine import generate as generate_cylinder_volume
 from safe_data_range_variant_engine import generate as generate_data_range
 from safe_decimal_arithmetic_variant_engine import generate as generate_decimal_arithmetic
+from safe_difference_of_squares_factorization_variant_engine import generate as generate_difference_of_squares_factorization
 from safe_discount_price_variant_engine import generate as generate_discount_price
 from safe_fraction_arithmetic_variant_engine import generate as generate_fraction_arithmetic
 from safe_gcd_variant_engine import generate as generate_gcd
@@ -60,6 +61,7 @@ SPECIALIZED_ENGINES = (
     ("inverse_proportion", generate_inverse_proportion),
     ("pythagorean_hypotenuse", generate_pythagorean_hypotenuse),
     ("quadratic_square_equation", generate_quadratic_square_equation),
+    ("difference_of_squares_factorization", generate_difference_of_squares_factorization),
     ("monic_quadratic_factorization", generate_monic_quadratic_factorization),
     ("binomial_expansion", generate_binomial_expansion),
     ("square_root_simplification", generate_square_root_simplification),
