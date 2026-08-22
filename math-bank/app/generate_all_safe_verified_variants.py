@@ -48,6 +48,7 @@ from safe_square_root_simplification_variant_engine import generate as generate_
 from safe_tax_inclusive_price_variant_engine import generate as generate_tax_inclusive_price
 from safe_trapezoid_area_variant_engine import generate as generate_trapezoid_area
 from safe_triangle_area_variant_engine import generate as generate_triangle_area
+from safe_two_dice_sum_probability_variant_engine import generate as generate_two_dice_sum_probability
 from validate_app_records import load_records
 from validate_expanded_variant_layer import BASE_CANONICAL_SHA256, base_gate, load_layer, numeric_tokens, parent_record_sha256, validate_layer
 
@@ -58,6 +59,7 @@ SPECIALIZED_ENGINES = (
     ("quadratic_square_equation", generate_quadratic_square_equation),
     ("square_root_simplification", generate_square_root_simplification),
     ("single_draw_probability", generate_probability),
+    ("two_dice_sum_probability", generate_two_dice_sum_probability),
     ("proportion", generate_proportion),
     ("percentage", generate_percentage),
     ("discount_price", generate_discount_price),
