@@ -1,9 +1,9 @@
 {
   "status": "PASS_CI",
-  "persist_schema_version": 10,
-  "run_id": "32553202653",
-  "triggering_sha": "7402a473ef40dd6a7968074e62c487d5b28399b4",
-  "recorded_at_utc": "2026-08-22T05:00:31.181193+00:00",
+  "persist_schema_version": 11,
+  "run_id": "32553226475",
+  "triggering_sha": "877ef8cc7466f8bf3bed91f9737096f72d9a162d",
+  "recorded_at_utc": "2026-08-22T05:00:57.891917+00:00",
   "step_outcomes": {
     "compile": "success",
     "core": "success",
@@ -11,11 +11,13 @@
     "cylinder": "success",
     "cone": "success",
     "sphere": "success",
+    "inverse_proportion": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
   },
   "engines": [
     "affine",
+    "inverse_proportion",
     "single_draw_probability",
     "proportion",
     "percentage",
@@ -68,6 +70,7 @@
   "minimum_per_parent_default": 1,
   "safe_target_per_parent_default": 3,
   "unsupported_manual_shortfall_only": true,
+  "inverse_proportion_exact_division_and_product_identity": true,
   "rectangle_area_exact_product_and_inverse_identity": true,
   "rectangle_perimeter_exact_double_sum_and_two_inverse_identities": true,
   "circle_area_pi_3_14_exact_product_and_two_inverse_identities": true,
