@@ -7,10 +7,14 @@ def parent(**overrides):
 def main():
     ok,reason=can_generate(parent()); assert ok and reason=="perfect_square_integer_expansion_exact"
     ok,_=can_generate(parent(choices=[])); assert ok
-    rows,ev,_=generate(parent(),3); assert len(rows)==len(ev)==3 and len({r["question"] for r in rows})==3
+    rows,ev,_=generate(parent(),3)
+    assert len(rows)==len(ev)==3 and len({r["question"] for r in rows})==3
+    sigs=[tuple(r["numeric_signature"]) for r in rows]
+    assert len(set(sigs))==3 and ("3",) not in sigs
     for r,e in zip(rows,ev):
         assert r["answer"].startswith("x²") and "展開" in r["question"]
         assert e["method"]=="perfect_square_expansion_double_and_square_coefficients" and "PASS" in e["independent_check"]
+        assert "absolute numeric surfaces unique" in e["independent_check"]
     bad=[
         parent(answer="x²+6x+8"),
         parent(question="(x+3)²=0を解きなさい。",answer="x=-3"),
