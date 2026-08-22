@@ -1,9 +1,9 @@
 {
   "status": "PASS_CI",
-  "persist_schema_version": 29,
-  "run_id": "32595091260",
-  "triggering_sha": "c2455b5d137aa779fdc3ded8416d205737444268",
-  "recorded_at_utc": "2026-08-22T19:54:32.770809+00:00",
+  "persist_schema_version": 30,
+  "run_id": "32595109204",
+  "triggering_sha": "c8fd325bf7e25475a94790b7c6b50134eb041813",
+  "recorded_at_utc": "2026-08-22T19:54:49.128078+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "success",
@@ -13,6 +13,7 @@
   },
   "engine_test_discovery": "test_safe_*_variant_engine.py plus test_*_unified_adapter.py",
   "engines": [
+    "absolute_value",
     "affine",
     "symmetric_linear_system",
     "inverse_proportion",
@@ -85,6 +86,7 @@
   "minimum_per_parent_default": 1,
   "safe_target_per_parent_default": 3,
   "unsupported_manual_shortfall_only": true,
+  "absolute_value_nonnegative_and_square_identity": true,
   "decimal_arithmetic_exact_fraction_and_inverse_operation_identity": true,
   "fraction_arithmetic_exact_fraction_and_inverse_operation_identity": true,
   "symmetric_linear_system_closed_form_and_double_substitution_identity": true,
