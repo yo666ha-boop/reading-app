@@ -4,8 +4,8 @@ from __future__ import annotations
 
 Accepted parents must explicitly state one positive integer radius in cm, ask
 only for the area of a circle, explicitly use pi=3.14, and carry the exact
-verified numeric cm^2 answer.  Figure/choice/diameter/sector/circumference/
-reverse problems fail closed.  Decimal arithmetic avoids binary-float drift.
+verified numeric cm^2 answer. Figure/choice/diameter/sector/circumference/
+reverse problems fail closed. Decimal arithmetic avoids binary-float drift.
 """
 
 from decimal import Decimal, InvalidOperation
@@ -48,8 +48,10 @@ def _parse_parent(parent: dict):
     q = _norm(parent.get("question"))
     if "円" not in q or "面積" not in q or "円周率" not in q or "3.14" not in q:
         return None
+    # Do not block the substring 「円周」 because it is part of the required
+    # phrase 「円周率」. Only explicit circumference-question wording is blocked.
     blocked = (
-        "直径", "円周", "周の長さ", "弧", "扇形", "おうぎ形", "中心角", "半円", "四分円",
+        "直径", "円周の長さ", "円の周の長さ", "周の長さ", "弧", "扇形", "おうぎ形", "中心角", "半円", "四分円",
         "半径を求", "直径を求", "図", "グラフ", "m²", "mm", "km",
     )
     if any(token in q for token in blocked):
