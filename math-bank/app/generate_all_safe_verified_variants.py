@@ -27,6 +27,7 @@ from safe_cube_volume_variant_engine import generate as generate_cube_volume
 from safe_cylinder_volume_variant_engine import generate as generate_cylinder_volume
 from safe_data_range_variant_engine import generate as generate_data_range
 from safe_discount_price_variant_engine import generate as generate_discount_price
+from safe_gcd_variant_engine import generate as generate_gcd
 from safe_interquartile_range_variant_engine import generate as generate_interquartile_range
 from safe_inverse_proportion_variant_engine import generate as generate_inverse_proportion
 from safe_median_variant_engine import generate as generate_median
@@ -60,6 +61,7 @@ SPECIALIZED_ENGINES = (
     ("square_root_simplification", generate_square_root_simplification),
     ("single_draw_probability", generate_probability),
     ("two_dice_sum_probability", generate_two_dice_sum_probability),
+    ("gcd", generate_gcd),
     ("proportion", generate_proportion),
     ("percentage", generate_percentage),
     ("discount_price", generate_discount_price),
