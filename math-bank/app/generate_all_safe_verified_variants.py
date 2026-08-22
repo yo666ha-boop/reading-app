@@ -30,6 +30,7 @@ from safe_discount_price_variant_engine import generate as generate_discount_pri
 from safe_gcd_variant_engine import generate as generate_gcd
 from safe_interquartile_range_variant_engine import generate as generate_interquartile_range
 from safe_inverse_proportion_variant_engine import generate as generate_inverse_proportion
+from safe_lcm_variant_engine import generate as generate_lcm
 from safe_median_variant_engine import generate as generate_median
 from safe_mode_variant_engine import generate as generate_mode
 from safe_parallelogram_area_variant_engine import generate as generate_parallelogram_area
@@ -62,6 +63,7 @@ SPECIALIZED_ENGINES = (
     ("single_draw_probability", generate_probability),
     ("two_dice_sum_probability", generate_two_dice_sum_probability),
     ("gcd", generate_gcd),
+    ("lcm", generate_lcm),
     ("proportion", generate_proportion),
     ("percentage", generate_percentage),
     ("discount_price", generate_discount_price),
