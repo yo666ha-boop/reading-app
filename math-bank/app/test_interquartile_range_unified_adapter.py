@@ -10,7 +10,7 @@ def main():
     parent=copy.deepcopy(make_base()[0])
     parent["id"]="U-IQR"
     parent["question"]="データ 2、4、5、7、9、10、12、15 の四分位範囲を求めなさい。"
-    parent["answer"]="6"
+    parent["answer"]="6.5"
     parent["choices"]=None; parent["figure_refs"]=[]
     parent["source"]["is_generated_variant"]=False
     parent["source"]["parent_id"]=None
