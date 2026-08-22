@@ -1,0 +1,39 @@
+name: Math Post Canonical Expansion Gate
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - 'math-bank/app/advance_exact_base_to_expanded_ready.py'
+      - 'math-bank/app/test_advance_exact_base_to_expanded_ready.py'
+      - 'math-bank/app/generate_all_safe_verified_variants.py'
+      - 'math-bank/app/compose_expanded_app_records.py'
+      - '.github/workflows/math-post-canonical-expansion-gate.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: math-post-canonical-expansion-gate-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile post-canonical expansion chain
+        run: |
+          python -m py_compile \
+            math-bank/app/advance_exact_base_to_expanded_ready.py \
+            math-bank/app/generate_all_safe_verified_variants.py \
+            math-bank/app/compose_expanded_app_records.py \
+            math-bank/app/test_advance_exact_base_to_expanded_ready.py
+      - name: Verify safe generation progress and manual fail-closed release block
+        working-directory: math-bank/app
+        run: python test_advance_exact_base_to_expanded_ready.py
