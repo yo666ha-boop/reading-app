@@ -109,13 +109,13 @@ jobs:
           all_pass=all(v=='success' for v in outcomes.values())
           payload={
             'status':'PASS_CI' if all_pass else 'FAIL_CI_DIAGNOSTIC',
-            'persist_schema_version':20,
+            'persist_schema_version':21,
             'run_id':os.environ['RUN_ID'],
             'triggering_sha':os.environ['TRIGGERING_SHA'],
             'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
             'step_outcomes':outcomes,
             'engine_test_discovery':'test_safe_*_variant_engine.py plus test_*_unified_adapter.py',
-            'engines':['affine','inverse_proportion','pythagorean_hypotenuse','square_root_simplification','single_draw_probability','proportion','percentage','discount_price','tax_inclusive_price','data_range','median','mode','relative_frequency','interquartile_range','simple_average','rectangle_area','rectangle_perimeter','circle_area_pi_3_14','circle_circumference_pi_3_14','square_area_and_perimeter','triangle_area','parallelogram_area','trapezoid_area','rectangular_prism_volume','cube_volume','cylinder_volume_pi_3_14','cone_volume_pi_3_14','sphere_area_volume_pi_3_14','speed_distance','binary_arithmetic_exact','linear_equation_exact'],
+            'engines':['affine','inverse_proportion','pythagorean_hypotenuse','quadratic_square_equation','square_root_simplification','single_draw_probability','proportion','percentage','discount_price','tax_inclusive_price','data_range','median','mode','relative_frequency','interquartile_range','simple_average','rectangle_area','rectangle_perimeter','circle_area_pi_3_14','circle_circumference_pi_3_14','square_area_and_perimeter','triangle_area','parallelogram_area','trapezoid_area','rectangular_prism_volume','cube_volume','cylinder_volume_pi_3_14','cone_volume_pi_3_14','sphere_area_volume_pi_3_14','speed_distance','binary_arithmetic_exact','linear_equation_exact'],
             'actual_base_variants_generated':0,
             'base_required_before_actual_generation':True,
             'parent_record_sha256_required':True,
@@ -133,6 +133,7 @@ jobs:
             'minimum_per_parent_default':1,
             'safe_target_per_parent_default':3,
             'unsupported_manual_shortfall_only':True,
+            'quadratic_square_equation_perfect_square_two_roots_and_root_product_identity':True,
             'median_sorted_middle_and_equal_side_count_identity':True,
             'mode_unique_argmax_frequency_and_strict_max_count_identity':True,
             'relative_frequency_exact_fraction_and_cross_product_identity':True,
