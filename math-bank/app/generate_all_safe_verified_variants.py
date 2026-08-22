@@ -22,6 +22,7 @@ from safe_affine_variant_engine import generate as generate_affine
 from safe_average_variant_engine import generate as generate_average
 from safe_circle_area_variant_engine import generate as generate_circle_area
 from safe_circle_circumference_variant_engine import generate as generate_circle_circumference
+from safe_cone_volume_variant_engine import generate as generate_cone_volume
 from safe_cube_volume_variant_engine import generate as generate_cube_volume
 from safe_cylinder_volume_variant_engine import generate as generate_cylinder_volume
 from safe_parallelogram_area_variant_engine import generate as generate_parallelogram_area
@@ -63,6 +64,7 @@ SPECIALIZED_ENGINES = (
     ("rectangular_prism_volume", generate_rectangular_prism_volume),
     ("cube_volume", generate_cube_volume),
     ("cylinder_volume_pi_3_14", generate_cylinder_volume),
+    ("cone_volume_pi_3_14", generate_cone_volume),
     ("speed_distance", generate_speed_distance),
 )
 
