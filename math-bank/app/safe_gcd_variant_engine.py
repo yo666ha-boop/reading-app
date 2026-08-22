@@ -2,11 +2,11 @@ from __future__ import annotations
 
 """Fail-closed exact engine for a narrow greatest-common-divisor parent shape.
 
-Only parents that explicitly present two positive integers with Japanese "と"
-and ask solely for their 最大公約数 are accepted. Parent answers are verified
-by Euclid's algorithm and independently by exhaustive common-divisor checking.
-Figures, real choices, LCM/prime-factorization compound tasks, three-or-more
-integer tasks, and ambiguous wording fail closed.
+Only parents that explicitly present exactly two positive integers with Japanese
+"と" and ask solely for their 最大公約数 are accepted. Parent answers are
+verified by Euclid's algorithm and independently by exhaustive common-divisor
+checking. Figures, real choices, LCM/prime-factorization compound tasks,
+three-or-more integer tasks, and ambiguous wording fail closed.
 """
 
 import hashlib
@@ -40,8 +40,10 @@ def _parse_parent(parent: dict):
     q = _norm(parent.get("question"))
     if "最大公約数" not in q:
         return None
-    blocked = ("最小公倍数", "素因数分解", "3つ", "三つ", "3個", "三個", "個数", "すべて", "公約数を", "約数を")
+    blocked = ("最小公倍数", "素因数分解", "個数", "すべて", "約数をすべて", "公約数をすべて")
     if any(token in q for token in blocked):
+        return None
+    if len(re.findall(r"\d+", q)) != 2:
         return None
     matches = list(PAIR_RE.finditer(q))
     if len(matches) != 1:
