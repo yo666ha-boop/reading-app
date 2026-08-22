@@ -21,6 +21,7 @@ from generate_safe_verified_variants import (
 from safe_affine_variant_engine import generate as generate_affine
 from safe_average_variant_engine import generate as generate_average
 from safe_circle_area_variant_engine import generate as generate_circle_area
+from safe_circle_circumference_variant_engine import generate as generate_circle_circumference
 from safe_cube_volume_variant_engine import generate as generate_cube_volume
 from safe_parallelogram_area_variant_engine import generate as generate_parallelogram_area
 from safe_percentage_variant_engine import generate as generate_percentage
@@ -53,6 +54,7 @@ SPECIALIZED_ENGINES = (
     ("rectangle_area", generate_rectangle_area),
     ("rectangle_perimeter", generate_rectangle_perimeter),
     ("circle_area_pi_3_14", generate_circle_area),
+    ("circle_circumference_pi_3_14", generate_circle_circumference),
     ("square_area", generate_square_area),
     ("triangle_area", generate_triangle_area),
     ("parallelogram_area", generate_parallelogram_area),
