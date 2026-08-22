@@ -28,6 +28,7 @@ from safe_cylinder_volume_variant_engine import generate as generate_cylinder_vo
 from safe_data_range_variant_engine import generate as generate_data_range
 from safe_discount_price_variant_engine import generate as generate_discount_price
 from safe_inverse_proportion_variant_engine import generate as generate_inverse_proportion
+from safe_median_variant_engine import generate as generate_median
 from safe_parallelogram_area_variant_engine import generate as generate_parallelogram_area
 from safe_percentage_variant_engine import generate as generate_percentage
 from safe_proportion_variant_engine import generate as generate_proportion
@@ -55,6 +56,7 @@ SPECIALIZED_ENGINES = (
     ("percentage", generate_percentage),
     ("discount_price", generate_discount_price),
     ("data_range", generate_data_range),
+    ("median", generate_median),
     ("simple_average", generate_average),
     ("rectangle_area", generate_rectangle_area),
     ("rectangle_perimeter", generate_rectangle_perimeter),
