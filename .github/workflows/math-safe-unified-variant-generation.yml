@@ -24,6 +24,8 @@ on:
       - 'math-bank/app/test_circle_circumference_unified_adapter.py'
       - 'math-bank/app/test_safe_cylinder_volume_variant_engine.py'
       - 'math-bank/app/test_cylinder_volume_unified_adapter.py'
+      - 'math-bank/app/test_safe_cone_volume_variant_engine.py'
+      - 'math-bank/app/test_cone_volume_unified_adapter.py'
       - 'math-bank/app/generate_safe_verified_variants.py'
       - 'math-bank/app/safe_*_variant_engine.py'
       - '.github/workflows/math-safe-unified-variant-generation.yml'
@@ -71,6 +73,7 @@ jobs:
             math-bank/app/safe_rectangular_prism_volume_variant_engine.py \
             math-bank/app/safe_cube_volume_variant_engine.py \
             math-bank/app/safe_cylinder_volume_variant_engine.py \
+            math-bank/app/safe_cone_volume_variant_engine.py \
             math-bank/app/safe_speed_distance_variant_engine.py \
             math-bank/app/test_generate_all_safe_verified_variants.py \
             math-bank/app/test_unified_parent_contract_gate.py \
@@ -90,7 +93,9 @@ jobs:
             math-bank/app/test_safe_circle_circumference_variant_engine.py \
             math-bank/app/test_circle_circumference_unified_adapter.py \
             math-bank/app/test_safe_cylinder_volume_variant_engine.py \
-            math-bank/app/test_cylinder_volume_unified_adapter.py
+            math-bank/app/test_cylinder_volume_unified_adapter.py \
+            math-bank/app/test_safe_cone_volume_variant_engine.py \
+            math-bank/app/test_cone_volume_unified_adapter.py
       - id: core
         name: Run existing unified regression
         if: steps.compile.outcome == 'success'
@@ -126,6 +131,14 @@ jobs:
         run: |
           python test_safe_cylinder_volume_variant_engine.py
           python test_cylinder_volume_unified_adapter.py
+      - id: cone
+        name: Run cone-volume regressions
+        if: steps.compile.outcome == 'success'
+        continue-on-error: true
+        working-directory: math-bank/app
+        run: |
+          python test_safe_cone_volume_variant_engine.py
+          python test_cone_volume_unified_adapter.py
       - id: parent_contract
         name: Run unified runtime parent-contract regression
         if: steps.compile.outcome == 'success'
@@ -147,6 +160,7 @@ jobs:
           CORE_OUTCOME: ${{ steps.core.outcome }}
           CIRCLE_OUTCOME: ${{ steps.circle.outcome }}
           CYLINDER_OUTCOME: ${{ steps.cylinder.outcome }}
+          CONE_OUTCOME: ${{ steps.cone.outcome }}
           PARENT_CONTRACT_OUTCOME: ${{ steps.parent_contract.outcome }}
           LEGACY_EMPTY_CHOICES_OUTCOME: ${{ steps.legacy_empty_choices.outcome }}
         run: |
@@ -159,6 +173,7 @@ jobs:
             'core':os.environ.get('CORE_OUTCOME','unknown'),
             'circle':os.environ.get('CIRCLE_OUTCOME','unknown'),
             'cylinder':os.environ.get('CYLINDER_OUTCOME','unknown'),
+            'cone':os.environ.get('CONE_OUTCOME','unknown'),
             'parent_contract':os.environ.get('PARENT_CONTRACT_OUTCOME','unknown'),
             'legacy_empty_choices':os.environ.get('LEGACY_EMPTY_CHOICES_OUTCOME','unknown'),
           }
@@ -166,12 +181,12 @@ jobs:
           p=Path('math-bank/state/unified-safe-variant-generation-latest.json')
           payload={
             'status':'PASS_CI' if all_pass else 'FAIL_CI_DIAGNOSTIC',
-            'persist_schema_version':8,
+            'persist_schema_version':9,
             'run_id':os.environ['RUN_ID'],
             'triggering_sha':os.environ['TRIGGERING_SHA'],
             'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
             'step_outcomes':outcomes,
-            'engines':['affine','single_draw_probability','proportion','percentage','simple_average','rectangle_area','rectangle_perimeter','circle_area_pi_3_14','circle_circumference_pi_3_14','square_area','triangle_area','parallelogram_area','trapezoid_area','rectangular_prism_volume','cube_volume','cylinder_volume_pi_3_14','speed_distance','binary_arithmetic_exact','linear_equation_exact'],
+            'engines':['affine','single_draw_probability','proportion','percentage','simple_average','rectangle_area','rectangle_perimeter','circle_area_pi_3_14','circle_circumference_pi_3_14','square_area','triangle_area','parallelogram_area','trapezoid_area','rectangular_prism_volume','cube_volume','cylinder_volume_pi_3_14','cone_volume_pi_3_14','speed_distance','binary_arithmetic_exact','linear_equation_exact'],
             'actual_base_variants_generated':0,
             'base_required_before_actual_generation':True,
             'parent_record_sha256_required':True,
@@ -194,6 +209,7 @@ jobs:
             'circle_area_pi_3_14_exact_product_and_two_inverse_identities':True,
             'circle_circumference_pi_3_14_exact_product_and_two_inverse_identities':True,
             'cylinder_volume_pi_3_14_exact_product_and_inverse_identities':True,
+            'cone_volume_pi_3_14_exact_one_third_product_and_inverse_identities':True,
             'square_area_exact_product_and_integer_square_root_identity':True,
             'triangle_area_exact_half_product_and_doubled_area_identity':True,
             'parallelogram_area_exact_product_and_inverse_identity':True,
@@ -221,6 +237,7 @@ jobs:
           CORE_OUTCOME: ${{ steps.core.outcome }}
           CIRCLE_OUTCOME: ${{ steps.circle.outcome }}
           CYLINDER_OUTCOME: ${{ steps.cylinder.outcome }}
+          CONE_OUTCOME: ${{ steps.cone.outcome }}
           PARENT_CONTRACT_OUTCOME: ${{ steps.parent_contract.outcome }}
           LEGACY_EMPTY_CHOICES_OUTCOME: ${{ steps.legacy_empty_choices.outcome }}
         run: |
@@ -228,5 +245,6 @@ jobs:
           test "$CORE_OUTCOME" = success
           test "$CIRCLE_OUTCOME" = success
           test "$CYLINDER_OUTCOME" = success
+          test "$CONE_OUTCOME" = success
           test "$PARENT_CONTRACT_OUTCOME" = success
           test "$LEGACY_EMPTY_CHOICES_OUTCOME" = success
