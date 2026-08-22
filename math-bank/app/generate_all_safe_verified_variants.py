@@ -35,6 +35,7 @@ from safe_median_variant_engine import generate as generate_median
 from safe_mode_variant_engine import generate as generate_mode
 from safe_parallelogram_area_variant_engine import generate as generate_parallelogram_area
 from safe_percentage_variant_engine import generate as generate_percentage
+from safe_prime_factorization_variant_engine import generate as generate_prime_factorization
 from safe_proportion_variant_engine import generate as generate_proportion
 from safe_pythagorean_hypotenuse_variant_engine import generate as generate_pythagorean_hypotenuse
 from safe_quadratic_square_equation_variant_engine import generate as generate_quadratic_square_equation
@@ -64,6 +65,7 @@ SPECIALIZED_ENGINES = (
     ("two_dice_sum_probability", generate_two_dice_sum_probability),
     ("gcd", generate_gcd),
     ("lcm", generate_lcm),
+    ("prime_factorization", generate_prime_factorization),
     ("proportion", generate_proportion),
     ("percentage", generate_percentage),
     ("discount_price", generate_discount_price),
