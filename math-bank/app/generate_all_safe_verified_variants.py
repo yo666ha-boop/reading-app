@@ -25,6 +25,7 @@ from safe_circle_circumference_variant_engine import generate as generate_circle
 from safe_cone_volume_variant_engine import generate as generate_cone_volume
 from safe_cube_volume_variant_engine import generate as generate_cube_volume
 from safe_cylinder_volume_variant_engine import generate as generate_cylinder_volume
+from safe_inverse_proportion_variant_engine import generate as generate_inverse_proportion
 from safe_parallelogram_area_variant_engine import generate as generate_parallelogram_area
 from safe_percentage_variant_engine import generate as generate_percentage
 from safe_proportion_variant_engine import generate as generate_proportion
@@ -50,6 +51,7 @@ from validate_expanded_variant_layer import (
 
 SPECIALIZED_ENGINES = (
     ("affine", generate_affine),
+    ("inverse_proportion", generate_inverse_proportion),
     ("single_draw_probability", generate_probability),
     ("proportion", generate_proportion),
     ("percentage", generate_percentage),
