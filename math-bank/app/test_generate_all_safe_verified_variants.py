@@ -116,7 +116,12 @@ def main() -> None:
     rectangle_perimeter["question"] = "たて4cm、横6cmの長方形の周の長さを求めなさい。"
     rectangle_perimeter["answer"] = "20cm"
     rows, prov, reason = generate_parent(rectangle_perimeter, 1, NOW)
-    assert rows == [] and prov == [] and "rectangle_area_parent_not_exactly_parsed_and_verified" in reason
+    assert len(rows) == len(prov) == 1
+    assert reason.startswith("specialized:rectangle_perimeter:")
+    assert rows[0]["source"]["parent_id"] == rectangle_perimeter["id"]
+    assert prov[0]["parent_record_sha256"] == parent_record_sha256(rectangle_perimeter)
+    assert prov[0]["independent_recalculation"] is True
+    assert "engine=rectangle_perimeter" in prov[0]["verification_evidence"]
 
     rectangle_mixed = copy.deepcopy(rectangle)
     rectangle_mixed["question"] = "たて4cm、横6mの長方形の面積を求めなさい。"
@@ -181,7 +186,7 @@ def main() -> None:
     assert original_task["parent_record_sha256"] != changed_task["parent_record_sha256"]
 
     print("PASS_UNIFIED_SAFE_VARIANT_ADAPTIVE_1_MINIMUM_3_SAFE_TARGET")
-    print("PASS_UNIFIED_SAFE_VARIANT_ALL_SPECIALIZED_ENGINES_INCLUDING_RECTANGLE_TRIANGLE_PARALLELOGRAM_AREA")
+    print("PASS_UNIFIED_SAFE_VARIANT_ALL_SPECIALIZED_ENGINES_INCLUDING_RECTANGLE_PERIMETER")
     print("PASS_UNIFIED_SAFE_VARIANT_LEGACY_EXACT_FALLBACK")
     print("PASS_UNIFIED_SAFE_VARIANT_WRONG_ANSWER_GEOMETRY_MIXED_UNIT_FIGURE_CHOICE_FAIL_CLOSED")
     print("PASS_UNIFIED_SAFE_VARIANT_FINGERPRINT_BOUND_MANUAL_QUEUE")
