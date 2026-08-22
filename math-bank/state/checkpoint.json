@@ -1,7 +1,7 @@
 {
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_EXPANDED_VARIANT_APP_AND_BASE_RECOVERY",
-  "current_stage": "EXACT_BASE_PAIR0_SPHERE_SCHEMA10_UNIFIED_PENDING_TERMINAL",
+  "current_stage": "EXACT_BASE_PAIR0_SPHERE_SCHEMA10_PASS_CONTINUE_RECOVERY",
   "base_canonical": {
     "records": 1231,
     "original_records": 1124,
@@ -22,16 +22,15 @@
     "manual_generation_queue":"READY_TO_MATERIALIZE_FROM_EXACT_BASE_ONLY"
   },
   "今回完了した内容": [
-    "最新HEAD/checkpoint/variant/CI/auto-complete/branch-tag/PR-refs/actions recoveryを再読し、開始時HEAD ac0bfdbb054af71dd8e68995e20f8c11f76a8705へ追従。",
-    "branch/tag recoveryは1901/1901、16/16、exact_coverage_complete=true、pair0。PR refsも1419/1419、16/16、exact_coverage_complete=true、pair0を再確認。どちらもvalid negative evidenceとして維持。",
-    "Actions exact deltaは289 artifacts / 259 candidates / 257 reused / 2 downloaded / 796 members / 69,820,646 bytes / failure0 / canonical0 / valid audit0 / pair0まで前進。",
-    "Google Driveを完成ZIP名とMATHBANK_FINAL_AUDIT_V2で再検索し0件。File Libraryもexact filename/audit/SHA検索で正本候補なし。",
-    "BASE待ちで止まらず、球の表面積・体積fail-closed engineを新規追加。表面積A=4×3.14×r²、体積V=4/3×3.14×r³を親解答から再計算し、独立逆算を必須化。体積はrが3の倍数のexact caseだけ自動生成し、figure/実choices/直径/半球/複合質問/誤答はreject。engine commit d9f39c35bf840c2db85db260ce887a2cb1088fff。",
-    "球engineのpositive/negative regressionを追加。empty choices=[]も非選択式として許容し、誤答・非exact volume・figure・実choice・直径・半球・体積+表面積複合質問をnegative固定。commit c312231c980620b02ad3537f3ba0cffb3b92c474。",
-    "Unified driverへsphere_pi_3_14 engineを接続。既存共通parent contract gateによりparent_id、parent_record_sha256、taxonomy/difficulty/choice/figure、audit3 true、independent recalculation、verification_evidenceを必須化。commit 258ac95f7c1be35ae97b8081f34280a66dc4fd2f。",
-    "球のUnified adapter regressionを追加し、体積・表面積とも3 siblings、親metadata、audit3、fingerprint、independent recalculationを検証。commit 2f9885a6962c0ab906dbfbe2e2d47f6fefd79af5。",
-    "Unified workflowをschema10へ更新しsphere専用stepを追加。compile/test/persist/enforceにsphereを含め、stateへ球面積・球体積identityを保存する契約を追加。commit 57a00031ebd140c3c261c1796503917952272e93。",
-    "variant-expansion stateを最新recoveryとsphere schema10 pending地点へ更新。commit 751e2e391d1ef7cb9905a695c5395556f29e41a4。mainは未変更。"
+    "最新HEAD/checkpoint/variant/CI/auto-complete/branch-tag/PR-refs/actions recoveryを再読し、共有正本へ追従。",
+    "branch/tag recovery 1901/1901・16/16・exact complete・pair0、PR refs 1419/1419・16/16・exact complete・pair0を再確認。valid negative evidenceとして維持。",
+    "Actions exact deltaを289 artifacts / 259 candidates / 257 reused / 2 downloaded / 796 members / 69,820,646 bytes / failure0 / canonical0 / valid audit0 / pair0まで更新。",
+    "Google Driveを完成ZIP名とMATHBANK_FINAL_AUDIT_V2で再検索し0件。File Libraryもexact filename/audit/SHA検索で正本pairなし。",
+    "球の表面積・体積fail-closed engineを追加。表面積A=4×3.14×r²、体積V=4/3×3.14×r³を親解答からexact再計算し、独立逆算を必須化。体積はrが3の倍数のexact caseだけ自動生成。engine d9f39c35bf840c2db85db260ce887a2cb1088fff。",
+    "球engine regression c312231c980620b02ad3537f3ba0cffb3b92c474、Unified wiring 258ac95f7c1be35ae97b8081f34280a66dc4fd2f、親SHA/metadata/audit3/独立再計算adapter 2f9885a6962c0ab906dbfbe2e2d47f6fefd79af5を追加。",
+    "Unified workflowをschema10へ更新しsphere専用step、persist、enforceを追加。contract commit 57a00031ebd140c3c261c1796503917952272e93。",
+    "Math Safe Unified Variant Generation run 32550476704がPASS。triggering SHA 57a00031、compile/core/circle/cylinder/cone/sphere/parent-contract/legacy-empty-choice全step success。",
+    "variant-expansion stateをschema10 PASSへ更新。commit f3125e9b00a2a96ad12a5f8bf8b34ccb6e9df3b5。mainは未変更。"
   ],
   "BASE回収状況": {
     "canonical_pair_found": false,
@@ -47,15 +46,15 @@
     "policy":"cancelled/timeout/incomplete coverage is never absence evidence; no reconstruction; no partial-161, diagnostic-1271, or Winpass717 promotion"
   },
   "expanded_generation_capability": {
-    "last_confirmed_terminal_status":"PASS_CI",
-    "last_confirmed_terminal_run_id":"32550401090",
-    "last_confirmed_terminal_schema":9,
-    "schema10_sphere_terminal_pending":true,
-    "schema10_contract_commit":"57a00031ebd140c3c261c1796503917952272e93",
+    "last_terminal_status":"PASS_CI",
+    "last_terminal_run_id":"32550476704",
+    "last_terminal_schema":10,
+    "last_terminal_triggering_sha":"57a00031ebd140c3c261c1796503917952272e93",
     "sphere_engine_commit":"d9f39c35bf840c2db85db260ce887a2cb1088fff",
     "sphere_regression_commit":"c312231c980620b02ad3537f3ba0cffb3b92c474",
     "sphere_unified_wiring_commit":"258ac95f7c1be35ae97b8081f34280a66dc4fd2f",
     "sphere_unified_adapter_commit":"2f9885a6962c0ab906dbfbe2e2d47f6fefd79af5",
+    "sphere_schema10_contract_commit":"57a00031ebd140c3c261c1796503917952272e93",
     "actual_base_variants_generated":0,
     "actual_parent_records_required":true,
     "parent_record_sha256_required":true,
@@ -63,7 +62,9 @@
     "fingerprint_bound_manual_queue":true,
     "adaptive_safe_target_planning":true,
     "minimum_per_parent_default":1,
-    "safe_target_per_parent_default":3
+    "safe_target_per_parent_default":3,
+    "sphere_surface_area_exact_identity":true,
+    "sphere_volume_exact_identity":true
   },
   "CI_browser_A4": {
     "latest_audit_run_id":"32547675790",
@@ -84,14 +85,15 @@
     "sphere_unified_wiring":"258ac95f7c1be35ae97b8081f34280a66dc4fd2f",
     "sphere_adapter":"2f9885a6962c0ab906dbfbe2e2d47f6fefd79af5",
     "schema10_workflow":"57a00031ebd140c3c261c1796503917952272e93",
-    "variant_state_commit":"751e2e391d1ef7cb9905a695c5395556f29e41a4",
+    "schema10_run":"32550476704",
+    "variant_state_commit":"f3125e9b00a2a96ad12a5f8bf8b34ccb6e9df3b5",
     "main_touched":false
   },
-  "現在どの工程にいるか":"Exact canonical BASE ZIP+audit pair recovery remains the blocker. Sphere surface-area/volume safe generation is fully wired into schema10, whose terminal persisted result is pending observation.",
-  "残っている作業":["schema10 sphere Unified terminal result/persistを確認し、FAILならログ確認・修正。","新規/変更分だけexact canonical recoveryを継続。","exact pair回収後SHA/audit再確認→inspect_canonical_artifact→mapping evidence→immutable BASE配線。","実1124親へadaptive safe generation＋fingerprint-bound manual queue＋strict validationで1124/1124。","real four-browser + A4x6 + strict release + PUBLICATION_READY + isolated public verification。"],
-  "正確停止点":"Canonical pair0 at live Actions 289 artifacts / 259 candidates / 796 members / 69,820,646 bytes / failures0. branch/tag 1901/1901 and PR refs 1419/1419 exact complete pair0 remain valid. Sphere schema10 workflow commit 57a00031 is pushed; persisted terminal state is not yet observed. expanded variants 0 and parent coverage 0/1124 because exact BASE is absent.",
-  "次回どこから開始するか":"live HEAD/checkpoint/variant/unified/actions/auto-completeを再読し、最初にschema10 sphere terminal persistを確認。FAILなら即修正。PASSならlatest exact recovery deltaへ。exact pairなら即BASE wiringへ。",
-  "次に進むべき工程":"sphere schema10 terminal -> exact recovery delta -> exact BASE pair -> SHA/audit validation -> inspect canonical -> mapping evidence -> immutable BASE wiring -> actual 1124-parent adaptive verified generation -> fingerprint-bound manual queue -> 1124/1124 -> real browser/A4 -> strict release -> PUBLICATION_READY -> isolated public verification",
-  "recorded_at_utc":"2026-08-22T04:03:00Z",
+  "現在どの工程にいるか":"Exact canonical BASE ZIP+audit pair recovery remains the blocker. Sphere surface-area/volume safe generation is now Unified schema10 PASS.",
+  "残っている作業":["新規/変更分だけexact canonical recoveryを継続。","exact pair回収後SHA/audit再確認→inspect_canonical_artifact→mapping evidence→immutable BASE配線。","実1124親へadaptive safe generation＋fingerprint-bound manual queue＋strict validationで1124/1124。","real four-browser + A4x6 + strict release + PUBLICATION_READY + isolated public verification。"],
+  "正確停止点":"Canonical pair0 at live Actions 289 artifacts / 259 candidates / 796 members / 69,820,646 bytes / failures0. branch/tag 1901/1901 and PR refs 1419/1419 exact complete pair0 remain valid. Unified schema10 run 32550476704 PASS including sphere. expanded variants 0 and parent coverage 0/1124 because exact BASE is absent.",
+  "次回どこから開始するか":"live HEAD/checkpoint/variant/unified/actions/auto-completeを再読し、new exact recovery deltaを確認。exact pairが出ていれば即BASE wiringへ。pair0ならBASE待ちで止まらず、安全に独立再計算できる未対応問題型を追加。",
+  "次に進むべき工程":"exact recovery delta -> exact BASE pair -> SHA/audit validation -> inspect canonical -> mapping evidence -> immutable BASE wiring -> actual 1124-parent adaptive verified generation -> fingerprint-bound manual queue -> 1124/1124 -> real browser/A4 -> strict release -> PUBLICATION_READY -> isolated public verification",
+  "recorded_at_utc":"2026-08-22T04:06:00Z",
   "resume_rule":"Never reconstruct BASE or generate from unseen parents. Invalid/unverified variants never count as coverage."
 }
