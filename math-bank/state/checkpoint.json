@@ -1,7 +1,7 @@
 {
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_EXPANDED_VARIANT_APP_AND_BASE_RECOVERY",
-  "current_stage": "EXACT_BASE_PAIR0_SCHEMA9_UNIFIED_PASS_CONTINUE_RECOVERY",
+  "current_stage": "EXACT_BASE_PAIR0_SCHEMA9_UNIFIED_PASS_SQUARE_PERIMETER_ADDED_CONTINUE_RECOVERY",
   "base_canonical": {
     "records": 1231,
     "original_records": 1124,
@@ -22,17 +22,15 @@
     "manual_generation_queue":"READY_TO_MATERIALIZE_FROM_EXACT_BASE_ONLY"
   },
   "今回完了した内容": [
-    "最新HEAD/checkpoint/variant/unified/CI/recoveryを再読し、共有正本の最新地点へ追従。",
-    "schema9 Unified run 32543349691の失敗ログをjob単位で精査。compile/core/circle/cylinder/parent-contract/legacy-empty-choiceはsuccessで、cone regressionだけがnegative fixtureのassertionで失敗していた。",
-    "失敗原因を数学的に特定。半径3cm・高さ5cmはr^2*h=45で3割り切れ、体積47.1cm3が正確に成立するためFAIL fixtureとして不正だった。",
-    "non-terminating/fail-closed negative fixtureを半径2cm・高さ5cm（r^2*h=20）へ修正。commit 9ad19725cfc99794f7ee62caa3223ba130192cb1。",
-    "修正後のMath Safe Unified Variant Generation run 32544858277がschema9 PASS。compile/core/circle/cylinder/cone/parent-contract/legacy-empty-choiceの全step successを共有stateで確認。",
-    "最新Actions exact deltaを283 artifacts / 253 candidates / 252 reused / 1 downloaded / 784 members / 69,804,986 bytes / failure0 / canonical0 / valid audit0 / pair0まで更新確認。",
-    "branch/tag recovery 1901/1901、16/16、exact_coverage_complete=true、pair0を正式negative evidenceとして再確認。",
-    "PR refs recovery 1419/1419、16/16、exact_coverage_complete=true、pair0を正式negative evidenceとして再確認。",
-    "File Libraryをexact ZIP名/audit名/SHAで再検索しexact pairなし。Google Driveも完成ZIP名・MATHBANK_FINAL_AUDIT_V2を再検索し0件。",
-    "最新通常Math Audit saved run 32543329237 success。synthetic 4環境PASS、real canonical browser/A4はexact BASE absentでblocked_expected。",
-    "variant-expansion stateをschema9 PASSと最新recovery値へ更新。commit 4b19f454cf9e75a5015b1e73b6e78caa3a1c727d。mainは未変更。"
+    "最新HEAD/checkpoint/variant/unified/CI/recoveryを再読し、共有正本の最新地点へ追従。開始時HEADは2dcdcbea85303a03c6c7f969f7a017dc244dc3c3。",
+    "Google Driveを完成ZIP名とMATHBANK_FINAL_AUDIT_V2で再検索し、どちらも0件。exact BASE pairなし。",
+    "Actions exact deltaを286 artifacts / 256 candidates / 255 reused / 1 downloaded / 790 members / 69,812,816 bytes / failure0 / canonical0 / valid audit0 / pair0まで更新確認。",
+    "BASE待ちで止まらず、既存safe_square_area_variant_engineを面積＋周長の両対応へ拡張。周長はP=4sとP/4=sの独立逆算を必須化。Noneと[]の非選択式を許容し、実choices・figure・mixed unit・reverse・multi-ask・誤答はfail closed。engine commit e2fea9c8006a9041a32a8dd932a6f70f86f00e27。",
+    "既存square regressionを拡張し、面積と周長の各3 sibling、numeric surface差、誤答/逆算/混在単位/面積+周長複合質問/figure/実choicesのnegativeを追加。test commit 01b54b956f286fe57373b2130a793f604cf3952c。",
+    "一時的に作った重複square-perimeter専用engine/testは削除し、単一safe square engineへ整理。",
+    "Math Safe Unified Variant Generation run 32547667397がPASS。triggering SHA 01b54b956f286fe57373b2130a793f604cf3952c、compile/core/circle/cylinder/cone/parent-contract/legacy-empty-choice全step success。",
+    "通常Math Audit run 32547611042 success。synthetic 4環境PASS、real canonical browser/A4はexact BASE absentでblocked_expected。",
+    "variant-expansion stateを今回地点へ更新。commit 451e6028de7cba065254038f5486718dca3ac68d。mainは未変更。"
   ],
   "BASE回収状況": {
     "canonical_pair_found": false,
@@ -41,18 +39,18 @@
     "other_owned_repos":"2_REPOS_X_16_OF_16_EXACT_COMPLETE_PAIR0_NO_RERUN_WITHOUT_CHANGE",
     "github_release":{"releases":0,"assets":0,"pair_hits":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
     "github_issue_pr_attachment":{"pair_hits":0,"errors":0,"status":"COMPLETE_VALID_NEGATIVE_EVIDENCE"},
-    "actions_incremental":{"all_artifacts_seen":283,"candidate_artifacts":253,"reused_verified_artifacts":252,"downloaded_artifacts_this_run":1,"members_sha256_checked":784,"bytes_hashed":69804986,"download_failures":0,"canonical_hits":0,"valid_audit_hits":0,"pair_hits":0},
-    "latest_auto_complete_saved":{"run_id":"32543393422","result":"success","actions_members_sha256_checked":782,"actions_reused_verified_artifacts":252,"actions_downloaded_artifacts_this_run":0,"pair_hits":0,"wiring_ready":false,"publication_ready":false,"note":"slightly older than live actions delta"},
+    "actions_incremental":{"all_artifacts_seen":286,"candidate_artifacts":256,"reused_verified_artifacts":255,"downloaded_artifacts_this_run":1,"members_sha256_checked":790,"bytes_hashed":69812816,"download_failures":0,"canonical_hits":0,"valid_audit_hits":0,"pair_hits":0},
+    "latest_auto_complete_saved":{"run_id":"32544931085","result":"success","actions_members_sha256_checked":786,"actions_reused_verified_artifacts":254,"actions_downloaded_artifacts_this_run":0,"pair_hits":0,"wiring_ready":false,"publication_ready":false,"note":"older than live actions delta"},
     "file_library_exact_pair":false,
     "google_drive_exact_pair":false,
     "policy":"cancelled/timeout/incomplete coverage is never absence evidence; no reconstruction; no partial-161, diagnostic-1271, or Winpass717 promotion"
   },
   "expanded_generation_capability": {
     "last_terminal_status":"PASS_CI",
-    "last_terminal_run_id":"32544858277",
+    "last_terminal_run_id":"32547667397",
     "last_terminal_schema":9,
-    "last_terminal_triggering_sha":"9ad19725cfc99794f7ee62caa3223ba130192cb1",
-    "engines":["affine","single_draw_probability","proportion","percentage","simple_average","rectangle_area","rectangle_perimeter","circle_area_pi_3_14","circle_circumference_pi_3_14","square_area","triangle_area","parallelogram_area","trapezoid_area","rectangular_prism_volume","cube_volume","cylinder_volume_pi_3_14","cone_volume_pi_3_14","speed_distance","binary_arithmetic_exact","linear_equation_exact"],
+    "last_terminal_triggering_sha":"01b54b956f286fe57373b2130a793f604cf3952c",
+    "engines":["affine","single_draw_probability","proportion","percentage","simple_average","rectangle_area","rectangle_perimeter","circle_area_pi_3_14","circle_circumference_pi_3_14","square_area_and_perimeter","triangle_area","parallelogram_area","trapezoid_area","rectangular_prism_volume","cube_volume","cylinder_volume_pi_3_14","cone_volume_pi_3_14","speed_distance","binary_arithmetic_exact","linear_equation_exact"],
     "actual_base_variants_generated":0,
     "actual_parent_records_required":true,
     "parent_record_sha256_required":true,
@@ -63,10 +61,10 @@
     "safe_target_per_parent_default":3,
     "unified_runtime_parent_contract_fail_closed":true,
     "empty_list_non_choice_supported":true,
-    "cone_volume_pi_3_14_fail_closed":true
+    "square_perimeter_exact_quadruple_and_inverse_identity":true
   },
   "CI_browser_A4": {
-    "latest_audit_run_id":"32543329237",
+    "latest_audit_run_id":"32547611042",
     "audit_result":"success",
     "app_shell_and_data_gate":"success",
     "actions_artifact_recovery_scan":"success",
@@ -78,16 +76,17 @@
   },
   "branch_commit": {
     "branch":"math-problem-bank-bootstrap",
-    "schema9_fix":"9ad19725cfc99794f7ee62caa3223ba130192cb1",
-    "schema9_pass_state":"4aaee01cb1f0e699d3b908941292bfb1066d841e",
-    "variant_state_commit":"4b19f454cf9e75a5015b1e73b6e78caa3a1c727d",
+    "square_engine":"e2fea9c8006a9041a32a8dd932a6f70f86f00e27",
+    "square_regression":"01b54b956f286fe57373b2130a793f604cf3952c",
+    "unified_pass_state":"3c960b562d74bcb447679bd9c33d1604f5a87f04",
+    "variant_state_commit":"451e6028de7cba065254038f5486718dca3ac68d",
     "main_touched":false
   },
-  "現在どの工程にいるか":"Exact canonical BASE ZIP+audit pair recovery remains the blocker. Unified safe generation schema9 including cone volume is now terminal PASS.",
+  "現在どの工程にいるか":"Exact canonical BASE ZIP+audit pair recovery remains the blocker. Unified safe generation schema9 is PASS and safe square processing now covers both area and perimeter.",
   "残っている作業":["新規/変更分だけexact canonical recoveryを継続。","exact pair回収後SHA/audit再確認→inspect_canonical_artifact→mapping evidence→immutable BASE配線。","実1124親へadaptive safe generation＋fingerprint-bound manual queue＋strict validationで1124/1124。","real four-browser + A4x6 + strict release + PUBLICATION_READY + isolated public verification。"],
-  "正確停止点":"Canonical pair0 at live Actions 283 artifacts / 253 candidates / 784 members / 69,804,986 bytes / failures0. branch/tag 1901/1901 and PR refs 1419/1419 exact complete pair0 remain valid. Unified schema9 run 32544858277 is PASS. expanded variants 0 and parent coverage 0/1124 because exact BASE is absent.",
-  "次回どこから開始するか":"live HEAD/checkpoint/variant/unified/actions/auto-completeを再読し、まずnew exact recovery deltaを確認。exact pairが出ていれば即BASE wiringへ。",
+  "正確停止点":"Canonical pair0 at live Actions 286 artifacts / 256 candidates / 790 members / 69,812,816 bytes / failures0. branch/tag 1901/1901 and PR refs 1419/1419 exact complete pair0 remain valid. Unified run 32547667397 PASS with square perimeter regression included. expanded variants 0 and parent coverage 0/1124 because exact BASE is absent.",
+  "次回どこから開始するか":"live HEAD/checkpoint/variant/unified/actions/auto-completeを再読し、まずnew exact recovery deltaを確認。exact pairが出ていれば即BASE wiringへ。pair0ならBASE待ちで止まらず、安全に独立再計算できる未対応問題型の実装を続行。",
   "次に進むべき工程":"exact recovery delta -> exact BASE pair -> SHA/audit validation -> inspect canonical -> mapping evidence -> immutable BASE wiring -> actual 1124-parent adaptive verified generation -> fingerprint-bound manual queue -> 1124/1124 -> real browser/A4 -> strict release -> PUBLICATION_READY -> isolated public verification",
-  "recorded_at_utc":"2026-08-22T01:59:00Z",
+  "recorded_at_utc":"2026-08-22T03:06:00Z",
   "resume_rule":"Never reconstruct BASE or generate from unseen parents. Invalid/unverified variants never count as coverage."
 }
