@@ -25,14 +25,15 @@
   "unified_safe_generation": {
     "last_terminal_status": "PASS_CI",
     "last_terminal_persist_schema_version": 9,
-    "last_terminal_run_id": "32544858277",
-    "last_terminal_triggering_sha": "9ad19725cfc99794f7ee62caa3223ba130192cb1",
-    "cone_volume_test_fix_commit": "9ad19725cfc99794f7ee62caa3223ba130192cb1",
-    "cone_volume_test_fix": "previous negative fixture radius3 height5 was mathematically exact because r^2*h=45 is divisible by3; replaced with radius2 height5 where r^2*h=20 so repeating-decimal cases fail closed",
+    "last_terminal_run_id": "32547667397",
+    "last_terminal_triggering_sha": "01b54b956f286fe57373b2130a793f604cf3952c",
+    "new_this_run": "existing square engine now safely supports exact square perimeter P=4s in addition to area; None and [] non-choice shapes both supported; wrong/reverse/mixed/multiask/figure/real-choice fail closed",
+    "square_engine_commit": "e2fea9c8006a9041a32a8dd932a6f70f86f00e27",
+    "square_regression_commit": "01b54b956f286fe57373b2130a793f604cf3952c",
     "engines": [
       "affine", "single_draw_probability", "proportion", "percentage", "simple_average",
       "rectangle_area", "rectangle_perimeter", "circle_area_pi_3_14", "circle_circumference_pi_3_14",
-      "square_area", "triangle_area", "parallelogram_area", "trapezoid_area",
+      "square_area_and_perimeter", "triangle_area", "parallelogram_area", "trapezoid_area",
       "rectangular_prism_volume", "cube_volume", "cylinder_volume_pi_3_14", "cone_volume_pi_3_14",
       "speed_distance", "binary_arithmetic_exact", "linear_equation_exact"
     ],
@@ -45,27 +46,27 @@
   },
   "base_recovery": {
     "actions_latest_confirmed": {
-      "all_artifacts_seen": 283,
-      "candidate_artifacts": 253,
-      "reused_verified_artifacts": 252,
+      "all_artifacts_seen": 286,
+      "candidate_artifacts": 256,
+      "reused_verified_artifacts": 255,
       "downloaded_artifacts_this_run": 1,
-      "members_sha256_checked": 784,
-      "member_bytes_hashed": 69804986,
+      "members_sha256_checked": 790,
+      "member_bytes_hashed": 69812816,
       "download_failures": 0,
       "canonical_hits": 0,
       "valid_audit_hits": 0,
       "pair_hits": 0
     },
     "latest_auto_complete_saved": {
-      "run_id": "32543393422",
+      "run_id": "32544931085",
       "result": "success",
-      "actions_members_sha256_checked": 782,
-      "actions_reused_verified_artifacts": 252,
+      "actions_members_sha256_checked": 786,
+      "actions_reused_verified_artifacts": 254,
       "actions_downloaded_artifacts_this_run": 0,
       "pair_hits": 0,
       "wiring_ready": false,
       "publication_ready": false,
-      "note": "saved auto-complete is slightly older than live Actions delta"
+      "note": "saved auto-complete is older than live Actions delta"
     },
     "branch_tag_exact": {"readable_blobs":1901,"checked":1901,"shards_completed":16,"exact_coverage_complete":true,"pair_hits":0},
     "pr_refs_exact": {"refs":4,"readable_blobs":1419,"checked":1419,"shards_completed":16,"exact_coverage_complete":true,"pair_hits":0},
@@ -74,12 +75,11 @@
     "github_issue_pr_attachments": "COMPLETE_PAIR0",
     "file_library_exact_pair": false,
     "google_drive_exact_pair": false,
-    "file_library_rechecked_at_this_run": true,
     "google_drive_rechecked_at_this_run": true,
     "policy": "No reconstruction; incomplete/cancelled evidence never proves absence; no 161/1271/Winpass717 promotion."
   },
   "CI_browser_A4": {
-    "latest_observed_audit_run_id": "32543329237",
+    "latest_observed_audit_run_id": "32547611042",
     "audit_result": "success",
     "synthetic_browser": "PASS_FOUR_ENVIRONMENTS",
     "real_canonical_browser": "BLOCKED_EXPECTED_EXACT_BASE_ABSENT",
@@ -89,6 +89,6 @@
   },
   "publication_ready": false,
   "branch": "math-problem-bank-bootstrap",
-  "recorded_at_utc": "2026-08-22T01:58:00Z",
+  "recorded_at_utc": "2026-08-22T03:05:00Z",
   "next": "Continue exact recovery delta from live HEAD. Exact pair immediately triggers SHA/audit validation, immutable BASE wiring, actual 1124-parent adaptive generation, fingerprint-bound manual queue, strict validation, real browser/A4 and strict release."
 }
