@@ -35,6 +35,7 @@ from safe_parallelogram_area_variant_engine import generate as generate_parallel
 from safe_percentage_variant_engine import generate as generate_percentage
 from safe_proportion_variant_engine import generate as generate_proportion
 from safe_pythagorean_hypotenuse_variant_engine import generate as generate_pythagorean_hypotenuse
+from safe_quadratic_square_equation_variant_engine import generate as generate_quadratic_square_equation
 from safe_rectangle_area_variant_engine import generate as generate_rectangle_area
 from safe_rectangle_perimeter_variant_engine import generate as generate_rectangle_perimeter
 from safe_rectangular_prism_volume_variant_engine import generate as generate_rectangular_prism_volume
@@ -54,6 +55,7 @@ SPECIALIZED_ENGINES = (
     ("affine", generate_affine),
     ("inverse_proportion", generate_inverse_proportion),
     ("pythagorean_hypotenuse", generate_pythagorean_hypotenuse),
+    ("quadratic_square_equation", generate_quadratic_square_equation),
     ("square_root_simplification", generate_square_root_simplification),
     ("single_draw_probability", generate_probability),
     ("proportion", generate_proportion),
