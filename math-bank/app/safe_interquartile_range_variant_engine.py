@@ -31,7 +31,7 @@ def _parse_parent(parent: dict):
     if parent.get("figure_refs") or parent.get("choices"): return None
     q=_norm(parent.get("question"))
     if "四分位範囲" not in q: return None
-    blocked=("中央値","平均","最頻値","範囲を","度数","階級","表","グラフ","箱ひげ","四分位数を","分散","標準偏差")
+    blocked=("中央値","平均","最頻値","データの範囲","度数","階級","表","グラフ","箱ひげ","四分位数を","分散","標準偏差")
     if any(t in q for t in blocked): return None
     ms=list(LIST_RE.finditer(q))
     if len(ms)!=1: return None
