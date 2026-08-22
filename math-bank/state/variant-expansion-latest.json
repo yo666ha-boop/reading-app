@@ -23,22 +23,22 @@
     "empty_list_non_choice_supported": true
   },
   "unified_safe_generation": {
-    "last_confirmed_terminal_status": "PASS_CI",
-    "last_confirmed_terminal_schema": 9,
-    "last_confirmed_run_id": "32550401090",
-    "schema10_sphere_terminal_pending": true,
-    "schema10_contract_commit": "57a00031ebd140c3c261c1796503917952272e93",
+    "last_terminal_status": "PASS_CI",
+    "last_terminal_schema": 10,
+    "last_terminal_run_id": "32550476704",
+    "last_terminal_triggering_sha": "57a00031ebd140c3c261c1796503917952272e93",
     "sphere_engine_commit": "d9f39c35bf840c2db85db260ce887a2cb1088fff",
     "sphere_regression_commit": "c312231c980620b02ad3537f3ba0cffb3b92c474",
     "sphere_unified_wiring_commit": "258ac95f7c1be35ae97b8081f34280a66dc4fd2f",
     "sphere_unified_adapter_commit": "2f9885a6962c0ab906dbfbe2e2d47f6fefd79af5",
-    "new_this_run": "球の表面積A=4πr²と体積V=4/3πr³をpi=3.14・text-only・exact answer・独立逆算条件でfail-closed対応。体積はrが3の倍数のexact caseだけ自動生成。",
-    "engines_confirmed_plus_pending_sphere": [
+    "sphere_schema10_contract_commit": "57a00031ebd140c3c261c1796503917952272e93",
+    "new_this_run": "球の表面積A=4πr²と体積V=4/3πr³をpi=3.14・text-only・exact answer・独立逆算条件でfail-closed対応し、Unified schema10全step PASS。",
+    "engines": [
       "affine", "single_draw_probability", "proportion", "percentage", "simple_average",
       "rectangle_area", "rectangle_perimeter", "circle_area_pi_3_14", "circle_circumference_pi_3_14",
       "square_area_and_perimeter", "triangle_area", "parallelogram_area", "trapezoid_area",
       "rectangular_prism_volume", "cube_volume", "cylinder_volume_pi_3_14", "cone_volume_pi_3_14",
-      "sphere_area_volume_pi_3_14_pending_schema10_terminal", "speed_distance", "binary_arithmetic_exact", "linear_equation_exact"
+      "sphere_area_volume_pi_3_14", "speed_distance", "binary_arithmetic_exact", "linear_equation_exact"
     ],
     "actual_base_variants_generated": 0,
     "actual_parent_records_required": true,
@@ -92,6 +92,6 @@
   },
   "publication_ready": false,
   "branch": "math-problem-bank-bootstrap",
-  "recorded_at_utc": "2026-08-22T04:02:00Z",
-  "next": "Observe schema10 sphere Unified terminal. If FAIL inspect logs/fix immediately. Continue exact recovery delta; exact pair immediately triggers SHA/audit validation, immutable BASE wiring, actual 1124-parent adaptive generation, fingerprint-bound manual queue, strict validation, real browser/A4 and strict release."
+  "recorded_at_utc": "2026-08-22T04:05:00Z",
+  "next": "Continue exact recovery delta. Exact pair immediately triggers SHA/audit validation, immutable BASE wiring, actual 1124-parent adaptive generation, fingerprint-bound manual queue, strict validation, real browser/A4 and strict release."
 }
