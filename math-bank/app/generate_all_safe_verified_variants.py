@@ -37,6 +37,7 @@ from safe_pythagorean_hypotenuse_variant_engine import generate as generate_pyth
 from safe_rectangle_area_variant_engine import generate as generate_rectangle_area
 from safe_rectangle_perimeter_variant_engine import generate as generate_rectangle_perimeter
 from safe_rectangular_prism_volume_variant_engine import generate as generate_rectangular_prism_volume
+from safe_relative_frequency_variant_engine import generate as generate_relative_frequency
 from safe_single_draw_probability_variant_engine import generate as generate_probability
 from safe_speed_distance_variant_engine import generate as generate_speed_distance
 from safe_sphere_variant_engine import generate as generate_sphere
@@ -59,6 +60,7 @@ SPECIALIZED_ENGINES = (
     ("data_range", generate_data_range),
     ("median", generate_median),
     ("mode", generate_mode),
+    ("relative_frequency", generate_relative_frequency),
     ("simple_average", generate_average),
     ("rectangle_area", generate_rectangle_area),
     ("rectangle_perimeter", generate_rectangle_perimeter),
