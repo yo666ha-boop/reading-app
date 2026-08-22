@@ -33,6 +33,7 @@ from safe_rectangle_perimeter_variant_engine import generate as generate_rectang
 from safe_rectangular_prism_volume_variant_engine import generate as generate_rectangular_prism_volume
 from safe_single_draw_probability_variant_engine import generate as generate_probability
 from safe_speed_distance_variant_engine import generate as generate_speed_distance
+from safe_sphere_variant_engine import generate as generate_sphere
 from safe_square_area_variant_engine import generate as generate_square_area
 from safe_trapezoid_area_variant_engine import generate as generate_trapezoid_area
 from safe_triangle_area_variant_engine import generate as generate_triangle_area
@@ -65,6 +66,7 @@ SPECIALIZED_ENGINES = (
     ("cube_volume", generate_cube_volume),
     ("cylinder_volume_pi_3_14", generate_cylinder_volume),
     ("cone_volume_pi_3_14", generate_cone_volume),
+    ("sphere_pi_3_14", generate_sphere),
     ("speed_distance", generate_speed_distance),
 )
 
