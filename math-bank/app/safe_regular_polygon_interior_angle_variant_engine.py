@@ -1,5 +1,6 @@
 from __future__ import annotations
 import hashlib, json, re
+from safe_regular_polygon_exterior_angle_variant_engine import can_generate as can_generate_exterior, generate as generate_exterior
 
 N_RE = re.compile(r"(?P<n>\d+)\s*角形")
 ANSWER_RE = re.compile(r"^(?P<deg>\d+)\s*(?:°|度)$")
@@ -42,19 +43,24 @@ def _parse(parent):
 def can_generate(parent):
     if _parse(parent) is not None:
         return True,"regular_polygon_single_interior_angle_exact"
+    ext_ok,ext_reason=can_generate_exterior(parent)
+    if ext_ok:
+        return True,ext_reason
     if parent.get("figure_refs"):
         return False,"figure_parent"
     if parent.get("choices"):
         return False,"choice_parent"
-    return False,"regular_polygon_interior_angle_parent_not_exactly_parsed_and_verified"
+    return False,"regular_polygon_interior_or_exterior_angle_parent_not_exactly_parsed_and_verified"
 
 def generate(parent,count):
     if count not in (1,2,3):
         raise ValueError("count must be 1, 2, or 3")
     parsed=_parse(parent)
     if parsed is None:
-        ok,reason=can_generate(parent); assert not ok
-        return [],[],reason
+        ext_rows,ext_evidence,ext_reason=generate_exterior(parent,count)
+        if ext_rows:
+            return ext_rows,ext_evidence,ext_reason
+        return [],[],"regular_polygon_interior_or_exterior_angle_parent_not_exactly_parsed_and_verified"
     match,parent_n,parent_total,parent_angle=parsed
     q=_norm(parent.get("question")); seed=int(_sha(parent)[:12],16)
     candidates=(3,4,5,6,8,9,10,12,15,18,20,24,30)
