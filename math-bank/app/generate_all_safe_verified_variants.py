@@ -14,6 +14,7 @@ from safe_affine_variant_engine import generate as generate_affine
 from safe_average_missing_value_variant_engine import generate as generate_average_missing_value
 from safe_average_total_variant_engine import generate as generate_average_total
 from safe_average_variant_engine import generate as generate_average
+from safe_weighted_group_average_variant_engine import generate as generate_weighted_group_average
 from safe_binomial_expansion_variant_engine import generate as generate_binomial_expansion
 from safe_circle_area_variant_engine import generate as generate_circle_area
 from safe_circle_circumference_variant_engine import generate as generate_circle_circumference
@@ -97,6 +98,7 @@ SPECIALIZED_ENGINES = (
     ("interquartile_range", generate_interquartile_range),
     ("average_missing_value", generate_average_missing_value),
     ("average_total", generate_average_total),
+    ("weighted_group_average", generate_weighted_group_average),
     ("simple_average", generate_average),
     ("rectangle_area", generate_rectangle_area),
     ("rectangle_perimeter", generate_rectangle_perimeter),
