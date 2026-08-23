@@ -1,13 +1,12 @@
 from __future__ import annotations
 
-"""Fail-closed exact engine for rectangular-prism volume and safe inverse height.
+"""Fail-closed exact engine for rectangular-prism volume, surface area and safe inverse height.
 
-Forward mode accepts exactly one integer length, width and height in cm and asks
-only for volume. Reverse-height mode is delegated to a dedicated fail-closed
-engine that accepts integer length, width and volume and asks only for height.
-All accepted cases require exact parent-answer verification and independent
-recomposition. Figures, real choices, mixed units and ambiguous shapes fail
-closed.
+Forward volume mode accepts exactly one integer length, width and height in cm
+and asks only for volume. Surface-area mode and reverse-height mode are
+delegated to dedicated fail-closed engines. All accepted cases require exact
+parent-answer verification and independent recomposition. Figures, real choices,
+mixed units and ambiguous shapes fail closed.
 """
 
 import hashlib
@@ -17,6 +16,10 @@ import re
 from safe_rectangular_prism_height_from_volume_variant_engine import (
     can_generate as can_generate_height_from_volume,
     generate as generate_height_from_volume,
+)
+from safe_rectangular_prism_surface_area_variant_engine import (
+    can_generate as can_generate_surface_area,
+    generate as generate_surface_area,
 )
 
 DIMENSION_RE = re.compile(
@@ -78,6 +81,9 @@ def _parse_parent(parent: dict):
 
 
 def can_generate(parent: dict) -> tuple[bool, str]:
+    surface_ok, surface_reason = can_generate_surface_area(parent)
+    if surface_ok:
+        return True, surface_reason
     inverse_ok, inverse_reason = can_generate_height_from_volume(parent)
     if inverse_ok:
         return True, inverse_reason
@@ -100,6 +106,10 @@ def _variant_numbers(seed: int, index: int) -> tuple[int, int, int]:
 def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     if count not in (1, 2, 3):
         raise ValueError("count must be 1, 2, or 3")
+
+    surface_rows, surface_evidence, surface_reason = generate_surface_area(parent, count)
+    if surface_rows:
+        return surface_rows, surface_evidence, surface_reason
 
     inverse_rows, inverse_evidence, inverse_reason = generate_height_from_volume(parent, count)
     if inverse_rows:
