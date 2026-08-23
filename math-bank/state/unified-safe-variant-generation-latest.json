@@ -1,9 +1,9 @@
 {
   "status": "PASS_CI",
   "persist_schema_version": 66,
-  "run_id": "32672427804",
-  "triggering_sha": "b71e850ed34b058106b375a0faf302d4b2e7317b",
-  "recorded_at_utc": "2026-08-23T23:02:50.114592+00:00",
+  "run_id": "32672437527",
+  "triggering_sha": "842a99912a5317ba14e3c9cbe4eba7553e5a35d5",
+  "recorded_at_utc": "2026-08-23T23:03:13.485780+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "success",
@@ -52,6 +52,7 @@
     "mode",
     "monic_quadratic_factorization",
     "parallelogram_area",
+    "parallelogram_base_from_area",
     "parallelogram_height_from_area",
     "percent_change",
     "percent_from_amount_base",
@@ -96,7 +97,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 82,
+  "engine_module_count": 83,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_variant_engine.py",
@@ -136,6 +137,7 @@
     "test_safe_median_variant_engine.py",
     "test_safe_mode_variant_engine.py",
     "test_safe_monic_quadratic_factorization_variant_engine.py",
+    "test_safe_parallelogram_base_from_area_variant_engine.py",
     "test_safe_parallelogram_height_from_area_variant_engine.py",
     "test_safe_percent_change_variant_engine.py",
     "test_safe_percent_from_amount_base_variant_engine.py",
@@ -178,7 +180,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 79,
+  "engine_test_count": 80,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_average_missing_value_unified_adapter.py",
