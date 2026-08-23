@@ -1,9 +1,9 @@
 {
   "status": "PASS_CI",
   "persist_schema_version": 66,
-  "run_id": "32672482351",
-  "triggering_sha": "94319c8c44a5ca9c6770d4fc2dda491938f121df",
-  "recorded_at_utc": "2026-08-23T23:04:12.711512+00:00",
+  "run_id": "32672567579",
+  "triggering_sha": "36770f02b4c3b3624a5916b275eff7b7ab7571f8",
+  "recorded_at_utc": "2026-08-23T23:05:33.554264+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "success",
@@ -89,6 +89,7 @@
     "tax_inclusive_price",
     "time_from_distance_speed",
     "trapezoid_area",
+    "trapezoid_height_from_area",
     "triangle_area",
     "triangle_base_from_area",
     "triangle_exterior_angle",
@@ -97,7 +98,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 83,
+  "engine_module_count": 84,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_variant_engine.py",
@@ -173,6 +174,7 @@
     "test_safe_tax_inclusive_price_variant_engine.py",
     "test_safe_time_from_distance_speed_variant_engine.py",
     "test_safe_trapezoid_area_variant_engine.py",
+    "test_safe_trapezoid_height_from_area_variant_engine.py",
     "test_safe_triangle_base_from_area_variant_engine.py",
     "test_safe_triangle_exterior_angle_variant_engine.py",
     "test_safe_triangle_height_from_area_variant_engine.py",
@@ -180,7 +182,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 80,
+  "engine_test_count": 81,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_average_missing_value_unified_adapter.py",
