@@ -1,14 +1,14 @@
 {
-  "status": "FAIL_CI_DIAGNOSTIC",
+  "status": "PASS_CI",
   "persist_schema_version": 35,
-  "run_id": "32609299542",
-  "triggering_sha": "ad24a1c82e9efe1d992e65aaa0224fd5412c617a",
-  "recorded_at_utc": "2026-08-23T01:00:45.457763+00:00",
+  "run_id": "32609335366",
+  "triggering_sha": "7005ba16e23f969edb4151ce8b3bbc20d975fe1f",
+  "recorded_at_utc": "2026-08-23T01:01:33.658271+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "success",
     "core": "success",
-    "parent_contract": "failure",
+    "parent_contract": "success",
     "legacy_empty_choices": "success"
   },
   "engine_test_discovery": "test_safe_*_variant_engine.py plus test_*_unified_adapter.py",
