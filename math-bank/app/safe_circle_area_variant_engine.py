@@ -4,14 +4,20 @@ from __future__ import annotations
 
 Accepted parents must explicitly state one positive integer radius in cm, ask
 only for the area of a circle, explicitly use pi=3.14, and carry the exact
-verified numeric cm^2 answer. Figure/choice/diameter/sector/circumference/
-reverse problems fail closed. Decimal arithmetic avoids binary-float drift.
+verified numeric cm^2 answer. Figure/choice/diameter/sector/circumference
+problems fail closed. Exact area-to-radius reverse parents are delegated to the
+separate fail-closed inverse engine. Decimal arithmetic avoids binary-float drift.
 """
 
 from decimal import Decimal, InvalidOperation
 import hashlib
 import json
 import re
+
+from safe_circle_radius_from_area_variant_engine import (
+    can_generate as can_generate_radius_from_area,
+    generate as generate_radius_from_area,
+)
 
 RADIUS_RE = re.compile(r"半径\s*(?P<radius>\d+)\s*cm")
 ANSWER_RE = re.compile(r"^(?P<area>\d+(?:\.\d+)?)\s*(?:cm²|cm\^2|cm2)$")
@@ -48,11 +54,9 @@ def _parse_parent(parent: dict):
     q = _norm(parent.get("question"))
     if "円" not in q or "面積" not in q or "円周率" not in q or "3.14" not in q:
         return None
-    # Do not block the substring 「円周」 because it is part of the required
-    # phrase 「円周率」. Only explicit circumference-question wording is blocked.
     blocked = (
         "直径", "円周の長さ", "円の周の長さ", "周の長さ", "弧", "扇形", "おうぎ形", "中心角", "半円", "四分円",
-        "半径を求", "直径を求", "図", "グラフ", "m²", "mm", "km",
+        "半径を求", "半径は何", "半径はなん", "直径を求", "図", "グラフ", "m²", "mm", "km",
     )
     if any(token in q for token in blocked):
         return None
@@ -81,6 +85,9 @@ def _parse_parent(parent: dict):
 
 
 def can_generate(parent: dict) -> tuple[bool, str]:
+    inverse_ok, inverse_reason = can_generate_radius_from_area(parent)
+    if inverse_ok:
+        return True, inverse_reason
     if _parse_parent(parent) is not None:
         return True, "circle_integer_cm_area_pi_3_14_exact"
     if parent.get("figure_refs"):
@@ -97,6 +104,11 @@ def _variant_radius(seed: int, index: int) -> int:
 def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     if count not in (1, 2, 3):
         raise ValueError("count must be 1, 2, or 3")
+
+    inverse_rows, inverse_evidence, inverse_reason = generate_radius_from_area(parent, count)
+    if inverse_rows:
+        return inverse_rows, inverse_evidence, inverse_reason
+
     parsed = _parse_parent(parent)
     if parsed is None:
         ok, reason = can_generate(parent)
@@ -124,21 +136,17 @@ def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
             raise AssertionError("circle area pi identity failed")
         replacement = f"半径{radius}cm"
         new_question = question[: match.start()] + replacement + question[match.end() :]
-        rows.append(
-            {
-                "question": new_question,
-                "answer": f"{_fmt_decimal(area)}cm²",
-                "explanation": f"円の面積=円周率×半径×半径より、3.14×{radius}×{radius}={_fmt_decimal(area)}cm²。逆算でも半径²と円周率3.14を確認済み。",
-                "numeric_signature": (str(radius), "3.14"),
-            }
-        )
-        evidence.append(
-            {
-                "parent_sha256": _parent_sha(parent),
-                "method": "circle_area_exact_pi_3_14_product_and_two_inverse_identities",
-                "parent_recalculation": f"3.14×{parent_radius}×{parent_radius}={_fmt_decimal(parent_area)}cm²",
-                "variant_recalculation": f"3.14×{radius}×{radius}={_fmt_decimal(area)}cm²",
-                "independent_check": "area/3.14 == radius^2 AND area/radius^2 == 3.14 PASS",
-            }
-        )
+        rows.append({
+            "question": new_question,
+            "answer": f"{_fmt_decimal(area)}cm²",
+            "explanation": f"円の面積=円周率×半径×半径より、3.14×{radius}×{radius}={_fmt_decimal(area)}cm²。逆算でも半径²と円周率3.14を確認済み。",
+            "numeric_signature": (str(radius), "3.14"),
+        })
+        evidence.append({
+            "parent_sha256": _parent_sha(parent),
+            "method": "circle_area_exact_pi_3_14_product_and_two_inverse_identities",
+            "parent_recalculation": f"3.14×{parent_radius}×{parent_radius}={_fmt_decimal(parent_area)}cm²",
+            "variant_recalculation": f"3.14×{radius}×{radius}={_fmt_decimal(area)}cm²",
+            "independent_check": "area/3.14 == radius^2 AND area/radius^2 == 3.14 PASS",
+        })
     return rows, evidence, "circle_integer_cm_area_pi_3_14_exact"
