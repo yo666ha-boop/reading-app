@@ -22,6 +22,17 @@ def test_positive_three_siblings():
         assert ev["independent_check"].endswith("PASS")
 
 
+def test_height_from_volume_inverse_is_now_safe_supported():
+    p = parent(question="たて4cm、よこ5cm、体積が120cm³の直方体があります。この直方体の高さを求めなさい。", answer="6cm")
+    ok, reason = can_generate(p)
+    assert ok and reason == "rectangular_prism_integer_height_from_volume_exact"
+    rows, evidence, reason = generate(p, 3)
+    assert reason == "rectangular_prism_integer_height_from_volume_exact"
+    assert len(rows) == len(evidence) == 3
+    assert all(r["answer"].endswith("cm") for r in rows)
+    assert all(ev["independent_check"].endswith("PASS") for ev in evidence)
+
+
 def test_wrong_answer_fails_closed():
     assert not can_generate(parent(answer="121cm³"))[0]
     assert generate(parent(answer="121cm³"), 1)[0] == []
@@ -32,15 +43,15 @@ def test_figure_and_choice_fail_closed():
     assert not can_generate(parent(choices=["100cm³", "120cm³"]))[0]
 
 
-def test_surface_area_reverse_and_mixed_unit_fail_closed():
+def test_surface_area_and_mixed_unit_fail_closed():
     assert not can_generate(parent(question="たて4cm、よこ5cm、高さ6cmの直方体の表面積を求めなさい。", answer="148cm²"))[0]
-    assert not can_generate(parent(question="たて4cm、よこ5cmの直方体の体積が120cm³です。高さを求めなさい。", answer="6cm"))[0]
     assert not can_generate(parent(question="たて4cm、よこ5cm、高さ60mmの直方体の体積を求めなさい。", answer="120cm³"))[0]
 
 
 if __name__ == "__main__":
     test_positive_three_siblings()
+    test_height_from_volume_inverse_is_now_safe_supported()
     test_wrong_answer_fails_closed()
     test_figure_and_choice_fail_closed()
-    test_surface_area_reverse_and_mixed_unit_fail_closed()
-    print("PASS: safe rectangular prism volume variant engine")
+    test_surface_area_and_mixed_unit_fail_closed()
+    print("PASS: safe rectangular prism volume plus height-inverse variant engine")
