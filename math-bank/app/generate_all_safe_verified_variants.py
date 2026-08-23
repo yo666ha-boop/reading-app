@@ -51,6 +51,7 @@ from safe_symmetric_linear_system_variant_engine import generate as generate_sym
 from safe_tax_inclusive_price_variant_engine import generate as generate_tax_inclusive_price
 from safe_trapezoid_area_variant_engine import generate as generate_trapezoid_area
 from safe_triangle_area_variant_engine import generate as generate_triangle_area
+from safe_triangle_exterior_angle_variant_engine import generate as generate_triangle_exterior_angle
 from safe_two_dice_sum_probability_variant_engine import generate as generate_two_dice_sum_probability
 from validate_app_records import load_records
 from validate_expanded_variant_layer import BASE_CANONICAL_SHA256, base_gate, load_layer, numeric_tokens, parent_record_sha256, validate_layer
@@ -91,6 +92,7 @@ SPECIALIZED_ENGINES = (
     ("circle_circumference_pi_3_14", generate_circle_circumference),
     ("square_area", generate_square_area),
     ("triangle_area", generate_triangle_area),
+    ("triangle_exterior_angle", generate_triangle_exterior_angle),
     ("parallelogram_area", generate_parallelogram_area),
     ("trapezoid_area", generate_trapezoid_area),
     ("rectangular_prism_volume", generate_rectangular_prism_volume),
