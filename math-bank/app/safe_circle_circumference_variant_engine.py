@@ -1,11 +1,13 @@
 from __future__ import annotations
 
-"""Fail-closed exact engine for a narrow circle-circumference parent shape."""
+"""Fail-closed exact engine for circle circumference plus exact radius inverse."""
 
 from decimal import Decimal, InvalidOperation
 import hashlib
 import json
 import re
+
+from safe_circle_radius_from_circumference_variant_engine import generate as generate_radius_from_circumference
 
 RADIUS_RE = re.compile(r"半径\s*(?P<radius>\d+)\s*cm")
 ANSWER_RE = re.compile(r"^(?P<value>\d+(?:\.\d+)?)\s*cm$")
@@ -67,6 +69,9 @@ def _parse_parent(parent: dict):
 def can_generate(parent: dict) -> tuple[bool, str]:
     if _parse_parent(parent) is not None:
         return True, "circle_integer_cm_circumference_pi_3_14_exact"
+    delegated, _, delegated_reason = generate_radius_from_circumference(parent, 1)
+    if delegated:
+        return True, delegated_reason
     if parent.get("figure_refs"):
         return False, "figure_parent"
     if parent.get("choices"):
@@ -79,9 +84,10 @@ def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
         raise ValueError("count must be 1, 2, or 3")
     parsed = _parse_parent(parent)
     if parsed is None:
-        ok, reason = can_generate(parent)
-        assert not ok
-        return [], [], reason
+        delegated_rows, delegated_evidence, delegated_reason = generate_radius_from_circumference(parent, count)
+        if delegated_rows:
+            return delegated_rows, delegated_evidence, delegated_reason
+        return [], [], "circle_circumference_parent_not_exactly_parsed_and_verified"
 
     match, parent_radius, parent_value = parsed
     q = _norm(parent.get("question"))
