@@ -100,6 +100,11 @@ def can_generate(parent: dict) -> tuple[bool, str]:
         return False, "figure_parent"
     if _choice_parent(parent):
         return False, "choice_parent"
+    q = _norm(parent.get("question"))
+    if "三角形" in q and "面積" in q:
+        return False, "triangle_area_parent_not_exactly_parsed_and_verified"
+    if "三角形" in q and any(token in q for token in ("残り", "もう1つ", "もう一つ", "3つ目", "三つ目")):
+        return False, "triangle_third_angle_parent_not_exactly_parsed_and_verified"
     return False, "triangle_parent_not_exactly_parsed_and_verified"
 
 
