@@ -17,6 +17,7 @@ PI = Decimal("3.14")
 RADIUS_RE = re.compile(r"半径\s*(?P<radius>\d+)\s*cm")
 VOLUME_RE = re.compile(r"体積\s*(?P<volume>\d+(?:\.\d+)?)\s*(?:cm³|cm\^3|cm3)")
 ANSWER_RE = re.compile(r"^(?P<height>\d+)\s*cm$")
+METER_CUBED_RE = re.compile(r"(?<!c)m(?:³|\^3|3)")
 
 
 def _norm(value: object) -> str:
@@ -45,8 +46,8 @@ def _parse_parent(parent: dict):
     q = _norm(parent.get("question"))
     if "円柱" not in q or "高さ" not in q or "体積" not in q or "円周率" not in q or "3.14" not in q:
         return None
-    blocked = ("直径", "表面積", "側面積", "底面積", "半径を求", "体積を求", "円すい", "円錐", "球", "図", "グラフ", "mm", "km", "m³")
-    if any(token in q for token in blocked):
+    blocked = ("直径", "表面積", "側面積", "底面積", "半径を求", "体積を求", "円すい", "円錐", "球", "図", "グラフ", "mm", "km")
+    if any(token in q for token in blocked) or METER_CUBED_RE.search(q):
         return None
     rms = list(RADIUS_RE.finditer(q))
     vms = list(VOLUME_RE.finditer(q))
