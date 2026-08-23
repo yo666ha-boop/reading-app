@@ -1,6 +1,7 @@
 from __future__ import annotations
 import hashlib, json, re
 from safe_regular_polygon_exterior_angle_variant_engine import can_generate as can_generate_exterior, generate as generate_exterior
+from safe_regular_polygon_sides_from_interior_angle_variant_engine import can_generate as can_generate_sides_from_interior, generate as generate_sides_from_interior
 
 N_RE = re.compile(r"(?P<n>\d+)\s*角形")
 ANSWER_RE = re.compile(r"^(?P<deg>\d+)\s*(?:°|度)$")
@@ -49,6 +50,9 @@ def _interior_failure_reason(parent):
 def can_generate(parent):
     if _parse(parent) is not None:
         return True,"regular_polygon_single_interior_angle_exact"
+    inverse_ok,inverse_reason=can_generate_sides_from_interior(parent)
+    if inverse_ok:
+        return True,inverse_reason
     ext_ok,ext_reason=can_generate_exterior(parent)
     if ext_ok:
         return True,ext_reason
@@ -63,6 +67,9 @@ def generate(parent,count):
         raise ValueError("count must be 1, 2, or 3")
     parsed=_parse(parent)
     if parsed is None:
+        inverse_rows,inverse_evidence,inverse_reason=generate_sides_from_interior(parent,count)
+        if inverse_rows:
+            return inverse_rows,inverse_evidence,inverse_reason
         ext_rows,ext_evidence,ext_reason=generate_exterior(parent,count)
         if ext_rows:
             return ext_rows,ext_evidence,ext_reason
