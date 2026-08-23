@@ -11,6 +11,7 @@ from pathlib import Path
 from generate_safe_verified_variants import generate_parent as generate_legacy_exact, make_variant_base, variant_id
 from safe_absolute_value_variant_engine import generate as generate_absolute_value
 from safe_affine_variant_engine import generate as generate_affine
+from safe_average_total_variant_engine import generate as generate_average_total
 from safe_average_variant_engine import generate as generate_average
 from safe_binomial_expansion_variant_engine import generate as generate_binomial_expansion
 from safe_circle_area_variant_engine import generate as generate_circle_area
@@ -93,6 +94,7 @@ SPECIALIZED_ENGINES = (
     ("mode", generate_mode),
     ("relative_frequency", generate_relative_frequency),
     ("interquartile_range", generate_interquartile_range),
+    ("average_total", generate_average_total),
     ("simple_average", generate_average),
     ("rectangle_area", generate_rectangle_area),
     ("rectangle_perimeter", generate_rectangle_perimeter),
