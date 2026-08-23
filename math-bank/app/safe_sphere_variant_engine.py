@@ -7,6 +7,8 @@ import hashlib
 import json
 import re
 
+from safe_sphere_radius_from_surface_area_variant_engine import generate as generate_radius_from_surface_area
+
 RADIUS_RE = re.compile(r"半径\s*(?P<radius>\d+)\s*cm")
 ANSWER_RE = re.compile(r"^(?P<value>\d+(?:\.\d+)?)\s*(?P<unit>cm²|cm\^2|cm2|cm³|cm\^3|cm3)$")
 PI = Decimal("3.14")
@@ -74,6 +76,9 @@ def _parse_parent(parent: dict):
 
 
 def can_generate(parent: dict) -> tuple[bool, str]:
+    inverse_rows, _, inverse_reason = generate_radius_from_surface_area(parent, 1)
+    if inverse_rows:
+        return True, inverse_reason
     parsed = _parse_parent(parent)
     if parsed is not None:
         return True, f"sphere_integer_cm_{parsed[2]}_pi_3_14_exact"
@@ -96,11 +101,16 @@ def _variant_radius(seed: int, index: int, mode: str) -> int:
 def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     if count not in (1, 2, 3):
         raise ValueError("count must be 1, 2, or 3")
+    inverse_rows, inverse_evidence, inverse_reason = generate_radius_from_surface_area(parent, count)
+    if inverse_rows:
+        return inverse_rows, inverse_evidence, inverse_reason
     parsed = _parse_parent(parent)
     if parsed is None:
-        ok, reason = can_generate(parent)
-        assert not ok
-        return [], [], reason
+        if parent.get("figure_refs"):
+            return [], [], "figure_parent"
+        if parent.get("choices"):
+            return [], [], "choice_parent"
+        return [], [], "sphere_parent_not_exactly_parsed_and_verified"
     match, parent_radius, mode, parent_value = parsed
     q = _norm(parent.get("question"))
     seed = int(_sha(parent)[:12], 16)
