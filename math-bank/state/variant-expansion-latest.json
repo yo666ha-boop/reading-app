@@ -13,18 +13,24 @@
   "quality_gates":{"strict_expanded_validator":true,"parent_and_sibling_numeric_pseudo_variant_rejection":true,"duplicate_rejection":true,"taxonomy_difficulty_choice_figure_preservation":true,"audit_three_true_required":true,"independent_recalculation_and_evidence_required":true,"unified_runtime_parent_contract_fail_closed":true,"empty_list_non_choice_supported":true},
   "unified_safe_generation":{
     "last_confirmed_terminal_status":"PASS_CI",
-    "last_confirmed_schema":65,
-    "last_confirmed_run_id":"32670766117",
-    "engine_module_count":75,
+    "last_confirmed_schema":66,
+    "last_confirmed_run_id":"32672474453",
+    "engine_module_count_at_least":83,
     "engine_modules_auto_discovered":true,
+    "runtime_routes_bound_to_SPECIALIZED_ENGINES":true,
     "engine_tests_auto_discovered":true,
     "adapter_tests_auto_discovered":true,
-    "cylinder_surface_area":{"status":"PASS_CI","identity":"S=2*pi*r*(r+h) with face decomposition"},
-    "cylinder_height_from_surface_area":{"status":"PASS_CI","engine_commit":"d555e85b6a0aa049ea5397f11fe16b92bdad6d87","route_commit":"a2da7499764e6c82766e0b40b5c837ff385c1242","adapter_commit":"0436242f7a7b917ae25203c90b4e1eeb837532e8","identity":"h=S/(2*pi*r)-r and recomposition"},
-    "cone_surface_area":{"status":"PASS_CI","identity":"S=pi*r*(r+l) with base+lateral decomposition"},
-    "cone_slant_from_surface_area":{"status":"PASS_CI","engine_commit":"bb7f0a74dd175a603474208779db06782281f43a","route_commit":"a97d133b8d0258978222897e20208697082e5eb9","adapter_commit":"c4bd83a4586a49e375dced4bacebebd8e78d5b63","identity":"l=S/(pi*r)-r and recomposition"},
-    "rectangle_missing_side_from_area":{"status":"PASS_CI","engine_commit":"9f1c98dae975d995838b524b93245a3812252c5f","route_commit":"9facd8b7ee4116eb8af3c1e41e8313e3f7e16521","adapter_commit":"1174f4df032dbb6584fbb206853e9dfaa5025f02","identity":"missing=area/known and product recomposition"},
-    "rectangle_missing_side_from_perimeter":{"status":"PASS_CI","engine_commit":"059403bd4a6245fb4202cd151b66d507a43d49a2","route_commit":"4c418d3891a993292fdac2f92f2d04595ae3e296","adapter_commit":"bff34e7d6c04275e6101309c7093090607c8274b","identity":"missing=P/2-known and perimeter recomposition"},
+    "new_this_run":[
+      "speed_from_distance_time exact inverse route already present and retained",
+      "time_from_distance_speed exact inverse route already present and retained",
+      "percent_from_amount_base exact inverse engine/test/unified adapter PASS",
+      "base_from_amount_percent exact inverse engine/test/unified adapter PASS",
+      "triangle_height_from_area exact inverse engine/test/unified adapter PASS",
+      "triangle_base_from_area exact inverse engine/test/unified adapter PASS",
+      "parallelogram_height_from_area exact inverse engine/test plus unified adapter added",
+      "parallelogram_base_from_area exact inverse engine/test plus unified adapter added",
+      "schema66 runtime route persistence changed from manual static bookkeeping to SPECIALIZED_ENGINES self-discovery"
+    ],
     "actual_base_variants_generated":0,
     "minimum_per_parent_default":1,
     "safe_target_per_parent_default":3,
@@ -32,15 +38,16 @@
     "strict_validator_promotion_gate":true
   },
   "base_recovery":{
-    "actions_latest_confirmed":{"all_artifacts_seen":408,"candidate_artifacts":378,"reused_verified_artifacts":377,"downloaded_artifacts_this_run":1,"members_sha256_checked":1034,"member_bytes_hashed":70131236,"download_failures":0,"canonical_hits":0,"valid_audit_hits":0,"pair_hits":0},
+    "actions_latest_confirmed":{"all_artifacts_seen":415,"candidate_artifacts":385,"reused_verified_artifacts":384,"downloaded_artifacts_this_run":1,"members_sha256_checked":1048,"member_bytes_hashed":70149506,"download_failures":0,"canonical_hits":0,"valid_audit_hits":0,"pair_hits":0},
     "branch_tag_exact":{"readable_blobs":1901,"checked":1901,"shards_completed":16,"exact_coverage_complete":true,"pair_hits":0},
     "pr_refs_exact":{"refs":4,"readable_blobs":1419,"checked":1419,"shards_completed":16,"exact_coverage_complete":true,"pair_hits":0},
     "google_drive_exact_zip_hits":0,
-    "google_drive_exact_audit_hits":0
+    "google_drive_exact_audit_hits":0,
+    "gmail_search_status":"NOT_COUNTED_AS_NEGATIVE_EVIDENCE_NONINTERACTIVE_AUTH_REQUIRED"
   },
-  "CI_browser_A4":{"latest_observed_audit_run_id":"32670465166","audit_result":"success","synthetic_browser":"PASS_FOUR_ENVIRONMENTS","real_canonical_browser":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT","real_A4_six_pdfs":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT","publication_ready":false},
+  "CI_browser_A4":{"latest_observed_audit_run_id":"32672338903","audit_result":"success","synthetic_browser":"PASS_FOUR_ENVIRONMENTS","real_canonical_browser":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT","real_A4_six_pdfs":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT","publication_ready":false},
   "publication_ready":false,
   "branch":"math-problem-bank-bootstrap",
-  "recorded_at_utc":"2026-08-23T22:31:30Z",
-  "next":"Continue exact Actions delta from 408 artifacts / 1034 members. Exact pair triggers immutable BASE wiring and actual 1124-parent generation; pair0 continues fail-closed safe engine expansion."
+  "recorded_at_utc":"2026-08-23T23:04:10Z",
+  "next":"Re-read live HEAD/unified/actions. Confirm final parallelogram base adapter terminal PASS. Continue Actions delta after 415 artifacts/1048 members. Exact pair triggers immutable BASE wiring and 1124-parent generation; pair0 continues fail-closed safe engine expansion."
 }
