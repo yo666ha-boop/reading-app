@@ -51,7 +51,9 @@ def _parse_parent(parent: dict):
         return None
     if not any(token in q for token in ("半径を求", "半径は何", "半径はなん")):
         return None
-    blocked = ("直径", "円周の長さ", "周の長さ", "弧", "扇形", "おうぎ形", "中心角", "半円", "四分円", "図", "グラフ", "m²", "mm", "km")
+    # Unit acceptance is enforced positively by AREA_RE (cm² only). Do not use
+    # a raw "m²" substring block here because it also appears inside "cm²".
+    blocked = ("直径", "円周の長さ", "周の長さ", "弧", "扇形", "おうぎ形", "中心角", "半円", "四分円", "図", "グラフ", "mm", "km")
     if any(token in q for token in blocked):
         return None
     matches = list(AREA_RE.finditer(q))
