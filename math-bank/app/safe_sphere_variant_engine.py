@@ -8,6 +8,7 @@ import json
 import re
 
 from safe_sphere_radius_from_surface_area_variant_engine import generate as generate_radius_from_surface_area
+from safe_sphere_radius_from_volume_variant_engine import generate as generate_radius_from_volume
 
 RADIUS_RE = re.compile(r"半径\s*(?P<radius>\d+)\s*cm")
 ANSWER_RE = re.compile(r"^(?P<value>\d+(?:\.\d+)?)\s*(?P<unit>cm²|cm\^2|cm2|cm³|cm\^3|cm3)$")
@@ -76,9 +77,10 @@ def _parse_parent(parent: dict):
 
 
 def can_generate(parent: dict) -> tuple[bool, str]:
-    inverse_rows, _, inverse_reason = generate_radius_from_surface_area(parent, 1)
-    if inverse_rows:
-        return True, inverse_reason
+    for inverse in (generate_radius_from_surface_area, generate_radius_from_volume):
+        inverse_rows, _, inverse_reason = inverse(parent, 1)
+        if inverse_rows:
+            return True, inverse_reason
     parsed = _parse_parent(parent)
     if parsed is not None:
         return True, f"sphere_integer_cm_{parsed[2]}_pi_3_14_exact"
@@ -101,9 +103,10 @@ def _variant_radius(seed: int, index: int, mode: str) -> int:
 def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     if count not in (1, 2, 3):
         raise ValueError("count must be 1, 2, or 3")
-    inverse_rows, inverse_evidence, inverse_reason = generate_radius_from_surface_area(parent, count)
-    if inverse_rows:
-        return inverse_rows, inverse_evidence, inverse_reason
+    for inverse in (generate_radius_from_surface_area, generate_radius_from_volume):
+        inverse_rows, inverse_evidence, inverse_reason = inverse(parent, count)
+        if inverse_rows:
+            return inverse_rows, inverse_evidence, inverse_reason
     parsed = _parse_parent(parent)
     if parsed is None:
         if parent.get("figure_refs"):
