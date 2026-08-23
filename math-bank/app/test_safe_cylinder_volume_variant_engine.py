@@ -41,12 +41,23 @@ def main() -> None:
     assert all(row["answer"].endswith("cm") for row in inverse_rows)
     assert all("cylinder_radius_exact_division_square_root_and_volume_recomposition" == ev["method"] for ev in inverse_evidence)
 
+    surface = parent(
+        question="半径3cm、高さ5cmの円柱の表面積を、円周率を3.14として求めなさい。",
+        answer="150.72cm²",
+    )
+    ok, reason = can_generate(surface)
+    assert ok and reason == "cylinder_surface_area_pi_3_14_exact"
+    surface_rows, surface_evidence, surface_reason = generate(surface, 3)
+    assert surface_reason == "cylinder_surface_area_pi_3_14_exact"
+    assert len(surface_rows) == len(surface_evidence) == 3
+    assert all(row["answer"].endswith("cm²") for row in surface_rows)
+    assert all(ev["method"] == "cylinder_surface_area_exact_2_pi_r_r_plus_h_and_face_decomposition" for ev in surface_evidence)
+
     bad = [
         parent(answer="141.2cm³"),
         parent(figure_refs=["cylinder.svg"]),
         parent(choices=["141.3cm³", "94.2cm³"]),
         parent(question="直径6cm、高さ5cmの円柱の体積を、円周率を3.14として求めなさい。", answer="141.3cm³"),
-        parent(question="半径3cm、高さ5cmの円柱の表面積を、円周率を3.14として求めなさい。", answer="150.72cm²"),
         parent(question="半径3cm、高さ5cmの円柱の体積を求めなさい。", answer="45πcm³"),
         parent(question="半径3cm、高さ5cmの円すいの体積を、円周率を3.14として求めなさい。", answer="47.1cm³"),
         parent(question="半径3m、高さ5mの円柱の体積を、円周率を3.14として求めなさい。", answer="141.3m³"),
@@ -57,7 +68,7 @@ def main() -> None:
         generated, ev, _ = generate(row, 1)
         assert generated == [] and ev == []
 
-    print("PASS_SAFE_CYLINDER_VOLUME_HEIGHT_AND_RADIUS_INVERSE_ROUTES")
+    print("PASS_SAFE_CYLINDER_VOLUME_HEIGHT_RADIUS_AND_SURFACE_AREA_ROUTES")
 
 
 if __name__ == "__main__":
