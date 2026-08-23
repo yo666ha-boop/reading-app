@@ -1,22 +1,15 @@
 from __future__ import annotations
 
-"""Fail-closed exact engine for a narrow parallelogram-area parent shape.
-
-Only actual parents that explicitly state one base and one height in the same
-unit, ask only for the area of one parallelogram, and have an exactly verified
-integer area are accepted. The parent answer is recalculated by base*height
-and independently checked by both inverse identities area/base == height and
-area/height == base. Figure/choice parents and perimeter/unknown-height/
-composite/mixed-unit questions fail closed.
-"""
+"""Fail-closed exact engine for parallelogram area and inverse-area parents."""
 
 import hashlib
 import json
 import re
 
-PARALLELOGRAM_RE = re.compile(
-    r"底辺\s*(?P<base>\d+)\s*(?P<unit>mm|cm|m)\s*[、,，]?\s*高さ\s*(?P<height>\d+)\s*(?P=unit)"
-)
+from safe_parallelogram_base_from_area_variant_engine import generate as generate_base_from_area
+from safe_parallelogram_height_from_area_variant_engine import generate as generate_height_from_area
+
+PARALLELOGRAM_RE = re.compile(r"底辺\s*(?P<base>\d+)\s*(?P<unit>mm|cm|m)\s*[、,，]?\s*高さ\s*(?P<height>\d+)\s*(?P=unit)")
 AREA_ANSWER_RE = re.compile(r"^(?P<v>\d+)\s*(?P<unit>mm|cm|m)(?:²|\^2|2)$")
 
 
@@ -30,9 +23,7 @@ def _parent_sha(parent: dict) -> str:
 
 
 def _parse_parent(parent: dict):
-    if parent.get("figure_refs"):
-        return None
-    if parent.get("choices") is not None:
+    if parent.get("figure_refs") or parent.get("choices") is not None:
         return None
     q = _norm(parent.get("question"))
     if "平行四辺形" not in q or "面積" not in q:
@@ -43,10 +34,7 @@ def _parse_parent(parent: dict):
     matches = list(PARALLELOGRAM_RE.finditer(q))
     if len(matches) != 1:
         return None
-    m = matches[0]
-    base = int(m.group("base"))
-    height = int(m.group("height"))
-    unit = m.group("unit")
+    m = matches[0]; base = int(m.group("base")); height = int(m.group("height")); unit = m.group("unit")
     if base <= 0 or height <= 0:
         return None
     area = base * height
@@ -58,9 +46,19 @@ def _parse_parent(parent: dict):
     return m, base, height, unit, area
 
 
+def _delegate_inverse(parent: dict, count: int):
+    for engine in (generate_height_from_area, generate_base_from_area):
+        rows, evidence, reason = engine(parent, count)
+        if rows:
+            return rows, evidence, reason
+    return [], [], "parallelogram_inverse_area_parent_not_exactly_parsed_and_verified"
+
+
 def can_generate(parent: dict) -> tuple[bool, str]:
-    parsed = _parse_parent(parent)
-    if parsed is not None:
+    delegated, _, delegated_reason = _delegate_inverse(parent, 1)
+    if delegated:
+        return True, delegated_reason
+    if _parse_parent(parent) is not None:
         return True, "parallelogram_area_integer_same_unit_exact"
     if parent.get("figure_refs"):
         return False, "figure_parent"
@@ -78,45 +76,24 @@ def _variant_numbers(seed: int, index: int) -> tuple[int, int]:
 def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     if count not in (1, 2, 3):
         raise ValueError("count must be 1, 2, or 3")
+    delegated = _delegate_inverse(parent, count)
+    if delegated[0]:
+        return delegated
     parsed = _parse_parent(parent)
     if parsed is None:
-        ok, reason = can_generate(parent)
-        assert not ok
+        ok, reason = can_generate(parent); assert not ok
         return [], [], reason
-
     match, parent_base, parent_height, unit, parent_area = parsed
-    q = _norm(parent.get("question"))
-    seed = int(_parent_sha(parent)[:12], 16)
-    parent_signature = (str(parent_base), str(parent_height))
-    seen: set[tuple[str, str]] = set()
-    rows: list[dict] = []
-    evidence: list[dict] = []
-
+    q = _norm(parent.get("question")); seed = int(_parent_sha(parent)[:12], 16)
+    parent_signature = (str(parent_base), str(parent_height)); seen=set(); rows=[]; evidence=[]
     for index in range(1, count + 1):
-        base, height = _variant_numbers(seed, index)
-        signature = (str(base), str(height))
-        bump = 0
+        base, height = _variant_numbers(seed, index); signature=(str(base),str(height)); bump=0
         while signature == parent_signature or signature in seen:
-            bump += 1
-            height += bump
-            signature = (str(base), str(height))
-        seen.add(signature)
-        area = base * height
+            bump += 1; height += bump; signature=(str(base),str(height))
+        seen.add(signature); area=base*height
         if area // base != height or area // height != base:
             raise AssertionError("parallelogram inverse-area identity failed")
-        replacement = f"底辺{base}{unit}、高さ{height}{unit}"
-        new_question = q[:match.start()] + replacement + q[match.end():]
-        rows.append({
-            "question": new_question,
-            "answer": f"{area}{unit}²",
-            "explanation": f"平行四辺形の面積=底辺×高さより、{base}×{height}={area}{unit}²。面積÷底辺=高さ、面積÷高さ=底辺でも確認済み。",
-            "numeric_signature": signature,
-        })
-        evidence.append({
-            "parent_sha256": _parent_sha(parent),
-            "method": "parallelogram_area_exact_product_and_inverse_identity",
-            "parent_recalculation": f"{parent_base}×{parent_height}={parent_area}{unit}²",
-            "variant_recalculation": f"{base}×{height}={area}{unit}²",
-            "independent_check": "area/base == height and area/height == base PASS",
-        })
-    return rows, evidence, "parallelogram_area_integer_same_unit_exact"
+        replacement=f"底辺{base}{unit}、高さ{height}{unit}"; new_question=q[:match.start()]+replacement+q[match.end():]
+        rows.append({"question":new_question,"answer":f"{area}{unit}²","explanation":f"平行四辺形の面積=底辺×高さより、{base}×{height}={area}{unit}²。面積÷底辺=高さ、面積÷高さ=底辺でも確認済み。","numeric_signature":signature})
+        evidence.append({"parent_sha256":_parent_sha(parent),"method":"parallelogram_area_exact_product_and_inverse_identity","parent_recalculation":f"{parent_base}×{parent_height}={parent_area}{unit}²","variant_recalculation":f"{base}×{height}={area}{unit}²","independent_check":"area/base == height and area/height == base PASS"})
+    return rows,evidence,"parallelogram_area_integer_same_unit_exact"
