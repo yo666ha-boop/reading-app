@@ -82,7 +82,7 @@ def main() -> None:
     wrong["answer"] = "71°"
     rows, prov, reason = unified.generate_parent(wrong, 1, NOW)
     assert rows == [] and prov == []
-    assert "triangle_parent_not_exactly_parsed_and_verified" in reason
+    assert "triangle_third_angle_parent_not_exactly_parsed_and_verified" in reason
 
     with_choice = triangle_angle_parent()
     with_choice["choices"] = ["60°", "70°", "80°"]
