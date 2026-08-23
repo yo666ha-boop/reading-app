@@ -1,18 +1,23 @@
 from __future__ import annotations
 
-"""Fail-closed exact engine for a narrow rectangular-prism volume parent shape.
+"""Fail-closed exact engine for rectangular-prism volume and safe inverse height.
 
-Only actual parents that explicitly state exactly one integer length, width and
-height in the same cm unit, ask only for the volume of a rectangular prism, and
-have an exactly verified integer cm^3 answer are accepted. Parent and generated
-answers are recalculated by V=l*w*h and independently checked by all three
-inverse identities. Figures, choices, mixed units, cubes, missing dimensions,
-surface-area questions and reverse problems fail closed.
+Forward mode accepts exactly one integer length, width and height in cm and asks
+only for volume. Reverse-height mode is delegated to a dedicated fail-closed
+engine that accepts integer length, width and volume and asks only for height.
+All accepted cases require exact parent-answer verification and independent
+recomposition. Figures, real choices, mixed units and ambiguous shapes fail
+closed.
 """
 
 import hashlib
 import json
 import re
+
+from safe_rectangular_prism_height_from_volume_variant_engine import (
+    can_generate as can_generate_height_from_volume,
+    generate as generate_height_from_volume,
+)
 
 DIMENSION_RE = re.compile(
     r"たて\s*(?P<length>\d+)\s*cm\s*[、, ]*よこ\s*(?P<width>\d+)\s*cm\s*[、, ]*高さ\s*(?P<height>\d+)\s*cm"
@@ -73,6 +78,9 @@ def _parse_parent(parent: dict):
 
 
 def can_generate(parent: dict) -> tuple[bool, str]:
+    inverse_ok, inverse_reason = can_generate_height_from_volume(parent)
+    if inverse_ok:
+        return True, inverse_reason
     if _parse_parent(parent) is not None:
         return True, "rectangular_prism_integer_cm_volume_exact"
     if parent.get("figure_refs"):
@@ -92,6 +100,11 @@ def _variant_numbers(seed: int, index: int) -> tuple[int, int, int]:
 def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     if count not in (1, 2, 3):
         raise ValueError("count must be 1, 2, or 3")
+
+    inverse_rows, inverse_evidence, inverse_reason = generate_height_from_volume(parent, count)
+    if inverse_rows:
+        return inverse_rows, inverse_evidence, inverse_reason
+
     parsed = _parse_parent(parent)
     if parsed is None:
         ok, reason = can_generate(parent)
