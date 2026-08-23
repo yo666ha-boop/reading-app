@@ -1,18 +1,12 @@
 from __future__ import annotations
 
-"""Fail-closed exact engine for a narrow cube-volume parent shape.
-
-Only actual parents that explicitly state exactly one positive integer side in
-cm, ask only for the volume of a cube, and have an exactly verified integer
-cm^3 answer are accepted. Parent and generated answers are recalculated by
-V=s^3 and independently checked by exact integer cube-root identity.
-Figures, choices, surface-area/edge-sum/reverse questions, mixed units and
-ambiguous multiple-side statements fail closed.
-"""
+"""Fail-closed exact engine for narrow cube volume/surface-area parent shapes."""
 
 import hashlib
 import json
 import re
+
+from safe_cube_surface_area_variant_engine import generate as generate_surface_area
 
 SIDE_RE = re.compile(r"(?:1辺|一辺)\s*(?P<side>\d+)\s*cm")
 ANSWER_RE = re.compile(r"^(?P<volume>\d+)\s*(?:cm\^?3|cm³|㎤)$")
@@ -80,6 +74,11 @@ def _parse_parent(parent: dict):
 
 
 def can_generate(parent: dict) -> tuple[bool, str]:
+    q = _norm(parent.get("question"))
+    if "立方体" in q and "表面積" in q:
+        rows, _, reason = generate_surface_area(parent, 1)
+        if rows:
+            return True, reason
     if _parse_parent(parent) is not None:
         return True, "cube_integer_cm_volume_exact"
     if parent.get("figure_refs"):
@@ -96,6 +95,11 @@ def _variant_side(seed: int, index: int) -> int:
 def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     if count not in (1, 2, 3):
         raise ValueError("count must be 1, 2, or 3")
+    q = _norm(parent.get("question"))
+    if "立方体" in q and "表面積" in q:
+        rows, evidence, reason = generate_surface_area(parent, count)
+        if rows:
+            return rows, evidence, reason
     parsed = _parse_parent(parent)
     if parsed is None:
         ok, reason = can_generate(parent)
@@ -103,7 +107,6 @@ def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
         return [], [], reason
 
     match, parent_side, parent_volume = parsed
-    q = _norm(parent.get("question"))
     seed = int(_parent_sha(parent)[:12], 16)
     seen: set[int] = set()
     rows: list[dict] = []
