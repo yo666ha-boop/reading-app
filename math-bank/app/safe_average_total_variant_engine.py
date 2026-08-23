@@ -11,7 +11,7 @@ import hashlib, json, re
 from fractions import Fraction
 
 COUNT_RE = re.compile(r"(?P<count>\d+)\s*(?:人|個|回|科目|冊|台|本)")
-AVG_RE = re.compile(r"平均(?:点|値|は|が|を)?\s*(?P<avg>\d+(?:\.\d+)?)")
+AVG_RE = re.compile(r"平均(?:点|値)?\s*(?:は|が|を)?\s*(?P<avg>\d+(?:\.\d+)?)")
 ANS_RE = re.compile(r"^(?P<v>\d+(?:\.\d+)?)\s*(?:点|円|個|回|冊|台|本)?$")
 
 
@@ -33,14 +33,23 @@ def _frac(s: str) -> Fraction:
 def _fmt(v: Fraction) -> str:
     if v.denominator == 1:
         return str(v.numerator)
-    # only terminating decimals are generated/accepted
     d = v.denominator
     while d % 2 == 0: d //= 2
     while d % 5 == 0: d //= 5
     if d != 1:
         raise ValueError("non-terminating decimal")
-    n = v.numerator / v.denominator
-    return (f"{n:.8f}").rstrip("0").rstrip(".")
+    sign = "-" if v < 0 else ""
+    n, d0 = abs(v.numerator), v.denominator
+    places = 0
+    scale = d0
+    while scale != 1:
+        if scale % 2 == 0: scale //= 2
+        elif scale % 5 == 0: scale //= 5
+        places += 1
+    scaled = n * (10 ** places) // d0
+    raw = str(scaled).zfill(places + 1)
+    if places == 0: return sign + raw
+    return sign + raw[:-places] + "." + raw[-places:]
 
 
 def _answer(v: object):
@@ -63,7 +72,6 @@ def _parse(parent: dict):
     if not (2 <= count <= 50) or avg <= 0:
         return None
     total = avg * count
-    # require a terminating, exactly stated answer
     try: _fmt(total)
     except ValueError: return None
     if _answer(parent.get("answer")) != total:
