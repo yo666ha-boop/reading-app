@@ -29,6 +29,16 @@ def main() -> None:
     assert all(ev["method"] == "cube_exact_product_and_integer_cube_root_identity" for ev in evidence)
     assert all("exact_integer_cube_root" in ev["independent_check"] for ev in evidence)
 
+    surface = copy.deepcopy(parent)
+    surface["question"] = "1辺4cmの立方体の表面積を求めなさい。"
+    surface["answer"] = "96cm²"
+    ok, reason = can_generate(surface)
+    assert ok is True
+    assert reason == "cube_integer_cm_surface_area_exact"
+    srows, sev, _ = generate(surface, 3)
+    assert len(srows) == len(sev) == 3
+    assert all("surface_area/6 == side^2 PASS" in ev["independent_check"] for ev in sev)
+
     bad_cases: list[dict] = []
 
     wrong = copy.deepcopy(parent)
@@ -42,11 +52,6 @@ def main() -> None:
     choice = copy.deepcopy(parent)
     choice["choices"] = ["64cm³", "48cm³"]
     bad_cases.append(choice)
-
-    surface = copy.deepcopy(parent)
-    surface["question"] = "1辺4cmの立方体の表面積を求めなさい。"
-    surface["answer"] = "96cm²"
-    bad_cases.append(surface)
 
     reverse = copy.deepcopy(parent)
     reverse["question"] = "体積64cm³の立方体の1辺を求めなさい。"
@@ -68,7 +73,7 @@ def main() -> None:
         rows, ev, _ = generate(bad, 3)
         assert rows == [] and ev == []
 
-    print("PASS_SAFE_CUBE_VOLUME_EXACT_POSITIVE_NEGATIVE")
+    print("PASS_SAFE_CUBE_VOLUME_AND_SURFACE_AREA_ROUTE_POSITIVE_NEGATIVE")
 
 
 if __name__ == "__main__":
