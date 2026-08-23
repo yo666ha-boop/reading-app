@@ -5,12 +5,18 @@ from __future__ import annotations
 Only parents with one positive integer radius and height in centimetres, explicit
 pi=3.14 wording, and an exactly verified cm^3 answer are accepted. To avoid any
 repeating-decimal ambiguity from division by 3, r^2*h must be divisible by 3.
+Exact height-from-volume parents are delegated to the dedicated inverse engine.
 """
 
 from decimal import Decimal, InvalidOperation
 import hashlib
 import json
 import re
+
+from safe_cone_height_from_volume_variant_engine import (
+    can_generate as can_generate_height_from_volume,
+    generate as generate_height_from_volume,
+)
 
 RADIUS_RE = re.compile(r"半径\s*(?P<radius>\d+)\s*cm")
 HEIGHT_RE = re.compile(r"高さ\s*(?P<height>\d+)\s*cm")
@@ -80,6 +86,9 @@ def _parse_parent(parent: dict):
 
 
 def can_generate(parent: dict) -> tuple[bool, str]:
+    height_ok, height_reason = can_generate_height_from_volume(parent)
+    if height_ok:
+        return True, height_reason
     if _parse_parent(parent) is not None:
         return True, "cone_integer_cm_volume_pi_3_14_exact"
     if parent.get("figure_refs"):
@@ -92,7 +101,6 @@ def can_generate(parent: dict) -> tuple[bool, str]:
 def _variant_numbers(seed: int, index: int) -> tuple[int, int]:
     radius = 2 + ((seed >> (index * 5)) + index * 5) % 12
     height = 3 + ((seed >> (index * 7 + 2)) + index * 7) % 18
-    # Make r^2*h divisible by 3 without using rounded decimals.
     while (radius * radius * height) % 3 != 0:
         height += 1
     return radius, height
@@ -101,6 +109,9 @@ def _variant_numbers(seed: int, index: int) -> tuple[int, int]:
 def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     if count not in (1, 2, 3):
         raise ValueError("count must be 1, 2, or 3")
+    height_ok, _ = can_generate_height_from_volume(parent)
+    if height_ok:
+        return generate_height_from_volume(parent, count)
     parsed = _parse_parent(parent)
     if parsed is None:
         ok, reason = can_generate(parent)
