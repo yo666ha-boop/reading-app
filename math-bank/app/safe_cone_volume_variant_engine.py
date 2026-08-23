@@ -15,6 +15,10 @@ from safe_cone_radius_from_volume_variant_engine import (
     can_generate as can_generate_radius_from_volume,
     generate as generate_radius_from_volume,
 )
+from safe_cone_surface_area_variant_engine import (
+    can_generate as can_generate_surface_area,
+    generate as generate_surface_area,
+)
 
 RADIUS_RE = re.compile(r"半径\s*(?P<radius>\d+)\s*cm")
 HEIGHT_RE = re.compile(r"高さ\s*(?P<height>\d+)\s*cm")
@@ -69,6 +73,9 @@ def _parse_parent(parent: dict):
 
 
 def can_generate(parent: dict) -> tuple[bool, str]:
+    surface_ok, surface_reason = can_generate_surface_area(parent)
+    if surface_ok:
+        return True, surface_reason
     radius_ok, radius_reason = can_generate_radius_from_volume(parent)
     if radius_ok:
         return True, radius_reason
@@ -95,6 +102,9 @@ def _variant_numbers(seed: int, index: int) -> tuple[int, int]:
 def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     if count not in (1, 2, 3):
         raise ValueError("count must be 1, 2, or 3")
+    surface_rows, surface_evidence, surface_reason = generate_surface_area(parent, count)
+    if surface_rows:
+        return surface_rows, surface_evidence, surface_reason
     radius_ok, _ = can_generate_radius_from_volume(parent)
     if radius_ok:
         return generate_radius_from_volume(parent, count)
