@@ -14,36 +14,20 @@
   "unified_safe_generation":{
     "last_confirmed_terminal_status":"PASS_CI",
     "last_confirmed_schema":44,
-    "last_confirmed_run_id":"32626841950",
-    "last_confirmed_triggering_sha":"837b1ab46d401e77732fd548b554d630b6d53e1f",
-    "average_total":{
-      "status":"PASS_CI_SCHEMA44",
-      "engine_commit":"8c911e9ba2ad7f71fe9dfbc15b6c3a72ad438446",
-      "engine_test_commit":"b38dc86023a8c29e52b8b49245a0b075fdef6f49",
-      "unified_driver_commit":"315e5dc88ebd6d925c0bbad1cf24a6438fceb744",
-      "adapter_commit":"def07bda020d8927c451d8e38128a6c9e8d7aea8",
-      "schema44_contract_commit":"837b1ab46d401e77732fd548b554d630b6d53e1f",
-      "parse_fix_commit":"86596494f6c96c01a7796721c214f5066092d267",
-      "initial_failed_run_id":"32626781738",
-      "pass_run_id":"32626841950",
-      "scope":"explicit positive count plus exact integer-or-finite-decimal average asking only for total",
-      "independent_identity":"total=average*count and total/count=average",
-      "safe_target_three_supported":true
-    },
+    "last_confirmed_run_id":"32627057740",
+    "last_confirmed_triggering_sha":"80016e5525fe418499592a95b588f6a2ea926ca7",
+    "average_total":{"status":"PASS_CI_SCHEMA44","engine_commit":"8c911e9ba2ad7f71fe9dfbc15b6c3a72ad438446","engine_test_commit":"b38dc86023a8c29e52b8b49245a0b075fdef6f49","unified_driver_commit":"315e5dc88ebd6d925c0bbad1cf24a6438fceb744","adapter_commit":"def07bda020d8927c451d8e38128a6c9e8d7aea8","schema44_contract_commit":"837b1ab46d401e77732fd548b554d630b6d53e1f","parse_fix_commit":"86596494f6c96c01a7796721c214f5066092d267","pass_run_id":"32627057740","independent_identity":"total=average*count and total/count=average","safe_target_three_supported":true},
+    "average_missing_value":{"status":"SCHEMA45_TERMINAL_PENDING","engine_commit":"e5bd90753f2ae7eb16a17df1d36e93edb169b508","engine_test_commit":"80016e5525fe418499592a95b588f6a2ea926ca7","unified_driver_commit":"9a89c4f62016c6bb994f73d5bd5b6f60fbcf9fc6","adapter_commit":"30013c4e23488a4f21eadc38179ee1eb728a20ea","schema45_contract_commit":"db7b1f01982e09320c547397bcac908c898f1cce","scope":"one x among 4 or 5 explicit values with exact average, solve only x","independent_identity":"known_sum+x=mean*count and completed_sum/count=mean","safe_target_three_supported":true},
     "actual_base_variants_generated":0,
     "minimum_per_parent_default":1,
     "safe_target_per_parent_default":3,
     "fingerprint_bound_manual_queue":true,
     "strict_validator_promotion_gate":true
   },
-  "base_recovery":{
-    "actions_latest_confirmed":{"all_artifacts_seen":364,"candidate_artifacts":334,"reused_verified_artifacts":334,"downloaded_artifacts_this_run":0,"members_sha256_checked":946,"member_bytes_hashed":70016396,"download_failures":0,"canonical_hits":0,"valid_audit_hits":0,"pair_hits":0},
-    "branch_tag_exact":{"readable_blobs":1901,"checked":1901,"shards_completed":16,"exact_coverage_complete":true,"pair_hits":0},
-    "pr_refs_exact":{"refs":4,"readable_blobs":1419,"checked":1419,"shards_completed":16,"exact_coverage_complete":true,"pair_hits":0}
-  },
+  "base_recovery":{"actions_latest_confirmed":{"all_artifacts_seen":365,"candidate_artifacts":335,"reused_verified_artifacts":334,"downloaded_artifacts_this_run":1,"members_sha256_checked":948,"member_bytes_hashed":70019006,"download_failures":0,"canonical_hits":0,"valid_audit_hits":0,"pair_hits":0},"branch_tag_exact":{"readable_blobs":1901,"checked":1901,"shards_completed":16,"exact_coverage_complete":true,"pair_hits":0},"pr_refs_exact":{"refs":4,"readable_blobs":1419,"checked":1419,"shards_completed":16,"exact_coverage_complete":true,"pair_hits":0}},
   "CI_browser_A4":{"latest_observed_audit_run_id":"32624357062","audit_result":"success","synthetic_browser":"PASS_FOUR_ENVIRONMENTS","real_canonical_browser":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT","real_A4_six_pdfs":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT","publication_ready":false},
   "publication_ready":false,
   "branch":"math-problem-bank-bootstrap",
-  "recorded_at_utc":"2026-08-23T07:59:45Z",
-  "next":"Continue exact Actions delta from 364 artifacts / 946 members. Exact pair triggers immutable BASE wiring and actual 1124-parent generation; pair0 continues fail-closed exact coverage expansion."
+  "recorded_at_utc":"2026-08-23T08:03:00Z",
+  "next":"Confirm schema45 terminal. If PASS continue latest Actions delta from 365 artifacts / 948 members; if FAIL inspect logs and fix. Exact pair triggers immutable BASE wiring and actual 1124-parent generation."
 }
