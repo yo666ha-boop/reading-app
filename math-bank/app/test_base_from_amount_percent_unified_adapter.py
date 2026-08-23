@@ -21,8 +21,9 @@ def main():
     expected=parent_record_sha256(parent)
     for row,p in zip(rows,prov):
         assert row["source"]["parent_id"]==parent["id"]
-        assert row["taxonomy"]==parent["taxonomy"] and row["difficulty"]==parent["difficulty"]
-        assert row["choices"]==parent["choices"] and row["figure_refs"]==parent["figure_refs"]
+        for field in ("taxonomy","difficulty","format","question_format","grade","unit","skill"):
+            assert row.get(field)==parent.get(field)
+        assert row.get("choices")==parent.get("choices") and row.get("figure_refs")==parent.get("figure_refs")
         assert all(row["audit"][k] is True for k in ("problem_answer_verified","structure_verified","figure_refs_verified"))
         assert p["parent_record_sha256"]==expected and p["independent_recalculation"] is True
         assert "engine=percentage" in p["verification_evidence"]
