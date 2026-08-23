@@ -32,6 +32,7 @@ from safe_median_variant_engine import generate as generate_median
 from safe_mode_variant_engine import generate as generate_mode
 from safe_monic_quadratic_factorization_variant_engine import generate as generate_monic_quadratic_factorization
 from safe_parallelogram_area_variant_engine import generate as generate_parallelogram_area
+from safe_polygon_interior_sum_variant_engine import generate as generate_polygon_interior_sum
 from safe_percentage_variant_engine import generate as generate_percentage
 from safe_perfect_square_expansion_variant_engine import generate as generate_perfect_square_expansion
 from safe_prime_factorization_variant_engine import generate as generate_prime_factorization
@@ -93,6 +94,7 @@ SPECIALIZED_ENGINES = (
     ("square_area", generate_square_area),
     ("triangle_area", generate_triangle_area),
     ("triangle_exterior_angle", generate_triangle_exterior_angle),
+    ("polygon_interior_sum", generate_polygon_interior_sum),
     ("parallelogram_area", generate_parallelogram_area),
     ("trapezoid_area", generate_trapezoid_area),
     ("rectangular_prism_volume", generate_rectangular_prism_volume),
