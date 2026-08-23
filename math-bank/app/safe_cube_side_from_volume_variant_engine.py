@@ -21,7 +21,7 @@ def _norm(value: object) -> str:
 
 
 def _parent_sha(parent: dict) -> str:
-    raw = json.dumps(parent, ensure_ascii=False, sort_keys=True, separators=(",", ",")).encode("utf-8")
+    raw = json.dumps(parent, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
     return hashlib.sha256(raw).hexdigest()
 
 
