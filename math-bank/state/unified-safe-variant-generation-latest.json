@@ -1,9 +1,9 @@
 {
   "status": "PASS_CI",
   "persist_schema_version": 65,
-  "run_id": "32672226410",
-  "triggering_sha": "fd048779e42eb62725e8b2b50fd4d2b219e77e34",
-  "recorded_at_utc": "2026-08-23T22:59:03.858385+00:00",
+  "run_id": "32672277100",
+  "triggering_sha": "a01bf9e6532426844842f1de9ae51b086228b553",
+  "recorded_at_utc": "2026-08-23T23:00:07.545013+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "success",
@@ -88,12 +88,14 @@
     "time_from_distance_speed",
     "trapezoid_area",
     "triangle_area",
+    "triangle_base_from_area",
     "triangle_exterior_angle",
+    "triangle_height_from_area",
     "two_coin_heads_probability",
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 79,
+  "engine_module_count": 81,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_variant_engine.py",
@@ -168,6 +170,7 @@
     "test_safe_time_from_distance_speed_variant_engine.py",
     "test_safe_trapezoid_area_variant_engine.py",
     "test_safe_triangle_exterior_angle_variant_engine.py",
+    "test_safe_triangle_height_from_area_variant_engine.py",
     "test_safe_two_coin_heads_probability_variant_engine.py",
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
