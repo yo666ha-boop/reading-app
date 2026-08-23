@@ -29,6 +29,18 @@ def main() -> None:
         assert "円柱" in row["question"] and "3.14" in row["question"]
         assert "PASS" in ev["independent_check"]
 
+    radius_inverse = parent(
+        question="体積141.3cm³、高さ5cmの円柱の半径を、円周率を3.14として求めなさい。",
+        answer="3cm",
+    )
+    ok, reason = can_generate(radius_inverse)
+    assert ok and reason == "cylinder_radius_from_volume_pi_3_14_exact"
+    inverse_rows, inverse_evidence, inverse_reason = generate(radius_inverse, 3)
+    assert inverse_reason == "cylinder_radius_from_volume_pi_3_14_exact"
+    assert len(inverse_rows) == len(inverse_evidence) == 3
+    assert all(row["answer"].endswith("cm") for row in inverse_rows)
+    assert all("cylinder_radius_exact_division_square_root_and_volume_recomposition" == ev["method"] for ev in inverse_evidence)
+
     bad = [
         parent(answer="141.2cm³"),
         parent(figure_refs=["cylinder.svg"]),
@@ -38,7 +50,6 @@ def main() -> None:
         parent(question="半径3cm、高さ5cmの円柱の体積を求めなさい。", answer="45πcm³"),
         parent(question="半径3cm、高さ5cmの円すいの体積を、円周率を3.14として求めなさい。", answer="47.1cm³"),
         parent(question="半径3m、高さ5mの円柱の体積を、円周率を3.14として求めなさい。", answer="141.3m³"),
-        parent(question="体積141.3cm³、高さ5cmの円柱の半径を、円周率を3.14として求めなさい。", answer="3cm"),
     ]
     for row in bad:
         ok, _ = can_generate(row)
@@ -46,7 +57,7 @@ def main() -> None:
         generated, ev, _ = generate(row, 1)
         assert generated == [] and ev == []
 
-    print("PASS_SAFE_CYLINDER_VOLUME_PI_3_14_VARIANT_ENGINE")
+    print("PASS_SAFE_CYLINDER_VOLUME_HEIGHT_AND_RADIUS_INVERSE_ROUTES")
 
 
 if __name__ == "__main__":
