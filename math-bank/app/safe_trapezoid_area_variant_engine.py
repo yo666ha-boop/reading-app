@@ -1,22 +1,14 @@
 from __future__ import annotations
 
-"""Fail-closed exact engine for a narrow trapezoid-area parent shape.
-
-Only actual parents that explicitly state one upper base, lower base, and height
-in the same unit, ask only for the area of one trapezoid, and have an exactly
-verified integer area are accepted. The parent answer is recalculated by
-(upper+lower)*height/2 and independently checked by doubled-area identity
-2*area == (upper+lower)*height. Figure/choice parents and perimeter/unknown-
-side/composite/mixed-unit questions fail closed.
-"""
+"""Fail-closed exact engine for trapezoid area and height-from-area parents."""
 
 import hashlib
 import json
 import re
 
-TRAPEZOID_RE = re.compile(
-    r"上底\s*(?P<upper>\d+)\s*(?P<unit>mm|cm|m)\s*[、,，]?\s*下底\s*(?P<lower>\d+)\s*(?P=unit)\s*[、,，]?\s*高さ\s*(?P<height>\d+)\s*(?P=unit)"
-)
+from safe_trapezoid_height_from_area_variant_engine import generate as generate_height_from_area
+
+TRAPEZOID_RE = re.compile(r"上底\s*(?P<upper>\d+)\s*(?P<unit>mm|cm|m)\s*[、,，]?\s*下底\s*(?P<lower>\d+)\s*(?P=unit)\s*[、,，]?\s*高さ\s*(?P<height>\d+)\s*(?P=unit)")
 AREA_ANSWER_RE = re.compile(r"^(?P<v>\d+)\s*(?P<unit>mm|cm|m)(?:²|\^2|2)$")
 
 
@@ -30,9 +22,7 @@ def _parent_sha(parent: dict) -> str:
 
 
 def _parse_parent(parent: dict):
-    if parent.get("figure_refs"):
-        return None
-    if parent.get("choices") is not None:
+    if parent.get("figure_refs") or parent.get("choices") is not None:
         return None
     q = _norm(parent.get("question"))
     if "台形" not in q or "面積" not in q:
@@ -44,10 +34,7 @@ def _parse_parent(parent: dict):
     if len(matches) != 1:
         return None
     m = matches[0]
-    upper = int(m.group("upper"))
-    lower = int(m.group("lower"))
-    height = int(m.group("height"))
-    unit = m.group("unit")
+    upper = int(m.group("upper")); lower = int(m.group("lower")); height = int(m.group("height")); unit = m.group("unit")
     if upper <= 0 or lower <= 0 or height <= 0:
         return None
     doubled = (upper + lower) * height
@@ -63,8 +50,10 @@ def _parse_parent(parent: dict):
 
 
 def can_generate(parent: dict) -> tuple[bool, str]:
-    parsed = _parse_parent(parent)
-    if parsed is not None:
+    rows, _, reason = generate_height_from_area(parent, 1)
+    if rows:
+        return True, reason
+    if _parse_parent(parent) is not None:
         return True, "trapezoid_area_integer_same_unit_exact"
     if parent.get("figure_refs"):
         return False, "figure_parent"
@@ -85,48 +74,29 @@ def _variant_numbers(seed: int, index: int) -> tuple[int, int, int]:
 def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     if count not in (1, 2, 3):
         raise ValueError("count must be 1, 2, or 3")
+    inverse_rows, inverse_evidence, inverse_reason = generate_height_from_area(parent, count)
+    if inverse_rows:
+        return inverse_rows, inverse_evidence, inverse_reason
     parsed = _parse_parent(parent)
     if parsed is None:
-        ok, reason = can_generate(parent)
-        assert not ok
-        return [], [], reason
+        if parent.get("figure_refs"):
+            return [], [], "figure_parent"
+        if parent.get("choices") is not None:
+            return [], [], "choice_parent"
+        return [], [], "trapezoid_area_parent_not_exactly_parsed_and_verified"
 
     match, parent_upper, parent_lower, parent_height, unit, parent_area = parsed
-    q = _norm(parent.get("question"))
-    seed = int(_parent_sha(parent)[:12], 16)
-    parent_signature = (str(parent_upper), str(parent_lower), str(parent_height))
-    seen: set[tuple[str, str, str]] = set()
-    rows: list[dict] = []
-    evidence: list[dict] = []
-
+    q = _norm(parent.get("question")); seed = int(_parent_sha(parent)[:12], 16)
+    parent_signature = (str(parent_upper), str(parent_lower), str(parent_height)); seen=set(); rows=[]; evidence=[]
     for index in range(1, count + 1):
-        upper, lower, height = _variant_numbers(seed, index)
-        signature = (str(upper), str(lower), str(height))
-        bump = 0
+        upper, lower, height = _variant_numbers(seed, index); signature=(str(upper),str(lower),str(height)); bump=0
         while signature == parent_signature or signature in seen:
-            bump += 1
-            lower += 2 * bump
-            signature = (str(upper), str(lower), str(height))
-        seen.add(signature)
-        doubled = (upper + lower) * height
-        if doubled % 2:
-            raise AssertionError("trapezoid generated area must remain integer")
-        area = doubled // 2
-        if 2 * area != doubled:
-            raise AssertionError("trapezoid doubled-area identity failed")
-        replacement = f"上底{upper}{unit}、下底{lower}{unit}、高さ{height}{unit}"
-        new_question = q[:match.start()] + replacement + q[match.end():]
-        rows.append({
-            "question": new_question,
-            "answer": f"{area}{unit}²",
-            "explanation": f"台形の面積=(上底+下底)×高さ÷2より、({upper}+{lower})×{height}÷2={area}{unit}²。2×面積=(上底+下底)×高さでも確認済み。",
-            "numeric_signature": signature,
-        })
-        evidence.append({
-            "parent_sha256": _parent_sha(parent),
-            "method": "trapezoid_area_exact_half_sum_product_and_doubled_area_identity",
-            "parent_recalculation": f"({parent_upper}+{parent_lower})×{parent_height}÷2={parent_area}{unit}²",
-            "variant_recalculation": f"({upper}+{lower})×{height}÷2={area}{unit}²",
-            "independent_check": "2*area == (upper+lower)*height PASS",
-        })
-    return rows, evidence, "trapezoid_area_integer_same_unit_exact"
+            bump += 1; lower += 2 * bump; signature=(str(upper),str(lower),str(height))
+        seen.add(signature); doubled=(upper+lower)*height
+        if doubled % 2: raise AssertionError("trapezoid generated area must remain integer")
+        area=doubled//2
+        if 2*area != doubled: raise AssertionError("trapezoid doubled-area identity failed")
+        replacement=f"上底{upper}{unit}、下底{lower}{unit}、高さ{height}{unit}"; new_question=q[:match.start()]+replacement+q[match.end():]
+        rows.append({"question":new_question,"answer":f"{area}{unit}²","explanation":f"台形の面積=(上底+下底)×高さ÷2より、({upper}+{lower})×{height}÷2={area}{unit}²。2×面積=(上底+下底)×高さでも確認済み。","numeric_signature":signature})
+        evidence.append({"parent_sha256":_parent_sha(parent),"method":"trapezoid_area_exact_half_sum_product_and_doubled_area_identity","parent_recalculation":f"({parent_upper}+{parent_lower})×{parent_height}÷2={parent_area}{unit}²","variant_recalculation":f"({upper}+{lower})×{height}÷2={area}{unit}²","independent_check":"2*area == (upper+lower)*height PASS"})
+    return rows,evidence,"trapezoid_area_integer_same_unit_exact"
