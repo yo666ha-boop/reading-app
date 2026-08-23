@@ -1,19 +1,19 @@
 from __future__ import annotations
 
-"""Fail-closed exact engine for a narrow middle-school percentage parent shape.
+"""Fail-closed exact engine for narrow middle-school percentage parents.
 
-Only an actual parent containing exactly one expression of the form
-"N円のP%" and explicitly asking for that amount in yen is accepted. The
-parent's stated answer is proved with exact Fraction arithmetic and by an
-independent cross-multiplication identity before deterministic variants are
-made. Figure/choice parents, discount/increase/decrease prose, multiple
-percent expressions, and ambiguous contexts fail closed.
+This engine handles exact "N円のP%" amount questions directly and delegates
+simple two-quantity percent increase/decrease questions to the dedicated exact
+percent-change engine. Both paths require verified actual parents and preserve
+the same fail-closed behavior for figures, real choices and ambiguous prose.
 """
 
 import hashlib
 import json
 import re
 from fractions import Fraction
+
+from safe_percent_change_variant_engine import generate as generate_percent_change
 
 PERCENT_RE = re.compile(r"(?P<expr>(?P<base>\d+)\s*円\s*の\s*(?P<pct>\d+)\s*[%％])")
 YEN_ANSWER_RE = re.compile(r"^(?P<v>[+-]?\d+(?:/\d+)?)\s*円$")
@@ -62,7 +62,6 @@ def _parse_parent(parent: dict):
     am = YEN_ANSWER_RE.fullmatch(_norm(parent.get("answer")).replace(" ", ""))
     if am is None or Fraction(am.group("v")) != expected:
         return None
-    # Independent identity: amount / base = pct / 100.
     if expected * 100 != Fraction(base * pct):
         return None
     return m, base, pct, expected
@@ -72,6 +71,9 @@ def can_generate(parent: dict) -> tuple[bool, str]:
     parsed = _parse_parent(parent)
     if parsed is not None:
         return True, "percentage_of_yen_exact"
+    delegated, _, delegated_reason = generate_percent_change(parent, 1)
+    if delegated:
+        return True, delegated_reason
     if parent.get("figure_refs"):
         return False, "figure_parent"
     if parent.get("choices") is not None:
@@ -80,7 +82,6 @@ def can_generate(parent: dict) -> tuple[bool, str]:
 
 
 def _variant_numbers(seed: int, index: int) -> tuple[int, int]:
-    # Keep arithmetic school-friendly while guaranteeing integer yen answers.
     pct_options = (10, 20, 25, 40, 50, 60, 75, 80)
     pct = pct_options[((seed >> (index * 5)) + index) % len(pct_options)]
     unit = 100 + 100 * (((seed >> (index * 7 + 3)) + 2 * index) % 9)
@@ -94,9 +95,10 @@ def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
         raise ValueError("count must be 1, 2, or 3")
     parsed = _parse_parent(parent)
     if parsed is None:
-        ok, reason = can_generate(parent)
-        assert not ok
-        return [], [], reason
+        delegated_rows, delegated_evidence, delegated_reason = generate_percent_change(parent, count)
+        if delegated_rows:
+            return delegated_rows, delegated_evidence, delegated_reason
+        return [], [], "percentage_parent_not_exactly_parsed_and_verified"
     match, parent_base, parent_pct, parent_amount = parsed
     q = _norm(parent.get("question"))
     seed = int(_parent_sha(parent)[:12], 16)
@@ -108,7 +110,6 @@ def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     for index in range(1, count + 1):
         base, pct = _variant_numbers(seed, index)
         signature = (str(base), str(pct))
-        # Deterministically advance if a rare collision occurs.
         bump = 0
         while signature == parent_signature or signature in seen:
             bump += 1
