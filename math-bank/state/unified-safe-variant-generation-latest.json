@@ -1,12 +1,12 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 65,
-  "run_id": "32672158087",
-  "triggering_sha": "011db872dbb177d55a68ba4a7f20089fef569bd9",
-  "recorded_at_utc": "2026-08-23T22:57:42.972835+00:00",
+  "run_id": "32672178041",
+  "triggering_sha": "50fd66e09c94d886f7d2b7160bc8a8cbe1bf6713",
+  "recorded_at_utc": "2026-08-23T22:57:56.838681+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
+    "specialized_and_adapters": "failure",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -176,6 +176,7 @@
     "test_absolute_value_unified_adapter.py",
     "test_average_missing_value_unified_adapter.py",
     "test_average_total_unified_adapter.py",
+    "test_base_from_amount_percent_unified_adapter.py",
     "test_binomial_expansion_unified_adapter.py",
     "test_circle_area_unified_adapter.py",
     "test_circle_circumference_unified_adapter.py",
