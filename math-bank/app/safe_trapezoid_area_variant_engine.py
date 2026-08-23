@@ -1,12 +1,13 @@
 from __future__ import annotations
 
-"""Fail-closed exact engine for trapezoid area and height-from-area parents."""
+"""Fail-closed exact engine for trapezoid area and exact inverse parents."""
 
 import hashlib
 import json
 import re
 
 from safe_trapezoid_height_from_area_variant_engine import generate as generate_height_from_area
+from safe_trapezoid_base_from_area_variant_engine import generate as generate_base_from_area
 
 TRAPEZOID_RE = re.compile(r"上底\s*(?P<upper>\d+)\s*(?P<unit>mm|cm|m)\s*[、,，]?\s*下底\s*(?P<lower>\d+)\s*(?P=unit)\s*[、,，]?\s*高さ\s*(?P<height>\d+)\s*(?P=unit)")
 AREA_ANSWER_RE = re.compile(r"^(?P<v>\d+)\s*(?P<unit>mm|cm|m)(?:²|\^2|2)$")
@@ -53,6 +54,9 @@ def can_generate(parent: dict) -> tuple[bool, str]:
     rows, _, reason = generate_height_from_area(parent, 1)
     if rows:
         return True, reason
+    rows, _, reason = generate_base_from_area(parent, 1)
+    if rows:
+        return True, reason
     if _parse_parent(parent) is not None:
         return True, "trapezoid_area_integer_same_unit_exact"
     if parent.get("figure_refs"):
@@ -75,6 +79,9 @@ def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     if count not in (1, 2, 3):
         raise ValueError("count must be 1, 2, or 3")
     inverse_rows, inverse_evidence, inverse_reason = generate_height_from_area(parent, count)
+    if inverse_rows:
+        return inverse_rows, inverse_evidence, inverse_reason
+    inverse_rows, inverse_evidence, inverse_reason = generate_base_from_area(parent, count)
     if inverse_rows:
         return inverse_rows, inverse_evidence, inverse_reason
     parsed = _parse_parent(parent)
