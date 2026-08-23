@@ -19,7 +19,7 @@ def main():
     parent["variant_group"]=None
 
     rows,prov,reason=generate_parent(parent,3,NOW)
-    assert "regular_polygon_sides_from_single_exterior_angle_exact" in reason, reason
+    assert reason.startswith("specialized:regular_polygon_sides_from_exterior_angle:regular_polygon_sides_from_single_exterior_angle_exact"), reason
     assert len(rows)==len(prov)==3
     assert len({row["question"] for row in rows})==3
     expected_sha=parent_record_sha256(parent)
@@ -35,7 +35,7 @@ def main():
         assert audit.get("figure_refs_verified") is True
         assert evidence["parent_record_sha256"]==expected_sha
         assert evidence["independent_recalculation"] is True
-        assert "engine=regular_polygon_exterior_angle" in evidence["verification_evidence"], evidence["verification_evidence"]
+        assert "engine=regular_polygon_sides_from_exterior_angle" in evidence["verification_evidence"], evidence["verification_evidence"]
         assert row["answer"].endswith("角形")
     print("PASS_REGULAR_POLYGON_SIDES_FROM_EXTERIOR_UNIFIED_PARENT_CONTRACT", reason)
 
