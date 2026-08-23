@@ -47,6 +47,7 @@ from safe_rectangle_perimeter_variant_engine import generate as generate_rectang
 from safe_rectangular_prism_volume_variant_engine import generate as generate_rectangular_prism_volume
 from safe_relative_frequency_variant_engine import generate as generate_relative_frequency
 from safe_single_draw_probability_variant_engine import generate as generate_probability
+from safe_slope_from_two_points_variant_engine import generate as generate_slope_from_two_points
 from safe_speed_distance_variant_engine import generate as generate_speed_distance
 from safe_sphere_variant_engine import generate as generate_sphere
 from safe_square_area_variant_engine import generate as generate_square_area
@@ -64,6 +65,7 @@ from validate_expanded_variant_layer import BASE_CANONICAL_SHA256, base_gate, lo
 SPECIALIZED_ENGINES = (
     ("absolute_value", generate_absolute_value),
     ("affine", generate_affine),
+    ("slope_from_two_points", generate_slope_from_two_points),
     ("symmetric_linear_system", generate_symmetric_linear_system),
     ("inverse_proportion", generate_inverse_proportion),
     ("pythagorean_hypotenuse", generate_pythagorean_hypotenuse),
@@ -178,7 +180,6 @@ def _adapt_specialized(parent, count, now):
 def generate_parent(parent,count,now):
     if count not in (1,2,3): raise ValueError("count must be 1, 2, or 3")
     return _adapt_specialized(parent,count,now)
-
 def generation_request(existing_count,*,minimum_per_parent,safe_target_per_parent):
     if existing_count<0: raise ValueError("existing_count must be non-negative")
     if minimum_per_parent not in (1,2,3) or safe_target_per_parent not in (1,2,3) or safe_target_per_parent<minimum_per_parent: raise ValueError("invalid target")
