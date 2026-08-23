@@ -34,6 +34,7 @@ from safe_monic_quadratic_factorization_variant_engine import generate as genera
 from safe_parallelogram_area_variant_engine import generate as generate_parallelogram_area
 from safe_polygon_interior_sum_variant_engine import generate as generate_polygon_interior_sum
 from safe_regular_polygon_interior_angle_variant_engine import generate as generate_regular_polygon_interior_angle
+from safe_regular_polygon_exterior_angle_variant_engine import generate as generate_regular_polygon_exterior_angle
 from safe_percentage_variant_engine import generate as generate_percentage
 from safe_perfect_square_expansion_variant_engine import generate as generate_perfect_square_expansion
 from safe_prime_factorization_variant_engine import generate as generate_prime_factorization
@@ -97,6 +98,7 @@ SPECIALIZED_ENGINES = (
     ("triangle_exterior_angle", generate_triangle_exterior_angle),
     ("polygon_interior_sum", generate_polygon_interior_sum),
     ("regular_polygon_interior_angle", generate_regular_polygon_interior_angle),
+    ("regular_polygon_exterior_angle", generate_regular_polygon_exterior_angle),
     ("parallelogram_area", generate_parallelogram_area),
     ("trapezoid_area", generate_trapezoid_area),
     ("rectangular_prism_volume", generate_rectangular_prism_volume),
