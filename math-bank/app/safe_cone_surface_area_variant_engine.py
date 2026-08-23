@@ -7,6 +7,11 @@ import hashlib
 import json
 import re
 
+from safe_cone_slant_from_surface_area_variant_engine import (
+    can_generate as can_generate_slant_from_surface_area,
+    generate as generate_slant_from_surface_area,
+)
+
 RADIUS_RE = re.compile(r"半径\s*(?P<radius>\d+)\s*cm")
 SLANT_RE = re.compile(r"母線\s*(?:の長さ\s*)?(?P<slant>\d+)\s*cm")
 ANSWER_RE = re.compile(r"^(?P<value>\d+(?:\.\d+)?)\s*(?:cm²|cm\^2|cm2)$")
@@ -66,6 +71,9 @@ def _parse_parent(parent: dict):
 
 
 def can_generate(parent: dict) -> tuple[bool, str]:
+    inverse_ok, inverse_reason = can_generate_slant_from_surface_area(parent)
+    if inverse_ok:
+        return True, inverse_reason
     if _parse_parent(parent) is not None:
         return True, "cone_surface_area_pi_3_14_exact"
     if parent.get("figure_refs"):
@@ -78,6 +86,9 @@ def can_generate(parent: dict) -> tuple[bool, str]:
 def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     if count not in (1, 2, 3):
         raise ValueError("count must be 1, 2, or 3")
+    inverse_rows, inverse_evidence, inverse_reason = generate_slant_from_surface_area(parent, count)
+    if inverse_rows:
+        return inverse_rows, inverse_evidence, inverse_reason
     parsed = _parse_parent(parent)
     if parsed is None:
         ok, reason = can_generate(parent)
