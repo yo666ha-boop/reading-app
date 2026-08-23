@@ -11,6 +11,10 @@ from safe_cylinder_height_from_volume_variant_engine import (
     can_generate as can_generate_height_from_volume,
     generate as generate_height_from_volume,
 )
+from safe_cylinder_radius_from_volume_variant_engine import (
+    can_generate as can_generate_radius_from_volume,
+    generate as generate_radius_from_volume,
+)
 
 RADIUS_RE = re.compile(r"半径\s*(?P<radius>\d+)\s*cm")
 HEIGHT_RE = re.compile(r"高さ\s*(?P<height>\d+)\s*cm")
@@ -77,6 +81,9 @@ def _parse_parent(parent: dict):
 
 
 def can_generate(parent: dict) -> tuple[bool, str]:
+    radius_ok, radius_reason = can_generate_radius_from_volume(parent)
+    if radius_ok:
+        return True, radius_reason
     inverse_ok, inverse_reason = can_generate_height_from_volume(parent)
     if inverse_ok:
         return True, inverse_reason
@@ -92,6 +99,9 @@ def can_generate(parent: dict) -> tuple[bool, str]:
 def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     if count not in (1, 2, 3):
         raise ValueError("count must be 1, 2, or 3")
+    radius_rows, radius_evidence, radius_reason = generate_radius_from_volume(parent, count)
+    if radius_rows:
+        return radius_rows, radius_evidence, radius_reason
     inverse_rows, inverse_evidence, inverse_reason = generate_height_from_volume(parent, count)
     if inverse_rows:
         return inverse_rows, inverse_evidence, inverse_reason
