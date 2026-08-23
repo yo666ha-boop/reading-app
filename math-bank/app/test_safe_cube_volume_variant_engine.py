@@ -39,6 +39,24 @@ def main() -> None:
     assert len(srows) == len(sev) == 3
     assert all("surface_area/6 == side^2 PASS" in ev["independent_check"] for ev in sev)
 
+    reverse_volume = copy.deepcopy(parent)
+    reverse_volume["question"] = "体積が64cm³の立方体の1辺を求めなさい。"
+    reverse_volume["answer"] = "4cm"
+    ok, reason = can_generate(reverse_volume)
+    assert ok is True and reason == "cube_volume_to_integer_side_exact"
+    rv_rows, rv_ev, _ = generate(reverse_volume, 3)
+    assert len(rv_rows) == len(rv_ev) == 3
+    assert all("cube_side_from_volume_exact_cube_root_and_recomposition" == ev["method"] for ev in rv_ev)
+
+    reverse_surface = copy.deepcopy(parent)
+    reverse_surface["question"] = "表面積が96cm²の立方体の1辺を求めなさい。"
+    reverse_surface["answer"] = "4cm"
+    ok, reason = can_generate(reverse_surface)
+    assert ok is True and reason == "cube_surface_area_to_integer_side_exact"
+    rs_rows, rs_ev, _ = generate(reverse_surface, 3)
+    assert len(rs_rows) == len(rs_ev) == 3
+    assert all("cube_side_from_surface_area_exact_division_square_root_and_recomposition" == ev["method"] for ev in rs_ev)
+
     bad_cases: list[dict] = []
 
     wrong = copy.deepcopy(parent)
@@ -53,10 +71,10 @@ def main() -> None:
     choice["choices"] = ["64cm³", "48cm³"]
     bad_cases.append(choice)
 
-    reverse = copy.deepcopy(parent)
-    reverse["question"] = "体積64cm³の立方体の1辺を求めなさい。"
-    reverse["answer"] = "4cm"
-    bad_cases.append(reverse)
+    noncube_reverse = copy.deepcopy(parent)
+    noncube_reverse["question"] = "体積が65cm³の立方体の1辺を求めなさい。"
+    noncube_reverse["answer"] = "4cm"
+    bad_cases.append(noncube_reverse)
 
     mixed = copy.deepcopy(parent)
     mixed["question"] = "1辺4mmの立方体の体積を求めなさい。"
@@ -73,7 +91,7 @@ def main() -> None:
         rows, ev, _ = generate(bad, 3)
         assert rows == [] and ev == []
 
-    print("PASS_SAFE_CUBE_VOLUME_AND_SURFACE_AREA_ROUTE_POSITIVE_NEGATIVE")
+    print("PASS_SAFE_CUBE_VOLUME_SURFACE_AND_INVERSE_ROUTES")
 
 
 if __name__ == "__main__":
