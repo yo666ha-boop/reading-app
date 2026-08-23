@@ -6,6 +6,7 @@ import hashlib
 import json
 import re
 
+from safe_cube_side_from_surface_area_variant_engine import generate as generate_side_from_surface_area
 from safe_cube_side_from_volume_variant_engine import generate as generate_side_from_volume
 from safe_cube_surface_area_variant_engine import generate as generate_surface_area
 
@@ -74,9 +75,17 @@ def _parse_parent(parent: dict):
     return match, side, volume
 
 
+def _asks_side(q: str) -> bool:
+    return any(token in q for token in ("1辺を求", "一辺を求", "辺の長さを求", "1辺は何", "一辺は何"))
+
+
 def can_generate(parent: dict) -> tuple[bool, str]:
     q = _norm(parent.get("question"))
-    if "立方体" in q and "体積" in q and any(token in q for token in ("1辺を求", "一辺を求", "辺の長さを求", "1辺は何", "一辺は何")):
+    if "立方体" in q and "表面積" in q and _asks_side(q):
+        rows, _, reason = generate_side_from_surface_area(parent, 1)
+        if rows:
+            return True, reason
+    if "立方体" in q and "体積" in q and _asks_side(q):
         rows, _, reason = generate_side_from_volume(parent, 1)
         if rows:
             return True, reason
@@ -101,7 +110,11 @@ def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     if count not in (1, 2, 3):
         raise ValueError("count must be 1, 2, or 3")
     q = _norm(parent.get("question"))
-    if "立方体" in q and "体積" in q and any(token in q for token in ("1辺を求", "一辺を求", "辺の長さを求", "1辺は何", "一辺は何")):
+    if "立方体" in q and "表面積" in q and _asks_side(q):
+        rows, evidence, reason = generate_side_from_surface_area(parent, count)
+        if rows:
+            return rows, evidence, reason
+    if "立方体" in q and "体積" in q and _asks_side(q):
         rows, evidence, reason = generate_side_from_volume(parent, count)
         if rows:
             return rows, evidence, reason
