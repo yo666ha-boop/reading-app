@@ -1,9 +1,9 @@
 {
   "status": "PASS_CI",
   "persist_schema_version": 65,
-  "run_id": "32672137851",
-  "triggering_sha": "ffe5a68d0721dae8d7c4687405c60d0b9cb26eac",
-  "recorded_at_utc": "2026-08-23T22:57:08.439066+00:00",
+  "run_id": "32672143314",
+  "triggering_sha": "cbcc2ce4368506dbcaafee5f57a470191d73336a",
+  "recorded_at_utc": "2026-08-23T22:57:26.616754+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "success",
@@ -18,6 +18,7 @@
     "average",
     "average_missing_value",
     "average_total",
+    "base_from_amount_percent",
     "binomial_expansion",
     "circle_area",
     "circle_circumference",
@@ -92,13 +93,14 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 78,
+  "engine_module_count": 79,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_variant_engine.py",
     "test_safe_average_missing_value_variant_engine.py",
     "test_safe_average_total_variant_engine.py",
     "test_safe_average_variant_engine.py",
+    "test_safe_base_from_amount_percent_variant_engine.py",
     "test_safe_binomial_expansion_variant_engine.py",
     "test_safe_circle_area_variant_engine.py",
     "test_safe_circle_circumference_variant_engine.py",
