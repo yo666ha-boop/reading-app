@@ -1,9 +1,9 @@
 {
   "status": "PASS_CI",
-  "persist_schema_version": 42,
-  "run_id": "32624388124",
-  "triggering_sha": "39d74c44418e427e4059622de9873e4f45c67c6d",
-  "recorded_at_utc": "2026-08-23T07:00:25.556277+00:00",
+  "persist_schema_version": 43,
+  "run_id": "32624410219",
+  "triggering_sha": "7976fce813b82f7be67518cd44c73a23d8ce08e5",
+  "recorded_at_utc": "2026-08-23T07:00:41.097700+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "success",
@@ -15,6 +15,7 @@
   "engines": [
     "absolute_value",
     "affine",
+    "slope_from_two_points",
     "symmetric_linear_system",
     "inverse_proportion",
     "pythagorean_hypotenuse",
@@ -103,6 +104,7 @@
   "decimal_arithmetic_exact_fraction_and_inverse_operation_identity": true,
   "fraction_arithmetic_exact_fraction_and_inverse_operation_identity": true,
   "symmetric_linear_system_closed_form_and_double_substitution_identity": true,
+  "slope_from_two_points_delta_ratio_and_cross_multiplication_identity": true,
   "integer_power_exact_exponentiation_and_repeated_product_identity": true,
   "gcd_euclid_and_exhaustive_common_divisor_identity": true,
   "lcm_product_over_gcd_and_enumerated_common_multiple_identity": true,
@@ -110,7 +112,7 @@
   "quadratic_square_equation_perfect_square_two_roots_and_root_product_identity": true,
   "monic_quadratic_factorization_sum_product_and_reexpansion_identity": true,
   "binomial_expansion_sum_product_and_exact_coefficient_identity": true,
-  "two_coin_heads_probability_exhaustive_four_and_binomial_count_identity": true,
+  "fair_coin_heads_probability_exhaustive_2powN_and_binomial_count_identity": true,
   "two_dice_sum_probability_exhaustive_36_and_triangular_count_identity": true,
   "median_sorted_middle_and_equal_side_count_identity": true,
   "mode_unique_argmax_frequency_and_strict_max_count_identity": true,
