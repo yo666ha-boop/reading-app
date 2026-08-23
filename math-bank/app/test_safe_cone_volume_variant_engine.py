@@ -31,6 +31,18 @@ def main() -> None:
         assert ev["method"] == "cone_volume_exact_pi_3_14_one_third_product_and_inverse_identities"
         assert "PASS" in ev["independent_check"]
 
+    surface = parent(
+        question="半径3cm、母線5cmの円すいの表面積を、円周率を3.14として求めなさい。",
+        answer="75.36cm²",
+    )
+    ok, reason = can_generate(surface)
+    assert ok and reason == "cone_surface_area_pi_3_14_exact"
+    surface_rows, surface_evidence, surface_reason = generate(surface, 3)
+    assert surface_reason == "cone_surface_area_pi_3_14_exact"
+    assert len(surface_rows) == len(surface_evidence) == 3
+    assert all(row["answer"].endswith("cm²") for row in surface_rows)
+    assert all(ev["method"] == "cone_surface_area_exact_pi_r2_plus_pi_r_l_and_factored_identity" for ev in surface_evidence)
+
     bad = [
         parent(answer="56.5cm³"),
         parent(figure_refs=["cone.svg"]),
@@ -39,7 +51,6 @@ def main() -> None:
         # r^2*h=20 is not divisible by 3, so this would require a repeating decimal and must fail closed.
         parent(question="半径2cm、高さ5cmの円すいの体積を、円周率を3.14として求めなさい。", answer="20.933333cm³"),
         parent(question="直径6cm、高さ6cmの円すいの体積を、円周率を3.14として求めなさい。", answer="56.52cm³"),
-        parent(question="半径3cm、高さ6cmの円すいの表面積を、円周率を3.14として求めなさい。", answer="56.52cm³"),
     ]
     for row in bad:
         ok, _ = can_generate(row)
@@ -47,7 +58,7 @@ def main() -> None:
         generated, ev, _ = generate(row, 1)
         assert generated == [] and ev == []
 
-    print("PASS_SAFE_CONE_VOLUME_VARIANT_ENGINE")
+    print("PASS_SAFE_CONE_VOLUME_HEIGHT_RADIUS_AND_SURFACE_AREA_ROUTES")
 
 
 if __name__ == "__main__":
