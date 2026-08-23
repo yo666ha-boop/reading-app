@@ -40,6 +40,12 @@ def _parse(parent):
         return None
     return m,n,total,angle
 
+def _interior_failure_reason(parent):
+    q=_norm(parent.get("question"))
+    if "内角" in q:
+        return "regular_polygon_interior_angle_parent_not_exactly_parsed_and_verified"
+    return "regular_polygon_interior_or_exterior_angle_parent_not_exactly_parsed_and_verified"
+
 def can_generate(parent):
     if _parse(parent) is not None:
         return True,"regular_polygon_single_interior_angle_exact"
@@ -50,7 +56,7 @@ def can_generate(parent):
         return False,"figure_parent"
     if parent.get("choices"):
         return False,"choice_parent"
-    return False,"regular_polygon_interior_or_exterior_angle_parent_not_exactly_parsed_and_verified"
+    return False,_interior_failure_reason(parent)
 
 def generate(parent,count):
     if count not in (1,2,3):
@@ -60,7 +66,7 @@ def generate(parent,count):
         ext_rows,ext_evidence,ext_reason=generate_exterior(parent,count)
         if ext_rows:
             return ext_rows,ext_evidence,ext_reason
-        return [],[],"regular_polygon_interior_or_exterior_angle_parent_not_exactly_parsed_and_verified"
+        return [],[],_interior_failure_reason(parent)
     match,parent_n,parent_total,parent_angle=parsed
     q=_norm(parent.get("question")); seed=int(_sha(parent)[:12],16)
     candidates=(3,4,5,6,8,9,10,12,15,18,20,24,30)
