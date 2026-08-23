@@ -3,9 +3,9 @@ from __future__ import annotations
 """Fail-closed exact engine for narrow middle-school percentage parents.
 
 This engine handles exact "N円のP%" amount questions directly and delegates
-simple two-quantity percent increase/decrease questions to the dedicated exact
-percent-change engine. Both paths require verified actual parents and preserve
-the same fail-closed behavior for figures, real choices and ambiguous prose.
+verified inverse percentage forms and simple two-quantity percent change to
+dedicated exact engines. All paths fail closed for figures, real choices, and
+ambiguous prose.
 """
 
 import hashlib
@@ -13,6 +13,8 @@ import json
 import re
 from fractions import Fraction
 
+from safe_base_from_amount_percent_variant_engine import generate as generate_base_from_amount_percent
+from safe_percent_from_amount_base_variant_engine import generate as generate_percent_from_amount_base
 from safe_percent_change_variant_engine import generate as generate_percent_change
 
 PERCENT_RE = re.compile(r"(?P<expr>(?P<base>\d+)\s*円\s*の\s*(?P<pct>\d+)\s*[%％])")
@@ -67,11 +69,19 @@ def _parse_parent(parent: dict):
     return m, base, pct, expected
 
 
+def _delegate(parent: dict, count: int):
+    for engine in (generate_percent_from_amount_base, generate_base_from_amount_percent, generate_percent_change):
+        rows, evidence, reason = engine(parent, count)
+        if rows:
+            return rows, evidence, reason
+    return [], [], "percentage_parent_not_exactly_parsed_and_verified"
+
+
 def can_generate(parent: dict) -> tuple[bool, str]:
     parsed = _parse_parent(parent)
     if parsed is not None:
         return True, "percentage_of_yen_exact"
-    delegated, _, delegated_reason = generate_percent_change(parent, 1)
+    delegated, _, delegated_reason = _delegate(parent, 1)
     if delegated:
         return True, delegated_reason
     if parent.get("figure_refs"):
@@ -95,10 +105,7 @@ def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
         raise ValueError("count must be 1, 2, or 3")
     parsed = _parse_parent(parent)
     if parsed is None:
-        delegated_rows, delegated_evidence, delegated_reason = generate_percent_change(parent, count)
-        if delegated_rows:
-            return delegated_rows, delegated_evidence, delegated_reason
-        return [], [], "percentage_parent_not_exactly_parsed_and_verified"
+        return _delegate(parent, count)
     match, parent_base, parent_pct, parent_amount = parsed
     q = _norm(parent.get("question"))
     seed = int(_parent_sha(parent)[:12], 16)
