@@ -47,7 +47,7 @@ def _parse_parent(parent: dict):
     answer = _answer_yen(parent)
     if answer is None:
         return None
-    common_blocked = ("値引", "割引", "セール", "ポイント", "手数料", "送料", "何%", "四捨五入", "切り捨て", "切り上げ")
+    common_blocked = ("値引", "割引", "引き", "セール", "ポイント", "手数料", "送料", "何%", "四捨五入", "切り捨て", "切り上げ")
     if any(token in q for token in common_blocked):
         return None
 
