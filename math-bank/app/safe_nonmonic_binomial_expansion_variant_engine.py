@@ -8,6 +8,7 @@ def _norm(v):
     return re.sub(r"\s+","",str(v or "").replace("　","").replace("−","-").replace("＋","+").replace("ｘ","x").replace("Ｘ","x"))
 def _sha(p): return hashlib.sha256(json.dumps(p,ensure_ascii=False,sort_keys=True,separators=(",",":")).encode()).hexdigest()
 def _sgn(n): return f"+{n}" if n>=0 else str(n)
+def _surface_sig(a,b,c,d): return (str(a),_sgn(b),str(c),_sgn(d))
 def _xcoef(n):
     if n==1: return "+x"
     if n==-1: return "-x"
@@ -41,18 +42,20 @@ def generate(parent,count):
     if parsed is None:
         ok,reason=can_generate(parent); assert not ok; return [],[],reason
     m,pa,pb,pc,pd,pA,pB,pC=parsed; q=_norm(parent.get("question")); seed=int(_sha(parent)[:12],16)
-    parent_sig=(str(pa),str(pb),str(pc),str(pd)); seen=set(); rows=[]; ev=[]
+    parent_sig=_surface_sig(pa,pb,pc,pd); seen=set(); rows=[]; ev=[]
     for i in range(1,count+1):
         a=1+((seed>>(i*4))%4); c=1+((seed>>(i*6+2))%4); b=1+((seed>>(i*7+3))%7); d=1+((seed>>(i*8+5))%7)
         if (seed>>(i+11))&1: b=-b
         if (seed>>(i+15))&1: d=-d
         if a==1 and c==1: a=2
-        sig=(str(a),str(b),str(c),str(d)); bump=0
+        sig=_surface_sig(a,b,c,d); bump=0
         while sig==parent_sig or sig in seen or b==0 or d==0:
-            bump+=1; d += 1 if d>0 else -1; sig=(str(a),str(b),str(c),str(d))
+            bump+=1
+            if bump>32: raise AssertionError("nonmonic binomial public numeric-surface search exhausted")
+            d += 1 if d>0 else -1; sig=_surface_sig(a,b,c,d)
         seen.add(sig); A=a*c; B=a*d+b*c; C=b*d
         if (A,B,C)!=(a*c,a*d+b*c,b*d): raise AssertionError("nonmonic binomial expansion identity failed")
         expr=f"({a}x{_sgn(b)})({c}x{_sgn(d)})"; nq=q[:m.start("expr")]+expr+q[m.end("expr"):]; ans=f"{A}x²{_xcoef(B)}{_sgn(C)}"
         rows.append({"question":nq,"answer":ans,"explanation":f"{a*c}x²+({_sgn(a*d)}{_sgn(b*c)})x+({b}×{d})を整理して{ans}。3係数を独立確認済み。","numeric_signature":sig})
-        ev.append({"parent_sha256":_sha(parent),"method":"nonmonic_binomial_four_products_and_coefficient_recomposition","parent_recalculation":f"A={pa}*{pc}={pA}; B={pa}*{pd}+{pb}*{pc}={pB}; C={pb}*{pd}={pC}","variant_recalculation":f"A={a}*{c}={A}; B={a}*{d}+{b}*{c}={B}; C={b}*{d}={C}","independent_check":"all three expanded coefficients exactly recomposed from four products PASS"})
+        ev.append({"parent_sha256":_sha(parent),"method":"nonmonic_binomial_four_products_and_coefficient_recomposition","parent_recalculation":f"A={pa}*{pc}={pA}; B={pa}*{pd}+{pb}*{pc}={pB}; C={pb}*{pd}={pC}","variant_recalculation":f"A={a}*{c}={A}; B={a}*{d}+{b}*{c}={B}; C={b}*{d}={C}","independent_check":"all three expanded coefficients exactly recomposed from four products PASS; public numeric surface distinct PASS"})
     return rows,ev,"nonmonic_binomial_integer_expansion_exact"
