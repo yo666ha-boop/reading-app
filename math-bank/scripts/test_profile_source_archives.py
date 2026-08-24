@@ -1,16 +1,11 @@
 from __future__ import annotations
 
 import hashlib
-import importlib.util
 import tempfile
 import zipfile
 from pathlib import Path
 
-MODULE_PATH = Path(__file__).with_name("profile_source_archives.py")
-spec = importlib.util.spec_from_file_location("profile_source_archives", MODULE_PATH)
-assert spec and spec.loader
-m = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(m)
+import profile_source_archives as m
 
 
 def make_source(path: Path, doc_count: int) -> str:
@@ -41,7 +36,6 @@ def main() -> None:
         assert report["source_profiles"]["a"]["math_json_documents"] == 2
         assert report["source_profiles"]["a"]["image_asset_members"] == 1
 
-        # A historical document-count mismatch must block record extraction rather than being count-forced.
         mismatch = m.build_profile(root, specs, {"a":3,"b":1})
         assert mismatch["ready_for_record_extraction"] is False
         assert mismatch["source_profiles"]["a"]["historical_document_count_match"] is False
