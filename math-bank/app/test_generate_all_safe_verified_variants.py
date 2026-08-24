@@ -100,7 +100,10 @@ def main() -> None:
 
     equation = _parent(template, pid="U-EQ", question="方程式 2x+3=11 を解きなさい。", answer="x=4")
     rows, prov, reason = generate_parent(equation, 2, NOW)
-    assert len(rows) == len(prov) == 2 and reason == "legacy:linear_equation_exact"
+    assert len(rows) == len(prov) == 2 and reason == "specialized:affine:linear_equation_ax_plus_b_equals_c_exact"
+    assert all(p["parent_record_sha256"] == parent_record_sha256(equation) for p in prov)
+    assert all(p["independent_recalculation"] is True for p in prov)
+    assert all("linear_equation_exact_inverse_and_forward_recomposition" in p["verification_evidence"] for p in prov)
 
     wrong = copy.deepcopy(percentage)
     wrong["answer"] = "301円"
