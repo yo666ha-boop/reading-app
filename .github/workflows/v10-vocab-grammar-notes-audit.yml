@@ -5,7 +5,10 @@ on:
     branches: [v10-vocab-grammar-notes-audit]
     paths:
       - 'v10_vocab_notes_candidate_audit.js'
+      - 'v10_v7_lexicon_loader.js'
+      - 'v10_v7_lexicon_snapshot.b64.part*'
       - 'v10_grammar_chronology_candidate_audit.js'
+      - 'v10_grammar_chronology_gate.json'
       - 'v10_notes_ui_test.js'
       - 'v10_vocab_corrections.js'
       - 'v10_stage2.html'
@@ -17,7 +20,10 @@ on:
     branches: [main]
     paths:
       - 'v10_vocab_notes_candidate_audit.js'
+      - 'v10_v7_lexicon_loader.js'
+      - 'v10_v7_lexicon_snapshot.b64.part*'
       - 'v10_grammar_chronology_candidate_audit.js'
+      - 'v10_grammar_chronology_gate.json'
       - 'v10_notes_ui_test.js'
       - 'v10_vocab_corrections.js'
       - 'v10_stage2.html'
@@ -47,7 +53,17 @@ jobs:
           node-version: '20'
       - name: Install audit dependency
         run: npm install --no-save --no-package-lock jsdom@24.1.3
-      - name: Run all-168 vocabulary candidate audit
+      - name: Verify canonical v7 snapshot
+        shell: bash
+        run: |
+          node - <<'NODE'
+          const {loadCanonicalV7}=require('./v10_v7_lexicon_loader');
+          const v7=loadCanonicalV7();
+          if(v7.source[2]!==3975) throw new Error(`expected 3975 canonical records, got ${v7.source[2]}`);
+          if(Object.keys(v7.lex||{}).length<2500) throw new Error('canonical lexicon snapshot unexpectedly small');
+          console.log(`CANONICAL V7 SNAPSHOT PASS records=${v7.source[2]} lexKeys=${Object.keys(v7.lex).length} modified=${v7.source[3]}`);
+          NODE
+      - name: Run all-168 canonical v7 vocabulary chronology audit
         shell: bash
         run: |
           set -o pipefail
@@ -64,26 +80,29 @@ jobs:
           const fs=require('fs');
           const r=JSON.parse(fs.readFileSync('v10_vocab_notes_candidate_report.json','utf8')).summary;
           const g=JSON.parse(fs.readFileSync('v10_grammar_chronology_candidate_report.json','utf8'));
+          const c=r.counts||{};
           const lines=[
-            'phase=cumulative_vocab_gate_then_v7_lookup_and_grammar_chronology',
+            'phase=canonical_v7_vocab_chronology_then_grammar_chronology',
+            `canonical_v7_records=${r.canonicalSource&&r.canonicalSource.records}`,
             `passages_audited=${r.passages}/168`,
-            `exact_allowed_occurrences=${r.counts.EXACT_ALLOWED||0}`,
-            `cumulative_prior_allowed_occurrences=${r.counts.CUMULATIVE_ALLOWED||0}`,
-            `function_to_grammar_occurrences=${r.counts.FUNCTION_TO_GRAMMAR||0}`,
-            `morphology_to_grammar_occurrences=${r.counts.MORPHOLOGY_TO_GRAMMAR||0}`,
-            `proper_v7_lookup_occurrences=${r.counts.PROPER_V7_LOOKUP_REQUIRED||0}`,
-            `v7_lookup_occurrences=${r.counts.V7_LOOKUP_REQUIRED||0}`,
-            `unique_v7_lookup_candidates=${r.uniqueV7LookupCandidates||0}`,
-            `unique_proper_lookup_candidates=${r.uniqueProperLookupCandidates||0}`,
+            `v7_chronology_allowed_occurrences=${c.V7_CHRONOLOGY_ALLOWED||0}`,
+            `morphology_to_grammar_occurrences=${c.MORPHOLOGY_TO_GRAMMAR||0}`,
+            `contraction_to_grammar_occurrences=${c.CONTRACTION_TO_GRAMMAR||0}`,
+            `explicit_function_to_grammar_occurrences=${c.EXPLICIT_FUNCTION_TO_GRAMMAR||0}`,
+            `future_v7_leak_occurrences=${c.FUTURE_V7_LEAK||0}`,
+            `unregistered_v7_occurrences=${c.UNREGISTERED_V7||0}`,
+            `unregistered_proper_occurrences=${c.UNREGISTERED_PROPER||0}`,
+            `unique_unresolved=${r.uniqueUnresolved||0}`,
+            `future_vocab_leak=${r.futureVocabLeakOccurrences||0}`,
+            `vocabulary_chronology=${r.chronologyPass?'PASS':'FAIL'}`,
             `notes_present=${r.notesPresent}`,
             `missing_gloss=${r.missingGloss}`,
-            `missing_allowedWords=${r.missingAllowedWords}`,
             `grammar_candidate_passages=${g.passages}/168`,
             `grammar_detected_feature_types=${Object.keys(g.featureSummary||{}).length}`,
             'grammar_candidate_status=CANDIDATES_NOT_PASS_FAIL_REQUIRE_EVIDENCE_BACKED_SECTION_CHRONOLOGY',
             'notes_ui_gate=PENDING_BOUNDED_TEST',
-            'cumulative_rule=current textbook+grade only; current section plus earlier app-reviewed allowedWords; future sections excluded',
-            'next=resolve only remaining lookup candidates against canonical v7 at exact section cutoff; build evidence-backed grammar chronology from detected structures; then indispensable glossed notes only'
+            'vocab_rule=canonical v7 earliest textbook+grade+PDF-order+subunit boundary; previous grades cumulative; future boundaries forbidden; morphology/function forms handed to grammar',
+            'next=resolve remaining canonical future/unregistered tokens; then populate evidence-backed grammar introduction boundaries and run final browser/slash/print gates'
           ];
           fs.writeFileSync('VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt',lines.join('\n')+'\n');
           NODE
@@ -96,7 +115,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -f v10_vocab_notes_candidate_report.json v10_vocab_notes_candidate_audit.log v10_grammar_chronology_candidate_report.json v10_grammar_chronology_candidate_audit.log VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt
           if ! git diff --cached --quiet; then
-            git commit -m 'Record core cumulative vocabulary and grammar audits [skip ci]'
+            git commit -m 'Record canonical v7 vocabulary and grammar audits [skip ci]'
             git push origin HEAD:v10-vocab-grammar-notes-audit
           fi
       - name: Verify v7 correction and gloss UI
