@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-24T22:21:38.392Z",
+  "generatedAt": "2026-08-24T22:25:04.969Z",
   "passages": 168,
   "classification": "CANDIDATES_NOT_PASS_FAIL",
   "warning": "Detected structures are candidates only. A feature becomes allowed only after an evidence-backed textbook/section chronology entry exists.",
   "featureSummary": {
     "MODAL_CAN_COULD_MAY_MUST_SHOULD": {
-      "sectionCount": 85,
+      "sectionCount": 86,
       "sections": [
         "サンシャイン|1|Get Ready 2",
         "サンシャイン|1|Get Ready 3",
@@ -16,6 +16,7 @@
         "サンシャイン|1|PROGRAM 3-3",
         "サンシャイン|1|PROGRAM 5-1",
         "サンシャイン|1|PROGRAM 5-2",
+        "サンシャイン|1|PROGRAM 5-3",
         "サンシャイン|1|PROGRAM 6-3",
         "サンシャイン|1|PROGRAM 7-3",
         "ニューホライズン|1|Unit 2-2",
@@ -95,7 +96,7 @@
       ]
     },
     "GERUND": {
-      "sectionCount": 66,
+      "sectionCount": 65,
       "sections": [
         "サンシャイン|1|Get Ready 4",
         "サンシャイン|1|PROGRAM 2-3",
@@ -104,7 +105,6 @@
         "サンシャイン|1|PROGRAM 6-3",
         "サンシャイン|1|PROGRAM 7-1",
         "サンシャイン|1|PROGRAM 7-2",
-        "サンシャイン|1|PROGRAM 8-2",
         "サンシャイン|1|PROGRAM 9-4",
         "サンシャイン|1|PROGRAM 10-1",
         "サンシャイン|1|PROGRAM 10-2",
@@ -166,7 +166,7 @@
       ]
     },
     "TO_INFINITIVE": {
-      "sectionCount": 116,
+      "sectionCount": 115,
       "sections": [
         "サンシャイン|1|PROGRAM 1-3",
         "サンシャイン|1|PROGRAM 5-3",
@@ -177,7 +177,6 @@
         "サンシャイン|1|PROGRAM 7-3",
         "サンシャイン|1|PROGRAM 8-1",
         "サンシャイン|1|PROGRAM 8-2",
-        "サンシャイン|1|PROGRAM 9-1",
         "サンシャイン|1|PROGRAM 9-2",
         "サンシャイン|1|PROGRAM 9-3",
         "サンシャイン|1|PROGRAM 9-4",
@@ -287,12 +286,14 @@
       ]
     },
     "RELATIVE_PRONOUN": {
-      "sectionCount": 22,
+      "sectionCount": 24,
       "sections": [
         "サンシャイン|1|PROGRAM 3-1",
         "サンシャイン|1|PROGRAM 4-1",
         "サンシャイン|1|PROGRAM 4-2",
         "サンシャイン|1|PROGRAM 5-2",
+        "サンシャイン|1|PROGRAM 6-1",
+        "サンシャイン|1|PROGRAM 7-1",
         "ニューホライズン|1|Unit 6-3",
         "ニューホライズン|1|Unit 10-1",
         "サンシャイン|2|PROGRAM 6-3",
@@ -745,12 +746,12 @@
       "features": {
         "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
           {
-            "where": "sentence:11",
+            "where": "sentence:13",
             "text": "We can draw during the break.",
             "match": "can"
           },
           {
-            "where": "slash:11",
+            "where": "slash:13",
             "text": "We can draw / during the break.",
             "match": "can"
           },
@@ -762,12 +763,12 @@
         ],
         "GERUND": [
           {
-            "where": "sentence:11",
+            "where": "sentence:13",
             "text": "We can draw during the break.",
             "match": "during"
           },
           {
-            "where": "slash:11",
+            "where": "slash:13",
             "text": "We can draw / during the break.",
             "match": "during"
           },
@@ -814,27 +815,32 @@
             "match": "can"
           },
           {
-            "where": "sentence:5",
-            "text": "My father can ski, too.",
-            "match": "can"
-          },
-          {
-            "where": "sentence:6",
-            "text": "My mother can't ski.",
-            "match": "can"
-          },
-          {
             "where": "sentence:7",
-            "text": "My mother can dance well.",
+            "text": "My father can ski.",
             "match": "can"
           },
           {
             "where": "sentence:8",
-            "text": "My grandfather can dance, too.",
+            "text": "My mother can't ski.",
             "match": "can"
           },
           {
             "where": "sentence:9",
+            "text": "My mother can dance.",
+            "match": "can"
+          },
+          {
+            "where": "sentence:10",
+            "text": "She can dance well.",
+            "match": "can"
+          },
+          {
+            "where": "sentence:11",
+            "text": "My grandfather can dance, too.",
+            "match": "can"
+          },
+          {
+            "where": "sentence:12",
             "text": "My grandmother can dance, too.",
             "match": "can"
           },
@@ -849,27 +855,32 @@
             "match": "can"
           },
           {
-            "where": "slash:5",
-            "text": "My father can ski, / too.",
-            "match": "can"
-          },
-          {
-            "where": "slash:6",
-            "text": "My mother can't ski.",
-            "match": "can"
-          },
-          {
             "where": "slash:7",
-            "text": "My mother can dance / well.",
+            "text": "My father can ski.",
             "match": "can"
           },
           {
             "where": "slash:8",
-            "text": "My grandfather can dance, / too.",
+            "text": "My mother can't ski.",
             "match": "can"
           },
           {
             "where": "slash:9",
+            "text": "My mother can dance.",
+            "match": "can"
+          },
+          {
+            "where": "slash:10",
+            "text": "She can dance / well.",
+            "match": "can"
+          },
+          {
+            "where": "slash:11",
+            "text": "My grandfather can dance, / too.",
+            "match": "can"
+          },
+          {
+            "where": "slash:12",
             "text": "My grandmother can dance, / too.",
             "match": "can"
           },
@@ -879,13 +890,13 @@
             "match": "can"
           },
           {
-            "where": "A3.evidence",
+            "where": "A4.evidence",
             "text": "My mother can't ski.",
             "match": "can"
           },
           {
-            "where": "A4.evidence",
-            "text": "My mother can dance well.",
+            "where": "A5.evidence",
+            "text": "My mother can dance.",
             "match": "can"
           },
           {
@@ -894,12 +905,12 @@
             "match": "can"
           },
           {
-            "where": "B2.evidence",
-            "text": "My father can ski, too.",
+            "where": "B3.evidence",
+            "text": "She can dance well.",
             "match": "can"
           },
           {
-            "where": "B3.evidence",
+            "where": "B4.evidence",
             "text": "My grandfather can dance, too. / My grandmother can dance, too.",
             "match": "can"
           }
@@ -925,36 +936,46 @@
           },
           {
             "where": "sentence:3",
-            "text": "I can play the guitar, too.",
-            "match": "can"
-          },
-          {
-            "where": "sentence:4",
-            "text": "I can skate fast.",
-            "match": "can"
-          },
-          {
-            "where": "sentence:5",
-            "text": "My friend can skate, too.",
-            "match": "can"
-          },
-          {
-            "where": "sentence:6",
-            "text": "Can you do a magic trick?",
+            "text": "Can you play the guitar?",
             "match": "Can"
           },
           {
-            "where": "sentence:7",
+            "where": "sentence:4",
             "text": "Yes, I can.",
             "match": "can"
           },
           {
+            "where": "sentence:5",
+            "text": "Can you skate?",
+            "match": "Can"
+          },
+          {
+            "where": "sentence:6",
+            "text": "Yes, I can.",
+            "match": "can"
+          },
+          {
+            "where": "sentence:7",
+            "text": "I can skate fast.",
+            "match": "can"
+          },
+          {
+            "where": "sentence:8",
+            "text": "Can you do a magic trick?",
+            "match": "Can"
+          },
+          {
             "where": "sentence:9",
-            "text": "We can practice after school.",
+            "text": "Yes, I can.",
             "match": "can"
           },
           {
             "where": "sentence:11",
+            "text": "We can practice after school.",
+            "match": "can"
+          },
+          {
+            "where": "sentence:13",
             "text": "My friend and I can skate together.",
             "match": "can"
           },
@@ -970,36 +991,46 @@
           },
           {
             "where": "slash:3",
-            "text": "I can play / the guitar, too.",
-            "match": "can"
-          },
-          {
-            "where": "slash:4",
-            "text": "I can skate / fast.",
-            "match": "can"
-          },
-          {
-            "where": "slash:5",
-            "text": "My friend can skate, / too.",
-            "match": "can"
-          },
-          {
-            "where": "slash:6",
-            "text": "Can you do / a magic trick?",
+            "text": "Can you play / the guitar?",
             "match": "Can"
           },
           {
-            "where": "slash:7",
+            "where": "slash:4",
             "text": "Yes, / I can.",
             "match": "can"
           },
           {
+            "where": "slash:5",
+            "text": "Can you skate?",
+            "match": "Can"
+          },
+          {
+            "where": "slash:6",
+            "text": "Yes, / I can.",
+            "match": "can"
+          },
+          {
+            "where": "slash:7",
+            "text": "I can skate / fast.",
+            "match": "can"
+          },
+          {
+            "where": "slash:8",
+            "text": "Can you do / a magic trick?",
+            "match": "Can"
+          },
+          {
             "where": "slash:9",
-            "text": "We can practice / after school.",
+            "text": "Yes, / I can.",
             "match": "can"
           },
           {
             "where": "slash:11",
+            "text": "We can practice / after school.",
+            "match": "can"
+          },
+          {
+            "where": "slash:13",
             "text": "My friend and I / can skate / together.",
             "match": "can"
           },
@@ -1015,7 +1046,7 @@
           },
           {
             "where": "A3.evidence",
-            "text": "I can play the guitar, too.",
+            "text": "I can skate fast.",
             "match": "can"
           },
           {
@@ -1029,17 +1060,22 @@
             "match": "can"
           },
           {
-            "where": "B1.evidence",
-            "text": "I can skate fast.",
+            "where": "B1.answer",
+            "text": "Yes, I can.",
             "match": "can"
+          },
+          {
+            "where": "B1.evidence",
+            "text": "Can you play the guitar? / Yes, I can.",
+            "match": "Can"
           },
           {
             "where": "B2.evidence",
-            "text": "My friend can skate, too.",
-            "match": "can"
+            "text": "Can you skate? / Yes, I can.",
+            "match": "Can"
           },
           {
-            "where": "B3.evidence",
+            "where": "B4.evidence",
             "text": "My friend and I can skate together.",
             "match": "can"
           }
@@ -1060,27 +1096,37 @@
           },
           {
             "where": "sentence:5",
-            "text": "It can carry water, too.",
-            "match": "can"
-          },
-          {
-            "where": "sentence:6",
             "text": "It can find people.",
             "match": "can"
           },
           {
-            "where": "sentence:7",
+            "where": "sentence:6",
             "text": "It can help people.",
             "match": "can"
           },
           {
-            "where": "sentence:8",
-            "text": "It can help people in a tree.",
+            "where": "sentence:7",
+            "text": "It can fly, too.",
             "match": "can"
           },
           {
+            "where": "sentence:8",
+            "text": "Can it carry water?",
+            "match": "Can"
+          },
+          {
             "where": "sentence:9",
-            "text": "It can fly, too.",
+            "text": "Yes, it can.",
+            "match": "can"
+          },
+          {
+            "where": "sentence:10",
+            "text": "Can it help people in a tree?",
+            "match": "Can"
+          },
+          {
+            "where": "sentence:11",
+            "text": "Yes, it can.",
             "match": "can"
           },
           {
@@ -1090,32 +1136,42 @@
           },
           {
             "where": "slash:5",
-            "text": "It can carry / water, too.",
-            "match": "can"
-          },
-          {
-            "where": "slash:6",
             "text": "It can find / people.",
             "match": "can"
           },
           {
-            "where": "slash:7",
+            "where": "slash:6",
             "text": "It can help / people.",
             "match": "can"
           },
           {
-            "where": "slash:8",
-            "text": "It can help / people / in a tree.",
-            "match": "can"
-          },
-          {
-            "where": "slash:9",
+            "where": "slash:7",
             "text": "It can fly, / too.",
             "match": "can"
           },
           {
+            "where": "slash:8",
+            "text": "Can it carry / water?",
+            "match": "Can"
+          },
+          {
+            "where": "slash:9",
+            "text": "Yes, / it can.",
+            "match": "can"
+          },
+          {
+            "where": "slash:10",
+            "text": "Can it help / people / in a tree?",
+            "match": "Can"
+          },
+          {
+            "where": "slash:11",
+            "text": "Yes, / it can.",
+            "match": "can"
+          },
+          {
             "where": "A2.evidence",
-            "text": "It can carry a heavy thing. / It can carry water, too.",
+            "text": "It can carry a heavy thing.",
             "match": "can"
           },
           {
@@ -1125,11 +1181,16 @@
           },
           {
             "where": "A4.evidence",
-            "text": "It can help people in a tree.",
-            "match": "can"
+            "text": "Can it carry water? / Yes, it can.",
+            "match": "Can"
           },
           {
             "where": "B3.evidence",
+            "text": "It can help people.",
+            "match": "can"
+          },
+          {
+            "where": "B4.evidence",
             "text": "It can fly, too.",
             "match": "can"
           }
@@ -1146,13 +1207,8 @@
             "match": "thing"
           },
           {
-            "where": "A2.answer",
-            "text": "a heavy thing and water",
-            "match": "thing"
-          },
-          {
             "where": "A2.evidence",
-            "text": "It can carry a heavy thing. / It can carry water, too.",
+            "text": "It can carry a heavy thing.",
             "match": "thing"
           }
         ]
@@ -1196,12 +1252,12 @@
             "match": "That is"
           },
           {
-            "where": "A2.evidence",
-            "text": "Is that an elephant? / Yes, it is.",
+            "where": "A3.evidence",
+            "text": "Is that an elephant?",
             "match": "that an"
           },
           {
-            "where": "A3.evidence",
+            "where": "A4.evidence",
             "text": "Is that a butterfly? / No, it isn't. / That is an ant.",
             "match": "that a"
           },
@@ -1214,11 +1270,6 @@
             "where": "B2.evidence",
             "text": "Look at that ant.",
             "match": "that ant"
-          },
-          {
-            "where": "B3.evidence",
-            "text": "That is an ant.",
-            "match": "That is"
           }
         ]
       }
@@ -1237,6 +1288,11 @@
           },
           {
             "where": "sentence:7",
+            "text": "Who is that woman?",
+            "match": "Who is"
+          },
+          {
+            "where": "sentence:11",
             "text": "Who is that man?",
             "match": "Who is"
           },
@@ -1247,6 +1303,11 @@
           },
           {
             "where": "slash:7",
+            "text": "Who is / that woman?",
+            "match": "Who is"
+          },
+          {
+            "where": "slash:11",
             "text": "Who is / that man?",
             "match": "Who is"
           }
@@ -1290,7 +1351,7 @@
             "match": "drawing"
           },
           {
-            "where": "sentence:7",
+            "where": "sentence:12",
             "text": "His drawing is great.",
             "match": "drawing"
           },
@@ -1300,7 +1361,7 @@
             "match": "drawing"
           },
           {
-            "where": "slash:7",
+            "where": "slash:12",
             "text": "His drawing is / great.",
             "match": "drawing"
           },
@@ -1310,7 +1371,7 @@
             "match": "drawing"
           },
           {
-            "where": "B2.evidence",
+            "where": "B4.evidence",
             "text": "His drawing is great.",
             "match": "drawing"
           }
@@ -1337,17 +1398,17 @@
         ],
         "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
           {
-            "where": "sentence:4",
+            "where": "sentence:6",
             "text": "He can skate fast.",
             "match": "can"
           },
           {
-            "where": "slash:4",
+            "where": "slash:6",
             "text": "He can skate / fast.",
             "match": "can"
           },
           {
-            "where": "A2.evidence",
+            "where": "A3.evidence",
             "text": "He can skate fast.",
             "match": "can"
           }
@@ -1362,22 +1423,22 @@
       "features": {
         "TO_INFINITIVE": [
           {
-            "where": "sentence:10",
+            "where": "sentence:11",
             "text": "I would like to support the children.",
             "match": "to support"
           },
           {
-            "where": "sentence:11",
+            "where": "sentence:12",
             "text": "I'd like to talk about the event.",
             "match": "to talk"
           },
           {
-            "where": "slash:10",
+            "where": "slash:11",
             "text": "I would like to support / the children.",
             "match": "to support"
           },
           {
-            "where": "slash:11",
+            "where": "slash:12",
             "text": "I'd like to talk about / the event.",
             "match": "to talk"
           },
@@ -1385,11 +1446,18 @@
             "where": "A5.evidence",
             "text": "I would like to support the children.",
             "match": "to support"
+          }
+        ],
+        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+          {
+            "where": "sentence:13",
+            "text": "We can support all the children.",
+            "match": "can"
           },
           {
-            "where": "B4.evidence",
-            "text": "I'd like to talk about the event.",
-            "match": "to talk"
+            "where": "slash:13",
+            "text": "We can support / all the children.",
+            "match": "can"
           }
         ]
       }
@@ -1399,7 +1467,25 @@
       "grade": "1",
       "section": "PROGRAM 6-1",
       "id": "V10-SS-G1-P6-1-001",
-      "features": {}
+      "features": {
+        "RELATIVE_PRONOUN": [
+          {
+            "where": "sentence:3",
+            "text": "That is a pirate.",
+            "match": "That is"
+          },
+          {
+            "where": "slash:3",
+            "text": "That is / a pirate.",
+            "match": "That is"
+          },
+          {
+            "where": "B1.evidence",
+            "text": "That is a pirate.",
+            "match": "That is"
+          }
+        ]
+      }
     },
     {
       "textbook": "サンシャイン",
@@ -1439,13 +1525,8 @@
             "match": "morning"
           },
           {
-            "where": "sentence:8",
-            "text": "They go to school every morning.",
-            "match": "morning"
-          },
-          {
             "where": "sentence:11",
-            "text": "The schoolchildren are amazing.",
+            "text": "The walk is amazing.",
             "match": "amazing"
           },
           {
@@ -1454,44 +1535,14 @@
             "match": "morning"
           },
           {
-            "where": "slash:8",
-            "text": "They go / to school / every morning.",
-            "match": "morning"
-          },
-          {
             "where": "slash:11",
-            "text": "The schoolchildren are / amazing.",
+            "text": "The walk is / amazing.",
             "match": "amazing"
           },
           {
             "where": "A1.evidence",
             "text": "Schoolchildren walk across the savanna every morning.",
             "match": "morning"
-          },
-          {
-            "where": "A5.answer",
-            "text": "amazing",
-            "match": "amazing"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "The schoolchildren are amazing.",
-            "match": "amazing"
-          },
-          {
-            "where": "B1.evidence",
-            "text": "Schoolchildren walk across the savanna every morning.",
-            "match": "morning"
-          },
-          {
-            "where": "B4.answer",
-            "text": "amazing",
-            "match": "amazing"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "The schoolchildren are amazing.",
-            "match": "amazing"
           }
         ],
         "TO_INFINITIVE": [
@@ -1501,9 +1552,9 @@
             "match": "to school"
           },
           {
-            "where": "sentence:8",
-            "text": "They go to school every morning.",
-            "match": "to school"
+            "where": "sentence:7",
+            "text": "They want to be safe.",
+            "match": "to be"
           },
           {
             "where": "sentence:10",
@@ -1516,9 +1567,9 @@
             "match": "to school"
           },
           {
-            "where": "slash:8",
-            "text": "They go / to school / every morning.",
-            "match": "to school"
+            "where": "slash:7",
+            "text": "They want to be / safe.",
+            "match": "to be"
           },
           {
             "where": "slash:10",
@@ -1531,9 +1582,19 @@
             "match": "to school"
           },
           {
-            "where": "B2.evidence",
+            "where": "A5.evidence",
+            "text": "I want to tell my friend about them.",
+            "match": "to tell"
+          },
+          {
+            "where": "B1.evidence",
             "text": "They walk for one hour to school.",
             "match": "to school"
+          },
+          {
+            "where": "B3.evidence",
+            "text": "I want to tell my friend about them.",
+            "match": "to tell"
           }
         ],
         "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
@@ -1551,11 +1612,26 @@
             "where": "A3.evidence",
             "text": "The savanna can be dangerous.",
             "match": "can"
+          },
+          {
+            "where": "B2.evidence",
+            "text": "The savanna can be dangerous.",
+            "match": "can"
           }
         ],
         "SV_OO": [
           {
             "where": "sentence:10",
+            "text": "I want to tell my friend about them.",
+            "match": "tell my"
+          },
+          {
+            "where": "A5.evidence",
+            "text": "I want to tell my friend about them.",
+            "match": "tell my"
+          },
+          {
+            "where": "B3.evidence",
             "text": "I want to tell my friend about them.",
             "match": "tell my"
           }
@@ -1575,30 +1651,47 @@
             "match": "interesting"
           },
           {
+            "where": "sentence:6",
+            "text": "A shopping mall is near the museum.",
+            "match": "shopping"
+          },
+          {
             "where": "slash:3",
             "text": "The research is / interesting.",
             "match": "interesting"
           },
           {
-            "where": "B1.answer",
-            "text": "interesting",
-            "match": "interesting"
+            "where": "slash:6",
+            "text": "A shopping mall is / near the museum.",
+            "match": "shopping"
           },
           {
-            "where": "B1.evidence",
-            "text": "The research is interesting.",
-            "match": "interesting"
+            "where": "B2.evidence",
+            "text": "A shopping mall is near the museum.",
+            "match": "shopping"
+          }
+        ],
+        "RELATIVE_PRONOUN": [
+          {
+            "where": "sentence:7",
+            "text": "That house is near the library.",
+            "match": "That house"
+          },
+          {
+            "where": "slash:7",
+            "text": "That house is / near the library.",
+            "match": "That house"
           }
         ],
         "TO_INFINITIVE": [
           {
-            "where": "sentence:6",
-            "text": "My dad and I go to the museum.",
-            "match": "to the"
+            "where": "sentence:10",
+            "text": "We go to a restaurant.",
+            "match": "to a"
           },
           {
-            "where": "sentence:9",
-            "text": "We go to a restaurant near the college.",
+            "where": "slash:10",
+            "text": "We go / to a restaurant.",
             "match": "to a"
           }
         ]
@@ -1617,6 +1710,16 @@
             "match": "to a"
           },
           {
+            "where": "sentence:6",
+            "text": "We come to the shop.",
+            "match": "to the"
+          },
+          {
+            "where": "slash:6",
+            "text": "We come / to the shop.",
+            "match": "to the"
+          },
+          {
             "where": "A1.evidence",
             "text": "My friend and I go to a cake shop.",
             "match": "to a"
@@ -1624,33 +1727,23 @@
         ],
         "GERUND": [
           {
-            "where": "sentence:6",
-            "text": "We want something sweet.",
+            "where": "sentence:7",
+            "text": "I want something sweet.",
             "match": "something"
           },
           {
-            "where": "slash:6",
-            "text": "We want / something sweet.",
+            "where": "slash:7",
+            "text": "I want / something sweet.",
             "match": "something"
           },
           {
-            "where": "A3.answer",
+            "where": "A4.answer",
             "text": "something sweet",
             "match": "something"
           },
           {
-            "where": "A3.evidence",
-            "text": "We want something sweet.",
-            "match": "something"
-          },
-          {
-            "where": "B2.answer",
-            "text": "something sweet",
-            "match": "something"
-          },
-          {
-            "where": "B2.evidence",
-            "text": "We want something sweet.",
+            "where": "A4.evidence",
+            "text": "I want something sweet.",
             "match": "something"
           }
         ]
@@ -1662,70 +1755,105 @@
       "section": "PROGRAM 7-3",
       "id": "V10-SS-G1-P7-3-001",
       "features": {
+        "TO_INFINITIVE": [
+          {
+            "where": "sentence:5",
+            "text": "The koala is next to a bamboo grove.",
+            "match": "to a"
+          },
+          {
+            "where": "sentence:12",
+            "text": "I want to come here someday.",
+            "match": "to come"
+          },
+          {
+            "where": "slash:12",
+            "text": "I want to come / here / someday.",
+            "match": "to come"
+          },
+          {
+            "where": "A2.answer",
+            "text": "next to a bamboo grove",
+            "match": "to a"
+          },
+          {
+            "where": "A2.evidence",
+            "text": "The koala is next to a bamboo grove.",
+            "match": "to a"
+          },
+          {
+            "where": "A5.evidence",
+            "text": "I want to come here someday.",
+            "match": "to come"
+          },
+          {
+            "where": "B1.answer",
+            "text": "next to a bamboo grove",
+            "match": "to a"
+          },
+          {
+            "where": "B1.evidence",
+            "text": "The koala is next to a bamboo grove.",
+            "match": "to a"
+          },
+          {
+            "where": "B4.evidence",
+            "text": "I want to come here someday.",
+            "match": "to come"
+          }
+        ],
         "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
           {
-            "where": "sentence:3",
+            "where": "sentence:9",
             "text": "My friend can show me around.",
             "match": "can"
           },
           {
-            "where": "slash:3",
+            "where": "slash:9",
             "text": "My friend can / show me around.",
             "match": "can"
           },
           {
-            "where": "A1.evidence",
+            "where": "A4.evidence",
             "text": "My friend can show me around.",
             "match": "can"
           },
           {
-            "where": "B1.evidence",
+            "where": "B3.evidence",
             "text": "My friend can show me around.",
             "match": "can"
           }
         ],
         "SV_OO": [
           {
-            "where": "sentence:3",
+            "where": "sentence:9",
             "text": "My friend can show me around.",
             "match": "show me"
           },
           {
-            "where": "slash:3",
+            "where": "slash:9",
             "text": "My friend can / show me around.",
             "match": "show me"
           },
           {
-            "where": "A1.evidence",
+            "where": "A4.answer",
+            "text": "show me around",
+            "match": "show me"
+          },
+          {
+            "where": "A4.evidence",
             "text": "My friend can show me around.",
             "match": "show me"
           },
           {
-            "where": "B1.evidence",
+            "where": "B3.answer",
+            "text": "show me around",
+            "match": "show me"
+          },
+          {
+            "where": "B3.evidence",
             "text": "My friend can show me around.",
             "match": "show me"
-          }
-        ],
-        "TO_INFINITIVE": [
-          {
-            "where": "sentence:11",
-            "text": "I want to come here with my family someday.",
-            "match": "to come"
-          },
-          {
-            "where": "slash:11",
-            "text": "I want to come / here / with my family / someday.",
-            "match": "to come"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "I want to come here with my family someday.",
-            "match": "to come"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "I want to come here with my family someday.",
-            "match": "to come"
           }
         ]
       }
@@ -1758,46 +1886,24 @@
       "features": {
         "TO_INFINITIVE": [
           {
-            "where": "sentence:5",
+            "where": "sentence:8",
             "text": "Why don't we listen to music?",
             "match": "to music"
           },
           {
-            "where": "sentence:7",
+            "where": "sentence:10",
             "text": "We listen to music together.",
             "match": "to music"
           },
           {
-            "where": "A3.evidence",
+            "where": "A4.evidence",
             "text": "Why don't we listen to music?",
             "match": "to music"
           },
           {
-            "where": "B2.evidence",
+            "where": "B4.evidence",
             "text": "We listen to music together.",
             "match": "to music"
-          }
-        ],
-        "GERUND": [
-          {
-            "where": "sentence:9",
-            "text": "The countdown is exciting.",
-            "match": "exciting"
-          },
-          {
-            "where": "slash:9",
-            "text": "The countdown is / exciting.",
-            "match": "exciting"
-          },
-          {
-            "where": "B3.answer",
-            "text": "exciting",
-            "match": "exciting"
-          },
-          {
-            "where": "B3.evidence",
-            "text": "The countdown is exciting.",
-            "match": "exciting"
           }
         ]
       }
@@ -1814,15 +1920,7 @@
       "grade": "1",
       "section": "PROGRAM 9-1",
       "id": "V10-SS-G1-P9-1-001",
-      "features": {
-        "TO_INFINITIVE": [
-          {
-            "where": "sentence:4",
-            "text": "One day, my brother and I walked to the park.",
-            "match": "to the"
-          }
-        ]
-      }
+      "features": {}
     },
     {
       "textbook": "サンシャイン",
