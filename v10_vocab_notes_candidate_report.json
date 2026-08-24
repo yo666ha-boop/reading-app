@@ -1,19 +1,19 @@
 {
   "summary": {
-    "generatedAt": "2026-08-24T18:00:01.285Z",
+    "generatedAt": "2026-08-24T18:02:26.572Z",
     "passages": 168,
     "counts": {
-      "EXACT_ALLOWED": 28065,
-      "CUMULATIVE_ALLOWED": 9953,
+      "EXACT_ALLOWED": 27967,
+      "CUMULATIVE_ALLOWED": 9986,
       "FUNCTION_TO_GRAMMAR": 154,
       "MORPHOLOGY_TO_GRAMMAR": 138,
       "PROPER_V7_LOOKUP_REQUIRED": 7,
-      "V7_LOOKUP_REQUIRED": 63
+      "V7_LOOKUP_REQUIRED": 47
     },
     "notesPresent": 0,
     "missingGloss": 0,
     "missingAllowedWords": 0,
-    "uniqueV7LookupCandidates": 15,
+    "uniqueV7LookupCandidates": 13,
     "uniqueProperLookupCandidates": 2,
     "cumulativeRule": "For each textbook, all reviewed allowedWords from earlier grades are preloaded; within the current grade, add the current section immediately before auditing it and never add later sections.",
     "semantics": {
@@ -208,49 +208,6 @@
     ]
   },
   "globalV7Candidates": [
-    {
-      "token": "eat",
-      "kind": "V7_LOOKUP_REQUIRED",
-      "occurrences": 9,
-      "passageCount": 3,
-      "sectionCount": 3,
-      "sections": [
-        "サンシャイン|2|PROGRAM 1-1",
-        "サンシャイン|2|PROGRAM 3-1",
-        "ニューホライズン|2|Unit 0"
-      ],
-      "examples": [
-        "サンシャイン|2|PROGRAM 1-1|sentence:9",
-        "サンシャイン|2|PROGRAM 1-1|slash:9",
-        "サンシャイン|2|PROGRAM 3-1|sentence:5",
-        "サンシャイン|2|PROGRAM 3-1|sentence:8",
-        "サンシャイン|2|PROGRAM 3-1|slash:5",
-        "サンシャイン|2|PROGRAM 3-1|slash:8",
-        "サンシャイン|2|PROGRAM 3-1|A4.evidence",
-        "ニューホライズン|2|Unit 0|sentence:10",
-        "ニューホライズン|2|Unit 0|slash:10"
-      ]
-    },
-    {
-      "token": "large",
-      "kind": "V7_LOOKUP_REQUIRED",
-      "occurrences": 7,
-      "passageCount": 2,
-      "sectionCount": 2,
-      "sections": [
-        "ニューホライズン|2|Unit 1-3",
-        "ニューホライズン|2|Unit 1-4"
-      ],
-      "examples": [
-        "ニューホライズン|2|Unit 1-3|sentence:10",
-        "ニューホライズン|2|Unit 1-3|slash:10",
-        "ニューホライズン|2|Unit 1-3|B4.evidence",
-        "ニューホライズン|2|Unit 1-4|sentence:2",
-        "ニューホライズン|2|Unit 1-4|slash:2",
-        "ニューホライズン|2|Unit 1-4|B1.answer",
-        "ニューホライズン|2|Unit 1-4|B1.evidence"
-      ]
-    },
     {
       "token": "give",
       "kind": "V7_LOOKUP_REQUIRED",
@@ -1069,20 +1026,10 @@
       "sectionIndex": 0,
       "id": "V10-SS-G2-P1-1-001",
       "priorGradeAllowedTokenCount": 593,
-      "localAllowedTokenCount": 27,
-      "cumulativeAllowedTokenCount": 602,
+      "localAllowedTokenCount": 28,
+      "cumulativeAllowedTokenCount": 603,
       "notes": 0,
-      "candidates": [
-        {
-          "token": "eat",
-          "kind": "V7_LOOKUP_REQUIRED",
-          "base": null,
-          "locations": [
-            "sentence:9",
-            "slash:9"
-          ]
-        }
-      ]
+      "candidates": []
     },
     {
       "grade": "2",
@@ -1092,7 +1039,7 @@
       "id": "V10-SS-G2-P1-2-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 34,
-      "cumulativeAllowedTokenCount": 618,
+      "cumulativeAllowedTokenCount": 619,
       "notes": 0,
       "candidates": []
     },
@@ -1104,7 +1051,7 @@
       "id": "V10-SS-G2-P1-3-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 38,
-      "cumulativeAllowedTokenCount": 628,
+      "cumulativeAllowedTokenCount": 629,
       "notes": 0,
       "candidates": []
     },
@@ -1116,7 +1063,7 @@
       "id": "V10-SS-G2-P2-1-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 32,
-      "cumulativeAllowedTokenCount": 644,
+      "cumulativeAllowedTokenCount": 645,
       "notes": 0,
       "candidates": [
         {
@@ -1168,7 +1115,7 @@
       "id": "V10-SS-G2-P2-2-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 31,
-      "cumulativeAllowedTokenCount": 654,
+      "cumulativeAllowedTokenCount": 655,
       "notes": 0,
       "candidates": [
         {
@@ -1191,7 +1138,7 @@
       "id": "V10-SS-G2-P2-3-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 40,
-      "cumulativeAllowedTokenCount": 671,
+      "cumulativeAllowedTokenCount": 672,
       "notes": 0,
       "candidates": []
     },
@@ -1203,22 +1150,9 @@
       "id": "V10-SS-G2-P3-1-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 29,
-      "cumulativeAllowedTokenCount": 678,
+      "cumulativeAllowedTokenCount": 679,
       "notes": 0,
-      "candidates": [
-        {
-          "token": "eat",
-          "kind": "V7_LOOKUP_REQUIRED",
-          "base": null,
-          "locations": [
-            "sentence:5",
-            "sentence:8",
-            "slash:5",
-            "slash:8",
-            "A4.evidence"
-          ]
-        }
-      ]
+      "candidates": []
     },
     {
       "grade": "2",
@@ -1228,7 +1162,7 @@
       "id": "V10-SS-G2-P3-2-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 36,
-      "cumulativeAllowedTokenCount": 685,
+      "cumulativeAllowedTokenCount": 686,
       "notes": 0,
       "candidates": [
         {
@@ -1282,7 +1216,7 @@
       "id": "V10-SS-G2-P3-3-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 33,
-      "cumulativeAllowedTokenCount": 697,
+      "cumulativeAllowedTokenCount": 698,
       "notes": 0,
       "candidates": []
     },
@@ -1294,7 +1228,7 @@
       "id": "V10-SS-G2-P4-1-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 26,
-      "cumulativeAllowedTokenCount": 707,
+      "cumulativeAllowedTokenCount": 708,
       "notes": 0,
       "candidates": [
         {
@@ -1317,7 +1251,7 @@
       "id": "V10-SS-G2-P4-2-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 31,
-      "cumulativeAllowedTokenCount": 715,
+      "cumulativeAllowedTokenCount": 716,
       "notes": 0,
       "candidates": []
     },
@@ -1329,7 +1263,7 @@
       "id": "V10-SS-G2-P4-3-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 39,
-      "cumulativeAllowedTokenCount": 725,
+      "cumulativeAllowedTokenCount": 726,
       "notes": 0,
       "candidates": []
     },
@@ -1341,7 +1275,7 @@
       "id": "V10-SS-G2-P5-1-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 31,
-      "cumulativeAllowedTokenCount": 736,
+      "cumulativeAllowedTokenCount": 737,
       "notes": 0,
       "candidates": []
     },
@@ -1353,7 +1287,7 @@
       "id": "V10-SS-G2-P5-2-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 40,
-      "cumulativeAllowedTokenCount": 750,
+      "cumulativeAllowedTokenCount": 751,
       "notes": 0,
       "candidates": []
     },
@@ -1365,7 +1299,7 @@
       "id": "V10-SS-G2-P5-3-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 41,
-      "cumulativeAllowedTokenCount": 766,
+      "cumulativeAllowedTokenCount": 767,
       "notes": 0,
       "candidates": []
     },
@@ -1377,7 +1311,7 @@
       "id": "V10-SS-G2-P6-1-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 29,
-      "cumulativeAllowedTokenCount": 777,
+      "cumulativeAllowedTokenCount": 778,
       "notes": 0,
       "candidates": []
     },
@@ -1389,7 +1323,7 @@
       "id": "V10-SS-G2-P6-2-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 43,
-      "cumulativeAllowedTokenCount": 795,
+      "cumulativeAllowedTokenCount": 796,
       "notes": 0,
       "candidates": [
         {
@@ -1411,7 +1345,7 @@
       "id": "V10-SS-G2-P6-3-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 53,
-      "cumulativeAllowedTokenCount": 817,
+      "cumulativeAllowedTokenCount": 818,
       "notes": 0,
       "candidates": []
     },
@@ -1423,7 +1357,7 @@
       "id": "V10-SS-G2-P7-1-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 60,
-      "cumulativeAllowedTokenCount": 841,
+      "cumulativeAllowedTokenCount": 842,
       "notes": 0,
       "candidates": [
         {
@@ -1460,7 +1394,7 @@
       "id": "V10-SS-G2-P7-2-001",
       "priorGradeAllowedTokenCount": 593,
       "localAllowedTokenCount": 55,
-      "cumulativeAllowedTokenCount": 845,
+      "cumulativeAllowedTokenCount": 846,
       "notes": 0,
       "candidates": [
         {
@@ -2510,8 +2444,8 @@
       "sectionIndex": 0,
       "id": "V10-NH-G2-U0-001",
       "priorGradeAllowedTokenCount": 350,
-      "localAllowedTokenCount": 27,
-      "cumulativeAllowedTokenCount": 363,
+      "localAllowedTokenCount": 28,
+      "cumulativeAllowedTokenCount": 364,
       "notes": 0,
       "candidates": [
         {
@@ -2521,15 +2455,6 @@
           "locations": [
             "sentence:8",
             "slash:8"
-          ]
-        },
-        {
-          "token": "eat",
-          "kind": "V7_LOOKUP_REQUIRED",
-          "base": null,
-          "locations": [
-            "sentence:10",
-            "slash:10"
           ]
         }
       ]
@@ -2542,7 +2467,7 @@
       "id": "V10-NH-G2-U1-1-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 28,
-      "cumulativeAllowedTokenCount": 377,
+      "cumulativeAllowedTokenCount": 378,
       "notes": 0,
       "candidates": [
         {
@@ -2576,8 +2501,8 @@
       "sectionIndex": 3,
       "id": "V10-NH-G2-U1-3-001",
       "priorGradeAllowedTokenCount": 350,
-      "localAllowedTokenCount": 31,
-      "cumulativeAllowedTokenCount": 405,
+      "localAllowedTokenCount": 32,
+      "cumulativeAllowedTokenCount": 406,
       "notes": 0,
       "candidates": [
         {
@@ -2593,16 +2518,6 @@
             "slash:11",
             "A3.answer",
             "A3.evidence"
-          ]
-        },
-        {
-          "token": "large",
-          "kind": "V7_LOOKUP_REQUIRED",
-          "base": null,
-          "locations": [
-            "sentence:10",
-            "slash:10",
-            "B4.evidence"
           ]
         },
         {
@@ -2624,20 +2539,9 @@
       "id": "V10-NH-G2-U1-4-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 29,
-      "cumulativeAllowedTokenCount": 420,
+      "cumulativeAllowedTokenCount": 421,
       "notes": 0,
       "candidates": [
-        {
-          "token": "large",
-          "kind": "V7_LOOKUP_REQUIRED",
-          "base": null,
-          "locations": [
-            "sentence:2",
-            "slash:2",
-            "B1.answer",
-            "B1.evidence"
-          ]
-        },
         {
           "token": "learn",
           "kind": "V7_LOOKUP_REQUIRED",
@@ -2657,7 +2561,7 @@
       "id": "V10-NH-G2-U2-1-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 27,
-      "cumulativeAllowedTokenCount": 431,
+      "cumulativeAllowedTokenCount": 432,
       "notes": 0,
       "candidates": [
         {
@@ -2679,7 +2583,7 @@
       "id": "V10-NH-G2-U2-2-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 29,
-      "cumulativeAllowedTokenCount": 441,
+      "cumulativeAllowedTokenCount": 442,
       "notes": 0,
       "candidates": [
         {
@@ -2702,7 +2606,7 @@
       "id": "V10-NH-G2-U2-3-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 33,
-      "cumulativeAllowedTokenCount": 451,
+      "cumulativeAllowedTokenCount": 452,
       "notes": 0,
       "candidates": [
         {
@@ -2725,7 +2629,7 @@
       "id": "V10-NH-G2-U2-4-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 33,
-      "cumulativeAllowedTokenCount": 464,
+      "cumulativeAllowedTokenCount": 465,
       "notes": 0,
       "candidates": [
         {
@@ -2749,7 +2653,7 @@
       "id": "V10-NH-G2-U3-1-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 28,
-      "cumulativeAllowedTokenCount": 479,
+      "cumulativeAllowedTokenCount": 480,
       "notes": 0,
       "candidates": []
     },
@@ -2761,7 +2665,7 @@
       "id": "V10-NH-G2-U3-2-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 34,
-      "cumulativeAllowedTokenCount": 481,
+      "cumulativeAllowedTokenCount": 482,
       "notes": 0,
       "candidates": []
     },
@@ -2773,7 +2677,7 @@
       "id": "V10-NH-G2-U3-3-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 31,
-      "cumulativeAllowedTokenCount": 494,
+      "cumulativeAllowedTokenCount": 495,
       "notes": 0,
       "candidates": [
         {
@@ -2796,7 +2700,7 @@
       "id": "V10-NH-G2-U3-4-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 33,
-      "cumulativeAllowedTokenCount": 510,
+      "cumulativeAllowedTokenCount": 511,
       "notes": 0,
       "candidates": []
     },
@@ -2808,7 +2712,7 @@
       "id": "V10-NH-G2-U4-1-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 23,
-      "cumulativeAllowedTokenCount": 521,
+      "cumulativeAllowedTokenCount": 522,
       "notes": 0,
       "candidates": []
     },
@@ -2820,7 +2724,7 @@
       "id": "V10-NH-G2-U4-2-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 26,
-      "cumulativeAllowedTokenCount": 526,
+      "cumulativeAllowedTokenCount": 527,
       "notes": 0,
       "candidates": [
         {
@@ -2844,7 +2748,7 @@
       "id": "V10-NH-G2-U4-3-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 53,
-      "cumulativeAllowedTokenCount": 552,
+      "cumulativeAllowedTokenCount": 553,
       "notes": 0,
       "candidates": []
     },
@@ -2856,7 +2760,7 @@
       "id": "V10-NH-G2-U4-4-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 45,
-      "cumulativeAllowedTokenCount": 553,
+      "cumulativeAllowedTokenCount": 554,
       "notes": 0,
       "candidates": []
     },
@@ -2868,7 +2772,7 @@
       "id": "V10-NH-G2-U5-1-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 29,
-      "cumulativeAllowedTokenCount": 568,
+      "cumulativeAllowedTokenCount": 569,
       "notes": 0,
       "candidates": []
     },
@@ -2880,7 +2784,7 @@
       "id": "V10-NH-G2-U5-2-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 34,
-      "cumulativeAllowedTokenCount": 574,
+      "cumulativeAllowedTokenCount": 575,
       "notes": 0,
       "candidates": []
     },
@@ -2892,7 +2796,7 @@
       "id": "V10-NH-G2-U5-3-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 34,
-      "cumulativeAllowedTokenCount": 587,
+      "cumulativeAllowedTokenCount": 588,
       "notes": 0,
       "candidates": [
         {
@@ -2916,7 +2820,7 @@
       "id": "V10-NH-G2-U5-4-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 36,
-      "cumulativeAllowedTokenCount": 599,
+      "cumulativeAllowedTokenCount": 600,
       "notes": 0,
       "candidates": [
         {
@@ -2939,7 +2843,7 @@
       "id": "V10-NH-G2-U6-1-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 25,
-      "cumulativeAllowedTokenCount": 606,
+      "cumulativeAllowedTokenCount": 607,
       "notes": 0,
       "candidates": [
         {
@@ -2992,7 +2896,7 @@
       "id": "V10-NH-G2-U6-2-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 28,
-      "cumulativeAllowedTokenCount": 611,
+      "cumulativeAllowedTokenCount": 612,
       "notes": 0,
       "candidates": [
         {
@@ -3025,7 +2929,7 @@
       "id": "V10-NH-G2-U6-3-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 39,
-      "cumulativeAllowedTokenCount": 620,
+      "cumulativeAllowedTokenCount": 621,
       "notes": 0,
       "candidates": [
         {
@@ -3047,7 +2951,7 @@
       "id": "V10-NH-G2-U6-4-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 40,
-      "cumulativeAllowedTokenCount": 635,
+      "cumulativeAllowedTokenCount": 636,
       "notes": 0,
       "candidates": [
         {
@@ -3071,7 +2975,7 @@
       "id": "V10-NH-G2-U7-1-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 38,
-      "cumulativeAllowedTokenCount": 649,
+      "cumulativeAllowedTokenCount": 650,
       "notes": 0,
       "candidates": [
         {
@@ -3126,7 +3030,7 @@
       "id": "V10-NH-G2-U7-2-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 37,
-      "cumulativeAllowedTokenCount": 661,
+      "cumulativeAllowedTokenCount": 662,
       "notes": 0,
       "candidates": [
         {
@@ -3178,7 +3082,7 @@
       "id": "V10-NH-G2-U7-3-001",
       "priorGradeAllowedTokenCount": 350,
       "localAllowedTokenCount": 50,
-      "cumulativeAllowedTokenCount": 681,
+      "cumulativeAllowedTokenCount": 682,
       "notes": 0,
       "candidates": [
         {
