@@ -11,6 +11,7 @@ from safe_circle_radius_from_area_variant_engine import (
     can_generate as can_generate_radius_from_area,
     generate as generate_radius_from_area,
 )
+from safe_sector_angle_from_area_variant_engine import generate as generate_sector_angle_from_area
 from safe_sector_area_variant_engine import generate as generate_sector_area
 from safe_sector_arc_length_variant_engine import generate as generate_sector_arc_length
 
@@ -65,7 +66,7 @@ def can_generate(parent: dict) -> tuple[bool, str]:
     inverse_ok, inverse_reason = can_generate_radius_from_area(parent)
     if inverse_ok:
         return True, inverse_reason
-    for fn in (generate_sector_area, generate_sector_arc_length):
+    for fn in (generate_sector_angle_from_area, generate_sector_area, generate_sector_arc_length):
         rows, _, reason = fn(parent, 1)
         if rows:
             return True, reason
@@ -88,7 +89,7 @@ def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     inverse_rows, inverse_evidence, inverse_reason = generate_radius_from_area(parent, count)
     if inverse_rows:
         return inverse_rows, inverse_evidence, inverse_reason
-    for fn in (generate_sector_area, generate_sector_arc_length):
+    for fn in (generate_sector_angle_from_area, generate_sector_area, generate_sector_arc_length):
         rows, evidence, reason = fn(parent, count)
         if rows:
             return rows, evidence, reason
