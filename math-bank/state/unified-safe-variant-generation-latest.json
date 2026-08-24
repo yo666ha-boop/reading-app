@@ -1,11 +1,11 @@
 {
   "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32679746604",
-  "triggering_sha": "682d172b46981afa0eeffa66ae879b32b16cf79b",
-  "tested_checkout_sha": "682d172b46981afa0eeffa66ae879b32b16cf79b",
+  "run_id": "32679752762",
+  "triggering_sha": "d3dfe17630a8d5532d4f3de0fcf3e4ba0d593fbd",
+  "tested_checkout_sha": "d3dfe17630a8d5532d4f3de0fcf3e4ba0d593fbd",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T01:26:00.437589+00:00",
+  "recorded_at_utc": "2026-08-24T01:26:14.996042+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "failure",
@@ -304,6 +304,7 @@
     "test_regular_polygon_sides_from_exterior_angle_unified_adapter.py",
     "test_regular_polygon_sides_from_interior_angle_unified_adapter.py",
     "test_relative_frequency_unified_adapter.py",
+    "test_sector_angle_from_area_unified_adapter.py",
     "test_sector_arc_length_unified_adapter.py",
     "test_sector_area_unified_adapter.py",
     "test_slope_from_two_points_unified_adapter.py",
@@ -328,7 +329,7 @@
     "test_two_dice_sum_probability_unified_adapter.py",
     "test_weighted_group_average_unified_adapter.py"
   ],
-  "adapter_test_count": 95,
+  "adapter_test_count": 96,
   "runtime_routes_auto_discovered": [
     "absolute_value",
     "affine",
