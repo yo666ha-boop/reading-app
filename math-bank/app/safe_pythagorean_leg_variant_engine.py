@@ -62,18 +62,21 @@ def generate(parent:dict,count:int)->tuple[list[dict],list[dict],str]:
     if parsed is None:
         ok,reason=can_generate(parent); assert not ok
         return [],[],reason
-    match,pc,pa,pb=parsed; q=_norm(parent.get("question")); seed=int(_sha(parent)[:12],16)
+    match,pc,pa,pb=parsed
+    q=_norm(parent.get("question")); seed=int(_sha(parent)[:12],16)
     triples=((3,4,5),(5,12,13),(8,15,17),(7,24,25)); seen=set(); rows=[]; evidence=[]
     for index in range(count):
-        x,y,c=triples[(seed+index)%len(triples)]; scale=1+((seed>>(index*4+3))%3)
-        a,b,c=x*scale,y*scale,c*scale
-        if ((seed>>index)&1):
-            a,b=b,a
-        sig=(str(c),str(a))
-        while sig==(str(pc),str(pa)) or sig in seen:
-            scale+=1; a,b,c=x*scale,y*scale,c//scale*scale if False else triples[(seed+index)%len(triples)][2]*scale
-            if ((seed>>index)&1): a,b=b,a
+        base_a,base_b,base_c=triples[(seed+index)%len(triples)]
+        scale=1+((seed>>(index*4+3))%3)
+        swap=bool((seed>>index)&1)
+        while True:
+            a=base_a*scale; b=base_b*scale; c=base_c*scale
+            if swap:
+                a,b=b,a
             sig=(str(c),str(a))
+            if sig!=(str(pc),str(pa)) and sig not in seen:
+                break
+            scale+=1
         seen.add(sig)
         if c*c-a*a!=b*b or a*a+b*b!=c*c:
             raise AssertionError("pythagorean leg inverse identity failed")
