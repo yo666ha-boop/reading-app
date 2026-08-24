@@ -1,17 +1,17 @@
 {
   "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32696422300",
-  "triggering_sha": "ba4f0097bd3e977fef13f4efad6324f3d251e730",
-  "tested_checkout_sha": "ba4f0097bd3e977fef13f4efad6324f3d251e730",
+  "run_id": "32697455977",
+  "triggering_sha": "92205d4527e7066b78197ca30208e6e753bc1c94",
+  "tested_checkout_sha": "92205d4527e7066b78197ca30208e6e753bc1c94",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T06:27:49.935148+00:00",
+  "recorded_at_utc": "2026-08-24T06:28:18.294353+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "cancelled",
-    "core": "skipped",
-    "parent_contract": "skipped",
-    "legacy_empty_choices": "skipped"
+    "specialized_and_adapters": "failure",
+    "core": "success",
+    "parent_contract": "success",
+    "legacy_empty_choices": "success"
   },
   "engine_test_discovery": "test_safe_*_variant_engine.py plus test_*_unified_adapter.py plus runtime reachability graph gate",
   "engine_modules_auto_discovered": [
@@ -29,6 +29,7 @@
     "circle_circumference",
     "circle_radius_from_area",
     "circle_radius_from_circumference",
+    "common_factor_quadratic",
     "cone_height_from_volume",
     "cone_radius_from_surface_area",
     "cone_radius_from_volume",
@@ -139,7 +140,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 123,
+  "engine_module_count": 124,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_equation_from_two_points_variant_engine.py",
@@ -155,6 +156,7 @@
     "test_safe_circle_circumference_variant_engine.py",
     "test_safe_circle_radius_from_area_variant_engine.py",
     "test_safe_circle_radius_from_circumference_variant_engine.py",
+    "test_safe_common_factor_quadratic_variant_engine.py",
     "test_safe_cone_height_from_volume_variant_engine.py",
     "test_safe_cone_radius_from_surface_area_variant_engine.py",
     "test_safe_cone_radius_from_volume_variant_engine.py",
@@ -262,7 +264,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 120,
+  "engine_test_count": 121,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_affine_equation_from_two_points_unified_adapter.py",
