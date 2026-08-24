@@ -51,6 +51,7 @@ class RecoveredStrictBatchTest(unittest.TestCase):
             "raw_id": RAW_ID,
             "source": "Standard",
             "source_document": "doc.docx",
+            "source_document_sha256": "a" * 64,
             "grade": 1,
             "major": 1,
             "subslot": 1,
@@ -79,6 +80,7 @@ class RecoveredStrictBatchTest(unittest.TestCase):
         summary = self.run_once()
         self.assertTrue(summary["pass"])
         self.assertEqual(summary["draft_records_verified"], 1)
+        self.assertEqual(summary["slot_evidence_records"], 1)
         self.assertEqual(summary["strict_candidates"], 1)
         self.assertEqual(summary["strict_output_records"], 1)
         self.assertEqual(summary["drafts_without_strict_candidate"], 0)
@@ -101,6 +103,21 @@ class RecoveredStrictBatchTest(unittest.TestCase):
                 graphical_evidence_path=None,
                 existing_path=None,
                 work_dir=self.root / "bad",
+            )
+
+    def test_missing_slot_evidence_is_rejected_before_candidate_composition(self):
+        with self.assertRaises(ValueError):
+            runner.run_batch(
+                source="Standard",
+                draft_path=self.draft,
+                expected_sha256=self.sha,
+                expected_count=1,
+                structure_path=self.structure,
+                asset_manifest_path=None,
+                slot_evidence_path=None,
+                graphical_evidence_path=None,
+                existing_path=None,
+                work_dir=self.root / "missing-slot",
             )
 
     def test_resume_with_same_strict_record_does_not_duplicate_progress(self):
