@@ -1,12 +1,15 @@
 from __future__ import annotations
 
-"""Fail-closed exact engine for a narrow tax-inclusive price parent shape.
+"""Fail-closed exact engine for narrow consumption-tax price parent shapes.
 
-Only actual parents with one positive integer pre-tax yen amount, one explicit
-integer tax rate, and a request for the tax-inclusive total are accepted. The
-stated answer is verified exactly by base*(100+rate)/100 and independently by
-(total-base)*100 == base*rate. Figure/choice parents, discounts, reverse-tax,
-multiple rates, rounding, points, fees, or ambiguous prose fail closed.
+Supported shapes are intentionally narrow:
+1. pre-tax integer-yen price + explicit integer tax rate -> tax-inclusive total;
+2. tax-inclusive integer-yen total + explicit integer tax rate -> pre-tax price.
+
+The stated parent answer is verified exactly with Fraction arithmetic and a
+second independent cross-product identity. Figure/choice parents, discounts,
+multiple rates, rounding, points, fees, shipping, or ambiguous prose fail
+closed. Variants are generated only when all yen values are exact integers.
 """
 
 import hashlib
@@ -14,7 +17,12 @@ import json
 import re
 from fractions import Fraction
 
-PAIR_RE = re.compile(r"(?P<expr>(?P<base>\d+)\s*円.*?(?:消費税|税率)\s*(?P<rate>\d+)\s*[%％])")
+FORWARD_RE = re.compile(
+    r"(?P<expr>(?P<base>\d+)\s*円.*?(?:消費税|税率)\s*(?P<rate>\d+)\s*[%％])"
+)
+REVERSE_RE = re.compile(
+    r"(?P<expr>(?:税込み?|税込価格)\s*(?P<total>\d+)\s*円.*?(?:消費税|税率)\s*(?P<rate>\d+)\s*[%％])"
+)
 ANSWER_RE = re.compile(r"^(?P<v>\d+)\s*円$")
 
 
@@ -27,19 +35,42 @@ def _parent_sha(parent: dict) -> str:
     return hashlib.sha256(raw).hexdigest()
 
 
+def _answer_yen(parent: dict) -> int | None:
+    am = ANSWER_RE.fullmatch(_norm(parent.get("answer")).replace(" ", ""))
+    return int(am.group("v")) if am is not None else None
+
+
 def _parse_parent(parent: dict):
-    if parent.get("figure_refs"):
-        return None
-    if parent.get("choices"):
+    if parent.get("figure_refs") or parent.get("choices"):
         return None
     q = _norm(parent.get("question"))
-    required = ("税込", "税込み", "税を加え", "税金を加え", "消費税を加え")
-    if not any(token in q for token in required):
+    answer = _answer_yen(parent)
+    if answer is None:
         return None
-    blocked = ("値引", "割引", "セール", "ポイント", "手数料", "送料", "税抜", "税抜き", "税率を求", "何%", "四捨五入", "切り捨て", "切り上げ")
-    if any(token in q for token in blocked):
+    common_blocked = ("値引", "割引", "セール", "ポイント", "手数料", "送料", "何%", "四捨五入", "切り捨て", "切り上げ")
+    if any(token in q for token in common_blocked):
         return None
-    matches = list(PAIR_RE.finditer(q))
+
+    reverse_requested = any(token in q for token in ("税抜価格", "税抜き価格", "税抜の価格", "税抜きの価格", "税抜価格を求", "税抜き価格を求"))
+    if reverse_requested:
+        matches = list(REVERSE_RE.finditer(q))
+        if len(matches) != 1:
+            return None
+        m = matches[0]
+        total = int(m.group("total")); rate = int(m.group("rate"))
+        if total <= 0 or rate <= 0 or rate >= 100:
+            return None
+        base = Fraction(total * 100, 100 + rate)
+        if base.denominator != 1 or answer != base.numerator:
+            return None
+        if Fraction(total - base, 1) * 100 != base * rate:
+            return None
+        return "reverse", m, int(base), rate, Fraction(total, 1)
+
+    forward_requested = any(token in q for token in ("税込", "税込み", "税を加え", "税金を加え", "消費税を加え"))
+    if not forward_requested or "税抜" in q:
+        return None
+    matches = list(FORWARD_RE.finditer(q))
     if len(matches) != 1:
         return None
     m = matches[0]
@@ -47,31 +78,28 @@ def _parse_parent(parent: dict):
     if base <= 0 or rate <= 0 or rate >= 100:
         return None
     total = Fraction(base * (100 + rate), 100)
-    if total.denominator != 1:
+    if total.denominator != 1 or answer != total.numerator:
         return None
-    am = ANSWER_RE.fullmatch(_norm(parent.get("answer")).replace(" ", ""))
-    if am is None or int(am.group("v")) != total.numerator:
+    if (total - base) * 100 != base * rate:
         return None
-    tax = total - base
-    if tax * 100 != base * rate:
-        return None
-    return m, base, rate, total
+    return "forward", m, base, rate, total
 
 
 def can_generate(parent: dict) -> tuple[bool, str]:
-    if _parse_parent(parent) is not None:
-        return True, "tax_inclusive_yen_exact"
+    parsed = _parse_parent(parent)
+    if parsed is not None:
+        return True, "tax_exclusive_from_inclusive_yen_exact" if parsed[0] == "reverse" else "tax_inclusive_yen_exact"
     if parent.get("figure_refs"):
         return False, "figure_parent"
     if parent.get("choices"):
         return False, "choice_parent"
-    return False, "tax_inclusive_parent_not_exactly_parsed_and_verified"
+    return False, "tax_price_parent_not_exactly_parsed_and_verified"
 
 
 def _variant_numbers(seed: int, index: int) -> tuple[int, int]:
     rates = (5, 8, 10)
     rate = rates[((seed >> (index * 5)) + index) % len(rates)]
-    # Multiples of 100 guarantee an integer-yen total for all supported rates.
+    # Multiples of 100 guarantee exact integer-yen inclusive totals for all supported rates.
     base = 500 + 100 * (((seed >> (index * 7 + 3)) + index * 11) % 46)
     return base, rate
 
@@ -83,19 +111,59 @@ def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     if parsed is None:
         ok, reason = can_generate(parent); assert not ok
         return [], [], reason
-    match, parent_base, parent_rate, parent_total = parsed
+
+    mode, match, parent_base, parent_rate, parent_total = parsed
     q = _norm(parent.get("question")); seed = int(_parent_sha(parent)[:12], 16)
-    parent_signature = (str(parent_base), str(parent_rate)); seen = set(); rows=[]; evidence=[]
+    if mode == "reverse":
+        parent_signature = (str(parent_total.numerator), str(parent_rate))
+    else:
+        parent_signature = (str(parent_base), str(parent_rate))
+    seen = set(); rows = []; evidence = []
+
     for index in range(1, count + 1):
-        base, rate = _variant_numbers(seed, index); signature=(str(base), str(rate)); bump=0
-        while signature == parent_signature or signature in seen:
-            bump += 1; base += 100 * bump; signature=(str(base), str(rate))
+        base, rate = _variant_numbers(seed, index)
+        bump = 0
+        while True:
+            total = Fraction(base * (100 + rate), 100)
+            if total.denominator != 1:
+                raise AssertionError("tax price variant must have integer-yen total")
+            signature = (str(total.numerator), str(rate)) if mode == "reverse" else (str(base), str(rate))
+            if signature != parent_signature and signature not in seen:
+                break
+            bump += 1
+            if bump > 32:
+                raise AssertionError("tax price bounded distinctness search exhausted")
+            base += 100 * bump
         seen.add(signature)
-        total = Fraction(base * (100 + rate), 100)
-        if total.denominator != 1 or (total-base)*100 != base*rate:
-            raise AssertionError("tax-inclusive independent verification failed")
-        replacement = f"{base}円の商品に消費税{rate}%"
-        new_question = q[:match.start("expr")] + replacement + q[match.end("expr"):]
-        rows.append({"question":new_question,"answer":f"{total.numerator}円","explanation":f"税率{rate}%なので、税込価格は{base}×(100+{rate})/100={total.numerator}円。税額の逆算でも確認済み。","numeric_signature":signature})
-        evidence.append({"parent_sha256":_parent_sha(parent),"method":"tax_inclusive_exact_fraction_and_tax_cross_product","parent_recalculation":f"{parent_base}×(100+{parent_rate})/100={parent_total.numerator}円","variant_recalculation":f"{base}×(100+{rate})/100={total.numerator}円","independent_check":"(total-base)*100 == base*rate PASS"})
-    return rows, evidence, "tax_inclusive_yen_exact"
+        if (total - base) * 100 != base * rate:
+            raise AssertionError("tax price independent verification failed")
+
+        if mode == "reverse":
+            replacement = f"税込み{total.numerator}円、消費税{rate}%"
+            new_question = q[:match.start("expr")] + replacement + q[match.end("expr"):]
+            answer = f"{base}円"
+            explanation = f"税込価格は税抜価格の(100+{rate})%なので、{total.numerator}×100/(100+{rate})={base}円。税込価格の再計算でも確認済み。"
+            method = "tax_exclusive_exact_fraction_and_forward_cross_product"
+            parent_recalc = f"{parent_total.numerator}×100/(100+{parent_rate})={parent_base}円"
+            variant_recalc = f"{total.numerator}×100/(100+{rate})={base}円"
+            independent = "base*(100+rate) == total*100 PASS"
+        else:
+            replacement = f"{base}円の商品に消費税{rate}%"
+            new_question = q[:match.start("expr")] + replacement + q[match.end("expr"):]
+            answer = f"{total.numerator}円"
+            explanation = f"税率{rate}%なので、税込価格は{base}×(100+{rate})/100={total.numerator}円。税額の逆算でも確認済み。"
+            method = "tax_inclusive_exact_fraction_and_tax_cross_product"
+            parent_recalc = f"{parent_base}×(100+{parent_rate})/100={parent_total.numerator}円"
+            variant_recalc = f"{base}×(100+{rate})/100={total.numerator}円"
+            independent = "(total-base)*100 == base*rate PASS"
+
+        rows.append({"question": new_question, "answer": answer, "explanation": explanation, "numeric_signature": signature})
+        evidence.append({
+            "parent_sha256": _parent_sha(parent),
+            "method": method,
+            "parent_recalculation": parent_recalc,
+            "variant_recalculation": variant_recalc,
+            "independent_check": independent,
+        })
+    reason = "tax_exclusive_from_inclusive_yen_exact" if mode == "reverse" else "tax_inclusive_yen_exact"
+    return rows, evidence, reason
