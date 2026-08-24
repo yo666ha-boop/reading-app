@@ -47,6 +47,17 @@ class GateTest(unittest.TestCase):
         self.assertFalse(any("answer has neither" in e for e in errors))
         self.assertFalse(any("answer_offsets" in e for e in errors))
 
+    def test_graphical_answer_asset_is_fingerprint_bound(self):
+        record = make_record()
+        record["answer"] = ""
+        record["answer_offsets"] = []
+        record["graphical_answer_asset"] = {"asset_sha256": "b" * 64, "target": "word/media/image1.png"}
+        record["record_fingerprint"] = gate.recompute_fingerprint(record)
+        tampered = copy.deepcopy(record)
+        tampered["graphical_answer_asset"]["asset_sha256"] = "c" * 64
+        errors = gate.validate_record(tampered, 1)
+        self.assertTrue(any("record_fingerprint mismatch" in e for e in errors))
+
     def test_fingerprint_binds_content(self):
         record = make_record()
         tampered = copy.deepcopy(record)
