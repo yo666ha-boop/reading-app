@@ -35,16 +35,19 @@ def main():
     for e in prov:
         assert "triangle_exterior_remote_sum_and_supplement_identity" in e["verification_evidence"] and "180 PASS" in e["verification_evidence"]
 
+    # The unified runtime intentionally routes ordinary third-angle questions
+    # through the earlier triangle_area family, whose delegated third-angle
+    # contract is already exact and independently sum-checked.
     ip=interior_parent(); rows,prov,reason=generate_parent(ip,3,NOW)
-    assert reason=="specialized:triangle_exterior_angle:triangle_interior_missing_from_two_integer_angles_exact"
+    assert reason=="specialized:triangle_area:triangle_two_integer_angles_third_exact", reason
     assert_common_contract(ip,rows,prov)
     for e in prov:
-        assert "triangle_interior_sum_missing_angle_identity" in e["verification_evidence"] and "=180 PASS" in e["verification_evidence"]
+        assert "triangle_third_angle_exact_subtraction_and_sum_identity" in e["verification_evidence"] and "=180 PASS" in e["verification_evidence"]
 
     bad=parent(); bad["answer"]="111°"
     rows,prov,reason=generate_parent(bad,1,NOW); assert rows==[] and prov==[] and "triangle_angle_parent_not_exactly_parsed_and_verified" in reason
     bad2=interior_parent(); bad2["answer"]="71°"
-    rows,prov,reason=generate_parent(bad2,1,NOW); assert rows==[] and prov==[] and "triangle_angle_parent_not_exactly_parsed_and_verified" in reason
+    rows,prov,reason=generate_parent(bad2,1,NOW); assert rows==[] and prov==[] and "triangle_third_angle_parent_not_exactly_parsed_and_verified" in reason
     print("PASS_TRIANGLE_EXTERIOR_AND_INTERIOR_MISSING_UNIFIED_PARENT_SHA_EMPTY_CHOICES_AUDIT3_AND_IDENTITIES")
 
 if __name__=="__main__": main()
