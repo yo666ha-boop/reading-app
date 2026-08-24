@@ -1,11 +1,11 @@
 {
   "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32691814922",
-  "triggering_sha": "21f6c514380f505afd113ee124c039868f1e025c",
-  "tested_checkout_sha": "21f6c514380f505afd113ee124c039868f1e025c",
+  "run_id": "32691824239",
+  "triggering_sha": "cc4b13fa327e39dea1cd9c75b4fbd9868daa8c19",
+  "tested_checkout_sha": "cc4b13fa327e39dea1cd9c75b4fbd9868daa8c19",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T04:56:55.691972+00:00",
+  "recorded_at_utc": "2026-08-24T04:57:19.296749+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "failure",
@@ -186,6 +186,7 @@
     "test_safe_linear_equation_both_sides_variant_engine.py",
     "test_safe_linear_equation_parentheses_variant_engine.py",
     "test_safe_linear_equation_variant_engine.py",
+    "test_safe_linear_inequality_variant_engine.py",
     "test_safe_median_variant_engine.py",
     "test_safe_midpoint_endpoint_from_midpoint_variant_engine.py",
     "test_safe_midpoint_two_points_variant_engine.py",
@@ -255,7 +256,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 116,
+  "engine_test_count": 117,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_affine_equation_from_two_points_unified_adapter.py",
