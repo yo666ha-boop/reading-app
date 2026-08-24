@@ -1,14 +1,14 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32708953484",
-  "triggering_sha": "787ef678c47a56090bce21522e1297d08d766113",
-  "tested_checkout_sha": "787ef678c47a56090bce21522e1297d08d766113",
+  "run_id": "32714458922",
+  "triggering_sha": "747b0f214b395aa9761b6b4b78357933e2deea26",
+  "tested_checkout_sha": "747b0f214b395aa9761b6b4b78357933e2deea26",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T08:58:18.686414+00:00",
+  "recorded_at_utc": "2026-08-24T09:59:54.870920+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
+    "specialized_and_adapters": "failure",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -61,6 +61,7 @@
     "interquartile_range",
     "inverse_proportion",
     "inverse_proportion_constant",
+    "inverse_proportion_value",
     "lcm",
     "linear_equation",
     "linear_equation_both_sides",
@@ -142,7 +143,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 126,
+  "engine_module_count": 127,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_equation_from_two_points_variant_engine.py",
