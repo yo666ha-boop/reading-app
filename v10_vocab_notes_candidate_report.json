@@ -1,26 +1,26 @@
 {
   "summary": {
-    "generatedAt": "2026-08-24T17:58:26.499Z",
+    "generatedAt": "2026-08-24T18:00:01.285Z",
     "passages": 168,
     "counts": {
-      "EXACT_ALLOWED": 27960,
-      "CUMULATIVE_ALLOWED": 9977,
-      "FUNCTION_TO_GRAMMAR": 151,
-      "MORPHOLOGY_TO_GRAMMAR": 118,
-      "PROPER_V7_LOOKUP_REQUIRED": 11,
-      "V7_LOOKUP_REQUIRED": 82
+      "EXACT_ALLOWED": 28065,
+      "CUMULATIVE_ALLOWED": 9953,
+      "FUNCTION_TO_GRAMMAR": 154,
+      "MORPHOLOGY_TO_GRAMMAR": 138,
+      "PROPER_V7_LOOKUP_REQUIRED": 7,
+      "V7_LOOKUP_REQUIRED": 63
     },
     "notesPresent": 0,
     "missingGloss": 0,
     "missingAllowedWords": 0,
-    "uniqueV7LookupCandidates": 20,
-    "uniqueProperLookupCandidates": 3,
+    "uniqueV7LookupCandidates": 15,
+    "uniqueProperLookupCandidates": 2,
     "cumulativeRule": "For each textbook, all reviewed allowedWords from earlier grades are preloaded; within the current grade, add the current section immediately before auditing it and never add later sections.",
     "semantics": {
       "EXACT_ALLOWED": "explicitly reviewed in current passage allowedWords",
       "CUMULATIVE_ALLOWED": "explicitly reviewed in an earlier grade or earlier/equal section of the same textbook; future sections excluded",
       "FUNCTION_TO_GRAMMAR": "vocabulary exemption only; must pass chronological grammar gate",
-      "MORPHOLOGY_TO_GRAMMAR": "base appears in current/prior reviewed allowedWords; inflection still requires grammar chronology check",
+      "MORPHOLOGY_TO_GRAMMAR": "base appears in current/prior reviewed allowedWords; inflection/possessive still requires grammar chronology check",
       "V7_LOOKUP_REQUIRED": "still unresolved after prior-grade + current/prior-section app-reviewed vocabulary; must be checked against canonical v7 at exact section cutoff",
       "PROPER_V7_LOOKUP_REQUIRED": "proper-name candidate; not auto-approved"
     }
@@ -232,27 +232,6 @@
       ]
     },
     {
-      "token": "friend's",
-      "kind": "V7_LOOKUP_REQUIRED",
-      "occurrences": 8,
-      "passageCount": 2,
-      "sectionCount": 2,
-      "sections": [
-        "サンシャイン|1|PROGRAM 9-3",
-        "ニューホライズン|2|Unit 6-4"
-      ],
-      "examples": [
-        "サンシャイン|1|PROGRAM 9-3|sentence:1",
-        "サンシャイン|1|PROGRAM 9-3|slash:1",
-        "サンシャイン|1|PROGRAM 9-3|A1.answer",
-        "サンシャイン|1|PROGRAM 9-3|A1.evidence",
-        "ニューホライズン|2|Unit 6-4|sentence:6",
-        "ニューホライズン|2|Unit 6-4|slash:6",
-        "ニューホライズン|2|Unit 6-4|B3.answer",
-        "ニューホライズン|2|Unit 6-4|B3.evidence"
-      ]
-    },
-    {
       "token": "large",
       "kind": "V7_LOOKUP_REQUIRED",
       "occurrences": 7,
@@ -327,22 +306,6 @@
       ]
     },
     {
-      "token": "bigger",
-      "kind": "V7_LOOKUP_REQUIRED",
-      "occurrences": 4,
-      "passageCount": 1,
-      "sectionCount": 1,
-      "sections": [
-        "ニューホライズン|2|Unit 6-1"
-      ],
-      "examples": [
-        "ニューホライズン|2|Unit 6-1|sentence:6",
-        "ニューホライズン|2|Unit 6-1|slash:6",
-        "ニューホライズン|2|Unit 6-1|A4.evidence",
-        "ニューホライズン|2|Unit 6-1|B3.evidence"
-      ]
-    },
-    {
       "token": "bring",
       "kind": "V7_LOOKUP_REQUIRED",
       "occurrences": 4,
@@ -407,22 +370,6 @@
       ]
     },
     {
-      "token": "riko's",
-      "kind": "PROPER_V7_LOOKUP_REQUIRED",
-      "occurrences": 4,
-      "passageCount": 1,
-      "sectionCount": 1,
-      "sections": [
-        "ニューホライズン|1|Unit 6-2"
-      ],
-      "examples": [
-        "ニューホライズン|1|Unit 6-2|sentence:5",
-        "ニューホライズン|1|Unit 6-2|slash:5",
-        "ニューホライズン|1|Unit 6-2|A3.answer",
-        "ニューホライズン|1|Unit 6-2|A3.evidence"
-      ]
-    },
-    {
       "token": "using",
       "kind": "V7_LOOKUP_REQUIRED",
       "occurrences": 4,
@@ -451,21 +398,6 @@
         "サンシャイン|3|PROGRAM 6-2|sentence:4",
         "サンシャイン|3|PROGRAM 6-2|slash:4",
         "サンシャイン|3|PROGRAM 6-2|B2.evidence"
-      ]
-    },
-    {
-      "token": "cannot",
-      "kind": "V7_LOOKUP_REQUIRED",
-      "occurrences": 3,
-      "passageCount": 1,
-      "sectionCount": 1,
-      "sections": [
-        "サンシャイン|2|PROGRAM 7-1"
-      ],
-      "examples": [
-        "サンシャイン|2|PROGRAM 7-1|sentence:9",
-        "サンシャイン|2|PROGRAM 7-1|slash:9",
-        "サンシャイン|2|PROGRAM 7-1|B4.evidence"
       ]
     },
     {
@@ -528,20 +460,6 @@
       ]
     },
     {
-      "token": "easier",
-      "kind": "V7_LOOKUP_REQUIRED",
-      "occurrences": 2,
-      "passageCount": 1,
-      "sectionCount": 1,
-      "sections": [
-        "サンシャイン|3|PROGRAM 7-3"
-      ],
-      "examples": [
-        "サンシャイン|3|PROGRAM 7-3|sentence:12",
-        "サンシャイン|3|PROGRAM 7-3|slash:12"
-      ]
-    },
-    {
       "token": "learn",
       "kind": "V7_LOOKUP_REQUIRED",
       "occurrences": 2,
@@ -567,20 +485,6 @@
       "examples": [
         "ニューホライズン|3|Unit 2-3|sentence:9",
         "ニューホライズン|3|Unit 2-3|slash:9"
-      ]
-    },
-    {
-      "token": "pet's",
-      "kind": "V7_LOOKUP_REQUIRED",
-      "occurrences": 2,
-      "passageCount": 1,
-      "sectionCount": 1,
-      "sections": [
-        "サンシャイン|2|PROGRAM 6-2"
-      ],
-      "examples": [
-        "サンシャイン|2|PROGRAM 6-2|sentence:5",
-        "サンシャイン|2|PROGRAM 6-2|slash:5"
       ]
     }
   ],
@@ -1065,8 +969,8 @@
       "candidates": [
         {
           "token": "friend's",
-          "kind": "V7_LOOKUP_REQUIRED",
-          "base": null,
+          "kind": "MORPHOLOGY_TO_GRAMMAR",
+          "base": "friend",
           "locations": [
             "sentence:1",
             "slash:1",
@@ -1490,8 +1394,8 @@
       "candidates": [
         {
           "token": "pet's",
-          "kind": "V7_LOOKUP_REQUIRED",
-          "base": null,
+          "kind": "MORPHOLOGY_TO_GRAMMAR",
+          "base": "pet",
           "locations": [
             "sentence:5",
             "slash:5"
@@ -1538,7 +1442,7 @@
         },
         {
           "token": "cannot",
-          "kind": "V7_LOOKUP_REQUIRED",
+          "kind": "FUNCTION_TO_GRAMMAR",
           "base": null,
           "locations": [
             "sentence:9",
@@ -2167,8 +2071,8 @@
         },
         {
           "token": "easier",
-          "kind": "V7_LOOKUP_REQUIRED",
-          "base": null,
+          "kind": "MORPHOLOGY_TO_GRAMMAR",
+          "base": "easy",
           "locations": [
             "sentence:12",
             "slash:12"
@@ -2421,8 +2325,8 @@
       "candidates": [
         {
           "token": "riko's",
-          "kind": "PROPER_V7_LOOKUP_REQUIRED",
-          "base": null,
+          "kind": "MORPHOLOGY_TO_GRAMMAR",
+          "base": "riko",
           "locations": [
             "sentence:5",
             "slash:5",
@@ -3040,8 +2944,8 @@
       "candidates": [
         {
           "token": "bigger",
-          "kind": "V7_LOOKUP_REQUIRED",
-          "base": null,
+          "kind": "MORPHOLOGY_TO_GRAMMAR",
+          "base": "big",
           "locations": [
             "sentence:6",
             "slash:6",
@@ -3148,8 +3052,8 @@
       "candidates": [
         {
           "token": "friend's",
-          "kind": "V7_LOOKUP_REQUIRED",
-          "base": null,
+          "kind": "MORPHOLOGY_TO_GRAMMAR",
+          "base": "friend",
           "locations": [
             "sentence:6",
             "slash:6",
