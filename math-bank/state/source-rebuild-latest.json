@@ -1,25 +1,28 @@
 {
   "project": "mikami-math-problem-bank",
-  "status": "IN_PROGRESS_REBUILD_FROM_REUPLOADED_SOURCE_ARCHIVES",
-  "recorded_at_utc": "2026-08-24T11:12:00Z",
+  "status": "IN_PROGRESS_RECOVER_PRIOR_GENERATED_DATA_THEN_REBUILD_MISSING_LAYERS",
+  "recorded_at_utc": "2026-08-24T12:13:00Z",
   "manual_execution": true,
   "schedule_change_requested": false,
   "schedule_was_modified_in_this_manual_execution": false,
-  "primary_route": "REBUILD_FROM_REUPLOADED_THREE_SOURCE_ZIPS",
+  "primary_route": "RECOVER_PRIOR_GENERATED_LAYERS_THEN_REBUILD_FROM_REUPLOADED_THREE_SOURCE_ZIPS",
   "old_canonical_search_primary": false,
+  "source_identity_basis": "historical source-recovery state produced after actual archive recovery and inventory",
   "reuploaded_sources": [
     {
       "logical": "Standard",
       "conversation_path": "/mnt/data/スタンダードデータ(1).zip",
       "historical_name": "スタンダードデータ.zip",
-      "historical_sha256": "c828516bccc230ebc7d7217ae708117d4b6971108417c5e0d0eff48cb075fec9",
+      "historical_sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6",
+      "historical_bytes": 9689250,
       "byte_identity_verified_this_run": false
     },
     {
       "logical": "実力錬成",
       "conversation_path": "/mnt/data/中学実力錬成データ(1).zip",
       "historical_name": "中学実力錬成データ.zip",
-      "historical_sha256": "d32d37e2ffeffce059f5ee81b4cf40c1097c0961af2a50e9017534abe4d47b2d",
+      "historical_sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33",
+      "historical_bytes": 7287279,
       "byte_identity_verified_this_run": false
     },
     {
@@ -27,52 +30,62 @@
       "conversation_path": "/mnt/data/winpassデータ(1).zip",
       "historical_name": "winpassデータ.zip",
       "historical_sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+      "historical_bytes": 8296042,
       "byte_identity_verified_this_run": false
     }
   ],
   "local_read_attempt": {
     "attempted": true,
-    "result": "BLOCKED_RUNTIME_CLIENT_RESPONSE_ERROR",
-    "interpretation": "execution-layer failure only; not ZIP corruption and not source mismatch evidence",
-    "must_retry_first_next_run": true
+    "result": "BLOCKED_RUNTIME_CLIENT_RESPONSE_ERROR_OR_FILES_NOT_MOUNTED",
+    "interpretation": "execution/file visibility failure only; not ZIP corruption and not source mismatch evidence",
+    "must_retry_when_runtime_exposes_files": true
   },
   "historical_forensic_targets": {
+    "docx_before_sha_dedupe": 246,
+    "duplicate_docx": 106,
     "documents": {"Winpass": 81, "実力錬成": 27, "Standard": 32, "total": 140},
     "raw_records": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
     "validated_original_target": {"Winpass": 570, "実力錬成": 237, "Standard": 317, "total": 1124},
     "raw_quality": "1271/1271 questions and answers; 41 figure refs; 0 missing figure refs in prior diagnostic",
+    "partial_verified_winpass": "161 records / 32 files / 47 blocks",
     "winpass_rule": "717->570 must be reproduced by evidence; count forcing and simple duplicate-only assumptions are forbidden"
   },
+  "prior_generated_layer_recovery": {
+    "exact_sha_targets": {
+      "stage4": "b532d64f83bb0cb0444a6b556e2490a9b56366d5c3916256ae2e96572eb1abe3",
+      "stage5": "c50053ba1765e81e256aaa95b67f94071cec3b6bb625deef801b71b0af5ae984",
+      "answer_asset_index": "0e96efc7097c61ddfc1c5218da90e7ea92cbb4fd0a1e9babccfcad3756731af2",
+      "combined1271": "16c71b87744a3c00bb29b53d63bdaf727feaae86a5d7a505b83920c8dfefc63a"
+    },
+    "git_blobs_sha256_checked": 4642,
+    "git_blob_bytes_hashed": 174079209,
+    "actions_historical_artifacts_downloaded": 237,
+    "actions_members_sha256_checked": 752,
+    "actions_member_bytes_hashed": 69763226,
+    "download_failures": 0,
+    "exact_payload_hits": 0,
+    "status": "EXACT_OLD_PAYLOADS_NOT_RETAINED_IN_VISIBLE_GIT_OR_RETAINED_HISTORICAL_ACTIONS",
+    "next": "recover prior generation commands/filenames from historical workflow logs; recompute only missing stages"
+  },
   "manual_work_completed": [
-    "Added math-bank/scripts/verify_source_archives.py: accepts renamed copy suffix such as (1), but requires exact historical SHA-256 and valid ZIP CRC before entering rebuild pipeline.",
-    "Added fail-closed source identity regression tests for exact, renamed-copy, hash mismatch and missing-source cases.",
-    "Detected a concurrent old-contract write that incorrectly changed source archives to diagnostic-only/no-reconstruction; corrected contract so raw 1271 cannot be promoted directly but full re-audited reconstruction from exact source inputs is allowed and is now the primary route.",
-    "Added math-bank/scripts/profile_source_archives.py to count MATH.json documents, validate JSON parsing, profile schema shapes and assets without assuming record schema; strict historical document target is 81/27/32 = 140.",
-    "Added profile regression test that fails closed on historical document-count mismatch.",
-    "Updated Math Source Rebuild Contract workflow to test source identity + structure profiling and persist a PASS marker while forbidding unvalidated raw/canonical promotion."
-  ],
-  "manual_commits": [
-    "2c92b4dbcbcf1f7f2b9dc121add68556c4b98181",
-    "1631044c62a6d363a724d46cbaf3a8f8ad202485",
-    "6a472408c5dbe2d6691ac10b7bebcfbc31024b23",
-    "523b0e46e8a09a37dd62f70e4a0c32a3c3b0fd98",
-    "4fc92f0ed42d73a809a534970b4d3459408cf1ce",
-    "b2cc03f4a24d4e61f9f46035392475e4dbe5c8f1",
-    "ac80d2869913d8e0331d3a8fff1c6405c21a36d5",
-    "83e81b4d4f93d4ff09ad14faeda5b37ee6248f8d"
+    "Recovered the actual historical source archive identities and byte sizes from source-recovery-latest.json and corrected the newer erroneous jitsuren/Standard hashes.",
+    "Confirmed old 2140 Actions searches were not valid negative evidence because they downloaded zero artifacts (81/81 and 82/82 failures).",
+    "Completed exact-SHA search for four known prior generated layers over 4642 Git blobs and 237 historical retained Actions artifacts / 752 members with zero failures; exact payloads were not retained.",
+    "Added targeted historical generation-log scanner and workflow to recover prior filenames, commands, and generation stages so the extraction work is not blindly repeated.",
+    "Updated checkpoint and this source-rebuild state to ensure the hourly run resumes from prior-data/pipeline recovery and never uses the erroneous d32d/c828 hashes."
   ],
   "current_data_counts": {
     "real_rebuilt_originals": 0,
     "real_generated_expanded_variants": 0,
     "real_parent_coverage": "0/1124",
-    "reason": "newly reuploaded ZIP bytes have not yet been readable in the local execution layer during this manual run"
+    "reason": "old exact generated payloads are not retained; reuploaded source ZIP bytes are not visible to the current execution layer yet"
   },
   "next_start_exact": [
-    "Retry direct local read of the three conversation ZIP paths; compute SHA-256/size/ZIP member listing.",
-    "If all three match historical source SHA values, run source archive structure profile and require 81/27/32 MATH.json docs, total 140, clean JSON parsing.",
-    "Profile actual MATH.json shapes, then implement/run schema-specific extraction to reproduce raw Winpass717, 実力錬成237 and Standard317 with problem-answer-figure correspondence.",
-    "Re-establish Winpass authoritative set by evidence-based normalization. Do not delete 147 merely to reach 570.",
-    "Run full original gates; only a fully validated rebuilt original set becomes new BASE, then generate verified variants from real parents and wire the app."
+    "Read math-bank/state/historical-generation-log-clues-latest.json when terminal and extract actual old generation commands, filenames, stage paths, and any Winpass570 normalization evidence.",
+    "Retry direct local read of the three conversation ZIP paths only with corrected historical SHA+byte values.",
+    "If the old 1271 payload cannot be recovered, use recovered generation evidence to rerun only missing stages: 246 DOCX -> SHA dedupe 140 -> raw 717/237/317 -> Q&A/figure QA.",
+    "Re-establish Winpass authoritative set by evidence for all 717 decisions; do not delete 147 merely to reach 570.",
+    "Validate 1124 originals, then generate verified variants, app-records, real 4-browser, A4x6, strict release, PUBLICATION_READY and isolated public verification."
   ],
   "final_path_after_rebuild": "validated originals -> verified variants -> dynamic app-records -> real 4-browser -> A4 x6 -> strict release -> PUBLICATION_READY -> isolated public verification",
   "main_touched": false
