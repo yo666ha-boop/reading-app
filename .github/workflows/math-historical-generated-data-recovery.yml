@@ -1,0 +1,85 @@
+name: Math Historical Generated Data Recovery
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - 'math-bank/app/recover_historical_generated_math_data.py'
+      - '.github/workflows/math-historical-generated-data-recovery.yml'
+
+concurrency:
+  group: math-historical-generated-data-recovery
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout full math branch
+        uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Fetch every visible ref for historical blob coverage
+        shell: bash
+        run: |
+          set +e
+          git fetch origin '+refs/heads/*:refs/remotes/origin/*' --force --prune
+          git fetch origin '+refs/tags/*:refs/tags/*' --force
+          git fetch origin '+refs/pull/*/head:refs/remotes/origin/pull/*/head' --force
+          git fetch origin '+refs/pull/*/merge:refs/remotes/origin/pull/*/merge' --force
+          set -e
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile recovery scanner
+        run: python -m py_compile math-bank/app/recover_historical_generated_math_data.py
+
+      - name: Recover old generated data from Git and Actions by SHA-256
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python math-bank/app/recover_historical_generated_math_data.py
+
+      - name: Upload exact recovered data and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-historical-generated-data-recovery
+          path: |
+            math-bank/state/historical-generated-data-recovery-latest.json
+            math-bank/recovered-historical-generated-data/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Persist terminal recovery state race-safely
+        if: always()
+        shell: bash
+        run: |
+          cp math-bank/state/historical-generated-data-recovery-latest.json /tmp/historical-generated-data-recovery-latest.json 2>/dev/null || true
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin math-problem-bank-bootstrap
+          git reset --hard origin/math-problem-bank-bootstrap
+          mkdir -p math-bank/state
+          cp /tmp/historical-generated-data-recovery-latest.json math-bank/state/historical-generated-data-recovery-latest.json 2>/dev/null || true
+          git add math-bank/state/historical-generated-data-recovery-latest.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'record historical generated math data recovery'
+            for n in 1 2 3 4 5; do
+              if git push origin HEAD:math-problem-bank-bootstrap; then exit 0; fi
+              sleep $((n*3))
+              git pull --rebase origin math-problem-bank-bootstrap
+            done
+            exit 1
+          fi
