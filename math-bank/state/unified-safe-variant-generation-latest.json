@@ -1,17 +1,17 @@
 {
-  "status": "FAIL_CI_DIAGNOSTIC",
+  "status": "PASS_CI",
   "persist_schema_version": 69,
-  "run_id": "32719166029",
-  "triggering_sha": "94c6f95bf7616573274d768e2273232f47d6b5c9",
-  "tested_checkout_sha": "94c6f95bf7616573274d768e2273232f47d6b5c9",
+  "run_id": "32719211576",
+  "triggering_sha": "542ad630a5a0d0d58374d7053d9ce5f28a3833f1",
+  "tested_checkout_sha": "542ad630a5a0d0d58374d7053d9ce5f28a3833f1",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T10:55:25.732975+00:00",
+  "recorded_at_utc": "2026-08-24T10:56:00.349997+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "cancelled",
-    "core": "skipped",
-    "parent_contract": "skipped",
-    "legacy_empty_choices": "skipped"
+    "specialized_and_adapters": "success",
+    "core": "success",
+    "parent_contract": "success",
+    "legacy_empty_choices": "success"
   },
   "engine_test_discovery": "test_safe_*_variant_engine.py plus test_*_unified_adapter.py plus runtime reachability graph gate",
   "engine_modules_auto_discovered": [
@@ -164,6 +164,7 @@
     "test_safe_circle_diameter_from_circumference_variant_engine.py",
     "test_safe_circle_radius_from_area_variant_engine.py",
     "test_safe_circle_radius_from_circumference_variant_engine.py",
+    "test_safe_circle_radius_from_diameter_variant_engine.py",
     "test_safe_common_factor_quadratic_variant_engine.py",
     "test_safe_cone_height_from_volume_variant_engine.py",
     "test_safe_cone_radius_from_surface_area_variant_engine.py",
@@ -277,7 +278,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 127,
+  "engine_test_count": 128,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_affine_equation_from_two_points_unified_adapter.py",
@@ -292,6 +293,7 @@
     "test_circle_diameter_from_circumference_unified_adapter.py",
     "test_circle_radius_from_area_unified_adapter.py",
     "test_circle_radius_from_circumference_unified_adapter.py",
+    "test_circle_radius_from_diameter_unified_adapter.py",
     "test_common_factor_quadratic_unified_adapter.py",
     "test_cone_height_from_volume_unified_adapter.py",
     "test_cone_radius_from_surface_area_unified_adapter.py",
@@ -400,7 +402,7 @@
     "test_two_dice_sum_probability_unified_adapter.py",
     "test_weighted_group_average_unified_adapter.py"
   ],
-  "adapter_test_count": 120,
+  "adapter_test_count": 121,
   "runtime_routes_auto_discovered": [
     "absolute_value",
     "affine",
