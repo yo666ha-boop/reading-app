@@ -2,6 +2,9 @@
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP",
   "current_stage": "RAW_1271_MATERIALIZATION_QA_FIGURE_BINDING",
+  "manual_run_started_at_jst": "2026-08-25T01:43:00+09:00",
+  "schedule_change_requested": false,
+  "automation_next_run_change_requested": false,
   "base_target": {
     "original_records": 1124,
     "original_by_source": {"Winpass": 570, "実力錬成": 237, "Standard": 317},
@@ -16,8 +19,8 @@
     "old_canonical_search_primary": false,
     "old_canonical_ref_rescan_forbidden": true,
     "live_source_verification_file": "math-bank/state/source-live-verification-20260825.json",
-    "identity_verified_this_run": true,
-    "local_read_result": "PASS_DIRECT_CONVERSATION_MOUNT_PREVIOUS_CONFIRMED_RUNTIME",
+    "source_identity_previously_verified_from_exact_bytes": true,
+    "current_runtime_source_bytes_mounted": false,
     "actual_source_identity": {
       "Winpass": {"sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf", "bytes": 8296042, "crc_ok": true, "docx_members": 81},
       "実力錬成": {"sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33", "bytes": 7287279, "crc_ok": true, "docx_members": 80},
@@ -47,10 +50,27 @@
     "unique_ids": 1271,
     "unique_structure_fingerprints": 1271,
     "id_scheme": "{source}:{document_stem}:M{major_index:02}:S{major_slot_index:02}",
-    "qa_binding_complete": 0,
-    "qa_binding_pending": 1271,
-    "provisional_only": true,
-    "final_fingerprint_requires_exact_qa_figure_binding": true
+    "provisional_only_until_strict_qa_figure_provenance": true
+  },
+  "recovered_local_qa_actual": {
+    "state_file": "math-bank/state/recovered-local-qa-drafts-20260825.json",
+    "recording_commit": "bdaa585e06797da32719cfe7bc98322e513391ff",
+    "drafts": {
+      "Standard": {"records": 317, "questions_nonblank": 317, "answers_text": 288, "graphical_answers": 29, "sha256": "326f38b5aebadc226d3e12eaf6e750bf4b7727759c2e4f7f06f75dc2ffa114b0"},
+      "実力錬成": {"records": 237, "questions_nonblank": 237, "answers_text": 217, "graphical_answers": 20, "sha256": "818fdd60d26211634d7138b381e55b4123fb4155c682a0375344a3ba0e755c97"},
+      "Winpass": {"records": 0},
+      "total": 554
+    },
+    "current_runtime_draft_files_mounted": false,
+    "strict_persisted": {
+      "Standard": 3,
+      "実力錬成": 0,
+      "Winpass": 0,
+      "total": 3,
+      "proof_path": "math-bank/recovered/current-session/standard-strict-proof-first3-20260825.jsonl",
+      "proof_commit": "eb0a8965e657284bfa32a7378fe85b2cddb68785"
+    },
+    "strict_pending_from_recovered_drafts": {"Standard": 314, "実力錬成": 237, "total": 551}
   },
   "historical_source_forensics": {
     "raw_records_reference": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
@@ -61,8 +81,13 @@
     "raw_validator": "IMPLEMENTED",
     "source_member_manifest": "IMPLEMENTED",
     "ooxml_structure_extractor": "IMPLEMENTED",
-    "raw1271_qa_figure_provenance_gate": "IMPLEMENTED_THIS_RUN",
+    "raw1271_qa_figure_provenance_gate": "IMPLEMENTED_AND_HARDENED",
     "raw1271_qa_figure_gate_state": "math-bank/state/raw1271-materialization-gate-20260825.json",
+    "recovered_draft_strict_promotion": "IMPLEMENTED_THIS_RUN",
+    "strict_promotion_script": "math-bank/scripts/promote_recovered_qa_drafts.py",
+    "strict_promotion_test": "math-bank/scripts/test_promote_recovered_qa_drafts.py",
+    "strict_promotion_state": "math-bank/state/strict-qa-promotion-state-20260825.json",
+    "graphical_answer_asset_fingerprint_binding": "HARDENED_THIS_RUN",
     "winpass_717_fingerprint_review_queue": "IMPLEMENTED",
     "winpass_decision_exact_record_fingerprint_binding": "IMPLEMENTED",
     "winpass_570_materializer": "IMPLEMENTED",
@@ -82,51 +107,39 @@
     "parent_record_sha256_required": true
   },
   "data_rebuild_progress": {
-    "source_zip_bytes_read_and_verified": true,
+    "source_zip_bytes_read_and_verified_previous_runtime": true,
     "zip_identity": {"Winpass": "PASS", "実力錬成": "PASS", "Standard": "PASS"},
     "unique_documents": {"Winpass": 81, "実力錬成": 27, "Standard": 32, "total": 140},
     "raw_slot_counts_verified": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
     "raw_structure_ids_materialized": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
-    "raw_records_materialized_with_exact_qa_figure_provenance": {"Winpass": 0, "実力錬成": 0, "Standard": 0, "total": 0},
-    "qa_figure_targets": {"questions": "0/1271", "answers": "0/1271", "figure_refs_revalidated": "0/41", "missing_figure_refs": "not_revalidated_this_runtime"},
+    "recovered_qa_drafts_not_strict": {"Winpass": 0, "実力錬成": 237, "Standard": 317, "total": 554},
+    "raw_records_materialized_with_exact_qa_figure_provenance": {"Winpass": 0, "実力錬成": 0, "Standard": 3, "total": 3},
+    "qa_figure_targets": {"questions_strict": "3/1271", "answers_strict": "3/1271", "figure_refs_revalidated_global": "0/41", "missing_figure_refs_global": "not_revalidated_in_current_runtime"},
     "winpass_decisions": {"reviewed": 0, "included": 0, "excluded": 0, "target_after_evidence_review": 570},
     "validated_originals": {"Winpass": 0, "実力錬成": 0, "Standard": 0, "total": 0},
     "immutable_mapped_rebuilt_originals": 0,
     "variants": 0,
     "parent_coverage": "0/1124"
   },
-  "ci": {
-    "latest_recorded_state_file": "math-bank/state/ci-latest.json",
-    "latest_recorded_run_id": "32730196071",
-    "latest_recorded_triggering_sha": "6e685fbbc2cbe5b852976e8f203ad234bf2e24b3",
-    "latest_recorded_overall": "success",
-    "latest_recorded_publication_ready": false,
-    "head_ci_status": "NOT_CONFIRMED_AT_CHECKPOINT_TIME",
-    "note": "Recorded ci-latest.json predates current raw1271 materialization commits; do not misreport it as current-head CI."
-  },
-  "this_run": {
-    "starting_head": "9f8f55133122bd4eb9acaca4a2c69a32d89e0ec5",
-    "raw1271_provenance_validator_commit": "fb71d8c5abd9a2dcb00526c34ef4ac1b12b2d067",
-    "raw1271_provenance_test_commit": "96397e29837a937691abfa09b196bace4873a914",
-    "concurrent_actions_commit_observed": "faaa51f935d763b47d569e40f764e85ae8ecfe0a",
-    "raw1271_provenance_gate_state_commit": "cf5e5738bf6aca172d8b0d74fc2dbc4e86e44bfe",
+  "this_manual_run": {
+    "starting_head": "bdaa585e06797da32719cfe7bc98322e513391ff",
     "completed": [
-      "Read latest branch HEAD and checkpoint and preferred GitHub actual over the stale prompt position",
-      "Confirmed all 1271 deterministic provisional structure identities already exist on GitHub",
-      "Confirmed source-derived raw count evidence remains 717/237/317 without count forcing",
-      "Added strict raw1271 Q/A/figure provenance validator that rejects placeholder-only non-empty records",
-      "Added unit tests for OOXML-offset provenance, graphical answers, figure missing state, and content-bound fingerprint tampering",
-      "Persisted raw1271 provenance-gate implementation state",
-      "Observed concurrent GitHub Actions state update without overwriting it"
+      "Re-read latest branch and current checkpoint and kept the scheduled automation unchanged",
+      "Confirmed durable recovered-draft ledger: Standard317 plus 実力錬成237 equals 554 local Q/A drafts, separate from strict completion",
+      "Read back the first three persisted strict Standard records and preserved them as the strict resume anchor",
+      "Added recovered-draft strict promotion tooling with SHA/count verification, exact identity join, strict-record validation, atomic output and conflict-safe resume",
+      "Added promotion tests for hash mismatch, count mismatch, duplicate identity, content mismatch, missing strict provenance, exact resume and resume conflict",
+      "Hardened raw1271 record_fingerprint so graphical_answer_asset identity is cryptographically bound when present",
+      "Added a regression test proving graphical-answer asset tampering causes fingerprint mismatch",
+      "Ran 15 local unit tests for the provenance validator and promotion tooling: all PASS"
     ],
     "limitations": [
-      "The current automation runtime did not expose the three ZIP bytes through File Library search, so exact Q/A/figure binding could not be truthfully re-executed here.",
-      "Container network could not resolve github.com, so local clone-based unittest execution was unavailable; code was committed through the GitHub connector and should be exercised by repository CI/current source-byte runtime."
+      "Current /mnt/data contains no source ZIPs and no recovered Standard/実力錬成 draft JSONLs, so the remaining 551 recovered drafts cannot be strictly promoted in this runtime without inventing provenance.",
+      "Winpass Q/A exact provenance remains unmaterialized; no count-only or inferred text was created."
     ],
-    "main_touched": false,
-    "recorded_at_jst": "2026-08-25T01:06:00+09:00"
+    "main_touched": false
   },
-  "current_position": "All 1271 raw slots now have deterministic provisional structure identities and a strict provenance validator exists. Exact question/answer/figure binding remains 0/1271 in this runtime; do not promote provisional identities to canonical originals.",
-  "next_start": "Start from the current branch HEAD and checkpoint. Do not retry old canonical scans or raw slot-count derivation. In a runtime with the already-verified three source ZIP bytes, run ordered OOXML extraction and bind exact question text, exact answer text or graphical answer asset, source offsets, score evidence and figure relationships to the 1271 structure IDs. Recompute final record_fingerprint and run validate_raw1271_materialization.py until questions1271/1271, answers1271/1271, figure refs41, missing0 PASS. Then create Winpass717 fingerprint review decisions with evidence to 570, validate global1124, immutable freeze, generate new safe variants, compose app records, run browser/A4/publication gates.",
-  "resume_rule": "Use only actual source bytes and exact evidence. Never count-force, never promote a provisional structure identity without exact Q/A/figure provenance, never reconstruct historical107 bodies from counts, never map without source evidence, and never touch main until all gates pass."
+  "current_position": "Recovered Q/A draft progress is now separated from strict completion: 554 recovered drafts are ledgered by exact SHA/count, 3 Standard records are durably strict-persisted, and strict promotion/resume tooling is implemented and locally tested. Strict raw1271 progress is 3/1271; 1268 remain.",
+  "next_start": "Start from the latest math-problem-bank-bootstrap HEAD and this checkpoint. Do not retry old canonical scans, ZIP identity verification, dedupe, or raw slot-count derivation. First re-expose the known recovered draft bytes and already-verified source/OOXML evidence. Verify Standard draft SHA 326f38b5aebadc226d3e12eaf6e750bf4b7727759c2e4f7f06f75dc2ffa114b0 with 317 records and 実力錬成 SHA 818fdd60d26211634d7138b381e55b4123fb4155c682a0375344a3ba0e755c97 with 237 records. Resume strict promotion from the persisted Standard first3, targeting Standard314 remaining plus 実力錬成237. Then materialize Winpass717 exact Q/A/figure provenance, reach strict1271 PASS, review Winpass717 evidence-bound to 570, validate global1124, immutable freeze, generate new safe variants, compose app records, and run browser/A4/publication gates.",
+  "resume_rule": "Use only actual source bytes, recovered draft bytes with exact hash/count, and exact provenance evidence. Never count-force, never promote a draft without exact raw identity and strict validator PASS, never reconstruct historical107 bodies from counts, never map without source evidence, and never touch main until all gates pass."
 }
