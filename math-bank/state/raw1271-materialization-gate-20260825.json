@@ -1,0 +1,16 @@
+{
+  "workflow": "Raw1271 materialization Q/A/figure provenance gate implementation",
+  "implemented": true,
+  "validator": "math-bank/scripts/validate_raw1271_materialization.py",
+  "tests": "math-bank/scripts/test_validate_raw1271_materialization.py",
+  "required_record_count": 1271,
+  "required_by_source": {"Winpass": 717, "実力錬成": 237, "Standard": 317},
+  "required_question_provenance": "1271/1271 exact content + ordered OOXML offsets",
+  "required_answer_provenance": "1271/1271 exact content + ordered OOXML offsets, or graphical answer asset identity",
+  "required_figure_revalidation": {"figure_refs": 41, "missing_figure_refs": 0},
+  "fingerprint_binding": "source identity + raw slot identity + score evidence + exact question/answer + offsets + figure refs",
+  "placeholder_policy": "Non-empty placeholder text is insufficient and fails without provenance.",
+  "actual_qa_binding_complete": 0,
+  "actual_qa_binding_pending": 1271,
+  "note": "Structural identities exist for all 1271 slots, but exact Q/A/figure binding still requires the live source-byte runtime. This state does not claim materialization completion."
+}
