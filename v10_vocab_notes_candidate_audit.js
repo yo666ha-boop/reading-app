@@ -1,7 +1,7 @@
 const fs=require('fs');
 const {JSDOM,VirtualConsole}=require('jsdom');
 
-// 2026-08-25 manual-run marker: regenerate corrected cumulative all-168 evidence now; old 5407 report is invalid.
+// 2026-08-25 isolated pull-request runner marker: regenerate corrected cumulative all-168 evidence now; old 5407 report is invalid.
 function tokenize(text){
   return (String(text||'').replace(/[’]/g,"'").match(/[A-Za-z]+(?:'[A-Za-z]+)*/g)||[]).map(x=>x.toLowerCase());
 }
