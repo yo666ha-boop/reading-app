@@ -17,7 +17,7 @@
     "old_canonical_ref_rescan_forbidden": true,
     "live_source_verification_file": "math-bank/state/source-live-verification-20260825.json",
     "identity_verified_this_run": true,
-    "local_read_result": "PASS_DIRECT_CONVERSATION_MOUNT",
+    "local_read_result": "PASS_DIRECT_CONVERSATION_MOUNT_PREVIOUS_CONFIRMED_RUNTIME",
     "actual_source_identity": {
       "Winpass": {"sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf", "bytes": 8296042, "crc_ok": true, "docx_members": 81},
       "実力錬成": {"sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33", "bytes": 7287279, "crc_ok": true, "docx_members": 80},
@@ -40,6 +40,18 @@
       "実力錬成": "237 slots from 各N点/fixed-score/named-answer labels; all 27 tests independently reconstruct to 100 points"
     }
   },
+  "raw1271_structure_actual": {
+    "state_file": "math-bank/state/raw1271-structure-state-20260825.json",
+    "structure_identity_commit": "9f8f55133122bd4eb9acaca4a2c69a32d89e0ec5",
+    "total": 1271,
+    "unique_ids": 1271,
+    "unique_structure_fingerprints": 1271,
+    "id_scheme": "{source}:{document_stem}:M{major_index:02}:S{major_slot_index:02}",
+    "qa_binding_complete": 0,
+    "qa_binding_pending": 1271,
+    "provisional_only": true,
+    "final_fingerprint_requires_exact_qa_figure_binding": true
+  },
   "historical_source_forensics": {
     "raw_records_reference": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
     "raw_quality_reference": {"questions": "1271/1271", "answers": "1271/1271", "figure_refs": 41, "missing_figure_refs": 0},
@@ -49,6 +61,8 @@
     "raw_validator": "IMPLEMENTED",
     "source_member_manifest": "IMPLEMENTED",
     "ooxml_structure_extractor": "IMPLEMENTED",
+    "raw1271_qa_figure_provenance_gate": "IMPLEMENTED_THIS_RUN",
+    "raw1271_qa_figure_gate_state": "math-bank/state/raw1271-materialization-gate-20260825.json",
     "winpass_717_fingerprint_review_queue": "IMPLEMENTED",
     "winpass_decision_exact_record_fingerprint_binding": "IMPLEMENTED",
     "winpass_570_materializer": "IMPLEMENTED",
@@ -68,31 +82,51 @@
     "parent_record_sha256_required": true
   },
   "data_rebuild_progress": {
-    "source_zip_bytes_read_this_run": true,
-    "zip_identity_this_run": {"Winpass": "PASS", "実力錬成": "PASS", "Standard": "PASS"},
-    "extracted_documents_current_runtime": {"Winpass": 81, "実力錬成": 27, "Standard": 32, "total": 140},
+    "source_zip_bytes_read_and_verified": true,
+    "zip_identity": {"Winpass": "PASS", "実力錬成": "PASS", "Standard": "PASS"},
+    "unique_documents": {"Winpass": 81, "実力錬成": 27, "Standard": 32, "total": 140},
     "raw_slot_counts_verified": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
-    "raw_records_materialized_with_qa": {"Winpass": 0, "実力錬成": 0, "Standard": 0, "total": 0},
+    "raw_structure_ids_materialized": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
+    "raw_records_materialized_with_exact_qa_figure_provenance": {"Winpass": 0, "実力錬成": 0, "Standard": 0, "total": 0},
+    "qa_figure_targets": {"questions": "0/1271", "answers": "0/1271", "figure_refs_revalidated": "0/41", "missing_figure_refs": "not_revalidated_this_runtime"},
+    "winpass_decisions": {"reviewed": 0, "included": 0, "excluded": 0, "target_after_evidence_review": 570},
     "validated_originals": {"Winpass": 0, "実力錬成": 0, "Standard": 0, "total": 0},
     "immutable_mapped_rebuilt_originals": 0,
     "variants": 0,
     "parent_coverage": "0/1124"
   },
+  "ci": {
+    "latest_recorded_state_file": "math-bank/state/ci-latest.json",
+    "latest_recorded_run_id": "32730196071",
+    "latest_recorded_triggering_sha": "6e685fbbc2cbe5b852976e8f203ad234bf2e24b3",
+    "latest_recorded_overall": "success",
+    "latest_recorded_publication_ready": false,
+    "head_ci_status": "NOT_CONFIRMED_AT_CHECKPOINT_TIME",
+    "note": "Recorded ci-latest.json predates current raw1271 materialization commits; do not misreport it as current-head CI."
+  },
   "this_run": {
-    "source_live_verification_commit": "d72b5aab94ff6d0f58d3ffdc9f8bb9f3a766b103",
-    "checkpoint_source_blocker_clear_commit": "f0a29a966d1fdcb8f318710b73d852380693a552",
-    "raw_slot_count_verification_commit": "21ab8a60bcb590407fcf1f072fd53942c162d6f7",
+    "starting_head": "9f8f55133122bd4eb9acaca4a2c69a32d89e0ec5",
+    "raw1271_provenance_validator_commit": "fb71d8c5abd9a2dcb00526c34ef4ac1b12b2d067",
+    "raw1271_provenance_test_commit": "96397e29837a937691abfa09b196bace4873a914",
+    "concurrent_actions_commit_observed": "faaa51f935d763b47d569e40f764e85ae8ecfe0a",
+    "raw1271_provenance_gate_state_commit": "cf5e5738bf6aca172d8b0d74fc2dbc4e86e44bfe",
     "completed": [
-      "Read and verified exact bytes/SHA/CRC of all three source ZIPs",
-      "Reproduced 246 DOCX -> 106 duplicate copies -> 140 unique documents",
-      "Verified per-source unique docs Winpass81 / 実力錬成27 / Standard32",
-      "Reconstructed raw scoring slot counts Winpass717 / 実力錬成237 / Standard317 = 1271 from source scoring evidence",
-      "Persisted per-document slot counts and special scoring evidence to GitHub"
+      "Read latest branch HEAD and checkpoint and preferred GitHub actual over the stale prompt position",
+      "Confirmed all 1271 deterministic provisional structure identities already exist on GitHub",
+      "Confirmed source-derived raw count evidence remains 717/237/317 without count forcing",
+      "Added strict raw1271 Q/A/figure provenance validator that rejects placeholder-only non-empty records",
+      "Added unit tests for OOXML-offset provenance, graphical answers, figure missing state, and content-bound fingerprint tampering",
+      "Persisted raw1271 provenance-gate implementation state",
+      "Observed concurrent GitHub Actions state update without overwriting it"
+    ],
+    "limitations": [
+      "The current automation runtime did not expose the three ZIP bytes through File Library search, so exact Q/A/figure binding could not be truthfully re-executed here.",
+      "Container network could not resolve github.com, so local clone-based unittest execution was unavailable; code was committed through the GitHub connector and should be exercised by repository CI/current source-byte runtime."
     ],
     "main_touched": false,
-    "recorded_at_jst": "2026-08-25T00:30:00+09:00"
+    "recorded_at_jst": "2026-08-25T01:06:00+09:00"
   },
-  "current_position": "Raw scoring-slot counts are fully re-established from live source bytes. Now materialize 1271 records: bind each slot to exact source document/major/subslot, question text preserving math m:t, answer text or graphical answer asset, and a stable record fingerprint.",
-  "next_start": "Do not retry ZIP discovery, old canonical scans, or slot-count derivation. Resume at raw1271 record materialization and Q/A/figure binding. Validate questions1271/1271, answers1271/1271, figure refs41 and missing figure refs0. Then create the Winpass717 fingerprint review queue, make explicit evidence-bound include/exclude decisions to 570, validate global1124, immutable freeze, generate new safe variants, compose app records, run browser/A4/publication gates.",
-  "resume_rule": "Use only actual source bytes and exact evidence. Never count-force, never promote a count-only record without Q/A/figure provenance, never reconstruct historical107 bodies from counts, never map without source evidence."
+  "current_position": "All 1271 raw slots now have deterministic provisional structure identities and a strict provenance validator exists. Exact question/answer/figure binding remains 0/1271 in this runtime; do not promote provisional identities to canonical originals.",
+  "next_start": "Start from the current branch HEAD and checkpoint. Do not retry old canonical scans or raw slot-count derivation. In a runtime with the already-verified three source ZIP bytes, run ordered OOXML extraction and bind exact question text, exact answer text or graphical answer asset, source offsets, score evidence and figure relationships to the 1271 structure IDs. Recompute final record_fingerprint and run validate_raw1271_materialization.py until questions1271/1271, answers1271/1271, figure refs41, missing0 PASS. Then create Winpass717 fingerprint review decisions with evidence to 570, validate global1124, immutable freeze, generate new safe variants, compose app records, run browser/A4/publication gates.",
+  "resume_rule": "Use only actual source bytes and exact evidence. Never count-force, never promote a provisional structure identity without exact Q/A/figure provenance, never reconstruct historical107 bodies from counts, never map without source evidence, and never touch main until all gates pass."
 }
