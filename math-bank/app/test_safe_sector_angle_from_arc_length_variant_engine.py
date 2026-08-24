@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from safe_sector_angle_from_arc_length_variant_engine import generate
+from safe_sector_angle_from_arc_length_variant_engine import PI,SAFE_TRIPLES,_terminates,generate
 
 
 def base_parent():
@@ -8,6 +8,9 @@ def base_parent():
 
 
 def main():
+    for r,length,angle in SAFE_TRIPLES:
+        assert _terminates(length)
+        assert length*360==2*PI*r*angle
     rows,evidence,reason=generate(base_parent(),3)
     assert reason=="sector_angle_from_arc_length_pi_3_14_exact"
     assert len(rows)==len(evidence)==3
