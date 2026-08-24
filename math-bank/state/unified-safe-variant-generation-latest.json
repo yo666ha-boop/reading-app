@@ -1,14 +1,14 @@
 {
-  "status": "FAIL_CI_DIAGNOSTIC",
+  "status": "PASS_CI",
   "persist_schema_version": 69,
-  "run_id": "32681388255",
-  "triggering_sha": "384be98d3f1f3d8c1546d2ee247a305c41e0dd10",
-  "tested_checkout_sha": "384be98d3f1f3d8c1546d2ee247a305c41e0dd10",
+  "run_id": "32681546102",
+  "triggering_sha": "af2f8d010f3bac1edf9b638bc095f912d9827e50",
+  "tested_checkout_sha": "af2f8d010f3bac1edf9b638bc095f912d9827e50",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T02:00:00.656879+00:00",
+  "recorded_at_utc": "2026-08-24T02:04:11.862345+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "failure",
+    "specialized_and_adapters": "success",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -106,6 +106,8 @@
     "sphere_radius_from_surface_area",
     "sphere_radius_from_volume",
     "square_area",
+    "square_root_product",
+    "square_root_quotient",
     "square_root_simplification",
     "square_side_from_area",
     "square_side_from_perimeter",
@@ -124,9 +126,10 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 108,
+  "engine_module_count": 110,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
+    "test_safe_affine_equation_from_two_points_variant_engine.py",
     "test_safe_affine_intercept_from_slope_point_variant_engine.py",
     "test_safe_affine_variant_engine.py",
     "test_safe_affine_x_from_y_variant_engine.py",
@@ -214,6 +217,8 @@
     "test_safe_sphere_radius_from_volume_variant_engine.py",
     "test_safe_sphere_variant_engine.py",
     "test_safe_square_area_variant_engine.py",
+    "test_safe_square_root_product_variant_engine.py",
+    "test_safe_square_root_quotient_variant_engine.py",
     "test_safe_square_root_simplification_variant_engine.py",
     "test_safe_square_side_from_area_variant_engine.py",
     "test_safe_square_side_from_perimeter_variant_engine.py",
@@ -231,9 +236,10 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 104,
+  "engine_test_count": 107,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
+    "test_affine_equation_from_two_points_unified_adapter.py",
     "test_affine_intercept_from_slope_point_unified_adapter.py",
     "test_affine_x_from_y_unified_adapter.py",
     "test_average_missing_value_unified_adapter.py",
@@ -315,6 +321,8 @@
     "test_sphere_radius_from_volume_unified_adapter.py",
     "test_sphere_unified_adapter.py",
     "test_square_area_unified_adapter.py",
+    "test_square_root_product_unified_adapter.py",
+    "test_square_root_quotient_unified_adapter.py",
     "test_square_side_from_area_unified_adapter.py",
     "test_square_side_from_perimeter_unified_adapter.py",
     "test_symmetric_linear_system_unified_adapter.py",
@@ -330,7 +338,7 @@
     "test_two_dice_sum_probability_unified_adapter.py",
     "test_weighted_group_average_unified_adapter.py"
   ],
-  "adapter_test_count": 96,
+  "adapter_test_count": 99,
   "runtime_routes_auto_discovered": [
     "absolute_value",
     "affine",
