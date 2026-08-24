@@ -1,9 +1,9 @@
 {
   "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 68,
-  "run_id": "32677331491",
-  "triggering_sha": "74a414f01ee4dc66a45545c81c187928b48dca67",
-  "recorded_at_utc": "2026-08-24T00:39:54.640375+00:00",
+  "run_id": "32677376751",
+  "triggering_sha": "f7f99a447a07358bd6649468fabfd602ed7e8c3e",
+  "recorded_at_utc": "2026-08-24T00:41:37.062462+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "failure",
@@ -207,6 +207,7 @@
   "engine_test_count": 92,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
+    "test_affine_x_from_y_unified_adapter.py",
     "test_average_missing_value_unified_adapter.py",
     "test_average_total_unified_adapter.py",
     "test_base_from_amount_percent_unified_adapter.py",
@@ -290,7 +291,7 @@
     "test_two_dice_sum_probability_unified_adapter.py",
     "test_weighted_group_average_unified_adapter.py"
   ],
-  "adapter_test_count": 83,
+  "adapter_test_count": 84,
   "runtime_routes_auto_discovered": [
     "absolute_value",
     "affine",
