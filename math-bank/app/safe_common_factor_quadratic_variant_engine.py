@@ -51,7 +51,7 @@ def _parse_parent(parent: dict):
     ak, mm, nn = _coef(am.group("k")), _coef(am.group("m")), int(am.group("n"))
     if (ak, mm, nn) != (k, m, n):
         return None
-    if ak * mm != a or ak * nn != b or abs(ak) != g:
+    if ak * mm != a or ak * nn != b or abs(ak) != g or math.gcd(abs(mm), abs(nn)) != 1:
         return None
     return tm, a, b, k, m, n
 
@@ -100,18 +100,18 @@ def generate(parent: dict, count: int):
         k = -g if ((seed >> (index + 23)) & 1) else g
         a, b = k * m, k * n
         sig = (str(a), str(b))
-        while sig == parent_sig or sig in seen:
+        while sig == parent_sig or sig in seen or math.gcd(abs(m), abs(n)) != 1:
             m += 1
             n += 1 if n > 0 else -1
             a, b = k * m, k * n
             sig = (str(a), str(b))
         seen.add(sig)
         check_g = math.gcd(abs(a), abs(b))
-        if check_g != abs(k) or k * m != a or k * n != b:
+        if check_g != abs(k) or k * m != a or k * n != b or math.gcd(abs(m), abs(n)) != 1:
             raise AssertionError("common factor identity failed")
         poly = _poly_text(a, b)
         answer = _factor_text(k, m, n)
         new_question = q[:tm.start()] + poly + q[tm.end():]
         rows.append({"question": new_question, "answer": answer, "explanation": f"{a}と{b}の最大公約数は{abs(k)}。共通因数{k}xでくくると{answer}。再展開して{poly}に戻る。", "numeric_signature": sig})
-        evidence.append({"parent_sha256": _parent_sha(parent), "method": "common_factor_gcd_and_exact_reexpansion", "parent_recalculation": f"gcd(|{pa}|,|{pb}|)={abs(pk)}; {pk}*{pm}={pa}; {pk}*{pn}={pb}", "variant_recalculation": f"gcd(|{a}|,|{b}|)={abs(k)}", "independent_check": f"{k}*{m}={a}; {k}*{n}={b} PASS"})
+        evidence.append({"parent_sha256": _parent_sha(parent), "method": "common_factor_gcd_and_exact_reexpansion", "parent_recalculation": f"gcd(|{pa}|,|{pb}|)={abs(pk)}; {pk}*{pm}={pa}; {pk}*{pn}={pb}", "variant_recalculation": f"gcd(|{a}|,|{b}|)={abs(k)} and gcd(|{m}|,|{n}|)=1", "independent_check": f"{k}*{m}={a}; {k}*{n}={b}; primitive inner pair PASS"})
     return rows, evidence, "common_factor_quadratic_exact"
