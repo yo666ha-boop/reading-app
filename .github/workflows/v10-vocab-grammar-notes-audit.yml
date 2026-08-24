@@ -43,18 +43,22 @@ jobs:
           const fs=require('fs');
           const r=JSON.parse(fs.readFileSync('v10_vocab_notes_candidate_report.json','utf8')).summary;
           const lines=[
-            'phase=v7_lookup_and_grammar_chronology_pending',
+            'phase=cumulative_vocab_gate_then_v7_lookup_and_grammar_chronology',
             `passages_audited=${r.passages}/168`,
-            `exact_allowed_occurrences=${r.counts.EXACT_ALLOWED}`,
-            `function_to_grammar_occurrences=${r.counts.FUNCTION_TO_GRAMMAR}`,
-            `morphology_to_grammar_occurrences=${r.counts.MORPHOLOGY_TO_GRAMMAR}`,
-            `proper_v7_lookup_occurrences=${r.counts.PROPER_V7_LOOKUP_REQUIRED}`,
-            `v7_lookup_occurrences=${r.counts.V7_LOOKUP_REQUIRED}`,
+            `exact_allowed_occurrences=${r.counts.EXACT_ALLOWED||0}`,
+            `cumulative_prior_allowed_occurrences=${r.counts.CUMULATIVE_ALLOWED||0}`,
+            `function_to_grammar_occurrences=${r.counts.FUNCTION_TO_GRAMMAR||0}`,
+            `morphology_to_grammar_occurrences=${r.counts.MORPHOLOGY_TO_GRAMMAR||0}`,
+            `proper_v7_lookup_occurrences=${r.counts.PROPER_V7_LOOKUP_REQUIRED||0}`,
+            `v7_lookup_occurrences=${r.counts.V7_LOOKUP_REQUIRED||0}`,
+            `unique_v7_lookup_candidates=${r.uniqueV7LookupCandidates||0}`,
+            `unique_proper_lookup_candidates=${r.uniqueProperLookupCandidates||0}`,
             `notes_present=${r.notesPresent}`,
             `missing_gloss=${r.missingGloss}`,
             `missing_allowedWords=${r.missingAllowedWords}`,
             'notes_ui_gate=PASS',
-            'next=resolve every V7 lookup against the v7 master at exact section cutoff; build grammar chronology; then add only indispensable glossed notes'
+            'cumulative_rule=current textbook+grade only; current section plus earlier app-reviewed allowedWords; future sections excluded',
+            'next=resolve only remaining lookup candidates against canonical v7 at exact section cutoff; then grammar chronology; then indispensable glossed notes only'
           ];
           fs.writeFileSync('VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt',lines.join('\n')+'\n');
           NODE
@@ -78,6 +82,6 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add v10_vocab_notes_candidate_report.json v10_vocab_notes_candidate_audit.log v10_notes_ui_test.log VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt
           if ! git diff --cached --quiet; then
-            git commit -m 'Record all-168 vocabulary and gloss UI audit [skip ci]'
+            git commit -m 'Record cumulative all-168 vocabulary and gloss UI audit [skip ci]'
             git push origin HEAD:v10-vocab-grammar-notes-audit
           fi
