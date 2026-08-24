@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import argparse
-import importlib.util
 import json
 import zipfile
 from collections import Counter
@@ -9,11 +8,7 @@ from datetime import datetime, timezone
 from pathlib import Path, PurePosixPath
 from typing import Any
 
-VERIFIER_PATH = Path(__file__).with_name("verify_source_archives.py")
-spec = importlib.util.spec_from_file_location("verify_source_archives", VERIFIER_PATH)
-assert spec and spec.loader
-verifier = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(verifier)
+import verify_source_archives as verifier
 
 HISTORICAL_DOCUMENT_TARGETS = {"winpass": 81, "jitsuren": 27, "standard": 32}
 IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp", ".svg", ".emf", ".wmf"}
