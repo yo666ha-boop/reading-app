@@ -1,14 +1,14 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32681726244",
-  "triggering_sha": "23459d72a9b5e8789cad92b178d6c52fc4621898",
-  "tested_checkout_sha": "23459d72a9b5e8789cad92b178d6c52fc4621898",
+  "run_id": "32684856067",
+  "triggering_sha": "550f5aafa3226fa1b0a9ed54d9d571b924f72596",
+  "tested_checkout_sha": "550f5aafa3226fa1b0a9ed54d9d571b924f72596",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T02:06:22.223211+00:00",
+  "recorded_at_utc": "2026-08-24T02:59:33.867714+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
+    "specialized_and_adapters": "failure",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -95,6 +95,7 @@
     "regular_polygon_sides_from_exterior_angle",
     "regular_polygon_sides_from_interior_angle",
     "relative_frequency",
+    "sector_angle_from_arc_length",
     "sector_angle_from_area",
     "sector_arc_length",
     "sector_area",
@@ -127,7 +128,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 111,
+  "engine_module_count": 112,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_equation_from_two_points_variant_engine.py",
