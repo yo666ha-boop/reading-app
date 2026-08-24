@@ -5,6 +5,7 @@ from decimal import Decimal, InvalidOperation
 import hashlib,json,re
 from safe_circle_radius_from_circumference_variant_engine import generate as generate_radius_from_circumference
 from safe_circle_diameter_from_circumference_variant_engine import generate as generate_diameter_from_circumference
+from safe_circle_radius_from_diameter_variant_engine import generate as generate_radius_from_diameter
 RADIUS_RE=re.compile(r"半径\s*(?P<radius>\d+)\s*cm")
 ANSWER_RE=re.compile(r"^(?P<value>\d+(?:\.\d+)?)\s*cm$")
 PI=Decimal('3.14')
@@ -30,7 +31,7 @@ def _parse_parent(p):
     return m,r,expected
 def can_generate(p):
     if _parse_parent(p) is not None: return True,'circle_integer_cm_circumference_pi_3_14_exact'
-    for fn in (generate_radius_from_circumference,generate_diameter_from_circumference):
+    for fn in (generate_radius_from_circumference,generate_diameter_from_circumference,generate_radius_from_diameter):
         rows,_,reason=fn(p,1)
         if rows: return True,reason
     if p.get('figure_refs'): return False,'figure_parent'
@@ -40,7 +41,7 @@ def generate(p,count):
     if count not in (1,2,3): raise ValueError('count must be 1, 2, or 3')
     parsed=_parse_parent(p)
     if parsed is None:
-        for fn in (generate_radius_from_circumference,generate_diameter_from_circumference):
+        for fn in (generate_radius_from_circumference,generate_diameter_from_circumference,generate_radius_from_diameter):
             rows,ev,reason=fn(p,count)
             if rows: return rows,ev,reason
         return [],[],'circle_circumference_parent_not_exactly_parsed_and_verified'
