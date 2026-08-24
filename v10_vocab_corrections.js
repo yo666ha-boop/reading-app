@@ -5,23 +5,46 @@ window.V10_VOCAB_CORRECTIONS = [
   {textbook:'ニューホライズン',grade:'1',section:'Unit 1-3',english:'comics',japanese:'マンガ',basis:'Unit 1 Part 3 textbook booklet explicitly lists comic(s) and uses Do you like comics? / I draw comics, too.',rule:'explicit textbook form; not automatic plural inflection'},
   {textbook:'ニューホライズン',grade:'1',section:'Unit 1-3',english:'lessons',japanese:'レッスン',basis:'Unit 1 Part 3 textbook booklet explicitly lists lesson(s) and uses I take swimming lessons.',rule:'explicit textbook form; not automatic plural inflection'},
   {textbook:'サンシャイン',grade:'1',section:'Get Ready 4',english:'play',japanese:'~をする',basis:'v7 master SS1 pre-step record ID 2146: プレステップ4 だれが何をどうする / play / ~をする.',rule:'v7-confirmed cumulative vocabulary; repair allowedWords metadata omission, not an unknown-word note'},
+  {textbook:'サンシャイン',grade:'1',section:'Get Ready 6',english:'use',japanese:'~を使う',basis:'v7 master SS1 record ID 2193: プレステップ8 一般動詞 / use / ~を使う.',rule:'v7-confirmed pre-PROGRAM vocabulary; keep inflected forms in grammar chronology rather than auto-approving them'},
+  {textbook:'ニューホライズン',grade:'1',section:'Unit 0',english:'use',japanese:'~を使う',basis:'v7 master NH1 record ID 80: プレステップ8 一般動詞 / use / ~を使う.',rule:'v7-confirmed pre-Unit vocabulary; keep inflected forms in grammar chronology rather than auto-approving them'},
+  {textbook:'ニューホライズン',grade:'1',section:'Unit 4-3',english:'tell',japanese:'話す, 教える',basis:'v7 master NH1 record ID 365: Unit4 Stage Activity 1 / tell / 話す, 教える.',rule:'v7-confirmed G1 vocabulary used only as prior-grade basis for later G2 morphology'},
   {textbook:'サンシャイン',grade:'2',section:'PROGRAM 1-1',english:'eat',japanese:'~を食べる',basis:'v7 master SS1 record ID 2152: プレステップ4 だれが何をどうする / eat / ~を食べる.',rule:'prior-grade v7-confirmed vocabulary; repair first G2 allowedWords metadata omission'},
   {textbook:'ニューホライズン',grade:'2',section:'Unit 0',english:'eat',japanese:'~を食べる',basis:'v7 master NH1 record ID 39: プレステップ4 だれが何をどうする / eat / ~を食べる.',rule:'prior-grade v7-confirmed vocabulary; repair first G2 allowedWords metadata omission'},
-  {textbook:'ニューホライズン',grade:'2',section:'Unit 1-3',english:'large',japanese:'大きい, 広い',basis:'v7 master NH1 record ID 558: Unit7 / Real Life English 3 / large / 大きい, 広い.',rule:'prior-grade v7-confirmed vocabulary; repair first G2 allowedWords metadata omission'}
+  {textbook:'ニューホライズン',grade:'2',section:'Unit 1-3',english:'large',japanese:'大きい, 広い',basis:'v7 master NH1 record ID 558: Unit7 / Real Life English 3 / large / 大きい, 広い.',rule:'prior-grade v7-confirmed vocabulary; repair first G2 allowedWords metadata omission'},
+  {textbook:'ニューホライズン',grade:'2',section:'Unit 2-1',english:'today',japanese:'今日(は)',basis:'v7 master NH1 record ID 101: プレステップ9 can / today / 今日(は).',rule:'prior-grade v7-confirmed vocabulary; capitalization at sentence start is not a proper-name exception'},
+  {textbook:'ニューホライズン',grade:'2',section:'Unit 5-4',english:'give',japanese:'与える',basis:'v7 master NH2 record ID 1114: Let’s Read 1 P44-P47 / give-gave / 与える[原形-過去形], which is earlier than Unit 5.',rule:'earlier-section v7-confirmed vocabulary; Unit 5-4 use is not a future leak'},
+  {textbook:'ニューホライズン',grade:'2',section:'Unit 7-1',english:'map',japanese:'地図',basis:'v7 master NH1 Unit0 entry for map; already learned in prior grade.',rule:'prior-grade v7-confirmed vocabulary; repair allowedWords metadata omission'},
+  {textbook:'ニューホライズン',grade:'3',section:'Unit 2-3',english:'a lot',japanese:'たいへん, とても',basis:'v7 master NH1 record ID 757: Unit10 Read and Think / a lot / たいへん, とても.',rule:'prior-grade v7-confirmed phrase; repair allowedWords metadata omission'},
+  {textbook:'サンシャイン',grade:'3',section:'PROGRAM 6-2',english:'above',japanese:'~の上に',basis:'v7 master SS2 Reading2 entry for above; already learned in prior grade.',rule:'prior-grade v7-confirmed vocabulary; repair allowedWords metadata omission'}
 ];
 (function installV10VocabularyCorrectionApplier(){
   function pools(){return [window.V10_SUNSHINE_G1,window.V10_NEWHORIZON_G1,window.V10_PASSAGES_G2_SS,window.V10_PASSAGES_G2_NH,window.V10_PASSAGES_G3_SS,window.V10_PASSAGES_G3_NH].filter(Boolean);}
   function hasToken(rows,word){const re=new RegExp('(^|[^A-Za-z])'+String(word).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'([^A-Za-z]|$)','i');return (rows||[]).some(r=>re.test(Array.isArray(r)?String(r[0]||''):String(r||'')));}
-  function syncFutureVocabRepairs(){
+  function syncFutureVocabRepairs(){let repaired=0;
     const m=window.V10_PASSAGES_G2_NH&&window.V10_PASSAGES_G2_NH['Unit 2-2'];
-    if(!m||!Array.isArray(m.sentences)||m.sentences[0]!=='At school, I give a short speech about local food.')return 0;
-    m.sentences[0]='At school, I talk about local food in a short speech.';
-    m.fullTranslation=String(m.fullTranslation||'').replace('学校で、私は地元の食べ物について短いスピーチをします。','学校で、私は短いスピーチで地元の食べ物について話します。');
-    if(Array.isArray(m.slashRows)&&m.slashRows[0]){m.slashRows[0].en='At school, / I talk about / local food / in a short speech.';m.slashRows[0].jp='学校で / 私は話します / 地元の食べ物について / 短いスピーチで';}
-    if(Array.isArray(m.questions)&&m.questions[0]){m.questions[0].evidence='At school, I talk about local food in a short speech.';m.questions[0].evidenceJp='学校で、私は短いスピーチで地元の食べ物について話します。';m.questions[0].reason='talk about の後ろが local food です。';}
-    m.auditNote=String(m.auditNote||'')+' v7 chronology repair: give first appears in NH2 Let’s Read 1 (P44-P47), so earlier Unit 2-2 was synchronized to prior-reviewed talk about; sentence/fullTranslation/slash/A evidence were updated together.';
-    window.V10_FUTURE_VOCAB_REPAIRS_APPLIED=(window.V10_FUTURE_VOCAB_REPAIRS_APPLIED||0)+1;
-    return 1;
+    if(m&&Array.isArray(m.sentences)&&m.sentences[0]==='At school, I give a short speech about local food.'){
+      m.sentences[0]='At school, I talk about local food in a short speech.';
+      m.fullTranslation=String(m.fullTranslation||'').replace('学校で、私は地元の食べ物について短いスピーチをします。','学校で、私は短いスピーチで地元の食べ物について話します。');
+      if(Array.isArray(m.slashRows)&&m.slashRows[0]){m.slashRows[0].en='At school, / I talk about / local food / in a short speech.';m.slashRows[0].jp='学校で / 私は話します / 地元の食べ物について / 短いスピーチで';}
+      if(Array.isArray(m.questions)&&m.questions[0]){m.questions[0].evidence='At school, I talk about local food in a short speech.';m.questions[0].evidenceJp='学校で、私は短いスピーチで地元の食べ物について話します。';m.questions[0].reason='talk about の後ろが local food です。';}
+      m.auditNote=String(m.auditNote||'')+' v7 chronology repair: give first appears in NH2 Let’s Read 1 (P44-P47), so earlier Unit 2-2 was synchronized to prior-reviewed talk about; sentence/fullTranslation/slash/A evidence were updated together.';
+      repaired++;
+    }
+    const p=window.V10_PASSAGES_G2_SS&&window.V10_PASSAGES_G2_SS['PROGRAM 2-1'];
+    if(p&&Array.isArray(p.sentences)&&p.sentences[p.sentences.length-1]==='Baseball can bring people together.'){
+      p.sentences.pop();
+      if(Array.isArray(p.slashRows)&&p.slashRows[p.slashRows.length-1]&&p.slashRows[p.slashRows.length-1].en==='Baseball can bring / people / together.')p.slashRows.pop();
+      p.fullTranslation=String(p.fullTranslation||'').replace('野球は人々を結びつけることができます。','');
+      p.auditNote=String(p.auditNote||'')+' v7 chronology repair: bring first appears later in SS2 Reading 1, so the future-vocabulary closing sentence was removed; B5 is synchronized to an existing prior-vocabulary sentence.';
+      repaired++;
+    }
+    const meta=window.V10_INTERACTION_META&&window.V10_INTERACTION_META['サンシャイン|2|PROGRAM 2-1'];
+    if(meta&&Array.isArray(meta.questionSetB)&&meta.questionSetB[4]&&meta.questionSetB[4].evidence==='Baseball can bring people together.'){
+      meta.questionSetB[4]={prompt:'5. 私たちは何を応援すべきですか。本文から英語で答えなさい。',answer:'the project',evidence:'We should root for the project, too.',evidenceJp:'私たちもそのプロジェクトを応援すべきです。',reason:'root for の後ろが the project です。'};
+      repaired++;
+    }
+    window.V10_FUTURE_VOCAB_REPAIRS_APPLIED=(window.V10_FUTURE_VOCAB_REPAIRS_APPLIED||0)+repaired;
+    return repaired;
   }
   function apply(){let applied=0,targetsSeen=0;for(const c of (window.V10_VOCAB_CORRECTIONS||[])){for(const pool of pools())for(const m of Object.values(pool||{})){if(!m||String(m.textbook)!==String(c.textbook)||String(m.grade)!==String(c.grade)||String(m.section)!==String(c.section))continue;targetsSeen++;m.allowedWords=Array.isArray(m.allowedWords)?m.allowedWords:[];if(!hasToken(m.allowedWords,c.english)){m.allowedWords.push([c.english,`v7 correction: ${c.basis}`]);applied++;}}}syncFutureVocabRepairs();window.V10_VOCAB_CORRECTIONS_APPLIED=(window.V10_VOCAB_CORRECTIONS_APPLIED||0)+applied;window.V10_VOCAB_CORRECTION_TARGETS_SEEN=targetsSeen;return targetsSeen;}
   let tries=0;apply();const timer=setInterval(()=>{tries++;const targetsSeen=apply();const expected=(window.V10_VOCAB_CORRECTIONS||[]).length;if((window.V10_RUNTIME_LOAD_PROGRESS==='complete'&&targetsSeen>=expected)||tries>=1200){clearInterval(timer);apply();}},100);window.addEventListener('load',()=>setTimeout(apply,0),{once:true});
