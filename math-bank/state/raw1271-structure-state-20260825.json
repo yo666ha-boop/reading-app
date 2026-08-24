@@ -1,0 +1,16 @@
+{
+  "workflow": "Raw1271 structural record materialization",
+  "counts": {"Standard": 317, "実力錬成": 237, "Winpass": 717},
+  "total": 1271,
+  "unique_ids": 1271,
+  "unique_structure_fingerprints": 1271,
+  "expected_match": true,
+  "qa_binding_complete": 0,
+  "qa_binding_pending": 1271,
+  "structure_jsonl_sha256": "2c3c28d15c7fa8a799305b06274ce447a25d359599e902c27aa3e06b52b26409",
+  "structure_jsonl_bytes": 793675,
+  "id_scheme": "{source}:{document_stem}:M{major_index:02}:S{major_slot_index:02}",
+  "fingerprint_basis": "source_document_sha256 + raw_id + score_rule + score_evidence",
+  "note": "Structure IDs are deterministic provisional identities for Q/A binding. Final record fingerprint must be recomputed after exact question/answer/figure binding.",
+  "next": "Bind exact Q/A/figure assets to all 1271 structure IDs."
+}
