@@ -1,14 +1,14 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32678610458",
-  "triggering_sha": "258016facc1ec2b28cbb9ca32575bf96ee632d87",
-  "tested_checkout_sha": "258016facc1ec2b28cbb9ca32575bf96ee632d87",
+  "run_id": "32678682481",
+  "triggering_sha": "957d8729a7ad797ac286a180e207a12dcdf9eaa0",
+  "tested_checkout_sha": "957d8729a7ad797ac286a180e207a12dcdf9eaa0",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T01:04:36.336249+00:00",
+  "recorded_at_utc": "2026-08-24T01:05:59.320801+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
+    "specialized_and_adapters": "failure",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -73,6 +73,7 @@
     "proportion",
     "pythagorean_hypotenuse",
     "pythagorean_leg",
+    "quadratic_integer_roots",
     "quadratic_square_equation",
     "ratio_simplification",
     "rectangle_area",
@@ -115,7 +116,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 99,
+  "engine_module_count": 100,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_intercept_from_slope_point_variant_engine.py",
