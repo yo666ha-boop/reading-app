@@ -1,12 +1,31 @@
 {
   "workflow": "Math Source Rebuild Contract",
   "status": "PASS_CI",
-  "run_id": "32720224373",
-  "triggering_sha": "fea24854a313cc419f18178bdfe55a1c9d3d13ae",
-  "tested_head_after_rebase": "5f9663b3bbd228fc2d4a5b3591001a9c085797d6",
+  "mode": "AUDITED_RECONSTRUCTION_FROM_EXACT_SOURCE_INPUTS",
+  "run_id": "32720593600",
+  "triggering_sha": "83e81b4d4f93d4ff09ad14faeda5b37ee6248f8d",
+  "tested_head_after_rebase": "73f9cbe284edf97ba6b5d43bfd9be21d7bde0718",
   "renamed_copy_suffix_supported": true,
-  "exact_historical_sha_required": true,
+  "exact_historical_source_sha_required": true,
   "hash_mismatch_fail_closed": true,
+  "raw_1271_direct_promotion_forbidden": true,
+  "historical_canonical_byte_claim_without_old_zip_forbidden": true,
+  "source_reconstruction_allowed_after_full_reaudit": true,
+  "required_rebuild_targets": {
+    "documents": 140,
+    "raw": {
+      "Winpass": 717,
+      "実力錬成": 237,
+      "Standard": 317
+    },
+    "validated_originals": {
+      "Winpass": 570,
+      "実力錬成": 237,
+      "Standard": 317,
+      "total": 1124
+    }
+  },
   "real_source_archives_committed": false,
-  "recorded_at_utc": "2026-08-24T11:28:17.763615+00:00"
+  "next_if_sources_available": "identity -> 140-doc profile -> raw 717/237/317 -> evidence-based Winpass normalization -> full 1124 validation",
+  "recorded_at_utc": "2026-08-24T11:29:34.038165+00:00"
 }
