@@ -1,14 +1,14 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32678929716",
-  "triggering_sha": "3c47845960e08c27a5fecd19f5685818ae58ca2e",
-  "tested_checkout_sha": "3c47845960e08c27a5fecd19f5685818ae58ca2e",
+  "run_id": "32678990841",
+  "triggering_sha": "11c374ed33280baee4d83207f551398b3a47d46f",
+  "tested_checkout_sha": "11c374ed33280baee4d83207f551398b3a47d46f",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T01:10:49.156025+00:00",
+  "recorded_at_utc": "2026-08-24T01:11:34.844728+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
+    "specialized_and_adapters": "failure",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -91,6 +91,7 @@
     "regular_polygon_sides_from_exterior_angle",
     "regular_polygon_sides_from_interior_angle",
     "relative_frequency",
+    "sector_area",
     "single_draw_probability",
     "slope_from_two_points",
     "speed_distance",
@@ -117,7 +118,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 101,
+  "engine_module_count": 102,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_intercept_from_slope_point_variant_engine.py",
