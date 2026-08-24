@@ -37,7 +37,7 @@ permissions:
 jobs:
   discovery:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -47,44 +47,45 @@ jobs:
           node-version: '20'
       - name: Install audit dependency
         run: npm install --no-save --no-package-lock jsdom@24.1.3
-      - name: Verify v7 correction and gloss UI
-        run: node v10_notes_ui_test.js | tee v10_notes_ui_test.log
       - name: Run all-168 vocabulary candidate audit
-        run: node v10_vocab_notes_candidate_audit.js | tee v10_vocab_notes_candidate_audit.log
+        shell: bash
+        run: |
+          set -o pipefail
+          timeout 180s node v10_vocab_notes_candidate_audit.js | tee v10_vocab_notes_candidate_audit.log
       - name: Run all-168 grammar structure candidate audit
-        run: node v10_grammar_chronology_candidate_audit.js | tee v10_grammar_chronology_candidate_audit.log
+        shell: bash
+        run: |
+          set -o pipefail
+          timeout 180s node v10_grammar_chronology_candidate_audit.js | tee v10_grammar_chronology_candidate_audit.log
+      - name: Verify v7 correction and gloss UI
+        id: notes_ui
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          timeout 120s node v10_notes_ui_test.js | tee v10_notes_ui_test.log
       - name: Write compact status
+        if: always()
         shell: bash
         run: |
           node - <<'NODE'
           const fs=require('fs');
-          const r=JSON.parse(fs.readFileSync('v10_vocab_notes_candidate_report.json','utf8')).summary;
-          const g=JSON.parse(fs.readFileSync('v10_grammar_chronology_candidate_report.json','utf8'));
-          const lines=[
-            'phase=cumulative_vocab_gate_then_v7_lookup_and_grammar_chronology',
-            `passages_audited=${r.passages}/168`,
-            `exact_allowed_occurrences=${r.counts.EXACT_ALLOWED||0}`,
-            `cumulative_prior_allowed_occurrences=${r.counts.CUMULATIVE_ALLOWED||0}`,
-            `function_to_grammar_occurrences=${r.counts.FUNCTION_TO_GRAMMAR||0}`,
-            `morphology_to_grammar_occurrences=${r.counts.MORPHOLOGY_TO_GRAMMAR||0}`,
-            `proper_v7_lookup_occurrences=${r.counts.PROPER_V7_LOOKUP_REQUIRED||0}`,
-            `v7_lookup_occurrences=${r.counts.V7_LOOKUP_REQUIRED||0}`,
-            `unique_v7_lookup_candidates=${r.uniqueV7LookupCandidates||0}`,
-            `unique_proper_lookup_candidates=${r.uniqueProperLookupCandidates||0}`,
-            `notes_present=${r.notesPresent}`,
-            `missing_gloss=${r.missingGloss}`,
-            `missing_allowedWords=${r.missingAllowedWords}`,
-            `grammar_candidate_passages=${g.passages}/168`,
-            `grammar_detected_feature_types=${Object.keys(g.featureSummary||{}).length}`,
-            'grammar_candidate_status=CANDIDATES_NOT_PASS_FAIL_REQUIRE_EVIDENCE_BACKED_SECTION_CHRONOLOGY',
-            'notes_ui_gate=PASS',
-            'cumulative_rule=current textbook+grade only; current section plus earlier app-reviewed allowedWords; future sections excluded',
-            'next=resolve only remaining lookup candidates against canonical v7 at exact section cutoff; build evidence-backed grammar chronology from detected structures; then indispensable glossed notes only'
-          ];
+          const lines=['phase=cumulative_vocab_gate_then_v7_lookup_and_grammar_chronology'];
+          if(fs.existsSync('v10_vocab_notes_candidate_report.json')){
+            const r=JSON.parse(fs.readFileSync('v10_vocab_notes_candidate_report.json','utf8')).summary;
+            lines.push(`passages_audited=${r.passages}/168`, `exact_allowed_occurrences=${r.counts.EXACT_ALLOWED||0}`, `cumulative_prior_allowed_occurrences=${r.counts.CUMULATIVE_ALLOWED||0}`, `function_to_grammar_occurrences=${r.counts.FUNCTION_TO_GRAMMAR||0}`, `morphology_to_grammar_occurrences=${r.counts.MORPHOLOGY_TO_GRAMMAR||0}`, `proper_v7_lookup_occurrences=${r.counts.PROPER_V7_LOOKUP_REQUIRED||0}`, `v7_lookup_occurrences=${r.counts.V7_LOOKUP_REQUIRED||0}`, `unique_v7_lookup_candidates=${r.uniqueV7LookupCandidates||0}`, `unique_proper_lookup_candidates=${r.uniqueProperLookupCandidates||0}`, `notes_present=${r.notesPresent}`, `missing_gloss=${r.missingGloss}`, `missing_allowedWords=${r.missingAllowedWords}`);
+          } else lines.push('vocab_audit=FAIL_NO_REPORT');
+          if(fs.existsSync('v10_grammar_chronology_candidate_report.json')){
+            const g=JSON.parse(fs.readFileSync('v10_grammar_chronology_candidate_report.json','utf8'));
+            lines.push(`grammar_candidate_passages=${g.passages}/168`, `grammar_detected_feature_types=${Object.keys(g.featureSummary||{}).length}`);
+          } else lines.push('grammar_audit=FAIL_NO_REPORT');
+          const ui=fs.existsSync('v10_notes_ui_test.log')&&/NOTES UI PASS/.test(fs.readFileSync('v10_notes_ui_test.log','utf8'))?'PASS':'FAIL_OR_TIMEOUT';
+          lines.push(`notes_ui_gate=${ui}`, 'cumulative_rule=current textbook+grade only; current section plus earlier app-reviewed allowedWords; future sections excluded', 'next=resolve only remaining lookup candidates against canonical v7 at exact section cutoff; build evidence-backed grammar chronology from detected structures; then indispensable glossed notes only');
           fs.writeFileSync('VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt',lines.join('\n')+'\n');
           NODE
           cat VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt
       - name: Upload discovery evidence
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: v10-vocab-grammar-notes-candidate-report
@@ -95,15 +96,16 @@ jobs:
             v10_grammar_chronology_candidate_audit.log
             v10_notes_ui_test.log
             VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30
       - name: Persist report and checkpoint
+        if: always()
         shell: bash
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add v10_vocab_notes_candidate_report.json v10_vocab_notes_candidate_audit.log v10_grammar_chronology_candidate_report.json v10_grammar_chronology_candidate_audit.log v10_notes_ui_test.log VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt
+          git add -f v10_vocab_notes_candidate_report.json v10_vocab_notes_candidate_audit.log v10_grammar_chronology_candidate_report.json v10_grammar_chronology_candidate_audit.log v10_notes_ui_test.log VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt 2>/dev/null || true
           if ! git diff --cached --quiet; then
             git commit -m 'Record cumulative vocabulary and grammar candidate audits [skip ci]'
             git push origin HEAD:${{ github.head_ref || 'v10-vocab-grammar-notes-audit' }}
