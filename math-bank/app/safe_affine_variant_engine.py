@@ -7,6 +7,7 @@ import json
 import re
 from fractions import Fraction
 
+from safe_affine_equation_from_two_points_variant_engine import generate as generate_affine_two_points
 from safe_affine_intercept_from_slope_point_variant_engine import generate as generate_affine_intercept
 from safe_affine_x_from_y_variant_engine import generate as generate_affine_x_from_y
 from safe_direct_proportion_constant_variant_engine import generate as generate_direct_proportion_constant
@@ -16,13 +17,11 @@ NUM = r"[+-]?\d+(?:/\d+)?"
 AFFINE_RE = re.compile(rf"(?P<formula>[yｙ]\s*=\s*(?P<a>{NUM})?\s*[xｘ]\s*(?:(?P<sign>[+＋\-−])\s*(?P<b>\d+(?:/\d+)?))?)")
 X_VALUE_RE = re.compile(rf"[xｘ]\s*=\s*(?P<x>{NUM})")
 Y_ANSWER_RE = re.compile(rf"^(?:[yｙ]\s*=\s*)?(?P<y>{NUM})$")
-
 def _norm(text: object) -> str: return str(text or "").replace("−", "-").replace("＋", "+")
 def _fraction(text: str) -> Fraction: return Fraction(_norm(text).replace(" ", ""))
 def _fraction_text(value: Fraction) -> str: return str(value.numerator) if value.denominator == 1 else f"{value.numerator}/{value.denominator}"
 def _parent_sha(parent: dict) -> str:
     raw=json.dumps(parent,ensure_ascii=False,sort_keys=True,separators=(",", ":")).encode("utf-8"); return hashlib.sha256(raw).hexdigest()
-
 def _parse_parent(parent: dict):
     if parent.get("figure_refs") or parent.get("choices") is not None: return (None,None,None,None,None,None)
     q=_norm(parent.get("question")); fm=list(AFFINE_RE.finditer(q)); xm=list(X_VALUE_RE.finditer(q))
@@ -34,9 +33,8 @@ def _parse_parent(parent: dict):
     x=_fraction(xmatch.group("x")); y=a*x+b; answer=_norm(parent.get("answer")).replace(" ",""); am=Y_ANSWER_RE.fullmatch(answer)
     if am is None or _fraction(am.group("y"))!=y or a==0 or (y-b)/a!=x: return (None,None,None,None,None,None)
     return formula,xmatch,a,b,x,y
-
 def can_generate(parent: dict)->tuple[bool,str]:
-    for fn in (generate_linear_equation, generate_affine_intercept, generate_affine_x_from_y, generate_direct_proportion_constant):
+    for fn in (generate_affine_two_points, generate_linear_equation, generate_affine_intercept, generate_affine_x_from_y, generate_direct_proportion_constant):
         rows,_,reason=fn(parent,1)
         if rows: return True,reason
     parsed=_parse_parent(parent)
@@ -45,10 +43,9 @@ def can_generate(parent: dict)->tuple[bool,str]:
         if parent.get("choices") is not None: return False,"choice_parent"
         return False,"affine_parent_not_exactly_parsed_and_verified"
     return True,"affine_function_exact"
-
 def generate(parent:dict,count:int)->tuple[list[dict],list[dict],str]:
     if count not in (1,2,3): raise ValueError("count must be 1, 2, or 3")
-    for fn in (generate_linear_equation, generate_affine_intercept, generate_affine_x_from_y, generate_direct_proportion_constant):
+    for fn in (generate_affine_two_points, generate_linear_equation, generate_affine_intercept, generate_affine_x_from_y, generate_direct_proportion_constant):
         rows,evidence,reason=fn(parent,count)
         if rows: return rows,evidence,reason
     parsed=_parse_parent(parent); formula,xmatch,a,b,x,parent_y=parsed
