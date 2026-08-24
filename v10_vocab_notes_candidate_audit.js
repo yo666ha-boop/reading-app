@@ -6,7 +6,7 @@ function tokenize(text){
 }
 function uniq(a){return [...new Set(a)];}
 function assert(c,m){if(!c)throw new Error(m)}
-function flattenAllowed(m){
+function allowedTokens(m){
   const rows=Array.isArray(m&&m.allowedWords)?m.allowedWords:[];
   const src=rows.map(r=>Array.isArray(r)?String(r[0]||''):String(r||'')).join(' / ');
   return new Set(tokenize(src));
@@ -37,12 +37,15 @@ function sourceStrings(m,meta){
   b.forEach((q,i)=>['prompt','answer','evidence'].forEach(k=>out.push({where:`B${i+1}.${k}`,text:q&&q[k]})));
   return out;
 }
-function classifyToken(w,allowed,raw){
-  if(allowed.has(w))return {kind:'EXACT_ALLOWED'};
+function classifyToken(w,localAllowed,cumulativeAllowed,raw){
+  if(localAllowed.has(w))return {kind:'EXACT_ALLOWED'};
+  if(cumulativeAllowed.has(w))return {kind:'CUMULATIVE_ALLOWED'};
   if(FUNCTION_TO_GRAMMAR.has(w)||CONTRACTIONS_TO_GRAMMAR.has(w))return {kind:'FUNCTION_TO_GRAMMAR'};
-  const irr=IRREGULAR_TO_GRAMMAR.get(w);if(irr&&allowed.has(irr))return {kind:'MORPHOLOGY_TO_GRAMMAR',base:irr};
-  const base=morphologyBases(w).find(b=>allowed.has(b));if(base)return {kind:'MORPHOLOGY_TO_GRAMMAR',base};
-  const proper=/\b[A-Z][A-Za-z]+(?:'[A-Za-z]+)?\b/.test(String(raw||''))&&w.length>1;
+  const irr=IRREGULAR_TO_GRAMMAR.get(w);
+  if(irr&&cumulativeAllowed.has(irr))return {kind:'MORPHOLOGY_TO_GRAMMAR',base:irr};
+  const base=morphologyBases(w).find(b=>cumulativeAllowed.has(b));
+  if(base)return {kind:'MORPHOLOGY_TO_GRAMMAR',base};
+  const proper=/^[A-Z][A-Za-z]+(?:'[A-Za-z]+)?$/.test(String(raw||''))&&w.length>1;
   return {kind:proper?'PROPER_V7_LOOKUP_REQUIRED':'V7_LOOKUP_REQUIRED'};
 }
 async function waitFor(fn,ms=30000){const st=Date.now();while(Date.now()-st<ms){if(fn())return;await new Promise(r=>setTimeout(r,50));}throw new Error('runtime load timeout');}
@@ -52,18 +55,23 @@ async function waitFor(fn,ms=30000){const st=Date.now();while(Date.now()-st<ms){
   await new Promise((res,rej)=>{const t=setTimeout(()=>rej(new Error('load timeout')),20000);dom.window.addEventListener('load',()=>{clearTimeout(t);res()},{once:true});});
   const w=dom.window;await waitFor(()=>w.V10_RUNTIME_LOAD_PROGRESS==='complete'&&!w.V10_RUNTIME_LOAD_ERROR);
   const DATASETS=w.eval('DATASETS');const META=w.eval('META');
-  let total=0;const report=[];const counts={EXACT_ALLOWED:0,FUNCTION_TO_GRAMMAR:0,MORPHOLOGY_TO_GRAMMAR:0,PROPER_V7_LOOKUP_REQUIRED:0,V7_LOOKUP_REQUIRED:0};
-  let notesPresent=0,missingGloss=0,missingAllowedWords=0;const global=new Map();
+  let total=0;const report=[];
+  const counts={EXACT_ALLOWED:0,CUMULATIVE_ALLOWED:0,FUNCTION_TO_GRAMMAR:0,MORPHOLOGY_TO_GRAMMAR:0,PROPER_V7_LOOKUP_REQUIRED:0,V7_LOOKUP_REQUIRED:0};
+  let notesPresent=0,missingGloss=0,missingAllowedWords=0;const global=new Map();const orders={};
   for(const grade of ['1','2','3'])for(const textbook of ['サンシャイン','ニューホライズン']){
     const set=(DATASETS[grade]||{})[textbook]||{};
-    for(const [section,m] of Object.entries(set)){
-      total++;
-      const allowed=flattenAllowed(m);if(!allowed.size)missingAllowedWords++;
+    const entries=Object.entries(set);
+    const cumulative=new Set();
+    const orderKey=`${textbook}|${grade}`;orders[orderKey]=entries.map(([section])=>section);
+    for(let sectionIndex=0;sectionIndex<entries.length;sectionIndex++){
+      const [section,m]=entries[sectionIndex];total++;
+      const localAllowed=allowedTokens(m);if(!localAllowed.size)missingAllowedWords++;
+      for(const token of localAllowed)cumulative.add(token); // current section becomes legal; future sections are not added yet.
       const meta=META[`${textbook}|${grade}|${section}`]||{};
       const found=new Map();
       for(const src of sourceStrings(m,meta))for(const rawTok of (String(src.text||'').replace(/[’]/g,"'").match(/[A-Za-z]+(?:'[A-Za-z]+)*/g)||[])){
-        const wtok=rawTok.toLowerCase();const c=classifyToken(wtok,allowed,rawTok);counts[c.kind]++;
-        if(c.kind==='EXACT_ALLOWED')continue;
+        const wtok=rawTok.toLowerCase();const c=classifyToken(wtok,localAllowed,cumulative,rawTok);counts[c.kind]++;
+        if(c.kind==='EXACT_ALLOWED'||c.kind==='CUMULATIVE_ALLOWED')continue;
         const key=`${c.kind}|${wtok}|${c.base||''}`;
         if(!found.has(key))found.set(key,{token:wtok,kind:c.kind,base:c.base||null,locations:[]});
         const f=found.get(key);if(f.locations.length<8)f.locations.push(src.where);
@@ -76,18 +84,19 @@ async function waitFor(fn,ms=30000){const st=Date.now();while(Date.now()-st<ms){
       }
       const notes=Array.isArray(m.notes)?m.notes:[];notesPresent+=notes.length;
       for(const n of notes)if(!n||!String(n.english||'').trim()||!String(n.japanese||'').trim())missingGloss++;
-      report.push({grade,textbook,section,id:m.id||'',allowedTokenCount:allowed.size,notes:notes.length,candidates:[...found.values()]});
+      report.push({grade,textbook,section,sectionIndex,id:m.id||'',localAllowedTokenCount:localAllowed.size,cumulativeAllowedTokenCount:cumulative.size,notes:notes.length,candidates:[...found.values()]});
     }
   }
   assert(total===168,`expected 168 passages, got ${total}`);
   assert(browserErrors.length===0,`browser errors: ${browserErrors.join(' | ')}`);
   const globalV7Candidates=[...global.values()].map(g=>({token:g.token,kind:g.kind,occurrences:g.occurrences,passageCount:g.passages.size,sectionCount:g.sections.size,sections:[...g.sections],examples:g.examples})).sort((a,b)=>b.occurrences-a.occurrences||a.token.localeCompare(b.token));
   const summary={generatedAt:new Date().toISOString(),passages:total,counts,notesPresent,missingGloss,missingAllowedWords,uniqueV7LookupCandidates:globalV7Candidates.filter(x=>x.kind==='V7_LOOKUP_REQUIRED').length,uniqueProperLookupCandidates:globalV7Candidates.filter(x=>x.kind==='PROPER_V7_LOOKUP_REQUIRED').length,
-    semantics:{FUNCTION_TO_GRAMMAR:'vocabulary exemption only; must pass chronological grammar gate',MORPHOLOGY_TO_GRAMMAR:'base appears in reviewed allowedWords; inflection still requires grammar chronology check',V7_LOOKUP_REQUIRED:'must be checked against v7 master at the exact textbook/grade/section cutoff',PROPER_V7_LOOKUP_REQUIRED:'proper-name candidate; not auto-approved'}};
-  const payload={summary,globalV7Candidates,passages:report};
+    cumulativeRule:'For each textbook+grade, add current section reviewed allowedWords to the cumulative set immediately before auditing that section; never add later sections.',
+    semantics:{EXACT_ALLOWED:'explicitly reviewed in current passage allowedWords',CUMULATIVE_ALLOWED:'explicitly reviewed in an earlier/equal section of the same textbook and grade; future sections excluded',FUNCTION_TO_GRAMMAR:'vocabulary exemption only; must pass chronological grammar gate',MORPHOLOGY_TO_GRAMMAR:'base appears in current/prior reviewed allowedWords; inflection still requires grammar chronology check',V7_LOOKUP_REQUIRED:'still unresolved after current+prior app-reviewed vocabulary; must be checked against canonical v7 at exact section cutoff',PROPER_V7_LOOKUP_REQUIRED:'proper-name candidate; not auto-approved'}};
+  const payload={summary,orders,globalV7Candidates,passages:report};
   fs.writeFileSync('v10_vocab_notes_candidate_report.json',JSON.stringify(payload,null,2));
   console.log(`VOCAB CANDIDATE AUDIT passages=${total}`);
-  console.log(`EXACT_ALLOWED=${counts.EXACT_ALLOWED} FUNCTION_TO_GRAMMAR=${counts.FUNCTION_TO_GRAMMAR} MORPHOLOGY_TO_GRAMMAR=${counts.MORPHOLOGY_TO_GRAMMAR} PROPER_LOOKUP=${counts.PROPER_V7_LOOKUP_REQUIRED} V7_LOOKUP=${counts.V7_LOOKUP_REQUIRED}`);
+  console.log(`EXACT_ALLOWED=${counts.EXACT_ALLOWED} CUMULATIVE_ALLOWED=${counts.CUMULATIVE_ALLOWED} FUNCTION_TO_GRAMMAR=${counts.FUNCTION_TO_GRAMMAR} MORPHOLOGY_TO_GRAMMAR=${counts.MORPHOLOGY_TO_GRAMMAR} PROPER_LOOKUP=${counts.PROPER_V7_LOOKUP_REQUIRED} V7_LOOKUP=${counts.V7_LOOKUP_REQUIRED}`);
   console.log(`UNIQUE V7_LOOKUP=${summary.uniqueV7LookupCandidates} UNIQUE_PROPER_LOOKUP=${summary.uniqueProperLookupCandidates}`);
   console.log(`notes_present=${notesPresent} missing_gloss=${missingGloss} missing_allowedWords=${missingAllowedWords}`);
   console.log('REPORT=v10_vocab_notes_candidate_report.json');
