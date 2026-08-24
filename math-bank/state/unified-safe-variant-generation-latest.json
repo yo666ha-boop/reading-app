@@ -1,14 +1,14 @@
 {
-  "status": "FAIL_CI_DIAGNOSTIC",
+  "status": "PASS_CI",
   "persist_schema_version": 69,
-  "run_id": "32685057515",
-  "triggering_sha": "3f4ed61a01876c3c2384adfc0daba85ab0028651",
-  "tested_checkout_sha": "3f4ed61a01876c3c2384adfc0daba85ab0028651",
+  "run_id": "32685084055",
+  "triggering_sha": "f4f1b2b25ac1e2d4fc713e8b4e878bef0deecf89",
+  "tested_checkout_sha": "f4f1b2b25ac1e2d4fc713e8b4e878bef0deecf89",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T03:03:21.008849+00:00",
+  "recorded_at_utc": "2026-08-24T03:03:49.026311+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "failure",
+    "specialized_and_adapters": "success",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -324,6 +324,7 @@
     "test_sector_arc_length_unified_adapter.py",
     "test_sector_area_unified_adapter.py",
     "test_sector_radius_from_arc_length_unified_adapter.py",
+    "test_sector_radius_from_area_unified_adapter.py",
     "test_slope_from_two_points_unified_adapter.py",
     "test_speed_distance_unified_adapter.py",
     "test_speed_from_distance_time_unified_adapter.py",
@@ -349,7 +350,7 @@
     "test_two_dice_sum_probability_unified_adapter.py",
     "test_weighted_group_average_unified_adapter.py"
   ],
-  "adapter_test_count": 102,
+  "adapter_test_count": 103,
   "runtime_routes_auto_discovered": [
     "absolute_value",
     "affine",
