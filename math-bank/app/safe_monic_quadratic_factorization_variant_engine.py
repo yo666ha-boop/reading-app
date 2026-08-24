@@ -6,6 +6,7 @@ import hashlib
 import json
 import re
 
+from safe_common_factor_quadratic_variant_engine import generate as generate_common_factor
 from safe_nonmonic_quadratic_factorization_variant_engine import generate as generate_nonmonic
 
 EXPR_RE = re.compile(r"x(?:\^2|²)\s*(?P<b>[+-]\s*\d+)\s*x\s*(?P<c>[+-]\s*\d+)")
@@ -47,6 +48,8 @@ def _parse_parent(parent:dict):
 
 def can_generate(parent:dict)->tuple[bool,str]:
     if _parse_parent(parent) is not None: return True,"monic_quadratic_integer_factorization_exact"
+    rows,_,reason=generate_common_factor(parent,1)
+    if rows: return True,reason
     rows,_,reason=generate_nonmonic(parent,1)
     if rows: return True,reason
     if parent.get("figure_refs"): return False,"figure_parent"
@@ -65,6 +68,8 @@ def generate(parent:dict,count:int)->tuple[list[dict],list[dict],str]:
     if count not in (1,2,3): raise ValueError("count must be 1, 2, or 3")
     parsed=_parse_parent(parent)
     if parsed is None:
+        rows,evidence,reason=generate_common_factor(parent,count)
+        if rows: return rows,evidence,reason
         rows,evidence,reason=generate_nonmonic(parent,count)
         if rows: return rows,evidence,reason
         ok,reason=can_generate(parent); assert not ok
