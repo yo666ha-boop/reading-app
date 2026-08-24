@@ -1,17 +1,17 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32715431427",
-  "triggering_sha": "8c7d4d84e7cb3ea12322ca35e8b2d5f40647148a",
-  "tested_checkout_sha": "8c7d4d84e7cb3ea12322ca35e8b2d5f40647148a",
+  "run_id": "32719033335",
+  "triggering_sha": "f00b1f49cea3eb7f8fa2a071a22fd83684f5d589",
+  "tested_checkout_sha": "f00b1f49cea3eb7f8fa2a071a22fd83684f5d589",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T10:10:58.851153+00:00",
+  "recorded_at_utc": "2026-08-24T10:53:38.017532+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
-    "core": "success",
-    "parent_contract": "success",
-    "legacy_empty_choices": "success"
+    "specialized_and_adapters": "cancelled",
+    "core": "skipped",
+    "parent_contract": "skipped",
+    "legacy_empty_choices": "skipped"
   },
   "engine_test_discovery": "test_safe_*_variant_engine.py plus test_*_unified_adapter.py plus runtime reachability graph gate",
   "engine_modules_auto_discovered": [
@@ -27,6 +27,7 @@
     "binomial_expansion",
     "circle_area",
     "circle_circumference",
+    "circle_diameter_from_circumference",
     "circle_radius_from_area",
     "circle_radius_from_circumference",
     "common_factor_quadratic",
@@ -145,7 +146,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 129,
+  "engine_module_count": 130,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_equation_from_two_points_variant_engine.py",
