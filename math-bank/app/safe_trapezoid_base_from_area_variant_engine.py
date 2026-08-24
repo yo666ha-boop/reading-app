@@ -16,23 +16,19 @@ HEIGHT_RE = re.compile(r"高さ\s*(?P<height>\d+)\s*(?P<unit>mm|cm|m)")
 AREA_RE = re.compile(r"面積\s*(?P<area>\d+)\s*(?P<unit>mm|cm|m)(?:²|\^2|2)")
 ANSWER_RE = re.compile(r"^(?P<value>\d+)\s*(?P<unit>mm|cm|m)$")
 
-
 def _norm(value: object) -> str:
     return (str(value or "").replace("　", " ").replace("㎠", "cm²")
             .replace("㎡", "m²").replace("㎟", "mm²"))
-
 
 def _sha(parent: dict) -> str:
     raw=json.dumps(parent,ensure_ascii=False,sort_keys=True,separators=(",",":")).encode("utf-8")
     return hashlib.sha256(raw).hexdigest()
 
-
 def _parse_parent(parent: dict):
-    if parent.get("figure_refs") or parent.get("choices") is not None:
+    if parent.get("figure_refs") or parent.get("choices"):
         return None
     q=_norm(parent.get("question"))
-    if "台形" not in q or "面積" not in q or "高さ" not in q:
-        return None
+    if "台形" not in q or "面積" not in q or "高さ" not in q: return None
     blocked=("周","周囲","図","複合","相似","比","平行四辺形","三角形")
     if any(t in q for t in blocked): return None
     gm=list(GIVEN_RE.finditer(q)); hm=list(HEIGHT_RE.finditer(q)); am=list(AREA_RE.finditer(q))
@@ -54,13 +50,11 @@ def _parse_parent(parent: dict):
     if (known+missing_value)*height != doubled: return None
     return g,h,a,label,missing,known,height,area,missing_value,unit
 
-
 def can_generate(parent: dict) -> tuple[bool,str]:
     if _parse_parent(parent) is not None: return True,"trapezoid_base_from_area_exact"
     if parent.get("figure_refs"): return False,"figure_parent"
-    if parent.get("choices") is not None: return False,"choice_parent"
+    if parent.get("choices"): return False,"choice_parent"
     return False,"trapezoid_base_from_area_parent_not_exactly_parsed_and_verified"
-
 
 def generate(parent: dict,count: int) -> tuple[list[dict],list[dict],str]:
     if count not in (1,2,3): raise ValueError("count must be 1, 2, or 3")
