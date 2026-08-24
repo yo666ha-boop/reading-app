@@ -1,0 +1,60 @@
+{
+  "workflow": "Math Live Reuploaded Source Verification",
+  "recorded_at_jst": "2026-08-25T00:30:00+09:00",
+  "sources": {
+    "Winpass": {
+      "path": "/mnt/data/winpassデータ.zip",
+      "bytes": 8296042,
+      "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+      "expected_bytes": 8296042,
+      "expected_sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+      "exact_identity": true,
+      "zip_crc_ok": true,
+      "file_members": 81,
+      "docx_members": 81
+    },
+    "実力錬成": {
+      "path": "/mnt/data/中学実力錬成データ.zip",
+      "bytes": 7287279,
+      "sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33",
+      "expected_bytes": 7287279,
+      "expected_sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33",
+      "exact_identity": true,
+      "zip_crc_ok": true,
+      "file_members": 80,
+      "docx_members": 80
+    },
+    "Standard": {
+      "path": "/mnt/data/スタンダードデータ.zip",
+      "bytes": 9689250,
+      "sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6",
+      "expected_bytes": 9689250,
+      "expected_sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6",
+      "exact_identity": true,
+      "zip_crc_ok": true,
+      "file_members": 85,
+      "docx_members": 85
+    }
+  },
+  "docx_before_dedupe": 246,
+  "duplicate_copies": 106,
+  "unique_docx": 140,
+  "unique_by_source": {"Winpass": 81, "実力錬成": 27, "Standard": 32},
+  "cross_source_sha_conflicts": [],
+  "gates": {
+    "all_three_exact": true,
+    "docx_246": true,
+    "duplicate_106": true,
+    "unique_140": true,
+    "unique_81_27_32": true,
+    "cross_source_conflicts_0": true
+  },
+  "all_gates_pass": true,
+  "raw_slot_rebuild_probe": {
+    "target": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
+    "current_method": "ordered OOXML + problem/answer half split + scoring-slot evidence; do not count-force",
+    "known_probe": "Winpass point-multiplier evidence reproduces 715 before special fixed/custom-score slots; special scoring formats are being resolved document-by-document. Standard and 実力錬成 require fixed-score/各N点 parsing in addition to ×N.",
+    "status": "IN_PROGRESS"
+  },
+  "next": "Finish evidence-based scoring-slot segmentation to exact raw 717/237/317, attach question/answer/figure evidence to every raw record, then perform Winpass717 evidence decisions to 570."
+}
