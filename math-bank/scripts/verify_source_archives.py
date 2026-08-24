@@ -115,11 +115,7 @@ def verify_archive(source_dir: Path, logical_name: str, spec: dict) -> dict:
     if not exact:
         result["status"] = "HASH_MISMATCH"
         return result
-    if len(exact) > 1:
-        # Byte-identical duplicate uploads are safe; select deterministically but record all matches.
-        result["status"] = "EXACT_MATCH_DUPLICATED_UPLOAD"
-    else:
-        result["status"] = "EXACT_MATCH"
+    result["status"] = "EXACT_MATCH_DUPLICATED_UPLOAD" if len(exact) > 1 else "EXACT_MATCH"
     selected = exact[0]
     result["selected"] = {
         "path": str(selected.path),
@@ -146,15 +142,20 @@ def build_report(source_dir: Path, specs: dict[str, dict] | None = None) -> dict
         bool(item.get("zip_inspection") and item["zip_inspection"].get("zip_valid"))
         for item in archives.values()
     )
+    exact_sources_verified = all_exact and all_zip_valid
     return {
         "workflow": "Math Source Archive Exact Identity Verification",
         "recorded_at_utc": datetime.now(timezone.utc).isoformat(),
         "source_dir": str(source_dir),
+        "mode": "DIAGNOSTIC_ONLY_NON_CANONICAL",
         "policy": {
             "renamed_copy_suffix_allowed": "trailing (N) before .zip may differ",
             "content_identity": "SHA-256 must exactly match historical source archive SHA",
             "hash_mismatch_never_promoted": True,
             "winpass_717_to_570_count_forcing_forbidden": True,
+            "source_archives_never_promote_to_canonical_base": True,
+            "canonical_base_requires_recorded_exact_zip_and_audit_pair": True,
+            "no_reconstruction_from_source_archives": True,
         },
         "historical_targets": {
             "documents_total": 140,
@@ -164,22 +165,25 @@ def build_report(source_dir: Path, specs: dict[str, dict] | None = None) -> dict
         "archives": archives,
         "all_expected_archives_exact": all_exact,
         "all_selected_archives_zip_valid": all_zip_valid,
-        "ready_for_real_rebuild": all_exact and all_zip_valid,
+        "exact_source_archives_verified_for_diagnostics": exact_sources_verified,
+        "promotable_to_canonical": False,
+        "ready_for_real_rebuild": False,
+        "next": "Use exact source identity only as forensic evidence. Continue exact canonical BASE ZIP+audit recovery; never reconstruct or promote from source archives.",
     }
 
 
 def main(argv: Iterable[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Verify the three re-uploaded math source ZIPs by exact historical SHA-256.")
+    parser = argparse.ArgumentParser(description="Verify three historical math source ZIPs by exact SHA-256 without promoting or rebuilding canonical BASE.")
     parser.add_argument("--source-dir", type=Path, default=Path("math-bank/source"))
     parser.add_argument("--report", type=Path, default=Path("math-bank/state/source-rebuild-archive-verification-latest.json"))
-    parser.add_argument("--strict", action="store_true", help="return non-zero unless all three exact ZIPs are present and valid")
+    parser.add_argument("--strict", action="store_true", help="return non-zero unless all three exact source ZIPs are present and valid; this never authorizes canonical reconstruction")
     args = parser.parse_args(list(argv) if argv is not None else None)
 
     report = build_report(args.source_dir)
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
-    if args.strict and not report["ready_for_real_rebuild"]:
+    if args.strict and not report["exact_source_archives_verified_for_diagnostics"]:
         return 2
     return 0
 
