@@ -20,7 +20,7 @@ def main():
     parent["source"]["parent_id"]=None
     parent["variant_group"]=None
     rows,prov,reason=generate_parent(parent,3,NOW)
-    assert reason.startswith("specialized:rectangular_prism_surface_area:rectangular_prism_height_from_surface_area_exact")
+    assert reason.startswith("specialized:rectangular_prism_volume:rectangular_prism_height_from_surface_area_exact")
     assert len(rows)==len(prov)==3
     expected=parent_record_sha256(parent)
     for row,evidence in zip(rows,prov):
