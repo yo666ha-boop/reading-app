@@ -13,6 +13,7 @@ CONVERTER = ROOT / "convert_verified_canonical_to_app.py"
 VALIDATOR = ROOT / "validate_app_records.py"
 SCHEMA = ROOT / "app-record.schema.json"
 SCANNER = ROOT / "scan_canonical_candidates.py"
+ACTIONS_DELTA_SCANNER = ROOT / "scan_actions_artifacts_delta.py"
 REQUIRED_CONVERTER_META_FIELDS = (
     "grade", "unit", "skill", "question_format", "difficulty", "source",
     "figure_refs", "variant_group", "audit",
@@ -26,6 +27,7 @@ converter = CONVERTER.read_text(encoding="utf-8")
 validator = VALIDATOR.read_text(encoding="utf-8")
 schema = SCHEMA.read_text(encoding="utf-8")
 scanner = SCANNER.read_text(encoding="utf-8") if SCANNER.exists() else ""
+actions_delta_scanner = ACTIONS_DELTA_SCANNER.read_text(encoding="utf-8") if ACTIONS_DELTA_SCANNER.exists() else ""
 
 expected_hash = keys["canonical_zip"]["sha256"]
 expected = keys["expected_counts"]
@@ -81,6 +83,11 @@ checks = {
     "candidate_scanner_pins_exact_sha": expected_hash in scanner,
     "candidate_scanner_is_discovery_only": "Discovery only. Never promotes, converts, reconstructs, or rewrites canonical data." in scanner,
     "candidate_scanner_rejects_same_name_hash_mismatch": "same_name_sha_mismatch" in scanner and "exact_zip_candidates" in scanner,
+    "actions_delta_scanner_present": bool(actions_delta_scanner),
+    "actions_transient_failure_is_unknown": '"canonical_absence_proven": False' in actions_delta_scanner and '"scan_complete": False' in actions_delta_scanner,
+    "actions_download_failure_invalidates_absence": 'report["scan_complete"] = False' in actions_delta_scanner,
+    "actions_absence_requires_complete_scan": 'report["scan_complete"]' in actions_delta_scanner and 'report["canonical_absence_proven"]' in actions_delta_scanner,
+    "actions_no_reconstruction_policy": "no reconstruction" in actions_delta_scanner.lower(),
 }
 
 failed = [name for name, ok in checks.items() if not ok]
@@ -102,3 +109,4 @@ print("legacy_q_ans_core=DETECT_ONLY_NO_GUESS_MAPPING")
 print("verified_deterministic_converter=REQUIRED_NO_DEFAULTS")
 print("canonical_zip_inspection_before_mapping=REQUIRED")
 print("canonical_candidate_scanner=DISCOVERY_ONLY_EXACT_SHA_REQUIRED")
+print("actions_transient_or_download_failure=UNKNOWN_NOT_ABSENCE")
