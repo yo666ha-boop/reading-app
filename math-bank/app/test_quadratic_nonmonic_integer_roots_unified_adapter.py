@@ -3,7 +3,7 @@ from __future__ import annotations
 import copy
 from generate_all_safe_verified_variants import generate_parent
 from test_expanded_variant_layer import make_base
-from validate_expanded_variant_layer import parent_record_sha256
+from validate_expanded_variant_layer import numeric_tokens, parent_record_sha256
 
 NOW="2026-08-24T05:00:00Z"
 
@@ -13,7 +13,8 @@ def main():
     rows,prov,reason=generate_parent(p,3,NOW)
     assert reason.startswith("specialized:quadratic_square_equation:quadratic_nonmonic_two_integer_roots_exact")
     assert len(rows)==len(prov)==3
-    assert len({tuple(row["numeric_signature"]) for row in rows})==3
+    assert len({tuple(numeric_tokens(row["question"])) for row in rows})==3
+    assert all(tuple(numeric_tokens(row["question"])) != tuple(numeric_tokens(p["question"])) for row in rows)
     expected=parent_record_sha256(p)
     for row,ev in zip(rows,prov):
         assert row["source"]["parent_id"]==p["id"]
