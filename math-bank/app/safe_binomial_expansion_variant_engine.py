@@ -1,21 +1,19 @@
 from __future__ import annotations
 
-"""Fail-closed exact engine for expanding (x+a)(x+b)."""
+"""Fail-closed exact engine for binomial expansion families."""
 import hashlib,json,re
+from safe_nonmonic_binomial_expansion_variant_engine import generate as generate_nonmonic
 
 EXPR_RE=re.compile(r"\(x(?P<a>[+-]\d+)\)\(x(?P<b>[+-]\d+)\)")
 ANS_RE=re.compile(r"^x(?:\^2|²)(?P<s>[+-]\d+)x(?P<p>[+-]\d+)$")
 
-def _norm(v):
-    return re.sub(r"\s+","",str(v or "").replace("　"," ").replace("−","-").replace("＋","+").replace("ｘ","x").replace("Ｘ","x"))
-def _sha(p):
-    return hashlib.sha256(json.dumps(p,ensure_ascii=False,sort_keys=True,separators=(",",":")).encode()).hexdigest()
+def _norm(v): return re.sub(r"\s+","",str(v or "").replace("　"," ").replace("−","-").replace("＋","+").replace("ｘ","x").replace("Ｘ","x"))
+def _sha(p): return hashlib.sha256(json.dumps(p,ensure_ascii=False,sort_keys=True,separators=(",",":")).encode()).hexdigest()
 def _signed(n): return f"+{n}" if n>=0 else str(n)
 def _parse(parent):
     if parent.get("figure_refs") or parent.get("choices"): return None
     q=_norm(parent.get("question"))
-    if "展開" not in q: return None
-    if any(t in q for t in ("因数分解","方程式","証明","面積","グラフ","平方完成")): return None
+    if "展開" not in q or any(t in q for t in ("因数分解","方程式","証明","面積","グラフ","平方完成")): return None
     ms=list(EXPR_RE.finditer(q))
     if len(ms)!=1: return None
     m=ms[0]; outside=q[:m.start()]+q[m.end():]
@@ -27,6 +25,8 @@ def _parse(parent):
     return m,a,b,s,p
 def can_generate(parent):
     if _parse(parent) is not None: return True,"binomial_integer_expansion_exact"
+    rows,_,reason=generate_nonmonic(parent,1)
+    if rows: return True,reason
     if parent.get("figure_refs"): return False,"figure_parent"
     if parent.get("choices"): return False,"choice_parent"
     return False,"binomial_expansion_parent_not_exactly_parsed_and_verified"
@@ -39,6 +39,8 @@ def generate(parent,count):
     if count not in (1,2,3): raise ValueError("count must be 1, 2, or 3")
     parsed=_parse(parent)
     if parsed is None:
+        rows,evidence,reason=generate_nonmonic(parent,count)
+        if rows: return rows,evidence,reason
         ok,reason=can_generate(parent); assert not ok; return [],[],reason
     m,pa,pb,ps,pp=parsed; q=_norm(parent.get("question")); seed=int(_sha(parent)[:12],16)
     parent_sig=(str(pa),str(pb)); seen=set(); rows=[]; ev=[]
@@ -48,8 +50,7 @@ def generate(parent,count):
             bump+=1; b+=bump; sig=(str(a),str(b))
         seen.add(sig); s=a+b; p=a*b
         if (1,a+b,a*b)!=(1,s,p): raise AssertionError("binomial expansion identity failed")
-        expr=f"(x{_signed(a)})(x{_signed(b)})"; newq=q[:m.start()]+expr+q[m.end():]
-        ans=f"x²{_signed(s)}x{_signed(p)}"
+        expr=f"(x{_signed(a)})(x{_signed(b)})"; newq=q[:m.start()]+expr+q[m.end():]; ans=f"x²{_signed(s)}x{_signed(p)}"
         rows.append({"question":newq,"answer":ans,"explanation":f"x²+({a}+{b})x+({a}×{b})={ans}。和と積の係数一致も確認済み。","numeric_signature":sig})
         ev.append({"parent_sha256":_sha(parent),"method":"binomial_expansion_sum_product_coefficients","parent_recalculation":f"sum={pa+pb}, product={pa*pb}","variant_recalculation":f"sum={s}, product={p}","independent_check":"expanded coefficients (1,a+b,a*b) exactly match answer PASS"})
     return rows,ev,"binomial_integer_expansion_exact"
