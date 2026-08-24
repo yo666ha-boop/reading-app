@@ -14,6 +14,10 @@ on:
       - 'math-bank/scripts/test_build_source_member_manifest.py'
       - 'math-bank/scripts/profile_math_json_paths.py'
       - 'math-bank/scripts/test_profile_math_json_paths.py'
+      - 'math-bank/scripts/validate_rebuilt_raw_records.py'
+      - 'math-bank/scripts/test_validate_rebuilt_raw_records.py'
+      - 'math-bank/scripts/create_winpass_review_queue.py'
+      - 'math-bank/scripts/test_create_winpass_review_queue.py'
       - 'math-bank/scripts/audit_winpass_normalization.py'
       - 'math-bank/scripts/test_audit_winpass_normalization.py'
       - '.github/workflows/math-source-rebuild-contract.yml'
@@ -47,6 +51,10 @@ jobs:
             math-bank/scripts/test_build_source_member_manifest.py \
             math-bank/scripts/profile_math_json_paths.py \
             math-bank/scripts/test_profile_math_json_paths.py \
+            math-bank/scripts/validate_rebuilt_raw_records.py \
+            math-bank/scripts/test_validate_rebuilt_raw_records.py \
+            math-bank/scripts/create_winpass_review_queue.py \
+            math-bank/scripts/test_create_winpass_review_queue.py \
             math-bank/scripts/audit_winpass_normalization.py \
             math-bank/scripts/test_audit_winpass_normalization.py
 
@@ -61,6 +69,12 @@ jobs:
 
       - name: Run recursive MATH.json schema path profiler tests
         run: python math-bank/scripts/test_profile_math_json_paths.py
+
+      - name: Run rebuilt raw record validation tests
+        run: python math-bank/scripts/test_validate_rebuilt_raw_records.py
+
+      - name: Run Winpass fingerprint review queue tests
+        run: python math-bank/scripts/test_create_winpass_review_queue.py
 
       - name: Run evidence-bound Winpass normalization tests
         run: python math-bank/scripts/test_audit_winpass_normalization.py
@@ -134,6 +148,9 @@ jobs:
             'exact_historical_source_sha_required': True,
             'member_sha256_manifest_required_before_extraction': True,
             'recursive_schema_path_profile_required_before_extractor': True,
+            'raw_record_count_qa_fingerprint_gate_required': True,
+            'raw_figure_resolution_gate_required': True,
+            'winpass_fingerprint_bound_review_queue_required': True,
             'hash_mismatch_fail_closed': True,
             'raw_1271_direct_promotion_forbidden': True,
             'historical_canonical_byte_claim_without_old_zip_forbidden': True,
@@ -147,7 +164,7 @@ jobs:
               'validated_originals': {'Winpass':570,'実力錬成':237,'Standard':317,'total':1124},
             },
             'real_source_archives_committed': real_sources,
-            'next_if_sources_available': 'identity -> member SHA manifest -> 140-doc profile -> recursive schema paths -> raw 717/237/317 -> evidence decisions for every Winpass record -> full 1124 validation',
+            'next_if_sources_available': 'identity -> member SHA manifest -> 140-doc profile -> recursive schema paths -> raw 717/237/317 -> raw QA/figure/fingerprint gate -> Winpass fingerprint review queue -> evidence decisions for all 717 -> full 1124 validation',
             'recorded_at_utc': datetime.now(timezone.utc).isoformat(),
           }
           Path('math-bank/state/source-rebuild-contract-latest.json').write_text(
