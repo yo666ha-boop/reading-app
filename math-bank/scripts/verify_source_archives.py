@@ -11,22 +11,28 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable
 
+# These are not inferred values. They come from the historical source-recovery
+# state written after the three source archives were actually recovered and
+# inventoried (including byte sizes and the 140-doc dedupe result).
 EXPECTED_ARCHIVES = {
     "winpass": {
         "canonical_name": "winpassデータ.zip",
         "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+        "historical_bytes": 8296042,
         "historical_original_records": 570,
         "historical_raw_diagnostic_records": 717,
     },
     "jitsuren": {
         "canonical_name": "中学実力錬成データ.zip",
-        "sha256": "d32d37e2ffeffce059f5ee81b4cf40c1097c0961af2a50e9017534abe4d47b2d",
+        "sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33",
+        "historical_bytes": 7287279,
         "historical_original_records": 237,
         "historical_raw_diagnostic_records": 237,
     },
     "standard": {
         "canonical_name": "スタンダードデータ.zip",
-        "sha256": "c828516bccc230ebc7d7217ae708117d4b6971108417c5e0d0eff48cb075fec9",
+        "sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6",
+        "historical_bytes": 9689250,
         "historical_original_records": 317,
         "historical_raw_diagnostic_records": 317,
     },
@@ -94,11 +100,13 @@ def inspect_zip(path: Path) -> dict:
 def verify_archive(source_dir: Path, logical_name: str, spec: dict) -> dict:
     candidates = find_candidates(source_dir, spec)
     expected_sha = str(spec["sha256"])
-    exact = [c for c in candidates if c.sha256 == expected_sha]
+    expected_bytes = spec.get("historical_bytes")
+    exact = [c for c in candidates if c.sha256 == expected_sha and (expected_bytes is None or c.size == expected_bytes)]
     result = {
         "logical_name": logical_name,
         "canonical_name": spec["canonical_name"],
         "expected_sha256": expected_sha,
+        "expected_bytes": expected_bytes,
         "historical_original_records": spec["historical_original_records"],
         "historical_raw_diagnostic_records": spec["historical_raw_diagnostic_records"],
         "candidates": [
@@ -112,7 +120,7 @@ def verify_archive(source_dir: Path, logical_name: str, spec: dict) -> dict:
     if not candidates:
         return result
     if not exact:
-        result["status"] = "HASH_MISMATCH"
+        result["status"] = "HASH_OR_SIZE_MISMATCH"
         return result
     result["status"] = "EXACT_MATCH_DUPLICATED_UPLOAD" if len(exact) > 1 else "EXACT_MATCH"
     selected = exact[0]
@@ -147,9 +155,10 @@ def build_report(source_dir: Path, specs: dict[str, dict] | None = None) -> dict
         "recorded_at_utc": datetime.now(timezone.utc).isoformat(),
         "source_dir": str(source_dir),
         "mode": "SOURCE_REBUILD_INPUT_VERIFICATION",
+        "identity_basis": "historical source-recovery state with actual SHA-256 and byte sizes",
         "policy": {
             "renamed_copy_suffix_allowed": "trailing (N) before .zip may differ",
-            "content_identity": "SHA-256 must exactly match historical source archive SHA",
+            "content_identity": "SHA-256 and recorded byte size must exactly match recovered historical source archive",
             "hash_mismatch_fail_closed": True,
             "raw_diagnostic_records_never_promote_directly": True,
             "winpass_717_to_570_count_forcing_forbidden": True,
@@ -170,8 +179,8 @@ def build_report(source_dir: Path, specs: dict[str, dict] | None = None) -> dict
         "ready_for_rebuild_pipeline": exact_sources_verified,
         "ready_for_real_rebuild": exact_sources_verified,
         "next": (
-            "If exact sources are verified, extract and re-audit all three sources; reproduce 140 documents, "
-            "raw 717/237/317, then establish Winpass 570 by evidence rather than count forcing. "
+            "If exact sources are verified, recover prior generated layers first; only recompute missing layers. "
+            "For recomputation, reproduce 140 documents, raw 717/237/317, then establish Winpass 570 by evidence rather than count forcing. "
             "Only the fully revalidated 1124 originals may become the new rebuilt BASE."
         ),
     }
@@ -181,7 +190,7 @@ def main(argv: Iterable[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Verify three re-uploaded math source ZIPs before evidence-based BASE reconstruction.")
     parser.add_argument("--source-dir", type=Path, default=Path("math-bank/source"))
     parser.add_argument("--report", type=Path, default=Path("math-bank/state/source-rebuild-archive-verification-latest.json"))
-    parser.add_argument("--strict", action="store_true", help="return non-zero unless all three exact source ZIPs are present, byte-identical to historical inputs, and valid ZIPs")
+    parser.add_argument("--strict", action="store_true", help="return non-zero unless all three source ZIPs match historical recovered SHA-256/byte-size evidence and are valid ZIPs")
     args = parser.parse_args(list(argv) if argv is not None else None)
 
     report = build_report(args.source_dir)
