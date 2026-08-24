@@ -1,14 +1,14 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32688716640",
-  "triggering_sha": "1529d4aafd8b4e6b0fa84721cc93b615871f91cc",
-  "tested_checkout_sha": "1529d4aafd8b4e6b0fa84721cc93b615871f91cc",
+  "run_id": "32691814922",
+  "triggering_sha": "21f6c514380f505afd113ee124c039868f1e025c",
+  "tested_checkout_sha": "21f6c514380f505afd113ee124c039868f1e025c",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T04:05:47.405122+00:00",
+  "recorded_at_utc": "2026-08-24T04:56:55.691972+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
+    "specialized_and_adapters": "failure",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -63,6 +63,7 @@
     "linear_equation",
     "linear_equation_both_sides",
     "linear_equation_parentheses",
+    "linear_inequality",
     "median",
     "midpoint_endpoint_from_midpoint",
     "midpoint_two_points",
@@ -135,7 +136,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 119,
+  "engine_module_count": 120,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_equation_from_two_points_variant_engine.py",
