@@ -1,24 +1,25 @@
 {
   "workflow": "Math Source Rebuild Contract",
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "mode": "AUDITED_RECONSTRUCTION_FROM_EXACT_SOURCE_INPUTS",
-  "run_id": "32724765581",
-  "triggering_sha": "7f9f51fa599ec99cff96ce2fb67640526205a3be",
-  "tested_head_after_rebase": "7f9f51fa599ec99cff96ce2fb67640526205a3be",
-  "renamed_copy_suffix_supported": true,
+  "run_id": "32729218852",
+  "triggering_sha": "7a9dea537af37c04c65a8da3353cb4f755261072",
+  "tested_checkout_sha": "7a9dea537af37c04c65a8da3353cb4f755261072",
+  "tested_checkout_equals_triggering_sha": true,
+  "job_status": "failure",
+  "stale_run_overwrite_guard": true,
   "exact_historical_source_sha_required": true,
-  "member_sha256_manifest_required_before_extraction": true,
-  "recursive_schema_path_profile_required_before_extractor": true,
   "raw_record_count_qa_fingerprint_gate_required": true,
-  "raw_figure_resolution_gate_required": true,
-  "winpass_fingerprint_bound_review_queue_required": true,
-  "hash_mismatch_fail_closed": true,
-  "raw_1271_direct_promotion_forbidden": true,
-  "historical_canonical_byte_claim_without_old_zip_forbidden": true,
-  "source_reconstruction_allowed_after_full_reaudit": true,
-  "winpass_717_decision_coverage_required": true,
-  "winpass_exclusion_evidence_required": true,
+  "winpass_decision_exact_record_fingerprint_binding_required": true,
+  "winpass_normalization_materialization_gate_required": true,
+  "rebuilt_1124_originals_global_validation_required": true,
+  "rebuilt_app_mapping_evidence_required_before_freeze": true,
+  "mapping_defaults_without_source_evidence_forbidden": true,
+  "immutable_rebuilt_originals_freeze_required": true,
+  "immutable_rebuilt_originals_full_record_sha_sequence_required": true,
+  "immutable_rebuilt_originals_manifest_revalidation_required_before_variants": true,
   "winpass_count_forcing_forbidden": true,
+  "raw_1271_direct_promotion_forbidden": true,
   "required_rebuild_targets": {
     "documents": 140,
     "raw": {
@@ -33,7 +34,5 @@
       "total": 1124
     }
   },
-  "real_source_archives_committed": false,
-  "next_if_sources_available": "identity -> member SHA manifest -> 140-doc profile -> recursive schema paths -> raw 717/237/317 -> raw QA/figure/fingerprint gate -> Winpass fingerprint review queue -> evidence decisions for all 717 -> full 1124 validation",
-  "recorded_at_utc": "2026-08-24T12:00:25.692366+00:00"
+  "recorded_at_utc": "2026-08-24T12:50:12.364561+00:00"
 }
