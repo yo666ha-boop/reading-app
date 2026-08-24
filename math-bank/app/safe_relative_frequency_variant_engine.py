@@ -9,6 +9,7 @@ from decimal import Decimal, InvalidOperation
 from fractions import Fraction
 
 from safe_frequency_from_relative_frequency_variant_engine import generate as generate_frequency_inverse
+from safe_total_from_relative_frequency_variant_engine import generate as generate_total_inverse
 
 PAIR_PATTERNS=(
     re.compile(r"度数(?:は|が)\s*(?P<freq>\d+)\s*(?:人|個|回|名)?[^\d]{0,24}全体(?:の度数)?(?:は|が)\s*(?P<total>\d+)"),
@@ -70,6 +71,8 @@ def _parse_parent(parent:dict):
 
 
 def can_generate(parent:dict)->tuple[bool,str]:
+    rows,_,reason=generate_total_inverse(parent,1)
+    if rows: return True,reason
     rows,_,reason=generate_frequency_inverse(parent,1)
     if rows: return True,reason
     if _parse_parent(parent) is not None: return True,"relative_frequency_exact_terminating_decimal"
@@ -87,6 +90,8 @@ def _variant_pair(seed:int,index:int)->tuple[int,int]:
 
 def generate(parent:dict,count:int)->tuple[list[dict],list[dict],str]:
     if count not in (1,2,3): raise ValueError("count must be 1, 2, or 3")
+    rows,evidence,reason=generate_total_inverse(parent,count)
+    if rows: return rows,evidence,reason
     rows,evidence,reason=generate_frequency_inverse(parent,count)
     if rows: return rows,evidence,reason
     parsed=_parse_parent(parent)
