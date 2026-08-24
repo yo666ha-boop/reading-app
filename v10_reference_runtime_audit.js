@@ -4,6 +4,7 @@ const {JSDOM,VirtualConsole}=require('jsdom');
 const norm=s=>String(s||'').replace(/\s+/g,' ').trim();
 const deSlash=s=>norm(String(s||'').replace(/\s*\/\s*/g,' '));
 const chunks=s=>String(s||'').split(/\s*\/\s*/).map(norm).filter(Boolean);
+const isLetterCommaExempt=en=>/^(?:Dear\b.+|Best wishes|Sincerely yours),$/.test(norm(en));
 (async()=>{
  const errors=[], vc=new VirtualConsole();
  vc.on('jsdomError',e=>errors.push('browser: '+String(e&&e.message||e)));
@@ -29,7 +30,7 @@ const chunks=s=>String(s||'').split(/\s*\/\s*/).map(norm).filter(Boolean);
      if(deSlash(en)!==norm(s[i]))errors.push(`${t}: English changed`);
      const ec=chunks(en).length,jc=chunks(jp).length;if(ec!==jc)errors.push(`${t}: EN/JP chunks ${ec}/${jc}`);
      slashes+=Math.max(0,ec-1);if(ec===1)unsplit++;
-     if(/,(?!\s*\/)/.test(en))errors.push(`${t}: comma not followed by slash: ${en}`);
+     if(!isLetterCommaExempt(en)&&/,(?!\s*\/)/.test(en))errors.push(`${t}: comma not followed by slash: ${en}`);
      const plain=' '+en.replace(/\s+/g,' ')+' ';
      const toMatches=[...plain.matchAll(/\sto\s+[A-Za-z]/gi)];
      for(const m of toMatches){const idx=m.index||0;const beforeText=plain.slice(Math.max(0,idx-4),idx+1);if(!/\/\s*$/.test(beforeText))errors.push(`${t}: to-boundary lacks slash: ${en}`)}
