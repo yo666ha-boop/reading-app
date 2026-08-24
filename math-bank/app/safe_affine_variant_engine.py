@@ -7,6 +7,7 @@ import json
 import re
 from fractions import Fraction
 
+from safe_affine_x_from_y_variant_engine import generate as generate_affine_x_from_y
 from safe_direct_proportion_constant_variant_engine import generate as generate_direct_proportion_constant
 
 NUM = r"[+-]?\d+(?:/\d+)?"
@@ -57,6 +58,9 @@ def _parse_parent(parent: dict):
 
 
 def can_generate(parent: dict)->tuple[bool,str]:
+    rows,_,reason=generate_affine_x_from_y(parent,1)
+    if rows:
+        return True,reason
     rows,_,reason=generate_direct_proportion_constant(parent,1)
     if rows:
         return True,reason
@@ -70,6 +74,9 @@ def can_generate(parent: dict)->tuple[bool,str]:
 
 def generate(parent:dict,count:int)->tuple[list[dict],list[dict],str]:
     if count not in (1,2,3): raise ValueError("count must be 1, 2, or 3")
+    rows,evidence,reason=generate_affine_x_from_y(parent,count)
+    if rows:
+        return rows,evidence,reason
     rows,evidence,reason=generate_direct_proportion_constant(parent,count)
     if rows:
         return rows,evidence,reason
