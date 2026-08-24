@@ -1,9 +1,9 @@
 {
   "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 66,
-  "run_id": "32676360336",
-  "triggering_sha": "1bebcac944dc6a08dc4c9b7150069d62d414e87e",
-  "recorded_at_utc": "2026-08-24T00:20:35.242169+00:00",
+  "run_id": "32676376613",
+  "triggering_sha": "de2128a07400374109a168126dd54d7c9e11a70b",
+  "recorded_at_utc": "2026-08-24T00:20:48.111781+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "failure",
@@ -256,6 +256,8 @@
     "test_sphere_radius_from_volume_unified_adapter.py",
     "test_sphere_unified_adapter.py",
     "test_square_area_unified_adapter.py",
+    "test_square_side_from_area_unified_adapter.py",
+    "test_square_side_from_perimeter_unified_adapter.py",
     "test_symmetric_linear_system_unified_adapter.py",
     "test_tax_inclusive_price_unified_adapter.py",
     "test_time_from_distance_speed_unified_adapter.py",
@@ -268,7 +270,7 @@
     "test_two_dice_sum_probability_unified_adapter.py",
     "test_weighted_group_average_unified_adapter.py"
   ],
-  "adapter_test_count": 75,
+  "adapter_test_count": 77,
   "runtime_routes_auto_discovered": [
     "absolute_value",
     "affine",
