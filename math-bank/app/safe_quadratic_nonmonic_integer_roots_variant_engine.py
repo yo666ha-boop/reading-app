@@ -104,15 +104,34 @@ def generate(parent: dict, count: int):
             r2 += 2
         if r1 > r2:
             r1, r2 = r2, r1
-        b = -a * (r1 + r2); c = a * r1 * r2; sig = (str(a), str(b), str(c))
-        bump = 0
-        while sig == parent_sig or sig in seen or r1 == r2 or c == 0:
-            bump += 1; r2 += 1
+
+        # Search only a small deterministic neighborhood.  In particular,
+        # never keep r1 fixed at zero: then c=a*r1*r2 would remain zero
+        # forever no matter how far r2 is incremented.
+        found = False
+        for bump in range(33):
+            if r1 == 0:
+                r1 = -1 if r2 != -1 else 1
+            if r2 == 0:
+                r2 = 1 if r1 != 1 else 2
             if r1 == r2:
                 r2 += 1
+                if r2 == 0:
+                    r2 += 1
             if r1 > r2:
                 r1, r2 = r2, r1
-            b = -a * (r1 + r2); c = a * r1 * r2; sig = (str(a), str(b), str(c))
+
+            b = -a * (r1 + r2)
+            c = a * r1 * r2
+            sig = (str(a), str(b), str(c))
+            if sig != parent_sig and sig not in seen and r1 != r2 and c != 0:
+                found = True
+                break
+            r2 += 1
+
+        if not found:
+            raise AssertionError("quadratic nonmonic integer-root search exhausted")
+
         seen.add(sig)
         disc = b * b - 4 * a * c; s = math.isqrt(disc); den = 2 * a
         if s * s != disc or (-b + s) % den or (-b - s) % den:
