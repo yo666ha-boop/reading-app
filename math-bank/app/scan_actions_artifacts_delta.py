@@ -38,17 +38,69 @@ def reusable(item: dict) -> bool:
     )
 
 
+def _write_incomplete_listing_report(previous: dict, errors: list[str]) -> None:
+    """Persist an explicit UNKNOWN result instead of crashing or implying absence.
+
+    A transient GitHub Actions listing error means the prior verified artifact
+    coverage is still useful, but no new absence claim is allowed. The report is
+    therefore copied forward only as historical coverage and marked incomplete.
+    """
+    report = dict(previous) if isinstance(previous, dict) else {}
+    report.update({
+        "scan": "github_actions_artifacts_incremental_content_addressed_for_exact_math_canonical",
+        "repo": base.REPO,
+        "expected_filename": base.EXPECTED_FILENAME,
+        "expected_sha256": base.EXPECTED_SHA256,
+        "required_paired_audit": base.AUDIT_HINT,
+        "created_since": base.CREATED_SINCE,
+        "scan_complete": False,
+        "canonical_absence_proven": False,
+        "listing_errors": errors,
+        "completed_at_utc": datetime.now(timezone.utc).isoformat(),
+        "policy": (
+            "TRANSIENT/403/timeout/incomplete Actions recovery is UNKNOWN, never absence evidence. "
+            "Previous verified coverage may be retained, but no new artifact-absence conclusion is permitted. "
+            "Exact immutable SHA plus one unambiguous valid final audit from the same artifact remains required; no reconstruction."
+        ),
+    })
+    report.setdefault("all_artifacts_seen", 0)
+    report.setdefault("candidate_artifacts", 0)
+    report.setdefault("reused_verified_artifacts", 0)
+    report.setdefault("downloaded_artifacts_this_run", 0)
+    report.setdefault("canonical_hits", 0)
+    report.setdefault("audit_name_hits", 0)
+    report.setdefault("valid_audit_hits", 0)
+    report.setdefault("paired_recovery_hits", 0)
+    report.setdefault("recovery_hint_hits", 0)
+    report.setdefault("download_failures", 0)
+    report.setdefault("all_members_sha256_checked", 0)
+    report.setdefault("all_member_bytes_hashed", 0)
+    report.setdefault("zip_signature_members", 0)
+    report.setdefault("oversize_members_skipped", 0)
+    report.setdefault("artifacts", [])
+    report.setdefault("recovered_files", [])
+    base.OUT_REPORT.parent.mkdir(parents=True, exist_ok=True)
+    base.OUT_REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps(report, ensure_ascii=False, indent=2))
+
+
 def main() -> int:
     if not base.TOKEN:
         print("BLOCKED: GITHUB_TOKEN is required")
         return 2
 
+    previous = load_previous()
     artifacts: list[dict] = []
     page = 1
+    listing_errors: list[str] = []
     while page <= 10:
-        payload = base.request_json(
-            f"{base.API}/repos/{base.REPO}/actions/artifacts?per_page=100&page={page}"
-        )
+        try:
+            payload = base.request_json(
+                f"{base.API}/repos/{base.REPO}/actions/artifacts?per_page=100&page={page}"
+            )
+        except Exception as exc:
+            listing_errors.append(f"actions_artifact_list_page_{page}: {type(exc).__name__}: {exc}")
+            break
         batch = payload.get("artifacts", [])
         if not batch:
             break
@@ -56,6 +108,10 @@ def main() -> int:
         if len(batch) < 100:
             break
         page += 1
+
+    if listing_errors:
+        _write_incomplete_listing_report(previous, listing_errors)
+        return 0
 
     candidates = [
         a for a in artifacts
@@ -65,7 +121,6 @@ def main() -> int:
     ]
     candidates.sort(key=lambda a: a.get("created_at", ""), reverse=True)
 
-    previous = load_previous()
     previous_items = {
         artifact_cache_key(item): item
         for item in previous.get("artifacts", [])
@@ -93,6 +148,9 @@ def main() -> int:
         "all_member_bytes_hashed": 0,
         "zip_signature_members": 0,
         "oversize_members_skipped": 0,
+        "scan_complete": True,
+        "canonical_absence_proven": False,
+        "listing_errors": [],
         "artifacts": [],
         "recovered_files": [],
         "completed_at_utc": datetime.now(timezone.utc).isoformat(),
@@ -100,6 +158,7 @@ def main() -> int:
             "Artifact results are reused only when artifact id, size, and updated_at match exactly, "
             "the previous download completed without errors, and the artifact was not pair-eligible. "
             "New or changed artifacts are downloaded and every member under the size cap is SHA-256 checked. "
+            "Any 403/timeout/download/listing failure makes the scan incomplete and is never absence evidence. "
             "Exact immutable SHA plus one unambiguous valid final audit from the same artifact remains required; no reconstruction."
         ),
     }
@@ -122,6 +181,7 @@ def main() -> int:
 
         if not item.get("downloaded"):
             report["download_failures"] += 1
+            report["scan_complete"] = False
 
         metrics = item.get("member_scan_metrics") or {}
         report["all_members_sha256_checked"] += int(metrics.get("members_sha256_checked") or 0)
@@ -168,6 +228,10 @@ def main() -> int:
 
         report["artifacts"].append(item)
 
+    report["canonical_absence_proven"] = bool(
+        report["scan_complete"]
+        and report["paired_recovery_hits"] == 0
+    )
     base.OUT_REPORT.parent.mkdir(parents=True, exist_ok=True)
     report["completed_at_utc"] = datetime.now(timezone.utc).isoformat()
     base.OUT_REPORT.write_text(
