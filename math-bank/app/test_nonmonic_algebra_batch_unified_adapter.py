@@ -6,7 +6,7 @@ from generate_all_safe_verified_variants import generate_parent
 from test_expanded_variant_layer import make_base
 from validate_expanded_variant_layer import parent_record_sha256
 
-NOW = "2026-08-24T06:12:00Z"
+NOW = "2026-08-24T06:25:00Z"
 
 
 def parent(pid: str, question: str, answer: str) -> dict:
@@ -27,6 +27,8 @@ def check(p: dict, expected_engine: str, expected_reason: str) -> None:
     assert reason.startswith(f"specialized:{expected_engine}:{expected_reason}"), reason
     assert len(rows) == len(prov) == 3
     assert len({tuple(r["numeric_signature"]) for r in rows}) == 3
+    assert len({r["question"] for r in rows}) == 3
+    assert all(r["question"] != p["question"] for r in rows)
     expected_sha = parent_record_sha256(p)
     for row, evidence in zip(rows, prov):
         assert row["source"]["parent_id"] == p["id"]
