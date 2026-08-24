@@ -1,7 +1,7 @@
 {
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP",
-  "current_stage": "SOURCE_REBUILD_PRIMARY_WAITING_REAL_SOURCE_BYTES",
+  "current_stage": "RAW_SCORING_SLOT_REBUILD_FROM_VERIFIED_SOURCE_BYTES",
   "base_target": {
     "original_records": 1124,
     "original_by_source": {"Winpass": 570, "実力錬成": 237, "Standard": 317},
@@ -15,32 +15,34 @@
     "primary": true,
     "old_canonical_search_primary": false,
     "old_canonical_ref_rescan_forbidden": true,
-    "requested_upload_names": ["スタンダードデータ(1).zip", "中学実力錬成データ(1).zip", "winpassデータ(1).zip"],
-    "historical_recovered_source_identity": {
-      "Winpass": {"sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf", "bytes": 8296042},
-      "実力錬成": {"sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33", "bytes": 7287279},
-      "Standard": {"sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6", "bytes": 9689250}
-    },
-    "identity_verified_this_run": false,
-    "local_read_result": "BLOCKED_FILE_LIBRARY_DID_NOT_RETURN_THREE_ZIPS",
-    "local_read_interpretation": "visibility/retrieval failure only; no corruption or mismatch inference"
+    "live_source_verification_file": "math-bank/state/source-live-verification-20260825.json",
+    "identity_verified_this_run": true,
+    "local_read_result": "PASS_DIRECT_CONVERSATION_MOUNT",
+    "actual_source_identity": {
+      "Winpass": {"sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf", "bytes": 8296042, "crc_ok": true, "docx_members": 81},
+      "実力錬成": {"sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33", "bytes": 7287279, "crc_ok": true, "docx_members": 80},
+      "Standard": {"sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6", "bytes": 9689250, "crc_ok": true, "docx_members": 85}
+    }
   },
-  "historical_source_forensics": {
+  "source_rebuild_actual": {
     "documents_before_dedupe": 246,
     "duplicate_documents": 106,
-    "documents": {"Winpass": 81, "実力錬成": 27, "Standard": 32, "total": 140},
-    "raw_records": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
+    "unique_documents": {"Winpass": 81, "実力錬成": 27, "Standard": 32, "total": 140},
+    "cross_source_sha_conflicts": 0,
+    "all_source_identity_and_inventory_gates_pass": true,
+    "raw_target": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
+    "raw_extraction_method": "ordered OOXML preserving w:t/m:t, problem-answer half split, scoring-slot evidence, answer/figure binding",
+    "raw_probe": {
+      "Winpass_point_multiplier_slots_before_special_format_resolution": 715,
+      "interpretation": "probe only, not promotable; custom/fixed scoring documents are being resolved individually",
+      "Standard": "requires fixed-score plus multiplier parsing",
+      "実力錬成": "requires 各N点/fixed-score/letter-or-named-answer parsing"
+    }
+  },
+  "historical_source_forensics": {
+    "raw_records_reference": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
     "raw_quality_reference": {"questions": "1271/1271", "answers": "1271/1271", "figure_refs": 41, "missing_figure_refs": 0},
     "winpass_normalization": "717->570 requires evidence for every decision; count forcing forbidden"
-  },
-  "exact_old_canonical_recovery": {
-    "reference_only": true,
-    "exact_payload_scan_complete": true,
-    "branch_tag_scan_complete_pair_hits": 0,
-    "pr_ref_scan_complete_pair_hits": 0,
-    "actions_artifact_scan_complete_pair_hits": 0,
-    "automatic_rescan_disabled_commit": "ee5c978a84126752ab5130c1c7b153e5228e288f",
-    "automatic_rescan_policy": "math-canonical-auto-complete is workflow_dispatch only; branch/checkpoint/Audit updates no longer retrigger historical canonical scans"
   },
   "rebuild_safety_implementation": {
     "raw_validator": "IMPLEMENTED",
@@ -64,40 +66,31 @@
     "actual_real_variants_generated": 0,
     "parent_record_sha256_required": true
   },
-  "latest_confirmed_ci": {
-    "run_id": "32730196071",
-    "triggering_sha": "6e685fbbc2cbe5b852976e8f203ad234bf2e24b3",
-    "overall_result": "success",
-    "app_shell_and_data_gate": "success",
-    "browser_regression": "success",
-    "real_canonical_browser_regression": "blocked_expected",
-    "publication_ready": false
-  },
   "data_rebuild_progress": {
-    "source_zip_bytes_read_this_run": false,
-    "zip_identity_this_run": {"Winpass": null, "実力錬成": null, "Standard": null},
-    "extracted_documents_current_runtime": {"Winpass": 0, "実力錬成": 0, "Standard": 0},
-    "raw_records_current_runtime": {"Winpass": 0, "実力錬成": 0, "Standard": 0},
+    "source_zip_bytes_read_this_run": true,
+    "zip_identity_this_run": {"Winpass": "PASS", "実力錬成": "PASS", "Standard": "PASS"},
+    "extracted_documents_current_runtime": {"Winpass": 81, "実力錬成": 27, "Standard": 32, "total": 140},
+    "raw_records_current_runtime": {"Winpass": 0, "実力錬成": 0, "Standard": 0, "total": 0, "note": "Do not publish probe counts until every scoring slot has question-answer-figure evidence"},
     "validated_originals": {"Winpass": 0, "実力錬成": 0, "Standard": 0, "total": 0},
-    "problem_answer_mismatches": 0,
-    "duplicates_current_runtime": 0,
-    "figure_refs_current_runtime": 0,
-    "missing_figures_current_runtime": 0,
     "immutable_mapped_rebuilt_originals": 0,
     "variants": 0,
-    "parent_coverage": "0/1124",
-    "manual_queue": 0
+    "parent_coverage": "0/1124"
   },
   "this_run": {
-    "branch_head_observed_start": "11c7f64e0809e8bd99d4637df1bcda6290c692d1",
-    "file_library_search": "three requested ZIPs not returned; unrelated files only",
-    "code_audit_finding": "legacy canonical workflow still auto-triggered on branch state changes and Audit completion",
-    "code_change": "removed push and workflow_run triggers from math-canonical-auto-complete.yml; retained manual workflow_dispatch only",
-    "code_change_commit": "ee5c978a84126752ab5130c1c7b153e5228e288f",
+    "branch_head_before_live_sync": "641def00504d8145ea09cf5ed03fc1ff6c2ce372",
+    "live_source_verification_commit": "d72b5aab94ff6d0f58d3ffdc9f8bb9f3a766b103",
+    "completed": [
+      "Read all three source ZIP bytes directly from current conversation mounts",
+      "Verified exact historical SHA256 and byte size for all three archives",
+      "Verified ZIP CRC integrity",
+      "Reproduced 246 DOCX -> 106 duplicate copies -> 140 unique documents",
+      "Reproduced unique source counts Winpass81 / 実力錬成27 / Standard32",
+      "Started evidence-based raw scoring-slot reconstruction and identified custom/fixed scoring formats that must be parsed rather than count-forced"
+    ],
     "main_touched": false,
-    "recorded_at_jst": "2026-08-25T00:02:48+09:00"
+    "recorded_at_jst": "2026-08-25T00:30:00+09:00"
   },
-  "current_position": "Await actual bytes of the three reuploaded source ZIPs. As soon as visible: SHA/size/CRC/member list -> document structure -> raw717/237/317 -> evidence-bound Winpass570 -> global1124 -> evidence-bound app mapping -> immutable freeze -> manifest revalidation -> new safe variants -> real browser/A4/publication.",
-  "next_start": "Read live HEAD/checkpoint/CI, retry only the three source ZIPs. Do not repeat old canonical ref scans. If bytes are visible, immediately execute source identity/member manifest/extraction chain. If not visible, continue only fail-closed implementation work that does not invent source data.",
-  "resume_rule": "Use only actually read source bytes and exact evidence. Never count-force, never promote raw diagnostic data directly, never reconstruct historical107 bodies from counts, never map without source evidence, and never let stale decisions or stale CI states bind to changed records."
+  "current_position": "Source-byte blocker is cleared. Continue raw scoring-slot reconstruction from the verified 140 unique DOCX. Resolve custom/fixed scoring documents, then materialize exact evidence-backed raw 717/237/317 with question, answer and figure provenance.",
+  "next_start": "Do not retry ZIP discovery and do not repeat old canonical scans. Resume from ordered OOXML/scoring-slot extraction. First finish Winpass special scoring formats around the 715 multiplier-slot probe, then complete Standard fixed-score slots and 実力錬成 各N点/fixed-score slots. Only after exact evidence-backed raw1271 exists: create Winpass717 fingerprint review queue -> explicit include/exclude evidence -> 570 -> validate global1124 -> immutable freeze -> new safe variants -> app/browser/A4/publication.",
+  "resume_rule": "Use only actually read source bytes and exact evidence. Never count-force, never promote probe/diagnostic counts directly, never reconstruct historical107 bodies from counts, never map without source evidence."
 }
