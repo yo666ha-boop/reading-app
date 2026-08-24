@@ -43,5 +43,5 @@ def generate(p:dict,count:int):
         if s//2-w*h!=l*(w+h) or 2*(l*w+l*h+w*h)!=s:raise AssertionError("prism surface side inverse failed")
         repl=f"よこ{w}cm、高さ{h}cm、表面積{s}cm²";nq=q[:m.start()]+repl+q[m.end():]
         rows.append({"question":nq,"answer":f"{l}cm","explanation":f"表面積の半分から{w}×{h}を引くと、たて×({w}+{h})。よってたて=({s}/2-{w*h})/({w}+{h})={l}cm。表面積へ戻して確認。","numeric_signature":sig})
-        ev.append({"parent_sha256":_sha(p),"method":"rectangular_prism_side_from_surface_area_exact_linear_inverse_and_recomposition","parent_recalculation":f"({ps}/2-{pw*ph})/({pw}+{ph})={pl}","variant_recalculation":f"({s}/2-{w*ph})/({w}+{h})={l}","independent_check":"S/2-wh == l(w+h) AND 2(lw+lh+wh)==S PASS"})
+        ev.append({"parent_sha256":_sha(p),"method":"rectangular_prism_side_from_surface_area_exact_linear_inverse_and_recomposition","parent_recalculation":f"({ps}/2-{pw*ph})/({pw}+{ph})={pl}","variant_recalculation":f"({s}/2-{w*h})/({w}+{h})={l}","independent_check":"S/2-wh == l(w+h) AND 2(lw+lh+wh)==S PASS"})
     return rows,ev,"rectangular_prism_side_from_surface_area_exact"
