@@ -2,17 +2,12 @@ from __future__ import annotations
 
 import argparse
 import hashlib
-import importlib.util
 import json
 import zipfile
 from datetime import datetime, timezone
 from pathlib import Path, PurePosixPath
 
-VERIFY = Path(__file__).with_name('verify_source_archives.py')
-spec = importlib.util.spec_from_file_location('verify_source_archives', VERIFY)
-assert spec and spec.loader
-v = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(v)
+import verify_source_archives as verifier
 
 IMAGE_EXTS={'.png','.jpg','.jpeg','.gif','.bmp','.webp','.svg','.emf','.wmf'}
 DOC_TARGET={'winpass':81,'jitsuren':27,'standard':32}
@@ -22,8 +17,10 @@ def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def build(source_dir: Path) -> dict:
-    identity=v.build_report(source_dir)
+def build(source_dir: Path, archive_specs: dict | None = None, doc_targets: dict | None = None, total_doc_target: int = 140) -> dict:
+    archive_specs=archive_specs or verifier.EXPECTED_ARCHIVES
+    doc_targets=doc_targets or DOC_TARGET
+    identity=verifier.build_report(source_dir, archive_specs)
     sources={}
     for logical,item in identity['archives'].items():
         selected=item.get('selected')
@@ -39,6 +36,7 @@ def build(source_dir: Path) -> dict:
                 rows.append({'path':info.filename,'kind':kind,'bytes':len(data),'sha256':sha256_bytes(data)})
         math_count=sum(r['kind']=='math_json' for r in rows)
         figure_count=sum(r['kind']=='figure' for r in rows)
+        target=doc_targets.get(logical)
         sources[logical]={
             'status':'EXACT_SOURCE_PROFILED',
             'source_zip':selected,
@@ -46,12 +44,12 @@ def build(source_dir: Path) -> dict:
             'member_count':len(rows),
             'math_json_documents':math_count,
             'figure_members':figure_count,
-            'historical_document_target':DOC_TARGET[logical],
-            'historical_document_count_match':math_count==DOC_TARGET[logical],
+            'historical_document_target':target,
+            'historical_document_count_match':target is None or math_count==target,
         }
     exact=bool(identity.get('ready_for_rebuild_pipeline'))
     total_docs=sum(x.get('math_json_documents',0) for x in sources.values())
-    doc_match=exact and total_docs==140 and all(x.get('historical_document_count_match') is True for x in sources.values())
+    doc_match=exact and total_docs==total_doc_target and all(x.get('historical_document_count_match') is True for x in sources.values())
     all_member_keys=[]
     for logical in sorted(sources):
         for row in sources[logical].get('members',[]):
@@ -63,7 +61,9 @@ def build(source_dir: Path) -> dict:
       'source_identity':identity,
       'sources':sources,
       'math_json_documents_total':total_docs,
-      'historical_140_documents_match':doc_match,
+      'document_target_total':total_doc_target,
+      'historical_140_documents_match':total_docs==140 if total_doc_target==140 else None,
+      'all_document_targets_match':doc_match,
       'manifest_sha256':manifest_sha,
       'ready_for_raw_extraction':exact and doc_match,
       'policy':{
