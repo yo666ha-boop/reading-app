@@ -12,6 +12,8 @@ def main():
     rows,prov,reason=generate_parent(p,3,NOW)
     assert reason.startswith("specialized:affine:affine_x_from_y_exact")
     assert len(rows)==len(prov)==3
+    assert len({tuple(row.get("numeric_signature") or []) for row in rows})==3
+    assert all(row["question"]!=p["question"] for row in rows)
     expected=parent_record_sha256(p)
     for row,ev in zip(rows,prov):
         assert row["source"]["parent_id"]==p["id"]
@@ -20,6 +22,6 @@ def main():
         audit=row.get("audit") or {}; assert all(audit.get(k) is True for k in ("problem_answer_verified","structure_verified","figure_refs_verified"))
         assert ev["parent_record_sha256"]==expected and ev["independent_recalculation"] is True
         assert "affine_x_from_y_exact_inverse_and_forward_recomposition" in ev["verification_evidence"]
-    print("PASS_AFFINE_X_FROM_Y_UNIFIED_ADAPTER")
+    print("PASS_AFFINE_X_FROM_Y_UNIFIED_ADAPTER_SIBLING_UNIQUENESS")
 
 if __name__=="__main__": main()
