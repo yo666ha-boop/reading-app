@@ -1,0 +1,33 @@
+{
+  "source": {
+    "title": "英単語_教科書別マスターデータ_NH_SS_2026_v7_app_wordbook_master",
+    "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
+    "sheet": "単語マスター",
+    "records": 3975,
+    "rule": "Resolve vocabulary by textbook, grade and chronological unit position; do not treat allowedWords alone as authoritative."
+  },
+  "resolutions": [
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "Get Ready 4",
+      "token": "play",
+      "status": "ALLOWED_BY_V7_CUMULATIVE",
+      "japanese": "~をする",
+      "masterEvidence": {
+        "masterRowId": 2146,
+        "fileUnit": "Pr",
+        "major": "プレステップ",
+        "unitName": "プレステップ4 だれが何をどうする"
+      },
+      "appFinding": "The current Get Ready 4 passage uses play but its allowedWords metadata omitted play.",
+      "repair": "Add play to reviewed allowedWords metadata; do not add an unknown-word note."
+    }
+  ],
+  "policy": {
+    "futureWord": "Rewrite to an already-learned word when natural.",
+    "indispensableUnknown": "Keep only when necessary and attach English/Japanese gloss from the v7 master or another explicit verified source.",
+    "morphology": "A known base form is not enough; the inflected form must also pass the grammar chronology gate.",
+    "properNoun": "Do not auto-approve merely because capitalization suggests a proper noun."
+  }
+}
