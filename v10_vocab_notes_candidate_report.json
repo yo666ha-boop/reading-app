@@ -1,19 +1,19 @@
 {
   "summary": {
-    "generatedAt": "2026-08-24T20:01:45.380Z",
+    "generatedAt": "2026-08-24T20:06:22.613Z",
     "passages": 168,
     "counts": {
-      "EXACT_ALLOWED": 27996,
-      "CUMULATIVE_ALLOWED": 9975,
+      "EXACT_ALLOWED": 28121,
+      "CUMULATIVE_ALLOWED": 9958,
       "FUNCTION_TO_GRAMMAR": 154,
       "MORPHOLOGY_TO_GRAMMAR": 141,
       "PROPER_V7_LOOKUP_REQUIRED": 2,
-      "V7_LOOKUP_REQUIRED": 25
+      "V7_LOOKUP_REQUIRED": 7
     },
     "notesPresent": 0,
     "missingGloss": 0,
     "missingAllowedWords": 0,
-    "uniqueV7LookupCandidates": 7,
+    "uniqueV7LookupCandidates": 2,
     "uniqueProperLookupCandidates": 1,
     "cumulativeRule": "For each textbook, all reviewed allowedWords from earlier grades are preloaded; within the current grade, add the current section immediately before auditing it and never add later sections.",
     "semantics": {
@@ -209,55 +209,6 @@
   },
   "globalV7Candidates": [
     {
-      "token": "sixteen",
-      "kind": "V7_LOOKUP_REQUIRED",
-      "occurrences": 5,
-      "passageCount": 1,
-      "sectionCount": 1,
-      "sections": [
-        "サンシャイン|3|PROGRAM 6-2"
-      ],
-      "examples": [
-        "サンシャイン|3|PROGRAM 6-2|sentence:1",
-        "サンシャイン|3|PROGRAM 6-2|slash:1",
-        "サンシャイン|3|PROGRAM 6-2|A1.answer",
-        "サンシャイン|3|PROGRAM 6-2|A1.evidence",
-        "サンシャイン|3|PROGRAM 6-2|B1.evidence"
-      ]
-    },
-    {
-      "token": "nine",
-      "kind": "V7_LOOKUP_REQUIRED",
-      "occurrences": 4,
-      "passageCount": 1,
-      "sectionCount": 1,
-      "sections": [
-        "ニューホライズン|2|Unit 4-2"
-      ],
-      "examples": [
-        "ニューホライズン|2|Unit 4-2|sentence:4",
-        "ニューホライズン|2|Unit 4-2|slash:4",
-        "ニューホライズン|2|Unit 4-2|A3.answer",
-        "ニューホライズン|2|Unit 4-2|A3.evidence"
-      ]
-    },
-    {
-      "token": "process",
-      "kind": "V7_LOOKUP_REQUIRED",
-      "occurrences": 4,
-      "passageCount": 1,
-      "sectionCount": 1,
-      "sections": [
-        "ニューホライズン|2|Unit 7-1"
-      ],
-      "examples": [
-        "ニューホライズン|2|Unit 7-1|sentence:2",
-        "ニューホライズン|2|Unit 7-1|slash:2",
-        "ニューホライズン|2|Unit 7-1|B1.answer",
-        "ニューホライズン|2|Unit 7-1|B1.evidence"
-      ]
-    },
-    {
       "token": "using",
       "kind": "V7_LOOKUP_REQUIRED",
       "occurrences": 4,
@@ -271,21 +222,6 @@
         "ニューホライズン|3|Unit 2-3|slash:3",
         "ニューホライズン|3|Unit 2-3|A3.evidence",
         "ニューホライズン|3|Unit 2-3|B2.evidence"
-      ]
-    },
-    {
-      "token": "hike",
-      "kind": "V7_LOOKUP_REQUIRED",
-      "occurrences": 3,
-      "passageCount": 1,
-      "sectionCount": 1,
-      "sections": [
-        "サンシャイン|2|PROGRAM 4-1"
-      ],
-      "examples": [
-        "サンシャイン|2|PROGRAM 4-1|sentence:11",
-        "サンシャイン|2|PROGRAM 4-1|slash:11",
-        "サンシャイン|2|PROGRAM 4-1|B5.evidence"
       ]
     },
     {
@@ -315,20 +251,6 @@
       "examples": [
         "サンシャイン|1|Step 6 / Our Project 3 / Power-Up 6|sentence:1",
         "サンシャイン|1|Step 6 / Our Project 3 / Power-Up 6|slash:1"
-      ]
-    },
-    {
-      "token": "learn",
-      "kind": "V7_LOOKUP_REQUIRED",
-      "occurrences": 2,
-      "passageCount": 1,
-      "sectionCount": 1,
-      "sections": [
-        "ニューホライズン|2|Unit 1-4"
-      ],
-      "examples": [
-        "ニューホライズン|2|Unit 1-4|sentence:10",
-        "ニューホライズン|2|Unit 1-4|slash:10"
       ]
     }
   ],
@@ -1106,18 +1028,7 @@
       "localAllowedTokenCount": 26,
       "cumulativeAllowedTokenCount": 708,
       "notes": 0,
-      "candidates": [
-        {
-          "token": "hike",
-          "kind": "V7_LOOKUP_REQUIRED",
-          "base": null,
-          "locations": [
-            "sentence:11",
-            "slash:11",
-            "B5.evidence"
-          ]
-        }
-      ]
+      "candidates": []
     },
     {
       "grade": "2",
@@ -1668,22 +1579,10 @@
       "sectionIndex": 16,
       "id": "V10-SS-G3-P6-2-001",
       "priorGradeAllowedTokenCount": 905,
-      "localAllowedTokenCount": 33,
-      "cumulativeAllowedTokenCount": 1135,
+      "localAllowedTokenCount": 34,
+      "cumulativeAllowedTokenCount": 1136,
       "notes": 0,
       "candidates": [
-        {
-          "token": "sixteen",
-          "kind": "V7_LOOKUP_REQUIRED",
-          "base": null,
-          "locations": [
-            "sentence:1",
-            "slash:1",
-            "A1.answer",
-            "A1.evidence",
-            "B1.evidence"
-          ]
-        },
         {
           "token": "could",
           "kind": "FUNCTION_TO_GRAMMAR",
@@ -1726,7 +1625,7 @@
       "id": "V10-SS-G3-P6-3-001",
       "priorGradeAllowedTokenCount": 905,
       "localAllowedTokenCount": 39,
-      "cumulativeAllowedTokenCount": 1147,
+      "cumulativeAllowedTokenCount": 1148,
       "notes": 0,
       "candidates": [
         {
@@ -1750,7 +1649,7 @@
       "id": "V10-SS-G3-P7-1-001",
       "priorGradeAllowedTokenCount": 905,
       "localAllowedTokenCount": 38,
-      "cumulativeAllowedTokenCount": 1162,
+      "cumulativeAllowedTokenCount": 1163,
       "notes": 0,
       "candidates": [
         {
@@ -1783,7 +1682,7 @@
       "id": "V10-SS-G3-P7-2-001",
       "priorGradeAllowedTokenCount": 905,
       "localAllowedTokenCount": 62,
-      "cumulativeAllowedTokenCount": 1178,
+      "cumulativeAllowedTokenCount": 1179,
       "notes": 0,
       "candidates": [
         {
@@ -1836,7 +1735,7 @@
       "id": "V10-SS-G3-P7-3-001",
       "priorGradeAllowedTokenCount": 905,
       "localAllowedTokenCount": 62,
-      "cumulativeAllowedTokenCount": 1200,
+      "cumulativeAllowedTokenCount": 1201,
       "notes": 0,
       "candidates": [
         {
@@ -2407,17 +2306,7 @@
       "localAllowedTokenCount": 29,
       "cumulativeAllowedTokenCount": 422,
       "notes": 0,
-      "candidates": [
-        {
-          "token": "learn",
-          "kind": "V7_LOOKUP_REQUIRED",
-          "base": null,
-          "locations": [
-            "sentence:10",
-            "slash:10"
-          ]
-        }
-      ]
+      "candidates": []
     },
     {
       "grade": "2",
@@ -2560,19 +2449,7 @@
       "localAllowedTokenCount": 26,
       "cumulativeAllowedTokenCount": 528,
       "notes": 0,
-      "candidates": [
-        {
-          "token": "nine",
-          "kind": "V7_LOOKUP_REQUIRED",
-          "base": null,
-          "locations": [
-            "sentence:4",
-            "slash:4",
-            "A3.answer",
-            "A3.evidence"
-          ]
-        }
-      ]
+      "candidates": []
     },
     {
       "grade": "2",
@@ -2809,17 +2686,6 @@
             "sentence:1",
             "slash:1",
             "A1.evidence"
-          ]
-        },
-        {
-          "token": "process",
-          "kind": "V7_LOOKUP_REQUIRED",
-          "base": null,
-          "locations": [
-            "sentence:2",
-            "slash:2",
-            "B1.answer",
-            "B1.evidence"
           ]
         },
         {

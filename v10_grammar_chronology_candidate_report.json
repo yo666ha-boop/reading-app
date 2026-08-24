@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T20:01:46.075Z",
+  "generatedAt": "2026-08-24T20:06:23.320Z",
   "passages": 168,
   "classification": "CANDIDATES_NOT_PASS_FAIL",
   "warning": "Detected structures are candidates only. A feature becomes allowed only after an evidence-backed textbook/section chronology entry exists.",
@@ -4262,6 +4262,11 @@
             "match": "hiking"
           },
           {
+            "where": "sentence:11",
+            "text": "After hiking, I hear from my friend.",
+            "match": "hiking"
+          },
+          {
             "where": "sentence:13",
             "text": "I want to go hiking again.",
             "match": "hiking"
@@ -4269,6 +4274,11 @@
           {
             "where": "slash:2",
             "text": "My friend and I / go hiking.",
+            "match": "hiking"
+          },
+          {
+            "where": "slash:11",
+            "text": "After hiking, / I hear from / my friend.",
             "match": "hiking"
           },
           {
@@ -4284,6 +4294,11 @@
           {
             "where": "A2.evidence",
             "text": "My friend and I go hiking.",
+            "match": "hiking"
+          },
+          {
+            "where": "B5.evidence",
+            "text": "After hiking, I hear from my friend.",
             "match": "hiking"
           }
         ],
@@ -8175,7 +8190,7 @@
           },
           {
             "where": "sentence:4",
-            "text": "I must take a shower by nine.",
+            "text": "I must take a shower by dinner time.",
             "match": "must"
           },
           {
@@ -8205,7 +8220,7 @@
           },
           {
             "where": "slash:4",
-            "text": "I must take / a shower / by nine.",
+            "text": "I must take / a shower / by dinner time.",
             "match": "must"
           },
           {
@@ -8235,7 +8250,7 @@
           },
           {
             "where": "A3.evidence",
-            "text": "I must take a shower by nine.",
+            "text": "I must take a shower by dinner time.",
             "match": "must"
           },
           {
@@ -9385,6 +9400,11 @@
       "features": {
         "TO_INFINITIVE": [
           {
+            "where": "sentence:2",
+            "text": "We know UNESCO has a way to select sites.",
+            "match": "to select"
+          },
+          {
             "where": "sentence:3",
             "text": "People decide what standard to use.",
             "match": "to use"
@@ -9395,6 +9415,11 @@
             "match": "to know"
           },
           {
+            "where": "slash:2",
+            "text": "We know / UNESCO has / a way to select sites.",
+            "match": "to select"
+          },
+          {
             "where": "slash:3",
             "text": "People decide / what standard / to use.",
             "match": "to use"
@@ -9403,6 +9428,16 @@
             "where": "slash:10",
             "text": "I want to know / why each site is important.",
             "match": "to know"
+          },
+          {
+            "where": "B1.answer",
+            "text": "a way to select sites",
+            "match": "to select"
+          },
+          {
+            "where": "B1.evidence",
+            "text": "We know UNESCO has a way to select sites.",
+            "match": "to select"
           },
           {
             "where": "B2.answer",
