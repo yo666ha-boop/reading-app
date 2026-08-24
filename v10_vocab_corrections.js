@@ -46,10 +46,11 @@ window.V10_VOCAB_CORRECTIONS = [
     return (rows||[]).some(r=>re.test(Array.isArray(r)?String(r[0]||''):String(r||'')));
   }
   function apply(){
-    let applied=0;
+    let applied=0,targetsSeen=0;
     for(const c of (window.V10_VOCAB_CORRECTIONS||[])){
       for(const pool of pools())for(const m of Object.values(pool||{})){
         if(!m||String(m.textbook)!==String(c.textbook)||String(m.grade)!==String(c.grade)||String(m.section)!==String(c.section))continue;
+        targetsSeen++;
         m.allowedWords=Array.isArray(m.allowedWords)?m.allowedWords:[];
         if(!hasToken(m.allowedWords,c.english)){
           m.allowedWords.push([c.english,`v7 correction: ${c.basis}`]);
@@ -57,13 +58,24 @@ window.V10_VOCAB_CORRECTIONS = [
         }
       }
     }
-    window.V10_VOCAB_CORRECTIONS_APPLIED=applied;
+    window.V10_VOCAB_CORRECTIONS_APPLIED=(window.V10_VOCAB_CORRECTIONS_APPLIED||0)+applied;
+    window.V10_VOCAB_CORRECTION_TARGETS_SEEN=targetsSeen;
+    return targetsSeen;
   }
+  // This script is intentionally loaded before the passage files. Apply on every
+  // short polling tick so each correction lands as soon as its target dataset is
+  // defined; do not defer all corrections until a 30-second timeout or window load.
   let tries=0;
+  apply();
   const timer=setInterval(()=>{
     tries++;
-    if(window.V10_RUNTIME_LOAD_PROGRESS==='complete'||tries>=120){clearInterval(timer);apply();}
-  },250);
+    const targetsSeen=apply();
+    const expected=(window.V10_VOCAB_CORRECTIONS||[]).length;
+    if((window.V10_RUNTIME_LOAD_PROGRESS==='complete'&&targetsSeen>=expected)||tries>=120){
+      clearInterval(timer);
+      apply();
+    }
+  },100);
   window.addEventListener('load',()=>setTimeout(apply,0),{once:true});
 })();
 
