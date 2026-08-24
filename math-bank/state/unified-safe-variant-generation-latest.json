@@ -1,17 +1,17 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32715276791",
-  "triggering_sha": "93032854ac93ec8ceab06ce088322c6468604e03",
-  "tested_checkout_sha": "93032854ac93ec8ceab06ce088322c6468604e03",
+  "run_id": "32715344786",
+  "triggering_sha": "ec21735ebd920207c10698d14bd47fe9e7042b14",
+  "tested_checkout_sha": "ec21735ebd920207c10698d14bd47fe9e7042b14",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T10:09:27.577737+00:00",
+  "recorded_at_utc": "2026-08-24T10:09:59.486133+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
-    "core": "success",
-    "parent_contract": "success",
-    "legacy_empty_choices": "success"
+    "specialized_and_adapters": "cancelled",
+    "core": "skipped",
+    "parent_contract": "skipped",
+    "legacy_empty_choices": "skipped"
   },
   "engine_test_discovery": "test_safe_*_variant_engine.py plus test_*_unified_adapter.py plus runtime reachability graph gate",
   "engine_modules_auto_discovered": [
@@ -50,6 +50,7 @@
     "difference_of_squares_factorization",
     "direct_proportion_constant",
     "direct_proportion_value",
+    "direct_proportion_x_from_y",
     "discount_price",
     "distance_origin_point",
     "distance_two_points",
@@ -144,7 +145,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 128,
+  "engine_module_count": 129,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_equation_from_two_points_variant_engine.py",
@@ -181,6 +182,7 @@
     "test_safe_difference_of_squares_factorization_variant_engine.py",
     "test_safe_direct_proportion_constant_variant_engine.py",
     "test_safe_direct_proportion_value_variant_engine.py",
+    "test_safe_direct_proportion_x_from_y_variant_engine.py",
     "test_safe_discount_price_variant_engine.py",
     "test_safe_distance_origin_point_variant_engine.py",
     "test_safe_distance_two_points_variant_engine.py",
@@ -272,7 +274,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 125,
+  "engine_test_count": 126,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_affine_equation_from_two_points_unified_adapter.py",
