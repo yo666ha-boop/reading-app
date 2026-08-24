@@ -151,6 +151,7 @@ jobs:
             'raw_record_count_qa_fingerprint_gate_required': True,
             'raw_figure_resolution_gate_required': True,
             'winpass_fingerprint_bound_review_queue_required': True,
+            'winpass_decision_exact_record_fingerprint_binding_required': True,
             'hash_mismatch_fail_closed': True,
             'raw_1271_direct_promotion_forbidden': True,
             'historical_canonical_byte_claim_without_old_zip_forbidden': True,
@@ -164,7 +165,7 @@ jobs:
               'validated_originals': {'Winpass':570,'実力錬成':237,'Standard':317,'total':1124},
             },
             'real_source_archives_committed': real_sources,
-            'next_if_sources_available': 'identity -> member SHA manifest -> 140-doc profile -> recursive schema paths -> raw 717/237/317 -> raw QA/figure/fingerprint gate -> Winpass fingerprint review queue -> evidence decisions for all 717 -> full 1124 validation',
+            'next_if_sources_available': 'identity -> member SHA manifest -> 140-doc profile -> recursive schema paths -> raw 717/237/317 -> raw QA/figure/fingerprint gate -> Winpass fingerprint review queue -> exact-record-bound evidence decisions for all 717 -> full 1124 validation',
             'recorded_at_utc': datetime.now(timezone.utc).isoformat(),
           }
           Path('math-bank/state/source-rebuild-contract-latest.json').write_text(
