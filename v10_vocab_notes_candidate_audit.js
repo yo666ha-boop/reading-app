@@ -1,8 +1,7 @@
 const fs=require('fs');
 const {JSDOM,VirtualConsole}=require('jsdom');
 
-// 2026-08-24: cumulative-reviewed vocabulary scanner; push marker forces fresh all-168 evidence.
-// 2026-08-24 automation rerun marker: recompute corrected cumulative counts from current branch actual.
+// 2026-08-25 automation rerun marker: corrected cumulative scanner must regenerate all-168 evidence; old 5407 report is invalid.
 function tokenize(text){
   return (String(text||'').replace(/[’]/g,"'").match(/[A-Za-z]+(?:'[A-Za-z]+)*/g)||[]).map(x=>x.toLowerCase());
 }
@@ -25,8 +24,6 @@ function morphologyBases(w){
   if(w.endsWith('est')&&w.length>5){const b=w.slice(0,-3);out.push(b,b+'e');}
   return uniq(out.filter(Boolean));
 }
-// Vocabulary-only exemption. Every item below still has to pass the separate
-// textbook/section grammar chronology gate before release.
 const FUNCTION_TO_GRAMMAR=new Set(`a an the i me my mine you your yours he him his she her hers it its we us our ours they them their theirs this that these those who whose whom which what when where why how am is are was were be been being do does did doing have has had having can could may might must shall should will would not no yes and or but so if because as than to of in on at by for from with about into over under before after during while through up down out off again then there here also too very more most less least some any many much few little each every all both either neither another other same own one two first second third`.split(/\s+/));
 const CONTRACTIONS_TO_GRAMMAR=new Set(["i'm","you're","he's","she's","it's","we're","they're","isn't","aren't","wasn't","weren't","don't","doesn't","didn't","can't","couldn't","won't","wouldn't","shouldn't","mustn't","i've","you've","we've","they've","hasn't","haven't","hadn't","i'll","you'll","he'll","she'll","we'll","they'll"]);
 const IRREGULAR_TO_GRAMMAR=new Map(Object.entries({went:'go',gone:'go',came:'come',seen:'see',saw:'see',made:'make',took:'take',taken:'take',gave:'give',given:'give',wrote:'write',written:'write',read:'read',bought:'buy',brought:'bring',thought:'think',found:'find',knew:'know',known:'know',told:'tell',said:'say',spoke:'speak',spoken:'speak',ate:'eat',eaten:'eat',drank:'drink',drunk:'drink',ran:'run',swam:'swim',swum:'swim',became:'become',began:'begin',begun:'begin',left:'leave',felt:'feel',kept:'keep',met:'meet',sent:'send',built:'build',held:'hold',heard:'hear',lost:'lose',paid:'pay',put:'put',stood:'stand',understood:'understand'}));
@@ -68,7 +65,7 @@ async function waitFor(fn,ms=30000){const st=Date.now();while(Date.now()-st<ms){
     for(let sectionIndex=0;sectionIndex<entries.length;sectionIndex++){
       const [section,m]=entries[sectionIndex];total++;
       const localAllowed=allowedTokens(m);if(!localAllowed.size)missingAllowedWords++;
-      for(const token of localAllowed)cumulative.add(token); // current section becomes legal; future sections are not added yet.
+      for(const token of localAllowed)cumulative.add(token);
       const meta=META[`${textbook}|${grade}|${section}`]||{};
       const found=new Map();
       for(const src of sourceStrings(m,meta))for(const rawTok of (String(src.text||'').replace(/[’]/g,"'").match(/[A-Za-z]+(?:'[A-Za-z]+)*/g)||[])){
@@ -92,9 +89,7 @@ async function waitFor(fn,ms=30000){const st=Date.now();while(Date.now()-st<ms){
   assert(total===168,`expected 168 passages, got ${total}`);
   assert(browserErrors.length===0,`browser errors: ${browserErrors.join(' | ')}`);
   const globalV7Candidates=[...global.values()].map(g=>({token:g.token,kind:g.kind,occurrences:g.occurrences,passageCount:g.passages.size,sectionCount:g.sections.size,sections:[...g.sections],examples:g.examples})).sort((a,b)=>b.occurrences-a.occurrences||a.token.localeCompare(b.token));
-  const summary={generatedAt:new Date().toISOString(),passages:total,counts,notesPresent,missingGloss,missingAllowedWords,uniqueV7LookupCandidates:globalV7Candidates.filter(x=>x.kind==='V7_LOOKUP_REQUIRED').length,uniqueProperLookupCandidates:globalV7Candidates.filter(x=>x.kind==='PROPER_V7_LOOKUP_REQUIRED').length,
-    cumulativeRule:'For each textbook+grade, add current section reviewed allowedWords to the cumulative set immediately before auditing that section; never add later sections.',
-    semantics:{EXACT_ALLOWED:'explicitly reviewed in current passage allowedWords',CUMULATIVE_ALLOWED:'explicitly reviewed in an earlier/equal section of the same textbook and grade; future sections excluded',FUNCTION_TO_GRAMMAR:'vocabulary exemption only; must pass chronological grammar gate',MORPHOLOGY_TO_GRAMMAR:'base appears in current/prior reviewed allowedWords; inflection still requires grammar chronology check',V7_LOOKUP_REQUIRED:'still unresolved after current+prior app-reviewed vocabulary; must be checked against canonical v7 at exact section cutoff',PROPER_V7_LOOKUP_REQUIRED:'proper-name candidate; not auto-approved'}};
+  const summary={generatedAt:new Date().toISOString(),passages:total,counts,notesPresent,missingGloss,missingAllowedWords,uniqueV7LookupCandidates:globalV7Candidates.filter(x=>x.kind==='V7_LOOKUP_REQUIRED').length,uniqueProperLookupCandidates:globalV7Candidates.filter(x=>x.kind==='PROPER_V7_LOOKUP_REQUIRED').length,cumulativeRule:'For each textbook+grade, add current section reviewed allowedWords to the cumulative set immediately before auditing that section; never add later sections.',semantics:{EXACT_ALLOWED:'explicitly reviewed in current passage allowedWords',CUMULATIVE_ALLOWED:'explicitly reviewed in an earlier/equal section of the same textbook and grade; future sections excluded',FUNCTION_TO_GRAMMAR:'vocabulary exemption only; must pass chronological grammar gate',MORPHOLOGY_TO_GRAMMAR:'base appears in current/prior reviewed allowedWords; inflection still requires grammar chronology check',V7_LOOKUP_REQUIRED:'still unresolved after current+prior app-reviewed vocabulary; must be checked against canonical v7 at exact section cutoff',PROPER_V7_LOOKUP_REQUIRED:'proper-name candidate; not auto-approved'}};
   const payload={summary,orders,globalV7Candidates,passages:report};
   fs.writeFileSync('v10_vocab_notes_candidate_report.json',JSON.stringify(payload,null,2));
   console.log(`VOCAB CANDIDATE AUDIT passages=${total}`);
