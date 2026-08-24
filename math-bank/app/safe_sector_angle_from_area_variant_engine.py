@@ -22,7 +22,9 @@ def _parse(parent:dict):
     if parent.get("figure_refs") or parent.get("choices"):return None
     q=_norm(parent.get("question"))
     if not (("扇形" in q or "おうぎ形" in q) and "中心角" in q and "求" in q and "面積" in q and "円周率" in q and "3.14" in q):return None
-    if any(t in q for t in ("弧の長さ","弧長","半径を求","面積を求","図","m²","mm","km")):return None
+    if any(t in q for t in ("弧の長さ","弧長","半径を求","面積を求","図")):return None
+    unit_guard=q.replace("cm²","").replace("cm^2","").replace("cm2","")
+    if any(t in unit_guard for t in ("m²","mm","km")):return None
     rs=list(RADIUS_RE.finditer(q));ars=list(AREA_RE.finditer(q))
     if len(rs)!=1 or len(ars)!=1:return None
     r=int(rs[0].group("r"))
