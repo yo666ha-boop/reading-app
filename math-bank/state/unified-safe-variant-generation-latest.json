@@ -1,17 +1,17 @@
 {
   "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32695206982",
-  "triggering_sha": "29d9aaeb80f26fc17d6b8c17447029154da61d5e",
-  "tested_checkout_sha": "29d9aaeb80f26fc17d6b8c17447029154da61d5e",
+  "run_id": "32695233514",
+  "triggering_sha": "de9734c14e7da51715ded82dfd9d5fc83bc4726f",
+  "tested_checkout_sha": "de9734c14e7da51715ded82dfd9d5fc83bc4726f",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T05:55:05.223763+00:00",
+  "recorded_at_utc": "2026-08-24T06:00:07.335677+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "failure",
-    "core": "success",
-    "parent_contract": "success",
-    "legacy_empty_choices": "success"
+    "specialized_and_adapters": "cancelled",
+    "core": "skipped",
+    "parent_contract": "skipped",
+    "legacy_empty_choices": "skipped"
   },
   "engine_test_discovery": "test_safe_*_variant_engine.py plus test_*_unified_adapter.py plus runtime reachability graph gate",
   "engine_modules_auto_discovered": [
@@ -205,6 +205,7 @@
     "test_safe_pythagorean_hypotenuse_variant_engine.py",
     "test_safe_pythagorean_leg_variant_engine.py",
     "test_safe_quadratic_integer_roots_variant_engine.py",
+    "test_safe_quadratic_nonmonic_integer_roots_variant_engine.py",
     "test_safe_quadratic_square_equation_variant_engine.py",
     "test_safe_ratio_simplification_variant_engine.py",
     "test_safe_rectangle_perimeter_variant_engine.py",
@@ -257,7 +258,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 117,
+  "engine_test_count": 118,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_affine_equation_from_two_points_unified_adapter.py",
