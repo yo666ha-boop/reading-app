@@ -1,11 +1,13 @@
 from __future__ import annotations
 
-"""Fail-closed exact engine for one-variable linear equations ax+b=c."""
+"""Fail-closed exact engine for one-variable linear equations."""
 
 import hashlib
 import json
 import re
 from fractions import Fraction
+
+from safe_linear_equation_both_sides_variant_engine import generate as generate_both_sides
 
 COEF=r"[+-]?\d*"
 INT=r"[+-]?\d+"
@@ -57,6 +59,8 @@ def _parse(parent:dict):
 
 
 def can_generate(parent:dict)->tuple[bool,str]:
+    rows,_,reason=generate_both_sides(parent,1)
+    if rows: return True,reason
     if _parse(parent) is not None: return True,"linear_equation_ax_plus_b_equals_c_exact"
     if parent.get("figure_refs"): return False,"figure_parent"
     if parent.get("choices"): return False,"choice_parent"
@@ -65,6 +69,8 @@ def can_generate(parent:dict)->tuple[bool,str]:
 
 def generate(parent:dict,count:int):
     if count not in (1,2,3): raise ValueError("count must be 1, 2, or 3")
+    rows,evidence,reason=generate_both_sides(parent,count)
+    if rows: return rows,evidence,reason
     parsed=_parse(parent)
     if parsed is None:
         ok,reason=can_generate(parent); assert not ok
@@ -76,9 +82,9 @@ def generate(parent:dict,count:int):
         if ((seed>>(i+19))&1): a=-a
         x=Fraction(-8+((seed>>(i*7+2))%17))
         b=Fraction(-9+((seed>>(i*9+3))%19))
-        c=a*x+b; sig=(_ft(a),_ft(b),_ft(c)); bump=0
+        c=a*x+b; sig=(_ft(a),_ft(b),_ft(c))
         while sig==parent_sig or sig in seen:
-            bump+=1; x+=1; c=a*x+b; sig=(_ft(a),_ft(b),_ft(c))
+            x+=1; c=a*x+b; sig=(_ft(a),_ft(b),_ft(c))
         seen.add(sig)
         if (c-b)/a!=x or a*x+b!=c: raise AssertionError("linear equation inverse/recomposition identity failed")
         lhs="x" if a==1 else "-x" if a==-1 else f"{_ft(a)}x"
