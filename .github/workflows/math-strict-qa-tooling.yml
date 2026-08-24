@@ -19,7 +19,7 @@ on:
       - '.github/workflows/math-strict-qa-tooling.yml'
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: math-strict-qa-tooling-${{ github.ref }}
@@ -29,10 +29,15 @@ jobs:
   strict-qa-tooling-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout math rebuild branch
+      - name: Checkout latest math rebuild branch
         uses: actions/checkout@v4
         with:
           ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+
+      - name: Record tested branch head
+        shell: bash
+        run: echo "TESTED_HEAD=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -57,3 +62,49 @@ jobs:
             test_reconcile_strict_qa_progress.py \
             test_build_ooxml_asset_manifest.py \
             test_locate_recovered_qa_ooxml.py
+
+      - name: Persist strict tooling CI result
+        if: always()
+        shell: bash
+        env:
+          JOB_STATUS: ${{ job.status }}
+          TRIGGERING_SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git pull --rebase origin math-problem-bank-bootstrap || true
+          python - <<'PY'
+          import json
+          import os
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          path = Path('math-bank/state/strict-tooling-ci-latest.json')
+          path.parent.mkdir(parents=True, exist_ok=True)
+          payload = {
+              'workflow': 'Math Strict Q/A Tooling',
+              'job_status': os.environ.get('JOB_STATUS', 'unknown'),
+              'triggering_sha': os.environ.get('TRIGGERING_SHA', ''),
+              'tested_branch_head_before_tests': os.environ.get('TESTED_HEAD', ''),
+              'run_id': os.environ.get('RUN_ID', ''),
+              'run_attempt': os.environ.get('RUN_ATTEMPT', ''),
+              'recorded_at_utc': datetime.now(timezone.utc).isoformat(),
+              'schedule_based': False,
+              'tests': [
+                  'test_validate_raw1271_materialization.py',
+                  'test_promote_recovered_qa_drafts.py',
+                  'test_reconcile_strict_qa_progress.py',
+                  'test_build_ooxml_asset_manifest.py',
+                  'test_locate_recovered_qa_ooxml.py',
+              ],
+          }
+          path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+          git add -- math-bank/state/strict-tooling-ci-latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'record math strict tooling CI result'
+            git pull --rebase origin math-problem-bank-bootstrap || true
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
