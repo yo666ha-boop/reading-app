@@ -1,0 +1,45 @@
+{
+  "project": "mikami-math-problem-bank",
+  "manual_run_started_at_jst": "2026-08-25T01:43:00+09:00",
+  "starting_head": "bdaa585e06797da32719cfe7bc98322e513391ff",
+  "stage": "RECOVERED_DRAFT_TO_STRICT_PROVENANCE_PROMOTION",
+  "recovered_draft_ledger": {
+    "state_file": "math-bank/state/recovered-local-qa-drafts-20260825.json",
+    "recording_commit": "bdaa585e06797da32719cfe7bc98322e513391ff",
+    "Standard": {"records": 317, "sha256": "326f38b5aebadc226d3e12eaf6e750bf4b7727759c2e4f7f06f75dc2ffa114b0"},
+    "実力錬成": {"records": 237, "sha256": "818fdd60d26211634d7138b381e55b4123fb4155c682a0375344a3ba0e755c97"},
+    "Winpass": {"records": 0},
+    "total": 554,
+    "current_runtime_files_mounted": false
+  },
+  "strict_persisted_actual": {
+    "Standard": 3,
+    "実力錬成": 0,
+    "Winpass": 0,
+    "total": 3,
+    "proof_path": "math-bank/recovered/current-session/standard-strict-proof-first3-20260825.jsonl",
+    "proof_commit": "eb0a8965e657284bfa32a7378fe85b2cddb68785"
+  },
+  "remaining": {
+    "recovered_drafts_waiting_for_strict_promotion": {"Standard": 314, "実力錬成": 237, "total": 551},
+    "Winpass_exact_qa_provenance": 717,
+    "raw1271_strict_total_pending": 1268
+  },
+  "tooling_added_this_run": {
+    "promotion_script": "math-bank/scripts/promote_recovered_qa_drafts.py",
+    "promotion_test": "math-bank/scripts/test_promote_recovered_qa_drafts.py",
+    "promotion_policy": [
+      "verify recovered draft file SHA-256 and exact record count before reuse",
+      "join only by exact raw_id or canonical source_document/major/subslot identity",
+      "require exact recovered-draft Q/A agreement with strict evidence",
+      "require every promoted record to pass validate_raw1271_materialization.validate_record",
+      "resume only when an existing strict fingerprint matches exactly",
+      "reject duplicate identities, hash/count mismatches, strict provenance failures and resume conflicts",
+      "write promotion output atomically and never pad or count-force"
+    ],
+    "validator_hardening": "graphical_answer_asset is now bound into record_fingerprint when present"
+  },
+  "local_unit_test_result": {"tests_run": 15, "failures": 0, "errors": 0, "status": "PASS"},
+  "current_runtime_limit": "The exact recovered draft JSONL files and source ZIP/OOXML bytes are not mounted in /mnt/data in this manual runtime, so records 4-554 cannot be truthfully promoted here.",
+  "next_start": "Do not repeat old canonical scans, ZIP identity work, document dedupe, or raw count derivation. Re-expose the known recovered draft files and already-verified source bytes/evidence, verify Standard SHA/count 317 and 実力錬成 SHA/count 237, run strict promotion with resume from the persisted Standard first3, then finish Winpass717 exact Q/A/figure provenance. After strict1271 PASS, review Winpass717 with evidence to 570 and continue global1124 freeze/variants/app/browser/A4/publication."
+}
