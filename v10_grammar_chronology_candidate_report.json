@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T18:55:59.942Z",
+  "generatedAt": "2026-08-24T18:57:31.536Z",
   "passages": 168,
   "classification": "CANDIDATES_NOT_PASS_FAIL",
   "warning": "Detected structures are candidates only. A feature becomes allowed only after an evidence-backed textbook/section chronology entry exists.",
@@ -1635,6 +1635,11 @@
             "where": "slash:6",
             "text": "A shopping mall is / near the museum.",
             "match": "shopping"
+          },
+          {
+            "where": "B2.evidence",
+            "text": "A shopping mall is near the museum.",
+            "match": "shopping"
           }
         ],
         "RELATIVE_PRONOUN": [
@@ -1751,6 +1756,21 @@
             "where": "A5.evidence",
             "text": "I want to come here someday.",
             "match": "to come"
+          },
+          {
+            "where": "B1.answer",
+            "text": "next to a bamboo grove",
+            "match": "to a"
+          },
+          {
+            "where": "B1.evidence",
+            "text": "The koala is next to a bamboo grove.",
+            "match": "to a"
+          },
+          {
+            "where": "B4.evidence",
+            "text": "I want to come here someday.",
+            "match": "to come"
           }
         ],
         "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
@@ -1766,6 +1786,11 @@
           },
           {
             "where": "A4.evidence",
+            "text": "My friend can show me around.",
+            "match": "can"
+          },
+          {
+            "where": "B3.evidence",
             "text": "My friend can show me around.",
             "match": "can"
           }
@@ -1788,6 +1813,16 @@
           },
           {
             "where": "A4.evidence",
+            "text": "My friend can show me around.",
+            "match": "show me"
+          },
+          {
+            "where": "B3.answer",
+            "text": "show me around",
+            "match": "show me"
+          },
+          {
+            "where": "B3.evidence",
             "text": "My friend can show me around.",
             "match": "show me"
           }
@@ -1834,6 +1869,11 @@
           {
             "where": "A4.evidence",
             "text": "Why don't we listen to music?",
+            "match": "to music"
+          },
+          {
+            "where": "B4.evidence",
+            "text": "We listen to music together.",
             "match": "to music"
           }
         ]
