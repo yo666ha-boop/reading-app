@@ -1,0 +1,37 @@
+{
+  "workflow": "Math raw 1271 scoring-slot count verification from live reuploaded sources",
+  "recorded_at_jst": "2026-08-25T00:30:00+09:00",
+  "policy": "Historical target counts are verification only. Slot counts are derived from source score annotations, OOXML layout and 100-point consistency; no count forcing.",
+  "source_identity_state": "math-bank/state/source-live-verification-20260825.json",
+  "counts": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
+  "references": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
+  "all_reference_counts_match": true,
+  "independent_gates": {
+    "Winpass": {
+      "multiplier_probe": 715,
+      "net_special_adjustment": 2,
+      "final": 717,
+      "special_evidence_documents": [
+        {"document": "25winpasst1suhy000106.docx", "delta": 1, "reason": "section5 total /10; 最大公約数・最小公倍数 are a single 完答10点 composite scored slot"},
+        {"document": "25winpasst2suhy000417.docx", "delta": -3, "reason": "custom multiplier sequence (⑴10点×2,⑵20点×1) is duplicated as a whole by overlaid text; actual section slots=3, probe counted6"},
+        {"document": "25winpasst3suhy000523.docx", "delta": 4, "reason": "section1 and section3 each have ⑴/⑵ custom point labels without ×N, adding 2+2 slots"}
+      ]
+    },
+    "Standard": {"multiplier_slots": 279, "fixed_score_slots": 38, "final": 317},
+    "実力錬成": {"final": 237, "all_27_tests_reconstruct_to_100_points": true}
+  },
+  "per_document_slot_counts": {
+    "Winpass": {
+      "25winpasst1suhy000101.docx":10,"25winpasst1suhy000102.docx":10,"25winpasst1suhy000103.docx":10,"25winpasst1suhy000104.docx":10,"25winpasst1suhy000105.docx":10,"25winpasst1suhy000106.docx":10,"25winpasst1suhy000207.docx":10,"25winpasst1suhy000208.docx":10,"25winpasst1suhy000209.docx":10,"25winpasst1suhy000210.docx":10,"25winpasst1suhy000311.docx":10,"25winpasst1suhy000312.docx":10,"25winpasst1suhy000313.docx":6,"25winpasst1suhy000314.docx":5,"25winpasst1suhy000415.docx":10,"25winpasst1suhy000416.docx":10,"25winpasst1suhy000417.docx":10,"25winpasst1suhy000418.docx":10,"25winpasst1suhy000519.docx":10,"25winpasst1suhy000520.docx":9,"25winpasst1suhy000521.docx":5,"25winpasst1suhy000522.docx":5,"25winpasst1suhy000523.docx":7,"25winpasst1suhy000624.docx":10,"25winpasst1suhy000625.docx":9,"25winpasst1suhy000626.docx":8,"25winpasst1suhy000627.docx":10,"25winpasst1suhy000728.docx":10,
+      "25winpasst2suhy000101.docx":10,"25winpasst2suhy000102.docx":10,"25winpasst2suhy000103.docx":10,"25winpasst2suhy000204.docx":10,"25winpasst2suhy000205.docx":10,"25winpasst2suhy000206.docx":5,"25winpasst2suhy000207.docx":5,"25winpasst2suhy000308.docx":9,"25winpasst2suhy000309.docx":10,"25winpasst2suhy000310.docx":10,"25winpasst2suhy000311.docx":10,"25winpasst2suhy000312.docx":9,"25winpasst2suhy000313.docx":5,"25winpasst2suhy000414.docx":10,"25winpasst2suhy000415.docx":10,"25winpasst2suhy000416.docx":9,"25winpasst2suhy000417.docx":8,"25winpasst2suhy000518.docx":7,"25winpasst2suhy000519.docx":6,"25winpasst2suhy000520.docx":10,"25winpasst2suhy000521.docx":9,"25winpasst2suhy000522.docx":5,"25winpasst2suhy000623.docx":9,"25winpasst2suhy000624.docx":10,"25winpasst2suhy000725.docx":8,
+      "25winpasst3suhy000101.docx":10,"25winpasst3suhy000102.docx":10,"25winpasst3suhy000103.docx":10,"25winpasst3suhy000104.docx":10,"25winpasst3suhy000105.docx":10,"25winpasst3suhy000206.docx":10,"25winpasst3suhy000207.docx":10,"25winpasst3suhy000208.docx":10,"25winpasst3suhy000209.docx":10,"25winpasst3suhy000310.docx":10,"25winpasst3suhy000311.docx":10,"25winpasst3suhy000312.docx":8,"25winpasst3suhy000413.docx":10,"25winpasst3suhy000414.docx":10,"25winpasst3suhy000415.docx":10,"25winpasst3suhy000416.docx":8,"25winpasst3suhy000517.docx":10,"25winpasst3suhy000518.docx":10,"25winpasst3suhy000519.docx":7,"25winpasst3suhy000520.docx":5,"25winpasst3suhy000521.docx":10,"25winpasst3suhy000522.docx":10,"25winpasst3suhy000523.docx":6,"25winpasst3suhy000624.docx":10,"25winpasst3suhy000625.docx":6,"25winpasst3suhy000626.docx":6,"25winpasst3suhy000627.docx":5,"25winpasst3suhy000728.docx":8
+    },
+    "Standard": {
+      "25astandardt1suhy000101.docx":14,"25astandardt1suhy000102.docx":14,"25astandardt1suhy000103.docx":14,"25astandardt1suhy000104.docx":14,"25astandardt1suhy000105.docx":8,"25astandardt1suhy000206.docx":12,"25astandardt1suhy000207.docx":13,"25astandardt1suhy000208.docx":15,"25astandardt1suhy000209.docx":10,"25astandardt1suhy000310.docx":14,"25astandardt1suhy000311.docx":12,"25astandardt1suhy000312.docx":6,"25astandardt1suhy000313.docx":5,"25astandardt1suhy000314.docx":7,"25astandardt1suhy000520.docx":10,"25astandardt1suhy000521.docx":10,"25astandardt1suhy000522.docx":7,"25astandardt1suhy000523.docx":5,"25astandardt1suhy000524.docx":6,"25astandardt1suhy000525.docx":8,"25astandardt1suhy000415.docx":8,"25astandardt1suhy000416.docx":10,"25astandardt1suhy000417.docx":10,"25astandardt1suhy000418.docx":10,"25astandardt1suhy000419.docx":10,"25astandardt1suhy000626.docx":10,"25astandardt1suhy000627.docx":9,"25astandardt1suhy000628.docx":8,"25astandardt1suhy000629.docx":12,"25astandardt1suhy000630.docx":12,"25astandardt1suhy000631.docx":4,"25astandardt1suhy000732.docx":10
+    },
+    "実力錬成": {
+      "25jitsurent1suhy000101.docx":10,"25jitsurent1suhy000102.docx":10,"25jitsurent1suhy000103.docx":10,"25jitsurent1suhy000104.docx":10,"25jitsurent1suhy000105.docx":10,"25jitsurent1suhy000206.docx":10,"25jitsurent1suhy000207.docx":10,"25jitsurent1suhy000208.docx":11,"25jitsurent1suhy000209.docx":7,"25jitsurent1suhy000310.docx":10,"25jitsurent1suhy000311.docx":10,"25jitsurent1suhy000312.docx":6,"25jitsurent1suhy000313.docx":5,"25jitsurent1suhy000518.docx":9,"25jitsurent1suhy000519.docx":8,"25jitsurent1suhy000520.docx":5,"25jitsurent1suhy000521.docx":5,"25jitsurent1suhy000522.docx":9,"25jitsurent1suhy000414.docx":8,"25jitsurent1suhy000415.docx":8,"25jitsurent1suhy000416.docx":10,"25jitsurent1suhy000417.docx":9,"25jitsurent1suhy000623.docx":10,"25jitsurent1suhy000624.docx":10,"25jitsurent1suhy000625.docx":8,"25jitsurent1suhy000626.docx":9,"25jitsurent1suhy000727.docx":10
+    }
+  },
+  "next": "Materialize all 1271 slot records with exact source document/major/subslot, question text preserving m:t math, answer text or figure asset, and record fingerprint. Then validate 1271/1271 Q&A and 41 figure refs before Winpass717->570 evidence decisions."
+}
