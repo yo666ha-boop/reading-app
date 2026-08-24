@@ -1,14 +1,14 @@
 {
-  "status": "FAIL_CI_DIAGNOSTIC",
+  "status": "PASS_CI",
   "persist_schema_version": 69,
-  "run_id": "32691824239",
-  "triggering_sha": "cc4b13fa327e39dea1cd9c75b4fbd9868daa8c19",
-  "tested_checkout_sha": "cc4b13fa327e39dea1cd9c75b4fbd9868daa8c19",
+  "run_id": "32691850520",
+  "triggering_sha": "de50f3b273ad656d70ecb5f81e0efa03dc6a2f85",
+  "tested_checkout_sha": "de50f3b273ad656d70ecb5f81e0efa03dc6a2f85",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T04:57:19.296749+00:00",
+  "recorded_at_utc": "2026-08-24T04:57:45.066380+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "failure",
+    "specialized_and_adapters": "success",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -304,6 +304,7 @@
     "test_linear_equation_both_sides_unified_adapter.py",
     "test_linear_equation_parentheses_unified_adapter.py",
     "test_linear_equation_unified_adapter.py",
+    "test_linear_inequality_unified_adapter.py",
     "test_median_unified_adapter.py",
     "test_midpoint_endpoint_from_midpoint_unified_adapter.py",
     "test_midpoint_two_points_unified_adapter.py",
@@ -367,7 +368,7 @@
     "test_two_dice_sum_probability_unified_adapter.py",
     "test_weighted_group_average_unified_adapter.py"
   ],
-  "adapter_test_count": 108,
+  "adapter_test_count": 109,
   "runtime_routes_auto_discovered": [
     "absolute_value",
     "affine",
