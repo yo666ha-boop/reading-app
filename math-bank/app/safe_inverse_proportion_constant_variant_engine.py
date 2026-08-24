@@ -33,8 +33,7 @@ def _parse_parent(parent: dict):
         return None
     if not any(t in q for t in ("比例定数","定数a","定数 a")):
         return None
-    blocked=("比例し","グラフ","式を求","yの値","xの値","図")
-    if any(t in q for t in blocked):
+    if any(t in q for t in ("グラフ","式を求","yの値","xの値","図")):
         return None
     matches=list(PAIR_RE.finditer(q))
     if len(matches)!=1:
