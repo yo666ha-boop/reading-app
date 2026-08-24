@@ -3,7 +3,7 @@ from __future__ import annotations
 import copy
 from generate_all_safe_verified_variants import generate_parent
 from test_expanded_variant_layer import make_base
-from validate_expanded_variant_layer import parent_record_sha256
+from validate_expanded_variant_layer import numeric_tokens, parent_record_sha256
 
 NOW="2026-08-24T00:00:00Z"
 
@@ -12,7 +12,8 @@ def main():
     rows,prov,reason=generate_parent(p,3,NOW)
     assert reason.startswith("specialized:affine:affine_x_from_y_exact")
     assert len(rows)==len(prov)==3
-    assert len({tuple(row.get("numeric_signature") or []) for row in rows})==3
+    parent_sig=tuple(numeric_tokens(p["question"])); sibling_sigs={tuple(numeric_tokens(row["question"])) for row in rows}
+    assert parent_sig not in sibling_sigs and len(sibling_sigs)==3
     assert all(row["question"]!=p["question"] for row in rows)
     expected=parent_record_sha256(p)
     for row,ev in zip(rows,prov):
