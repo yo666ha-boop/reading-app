@@ -12,6 +12,7 @@ from safe_affine_intercept_from_slope_point_variant_engine import generate as ge
 from safe_affine_x_from_y_variant_engine import generate as generate_affine_x_from_y
 from safe_direct_proportion_constant_variant_engine import generate as generate_direct_proportion_constant
 from safe_linear_equation_variant_engine import generate as generate_linear_equation
+from safe_linear_inequality_variant_engine import generate as generate_linear_inequality
 
 NUM = r"[+-]?\d+(?:/\d+)?"
 AFFINE_RE = re.compile(rf"(?P<formula>[yｙ]\s*=\s*(?P<a>{NUM})?\s*[xｘ]\s*(?:(?P<sign>[+＋\-−])\s*(?P<b>\d+(?:/\d+)?))?)")
@@ -34,7 +35,7 @@ def _parse_parent(parent: dict):
     if am is None or _fraction(am.group("y"))!=y or a==0 or (y-b)/a!=x: return (None,None,None,None,None,None)
     return formula,xmatch,a,b,x,y
 def can_generate(parent: dict)->tuple[bool,str]:
-    for fn in (generate_affine_two_points, generate_linear_equation, generate_affine_intercept, generate_affine_x_from_y, generate_direct_proportion_constant):
+    for fn in (generate_affine_two_points, generate_linear_inequality, generate_linear_equation, generate_affine_intercept, generate_affine_x_from_y, generate_direct_proportion_constant):
         rows,_,reason=fn(parent,1)
         if rows: return True,reason
     parsed=_parse_parent(parent)
@@ -45,7 +46,7 @@ def can_generate(parent: dict)->tuple[bool,str]:
     return True,"affine_function_exact"
 def generate(parent:dict,count:int)->tuple[list[dict],list[dict],str]:
     if count not in (1,2,3): raise ValueError("count must be 1, 2, or 3")
-    for fn in (generate_affine_two_points, generate_linear_equation, generate_affine_intercept, generate_affine_x_from_y, generate_direct_proportion_constant):
+    for fn in (generate_affine_two_points, generate_linear_inequality, generate_linear_equation, generate_affine_intercept, generate_affine_x_from_y, generate_direct_proportion_constant):
         rows,evidence,reason=fn(parent,count)
         if rows: return rows,evidence,reason
     parsed=_parse_parent(parent); formula,xmatch,a,b,x,parent_y=parsed
