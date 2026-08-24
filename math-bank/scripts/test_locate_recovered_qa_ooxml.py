@@ -15,8 +15,15 @@ def paragraph(index: int, text: str, images=None) -> dict:
     }
 
 
-def structures(paragraphs: list[dict]) -> dict:
-    return {("Standard", "doc.docx"): {"source": "Standard", "document": "doc.docx", "paragraphs": paragraphs}}
+def structures(paragraphs: list[dict], *, sha: str = "a" * 64) -> dict:
+    return {
+        ("Standard", "doc.docx"): {
+            "source": "Standard",
+            "document": "doc.docx",
+            "document_sha256": sha,
+            "paragraphs": paragraphs,
+        }
+    }
 
 
 class ExactLocatorTest(unittest.TestCase):
@@ -37,6 +44,7 @@ class ExactLocatorTest(unittest.TestCase):
         ])
         row = locator.locate_record(draft, doc, {})
         self.assertEqual(row["status"], "EXACT_QA_OFFSETS_LOCATED")
+        self.assertEqual(row["source_document_sha256"], "a" * 64)
         self.assertEqual(row["question_offsets"], [
             {"path": "body/p[5]", "paragraph_index": 5},
             {"path": "body/p[7]", "paragraph_index": 7},
@@ -74,6 +82,19 @@ class ExactLocatorTest(unittest.TestCase):
         ]), {})
         self.assertEqual(row["question_match_count"], 0)
         self.assertEqual(row["status"], "UNRESOLVED")
+
+    def test_invalid_document_sha_blocks_ready(self):
+        draft = {
+            "source": "Standard",
+            "source_document": "doc.docx",
+            "question": "Q",
+            "answer": "A",
+            "score_evidence": "10点",
+        }
+        row = locator.locate_record(draft, structures([paragraph(1, "Q"), paragraph(2, "A")], sha="bad"), {})
+        self.assertEqual(row["status"], "UNRESOLVED")
+        self.assertNotIn("source_document_sha256", row)
+        self.assertTrue(any("SHA256" in reason for reason in row["reasons"]))
 
     def test_image_identity_is_bound_from_asset_manifest(self):
         draft = {
