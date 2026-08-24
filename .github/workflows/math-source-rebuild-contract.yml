@@ -12,6 +12,8 @@ on:
       - 'math-bank/scripts/test_profile_source_archives.py'
       - 'math-bank/scripts/build_source_member_manifest.py'
       - 'math-bank/scripts/test_build_source_member_manifest.py'
+      - 'math-bank/scripts/profile_math_json_paths.py'
+      - 'math-bank/scripts/test_profile_math_json_paths.py'
       - 'math-bank/scripts/audit_winpass_normalization.py'
       - 'math-bank/scripts/test_audit_winpass_normalization.py'
       - '.github/workflows/math-source-rebuild-contract.yml'
@@ -43,6 +45,8 @@ jobs:
             math-bank/scripts/test_profile_source_archives.py \
             math-bank/scripts/build_source_member_manifest.py \
             math-bank/scripts/test_build_source_member_manifest.py \
+            math-bank/scripts/profile_math_json_paths.py \
+            math-bank/scripts/test_profile_math_json_paths.py \
             math-bank/scripts/audit_winpass_normalization.py \
             math-bank/scripts/test_audit_winpass_normalization.py
 
@@ -54,6 +58,9 @@ jobs:
 
       - name: Run exact source member manifest tests
         run: python math-bank/scripts/test_build_source_member_manifest.py
+
+      - name: Run recursive MATH.json schema path profiler tests
+        run: python math-bank/scripts/test_profile_math_json_paths.py
 
       - name: Run evidence-bound Winpass normalization tests
         run: python math-bank/scripts/test_audit_winpass_normalization.py
@@ -68,13 +75,16 @@ jobs:
           profile_rc=$?
           python math-bank/scripts/build_source_member_manifest.py --source-dir math-bank/source --report /tmp/math-source-member-manifest.json --strict
           manifest_rc=$?
+          python math-bank/scripts/profile_math_json_paths.py --source-dir math-bank/source --report /tmp/math-source-json-paths.json --strict
+          paths_rc=$?
           set -e
-          python - "$verify_rc" "$profile_rc" "$manifest_rc" <<'PY'
+          python - "$verify_rc" "$profile_rc" "$manifest_rc" "$paths_rc" <<'PY'
           import json, pathlib, sys
-          verify_rc, profile_rc, manifest_rc = map(int, sys.argv[1:4])
+          verify_rc, profile_rc, manifest_rc, paths_rc = map(int, sys.argv[1:5])
           identity=json.loads(pathlib.Path('/tmp/math-source-verification.json').read_text(encoding='utf-8'))
           profile=json.loads(pathlib.Path('/tmp/math-source-profile.json').read_text(encoding='utf-8'))
           manifest=json.loads(pathlib.Path('/tmp/math-source-member-manifest.json').read_text(encoding='utf-8'))
+          paths=json.loads(pathlib.Path('/tmp/math-source-json-paths.json').read_text(encoding='utf-8'))
           if identity.get('promotable_to_historical_canonical_without_revalidation') is not False:
               raise SystemExit('FAIL: source inputs may not masquerade as old canonical bytes')
           if identity.get('policy',{}).get('raw_diagnostic_records_never_promote_directly') is not True:
@@ -86,14 +96,17 @@ jobs:
           if exact:
               expected_profile=0 if profile.get('ready_for_record_extraction') else 3
               expected_manifest=0 if manifest.get('ready_for_raw_extraction') else 5
+              expected_paths=0 if paths.get('ready_for_schema_specific_extractor') else 6
               if profile_rc != expected_profile:
                   raise SystemExit(f'FAIL source profile rc={profile_rc}, expected {expected_profile}')
               if manifest_rc != expected_manifest:
                   raise SystemExit(f'FAIL source member manifest rc={manifest_rc}, expected {expected_manifest}')
+              if paths_rc != expected_paths:
+                  raise SystemExit(f'FAIL source schema paths rc={paths_rc}, expected {expected_paths}')
           else:
-              if profile_rc != 3 or manifest_rc != 5:
-                  raise SystemExit(f'FAIL absent/nonexact source must block profile/manifest: {profile_rc}/{manifest_rc}')
-          print('PASS_SOURCE_REBUILD_INPUT_MEMBER_SHA_FAIL_CLOSED_AND_FULL_REAUDIT_REQUIRED')
+              if profile_rc != 3 or manifest_rc != 5 or paths_rc != 6:
+                  raise SystemExit(f'FAIL absent/nonexact source must block profile/manifest/paths: {profile_rc}/{manifest_rc}/{paths_rc}')
+          print('PASS_SOURCE_REBUILD_INPUT_MEMBER_SHA_SCHEMA_PATHS_FAIL_CLOSED_AND_FULL_REAUDIT_REQUIRED')
           PY
 
       - name: Persist source rebuild contract PASS
@@ -120,6 +133,7 @@ jobs:
             'renamed_copy_suffix_supported': True,
             'exact_historical_source_sha_required': True,
             'member_sha256_manifest_required_before_extraction': True,
+            'recursive_schema_path_profile_required_before_extractor': True,
             'hash_mismatch_fail_closed': True,
             'raw_1271_direct_promotion_forbidden': True,
             'historical_canonical_byte_claim_without_old_zip_forbidden': True,
@@ -133,7 +147,7 @@ jobs:
               'validated_originals': {'Winpass':570,'実力錬成':237,'Standard':317,'total':1124},
             },
             'real_source_archives_committed': real_sources,
-            'next_if_sources_available': 'identity -> exact member SHA manifest -> 140-doc profile -> raw 717/237/317 -> evidence decisions for every Winpass record -> full 1124 validation',
+            'next_if_sources_available': 'identity -> member SHA manifest -> 140-doc profile -> recursive schema paths -> raw 717/237/317 -> evidence decisions for every Winpass record -> full 1124 validation',
             'recorded_at_utc': datetime.now(timezone.utc).isoformat(),
           }
           Path('math-bank/state/source-rebuild-contract-latest.json').write_text(
