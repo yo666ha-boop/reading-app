@@ -1,14 +1,14 @@
 {
-  "status": "FAIL_CI_DIAGNOSTIC",
+  "status": "PASS_CI",
   "persist_schema_version": 69,
-  "run_id": "32679365474",
-  "triggering_sha": "d44e29849b08880f7fabb5ec700809dfb33d6b9a",
-  "tested_checkout_sha": "d44e29849b08880f7fabb5ec700809dfb33d6b9a",
+  "run_id": "32679389093",
+  "triggering_sha": "a4ad710f5e53737607b8e70f73a3b8a0021005c5",
+  "tested_checkout_sha": "a4ad710f5e53737607b8e70f73a3b8a0021005c5",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T01:18:44.898684+00:00",
+  "recorded_at_utc": "2026-08-24T01:19:09.422645+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "failure",
+    "specialized_and_adapters": "success",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -269,6 +269,7 @@
     "test_linear_equation_parentheses_unified_adapter.py",
     "test_linear_equation_unified_adapter.py",
     "test_median_unified_adapter.py",
+    "test_midpoint_two_points_unified_adapter.py",
     "test_mode_unified_adapter.py",
     "test_monic_quadratic_factorization_unified_adapter.py",
     "test_parallelogram_base_from_area_unified_adapter.py",
@@ -319,7 +320,7 @@
     "test_two_dice_sum_probability_unified_adapter.py",
     "test_weighted_group_average_unified_adapter.py"
   ],
-  "adapter_test_count": 92,
+  "adapter_test_count": 93,
   "runtime_routes_auto_discovered": [
     "absolute_value",
     "affine",
