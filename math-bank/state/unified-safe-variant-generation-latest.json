@@ -1,12 +1,12 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 66,
-  "run_id": "32676331119",
-  "triggering_sha": "64b270ea8fe556709042bec8e9855a95629cdb64",
-  "recorded_at_utc": "2026-08-24T00:20:00.215124+00:00",
+  "run_id": "32676342234",
+  "triggering_sha": "79dc045ce11337e67ba4acf319216c47aeb0ecd8",
+  "recorded_at_utc": "2026-08-24T00:20:17.879999+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
+    "specialized_and_adapters": "failure",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -87,6 +87,7 @@
     "square_area",
     "square_root_simplification",
     "square_side_from_area",
+    "square_side_from_perimeter",
     "symmetric_linear_system",
     "tax_inclusive_price",
     "time_from_distance_speed",
@@ -101,7 +102,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 87,
+  "engine_module_count": 88,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_variant_engine.py",
@@ -175,6 +176,7 @@
     "test_safe_square_area_variant_engine.py",
     "test_safe_square_root_simplification_variant_engine.py",
     "test_safe_square_side_from_area_variant_engine.py",
+    "test_safe_square_side_from_perimeter_variant_engine.py",
     "test_safe_symmetric_linear_system_variant_engine.py",
     "test_safe_tax_inclusive_price_variant_engine.py",
     "test_safe_time_from_distance_speed_variant_engine.py",
@@ -188,7 +190,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 84,
+  "engine_test_count": 85,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_average_missing_value_unified_adapter.py",
