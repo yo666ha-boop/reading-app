@@ -1,11 +1,11 @@
 {
   "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32697548902",
-  "triggering_sha": "a3986a28bbc8776392dab86cdfab5c8a98b6c613",
-  "tested_checkout_sha": "a3986a28bbc8776392dab86cdfab5c8a98b6c613",
+  "run_id": "32697604016",
+  "triggering_sha": "1922455d9955d7dafc6a9c54c409be72428fd8d2",
+  "tested_checkout_sha": "1922455d9955d7dafc6a9c54c409be72428fd8d2",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T06:30:23.773364+00:00",
+  "recorded_at_utc": "2026-08-24T06:30:49.955625+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "cancelled",
@@ -79,6 +79,7 @@
     "percent_from_amount_base",
     "percentage",
     "perfect_square_expansion",
+    "perfect_square_factorization",
     "polygon_interior_sum",
     "prime_factorization",
     "proportion",
@@ -140,7 +141,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 124,
+  "engine_module_count": 125,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_equation_from_two_points_variant_engine.py",
@@ -205,6 +206,7 @@
     "test_safe_percent_from_amount_base_variant_engine.py",
     "test_safe_percentage_variant_engine.py",
     "test_safe_perfect_square_expansion_variant_engine.py",
+    "test_safe_perfect_square_factorization_variant_engine.py",
     "test_safe_polygon_interior_sum_variant_engine.py",
     "test_safe_prime_factorization_variant_engine.py",
     "test_safe_proportion_variant_engine.py",
@@ -264,7 +266,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 121,
+  "engine_test_count": 122,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_affine_equation_from_two_points_unified_adapter.py",
