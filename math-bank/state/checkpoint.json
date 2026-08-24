@@ -2,7 +2,7 @@
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP",
   "current_stage": "RAW_1271_MATERIALIZATION_QA_FIGURE_BINDING",
-  "recorded_at_jst": "2026-08-25T02:57:00+09:00",
+  "recorded_at_jst": "2026-08-25T03:58:00+09:00",
   "main_touched": false,
   "source_identity": {
     "Winpass": {"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","bytes":8296042,"crc_ok":true},
@@ -33,7 +33,8 @@
     "candidate_composer":"math-bank/scripts/compose_strict_qa_candidates.py",
     "batch_runner":"math-bank/scripts/run_recovered_strict_batch.py",
     "strict_tooling_ci":{"state":"math-bank/state/strict-tooling-ci-latest.json","run_id":"32756245710","triggering_sha":"e400cb335cc8cd8a6f3770afa83f8d92c567e038","result":"success","schedule_based":false,"tests":7},
-    "audit_ci":{"state":"math-bank/state/ci-latest.json","run_id":"32756245687","triggering_sha":"e400cb335cc8cd8a6f3770afa83f8d92c567e038","result":"success","canonical_app_records_present":false,"publication_ready":false}
+    "audit_ci":{"state":"math-bank/state/ci-latest.json","run_id":"32756245687","triggering_sha":"e400cb335cc8cd8a6f3770afa83f8d92c567e038","result":"success","canonical_app_records_present":false,"publication_ready":false},
+    "actions_artifact_scan":{"state":"math-bank/state/actions-artifact-scan-latest.json","all_artifacts_seen":550,"candidate_artifacts":524,"canonical_hits":0,"paired_recovery_hits":0,"scan_complete":true,"canonical_absence_proven":true}
   },
   "downstream": {
     "winpass_decisions":{"reviewed":0,"included":0,"excluded":0,"target_after_evidence_review":570},
@@ -42,22 +43,23 @@
     "app_records":0,"browser":"BLOCKED_UNTIL_REAL_APP_RECORDS","iphone_fire":"PENDING","a4":"PENDING","publication_ready":false,"public_verification":"PENDING"
   },
   "this_run": {
-    "starting_head_actual":"30a597d11913a7f594eb89fcfe0c62f24f70375c",
-    "latest_head_observed_before_checkpoint_write":"30a597d11913a7f594eb89fcfe0c62f24f70375c",
+    "starting_head_actual":"78d536bdf4dfff340fbf4f59b92eebb684c65504",
+    "latest_head_observed_before_checkpoint_write":"78d536bdf4dfff340fbf4f59b92eebb684c65504",
     "completed":[
-      "Read latest branch HEAD, checkpoint, strict progress and durable CI states from GitHub actual.",
-      "Detected 27 commits beyond the prior checkpoint's recorded work, including strict candidate composer and recovered strict batch runner; did not redo old ZIP/dedupe/raw-slot work.",
-      "Confirmed dedicated strict-tooling CI success at e400cb3 with seven strict tests, and Math Problem Bank Audit success at the same triggering SHA.",
-      "Searched File Library for recovered Standard/実力錬成 draft/source bytes; no relevant recoverable source files were found.",
-      "Preserved strict count at exactly 3/1271; no fourth record was inferred or fabricated.",
-      "Updated this durable checkpoint with current actual CI/tooling and exact resume contract."
+      "Read latest branch HEAD, checkpoint, strict-tooling CI and audit CI from GitHub actual before doing work.",
+      "Confirmed branch HEAD 78d536bdf4dfff340fbf4f59b92eebb684c65504 and main remained untouched by this run.",
+      "Confirmed strict proof durable file is still the only file in recovered/current-session, so strict progress is exactly 3/1271.",
+      "Rechecked durable GitHub Actions recovery scan: 550 artifacts seen, 524 candidates, 1360 members SHA256-checked, 115055153 member bytes hashed, zero canonical hits and zero paired recovery hits; canonical absence was proven for the scanned artifact set.",
+      "Searched the repository for the recovered Standard draft filename and verified source hash; no durable source/draft bytes were found.",
+      "Preserved recovered 554 as draft-only and did not fabricate Standard record 4 provenance.",
+      "Updated this durable checkpoint with the latest actual head, CI/recovery evidence and exact resume point."
     ],
     "limitations":[
-      "The current execution environment does not expose the known recovered draft JSONL bytes or the three verified source ZIP bytes, so Standard record 4 onward cannot truthfully receive exact source offsets/assets in this run.",
-      "The successful CI is source-bound tooling coverage, not proof that the remaining 1268 records have been materialized."
+      "The current execution environment still does not expose the recovered draft JSONL bytes or the three verified source ZIP bytes, and the durable GitHub artifact scan found no recoverable canonical payload, so Standard record 4 onward cannot truthfully receive exact source offsets/assets in this run.",
+      "The successful CI proves strict tooling behavior only; it is not proof that the remaining 1268 records have been materialized."
     ]
   },
-  "exact_stop": "Strict durable progress remains Standard 3/317, 実力錬成 0/237, Winpass 0/717 = 3/1271. Recovered drafts remain 554 draft-only. No fourth strict record claimed.",
+  "exact_stop": "Strict durable progress remains Standard 3/317, 実力錬成 0/237, Winpass 0/717 = 3/1271. Recovered drafts remain 554 draft-only. GitHub Actions recovery scan proves no canonical recovery hit in the scanned artifact set. No fourth strict record claimed.",
   "next_start": "Read latest HEAD/checkpoint/strict progress/CI. If known Standard draft and verified source bytes are exposed, verify exact SHA/count, run OOXML asset manifest + exact locator + candidate composer + batch runner, bind score evidence and required figures, validate, persist, read back and reconcile from first Standard raw_id not in first3 through Standard317, then 実力錬成237, then Winpass717. Then evidence-review Winpass717 to 570 without count forcing; validate/freeze global1124; generate independently verified variants; map app records; browser/iPhone/Fire/A4 gates; strict release; PUBLICATION_READY; isolated public verification. If bytes remain unavailable, do not infer provenance and do not redo source identity/dedupe/raw-slot counting.",
   "main_untouched": true
 }
