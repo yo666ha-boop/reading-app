@@ -1,17 +1,17 @@
 from __future__ import annotations
 
-"""Fail-closed exact engine for the narrow quadratic shape x^2=N.
+"""Fail-closed exact engine for verified quadratic equation shapes.
 
-Only actual parents containing exactly one equation x^2=N (or x²=N), with N a
-positive perfect square, asking to solve the equation, and giving the exact two
-roots ±k are accepted. Figures, real choices, non-perfect squares, shifted or
-factored quadratics, and approximate answers fail closed.
+The historical x²=N perfect-square shape keeps priority. Other monic quadratic
+equations with two exact integer roots delegate to the integer-roots engine.
 """
 
 import hashlib
 import json
 import math
 import re
+
+from safe_quadratic_integer_roots_variant_engine import generate as generate_integer_roots
 
 EQ_RE = re.compile(r"(?P<expr>[xｘ]\s*(?:\^\s*2|²)\s*=\s*(?P<n>\d+))")
 ANS_RE = re.compile(r"^(?:[xｘ]\s*=\s*)?(?:±(?P<a>\d+)|(?P<p>\d+)[、,](?P<m>-\d+)|(?P<m2>-\d+)[、,](?P<p2>\d+))$")
@@ -39,9 +39,7 @@ def _answer_root(text: str) -> int | None:
 
 
 def _parse_parent(parent: dict):
-    if parent.get("figure_refs"):
-        return None
-    if parent.get("choices"):
+    if parent.get("figure_refs") or parent.get("choices"):
         return None
     q = _norm(parent.get("question"))
     blocked = ("近似", "小数", "平方根で", "因数分解", "解の公式", "グラフ", "関数", "文章題")
@@ -52,8 +50,7 @@ def _parse_parent(parent: dict):
         return None
     if not any(token in q for token in ("解き", "解を", "解は", "求め")):
         return None
-    m = matches[0]
-    n = int(m.group("n"))
+    m = matches[0]; n = int(m.group("n"))
     if n <= 0:
         return None
     k = math.isqrt(n)
@@ -70,11 +67,14 @@ def _parse_parent(parent: dict):
 def can_generate(parent: dict) -> tuple[bool, str]:
     if _parse_parent(parent) is not None:
         return True, "quadratic_x_squared_equals_perfect_square_exact"
+    rows, _, reason = generate_integer_roots(parent, 1)
+    if rows:
+        return True, reason
     if parent.get("figure_refs"):
         return False, "figure_parent"
     if parent.get("choices"):
         return False, "choice_parent"
-    return False, "quadratic_square_equation_parent_not_exactly_parsed_and_verified"
+    return False, "quadratic_equation_parent_not_exactly_parsed_and_verified"
 
 
 def _variant_root(seed: int, index: int) -> int:
@@ -86,38 +86,24 @@ def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
         raise ValueError("count must be 1, 2, or 3")
     parsed = _parse_parent(parent)
     if parsed is None:
-        ok, reason = can_generate(parent)
-        assert not ok
+        rows, evidence, reason = generate_integer_roots(parent, count)
+        if rows:
+            return rows, evidence, reason
+        ok, reason = can_generate(parent); assert not ok
         return [], [], reason
 
     match, parent_n, parent_k = parsed
-    q = _norm(parent.get("question"))
-    seed = int(_parent_sha(parent)[:12], 16)
-    seen: set[int] = set()
-    rows: list[dict] = []
-    evidence: list[dict] = []
-
+    q = _norm(parent.get("question")); seed = int(_parent_sha(parent)[:12], 16)
+    seen: set[int] = set(); rows: list[dict] = []; evidence: list[dict] = []
     for index in range(1, count + 1):
         k = _variant_root(seed, index)
         while k == parent_k or k in seen:
             k += 1
-        seen.add(k)
-        n = k * k
+        seen.add(k); n = k * k
         if math.isqrt(n) != k or (-k) * (-k) != n or k * (-k) != -n:
             raise AssertionError("quadratic square-equation identity failed")
         replacement = f"x²={n}"
         new_question = q[:match.start("expr")] + replacement + q[match.end("expr"):]
-        rows.append({
-            "question": new_question,
-            "answer": f"x=±{k}",
-            "explanation": f"x²={n}より、x={k}またはx=-{k}。両方を2乗すると{n}になることを確認済み。",
-            "numeric_signature": (str(n), str(k)),
-        })
-        evidence.append({
-            "parent_sha256": _parent_sha(parent),
-            "method": "quadratic_x_squared_perfect_square_two_roots_exact",
-            "parent_recalculation": f"{parent_k}^2={parent_n} and (-{parent_k})^2={parent_n}",
-            "variant_recalculation": f"{k}^2={n} and (-{k})^2={n}",
-            "independent_check": f"root_product={k}*(-{k})=-{n} AND both_roots_square_to_{n} PASS",
-        })
+        rows.append({"question": new_question,"answer": f"x=±{k}","explanation": f"x²={n}より、x={k}またはx=-{k}。両方を2乗すると{n}になることを確認済み。","numeric_signature": (str(n), str(k))})
+        evidence.append({"parent_sha256": _parent_sha(parent),"method": "quadratic_x_squared_perfect_square_two_roots_exact","parent_recalculation": f"{parent_k}^2={parent_n} and (-{parent_k})^2={parent_n}","variant_recalculation": f"{k}^2={n} and (-{k})^2={n}","independent_check": f"root_product={k}*(-{k})=-{n} AND both_roots_square_to_{n} PASS"})
     return rows, evidence, "quadratic_x_squared_equals_perfect_square_exact"
