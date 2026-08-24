@@ -1,14 +1,14 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32678432865",
-  "triggering_sha": "730e2cf204a0194151aced688327ecb55b352481",
-  "tested_checkout_sha": "730e2cf204a0194151aced688327ecb55b352481",
+  "run_id": "32678520384",
+  "triggering_sha": "5423ad9627bc31f3deefc49864f8c1bf81c0d637",
+  "tested_checkout_sha": "5423ad9627bc31f3deefc49864f8c1bf81c0d637",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T01:01:27.549264+00:00",
+  "recorded_at_utc": "2026-08-24T01:02:56.932434+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
+    "specialized_and_adapters": "failure",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -50,6 +50,7 @@
     "fraction_arithmetic",
     "frequency_from_relative_frequency",
     "gcd",
+    "general_linear_system",
     "integer_power",
     "interquartile_range",
     "inverse_proportion",
@@ -114,7 +115,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 98,
+  "engine_module_count": 99,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_intercept_from_slope_point_variant_engine.py",
