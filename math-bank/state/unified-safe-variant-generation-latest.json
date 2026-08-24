@@ -1,14 +1,14 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32691850520",
-  "triggering_sha": "de50f3b273ad656d70ecb5f81e0efa03dc6a2f85",
-  "tested_checkout_sha": "de50f3b273ad656d70ecb5f81e0efa03dc6a2f85",
+  "run_id": "32695206982",
+  "triggering_sha": "29d9aaeb80f26fc17d6b8c17447029154da61d5e",
+  "tested_checkout_sha": "29d9aaeb80f26fc17d6b8c17447029154da61d5e",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T04:57:45.066380+00:00",
+  "recorded_at_utc": "2026-08-24T05:55:05.223763+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
+    "specialized_and_adapters": "failure",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -82,6 +82,7 @@
     "pythagorean_hypotenuse",
     "pythagorean_leg",
     "quadratic_integer_roots",
+    "quadratic_nonmonic_integer_roots",
     "quadratic_square_equation",
     "ratio_simplification",
     "rectangle_area",
@@ -136,7 +137,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 120,
+  "engine_module_count": 121,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_equation_from_two_points_variant_engine.py",
