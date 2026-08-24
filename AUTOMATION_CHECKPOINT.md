@@ -1,65 +1,60 @@
 # Long-reading app vocabulary / grammar audit checkpoint
 
-Updated: 2026-08-25 03:55 JST
+Updated: 2026-08-25 JST, continuation after v7 candidate repair batch
 
 ## Source of truth
 - Repository: `yo666ha-boop/reading-app`.
 - Work branch: `v10-vocab-grammar-notes-audit` only.
-- Work branch HEAD at checkpoint write base: `62206cf07ff5e63a422264a5d510be8aa6a27de3` (`audit: record v7-confirmed future give rewrite`).
+- Work branch HEAD immediately before this checkpoint write: `5f0767eff98a6caac6168f532364584e2562979c` (`audit: wait for final correction layer before 168 vocab scan`).
 - Public `main` HEAD remains `1f0cabf9bfcc4482f507e33188499bdbbd5bab57`; main was NOT modified.
-- Canonical vocabulary source re-opened live: native Google Sheet `英単語_教科書別マスターデータ_NH_SS_2026_v7_app_wordbook_master`, id `1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4`, sheet `単語マスター`, 3975 canonical records.
+- Canonical vocabulary source re-opened live this run: native Google Sheet `英単語_教科書別マスターデータ_NH_SS_2026_v7_app_wordbook_master`, id `1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4`, sheet `単語マスター`, 3975 canonical records.
 
 ## Work completed this run
-- Re-read actual branch HEAD, main HEAD, checkpoint, latest persisted audit status/report, v10 stage2 final script load order, vocabulary correction layer, and notes UI test.
-- Confirmed latest persisted all-168 report after prior-grade metadata repairs: 168/168 audited; 27,967 exact allowed occurrences; 9,986 cumulative prior/current allowed; 154 function-to-grammar; 138 morphology-to-grammar; 47 normal v7 lookup occurrences; 7 proper-class lookup occurrences; 13 normal unique candidates + 2 proper-class candidates; notes 0; missing gloss 0; missing allowedWords 0; grammar extraction 168/168 with 19 feature families.
-- Confirmed `eat` and `large` disappeared from the unresolved candidate set after the previous metadata repair.
-- Diagnosed the remaining notes-UI timing hazard: `v10_vocab_corrections.js` stopped polling after 12 seconds (`tries>=120`), while the bounded jsdom test permits up to 45 seconds for all 168 datasets to load. A slow load can therefore end polling before Get Ready 4 exists, leaving the v7-confirmed `play` correction unapplied and making the UI gate fail despite datasets eventually reaching 168.
-- Extended correction polling from 12 seconds to 120 seconds in commit `b1fa55a481c3521a9591ec3d051c0db1ff1a1bb7`. The gate was not weakened; it still requires the real correction to exist before the note rendering assertions run.
-- Re-opened canonical v7 row evidence for `give`: row 1115 (master ID 1114 in the data field), NH2, `LR1`, `Let's Read 1 教科書本文`, P44-P47, `give-gave / 与える[原形-過去形]`.
-- Therefore confirmed the NH2 Unit 2-2 sentence `At school, I give a short speech about local food.` is a genuine future-vocabulary leak. This is before the v7 first appearance of `give`.
-- Repaired that leak without adding a note: replaced it with prior-reviewed `At school, I talk about local food in a short speech.` and synchronized fullTranslation, slashRows[0] English/Japanese, A1 evidence, evidenceJp and reason together. Repair commit: `37abfb12b5943bb875a7e76899fe3135c30b7172`.
-- Recorded the evidence-backed decision in `v10_v7_vocab_resolution.json`, commit `62206cf07ff5e63a422264a5d510be8aa6a27de3`.
-- No main write was made.
+- Re-read actual branch/main, prior checkpoint, persisted reports and v10 runtime load order before modifying anything.
+- Rechecked remaining candidates directly against canonical v7. Important confirmed evidence includes: NH1 `today` (master ID 101, pre-step9), NH1 `use` (ID80), SS1 `use` (ID2193), NH1 `tell` (ID365), SS1 `nine` (ID2231), NH1 `a lot` (ID757), NH2 `give-gave` first at Let's Read 1 (ID1114), SS2 `bring` first later than PROGRAM 2-1, SS2 `above` before SS3 PROGRAM 6-2; `process`, `hike`, `sixteen`, and proper name `Anna` had no canonical exact v7 row in the searches performed.
+- Added narrow evidence-backed metadata repairs for prior-grade/earlier-section vocabulary (`today`, later `give`, `map`, `a lot`, `above`, base `use`, base `tell`, etc.) instead of globally allowing them.
+- Confirmed and removed a genuine future-vocabulary leak in SS2 PROGRAM 2-1: `Baseball can bring people together.` because `bring` is introduced later in canonical SS2 Reading 1. Removed the sentence and slash row, removed its JP translation, and synchronized B5 to existing evidence `We should root for the project, too.`
+- Confirmed and rewrote genuine/unsupported candidates without adding avoidable notes:
+  - NH2 Unit 1-4 `We learn about a different culture.` -> `We talk about a different culture.`; fullTranslation/slash synchronized.
+  - NH2 Unit 7-1 `We know UNESCO has a selection process.` -> `We know UNESCO has a way to select sites.`; fullTranslation/slash and B1 prompt/answer/evidence/evidenceJp/reason synchronized.
+  - SS2 PROGRAM 4-1 `After the hike, I hear from my friend.` -> `After hiking, I hear from my friend.` using the explicitly registered `hiking` form; slash and B evidence synchronized.
+  - NH2 Unit 4-2 `I must take a shower by nine.` -> `I must take a shower by dinner time.` because NH v7 did not provide `nine`; target `by ~` preserved and fullTranslation/slash/A3 synchronized.
+  - SS3 PROGRAM 6-2 `At the age of sixteen...` -> `At the age of nine...`, using SS1-v7-confirmed `nine`; target grammar retained and fullTranslation/slash/A1/B1 evidence synchronized.
+- Kept the earlier NH2 Unit 2-2 future `give` -> prior `talk about` synchronized repair active.
+- Updated `v10_v7_vocab_resolution.json` with evidence-backed statuses and policy; commit `90598e092cd490bf3c11e2c3b123b49801c1584b`.
+- Updated correction/runtime repair layer for the candidate batch; commits include `b8274f28ef0db69ff6b193f8cc333db255b24fa4` and `be8651700fd4548bc3c00961e694e1e17204e5b1`.
+- Moved `using` / `used` out of unresolved vocabulary only after live-verifying canonical prior-grade base `use`; they are explicitly handed to grammar chronology and are NOT vocabulary-PASSed by morphology alone. Commit `db602f4be83f28079a7889d76466172a30db35b1`.
+- Diagnosed a new scanner race from persisted run `39c5a065...`: it reported 420 normal + 21 proper unique candidates because the scanner started as soon as the 168 DATASETS object existed, before the asynchronous correction/final merge layer had reached all target sections. That 420/21 report is an INTERMEDIATE-STATE artifact and is not accepted as chronology truth.
+- Hardened `v10_vocab_notes_candidate_audit.js` to wait until all `V10_VOCAB_CORRECTIONS` targets are actually seen/applied, then wait an additional stabilization interval before taking the 168 snapshot. Commit `5f0767eff98a6caac6168f532364584e2562979c`.
+- main was never written.
 
-## Current authoritative counts
-Latest persisted report before rerun of the new `give` repair:
-- passages audited: `168/168`
-- exact allowed occurrences: `27967`
-- cumulative prior/current allowed occurrences: `9986`
-- function-to-grammar occurrences: `154`
-- morphology-to-grammar occurrences: `138`
-- unresolved v7 lookup occurrences: `47`
-- unresolved proper-class lookup occurrences: `7`
-- unique normal v7 lookup candidates: `13`
-- unique proper-class candidates: `2`
-- notes present: `0`
-- missing gloss: `0`
-- missing allowedWords: `0`
-- grammar candidate passages: `168/168`
-- grammar detected feature families: `19`
-- confirmed genuine future-vocab leak repaired this run: `1` (`give` in NH2 Unit 2-2)
-- The next persisted rerun must reduce the `give` candidate occurrences for Unit 2-2; Unit 5-4 still needs cutoff evaluation separately.
+## Current counts / truth status
+- passages structurally loaded by the scanner: `168/168`.
+- latest pre-race stable candidate report before the final repair batch: unresolved normal occurrences `7`, proper occurrences `2`, unique normal `2`, unique proper `1`; missing gloss `0`; missing allowedWords `0`.
+- after this run's content/metadata repairs, the intended remaining lexical focus is proper-name `Anna`; however this MUST be confirmed by the fresh scanner after commit `5f0767e` before declaring `future vocab leak=0`.
+- the immediately preceding persisted report showing normal unique `420` / proper unique `21` is marked INVALID FOR GATING because it captured the pre-finalized asynchronous runtime state. It is retained as diagnostic evidence of the race, not used as PASS/FAIL truth.
+- notes added this run: `0` (all confirmed nonessential future/unsupported words repaired naturally instead).
+- missing gloss: `0` among current notes.
+- grammar candidate extraction remains `168/168`, `19` detected feature families; chronology PASS is NOT yet established.
+- body/content future-vocabulary repairs performed this run: `5` new passage rewrites (`bring`, `learn`, `process`, `hike`, `nine/sixteen pair` across the affected sections), in addition to the prior `give` repair. Associated A/B/slash/fullTranslation dependencies were synchronized where affected.
 
-## UI / gate status
-- Latest persisted notes UI status before this run's polling extension remains `FAIL_OR_TIMEOUT`; do not mark PASS until a fresh run persists PASS.
-- Correction polling timing has now been aligned with the bounded dataset-load window. Fresh CI evidence is required.
-- Slash reference remains mandatory after this synchronized passage edit; final 168/168 slash regression must be rerun before release.
-
-## Remaining candidate focus
-Latest candidate set includes `give`, `sixteen`, `today`, `bring`, `map`, `nine`, `process`, `using`, `above`, `hike`, `tells`, `used`, `learn`, `lot`, plus proper-name `anna` (the report classifies `today` as a capitalization/proper candidate in some sentence-initial occurrences). `eat` and `large` are resolved and gone.
+## UI / regression status
+- Notes renderer remains installed and zero-note display remains hidden by design; bounded notes UI audit must be re-read after the corrected final-load scanner run.
+- Full slash reference 168/168 has NOT yet been re-certified after the synchronized sentence changes. Do not merge.
+- A/B evidence was synchronized for the changed sentences that were referenced, but the full evidence consistency gate still must run.
+- Chromium/Firefox/WebKit-iPhone and A4 student/teacher print final gates remain pending.
 
 ## Exact stop / next start
-- Exact stop: v7-confirmed future `give` in NH2 Unit 2-2 was synchronously rewritten and the decision was recorded. Branch HEAD is `62206cf...`. Fresh Actions/persisted scanner/UI outputs for this head were not yet available at checkpoint write.
-- Next start: first read branch HEAD and newest bot-persisted report/UI status. Verify Unit 2-2 `give` disappearance and whether notes UI becomes PASS after the 120-second polling repair. Then continue exact v7 cutoff resolution of every remaining candidate, prioritizing `bring` (SS2 PROGRAM 2-1 versus v7 Reading1/Power-Up2), `sixteen`, `map`, `nine`, `process`, `using`, `above`, `hike`, `tells`, `used`, `learn`, `lot`, `today`, `anna`, and Unit 5-4 `give`. For each confirmed future word, prefer a natural already-learned rewrite and synchronize sentence/fullTranslation/slash/questions/answer/evidence/evidenceJp/reason. Add notes only for truly indispensable unknowns.
-- After vocabulary candidates are exhausted: build evidence-backed textbook/section thresholds for all 19 grammar families; audit all 168 passages + A/B English; then rerun slash reference 168/168, A/B evidence/translation sync, coverage/DOM, Chromium/Firefox/WebKit-iPhone, A4 student/teacher print. Merge to main only after every gate passes and verify Pages live.
+- Exact stop: scanner timing race fixed at commit `5f0767eff98a6caac6168f532364584e2562979c`; Actions had not yet persisted the fresh post-fix report at checkpoint time.
+- Next start: re-read branch HEAD and the newly persisted `v10_vocab_notes_candidate_report.json`. If it returns the expected small residual set, resolve `Anna` by inspecting the actual SS1 `Step 6 / Our Project 3 / Power-Up 6` sentence/slash/A/B context and replace it naturally with an already-learned expression when possible; do not auto-approve it as a proper noun. Then harden the closed FUNCTION_TO_GRAMMAR set so lexical items cannot bypass v7 merely by membership; emit unique function tokens/sections and verify them.
+- After vocabulary is genuinely exhausted: build evidence-backed textbook/section thresholds for all 19 grammar families and audit sentences + slash + A/B English chronologically, including `using`, `used`, `tells` and all other inflections handed from vocabulary. Then run slash reference 168/168, A/B evidence, coverage/DOM, notes UI, Chromium/Firefox/WebKit-iPhone, A4 student/teacher print. Only after all PASS may main be updated and Pages verified live.
 
 ## PASS / FAIL record
-- vocabulary scanner execution: PASS 168/168; chronology final: IN PROGRESS.
-- confirmed future vocabulary repairs: 1 this run (`give`, NH2 Unit 2-2).
-- grammar candidate extraction: PASS 168/168; chronology final: IN PROGRESS.
-- missing gloss among current notes: PASS (`0`), but final notes necessity remains IN PROGRESS.
-- notes UI: fresh rerun pending after timing repair; latest persisted state still FAIL_OR_TIMEOUT.
-- future vocab leak: NOT FINALIZED.
-- future grammar leak: NOT FINALIZED.
-- slash regression: synchronized one-row passage/slash/evidence edit made this run; full 168/168 final regression pending.
+- vocabulary scanner coverage: PASS `168/168`; final chronology: IN PROGRESS.
+- latest large 420/21 persisted candidate result: INVALID INTERMEDIATE SNAPSHOT; race fixed, fresh rerun required.
+- future vocab leak: NOT FINALIZED; most known residuals repaired, `Anna` still requires actual-context resolution and fresh count.
+- grammar extraction: PASS `168/168`; grammar chronology: IN PROGRESS / not PASS.
+- notes present: `0`; missing gloss: `0`; final unknown-note necessity: IN PROGRESS.
+- notes UI: fresh final-load result pending.
+- slash regression: pending full 168/168 rerun after synchronized edits.
 - public main/live release: NOT RUN / intentionally blocked.
