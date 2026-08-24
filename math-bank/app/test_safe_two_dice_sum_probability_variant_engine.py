@@ -31,10 +31,16 @@ def main() -> None:
         assert "PASS" in ev["independent_check"]
         assert ev["method"] == "two_fair_dice_sum_exhaustive_36_and_triangular_identity"
 
+    # Product and absolute-difference shapes are now delegated safe families.
+    ok, reason = can_generate(parent(question="2個のサイコロを同時に投げるとき、出た目の積が6になる確率を求めなさい。", answer="1/9"))
+    assert ok and reason == "two_fair_dice_product_exact_36_outcomes"
+    ok, reason = can_generate(parent(question="2個のサイコロを同時に投げるとき、出た目の差が2になる確率を求めなさい。", answer="2/9"))
+    assert ok and reason == "two_fair_dice_absolute_difference_exact_36_outcomes"
+
     bad = [
         parent(answer="1/5"),
         parent(question="2個のサイコロを同時に投げるとき、出た目の和が13になる確率を求めなさい。", answer="0"),
-        parent(question="2個のサイコロを同時に投げるとき、出た目の積が6になる確率を求めなさい。", answer="1/9"),
+        parent(question="2個のサイコロを同時に投げるとき、出た目の積が6で和が7になる確率を求めなさい。", answer="1/18"),
         parent(question="3個のサイコロを同時に投げるとき、出た目の和が7になる確率を求めなさい。", answer="1/6"),
         parent(question="2個のサイコロを同時に投げるとき、出た目の和が7以上になる確率を求めなさい。", answer="7/12"),
         parent(figure_refs=["dice.svg"]),
