@@ -1,25 +1,25 @@
 {
   "summary": {
-    "generatedAt": "2026-08-24T20:07:05.429Z",
+    "generatedAt": "2026-08-24T20:13:37.739Z",
     "passages": 168,
     "counts": {
-      "EXACT_ALLOWED": 22528,
-      "CUMULATIVE_ALLOWED": 14477,
-      "FUNCTION_TO_GRAMMAR": 378,
-      "MORPHOLOGY_TO_GRAMMAR": 1539,
+      "EXACT_ALLOWED": 22543,
+      "CUMULATIVE_ALLOWED": 14455,
+      "FUNCTION_TO_GRAMMAR": 369,
+      "MORPHOLOGY_TO_GRAMMAR": 1534,
       "PROPER_V7_LOOKUP_REQUIRED": 98,
-      "V7_LOOKUP_REQUIRED": 1895
+      "V7_LOOKUP_REQUIRED": 1897
     },
     "notesPresent": 0,
     "missingGloss": 0,
     "missingAllowedWords": 0,
-    "uniqueV7LookupCandidates": 420,
+    "uniqueV7LookupCandidates": 421,
     "uniqueProperLookupCandidates": 21,
     "cumulativeRule": "For each textbook, all reviewed allowedWords from earlier grades are preloaded; within the current grade, add the current section immediately before auditing it and never add later sections.",
     "semantics": {
       "EXACT_ALLOWED": "explicitly reviewed in current passage allowedWords",
       "CUMULATIVE_ALLOWED": "explicitly reviewed in an earlier grade or earlier/equal section of the same textbook; future sections excluded",
-      "FUNCTION_TO_GRAMMAR": "vocabulary exemption only; must pass chronological grammar gate",
+      "FUNCTION_TO_GRAMMAR": "closed structural handoff only; must pass chronological grammar gate",
       "MORPHOLOGY_TO_GRAMMAR": "base appears in current/prior reviewed allowedWords or is explicitly v7-verified in a prior grade; inflection/possessive still requires grammar chronology check",
       "V7_LOOKUP_REQUIRED": "still unresolved after prior-grade + current/prior-section app-reviewed vocabulary; must be checked against canonical v7 at exact section cutoff",
       "PROPER_V7_LOOKUP_REQUIRED": "proper-name candidate; not auto-approved"
@@ -209,34 +209,6 @@
   },
   "globalV7Candidates": [
     {
-      "token": "help",
-      "kind": "V7_LOOKUP_REQUIRED",
-      "occurrences": 22,
-      "passageCount": 5,
-      "sectionCount": 5,
-      "sections": [
-        "ニューホライズン|1|Unit 8-1",
-        "ニューホライズン|2|Unit 1-3",
-        "ニューホライズン|2|Unit 3-1",
-        "ニューホライズン|2|Unit 3-2",
-        "ニューホライズン|2|Unit 3-4"
-      ],
-      "examples": [
-        "ニューホライズン|1|Unit 8-1|sentence:4",
-        "ニューホライズン|1|Unit 8-1|slash:4",
-        "ニューホライズン|1|Unit 8-1|A3.answer",
-        "ニューホライズン|1|Unit 8-1|A3.evidence",
-        "ニューホライズン|1|Unit 8-1|B2.evidence",
-        "ニューホライズン|2|Unit 1-3|sentence:7",
-        "ニューホライズン|2|Unit 1-3|slash:7",
-        "ニューホライズン|2|Unit 1-3|A4.answer",
-        "ニューホライズン|2|Unit 1-3|A4.evidence",
-        "ニューホライズン|2|Unit 3-1|sentence:3",
-        "ニューホライズン|2|Unit 3-1|sentence:6",
-        "ニューホライズン|2|Unit 3-1|slash:3"
-      ]
-    },
-    {
       "token": "partner",
       "kind": "V7_LOOKUP_REQUIRED",
       "occurrences": 19,
@@ -259,6 +231,33 @@
         "ニューホライズン|3|Unit 6-3|sentence:8",
         "ニューホライズン|3|Unit 6-3|slash:1",
         "ニューホライズン|3|Unit 6-3|slash:2"
+      ]
+    },
+    {
+      "token": "help",
+      "kind": "V7_LOOKUP_REQUIRED",
+      "occurrences": 17,
+      "passageCount": 4,
+      "sectionCount": 4,
+      "sections": [
+        "ニューホライズン|2|Unit 1-3",
+        "ニューホライズン|2|Unit 3-1",
+        "ニューホライズン|2|Unit 3-2",
+        "ニューホライズン|2|Unit 3-4"
+      ],
+      "examples": [
+        "ニューホライズン|2|Unit 1-3|sentence:7",
+        "ニューホライズン|2|Unit 1-3|slash:7",
+        "ニューホライズン|2|Unit 1-3|A4.answer",
+        "ニューホライズン|2|Unit 1-3|A4.evidence",
+        "ニューホライズン|2|Unit 3-1|sentence:3",
+        "ニューホライズン|2|Unit 3-1|sentence:6",
+        "ニューホライズン|2|Unit 3-1|slash:3",
+        "ニューホライズン|2|Unit 3-1|slash:6",
+        "ニューホライズン|2|Unit 3-1|A3.evidence",
+        "ニューホライズン|2|Unit 3-1|B1.evidence",
+        "ニューホライズン|2|Unit 3-2|sentence:6",
+        "ニューホライズン|2|Unit 3-2|sentence:11"
       ]
     },
     {
@@ -2977,6 +2976,24 @@
       ]
     },
     {
+      "token": "water",
+      "kind": "V7_LOOKUP_REQUIRED",
+      "occurrences": 6,
+      "passageCount": 1,
+      "sectionCount": 1,
+      "sections": [
+        "ニューホライズン|1|Unit 5-2"
+      ],
+      "examples": [
+        "ニューホライズン|1|Unit 5-2|sentence:6",
+        "ニューホライズン|1|Unit 5-2|slash:6",
+        "ニューホライズン|1|Unit 5-2|A3.answer",
+        "ニューホライズン|1|Unit 5-2|A3.evidence",
+        "ニューホライズン|1|Unit 5-2|B1.answer",
+        "ニューホライズン|1|Unit 5-2|B1.evidence"
+      ]
+    },
+    {
       "token": "actions",
       "kind": "V7_LOOKUP_REQUIRED",
       "occurrences": 5,
@@ -4702,6 +4719,21 @@
       ]
     },
     {
+      "token": "bring",
+      "kind": "V7_LOOKUP_REQUIRED",
+      "occurrences": 3,
+      "passageCount": 1,
+      "sectionCount": 1,
+      "sections": [
+        "サンシャイン|2|PROGRAM 2-1"
+      ],
+      "examples": [
+        "サンシャイン|2|PROGRAM 2-1|slash:12",
+        "サンシャイン|2|PROGRAM 2-1|A5.answer",
+        "サンシャイン|2|PROGRAM 2-1|A5.evidence"
+      ]
+    },
+    {
       "token": "check",
       "kind": "V7_LOOKUP_REQUIRED",
       "occurrences": 3,
@@ -5581,20 +5613,6 @@
       "examples": [
         "サンシャイン|2|PROGRAM 5-1|sentence:1",
         "サンシャイン|2|PROGRAM 5-1|slash:1"
-      ]
-    },
-    {
-      "token": "bring",
-      "kind": "V7_LOOKUP_REQUIRED",
-      "occurrences": 2,
-      "passageCount": 1,
-      "sectionCount": 1,
-      "sections": [
-        "サンシャイン|2|PROGRAM 2-1"
-      ],
-      "examples": [
-        "サンシャイン|2|PROGRAM 2-1|A5.answer",
-        "サンシャイン|2|PROGRAM 2-1|A5.evidence"
       ]
     },
     {
@@ -8162,17 +8180,7 @@
       "localAllowedTokenCount": 28,
       "cumulativeAllowedTokenCount": 603,
       "notes": 0,
-      "candidates": [
-        {
-          "token": "news",
-          "kind": "MORPHOLOGY_TO_GRAMMAR",
-          "base": "new",
-          "locations": [
-            "sentence:1",
-            "slash:1"
-          ]
-        }
-      ]
+      "candidates": []
     },
     {
       "grade": "2",
@@ -8306,6 +8314,7 @@
           "kind": "V7_LOOKUP_REQUIRED",
           "base": null,
           "locations": [
+            "slash:12",
             "A5.answer",
             "A5.evidence"
           ]
@@ -12021,7 +12030,21 @@
       "localAllowedTokenCount": 23,
       "cumulativeAllowedTokenCount": 189,
       "notes": 0,
-      "candidates": []
+      "candidates": [
+        {
+          "token": "water",
+          "kind": "V7_LOOKUP_REQUIRED",
+          "base": null,
+          "locations": [
+            "sentence:6",
+            "slash:6",
+            "A3.answer",
+            "A3.evidence",
+            "B1.answer",
+            "B1.evidence"
+          ]
+        }
+      ]
     },
     {
       "grade": "1",
@@ -12238,31 +12261,7 @@
       "localAllowedTokenCount": 28,
       "cumulativeAllowedTokenCount": 255,
       "notes": 0,
-      "candidates": [
-        {
-          "token": "help",
-          "kind": "V7_LOOKUP_REQUIRED",
-          "base": null,
-          "locations": [
-            "sentence:4",
-            "slash:4",
-            "A3.answer",
-            "A3.evidence",
-            "B2.evidence"
-          ]
-        },
-        {
-          "token": "them",
-          "kind": "FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "locations": [
-            "sentence:4",
-            "slash:4",
-            "A3.evidence",
-            "B2.evidence"
-          ]
-        }
-      ]
+      "candidates": []
     },
     {
       "grade": "1",
@@ -12287,16 +12286,6 @@
             "B1.answer",
             "B1.evidence"
           ]
-        },
-        {
-          "token": "again",
-          "kind": "FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "locations": [
-            "sentence:4",
-            "slash:4",
-            "A3.evidence"
-          ]
         }
       ]
     },
@@ -12310,18 +12299,7 @@
       "localAllowedTokenCount": 32,
       "cumulativeAllowedTokenCount": 277,
       "notes": 0,
-      "candidates": [
-        {
-          "token": "wants",
-          "kind": "MORPHOLOGY_TO_GRAMMAR",
-          "base": "want",
-          "locations": [
-            "sentence:4",
-            "slash:4",
-            "A3.evidence"
-          ]
-        }
-      ]
+      "candidates": []
     },
     {
       "grade": "1",
@@ -12344,15 +12322,6 @@
             "slash:4",
             "slash:8",
             "A4.evidence"
-          ]
-        },
-        {
-          "token": "was",
-          "kind": "FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "locations": [
-            "sentence:5",
-            "slash:5"
           ]
         }
       ]
