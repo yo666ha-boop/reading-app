@@ -38,10 +38,8 @@ def _parse(parent:dict):
     sector=("扇形" in q or "おうぎ形" in q)
     if not sector or "円周率" not in q or "3.14" not in q or "半径" not in q or "中心角" not in q: return None
     if not any(t in q for t in ("弧の長さ","弧長")): return None
-    if any(t in q for t in ("面積","周の長さ","半径を求","中心角を求","図","m","mm","km")):
-        # permit cm itself while rejecting other metric-unit wording
-        q_without_cm=q.replace("cm","")
-        if any(t in q_without_cm for t in ("面積","周の長さ","半径を求","中心角を求","図","mm","km","m")): return None
+    q_without_cm=q.replace("cm","")
+    if any(t in q_without_cm for t in ("面積","周の長さ","半径を求","中心角を求","図","mm","km","m")): return None
     rs=list(RADIUS_RE.finditer(q)); aa=list(ANGLE_RE.finditer(q))
     if len(rs)!=1 or len(aa)!=1: return None
     r=int(rs[0].group("r")); angle=int(aa[0].group("a"))
