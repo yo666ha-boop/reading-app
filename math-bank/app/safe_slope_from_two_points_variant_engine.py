@@ -1,8 +1,9 @@
 from __future__ import annotations
 
-"""Fail-closed exact coordinate route for distance, slope, and midpoint of two explicit integer points."""
+"""Fail-closed exact coordinate route for origin distance, two-point distance, slope, and midpoint."""
 import hashlib,json,re
 from fractions import Fraction
+from safe_distance_origin_point_variant_engine import generate as generate_origin_distance
 from safe_distance_two_points_variant_engine import generate as generate_distance
 from safe_midpoint_two_points_variant_engine import generate as generate_midpoint
 
@@ -30,6 +31,8 @@ def _parse(parent:dict):
     return ps,x1,y1,x2,y2,m
 
 def can_generate(parent:dict):
+    rows,_,reason=generate_origin_distance(parent,1)
+    if rows:return True,reason
     rows,_,reason=generate_distance(parent,1)
     if rows:return True,reason
     rows,_,reason=generate_midpoint(parent,1)
@@ -37,9 +40,11 @@ def can_generate(parent:dict):
     if _parse(parent) is not None:return True,"two_integer_points_slope_exact"
     if parent.get("figure_refs"):return False,"figure_parent"
     if parent.get("choices"):return False,"choice_parent"
-    return False,"coordinate_two_points_parent_not_exactly_parsed_and_verified"
+    return False,"coordinate_parent_not_exactly_parsed_and_verified"
 def generate(parent:dict,count:int):
     if count not in (1,2,3):raise ValueError("count must be 1, 2, or 3")
+    rows,ev,reason=generate_origin_distance(parent,count)
+    if rows:return rows,ev,reason
     rows,ev,reason=generate_distance(parent,count)
     if rows:return rows,ev,reason
     rows,ev,reason=generate_midpoint(parent,count)
