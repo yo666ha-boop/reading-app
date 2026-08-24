@@ -22,6 +22,8 @@ on:
       - 'math-bank/scripts/test_audit_winpass_normalization.py'
       - 'math-bank/scripts/apply_winpass_normalization.py'
       - 'math-bank/scripts/test_apply_winpass_normalization.py'
+      - 'math-bank/scripts/validate_rebuilt_originals.py'
+      - 'math-bank/scripts/test_validate_rebuilt_originals.py'
       - '.github/workflows/math-source-rebuild-contract.yml'
 
 permissions:
@@ -36,12 +38,10 @@ jobs:
         with:
           ref: math-problem-bank-bootstrap
           fetch-depth: 0
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
       - name: Compile rebuild tools
         run: |
           python -m py_compile \
@@ -60,32 +60,27 @@ jobs:
             math-bank/scripts/audit_winpass_normalization.py \
             math-bank/scripts/test_audit_winpass_normalization.py \
             math-bank/scripts/apply_winpass_normalization.py \
-            math-bank/scripts/test_apply_winpass_normalization.py
-
+            math-bank/scripts/test_apply_winpass_normalization.py \
+            math-bank/scripts/validate_rebuilt_originals.py \
+            math-bank/scripts/test_validate_rebuilt_originals.py
       - name: Run exact source identity rebuild gate tests
         run: python math-bank/scripts/test_verify_source_archives.py
-
       - name: Run source structure profile tests
         run: python math-bank/scripts/test_profile_source_archives.py
-
       - name: Run exact source member manifest tests
         run: python math-bank/scripts/test_build_source_member_manifest.py
-
       - name: Run recursive MATH.json schema path profiler tests
         run: python math-bank/scripts/test_profile_math_json_paths.py
-
       - name: Run rebuilt raw record validation tests
         run: python math-bank/scripts/test_validate_rebuilt_raw_records.py
-
       - name: Run Winpass fingerprint review queue tests
         run: python math-bank/scripts/test_create_winpass_review_queue.py
-
       - name: Run evidence-bound Winpass normalization tests
         run: python math-bank/scripts/test_audit_winpass_normalization.py
-
       - name: Run fail-closed Winpass normalization materialization tests
         run: python math-bank/scripts/test_apply_winpass_normalization.py
-
+      - name: Run strict rebuilt 1124 originals validation tests
+        run: python math-bank/scripts/test_validate_rebuilt_originals.py
       - name: Confirm real source rebuild stays fail-closed until exact source ZIPs are available in runner
         shell: bash
         run: |
@@ -118,18 +113,13 @@ jobs:
               expected_profile=0 if profile.get('ready_for_record_extraction') else 3
               expected_manifest=0 if manifest.get('ready_for_raw_extraction') else 5
               expected_paths=0 if paths.get('ready_for_schema_specific_extractor') else 6
-              if profile_rc != expected_profile:
-                  raise SystemExit(f'FAIL source profile rc={profile_rc}, expected {expected_profile}')
-              if manifest_rc != expected_manifest:
-                  raise SystemExit(f'FAIL source member manifest rc={manifest_rc}, expected {expected_manifest}')
-              if paths_rc != expected_paths:
-                  raise SystemExit(f'FAIL source schema paths rc={paths_rc}, expected {expected_paths}')
-          else:
-              if profile_rc != 3 or manifest_rc != 5 or paths_rc != 6:
-                  raise SystemExit(f'FAIL absent/nonexact source must block profile/manifest/paths: {profile_rc}/{manifest_rc}/{paths_rc}')
+              if profile_rc != expected_profile: raise SystemExit(f'FAIL source profile rc={profile_rc}, expected {expected_profile}')
+              if manifest_rc != expected_manifest: raise SystemExit(f'FAIL source member manifest rc={manifest_rc}, expected {expected_manifest}')
+              if paths_rc != expected_paths: raise SystemExit(f'FAIL source schema paths rc={paths_rc}, expected {expected_paths}')
+          elif profile_rc != 3 or manifest_rc != 5 or paths_rc != 6:
+              raise SystemExit(f'FAIL absent/nonexact source must block profile/manifest/paths: {profile_rc}/{manifest_rc}/{paths_rc}')
           print('PASS_SOURCE_REBUILD_INPUT_MEMBER_SHA_SCHEMA_PATHS_FAIL_CLOSED_AND_FULL_REAUDIT_REQUIRED')
           PY
-
       - name: Persist source rebuild contract PASS
         if: success()
         shell: bash
@@ -145,40 +135,25 @@ jobs:
           from pathlib import Path
           real_sources = any(Path('math-bank/source').glob('*.zip'))
           payload = {
-            'workflow': 'Math Source Rebuild Contract',
-            'status': 'PASS_CI',
-            'mode': 'AUDITED_RECONSTRUCTION_FROM_EXACT_SOURCE_INPUTS',
-            'run_id': os.environ['RUN_ID'],
-            'triggering_sha': os.environ['TRIGGERING_SHA'],
-            'tested_head_after_rebase': subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip(),
-            'renamed_copy_suffix_supported': True,
-            'exact_historical_source_sha_required': True,
-            'member_sha256_manifest_required_before_extraction': True,
-            'recursive_schema_path_profile_required_before_extractor': True,
-            'raw_record_count_qa_fingerprint_gate_required': True,
-            'raw_figure_resolution_gate_required': True,
-            'winpass_fingerprint_bound_review_queue_required': True,
-            'winpass_decision_exact_record_fingerprint_binding_required': True,
-            'winpass_normalization_materialization_gate_required': True,
-            'winpass_materialized_order_and_provenance_required': True,
-            'hash_mismatch_fail_closed': True,
-            'raw_1271_direct_promotion_forbidden': True,
-            'historical_canonical_byte_claim_without_old_zip_forbidden': True,
-            'source_reconstruction_allowed_after_full_reaudit': True,
-            'winpass_717_decision_coverage_required': True,
-            'winpass_exclusion_evidence_required': True,
-            'winpass_count_forcing_forbidden': True,
-            'required_rebuild_targets': {
-              'documents': 140,
-              'raw': {'Winpass':717,'実力錬成':237,'Standard':317},
-              'validated_originals': {'Winpass':570,'実力錬成':237,'Standard':317,'total':1124},
-            },
-            'real_source_archives_committed': real_sources,
-            'next_if_sources_available': 'identity -> member SHA manifest -> 140-doc profile -> recursive schema paths -> raw 717/237/317 -> raw QA/figure/fingerprint gate -> Winpass fingerprint review queue -> exact-record-bound evidence decisions for all 717 -> audited 570 materialization with provenance -> full 1124 validation',
-            'recorded_at_utc': datetime.now(timezone.utc).isoformat(),
+            'workflow':'Math Source Rebuild Contract','status':'PASS_CI','mode':'AUDITED_RECONSTRUCTION_FROM_EXACT_SOURCE_INPUTS',
+            'run_id':os.environ['RUN_ID'],'triggering_sha':os.environ['TRIGGERING_SHA'],
+            'tested_head_after_rebase':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+            'renamed_copy_suffix_supported':True,'exact_historical_source_sha_required':True,
+            'member_sha256_manifest_required_before_extraction':True,'recursive_schema_path_profile_required_before_extractor':True,
+            'raw_record_count_qa_fingerprint_gate_required':True,'raw_figure_resolution_gate_required':True,
+            'winpass_fingerprint_bound_review_queue_required':True,'winpass_decision_exact_record_fingerprint_binding_required':True,
+            'winpass_normalization_materialization_gate_required':True,'winpass_materialized_order_and_provenance_required':True,
+            'rebuilt_1124_originals_global_validation_required':True,'rebuilt_1124_global_id_and_fingerprint_uniqueness_required':True,
+            'rebuilt_original_generated_variant_contamination_forbidden':True,'hash_mismatch_fail_closed':True,
+            'raw_1271_direct_promotion_forbidden':True,'historical_canonical_byte_claim_without_old_zip_forbidden':True,
+            'source_reconstruction_allowed_after_full_reaudit':True,'winpass_717_decision_coverage_required':True,
+            'winpass_exclusion_evidence_required':True,'winpass_count_forcing_forbidden':True,
+            'required_rebuild_targets':{'documents':140,'raw':{'Winpass':717,'実力錬成':237,'Standard':317},'validated_originals':{'Winpass':570,'実力錬成':237,'Standard':317,'total':1124}},
+            'real_source_archives_committed':real_sources,
+            'next_if_sources_available':'identity -> member SHA manifest -> 140-doc profile -> recursive schema paths -> raw 717/237/317 -> raw QA/figure/fingerprint gate -> Winpass fingerprint review queue -> exact-record-bound evidence decisions for all 717 -> audited 570 materialization with provenance -> global 1124 originals validation -> immutable rebuilt originals -> variants/app',
+            'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
           }
-          Path('math-bank/state/source-rebuild-contract-latest.json').write_text(
-              json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          Path('math-bank/state/source-rebuild-contract-latest.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           PY
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
