@@ -24,7 +24,7 @@ def canonical(value: Any) -> str:
 
 
 def fingerprint_payload(record: dict) -> dict:
-    return {
+    payload = {
         "raw_id": record.get("raw_id"),
         "source": record.get("source"),
         "source_document": record.get("source_document"),
@@ -39,6 +39,10 @@ def fingerprint_payload(record: dict) -> dict:
         "answer_offsets": record.get("answer_offsets"),
         "figure_refs": record.get("figure_refs"),
     }
+    graphical_answer_asset = record.get("graphical_answer_asset")
+    if graphical_answer_asset not in (None, "", [], {}):
+        payload["graphical_answer_asset"] = graphical_answer_asset
+    return payload
 
 
 def recompute_fingerprint(record: dict) -> str:
@@ -172,7 +176,7 @@ def build_report(records: list[dict], *, require_expected_figure_refs: bool = Tr
         "missing_figure_refs": missing_figure_refs,
         "errors": errors,
         "pass": not errors,
-        "policy": "A slot passes only with exact Q/A content plus ordered OOXML offsets (or a graphical answer asset), source score evidence, figure relationship/asset identity, and a recomputed content-bound fingerprint. Non-empty placeholder text is insufficient.",
+        "policy": "A slot passes only with exact Q/A content plus ordered OOXML offsets (or a graphical answer asset), source score evidence, figure relationship/asset identity, and a recomputed content-bound fingerprint. Graphical answer asset identity is included in the fingerprint when present. Non-empty placeholder text is insufficient.",
     }
 
 
