@@ -2,8 +2,8 @@ from __future__ import annotations
 
 """Fail-closed exact engine for verified quadratic equation shapes.
 
-The historical x²=N perfect-square shape keeps priority. Other monic quadratic
-equations with two exact integer roots delegate to the integer-roots engine.
+The historical x²=N perfect-square shape keeps priority. Other exact quadratic
+equations delegate to integer-root engines (monic first, then non-monic).
 """
 
 import hashlib
@@ -12,6 +12,7 @@ import math
 import re
 
 from safe_quadratic_integer_roots_variant_engine import generate as generate_integer_roots
+from safe_quadratic_nonmonic_integer_roots_variant_engine import generate as generate_nonmonic_integer_roots
 
 EQ_RE = re.compile(r"(?P<expr>[xｘ]\s*(?:\^\s*2|²)\s*=\s*(?P<n>\d+))")
 ANS_RE = re.compile(r"^(?:[xｘ]\s*=\s*)?(?:±(?P<a>\d+)|(?P<p>\d+)[、,](?P<m>-\d+)|(?P<m2>-\d+)[、,](?P<p2>\d+))$")
@@ -70,6 +71,9 @@ def can_generate(parent: dict) -> tuple[bool, str]:
     rows, _, reason = generate_integer_roots(parent, 1)
     if rows:
         return True, reason
+    rows, _, reason = generate_nonmonic_integer_roots(parent, 1)
+    if rows:
+        return True, reason
     if parent.get("figure_refs"):
         return False, "figure_parent"
     if parent.get("choices"):
@@ -87,6 +91,9 @@ def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     parsed = _parse_parent(parent)
     if parsed is None:
         rows, evidence, reason = generate_integer_roots(parent, count)
+        if rows:
+            return rows, evidence, reason
+        rows, evidence, reason = generate_nonmonic_integer_roots(parent, count)
         if rows:
             return rows, evidence, reason
         ok, reason = can_generate(parent); assert not ok
