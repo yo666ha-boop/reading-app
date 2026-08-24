@@ -1,67 +1,65 @@
 # Long-reading app vocabulary / grammar audit checkpoint
 
-Updated: 2026-08-25 03:03 JST
+Updated: 2026-08-25 03:55 JST
 
 ## Source of truth
 - Repository: `yo666ha-boop/reading-app`.
 - Work branch: `v10-vocab-grammar-notes-audit` only.
-- Work branch HEAD at checkpoint write base: `ef4b603788a858ca30a74bc79381cf1c82fa2b73` (`audit: repair v7-confirmed prior-grade eat and large metadata`).
+- Work branch HEAD at checkpoint write base: `62206cf07ff5e63a422264a5d510be8aa6a27de3` (`audit: record v7-confirmed future give rewrite`).
 - Public `main` HEAD remains `1f0cabf9bfcc4482f507e33188499bdbbd5bab57`; main was NOT modified.
-- Canonical vocabulary source re-opened live: native Google Sheet `英単語_教科書別マスターデータ_NH_SS_2026_v7_app_wordbook_master`, id `1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4`, sheet `単語マスター`, 3975 canonical records. Old v5/v6 were not used as source of truth.
+- Canonical vocabulary source re-opened live: native Google Sheet `英単語_教科書別マスターデータ_NH_SS_2026_v7_app_wordbook_master`, id `1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4`, sheet `単語マスター`, 3975 canonical records.
 
 ## Work completed this run
-- Re-read actual branch/main/checkpoint/workflow and `v10_stage2.html` final script order. `v10_vocab_corrections.js` loads before passage datasets, followed by G1/G2/G3 data/fixes, metadata, then `DATASETS`.
-- Diagnosed the bounded notes-UI failure further: v7 corrections were deferred behind a runtime/load/30-second path while the test expected the correction within 10 seconds. Changed the correction applier to poll/apply as target datasets become available (`824f3abeddab317e8f68cea275fcf179b808d882`).
-- Removed unreliable jsdom browser-`load` readiness from the all-168 vocabulary audit and made 168 actual datasets + correction readiness the invariant (`2080d5bc70c385da1d355e275a63aa8fc1987af5`).
-- Found and fixed a major chronology error: the scanner had reset vocabulary at each grade, incorrectly treating prior-grade words as unknown. It now carries all reviewed vocabulary forward within the same textbook while still excluding future sections (`67cb35e286739bca84b7a712906d7740d86a979e`).
-- Removed the same jsdom `load` dependency from grammar candidate extraction (`463f627bed0bc8cacc5f8a478aa6c1c1c7af14ac`).
-- Fixed morphology routing for possessive `'s`, doubled-consonant/y comparative/superlative forms, and `cannot`, so these go to chronology/grammar rather than false unknown-word lookup (`89d72b39b438ddd2dd97c6ba1cc67aaa4ae8cf1a`).
-- Fresh persisted core audit after those fixes: bot commit `10042aeba8bc12333c42b6032c113fff1acb0ee4`. It audited 168/168 with 28,065 exact-allowed occurrences, 9,953 cumulative occurrences, 154 function-to-grammar, 138 morphology-to-grammar, 63 remaining normal v7-lookup occurrences, 7 proper-class occurrences, 15 normal unique lookup candidates + 2 proper-class candidates, notes 0, missing gloss 0, missing allowedWords 0. Grammar extraction covers 168/168 and 19 detected feature families; chronology is not yet PASS.
-- Live v7 evidence resolved additional false candidates:
-  - `eat`: NH1 v7 ID 39 and SS1 v7 ID 2152, both プレステップ4, `eat / ~を食べる`; therefore its G2 uses are prior-grade learned.
-  - `large`: NH1 v7 ID 558, Unit7 / Real Life English 3, `large / 大きい, 広い`; therefore NH2 Unit 1-3/1-4 uses are prior-grade learned.
-  - Added evidence-backed metadata corrections at the first relevant G2 passage for SS `eat`, NH `eat`, and NH `large` in commit `ef4b603...`; no passage English/slash/questions were rewritten.
-  - `give`: v7 NH2 ID 1114 occurs at Let's Read 1 (P44-P47) as `give-gave`; Unit 2-2 use still needs exact cutoff comparison, so it remains unresolved rather than being auto-approved.
-  - `bring`: v7 SS2 ID 3036 occurs at Reading1 / Power-Up2 (P50) as `bring`; PROGRAM 2-1 use still needs exact cutoff comparison, so it remains unresolved.
-  - `sixteen`: no exact English-row match found in the v7 master; it still needs explicit elementary-known evidence or unknown-word handling.
-- No passage body, fullTranslation, slash row, A/B question, answer, evidence, evidenceJp, or reason text was changed this run.
+- Re-read actual branch HEAD, main HEAD, checkpoint, latest persisted audit status/report, v10 stage2 final script load order, vocabulary correction layer, and notes UI test.
+- Confirmed latest persisted all-168 report after prior-grade metadata repairs: 168/168 audited; 27,967 exact allowed occurrences; 9,986 cumulative prior/current allowed; 154 function-to-grammar; 138 morphology-to-grammar; 47 normal v7 lookup occurrences; 7 proper-class lookup occurrences; 13 normal unique candidates + 2 proper-class candidates; notes 0; missing gloss 0; missing allowedWords 0; grammar extraction 168/168 with 19 feature families.
+- Confirmed `eat` and `large` disappeared from the unresolved candidate set after the previous metadata repair.
+- Diagnosed the remaining notes-UI timing hazard: `v10_vocab_corrections.js` stopped polling after 12 seconds (`tries>=120`), while the bounded jsdom test permits up to 45 seconds for all 168 datasets to load. A slow load can therefore end polling before Get Ready 4 exists, leaving the v7-confirmed `play` correction unapplied and making the UI gate fail despite datasets eventually reaching 168.
+- Extended correction polling from 12 seconds to 120 seconds in commit `b1fa55a481c3521a9591ec3d051c0db1ff1a1bb7`. The gate was not weakened; it still requires the real correction to exist before the note rendering assertions run.
+- Re-opened canonical v7 row evidence for `give`: row 1115 (master ID 1114 in the data field), NH2, `LR1`, `Let's Read 1 教科書本文`, P44-P47, `give-gave / 与える[原形-過去形]`.
+- Therefore confirmed the NH2 Unit 2-2 sentence `At school, I give a short speech about local food.` is a genuine future-vocabulary leak. This is before the v7 first appearance of `give`.
+- Repaired that leak without adding a note: replaced it with prior-reviewed `At school, I talk about local food in a short speech.` and synchronized fullTranslation, slashRows[0] English/Japanese, A1 evidence, evidenceJp and reason together. Repair commit: `37abfb12b5943bb875a7e76899fe3135c30b7172`.
+- Recorded the evidence-backed decision in `v10_v7_vocab_resolution.json`, commit `62206cf07ff5e63a422264a5d510be8aa6a27de3`.
+- No main write was made.
 
-## Current authoritative counts before the final eat/large correction rerun
+## Current authoritative counts
+Latest persisted report before rerun of the new `give` repair:
 - passages audited: `168/168`
-- exact allowed occurrences: `28065`
-- cumulative prior/current allowed occurrences: `9953`
+- exact allowed occurrences: `27967`
+- cumulative prior/current allowed occurrences: `9986`
 - function-to-grammar occurrences: `154`
 - morphology-to-grammar occurrences: `138`
-- unresolved v7 lookup occurrences: `63`
+- unresolved v7 lookup occurrences: `47`
 - unresolved proper-class lookup occurrences: `7`
-- unique normal v7 lookup candidates: `15`
+- unique normal v7 lookup candidates: `13`
 - unique proper-class candidates: `2`
 - notes present: `0`
 - missing gloss: `0`
 - missing allowedWords: `0`
 - grammar candidate passages: `168/168`
 - grammar detected feature families: `19`
-- These lookup counts are candidates, not confirmed future-vocabulary violations. The next CI rerun after `ef4b603...` should reduce them further because `eat` and `large` are now repaired as prior-grade metadata.
+- confirmed genuine future-vocab leak repaired this run: `1` (`give` in NH2 Unit 2-2)
+- The next persisted rerun must reduce the `give` candidate occurrences for Unit 2-2; Unit 5-4 still needs cutoff evaluation separately.
 
 ## UI / gate status
-- Latest completed bounded notes-UI evidence before the `ef4b603...` rerun is still `FAIL_OR_TIMEOUT` at bot commit `51fd9b9f495030c0a7732eff48690bc9082a76ca`; its persisted log reaches `datasets=168` but does not yet reach PASS. Do not mark notes UI PASS.
-- `v10_vocab_corrections.js` timing has been repaired, but a fresh final UI run after the latest corrections must be inspected. If it still fails after `datasets=168`, instrument the exact correction state (`V10_VOCAB_CORRECTION_TARGETS_SEEN`, `V10_VOCAB_CORRECTIONS_APPLIED`, Get Ready 4 allowedWords) and fix the remaining test/runtime mismatch rather than weakening the gate.
-- Slash reference was not intentionally changed. Final slash-reference 168/168 regression remains mandatory after all vocabulary/text repairs.
-- main remains gated and untouched.
+- Latest persisted notes UI status before this run's polling extension remains `FAIL_OR_TIMEOUT`; do not mark PASS until a fresh run persists PASS.
+- Correction polling timing has now been aligned with the bounded dataset-load window. Fresh CI evidence is required.
+- Slash reference remains mandatory after this synchronized passage edit; final 168/168 slash regression must be rerun before release.
 
-## Remaining candidate set before eat/large rerun
-The last persisted set was: `eat`, `large`, `give`, `sixteen`, `today` (sentence-initial false-proper candidate), `bring`, `map`, `nine`, `process`, `using`, `above`, `hike`, `tells`, `used`, `learn`, `lot`, plus proper name `anna`. Possessives/comparatives/`cannot` were removed from unknown lookup by the morphology fix. After the `eat`/`large` metadata correction rerun, use the newly persisted report rather than this list.
+## Remaining candidate focus
+Latest candidate set includes `give`, `sixteen`, `today`, `bring`, `map`, `nine`, `process`, `using`, `above`, `hike`, `tells`, `used`, `learn`, `lot`, plus proper-name `anna` (the report classifies `today` as a capitalization/proper candidate in some sentence-initial occurrences). `eat` and `large` are resolved and gone.
 
 ## Exact stop / next start
-- Exact stop: committed v7-backed prior-grade metadata repairs for `eat` (SS/NH) and `large` (NH) at `ef4b603...`; fresh CI for that commit had not yet persisted its new report/UI evidence when this checkpoint was written. No genuine future-vocabulary count is finalized yet; no indispensable unknown-word note has been added yet.
-- Next start: read branch HEAD and the bot-persisted report produced after `ef4b603...`; verify whether `eat` and `large` disappeared and inspect the fresh notes-UI log/status. Continue exact v7 cutoff resolution of every remaining candidate (especially `give`, `bring`, `sixteen`, `today`, `map`, `nine`, `process`, `using`, `above`, `hike`, `tells`, `used`, `learn`, `lot`, `anna`). Apply only source-backed metadata repairs or synchronized passage rewrites/notes. Then build evidence-backed grammar introduction thresholds for all 19 feature families and audit all 168 passages + A/B English. Finally rerun slash 168/168, A/B evidence/translation sync, coverage/DOM, Chromium/Firefox/WebKit-iPhone, A4 student/teacher print. Merge to main only after every gate passes and verify GitHub Pages live.
+- Exact stop: v7-confirmed future `give` in NH2 Unit 2-2 was synchronously rewritten and the decision was recorded. Branch HEAD is `62206cf...`. Fresh Actions/persisted scanner/UI outputs for this head were not yet available at checkpoint write.
+- Next start: first read branch HEAD and newest bot-persisted report/UI status. Verify Unit 2-2 `give` disappearance and whether notes UI becomes PASS after the 120-second polling repair. Then continue exact v7 cutoff resolution of every remaining candidate, prioritizing `bring` (SS2 PROGRAM 2-1 versus v7 Reading1/Power-Up2), `sixteen`, `map`, `nine`, `process`, `using`, `above`, `hike`, `tells`, `used`, `learn`, `lot`, `today`, `anna`, and Unit 5-4 `give`. For each confirmed future word, prefer a natural already-learned rewrite and synchronize sentence/fullTranslation/slash/questions/answer/evidence/evidenceJp/reason. Add notes only for truly indispensable unknowns.
+- After vocabulary candidates are exhausted: build evidence-backed textbook/section thresholds for all 19 grammar families; audit all 168 passages + A/B English; then rerun slash reference 168/168, A/B evidence/translation sync, coverage/DOM, Chromium/Firefox/WebKit-iPhone, A4 student/teacher print. Merge to main only after every gate passes and verify Pages live.
 
 ## PASS / FAIL record
 - vocabulary scanner execution: PASS 168/168; chronology final: IN PROGRESS.
+- confirmed future vocabulary repairs: 1 this run (`give`, NH2 Unit 2-2).
 - grammar candidate extraction: PASS 168/168; chronology final: IN PROGRESS.
-- missing gloss among current notes: PASS (`0`), but notes requirement finalization remains IN PROGRESS.
-- notes UI: FAIL_OR_TIMEOUT on latest completed bounded run; fresh rerun pending.
+- missing gloss among current notes: PASS (`0`), but final notes necessity remains IN PROGRESS.
+- notes UI: fresh rerun pending after timing repair; latest persisted state still FAIL_OR_TIMEOUT.
 - future vocab leak: NOT FINALIZED.
 - future grammar leak: NOT FINALIZED.
-- slash regression: no content edit this run; final gate pending.
+- slash regression: synchronized one-row passage/slash/evidence edit made this run; full 168/168 final regression pending.
 - public main/live release: NOT RUN / intentionally blocked.
