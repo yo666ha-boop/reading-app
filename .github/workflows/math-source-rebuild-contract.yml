@@ -1,0 +1,56 @@
+name: Math Source Rebuild Contract
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - math-problem-bank-bootstrap
+    paths:
+      - 'math-bank/scripts/verify_source_archives.py'
+      - 'math-bank/scripts/test_verify_source_archives.py'
+      - '.github/workflows/math-source-rebuild-contract.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  source-identity-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout math branch
+        uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile verifier
+        run: python -m py_compile math-bank/scripts/verify_source_archives.py math-bank/scripts/test_verify_source_archives.py
+
+      - name: Run renamed-copy exact SHA and fail-closed regression
+        run: python math-bank/scripts/test_verify_source_archives.py
+
+      - name: Confirm real-source verification stays blocked when source ZIPs are not committed
+        shell: bash
+        run: |
+          set +e
+          python math-bank/scripts/verify_source_archives.py --source-dir math-bank/source --report /tmp/math-source-verification.json --strict
+          rc=$?
+          set -e
+          if find math-bank/source -maxdepth 1 -type f -name '*.zip' -print -quit 2>/dev/null | grep -q .; then
+            if [ "$rc" -ne 0 ]; then
+              echo 'FAIL: committed source ZIPs exist but exact historical SHA verification failed'
+              cat /tmp/math-source-verification.json
+              exit 1
+            fi
+            echo 'PASS_REAL_SOURCE_ARCHIVES_EXACT_SHA'
+          else
+            if [ "$rc" -ne 2 ]; then
+              echo "FAIL: absent real source ZIPs must fail closed with rc=2, got $rc"
+              exit 1
+            fi
+            echo 'PASS_REAL_SOURCE_ARCHIVES_ABSENT_FAIL_CLOSED'
+          fi
