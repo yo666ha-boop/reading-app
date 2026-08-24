@@ -46,32 +46,32 @@ def main() -> None:
             },
         }
         report = m.build_report(root, specs)
-        assert report["exact_source_archives_verified_for_diagnostics"] is True
-        assert report["promotable_to_canonical"] is False
-        assert report["ready_for_real_rebuild"] is False
-        assert report["mode"] == "DIAGNOSTIC_ONLY_NON_CANONICAL"
-        assert report["policy"]["no_reconstruction_from_source_archives"] is True
+        assert report["exact_source_archives_verified_for_rebuild"] is True
+        assert report["promotable_to_historical_canonical_without_revalidation"] is False
+        assert report["ready_for_rebuild_pipeline"] is True
+        assert report["ready_for_real_rebuild"] is True
+        assert report["mode"] == "SOURCE_REBUILD_INPUT_VERIFICATION"
+        assert report["policy"]["raw_diagnostic_records_never_promote_directly"] is True
+        assert report["policy"]["reconstruction_from_exact_sources_allowed_only_after_full_reaudit"] is True
         assert report["archives"]["alpha"]["selected"]["name"] == "alphaデータ(1).zip"
         assert report["archives"]["alpha"]["zip_inspection"]["file_members"] == 2
         assert report["archives"]["alpha"]["zip_inspection"]["extension_counts"] == {".json": 1, ".png": 1}
 
-        # Same filename family but changed bytes must never be accepted even diagnostically as exact.
+        # Changed bytes must never enter the rebuild pipeline.
         make_zip(a, {"A/MATH.json": b'{"changed":true}'})
         mismatch = m.build_report(root, specs)
-        assert mismatch["exact_source_archives_verified_for_diagnostics"] is False
-        assert mismatch["promotable_to_canonical"] is False
-        assert mismatch["ready_for_real_rebuild"] is False
+        assert mismatch["exact_source_archives_verified_for_rebuild"] is False
+        assert mismatch["ready_for_rebuild_pipeline"] is False
         assert mismatch["archives"]["alpha"]["status"] == "HASH_MISMATCH"
 
         # Missing required source also fails closed.
         b.unlink()
         missing = m.build_report(root, specs)
-        assert missing["exact_source_archives_verified_for_diagnostics"] is False
-        assert missing["promotable_to_canonical"] is False
-        assert missing["ready_for_real_rebuild"] is False
+        assert missing["exact_source_archives_verified_for_rebuild"] is False
+        assert missing["ready_for_rebuild_pipeline"] is False
         assert missing["archives"]["beta"]["status"] == "MISSING"
 
-    print("PASS_MATH_SOURCE_ARCHIVE_EXACT_SHA_DIAGNOSTIC_ONLY_NO_REBUILD_TESTS")
+    print("PASS_MATH_SOURCE_ARCHIVE_EXACT_SHA_AUDITED_REBUILD_GATE_TESTS")
 
 
 if __name__ == "__main__":
