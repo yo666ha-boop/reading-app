@@ -108,7 +108,7 @@ jobs:
           runtime_routes=[name for name,_ in unified.SPECIALIZED_ENGINES]
           payload={
             'status':'PASS_CI' if all_pass else 'FAIL_CI_DIAGNOSTIC',
-            'persist_schema_version':66,
+            'persist_schema_version':67,
             'run_id':os.environ['RUN_ID'],
             'triggering_sha':os.environ['TRIGGERING_SHA'],
             'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
@@ -150,6 +150,8 @@ jobs:
               'triangle_base_from_area':'base=2*area/height and base*height=2*area',
               'rectangle_side_from_area':'missing=area/known and product=area',
               'rectangle_side_from_perimeter':'missing=perimeter/2-known and recomposition',
+              'square_side_from_area':'side=isqrt(area) with exact square and side^2=area',
+              'square_side_from_perimeter':'side=perimeter/4 and side*4=perimeter',
               'cylinder_height_from_surface_area':'height=surface/(2*pi*r)-r and recomposition',
               'cone_slant_from_surface_area':'slant=surface/(pi*r)-r and recomposition'
             }
