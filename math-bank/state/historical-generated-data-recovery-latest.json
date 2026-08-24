@@ -1,0 +1,747 @@
+{
+  "workflow": "Math Historical Generated Data Content-Addressed Recovery",
+  "repo": "yo666ha-boop/reading-app",
+  "target_sha256": {
+    "winpass_stage4_answer_complete": "b532d64f83bb0cb0444a6b556e2490a9b56366d5c3916256ae2e96572eb1abe3",
+    "winpass_stage5_question_repair": "c50053ba1765e81e256aaa95b67f94071cec3b6bb625deef801b71b0af5ae984",
+    "winpass_answer_asset_index": "0e96efc7097c61ddfc1c5218da90e7ea92cbb4fd0a1e9babccfcad3756731af2",
+    "combined_diagnostic_1271": "16c71b87744a3c00bb29b53d63bdaf727feaae86a5d7a505b83920c8dfefc63a"
+  },
+  "text_needles": [
+    "25winpasst1suhy000417",
+    "25winpasst1suhy000521",
+    "25winpasst1suhy000522",
+    "winpass_verified_union570_authoritative_norm_20260820",
+    "jitsuren_verified_union225_complete27_20260820"
+  ],
+  "created_window": {
+    "since": "2026-08-19T00:00:00Z",
+    "until": "2026-08-21T23:59:59Z"
+  },
+  "git_blobs_seen": 4642,
+  "git_blobs_sha256_checked": 4642,
+  "git_blob_bytes_hashed": 174079209,
+  "git_blobs_skipped_oversize": 0,
+  "actions_artifacts_seen": 511,
+  "actions_candidate_artifacts": 237,
+  "actions_artifacts_downloaded": 237,
+  "actions_download_failures": 0,
+  "actions_scan_complete": true,
+  "actions_listing_errors": [],
+  "actions_download_errors": [],
+  "artifact_members_seen": 752,
+  "artifact_members_sha256_checked": 752,
+  "artifact_member_bytes_hashed": 69763226,
+  "artifact_members_skipped_oversize": 0,
+  "nested_zip_members": 3,
+  "member_read_errors": [],
+  "zip_errors": [],
+  "exact_sha_hits": {
+    "winpass_stage4_answer_complete": 0,
+    "winpass_stage5_question_repair": 0,
+    "winpass_answer_asset_index": 0,
+    "combined_diagnostic_1271": 0
+  },
+  "evidence_hits": [
+    {
+      "source": "git",
+      "name": ".github/workflows/math-checkpoint-recovery-fast.yml",
+      "bytes": 8613,
+      "sha256": "e45c7112cc7840cce6bdd305038e65bb987f5e462aa6c1a7b70eb901f3e0a1b2",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "1fcfac2feecfd391832c0152cd64e608f0adb884"
+    },
+    {
+      "source": "git",
+      "name": ".github/workflows/math-checkpoint-recovery.yml",
+      "bytes": 10136,
+      "sha256": "017c1c09c463a016912d3db195ef0e5bea4f26ad6e3e9f3b5a795cec223de7bd",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "0707bb84cbb83c25fcb65152fe7ccffda953ddce"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/app/recover_historical_generated_math_data.py",
+      "bytes": 10492,
+      "sha256": "bb3920f058d4d66a2c5aacaefc688c65d0254a64cee5386eb83f9f885055ccd9",
+      "target": null,
+      "text_needles": [
+        "25winpasst1suhy000417",
+        "25winpasst1suhy000521",
+        "25winpasst1suhy000522",
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "83397247c7a965fcc9d8efbb8e8b449f61706bad"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/app/scan_actions_artifacts_full.py",
+      "bytes": 13469,
+      "sha256": "7f9f909ba392cc6bddd1fa76298d6d9233e78b43700eb5590a84a650496d8ea2",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "0412c1d3813775c290fadcbdaf7cda1a2d889dc6"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/app/scan_actions_logs_recovery.py",
+      "bytes": 15483,
+      "sha256": "b6f9ad35e803da2ded37f630ba26e406cb7b450aa2cc90f4dc52720a38ed2d6a",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "0bce35b100c3fc0a3c752ef7f3edbbadd2ef59f4"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/app/scan_canonical_candidates.py",
+      "bytes": 3472,
+      "sha256": "61051259c54e54c3fa45a9779fc4f66669b13126b609909385d36e7e636bd910",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "7f6d99d7efbdf75837f1c111babd9512a9d1be03"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/app/scan_git_history_candidates.py",
+      "bytes": 16543,
+      "sha256": "7d4ea8da0ac2f423663091b93350af041aa5d1511bbbcf30f27dc8617540e600",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "8c944f84e72e9c4ac446ff407d26da92eb3d1bff"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/app/test_canonical_candidate_scanner.py",
+      "bytes": 1766,
+      "sha256": "f7490986bf0dadfecc5c5925a67266a95f054c52d99318f64fc05fd64afe2473",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "79d9cb35c9fe6e7ccc710dbd80552de37d862686"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/math-2140-actions-scan.json",
+      "bytes": 254,
+      "sha256": "a2842aa8c5f676412c0b59ee55175ae3c99bf55d116f7203cb52d9dbebf00cd7",
+      "target": null,
+      "text_needles": [],
+      "name_hint": true,
+      "git_oid": "0278f9505121f1ea786d249698bd6ac781f00df5"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/math-2140-fast-actions-scan.json",
+      "bytes": 187,
+      "sha256": "6219fd16565f184ea71859c3b177eedb28556d8b9ec042c8cd21a4acb9bcf63f",
+      "target": null,
+      "text_needles": [],
+      "name_hint": true,
+      "git_oid": "38d8fcc68ba3d75217851c5405ca30bde0701146"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/math-2140-fast-git-path-hits.json",
+      "bytes": 449,
+      "sha256": "c893c33a4590ebb4fac5f7ee10bebb4ee1f4a00b566ddcd9c20cb471a61e8d57",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": true,
+      "git_oid": "08eb31b24f789e725ff0444740888d7f78adc057"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/math-2140-git-path-hits.json",
+      "bytes": 460,
+      "sha256": "721c741a244dbc0f8fa368c3ec9e51321aa62e237f386f2887fab947b6ddd820",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": true,
+      "git_oid": "956f0ed2729c87330244cd752e963ff10f2aa42c"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/source-forensics-diagnostic-latest.json",
+      "bytes": 2480,
+      "sha256": "1245e925a74296b5749e453bde902cdc4a76c239ac4e2a318ad6f619d71978a6",
+      "target": null,
+      "text_needles": [
+        "25winpasst1suhy000417"
+      ],
+      "name_hint": false,
+      "git_oid": "df897f2563cb0389151879d7053cd781958836f3"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/source-recovery-latest.json",
+      "bytes": 2520,
+      "sha256": "7f025058feab11f7aeb513d6f0da8ed0f93e8c198c61fe21251f3e6d018dbac8",
+      "target": null,
+      "text_needles": [
+        "25winpasst1suhy000521",
+        "25winpasst1suhy000522"
+      ],
+      "name_hint": false,
+      "git_oid": "12c9efd58f48fb7181d7b377386a8786db650769"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/app/scan_actions_logs_recovery.py",
+      "bytes": 14446,
+      "sha256": "8280fbd637ff0348e423430d3c71263d21f642f10a654b01045fb2c6e7855fa8",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "eef85077ec422d8976c1bc4c252c714235959c63"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/actions-log-recovery-latest.json",
+      "bytes": 7257879,
+      "sha256": "705aeb9a7878d82f64d7b740cee8fd1a918188ea0c8866c0f9c34a70f70baa10",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "316c41c8addb8a64a070826b107156bdcb853d18"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/app/scan_actions_logs_recovery.py",
+      "bytes": 13074,
+      "sha256": "c5cd236a622a43f1fa716703fb75ef9117f95a87583a32fe11142f029b65b16d",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "4874bb111c88eb62708d3263b0be71964e26ef0d"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/actions-log-recovery-latest.json",
+      "bytes": 1515692,
+      "sha256": "ba5878d36d13cdf3a600e18a1c4fbe33f790b9c4c16efc448d2c0c4300ea5108",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "fbde2f33712c2e309392c3d0191560c883bad363"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/app/scan_actions_logs_recovery.py",
+      "bytes": 12767,
+      "sha256": "b28a33a1c10b9468d29a5ce86244e633234c7e588b82c4293db609657285a152",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "7a90d734c1423c86424dfd6eea36eeb1964d7e56"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/actions-log-recovery-latest.json",
+      "bytes": 392805,
+      "sha256": "2a452e2c8f7327ad0b405b8c692b7b1afb2e0785f5d075cdc86d0fb25759e4a1",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "92288589d0b7beb9391c0cda97015b14722d5b6e"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/app/scan_actions_logs_recovery.py",
+      "bytes": 11854,
+      "sha256": "7d83e403cf16b01f50a2aa3a0efa7791d27f642812269874c00144b4a6184907",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "a25b201708f66fb261788b417a70cda4fa320b17"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/app/scan_git_history_candidates.py",
+      "bytes": 15586,
+      "sha256": "d22d069e2f5ef67b86432f934b9a7afe951a7656c166c1cc57812e40863b4ec6",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "3be62c70c94473a0dcb913eca5a90adb0b4f4f68"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/app/scan_actions_artifacts.py",
+      "bytes": 10862,
+      "sha256": "ed873c5142348f6c2c55a51e5737be2ec63775bf55276217d5e5b15735bc13d1",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "5110a7454dd471709e5bbd75eaca8452e100124e"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/app/scan_git_history_candidates.py",
+      "bytes": 13072,
+      "sha256": "22031bf8b94ffe97cb36428fcaac8d6ba221e7a538db52af4f34f41187a1682a",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "f73872d403a55808fbe983350ca748f496b22968"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/checkpoint.json",
+      "bytes": 5011,
+      "sha256": "8e1a7122992d717e03d270538d2018559b468a5d106f2bbffcd2cf5f6506fada",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "1ab617246f8907ffacfb8e275a5374591d9fe9e0"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/checkpoint.json",
+      "bytes": 8123,
+      "sha256": "c666d024a5b7b815e9b5b93d061b119e57a1bd065c301f1068ebcce7940fc654",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "ab74e1a751c85351885d76a07551ab8a48b6d50b"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/checkpoint.json",
+      "bytes": 8697,
+      "sha256": "4c99a55e5f6335de3b11cb2f4ce6b4f4d1d3d193ef2a9bde76ee7c2de67752e6",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "19d04c7566d416193fb7201a1c40465dc3c81d84"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/app/scan_git_history_candidates.py",
+      "bytes": 12906,
+      "sha256": "90141d9c0b0c23ccb06e027f1ea5b81e6680df66e09f27958fb08554d874d835",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "28f6c322c1f9d02071a498dba8ba6ae7022c56f7"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/app/scan_git_history_candidates.py",
+      "bytes": 9025,
+      "sha256": "cbabb4d3ffafc77ca41521a2d135c20206d67559838016d7ab9cc4946df327c8",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "6c0b534a20485d2ee01f4d77109bf573d5f8aa84"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/app/scan_git_history_candidates.py",
+      "bytes": 9031,
+      "sha256": "1e5c9195390262b5d64cb7c9a9a27f4959fee01d3b0466b4d1b1185765ebfb6e",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "85e65bb061ebf465cf15697872ef46c542fe93d6"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/checkpoint.json",
+      "bytes": 6376,
+      "sha256": "38d042b79981cfe07c3dd6a2c66a6b79ea2eaea2d5213f19ca7a744110d2d94a",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "6d49e46fcf80c4ce7c176597f208b4fea5049a6b"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/app/scan_actions_artifacts.py",
+      "bytes": 8068,
+      "sha256": "a9843707913e9f7b27487b594568801624e2ae96e4b64c559f23dcfd6f00d122",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "a64a345f9d0b6682638ac8d4eaf8d26800f68b88"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/checkpoint.json",
+      "bytes": 5998,
+      "sha256": "7aa5a632f41a394e7d6a43d981b7acaec3aa1e9f32113d7532cb2d74c136a3e1",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "42e94eecf00b29dab87127c10741e6f1b294aabd"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/checkpoint.json",
+      "bytes": 5392,
+      "sha256": "a33c47b3ee9467cc322c4297a4703ce548181267665bab4c5d8f1e2eba79f845",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "4168780ccd8a11b7be93d75b91904b6722db4051"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/app/scan_actions_artifacts.py",
+      "bytes": 6380,
+      "sha256": "77c7b4cd9e60bf5373249f71f4ab4b8f2e477ad6c14bd11e2d518c69656d4a95",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "2148befdcb8671f92177db56aaf5d5ba4e8ddebb"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/checkpoint.json",
+      "bytes": 5428,
+      "sha256": "04b6c5f1420a52f34094546402920c34b680f91f5f65736bf6cdab0ed0c6ba20",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "425a97b461ac14c127b3426d9e406a93c533e4a6"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/checkpoint.json",
+      "bytes": 5320,
+      "sha256": "ea1b0380342e991c89ff9ea3a47dee990fbed679dd62cc52f2a05e84217003d3",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "758dd9d4feb03c17550f90fc07d77c211845a0a1"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/checkpoint.json",
+      "bytes": 5132,
+      "sha256": "359bf53ad0ed409a929827e65268d462542f01c4c4c226117a1d3abd08cbf29f",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "6bcdb9ce08a4a6c8ba9e37c4752985b36d566d9f"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/source-recovery-latest.json",
+      "bytes": 2333,
+      "sha256": "8ff3d31b6448b0cc7db42d1d8f2072ac4e05013dcdd81fb542abd0e1a3eaa80f",
+      "target": null,
+      "text_needles": [
+        "25winpasst1suhy000521",
+        "25winpasst1suhy000522"
+      ],
+      "name_hint": false,
+      "git_oid": "9ff0ea4c8c67acf25a9f3e2a6cdddc326b7c57af"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/checkpoint.json",
+      "bytes": 5928,
+      "sha256": "014fdc8f477f3004abea6817240a8c3de339ed5d94e7bef592eb2bd43a6c7027",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "4fb0f846d7a08a9d9fe85ca5758866e02e22ada5"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/checkpoint.json",
+      "bytes": 6213,
+      "sha256": "06f354a4a3075d18db5755de88d6d506fb673be7ffe6806b2460eae9f93149be",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "7f5772ae1b6d6f36ebdc07641a64b3834a6380d3"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/checkpoint.json",
+      "bytes": 7261,
+      "sha256": "6217d3a79a07de841d8714890bda84539a14b39498c303af277a0e0232d8357d",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "4cbd90f04ca666e426d1a89dc59f3d742aa6c4f2"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/checkpoint.json",
+      "bytes": 7182,
+      "sha256": "a0dabb1133f037a9c686e9134d56fb9fd3f04d3f65fdcbcee9a92a801566a611",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "e37c982710ce2585e55c5ec73f96c2b29fe4d8e4"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/checkpoint.json",
+      "bytes": 9355,
+      "sha256": "00491f77bfe2db0e241ee60560d8d7785b03beb07566d29dbda0fe504fcb16de",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "c61d6ce2d7e9d7efd191f71404f9062c67fbd179"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/checkpoint.json",
+      "bytes": 8701,
+      "sha256": "981a3a36274c1b5400260683974cdd1e67660530b1504a160865784e773a6edc",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "468ef3b0d6e1d8bc66f14359c12bfdc77c20e6a7"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/checkpoint.json",
+      "bytes": 6485,
+      "sha256": "16f6ef38488ec04123983d9209262b5b307c6a8a9689609c53cd20bc1b983f9d",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "b819abdd9fba50e56c7e236351aa37b742213a21"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/checkpoint.json",
+      "bytes": 6246,
+      "sha256": "e52526bb1b91f0d258b332dd38533cdc0bbbf15bc11399b6d0acd04474be7667",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "6f2d828f9d9552106cb31761a93eeebba216991b"
+    },
+    {
+      "source": "git",
+      "name": "math-bank/state/checkpoint.json",
+      "bytes": 5601,
+      "sha256": "6d5845ae522a8db89ef00e662c0a4a86e5ceab6a64eff96ef30ebc4250815f3d",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false,
+      "git_oid": "7be9ac7fd34f52dcba391326db7287407ab3bd9f"
+    },
+    {
+      "source": "actions",
+      "name": "artifact:9405793959:math-2140-checkpoint-recovery-evidence!/math-2140-git-path-hits.json",
+      "bytes": 460,
+      "sha256": "721c741a244dbc0f8fa368c3ec9e51321aa62e237f386f2887fab947b6ddd820",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": true
+    },
+    {
+      "source": "actions",
+      "name": "artifact:9405793959:math-2140-checkpoint-recovery-evidence!/math-2140-actions-scan.json",
+      "bytes": 254,
+      "sha256": "a2842aa8c5f676412c0b59ee55175ae3c99bf55d116f7203cb52d9dbebf00cd7",
+      "target": null,
+      "text_needles": [],
+      "name_hint": true
+    },
+    {
+      "source": "actions",
+      "name": "artifact:9405837730:math-2140-checkpoint-fast-recovery-evidence!/math-2140-fast-git-path-hits.json",
+      "bytes": 449,
+      "sha256": "c893c33a4590ebb4fac5f7ee10bebb4ee1f4a00b566ddcd9c20cb471a61e8d57",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": true
+    },
+    {
+      "source": "actions",
+      "name": "artifact:9405837730:math-2140-checkpoint-fast-recovery-evidence!/math-2140-fast-actions-scan.json",
+      "bytes": 187,
+      "sha256": "6219fd16565f184ea71859c3b177eedb28556d8b9ec042c8cd21a4acb9bcf63f",
+      "target": null,
+      "text_needles": [],
+      "name_hint": true
+    },
+    {
+      "source": "actions",
+      "name": "artifact:9431520724:math-actions-log-recovery-diagnostics!/state/actions-log-recovery-latest.json",
+      "bytes": 392805,
+      "sha256": "2a452e2c8f7327ad0b405b8c692b7b1afb2e0785f5d075cdc86d0fb25759e4a1",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false
+    },
+    {
+      "source": "actions",
+      "name": "artifact:9431571337:math-actions-log-recovery-diagnostics!/state/actions-log-recovery-latest.json",
+      "bytes": 1515692,
+      "sha256": "ba5878d36d13cdf3a600e18a1c4fbe33f790b9c4c16efc448d2c0c4300ea5108",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false
+    },
+    {
+      "source": "actions",
+      "name": "artifact:9431607285:math-actions-log-recovery-diagnostics!/state/actions-log-recovery-latest.json",
+      "bytes": 7257879,
+      "sha256": "705aeb9a7878d82f64d7b740cee8fd1a918188ea0c8866c0f9c34a70f70baa10",
+      "target": null,
+      "text_needles": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "name_hint": false
+    }
+  ],
+  "recovered_exact_targets": [],
+  "completed_at_utc": "2026-08-24T12:07:43.659252+00:00",
+  "policy": "Recover previously generated math data before recomputing it. Exact SHA-256 matches are recoverable evidence. Text/name hits are forensic clues only and are never promoted without validation. An incomplete Actions scan is UNKNOWN, never absence evidence."
+}
