@@ -10,6 +10,8 @@ on:
       - 'math-bank/scripts/test_verify_source_archives.py'
       - 'math-bank/scripts/profile_source_archives.py'
       - 'math-bank/scripts/test_profile_source_archives.py'
+      - 'math-bank/scripts/audit_winpass_normalization.py'
+      - 'math-bank/scripts/test_audit_winpass_normalization.py'
       - '.github/workflows/math-source-rebuild-contract.yml'
 
 permissions:
@@ -36,13 +38,18 @@ jobs:
             math-bank/scripts/verify_source_archives.py \
             math-bank/scripts/test_verify_source_archives.py \
             math-bank/scripts/profile_source_archives.py \
-            math-bank/scripts/test_profile_source_archives.py
+            math-bank/scripts/test_profile_source_archives.py \
+            math-bank/scripts/audit_winpass_normalization.py \
+            math-bank/scripts/test_audit_winpass_normalization.py
 
       - name: Run exact source identity rebuild gate tests
         run: python math-bank/scripts/test_verify_source_archives.py
 
       - name: Run source structure profile tests
         run: python math-bank/scripts/test_profile_source_archives.py
+
+      - name: Run evidence-bound Winpass normalization tests
+        run: python math-bank/scripts/test_audit_winpass_normalization.py
 
       - name: Confirm real source rebuild stays fail-closed until exact source ZIPs are available in runner
         shell: bash
@@ -70,9 +77,8 @@ jobs:
               expected_profile=0 if profile.get('ready_for_record_extraction') else 3
               if profile_rc != expected_profile:
                   raise SystemExit(f'FAIL source profile rc={profile_rc}, expected {expected_profile}')
-          else:
-              if profile_rc != 3:
-                  raise SystemExit(f'FAIL absent/nonexact source profile must block with rc=3, got {profile_rc}')
+          elif profile_rc != 3:
+              raise SystemExit(f'FAIL absent/nonexact source profile must block with rc=3, got {profile_rc}')
           print('PASS_SOURCE_REBUILD_INPUT_FAIL_CLOSED_AND_FULL_REAUDIT_REQUIRED')
           PY
 
@@ -103,13 +109,16 @@ jobs:
             'raw_1271_direct_promotion_forbidden': True,
             'historical_canonical_byte_claim_without_old_zip_forbidden': True,
             'source_reconstruction_allowed_after_full_reaudit': True,
+            'winpass_717_decision_coverage_required': True,
+            'winpass_exclusion_evidence_required': True,
+            'winpass_count_forcing_forbidden': True,
             'required_rebuild_targets': {
               'documents': 140,
               'raw': {'Winpass':717,'実力錬成':237,'Standard':317},
               'validated_originals': {'Winpass':570,'実力錬成':237,'Standard':317,'total':1124},
             },
             'real_source_archives_committed': real_sources,
-            'next_if_sources_available': 'identity -> 140-doc profile -> raw 717/237/317 -> evidence-based Winpass normalization -> full 1124 validation',
+            'next_if_sources_available': 'identity -> 140-doc profile -> raw 717/237/317 -> evidence decisions for every Winpass record -> full 1124 validation',
             'recorded_at_utc': datetime.now(timezone.utc).isoformat(),
           }
           Path('math-bank/state/source-rebuild-contract-latest.json').write_text(
