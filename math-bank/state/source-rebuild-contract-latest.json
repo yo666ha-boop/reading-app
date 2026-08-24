@@ -2,12 +2,16 @@
   "workflow": "Math Source Rebuild Contract",
   "status": "PASS_CI",
   "mode": "AUDITED_RECONSTRUCTION_FROM_EXACT_SOURCE_INPUTS",
-  "run_id": "32721561605",
-  "triggering_sha": "08c220baf4824aa46d40d76dae24c35c883f0da8",
-  "tested_head_after_rebase": "c90946efafd72d797ba19079b9e2b04b1ee34461",
+  "run_id": "32724765581",
+  "triggering_sha": "7f9f51fa599ec99cff96ce2fb67640526205a3be",
+  "tested_head_after_rebase": "7f9f51fa599ec99cff96ce2fb67640526205a3be",
   "renamed_copy_suffix_supported": true,
   "exact_historical_source_sha_required": true,
   "member_sha256_manifest_required_before_extraction": true,
+  "recursive_schema_path_profile_required_before_extractor": true,
+  "raw_record_count_qa_fingerprint_gate_required": true,
+  "raw_figure_resolution_gate_required": true,
+  "winpass_fingerprint_bound_review_queue_required": true,
   "hash_mismatch_fail_closed": true,
   "raw_1271_direct_promotion_forbidden": true,
   "historical_canonical_byte_claim_without_old_zip_forbidden": true,
@@ -30,6 +34,6 @@
     }
   },
   "real_source_archives_committed": false,
-  "next_if_sources_available": "identity -> exact member SHA manifest -> 140-doc profile -> raw 717/237/317 -> evidence decisions for every Winpass record -> full 1124 validation",
-  "recorded_at_utc": "2026-08-24T11:33:00.744140+00:00"
+  "next_if_sources_available": "identity -> member SHA manifest -> 140-doc profile -> recursive schema paths -> raw 717/237/317 -> raw QA/figure/fingerprint gate -> Winpass fingerprint review queue -> evidence decisions for all 717 -> full 1124 validation",
+  "recorded_at_utc": "2026-08-24T12:00:25.692366+00:00"
 }
