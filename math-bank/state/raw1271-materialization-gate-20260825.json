@@ -8,9 +8,15 @@
   "required_question_provenance": "1271/1271 exact content + ordered OOXML offsets",
   "required_answer_provenance": "1271/1271 exact content + ordered OOXML offsets, or graphical answer asset identity",
   "required_figure_revalidation": {"figure_refs": 41, "missing_figure_refs": 0},
-  "fingerprint_binding": "source identity + raw slot identity + score evidence + exact question/answer + offsets + figure refs",
+  "fingerprint_binding": "source identity + raw slot identity + score evidence + exact question/answer + offsets + figure refs + graphical answer asset identity when present",
   "placeholder_policy": "Non-empty placeholder text is insufficient and fails without provenance.",
-  "actual_qa_binding_complete": 0,
-  "actual_qa_binding_pending": 1271,
-  "note": "Structural identities exist for all 1271 slots, but exact Q/A/figure binding still requires the live source-byte runtime. This state does not claim materialization completion."
+  "recovered_local_qa_drafts": {"Standard": 317, "実力錬成": 237, "Winpass": 0, "total": 554},
+  "strict_persisted_actual": {"Standard": 3, "実力錬成": 0, "Winpass": 0, "total": 3},
+  "strict_persisted_proof": "math-bank/recovered/current-session/standard-strict-proof-first3-20260825.jsonl",
+  "actual_qa_binding_complete": 3,
+  "actual_qa_binding_pending": 1268,
+  "graphical_answer_asset_fingerprint_binding_hardened": true,
+  "strict_promotion_tool": "math-bank/scripts/promote_recovered_qa_drafts.py",
+  "strict_promotion_tests": "math-bank/scripts/test_promote_recovered_qa_drafts.py",
+  "note": "The recovered 554 Q/A drafts are durable as counts/hashes only, not as strict records. Three Standard records are persisted with strict provenance. Promotion of the remaining recovered drafts requires the exact draft bytes plus strict source evidence; no count-only promotion is allowed."
 }
