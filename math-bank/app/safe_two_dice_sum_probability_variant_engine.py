@@ -5,6 +5,7 @@ import hashlib
 import json
 import re
 from fractions import Fraction
+from safe_two_dice_difference_probability_variant_engine import generate as generate_difference_probability
 from safe_two_dice_product_probability_variant_engine import generate as generate_product_probability
 
 DICE_RE = re.compile(r"(?:2|二)\s*(?:個|つ)\s*の?\s*(?:サイコロ|さいころ)")
@@ -44,6 +45,8 @@ def _parse_parent(parent: dict):
     return {"question": q,"sum_match": sum_matches[0],"target_sum": target_sum,"favorable": favorable,"expected": expected}
 
 def can_generate(parent: dict) -> tuple[bool, str]:
+    rows,_,reason=generate_difference_probability(parent,1)
+    if rows:return True,reason
     rows,_,reason=generate_product_probability(parent,1)
     if rows:return True,reason
     if _parse_parent(parent) is not None:return True, "two_fair_dice_sum_exact_36_outcomes"
@@ -53,6 +56,8 @@ def can_generate(parent: dict) -> tuple[bool, str]:
 
 def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     if count not in (1, 2, 3):raise ValueError("count must be 1, 2, or 3")
+    rows,evidence,reason=generate_difference_probability(parent,count)
+    if rows:return rows,evidence,reason
     rows,evidence,reason=generate_product_probability(parent,count)
     if rows:return rows,evidence,reason
     parsed = _parse_parent(parent)
