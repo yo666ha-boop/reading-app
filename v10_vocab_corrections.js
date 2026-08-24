@@ -23,8 +23,85 @@ window.V10_VOCAB_CORRECTIONS = [
     textbook:'ニューホライズン',grade:'1',section:'Unit 1-3',english:'lessons',japanese:'レッスン',
     basis:'Unit 1 Part 3 textbook booklet explicitly lists lesson(s) and uses I take swimming lessons.',
     rule:'explicit textbook form; not automatic plural inflection'
+  },
+  {
+    textbook:'サンシャイン',grade:'1',section:'Get Ready 4',english:'play',japanese:'~をする',
+    basis:'v7 master SS1 pre-step record 2146: プレステップ4 だれが何をどうする / play / ~をする.',
+    rule:'v7-confirmed cumulative vocabulary; repair allowedWords metadata omission, not an unknown-word note'
   }
 ];
+
+// Apply only corrections backed by an explicit source record. This updates the
+// reviewed allowedWords metadata; it never silently rewrites passage English.
+(function installV10VocabularyCorrectionApplier(){
+  function pools(){
+    return [
+      window.V10_SUNSHINE_G1,window.V10_NEWHORIZON_G1,
+      window.V10_PASSAGES_G2_SS,window.V10_PASSAGES_G2_NH,
+      window.V10_PASSAGES_G3_SS,window.V10_PASSAGES_G3_NH
+    ].filter(Boolean);
+  }
+  function hasToken(rows,word){
+    const re=new RegExp('(^|[^A-Za-z])'+String(word).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'([^A-Za-z]|$)','i');
+    return (rows||[]).some(r=>re.test(Array.isArray(r)?String(r[0]||''):String(r||'')));
+  }
+  function apply(){
+    let applied=0;
+    for(const c of (window.V10_VOCAB_CORRECTIONS||[])){
+      for(const pool of pools())for(const m of Object.values(pool||{})){
+        if(!m||String(m.textbook)!==String(c.textbook)||String(m.grade)!==String(c.grade)||String(m.section)!==String(c.section))continue;
+        m.allowedWords=Array.isArray(m.allowedWords)?m.allowedWords:[];
+        if(!hasToken(m.allowedWords,c.english)){
+          m.allowedWords.push([c.english,`v7 correction: ${c.basis}`]);
+          applied++;
+        }
+      }
+    }
+    window.V10_VOCAB_CORRECTIONS_APPLIED=applied;
+  }
+  let tries=0;
+  const timer=setInterval(()=>{
+    tries++;
+    if(window.V10_RUNTIME_LOAD_PROGRESS==='complete'||tries>=120){clearInterval(timer);apply();}
+  },250);
+  window.addEventListener('load',()=>setTimeout(apply,0),{once:true});
+})();
+
+// Restore the indispensable unknown-word note/gloss UI. A passage with no
+// reviewed `notes` stays visually unchanged. Notes are rendered from data only;
+// this layer never invents a Japanese meaning.
+(function installV10GlossRenderer(){
+  if(typeof document==='undefined')return;
+  const esc=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  function pools(){
+    return [window.V10_SUNSHINE_G1,window.V10_NEWHORIZON_G1,window.V10_PASSAGES_G2_SS,window.V10_PASSAGES_G2_NH,window.V10_PASSAGES_G3_SS,window.V10_PASSAGES_G3_NH].filter(Boolean);
+  }
+  function byId(id){for(const pool of pools())for(const m of Object.values(pool||{}))if(m&&m.id===id)return m;return null;}
+  function ensureStyle(){
+    if(document.getElementById('v10-gloss-style'))return;
+    const style=document.createElement('style');style.id='v10-gloss-style';
+    style.textContent=`.v10-gloss-box{margin:14px 0;padding:12px 14px;border:1px solid #dbe4ee;border-radius:12px;background:#f8fafc}.v10-gloss-title{font-weight:800;margin-bottom:6px}.v10-gloss-list{display:flex;flex-wrap:wrap;gap:6px 14px;line-height:1.8}.v10-gloss-item{overflow-wrap:anywhere;word-break:break-word}.v10-gloss-en{font-weight:800}@media print{.v10-gloss-box{break-inside:avoid;page-break-inside:avoid}}`;
+    document.head.appendChild(style);
+  }
+  function render(){
+    const host=document.getElementById('passage');if(!host)return;
+    const old=host.querySelector('.v10-gloss-box');if(old)old.remove();
+    const meta=host.querySelector('.meta');if(!meta)return;
+    const id=(meta.textContent||'').split('/')[0].trim();const m=byId(id);if(!m)return;
+    const notes=(Array.isArray(m.notes)?m.notes:[]).filter(n=>n&&String(n.english||'').trim()&&String(n.japanese||'').trim());
+    if(!notes.length)return;
+    ensureStyle();
+    const box=document.createElement('div');box.className='v10-gloss-box';box.setAttribute('data-v10-gloss-count',String(notes.length));
+    box.innerHTML=`<div class="v10-gloss-title">注（未習語）</div><div class="v10-gloss-list">${notes.map(n=>`<span class="v10-gloss-item"><span class="v10-gloss-en">${esc(n.english)}</span>：${esc(n.japanese)}${n.reading?`（${esc(n.reading)}）`:''}</span>`).join('')}</div>`;
+    const en=host.querySelector('.en');if(en&&en.parentNode)en.insertAdjacentElement('afterend',box);else host.appendChild(box);
+  }
+  function start(){
+    const host=document.getElementById('passage');if(!host)return;
+    let queued=false;const obs=new MutationObserver(()=>{if(queued)return;queued=true;queueMicrotask(()=>{queued=false;render();});});
+    obs.observe(host,{childList:true,subtree:true});render();window.V10_GLOSS_RENDERER_INSTALLED=true;
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
+})();
 
 // Mobile layout hardening for the single-file stage2 shell. Some reviewed
 // evidence strings, long English tokens, and native select controls can
@@ -36,9 +113,9 @@ window.V10_VOCAB_CORRECTIONS = [
   style.id = 'v10-mobile-layout-guard';
   style.textContent = `
     html,body{width:100%;max-width:100%;min-width:0;overflow-x:hidden}
-    .wrap,.panel,.tabpage,.row,.field,.controlbar,.q,.slash,.evidence,.meta,.notice,.fail{max-width:100%;min-width:0}
+    .wrap,.panel,.tabpage,.row,.field,.controlbar,.q,.slash,.evidence,.meta,.notice,.fail,.v10-gloss-box{max-width:100%;min-width:0}
     .panel *{min-width:0}
-    .en,.slash,.q,.evidence,.meta,.notice,.fail,.muted,p,div,span,li,td,th,a{overflow-wrap:anywhere;word-break:break-word}
+    .en,.slash,.q,.evidence,.meta,.notice,.fail,.muted,.v10-gloss-box,p,div,span,li,td,th,a{overflow-wrap:anywhere;word-break:break-word}
     pre,code{max-width:100%;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word}
     table{max-width:100%;width:100%;table-layout:fixed}
     select,button,input,textarea{max-width:100%;min-width:0}
