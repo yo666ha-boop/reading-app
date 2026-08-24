@@ -1,0 +1,77 @@
+name: v10 vocab grammar notes audit
+
+on:
+  push:
+    branches: [v10-vocab-grammar-notes-audit]
+    paths:
+      - 'v10_vocab_notes_candidate_audit.js'
+      - 'v10_stage2.html'
+      - 'v10_data_*.js'
+      - 'v10_semantic_*.js'
+      - 'v10_interaction_metadata*.js'
+      - '.github/workflows/v10-vocab-grammar-notes-audit.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: v10-vocab-grammar-notes-audit-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  discovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install audit dependency
+        run: npm install --no-save --no-package-lock jsdom@24.1.3
+      - name: Run all-168 vocabulary candidate audit
+        run: node v10_vocab_notes_candidate_audit.js | tee v10_vocab_notes_candidate_audit.log
+      - name: Write compact status
+        shell: bash
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const r=JSON.parse(fs.readFileSync('v10_vocab_notes_candidate_report.json','utf8')).summary;
+          const lines=[
+            'phase=v7_lookup_and_grammar_chronology_pending',
+            `passages_audited=${r.passages}/168`,
+            `exact_allowed_occurrences=${r.counts.EXACT_ALLOWED}`,
+            `function_to_grammar_occurrences=${r.counts.FUNCTION_TO_GRAMMAR}`,
+            `morphology_to_grammar_occurrences=${r.counts.MORPHOLOGY_TO_GRAMMAR}`,
+            `proper_v7_lookup_occurrences=${r.counts.PROPER_V7_LOOKUP_REQUIRED}`,
+            `v7_lookup_occurrences=${r.counts.V7_LOOKUP_REQUIRED}`,
+            `notes_present=${r.notesPresent}`,
+            `missing_gloss=${r.missingGloss}`,
+            `missing_allowedWords=${r.missingAllowedWords}`,
+            'next=resolve every V7 lookup against the v7 master at exact section cutoff; build grammar chronology; then add only indispensable glossed notes'
+          ];
+          fs.writeFileSync('VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt',lines.join('\n')+'\n');
+          NODE
+          cat VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt
+      - name: Upload discovery evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: v10-vocab-notes-candidate-report
+          path: |
+            v10_vocab_notes_candidate_report.json
+            v10_vocab_notes_candidate_audit.log
+            VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt
+          if-no-files-found: error
+          retention-days: 30
+      - name: Persist report and checkpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add v10_vocab_notes_candidate_report.json v10_vocab_notes_candidate_audit.log VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record all-168 vocabulary candidate audit [skip ci]'
+            git push origin HEAD:v10-vocab-grammar-notes-audit
+          fi
