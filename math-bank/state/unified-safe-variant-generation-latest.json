@@ -1,17 +1,17 @@
 {
-  "status": "FAIL_CI_DIAGNOSTIC",
+  "status": "PASS_CI",
   "persist_schema_version": 69,
-  "run_id": "32715262747",
-  "triggering_sha": "f27504c0b19ca54537a93c9049dc7f82cddc25bf",
-  "tested_checkout_sha": "f27504c0b19ca54537a93c9049dc7f82cddc25bf",
+  "run_id": "32715276791",
+  "triggering_sha": "93032854ac93ec8ceab06ce088322c6468604e03",
+  "tested_checkout_sha": "93032854ac93ec8ceab06ce088322c6468604e03",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T10:08:56.627676+00:00",
+  "recorded_at_utc": "2026-08-24T10:09:27.577737+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "cancelled",
-    "core": "skipped",
-    "parent_contract": "skipped",
-    "legacy_empty_choices": "skipped"
+    "specialized_and_adapters": "success",
+    "core": "success",
+    "parent_contract": "success",
+    "legacy_empty_choices": "success"
   },
   "engine_test_discovery": "test_safe_*_variant_engine.py plus test_*_unified_adapter.py plus runtime reachability graph gate",
   "engine_modules_auto_discovered": [
@@ -319,6 +319,7 @@
     "test_inverse_proportion_constant_unified_adapter.py",
     "test_inverse_proportion_unified_adapter.py",
     "test_inverse_proportion_value_unified_adapter.py",
+    "test_inverse_proportion_x_from_y_unified_adapter.py",
     "test_lcm_unified_adapter.py",
     "test_linear_equation_both_sides_unified_adapter.py",
     "test_linear_equation_parentheses_unified_adapter.py",
@@ -392,7 +393,7 @@
     "test_two_dice_sum_probability_unified_adapter.py",
     "test_weighted_group_average_unified_adapter.py"
   ],
-  "adapter_test_count": 117,
+  "adapter_test_count": 118,
   "runtime_routes_auto_discovered": [
     "absolute_value",
     "affine",
