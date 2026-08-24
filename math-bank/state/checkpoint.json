@@ -56,8 +56,9 @@
     "previous_latest_validation": {"status": "PASS_CI", "run_id": "32729483035", "triggering_sha": "8045cee76773ca4d665a547f584309caeb9387d0", "tested_checkout_sha": "8045cee76773ca4d665a547f584309caeb9387d0"},
     "current_policy_commit": "6e685fbbc2cbe5b852976e8f203ad234bf2e24b3",
     "current_policy_change": "Removed legacy generated-layer-first recovery guidance; exact 3-source rebuild and full reaudit is primary, historical107 bodies reference-only.",
-    "current_commit_workflow_runs_seen": 0,
-    "ci_status_for_current_policy_commit": "NO_PR_TRIGGERED_RUN_RETURNED_BY_CONNECTOR_YET"
+    "current_commit_workflow_runs_seen": 1,
+    "ci_status_for_current_policy_commit": "PASS_CI",
+    "current_policy_validation": {"status": "PASS_CI", "run_id": "32730196071", "triggering_sha": "6e685fbbc2cbe5b852976e8f203ad234bf2e24b3", "overall_result": "success", "app_shell_and_data_gate": "success", "browser_regression": "success", "real_canonical_browser_regression": "blocked_expected", "publication_ready": false}
   },
   "rebuilt_parent_variant_app_bridge": {
     "latest_validation": {"status": "PASS_CI", "run_id": "32729389958", "triggering_sha": "0c1748b6a4cbcef91681148efd0d8e0894d0257f", "tested_checkout_sha": "0c1748b6a4cbcef91681148efd0d8e0894d0257f"},
@@ -70,7 +71,7 @@
   },
   "expanded_variant_goal": {"parent_target": 1124, "expanded_verified_variants": 0, "expanded_parent_coverage": 0, "manual_generation_queue": "FINGERPRINT_BOUND; MATERIALIZE_ONLY_AFTER_IMMUTABLE_MAPPED_REBUILT_ORIGINALS"},
   "expanded_generation_capability": {"latest_confirmed_validation": {"status": "PASS_CI", "schema": 69, "run_id": "32719871296", "triggering_sha": "e952a09a334c07674846e415f853e32e58ee1266", "compile": "success", "specialized_and_adapters": "success", "core": "success", "parent_contract": "success", "legacy_empty_choices": "success"}, "actual_real_variants_generated": 0, "parent_record_sha256_required": true},
-  "CI_browser_A4": {"latest_audit": {"run_id": "32729327103", "overall_result": "success", "triggering_sha": "935379cdcdfabccac0569a9d7ee5a49054238fa0"}, "real_rebuilt_browser": "BLOCKED_UNTIL_IMMUTABLE_REAL_1124_BASE", "real_A4_six_pdfs": "BLOCKED_UNTIL_IMMUTABLE_REAL_1124_BASE", "publication_ready": false},
+  "CI_browser_A4": {"latest_audit": {"run_id": "32730196071", "overall_result": "success", "triggering_sha": "6e685fbbc2cbe5b852976e8f203ad234bf2e24b3"}, "real_rebuilt_browser": "BLOCKED_UNTIL_IMMUTABLE_REAL_1124_BASE", "real_A4_six_pdfs": "BLOCKED_UNTIL_IMMUTABLE_REAL_1124_BASE", "publication_ready": false},
   "data_rebuild_progress": {
     "source_zip_bytes_read_this_run": false,
     "zip_identity_this_run": {"Winpass": null, "実力錬成": null, "Standard": null},
@@ -87,13 +88,13 @@
     "manual_queue": 0
   },
   "今回完了した内容": [
-    "live branch HEADを再確認し、開始時HEAD abc7600aa4a7fcb60f56079df5608d1f70cc34d6 を実読した。",
-    "checkpointを実読し、旧canonical exact-complete scansを再走査せず、3 source rebuildを主線として継続した。",
-    "File Libraryでスタンダードデータ/中学実力錬成データ/winpassデータを名称・数学・強いrecencyで検索したが3ZIP実体は返らなかったため、破損推定せずruntime未露出扱いを維持した。",
-    "verify_source_archives.pyを実読し、末尾nextに残っていた旧方針 recover prior generated layers first を発見した。",
-    "source verifier policyを修正し、historical107 bodiesは実体がない限りreference-only、3 source raw rebuild/full reaudit/immutable real parents/new safe generationを正規順序にした。",
-    "修正をbranch math-problem-bank-bootstrapへ commit 6e685fbbc2cbe5b852976e8f203ad234bf2e24b3 として保存した。",
-    "current policy commitに対するPR-triggered workflow runはconnector取得時点で0件。mainは未変更。"
+    "live branch HEADを再確認し、開始時HEAD 5e083e33361162f1b332b43d131b8e4785a73ebb を実読した。",
+    "checkpointを再読し、旧canonical exact-complete scansを再走査せず、3 source rebuildを主線として継続した。",
+    "File Libraryでスタンダードデータ(1).zip/中学実力錬成データ(1).zip/winpassデータ(1).zipを名称・数学・強いrecencyで検索したが、3ZIP実体は返らなかった。破損・SHA不一致とは推定せずruntime未露出扱い。",
+    "scripts treeを実読し、source member manifest、OOXML structure extraction、Winpass review/audit/materialize、rebuilt raw/original/mapping/freeze/revalidationの再構築chainがbranch上に存在することを再確認した。",
+    "前回policy commit 6e685fbbc2cbe5b852976e8f203ad234bf2e24b3 に対する Math Problem Bank Audit run 32730196071 が overall success で完走したことを確認した。",
+    "CIでは app_shell_and_data_gate/browser_regression/strict_release_after_browser/inventory_and_classify がsuccess。real canonical browserは実1124未再構築のためblocked_expected、publication_ready=falseで正しくfail-closed。",
+    "mainは未変更。"
   ],
   "現在どの工程にいるか": "3 source ZIP actual bytes visibility待ち。露出後は identity->member manifest/doc profile->raw717/237/317->Winpass evidence570->global1124->source-evidence app mapping->immutable freeze->manifest revalidation->new safe variants->app/browser/A4/publication の順で進める。",
   "残っている作業": [
@@ -104,12 +105,12 @@
     "実親1124からsafe generationで最低1問、独立再計算可能型最大3問を生成し、manual queueも個別処理。",
     "real Chromium/Firefox/WebKit iPhone/Chromium Fire、A4 6本、strict release、PUBLICATION_READY、isolated public verificationを連続実行。"
   ],
-  "正確停止点": "Policy commit 6e685fbbc2cbe5b852976e8f203ad234bf2e24b3 saved on math-problem-bank-bootstrap. File Library did not expose the three requested ZIP bytes in this run, so real originals remain 0/1124, variants0, coverage0/1124, browser/A4/publication blocked. main untouched.",
-  "次回どこから開始するか": "live HEAD/checkpoint/source-verifier/variant/unified/CIを再読->3 source ZIP byte visibilityを最優先再試行。見えれば旧canonical探索へ戻らず即実データ再構築chainへ進む。見えなければ3-source rebuild後段のfail-closed gateとrelease bindingのみ前進させる。",
+  "正確停止点": "Policy commit 6e685fbbc2cbe5b852976e8f203ad234bf2e24b3 is now CI-confirmed by run 32730196071. File Library still did not expose the three requested ZIP bytes in this run, so real originals remain 0/1124, variants0, coverage0/1124; real rebuilt browser/A4/publication remain correctly blocked. main untouched.",
+  "次回どこから開始するか": "live HEAD/checkpoint/ci-latest/source-verifier/variant/unifiedを再読->3 source ZIP byte visibilityを最優先再試行。見えれば旧canonical探索へ戻らず即identity/member manifest/extraction chainへ進む。見えなければ実1124なしで進められるfail-closed gate整合だけを前進させ、推測データは作らない。",
   "schedule_policy": "hourly schedule and next scheduled execution unchanged",
   "branch": "math-problem-bank-bootstrap",
-  "branch_head_observed_before_checkpoint": "6e685fbbc2cbe5b852976e8f203ad234bf2e24b3",
+  "branch_head_observed_before_checkpoint": "5e083e33361162f1b332b43d131b8e4785a73ebb",
   "main_touched": false,
-  "recorded_at_utc": "2026-08-24T13:00:00Z",
+  "recorded_at_utc": "2026-08-24T14:17:11Z",
   "resume_rule": "Use only actually read source bytes and exact evidence. Never count-force, never promote raw diagnostic data directly, never reconstruct historical107 bodies from counts, never map without source evidence, and never let stale decisions or stale CI states bind to changed records."
 }
