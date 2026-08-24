@@ -1,14 +1,14 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32688349768",
-  "triggering_sha": "e9789d482b82267cd06fa772febfedf54994c926",
-  "tested_checkout_sha": "e9789d482b82267cd06fa772febfedf54994c926",
+  "run_id": "32688400919",
+  "triggering_sha": "6bbd7c092bbc54567ce4fb7ac0edb9cf1790433a",
+  "tested_checkout_sha": "6bbd7c092bbc54567ce4fb7ac0edb9cf1790433a",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T04:00:10.660269+00:00",
+  "recorded_at_utc": "2026-08-24T04:00:31.772387+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
+    "specialized_and_adapters": "failure",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -129,10 +129,11 @@
     "triangle_exterior_angle",
     "triangle_height_from_area",
     "two_coin_heads_probability",
+    "two_dice_product_probability",
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 116,
+  "engine_module_count": 117,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_equation_from_two_points_variant_engine.py",
@@ -245,10 +246,11 @@
     "test_safe_triangle_exterior_angle_variant_engine.py",
     "test_safe_triangle_height_from_area_variant_engine.py",
     "test_safe_two_coin_heads_probability_variant_engine.py",
+    "test_safe_two_dice_product_probability_variant_engine.py",
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 113,
+  "engine_test_count": 114,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_affine_equation_from_two_points_unified_adapter.py",
