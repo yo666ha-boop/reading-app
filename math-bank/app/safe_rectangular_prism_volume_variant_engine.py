@@ -14,6 +14,10 @@ from safe_rectangular_prism_side_from_volume_variant_engine import (
     can_generate as can_generate_side_from_volume,
     generate as generate_side_from_volume,
 )
+from safe_rectangular_prism_side_from_surface_area_variant_engine import (
+    can_generate as can_generate_side_from_surface_area,
+    generate as generate_side_from_surface_area,
+)
 from safe_rectangular_prism_surface_area_variant_engine import (
     can_generate as can_generate_surface_area,
     generate as generate_surface_area,
@@ -21,12 +25,10 @@ from safe_rectangular_prism_surface_area_variant_engine import (
 
 DIMENSION_RE = re.compile(r"たて\s*(?P<length>\d+)\s*cm\s*[、, ]*よこ\s*(?P<width>\d+)\s*cm\s*[、, ]*高さ\s*(?P<height>\d+)\s*cm")
 ANSWER_RE = re.compile(r"^(?P<volume>\d+)\s*(?:cm\^?3|cm³|㎤)$")
-
 def _norm(value: object) -> str:
     return str(value or "").replace("　"," ").replace("ｃｍ","cm").replace("ＣＭ","cm").replace("立方センチメートル","cm³")
 def _parent_sha(parent: dict) -> str:
     return hashlib.sha256(json.dumps(parent,ensure_ascii=False,sort_keys=True,separators=(",",":")).encode("utf-8")).hexdigest()
-
 def _parse_parent(parent: dict):
     if parent.get("figure_refs") or parent.get("choices") is not None: return None
     q=_norm(parent.get("question"))
@@ -44,9 +46,10 @@ def _parse_parent(parent: dict):
     if volume%width or volume//width!=length*height: return None
     if volume%height or volume//height!=length*width: return None
     return m,length,width,height,volume
-
 def can_generate(parent: dict) -> tuple[bool,str]:
     ok,reason=can_generate_surface_area(parent)
+    if ok: return True,reason
+    ok,reason=can_generate_side_from_surface_area(parent)
     if ok: return True,reason
     ok,reason=can_generate_height_from_volume(parent)
     if ok: return True,reason
@@ -56,13 +59,13 @@ def can_generate(parent: dict) -> tuple[bool,str]:
     if parent.get("figure_refs"): return False,"figure_parent"
     if parent.get("choices") is not None: return False,"choice_parent"
     return False,"rectangular_prism_parent_not_exactly_parsed_and_verified"
-
 def _variant_numbers(seed:int,index:int)->tuple[int,int,int]:
     return (2+((seed>>(index*3))+index*5)%18,2+((seed>>(index*5+1))+index*7)%16,2+((seed>>(index*7+2))+index*3)%14)
-
 def generate(parent: dict,count:int)->tuple[list[dict],list[dict],str]:
     if count not in (1,2,3): raise ValueError("count must be 1, 2, or 3")
     rows,ev,reason=generate_surface_area(parent,count)
+    if rows: return rows,ev,reason
+    rows,ev,reason=generate_side_from_surface_area(parent,count)
     if rows: return rows,ev,reason
     rows,ev,reason=generate_height_from_volume(parent,count)
     if rows: return rows,ev,reason
