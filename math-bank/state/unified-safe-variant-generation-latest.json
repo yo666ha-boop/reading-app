@@ -1,17 +1,17 @@
 {
   "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32695233514",
-  "triggering_sha": "de9734c14e7da51715ded82dfd9d5fc83bc4726f",
-  "tested_checkout_sha": "de9734c14e7da51715ded82dfd9d5fc83bc4726f",
+  "run_id": "32695526340",
+  "triggering_sha": "5d7f20709579f76a73588e4faaaaa47a006b9946",
+  "tested_checkout_sha": "5d7f20709579f76a73588e4faaaaa47a006b9946",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T06:00:07.335677+00:00",
+  "recorded_at_utc": "2026-08-24T06:00:19.656070+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "cancelled",
-    "core": "skipped",
-    "parent_contract": "skipped",
-    "legacy_empty_choices": "skipped"
+    "specialized_and_adapters": "failure",
+    "core": "success",
+    "parent_contract": "success",
+    "legacy_empty_choices": "success"
   },
   "engine_test_discovery": "test_safe_*_variant_engine.py plus test_*_unified_adapter.py plus runtime reachability graph gate",
   "engine_modules_auto_discovered": [
@@ -69,6 +69,8 @@
     "midpoint_two_points",
     "mode",
     "monic_quadratic_factorization",
+    "nonmonic_binomial_expansion",
+    "nonmonic_quadratic_factorization",
     "parallelogram_area",
     "parallelogram_base_from_area",
     "parallelogram_height_from_area",
@@ -137,7 +139,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 121,
+  "engine_module_count": 123,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_equation_from_two_points_variant_engine.py",
@@ -193,6 +195,8 @@
     "test_safe_midpoint_two_points_variant_engine.py",
     "test_safe_mode_variant_engine.py",
     "test_safe_monic_quadratic_factorization_variant_engine.py",
+    "test_safe_nonmonic_binomial_expansion_variant_engine.py",
+    "test_safe_nonmonic_quadratic_factorization_variant_engine.py",
     "test_safe_parallelogram_base_from_area_variant_engine.py",
     "test_safe_parallelogram_height_from_area_variant_engine.py",
     "test_safe_percent_change_variant_engine.py",
@@ -258,7 +262,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 118,
+  "engine_test_count": 120,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_affine_equation_from_two_points_unified_adapter.py",
@@ -312,6 +316,8 @@
     "test_midpoint_two_points_unified_adapter.py",
     "test_mode_unified_adapter.py",
     "test_monic_quadratic_factorization_unified_adapter.py",
+    "test_nonmonic_binomial_expansion_unified_adapter.py",
+    "test_nonmonic_quadratic_factorization_unified_adapter.py",
     "test_parallelogram_base_from_area_unified_adapter.py",
     "test_parallelogram_height_from_area_unified_adapter.py",
     "test_percent_change_unified_adapter.py",
@@ -322,6 +328,7 @@
     "test_pythagorean_hypotenuse_unified_adapter.py",
     "test_pythagorean_leg_unified_adapter.py",
     "test_quadratic_integer_roots_unified_adapter.py",
+    "test_quadratic_nonmonic_integer_roots_unified_adapter.py",
     "test_quadratic_square_equation_unified_adapter.py",
     "test_ratio_simplification_unified_adapter.py",
     "test_rectangle_perimeter_unified_adapter.py",
@@ -370,7 +377,7 @@
     "test_two_dice_sum_probability_unified_adapter.py",
     "test_weighted_group_average_unified_adapter.py"
   ],
-  "adapter_test_count": 109,
+  "adapter_test_count": 112,
   "runtime_routes_auto_discovered": [
     "absolute_value",
     "affine",
