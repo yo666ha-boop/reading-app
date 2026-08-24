@@ -14,23 +14,17 @@
   "unified_safe_generation":{
     "last_confirmed_terminal_status":"PASS_CI",
     "last_confirmed_schema":66,
-    "last_confirmed_run_id":"32672600367",
-    "engine_module_count":84,
+    "last_confirmed_run_id":"32675351860",
+    "engine_module_count":86,
     "engine_modules_auto_discovered":true,
     "runtime_routes_bound_to_SPECIALIZED_ENGINES":true,
     "engine_tests_auto_discovered":true,
     "adapter_tests_auto_discovered":true,
     "new_this_run":[
-      "speed_from_distance_time exact inverse route retained",
-      "time_from_distance_speed exact inverse route retained",
-      "percent_from_amount_base exact inverse engine/test/unified adapter PASS",
-      "base_from_amount_percent exact inverse engine/test/unified adapter PASS",
-      "triangle_height_from_area exact inverse engine/test/unified adapter PASS",
-      "triangle_base_from_area exact inverse engine/test/unified adapter PASS",
-      "parallelogram_height_from_area exact inverse engine/test/unified adapter PASS",
-      "parallelogram_base_from_area exact inverse engine/test/unified adapter PASS",
-      "trapezoid_height_from_area exact inverse engine/test/unified adapter PASS",
-      "schema66 runtime route persistence now self-discovers SPECIALIZED_ENGINES instead of manual static bookkeeping"
+      "trapezoid_base_from_area exact inverse engine/test/wrapper/unified adapter added",
+      "legacy empty choices [] contract fixed for trapezoid base inverse after CI log diagnosis",
+      "rectangular_prism_side_from_volume exact inverse engine/test/wrapper/unified adapter added",
+      "all specialized engines/core/parent-contract/legacy-empty-choice gates returned PASS_CI after fixes"
     ],
     "actual_base_variants_generated":0,
     "minimum_per_parent_default":1,
@@ -39,16 +33,16 @@
     "strict_validator_promotion_gate":true
   },
   "base_recovery":{
-    "actions_latest_confirmed":{"all_artifacts_seen":417,"candidate_artifacts":387,"reused_verified_artifacts":387,"downloaded_artifacts_this_run":0,"members_sha256_checked":1052,"member_bytes_hashed":70154726,"download_failures":0,"canonical_hits":0,"valid_audit_hits":0,"pair_hits":0},
+    "actions_latest_confirmed":{"all_artifacts_seen":420,"candidate_artifacts":390,"reused_verified_artifacts":389,"downloaded_artifacts_this_run":1,"members_sha256_checked":1058,"download_failures":0,"canonical_hits":0,"valid_audit_hits":0,"pair_hits":0},
     "branch_tag_exact":{"readable_blobs":1901,"checked":1901,"shards_completed":16,"exact_coverage_complete":true,"pair_hits":0},
     "pr_refs_exact":{"refs":4,"readable_blobs":1419,"checked":1419,"shards_completed":16,"exact_coverage_complete":true,"pair_hits":0},
     "google_drive_exact_zip_hits":0,
     "google_drive_exact_audit_hits":0,
     "gmail_search_status":"NOT_COUNTED_AS_NEGATIVE_EVIDENCE_NONINTERACTIVE_AUTH_REQUIRED"
   },
-  "CI_browser_A4":{"latest_observed_audit_run_id":"32672338903","audit_result":"success","synthetic_browser":"PASS_FOUR_ENVIRONMENTS","real_canonical_browser":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT","real_A4_six_pdfs":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT","publication_ready":false},
+  "CI_browser_A4":{"latest_observed_audit_run_id":"32675279831","audit_result":"success","synthetic_browser":"PASS_FOUR_ENVIRONMENTS","real_canonical_browser":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT","real_A4_six_pdfs":"BLOCKED_EXPECTED_EXACT_BASE_ABSENT","publication_ready":false},
   "publication_ready":false,
   "branch":"math-problem-bank-bootstrap",
-  "recorded_at_utc":"2026-08-23T23:06:30Z",
-  "next":"Re-read live HEAD/checkpoint/unified/actions. Continue Actions delta after 417 artifacts/1052 members. Exact pair triggers immutable BASE wiring and 1124-parent generation; pair0 continues fail-closed safe engine expansion."
+  "recorded_at_utc":"2026-08-24T00:02:30Z",
+  "next":"Re-read live HEAD/checkpoint/unified/actions. Continue Actions delta after 420 artifacts/1058 members. Exact pair triggers immutable BASE wiring and 1124-parent generation; pair0 continues fail-closed safe engine expansion."
 }
