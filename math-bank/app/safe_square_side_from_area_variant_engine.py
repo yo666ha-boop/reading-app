@@ -26,8 +26,10 @@ def _parse_parent(parent: dict):
     q=_norm(parent.get("question"))
     if "正方形" not in q or "面積" not in q or not any(t in q for t in ("1辺", "一辺", "辺の長さ")):
         return None
-    blocked=("周の長さ","周りの長さ","まわりの長さ","対角線","図","mm","m²","平方メートル")
+    blocked=("周の長さ","周りの長さ","まわりの長さ","対角線","図","mm","平方メートル")
     if any(t in q for t in blocked):
+        return None
+    if re.search(r"(?<!c)m(?:²|\^2|2)", q, re.IGNORECASE):
         return None
     matches=list(AREA_RE.finditer(q))
     if len(matches)!=1:
