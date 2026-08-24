@@ -1,15 +1,15 @@
 {
   "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32678172202",
-  "triggering_sha": "3b2b188a2b31216a858f883633560d734b941e73",
-  "tested_checkout_sha": "3b2b188a2b31216a858f883633560d734b941e73",
+  "run_id": "32678241108",
+  "triggering_sha": "120a309ccf7c10008b58bd03116c1a953723f378",
+  "tested_checkout_sha": "120a309ccf7c10008b58bd03116c1a953723f378",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T00:57:05.968808+00:00",
+  "recorded_at_utc": "2026-08-24T00:57:25.269629+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "failure",
-    "core": "success",
+    "core": "failure",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
   },
@@ -55,6 +55,7 @@
     "inverse_proportion",
     "inverse_proportion_constant",
     "lcm",
+    "linear_equation",
     "median",
     "mode",
     "monic_quadratic_factorization",
@@ -112,7 +113,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 96,
+  "engine_module_count": 97,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_intercept_from_slope_point_variant_engine.py",
@@ -154,6 +155,7 @@
     "test_safe_inverse_proportion_constant_variant_engine.py",
     "test_safe_inverse_proportion_variant_engine.py",
     "test_safe_lcm_variant_engine.py",
+    "test_safe_linear_equation_variant_engine.py",
     "test_safe_median_variant_engine.py",
     "test_safe_mode_variant_engine.py",
     "test_safe_monic_quadratic_factorization_variant_engine.py",
@@ -208,7 +210,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 93,
+  "engine_test_count": 94,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_affine_intercept_from_slope_point_unified_adapter.py",
