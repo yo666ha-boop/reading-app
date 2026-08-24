@@ -24,6 +24,8 @@ on:
       - 'math-bank/scripts/test_apply_winpass_normalization.py'
       - 'math-bank/scripts/validate_rebuilt_originals.py'
       - 'math-bank/scripts/test_validate_rebuilt_originals.py'
+      - 'math-bank/scripts/freeze_rebuilt_originals.py'
+      - 'math-bank/scripts/test_freeze_rebuilt_originals.py'
       - '.github/workflows/math-source-rebuild-contract.yml'
 
 permissions:
@@ -62,7 +64,9 @@ jobs:
             math-bank/scripts/apply_winpass_normalization.py \
             math-bank/scripts/test_apply_winpass_normalization.py \
             math-bank/scripts/validate_rebuilt_originals.py \
-            math-bank/scripts/test_validate_rebuilt_originals.py
+            math-bank/scripts/test_validate_rebuilt_originals.py \
+            math-bank/scripts/freeze_rebuilt_originals.py \
+            math-bank/scripts/test_freeze_rebuilt_originals.py
       - name: Run exact source identity rebuild gate tests
         run: python math-bank/scripts/test_verify_source_archives.py
       - name: Run source structure profile tests
@@ -81,6 +85,8 @@ jobs:
         run: python math-bank/scripts/test_apply_winpass_normalization.py
       - name: Run strict rebuilt 1124 originals validation tests
         run: python math-bank/scripts/test_validate_rebuilt_originals.py
+      - name: Run immutable rebuilt originals freeze tests
+        run: python math-bank/scripts/test_freeze_rebuilt_originals.py
       - name: Confirm real source rebuild stays fail-closed until exact source ZIPs are available in runner
         shell: bash
         run: |
@@ -144,13 +150,15 @@ jobs:
             'winpass_fingerprint_bound_review_queue_required':True,'winpass_decision_exact_record_fingerprint_binding_required':True,
             'winpass_normalization_materialization_gate_required':True,'winpass_materialized_order_and_provenance_required':True,
             'rebuilt_1124_originals_global_validation_required':True,'rebuilt_1124_global_id_and_fingerprint_uniqueness_required':True,
-            'rebuilt_original_generated_variant_contamination_forbidden':True,'hash_mismatch_fail_closed':True,
-            'raw_1271_direct_promotion_forbidden':True,'historical_canonical_byte_claim_without_old_zip_forbidden':True,
-            'source_reconstruction_allowed_after_full_reaudit':True,'winpass_717_decision_coverage_required':True,
-            'winpass_exclusion_evidence_required':True,'winpass_count_forcing_forbidden':True,
+            'rebuilt_original_generated_variant_contamination_forbidden':True,
+            'immutable_rebuilt_originals_freeze_required':True,'immutable_rebuilt_originals_combined_sha_required':True,
+            'immutable_rebuilt_originals_record_fingerprint_sequence_required':True,
+            'hash_mismatch_fail_closed':True,'raw_1271_direct_promotion_forbidden':True,
+            'historical_canonical_byte_claim_without_old_zip_forbidden':True,'source_reconstruction_allowed_after_full_reaudit':True,
+            'winpass_717_decision_coverage_required':True,'winpass_exclusion_evidence_required':True,'winpass_count_forcing_forbidden':True,
             'required_rebuild_targets':{'documents':140,'raw':{'Winpass':717,'実力錬成':237,'Standard':317},'validated_originals':{'Winpass':570,'実力錬成':237,'Standard':317,'total':1124}},
             'real_source_archives_committed':real_sources,
-            'next_if_sources_available':'identity -> member SHA manifest -> 140-doc profile -> recursive schema paths -> raw 717/237/317 -> raw QA/figure/fingerprint gate -> Winpass fingerprint review queue -> exact-record-bound evidence decisions for all 717 -> audited 570 materialization with provenance -> global 1124 originals validation -> immutable rebuilt originals -> variants/app',
+            'next_if_sources_available':'identity -> member SHA manifest -> 140-doc profile -> recursive schema paths -> raw 717/237/317 -> raw QA/figure/fingerprint gate -> Winpass fingerprint review queue -> exact-record-bound evidence decisions for all 717 -> audited 570 materialization with provenance -> global 1124 originals validation -> immutable originals freeze with combined SHA/fingerprint sequence -> variants/app',
             'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
           }
           Path('math-bank/state/source-rebuild-contract-latest.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
