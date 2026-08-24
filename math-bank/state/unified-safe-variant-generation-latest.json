@@ -1,17 +1,17 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32719078289",
-  "triggering_sha": "176479018f10dc8f14c842e981dd5d72b3489c57",
-  "tested_checkout_sha": "176479018f10dc8f14c842e981dd5d72b3489c57",
+  "run_id": "32719139816",
+  "triggering_sha": "f8d1cccdc5b43fdd4fef2c0390e7a3c88ce13af3",
+  "tested_checkout_sha": "f8d1cccdc5b43fdd4fef2c0390e7a3c88ce13af3",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T10:54:29.389493+00:00",
+  "recorded_at_utc": "2026-08-24T10:55:01.277849+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
-    "core": "success",
-    "parent_contract": "success",
-    "legacy_empty_choices": "success"
+    "specialized_and_adapters": "cancelled",
+    "core": "skipped",
+    "parent_contract": "skipped",
+    "legacy_empty_choices": "skipped"
   },
   "engine_test_discovery": "test_safe_*_variant_engine.py plus test_*_unified_adapter.py plus runtime reachability graph gate",
   "engine_modules_auto_discovered": [
@@ -30,6 +30,7 @@
     "circle_diameter_from_circumference",
     "circle_radius_from_area",
     "circle_radius_from_circumference",
+    "circle_radius_from_diameter",
     "common_factor_quadratic",
     "cone_height_from_volume",
     "cone_radius_from_surface_area",
@@ -146,7 +147,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 130,
+  "engine_module_count": 131,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_equation_from_two_points_variant_engine.py",
