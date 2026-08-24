@@ -18,6 +18,8 @@ on:
       - 'math-bank/scripts/test_locate_recovered_qa_ooxml.py'
       - 'math-bank/scripts/compose_strict_qa_candidates.py'
       - 'math-bank/scripts/test_compose_strict_qa_candidates.py'
+      - 'math-bank/scripts/run_recovered_strict_batch.py'
+      - 'math-bank/scripts/test_run_recovered_strict_batch.py'
       - '.github/workflows/math-strict-qa-tooling.yml'
 
 permissions:
@@ -54,7 +56,8 @@ jobs:
             math-bank/scripts/reconcile_strict_qa_progress.py \
             math-bank/scripts/build_ooxml_asset_manifest.py \
             math-bank/scripts/locate_recovered_qa_ooxml.py \
-            math-bank/scripts/compose_strict_qa_candidates.py
+            math-bank/scripts/compose_strict_qa_candidates.py \
+            math-bank/scripts/run_recovered_strict_batch.py
 
       - name: Run strict materialization unit tests
         working-directory: math-bank/scripts
@@ -65,7 +68,8 @@ jobs:
             test_reconcile_strict_qa_progress.py \
             test_build_ooxml_asset_manifest.py \
             test_locate_recovered_qa_ooxml.py \
-            test_compose_strict_qa_candidates.py
+            test_compose_strict_qa_candidates.py \
+            test_run_recovered_strict_batch.py
 
       - name: Persist strict tooling CI result
         if: always()
@@ -103,6 +107,7 @@ jobs:
                   'test_build_ooxml_asset_manifest.py',
                   'test_locate_recovered_qa_ooxml.py',
                   'test_compose_strict_qa_candidates.py',
+                  'test_run_recovered_strict_batch.py',
               ],
           }
           path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
