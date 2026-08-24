@@ -1,0 +1,96 @@
+name: Math Rebuilt Parent Variant Bridge
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - 'math-bank/scripts/validate_rebuilt_originals.py'
+      - 'math-bank/scripts/test_validate_rebuilt_originals.py'
+      - 'math-bank/scripts/validate_rebuilt_app_mapping.py'
+      - 'math-bank/scripts/test_validate_rebuilt_app_mapping.py'
+      - 'math-bank/scripts/freeze_rebuilt_originals.py'
+      - 'math-bank/scripts/test_freeze_rebuilt_originals.py'
+      - 'math-bank/scripts/validate_frozen_rebuilt_originals.py'
+      - 'math-bank/scripts/test_validate_frozen_rebuilt_originals.py'
+      - 'math-bank/app/validate_rebuilt_expanded_variant_layer.py'
+      - 'math-bank/app/test_validate_rebuilt_expanded_variant_layer.py'
+      - 'math-bank/app/initialize_rebuilt_variant_layer.py'
+      - 'math-bank/app/generate_rebuilt_safe_verified_variants.py'
+      - 'math-bank/app/test_rebuilt_variant_runtime_bridge.py'
+      - '.github/workflows/math-rebuilt-parent-variant-bridge.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuilt-parent-variant-bridge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact triggering SHA
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile rebuilt parent bridge
+        run: |
+          python -m py_compile \
+            math-bank/scripts/validate_rebuilt_originals.py \
+            math-bank/scripts/test_validate_rebuilt_originals.py \
+            math-bank/scripts/validate_rebuilt_app_mapping.py \
+            math-bank/scripts/test_validate_rebuilt_app_mapping.py \
+            math-bank/scripts/freeze_rebuilt_originals.py \
+            math-bank/scripts/test_freeze_rebuilt_originals.py \
+            math-bank/scripts/validate_frozen_rebuilt_originals.py \
+            math-bank/scripts/test_validate_frozen_rebuilt_originals.py \
+            math-bank/app/validate_rebuilt_expanded_variant_layer.py \
+            math-bank/app/test_validate_rebuilt_expanded_variant_layer.py \
+            math-bank/app/initialize_rebuilt_variant_layer.py \
+            math-bank/app/generate_rebuilt_safe_verified_variants.py \
+            math-bank/app/test_rebuilt_variant_runtime_bridge.py
+      - name: Validate rebuilt original and mapping gates
+        run: |
+          python math-bank/scripts/test_validate_rebuilt_originals.py
+          python math-bank/scripts/test_validate_rebuilt_app_mapping.py
+      - name: Validate mapped immutable freeze and binding gates
+        run: |
+          python math-bank/scripts/test_freeze_rebuilt_originals.py
+          python math-bank/scripts/test_validate_frozen_rebuilt_originals.py
+      - name: Validate rebuilt dynamic-anchor variant layer
+        working-directory: math-bank/app
+        run: |
+          python test_validate_rebuilt_expanded_variant_layer.py
+          python test_rebuilt_variant_runtime_bridge.py
+      - name: Persist rebuilt bridge PASS
+        if: success()
+        env:
+          RUN_ID: ${{ github.run_id }}
+          TRIGGERING_SHA: ${{ github.sha }}
+        run: |
+          tested=$(git rev-parse HEAD)
+          if [ "$tested" != "$TRIGGERING_SHA" ]; then echo "FAIL tested SHA mismatch"; exit 20; fi
+          git fetch origin math-problem-bank-bootstrap
+          git checkout -B math-problem-bank-bootstrap origin/math-problem-bank-bootstrap
+          git pull --rebase origin math-problem-bank-bootstrap
+          mkdir -p math-bank/state
+          python - <<'PY'
+          import json,os
+          from datetime import datetime,timezone
+          from pathlib import Path
+          p={
+            'workflow':'Math Rebuilt Parent Variant Bridge','status':'PASS_CI','run_id':os.environ['RUN_ID'],
+            'triggering_sha':os.environ['TRIGGERING_SHA'],'tested_checkout_sha':os.environ['TRIGGERING_SHA'],'tested_checkout_equals_triggering_sha':True,
+            'rebuilt_original_target':1124,'mapping_evidence_required':True,'mapping_before_freeze_required':True,
+            'immutable_full_record_sha_binding_required':True,'dynamic_rebuilt_base_anchor_supported':True,
+            'old_1231_base_not_required_in_rebuilt_mode':True,'historical_107_variant_bodies_not_required':True,
+            'variant_parent_record_sha256_required':True,'recorded_at_utc':datetime.now(timezone.utc).isoformat()}
+          Path('math-bank/state/rebuilt-parent-variant-bridge-latest.json').write_text(json.dumps(p,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add math-bank/state/rebuilt-parent-variant-bridge-latest.json
+          if ! git diff --cached --quiet; then git commit -m 'record rebuilt parent variant bridge PASS [skip ci]'; git push origin HEAD:math-problem-bank-bootstrap; fi
