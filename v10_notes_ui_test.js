@@ -1,4 +1,5 @@
 const {JSDOM,VirtualConsole}=require('jsdom');
+// isolated runner trigger2: core audits execute before this bounded UI gate.
 function assert(c,m){if(!c)throw new Error(m)}
 async function waitFor(fn,ms=30000){const st=Date.now();while(Date.now()-st<ms){if(fn())return;await new Promise(r=>setTimeout(r,50));}throw new Error('timeout');}
 function change(w,el,v){el.value=v;el.dispatchEvent(new w.Event('change',{bubbles:true}));}
