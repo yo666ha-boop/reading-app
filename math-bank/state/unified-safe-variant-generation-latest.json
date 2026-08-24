@@ -1,14 +1,14 @@
 {
-  "status": "FAIL_CI_DIAGNOSTIC",
+  "status": "PASS_CI",
   "persist_schema_version": 69,
-  "run_id": "32679605908",
-  "triggering_sha": "d860a4da7e0fabc0923a461b586b2d86f763de08",
-  "tested_checkout_sha": "d860a4da7e0fabc0923a461b586b2d86f763de08",
+  "run_id": "32679624433",
+  "triggering_sha": "b9399e18158746ab0d721392cbeddb6287cc011a",
+  "tested_checkout_sha": "b9399e18158746ab0d721392cbeddb6287cc011a",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T01:23:25.093807+00:00",
+  "recorded_at_utc": "2026-08-24T01:23:55.133771+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "failure",
+    "specialized_and_adapters": "success",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -155,6 +155,7 @@
     "test_safe_difference_of_squares_factorization_variant_engine.py",
     "test_safe_direct_proportion_constant_variant_engine.py",
     "test_safe_discount_price_variant_engine.py",
+    "test_safe_distance_two_points_variant_engine.py",
     "test_safe_fraction_arithmetic_variant_engine.py",
     "test_safe_frequency_from_relative_frequency_variant_engine.py",
     "test_safe_gcd_variant_engine.py",
@@ -225,7 +226,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 101,
+  "engine_test_count": 102,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_affine_intercept_from_slope_point_unified_adapter.py",
