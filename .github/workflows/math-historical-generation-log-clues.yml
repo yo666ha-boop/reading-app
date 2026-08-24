@@ -1,0 +1,72 @@
+name: Math Historical Generation Log Clues
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - 'math-bank/app/scan_historical_math_generation_logs.py'
+      - '.github/workflows/math-historical-generation-log-clues.yml'
+
+concurrency:
+  group: math-historical-generation-log-clues
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout math branch
+        uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile targeted historical generation log scanner
+        run: python -m py_compile math-bank/app/scan_historical_math_generation_logs.py
+
+      - name: Scan Aug19-Aug20 math workflow logs for generation commands and filenames
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python math-bank/app/scan_historical_math_generation_logs.py
+
+      - name: Upload forensic log-clue report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-historical-generation-log-clues
+          path: math-bank/state/historical-generation-log-clues-latest.json
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Persist report race-safely
+        if: always()
+        shell: bash
+        run: |
+          cp math-bank/state/historical-generation-log-clues-latest.json /tmp/historical-generation-log-clues-latest.json 2>/dev/null || true
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin math-problem-bank-bootstrap
+          git reset --hard origin/math-problem-bank-bootstrap
+          mkdir -p math-bank/state
+          cp /tmp/historical-generation-log-clues-latest.json math-bank/state/historical-generation-log-clues-latest.json 2>/dev/null || true
+          git add math-bank/state/historical-generation-log-clues-latest.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'record historical math generation log clues'
+            for n in 1 2 3 4 5; do
+              if git push origin HEAD:math-problem-bank-bootstrap; then exit 0; fi
+              sleep $((n*3))
+              git pull --rebase origin math-problem-bank-bootstrap
+            done
+            exit 1
+          fi
