@@ -1,14 +1,14 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32685130620",
-  "triggering_sha": "6b5c8c907aeb67a136fa57a9eafb9d94a748e2b3",
-  "tested_checkout_sha": "6b5c8c907aeb67a136fa57a9eafb9d94a748e2b3",
+  "run_id": "32685178993",
+  "triggering_sha": "d3bb2b7e6ae47d553bf5a5b91232fa0e31c1dd3c",
+  "tested_checkout_sha": "d3bb2b7e6ae47d553bf5a5b91232fa0e31c1dd3c",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T03:04:44.831131+00:00",
+  "recorded_at_utc": "2026-08-24T03:05:16.763367+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
+    "specialized_and_adapters": "failure",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -87,6 +87,7 @@
     "rectangle_side_from_perimeter",
     "rectangular_prism_height_from_surface_area",
     "rectangular_prism_height_from_volume",
+    "rectangular_prism_side_from_surface_area",
     "rectangular_prism_side_from_volume",
     "rectangular_prism_surface_area",
     "rectangular_prism_volume",
@@ -130,7 +131,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 114,
+  "engine_module_count": 115,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_equation_from_two_points_variant_engine.py",
