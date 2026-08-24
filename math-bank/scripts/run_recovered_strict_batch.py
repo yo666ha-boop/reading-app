@@ -30,6 +30,8 @@ def run_batch(
 ) -> dict:
     if source not in promotion.SOURCE_ORDER:
         raise ValueError(f"unsupported source {source!r}")
+    if slot_evidence_path is None:
+        raise ValueError("source-bound slot evidence is required for strict candidate composition")
 
     # Verify recovered bytes before using any draft content.
     drafts = promotion.verify_draft(draft_path, expected_sha256, expected_count)
@@ -41,13 +43,14 @@ def run_batch(
     if locator_report.get("duplicate_raw_ids"):
         raise ValueError(f"locator duplicate raw_ids: {locator_report['duplicate_raw_ids'][:3]}")
 
-    slot_evidence = composer.load_jsonl(slot_evidence_path) if slot_evidence_path else []
+    slot_evidence = composer.load_jsonl(slot_evidence_path)
     graphical_evidence = composer.load_jsonl(graphical_evidence_path) if graphical_evidence_path else []
     candidates, compose_report = composer.compose(
         drafts,
         locator_report,
         slot_evidence,
         graphical_evidence,
+        assets,
     )
 
     work_dir.mkdir(parents=True, exist_ok=True)
@@ -82,6 +85,8 @@ def run_batch(
         "source": source,
         "draft_sha256_verified": expected_sha256,
         "draft_records_verified": len(drafts),
+        "slot_evidence_records": len(slot_evidence),
+        "asset_manifest_loaded": asset_manifest_path is not None,
         "exact_locator_ready": locator_report.get("exact_qa_offsets_located", 0),
         "locator_unresolved": locator_report.get("unresolved", 0),
         "strict_candidates": len(candidates),
@@ -102,7 +107,9 @@ def run_batch(
         },
         "completion_policy": (
             "These outputs are local batch products only. No record counts as complete until the strict output is "
-            "persisted to GitHub or another durable project store, read back after persistence, and reconciled there."
+            "persisted to GitHub or another durable project store, read back after persistence, and reconciled there. "
+            "Slot/score evidence must be bound to the same source-document SHA; figure and graphical assets must be "
+            "verified against the OOXML asset manifest before a strict candidate can be emitted."
         ),
     }
     summary["pass"] = bool(
@@ -121,7 +128,7 @@ def main() -> int:
     ap.add_argument("--expected-count", type=int, required=True)
     ap.add_argument("--structure", type=Path, required=True)
     ap.add_argument("--asset-manifest", type=Path)
-    ap.add_argument("--slot-evidence", type=Path)
+    ap.add_argument("--slot-evidence", type=Path, required=True)
     ap.add_argument("--graphical-evidence", type=Path)
     ap.add_argument("--existing", type=Path)
     ap.add_argument("--work-dir", type=Path, required=True)
