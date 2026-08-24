@@ -22,11 +22,26 @@ def main() -> None:
     assert len(rows) == len(ev) == 3
     assert len({tuple(r["numeric_signature"]) for r in rows}) == 3
     assert all(r["question"] != p["question"] for r in rows)
-    assert all("PASS" in e["independent_check"] for e in ev)
+    assert all("primitive inner pair PASS" in e["independent_check"] for e in ev)
 
     pneg = parent("-6x²+9xを因数分解しなさい。", "-3x(2x-3)")
     rows, _, reason = generate(pneg, 1)
     assert len(rows) == 1 and reason == "common_factor_quadratic_exact"
+
+    # Exercise several distinct parent fingerprints so deterministic sibling
+    # search cannot hide a non-primitive or non-terminating seed pattern.
+    stress = (
+        ("8x²+12xを因数分解しなさい。", "4x(2x+3)"),
+        ("10x²-15xを因数分解しなさい。", "5x(2x-3)"),
+        ("-14x²-21xを因数分解しなさい。", "-7x(2x+3)"),
+        ("18x²+30xを因数分解しなさい。", "6x(3x+5)"),
+    )
+    for question, answer in stress:
+        siblings, evidence, why = generate(parent(question, answer), 3)
+        assert why == "common_factor_quadratic_exact"
+        assert len(siblings) == len(evidence) == 3
+        assert len({tuple(r["numeric_signature"]) for r in siblings}) == 3
+        assert all("primitive inner pair PASS" in e["independent_check"] for e in evidence)
 
     wrong = parent("6x²+9xを因数分解しなさい。", "x(6x+9)")
     rows, _, _ = generate(wrong, 1)
