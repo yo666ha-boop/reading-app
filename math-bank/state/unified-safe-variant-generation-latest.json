@@ -1,14 +1,14 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32679632558",
-  "triggering_sha": "9dd6d180099ab76af78f6d091888ce1d9e73c525",
-  "tested_checkout_sha": "9dd6d180099ab76af78f6d091888ce1d9e73c525",
+  "run_id": "32679666259",
+  "triggering_sha": "ac901e863a1709691a9e112ffb1da14fcf8157ce",
+  "tested_checkout_sha": "ac901e863a1709691a9e112ffb1da14fcf8157ce",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T01:24:16.765267+00:00",
+  "recorded_at_utc": "2026-08-24T01:24:47.514301+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
+    "specialized_and_adapters": "failure",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -47,6 +47,7 @@
     "difference_of_squares_factorization",
     "direct_proportion_constant",
     "discount_price",
+    "distance_origin_point",
     "distance_two_points",
     "fraction_arithmetic",
     "frequency_from_relative_frequency",
@@ -121,7 +122,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 105,
+  "engine_module_count": 106,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_intercept_from_slope_point_variant_engine.py",
@@ -155,6 +156,7 @@
     "test_safe_difference_of_squares_factorization_variant_engine.py",
     "test_safe_direct_proportion_constant_variant_engine.py",
     "test_safe_discount_price_variant_engine.py",
+    "test_safe_distance_origin_point_variant_engine.py",
     "test_safe_distance_two_points_variant_engine.py",
     "test_safe_fraction_arithmetic_variant_engine.py",
     "test_safe_frequency_from_relative_frequency_variant_engine.py",
@@ -226,7 +228,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 102,
+  "engine_test_count": 103,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_affine_intercept_from_slope_point_unified_adapter.py",
