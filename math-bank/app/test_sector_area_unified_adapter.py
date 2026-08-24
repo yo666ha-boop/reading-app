@@ -6,7 +6,7 @@ from validate_expanded_variant_layer import numeric_tokens, parent_record_sha256
 NOW="2026-08-24T00:00:00Z"
 def main():
     p=copy.deepcopy(make_base()[0]); p["id"]="U-SECTOR-A"; p["question"]="半径6cm、中心角60度の扇形の面積を求めなさい。円周率は3.14とします。"; p["answer"]="18.84cm²"; p["choices"]=None; p["figure_refs"]=[]; p["source"]["is_generated_variant"]=False; p["source"]["parent_id"]=None; p["variant_group"]=None
-    rows,prov,reason=generate_parent(p,3,NOW); assert reason.startswith("specialized:circle_area:sector_area_pi_3_14_exact_terminating"); assert len(rows)==len(prov)==3
+    rows,prov,reason=generate_parent(p,3,NOW); assert reason.startswith("specialized:circle_area_pi_3_14:sector_area_pi_3_14_exact_terminating"); assert len(rows)==len(prov)==3
     parent_sig=tuple(numeric_tokens(p["question"])); sibling_sigs={tuple(numeric_tokens(r["question"])) for r in rows}; assert parent_sig not in sibling_sigs and len(sibling_sigs)==3
     expected=parent_record_sha256(p)
     for row,ev in zip(rows,prov):
