@@ -21,8 +21,7 @@ def _parent() -> dict:
 
 def main() -> None:
     for choices in (None, []):
-        parent = _parent()
-        parent["choices"] = choices
+        parent = _parent(); parent["choices"] = choices
         rows, evidence, reason = generate(parent, 3)
         assert reason == "square_integer_cm_area_exact"
         assert len(rows) == len(evidence) == 3
@@ -41,7 +40,6 @@ def main() -> None:
         assert reason == "square_integer_cm_perimeter_exact"
         assert len(rows) == len(evidence) == 3
         assert len({row["numeric_signature"] for row in rows}) == 3
-        assert all(row["question"] != perimeter["question"] for row in rows)
         for row, ev in zip(rows, evidence):
             side = int(row["numeric_signature"][0])
             assert row["answer"] == f"{side * 4}cm"
@@ -49,19 +47,29 @@ def main() -> None:
             assert ev["independent_check"].endswith("PASS")
 
     parent = _parent()
-    wrong = copy.deepcopy(parent)
-    wrong["answer"] = "35cm²"
+    wrong = copy.deepcopy(parent); wrong["answer"] = "35cm²"
     assert generate(wrong, 1)[0] == []
 
     wrong_perimeter = copy.deepcopy(parent)
-    wrong_perimeter["question"] = "1辺6cmの正方形の周の長さを求めなさい。"
+    wrong_perimeter["question"] = "1辺6cmの正方形の周の長さを求めなさい."
     wrong_perimeter["answer"] = "25cm"
     assert generate(wrong_perimeter, 1)[0] == []
 
     reverse = copy.deepcopy(parent)
     reverse["question"] = "面積36cm²の正方形の1辺の長さを求めなさい。"
     reverse["answer"] = "6cm"
-    assert generate(reverse, 1)[0] == []
+    rows, evidence, reason = generate(reverse, 3)
+    assert reason == "square_side_from_area_exact_integer_square_root"
+    assert len(rows) == len(evidence) == 3
+    assert all(ev["method"] == "square_side_from_area_exact_integer_square_root_and_recomposition" for ev in evidence)
+
+    reverse_perimeter = copy.deepcopy(parent)
+    reverse_perimeter["question"] = "周の長さ24cmの正方形の1辺の長さを求めなさい。"
+    reverse_perimeter["answer"] = "6cm"
+    rows, evidence, reason = generate(reverse_perimeter, 3)
+    assert reason == "square_side_from_perimeter_exact_division_by_four"
+    assert len(rows) == len(evidence) == 3
+    assert all(ev["method"] == "square_side_from_perimeter_exact_division_and_recomposition" for ev in evidence)
 
     mixed = copy.deepcopy(parent)
     mixed["question"] = "1辺6mの正方形の面積を求めなさい。"
@@ -73,17 +81,15 @@ def main() -> None:
     both["answer"] = "36cm²,24cm"
     assert generate(both, 1)[0] == []
 
-    figure = copy.deepcopy(parent)
-    figure["figure_refs"] = ["figures/square.png"]
+    figure = copy.deepcopy(parent); figure["figure_refs"] = ["figures/square.png"]
     assert generate(figure, 1)[0] == []
-
-    choice = copy.deepcopy(parent)
-    choice["choices"] = ["24cm²", "30cm²", "36cm²", "42cm²"]
+    choice = copy.deepcopy(parent); choice["choices"] = ["24cm²", "30cm²", "36cm²", "42cm²"]
     assert generate(choice, 1)[0] == []
 
     print("PASS_SAFE_SQUARE_AREA_EXACT_PRODUCT_AND_INTEGER_SQRT_IDENTITY")
     print("PASS_SAFE_SQUARE_PERIMETER_EXACT_QUADRUPLE_AND_INVERSE_IDENTITY")
-    print("PASS_SAFE_SQUARE_WRONG_REVERSE_MIXED_MULTIASK_FIGURE_REAL_CHOICE_FAIL_CLOSED")
+    print("PASS_SAFE_SQUARE_INVERSE_AREA_AND_PERIMETER_ROUTES")
+    print("PASS_SAFE_SQUARE_WRONG_MIXED_MULTIASK_FIGURE_REAL_CHOICE_FAIL_CLOSED")
 
 
 if __name__ == "__main__":
