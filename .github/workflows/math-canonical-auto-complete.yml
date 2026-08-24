@@ -1,21 +1,11 @@
 name: Math Canonical Auto Complete
 
+# Historical exact-canonical recovery is no longer the primary line of work.
+# Keep this workflow manual-only so branch/checkpoint/Audit updates cannot
+# repeatedly rescan already-exhausted recovery surfaces. The active path is the
+# three-source rebuild from the reuploaded Standard / 実力錬成 / Winpass archives.
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - math-problem-bank-bootstrap
-    paths:
-      - 'math-bank/state/actions-artifact-scan-latest.json'
-      - 'math-bank/state/ci-latest.json'
-      - 'math-bank/state/checkpoint.json'
-      - 'math-bank/app/scan_github_issue_pr_attachments.py'
-      - '.github/workflows/math-canonical-auto-complete.yml'
-  workflow_run:
-    workflows:
-      - Math Problem Bank Audit
-    types: [completed]
-    branches: [math-problem-bank-bootstrap]
 
 concurrency:
   group: math-canonical-auto-complete
@@ -252,7 +242,7 @@ jobs:
             'publication_ready':Path('math-bank/release/PUBLICATION_READY.json').is_file(),
             'strict_release_created':Path('math-bank/みかみ塾数学問題アプリ_公開候補.zip').is_file(),
             'completion_status':completion.get('status') if isinstance(completion,dict) else None,
-            'policy':'No reconstruction, no guessed metadata, no partial-161 or diagnostic-1271 promotion.'}
+            'policy':'Historical exact-canonical recovery is manual-only. No reconstruction, no guessed metadata, no partial-161 or diagnostic-1271 promotion.'}
           tmp=Path('/tmp/math-auto-state');tmp.mkdir(parents=True,exist_ok=True)
           files={
             'actions-artifact-scan-latest.json':actions,
