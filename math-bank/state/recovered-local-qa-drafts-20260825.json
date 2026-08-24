@@ -1,0 +1,48 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-08-25T01:31:00+09:00",
+  "status": "RECOVERED_LOCAL_QA_DRAFTS_NOT_YET_CANONICAL",
+  "reason_for_record": "Resolve the discrepancy between earlier chat progress reports and GitHub strict materialization count. The Q/A drafts existed in the live conversation runtime but had not been persisted to GitHub, so later GitHub-only runs correctly reported strict materialization as 0/1271.",
+  "recovered_local_drafts": {
+    "Standard": {
+      "path_in_live_runtime": "/mnt/data/mathbank_live/standard-qa-v2.jsonl",
+      "records": 317,
+      "questions_nonblank": 317,
+      "answers_text": 288,
+      "graphical_answers": 29,
+      "resolved_question_answer_slots": 317,
+      "sha256": "326f38b5aebadc226d3e12eaf6e750bf4b7727759c2e4f7f06f75dc2ffa114b0"
+    },
+    "実力錬成": {
+      "path_in_live_runtime": "/mnt/data/mathbank_live/jitsuren-qa-v1.jsonl",
+      "records": 237,
+      "questions_nonblank": 237,
+      "answers_text": 217,
+      "graphical_answers": 20,
+      "resolved_question_answer_slots": 237,
+      "sha256": "818fdd60d26211634d7138b381e55b4123fb4155c682a0375344a3ba0e755c97"
+    },
+    "total_records": 554
+  },
+  "strict_status": {
+    "these_554_drafts_are_not_counted_as_strict_complete": true,
+    "missing_before_strict_completion": [
+      "ordered OOXML question_offsets",
+      "ordered OOXML answer_offsets or persisted graphical answer asset",
+      "figure relationship/asset identities",
+      "content-bound final record_fingerprint",
+      "GitHub persistence of each strict materialized record"
+    ],
+    "first_strict_persisted_proof": {
+      "records": 3,
+      "source": "Standard",
+      "document": "25astandardt1suhy000101.docx",
+      "github_path": "math-bank/recovered/current-session/standard-strict-proof-first3-20260825.jsonl",
+      "commit": "eb0a8965e657284bfa32a7378fe85b2cddb68785",
+      "local_strict_subset_pass": true,
+      "local_file_sha256": "2f9ff7c0d320becc7abc7bdba88ca23d551ece2d74d6c974765340976ba04598"
+    }
+  },
+  "reporting_rule_from_now_on": "Never report a Q/A record as completed merely because it exists in a live runtime. Completed count means the strict record is persisted in GitHub (or another explicitly durable project store), can be read back, contains exact source provenance, and passes the applicable validator. Local-only drafts are reported separately as recovered/in-progress.",
+  "next": "Convert the recovered 317 Standard and 237 実力錬成 drafts to strict provenance records, persist them, then process Winpass717 the same way. Only after all 1271 strict Q/A/figure records pass should Winpass717 evidence-bound normalization to 570 begin."
+}
