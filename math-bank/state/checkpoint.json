@@ -2,7 +2,7 @@
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP",
   "current_stage": "RAW_1271_MATERIALIZATION_QA_FIGURE_BINDING",
-  "recorded_at_jst": "2026-08-25T05:54:01+09:00",
+  "recorded_at_jst": "2026-08-25T06:53:18+09:00",
   "main_touched": false,
   "source_identity": {
     "Winpass": {"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","bytes":8296042,"crc_ok":true},
@@ -22,15 +22,28 @@
   "tooling_actual": {
     "strict_validator":"math-bank/scripts/validate_raw1271_materialization.py","draft_promoter":"math-bank/scripts/promote_recovered_qa_drafts.py","reconciler":"math-bank/scripts/reconcile_strict_qa_progress.py","asset_manifest":"math-bank/scripts/build_ooxml_asset_manifest.py","exact_locator":"math-bank/scripts/locate_recovered_qa_ooxml.py","candidate_composer":"math-bank/scripts/compose_strict_qa_candidates.py","batch_runner":"math-bank/scripts/run_recovered_strict_batch.py",
     "strict_tooling_ci":{"state":"math-bank/state/strict-tooling-ci-latest.json","run_id":"32756245710","triggering_sha":"e400cb335cc8cd8a6f3770afa83f8d92c567e038","result":"success","schedule_based":false,"tests":7},
-    "audit_ci":{"state":"math-bank/state/ci-latest.json","run_id":"32756245687","triggering_sha":"e400cb335cc8cd8a6f3770afa83f8d92c567e038","result":"success","canonical_app_records_present":false,"publication_ready":false}
+    "audit_ci":{"state":"math-bank/state/ci-latest.json","run_id":"32756245687","triggering_sha":"e400cb335cc8cd8a6f3770afa83f8d92c567e038","result":"success","canonical_app_records_present":false,"publication_ready":false},
+    "current_head_combined_status_contexts":0
   },
   "downstream": {"winpass_decisions":{"reviewed":0,"included":0,"excluded":0,"target_after_evidence_review":570},"global1124":{"validated":0,"immutable_frozen":0},"variants":{"verified":0,"parent_coverage":"0/1124"},"app_records":0,"browser":"BLOCKED_UNTIL_REAL_APP_RECORDS","iphone_fire":"PENDING","a4":"PENDING","publication_ready":false,"public_verification":"PENDING"},
   "this_run": {
-    "starting_head_actual":"4cd8a07f6019da8f2140f9deabd6edb94913192b","latest_head_observed_before_checkpoint_write":"4cd8a07f6019da8f2140f9deabd6edb94913192b","main_head_observed":"1f0cabf9bfcc4482f507e33188499bdbbd5bab57",
-    "completed":["Read latest branch HEAD/checkpoint/CI from GitHub actual before work.","Confirmed strict tooling CI remains success with 7 tests; no CI result was treated as Q/A completion.","Retried File Library recovery using exact recovered Standard draft SHA and all three verified source ZIP names/SHA identities; returned files were unrelated, so no source bytes were accepted.","Kept strict progress at exactly 3/1271 because record 4 provenance cannot be proven without original source/draft bytes.","Confirmed main remains 1f0cabf9bfcc4482f507e33188499bdbbd5bab57 and made no main write.","Persisted this run checkpoint on math-problem-bank-bootstrap."],
-    "limitations":["Exact recovered Standard/Jitsuren JSONL bytes and verified source ZIP bytes are still not exposed to this execution environment or File Library search.","Without those bytes, ordered OOXML offsets/assets, score evidence, required figure identity and content-bound fingerprints for record 4 onward cannot be truthfully produced."]
+    "starting_head_actual":"0cef468f035d2f1f454933d4363d37420e6ed41e","latest_head_observed_before_checkpoint_write":"0cef468f035d2f1f454933d4363d37420e6ed41e","main_head_observed":"1f0cabf9bfcc4482f507e33188499bdbbd5bab57",
+    "completed":[
+      "Read latest branch HEAD and checkpoint from GitHub actual before work.",
+      "Re-read strict tooling workflow run 32756245710: strict-qa-tooling-tests completed success, including compile and unit-test steps; no CI result was counted as Q/A completion.",
+      "Checked combined commit status for current HEAD; zero status contexts were attached to 0cef468f, so prior persisted CI state remains the only verified CI evidence and is not misrepresented as current-head CI.",
+      "Retried File Library recovery using exact Standard/Jitsuren draft names and SHA256 identities plus Standard source ZIP SHA; returned results were unrelated and no bytes were accepted.",
+      "Checked current /mnt/data runtime for mathbank_live recovered JSONL and three source ZIP names; none were present.",
+      "Kept strict progress exactly at Standard 3/317, 実力錬成 0/237, Winpass 0/717 because record 4 provenance cannot be proven without source/draft bytes.",
+      "Confirmed main remains 1f0cabf9bfcc4482f507e33188499bdbbd5bab57 and made no main write.",
+      "Persisted this run checkpoint on math-problem-bank-bootstrap."
+    ],
+    "limitations":[
+      "Exact recovered Standard/Jitsuren JSONL bytes and verified source ZIP bytes are not exposed to this execution runtime, File Library, or a GitHub durable path currently identified by checkpoint.",
+      "Without those exact bytes, ordered OOXML offsets/assets, score evidence, required figure identity and content-bound fingerprints for record 4 onward cannot be truthfully produced or validator-PASSed."
+    ]
   },
-  "exact_stop": "Strict durable progress remains Standard 3/317, 実力錬成 0/237, Winpass 0/717 = 3/1271. Recovered drafts remain 554 draft-only. Exact-byte recovery was retried this run and produced no matching source/draft files; no fourth strict record claimed.",
-  "next_start": "Read latest HEAD/checkpoint/CI first. Retry access to recovered Standard draft SHA256 326f38b5aebadc226d3e12eaf6e750bf4b7727759c2e4f7f06f75dc2ffa114b0 and Standard ZIP SHA256 c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6. If exposed, verify SHA/count and run asset manifest + exact locator + candidate composer + batch runner + validator, persist/readback/reconcile Standard record 4 through 317, then 実力錬成237, Winpass717. Then evidence-review Winpass717 to 570 without count forcing; validate/freeze global1124; variants; app mapping; browser/iPhone/Fire/A4; strict release; PUBLICATION_READY; isolated public verification.",
+  "exact_stop": "Strict durable progress remains Standard 3/317, 実力錬成 0/237, Winpass 0/717 = 3/1271. Recovered drafts remain 554 draft-only. Exact-byte recovery was retried in File Library and current /mnt/data; no matching source/draft bytes were exposed, so no fourth strict record was claimed.",
+  "next_start": "Read latest HEAD/checkpoint/CI first. Retry durable/runtime access to Standard draft SHA256 326f38b5aebadc226d3e12eaf6e750bf4b7727759c2e4f7f06f75dc2ffa114b0 and Standard ZIP SHA256 c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6. If exposed, verify SHA/count and run asset manifest + exact locator + candidate composer + batch runner + validator, persist/readback/reconcile Standard record 4 through 317, then 実力錬成237, Winpass717. Then evidence-review Winpass717 to 570 without count forcing; validate/freeze global1124; variants; app mapping; browser/iPhone/Fire/A4; strict release; PUBLICATION_READY; isolated public verification.",
   "main_untouched": true
 }
