@@ -1,11 +1,11 @@
 {
   "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32719033335",
-  "triggering_sha": "f00b1f49cea3eb7f8fa2a071a22fd83684f5d589",
-  "tested_checkout_sha": "f00b1f49cea3eb7f8fa2a071a22fd83684f5d589",
+  "run_id": "32719063496",
+  "triggering_sha": "f2e2b51a547b552f097cf5fa1d4e0d5ad419a219",
+  "tested_checkout_sha": "f2e2b51a547b552f097cf5fa1d4e0d5ad419a219",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T10:53:38.017532+00:00",
+  "recorded_at_utc": "2026-08-24T10:54:02.952718+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "cancelled",
@@ -160,6 +160,7 @@
     "test_safe_binomial_expansion_variant_engine.py",
     "test_safe_circle_area_variant_engine.py",
     "test_safe_circle_circumference_variant_engine.py",
+    "test_safe_circle_diameter_from_circumference_variant_engine.py",
     "test_safe_circle_radius_from_area_variant_engine.py",
     "test_safe_circle_radius_from_circumference_variant_engine.py",
     "test_safe_common_factor_quadratic_variant_engine.py",
@@ -275,7 +276,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 126,
+  "engine_test_count": 127,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_affine_equation_from_two_points_unified_adapter.py",
