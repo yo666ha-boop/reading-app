@@ -1,14 +1,14 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32688552496",
-  "triggering_sha": "71cd6f7bbed9478fd3d4d0745640ee540619f99d",
-  "tested_checkout_sha": "71cd6f7bbed9478fd3d4d0745640ee540619f99d",
+  "run_id": "32688591022",
+  "triggering_sha": "3f0c9ecac71fa3b1879d35da7e2ee3cd7b8f01d9",
+  "tested_checkout_sha": "3f0c9ecac71fa3b1879d35da7e2ee3cd7b8f01d9",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T04:03:07.224921+00:00",
+  "recorded_at_utc": "2026-08-24T04:03:47.166731+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
+    "specialized_and_adapters": "failure",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -30,6 +30,7 @@
     "circle_radius_from_area",
     "circle_radius_from_circumference",
     "cone_height_from_volume",
+    "cone_radius_from_surface_area",
     "cone_radius_from_volume",
     "cone_slant_from_surface_area",
     "cone_surface_area",
@@ -134,7 +135,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 118,
+  "engine_module_count": 119,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_equation_from_two_points_variant_engine.py",
