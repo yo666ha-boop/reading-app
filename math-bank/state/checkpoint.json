@@ -1,33 +1,148 @@
 {
-  "project":"mikami-math-problem-bank",
-  "status":"IN_PROGRESS_REBUILD_FROM_REUPLOADED_SOURCE_ARCHIVES",
-  "current_stage":"REUPLOADED_3ZIP_IDENTITY_BLOCKED_RUNTIME_RAW_AUDIT_PIPELINE_READY",
-  "base_target":{"original_records":1124,"original_by_source":{"Winpass":570,"実力錬成":237,"Standard":317},"historical_baseline_variants":107,"historical_final_total":1231,"historical_final_zip_sha256":"eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175","historical_final_zip_bytes_currently_available":false,"new_rebuild_must_be_fully_reaudited":true},
-  "reuploaded_source_route":{"primary":true,"old_canonical_search_primary":false,"conversation_files":["/mnt/data/スタンダードデータ(1).zip","/mnt/data/中学実力錬成データ(1).zip","/mnt/data/winpassデータ(1).zip"],"expected_historical_sha256":{"Winpass":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","実力錬成":"d32d37e2ffeffce059f5ee81b4cf40c1097c0961af2a50e9017534abe4d47b2d","Standard":"c828516bccc230ebc7d7217ae708117d4b6971108417c5e0d0eff48cb075fec9"},"identity_verified_this_run":false,"local_read_result":"BLOCKED_CURRENT_RUNTIME_FILES_NOT_MOUNTED","file_library_search_result":"NO_MATCHING_3ZIP_RESULTS","local_read_interpretation":"runtime/file visibility failure only; not corruption/mismatch evidence"},
-  "historical_source_forensics":{"documents":{"Winpass":81,"実力錬成":27,"Standard":32,"total":140},"raw_records":{"Winpass":717,"実力錬成":237,"Standard":317,"total":1271},"raw_quality_reference":{"questions":"1271/1271","answers":"1271/1271","figure_refs":41,"missing_figure_refs":0},"winpass_normalization":"717->570 must be reproduced by evidence; count forcing and simple duplicate-only assumptions are forbidden"},
-  "expanded_variant_goal":{"parent_target":1124,"expanded_verified_variants":0,"expanded_parent_coverage":0,"minimum_new_verified_variant_per_parent":1,"safe_deterministic_target_per_parent":3,"manual_generation_queue":"FINGERPRINT_BOUND; MATERIALIZE_AFTER_REBUILT_REAL_PARENTS"},
-  "今回完了した内容":[
-    "最新HEAD/checkpoint/source-rebuild/Unified/CIを再読し、旧canonical探索ではなく再アップロード3教材からの再構築主線を維持。branch/tag/PR exact complete探索は再走査していない。",
-    "このrunの実行環境では/mnt/dataに3教材ZIPがmountされておらず、File Library検索でも3ZIPを取得できなかった。したがってSHA/size/member/CRCは未確認のまま据え置き、破損・不一致とは判定していない。",
-    "Math Source Rebuild Contractはrun32721561605でPASS_CI済み。exact source SHA、member SHA manifest、140-doc profile、Winpass全717 evidence decision、raw直接昇格禁止の契約を確認。",
-    "validate_rebuilt_raw_records.pyを追加。抽出後のWinpass717/実力錬成237/Standard317について件数は選別規則でなくverificationとして扱い、全件id/question/answer、record fingerprint一意性、figure_refs型とasset manifest解決をfail-closed検証する。",
-    "raw validator regression testを追加し、正常3教材、answer欠損、duplicate fingerprint/id、figure欠損、count mismatchを検証。",
-    "create_winpass_review_queue.pyを追加。実Winpass717件からid＋source/document_id/record_index/question/answer/explanation/figure_refsに結合したSHA256 fingerprintを作り、717件全てをaction空欄/evidence空欄のPENDING_EVIDENCE queueへ送る。570/147はverification referenceのみで自動選別しない。",
-    "Winpass review queue regression testを追加し、717 unique fingerprint、未判定初期状態、count mismatch/duplicate id fail-closedを確認する契約を追加。",
-    "Math Source Rebuild Contract workflowをraw QA/fingerprint/figure gateとfingerprint-bound Winpass review queueのcompile/test必須へ拡張。次にsource ZIPが実読可能になれば identity→member manifest→140-doc paths→raw extraction→raw gate→717 review queue→normalization auditへ直結できる。",
-    "最新Unified safe generationはschema69 run32719871296 / exact SHA e952a09a334c07674846e415f853e32e58ee1266で全5gate PASSを維持。最新Math Problem Bank Audit run32721675750もsuccess、publication_ready=false。"
+  "project": "mikami-math-problem-bank",
+  "status": "IN_PROGRESS_RECOVER_PRIOR_GENERATED_DATA_THEN_REBUILD_MISSING_LAYERS",
+  "current_stage": "OLD_GENERATED_PAYLOAD_SHA_SCAN_COMPLETE_LOG_PIPELINE_RECOVERY_RUNNING_SOURCE_BYTES_RUNTIME_BLOCKED",
+  "base_target": {
+    "original_records": 1124,
+    "original_by_source": {"Winpass": 570, "実力錬成": 237, "Standard": 317},
+    "historical_baseline_variants": 107,
+    "historical_final_total": 1231,
+    "historical_final_zip_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
+    "historical_final_zip_bytes_currently_available": false,
+    "new_rebuild_must_be_fully_reaudited": true
+  },
+  "reuploaded_source_route": {
+    "primary": true,
+    "old_canonical_search_primary": false,
+    "recover_prior_generated_layers_before_recomputing": true,
+    "conversation_files": [
+      "/mnt/data/スタンダードデータ(1).zip",
+      "/mnt/data/中学実力錬成データ(1).zip",
+      "/mnt/data/winpassデータ(1).zip"
+    ],
+    "historical_recovered_source_identity": {
+      "Winpass": {"sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf", "bytes": 8296042},
+      "実力錬成": {"sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33", "bytes": 7287279},
+      "Standard": {"sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6", "bytes": 9689250}
+    },
+    "identity_basis": "math-bank/state/source-recovery-latest.json written after actual source archive recovery and 246->140 DOCX dedupe",
+    "identity_verified_this_run": false,
+    "local_read_result": "BLOCKED_RUNTIME_CLIENT_RESPONSE_ERROR_OR_FILES_NOT_MOUNTED",
+    "local_read_interpretation": "execution/file visibility failure only; not corruption or source mismatch evidence"
+  },
+  "historical_source_forensics": {
+    "documents_before_dedupe": 246,
+    "duplicate_documents": 106,
+    "documents": {"Winpass": 81, "実力錬成": 27, "Standard": 32, "total": 140},
+    "raw_records": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
+    "raw_quality_reference": {"questions": "1271/1271", "answers": "1271/1271", "figure_refs": 41, "missing_figure_refs": 0},
+    "partial_verified_winpass": {"records": 161, "files": 32, "blocks": 47},
+    "winpass_normalization": "717->570 must be reproduced by evidence; count forcing and simple duplicate-only assumptions are forbidden",
+    "extraction_clues": {
+      "word_math_m_t_required": true,
+      "own_paragraph_extraction_required": true,
+      "question_and_answer_halves_detected": true,
+      "tandem_repeat_prefix_answer_blocks_detected": true
+    }
+  },
+  "historical_generated_layer_recovery": {
+    "target_sha256": {
+      "winpass_stage4_answer_complete": "b532d64f83bb0cb0444a6b556e2490a9b56366d5c3916256ae2e96572eb1abe3",
+      "winpass_stage5_question_repair": "c50053ba1765e81e256aaa95b67f94071cec3b6bb625deef801b71b0af5ae984",
+      "winpass_answer_asset_index": "0e96efc7097c61ddfc1c5218da90e7ea92cbb4fd0a1e9babccfcad3756731af2",
+      "combined_diagnostic_1271": "16c71b87744a3c00bb29b53d63bdaf727feaae86a5d7a505b83920c8dfefc63a"
+    },
+    "exact_sha_scan": {
+      "git_blobs_seen": 4642,
+      "git_blobs_sha256_checked": 4642,
+      "git_blob_bytes_hashed": 174079209,
+      "git_oversize_skipped": 0,
+      "actions_artifacts_seen": 511,
+      "historical_window_candidate_artifacts": 237,
+      "actions_artifacts_downloaded": 237,
+      "actions_download_failures": 0,
+      "artifact_members_sha256_checked": 752,
+      "artifact_member_bytes_hashed": 69763226,
+      "nested_zip_members": 3,
+      "exact_hits": 0,
+      "scan_complete": true,
+      "interpretation": "the four exact old generated payloads are not retained in visible Git refs or retained Aug19-Aug21 Actions artifacts"
+    },
+    "historical_generation_log_clue_scanner": {
+      "script_commit": "8e9ff48076fa95ac673be7633529afb1acc6cb2d",
+      "workflow_commit": "c9fcbdd3468c0e6d1b6220a81c95138f13c97b36",
+      "status": "RUNNING_OR_WAITING_FOR_TERMINAL_STATE",
+      "goal": "recover actual historical generation filenames, commands, stages, and output paths so only missing layers are recomputed"
+    }
+  },
+  "legacy_recovery_correction": {
+    "old_2140_actions_scan": {"artifacts_seen": 81, "artifacts_downloaded": 0, "download_failures": 81, "absence_evidence": false},
+    "old_2140_fast_actions_scan": {"artifacts_seen": 82, "artifacts_downloaded": 0, "download_failures": 82, "absence_evidence": false},
+    "modern_actions_scan": {"all_artifacts_seen": 510, "candidate_artifacts": 484, "members_sha256_checked": 1243, "download_failures": 0, "scan_complete": true, "canonical_pair_hits": 0, "recovery_hint_hits": 0},
+    "policy": "do not rely on the broken 0-download 2140 scans; modern complete content-addressed scans supersede them"
+  },
+  "source_rebuild_implementation": {
+    "source_identity_verifier_corrected_commit": "de424d7235370d7a961005cf8c9a0b7fd952c905",
+    "source_contract_last_confirmed_run": "32721561605",
+    "raw_validator_commit": "6ec879842418a1b97ae01ab82f26242b65727493",
+    "raw_validator_test_commit": "e36a4007bec452f9fd6d1de4cd1b24c13b5260ba",
+    "winpass_review_queue_commit": "13975ec98478c6423f94a7b352e2fae235cafd1a",
+    "winpass_review_queue_test_commit": "bc5f231c1b6fde4e44dac8020156c8af4511da35",
+    "historical_generated_sha_recovery_script_commit": "9dfc3078da3e9744faa5014f1e3c932a125b6497",
+    "historical_generated_sha_recovery_workflow_commit": "62e07990942ebe28322bde89b9adf182103f6431"
+  },
+  "expanded_variant_goal": {
+    "parent_target": 1124,
+    "expanded_verified_variants": 0,
+    "expanded_parent_coverage": 0,
+    "minimum_new_verified_variant_per_parent": 1,
+    "safe_deterministic_target_per_parent": 3,
+    "manual_generation_queue": "FINGERPRINT_BOUND; MATERIALIZE_AFTER_REAL_PARENTS"
+  },
+  "expanded_generation_capability": {
+    "latest_confirmed_validation": {"status": "PASS_CI", "schema": 69, "run_id": "32719871296", "triggering_sha": "e952a09a334c07674846e415f853e32e58ee1266", "compile": "success", "specialized_and_adapters": "success", "core": "success", "parent_contract": "success", "legacy_empty_choices": "success"},
+    "actual_real_variants_generated": 0,
+    "actual_parent_records_required": true,
+    "parent_record_sha256_required": true,
+    "strict_validator_promotion_gate": true,
+    "fingerprint_bound_manual_queue": true
+  },
+  "CI_browser_A4": {
+    "latest_confirmed_audit_run_id": "32721675750",
+    "audit_result": "success",
+    "browser_regression": "success_synthetic",
+    "real_rebuilt_browser_regression": "BLOCKED_UNTIL_REAL_BASE",
+    "real_A4_six_pdfs": "BLOCKED_UNTIL_REAL_BASE",
+    "publication_ready": false
+  },
+  "variant_generation": {"generated": 0, "parent_coverage": "0/1124", "manual_queue": "not materialized before real parents"},
+  "data_rebuild_progress": {
+    "zip_sha_size_member_crc": {"Winpass": "UNREAD_THIS_RUN", "実力錬成": "UNREAD_THIS_RUN", "Standard": "UNREAD_THIS_RUN"},
+    "recovered_prior_generated_exact_payloads": 0,
+    "extracted_documents_current_runtime": {"Winpass": 0, "実力錬成": 0, "Standard": 0},
+    "raw_records_current_runtime": {"Winpass": 0, "実力錬成": 0, "Standard": 0},
+    "validated_originals": {"Winpass": 0, "実力錬成": 0, "Standard": 0, "total": 0}
+  },
+  "今回完了した内容": [
+    "161-record app layer and 1271-record diagnostic layer definitely existed; corrected framing from 'data never existed' to 'previous generated payloads are disconnected/not retained'.",
+    "Recovered authoritative source ZIP SHA-256 and byte sizes from historical source-recovery state; corrected erroneous newer jitsuren/Standard SHA values in verify_source_archives.py.",
+    "Verified old 2140 Actions scans were invalid absence evidence because they downloaded 0/81 and 0/82 artifacts.",
+    "Completed content-addressed recovery for the four recorded old generated-layer SHA values across 4642 Git blobs and 237 retained historical Actions artifacts / 752 members with zero failures; exact payload hits were 0.",
+    "Added and launched targeted historical generation-log recovery to recover prior filenames/commands/stage paths so only truly missing generated layers need recomputation."
   ],
-  "source_rebuild_implementation":{"source_contract_last_confirmed_run":"32721561605","raw_validator_commit":"6ec879842418a1b97ae01ab82f26242b65727493","raw_validator_test_commit":"e36a4007bec452f9fd6d1de4cd1b24c13b5260ba","winpass_review_queue_commit":"13975ec98478c6423f94a7b352e2fae235cafd1a","winpass_review_queue_test_commit":"bc5f231c1b6fde4e44dac8020156c8af4511da35","rebuild_workflow_extension_commit":"7f9f51fa599ec99cff96ce2fb67640526205a3be","source_contract_terminal":"NEW_WORKFLOW_RUN_PENDING_FOR_RAW_AUDIT_EXTENSION"},
-  "expanded_generation_capability":{"latest_confirmed_validation":{"status":"PASS_CI","schema":69,"run_id":"32719871296","triggering_sha":"e952a09a334c07674846e415f853e32e58ee1266","tested_checkout_sha":"e952a09a334c07674846e415f853e32e58ee1266","compile":"success","specialized_and_adapters":"success","core":"success","parent_contract":"success","legacy_empty_choices":"success"},"actual_real_variants_generated":0,"actual_parent_records_required":true,"parent_record_sha256_required":true,"strict_validator_promotion_gate":true,"fingerprint_bound_manual_queue":true},
-  "CI_browser_A4":{"latest_confirmed_audit_run_id":"32721675750","audit_result":"success","browser_regression":"success_synthetic","real_rebuilt_browser_regression":"BLOCKED_UNTIL_REBUILT_REAL_BASE","real_A4_six_pdfs":"BLOCKED_UNTIL_REBUILT_REAL_BASE","publication_ready":false},
-  "variant_generation":{"generated":0,"parent_coverage":"0/1124","manual_queue":"not materialized before real rebuilt parents"},
-  "data_rebuild_progress":{"zip_sha_size_member_crc":{"Winpass":"UNREAD_THIS_RUN","実力錬成":"UNREAD_THIS_RUN","Standard":"UNREAD_THIS_RUN"},"extracted_documents":{"Winpass":0,"実力錬成":0,"Standard":0},"raw_records":{"Winpass":0,"実力錬成":0,"Standard":0},"validated_originals":{"Winpass":0,"実力錬成":0,"Standard":0,"total":0},"problem_answer_mismatches":"NOT_RUN_WITH_REAL_BYTES","duplicates":"NOT_RUN_WITH_REAL_BYTES","figure_validation":"NOT_RUN_WITH_REAL_BYTES"},
-  "現在どの工程にいるか":"再アップロード3教材の実バイトがこのrun環境では見えないためidentity gate直前で停止。ただしraw抽出後の件数/Q&A/fingerprint/figure gateとWinpass717全件evidence review queueまで実装済みで、次回実読時の後工程を短縮した。",
-  "残っている作業":["3ZIPが実行環境から読めた最初のrunでSHA-256/size/member/CRCを実測。","exact source一致なら81/27/32=140 MATH.jsonとrecursive path profileを実データで確定。","observed schemaだけを使うsource-specific extractorでraw717/237/317を生成。","raw validatorを実行しQ&A/duplicate/fingerprint/figureを全件検証。","Winpass717 fingerprint review queueをmaterializeし全件を教材構造・重複・非問題要素・解答対応のsource evidenceでinclude/exclude。","570/237/317が根拠付きで再確定したら1124 originals full validation→safe variants→app-records→real browser/A4→release。"],
-  "正確停止点":"3ZIP bytes unavailable in current runtime; no SHA/size/member data invented. Rebuild contract is PASS_CI at prior run; new raw validator + Winpass fingerprint queue + tests + workflow extension committed. real rebuilt originals=0, variants=0, coverage=0/1124, publication_ready=false, main untouched.",
-  "次回どこから開始するか":"live HEAD/checkpoint/source-rebuild-contract再読→新workflow terminal確認→3ZIP実読を最優先で再試行。読めたら同一runでidentity/member manifest/140-doc recursive profileまで進み、observed schemaからraw extractor実装・実行へ進む。古いcanonical反復探索へ戻らない。",
-  "branch":"math-problem-bank-bootstrap",
-  "main_touched":false,
-  "recorded_at_utc":"2026-08-24T12:01:30Z",
-  "resume_rule":"Do not stop at status reporting. Rebuild only from actually read source bytes; do not infer archive contents or promote raw data without full evidence-bound re-audit."
+  "現在どの工程にいるか": "Recovering the exact historical generation pipeline before recomputing missing data. Source ZIP runtime bytes are still unavailable locally, but their historical identities and extraction clues are now grounded in actual prior recovery state.",
+  "残っている作業": [
+    "Read historical-generation-log-clues terminal state and recover concrete prior generation commands/filenames/output paths.",
+    "Retry the three reuploaded ZIP bytes only when the runtime exposes them; validate against corrected SHA+size evidence.",
+    "If prior 1271 payload cannot be recovered, rerun only the missing extraction stages using recovered pipeline evidence and exact source ZIPs: 246 DOCX -> SHA dedupe 140 -> 717/237/317 -> full Q&A/figure validation.",
+    "Re-establish Winpass570 with evidence for all 717 decisions; do not delete 147 for count matching.",
+    "Validate 1124 originals, then generate verified variants, compose app-records, run real four-browser/A4x6, strict release and isolated public verification."
+  ],
+  "正確停止点": "Old generated exact payload scan complete with zero hits after full Git+historical retained Actions SHA coverage. Correct source SHA/size evidence restored. Targeted generation-log clue workflow launched; its terminal state is pending. Local ZIP read remains blocked by execution/file visibility layer. real originals=0, real variants=0, coverage=0/1124, publication_ready=false, main untouched.",
+  "次回どこから開始するか": "First read historical-generation-log-clues-latest.json. Use recovered commands/file names to reconstruct only missing stages. Retry reuploaded source ZIP byte access with corrected identities. Never revert to the erroneous d32d/c828 source hashes or to endless final-ZIP searching.",
+  "schedule_policy": "hourly schedule and next scheduled execution are unchanged",
+  "branch": "math-problem-bank-bootstrap",
+  "main_touched": false,
+  "recorded_at_utc": "2026-08-24T12:12:30Z",
+  "resume_rule": "Do actual work, recover prior generated layers before recomputing, use only actually read source bytes, and never infer or count-force canonical records."
 }
