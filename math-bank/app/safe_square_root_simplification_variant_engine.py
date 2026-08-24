@@ -8,6 +8,7 @@ import math
 import re
 
 from safe_square_root_product_variant_engine import generate as generate_root_product
+from safe_square_root_quotient_variant_engine import generate as generate_root_quotient
 
 ROOT_RE = re.compile(r"√\s*(?P<n>\d+)")
 ANSWER_ROOT_RE = re.compile(r"^(?:(?P<a>\d+))?√(?P<b>\d+)$")
@@ -76,9 +77,10 @@ def _parse(parent: dict):
 
 
 def can_generate(parent: dict) -> tuple[bool, str]:
-    rows, _, reason = generate_root_product(parent, 1)
-    if rows:
-        return True, reason
+    for fn in (generate_root_product, generate_root_quotient):
+        rows, _, reason = fn(parent, 1)
+        if rows:
+            return True, reason
     if _parse(parent) is not None:
         return True, "single_integer_square_root_exact_simplification"
     if parent.get("figure_refs"):
@@ -91,9 +93,10 @@ def can_generate(parent: dict) -> tuple[bool, str]:
 def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     if count not in (1, 2, 3):
         raise ValueError("count must be 1, 2, or 3")
-    rows, evidence, reason = generate_root_product(parent, count)
-    if rows:
-        return rows, evidence, reason
+    for fn in (generate_root_product, generate_root_quotient):
+        rows, evidence, reason = fn(parent, count)
+        if rows:
+            return rows, evidence, reason
     parsed = _parse(parent)
     if parsed is None:
         ok, reason = can_generate(parent); assert not ok
