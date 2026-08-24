@@ -7,6 +7,7 @@ import json
 import math
 import re
 
+from safe_square_root_like_terms_variant_engine import generate as generate_root_like_terms
 from safe_square_root_product_variant_engine import generate as generate_root_product
 from safe_square_root_quotient_variant_engine import generate as generate_root_quotient
 
@@ -77,7 +78,7 @@ def _parse(parent: dict):
 
 
 def can_generate(parent: dict) -> tuple[bool, str]:
-    for fn in (generate_root_product, generate_root_quotient):
+    for fn in (generate_root_like_terms, generate_root_product, generate_root_quotient):
         rows, _, reason = fn(parent, 1)
         if rows:
             return True, reason
@@ -93,7 +94,7 @@ def can_generate(parent: dict) -> tuple[bool, str]:
 def generate(parent: dict, count: int) -> tuple[list[dict], list[dict], str]:
     if count not in (1, 2, 3):
         raise ValueError("count must be 1, 2, or 3")
-    for fn in (generate_root_product, generate_root_quotient):
+    for fn in (generate_root_like_terms, generate_root_product, generate_root_quotient):
         rows, evidence, reason = fn(parent, count)
         if rows:
             return rows, evidence, reason
