@@ -1,7 +1,7 @@
 const fs=require('fs');
 const {JSDOM,VirtualConsole}=require('jsdom');
 
-// 2026-08-25 manual-run marker: regenerate corrected cumulative all-168 evidence now; old 5407 report is invalid.
+// 2026-08-25 isolated pull-request runner: corrected cumulative all-168 evidence; old 5407 report is invalid.
 function tokenize(text){
   return (String(text||'').replace(/[’]/g,"'").match(/[A-Za-z]+(?:'[A-Za-z]+)*/g)||[]).map(x=>x.toLowerCase());
 }
@@ -47,12 +47,15 @@ function classifyToken(w,localAllowed,cumulativeAllowed,raw){
   const proper=/^[A-Z][A-Za-z]+(?:'[A-Za-z]+)?$/.test(String(raw||''))&&w.length>1;
   return {kind:proper?'PROPER_V7_LOOKUP_REQUIRED':'V7_LOOKUP_REQUIRED'};
 }
-async function waitFor(fn,ms=30000){const st=Date.now();while(Date.now()-st<ms){if(fn())return;await new Promise(r=>setTimeout(r,50));}throw new Error('runtime load timeout');}
+async function waitFor(fn,ms=30000){const st=Date.now();while(Date.now()-st<ms){try{if(fn())return;}catch(_){}await new Promise(r=>setTimeout(r,50));}throw new Error('data readiness timeout');}
+function datasetCount(d){let n=0;for(const g of Object.values(d||{}))for(const t of Object.values(g||{}))n+=Object.keys(t||{}).length;return n;}
 (async()=>{
   const browserErrors=[];const vc=new VirtualConsole();vc.on('jsdomError',e=>browserErrors.push(String(e&&e.message||e)));
   const dom=await JSDOM.fromFile('v10_stage2.html',{runScripts:'dangerously',resources:'usable',pretendToBeVisual:true,virtualConsole:vc});
   await new Promise((res,rej)=>{const t=setTimeout(()=>rej(new Error('load timeout')),20000);dom.window.addEventListener('load',()=>{clearTimeout(t);res()},{once:true});});
-  const w=dom.window;await waitFor(()=>w.V10_RUNTIME_LOAD_PROGRESS==='complete'&&!w.V10_RUNTIME_LOAD_ERROR);
+  const w=dom.window;
+  await waitFor(()=>datasetCount(w.eval('DATASETS'))===168,10000);
+  await waitFor(()=>{const m=w.V10_SUNSHINE_G1&&w.V10_SUNSHINE_G1['Get Ready 4'];return m&&allowedTokens(m).has('play');},10000);
   const DATASETS=w.eval('DATASETS');const META=w.eval('META');
   let total=0;const report=[];
   const counts={EXACT_ALLOWED:0,CUMULATIVE_ALLOWED:0,FUNCTION_TO_GRAMMAR:0,MORPHOLOGY_TO_GRAMMAR:0,PROPER_V7_LOOKUP_REQUIRED:0,V7_LOOKUP_REQUIRED:0};

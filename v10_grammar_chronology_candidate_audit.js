@@ -3,7 +3,7 @@ const {JSDOM,VirtualConsole}=require('jsdom');
 function norm(s){return String(s||'').replace(/[’]/g,"'").replace(/\s+/g,' ').trim();}
 function add(out,feature,where,text,match){if(!out[feature])out[feature]=[];if(out[feature].length<80)out[feature].push({where,text,match});}
 function scan(text,where,out){
- const s=norm(text), l=` ${s.toLowerCase()} `;
+ const s=norm(text);
  const rules=[
   ['WILL_FUTURE',/\bwill\b|\b(?:i|you|he|she|it|we|they)'ll\b/i],
   ['BE_GOING_TO',/\b(?:am|is|are|was|were) going to\b/i],
@@ -33,12 +33,13 @@ function scan(text,where,out){
  for(const [f,re] of rules){const m=s.match(re);if(m)add(out,f,where,s,m[0]);}
 }
 function sources(m,meta){const a=[];(m.sentences||[]).forEach((x,i)=>a.push([`sentence:${i+1}`,x]));(m.slashRows||[]).forEach((x,i)=>a.push([`slash:${i+1}`,x&&x.en]));(m.questions||[]).forEach((q,i)=>['prompt','answer','evidence'].forEach(k=>a.push([`A${i+1}.${k}`,q&&q[k]])));const b=meta&&Array.isArray(meta.questionSetB)?meta.questionSetB:[];b.forEach((q,i)=>['prompt','answer','evidence'].forEach(k=>a.push([`B${i+1}.${k}`,q&&q[k]])));return a;}
-async function waitFor(fn,ms=30000){const st=Date.now();while(Date.now()-st<ms){if(fn())return;await new Promise(r=>setTimeout(r,50));}throw new Error('runtime load timeout');}
+async function waitFor(fn,ms=30000){const st=Date.now();while(Date.now()-st<ms){try{if(fn())return;}catch(_){}await new Promise(r=>setTimeout(r,50));}throw new Error('data readiness timeout');}
+function datasetCount(d){let n=0;for(const g of Object.values(d||{}))for(const t of Object.values(g||{}))n+=Object.keys(t||{}).length;return n;}
 (async()=>{
  const errs=[];const vc=new VirtualConsole();vc.on('jsdomError',e=>errs.push(String(e&&e.message||e)));
  const dom=await JSDOM.fromFile('v10_stage2.html',{runScripts:'dangerously',resources:'usable',pretendToBeVisual:true,virtualConsole:vc});
  await new Promise((res,rej)=>{const t=setTimeout(()=>rej(new Error('load timeout')),20000);dom.window.addEventListener('load',()=>{clearTimeout(t);res()},{once:true});});
- const w=dom.window;await waitFor(()=>w.V10_RUNTIME_LOAD_PROGRESS==='complete'&&!w.V10_RUNTIME_LOAD_ERROR);
+ const w=dom.window;await waitFor(()=>datasetCount(w.eval('DATASETS'))===168,10000);
  const DATASETS=w.eval('DATASETS'),META=w.eval('META');let passages=0;const rows=[];const featureSections={};
  for(const grade of ['1','2','3'])for(const textbook of ['サンシャイン','ニューホライズン'])for(const [section,m] of Object.entries((DATASETS[grade]||{})[textbook]||{})){
   passages++;const found={};const meta=META[`${textbook}|${grade}|${section}`]||{};for(const [where,text] of sources(m,meta))scan(text,where,found);
