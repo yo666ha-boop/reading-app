@@ -8,6 +8,7 @@ import re
 from fractions import Fraction
 
 from safe_linear_equation_both_sides_variant_engine import generate as generate_both_sides
+from safe_linear_equation_parentheses_variant_engine import generate as generate_parentheses
 
 COEF=r"[+-]?\d*"
 INT=r"[+-]?\d+"
@@ -59,8 +60,9 @@ def _parse(parent:dict):
 
 
 def can_generate(parent:dict)->tuple[bool,str]:
-    rows,_,reason=generate_both_sides(parent,1)
-    if rows: return True,reason
+    for fn in (generate_parentheses, generate_both_sides):
+        rows,_,reason=fn(parent,1)
+        if rows: return True,reason
     if _parse(parent) is not None: return True,"linear_equation_ax_plus_b_equals_c_exact"
     if parent.get("figure_refs"): return False,"figure_parent"
     if parent.get("choices"): return False,"choice_parent"
@@ -69,8 +71,9 @@ def can_generate(parent:dict)->tuple[bool,str]:
 
 def generate(parent:dict,count:int):
     if count not in (1,2,3): raise ValueError("count must be 1, 2, or 3")
-    rows,evidence,reason=generate_both_sides(parent,count)
-    if rows: return rows,evidence,reason
+    for fn in (generate_parentheses, generate_both_sides):
+        rows,evidence,reason=fn(parent,count)
+        if rows: return rows,evidence,reason
     parsed=_parse(parent)
     if parsed is None:
         ok,reason=can_generate(parent); assert not ok
@@ -80,9 +83,7 @@ def generate(parent:dict,count:int):
     for i in range(1,count+1):
         a=Fraction(1+((seed>>(i*5))%8))
         if ((seed>>(i+19))&1): a=-a
-        x=Fraction(-8+((seed>>(i*7+2))%17))
-        b=Fraction(-9+((seed>>(i*9+3))%19))
-        c=a*x+b; sig=(_ft(a),_ft(b),_ft(c))
+        x=Fraction(-8+((seed>>(i*7+2))%17)); b=Fraction(-9+((seed>>(i*9+3))%19)); c=a*x+b; sig=(_ft(a),_ft(b),_ft(c))
         while sig==parent_sig or sig in seen:
             x+=1; c=a*x+b; sig=(_ft(a),_ft(b),_ft(c))
         seen.add(sig)
@@ -90,8 +91,7 @@ def generate(parent:dict,count:int):
         lhs="x" if a==1 else "-x" if a==-1 else f"{_ft(a)}x"
         if b>0: lhs+=f"+{_ft(b)}"
         elif b<0: lhs+=_ft(b)
-        equation=f"{lhs}={_ft(c)}"
-        nq=q[:match.start("eq")]+equation+q[match.end("eq"):]
+        equation=f"{lhs}={_ft(c)}"; nq=q[:match.start("eq")]+equation+q[match.end("eq"):]
         rows.append({"question":nq,"answer":f"x={_ft(x)}","explanation":f"{equation} より x=(c-b)/a={_ft(x)}。左辺へ代入して {_ft(c)} になることも確認。","numeric_signature":sig})
         evidence.append({"parent_sha256":_sha(parent),"method":"linear_equation_exact_inverse_and_forward_recomposition","parent_recalculation":f"x=({_ft(pc)}-({_ft(pb)}))/{_ft(pa)}={_ft(px)}","variant_recalculation":f"x=({_ft(c)}-({_ft(b)}))/{_ft(a)}={_ft(x)}","independent_check":f"a*x+b={_ft(a)}*{_ft(x)}+({_ft(b)})={_ft(c)} PASS"})
     return rows,evidence,"linear_equation_ax_plus_b_equals_c_exact"
