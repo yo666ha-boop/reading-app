@@ -1,0 +1,42 @@
+{
+  "workflow": "Persisted strict Q/A progress reconciliation",
+  "recorded_at_jst": "2026-08-25T01:58:00+09:00",
+  "reconciler": {
+    "path": "math-bank/scripts/reconcile_strict_qa_progress.py",
+    "commit": "ff7715e876b527f183a80037f219a538fb9017a9",
+    "tests_path": "math-bank/scripts/test_reconcile_strict_qa_progress.py",
+    "tests_commit": "2d53754101f6242085238a17f1077ab7a209c797",
+    "local_tests": "6/6 PASS"
+  },
+  "input_files": [
+    {
+      "path": "math-bank/recovered/current-session/standard-strict-proof-first3-20260825.jsonl",
+      "sha256": "2f9ff7c0d320becc7abc7bdba88ca23d551ece2d74d6c974765340976ba04598",
+      "records": 3,
+      "durable_commit": "eb0a8965e657284bfa32a7378fe85b2cddb68785",
+      "read_back_from_github": true
+    }
+  ],
+  "valid_unique_strict_records": 3,
+  "strict_counts": {
+    "Standard": 3,
+    "実力錬成": 0,
+    "Winpass": 0
+  },
+  "remaining_to_1271": {
+    "Standard": 314,
+    "実力錬成": 237,
+    "Winpass": 717
+  },
+  "remaining_total": 1268,
+  "duplicate_identical_copies": [],
+  "invalid_records": [],
+  "figure_refs_revalidated_in_strict_subset": 0,
+  "missing_figure_refs_in_strict_subset": 0,
+  "graphical_answers_with_asset_identity": 0,
+  "partial_progress_pass": true,
+  "complete_1271": false,
+  "combined_output_sha256_from_reconciliation": "97e248cf9be2e462209b97826aa3655f88082ffae6b46c79236c501ef57251d1",
+  "policy": "Progress counts only unique raw_id records that independently pass the strict Q/A/OOXML/score/figure/fingerprint validator. Identical duplicate copies do not increase progress; conflicting fingerprints or invalid records fail reconciliation.",
+  "runtime_limit": "The current runtime does not expose the recovered 554 draft bytes or the three source ZIP bytes, so no new Q/A offsets or graphical assets were inferred or fabricated."
+}
