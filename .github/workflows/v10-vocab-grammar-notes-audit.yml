@@ -14,7 +14,7 @@ on:
       - 'v10_interaction_metadata*.js'
       - '.github/workflows/v10-vocab-grammar-notes-audit.yml'
   pull_request:
-    branches: [main]
+    branches: [v10-audit-runner-base]
     paths:
       - 'v10_vocab_notes_candidate_audit.js'
       - 'v10_grammar_chronology_candidate_audit.js'
@@ -106,5 +106,5 @@ jobs:
           git add v10_vocab_notes_candidate_report.json v10_vocab_notes_candidate_audit.log v10_grammar_chronology_candidate_report.json v10_grammar_chronology_candidate_audit.log v10_notes_ui_test.log VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt
           if ! git diff --cached --quiet; then
             git commit -m 'Record cumulative vocabulary and grammar candidate audits [skip ci]'
-            git push origin HEAD:v10-vocab-grammar-notes-audit
+            git push origin HEAD:${{ github.head_ref || 'v10-vocab-grammar-notes-audit' }}
           fi
