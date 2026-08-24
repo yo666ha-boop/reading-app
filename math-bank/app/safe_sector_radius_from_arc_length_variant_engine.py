@@ -12,7 +12,7 @@ PI=Fraction(157,50)
 ANGLE_RE=re.compile(r"中心角\s*(?P<a>\d+)\s*(?:度|°)")
 LENGTH_RE=re.compile(r"弧(?:の長さ|長)?\s*(?:は|が)?\s*(?P<l>\d+(?:\.\d+)?)\s*cm")
 ANS_RE=re.compile(r"^(?P<r>\d+(?:\.\d+)?)\s*cm$")
-SAFE_TRIPLES=((10,Fraction(157,10),90),(5,Fraction(157,10),180),(8,Fraction(314,25),90),(6,Fraction(157,25),60),(12,Fraction(157,25),30),(15,Fraction(157,15),40))
+SAFE_TRIPLES=((10,Fraction(157,10),90),(5,Fraction(157,10),180),(8,Fraction(314,25),90),(6,Fraction(157,25),60),(12,Fraction(157,25),30),(15,Fraction(157,10),60))
 
 
 def _norm(v:object)->str:
