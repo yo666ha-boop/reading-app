@@ -1,9 +1,9 @@
 {
   "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 68,
-  "run_id": "32677376751",
-  "triggering_sha": "f7f99a447a07358bd6649468fabfd602ed7e8c3e",
-  "recorded_at_utc": "2026-08-24T00:41:37.062462+00:00",
+  "run_id": "32677405529",
+  "triggering_sha": "bfd4d7fd5e2b77d0a5a5c33b7f27b7b53556e2d6",
+  "recorded_at_utc": "2026-08-24T00:50:19.364768+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "failure",
@@ -15,6 +15,7 @@
   "engine_modules_auto_discovered": [
     "absolute_value",
     "affine",
+    "affine_intercept_from_slope_point",
     "affine_x_from_y",
     "average",
     "average_missing_value",
@@ -109,9 +110,10 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 95,
+  "engine_module_count": 96,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
+    "test_safe_affine_intercept_from_slope_point_variant_engine.py",
     "test_safe_affine_variant_engine.py",
     "test_safe_affine_x_from_y_variant_engine.py",
     "test_safe_average_missing_value_variant_engine.py",
@@ -204,9 +206,10 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 92,
+  "engine_test_count": 93,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
+    "test_affine_intercept_from_slope_point_unified_adapter.py",
     "test_affine_x_from_y_unified_adapter.py",
     "test_average_missing_value_unified_adapter.py",
     "test_average_total_unified_adapter.py",
@@ -291,7 +294,7 @@
     "test_two_dice_sum_probability_unified_adapter.py",
     "test_weighted_group_average_unified_adapter.py"
   ],
-  "adapter_test_count": 84,
+  "adapter_test_count": 85,
   "runtime_routes_auto_discovered": [
     "absolute_value",
     "affine",
