@@ -1,14 +1,14 @@
 {
-  "status": "FAIL_CI_DIAGNOSTIC",
+  "status": "PASS_CI",
   "persist_schema_version": 69,
-  "run_id": "32678693569",
-  "triggering_sha": "3b0898bf74d30101478361684d118a2f76352ff4",
-  "tested_checkout_sha": "3b0898bf74d30101478361684d118a2f76352ff4",
+  "run_id": "32678719158",
+  "triggering_sha": "0c2d94aa6f67163952ec2d1dd664e145918429c4",
+  "tested_checkout_sha": "0c2d94aa6f67163952ec2d1dd664e145918429c4",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T01:06:23.356426+00:00",
+  "recorded_at_utc": "2026-08-24T01:06:42.878354+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "failure",
+    "specialized_and_adapters": "success",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -271,6 +271,7 @@
     "test_prime_factorization_unified_adapter.py",
     "test_pythagorean_hypotenuse_unified_adapter.py",
     "test_pythagorean_leg_unified_adapter.py",
+    "test_quadratic_integer_roots_unified_adapter.py",
     "test_quadratic_square_equation_unified_adapter.py",
     "test_ratio_simplification_unified_adapter.py",
     "test_rectangle_perimeter_unified_adapter.py",
@@ -307,7 +308,7 @@
     "test_two_dice_sum_probability_unified_adapter.py",
     "test_weighted_group_average_unified_adapter.py"
   ],
-  "adapter_test_count": 88,
+  "adapter_test_count": 89,
   "runtime_routes_auto_discovered": [
     "absolute_value",
     "affine",
