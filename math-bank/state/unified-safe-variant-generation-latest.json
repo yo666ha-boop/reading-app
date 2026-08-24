@@ -1,9 +1,9 @@
 {
   "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 66,
-  "run_id": "32675235315",
-  "triggering_sha": "fade9dd089eb3fda9ece6855a90598a7fd0d1582",
-  "recorded_at_utc": "2026-08-23T23:59:45.665539+00:00",
+  "run_id": "32675271730",
+  "triggering_sha": "32cb77e5abc6ea07d6d64e0d6efdd4884e07aa15",
+  "recorded_at_utc": "2026-08-24T00:00:25.489676+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "failure",
@@ -69,6 +69,7 @@
     "rectangle_side_from_area",
     "rectangle_side_from_perimeter",
     "rectangular_prism_height_from_volume",
+    "rectangular_prism_side_from_volume",
     "rectangular_prism_surface_area",
     "rectangular_prism_volume",
     "regular_polygon_exterior_angle",
@@ -99,7 +100,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 85,
+  "engine_module_count": 86,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_variant_engine.py",
@@ -155,6 +156,7 @@
     "test_safe_rectangle_side_from_area_variant_engine.py",
     "test_safe_rectangle_side_from_perimeter_variant_engine.py",
     "test_safe_rectangular_prism_height_from_volume_variant_engine.py",
+    "test_safe_rectangular_prism_side_from_volume_variant_engine.py",
     "test_safe_rectangular_prism_surface_area_variant_engine.py",
     "test_safe_rectangular_prism_volume_variant_engine.py",
     "test_safe_regular_polygon_exterior_angle_variant_engine.py",
@@ -184,7 +186,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 82,
+  "engine_test_count": 83,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_average_missing_value_unified_adapter.py",
