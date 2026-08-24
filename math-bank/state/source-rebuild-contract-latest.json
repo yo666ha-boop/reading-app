@@ -2,11 +2,12 @@
   "workflow": "Math Source Rebuild Contract",
   "status": "PASS_CI",
   "mode": "AUDITED_RECONSTRUCTION_FROM_EXACT_SOURCE_INPUTS",
-  "run_id": "32720938968",
-  "triggering_sha": "61ae90a5dbbc7b99bdefb7bdb5c26f074499d1e0",
-  "tested_head_after_rebase": "4a30e23b3529968599efe3508ddeaf7e410d95f1",
+  "run_id": "32721380844",
+  "triggering_sha": "ae4ea33701e97a9f59abcb2f92d71a6991aba05f",
+  "tested_head_after_rebase": "14655750db86436c9769ffb92216d9ffc24bbe9e",
   "renamed_copy_suffix_supported": true,
   "exact_historical_source_sha_required": true,
+  "member_sha256_manifest_required_before_extraction": true,
   "hash_mismatch_fail_closed": true,
   "raw_1271_direct_promotion_forbidden": true,
   "historical_canonical_byte_claim_without_old_zip_forbidden": true,
@@ -29,6 +30,6 @@
     }
   },
   "real_source_archives_committed": false,
-  "next_if_sources_available": "identity -> 140-doc profile -> raw 717/237/317 -> evidence decisions for every Winpass record -> full 1124 validation",
-  "recorded_at_utc": "2026-08-24T11:29:45.282645+00:00"
+  "next_if_sources_available": "identity -> exact member SHA manifest -> 140-doc profile -> raw 717/237/317 -> evidence decisions for every Winpass record -> full 1124 validation",
+  "recorded_at_utc": "2026-08-24T11:30:10.836700+00:00"
 }
