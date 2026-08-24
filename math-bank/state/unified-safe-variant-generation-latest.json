@@ -1,11 +1,11 @@
 {
   "status": "PASS_CI",
   "persist_schema_version": 69,
-  "run_id": "32681546102",
-  "triggering_sha": "af2f8d010f3bac1edf9b638bc095f912d9827e50",
-  "tested_checkout_sha": "af2f8d010f3bac1edf9b638bc095f912d9827e50",
+  "run_id": "32681726244",
+  "triggering_sha": "23459d72a9b5e8789cad92b178d6c52fc4621898",
+  "tested_checkout_sha": "23459d72a9b5e8789cad92b178d6c52fc4621898",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T02:04:11.862345+00:00",
+  "recorded_at_utc": "2026-08-24T02:06:22.223211+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "success",
@@ -106,6 +106,7 @@
     "sphere_radius_from_surface_area",
     "sphere_radius_from_volume",
     "square_area",
+    "square_root_like_terms",
     "square_root_product",
     "square_root_quotient",
     "square_root_simplification",
@@ -126,7 +127,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 110,
+  "engine_module_count": 111,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_equation_from_two_points_variant_engine.py",
@@ -217,6 +218,7 @@
     "test_safe_sphere_radius_from_volume_variant_engine.py",
     "test_safe_sphere_variant_engine.py",
     "test_safe_square_area_variant_engine.py",
+    "test_safe_square_root_like_terms_variant_engine.py",
     "test_safe_square_root_product_variant_engine.py",
     "test_safe_square_root_quotient_variant_engine.py",
     "test_safe_square_root_simplification_variant_engine.py",
@@ -236,7 +238,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 107,
+  "engine_test_count": 108,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_affine_equation_from_two_points_unified_adapter.py",
@@ -321,6 +323,7 @@
     "test_sphere_radius_from_volume_unified_adapter.py",
     "test_sphere_unified_adapter.py",
     "test_square_area_unified_adapter.py",
+    "test_square_root_like_terms_unified_adapter.py",
     "test_square_root_product_unified_adapter.py",
     "test_square_root_quotient_unified_adapter.py",
     "test_square_side_from_area_unified_adapter.py",
@@ -338,7 +341,7 @@
     "test_two_dice_sum_probability_unified_adapter.py",
     "test_weighted_group_average_unified_adapter.py"
   ],
-  "adapter_test_count": 99,
+  "adapter_test_count": 100,
   "runtime_routes_auto_discovered": [
     "absolute_value",
     "affine",
