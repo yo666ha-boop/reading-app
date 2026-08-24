@@ -1,9 +1,9 @@
 {
   "status": "PASS_CI",
   "persist_schema_version": 66,
-  "run_id": "32675360537",
-  "triggering_sha": "1f65b4230d9f4b40acaa3d3cbf879b9f8dfd1172",
-  "recorded_at_utc": "2026-08-24T00:02:19.305727+00:00",
+  "run_id": "32676331119",
+  "triggering_sha": "64b270ea8fe556709042bec8e9855a95629cdb64",
+  "recorded_at_utc": "2026-08-24T00:20:00.215124+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "success",
@@ -86,6 +86,7 @@
     "sphere_radius_from_volume",
     "square_area",
     "square_root_simplification",
+    "square_side_from_area",
     "symmetric_linear_system",
     "tax_inclusive_price",
     "time_from_distance_speed",
@@ -100,7 +101,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 86,
+  "engine_module_count": 87,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_variant_engine.py",
@@ -173,6 +174,7 @@
     "test_safe_sphere_variant_engine.py",
     "test_safe_square_area_variant_engine.py",
     "test_safe_square_root_simplification_variant_engine.py",
+    "test_safe_square_side_from_area_variant_engine.py",
     "test_safe_symmetric_linear_system_variant_engine.py",
     "test_safe_tax_inclusive_price_variant_engine.py",
     "test_safe_time_from_distance_speed_variant_engine.py",
@@ -186,7 +188,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 83,
+  "engine_test_count": 84,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_average_missing_value_unified_adapter.py",
