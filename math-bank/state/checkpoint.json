@@ -1,28 +1,115 @@
 {
-  "project":"mikami-math-problem-bank",
-  "status":"IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP",
-  "current_stage":"SOURCE_REBUILD_AND_REBUILT_PARENT_VARIANT_APP_BRIDGE_PASS_WAITING_REAL_SOURCE_BYTES",
-  "base_target":{"original_records":1124,"original_by_source":{"Winpass":570,"実力錬成":237,"Standard":317},"historical_baseline_variants_reference_only":107,"historical_final_total_reference":1231,"historical_final_zip_sha256_reference":"eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175","historical_final_zip_bytes_currently_available":false,"new_rebuild_must_be_fully_reaudited":true},
-  "reuploaded_source_route":{"primary":true,"old_canonical_search_primary":false,"historical_recovered_source_identity":{"Winpass":{"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","bytes":8296042},"実力錬成":{"sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","bytes":7287279},"Standard":{"sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","bytes":9689250}},"identity_verified_this_run":false,"local_read_result":"BLOCKED_RUNTIME_FILES_NOT_EXPOSED","local_read_interpretation":"file visibility failure only; not corruption or mismatch evidence"},
-  "historical_source_forensics":{"documents_before_dedupe":246,"duplicate_documents":106,"documents":{"Winpass":81,"実力錬成":27,"Standard":32,"total":140},"raw_records":{"Winpass":717,"実力錬成":237,"Standard":317,"total":1271},"raw_quality_reference":{"questions":"1271/1271","answers":"1271/1271","figure_refs":41,"missing_figure_refs":0},"winpass_normalization":"717->570 requires evidence for every decision; count forcing forbidden"},
-  "historical_generated_layer_recovery":{"exact_payload_scan":{"git_blobs_sha256_checked":4642,"actions_artifacts_downloaded":237,"artifact_members_sha256_checked":752,"download_failures":0,"exact_hits":0,"scan_complete":true},"historical_generation_log_clue_scan":{"runs_in_window":212,"completed_runs":212,"run_download_failures":0,"log_members_scanned":1616,"matching_lines":9,"scan_complete":true,"usable_complete_pipeline_recovered":false}},
-  "rebuild_safety_implementation":{"raw_validator":"IMPLEMENTED","winpass_717_fingerprint_review_queue":"IMPLEMENTED","winpass_decision_exact_record_fingerprint_binding":{"implemented":true,"rule":"decision record_fingerprint_sha256 must exactly match current raw record; stale/missing fingerprint FAIL"},"winpass_570_materializer":{"implemented":true,"rule":"normalization audit PASS required; raw order preserved; exact fingerprint rechecked; provenance emitted"},"rebuilt_1124_originals_validator":{"implemented":true,"gates":["570/237/317 and total1124","nonblank Q&A/id","global id uniqueness","global extraction fingerprint uniqueness","figure resolution","generated variant contamination forbidden","duplicate Q&A review-only, never auto-delete"]},"rebuilt_app_mapping_gate":{"implemented":true,"rule":"all1124 app records must pass schema and exact record-bound source evidence for grade/unit/skill/question_format/difficulty; guessed defaults forbidden"},"immutable_mapped_originals_freeze":{"implemented":true,"ordering":"1124 candidate validation -> evidence-bound app mapping -> freeze","gates":["fresh1124 validation","fresh mapping validation","fixed source order Winpass->実力錬成->Standard","source-local order preserved","full record SHA per parent","extraction fingerprint per parent","combined payload SHA256","full record SHA sequence SHA256","mapping evidence SHA256","mutation after freeze forbidden"]},"frozen_manifest_revalidator":{"implemented":true,"rule":"records+manifest exact binding required immediately before variant parent use"},"rebuilt_dynamic_variant_mode":{"implemented":true,"rule":"old1231/107 legacy path preserved; rebuilt mode dynamically anchors expanded layer to immutable mapped1124 combined payload SHA; old1231 BASE and historical107 bodies not required"},"rebuilt_dynamic_app_compose":{"implemented":true,"rule":"immutable mapped1124 snapshot retained; only strict rebuilt-anchor variants appended"}},
-  "source_rebuild_contract":{"latest_validation":{"status":"PASS_CI","run_id":"32729483035","triggering_sha":"8045cee76773ca4d665a547f584309caeb9387d0","tested_checkout_sha":"8045cee76773ca4d665a547f584309caeb9387d0","tested_checkout_equals_triggering_sha":true,"job_status":"success","stale_run_overwrite_guard":true},"repaired_failure":{"run_id":"32729218852","triggering_sha":"7a9dea537af37c04c65a8da3353cb4f755261072","failure":"test_verify_source_archives expected precise HASH_MISMATCH but verifier emitted generic HASH_OR_SIZE_MISMATCH","repair":"restored precise HASH_MISMATCH / SIZE_MISMATCH / HASH_OR_SIZE_MISMATCH diagnostics","fixed_sha":"8045cee76773ca4d665a547f584309caeb9387d0"}},
-  "rebuilt_parent_variant_app_bridge":{"latest_validation":{"status":"PASS_CI","run_id":"32729389958","triggering_sha":"0c1748b6a4cbcef91681148efd0d8e0894d0257f","tested_checkout_sha":"0c1748b6a4cbcef91681148efd0d8e0894d0257f","tested_checkout_equals_triggering_sha":true,"job_status":"success","stale_run_overwrite_guard":true},"gates":{"mapping_before_freeze":true,"immutable_full_record_sha_binding":true,"freeze_manifest_revalidation":true,"dynamic_rebuilt_base_anchor":true,"old_1231_not_required_in_rebuilt_mode":true,"historical_107_bodies_not_required":true,"variant_parent_record_sha256_required":true,"dynamic_rebuilt_app_compose":true}},
-  "recovery_state":{"modern_actions":{"all_artifacts_seen":530,"candidate_artifacts":504,"reused_verified_artifacts":503,"downloaded_artifacts_this_run":1,"members_sha256_checked":1280,"bytes_hashed":99098496,"download_failures":0,"canonical_hits":0,"valid_audit_hits":0,"pair_hits":0,"scan_complete":true,"canonical_absence_proven":true},"branch_tag":{"readable_blobs":1901,"checked":1901,"exact_coverage_complete":true,"pair_hits":0},"pr_refs":{"readable_blobs":1419,"checked":1419,"exact_coverage_complete":true,"pair_hits":0}},
-  "expanded_variant_goal":{"parent_target":1124,"expanded_verified_variants":0,"expanded_parent_coverage":0,"manual_generation_queue":"FINGERPRINT_BOUND; MATERIALIZE_ONLY_AFTER_IMMUTABLE_MAPPED_REBUILT_ORIGINALS"},
-  "expanded_generation_capability":{"latest_confirmed_validation":{"status":"PASS_CI","schema":69,"run_id":"32719871296","triggering_sha":"e952a09a334c07674846e415f853e32e58ee1266","tested_checkout_equals_triggering_sha":true,"compile":"success","specialized_and_adapters":"success","core":"success","parent_contract":"success","legacy_empty_choices":"success"},"actual_real_variants_generated":0,"parent_record_sha256_required":true},
-  "CI_browser_A4":{"latest_audit":{"run_id":"32729327103","overall_result":"success","triggering_sha":"935379cdcdfabccac0569a9d7ee5a49054238fa0"},"real_rebuilt_browser":"BLOCKED_UNTIL_IMMUTABLE_REAL_1124_BASE","real_A4_six_pdfs":"BLOCKED_UNTIL_IMMUTABLE_REAL_1124_BASE","publication_ready":false},
-  "data_rebuild_progress":{"source_zip_bytes_read_this_run":false,"extracted_documents_current_runtime":{"Winpass":0,"実力錬成":0,"Standard":0},"raw_records_current_runtime":{"Winpass":0,"実力錬成":0,"Standard":0},"validated_originals":{"Winpass":0,"実力錬成":0,"Standard":0,"total":0},"immutable_mapped_rebuilt_originals":0,"variants":0,"parent_coverage":"0/1124"},
-  "今回完了した内容":["開始時にlive HEAD/checkpoint/variant/unified/ci/auto-complete/Actions/既完了recoveryを実読し、再構築主線の先行地点へ追従。","Winpass717 review decisionをcurrent raw record fingerprintへ必須bindingし、stale/missing decision fingerprintをFAILにした。","evidence decisionsを570 originalsへ適用するfail-closed materializerを実装。audit PASSなしでは出力せず、raw順と全採用record provenanceを保持。","570/237/317のglobal1124 candidate validatorを実装し、generated contamination/global ID+fingerprint/figure/Q&Aを検査。Q&A重複は件数合わせに自動削除せずreview evidenceのみ。","1124 app mapping evidence gateを実装。grade/unit/skill/question_format/difficultyをsource locatorとexact record SHAへ結合し、証拠なしdefault補完を禁止。","freeze順序をmapping後へ修正。immutable mapped1124のcombined payload SHA/full record SHA sequence/mapping evidence SHAを固定し、freeze manifest再検証gateを追加。","旧1231+107 pathを壊さず、rebuilt1124専用dynamic-anchor expanded validator/initializer/generator bridgeを実装。旧final ZIP SHAやhistorical107 bodiesなしで新immutable1124から安全類題へ進める。","rebuilt1124+strict variants専用app composerを実装し、immutable rebuilt base snapshotからdynamic app recordsへ直結。","Math Rebuilt Parent Variant Bridgeを新設し、run32729389958 / exact SHA0c1748... でdynamic rebuilt anchor+app composeまでPASS。","Math Source Rebuild Contractをterminal always-persist+stale guardへ強化。run32729218852の実FAILをFULL logで特定し、source archive mismatch status regressionを修正。その後run32729483035 / exact SHA8045cee... でPASS。","Actions recoveryは530 artifacts / 504 candidates / 503 reused / 1280 members / failures0 / scan_complete=trueまで前進。"],
-  "現在どの工程にいるか":"実source ZIP bytesのruntime露出待ち。ただし露出後の identity -> raw -> Winpass evidence570 -> global1124 -> source-evidence app mapping -> immutable mapped freeze -> manifest revalidation -> rebuilt dynamic variants -> rebuilt app compose までの実行契約はCI PASS済み。",
-  "残っている作業":["runtimeに3 source ZIP bytesが見えた瞬間にhistorical SHA/size/CRC照合→member SHA manifest→246/140 doc profile→recursive schema paths→実raw717/237/317抽出→raw QA/figure/fingerprint gate。","Winpass717全件をfingerprint-bound evidence decision→audit→570 materialize+provenance。","570+237+317 global1124 candidate PASS→1124 source-evidence app mapping PASS→immutable mapped freeze+manifest revalidation。","実親1124のadaptive safe generation＋fingerprint-bound manual queue→strict validation1124/1124→dynamic rebuilt app records。","real Chromium/Firefox/WebKit iPhone/Chromium Fire→A4中1/2/3問題/解答6本→strict release→PUBLICATION_READY→isolated public verification。"],
-  "正確停止点":"Source rebuild contract PASS run32729483035 exact SHA8045cee...; rebuilt parent->variant->app bridge PASS run32729389958 exact SHA0c1748...; Actions scan530/504/1280 failures0. Actual source ZIP bytes still not exposed in this runtime, therefore real originals0/1124, variants0, coverage0/1124, real browser/A4 blocked, publication_ready=false. main untouched.",
-  "次回どこから開始するか":"live HEAD/checkpoint/variant/source-contract/rebuilt-bridge/unified/ci/actionsを再読→3 source ZIP byte visibilityを最優先で再試行。見えれば即全再構築chainを実データで実行。見えなければ残るsafe rebuild/app release binding gateを実装し続ける。",
-  "schedule_policy":"hourly schedule and next scheduled execution unchanged",
-  "branch":"math-problem-bank-bootstrap",
-  "branch_head_observed_before_checkpoint":"394b97a2bb48ba3c0ef797b38b7e0038ab18111d",
-  "main_touched":false,
-  "recorded_at_utc":"2026-08-24T12:55:30Z",
-  "resume_rule":"Use only actually read source bytes and exact evidence. Never count-force, never promote raw/diagnostic data directly, never map without source evidence, and never let stale decisions or stale CI states bind to changed records."
+  "project": "mikami-math-problem-bank",
+  "status": "IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP",
+  "current_stage": "SOURCE_REBUILD_PRIMARY_WAITING_REAL_SOURCE_BYTES",
+  "base_target": {
+    "original_records": 1124,
+    "original_by_source": {"Winpass": 570, "実力錬成": 237, "Standard": 317},
+    "historical_baseline_variants_reference_only": 107,
+    "historical_final_total_reference": 1231,
+    "historical_final_zip_sha256_reference": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
+    "historical_final_zip_bytes_currently_available": false,
+    "new_rebuild_must_be_fully_reaudited": true
+  },
+  "reuploaded_source_route": {
+    "primary": true,
+    "old_canonical_search_primary": false,
+    "old_canonical_ref_rescan_forbidden": true,
+    "requested_upload_names": ["スタンダードデータ(1).zip", "中学実力錬成データ(1).zip", "winpassデータ(1).zip"],
+    "historical_recovered_source_identity": {
+      "Winpass": {"sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf", "bytes": 8296042},
+      "実力錬成": {"sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33", "bytes": 7287279},
+      "Standard": {"sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6", "bytes": 9689250}
+    },
+    "identity_verified_this_run": false,
+    "local_read_result": "BLOCKED_FILE_LIBRARY_DID_NOT_RETURN_THREE_ZIPS",
+    "local_read_interpretation": "visibility/retrieval failure only; no corruption or mismatch inference"
+  },
+  "historical_source_forensics": {
+    "documents_before_dedupe": 246,
+    "duplicate_documents": 106,
+    "documents": {"Winpass": 81, "実力錬成": 27, "Standard": 32, "total": 140},
+    "raw_records": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
+    "raw_quality_reference": {"questions": "1271/1271", "answers": "1271/1271", "figure_refs": 41, "missing_figure_refs": 0},
+    "winpass_normalization": "717->570 requires evidence for every decision; count forcing forbidden"
+  },
+  "historical_generated_layer_recovery": {
+    "reference_only": true,
+    "do_not_repeat_exact_complete_scans": true,
+    "exact_payload_scan": {"git_blobs_sha256_checked": 4642, "actions_artifacts_downloaded": 237, "artifact_members_sha256_checked": 752, "download_failures": 0, "exact_hits": 0, "scan_complete": true},
+    "historical_generation_log_clue_scan": {"runs_in_window": 212, "completed_runs": 212, "run_download_failures": 0, "log_members_scanned": 1616, "matching_lines": 9, "scan_complete": true, "usable_complete_pipeline_recovered": false}
+  },
+  "rebuild_safety_implementation": {
+    "raw_validator": "IMPLEMENTED",
+    "winpass_717_fingerprint_review_queue": "IMPLEMENTED",
+    "winpass_decision_exact_record_fingerprint_binding": {"implemented": true, "rule": "decision record_fingerprint_sha256 must exactly match current raw record; stale/missing fingerprint FAIL"},
+    "winpass_570_materializer": {"implemented": true, "rule": "normalization audit PASS required; raw order preserved; exact fingerprint rechecked; provenance emitted"},
+    "rebuilt_1124_originals_validator": {"implemented": true, "gates": ["570/237/317 and total1124", "nonblank Q&A/id", "global id uniqueness", "global extraction fingerprint uniqueness", "figure resolution", "generated variant contamination forbidden", "duplicate Q&A review-only, never auto-delete"]},
+    "rebuilt_app_mapping_gate": {"implemented": true, "rule": "all1124 app records must pass schema and exact record-bound source evidence for grade/unit/skill/question_format/difficulty; guessed defaults forbidden"},
+    "immutable_mapped_originals_freeze": {"implemented": true, "ordering": "1124 candidate validation -> evidence-bound app mapping -> freeze"},
+    "frozen_manifest_revalidator": {"implemented": true, "rule": "records+manifest exact binding required immediately before variant parent use"},
+    "rebuilt_dynamic_variant_mode": {"implemented": true, "rule": "historical107 bodies are reference-only; rebuilt mode generates from immutable mapped1124 real parents"},
+    "rebuilt_dynamic_app_compose": {"implemented": true, "rule": "immutable mapped1124 snapshot retained; only strict rebuilt-anchor variants appended"},
+    "source_verifier_policy_updated_this_run": true
+  },
+  "source_rebuild_contract": {
+    "previous_latest_validation": {"status": "PASS_CI", "run_id": "32729483035", "triggering_sha": "8045cee76773ca4d665a547f584309caeb9387d0", "tested_checkout_sha": "8045cee76773ca4d665a547f584309caeb9387d0"},
+    "current_policy_commit": "6e685fbbc2cbe5b852976e8f203ad234bf2e24b3",
+    "current_policy_change": "Removed legacy generated-layer-first recovery guidance; exact 3-source rebuild and full reaudit is primary, historical107 bodies reference-only.",
+    "current_commit_workflow_runs_seen": 0,
+    "ci_status_for_current_policy_commit": "NO_PR_TRIGGERED_RUN_RETURNED_BY_CONNECTOR_YET"
+  },
+  "rebuilt_parent_variant_app_bridge": {
+    "latest_validation": {"status": "PASS_CI", "run_id": "32729389958", "triggering_sha": "0c1748b6a4cbcef91681148efd0d8e0894d0257f", "tested_checkout_sha": "0c1748b6a4cbcef91681148efd0d8e0894d0257f"},
+    "gates": {"mapping_before_freeze": true, "immutable_full_record_sha_binding": true, "freeze_manifest_revalidation": true, "dynamic_rebuilt_base_anchor": true, "old_1231_not_required_in_rebuilt_mode": true, "historical_107_bodies_not_required": true, "variant_parent_record_sha256_required": true, "dynamic_rebuilt_app_compose": true}
+  },
+  "recovery_state": {
+    "modern_actions": {"all_artifacts_seen": 530, "candidate_artifacts": 504, "reused_verified_artifacts": 503, "members_sha256_checked": 1280, "download_failures": 0, "canonical_hits": 0, "valid_audit_hits": 0, "pair_hits": 0, "scan_complete": true, "canonical_absence_proven": true},
+    "branch_tag": {"readable_blobs": 1901, "checked": 1901, "exact_coverage_complete": true, "pair_hits": 0},
+    "pr_refs": {"readable_blobs": 1419, "checked": 1419, "exact_coverage_complete": true, "pair_hits": 0}
+  },
+  "expanded_variant_goal": {"parent_target": 1124, "expanded_verified_variants": 0, "expanded_parent_coverage": 0, "manual_generation_queue": "FINGERPRINT_BOUND; MATERIALIZE_ONLY_AFTER_IMMUTABLE_MAPPED_REBUILT_ORIGINALS"},
+  "expanded_generation_capability": {"latest_confirmed_validation": {"status": "PASS_CI", "schema": 69, "run_id": "32719871296", "triggering_sha": "e952a09a334c07674846e415f853e32e58ee1266", "compile": "success", "specialized_and_adapters": "success", "core": "success", "parent_contract": "success", "legacy_empty_choices": "success"}, "actual_real_variants_generated": 0, "parent_record_sha256_required": true},
+  "CI_browser_A4": {"latest_audit": {"run_id": "32729327103", "overall_result": "success", "triggering_sha": "935379cdcdfabccac0569a9d7ee5a49054238fa0"}, "real_rebuilt_browser": "BLOCKED_UNTIL_IMMUTABLE_REAL_1124_BASE", "real_A4_six_pdfs": "BLOCKED_UNTIL_IMMUTABLE_REAL_1124_BASE", "publication_ready": false},
+  "data_rebuild_progress": {
+    "source_zip_bytes_read_this_run": false,
+    "zip_identity_this_run": {"Winpass": null, "実力錬成": null, "Standard": null},
+    "extracted_documents_current_runtime": {"Winpass": 0, "実力錬成": 0, "Standard": 0},
+    "raw_records_current_runtime": {"Winpass": 0, "実力錬成": 0, "Standard": 0},
+    "validated_originals": {"Winpass": 0, "実力錬成": 0, "Standard": 0, "total": 0},
+    "problem_answer_mismatches": 0,
+    "duplicates_current_runtime": 0,
+    "figure_refs_current_runtime": 0,
+    "missing_figures_current_runtime": 0,
+    "immutable_mapped_rebuilt_originals": 0,
+    "variants": 0,
+    "parent_coverage": "0/1124",
+    "manual_queue": 0
+  },
+  "今回完了した内容": [
+    "live branch HEADを再確認し、開始時HEAD abc7600aa4a7fcb60f56079df5608d1f70cc34d6 を実読した。",
+    "checkpointを実読し、旧canonical exact-complete scansを再走査せず、3 source rebuildを主線として継続した。",
+    "File Libraryでスタンダードデータ/中学実力錬成データ/winpassデータを名称・数学・強いrecencyで検索したが3ZIP実体は返らなかったため、破損推定せずruntime未露出扱いを維持した。",
+    "verify_source_archives.pyを実読し、末尾nextに残っていた旧方針 recover prior generated layers first を発見した。",
+    "source verifier policyを修正し、historical107 bodiesは実体がない限りreference-only、3 source raw rebuild/full reaudit/immutable real parents/new safe generationを正規順序にした。",
+    "修正をbranch math-problem-bank-bootstrapへ commit 6e685fbbc2cbe5b852976e8f203ad234bf2e24b3 として保存した。",
+    "current policy commitに対するPR-triggered workflow runはconnector取得時点で0件。mainは未変更。"
+  ],
+  "現在どの工程にいるか": "3 source ZIP actual bytes visibility待ち。露出後は identity->member manifest/doc profile->raw717/237/317->Winpass evidence570->global1124->source-evidence app mapping->immutable freeze->manifest revalidation->new safe variants->app/browser/A4/publication の順で進める。",
+  "残っている作業": [
+    "runtimeに3 source ZIP bytesが見えた瞬間にSHA/size/CRC/member list/member SHA/document countsを記録。",
+    "問題・解答・解説・図版を文書/設問単位で抽出し、実力錬成237・Standard317を再確認。",
+    "Winpass717を重複・非問題要素・解答不一致・教材構造のfingerprint-bound evidenceで570へ決定し、件数合わせ禁止を維持。",
+    "570+237+317 global1124 candidate PASS->evidence-bound mapping->immutable freeze。",
+    "実親1124からsafe generationで最低1問、独立再計算可能型最大3問を生成し、manual queueも個別処理。",
+    "real Chromium/Firefox/WebKit iPhone/Chromium Fire、A4 6本、strict release、PUBLICATION_READY、isolated public verificationを連続実行。"
+  ],
+  "正確停止点": "Policy commit 6e685fbbc2cbe5b852976e8f203ad234bf2e24b3 saved on math-problem-bank-bootstrap. File Library did not expose the three requested ZIP bytes in this run, so real originals remain 0/1124, variants0, coverage0/1124, browser/A4/publication blocked. main untouched.",
+  "次回どこから開始するか": "live HEAD/checkpoint/source-verifier/variant/unified/CIを再読->3 source ZIP byte visibilityを最優先再試行。見えれば旧canonical探索へ戻らず即実データ再構築chainへ進む。見えなければ3-source rebuild後段のfail-closed gateとrelease bindingのみ前進させる。",
+  "schedule_policy": "hourly schedule and next scheduled execution unchanged",
+  "branch": "math-problem-bank-bootstrap",
+  "branch_head_observed_before_checkpoint": "6e685fbbc2cbe5b852976e8f203ad234bf2e24b3",
+  "main_touched": false,
+  "recorded_at_utc": "2026-08-24T13:00:00Z",
+  "resume_rule": "Use only actually read source bytes and exact evidence. Never count-force, never promote raw diagnostic data directly, never reconstruct historical107 bodies from counts, never map without source evidence, and never let stale decisions or stale CI states bind to changed records."
 }
