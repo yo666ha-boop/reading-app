@@ -6,7 +6,7 @@ from validate_expanded_variant_layer import numeric_tokens,parent_record_sha256
 NOW="2026-08-24T00:00:00Z"
 def main():
     p=copy.deepcopy(make_base()[0]);p["id"]="U-CONE-R-S";p["question"]="円周率を3.14とする。母線7cm、表面積188.4cm²の円すいの半径を求めなさい。";p["answer"]="5cm";p["choices"]=None;p["figure_refs"]=[];p["source"]["is_generated_variant"]=False;p["source"]["parent_id"]=None;p["variant_group"]=None
-    rows,prov,reason=generate_parent(p,3,NOW);assert reason.startswith("specialized:cone_surface_area:cone_radius_from_surface_area_pi_3_14_exact_integer_root");assert len(rows)==len(prov)==3
+    rows,prov,reason=generate_parent(p,3,NOW);assert reason=="specialized:cone_volume_pi_3_14:cone_radius_from_surface_area_pi_3_14_exact_integer_root";assert len(rows)==len(prov)==3
     ps=tuple(numeric_tokens(p["question"]));ss={tuple(numeric_tokens(r["question"])) for r in rows};assert ps not in ss and len(ss)==3
     expected=parent_record_sha256(p)
     for row,ev in zip(rows,prov):
