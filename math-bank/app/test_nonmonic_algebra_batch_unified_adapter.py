@@ -4,7 +4,7 @@ import copy
 
 from generate_all_safe_verified_variants import generate_parent
 from test_expanded_variant_layer import make_base
-from validate_expanded_variant_layer import parent_record_sha256
+from validate_expanded_variant_layer import numeric_tokens, parent_record_sha256
 
 NOW = "2026-08-24T06:25:00Z"
 
@@ -26,7 +26,9 @@ def check(p: dict, expected_engine: str, expected_reason: str) -> None:
     rows, prov, reason = generate_parent(p, 3, NOW)
     assert reason.startswith(f"specialized:{expected_engine}:{expected_reason}"), reason
     assert len(rows) == len(prov) == 3
-    assert len({tuple(r["numeric_signature"]) for r in rows}) == 3
+    # numeric_signature is an engine-internal helper and is intentionally not
+    # part of the normalized app record.  Verify the public numeric payload.
+    assert len({tuple(numeric_tokens(r["question"])) for r in rows}) == 3
     assert len({r["question"] for r in rows}) == 3
     assert all(r["question"] != p["question"] for r in rows)
     expected_sha = parent_record_sha256(p)
