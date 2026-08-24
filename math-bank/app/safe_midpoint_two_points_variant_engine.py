@@ -1,8 +1,9 @@
 from __future__ import annotations
 
-"""Fail-closed exact engine for the midpoint of two explicit coordinate points."""
+"""Fail-closed exact engine for midpoint coordinate families."""
 import hashlib,json,re
 from fractions import Fraction
+from safe_midpoint_endpoint_from_midpoint_variant_engine import generate as generate_endpoint_from_midpoint
 
 POINT_RE=re.compile(r"[（(]\s*(?P<x>-?\d+)\s*[,，、]\s*(?P<y>-?\d+)\s*[）)]")
 ANS_RE=re.compile(r"^[（(]\s*(?P<x>-?\d+(?:/\d+)?)\s*[,，、]\s*(?P<y>-?\d+(?:/\d+)?)\s*[）)]$")
@@ -24,6 +25,8 @@ def _parse(parent:dict):
     return ps,x1,y1,x2,y2,mx,my
 
 def can_generate(parent:dict):
+    rows,_,reason=generate_endpoint_from_midpoint(parent,1)
+    if rows:return True,reason
     if _parse(parent) is not None:return True,"two_integer_points_midpoint_exact"
     if parent.get("figure_refs"):return False,"figure_parent"
     if parent.get("choices"):return False,"choice_parent"
@@ -31,6 +34,8 @@ def can_generate(parent:dict):
 
 def generate(parent:dict,count:int):
     if count not in (1,2,3):raise ValueError("count must be 1, 2, or 3")
+    rows,ev,reason=generate_endpoint_from_midpoint(parent,count)
+    if rows:return rows,ev,reason
     parsed=_parse(parent)
     if parsed is None:return [],[],can_generate(parent)[1]
     ps,px1,py1,px2,py2,pmx,pmy=parsed;q=_norm(parent.get("question"));seed=int(_sha(parent)[:12],16);rows=[];ev=[];seen=set();parent_sig=(px1,py1,px2,py2)
