@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
 from typing import Any
 
@@ -174,6 +174,11 @@ def locate_record(record: dict, structures: dict, assets: dict) -> dict:
     if doc is None:
         result["reasons"].append("source document absent from OOXML structure report")
         return result
+    document_sha256 = doc.get("document_sha256")
+    if isinstance(document_sha256, str) and len(document_sha256) == 64:
+        result["source_document_sha256"] = document_sha256
+    else:
+        result["reasons"].append("source document SHA256 absent or invalid in OOXML structure report")
 
     qmatches = exact_question_spans(doc, record.get("question", ""))
     result["question_match_count"] = len(qmatches)
@@ -214,6 +219,7 @@ def locate_record(record: dict, structures: dict, assets: dict) -> dict:
         len(qmatches) == 1
         and bool(answer)
         and result["answer_match_count"] == 1
+        and isinstance(result.get("source_document_sha256"), str)
         and not any("image asset identity unavailable" in reason for reason in result["reasons"])
     )
     result["locator_ready"] = required_locator_ready
@@ -241,8 +247,8 @@ def build_report(drafts: list[dict], structures: dict, assets: dict) -> dict:
         "policy": (
             "Only whitespace is normalized. Question offsets require exactly one ordered paragraph-span equality; "
             "text answer offsets require exactly one paragraph containing the exact answer text. Ambiguous or missing "
-            "matches remain unresolved. Graphical answers require explicit relationship/asset evidence. This locator "
-            "does not itself declare strict completion or infer score evidence."
+            "matches remain unresolved. Source document SHA must come from the OOXML report. Graphical answers require "
+            "explicit relationship/asset evidence. This locator does not itself declare strict completion or infer score evidence."
         ),
     }
 
