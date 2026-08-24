@@ -16,6 +16,7 @@ BRANCH='math-problem-bank-bootstrap'
 SINCE='2026-08-19T00:00:00Z'
 UNTIL='2026-08-21T00:00:00Z'
 OUT=Path('math-bank/state/historical-generation-log-clues-latest.json')
+PERSISTED_RUN_LEDGER=Path('math-bank/state/actions-log-recovery-latest.json')
 TERMS=[
  'b532d64f83bb0cb0444a6b556e2490a9b56366d5c3916256ae2e96572eb1abe3',
  'c50053ba1765e81e256aaa95b67f94071cec3b6bb625deef801b71b0af5ae984',
@@ -27,6 +28,7 @@ TERMS=[
  '1271/1271','717/717','source-forensics','source recovery','source-recovery',
  'stage4_answer','stage5_question','answer_asset_index','combined_diagnostic',
  'raw_scoring_slots','canonical_unique_docs','partial_verified_winpass_records',
+ 'word_math_m_t','own_paragraph_extraction','tandem_repeat_prefix',
 ]
 
 
@@ -43,27 +45,58 @@ def jget(url:str)->dict:
     return json.loads(curl(url,90).decode('utf-8'))
 
 
-def main()->int:
-    if not TOKEN:
-        print('BLOCKED GITHUB_TOKEN'); return 2
-    runs=[]
+def load_seed_runs()->dict[int,dict]:
+    out:dict[int,dict]={}
+    try:
+        ledger=json.loads(PERSISTED_RUN_LEDGER.read_text(encoding='utf-8'))
+    except Exception:
+        return out
+    rows=ledger.get('run_cache') or ledger.get('runs') or []
+    for row in rows:
+        if not isinstance(row,dict): continue
+        rid=int(row.get('run_id') or 0)
+        observed=str(row.get('updated_at') or '')
+        if not rid or not (SINCE <= observed < UNTIL): continue
+        out[rid]={
+          'id':rid,'name':row.get('name'),'status':row.get('status'),'conclusion':row.get('conclusion'),
+          'head_sha':row.get('head_sha'),'created_at':None,'updated_at':observed,'seed_source':'persisted_actions_log_ledger'
+        }
+    return out
+
+
+def supplement_recent_api(runs:dict[int,dict])->None:
+    # The repository now has enough runs that Aug19-Aug20 may be beyond the API's practical recent-page window.
+    # We still scan recent pages and merge anything in-window, while the persisted ledger is the authoritative seed.
     for page in range(1,11):
         q=urlencode({'branch':BRANCH,'per_page':100,'page':page})
         obj=jget(f'{API}/repos/{REPO}/actions/runs?{q}')
         batch=obj.get('workflow_runs') or []
         for r in batch:
-            created=str(r.get('created_at') or '')
-            if SINCE <= created < UNTIL:
-                runs.append(r)
+            observed=str(r.get('created_at') or r.get('updated_at') or '')
+            if SINCE <= observed < UNTIL:
+                rr=dict(r); rr['seed_source']='live_api'; runs[int(r['id'])]=rr
         if len(batch)<100: break
-    runs.sort(key=lambda r:str(r.get('created_at') or ''))
+
+
+def main()->int:
+    if not TOKEN:
+        print('BLOCKED GITHUB_TOKEN'); return 2
+    seeded=load_seed_runs()
+    runs_by_id=dict(seeded)
+    api_error=None
+    try:
+        supplement_recent_api(runs_by_id)
+    except Exception as exc:
+        # The persisted ledger is sufficient to continue. Record the live-listing failure without discarding seeded coverage.
+        api_error=f'{type(exc).__name__}: {exc}'
+    runs=sorted(runs_by_id.values(),key=lambda r:str(r.get('updated_at') or r.get('created_at') or ''))
     report={
       'scan':'historical_math_generation_workflow_logs',
       'repo':REPO,'branch':BRANCH,'window':{'since':SINCE,'until':UNTIL},'terms':TERMS,
-      'runs_in_window':len(runs),'completed_runs':0,'run_download_failures':0,
-      'log_members_seen':0,'text_members_scanned':0,'matching_lines':0,
+      'persisted_ledger_seed_runs':len(seeded),'runs_in_window':len(runs),'live_api_listing_error':api_error,
+      'completed_runs':0,'run_download_failures':0,'log_members_seen':0,'text_members_scanned':0,'matching_lines':0,
       'matches':[],'errors':[],'scan_complete':True,'completed_at_utc':None,
-      'policy':'This is forensic reconstruction evidence. Log text may identify prior generated file names/commands but never substitutes for validating recovered data.'
+      'policy':'The persisted historical run ledger is used because current API pagination no longer reaches all Aug19-Aug20 runs. Log text is forensic pipeline evidence only and never substitutes for validating recovered data.'
     }
     term_low=[t.lower() for t in TERMS]
     for r in runs:
@@ -84,12 +117,13 @@ def main()->int:
                         matched=[TERMS[j] for j,t in enumerate(term_low) if t in low]
                         if not matched: continue
                         report['matching_lines']+=1
-                        if len(report['matches'])<1000:
-                            lo=max(0,i-3); hi=min(len(lines),i+4)
+                        if len(report['matches'])<2000:
+                            lo=max(0,i-4); hi=min(len(lines),i+5)
                             report['matches'].append({
                               'run_id':r.get('id'),'workflow':r.get('name'),'head_sha':r.get('head_sha'),
-                              'created_at':r.get('created_at'),'member':info.filename,'line_number':i+1,
-                              'matched':matched,'context':'\n'.join(lines[lo:hi])[:7000]
+                              'observed_at':r.get('updated_at') or r.get('created_at'),'seed_source':r.get('seed_source'),
+                              'member':info.filename,'line_number':i+1,'matched':matched,
+                              'context':'\n'.join(lines[lo:hi])[:10000]
                             })
         except Exception as exc:
             report['run_download_failures']+=1
