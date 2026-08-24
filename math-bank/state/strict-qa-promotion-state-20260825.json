@@ -39,7 +39,29 @@
     ],
     "validator_hardening": "graphical_answer_asset is now bound into record_fingerprint when present"
   },
-  "local_unit_test_result": {"tests_run": 15, "failures": 0, "errors": 0, "status": "PASS"},
+  "test_results": {
+    "local_unit_tests": {"tests_run": 15, "failures": 0, "errors": 0, "status": "PASS"},
+    "existing_math_problem_bank_audit": {
+      "overall_result": "success",
+      "run_id": "32753547138",
+      "triggering_sha": "e84ac8ae14ea4068b1f68d25e550dee5628a2e44",
+      "branch_head_when_recorded": "7d82393320d09c373367b36208cdb0e159281bf4",
+      "publication_ready": false,
+      "real_canonical_browser_regression": "blocked_expected"
+    }
+  },
+  "ci_enforcement_added": {
+    "workflow": ".github/workflows/math-raw1271-strict-tests.yml",
+    "commit": "e465525a8df4ee433f02764fbe0d31785e72b7f3",
+    "trigger": "pushes that modify the strict validator/promotion scripts or their tests, plus manual workflow_dispatch",
+    "tests": [
+      "test_validate_raw1271_materialization.py",
+      "test_promote_recovered_qa_drafts.py"
+    ],
+    "schedule_changed": false,
+    "next_automation_time_changed": false,
+    "dedicated_workflow_run_status_at_record_time": "NOT_YET_OBSERVABLE_VIA_AVAILABLE_STATUS_ENDPOINT"
+  },
   "current_runtime_limit": "The exact recovered draft JSONL files and source ZIP/OOXML bytes are not mounted in /mnt/data in this manual runtime, so records 4-554 cannot be truthfully promoted here.",
   "next_start": "Do not repeat old canonical scans, ZIP identity work, document dedupe, or raw count derivation. Re-expose the known recovered draft files and already-verified source bytes/evidence, verify Standard SHA/count 317 and 実力錬成 SHA/count 237, run strict promotion with resume from the persisted Standard first3, then finish Winpass717 exact Q/A/figure provenance. After strict1271 PASS, review Winpass717 with evidence to 570 and continue global1124 freeze/variants/app/browser/A4/publication."
 }
