@@ -1,0 +1,55 @@
+name: Math Strict Q/A Tooling
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - math-problem-bank-bootstrap
+    paths:
+      - 'math-bank/scripts/validate_raw1271_materialization.py'
+      - 'math-bank/scripts/test_validate_raw1271_materialization.py'
+      - 'math-bank/scripts/promote_recovered_qa_drafts.py'
+      - 'math-bank/scripts/test_promote_recovered_qa_drafts.py'
+      - 'math-bank/scripts/reconcile_strict_qa_progress.py'
+      - 'math-bank/scripts/test_reconcile_strict_qa_progress.py'
+      - 'math-bank/scripts/build_ooxml_asset_manifest.py'
+      - 'math-bank/scripts/test_build_ooxml_asset_manifest.py'
+      - '.github/workflows/math-strict-qa-tooling.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: math-strict-qa-tooling-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  strict-qa-tooling-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout math rebuild branch
+        uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile strict materialization tooling
+        run: |
+          python -m py_compile \
+            math-bank/scripts/validate_raw1271_materialization.py \
+            math-bank/scripts/promote_recovered_qa_drafts.py \
+            math-bank/scripts/reconcile_strict_qa_progress.py \
+            math-bank/scripts/build_ooxml_asset_manifest.py
+
+      - name: Run strict materialization unit tests
+        working-directory: math-bank/scripts
+        run: |
+          python -m unittest -v \
+            test_validate_raw1271_materialization.py \
+            test_promote_recovered_qa_drafts.py \
+            test_reconcile_strict_qa_progress.py \
+            test_build_ooxml_asset_manifest.py
