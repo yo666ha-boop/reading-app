@@ -1,9 +1,9 @@
 {
   "status": "PASS_CI",
   "persist_schema_version": 67,
-  "run_id": "32676767330",
-  "triggering_sha": "7fea587d156b351c2e6b6115e541a4b097aa1783",
-  "recorded_at_utc": "2026-08-24T00:28:30.430901+00:00",
+  "run_id": "32676799887",
+  "triggering_sha": "566cdb712d49b2fd49bad6f69c7c42d2e60673a5",
+  "recorded_at_utc": "2026-08-24T00:28:51.447348+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "success",
@@ -44,6 +44,7 @@
     "direct_proportion_constant",
     "discount_price",
     "fraction_arithmetic",
+    "frequency_from_relative_frequency",
     "gcd",
     "integer_power",
     "interquartile_range",
@@ -105,7 +106,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 91,
+  "engine_module_count": 92,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_variant_engine.py",
@@ -138,6 +139,7 @@
     "test_safe_direct_proportion_constant_variant_engine.py",
     "test_safe_discount_price_variant_engine.py",
     "test_safe_fraction_arithmetic_variant_engine.py",
+    "test_safe_frequency_from_relative_frequency_variant_engine.py",
     "test_safe_gcd_variant_engine.py",
     "test_safe_integer_power_variant_engine.py",
     "test_safe_interquartile_range_variant_engine.py",
@@ -196,7 +198,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 88,
+  "engine_test_count": 89,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_average_missing_value_unified_adapter.py",
