@@ -2,7 +2,7 @@
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP",
   "current_stage": "RAW_1271_MATERIALIZATION_QA_FIGURE_BINDING",
-  "recorded_at_jst": "2026-08-25T04:55:27+09:00",
+  "recorded_at_jst": "2026-08-25T05:54:01+09:00",
   "main_touched": false,
   "source_identity": {
     "Winpass": {"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","bytes":8296042,"crc_ok":true},
@@ -17,52 +17,20 @@
     "Winpass":{"records":0},"total":554,"current_runtime_bytes_available":false
   },
   "strict_completion_rule": "Count only records durably persisted, post-save read back, carrying exact ordered OOXML question_offsets/answer_offsets or explicit graphical answer asset identity, score evidence, required figure/asset identity, content-bound fingerprint, and PASSing applicable validator.",
-  "strict_progress": {
-    "Winpass":0,"実力錬成":0,"Standard":3,"total":3,"pending":1268,
-    "proof_path":"math-bank/recovered/current-session/standard-strict-proof-first3-20260825.jsonl",
-    "proof_commit":"eb0a8965e657284bfa32a7378fe85b2cddb68785",
-    "readback_verified":true,"validator_pass":3,"fingerprint_match":3
-  },
+  "strict_progress": {"Winpass":0,"実力錬成":0,"Standard":3,"total":3,"pending":1268,"proof_path":"math-bank/recovered/current-session/standard-strict-proof-first3-20260825.jsonl","proof_commit":"eb0a8965e657284bfa32a7378fe85b2cddb68785","readback_verified":true,"validator_pass":3,"fingerprint_match":3},
   "qa_figure_qa": {"questions_strict":"3/1271","answers_strict":"3/1271","historical_target_figure_refs":41,"figure_refs_revalidated_global":"0/41"},
   "tooling_actual": {
-    "strict_validator":"math-bank/scripts/validate_raw1271_materialization.py",
-    "draft_promoter":"math-bank/scripts/promote_recovered_qa_drafts.py",
-    "reconciler":"math-bank/scripts/reconcile_strict_qa_progress.py",
-    "asset_manifest":"math-bank/scripts/build_ooxml_asset_manifest.py",
-    "exact_locator":"math-bank/scripts/locate_recovered_qa_ooxml.py",
-    "candidate_composer":"math-bank/scripts/compose_strict_qa_candidates.py",
-    "batch_runner":"math-bank/scripts/run_recovered_strict_batch.py",
+    "strict_validator":"math-bank/scripts/validate_raw1271_materialization.py","draft_promoter":"math-bank/scripts/promote_recovered_qa_drafts.py","reconciler":"math-bank/scripts/reconcile_strict_qa_progress.py","asset_manifest":"math-bank/scripts/build_ooxml_asset_manifest.py","exact_locator":"math-bank/scripts/locate_recovered_qa_ooxml.py","candidate_composer":"math-bank/scripts/compose_strict_qa_candidates.py","batch_runner":"math-bank/scripts/run_recovered_strict_batch.py",
     "strict_tooling_ci":{"state":"math-bank/state/strict-tooling-ci-latest.json","run_id":"32756245710","triggering_sha":"e400cb335cc8cd8a6f3770afa83f8d92c567e038","result":"success","schedule_based":false,"tests":7},
-    "audit_ci":{"state":"math-bank/state/ci-latest.json","run_id":"32756245687","triggering_sha":"e400cb335cc8cd8a6f3770afa83f8d92c567e038","result":"success","canonical_app_records_present":false,"publication_ready":false},
-    "actions_artifact_scan":{"state":"math-bank/state/actions-artifact-scan-latest.json","all_artifacts_seen":550,"candidate_artifacts":524,"canonical_hits":0,"paired_recovery_hits":0,"scan_complete":true,"canonical_absence_proven":true}
+    "audit_ci":{"state":"math-bank/state/ci-latest.json","run_id":"32756245687","triggering_sha":"e400cb335cc8cd8a6f3770afa83f8d92c567e038","result":"success","canonical_app_records_present":false,"publication_ready":false}
   },
-  "downstream": {
-    "winpass_decisions":{"reviewed":0,"included":0,"excluded":0,"target_after_evidence_review":570},
-    "global1124":{"validated":0,"immutable_frozen":0},
-    "variants":{"verified":0,"parent_coverage":"0/1124"},
-    "app_records":0,"browser":"BLOCKED_UNTIL_REAL_APP_RECORDS","iphone_fire":"PENDING","a4":"PENDING","publication_ready":false,"public_verification":"PENDING"
-  },
+  "downstream": {"winpass_decisions":{"reviewed":0,"included":0,"excluded":0,"target_after_evidence_review":570},"global1124":{"validated":0,"immutable_frozen":0},"variants":{"verified":0,"parent_coverage":"0/1124"},"app_records":0,"browser":"BLOCKED_UNTIL_REAL_APP_RECORDS","iphone_fire":"PENDING","a4":"PENDING","publication_ready":false,"public_verification":"PENDING"},
   "this_run": {
-    "starting_head_actual":"af384bdab4b423a2e26a8a013c644873ca2df919",
-    "latest_head_observed_before_checkpoint_write":"af384bdab4b423a2e26a8a013c644873ca2df919",
-    "main_head_observed":"1f0cabf9bfcc4482f507e33188499bdbbd5bab57",
-    "completed":[
-      "Read latest branch HEAD and checkpoint from GitHub actual before doing work; branch HEAD was af384bdab4b423a2e26a8a013c644873ca2df919.",
-      "Read durable strict-tooling CI state: success, 7 strict tooling tests, run 32756245710.",
-      "Read durable math-bank audit CI state: success, but canonical_app_records_present=false and publication_ready=false, run 32756245687.",
-      "Inspected math-bank/scripts actual and confirmed the strict materialization toolchain remains present: OOXML asset manifest, exact locator, candidate composer, batch runner, validator and reconciler.",
-      "Searched File Library by all three source ZIP names plus both recovered draft filenames; no matching source ZIP or recovered JSONL bytes were returned, so no source identity was inferred from unrelated files.",
-      "Confirmed recovered drafts remain 554 draft-only and did not fabricate Standard record 4 provenance, score evidence, figure identity or fingerprint.",
-      "Confirmed main head observed as 1f0cabf9bfcc4482f507e33188499bdbbd5bab57 and made no main write.",
-      "Persisted this exact strict-count/source-availability checkpoint on math-problem-bank-bootstrap."
-    ],
-    "limitations":[
-      "The current execution environment does not expose the recovered Standard/Jitsuren JSONL bytes or the three verified source ZIP bytes. File Library search by exact names also returned no matching bytes.",
-      "Without original DOCX bytes plus recovered draft bytes, Standard record 4 onward cannot truthfully receive ordered OOXML offsets/assets, score evidence, required figure identity and content-bound fingerprint.",
-      "Successful tooling/CI is not evidence that the remaining 1268 records are materialized; strict count therefore remains unchanged."
-    ]
+    "starting_head_actual":"4cd8a07f6019da8f2140f9deabd6edb94913192b","latest_head_observed_before_checkpoint_write":"4cd8a07f6019da8f2140f9deabd6edb94913192b","main_head_observed":"1f0cabf9bfcc4482f507e33188499bdbbd5bab57",
+    "completed":["Read latest branch HEAD/checkpoint/CI from GitHub actual before work.","Confirmed strict tooling CI remains success with 7 tests; no CI result was treated as Q/A completion.","Retried File Library recovery using exact recovered Standard draft SHA and all three verified source ZIP names/SHA identities; returned files were unrelated, so no source bytes were accepted.","Kept strict progress at exactly 3/1271 because record 4 provenance cannot be proven without original source/draft bytes.","Confirmed main remains 1f0cabf9bfcc4482f507e33188499bdbbd5bab57 and made no main write.","Persisted this run checkpoint on math-problem-bank-bootstrap."],
+    "limitations":["Exact recovered Standard/Jitsuren JSONL bytes and verified source ZIP bytes are still not exposed to this execution environment or File Library search.","Without those bytes, ordered OOXML offsets/assets, score evidence, required figure identity and content-bound fingerprints for record 4 onward cannot be truthfully produced."]
   },
-  "exact_stop": "Strict durable progress remains Standard 3/317, 実力錬成 0/237, Winpass 0/717 = 3/1271. Recovered drafts remain 554 draft-only. Current runtime and File Library exact-name search expose neither the recovered draft JSONL bytes nor verified source ZIP bytes. No fourth strict record claimed.",
-  "next_start": "Read latest HEAD/checkpoint/strict progress/CI. First retry durable/runtime access to exact recovered Standard draft SHA256 326f38b5aebadc226d3e12eaf6e750bf4b7727759c2e4f7f06f75dc2ffa114b0 and source ZIP SHA256 c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6. If exposed, verify exact SHA/count, run OOXML asset manifest + exact locator + candidate composer + batch runner, bind score evidence and required figures, validate, persist, read back and reconcile from first Standard raw_id not in first3 through Standard317, then 実力錬成237, then Winpass717. Then evidence-review Winpass717 to 570 without count forcing; validate/freeze global1124; generate independently verified variants; map app records; browser/iPhone/Fire/A4 gates; strict release; PUBLICATION_READY; isolated public verification. If bytes remain unavailable, do not infer provenance and do not redo source identity/dedupe/raw-slot counting.",
+  "exact_stop": "Strict durable progress remains Standard 3/317, 実力錬成 0/237, Winpass 0/717 = 3/1271. Recovered drafts remain 554 draft-only. Exact-byte recovery was retried this run and produced no matching source/draft files; no fourth strict record claimed.",
+  "next_start": "Read latest HEAD/checkpoint/CI first. Retry access to recovered Standard draft SHA256 326f38b5aebadc226d3e12eaf6e750bf4b7727759c2e4f7f06f75dc2ffa114b0 and Standard ZIP SHA256 c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6. If exposed, verify SHA/count and run asset manifest + exact locator + candidate composer + batch runner + validator, persist/readback/reconcile Standard record 4 through 317, then 実力錬成237, Winpass717. Then evidence-review Winpass717 to 570 without count forcing; validate/freeze global1124; variants; app mapping; browser/iPhone/Fire/A4; strict release; PUBLICATION_READY; isolated public verification.",
   "main_untouched": true
 }
