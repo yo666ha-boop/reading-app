@@ -1,16 +1,11 @@
 from __future__ import annotations
 
 import hashlib
-import importlib.util
 import tempfile
 import zipfile
 from pathlib import Path
 
-MODULE_PATH = Path(__file__).with_name("verify_source_archives.py")
-spec = importlib.util.spec_from_file_location("verify_source_archives", MODULE_PATH)
-assert spec and spec.loader
-m = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(m)
+import verify_source_archives as m
 
 
 def make_zip(path: Path, members: dict[str, bytes]) -> str:
@@ -57,14 +52,12 @@ def main() -> None:
         assert report["archives"]["alpha"]["zip_inspection"]["file_members"] == 2
         assert report["archives"]["alpha"]["zip_inspection"]["extension_counts"] == {".json": 1, ".png": 1}
 
-        # Changed bytes must never enter the rebuild pipeline.
         make_zip(a, {"A/MATH.json": b'{"changed":true}'})
         mismatch = m.build_report(root, specs)
         assert mismatch["exact_source_archives_verified_for_rebuild"] is False
         assert mismatch["ready_for_rebuild_pipeline"] is False
         assert mismatch["archives"]["alpha"]["status"] == "HASH_MISMATCH"
 
-        # Missing required source also fails closed.
         b.unlink()
         missing = m.build_report(root, specs)
         assert missing["exact_source_archives_verified_for_rebuild"] is False
