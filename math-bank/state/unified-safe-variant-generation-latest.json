@@ -1,11 +1,11 @@
 {
   "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32688591022",
-  "triggering_sha": "3f0c9ecac71fa3b1879d35da7e2ee3cd7b8f01d9",
-  "tested_checkout_sha": "3f0c9ecac71fa3b1879d35da7e2ee3cd7b8f01d9",
+  "run_id": "32688623303",
+  "triggering_sha": "694668a859610bde4365b62f82d2d8a8c3f2546c",
+  "tested_checkout_sha": "694668a859610bde4365b62f82d2d8a8c3f2546c",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T04:03:47.166731+00:00",
+  "recorded_at_utc": "2026-08-24T04:04:10.038239+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "failure",
@@ -152,6 +152,7 @@
     "test_safe_circle_radius_from_area_variant_engine.py",
     "test_safe_circle_radius_from_circumference_variant_engine.py",
     "test_safe_cone_height_from_volume_variant_engine.py",
+    "test_safe_cone_radius_from_surface_area_variant_engine.py",
     "test_safe_cone_radius_from_volume_variant_engine.py",
     "test_safe_cone_slant_from_surface_area_variant_engine.py",
     "test_safe_cone_surface_area_variant_engine.py",
@@ -253,7 +254,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 115,
+  "engine_test_count": 116,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_affine_equation_from_two_points_unified_adapter.py",
@@ -268,6 +269,7 @@
     "test_circle_radius_from_area_unified_adapter.py",
     "test_circle_radius_from_circumference_unified_adapter.py",
     "test_cone_height_from_volume_unified_adapter.py",
+    "test_cone_radius_from_surface_area_unified_adapter.py",
     "test_cone_radius_from_volume_unified_adapter.py",
     "test_cone_slant_from_surface_area_unified_adapter.py",
     "test_cone_surface_area_unified_adapter.py",
@@ -363,7 +365,7 @@
     "test_two_dice_sum_probability_unified_adapter.py",
     "test_weighted_group_average_unified_adapter.py"
   ],
-  "adapter_test_count": 107,
+  "adapter_test_count": 108,
   "runtime_routes_auto_discovered": [
     "absolute_value",
     "affine",
