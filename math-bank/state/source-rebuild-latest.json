@@ -1,0 +1,79 @@
+{
+  "project": "mikami-math-problem-bank",
+  "status": "IN_PROGRESS_REBUILD_FROM_REUPLOADED_SOURCE_ARCHIVES",
+  "recorded_at_utc": "2026-08-24T11:12:00Z",
+  "manual_execution": true,
+  "schedule_change_requested": false,
+  "schedule_was_modified_in_this_manual_execution": false,
+  "primary_route": "REBUILD_FROM_REUPLOADED_THREE_SOURCE_ZIPS",
+  "old_canonical_search_primary": false,
+  "reuploaded_sources": [
+    {
+      "logical": "Standard",
+      "conversation_path": "/mnt/data/スタンダードデータ(1).zip",
+      "historical_name": "スタンダードデータ.zip",
+      "historical_sha256": "c828516bccc230ebc7d7217ae708117d4b6971108417c5e0d0eff48cb075fec9",
+      "byte_identity_verified_this_run": false
+    },
+    {
+      "logical": "実力錬成",
+      "conversation_path": "/mnt/data/中学実力錬成データ(1).zip",
+      "historical_name": "中学実力錬成データ.zip",
+      "historical_sha256": "d32d37e2ffeffce059f5ee81b4cf40c1097c0961af2a50e9017534abe4d47b2d",
+      "byte_identity_verified_this_run": false
+    },
+    {
+      "logical": "Winpass",
+      "conversation_path": "/mnt/data/winpassデータ(1).zip",
+      "historical_name": "winpassデータ.zip",
+      "historical_sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+      "byte_identity_verified_this_run": false
+    }
+  ],
+  "local_read_attempt": {
+    "attempted": true,
+    "result": "BLOCKED_RUNTIME_CLIENT_RESPONSE_ERROR",
+    "interpretation": "execution-layer failure only; not ZIP corruption and not source mismatch evidence",
+    "must_retry_first_next_run": true
+  },
+  "historical_forensic_targets": {
+    "documents": {"Winpass": 81, "実力錬成": 27, "Standard": 32, "total": 140},
+    "raw_records": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
+    "validated_original_target": {"Winpass": 570, "実力錬成": 237, "Standard": 317, "total": 1124},
+    "raw_quality": "1271/1271 questions and answers; 41 figure refs; 0 missing figure refs in prior diagnostic",
+    "winpass_rule": "717->570 must be reproduced by evidence; count forcing and simple duplicate-only assumptions are forbidden"
+  },
+  "manual_work_completed": [
+    "Added math-bank/scripts/verify_source_archives.py: accepts renamed copy suffix such as (1), but requires exact historical SHA-256 and valid ZIP CRC before entering rebuild pipeline.",
+    "Added fail-closed source identity regression tests for exact, renamed-copy, hash mismatch and missing-source cases.",
+    "Detected a concurrent old-contract write that incorrectly changed source archives to diagnostic-only/no-reconstruction; corrected contract so raw 1271 cannot be promoted directly but full re-audited reconstruction from exact source inputs is allowed and is now the primary route.",
+    "Added math-bank/scripts/profile_source_archives.py to count MATH.json documents, validate JSON parsing, profile schema shapes and assets without assuming record schema; strict historical document target is 81/27/32 = 140.",
+    "Added profile regression test that fails closed on historical document-count mismatch.",
+    "Updated Math Source Rebuild Contract workflow to test source identity + structure profiling and persist a PASS marker while forbidding unvalidated raw/canonical promotion."
+  ],
+  "manual_commits": [
+    "2c92b4dbcbcf1f7f2b9dc121add68556c4b98181",
+    "1631044c62a6d363a724d46cbaf3a8f8ad202485",
+    "6a472408c5dbe2d6691ac10b7bebcfbc31024b23",
+    "523b0e46e8a09a37dd62f70e4a0c32a3c3b0fd98",
+    "4fc92f0ed42d73a809a534970b4d3459408cf1ce",
+    "b2cc03f4a24d4e61f9f46035392475e4dbe5c8f1",
+    "ac80d2869913d8e0331d3a8fff1c6405c21a36d5",
+    "83e81b4d4f93d4ff09ad14faeda5b37ee6248f8d"
+  ],
+  "current_data_counts": {
+    "real_rebuilt_originals": 0,
+    "real_generated_expanded_variants": 0,
+    "real_parent_coverage": "0/1124",
+    "reason": "newly reuploaded ZIP bytes have not yet been readable in the local execution layer during this manual run"
+  },
+  "next_start_exact": [
+    "Retry direct local read of the three conversation ZIP paths; compute SHA-256/size/ZIP member listing.",
+    "If all three match historical source SHA values, run source archive structure profile and require 81/27/32 MATH.json docs, total 140, clean JSON parsing.",
+    "Profile actual MATH.json shapes, then implement/run schema-specific extraction to reproduce raw Winpass717, 実力錬成237 and Standard317 with problem-answer-figure correspondence.",
+    "Re-establish Winpass authoritative set by evidence-based normalization. Do not delete 147 merely to reach 570.",
+    "Run full original gates; only a fully validated rebuilt original set becomes new BASE, then generate verified variants from real parents and wire the app."
+  ],
+  "final_path_after_rebuild": "validated originals -> verified variants -> dynamic app-records -> real 4-browser -> A4 x6 -> strict release -> PUBLICATION_READY -> isolated public verification",
+  "main_touched": false
+}
