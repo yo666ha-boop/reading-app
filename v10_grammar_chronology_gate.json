@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "classification": "FAIL_CLOSED_UNTIL_EVIDENCE_BACKED_CHRONOLOGY_COMPLETE",
+  "scope": {
+    "passages": 168,
+    "sources": ["sentences", "slashRows.en", "A.prompt", "A.answer", "A.evidence", "B.prompt", "B.answer", "B.evidence"],
+    "textbooks": ["ニューホライズン", "サンシャイン"],
+    "grades": ["1", "2", "3"]
+  },
+  "rules": {
+    "chronology": "A detected grammar feature is allowed only when an evidence-backed introduction point for the same textbook is at or before the passage subunit. Earlier grade learning carries forward; future units never authorize earlier passages.",
+    "morphology": "Known vocabulary base forms do not authorize an inflected form unless the form also passes grammar chronology.",
+    "existingFlags": "Per-unit audit flags, grammar labels, or previous PASS reports are not sufficient evidence for this final gate.",
+    "passCondition": "Every detected feature occurrence in all 168 passages and A/B English fields must resolve to an introduction point at or before the exact section; unresolved or future occurrences fail closed."
+  },
+  "detectorFeatures": [
+    "WILL_FUTURE", "BE_GOING_TO", "MODAL_CAN_COULD_MAY_MUST_SHOULD", "HAVE_TO", "TO_INFINITIVE", "GERUND", "COMPARATIVE", "SUPERLATIVE", "IF_CLAUSE", "WHEN_WHILE_CLAUSE", "BECAUSE_CLAUSE", "PASSIVE", "PRESENT_PERFECT", "RELATIVE_PRONOUN", "INDIRECT_QUESTION", "SV_OO", "IT_IS_ADJ_TO", "TOO_TO", "ENOUGH_TO", "SO_THAT", "NOT_ONLY_BUT_ALSO", "AS_AS", "MAKE_O_C", "LET_O_V"
+  ],
+  "introductionEvidence": {},
+  "status": {
+    "passagesStructurallyScanned": 168,
+    "candidateDetectorImplemented": true,
+    "sectionChronologyComplete": false,
+    "resolvedOccurrences": 0,
+    "unresolvedOccurrences": "PENDING_RESCAN_AND_EVIDENCE_MAPPING",
+    "futureGrammarLeak": "PENDING",
+    "finalPass": false
+  },
+  "next": "Populate introductionEvidence from textbook/subunit evidence, rerun the 168-passage candidate detector, resolve every occurrence against exact section order, and keep finalPass=false until unresolvedOccurrences=0 and futureGrammarLeak=0."
+}
