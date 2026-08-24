@@ -1,14 +1,14 @@
 {
-  "status": "FAIL_CI_DIAGNOSTIC",
+  "status": "PASS_CI",
   "persist_schema_version": 69,
-  "run_id": "32678403159",
-  "triggering_sha": "53ae8be782af7d403c5bab452fc81eabaa659856",
-  "tested_checkout_sha": "53ae8be782af7d403c5bab452fc81eabaa659856",
+  "run_id": "32678432865",
+  "triggering_sha": "730e2cf204a0194151aced688327ecb55b352481",
+  "tested_checkout_sha": "730e2cf204a0194151aced688327ecb55b352481",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T01:00:58.269835+00:00",
+  "recorded_at_utc": "2026-08-24T01:01:27.549264+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "failure",
+    "specialized_and_adapters": "success",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -252,6 +252,7 @@
     "test_inverse_proportion_constant_unified_adapter.py",
     "test_inverse_proportion_unified_adapter.py",
     "test_lcm_unified_adapter.py",
+    "test_linear_equation_both_sides_unified_adapter.py",
     "test_linear_equation_unified_adapter.py",
     "test_median_unified_adapter.py",
     "test_mode_unified_adapter.py",
@@ -301,7 +302,7 @@
     "test_two_dice_sum_probability_unified_adapter.py",
     "test_weighted_group_average_unified_adapter.py"
   ],
-  "adapter_test_count": 86,
+  "adapter_test_count": 87,
   "runtime_routes_auto_discovered": [
     "absolute_value",
     "affine",
