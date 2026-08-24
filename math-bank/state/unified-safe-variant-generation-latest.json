@@ -1,9 +1,9 @@
 {
   "status": "FAIL_CI_DIAGNOSTIC",
-  "persist_schema_version": 66,
-  "run_id": "32676389074",
-  "triggering_sha": "b4f91ad1fe8ce4a94696908b0b919f5f59733fd6",
-  "recorded_at_utc": "2026-08-24T00:21:00.999732+00:00",
+  "persist_schema_version": 67,
+  "run_id": "32676416864",
+  "triggering_sha": "c5451d086b7605f8440a3bf9aad01a14a68dd2fb",
+  "recorded_at_utc": "2026-08-24T00:21:29.849473+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "failure",
@@ -369,6 +369,8 @@
     "triangle_base_from_area": "base=2*area/height and base*height=2*area",
     "rectangle_side_from_area": "missing=area/known and product=area",
     "rectangle_side_from_perimeter": "missing=perimeter/2-known and recomposition",
+    "square_side_from_area": "side=isqrt(area) with exact square and side^2=area",
+    "square_side_from_perimeter": "side=perimeter/4 and side*4=perimeter",
     "cylinder_height_from_surface_area": "height=surface/(2*pi*r)-r and recomposition",
     "cone_slant_from_surface_area": "slant=surface/(pi*r)-r and recomposition"
   }
