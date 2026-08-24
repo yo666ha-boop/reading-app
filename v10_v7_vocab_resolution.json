@@ -4,7 +4,7 @@
     "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
     "sheet": "単語マスター",
     "records": 3975,
-    "rule": "Resolve vocabulary by textbook, grade and chronological unit position; do not treat allowedWords alone as authoritative."
+    "rule": "Resolve vocabulary by textbook, grade and chronological unit position; canonical v7 is primary. Explicit earlier app/textbook-reviewed allowedWords is valid cumulative evidence when a word is not separately exposed as a keyword row. Never use a later section as evidence for an earlier passage."
   },
   "resolutions": [
     {
@@ -22,12 +22,29 @@
       },
       "appFinding": "The current Get Ready 4 passage uses play but its allowedWords metadata omitted play.",
       "repair": "Add play to reviewed allowedWords metadata; do not add an unknown-word note."
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 2-2",
+      "token": "town",
+      "status": "ALLOWED_BY_PRIOR_REVIEWED_CUMULATIVE",
+      "japanese": "町",
+      "evidence": {
+        "priorSection": "PROGRAM 2-1",
+        "priorAllowedWords": "grow / use / after / town / bicycle / flower / walk / ride / watch / read / clean / beautiful / many / sometimes / don’t / at home / very much / after school",
+        "priorAuditNote": "PROGRAM 2-1 reviewed id185-202; id203 begins PROGRAM 2-2",
+        "currentSectionAllowedWords": "PROGRAM 2-2 explicitly carries PROGRAM 2-1 vocabulary cumulatively, but town itself was not repeated in the local list"
+      },
+      "appFinding": "The first scanner re-flagged town in PROGRAM 2-2 because it compared against only the current passage allowedWords. PROGRAM 2-1 had already explicitly reviewed and allowed town.",
+      "repair": "No passage rewrite and no unknown-word note. The scanner was corrected to accumulate only current and prior reviewed sections for the same textbook and grade; future sections remain excluded."
     }
   ],
   "policy": {
     "futureWord": "Rewrite to an already-learned word when natural.",
     "indispensableUnknown": "Keep only when necessary and attach English/Japanese gloss from the v7 master or another explicit verified source.",
     "morphology": "A known base form is not enough; the inflected form must also pass the grammar chronology gate.",
-    "properNoun": "Do not auto-approve merely because capitalization suggests a proper noun."
+    "properNoun": "Do not auto-approve merely because capitalization suggests a proper noun.",
+    "priorReviewedCumulative": "Earlier explicit reviewed vocabulary in the same textbook and grade may satisfy cumulative vocabulary chronology; later sections must never satisfy an earlier passage."
   }
 }
