@@ -14,6 +14,8 @@ on:
       - 'math-bank/scripts/test_reconcile_strict_qa_progress.py'
       - 'math-bank/scripts/build_ooxml_asset_manifest.py'
       - 'math-bank/scripts/test_build_ooxml_asset_manifest.py'
+      - 'math-bank/scripts/locate_recovered_qa_ooxml.py'
+      - 'math-bank/scripts/test_locate_recovered_qa_ooxml.py'
       - '.github/workflows/math-strict-qa-tooling.yml'
 
 permissions:
@@ -43,7 +45,8 @@ jobs:
             math-bank/scripts/validate_raw1271_materialization.py \
             math-bank/scripts/promote_recovered_qa_drafts.py \
             math-bank/scripts/reconcile_strict_qa_progress.py \
-            math-bank/scripts/build_ooxml_asset_manifest.py
+            math-bank/scripts/build_ooxml_asset_manifest.py \
+            math-bank/scripts/locate_recovered_qa_ooxml.py
 
       - name: Run strict materialization unit tests
         working-directory: math-bank/scripts
@@ -52,4 +55,5 @@ jobs:
             test_validate_raw1271_materialization.py \
             test_promote_recovered_qa_drafts.py \
             test_reconcile_strict_qa_progress.py \
-            test_build_ooxml_asset_manifest.py
+            test_build_ooxml_asset_manifest.py \
+            test_locate_recovered_qa_ooxml.py
