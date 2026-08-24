@@ -33,45 +33,46 @@
     "raw_quality_reference": {"questions": "1271/1271", "answers": "1271/1271", "figure_refs": 41, "missing_figure_refs": 0},
     "winpass_normalization": "717->570 requires evidence for every decision; count forcing forbidden"
   },
-  "historical_generated_layer_recovery": {
+  "exact_old_canonical_recovery": {
     "reference_only": true,
-    "do_not_repeat_exact_complete_scans": true,
-    "exact_payload_scan": {"git_blobs_sha256_checked": 4642, "actions_artifacts_downloaded": 237, "artifact_members_sha256_checked": 752, "download_failures": 0, "exact_hits": 0, "scan_complete": true},
-    "historical_generation_log_clue_scan": {"runs_in_window": 212, "completed_runs": 212, "run_download_failures": 0, "log_members_scanned": 1616, "matching_lines": 9, "scan_complete": true, "usable_complete_pipeline_recovered": false}
+    "exact_payload_scan_complete": true,
+    "branch_tag_scan_complete_pair_hits": 0,
+    "pr_ref_scan_complete_pair_hits": 0,
+    "actions_artifact_scan_complete_pair_hits": 0,
+    "automatic_rescan_disabled_commit": "ee5c978a84126752ab5130c1c7b153e5228e288f",
+    "automatic_rescan_policy": "math-canonical-auto-complete is workflow_dispatch only; branch/checkpoint/Audit updates no longer retrigger historical canonical scans"
   },
   "rebuild_safety_implementation": {
     "raw_validator": "IMPLEMENTED",
+    "source_member_manifest": "IMPLEMENTED",
+    "ooxml_structure_extractor": "IMPLEMENTED",
     "winpass_717_fingerprint_review_queue": "IMPLEMENTED",
-    "winpass_decision_exact_record_fingerprint_binding": {"implemented": true, "rule": "decision record_fingerprint_sha256 must exactly match current raw record; stale/missing fingerprint FAIL"},
-    "winpass_570_materializer": {"implemented": true, "rule": "normalization audit PASS required; raw order preserved; exact fingerprint rechecked; provenance emitted"},
-    "rebuilt_1124_originals_validator": {"implemented": true, "gates": ["570/237/317 and total1124", "nonblank Q&A/id", "global id uniqueness", "global extraction fingerprint uniqueness", "figure resolution", "generated variant contamination forbidden", "duplicate Q&A review-only, never auto-delete"]},
-    "rebuilt_app_mapping_gate": {"implemented": true, "rule": "all1124 app records must pass schema and exact record-bound source evidence for grade/unit/skill/question_format/difficulty; guessed defaults forbidden"},
-    "immutable_mapped_originals_freeze": {"implemented": true, "ordering": "1124 candidate validation -> evidence-bound app mapping -> freeze"},
-    "frozen_manifest_revalidator": {"implemented": true, "rule": "records+manifest exact binding required immediately before variant parent use"},
-    "rebuilt_dynamic_variant_mode": {"implemented": true, "rule": "historical107 bodies are reference-only; rebuilt mode generates from immutable mapped1124 real parents"},
-    "rebuilt_dynamic_app_compose": {"implemented": true, "rule": "immutable mapped1124 snapshot retained; only strict rebuilt-anchor variants appended"},
-    "source_verifier_policy_updated_this_run": true
+    "winpass_decision_exact_record_fingerprint_binding": "IMPLEMENTED",
+    "winpass_570_materializer": "IMPLEMENTED",
+    "rebuilt_1124_originals_validator": "IMPLEMENTED",
+    "rebuilt_app_mapping_gate": "IMPLEMENTED",
+    "immutable_mapped_originals_freeze": "IMPLEMENTED",
+    "frozen_manifest_revalidator": "IMPLEMENTED",
+    "rebuilt_dynamic_variant_mode": "IMPLEMENTED",
+    "rebuilt_dynamic_app_compose": "IMPLEMENTED"
   },
-  "source_rebuild_contract": {
-    "previous_latest_validation": {"status": "PASS_CI", "run_id": "32729483035", "triggering_sha": "8045cee76773ca4d665a547f584309caeb9387d0", "tested_checkout_sha": "8045cee76773ca4d665a547f584309caeb9387d0"},
-    "current_policy_commit": "6e685fbbc2cbe5b852976e8f203ad234bf2e24b3",
-    "current_policy_change": "Removed legacy generated-layer-first recovery guidance; exact 3-source rebuild and full reaudit is primary, historical107 bodies reference-only.",
-    "current_commit_workflow_runs_seen": 1,
-    "ci_status_for_current_policy_commit": "PASS_CI",
-    "current_policy_validation": {"status": "PASS_CI", "run_id": "32730196071", "triggering_sha": "6e685fbbc2cbe5b852976e8f203ad234bf2e24b3", "overall_result": "success", "app_shell_and_data_gate": "success", "browser_regression": "success", "real_canonical_browser_regression": "blocked_expected", "publication_ready": false}
+  "expanded_generation_capability": {
+    "schema": 69,
+    "engine_modules": 129,
+    "engine_tests": 126,
+    "five_gate_status": "PASS",
+    "actual_real_variants_generated": 0,
+    "parent_record_sha256_required": true
   },
-  "rebuilt_parent_variant_app_bridge": {
-    "latest_validation": {"status": "PASS_CI", "run_id": "32729389958", "triggering_sha": "0c1748b6a4cbcef91681148efd0d8e0894d0257f", "tested_checkout_sha": "0c1748b6a4cbcef91681148efd0d8e0894d0257f"},
-    "gates": {"mapping_before_freeze": true, "immutable_full_record_sha_binding": true, "freeze_manifest_revalidation": true, "dynamic_rebuilt_base_anchor": true, "old_1231_not_required_in_rebuilt_mode": true, "historical_107_bodies_not_required": true, "variant_parent_record_sha256_required": true, "dynamic_rebuilt_app_compose": true}
+  "latest_confirmed_ci": {
+    "run_id": "32730196071",
+    "triggering_sha": "6e685fbbc2cbe5b852976e8f203ad234bf2e24b3",
+    "overall_result": "success",
+    "app_shell_and_data_gate": "success",
+    "browser_regression": "success",
+    "real_canonical_browser_regression": "blocked_expected",
+    "publication_ready": false
   },
-  "recovery_state": {
-    "modern_actions": {"all_artifacts_seen": 530, "candidate_artifacts": 504, "reused_verified_artifacts": 503, "members_sha256_checked": 1280, "download_failures": 0, "canonical_hits": 0, "valid_audit_hits": 0, "pair_hits": 0, "scan_complete": true, "canonical_absence_proven": true},
-    "branch_tag": {"readable_blobs": 1901, "checked": 1901, "exact_coverage_complete": true, "pair_hits": 0},
-    "pr_refs": {"readable_blobs": 1419, "checked": 1419, "exact_coverage_complete": true, "pair_hits": 0}
-  },
-  "expanded_variant_goal": {"parent_target": 1124, "expanded_verified_variants": 0, "expanded_parent_coverage": 0, "manual_generation_queue": "FINGERPRINT_BOUND; MATERIALIZE_ONLY_AFTER_IMMUTABLE_MAPPED_REBUILT_ORIGINALS"},
-  "expanded_generation_capability": {"latest_confirmed_validation": {"status": "PASS_CI", "schema": 69, "run_id": "32719871296", "triggering_sha": "e952a09a334c07674846e415f853e32e58ee1266", "compile": "success", "specialized_and_adapters": "success", "core": "success", "parent_contract": "success", "legacy_empty_choices": "success"}, "actual_real_variants_generated": 0, "parent_record_sha256_required": true},
-  "CI_browser_A4": {"latest_audit": {"run_id": "32730196071", "overall_result": "success", "triggering_sha": "6e685fbbc2cbe5b852976e8f203ad234bf2e24b3"}, "real_rebuilt_browser": "BLOCKED_UNTIL_IMMUTABLE_REAL_1124_BASE", "real_A4_six_pdfs": "BLOCKED_UNTIL_IMMUTABLE_REAL_1124_BASE", "publication_ready": false},
   "data_rebuild_progress": {
     "source_zip_bytes_read_this_run": false,
     "zip_identity_this_run": {"Winpass": null, "実力錬成": null, "Standard": null},
@@ -87,30 +88,16 @@
     "parent_coverage": "0/1124",
     "manual_queue": 0
   },
-  "今回完了した内容": [
-    "live branch HEADを再確認し、開始時HEAD 5e083e33361162f1b332b43d131b8e4785a73ebb を実読した。",
-    "checkpointを再読し、旧canonical exact-complete scansを再走査せず、3 source rebuildを主線として継続した。",
-    "File Libraryでスタンダードデータ(1).zip/中学実力錬成データ(1).zip/winpassデータ(1).zipを名称・数学・強いrecencyで検索したが、3ZIP実体は返らなかった。破損・SHA不一致とは推定せずruntime未露出扱い。",
-    "scripts treeを実読し、source member manifest、OOXML structure extraction、Winpass review/audit/materialize、rebuilt raw/original/mapping/freeze/revalidationの再構築chainがbranch上に存在することを再確認した。",
-    "前回policy commit 6e685fbbc2cbe5b852976e8f203ad234bf2e24b3 に対する Math Problem Bank Audit run 32730196071 が overall success で完走したことを確認した。",
-    "CIでは app_shell_and_data_gate/browser_regression/strict_release_after_browser/inventory_and_classify がsuccess。real canonical browserは実1124未再構築のためblocked_expected、publication_ready=falseで正しくfail-closed。",
-    "mainは未変更。"
-  ],
-  "現在どの工程にいるか": "3 source ZIP actual bytes visibility待ち。露出後は identity->member manifest/doc profile->raw717/237/317->Winpass evidence570->global1124->source-evidence app mapping->immutable freeze->manifest revalidation->new safe variants->app/browser/A4/publication の順で進める。",
-  "残っている作業": [
-    "runtimeに3 source ZIP bytesが見えた瞬間にSHA/size/CRC/member list/member SHA/document countsを記録。",
-    "問題・解答・解説・図版を文書/設問単位で抽出し、実力錬成237・Standard317を再確認。",
-    "Winpass717を重複・非問題要素・解答不一致・教材構造のfingerprint-bound evidenceで570へ決定し、件数合わせ禁止を維持。",
-    "570+237+317 global1124 candidate PASS->evidence-bound mapping->immutable freeze。",
-    "実親1124からsafe generationで最低1問、独立再計算可能型最大3問を生成し、manual queueも個別処理。",
-    "real Chromium/Firefox/WebKit iPhone/Chromium Fire、A4 6本、strict release、PUBLICATION_READY、isolated public verificationを連続実行。"
-  ],
-  "正確停止点": "Policy commit 6e685fbbc2cbe5b852976e8f203ad234bf2e24b3 is now CI-confirmed by run 32730196071. File Library still did not expose the three requested ZIP bytes in this run, so real originals remain 0/1124, variants0, coverage0/1124; real rebuilt browser/A4/publication remain correctly blocked. main untouched.",
-  "次回どこから開始するか": "live HEAD/checkpoint/ci-latest/source-verifier/variant/unifiedを再読->3 source ZIP byte visibilityを最優先再試行。見えれば旧canonical探索へ戻らず即identity/member manifest/extraction chainへ進む。見えなければ実1124なしで進められるfail-closed gate整合だけを前進させ、推測データは作らない。",
-  "schedule_policy": "hourly schedule and next scheduled execution unchanged",
-  "branch": "math-problem-bank-bootstrap",
-  "branch_head_observed_before_checkpoint": "5e083e33361162f1b332b43d131b8e4785a73ebb",
-  "main_touched": false,
-  "recorded_at_utc": "2026-08-24T14:17:11Z",
+  "this_run": {
+    "branch_head_observed_start": "11c7f64e0809e8bd99d4637df1bcda6290c692d1",
+    "file_library_search": "three requested ZIPs not returned; unrelated files only",
+    "code_audit_finding": "legacy canonical workflow still auto-triggered on branch state changes and Audit completion",
+    "code_change": "removed push and workflow_run triggers from math-canonical-auto-complete.yml; retained manual workflow_dispatch only",
+    "code_change_commit": "ee5c978a84126752ab5130c1c7b153e5228e288f",
+    "main_touched": false,
+    "recorded_at_jst": "2026-08-25T00:02:48+09:00"
+  },
+  "current_position": "Await actual bytes of the three reuploaded source ZIPs. As soon as visible: SHA/size/CRC/member list -> document structure -> raw717/237/317 -> evidence-bound Winpass570 -> global1124 -> evidence-bound app mapping -> immutable freeze -> manifest revalidation -> new safe variants -> real browser/A4/publication.",
+  "next_start": "Read live HEAD/checkpoint/CI, retry only the three source ZIPs. Do not repeat old canonical ref scans. If bytes are visible, immediately execute source identity/member manifest/extraction chain. If not visible, continue only fail-closed implementation work that does not invent source data.",
   "resume_rule": "Use only actually read source bytes and exact evidence. Never count-force, never promote raw diagnostic data directly, never reconstruct historical107 bodies from counts, never map without source evidence, and never let stale decisions or stale CI states bind to changed records."
 }
