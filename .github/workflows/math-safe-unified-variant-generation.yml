@@ -28,7 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: math-problem-bank-bootstrap
+          ref: ${{ github.sha }}
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
@@ -72,7 +72,7 @@ jobs:
         continue-on-error: true
         working-directory: math-bank/app
         run: python test_legacy_empty_choices_exact_generation.py
-      - name: Persist unified-engine CI diagnostics with concurrent-push recovery
+      - name: Persist exact-tested unified CI diagnostics with concurrent-push recovery
         if: always()
         env:
           RUN_ID: ${{ github.run_id }}
@@ -87,8 +87,9 @@ jobs:
           set -euo pipefail
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          write_state() {
-            python - <<'PY'
+          TESTED_SHA="$(git rev-parse HEAD)"
+          test "$TESTED_SHA" = "$TRIGGERING_SHA"
+          python - <<'PY'
           import json, os, sys
           from datetime import datetime, timezone
           from pathlib import Path
@@ -109,9 +110,11 @@ jobs:
           runtime_routes=[name for name,_ in unified.SPECIALIZED_ENGINES]
           payload={
             'status':'PASS_CI' if all_pass else 'FAIL_CI_DIAGNOSTIC',
-            'persist_schema_version':68,
+            'persist_schema_version':69,
             'run_id':os.environ['RUN_ID'],
             'triggering_sha':os.environ['TRIGGERING_SHA'],
+            'tested_checkout_sha':os.environ['TRIGGERING_SHA'],
+            'tested_checkout_equals_triggering_sha':True,
             'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
             'step_outcomes':outcomes,
             'engine_test_discovery':'test_safe_*_variant_engine.py plus test_*_unified_adapter.py plus runtime reachability graph gate',
@@ -125,6 +128,7 @@ jobs:
             'runtime_route_count':len(runtime_routes),
             'runtime_routes_bound_to_SPECIALIZED_ENGINES':True,
             'all_safe_engine_modules_runtime_reachable_required':True,
+            'stale_run_cannot_overwrite_newer_run_id':True,
             'delegated_capabilities_auto_discovered_by_module_and_tests':True,
             'actual_base_variants_generated':0,
             'base_required_before_actual_generation':True,
@@ -143,30 +147,27 @@ jobs:
             'minimum_per_parent_default':1,
             'safe_target_per_parent_default':3,
             'unsupported_manual_shortfall_only':True,
-            'new_inverse_identities':{
-              'speed_from_distance_time':'speed=distance/time and speed*time=distance',
-              'time_from_distance_speed':'time=distance/speed and speed*time=distance',
-              'percent_from_amount_base':'percent=amount/base*100 and percent*base/100=amount',
-              'base_from_amount_percent':'base=amount*100/percent and base*percent/100=amount',
-              'triangle_height_from_area':'height=2*area/base and base*height=2*area',
-              'triangle_base_from_area':'base=2*area/height and base*height=2*area',
-              'rectangle_side_from_area':'missing=area/known and product=area',
-              'rectangle_side_from_perimeter':'missing=perimeter/2-known and recomposition',
-              'square_side_from_area':'side=isqrt(area) with exact square and side^2=area',
-              'square_side_from_perimeter':'side=perimeter/4 and side*4=perimeter',
-              'cylinder_height_from_surface_area':'height=surface/(2*pi*r)-r and recomposition',
-              'cone_slant_from_surface_area':'slant=surface/(pi*r)-r and recomposition'
-            }
           }
-          p=Path('math-bank/state/unified-safe-variant-generation-latest.json')
-          p.parent.mkdir(parents=True,exist_ok=True)
+          p=Path('/tmp/unified-safe-variant-generation-tested.json')
           p.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           PY
-          }
           for attempt in 1 2 3 4 5 6; do
             git fetch origin math-problem-bank-bootstrap
             git reset --hard origin/math-problem-bank-bootstrap
-            write_state
+            python - <<'PY'
+          import json, os
+          from pathlib import Path
+          current=Path('math-bank/state/unified-safe-variant-generation-latest.json')
+          if current.exists():
+              try:
+                  old=json.loads(current.read_text(encoding='utf-8'))
+                  if int(old.get('run_id',0)) > int(os.environ['RUN_ID']):
+                      Path('/tmp/skip-unified-persist').write_text('newer run already persisted\n')
+              except Exception:
+                  pass
+          PY
+            if [ -f /tmp/skip-unified-persist ]; then exit 0; fi
+            cp /tmp/unified-safe-variant-generation-tested.json math-bank/state/unified-safe-variant-generation-latest.json
             git add -- math-bank/state/unified-safe-variant-generation-latest.json
             if git diff --cached --quiet; then exit 0; fi
             git commit -m 'record unified safe variant generation CI'
