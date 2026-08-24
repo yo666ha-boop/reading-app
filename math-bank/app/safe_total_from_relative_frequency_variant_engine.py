@@ -9,7 +9,7 @@ from decimal import Decimal, InvalidOperation
 from fractions import Fraction
 
 DATA_RE=re.compile(r"度数(?:は|が)\s*(?P<freq>\d+)\s*(?:人|個|回|名)?[^\d]{0,32}相対度数(?:は|が)\s*(?P<rel>0(?:\.\d+)?|1(?:\.0+)?)")
-ANSWER_RE=re.compile(r"^(?P<total>\d+)\s*(?:人|個|回|名)?$")
+ANSWER_RE=re.compile(r"^(?P<total>\d+)\s*(?P<unit>人|個|回|名)?$")
 
 
 def _norm(v:object)->str:
@@ -46,7 +46,7 @@ def _parse_parent(parent:dict):
     am=ANSWER_RE.fullmatch(_norm(parent.get("answer")).replace(" ",""))
     if am is None or int(am.group("total"))!=total_i: return None
     if Fraction(freq,total_i)!=rel: return None
-    return m,freq,rel,total_i
+    return m,freq,rel,total_i,(am.group("unit") or "")
 
 
 def can_generate(parent:dict)->tuple[bool,str]:
@@ -62,12 +62,11 @@ def generate(parent:dict,count:int)->tuple[list[dict],list[dict],str]:
     if parsed is None:
         ok,reason=can_generate(parent); assert not ok
         return [],[],reason
-    match,pfreq,prel,ptotal=parsed; q=_norm(parent.get("question")); seed=int(_sha(parent)[:12],16)
+    match,pfreq,prel,ptotal,unit=parsed; q=_norm(parent.get("question")); seed=int(_sha(parent)[:12],16)
     options=((5,Fraction(1,4),20),(12,Fraction(3,10),40),(20,Fraction(2,5),50),(5,Fraction(1,5),25),(35,Fraction(7,20),100))
     seen=set(); rows=[]; evidence=[]
     for index in range(count):
-        freq,rel,total=options[(seed+index)%len(options)]; sig=(str(freq),_fmt(rel))
-        bump=0
+        freq,rel,total=options[(seed+index)%len(options)]; sig=(str(freq),_fmt(rel)); bump=0
         while sig==(str(pfreq),_fmt(prel)) or sig in seen:
             bump+=1; freq,rel,total=options[(seed+index+bump)%len(options)]; sig=(str(freq),_fmt(rel))
         seen.add(sig)
@@ -76,6 +75,6 @@ def generate(parent:dict,count:int)->tuple[list[dict],list[dict],str]:
         spans=[(match.start("freq")-match.start(),match.end("freq")-match.start(),str(freq)),(match.start("rel")-match.start(),match.end("rel")-match.start(),_fmt(rel))]
         for a,b,val in sorted(spans,reverse=True): repl=repl[:a]+val+repl[b:]
         new_q=q[:match.start()]+repl+q[match.end():]
-        rows.append({"question":new_q,"answer":str(total),"explanation":f"全体の度数=度数÷相対度数より、{freq}÷{_fmt(rel)}={total}。{freq}/{total}={_fmt(rel)}でも確認済み。","numeric_signature":sig})
+        rows.append({"question":new_q,"answer":f"{total}{unit}","explanation":f"全体の度数=度数÷相対度数より、{freq}÷{_fmt(rel)}={total}{unit}。{freq}/{total}={_fmt(rel)}でも確認済み。","numeric_signature":sig})
         evidence.append({"parent_sha256":_sha(parent),"method":"total_from_relative_frequency_exact_division_and_fraction_identity","parent_recalculation":f"{pfreq}/{_fmt(prel)}={ptotal} and {pfreq}/{ptotal}={_fmt(prel)}","variant_recalculation":f"{freq}/{_fmt(rel)}={total} and {freq}/{total}={_fmt(rel)}","independent_check":"total == frequency/relative AND frequency/total == relative PASS"})
     return rows,evidence,"total_from_relative_frequency_exact"
