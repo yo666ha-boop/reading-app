@@ -2,6 +2,7 @@ const fs=require('fs');
 const {JSDOM,VirtualConsole}=require('jsdom');
 
 // 2026-08-24: cumulative-reviewed vocabulary scanner; push marker forces fresh all-168 evidence.
+// 2026-08-24 automation rerun marker: recompute corrected cumulative counts from current branch actual.
 function tokenize(text){
   return (String(text||'').replace(/[’]/g,"'").match(/[A-Za-z]+(?:'[A-Za-z]+)*/g)||[]).map(x=>x.toLowerCase());
 }
