@@ -28,17 +28,143 @@
     "combined_diagnostic",
     "raw_scoring_slots",
     "canonical_unique_docs",
-    "partial_verified_winpass_records"
+    "partial_verified_winpass_records",
+    "word_math_m_t",
+    "own_paragraph_extraction",
+    "tandem_repeat_prefix"
   ],
-  "runs_in_window": 0,
-  "completed_runs": 0,
+  "persisted_ledger_seed_runs": 212,
+  "runs_in_window": 212,
+  "live_api_listing_error": null,
+  "completed_runs": 212,
   "run_download_failures": 0,
-  "log_members_seen": 0,
-  "text_members_scanned": 0,
-  "matching_lines": 0,
-  "matches": [],
+  "log_members_seen": 1616,
+  "text_members_scanned": 1616,
+  "matching_lines": 9,
+  "matches": [
+    {
+      "run_id": 32366942418,
+      "workflow": "Math 2140 Checkpoint Recovery",
+      "head_sha": "3a745642230ee6bb12a1d4000be033e825d684b7",
+      "observed_at": "2026-08-20T12:09:55Z",
+      "seed_source": "persisted_actions_log_ledger",
+      "member": "0_recover-checkpoint.txt",
+      "line_number": 144,
+      "matched": [
+        "winpass_verified_union570_authoritative_norm_20260820"
+      ],
+      "context": "2026-08-20T12:09:33.4238946Z \u001b[36;1mfrom pathlib import Path\u001b[0m\n2026-08-20T12:09:33.4239244Z \u001b[36;1mfrom datetime import datetime, timezone\u001b[0m\n2026-08-20T12:09:33.4239545Z \u001b[36;1mneedles=[\u001b[0m\n2026-08-20T12:09:33.4239844Z \u001b[36;1m  'みかみ塾数学問題バンク_継続チェックポイント_20260819_2140.zip',\u001b[0m\n2026-08-20T12:09:33.4240336Z \u001b[36;1m  'winpass_verified_union570_authoritative_norm_20260820',\u001b[0m\n2026-08-20T12:09:33.4240709Z \u001b[36;1m  'jitsuren_verified_union225_complete27_20260820',\u001b[0m\n2026-08-20T12:09:33.4241098Z \u001b[36;1m  'FINAL_INVENTORY.md','FULL_AUDIT.md','QUALITY_REPORT.md','QUALITY_SUMMARY.md'\u001b[0m\n2026-08-20T12:09:33.4241865Z \u001b[36;1m]\u001b[0m\n2026-08-20T12:09:33.4242324Z \u001b[36;1mp=subprocess.run(['git','rev-list','--objects','--all'],text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=True)\u001b[0m"
+    },
+    {
+      "run_id": 32366942418,
+      "workflow": "Math 2140 Checkpoint Recovery",
+      "head_sha": "3a745642230ee6bb12a1d4000be033e825d684b7",
+      "observed_at": "2026-08-20T12:09:55Z",
+      "seed_source": "persisted_actions_log_ledger",
+      "member": "0_recover-checkpoint.txt",
+      "line_number": 145,
+      "matched": [
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "context": "2026-08-20T12:09:33.4239244Z \u001b[36;1mfrom datetime import datetime, timezone\u001b[0m\n2026-08-20T12:09:33.4239545Z \u001b[36;1mneedles=[\u001b[0m\n2026-08-20T12:09:33.4239844Z \u001b[36;1m  'みかみ塾数学問題バンク_継続チェックポイント_20260819_2140.zip',\u001b[0m\n2026-08-20T12:09:33.4240336Z \u001b[36;1m  'winpass_verified_union570_authoritative_norm_20260820',\u001b[0m\n2026-08-20T12:09:33.4240709Z \u001b[36;1m  'jitsuren_verified_union225_complete27_20260820',\u001b[0m\n2026-08-20T12:09:33.4241098Z \u001b[36;1m  'FINAL_INVENTORY.md','FULL_AUDIT.md','QUALITY_REPORT.md','QUALITY_SUMMARY.md'\u001b[0m\n2026-08-20T12:09:33.4241865Z \u001b[36;1m]\u001b[0m\n2026-08-20T12:09:33.4242324Z \u001b[36;1mp=subprocess.run(['git','rev-list','--objects','--all'],text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=True)\u001b[0m\n2026-08-20T12:09:33.4242792Z \u001b[36;1mhits=[]\u001b[0m"
+    },
+    {
+      "run_id": 32366942418,
+      "workflow": "Math 2140 Checkpoint Recovery",
+      "head_sha": "3a745642230ee6bb12a1d4000be033e825d684b7",
+      "observed_at": "2026-08-20T12:09:55Z",
+      "seed_source": "persisted_actions_log_ledger",
+      "member": "0_recover-checkpoint.txt",
+      "line_number": 184,
+      "matched": [
+        "winpass_verified_union570_authoritative_norm_20260820"
+      ],
+      "context": "2026-08-20T12:09:36.1675718Z {\n2026-08-20T12:09:36.1676374Z   \"scan\": \"all_visible_git_ref_paths_for_2140_checkpoint\",\n2026-08-20T12:09:36.1676768Z   \"needles\": [\n2026-08-20T12:09:36.1677392Z     \"みかみ塾数学問題バンク_継続チェックポイント_20260819_2140.zip\",\n2026-08-20T12:09:36.1677723Z     \"winpass_verified_union570_authoritative_norm_20260820\",\n2026-08-20T12:09:36.1678070Z     \"jitsuren_verified_union225_complete27_20260820\",\n2026-08-20T12:09:36.1678396Z     \"FINAL_INVENTORY.md\",\n2026-08-20T12:09:36.1678634Z     \"FULL_AUDIT.md\",\n2026-08-20T12:09:36.1678887Z     \"QUALITY_REPORT.md\","
+    },
+    {
+      "run_id": 32366942418,
+      "workflow": "Math 2140 Checkpoint Recovery",
+      "head_sha": "3a745642230ee6bb12a1d4000be033e825d684b7",
+      "observed_at": "2026-08-20T12:09:55Z",
+      "seed_source": "persisted_actions_log_ledger",
+      "member": "0_recover-checkpoint.txt",
+      "line_number": 185,
+      "matched": [
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "context": "2026-08-20T12:09:36.1676374Z   \"scan\": \"all_visible_git_ref_paths_for_2140_checkpoint\",\n2026-08-20T12:09:36.1676768Z   \"needles\": [\n2026-08-20T12:09:36.1677392Z     \"みかみ塾数学問題バンク_継続チェックポイント_20260819_2140.zip\",\n2026-08-20T12:09:36.1677723Z     \"winpass_verified_union570_authoritative_norm_20260820\",\n2026-08-20T12:09:36.1678070Z     \"jitsuren_verified_union225_complete27_20260820\",\n2026-08-20T12:09:36.1678396Z     \"FINAL_INVENTORY.md\",\n2026-08-20T12:09:36.1678634Z     \"FULL_AUDIT.md\",\n2026-08-20T12:09:36.1678887Z     \"QUALITY_REPORT.md\",\n2026-08-20T12:09:36.1679141Z     \"QUALITY_SUMMARY.md\""
+    },
+    {
+      "run_id": 32366942418,
+      "workflow": "Math 2140 Checkpoint Recovery",
+      "head_sha": "3a745642230ee6bb12a1d4000be033e825d684b7",
+      "observed_at": "2026-08-20T12:09:55Z",
+      "seed_source": "persisted_actions_log_ledger",
+      "member": "0_recover-checkpoint.txt",
+      "line_number": 203,
+      "matched": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "context": "2026-08-20T12:09:36.1760982Z \u001b[36;1mfrom datetime import datetime, timezone\u001b[0m\n2026-08-20T12:09:36.1761566Z \u001b[36;1m\u001b[0m\n2026-08-20T12:09:36.1761923Z \u001b[36;1mrepo=os.environ['GITHUB_REPOSITORY']; token=os.environ['GITHUB_TOKEN']\u001b[0m\n2026-08-20T12:09:36.1762376Z \u001b[36;1mcheckpoint='みかみ塾数学問題バンク_継続チェックポイント_20260819_2140.zip'\u001b[0m\n2026-08-20T12:09:36.1762977Z \u001b[36;1mhints=['winpass_verified_union570_authoritative_norm_20260820','jitsuren_verified_union225_complete27_20260820','FINAL_INVENTORY.md','FULL_AUDIT.md','QUALITY_REPORT.md','QUALITY_SUMMARY.md']\u001b[0m\n2026-08-20T12:09:36.1764043Z \u001b[36;1mheaders={'Authorization':f'***','Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','User-Agent':'mikami-math-2140-recovery'}\u001b[0m\n2026-08-20T12:09:36.1764671Z \u001b[36;1mdef get_json(url):\u001b[0m\n2026-08-20T12:09:36.1765091Z \u001b[36;1m  with urllib.request.urlopen(urllib.request.Request(url,headers=headers),timeout=60) as r:return json.load(r)\u001b[0m\n2026-08-20T12:09:36.1765539Z \u001b[36;1mdef get_bytes(url,accept='application/octet-stream'):\u001b[0m"
+    },
+    {
+      "run_id": 32367127464,
+      "workflow": "Math 2140 Checkpoint Fast Recovery",
+      "head_sha": "9aebb23b3c00ee911ae89d366aa43cee5658f331",
+      "observed_at": "2026-08-20T12:11:19Z",
+      "seed_source": "persisted_actions_log_ledger",
+      "member": "0_recover.txt",
+      "line_number": 136,
+      "matched": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "context": "2026-08-20T12:10:53.2319632Z \u001b[36;1mpython - <<'PY'\u001b[0m\n2026-08-20T12:10:53.2320095Z \u001b[36;1mimport json,subprocess\u001b[0m\n2026-08-20T12:10:53.2320582Z \u001b[36;1mfrom pathlib import Path\u001b[0m\n2026-08-20T12:10:53.2321125Z \u001b[36;1mfrom datetime import datetime,timezone\u001b[0m\n2026-08-20T12:10:53.2322935Z \u001b[36;1mneedles=['みかみ塾数学問題バンク_継続チェックポイント_20260819_2140.zip','winpass_verified_union570_authoritative_norm_20260820','jitsuren_verified_union225_complete27_20260820','FINAL_INVENTORY.md','FULL_AUDIT.md','QUALITY_REPORT.md','QUALITY_SUMMARY.md']\u001b[0m\n2026-08-20T12:10:53.2324916Z \u001b[36;1mtext=subprocess.check_output(['git','rev-list','--objects','--all'],text=True)\u001b[0m\n2026-08-20T12:10:53.2325686Z \u001b[36;1mhits=[]\u001b[0m\n2026-08-20T12:10:53.2326072Z \u001b[36;1mfor line in text.splitlines():\u001b[0m\n2026-08-20T12:10:53.2326577Z \u001b[36;1m  x=line.split(' ',1)\u001b[0m"
+    },
+    {
+      "run_id": 32367127464,
+      "workflow": "Math 2140 Checkpoint Fast Recovery",
+      "head_sha": "9aebb23b3c00ee911ae89d366aa43cee5658f331",
+      "observed_at": "2026-08-20T12:11:19Z",
+      "seed_source": "persisted_actions_log_ledger",
+      "member": "0_recover.txt",
+      "line_number": 164,
+      "matched": [
+        "winpass_verified_union570_authoritative_norm_20260820"
+      ],
+      "context": "2026-08-20T12:10:53.3670323Z {\n2026-08-20T12:10:53.3670861Z   \"scope\": \"all fetched branch heads and tags\",\n2026-08-20T12:10:53.3671432Z   \"needles\": [\n2026-08-20T12:10:53.3672102Z     \"みかみ塾数学問題バンク_継続チェックポイント_20260819_2140.zip\",\n2026-08-20T12:10:53.3672742Z     \"winpass_verified_union570_authoritative_norm_20260820\",\n2026-08-20T12:10:53.3673485Z     \"jitsuren_verified_union225_complete27_20260820\",\n2026-08-20T12:10:53.3674056Z     \"FINAL_INVENTORY.md\",\n2026-08-20T12:10:53.3674489Z     \"FULL_AUDIT.md\",\n2026-08-20T12:10:53.3674874Z     \"QUALITY_REPORT.md\","
+    },
+    {
+      "run_id": 32367127464,
+      "workflow": "Math 2140 Checkpoint Fast Recovery",
+      "head_sha": "9aebb23b3c00ee911ae89d366aa43cee5658f331",
+      "observed_at": "2026-08-20T12:11:19Z",
+      "seed_source": "persisted_actions_log_ledger",
+      "member": "0_recover.txt",
+      "line_number": 165,
+      "matched": [
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "context": "2026-08-20T12:10:53.3670861Z   \"scope\": \"all fetched branch heads and tags\",\n2026-08-20T12:10:53.3671432Z   \"needles\": [\n2026-08-20T12:10:53.3672102Z     \"みかみ塾数学問題バンク_継続チェックポイント_20260819_2140.zip\",\n2026-08-20T12:10:53.3672742Z     \"winpass_verified_union570_authoritative_norm_20260820\",\n2026-08-20T12:10:53.3673485Z     \"jitsuren_verified_union225_complete27_20260820\",\n2026-08-20T12:10:53.3674056Z     \"FINAL_INVENTORY.md\",\n2026-08-20T12:10:53.3674489Z     \"FULL_AUDIT.md\",\n2026-08-20T12:10:53.3674874Z     \"QUALITY_REPORT.md\",\n2026-08-20T12:10:53.3675283Z     \"QUALITY_SUMMARY.md\""
+    },
+    {
+      "run_id": 32367127464,
+      "workflow": "Math 2140 Checkpoint Fast Recovery",
+      "head_sha": "9aebb23b3c00ee911ae89d366aa43cee5658f331",
+      "observed_at": "2026-08-20T12:11:19Z",
+      "seed_source": "persisted_actions_log_ledger",
+      "member": "0_recover.txt",
+      "line_number": 180,
+      "matched": [
+        "winpass_verified_union570_authoritative_norm_20260820",
+        "jitsuren_verified_union225_complete27_20260820"
+      ],
+      "context": "2026-08-20T12:10:53.3757402Z \u001b[36;1mimport hashlib,io,json,os,urllib.request,zipfile\u001b[0m\n2026-08-20T12:10:53.3758033Z \u001b[36;1mfrom pathlib import Path\u001b[0m\n2026-08-20T12:10:53.3758542Z \u001b[36;1mfrom datetime import datetime,timezone\u001b[0m\n2026-08-20T12:10:53.3759752Z \u001b[36;1mrepo=os.environ['REPO']; token=os.environ['GITHUB_TOKEN']; checkpoint='みかみ塾数学問題バンク_継続チェックポイント_20260819_2140.zip'\u001b[0m\n2026-08-20T12:10:53.3761719Z \u001b[36;1mhints=['winpass_verified_union570_authoritative_norm_20260820','jitsuren_verified_union225_complete27_20260820','FINAL_INVENTORY.md','FULL_AUDIT.md','QUALITY_REPORT.md','QUALITY_SUMMARY.md']\u001b[0m\n2026-08-20T12:10:53.3763898Z \u001b[36;1mbase_headers={'Authorization':f'***','X-GitHub-Api-Version':'2022-11-28','User-Agent':'mikami-math-2140-fast'}\u001b[0m\n2026-08-20T12:10:53.3764869Z \u001b[36;1mdef fetch(url,accept):\u001b[0m\n2026-08-20T12:10:53.3765404Z \u001b[36;1m  h=dict(base_headers);h['Accept']=accept\u001b[0m\n2026-08-20T12:10:53.3766360Z \u001b[36;1m  with urllib.request.urlopen(urllib.request.Request(url,headers=h),timeout=180) as r:return r.read()\u001b[0m"
+    }
+  ],
   "errors": [],
   "scan_complete": true,
-  "completed_at_utc": "2026-08-24T12:11:25.433988+00:00",
-  "policy": "This is forensic reconstruction evidence. Log text may identify prior generated file names/commands but never substitutes for validating recovered data."
+  "completed_at_utc": "2026-08-24T12:18:44.354132+00:00",
+  "policy": "The persisted historical run ledger is used because current API pagination no longer reaches all Aug19-Aug20 runs. Log text is forensic pipeline evidence only and never substitutes for validating recovered data."
 }
