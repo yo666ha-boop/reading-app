@@ -1,14 +1,14 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32679807776",
-  "triggering_sha": "cbc5f6495ef522d2dc2ac81722d8dae2a33696bb",
-  "tested_checkout_sha": "cbc5f6495ef522d2dc2ac81722d8dae2a33696bb",
+  "run_id": "32681388255",
+  "triggering_sha": "384be98d3f1f3d8c1546d2ee247a305c41e0dd10",
+  "tested_checkout_sha": "384be98d3f1f3d8c1546d2ee247a305c41e0dd10",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T01:27:16.792503+00:00",
+  "recorded_at_utc": "2026-08-24T02:00:00.656879+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
+    "specialized_and_adapters": "failure",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
@@ -17,6 +17,7 @@
   "engine_modules_auto_discovered": [
     "absolute_value",
     "affine",
+    "affine_equation_from_two_points",
     "affine_intercept_from_slope_point",
     "affine_x_from_y",
     "average",
@@ -123,7 +124,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 107,
+  "engine_module_count": 108,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_intercept_from_slope_point_variant_engine.py",
