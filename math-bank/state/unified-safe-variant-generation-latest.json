@@ -1,11 +1,11 @@
 {
   "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32685178993",
-  "triggering_sha": "d3bb2b7e6ae47d553bf5a5b91232fa0e31c1dd3c",
-  "tested_checkout_sha": "d3bb2b7e6ae47d553bf5a5b91232fa0e31c1dd3c",
+  "run_id": "32685206965",
+  "triggering_sha": "00105a9394ea1b27c1fa80d2427e597571380145",
+  "tested_checkout_sha": "00105a9394ea1b27c1fa80d2427e597571380145",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T03:05:16.763367+00:00",
+  "recorded_at_utc": "2026-08-24T03:05:41.312801+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "failure",
@@ -203,6 +203,7 @@
     "test_safe_rectangle_side_from_perimeter_variant_engine.py",
     "test_safe_rectangular_prism_height_from_surface_area_variant_engine.py",
     "test_safe_rectangular_prism_height_from_volume_variant_engine.py",
+    "test_safe_rectangular_prism_side_from_surface_area_variant_engine.py",
     "test_safe_rectangular_prism_side_from_volume_variant_engine.py",
     "test_safe_rectangular_prism_surface_area_variant_engine.py",
     "test_safe_rectangular_prism_volume_variant_engine.py",
@@ -245,7 +246,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 111,
+  "engine_test_count": 112,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_affine_equation_from_two_points_unified_adapter.py",
