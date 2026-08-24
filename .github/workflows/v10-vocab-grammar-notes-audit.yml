@@ -5,6 +5,8 @@ on:
     branches: [v10-vocab-grammar-notes-audit]
     paths:
       - 'v10_vocab_notes_candidate_audit.js'
+      - 'v10_notes_ui_test.js'
+      - 'v10_vocab_corrections.js'
       - 'v10_stage2.html'
       - 'v10_data_*.js'
       - 'v10_semantic_*.js'
@@ -30,6 +32,8 @@ jobs:
           node-version: '20'
       - name: Install audit dependency
         run: npm install --no-save --no-package-lock jsdom@24.1.3
+      - name: Verify v7 correction and gloss UI
+        run: node v10_notes_ui_test.js | tee v10_notes_ui_test.log
       - name: Run all-168 vocabulary candidate audit
         run: node v10_vocab_notes_candidate_audit.js | tee v10_vocab_notes_candidate_audit.log
       - name: Write compact status
@@ -49,6 +53,7 @@ jobs:
             `notes_present=${r.notesPresent}`,
             `missing_gloss=${r.missingGloss}`,
             `missing_allowedWords=${r.missingAllowedWords}`,
+            'notes_ui_gate=PASS',
             'next=resolve every V7 lookup against the v7 master at exact section cutoff; build grammar chronology; then add only indispensable glossed notes'
           ];
           fs.writeFileSync('VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt',lines.join('\n')+'\n');
@@ -61,6 +66,7 @@ jobs:
           path: |
             v10_vocab_notes_candidate_report.json
             v10_vocab_notes_candidate_audit.log
+            v10_notes_ui_test.log
             VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt
           if-no-files-found: error
           retention-days: 30
@@ -70,8 +76,8 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add v10_vocab_notes_candidate_report.json v10_vocab_notes_candidate_audit.log VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt
+          git add v10_vocab_notes_candidate_report.json v10_vocab_notes_candidate_audit.log v10_notes_ui_test.log VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt
           if ! git diff --cached --quiet; then
-            git commit -m 'Record all-168 vocabulary candidate audit [skip ci]'
+            git commit -m 'Record all-168 vocabulary and gloss UI audit [skip ci]'
             git push origin HEAD:v10-vocab-grammar-notes-audit
           fi
