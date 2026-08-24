@@ -1,17 +1,17 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32705720725",
-  "triggering_sha": "8b21e1a1e0a582121ac4f4d002cbc7471ac584ae",
-  "tested_checkout_sha": "8b21e1a1e0a582121ac4f4d002cbc7471ac584ae",
+  "run_id": "32705921275",
+  "triggering_sha": "b9e2eb9c061efc309677c594edf51b7a489041a1",
+  "tested_checkout_sha": "b9e2eb9c061efc309677c594edf51b7a489041a1",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T08:19:55.062122+00:00",
+  "recorded_at_utc": "2026-08-24T08:22:13.169321+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
-    "core": "success",
-    "parent_contract": "success",
-    "legacy_empty_choices": "success"
+    "specialized_and_adapters": "cancelled",
+    "core": "skipped",
+    "parent_contract": "skipped",
+    "legacy_empty_choices": "skipped"
   },
   "engine_test_discovery": "test_safe_*_variant_engine.py plus test_*_unified_adapter.py plus runtime reachability graph gate",
   "engine_modules_auto_discovered": [
