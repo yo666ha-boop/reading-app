@@ -1,7 +1,7 @@
 {
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP",
-  "current_stage": "RAW_SCORING_SLOT_REBUILD_FROM_VERIFIED_SOURCE_BYTES",
+  "current_stage": "RAW_1271_MATERIALIZATION_QA_FIGURE_BINDING",
   "base_target": {
     "original_records": 1124,
     "original_by_source": {"Winpass": 570, "実力錬成": 237, "Standard": 317},
@@ -30,13 +30,14 @@
     "unique_documents": {"Winpass": 81, "実力錬成": 27, "Standard": 32, "total": 140},
     "cross_source_sha_conflicts": 0,
     "all_source_identity_and_inventory_gates_pass": true,
-    "raw_target": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
-    "raw_extraction_method": "ordered OOXML preserving w:t/m:t, problem-answer half split, scoring-slot evidence, answer/figure binding",
-    "raw_probe": {
-      "Winpass_point_multiplier_slots_before_special_format_resolution": 715,
-      "interpretation": "probe only, not promotable; custom/fixed scoring documents are being resolved individually",
-      "Standard": "requires fixed-score plus multiplier parsing",
-      "実力錬成": "requires 各N点/fixed-score/letter-or-named-answer parsing"
+    "raw_slot_count_verification_file": "math-bank/state/raw-slot-count-verification-20260825.json",
+    "raw_slot_counts_verified": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
+    "raw_slot_count_method": "source score annotations + ordered OOXML preserving w:t/m:t + problem/answer half structure; historical counts used only as verification",
+    "count_forcing_used": false,
+    "source_specific_evidence": {
+      "Winpass": "715 normal multiplier probe corrected by three documented special scoring layouts to 717",
+      "Standard": "279 multiplier slots + 38 fixed-score slots = 317",
+      "実力錬成": "237 slots from 各N点/fixed-score/named-answer labels; all 27 tests independently reconstruct to 100 points"
     }
   },
   "historical_source_forensics": {
@@ -70,27 +71,28 @@
     "source_zip_bytes_read_this_run": true,
     "zip_identity_this_run": {"Winpass": "PASS", "実力錬成": "PASS", "Standard": "PASS"},
     "extracted_documents_current_runtime": {"Winpass": 81, "実力錬成": 27, "Standard": 32, "total": 140},
-    "raw_records_current_runtime": {"Winpass": 0, "実力錬成": 0, "Standard": 0, "total": 0, "note": "Do not publish probe counts until every scoring slot has question-answer-figure evidence"},
+    "raw_slot_counts_verified": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271},
+    "raw_records_materialized_with_qa": {"Winpass": 0, "実力錬成": 0, "Standard": 0, "total": 0},
     "validated_originals": {"Winpass": 0, "実力錬成": 0, "Standard": 0, "total": 0},
     "immutable_mapped_rebuilt_originals": 0,
     "variants": 0,
     "parent_coverage": "0/1124"
   },
   "this_run": {
-    "branch_head_before_live_sync": "641def00504d8145ea09cf5ed03fc1ff6c2ce372",
-    "live_source_verification_commit": "d72b5aab94ff6d0f58d3ffdc9f8bb9f3a766b103",
+    "source_live_verification_commit": "d72b5aab94ff6d0f58d3ffdc9f8bb9f3a766b103",
+    "checkpoint_source_blocker_clear_commit": "f0a29a966d1fdcb8f318710b73d852380693a552",
+    "raw_slot_count_verification_commit": "21ab8a60bcb590407fcf1f072fd53942c162d6f7",
     "completed": [
-      "Read all three source ZIP bytes directly from current conversation mounts",
-      "Verified exact historical SHA256 and byte size for all three archives",
-      "Verified ZIP CRC integrity",
+      "Read and verified exact bytes/SHA/CRC of all three source ZIPs",
       "Reproduced 246 DOCX -> 106 duplicate copies -> 140 unique documents",
-      "Reproduced unique source counts Winpass81 / 実力錬成27 / Standard32",
-      "Started evidence-based raw scoring-slot reconstruction and identified custom/fixed scoring formats that must be parsed rather than count-forced"
+      "Verified per-source unique docs Winpass81 / 実力錬成27 / Standard32",
+      "Reconstructed raw scoring slot counts Winpass717 / 実力錬成237 / Standard317 = 1271 from source scoring evidence",
+      "Persisted per-document slot counts and special scoring evidence to GitHub"
     ],
     "main_touched": false,
     "recorded_at_jst": "2026-08-25T00:30:00+09:00"
   },
-  "current_position": "Source-byte blocker is cleared. Continue raw scoring-slot reconstruction from the verified 140 unique DOCX. Resolve custom/fixed scoring documents, then materialize exact evidence-backed raw 717/237/317 with question, answer and figure provenance.",
-  "next_start": "Do not retry ZIP discovery and do not repeat old canonical scans. Resume from ordered OOXML/scoring-slot extraction. First finish Winpass special scoring formats around the 715 multiplier-slot probe, then complete Standard fixed-score slots and 実力錬成 各N点/fixed-score slots. Only after exact evidence-backed raw1271 exists: create Winpass717 fingerprint review queue -> explicit include/exclude evidence -> 570 -> validate global1124 -> immutable freeze -> new safe variants -> app/browser/A4/publication.",
-  "resume_rule": "Use only actually read source bytes and exact evidence. Never count-force, never promote probe/diagnostic counts directly, never reconstruct historical107 bodies from counts, never map without source evidence."
+  "current_position": "Raw scoring-slot counts are fully re-established from live source bytes. Now materialize 1271 records: bind each slot to exact source document/major/subslot, question text preserving math m:t, answer text or graphical answer asset, and a stable record fingerprint.",
+  "next_start": "Do not retry ZIP discovery, old canonical scans, or slot-count derivation. Resume at raw1271 record materialization and Q/A/figure binding. Validate questions1271/1271, answers1271/1271, figure refs41 and missing figure refs0. Then create the Winpass717 fingerprint review queue, make explicit evidence-bound include/exclude decisions to 570, validate global1124, immutable freeze, generate new safe variants, compose app records, run browser/A4/publication gates.",
+  "resume_rule": "Use only actual source bytes and exact evidence. Never count-force, never promote a count-only record without Q/A/figure provenance, never reconstruct historical107 bodies from counts, never map without source evidence."
 }
