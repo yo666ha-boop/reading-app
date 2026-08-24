@@ -1,9 +1,11 @@
 {
   "status": "FAIL_CI_DIAGNOSTIC",
-  "persist_schema_version": 68,
-  "run_id": "32677405529",
-  "triggering_sha": "bfd4d7fd5e2b77d0a5a5c33b7f27b7b53556e2d6",
-  "recorded_at_utc": "2026-08-24T00:50:19.364768+00:00",
+  "persist_schema_version": 69,
+  "run_id": "32677629225",
+  "triggering_sha": "5a7d84d8883645989c57a129505dccc7916bd88f",
+  "tested_checkout_sha": "5a7d84d8883645989c57a129505dccc7916bd88f",
+  "tested_checkout_equals_triggering_sha": true,
+  "recorded_at_utc": "2026-08-24T00:51:51.106164+00:00",
   "step_outcomes": {
     "compile": "success",
     "specialized_and_adapters": "failure",
@@ -353,6 +355,7 @@
   "runtime_route_count": 53,
   "runtime_routes_bound_to_SPECIALIZED_ENGINES": true,
   "all_safe_engine_modules_runtime_reachable_required": true,
+  "stale_run_cannot_overwrite_newer_run_id": true,
   "delegated_capabilities_auto_discovered_by_module_and_tests": true,
   "actual_base_variants_generated": 0,
   "base_required_before_actual_generation": true,
@@ -384,19 +387,5 @@
   "adaptive_safe_target_planning": true,
   "minimum_per_parent_default": 1,
   "safe_target_per_parent_default": 3,
-  "unsupported_manual_shortfall_only": true,
-  "new_inverse_identities": {
-    "speed_from_distance_time": "speed=distance/time and speed*time=distance",
-    "time_from_distance_speed": "time=distance/speed and speed*time=distance",
-    "percent_from_amount_base": "percent=amount/base*100 and percent*base/100=amount",
-    "base_from_amount_percent": "base=amount*100/percent and base*percent/100=amount",
-    "triangle_height_from_area": "height=2*area/base and base*height=2*area",
-    "triangle_base_from_area": "base=2*area/height and base*height=2*area",
-    "rectangle_side_from_area": "missing=area/known and product=area",
-    "rectangle_side_from_perimeter": "missing=perimeter/2-known and recomposition",
-    "square_side_from_area": "side=isqrt(area) with exact square and side^2=area",
-    "square_side_from_perimeter": "side=perimeter/4 and side*4=perimeter",
-    "cylinder_height_from_surface_area": "height=surface/(2*pi*r)-r and recomposition",
-    "cone_slant_from_surface_area": "slant=surface/(pi*r)-r and recomposition"
-  }
+  "unsupported_manual_shortfall_only": true
 }
