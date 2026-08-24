@@ -1,20 +1,21 @@
 {
-  "status": "PASS_CI",
-  "persist_schema_version": 67,
-  "run_id": "32677050294",
-  "triggering_sha": "0eabe6be5c85614363cb9c4679064e9fff7697c8",
-  "recorded_at_utc": "2026-08-24T00:33:51.534513+00:00",
+  "status": "FAIL_CI_DIAGNOSTIC",
+  "persist_schema_version": 68,
+  "run_id": "32677331491",
+  "triggering_sha": "74a414f01ee4dc66a45545c81c187928b48dca67",
+  "recorded_at_utc": "2026-08-24T00:39:54.640375+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
+    "specialized_and_adapters": "failure",
     "core": "success",
     "parent_contract": "success",
     "legacy_empty_choices": "success"
   },
-  "engine_test_discovery": "test_safe_*_variant_engine.py plus test_*_unified_adapter.py",
+  "engine_test_discovery": "test_safe_*_variant_engine.py plus test_*_unified_adapter.py plus runtime reachability graph gate",
   "engine_modules_auto_discovered": [
     "absolute_value",
     "affine",
+    "affine_x_from_y",
     "average",
     "average_missing_value",
     "average_total",
@@ -108,10 +109,11 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 94,
+  "engine_module_count": 95,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_variant_engine.py",
+    "test_safe_affine_x_from_y_variant_engine.py",
     "test_safe_average_missing_value_variant_engine.py",
     "test_safe_average_total_variant_engine.py",
     "test_safe_average_variant_engine.py",
@@ -202,7 +204,7 @@
     "test_safe_two_dice_sum_probability_variant_engine.py",
     "test_safe_weighted_group_average_variant_engine.py"
   ],
-  "engine_test_count": 91,
+  "engine_test_count": 92,
   "adapter_tests_auto_discovered": [
     "test_absolute_value_unified_adapter.py",
     "test_average_missing_value_unified_adapter.py",
@@ -346,6 +348,7 @@
   ],
   "runtime_route_count": 53,
   "runtime_routes_bound_to_SPECIALIZED_ENGINES": true,
+  "all_safe_engine_modules_runtime_reachable_required": true,
   "delegated_capabilities_auto_discovered_by_module_and_tests": true,
   "actual_base_variants_generated": 0,
   "base_required_before_actual_generation": true,
