@@ -9,6 +9,7 @@ import zipfile
 from pathlib import Path
 
 EXPECTED_ZIP_SHA = "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175"
+EXPECTED_BASE_RECORDS = 1231
 EXPECTED_ORIGINAL = 1124
 EXPECTED_BASELINE_VARIANTS = 107
 EXPECTED_PARENT_COVERAGE = 1124
@@ -123,12 +124,12 @@ def main() -> int:
             raise ValueError("expanded variant count below minimum full-parent target")
         if manifest.get("expanded_parent_coverage") != EXPECTED_PARENT_COVERAGE or manifest.get("expanded_parent_target") != EXPECTED_PARENT_COVERAGE:
             raise ValueError("expanded parent coverage incomplete")
-        if records != EXPECTED_ORIGINAL + EXPECTED_BASELINE_VARIANTS + expanded or variants != EXPECTED_BASELINE_VARIANTS + expanded:
+        if records != EXPECTED_BASE_RECORDS + expanded or variants != EXPECTED_BASELINE_VARIANTS + expanded:
             raise ValueError("release dynamic totals are inconsistent")
         if manifest.get("canonical_zip_sha256") != EXPECTED_ZIP_SHA:
             raise ValueError("release canonical ZIP identity mismatch")
         app_sha = require_hash(manifest.get("app_records_sha256"), "manifest app_records_sha256")
-        require_hash(manifest.get("base_app_records_sha256"), "base_app_records_sha256")
+        base_sha = require_hash(manifest.get("base_app_records_sha256"), "base_app_records_sha256")
         require_hash(manifest.get("expanded_layer_sha256"), "expanded_layer_sha256")
         require_hash(manifest.get("canonical_final_audit_sha256"), "canonical_final_audit_sha256")
         if manifest.get("canonical_provenance_status") != "PASS_CANONICAL_PROVENANCE":
@@ -139,10 +140,23 @@ def main() -> int:
         coverage = browser.get("staticCoverage")
         if not isinstance(coverage, dict):
             raise ValueError("real browser staticCoverage missing")
-        if coverage.get("records") != records or coverage.get("original") != EXPECTED_ORIGINAL or coverage.get("variants") != variants:
-            raise ValueError("real browser dynamic counts mismatch")
+        expected_browser = {
+            "records": records,
+            "base_records": EXPECTED_BASE_RECORDS,
+            "original": EXPECTED_ORIGINAL,
+            "baseline_variants": EXPECTED_BASELINE_VARIANTS,
+            "expanded_variants": expanded,
+            "variants": variants,
+            "expanded_parent_coverage": EXPECTED_PARENT_COVERAGE,
+            "expanded_parent_target": EXPECTED_PARENT_COVERAGE,
+        }
+        mismatched = {k: (coverage.get(k), v) for k, v in expected_browser.items() if coverage.get(k) != v}
+        if mismatched:
+            raise ValueError(f"real browser dynamic coverage mismatch: {mismatched}")
         if coverage.get("dataset_sha256") != app_sha:
             raise ValueError("real browser dataset SHA does not match release app-records SHA")
+        if coverage.get("base_dataset_sha256") != base_sha:
+            raise ValueError("real browser BASE dataset SHA does not match immutable release BASE SHA")
 
         results = browser.get("results")
         if not isinstance(results, list):
@@ -161,6 +175,9 @@ def main() -> int:
             marker = r.get("inlineMarker")
             if not isinstance(marker, dict) or marker.get("raw_marker_leaks") != 0 or marker.get("marker_errors") != 0 or marker.get("figure_readiness_failures") != 0:
                 raise ValueError(f"inline marker evidence invalid: {r.get('name')}")
+            kinds = r.get("kinds")
+            if not isinstance(kinds, dict) or kinds.get("both") != records or kinds.get("original") != EXPECTED_ORIGINAL or kinds.get("variant") != variants:
+                raise ValueError(f"browser original/variant filter evidence invalid: {r.get('name')}")
 
         pdf_result = verify_pdf_artifact(browser, Path(args.pdf_root) if args.pdf_root else None)
         bundle_result = verify_release_zip(Path(args.bundle), manifest)
@@ -168,7 +185,9 @@ def main() -> int:
             "status": "PUBLICATION_READY",
             "canonical_zip_sha256": EXPECTED_ZIP_SHA,
             "app_records_sha256": app_sha,
+            "base_app_records_sha256": base_sha,
             "records": records,
+            "base_records": EXPECTED_BASE_RECORDS,
             "original": EXPECTED_ORIGINAL,
             "baseline_variants": EXPECTED_BASELINE_VARIANTS,
             "expanded_variants": expanded,
@@ -176,7 +195,9 @@ def main() -> int:
             "expanded_parent_coverage": EXPECTED_PARENT_COVERAGE,
             "real_browser_cases": sorted(EXPECTED_BROWSERS),
             "real_browser_dynamic_full_dom": True,
+            "real_browser_dynamic_base_prefix": True,
             "real_browser_all_unit_filters": True,
+            "real_browser_original_variant_filters": True,
             "real_browser_all_variant_source_order": True,
             "real_figure_fetch_gate": True,
             "inline_figure_marker_gate": True,
