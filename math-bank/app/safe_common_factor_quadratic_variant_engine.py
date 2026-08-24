@@ -100,9 +100,12 @@ def generate(parent: dict, count: int):
         k = -g if ((seed >> (index + 23)) & 1) else g
         a, b = k * m, k * n
         sig = (str(a), str(b))
+        guard = 0
         while sig == parent_sig or sig in seen or math.gcd(abs(m), abs(n)) != 1:
+            guard += 1
+            if guard > 32:
+                raise AssertionError("common factor primitive search exhausted")
             m += 1
-            n += 1 if n > 0 else -1
             a, b = k * m, k * n
             sig = (str(a), str(b))
         seen.add(sig)
