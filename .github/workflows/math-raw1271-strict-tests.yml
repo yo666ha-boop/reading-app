@@ -1,0 +1,46 @@
+name: Math Raw1271 Strict Tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - math-problem-bank-bootstrap
+    paths:
+      - 'math-bank/scripts/validate_raw1271_materialization.py'
+      - 'math-bank/scripts/test_validate_raw1271_materialization.py'
+      - 'math-bank/scripts/promote_recovered_qa_drafts.py'
+      - 'math-bank/scripts/test_promote_recovered_qa_drafts.py'
+      - '.github/workflows/math-raw1271-strict-tests.yml'
+
+concurrency:
+  group: math-raw1271-strict-tests-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  strict-provenance-and-promotion-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout math branch
+        uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile strict provenance and promotion tools
+        run: |
+          python -m py_compile \
+            math-bank/scripts/validate_raw1271_materialization.py \
+            math-bank/scripts/promote_recovered_qa_drafts.py \
+            math-bank/scripts/test_validate_raw1271_materialization.py \
+            math-bank/scripts/test_promote_recovered_qa_drafts.py
+
+      - name: Run strict Q/A provenance and recovered-draft promotion regressions
+        working-directory: math-bank/scripts
+        run: python -m unittest -v test_validate_raw1271_materialization.py test_promote_recovered_qa_drafts.py
