@@ -10,6 +10,7 @@ on:
       - 'math-bank/app/safe_*_variant_engine.py'
       - 'math-bank/app/test_safe_*_variant_engine.py'
       - 'math-bank/app/test_*_unified_adapter.py'
+      - 'math-bank/app/test_unified_safe_engine_runtime_reachability.py'
       - 'math-bank/app/test_generate_all_safe_verified_variants.py'
       - 'math-bank/app/test_unified_parent_contract_gate.py'
       - 'math-bank/app/test_legacy_empty_choices_exact_generation.py'
@@ -37,7 +38,7 @@ jobs:
         continue-on-error: true
         run: python -m compileall -q math-bank/app
       - id: specialized
-        name: Run every fail-closed specialized engine and unified adapter regression
+        name: Run every fail-closed specialized engine, adapter, and reachability regression
         if: steps.compile.outcome == 'success'
         continue-on-error: true
         working-directory: math-bank/app
@@ -45,14 +46,14 @@ jobs:
         run: |
           set -euo pipefail
           count=0
-          for f in test_safe_*_variant_engine.py test_*_unified_adapter.py; do
+          for f in test_safe_*_variant_engine.py test_*_unified_adapter.py test_unified_safe_engine_runtime_reachability.py; do
             [ -f "$f" ] || continue
             echo "RUN $f"
             python "$f"
             count=$((count+1))
           done
           test "$count" -gt 0
-          echo "PASS_SPECIALIZED_AND_ADAPTER_TEST_COUNT=$count"
+          echo "PASS_SPECIALIZED_ADAPTER_AND_REACHABILITY_TEST_COUNT=$count"
       - id: core
         name: Run unified generation regression
         if: steps.compile.outcome == 'success'
@@ -108,12 +109,12 @@ jobs:
           runtime_routes=[name for name,_ in unified.SPECIALIZED_ENGINES]
           payload={
             'status':'PASS_CI' if all_pass else 'FAIL_CI_DIAGNOSTIC',
-            'persist_schema_version':67,
+            'persist_schema_version':68,
             'run_id':os.environ['RUN_ID'],
             'triggering_sha':os.environ['TRIGGERING_SHA'],
             'recorded_at_utc':datetime.now(timezone.utc).isoformat(),
             'step_outcomes':outcomes,
-            'engine_test_discovery':'test_safe_*_variant_engine.py plus test_*_unified_adapter.py',
+            'engine_test_discovery':'test_safe_*_variant_engine.py plus test_*_unified_adapter.py plus runtime reachability graph gate',
             'engine_modules_auto_discovered':engine_modules,
             'engine_module_count':len(engine_modules),
             'engine_tests_auto_discovered':engine_tests,
@@ -123,6 +124,7 @@ jobs:
             'runtime_routes_auto_discovered':runtime_routes,
             'runtime_route_count':len(runtime_routes),
             'runtime_routes_bound_to_SPECIALIZED_ENGINES':True,
+            'all_safe_engine_modules_runtime_reachable_required':True,
             'delegated_capabilities_auto_discovered_by_module_and_tests':True,
             'actual_base_variants_generated':0,
             'base_required_before_actual_generation':True,
