@@ -5,6 +5,7 @@ import hashlib,json,re
 from fractions import Fraction
 from safe_inverse_proportion_constant_variant_engine import generate as generate_inverse_proportion_constant
 from safe_inverse_proportion_value_variant_engine import generate as generate_inverse_proportion_value
+from safe_inverse_proportion_x_from_y_variant_engine import generate as generate_inverse_proportion_x_from_y
 NUM=r"[+-]?\d+"
 FORMULA_RE=re.compile(rf"(?P<formula>[yｙ]\s*=\s*(?P<a>{NUM})\s*/\s*[xｘ])")
 X_VALUE_RE=re.compile(rf"[xｘ]\s*=\s*(?P<x>{NUM})")
@@ -22,7 +23,7 @@ def _parse_parent(p):
     if am is None or Fraction(am.group('y'))!=y or Fraction(x)*y!=a: return None
     return fm,xm,a,x,y
 def can_generate(p):
-    for fn in (generate_inverse_proportion_constant,generate_inverse_proportion_value):
+    for fn in (generate_inverse_proportion_constant,generate_inverse_proportion_value,generate_inverse_proportion_x_from_y):
         rows,_,reason=fn(p,1)
         if rows: return True,reason
     if _parse_parent(p) is not None: return True,'inverse_proportion_exact'
@@ -31,7 +32,7 @@ def can_generate(p):
     return False,'inverse_proportion_parent_not_exactly_parsed_and_verified'
 def generate(p,count):
     if count not in (1,2,3): raise ValueError('count must be 1, 2, or 3')
-    for fn in (generate_inverse_proportion_constant,generate_inverse_proportion_value):
+    for fn in (generate_inverse_proportion_constant,generate_inverse_proportion_value,generate_inverse_proportion_x_from_y):
         rows,evidence,reason=fn(p,count)
         if rows: return rows,evidence,reason
     parsed=_parse_parent(p)
