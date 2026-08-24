@@ -9,7 +9,11 @@ from fractions import Fraction
 
 NUM=r"[+-]?\d+(?:/\d+)?"
 FORMULA_RE=re.compile(rf"(?P<formula>[yｙ]\s*=\s*(?P<a>{NUM})?\s*[xｘ]\s*(?:(?P<sign>[+＋\-−])\s*(?P<b>\d+(?:/\d+)?))?)")
-Y_VALUE_RE=re.compile(rf"[yｙ]\s*=\s*(?P<y>{NUM})")
+# The explicit y-value must be a standalone condition such as y=20のとき.
+# Do not let the coefficient in the formula y=3x+2 be misread as y=3.
+Y_VALUE_RE=re.compile(
+    rf"[yｙ]\s*=\s*(?P<y>{NUM})(?![\d/])(?=\s*(?:のとき|の時|で|、|,|とき|の値|$))"
+)
 ANSWER_RE=re.compile(rf"^(?:[xｘ]\s*=\s*)?(?P<x>{NUM})$")
 
 def _norm(v:object)->str:
