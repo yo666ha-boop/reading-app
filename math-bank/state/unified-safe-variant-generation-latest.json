@@ -1,17 +1,17 @@
 {
-  "status": "PASS_CI",
+  "status": "FAIL_CI_DIAGNOSTIC",
   "persist_schema_version": 69,
-  "run_id": "32706482149",
-  "triggering_sha": "d47273b5ea84ffa7df1ef33a4abc5742f7a29910",
-  "tested_checkout_sha": "d47273b5ea84ffa7df1ef33a4abc5742f7a29910",
+  "run_id": "32708892352",
+  "triggering_sha": "8ee75d95560c335c28c1084aae33ac53c8a2697d",
+  "tested_checkout_sha": "8ee75d95560c335c28c1084aae33ac53c8a2697d",
   "tested_checkout_equals_triggering_sha": true,
-  "recorded_at_utc": "2026-08-24T08:28:59.992193+00:00",
+  "recorded_at_utc": "2026-08-24T08:57:20.421158+00:00",
   "step_outcomes": {
     "compile": "success",
-    "specialized_and_adapters": "success",
-    "core": "success",
-    "parent_contract": "success",
-    "legacy_empty_choices": "success"
+    "specialized_and_adapters": "cancelled",
+    "core": "skipped",
+    "parent_contract": "skipped",
+    "legacy_empty_choices": "skipped"
   },
   "engine_test_discovery": "test_safe_*_variant_engine.py plus test_*_unified_adapter.py plus runtime reachability graph gate",
   "engine_modules_auto_discovered": [
@@ -49,6 +49,7 @@
     "decimal_arithmetic",
     "difference_of_squares_factorization",
     "direct_proportion_constant",
+    "direct_proportion_value",
     "discount_price",
     "distance_origin_point",
     "distance_two_points",
@@ -141,7 +142,7 @@
     "two_dice_sum_probability",
     "weighted_group_average"
   ],
-  "engine_module_count": 125,
+  "engine_module_count": 126,
   "engine_tests_auto_discovered": [
     "test_safe_absolute_value_variant_engine.py",
     "test_safe_affine_equation_from_two_points_variant_engine.py",
