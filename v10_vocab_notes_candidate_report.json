@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-08-25T03:46:10.433Z",
+    "generatedAt": "2026-08-25T03:46:32.678Z",
     "passages": 168,
     "canonicalSource": {
       "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
@@ -23,92 +23,21 @@
       "MORPHOLOGY_TO_GRAMMAR": 2505,
       "CONTRACTION_TO_GRAMMAR": 227,
       "EXPLICIT_FUNCTION_TO_GRAMMAR": 20703,
-      "FUTURE_V7_LEAK": 1179,
+      "FUTURE_V7_LEAK": 1095,
       "UNREGISTERED_V7": 1799,
-      "UNREGISTERED_PROPER": 0
+      "UNREGISTERED_PROPER": 0,
+      "NOTED_UNLEARNED_ALLOWED": 84
     },
     "notesPresent": 14,
     "missingGloss": 0,
     "mappingErrors": [],
     "runtimeBrowserErrors": [],
-    "uniqueUnresolved": 561,
-    "futureVocabLeakOccurrences": 2978,
+    "uniqueUnresolved": 559,
+    "futureVocabLeakOccurrences": 2894,
     "chronologyPass": false,
-    "rule": "Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. Explicit proper-name allowances are honored only inside the current passage when allowedWords marks the row proper names and the actual token is capitalized; those names are never promoted into cumulative ordinary vocabulary. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun."
+    "rule": "Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. Explicit proper-name allowances are honored only inside the current passage when allowedWords marks the row proper names and the actual token is capitalized; those names are never promoted into cumulative ordinary vocabulary. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun. A passage-local notes entry authorizes only the exact noted token in that passage and only when English and Japanese gloss are both nonblank; it never enters cumulative vocabulary."
   },
   "unresolved": [
-    {
-      "token": "water",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        2,
-        5,
-        8,
-        "water",
-        0
-      ],
-      "occurrences": 52,
-      "sections": [
-        "サンシャイン|1|PROGRAM 3-3",
-        "ニューホライズン|1|Unit 5-2",
-        "ニューホライズン|1|Unit 8-3",
-        "ニューホライズン|2|Unit 4-2",
-        "ニューホライズン|3|Unit 4-1",
-        "ニューホライズン|3|Unit 4-2",
-        "ニューホライズン|3|Unit 4-4",
-        "ニューホライズン|3|Unit 6-4"
-      ],
-      "examples": [
-        "サンシャイン|1|PROGRAM 3-3|sentence:5",
-        "サンシャイン|1|PROGRAM 3-3|slash:5",
-        "サンシャイン|1|PROGRAM 3-3|A2.answer",
-        "サンシャイン|1|PROGRAM 3-3|A2.evidence",
-        "ニューホライズン|1|Unit 5-2|sentence:6",
-        "ニューホライズン|1|Unit 5-2|slash:6",
-        "ニューホライズン|1|Unit 5-2|A3.answer",
-        "ニューホライズン|1|Unit 5-2|A3.evidence",
-        "ニューホライズン|1|Unit 5-2|B1.answer",
-        "ニューホライズン|1|Unit 5-2|B1.evidence",
-        "ニューホライズン|1|Unit 8-3|sentence:3",
-        "ニューホライズン|1|Unit 8-3|sentence:9"
-      ],
-      "sectionCount": 8
-    },
-    {
-      "token": "idea",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        2,
-        10,
-        2,
-        "idea",
-        0
-      ],
-      "occurrences": 32,
-      "sections": [
-        "サンシャイン|1|PROGRAM 10-1",
-        "サンシャイン|2|PROGRAM 2-3",
-        "サンシャイン|2|PROGRAM 5-3",
-        "サンシャイン|2|PROGRAM 6-1",
-        "サンシャイン|2|PROGRAM 6-2",
-        "サンシャイン|2|PROGRAM 6-3"
-      ],
-      "examples": [
-        "サンシャイン|1|PROGRAM 10-1|sentence:5",
-        "サンシャイン|1|PROGRAM 10-1|slash:5",
-        "サンシャイン|2|PROGRAM 2-3|sentence:13",
-        "サンシャイン|2|PROGRAM 2-3|slash:13",
-        "サンシャイン|2|PROGRAM 2-3|B4.answer",
-        "サンシャイン|2|PROGRAM 2-3|B4.evidence",
-        "サンシャイン|2|PROGRAM 5-3|sentence:8",
-        "サンシャイン|2|PROGRAM 5-3|slash:8",
-        "サンシャイン|2|PROGRAM 5-3|B3.answer",
-        "サンシャイン|2|PROGRAM 5-3|B3.evidence",
-        "サンシャイン|2|PROGRAM 6-1|sentence:1",
-        "サンシャイン|2|PROGRAM 6-1|sentence:6"
-      ],
-      "sectionCount": 6
-    },
     {
       "token": "food",
       "kind": "FUTURE_V7_LEAK",
@@ -14348,25 +14277,6 @@
           ]
         },
         {
-          "token": "water",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            2,
-            5,
-            8,
-            "water",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:5",
-            "slash:5",
-            "A2.answer",
-            "A2.evidence"
-          ]
-        },
-        {
           "token": "too",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -20872,23 +20782,6 @@
           ]
         },
         {
-          "token": "idea",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            2,
-            10,
-            2,
-            "idea",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:5",
-            "slash:5"
-          ]
-        },
-        {
           "token": "let's",
           "kind": "CONTRACTION_TO_GRAMMAR",
           "base": null,
@@ -24624,25 +24517,6 @@
           ]
         },
         {
-          "token": "idea",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            2,
-            10,
-            2,
-            "idea",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:13",
-            "slash:13",
-            "B4.answer",
-            "B4.evidence"
-          ]
-        },
-        {
           "token": "yes",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -28277,25 +28151,6 @@
           ]
         },
         {
-          "token": "idea",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            2,
-            10,
-            2,
-            "idea",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:8",
-            "slash:8",
-            "B3.answer",
-            "B3.evidence"
-          ]
-        },
-        {
           "token": "after",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -28452,31 +28307,6 @@
             "slash:1",
             "slash:1",
             "slash:8"
-          ]
-        },
-        {
-          "token": "idea",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            2,
-            10,
-            2,
-            "idea",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:1",
-            "sentence:6",
-            "sentence:10",
-            "sentence:11",
-            "sentence:13",
-            "slash:1",
-            "slash:6",
-            "slash:10",
-            "slash:11",
-            "slash:13"
           ]
         },
         {
@@ -29242,26 +29072,6 @@
           ]
         },
         {
-          "token": "idea",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            2,
-            10,
-            2,
-            "idea",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:12",
-            "sentence:13",
-            "slash:12",
-            "slash:13",
-            "B4.evidence"
-          ]
-        },
-        {
           "token": "nature",
           "kind": "UNREGISTERED_V7",
           "base": null,
@@ -29687,25 +29497,6 @@
           "base": null,
           "intro": null,
           "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:10",
-            "slash:10",
-            "B4.answer",
-            "B4.evidence"
-          ]
-        },
-        {
-          "token": "idea",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            2,
-            10,
-            2,
-            "idea",
-            0
-          ],
-          "evidence": null,
           "locations": [
             "sentence:10",
             "slash:10",
@@ -48166,27 +47957,6 @@
           ]
         },
         {
-          "token": "water",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            3,
-            11,
-            6,
-            "water",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:6",
-            "slash:6",
-            "A3.answer",
-            "A3.evidence",
-            "B1.answer",
-            "B1.evidence"
-          ]
-        },
-        {
           "token": "can",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -50718,29 +50488,6 @@
             "sentence:2",
             "slash:2",
             "A1.evidence"
-          ]
-        },
-        {
-          "token": "water",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            3,
-            11,
-            6,
-            "water",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:3",
-            "sentence:9",
-            "slash:3",
-            "slash:9",
-            "A2.evidence",
-            "A5.answer",
-            "A5.evidence",
-            "B1.evidence"
           ]
         },
         {
@@ -58975,31 +58722,6 @@
             "A2.evidence",
             "A2.evidence",
             "B2.evidence"
-          ]
-        },
-        {
-          "token": "water",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            3,
-            11,
-            6,
-            "water",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:2",
-            "sentence:4",
-            "sentence:11",
-            "slash:2",
-            "slash:4",
-            "slash:11",
-            "A1.answer",
-            "A1.evidence",
-            "A2.answer",
-            "A2.evidence"
           ]
         },
         {
@@ -77109,27 +76831,6 @@
           ]
         },
         {
-          "token": "water",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            3,
-            11,
-            6,
-            "water",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:5",
-            "slash:5",
-            "A3.answer",
-            "A3.evidence",
-            "B2.answer",
-            "B2.evidence"
-          ]
-        },
-        {
           "token": "several",
           "kind": "FUTURE_V7_LEAK",
           "base": null,
@@ -77581,30 +77282,6 @@
             "sentence:3",
             "slash:3",
             "A2.evidence"
-          ]
-        },
-        {
-          "token": "water",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            3,
-            11,
-            6,
-            "water",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:3",
-            "sentence:4",
-            "slash:3",
-            "slash:4",
-            "A2.evidence",
-            "A3.answer",
-            "A3.evidence",
-            "B2.answer",
-            "B2.evidence"
           ]
         },
         {
@@ -79090,27 +78767,6 @@
             "B2.evidence",
             "B4.answer",
             "B4.evidence"
-          ]
-        },
-        {
-          "token": "water",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            3,
-            11,
-            6,
-            "water",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:3",
-            "slash:3",
-            "A3.answer",
-            "A3.evidence",
-            "B2.answer",
-            "B2.evidence"
           ]
         },
         {
@@ -85256,23 +84912,6 @@
           "base": null,
           "intro": null,
           "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:9",
-            "slash:9"
-          ]
-        },
-        {
-          "token": "water",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            3,
-            11,
-            6,
-            "water",
-            0
-          ],
-          "evidence": null,
           "locations": [
             "sentence:9",
             "slash:9"
