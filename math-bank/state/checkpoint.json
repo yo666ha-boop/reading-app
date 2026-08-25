@@ -2,7 +2,7 @@
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP",
   "current_stage": "WINPASS_717_STRICT_MATERIALIZATION",
-  "recorded_at_jst": "2026-08-25T19:52:00+09:00",
+  "recorded_at_jst": "2026-08-25T19:56:23+09:00",
   "main_touched": false,
   "schedule_changed": false,
   "source_identity": {
@@ -30,24 +30,26 @@
   "qa_figure_qa": {"questions_strict":"731/1271","answers_strict":"731/1271","Standard":{"records":317,"figure_refs":154,"missing_figure_refs":0,"graphical_answers":26},"実力錬成":{"records":237,"figure_refs":81,"missing_figure_refs":0,"graphical_answers":18},"Winpass":{"records":177,"highconf_nonmedia":177,"remaining":540}},
   "downstream": {"winpass_decisions":{"reviewed":0,"included":0,"excluded":0,"target_after_evidence_review":570,"count_forcing_forbidden":true},"global1124":{"validated":0,"immutable_frozen":0},"variants":{"verified":0,"parent_coverage":"0/1124"},"app_records":0,"browser":"BLOCKED_UNTIL_REAL_APP_RECORDS","iphone_fire":"PENDING","a4":"PENDING","publication_ready":false,"public_verification":"PENDING"},
   "this_run": {
-    "starting_head_actual":"d5a0a52455bdca1960fe332fee028b7dd79235f4",
-    "source_handoff_fix":"Automation resume procedure updated without schedule change: read latest GitHub actual, then durable-source mirror, then direct Drive ID fetch. Temporary source/tool blockers must not disable automation before final project completion.",
+    "starting_head_actual":"2c93ba8a58365f0128a415bcdce8e6d8a161c41c",
+    "latest_work_commit":"5f2185f07b2a9dc2baa5224e84d0a09cf68bb71c",
     "completed":[
-      "Fetched Winpass source directly by durable Drive ID 13SySbXL02mm4YPikgYN_BlVE3S2APs7E instead of search.",
-      "Verified Winpass source size 8,296,042 bytes, exact SHA256, ZIP CRC PASS and 81 DOCX members.",
-      "Independently reconstructed all 717 Winpass scoring slots from score annotations without count forcing.",
-      "Built structure-preserving OMML extraction for fractions, superscripts/subscripts, radicals and equation arrays.",
-      "Rejected question-copy false positives and deferred embedded-media/special-layout blocks rather than fabricating strict records.",
-      "Materialized 177 high-confidence Winpass records with source-document SHA, score evidence, semantic question stem/subslot, question/answer OOXML paragraph offsets and content-bound strict fingerprint.",
-      "Uploaded the 177-record JSONL to Drive, downloaded it again, verified 305,301 bytes, SHA256 69c1c62f2e5c29e21d7fa3ec744271c8409d810497416e940c016c9478a44589, 177 records and 177 unique raw_ids.",
-      "Persisted Winpass177 durable evidence state to GitHub commit 5b9a7d6d78627a84c50fe694d212200fadf5ff03."
+      "Read branch HEAD, checkpoint, durable source mirror and latest commit status before doing work.",
+      "Fetched Winpass directly by Drive ID 13SySbXL02mm4YPikgYN_BlVE3S2APs7E.",
+      "Reverified 8,296,042 bytes, exact SHA256 29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf, ZIP CRC PASS and 81 unique DOCX.",
+      "Fetched the durable 177-record strict JSONL and rechecked its 305,301-byte persisted baseline.",
+      "Inspected all 81 DOCX packages against the 177 strict records and built a deterministic remaining-work document queue.",
+      "Identified 30 documents already contributing strict records and 51 documents contributing none yet.",
+      "Triaged the 81 documents into 15 NONMEDIA_SPECIAL_OR_PROOF, 26 MIXED_DOC_PARTIAL_STRICT and 40 MEDIA_HEAVY documents for the next materialization passes.",
+      "Detected and rejected a naive OOXML score-regex approach because nested textbox/table representations double-count score annotations; no forced 717 accounting was allowed.",
+      "Persisted the forensic queue to math-bank/state/winpass540-forensic-queue-20260825.json at commit 5f2185f07b2a9dc2baa5224e84d0a09cf68bb71c."
     ],
+    "strict_increment":0,
     "limitations":[
-      "Remaining Winpass 540 records include non-media special answer grouping/question splitting, multi-paragraph proofs, diagrams/graphs/constructions and other records requiring explicit figure/asset binding.",
-      "No remaining record is counted complete until durable save, post-save readback and applicable validator PASS."
+      "No remaining record was promoted because this pass focused on source revalidation and safe structural triage; strict remains 177 for Winpass.",
+      "Remaining records still require structural score-table identity, exact question/answer provenance and asset binding where applicable."
     ]
   },
-  "exact_stop": "Strict durable progress is Standard317 + 実力錬成237 + Winpass177 = 731/1271. Winpass remaining 540. The former source-byte blocker is resolved by direct durable Drive ID fetch.",
-  "next_start": "Read latest HEAD/checkpoint first and never reduce 731 durable strict records. Fetch Winpass source by Drive ID 13SySbXL02mm4YPikgYN_BlVE3S2APs7E and verify SHA. Continue remaining Winpass540: first non-media special layouts with answer grouping/question splitting, then multi-paragraph proof answers, then diagram/graph/construction records with explicit embedded-media/OOXML identities. Persist/readback/validate each batch. After Winpass717/717 strict, evidence-review 717 to canonical570 without count forcing; validate/freeze global1124; verified variants; app mapping; browser/iPhone/Fire/A4; strict release; PUBLICATION_READY; isolated public verification.",
+  "exact_stop": "Strict durable progress remains Standard317 + 実力錬成237 + Winpass177 = 731/1271. Winpass remaining 540. New durable queue state exists at math-bank/state/winpass540-forensic-queue-20260825.json. The next safest materialization target is the 15 NONMEDIA_SPECIAL_OR_PROOF documents before media-heavy work.",
+  "next_start": "Read latest HEAD/checkpoint first and never reduce 731 durable strict records. Fetch Winpass by durable Drive ID and verify SHA. Open math-bank/state/winpass540-forensic-queue-20260825.json. Process the 15 NONMEDIA_SPECIAL_OR_PROOF documents first with structural score-table identities, paired question/answer halves, OMML-preserving extraction and paragraph-level provenance; persist/readback/validate each batch. Then process 26 partial-strict docs, then 40 media-heavy docs with explicit relationship/media binding. After Winpass717/717 strict, evidence-review 717 to canonical570 without count forcing; validate/freeze global1124; verified variants; app mapping; browser/iPhone/Fire/A4; strict release; PUBLICATION_READY; isolated public verification.",
   "main_untouched": true
 }
