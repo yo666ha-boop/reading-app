@@ -25,7 +25,7 @@ const isLetterCommaExempt=en=>/^(?:Dear\b.+|Best wishes|Sincerely yours),$/.test
  // V10_RUNTIME_LOAD_PROGRESS.phase === "complete", so a passive timeout is not sufficient.
  // Re-run the chronology correction layer explicitly after legacy replay, then apply reference rows.
  for(const f of [...before,...vocab]){if(!fs.existsSync(f))throw new Error('missing '+f);vm.runInContext(fs.readFileSync(f,'utf8'),ctx,{filename:f})}
- vm.runInContext(fs.readFileSync(path.join ? path.join(root,'v10_vocab_corrections.js') : 'v10_vocab_corrections.js','utf8'),ctx,{filename:'v10_vocab_corrections.audit-reapply.js'});
+ vm.runInContext(fs.readFileSync('v10_vocab_corrections.js','utf8'),ctx,{filename:'v10_vocab_corrections.audit-reapply.js'});
  await new Promise(res=>setTimeout(res,300));
  for(const f of refs){if(!fs.existsSync(f))throw new Error('missing '+f);vm.runInContext(fs.readFileSync(f,'utf8'),ctx,{filename:f})}
  const sets=[['1','サンシャイン',w.V10_SUNSHINE_G1||{}],['1','ニューホライズン',w.V10_NEWHORIZON_G1||{}],['2','サンシャイン',w.V10_PASSAGES_G2_SS||{}],['2','ニューホライズン',w.V10_PASSAGES_G2_NH||{}],['3','サンシャイン',w.V10_PASSAGES_G3_SS||{}],['3','ニューホライズン',w.V10_PASSAGES_G3_NH||{}]];
