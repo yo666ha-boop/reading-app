@@ -1,53 +1,61 @@
 # Long-reading app vocabulary / grammar / notes checkpoint
 
-Updated: 2026-08-26 JST (automation continuation, vocabulary chronology PASS + grammar chronology foundation)
+Updated: 2026-08-26 JST (automation continuation, vocabulary chronology PASS + grammar chronology exact-evidence expansion)
 
 ## Source of truth / safety
 - Repo: `yo666ha-boop/reading-app`.
 - Work branch: `v10-vocab-grammar-notes-audit`.
 - Public `main`: `1f0cabf9bfcc4482f507e33188499bdbbd5bab57`; NOT modified.
-- Sole vocabulary authority: native Sheet `1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4`, tab `単語マスター`, 3975 canonical records. Native workbook was exported again this run; no v5/v6 authority used.
-- Authoritative vocabulary audit waits for `V10_RUNTIME_LOAD_PROGRESS=complete`, then applies passage-local proper-name batches 1-5 and notes batches 2-17 before scanning all 168 passages. Notes remain exact-passage/non-cumulative; proper names require explicit local tagging and capitalization.
-- Grammar final gate is fail-closed. Candidate detection alone is never PASS evidence; exact same-textbook chronological boundaries must resolve every occurrence.
+- Sole vocabulary authority: native Sheet `1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4`, tab `単語マスター`, 3975 canonical records. No v5/v6 authority used.
+- Vocabulary chronology is already authoritative PASS and remains frozen except for regression checks.
+- Grammar final gate is fail-closed. Candidate detection alone is never PASS evidence; every occurrence must resolve to an exact evidence-backed same-textbook boundary at or before the passage, with exact earlier-grade introductions carried forward only within the same textbook.
 
 ## Completed this run
-- Re-read branch HEAD, main HEAD, prior checkpoint, latest Actions/status, authoritative runtime load order and latest unresolved queue before editing. Public main remained unchanged.
-- Started from verified `156 unique / 312 occurrences` vocabulary queue = `82 FUTURE_V7_LEAK + 230 UNREGISTERED_V7`, notes `511`, missing_gloss `0`, passages `168/168`.
-- Processed the complete remaining two-occurrence lexical cohort rather than stopping in small groups.
-- Added `v10_passage_local_proper_names_batch5.js` for the exact-passage proper-name components `Taj / Mahal / Shah / Jahan` in NH2 Unit 7-3 only; never cumulative. Commit `61a9b3a0836353c8b8252e5523abc71034b3587c`.
-- Added `v10_passage_local_notes_batch17.js` for the remaining required two-occurrence lexical terms, exact passage only. Commit `1e92091942ce7877c4917b1deca47ac9d4bf958e`.
-- Updated authoritative vocabulary scanner to load proper-name batches 1-5 and notes batches 2-17. Commit `6c3775e3d44f2e017544385ce9d88e4fa6251750`.
-- Authoritative persisted vocabulary state reached: passages `168/168`; FUTURE_V7_LEAK `0`; UNREGISTERED_V7 `0`; UNREGISTERED_PROPER `0`; unique_unresolved `0`; future_vocab_leak `0`; vocabulary_chronology `PASS`; notes `663`; missing_gloss `0`; notes UI `PASS`.
-- Slash-quality for batch17/content changes completed SUCCESS at run `32868771993`; no slash/reference regression from the final vocabulary-note batch.
-- Audited the existing grammar candidate detector and found material false positives: ordinary prepositional `to` detected as infinitive, adjective/present-participle `-ing` detected as gerund, demonstrative `that` detected as relative pronoun, adjectival complements like `was tired` detected as passive, and ordinary `the + noun` strings detected as superlative. Therefore the prior 22-family candidate result was not accepted as chronology evidence.
-- Rebuilt grammar detector to version 2 with tighter structure-specific patterns and additional chronology-relevant features (present/past progressive, wh-to-infinitive, object-to-infinitive, participle postmodifier, etc.). Initial refinement commit `42f283e3fad3c2203518801dd266a158b26cd688`; persisted fail-closed gate integration commit `0b9235d3bcb2aa8f2da35de3a831645b431327d8`.
-- Added `v10_grammar_chronology_evidence.json` as an evidence foundation using current 2025 publisher curriculum sources. Exact boundaries are recorded only where the official source supports the part/subunit; unit/program-only evidence stays explicitly pending and cannot authorize PASS. Commit `4736254ceccbe253963d7cc83aef7ce33e2399cb`.
-- Added `v10_grammar_chronology_gate_audit.js`, a fail-closed occurrence resolver. It resolves only exact evidence-backed same-textbook boundaries and separately reports unresolved and future occurrences. Commit `53e58d947bf4e3d74dcec8d2b210e4d1ec2c6b3d`.
-- Refined grammar run `32870080040` completed SUCCESS. Current detector v2 actual: passages `168/168`, detected feature types `24`, detected occurrences `1344`, resolved against currently exact evidence `98`, unresolved `1226`, future grammar leak candidates `20`, final grammar gate `FAIL_CLOSED`.
-- The known 20 future candidates were inspected from actual runtime text. Confirmed genuine early structures include NH2 Unit1-3 `when we need help` and sentence-initial gerund `Shopping was ...`, NH2 Unit3-4 `how to read`, NH3 Unit3-1 / Unit4-3 / Unit4-4 relative clauses before the current official Unit5 relative-pronoun boundary, and NH3 Unit4-2 `too heavy to carry`. These must not be hidden by relaxing the chronology gate; they are rewrite/synchronization candidates unless exact earlier evidence is found.
-- Also identified a chronology-model defect that must be fixed next: the current gate keys exact boundaries by the current grade, so previously learned grammar from earlier grades is not yet carried forward correctly. In addition, broad families such as generic TO_INFINITIVE and combined MODAL must be split by chronology-relevant subtype before final permission mapping.
+- Re-read work branch HEAD, main HEAD, prior checkpoint, latest Actions, grammar detector/gate/evidence files, and final-runtime correction/reference layers before editing. Public main remained unchanged.
+- Kept vocabulary authoritative state unchanged: passages `168/168`, unique unresolved `0`, future vocab leak `0`, unregistered `0`, missing_gloss `0`, notes `663`, notes UI PASS; last vocabulary-content slash-quality run `32868771993` SUCCESS.
+- Fixed the grammar chronology model so exact earlier-grade introductions carry forward automatically to later grades in the same textbook. Program/unit-only evidence still fails closed. Commit `aa1990e06415a866afb2ae09f703eedf0583ad56`; trigger `a2e03f279b1859719e58efb2e4ed924d06897d04`. Authoritative result improved from `98 resolved / 1226 unresolved / 20 future` to `199 resolved / 1125 unresolved / 20 future` over 1344 detected occurrences.
+- Expanded evidence from official 2025 Tokyo Shoseki NEW HORIZON 2 materials down to Part boundaries: U1 going-to/will; U2 when/if/because; U3 infinitive subtypes and It is ... to; U4 have-to/must/gerund; U5 wh-to; U6 comparison; U7 passive. Evidence/trigger commits include `6c1fc9df519de1aff5f755885166f1c4fdd10655` and `3d3b01424c3bf5ad0501f12ad6d91d596f214a8e`.
+- Expanded official 2025 NEW HORIZON 3 exact Part evidence: present perfect, make O adjective, present perfect progressive, want O to, let/help O V, indirect question, participle postmodifier, relative pronoun. Evidence/trigger commits `df9eccd72e5248689afc1c9d8384b86dc94b2911`, `9ac62f63c41fde551d8523dad9f023900ab1e12f`. Authoritative exact-evidence run `32875507883` SUCCESS; pre-v3 state became `1344 detected / 288 resolved / 1014 unresolved / 42 future`. The rise in future candidates reflects previously unresolved structures becoming provably early, not a regression.
+- Rebuilt the grammar structure detector to v3 so chronology cannot be accidentally shared across unrelated structures. Split combined MODAL into `MODAL_CAN`, `MODAL_COULD`, `MODAL_MAY_MIGHT`, `MODAL_MUST`, `MODAL_SHOULD`; split broad infinitive into `WANT_TO`, `VERB_TO_INFINITIVE`, `ADJECTIVE_TO_INFINITIVE`, while keeping `WH_TO_INFINITIVE`, `ASK_TELL_WANT_O_TO`, `WOULD_LIKE` separate. Detector commit `c5248d1db36f9a30a2361ba623174c180e3da901`.
+- Added split-family exact evidence for NH1/NH2/NH3 and bounded Sunshine evidence from official 2025 publisher plans. Evidence commits `62b61e3d323e959989f53b11268b6013628c838e` and later `47f1d9f57e3bfecbc08a18651032980c52a1f889`.
+- Verified official 2025 grade-1 chronology as well: NH1 can begins Unit 2 P2 (app Unit 2-2), present progressive Unit 7 P1, want/try-to infinitive Unit 8 P1, past progressive Unit 10 P2; Sunshine1 Get Ready 1-4 explicitly reviews elementary can/want-to, PROGRAM 8 is present progressive, PROGRAM 10 past forms/progressive. This exposes true early NH1 grammar rather than licensing it globally.
+- Detector-v3 authoritative persisted state after split-family evidence reached `1355 detected / 795 resolved / 527 unresolved / 33 future`; then grade-1 exact boundaries exposed additional real early structures and the latest verified state became `1355 detected / 962 resolved / 320 unresolved / 73 future`. This is a net reduction of unresolved evidence gaps from 1226 at the start of grammar work to 320 now; the larger future count is more precise classification, not permission widening.
+- Confirmed real rewrite-required grade-1 cases include NH1 Unit 1-1 `I want to join the tennis club.` before official Unit 8 infinitive and NH1 `can` occurrences before Unit 2-2. Also confirmed early present-progressive cohorts in NH1 before Unit 7 and Sunshine1 before PROGRAM 8 must be rewritten or otherwise synchronized; they must not be hidden by relaxing boundaries.
+- Inspected final semantic/reference infrastructure before sentence mutations: `v10_semantic_runtime_final_fixes.js` and `v10_reference_chronology_sync.js` demonstrate the late-runtime correction + reference bridge pattern. Any grammar rewrite must synchronize sentence, fullTranslation, slashRows EN/JP, A/B prompt/answer/evidence/evidenceJp/reason and reference slash.
+- Updated the detector to persist the full exact `future` and `unresolved` gate rows inside `v10_grammar_chronology_candidate_report.json`, so the next run can work directly from the authoritative future list instead of inferring from counts. Commit `e6faf95bf0e298c4c15af74095d135cbd3eb458d`; run `32876553301` was still in progress at checkpoint time, so its detailed persisted list is the immediate next retrieval target. The latest verified counts remain `962 / 320 / 73` until that run completes.
 
 ## Current exact state
 - Vocabulary passages audited: `168/168`.
 - Vocabulary violations: `0 unique / 0 occurrences`.
 - FUTURE_V7_LEAK: `0`.
-- UNREGISTERED_V7: `0`.
-- UNREGISTERED_PROPER: `0`.
+- UNREGISTERED_V7 / UNREGISTERED_PROPER: `0`.
 - Notes present: `663`.
 - missing_gloss: `0`.
 - Vocabulary chronology: `PASS 168/168`.
 - Notes UI gate: `PASS`.
-- Slash/reference: final vocabulary content batch slash-quality `PASS` at run `32868771993`; full final release rerun still required after grammar completion.
+- Slash/reference: vocabulary-content slash-quality `PASS` at run `32868771993`; no passage sentence/slash mutation was made in this grammar-evidence run, so no new intended slash change exists yet. Full final release rerun is still required after grammar completion.
 - Grammar candidate coverage: `168/168`.
-- Grammar detector: v2, `24` currently detected feature types, `1344` detected occurrences.
-- Grammar chronology resolved with current exact evidence: `98` occurrences.
-- Grammar chronology unresolved: `1226` occurrences.
-- Current future grammar candidate occurrences: `20`.
+- Grammar detector: v3, split modal/infinitive families.
+- Grammar detected occurrences: `1355`.
+- Grammar chronology resolved: `962` occurrences (latest verified).
+- Grammar chronology unresolved: `320` occurrences (latest verified).
+- Current confirmed/provable future grammar candidate occurrences: `73` (latest verified).
 - Grammar chronology: `FAIL-CLOSED / IN PROGRESS`.
 - Public main release: NOT performed.
 
 ## Exact stop / next start
-- Exact stop: vocabulary chronology has reached authoritative PASS (`0/0`, missing gloss 0, notes UI PASS) and batch17 slash-quality PASS. Grammar detector v2 and fail-closed gate now produce actual counts: `1344 detected / 98 resolved / 1226 unresolved / 20 future`.
-- Next start: re-read latest branch/status/action first. Then (1) split chronology-sensitive broad detector families, especially TO_INFINITIVE by use and MODAL by form; (2) change chronology resolution to carry verified earlier-grade introductions forward; (3) inspect and correct the confirmed early future structures, synchronizing sentence, fullTranslation, slashRows, A/B answer/evidence/evidenceJp/reason and reference slash whenever text changes; (4) extend current official NH/SS exact-subunit evidence until unresolved=0 and futureGrammarLeak=0.
-- First rewrite candidates to inspect/fix: NH2 Unit1-3 `when we need help` + `Shopping was an interesting experience`; NH2 Unit3-4 `how to read clearly`; NH3 Unit3-1 `animal that lives...`; NH3 Unit4-3 `friend who...` / `people who had died`; NH3 Unit4-4 `people who still needed help`; NH3 Unit4-2 `too heavy to carry`.
-- After grammar chronology reaches `PASS 168/168`, rerun slash reference 168/168, A/B evidence consistency, coverage/DOM, Chromium/Firefox/WebKit-iPhone, A4 student/teacher print. Only every-gate PASS permits main update and live Pages verification; only live Pages PASS permits completion and automation stop.
+- Exact stop: detector v3 + prior-grade carry-forward + NH1/NH2/NH3 exact evidence + bounded Sunshine evidence are implemented. Latest verified authoritative counts are `1355 detected / 962 resolved / 320 unresolved / 73 future`. Detailed future/unresolved persistence commit `e6faf95bf0e298c4c15af74095d135cbd3eb458d` is running as Actions run `32876553301` at checkpoint time.
+- Next start: first recover run `32876553301` and the newly embedded `chronologyGate.future` / `chronologyGate.unresolved` arrays from `v10_grammar_chronology_candidate_report.json`. Then process the full future list, prioritizing confirmed early NH1 `WANT_TO` and `MODAL_CAN`, early NH1/SS1 `PRESENT_PROGRESSIVE`, then the previously confirmed NH2/NH3 early structures. Do not widen chronology to make them disappear.
+- For each confirmed future structure, rewrite with a learned structure while preserving meaning as much as possible and synchronize `sentences`, `fullTranslation`, `slashRows.en/jp`, A/B `prompt`, `answer`, `evidence`, `evidenceJp`, `reason`, and reference slash/runtime bridge in the same change.
+- In parallel, finish exact Sunshine2/3 subunit evidence and any remaining NH feature boundaries so `unresolvedOccurrences=0`. Treat fixed expressions such as `Nice to meet you` separately from productive `ADJECTIVE_TO_INFINITIVE` where detector refinement is needed.
+- After grammar chronology reaches `PASS 168/168` with `futureGrammarLeak=0`, rerun slash reference 168/168, A/B evidence consistency, coverage/DOM, Chromium/Firefox/WebKit-iPhone, A4 student/teacher print. Only every-gate PASS permits main update and live Pages verification; only live Pages PASS permits completion and automation stop.
+
+## Key commits/runs this continuation
+- Prior-grade carry-forward: `aa1990e06415a866afb2ae09f703eedf0583ad56`.
+- NH2 exact evidence trigger: `3d3b01424c3bf5ad0501f12ad6d91d596f214a8e`.
+- NH3 exact evidence: `df9eccd72e5248689afc1c9d8384b86dc94b2911`; authoritative run `32875507883` SUCCESS.
+- Detector v3 split families: `c5248d1db36f9a30a2361ba623174c180e3da901`.
+- Split/grade1 evidence: `62b61e3d323e959989f53b11268b6013628c838e`, `47f1d9f57e3bfecbc08a18651032980c52a1f889`.
+- Latest verified report: `1355 / 962 / 320 / 73`.
+- Persist exact future/unresolved arrays: `e6faf95bf0e298c4c15af74095d135cbd3eb458d`; run `32876553301` in progress at stop.
+- Public main remains `1f0cabf9bfcc4482f507e33188499bdbbd5bab57`.
