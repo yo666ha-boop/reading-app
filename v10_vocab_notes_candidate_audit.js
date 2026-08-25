@@ -44,7 +44,7 @@ patch(
 );
 patch(
   "    await new Promise(r => setTimeout(r, 250));\n    browserErrors.length = 0;",
-  "    await waitFor(() => w.V10_RUNTIME_LOAD_PROGRESS === 'complete', 60000, 'authoritative final runtime load order');\n    assert(!w.V10_RUNTIME_LOAD_ERROR, `authoritative runtime load failed: ${w.V10_RUNTIME_LOAD_ERROR}`);\n    await new Promise(r => setTimeout(r, 250));\n    browserErrors.length = 0;",
+  "    await waitFor(() => w.V10_RUNTIME_LOAD_PROGRESS === 'complete' || !!w.V10_RUNTIME_LOAD_ERROR, 90000, 'authoritative final runtime terminal state');\n    assert(w.V10_RUNTIME_LOAD_PROGRESS === 'complete' && !w.V10_RUNTIME_LOAD_ERROR, `authoritative runtime load failed: progress=${w.V10_RUNTIME_LOAD_PROGRESS} error=${w.V10_RUNTIME_LOAD_ERROR}`);\n    await new Promise(r => setTimeout(r, 250));\n    browserErrors.length = 0;",
   'authoritative runtime completion gate'
 );
 fs.writeFileSync(tmp,s);
