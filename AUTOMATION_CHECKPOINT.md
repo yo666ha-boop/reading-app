@@ -5,49 +5,64 @@ Updated: 2026-08-25 JST (manual continuation)
 ## Source of truth / branch safety
 - Repository: `yo666ha-boop/reading-app`.
 - Work branch: `v10-vocab-grammar-notes-audit`.
-- Branch HEAD at start of this run: `c7577bba35128906469d1b7cdeb53ee873920a22`.
+- Branch HEAD at start of this run: `99f3b08ec527cfd40736130334bd853aa51394bd`.
+- Latest branch HEAD before this checkpoint write: `6338a677b03892aed0859ca1c2c57e867847e117` (Actions bounded-notes evidence commit following content commit `6811239804d200ed924a234d3a7513080d49fffc`).
 - Public `main`: `1f0cabf9bfcc4482f507e33188499bdbbd5bab57`; NOT modified.
 - Sole vocabulary authority: native Google Sheet `英単語_教科書別マスターデータ_NH_SS_2026_v7_app_wordbook_master`, id `1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4`, tab `単語マスター`, canonical 3975 records.
-- Final dynamic v10 load order was re-read from `v10_interaction_metadata.js`; `v10_vocab_slash_manual_corrections.js` is loaded near the terminal end, immediately before chronology/reference slash synchronization, so chronology repairs placed there survive earlier passage/manual overlays.
+- Final dynamic v10 load order was re-read from `v10_interaction_metadata.js`: terminal manual corrections -> chronology/reference bridge prepare -> reference slash files -> final chronology bridge apply -> runtime complete.
 
 ## This manual run completed
-- Re-read branch HEAD, main HEAD, prior checkpoint, latest Actions and final runtime load order before editing.
-- Latest completed audit at run start remained `32811368244` SUCCESS for commit `609e3c9379e2a554b94fa9e99e8101eb11e135de`.
-- Re-read final-runtime SS1 `Get Ready 6`: it still contained `I had lunch and ate pizza.` plus five `I saw ...` sentences, and metadata falsely labeled `had / ate / saw` as explicit Get Ready 6 past forms.
-- Re-checked canonical v7 live Sheet evidence. `saw` has no Get Ready 6 entry; canonical matches are later `see-saw` / `see-saw-seen` entries (NH1 Unit 9 and later). `eat-ate` likewise appears later (NH1 Unit 9 / SS1 PROGRAM 9), while base `eat` is already in SS1 pre-step (`プレステップ4`) and `lunch` is already in SS1 pre-step (`プレステップ8`). `pizza` has no canonical v7 row.
-- Therefore this was not a morphology false positive: it was a genuine future-vocabulary + future-past-grammar leak in SS1 Get Ready 6.
-- Implemented a terminal-runtime chronology correction in `v10_vocab_slash_manual_corrections.js` so earlier overlays cannot restore the bad version.
-- Replaced the past-tense/pizza passage with current-safe wording: `I eat lunch. / I am at the zoo. / I like ...` using base `eat`, `lunch`, cumulative Get Ready 5 zoo vocabulary and already-reviewed function vocabulary.
-- Synchronized `sentences`, `fullTranslation`, all `slashRows` English/Japanese, A questions `prompt/answer/evidence/evidenceJp/reason`, `allowedWords`, audit metadata, and the B-question interaction metadata for `サンシャイン|1|Get Ready 6`.
-- Content commit: `960d19311b4c477540493de9772cd7e00a5356ac` (`vocab: repair SS1 Get Ready 6 future past-tense leak`).
-- No workflow run had yet been created for that new SHA when checked (`head_sha=960d...` returned 0 runs), so post-change all-168 counts are NOT claimed as verified in this checkpoint.
+- Re-read branch HEAD, main HEAD, checkpoint, latest Actions, and final v10 dynamic load order before continuing.
+- Diagnosed the prior SS1 Get Ready 6 post-repair slash failure: the old reference layer still exact-compared `I had lunch... / I ate... / I saw...` against the chronology-safe final passage.
+- Added a bounded reference bridge in `v10_reference_chronology_sync.js`: old Get Ready 6 English is restored only during authoritative legacy reference exact validation, then final runtime restores the chronology-safe `I eat lunch. / I am at the zoo. / I like ...` passage and slash rows. Commit `cbb219dc701e1346a103d0544e4a5ead1faf3bb0`.
+- Verified that repair with audit run `32819039113` SUCCESS and slash-quality run `32819039077` SUCCESS. `saw` disappeared from the unresolved candidate list.
+- Live-v7 checked six high-frequency content-bearing families and added passage-local, non-cumulative glosses rather than globally whitelisting or distorting the passage: `food`, `part`, `contest`, `fruit`, `partner`, `town`.
+- Added 22 new passage-local note definitions (notes 22 -> 44), covering all occurrences of those six families. Commit `48e96db0f0823ff62c478dc86295c995edede7c4`.
+- That reduced verified unresolved vocabulary by exactly 123 occurrences: `food 26 + part 21 + contest 20 + fruit 20 + partner 19 + town 17`.
+- Hardened `v10_grammar_chronology_candidate_audit.js` so runtime failures are printed to stdout and persist in Actions artifacts instead of disappearing from the workflow log. Commit `e49f8cf57b73df968d874a17f385e1668af37f94`.
+- Recovered the exact intermittent/reference failure from run `32819539877`: passage 100 had old reference `At school, I talk about local food in a short speech.` versus runtime `At school, I give a short speech about local food.`
+- Live-v7 evidence showed `talk` is already introduced in NH1 Unit 7, `speech` is NH2 Unit 2 Part2, but `give-gave` is not introduced until NH2 Let's Read 1. Therefore the reference wording is both reference-correct and chronology-safer.
+- Updated the terminal manual correction for NH2 Unit 2-2 so the final sentence/evidence is `At school, I talk about local food in a short speech.`; synchronized Japanese full translation, slash first row, A evidence/evidenceJp/reason and matching B evidence if present. Commit `6811239804d200ed924a234d3a7513080d49fffc`.
+- Fresh audit run `32819972389` completed its discovery job SUCCESS: vocabulary audit 168/168, grammar candidate audit 168/168, notes UI PASS, runtime browser errors 0.
+- Grammar scanner now reliably persists a 168/168 authoritative-final-runtime scan with 20 detected feature families; this remains candidate coverage only, not chronology PASS.
 
-## Current exact state
-- Vocabulary audited baseline: `168/168`.
-- Vocabulary chronology baseline before this repair: `FAIL / IN PROGRESS`.
-- Last verified strict unresolved baseline: `556` unique / `2826` leak occurrences = `1071 FUTURE_V7_LEAK + 1755 UNREGISTERED_V7 + 0 UNREGISTERED_PROPER`.
-- Repair this run removes the final-runtime SS1 Get Ready 6 occurrences of `had`, `ate`, `saw`, and unregistered `pizza`; exact new aggregate counts remain pending the next authoritative all-168 run.
-- Content passages changed this run: `1` (`SS1 Get Ready 6`).
-- Synchronized A/B question set changed this run: `1` passage.
-- New notes added this run: `0`; retained notes baseline: `22`.
-- `missing_gloss`: last verified `0`; no unglossed note was introduced.
-- Grammar baseline: `168/168` candidate scan, `20` detected feature families; exact evidence-backed subunit introduction chronology still pending. This run deliberately removes the known Get Ready 6 past-tense future grammar rather than authorizing it.
-- Slash/reference: passage slash rows were changed in synchronization with the passage. Reference regression must be re-run; PASS is not claimed for this new commit until the terminal reference bridge and slash workflow validate it.
-- Main release: NOT performed.
+## Current exact verified state
+- Passages vocabulary-audited: `168/168`.
+- Vocabulary chronology: `FAIL / IN PROGRESS`.
+- Verified unresolved: `548 unique / 2684 occurrences` = `989 FUTURE_V7_LEAK + 1695 UNREGISTERED_V7 + 0 UNREGISTERED_PROPER`.
+- Previous verified state before this run: `556 unique / 2826 occurrences`; net verified improvement this run: `-8 unique / -142 occurrences` (includes Get Ready 6 cleanup plus six note families).
+- Notes present: `44` passage-local entries; new notes this run: `22`.
+- `missing_gloss=0` PASS.
+- `NOTED_UNLEARNED_ALLOWED=275` occurrences.
+- Grammar candidate coverage: `168/168`, `20` detected feature families, authoritative runtime complete. Evidence-backed exact subunit introduction boundaries are still pending; grammar chronology remains FAIL-CLOSED/PENDING.
+- Notes UI gate: PASS.
+- Latest complete prior slash-quality run after the six-family note patch: `32819539860` SUCCESS, including reference runtime 168, sample gate, coverage, DOM, Chromium/Firefox/WebKit-iPhone cross-browser+print, and public Pages reference-runtime smoke.
+- Slash-quality run for newest NH2 Unit 2-2 content commit: `32819972404`; reference runtime, sample gate, coverage and DOM were already PASS at checkpoint time, browser-engine/cross-browser stages were still in progress and final conclusion not yet claimed.
+- Public main release: NOT performed.
+
+## Canonical-v7 evidence captured this run
+- `food`: canonical Japanese `食べ物`.
+- `part`: canonical `部分, 地域`; phrase `part of ~` also exists.
+- `contest`: canonical `コンテスト, 競技(会)`; NH1 has later phrase `chorus contest`, so no global early whitelist was created.
+- `fruit`, `partner`, `town`: no standalone canonical token row; retained only passage-locally with glosses, not cumulatively.
+- NH2 Unit 2-2 sentence conflict: `talk` is cumulative from NH1 Unit 7; `speech` is introduced in NH2 Unit 2 Part2; `give-gave` is NH2 Let's Read 1, so final wording now follows reference + chronology.
+- Next unresolved high-frequency families already identified from the current report: `badge 16`, `checklist 16`, `ocean 16`, `production 16`, `race 16`, `researchers 16`, `trash 16`, `white 16`, `basketball 15`, `straw 15`, followed by lower-count families.
+- Live-v7 checks already started for the next group: `badge=バッジ`, `race=競走, レース`, `straw=ストロー`; `researcher` exists only as a later/other-textbook canonical item for the current NH3 uses, and `white` has no standalone v7 row.
 
 ## PASS / FAIL snapshot
-- canonical v7 source re-check: PASS.
-- vocabulary coverage baseline: 168/168 PASS; chronology still FAIL until authoritative rescan reaches zero leaks.
-- missing gloss: last verified PASS (`0`).
-- notes UI: last verified PASS.
-- grammar coverage baseline: 168/168 candidate scan PASS; chronology PENDING/FAIL-CLOSED.
-- slash reference/regression on new content commit: PENDING RESCAN (previous commit was PASS).
-- browser/print on new content commit: PENDING final regression.
-- public main/live GitHub Pages: intentionally unchanged / not final.
+- canonical v7 source: PASS / live Sheet actual used.
+- vocabulary coverage: 168/168 PASS.
+- vocabulary chronology: FAIL (`2684` unresolved occurrences).
+- missing gloss: PASS (`0`).
+- notes UI: PASS.
+- grammar candidate coverage: 168/168 PASS; grammar chronology PENDING/FAIL-CLOSED until evidence-backed introductions are populated.
+- reference slash after Get Ready 6 bridge: PASS on completed runs.
+- newest NH2 Unit2-2 reference exact validation + coverage + DOM: PASS so far; final cross-browser/print run conclusion still pending at checkpoint time.
+- public main/live release: intentionally unchanged / not final.
 
 ## Exact stop / next start
-- Exact stop: SS1 Get Ready 6 future `had / ate / saw / pizza` content was repaired and committed at `960d19311b4c477540493de9772cd7e00a5356ac`; no Actions run had appeared for that SHA at the final check of this run.
-- Next start: re-read branch HEAD because Actions may append report commits; inspect the first authoritative audit/slash run covering `960d...`. If a reference mismatch is reported, update the canonical reference chronology/slash synchronization for Get Ready 6 rather than reverting the chronology-safe passage.
-- After verification, continue unresolved high-frequency candidates without small batches: `food`, `part`, `contest`, `fruit`, `partner`, `town`, then descending remainder. Resolve each from live v7 earliest textbook/grade/PDF/subunit evidence; prefer natural known-vocabulary replacement and use passage-local notes only when meaning cannot be preserved otherwise.
-- After vocabulary leak reaches zero: populate evidence-backed exact-subunit grammar `introductionEvidence` for all detected feature families, run true grammar chronology, and reduce `future_grammar_leak` to zero.
+- Exact stop: content commit `6811239804d200ed924a234d3a7513080d49fffc` aligned NH2 Unit 2-2 to the old authoritative reference wording and removed the later `give` usage; audit run `32819972389` discovery is SUCCESS at `548 unique / 2684 occurrences`, while slash run `32819972404` had passed reference/sample/coverage/DOM and was entering cross-browser validation.
+- Next start: re-read branch HEAD because Actions appends `[skip ci]` evidence commits; first read final conclusion of `32819972404`. If PASS, continue directly from unresolved `badge 16`, then `checklist 16`, `ocean 16`, `production 16`, `race 16`, `researchers 16`, `trash 16`, `white 16`, `basketball 15`, `straw 15`, and continue descending without a small-batch stop.
+- For every family: live-v7 exact/base/variant + textbook/grade/subunit evidence first; fix morphology scanner where canonical base+allowed grammar should license the form; otherwise prefer a natural cumulative-word rewrite; only content-essential words get passage-local English+Japanese notes.
+- After vocabulary leak reaches zero: populate evidence-backed exact-subunit grammar introduction boundaries for all 20 detected families, run true grammar chronology, and reduce future_grammar_leak to zero.
 - Final only after vocabulary chronology 168/168 PASS, grammar chronology 168/168 PASS, missing_gloss=0, future vocab/grammar leak=0, slash reference=168/168, A/B evidence, coverage/DOM, Chromium/Firefox/WebKit-iPhone and A4 student/teacher print all PASS: update main, verify live GitHub Pages, then stop automation.
