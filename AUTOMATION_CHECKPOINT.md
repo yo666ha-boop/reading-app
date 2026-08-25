@@ -1,44 +1,42 @@
 # Long-reading app vocabulary / grammar / notes checkpoint
 
-Updated: 2026-08-25 JST (manual continuation, batch14 verified)
+Updated: 2026-08-25 JST (automation continuation, batches15-16 + grammar routing)
 
 ## Source of truth / safety
 - Repo: `yo666ha-boop/reading-app`.
 - Work branch: `v10-vocab-grammar-notes-audit`.
 - Public `main`: `1f0cabf9bfcc4482f507e33188499bdbbd5bab57`; NOT modified.
-- Sole vocabulary authority: native Sheet `1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4`, tab `単語マスター`, 3975 canonical records. This run re-read native-sheet metadata: 3976 rows including header, 33 columns, tab sheetId `109187341`, and exported/read the native workbook for bounded v7 checks.
-- Authoritative audit waits for `V10_RUNTIME_LOAD_PROGRESS=complete`, then applies passage-local proper-name batches 1-4 and notes batches 2-14 before scanning all 168 passages. Notes are exact-passage/non-cumulative; proper names require explicit local tagging and capitalization.
+- Sole vocabulary authority: native Sheet `1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4`, tab `単語マスター`, 3975 canonical records. Live native workbook was exported/read again this run; no v5/v6 authority used.
+- Authoritative audit waits for `V10_RUNTIME_LOAD_PROGRESS=complete`, then applies passage-local proper-name batches 1-4 and notes batches 2-16 before scanning all 168 passages. Notes are exact-passage/non-cumulative; proper names require explicit local tagging and capitalization.
 
 ## Completed this run
-- Re-read branch HEAD, main HEAD, checkpoint, latest Actions, workflow path filters, and authoritative final-runtime load order before editing. Public main remained `1f0cabf9bfcc4482f507e33188499bdbbd5bab57`.
-- Re-downloaded authoritative baseline artifact `9566464062` from run `32856710276` and parsed actual unresolved JSON. Baseline was `301 unique / 831 occurrences` = `252 FUTURE_V7_LEAK + 579 UNREGISTERED_V7`; notes `360`; `missing_gloss=0`; passages `168/168`.
-- Enumerated the complete 84-token four-occurrence cohort; did not stop after 10/20.
-- Re-checked canonical v7 evidence for the high-risk front. Kept morphology/same-section candidates such as `grew`, `four`, `forms` out of blanket notes pending grammar/order proof.
-- Added `v10_passage_local_notes_batch14.js` with 54 distinct unambiguous four-occurrence token families (55 exact-passage definitions because `evening` spans two passages). Notes are exact-passage only; no global allowlist. Content commit `ca62d640e8703312522cb66f9cc0d4382eac0743`.
-- Updated authoritative scanner to load batch14 after final runtime completion. Scanner commit `d2c455272bab7c6191dc801bb3b8e6c62726728d`.
-- Authoritative run `32859155741` completed SUCCESS. Artifact `9567421627` was downloaded and read directly.
-- Exact post-batch14 state: `247 unique / 615 unresolved occurrences` = `200 FUTURE_V7_LEAK + 415 UNREGISTERED_V7`; notes `415`; `missing_gloss=0`; passages `168/168`; proper-name unresolved `0`; mapping errors `0`; runtime browser errors `0`.
-- Verified batch14 reduction from `301 / 831` to `247 / 615`: `54 unique / 216 occurrences`; notes `360 -> 415`; missing gloss remained zero.
-- Slash-quality run `32859127567` completed SUCCESS for batch14 content; no slash regression was introduced.
-- Grammar chronology remains fail-closed: candidate coverage `168/168`, 20 feature families, evidence-backed exact-subunit boundaries incomplete; no grammar PASS claimed.
+- Re-read branch HEAD, main HEAD, checkpoint, latest Actions, authoritative runtime order, and latest unresolved artifact before editing. Public main remained unchanged.
+- Started from verified batch14 state `247 unique / 615 occurrences` = `200 FUTURE_V7_LEAK + 415 UNREGISTERED_V7`, notes `415`, missing_gloss `0`, passages `168/168`.
+- Processed the complete remaining four-occurrence cohort rather than stopping in small groups. Added `v10_passage_local_notes_batch15.js` with 37 exact-passage definitions covering all 30 remaining four-occurrence token families. Content commit `a03c7c593544dbcb8814bbdfd5b2cecf98e967c1`; scanner connection commit `102aed2f6834e5a1992f12b77e603536ad75d22e`.
+- Important bounded cases: `U.N.` is annotated as `国際連合` only in SS2 PROGRAM 5-3, so tokenizer output is not globally authorized; `hard` in SS1 PROGRAM 6-2 was checked against actual sentence `We practice hard there.` / Japanese meaning `一生懸命に`.
+- Continued immediately through the three-occurrence cohort. Added `v10_passage_local_notes_batch16.js` with 59 exact-passage lexical definitions; deliberately excluded `I'd` and `whether` because they are grammar/contraction structures, not lexical notes. Content commit `e0507469a34df1fa972912545aad5911735a4c56`; scanner connection commit `c6e99e15727a525e754a768983fa183644db25db`.
+- Authoritative run `32863554450` completed SUCCESS. Artifact `9569148748` was downloaded/read. Post-batch16 exact state was `158 unique / 318 occurrences` = `82 FUTURE_V7_LEAK + 236 UNREGISTERED_V7`; notes `511`; missing_gloss `0`; passages `168/168`; unresolved proper `0`.
+- Slash-quality run `32863517406` completed SUCCESS for batch16 content; no slash/reference regression from batches15-16.
+- Fixed vocabulary classification so `I'd` is routed to `CONTRACTION_TO_GRAMMAR` and `whether` to `EXPLICIT_FUNCTION_TO_GRAMMAR`, before local-note handling. Commit `11277e08a578201997b92700157c98c62814dda3`.
+- Extended grammar candidate detection with explicit `WOULD_LIKE` (`I would like to` / `I'd like to`) and `WHETHER_CLAUSE` features. Commit `b37703f61a1974e688c418a7a96ff95b88c65032`.
+- Latest persisted authoritative status after grammar routing: `156 unique / 312 occurrences`; `82 FUTURE_V7_LEAK + 230 UNREGISTERED_V7`; contraction-to-grammar `230`, explicit-function-to-grammar `20704`; notes `511`; missing_gloss `0`; passages `168/168`.
+- Grammar candidate coverage remains `168/168`; detected feature families increased from 20 to 22 because `WOULD_LIKE` and `WHETHER_CLAUSE` are now represented instead of being hidden as vocabulary. Exact evidence-backed textbook/subunit introduction boundaries are still incomplete, so no grammar PASS is claimed.
 
 ## Current exact state
 - Vocabulary passages audited: `168/168`.
-- Vocabulary violations: `247 unique / 615 occurrences`.
-- FUTURE_V7_LEAK: `200 occurrences`.
-- UNREGISTERED_V7: `415 occurrences`.
-- Notes present: `415`.
+- Vocabulary violations: `156 unique / 312 occurrences`.
+- FUTURE_V7_LEAK: `82 occurrences`.
+- UNREGISTERED_V7: `230 occurrences`.
+- Notes present: `511`.
 - missing gloss: `0`.
 - Proper-name unresolved: `0`.
-- Mapping errors: `0`.
-- Runtime browser errors: `0`.
 - Vocabulary chronology: FAIL / IN PROGRESS.
-- Grammar chronology: FAIL-CLOSED / IN PROGRESS; candidate coverage `168/168`, 20 feature families, exact subunit boundaries incomplete.
-- Slash/reference: batch14 slash-quality PASS at run `32859127567`; full final release gate still required after vocab+grammar reach zero leaks.
+- Grammar chronology: FAIL-CLOSED / IN PROGRESS; candidate coverage `168/168`, now 22 detected feature families, evidence-backed exact subunit boundaries incomplete.
+- Slash/reference: batch16 content slash-quality PASS at run `32863517406`; later grammar-scanner-only changes do not mutate sentences/slash data. Full final release slash/browser/print gate still required after chronology completion.
 - Public main release: NOT performed.
 
 ## Exact stop / next start
-- Exact stop: batch14 authoritative audit verified SUCCESS at `247 unique / 615 occurrences`; slash-quality also SUCCESS.
-- Next start: use artifact `9567421627` unresolved JSON as sole queue. Continue the remaining four-occurrence cohort, beginning `forms`, `four`, `grew`, `hard`, `hi`, `life`, `mark`, `market`, `n`, `outside`, `person's`, `practical`, `pull`, `real`, `reopened`, `rest`, `roads`, `sells`, `several`, `shipped`, `similar`, `sounds`, `step`, `systems`, `talk`, `trip`, `variety`, `visitor's`, `wider`, etc. Resolve morphology/same-section/proper-name/tokenization cases from v7 + grammar evidence instead of masking them with notes.
-- Continue vocabulary until `unique_unresolved=0`, `future_vocab_leak=0`, `missing_gloss=0`. Then finish evidence-backed grammar introduction boundaries for all 20 feature families and require `future_grammar_leak=0` across all 168 passages plus A/B English fields.
+- Exact stop: batches15-16 are content-complete and authoritative batch16 audit is SUCCESS. Grammar routing removed `I'd` and `whether` from lexical unresolved, yielding persisted `156 unique / 312 occurrences`. Latest branch Actions were still settling after grammar-scanner changes; treat `156/312` as current persisted authoritative queue.
+- Next start: read latest branch HEAD/status/artifact first, then continue the 156 two-occurrence lexical cohort from `across`, `act`, `acting`, `action`, `affected`, `air`, `album`, `alternate`, `article`, `attracted`, `background`, `bang`, `bedtime`, `bench`, `board`, `body`, `bookshop`, etc. Prefer natural learned-vocabulary rewrite when it preserves meaning; use exact passage-local notes only for content-required terms. Do not convert morphology/grammar/structural tokens into lexical notes merely to reduce counts.
+- Continue vocabulary until `unique_unresolved=0`, `future_vocab_leak=0`, `missing_gloss=0`. Then populate evidence-backed exact-subunit grammar introduction boundaries for all detected feature families (currently 22) and require `future_grammar_leak=0` across all 168 passages plus A/B English fields.
 - After both chronologies reach zero leaks, rerun slash reference 168/168, A/B evidence consistency, coverage/DOM, Chromium/Firefox/WebKit-iPhone, A4 student/teacher print. Only every-gate PASS permits main update and live Pages verification; only live Pages PASS permits completion.
