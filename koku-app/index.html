@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>国語トレーニング v3</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;color:#222;background:#f5f6f8}*{box-sizing:border-box}body{margin:0}header{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid #ddd;padding:12px 16px}main{max-width:980px;margin:auto;padding:16px}.card{background:#fff;border:1px solid #ddd;border-radius:12px;padding:16px;margin-bottom:14px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}label{font-size:13px;color:#555}select,input,textarea,button{font:inherit}select,input,textarea{width:100%;padding:10px;border:1px solid #bbb;border-radius:8px;background:#fff}textarea{min-height:110px}button{border:0;border-radius:9px;padding:10px 14px;background:#222;color:#fff;cursor:pointer}.sub{background:#fff;color:#222;border:1px solid #aaa}.choices button{display:block;width:100%;text-align:left;margin:7px 0;background:#fff;color:#222;border:1px solid #bbb}.choices button.sel{outline:3px solid #222}.muted{color:#666;font-size:13px}.ok{color:#087b35;font-weight:700}.ng{color:#b00020;font-weight:700}.passage{white-space:pre-wrap;line-height:1.9}.hidden{display:none}.tags{display:flex;gap:6px;flex-wrap:wrap}.tag{font-size:12px;padding:4px 7px;border-radius:999px;background:#eef0f3}.teacher-tools{display:flex;gap:8px;align-items:end;margin-top:10px}.teacher-tools>div{flex:1}@media(max-width:720px){.grid{grid-template-columns:1fr 1fr}main{padding:10px}.card{padding:13px}.teacher-tools{display:block}.teacher-tools button{margin-top:8px;width:100%}}
+@media print{header,.controls,.answer-actions,.teacher-tools{display:none!important}body{background:#fff}.card{border:0;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><b>国語トレーニング</b> <span id="count" class="muted"></span></header>
+<main>
+<section class="card controls">
+<div class="grid">
+<div><label>セット</label><select id="set"><option value="">すべて</option></select></div>
+<div><label>技能</label><select id="skill"><option value="">すべて</option></select></div>
+<div><label>難度</label><select id="diff"><option value="">すべて</option></select></div>
+<div><label>出題順</label><select id="order"><option value="seq">順番</option><option value="random">ランダム</option><option value="weak">苦手優先</option></select></div>
+</div>
+<p><button id="start">出題開始</button> <button id="review" class="sub">復習対象</button> <button id="teacher" class="sub">教師モード</button> <button id="weakBtn" class="sub">弱点診断</button></p>
+<div id="teacherTools" class="teacher-tools hidden"><div><label>問題ID検索</label><input id="pid" placeholder="例 KOKU-SEL-B1-001"></div><button id="pidGo" class="sub">開く</button><button id="printBtn" class="sub">印刷</button></div>
+</section>
+<section id="problem" class="hidden">
+<div class="card"><div class="tags" id="meta"></div><h2 id="ptitle"></h2><div id="passage" class="passage"></div></div>
+<div class="card"><h3 id="question"></h3><div id="answer"></div><div class="answer-actions"><p><button id="submit">採点する</button> <button id="next" class="sub">次の問題</button></p></div></div>
+<div id="result" class="card hidden"></div>
+</section>
+<section id="weakness" class="card hidden"></section>
+</main>
+
+
+<!-- data.jsを必ず先に読む -->
+<script>window.KOKU_DATA=[];</script>
+<script src="data-1.js"></script>
+<script src="data-2.js"></script>
+<script src="data-3.js"></script>
+<script src="data-4.js"></script>
+<script>
+const RAW=Array.isArray(window.KOKU_DATA)?window.KOKU_DATA:[];
+const DATA=RAW.filter(x=>x&&x.active!==false&&x.audit_status==='PASS_G1_G10');
+const $=id=>document.getElementById(id);let pool=[],idx=0,current=null,teacher=false,selected=null;
+const HIST_KEY='koku_history_v1';
+let MEM_HIST=[];function hist(){try{return JSON.parse(localStorage.getItem(HIST_KEY)||'[]')}catch{return MEM_HIST}}function saveAttempt(a){const h=hist();h.push(a);MEM_HIST=h.slice(-2000);try{localStorage.setItem(HIST_KEY,JSON.stringify(MEM_HIST))}catch{}}
+function uniq(k){return [...new Set(DATA.map(x=>x[k]).filter(Boolean))].sort()}
+function fill(sel,vals){vals.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;sel.appendChild(o)})}
+fill($('set'),uniq('set_id'));fill($('skill'),uniq('skill'));fill($('diff'),uniq('difficulty'));
+$('count').textContent=RAW.length?`${DATA.length}/${RAW.length}問 active`:'data.js未読込';
+if(!RAW.length){$('weakness').classList.remove('hidden');$('weakness').innerHTML='<b>data.jsが未読込です。window.KOKU_DATA を先に定義してください。</b>'}
+function dataAudit(){const errs=[];const ids=new Set();for(const p of RAW){if(!p.problem_id||ids.has(p.problem_id))errs.push('problem_id:'+String(p.problem_id));ids.add(p.problem_id);for(const k of ['set_id','skill','difficulty','item_type','passage','question','evidence','evidence_span'])if(!p[k])errs.push(`${p.problem_id}:${k}`);if((p.item_type==='multiple_choice'||Array.isArray(p.choices))&&Array.isArray(p.choices)&&!p.choices.some(c=>String(c.id||c.label)===String(p.correct_answer)))errs.push(`${p.problem_id}:choice_correct`);if(p.item_type==='ordering'&&!Array.isArray(p.correct_order))errs.push(`${p.problem_id}:correct_order`);if(p.item_type==='insertion'&&!p.correct_position)errs.push(`${p.problem_id}:correct_position`)}return errs}
+const DATA_ERRORS=dataAudit();if(DATA_ERRORS.length){$('weakness').classList.remove('hidden');$('weakness').innerHTML='<b>データ監査FAIL:</b> '+DATA_ERRORS.slice(0,20).join(' / ');$('start').disabled=true}
+function filters(){return {set:$('set').value,skill:$('skill').value,diff:$('diff').value}}
+function weakScore(p){const h=hist().filter(a=>a.problem_id===p.problem_id);if(!h.length)return 0;return h.slice(-5).reduce((s,a)=>s+(a.is_correct?0:2)+(a.max_score&&a.score/a.max_score<.7?1:0),0)}
+function buildPool(reviewOnly=false){const f=filters();let a=DATA.filter(p=>(!f.set||p.set_id===f.set)&&(!f.skill||p.skill===f.skill)&&(!f.diff||p.difficulty===f.diff));if(reviewOnly){const bad=new Set(hist().filter(x=>!x.is_correct||(x.max_score&&x.score/x.max_score<.7)).map(x=>x.problem_id));a=a.filter(p=>bad.has(p.problem_id))}const ord=$('order').value;if(ord==='random')a=[...a].sort(()=>Math.random()-.5);if(ord==='weak')a=[...a].sort((x,y)=>weakScore(y)-weakScore(x));pool=a;idx=0;show()}
+function show(){if(!pool.length){$('problem').classList.add('hidden');$('weakness').classList.remove('hidden');$('weakness').innerHTML='<b>条件に合う問題がありません。</b>';return}current=pool[idx%pool.length];selected=null;$('problem').classList.remove('hidden');$('result').classList.add('hidden');$('meta').innerHTML=`<span class=tag>${current.problem_id}</span><span class=tag>${current.set_id}</span><span class=tag>${current.skill}</span><span class=tag>${current.difficulty}</span><span class=tag>${current.item_type}</span>`;$('ptitle').textContent=current.passage_title||current.title||'';$('passage').textContent=current.passage||'';$('question').textContent=current.question||'';renderAnswer()}
+function renderAnswer(){const a=$('answer');a.innerHTML='';const isChoice=current.item_type==='multiple_choice'||(Array.isArray(current.choices)&&current.choices.length);if(isChoice){const d=document.createElement('div');d.className='choices';(current.choices||[]).forEach(c=>{const b=document.createElement('button');b.type='button';b.textContent=`${c.label||c.id||''} ${c.text||''}`;b.onclick=()=>{[...d.children].forEach(x=>x.classList.remove('sel'));b.classList.add('sel');selected=c.id||c.label};d.appendChild(b)});a.appendChild(d)}else if(current.item_type==='ordering'){const ta=document.createElement('textarea');ta.id='written';ta.placeholder='カードIDを正しい順に、例 A,B,C のように入力';a.appendChild(ta)}else if(current.item_type==='insertion'){const inp=document.createElement('input');inp.id='written';inp.placeholder='挿入位置IDを入力';a.appendChild(inp)}else{const ta=document.createElement('textarea');ta.id='written';ta.placeholder='解答を入力';a.appendChild(ta)}}
+function norm(s){return String(s??'').normalize('NFKC').replace(/[\s 、。,.・「」『』]/g,'').toLowerCase()}
+function answerValue(){return selected??($('written')?$('written').value:'')}
+function grade(){if(!current)return;const ans=answerValue();let score=0,max=1,ok=false,wrong=[];const ca=current.correct_answer;const isChoice=current.item_type==='multiple_choice'||Array.isArray(current.choices);
+if(isChoice){ok=String(ans)===String(ca);score=ok?1:0;if(!ok){const c=(current.choices||[]).find(x=>String(x.id||x.label)===String(ans));wrong=c?.wrong_type?[c.wrong_type]:['G']}}
+else if(current.item_type==='ordering'){const want=Array.isArray(ca)?ca:(ca?.correct_order||current.correct_order||[]);const got=String(ans).split(/[ ,、>→]+/).filter(Boolean);ok=JSON.stringify(got)===JSON.stringify(want);score=ok?1:0;if(!ok)wrong=['ORDER_CHAIN']}
+else if(current.item_type==='insertion'){const want=ca?.correct_position||current.correct_position||ca;const aliases=[want,ca?.canonical,...(current.answer_aliases||[])].filter(Boolean);ok=aliases.some(x=>norm(ans)===norm(x));score=ok?1:0;if(!ok)wrong=['EVIDENCE_MISS']}
+else if(current.item_type==='extract'){const want=ca?.exact_answer||current.exact_answer||ca;const aliases=[want,...(current.answer_aliases||[])].filter(Boolean);ok=aliases.some(x=>norm(ans)===norm(x));score=ok?1:0;if(!ok)wrong=[norm(ans)?'G':'EVIDENCE_MISS']}
+else{const pts=Array.isArray(current.scoring_points)?current.scoring_points:[];max=pts.reduce((s,p)=>s+(Number(p.points)||1),0)||1;const fullAliases=[typeof ca==='string'?ca:null,...(current.answer_aliases||[])].filter(Boolean);if(fullAliases.some(x=>norm(ans)===norm(x))){score=max;ok=true}else if(pts.length){for(const p of pts){const aliases=[p.required_text,...(p.aliases||[]),p.label].filter(Boolean).map(norm).filter(Boolean);const na=norm(ans);if(aliases.some(x=>na.includes(x)||x.includes(na)&&na.length>=4))score+=Number(p.points)||1}ok=score===max}else{ok=fullAliases.some(x=>norm(ans)===norm(x));score=ok?1:0}if(!ok)wrong=[score/max<.7?'SCORING_MISSING':'G']}
+const att={attempt_id:(crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random()),timestamp:new Date().toISOString(),problem_id:current.problem_id,selected_or_written_answer:ans,is_correct:ok,score,max_score:max,wrong_types:wrong,used_hint:false,elapsed_ms:null,mode:teacher?'teacher':'practice',set_id:current.set_id,skill:current.skill,difficulty:current.difficulty};saveAttempt(att);renderResult(att)}
+function esc(s){return String(s??'').replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]))}
+function renderResult(a){const r=$('result');r.classList.remove('hidden');const choiceReasons=(current.choices||[]).map(c=>`<li>${esc(c.label||c.id)}: ${esc(c.wrong_reason||'')}${c.wrong_type?' ['+esc(c.wrong_type)+']':''}</li>`).join('');r.innerHTML=`<h3 class=${a.is_correct?'ok':'ng'}>${a.is_correct?'正解':'要確認'} ${a.score}/${a.max_score}</h3><p><b>正答：</b>${esc(typeof current.correct_answer==='object'?JSON.stringify(current.correct_answer):current.correct_answer)}</p><p><b>根拠：</b>${esc(current.evidence)}</p><p><b>根拠位置：</b>${esc(current.evidence_span)}</p><p><b>解法：</b>${(current.solution_steps||[]).map(esc).join(' → ')}</p>${choiceReasons?'<details><summary>選択肢の診断</summary><ul>'+choiceReasons+'</ul></details>':''}${teacher?`<hr><p><b>教師用解説：</b>${esc(current.teacher_explanation)}</p><pre>${esc(JSON.stringify(current.scoring_points||[],null,2))}</pre>`:''}`}
+function weakness(){const h=hist(),recent=h.slice(-20),by={};for(const a of recent){for(const w of a.wrong_types||[]){by[w]=(by[w]||0)+1}}const skill={};for(const a of h){skill[a.skill]??={n:0,ok:0};skill[a.skill].n++;if(a.is_correct)skill[a.skill].ok++}const s=Object.entries(skill).map(([k,v])=>`<li>${k}: ${Math.round(v.ok/v.n*100)}% (${v.ok}/${v.n})</li>`).join('');const w=Object.entries(by).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<li>${k}: ${v}回${v>=2?' <b>要復習</b>':''}</li>`).join('');$('weakness').classList.remove('hidden');$('weakness').innerHTML=`<h3>弱点診断</h3><p>累積技能別</p><ul>${s||'<li>履歴なし</li>'}</ul><p>直近20問の誤答タイプ</p><ul>${w||'<li>誤答なし</li>'}</ul>`}
+function openProblemId(){const id=$('pid').value.trim();const p=DATA.find(x=>x.problem_id===id);if(!p){alert('問題IDが見つかりません');return}pool=[p];idx=0;show()}
+$('start').onclick=()=>{$('weakness').classList.add('hidden');buildPool(false)};$('review').onclick=()=>buildPool(true);$('weakBtn').onclick=weakness;$('teacher').onclick=()=>{teacher=!teacher;$('teacher').textContent=teacher?'教師モード ON':'教師モード';$('teacherTools').classList.toggle('hidden',!teacher);if(current)show()};$('pidGo').onclick=openProblemId;$('pid').addEventListener('keydown',e=>{if(e.key==='Enter')openProblemId()});$('printBtn').onclick=()=>window.print();$('submit').onclick=grade;$('next').onclick=()=>{if(!pool.length)return;idx=(idx+1)%pool.length;show()};
+</script>
+</body></html>
