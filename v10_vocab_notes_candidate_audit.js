@@ -13,10 +13,16 @@ function tokenize(text) {
 }
 function uniq(a) { return [...new Set(a)]; }
 function assert(c, m) { if (!c) throw new Error(m); }
-function allowedTokens(m) {
+function allowedEvidence(m) {
   const rows = Array.isArray(m && m.allowedWords) ? m.allowedWords : [];
-  const src = rows.map(r => Array.isArray(r) ? String(r[0] || '') : String(r || '')).join(' / ');
-  return new Set(tokenize(src));
+  const lexical = new Set(), proper = new Set();
+  for (const r of rows) {
+    const text = Array.isArray(r) ? String(r[0] || '') : String(r || '');
+    const basis = Array.isArray(r) ? String(r[1] || '') : '';
+    const target = /proper\s*names?/i.test(basis) ? proper : lexical;
+    for (const tok of tokenize(text)) target.add(tok);
+  }
+  return {lexical, proper};
 }
 function morphologyBases(w) {
   const out = [];
@@ -27,13 +33,11 @@ function morphologyBases(w) {
   if (w.endsWith('ves') && w.length > 4) out.push(w.slice(0, -3) + 'f', w.slice(0, -3) + 'fe');
   if (w.endsWith('es') && w.length > 3) out.push(w.slice(0, -2), w.slice(0, -1));
   if (w.endsWith('s') && w.length > 3) out.push(w.slice(0, -1));
-  // 5-letter forms such as "using" must be reducible to "use".
   if (w.endsWith('ing') && w.length > 4) {
     const b = w.slice(0, -3); out.push(b, b + 'e');
     if (b.endsWith('y')) out.push(b);
     if (b.length > 2 && b.at(-1) === b.at(-2)) out.push(b.slice(0, -1));
   }
-  // 4-letter forms such as "used", "died", "tied" must be reducible.
   if (w.endsWith('ed') && w.length > 3) {
     const b = w.slice(0, -2); out.push(b, b + 'e');
     if (b.endsWith('i')) out.push(b.slice(0, -1) + 'y');
@@ -137,20 +141,16 @@ function introAllowed(intro, cut) {
   if (Number(g) > cut.grade) return false;
   return Number(pdf) < cut.pdf || (Number(pdf) === cut.pdf && Number(sub) <= cut.subrank);
 }
-function classifyToken(v7, w, raw, cut, reviewedEvidence) {
+function classifyToken(v7, w, raw, cut, reviewedEvidence, localProperNames) {
+  if (localProperNames.has(w) && /^[A-Z]/.test(String(raw || ''))) return { kind:'EXPLICIT_PROPER_NAME_ALLOWED', evidence:'current passage allowedWords row explicitly tagged proper names' };
   if (CONTRACTIONS_TO_GRAMMAR.has(w)) return { kind:'CONTRACTION_TO_GRAMMAR', evidence:'closed contraction set; grammar chronology required' };
   if (EXPLICIT_FUNCTION_TO_GRAMMAR.has(w)) return { kind:'EXPLICIT_FUNCTION_TO_GRAMMAR', evidence:'closed structural function set; grammar chronology required' };
-  // Elementary lexical evidence authorizes base vocabulary before junior-high, but productive
-  // surface morphology (plural/3sg/past/ing/comparison) still requires grammar chronology.
   const productiveBases = morphologyBases(w).filter(base => base !== w);
   for (const base of productiveBases) {
     if (ELEMENTARY_WORDS.has(base)) return { kind:'MORPHOLOGY_TO_GRAMMAR', base, intro:null, evidence:{source:'elementary',fileId:ELEMENTARY_SOURCE.source.fileId,records:ELEMENTARY_SOURCE.source.records} };
   }
   if (ELEMENTARY_WORDS.has(w)) return { kind:'ELEMENTARY_LEXICAL_ALLOWED', evidence:{source:'elementary',fileId:ELEMENTARY_SOURCE.source.fileId,records:ELEMENTARY_SOURCE.source.records} };
 
-  // When an inflected surface has an already-known v7 base, grammar chronology decides the
-  // surface form even if v7 later contains the exact inflection as a separate row. Otherwise
-  // forms such as saw/gives/days are falsely counted as future vocabulary.
   const bases = uniq([IRREGULAR_BASE.get(w), ...morphologyBases(w)].filter(Boolean));
   for (const base of bases) {
     const bi = introFor(v7, cut.code, base);
@@ -158,7 +158,6 @@ function classifyToken(v7, w, raw, cut, reviewedEvidence) {
   }
   const direct = introFor(v7, cut.code, w);
   if (direct) return introAllowed(direct, cut) ? { kind:'V7_CHRONOLOGY_ALLOWED', intro:direct } : { kind:'FUTURE_V7_LEAK', intro:direct };
-  // A future base cannot be rescued by morphology: lexical knowledge of the base must exist first.
   for (const base of bases) {
     const bi = introFor(v7, cut.code, base);
     if (bi && !introAllowed(bi, cut)) return { kind:'FUTURE_V7_LEAK', intro:bi, base };
@@ -205,7 +204,7 @@ function datasetCount(d) {
     const DATASETS = w.eval('DATASETS'), META = w.eval('META');
     let total = 0, notesPresent = 0, missingGloss = 0;
     const passages = [], global = new Map(), mappingErrors = [];
-    const counts = {V7_CHRONOLOGY_ALLOWED:0,ELEMENTARY_LEXICAL_ALLOWED:0,REVIEWED_EXPLICIT_ALLOWED:0,MORPHOLOGY_TO_GRAMMAR:0,CONTRACTION_TO_GRAMMAR:0,EXPLICIT_FUNCTION_TO_GRAMMAR:0,FUTURE_V7_LEAK:0,UNREGISTERED_V7:0,UNREGISTERED_PROPER:0};
+    const counts = {V7_CHRONOLOGY_ALLOWED:0,ELEMENTARY_LEXICAL_ALLOWED:0,EXPLICIT_PROPER_NAME_ALLOWED:0,REVIEWED_EXPLICIT_ALLOWED:0,MORPHOLOGY_TO_GRAMMAR:0,CONTRACTION_TO_GRAMMAR:0,EXPLICIT_FUNCTION_TO_GRAMMAR:0,FUTURE_V7_LEAK:0,UNREGISTERED_V7:0,UNREGISTERED_PROPER:0};
 
     for (const textbook of ['サンシャイン', 'ニューホライズン']) {
       const reviewedEvidence = new Map();
@@ -220,16 +219,16 @@ function datasetCount(d) {
 
         for (const { section, m, cut } of entries) {
           total++;
-          const local = allowedTokens(m);
+          const localEvidence = allowedEvidence(m), local = localEvidence.lexical, localProperNames = localEvidence.proper;
           const priorReviewedTokens = reviewedEvidence.size;
           const meta = META[`${textbook}|${grade}|${section}`] || {}, found = new Map();
 
           for (const src of sourceStrings(m, meta)) {
             const rawTokens = String(src.text || '').replace(/[’]/g, "'").match(/[A-Za-z]+(?:'[A-Za-z]+)*/g) || [];
             for (const raw of rawTokens) {
-              const tok = raw.toLowerCase(), c = classifyToken(v7, tok, raw, cut, reviewedEvidence);
+              const tok = raw.toLowerCase(), c = classifyToken(v7, tok, raw, cut, reviewedEvidence, localProperNames);
               counts[c.kind]++;
-              if (c.kind === 'V7_CHRONOLOGY_ALLOWED' || c.kind === 'ELEMENTARY_LEXICAL_ALLOWED' || c.kind === 'REVIEWED_EXPLICIT_ALLOWED') continue;
+              if (c.kind === 'V7_CHRONOLOGY_ALLOWED' || c.kind === 'ELEMENTARY_LEXICAL_ALLOWED' || c.kind === 'EXPLICIT_PROPER_NAME_ALLOWED' || c.kind === 'REVIEWED_EXPLICIT_ALLOWED') continue;
               const key = `${c.kind}|${tok}|${c.base || ''}`;
               if (!found.has(key)) found.set(key, {token:tok,kind:c.kind,base:c.base||null,intro:c.intro||null,evidence:c.evidence||null,locations:[]});
               if (found.get(key).locations.length < 10) found.get(key).locations.push(src.where);
@@ -252,6 +251,7 @@ function datasetCount(d) {
           passages.push({
             grade, textbook, section, id:m.id || '', cutoff:cut,
             localReviewedTokens:local.size,
+            localProperNameTokens:localProperNames.size,
             priorReviewedTokens,
             cumulativeReviewedTokens:reviewedEvidence.size,
             notes:notes.length,
@@ -275,7 +275,7 @@ function datasetCount(d) {
       uniqueUnresolved:unresolved.length,
       futureVocabLeakOccurrences:finalVocabLeak,
       chronologyPass:finalVocabLeak === 0 && missingGloss === 0 && mappingErrors.length === 0,
-      rule:'Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology; short forms such as used/using are covered. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun.'
+      rule:'Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. Explicit proper-name allowances are honored only inside the current passage when allowedWords marks the row proper names and the actual token is capitalized; those names are never promoted into cumulative ordinary vocabulary. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun.'
     };
     fs.writeFileSync('v10_vocab_notes_candidate_report.json', JSON.stringify({summary, unresolved, passages}, null, 2));
     console.log(`V7 VOCAB CHRONOLOGY AUDIT passages=${total} sourceRecords=${v7.source[2]}`);
