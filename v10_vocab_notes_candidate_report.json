@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-08-25T07:55:02.017Z",
+    "generatedAt": "2026-08-25T08:02:11.976Z",
     "passages": 168,
     "canonicalSource": {
       "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
@@ -23,266 +23,21 @@
       "MORPHOLOGY_TO_GRAMMAR": 2502,
       "CONTRACTION_TO_GRAMMAR": 227,
       "EXPLICIT_FUNCTION_TO_GRAMMAR": 20718,
-      "FUTURE_V7_LEAK": 926,
-      "UNREGISTERED_V7": 1600,
+      "FUTURE_V7_LEAK": 884,
+      "UNREGISTERED_V7": 1519,
       "UNREGISTERED_PROPER": 0,
-      "NOTED_UNLEARNED_ALLOWED": 433
+      "NOTED_UNLEARNED_ALLOWED": 556
     },
-    "notesPresent": 62,
+    "notesPresent": 82,
     "missingGloss": 0,
     "mappingErrors": [],
     "runtimeBrowserErrors": [],
-    "uniqueUnresolved": 538,
-    "futureVocabLeakOccurrences": 2526,
+    "uniqueUnresolved": 529,
+    "futureVocabLeakOccurrences": 2403,
     "chronologyPass": false,
     "rule": "Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. Explicit proper-name allowances are honored only inside the current passage when allowedWords marks the row proper names and the actual token is capitalized; those names are never promoted into cumulative ordinary vocabulary. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun. A passage-local notes entry authorizes only the exact noted token in that passage and only when English and Japanese gloss are both nonblank; it never enters cumulative vocabulary."
   },
   "unresolved": [
-    {
-      "token": "compare",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 14,
-      "sections": [
-        "サンシャイン|3|PROGRAM 5-1",
-        "サンシャイン|3|PROGRAM 5-2",
-        "ニューホライズン|2|Unit 6-3",
-        "ニューホライズン|3|Unit 1-1",
-        "ニューホライズン|3|Unit 1-4",
-        "ニューホライズン|3|Unit 3-3"
-      ],
-      "examples": [
-        "サンシャイン|3|PROGRAM 5-1|sentence:9",
-        "サンシャイン|3|PROGRAM 5-1|slash:9",
-        "サンシャイン|3|PROGRAM 5-1|A5.evidence",
-        "サンシャイン|3|PROGRAM 5-1|B1.evidence",
-        "サンシャイン|3|PROGRAM 5-2|sentence:8",
-        "サンシャイン|3|PROGRAM 5-2|slash:8",
-        "ニューホライズン|2|Unit 6-3|sentence:7",
-        "ニューホライズン|2|Unit 6-3|slash:7",
-        "ニューホライズン|3|Unit 1-1|sentence:1",
-        "ニューホライズン|3|Unit 1-1|slash:1",
-        "ニューホライズン|3|Unit 1-4|sentence:10",
-        "ニューホライズン|3|Unit 1-4|slash:10"
-      ],
-      "sectionCount": 6
-    },
-    {
-      "token": "detective",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        1,
-        8,
-        7,
-        "detective",
-        0
-      ],
-      "occurrences": 14,
-      "sections": [
-        "サンシャイン|1|PROGRAM 6-1"
-      ],
-      "examples": [
-        "サンシャイン|1|PROGRAM 6-1|sentence:2",
-        "サンシャイン|1|PROGRAM 6-1|sentence:5",
-        "サンシャイン|1|PROGRAM 6-1|sentence:8",
-        "サンシャイン|1|PROGRAM 6-1|sentence:9",
-        "サンシャイン|1|PROGRAM 6-1|slash:2",
-        "サンシャイン|1|PROGRAM 6-1|slash:5",
-        "サンシャイン|1|PROGRAM 6-1|slash:8",
-        "サンシャイン|1|PROGRAM 6-1|slash:9",
-        "サンシャイン|1|PROGRAM 6-1|A1.answer",
-        "サンシャイン|1|PROGRAM 6-1|A1.evidence",
-        "サンシャイン|1|PROGRAM 6-1|A4.answer",
-        "サンシャイン|1|PROGRAM 6-1|A4.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "road",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        3,
-        7,
-        6,
-        "road",
-        0
-      ],
-      "occurrences": 14,
-      "sections": [
-        "ニューホライズン|3|Unit 3-3"
-      ],
-      "examples": [
-        "ニューホライズン|3|Unit 3-3|sentence:1",
-        "ニューホライズン|3|Unit 3-3|sentence:3",
-        "ニューホライズン|3|Unit 3-3|sentence:8",
-        "ニューホライズン|3|Unit 3-3|slash:1",
-        "ニューホライズン|3|Unit 3-3|slash:3",
-        "ニューホライズン|3|Unit 3-3|slash:8",
-        "ニューホライズン|3|Unit 3-3|A1.answer",
-        "ニューホライズン|3|Unit 3-3|A1.evidence",
-        "ニューホライズン|3|Unit 3-3|A3.answer",
-        "ニューホライズン|3|Unit 3-3|A3.evidence",
-        "ニューホライズン|3|Unit 3-3|B2.answer",
-        "ニューホライズン|3|Unit 3-3|B2.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "route",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 14,
-      "sections": [
-        "ニューホライズン|3|Unit 4-1",
-        "ニューホライズン|3|Unit 4-3"
-      ],
-      "examples": [
-        "ニューホライズン|3|Unit 4-1|sentence:3",
-        "ニューホライズン|3|Unit 4-1|slash:3",
-        "ニューホライズン|3|Unit 4-3|sentence:2",
-        "ニューホライズン|3|Unit 4-3|sentence:4",
-        "ニューホライズン|3|Unit 4-3|sentence:9",
-        "ニューホライズン|3|Unit 4-3|sentence:10",
-        "ニューホライズン|3|Unit 4-3|slash:2",
-        "ニューホライズン|3|Unit 4-3|slash:4",
-        "ニューホライズン|3|Unit 4-3|slash:9",
-        "ニューホライズン|3|Unit 4-3|slash:10",
-        "ニューホライズン|3|Unit 4-3|A3.evidence",
-        "ニューホライズン|3|Unit 4-3|A5.evidence"
-      ],
-      "sectionCount": 2
-    },
-    {
-      "token": "vegetables",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        3,
-        3,
-        7,
-        "vegetables",
-        0
-      ],
-      "occurrences": 14,
-      "sections": [
-        "サンシャイン|3|PROGRAM 1-1",
-        "サンシャイン|3|PROGRAM 1-2"
-      ],
-      "examples": [
-        "サンシャイン|3|PROGRAM 1-1|sentence:4",
-        "サンシャイン|3|PROGRAM 1-1|slash:4",
-        "サンシャイン|3|PROGRAM 1-1|A4.answer",
-        "サンシャイン|3|PROGRAM 1-1|A4.evidence",
-        "サンシャイン|3|PROGRAM 1-1|B4.answer",
-        "サンシャイン|3|PROGRAM 1-1|B4.evidence",
-        "サンシャイン|3|PROGRAM 1-2|sentence:4",
-        "サンシャイン|3|PROGRAM 1-2|sentence:6",
-        "サンシャイン|3|PROGRAM 1-2|slash:4",
-        "サンシャイン|3|PROGRAM 1-2|slash:6",
-        "サンシャイン|3|PROGRAM 1-2|A3.answer",
-        "サンシャイン|3|PROGRAM 1-2|A3.evidence"
-      ],
-      "sectionCount": 2
-    },
-    {
-      "token": "visitors",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 14,
-      "sections": [
-        "サンシャイン|3|PROGRAM 4-2",
-        "サンシャイン|3|PROGRAM 4-3",
-        "ニューホライズン|2|Unit 5-4",
-        "ニューホライズン|2|Unit 7-4"
-      ],
-      "examples": [
-        "サンシャイン|3|PROGRAM 4-2|sentence:9",
-        "サンシャイン|3|PROGRAM 4-2|slash:9",
-        "サンシャイン|3|PROGRAM 4-2|A5.answer",
-        "サンシャイン|3|PROGRAM 4-2|A5.evidence",
-        "サンシャイン|3|PROGRAM 4-2|B1.answer",
-        "サンシャイン|3|PROGRAM 4-2|B1.evidence",
-        "サンシャイン|3|PROGRAM 4-3|sentence:6",
-        "サンシャイン|3|PROGRAM 4-3|slash:6",
-        "ニューホライズン|2|Unit 5-4|sentence:10",
-        "ニューホライズン|2|Unit 5-4|slash:10",
-        "ニューホライズン|2|Unit 7-4|sentence:4",
-        "ニューホライズン|2|Unit 7-4|slash:4"
-      ],
-      "sectionCount": 4
-    },
-    {
-      "token": "bicycle",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 13,
-      "sections": [
-        "サンシャイン|1|PROGRAM 2-1"
-      ],
-      "examples": [
-        "サンシャイン|1|PROGRAM 2-1|sentence:1",
-        "サンシャイン|1|PROGRAM 2-1|sentence:6",
-        "サンシャイン|1|PROGRAM 2-1|sentence:8",
-        "サンシャイン|1|PROGRAM 2-1|sentence:11",
-        "サンシャイン|1|PROGRAM 2-1|slash:1",
-        "サンシャイン|1|PROGRAM 2-1|slash:6",
-        "サンシャイン|1|PROGRAM 2-1|slash:8",
-        "サンシャイン|1|PROGRAM 2-1|slash:11",
-        "サンシャイン|1|PROGRAM 2-1|A1.answer",
-        "サンシャイン|1|PROGRAM 2-1|A1.evidence",
-        "サンシャイン|1|PROGRAM 2-1|A4.answer",
-        "サンシャイン|1|PROGRAM 2-1|A4.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "event",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 13,
-      "sections": [
-        "サンシャイン|1|PROGRAM 5-3"
-      ],
-      "examples": [
-        "サンシャイン|1|PROGRAM 5-3|sentence:1",
-        "サンシャイン|1|PROGRAM 5-3|sentence:5",
-        "サンシャイン|1|PROGRAM 5-3|sentence:11",
-        "サンシャイン|1|PROGRAM 5-3|sentence:12",
-        "サンシャイン|1|PROGRAM 5-3|slash:1",
-        "サンシャイン|1|PROGRAM 5-3|slash:5",
-        "サンシャイン|1|PROGRAM 5-3|slash:11",
-        "サンシャイン|1|PROGRAM 5-3|slash:12",
-        "サンシャイン|1|PROGRAM 5-3|A1.answer",
-        "サンシャイン|1|PROGRAM 5-3|A1.evidence",
-        "サンシャイン|1|PROGRAM 5-3|B2.evidence",
-        "サンシャイン|1|PROGRAM 5-3|B4.answer"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "house",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 13,
-      "sections": [
-        "ニューホライズン|2|Unit 0",
-        "ニューホライズン|2|Unit 4-1"
-      ],
-      "examples": [
-        "ニューホライズン|2|Unit 0|sentence:2",
-        "ニューホライズン|2|Unit 0|slash:2",
-        "ニューホライズン|2|Unit 0|A1.evidence",
-        "ニューホライズン|2|Unit 0|A2.answer",
-        "ニューホライズン|2|Unit 0|A2.evidence",
-        "ニューホライズン|2|Unit 0|B1.evidence",
-        "ニューホライズン|2|Unit 4-1|sentence:2",
-        "ニューホライズン|2|Unit 4-1|sentence:3",
-        "ニューホライズン|2|Unit 4-1|slash:2",
-        "ニューホライズン|2|Unit 4-1|slash:3",
-        "ニューホライズン|2|Unit 4-1|A1.evidence",
-        "ニューホライズン|2|Unit 4-1|B1.answer"
-      ],
-      "sectionCount": 2
-    },
     {
       "token": "quokka",
       "kind": "FUTURE_V7_LEAK",
@@ -12089,7 +11844,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 107,
       "cumulativeReviewedTokens": 126,
-      "notes": 1,
+      "notes": 2,
       "candidates": [
         {
           "token": "after",
@@ -12141,25 +11896,6 @@
             "sentence:11",
             "slash:1",
             "slash:2"
-          ]
-        },
-        {
-          "token": "bicycle",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:1",
-            "sentence:6",
-            "sentence:8",
-            "sentence:11",
-            "slash:1",
-            "slash:6",
-            "slash:8",
-            "slash:11",
-            "A1.answer",
-            "A1.evidence"
           ]
         },
         {
@@ -15083,7 +14819,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 279,
       "cumulativeReviewedTokens": 302,
-      "notes": 0,
+      "notes": 1,
       "candidates": [
         {
           "token": "this",
@@ -15150,25 +14886,6 @@
           "locations": [
             "sentence:1",
             "slash:1",
-            "A1.answer",
-            "A1.evidence"
-          ]
-        },
-        {
-          "token": "event",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:1",
-            "sentence:5",
-            "sentence:11",
-            "sentence:12",
-            "slash:1",
-            "slash:5",
-            "slash:11",
-            "slash:12",
             "A1.answer",
             "A1.evidence"
           ]
@@ -15476,7 +15193,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 302,
       "cumulativeReviewedTokens": 308,
-      "notes": 0,
+      "notes": 1,
       "candidates": [
         {
           "token": "i",
@@ -15563,31 +15280,6 @@
             "A1.evidence",
             "A2.answer",
             "A2.answer"
-          ]
-        },
-        {
-          "token": "detective",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            1,
-            8,
-            7,
-            "detective",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:2",
-            "sentence:5",
-            "sentence:8",
-            "sentence:9",
-            "slash:2",
-            "slash:5",
-            "slash:8",
-            "slash:9",
-            "A1.answer",
-            "A1.evidence"
           ]
         },
         {
@@ -31312,7 +31004,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 903,
       "cumulativeReviewedTokens": 910,
-      "notes": 1,
+      "notes": 2,
       "candidates": [
         {
           "token": "it",
@@ -31623,27 +31315,6 @@
           ]
         },
         {
-          "token": "vegetables",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            3,
-            3,
-            7,
-            "vegetables",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:4",
-            "slash:4",
-            "A4.answer",
-            "A4.evidence",
-            "B4.answer",
-            "B4.evidence"
-          ]
-        },
-        {
           "token": "colors",
           "kind": "UNREGISTERED_V7",
           "base": null,
@@ -31841,7 +31512,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 910,
       "cumulativeReviewedTokens": 918,
-      "notes": 3,
+      "notes": 4,
       "candidates": [
         {
           "token": "my",
@@ -32052,29 +31723,6 @@
             "sentence:4",
             "slash:4",
             "A3.evidence",
-            "B2.evidence"
-          ]
-        },
-        {
-          "token": "vegetables",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            3,
-            3,
-            7,
-            "vegetables",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:4",
-            "sentence:6",
-            "slash:4",
-            "slash:6",
-            "A3.answer",
-            "A3.evidence",
-            "B2.answer",
             "B2.evidence"
           ]
         },
@@ -36720,7 +36368,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 1020,
       "cumulativeReviewedTokens": 1023,
-      "notes": 0,
+      "notes": 1,
       "candidates": [
         {
           "token": "our",
@@ -37217,21 +36865,6 @@
           ]
         },
         {
-          "token": "visitors",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:9",
-            "slash:9",
-            "A5.answer",
-            "A5.evidence",
-            "B1.answer",
-            "B1.evidence"
-          ]
-        },
-        {
           "token": "why",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -37282,7 +36915,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 1023,
       "cumulativeReviewedTokens": 1048,
-      "notes": 0,
+      "notes": 1,
       "candidates": [
         {
           "token": "my",
@@ -37638,17 +37271,6 @@
           ]
         },
         {
-          "token": "visitors",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:6",
-            "slash:6"
-          ]
-        },
-        {
           "token": "in",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -37992,7 +37614,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 1048,
       "cumulativeReviewedTokens": 1060,
-      "notes": 1,
+      "notes": 2,
       "candidates": [
         {
           "token": "our",
@@ -38490,19 +38112,6 @@
           ]
         },
         {
-          "token": "compare",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:9",
-            "slash:9",
-            "A5.evidence",
-            "B1.evidence"
-          ]
-        },
-        {
           "token": "i",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -38581,7 +38190,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 1060,
       "cumulativeReviewedTokens": 1082,
-      "notes": 1,
+      "notes": 2,
       "candidates": [
         {
           "token": "our",
@@ -38994,17 +38603,6 @@
           "base": null,
           "intro": null,
           "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:8",
-            "slash:8"
-          ]
-        },
-        {
-          "token": "compare",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
           "locations": [
             "sentence:8",
             "slash:8"
@@ -51289,7 +50887,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 345,
       "cumulativeReviewedTokens": 359,
-      "notes": 0,
+      "notes": 1,
       "candidates": [
         {
           "token": "during",
@@ -51427,21 +51025,6 @@
             "fileId": "file_00000000961881fd9924a7c8e76fe956",
             "records": 104
           },
-          "locations": [
-            "sentence:2",
-            "slash:2",
-            "A1.evidence",
-            "A2.answer",
-            "A2.evidence",
-            "B1.evidence"
-          ]
-        },
-        {
-          "token": "house",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
           "locations": [
             "sentence:2",
             "slash:2",
@@ -56812,7 +56395,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 506,
       "cumulativeReviewedTokens": 517,
-      "notes": 0,
+      "notes": 1,
       "candidates": [
         {
           "token": "i",
@@ -56937,22 +56520,6 @@
             "slash:6",
             "slash:9",
             "slash:9"
-          ]
-        },
-        {
-          "token": "house",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:2",
-            "sentence:3",
-            "slash:2",
-            "slash:3",
-            "A1.evidence",
-            "B1.answer",
-            "B1.evidence"
           ]
         },
         {
@@ -60631,7 +60198,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 583,
       "cumulativeReviewedTokens": 596,
-      "notes": 0,
+      "notes": 1,
       "candidates": [
         {
           "token": "at",
@@ -61126,17 +60693,6 @@
           "base": null,
           "intro": null,
           "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:10",
-            "slash:10"
-          ]
-        },
-        {
-          "token": "visitors",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
           "locations": [
             "sentence:10",
             "slash:10"
@@ -62221,7 +61777,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 608,
       "cumulativeReviewedTokens": 617,
-      "notes": 0,
+      "notes": 1,
       "candidates": [
         {
           "token": "we",
@@ -62532,17 +62088,6 @@
             "number",
             0
           ],
-          "evidence": null,
-          "locations": [
-            "sentence:7",
-            "slash:7"
-          ]
-        },
-        {
-          "token": "compare",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
           "evidence": null,
           "locations": [
             "sentence:7",
@@ -65038,7 +64583,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 679,
       "cumulativeReviewedTokens": 697,
-      "notes": 2,
+      "notes": 3,
       "candidates": [
         {
           "token": "i",
@@ -65267,19 +64812,6 @@
           "base": null,
           "intro": null,
           "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:4",
-            "slash:4",
-            "A3.evidence",
-            "B2.evidence"
-          ]
-        },
-        {
-          "token": "visitors",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
           "locations": [
             "sentence:4",
             "slash:4",
@@ -66323,7 +65855,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 708,
       "cumulativeReviewedTokens": 719,
-      "notes": 0,
+      "notes": 1,
       "candidates": [
         {
           "token": "my",
@@ -66374,17 +65906,6 @@
             "slash:4",
             "slash:6",
             "slash:9"
-          ]
-        },
-        {
-          "token": "compare",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:1",
-            "slash:1"
           ]
         },
         {
@@ -68276,7 +67797,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 741,
       "cumulativeReviewedTokens": 757,
-      "notes": 0,
+      "notes": 1,
       "candidates": [
         {
           "token": "our",
@@ -69000,17 +68521,6 @@
           "base": null,
           "intro": null,
           "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:10",
-            "slash:10"
-          ]
-        },
-        {
-          "token": "compare",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
           "locations": [
             "sentence:10",
             "slash:10"
@@ -73448,7 +72958,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 804,
       "cumulativeReviewedTokens": 816,
-      "notes": 1,
+      "notes": 3,
       "candidates": [
         {
           "token": "an",
@@ -73497,31 +73007,6 @@
             "A1.evidence",
             "A4.answer",
             "A4.evidence"
-          ]
-        },
-        {
-          "token": "road",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            3,
-            7,
-            6,
-            "road",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:1",
-            "sentence:3",
-            "sentence:8",
-            "slash:1",
-            "slash:3",
-            "slash:8",
-            "A1.answer",
-            "A1.evidence",
-            "A3.answer",
-            "A3.evidence"
           ]
         },
         {
@@ -73770,17 +73255,6 @@
             "B2.answer",
             "B2.evidence",
             "B4.evidence"
-          ]
-        },
-        {
-          "token": "compare",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:4",
-            "slash:4"
           ]
         },
         {
@@ -75051,7 +74525,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 831,
       "cumulativeReviewedTokens": 840,
-      "notes": 2,
+      "notes": 3,
       "candidates": [
         {
           "token": "our",
@@ -75353,17 +74827,6 @@
             "slash:9",
             "A5.evidence",
             "B1.evidence"
-          ]
-        },
-        {
-          "token": "route",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:3",
-            "slash:3"
           ]
         },
         {
@@ -76322,7 +75785,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 849,
       "cumulativeReviewedTokens": 858,
-      "notes": 0,
+      "notes": 1,
       "candidates": [
         {
           "token": "after",
@@ -76498,25 +75961,6 @@
           "locations": [
             "sentence:2",
             "slash:2"
-          ]
-        },
-        {
-          "token": "route",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:2",
-            "sentence:4",
-            "sentence:9",
-            "sentence:10",
-            "slash:2",
-            "slash:4",
-            "slash:9",
-            "slash:10",
-            "A3.evidence",
-            "A5.evidence"
           ]
         },
         {
