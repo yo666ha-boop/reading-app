@@ -37,7 +37,18 @@
     {book:'サンシャイン',grade:'1',section:'PROGRAM 2-1',english:'bicycle',japanese:'自転車',basis:'v7 has bicycle=自転車 in NH3 only; cross-textbook promotion is forbidden.'},
     {book:'サンシャイン',grade:'1',section:'PROGRAM 5-3',english:'event',japanese:'出来事, 行事',basis:'v7 has event=出来事, 行事 in NH1 only; cross-textbook promotion is forbidden.'},
     {book:'ニューホライズン',grade:'2',section:'Unit 0',english:'house',japanese:'家',basis:'Canonical v7 has only the SS phrase the Opera House, not an NH cumulative standalone house row.'},
-    {book:'ニューホライズン',grade:'2',section:'Unit 4-1',english:'house',japanese:'家',basis:'Canonical v7 has only the SS phrase the Opera House, not an NH cumulative standalone house row.'}
+    {book:'ニューホライズン',grade:'2',section:'Unit 4-1',english:'house',japanese:'家',basis:'Canonical v7 has only the SS phrase the Opera House, not an NH cumulative standalone house row.'},
+    {book:'サンシャイン',grade:'1',section:'PROGRAM 7-3',english:'quokka',japanese:'クオッカ（動物の名前）',basis:'v7 canonical quokka=クオッカ(動物の名前), SS1 P7 PDF-order 9; current PROGRAM 7-3 use precedes the exact canonical subunit boundary.'},
+    {book:'サンシャイン',grade:'3',section:'PROGRAM 1-1',english:'bento',japanese:'弁当',basis:'No standalone bento row in canonical v7; culture/content-bearing local noun.'},
+    {book:'ニューホライズン',grade:'2',section:'Unit 5-2',english:'button',japanese:'ボタン',basis:'No standalone button row in canonical v7; object-specific local noun.'},
+    {book:'サンシャイン',grade:'3',section:'PROGRAM 5-2',english:'consumption',japanese:'消費',basis:'No standalone consumption row in canonical v7; topic-essential local noun.'},
+    {book:'ニューホライズン',grade:'3',section:'Unit 6-1',english:'donation',japanese:'寄付',basis:'No standalone donation row in canonical v7; topic-essential local noun.'},
+    {book:'ニューホライズン',grade:'3',section:'Unit 6-2',english:'donation',japanese:'寄付',basis:'No standalone donation row in canonical v7; topic-essential local noun.'},
+    {book:'ニューホライズン',grade:'3',section:'Unit 1-1',english:'Hokkaido',japanese:'北海道',basis:'No standalone Hokkaido row in canonical v7; explicit place name retained passage-locally rather than globally authorized.'},
+    {book:'サンシャイン',grade:'3',section:'PROGRAM 3-1',english:'kangaroo',japanese:'カンガルー',basis:'No standalone kangaroo row in canonical v7; animal/content-bearing local noun.'},
+    {book:'サンシャイン',grade:'3',section:'PROGRAM 3-1',english:'poster',japanese:'ポスター',basis:'v7 canonical poster=ポスター exists in NH1 only; cross-textbook promotion is forbidden.'},
+    {book:'ニューホライズン',grade:'3',section:'Unit 3-1',english:'remaining',japanese:'残りの',basis:'No standalone remain/remaining row in canonical v7; content-bearing local adjective.'},
+    {book:'ニューホライズン',grade:'3',section:'Unit 3-4',english:'remaining',japanese:'残りの',basis:'No standalone remain/remaining row in canonical v7; content-bearing local adjective.'}
   ];
   function pools(){return [window.V10_SUNSHINE_G1,window.V10_NEWHORIZON_G1,window.V10_PASSAGES_G2_SS,window.V10_PASSAGES_G2_NH,window.V10_PASSAGES_G3_SS,window.V10_PASSAGES_G3_NH].filter(Boolean);}
   function apply(){let added=0,seen=0;for(const d of defs){for(const pool of pools())for(const m of Object.values(pool||{})){if(!m||String(m.textbook)!==d.book||String(m.grade)!==d.grade||String(m.section)!==d.section)continue;seen++;m.notes=Array.isArray(m.notes)?m.notes:[];if(!m.notes.some(n=>n&&String(n.english||'').toLowerCase()===d.english.toLowerCase())){m.notes.push({english:d.english,japanese:d.japanese,basis:d.basis});added++;}}}window.V10_PASSAGE_LOCAL_NOTES_BATCH2={seen,added,definitions:defs.length};return {seen,added};}
