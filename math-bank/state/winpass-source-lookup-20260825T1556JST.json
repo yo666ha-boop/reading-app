@@ -1,0 +1,53 @@
+{
+  "project": "mikami-math-problem-bank",
+  "checked_at_jst": "2026-08-25T15:56:06+09:00",
+  "branch": "math-problem-bank-bootstrap",
+  "starting_head_actual": "109b1768adbff30c506e688e31aef22d2d637b86",
+  "expected_source": {
+    "name_family": "Winpass / winpassデータ",
+    "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+    "bytes": 8296042,
+    "crc_expected": "PASS",
+    "unique_docx_expected": 81,
+    "raw_slots_expected": 717
+  },
+  "searches": [
+    {
+      "provider": "GitHub repository actual",
+      "scope": "yo666ha-boop/reading-app branch math-problem-bank-bootstrap",
+      "terms": ["Winpass", "717", "question_offsets", "answer_offsets", "score_evidence", "source ZIP / DOCX material"],
+      "result": "No durable Winpass source ZIP/DOCX bytes or strict 717 record materialization found. Existing durable state only establishes structure/count identities and prior Standard/Jitsuren strict evidence."
+    },
+    {
+      "provider": "ChatGPT File Library",
+      "terms": ["exact SHA256 + 8296042 + Winpass ZIP", "winpassデータ 数学 ZIP", "Winpass 中学数学 81 DOCX 717"],
+      "result": "No matching Winpass source ZIP returned; returned files were unrelated."
+    },
+    {
+      "provider": "Google Drive",
+      "terms": ["29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf", "winpassデータ", "Winpass"],
+      "result": "No matching result returned."
+    }
+  ],
+  "ci_actual": {
+    "head": "109b1768adbff30c506e688e31aef22d2d637b86",
+    "commit_workflow_runs": 0,
+    "combined_status_contexts": 0,
+    "interpretation": "No CI PASS exists for this checkpoint-only head; prior zero-job failed run on parent lineage remains non-PASS evidence."
+  },
+  "main_actual": {
+    "head": "1f0cabf9bfcc4482f507e33188499bdbbd5bab57",
+    "touched_by_this_run": false
+  },
+  "strict_progress_after_lookup": {
+    "Standard": 317,
+    "実力錬成": 237,
+    "Winpass": 0,
+    "total": 554,
+    "pending": 717
+  },
+  "promotion_performed": false,
+  "reason_no_promotion": "The exact Winpass source bytes are required to truthfully derive ordered OOXML question/answer offsets or graphical answer assets, score evidence, required figure/asset identities and content-bound fingerprints. Fabricating these is forbidden by the strict completion rule.",
+  "exact_stop": "Immediately before Winpass strict materialization record 1 of 717.",
+  "next_start": "Re-read latest HEAD/checkpoint/CI. If exact Winpass ZIP bytes become accessible, verify SHA256/size/CRC and 81 unique DOCX, then strict-materialize records starting at Winpass record 1 with durable save, readback and validator PASS before incrementing strict count."
+}
