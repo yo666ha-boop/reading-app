@@ -34,7 +34,8 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: v10-vocab-grammar-notes-audit-${{ github.ref }}
+  # push and pull_request runs for the same work branch must never race each other.
+  group: v10-vocab-grammar-notes-audit-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
 
 permissions:
@@ -108,6 +109,7 @@ jobs:
           NODE
           cat VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt
       - name: Persist core reports before UI gate
+        if: github.event_name != 'pull_request'
         shell: bash
         run: |
           set -euo pipefail
@@ -116,7 +118,13 @@ jobs:
           git add -f v10_vocab_notes_candidate_report.json v10_vocab_notes_candidate_audit.log v10_grammar_chronology_candidate_report.json v10_grammar_chronology_candidate_audit.log VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt
           if ! git diff --cached --quiet; then
             git commit -m 'Record canonical v7 vocabulary and grammar audits [skip ci]'
-            git push origin HEAD:v10-vocab-grammar-notes-audit
+            pushed=0
+            for attempt in 1 2 3; do
+              if git push origin HEAD:v10-vocab-grammar-notes-audit; then pushed=1; break; fi
+              git fetch origin v10-vocab-grammar-notes-audit
+              git rebase origin/v10-vocab-grammar-notes-audit
+            done
+            test "$pushed" = 1
           fi
       - name: Verify v7 correction and gloss UI
         id: notes_ui
@@ -153,7 +161,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
       - name: Persist final UI evidence
-        if: always()
+        if: always() && github.event_name != 'pull_request'
         shell: bash
         run: |
           set -euo pipefail
@@ -162,5 +170,11 @@ jobs:
           git add -f VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt v10_notes_ui_test.log 2>/dev/null || true
           if ! git diff --cached --quiet; then
             git commit -m 'Record bounded notes UI audit [skip ci]'
-            git push origin HEAD:v10-vocab-grammar-notes-audit
+            pushed=0
+            for attempt in 1 2 3; do
+              if git push origin HEAD:v10-vocab-grammar-notes-audit; then pushed=1; break; fi
+              git fetch origin v10-vocab-grammar-notes-audit
+              git rebase origin/v10-vocab-grammar-notes-audit
+            done
+            test "$pushed" = 1
           fi
