@@ -50,5 +50,8 @@ async function waitFor(fn,ms=30000){const start=Date.now();while(Date.now()-star
  assert(bEnabled===168,`B-set enabled expected 168, got ${bEnabled}`);
  assert(errs.length===0,`browser errors: ${errs.join(' | ')}`);
  console.log(`STAGE2 FULL COVERAGE PASS (semantic runtime verified): ${summary.join(' / ')} / total=${total} / B-sets=${bEnabled}`);
- dom.window.close();
+ // The broad legacy harness leaves navigation microtasks queued in jsdom. Calling window.close()
+ // after a successful gate nulls its document before those microtasks drain and can turn a real
+ // PASS into a teardown-only TypeError. Exit only after all assertions and browser-error checks.
+ process.exit(0);
 })().catch(e=>{console.error(`STAGE2 FULL COVERAGE FAIL: ${e.stack||e}`);process.exit(1)});
