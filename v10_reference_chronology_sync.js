@@ -22,7 +22,11 @@
     {textbook:'サンシャイン',grade:'2',section:'PROGRAM 5-3',english:'idea',japanese:'考え'},
     {textbook:'サンシャイン',grade:'2',section:'PROGRAM 6-1',english:'idea',japanese:'考え'},
     {textbook:'サンシャイン',grade:'2',section:'PROGRAM 6-2',english:'idea',japanese:'考え'},
-    {textbook:'サンシャイン',grade:'2',section:'PROGRAM 6-3',english:'idea',japanese:'考え'}
+    {textbook:'サンシャイン',grade:'2',section:'PROGRAM 6-3',english:'idea',japanese:'考え'},
+    {textbook:'サンシャイン',grade:'2',section:'PROGRAM 7-2',english:'hamster',japanese:'ハムスター'},
+    {textbook:'サンシャイン',grade:'2',section:'PROGRAM 7-3',english:'hamster',japanese:'ハムスター'},
+    {textbook:'サンシャイン',grade:'3',section:'PROGRAM 5-1',english:'chocolate',japanese:'チョコレート'},
+    {textbook:'サンシャイン',grade:'3',section:'PROGRAM 5-2',english:'chocolate',japanese:'チョコレート'}
   ];
   const sections=new Set(Object.keys(legacyGreatBySection));
   const pools=()=>[g.V10_SUNSHINE_G1,g.V10_NEWHORIZON_G1,g.V10_PASSAGES_G2_SS,g.V10_PASSAGES_G2_NH,g.V10_PASSAGES_G3_SS,g.V10_PASSAGES_G3_NH].filter(Boolean);
