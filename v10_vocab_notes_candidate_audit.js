@@ -63,7 +63,7 @@ const IRREGULAR_BASE = new Map(Object.entries({
 }));
 
 const EXPLICIT_FUNCTION_TO_GRAMMAR = new Set(`a an the i me my mine you your yours he him his she her hers it its we us our ours they them their theirs this that these those who whose whom which what when where why how am is are was were be been being do does did doing have has had having can cannot could may might must shall should will would not no yes and or but so if because as than to of in on at by for from with about into over under before after during while through up down out off again then there here also too very more most less least some any many much few little each every all both either neither another other same own one two first second third`.split(/\s+/));
-const CONTRACTIONS_TO_GRAMMAR = new Set(["i'm","you're","he's","she's","it's","we're","they're","isn't","aren't","wasn't","weren't","don't","doesn't","didn't","can't","couldn't","won't","wouldn't","shouldn't","mustn't","i've","you've","we've","they've","hasn't","haven't","hadn't","i'll","you'll","he'll","she'll","we'll","they'll"]);
+const CONTRACTIONS_TO_GRAMMAR = new Set(["i'm","you're","he's","she's","it's","we're","they're","let's","isn't","aren't","wasn't","weren't","don't","doesn't","didn't","can't","couldn't","won't","wouldn't","shouldn't","mustn't","i've","you've","we've","they've","hasn't","haven't","hadn't","i'll","you'll","he'll","she'll","we'll","they'll"]);
 
 function sourceStrings(m, meta) {
   const out = [];
@@ -147,12 +147,20 @@ function classifyToken(v7, w, raw, cut, reviewedEvidence) {
     if (ELEMENTARY_WORDS.has(base)) return { kind:'MORPHOLOGY_TO_GRAMMAR', base, intro:null, evidence:{source:'elementary',fileId:ELEMENTARY_SOURCE.source.fileId,records:ELEMENTARY_SOURCE.source.records} };
   }
   if (ELEMENTARY_WORDS.has(w)) return { kind:'ELEMENTARY_LEXICAL_ALLOWED', evidence:{source:'elementary',fileId:ELEMENTARY_SOURCE.source.fileId,records:ELEMENTARY_SOURCE.source.records} };
-  const direct = introFor(v7, cut.code, w);
-  if (direct) return introAllowed(direct, cut) ? { kind:'V7_CHRONOLOGY_ALLOWED', intro:direct } : { kind:'FUTURE_V7_LEAK', intro:direct };
+
+  // When an inflected surface has an already-known v7 base, grammar chronology decides the
+  // surface form even if v7 later contains the exact inflection as a separate row. Otherwise
+  // forms such as saw/gives/days are falsely counted as future vocabulary.
   const bases = uniq([IRREGULAR_BASE.get(w), ...morphologyBases(w)].filter(Boolean));
   for (const base of bases) {
     const bi = introFor(v7, cut.code, base);
     if (bi && introAllowed(bi, cut)) return { kind:'MORPHOLOGY_TO_GRAMMAR', base, intro:bi };
+  }
+  const direct = introFor(v7, cut.code, w);
+  if (direct) return introAllowed(direct, cut) ? { kind:'V7_CHRONOLOGY_ALLOWED', intro:direct } : { kind:'FUTURE_V7_LEAK', intro:direct };
+  // A future base cannot be rescued by morphology: lexical knowledge of the base must exist first.
+  for (const base of bases) {
+    const bi = introFor(v7, cut.code, base);
     if (bi && !introAllowed(bi, cut)) return { kind:'FUTURE_V7_LEAK', intro:bi, base };
   }
   if (reviewedEvidence.has(w)) return { kind:'REVIEWED_EXPLICIT_ALLOWED', evidence:reviewedEvidence.get(w), intro:null };
@@ -179,6 +187,7 @@ function datasetCount(d) {
     const v7 = loadCanonicalV7();
     assert(morphologyBases('used').includes('use'), 'morphology regression: used -> use');
     assert(morphologyBases('using').includes('use'), 'morphology regression: using -> use');
+    assert(IRREGULAR_BASE.get('saw') === 'see', 'morphology regression: saw -> see');
     const browserErrors = [];
     const vc = new VirtualConsole();
     vc.on('jsdomError', e => browserErrors.push(String(e && e.message || e)));
