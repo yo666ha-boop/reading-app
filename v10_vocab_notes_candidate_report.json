@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-08-25T02:14:00.601Z",
+    "generatedAt": "2026-08-25T02:15:17.259Z",
     "passages": 168,
     "canonicalSource": {
       "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
@@ -18,22 +18,23 @@
     "counts": {
       "V7_CHRONOLOGY_ALLOWED": 10133,
       "ELEMENTARY_LEXICAL_ALLOWED": 3445,
-      "REVIEWED_EXPLICIT_ALLOWED": 775,
+      "EXPLICIT_PROPER_NAME_ALLOWED": 84,
+      "REVIEWED_EXPLICIT_ALLOWED": 760,
       "MORPHOLOGY_TO_GRAMMAR": 2505,
       "CONTRACTION_TO_GRAMMAR": 227,
       "EXPLICIT_FUNCTION_TO_GRAMMAR": 20701,
       "FUTURE_V7_LEAK": 1242,
-      "UNREGISTERED_V7": 1868,
+      "UNREGISTERED_V7": 1799,
       "UNREGISTERED_PROPER": 0
     },
     "notesPresent": 0,
     "missingGloss": 0,
     "mappingErrors": [],
     "runtimeBrowserErrors": [],
-    "uniqueUnresolved": 567,
-    "futureVocabLeakOccurrences": 3110,
+    "uniqueUnresolved": 563,
+    "futureVocabLeakOccurrences": 3041,
     "chronologyPass": false,
-    "rule": "Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology; short forms such as used/using are covered. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun."
+    "rule": "Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. Explicit proper-name allowances are honored only inside the current passage when allowedWords marks the row proper names and the actual token is capitalized; those names are never promoted into cumulative ordinary vocabulary. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun."
   },
   "unresolved": [
     {
@@ -118,31 +119,6 @@
         "ニューホライズン|1|Unit 8-3|sentence:9"
       ],
       "sectionCount": 8
-    },
-    {
-      "token": "ken",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 33,
-      "sections": [
-        "サンシャイン|3|PROGRAM 3-1",
-        "ニューホライズン|1|Unit 0"
-      ],
-      "examples": [
-        "サンシャイン|3|PROGRAM 3-1|sentence:4",
-        "サンシャイン|3|PROGRAM 3-1|sentence:9",
-        "サンシャイン|3|PROGRAM 3-1|slash:4",
-        "サンシャイン|3|PROGRAM 3-1|slash:9",
-        "サンシャイン|3|PROGRAM 3-1|A2.evidence",
-        "ニューホライズン|1|Unit 0|sentence:1",
-        "ニューホライズン|1|Unit 0|sentence:3",
-        "ニューホライズン|1|Unit 0|sentence:3",
-        "ニューホライズン|1|Unit 0|sentence:5",
-        "ニューホライズン|1|Unit 0|sentence:6",
-        "ニューホライズン|1|Unit 0|sentence:8",
-        "ニューホライズン|1|Unit 0|sentence:10"
-      ],
-      "sectionCount": 2
     },
     {
       "token": "idea",
@@ -389,30 +365,6 @@
         "ニューホライズン|2|Unit 2-4|sentence:4"
       ],
       "sectionCount": 3
-    },
-    {
-      "token": "mei",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 20,
-      "sections": [
-        "ニューホライズン|1|Unit 0"
-      ],
-      "examples": [
-        "ニューホライズン|1|Unit 0|sentence:2",
-        "ニューホライズン|1|Unit 0|sentence:4",
-        "ニューホライズン|1|Unit 0|sentence:4",
-        "ニューホライズン|1|Unit 0|sentence:7",
-        "ニューホライズン|1|Unit 0|sentence:9",
-        "ニューホライズン|1|Unit 0|slash:2",
-        "ニューホライズン|1|Unit 0|slash:4",
-        "ニューホライズン|1|Unit 0|slash:4",
-        "ニューホライズン|1|Unit 0|slash:7",
-        "ニューホライズン|1|Unit 0|slash:9",
-        "ニューホライズン|1|Unit 0|A1.answer",
-        "ニューホライズン|1|Unit 0|A1.evidence"
-      ],
-      "sectionCount": 1
     },
     {
       "token": "partner",
@@ -1137,30 +1089,6 @@
         "ニューホライズン|3|Unit 6-2|B2.evidence"
       ],
       "sectionCount": 2
-    },
-    {
-      "token": "hana",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 12,
-      "sections": [
-        "ニューホライズン|1|Unit 3-1"
-      ],
-      "examples": [
-        "ニューホライズン|1|Unit 3-1|sentence:2",
-        "ニューホライズン|1|Unit 3-1|sentence:3",
-        "ニューホライズン|1|Unit 3-1|slash:2",
-        "ニューホライズン|1|Unit 3-1|slash:3",
-        "ニューホライズン|1|Unit 3-1|A1.answer",
-        "ニューホライズン|1|Unit 3-1|A1.evidence",
-        "ニューホライズン|1|Unit 3-1|A2.prompt",
-        "ニューホライズン|1|Unit 3-1|A3.prompt",
-        "ニューホライズン|1|Unit 3-1|A4.prompt",
-        "ニューホライズン|1|Unit 3-1|B1.prompt",
-        "ニューホライズン|1|Unit 3-1|B2.prompt",
-        "ニューホライズン|1|Unit 3-1|B3.prompt"
-      ],
-      "sectionCount": 1
     },
     {
       "token": "hokkaido",
@@ -1932,6 +1860,28 @@
         "ニューホライズン|2|Unit 3-2|A4.evidence"
       ],
       "sectionCount": 3
+    },
+    {
+      "token": "ken",
+      "kind": "UNREGISTERED_V7",
+      "intro": null,
+      "occurrences": 9,
+      "sections": [
+        "サンシャイン|3|PROGRAM 3-1",
+        "ニューホライズン|2|Unit 3-4"
+      ],
+      "examples": [
+        "サンシャイン|3|PROGRAM 3-1|sentence:4",
+        "サンシャイン|3|PROGRAM 3-1|sentence:9",
+        "サンシャイン|3|PROGRAM 3-1|slash:4",
+        "サンシャイン|3|PROGRAM 3-1|slash:9",
+        "サンシャイン|3|PROGRAM 3-1|A2.evidence",
+        "ニューホライズン|2|Unit 3-4|sentence:13",
+        "ニューホライズン|2|Unit 3-4|slash:13",
+        "ニューホライズン|2|Unit 3-4|B4.answer",
+        "ニューホライズン|2|Unit 3-4|B4.evidence"
+      ],
+      "sectionCount": 2
     },
     {
       "token": "learn",
@@ -3232,25 +3182,6 @@
       "sectionCount": 1
     },
     {
-      "token": "leonardo",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 7,
-      "sections": [
-        "ニューホライズン|1|Unit 1-1"
-      ],
-      "examples": [
-        "ニューホライズン|1|Unit 1-1|sentence:2",
-        "ニューホライズン|1|Unit 1-1|slash:2",
-        "ニューホライズン|1|Unit 1-1|A1.prompt",
-        "ニューホライズン|1|Unit 1-1|A2.prompt",
-        "ニューホライズン|1|Unit 1-1|A3.prompt",
-        "ニューホライズン|1|Unit 1-1|B1.prompt",
-        "ニューホライズン|1|Unit 1-1|B2.prompt"
-      ],
-      "sectionCount": 1
-    },
-    {
       "token": "machine",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -4070,24 +4001,6 @@
         "ニューホライズン|1|Unit 8-1|A1.evidence"
       ],
       "sectionCount": 2
-    },
-    {
-      "token": "leo",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 6,
-      "sections": [
-        "ニューホライズン|1|Unit 1-1"
-      ],
-      "examples": [
-        "ニューホライズン|1|Unit 1-1|sentence:3",
-        "ニューホライズン|1|Unit 1-1|slash:3",
-        "ニューホライズン|1|Unit 1-1|A1.answer",
-        "ニューホライズン|1|Unit 1-1|A1.evidence",
-        "ニューホライズン|1|Unit 1-1|B1.answer",
-        "ニューホライズン|1|Unit 1-1|B1.evidence"
-      ],
-      "sectionCount": 1
     },
     {
       "token": "literacy",
@@ -5606,13 +5519,13 @@
       "intro": null,
       "occurrences": 4,
       "sections": [
-        "ニューホライズン|1|Unit 2-1"
+        "ニューホライズン|2|Unit 3-4"
       ],
       "examples": [
-        "ニューホライズン|1|Unit 2-1|sentence:1",
-        "ニューホライズン|1|Unit 2-1|slash:1",
-        "ニューホライズン|1|Unit 2-1|A1.prompt",
-        "ニューホライズン|1|Unit 2-1|A2.prompt"
+        "ニューホライズン|2|Unit 3-4|sentence:1",
+        "ニューホライズン|2|Unit 3-4|slash:1",
+        "ニューホライズン|2|Unit 3-4|B1.answer",
+        "ニューホライズン|2|Unit 3-4|B1.evidence"
       ],
       "sectionCount": 1
     },
@@ -11023,6 +10936,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 19,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 0,
       "cumulativeReviewedTokens": 19,
       "notes": 0,
@@ -11271,6 +11185,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 17,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 19,
       "cumulativeReviewedTokens": 26,
       "notes": 0,
@@ -11477,6 +11392,7 @@
         "subrank": 4
       },
       "localReviewedTokens": 27,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 26,
       "cumulativeReviewedTokens": 45,
       "notes": 0,
@@ -11852,6 +11768,7 @@
         "subrank": 5
       },
       "localReviewedTokens": 17,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 45,
       "cumulativeReviewedTokens": 52,
       "notes": 0,
@@ -12101,6 +12018,7 @@
         "subrank": 6
       },
       "localReviewedTokens": 23,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 52,
       "cumulativeReviewedTokens": 59,
       "notes": 0,
@@ -12332,6 +12250,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 28,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 59,
       "cumulativeReviewedTokens": 73,
       "notes": 0,
@@ -12591,6 +12510,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 28,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 73,
       "cumulativeReviewedTokens": 84,
       "notes": 0,
@@ -12778,6 +12698,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 45,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 84,
       "cumulativeReviewedTokens": 110,
       "notes": 0,
@@ -13049,6 +12970,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 31,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 110,
       "cumulativeReviewedTokens": 129,
       "notes": 0,
@@ -13311,6 +13233,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 28,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 129,
       "cumulativeReviewedTokens": 137,
       "notes": 0,
@@ -13549,6 +13472,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 36,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 137,
       "cumulativeReviewedTokens": 156,
       "notes": 0,
@@ -13922,6 +13846,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 35,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 156,
       "cumulativeReviewedTokens": 180,
       "notes": 0,
@@ -14193,6 +14118,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 29,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 180,
       "cumulativeReviewedTokens": 191,
       "notes": 0,
@@ -14463,6 +14389,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 37,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 191,
       "cumulativeReviewedTokens": 213,
       "notes": 0,
@@ -14778,6 +14705,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 23,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 213,
       "cumulativeReviewedTokens": 220,
       "notes": 0,
@@ -15100,6 +15028,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 36,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 220,
       "cumulativeReviewedTokens": 239,
       "notes": 0,
@@ -15414,6 +15343,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 44,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 239,
       "cumulativeReviewedTokens": 269,
       "notes": 0,
@@ -15678,6 +15608,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 24,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 269,
       "cumulativeReviewedTokens": 278,
       "notes": 0,
@@ -15931,6 +15862,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 27,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 278,
       "cumulativeReviewedTokens": 282,
       "notes": 0,
@@ -16243,6 +16175,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 48,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 282,
       "cumulativeReviewedTokens": 305,
       "notes": 0,
@@ -16652,6 +16585,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 25,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 305,
       "cumulativeReviewedTokens": 311,
       "notes": 0,
@@ -16984,6 +16918,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 33,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 311,
       "cumulativeReviewedTokens": 320,
       "notes": 0,
@@ -17256,6 +17191,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 52,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 320,
       "cumulativeReviewedTokens": 347,
       "notes": 0,
@@ -17559,6 +17495,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 38,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 347,
       "cumulativeReviewedTokens": 365,
       "notes": 0,
@@ -17951,6 +17888,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 35,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 365,
       "cumulativeReviewedTokens": 376,
       "notes": 0,
@@ -18357,6 +18295,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 51,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 376,
       "cumulativeReviewedTokens": 400,
       "notes": 0,
@@ -18734,6 +18673,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 31,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 400,
       "cumulativeReviewedTokens": 413,
       "notes": 0,
@@ -19057,6 +18997,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 31,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 413,
       "cumulativeReviewedTokens": 420,
       "notes": 0,
@@ -19355,6 +19296,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 46,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 420,
       "cumulativeReviewedTokens": 443,
       "notes": 0,
@@ -19764,6 +19706,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 45,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 443,
       "cumulativeReviewedTokens": 462,
       "notes": 0,
@@ -20158,6 +20101,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 39,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 462,
       "cumulativeReviewedTokens": 475,
       "notes": 0,
@@ -20438,6 +20382,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 34,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 475,
       "cumulativeReviewedTokens": 485,
       "notes": 0,
@@ -20732,6 +20677,7 @@
         "subrank": 4
       },
       "localReviewedTokens": 63,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 485,
       "cumulativeReviewedTokens": 513,
       "notes": 0,
@@ -21150,6 +21096,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 33,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 513,
       "cumulativeReviewedTokens": 526,
       "notes": 0,
@@ -21490,6 +21437,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 34,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 526,
       "cumulativeReviewedTokens": 528,
       "notes": 0,
@@ -21806,6 +21754,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 37,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 528,
       "cumulativeReviewedTokens": 537,
       "notes": 0,
@@ -22058,6 +22007,7 @@
         "subrank": 8
       },
       "localReviewedTokens": 69,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 537,
       "cumulativeReviewedTokens": 577,
       "notes": 0,
@@ -22371,6 +22321,7 @@
         "subrank": 8
       },
       "localReviewedTokens": 43,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 577,
       "cumulativeReviewedTokens": 593,
       "notes": 0,
@@ -22730,6 +22681,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 28,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 593,
       "cumulativeReviewedTokens": 603,
       "notes": 0,
@@ -23072,6 +23024,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 34,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 603,
       "cumulativeReviewedTokens": 619,
       "notes": 0,
@@ -23516,6 +23469,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 38,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 619,
       "cumulativeReviewedTokens": 629,
       "notes": 0,
@@ -23946,6 +23900,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 32,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 629,
       "cumulativeReviewedTokens": 645,
       "notes": 0,
@@ -24339,6 +24294,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 31,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 645,
       "cumulativeReviewedTokens": 655,
       "notes": 0,
@@ -24737,6 +24693,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 40,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 655,
       "cumulativeReviewedTokens": 672,
       "notes": 0,
@@ -25130,6 +25087,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 29,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 672,
       "cumulativeReviewedTokens": 679,
       "notes": 0,
@@ -25463,6 +25421,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 36,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 679,
       "cumulativeReviewedTokens": 686,
       "notes": 0,
@@ -25836,6 +25795,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 33,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 686,
       "cumulativeReviewedTokens": 698,
       "notes": 0,
@@ -26169,6 +26129,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 26,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 698,
       "cumulativeReviewedTokens": 708,
       "notes": 0,
@@ -26521,6 +26482,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 31,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 708,
       "cumulativeReviewedTokens": 716,
       "notes": 0,
@@ -26952,6 +26914,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 39,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 716,
       "cumulativeReviewedTokens": 726,
       "notes": 0,
@@ -27381,6 +27344,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 31,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 726,
       "cumulativeReviewedTokens": 737,
       "notes": 0,
@@ -27921,6 +27885,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 40,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 737,
       "cumulativeReviewedTokens": 751,
       "notes": 0,
@@ -28403,6 +28368,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 41,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 751,
       "cumulativeReviewedTokens": 767,
       "notes": 0,
@@ -28838,6 +28804,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 29,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 767,
       "cumulativeReviewedTokens": 778,
       "notes": 0,
@@ -29315,6 +29282,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 43,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 778,
       "cumulativeReviewedTokens": 796,
       "notes": 0,
@@ -29758,6 +29726,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 53,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 796,
       "cumulativeReviewedTokens": 818,
       "notes": 0,
@@ -30200,6 +30169,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 60,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 818,
       "cumulativeReviewedTokens": 842,
       "notes": 0,
@@ -30689,6 +30659,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 55,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 842,
       "cumulativeReviewedTokens": 846,
       "notes": 0,
@@ -31182,6 +31153,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 31,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 846,
       "cumulativeReviewedTokens": 857,
       "notes": 0,
@@ -31599,6 +31571,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 49,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 857,
       "cumulativeReviewedTokens": 880,
       "notes": 0,
@@ -31989,6 +31962,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 58,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 880,
       "cumulativeReviewedTokens": 902,
       "notes": 0,
@@ -32345,6 +32319,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 62,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 902,
       "cumulativeReviewedTokens": 905,
       "notes": 0,
@@ -32780,6 +32755,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 27,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 905,
       "cumulativeReviewedTokens": 912,
       "notes": 0,
@@ -33325,6 +33301,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 30,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 912,
       "cumulativeReviewedTokens": 920,
       "notes": 0,
@@ -33876,6 +33853,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 46,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 920,
       "cumulativeReviewedTokens": 936,
       "notes": 0,
@@ -34455,6 +34433,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 34,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 936,
       "cumulativeReviewedTokens": 948,
       "notes": 0,
@@ -34859,6 +34838,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 38,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 948,
       "cumulativeReviewedTokens": 957,
       "notes": 0,
@@ -35332,6 +35312,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 43,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 957,
       "cumulativeReviewedTokens": 972,
       "notes": 0,
@@ -35840,6 +35821,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 34,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 972,
       "cumulativeReviewedTokens": 982,
       "notes": 0,
@@ -36358,6 +36340,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 40,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 982,
       "cumulativeReviewedTokens": 1001,
       "notes": 0,
@@ -37086,6 +37069,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 35,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 1001,
       "cumulativeReviewedTokens": 1014,
       "notes": 0,
@@ -37673,6 +37657,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 29,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 1014,
       "cumulativeReviewedTokens": 1021,
       "notes": 0,
@@ -38347,6 +38332,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 30,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 1021,
       "cumulativeReviewedTokens": 1024,
       "notes": 0,
@@ -38908,6 +38894,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 69,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 1024,
       "cumulativeReviewedTokens": 1049,
       "notes": 0,
@@ -39617,6 +39604,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 33,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 1049,
       "cumulativeReviewedTokens": 1061,
       "notes": 0,
@@ -40218,6 +40206,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 34,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 1061,
       "cumulativeReviewedTokens": 1083,
       "notes": 0,
@@ -40858,6 +40847,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 47,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 1083,
       "cumulativeReviewedTokens": 1106,
       "notes": 0,
@@ -41387,6 +41377,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 43,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 1106,
       "cumulativeReviewedTokens": 1123,
       "notes": 0,
@@ -41972,6 +41963,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 34,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 1123,
       "cumulativeReviewedTokens": 1136,
       "notes": 0,
@@ -42743,6 +42735,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 39,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 1136,
       "cumulativeReviewedTokens": 1148,
       "notes": 0,
@@ -43364,6 +43357,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 38,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 1148,
       "cumulativeReviewedTokens": 1163,
       "notes": 0,
@@ -43944,6 +43938,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 62,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 1163,
       "cumulativeReviewedTokens": 1179,
       "notes": 0,
@@ -44620,6 +44615,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 62,
+      "localProperNameTokens": 0,
       "priorReviewedTokens": 1179,
       "cumulativeReviewedTokens": 1201,
       "notes": 0,
@@ -45204,49 +45200,12 @@
         "pdf": 2,
         "subrank": 9
       },
-      "localReviewedTokens": 18,
+      "localReviewedTokens": 16,
+      "localProperNameTokens": 2,
       "priorReviewedTokens": 0,
-      "cumulativeReviewedTokens": 18,
+      "cumulativeReviewedTokens": 16,
       "notes": 0,
       "candidates": [
-        {
-          "token": "ken",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:1",
-            "sentence:3",
-            "sentence:3",
-            "sentence:5",
-            "sentence:6",
-            "sentence:8",
-            "sentence:10",
-            "slash:1",
-            "slash:3",
-            "slash:3"
-          ]
-        },
-        {
-          "token": "mei",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:2",
-            "sentence:4",
-            "sentence:4",
-            "sentence:7",
-            "sentence:9",
-            "slash:2",
-            "slash:4",
-            "slash:4",
-            "slash:7",
-            "slash:9"
-          ]
-        },
         {
           "token": "hi",
           "kind": "UNREGISTERED_V7",
@@ -45397,9 +45356,10 @@
         "pdf": 3,
         "subrank": 1
       },
-      "localReviewedTokens": 27,
-      "priorReviewedTokens": 18,
-      "cumulativeReviewedTokens": 38,
+      "localReviewedTokens": 25,
+      "localProperNameTokens": 2,
+      "priorReviewedTokens": 16,
+      "cumulativeReviewedTokens": 34,
       "notes": 0,
       "candidates": [
         {
@@ -45438,22 +45398,6 @@
           ]
         },
         {
-          "token": "leonardo",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:2",
-            "slash:2",
-            "A1.prompt",
-            "A2.prompt",
-            "A3.prompt",
-            "B1.prompt",
-            "B2.prompt"
-          ]
-        },
-        {
           "token": "me",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -45463,21 +45407,6 @@
             "sentence:3",
             "slash:3",
             "A1.evidence",
-            "B1.evidence"
-          ]
-        },
-        {
-          "token": "leo",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:3",
-            "slash:3",
-            "A1.answer",
-            "A1.evidence",
-            "B1.answer",
             "B1.evidence"
           ]
         },
@@ -45613,8 +45542,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 23,
-      "priorReviewedTokens": 38,
-      "cumulativeReviewedTokens": 54,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 34,
+      "cumulativeReviewedTokens": 50,
       "notes": 0,
       "candidates": [
         {
@@ -45872,8 +45802,9 @@
         "subrank": 3
       },
       "localReviewedTokens": 30,
-      "priorReviewedTokens": 54,
-      "cumulativeReviewedTokens": 71,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 50,
+      "cumulativeReviewedTokens": 67,
       "notes": 0,
       "candidates": [
         {
@@ -46213,9 +46144,10 @@
         "pdf": 4,
         "subrank": 1
       },
-      "localReviewedTokens": 27,
-      "priorReviewedTokens": 71,
-      "cumulativeReviewedTokens": 90,
+      "localReviewedTokens": 25,
+      "localProperNameTokens": 2,
+      "priorReviewedTokens": 67,
+      "cumulativeReviewedTokens": 85,
       "notes": 0,
       "candidates": [
         {
@@ -46244,19 +46176,6 @@
             "slash:1",
             "slash:5",
             "slash:11"
-          ]
-        },
-        {
-          "token": "brown",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:1",
-            "slash:1",
-            "A1.prompt",
-            "A2.prompt"
           ]
         },
         {
@@ -46446,8 +46365,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 25,
-      "priorReviewedTokens": 90,
-      "cumulativeReviewedTokens": 103,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 85,
+      "cumulativeReviewedTokens": 98,
       "notes": 0,
       "candidates": [
         {
@@ -46685,8 +46605,9 @@
         "subrank": 3
       },
       "localReviewedTokens": 20,
-      "priorReviewedTokens": 103,
-      "cumulativeReviewedTokens": 115,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 98,
+      "cumulativeReviewedTokens": 110,
       "notes": 0,
       "candidates": [
         {
@@ -46887,9 +46808,10 @@
         "pdf": 5,
         "subrank": 1
       },
-      "localReviewedTokens": 28,
-      "priorReviewedTokens": 115,
-      "cumulativeReviewedTokens": 129,
+      "localReviewedTokens": 27,
+      "localProperNameTokens": 1,
+      "priorReviewedTokens": 110,
+      "cumulativeReviewedTokens": 123,
       "notes": 0,
       "candidates": [
         {
@@ -46948,25 +46870,6 @@
             "A1.evidence",
             "B4.answer",
             "B4.evidence"
-          ]
-        },
-        {
-          "token": "hana",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:2",
-            "sentence:3",
-            "slash:2",
-            "slash:3",
-            "A1.answer",
-            "A1.evidence",
-            "A2.prompt",
-            "A3.prompt",
-            "A4.prompt",
-            "B1.prompt"
           ]
         },
         {
@@ -47127,8 +47030,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 18,
-      "priorReviewedTokens": 129,
-      "cumulativeReviewedTokens": 134,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 123,
+      "cumulativeReviewedTokens": 128,
       "notes": 0,
       "candidates": [
         {
@@ -47378,8 +47282,9 @@
         "subrank": 3
       },
       "localReviewedTokens": 27,
-      "priorReviewedTokens": 134,
-      "cumulativeReviewedTokens": 143,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 128,
+      "cumulativeReviewedTokens": 137,
       "notes": 0,
       "candidates": [
         {
@@ -47560,8 +47465,9 @@
         "subrank": 1
       },
       "localReviewedTokens": 23,
-      "priorReviewedTokens": 143,
-      "cumulativeReviewedTokens": 151,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 137,
+      "cumulativeReviewedTokens": 145,
       "notes": 0,
       "candidates": [
         {
@@ -47818,8 +47724,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 21,
-      "priorReviewedTokens": 151,
-      "cumulativeReviewedTokens": 155,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 145,
+      "cumulativeReviewedTokens": 149,
       "notes": 0,
       "candidates": [
         {
@@ -47963,8 +47870,9 @@
         "subrank": 3
       },
       "localReviewedTokens": 29,
-      "priorReviewedTokens": 155,
-      "cumulativeReviewedTokens": 167,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 149,
+      "cumulativeReviewedTokens": 161,
       "notes": 0,
       "candidates": [
         {
@@ -48218,8 +48126,9 @@
         "subrank": 1
       },
       "localReviewedTokens": 27,
-      "priorReviewedTokens": 167,
-      "cumulativeReviewedTokens": 180,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 161,
+      "cumulativeReviewedTokens": 174,
       "notes": 0,
       "candidates": [
         {
@@ -48473,8 +48382,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 23,
-      "priorReviewedTokens": 180,
-      "cumulativeReviewedTokens": 189,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 174,
+      "cumulativeReviewedTokens": 183,
       "notes": 0,
       "candidates": [
         {
@@ -48770,8 +48680,9 @@
         "subrank": 6
       },
       "localReviewedTokens": 34,
-      "priorReviewedTokens": 189,
-      "cumulativeReviewedTokens": 201,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 183,
+      "cumulativeReviewedTokens": 195,
       "notes": 0,
       "candidates": [
         {
@@ -49008,8 +48919,9 @@
         "subrank": 1
       },
       "localReviewedTokens": 28,
-      "priorReviewedTokens": 201,
-      "cumulativeReviewedTokens": 209,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 195,
+      "cumulativeReviewedTokens": 203,
       "notes": 0,
       "candidates": [
         {
@@ -49378,8 +49290,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 21,
-      "priorReviewedTokens": 209,
-      "cumulativeReviewedTokens": 217,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 203,
+      "cumulativeReviewedTokens": 211,
       "notes": 0,
       "candidates": [
         {
@@ -49652,8 +49565,9 @@
         "subrank": 6
       },
       "localReviewedTokens": 23,
-      "priorReviewedTokens": 217,
-      "cumulativeReviewedTokens": 225,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 211,
+      "cumulativeReviewedTokens": 219,
       "notes": 0,
       "candidates": [
         {
@@ -49920,8 +49834,9 @@
         "subrank": 1
       },
       "localReviewedTokens": 27,
-      "priorReviewedTokens": 225,
-      "cumulativeReviewedTokens": 231,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 219,
+      "cumulativeReviewedTokens": 225,
       "notes": 0,
       "candidates": [
         {
@@ -50149,8 +50064,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 29,
-      "priorReviewedTokens": 231,
-      "cumulativeReviewedTokens": 237,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 225,
+      "cumulativeReviewedTokens": 231,
       "notes": 0,
       "candidates": [
         {
@@ -50396,8 +50312,9 @@
         "subrank": 6
       },
       "localReviewedTokens": 26,
-      "priorReviewedTokens": 237,
-      "cumulativeReviewedTokens": 246,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 231,
+      "cumulativeReviewedTokens": 240,
       "notes": 0,
       "candidates": [
         {
@@ -50632,8 +50549,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 28,
-      "priorReviewedTokens": 246,
-      "cumulativeReviewedTokens": 255,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 240,
+      "cumulativeReviewedTokens": 249,
       "notes": 0,
       "candidates": [
         {
@@ -50900,8 +50818,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 23,
-      "priorReviewedTokens": 255,
-      "cumulativeReviewedTokens": 262,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 249,
+      "cumulativeReviewedTokens": 256,
       "notes": 0,
       "candidates": [
         {
@@ -51125,8 +51044,9 @@
         "subrank": 6
       },
       "localReviewedTokens": 32,
-      "priorReviewedTokens": 262,
-      "cumulativeReviewedTokens": 277,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 256,
+      "cumulativeReviewedTokens": 271,
       "notes": 0,
       "candidates": [
         {
@@ -51366,8 +51286,9 @@
         "subrank": 1
       },
       "localReviewedTokens": 26,
-      "priorReviewedTokens": 277,
-      "cumulativeReviewedTokens": 289,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 271,
+      "cumulativeReviewedTokens": 283,
       "notes": 0,
       "candidates": [
         {
@@ -51633,8 +51554,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 30,
-      "priorReviewedTokens": 289,
-      "cumulativeReviewedTokens": 300,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 283,
+      "cumulativeReviewedTokens": 294,
       "notes": 0,
       "candidates": [
         {
@@ -51951,8 +51873,9 @@
         "subrank": 6
       },
       "localReviewedTokens": 31,
-      "priorReviewedTokens": 300,
-      "cumulativeReviewedTokens": 312,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 294,
+      "cumulativeReviewedTokens": 306,
       "notes": 0,
       "candidates": [
         {
@@ -52278,8 +52201,9 @@
         "subrank": 1
       },
       "localReviewedTokens": 22,
-      "priorReviewedTokens": 312,
-      "cumulativeReviewedTokens": 326,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 306,
+      "cumulativeReviewedTokens": 320,
       "notes": 0,
       "candidates": [
         {
@@ -52541,8 +52465,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 23,
-      "priorReviewedTokens": 326,
-      "cumulativeReviewedTokens": 337,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 320,
+      "cumulativeReviewedTokens": 331,
       "notes": 0,
       "candidates": [
         {
@@ -52961,8 +52886,9 @@
         "subrank": 6
       },
       "localReviewedTokens": 23,
-      "priorReviewedTokens": 337,
-      "cumulativeReviewedTokens": 351,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 331,
+      "cumulativeReviewedTokens": 345,
       "notes": 0,
       "candidates": [
         {
@@ -53186,8 +53112,9 @@
         "subrank": 9
       },
       "localReviewedTokens": 28,
-      "priorReviewedTokens": 351,
-      "cumulativeReviewedTokens": 365,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 345,
+      "cumulativeReviewedTokens": 359,
       "notes": 0,
       "candidates": [
         {
@@ -53578,8 +53505,9 @@
         "subrank": 1
       },
       "localReviewedTokens": 28,
-      "priorReviewedTokens": 365,
-      "cumulativeReviewedTokens": 379,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 359,
+      "cumulativeReviewedTokens": 373,
       "notes": 0,
       "candidates": [
         {
@@ -53905,8 +53833,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 23,
-      "priorReviewedTokens": 379,
-      "cumulativeReviewedTokens": 389,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 373,
+      "cumulativeReviewedTokens": 383,
       "notes": 0,
       "candidates": [
         {
@@ -54233,8 +54162,9 @@
         "subrank": 4
       },
       "localReviewedTokens": 32,
-      "priorReviewedTokens": 389,
-      "cumulativeReviewedTokens": 407,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 383,
+      "cumulativeReviewedTokens": 401,
       "notes": 0,
       "candidates": [
         {
@@ -54594,8 +54524,9 @@
         "subrank": 5
       },
       "localReviewedTokens": 29,
-      "priorReviewedTokens": 407,
-      "cumulativeReviewedTokens": 422,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 401,
+      "cumulativeReviewedTokens": 416,
       "notes": 0,
       "candidates": [
         {
@@ -55025,8 +54956,9 @@
         "subrank": 1
       },
       "localReviewedTokens": 28,
-      "priorReviewedTokens": 422,
-      "cumulativeReviewedTokens": 434,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 416,
+      "cumulativeReviewedTokens": 428,
       "notes": 0,
       "candidates": [
         {
@@ -55386,8 +55318,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 29,
-      "priorReviewedTokens": 434,
-      "cumulativeReviewedTokens": 444,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 428,
+      "cumulativeReviewedTokens": 438,
       "notes": 0,
       "candidates": [
         {
@@ -55821,8 +55754,9 @@
         "subrank": 4
       },
       "localReviewedTokens": 33,
-      "priorReviewedTokens": 444,
-      "cumulativeReviewedTokens": 454,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 438,
+      "cumulativeReviewedTokens": 448,
       "notes": 0,
       "candidates": [
         {
@@ -56225,8 +56159,9 @@
         "subrank": 5
       },
       "localReviewedTokens": 33,
-      "priorReviewedTokens": 454,
-      "cumulativeReviewedTokens": 467,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 448,
+      "cumulativeReviewedTokens": 461,
       "notes": 0,
       "candidates": [
         {
@@ -56781,8 +56716,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 28,
-      "priorReviewedTokens": 467,
-      "cumulativeReviewedTokens": 481,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 461,
+      "cumulativeReviewedTokens": 475,
       "notes": 0,
       "candidates": [
         {
@@ -57213,8 +57149,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 34,
-      "priorReviewedTokens": 481,
-      "cumulativeReviewedTokens": 483,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 475,
+      "cumulativeReviewedTokens": 477,
       "notes": 0,
       "candidates": [
         {
@@ -57822,8 +57759,9 @@
         "subrank": 4
       },
       "localReviewedTokens": 31,
-      "priorReviewedTokens": 483,
-      "cumulativeReviewedTokens": 496,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 477,
+      "cumulativeReviewedTokens": 490,
       "notes": 0,
       "candidates": [
         {
@@ -58312,10 +58250,24 @@
         "subrank": 5
       },
       "localReviewedTokens": 33,
-      "priorReviewedTokens": 496,
-      "cumulativeReviewedTokens": 512,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 490,
+      "cumulativeReviewedTokens": 506,
       "notes": 0,
       "candidates": [
+        {
+          "token": "brown",
+          "kind": "UNREGISTERED_V7",
+          "base": null,
+          "intro": null,
+          "evidence": null,
+          "locations": [
+            "sentence:1",
+            "slash:1",
+            "B1.answer",
+            "B1.evidence"
+          ]
+        },
         {
           "token": "you",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
@@ -58694,6 +58646,19 @@
           ]
         },
         {
+          "token": "ken",
+          "kind": "UNREGISTERED_V7",
+          "base": null,
+          "intro": null,
+          "evidence": null,
+          "locations": [
+            "sentence:13",
+            "slash:13",
+            "B4.answer",
+            "B4.evidence"
+          ]
+        },
+        {
           "token": "yes",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -58729,8 +58694,9 @@
         "subrank": 1
       },
       "localReviewedTokens": 23,
-      "priorReviewedTokens": 512,
-      "cumulativeReviewedTokens": 523,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 506,
+      "cumulativeReviewedTokens": 517,
       "notes": 0,
       "candidates": [
         {
@@ -59275,8 +59241,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 26,
-      "priorReviewedTokens": 523,
-      "cumulativeReviewedTokens": 528,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 517,
+      "cumulativeReviewedTokens": 522,
       "notes": 0,
       "candidates": [
         {
@@ -59719,8 +59686,9 @@
         "subrank": 4
       },
       "localReviewedTokens": 53,
-      "priorReviewedTokens": 528,
-      "cumulativeReviewedTokens": 554,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 522,
+      "cumulativeReviewedTokens": 548,
       "notes": 0,
       "candidates": [
         {
@@ -60183,8 +60151,9 @@
         "subrank": 5
       },
       "localReviewedTokens": 45,
-      "priorReviewedTokens": 554,
-      "cumulativeReviewedTokens": 555,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 548,
+      "cumulativeReviewedTokens": 549,
       "notes": 0,
       "candidates": [
         {
@@ -60830,8 +60799,9 @@
         "subrank": 1
       },
       "localReviewedTokens": 29,
-      "priorReviewedTokens": 555,
-      "cumulativeReviewedTokens": 570,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 549,
+      "cumulativeReviewedTokens": 564,
       "notes": 0,
       "candidates": [
         {
@@ -61388,8 +61358,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 34,
-      "priorReviewedTokens": 570,
-      "cumulativeReviewedTokens": 576,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 564,
+      "cumulativeReviewedTokens": 570,
       "notes": 0,
       "candidates": [
         {
@@ -62005,8 +61976,9 @@
         "subrank": 4
       },
       "localReviewedTokens": 34,
-      "priorReviewedTokens": 576,
-      "cumulativeReviewedTokens": 589,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 570,
+      "cumulativeReviewedTokens": 583,
       "notes": 0,
       "candidates": [
         {
@@ -62566,8 +62538,9 @@
         "subrank": 5
       },
       "localReviewedTokens": 37,
-      "priorReviewedTokens": 589,
-      "cumulativeReviewedTokens": 602,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 583,
+      "cumulativeReviewedTokens": 596,
       "notes": 0,
       "candidates": [
         {
@@ -63117,8 +63090,9 @@
         "subrank": 1
       },
       "localReviewedTokens": 25,
-      "priorReviewedTokens": 602,
-      "cumulativeReviewedTokens": 609,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 596,
+      "cumulativeReviewedTokens": 603,
       "notes": 0,
       "candidates": [
         {
@@ -63660,8 +63634,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 28,
-      "priorReviewedTokens": 609,
-      "cumulativeReviewedTokens": 614,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 603,
+      "cumulativeReviewedTokens": 608,
       "notes": 0,
       "candidates": [
         {
@@ -64171,8 +64146,9 @@
         "subrank": 4
       },
       "localReviewedTokens": 39,
-      "priorReviewedTokens": 614,
-      "cumulativeReviewedTokens": 623,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 608,
+      "cumulativeReviewedTokens": 617,
       "notes": 0,
       "candidates": [
         {
@@ -64637,8 +64613,9 @@
         "subrank": 5
       },
       "localReviewedTokens": 40,
-      "priorReviewedTokens": 623,
-      "cumulativeReviewedTokens": 638,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 617,
+      "cumulativeReviewedTokens": 632,
       "notes": 0,
       "candidates": [
         {
@@ -65237,8 +65214,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 39,
-      "priorReviewedTokens": 638,
-      "cumulativeReviewedTokens": 653,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 632,
+      "cumulativeReviewedTokens": 647,
       "notes": 0,
       "candidates": [
         {
@@ -65966,8 +65944,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 37,
-      "priorReviewedTokens": 653,
-      "cumulativeReviewedTokens": 665,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 647,
+      "cumulativeReviewedTokens": 659,
       "notes": 0,
       "candidates": [
         {
@@ -66488,8 +66467,9 @@
         "subrank": 4
       },
       "localReviewedTokens": 50,
-      "priorReviewedTokens": 665,
-      "cumulativeReviewedTokens": 685,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 659,
+      "cumulativeReviewedTokens": 679,
       "notes": 0,
       "candidates": [
         {
@@ -67002,8 +66982,9 @@
         "subrank": 5
       },
       "localReviewedTokens": 52,
-      "priorReviewedTokens": 685,
-      "cumulativeReviewedTokens": 703,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 679,
+      "cumulativeReviewedTokens": 697,
       "notes": 0,
       "candidates": [
         {
@@ -67615,8 +67596,9 @@
         "subrank": 9
       },
       "localReviewedTokens": 31,
-      "priorReviewedTokens": 703,
-      "cumulativeReviewedTokens": 714,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 697,
+      "cumulativeReviewedTokens": 708,
       "notes": 0,
       "candidates": [
         {
@@ -68321,8 +68303,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 32,
-      "priorReviewedTokens": 714,
-      "cumulativeReviewedTokens": 725,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 708,
+      "cumulativeReviewedTokens": 719,
       "notes": 0,
       "candidates": [
         {
@@ -68874,8 +68857,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 33,
-      "priorReviewedTokens": 725,
-      "cumulativeReviewedTokens": 733,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 719,
+      "cumulativeReviewedTokens": 727,
       "notes": 0,
       "candidates": [
         {
@@ -69573,8 +69557,9 @@
         "subrank": 4
       },
       "localReviewedTokens": 40,
-      "priorReviewedTokens": 733,
-      "cumulativeReviewedTokens": 747,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 727,
+      "cumulativeReviewedTokens": 741,
       "notes": 0,
       "candidates": [
         {
@@ -70271,8 +70256,9 @@
         "subrank": 5
       },
       "localReviewedTokens": 44,
-      "priorReviewedTokens": 747,
-      "cumulativeReviewedTokens": 763,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 741,
+      "cumulativeReviewedTokens": 757,
       "notes": 0,
       "candidates": [
         {
@@ -71091,8 +71077,9 @@
         "subrank": 1
       },
       "localReviewedTokens": 27,
-      "priorReviewedTokens": 763,
-      "cumulativeReviewedTokens": 772,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 757,
+      "cumulativeReviewedTokens": 766,
       "notes": 0,
       "candidates": [
         {
@@ -71769,8 +71756,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 33,
-      "priorReviewedTokens": 772,
-      "cumulativeReviewedTokens": 778,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 766,
+      "cumulativeReviewedTokens": 772,
       "notes": 0,
       "candidates": [
         {
@@ -72574,8 +72562,9 @@
         "subrank": 4
       },
       "localReviewedTokens": 35,
-      "priorReviewedTokens": 778,
-      "cumulativeReviewedTokens": 789,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 772,
+      "cumulativeReviewedTokens": 783,
       "notes": 0,
       "candidates": [
         {
@@ -73300,8 +73289,9 @@
         "subrank": 5
       },
       "localReviewedTokens": 32,
-      "priorReviewedTokens": 789,
-      "cumulativeReviewedTokens": 799,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 783,
+      "cumulativeReviewedTokens": 793,
       "notes": 0,
       "candidates": [
         {
@@ -74138,8 +74128,9 @@
         "subrank": 1
       },
       "localReviewedTokens": 31,
-      "priorReviewedTokens": 799,
-      "cumulativeReviewedTokens": 808,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 793,
+      "cumulativeReviewedTokens": 802,
       "notes": 0,
       "candidates": [
         {
@@ -74846,8 +74837,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 25,
-      "priorReviewedTokens": 808,
-      "cumulativeReviewedTokens": 810,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 802,
+      "cumulativeReviewedTokens": 804,
       "notes": 0,
       "candidates": [
         {
@@ -75490,8 +75482,9 @@
         "subrank": 4
       },
       "localReviewedTokens": 38,
-      "priorReviewedTokens": 810,
-      "cumulativeReviewedTokens": 822,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 804,
+      "cumulativeReviewedTokens": 816,
       "notes": 0,
       "candidates": [
         {
@@ -76331,8 +76324,9 @@
         "subrank": 5
       },
       "localReviewedTokens": 40,
-      "priorReviewedTokens": 822,
-      "cumulativeReviewedTokens": 837,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 816,
+      "cumulativeReviewedTokens": 831,
       "notes": 0,
       "candidates": [
         {
@@ -77125,8 +77119,9 @@
         "subrank": 1
       },
       "localReviewedTokens": 35,
-      "priorReviewedTokens": 837,
-      "cumulativeReviewedTokens": 846,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 831,
+      "cumulativeReviewedTokens": 840,
       "notes": 0,
       "candidates": [
         {
@@ -77815,8 +77810,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 28,
-      "priorReviewedTokens": 846,
-      "cumulativeReviewedTokens": 855,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 840,
+      "cumulativeReviewedTokens": 849,
       "notes": 0,
       "candidates": [
         {
@@ -78473,8 +78469,9 @@
         "subrank": 4
       },
       "localReviewedTokens": 36,
-      "priorReviewedTokens": 855,
-      "cumulativeReviewedTokens": 864,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 849,
+      "cumulativeReviewedTokens": 858,
       "notes": 0,
       "candidates": [
         {
@@ -79166,8 +79163,9 @@
         "subrank": 5
       },
       "localReviewedTokens": 38,
-      "priorReviewedTokens": 864,
-      "cumulativeReviewedTokens": 880,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 858,
+      "cumulativeReviewedTokens": 874,
       "notes": 0,
       "candidates": [
         {
@@ -80024,8 +80022,9 @@
         "subrank": 1
       },
       "localReviewedTokens": 37,
-      "priorReviewedTokens": 880,
-      "cumulativeReviewedTokens": 889,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 874,
+      "cumulativeReviewedTokens": 883,
       "notes": 0,
       "candidates": [
         {
@@ -80759,8 +80758,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 30,
-      "priorReviewedTokens": 889,
-      "cumulativeReviewedTokens": 896,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 883,
+      "cumulativeReviewedTokens": 890,
       "notes": 0,
       "candidates": [
         {
@@ -81420,8 +81420,9 @@
         "subrank": 4
       },
       "localReviewedTokens": 37,
-      "priorReviewedTokens": 896,
-      "cumulativeReviewedTokens": 911,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 890,
+      "cumulativeReviewedTokens": 905,
       "notes": 0,
       "candidates": [
         {
@@ -82170,8 +82171,9 @@
         "subrank": 5
       },
       "localReviewedTokens": 38,
-      "priorReviewedTokens": 911,
-      "cumulativeReviewedTokens": 921,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 905,
+      "cumulativeReviewedTokens": 915,
       "notes": 0,
       "candidates": [
         {
@@ -82920,8 +82922,9 @@
         "subrank": 1
       },
       "localReviewedTokens": 29,
-      "priorReviewedTokens": 921,
-      "cumulativeReviewedTokens": 929,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 915,
+      "cumulativeReviewedTokens": 923,
       "notes": 0,
       "candidates": [
         {
@@ -83610,8 +83613,9 @@
         "subrank": 2
       },
       "localReviewedTokens": 36,
-      "priorReviewedTokens": 929,
-      "cumulativeReviewedTokens": 936,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 923,
+      "cumulativeReviewedTokens": 930,
       "notes": 0,
       "candidates": [
         {
@@ -84293,8 +84297,9 @@
         "subrank": 4
       },
       "localReviewedTokens": 42,
-      "priorReviewedTokens": 936,
-      "cumulativeReviewedTokens": 948,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 930,
+      "cumulativeReviewedTokens": 942,
       "notes": 0,
       "candidates": [
         {
@@ -85051,8 +85056,9 @@
         "subrank": 5
       },
       "localReviewedTokens": 48,
-      "priorReviewedTokens": 948,
-      "cumulativeReviewedTokens": 965,
+      "localProperNameTokens": 0,
+      "priorReviewedTokens": 942,
+      "cumulativeReviewedTokens": 959,
       "notes": 0,
       "candidates": [
         {

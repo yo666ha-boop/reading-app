@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-08-25T02:14:00.601Z",
+    "generatedAt": "2026-08-25T02:15:17.259Z",
     "passages": 168,
     "canonicalSource": {
       "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
@@ -18,22 +18,23 @@
     "counts": {
       "V7_CHRONOLOGY_ALLOWED": 10133,
       "ELEMENTARY_LEXICAL_ALLOWED": 3445,
-      "REVIEWED_EXPLICIT_ALLOWED": 775,
+      "EXPLICIT_PROPER_NAME_ALLOWED": 84,
+      "REVIEWED_EXPLICIT_ALLOWED": 760,
       "MORPHOLOGY_TO_GRAMMAR": 2505,
       "CONTRACTION_TO_GRAMMAR": 227,
       "EXPLICIT_FUNCTION_TO_GRAMMAR": 20701,
       "FUTURE_V7_LEAK": 1242,
-      "UNREGISTERED_V7": 1868,
+      "UNREGISTERED_V7": 1799,
       "UNREGISTERED_PROPER": 0
     },
     "notesPresent": 0,
     "missingGloss": 0,
     "mappingErrors": [],
     "runtimeBrowserErrors": [],
-    "uniqueUnresolved": 567,
-    "futureVocabLeakOccurrences": 3110,
+    "uniqueUnresolved": 563,
+    "futureVocabLeakOccurrences": 3041,
     "chronologyPass": false,
-    "rule": "Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology; short forms such as used/using are covered. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun."
+    "rule": "Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. Explicit proper-name allowances are honored only inside the current passage when allowedWords marks the row proper names and the actual token is capitalized; those names are never promoted into cumulative ordinary vocabulary. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun."
   },
   "unresolved": [
     {
@@ -118,31 +119,6 @@
         "ニューホライズン|1|Unit 8-3|sentence:9"
       ],
       "sectionCount": 8
-    },
-    {
-      "token": "ken",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 33,
-      "sections": [
-        "サンシャイン|3|PROGRAM 3-1",
-        "ニューホライズン|1|Unit 0"
-      ],
-      "examples": [
-        "サンシャイン|3|PROGRAM 3-1|sentence:4",
-        "サンシャイン|3|PROGRAM 3-1|sentence:9",
-        "サンシャイン|3|PROGRAM 3-1|slash:4",
-        "サンシャイン|3|PROGRAM 3-1|slash:9",
-        "サンシャイン|3|PROGRAM 3-1|A2.evidence",
-        "ニューホライズン|1|Unit 0|sentence:1",
-        "ニューホライズン|1|Unit 0|sentence:3",
-        "ニューホライズン|1|Unit 0|sentence:3",
-        "ニューホライズン|1|Unit 0|sentence:5",
-        "ニューホライズン|1|Unit 0|sentence:6",
-        "ニューホライズン|1|Unit 0|sentence:8",
-        "ニューホライズン|1|Unit 0|sentence:10"
-      ],
-      "sectionCount": 2
     },
     {
       "token": "idea",
@@ -389,30 +365,6 @@
         "ニューホライズン|2|Unit 2-4|sentence:4"
       ],
       "sectionCount": 3
-    },
-    {
-      "token": "mei",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 20,
-      "sections": [
-        "ニューホライズン|1|Unit 0"
-      ],
-      "examples": [
-        "ニューホライズン|1|Unit 0|sentence:2",
-        "ニューホライズン|1|Unit 0|sentence:4",
-        "ニューホライズン|1|Unit 0|sentence:4",
-        "ニューホライズン|1|Unit 0|sentence:7",
-        "ニューホライズン|1|Unit 0|sentence:9",
-        "ニューホライズン|1|Unit 0|slash:2",
-        "ニューホライズン|1|Unit 0|slash:4",
-        "ニューホライズン|1|Unit 0|slash:4",
-        "ニューホライズン|1|Unit 0|slash:7",
-        "ニューホライズン|1|Unit 0|slash:9",
-        "ニューホライズン|1|Unit 0|A1.answer",
-        "ニューホライズン|1|Unit 0|A1.evidence"
-      ],
-      "sectionCount": 1
     },
     {
       "token": "partner",
@@ -1137,30 +1089,6 @@
         "ニューホライズン|3|Unit 6-2|B2.evidence"
       ],
       "sectionCount": 2
-    },
-    {
-      "token": "hana",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 12,
-      "sections": [
-        "ニューホライズン|1|Unit 3-1"
-      ],
-      "examples": [
-        "ニューホライズン|1|Unit 3-1|sentence:2",
-        "ニューホライズン|1|Unit 3-1|sentence:3",
-        "ニューホライズン|1|Unit 3-1|slash:2",
-        "ニューホライズン|1|Unit 3-1|slash:3",
-        "ニューホライズン|1|Unit 3-1|A1.answer",
-        "ニューホライズン|1|Unit 3-1|A1.evidence",
-        "ニューホライズン|1|Unit 3-1|A2.prompt",
-        "ニューホライズン|1|Unit 3-1|A3.prompt",
-        "ニューホライズン|1|Unit 3-1|A4.prompt",
-        "ニューホライズン|1|Unit 3-1|B1.prompt",
-        "ニューホライズン|1|Unit 3-1|B2.prompt",
-        "ニューホライズン|1|Unit 3-1|B3.prompt"
-      ],
-      "sectionCount": 1
     },
     {
       "token": "hokkaido",
@@ -1932,6 +1860,28 @@
         "ニューホライズン|2|Unit 3-2|A4.evidence"
       ],
       "sectionCount": 3
+    },
+    {
+      "token": "ken",
+      "kind": "UNREGISTERED_V7",
+      "intro": null,
+      "occurrences": 9,
+      "sections": [
+        "サンシャイン|3|PROGRAM 3-1",
+        "ニューホライズン|2|Unit 3-4"
+      ],
+      "examples": [
+        "サンシャイン|3|PROGRAM 3-1|sentence:4",
+        "サンシャイン|3|PROGRAM 3-1|sentence:9",
+        "サンシャイン|3|PROGRAM 3-1|slash:4",
+        "サンシャイン|3|PROGRAM 3-1|slash:9",
+        "サンシャイン|3|PROGRAM 3-1|A2.evidence",
+        "ニューホライズン|2|Unit 3-4|sentence:13",
+        "ニューホライズン|2|Unit 3-4|slash:13",
+        "ニューホライズン|2|Unit 3-4|B4.answer",
+        "ニューホライズン|2|Unit 3-4|B4.evidence"
+      ],
+      "sectionCount": 2
     },
     {
       "token": "learn",
@@ -3232,25 +3182,6 @@
       "sectionCount": 1
     },
     {
-      "token": "leonardo",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 7,
-      "sections": [
-        "ニューホライズン|1|Unit 1-1"
-      ],
-      "examples": [
-        "ニューホライズン|1|Unit 1-1|sentence:2",
-        "ニューホライズン|1|Unit 1-1|slash:2",
-        "ニューホライズン|1|Unit 1-1|A1.prompt",
-        "ニューホライズン|1|Unit 1-1|A2.prompt",
-        "ニューホライズン|1|Unit 1-1|A3.prompt",
-        "ニューホライズン|1|Unit 1-1|B1.prompt",
-        "ニューホライズン|1|Unit 1-1|B2.prompt"
-      ],
-      "sectionCount": 1
-    },
-    {
       "token": "machine",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -4070,24 +4001,6 @@
         "ニューホライズン|1|Unit 8-1|A1.evidence"
       ],
       "sectionCount": 2
-    },
-    {
-      "token": "leo",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 6,
-      "sections": [
-        "ニューホライズン|1|Unit 1-1"
-      ],
-      "examples": [
-        "ニューホライズン|1|Unit 1-1|sentence:3",
-        "ニューホライズン|1|Unit 1-1|slash:3",
-        "ニューホライズン|1|Unit 1-1|A1.answer",
-        "ニューホライズン|1|Unit 1-1|A1.evidence",
-        "ニューホライズン|1|Unit 1-1|B1.answer",
-        "ニューホライズン|1|Unit 1-1|B1.evidence"
-      ],
-      "sectionCount": 1
     },
     {
       "token": "literacy",
@@ -5606,13 +5519,13 @@
       "intro": null,
       "occurrences": 4,
       "sections": [
-        "ニューホライズン|1|Unit 2-1"
+        "ニューホライズン|2|Unit 3-4"
       ],
       "examples": [
-        "ニューホライズン|1|Unit 2-1|sentence:1",
-        "ニューホライズン|1|Unit 2-1|slash:1",
-        "ニューホライズン|1|Unit 2-1|A1.prompt",
-        "ニューホライズン|1|Unit 2-1|A2.prompt"
+        "ニューホライズン|2|Unit 3-4|sentence:1",
+        "ニューホライズン|2|Unit 3-4|slash:1",
+        "ニューホライズン|2|Unit 3-4|B1.answer",
+        "ニューホライズン|2|Unit 3-4|B1.evidence"
       ],
       "sectionCount": 1
     },
