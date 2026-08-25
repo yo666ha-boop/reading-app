@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-08-25T02:16:34.931Z",
+    "generatedAt": "2026-08-25T02:17:24.523Z",
     "passages": 168,
     "canonicalSource": {
       "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
@@ -16,14 +16,14 @@
       "recordIdEnd": 4175
     },
     "counts": {
-      "V7_CHRONOLOGY_ALLOWED": 10131,
+      "V7_CHRONOLOGY_ALLOWED": 10133,
       "ELEMENTARY_LEXICAL_ALLOWED": 3445,
       "EXPLICIT_PROPER_NAME_ALLOWED": 84,
-      "REVIEWED_EXPLICIT_ALLOWED": 759,
+      "REVIEWED_EXPLICIT_ALLOWED": 760,
       "MORPHOLOGY_TO_GRAMMAR": 2505,
       "CONTRACTION_TO_GRAMMAR": 227,
-      "EXPLICIT_FUNCTION_TO_GRAMMAR": 20700,
-      "FUTURE_V7_LEAK": 1241,
+      "EXPLICIT_FUNCTION_TO_GRAMMAR": 20701,
+      "FUTURE_V7_LEAK": 1242,
       "UNREGISTERED_V7": 1799,
       "UNREGISTERED_PROPER": 0
     },
@@ -32,7 +32,7 @@
     "mappingErrors": [],
     "runtimeBrowserErrors": [],
     "uniqueUnresolved": 563,
-    "futureVocabLeakOccurrences": 3040,
+    "futureVocabLeakOccurrences": 3041,
     "chronologyPass": false,
     "rule": "Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. Explicit proper-name allowances are honored only inside the current passage when allowedWords marks the row proper names and the actual token is capitalized; those names are never promoted into cumulative ordinary vocabulary. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun."
   },
@@ -7583,6 +7583,27 @@
       "sectionCount": 1
     },
     {
+      "token": "bring",
+      "kind": "FUTURE_V7_LEAK",
+      "intro": [
+        2,
+        5,
+        8,
+        "bring",
+        0
+      ],
+      "occurrences": 3,
+      "sections": [
+        "サンシャイン|2|PROGRAM 2-1"
+      ],
+      "examples": [
+        "サンシャイン|2|PROGRAM 2-1|slash:12",
+        "サンシャイン|2|PROGRAM 2-1|A5.answer",
+        "サンシャイン|2|PROGRAM 2-1|A5.evidence"
+      ],
+      "sectionCount": 1
+    },
+    {
       "token": "choices",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -8723,26 +8744,6 @@
       "examples": [
         "サンシャイン|2|PROGRAM 5-1|sentence:1",
         "サンシャイン|2|PROGRAM 5-1|slash:1"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "bring",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        2,
-        5,
-        8,
-        "bring",
-        0
-      ],
-      "occurrences": 2,
-      "sections": [
-        "サンシャイン|2|PROGRAM 2-1"
-      ],
-      "examples": [
-        "サンシャイン|2|PROGRAM 2-1|A5.answer",
-        "サンシャイン|2|PROGRAM 2-1|A5.evidence"
       ],
       "sectionCount": 1
     },
