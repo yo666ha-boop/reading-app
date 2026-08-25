@@ -1,0 +1,55 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "WINPASS_717_STRICT_MATERIALIZATION",
+  "recorded_at_jst": "2026-08-25T21:34:00+09:00",
+  "source": {
+    "name": "Winpass",
+    "drive_file_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
+    "bytes": 8296042,
+    "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+    "crc_ok": true,
+    "docx_members": 81
+  },
+  "delta": {
+    "records": 20,
+    "unique_ids": 20,
+    "documents": {
+      "25winpasst1suhy000521.docx": 5,
+      "25winpasst1suhy000522.docx": 5,
+      "25winpasst2suhy000522.docx": 5,
+      "25winpasst3suhy000520.docx": 5
+    },
+    "figure_context_records": 20,
+    "graphical_answer_records": 11,
+    "independent_checks": "20/20 PASS",
+    "validator_errors": 0,
+    "durable_jsonl": {
+      "drive_file_id": "1TyfdfjlWlIGddO3z_m0XpK5iB_x7N3pu",
+      "bytes": 45691,
+      "sha256": "09aea1f7203f6c2c5e77e3c4d948253ca7b6adc4b9f90bd86c78d7a5fa3ae48d",
+      "post_save_readback": true,
+      "readback_records": 20,
+      "readback_unique_ids": 20
+    },
+    "validation_report_drive_file_id": "1iOJAIA6UxDG_biR4xNhddkODHrbrH5LR",
+    "strict_evidence": [
+      "ordered OOXML question/answer provenance",
+      "score evidence",
+      "embedded EMF/media identity for required figures",
+      "graphical answer asset identity where applicable",
+      "content-bound fingerprint",
+      "independent mathematical check"
+    ]
+  },
+  "strict_progress_before": 968,
+  "strict_progress_after": {
+    "Standard": 317,
+    "実力錬成": 237,
+    "Winpass": 434,
+    "total": 988,
+    "pending": 283
+  },
+  "main_touched": false,
+  "schedule_changed": false,
+  "next": "Continue only the remaining 283 Winpass slots by expected raw slots minus durable IDs; finish MIXED_DOC_PARTIAL_STRICT then MEDIA_HEAVY."
+}
