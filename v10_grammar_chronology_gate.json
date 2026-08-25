@@ -24,10 +24,11 @@
     "candidateDetectorImplemented": true,
     "detectorVersion": 2,
     "sectionChronologyComplete": false,
-    "knownPreCarryForwardResolvedOccurrences": 98,
-    "knownPreCarryForwardUnresolvedOccurrences": 1226,
-    "knownPreCarryForwardFutureGrammarLeak": 20,
+    "postCarryForwardResolvedOccurrences": 199,
+    "postCarryForwardUnresolvedOccurrences": 1125,
+    "postCarryForwardFutureGrammarLeak": 20,
+    "nh2ExactEvidenceExtendedThroughUnit7": true,
     "finalPass": false
   },
-  "next": "Re-run after prior-grade carry-forward resolver update, then continue exact-subunit evidence mapping and rewrite confirmed early future structures. Keep finalPass=false until unresolvedOccurrences=0 and futureGrammarLeak=0."
+  "next": "Re-run with exact NH2 Unit4-7 evidence; then finish NH3 and Sunshine exact-subunit boundaries, split over-broad feature families where required, and rewrite confirmed early future structures. Keep finalPass=false until unresolvedOccurrences=0 and futureGrammarLeak=0."
 }
