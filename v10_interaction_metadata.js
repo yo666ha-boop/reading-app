@@ -2,12 +2,12 @@ window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
 (function(){
  if(typeof document==='undefined')return;
  const target=window.V10_INTERACTION_META;
- const BUILD='20260825-v7-reference-chronology-notes2';
+ const BUILD='20260826-grammar-chronology-sync';
  window.V10_RUNTIME_BUILD=BUILD;
  window.V10_RUNTIME_LOAD_PROGRESS='start';
  window.V10_RUNTIME_LOAD_ERROR='';
  const runtimeErrors=[];
- window.addEventListener('error',e=>{const src=String(e&&e.filename||'');if(src.includes('v10_reference_slash_'))runtimeErrors.push(String(e&&e.message||e));});
+ window.addEventListener('error',e=>{const src=String(e&&e.filename||'');if(src.includes('v10_reference_slash_')||src.includes('v10_grammar_'))runtimeErrors.push(String(e&&e.message||e));});
  const lock=document.createElement('div');
  lock.id='v10RuntimeLock';
  lock.style.cssText='position:fixed;inset:0;z-index:2147483647;background:rgba(255,255,255,.98);display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,"Yu Gothic",sans-serif;font-weight:800;font-size:18px;color:#0f172a;text-align:center;padding:24px';
@@ -86,7 +86,9 @@ window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
   ['v10_reference_slash_manual_151_160.js',()=>({})],
   ['v10_reference_slash_manual_161_168.js',()=>({})],
   ['v10_reference_slash_manual_999_recovery.js',()=>({})],
-  ['v10_reference_slash_manual_zz_corrections.js',()=>({})]
+  ['v10_reference_slash_manual_zz_corrections.js',()=>({})],
+  ['v10_grammar_vocab_final_sync.js',()=>({})],
+  ['v10_grammar_additional_future_sync.js',()=>({})]
  ];
  const validate=()=>{
    const bridge=window.V10_REFERENCE_CHRONOLOGY_SYNC;if(!bridge)throw new Error('chronology bridge missing at final validation');window.V10_REFERENCE_CHRONOLOGY_FINAL=bridge.apply();
