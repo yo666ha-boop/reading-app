@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-08-25T18:02:19.750Z",
+    "generatedAt": "2026-08-25T18:03:50.776Z",
     "passages": 168,
     "canonicalSource": {
       "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
@@ -17,13 +17,13 @@
     },
     "counts": {
       "V7_CHRONOLOGY_ALLOWED": 10084,
-      "ELEMENTARY_LEXICAL_ALLOWED": 3487,
+      "ELEMENTARY_LEXICAL_ALLOWED": 3497,
       "EXPLICIT_PROPER_NAME_ALLOWED": 183,
       "REVIEWED_EXPLICIT_ALLOWED": 758,
       "MORPHOLOGY_TO_GRAMMAR": 2483,
       "CONTRACTION_TO_GRAMMAR": 230,
       "EXPLICIT_FUNCTION_TO_GRAMMAR": 20649,
-      "FUTURE_V7_LEAK": 10,
+      "FUTURE_V7_LEAK": 0,
       "UNREGISTERED_V7": 0,
       "UNREGISTERED_PROPER": 0,
       "NOTED_UNLEARNED_ALLOWED": 2893
@@ -32,40 +32,10 @@
     "missingGloss": 0,
     "mappingErrors": [],
     "runtimeBrowserErrors": [],
-    "uniqueUnresolved": 1,
-    "futureVocabLeakOccurrences": 10,
-    "chronologyPass": false,
+    "uniqueUnresolved": 0,
+    "futureVocabLeakOccurrences": 0,
+    "chronologyPass": true,
     "rule": "Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. Explicit proper-name allowances are honored only inside the current passage when allowedWords marks the row proper names and the actual token is capitalized; those names are never promoted into cumulative ordinary vocabulary. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun. Explicitly tagged local proper-name possessives are authorized only for that passage. A passage-local notes entry authorizes only the exact noted token in that passage and only when English and Japanese gloss are both nonblank; it never enters cumulative vocabulary. I’d and whether are explicitly grammar-routed and require evidence-backed section chronology."
   },
-  "unresolved": [
-    {
-      "token": "day",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        1,
-        6,
-        7,
-        "day",
-        0
-      ],
-      "occurrences": 10,
-      "sections": [
-        "ニューホライズン|1|Unit 3-3",
-        "ニューホライズン|1|Unit 4-2"
-      ],
-      "examples": [
-        "ニューホライズン|1|Unit 3-3|sentence:7",
-        "ニューホライズン|1|Unit 3-3|slash:7",
-        "ニューホライズン|1|Unit 3-3|A5.answer",
-        "ニューホライズン|1|Unit 3-3|A5.evidence",
-        "ニューホライズン|1|Unit 4-2|sentence:6",
-        "ニューホライズン|1|Unit 4-2|slash:6",
-        "ニューホライズン|1|Unit 4-2|A5.answer",
-        "ニューホライズン|1|Unit 4-2|A5.evidence",
-        "ニューホライズン|1|Unit 4-2|B4.answer",
-        "ニューホライズン|1|Unit 4-2|B4.evidence"
-      ],
-      "sectionCount": 2
-    }
-  ]
+  "unresolved": []
 }
