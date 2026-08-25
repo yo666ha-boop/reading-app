@@ -6,48 +6,41 @@ Updated: 2026-08-25 JST (manual continuation)
 - Repo: `yo666ha-boop/reading-app`.
 - Work branch: `v10-vocab-grammar-notes-audit`.
 - Public `main`: `1f0cabf9bfcc4482f507e33188499bdbbd5bab57`; NOT modified.
-- Sole vocabulary authority: native Sheet `1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4`, tab `単語マスター`, 3975 canonical records.
-- Authoritative audit waits for `V10_RUNTIME_LOAD_PROGRESS=complete`, then applies passage-local proper-name batches 1-3 and notes batches 2-12 before scanning all 168 passages. Notes are exact-passage/non-cumulative; proper names require explicit local tagging and capitalization.
+- Sole vocabulary authority: native Sheet `1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4`, tab `単語マスター`, 3975 canonical records. Metadata re-read this run: 3976 rows including header, 33 columns, tab sheetId `109187341`.
+- Authoritative audit waits for `V10_RUNTIME_LOAD_PROGRESS=complete`, then applies passage-local proper-name batches 1-4 and notes batches 2-13 before scanning all 168 passages. Notes are exact-passage/non-cumulative; proper names require explicit local tagging and capitalization.
 
 ## Completed this run
-- Re-read branch HEAD, main HEAD, checkpoint, latest Actions, current wrapper/final audit load order, and recovered the previous successful candidate-report Actions artifact rather than relying on stale checked-in JSON.
-- Start state verified from prior batch9 artifact/checkpoint: `425 unique / 1493 occurrences` = `543 FUTURE_V7_LEAK + 950 UNREGISTERED_V7`; notes `215`; `missing_gloss=0`; passages `168/168`.
-- Added `v10_passage_local_notes_batch10.js` with 69 exact textbook+grade+section definitions, including the remaining 7-occurrence `without` and most 6-occurrence unresolved vocabulary. Commit `69c3292099660de91791c3955910accda8fb0eca`; scanner-load commit `d33ac5dd92fa4b194a7e251b7ae200954f23126d`.
-- Added `v10_passage_local_proper_names_batch3.js` instead of glossing names as ordinary vocabulary: `Emi`, `France`, `Kenya` (two exact passages), `Singapore`, `Osaka`. Commit `ead48820cd4af9a4b1fe0fdf61f9708500b4258c`; scanner-load commit `cae769b73bd434ddd5e480f3789369e4e81635d0`.
-- Added `v10_passage_local_notes_batch11.js` for the remaining common 6-occurrence items and the full 5-occurrence group except proper-name `Osaka`. Content commit `9536b00c6192014053db13bb5f667d11b2712872`; authoritative-load commit / tested content HEAD `8b1bb87dc62306799605773e779febcf7b49ec12`.
-- Authoritative PR run `32851438908` for HEAD `8b1bb87...` completed SUCCESS. Passage audit `32851438922` for the same HEAD completed SUCCESS.
-- Downloaded the authoritative run artifact `9564423098` and verified exact post-batch11 state: `332 unique / 957 unresolved occurrences` = `300 FUTURE_V7_LEAK + 657 UNREGISTERED_V7`; notes `328`; `missing_gloss=0`; passages `168/168`; proper-name unresolved `0`; mapping errors `0`; runtime browser errors `0`.
-- Therefore verified progress this run through batch11 is `425 -> 332 unique`, `1493 -> 957 occurrences`: reduction `93 unique / 536 occurrences`; notes `215 -> 328`; missing gloss remained zero.
-- Grammar candidate report from the same artifact still classifies itself `CANDIDATES_NOT_PASS_FAIL`; all `168` passages are covered and 20 feature families are extracted, but evidence-backed exact subunit introduction boundaries are not yet complete. No grammar chronology PASS is claimed.
-- Rechecked v7 native Sheet for `month`: exact canonical row is NH1 U3 `month = （暦上での）月`, base `month`; no same-textbook SS chronology entry licenses SS3 PROGRAM 2-2 `months`.
-- Added `v10_passage_local_notes_batch12.js` for that final 6-occurrence token `months`, using the v7 Japanese gloss but keeping it SS3 passage-local/non-cumulative. Content commit `1a273faa876a6ee3cc692d6805c83c54723b6bd9`; scanner-load commit `f215a795c9c1f2f4c62dd110cd141028597f28ce`.
+- Re-read current branch HEAD, main HEAD, checkpoint, latest Actions and authoritative load order before editing. Starting branch HEAD was `3c17bdf64d5f1caa94f0f0dd7ab743d19b29ebe7`; main remained `1f0cabf9bfcc4482f507e33188499bdbbd5bab57`.
+- Recovered the latest completed authoritative artifact from run `32851939899` (artifact `9564614908`) instead of trusting the stale pending note in the previous checkpoint.
+- Verified batch12 (`months`) is actually included in that successful HEAD. Exact verified vocabulary state after batch12: `331 unique / 951 unresolved occurrences` = `300 FUTURE_V7_LEAK + 651 UNREGISTERED_V7`; notes `329`; `missing_gloss=0`; passages `168/168`; proper-name unresolved `0`; runtime browser errors `0`; notes UI PASS.
+- Therefore batch12 produced the exact expected reduction from the prior verified `332 / 957`: `-1 unique / -6 occurrences`, with notes `328 -> 329` and missing gloss still zero.
+- Re-read the native v7 Sheet metadata and performed a bounded live search for `asia`; canonical sheet contains `Asian = アジア(人)の` at row 2053, while unresolved `Asia` remains chronology-gated in SS3 PROGRAM 4-3 and is not globally licensed from that hit.
+- Added passage-local proper-name batch4 for `Aya` only in SS3 PROGRAM 3-1 instead of glossing the person name as ordinary vocabulary. Commit `9f00badeacddce0b290bca20797c5876145cd732`.
+- Added `v10_passage_local_notes_batch13.js` covering the first large block of four-occurrence unresolved vocabulary, including `afternoon`, `area`, `Asia`, `attack`, `attacking`, `automatic`, `ball`, `banana`, `beach`, `believed`, `brown`, `charity`, `connected`, `connection`, `conservation`, `consumers`, `continued`, `continues`, `conversation`, `damaged`, `dangerous`, `decline`, `development`, `done`, `door`, `dream`, `economics`, `elevator`, `emergency`. All entries are exact textbook+grade+section and non-cumulative. Commit `4a9abe9392d6d381a15853924ac52ab3eb9c451a`.
+- Updated the authoritative scanner so it now loads proper-name batch4 and notes batch13 after final runtime completion. Commit / tested-content HEAD `fba5023d5690d40cfba4dba30bc1afd38679ca93`.
+- New authoritative run `32856710276` started for `fba5023d...`; latest explicit recheck in this run: `in_progress`. Do not claim the post-batch13 reduced count until its artifact is read.
 
 ## Current exact state
-- Vocabulary passages audited: `168/168` on the latest completed authoritative evidence (batch11).
-- Latest VERIFIED vocabulary state: `332 unique / 957 occurrences` = `300 FUTURE + 657 UNREGISTERED`; notes `328`; `missing_gloss=0`.
-- Batch12 (`months`) is implemented and wired, but its new authoritative run `32851870832` was still pending at checkpoint time; do not claim the expected one-token/six-occurrence reduction until its artifact is read.
+- Vocabulary passages audited on latest completed evidence: `168/168`.
+- Latest VERIFIED vocabulary state: `331 unique / 951 occurrences` = `300 FUTURE + 651 UNREGISTERED`; notes `329`; `missing_gloss=0`.
+- Batch13 + Aya proper-name batch4 are implemented and wired but their exact post-run metrics are still pending authoritative artifact confirmation.
 - Vocabulary chronology: FAIL / IN PROGRESS.
-- Grammar chronology: FAIL-CLOSED / IN PROGRESS; candidate coverage `168/168`, 20 feature families, exact introduction chronology incomplete.
-- Slash: previous batch9 content run `32845023852` SUCCESS. Same-HEAD batch11 slash-quality run `32851438968` was still reported `in_progress` at the latest explicit recheck, so no new batch11 slash PASS is claimed yet.
-- Notes UI / candidate audit: latest completed authoritative batch11 run has notes `328`, missing gloss `0`, mapping errors `0`, runtime browser errors `0`.
+- Grammar chronology: FAIL-CLOSED / IN PROGRESS; latest completed candidate coverage remains `168/168`, 20 feature families, exact textbook subunit introduction chronology incomplete; no grammar PASS claimed.
+- Slash/reference: no regression claim is made for the new batch13 content until its relevant workflow evidence is completed/read. Notes/proper-name changes do not intentionally alter sentences/slashes.
 - Public main release: NOT performed.
 
-## Commits / runs
-- batch10 notes: `69c3292099660de91791c3955910accda8fb0eca`
-- batch10 scanner load: `d33ac5dd92fa4b194a7e251b7ae200954f23126d`
-- proper-name batch3: `ead48820cd4af9a4b1fe0fdf61f9708500b4258c`
-- proper-name batch3 scanner load: `cae769b73bd434ddd5e480f3789369e4e81635d0`
-- batch11 notes: `9536b00c6192014053db13bb5f667d11b2712872`
-- batch11 scanner load / tested HEAD: `8b1bb87dc62306799605773e779febcf7b49ec12`
-- batch11 authoritative audit: `32851438908` SUCCESS
-- batch11 passage audit: `32851438922` SUCCESS
-- batch11 slash quality: `32851438968` latest observed `in_progress`
-- batch12 notes: `1a273faa876a6ee3cc692d6805c83c54723b6bd9`
-- batch12 scanner load: `f215a795c9c1f2f4c62dd110cd141028597f28ce`
-- batch12 authoritative run: `32851870832` pending at checkpoint time
+## Counters requested for continuation
+- Audited passages: `168/168` on latest completed authoritative evidence.
+- Vocabulary violations: latest verified `331 unique / 951 occurrences`.
+- Vocabulary fixes this run verified before new pending batch: `1 unique / 6 occurrences` from batch12; additional batch13 changes implemented but not yet counted.
+- Notes present: latest verified `329`; batch13 adds bounded definitions but exact runtime-added count awaits artifact.
+- Grammar violations: not yet an exact leak count; 20 candidate feature families remain chronology-unresolved / fail-closed.
+- missing gloss: `0` latest verified.
+- future leak: `300` FUTURE occurrences latest verified; total unresolved occurrences `951`.
+- slash regression: latest new batch not yet reverified; prior completed slash evidence remains the last PASS baseline.
 
 ## Exact stop / next start
-- Exact stop: batch12 is implemented/wired. Latest completed artifact after batch11 leaves exactly one 6-occurrence token (`months`), then `114` four-occurrence unique tokens, `61` three-occurrence tokens, and `156` two-occurrence tokens. Batch12 targets the sole six-occurrence token.
-- Next start: re-read branch/main/checkpoint and run `32851870832`; if completed, download its candidate artifact and persist the exact new unresolved metrics. Then continue directly through the 4-occurrence group beginning `afternoon`, `area`, `asia`, `attack`, `attacking`, `automatic`, `aya`, `ball`, `banana`, `beach`, `believed`, `brown`, `charity`, `connected`, `connection`, `conservation`, etc. For each token distinguish same-textbook v7 chronology, productive morphology/grammar, proper name, natural learned-vocabulary rewrite, and required passage-local note; never global-allow merely to reduce counts.
-- Continue vocabulary until `unique_unresolved=0`, `future_vocab_leak=0`, `missing_gloss=0`. Then complete evidence-backed exact-subunit grammar introduction boundaries for all 20 feature families and require `future_grammar_leak=0` across all 168 passages plus A/B English fields.
+- Exact stop: authoritative run `32856710276` for batch13/proper-name batch4 is in progress. New code is committed and scanner-wired; main is untouched.
+- Next start: re-read branch/main/checkpoint and run `32856710276`; when completed, download its candidate artifact and persist exact `unique_unresolved`, FUTURE/UNREGISTERED occurrence counts, notes and missing gloss. If the batch passes, continue immediately through the remaining four-occurrence group beginning after `emergency` (`enter`, `essential`, `evening`, `exciting`, `fold`, `forms`, `four`, `goal`, `gorgeous`, `grew`, etc.), distinguishing same-textbook v7 chronology, morphology+grammar, proper names, safe rewrites, and exact passage-local notes.
+- Continue vocabulary until `unique_unresolved=0`, `future_vocab_leak=0`, `missing_gloss=0`; then complete evidence-backed exact-subunit grammar introduction boundaries for all 20 feature families and require `future_grammar_leak=0` across all 168 passages plus A/B English fields.
 - After both chronologies reach zero leaks, rerun slash reference 168/168, A/B evidence consistency, coverage/DOM, Chromium/Firefox/WebKit-iPhone, A4 student/teacher print. Only every-gate PASS permits main update and live Pages verification; only live Pages PASS permits completion.
