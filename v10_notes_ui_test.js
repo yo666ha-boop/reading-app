@@ -16,6 +16,7 @@ function datasetCount(w){try{const d=w.eval('DATASETS');let n=0;for(const g of O
     const m=w.V10_SUNSHINE_G1&&w.V10_SUNSHINE_G1['Get Ready 4'];
     assert(m,'missing stable notes UI fixture Get Ready 4');
     const originalNotes=Array.isArray(m.notes)?m.notes.slice():m.notes;
+    console.log(`NOTES UI fixture_original_notes=${Array.isArray(originalNotes)?originalNotes.length:0}`);
     m.notes=[{english:'test<word>',japanese:'試験用の意味',reading:'テスト'}];
     const d=w.document;
     change(w,d.getElementById('textbook'),'サンシャイン');
@@ -28,9 +29,6 @@ function datasetCount(w){try{const d=w.eval('DATASETS');let n=0;for(const g of O
     assert(box.textContent.includes('注（未習語）'),'gloss title missing');
     assert(box.textContent.includes('test<word>：試験用の意味（テスト）'),'English/Japanese/reading gloss missing');
     assert(!box.innerHTML.includes('<word>'),'gloss HTML was not escaped');
-    // Get Ready 4 now legitimately has a passage-local basketball note. Test zero-note
-    // behavior by temporarily clearing this fixture and forcing the normal app render,
-    // rather than assuming the fixture is permanently note-free.
     m.notes=[];
     if(typeof w.render==='function')w.render();
     await waitFor(()=>!d.querySelector('#passage .v10-gloss-box'),5000,'zero-note gloss removal');
