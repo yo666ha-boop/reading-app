@@ -2,42 +2,21 @@
   "project":"mikami-math-problem-bank",
   "status":"IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP",
   "current_stage":"WINPASS_717_STRICT_MATERIALIZATION",
-  "recorded_at_jst":"2026-08-25T20:09:00+09:00",
+  "recorded_at_jst":"2026-08-25T20:17:00+09:00",
   "main_touched":false,
   "schedule_changed":false,
-  "source_identity":{
-    "Winpass":{"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","bytes":8296042,"crc_ok":true,"docx_members":81},
-    "実力錬成":{"sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","bytes":7287279,"crc_ok":true},
-    "Standard":{"sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","bytes":9689250,"crc_ok":true}
-  },
-  "durable_source_mirror":{
-    "state_path":"math-bank/state/durable-source-archive-mirror-20260825.json",
-    "resume_rule":"Fetch exact Google Drive IDs directly before any name/SHA search; verify bytes and SHA before extraction.",
-    "Standard":{"drive_file_id":"1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU"},
-    "実力錬成":{"drive_file_id":"1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb"},
-    "Winpass":{"drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E"}
-  },
+  "source_identity":{"Winpass":{"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","bytes":8296042,"crc_ok":true,"docx_members":81},"実力錬成":{"sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","bytes":7287279,"crc_ok":true},"Standard":{"sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","bytes":9689250,"crc_ok":true}},
+  "durable_source_mirror":{"state_path":"math-bank/state/durable-source-archive-mirror-20260825.json","resume_rule":"Fetch exact Google Drive IDs directly before any name/SHA search; verify bytes and SHA before extraction.","Standard":{"drive_file_id":"1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU"},"実力錬成":{"drive_file_id":"1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb"},"Winpass":{"drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E"}},
   "documents":{"before_dedupe":246,"duplicates":106,"unique":{"Winpass":81,"実力錬成":27,"Standard":32,"total":140}},
   "raw_slots":{"Winpass":717,"実力錬成":237,"Standard":317,"total":1271,"count_forcing_used":false},
-  "strict_completion_rule":"Count only records durably persisted, post-save read back, carrying exact ordered OOXML question/answer provenance or explicit graphical/table context identity, score evidence, required figure/table/asset identity, content-bound fingerprint, and PASSing applicable validator/independent check.",
-  "strict_progress":{"Standard":317,"実力錬成":237,"Winpass":244,"total":798,"pending":473,"readback_verified":798,"validator_pass":798,"durable_records":798},
-  "strict_durable_evidence":{
-    "Standard":{"file_id":"1L6n6iGfFQdii0jTzM224fT0U5MAXZcYS","sha256":"d80c0822f3e65518cabeac589034fc3d568931c21a90d8473d15952ac09daca9","records":317,"readback_verified":true,"validation_pass":true},
-    "実力錬成":{"file_id":"1ZrG7Xw0iMjaR27UfzpPJmWnMK_2wlC2P","sha256":"4c8ed0ee4144562edcb8f063b565e7742fae305f1f512fa1f951a84bf59c6f9f","records":237,"readback_verified":true,"validation_pass":true},
-    "Winpass177_v2":{"file_id":"1mjoEIGJsMRomqMSEWVUMcXlDAuzeTKkx","sha256":"d767b26104e2ee1c839e5cb2a41e8d18ae0063b9e04b43f3195ffa5fee49f6d4","records":177,"readback_verified":true,"validation_pass":true,"table_context_corrected":6},
-    "Winpass_delta67":{"state_path":"math-bank/state/winpass67-strict-delta-20260825.json","state_commit":"052b1c20aae5eb4fdef00a6e85c814ec2c37186c","file_id":"1YLIkTo-5XZWhsg5R9mnCR0rT15U3Mh7U","sha256":"54c5876910c97785e9aa5e920c0932d1ee012fa3b9e50f223ed2e2133f63b57a","bytes":120106,"records":67,"readback_verified":true,"validation_pass":true,"independent_math_checks":"67/67 PASS"}
-  },
-  "qa_figure_qa":{"questions_strict":"798/1271","answers_strict":"798/1271","Winpass":{"records":244,"remaining":473}},
-  "forensic_queue":{"path":"math-bank/state/winpass540-forensic-queue-20260825.json","order":["NONMEDIA_SPECIAL_OR_PROOF","MIXED_DOC_PARTIAL_STRICT","MEDIA_HEAVY"],"baseline_at_queue_creation":177},
-  "this_manual_run":{
-    "starting_head":"2646e22f1f0d3c0b7d4fbb2e9b1515d7d1006814",
-    "source_drive_direct_fetch":true,
-    "source_sha_verified":true,
-    "completed":["Loaded latest checkpoint before work and did not regress 731.","Fetched Winpass directly by durable Drive ID and verified 8,296,042-byte source identity.","Processed seven NONMEDIA_SPECIAL_OR_PROOF documents producing 67 non-overlapping records.","Revalidated source SHA, question/answer offsets, score evidence and absence of unresolved context dependencies for all67.","Independently recalculated/verified all67 answers.","Persisted delta67 to Drive, downloaded it after save, verified 67 records/67 unique IDs/120,106 bytes/SHA256 54c5876910c97785e9aa5e920c0932d1ee012fa3b9e50f223ed2e2133f63b57a.","Persisted GitHub state before continuing."],
-    "strict_increment":67
-  },
+  "strict_completion_rule":"Count only records durably persisted, post-save read back, with exact ordered OOXML Q/A provenance or explicit graphical/table context identity, score evidence, required assets, content-bound fingerprint, validator and independent check PASS.",
+  "strict_progress":{"Standard":317,"実力錬成":237,"Winpass":322,"total":876,"pending":395,"readback_verified":876,"validator_pass":876,"durable_records":876},
+  "strict_durable_evidence":{"Standard":{"file_id":"1L6n6iGfFQdii0jTzM224fT0U5MAXZcYS","sha256":"d80c0822f3e65518cabeac589034fc3d568931c21a90d8473d15952ac09daca9","records":317},"実力錬成":{"file_id":"1ZrG7Xw0iMjaR27UfzpPJmWnMK_2wlC2P","sha256":"4c8ed0ee4144562edcb8f063b565e7742fae305f1f512fa1f951a84bf59c6f9f","records":237},"Winpass177_v2":{"file_id":"1mjoEIGJsMRomqMSEWVUMcXlDAuzeTKkx","sha256":"d767b26104e2ee1c839e5cb2a41e8d18ae0063b9e04b43f3195ffa5fee49f6d4","records":177},"Winpass_delta67":{"state_path":"math-bank/state/winpass67-strict-delta-20260825.json","file_id":"1YLIkTo-5XZWhsg5R9mnCR0rT15U3Mh7U","sha256":"54c5876910c97785e9aa5e920c0932d1ee012fa3b9e50f223ed2e2133f63b57a","records":67},"Winpass_delta78":{"state_path":"math-bank/state/winpass78-strict-delta-20260825.json","state_commit":"996e89c71a59214829937d32724950dc056b2765","file_id":"1L8b85H9VY1BtQGih70s7IrlCY0HQKHSb","report_file_id":"1OuINVJKu0B2xioAfLcZxU0imhHNFydX4","sha256":"ff49788812169f0a30c3863cedf615b8c11052db0396db193663c1b9e3f4f65f","bytes":148873,"records":78,"readback_verified":true,"validation_pass":true,"independent_math_checks":"78/78 PASS","figure_context_records":10,"table_context_records":2}},
+  "qa_figure_qa":{"questions_strict":"876/1271","answers_strict":"876/1271","Winpass":{"records":322,"remaining":395}},
+  "forensic_queue":{"path":"math-bank/state/winpass540-forensic-queue-20260825.json","nonmedia_special_or_proof":"15/15 exhausted","next_bucket":"MIXED_DOC_PARTIAL_STRICT","then":"MEDIA_HEAVY"},
+  "this_manual_run":{"completed":["Started from latest731 actual and fixed source Drive ID.","Promoted delta67 with post-save readback and independent checks.","Promoted delta78 with figure/table source binding, post-save readback and 78/78 independent checks.","Exhausted all15 NONMEDIA_SPECIAL_OR_PROOF documents without count forcing."],"strict_increment":145},
   "downstream":{"winpass_decisions":{"reviewed":0,"included":0,"excluded":0,"target_after_evidence_review":570,"count_forcing_forbidden":true},"global1124":{"validated":0,"immutable_frozen":0},"variants":{"verified":0,"parent_coverage":"0/1124"},"app_records":0,"browser":"BLOCKED_UNTIL_REAL_APP_RECORDS","iphone_fire":"PENDING","a4":"PENDING","publication_ready":false,"public_verification":"PENDING"},
-  "exact_stop":"Durable strict progress is 798/1271: Standard317 + 実力錬成237 + Winpass244. Continue current manual run beyond this checkpoint; this checkpoint exists to prevent regression if interrupted.",
-  "next_start":"Never reduce798 unless a specific durable record is proven invalid. Fetch Winpass by fixed Drive ID, then continue the remaining eight NONMEDIA_SPECIAL_OR_PROOF documents: 25winpasst1suhy000101,000105,000106,000207,000208,000624; 25winpasst2suhy000204; 25winpasst3suhy000312. Repair truncated question extraction and bind table/figure context before promotion. Then MIXED_DOC_PARTIAL_STRICT, then MEDIA_HEAVY. After717/717 strict, evidence-review717 to canonical570 without count forcing; global1124; variants; app/browser/A4/publication.",
+  "exact_stop":"Durable strict progress is 876/1271: Standard317 + 実力錬成237 + Winpass322. Continue current manual run into MIXED_DOC_PARTIAL_STRICT; this checkpoint prevents regression if interrupted.",
+  "next_start":"Never reduce876 unless a durable record is proven invalid. Fetch Winpass by fixed Drive ID. Compute expected raw slots per document minus durable strict IDs to identify remaining slots in MIXED_DOC_PARTIAL_STRICT, revalidate each missing Q/A and context before durable promotion. Then MEDIA_HEAVY. After Winpass717/717 strict: evidence review717->570 without count forcing; global1124; variants; app/browser/A4/publication.",
   "main_untouched":true
 }
