@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T01:26:53.234Z",
+  "generatedAt": "2026-08-25T01:29:32.701Z",
   "passages": 168,
   "classification": "CANDIDATES_NOT_PASS_FAIL",
   "warning": "Detected structures are candidates only. A feature becomes allowed only after an evidence-backed textbook/section chronology entry exists.",
@@ -518,12 +518,12 @@
           },
           {
             "where": "slash:9",
-            "text": "I can read “dog”.",
+            "text": "I can read / “dog”.",
             "match": "can"
           },
           {
             "where": "slash:10",
-            "text": "I can read “cat”, too.",
+            "text": "I can read / “cat”, too.",
             "match": "can"
           },
           {
@@ -558,16 +558,31 @@
           },
           {
             "where": "slash:7",
-            "text": "Can you read English?",
+            "text": "Can you read / English?",
             "match": "Can"
           },
           {
             "where": "slash:8",
-            "text": "Yes, I can.",
+            "text": "Yes, / I can.",
             "match": "can"
           },
           {
             "where": "A3.evidence",
+            "text": "Can you read English? / Yes, I can.",
+            "match": "Can"
+          },
+          {
+            "where": "B3.prompt",
+            "text": "3. “Can you read English?” への答えを英語で書きなさい。",
+            "match": "Can"
+          },
+          {
+            "where": "B3.answer",
+            "text": "Yes, I can.",
+            "match": "can"
+          },
+          {
+            "where": "B3.evidence",
             "text": "Can you read English? / Yes, I can.",
             "match": "Can"
           }
@@ -603,17 +618,22 @@
           },
           {
             "where": "slash:5",
-            "text": "I can jump high.",
+            "text": "I can jump / high.",
             "match": "can"
           },
           {
             "where": "slash:6",
-            "text": "I can shoot the ball.",
+            "text": "I can shoot / the ball.",
             "match": "can"
           },
           {
-            "where": "A3.evidence",
+            "where": "A4.evidence",
             "text": "I can run. / I can jump high. / I can shoot the ball.",
+            "match": "can"
+          },
+          {
+            "where": "B4.evidence",
+            "text": "I can shoot the ball.",
             "match": "can"
           }
         ],
@@ -625,6 +645,16 @@
           },
           {
             "where": "slash:7",
+            "text": "Basketball is / very exciting.",
+            "match": "exciting"
+          },
+          {
+            "where": "B2.answer",
+            "text": "very exciting",
+            "match": "exciting"
+          },
+          {
+            "where": "B2.evidence",
             "text": "Basketball is very exciting.",
             "match": "exciting"
           }
