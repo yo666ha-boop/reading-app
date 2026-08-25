@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-08-25T11:52:58.975Z",
+    "generatedAt": "2026-08-25T11:53:55.977Z",
     "passages": 168,
     "canonicalSource": {
       "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
@@ -18,230 +18,26 @@
     "counts": {
       "V7_CHRONOLOGY_ALLOWED": 10132,
       "ELEMENTARY_LEXICAL_ALLOWED": 3514,
-      "EXPLICIT_PROPER_NAME_ALLOWED": 124,
+      "EXPLICIT_PROPER_NAME_ALLOWED": 140,
       "REVIEWED_EXPLICIT_ALLOWED": 756,
       "MORPHOLOGY_TO_GRAMMAR": 2502,
       "CONTRACTION_TO_GRAMMAR": 227,
       "EXPLICIT_FUNCTION_TO_GRAMMAR": 20718,
-      "FUTURE_V7_LEAK": 724,
-      "UNREGISTERED_V7": 1178,
+      "FUTURE_V7_LEAK": 700,
+      "UNREGISTERED_V7": 1122,
       "UNREGISTERED_PROPER": 0,
-      "NOTED_UNLEARNED_ALLOWED": 1029
+      "NOTED_UNLEARNED_ALLOWED": 1093
     },
-    "notesPresent": 144,
+    "notesPresent": 158,
     "missingGloss": 0,
     "mappingErrors": [],
     "runtimeBrowserErrors": [],
-    "uniqueUnresolved": 479,
-    "futureVocabLeakOccurrences": 1902,
+    "uniqueUnresolved": 469,
+    "futureVocabLeakOccurrences": 1822,
     "chronologyPass": false,
     "rule": "Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. Explicit proper-name allowances are honored only inside the current passage when allowedWords marks the row proper names and the actual token is capitalized; those names are never promoted into cumulative ordinary vocabulary. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun. Explicitly tagged local proper-name possessives are authorized only for that passage. A passage-local notes entry authorizes only the exact noted token in that passage and only when English and Japanese gloss are both nonblank; it never enters cumulative vocabulary."
   },
   "unresolved": [
-    {
-      "token": "anna",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 8,
-      "sections": [
-        "サンシャイン|1|Step 6 / Our Project 3 / Power-Up 6"
-      ],
-      "examples": [
-        "サンシャイン|1|Step 6 / Our Project 3 / Power-Up 6|sentence:1",
-        "サンシャイン|1|Step 6 / Our Project 3 / Power-Up 6|slash:1",
-        "サンシャイン|1|Step 6 / Our Project 3 / Power-Up 6|A1.answer",
-        "サンシャイン|1|Step 6 / Our Project 3 / Power-Up 6|A1.evidence",
-        "サンシャイン|1|Step 6 / Our Project 3 / Power-Up 6|A5.prompt",
-        "サンシャイン|1|Step 6 / Our Project 3 / Power-Up 6|B1.answer",
-        "サンシャイン|1|Step 6 / Our Project 3 / Power-Up 6|B1.evidence",
-        "サンシャイン|1|Step 6 / Our Project 3 / Power-Up 6|B4.prompt"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "communication",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 8,
-      "sections": [
-        "サンシャイン|3|PROGRAM 4-3",
-        "サンシャイン|3|PROGRAM 7-2",
-        "サンシャイン|3|PROGRAM 7-3"
-      ],
-      "examples": [
-        "サンシャイン|3|PROGRAM 4-3|sentence:9",
-        "サンシャイン|3|PROGRAM 4-3|slash:9",
-        "サンシャイン|3|PROGRAM 7-2|sentence:11",
-        "サンシャイン|3|PROGRAM 7-2|slash:11",
-        "サンシャイン|3|PROGRAM 7-3|sentence:10",
-        "サンシャイン|3|PROGRAM 7-3|slash:10",
-        "サンシャイン|3|PROGRAM 7-3|A4.evidence",
-        "サンシャイン|3|PROGRAM 7-3|B4.evidence"
-      ],
-      "sectionCount": 3
-    },
-    {
-      "token": "damage",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        3,
-        11,
-        6,
-        "damage",
-        0
-      ],
-      "occurrences": 8,
-      "sections": [
-        "ニューホライズン|3|Unit 3-1",
-        "ニューホライズン|3|Unit 3-4",
-        "ニューホライズン|3|Unit 5-4"
-      ],
-      "examples": [
-        "ニューホライズン|3|Unit 3-1|sentence:8",
-        "ニューホライズン|3|Unit 3-1|slash:8",
-        "ニューホライズン|3|Unit 3-4|sentence:4",
-        "ニューホライズン|3|Unit 3-4|slash:4",
-        "ニューホライズン|3|Unit 3-4|A3.evidence",
-        "ニューホライズン|3|Unit 3-4|B2.evidence",
-        "ニューホライズン|3|Unit 5-4|sentence:6",
-        "ニューホライズン|3|Unit 5-4|slash:6"
-      ],
-      "sectionCount": 3
-    },
-    {
-      "token": "diet",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 8,
-      "sections": [
-        "サンシャイン|3|PROGRAM 3-3"
-      ],
-      "examples": [
-        "サンシャイン|3|PROGRAM 3-3|sentence:2",
-        "サンシャイン|3|PROGRAM 3-3|sentence:12",
-        "サンシャイン|3|PROGRAM 3-3|slash:2",
-        "サンシャイン|3|PROGRAM 3-3|slash:12",
-        "サンシャイン|3|PROGRAM 3-3|A1.answer",
-        "サンシャイン|3|PROGRAM 3-3|A1.evidence",
-        "サンシャイン|3|PROGRAM 3-3|B3.answer",
-        "サンシャイン|3|PROGRAM 3-3|B3.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "difference",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 8,
-      "sections": [
-        "サンシャイン|3|PROGRAM 5-2",
-        "ニューホライズン|2|Unit 6-3"
-      ],
-      "examples": [
-        "サンシャイン|3|PROGRAM 5-2|sentence:7",
-        "サンシャイン|3|PROGRAM 5-2|slash:7",
-        "ニューホライズン|2|Unit 6-3|sentence:6",
-        "ニューホライズン|2|Unit 6-3|slash:6",
-        "ニューホライズン|2|Unit 6-3|A4.answer",
-        "ニューホライズン|2|Unit 6-3|A4.evidence",
-        "ニューホライズン|2|Unit 6-3|B1.answer",
-        "ニューホライズン|2|Unit 6-3|B1.evidence"
-      ],
-      "sectionCount": 2
-    },
-    {
-      "token": "earthquake",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        2,
-        9,
-        8,
-        "earthquake",
-        0
-      ],
-      "occurrences": 8,
-      "sections": [
-        "サンシャイン|2|PROGRAM 5-2"
-      ],
-      "examples": [
-        "サンシャイン|2|PROGRAM 5-2|sentence:2",
-        "サンシャイン|2|PROGRAM 5-2|sentence:3",
-        "サンシャイン|2|PROGRAM 5-2|sentence:13",
-        "サンシャイン|2|PROGRAM 5-2|slash:2",
-        "サンシャイン|2|PROGRAM 5-2|slash:3",
-        "サンシャイン|2|PROGRAM 5-2|slash:13",
-        "サンシャイン|2|PROGRAM 5-2|B1.evidence",
-        "サンシャイン|2|PROGRAM 5-2|B4.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "easily",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 8,
-      "sections": [
-        "ニューホライズン|2|Unit 5-1",
-        "ニューホライズン|2|Unit 5-2"
-      ],
-      "examples": [
-        "ニューホライズン|2|Unit 5-1|sentence:4",
-        "ニューホライズン|2|Unit 5-1|sentence:8",
-        "ニューホライズン|2|Unit 5-1|slash:4",
-        "ニューホライズン|2|Unit 5-1|slash:8",
-        "ニューホライズン|2|Unit 5-1|A4.evidence",
-        "ニューホライズン|2|Unit 5-2|sentence:8",
-        "ニューホライズン|2|Unit 5-2|slash:8",
-        "ニューホライズン|2|Unit 5-2|A4.evidence"
-      ],
-      "sectionCount": 2
-    },
-    {
-      "token": "handle",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        3,
-        11,
-        6,
-        "handle",
-        0
-      ],
-      "occurrences": 8,
-      "sections": [
-        "ニューホライズン|2|Unit 5-1"
-      ],
-      "examples": [
-        "ニューホライズン|2|Unit 5-1|sentence:2",
-        "ニューホライズン|2|Unit 5-1|sentence:3",
-        "ニューホライズン|2|Unit 5-1|slash:2",
-        "ニューホライズン|2|Unit 5-1|slash:3",
-        "ニューホライズン|2|Unit 5-1|A2.answer",
-        "ニューホライズン|2|Unit 5-1|A2.evidence",
-        "ニューホライズン|2|Unit 5-1|B1.evidence",
-        "ニューホライズン|2|Unit 5-1|B2.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "human",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 8,
-      "sections": [
-        "サンシャイン|3|PROGRAM 7-2"
-      ],
-      "examples": [
-        "サンシャイン|3|PROGRAM 7-2|sentence:5",
-        "サンシャイン|3|PROGRAM 7-2|sentence:9",
-        "サンシャイン|3|PROGRAM 7-2|slash:5",
-        "サンシャイン|3|PROGRAM 7-2|slash:9",
-        "サンシャイン|3|PROGRAM 7-2|A2.answer",
-        "サンシャイン|3|PROGRAM 7-2|A2.evidence",
-        "サンシャイン|3|PROGRAM 7-2|A5.evidence",
-        "サンシャイン|3|PROGRAM 7-2|B1.evidence"
-      ],
-      "sectionCount": 1
-    },
     {
       "token": "k",
       "kind": "FUTURE_V7_LEAK",
@@ -265,26 +61,6 @@
         "ニューホライズン|1|Unit 6-1|A1.evidence",
         "ニューホライズン|1|Unit 6-1|B1.answer",
         "ニューホライズン|1|Unit 6-1|B1.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "kyoto",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 8,
-      "sections": [
-        "ニューホライズン|3|Unit 1-1"
-      ],
-      "examples": [
-        "ニューホライズン|3|Unit 1-1|sentence:2",
-        "ニューホライズン|3|Unit 1-1|sentence:3",
-        "ニューホライズン|3|Unit 1-1|sentence:7",
-        "ニューホライズン|3|Unit 1-1|slash:2",
-        "ニューホライズン|3|Unit 1-1|slash:3",
-        "ニューホライズン|3|Unit 1-1|slash:7",
-        "ニューホライズン|3|Unit 1-1|A1.evidence",
-        "ニューホライズン|3|Unit 1-1|B3.evidence"
       ],
       "sectionCount": 1
     },
@@ -19374,28 +19150,11 @@
         "subrank": 8
       },
       "localReviewedTokens": 43,
-      "localProperNameTokens": 0,
+      "localProperNameTokens": 1,
       "priorReviewedTokens": 575,
       "cumulativeReviewedTokens": 591,
       "notes": 0,
       "candidates": [
-        {
-          "token": "anna",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:1",
-            "slash:1",
-            "A1.answer",
-            "A1.evidence",
-            "A5.prompt",
-            "B1.answer",
-            "B1.evidence",
-            "B4.prompt"
-          ]
-        },
         {
           "token": "i",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
@@ -24877,7 +24636,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 734,
       "cumulativeReviewedTokens": 748,
-      "notes": 1,
+      "notes": 2,
       "candidates": [
         {
           "token": "we",
@@ -24947,29 +24706,6 @@
             "slash:2",
             "slash:11",
             "A5.evidence"
-          ]
-        },
-        {
-          "token": "earthquake",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            2,
-            9,
-            8,
-            "earthquake",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:2",
-            "sentence:3",
-            "sentence:13",
-            "slash:2",
-            "slash:3",
-            "slash:13",
-            "B1.evidence",
-            "B4.evidence"
           ]
         },
         {
@@ -33462,7 +33198,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 1000,
       "cumulativeReviewedTokens": 1013,
-      "notes": 3,
+      "notes": 4,
       "candidates": [
         {
           "token": "our",
@@ -33539,23 +33275,6 @@
           "locations": [
             "sentence:1",
             "slash:1"
-          ]
-        },
-        {
-          "token": "diet",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:2",
-            "sentence:12",
-            "slash:2",
-            "slash:12",
-            "A1.answer",
-            "A1.evidence",
-            "B3.answer",
-            "B3.evidence"
           ]
         },
         {
@@ -35215,7 +34934,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 1023,
       "cumulativeReviewedTokens": 1048,
-      "notes": 1,
+      "notes": 2,
       "candidates": [
         {
           "token": "my",
@@ -35760,17 +35479,6 @@
             "sign",
             0
           ],
-          "evidence": null,
-          "locations": [
-            "sentence:9",
-            "slash:9"
-          ]
-        },
-        {
-          "token": "communication",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
           "evidence": null,
           "locations": [
             "sentence:9",
@@ -36490,7 +36198,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 1060,
       "cumulativeReviewedTokens": 1082,
-      "notes": 5,
+      "notes": 6,
       "candidates": [
         {
           "token": "our",
@@ -36816,17 +36524,6 @@
             "fileId": "file_00000000961881fd9924a7c8e76fe956",
             "records": 104
           },
-          "locations": [
-            "sentence:7",
-            "slash:7"
-          ]
-        },
-        {
-          "token": "difference",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
           "locations": [
             "sentence:7",
             "slash:7"
@@ -40066,7 +39763,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 1162,
       "cumulativeReviewedTokens": 1178,
-      "notes": 0,
+      "notes": 2,
       "candidates": [
         {
           "token": "these",
@@ -40440,23 +40137,6 @@
           ]
         },
         {
-          "token": "human",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:5",
-            "sentence:9",
-            "slash:5",
-            "slash:9",
-            "A2.answer",
-            "A2.evidence",
-            "A5.evidence",
-            "B1.evidence"
-          ]
-        },
-        {
           "token": "or",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -40663,17 +40343,6 @@
           ]
         },
         {
-          "token": "communication",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:11",
-            "slash:11"
-          ]
-        },
-        {
           "token": "while",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -40743,7 +40412,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 1178,
       "cumulativeReviewedTokens": 1200,
-      "notes": 0,
+      "notes": 1,
       "candidates": [
         {
           "token": "an",
@@ -41240,19 +40909,6 @@
             "protect",
             0
           ],
-          "evidence": null,
-          "locations": [
-            "sentence:10",
-            "slash:10",
-            "A4.evidence",
-            "B4.evidence"
-          ]
-        },
-        {
-          "token": "communication",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
           "evidence": null,
           "locations": [
             "sentence:10",
@@ -56419,7 +56075,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 549,
       "cumulativeReviewedTokens": 564,
-      "notes": 2,
+      "notes": 4,
       "candidates": [
         {
           "token": "i",
@@ -56543,29 +56199,6 @@
           ]
         },
         {
-          "token": "handle",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            3,
-            11,
-            6,
-            "handle",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:2",
-            "sentence:3",
-            "slash:2",
-            "slash:3",
-            "A2.answer",
-            "A2.evidence",
-            "B1.evidence",
-            "B2.evidence"
-          ]
-        },
-        {
           "token": "can",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -56656,20 +56289,6 @@
             "slash:4",
             "slash:11",
             "A5.evidence"
-          ]
-        },
-        {
-          "token": "easily",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:4",
-            "sentence:8",
-            "slash:4",
-            "slash:8",
-            "A4.evidence"
           ]
         },
         {
@@ -56948,7 +56567,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 564,
       "cumulativeReviewedTokens": 570,
-      "notes": 1,
+      "notes": 2,
       "candidates": [
         {
           "token": "at",
@@ -57440,18 +57059,6 @@
             "sentence:8",
             "slash:8",
             "A4.answer",
-            "A4.evidence"
-          ]
-        },
-        {
-          "token": "easily",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:8",
-            "slash:8",
             "A4.evidence"
           ]
         },
@@ -59639,7 +59246,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 608,
       "cumulativeReviewedTokens": 617,
-      "notes": 1,
+      "notes": 2,
       "candidates": [
         {
           "token": "we",
@@ -59881,21 +59488,6 @@
             "sentence:7",
             "slash:6",
             "slash:7",
-            "A4.answer",
-            "A4.evidence",
-            "B1.answer",
-            "B1.evidence"
-          ]
-        },
-        {
-          "token": "difference",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:6",
-            "slash:6",
             "A4.answer",
             "A4.evidence",
             "B1.answer",
@@ -63637,7 +63229,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 32,
-      "localProperNameTokens": 0,
+      "localProperNameTokens": 1,
       "priorReviewedTokens": 708,
       "cumulativeReviewedTokens": 719,
       "notes": 2,
@@ -63814,23 +63406,6 @@
             "slash:4",
             "slash:5",
             "slash:9"
-          ]
-        },
-        {
-          "token": "kyoto",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:2",
-            "sentence:3",
-            "sentence:7",
-            "slash:2",
-            "slash:3",
-            "slash:7",
-            "A1.evidence",
-            "B3.evidence"
           ]
         },
         {
@@ -69370,7 +68945,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 793,
       "cumulativeReviewedTokens": 802,
-      "notes": 1,
+      "notes": 2,
       "candidates": [
         {
           "token": "our",
@@ -69888,23 +69463,6 @@
           "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:8",
-            "slash:8"
-          ]
-        },
-        {
-          "token": "damage",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            3,
-            11,
-            6,
-            "damage",
-            0
-          ],
           "evidence": null,
           "locations": [
             "sentence:8",
@@ -71496,7 +71054,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 816,
       "cumulativeReviewedTokens": 831,
-      "notes": 3,
+      "notes": 4,
       "candidates": [
         {
           "token": "sea",
@@ -71758,25 +71316,6 @@
           "base": null,
           "intro": null,
           "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:4",
-            "slash:4",
-            "A3.evidence",
-            "B2.evidence"
-          ]
-        },
-        {
-          "token": "damage",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            3,
-            11,
-            6,
-            "damage",
-            0
-          ],
-          "evidence": null,
           "locations": [
             "sentence:4",
             "slash:4",
@@ -77018,7 +76557,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 905,
       "cumulativeReviewedTokens": 915,
-      "notes": 2,
+      "notes": 3,
       "candidates": [
         {
           "token": "in",
@@ -77373,23 +76912,6 @@
             "slash:9",
             "A4.evidence",
             "B4.evidence"
-          ]
-        },
-        {
-          "token": "damage",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            3,
-            11,
-            6,
-            "damage",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:6",
-            "slash:6"
           ]
         },
         {
