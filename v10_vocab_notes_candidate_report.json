@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-08-25T01:20:41.814Z",
+    "generatedAt": "2026-08-25T01:22:17.779Z",
     "passages": 168,
     "canonicalSource": {
       "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
@@ -9,21 +9,24 @@
       "modifiedTime": "2026-08-18T06:24:25.275Z"
     },
     "counts": {
-      "V7_CHRONOLOGY_ALLOWED": 13985,
-      "REVIEWED_EXPLICIT_ALLOWED": 1808,
+      "V7_CHRONOLOGY_ALLOWED": 13987,
+      "REVIEWED_EXPLICIT_ALLOWED": 1809,
       "MORPHOLOGY_TO_GRAMMAR": 1698,
       "CONTRACTION_TO_GRAMMAR": 212,
-      "EXPLICIT_FUNCTION_TO_GRAMMAR": 20700,
-      "FUTURE_V7_LEAK": 1449,
+      "EXPLICIT_FUNCTION_TO_GRAMMAR": 20701,
+      "FUTURE_V7_LEAK": 1450,
       "UNREGISTERED_V7": 982,
       "UNREGISTERED_PROPER": 57
     },
     "notesPresent": 0,
     "missingGloss": 0,
     "mappingErrors": [],
-    "runtimeBrowserErrors": [],
+    "runtimeBrowserErrors": [
+      "Uncaught [Error: Row mismatch 73]",
+      "Uncaught [Error: English mismatch 100#1: At school, I talk about local food in a short speech. <> At school, I give a short speech about local food.]"
+    ],
     "uniqueUnresolved": 454,
-    "futureVocabLeakOccurrences": 2488,
+    "futureVocabLeakOccurrences": 2489,
     "chronologyPass": false,
     "rule": "Primary lexical gate: canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are never lexical PASS; they are handed to the grammar chronology gate before lexical lookup. For all other tokens, any direct canonical-v7 token or inflection base introduced after the passage cutoff remains a future lexical leak and cannot be overridden by app allowedWords. Secondary reviewed app allowedWords are used only for tokens absent from canonical v7, with bounded chronology provenance. Morphology is handed to grammar chronology, not lexical PASS."
   },
@@ -6302,6 +6305,27 @@
       "sectionCount": 1
     },
     {
+      "token": "bring",
+      "kind": "FUTURE_V7_LEAK",
+      "intro": [
+        2,
+        5,
+        8,
+        "bring",
+        0
+      ],
+      "occurrences": 3,
+      "sections": [
+        "サンシャイン|2|PROGRAM 2-1"
+      ],
+      "examples": [
+        "サンシャイン|2|PROGRAM 2-1|slash:12",
+        "サンシャイン|2|PROGRAM 2-1|A5.answer",
+        "サンシャイン|2|PROGRAM 2-1|A5.evidence"
+      ],
+      "sectionCount": 1
+    },
+    {
       "token": "choices",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -7189,26 +7213,6 @@
       "examples": [
         "サンシャイン|2|PROGRAM 5-1|sentence:1",
         "サンシャイン|2|PROGRAM 5-1|slash:1"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "bring",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        2,
-        5,
-        8,
-        "bring",
-        0
-      ],
-      "occurrences": 2,
-      "sections": [
-        "サンシャイン|2|PROGRAM 2-1"
-      ],
-      "examples": [
-        "サンシャイン|2|PROGRAM 2-1|A5.answer",
-        "サンシャイン|2|PROGRAM 2-1|A5.evidence"
       ],
       "sectionCount": 1
     },
@@ -21379,6 +21383,17 @@
           ]
         },
         {
+          "token": "can",
+          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
+          "base": null,
+          "intro": null,
+          "evidence": "closed structural function set; grammar chronology required",
+          "locations": [
+            "slash:12",
+            "A5.evidence"
+          ]
+        },
+        {
           "token": "bring",
           "kind": "FUTURE_V7_LEAK",
           "base": null,
@@ -21391,17 +21406,8 @@
           ],
           "evidence": null,
           "locations": [
+            "slash:12",
             "A5.answer",
-            "A5.evidence"
-          ]
-        },
-        {
-          "token": "can",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
             "A5.evidence"
           ]
         },
