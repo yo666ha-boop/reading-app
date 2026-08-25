@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-08-25T18:42:58.580Z",
+    "generatedAt": "2026-08-25T18:43:43.236Z",
     "passages": 168,
     "canonicalSource": {
       "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
@@ -16,13 +16,13 @@
       "recordIdEnd": 4175
     },
     "counts": {
-      "V7_CHRONOLOGY_ALLOWED": 10084,
-      "ELEMENTARY_LEXICAL_ALLOWED": 3497,
+      "V7_CHRONOLOGY_ALLOWED": 10072,
+      "ELEMENTARY_LEXICAL_ALLOWED": 3499,
       "EXPLICIT_PROPER_NAME_ALLOWED": 183,
       "REVIEWED_EXPLICIT_ALLOWED": 758,
-      "MORPHOLOGY_TO_GRAMMAR": 2483,
+      "MORPHOLOGY_TO_GRAMMAR": 2481,
       "CONTRACTION_TO_GRAMMAR": 230,
-      "EXPLICIT_FUNCTION_TO_GRAMMAR": 20647,
+      "EXPLICIT_FUNCTION_TO_GRAMMAR": 20651,
       "FUTURE_V7_LEAK": 0,
       "UNREGISTERED_V7": 0,
       "UNREGISTERED_PROPER": 0,
@@ -31806,11 +31806,11 @@
             "sentence:6",
             "sentence:7",
             "sentence:8",
+            "sentence:8",
             "sentence:9",
             "slash:2",
             "slash:3",
-            "slash:6",
-            "slash:7"
+            "slash:6"
           ]
         },
         {
@@ -31877,8 +31877,12 @@
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "sentence:5",
+            "sentence:8",
             "slash:5",
-            "B2.evidence"
+            "slash:8",
+            "A5.evidence",
+            "B2.evidence",
+            "B4.evidence"
           ]
         },
         {
@@ -31924,17 +31928,11 @@
           ]
         },
         {
-          "token": "working",
-          "kind": "MORPHOLOGY_TO_GRAMMAR",
-          "base": "work",
-          "intro": [
-            1,
-            7,
-            1,
-            "work",
-            0
-          ],
-          "evidence": null,
+          "token": "and",
+          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
+          "base": null,
+          "intro": null,
+          "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "sentence:8",
             "slash:8",
@@ -35916,19 +35914,6 @@
           ]
         },
         {
-          "token": "when",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:6",
-            "slash:6",
-            "A4.evidence",
-            "B3.evidence"
-          ]
-        },
-        {
           "token": "i",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -35945,6 +35930,19 @@
             "A5.evidence",
             "B3.evidence",
             "B4.evidence"
+          ]
+        },
+        {
+          "token": "and",
+          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
+          "base": null,
+          "intro": null,
+          "evidence": "closed structural function set; grammar chronology required",
+          "locations": [
+            "sentence:6",
+            "slash:6",
+            "A4.evidence",
+            "B3.evidence"
           ]
         },
         {
@@ -46922,10 +46920,8 @@
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "sentence:2",
-            "sentence:6",
             "sentence:8",
             "slash:2",
-            "slash:6",
             "slash:8",
             "A2.evidence",
             "A5.evidence"
@@ -46963,10 +46959,8 @@
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "sentence:2",
-            "sentence:6",
             "sentence:10",
             "slash:2",
-            "slash:6",
             "slash:10",
             "A2.evidence",
             "B4.evidence"
@@ -47064,14 +47058,14 @@
           "locations": [
             "sentence:4",
             "sentence:5",
-            "sentence:6",
             "sentence:8",
             "sentence:9",
             "sentence:10",
             "slash:4",
             "slash:5",
-            "slash:6",
-            "slash:8"
+            "slash:8",
+            "slash:9",
+            "slash:10"
           ]
         },
         {
@@ -47123,7 +47117,9 @@
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "sentence:5",
+            "sentence:6",
             "slash:5",
+            "slash:6",
             "B2.evidence"
           ]
         },
@@ -47141,17 +47137,6 @@
         },
         {
           "token": "this",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:6",
-            "slash:6"
-          ]
-        },
-        {
-          "token": "may",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
           "intro": null,
@@ -57448,7 +57433,7 @@
           ]
         },
         {
-          "token": "too",
+          "token": "very",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
           "intro": null,
@@ -57456,23 +57441,6 @@
           "locations": [
             "sentence:6",
             "slash:6",
-            "A4.answer",
-            "A4.evidence",
-            "B4.answer",
-            "B4.evidence"
-          ]
-        },
-        {
-          "token": "to",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:6",
-            "sentence:10",
-            "slash:6",
-            "slash:10",
             "A4.answer",
             "A4.evidence",
             "B4.answer",
@@ -57552,6 +57520,17 @@
         },
         {
           "token": "we",
+          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
+          "base": null,
+          "intro": null,
+          "evidence": "closed structural function set; grammar chronology required",
+          "locations": [
+            "sentence:10",
+            "slash:10"
+          ]
+        },
+        {
+          "token": "to",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
           "intro": null,
@@ -61274,9 +61253,11 @@
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "sentence:2",
+            "sentence:2",
             "sentence:4",
             "sentence:4",
             "sentence:10",
+            "slash:2",
             "slash:2",
             "slash:4",
             "slash:4",
@@ -61315,7 +61296,7 @@
           ]
         },
         {
-          "token": "to",
+          "token": "so",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
           "intro": null,
@@ -61326,6 +61307,40 @@
             "slash:2",
             "slash:3",
             "A2.evidence"
+          ]
+        },
+        {
+          "token": "we",
+          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
+          "base": null,
+          "intro": null,
+          "evidence": "closed structural function set; grammar chronology required",
+          "locations": [
+            "sentence:2",
+            "sentence:4",
+            "sentence:5",
+            "sentence:6",
+            "sentence:9",
+            "slash:2",
+            "slash:4",
+            "slash:5",
+            "slash:6",
+            "slash:9"
+          ]
+        },
+        {
+          "token": "used",
+          "kind": "MORPHOLOGY_TO_GRAMMAR",
+          "base": "use",
+          "intro": null,
+          "evidence": {
+            "source": "elementary",
+            "fileId": "file_00000000961881fd9924a7c8e76fe956",
+            "records": 104
+          },
+          "locations": [
+            "sentence:2",
+            "slash:2"
           ]
         },
         {
@@ -61384,18 +61399,6 @@
           ]
         },
         {
-          "token": "so",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:3",
-            "slash:3",
-            "A2.evidence"
-          ]
-        },
-        {
           "token": "brought",
           "kind": "MORPHOLOGY_TO_GRAMMAR",
           "base": "bring",
@@ -61433,22 +61436,15 @@
           ]
         },
         {
-          "token": "we",
+          "token": "to",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
           "intro": null,
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
-            "sentence:4",
-            "sentence:5",
-            "sentence:6",
-            "sentence:9",
-            "slash:4",
-            "slash:5",
-            "slash:6",
-            "slash:9",
-            "A3.evidence",
-            "A5.evidence"
+            "sentence:3",
+            "slash:3",
+            "A2.evidence"
           ]
         },
         {
