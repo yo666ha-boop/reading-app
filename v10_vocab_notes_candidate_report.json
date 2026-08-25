@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-08-25T01:35:36.640Z",
+    "generatedAt": "2026-08-25T01:40:47.224Z",
     "passages": 168,
     "canonicalSource": {
       "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
@@ -9,26 +9,23 @@
       "modifiedTime": "2026-08-18T06:24:25.275Z"
     },
     "counts": {
-      "V7_CHRONOLOGY_ALLOWED": 13987,
-      "REVIEWED_EXPLICIT_ALLOWED": 899,
+      "V7_CHRONOLOGY_ALLOWED": 13985,
+      "REVIEWED_EXPLICIT_ALLOWED": 898,
       "MORPHOLOGY_TO_GRAMMAR": 1671,
       "CONTRACTION_TO_GRAMMAR": 212,
-      "EXPLICIT_FUNCTION_TO_GRAMMAR": 20701,
-      "FUTURE_V7_LEAK": 1450,
-      "UNREGISTERED_V7": 1763,
-      "UNREGISTERED_PROPER": 213
+      "EXPLICIT_FUNCTION_TO_GRAMMAR": 20700,
+      "FUTURE_V7_LEAK": 1449,
+      "UNREGISTERED_V7": 1976,
+      "UNREGISTERED_PROPER": 0
     },
     "notesPresent": 0,
     "missingGloss": 0,
     "mappingErrors": [],
-    "runtimeBrowserErrors": [
-      "Uncaught [Error: Row mismatch 73]",
-      "Uncaught [Error: English mismatch 100#1: At school, I talk about local food in a short speech. <> At school, I give a short speech about local food.]"
-    ],
-    "uniqueUnresolved": 608,
-    "futureVocabLeakOccurrences": 3426,
+    "runtimeBrowserErrors": [],
+    "uniqueUnresolved": 602,
+    "futureVocabLeakOccurrences": 3425,
     "chronologyPass": false,
-    "rule": "Primary lexical gate: canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. For v7-absent tokens, reviewed app allowedWords may authorize only later passages: the current passage is classified first, then its bounded explicit allowance becomes prior evidence with exact textbook/grade/section provenance. Morphology is handed to grammar chronology, not lexical PASS."
+    "rule": "Primary lexical gate: canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. For v7-absent tokens, reviewed app allowedWords may authorize only later passages: the current passage is classified first, then its bounded explicit allowance becomes prior evidence with exact textbook/grade/section provenance. Capitalization alone never authorizes or classifies a proper noun. Morphology is handed to grammar chronology, not lexical PASS."
   },
   "unresolved": [
     {
@@ -151,7 +148,7 @@
     },
     {
       "token": "ken",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 33,
       "sections": [
@@ -494,7 +491,7 @@
     },
     {
       "token": "mei",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 20,
       "sections": [
@@ -802,6 +799,31 @@
       "sectionCount": 3
     },
     {
+      "token": "researchers",
+      "kind": "UNREGISTERED_V7",
+      "intro": null,
+      "occurrences": 16,
+      "sections": [
+        "ニューホライズン|3|Unit 3-3",
+        "ニューホライズン|3|Unit 3-4"
+      ],
+      "examples": [
+        "ニューホライズン|3|Unit 3-3|sentence:1",
+        "ニューホライズン|3|Unit 3-3|sentence:4",
+        "ニューホライズン|3|Unit 3-3|sentence:7",
+        "ニューホライズン|3|Unit 3-3|slash:1",
+        "ニューホライズン|3|Unit 3-3|slash:4",
+        "ニューホライズン|3|Unit 3-3|slash:7",
+        "ニューホライズン|3|Unit 3-3|A1.evidence",
+        "ニューホライズン|3|Unit 3-3|A5.evidence",
+        "ニューホライズン|3|Unit 3-3|B1.evidence",
+        "ニューホライズン|3|Unit 3-3|B3.evidence",
+        "ニューホライズン|3|Unit 3-4|sentence:5",
+        "ニューホライズン|3|Unit 3-4|sentence:8"
+      ],
+      "sectionCount": 2
+    },
+    {
       "token": "trash",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -846,6 +868,30 @@
         "ニューホライズン|2|Unit 7-3|A5.answer",
         "ニューホライズン|2|Unit 7-3|A5.evidence",
         "ニューホライズン|2|Unit 7-3|B1.answer"
+      ],
+      "sectionCount": 1
+    },
+    {
+      "token": "basketball",
+      "kind": "UNREGISTERED_V7",
+      "intro": null,
+      "occurrences": 15,
+      "sections": [
+        "サンシャイン|1|Get Ready 4"
+      ],
+      "examples": [
+        "サンシャイン|1|Get Ready 4|sentence:1",
+        "サンシャイン|1|Get Ready 4|sentence:2",
+        "サンシャイン|1|Get Ready 4|sentence:7",
+        "サンシャイン|1|Get Ready 4|sentence:8",
+        "サンシャイン|1|Get Ready 4|sentence:10",
+        "サンシャイン|1|Get Ready 4|slash:1",
+        "サンシャイン|1|Get Ready 4|slash:2",
+        "サンシャイン|1|Get Ready 4|slash:7",
+        "サンシャイン|1|Get Ready 4|slash:8",
+        "サンシャイン|1|Get Ready 4|slash:10",
+        "サンシャイン|1|Get Ready 4|A1.answer",
+        "サンシャイン|1|Get Ready 4|A1.evidence"
       ],
       "sectionCount": 1
     },
@@ -1210,30 +1256,6 @@
       "sectionCount": 1
     },
     {
-      "token": "basketball",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 12,
-      "sections": [
-        "サンシャイン|1|Get Ready 4"
-      ],
-      "examples": [
-        "サンシャイン|1|Get Ready 4|sentence:1",
-        "サンシャイン|1|Get Ready 4|sentence:2",
-        "サンシャイン|1|Get Ready 4|sentence:8",
-        "サンシャイン|1|Get Ready 4|sentence:10",
-        "サンシャイン|1|Get Ready 4|slash:1",
-        "サンシャイン|1|Get Ready 4|slash:2",
-        "サンシャイン|1|Get Ready 4|slash:8",
-        "サンシャイン|1|Get Ready 4|slash:10",
-        "サンシャイン|1|Get Ready 4|A1.answer",
-        "サンシャイン|1|Get Ready 4|A1.evidence",
-        "サンシャイン|1|Get Ready 4|B3.answer",
-        "サンシャイン|1|Get Ready 4|B3.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
       "token": "bento",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -1356,7 +1378,7 @@
     },
     {
       "token": "hana",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 12,
       "sections": [
@@ -1380,7 +1402,7 @@
     },
     {
       "token": "hokkaido",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 12,
       "sections": [
@@ -1537,6 +1559,30 @@
         "ニューホライズン|3|Unit 3-4|B4.evidence"
       ],
       "sectionCount": 2
+    },
+    {
+      "token": "schoolchildren",
+      "kind": "UNREGISTERED_V7",
+      "intro": null,
+      "occurrences": 12,
+      "sections": [
+        "サンシャイン|1|PROGRAM 6-3"
+      ],
+      "examples": [
+        "サンシャイン|1|PROGRAM 6-3|sentence:2",
+        "サンシャイン|1|PROGRAM 6-3|sentence:6",
+        "サンシャイン|1|PROGRAM 6-3|sentence:9",
+        "サンシャイン|1|PROGRAM 6-3|sentence:11",
+        "サンシャイン|1|PROGRAM 6-3|slash:2",
+        "サンシャイン|1|PROGRAM 6-3|slash:6",
+        "サンシャイン|1|PROGRAM 6-3|slash:9",
+        "サンシャイン|1|PROGRAM 6-3|slash:11",
+        "サンシャイン|1|PROGRAM 6-3|A1.evidence",
+        "サンシャイン|1|PROGRAM 6-3|A5.evidence",
+        "サンシャイン|1|PROGRAM 6-3|B1.evidence",
+        "サンシャイン|1|PROGRAM 6-3|B4.evidence"
+      ],
+      "sectionCount": 1
     },
     {
       "token": "term",
@@ -2026,7 +2072,7 @@
     },
     {
       "token": "riko's",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 10,
       "sections": [
@@ -2075,8 +2121,31 @@
       "sectionCount": 1
     },
     {
+      "token": "supporters",
+      "kind": "UNREGISTERED_V7",
+      "intro": null,
+      "occurrences": 10,
+      "sections": [
+        "ニューホライズン|3|Unit 5-1",
+        "ニューホライズン|3|Unit 5-4"
+      ],
+      "examples": [
+        "ニューホライズン|3|Unit 5-1|sentence:6",
+        "ニューホライズン|3|Unit 5-1|slash:6",
+        "ニューホライズン|3|Unit 5-1|A4.answer",
+        "ニューホライズン|3|Unit 5-1|A4.evidence",
+        "ニューホライズン|3|Unit 5-1|B4.answer",
+        "ニューホライズン|3|Unit 5-1|B4.evidence",
+        "ニューホライズン|3|Unit 5-4|sentence:4",
+        "ニューホライズン|3|Unit 5-4|slash:4",
+        "ニューホライズン|3|Unit 5-4|A3.evidence",
+        "ニューホライズン|3|Unit 5-4|B2.evidence"
+      ],
+      "sectionCount": 2
+    },
+    {
       "token": "yuki",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 10,
       "sections": [
@@ -2386,7 +2455,7 @@
     },
     {
       "token": "anna",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 8,
       "sections": [
@@ -2555,6 +2624,26 @@
       "sectionCount": 3
     },
     {
+      "token": "diet",
+      "kind": "UNREGISTERED_V7",
+      "intro": null,
+      "occurrences": 8,
+      "sections": [
+        "サンシャイン|3|PROGRAM 3-3"
+      ],
+      "examples": [
+        "サンシャイン|3|PROGRAM 3-3|sentence:2",
+        "サンシャイン|3|PROGRAM 3-3|sentence:12",
+        "サンシャイン|3|PROGRAM 3-3|slash:2",
+        "サンシャイン|3|PROGRAM 3-3|slash:12",
+        "サンシャイン|3|PROGRAM 3-3|A1.answer",
+        "サンシャイン|3|PROGRAM 3-3|A1.evidence",
+        "サンシャイン|3|PROGRAM 3-3|B3.answer",
+        "サンシャイン|3|PROGRAM 3-3|B3.evidence"
+      ],
+      "sectionCount": 1
+    },
+    {
       "token": "difference",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -2696,7 +2785,7 @@
     },
     {
       "token": "kyoto",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 8,
       "sections": [
@@ -2923,48 +3012,6 @@
       "sectionCount": 1
     },
     {
-      "token": "researchers",
-      "kind": "UNREGISTERED_PROPER",
-      "intro": null,
-      "occurrences": 8,
-      "sections": [
-        "ニューホライズン|3|Unit 3-3",
-        "ニューホライズン|3|Unit 3-4"
-      ],
-      "examples": [
-        "ニューホライズン|3|Unit 3-3|sentence:1",
-        "ニューホライズン|3|Unit 3-3|slash:1",
-        "ニューホライズン|3|Unit 3-3|A1.evidence",
-        "ニューホライズン|3|Unit 3-3|B3.evidence",
-        "ニューホライズン|3|Unit 3-4|sentence:5",
-        "ニューホライズン|3|Unit 3-4|slash:5",
-        "ニューホライズン|3|Unit 3-4|A4.evidence",
-        "ニューホライズン|3|Unit 3-4|B4.evidence"
-      ],
-      "sectionCount": 2
-    },
-    {
-      "token": "researchers",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 8,
-      "sections": [
-        "ニューホライズン|3|Unit 3-3",
-        "ニューホライズン|3|Unit 3-4"
-      ],
-      "examples": [
-        "ニューホライズン|3|Unit 3-3|sentence:4",
-        "ニューホライズン|3|Unit 3-3|sentence:7",
-        "ニューホライズン|3|Unit 3-3|slash:4",
-        "ニューホライズン|3|Unit 3-3|slash:7",
-        "ニューホライズン|3|Unit 3-3|A5.evidence",
-        "ニューホライズン|3|Unit 3-3|B1.evidence",
-        "ニューホライズン|3|Unit 3-4|sentence:8",
-        "ニューホライズン|3|Unit 3-4|slash:8"
-      ],
-      "sectionCount": 2
-    },
-    {
       "token": "safe",
       "kind": "FUTURE_V7_LEAK",
       "intro": [
@@ -2990,26 +3037,6 @@
         "ニューホライズン|3|Unit 2-4|B3.evidence"
       ],
       "sectionCount": 2
-    },
-    {
-      "token": "schoolchildren",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 8,
-      "sections": [
-        "サンシャイン|1|PROGRAM 6-3"
-      ],
-      "examples": [
-        "サンシャイン|1|PROGRAM 6-3|sentence:6",
-        "サンシャイン|1|PROGRAM 6-3|sentence:9",
-        "サンシャイン|1|PROGRAM 6-3|sentence:11",
-        "サンシャイン|1|PROGRAM 6-3|slash:6",
-        "サンシャイン|1|PROGRAM 6-3|slash:9",
-        "サンシャイン|1|PROGRAM 6-3|slash:11",
-        "サンシャイン|1|PROGRAM 6-3|A5.evidence",
-        "サンシャイン|1|PROGRAM 6-3|B4.evidence"
-      ],
-      "sectionCount": 1
     },
     {
       "token": "sea",
@@ -3619,7 +3646,7 @@
     },
     {
       "token": "leonardo",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 7,
       "sections": [
@@ -4274,24 +4301,6 @@
       "sectionCount": 1
     },
     {
-      "token": "diet",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 6,
-      "sections": [
-        "サンシャイン|3|PROGRAM 3-3"
-      ],
-      "examples": [
-        "サンシャイン|3|PROGRAM 3-3|sentence:2",
-        "サンシャイン|3|PROGRAM 3-3|slash:2",
-        "サンシャイン|3|PROGRAM 3-3|A1.answer",
-        "サンシャイン|3|PROGRAM 3-3|A1.evidence",
-        "サンシャイン|3|PROGRAM 3-3|B3.answer",
-        "サンシャイン|3|PROGRAM 3-3|B3.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
       "token": "dish",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -4347,7 +4356,7 @@
     },
     {
       "token": "emi",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 6,
       "sections": [
@@ -4443,7 +4452,7 @@
     },
     {
       "token": "france",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 6,
       "sections": [
@@ -4521,7 +4530,7 @@
     },
     {
       "token": "ken's",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 6,
       "sections": [
@@ -4564,7 +4573,7 @@
     },
     {
       "token": "leo",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 6,
       "sections": [
@@ -5282,24 +5291,6 @@
       "sectionCount": 1
     },
     {
-      "token": "supporters",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 6,
-      "sections": [
-        "ニューホライズン|3|Unit 5-1"
-      ],
-      "examples": [
-        "ニューホライズン|3|Unit 5-1|sentence:6",
-        "ニューホライズン|3|Unit 5-1|slash:6",
-        "ニューホライズン|3|Unit 5-1|A4.answer",
-        "ニューホライズン|3|Unit 5-1|A4.evidence",
-        "ニューホライズン|3|Unit 5-1|B4.answer",
-        "ニューホライズン|3|Unit 5-1|B4.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
       "token": "thank",
       "kind": "FUTURE_V7_LEAK",
       "intro": [
@@ -5641,6 +5632,24 @@
       "sectionCount": 2
     },
     {
+      "token": "everyone",
+      "kind": "UNREGISTERED_V7",
+      "intro": null,
+      "occurrences": 5,
+      "sections": [
+        "サンシャイン|2|PROGRAM 2-3",
+        "サンシャイン|2|PROGRAM 8-2"
+      ],
+      "examples": [
+        "サンシャイン|2|PROGRAM 2-3|sentence:7",
+        "サンシャイン|2|PROGRAM 2-3|slash:7",
+        "サンシャイン|2|PROGRAM 8-2|sentence:10",
+        "サンシャイン|2|PROGRAM 8-2|slash:10",
+        "サンシャイン|2|PROGRAM 8-2|B4.evidence"
+      ],
+      "sectionCount": 2
+    },
+    {
       "token": "handmade",
       "kind": "FUTURE_V7_LEAK",
       "intro": [
@@ -5705,7 +5714,7 @@
     },
     {
       "token": "osaka",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 5,
       "sections": [
@@ -5832,7 +5841,7 @@
     },
     {
       "token": "riko",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 5,
       "sections": [
@@ -6044,7 +6053,7 @@
     },
     {
       "token": "aya",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 4,
       "sections": [
@@ -6152,7 +6161,7 @@
     },
     {
       "token": "brown",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 4,
       "sections": [
@@ -6838,7 +6847,7 @@
     },
     {
       "token": "hi",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 4,
       "sections": [
@@ -7124,7 +7133,7 @@
     },
     {
       "token": "modern",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 4,
       "sections": [
@@ -7302,7 +7311,7 @@
     },
     {
       "token": "police",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 4,
       "sections": [
@@ -7618,22 +7627,6 @@
       "sectionCount": 1
     },
     {
-      "token": "schoolchildren",
-      "kind": "UNREGISTERED_PROPER",
-      "intro": null,
-      "occurrences": 4,
-      "sections": [
-        "サンシャイン|1|PROGRAM 6-3"
-      ],
-      "examples": [
-        "サンシャイン|1|PROGRAM 6-3|sentence:2",
-        "サンシャイン|1|PROGRAM 6-3|slash:2",
-        "サンシャイン|1|PROGRAM 6-3|A1.evidence",
-        "サンシャイン|1|PROGRAM 6-3|B1.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
       "token": "sells",
       "kind": "FUTURE_V7_LEAK",
       "intro": [
@@ -7925,22 +7918,6 @@
         "サンシャイン|3|PROGRAM 3-2|slash:4",
         "サンシャイン|3|PROGRAM 3-2|A2.answer",
         "サンシャイン|3|PROGRAM 3-2|A2.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "supporters",
-      "kind": "UNREGISTERED_PROPER",
-      "intro": null,
-      "occurrences": 4,
-      "sections": [
-        "ニューホライズン|3|Unit 5-4"
-      ],
-      "examples": [
-        "ニューホライズン|3|Unit 5-4|sentence:4",
-        "ニューホライズン|3|Unit 5-4|slash:4",
-        "ニューホライズン|3|Unit 5-4|A3.evidence",
-        "ニューホライズン|3|Unit 5-4|B2.evidence"
       ],
       "sectionCount": 1
     },
@@ -8405,21 +8382,6 @@
       "sectionCount": 1
     },
     {
-      "token": "basketball",
-      "kind": "UNREGISTERED_PROPER",
-      "intro": null,
-      "occurrences": 3,
-      "sections": [
-        "サンシャイン|1|Get Ready 4"
-      ],
-      "examples": [
-        "サンシャイン|1|Get Ready 4|sentence:7",
-        "サンシャイン|1|Get Ready 4|slash:7",
-        "サンシャイン|1|Get Ready 4|B2.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
       "token": "bear",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -8467,27 +8429,6 @@
         "サンシャイン|2|PROGRAM 8-3|sentence:2",
         "サンシャイン|2|PROGRAM 8-3|slash:2",
         "サンシャイン|2|PROGRAM 8-3|A1.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "bring",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        2,
-        5,
-        8,
-        "bring",
-        0
-      ],
-      "occurrences": 3,
-      "sections": [
-        "サンシャイン|2|PROGRAM 2-1"
-      ],
-      "examples": [
-        "サンシャイン|2|PROGRAM 2-1|slash:12",
-        "サンシャイン|2|PROGRAM 2-1|A5.answer",
-        "サンシャイン|2|PROGRAM 2-1|A5.evidence"
       ],
       "sectionCount": 1
     },
@@ -8626,21 +8567,6 @@
         "サンシャイン|2|PROGRAM 5-2|sentence:13",
         "サンシャイン|2|PROGRAM 5-2|slash:13",
         "サンシャイン|2|PROGRAM 5-2|B4.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "everyone",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 3,
-      "sections": [
-        "サンシャイン|2|PROGRAM 8-2"
-      ],
-      "examples": [
-        "サンシャイン|2|PROGRAM 8-2|sentence:10",
-        "サンシャイン|2|PROGRAM 8-2|slash:10",
-        "サンシャイン|2|PROGRAM 8-2|B4.evidence"
       ],
       "sectionCount": 1
     },
@@ -9583,7 +9509,7 @@
     },
     {
       "token": "bang",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 2,
       "sections": [
@@ -9662,6 +9588,26 @@
       "examples": [
         "サンシャイン|2|PROGRAM 5-1|sentence:1",
         "サンシャイン|2|PROGRAM 5-1|slash:1"
+      ],
+      "sectionCount": 1
+    },
+    {
+      "token": "bring",
+      "kind": "FUTURE_V7_LEAK",
+      "intro": [
+        2,
+        5,
+        8,
+        "bring",
+        0
+      ],
+      "occurrences": 2,
+      "sections": [
+        "サンシャイン|2|PROGRAM 2-1"
+      ],
+      "examples": [
+        "サンシャイン|2|PROGRAM 2-1|A5.answer",
+        "サンシャイン|2|PROGRAM 2-1|A5.evidence"
       ],
       "sectionCount": 1
     },
@@ -9942,20 +9888,6 @@
       "sectionCount": 1
     },
     {
-      "token": "diet",
-      "kind": "UNREGISTERED_PROPER",
-      "intro": null,
-      "occurrences": 2,
-      "sections": [
-        "サンシャイン|3|PROGRAM 3-3"
-      ],
-      "examples": [
-        "サンシャイン|3|PROGRAM 3-3|sentence:12",
-        "サンシャイン|3|PROGRAM 3-3|slash:12"
-      ],
-      "sectionCount": 1
-    },
-    {
       "token": "dirty",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -10080,20 +10012,6 @@
       "sectionCount": 1
     },
     {
-      "token": "everyone",
-      "kind": "UNREGISTERED_PROPER",
-      "intro": null,
-      "occurrences": 2,
-      "sections": [
-        "サンシャイン|2|PROGRAM 2-3"
-      ],
-      "examples": [
-        "サンシャイン|2|PROGRAM 2-3|sentence:7",
-        "サンシャイン|2|PROGRAM 2-3|slash:7"
-      ],
-      "sectionCount": 1
-    },
-    {
       "token": "everywhere",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -10123,7 +10041,7 @@
     },
     {
       "token": "experts",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 2,
       "sections": [
@@ -10303,7 +10221,7 @@
     },
     {
       "token": "goodbye",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 2,
       "sections": [
@@ -10385,7 +10303,7 @@
     },
     {
       "token": "hello",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 2,
       "sections": [
@@ -10739,7 +10657,7 @@
     },
     {
       "token": "nature",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 2,
       "sections": [
@@ -10939,7 +10857,7 @@
     },
     {
       "token": "really",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 2,
       "sections": [
@@ -11229,7 +11147,7 @@
     },
     {
       "token": "reusing",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 2,
       "sections": [
@@ -11883,7 +11801,7 @@
     },
     {
       "token": "wow",
-      "kind": "UNREGISTERED_PROPER",
+      "kind": "UNREGISTERED_V7",
       "intro": null,
       "occurrences": 2,
       "sections": [
@@ -12012,7 +11930,7 @@
         },
         {
           "token": "really",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -12565,14 +12483,14 @@
           "locations": [
             "sentence:1",
             "sentence:2",
+            "sentence:7",
             "sentence:8",
             "sentence:10",
             "slash:1",
             "slash:2",
+            "slash:7",
             "slash:8",
-            "slash:10",
-            "A1.answer",
-            "A1.evidence"
+            "slash:10"
           ]
         },
         {
@@ -12795,18 +12713,6 @@
             "slash:6",
             "A4.evidence",
             "B4.evidence"
-          ]
-        },
-        {
-          "token": "basketball",
-          "kind": "UNREGISTERED_PROPER",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:7",
-            "slash:7",
-            "B2.evidence"
           ]
         },
         {
@@ -13431,7 +13337,7 @@
       "candidates": [
         {
           "token": "hi",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -13636,7 +13542,7 @@
         },
         {
           "token": "goodbye",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -13690,7 +13596,7 @@
       "candidates": [
         {
           "token": "hello",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -14701,7 +14607,7 @@
         },
         {
           "token": "wow",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -18444,15 +18350,21 @@
         },
         {
           "token": "schoolchildren",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
           "locations": [
             "sentence:2",
+            "sentence:6",
+            "sentence:9",
+            "sentence:11",
             "slash:2",
+            "slash:6",
+            "slash:9",
+            "slash:11",
             "A1.evidence",
-            "B1.evidence"
+            "A5.evidence"
           ]
         },
         {
@@ -18616,23 +18528,6 @@
             "sentence:5",
             "slash:5",
             "A3.evidence"
-          ]
-        },
-        {
-          "token": "schoolchildren",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:6",
-            "sentence:9",
-            "sentence:11",
-            "slash:6",
-            "slash:9",
-            "slash:11",
-            "A5.evidence",
-            "B4.evidence"
           ]
         },
         {
@@ -20873,7 +20768,7 @@
         },
         {
           "token": "france",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -23316,7 +23211,7 @@
         },
         {
           "token": "bang",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -23434,7 +23329,7 @@
       "candidates": [
         {
           "token": "anna",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -25247,17 +25142,6 @@
           ]
         },
         {
-          "token": "can",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "slash:12",
-            "A5.evidence"
-          ]
-        },
-        {
           "token": "bring",
           "kind": "FUTURE_V7_LEAK",
           "base": null,
@@ -25270,8 +25154,17 @@
           ],
           "evidence": null,
           "locations": [
-            "slash:12",
             "A5.answer",
+            "A5.evidence"
+          ]
+        },
+        {
+          "token": "can",
+          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
+          "base": null,
+          "intro": null,
+          "evidence": "closed structural function set; grammar chronology required",
+          "locations": [
             "A5.evidence"
           ]
         },
@@ -25944,7 +25837,7 @@
         },
         {
           "token": "everyone",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -30586,7 +30479,7 @@
         },
         {
           "token": "nature",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -33731,7 +33624,7 @@
         },
         {
           "token": "emi",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -36699,7 +36592,7 @@
         },
         {
           "token": "ken",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -36754,7 +36647,7 @@
         },
         {
           "token": "aya",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -36975,7 +36868,7 @@
         },
         {
           "token": "ken's",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -37867,7 +37760,9 @@
           "evidence": null,
           "locations": [
             "sentence:2",
+            "sentence:12",
             "slash:2",
+            "slash:12",
             "A1.answer",
             "A1.evidence",
             "B3.answer",
@@ -38285,17 +38180,6 @@
           "locations": [
             "sentence:11",
             "slash:11"
-          ]
-        },
-        {
-          "token": "diet",
-          "kind": "UNREGISTERED_PROPER",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:12",
-            "slash:12"
           ]
         },
         {
@@ -45688,7 +45572,7 @@
       "candidates": [
         {
           "token": "ken",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -45707,7 +45591,7 @@
         },
         {
           "token": "mei",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -45726,7 +45610,7 @@
         },
         {
           "token": "hi",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -45916,7 +45800,7 @@
         },
         {
           "token": "leonardo",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -45945,7 +45829,7 @@
         },
         {
           "token": "leo",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -46708,7 +46592,7 @@
         },
         {
           "token": "brown",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -47396,7 +47280,7 @@
         },
         {
           "token": "hana",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -49976,7 +49860,7 @@
         },
         {
           "token": "riko's",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -50077,7 +49961,7 @@
         },
         {
           "token": "riko",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -66529,7 +66413,7 @@
         },
         {
           "token": "experts",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -67391,7 +67275,7 @@
         },
         {
           "token": "yuki",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -68138,7 +68022,7 @@
         },
         {
           "token": "kyoto",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -68197,7 +68081,7 @@
         },
         {
           "token": "osaka",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -68211,7 +68095,7 @@
         },
         {
           "token": "hokkaido",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -70159,7 +70043,7 @@
         },
         {
           "token": "modern",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -72656,7 +72540,7 @@
         },
         {
           "token": "reusing",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -74970,14 +74854,20 @@
       "candidates": [
         {
           "token": "researchers",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
           "locations": [
             "sentence:1",
+            "sentence:4",
+            "sentence:7",
             "slash:1",
+            "slash:4",
+            "slash:7",
             "A1.evidence",
+            "A5.evidence",
+            "B1.evidence",
             "B3.evidence"
           ]
         },
@@ -75266,21 +75156,6 @@
             "B2.answer",
             "B2.evidence",
             "B4.evidence"
-          ]
-        },
-        {
-          "token": "researchers",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:4",
-            "sentence:7",
-            "slash:4",
-            "slash:7",
-            "A5.evidence",
-            "B1.evidence"
           ]
         },
         {
@@ -76108,13 +75983,15 @@
         },
         {
           "token": "researchers",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
           "locations": [
             "sentence:5",
+            "sentence:8",
             "slash:5",
+            "slash:8",
             "A4.evidence",
             "B4.evidence"
           ]
@@ -76329,17 +76206,6 @@
             "citizen",
             0
           ],
-          "evidence": null,
-          "locations": [
-            "sentence:8",
-            "slash:8"
-          ]
-        },
-        {
-          "token": "researchers",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
           "evidence": null,
           "locations": [
             "sentence:8",
@@ -80893,7 +80759,7 @@
         },
         {
           "token": "police",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
@@ -81463,7 +81329,7 @@
         },
         {
           "token": "supporters",
-          "kind": "UNREGISTERED_PROPER",
+          "kind": "UNREGISTERED_V7",
           "base": null,
           "intro": null,
           "evidence": null,
