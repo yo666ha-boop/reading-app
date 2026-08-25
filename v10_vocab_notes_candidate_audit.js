@@ -1,5 +1,6 @@
 // Strict final wrapper around the preserved base scanner.
 // Passage-local notes are allowed only when both English and Japanese gloss are present; they never become cumulative vocabulary.
+// Any change to the bounded runtime note definitions must be followed by this 168-passage scanner.
 const fs=require('fs');
 const cp=require('child_process');
 const base='v10_vocab_notes_candidate_audit_base.js';
