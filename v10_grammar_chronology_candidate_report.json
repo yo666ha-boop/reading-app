@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T02:59:06.618Z",
+  "generatedAt": "2026-08-25T03:06:24.135Z",
   "passages": 168,
   "classification": "CANDIDATES_NOT_PASS_FAIL",
   "warning": "Detected structures are candidates only. A feature becomes allowed only after an evidence-backed textbook/section chronology entry exists.",
@@ -314,11 +314,10 @@
       ]
     },
     "SV_OO": {
-      "sectionCount": 11,
+      "sectionCount": 10,
       "sections": [
         "サンシャイン|1|PROGRAM 6-3",
         "サンシャイン|1|PROGRAM 7-3",
-        "サンシャイン|1|Step 6 / Our Project 3 / Power-Up 6",
         "サンシャイン|2|PROGRAM 3-3",
         "サンシャイン|2|PROGRAM 5-1",
         "サンシャイン|2|PROGRAM 5-3",
@@ -1838,7 +1837,7 @@
             "match": "to my"
           },
           {
-            "where": "sentence:6",
+            "where": "sentence:7",
             "text": "We came back to my house.",
             "match": "to my"
           },
@@ -1848,13 +1847,18 @@
             "match": "to my"
           },
           {
-            "where": "slash:6",
+            "where": "slash:7",
             "text": "We came back / to my house.",
             "match": "to my"
           },
           {
             "where": "A1.evidence",
             "text": "Yesterday afternoon, my friend came to my house.",
+            "match": "to my"
+          },
+          {
+            "where": "A5.evidence",
+            "text": "We came back to my house.",
             "match": "to my"
           }
         ]
@@ -1891,38 +1895,21 @@
       "section": "PROGRAM 9-4",
       "id": "V10-SS-G1-P9-4-001",
       "features": {
-        "TO_INFINITIVE": [
-          {
-            "where": "sentence:4",
-            "text": "I ran to my family.",
-            "match": "to my"
-          },
-          {
-            "where": "sentence:9",
-            "text": "We went back to our house.",
-            "match": "to our"
-          },
-          {
-            "where": "slash:4",
-            "text": "I ran / to my family.",
-            "match": "to my"
-          },
-          {
-            "where": "slash:9",
-            "text": "We went back / to our house.",
-            "match": "to our"
-          },
-          {
-            "where": "B2.evidence",
-            "text": "I ran to my family.",
-            "match": "to my"
-          }
-        ],
         "GERUND": [
+          {
+            "where": "sentence:1",
+            "text": "How's it going?",
+            "match": "going"
+          },
           {
             "where": "sentence:11",
             "text": "The next morning, I talked about the experience.",
             "match": "morning"
+          },
+          {
+            "where": "slash:1",
+            "text": "How's it going?",
+            "match": "going"
           },
           {
             "where": "slash:11",
@@ -1930,14 +1917,36 @@
             "match": "morning"
           },
           {
-            "where": "A5.evidence",
-            "text": "The next morning, I talked about the experience.",
-            "match": "morning"
+            "where": "B1.prompt",
+            "text": "1. “How's it going?” に対して、どのように答えていますか。本文から英語で答えなさい。",
+            "match": "going"
           },
           {
             "where": "B4.evidence",
             "text": "The next morning, I talked about the experience.",
             "match": "morning"
+          }
+        ],
+        "TO_INFINITIVE": [
+          {
+            "where": "sentence:6",
+            "text": "I ran to my family.",
+            "match": "to my"
+          },
+          {
+            "where": "slash:6",
+            "text": "I ran / to my family.",
+            "match": "to my"
+          },
+          {
+            "where": "A3.answer",
+            "text": "I ran to my family.",
+            "match": "to my"
+          },
+          {
+            "where": "A3.evidence",
+            "text": "I ran to my family.",
+            "match": "to my"
           }
         ]
       }
@@ -1962,12 +1971,12 @@
         ],
         "GERUND": [
           {
-            "where": "sentence:11",
+            "where": "sentence:13",
             "text": "It was a great evening.",
             "match": "evening"
           },
           {
-            "where": "slash:11",
+            "where": "slash:13",
             "text": "It was / a great evening.",
             "match": "evening"
           }
@@ -1987,28 +1996,8 @@
             "match": "interesting"
           },
           {
-            "where": "sentence:10",
-            "text": "It was a great evening.",
-            "match": "evening"
-          },
-          {
             "where": "slash:5",
             "text": "The movie was / interesting.",
-            "match": "interesting"
-          },
-          {
-            "where": "slash:10",
-            "text": "It was / a great evening.",
-            "match": "evening"
-          },
-          {
-            "where": "A4.answer",
-            "text": "interesting",
-            "match": "interesting"
-          },
-          {
-            "where": "A4.evidence",
-            "text": "The movie was interesting.",
             "match": "interesting"
           },
           {
@@ -2053,23 +2042,23 @@
         "TO_INFINITIVE": [
           {
             "where": "sentence:9",
-            "text": "We walked to our house.",
-            "match": "to our"
+            "text": "We walked to a small house.",
+            "match": "to a"
           },
           {
             "where": "slash:9",
-            "text": "We walked / to our house.",
-            "match": "to our"
+            "text": "We walked / to a small house.",
+            "match": "to a"
           },
           {
-            "where": "A4.evidence",
-            "text": "We walked to our house.",
-            "match": "to our"
+            "where": "B4.answer",
+            "text": "walked to a small house",
+            "match": "to a"
           },
           {
-            "where": "B3.evidence",
-            "text": "We walked to our house.",
-            "match": "to our"
+            "where": "B4.evidence",
+            "text": "We walked to a small house.",
+            "match": "to a"
           }
         ]
       }
@@ -2083,80 +2072,43 @@
         "TO_INFINITIVE": [
           {
             "where": "sentence:2",
-            "text": "I want to tell you about my school performance.",
-            "match": "to tell"
+            "text": "In February, I went to a school performance.",
+            "match": "to a"
           },
           {
-            "where": "sentence:3",
-            "text": "In February, I went to the performance.",
-            "match": "to the"
+            "where": "sentence:8",
+            "text": "We went to a famous street.",
+            "match": "to a"
           },
           {
-            "where": "sentence:10",
-            "text": "I want to show it to you.",
-            "match": "to show"
+            "where": "A1.evidence",
+            "text": "In February, I went to a school performance.",
+            "match": "to a"
           },
           {
-            "where": "slash:2",
-            "text": "I want to tell / you / about my school performance.",
-            "match": "to tell"
-          },
-          {
-            "where": "slash:10",
-            "text": "I want to show / it / to you.",
-            "match": "to show"
-          },
-          {
-            "where": "A2.evidence",
-            "text": "I want to tell you about my school performance.",
-            "match": "to tell"
-          },
-          {
-            "where": "A3.evidence",
-            "text": "In February, I went to the performance.",
-            "match": "to the"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "I have a card from the performance for you. / I want to show it to you.",
-            "match": "to show"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "I have a card from the performance for you. / I want to show it to you.",
-            "match": "to show"
-          }
-        ],
-        "SV_OO": [
-          {
-            "where": "sentence:2",
-            "text": "I want to tell you about my school performance.",
-            "match": "tell you"
-          },
-          {
-            "where": "A2.evidence",
-            "text": "I want to tell you about my school performance.",
-            "match": "tell you"
+            "where": "B3.evidence",
+            "text": "We went to a famous street.",
+            "match": "to a"
           }
         ],
         "GERUND": [
           {
-            "where": "sentence:7",
+            "where": "sentence:6",
             "text": "The performance was creative and exciting.",
             "match": "exciting"
           },
           {
-            "where": "slash:7",
+            "where": "slash:6",
             "text": "The performance was / creative and exciting.",
             "match": "exciting"
           },
           {
-            "where": "B3.answer",
+            "where": "B2.answer",
             "text": "creative and exciting",
             "match": "exciting"
           },
           {
-            "where": "B3.evidence",
+            "where": "B2.evidence",
             "text": "The performance was creative and exciting.",
             "match": "exciting"
           }
@@ -2172,34 +2124,49 @@
         "GERUND": [
           {
             "where": "sentence:1",
-            "text": "Ken: Good morning.",
-            "match": "morning"
-          },
-          {
-            "where": "slash:1",
-            "text": "Ken: / Good morning.",
-            "match": "morning"
-          },
-          {
-            "where": "B1.answer",
             "text": "Good morning.",
             "match": "morning"
           },
           {
-            "where": "B1.evidence",
-            "text": "Ken: Good morning.",
+            "where": "slash:1",
+            "text": "Good morning.",
+            "match": "morning"
+          },
+          {
+            "where": "A1.evidence",
+            "text": "Good morning.",
             "match": "morning"
           }
         ],
         "TO_INFINITIVE": [
           {
             "where": "sentence:5",
-            "text": "Ken: Nice to meet you.",
+            "text": "Nice to meet you.",
+            "match": "to meet"
+          },
+          {
+            "where": "sentence:6",
+            "text": "Nice to meet you.",
             "match": "to meet"
           },
           {
             "where": "slash:5",
-            "text": "Ken: / Nice to meet you.",
+            "text": "Nice to meet you.",
+            "match": "to meet"
+          },
+          {
+            "where": "slash:6",
+            "text": "Nice to meet you.",
+            "match": "to meet"
+          },
+          {
+            "where": "B2.answer",
+            "text": "Nice to meet you.",
+            "match": "to meet"
+          },
+          {
+            "where": "B2.evidence",
+            "text": "Nice to meet you.",
             "match": "to meet"
           }
         ]
@@ -2213,24 +2180,14 @@
       "features": {
         "TO_INFINITIVE": [
           {
-            "where": "sentence:8",
+            "where": "sentence:10",
             "text": "I want to join the tennis club.",
             "match": "to join"
           },
           {
-            "where": "sentence:9",
-            "text": "Nice to meet you.",
-            "match": "to meet"
-          },
-          {
-            "where": "slash:8",
+            "where": "slash:10",
             "text": "I want to join / the tennis club.",
             "match": "to join"
-          },
-          {
-            "where": "slash:9",
-            "text": "Nice to meet you.",
-            "match": "to meet"
           },
           {
             "where": "A5.evidence",
