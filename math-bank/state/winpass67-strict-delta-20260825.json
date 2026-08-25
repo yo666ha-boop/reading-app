@@ -1,0 +1,14 @@
+{
+  "project":"mikami-math-problem-bank",
+  "recorded_at_jst":"2026-08-25T20:08:00+09:00",
+  "stage":"WINPASS_717_STRICT_MATERIALIZATION",
+  "source":{"drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E","bytes":8296042,"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf"},
+  "baseline_strict":731,
+  "delta":{"records":67,"unique_ids":67,"documents":7,"drive_file_id":"1YLIkTo-5XZWhsg5R9mnCR0rT15U3Mh7U","file_name":"mathbank_winpass_strict_delta67_validated_20260825.jsonl","bytes":120106,"sha256":"54c5876910c97785e9aa5e920c0932d1ee012fa3b9e50f223ed2e2133f63b57a","post_save_readback":true,"validator_errors":0,"independent_math_checks":"67/67 PASS"},
+  "documents":["25winpasst1suhy000103.docx","25winpasst1suhy000311.docx","25winpasst1suhy000312.docx","25winpasst2suhy000624.docx","25winpasst3suhy000208.docx","25winpasst3suhy000311.docx","25winpasst3suhy000414.docx"],
+  "strict_after":{"Standard":317,"実力錬成":237,"Winpass":244,"total":798,"pending":473},
+  "quality_notes":["All67 source document SHA matches verified.","Question and answer paragraph provenance resolves and question precedes answer for all67.","Score evidence present for all67.","Selected batch has no unresolved external figure/table dependency.","All67 answers independently recalculated/verified; no printed-answer-only trust.","Source-supported transcription correction applied to 25winpasst3suhy000208 M01:S01 label (⑴, not parser-contaminated ⑽).","Blank spacing preserved for 25winpasst1suhy000311 M01:S02 instead of inventing a glyph."],
+  "main_touched":false,
+  "schedule_changed":false,
+  "next":"Continue the remaining eight NONMEDIA_SPECIAL_OR_PROOF documents, repairing truncated questions and binding any table/figure context before promotion; then move to MIXED_DOC_PARTIAL_STRICT."
+}
