@@ -1,0 +1,38 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "WINPASS_717_STRICT_MATERIALIZATION",
+  "recorded_at_jst": "2026-08-25T19:52:00+09:00",
+  "source": {
+    "drive_file_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
+    "bytes": 8296042,
+    "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+    "zip_crc_ok": true,
+    "unique_docx": 81
+  },
+  "baseline_strict": {
+    "records": 177,
+    "drive_file_id": "1NGqHrb_soAGnRSu0je0fxJ6zD73Dr2PV",
+    "sha256": "69c1c62f2e5c29e21d7fa3ec744271c8409d810497416e940c016c9478a44589",
+    "documents": 30,
+    "readback_verified": true,
+    "validation_pass": true
+  },
+  "forensic_queue": {
+    "documents": 81,
+    "docs_with_existing_strict": 30,
+    "docs_without_existing_strict": 51,
+    "buckets": {
+      "NONMEDIA_SPECIAL_OR_PROOF": 15,
+      "MIXED_DOC_PARTIAL_STRICT": 26,
+      "MEDIA_HEAVY": 40
+    },
+    "nonmedia_special_or_proof_docs": [
+      "25winpasst1suhy000101.docx","25winpasst1suhy000103.docx","25winpasst1suhy000105.docx","25winpasst1suhy000106.docx","25winpasst1suhy000207.docx","25winpasst1suhy000208.docx","25winpasst1suhy000311.docx","25winpasst1suhy000312.docx","25winpasst1suhy000624.docx","25winpasst2suhy000204.docx","25winpasst2suhy000624.docx","25winpasst3suhy000208.docx","25winpasst3suhy000311.docx","25winpasst3suhy000312.docx","25winpasst3suhy000414.docx"
+    ]
+  },
+  "parser_finding": "A naive score regex over all OOXML paragraphs double-counts nested textbox/table representations. That heuristic is rejected and must not be used to force the 717 count. Continue from structural score-table identities plus ordered OOXML question/answer provenance.",
+  "strict_increment_this_pass": 0,
+  "strict_progress_after_pass": 177,
+  "next_exact_work": "Process the 15 NONMEDIA_SPECIAL_OR_PROOF documents first using structural score-table identities, paired question/answer halves, OMML-preserving extraction, and paragraph-level provenance. Then return to 26 partially strict documents. Only after those are exhausted begin the 40 media-heavy documents with explicit relationship/media asset binding.",
+  "main_touched": false
+}
