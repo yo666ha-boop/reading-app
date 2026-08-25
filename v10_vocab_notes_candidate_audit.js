@@ -1,4 +1,5 @@
 // Strict final wrapper around the preserved base scanner.
+// Batch5 rerun marker: authoritative scan is retriggered only after prior evidence-writer commits settled.
 // Passage-local notes are allowed only when both English and Japanese gloss are present; they never become cumulative vocabulary.
 // Any change to the bounded runtime note definitions must be followed by this 168-passage scanner.
 const fs=require('fs');
