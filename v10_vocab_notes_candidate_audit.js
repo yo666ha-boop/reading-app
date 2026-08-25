@@ -44,7 +44,7 @@ patch(
 );
 patch(
   "    await new Promise(r => setTimeout(r, 250));\n    browserErrors.length = 0;",
-  "    await waitFor(() => w.V10_RUNTIME_LOAD_PROGRESS === 'complete' || !!w.V10_RUNTIME_LOAD_ERROR, 90000, 'authoritative final runtime terminal state');\n    assert(w.V10_RUNTIME_LOAD_PROGRESS === 'complete' && !w.V10_RUNTIME_LOAD_ERROR, `authoritative runtime load failed: progress=${w.V10_RUNTIME_LOAD_PROGRESS} error=${w.V10_RUNTIME_LOAD_ERROR}`);\n    for (const f of ['v10_passage_local_notes_batch2.js','v10_passage_local_notes_batch3.js']) {\n      if (!fs.existsSync(f)) throw new Error('missing passage-local notes runtime file: '+f);\n      w.eval(fs.readFileSync(f,'utf8'));\n    }\n    await new Promise(r => setTimeout(r, 250));\n    browserErrors.length = 0;",
+  "    await waitFor(() => w.V10_RUNTIME_LOAD_PROGRESS === 'complete' || !!w.V10_RUNTIME_LOAD_ERROR, 90000, 'authoritative final runtime terminal state');\n    assert(w.V10_RUNTIME_LOAD_PROGRESS === 'complete' && !w.V10_RUNTIME_LOAD_ERROR, `authoritative runtime load failed: progress=${w.V10_RUNTIME_LOAD_PROGRESS} error=${w.V10_RUNTIME_LOAD_ERROR}`);\n    for (const f of ['v10_passage_local_notes_batch2.js','v10_passage_local_notes_batch3.js','v10_passage_local_notes_batch4.js']) {\n      if (!fs.existsSync(f)) throw new Error('missing passage-local notes runtime file: '+f);\n      w.eval(fs.readFileSync(f,'utf8'));\n    }\n    await new Promise(r => setTimeout(r, 250));\n    browserErrors.length = 0;",
   'authoritative runtime completion + bounded local notes batches'
 );
 fs.writeFileSync(tmp,s);
