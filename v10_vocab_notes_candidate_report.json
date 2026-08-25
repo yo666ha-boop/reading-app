@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-08-25T05:04:16.304Z",
+    "generatedAt": "2026-08-25T06:54:37.770Z",
     "passages": 168,
     "canonicalSource": {
       "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
@@ -17,14 +17,14 @@
     },
     "counts": {
       "V7_CHRONOLOGY_ALLOWED": 10132,
-      "ELEMENTARY_LEXICAL_ALLOWED": 3505,
+      "ELEMENTARY_LEXICAL_ALLOWED": 3526,
       "EXPLICIT_PROPER_NAME_ALLOWED": 84,
-      "REVIEWED_EXPLICIT_ALLOWED": 757,
-      "MORPHOLOGY_TO_GRAMMAR": 2505,
+      "REVIEWED_EXPLICIT_ALLOWED": 756,
+      "MORPHOLOGY_TO_GRAMMAR": 2502,
       "CONTRACTION_TO_GRAMMAR": 227,
-      "EXPLICIT_FUNCTION_TO_GRAMMAR": 20703,
-      "FUTURE_V7_LEAK": 1071,
-      "UNREGISTERED_V7": 1755,
+      "EXPLICIT_FUNCTION_TO_GRAMMAR": 20718,
+      "FUTURE_V7_LEAK": 1056,
+      "UNREGISTERED_V7": 1751,
       "UNREGISTERED_PROPER": 0,
       "NOTED_UNLEARNED_ALLOWED": 152
     },
@@ -32,8 +32,8 @@
     "missingGloss": 0,
     "mappingErrors": [],
     "runtimeBrowserErrors": [],
-    "uniqueUnresolved": 556,
-    "futureVocabLeakOccurrences": 2826,
+    "uniqueUnresolved": 554,
+    "futureVocabLeakOccurrences": 2807,
     "chronologyPass": false,
     "rule": "Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. Explicit proper-name allowances are honored only inside the current passage when allowedWords marks the row proper names and the actual token is capitalized; those names are never promoted into cumulative ordinary vocabulary. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun. A passage-local notes entry authorizes only the exact noted token in that passage and only when English and Japanese gloss are both nonblank; it never enters cumulative vocabulary."
   },
@@ -190,36 +190,6 @@
         "ニューホライズン|3|Unit 6-3|slash:2"
       ],
       "sectionCount": 2
-    },
-    {
-      "token": "saw",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        2,
-        11,
-        1,
-        "saw",
-        0
-      ],
-      "occurrences": 17,
-      "sections": [
-        "サンシャイン|1|Get Ready 6"
-      ],
-      "examples": [
-        "サンシャイン|1|Get Ready 6|sentence:3",
-        "サンシャイン|1|Get Ready 6|sentence:4",
-        "サンシャイン|1|Get Ready 6|sentence:5",
-        "サンシャイン|1|Get Ready 6|sentence:6",
-        "サンシャイン|1|Get Ready 6|sentence:7",
-        "サンシャイン|1|Get Ready 6|slash:3",
-        "サンシャイン|1|Get Ready 6|slash:4",
-        "サンシャイン|1|Get Ready 6|slash:5",
-        "サンシャイン|1|Get Ready 6|slash:6",
-        "サンシャイン|1|Get Ready 6|slash:7",
-        "サンシャイン|1|Get Ready 6|A3.evidence",
-        "サンシャイン|1|Get Ready 6|A3.evidence"
-      ],
-      "sectionCount": 1
     },
     {
       "token": "town",
@@ -4889,6 +4859,29 @@
       "sectionCount": 1
     },
     {
+      "token": "lunch",
+      "kind": "FUTURE_V7_LEAK",
+      "intro": [
+        1,
+        1,
+        8,
+        "lunch",
+        0
+      ],
+      "occurrences": 5,
+      "sections": [
+        "サンシャイン|1|Get Ready 6"
+      ],
+      "examples": [
+        "サンシャイン|1|Get Ready 6|sentence:1",
+        "サンシャイン|1|Get Ready 6|slash:1",
+        "サンシャイン|1|Get Ready 6|A1.answer",
+        "サンシャイン|1|Get Ready 6|A1.evidence",
+        "サンシャイン|1|Get Ready 6|B1.evidence"
+      ],
+      "sectionCount": 1
+    },
+    {
       "token": "osaka",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -6328,22 +6321,6 @@
       "sectionCount": 1
     },
     {
-      "token": "pizza",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 4,
-      "sections": [
-        "サンシャイン|1|Get Ready 6"
-      ],
-      "examples": [
-        "サンシャイン|1|Get Ready 6|sentence:2",
-        "サンシャイン|1|Get Ready 6|slash:2",
-        "サンシャイン|1|Get Ready 6|A1.answer",
-        "サンシャイン|1|Get Ready 6|A1.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
       "token": "police",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -7742,27 +7719,6 @@
         "ニューホライズン|2|Unit 5-4|sentence:2",
         "ニューホライズン|2|Unit 5-4|slash:2",
         "ニューホライズン|2|Unit 5-4|A2.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "lunch",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        1,
-        1,
-        8,
-        "lunch",
-        0
-      ],
-      "occurrences": 3,
-      "sections": [
-        "サンシャイン|1|Get Ready 6"
-      ],
-      "examples": [
-        "サンシャイン|1|Get Ready 6|sentence:1",
-        "サンシャイン|1|Get Ready 6|slash:1",
-        "サンシャイン|1|Get Ready 6|A2.evidence"
       ],
       "sectionCount": 1
     },
@@ -11745,10 +11701,10 @@
         "pdf": 1,
         "subrank": 6
       },
-      "localReviewedTokens": 23,
+      "localReviewedTokens": 19,
       "localProperNameTokens": 0,
       "priorReviewedTokens": 52,
-      "cumulativeReviewedTokens": 59,
+      "cumulativeReviewedTokens": 56,
       "notes": 0,
       "candidates": [
         {
@@ -11771,18 +11727,6 @@
           ]
         },
         {
-          "token": "had",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:1",
-            "slash:1",
-            "A2.evidence"
-          ]
-        },
-        {
           "token": "lunch",
           "kind": "FUTURE_V7_LEAK",
           "base": null,
@@ -11797,7 +11741,22 @@
           "locations": [
             "sentence:1",
             "slash:1",
-            "A2.evidence"
+            "A1.answer",
+            "A1.evidence",
+            "B1.evidence"
+          ]
+        },
+        {
+          "token": "am",
+          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
+          "base": null,
+          "intro": null,
+          "evidence": "closed structural function set; grammar chronology required",
+          "locations": [
+            "sentence:2",
+            "slash:2",
+            "A2.evidence",
+            "B2.evidence"
           ]
         },
         {
@@ -11807,10 +11766,12 @@
           "intro": null,
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
-            "sentence:1",
-            "slash:1",
+            "sentence:2",
+            "slash:2",
             "A2.answer",
-            "A2.evidence"
+            "A2.evidence",
+            "B2.answer",
+            "B2.evidence"
           ]
         },
         {
@@ -11820,91 +11781,16 @@
           "intro": null,
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
-            "sentence:1",
+            "sentence:2",
+            "sentence:3",
+            "sentence:4",
+            "sentence:5",
+            "sentence:6",
+            "sentence:7",
             "sentence:8",
             "sentence:8",
             "sentence:9",
-            "sentence:10",
-            "slash:1",
-            "slash:8",
-            "slash:8",
-            "slash:9",
-            "slash:10"
-          ]
-        },
-        {
-          "token": "ate",
-          "kind": "MORPHOLOGY_TO_GRAMMAR",
-          "base": "eat",
-          "intro": [
-            1,
-            1,
-            4,
-            "eat",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:2",
-            "slash:2",
-            "A1.evidence"
-          ]
-        },
-        {
-          "token": "pizza",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:2",
-            "slash:2",
-            "A1.answer",
-            "A1.evidence"
-          ]
-        },
-        {
-          "token": "saw",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            2,
-            11,
-            1,
-            "saw",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:3",
-            "sentence:4",
-            "sentence:5",
-            "sentence:6",
-            "sentence:7",
-            "slash:3",
-            "slash:4",
-            "slash:5",
-            "slash:6",
-            "slash:7"
-          ]
-        },
-        {
-          "token": "a",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:3",
-            "sentence:4",
-            "sentence:5",
-            "sentence:6",
-            "sentence:7",
-            "slash:3",
-            "slash:4",
-            "slash:5",
-            "slash:6",
-            "slash:7"
+            "sentence:10"
           ]
         },
         {
@@ -11922,8 +11808,8 @@
             "slash:9",
             "A3.evidence",
             "A3.evidence",
-            "B2.evidence",
-            "B3.evidence"
+            "B3.evidence",
+            "B4.evidence"
           ]
         },
         {
@@ -11935,8 +11821,7 @@
           "locations": [
             "sentence:8",
             "slash:8",
-            "A4.answer",
-            "A4.evidence"
+            "B3.answer"
           ]
         },
         {
@@ -11946,10 +11831,15 @@
           "intro": null,
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
-            "B2.prompt",
-            "B2.answer",
-            "B3.prompt",
-            "B3.answer"
+            "A4.prompt",
+            "A4.answer",
+            "A4.evidence",
+            "B1.prompt",
+            "B1.answer",
+            "B4.prompt",
+            "B4.answer",
+            "B5.answer",
+            "B5.evidence"
           ]
         },
         {
@@ -11959,8 +11849,34 @@
           "intro": null,
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
-            "B2.prompt",
-            "B3.prompt"
+            "A4.prompt",
+            "B1.prompt",
+            "B4.prompt"
+          ]
+        },
+        {
+          "token": "do",
+          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
+          "base": null,
+          "intro": null,
+          "evidence": "closed structural function set; grammar chronology required",
+          "locations": [
+            "A4.evidence",
+            "A4.evidence",
+            "B5.answer",
+            "B5.evidence",
+            "B5.evidence"
+          ]
+        },
+        {
+          "token": "you",
+          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
+          "base": null,
+          "intro": null,
+          "evidence": "closed structural function set; grammar chronology required",
+          "locations": [
+            "A4.evidence",
+            "B5.evidence"
           ]
         }
       ]
@@ -11979,8 +11895,8 @@
       },
       "localReviewedTokens": 28,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 59,
-      "cumulativeReviewedTokens": 73,
+      "priorReviewedTokens": 56,
+      "cumulativeReviewedTokens": 70,
       "notes": 0,
       "candidates": [
         {
@@ -12220,8 +12136,8 @@
       },
       "localReviewedTokens": 28,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 73,
-      "cumulativeReviewedTokens": 84,
+      "priorReviewedTokens": 70,
+      "cumulativeReviewedTokens": 81,
       "notes": 0,
       "candidates": [
         {
@@ -12385,8 +12301,8 @@
       },
       "localReviewedTokens": 45,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 84,
-      "cumulativeReviewedTokens": 110,
+      "priorReviewedTokens": 81,
+      "cumulativeReviewedTokens": 107,
       "notes": 0,
       "candidates": [
         {
@@ -12640,8 +12556,8 @@
       },
       "localReviewedTokens": 31,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 110,
-      "cumulativeReviewedTokens": 129,
+      "priorReviewedTokens": 107,
+      "cumulativeReviewedTokens": 126,
       "notes": 0,
       "candidates": [
         {
@@ -12903,8 +12819,8 @@
       },
       "localReviewedTokens": 28,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 129,
-      "cumulativeReviewedTokens": 137,
+      "priorReviewedTokens": 126,
+      "cumulativeReviewedTokens": 134,
       "notes": 0,
       "candidates": [
         {
@@ -13142,8 +13058,8 @@
       },
       "localReviewedTokens": 36,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 137,
-      "cumulativeReviewedTokens": 156,
+      "priorReviewedTokens": 134,
+      "cumulativeReviewedTokens": 153,
       "notes": 0,
       "candidates": [
         {
@@ -13499,8 +13415,8 @@
       },
       "localReviewedTokens": 35,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 156,
-      "cumulativeReviewedTokens": 180,
+      "priorReviewedTokens": 153,
+      "cumulativeReviewedTokens": 177,
       "notes": 0,
       "candidates": [
         {
@@ -13754,8 +13670,8 @@
       },
       "localReviewedTokens": 29,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 180,
-      "cumulativeReviewedTokens": 191,
+      "priorReviewedTokens": 177,
+      "cumulativeReviewedTokens": 188,
       "notes": 0,
       "candidates": [
         {
@@ -14004,8 +13920,8 @@
       },
       "localReviewedTokens": 37,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 191,
-      "cumulativeReviewedTokens": 213,
+      "priorReviewedTokens": 188,
+      "cumulativeReviewedTokens": 210,
       "notes": 1,
       "candidates": [
         {
@@ -14282,8 +14198,8 @@
       },
       "localReviewedTokens": 23,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 213,
-      "cumulativeReviewedTokens": 220,
+      "priorReviewedTokens": 210,
+      "cumulativeReviewedTokens": 217,
       "notes": 0,
       "candidates": [
         {
@@ -14584,8 +14500,8 @@
       },
       "localReviewedTokens": 36,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 220,
-      "cumulativeReviewedTokens": 239,
+      "priorReviewedTokens": 217,
+      "cumulativeReviewedTokens": 236,
       "notes": 0,
       "candidates": [
         {
@@ -14880,8 +14796,8 @@
       },
       "localReviewedTokens": 44,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 239,
-      "cumulativeReviewedTokens": 269,
+      "priorReviewedTokens": 236,
+      "cumulativeReviewedTokens": 266,
       "notes": 0,
       "candidates": [
         {
@@ -15145,8 +15061,8 @@
       },
       "localReviewedTokens": 24,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 269,
-      "cumulativeReviewedTokens": 278,
+      "priorReviewedTokens": 266,
+      "cumulativeReviewedTokens": 275,
       "notes": 0,
       "candidates": [
         {
@@ -15378,8 +15294,8 @@
       },
       "localReviewedTokens": 27,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 278,
-      "cumulativeReviewedTokens": 282,
+      "priorReviewedTokens": 275,
+      "cumulativeReviewedTokens": 279,
       "notes": 0,
       "candidates": [
         {
@@ -15672,8 +15588,8 @@
       },
       "localReviewedTokens": 48,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 282,
-      "cumulativeReviewedTokens": 305,
+      "priorReviewedTokens": 279,
+      "cumulativeReviewedTokens": 302,
       "notes": 0,
       "candidates": [
         {
@@ -16065,8 +15981,8 @@
       },
       "localReviewedTokens": 25,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 305,
-      "cumulativeReviewedTokens": 311,
+      "priorReviewedTokens": 302,
+      "cumulativeReviewedTokens": 308,
       "notes": 0,
       "candidates": [
         {
@@ -16398,8 +16314,8 @@
       },
       "localReviewedTokens": 33,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 311,
-      "cumulativeReviewedTokens": 320,
+      "priorReviewedTokens": 308,
+      "cumulativeReviewedTokens": 317,
       "notes": 0,
       "candidates": [
         {
@@ -16671,8 +16587,8 @@
       },
       "localReviewedTokens": 52,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 320,
-      "cumulativeReviewedTokens": 347,
+      "priorReviewedTokens": 317,
+      "cumulativeReviewedTokens": 344,
       "notes": 0,
       "candidates": [
         {
@@ -16975,8 +16891,8 @@
       },
       "localReviewedTokens": 38,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 347,
-      "cumulativeReviewedTokens": 365,
+      "priorReviewedTokens": 344,
+      "cumulativeReviewedTokens": 362,
       "notes": 0,
       "candidates": [
         {
@@ -17351,8 +17267,8 @@
       },
       "localReviewedTokens": 35,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 365,
-      "cumulativeReviewedTokens": 376,
+      "priorReviewedTokens": 362,
+      "cumulativeReviewedTokens": 373,
       "notes": 0,
       "candidates": [
         {
@@ -17741,8 +17657,8 @@
       },
       "localReviewedTokens": 51,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 376,
-      "cumulativeReviewedTokens": 400,
+      "priorReviewedTokens": 373,
+      "cumulativeReviewedTokens": 397,
       "notes": 0,
       "candidates": [
         {
@@ -18119,8 +18035,8 @@
       },
       "localReviewedTokens": 31,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 400,
-      "cumulativeReviewedTokens": 413,
+      "priorReviewedTokens": 397,
+      "cumulativeReviewedTokens": 410,
       "notes": 0,
       "candidates": [
         {
@@ -18443,8 +18359,8 @@
       },
       "localReviewedTokens": 31,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 413,
-      "cumulativeReviewedTokens": 420,
+      "priorReviewedTokens": 410,
+      "cumulativeReviewedTokens": 417,
       "notes": 0,
       "candidates": [
         {
@@ -18742,8 +18658,8 @@
       },
       "localReviewedTokens": 46,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 420,
-      "cumulativeReviewedTokens": 443,
+      "priorReviewedTokens": 417,
+      "cumulativeReviewedTokens": 440,
       "notes": 0,
       "candidates": [
         {
@@ -19152,8 +19068,8 @@
       },
       "localReviewedTokens": 45,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 443,
-      "cumulativeReviewedTokens": 462,
+      "priorReviewedTokens": 440,
+      "cumulativeReviewedTokens": 459,
       "notes": 0,
       "candidates": [
         {
@@ -19547,8 +19463,8 @@
       },
       "localReviewedTokens": 39,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 462,
-      "cumulativeReviewedTokens": 475,
+      "priorReviewedTokens": 459,
+      "cumulativeReviewedTokens": 472,
       "notes": 0,
       "candidates": [
         {
@@ -19828,8 +19744,8 @@
       },
       "localReviewedTokens": 34,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 475,
-      "cumulativeReviewedTokens": 485,
+      "priorReviewedTokens": 472,
+      "cumulativeReviewedTokens": 483,
       "notes": 0,
       "candidates": [
         {
@@ -20123,8 +20039,8 @@
       },
       "localReviewedTokens": 63,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 485,
-      "cumulativeReviewedTokens": 513,
+      "priorReviewedTokens": 483,
+      "cumulativeReviewedTokens": 511,
       "notes": 0,
       "candidates": [
         {
@@ -20542,8 +20458,8 @@
       },
       "localReviewedTokens": 33,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 513,
-      "cumulativeReviewedTokens": 526,
+      "priorReviewedTokens": 511,
+      "cumulativeReviewedTokens": 524,
       "notes": 1,
       "candidates": [
         {
@@ -20866,8 +20782,8 @@
       },
       "localReviewedTokens": 34,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 526,
-      "cumulativeReviewedTokens": 528,
+      "priorReviewedTokens": 524,
+      "cumulativeReviewedTokens": 526,
       "notes": 0,
       "candidates": [
         {
@@ -21183,8 +21099,8 @@
       },
       "localReviewedTokens": 37,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 528,
-      "cumulativeReviewedTokens": 537,
+      "priorReviewedTokens": 526,
+      "cumulativeReviewedTokens": 535,
       "notes": 0,
       "candidates": [
         {
@@ -21436,8 +21352,8 @@
       },
       "localReviewedTokens": 69,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 537,
-      "cumulativeReviewedTokens": 577,
+      "priorReviewedTokens": 535,
+      "cumulativeReviewedTokens": 575,
       "notes": 0,
       "candidates": [
         {
@@ -21750,8 +21666,8 @@
       },
       "localReviewedTokens": 43,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 577,
-      "cumulativeReviewedTokens": 593,
+      "priorReviewedTokens": 575,
+      "cumulativeReviewedTokens": 591,
       "notes": 0,
       "candidates": [
         {
@@ -22110,8 +22026,8 @@
       },
       "localReviewedTokens": 28,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 593,
-      "cumulativeReviewedTokens": 603,
+      "priorReviewedTokens": 591,
+      "cumulativeReviewedTokens": 600,
       "notes": 0,
       "candidates": [
         {
@@ -22453,8 +22369,8 @@
       },
       "localReviewedTokens": 34,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 603,
-      "cumulativeReviewedTokens": 619,
+      "priorReviewedTokens": 600,
+      "cumulativeReviewedTokens": 616,
       "notes": 0,
       "candidates": [
         {
@@ -22898,8 +22814,8 @@
       },
       "localReviewedTokens": 38,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 619,
-      "cumulativeReviewedTokens": 629,
+      "priorReviewedTokens": 616,
+      "cumulativeReviewedTokens": 626,
       "notes": 0,
       "candidates": [
         {
@@ -23329,8 +23245,8 @@
       },
       "localReviewedTokens": 32,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 629,
-      "cumulativeReviewedTokens": 645,
+      "priorReviewedTokens": 626,
+      "cumulativeReviewedTokens": 642,
       "notes": 0,
       "candidates": [
         {
@@ -23696,8 +23612,8 @@
       },
       "localReviewedTokens": 31,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 645,
-      "cumulativeReviewedTokens": 655,
+      "priorReviewedTokens": 642,
+      "cumulativeReviewedTokens": 652,
       "notes": 0,
       "candidates": [
         {
@@ -24095,8 +24011,8 @@
       },
       "localReviewedTokens": 40,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 655,
-      "cumulativeReviewedTokens": 672,
+      "priorReviewedTokens": 652,
+      "cumulativeReviewedTokens": 669,
       "notes": 1,
       "candidates": [
         {
@@ -24470,8 +24386,8 @@
       },
       "localReviewedTokens": 29,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 672,
-      "cumulativeReviewedTokens": 679,
+      "priorReviewedTokens": 669,
+      "cumulativeReviewedTokens": 676,
       "notes": 0,
       "candidates": [
         {
@@ -24804,8 +24720,8 @@
       },
       "localReviewedTokens": 36,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 679,
-      "cumulativeReviewedTokens": 686,
+      "priorReviewedTokens": 676,
+      "cumulativeReviewedTokens": 683,
       "notes": 0,
       "candidates": [
         {
@@ -25178,8 +25094,8 @@
       },
       "localReviewedTokens": 33,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 686,
-      "cumulativeReviewedTokens": 698,
+      "priorReviewedTokens": 683,
+      "cumulativeReviewedTokens": 695,
       "notes": 0,
       "candidates": [
         {
@@ -25512,8 +25428,8 @@
       },
       "localReviewedTokens": 26,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 698,
-      "cumulativeReviewedTokens": 708,
+      "priorReviewedTokens": 695,
+      "cumulativeReviewedTokens": 705,
       "notes": 0,
       "candidates": [
         {
@@ -25865,8 +25781,8 @@
       },
       "localReviewedTokens": 31,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 708,
-      "cumulativeReviewedTokens": 716,
+      "priorReviewedTokens": 705,
+      "cumulativeReviewedTokens": 713,
       "notes": 0,
       "candidates": [
         {
@@ -26297,8 +26213,8 @@
       },
       "localReviewedTokens": 39,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 716,
-      "cumulativeReviewedTokens": 726,
+      "priorReviewedTokens": 713,
+      "cumulativeReviewedTokens": 723,
       "notes": 0,
       "candidates": [
         {
@@ -26727,8 +26643,8 @@
       },
       "localReviewedTokens": 31,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 726,
-      "cumulativeReviewedTokens": 737,
+      "priorReviewedTokens": 723,
+      "cumulativeReviewedTokens": 734,
       "notes": 0,
       "candidates": [
         {
@@ -27268,8 +27184,8 @@
       },
       "localReviewedTokens": 40,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 737,
-      "cumulativeReviewedTokens": 751,
+      "priorReviewedTokens": 734,
+      "cumulativeReviewedTokens": 748,
       "notes": 0,
       "candidates": [
         {
@@ -27751,8 +27667,8 @@
       },
       "localReviewedTokens": 41,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 751,
-      "cumulativeReviewedTokens": 767,
+      "priorReviewedTokens": 748,
+      "cumulativeReviewedTokens": 764,
       "notes": 1,
       "candidates": [
         {
@@ -28168,8 +28084,8 @@
       },
       "localReviewedTokens": 29,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 767,
-      "cumulativeReviewedTokens": 778,
+      "priorReviewedTokens": 764,
+      "cumulativeReviewedTokens": 775,
       "notes": 1,
       "candidates": [
         {
@@ -28621,8 +28537,8 @@
       },
       "localReviewedTokens": 43,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 778,
-      "cumulativeReviewedTokens": 796,
+      "priorReviewedTokens": 775,
+      "cumulativeReviewedTokens": 793,
       "notes": 1,
       "candidates": [
         {
@@ -29045,8 +28961,8 @@
       },
       "localReviewedTokens": 53,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 796,
-      "cumulativeReviewedTokens": 818,
+      "priorReviewedTokens": 793,
+      "cumulativeReviewedTokens": 815,
       "notes": 1,
       "candidates": [
         {
@@ -29469,8 +29385,8 @@
       },
       "localReviewedTokens": 60,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 818,
-      "cumulativeReviewedTokens": 842,
+      "priorReviewedTokens": 815,
+      "cumulativeReviewedTokens": 839,
       "notes": 0,
       "candidates": [
         {
@@ -29959,8 +29875,8 @@
       },
       "localReviewedTokens": 55,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 842,
-      "cumulativeReviewedTokens": 846,
+      "priorReviewedTokens": 839,
+      "cumulativeReviewedTokens": 843,
       "notes": 1,
       "candidates": [
         {
@@ -30428,8 +30344,8 @@
       },
       "localReviewedTokens": 31,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 846,
-      "cumulativeReviewedTokens": 857,
+      "priorReviewedTokens": 843,
+      "cumulativeReviewedTokens": 854,
       "notes": 1,
       "candidates": [
         {
@@ -30821,8 +30737,8 @@
       },
       "localReviewedTokens": 49,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 857,
-      "cumulativeReviewedTokens": 880,
+      "priorReviewedTokens": 854,
+      "cumulativeReviewedTokens": 878,
       "notes": 0,
       "candidates": [
         {
@@ -31212,8 +31128,8 @@
       },
       "localReviewedTokens": 58,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 880,
-      "cumulativeReviewedTokens": 902,
+      "priorReviewedTokens": 878,
+      "cumulativeReviewedTokens": 900,
       "notes": 0,
       "candidates": [
         {
@@ -31569,8 +31485,8 @@
       },
       "localReviewedTokens": 62,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 902,
-      "cumulativeReviewedTokens": 905,
+      "priorReviewedTokens": 900,
+      "cumulativeReviewedTokens": 903,
       "notes": 0,
       "candidates": [
         {
@@ -32005,8 +31921,8 @@
       },
       "localReviewedTokens": 27,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 905,
-      "cumulativeReviewedTokens": 912,
+      "priorReviewedTokens": 903,
+      "cumulativeReviewedTokens": 910,
       "notes": 0,
       "candidates": [
         {
@@ -32551,8 +32467,8 @@
       },
       "localReviewedTokens": 30,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 912,
-      "cumulativeReviewedTokens": 920,
+      "priorReviewedTokens": 910,
+      "cumulativeReviewedTokens": 918,
       "notes": 0,
       "candidates": [
         {
@@ -33103,8 +33019,8 @@
       },
       "localReviewedTokens": 46,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 920,
-      "cumulativeReviewedTokens": 936,
+      "priorReviewedTokens": 918,
+      "cumulativeReviewedTokens": 935,
       "notes": 0,
       "candidates": [
         {
@@ -33683,8 +33599,8 @@
       },
       "localReviewedTokens": 34,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 936,
-      "cumulativeReviewedTokens": 948,
+      "priorReviewedTokens": 935,
+      "cumulativeReviewedTokens": 947,
       "notes": 0,
       "candidates": [
         {
@@ -34088,8 +34004,8 @@
       },
       "localReviewedTokens": 38,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 948,
-      "cumulativeReviewedTokens": 957,
+      "priorReviewedTokens": 947,
+      "cumulativeReviewedTokens": 956,
       "notes": 0,
       "candidates": [
         {
@@ -34562,8 +34478,8 @@
       },
       "localReviewedTokens": 43,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 957,
-      "cumulativeReviewedTokens": 972,
+      "priorReviewedTokens": 956,
+      "cumulativeReviewedTokens": 971,
       "notes": 0,
       "candidates": [
         {
@@ -35071,8 +34987,8 @@
       },
       "localReviewedTokens": 34,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 972,
-      "cumulativeReviewedTokens": 982,
+      "priorReviewedTokens": 971,
+      "cumulativeReviewedTokens": 981,
       "notes": 0,
       "candidates": [
         {
@@ -35590,8 +35506,8 @@
       },
       "localReviewedTokens": 40,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 982,
-      "cumulativeReviewedTokens": 1001,
+      "priorReviewedTokens": 981,
+      "cumulativeReviewedTokens": 1000,
       "notes": 0,
       "candidates": [
         {
@@ -36319,8 +36235,8 @@
       },
       "localReviewedTokens": 35,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 1001,
-      "cumulativeReviewedTokens": 1014,
+      "priorReviewedTokens": 1000,
+      "cumulativeReviewedTokens": 1013,
       "notes": 0,
       "candidates": [
         {
@@ -36907,8 +36823,8 @@
       },
       "localReviewedTokens": 29,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 1014,
-      "cumulativeReviewedTokens": 1021,
+      "priorReviewedTokens": 1013,
+      "cumulativeReviewedTokens": 1020,
       "notes": 0,
       "candidates": [
         {
@@ -37582,8 +37498,8 @@
       },
       "localReviewedTokens": 30,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 1021,
-      "cumulativeReviewedTokens": 1024,
+      "priorReviewedTokens": 1020,
+      "cumulativeReviewedTokens": 1023,
       "notes": 0,
       "candidates": [
         {
@@ -38144,8 +38060,8 @@
       },
       "localReviewedTokens": 69,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 1024,
-      "cumulativeReviewedTokens": 1049,
+      "priorReviewedTokens": 1023,
+      "cumulativeReviewedTokens": 1048,
       "notes": 0,
       "candidates": [
         {
@@ -38854,8 +38770,8 @@
       },
       "localReviewedTokens": 33,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 1049,
-      "cumulativeReviewedTokens": 1061,
+      "priorReviewedTokens": 1048,
+      "cumulativeReviewedTokens": 1060,
       "notes": 1,
       "candidates": [
         {
@@ -39443,8 +39359,8 @@
       },
       "localReviewedTokens": 34,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 1061,
-      "cumulativeReviewedTokens": 1083,
+      "priorReviewedTokens": 1060,
+      "cumulativeReviewedTokens": 1082,
       "notes": 1,
       "candidates": [
         {
@@ -40065,8 +39981,8 @@
       },
       "localReviewedTokens": 47,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 1083,
-      "cumulativeReviewedTokens": 1106,
+      "priorReviewedTokens": 1082,
+      "cumulativeReviewedTokens": 1105,
       "notes": 1,
       "candidates": [
         {
@@ -40580,8 +40496,8 @@
       },
       "localReviewedTokens": 43,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 1106,
-      "cumulativeReviewedTokens": 1123,
+      "priorReviewedTokens": 1105,
+      "cumulativeReviewedTokens": 1122,
       "notes": 0,
       "candidates": [
         {
@@ -41166,8 +41082,8 @@
       },
       "localReviewedTokens": 34,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 1123,
-      "cumulativeReviewedTokens": 1136,
+      "priorReviewedTokens": 1122,
+      "cumulativeReviewedTokens": 1135,
       "notes": 0,
       "candidates": [
         {
@@ -41938,8 +41854,8 @@
       },
       "localReviewedTokens": 39,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 1136,
-      "cumulativeReviewedTokens": 1148,
+      "priorReviewedTokens": 1135,
+      "cumulativeReviewedTokens": 1147,
       "notes": 0,
       "candidates": [
         {
@@ -42560,8 +42476,8 @@
       },
       "localReviewedTokens": 38,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 1148,
-      "cumulativeReviewedTokens": 1163,
+      "priorReviewedTokens": 1147,
+      "cumulativeReviewedTokens": 1162,
       "notes": 0,
       "candidates": [
         {
@@ -43141,8 +43057,8 @@
       },
       "localReviewedTokens": 62,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 1163,
-      "cumulativeReviewedTokens": 1179,
+      "priorReviewedTokens": 1162,
+      "cumulativeReviewedTokens": 1178,
       "notes": 0,
       "candidates": [
         {
@@ -43818,8 +43734,8 @@
       },
       "localReviewedTokens": 62,
       "localProperNameTokens": 0,
-      "priorReviewedTokens": 1179,
-      "cumulativeReviewedTokens": 1201,
+      "priorReviewedTokens": 1178,
+      "cumulativeReviewedTokens": 1200,
       "notes": 0,
       "candidates": [
         {

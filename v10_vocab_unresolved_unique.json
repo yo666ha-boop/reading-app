@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-08-25T05:04:16.304Z",
+    "generatedAt": "2026-08-25T06:54:37.770Z",
     "passages": 168,
     "canonicalSource": {
       "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
@@ -17,14 +17,14 @@
     },
     "counts": {
       "V7_CHRONOLOGY_ALLOWED": 10132,
-      "ELEMENTARY_LEXICAL_ALLOWED": 3505,
+      "ELEMENTARY_LEXICAL_ALLOWED": 3526,
       "EXPLICIT_PROPER_NAME_ALLOWED": 84,
-      "REVIEWED_EXPLICIT_ALLOWED": 757,
-      "MORPHOLOGY_TO_GRAMMAR": 2505,
+      "REVIEWED_EXPLICIT_ALLOWED": 756,
+      "MORPHOLOGY_TO_GRAMMAR": 2502,
       "CONTRACTION_TO_GRAMMAR": 227,
-      "EXPLICIT_FUNCTION_TO_GRAMMAR": 20703,
-      "FUTURE_V7_LEAK": 1071,
-      "UNREGISTERED_V7": 1755,
+      "EXPLICIT_FUNCTION_TO_GRAMMAR": 20718,
+      "FUTURE_V7_LEAK": 1056,
+      "UNREGISTERED_V7": 1751,
       "UNREGISTERED_PROPER": 0,
       "NOTED_UNLEARNED_ALLOWED": 152
     },
@@ -32,8 +32,8 @@
     "missingGloss": 0,
     "mappingErrors": [],
     "runtimeBrowserErrors": [],
-    "uniqueUnresolved": 556,
-    "futureVocabLeakOccurrences": 2826,
+    "uniqueUnresolved": 554,
+    "futureVocabLeakOccurrences": 2807,
     "chronologyPass": false,
     "rule": "Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. Explicit proper-name allowances are honored only inside the current passage when allowedWords marks the row proper names and the actual token is capitalized; those names are never promoted into cumulative ordinary vocabulary. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun. A passage-local notes entry authorizes only the exact noted token in that passage and only when English and Japanese gloss are both nonblank; it never enters cumulative vocabulary."
   },
@@ -190,36 +190,6 @@
         "ニューホライズン|3|Unit 6-3|slash:2"
       ],
       "sectionCount": 2
-    },
-    {
-      "token": "saw",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        2,
-        11,
-        1,
-        "saw",
-        0
-      ],
-      "occurrences": 17,
-      "sections": [
-        "サンシャイン|1|Get Ready 6"
-      ],
-      "examples": [
-        "サンシャイン|1|Get Ready 6|sentence:3",
-        "サンシャイン|1|Get Ready 6|sentence:4",
-        "サンシャイン|1|Get Ready 6|sentence:5",
-        "サンシャイン|1|Get Ready 6|sentence:6",
-        "サンシャイン|1|Get Ready 6|sentence:7",
-        "サンシャイン|1|Get Ready 6|slash:3",
-        "サンシャイン|1|Get Ready 6|slash:4",
-        "サンシャイン|1|Get Ready 6|slash:5",
-        "サンシャイン|1|Get Ready 6|slash:6",
-        "サンシャイン|1|Get Ready 6|slash:7",
-        "サンシャイン|1|Get Ready 6|A3.evidence",
-        "サンシャイン|1|Get Ready 6|A3.evidence"
-      ],
-      "sectionCount": 1
     },
     {
       "token": "town",
@@ -4889,6 +4859,29 @@
       "sectionCount": 1
     },
     {
+      "token": "lunch",
+      "kind": "FUTURE_V7_LEAK",
+      "intro": [
+        1,
+        1,
+        8,
+        "lunch",
+        0
+      ],
+      "occurrences": 5,
+      "sections": [
+        "サンシャイン|1|Get Ready 6"
+      ],
+      "examples": [
+        "サンシャイン|1|Get Ready 6|sentence:1",
+        "サンシャイン|1|Get Ready 6|slash:1",
+        "サンシャイン|1|Get Ready 6|A1.answer",
+        "サンシャイン|1|Get Ready 6|A1.evidence",
+        "サンシャイン|1|Get Ready 6|B1.evidence"
+      ],
+      "sectionCount": 1
+    },
+    {
       "token": "osaka",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -6328,22 +6321,6 @@
       "sectionCount": 1
     },
     {
-      "token": "pizza",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 4,
-      "sections": [
-        "サンシャイン|1|Get Ready 6"
-      ],
-      "examples": [
-        "サンシャイン|1|Get Ready 6|sentence:2",
-        "サンシャイン|1|Get Ready 6|slash:2",
-        "サンシャイン|1|Get Ready 6|A1.answer",
-        "サンシャイン|1|Get Ready 6|A1.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
       "token": "police",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -7742,27 +7719,6 @@
         "ニューホライズン|2|Unit 5-4|sentence:2",
         "ニューホライズン|2|Unit 5-4|slash:2",
         "ニューホライズン|2|Unit 5-4|A2.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "lunch",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        1,
-        1,
-        8,
-        "lunch",
-        0
-      ],
-      "occurrences": 3,
-      "sections": [
-        "サンシャイン|1|Get Ready 6"
-      ],
-      "examples": [
-        "サンシャイン|1|Get Ready 6|sentence:1",
-        "サンシャイン|1|Get Ready 6|slash:1",
-        "サンシャイン|1|Get Ready 6|A2.evidence"
       ],
       "sectionCount": 1
     },
