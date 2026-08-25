@@ -1,34 +1,10 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "classification": "FAIL_CLOSED_UNTIL_EVIDENCE_BACKED_CHRONOLOGY_COMPLETE",
-  "scope": {
-    "passages": 168,
-    "sources": ["sentences", "slashRows.en", "A.prompt", "A.answer", "A.evidence", "B.prompt", "B.answer", "B.evidence"],
-    "textbooks": ["ニューホライズン", "サンシャイン"],
-    "grades": ["1", "2", "3"]
-  },
-  "rules": {
-    "chronology": "A detected grammar feature is allowed only when an evidence-backed introduction point for the same textbook is at or before the passage subunit. Exact earlier-grade introductions carry forward automatically within the same textbook; future units never authorize earlier passages.",
-    "priorGradeCarryForward": "Only an exact evidence-backed boundary from an earlier grade may carry forward. Program/unit-only evidence remains unresolved and cannot authorize later-grade occurrences.",
-    "morphology": "Known vocabulary base forms do not authorize an inflected form unless the form also passes grammar chronology.",
-    "existingFlags": "Per-unit audit flags, grammar labels, or previous PASS reports are not sufficient evidence for this final gate.",
-    "passCondition": "Every detected feature occurrence in all 168 passages and A/B English fields must resolve to an introduction point at or before the exact section; unresolved or future occurrences fail closed."
-  },
-  "detectorFeatures": [
-    "WILL_FUTURE", "WOULD_LIKE", "BE_GOING_TO", "MODAL_CAN_COULD_MAY_MUST_SHOULD", "HAVE_TO", "PRESENT_PROGRESSIVE", "PAST_PROGRESSIVE", "PRESENT_PERFECT_PROGRESSIVE", "PRESENT_PERFECT", "GERUND", "TO_INFINITIVE", "WH_TO_INFINITIVE", "ASK_TELL_WANT_O_TO", "COMPARATIVE", "SUPERLATIVE", "AS_AS", "IF_CLAUSE", "WHEN_WHILE_CLAUSE", "WHETHER_CLAUSE", "BECAUSE_CLAUSE", "PASSIVE", "PARTICIPLE_POSTMODIFIER", "RELATIVE_PRONOUN", "INDIRECT_QUESTION", "SV_OO", "IT_IS_ADJ_TO", "TOO_TO", "ENOUGH_TO", "SO_THAT", "NOT_ONLY_BUT_ALSO", "MAKE_O_V", "LET_O_V"
-  ],
-  "evidenceFile": "v10_grammar_chronology_evidence.json",
-  "resolver": "v10_grammar_chronology_gate_audit.js",
-  "status": {
-    "passagesStructurallyScanned": 168,
-    "candidateDetectorImplemented": true,
-    "detectorVersion": 2,
-    "sectionChronologyComplete": false,
-    "postCarryForwardResolvedOccurrences": 199,
-    "postCarryForwardUnresolvedOccurrences": 1125,
-    "postCarryForwardFutureGrammarLeak": 20,
-    "nh2ExactEvidenceExtendedThroughUnit7": true,
-    "finalPass": false
-  },
-  "next": "Re-run with exact NH2 Unit4-7 evidence; then finish NH3 and Sunshine exact-subunit boundaries, split over-broad feature families where required, and rewrite confirmed early future structures. Keep finalPass=false until unresolvedOccurrences=0 and futureGrammarLeak=0."
+  "scope": {"passages":168,"sources":["sentences","slashRows.en","A.prompt","A.answer","A.evidence","B.prompt","B.answer","B.evidence"],"textbooks":["ニューホライズン","サンシャイン"],"grades":["1","2","3"]},
+  "rules": {"chronology":"A detected grammar feature is allowed only when an evidence-backed introduction point for the same textbook is at or before the passage subunit. Exact earlier-grade introductions carry forward automatically within the same textbook; future units never authorize earlier passages.","priorGradeCarryForward":"Only an exact evidence-backed boundary from an earlier grade may carry forward. Program/unit-only evidence remains unresolved and cannot authorize later-grade occurrences.","morphology":"Known vocabulary base forms do not authorize an inflected form unless the form also passes grammar chronology.","existingFlags":"Per-unit audit flags, grammar labels, or previous PASS reports are not sufficient evidence for this final gate.","passCondition":"Every detected feature occurrence in all 168 passages and A/B English fields must resolve to an introduction point at or before the exact section; unresolved or future occurrences fail closed."},
+  "detectorFeatures":["WILL_FUTURE","WOULD_LIKE","BE_GOING_TO","MODAL_CAN_COULD_MAY_MUST_SHOULD","HAVE_TO","PRESENT_PROGRESSIVE","PAST_PROGRESSIVE","PRESENT_PERFECT_PROGRESSIVE","PRESENT_PERFECT","GERUND","TO_INFINITIVE","WH_TO_INFINITIVE","ASK_TELL_WANT_O_TO","COMPARATIVE","SUPERLATIVE","AS_AS","IF_CLAUSE","WHEN_WHILE_CLAUSE","WHETHER_CLAUSE","BECAUSE_CLAUSE","PASSIVE","PARTICIPLE_POSTMODIFIER","RELATIVE_PRONOUN","INDIRECT_QUESTION","SV_OO","IT_IS_ADJ_TO","TOO_TO","ENOUGH_TO","SO_THAT","NOT_ONLY_BUT_ALSO","MAKE_O_V","LET_O_V"],
+  "evidenceFile":"v10_grammar_chronology_evidence.json","resolver":"v10_grammar_chronology_gate_audit.js",
+  "status":{"passagesStructurallyScanned":168,"candidateDetectorImplemented":true,"detectorVersion":2,"sectionChronologyComplete":false,"lastVerifiedResolvedOccurrences":199,"lastVerifiedUnresolvedOccurrences":1125,"lastVerifiedFutureGrammarLeak":20,"nh2ExactEvidenceExtendedThroughUnit7":true,"nh3ExactEvidenceExtendedThroughUnit5":true,"finalPass":false},
+  "next":"Re-run with exact NH2/NH3 Part evidence. Then split over-broad modal/infinitive families and finish Sunshine exact-subunit evidence; rewrite confirmed early future structures. Keep finalPass=false until unresolvedOccurrences=0 and futureGrammarLeak=0."
 }
