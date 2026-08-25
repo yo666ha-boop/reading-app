@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-25T17:14:34.503Z",
+  "generatedAt": "2026-08-25T17:55:12.767Z",
   "passages": 168,
   "classification": "CANDIDATES_NOT_PASS_FAIL",
-  "warning": "Refined structure detector v3 after authoritative final runtime load. Modal and infinitive families are split so chronology cannot be granted by an unrelated earlier use.",
-  "detectorVersion": 3,
+  "warning": "Refined structure detector v3.1 after authoritative final runtime load. Modal and infinitive families remain split; predicative -ing adjectives such as interesting/amazing are excluded from progressive detection.",
+  "detectorVersion": "3.1",
   "featureSummary": {
     "MODAL_CAN": {
       "sectionCount": 77,
@@ -207,26 +207,6 @@
         "ニューホライズン|3|Unit 5-1"
       ]
     },
-    "PRESENT_PROGRESSIVE": {
-      "sectionCount": 15,
-      "sections": [
-        "サンシャイン|1|PROGRAM 6-3",
-        "サンシャイン|1|PROGRAM 7-1",
-        "サンシャイン|1|PROGRAM 8-2",
-        "ニューホライズン|1|Unit 4-1",
-        "ニューホライズン|1|Unit 5-1",
-        "ニューホライズン|1|Unit 5-2",
-        "ニューホライズン|1|Unit 6-1",
-        "ニューホライズン|2|Unit 1-1",
-        "サンシャイン|3|PROGRAM 1-2",
-        "サンシャイン|3|PROGRAM 3-2",
-        "サンシャイン|3|PROGRAM 7-1",
-        "ニューホライズン|3|Unit 1-3",
-        "ニューホライズン|3|Unit 2-1",
-        "ニューホライズン|3|Unit 3-2",
-        "ニューホライズン|3|Unit 6-3"
-      ]
-    },
     "SV_OO": {
       "sectionCount": 11,
       "sections": [
@@ -241,16 +221,6 @@
         "ニューホライズン|3|Unit 1-4",
         "ニューホライズン|3|Unit 3-2",
         "ニューホライズン|3|Unit 6-3"
-      ]
-    },
-    "PAST_PROGRESSIVE": {
-      "sectionCount": 5,
-      "sections": [
-        "サンシャイン|1|PROGRAM 10-2",
-        "ニューホライズン|1|Unit 10-3",
-        "ニューホライズン|2|Unit 0",
-        "ニューホライズン|2|Unit 7-4",
-        "ニューホライズン|3|Unit 6-1"
       ]
     },
     "SUPERLATIVE": {
@@ -401,6 +371,18 @@
         "ニューホライズン|2|Unit 1-1"
       ]
     },
+    "PRESENT_PROGRESSIVE": {
+      "sectionCount": 7,
+      "sections": [
+        "ニューホライズン|2|Unit 1-1",
+        "サンシャイン|3|PROGRAM 1-2",
+        "サンシャイン|3|PROGRAM 3-2",
+        "サンシャイン|3|PROGRAM 7-1",
+        "ニューホライズン|3|Unit 2-1",
+        "ニューホライズン|3|Unit 3-2",
+        "ニューホライズン|3|Unit 6-3"
+      ]
+    },
     "HAVE_TO": {
       "sectionCount": 4,
       "sections": [
@@ -442,6 +424,13 @@
         "サンシャイン|3|PROGRAM 7-3",
         "ニューホライズン|3|Unit 3-1",
         "ニューホライズン|3|Unit 3-3"
+      ]
+    },
+    "PAST_PROGRESSIVE": {
+      "sectionCount": 2,
+      "sections": [
+        "ニューホライズン|2|Unit 7-4",
+        "ニューホライズン|3|Unit 6-1"
       ]
     },
     "PRESENT_PERFECT": {
@@ -1216,28 +1205,6 @@
             "text": "I want to tell my friend about them.",
             "match": "want to tell"
           }
-        ],
-        "PRESENT_PROGRESSIVE": [
-          {
-            "where": "sentence:11",
-            "text": "The schoolchildren are amazing.",
-            "match": "are amazing"
-          },
-          {
-            "where": "slash:11",
-            "text": "The schoolchildren are amazing.",
-            "match": "are amazing"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "The schoolchildren are amazing.",
-            "match": "are amazing"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "The schoolchildren are amazing.",
-            "match": "are amazing"
-          }
         ]
       }
     },
@@ -1246,25 +1213,7 @@
       "grade": "1",
       "section": "PROGRAM 7-1",
       "id": "V10-SS-G1-P7-1-001",
-      "features": {
-        "PRESENT_PROGRESSIVE": [
-          {
-            "where": "sentence:3",
-            "text": "The research is interesting.",
-            "match": "is interesting"
-          },
-          {
-            "where": "slash:3",
-            "text": "The research is interesting.",
-            "match": "is interesting"
-          },
-          {
-            "where": "B1.evidence",
-            "text": "The research is interesting.",
-            "match": "is interesting"
-          }
-        ]
-      }
+      "features": {}
     },
     {
       "textbook": "サンシャイン",
@@ -1354,25 +1303,7 @@
       "grade": "1",
       "section": "PROGRAM 8-2",
       "id": "V10-SS-G1-P8-2-001",
-      "features": {
-        "PRESENT_PROGRESSIVE": [
-          {
-            "where": "sentence:9",
-            "text": "The countdown is exciting.",
-            "match": "is exciting"
-          },
-          {
-            "where": "slash:9",
-            "text": "The countdown is exciting.",
-            "match": "is exciting"
-          },
-          {
-            "where": "B3.evidence",
-            "text": "The countdown is exciting.",
-            "match": "is exciting"
-          }
-        ]
-      }
+      "features": {}
     },
     {
       "textbook": "サンシャイン",
@@ -1421,30 +1352,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "id": "V10-SS-G1-P10-2-001",
-      "features": {
-        "PAST_PROGRESSIVE": [
-          {
-            "where": "sentence:5",
-            "text": "The movie was interesting.",
-            "match": "was interesting"
-          },
-          {
-            "where": "slash:5",
-            "text": "The movie was interesting.",
-            "match": "was interesting"
-          },
-          {
-            "where": "A4.evidence",
-            "text": "The movie was interesting.",
-            "match": "was interesting"
-          },
-          {
-            "where": "B2.evidence",
-            "text": "The movie was interesting.",
-            "match": "was interesting"
-          }
-        ]
-      }
+      "features": {}
     },
     {
       "textbook": "サンシャイン",
@@ -1765,18 +1673,6 @@
             "text": "I want to visit New Zealand someday.",
             "match": "want to visit"
           }
-        ],
-        "PRESENT_PROGRESSIVE": [
-          {
-            "where": "sentence:8",
-            "text": "New Zealand is interesting.",
-            "match": "is interesting"
-          },
-          {
-            "where": "slash:8",
-            "text": "New Zealand is interesting.",
-            "match": "is interesting"
-          }
         ]
       }
     },
@@ -1839,18 +1735,6 @@
             "text": "I enjoy working as a guide.",
             "match": "enjoy working"
           }
-        ],
-        "PRESENT_PROGRESSIVE": [
-          {
-            "where": "sentence:10",
-            "text": "My work is interesting.",
-            "match": "is interesting"
-          },
-          {
-            "where": "slash:10",
-            "text": "My work is interesting.",
-            "match": "is interesting"
-          }
         ]
       }
     },
@@ -1875,23 +1759,6 @@
             "where": "A4.evidence",
             "text": "He can swim.",
             "match": "can swim"
-          }
-        ],
-        "PRESENT_PROGRESSIVE": [
-          {
-            "where": "sentence:12",
-            "text": "The blog is interesting.",
-            "match": "is interesting"
-          },
-          {
-            "where": "slash:12",
-            "text": "The blog is interesting.",
-            "match": "is interesting"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "The blog is interesting.",
-            "match": "is interesting"
           }
         ]
       }
@@ -1947,18 +1814,6 @@
             "where": "B4.evidence",
             "text": "We can watch it together.",
             "match": "can watch"
-          }
-        ],
-        "PRESENT_PROGRESSIVE": [
-          {
-            "where": "sentence:10",
-            "text": "The show is interesting.",
-            "match": "is interesting"
-          },
-          {
-            "where": "slash:10",
-            "text": "The show is interesting.",
-            "match": "is interesting"
           }
         ]
       }
@@ -2355,23 +2210,6 @@
       "section": "Unit 10-3",
       "id": "V10-NH-G1-U10-3-001",
       "features": {
-        "PAST_PROGRESSIVE": [
-          {
-            "where": "sentence:6",
-            "text": "It was exciting.",
-            "match": "was exciting"
-          },
-          {
-            "where": "slash:6",
-            "text": "It was exciting.",
-            "match": "was exciting"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "It was exciting.",
-            "match": "was exciting"
-          }
-        ],
         "GERUND": [
           {
             "where": "sentence:8",
@@ -4044,18 +3882,6 @@
             "where": "B4.evidence",
             "text": "My friend and I want to eat ramen again.",
             "match": "want to eat"
-          }
-        ],
-        "PAST_PROGRESSIVE": [
-          {
-            "where": "sentence:9",
-            "text": "The experience was interesting.",
-            "match": "was interesting"
-          },
-          {
-            "where": "slash:9",
-            "text": "The experience was interesting.",
-            "match": "was interesting"
           }
         ]
       }
@@ -7617,18 +7443,6 @@
             "match": "is enjoyed"
           }
         ],
-        "PRESENT_PROGRESSIVE": [
-          {
-            "where": "sentence:3",
-            "text": "Some stories are exciting adventures.",
-            "match": "are exciting"
-          },
-          {
-            "where": "slash:3",
-            "text": "Some stories are exciting adventures.",
-            "match": "are exciting"
-          }
-        ],
         "MODAL_CAN": [
           {
             "where": "sentence:6",
@@ -9273,69 +9087,14 @@
     }
   ],
   "chronologyGate": {
-    "detectedOccurrences": 1355,
-    "resolvedOccurrences": 962,
-    "priorGradeCarryForwardOccurrences": 609,
+    "detectedOccurrences": 1325,
+    "resolvedOccurrences": 948,
+    "priorGradeCarryForwardOccurrences": 605,
     "unresolvedOccurrences": 320,
-    "futureGrammarLeak": 73,
+    "futureGrammarLeak": 57,
     "sectionChronologyComplete": false,
     "finalPass": false,
     "future": [
-      {
-        "textbook": "サンシャイン",
-        "grade": "1",
-        "section": "PROGRAM 6-3",
-        "feature": "PRESENT_PROGRESSIVE",
-        "boundary": "PROGRAM 8-1",
-        "occurrences": 4,
-        "samples": [
-          {
-            "where": "sentence:11",
-            "text": "The schoolchildren are amazing.",
-            "match": "are amazing"
-          },
-          {
-            "where": "slash:11",
-            "text": "The schoolchildren are amazing.",
-            "match": "are amazing"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "The schoolchildren are amazing.",
-            "match": "are amazing"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "The schoolchildren are amazing.",
-            "match": "are amazing"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "1",
-        "section": "PROGRAM 7-1",
-        "feature": "PRESENT_PROGRESSIVE",
-        "boundary": "PROGRAM 8-1",
-        "occurrences": 3,
-        "samples": [
-          {
-            "where": "sentence:3",
-            "text": "The research is interesting.",
-            "match": "is interesting"
-          },
-          {
-            "where": "slash:3",
-            "text": "The research is interesting.",
-            "match": "is interesting"
-          },
-          {
-            "where": "B1.evidence",
-            "text": "The research is interesting.",
-            "match": "is interesting"
-          }
-        ]
-      },
       {
         "textbook": "ニューホライズン",
         "grade": "1",
@@ -9439,26 +9198,6 @@
       {
         "textbook": "ニューホライズン",
         "grade": "1",
-        "section": "Unit 4-1",
-        "feature": "PRESENT_PROGRESSIVE",
-        "boundary": "Unit 7-1",
-        "occurrences": 2,
-        "samples": [
-          {
-            "where": "sentence:8",
-            "text": "New Zealand is interesting.",
-            "match": "is interesting"
-          },
-          {
-            "where": "slash:8",
-            "text": "New Zealand is interesting.",
-            "match": "is interesting"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "1",
         "section": "Unit 4-2",
         "feature": "WANT_TO",
         "boundary": "Unit 8-1",
@@ -9484,51 +9223,6 @@
       {
         "textbook": "ニューホライズン",
         "grade": "1",
-        "section": "Unit 5-1",
-        "feature": "PRESENT_PROGRESSIVE",
-        "boundary": "Unit 7-1",
-        "occurrences": 2,
-        "samples": [
-          {
-            "where": "sentence:10",
-            "text": "My work is interesting.",
-            "match": "is interesting"
-          },
-          {
-            "where": "slash:10",
-            "text": "My work is interesting.",
-            "match": "is interesting"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "1",
-        "section": "Unit 5-2",
-        "feature": "PRESENT_PROGRESSIVE",
-        "boundary": "Unit 7-1",
-        "occurrences": 3,
-        "samples": [
-          {
-            "where": "sentence:12",
-            "text": "The blog is interesting.",
-            "match": "is interesting"
-          },
-          {
-            "where": "slash:12",
-            "text": "The blog is interesting.",
-            "match": "is interesting"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "The blog is interesting.",
-            "match": "is interesting"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "1",
         "section": "Unit 5-3",
         "feature": "WANT_TO",
         "boundary": "Unit 8-1",
@@ -9548,26 +9242,6 @@
             "where": "B4.evidence",
             "text": "“I want to visit the cafe.”",
             "match": "want to visit"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "1",
-        "section": "Unit 6-1",
-        "feature": "PRESENT_PROGRESSIVE",
-        "boundary": "Unit 7-1",
-        "occurrences": 2,
-        "samples": [
-          {
-            "where": "sentence:10",
-            "text": "The show is interesting.",
-            "match": "is interesting"
-          },
-          {
-            "where": "slash:10",
-            "text": "The show is interesting.",
-            "match": "is interesting"
           }
         ]
       },
