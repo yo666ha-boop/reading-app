@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T18:14:18.846Z",
+  "generatedAt": "2026-08-25T18:17:39.938Z",
   "passages": 168,
   "classification": "CANDIDATES_NOT_PASS_FAIL",
   "warning": "Refined structure detector v3.1 after authoritative final runtime load. Modal and infinitive families remain split; predicative -ing adjectives such as interesting/amazing are excluded from progressive detection.",
@@ -196,11 +196,10 @@
       ]
     },
     "SV_OO": {
-      "sectionCount": 11,
+      "sectionCount": 10,
       "sections": [
         "サンシャイン|1|PROGRAM 7-3",
         "サンシャイン|1|Step 6 / Our Project 3 / Power-Up 6",
-        "サンシャイン|2|PROGRAM 3-3",
         "サンシャイン|2|PROGRAM 5-3",
         "サンシャイン|2|PROGRAM 6-1",
         "ニューホライズン|2|Unit 1-1",
@@ -2385,8 +2384,8 @@
         "MODAL_CAN": [
           {
             "where": "sentence:4",
-            "text": "“Can you show me this bowl?”",
-            "match": "Can you"
+            "text": "Can I see this bowl?",
+            "match": "Can I"
           },
           {
             "where": "sentence:8",
@@ -2395,8 +2394,8 @@
           },
           {
             "where": "slash:4",
-            "text": "“Can you show me this bowl?”",
-            "match": "Can you"
+            "text": "Can I see this bowl?",
+            "match": "Can I"
           },
           {
             "where": "slash:8",
@@ -2407,18 +2406,6 @@
             "where": "A4.evidence",
             "text": "I can carry it easily.",
             "match": "can carry"
-          }
-        ],
-        "SV_OO": [
-          {
-            "where": "sentence:4",
-            "text": "“Can you show me this bowl?”",
-            "match": "show me this"
-          },
-          {
-            "where": "slash:4",
-            "text": "“Can you show me this bowl?”",
-            "match": "show me this"
           }
         ],
         "WANT_TO": [
@@ -8734,35 +8721,14 @@
     }
   ],
   "chronologyGate": {
-    "detectedOccurrences": 1268,
+    "detectedOccurrences": 1266,
     "resolvedOccurrences": 1052,
     "priorGradeCarryForwardOccurrences": 647,
     "unresolvedOccurrences": 214,
-    "futureGrammarLeak": 2,
+    "futureGrammarLeak": 0,
     "sectionChronologyComplete": false,
     "finalPass": false,
-    "future": [
-      {
-        "textbook": "サンシャイン",
-        "grade": "2",
-        "section": "PROGRAM 3-3",
-        "feature": "SV_OO",
-        "boundary": "PROGRAM 5-3",
-        "occurrences": 2,
-        "samples": [
-          {
-            "where": "sentence:4",
-            "text": "“Can you show me this bowl?”",
-            "match": "show me this"
-          },
-          {
-            "where": "slash:4",
-            "text": "“Can you show me this bowl?”",
-            "match": "show me this"
-          }
-        ]
-      }
-    ],
+    "future": [],
     "unresolved": [
       {
         "textbook": "サンシャイン",
