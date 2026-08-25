@@ -64,3 +64,43 @@
  if(p155&&Array.isArray(p155.slashRows)&&p155.slashRows.length===p155.sentences.length){const i=6,s=String(p155.sentences[i]||'');if(s==='Even after his release, he continued to defend free speech and equal treatment.'){p155.slashRows[i]={en:'Even / after his release, / he continued / to defend free speech / and equal treatment.',jp:'〜でさえ / 釈放後 / 彼は続けました / 言論の自由を守ることを / そして平等な扱いを'};p155.slashReadingVersion=VERSION;p155.slashReferenceAudit=PASS;p155.slashReferencePassageNo=155;}}
  window.V10_REFERENCE_SLASH_FINAL_CORRECTIONS={version:'2026-08-20',passages:[53,141,145,146,155],status:'APPLIED'};
 })();
+
+// Grammar-chronology final bridge. Runs last, after reference rows, so any sentence rewrite
+// atomically updates learner-visible sentence/slash/A+B evidence while retaining the audited
+// reference marker on the passage. Chronology boundaries are never widened to hide future grammar.
+(function(){
+ const pools={
+  'ニューホライズン|1':window.V10_NEWHORIZON_G1||{},
+  'ニューホライズン|2':window.V10_PASSAGES_G2_NH||{},
+  'ニューホライズン|3':window.V10_PASSAGES_G3_NH||{}
+ };
+ const fixes=[
+  ['1','Unit 1-1','I want to join the tennis club.','I like the tennis club.','テニス部に入りたいです。','テニス部が好きです。','I like / the tennis club.','私は好きです / テニス部が','Leonardo はどの部活動が好きですか。本文から英語で答えなさい。','the tennis club'],
+  ['1','Unit 1-2','We can play soccer together.','We play soccer together.','私たちはいっしょにサッカーができます。','私たちはいっしょにサッカーをします。','We play soccer / together.','私たちはサッカーをします / いっしょに','2人はいっしょに何をしますか。本文から英語で答えなさい。','soccer'],
+  ['1','Unit 3-3','I want to win.','I practice every day.','勝ちたいんだ。','毎日練習するんだ。','I practice / every day.','私は練習します / 毎日','話し手はどのくらいの頻度で練習しますか。本文から英語で答えなさい。','every day'],
+  ['1','Unit 4-1','I want to visit New Zealand someday.','I like New Zealand.','いつかニュージーランドを訪れたいな。','ニュージーランドが好きです。','I like / New Zealand.','私は好きです / ニュージーランドが','話し手が好きな国はどこですか。本文から英語で答えなさい。','New Zealand'],
+  ['1','Unit 4-2','We want to win.','We practice every day.','私たちは勝ちたいです。','私たちは毎日練習します。','We practice / every day.','私たちは練習します / 毎日','話し手たちはどのくらいの頻度で練習しますか。本文から英語で答えなさい。','every day'],
+  ['1','Unit 5-3','“I want to visit the cafe.”','“I like the cafe.”','「そのカフェを訪れたいです。」','「そのカフェが好きです。」','“I like / the cafe.”','「私は好きです / そのカフェが」','話し手が好きな場所はどこですか。本文から英語で答えなさい。','the cafe'],
+  ['1','Unit 7-1','I want to practice tennis tomorrow morning.','Tennis practice is tomorrow morning.','明日の朝、テニスを練習したいです。','テニスの練習は明日の朝です。','Tennis practice is / tomorrow morning.','テニスの練習は〜です / 明日の朝','テニスの練習はいつですか。本文から英語で答えなさい。','tomorrow morning'],
+  ['1','Unit 7-2','I want to buy a souvenir for my family.','This souvenir is for my family.','家族のためにおみやげを買いたいです。','このおみやげは家族のためです。','This souvenir is / for my family.','このおみやげは〜です / 家族のため','このおみやげは誰のためですか。本文から英語で答えなさい。','my family'],
+  ['1','Unit 7-2','I want to buy it.','I like it.','それを買いたいです。','それが好きです。','I like it.','私はそれが好きです。','話し手はそれをどう思っていますか。本文に合うように英語で答えなさい。','I like it.'],
+  ['1','Unit 7-3','I want to visit a palace.','I like this palace.','宮殿を訪れたいです。','この宮殿が好きです。','I like / this palace.','私は好きです / この宮殿が','話し手が好きな建物は何ですか。本文から英語で答えなさい。','this palace'],
+  ['2','Unit 1-3','We look at the card when we need help.','We look at the card for help.','助けが必要なとき、そのカードを見ます。','助けのために、そのカードを見ます。','We look / at the card / for help.','私たちは見ます / そのカードを / 助けのために','私たちは何のためにカードを見ますか。本文から英語で答えなさい。','for help'],
+  ['2','Unit 1-3','Shopping was an interesting experience.','The trip was an interesting experience.','買い物はおもしろい体験でした。','その旅はおもしろい体験でした。','The trip was an interesting experience.','その旅はおもしろい体験でした。','何がおもしろい体験でしたか。本文から英語で答えなさい。','the trip'],
+  ['2','Unit 2-2','I am happy to hear that.','I am happy about that.','それを聞いてうれしいです。','そのことがうれしいです。','I am happy / about that.','私はうれしいです / そのことが','話し手はそのことをどう感じていますか。本文から英語で答えなさい。','happy'],
+  ['2','Unit 3-1','In the morning, I help the children get ready to play.','In the morning, I help the children.','朝、私は子どもたちが遊ぶ準備をするのを手伝います。','朝、私は子どもたちを手伝います。','In the morning, / I help the children.','朝 / 私は子どもたちを手伝います','朝、話し手は誰を手伝いますか。本文から英語で答えなさい。','the children'],
+  ['2','Unit 3-4','I learned how to read clearly.','Now I read clearly.','はっきり読む方法を学びました。','今は、はっきり読みます。','Now / I read clearly.','今は / 私ははっきり読みます','今、話し手はどのように読みますか。本文から英語で答えなさい。','clearly'],
+  ['3','Unit 3-1','Our class studies an endangered animal that lives in a forest.','Our class studies an endangered forest animal.','私たちのクラスは森に住む絶滅危惧動物を調べます。','私たちのクラスは絶滅危惧の森の動物を調べます。','Our class studies / an endangered forest animal.','私たちのクラスは調べます / 絶滅危惧の森の動物を','私たちのクラスは何を調べますか。本文から英語で答えなさい。','an endangered forest animal'],
+  ['3','Unit 3-2','We ask our teacher to let us share the article with the class.','We ask our teacher about the article and share it with the class.','私たちは先生に、その記事をクラスで共有させてほしいと頼みます。','私たちは先生にその記事についてたずね、クラスで共有します。','We ask our teacher / about the article / and share it / with the class.','私たちは先生にたずねます / その記事について / そして共有します / クラスで','私たちは記事をどうしますか。本文から英語で答えなさい。','share it with the class'],
+  ['3','Unit 4-3','One student comforted a friend who still felt afraid after the disaster.','One student comforted an afraid friend after the disaster.','ある生徒は災害後もまだ怖がっていた友達を慰めました。','ある生徒は災害後、怖がっていた友達を慰めました。','One student comforted / an afraid friend / after the disaster.','ある生徒は慰めました / 怖がっていた友達を / 災害後に','ある生徒は誰を慰めましたか。本文から英語で答えなさい。','an afraid friend'],
+  ['3','Unit 4-3','The community also held a quiet moment to remember people who had died.','The community also held a quiet moment after many people died.','地域では亡くなった人々を思い出すために黙とうの時間も持ちました。','地域では多くの人が亡くなったあと、静かな時間も持ちました。','The community also held a quiet moment / after many people died.','地域では静かな時間も持ちました / 多くの人が亡くなったあと','地域では多くの人が亡くなったあと何をしましたか。本文から英語で答えなさい。','a quiet moment'],
+  ['3','Unit 4-4','Other volunteers exchanged information about people who still needed help.','Other volunteers exchanged information about people in need.','ほかのボランティアはまだ助けを必要としている人々について情報交換しました。','ほかのボランティアは助けを必要とする人々について情報交換しました。','Other volunteers exchanged information / about people in need.','ほかのボランティアは情報交換しました / 助けを必要とする人々について','ボランティアは誰について情報交換しましたか。本文から英語で答えなさい。','people in need']
+ ];
+ function replaceAll(s,a,b){return typeof s==='string'?s.split(a).join(b):s;}
+ function metas(book,grade,section){const out=[];const direct=window.V10_INTERACTION_META&&window.V10_INTERACTION_META[book+'|'+grade+'|'+section];if(direct)out.push(direct);const plain=window.V10_INTERACTION_META&&window.V10_INTERACTION_META[book+'|'+section];if(plain)out.push(plain);for(const k of Object.keys(window)){if(!/^V10_INTERACTION_META_SEMANTIC_REPAIRS(?:_\d{3}_\d{3})?$/.test(k))continue;const obj=window[k];if(!obj||typeof obj!=='object')continue;for(const key of [book+'|'+grade+'|'+section,book+'|'+section])if(obj[key])out.push(obj[key]);}return [...new Set(out)];}
+ function syncQuestion(q,oldEn,newEn,oldJp,newJp,prompt,answer){if(!q)return false;const ev=String(q.evidence||'');if(!ev.includes(oldEn))return false;q.prompt=prompt;q.answer=answer;q.evidence=newEn;q.evidenceJp=newJp;q.reason='根拠英文の内容と一致します。';return true;}
+ let changed=0,qchanged=0,missing=[];
+ for(const [grade,section,oldEn,newEn,oldJp,newJp,slashEn,slashJp,prompt,answer] of fixes){const p=pools['ニューホライズン|'+grade]&&pools['ニューホライズン|'+grade][section];if(!p){missing.push(grade+'|'+section+':passage');continue;}const idx=(p.sentences||[]).indexOf(oldEn);if(idx<0){if(!(p.sentences||[]).includes(newEn))missing.push(grade+'|'+section+':'+oldEn);continue;}p.sentences[idx]=newEn;if(Array.isArray(p.slashRows)&&p.slashRows[idx])p.slashRows[idx]={en:slashEn,jp:slashJp};p.fullTranslation=replaceAll(p.fullTranslation,oldJp,newJp);for(const q of (p.questions||[]))if(syncQuestion(q,oldEn,newEn,oldJp,newJp,prompt,answer))qchanged++;for(const m of metas('ニューホライズン',grade,section))for(const q of (m.questionSetB||[]))if(syncQuestion(q,oldEn,newEn,oldJp,newJp,prompt,answer))qchanged++;p.auditNote=String(p.auditNote||'')+' Grammar chronology repair: future structure was rewritten at the exact passage boundary; sentence/translation/slash/A+B evidence were synchronized.';changed++;}
+ window.V10_GRAMMAR_CHRONOLOGY_RUNTIME_FIX_STATE={definitions:fixes.length,changed,qchanged,missing,version:'future-grammar-rewrite-20260826'};
+ if(missing.length)throw new Error('grammar chronology final fixes missing targets: '+missing.join(' | '));
+})();
