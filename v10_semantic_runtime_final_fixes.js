@@ -35,6 +35,30 @@
     u42.auditNote=String(u42.auditNote||'')+' 7文で止まっていたため、同じバスケットボール練習場面の自然な終結文を1文追加。';
   }
 
+  // PROGRAM 2-1 chronology correction must be atomic. The base chronology layer removes
+  // future SS2 vocabulary "bring"; numbered semantic repair batches can replay an older
+  // 12-sentence version afterward. Normalize the effective passage here, then rebuild slash
+  // rows below from the final sentence list so sentence/slash/A evidence cannot drift.
+  const ss2p21=(window.V10_PASSAGES_G2_SS||{})['PROGRAM 2-1'];
+  if(ss2p21&&Array.isArray(ss2p21.sentences)){
+    const futureSentence='Baseball can bring people together.';
+    const idx=ss2p21.sentences.indexOf(futureSentence);
+    if(idx>=0)ss2p21.sentences.splice(idx,1);
+    ss2p21.fullTranslation=String(ss2p21.fullTranslation||'')
+      .replace('野球は人々を結びつけることができます。','')
+      .replace('野球は人々を結びつけることができます。','')
+      .trim();
+    if(Array.isArray(ss2p21.questions)){
+      for(let i=0;i<ss2p21.questions.length;i++){
+        const q=ss2p21.questions[i];
+        if(q&&q.evidence===futureSentence){
+          ss2p21.questions[i]={prompt:'5. 多くの人は誰を応援していますか。本文から英語で答えなさい。',answer:'the children',evidence:'Many people root for the children.',evidenceJp:'多くの人が子どもたちを応援しています。',reason:'root for の目的語が the children です。'};
+        }
+      }
+    }
+    ss2p21.auditNote=String(ss2p21.auditNote||'')+' v7 chronology final sync: SS2 Reading 1で初出のbringをPROGRAM 2-1から除外し、本文・全訳・A問題・後段slash再構成を同一の最終状態へ同期。';
+  }
+
   for(const[, ,data] of datasets){
     for(const p of Object.values(data)){
       const s=Array.isArray(p&&p.sentences)?p.sentences:[];
