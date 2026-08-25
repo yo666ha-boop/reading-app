@@ -22,12 +22,14 @@ function morphologyBases(w) {
   if (w.endsWith('ves') && w.length > 4) out.push(w.slice(0, -3) + 'f', w.slice(0, -3) + 'fe');
   if (w.endsWith('es') && w.length > 3) out.push(w.slice(0, -2), w.slice(0, -1));
   if (w.endsWith('s') && w.length > 3) out.push(w.slice(0, -1));
-  if (w.endsWith('ing') && w.length > 5) {
+  // 5-letter forms such as "using" must be reducible to "use".
+  if (w.endsWith('ing') && w.length > 4) {
     const b = w.slice(0, -3); out.push(b, b + 'e');
     if (b.endsWith('y')) out.push(b);
     if (b.length > 2 && b.at(-1) === b.at(-2)) out.push(b.slice(0, -1));
   }
-  if (w.endsWith('ed') && w.length > 4) {
+  // 4-letter forms such as "used", "died", "tied" must be reducible.
+  if (w.endsWith('ed') && w.length > 3) {
     const b = w.slice(0, -2); out.push(b, b + 'e');
     if (b.endsWith('i')) out.push(b.slice(0, -1) + 'y');
     if (b.length > 2 && b.at(-1) === b.at(-2)) out.push(b.slice(0, -1));
@@ -51,7 +53,8 @@ const IRREGULAR_BASE = new Map(Object.entries({
   thought:'think', found:'find', knew:'know', known:'know', told:'tell', said:'say', spoke:'speak',
   spoken:'speak', ate:'eat', eaten:'eat', drank:'drink', drunk:'drink', ran:'run', swam:'swim', swum:'swim',
   became:'become', began:'begin', begun:'begin', left:'leave', felt:'feel', kept:'keep', met:'meet', sent:'send',
-  built:'build', held:'hold', heard:'hear', lost:'lose', paid:'pay', put:'put', stood:'stand', understood:'understand'
+  built:'build', held:'hold', heard:'hear', lost:'lose', paid:'pay', put:'put', stood:'stand', understood:'understand',
+  lying:'lie', dying:'die', tying:'tie'
 }));
 
 const EXPLICIT_FUNCTION_TO_GRAMMAR = new Set(`a an the i me my mine you your yours he him his she her hers it its we us our ours they them their theirs this that these those who whose whom which what when where why how am is are was were be been being do does did doing have has had having can cannot could may might must shall should will would not no yes and or but so if because as than to of in on at by for from with about into over under before after during while through up down out off again then there here also too very more most less least some any many much few little each every all both either neither another other same own one two first second third`.split(/\s+/));
@@ -142,8 +145,6 @@ function classifyToken(v7, w, raw, cut, reviewedEvidence) {
   }
   if (reviewedEvidence.has(w)) return { kind:'REVIEWED_EXPLICIT_ALLOWED', evidence:reviewedEvidence.get(w), intro:null };
   for (const base of bases) if (reviewedEvidence.has(base)) return { kind:'MORPHOLOGY_TO_GRAMMAR', base, intro:null, evidence:reviewedEvidence.get(base) };
-  // Capitalization is not evidence of a proper noun: sentence-initial common words must fail
-  // closed as unregistered until a bounded proper-name policy/provenance is supplied.
   return { kind:'UNREGISTERED_V7' };
 }
 async function waitFor(fn, ms = 45000, label = 'condition') {
@@ -164,6 +165,8 @@ function datasetCount(d) {
   let dom;
   try {
     const v7 = loadCanonicalV7();
+    assert(morphologyBases('used').includes('use'), 'morphology regression: used -> use');
+    assert(morphologyBases('using').includes('use'), 'morphology regression: using -> use');
     const browserErrors = [];
     const vc = new VirtualConsole();
     vc.on('jsdomError', e => browserErrors.push(String(e && e.message || e)));
@@ -175,9 +178,6 @@ function datasetCount(d) {
       return expected > 0 && Number(w.V10_VOCAB_CORRECTION_TARGETS_SEEN || 0) >= expected;
     }, 45000, 'all v10 correction targets');
     await new Promise(r => setTimeout(r, 250));
-    // The legacy stage2 harness can emit temporary mismatch errors while historical overlays
-    // settle. This is the authoritative final-ready boundary. Discard only startup errors;
-    // all errors emitted after this point remain in the report and therefore remain visible/fatal evidence.
     browserErrors.length = 0;
     await new Promise(r => setTimeout(r, 50));
 
@@ -226,7 +226,6 @@ function datasetCount(d) {
           const notes = Array.isArray(m.notes) ? m.notes : [];
           notesPresent += notes.length;
           for (const n of notes) if (!n || !String(n.english || '').trim() || !String(n.japanese || '').trim()) missingGloss++;
-
           for (const tok of local) if (!reviewedEvidence.has(tok)) reviewedEvidence.set(tok, {source:'allowedWords', textbook, grade:Number(grade), section});
 
           passages.push({
@@ -254,7 +253,7 @@ function datasetCount(d) {
       uniqueUnresolved:unresolved.length,
       futureVocabLeakOccurrences:finalVocabLeak,
       chronologyPass:finalVocabLeak === 0 && missingGloss === 0 && mappingErrors.length === 0,
-      rule:'Primary lexical gate: canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. For v7-absent tokens, reviewed app allowedWords may authorize only later passages: the current passage is classified first, then its bounded explicit allowance becomes prior evidence with exact textbook/grade/section provenance. Capitalization alone never authorizes or classifies a proper noun. Morphology is handed to grammar chronology, not lexical PASS.'
+      rule:'Primary lexical gate: canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology; short forms such as used/using are covered. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun.'
     };
     fs.writeFileSync('v10_vocab_notes_candidate_report.json', JSON.stringify({summary, unresolved, passages}, null, 2));
     console.log(`V7 VOCAB CHRONOLOGY AUDIT passages=${total} sourceRecords=${v7.source[2]}`);
