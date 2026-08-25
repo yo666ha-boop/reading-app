@@ -59,6 +59,24 @@
     ss2p21.auditNote=String(ss2p21.auditNote||'')+' v7 chronology final sync: SS2 Reading 1で初出のbringをPROGRAM 2-1から除外し、本文・全訳・A問題・後段slash再構成を同一の最終状態へ同期。';
   }
 
+  // Sunshine G1 "great" is a v7 future word until the late PROGRAM 9 boundary. In the
+  // earlier 17 affected sections it is not indispensable: the bounded elementary source
+  // explicitly contains "nice". Replace the lexical item everywhere the learner can see or
+  // answer it, then let the common slash rebuild below regenerate aligned slash English.
+  const ss1GreatSections=new Set(['Get Ready 2','Get Ready 3','Get Ready 4','PROGRAM 1-1','PROGRAM 1-2','PROGRAM 1-3','PROGRAM 2-3','PROGRAM 3-1','PROGRAM 3-2','PROGRAM 3-3','PROGRAM 4-1','PROGRAM 4-2','PROGRAM 5-1','PROGRAM 5-2','PROGRAM 5-3','PROGRAM 7-1','PROGRAM 7-2']);
+  function greatToNice(s){return typeof s==='string'?s.replace(/\bgreat\b/gi,m=>m[0]==='G'?'Nice':'nice'):s;}
+  function replaceQuestionGreat(q){if(!q)return;for(const k of ['prompt','answer','evidence'])if(typeof q[k]==='string')q[k]=greatToNice(q[k]);}
+  for(const sec of ss1GreatSections){
+    const p=(window.V10_SUNSHINE_G1||{})[sec];if(!p)continue;
+    p.sentences=(p.sentences||[]).map(greatToNice);
+    if(typeof p.title==='string')p.title=greatToNice(p.title);
+    p.fullTranslation=String(p.fullTranslation||'').replace(/すばらしい/g,'すてきな').replace(/すごい/g,'いいね');
+    for(const q of (p.questions||[]))replaceQuestionGreat(q);
+    const meta=window.V10_INTERACTION_META&&window.V10_INTERACTION_META[`サンシャイン|1|${sec}`];
+    if(meta&&Array.isArray(meta.questionSetB))for(const q of meta.questionSetB)replaceQuestionGreat(q);
+    p.auditNote=String(p.auditNote||'')+' v7 chronology repair: late-intro great was replaced before its boundary with bounded-elementary nice; sentence/A+B evidence/slash are synchronized.';
+  }
+
   for(const[, ,data] of datasets){
     for(const p of Object.values(data)){
       const s=Array.isArray(p&&p.sentences)?p.sentences:[];
@@ -73,6 +91,7 @@
       const parts=key.split('|');
       if(parts.length<2||!m||!Array.isArray(m.questionSetB))continue;
       const book=parts[0],sec=parts[parts.length-1];
+      if(book==='サンシャイン'&&ss1GreatSections.has(sec))for(const q of m.questionSetB)replaceQuestionGreat(q);
       const candidates=datasets.filter(([,b,d])=>b===book&&d[sec]).map(([, ,d])=>d[sec]);
       for(const q of m.questionSetB){
         if(candidates.some(p=>Array.isArray(p.sentences)&&p.sentences.includes(String(q.evidence||'').trim())))continue;
