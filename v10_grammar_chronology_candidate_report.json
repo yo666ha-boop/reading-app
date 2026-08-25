@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T02:03:04.014Z",
+  "generatedAt": "2026-08-25T02:03:32.712Z",
   "passages": 168,
   "classification": "CANDIDATES_NOT_PASS_FAIL",
   "warning": "Detected structures are candidates only. A feature becomes allowed only after an evidence-backed textbook/section chronology entry exists.",
@@ -95,7 +95,7 @@
       ]
     },
     "GERUND": {
-      "sectionCount": 65,
+      "sectionCount": 66,
       "sections": [
         "サンシャイン|1|Get Ready 4",
         "サンシャイン|1|PROGRAM 2-3",
@@ -120,6 +120,7 @@
         "ニューホライズン|1|Unit 10-2",
         "ニューホライズン|1|Unit 10-3",
         "サンシャイン|2|PROGRAM 1-1",
+        "サンシャイン|2|PROGRAM 2-1",
         "サンシャイン|2|PROGRAM 3-1",
         "サンシャイン|2|PROGRAM 3-2",
         "サンシャイン|2|PROGRAM 4-1",
@@ -3713,6 +3714,11 @@
             "match": "should"
           },
           {
+            "where": "sentence:13",
+            "text": "Baseball can bring people together.",
+            "match": "can"
+          },
+          {
             "where": "slash:3",
             "text": "The project should promote / baseball.",
             "match": "should"
@@ -3723,14 +3729,19 @@
             "match": "should"
           },
           {
+            "where": "slash:13",
+            "text": "Baseball can bring / people / together.",
+            "match": "can"
+          },
+          {
             "where": "A3.evidence",
             "text": "The project should promote baseball.",
             "match": "should"
           },
           {
             "where": "B5.evidence",
-            "text": "We should root for the project, too.",
-            "match": "should"
+            "text": "Baseball can bring people together.",
+            "match": "can"
           }
         ],
         "WILL_FUTURE": [
@@ -3748,6 +3759,28 @@
             "where": "B4.evidence",
             "text": "I hope the project will be successful.",
             "match": "will"
+          }
+        ],
+        "GERUND": [
+          {
+            "where": "sentence:13",
+            "text": "Baseball can bring people together.",
+            "match": "bring"
+          },
+          {
+            "where": "slash:13",
+            "text": "Baseball can bring / people / together.",
+            "match": "bring"
+          },
+          {
+            "where": "B5.answer",
+            "text": "bring people together",
+            "match": "bring"
+          },
+          {
+            "where": "B5.evidence",
+            "text": "Baseball can bring people together.",
+            "match": "bring"
           }
         ]
       }
@@ -4224,11 +4257,6 @@
             "match": "hiking"
           },
           {
-            "where": "sentence:11",
-            "text": "After hiking, I hear from my friend.",
-            "match": "hiking"
-          },
-          {
             "where": "sentence:13",
             "text": "I want to go hiking again.",
             "match": "hiking"
@@ -4236,11 +4264,6 @@
           {
             "where": "slash:2",
             "text": "My friend and I / go hiking.",
-            "match": "hiking"
-          },
-          {
-            "where": "slash:11",
-            "text": "After hiking, / I hear from / my friend.",
             "match": "hiking"
           },
           {
@@ -4256,11 +4279,6 @@
           {
             "where": "A2.evidence",
             "text": "My friend and I go hiking.",
-            "match": "hiking"
-          },
-          {
-            "where": "B5.evidence",
-            "text": "After hiking, I hear from my friend.",
             "match": "hiking"
           }
         ],
@@ -8152,7 +8170,7 @@
           },
           {
             "where": "sentence:4",
-            "text": "I must take a shower by dinner time.",
+            "text": "I must take a shower by nine.",
             "match": "must"
           },
           {
@@ -8182,7 +8200,7 @@
           },
           {
             "where": "slash:4",
-            "text": "I must take / a shower / by dinner time.",
+            "text": "I must take / a shower / by nine.",
             "match": "must"
           },
           {
@@ -8212,7 +8230,7 @@
           },
           {
             "where": "A3.evidence",
-            "text": "I must take a shower by dinner time.",
+            "text": "I must take a shower by nine.",
             "match": "must"
           },
           {
@@ -9362,11 +9380,6 @@
       "features": {
         "TO_INFINITIVE": [
           {
-            "where": "sentence:2",
-            "text": "We know UNESCO has a way to select sites.",
-            "match": "to select"
-          },
-          {
             "where": "sentence:3",
             "text": "People decide what standard to use.",
             "match": "to use"
@@ -9377,11 +9390,6 @@
             "match": "to know"
           },
           {
-            "where": "slash:2",
-            "text": "We know / UNESCO has / a way to select sites.",
-            "match": "to select"
-          },
-          {
             "where": "slash:3",
             "text": "People decide / what standard / to use.",
             "match": "to use"
@@ -9390,16 +9398,6 @@
             "where": "slash:10",
             "text": "I want to know / why each site is important.",
             "match": "to know"
-          },
-          {
-            "where": "B1.answer",
-            "text": "a way to select sites",
-            "match": "to select"
-          },
-          {
-            "where": "B1.evidence",
-            "text": "We know UNESCO has a way to select sites.",
-            "match": "to select"
           },
           {
             "where": "B2.answer",
