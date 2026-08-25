@@ -1,4 +1,4 @@
-GRAMMAR CHRONOLOGY GATE passages=168/168 features=24 occurrences=1344 resolved=237 carry=111 unresolved=1083 future=24 final=FAIL_CLOSED
+GRAMMAR CHRONOLOGY GATE passages=168/168 features=24 occurrences=1344 resolved=288 carry=111 unresolved=1014 future=42 final=FAIL_CLOSED
 FUTURE ニューホライズン|2|Unit 0 TO_INFINITIVE before Unit 3-1 occurrences=2
 FUTURE ニューホライズン|2|Unit 1-1 TO_INFINITIVE before Unit 3-1 occurrences=1
 FUTURE ニューホライズン|2|Unit 1-3 WHEN_WHILE_CLAUSE before Unit 2-1 occurrences=4
@@ -8,6 +8,10 @@ FUTURE ニューホライズン|2|Unit 2-1 TO_INFINITIVE before Unit 3-1 occurre
 FUTURE ニューホライズン|2|Unit 2-2 TO_INFINITIVE before Unit 3-1 occurrences=7
 FUTURE ニューホライズン|2|Unit 2-3 TO_INFINITIVE before Unit 3-1 occurrences=2
 FUTURE ニューホライズン|2|Unit 3-4 WH_TO_INFINITIVE before Unit 5-1 occurrences=1
+FUTURE ニューホライズン|3|Unit 3-1 RELATIVE_PRONOUN before Unit 5-2 occurrences=3
+FUTURE ニューホライズン|3|Unit 3-2 LET_O_V before Unit 3-3 occurrences=4
+FUTURE ニューホライズン|3|Unit 4-3 RELATIVE_PRONOUN before Unit 5-2 occurrences=6
+FUTURE ニューホライズン|3|Unit 4-4 RELATIVE_PRONOUN before Unit 5-2 occurrences=5
 GRAMMAR CANDIDATE AUDIT v2 passages=168 features=24 runtime=authoritative-complete
 MODAL_CAN_COULD_MAY_MUST_SHOULD sections=85
 TO_INFINITIVE sections=72
@@ -33,4 +37,4 @@ RELATIVE_PRONOUN sections=5
 LET_O_V sections=1
 TOO_TO sections=1
 ENOUGH_TO sections=1
-GRAMMAR GATE resolved=237 unresolved=1083 future=24 final=FAIL_CLOSED
+GRAMMAR GATE resolved=288 unresolved=1014 future=42 final=FAIL_CLOSED
