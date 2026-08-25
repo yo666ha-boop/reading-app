@@ -12,29 +12,55 @@ function rank(section){
 function key(book,grade,feature){return `${book}|${grade}|${feature}`;}
 const exact=ev.exactBoundariesVerified||{};
 const coarse=ev.programOrUnitBoundaryVerifiedButExactSubunitPending||{};
-let detectedOccurrences=0,resolvedOccurrences=0,unresolvedOccurrences=0,futureGrammarLeak=0;
+function evidenceFor(book,grade,feature){
+  const g=Number(grade);
+  const same=key(book,g,feature);
+  if(exact[same]) return {status:'EXACT_CURRENT_GRADE',boundary:exact[same],introducedGrade:g,key:same};
+  // Grammar already verified in an earlier grade remains learned in later grades.
+  // Carry-forward is allowed only from an exact evidence-backed boundary in the same textbook.
+  for(let pg=g-1;pg>=1;pg--){
+    const k=key(book,pg,feature);
+    if(exact[k]) return {status:'EXACT_PRIOR_GRADE_CARRY_FORWARD',boundary:exact[k],introducedGrade:pg,key:k};
+  }
+  if(coarse[same]) return {status:'PROGRAM_OR_UNIT_ONLY',coarseBoundary:coarse[same],key:same};
+  for(let pg=g-1;pg>=1;pg--){
+    const k=key(book,pg,feature);
+    if(coarse[k]) return {status:'PRIOR_GRADE_COARSE_ONLY',coarseBoundary:coarse[k],introducedGrade:pg,key:k};
+  }
+  return {status:'NO_EVIDENCE_BOUNDARY',key:same};
+}
+let detectedOccurrences=0,resolvedOccurrences=0,unresolvedOccurrences=0,futureGrammarLeak=0,priorGradeCarryForwardOccurrences=0;
 const unresolved=[],future=[],resolved=[];
 for(const row of cand.passageFeatures||[]){
   for(const [feature,hits] of Object.entries(row.features||{})){
-    const k=key(row.textbook,row.grade,feature); detectedOccurrences+=hits.length;
-    const b=exact[k];
-    if(!b){
-      unresolvedOccurrences+=hits.length;
-      unresolved.push({textbook:row.textbook,grade:row.grade,section:row.section,feature,occurrences:hits.length,evidenceStatus:coarse[k]?'PROGRAM_OR_UNIT_ONLY':'NO_EVIDENCE_BOUNDARY',coarseBoundary:coarse[k]||null,samples:hits.slice(0,3)});
+    detectedOccurrences+=hits.length;
+    const e=evidenceFor(row.textbook,row.grade,feature);
+    if(e.status==='EXACT_PRIOR_GRADE_CARRY_FORWARD'){
+      resolvedOccurrences+=hits.length; priorGradeCarryForwardOccurrences+=hits.length;
+      resolved.push({textbook:row.textbook,grade:row.grade,section:row.section,feature,boundary:e.boundary,introducedGrade:e.introducedGrade,evidenceStatus:e.status,occurrences:hits.length});
       continue;
     }
-    const rr=rank(row.section), br=rank(b);
+    if(e.status!=='EXACT_CURRENT_GRADE'){
+      unresolvedOccurrences+=hits.length;
+      unresolved.push({textbook:row.textbook,grade:row.grade,section:row.section,feature,occurrences:hits.length,evidenceStatus:e.status,coarseBoundary:e.coarseBoundary||null,introducedGrade:e.introducedGrade||null,samples:hits.slice(0,3)});
+      continue;
+    }
+    const rr=rank(row.section), br=rank(e.boundary);
     if(rr===null||br===null){
-      unresolvedOccurrences+=hits.length; unresolved.push({textbook:row.textbook,grade:row.grade,section:row.section,feature,occurrences:hits.length,evidenceStatus:'UNRANKABLE_SECTION',boundary:b,samples:hits.slice(0,3)}); continue;
+      unresolvedOccurrences+=hits.length;
+      unresolved.push({textbook:row.textbook,grade:row.grade,section:row.section,feature,occurrences:hits.length,evidenceStatus:'UNRANKABLE_SECTION',boundary:e.boundary,samples:hits.slice(0,3)});
+      continue;
     }
     if(rr<br){
-      futureGrammarLeak+=hits.length; future.push({textbook:row.textbook,grade:row.grade,section:row.section,feature,boundary:b,occurrences:hits.length,samples:hits.slice(0,5)});
+      futureGrammarLeak+=hits.length;
+      future.push({textbook:row.textbook,grade:row.grade,section:row.section,feature,boundary:e.boundary,occurrences:hits.length,samples:hits.slice(0,5)});
     }else{
-      resolvedOccurrences+=hits.length; resolved.push({textbook:row.textbook,grade:row.grade,section:row.section,feature,boundary:b,occurrences:hits.length});
+      resolvedOccurrences+=hits.length;
+      resolved.push({textbook:row.textbook,grade:row.grade,section:row.section,feature,boundary:e.boundary,introducedGrade:Number(row.grade),evidenceStatus:e.status,occurrences:hits.length});
     }
   }
 }
-const out={generatedAt:new Date().toISOString(),detectorVersion:cand.detectorVersion||1,passages:cand.passages,detectedFeatureTypes:Object.keys(cand.featureSummary||{}).length,detectedOccurrences,resolvedOccurrences,unresolvedOccurrences,futureGrammarLeak,sectionChronologyComplete:unresolvedOccurrences===0,finalPass:unresolvedOccurrences===0&&futureGrammarLeak===0,rule:'Fail closed: only exact evidence-backed same-textbook boundaries resolve occurrences. Unit/program-level evidence is recorded but never upgraded to exact subunit permission.',future,unresolved,resolved};
+const out={generatedAt:new Date().toISOString(),detectorVersion:cand.detectorVersion||1,passages:cand.passages,detectedFeatureTypes:Object.keys(cand.featureSummary||{}).length,detectedOccurrences,resolvedOccurrences,priorGradeCarryForwardOccurrences,unresolvedOccurrences,futureGrammarLeak,sectionChronologyComplete:unresolvedOccurrences===0,finalPass:unresolvedOccurrences===0&&futureGrammarLeak===0,rule:'Fail closed: only exact evidence-backed same-textbook boundaries resolve occurrences. Exact earlier-grade introductions carry forward to later grades in the same textbook. Unit/program-level evidence is recorded but never upgraded to exact subunit permission.',future,unresolved,resolved};
 fs.writeFileSync('v10_grammar_chronology_gate_report.json',JSON.stringify(out,null,2)+'\n');
-console.log(`GRAMMAR CHRONOLOGY GATE passages=${out.passages}/168 features=${out.detectedFeatureTypes} occurrences=${detectedOccurrences} resolved=${resolvedOccurrences} unresolved=${unresolvedOccurrences} future=${futureGrammarLeak} final=${out.finalPass?'PASS':'FAIL_CLOSED'}`);
+console.log(`GRAMMAR CHRONOLOGY GATE passages=${out.passages}/168 features=${out.detectedFeatureTypes} occurrences=${detectedOccurrences} resolved=${resolvedOccurrences} carry=${priorGradeCarryForwardOccurrences} unresolved=${unresolvedOccurrences} future=${futureGrammarLeak} final=${out.finalPass?'PASS':'FAIL_CLOSED'}`);
 if(future.length){for(const x of future.slice(0,30))console.log(`FUTURE ${x.textbook}|${x.grade}|${x.section} ${x.feature} before ${x.boundary} occurrences=${x.occurrences}`);}
