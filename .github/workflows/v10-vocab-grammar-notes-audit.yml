@@ -5,6 +5,7 @@ on:
     branches: [v10-vocab-grammar-notes-audit]
     paths:
       - 'v10_vocab_notes_candidate_audit.js'
+      - 'v10_elementary_vocab_allowlist.json'
       - 'v10_v7_lexicon_loader.js'
       - 'v10_v7_lexicon_snapshot.b64.part*'
       - 'v10_grammar_chronology_candidate_audit.js'
@@ -20,6 +21,7 @@ on:
     branches: [main]
     paths:
       - 'v10_vocab_notes_candidate_audit.js'
+      - 'v10_elementary_vocab_allowlist.json'
       - 'v10_v7_lexicon_loader.js'
       - 'v10_v7_lexicon_snapshot.b64.part*'
       - 'v10_grammar_chronology_candidate_audit.js'
@@ -167,6 +169,9 @@ jobs:
             v10_grammar_chronology_candidate_audit.log
             v10_notes_ui_test.log
             VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt
+            v10_vocab_notes_candidate_audit.js
+            v10_v7_lexicon_loader.js
+            v10_elementary_vocab_allowlist.json
           if-no-files-found: warn
           retention-days: 30
       - name: Persist final UI evidence
