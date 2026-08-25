@@ -20,11 +20,13 @@ const isLetterCommaExempt=en=>/^(?:Dear\b.+|Best wishes|Sincerely yours),$/.test
  const vocab=['v10_vocab_slash_manual_004_010.js','v10_vocab_slash_manual_011_020.js','v10_vocab_slash_manual_021_030.js','v10_vocab_slash_manual_031_040.js','v10_vocab_slash_manual_041_050.js','v10_vocab_slash_manual_051_060.js','v10_vocab_slash_manual_061_070.js','v10_vocab_slash_manual_071_080.js','v10_vocab_slash_manual_081_090.js','v10_vocab_slash_manual_091_168.js','v10_vocab_slash_manual_corrections.js'];
  const refs=['v10_reference_slash_manual_001_168.js','v10_reference_slash_manual_021_030.js','v10_reference_slash_manual_031_040.js','v10_reference_slash_manual_041_050.js','v10_reference_slash_manual_051_060.js','v10_reference_slash_manual_061_070.js','v10_reference_slash_manual_071_080.js','v10_reference_slash_manual_081_090.js','v10_reference_slash_manual_091_100.js','v10_reference_slash_manual_101_110.js','v10_reference_slash_manual_111_120.js','v10_reference_slash_manual_121_130.js','v10_reference_slash_manual_131_140.js','v10_reference_slash_manual_141_150.js','v10_reference_slash_manual_151_160.js','v10_reference_slash_manual_161_168.js'];
  // Legacy semantic/vocab audit overlays are replayed only for this gate. They can temporarily
- // reintroduce pre-chronology rows (for example SS2 PROGRAM 2-1 "bring"). Give the public
- // v10_vocab_corrections.js observer a turn to re-assert the actual chronology fixes before
- // applying the authoritative reference rows. This keeps the gate aligned with final load order.
+ // reintroduce pre-chronology rows (for example SS2 PROGRAM 2-1 "bring" and NH2 Unit 2-2 "give").
+ // The normal correction interval can already have stopped once the real runtime reaches
+ // V10_RUNTIME_LOAD_PROGRESS.phase === "complete", so a passive timeout is not sufficient.
+ // Re-run the chronology correction layer explicitly after legacy replay, then apply reference rows.
  for(const f of [...before,...vocab]){if(!fs.existsSync(f))throw new Error('missing '+f);vm.runInContext(fs.readFileSync(f,'utf8'),ctx,{filename:f})}
- await new Promise(res=>setTimeout(res,250));
+ vm.runInContext(fs.readFileSync(path.join ? path.join(root,'v10_vocab_corrections.js') : 'v10_vocab_corrections.js','utf8'),ctx,{filename:'v10_vocab_corrections.audit-reapply.js'});
+ await new Promise(res=>setTimeout(res,300));
  for(const f of refs){if(!fs.existsSync(f))throw new Error('missing '+f);vm.runInContext(fs.readFileSync(f,'utf8'),ctx,{filename:f})}
  const sets=[['1','サンシャイン',w.V10_SUNSHINE_G1||{}],['1','ニューホライズン',w.V10_NEWHORIZON_G1||{}],['2','サンシャイン',w.V10_PASSAGES_G2_SS||{}],['2','ニューホライズン',w.V10_PASSAGES_G2_NH||{}],['3','サンシャイン',w.V10_PASSAGES_G3_SS||{}],['3','ニューホライズン',w.V10_PASSAGES_G3_NH||{}]];
  let passages=0,rows=0,slashes=0,unsplit=0;const seen=new Set();
