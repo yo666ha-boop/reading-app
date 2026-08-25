@@ -2,7 +2,7 @@
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP",
   "current_stage": "WINPASS_717_STRICT_MATERIALIZATION",
-  "recorded_at_jst": "2026-08-25T12:54:28+09:00",
+  "recorded_at_jst": "2026-08-25T13:52:25+09:00",
   "main_touched": false,
   "source_identity": {
     "Winpass": {"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","bytes":8296042,"crc_ok":true},
@@ -20,31 +20,32 @@
   "drafts_separate_from_strict": {"historical_recovered_drafts":{"Standard":317,"実力錬成":237,"Winpass":0,"total":554,"status":"superseded_as_progress_counter_by new strict durable materializations; retained as recovery provenance only"},"current_runtime_local_only":{"records":0,"bytes_available":false}},
   "qa_figure_qa": {"questions_strict":"554/1271","answers_strict":"554/1271","Standard":{"records":317,"figure_refs":154,"missing_figure_refs":0,"graphical_answers":26},"実力錬成":{"records":237,"figure_refs":81,"missing_figure_refs":0,"graphical_answers":18},"Winpass":{"records":0,"figure_refs_revalidated":0}},
   "ci": {
-    "latest_head_checked":"9b50cc5833ba9280e5b78005877fe0125c0f8e3a",
-    "current_head_run":{"run_id":"32803192043","workflow":"math-wire-post-canonical-expansion.yml","status":"completed","result":"failure","jobs":0,"note":"GitHub actual reports failure with zero jobs; not counted as a validation PASS."},
+    "latest_head_checked":"23e80867e205c7e47542289c88ab0150ddfad4cb",
+    "current_head_run":{"run_id":"32806990851","workflow":"math-wire-post-canonical-expansion.yml","status":"completed","result":"failure","jobs":0,"note":"GitHub actual reports failure with zero jobs; not counted as a validation PASS."},
     "prior_strict_tooling_ci":{"run_id":"32756245710","triggering_sha":"e400cb335cc8cd8a6f3770afa83f8d92c567e038","result":"success","tests":7},
     "prior_audit_ci":{"run_id":"32756245687","triggering_sha":"e400cb335cc8cd8a6f3770afa83f8d92c567e038","result":"success","canonical_app_records_present":false,"publication_ready":false}
   },
   "downstream": {"winpass_decisions":{"reviewed":0,"included":0,"excluded":0,"target_after_evidence_review":570,"count_forcing_forbidden":true},"global1124":{"validated":0,"immutable_frozen":0},"variants":{"verified":0,"parent_coverage":"0/1124"},"app_records":0,"browser":"BLOCKED_UNTIL_REAL_APP_RECORDS","iphone_fire":"PENDING","a4":"PENDING","publication_ready":false,"public_verification":"PENDING"},
   "this_run": {
-    "starting_head_actual":"9b50cc5833ba9280e5b78005877fe0125c0f8e3a",
+    "starting_head_actual":"23e80867e205c7e47542289c88ab0150ddfad4cb",
     "main_head_observed":"1f0cabf9bfcc4482f507e33188499bdbbd5bab57",
     "completed":[
       "Read latest branch HEAD, checkpoint and CI from GitHub actual before proceeding.",
       "Confirmed strict durable progress remains Standard317 + Jitsuren237 = 554/1271; Winpass remains 0/717 and no local-only draft was promoted.",
-      "Found current-head Actions run 32803192043 completed failure with zero jobs; recorded it explicitly rather than inheriting prior PASS status.",
-      "Inspected math-wire-post-canonical-expansion workflow source; it is a downstream canonical-expansion wiring workflow, not evidence that Winpass materialization passed.",
-      "Searched File Library by exact Winpass SHA256, byte size, filename and semantic name; no matching source ZIP was returned.",
-      "Searched connected Google Drive for Winpass; no result was returned.",
+      "Rechecked current-head Actions run 32806990851: completed failure with zero jobs; preserved failure status rather than inheriting a prior PASS.",
+      "Read math-wire-post-canonical-expansion.yml from current branch and confirmed it is downstream canonical-expansion wiring, not Winpass evidence materialization.",
+      "Searched File Library again by exact Winpass SHA256, exact byte size and Winpass semantic filename; no matching source ZIP was returned.",
+      "Searched connected Google Drive again for Winpass; no result was returned.",
       "Confirmed main remains 1f0cabf9bfcc4482f507e33188499bdbbd5bab57 and made no main write.",
-      "Updated shared checkpoint with the exact source-access block and current-head CI failure."
+      "Updated shared checkpoint at current branch HEAD with exact source-access block and current-head CI status."
     ],
     "limitations":[
       "Winpass source ZIP bytes matching SHA256 29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf and 8,296,042 bytes are still not exposed by File Library or connected Drive in this run.",
-      "Without those source bytes, truthful ordered OOXML provenance, score evidence, graphical/figure identity and content-bound fingerprints cannot be produced for Winpass record 1 onward."
+      "Without those source bytes, truthful ordered OOXML provenance, score evidence, graphical/figure identity and content-bound fingerprints cannot be produced for Winpass record 1 onward.",
+      "The current workflow run fails before any jobs are created; this is not evidence that any strict materialization validator failed or passed."
     ]
   },
-  "exact_stop": "Strict durable progress is Standard 317/317 + 実力錬成 237/237 + Winpass 0/717 = 554/1271. Exact stop remains immediately before Winpass strict materialization record 1. Current-head CI is also failure with zero jobs and is not a PASS gate.",
-  "next_start": "Read latest HEAD/checkpoint/CI first. Acquire Winpass ZIP bytes matching SHA256 29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf and 8,296,042 bytes. Verify SHA/CRC and 81 unique DOCX, then materialize all 717 with ordered OOXML question/answer provenance or explicit graphical answer assets, score evidence, required figure identity and content-bound fingerprints; persist durably, post-save read back and validator-PASS before increasing strict count. Then evidence-review 717 to canonical 570 without count forcing; validate/freeze global1124; verified variants; app mapping; browser/iPhone/Fire/A4; strict release; PUBLICATION_READY; isolated public verification.",
+  "exact_stop": "Strict durable progress is Standard 317/317 + 実力錬成 237/237 + Winpass 0/717 = 554/1271. Exact stop remains immediately before Winpass strict materialization record 1 because the exact Winpass ZIP bytes are unavailable in accessible durable/user file sources. Current-head CI 32806990851 is failure with zero jobs and is not a PASS gate.",
+  "next_start": "Read latest HEAD/checkpoint/CI first. Acquire Winpass ZIP bytes matching SHA256 29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf and 8,296,042 bytes. Verify SHA/CRC and 81 unique DOCX, then materialize all 717 with ordered OOXML question/answer provenance or explicit graphical answer assets, score evidence, required figure identity and content-bound fingerprints; persist durably, post-save read back and validator-PASS before increasing strict count. Then evidence-review 717 to canonical 570 without count forcing; validate/freeze global1124; verified variants; app mapping; browser/iPhone/Fire/A4; strict release; PUBLICATION_READY; isolated public verification. Independently continue diagnosing the zero-job workflow failure, but do not count it as a strict QA result.",
   "main_untouched": true
 }
