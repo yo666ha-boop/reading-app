@@ -140,8 +140,12 @@ function introAllowed(intro, cut) {
 function classifyToken(v7, w, raw, cut, reviewedEvidence) {
   if (CONTRACTIONS_TO_GRAMMAR.has(w)) return { kind:'CONTRACTION_TO_GRAMMAR', evidence:'closed contraction set; grammar chronology required' };
   if (EXPLICIT_FUNCTION_TO_GRAMMAR.has(w)) return { kind:'EXPLICIT_FUNCTION_TO_GRAMMAR', evidence:'closed structural function set; grammar chronology required' };
-  // Fixed long-reading policy: this bounded elementary lexical source is known before junior-high.
-  // Grammar remains a separate gate, so structural function/contraction forms above are still handed to grammar.
+  // Elementary lexical evidence authorizes base vocabulary before junior-high, but productive
+  // surface morphology (plural/3sg/past/ing/comparison) still requires grammar chronology.
+  const productiveBases = morphologyBases(w).filter(base => base !== w);
+  for (const base of productiveBases) {
+    if (ELEMENTARY_WORDS.has(base)) return { kind:'MORPHOLOGY_TO_GRAMMAR', base, intro:null, evidence:{source:'elementary',fileId:ELEMENTARY_SOURCE.source.fileId,records:ELEMENTARY_SOURCE.source.records} };
+  }
   if (ELEMENTARY_WORDS.has(w)) return { kind:'ELEMENTARY_LEXICAL_ALLOWED', evidence:{source:'elementary',fileId:ELEMENTARY_SOURCE.source.fileId,records:ELEMENTARY_SOURCE.source.records} };
   const direct = introFor(v7, cut.code, w);
   if (direct) return introAllowed(direct, cut) ? { kind:'V7_CHRONOLOGY_ALLOWED', intro:direct } : { kind:'FUTURE_V7_LEAK', intro:direct };
@@ -262,7 +266,7 @@ function datasetCount(d) {
       uniqueUnresolved:unresolved.length,
       futureVocabLeakOccurrences:finalVocabLeak,
       chronologyPass:finalVocabLeak === 0 && missingGloss === 0 && mappingErrors.length === 0,
-      rule:'Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; all remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology; short forms such as used/using are covered. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun.'
+      rule:'Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology; short forms such as used/using are covered. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun.'
     };
     fs.writeFileSync('v10_vocab_notes_candidate_report.json', JSON.stringify({summary, unresolved, passages}, null, 2));
     console.log(`V7 VOCAB CHRONOLOGY AUDIT passages=${total} sourceRecords=${v7.source[2]}`);
