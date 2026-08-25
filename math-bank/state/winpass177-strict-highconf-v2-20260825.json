@@ -1,0 +1,47 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-08-25T19:58:00+09:00",
+  "stage": "WINPASS_717_STRICT_MATERIALIZATION",
+  "purpose": "Correct the 177-record high-confidence batch so six records that say 右の表 carry the actual table content and OOXML table provenance instead of relying on unstored visual context.",
+  "supersedes_state": "math-bank/state/winpass177-strict-highconf-20260825.json",
+  "supersedes_drive_file_id": "1NGqHrb_soAGnRSu0je0fxJ6zD73Dr2PV",
+  "source": {
+    "drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
+    "bytes":8296042,
+    "sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+    "zip_crc_pass":true,
+    "docx_members":81
+  },
+  "corrected_batch": {
+    "drive_file_id":"1mjoEIGJsMRomqMSEWVUMcXlDAuzeTKkx",
+    "drive_file_name":"mathbank_winpass_strict_highconf_177_v2_20260825.jsonl",
+    "records":177,
+    "unique_raw_ids":177,
+    "bytes":326280,
+    "sha256":"d767b26104e2ee1c839e5cb2a41e8d18ae0063b9e04b43f3195ffa5fee49f6d4",
+    "post_save_readback_verified":true,
+    "validation_errors":0,
+    "unchanged_record_fingerprints":171,
+    "corrected_records":6
+  },
+  "corrections": [
+    {
+      "document":"25winpasst1suhy000415.docx","major":2,"records":3,
+      "table":"x: 2, 3, 5, 7, 9 / y: 14, 21, 35, 49, 63",
+      "problem_table_body_child_index":11,
+      "cell_paragraph_indices":[55,56,57,58,59,60,61,62,63,64,65,66],
+      "action":"question text now includes table values; question provenance includes every table cell and table XML SHA"
+    },
+    {
+      "document":"25winpasst1suhy000418.docx","major":1,"records":3,
+      "table":"x: 1, 2, 4, 6, 12 / y: 36, 18, 9, 6, 3",
+      "problem_table_body_child_index":5,
+      "cell_paragraph_indices":[27,28,29,30,31,32,33,34,35,36,37,38],
+      "action":"ignored intervening empty layout table; selected the x/y source table; question text/provenance now includes its cells and table XML SHA"
+    }
+  ],
+  "strict_progress": {"Standard":317,"実力錬成":237,"Winpass":177,"total":731,"pending":540},
+  "rule":"Use this v2 batch as the durable Winpass177 evidence. Do not use the superseded v1 batch for future strict validation.",
+  "main_touched":false,
+  "schedule_changed":false
+}
