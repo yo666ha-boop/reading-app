@@ -12,6 +12,7 @@ on:
       - 'v10_grammar_chronology_gate.json'
       - 'v10_notes_ui_test.js'
       - 'v10_vocab_corrections.js'
+      - 'v10_passage_local_notes_batch*.js'
       - 'v10_stage2.html'
       - 'v10_data_*.js'
       - 'v10_semantic_*.js'
@@ -28,6 +29,7 @@ on:
       - 'v10_grammar_chronology_gate.json'
       - 'v10_notes_ui_test.js'
       - 'v10_vocab_corrections.js'
+      - 'v10_passage_local_notes_batch*.js'
       - 'v10_stage2.html'
       - 'v10_data_*.js'
       - 'v10_semantic_*.js'
@@ -36,7 +38,6 @@ on:
   workflow_dispatch:
 
 concurrency:
-  # push and pull_request runs for the same work branch must never race each other.
   group: v10-vocab-grammar-notes-audit-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
 
