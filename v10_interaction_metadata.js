@@ -2,7 +2,7 @@ window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
 (function(){
  if(typeof document==='undefined')return;
  const target=window.V10_INTERACTION_META;
- const BUILD='20260820-2055-reference';
+ const BUILD='20260825-v7-reference-chronology';
  window.V10_RUNTIME_BUILD=BUILD;
  window.V10_RUNTIME_LOAD_PROGRESS='start';
  window.V10_RUNTIME_LOAD_ERROR='';
@@ -67,6 +67,7 @@ window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
   ['v10_vocab_slash_manual_081_090.js',()=>({})],
   ['v10_vocab_slash_manual_091_168.js',()=>({})],
   ['v10_vocab_slash_manual_corrections.js',()=>({})],
+  ['v10_reference_chronology_sync.js',()=>{const b=window.V10_REFERENCE_CHRONOLOGY_SYNC;if(!b)throw new Error('missing V10_REFERENCE_CHRONOLOGY_SYNC');window.V10_REFERENCE_CHRONOLOGY_PREP=b.prepareLegacyReferenceGreat();return {}}],
   ['v10_reference_slash_manual_001_168.js',()=>({})],
   ['v10_reference_slash_manual_021_030.js',()=>({})],
   ['v10_reference_slash_manual_031_040.js',()=>({})],
@@ -87,6 +88,7 @@ window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
   ['v10_reference_slash_manual_zz_corrections.js',()=>({})]
  ];
  const validate=()=>{
+   const bridge=window.V10_REFERENCE_CHRONOLOGY_SYNC;if(!bridge)throw new Error('chronology bridge missing at final validation');window.V10_REFERENCE_CHRONOLOGY_FINAL=bridge.apply();
    const sets=[dataset('1','サンシャイン'),dataset('1','ニューホライズン'),dataset('2','サンシャイン'),dataset('2','ニューホライズン'),dataset('3','サンシャイン'),dataset('3','ニューホライズン')];
    let count=0,marked=0;
    for(const d of sets)for(const p of Object.values(d||{})){count++;if(p&&p.slashReferenceAudit==='PASS_REFERENCE_20260820'&&p.slashReadingVersion==='reference-book-minimum-rules-20260820')marked++;}
