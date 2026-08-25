@@ -84,7 +84,6 @@ jobs:
           }
           async function extra(p,label){
             // wrong-answer/history/weakness/review paths
-            const first=window;
             await p.fill('#pid',(await p.evaluate(()=>window.KOKU_DATA[0].problem_id)));await p.click('#pidGo');
             const btns=p.locator('#answer .choices button');
             if(await btns.count()>1){await btns.nth(0).click();const ca=await p.evaluate(()=>window.KOKU_DATA[0].correct_answer);const t=(await btns.nth(0).innerText()).trim();if(t.startsWith(String(ca)))await btns.nth(1).click();await p.click('#submit');assert((await p.locator('#result h3').innerText()).includes('要確認'),label+' wrong path');}
@@ -116,4 +115,4 @@ jobs:
           git commit -m 'Record koku public validation [skip ci]' || true
           git pull --rebase origin main || true
           git push origin HEAD:main || true
-          exit 0
+          if [ "$result" = 'KOKU_PUBLIC_PASS_102_102_DESKTOP_IPHONE_A4' ]; then exit 0; else exit 1; fi
