@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-08-25T03:46:32.678Z",
+    "generatedAt": "2026-08-25T03:48:35.080Z",
     "passages": 168,
     "canonicalSource": {
       "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
@@ -23,17 +23,17 @@
       "MORPHOLOGY_TO_GRAMMAR": 2505,
       "CONTRACTION_TO_GRAMMAR": 227,
       "EXPLICIT_FUNCTION_TO_GRAMMAR": 20703,
-      "FUTURE_V7_LEAK": 1095,
-      "UNREGISTERED_V7": 1799,
+      "FUTURE_V7_LEAK": 1071,
+      "UNREGISTERED_V7": 1777,
       "UNREGISTERED_PROPER": 0,
-      "NOTED_UNLEARNED_ALLOWED": 84
+      "NOTED_UNLEARNED_ALLOWED": 130
     },
-    "notesPresent": 14,
+    "notesPresent": 18,
     "missingGloss": 0,
     "mappingErrors": [],
     "runtimeBrowserErrors": [],
-    "uniqueUnresolved": 559,
-    "futureVocabLeakOccurrences": 2894,
+    "uniqueUnresolved": 557,
+    "futureVocabLeakOccurrences": 2848,
     "chronologyPass": false,
     "rule": "Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. Explicit proper-name allowances are honored only inside the current passage when allowedWords marks the row proper names and the actual token is capitalized; those names are never promoted into cumulative ordinary vocabulary. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun. A passage-local notes entry authorizes only the exact noted token in that passage and only when English and Japanese gloss are both nonblank; it never enters cumulative vocabulary."
   },
@@ -72,62 +72,6 @@
         "サンシャイン|2|PROGRAM 7-2|slash:6"
       ],
       "sectionCount": 6
-    },
-    {
-      "token": "hamster",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        2,
-        10,
-        7,
-        "hamster",
-        0
-      ],
-      "occurrences": 24,
-      "sections": [
-        "サンシャイン|2|PROGRAM 7-2",
-        "サンシャイン|2|PROGRAM 7-3"
-      ],
-      "examples": [
-        "サンシャイン|2|PROGRAM 7-2|sentence:1",
-        "サンシャイン|2|PROGRAM 7-2|sentence:3",
-        "サンシャイン|2|PROGRAM 7-2|sentence:5",
-        "サンシャイン|2|PROGRAM 7-2|sentence:8",
-        "サンシャイン|2|PROGRAM 7-2|sentence:13",
-        "サンシャイン|2|PROGRAM 7-2|slash:1",
-        "サンシャイン|2|PROGRAM 7-2|slash:3",
-        "サンシャイン|2|PROGRAM 7-2|slash:5",
-        "サンシャイン|2|PROGRAM 7-2|slash:8",
-        "サンシャイン|2|PROGRAM 7-2|slash:13",
-        "サンシャイン|2|PROGRAM 7-2|A1.evidence",
-        "サンシャイン|2|PROGRAM 7-2|A2.evidence"
-      ],
-      "sectionCount": 2
-    },
-    {
-      "token": "chocolate",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 22,
-      "sections": [
-        "サンシャイン|3|PROGRAM 5-1",
-        "サンシャイン|3|PROGRAM 5-2"
-      ],
-      "examples": [
-        "サンシャイン|3|PROGRAM 5-1|sentence:4",
-        "サンシャイン|3|PROGRAM 5-1|sentence:10",
-        "サンシャイン|3|PROGRAM 5-1|slash:4",
-        "サンシャイン|3|PROGRAM 5-1|slash:10",
-        "サンシャイン|3|PROGRAM 5-2|sentence:1",
-        "サンシャイン|3|PROGRAM 5-2|sentence:4",
-        "サンシャイン|3|PROGRAM 5-2|sentence:9",
-        "サンシャイン|3|PROGRAM 5-2|sentence:10",
-        "サンシャイン|3|PROGRAM 5-2|slash:1",
-        "サンシャイン|3|PROGRAM 5-2|slash:4",
-        "サンシャイン|3|PROGRAM 5-2|slash:9",
-        "サンシャイン|3|PROGRAM 5-2|slash:10"
-      ],
-      "sectionCount": 2
     },
     {
       "token": "unfair",
@@ -30044,7 +29988,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 842,
       "cumulativeReviewedTokens": 846,
-      "notes": 0,
+      "notes": 1,
       "candidates": [
         {
           "token": "at",
@@ -30094,31 +30038,6 @@
             "slash:7",
             "slash:7",
             "slash:10",
-            "slash:13"
-          ]
-        },
-        {
-          "token": "hamster",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            2,
-            10,
-            7,
-            "hamster",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:1",
-            "sentence:3",
-            "sentence:5",
-            "sentence:8",
-            "sentence:13",
-            "slash:1",
-            "slash:3",
-            "slash:5",
-            "slash:8",
             "slash:13"
           ]
         },
@@ -30538,7 +30457,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 846,
       "cumulativeReviewedTokens": 857,
-      "notes": 0,
+      "notes": 1,
       "candidates": [
         {
           "token": "a",
@@ -30555,31 +30474,6 @@
             "slash:6",
             "A2.answer",
             "A2.evidence"
-          ]
-        },
-        {
-          "token": "hamster",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            2,
-            10,
-            7,
-            "hamster",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:1",
-            "sentence:9",
-            "sentence:10",
-            "sentence:12",
-            "slash:1",
-            "slash:9",
-            "slash:10",
-            "slash:12",
-            "A4.evidence",
-            "A5.evidence"
           ]
         },
         {
@@ -38989,7 +38883,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 1049,
       "cumulativeReviewedTokens": 1061,
-      "notes": 0,
+      "notes": 1,
       "candidates": [
         {
           "token": "our",
@@ -39259,19 +39153,6 @@
           "locations": [
             "sentence:4",
             "slash:4"
-          ]
-        },
-        {
-          "token": "chocolate",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:4",
-            "sentence:10",
-            "slash:4",
-            "slash:10"
           ]
         },
         {
@@ -39591,7 +39472,7 @@
       "localProperNameTokens": 0,
       "priorReviewedTokens": 1061,
       "cumulativeReviewedTokens": 1083,
-      "notes": 0,
+      "notes": 1,
       "candidates": [
         {
           "token": "our",
@@ -39653,25 +39534,6 @@
             "slash:1",
             "A1.evidence",
             "B3.evidence"
-          ]
-        },
-        {
-          "token": "chocolate",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:1",
-            "sentence:4",
-            "sentence:9",
-            "sentence:10",
-            "slash:1",
-            "slash:4",
-            "slash:9",
-            "slash:10",
-            "A1.answer",
-            "A1.evidence"
           ]
         },
         {
