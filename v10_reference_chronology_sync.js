@@ -45,7 +45,33 @@
     {textbook:'サンシャイン',grade:'3',section:'PROGRAM 5-3',english:'unfair',japanese:'不公平な'},
     {textbook:'ニューホライズン',grade:'3',section:'Unit 2-4',english:'unfair',japanese:'不公平な'},
     {textbook:'ニューホライズン',grade:'3',section:'Unit 5-1',english:'unfair',japanese:'不公平な'},
-    {textbook:'ニューホライズン',grade:'3',section:'Unit 5-2',english:'unfair',japanese:'不公平な'}
+    {textbook:'ニューホライズン',grade:'3',section:'Unit 5-2',english:'unfair',japanese:'不公平な'},
+
+    // v7-backed content words retained only in the passages where replacing them would distort the topic.
+    {textbook:'サンシャイン',grade:'1',section:'PROGRAM 8-3',english:'food',japanese:'食べ物'},
+    {textbook:'サンシャイン',grade:'2',section:'PROGRAM 7-1',english:'food',japanese:'食べ物'},
+    {textbook:'サンシャイン',grade:'2',section:'PROGRAM 7-2',english:'food',japanese:'食べ物'},
+    {textbook:'サンシャイン',grade:'2',section:'PROGRAM 7-3',english:'food',japanese:'食べ物'},
+    {textbook:'サンシャイン',grade:'3',section:'PROGRAM 1-1',english:'food',japanese:'食べ物'},
+    {textbook:'サンシャイン',grade:'3',section:'PROGRAM 1-2',english:'food',japanese:'食べ物'},
+    {textbook:'サンシャイン',grade:'3',section:'PROGRAM 1-2',english:'part',japanese:'部分・一部'},
+    {textbook:'サンシャイン',grade:'3',section:'PROGRAM 2-3',english:'part',japanese:'部分・一部'},
+    {textbook:'サンシャイン',grade:'3',section:'PROGRAM 3-2',english:'part',japanese:'部分・一部'},
+    {textbook:'サンシャイン',grade:'3',section:'PROGRAM 3-3',english:'part',japanese:'部分・一部'},
+    {textbook:'ニューホライズン',grade:'2',section:'Unit 3-2',english:'part',japanese:'部分・一部'},
+    {textbook:'ニューホライズン',grade:'2',section:'Unit 6-1',english:'part',japanese:'部分・一部'},
+    {textbook:'ニューホライズン',grade:'2',section:'Unit 7-4',english:'part',japanese:'部分・一部'},
+    {textbook:'ニューホライズン',grade:'1',section:'Unit 10-1',english:'contest',japanese:'コンテスト・競技（会）'},
+    {textbook:'ニューホライズン',grade:'1',section:'Unit 10-2',english:'contest',japanese:'コンテスト・競技（会）'},
+
+    // No standalone v7 entry exists for these tokens; glosses follow the exact Japanese meaning already used in the passage/slash translation.
+    {textbook:'サンシャイン',grade:'1',section:'PROGRAM 4-3',english:'fruit',japanese:'くだもの'},
+    {textbook:'ニューホライズン',grade:'2',section:'Unit 2-4',english:'fruit',japanese:'くだもの'},
+    {textbook:'ニューホライズン',grade:'2',section:'Unit 3-3',english:'fruit',japanese:'くだもの'},
+    {textbook:'ニューホライズン',grade:'3',section:'Unit 6-2',english:'partner',japanese:'相手・パートナー'},
+    {textbook:'ニューホライズン',grade:'3',section:'Unit 6-3',english:'partner',japanese:'相手・パートナー'},
+    {textbook:'サンシャイン',grade:'1',section:'PROGRAM 2-1',english:'town',japanese:'町'},
+    {textbook:'ニューホライズン',grade:'2',section:'Unit 2-2',english:'town',japanese:'町'}
   ];
   const sections=new Set(Object.keys(legacyGreatBySection));
   const pools=()=>[g.V10_SUNSHINE_G1,g.V10_NEWHORIZON_G1,g.V10_PASSAGES_G2_SS,g.V10_PASSAGES_G2_NH,g.V10_PASSAGES_G3_SS,g.V10_PASSAGES_G3_NH].filter(Boolean);
@@ -56,6 +82,6 @@
   function eachQuestion(fn){const data=g.V10_SUNSHINE_G1||{};for(const sec of sections){const p=data[sec];if(!p)continue;for(const q of(p.questions||[]))fn(q);const m=g.V10_INTERACTION_META&&g.V10_INTERACTION_META[`サンシャイン|1|${sec}`];if(m&&Array.isArray(m.questionSetB))for(const q of m.questionSetB)fn(q);}for(const k of Object.keys(g))if(/^V10_INTERACTION_META_SEMANTIC_REPAIRS(?:_\d{3}_\d{3})?$/.test(k)&&g[k]&&typeof g[k]==='object')for(const[key,m]of Object.entries(g[k])){const parts=key.split('|'),sec=parts[parts.length-1];if(parts[0]==='サンシャイン'&&sections.has(sec)&&m&&Array.isArray(m.questionSetB))for(const q of m.questionSetB)fn(q);}}
   function applyUnlearnedNotes(){let targets=0,added=0,missing=0;for(const n of unlearnedNotes){let hit=false;for(const pool of pools())for(const p of Object.values(pool||{})){if(!p||String(p.textbook)!==n.textbook||String(p.grade)!==n.grade||String(p.section)!==n.section)continue;hit=true;targets++;const corpus=[...(p.sentences||[]),...((p.slashRows||[]).map(r=>r&&r.en)),...((p.questions||[]).flatMap(q=>[q&&q.prompt,q&&q.answer,q&&q.evidence]))].join(' ');const re=new RegExp('(^|[^A-Za-z])'+n.english+'([^A-Za-z]|$)','i');if(!re.test(corpus)){missing++;continue;}p.notes=Array.isArray(p.notes)?p.notes:[];if(!p.notes.some(x=>x&&String(x.english||'').toLowerCase()===n.english)){p.notes.push({english:n.english,japanese:n.japanese,scope:'passage-only-unlearned',basis:'retained because replacing this content-bearing lexical item would distort passage meaning; vocabulary remains non-cumulative'});added++;}}if(!hit)missing++;}g.V10_UNLEARNED_NOTES_STATE={definitions:unlearnedNotes.length,targets,added,missing};return g.V10_UNLEARNED_NOTES_STATE;}
   function prepareLegacyReferenceGreat(referenceSource){applyUnlearnedNotes();const documented=new Set();for(const m of String(referenceSource||'').matchAll(/\{en:'([^'\n]*\bgreat\b[^'\n]*)'/gi))documented.add(plain(m[1]));const data=g.V10_SUNSHINE_G1||{};let changed=0,expected=0;for(const sec of sections){const p=data[sec];if(!p)continue;const allowed=new Set((legacyGreatBySection[sec]||[]).map(plain));expected+=allowed.size;p.sentences=(p.sentences||[]).map(s=>{const candidate=enGreat(s);if(candidate!==s&&allowed.has(plain(candidate))){changed++;return candidate}return s});}const gr6=data['Get Ready 6'];if(gr6&&Array.isArray(gr6.sentences)&&gr6.sentences.length===legacyGetReady6Sentences.length)gr6.sentences=legacyGetReady6Sentences.slice();return {changed,expected,referenceGreatRows:documented.size,getReady6LegacyPrepared:!!gr6};}
-  function apply(){const data=g.V10_SUNSHINE_G1||{};let passages=0,rows=0;for(const sec of sections){const p=data[sec];if(!p)continue;passages++;p.sentences=(p.sentences||[]).map(enNice);if(typeof p.title==='string')p.title=enNice(p.title);if(typeof p.fullTranslation==='string')p.fullTranslation=jpNice(p.fullTranslation);if(Array.isArray(p.slashRows))for(const r of p.slashRows){if(r&&typeof r.en==='string')r.en=enNice(r.en);if(r&&typeof r.jp==='string')r.jp=jpNice(r.jp);rows++;}p.auditNote=String(p.auditNote||'')+' Reference-boundary chronology sync: early great→nice follows v7 order without changing slash boundaries.';}const gr6=data['Get Ready 6'];if(gr6){gr6.sentences=chronologyGetReady6Rows.map(r=>plain(r.en));gr6.slashRows=chronologyGetReady6Rows.map(r=>({en:r.en,jp:r.jp}));gr6.auditNote=String(gr6.auditNote||'')+' Reference bridge restores chronology-safe Get Ready 6 after legacy reference boundary validation.';}eachQuestion(q=>{if(!q)return;for(const k of['prompt','answer','evidence'])if(typeof q[k]==='string')q[k]=enNice(q[k]);for(const k of['evidenceJp','reason'])if(typeof q[k]==='string')q[k]=jpNice(q[k]);});const noteState=applyUnlearnedNotes();g.V10_REFERENCE_CHRONOLOGY_SYNC_STATE={passages,rows,noteState,getReady6ChronologyRestored:!!gr6,version:'v7-nice-gr6-chronology-bridge-20260825'};return g.V10_REFERENCE_CHRONOLOGY_SYNC_STATE;}
+  function apply(){const data=g.V10_SUNSHINE_G1||{};let passages=0,rows=0;for(const sec of sections){const p=data[sec];if(!p)continue;passages++;p.sentences=(p.sentences||[]).map(enNice);if(typeof p.title==='string')p.title=enNice(p.title);if(typeof p.fullTranslation==='string')p.fullTranslation=jpNice(p.fullTranslation);if(Array.isArray(p.slashRows))for(const r of p.slashRows){if(r&&typeof r.en==='string')r.en=enNice(r.en);if(r&&typeof r.jp==='string')r.jp=jpNice(r.jp);rows++;}p.auditNote=String(p.auditNote||'')+' Reference-boundary chronology sync: early great→nice follows v7 order without changing slash boundaries.';}const gr6=data['Get Ready 6'];if(gr6){gr6.sentences=chronologyGetReady6Rows.map(r=>plain(r.en));gr6.slashRows=chronologyGetReady6Rows.map(r=>({en:r.en,jp:r.jp}));gr6.auditNote=String(gr6.auditNote||'')+' Reference bridge restores chronology-safe Get Ready 6 after legacy reference boundary validation.';}eachQuestion(q=>{if(!q)return;for(const k of['prompt','answer','evidence'])if(typeof q[k]==='string')q[k]=enNice(q[k]);for(const k of['evidenceJp','reason'])if(typeof q[k]==='string')q[k]=jpNice(q[k]);});const noteState=applyUnlearnedNotes();g.V10_REFERENCE_CHRONOLOGY_SYNC_STATE={passages,rows,noteState,getReady6ChronologyRestored:!!gr6,version:'v7-content-notes-gr6-bridge-20260825'};return g.V10_REFERENCE_CHRONOLOGY_SYNC_STATE;}
   g.V10_REFERENCE_CHRONOLOGY_SYNC={sections,legacyGreatBySection,legacyGetReady6Sentences,chronologyGetReady6Rows,unlearnedNotes,applyUnlearnedNotes,prepareLegacyReferenceGreat,apply};
 })(typeof window!=='undefined'?window:globalThis);
