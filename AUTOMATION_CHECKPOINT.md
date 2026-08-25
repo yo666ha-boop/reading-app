@@ -7,41 +7,40 @@ Updated: 2026-08-25 JST (manual continuation)
 - Work branch: `v10-vocab-grammar-notes-audit`.
 - Public `main`: `1f0cabf9bfcc4482f507e33188499bdbbd5bab57`; NOT modified.
 - Sole vocabulary authority: native Sheet `1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4`, tab `単語マスター`, 3975 canonical records.
-- Final runtime order re-read this run: semantic/final repairs -> manual vocab/slash corrections -> loaded passage-local note batch2 -> reference chronology prepare -> reference slash files -> final chronology apply -> runtime complete.
+- Actual loader re-check this run: checked-in `v10_stage2.html` is the static 168-dataset shell. The authoritative audit layers additional semantic/vocab/reference scripts in its audit runtime; `v10_reference_runtime_audit.js` explicitly applies semantic repairs, vocab/manual repairs, chronology sync and reference slash files. Do not infer a checked-in script tag that is not present.
 
 ## Completed this run
-- Re-read work branch/main/checkpoint/latest Actions/workflow/final runtime order before edits.
-- Resolved and verified loaded passage-local families `badge/checklist/ocean/production/race/researchers/trash/white/basketball/straw`, then `compare/detective/road/route/vegetables/visitors/bicycle/event/house`, without cumulative or cross-textbook whitelisting.
-- Fixed notes UI regression test so a passage that now legitimately has notes is not hard-coded as the zero-note fixture. Current notes UI gate PASS.
-- Added/verified further loaded local-note families `quokka/bento/button/consumption/donation/Hokkaido/kangaroo/poster/remaining`.
-- Updated `.github/workflows/v10-vocab-grammar-notes-audit.yml` so `v10_passage_local_notes_batch*.js` changes directly trigger the authoritative audit instead of depending on incidental loader edits. Commit `1f8638e48863912db2c933d30ff48f277365972f`.
-- Latest authoritative status after those loaded changes: audit 168/168; `520 unique / 2294 occurrences`; `FUTURE_V7_LEAK=871`; `UNREGISTERED_V7=1423`; `UNREGISTERED_PROPER=0`; notes `93`; `missing_gloss=0`; grammar candidates 168/168, 20 feature families; notes UI PASS.
-- Continued into next unresolved group. Live-v7 checked `schoolchildren`, `term`, `shoe`, `everyday`, `architect`, `deck`, `value`, `skate`, `person`, `pirate`, `project`.
-- High-leverage scanner defect found: explicitly tagged passage-local proper names were accepted only in bare form, so a legitimate possessive such as `Riko's` could leak even when `Riko` was explicitly marked as a proper name. Added bounded possessive handling only for explicitly tagged local proper names; capitalization alone is still forbidden. Scanner-fix commit `0d4c25f5d62b0911c0d1c78084e4873816cbb8c2`.
-- Staged the next content-essential local-note set in `v10_passage_local_notes_batch3.js`: `schoolchildren`, `term`, `architect`, `deck`, `skate`, `value`, `person`, `pirate`, `project`, `data`, `horse`, `supporters`. Commit `cd0761763853382eab082c576107746af184a666`.
-- IMPORTANT: batch3 is intentionally recorded as STAGED/PENDING, not verified or counted yet, because the current final loader still loads batch2 only. Do not claim batch3 reductions until it is inserted before chronology/reference sync and re-audited.
-- `everyday` and `shoes` were deliberately not papered over with notes: `everyday` may need natural correction to `every day`; `shoes` needs exact base/phrase chronology handling because v7 contains `boat shoe` in SS2. These remain for direct resolution.
+- Re-read work branch HEAD, main HEAD, checkpoint, latest Actions, vocab audit workflow, `v10_stage2.html`, audit scanner and reference-runtime loader before edits.
+- Starting branch HEAD was `a40aff9a007374b630f9907666d3f49d3b1381d6`; public main remained `1f0cabf9bfcc4482f507e33188499bdbbd5bab57`.
+- Confirmed prior VERIFIED vocabulary state remains `520 unique / 2294 occurrences` = `871 FUTURE_V7_LEAK + 1423 UNREGISTERED_V7`; notes `93`; `missing_gloss=0`; 168/168 passages; grammar candidates 168/168 with 20 feature families.
+- Found the actual audit-loading gap rather than assuming the checkpoint wording: the strict vocab wrapper waited for authoritative runtime completion but did not explicitly execute staged batch3 before token scanning.
+- Patched `v10_vocab_notes_candidate_audit.js` so, after authoritative runtime reaches terminal `complete`, it explicitly executes bounded `v10_passage_local_notes_batch2.js` then `v10_passage_local_notes_batch3.js` before the 168 token scan. This preserves passage-local/non-cumulative note semantics and fails if either bounded file is missing.
+- Patch commit: `a793e9c6fa54595442e01121bf84027d001dab0e` (`audit: load bounded notes batch3 in final vocab scan`).
+- The patch triggered fresh Actions: vocab/grammar/notes audit run `32829169788` and passage audit run `32829170065`. At checkpoint-write time the vocab run was `in_progress`; therefore NO inferred post-batch3 counts are recorded yet.
+- Re-read live canonical Sheet metadata: `単語マスター` is 3976 rows including header, 33 columns; header confirms English=O, Japanese=P, search base=AB, variants=AC.
+- Live-v7 exact checks this run: `everyday` has no standalone English row and no search-base/variant row; `shoe` finds canonical phrase `boat shoe = デッキシューズ` only; `New Zealand = ニュージーランド` exists (row 353); exact standalone `ant` is not present in English rows (substring search only returned unrelated words such as want/plant/important).
+- Fresh unresolved report contexts read directly: `zealand` 12 occurrences in NH1 Unit 4-1 (future canonical phrase boundary), `everyday` 11 occurrences across SS3 PROGRAM 6-3 / NH2 Unit 5-1 / NH3 Unit 5-4, `shoes` 11 occurrences in NH2 Unit 4-4, `ant` 10 occurrences in SS1 PROGRAM 4-1. Batch3 families `schoolchildren/term/architect/deck/skate/value/...` are confirmed immediately above these in the unresolved ranking.
 
 ## Current exact VERIFIED state
 - Vocabulary passages audited: `168/168`.
 - Vocabulary chronology: FAIL / IN PROGRESS.
-- VERIFIED unresolved: `520 unique / 2294 occurrences` = `871 FUTURE_V7_LEAK + 1423 UNREGISTERED_V7`.
-- Verified notes: `93`.
+- Last VERIFIED unresolved (before the newly triggered batch3 scan): `520 unique / 2294 occurrences` = `871 FUTURE_V7_LEAK + 1423 UNREGISTERED_V7`.
+- Last verified notes: `93`.
 - `missing_gloss=0` PASS.
 - Grammar candidate coverage: `168/168`; 20 feature families; exact evidence-backed subunit chronology still pending, so grammar chronology remains FAIL-CLOSED/PENDING.
-- Notes UI: PASS at latest authoritative status.
-- Latest verified passage audit on prior content was SUCCESS; slash/browser/print had been PASS before these notes/scanner-only changes. Newest branch still requires fresh full run before claiming newest-content final PASS.
+- Notes UI: prior authoritative PASS. New batch3 scan/run still pending at checkpoint-write time.
+- Slash/browser/print: prior PASS evidence exists, but newest branch content requires fresh final runs before any final PASS claim.
 - Public main release: NOT performed.
 
 ## Actions / commits
-- Authoritative loaded-content status source: `VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt` currently records 520/2294/93/missing_gloss0/notes_ui PASS.
-- Prior audit run on the loaded 9-family batch: `32824729378` SUCCESS; passage audit `32824729402` SUCCESS.
-- Scanner-fix push run `32825004047` was cancelled by concurrency after later branch commit, not a test failure.
-- Workflow now directly watches passage-local note batch files.
+- New content/audit commit: `a793e9c6fa54595442e01121bf84027d001dab0e`.
+- New authoritative vocab/grammar/notes run: `32829169788` — `in_progress` at checkpoint save.
+- New passage-audit run: `32829170065` — triggered from same head; verify conclusion next run.
+- Previous verified status source remains `VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt` with 520/2294/93/missing_gloss0 until run `32829169788` persists a newer authoritative report.
 
 ## Exact stop / next start
-- Exact stop: branch contains proper-name-possessive scanner fix plus staged batch3, but batch3 is not yet in final runtime load order; latest VERIFIED vocabulary number remains 520/2294.
-- Next start: re-read branch/main/Actions. Insert `v10_passage_local_notes_batch3.js` immediately after batch2 and before `v10_reference_chronology_sync.js` in final runtime loader, bump runtime build, then run authoritative audit. Verify actual reductions; do not infer them.
-- After that, inspect/repair `everyday` contexts for correct `every day` vs adjective use, and resolve `shoes/shoe` via exact canonical base/phrase chronology rather than a blanket note. Continue descending through fresh unresolved list (`zealand`, `ant`, etc.) without stopping at a small batch.
-- Once vocab leak reaches zero: build evidence-backed exact-subunit grammar introduction boundaries for all 20 detected grammar families, run grammar chronology to future_grammar_leak=0, then full slash reference/A+B evidence/coverage/DOM/Chromium/Firefox/WebKit-iPhone/A4 student+teacher print gates.
-- Only after every gate PASS: merge/update `main`, verify live Pages, then stop the automation.
+- Exact stop: batch3 is now explicitly connected to the authoritative 168-passage vocabulary scan and CI is running; post-batch3 counts are not yet known. The checked-in public/static stage2/reference runtime path has NOT yet been declared final for batch3 just from scanner injection.
+- Next start: read branch/main and run `32829169788` first. If SUCCESS, read newly persisted `VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt` + `v10_vocab_unresolved_unique.json` and record actual reduced counts. If FAIL, read job/log evidence and repair from the exact failing stage.
+- Then resolve `everyday` by inspecting each final-runtime sentence to distinguish adjective `everyday` from erroneous adverbial `every day`; do not blanket-note it. Resolve `shoes` against the `boat shoe` phrase without treating that phrase as a global standalone `shoe` license. Resolve `zealand` as the `New Zealand` phrase at its exact NH1 chronology boundary, not as a free token. Resolve `ant` from passage context; if indispensable and still v7-absent, use a passage-local gloss only.
+- Continue descending through unresolved tokens without stopping at a small batch. Once vocab leak reaches zero, complete evidence-backed exact-subunit grammar introductions for all 20 families and run grammar chronology to `future_grammar_leak=0`.
+- Then run slash reference 168/168, A+B evidence, coverage/DOM, Chromium/Firefox/WebKit-iPhone, A4 student/teacher print. Only after every gate PASS may main be updated and live Pages verified; only then stop automation.
