@@ -10,8 +10,8 @@ let s=fs.readFileSync(base,'utf8');
 function patch(from,to,label){if(!s.includes(from))throw new Error('audit wrapper patch point missing: '+label);s=s.replace(from,to);}
 patch(
   "function classifyToken(v7, w, raw, cut, reviewedEvidence, localProperNames) {\n",
-  "function classifyToken(v7, w, raw, cut, reviewedEvidence, localProperNames, notedWords) {\n  if (notedWords && notedWords.has(w)) return { kind:'NOTED_UNLEARNED_ALLOWED', evidence:'current passage notes entry with nonblank English+Japanese gloss; passage-local and non-cumulative' };\n  const possessiveProperBase = w.endsWith(\"'s\") ? w.slice(0,-2) : (w.endsWith(\"s'\") ? w.slice(0,-1) : '');\n  if (possessiveProperBase && localProperNames.has(possessiveProperBase) && /^[A-Z]/.test(String(raw || ''))) return { kind:'EXPLICIT_PROPER_NAME_ALLOWED', evidence:'current passage allowedWords row explicitly tagged proper names; possessive surface form of local proper name' };\n",
-  'classify signature'
+  "function classifyToken(v7, w, raw, cut, reviewedEvidence, localProperNames, notedWords) {\n  if (w === \"i'd\") return { kind:'CONTRACTION_TO_GRAMMAR', evidence:'I’d in current runtime; contraction is grammar-routed and must pass section chronology, never lexical-noted' };\n  if (w === 'whether') return { kind:'EXPLICIT_FUNCTION_TO_GRAMMAR', evidence:'whether is a clause marker routed to grammar chronology, never lexical-noted' };\n  if (notedWords && notedWords.has(w)) return { kind:'NOTED_UNLEARNED_ALLOWED', evidence:'current passage notes entry with nonblank English+Japanese gloss; passage-local and non-cumulative' };\n  const possessiveProperBase = w.endsWith(\"'s\") ? w.slice(0,-2) : (w.endsWith(\"s'\") ? w.slice(0,-1) : '');\n  if (possessiveProperBase && localProperNames.has(possessiveProperBase) && /^[A-Z]/.test(String(raw || ''))) return { kind:'EXPLICIT_PROPER_NAME_ALLOWED', evidence:'current passage allowedWords row explicitly tagged proper names; possessive surface form of local proper name' };\n",
+  'classify signature + exact grammar-routed tokens'
 );
 patch(
   "const localEvidence = allowedEvidence(m), local = localEvidence.lexical, localProperNames = localEvidence.proper;\n          const priorReviewedTokens = reviewedEvidence.size;",
@@ -40,7 +40,7 @@ patch(
 );
 patch(
   "Capitalization alone never authorizes a proper noun.'",
-  "Capitalization alone never authorizes a proper noun. Explicitly tagged local proper-name possessives are authorized only for that passage. A passage-local notes entry authorizes only the exact noted token in that passage and only when English and Japanese gloss are both nonblank; it never enters cumulative vocabulary.'",
+  "Capitalization alone never authorizes a proper noun. Explicitly tagged local proper-name possessives are authorized only for that passage. A passage-local notes entry authorizes only the exact noted token in that passage and only when English and Japanese gloss are both nonblank; it never enters cumulative vocabulary. I’d and whether are explicitly grammar-routed and require evidence-backed section chronology.'",
   'rule text'
 );
 patch(
