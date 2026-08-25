@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-08-25T13:05:41.094Z",
+    "generatedAt": "2026-08-25T13:06:04.695Z",
     "passages": 168,
     "canonicalSource": {
       "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
@@ -18,13 +18,13 @@
     "counts": {
       "V7_CHRONOLOGY_ALLOWED": 10132,
       "ELEMENTARY_LEXICAL_ALLOWED": 3514,
-      "EXPLICIT_PROPER_NAME_ALLOWED": 140,
+      "EXPLICIT_PROPER_NAME_ALLOWED": 169,
       "REVIEWED_EXPLICIT_ALLOWED": 756,
       "MORPHOLOGY_TO_GRAMMAR": 2502,
       "CONTRACTION_TO_GRAMMAR": 227,
       "EXPLICIT_FUNCTION_TO_GRAMMAR": 20701,
-      "FUTURE_V7_LEAK": 387,
-      "UNREGISTERED_V7": 769,
+      "FUTURE_V7_LEAK": 375,
+      "UNREGISTERED_V7": 752,
       "UNREGISTERED_PROPER": 0,
       "NOTED_UNLEARNED_ALLOWED": 1776
     },
@@ -32,8 +32,8 @@
     "missingGloss": 0,
     "mappingErrors": [],
     "runtimeBrowserErrors": [],
-    "uniqueUnresolved": 369,
-    "futureVocabLeakOccurrences": 1156,
+    "uniqueUnresolved": 364,
+    "futureVocabLeakOccurrences": 1127,
     "chronologyPass": false,
     "rule": "Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. Explicit proper-name allowances are honored only inside the current passage when allowedWords marks the row proper names and the actual token is capitalized; those names are never promoted into cumulative ordinary vocabulary. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun. Explicitly tagged local proper-name possessives are authorized only for that passage. A passage-local notes entry authorizes only the exact noted token in that passage and only when English and Japanese gloss are both nonblank; it never enters cumulative vocabulary."
   },
@@ -63,24 +63,6 @@
       "sectionCount": 1
     },
     {
-      "token": "emi",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 6,
-      "sections": [
-        "サンシャイン|3|PROGRAM 1-1"
-      ],
-      "examples": [
-        "サンシャイン|3|PROGRAM 1-1|sentence:3",
-        "サンシャイン|3|PROGRAM 1-1|sentence:7",
-        "サンシャイン|3|PROGRAM 1-1|slash:3",
-        "サンシャイン|3|PROGRAM 1-1|slash:7",
-        "サンシャイン|3|PROGRAM 1-1|A3.evidence",
-        "サンシャイン|3|PROGRAM 1-1|B2.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
       "token": "five",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -97,49 +79,6 @@
         "ニューホライズン|3|Unit 2-2|A2.evidence"
       ],
       "sectionCount": 1
-    },
-    {
-      "token": "france",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 6,
-      "sections": [
-        "サンシャイン|1|PROGRAM 8-3"
-      ],
-      "examples": [
-        "サンシャイン|1|PROGRAM 8-3|sentence:9",
-        "サンシャイン|1|PROGRAM 8-3|slash:9",
-        "サンシャイン|1|PROGRAM 8-3|A4.answer",
-        "サンシャイン|1|PROGRAM 8-3|A4.evidence",
-        "サンシャイン|1|PROGRAM 8-3|B3.answer",
-        "サンシャイン|1|PROGRAM 8-3|B3.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "kenya",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        1,
-        8,
-        7,
-        "kenya",
-        0
-      ],
-      "occurrences": 6,
-      "sections": [
-        "サンシャイン|1|PROGRAM 6-3",
-        "ニューホライズン|1|Unit 8-1"
-      ],
-      "examples": [
-        "サンシャイン|1|PROGRAM 6-3|sentence:1",
-        "サンシャイン|1|PROGRAM 6-3|slash:1",
-        "ニューホライズン|1|Unit 8-1|sentence:1",
-        "ニューホライズン|1|Unit 8-1|slash:1",
-        "ニューホライズン|1|Unit 8-1|A1.answer",
-        "ニューホライズン|1|Unit 8-1|A1.evidence"
-      ],
-      "sectionCount": 2
     },
     {
       "token": "math",
@@ -237,30 +176,6 @@
         "ニューホライズン|1|Unit 1-3|slash:11"
       ],
       "sectionCount": 2
-    },
-    {
-      "token": "singapore",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        2,
-        4,
-        6,
-        "singapore",
-        0
-      ],
-      "occurrences": 6,
-      "sections": [
-        "ニューホライズン|2|Unit 1-4"
-      ],
-      "examples": [
-        "ニューホライズン|2|Unit 1-4|sentence:1",
-        "ニューホライズン|2|Unit 1-4|slash:1",
-        "ニューホライズン|2|Unit 1-4|A1.answer",
-        "ニューホライズン|2|Unit 1-4|A1.evidence",
-        "ニューホライズン|2|Unit 1-4|B1.answer",
-        "ニューホライズン|2|Unit 1-4|B1.evidence"
-      ],
-      "sectionCount": 1
     },
     {
       "token": "sixteen",
@@ -586,23 +501,6 @@
         "サンシャイン|1|Get Ready 6|A1.answer",
         "サンシャイン|1|Get Ready 6|A1.evidence",
         "サンシャイン|1|Get Ready 6|B1.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "osaka",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 5,
-      "sections": [
-        "ニューホライズン|3|Unit 1-1"
-      ],
-      "examples": [
-        "ニューホライズン|3|Unit 1-1|sentence:4",
-        "ニューホライズン|3|Unit 1-1|sentence:7",
-        "ニューホライズン|3|Unit 1-1|slash:4",
-        "ニューホライズン|3|Unit 1-1|slash:7",
-        "ニューホライズン|3|Unit 1-1|A2.evidence"
       ],
       "sectionCount": 1
     },
@@ -11851,7 +11749,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 52,
-      "localProperNameTokens": 0,
+      "localProperNameTokens": 1,
       "priorReviewedTokens": 317,
       "cumulativeReviewedTokens": 344,
       "notes": 2,
@@ -11878,23 +11776,6 @@
             "sentence:4",
             "slash:1",
             "slash:4"
-          ]
-        },
-        {
-          "token": "kenya",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            1,
-            8,
-            7,
-            "kenya",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:1",
-            "slash:1"
           ]
         },
         {
@@ -13767,7 +13648,7 @@
         "subrank": 3
       },
       "localReviewedTokens": 46,
-      "localProperNameTokens": 0,
+      "localProperNameTokens": 1,
       "priorReviewedTokens": 417,
       "cumulativeReviewedTokens": 440,
       "notes": 4,
@@ -14031,21 +13912,6 @@
             "sentence:9",
             "slash:9",
             "A4.evidence",
-            "B3.evidence"
-          ]
-        },
-        {
-          "token": "france",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:9",
-            "slash:9",
-            "A4.answer",
-            "A4.evidence",
-            "B3.answer",
             "B3.evidence"
           ]
         },
@@ -26514,7 +26380,7 @@
         "subrank": 1
       },
       "localReviewedTokens": 27,
-      "localProperNameTokens": 0,
+      "localProperNameTokens": 1,
       "priorReviewedTokens": 903,
       "cumulativeReviewedTokens": 910,
       "notes": 4,
@@ -26676,21 +26542,6 @@
             "sentence:2",
             "slash:2",
             "A2.evidence"
-          ]
-        },
-        {
-          "token": "emi",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:3",
-            "sentence:7",
-            "slash:3",
-            "slash:7",
-            "A3.evidence",
-            "B2.evidence"
           ]
         },
         {
@@ -43132,7 +42983,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 28,
-      "localProperNameTokens": 0,
+      "localProperNameTokens": 1,
       "priorReviewedTokens": 240,
       "cumulativeReviewedTokens": 249,
       "notes": 0,
@@ -43192,25 +43043,6 @@
             "A2.answer",
             "A2.evidence",
             "B1.evidence"
-          ]
-        },
-        {
-          "token": "kenya",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            1,
-            10,
-            6,
-            "kenya",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:1",
-            "slash:1",
-            "A1.answer",
-            "A1.evidence"
           ]
         },
         {
@@ -46875,7 +46707,7 @@
         "subrank": 5
       },
       "localReviewedTokens": 29,
-      "localProperNameTokens": 0,
+      "localProperNameTokens": 1,
       "priorReviewedTokens": 401,
       "cumulativeReviewedTokens": 416,
       "notes": 2,
@@ -46948,27 +46780,6 @@
             "slash:1",
             "slash:2",
             "slash:3"
-          ]
-        },
-        {
-          "token": "singapore",
-          "kind": "FUTURE_V7_LEAK",
-          "base": null,
-          "intro": [
-            2,
-            4,
-            6,
-            "singapore",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:1",
-            "slash:1",
-            "A1.answer",
-            "A1.evidence",
-            "B1.answer",
-            "B1.evidence"
           ]
         },
         {
@@ -59571,7 +59382,7 @@
         "subrank": 2
       },
       "localReviewedTokens": 32,
-      "localProperNameTokens": 1,
+      "localProperNameTokens": 2,
       "priorReviewedTokens": 708,
       "cumulativeReviewedTokens": 719,
       "notes": 2,
@@ -59789,20 +59600,6 @@
           "locations": [
             "sentence:4",
             "slash:4",
-            "A2.evidence"
-          ]
-        },
-        {
-          "token": "osaka",
-          "kind": "UNREGISTERED_V7",
-          "base": null,
-          "intro": null,
-          "evidence": null,
-          "locations": [
-            "sentence:4",
-            "sentence:7",
-            "slash:4",
-            "slash:7",
             "A2.evidence"
           ]
         },
