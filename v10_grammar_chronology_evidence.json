@@ -1,20 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "status": "EVIDENCE_FOUNDATION_IN_PROGRESS_NOT_FINAL_PASS",
-  "principle": "Official 2025 publisher curriculum evidence establishes textbook/program or unit placement. Exact app subunit boundary is recorded only where the official source explicitly identifies the part or where current runtime is additionally checked; no later unit may authorize an earlier passage.",
+  "principle": "Official 2025 publisher curriculum evidence establishes textbook/program or unit placement. Exact app subunit boundary is recorded only where the official source explicitly identifies the part and the app's established P1/P2/RT1/RT2 to -1/-2/-3/-4 section mapping is checked; no later unit may authorize an earlier passage.",
   "sources": {
     "NH2_official_2025": {
       "publisher": "東京書籍",
-      "title": "令和7年度 NEW HORIZON 2 年間指導計画（略案・細案）",
-      "url": "https://ten.tokyo-shoseki.co.jp/text/chu/eigo/download/documents/R7eigo_ryakuan_2.pdf",
+      "title": "令和7年度 NEW HORIZON 2 年間指導計画作成資料",
+      "url": "https://ten.tokyo-shoseki.co.jp/text/chu/eigo/download/documents/R7eigo_saian_2.pdf",
       "verified": [
-        "Unit 1 P1 be going to; P2 will; later parts five sentence patterns including SVOO/SVOC",
+        "Unit 1 P1 be going to; P2 will; later parts SVOO/SVOC",
         "Unit 2 P1 when; P2 if; RT1 because; RT2 that",
         "Unit 3 P1 infinitive-purpose; P2 infinitive-cause; RT1 adjective infinitive; RT2 It is ... to",
-        "Unit 4 have to / must / gerund at unit level",
-        "Unit 5 wh-word + to and related tell-person-wh-to at unit level",
-        "Unit 6 comparison expressions at unit level",
-        "Unit 7 passive; P1 declarative passive explicitly verified"
+        "Unit 4 P1 have to/do not have to; P2 must/must not; RT1 gerund as object; RT2 gerund as subject",
+        "Unit 5 P1 wh-word + to; P2 verb + person + wh-word + to",
+        "Unit 6 P1 comparative -er and superlative -est; P2 more/most; RT1 better/best; RT2 as ... as",
+        "Unit 7 P1 declarative passive; P2 passive question; RT1 by-passive; RT2 modal passive"
       ]
     },
     "NH3_official_2025": {
@@ -70,15 +70,15 @@
     "ニューホライズン|2|BECAUSE_CLAUSE": "Unit 2-3",
     "ニューホライズン|2|TO_INFINITIVE": "Unit 3-1",
     "ニューホライズン|2|IT_IS_ADJ_TO": "Unit 3-4",
+    "ニューホライズン|2|HAVE_TO": "Unit 4-1",
+    "ニューホライズン|2|GERUND": "Unit 4-3",
+    "ニューホライズン|2|WH_TO_INFINITIVE": "Unit 5-1",
+    "ニューホライズン|2|COMPARATIVE": "Unit 6-1",
+    "ニューホライズン|2|SUPERLATIVE": "Unit 6-1",
+    "ニューホライズン|2|AS_AS": "Unit 6-4",
     "ニューホライズン|2|PASSIVE": "Unit 7-1"
   },
   "programOrUnitBoundaryVerifiedButExactSubunitPending": {
-    "ニューホライズン|2|HAVE_TO": "Unit 4",
-    "ニューホライズン|2|GERUND": "Unit 4",
-    "ニューホライズン|2|WH_TO_INFINITIVE": "Unit 5",
-    "ニューホライズン|2|COMPARATIVE": "Unit 6",
-    "ニューホライズン|2|SUPERLATIVE": "Unit 6",
-    "ニューホライズン|2|AS_AS": "Unit 6",
     "ニューホライズン|3|PRESENT_PERFECT": "Unit 1",
     "ニューホライズン|3|PRESENT_PERFECT_PROGRESSIVE": "Unit 2",
     "ニューホライズン|3|ASK_TELL_WANT_O_TO": "Unit 3",
@@ -97,5 +97,5 @@
     "サンシャイン|3|PRESENT_PERFECT_PROGRESSIVE": "PROGRAM 2"
   },
   "finalPass": false,
-  "next": "Use refined detector v2 output; finish exact-subunit boundaries for every detected feature in both textbooks; then run occurrence-by-occurrence chronology gate and keep fail-closed until unresolved=0 and futureGrammarLeak=0."
+  "next": "Re-run refined detector v2 with exact NH2 Part boundaries and prior-grade carry-forward; then finish NH3 and Sunshine exact-subunit boundaries, rewrite confirmed early future structures, and keep fail-closed until unresolved=0 and futureGrammarLeak=0."
 }
