@@ -10,43 +10,41 @@ Updated: 2026-08-25 JST (manual continuation)
 - Final audit runtime waits for `V10_RUNTIME_LOAD_PROGRESS=complete`, then applies bounded passage-local proper-name/notes layers before scanning all 168 passages. Passage-local notes never enter cumulative vocabulary; proper names require explicit local tagging and capitalization.
 
 ## Completed this run
-- Re-read branch HEAD, main HEAD, checkpoint, latest Actions and authoritative final-runtime scanner/load order, then resumed from run `32834908093`.
-- Recovered run `32834908093` as SUCCESS. Proper-name layer reduced the verified state from `501 unique / 2093 occurrences` to `496 / 2053`; `787 FUTURE + 1266 UNREGISTERED`, notes `117`, missing_gloss `0`, 168/168.
-- Located all three final-runtime `everyday` contexts. They are genuine adjectives, not erroneous adverbial `every day`: SS3 PROGRAM6-3 `everyday waste reduction`, NH2 Unit5-1 `everyday actions`, NH3 Unit5-4 `an everyday product`. Therefore no destructive text rewrite was made.
-- Native v7 actual checks: no standalone `compare`, `bus`, or `director`; NH2 `learn` first appears at Unit3 Read and Think2; NH2 `explain` at Unit4 Read and Think1/2; NH2 `give-gave` at Let's Read1. These boundaries prove the current earlier uses are future/unregistered rather than globally licensed morphology.
-- Added `v10_passage_local_notes_batch5.js`: `everyday` (3 sections), `compares` (2), `bus`, `director`, `explains` (2), `gives` (3), `learn` (3). Batch5 content commit `c17712b67d71e78fc7a8e29dc0de3576c59aed0b`; scanner-load commit `6e99bdd69fd2eb5af08f2373ff90cbe749094632`; rerun marker commit `3ddcf61055d224328a7ae293d902705698fc23f8`.
-- Initial batch5 Actions attempts were cancelled by the workflow's same-branch `cancel-in-progress` while evidence-writer bot commits moved the branch. Re-ran the cancelled job after writer convergence. The second attempt completed the canonical snapshot, 168 vocabulary scan, 168 grammar candidate scan, reports, and bounded notes UI evidence.
-- Verified batch5 result: `489 unique / 1987 occurrences` = `760 FUTURE + 1227 UNREGISTERED`; notes `132`; missing_gloss `0`; passages `168/168`; notes UI PASS; grammar candidates `168/168`, 20 feature families.
-- Continued immediately into the next high-frequency group. Native v7 actual: `paw=（動物の）足` exists later in SS2 PROGRAM6 textbook body; `reindeer=トナカイ` later in SS1 PROGRAM9 body; `savanna=サバンナ` later in SS1 PROGRAM6 body; `supply-supplies=必需品` at NH3 Unit6 Part1. Runtime NH1 Unit9-3 confirms `charm` means `お守り`.
-- Added `v10_passage_local_notes_batch6.js` for passage-local `paw`, `reindeer`, `savanna`, `shop`, `supplies` (NH3 Unit4-1/4-2/4-4), `banknote`, `cake`, `charm`, `classmate`, `comic`. Batch6 content commit `0aabc1c953c3af323a4fe3d4014f3219124c6d45`; scanner-load commit `4becbf94b398d8b56d9ae01aeb7a24bd5978d23a`.
-- Authoritative batch6 evidence was persisted by bot through branch HEAD `bfcea4dfe635976e8ae1c231beeaa65f79673f45`.
-- Verified batch6 result: `479 unique / 1902 occurrences` = `724 FUTURE + 1178 UNREGISTERED`; notes `144`; missing_gloss `0`; passages `168/168`; notes UI PASS; grammar candidates `168/168`, 20 feature families.
-- Total verified progress during this run: `496 -> 479 unique`, `2053 -> 1902 occurrences`, a reduction of 17 unique / 151 unresolved occurrences without global-allowing the tokens.
+- Re-read work-branch HEAD, main HEAD, prior checkpoint, newest Actions, authoritative status/unresolved JSON, and final audit wrapper/load order before editing.
+- Confirmed prior batch6 slash-quality run `32840208534` completed SUCCESS; the previous checkpoint's pending slash state is therefore resolved.
+- Added bounded proper-name batch2 rather than glossing names as vocabulary: Sunshine G1 `Step 6 / Our Project 3 / Power-Up 6` -> `Anna`; New Horizon G3 `Unit 1-1` -> `Kyoto`. File commit `0c4c336ea97da2c71b46b9b0f998abfa5bcf54af`.
+- Native v7 actual checks used during this pass include: `damage=~に損害を与える`; `earthquake=地震`; `handle=~を処理する`; no standalone `communication`; `pastry` appears only inside later `pastry chef`; `peaceful=平和な`; `safe=安全な`; `puppy=子イヌ`; and `the U.K.=英国/イギリス`.
+- Added `v10_passage_local_notes_batch7.js` for the next 8-occurrence group: `communication`, `damage`, `diet`, `difference`, `earthquake`, `easily`, `handle`, `human`. Content commit `23401f1a9f1dd12b944bcec7633bf9f57bcd4075`; authoritative scanner load commit `bbdeb58d0c33137e7e90573044aaab79b3445b5b`.
+- Batch7 authoritative evidence verified `479 -> 469 unique`, `1902 -> 1822 occurrences`; `700 FUTURE + 1122 UNREGISTERED`; notes `158`; `missing_gloss=0`; passages `168/168`; notes UI PASS; grammar candidates remain `168/168`, 20 feature families.
+- Added `v10_passage_local_notes_batch8.js` for the remainder of the 8-occurrence group. Important scanner-safe handling: NH1 Unit6-1 uses exact phrase note `the U.K.=イギリス`, avoiding any global allowance of single-letter tokenizer fragments `u` / `k`. Other bounded tokens include `museum`, `pastry`, `peaceful`, `political`, `protection`, `protesters`, `puppy`, `record`, `safe`, `sea`, `sequence`, `simple`, `single`, `solve`, `supermarket`, `theater`, `tuna`, `twenty`, `UNESCO`. Content commit `ee32d54e10a5a189ff8cf2356940b6cf35abd240`; scanner-load commit `c6c81259e65952662caa0de73e1490688efce224`.
+- Batch8 authoritative evidence verified `469 -> 448 unique`, `1822 -> 1654 occurrences`; `620 FUTURE + 1034 UNREGISTERED`; notes `186`; `missing_gloss=0`; passages `168/168`; notes UI PASS.
+- Continued immediately into the 7-occurrence group and added `v10_passage_local_notes_batch9.js` for `advice`, `cape`, `classroom`, `cleanup`, `comparison`, `corn`, `crowd`, `elephant`, `field`, `fresh`, `gym`, `high`, `hockey`, `hospital`, `ice`, `machine`, `mosque`, `product`, `protect`, `reused`, `stall`, `stand`, `track`. Content commit `f31518f308a5781964274f7b153e09e6bb4d30e1`; scanner-load commit `111e16b52822a3ba1d3af78410177ede90ebc841`.
+- Batch9 authoritative run `32845055089` completed SUCCESS and persisted the new exact state: `425 unique / 1493 occurrences` = `543 FUTURE + 950 UNREGISTERED`; notes `215`; `missing_gloss=0`; passages `168/168`; notes UI PASS; grammar candidates `168/168`, 20 feature families.
+- Batch9 content slash-quality run `32845023852` completed SUCCESS. No passage text/slash rewrite was made in batches7-9; notes/proper-name metadata additions did not regress slash quality.
+- Total verified progress in this continuation: `479 -> 425 unique`, `1902 -> 1493 occurrences`, reduction `54 unique / 409 unresolved occurrences`; notes `144 -> 215`; missing gloss remained zero.
 
 ## Current exact VERIFIED state
 - Vocabulary passages audited: `168/168`.
 - Vocabulary chronology: FAIL / IN PROGRESS.
-- Unresolved: `479 unique / 1902 occurrences` = `724 FUTURE_V7_LEAK + 1178 UNREGISTERED_V7`.
-- Notes present: `144`; `missing_gloss=0` PASS.
+- Unresolved: `425 unique / 1493 occurrences` = `543 FUTURE_V7_LEAK + 950 UNREGISTERED_V7`.
+- Notes present: `215`; `missing_gloss=0` PASS.
+- Proper-name unresolved: `0`; bounded proper names are passage-local and capitalization-gated.
 - Grammar candidate coverage: `168/168`; 20 detected feature families. Evidence-backed exact subunit introduction chronology is still incomplete, so grammar chronology remains fail-closed/pending; no PASS claimed.
-- Notes UI: PASS on latest persisted batch6 evidence.
-- Slash/browser/print: new batch6-triggered slash run `32840208534` was still `in_progress` at checkpoint save. Do not claim latest slash/browser/print PASS until that run (or a later authoritative run for the same content) completes successfully.
+- Notes UI: PASS on latest persisted batch9 evidence.
+- Slash quality: batch9 content run `32845023852` SUCCESS. Final full release gates still must be rerun after vocabulary and grammar chronology reach zero leaks.
 - Public main release: NOT performed; main remains `1f0cabf9bfcc4482f507e33188499bdbbd5bab57`.
 
 ## Actions / commits
-- Prior proper-name authoritative run: `32834908093` SUCCESS.
-- Batch5 content: `c17712b67d71e78fc7a8e29dc0de3576c59aed0b`.
-- Batch5 scanner/retrigger: `6e99bdd69fd2eb5af08f2373ff90cbe749094632`, `3ddcf61055d224328a7ae293d902705698fc23f8`.
-- Batch5 authoritative run: `32839854902`, attempt 2 used after cancellation/concurrency; evidence persisted and status verified at `489 / 1987`, notes 132.
-- Batch6 content: `0aabc1c953c3af323a4fe3d4014f3219124c6d45`.
-- Batch6 scanner: `4becbf94b398d8b56d9ae01aeb7a24bd5978d23a`.
-- Batch6 authoritative reports persisted by bot to branch HEAD `bfcea4dfe635976e8ae1c231beeaa65f79673f45`; status verified at `479 / 1902`, notes 144.
-- Batch6 slash-quality run: `32840208534` in progress at checkpoint save.
+- Proper names batch2: `0c4c336ea97da2c71b46b9b0f998abfa5bcf54af`.
+- Batch7 content/scanner: `23401f1a9f1dd12b944bcec7633bf9f57bcd4075` / `bbdeb58d0c33137e7e90573044aaab79b3445b5b`.
+- Batch8 content/scanner: `ee32d54e10a5a189ff8cf2356940b6cf35abd240` / `c6c81259e65952662caa0de73e1490688efce224`.
+- Batch9 content/scanner: `f31518f308a5781964274f7b153e09e6bb4d30e1` / `111e16b52822a3ba1d3af78410177ede90ebc841`.
+- Batch9 authoritative audit: run `32845055089` SUCCESS.
+- Batch9 slash quality: run `32845023852` SUCCESS.
+- Evidence-writer bot advanced branch after audit; always re-read HEAD before the next write.
 
 ## Exact stop / next start
-- Exact stop: authoritative batch6 vocabulary/notes evidence is persisted and verified (`479 unique / 1902 occurrences`, missing_gloss=0). The newest unresolved list begins with the next untreated group including `Anna` (8 occurrences, SS1 Step 6 / Our Project 3 / Power-Up 6) and further 8-occurrence content words after the batch6 removals. `Anna` must NOT be glossed blindly: first verify its final-runtime person-name context and add a passage-local proper-name allowance if warranted.
-- Next start: first read branch/main, newest checkpoint, newest `VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt` / unresolved JSON, and completion of slash run `32840208534`. If slash run fails, repair regression before proceeding; if it passes, preserve the evidence.
-- Then verify `Anna` in final runtime and treat as proper name only with explicit local evidence. Continue the updated highest-frequency unresolved group (including any remaining 8-occurrence words such as communication and subsequent entries) against native v7 actual, preferring safe known-word rewrites only when natural; otherwise use bounded notes with canonical Japanese meaning where available.
-- Continue without small-batch stopping until vocabulary chronology reaches `future_vocab_leak=0` / `unique_unresolved=0` / `missing_gloss=0`.
-- Then populate evidence-backed exact-subunit grammar introduction boundaries for all 20 detected feature families and require `future_grammar_leak=0` across all 168 passages and A/B English fields.
+- Exact stop: the entire 8-occurrence group and the visible 7-occurrence group through `track` have been processed and batch9 is authoritative PASS for the bounded vocabulary/notes scan. Current unresolved begins at the remaining 7-occurrence tail (including `without` if still present after newest JSON) and then the 6-occurrence group (`attention`, `blocked`, `cake`, `cherry`, `classmates`, `clear`, `coach`, `courage`, `cross`, `crossing`, etc.).
+- Next start: re-read branch/main/checkpoint/status/unresolved JSON first, then continue from the newest highest-frequency unresolved token. For every item, use native v7 exact row/base/variant/chronology when present; do not global-allow future words. Prefer a natural known-vocabulary rewrite only when all passage/translation/slash/A+B fields can be synchronized safely; otherwise use a bounded passage-local note with nonblank Japanese gloss.
+- Continue until `unique_unresolved=0`, `future_vocab_leak=0`, `missing_gloss=0`; then populate evidence-backed exact-subunit grammar introduction boundaries for all 20 feature families and require `future_grammar_leak=0` across all 168 passages and A/B English fields.
 - Finally rerun slash reference 168/168, A/B evidence consistency, coverage/DOM, Chromium/Firefox/WebKit-iPhone, A4 student/teacher print. Only every-gate PASS permits main update and live Pages verification; only live Pages PASS permits completion/automation stop.
