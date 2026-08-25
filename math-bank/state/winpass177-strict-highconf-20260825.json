@@ -1,0 +1,52 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-08-25T19:50:00+09:00",
+  "stage": "WINPASS_717_STRICT_MATERIALIZATION",
+  "main_touched": false,
+  "schedule_changed": false,
+  "source": {
+    "provider": "Google Drive durable source mirror",
+    "drive_file_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
+    "bytes": 8296042,
+    "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+    "zip_crc_pass": true,
+    "docx_members": 81
+  },
+  "batch": {
+    "scope": "high-confidence text/non-media Winpass majors only; graphical/special-layout records deferred",
+    "records": 177,
+    "unique_raw_ids": 177,
+    "documents_touched": 30,
+    "drive_file_id": "1NGqHrb_soAGnRSu0je0fxJ6zD73Dr2PV",
+    "drive_file_name": "mathbank_winpass_strict_highconf_177_20260825.jsonl",
+    "bytes": 305301,
+    "sha256": "69c1c62f2e5c29e21d7fa3ec744271c8409d810497416e940c016c9478a44589",
+    "post_save_readback_verified": true,
+    "readback_records": 177,
+    "readback_unique_ids": 177,
+    "validation_errors": 0,
+    "criteria": [
+      "raw Winpass scoring slots independently reconstruct to 717 from source score annotations",
+      "semantic major stem found in source",
+      "question subslot count equals score slot count for accepted major",
+      "answer-only OOXML diff count equals score slot count for accepted major",
+      "question-copy false positives rejected",
+      "embedded-media question blocks deferred from this batch",
+      "OMML fractions/superscripts/subscripts/radicals/equation arrays serialized structurally",
+      "question and answer paragraph offsets recorded",
+      "source-document SHA recorded",
+      "content-bound strict fingerprint v2 recorded"
+    ]
+  },
+  "strict_progress_after_batch": {
+    "Standard": 317,
+    "実力錬成": 237,
+    "Winpass": 177,
+    "total": 731,
+    "pending_raw1271": 540,
+    "pending_Winpass": 540
+  },
+  "important": "Do not regress Winpass strict progress below 177 unless a later validator proves a specific stored record invalid; never replace this durable batch with a local-only count.",
+  "exact_next": "Continue the remaining Winpass 540 records. First resolve non-media special layouts where answer grouping/question splitting did not match slot counts, then bind proof/multi-paragraph answers, then figure/graph/construction records with explicit embedded-media/OOXML identities. Persist each accepted batch to durable storage, read back and validate before incrementing strict progress. After 717/717 strict, evidence-review 717 to canonical 570 without count forcing, then global1124, variants, app/browser/A4/publication.",
+  "main_untouched": true
+}
