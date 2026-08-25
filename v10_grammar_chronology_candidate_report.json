@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T18:07:48.699Z",
+  "generatedAt": "2026-08-25T18:11:20.438Z",
   "passages": 168,
   "classification": "CANDIDATES_NOT_PASS_FAIL",
   "warning": "Refined structure detector v3.1 after authoritative final runtime load. Modal and infinitive families remain split; predicative -ing adjectives such as interesting/amazing are excluded from progressive detection.",
@@ -8735,13 +8735,34 @@
   ],
   "chronologyGate": {
     "detectedOccurrences": 1268,
-    "resolvedOccurrences": 948,
-    "priorGradeCarryForwardOccurrences": 605,
-    "unresolvedOccurrences": 320,
-    "futureGrammarLeak": 0,
+    "resolvedOccurrences": 1052,
+    "priorGradeCarryForwardOccurrences": 647,
+    "unresolvedOccurrences": 214,
+    "futureGrammarLeak": 2,
     "sectionChronologyComplete": false,
     "finalPass": false,
-    "future": [],
+    "future": [
+      {
+        "textbook": "サンシャイン",
+        "grade": "2",
+        "section": "PROGRAM 3-3",
+        "feature": "SV_OO",
+        "boundary": "PROGRAM 5-3",
+        "occurrences": 2,
+        "samples": [
+          {
+            "where": "sentence:4",
+            "text": "“Can you show me this bowl?”",
+            "match": "show me this"
+          },
+          {
+            "where": "slash:4",
+            "text": "“Can you show me this bowl?”",
+            "match": "show me this"
+          }
+        ]
+      }
+    ],
     "unresolved": [
       {
         "textbook": "サンシャイン",
@@ -9145,72 +9166,6 @@
       {
         "textbook": "サンシャイン",
         "grade": "2",
-        "section": "PROGRAM 3-3",
-        "feature": "SV_OO",
-        "occurrences": 2,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:4",
-            "text": "“Can you show me this bowl?”",
-            "match": "show me this"
-          },
-          {
-            "where": "slash:4",
-            "text": "“Can you show me this bowl?”",
-            "match": "show me this"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "2",
-        "section": "PROGRAM 4-1",
-        "feature": "ADJECTIVE_TO_INFINITIVE",
-        "occurrences": 1,
-        "evidenceStatus": "PROGRAM_OR_UNIT_ONLY",
-        "coarseBoundary": "PROGRAM 3",
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:9",
-            "text": "I am glad to see it.",
-            "match": "glad to see"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "2",
-        "section": "PROGRAM 4-2",
-        "feature": "MODAL_MUST",
-        "occurrences": 11,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:3",
-            "text": "First of all, we must protect the forest.",
-            "match": "must protect"
-          },
-          {
-            "where": "sentence:4",
-            "text": "We must not leave garbage.",
-            "match": "must not leave"
-          },
-          {
-            "where": "sentence:5",
-            "text": "We must keep the forest clean.",
-            "match": "must keep"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "2",
         "section": "PROGRAM 4-2",
         "feature": "MODAL_SHOULD",
         "occurrences": 6,
@@ -9232,136 +9187,6 @@
             "where": "slash:7",
             "text": "If we have trouble, / we should talk / to our guide.",
             "match": "should talk"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "2",
-        "section": "PROGRAM 4-2",
-        "feature": "ADJECTIVE_TO_INFINITIVE",
-        "occurrences": 2,
-        "evidenceStatus": "PROGRAM_OR_UNIT_ONLY",
-        "coarseBoundary": "PROGRAM 3",
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:11",
-            "text": "I am glad to learn the rule.",
-            "match": "glad to learn"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "I am glad to learn the rule.",
-            "match": "glad to learn"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "2",
-        "section": "PROGRAM 4-3",
-        "feature": "MODAL_MUST",
-        "occurrences": 7,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:3",
-            "text": "First of all, we must be on time.",
-            "match": "must be"
-          },
-          {
-            "where": "sentence:4",
-            "text": "We must come to school by seven.",
-            "match": "must come"
-          },
-          {
-            "where": "sentence:7",
-            "text": "We must listen to the engineer.",
-            "match": "must listen"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "2",
-        "section": "PROGRAM 5-1",
-        "feature": "WH_TO_INFINITIVE",
-        "occurrences": 7,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:2",
-            "text": "The director tells me what to do.",
-            "match": "what to do"
-          },
-          {
-            "where": "sentence:3",
-            "text": "First, I learn where to put a book.",
-            "match": "where to put"
-          },
-          {
-            "where": "sentence:8",
-            "text": "Now I know what to do.",
-            "match": "what to do"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "2",
-        "section": "PROGRAM 5-2",
-        "feature": "MODAL_MUST",
-        "occurrences": 5,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:4",
-            "text": "We must take action quickly.",
-            "match": "must take"
-          },
-          {
-            "where": "sentence:5",
-            "text": "In particular, we must not use the elevator.",
-            "match": "must not use"
-          },
-          {
-            "where": "slash:4",
-            "text": "We must take action quickly.",
-            "match": "must take"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "2",
-        "section": "PROGRAM 5-2",
-        "feature": "WH_TO_INFINITIVE",
-        "occurrences": 3,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:7",
-            "text": "The architect tells us what to do.",
-            "match": "what to do"
-          },
-          {
-            "where": "A3.answer",
-            "text": "what to do",
-            "match": "what to do"
-          },
-          {
-            "where": "A3.evidence",
-            "text": "The architect tells us what to do.",
-            "match": "what to do"
           }
         ]
       },
@@ -9390,33 +9215,6 @@
       {
         "textbook": "サンシャイン",
         "grade": "2",
-        "section": "PROGRAM 5-3",
-        "feature": "SV_OO",
-        "occurrences": 7,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:1",
-            "text": "Yesterday, my friend lent me a book.",
-            "match": "lent me a"
-          },
-          {
-            "where": "sentence:3",
-            "text": "My friend gave me good advice for my project, too.",
-            "match": "gave me good"
-          },
-          {
-            "where": "slash:1",
-            "text": "Yesterday, / my friend lent me a book.",
-            "match": "lent me a"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "2",
         "section": "PROGRAM 6-1",
         "feature": "COMPARATIVE",
         "occurrences": 2,
@@ -9433,33 +9231,6 @@
             "where": "A3.evidence",
             "text": "For this idea, the second leaf is better than the first leaf.",
             "match": "better than"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "2",
-        "section": "PROGRAM 6-1",
-        "feature": "SV_OO",
-        "occurrences": 6,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:10",
-            "text": "This leaf can give us an idea for a better bag.",
-            "match": "give us an"
-          },
-          {
-            "where": "sentence:12",
-            "text": "A leaf can teach us a lot.",
-            "match": "teach us a"
-          },
-          {
-            "where": "slash:10",
-            "text": "This leaf can give us an idea / for a better bag.",
-            "match": "give us an"
           }
         ]
       },
@@ -9509,87 +9280,6 @@
             "where": "B4.evidence",
             "text": "I think it is my best idea.",
             "match": "best"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "2",
-        "section": "PROGRAM 8-1",
-        "feature": "PASSIVE",
-        "occurrences": 3,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:3",
-            "text": "A short message is written on the first page.",
-            "match": "is written"
-          },
-          {
-            "where": "slash:3",
-            "text": "A short message is written / on the first page.",
-            "match": "is written"
-          },
-          {
-            "where": "A3.evidence",
-            "text": "A short message is written on the first page.",
-            "match": "is written"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "2",
-        "section": "PROGRAM 8-2",
-        "feature": "PASSIVE",
-        "occurrences": 7,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:2",
-            "text": "The monument is known to many people.",
-            "match": "is known"
-          },
-          {
-            "where": "sentence:3",
-            "text": "It was built for peace.",
-            "match": "was built"
-          },
-          {
-            "where": "slash:2",
-            "text": "The monument is known / to many people.",
-            "match": "is known"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "2",
-        "section": "PROGRAM 8-3",
-        "feature": "PASSIVE",
-        "occurrences": 3,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:2",
-            "text": "A box is filled with old tin.",
-            "match": "is filled"
-          },
-          {
-            "where": "slash:2",
-            "text": "A box is filled / with old tin.",
-            "match": "is filled"
-          },
-          {
-            "where": "A1.evidence",
-            "text": "A box is filled with old tin.",
-            "match": "is filled"
           }
         ]
       },
@@ -9967,33 +9657,6 @@
         "textbook": "サンシャイン",
         "grade": "3",
         "section": "PROGRAM 2-2",
-        "feature": "PASSIVE",
-        "occurrences": 4,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:5",
-            "text": "My plan is based on a regular sleep time.",
-            "match": "is based"
-          },
-          {
-            "where": "slash:5",
-            "text": "My plan is based / on a regular sleep time.",
-            "match": "is based"
-          },
-          {
-            "where": "A3.evidence",
-            "text": "My plan is based on a regular sleep time.",
-            "match": "is based"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "3",
-        "section": "PROGRAM 2-2",
         "feature": "VERB_TO_INFINITIVE",
         "occurrences": 1,
         "evidenceStatus": "PRIOR_GRADE_COARSE_ONLY",
@@ -10004,33 +9667,6 @@
             "where": "sentence:7",
             "text": "Before a test, I still try to go to bed at the same time.",
             "match": "try to go"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "3",
-        "section": "PROGRAM 3-1",
-        "feature": "MODAL_MUST",
-        "occurrences": 4,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:2",
-            "text": "My class must make a poster for the event.",
-            "match": "must make"
-          },
-          {
-            "where": "slash:2",
-            "text": "My class must make a poster / for the event.",
-            "match": "must make"
-          },
-          {
-            "where": "A1.evidence",
-            "text": "My class must make a poster for the event.",
-            "match": "must make"
           }
         ]
       },
@@ -10125,126 +9761,6 @@
       {
         "textbook": "サンシャイン",
         "grade": "3",
-        "section": "PROGRAM 3-2",
-        "feature": "PASSIVE",
-        "occurrences": 4,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:11",
-            "text": "A huge crowd is expected at the race.",
-            "match": "is expected"
-          },
-          {
-            "where": "sentence:12",
-            "text": "Many people are attracted to the event because local runners take part.",
-            "match": "are attracted"
-          },
-          {
-            "where": "slash:11",
-            "text": "A huge crowd is expected / at the race.",
-            "match": "is expected"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "3",
-        "section": "PROGRAM 3-3",
-        "feature": "WH_TO_INFINITIVE",
-        "occurrences": 1,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:11",
-            "text": "Even a failure can show him what to improve next.",
-            "match": "what to improve"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "3",
-        "section": "PROGRAM 3-3",
-        "feature": "SV_OO",
-        "occurrences": 2,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:11",
-            "text": "Even a failure can show him what to improve next.",
-            "match": "show him what"
-          },
-          {
-            "where": "slash:11",
-            "text": "Even a failure can show him what / to improve next.",
-            "match": "show him what"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "3",
-        "section": "PROGRAM 4-2",
-        "feature": "WH_TO_INFINITIVE",
-        "occurrences": 3,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:2",
-            "text": "The first part shows where to enter the school.",
-            "match": "where to enter"
-          },
-          {
-            "where": "A2.answer",
-            "text": "where to enter the school",
-            "match": "where to enter"
-          },
-          {
-            "where": "A2.evidence",
-            "text": "The first part shows where to enter the school.",
-            "match": "where to enter"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "3",
-        "section": "PROGRAM 4-2",
-        "feature": "PASSIVE",
-        "occurrences": 6,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:4",
-            "text": "According to the guide, important information is shown with both words and signs.",
-            "match": "is shown"
-          },
-          {
-            "where": "sentence:9",
-            "text": "The guide is used widely by visitors to our school.",
-            "match": "is used"
-          },
-          {
-            "where": "slash:4",
-            "text": "According / to the guide, / important information is shown / with both words / and signs.",
-            "match": "is shown"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "3",
         "section": "PROGRAM 4-2",
         "feature": "MODAL_SHOULD",
         "occurrences": 2,
@@ -10261,33 +9777,6 @@
             "where": "slash:10",
             "text": "I understand why an official guide should give clear information / to every user.",
             "match": "should give"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "3",
-        "section": "PROGRAM 5-1",
-        "feature": "PASSIVE",
-        "occurrences": 4,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:9",
-            "text": "The information is limited, so we compare it with the speech.",
-            "match": "is limited"
-          },
-          {
-            "where": "slash:9",
-            "text": "The information is limited, / so we compare it / with the speech.",
-            "match": "is limited"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "The information is limited, so we compare it with the speech.",
-            "match": "is limited"
           }
         ]
       },
@@ -10317,33 +9806,6 @@
         "textbook": "サンシャイン",
         "grade": "3",
         "section": "PROGRAM 5-3",
-        "feature": "PASSIVE",
-        "occurrences": 6,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:4",
-            "text": "Some farmers can be forced to sell cacao for an unfair price.",
-            "match": "be forced"
-          },
-          {
-            "where": "sentence:9",
-            "text": "I realize that the price of chocolate is connected to life on a cacao farm.",
-            "match": "is connected"
-          },
-          {
-            "where": "slash:4",
-            "text": "Some farmers can be forced / to sell cacao / for an unfair price.",
-            "match": "be forced"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "3",
-        "section": "PROGRAM 5-3",
         "feature": "RELATIVE_PRONOUN",
         "occurrences": 1,
         "evidenceStatus": "PROGRAM_OR_UNIT_ONLY",
@@ -10354,50 +9816,6 @@
             "where": "sentence:11",
             "text": "I want my choice to support the people who produce cacao.",
             "match": "people who produce"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "3",
-        "section": "PROGRAM 6-1",
-        "feature": "WH_TO_INFINITIVE",
-        "occurrences": 1,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:11",
-            "text": "We talk about how to leave less plastic behind.",
-            "match": "how to leave"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "3",
-        "section": "PROGRAM 6-2",
-        "feature": "PASSIVE",
-        "occurrences": 3,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:2",
-            "text": "He was shocked by the plastic in the water.",
-            "match": "was shocked"
-          },
-          {
-            "where": "slash:2",
-            "text": "He was shocked / by the plastic / in the water.",
-            "match": "was shocked"
-          },
-          {
-            "where": "A2.evidence",
-            "text": "He was shocked by the plastic in the water.",
-            "match": "was shocked"
           }
         ]
       },
@@ -10452,33 +9870,6 @@
             "where": "A5.evidence",
             "text": "We make a small plan to reduce single-use waste at school.",
             "match": "plan to reduce"
-          }
-        ]
-      },
-      {
-        "textbook": "サンシャイン",
-        "grade": "3",
-        "section": "PROGRAM 7-1",
-        "feature": "MODAL_MUST",
-        "occurrences": 4,
-        "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-        "coarseBoundary": null,
-        "introducedGrade": null,
-        "samples": [
-          {
-            "where": "sentence:1",
-            "text": "A patient has a disease and must stay in his hospital room.",
-            "match": "must stay"
-          },
-          {
-            "where": "slash:1",
-            "text": "A patient has a disease / and must stay / in his hospital room.",
-            "match": "must stay"
-          },
-          {
-            "where": "A1.evidence",
-            "text": "A patient has a disease and must stay in his hospital room.",
-            "match": "must stay"
           }
         ]
       },
