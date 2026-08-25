@@ -1,6 +1,11 @@
 const fs = require('fs');
 const { JSDOM, VirtualConsole } = require('jsdom');
 const { loadCanonicalV7 } = require('./v10_v7_lexicon_loader');
+const ELEMENTARY_SOURCE = JSON.parse(fs.readFileSync('v10_elementary_vocab_allowlist.json', 'utf8'));
+const ELEMENTARY_WORDS = new Set((ELEMENTARY_SOURCE.words || []).map(x => String(x || '').replace(/[’]/g, "'").toLowerCase()));
+if (ELEMENTARY_WORDS.size !== 104 || Number(ELEMENTARY_SOURCE.source && ELEMENTARY_SOURCE.source.records) !== 104) {
+  throw new Error(`elementary vocabulary source must contain exactly 104 bounded records; words=${ELEMENTARY_WORDS.size}`);
+}
 
 function tokenize(text) {
   return (String(text || '').replace(/[’]/g, "'").match(/[A-Za-z]+(?:'[A-Za-z]+)*/g) || [])
@@ -135,6 +140,9 @@ function introAllowed(intro, cut) {
 function classifyToken(v7, w, raw, cut, reviewedEvidence) {
   if (CONTRACTIONS_TO_GRAMMAR.has(w)) return { kind:'CONTRACTION_TO_GRAMMAR', evidence:'closed contraction set; grammar chronology required' };
   if (EXPLICIT_FUNCTION_TO_GRAMMAR.has(w)) return { kind:'EXPLICIT_FUNCTION_TO_GRAMMAR', evidence:'closed structural function set; grammar chronology required' };
+  // Fixed long-reading policy: this bounded elementary lexical source is known before junior-high.
+  // Grammar remains a separate gate, so structural function/contraction forms above are still handed to grammar.
+  if (ELEMENTARY_WORDS.has(w)) return { kind:'ELEMENTARY_LEXICAL_ALLOWED', evidence:{source:'elementary',fileId:ELEMENTARY_SOURCE.source.fileId,records:ELEMENTARY_SOURCE.source.records} };
   const direct = introFor(v7, cut.code, w);
   if (direct) return introAllowed(direct, cut) ? { kind:'V7_CHRONOLOGY_ALLOWED', intro:direct } : { kind:'FUTURE_V7_LEAK', intro:direct };
   const bases = uniq([IRREGULAR_BASE.get(w), ...morphologyBases(w)].filter(Boolean));
@@ -184,7 +192,7 @@ function datasetCount(d) {
     const DATASETS = w.eval('DATASETS'), META = w.eval('META');
     let total = 0, notesPresent = 0, missingGloss = 0;
     const passages = [], global = new Map(), mappingErrors = [];
-    const counts = {V7_CHRONOLOGY_ALLOWED:0,REVIEWED_EXPLICIT_ALLOWED:0,MORPHOLOGY_TO_GRAMMAR:0,CONTRACTION_TO_GRAMMAR:0,EXPLICIT_FUNCTION_TO_GRAMMAR:0,FUTURE_V7_LEAK:0,UNREGISTERED_V7:0,UNREGISTERED_PROPER:0};
+    const counts = {V7_CHRONOLOGY_ALLOWED:0,ELEMENTARY_LEXICAL_ALLOWED:0,REVIEWED_EXPLICIT_ALLOWED:0,MORPHOLOGY_TO_GRAMMAR:0,CONTRACTION_TO_GRAMMAR:0,EXPLICIT_FUNCTION_TO_GRAMMAR:0,FUTURE_V7_LEAK:0,UNREGISTERED_V7:0,UNREGISTERED_PROPER:0};
 
     for (const textbook of ['サンシャイン', 'ニューホライズン']) {
       const reviewedEvidence = new Map();
@@ -208,7 +216,7 @@ function datasetCount(d) {
             for (const raw of rawTokens) {
               const tok = raw.toLowerCase(), c = classifyToken(v7, tok, raw, cut, reviewedEvidence);
               counts[c.kind]++;
-              if (c.kind === 'V7_CHRONOLOGY_ALLOWED' || c.kind === 'REVIEWED_EXPLICIT_ALLOWED') continue;
+              if (c.kind === 'V7_CHRONOLOGY_ALLOWED' || c.kind === 'ELEMENTARY_LEXICAL_ALLOWED' || c.kind === 'REVIEWED_EXPLICIT_ALLOWED') continue;
               const key = `${c.kind}|${tok}|${c.base || ''}`;
               if (!found.has(key)) found.set(key, {token:tok,kind:c.kind,base:c.base||null,intro:c.intro||null,evidence:c.evidence||null,locations:[]});
               if (found.get(key).locations.length < 10) found.get(key).locations.push(src.where);
@@ -249,11 +257,12 @@ function datasetCount(d) {
     const summary = {
       generatedAt:new Date().toISOString(), passages:total,
       canonicalSource:{spreadsheetId:v7.source[0],sheet:v7.source[1],records:v7.source[2],modifiedTime:v7.source[3]},
+      elementarySource:{fileId:ELEMENTARY_SOURCE.source.fileId,filename:ELEMENTARY_SOURCE.source.filename,records:ELEMENTARY_SOURCE.source.records,recordIdStart:ELEMENTARY_SOURCE.source.recordIdStart,recordIdEnd:ELEMENTARY_SOURCE.source.recordIdEnd},
       counts, notesPresent, missingGloss, mappingErrors, runtimeBrowserErrors:browserErrors,
       uniqueUnresolved:unresolved.length,
       futureVocabLeakOccurrences:finalVocabLeak,
       chronologyPass:finalVocabLeak === 0 && missingGloss === 0 && mappingErrors.length === 0,
-      rule:'Primary lexical gate: canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology; short forms such as used/using are covered. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun.'
+      rule:'Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; all remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology; short forms such as used/using are covered. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun.'
     };
     fs.writeFileSync('v10_vocab_notes_candidate_report.json', JSON.stringify({summary, unresolved, passages}, null, 2));
     console.log(`V7 VOCAB CHRONOLOGY AUDIT passages=${total} sourceRecords=${v7.source[2]}`);
