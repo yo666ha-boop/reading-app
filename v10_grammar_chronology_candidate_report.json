@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T15:08:42.873Z",
+  "generatedAt": "2026-08-25T15:09:09.180Z",
   "passages": 168,
   "classification": "CANDIDATES_NOT_PASS_FAIL",
   "warning": "Detected structures are candidates only after authoritative final runtime load. A feature becomes allowed only after an evidence-backed textbook/section chronology entry exists.",
@@ -369,6 +369,12 @@
         "ニューホライズン|3|Unit 6-3"
       ]
     },
+    "WOULD_LIKE": {
+      "sectionCount": 1,
+      "sections": [
+        "サンシャイン|1|PROGRAM 5-3"
+      ]
+    },
     "SV_OO": {
       "sectionCount": 14,
       "sections": [
@@ -570,6 +576,12 @@
         "ニューホライズン|2|Unit 5-1",
         "ニューホライズン|3|Unit 4-3",
         "ニューホライズン|3|Unit 5-4"
+      ]
+    },
+    "WHETHER_CLAUSE": {
+      "sectionCount": 1,
+      "sections": [
+        "ニューホライズン|2|Unit 7-1"
       ]
     },
     "PRESENT_PERFECT": {
@@ -1478,6 +1490,28 @@
       "section": "PROGRAM 5-3",
       "id": "V10-SS-G1-P5-3-001",
       "features": {
+        "WOULD_LIKE": [
+          {
+            "where": "sentence:10",
+            "text": "I would like to support the children.",
+            "match": "I would like to"
+          },
+          {
+            "where": "sentence:11",
+            "text": "I'd like to talk about the event.",
+            "match": "I'd like to"
+          },
+          {
+            "where": "A5.evidence",
+            "text": "I would like to support the children.",
+            "match": "I would like to"
+          },
+          {
+            "where": "B4.evidence",
+            "text": "I'd like to talk about the event.",
+            "match": "I'd like to"
+          }
+        ],
         "TO_INFINITIVE": [
           {
             "where": "sentence:10",
@@ -9511,6 +9545,23 @@
             "where": "B3.evidence",
             "text": "UNESCO uses a selection process to decide whether a site qualifies.",
             "match": "to decide"
+          }
+        ],
+        "WHETHER_CLAUSE": [
+          {
+            "where": "sentence:7",
+            "text": "UNESCO uses a selection process to decide whether a site qualifies.",
+            "match": "whether"
+          },
+          {
+            "where": "slash:7",
+            "text": "UNESCO uses a selection process / to decide whether a site qualifies.",
+            "match": "whether"
+          },
+          {
+            "where": "B3.evidence",
+            "text": "UNESCO uses a selection process to decide whether a site qualifies.",
+            "match": "whether"
           }
         ],
         "PASSIVE": [
