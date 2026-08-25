@@ -1,0 +1,14 @@
+{
+  "project":"mikami-math-problem-bank",
+  "recorded_at_jst":"2026-08-25T20:16:00+09:00",
+  "stage":"WINPASS_717_STRICT_MATERIALIZATION",
+  "source":{"drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E","bytes":8296042,"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf"},
+  "baseline_strict":798,
+  "delta":{"records":78,"unique_ids":78,"documents":8,"drive_file_id":"1L8b85H9VY1BtQGih70s7IrlCY0HQKHSb","report_drive_file_id":"1OuINVJKu0B2xioAfLcZxU0imhHNFydX4","file_name":"mathbank_winpass_strict_delta78_validated_20260825.jsonl","bytes":148873,"sha256":"ff49788812169f0a30c3863cedf615b8c11052db0396db193663c1b9e3f4f65f","post_save_readback":true,"validator_errors":0,"independent_math_checks":"78/78 PASS","figure_context_records":10,"table_context_records":2},
+  "documents":["25winpasst1suhy000101.docx","25winpasst1suhy000105.docx","25winpasst1suhy000106.docx","25winpasst1suhy000207.docx","25winpasst1suhy000208.docx","25winpasst1suhy000624.docx","25winpasst2suhy000204.docx","25winpasst3suhy000312.docx"],
+  "strict_after":{"Standard":317,"実力錬成":237,"Winpass":322,"total":876,"pending":395},
+  "quality_notes":["All78 source/question/answer provenance and score evidence validated.","All78 answers independently recalculated/verified.","10 figure-context records bind actual source image2.emf/media SHA and were visually inspected after EMF rendering.","2 table-context records bind source table XML SHA and exact table content.","No unresolved figure/table dependency remains in this batch."],
+  "main_touched":false,
+  "schedule_changed":false,
+  "next":"NONMEDIA_SPECIAL_OR_PROOF is exhausted. Continue MIXED_DOC_PARTIAL_STRICT by computing per-document expected raw slots minus durable strict IDs, then promote only revalidated missing slots; afterward MEDIA_HEAVY."
+}
