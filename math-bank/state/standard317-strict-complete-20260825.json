@@ -1,0 +1,53 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-08-25T11:18:00+09:00",
+  "source": "Standard",
+  "status": "STRICT_COMPLETE_317_317",
+  "source_zip_sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6",
+  "source_zip_bytes": 9689250,
+  "records": 317,
+  "documents": 32,
+  "unique_ids": 317,
+  "per_document_counts_match": true,
+  "questions_with_provenance": 317,
+  "text_answers_with_provenance": 291,
+  "graphical_answers_with_ooxml_or_image_evidence": 26,
+  "graphical_answers_total": 26,
+  "figure_refs": 154,
+  "missing_figure_refs": 0,
+  "errors": 0,
+  "warnings": 0,
+  "omml_serializer": "structure-aware: delimiters, fractions, superscripts/subscripts, roots and math text preserved rather than m:t concatenation",
+  "audited_source_answer_corrections": [
+    {
+      "raw_id": "Standard:25astandardt1suhy000208:M03:S01",
+      "source_answer": "20x+2",
+      "corrected_answer": "20x+26",
+      "evidence": "12x+14+8x+12=20x+26"
+    }
+  ],
+  "durable_data": {
+    "provider": "Google Drive",
+    "file_id": "1L6n6iGfFQdii0jTzM224fT0U5MAXZcYS",
+    "file_name": "mathbank_standard317_strict_validated_20260825.jsonl",
+    "bytes": 610417,
+    "sha256": "d80c0822f3e65518cabeac589034fc3d568931c21a90d8473d15952ac09daca9",
+    "post_save_readback_verified": true,
+    "readback_records": 317,
+    "readback_sha256_match": true
+  },
+  "validation_report": {
+    "provider": "Google Drive",
+    "file_id": "1ky8mirVzDEsbbpIZvv6lfjG17bT3CjQF",
+    "file_name": "mathbank_standard317_strict_validation_report_20260825.json",
+    "pass": true
+  },
+  "supersedes": [
+    "math-bank/recovered/current-session/standard-strict-proof-first3-20260825.jsonl",
+    "math-bank/state/manual-strict-progress-20260825-1049.json"
+  ],
+  "strict_progress_after": {"Standard":317,"実力錬成":0,"Winpass":0,"total":317,"pending":954},
+  "current_stage": "JITSUREN_237_STRICT_MATERIALIZATION",
+  "next": "Materialize 実力錬成237 from the verified source ZIP with the same structure-aware OMML, exact Q/A provenance, score evidence, graphical/figure identity, durable persistence, post-save readback and validation. Then Winpass717.",
+  "main_touched": false
+}
