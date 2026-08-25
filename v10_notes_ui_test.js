@@ -10,9 +10,6 @@ function datasetCount(w){try{const d=w.eval('DATASETS');let n=0;for(const g of O
     console.log('NOTES UI PHASE 1: create jsdom');
     dom=await JSDOM.fromFile('v10_stage2.html',{runScripts:'dangerously',resources:'usable',pretendToBeVisual:true,virtualConsole:vc});
     const w=dom.window;
-    // UI rendering is tested independently from vocabulary-correction chronology.
-    // The canonical vocabulary audit verifies correction readiness separately; coupling this
-    // renderer test to one specific allowedWords repair previously caused a false timeout.
     console.log('NOTES UI PHASE 2: wait for 168 datasets + gloss renderer');
     await waitFor(()=>datasetCount(w)===168&&w.V10_GLOSS_RENDERER_INSTALLED===true,45000,'168 datasets + gloss renderer');
     console.log(`NOTES UI PHASE 3: datasets=${datasetCount(w)}`);
@@ -25,19 +22,21 @@ function datasetCount(w){try{const d=w.eval('DATASETS');let n=0;for(const g of O
     change(w,d.getElementById('grade'),'1');
     change(w,d.getElementById('major'),'Get Ready');
     change(w,d.getElementById('section'),'Get Ready 4');
+    if(typeof w.render==='function')w.render();
     await waitFor(()=>d.querySelector('#passage .v10-gloss-box'),5000,'gloss box render');
     const box=d.querySelector('#passage .v10-gloss-box');
     assert(box.textContent.includes('注（未習語）'),'gloss title missing');
     assert(box.textContent.includes('test<word>：試験用の意味（テスト）'),'English/Japanese/reading gloss missing');
     assert(!box.innerHTML.includes('<word>'),'gloss HTML was not escaped');
+    // Get Ready 4 now legitimately has a passage-local basketball note. Test zero-note
+    // behavior by temporarily clearing this fixture and forcing the normal app render,
+    // rather than assuming the fixture is permanently note-free.
     m.notes=[];
-    change(w,d.getElementById('section'),'Get Ready 3');
-    change(w,d.getElementById('section'),'Get Ready 4');
-    await new Promise(r=>setTimeout(r,100));
+    if(typeof w.render==='function')w.render();
+    await waitFor(()=>!d.querySelector('#passage .v10-gloss-box'),5000,'zero-note gloss removal');
     assert(!d.querySelector('#passage .v10-gloss-box'),'zero-note passage must hide gloss box');
     m.notes=originalNotes;
-    // Runtime validator errors are reported by the canonical audit separately. This test only
-    // fails on errors attributable to the notes renderer itself after the fixture is selected.
+    if(typeof w.render==='function')w.render();
     console.log(`NOTES UI runtime_jsdom_errors_observed=${errs.length}`);
     console.log('NOTES UI PASS: 168 datasets ready; indispensable note renders English+Japanese meaning+optional reading; zero-note hides; HTML escaped.');
   } finally {
