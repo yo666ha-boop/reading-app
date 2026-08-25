@@ -22,10 +22,10 @@ const isLetterCommaExempt=en=>/^(?:Dear\b.+|Best wishes|Sincerely yours),$/.test
   if(!fs.existsSync('v10_reference_chronology_sync.js'))throw new Error('missing v10_reference_chronology_sync.js');
   vm.runInContext(fs.readFileSync('v10_reference_chronology_sync.js','utf8'),ctx,{filename:'v10_reference_chronology_sync.js'});
   // The PDF reference layer predates the v7 lexical chronology repair. Temporarily expose only
-  // wording that the static reference file proves was originally "great", then re-apply the
-  // v7-safe lexeme to sentences, reference rows and A/B evidence without altering boundaries.
-  const reference001=fs.readFileSync('v10_reference_slash_manual_001_168.js','utf8');
-  const prep=w.V10_REFERENCE_CHRONOLOGY_SYNC.prepareLegacyReferenceGreat(reference001);
+  // wording that the complete static reference set proves was originally "great", then re-apply
+  // the v7-safe lexeme to sentences, reference rows and A/B evidence without altering boundaries.
+  const referenceSource=refs.map(f=>fs.readFileSync(f,'utf8')).join('\n');
+  const prep=w.V10_REFERENCE_CHRONOLOGY_SYNC.prepareLegacyReferenceGreat(referenceSource);
   if(!prep||prep.changed<1)errors.push('legacy reference preparation did not find chronology-replaced great rows');
   for(const f of refs){if(!fs.existsSync(f))throw new Error('missing '+f);vm.runInContext(fs.readFileSync(f,'utf8'),ctx,{filename:f})}
   const sync=w.V10_REFERENCE_CHRONOLOGY_SYNC.apply();
