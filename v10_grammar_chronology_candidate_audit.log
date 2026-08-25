@@ -1,22 +1,18 @@
-GRAMMAR CHRONOLOGY GATE passages=168/168 features=24 occurrences=1344 resolved=288 carry=111 unresolved=1014 future=42 final=FAIL_CLOSED
-FUTURE ニューホライズン|2|Unit 0 TO_INFINITIVE before Unit 3-1 occurrences=2
-FUTURE ニューホライズン|2|Unit 1-1 TO_INFINITIVE before Unit 3-1 occurrences=1
+GRAMMAR CHRONOLOGY GATE passages=168/168 features=30 occurrences=1355 resolved=239 carry=96 unresolved=1090 future=26 final=FAIL_CLOSED
 FUTURE ニューホライズン|2|Unit 1-3 WHEN_WHILE_CLAUSE before Unit 2-1 occurrences=4
 FUTURE ニューホライズン|2|Unit 1-3 GERUND before Unit 4-3 occurrences=3
-FUTURE ニューホライズン|2|Unit 1-4 TO_INFINITIVE before Unit 3-1 occurrences=2
-FUTURE ニューホライズン|2|Unit 2-1 TO_INFINITIVE before Unit 3-1 occurrences=2
-FUTURE ニューホライズン|2|Unit 2-2 TO_INFINITIVE before Unit 3-1 occurrences=7
-FUTURE ニューホライズン|2|Unit 2-3 TO_INFINITIVE before Unit 3-1 occurrences=2
 FUTURE ニューホライズン|2|Unit 3-4 WH_TO_INFINITIVE before Unit 5-1 occurrences=1
 FUTURE ニューホライズン|3|Unit 3-1 RELATIVE_PRONOUN before Unit 5-2 occurrences=3
 FUTURE ニューホライズン|3|Unit 3-2 LET_O_V before Unit 3-3 occurrences=4
 FUTURE ニューホライズン|3|Unit 4-3 RELATIVE_PRONOUN before Unit 5-2 occurrences=6
 FUTURE ニューホライズン|3|Unit 4-4 RELATIVE_PRONOUN before Unit 5-2 occurrences=5
-GRAMMAR CANDIDATE AUDIT v2 passages=168 features=24 runtime=authoritative-complete
-MODAL_CAN_COULD_MAY_MUST_SHOULD sections=85
-TO_INFINITIVE sections=72
+GRAMMAR CANDIDATE AUDIT v3 passages=168 features=30 runtime=authoritative-complete
+MODAL_CAN sections=77
+ADJECTIVE_TO_INFINITIVE sections=17
+WANT_TO sections=61
 GERUND sections=6
 WOULD_LIKE sections=1
+VERB_TO_INFINITIVE sections=10
 PRESENT_PROGRESSIVE sections=15
 SV_OO sections=11
 PAST_PROGRESSIVE sections=5
@@ -24,6 +20,8 @@ SUPERLATIVE sections=14
 MAKE_O_V sections=2
 WHEN_WHILE_CLAUSE sections=14
 WILL_FUTURE sections=11
+MODAL_MUST sections=7
+MODAL_SHOULD sections=7
 IF_CLAUSE sections=4
 WH_TO_INFINITIVE sections=9
 COMPARATIVE sections=3
@@ -31,10 +29,12 @@ PASSIVE sections=21
 BE_GOING_TO sections=1
 HAVE_TO sections=4
 BECAUSE_CLAUSE sections=7
+MODAL_COULD sections=6
+MODAL_MAY_MIGHT sections=6
 PRESENT_PERFECT sections=12
 ASK_TELL_WANT_O_TO sections=3
 RELATIVE_PRONOUN sections=5
 LET_O_V sections=1
 TOO_TO sections=1
 ENOUGH_TO sections=1
-GRAMMAR GATE resolved=288 unresolved=1014 future=42 final=FAIL_CLOSED
+GRAMMAR GATE resolved=239 unresolved=1090 future=26 final=FAIL_CLOSED

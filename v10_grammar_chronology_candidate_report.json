@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-25T17:02:48.519Z",
+  "generatedAt": "2026-08-25T17:06:19.345Z",
   "passages": 168,
   "classification": "CANDIDATES_NOT_PASS_FAIL",
-  "warning": "Refined structure detector after authoritative final runtime load. Candidate structures still require evidence-backed exact textbook/section chronology before PASS.",
-  "detectorVersion": 2,
+  "warning": "Refined structure detector v3 after authoritative final runtime load. Modal and infinitive families are split so chronology cannot be granted by an unrelated earlier use.",
+  "detectorVersion": 3,
   "featureSummary": {
-    "MODAL_CAN_COULD_MAY_MUST_SHOULD": {
-      "sectionCount": 85,
+    "MODAL_CAN": {
+      "sectionCount": 77,
       "sections": [
         "サンシャイン|1|Get Ready 2",
         "サンシャイン|1|Get Ready 3",
@@ -32,7 +32,6 @@
         "サンシャイン|2|PROGRAM 2-3",
         "サンシャイン|2|PROGRAM 3-3",
         "サンシャイン|2|PROGRAM 4-1",
-        "サンシャイン|2|PROGRAM 4-2",
         "サンシャイン|2|PROGRAM 4-3",
         "サンシャイン|2|PROGRAM 5-2",
         "サンシャイン|2|PROGRAM 6-1",
@@ -50,8 +49,6 @@
         "ニューホライズン|2|Unit 2-4",
         "ニューホライズン|2|Unit 3-2",
         "ニューホライズン|2|Unit 4-2",
-        "ニューホライズン|2|Unit 4-3",
-        "ニューホライズン|2|Unit 4-4",
         "ニューホライズン|2|Unit 5-1",
         "ニューホライズン|2|Unit 5-2",
         "ニューホライズン|2|Unit 5-3",
@@ -63,7 +60,6 @@
         "サンシャイン|3|PROGRAM 1-3",
         "サンシャイン|3|PROGRAM 2-1",
         "サンシャイン|3|PROGRAM 2-3",
-        "サンシャイン|3|PROGRAM 3-1",
         "サンシャイン|3|PROGRAM 3-3",
         "サンシャイン|3|PROGRAM 4-1",
         "サンシャイン|3|PROGRAM 4-2",
@@ -71,7 +67,6 @@
         "サンシャイン|3|PROGRAM 5-2",
         "サンシャイン|3|PROGRAM 5-3",
         "サンシャイン|3|PROGRAM 6-1",
-        "サンシャイン|3|PROGRAM 6-2",
         "サンシャイン|3|PROGRAM 6-3",
         "サンシャイン|3|PROGRAM 7-1",
         "サンシャイン|3|PROGRAM 7-2",
@@ -86,24 +81,41 @@
         "ニューホライズン|3|Unit 3-2",
         "ニューホライズン|3|Unit 3-3",
         "ニューホライズン|3|Unit 3-4",
-        "ニューホライズン|3|Unit 4-2",
         "ニューホライズン|3|Unit 4-3",
-        "ニューホライズン|3|Unit 4-4",
-        "ニューホライズン|3|Unit 5-1",
         "ニューホライズン|3|Unit 5-2",
         "ニューホライズン|3|Unit 5-3",
         "ニューホライズン|3|Unit 6-1"
       ]
     },
-    "TO_INFINITIVE": {
-      "sectionCount": 72,
+    "ADJECTIVE_TO_INFINITIVE": {
+      "sectionCount": 17,
       "sections": [
         "サンシャイン|1|PROGRAM 1-3",
-        "サンシャイン|1|PROGRAM 5-3",
+        "ニューホライズン|1|Unit 0",
+        "ニューホライズン|1|Unit 1-1",
+        "ニューホライズン|1|Unit 10-2",
+        "サンシャイン|2|PROGRAM 4-1",
+        "サンシャイン|2|PROGRAM 4-2",
+        "ニューホライズン|2|Unit 2-2",
+        "ニューホライズン|2|Unit 3-1",
+        "ニューホライズン|2|Unit 3-2",
+        "ニューホライズン|2|Unit 4-1",
+        "ニューホライズン|2|Unit 4-4",
+        "ニューホライズン|2|Unit 5-2",
+        "ニューホライズン|2|Unit 5-4",
+        "ニューホライズン|2|Unit 6-1",
+        "ニューホライズン|2|Unit 6-3",
+        "ニューホライズン|3|Unit 1-3",
+        "ニューホライズン|3|Unit 3-4"
+      ]
+    },
+    "WANT_TO": {
+      "sectionCount": 61,
+      "sections": [
+        "サンシャイン|1|PROGRAM 1-3",
         "サンシャイン|1|PROGRAM 6-3",
         "サンシャイン|1|PROGRAM 7-3",
         "サンシャイン|1|Step 6 / Our Project 3 / Power-Up 6",
-        "ニューホライズン|1|Unit 0",
         "ニューホライズン|1|Unit 1-1",
         "ニューホライズン|1|Unit 3-3",
         "ニューホライズン|1|Unit 4-1",
@@ -117,19 +129,15 @@
         "ニューホライズン|1|Unit 8-3",
         "ニューホライズン|1|Unit 9-1",
         "ニューホライズン|1|Unit 9-3",
-        "ニューホライズン|1|Unit 10-2",
         "サンシャイン|2|PROGRAM 1-1",
         "サンシャイン|2|PROGRAM 2-2",
         "サンシャイン|2|PROGRAM 2-3",
         "サンシャイン|2|PROGRAM 3-1",
         "サンシャイン|2|PROGRAM 3-3",
         "サンシャイン|2|PROGRAM 4-1",
-        "サンシャイン|2|PROGRAM 4-2",
         "サンシャイン|2|PROGRAM 5-1",
-        "サンシャイン|2|PROGRAM 5-2",
         "サンシャイン|2|PROGRAM 5-3",
         "サンシャイン|2|PROGRAM 6-1",
-        "サンシャイン|2|PROGRAM 6-2",
         "サンシャイン|2|PROGRAM 6-3",
         "サンシャイン|2|PROGRAM 7-1",
         "サンシャイン|2|PROGRAM 7-2",
@@ -139,9 +147,8 @@
         "ニューホライズン|2|Unit 1-1",
         "ニューホライズン|2|Unit 1-4",
         "ニューホライズン|2|Unit 2-1",
-        "ニューホライズン|2|Unit 2-2",
         "ニューホライズン|2|Unit 2-3",
-        "ニューホライズン|2|Unit 3-1",
+        "ニューホライズン|2|Unit 2-4",
         "ニューホライズン|2|Unit 3-2",
         "ニューホライズン|2|Unit 3-4",
         "ニューホライズン|2|Unit 4-1",
@@ -153,23 +160,19 @@
         "ニューホライズン|2|Unit 5-4",
         "ニューホライズン|2|Unit 6-1",
         "ニューホライズン|2|Unit 6-2",
-        "ニューホライズン|2|Unit 6-3",
         "ニューホライズン|2|Unit 7-1",
         "ニューホライズン|2|Unit 7-2",
         "ニューホライズン|2|Unit 7-4",
         "サンシャイン|3|PROGRAM 1-3",
         "サンシャイン|3|PROGRAM 2-2",
+        "サンシャイン|3|PROGRAM 3-2",
         "サンシャイン|3|PROGRAM 4-1",
         "サンシャイン|3|PROGRAM 5-1",
-        "サンシャイン|3|PROGRAM 6-3",
-        "ニューホライズン|3|Unit 1-3",
+        "サンシャイン|3|PROGRAM 7-3",
+        "ニューホライズン|3|Unit 1-1",
         "ニューホライズン|3|Unit 2-1",
         "ニューホライズン|3|Unit 2-3",
-        "ニューホライズン|3|Unit 2-4",
-        "ニューホライズン|3|Unit 3-1",
-        "ニューホライズン|3|Unit 3-4",
-        "ニューホライズン|3|Unit 4-2",
-        "ニューホライズン|3|Unit 5-1"
+        "ニューホライズン|3|Unit 3-1"
       ]
     },
     "GERUND": {
@@ -187,6 +190,21 @@
       "sectionCount": 1,
       "sections": [
         "サンシャイン|1|PROGRAM 5-3"
+      ]
+    },
+    "VERB_TO_INFINITIVE": {
+      "sectionCount": 10,
+      "sections": [
+        "サンシャイン|1|PROGRAM 5-3",
+        "サンシャイン|2|PROGRAM 5-2",
+        "サンシャイン|2|PROGRAM 6-2",
+        "ニューホライズン|2|Unit 2-2",
+        "サンシャイン|3|PROGRAM 2-2",
+        "サンシャイン|3|PROGRAM 6-3",
+        "ニューホライズン|3|Unit 2-4",
+        "ニューホライズン|3|Unit 3-1",
+        "ニューホライズン|3|Unit 4-2",
+        "ニューホライズン|3|Unit 5-1"
       ]
     },
     "PRESENT_PROGRESSIVE": {
@@ -296,6 +314,30 @@
         "ニューホライズン|3|Unit 6-2"
       ]
     },
+    "MODAL_MUST": {
+      "sectionCount": 7,
+      "sections": [
+        "サンシャイン|2|PROGRAM 4-2",
+        "サンシャイン|2|PROGRAM 4-3",
+        "サンシャイン|2|PROGRAM 5-2",
+        "ニューホライズン|2|Unit 4-2",
+        "サンシャイン|3|PROGRAM 3-1",
+        "サンシャイン|3|PROGRAM 7-1",
+        "ニューホライズン|3|Unit 4-2"
+      ]
+    },
+    "MODAL_SHOULD": {
+      "sectionCount": 7,
+      "sections": [
+        "サンシャイン|2|PROGRAM 4-2",
+        "ニューホライズン|2|Unit 4-3",
+        "ニューホライズン|2|Unit 4-4",
+        "ニューホライズン|2|Unit 7-3",
+        "サンシャイン|3|PROGRAM 4-2",
+        "サンシャイン|3|PROGRAM 7-3",
+        "ニューホライズン|3|Unit 2-4"
+      ]
+    },
     "IF_CLAUSE": {
       "sectionCount": 4,
       "sections": [
@@ -380,6 +422,28 @@
         "ニューホライズン|3|Unit 6-1"
       ]
     },
+    "MODAL_COULD": {
+      "sectionCount": 6,
+      "sections": [
+        "ニューホライズン|2|Unit 5-3",
+        "サンシャイン|3|PROGRAM 6-2",
+        "ニューホライズン|3|Unit 4-3",
+        "ニューホライズン|3|Unit 4-4",
+        "ニューホライズン|3|Unit 5-1",
+        "ニューホライズン|3|Unit 6-1"
+      ]
+    },
+    "MODAL_MAY_MIGHT": {
+      "sectionCount": 6,
+      "sections": [
+        "ニューホライズン|2|Unit 7-1",
+        "サンシャイン|3|PROGRAM 7-1",
+        "サンシャイン|3|PROGRAM 7-2",
+        "サンシャイン|3|PROGRAM 7-3",
+        "ニューホライズン|3|Unit 3-1",
+        "ニューホライズン|3|Unit 3-3"
+      ]
+    },
     "PRESENT_PERFECT": {
       "sectionCount": 12,
       "sections": [
@@ -441,7 +505,7 @@
       "section": "Get Ready 2",
       "id": "V10-SUN-G1-GR2-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:9",
             "text": "I can read “dog”.",
@@ -481,7 +545,7 @@
       "section": "Get Ready 3",
       "id": "V10-SUN-G1-GR3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:7",
             "text": "Can you read English?",
@@ -516,7 +580,7 @@
       "section": "Get Ready 4",
       "id": "V10-SUN-G1-GR4-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:4",
             "text": "I can run.",
@@ -594,12 +658,14 @@
       "section": "PROGRAM 1-3",
       "id": "V10-SS-G1-P1-3-001",
       "features": {
-        "TO_INFINITIVE": [
+        "ADJECTIVE_TO_INFINITIVE": [
           {
             "where": "sentence:3",
             "text": "Nice to meet you.",
             "match": "Nice to meet"
-          },
+          }
+        ],
+        "WANT_TO": [
           {
             "where": "sentence:13",
             "text": "I want to be friendly.",
@@ -633,7 +699,7 @@
       "section": "PROGRAM 2-3",
       "id": "V10-SS-G1-P2-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:11",
             "text": "We can draw during the break.",
@@ -658,7 +724,7 @@
       "section": "PROGRAM 3-1",
       "id": "V10-SS-G1-P3-1-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:3",
             "text": "He can ski well.",
@@ -753,7 +819,7 @@
       "section": "PROGRAM 3-2",
       "id": "V10-SS-G1-P3-2-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:1",
             "text": "I can speak French.",
@@ -883,7 +949,7 @@
       "section": "PROGRAM 3-3",
       "id": "V10-SS-G1-P3-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:4",
             "text": "It can carry a heavy thing.",
@@ -994,7 +1060,7 @@
       "section": "PROGRAM 5-1",
       "id": "V10-SS-G1-P5-1-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:4",
             "text": "He can sew.",
@@ -1036,7 +1102,7 @@
       "section": "PROGRAM 5-2",
       "id": "V10-SS-G1-P5-2-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:4",
             "text": "He can skate fast.",
@@ -1083,11 +1149,11 @@
             "match": "I'd like to"
           }
         ],
-        "TO_INFINITIVE": [
+        "VERB_TO_INFINITIVE": [
           {
             "where": "sentence:10",
             "text": "I would like to support the children.",
-            "match": "would like to support"
+            "match": "like to support"
           },
           {
             "where": "sentence:11",
@@ -1097,7 +1163,7 @@
           {
             "where": "A5.evidence",
             "text": "I would like to support the children.",
-            "match": "would like to support"
+            "match": "like to support"
           },
           {
             "where": "B4.evidence",
@@ -1127,7 +1193,7 @@
       "section": "PROGRAM 6-3",
       "id": "V10-SS-G1-P6-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:5",
             "text": "The savanna can be dangerous.",
@@ -1144,7 +1210,7 @@
             "match": "can be"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:10",
             "text": "I want to tell my friend about them.",
@@ -1213,7 +1279,7 @@
       "section": "PROGRAM 7-3",
       "id": "V10-SS-G1-P7-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:3",
             "text": "My friend can show me around.",
@@ -1257,7 +1323,7 @@
             "match": "show me around"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:11",
             "text": "I want to come here with my family someday.",
@@ -1400,7 +1466,7 @@
       "section": "Step 6 / Our Project 3 / Power-Up 6",
       "id": "V10-SS-G1-STEP6-001",
       "features": {
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:2",
             "text": "I want to tell you about my school performance.",
@@ -1459,7 +1525,7 @@
       "section": "Unit 0",
       "id": "V10-NH-G1-U0-001",
       "features": {
-        "TO_INFINITIVE": [
+        "ADJECTIVE_TO_INFINITIVE": [
           {
             "where": "sentence:5",
             "text": "Ken: Nice to meet you.",
@@ -1474,16 +1540,11 @@
       "section": "Unit 1-1",
       "id": "V10-NH-G1-U1-1-001",
       "features": {
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:8",
             "text": "I want to join the tennis club.",
             "match": "want to join"
-          },
-          {
-            "where": "sentence:9",
-            "text": "Nice to meet you.",
-            "match": "Nice to meet"
           },
           {
             "where": "A5.evidence",
@@ -1495,6 +1556,13 @@
             "text": "I want to join the tennis club.",
             "match": "want to join"
           }
+        ],
+        "ADJECTIVE_TO_INFINITIVE": [
+          {
+            "where": "sentence:9",
+            "text": "Nice to meet you.",
+            "match": "Nice to meet"
+          }
         ]
       }
     },
@@ -1504,7 +1572,7 @@
       "section": "Unit 1-2",
       "id": "V10-NH-G1-U1-2-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:9",
             "text": "We can play soccer together.",
@@ -1548,7 +1616,7 @@
       "section": "Unit 2-2",
       "id": "V10-NH-G1-U2-2-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:3",
             "text": "He can make Chinese food very well.",
@@ -1661,7 +1729,7 @@
       "section": "Unit 3-3",
       "id": "V10-NH-G1-U3-3-001",
       "features": {
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:7",
             "text": "I want to win.",
@@ -1681,7 +1749,7 @@
       "section": "Unit 4-1",
       "id": "V10-NH-G1-U4-1-001",
       "features": {
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:7",
             "text": "I want to visit New Zealand someday.",
@@ -1718,7 +1786,7 @@
       "section": "Unit 4-2",
       "id": "V10-NH-G1-U4-2-001",
       "features": {
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:6",
             "text": "We want to win.",
@@ -1792,7 +1860,7 @@
       "section": "Unit 5-2",
       "id": "V10-NH-G1-U5-2-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:7",
             "text": "He can swim.",
@@ -1834,7 +1902,7 @@
       "section": "Unit 5-3",
       "id": "V10-NH-G1-U5-3-001",
       "features": {
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:10",
             "text": "“I want to visit the cafe.”",
@@ -1859,7 +1927,7 @@
       "section": "Unit 6-1",
       "id": "V10-NH-G1-U6-1-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:9",
             "text": "We can watch it together.",
@@ -1915,7 +1983,7 @@
       "section": "Unit 7-1",
       "id": "V10-NH-G1-U7-1-001",
       "features": {
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:4",
             "text": "I want to practice tennis tomorrow morning.",
@@ -1940,7 +2008,7 @@
       "section": "Unit 7-2",
       "id": "V10-NH-G1-U7-2-001",
       "features": {
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:3",
             "text": "I want to buy a souvenir for my family.",
@@ -1970,7 +2038,7 @@
       "section": "Unit 7-3",
       "id": "V10-NH-G1-U7-3-001",
       "features": {
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:7",
             "text": "I want to visit a palace.",
@@ -1995,7 +2063,7 @@
       "section": "Unit 8-1",
       "id": "V10-NH-G1-U8-1-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:3",
             "text": "He can teach the children.",
@@ -2017,7 +2085,7 @@
             "match": "can teach"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:6",
             "text": "I want to become a volunteer.",
@@ -2064,7 +2132,7 @@
       "section": "Unit 8-2",
       "id": "V10-NH-G1-U8-2-001",
       "features": {
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:8",
             "text": "I want to reduce waste.",
@@ -2089,7 +2157,7 @@
       "section": "Unit 8-3",
       "id": "V10-NH-G1-U8-3-001",
       "features": {
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:5",
             "text": "They want to build a well.",
@@ -2126,7 +2194,7 @@
             "match": "like snowboarding"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:7",
             "text": "I want to go back to the mountain someday.",
@@ -2158,7 +2226,7 @@
       "section": "Unit 9-3",
       "id": "V10-NH-G1-U9-3-001",
       "features": {
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:8",
             "text": "I want to spend New Year's Day with my grandparent again.",
@@ -2178,7 +2246,7 @@
       "section": "Unit 10-1",
       "id": "V10-NH-G1-U10-1-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:9",
             "text": "Anyone can make a mistake.",
@@ -2198,7 +2266,7 @@
       "section": "Unit 10-2",
       "id": "V10-NH-G1-U10-2-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:3",
             "text": "Each picture can bring back a memory.",
@@ -2272,7 +2340,7 @@
             "match": "when I "
           }
         ],
-        "TO_INFINITIVE": [
+        "ADJECTIVE_TO_INFINITIVE": [
           {
             "where": "sentence:9",
             "text": "This picture is important to me.",
@@ -2324,7 +2392,7 @@
       "section": "PROGRAM 1-1",
       "id": "V10-SS-G2-P1-1-001",
       "features": {
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:9",
             "text": "I want to see my friends again.",
@@ -2401,7 +2469,7 @@
             "match": "will keep"
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:11",
             "text": "“You can text me, too.”",
@@ -2421,7 +2489,7 @@
       "section": "PROGRAM 1-3",
       "id": "V10-SS-G2-P1-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:11",
             "text": "Maybe I can make a new friend.",
@@ -2510,7 +2578,7 @@
       "section": "PROGRAM 2-2",
       "id": "V10-SS-G2-P2-2-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:7",
             "text": "When people play together, they can be friends.",
@@ -2559,7 +2627,7 @@
             "match": "When people "
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:11",
             "text": "I want to join the program someday.",
@@ -2591,7 +2659,7 @@
       "section": "PROGRAM 2-3",
       "id": "V10-SS-G2-P2-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:10",
             "text": "In fact, sport can have a positive effect.",
@@ -2618,7 +2686,7 @@
             "match": "can foster"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:13",
             "text": "I want to remember this idea.",
@@ -2638,7 +2706,7 @@
       "section": "PROGRAM 3-1",
       "id": "V10-SS-G2-P3-1-001",
       "features": {
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:11",
             "text": "I want to visit the festival again.",
@@ -2665,7 +2733,7 @@
       "section": "PROGRAM 3-3",
       "id": "V10-SS-G2-P3-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:4",
             "text": "“Can you show me this bowl?”",
@@ -2704,7 +2772,7 @@
             "match": "show me this"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:13",
             "text": "I want to visit this festival again.",
@@ -2719,7 +2787,7 @@
       "section": "PROGRAM 4-1",
       "id": "V10-SS-G2-P4-1-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:3",
             "text": "My friend can guide me.",
@@ -2736,12 +2804,14 @@
             "match": "can guide"
           }
         ],
-        "TO_INFINITIVE": [
+        "ADJECTIVE_TO_INFINITIVE": [
           {
             "where": "sentence:9",
             "text": "I am glad to see it.",
             "match": "glad to see"
-          },
+          }
+        ],
+        "WANT_TO": [
           {
             "where": "sentence:12",
             "text": "I want to go hiking again.",
@@ -2761,7 +2831,7 @@
       "section": "PROGRAM 4-2",
       "id": "V10-SS-G2-P4-2-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_MUST": [
           {
             "where": "sentence:3",
             "text": "First of all, we must protect the forest.",
@@ -2781,16 +2851,6 @@
             "where": "sentence:6",
             "text": "We must help each other.",
             "match": "must help"
-          },
-          {
-            "where": "sentence:7",
-            "text": "If we have trouble, we should talk to our guide.",
-            "match": "should talk"
-          },
-          {
-            "where": "sentence:9",
-            "text": "We should walk carefully and enjoy it.",
-            "match": "should walk"
           },
           {
             "where": "slash:3",
@@ -2813,16 +2873,6 @@
             "match": "must help"
           },
           {
-            "where": "slash:7",
-            "text": "If we have trouble, / we should talk / to our guide.",
-            "match": "should talk"
-          },
-          {
-            "where": "slash:9",
-            "text": "We should walk carefully / and enjoy it.",
-            "match": "should walk"
-          },
-          {
             "where": "A2.evidence",
             "text": "First of all, we must protect the forest.",
             "match": "must protect"
@@ -2833,14 +2883,36 @@
             "match": "must not leave"
           },
           {
-            "where": "A4.evidence",
+            "where": "B1.evidence",
+            "text": "We must not leave garbage.",
+            "match": "must not leave"
+          }
+        ],
+        "MODAL_SHOULD": [
+          {
+            "where": "sentence:7",
             "text": "If we have trouble, we should talk to our guide.",
             "match": "should talk"
           },
           {
-            "where": "B1.evidence",
-            "text": "We must not leave garbage.",
-            "match": "must not leave"
+            "where": "sentence:9",
+            "text": "We should walk carefully and enjoy it.",
+            "match": "should walk"
+          },
+          {
+            "where": "slash:7",
+            "text": "If we have trouble, / we should talk / to our guide.",
+            "match": "should talk"
+          },
+          {
+            "where": "slash:9",
+            "text": "We should walk carefully / and enjoy it.",
+            "match": "should walk"
+          },
+          {
+            "where": "A4.evidence",
+            "text": "If we have trouble, we should talk to our guide.",
+            "match": "should talk"
           },
           {
             "where": "B3.evidence",
@@ -2865,7 +2937,7 @@
             "match": "If we "
           }
         ],
-        "TO_INFINITIVE": [
+        "ADJECTIVE_TO_INFINITIVE": [
           {
             "where": "sentence:11",
             "text": "I am glad to learn the rule.",
@@ -2885,7 +2957,7 @@
       "section": "PROGRAM 4-3",
       "id": "V10-SS-G2-P4-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_MUST": [
           {
             "where": "sentence:3",
             "text": "First of all, we must be on time.",
@@ -2897,19 +2969,9 @@
             "match": "must come"
           },
           {
-            "where": "sentence:6",
-            "text": "An engineer can guide us there.",
-            "match": "can guide"
-          },
-          {
             "where": "sentence:7",
             "text": "We must listen to the engineer.",
             "match": "must listen"
-          },
-          {
-            "where": "sentence:9",
-            "text": "We can have a snack at noon.",
-            "match": "can have"
           },
           {
             "where": "slash:3",
@@ -2922,24 +2984,36 @@
             "match": "must come"
           },
           {
-            "where": "slash:6",
-            "text": "An engineer can guide us there.",
-            "match": "can guide"
-          },
-          {
             "where": "slash:7",
             "text": "We must listen / to the engineer.",
             "match": "must listen"
           },
           {
-            "where": "slash:9",
-            "text": "We can have a snack / at noon.",
-            "match": "can have"
-          },
-          {
             "where": "A2.evidence",
             "text": "We must come to school by seven.",
             "match": "must come"
+          }
+        ],
+        "MODAL_CAN": [
+          {
+            "where": "sentence:6",
+            "text": "An engineer can guide us there.",
+            "match": "can guide"
+          },
+          {
+            "where": "sentence:9",
+            "text": "We can have a snack at noon.",
+            "match": "can have"
+          },
+          {
+            "where": "slash:6",
+            "text": "An engineer can guide us there.",
+            "match": "can guide"
+          },
+          {
+            "where": "slash:9",
+            "text": "We can have a snack / at noon.",
+            "match": "can have"
           },
           {
             "where": "A4.evidence",
@@ -2997,7 +3071,7 @@
             "match": "where to put"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:13",
             "text": "I want to work here again.",
@@ -3017,12 +3091,24 @@
       "section": "PROGRAM 5-2",
       "id": "V10-SS-G2-P5-2-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:3",
             "text": "A strong earthquake can be dangerous.",
             "match": "can be"
           },
+          {
+            "where": "slash:3",
+            "text": "A strong earthquake can be dangerous.",
+            "match": "can be"
+          },
+          {
+            "where": "B1.evidence",
+            "text": "A strong earthquake can be dangerous.",
+            "match": "can be"
+          }
+        ],
+        "MODAL_MUST": [
           {
             "where": "sentence:4",
             "text": "We must take action quickly.",
@@ -3032,11 +3118,6 @@
             "where": "sentence:5",
             "text": "In particular, we must not use the elevator.",
             "match": "must not use"
-          },
-          {
-            "where": "slash:3",
-            "text": "A strong earthquake can be dangerous.",
-            "match": "can be"
           },
           {
             "where": "slash:4",
@@ -3052,11 +3133,6 @@
             "where": "A2.evidence",
             "text": "In particular, we must not use the elevator.",
             "match": "must not use"
-          },
-          {
-            "where": "B1.evidence",
-            "text": "A strong earthquake can be dangerous.",
-            "match": "can be"
           }
         ],
         "WH_TO_INFINITIVE": [
@@ -3093,7 +3169,7 @@
             "match": "While we "
           }
         ],
-        "TO_INFINITIVE": [
+        "VERB_TO_INFINITIVE": [
           {
             "where": "sentence:12",
             "text": "We decide to remember it.",
@@ -3150,7 +3226,7 @@
             "match": "gave me good"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:12",
             "text": "I want to lend the book to another friend someday.",
@@ -3170,7 +3246,7 @@
       "section": "PROGRAM 6-1",
       "id": "V10-SS-G2-P6-1-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:3",
             "text": "Water can stick to this leaf.",
@@ -3291,7 +3367,7 @@
             "match": "teach us a"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:13",
             "text": "I want to learn about another high-tech idea.",
@@ -3306,7 +3382,7 @@
       "section": "PROGRAM 6-2",
       "id": "V10-SS-G2-P6-2-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:3",
             "text": "I can slip on the wet deck.",
@@ -3358,7 +3434,7 @@
             "match": "can walk"
           }
         ],
-        "TO_INFINITIVE": [
+        "VERB_TO_INFINITIVE": [
           {
             "where": "sentence:8",
             "text": "I decide to develop a better shoe.",
@@ -3395,7 +3471,7 @@
       "section": "PROGRAM 6-3",
       "id": "V10-SS-G2-P6-3-001",
       "features": {
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:2",
             "text": "We want to save energy in our classroom.",
@@ -3439,7 +3515,7 @@
             "match": "when we "
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:4",
             "text": "We can use less electricity this way.",
@@ -3479,7 +3555,7 @@
       "section": "PROGRAM 7-1",
       "id": "V10-SS-G2-P7-1-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:2",
             "text": "A penguin can breathe air.",
@@ -3546,7 +3622,7 @@
             "match": "can go"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:13",
             "text": "I want to know more about this animal.",
@@ -3566,7 +3642,7 @@
       "section": "PROGRAM 7-2",
       "id": "V10-SS-G2-P7-2-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:3",
             "text": "A hamster can put food in its cheek.",
@@ -3643,7 +3719,7 @@
             "match": "can get"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:13",
             "text": "I want to see the hamster again.",
@@ -3658,7 +3734,7 @@
       "section": "PROGRAM 7-3",
       "id": "V10-SS-G2-P7-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:2",
             "text": "Though it is small, it can move quickly.",
@@ -3850,7 +3926,7 @@
             "match": "was built"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:11",
             "text": "We want to learn more about the monument.",
@@ -3882,7 +3958,7 @@
             "match": "is filled"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:3",
             "text": "We want to make the most of the tin.",
@@ -3906,7 +3982,7 @@
             "match": "the most of"
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:4",
             "text": "The tin is so thin that we can fold it.",
@@ -3946,7 +4022,7 @@
       "section": "Unit 0",
       "id": "V10-NH-G2-U0-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:7",
             "text": "Now I know instant ramen can be very good.",
@@ -3958,7 +4034,7 @@
             "match": "can be"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:8",
             "text": "My friend and I want to eat ramen again.",
@@ -4211,7 +4287,7 @@
             "match": "show me around"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:7",
             "text": "We want to walk around the city.",
@@ -4331,7 +4407,7 @@
       "section": "Unit 1-3",
       "id": "V10-NH-G2-U1-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:4",
             "text": "We can use the card to communicate with the shop staff.",
@@ -4420,7 +4496,7 @@
       "section": "Unit 1-4",
       "id": "V10-NH-G2-U1-4-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:10",
             "text": "In this area, we can learn about a different culture.",
@@ -4432,7 +4508,7 @@
             "match": "can learn"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:12",
             "text": "I want to visit the area again.",
@@ -4452,7 +4528,7 @@
       "section": "Unit 2-1",
       "id": "V10-NH-G2-U2-1-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:2",
             "text": "I can order ramen here.",
@@ -4481,7 +4557,7 @@
             "match": "When we "
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:11",
             "text": "I want to eat this local ramen again.",
@@ -4501,7 +4577,7 @@
       "section": "Unit 2-2",
       "id": "V10-NH-G2-U2-2-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:3",
             "text": "If you visit my town, you can try ramen.",
@@ -4590,7 +4666,7 @@
             "match": "If you "
           }
         ],
-        "TO_INFINITIVE": [
+        "VERB_TO_INFINITIVE": [
           {
             "where": "sentence:9",
             "text": "I would love to eat it with my friends again.",
@@ -4600,11 +4676,6 @@
             "where": "sentence:10",
             "text": "After the speech, I hear, “I would love to try it, too.”",
             "match": "love to try"
-          },
-          {
-            "where": "sentence:11",
-            "text": "I am happy to hear that.",
-            "match": "happy to hear"
           },
           {
             "where": "A4.evidence",
@@ -4626,6 +4697,13 @@
             "text": "After the speech, I hear, “I would love to try it, too.”",
             "match": "love to try"
           }
+        ],
+        "ADJECTIVE_TO_INFINITIVE": [
+          {
+            "where": "sentence:11",
+            "text": "I am happy to hear that.",
+            "match": "happy to hear"
+          }
         ]
       }
     },
@@ -4635,7 +4713,7 @@
       "section": "Unit 2-3",
       "id": "V10-NH-G2-U2-3-001",
       "features": {
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:10",
             "text": "I do not want to forget this soup.",
@@ -4655,7 +4733,19 @@
       "section": "Unit 2-4",
       "id": "V10-NH-G2-U2-4-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "WANT_TO": [
+          {
+            "where": "sentence:2",
+            "text": "A local chef wanted to create a fresh sauce for hot days.",
+            "match": "wanted to create"
+          },
+          {
+            "where": "B1.evidence",
+            "text": "A local chef wanted to create a fresh sauce for hot days.",
+            "match": "wanted to create"
+          }
+        ],
+        "MODAL_CAN": [
           {
             "where": "sentence:12",
             "text": "Food can change when people bring different ideas together.",
@@ -4687,7 +4777,7 @@
       "section": "Unit 3-1",
       "id": "V10-NH-G2-U3-1-001",
       "features": {
-        "TO_INFINITIVE": [
+        "ADJECTIVE_TO_INFINITIVE": [
           {
             "where": "sentence:3",
             "text": "In the morning, I help the children get ready to play.",
@@ -4707,16 +4797,11 @@
       "section": "Unit 3-2",
       "id": "V10-NH-G2-U3-2-001",
       "features": {
-        "TO_INFINITIVE": [
+        "ADJECTIVE_TO_INFINITIVE": [
           {
             "where": "sentence:10",
             "text": "The finished tag is easy to understand.",
             "match": "easy to understand"
-          },
-          {
-            "where": "sentence:12",
-            "text": "I want to learn more about this work.",
-            "match": "want to learn"
           },
           {
             "where": "B4.evidence",
@@ -4724,7 +4809,7 @@
             "match": "easy to understand"
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:11",
             "text": "I learn that design can help a shop communicate with customers.",
@@ -4739,6 +4824,13 @@
             "where": "A5.evidence",
             "text": "I learn that design can help a shop communicate with customers.",
             "match": "can help"
+          }
+        ],
+        "WANT_TO": [
+          {
+            "where": "sentence:12",
+            "text": "I want to learn more about this work.",
+            "match": "want to learn"
           }
         ]
       }
@@ -4793,7 +4885,7 @@
             "match": "will practice"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:10",
             "text": "I want to read the next story clearly, too.",
@@ -4872,12 +4964,14 @@
             "match": "while you "
           }
         ],
-        "TO_INFINITIVE": [
+        "ADJECTIVE_TO_INFINITIVE": [
           {
             "where": "sentence:9",
             "text": "The advice makes the rule easy to understand.",
             "match": "easy to understand"
-          },
+          }
+        ],
+        "WANT_TO": [
           {
             "where": "sentence:12",
             "text": "I want to follow the rule during my homestay.",
@@ -4897,7 +4991,7 @@
       "section": "Unit 4-2",
       "id": "V10-NH-G2-U4-2-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_MUST": [
           {
             "where": "sentence:2",
             "text": "We must save water in this house.",
@@ -4912,11 +5006,6 @@
             "where": "sentence:4",
             "text": "I must not use water for a long time.",
             "match": "must not use"
-          },
-          {
-            "where": "sentence:7",
-            "text": "My host explains how long I can use the shower.",
-            "match": "can use"
           },
           {
             "where": "slash:2",
@@ -4934,11 +5023,6 @@
             "match": "must not use"
           },
           {
-            "where": "slash:7",
-            "text": "My host explains how long I can use the shower.",
-            "match": "can use"
-          },
-          {
             "where": "A1.evidence",
             "text": "We must save water in this house.",
             "match": "must save"
@@ -4953,6 +5037,18 @@
             "text": "I must not use water for a long time.",
             "match": "must not use"
           }
+        ],
+        "MODAL_CAN": [
+          {
+            "where": "sentence:7",
+            "text": "My host explains how long I can use the shower.",
+            "match": "can use"
+          },
+          {
+            "where": "slash:7",
+            "text": "My host explains how long I can use the shower.",
+            "match": "can use"
+          }
         ]
       }
     },
@@ -4962,7 +5058,7 @@
       "section": "Unit 4-3",
       "id": "V10-NH-G2-U4-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_SHOULD": [
           {
             "where": "sentence:4",
             "text": "I should use my own plate for this food.",
@@ -4979,7 +5075,7 @@
             "match": "should use"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:13",
             "text": "I want to remember this rule in the future.",
@@ -5016,7 +5112,7 @@
             "match": "because I "
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_SHOULD": [
           {
             "where": "sentence:6",
             "text": "The couple explained that I should take off my shoes before I enter the room.",
@@ -5033,12 +5129,14 @@
             "match": "should take"
           }
         ],
-        "TO_INFINITIVE": [
+        "ADJECTIVE_TO_INFINITIVE": [
           {
             "where": "sentence:11",
             "text": "In the end, the rule was easy to understand.",
             "match": "easy to understand"
-          },
+          }
+        ],
+        "WANT_TO": [
           {
             "where": "sentence:12",
             "text": "I want to remember this experience in the future.",
@@ -5053,7 +5151,7 @@
       "section": "Unit 5-1",
       "id": "V10-NH-G2-U5-1-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:3",
             "text": "I can move the handle to a comfortable position.",
@@ -5117,7 +5215,7 @@
             "match": "have to pull"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:11",
             "text": "I want to learn more about universal design.",
@@ -5137,7 +5235,7 @@
       "section": "Unit 5-2",
       "id": "V10-NH-G2-U5-2-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:4",
             "text": "I can tap the button with my right hand.",
@@ -5179,12 +5277,14 @@
             "match": "can use"
           }
         ],
-        "TO_INFINITIVE": [
+        "ADJECTIVE_TO_INFINITIVE": [
           {
             "where": "sentence:7",
             "text": "The button is easy to reach from either side.",
             "match": "easy to reach"
-          },
+          }
+        ],
+        "WANT_TO": [
           {
             "where": "sentence:11",
             "text": "I want to show this design to my friend.",
@@ -5204,12 +5304,19 @@
       "section": "Unit 5-3",
       "id": "V10-NH-G2-U5-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_COULD": [
           {
             "where": "sentence:4",
             "text": "He could not pull the door open by himself.",
             "match": "could not pull"
           },
+          {
+            "where": "slash:4",
+            "text": "He could not pull the door open / by himself.",
+            "match": "could not pull"
+          }
+        ],
+        "MODAL_CAN": [
           {
             "where": "sentence:5",
             "text": "Today, the same kind of entrance can have an automatic door.",
@@ -5224,11 +5331,6 @@
             "where": "sentence:9",
             "text": "People can use it regardless of their situation.",
             "match": "can use"
-          },
-          {
-            "where": "slash:4",
-            "text": "He could not pull the door open / by himself.",
-            "match": "could not pull"
           },
           {
             "where": "slash:5",
@@ -5261,7 +5363,7 @@
             "match": "can use"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:12",
             "text": "I want to learn how to make good universal design.",
@@ -5283,21 +5385,11 @@
       "section": "Unit 5-4",
       "id": "V10-NH-G2-U5-4-001",
       "features": {
-        "TO_INFINITIVE": [
+        "ADJECTIVE_TO_INFINITIVE": [
           {
             "where": "sentence:3",
             "text": "The sign is easy to see from far away.",
             "match": "easy to see"
-          },
-          {
-            "where": "sentence:11",
-            "text": "I want to spread the idea of universal design.",
-            "match": "want to spread"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "I want to spread the idea of universal design.",
-            "match": "want to spread"
           },
           {
             "where": "B1.evidence",
@@ -5305,7 +5397,7 @@
             "match": "easy to see"
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:4",
             "text": "It can help the elderly and people carrying baggage.",
@@ -5346,6 +5438,18 @@
             "text": "Good design can help many different people.",
             "match": "can help"
           }
+        ],
+        "WANT_TO": [
+          {
+            "where": "sentence:11",
+            "text": "I want to spread the idea of universal design.",
+            "match": "want to spread"
+          },
+          {
+            "where": "A5.evidence",
+            "text": "I want to spread the idea of universal design.",
+            "match": "want to spread"
+          }
         ]
       }
     },
@@ -5367,12 +5471,14 @@
             "match": "longer than"
           }
         ],
-        "TO_INFINITIVE": [
+        "ADJECTIVE_TO_INFINITIVE": [
           {
             "where": "sentence:10",
             "text": "The comparison makes the sports trivia easy to understand.",
             "match": "easy to understand"
-          },
+          }
+        ],
+        "WANT_TO": [
           {
             "where": "sentence:12",
             "text": "I want to use another clear comparison next time.",
@@ -5444,7 +5550,7 @@
             "match": "the most skill"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:11",
             "text": "I want to learn more about curling strategy another day.",
@@ -5459,7 +5565,7 @@
       "section": "Unit 6-3",
       "id": "V10-NH-G2-U6-3-001",
       "features": {
-        "TO_INFINITIVE": [
+        "ADJECTIVE_TO_INFINITIVE": [
           {
             "where": "sentence:7",
             "text": "A graph such as this one makes the numbers easy to compare.",
@@ -5528,16 +5634,11 @@
       "section": "Unit 7-1",
       "id": "V10-NH-G2-U7-1-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:5",
             "text": "Protecting the region can also protect that species.",
             "match": "can also"
-          },
-          {
-            "where": "sentence:6",
-            "text": "This natural value is one reason the site may meet a standard.",
-            "match": "may meet"
           },
           {
             "where": "slash:5",
@@ -5545,17 +5646,24 @@
             "match": "can also"
           },
           {
-            "where": "slash:6",
-            "text": "This natural value is one reason the site may meet a standard.",
-            "match": "may meet"
-          },
-          {
             "where": "B2.evidence",
             "text": "Protecting the region can also protect that species.",
             "match": "can also"
           }
         ],
-        "TO_INFINITIVE": [
+        "MODAL_MAY_MIGHT": [
+          {
+            "where": "sentence:6",
+            "text": "This natural value is one reason the site may meet a standard.",
+            "match": "may meet"
+          },
+          {
+            "where": "slash:6",
+            "text": "This natural value is one reason the site may meet a standard.",
+            "match": "may meet"
+          }
+        ],
+        "WANT_TO": [
           {
             "where": "sentence:11",
             "text": "I want to know why other sites are selected, too.",
@@ -5582,7 +5690,7 @@
       "section": "Unit 7-2",
       "id": "V10-NH-G2-U7-2-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:7",
             "text": "At a conference, people can discuss how to protect this heritage.",
@@ -5631,7 +5739,7 @@
             "match": "how to protect"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:11",
             "text": "I want to learn more about the plants of the Cape Floral Region.",
@@ -5651,26 +5759,16 @@
       "section": "Unit 7-3",
       "id": "V10-NH-G2-U7-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:6",
             "text": "Because of pollution, the white marble can turn dark.",
             "match": "can turn"
           },
           {
-            "where": "sentence:11",
-            "text": "I think this cultural heritage should remain beautiful for the future.",
-            "match": "should remain"
-          },
-          {
             "where": "slash:6",
             "text": "Because / of pollution, / the white marble can turn dark.",
             "match": "can turn"
-          },
-          {
-            "where": "slash:11",
-            "text": "I think this cultural heritage should remain beautiful / for the future.",
-            "match": "should remain"
           },
           {
             "where": "A3.evidence",
@@ -5681,6 +5779,18 @@
             "where": "B2.evidence",
             "text": "Because of pollution, the white marble can turn dark.",
             "match": "can turn"
+          }
+        ],
+        "MODAL_SHOULD": [
+          {
+            "where": "sentence:11",
+            "text": "I think this cultural heritage should remain beautiful for the future.",
+            "match": "should remain"
+          },
+          {
+            "where": "slash:11",
+            "text": "I think this cultural heritage should remain beautiful / for the future.",
+            "match": "should remain"
           }
         ]
       }
@@ -5703,7 +5813,7 @@
             "match": "were walking"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:10",
             "text": "We want to protect the mountain forever.",
@@ -5720,7 +5830,7 @@
             "match": "want to protect"
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:11",
             "text": "I hope future tourists can enjoy a safe and beautiful trail.",
@@ -5876,7 +5986,7 @@
             "match": "have eaten"
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:9",
             "text": "Popular bentos can sell out at noon at a shop near our school.",
@@ -5910,7 +6020,7 @@
             "match": "enjoy talking"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:12",
             "text": "I want to try a new kind of bento next time.",
@@ -5935,7 +6045,7 @@
       "section": "PROGRAM 2-1",
       "id": "V10-SS-G3-P2-1-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:4",
             "text": "A lack of sleep can affect your health.",
@@ -6073,12 +6183,14 @@
             "match": "is based"
           }
         ],
-        "TO_INFINITIVE": [
+        "VERB_TO_INFINITIVE": [
           {
             "where": "sentence:7",
             "text": "Before a test, I still try to go to bed at the same time.",
             "match": "try to go"
-          },
+          }
+        ],
+        "WANT_TO": [
           {
             "where": "sentence:11",
             "text": "I want to keep this habit.",
@@ -6093,7 +6205,7 @@
       "section": "PROGRAM 2-3",
       "id": "V10-SS-G3-P2-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:10",
             "text": "Thus, we can get enough rest before the tournament.",
@@ -6113,7 +6225,7 @@
       "section": "PROGRAM 3-1",
       "id": "V10-SS-G3-P3-1-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_MUST": [
           {
             "where": "sentence:2",
             "text": "My class must make a poster for the event.",
@@ -6252,6 +6364,23 @@
             "match": "best"
           }
         ],
+        "WANT_TO": [
+          {
+            "where": "sentence:10",
+            "text": "Tomorrow, he wants to go beyond that record.",
+            "match": "wants to go"
+          },
+          {
+            "where": "A5.evidence",
+            "text": "Tomorrow, he wants to go beyond that record.",
+            "match": "wants to go"
+          },
+          {
+            "where": "B1.evidence",
+            "text": "Tomorrow, he wants to go beyond that record.",
+            "match": "wants to go"
+          }
+        ],
         "PASSIVE": [
           {
             "where": "sentence:11",
@@ -6282,7 +6411,7 @@
       "section": "PROGRAM 3-3",
       "id": "V10-SS-G3-P3-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:10",
             "text": "His development takes time, but he can see progress.",
@@ -6341,19 +6470,12 @@
       "section": "PROGRAM 4-1",
       "id": "V10-SS-G3-P4-1-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "WANT_TO": [
           {
-            "where": "sentence:10",
-            "text": "I also see how useful sign language can be.",
-            "match": "can be"
+            "where": "sentence:3",
+            "text": "My friend wants to ask about one dish, but speaking is difficult for the waiter.",
+            "match": "wants to ask"
           },
-          {
-            "where": "slash:10",
-            "text": "I also see how useful sign language can be.",
-            "match": "can be"
-          }
-        ],
-        "TO_INFINITIVE": [
           {
             "where": "sentence:11",
             "text": "After the meal, I want to learn some signs myself.",
@@ -6368,6 +6490,18 @@
             "where": "B1.evidence",
             "text": "After the meal, I want to learn some signs myself.",
             "match": "want to learn"
+          }
+        ],
+        "MODAL_CAN": [
+          {
+            "where": "sentence:10",
+            "text": "I also see how useful sign language can be.",
+            "match": "can be"
+          },
+          {
+            "where": "slash:10",
+            "text": "I also see how useful sign language can be.",
+            "match": "can be"
           }
         ]
       }
@@ -6395,7 +6529,7 @@
             "match": "where to enter"
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:3",
             "text": "Another part explains where a user can ask for help.",
@@ -6407,11 +6541,6 @@
             "match": "can find"
           },
           {
-            "where": "sentence:10",
-            "text": "I understand why an official guide should give clear information to every user.",
-            "match": "should give"
-          },
-          {
             "where": "slash:3",
             "text": "Another part explains where a user can ask / for help.",
             "match": "can ask"
@@ -6420,11 +6549,6 @@
             "where": "slash:8",
             "text": "We can find the right information quickly.",
             "match": "can find"
-          },
-          {
-            "where": "slash:10",
-            "text": "I understand why an official guide should give clear information / to every user.",
-            "match": "should give"
           }
         ],
         "PASSIVE": [
@@ -6458,6 +6582,18 @@
             "text": "The guide is used widely by visitors to our school.",
             "match": "is used"
           }
+        ],
+        "MODAL_SHOULD": [
+          {
+            "where": "sentence:10",
+            "text": "I understand why an official guide should give clear information to every user.",
+            "match": "should give"
+          },
+          {
+            "where": "slash:10",
+            "text": "I understand why an official guide should give clear information / to every user.",
+            "match": "should give"
+          }
         ]
       }
     },
@@ -6467,7 +6603,7 @@
       "section": "PROGRAM 4-3",
       "id": "V10-SS-G3-P4-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:9",
             "text": "I realize that signs, space, and communication can remove different barriers.",
@@ -6529,7 +6665,7 @@
             "match": "is limited"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:11",
             "text": "I want to learn more about cacao history.",
@@ -6544,7 +6680,7 @@
       "section": "PROGRAM 5-2",
       "id": "V10-SS-G3-P5-2-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:4",
             "text": "We read how much chocolate each group can consume.",
@@ -6576,7 +6712,7 @@
       "section": "PROGRAM 5-3",
       "id": "V10-SS-G3-P5-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:4",
             "text": "Some farmers can be forced to sell cacao for an unfair price.",
@@ -6645,7 +6781,7 @@
       "section": "PROGRAM 6-1",
       "id": "V10-SS-G3-P6-1-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:2",
             "text": "It is said that a lot of trash can gather there.",
@@ -6761,7 +6897,7 @@
             "match": "when he "
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_COULD": [
           {
             "where": "sentence:6",
             "text": "His first idea used a long part that could float on the water.",
@@ -6801,7 +6937,7 @@
       "section": "PROGRAM 6-3",
       "id": "V10-SS-G3-P6-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:1",
             "text": "Ocean plastic can look like an impossible problem.",
@@ -6878,7 +7014,7 @@
             "match": "can swallow"
           }
         ],
-        "TO_INFINITIVE": [
+        "VERB_TO_INFINITIVE": [
           {
             "where": "sentence:5",
             "text": "We also need to reduce the waste that reaches the ocean.",
@@ -6908,12 +7044,29 @@
       "section": "PROGRAM 7-1",
       "id": "V10-SS-G3-P7-1-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_MUST": [
           {
             "where": "sentence:1",
             "text": "A patient has a disease and must stay in his hospital room.",
             "match": "must stay"
           },
+          {
+            "where": "slash:1",
+            "text": "A patient has a disease / and must stay / in his hospital room.",
+            "match": "must stay"
+          },
+          {
+            "where": "A1.evidence",
+            "text": "A patient has a disease and must stay in his hospital room.",
+            "match": "must stay"
+          },
+          {
+            "where": "B3.evidence",
+            "text": "A patient has a disease and must stay in his hospital room.",
+            "match": "must stay"
+          }
+        ],
+        "MODAL_CAN": [
           {
             "where": "sentence:3",
             "text": "The patient can control the robot with a computer through a network.",
@@ -6928,16 +7081,6 @@
             "where": "sentence:9",
             "text": "Probably, the project can help other patients too.",
             "match": "can help"
-          },
-          {
-            "where": "sentence:10",
-            "text": "A dream that once felt far away may come true through the robot.",
-            "match": "may come"
-          },
-          {
-            "where": "slash:1",
-            "text": "A patient has a disease / and must stay / in his hospital room.",
-            "match": "must stay"
           },
           {
             "where": "slash:3",
@@ -6955,34 +7098,9 @@
             "match": "can help"
           },
           {
-            "where": "slash:10",
-            "text": "A dream / that once felt far away may come true / through the robot.",
-            "match": "may come"
-          },
-          {
-            "where": "A1.evidence",
-            "text": "A patient has a disease and must stay in his hospital room.",
-            "match": "must stay"
-          },
-          {
             "where": "A2.evidence",
             "text": "The patient can control the robot with a computer through a network.",
             "match": "can control"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "A dream that once felt far away may come true through the robot.",
-            "match": "may come"
-          },
-          {
-            "where": "B1.evidence",
-            "text": "A dream that once felt far away may come true through the robot.",
-            "match": "may come"
-          },
-          {
-            "where": "B3.evidence",
-            "text": "A patient has a disease and must stay in his hospital room.",
-            "match": "must stay"
           }
         ],
         "PRESENT_PROGRESSIVE": [
@@ -7008,6 +7126,28 @@
             "text": "For a short time, / he feels / as if he is visiting the museum himself.",
             "match": "if he "
           }
+        ],
+        "MODAL_MAY_MIGHT": [
+          {
+            "where": "sentence:10",
+            "text": "A dream that once felt far away may come true through the robot.",
+            "match": "may come"
+          },
+          {
+            "where": "slash:10",
+            "text": "A dream / that once felt far away may come true / through the robot.",
+            "match": "may come"
+          },
+          {
+            "where": "A5.evidence",
+            "text": "A dream that once felt far away may come true through the robot.",
+            "match": "may come"
+          },
+          {
+            "where": "B1.evidence",
+            "text": "A dream that once felt far away may come true through the robot.",
+            "match": "may come"
+          }
         ]
       }
     },
@@ -7017,7 +7157,7 @@
       "section": "PROGRAM 7-2",
       "id": "V10-SS-G3-P7-2-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:1",
             "text": "These days, AI can control many kinds of machines.",
@@ -7037,11 +7177,6 @@
             "where": "sentence:5",
             "text": "But can it really understand human emotion?",
             "match": "can it"
-          },
-          {
-            "where": "sentence:7",
-            "text": "A person with a fever may need more than a machine's answer.",
-            "match": "may need"
           },
           {
             "where": "sentence:8",
@@ -7077,11 +7212,6 @@
             "where": "slash:5",
             "text": "But / can it really understand human emotion?",
             "match": "can it"
-          },
-          {
-            "where": "slash:7",
-            "text": "A person / with a fever may need more / than a machine's answer.",
-            "match": "may need"
           },
           {
             "where": "slash:8",
@@ -7134,6 +7264,18 @@
             "match": "can send"
           }
         ],
+        "MODAL_MAY_MIGHT": [
+          {
+            "where": "sentence:7",
+            "text": "A person with a fever may need more than a machine's answer.",
+            "match": "may need"
+          },
+          {
+            "where": "slash:7",
+            "text": "A person / with a fever may need more / than a machine's answer.",
+            "match": "may need"
+          }
+        ],
         "SUPERLATIVE": [
           {
             "where": "sentence:10",
@@ -7166,6 +7308,23 @@
       "section": "PROGRAM 7-3",
       "id": "V10-SS-G3-P7-3-001",
       "features": {
+        "WANT_TO": [
+          {
+            "where": "sentence:1",
+            "text": "An inventor wants to help a person who is often alone.",
+            "match": "wants to help"
+          },
+          {
+            "where": "A1.evidence",
+            "text": "An inventor wants to help a person who is often alone.",
+            "match": "wants to help"
+          },
+          {
+            "where": "B3.evidence",
+            "text": "An inventor wants to help a person who is often alone.",
+            "match": "wants to help"
+          }
+        ],
         "RELATIVE_PRONOUN": [
           {
             "where": "sentence:1",
@@ -7193,12 +7352,34 @@
             "match": "person who is"
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_MAY_MIGHT": [
           {
             "where": "sentence:2",
             "text": "The person may wish for someone to talk with.",
             "match": "may wish"
           },
+          {
+            "where": "sentence:6",
+            "text": "These actions may help shrink loneliness for a short time.",
+            "match": "may help"
+          },
+          {
+            "where": "slash:2",
+            "text": "The person may wish / for someone / to talk / with.",
+            "match": "may wish"
+          },
+          {
+            "where": "slash:6",
+            "text": "These actions may help shrink loneliness / for a short time.",
+            "match": "may help"
+          },
+          {
+            "where": "A2.evidence",
+            "text": "These actions may help shrink loneliness for a short time.",
+            "match": "may help"
+          }
+        ],
+        "MODAL_CAN": [
           {
             "where": "sentence:3",
             "text": "The inventor creates a social robot that can connect the person with family and friends.",
@@ -7215,29 +7396,9 @@
             "match": "can also"
           },
           {
-            "where": "sentence:6",
-            "text": "These actions may help shrink loneliness for a short time.",
-            "match": "may help"
-          },
-          {
-            "where": "sentence:7",
-            "text": "However, the robot should not make the person no longer meet other people.",
-            "match": "should not make"
-          },
-          {
-            "where": "sentence:11",
-            "text": "Rather than replace people, the robot should help people connect.",
-            "match": "should help"
-          },
-          {
             "where": "sentence:12",
             "text": "That is how technology can support society.",
             "match": "can support"
-          },
-          {
-            "where": "slash:2",
-            "text": "The person may wish / for someone / to talk / with.",
-            "match": "may wish"
           },
           {
             "where": "slash:3",
@@ -7255,9 +7416,21 @@
             "match": "can also"
           },
           {
-            "where": "slash:6",
-            "text": "These actions may help shrink loneliness / for a short time.",
-            "match": "may help"
+            "where": "slash:12",
+            "text": "That is how technology can support society.",
+            "match": "can support"
+          }
+        ],
+        "MODAL_SHOULD": [
+          {
+            "where": "sentence:7",
+            "text": "However, the robot should not make the person no longer meet other people.",
+            "match": "should not make"
+          },
+          {
+            "where": "sentence:11",
+            "text": "Rather than replace people, the robot should help people connect.",
+            "match": "should help"
           },
           {
             "where": "slash:7",
@@ -7268,16 +7441,6 @@
             "where": "slash:11",
             "text": "Rather / than replace people, / the robot should help people connect.",
             "match": "should help"
-          },
-          {
-            "where": "slash:12",
-            "text": "That is how technology can support society.",
-            "match": "can support"
-          },
-          {
-            "where": "A2.evidence",
-            "text": "These actions may help shrink loneliness for a short time.",
-            "match": "may help"
           },
           {
             "where": "A5.evidence",
@@ -7374,6 +7537,13 @@
             "text": "I have been to Kyoto once.",
             "match": "have been"
           }
+        ],
+        "WANT_TO": [
+          {
+            "where": "sentence:9",
+            "text": "“Have you ever wanted to go there?” I ask.",
+            "match": "wanted to go"
+          }
         ]
       }
     },
@@ -7459,7 +7629,7 @@
             "match": "are exciting"
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:6",
             "text": "A delicate drawing can show a small change in a character's feeling.",
@@ -7481,7 +7651,7 @@
             "match": "can also"
           }
         ],
-        "TO_INFINITIVE": [
+        "ADJECTIVE_TO_INFINITIVE": [
           {
             "where": "sentence:7",
             "text": "A simple drawing can also make an action easy to understand.",
@@ -7496,7 +7666,7 @@
       "section": "Unit 1-4",
       "id": "V10-NH-G3-U1-4-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:4",
             "text": "This sequence can give us a feeling of movement.",
@@ -7592,7 +7762,7 @@
             "match": "has explained"
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:5",
             "text": "I have just learned that a low price can hide a problem in production.",
@@ -7624,7 +7794,7 @@
             "match": "can hide"
           }
         ],
-        "TO_INFINITIVE": [
+        "WANT_TO": [
           {
             "where": "sentence:9",
             "text": "I want to finish it tonight.",
@@ -7718,7 +7888,7 @@
             "match": "has continued"
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:10",
             "text": "I understand that a useful idea can develop over time.",
@@ -7750,7 +7920,19 @@
       "section": "Unit 2-3",
       "id": "V10-NH-G3-U2-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "WANT_TO": [
+          {
+            "where": "sentence:1",
+            "text": "Our class studies a clothing company that wants to reduce waste.",
+            "match": "wants to reduce"
+          },
+          {
+            "where": "sentence:11",
+            "text": "I want to learn how other companies reuse old material.",
+            "match": "want to learn"
+          }
+        ],
+        "MODAL_CAN": [
           {
             "where": "sentence:3",
             "text": "Workers separate material that can be reused.",
@@ -7803,13 +7985,6 @@
             "text": "Some wool from old products is cleaned and used again.",
             "match": "is cleaned"
           }
-        ],
-        "TO_INFINITIVE": [
-          {
-            "where": "sentence:11",
-            "text": "I want to learn how other companies reuse old material.",
-            "match": "want to learn"
-          }
         ]
       }
     },
@@ -7819,7 +7994,7 @@
       "section": "Unit 2-4",
       "id": "V10-NH-G3-U2-4-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_SHOULD": [
           {
             "where": "sentence:1",
             "text": "Responsible clothing should be made with respect for both people and the environment.",
@@ -7829,16 +8004,6 @@
             "where": "sentence:3",
             "text": "A very low price should not depend on unfair treatment of workers.",
             "match": "should not depend"
-          },
-          {
-            "where": "sentence:5",
-            "text": "Some chemicals can harm workers or the environment if they are used carelessly.",
-            "match": "can harm"
-          },
-          {
-            "where": "sentence:10",
-            "text": "Consumers can use this information when they choose clothing.",
-            "match": "can use"
           },
           {
             "where": "slash:1",
@@ -7851,29 +8016,9 @@
             "match": "should not depend"
           },
           {
-            "where": "slash:5",
-            "text": "Some chemicals can harm workers / or the environment / if they are used carelessly.",
-            "match": "can harm"
-          },
-          {
-            "where": "slash:10",
-            "text": "Consumers can use this information / when they choose clothing.",
-            "match": "can use"
-          },
-          {
             "where": "A2.evidence",
             "text": "A very low price should not depend on unfair treatment of workers.",
             "match": "should not depend"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "Consumers can use this information when they choose clothing.",
-            "match": "can use"
-          },
-          {
-            "where": "B1.evidence",
-            "text": "Consumers can use this information when they choose clothing.",
-            "match": "can use"
           }
         ],
         "PASSIVE": [
@@ -7908,7 +8053,7 @@
             "match": "are produced"
           }
         ],
-        "TO_INFINITIVE": [
+        "VERB_TO_INFINITIVE": [
           {
             "where": "sentence:4",
             "text": "Second, companies need to think carefully about the materials they use.",
@@ -7923,6 +8068,38 @@
             "where": "B2.evidence",
             "text": "Second, companies need to think carefully about the materials they use.",
             "match": "need to think"
+          }
+        ],
+        "MODAL_CAN": [
+          {
+            "where": "sentence:5",
+            "text": "Some chemicals can harm workers or the environment if they are used carelessly.",
+            "match": "can harm"
+          },
+          {
+            "where": "sentence:10",
+            "text": "Consumers can use this information when they choose clothing.",
+            "match": "can use"
+          },
+          {
+            "where": "slash:5",
+            "text": "Some chemicals can harm workers / or the environment / if they are used carelessly.",
+            "match": "can harm"
+          },
+          {
+            "where": "slash:10",
+            "text": "Consumers can use this information / when they choose clothing.",
+            "match": "can use"
+          },
+          {
+            "where": "A5.evidence",
+            "text": "Consumers can use this information when they choose clothing.",
+            "match": "can use"
+          },
+          {
+            "where": "B1.evidence",
+            "text": "Consumers can use this information when they choose clothing.",
+            "match": "can use"
           }
         ],
         "IF_CLAUSE": [
@@ -8011,36 +8188,16 @@
             "match": "has changed"
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_MAY_MIGHT": [
           {
             "where": "sentence:6",
             "text": "If the decline continues, the animal may face extinction.",
             "match": "may face"
           },
           {
-            "where": "sentence:9",
-            "text": "This example shows how one human-caused change can create trouble for wildlife.",
-            "match": "can create"
-          },
-          {
-            "where": "sentence:10",
-            "text": "We want to learn what local people can do to help.",
-            "match": "can do"
-          },
-          {
             "where": "slash:6",
             "text": "If the decline continues, / the animal may face extinction.",
             "match": "may face"
-          },
-          {
-            "where": "slash:9",
-            "text": "This example shows how one human-caused change can create trouble / for wildlife.",
-            "match": "can create"
-          },
-          {
-            "where": "slash:10",
-            "text": "We want / to learn what local people can do / to help.",
-            "match": "can do"
           },
           {
             "where": "A4.evidence",
@@ -8053,12 +8210,36 @@
             "match": "may face"
           }
         ],
-        "TO_INFINITIVE": [
+        "VERB_TO_INFINITIVE": [
           {
             "where": "sentence:8",
             "text": "People also need to reduce further damage to the habitat.",
             "match": "need to reduce"
+          }
+        ],
+        "MODAL_CAN": [
+          {
+            "where": "sentence:9",
+            "text": "This example shows how one human-caused change can create trouble for wildlife.",
+            "match": "can create"
           },
+          {
+            "where": "sentence:10",
+            "text": "We want to learn what local people can do to help.",
+            "match": "can do"
+          },
+          {
+            "where": "slash:9",
+            "text": "This example shows how one human-caused change can create trouble / for wildlife.",
+            "match": "can create"
+          },
+          {
+            "where": "slash:10",
+            "text": "We want / to learn what local people can do / to help.",
+            "match": "can do"
+          }
+        ],
+        "WANT_TO": [
           {
             "where": "sentence:10",
             "text": "We want to learn what local people can do to help.",
@@ -8173,7 +8354,7 @@
             "match": "let us share"
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:10",
             "text": "Then we make a short list of actions that can help protect the habitat.",
@@ -8244,16 +8425,11 @@
             "match": "the most dangerous"
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:8",
             "text": "Local people can also report where they see animals near the road.",
             "match": "can also"
-          },
-          {
-            "where": "sentence:9",
-            "text": "These actions may not end every accident.",
-            "match": "may not end"
           },
           {
             "where": "sentence:10",
@@ -8266,14 +8442,21 @@
             "match": "can also"
           },
           {
-            "where": "slash:9",
+            "where": "slash:10",
+            "text": "However, / they can reduce one human-caused problem / in a realistic way.",
+            "match": "can reduce"
+          }
+        ],
+        "MODAL_MAY_MIGHT": [
+          {
+            "where": "sentence:9",
             "text": "These actions may not end every accident.",
             "match": "may not end"
           },
           {
-            "where": "slash:10",
-            "text": "However, / they can reduce one human-caused problem / in a realistic way.",
-            "match": "can reduce"
+            "where": "slash:9",
+            "text": "These actions may not end every accident.",
+            "match": "may not end"
           }
         ]
       }
@@ -8284,7 +8467,7 @@
       "section": "Unit 3-4",
       "id": "V10-NH-G3-U3-4-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:4",
             "text": "Oil can damage an otter's fur and make survival difficult.",
@@ -8306,7 +8489,7 @@
             "match": "can damage"
           }
         ],
-        "TO_INFINITIVE": [
+        "ADJECTIVE_TO_INFINITIVE": [
           {
             "where": "sentence:6",
             "text": "Their research showed that sea otters were important to coastal life.",
@@ -8426,7 +8609,7 @@
             "match": "because it "
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_MUST": [
           {
             "where": "sentence:6",
             "text": "The bag must not become too heavy to carry.",
@@ -8475,7 +8658,7 @@
             "match": "too heavy to carry"
           }
         ],
-        "TO_INFINITIVE": [
+        "VERB_TO_INFINITIVE": [
           {
             "where": "sentence:10",
             "text": "We decide to check our kits again this weekend.",
@@ -8529,26 +8712,16 @@
             "match": "had to use"
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_COULD": [
           {
             "where": "sentence:3",
             "text": "The town repaired the bridge so residents could reach the shelter safely again.",
             "match": "could reach"
           },
           {
-            "where": "sentence:9",
-            "text": "Residents can now use the bridge as the main route to the shelter.",
-            "match": "can now"
-          },
-          {
             "where": "slash:3",
             "text": "The town repaired the bridge / so residents could reach the shelter safely again.",
             "match": "could reach"
-          },
-          {
-            "where": "slash:9",
-            "text": "Residents can now use the bridge / as the main route / to the shelter.",
-            "match": "can now"
           },
           {
             "where": "A2.answer",
@@ -8559,16 +8732,6 @@
             "where": "A2.evidence",
             "text": "The town repaired the bridge so residents could reach the shelter safely again.",
             "match": "could reach"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "Residents can now use the bridge as the main route to the shelter.",
-            "match": "can now"
-          },
-          {
-            "where": "B1.evidence",
-            "text": "Residents can now use the bridge as the main route to the shelter.",
-            "match": "can now"
           }
         ],
         "RELATIVE_PRONOUN": [
@@ -8601,6 +8764,28 @@
             "where": "B4.evidence",
             "text": "The community also held a quiet moment to remember people who had died.",
             "match": "people who had"
+          }
+        ],
+        "MODAL_CAN": [
+          {
+            "where": "sentence:9",
+            "text": "Residents can now use the bridge as the main route to the shelter.",
+            "match": "can now"
+          },
+          {
+            "where": "slash:9",
+            "text": "Residents can now use the bridge / as the main route / to the shelter.",
+            "match": "can now"
+          },
+          {
+            "where": "A5.evidence",
+            "text": "Residents can now use the bridge as the main route to the shelter.",
+            "match": "can now"
+          },
+          {
+            "where": "B1.evidence",
+            "text": "Residents can now use the bridge as the main route to the shelter.",
+            "match": "can now"
           }
         ]
       }
@@ -8660,7 +8845,7 @@
             "match": "people who still"
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_COULD": [
           {
             "where": "sentence:6",
             "text": "Bicycles were useful because they could move through some narrow roads.",
@@ -8692,7 +8877,7 @@
       "section": "Unit 5-1",
       "id": "V10-NH-G3-U5-1-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_COULD": [
           {
             "where": "sentence:5",
             "text": "The leader believed that people could challenge unfair systems without attacking others.",
@@ -8714,7 +8899,7 @@
             "match": "could challenge"
           }
         ],
-        "TO_INFINITIVE": [
+        "VERB_TO_INFINITIVE": [
           {
             "where": "sentence:10",
             "text": "We decide to research that question next.",
@@ -8751,7 +8936,7 @@
             "match": "asked them to use"
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:10",
             "text": "The example shows how protest and non-violence can work together toward political change.",
@@ -8771,7 +8956,7 @@
       "section": "Unit 5-3",
       "id": "V10-NH-G3-U5-3-001",
       "features": {
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_CAN": [
           {
             "where": "sentence:10",
             "text": "The movement showed that one legal challenge can become part of a larger social change.",
@@ -8840,26 +9025,16 @@
             "match": "was planning"
           }
         ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
+        "MODAL_COULD": [
           {
             "where": "sentence:8",
             "text": "I felt happy because something unused at home could become useful again.",
             "match": "could become"
           },
           {
-            "where": "sentence:10",
-            "text": "Still, it can be one practical part of our class project.",
-            "match": "can be"
-          },
-          {
             "where": "slash:8",
             "text": "I felt happy / because something unused / at home could become useful again.",
             "match": "could become"
-          },
-          {
-            "where": "slash:10",
-            "text": "Still, / it can be one practical part / of our class project.",
-            "match": "can be"
           }
         ],
         "BECAUSE_CLAUSE": [
@@ -8872,6 +9047,18 @@
             "where": "slash:8",
             "text": "I felt happy / because something unused / at home could become useful again.",
             "match": "because something "
+          }
+        ],
+        "MODAL_CAN": [
+          {
+            "where": "sentence:10",
+            "text": "Still, it can be one practical part of our class project.",
+            "match": "can be"
+          },
+          {
+            "where": "slash:10",
+            "text": "Still, / it can be one practical part / of our class project.",
+            "match": "can be"
           }
         ]
       }
@@ -9086,10 +9273,10 @@
     }
   ],
   "chronologyGate": {
-    "detectedOccurrences": 1344,
-    "resolvedOccurrences": 288,
-    "unresolvedOccurrences": 1014,
-    "futureGrammarLeak": 42,
+    "detectedOccurrences": 1355,
+    "resolvedOccurrences": 239,
+    "unresolvedOccurrences": 1090,
+    "futureGrammarLeak": 26,
     "sectionChronologyComplete": false,
     "finalPass": false
   }
