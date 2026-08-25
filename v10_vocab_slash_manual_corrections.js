@@ -88,3 +88,41 @@
   window.V10_INTERACTION_META['サンシャイン|Get Ready 6']=meta;
   window.V10_INTERACTION_META['サンシャイン|1|Get Ready 6']=meta;
 })();
+
+// NH2 Unit 2-2 reference/v7 chronology repair.
+// v7 introduces `speech` in Unit 2 Part2, while `give-gave` is not introduced until Let's Read 1.
+// The reference sentence uses the already-learned `talk`, so keep that wording everywhere instead of leaking `give`.
+(function(){
+  const nh=window.V10_PASSAGES_G2_NH||{};
+  const p=nh['Unit 2-2'];
+  if(!p) throw new Error('Missing NH2 Unit 2-2 for chronology correction');
+  const oldSentence='At school, I give a short speech about local food.';
+  const newSentence='At school, I talk about local food in a short speech.';
+  p.sentences=(p.sentences||[]).map(s=>s===oldSentence?newSentence:s);
+  if(Array.isArray(p.slashRows)&&p.slashRows[0]){
+    p.slashRows[0]={en:'At school, / I talk about local food / in a short speech.',jp:'学校で / 私は地元の食べ物について話します / 短いスピーチで'};
+  }
+  p.fullTranslation=String(p.fullTranslation||'').replace('学校で、私は地元の食べ物について短いスピーチをします。','学校で、私は短いスピーチで地元の食べ物について話します。');
+  for(const q of (p.questions||[])){
+    if(q&&q.evidence===oldSentence){
+      q.evidence=newSentence;
+      q.evidenceJp='学校で、私は短いスピーチで地元の食べ物について話します。';
+      q.reason='talk about の後ろの local food が話す内容です。';
+    }
+  }
+  p.auditNote=String(p.auditNote||'')+' v7 chronology repair: Unit 2 Part2 speech is retained, but future give (introduced in Let’s Read 1) is replaced by cumulative talk; wording is aligned to the authoritative reference slash sentence.';
+  p.vocabFinalAudit='PASS_V7_GIVE_TO_TALK_REFERENCE_ALIGNED_PENDING_FULL_SCAN';
+  const keys=['ニューホライズン|Unit 2-2','ニューホライズン|2|Unit 2-2'];
+  window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
+  for(const key of keys){
+    const meta=window.V10_INTERACTION_META[key];
+    if(!meta||!Array.isArray(meta.questionSetB)) continue;
+    for(const q of meta.questionSetB){
+      if(q&&q.evidence===oldSentence){
+        q.evidence=newSentence;
+        q.evidenceJp='学校で、私は短いスピーチで地元の食べ物について話します。';
+        q.reason='talk about の後ろの local food が話す内容です。';
+      }
+    }
+  }
+})();
