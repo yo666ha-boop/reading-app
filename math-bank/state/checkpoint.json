@@ -1,8 +1,8 @@
 {
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP",
-  "current_stage": "RAW_1271_MATERIALIZATION_QA_FIGURE_BINDING",
-  "recorded_at_jst": "2026-08-25T06:53:18+09:00",
+  "current_stage": "WINPASS_717_STRICT_MATERIALIZATION",
+  "recorded_at_jst": "2026-08-25T11:53:44+09:00",
   "main_touched": false,
   "source_identity": {
     "Winpass": {"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","bytes":8296042,"crc_ok":true},
@@ -11,39 +11,87 @@
   },
   "documents": {"before_dedupe":246,"duplicates":106,"unique":{"Winpass":81,"実力錬成":27,"Standard":32,"total":140}},
   "raw_slots": {"Winpass":717,"実力錬成":237,"Standard":317,"total":1271,"count_forcing_used":false},
-  "recovered_drafts_not_strict": {
-    "Standard":{"records":317,"sha256":"326f38b5aebadc226d3e12eaf6e750bf4b7727759c2e4f7f06f75dc2ffa114b0","text_answers":288,"graphical_answers":29},
-    "実力錬成":{"records":237,"sha256":"818fdd60d26211634d7138b381e55b4123fb4155c682a0375344a3ba0e755c97","text_answers":217,"graphical_answers":20},
-    "Winpass":{"records":0},"total":554,"current_runtime_bytes_available":false
-  },
   "strict_completion_rule": "Count only records durably persisted, post-save read back, carrying exact ordered OOXML question_offsets/answer_offsets or explicit graphical answer asset identity, score evidence, required figure/asset identity, content-bound fingerprint, and PASSing applicable validator.",
-  "strict_progress": {"Winpass":0,"実力錬成":0,"Standard":3,"total":3,"pending":1268,"proof_path":"math-bank/recovered/current-session/standard-strict-proof-first3-20260825.jsonl","proof_commit":"eb0a8965e657284bfa32a7378fe85b2cddb68785","readback_verified":true,"validator_pass":3,"fingerprint_match":3},
-  "qa_figure_qa": {"questions_strict":"3/1271","answers_strict":"3/1271","historical_target_figure_refs":41,"figure_refs_revalidated_global":"0/41"},
-  "tooling_actual": {
-    "strict_validator":"math-bank/scripts/validate_raw1271_materialization.py","draft_promoter":"math-bank/scripts/promote_recovered_qa_drafts.py","reconciler":"math-bank/scripts/reconcile_strict_qa_progress.py","asset_manifest":"math-bank/scripts/build_ooxml_asset_manifest.py","exact_locator":"math-bank/scripts/locate_recovered_qa_ooxml.py","candidate_composer":"math-bank/scripts/compose_strict_qa_candidates.py","batch_runner":"math-bank/scripts/run_recovered_strict_batch.py",
-    "strict_tooling_ci":{"state":"math-bank/state/strict-tooling-ci-latest.json","run_id":"32756245710","triggering_sha":"e400cb335cc8cd8a6f3770afa83f8d92c567e038","result":"success","schedule_based":false,"tests":7},
-    "audit_ci":{"state":"math-bank/state/ci-latest.json","run_id":"32756245687","triggering_sha":"e400cb335cc8cd8a6f3770afa83f8d92c567e038","result":"success","canonical_app_records_present":false,"publication_ready":false},
-    "current_head_combined_status_contexts":0
+  "strict_progress": {
+    "Standard":317,
+    "実力錬成":237,
+    "Winpass":0,
+    "total":554,
+    "pending":717,
+    "readback_verified":554,
+    "validator_pass":554,
+    "durable_records":554
   },
-  "downstream": {"winpass_decisions":{"reviewed":0,"included":0,"excluded":0,"target_after_evidence_review":570},"global1124":{"validated":0,"immutable_frozen":0},"variants":{"verified":0,"parent_coverage":"0/1124"},"app_records":0,"browser":"BLOCKED_UNTIL_REAL_APP_RECORDS","iphone_fire":"PENDING","a4":"PENDING","publication_ready":false,"public_verification":"PENDING"},
+  "strict_durable_evidence": {
+    "Standard": {
+      "state_path":"math-bank/state/standard317-strict-complete-20260825.json",
+      "state_commit":"da84a4fe662972f8571f4a7935d9c3c6a76d135f",
+      "provider":"Google Drive",
+      "file_id":"1L6n6iGfFQdii0jTzM224fT0U5MAXZcYS",
+      "sha256":"d80c0822f3e65518cabeac589034fc3d568931c21a90d8473d15952ac09daca9",
+      "records":317,
+      "readback_verified":true,
+      "validation_pass":true
+    },
+    "実力錬成": {
+      "state_path":"math-bank/state/jitsuren237-strict-complete-20260825.json",
+      "state_commit":"6eb0910010821330f5be362f9a7dacaf2b3c458f",
+      "provider":"Google Drive",
+      "file_id":"1ZrG7Xw0iMjaR27UfzpPJmWnMK_2wlC2P",
+      "sha256":"4c8ed0ee4144562edcb8f063b565e7742fae305f1f512fa1f951a84bf59c6f9f",
+      "records":237,
+      "readback_verified":true,
+      "validation_pass":true
+    }
+  },
+  "drafts_separate_from_strict": {
+    "historical_recovered_drafts":{"Standard":317,"実力錬成":237,"Winpass":0,"total":554,"status":"superseded_as_progress_counter_by_new_strict_durable_materializations; retained as recovery provenance only"},
+    "current_runtime_local_only":{"records":0,"bytes_available":false}
+  },
+  "qa_figure_qa": {
+    "questions_strict":"554/1271",
+    "answers_strict":"554/1271",
+    "Standard":{"records":317,"figure_refs":154,"missing_figure_refs":0,"graphical_answers":26},
+    "実力錬成":{"records":237,"figure_refs":81,"missing_figure_refs":0,"graphical_answers":18},
+    "Winpass":{"records":0,"figure_refs_revalidated":0}
+  },
+  "ci": {
+    "latest_head_checked":"6eb0910010821330f5be362f9a7dacaf2b3c458f",
+    "workflow_runs_for_latest_head":0,
+    "prior_strict_tooling_ci":{"run_id":"32756245710","triggering_sha":"e400cb335cc8cd8a6f3770afa83f8d92c567e038","result":"success","tests":7},
+    "prior_audit_ci":{"run_id":"32756245687","triggering_sha":"e400cb335cc8cd8a6f3770afa83f8d92c567e038","result":"success","canonical_app_records_present":false,"publication_ready":false}
+  },
+  "downstream": {
+    "winpass_decisions":{"reviewed":0,"included":0,"excluded":0,"target_after_evidence_review":570,"count_forcing_forbidden":true},
+    "global1124":{"validated":0,"immutable_frozen":0},
+    "variants":{"verified":0,"parent_coverage":"0/1124"},
+    "app_records":0,
+    "browser":"BLOCKED_UNTIL_REAL_APP_RECORDS",
+    "iphone_fire":"PENDING",
+    "a4":"PENDING",
+    "publication_ready":false,
+    "public_verification":"PENDING"
+  },
   "this_run": {
-    "starting_head_actual":"0cef468f035d2f1f454933d4363d37420e6ed41e","latest_head_observed_before_checkpoint_write":"0cef468f035d2f1f454933d4363d37420e6ed41e","main_head_observed":"1f0cabf9bfcc4482f507e33188499bdbbd5bab57",
+    "starting_head_actual":"6eb0910010821330f5be362f9a7dacaf2b3c458f",
+    "main_head_observed":"1f0cabf9bfcc4482f507e33188499bdbbd5bab57",
     "completed":[
-      "Read latest branch HEAD and checkpoint from GitHub actual before work.",
-      "Re-read strict tooling workflow run 32756245710: strict-qa-tooling-tests completed success, including compile and unit-test steps; no CI result was counted as Q/A completion.",
-      "Checked combined commit status for current HEAD; zero status contexts were attached to 0cef468f, so prior persisted CI state remains the only verified CI evidence and is not misrepresented as current-head CI.",
-      "Retried File Library recovery using exact Standard/Jitsuren draft names and SHA256 identities plus Standard source ZIP SHA; returned results were unrelated and no bytes were accepted.",
-      "Checked current /mnt/data runtime for mathbank_live recovered JSONL and three source ZIP names; none were present.",
-      "Kept strict progress exactly at Standard 3/317, 実力錬成 0/237, Winpass 0/717 because record 4 provenance cannot be proven without source/draft bytes.",
+      "Read latest branch HEAD, checkpoint and current-head CI from GitHub actual before proceeding.",
+      "Detected checkpoint lag: branch HEAD already contained Standard317 strict-complete evidence commit da84a4fe and Jitsuren237 strict-complete evidence commit 6eb09100.",
+      "Verified Standard317 durable evidence: Google Drive durable data, post-save readback 317, SHA match, validation PASS, 154 figure refs with zero missing.",
+      "Verified Jitsuren237 durable evidence: Google Drive durable data, post-save readback 237, SHA match, validation PASS, 81 figure refs with zero missing.",
+      "Corrected strict progress from stale 3/1271 to GitHub-actual 554/1271; no draft-only record was promoted by assertion alone.",
+      "Checked Drive discovery for Winpass materialization data and File Library for exact Winpass ZIP identity; no usable Winpass bytes were exposed in this run.",
+      "Checked current-head workflow runs: none attached to 6eb09100; did not misstate prior CI as current-head CI.",
       "Confirmed main remains 1f0cabf9bfcc4482f507e33188499bdbbd5bab57 and made no main write.",
-      "Persisted this run checkpoint on math-problem-bank-bootstrap."
+      "Updated shared checkpoint to the actual current stage WINPASS_717_STRICT_MATERIALIZATION."
     ],
     "limitations":[
-      "Exact recovered Standard/Jitsuren JSONL bytes and verified source ZIP bytes are not exposed to this execution runtime, File Library, or a GitHub durable path currently identified by checkpoint.",
-      "Without those exact bytes, ordered OOXML offsets/assets, score evidence, required figure identity and content-bound fingerprints for record 4 onward cannot be truthfully produced or validator-PASSed."
+      "Winpass source ZIP bytes with required SHA256 were not exposed by connected Drive discovery or File Library search in this run.",
+      "Therefore Winpass record 1 onward cannot yet receive truthful ordered OOXML provenance, score evidence, graphical/figure identity and validator-PASS durable materialization in this run."
     ]
   },
-  "exact_stop": "Strict durable progress remains Standard 3/317, 実力錬成 0/237, Winpass 0/717 = 3/1271. Recovered drafts remain 554 draft-only. Exact-byte recovery was retried in File Library and current /mnt/data; no matching source/draft bytes were exposed, so no fourth strict record was claimed.",
-  "next_start": "Read latest HEAD/checkpoint/CI first. Retry durable/runtime access to Standard draft SHA256 326f38b5aebadc226d3e12eaf6e750bf4b7727759c2e4f7f06f75dc2ffa114b0 and Standard ZIP SHA256 c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6. If exposed, verify SHA/count and run asset manifest + exact locator + candidate composer + batch runner + validator, persist/readback/reconcile Standard record 4 through 317, then 実力錬成237, Winpass717. Then evidence-review Winpass717 to 570 without count forcing; validate/freeze global1124; variants; app mapping; browser/iPhone/Fire/A4; strict release; PUBLICATION_READY; isolated public verification.",
+  "exact_stop": "Strict durable progress is Standard 317/317 + 実力錬成 237/237 + Winpass 0/717 = 554/1271. Standard and 実力錬成 are now durably saved/read back/validated. Stop is immediately before Winpass717 strict materialization record 1 because verified Winpass source bytes were not exposed in this execution environment.",
+  "next_start": "Read latest HEAD/checkpoint/CI first. Acquire Winpass ZIP bytes matching SHA256 29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf and 8,296,042 bytes from a durable/runtime source. Verify SHA/CRC and 81 unique DOCX, then materialize all 717 with ordered OOXML question/answer provenance or explicit graphical answer assets, score evidence, required figure identity and content-bound fingerprints; persist durably, post-save read back and validator-PASS before increasing strict count. Then evidence-review 717 to canonical 570 without count forcing; validate/freeze global1124; verified variants; app mapping; browser/iPhone/Fire/A4; strict release; PUBLICATION_READY; isolated public verification.",
   "main_untouched": true
 }
