@@ -109,7 +109,6 @@ jobs:
           NODE
           cat VOCAB_GRAMMAR_NOTES_AUDIT_STATUS.txt
       - name: Persist core reports before UI gate
-        if: github.event_name != 'pull_request'
         shell: bash
         run: |
           set -euo pipefail
@@ -161,7 +160,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
       - name: Persist final UI evidence
-        if: always() && github.event_name != 'pull_request'
+        if: always()
         shell: bash
         run: |
           set -euo pipefail
