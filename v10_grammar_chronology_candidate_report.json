@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-25T01:29:32.701Z",
+  "generatedAt": "2026-08-25T01:32:18.696Z",
   "passages": 168,
   "classification": "CANDIDATES_NOT_PASS_FAIL",
   "warning": "Detected structures are candidates only. A feature becomes allowed only after an evidence-backed textbook/section chronology entry exists.",
   "featureSummary": {
     "MODAL_CAN_COULD_MAY_MUST_SHOULD": {
-      "sectionCount": 86,
+      "sectionCount": 85,
       "sections": [
         "サンシャイン|1|Get Ready 2",
         "サンシャイン|1|Get Ready 3",
@@ -16,7 +16,6 @@
         "サンシャイン|1|PROGRAM 3-3",
         "サンシャイン|1|PROGRAM 5-1",
         "サンシャイン|1|PROGRAM 5-2",
-        "サンシャイン|1|PROGRAM 5-3",
         "サンシャイン|1|PROGRAM 6-3",
         "サンシャイン|1|PROGRAM 7-3",
         "ニューホライズン|1|Unit 2-2",
@@ -96,7 +95,7 @@
       ]
     },
     "GERUND": {
-      "sectionCount": 65,
+      "sectionCount": 66,
       "sections": [
         "サンシャイン|1|Get Ready 4",
         "サンシャイン|1|PROGRAM 2-3",
@@ -121,6 +120,7 @@
         "ニューホライズン|1|Unit 10-2",
         "ニューホライズン|1|Unit 10-3",
         "サンシャイン|2|PROGRAM 1-1",
+        "サンシャイン|2|PROGRAM 2-1",
         "サンシャイン|2|PROGRAM 3-1",
         "サンシャイン|2|PROGRAM 3-2",
         "サンシャイン|2|PROGRAM 4-1",
@@ -746,12 +746,12 @@
       "features": {
         "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
           {
-            "where": "sentence:13",
+            "where": "sentence:11",
             "text": "We can draw during the break.",
             "match": "can"
           },
           {
-            "where": "slash:13",
+            "where": "slash:11",
             "text": "We can draw / during the break.",
             "match": "can"
           },
@@ -763,12 +763,12 @@
         ],
         "GERUND": [
           {
-            "where": "sentence:13",
+            "where": "sentence:11",
             "text": "We can draw during the break.",
             "match": "during"
           },
           {
-            "where": "slash:13",
+            "where": "slash:11",
             "text": "We can draw / during the break.",
             "match": "during"
           },
@@ -815,32 +815,27 @@
             "match": "can"
           },
           {
-            "where": "sentence:7",
-            "text": "My father can ski.",
+            "where": "sentence:5",
+            "text": "My father can ski, too.",
             "match": "can"
           },
           {
-            "where": "sentence:8",
+            "where": "sentence:6",
             "text": "My mother can't ski.",
             "match": "can"
           },
           {
-            "where": "sentence:9",
-            "text": "My mother can dance.",
+            "where": "sentence:7",
+            "text": "My mother can dance well.",
             "match": "can"
           },
           {
-            "where": "sentence:10",
-            "text": "She can dance well.",
-            "match": "can"
-          },
-          {
-            "where": "sentence:11",
+            "where": "sentence:8",
             "text": "My grandfather can dance, too.",
             "match": "can"
           },
           {
-            "where": "sentence:12",
+            "where": "sentence:9",
             "text": "My grandmother can dance, too.",
             "match": "can"
           },
@@ -855,32 +850,27 @@
             "match": "can"
           },
           {
-            "where": "slash:7",
-            "text": "My father can ski.",
+            "where": "slash:5",
+            "text": "My father can ski, / too.",
             "match": "can"
           },
           {
-            "where": "slash:8",
+            "where": "slash:6",
             "text": "My mother can't ski.",
             "match": "can"
           },
           {
-            "where": "slash:9",
-            "text": "My mother can dance.",
+            "where": "slash:7",
+            "text": "My mother can dance / well.",
             "match": "can"
           },
           {
-            "where": "slash:10",
-            "text": "She can dance / well.",
-            "match": "can"
-          },
-          {
-            "where": "slash:11",
+            "where": "slash:8",
             "text": "My grandfather can dance, / too.",
             "match": "can"
           },
           {
-            "where": "slash:12",
+            "where": "slash:9",
             "text": "My grandmother can dance, / too.",
             "match": "can"
           },
@@ -890,13 +880,13 @@
             "match": "can"
           },
           {
-            "where": "A4.evidence",
+            "where": "A3.evidence",
             "text": "My mother can't ski.",
             "match": "can"
           },
           {
-            "where": "A5.evidence",
-            "text": "My mother can dance.",
+            "where": "A4.evidence",
+            "text": "My mother can dance well.",
             "match": "can"
           },
           {
@@ -905,12 +895,12 @@
             "match": "can"
           },
           {
-            "where": "B3.evidence",
-            "text": "She can dance well.",
+            "where": "B2.evidence",
+            "text": "My father can ski, too.",
             "match": "can"
           },
           {
-            "where": "B4.evidence",
+            "where": "B3.evidence",
             "text": "My grandfather can dance, too. / My grandmother can dance, too.",
             "match": "can"
           }
@@ -936,46 +926,36 @@
           },
           {
             "where": "sentence:3",
-            "text": "Can you play the guitar?",
-            "match": "Can"
+            "text": "I can play the guitar, too.",
+            "match": "can"
           },
           {
             "where": "sentence:4",
-            "text": "Yes, I can.",
-            "match": "can"
-          },
-          {
-            "where": "sentence:5",
-            "text": "Can you skate?",
-            "match": "Can"
-          },
-          {
-            "where": "sentence:6",
-            "text": "Yes, I can.",
-            "match": "can"
-          },
-          {
-            "where": "sentence:7",
             "text": "I can skate fast.",
             "match": "can"
           },
           {
-            "where": "sentence:8",
+            "where": "sentence:5",
+            "text": "My friend can skate, too.",
+            "match": "can"
+          },
+          {
+            "where": "sentence:6",
             "text": "Can you do a magic trick?",
             "match": "Can"
           },
           {
-            "where": "sentence:9",
+            "where": "sentence:7",
             "text": "Yes, I can.",
             "match": "can"
           },
           {
-            "where": "sentence:11",
+            "where": "sentence:9",
             "text": "We can practice after school.",
             "match": "can"
           },
           {
-            "where": "sentence:13",
+            "where": "sentence:11",
             "text": "My friend and I can skate together.",
             "match": "can"
           },
@@ -991,46 +971,36 @@
           },
           {
             "where": "slash:3",
-            "text": "Can you play / the guitar?",
-            "match": "Can"
+            "text": "I can play / the guitar, too.",
+            "match": "can"
           },
           {
             "where": "slash:4",
-            "text": "Yes, / I can.",
-            "match": "can"
-          },
-          {
-            "where": "slash:5",
-            "text": "Can you skate?",
-            "match": "Can"
-          },
-          {
-            "where": "slash:6",
-            "text": "Yes, / I can.",
-            "match": "can"
-          },
-          {
-            "where": "slash:7",
             "text": "I can skate / fast.",
             "match": "can"
           },
           {
-            "where": "slash:8",
+            "where": "slash:5",
+            "text": "My friend can skate, / too.",
+            "match": "can"
+          },
+          {
+            "where": "slash:6",
             "text": "Can you do / a magic trick?",
             "match": "Can"
           },
           {
-            "where": "slash:9",
+            "where": "slash:7",
             "text": "Yes, / I can.",
             "match": "can"
           },
           {
-            "where": "slash:11",
+            "where": "slash:9",
             "text": "We can practice / after school.",
             "match": "can"
           },
           {
-            "where": "slash:13",
+            "where": "slash:11",
             "text": "My friend and I / can skate / together.",
             "match": "can"
           },
@@ -1046,7 +1016,7 @@
           },
           {
             "where": "A3.evidence",
-            "text": "I can skate fast.",
+            "text": "I can play the guitar, too.",
             "match": "can"
           },
           {
@@ -1060,22 +1030,17 @@
             "match": "can"
           },
           {
-            "where": "B1.answer",
-            "text": "Yes, I can.",
+            "where": "B1.evidence",
+            "text": "I can skate fast.",
             "match": "can"
           },
           {
-            "where": "B1.evidence",
-            "text": "Can you play the guitar? / Yes, I can.",
-            "match": "Can"
-          },
-          {
             "where": "B2.evidence",
-            "text": "Can you skate? / Yes, I can.",
-            "match": "Can"
+            "text": "My friend can skate, too.",
+            "match": "can"
           },
           {
-            "where": "B4.evidence",
+            "where": "B3.evidence",
             "text": "My friend and I can skate together.",
             "match": "can"
           }
@@ -1096,37 +1061,27 @@
           },
           {
             "where": "sentence:5",
-            "text": "It can find people.",
+            "text": "It can carry water, too.",
             "match": "can"
           },
           {
             "where": "sentence:6",
-            "text": "It can help people.",
+            "text": "It can find people.",
             "match": "can"
           },
           {
             "where": "sentence:7",
-            "text": "It can fly, too.",
+            "text": "It can help people.",
             "match": "can"
           },
           {
             "where": "sentence:8",
-            "text": "Can it carry water?",
-            "match": "Can"
-          },
-          {
-            "where": "sentence:9",
-            "text": "Yes, it can.",
+            "text": "It can help people in a tree.",
             "match": "can"
           },
           {
-            "where": "sentence:10",
-            "text": "Can it help people in a tree?",
-            "match": "Can"
-          },
-          {
-            "where": "sentence:11",
-            "text": "Yes, it can.",
+            "where": "sentence:9",
+            "text": "It can fly, too.",
             "match": "can"
           },
           {
@@ -1136,42 +1091,32 @@
           },
           {
             "where": "slash:5",
-            "text": "It can find / people.",
+            "text": "It can carry / water, too.",
             "match": "can"
           },
           {
             "where": "slash:6",
-            "text": "It can help / people.",
+            "text": "It can find / people.",
             "match": "can"
           },
           {
             "where": "slash:7",
-            "text": "It can fly, / too.",
+            "text": "It can help / people.",
             "match": "can"
           },
           {
             "where": "slash:8",
-            "text": "Can it carry / water?",
-            "match": "Can"
-          },
-          {
-            "where": "slash:9",
-            "text": "Yes, / it can.",
+            "text": "It can help / people / in a tree.",
             "match": "can"
           },
           {
-            "where": "slash:10",
-            "text": "Can it help / people / in a tree?",
-            "match": "Can"
-          },
-          {
-            "where": "slash:11",
-            "text": "Yes, / it can.",
+            "where": "slash:9",
+            "text": "It can fly, / too.",
             "match": "can"
           },
           {
             "where": "A2.evidence",
-            "text": "It can carry a heavy thing.",
+            "text": "It can carry a heavy thing. / It can carry water, too.",
             "match": "can"
           },
           {
@@ -1181,16 +1126,11 @@
           },
           {
             "where": "A4.evidence",
-            "text": "Can it carry water? / Yes, it can.",
-            "match": "Can"
-          },
-          {
-            "where": "B3.evidence",
-            "text": "It can help people.",
+            "text": "It can help people in a tree.",
             "match": "can"
           },
           {
-            "where": "B4.evidence",
+            "where": "B3.evidence",
             "text": "It can fly, too.",
             "match": "can"
           }
@@ -1207,8 +1147,13 @@
             "match": "thing"
           },
           {
+            "where": "A2.answer",
+            "text": "a heavy thing and water",
+            "match": "thing"
+          },
+          {
             "where": "A2.evidence",
-            "text": "It can carry a heavy thing.",
+            "text": "It can carry a heavy thing. / It can carry water, too.",
             "match": "thing"
           }
         ]
@@ -1252,12 +1197,12 @@
             "match": "That is"
           },
           {
-            "where": "A3.evidence",
-            "text": "Is that an elephant?",
+            "where": "A2.evidence",
+            "text": "Is that an elephant? / Yes, it is.",
             "match": "that an"
           },
           {
-            "where": "A4.evidence",
+            "where": "A3.evidence",
             "text": "Is that a butterfly? / No, it isn't. / That is an ant.",
             "match": "that a"
           },
@@ -1270,6 +1215,11 @@
             "where": "B2.evidence",
             "text": "Look at that ant.",
             "match": "that ant"
+          },
+          {
+            "where": "B3.evidence",
+            "text": "That is an ant.",
+            "match": "That is"
           }
         ]
       }
@@ -1288,11 +1238,6 @@
           },
           {
             "where": "sentence:7",
-            "text": "Who is that woman?",
-            "match": "Who is"
-          },
-          {
-            "where": "sentence:11",
             "text": "Who is that man?",
             "match": "Who is"
           },
@@ -1303,11 +1248,6 @@
           },
           {
             "where": "slash:7",
-            "text": "Who is / that woman?",
-            "match": "Who is"
-          },
-          {
-            "where": "slash:11",
             "text": "Who is / that man?",
             "match": "Who is"
           }
@@ -1351,7 +1291,7 @@
             "match": "drawing"
           },
           {
-            "where": "sentence:12",
+            "where": "sentence:7",
             "text": "His drawing is great.",
             "match": "drawing"
           },
@@ -1361,7 +1301,7 @@
             "match": "drawing"
           },
           {
-            "where": "slash:12",
+            "where": "slash:7",
             "text": "His drawing is / great.",
             "match": "drawing"
           },
@@ -1371,7 +1311,7 @@
             "match": "drawing"
           },
           {
-            "where": "B4.evidence",
+            "where": "B2.evidence",
             "text": "His drawing is great.",
             "match": "drawing"
           }
@@ -1398,17 +1338,17 @@
         ],
         "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
           {
-            "where": "sentence:6",
+            "where": "sentence:4",
             "text": "He can skate fast.",
             "match": "can"
           },
           {
-            "where": "slash:6",
+            "where": "slash:4",
             "text": "He can skate / fast.",
             "match": "can"
           },
           {
-            "where": "A3.evidence",
+            "where": "A2.evidence",
             "text": "He can skate fast.",
             "match": "can"
           }
@@ -1423,22 +1363,22 @@
       "features": {
         "TO_INFINITIVE": [
           {
-            "where": "sentence:11",
+            "where": "sentence:10",
             "text": "I would like to support the children.",
             "match": "to support"
           },
           {
-            "where": "sentence:12",
+            "where": "sentence:11",
             "text": "I'd like to talk about the event.",
             "match": "to talk"
           },
           {
-            "where": "slash:11",
+            "where": "slash:10",
             "text": "I would like to support / the children.",
             "match": "to support"
           },
           {
-            "where": "slash:12",
+            "where": "slash:11",
             "text": "I'd like to talk about / the event.",
             "match": "to talk"
           },
@@ -1446,18 +1386,11 @@
             "where": "A5.evidence",
             "text": "I would like to support the children.",
             "match": "to support"
-          }
-        ],
-        "MODAL_CAN_COULD_MAY_MUST_SHOULD": [
-          {
-            "where": "sentence:13",
-            "text": "We can support all the children.",
-            "match": "can"
           },
           {
-            "where": "slash:13",
-            "text": "We can support / all the children.",
-            "match": "can"
+            "where": "B4.evidence",
+            "text": "I'd like to talk about the event.",
+            "match": "to talk"
           }
         ]
       }
@@ -3781,6 +3714,11 @@
             "match": "should"
           },
           {
+            "where": "sentence:13",
+            "text": "Baseball can bring people together.",
+            "match": "can"
+          },
+          {
             "where": "slash:3",
             "text": "The project should promote / baseball.",
             "match": "should"
@@ -3791,14 +3729,19 @@
             "match": "should"
           },
           {
+            "where": "slash:13",
+            "text": "Baseball can bring / people / together.",
+            "match": "can"
+          },
+          {
             "where": "A3.evidence",
             "text": "The project should promote baseball.",
             "match": "should"
           },
           {
             "where": "B5.evidence",
-            "text": "We should root for the project, too.",
-            "match": "should"
+            "text": "Baseball can bring people together.",
+            "match": "can"
           }
         ],
         "WILL_FUTURE": [
@@ -3816,6 +3759,28 @@
             "where": "B4.evidence",
             "text": "I hope the project will be successful.",
             "match": "will"
+          }
+        ],
+        "GERUND": [
+          {
+            "where": "sentence:13",
+            "text": "Baseball can bring people together.",
+            "match": "bring"
+          },
+          {
+            "where": "slash:13",
+            "text": "Baseball can bring / people / together.",
+            "match": "bring"
+          },
+          {
+            "where": "B5.answer",
+            "text": "bring people together",
+            "match": "bring"
+          },
+          {
+            "where": "B5.evidence",
+            "text": "Baseball can bring people together.",
+            "match": "bring"
           }
         ]
       }
@@ -4292,11 +4257,6 @@
             "match": "hiking"
           },
           {
-            "where": "sentence:11",
-            "text": "After hiking, I hear from my friend.",
-            "match": "hiking"
-          },
-          {
             "where": "sentence:13",
             "text": "I want to go hiking again.",
             "match": "hiking"
@@ -4304,11 +4264,6 @@
           {
             "where": "slash:2",
             "text": "My friend and I / go hiking.",
-            "match": "hiking"
-          },
-          {
-            "where": "slash:11",
-            "text": "After hiking, / I hear from / my friend.",
             "match": "hiking"
           },
           {
@@ -4324,11 +4279,6 @@
           {
             "where": "A2.evidence",
             "text": "My friend and I go hiking.",
-            "match": "hiking"
-          },
-          {
-            "where": "B5.evidence",
-            "text": "After hiking, I hear from my friend.",
             "match": "hiking"
           }
         ],
@@ -8220,7 +8170,7 @@
           },
           {
             "where": "sentence:4",
-            "text": "I must take a shower by dinner time.",
+            "text": "I must take a shower by nine.",
             "match": "must"
           },
           {
@@ -8250,7 +8200,7 @@
           },
           {
             "where": "slash:4",
-            "text": "I must take / a shower / by dinner time.",
+            "text": "I must take / a shower / by nine.",
             "match": "must"
           },
           {
@@ -8280,7 +8230,7 @@
           },
           {
             "where": "A3.evidence",
-            "text": "I must take a shower by dinner time.",
+            "text": "I must take a shower by nine.",
             "match": "must"
           },
           {
@@ -9430,11 +9380,6 @@
       "features": {
         "TO_INFINITIVE": [
           {
-            "where": "sentence:2",
-            "text": "We know UNESCO has a way to select sites.",
-            "match": "to select"
-          },
-          {
             "where": "sentence:3",
             "text": "People decide what standard to use.",
             "match": "to use"
@@ -9445,11 +9390,6 @@
             "match": "to know"
           },
           {
-            "where": "slash:2",
-            "text": "We know / UNESCO has / a way to select sites.",
-            "match": "to select"
-          },
-          {
             "where": "slash:3",
             "text": "People decide / what standard / to use.",
             "match": "to use"
@@ -9458,16 +9398,6 @@
             "where": "slash:10",
             "text": "I want to know / why each site is important.",
             "match": "to know"
-          },
-          {
-            "where": "B1.answer",
-            "text": "a way to select sites",
-            "match": "to select"
-          },
-          {
-            "where": "B1.evidence",
-            "text": "We know UNESCO has a way to select sites.",
-            "match": "to select"
           },
           {
             "where": "B2.answer",
