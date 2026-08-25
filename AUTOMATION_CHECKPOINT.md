@@ -6,7 +6,7 @@ Updated: 2026-08-25 JST (manual continuation)
 - Repository: `yo666ha-boop/reading-app`.
 - Work branch: `v10-vocab-grammar-notes-audit`.
 - Branch HEAD at start of this run: `99f3b08ec527cfd40736130334bd853aa51394bd`.
-- Latest branch HEAD before this checkpoint write: `6338a677b03892aed0859ca1c2c57e867847e117` (Actions bounded-notes evidence commit following content commit `6811239804d200ed924a234d3a7513080d49fffc`).
+- Latest branch HEAD before this checkpoint write: `cd3ea3234529842a2c6c5fec6b21f171076b5f41` (Actions evidence commits following content commit `6811239804d200ed924a234d3a7513080d49fffc`).
 - Public `main`: `1f0cabf9bfcc4482f507e33188499bdbbd5bab57`; NOT modified.
 - Sole vocabulary authority: native Google Sheet `英単語_教科書別マスターデータ_NH_SS_2026_v7_app_wordbook_master`, id `1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4`, tab `単語マスター`, canonical 3975 records.
 - Final dynamic v10 load order was re-read from `v10_interaction_metadata.js`: terminal manual corrections -> chronology/reference bridge prepare -> reference slash files -> final chronology bridge apply -> runtime complete.
@@ -23,7 +23,8 @@ Updated: 2026-08-25 JST (manual continuation)
 - Recovered the exact intermittent/reference failure from run `32819539877`: passage 100 had old reference `At school, I talk about local food in a short speech.` versus runtime `At school, I give a short speech about local food.`
 - Live-v7 evidence showed `talk` is already introduced in NH1 Unit 7, `speech` is NH2 Unit 2 Part2, but `give-gave` is not introduced until NH2 Let's Read 1. Therefore the reference wording is both reference-correct and chronology-safer.
 - Updated the terminal manual correction for NH2 Unit 2-2 so the final sentence/evidence is `At school, I talk about local food in a short speech.`; synchronized Japanese full translation, slash first row, A evidence/evidenceJp/reason and matching B evidence if present. Commit `6811239804d200ed924a234d3a7513080d49fffc`.
-- Fresh audit run `32819972389` completed its discovery job SUCCESS: vocabulary audit 168/168, grammar candidate audit 168/168, notes UI PASS, runtime browser errors 0.
+- Fresh audit run `32819972389` completed discovery SUCCESS: vocabulary audit 168/168, grammar candidate audit 168/168, notes UI PASS, runtime browser errors 0.
+- Fresh slash-quality run `32819972404` completed SUCCESS on the same content commit: reference runtime 168 validation PASS, authoritative reference sample gate PASS, Stage2 full 168 coverage PASS, DOM PASS, Chromium/Firefox/WebKit-iPhone cross-browser and print validation PASS, and public GitHub Pages reference-runtime smoke PASS.
 - Grammar scanner now reliably persists a 168/168 authoritative-final-runtime scan with 20 detected feature families; this remains candidate coverage only, not chronology PASS.
 
 ## Current exact verified state
@@ -36,8 +37,9 @@ Updated: 2026-08-25 JST (manual continuation)
 - `NOTED_UNLEARNED_ALLOWED=275` occurrences.
 - Grammar candidate coverage: `168/168`, `20` detected feature families, authoritative runtime complete. Evidence-backed exact subunit introduction boundaries are still pending; grammar chronology remains FAIL-CLOSED/PENDING.
 - Notes UI gate: PASS.
-- Latest complete prior slash-quality run after the six-family note patch: `32819539860` SUCCESS, including reference runtime 168, sample gate, coverage, DOM, Chromium/Firefox/WebKit-iPhone cross-browser+print, and public Pages reference-runtime smoke.
-- Slash-quality run for newest NH2 Unit 2-2 content commit: `32819972404`; reference runtime, sample gate, coverage and DOM were already PASS at checkpoint time, browser-engine/cross-browser stages were still in progress and final conclusion not yet claimed.
+- Slash/reference on newest content: PASS 168/168 through run `32819972404`.
+- Chromium/Firefox/WebKit-iPhone + print on newest content: PASS through run `32819972404`.
+- Public GitHub Pages reference-runtime smoke: PASS through run `32819972404`, but public `main` itself has intentionally not been updated to this work branch.
 - Public main release: NOT performed.
 
 ## Canonical-v7 evidence captured this run
@@ -56,13 +58,14 @@ Updated: 2026-08-25 JST (manual continuation)
 - missing gloss: PASS (`0`).
 - notes UI: PASS.
 - grammar candidate coverage: 168/168 PASS; grammar chronology PENDING/FAIL-CLOSED until evidence-backed introductions are populated.
-- reference slash after Get Ready 6 bridge: PASS on completed runs.
-- newest NH2 Unit2-2 reference exact validation + coverage + DOM: PASS so far; final cross-browser/print run conclusion still pending at checkpoint time.
+- reference slash: PASS 168/168 on newest content (`32819972404`).
+- coverage/DOM: PASS on newest content (`32819972404`).
+- Chromium/Firefox/WebKit-iPhone + print: PASS on newest content (`32819972404`).
 - public main/live release: intentionally unchanged / not final.
 
 ## Exact stop / next start
-- Exact stop: content commit `6811239804d200ed924a234d3a7513080d49fffc` aligned NH2 Unit 2-2 to the old authoritative reference wording and removed the later `give` usage; audit run `32819972389` discovery is SUCCESS at `548 unique / 2684 occurrences`, while slash run `32819972404` had passed reference/sample/coverage/DOM and was entering cross-browser validation.
-- Next start: re-read branch HEAD because Actions appends `[skip ci]` evidence commits; first read final conclusion of `32819972404`. If PASS, continue directly from unresolved `badge 16`, then `checklist 16`, `ocean 16`, `production 16`, `race 16`, `researchers 16`, `trash 16`, `white 16`, `basketball 15`, `straw 15`, and continue descending without a small-batch stop.
+- Exact stop: content commit `6811239804d200ed924a234d3a7513080d49fffc` aligned NH2 Unit 2-2 to the authoritative reference wording and removed future `give`; audit run `32819972389` is SUCCESS at `548 unique / 2684 occurrences`; slash/browser/print run `32819972404` is fully SUCCESS.
+- Next start: re-read branch HEAD because Actions appends `[skip ci]` evidence commits; continue directly from unresolved `badge 16`, then `checklist 16`, `ocean 16`, `production 16`, `race 16`, `researchers 16`, `trash 16`, `white 16`, `basketball 15`, `straw 15`, and continue descending without a small-batch stop.
 - For every family: live-v7 exact/base/variant + textbook/grade/subunit evidence first; fix morphology scanner where canonical base+allowed grammar should license the form; otherwise prefer a natural cumulative-word rewrite; only content-essential words get passage-local English+Japanese notes.
 - After vocabulary leak reaches zero: populate evidence-backed exact-subunit grammar introduction boundaries for all 20 detected families, run true grammar chronology, and reduce future_grammar_leak to zero.
 - Final only after vocabulary chronology 168/168 PASS, grammar chronology 168/168 PASS, missing_gloss=0, future vocab/grammar leak=0, slash reference=168/168, A/B evidence, coverage/DOM, Chromium/Firefox/WebKit-iPhone and A4 student/teacher print all PASS: update main, verify live GitHub Pages, then stop automation.
