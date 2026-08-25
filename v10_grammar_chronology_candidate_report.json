@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-25T17:55:34.785Z",
+  "generatedAt": "2026-08-25T17:59:52.745Z",
   "passages": 168,
   "classification": "CANDIDATES_NOT_PASS_FAIL",
   "warning": "Refined structure detector v3.1 after authoritative final runtime load. Modal and infinitive families remain split; predicative -ing adjectives such as interesting/amazing are excluded from progressive detection.",
   "detectorVersion": "3.1",
   "featureSummary": {
     "MODAL_CAN": {
-      "sectionCount": 77,
+      "sectionCount": 76,
       "sections": [
         "サンシャイン|1|Get Ready 2",
         "サンシャイン|1|Get Ready 3",
@@ -19,7 +19,6 @@
         "サンシャイン|1|PROGRAM 5-2",
         "サンシャイン|1|PROGRAM 6-3",
         "サンシャイン|1|PROGRAM 7-3",
-        "ニューホライズン|1|Unit 1-2",
         "ニューホライズン|1|Unit 2-2",
         "ニューホライズン|1|Unit 5-2",
         "ニューホライズン|1|Unit 6-1",
@@ -88,7 +87,7 @@
       ]
     },
     "ADJECTIVE_TO_INFINITIVE": {
-      "sectionCount": 17,
+      "sectionCount": 15,
       "sections": [
         "サンシャイン|1|PROGRAM 1-3",
         "ニューホライズン|1|Unit 0",
@@ -96,8 +95,6 @@
         "ニューホライズン|1|Unit 10-2",
         "サンシャイン|2|PROGRAM 4-1",
         "サンシャイン|2|PROGRAM 4-2",
-        "ニューホライズン|2|Unit 2-2",
-        "ニューホライズン|2|Unit 3-1",
         "ニューホライズン|2|Unit 3-2",
         "ニューホライズン|2|Unit 4-1",
         "ニューホライズン|2|Unit 4-4",
@@ -110,20 +107,12 @@
       ]
     },
     "WANT_TO": {
-      "sectionCount": 61,
+      "sectionCount": 53,
       "sections": [
         "サンシャイン|1|PROGRAM 1-3",
         "サンシャイン|1|PROGRAM 6-3",
         "サンシャイン|1|PROGRAM 7-3",
         "サンシャイン|1|Step 6 / Our Project 3 / Power-Up 6",
-        "ニューホライズン|1|Unit 1-1",
-        "ニューホライズン|1|Unit 3-3",
-        "ニューホライズン|1|Unit 4-1",
-        "ニューホライズン|1|Unit 4-2",
-        "ニューホライズン|1|Unit 5-3",
-        "ニューホライズン|1|Unit 7-1",
-        "ニューホライズン|1|Unit 7-2",
-        "ニューホライズン|1|Unit 7-3",
         "ニューホライズン|1|Unit 8-1",
         "ニューホライズン|1|Unit 8-2",
         "ニューホライズン|1|Unit 8-3",
@@ -176,13 +165,12 @@
       ]
     },
     "GERUND": {
-      "sectionCount": 6,
+      "sectionCount": 5,
       "sections": [
         "サンシャイン|1|PROGRAM 5-1",
         "ニューホライズン|1|Unit 5-1",
         "ニューホライズン|1|Unit 9-1",
         "ニューホライズン|1|Unit 10-3",
-        "ニューホライズン|2|Unit 1-3",
         "サンシャイン|3|PROGRAM 1-3"
       ]
     },
@@ -250,13 +238,12 @@
       ]
     },
     "WHEN_WHILE_CLAUSE": {
-      "sectionCount": 14,
+      "sectionCount": 13,
       "sections": [
         "ニューホライズン|1|Unit 10-2",
         "サンシャイン|2|PROGRAM 2-2",
         "サンシャイン|2|PROGRAM 5-2",
         "サンシャイン|2|PROGRAM 6-3",
-        "ニューホライズン|2|Unit 1-3",
         "ニューホライズン|2|Unit 2-1",
         "ニューホライズン|2|Unit 2-4",
         "ニューホライズン|2|Unit 4-1",
@@ -318,11 +305,10 @@
       ]
     },
     "WH_TO_INFINITIVE": {
-      "sectionCount": 9,
+      "sectionCount": 8,
       "sections": [
         "サンシャイン|2|PROGRAM 5-1",
         "サンシャイン|2|PROGRAM 5-2",
-        "ニューホライズン|2|Unit 3-4",
         "ニューホライズン|2|Unit 5-3",
         "ニューホライズン|2|Unit 7-2",
         "サンシャイン|3|PROGRAM 3-3",
@@ -459,19 +445,10 @@
       ]
     },
     "RELATIVE_PRONOUN": {
-      "sectionCount": 5,
+      "sectionCount": 2,
       "sections": [
         "サンシャイン|3|PROGRAM 5-3",
-        "サンシャイン|3|PROGRAM 7-3",
-        "ニューホライズン|3|Unit 3-1",
-        "ニューホライズン|3|Unit 4-3",
-        "ニューホライズン|3|Unit 4-4"
-      ]
-    },
-    "LET_O_V": {
-      "sectionCount": 1,
-      "sections": [
-        "ニューホライズン|3|Unit 3-2"
+        "サンシャイン|3|PROGRAM 7-3"
       ]
     },
     "TOO_TO": {
@@ -1448,23 +1425,6 @@
       "section": "Unit 1-1",
       "id": "V10-NH-G1-U1-1-001",
       "features": {
-        "WANT_TO": [
-          {
-            "where": "sentence:8",
-            "text": "I want to join the tennis club.",
-            "match": "want to join"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "I want to join the tennis club.",
-            "match": "want to join"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "I want to join the tennis club.",
-            "match": "want to join"
-          }
-        ],
         "ADJECTIVE_TO_INFINITIVE": [
           {
             "where": "sentence:9",
@@ -1479,30 +1439,7 @@
       "grade": "1",
       "section": "Unit 1-2",
       "id": "V10-NH-G1-U1-2-001",
-      "features": {
-        "MODAL_CAN": [
-          {
-            "where": "sentence:9",
-            "text": "We can play soccer together.",
-            "match": "can play"
-          },
-          {
-            "where": "slash:9",
-            "text": "We can play soccer together.",
-            "match": "can play"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "We can play soccer together.",
-            "match": "can play"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "We can play soccer together.",
-            "match": "can play"
-          }
-        ]
-      }
+      "features": {}
     },
     {
       "textbook": "ニューホライズン",
@@ -1636,70 +1573,21 @@
       "grade": "1",
       "section": "Unit 3-3",
       "id": "V10-NH-G1-U3-3-001",
-      "features": {
-        "WANT_TO": [
-          {
-            "where": "sentence:7",
-            "text": "I want to win.",
-            "match": "want to win"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "I want to win.",
-            "match": "want to win"
-          }
-        ]
-      }
+      "features": {}
     },
     {
       "textbook": "ニューホライズン",
       "grade": "1",
       "section": "Unit 4-1",
       "id": "V10-NH-G1-U4-1-001",
-      "features": {
-        "WANT_TO": [
-          {
-            "where": "sentence:7",
-            "text": "I want to visit New Zealand someday.",
-            "match": "want to visit"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "I want to visit New Zealand someday.",
-            "match": "want to visit"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "I want to visit New Zealand someday.",
-            "match": "want to visit"
-          }
-        ]
-      }
+      "features": {}
     },
     {
       "textbook": "ニューホライズン",
       "grade": "1",
       "section": "Unit 4-2",
       "id": "V10-NH-G1-U4-2-001",
-      "features": {
-        "WANT_TO": [
-          {
-            "where": "sentence:6",
-            "text": "We want to win.",
-            "match": "want to win"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "We want to win.",
-            "match": "want to win"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "We want to win.",
-            "match": "want to win"
-          }
-        ]
-      }
+      "features": {}
     },
     {
       "textbook": "ニューホライズン",
@@ -1768,25 +1656,7 @@
       "grade": "1",
       "section": "Unit 5-3",
       "id": "V10-NH-G1-U5-3-001",
-      "features": {
-        "WANT_TO": [
-          {
-            "where": "sentence:10",
-            "text": "“I want to visit the cafe.”",
-            "match": "want to visit"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "“I want to visit the cafe.”",
-            "match": "want to visit"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "“I want to visit the cafe.”",
-            "match": "want to visit"
-          }
-        ]
-      }
+      "features": {}
     },
     {
       "textbook": "ニューホライズン",
@@ -1837,80 +1707,21 @@
       "grade": "1",
       "section": "Unit 7-1",
       "id": "V10-NH-G1-U7-1-001",
-      "features": {
-        "WANT_TO": [
-          {
-            "where": "sentence:4",
-            "text": "I want to practice tennis tomorrow morning.",
-            "match": "want to practice"
-          },
-          {
-            "where": "A2.evidence",
-            "text": "I want to practice tennis tomorrow morning.",
-            "match": "want to practice"
-          },
-          {
-            "where": "B1.evidence",
-            "text": "I want to practice tennis tomorrow morning.",
-            "match": "want to practice"
-          }
-        ]
-      }
+      "features": {}
     },
     {
       "textbook": "ニューホライズン",
       "grade": "1",
       "section": "Unit 7-2",
       "id": "V10-NH-G1-U7-2-001",
-      "features": {
-        "WANT_TO": [
-          {
-            "where": "sentence:3",
-            "text": "I want to buy a souvenir for my family.",
-            "match": "want to buy"
-          },
-          {
-            "where": "sentence:9",
-            "text": "I want to buy it.",
-            "match": "want to buy"
-          },
-          {
-            "where": "A2.evidence",
-            "text": "I want to buy a souvenir for my family.",
-            "match": "want to buy"
-          },
-          {
-            "where": "B1.evidence",
-            "text": "I want to buy a souvenir for my family.",
-            "match": "want to buy"
-          }
-        ]
-      }
+      "features": {}
     },
     {
       "textbook": "ニューホライズン",
       "grade": "1",
       "section": "Unit 7-3",
       "id": "V10-NH-G1-U7-3-001",
-      "features": {
-        "WANT_TO": [
-          {
-            "where": "sentence:7",
-            "text": "I want to visit a palace.",
-            "match": "want to visit"
-          },
-          {
-            "where": "A4.evidence",
-            "text": "I want to visit a palace.",
-            "match": "want to visit"
-          },
-          {
-            "where": "B2.evidence",
-            "text": "I want to visit a palace.",
-            "match": "want to visit"
-          }
-        ]
-      }
+      "features": {}
     },
     {
       "textbook": "ニューホライズン",
@@ -4274,45 +4085,6 @@
             "text": "We can use the card to communicate with the shop staff.",
             "match": "can use"
           }
-        ],
-        "WHEN_WHILE_CLAUSE": [
-          {
-            "where": "sentence:7",
-            "text": "We look at the card when we need help.",
-            "match": "when we "
-          },
-          {
-            "where": "slash:7",
-            "text": "We look / at the card / when we need help.",
-            "match": "when we "
-          },
-          {
-            "where": "A4.answer",
-            "text": "when we need help",
-            "match": "when we "
-          },
-          {
-            "where": "A4.evidence",
-            "text": "We look at the card when we need help.",
-            "match": "when we "
-          }
-        ],
-        "GERUND": [
-          {
-            "where": "sentence:9",
-            "text": "Shopping was an interesting experience.",
-            "match": "Shopping was"
-          },
-          {
-            "where": "slash:9",
-            "text": "Shopping was an interesting experience.",
-            "match": "Shopping was"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "Shopping was an interesting experience.",
-            "match": "Shopping was"
-          }
         ]
       }
     },
@@ -4523,13 +4295,6 @@
             "text": "After the speech, I hear, “I would love to try it, too.”",
             "match": "love to try"
           }
-        ],
-        "ADJECTIVE_TO_INFINITIVE": [
-          {
-            "where": "sentence:11",
-            "text": "I am happy to hear that.",
-            "match": "happy to hear"
-          }
         ]
       }
     },
@@ -4602,20 +4367,7 @@
       "grade": "2",
       "section": "Unit 3-1",
       "id": "V10-NH-G2-U3-1-001",
-      "features": {
-        "ADJECTIVE_TO_INFINITIVE": [
-          {
-            "where": "sentence:3",
-            "text": "In the morning, I help the children get ready to play.",
-            "match": "ready to play"
-          },
-          {
-            "where": "B1.evidence",
-            "text": "In the morning, I help the children get ready to play.",
-            "match": "ready to play"
-          }
-        ]
-      }
+      "features": {}
     },
     {
       "textbook": "ニューホライズン",
@@ -4687,13 +4439,6 @@
       "section": "Unit 3-4",
       "id": "V10-NH-G2-U3-4-001",
       "features": {
-        "WH_TO_INFINITIVE": [
-          {
-            "where": "sentence:4",
-            "text": "I learned how to read clearly.",
-            "match": "how to read"
-          }
-        ],
         "WILL_FUTURE": [
           {
             "where": "sentence:9",
@@ -7968,23 +7713,6 @@
       "section": "Unit 3-1",
       "id": "V10-NH-G3-U3-1-001",
       "features": {
-        "RELATIVE_PRONOUN": [
-          {
-            "where": "sentence:1",
-            "text": "Our class studies an endangered animal that lives in a forest.",
-            "match": "animal that lives"
-          },
-          {
-            "where": "A1.evidence",
-            "text": "Our class studies an endangered animal that lives in a forest.",
-            "match": "animal that lives"
-          },
-          {
-            "where": "B3.evidence",
-            "text": "Our class studies an endangered animal that lives in a forest.",
-            "match": "animal that lives"
-          }
-        ],
         "PRESENT_PERFECT": [
           {
             "where": "sentence:3",
@@ -8144,28 +7872,6 @@
             "where": "slash:8",
             "text": "The map shows where the habitat has become smaller.",
             "match": "has become"
-          }
-        ],
-        "LET_O_V": [
-          {
-            "where": "sentence:9",
-            "text": "We ask our teacher to let us share the article with the class.",
-            "match": "let us share"
-          },
-          {
-            "where": "slash:9",
-            "text": "We ask our teacher / to let us share the article / with the class.",
-            "match": "let us share"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "We ask our teacher to let us share the article with the class.",
-            "match": "let us share"
-          },
-          {
-            "where": "B1.evidence",
-            "text": "We ask our teacher to let us share the article with the class.",
-            "match": "let us share"
           }
         ],
         "MODAL_CAN": [
@@ -8548,38 +8254,6 @@
             "match": "could reach"
           }
         ],
-        "RELATIVE_PRONOUN": [
-          {
-            "where": "sentence:5",
-            "text": "One student comforted a friend who still felt afraid after the disaster.",
-            "match": "friend who still"
-          },
-          {
-            "where": "sentence:6",
-            "text": "The community also held a quiet moment to remember people who had died.",
-            "match": "people who had"
-          },
-          {
-            "where": "A4.answer",
-            "text": "people who had died",
-            "match": "people who had"
-          },
-          {
-            "where": "A4.evidence",
-            "text": "The community also held a quiet moment to remember people who had died.",
-            "match": "people who had"
-          },
-          {
-            "where": "B4.answer",
-            "text": "people who had died",
-            "match": "people who had"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "The community also held a quiet moment to remember people who had died.",
-            "match": "people who had"
-          }
-        ],
         "MODAL_CAN": [
           {
             "where": "sentence:9",
@@ -8630,33 +8304,6 @@
             "where": "B3.evidence",
             "text": "After a crisis, some roads in the town were blocked.",
             "match": "were blocked"
-          }
-        ],
-        "RELATIVE_PRONOUN": [
-          {
-            "where": "sentence:5",
-            "text": "Other volunteers exchanged information about people who still needed help.",
-            "match": "people who still"
-          },
-          {
-            "where": "A4.answer",
-            "text": "information about people who still needed help",
-            "match": "people who still"
-          },
-          {
-            "where": "A4.evidence",
-            "text": "Other volunteers exchanged information about people who still needed help.",
-            "match": "people who still"
-          },
-          {
-            "where": "B4.answer",
-            "text": "information about people who still needed help",
-            "match": "people who still"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "Other volunteers exchanged information about people who still needed help.",
-            "match": "people who still"
           }
         ],
         "MODAL_COULD": [
@@ -9087,475 +8734,14 @@
     }
   ],
   "chronologyGate": {
-    "detectedOccurrences": 1325,
+    "detectedOccurrences": 1268,
     "resolvedOccurrences": 948,
     "priorGradeCarryForwardOccurrences": 605,
     "unresolvedOccurrences": 320,
-    "futureGrammarLeak": 57,
+    "futureGrammarLeak": 0,
     "sectionChronologyComplete": false,
     "finalPass": false,
-    "future": [
-      {
-        "textbook": "ニューホライズン",
-        "grade": "1",
-        "section": "Unit 1-1",
-        "feature": "WANT_TO",
-        "boundary": "Unit 8-1",
-        "occurrences": 3,
-        "samples": [
-          {
-            "where": "sentence:8",
-            "text": "I want to join the tennis club.",
-            "match": "want to join"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "I want to join the tennis club.",
-            "match": "want to join"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "I want to join the tennis club.",
-            "match": "want to join"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "1",
-        "section": "Unit 1-2",
-        "feature": "MODAL_CAN",
-        "boundary": "Unit 2-2",
-        "occurrences": 4,
-        "samples": [
-          {
-            "where": "sentence:9",
-            "text": "We can play soccer together.",
-            "match": "can play"
-          },
-          {
-            "where": "slash:9",
-            "text": "We can play soccer together.",
-            "match": "can play"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "We can play soccer together.",
-            "match": "can play"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "We can play soccer together.",
-            "match": "can play"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "1",
-        "section": "Unit 3-3",
-        "feature": "WANT_TO",
-        "boundary": "Unit 8-1",
-        "occurrences": 2,
-        "samples": [
-          {
-            "where": "sentence:7",
-            "text": "I want to win.",
-            "match": "want to win"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "I want to win.",
-            "match": "want to win"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "1",
-        "section": "Unit 4-1",
-        "feature": "WANT_TO",
-        "boundary": "Unit 8-1",
-        "occurrences": 3,
-        "samples": [
-          {
-            "where": "sentence:7",
-            "text": "I want to visit New Zealand someday.",
-            "match": "want to visit"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "I want to visit New Zealand someday.",
-            "match": "want to visit"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "I want to visit New Zealand someday.",
-            "match": "want to visit"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "1",
-        "section": "Unit 4-2",
-        "feature": "WANT_TO",
-        "boundary": "Unit 8-1",
-        "occurrences": 3,
-        "samples": [
-          {
-            "where": "sentence:6",
-            "text": "We want to win.",
-            "match": "want to win"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "We want to win.",
-            "match": "want to win"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "We want to win.",
-            "match": "want to win"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "1",
-        "section": "Unit 5-3",
-        "feature": "WANT_TO",
-        "boundary": "Unit 8-1",
-        "occurrences": 3,
-        "samples": [
-          {
-            "where": "sentence:10",
-            "text": "“I want to visit the cafe.”",
-            "match": "want to visit"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "“I want to visit the cafe.”",
-            "match": "want to visit"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "“I want to visit the cafe.”",
-            "match": "want to visit"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "1",
-        "section": "Unit 7-1",
-        "feature": "WANT_TO",
-        "boundary": "Unit 8-1",
-        "occurrences": 3,
-        "samples": [
-          {
-            "where": "sentence:4",
-            "text": "I want to practice tennis tomorrow morning.",
-            "match": "want to practice"
-          },
-          {
-            "where": "A2.evidence",
-            "text": "I want to practice tennis tomorrow morning.",
-            "match": "want to practice"
-          },
-          {
-            "where": "B1.evidence",
-            "text": "I want to practice tennis tomorrow morning.",
-            "match": "want to practice"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "1",
-        "section": "Unit 7-2",
-        "feature": "WANT_TO",
-        "boundary": "Unit 8-1",
-        "occurrences": 4,
-        "samples": [
-          {
-            "where": "sentence:3",
-            "text": "I want to buy a souvenir for my family.",
-            "match": "want to buy"
-          },
-          {
-            "where": "sentence:9",
-            "text": "I want to buy it.",
-            "match": "want to buy"
-          },
-          {
-            "where": "A2.evidence",
-            "text": "I want to buy a souvenir for my family.",
-            "match": "want to buy"
-          },
-          {
-            "where": "B1.evidence",
-            "text": "I want to buy a souvenir for my family.",
-            "match": "want to buy"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "1",
-        "section": "Unit 7-3",
-        "feature": "WANT_TO",
-        "boundary": "Unit 8-1",
-        "occurrences": 3,
-        "samples": [
-          {
-            "where": "sentence:7",
-            "text": "I want to visit a palace.",
-            "match": "want to visit"
-          },
-          {
-            "where": "A4.evidence",
-            "text": "I want to visit a palace.",
-            "match": "want to visit"
-          },
-          {
-            "where": "B2.evidence",
-            "text": "I want to visit a palace.",
-            "match": "want to visit"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "2",
-        "section": "Unit 1-3",
-        "feature": "WHEN_WHILE_CLAUSE",
-        "boundary": "Unit 2-1",
-        "occurrences": 4,
-        "samples": [
-          {
-            "where": "sentence:7",
-            "text": "We look at the card when we need help.",
-            "match": "when we "
-          },
-          {
-            "where": "slash:7",
-            "text": "We look / at the card / when we need help.",
-            "match": "when we "
-          },
-          {
-            "where": "A4.answer",
-            "text": "when we need help",
-            "match": "when we "
-          },
-          {
-            "where": "A4.evidence",
-            "text": "We look at the card when we need help.",
-            "match": "when we "
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "2",
-        "section": "Unit 1-3",
-        "feature": "GERUND",
-        "boundary": "Unit 4-3",
-        "occurrences": 3,
-        "samples": [
-          {
-            "where": "sentence:9",
-            "text": "Shopping was an interesting experience.",
-            "match": "Shopping was"
-          },
-          {
-            "where": "slash:9",
-            "text": "Shopping was an interesting experience.",
-            "match": "Shopping was"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "Shopping was an interesting experience.",
-            "match": "Shopping was"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "2",
-        "section": "Unit 2-2",
-        "feature": "ADJECTIVE_TO_INFINITIVE",
-        "boundary": "Unit 3-2",
-        "occurrences": 1,
-        "samples": [
-          {
-            "where": "sentence:11",
-            "text": "I am happy to hear that.",
-            "match": "happy to hear"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "2",
-        "section": "Unit 3-1",
-        "feature": "ADJECTIVE_TO_INFINITIVE",
-        "boundary": "Unit 3-2",
-        "occurrences": 2,
-        "samples": [
-          {
-            "where": "sentence:3",
-            "text": "In the morning, I help the children get ready to play.",
-            "match": "ready to play"
-          },
-          {
-            "where": "B1.evidence",
-            "text": "In the morning, I help the children get ready to play.",
-            "match": "ready to play"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "2",
-        "section": "Unit 3-4",
-        "feature": "WH_TO_INFINITIVE",
-        "boundary": "Unit 5-1",
-        "occurrences": 1,
-        "samples": [
-          {
-            "where": "sentence:4",
-            "text": "I learned how to read clearly.",
-            "match": "how to read"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "3",
-        "section": "Unit 3-1",
-        "feature": "RELATIVE_PRONOUN",
-        "boundary": "Unit 5-2",
-        "occurrences": 3,
-        "samples": [
-          {
-            "where": "sentence:1",
-            "text": "Our class studies an endangered animal that lives in a forest.",
-            "match": "animal that lives"
-          },
-          {
-            "where": "A1.evidence",
-            "text": "Our class studies an endangered animal that lives in a forest.",
-            "match": "animal that lives"
-          },
-          {
-            "where": "B3.evidence",
-            "text": "Our class studies an endangered animal that lives in a forest.",
-            "match": "animal that lives"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "3",
-        "section": "Unit 3-2",
-        "feature": "LET_O_V",
-        "boundary": "Unit 3-3",
-        "occurrences": 4,
-        "samples": [
-          {
-            "where": "sentence:9",
-            "text": "We ask our teacher to let us share the article with the class.",
-            "match": "let us share"
-          },
-          {
-            "where": "slash:9",
-            "text": "We ask our teacher / to let us share the article / with the class.",
-            "match": "let us share"
-          },
-          {
-            "where": "A5.evidence",
-            "text": "We ask our teacher to let us share the article with the class.",
-            "match": "let us share"
-          },
-          {
-            "where": "B1.evidence",
-            "text": "We ask our teacher to let us share the article with the class.",
-            "match": "let us share"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "3",
-        "section": "Unit 4-3",
-        "feature": "RELATIVE_PRONOUN",
-        "boundary": "Unit 5-2",
-        "occurrences": 6,
-        "samples": [
-          {
-            "where": "sentence:5",
-            "text": "One student comforted a friend who still felt afraid after the disaster.",
-            "match": "friend who still"
-          },
-          {
-            "where": "sentence:6",
-            "text": "The community also held a quiet moment to remember people who had died.",
-            "match": "people who had"
-          },
-          {
-            "where": "A4.answer",
-            "text": "people who had died",
-            "match": "people who had"
-          },
-          {
-            "where": "A4.evidence",
-            "text": "The community also held a quiet moment to remember people who had died.",
-            "match": "people who had"
-          },
-          {
-            "where": "B4.answer",
-            "text": "people who had died",
-            "match": "people who had"
-          }
-        ]
-      },
-      {
-        "textbook": "ニューホライズン",
-        "grade": "3",
-        "section": "Unit 4-4",
-        "feature": "RELATIVE_PRONOUN",
-        "boundary": "Unit 5-2",
-        "occurrences": 5,
-        "samples": [
-          {
-            "where": "sentence:5",
-            "text": "Other volunteers exchanged information about people who still needed help.",
-            "match": "people who still"
-          },
-          {
-            "where": "A4.answer",
-            "text": "information about people who still needed help",
-            "match": "people who still"
-          },
-          {
-            "where": "A4.evidence",
-            "text": "Other volunteers exchanged information about people who still needed help.",
-            "match": "people who still"
-          },
-          {
-            "where": "B4.answer",
-            "text": "information about people who still needed help",
-            "match": "people who still"
-          },
-          {
-            "where": "B4.evidence",
-            "text": "Other volunteers exchanged information about people who still needed help.",
-            "match": "people who still"
-          }
-        ]
-      }
-    ],
+    "future": [],
     "unresolved": [
       {
         "textbook": "サンシャイン",

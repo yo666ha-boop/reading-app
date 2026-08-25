@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-08-25T17:55:33.755Z",
+    "generatedAt": "2026-08-25T17:59:51.526Z",
     "passages": 168,
     "canonicalSource": {
       "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
@@ -16,28 +16,58 @@
       "recordIdEnd": 4175
     },
     "counts": {
-      "V7_CHRONOLOGY_ALLOWED": 10125,
-      "ELEMENTARY_LEXICAL_ALLOWED": 3514,
-      "EXPLICIT_PROPER_NAME_ALLOWED": 181,
-      "REVIEWED_EXPLICIT_ALLOWED": 756,
-      "MORPHOLOGY_TO_GRAMMAR": 2502,
+      "V7_CHRONOLOGY_ALLOWED": 10084,
+      "ELEMENTARY_LEXICAL_ALLOWED": 3487,
+      "EXPLICIT_PROPER_NAME_ALLOWED": 183,
+      "REVIEWED_EXPLICIT_ALLOWED": 758,
+      "MORPHOLOGY_TO_GRAMMAR": 2483,
       "CONTRACTION_TO_GRAMMAR": 230,
-      "EXPLICIT_FUNCTION_TO_GRAMMAR": 20704,
-      "FUTURE_V7_LEAK": 0,
+      "EXPLICIT_FUNCTION_TO_GRAMMAR": 20649,
+      "FUTURE_V7_LEAK": 10,
       "UNREGISTERED_V7": 0,
       "UNREGISTERED_PROPER": 0,
-      "NOTED_UNLEARNED_ALLOWED": 2892
+      "NOTED_UNLEARNED_ALLOWED": 2893
     },
     "notesPresent": 663,
     "missingGloss": 0,
     "mappingErrors": [],
     "runtimeBrowserErrors": [],
-    "uniqueUnresolved": 0,
-    "futureVocabLeakOccurrences": 0,
-    "chronologyPass": true,
+    "uniqueUnresolved": 1,
+    "futureVocabLeakOccurrences": 10,
+    "chronologyPass": false,
     "rule": "Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. Explicit proper-name allowances are honored only inside the current passage when allowedWords marks the row proper names and the actual token is capitalized; those names are never promoted into cumulative ordinary vocabulary. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun. Explicitly tagged local proper-name possessives are authorized only for that passage. A passage-local notes entry authorizes only the exact noted token in that passage and only when English and Japanese gloss are both nonblank; it never enters cumulative vocabulary. I’d and whether are explicitly grammar-routed and require evidence-backed section chronology."
   },
-  "unresolved": [],
+  "unresolved": [
+    {
+      "token": "day",
+      "kind": "FUTURE_V7_LEAK",
+      "intro": [
+        1,
+        6,
+        7,
+        "day",
+        0
+      ],
+      "occurrences": 10,
+      "sections": [
+        "ニューホライズン|1|Unit 3-3",
+        "ニューホライズン|1|Unit 4-2"
+      ],
+      "examples": [
+        "ニューホライズン|1|Unit 3-3|sentence:7",
+        "ニューホライズン|1|Unit 3-3|slash:7",
+        "ニューホライズン|1|Unit 3-3|A5.answer",
+        "ニューホライズン|1|Unit 3-3|A5.evidence",
+        "ニューホライズン|1|Unit 4-2|sentence:6",
+        "ニューホライズン|1|Unit 4-2|slash:6",
+        "ニューホライズン|1|Unit 4-2|A5.answer",
+        "ニューホライズン|1|Unit 4-2|A5.evidence",
+        "ニューホライズン|1|Unit 4-2|B4.answer",
+        "ニューホライズン|1|Unit 4-2|B4.evidence"
+      ],
+      "sectionCount": 2
+    }
+  ],
   "passages": [
     {
       "grade": "1",
@@ -29333,21 +29363,6 @@
           ]
         },
         {
-          "token": "to",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:8",
-            "sentence:9",
-            "slash:8",
-            "slash:9",
-            "A5.evidence",
-            "B4.evidence"
-          ]
-        },
-        {
           "token": "the",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -29360,6 +29375,17 @@
             "A5.evidence",
             "B4.answer",
             "B4.evidence"
+          ]
+        },
+        {
+          "token": "to",
+          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
+          "base": null,
+          "intro": null,
+          "evidence": "closed structural function set; grammar chronology required",
+          "locations": [
+            "sentence:9",
+            "slash:9"
           ]
         },
         {
@@ -29590,19 +29616,6 @@
         },
         {
           "token": "we",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:9",
-            "slash:9",
-            "A5.evidence",
-            "B4.evidence"
-          ]
-        },
-        {
-          "token": "can",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
           "intro": null,
@@ -31196,7 +31209,7 @@
           ]
         },
         {
-          "token": "to",
+          "token": "every",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
           "intro": null,
@@ -31204,6 +31217,26 @@
           "locations": [
             "sentence:7",
             "slash:7",
+            "A5.answer",
+            "A5.evidence"
+          ]
+        },
+        {
+          "token": "day",
+          "kind": "FUTURE_V7_LEAK",
+          "base": null,
+          "intro": [
+            1,
+            6,
+            7,
+            "day",
+            0
+          ],
+          "evidence": null,
+          "locations": [
+            "sentence:7",
+            "slash:7",
+            "A5.answer",
             "A5.evidence"
           ]
         }
@@ -31375,19 +31408,6 @@
           ]
         },
         {
-          "token": "to",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:7",
-            "slash:7",
-            "A5.evidence",
-            "B4.evidence"
-          ]
-        },
-        {
           "token": "and",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -31395,27 +31415,6 @@
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "B1.answer"
-          ]
-        },
-        {
-          "token": "yes",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "B4.prompt",
-            "B4.answer"
-          ]
-        },
-        {
-          "token": "no",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "B4.prompt"
           ]
         }
       ]
@@ -31552,7 +31551,7 @@
           ]
         },
         {
-          "token": "to",
+          "token": "every",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
           "intro": null,
@@ -31560,7 +31559,30 @@
           "locations": [
             "sentence:6",
             "slash:6",
+            "A5.answer",
             "A5.evidence",
+            "B4.answer",
+            "B4.evidence"
+          ]
+        },
+        {
+          "token": "day",
+          "kind": "FUTURE_V7_LEAK",
+          "base": null,
+          "intro": [
+            1,
+            6,
+            7,
+            "day",
+            0
+          ],
+          "evidence": null,
+          "locations": [
+            "sentence:6",
+            "slash:6",
+            "A5.answer",
+            "A5.evidence",
+            "B4.answer",
             "B4.evidence"
           ]
         }
@@ -32542,19 +32564,6 @@
             "B3.answer",
             "B3.evidence"
           ]
-        },
-        {
-          "token": "to",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:10",
-            "slash:10",
-            "A5.evidence",
-            "B4.evidence"
-          ]
         }
       ]
     },
@@ -33478,15 +33487,15 @@
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "sentence:3",
-            "sentence:4",
             "sentence:6",
             "sentence:9",
             "slash:3",
-            "slash:4",
             "slash:6",
             "slash:9",
             "A1.evidence",
-            "A2.evidence"
+            "A3.evidence",
+            "A5.evidence",
+            "B2.evidence"
           ]
         },
         {
@@ -33506,20 +33515,16 @@
           ]
         },
         {
-          "token": "to",
+          "token": "is",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
           "intro": null,
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "sentence:4",
-            "sentence:9",
             "slash:4",
-            "slash:9",
             "A2.evidence",
-            "A5.evidence",
-            "B1.evidence",
-            "B4.evidence"
+            "B1.evidence"
           ]
         },
         {
@@ -33592,6 +33597,19 @@
           ]
         },
         {
+          "token": "to",
+          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
+          "base": null,
+          "intro": null,
+          "evidence": "closed structural function set; grammar chronology required",
+          "locations": [
+            "sentence:9",
+            "slash:9",
+            "A5.evidence",
+            "B4.evidence"
+          ]
+        },
+        {
           "token": "no",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -33631,13 +33649,7 @@
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "sentence:1",
-            "sentence:3",
-            "sentence:9",
-            "slash:1",
-            "slash:3",
-            "slash:9",
-            "A2.evidence",
-            "B1.evidence"
+            "slash:1"
           ]
         },
         {
@@ -33648,15 +33660,15 @@
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "sentence:1",
+            "sentence:3",
             "sentence:4",
             "sentence:10",
             "slash:1",
+            "slash:3",
             "slash:4",
             "slash:10",
-            "A3.answer",
-            "A3.evidence",
-            "A5.evidence",
-            "B4.evidence"
+            "A2.evidence",
+            "A3.answer"
           ]
         },
         {
@@ -33686,12 +33698,15 @@
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "sentence:2",
+            "sentence:3",
             "sentence:5",
             "slash:2",
+            "slash:3",
             "slash:5",
             "A1.evidence",
+            "A2.evidence",
             "A4.evidence",
-            "B2.evidence"
+            "B1.evidence"
           ]
         },
         {
@@ -33702,31 +33717,8 @@
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "sentence:2",
-            "sentence:3",
             "slash:2",
-            "slash:3",
-            "A1.evidence",
-            "A2.evidence",
-            "B1.evidence"
-          ]
-        },
-        {
-          "token": "i",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:3",
-            "sentence:7",
-            "sentence:9",
-            "sentence:10",
-            "slash:3",
-            "slash:7",
-            "slash:9",
-            "slash:10",
-            "A2.evidence",
-            "A5.evidence"
+            "A1.evidence"
           ]
         },
         {
@@ -33810,6 +33802,24 @@
             "B3.prompt",
             "B3.answer",
             "B3.evidence"
+          ]
+        },
+        {
+          "token": "i",
+          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
+          "base": null,
+          "intro": null,
+          "evidence": "closed structural function set; grammar chronology required",
+          "locations": [
+            "sentence:7",
+            "sentence:9",
+            "sentence:10",
+            "slash:7",
+            "slash:9",
+            "slash:10",
+            "A5.evidence",
+            "B3.evidence",
+            "B4.evidence"
           ]
         },
         {
@@ -33973,20 +33983,7 @@
           ]
         },
         {
-          "token": "to",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:7",
-            "slash:7",
-            "A4.evidence",
-            "B2.evidence"
-          ]
-        },
-        {
-          "token": "a",
+          "token": "this",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
           "intro": null,
@@ -37409,13 +37406,13 @@
             "sentence:1",
             "sentence:4",
             "sentence:7",
-            "sentence:7",
             "sentence:8",
             "slash:1",
             "slash:4",
             "slash:7",
-            "slash:7",
-            "slash:8"
+            "slash:8",
+            "A1.evidence",
+            "A3.evidence"
           ]
         },
         {
@@ -37532,12 +37529,12 @@
             "sentence:4",
             "sentence:4",
             "sentence:7",
+            "sentence:9",
             "slash:3",
             "slash:4",
             "slash:4",
             "slash:7",
-            "A2.evidence",
-            "A3.answer"
+            "slash:9"
           ]
         },
         {
@@ -37606,7 +37603,11 @@
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "sentence:5",
-            "slash:5"
+            "sentence:7",
+            "slash:5",
+            "slash:7",
+            "A4.answer",
+            "A4.evidence"
           ]
         },
         {
@@ -37644,37 +37645,6 @@
           ]
         },
         {
-          "token": "when",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:7",
-            "slash:7",
-            "A4.answer",
-            "A4.evidence"
-          ]
-        },
-        {
-          "token": "shopping",
-          "kind": "MORPHOLOGY_TO_GRAMMAR",
-          "base": "shop",
-          "intro": [
-            2,
-            4,
-            4,
-            "shop",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:9",
-            "slash:9",
-            "B4.evidence"
-          ]
-        },
-        {
           "token": "was",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -37695,7 +37665,6 @@
           "locations": [
             "sentence:9",
             "slash:9",
-            "B4.answer",
             "B4.evidence"
           ]
         },
@@ -38484,7 +38453,9 @@
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "sentence:1",
+            "sentence:11",
             "slash:1",
+            "slash:11",
             "A1.evidence"
           ]
         },
@@ -38732,10 +38703,8 @@
           "locations": [
             "sentence:9",
             "sentence:10",
-            "sentence:11",
             "slash:9",
             "slash:10",
-            "slash:11",
             "A4.evidence",
             "A5.answer",
             "A5.evidence",
@@ -39788,7 +39757,6 @@
           "locations": [
             "sentence:3",
             "slash:3",
-            "B1.answer",
             "B1.evidence"
           ]
         },
@@ -39818,12 +39786,9 @@
           "intro": null,
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
-            "sentence:3",
             "sentence:4",
-            "slash:3",
             "slash:4",
-            "A2.evidence",
-            "B1.evidence"
+            "A2.evidence"
           ]
         },
         {
@@ -41015,50 +40980,6 @@
           ]
         },
         {
-          "token": "learned",
-          "kind": "MORPHOLOGY_TO_GRAMMAR",
-          "base": "learn",
-          "intro": [
-            2,
-            6,
-            5,
-            "learn",
-            0
-          ],
-          "evidence": null,
-          "locations": [
-            "sentence:4",
-            "sentence:8",
-            "slash:4",
-            "slash:8"
-          ]
-        },
-        {
-          "token": "how",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:4",
-            "slash:4"
-          ]
-        },
-        {
-          "token": "to",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:4",
-            "sentence:10",
-            "slash:4",
-            "slash:10",
-            "A5.evidence"
-          ]
-        },
-        {
           "token": "when",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -41194,6 +41115,23 @@
           ]
         },
         {
+          "token": "learned",
+          "kind": "MORPHOLOGY_TO_GRAMMAR",
+          "base": "learn",
+          "intro": [
+            2,
+            6,
+            5,
+            "learn",
+            0
+          ],
+          "evidence": null,
+          "locations": [
+            "sentence:8",
+            "slash:8"
+          ]
+        },
+        {
           "token": "of",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -41251,6 +41189,18 @@
             "slash:9",
             "A4.answer",
             "A4.evidence"
+          ]
+        },
+        {
+          "token": "to",
+          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
+          "base": null,
+          "intro": null,
+          "evidence": "closed structural function set; grammar chronology required",
+          "locations": [
+            "sentence:10",
+            "slash:10",
+            "A5.evidence"
           ]
         },
         {
@@ -54453,74 +54403,10 @@
             "sentence:7",
             "slash:1",
             "slash:7",
+            "A1.answer",
             "A1.evidence",
             "A5.evidence",
             "B1.evidence",
-            "B3.evidence"
-          ]
-        },
-        {
-          "token": "that",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:1",
-            "slash:1",
-            "A1.evidence",
-            "B3.evidence"
-          ]
-        },
-        {
-          "token": "lives",
-          "kind": "MORPHOLOGY_TO_GRAMMAR",
-          "base": "live",
-          "intro": null,
-          "evidence": {
-            "source": "elementary",
-            "fileId": "file_00000000961881fd9924a7c8e76fe956",
-            "records": 104
-          },
-          "locations": [
-            "sentence:1",
-            "slash:1",
-            "A1.evidence",
-            "B3.evidence"
-          ]
-        },
-        {
-          "token": "in",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:1",
-            "sentence:5",
-            "slash:1",
-            "slash:5",
-            "A1.answer",
-            "A1.evidence",
-            "A3.answer",
-            "A3.evidence",
-            "B2.answer",
-            "B2.evidence"
-          ]
-        },
-        {
-          "token": "a",
-          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
-          "base": null,
-          "intro": null,
-          "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:1",
-            "sentence:2",
-            "slash:1",
-            "slash:2",
-            "A1.answer",
-            "A1.evidence",
             "B3.answer",
             "B3.evidence"
           ]
@@ -54579,6 +54465,17 @@
             0
           ],
           "evidence": null,
+          "locations": [
+            "sentence:2",
+            "slash:2"
+          ]
+        },
+        {
+          "token": "a",
+          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
+          "base": null,
+          "intro": null,
+          "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "sentence:2",
             "slash:2"
@@ -54772,6 +54669,21 @@
             "A3.evidence",
             "A5.evidence",
             "B1.evidence",
+            "B2.evidence"
+          ]
+        },
+        {
+          "token": "in",
+          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
+          "base": null,
+          "intro": null,
+          "evidence": "closed structural function set; grammar chronology required",
+          "locations": [
+            "sentence:5",
+            "slash:5",
+            "A3.answer",
+            "A3.evidence",
+            "B2.answer",
             "B2.evidence"
           ]
         },
@@ -55023,13 +54935,13 @@
             "sentence:1",
             "sentence:3",
             "sentence:5",
+            "sentence:9",
             "slash:1",
             "slash:3",
             "slash:5",
+            "slash:9",
             "A1.evidence",
-            "A3.answer",
-            "A3.evidence",
-            "B2.answer"
+            "A3.answer"
           ]
         },
         {
@@ -55163,11 +55075,11 @@
             "sentence:5",
             "sentence:6",
             "sentence:7",
-            "sentence:9",
             "sentence:11",
             "slash:2",
             "slash:4",
-            "slash:5"
+            "slash:5",
+            "slash:6"
           ]
         },
         {
@@ -55467,7 +55379,7 @@
           ]
         },
         {
-          "token": "us",
+          "token": "and",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
           "intro": null,
@@ -55480,6 +55392,21 @@
           ]
         },
         {
+          "token": "it",
+          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
+          "base": null,
+          "intro": null,
+          "evidence": "closed structural function set; grammar chronology required",
+          "locations": [
+            "sentence:9",
+            "slash:9",
+            "A5.answer",
+            "A5.evidence",
+            "B1.answer",
+            "B1.evidence"
+          ]
+        },
+        {
           "token": "with",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
@@ -55488,7 +55415,9 @@
           "locations": [
             "sentence:9",
             "slash:9",
+            "A5.answer",
             "A5.evidence",
+            "B1.answer",
             "B1.evidence"
           ]
         },
@@ -57839,12 +57768,14 @@
           "locations": [
             "sentence:1",
             "sentence:5",
+            "sentence:6",
             "sentence:8",
             "slash:1",
             "slash:5",
+            "slash:6",
             "slash:8",
             "A1.evidence",
-            "B3.evidence"
+            "A4.evidence"
           ]
         },
         {
@@ -57856,14 +57787,14 @@
           "locations": [
             "sentence:1",
             "sentence:2",
-            "sentence:5",
             "sentence:6",
             "sentence:8",
             "slash:1",
             "slash:2",
-            "slash:5",
             "slash:6",
-            "slash:8"
+            "slash:8",
+            "A1.evidence",
+            "A4.answer"
           ]
         },
         {
@@ -57892,14 +57823,14 @@
           "locations": [
             "sentence:1",
             "sentence:2",
-            "sentence:6",
             "sentence:9",
             "sentence:10",
             "sentence:10",
             "slash:1",
             "slash:2",
-            "slash:6",
-            "slash:9"
+            "slash:9",
+            "slash:10",
+            "slash:10"
           ]
         },
         {
@@ -57944,13 +57875,7 @@
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "sentence:2",
-            "sentence:6",
-            "slash:2",
-            "slash:6",
-            "A4.answer",
-            "A4.evidence",
-            "B4.answer",
-            "B4.evidence"
+            "slash:2"
           ]
         },
         {
@@ -58138,34 +58063,11 @@
           ]
         },
         {
-          "token": "who",
+          "token": "an",
           "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
           "base": null,
           "intro": null,
           "evidence": "closed structural function set; grammar chronology required",
-          "locations": [
-            "sentence:5",
-            "sentence:6",
-            "slash:5",
-            "slash:6",
-            "A4.answer",
-            "A4.evidence",
-            "B4.answer",
-            "B4.evidence"
-          ]
-        },
-        {
-          "token": "felt",
-          "kind": "MORPHOLOGY_TO_GRAMMAR",
-          "base": "feel",
-          "intro": [
-            2,
-            8,
-            4,
-            "feel",
-            0
-          ],
-          "evidence": null,
           "locations": [
             "sentence:5",
             "slash:5"
@@ -58204,6 +58106,19 @@
           ]
         },
         {
+          "token": "many",
+          "kind": "EXPLICIT_FUNCTION_TO_GRAMMAR",
+          "base": null,
+          "intro": null,
+          "evidence": "closed structural function set; grammar chronology required",
+          "locations": [
+            "sentence:6",
+            "slash:6",
+            "A4.evidence",
+            "B4.evidence"
+          ]
+        },
+        {
           "token": "died",
           "kind": "MORPHOLOGY_TO_GRAMMAR",
           "base": "die",
@@ -58218,9 +58133,7 @@
           "locations": [
             "sentence:6",
             "slash:6",
-            "A4.answer",
             "A4.evidence",
-            "B4.answer",
             "B4.evidence"
           ]
         },
@@ -58461,9 +58374,15 @@
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "sentence:1",
+            "sentence:5",
             "slash:1",
+            "slash:5",
             "A1.evidence",
-            "B3.evidence"
+            "A4.answer",
+            "A4.evidence",
+            "B3.evidence",
+            "B4.answer",
+            "B4.evidence"
           ]
         },
         {
@@ -58625,15 +58544,9 @@
           "evidence": "closed structural function set; grammar chronology required",
           "locations": [
             "sentence:3",
-            "sentence:5",
             "slash:3",
-            "slash:5",
             "A3.evidence",
-            "A4.answer",
-            "A4.evidence",
-            "B2.evidence",
-            "B4.answer",
-            "B4.evidence"
+            "B2.evidence"
           ]
         },
         {
@@ -58650,15 +58563,9 @@
           "evidence": null,
           "locations": [
             "sentence:3",
-            "sentence:5",
             "slash:3",
-            "slash:5",
             "A3.evidence",
-            "A4.answer",
-            "A4.evidence",
-            "B2.evidence",
-            "B4.answer",
-            "B4.evidence"
+            "B2.evidence"
           ]
         },
         {
@@ -58755,9 +58662,7 @@
           "locations": [
             "sentence:5",
             "slash:5",
-            "A4.answer",
             "A4.evidence",
-            "B4.answer",
             "B4.evidence"
           ]
         },
