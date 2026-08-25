@@ -2,7 +2,7 @@
   "project": "mikami-math-problem-bank",
   "status": "IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP",
   "current_stage": "WINPASS_717_STRICT_MATERIALIZATION",
-  "recorded_at_jst": "2026-08-25T19:56:23+09:00",
+  "recorded_at_jst": "2026-08-25T20:00:00+09:00",
   "main_touched": false,
   "schedule_changed": false,
   "source_identity": {
@@ -20,36 +20,34 @@
   },
   "documents": {"before_dedupe":246,"duplicates":106,"unique":{"Winpass":81,"実力錬成":27,"Standard":32,"total":140}},
   "raw_slots": {"Winpass":717,"実力錬成":237,"Standard":317,"total":1271,"count_forcing_used":false},
-  "strict_completion_rule": "Count only records durably persisted, post-save read back, carrying exact ordered OOXML question_offsets/answer_offsets or explicit graphical answer asset identity, score evidence, required figure/asset identity, content-bound fingerprint, and PASSing applicable validator.",
+  "strict_completion_rule": "Count only records durably persisted, post-save read back, carrying exact ordered OOXML question_offsets/answer_offsets or explicit graphical/table answer/context identity, score evidence, required figure/table/asset identity, content-bound fingerprint, and PASSing applicable validator.",
   "strict_progress": {"Standard":317,"実力錬成":237,"Winpass":177,"total":731,"pending":540,"readback_verified":731,"validator_pass":731,"durable_records":731},
   "strict_durable_evidence": {
     "Standard": {"state_path":"math-bank/state/standard317-strict-complete-20260825.json","state_commit":"da84a4fe662972f8571f4a7935d9c3c6a76d135f","provider":"Google Drive","file_id":"1L6n6iGfFQdii0jTzM224fT0U5MAXZcYS","sha256":"d80c0822f3e65518cabeac589034fc3d568931c21a90d8473d15952ac09daca9","records":317,"readback_verified":true,"validation_pass":true},
     "実力錬成": {"state_path":"math-bank/state/jitsuren237-strict-complete-20260825.json","state_commit":"6eb0910010821330f5be362f9a7dacaf2b3c458f","provider":"Google Drive","file_id":"1ZrG7Xw0iMjaR27UfzpPJmWnMK_2wlC2P","sha256":"4c8ed0ee4144562edcb8f063b565e7742fae305f1f512fa1f951a84bf59c6f9f","records":237,"readback_verified":true,"validation_pass":true},
-    "Winpass_highconf_177": {"state_path":"math-bank/state/winpass177-strict-highconf-20260825.json","state_commit":"5b9a7d6d78627a84c50fe694d212200fadf5ff03","provider":"Google Drive","file_id":"1NGqHrb_soAGnRSu0je0fxJ6zD73Dr2PV","file_name":"mathbank_winpass_strict_highconf_177_20260825.jsonl","sha256":"69c1c62f2e5c29e21d7fa3ec744271c8409d810497416e940c016c9478a44589","bytes":305301,"records":177,"unique_ids":177,"documents":30,"readback_verified":true,"validation_pass":true,"scope":"high-confidence non-media records; special layouts/proofs/figures deferred"}
+    "Winpass_highconf_177_v2": {"state_path":"math-bank/state/winpass177-strict-highconf-v2-20260825.json","state_commit":"4e0d1d4a756e5b1efb6aa737983caa309696376e","provider":"Google Drive","file_id":"1mjoEIGJsMRomqMSEWVUMcXlDAuzeTKkx","file_name":"mathbank_winpass_strict_highconf_177_v2_20260825.jsonl","sha256":"d767b26104e2ee1c839e5cb2a41e8d18ae0063b9e04b43f3195ffa5fee49f6d4","bytes":326280,"records":177,"unique_ids":177,"readback_verified":true,"validation_pass":true,"corrected_table_context_records":6,"unchanged_fingerprints":171,"supersedes_drive_file_id":"1NGqHrb_soAGnRSu0je0fxJ6zD73Dr2PV"}
   },
-  "qa_figure_qa": {"questions_strict":"731/1271","answers_strict":"731/1271","Standard":{"records":317,"figure_refs":154,"missing_figure_refs":0,"graphical_answers":26},"実力錬成":{"records":237,"figure_refs":81,"missing_figure_refs":0,"graphical_answers":18},"Winpass":{"records":177,"highconf_nonmedia":177,"remaining":540}},
+  "qa_figure_qa": {"questions_strict":"731/1271","answers_strict":"731/1271","Standard":{"records":317,"figure_refs":154,"missing_figure_refs":0,"graphical_answers":26},"実力錬成":{"records":237,"figure_refs":81,"missing_figure_refs":0,"graphical_answers":18},"Winpass":{"records":177,"highconf":177,"table_context_records":6,"remaining":540}},
   "downstream": {"winpass_decisions":{"reviewed":0,"included":0,"excluded":0,"target_after_evidence_review":570,"count_forcing_forbidden":true},"global1124":{"validated":0,"immutable_frozen":0},"variants":{"verified":0,"parent_coverage":"0/1124"},"app_records":0,"browser":"BLOCKED_UNTIL_REAL_APP_RECORDS","iphone_fire":"PENDING","a4":"PENDING","publication_ready":false,"public_verification":"PENDING"},
   "this_run": {
-    "starting_head_actual":"2c93ba8a58365f0128a415bcdce8e6d8a161c41c",
-    "latest_work_commit":"5f2185f07b2a9dc2baa5224e84d0a09cf68bb71c",
+    "parallel_automation_checkpoint_seen":"2026-08-25T19:56:23+09:00",
+    "parallel_automation_latest_work_commit":"5f2185f07b2a9dc2baa5224e84d0a09cf68bb71c",
+    "forensic_queue_path":"math-bank/state/winpass540-forensic-queue-20260825.json",
     "completed":[
-      "Read branch HEAD, checkpoint, durable source mirror and latest commit status before doing work.",
-      "Fetched Winpass directly by Drive ID 13SySbXL02mm4YPikgYN_BlVE3S2APs7E.",
-      "Reverified 8,296,042 bytes, exact SHA256 29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf, ZIP CRC PASS and 81 unique DOCX.",
-      "Fetched the durable 177-record strict JSONL and rechecked its 305,301-byte persisted baseline.",
-      "Inspected all 81 DOCX packages against the 177 strict records and built a deterministic remaining-work document queue.",
-      "Identified 30 documents already contributing strict records and 51 documents contributing none yet.",
-      "Triaged the 81 documents into 15 NONMEDIA_SPECIAL_OR_PROOF, 26 MIXED_DOC_PARTIAL_STRICT and 40 MEDIA_HEAVY documents for the next materialization passes.",
-      "Detected and rejected a naive OOXML score-regex approach because nested textbox/table representations double-count score annotations; no forced 717 accounting was allowed.",
-      "Persisted the forensic queue to math-bank/state/winpass540-forensic-queue-20260825.json at commit 5f2185f07b2a9dc2baa5224e84d0a09cf68bb71c."
+      "Preserved the parallel automation forensic triage and its 15 NONMEDIA_SPECIAL_OR_PROOF / 26 MIXED_DOC_PARTIAL_STRICT / 40 MEDIA_HEAVY ordering.",
+      "Detected that six already-durable Winpass177 records referenced 右の表 without carrying the actual table content/provenance.",
+      "Inspected source DOCX OOXML and bound the actual x/y table cells for 25winpasst1suhy000415 M02 and 25winpasst1suhy000418 M01.",
+      "For 000418, explicitly rejected an intervening empty layout table and selected the real x/y source table.",
+      "Regenerated the full177 v2; exactly six records changed and the other171 strict fingerprints remained unchanged.",
+      "Uploaded v2 to Drive, post-save downloaded it, verified 177 records/177 unique raw_ids/326,280 bytes/SHA256 d767b26104e2ee1c839e5cb2a41e8d18ae0063b9e04b43f3195ffa5fee49f6d4 and validation errors0.",
+      "Persisted v2 correction state to GitHub and superseded the original Winpass177 evidence without reducing strict count."
     ],
     "strict_increment":0,
     "limitations":[
-      "No remaining record was promoted because this pass focused on source revalidation and safe structural triage; strict remains 177 for Winpass.",
-      "Remaining records still require structural score-table identity, exact question/answer provenance and asset binding where applicable."
+      "Winpass remaining540 still require strict materialization; prioritize the 15 NONMEDIA_SPECIAL_OR_PROOF documents from the forensic queue, then 26 partial-strict, then 40 media-heavy with explicit relationship/media binding."
     ]
   },
-  "exact_stop": "Strict durable progress remains Standard317 + 実力錬成237 + Winpass177 = 731/1271. Winpass remaining 540. New durable queue state exists at math-bank/state/winpass540-forensic-queue-20260825.json. The next safest materialization target is the 15 NONMEDIA_SPECIAL_OR_PROOF documents before media-heavy work.",
-  "next_start": "Read latest HEAD/checkpoint first and never reduce 731 durable strict records. Fetch Winpass by durable Drive ID and verify SHA. Open math-bank/state/winpass540-forensic-queue-20260825.json. Process the 15 NONMEDIA_SPECIAL_OR_PROOF documents first with structural score-table identities, paired question/answer halves, OMML-preserving extraction and paragraph-level provenance; persist/readback/validate each batch. Then process 26 partial-strict docs, then 40 media-heavy docs with explicit relationship/media binding. After Winpass717/717 strict, evidence-review 717 to canonical570 without count forcing; validate/freeze global1124; verified variants; app mapping; browser/iPhone/Fire/A4; strict release; PUBLICATION_READY; isolated public verification.",
+  "exact_stop": "Strict durable progress is Standard317 + 実力錬成237 + Winpass177(v2 table-context corrected) = 731/1271. Winpass remaining540. Forensic queue from the parallel automation is preserved.",
+  "next_start": "Read latest HEAD/checkpoint first and never reduce731 unless a specific durable record is proven invalid. Fetch Winpass by Drive ID and verify SHA. Open math-bank/state/winpass540-forensic-queue-20260825.json. Process 15 NONMEDIA_SPECIAL_OR_PROOF docs first with structural score identity, paired question/answer halves, OMML-preserving extraction, multi-paragraph answer grouping and paragraph-level provenance; persist/readback/validate accepted delta batches. Then 26 partial-strict docs; then 40 media-heavy docs with explicit relationship/media/table binding. After Winpass717/717 strict, evidence-review717 to canonical570 without count forcing; validate/freeze global1124; variants; app; browser/iPhone/Fire/A4; publication.",
   "main_untouched": true
 }
