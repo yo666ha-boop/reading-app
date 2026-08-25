@@ -32,10 +32,9 @@ jobs:
           node-version: '20'
       - name: Install DOM test dependency
         run: npm install --no-save --no-package-lock jsdom@24.1.3
-      - name: Repair generated runtime-map parenthesis defects and syntax-check every repair
+      - name: Syntax-check committed semantic runtime repairs
         shell: bash
         run: |
-          if [ -f v10_one_time_fix_131_140.js ]; then node v10_one_time_fix_131_140.js; fi
           node <<'NODE'
           const fs=require('fs');
           const files=fs.readdirSync('.').filter(f=>/^v10_semantic_runtime_repairs_\d{3}_\d{3}\.js$/.test(f));

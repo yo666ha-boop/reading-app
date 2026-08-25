@@ -1,0 +1,39 @@
+{
+  "source": {
+    "title": "英単語_教科書別マスターデータ_NH_SS_2026_v7_app_wordbook_master",
+    "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
+    "sheet": "単語マスター",
+    "records": 3975,
+    "rule": "Resolve vocabulary by textbook, grade and chronological unit position; canonical v7 is primary. Explicit earlier app/textbook-reviewed allowedWords is valid cumulative evidence only when backed by an earlier reviewed section. Never use a later section as evidence for an earlier passage."
+  },
+  "resolutions": [
+    {"textbook":"サンシャイン","grade":"1","section":"Get Ready 4","token":"play","status":"ALLOWED_BY_V7_CUMULATIVE","japanese":"~をする","masterEvidence":{"masterRowId":2146,"fileUnit":"Pr","major":"プレステップ","unitName":"プレステップ4 だれが何をどうする"},"repair":"Add play to reviewed allowedWords metadata; no unknown-word note."},
+    {"textbook":"サンシャイン","grade":"1","section":"PROGRAM 2-2","token":"town","status":"ALLOWED_BY_PRIOR_REVIEWED_CUMULATIVE","japanese":"町","evidence":{"priorSection":"PROGRAM 2-1"},"repair":"No passage rewrite or note; scanner must accumulate only current/prior reviewed sections."},
+    {"textbook":"ニューホライズン","grade":"2","section":"Unit 2-2","token":"give","status":"CONFIRMED_FUTURE_VOCAB_REWRITTEN","japanese":"与える","masterEvidence":{"masterRowId":1114,"fileUnit":"LR1","major":"History","unitName":"Let's Read 1 教科書本文","page":"P44～P47","english":"give-gave"},"repair":"Replaced with prior-reviewed talk about and synchronized fullTranslation/slash/A evidence."},
+    {"textbook":"サンシャイン","grade":"2","section":"PROGRAM 2-1","token":"bring","status":"CONFIRMED_FUTURE_VOCAB_REWRITTEN","repair":"Removed nonessential future-vocabulary closing sentence; slash/fullTranslation/B evidence synchronized."},
+    {"textbook":"ニューホライズン","grade":"2","section":"Unit 2-1","token":"today","status":"ALLOWED_BY_V7_PRIOR_GRADE","japanese":"今日(は)","masterEvidence":{"masterRowId":101,"grade":"1","unitName":"プレステップ9 can","english":"today"}},
+    {"textbook":"ニューホライズン","grade":"2","section":"Unit 5-4","token":"give","status":"ALLOWED_BY_V7_EARLIER_SECTION","japanese":"与える","masterEvidence":{"masterRowId":1114,"grade":"2","unitName":"Let's Read 1 教科書本文","page":"P44～P47","english":"give-gave"}},
+    {"textbook":"ニューホライズン","grade":"2","section":"Unit 7-1","token":"map","status":"ALLOWED_BY_V7_PRIOR_GRADE","japanese":"地図","masterEvidence":{"grade":"1","unitName":"Unit 0","english":"map"}},
+    {"textbook":"ニューホライズン","grade":"3","section":"Unit 2-3","token":"lot","status":"ALLOWED_BY_V7_PRIOR_GRADE_PHRASE","japanese":"たいへん, とても","masterEvidence":{"masterRowId":757,"grade":"1","unitName":"Unit10 Read and Think","english":"a lot"}},
+    {"textbook":"サンシャイン","grade":"3","section":"PROGRAM 6-2","token":"above","status":"ALLOWED_BY_V7_PRIOR_GRADE","masterEvidence":{"grade":"2","unitName":"Reading 2","english":"above"}},
+    {"textbook":"ニューホライズン","grade":"3","section":"Unit 2-3","token":"using","status":"BASE_V7_PRIOR_GRADE_REQUIRES_GRAMMAR_GATE","japanese":"~を使う","masterEvidence":{"masterRowId":80,"grade":"1","unitName":"プレステップ8 一般動詞","english":"use"}},
+    {"textbook":"サンシャイン","grade":"3","section":"PROGRAM 2-2","token":"used","status":"BASE_V7_PRIOR_GRADE_REQUIRES_GRAMMAR_GATE","japanese":"~を使う","masterEvidence":{"masterRowId":2193,"grade":"1","unitName":"プレステップ8 一般動詞","english":"use"}},
+    {"textbook":"ニューホライズン","grade":"2","section":"Unit 7-2","token":"tells","status":"BASE_V7_PRIOR_GRADE_REQUIRES_GRAMMAR_GATE","japanese":"話す, 教える","masterEvidence":{"masterRowId":365,"grade":"1","unitName":"Unit4 Stage Activity 1","english":"tell"}},
+    {"textbook":"ニューホライズン","grade":"2","section":"Unit 1-4","token":"learn","status":"CONFIRMED_FUTURE_VOCAB_REWRITTEN","repair":"Replaced We learn about a different culture. with We talk about a different culture.; fullTranslation/slash synchronized."},
+    {"textbook":"ニューホライズン","grade":"2","section":"Unit 7-1","token":"process","status":"UNREGISTERED_NONESSENTIAL_REWRITTEN","repair":"Replaced selection process with a way to select sites; fullTranslation/slash/B evidence synchronized."},
+    {"textbook":"サンシャイン","grade":"2","section":"PROGRAM 4-1","token":"hike","status":"UNREGISTERED_FORM_REWRITTEN","repair":"Replaced noun hike with explicitly registered hiking; slash/B evidence synchronized."},
+    {"textbook":"ニューホライズン","grade":"2","section":"Unit 4-2","token":"nine","status":"NO_NH_V7_ENTRY_REWRITTEN","repair":"Replaced by nine with by dinner time while preserving by ~ target; fullTranslation/slash/A3 synchronized."},
+    {"textbook":"サンシャイン","grade":"3","section":"PROGRAM 6-2","token":"sixteen","status":"UNREGISTERED_NONESSENTIAL_REWRITTEN","repair":"Replaced sixteen with SS1-v7-confirmed nine while preserving at the age of ~; fullTranslation/slash/A/B evidence synchronized."},
+    {"textbook":"サンシャイン","grade":"1","section":"Step 6 / Our Project 3 / Power-Up 6","token":"Anna","status":"UNREGISTERED_PROPER_NONESSENTIAL_REWRITTEN","repair":"Replaced Dear Anna, with Dear Friend, using prior-known friend; fullTranslation and slash synchronized. No note added.","commit":"670e1bebde9cd15e6bac1400c7285f827ebeef2b"}
+  ],
+  "knownRepairBatchResiduals": [],
+  "finalCanonicalScannerPending": true,
+  "policy": {
+    "futureWord": "Rewrite to an already-learned word when natural.",
+    "indispensableUnknown": "Keep only when necessary and attach English/Japanese gloss from the v7 master or another explicit verified source.",
+    "morphology": "A known base form is not enough; the inflected form must also pass the grammar chronology gate.",
+    "properNoun": "Do not auto-approve merely because capitalization suggests a proper noun.",
+    "priorReviewedCumulative": "Earlier explicit reviewed vocabulary in the same textbook and grade may satisfy cumulative vocabulary chronology; later sections must never satisfy an earlier passage.",
+    "scanner": "The final vocabulary gate must be derived from canonical v7 chronology, not from per-passage allowedWords alone."
+  }
+}

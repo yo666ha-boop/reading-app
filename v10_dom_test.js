@@ -53,5 +53,5 @@ function change(win,el,value){el.value=value;el.dispatchEvent(new win.Event('cha
  const serious=browserErrors.filter(x=>!/Could not load link/i.test(x));
  assert(serious.length===0,`browser/jsdom errors: ${serious.join(' | ')}`);
  console.log('DOM PASS: textbook > grade > major > minor selectors render and switch correctly; passage, answers, audit, and release gate render without browser errors.');
- dom.window.close();
+ process.exit(0);
 })().catch(e=>{console.error(`DOM FAIL: ${e.stack||e}`);process.exit(1);});

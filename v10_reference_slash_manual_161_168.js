@@ -70,7 +70,7 @@
   {en:'Before sending it, / we learn where the program works / and what students there need.',jp:'それを送る前に / 私たちはプログラムがどこで活動するか学びます / そして現地の生徒が何を必要としているか'},
   {en:'We also write a short message / to go / with the donation.',jp:'私たちは短いメッセージも書きます / いっしょに行くための / 寄付と'},
   {en:'So far, / our project is small, / but every item has a clear purpose.',jp:'今のところ / 私たちのプロジェクトは小さいです / しかしすべての品物には明確な目的があります'},
-  {en:'We send the backpack / through the program / rather / than to an unknown person.',jp:'私たちはリュックを送ります / そのプログラムを通して / むしろ / 知らない個人へ直接より'},
+  {en:'We send the backpack / through the program / rather than / to an unknown person.',jp:'私たちはリュックを送ります / そのプログラムを通して / むしろ / 知らない個人へ直接より'},
   {en:'We hope the supplies will be useful / at school.',jp:'私たちは学用品が役立つことを願っています / 学校で'},
   {en:'We also hope the project helps our class learn / about another place respectfully.',jp:'私たちはそのプロジェクトがクラスの学びを助けることも願っています / 別の場所について敬意をもって'},
   {en:'The donation is one small way / to connect learning / with action.',jp:'寄付は小さな方法の1つです / 学びをつなぐための / 行動と'}

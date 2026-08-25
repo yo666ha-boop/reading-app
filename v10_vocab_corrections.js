@@ -1,54 +1,61 @@
 window.V10_VOCAB_CORRECTIONS = [
-  {
-    textbook:'ニューホライズン',grade:'1',section:'Unit 1-1',english:'sweets',japanese:'甘い菓子',
-    basis:'Unit 1 Part 1 textbook booklet explicitly lists sweet(s) and uses Japanese sweets.',
-    rule:'explicit textbook form; not automatic plural inflection'
-  },
-  {
-    textbook:'ニューホライズン',grade:'1',section:'Unit 1-2',english:'friends',japanese:'友達',
-    basis:'Unit 1 Part 2 textbook booklet explicitly lists friend(s) and uses with my friends.',
-    rule:'explicit textbook form; not automatic plural inflection'
-  },
-  {
-    textbook:'ニューホライズン',grade:'1',section:'Unit 1-2',english:'soccer',japanese:'サッカー',
-    basis:'Unit 1 Part 2 textbook body explicitly uses I play soccer, but the embedded Unit 1-2 word rows do not expose a separate soccer row.',
-    rule:'textbook-confirmed missing base entry; register before passage release'
-  },
-  {
-    textbook:'ニューホライズン',grade:'1',section:'Unit 1-3',english:'comics',japanese:'マンガ',
-    basis:'Unit 1 Part 3 textbook booklet explicitly lists comic(s) and uses Do you like comics? / I draw comics, too.',
-    rule:'explicit textbook form; not automatic plural inflection'
-  },
-  {
-    textbook:'ニューホライズン',grade:'1',section:'Unit 1-3',english:'lessons',japanese:'レッスン',
-    basis:'Unit 1 Part 3 textbook booklet explicitly lists lesson(s) and uses I take swimming lessons.',
-    rule:'explicit textbook form; not automatic plural inflection'
-  }
+  {textbook:'ニューホライズン',grade:'1',section:'Unit 1-1',english:'sweets',japanese:'甘い菓子',basis:'Unit 1 Part 1 textbook booklet explicitly lists sweet(s) and uses Japanese sweets.',rule:'explicit textbook form; not automatic plural inflection'},
+  {textbook:'ニューホライズン',grade:'1',section:'Unit 1-2',english:'friends',japanese:'友達',basis:'Unit 1 Part 2 textbook booklet explicitly lists friend(s) and uses with my friends.',rule:'explicit textbook form; not automatic plural inflection'},
+  {textbook:'ニューホライズン',grade:'1',section:'Unit 1-2',english:'soccer',japanese:'サッカー',basis:'Unit 1 Part 2 textbook body explicitly uses I play soccer, but the embedded Unit 1-2 word rows do not expose a separate soccer row.',rule:'textbook-confirmed missing base entry; register before passage release'},
+  {textbook:'ニューホライズン',grade:'1',section:'Unit 1-3',english:'comics',japanese:'マンガ',basis:'Unit 1 Part 3 textbook booklet explicitly lists comic(s) and uses Do you like comics? / I draw comics, too.',rule:'explicit textbook form; not automatic plural inflection'},
+  {textbook:'ニューホライズン',grade:'1',section:'Unit 1-3',english:'lessons',japanese:'レッスン',basis:'Unit 1 Part 3 textbook booklet explicitly lists lesson(s) and uses I take swimming lessons.',rule:'explicit textbook form; not automatic plural inflection'},
+  {textbook:'サンシャイン',grade:'1',section:'Get Ready 4',english:'play',japanese:'~をする',basis:'v7 master SS1 pre-step record ID 2146: プレステップ4 だれが何をどうする / play / ~をする.',rule:'v7-confirmed cumulative vocabulary; repair allowedWords metadata omission, not an unknown-word note'},
+  {textbook:'サンシャイン',grade:'1',section:'Get Ready 6',english:'use',japanese:'~を使う',basis:'v7 master SS1 record ID 2193: プレステップ8 一般動詞 / use / ~を使う.',rule:'v7-confirmed pre-PROGRAM vocabulary; keep inflected forms in grammar chronology rather than auto-approving them'},
+  {textbook:'ニューホライズン',grade:'1',section:'Unit 0',english:'use',japanese:'~を使う',basis:'v7 master NH1 record ID 80: プレステップ8 一般動詞 / use / ~を使う.',rule:'v7-confirmed pre-Unit vocabulary; keep inflected forms in grammar chronology rather than auto-approving them'},
+  {textbook:'ニューホライズン',grade:'1',section:'Unit 4-3',english:'tell',japanese:'話す, 教える',basis:'v7 master NH1 record ID 365: Unit4 Stage Activity 1 / tell / 話す, 教える.',rule:'v7-confirmed G1 vocabulary used only as prior-grade basis for later G2 morphology'},
+  {textbook:'サンシャイン',grade:'2',section:'PROGRAM 1-1',english:'eat',japanese:'~を食べる',basis:'v7 master SS1 record ID 2152: プレステップ4 だれが何をどうする / eat / ~を食べる.',rule:'prior-grade v7-confirmed vocabulary; repair first G2 allowedWords metadata omission'},
+  {textbook:'ニューホライズン',grade:'2',section:'Unit 0',english:'eat',japanese:'~を食べる',basis:'v7 master NH1 record ID 39: プレステップ4 だれが何をどうする / eat / ~を食べる.',rule:'prior-grade v7-confirmed vocabulary; repair first G2 allowedWords metadata omission'},
+  {textbook:'ニューホライズン',grade:'2',section:'Unit 1-3',english:'large',japanese:'大きい, 広い',basis:'v7 master NH1 record ID 558: Unit7 / Real Life English 3 / large / 大きい, 広い.',rule:'prior-grade v7-confirmed vocabulary; repair first G2 allowedWords metadata omission'},
+  {textbook:'ニューホライズン',grade:'2',section:'Unit 2-1',english:'today',japanese:'今日(は)',basis:'v7 master NH1 record ID 101: プレステップ9 can / today / 今日(は).',rule:'prior-grade v7-confirmed vocabulary; capitalization at sentence start is not a proper-name exception'},
+  {textbook:'ニューホライズン',grade:'2',section:'Unit 5-4',english:'give',japanese:'与える',basis:'v7 master NH2 record ID 1114: Let’s Read 1 P44-P47 / give-gave / 与える[原形-過去形], which is earlier than Unit 5.',rule:'earlier-section v7-confirmed vocabulary; Unit 5-4 use is not a future leak'},
+  {textbook:'ニューホライズン',grade:'2',section:'Unit 7-1',english:'map',japanese:'地図',basis:'v7 master NH1 Unit0 entry for map; already learned in prior grade.',rule:'prior-grade v7-confirmed vocabulary; repair allowedWords metadata omission'},
+  {textbook:'ニューホライズン',grade:'3',section:'Unit 2-3',english:'a lot',japanese:'たいへん, とても',basis:'v7 master NH1 record ID 757: Unit10 Read and Think / a lot / たいへん, とても.',rule:'prior-grade v7-confirmed phrase; repair allowedWords metadata omission'},
+  {textbook:'サンシャイン',grade:'3',section:'PROGRAM 6-2',english:'above',japanese:'~の上に',basis:'v7 master SS2 Reading2 entry for above; already learned in prior grade.',rule:'prior-grade v7-confirmed vocabulary; repair allowedWords metadata omission'},
+  {textbook:'サンシャイン',grade:'3',section:'PROGRAM 6-2',english:'nine',japanese:'9(の)',basis:'v7 master SS1 record ID 2231: Get Ready 3 / nine / 9(の).',rule:'prior-grade v7-confirmed number used to instantiate at the age of ~ without an unknown-word note'}
 ];
-
-// Mobile layout hardening for the single-file stage2 shell. Some reviewed
-// evidence strings, long English tokens, and native select controls can
-// otherwise force WebKit to widen the document beyond the iPhone viewport.
-// Keep all content intact while allowing rendered children to shrink/wrap.
-(function installV10MobileLayoutGuard(){
-  if (typeof document === 'undefined' || document.getElementById('v10-mobile-layout-guard')) return;
-  const style = document.createElement('style');
-  style.id = 'v10-mobile-layout-guard';
-  style.textContent = `
-    html,body{width:100%;max-width:100%;min-width:0;overflow-x:hidden}
-    .wrap,.panel,.tabpage,.row,.field,.controlbar,.q,.slash,.evidence,.meta,.notice,.fail{max-width:100%;min-width:0}
-    .panel *{min-width:0}
-    .en,.slash,.q,.evidence,.meta,.notice,.fail,.muted,p,div,span,li,td,th,a{overflow-wrap:anywhere;word-break:break-word}
-    pre,code{max-width:100%;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word}
-    table{max-width:100%;width:100%;table-layout:fixed}
-    select,button,input,textarea{max-width:100%;min-width:0}
-    @media(max-width:700px){
-      .wrap{width:100%}
-      .row{width:100%;min-width:0}
-      .field{min-width:0!important;flex:1 1 calc(50% - 8px);max-width:100%}
-      .field select{display:block;width:100%!important;min-width:0!important;max-width:100%!important}
-      .controlbar>*{max-width:100%;white-space:normal}
+(function installV10VocabularyCorrectionApplier(){
+  function pools(){return [window.V10_SUNSHINE_G1,window.V10_NEWHORIZON_G1,window.V10_PASSAGES_G2_SS,window.V10_PASSAGES_G2_NH,window.V10_PASSAGES_G3_SS,window.V10_PASSAGES_G3_NH].filter(Boolean);}
+  function hasToken(rows,word){const re=new RegExp('(^|[^A-Za-z])'+String(word).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'([^A-Za-z]|$)','i');return (rows||[]).some(r=>re.test(Array.isArray(r)?String(r[0]||''):String(r||'')));}
+  function syncFutureVocabRepairs(){let repaired=0;
+    let m=window.V10_PASSAGES_G2_NH&&window.V10_PASSAGES_G2_NH['Unit 2-2'];
+    if(m&&Array.isArray(m.sentences)&&m.sentences[0]==='At school, I give a short speech about local food.'){
+      m.sentences[0]='At school, I talk about local food in a short speech.';
+      m.fullTranslation=String(m.fullTranslation||'').replace('学校で、私は地元の食べ物について短いスピーチをします。','学校で、私は短いスピーチで地元の食べ物について話します。');
+      if(Array.isArray(m.slashRows)&&m.slashRows[0]){m.slashRows[0].en='At school, / I talk about / local food / in a short speech.';m.slashRows[0].jp='学校で / 私は話します / 地元の食べ物について / 短いスピーチで';}
+      if(Array.isArray(m.questions)&&m.questions[0]){m.questions[0].evidence='At school, I talk about local food in a short speech.';m.questions[0].evidenceJp='学校で、私は短いスピーチで地元の食べ物について話します。';m.questions[0].reason='talk about の後ろが local food です。';}
+      m.auditNote=String(m.auditNote||'')+' v7 chronology repair: give first appears in NH2 Let’s Read 1, so earlier Unit 2-2 was synchronized to talk about.';repaired++;
     }
-  `;
-  document.head.appendChild(style);
+    m=window.V10_PASSAGES_G2_SS&&window.V10_PASSAGES_G2_SS['PROGRAM 2-1'];
+    if(m&&Array.isArray(m.sentences)&&m.sentences[m.sentences.length-1]==='Baseball can bring people together.'){
+      m.sentences.pop();if(Array.isArray(m.slashRows)&&m.slashRows[m.slashRows.length-1]&&m.slashRows[m.slashRows.length-1].en==='Baseball can bring / people / together.')m.slashRows.pop();m.fullTranslation=String(m.fullTranslation||'').replace('野球は人々を結びつけることができます。','');m.auditNote=String(m.auditNote||'')+' v7 chronology repair: bring first appears later in SS2 Reading 1; removed nonessential future-vocabulary closing sentence.';repaired++;
+    }
+    let meta=window.V10_INTERACTION_META&&window.V10_INTERACTION_META['サンシャイン|2|PROGRAM 2-1'];
+    if(meta&&Array.isArray(meta.questionSetB)&&meta.questionSetB[4]&&meta.questionSetB[4].evidence==='Baseball can bring people together.') {meta.questionSetB[4]={prompt:'5. 私たちは何を応援すべきですか。本文から英語で答えなさい。',answer:'the project',evidence:'We should root for the project, too.',evidenceJp:'私たちもそのプロジェクトを応援すべきです。',reason:'root for の後ろが the project です。'};repaired++;}
+    m=window.V10_PASSAGES_G2_NH&&window.V10_PASSAGES_G2_NH['Unit 1-4'];
+    if(m&&m.sentences&&m.sentences[9]==='We learn about a different culture.') {m.sentences[9]='We talk about a different culture.';m.fullTranslation=String(m.fullTranslation||'').replace('私たちは異なる文化について学びます。','私たちは異なる文化について話します。');if(m.slashRows&&m.slashRows[9]){m.slashRows[9].en='We talk about / a different culture.';m.slashRows[9].jp='私たちは話します / 異なる文化について';}m.auditNote=String(m.auditNote||'')+' v7 chronology repair: learn first appears in NH2 Unit 3; earlier Unit 1-4 changed to already-reviewed talk about.';repaired++;}
+    m=window.V10_PASSAGES_G2_NH&&window.V10_PASSAGES_G2_NH['Unit 7-1'];
+    if(m&&m.sentences&&m.sentences[1]==='We know UNESCO has a selection process.') {m.sentences[1]='We know UNESCO has a way to select sites.';m.fullTranslation=String(m.fullTranslation||'').replace('私たちはユネスコに選定の仕組みがあることを知っています。','私たちはユネスコに遺産を選ぶ方法があることを知っています。');if(m.slashRows&&m.slashRows[1]){m.slashRows[1].en='We know / UNESCO has / a way to select sites.';m.slashRows[1].jp='私たちは知っています / ユネスコにはあります / 遺産を選ぶ方法が';}m.auditNote=String(m.auditNote||'')+' v7 chronology repair: unregistered process replaced with prior vocabulary plus current select/site.';repaired++;}
+    meta=window.V10_INTERACTION_META&&window.V10_INTERACTION_META['ニューホライズン|2|Unit 7-1'];
+    if(meta&&meta.questionSetB&&meta.questionSetB[0]&&meta.questionSetB[0].evidence==='We know UNESCO has a selection process.') {meta.questionSetB[0]={prompt:'1. ユネスコには何がありますか。本文から英語で答えなさい。',answer:'a way to select sites',evidence:'We know UNESCO has a way to select sites.',evidenceJp:'私たちはユネスコに遺産を選ぶ方法があることを知っています。',reason:'has の目的語が a way to select sites です。'};repaired++;}
+    m=window.V10_PASSAGES_G2_SS&&window.V10_PASSAGES_G2_SS['PROGRAM 4-1'];
+    if(m&&m.sentences&&m.sentences[10]==='After the hike, I hear from my friend.') {m.sentences[10]='After hiking, I hear from my friend.';if(m.slashRows&&m.slashRows[10]){m.slashRows[10].en='After hiking, / I hear from / my friend.';m.slashRows[10].jp='ハイキングのあと / 私は連絡をもらいます / 友達から';}m.auditNote=String(m.auditNote||'')+' v7 chronology repair: unregistered noun hike replaced by the explicitly registered hiking form from go hiking.';repaired++;}
+    meta=window.V10_INTERACTION_META&&window.V10_INTERACTION_META['サンシャイン|2|PROGRAM 4-1'];
+    if(meta&&meta.questionSetB&&meta.questionSetB[4]&&meta.questionSetB[4].evidence==='After the hike, I hear from my friend.') {meta.questionSetB[4].evidence='After hiking, I hear from my friend.';repaired++;}
+    m=window.V10_PASSAGES_G2_NH&&window.V10_PASSAGES_G2_NH['Unit 4-2'];
+    if(m&&m.sentences&&m.sentences[3]==='I must take a shower by nine.') {m.sentences[3]='I must take a shower by dinner time.';m.fullTranslation=String(m.fullTranslation||'').replace('9時までにシャワーを浴びなければなりません。','夕食の時間までにシャワーを浴びなければなりません。');if(m.slashRows&&m.slashRows[3]){m.slashRows[3].en='I must take / a shower / by dinner time.';m.slashRows[3].jp='私は浴びなければなりません / シャワーを / 夕食の時間までに';}if(m.questions&&m.questions[2]){m.questions[2]={prompt:'3. いつまでにシャワーを浴びますか。本文から英語で答えなさい。',answer:'by dinner time',evidence:'I must take a shower by dinner time.',evidenceJp:'夕食の時間までにシャワーを浴びなければなりません。',reason:'by dinner time が期限です。'};}m.auditNote=String(m.auditNote||'')+' v7 chronology repair: NH v7 has no nine entry; preserved target by ~ with prior-reviewed dinner/time.';repaired++;}
+    m=window.V10_PASSAGES_G3_SS&&window.V10_PASSAGES_G3_SS['PROGRAM 6-2'];
+    if(m&&m.sentences&&m.sentences[0]==='At the age of sixteen, a boy saw trash at the beach.') {m.sentences[0]='At the age of nine, a boy saw trash at the beach.';m.fullTranslation=String(m.fullTranslation||'').replace('16歳のとき、ある少年は海辺でごみを見ました。','9歳のとき、ある少年は海辺でごみを見ました。');if(m.slashRows&&m.slashRows[0]){m.slashRows[0].en='At the age of nine, / a boy saw / trash / at the beach.';m.slashRows[0].jp='9歳のとき / ある少年は見ました / ごみを / 海辺で';}if(m.questions&&m.questions[0]){m.questions[0].answer='nine';m.questions[0].evidence='At the age of nine, a boy saw trash at the beach.';m.questions[0].evidenceJp='9歳のとき、ある少年は海辺でごみを見ました。';m.questions[0].reason='at the age of の後ろが nine です。';}m.auditNote=String(m.auditNote||'')+' v7 chronology repair: unregistered sixteen replaced with SS1-v7-confirmed nine while preserving at the age of ~.';repaired++;}
+    meta=window.V10_INTERACTION_META&&window.V10_INTERACTION_META['サンシャイン|3|PROGRAM 6-2'];
+    if(meta&&meta.questionSetB&&meta.questionSetB[0]&&meta.questionSetB[0].evidence==='At the age of sixteen, a boy saw trash at the beach.') {meta.questionSetB[0].evidence='At the age of nine, a boy saw trash at the beach.';meta.questionSetB[0].evidenceJp='9歳のとき、ある少年は海辺でごみを見ました。';repaired++;}
+    window.V10_FUTURE_VOCAB_REPAIRS_APPLIED=(window.V10_FUTURE_VOCAB_REPAIRS_APPLIED||0)+repaired;return repaired;
+  }
+  function apply(){let applied=0,targetsSeen=0;for(const c of (window.V10_VOCAB_CORRECTIONS||[])){for(const pool of pools())for(const m of Object.values(pool||{})){if(!m||String(m.textbook)!==String(c.textbook)||String(m.grade)!==String(c.grade)||String(m.section)!==String(c.section))continue;targetsSeen++;m.allowedWords=Array.isArray(m.allowedWords)?m.allowedWords:[];if(!hasToken(m.allowedWords,c.english)){m.allowedWords.push([c.english,`v7 correction: ${c.basis}`]);applied++;}}}syncFutureVocabRepairs();window.V10_VOCAB_CORRECTIONS_APPLIED=(window.V10_VOCAB_CORRECTIONS_APPLIED||0)+applied;window.V10_VOCAB_CORRECTION_TARGETS_SEEN=targetsSeen;return targetsSeen;}
+  let tries=0;apply();const timer=setInterval(()=>{tries++;const targetsSeen=apply();const expected=(window.V10_VOCAB_CORRECTIONS||[]).length;if((window.V10_RUNTIME_LOAD_PROGRESS==='complete'&&targetsSeen>=expected)||tries>=1200){clearInterval(timer);apply();}},100);window.addEventListener('load',()=>setTimeout(apply,0),{once:true});
 })();
+(function installV10GlossRenderer(){if(typeof document==='undefined')return;const esc=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[ch]));function pools(){return [window.V10_SUNSHINE_G1,window.V10_NEWHORIZON_G1,window.V10_PASSAGES_G2_SS,window.V10_PASSAGES_G2_NH,window.V10_PASSAGES_G3_SS,window.V10_PASSAGES_G3_NH].filter(Boolean);}function byId(id){for(const pool of pools())for(const m of Object.values(pool||{}))if(m&&m.id===id)return m;return null;}function ensureStyle(){if(document.getElementById('v10-gloss-style'))return;const style=document.createElement('style');style.id='v10-gloss-style';style.textContent=`.v10-gloss-box{margin:14px 0;padding:12px 14px;border:1px solid #dbe4ee;border-radius:12px;background:#f8fafc}.v10-gloss-title{font-weight:800;margin-bottom:6px}.v10-gloss-list{display:flex;flex-wrap:wrap;gap:6px 14px;line-height:1.8}.v10-gloss-item{overflow-wrap:anywhere;word-break:break-word}.v10-gloss-en{font-weight:800}@media print{.v10-gloss-box{break-inside:avoid;page-break-inside:avoid}}`;document.head.appendChild(style);}function noteKey(notes){return JSON.stringify(notes.map(n=>[String(n.english||''),String(n.japanese||''),String(n.reading||'')]));}function render(){const host=document.getElementById('passage');if(!host)return;const old=host.querySelector('.v10-gloss-box');const meta=host.querySelector('.meta');if(!meta){if(old)old.remove();return;}const id=(meta.textContent||'').split('/')[0].trim();const m=byId(id);if(!m){if(old)old.remove();return;}const notes=(Array.isArray(m.notes)?m.notes:[]).filter(n=>n&&String(n.english||'').trim()&&String(n.japanese||'').trim());if(!notes.length){if(old)old.remove();return;}const key=noteKey(notes);if(old&&old.dataset.v10GlossKey===key)return;if(old)old.remove();ensureStyle();const box=document.createElement('div');box.className='v10-gloss-box';box.setAttribute('data-v10-gloss-count',String(notes.length));box.dataset.v10GlossKey=key;box.innerHTML=`<div class="v10-gloss-title">注（未習語）</div><div class="v10-gloss-list">${notes.map(n=>`<span class="v10-gloss-item"><span class="v10-gloss-en">${esc(n.english)}</span>：${esc(n.japanese)}${n.reading?`（${esc(n.reading)}）`:''}</span>`).join('')}</div>`;const en=host.querySelector('.en');if(en&&en.parentNode)en.insertAdjacentElement('afterend',box);else host.appendChild(box);}function start(){const host=document.getElementById('passage');if(!host)return;let queued=false;const obs=new MutationObserver(()=>{if(queued)return;queued=true;queueMicrotask(()=>{queued=false;render();});});obs.observe(host,{childList:true,subtree:true});render();window.V10_GLOSS_RENDERER_INSTALLED=true;}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();})();
+(function installV10MobileLayoutGuard(){if(typeof document==='undefined'||document.getElementById('v10-mobile-layout-guard'))return;const style=document.createElement('style');style.id='v10-mobile-layout-guard';style.textContent=`html,body{width:100%;max-width:100%;min-width:0;overflow-x:hidden}.wrap,.panel,.tabpage,.row,.field,.controlbar,.q,.slash,.evidence,.meta,.notice,.fail,.v10-gloss-box{max-width:100%;min-width:0}.panel *{min-width:0}.en,.slash,.q,.evidence,.meta,.notice,.fail,.muted,.v10-gloss-box,p,div,span,li,td,th,a{overflow-wrap:anywhere;word-break:break-word}pre,code{max-width:100%;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word}table{max-width:100%;width:100%;table-layout:fixed}select,button,input,textarea{max-width:100%;min-width:0}@media(max-width:700px){.wrap{width:100%}.row{width:100%;min-width:0}.field{min-width:0!important;flex:1 1 calc(50% - 8px);max-width:100%}.field select{display:block;width:100%!important;min-width:0!important;max-width:100%!important}.controlbar>*{max-width:100%;white-space:normal}}`;document.head.appendChild(style);})();
