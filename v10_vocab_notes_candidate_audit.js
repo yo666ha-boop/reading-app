@@ -42,6 +42,11 @@ patch(
   "Capitalization alone never authorizes a proper noun. A passage-local notes entry authorizes only the exact noted token in that passage and only when English and Japanese gloss are both nonblank; it never enters cumulative vocabulary.'",
   'rule text'
 );
+patch(
+  "    await new Promise(r => setTimeout(r, 250));\n    browserErrors.length = 0;",
+  "    await waitFor(() => w.V10_RUNTIME_LOAD_PROGRESS === 'complete', 60000, 'authoritative final runtime load order');\n    assert(!w.V10_RUNTIME_LOAD_ERROR, `authoritative runtime load failed: ${w.V10_RUNTIME_LOAD_ERROR}`);\n    await new Promise(r => setTimeout(r, 250));\n    browserErrors.length = 0;",
+  'authoritative runtime completion gate'
+);
 fs.writeFileSync(tmp,s);
 try{
   const r=cp.spawnSync(process.execPath,[tmp],{stdio:'inherit',env:process.env});
