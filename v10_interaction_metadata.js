@@ -2,7 +2,7 @@ window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
 (function(){
  if(typeof document==='undefined')return;
  const target=window.V10_INTERACTION_META;
- const BUILD='20260825-v7-reference-chronology';
+ const BUILD='20260825-v7-reference-chronology-notes2';
  window.V10_RUNTIME_BUILD=BUILD;
  window.V10_RUNTIME_LOAD_PROGRESS='start';
  window.V10_RUNTIME_LOAD_ERROR='';
@@ -67,6 +67,7 @@ window.V10_INTERACTION_META=window.V10_INTERACTION_META||{};
   ['v10_vocab_slash_manual_081_090.js',()=>({})],
   ['v10_vocab_slash_manual_091_168.js',()=>({})],
   ['v10_vocab_slash_manual_corrections.js',()=>({})],
+  ['v10_passage_local_notes_batch2.js',()=>{if(typeof window.V10_APPLY_PASSAGE_LOCAL_NOTES_BATCH2==='function')window.V10_APPLY_PASSAGE_LOCAL_NOTES_BATCH2();return {}}],
   ['v10_reference_chronology_sync.js',()=>{const b=window.V10_REFERENCE_CHRONOLOGY_SYNC;if(!b)throw new Error('missing V10_REFERENCE_CHRONOLOGY_SYNC');window.V10_REFERENCE_CHRONOLOGY_PREP=b.prepareLegacyReferenceGreat();return {}}],
   ['v10_reference_slash_manual_001_168.js',()=>({})],
   ['v10_reference_slash_manual_021_030.js',()=>({})],
