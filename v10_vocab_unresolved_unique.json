@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-08-25T09:57:23.325Z",
+    "generatedAt": "2026-08-25T09:57:48.644Z",
     "passages": 168,
     "canonicalSource": {
       "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
@@ -17,57 +17,27 @@
     },
     "counts": {
       "V7_CHRONOLOGY_ALLOWED": 10132,
-      "ELEMENTARY_LEXICAL_ALLOWED": 3526,
+      "ELEMENTARY_LEXICAL_ALLOWED": 3514,
       "EXPLICIT_PROPER_NAME_ALLOWED": 84,
       "REVIEWED_EXPLICIT_ALLOWED": 756,
       "MORPHOLOGY_TO_GRAMMAR": 2502,
       "CONTRACTION_TO_GRAMMAR": 227,
       "EXPLICIT_FUNCTION_TO_GRAMMAR": 20718,
-      "FUTURE_V7_LEAK": 829,
-      "UNREGISTERED_V7": 1337,
+      "FUTURE_V7_LEAK": 787,
+      "UNREGISTERED_V7": 1306,
       "UNREGISTERED_PROPER": 0,
-      "NOTED_UNLEARNED_ALLOWED": 793
+      "NOTED_UNLEARNED_ALLOWED": 878
     },
-    "notesPresent": 110,
+    "notesPresent": 117,
     "missingGloss": 0,
     "mappingErrors": [],
     "runtimeBrowserErrors": [],
-    "uniqueUnresolved": 508,
-    "futureVocabLeakOccurrences": 2166,
+    "uniqueUnresolved": 501,
+    "futureVocabLeakOccurrences": 2093,
     "chronologyPass": false,
     "rule": "Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. Explicit proper-name allowances are honored only inside the current passage when allowedWords marks the row proper names and the actual token is capitalized; those names are never promoted into cumulative ordinary vocabulary. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun. Explicitly tagged local proper-name possessives are authorized only for that passage. A passage-local notes entry authorizes only the exact noted token in that passage and only when English and Japanese gloss are both nonblank; it never enters cumulative vocabulary."
   },
   "unresolved": [
-    {
-      "token": "zealand",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        1,
-        6,
-        6,
-        "zealand",
-        0
-      ],
-      "occurrences": 12,
-      "sections": [
-        "ニューホライズン|1|Unit 4-1"
-      ],
-      "examples": [
-        "ニューホライズン|1|Unit 4-1|sentence:6",
-        "ニューホライズン|1|Unit 4-1|sentence:7",
-        "ニューホライズン|1|Unit 4-1|sentence:8",
-        "ニューホライズン|1|Unit 4-1|slash:6",
-        "ニューホライズン|1|Unit 4-1|slash:7",
-        "ニューホライズン|1|Unit 4-1|slash:8",
-        "ニューホライズン|1|Unit 4-1|A4.answer",
-        "ニューホライズン|1|Unit 4-1|A4.evidence",
-        "ニューホライズン|1|Unit 4-1|A5.evidence",
-        "ニューホライズン|1|Unit 4-1|B3.answer",
-        "ニューホライズン|1|Unit 4-1|B3.evidence",
-        "ニューホライズン|1|Unit 4-1|B4.evidence"
-      ],
-      "sectionCount": 1
-    },
     {
       "token": "everyday",
       "kind": "UNREGISTERED_V7",
@@ -92,130 +62,6 @@
         "ニューホライズン|3|Unit 5-4|B3.evidence"
       ],
       "sectionCount": 3
-    },
-    {
-      "token": "shoes",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 11,
-      "sections": [
-        "ニューホライズン|2|Unit 4-4"
-      ],
-      "examples": [
-        "ニューホライズン|2|Unit 4-4|sentence:2",
-        "ニューホライズン|2|Unit 4-4|sentence:6",
-        "ニューホライズン|2|Unit 4-4|sentence:8",
-        "ニューホライズン|2|Unit 4-4|slash:2",
-        "ニューホライズン|2|Unit 4-4|slash:6",
-        "ニューホライズン|2|Unit 4-4|slash:8",
-        "ニューホライズン|2|Unit 4-4|A2.answer",
-        "ニューホライズン|2|Unit 4-4|A2.evidence",
-        "ニューホライズン|2|Unit 4-4|A4.answer",
-        "ニューホライズン|2|Unit 4-4|A4.evidence",
-        "ニューホライズン|2|Unit 4-4|B3.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "ant",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 10,
-      "sections": [
-        "サンシャイン|1|PROGRAM 4-1"
-      ],
-      "examples": [
-        "サンシャイン|1|PROGRAM 4-1|sentence:7",
-        "サンシャイン|1|PROGRAM 4-1|sentence:10",
-        "サンシャイン|1|PROGRAM 4-1|slash:7",
-        "サンシャイン|1|PROGRAM 4-1|slash:10",
-        "サンシャイン|1|PROGRAM 4-1|A3.answer",
-        "サンシャイン|1|PROGRAM 4-1|A3.evidence",
-        "サンシャイン|1|PROGRAM 4-1|B2.answer",
-        "サンシャイン|1|PROGRAM 4-1|B2.evidence",
-        "サンシャイン|1|PROGRAM 4-1|B3.answer",
-        "サンシャイン|1|PROGRAM 4-1|B3.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "boat",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        2,
-        8,
-        7,
-        "boat",
-        0
-      ],
-      "occurrences": 10,
-      "sections": [
-        "サンシャイン|2|PROGRAM 6-2"
-      ],
-      "examples": [
-        "サンシャイン|2|PROGRAM 6-2|sentence:1",
-        "サンシャイン|2|PROGRAM 6-2|sentence:9",
-        "サンシャイン|2|PROGRAM 6-2|sentence:11",
-        "サンシャイン|2|PROGRAM 6-2|slash:1",
-        "サンシャイン|2|PROGRAM 6-2|slash:9",
-        "サンシャイン|2|PROGRAM 6-2|slash:11",
-        "サンシャイン|2|PROGRAM 6-2|A5.answer",
-        "サンシャイン|2|PROGRAM 6-2|A5.evidence",
-        "サンシャイン|2|PROGRAM 6-2|B3.answer",
-        "サンシャイン|2|PROGRAM 6-2|B3.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "chorus",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        1,
-        12,
-        6,
-        "chorus",
-        0
-      ],
-      "occurrences": 10,
-      "sections": [
-        "ニューホライズン|1|Unit 10-1",
-        "ニューホライズン|1|Unit 10-2"
-      ],
-      "examples": [
-        "ニューホライズン|1|Unit 10-1|sentence:1",
-        "ニューホライズン|1|Unit 10-1|sentence:2",
-        "ニューホライズン|1|Unit 10-1|slash:1",
-        "ニューホライズン|1|Unit 10-1|slash:2",
-        "ニューホライズン|1|Unit 10-1|A1.answer",
-        "ニューホライズン|1|Unit 10-1|A1.evidence",
-        "ニューホライズン|1|Unit 10-2|sentence:4",
-        "ニューホライズン|1|Unit 10-2|slash:4",
-        "ニューホライズン|1|Unit 10-2|A3.answer",
-        "ニューホライズン|1|Unit 10-2|A3.evidence"
-      ],
-      "sectionCount": 2
-    },
-    {
-      "token": "community",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 10,
-      "sections": [
-        "ニューホライズン|3|Unit 4-3"
-      ],
-      "examples": [
-        "ニューホライズン|3|Unit 4-3|sentence:1",
-        "ニューホライズン|3|Unit 4-3|sentence:6",
-        "ニューホライズン|3|Unit 4-3|slash:1",
-        "ニューホライズン|3|Unit 4-3|slash:6",
-        "ニューホライズン|3|Unit 4-3|A1.answer",
-        "ニューホライズン|3|Unit 4-3|A1.evidence",
-        "ニューホライズン|3|Unit 4-3|A4.evidence",
-        "ニューホライズン|3|Unit 4-3|B3.answer",
-        "ニューホライズン|3|Unit 4-3|B3.evidence",
-        "ニューホライズン|3|Unit 4-3|B4.evidence"
-      ],
-      "sectionCount": 1
     },
     {
       "token": "compares",
@@ -259,34 +105,6 @@
         "ニューホライズン|1|Unit 6-2|A5.evidence",
         "ニューホライズン|1|Unit 6-2|B2.evidence",
         "ニューホライズン|1|Unit 6-2|B3.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "shoe",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        2,
-        8,
-        7,
-        "shoe",
-        0
-      ],
-      "occurrences": 10,
-      "sections": [
-        "サンシャイン|2|PROGRAM 6-2"
-      ],
-      "examples": [
-        "サンシャイン|2|PROGRAM 6-2|sentence:8",
-        "サンシャイン|2|PROGRAM 6-2|sentence:9",
-        "サンシャイン|2|PROGRAM 6-2|sentence:10",
-        "サンシャイン|2|PROGRAM 6-2|slash:8",
-        "サンシャイン|2|PROGRAM 6-2|slash:9",
-        "サンシャイン|2|PROGRAM 6-2|slash:10",
-        "サンシャイン|2|PROGRAM 6-2|A4.answer",
-        "サンシャイン|2|PROGRAM 6-2|A4.evidence",
-        "サンシャイン|2|PROGRAM 6-2|B3.answer",
-        "サンシャイン|2|PROGRAM 6-2|B3.evidence"
       ],
       "sectionCount": 1
     },
