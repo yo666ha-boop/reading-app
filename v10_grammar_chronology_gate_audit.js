@@ -16,8 +16,6 @@ function evidenceFor(book,grade,feature){
   const g=Number(grade);
   const same=key(book,g,feature);
   if(exact[same]) return {status:'EXACT_CURRENT_GRADE',boundary:exact[same],introducedGrade:g,key:same};
-  // Grammar already verified in an earlier grade remains learned in later grades.
-  // Carry-forward is allowed only from an exact evidence-backed boundary in the same textbook.
   for(let pg=g-1;pg>=1;pg--){
     const k=key(book,pg,feature);
     if(exact[k]) return {status:'EXACT_PRIOR_GRADE_CARRY_FORWARD',boundary:exact[k],introducedGrade:pg,key:k};
@@ -29,10 +27,38 @@ function evidenceFor(book,grade,feature){
   }
   return {status:'NO_EVIDENCE_BOUNDARY',key:same};
 }
-let detectedOccurrences=0,resolvedOccurrences=0,unresolvedOccurrences=0,futureGrammarLeak=0,priorGradeCarryForwardOccurrences=0;
+function isFalsePositive(feature,hit){
+  const text=String(hit&&hit.text||'');
+  const match=String(hit&&hit.match||'');
+  if(feature==='ADJECTIVE_TO_INFINITIVE'){
+    if(/\bnice\s+to\s+meet\b/i.test(match))return true;
+    if(/\b(?:important|good|nice|easy|hard|difficult|necessary|possible|ready)\s+to\s+(?:me|you|him|her|us|them)\b/i.test(match))return true;
+  }
+  if(feature==='MAKE_O_V'){
+    // Reject ordinary lexical make + noun phrases accidentally read as make O V.
+    if(/\bmake\s+(?:chinese|japanese|local|traditional|school|sports?|food|lunch|dinner|breakfast)\b/i.test(match))return true;
+    if(/\bmade\s+it\s+(?:this|that|the|a|an)\b/i.test(match))return true;
+  }
+  if(feature==='SV_OO'){
+    // A real double-object needs a second object, not a following preposition/adverb/to-infinitive marker.
+    if(/\b(?:about|around|with|across|to|from|for|at|on|in|into|over|under|through|by)\b\s*$/i.test(match))return true;
+  }
+  if(feature==='SUPERLATIVE'){
+    if(/\b(?:do|doing|did|try|trying)\s+(?:my|your|his|her|our|their)\s+best\b/i.test(text))return true;
+    if(/^\s*best\s+wishes\b/i.test(text))return true;
+    if(/\bat\s+least\s+(?:a|one|two|three|four|five|few|some)\b/i.test(text)&&/\bleast\b/i.test(match))return true;
+  }
+  if(feature==='VERB_TO_INFINITIVE'&&/\bwould\s+like\s+to\b|\b(?:i|you|he|she|we|they)'d\s+like\s+to\b/i.test(text))return true;
+  return false;
+}
+function cleanHits(feature,hits){return (hits||[]).filter(h=>!isFalsePositive(feature,h));}
+let detectedOccurrences=0,resolvedOccurrences=0,unresolvedOccurrences=0,futureGrammarLeak=0,priorGradeCarryForwardOccurrences=0,falsePositiveOccurrencesRemoved=0;
 const unresolved=[],future=[],resolved=[];
 for(const row of cand.passageFeatures||[]){
-  for(const [feature,hits] of Object.entries(row.features||{})){
+  for(const [feature,rawHits] of Object.entries(row.features||{})){
+    const hits=cleanHits(feature,rawHits);
+    falsePositiveOccurrencesRemoved+=rawHits.length-hits.length;
+    if(!hits.length)continue;
     detectedOccurrences+=hits.length;
     const e=evidenceFor(row.textbook,row.grade,feature);
     if(e.status==='EXACT_PRIOR_GRADE_CARRY_FORWARD'){
@@ -60,7 +86,7 @@ for(const row of cand.passageFeatures||[]){
     }
   }
 }
-const out={generatedAt:new Date().toISOString(),detectorVersion:cand.detectorVersion||1,passages:cand.passages,detectedFeatureTypes:Object.keys(cand.featureSummary||{}).length,detectedOccurrences,resolvedOccurrences,priorGradeCarryForwardOccurrences,unresolvedOccurrences,futureGrammarLeak,sectionChronologyComplete:unresolvedOccurrences===0,finalPass:unresolvedOccurrences===0&&futureGrammarLeak===0,rule:'Fail closed: only exact evidence-backed same-textbook boundaries resolve occurrences. Exact earlier-grade introductions carry forward to later grades in the same textbook. Unit/program-level evidence is recorded but never upgraded to exact subunit permission.',future,unresolved,resolved};
+const out={generatedAt:new Date().toISOString(),detectorVersion:(cand.detectorVersion||'3.1')+'+gate-fp1',passages:cand.passages,detectedFeatureTypes:Object.keys(cand.featureSummary||{}).length,detectedOccurrences,falsePositiveOccurrencesRemoved,resolvedOccurrences,priorGradeCarryForwardOccurrences,unresolvedOccurrences,futureGrammarLeak,sectionChronologyComplete:unresolvedOccurrences===0,finalPass:unresolvedOccurrences===0&&futureGrammarLeak===0,rule:'Fail closed after bounded structural false-positive removal: only exact evidence-backed same-textbook boundaries resolve occurrences. Exact earlier-grade introductions carry forward. Unit/program-level evidence remains unresolved.',future,unresolved,resolved};
 fs.writeFileSync('v10_grammar_chronology_gate_report.json',JSON.stringify(out,null,2)+'\n');
-console.log(`GRAMMAR CHRONOLOGY GATE passages=${out.passages}/168 features=${out.detectedFeatureTypes} occurrences=${detectedOccurrences} resolved=${resolvedOccurrences} carry=${priorGradeCarryForwardOccurrences} unresolved=${unresolvedOccurrences} future=${futureGrammarLeak} final=${out.finalPass?'PASS':'FAIL_CLOSED'}`);
+console.log(`GRAMMAR CHRONOLOGY GATE passages=${out.passages}/168 features=${out.detectedFeatureTypes} occurrences=${detectedOccurrences} fpRemoved=${falsePositiveOccurrencesRemoved} resolved=${resolvedOccurrences} carry=${priorGradeCarryForwardOccurrences} unresolved=${unresolvedOccurrences} future=${futureGrammarLeak} final=${out.finalPass?'PASS':'FAIL_CLOSED'}`);
 if(future.length){for(const x of future.slice(0,30))console.log(`FUTURE ${x.textbook}|${x.grade}|${x.section} ${x.feature} before ${x.boundary} occurrences=${x.occurrences}`);}
