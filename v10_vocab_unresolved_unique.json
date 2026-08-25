@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-08-25T02:07:00.905Z",
+    "generatedAt": "2026-08-25T02:14:00.601Z",
     "passages": 168,
     "canonicalSource": {
       "spreadsheetId": "1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4",
@@ -16,24 +16,24 @@
       "recordIdEnd": 4175
     },
     "counts": {
-      "V7_CHRONOLOGY_ALLOWED": 10849,
-      "ELEMENTARY_LEXICAL_ALLOWED": 3504,
+      "V7_CHRONOLOGY_ALLOWED": 10133,
+      "ELEMENTARY_LEXICAL_ALLOWED": 3445,
       "REVIEWED_EXPLICIT_ALLOWED": 775,
-      "MORPHOLOGY_TO_GRAMMAR": 1672,
-      "CONTRACTION_TO_GRAMMAR": 212,
+      "MORPHOLOGY_TO_GRAMMAR": 2505,
+      "CONTRACTION_TO_GRAMMAR": 227,
       "EXPLICIT_FUNCTION_TO_GRAMMAR": 20701,
-      "FUTURE_V7_LEAK": 1302,
-      "UNREGISTERED_V7": 1881,
+      "FUTURE_V7_LEAK": 1242,
+      "UNREGISTERED_V7": 1868,
       "UNREGISTERED_PROPER": 0
     },
     "notesPresent": 0,
     "missingGloss": 0,
     "mappingErrors": [],
     "runtimeBrowserErrors": [],
-    "uniqueUnresolved": 579,
-    "futureVocabLeakOccurrences": 3183,
+    "uniqueUnresolved": 567,
+    "futureVocabLeakOccurrences": 3110,
     "chronologyPass": false,
-    "rule": "Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; all remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology; short forms such as used/using are covered. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun."
+    "rule": "Primary lexical gate: the bounded 104-record elementary-school lexical source is known before junior-high; productive inflections of those bases remain grammar-gated. All remaining lexical items use canonical v7 textbook+grade+PDF/subunit chronology. Closed contractions and a bounded explicit structural/function set are handed to grammar chronology. Productive surface forms are reduced to a canonical v7 base and handed to grammar chronology; short forms such as used/using are covered. For v7-absent tokens, reviewed app allowedWords may authorize only later passages. Capitalization alone never authorizes a proper noun."
   },
   "unresolved": [
     {
@@ -1211,38 +1211,6 @@
       "sectionCount": 1
     },
     {
-      "token": "let's",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        3,
-        5,
-        3,
-        "let",
-        0
-      ],
-      "occurrences": 12,
-      "sections": [
-        "サンシャイン|1|Get Ready 4",
-        "サンシャイン|1|PROGRAM 2-3",
-        "サンシャイン|1|PROGRAM 10-1"
-      ],
-      "examples": [
-        "サンシャイン|1|Get Ready 4|sentence:10",
-        "サンシャイン|1|Get Ready 4|slash:10",
-        "サンシャイン|1|Get Ready 4|B3.evidence",
-        "サンシャイン|1|PROGRAM 2-3|sentence:12",
-        "サンシャイン|1|PROGRAM 2-3|slash:12",
-        "サンシャイン|1|PROGRAM 2-3|A5.evidence",
-        "サンシャイン|1|PROGRAM 10-1|sentence:6",
-        "サンシャイン|1|PROGRAM 10-1|slash:6",
-        "サンシャイン|1|PROGRAM 10-1|A3.answer",
-        "サンシャイン|1|PROGRAM 10-1|A3.evidence",
-        "サンシャイン|1|PROGRAM 10-1|B2.answer",
-        "サンシャイン|1|PROGRAM 10-1|B2.evidence"
-      ],
-      "sectionCount": 3
-    },
-    {
       "token": "poster",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -1469,36 +1437,6 @@
         "ニューホライズン|2|Unit 4-4|B3.evidence"
       ],
       "sectionCount": 1
-    },
-    {
-      "token": "sites",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        2,
-        12,
-        6,
-        "sites",
-        0
-      ],
-      "occurrences": 11,
-      "sections": [
-        "ニューホライズン|2|Unit 7-1",
-        "ニューホライズン|2|Unit 7-2"
-      ],
-      "examples": [
-        "ニューホライズン|2|Unit 7-1|sentence:1",
-        "ニューホライズン|2|Unit 7-1|sentence:9",
-        "ニューホライズン|2|Unit 7-1|sentence:11",
-        "ニューホライズン|2|Unit 7-1|slash:1",
-        "ニューホライズン|2|Unit 7-1|slash:9",
-        "ニューホライズン|2|Unit 7-1|slash:11",
-        "ニューホライズン|2|Unit 7-1|A1.answer",
-        "ニューホライズン|2|Unit 7-1|A1.evidence",
-        "ニューホライズン|2|Unit 7-2|sentence:10",
-        "ニューホライズン|2|Unit 7-2|slash:10",
-        "ニューホライズン|2|Unit 7-2|B4.evidence"
-      ],
-      "sectionCount": 2
     },
     {
       "token": "skate",
@@ -1916,35 +1854,6 @@
         "サンシャイン|1|PROGRAM 7-2|B4.evidence"
       ],
       "sectionCount": 1
-    },
-    {
-      "token": "days",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        2,
-        11,
-        8,
-        "days",
-        0
-      ],
-      "occurrences": 9,
-      "sections": [
-        "サンシャイン|2|PROGRAM 2-1",
-        "ニューホライズン|2|Unit 2-4",
-        "ニューホライズン|3|Unit 4-1"
-      ],
-      "examples": [
-        "サンシャイン|2|PROGRAM 2-1|sentence:8",
-        "サンシャイン|2|PROGRAM 2-1|slash:8",
-        "ニューホライズン|2|Unit 2-4|sentence:2",
-        "ニューホライズン|2|Unit 2-4|slash:2",
-        "ニューホライズン|2|Unit 2-4|B1.evidence",
-        "ニューホライズン|3|Unit 4-1|sentence:5",
-        "ニューホライズン|3|Unit 4-1|slash:5",
-        "ニューホライズン|3|Unit 4-1|A3.evidence",
-        "ニューホライズン|3|Unit 4-1|B2.evidence"
-      ],
-      "sectionCount": 3
     },
     {
       "token": "director",
@@ -2997,32 +2906,6 @@
       "sectionCount": 1
     },
     {
-      "token": "worker",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        3,
-        5,
-        4,
-        "worker",
-        0
-      ],
-      "occurrences": 8,
-      "sections": [
-        "ニューホライズン|2|Unit 3-2"
-      ],
-      "examples": [
-        "ニューホライズン|2|Unit 3-2|sentence:7",
-        "ニューホライズン|2|Unit 3-2|sentence:8",
-        "ニューホライズン|2|Unit 3-2|slash:7",
-        "ニューホライズン|2|Unit 3-2|slash:8",
-        "ニューホライズン|2|Unit 3-2|A4.answer",
-        "ニューホライズン|2|Unit 3-2|A4.evidence",
-        "ニューホライズン|2|Unit 3-2|B3.answer",
-        "ニューホライズン|2|Unit 3-2|B3.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
       "token": "advice",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -3366,32 +3249,6 @@
         "ニューホライズン|1|Unit 1-1|B2.prompt"
       ],
       "sectionCount": 1
-    },
-    {
-      "token": "longer",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        3,
-        8,
-        5,
-        "longer",
-        0
-      ],
-      "occurrences": 7,
-      "sections": [
-        "ニューホライズン|2|Unit 6-1",
-        "ニューホライズン|3|Unit 4-3"
-      ],
-      "examples": [
-        "ニューホライズン|2|Unit 6-1|sentence:6",
-        "ニューホライズン|2|Unit 6-1|sentence:8",
-        "ニューホライズン|2|Unit 6-1|slash:6",
-        "ニューホライズン|2|Unit 6-1|slash:8",
-        "ニューホライズン|2|Unit 6-1|A4.evidence",
-        "ニューホライズン|3|Unit 4-3|sentence:2",
-        "ニューホライズン|3|Unit 4-3|slash:2"
-      ],
-      "sectionCount": 2
     },
     {
       "token": "machine",
@@ -3976,24 +3833,6 @@
         "サンシャイン|3|PROGRAM 4-1|slash:3",
         "サンシャイン|3|PROGRAM 4-1|slash:6",
         "サンシャイン|3|PROGRAM 4-1|slash:7"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "drinking",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 6,
-      "sections": [
-        "ニューホライズン|3|Unit 4-1"
-      ],
-      "examples": [
-        "ニューホライズン|3|Unit 4-1|sentence:5",
-        "ニューホライズン|3|Unit 4-1|slash:5",
-        "ニューホライズン|3|Unit 4-1|A3.answer",
-        "ニューホライズン|3|Unit 4-1|A3.evidence",
-        "ニューホライズン|3|Unit 4-1|B2.answer",
-        "ニューホライズン|3|Unit 4-1|B2.evidence"
       ],
       "sectionCount": 1
     },
@@ -6073,22 +5912,6 @@
       "sectionCount": 1
     },
     {
-      "token": "drinks",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 4,
-      "sections": [
-        "サンシャイン|3|PROGRAM 3-2"
-      ],
-      "examples": [
-        "サンシャイン|3|PROGRAM 3-2|sentence:6",
-        "サンシャイン|3|PROGRAM 3-2|slash:6",
-        "サンシャイン|3|PROGRAM 3-2|A3.evidence",
-        "サンシャイン|3|PROGRAM 3-2|B2.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
       "token": "economics",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -6238,28 +6061,6 @@
         "サンシャイン|2|PROGRAM 8-3|slash:4",
         "サンシャイン|2|PROGRAM 8-3|A2.evidence",
         "サンシャイン|2|PROGRAM 8-3|B2.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "forest",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        2,
-        6,
-        2,
-        "forest",
-        0
-      ],
-      "occurrences": 4,
-      "sections": [
-        "サンシャイン|2|PROGRAM 4-1"
-      ],
-      "examples": [
-        "サンシャイン|2|PROGRAM 4-1|sentence:4",
-        "サンシャイン|2|PROGRAM 4-1|slash:4",
-        "サンシャイン|2|PROGRAM 4-1|A2.answer",
-        "サンシャイン|2|PROGRAM 4-1|A2.evidence"
       ],
       "sectionCount": 1
     },
@@ -7294,29 +7095,6 @@
       "sectionCount": 2
     },
     {
-      "token": "smaller",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        3,
-        6,
-        4,
-        "small",
-        0
-      ],
-      "occurrences": 4,
-      "sections": [
-        "ニューホライズン|3|Unit 3-1",
-        "ニューホライズン|3|Unit 3-2"
-      ],
-      "examples": [
-        "ニューホライズン|3|Unit 3-1|sentence:4",
-        "ニューホライズン|3|Unit 3-1|slash:4",
-        "ニューホライズン|3|Unit 3-2|sentence:8",
-        "ニューホライズン|3|Unit 3-2|slash:8"
-      ],
-      "sectionCount": 2
-    },
-    {
       "token": "sounds",
       "kind": "FUTURE_V7_LEAK",
       "intro": [
@@ -7784,27 +7562,6 @@
       "sectionCount": 1
     },
     {
-      "token": "ate",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        1,
-        11,
-        3,
-        "ate",
-        0
-      ],
-      "occurrences": 3,
-      "sections": [
-        "サンシャイン|1|Get Ready 6"
-      ],
-      "examples": [
-        "サンシャイン|1|Get Ready 6|sentence:2",
-        "サンシャイン|1|Get Ready 6|slash:2",
-        "サンシャイン|1|Get Ready 6|A1.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
       "token": "audience",
       "kind": "UNREGISTERED_V7",
       "intro": null,
@@ -7981,21 +7738,6 @@
         "ニューホライズン|2|Unit 4-3|sentence:8",
         "ニューホライズン|2|Unit 4-3|slash:8",
         "ニューホライズン|2|Unit 4-3|B3.evidence"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "cooked",
-      "kind": "UNREGISTERED_V7",
-      "intro": null,
-      "occurrences": 3,
-      "sections": [
-        "サンシャイン|1|PROGRAM 9-1"
-      ],
-      "examples": [
-        "サンシャイン|1|PROGRAM 9-1|sentence:8",
-        "サンシャイン|1|PROGRAM 9-1|slash:8",
-        "サンシャイン|1|PROGRAM 9-1|B3.evidence"
       ],
       "sectionCount": 1
     },
@@ -10947,26 +10689,6 @@
       "examples": [
         "サンシャイン|2|PROGRAM 5-3|sentence:4",
         "サンシャイン|2|PROGRAM 5-3|slash:4"
-      ],
-      "sectionCount": 1
-    },
-    {
-      "token": "thanks",
-      "kind": "FUTURE_V7_LEAK",
-      "intro": [
-        1,
-        8,
-        6,
-        "thanks",
-        0
-      ],
-      "occurrences": 2,
-      "sections": [
-        "ニューホライズン|1|Unit 6-2"
-      ],
-      "examples": [
-        "ニューホライズン|1|Unit 6-2|sentence:10",
-        "ニューホライズン|1|Unit 6-2|slash:10"
       ],
       "sectionCount": 1
     },
