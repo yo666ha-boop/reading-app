@@ -1,0 +1,31 @@
+{
+  "project":"mikami-math-problem-bank",
+  "recorded_at_jst":"2026-08-25T11:27:00+09:00",
+  "source":"実力錬成",
+  "status":"STRICT_COMPLETE_237_237",
+  "source_zip_sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33",
+  "source_zip_bytes":7287279,
+  "records":237,
+  "documents":27,
+  "unique_ids":237,
+  "per_document_counts_match":true,
+  "all_27_tests_reconstruct_to_100_points":true,
+  "questions_with_provenance":237,
+  "text_answers_with_provenance":219,
+  "graphical_answers_total":18,
+  "graphical_answers_with_ooxml_or_image_evidence":18,
+  "figure_refs":81,
+  "missing_figure_refs":0,
+  "errors":0,
+  "omml_serializer":"same structure-aware serializer as Standard317; fractions/delimiters/superscripts/subscripts/roots preserved",
+  "special_scoring_evidence":[
+    {"document":"25jitsurent1suhy000416.docx","major":3,"rule":"⑴ and ⑵ are one slot each; nested ⑶ contains independently scored ① and ②, therefore major3 has four 10-point slots"},
+    {"document":"25jitsurent1suhy000626.docx","rule":"named outputs 表面積/体積 are independent scored outputs inside circled subquestions; source score totals reconstruct to 100"}
+  ],
+  "durable_data":{"provider":"Google Drive","file_id":"1ZrG7Xw0iMjaR27UfzpPJmWnMK_2wlC2P","file_name":"mathbank_jitsuren237_strict_validated_20260825.jsonl","bytes":423021,"sha256":"4c8ed0ee4144562edcb8f063b565e7742fae305f1f512fa1f951a84bf59c6f9f","post_save_readback_verified":true,"readback_records":237,"readback_sha256_match":true},
+  "validation_report":{"provider":"Google Drive","file_id":"1IMg8A0oy3BCJdFJgf4VMYeXQ9ARJX8dD","file_name":"mathbank_jitsuren237_strict_validation_report_20260825.json","pass":true},
+  "strict_progress_after":{"Standard":317,"実力錬成":237,"Winpass":0,"total":554,"pending":717},
+  "current_stage":"WINPASS_717_STRICT_MATERIALIZATION",
+  "next":"Materialize Winpass717 from verified source ZIP with exact source-derived scoring exceptions, structure-aware OMML, Q/A provenance, graphical/figure identity, durable persistence, readback and validation. Then evidence-review 717 to canonical 570 without count forcing.",
+  "main_touched":false
+}
