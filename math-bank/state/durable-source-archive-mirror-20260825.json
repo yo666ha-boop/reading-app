@@ -1,0 +1,34 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-08-25T11:02:00+09:00",
+  "purpose": "Durable exact-byte mirror of the three verified source ZIPs so future runtimes do not regress to source-byte-unavailable state.",
+  "schedule_changed": false,
+  "main_touched": false,
+  "sources": {
+    "Standard": {
+      "drive_file_id": "1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU",
+      "drive_file_name": "mathbank_source_スタンダードデータ_20260825.zip",
+      "bytes": 9689250,
+      "sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6",
+      "post_upload_readback": true,
+      "readback_sha256_match": true
+    },
+    "実力錬成": {
+      "drive_file_id": "1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb",
+      "drive_file_name": "mathbank_source_中学実力錬成データ_20260825.zip",
+      "bytes": 7287279,
+      "sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33",
+      "post_upload_readback": true,
+      "readback_sha256_match": true
+    },
+    "Winpass": {
+      "drive_file_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
+      "drive_file_name": "mathbank_source_winpassデータ_20260825.zip",
+      "bytes": 8296042,
+      "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+      "post_upload_readback": true,
+      "readback_sha256_match": true
+    }
+  },
+  "resume_rule": "Future runtimes should fetch these exact Drive file IDs first when conversation attachments are unavailable, then verify byte size and SHA256 before any extraction. Never fall back to old source-byte-wait checkpoints while these durable mirrors remain accessible."
+}
