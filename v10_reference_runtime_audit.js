@@ -21,10 +21,12 @@ const isLetterCommaExempt=en=>/^(?:Dear\b.+|Best wishes|Sincerely yours),$/.test
   await new Promise(res=>setTimeout(res,300));
   if(!fs.existsSync('v10_reference_chronology_sync.js'))throw new Error('missing v10_reference_chronology_sync.js');
   vm.runInContext(fs.readFileSync('v10_reference_chronology_sync.js','utf8'),ctx,{filename:'v10_reference_chronology_sync.js'});
-  // The PDF reference layer predates the v7 lexical chronology repair. Temporarily expose the
-  // original wording so its unchanged slash boundaries can load, then re-apply the v7-safe lexeme
-  // to sentences, reference rows and A/B evidence without altering those boundaries.
-  w.V10_REFERENCE_CHRONOLOGY_SYNC.prepareLegacyReferenceGreat();
+  // The PDF reference layer predates the v7 lexical chronology repair. Temporarily expose only
+  // wording that the static reference file proves was originally "great", then re-apply the
+  // v7-safe lexeme to sentences, reference rows and A/B evidence without altering boundaries.
+  const reference001=fs.readFileSync('v10_reference_slash_manual_001_168.js','utf8');
+  const prep=w.V10_REFERENCE_CHRONOLOGY_SYNC.prepareLegacyReferenceGreat(reference001);
+  if(!prep||prep.changed<1)errors.push('legacy reference preparation did not find chronology-replaced great rows');
   for(const f of refs){if(!fs.existsSync(f))throw new Error('missing '+f);vm.runInContext(fs.readFileSync(f,'utf8'),ctx,{filename:f})}
   const sync=w.V10_REFERENCE_CHRONOLOGY_SYNC.apply();
   if(!sync||sync.passages<1)errors.push('reference chronology sync did not run');
@@ -57,7 +59,7 @@ const isLetterCommaExempt=en=>/^(?:Dear\b.+|Best wishes|Sincerely yours),$/.test
   requireRow('The animal needs a large area to find food and raise its young.','The animal needs a large area / to find food / and raise its young.');
   requireRow('Human activity has changed part of the forest into roads and buildings.','Human activity has changed part / of the forest / into roads / and buildings.');
   requireRow('The population is now in danger.','The population is now / in danger.');
-  console.log(`REFERENCE RUNTIME passages=${passages}/168 rows=${rows} slashes=${slashes} unsplit=${unsplit} chronologySync=${sync.passages}/${sync.rows}`);
+  console.log(`REFERENCE RUNTIME passages=${passages}/168 rows=${rows} slashes=${slashes} unsplit=${unsplit} prep=${prep.changed}/${prep.referenceGreatRows} chronologySync=${sync.passages}/${sync.rows}`);
   if(errors.length){console.error(`REFERENCE RUNTIME FAIL ${errors.length}`);errors.slice(0,300).forEach(e=>console.error('- '+e));process.exit(1)}
   console.log('REFERENCE RUNTIME PASS: all 168 passages use explicit reference/minimum-rule slash rows, preserve chronology-safe English, align EN/JP chunk counts, enforce comma/to boundaries, and include the reported production example.');
   dom.window.close();
