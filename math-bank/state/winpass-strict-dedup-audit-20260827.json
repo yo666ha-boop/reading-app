@@ -1,0 +1,51 @@
+{
+  "project": "mikami-math-problem-bank",
+  "workflow": "Winpass strict unique-ID dedup audit",
+  "recorded_at_jst": "2026-08-27T03:40:00+09:00",
+  "baseline_durable_sources": {
+    "drive_union_files": 12,
+    "rows": 458,
+    "unique_raw_ids": 458
+  },
+  "recent_claimed_increment": {
+    "files": [
+      "math-bank/state/winpass8-algebra-strict-delta-20260826.jsonl",
+      "math-bank/state/winpass9-relations-strict-delta-20260826.jsonl",
+      "math-bank/state/winpass1-figure-strict-delta-20260826.jsonl"
+    ],
+    "rows": 18,
+    "unique_raw_ids": 18,
+    "overlap_with_prior_durable_unique_ids": 18,
+    "net_new_unique_raw_ids": 0,
+    "overlap_raw_ids": [
+      "Winpass:25winpasst1suhy000209.docx:M02:S01",
+      "Winpass:25winpasst1suhy000209.docx:M02:S02",
+      "Winpass:25winpasst1suhy000209.docx:M02:S03",
+      "Winpass:25winpasst1suhy000209.docx:M02:S04",
+      "Winpass:25winpasst1suhy000209.docx:M02:S05",
+      "Winpass:25winpasst1suhy000209.docx:M02:S06",
+      "Winpass:25winpasst1suhy000209.docx:M02:S07",
+      "Winpass:25winpasst1suhy000209.docx:M02:S08",
+      "Winpass:25winpasst1suhy000210.docx:M01:S01",
+      "Winpass:25winpasst1suhy000210.docx:M01:S02",
+      "Winpass:25winpasst1suhy000210.docx:M01:S03",
+      "Winpass:25winpasst1suhy000210.docx:M01:S04",
+      "Winpass:25winpasst1suhy000210.docx:M01:S05",
+      "Winpass:25winpasst1suhy000210.docx:M01:S06",
+      "Winpass:25winpasst1suhy000210.docx:M02:S01",
+      "Winpass:25winpasst1suhy000210.docx:M02:S02",
+      "Winpass:25winpasst1suhy000210.docx:M02:S04",
+      "Winpass:25winpasst1suhy000210.docx:M02:S03"
+    ]
+  },
+  "finding": "The recent 8+9+1 records are hardened/repaired versions of raw_ids already present in the prior durable 458-ID union. They may supersede older content for those IDs but must not increment strict unique-record progress.",
+  "corrected_progress": {
+    "Standard": 317,
+    "実力錬成": 237,
+    "Winpass": 458,
+    "total": 1012,
+    "pending": 259
+  },
+  "specific_invalid_progress_evidence": "Checkpoint 1030 counted same raw_ids twice. Unique raw_id is the strict progress identity; duplicate revisions do not increase progress.",
+  "policy": "Never count revisions/revalidations of an existing raw_id as a new strict record. Prefer the better validated revision as current content while progress remains one unique raw_id."
+}
