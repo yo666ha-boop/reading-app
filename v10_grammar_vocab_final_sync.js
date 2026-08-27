@@ -22,13 +22,17 @@
  let tries=0;const timer=setInterval(()=>{tries++;if(window.V10_GRAMMAR_CHRONOLOGY_RUNTIME_FIX_STATE){clearInterval(timer);apply();}else if(tries>3000){clearInterval(timer);window.V10_GRAMMAR_VOCAB_FINAL_SYNC={definitions:defs.length,changed:0,qchanged:0,missing:['grammar bridge timeout'],version:'20260826',applied:false};}},10);
 })();
 
-// v11 branch-only extension: load the additional vocabulary support UI/data without touching v10 main.
-(function loadV11EasySupport(){
- if(typeof document==='undefined'||window.__V11_EASY_SUPPORT_LOADER)return;
- window.__V11_EASY_SUPPORT_LOADER=true;
- const s=document.createElement('script');
- s.src='v11_easy_support_notes.js?v=20260827-v11-easy-support-001';
- s.onload=()=>{window.V11_EASY_SUPPORT_LOADED=true;if(typeof window.V11_APPLY_EASY_SUPPORT_NOTES==='function')window.V11_APPLY_EASY_SUPPORT_NOTES();if(typeof window.render==='function')window.render();};
- s.onerror=()=>{window.V11_EASY_SUPPORT_LOAD_ERROR='v11_easy_support_notes.js failed';};
- document.head.appendChild(s);
+// v11 branch-only extensions. Keep v10 main untouched until v11 gates pass.
+(function loadV11Extensions(){
+ if(typeof document==='undefined'||window.__V11_EXTENSION_LOADER)return;
+ window.__V11_EXTENSION_LOADER=true;
+ function load(src,ok,fail){const s=document.createElement('script');s.src=src+(src.includes('?')?'&':'?')+'v=20260827-v11-001';s.onload=ok||(()=>{});s.onerror=fail||(()=>{});document.head.appendChild(s);}
+ load('v11_easy_support_notes.js',()=>{
+   window.V11_EASY_SUPPORT_LOADED=true;
+   if(typeof window.V11_APPLY_EASY_SUPPORT_NOTES==='function')window.V11_APPLY_EASY_SUPPORT_NOTES();
+   load('v11_multi_passage_architecture.js',()=>{
+     window.V11_MULTI_PASSAGE_LOADED=true;
+     if(typeof window.render==='function')window.render();
+   },()=>{window.V11_MULTI_PASSAGE_LOAD_ERROR='v11_multi_passage_architecture.js failed';});
+ },()=>{window.V11_EASY_SUPPORT_LOAD_ERROR='v11_easy_support_notes.js failed';});
 })();
