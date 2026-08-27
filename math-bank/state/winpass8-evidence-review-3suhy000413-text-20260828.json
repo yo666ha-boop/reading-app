@@ -1,0 +1,53 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "WINPASS_717_EVIDENCE_REVIEW",
+  "recorded_at_jst": "2026-08-28T01:56:00+09:00",
+  "source_document": "25winpasst3suhy000413.docx",
+  "source_document_bytes": 99837,
+  "source_document_sha256": "ff0fc8a93658cf3660a7ade7878ec89247cb5191b48a5cb72881e4a2929df741",
+  "source_docx_crc": "PASS",
+  "source_zip": {
+    "drive_file_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
+    "bytes": 8296042,
+    "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+    "crc": "PASS",
+    "members": 81
+  },
+  "strict_path": "math-bank/state/winpass9-new-3suhy000413-strict-20260827.jsonl",
+  "already_reviewed_excluded_from_batch": [
+    "Winpass:25winpasst3suhy000413.docx:M01:S05"
+  ],
+  "records": [
+    "Winpass:25winpasst3suhy000413.docx:M01:S01",
+    "Winpass:25winpasst3suhy000413.docx:M01:S02",
+    "Winpass:25winpasst3suhy000413.docx:M01:S03",
+    "Winpass:25winpasst3suhy000413.docx:M01:S04",
+    "Winpass:25winpasst3suhy000413.docx:M02:S01",
+    "Winpass:25winpasst3suhy000413.docx:M02:S02",
+    "Winpass:25winpasst3suhy000413.docx:M02:S03",
+    "Winpass:25winpasst3suhy000413.docx:M02:S04",
+    "Winpass:25winpasst3suhy000413.docx:M02:S05"
+  ],
+  "checks": {
+    "unique_raw_ids": "8/8 PASS",
+    "unique_fingerprints": "8/8 PASS",
+    "score_evidence": "8/8 verified from source paragraphs 16 and 84",
+    "question_answer_provenance": "8/8 verified from ordered OOXML w:t+m:t offsets",
+    "omml_structure": "preserved for x^2 and fractional coefficients",
+    "figure_refs": "none required for these 8 text records",
+    "independent_recalculation": "8/8 PASS",
+    "source_overlap_guard": "M01:S05 graphical record was previously reviewed in winpass9-graph-partial; not counted again"
+  },
+  "decision": "include all 8",
+  "reason": "All eight previously-unreviewed text records are bound to the fixed source DOCX SHA and source ZIP, have unique raw IDs/fingerprints, verified score/question/answer provenance, preserved mathematical structure, and PASS independent recalculation. No count forcing used.",
+  "summary": {
+    "reviewed": 8,
+    "included": 8,
+    "excluded": 0,
+    "count_forcing_used": false,
+    "cumulative_reviewed": 311,
+    "cumulative_included": 311,
+    "cumulative_excluded": 0,
+    "unreviewed": 406
+  }
+}
