@@ -1,7 +1,6 @@
-checked_at_utc=2026-08-27T12:09:58Z
-source_sha=b6d5315d3f9355363897b9a1a04d6af76c05c1c1
-result=PASS
-STATE {"version":"20260827-v11-easy-support-002","passages":218,"withExtra":217,"totalExtra":2271,"dictTerms":212}
-SAMPLE {"base":168,"extra":50,"count":218,"bad":0,"dup":0,"extraBad":0,"max":16,"examples":[{"id":"V11-SS-G1-P10-2-002","section":"PROGRAM 10-2","n":12},{"id":"V11-SS-G1-P10-2-003","section":"PROGRAM 10-2","n":13},{"id":"V11-SS-G1-P10-2-004","section":"PROGRAM 10-2","n":13},{"id":"V11-SS-G1-P10-2-005","section":"PROGRAM 10-2","n":12},{"id":"V11-SS-G1-P10-2-006","section":"PROGRAM 10-2","n":12}]}
-RENDER {"required":0,"extra":3,"total":3,"on":true,"passageId":"V10-SUN-G1-GR2-001"}
-V11_EASY_SUPPORT_PASS_218
+checked_at_utc=2026-08-27T12:14:42Z
+source_sha=1e624be4a821020e6a5c2ccdcada27e795052066
+result=FAIL
+V11_EASY_SUPPORT_FAIL Error: runtime errors Error: Batch01 uniqueness repair incomplete {"version":"20260827-b01-unique-001","definitions":9,"changed":9,"missing":[],"duplicateBodies":[["V11-NH-G3-U6-4-003","V11-NH-G3-U6-4-007"],["V11-NH-G3-U6-4-006","V11-NH-G3-U6-4-010"]]}
+    at assert ([stdin]:2:34)
+    at [stdin]:33:5
