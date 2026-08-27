@@ -1,0 +1,69 @@
+name: v11 Batch01 quality audit
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch01_passages_001_050.js'
+      - 'v11_batch01_uniqueness_repair.js'
+      - 'v10_grammar_vocab_final_sync.js'
+      - '.github/workflows/v11-batch01-quality-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: v11-batch01-quality-audit
+  cancel-in-progress: true
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Audit Batch01 coherence and diversity
+        shell: bash
+        run: |
+          python3 -m http.server 8000 >/tmp/v11-quality-http.log 2>&1 &
+          server=$!
+          trap 'kill $server || true' EXIT
+          sleep 2
+          set +e
+          timeout 300s node > /tmp/v11-quality.log 2>&1 <<'NODE'
+          const {chromium}=require('playwright');
+          function assert(c,m){if(!c)throw new Error(m)}
+          function jac(a,b){a=new Set(a);b=new Set(b);let i=0;for(const x of a)if(b.has(x))i++;return i/(a.size+b.size-i)}
+          (async()=>{let b;try{
+            b=await chromium.launch({headless:true});const p=await b.newPage({viewport:{width:1280,height:900}});const errs=[];p.on('pageerror',e=>errs.push(String(e)));p.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
+            const r=await p.goto('http://127.0.0.1:8000/index.html?quality='+Date.now(),{waitUntil:'domcontentloaded',timeout:90000});assert(r&&r.ok(),'HTTP '+(r&&r.status()));
+            await p.waitForFunction(()=>window.V10_RUNTIME_LOAD_PROGRESS==='complete',{timeout:120000});await p.waitForFunction(()=>window.V11_BATCH01_LOADED===true,{timeout:60000});
+            const data=await p.evaluate(()=>({all:(window.V11_BATCH01_PASSAGES||[]).map(x=>({id:x.id,title:x.title,textbook:x.textbook,grade:x.grade,section:x.section,sentences:x.sentences,fullTranslation:x.fullTranslation,questions:x.questions,questionSetB:x.questionSetB})),unique:window.V11_BATCH01_UNIQUENESS_STATE||null}));
+            assert(data.all.length===50,'count '+data.all.length);assert(data.unique&&data.unique.duplicateBodies.length===0,'exact duplicate state '+JSON.stringify(data.unique));
+            const bad=[];const pairs=[];const groups=new Map();for(const x of data.all){const k=x.textbook+'|'+x.grade+'|'+x.section;if(!groups.has(k))groups.set(k,[]);groups.get(k).push(x);if(new Set(x.sentences).size!==x.sentences.length)bad.push(x.id+':repeated-sentence');if(x.sentences.join(' ').length<180)bad.push(x.id+':too-short');if(!String(x.fullTranslation||'').trim())bad.push(x.id+':translation');if((x.questions||[]).length!==5||(x.questionSetB||[]).length!==5)bad.push(x.id+':question-count');const e=new Set([...(x.questions||[]),...(x.questionSetB||[])].map(q=>q.evidence));if(e.size<8)bad.push(x.id+':evidence-diversity-'+e.size);}
+            for(const [g,xs] of groups)for(let i=0;i<xs.length;i++)for(let j=i+1;j<xs.length;j++){const s=jac(xs[i].sentences,xs[j].sentences);if(s>=0.65)pairs.push({g,a:xs[i].id,b:xs[j].id,score:+s.toFixed(3)});}
+            pairs.sort((a,b)=>b.score-a.score);const severe=pairs.filter(x=>x.score>=0.85);const high=pairs.filter(x=>x.score>=0.75);const contradictions=[];
+            const rules=[['Yesterday, the theater was quiet.','Yesterday, the theater was busy.'],['My house was not far from the theater.','My house was far from the theater.']];for(const x of data.all)for(const [a,c] of rules)if(x.sentences.includes(a)&&x.sentences.includes(c))contradictions.push(x.id+':'+a+' <> '+c);
+            console.log('SUMMARY '+JSON.stringify({count:data.all.length,groups:[...groups].map(([k,v])=>[k,v.length]),bad:bad.length,contradictions:contradictions.length,severe:severe.length,high:high.length,max:pairs[0]||null,repair:data.unique}));
+            console.log('HIGH_SIMILARITY '+JSON.stringify(high));
+            console.log('PASSAGES');for(const x of data.all)console.log(x.id+' | '+x.title+' | '+x.sentences.join(' '));
+            assert(bad.length===0,'structural/coherence flags '+bad.join(' | '));assert(contradictions.length===0,'contradictions '+contradictions.join(' | '));assert(severe.length===0,'near duplicate >=0.85 '+JSON.stringify(severe));assert(errs.length===0,'runtime errors '+errs.join(' | '));
+            console.log('V11_BATCH01_QUALITY_GATE_PASS');
+          }finally{if(b)await b.close().catch(()=>{})}})().catch(e=>{console.error('V11_BATCH01_QUALITY_GATE_FAIL '+(e.stack||e));process.exitCode=1});
+          NODE
+          code=$?
+          if grep -q 'V11_BATCH01_QUALITY_GATE_PASS' /tmp/v11-quality.log && [ "$code" -eq 0 ]; then result='PASS'; else result='FAIL'; fi
+          { echo "checked_at_utc=$(date -u '+%Y-%m-%dT%H:%M:%SZ')"; echo "source_sha=${GITHUB_SHA}"; echo "result=$result"; cat /tmp/v11-quality.log; } > V11_BATCH01_QUALITY_AUDIT.txt
+          cat V11_BATCH01_QUALITY_AUDIT.txt
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add V11_BATCH01_QUALITY_AUDIT.txt
+          git commit -m 'v11: record Batch01 quality audit [skip ci]' || true
+          git pull --rebase origin v11-1000passage-easy-notes || true
+          git push origin HEAD:v11-1000passage-easy-notes || true
+          if [ "$result" != 'PASS' ]; then exit 1; fi
