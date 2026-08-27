@@ -6,6 +6,7 @@ on:
       - 'v11_easy_support_notes.js'
       - 'v11_multi_passage_architecture.js'
       - 'v11_batch01_passages_001_050.js'
+      - 'v11_batch01_uniqueness_repair.js'
       - 'v10_grammar_vocab_final_sync.js'
       - 'index.html'
       - '.github/workflows/v11-easy-support-audit.yml'
@@ -88,5 +89,6 @@ jobs:
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add V11_EASY_SUPPORT_AUDIT.txt
           git commit -m 'v11: record easy support audit [skip ci]' || true
+          git pull --rebase origin v11-1000passage-easy-notes || true
           git push origin HEAD:v11-1000passage-easy-notes || true
           if [ "$result" != 'PASS' ]; then exit 1; fi
