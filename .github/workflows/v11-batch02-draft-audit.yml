@@ -1,0 +1,39 @@
+name: v11 Batch02 draft audit
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch02_passages_draft.js'
+      - 'v11_batch02_draft_audit.js'
+      - '.github/workflows/v11-batch02-draft-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: v11-batch02-draft-audit
+  cancel-in-progress: true
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Audit 50 non-runtime draft objects and word-count bands
+        run: node v11_batch02_draft_audit.js
+      - name: Persist audit evidence
+        if: always()
+        shell: bash
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -f V11_BATCH02_DRAFT_AUDIT_STATUS.txt V11_BATCH02_DRAFT_WORDCOUNTS.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'v11: record Batch02 draft audit [skip ci]'
+            git pull --rebase origin v11-1000passage-easy-notes || true
+            git push origin HEAD:v11-1000passage-easy-notes
+          fi
