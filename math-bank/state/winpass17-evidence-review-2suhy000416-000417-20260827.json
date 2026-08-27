@@ -1,0 +1,33 @@
+{
+  "project":"mikami-math-problem-bank",
+  "stage":"WINPASS_717_EVIDENCE_REVIEW",
+  "recorded_at_jst":"2026-08-27T19:08:00+09:00",
+  "review_policy":{"binding":"raw_id + record_fingerprint","count_forcing_forbidden":true,"exclude_requires":"source evidence + explicit reason"},
+  "batch":{"reviewed":17,"included":17,"excluded":0,"documents":["25winpasst2suhy000416.docx","25winpasst2suhy000417.docx"]},
+  "source_artifacts":[
+    {"path":"math-bank/state/winpass9-new-2suhy000416-strict-20260827.jsonl","blob_sha":"0e8ff037321c91b5da490909361ba30edaa8143d"},
+    {"path":"math-bank/state/winpass8-new-2suhy000417-strict-20260827.jsonl","blob_sha":"84b7de2f688d75b95e7a66439f8ae52cbde37d4d"}
+  ],
+  "decisions":[
+    ["Winpass:25winpasst2suhy000416.docx:M01:S01","8d791547328eead7c6564c208cbb911db5a9f2f5b0bb37028420738bb0717fc3","include"],
+    ["Winpass:25winpasst2suhy000416.docx:M01:S02","c14442fe789be2d12a2324dd52cae456bc0b0fb779781c8b1ae60a420ba0ec08","include"],
+    ["Winpass:25winpasst2suhy000416.docx:M01:S03","fc71924c294b50aa631233608787f9369216295575d32fbfa0ed5810114dbb2f","include"],
+    ["Winpass:25winpasst2suhy000416.docx:M01:S04","b0b9d21b260842cc5f5209afc30be20fd7b26122a5fa8aef76498a4df3e30d18","include"],
+    ["Winpass:25winpasst2suhy000416.docx:M02:S01","b054df2d845c256d33b6a85fb7446156a970f01f67ab128a11224d051a232359","include"],
+    ["Winpass:25winpasst2suhy000416.docx:M02:S02","a2036133a5ae9b3e8dcb46bb9f6046ae43db75962ddb99a7001a1540b6e8d251","include"],
+    ["Winpass:25winpasst2suhy000416.docx:M02:S03","f22670c92e2cf9f145619cb2750de9b3115d40fd1c9c14c8709f60627009922a","include"],
+    ["Winpass:25winpasst2suhy000416.docx:M03:S01","d4d3e5097ebc70cf6c83743810802d5efe7654107a287e6f4b9c199110d915bc","include"],
+    ["Winpass:25winpasst2suhy000416.docx:M03:S02","bf65af6eed83709567e8582049bdd8b347d3e7eb539c1c4c4d4cd24ebf89e0a","include"],
+    ["Winpass:25winpasst2suhy000417.docx:M01:S01","b9312236acc42b27420411e323a2986e6c395642409cfacaff4d03208b33953b","include"],
+    ["Winpass:25winpasst2suhy000417.docx:M01:S02","d926a42514727243975f77d9c1cbc97de5ab924e7e1a27733b089d86ad303958","include"],
+    ["Winpass:25winpasst2suhy000417.docx:M01:S03","bd79a2d7ef940a8e71971e714842d6bde03bd4ff51b48f46e80741cf805e3654","include"],
+    ["Winpass:25winpasst2suhy000417.docx:M01:S04","2da2da2635890ce49883cda6d031614538529077e2134907181829aeac03be57","include"],
+    ["Winpass:25winpasst2suhy000417.docx:M02:S01","3d965413769e8ba1b60b470e0d454009ea39f5bdbf2a4c5c690709d69cfd6c7c","include"],
+    ["Winpass:25winpasst2suhy000417.docx:M02:S02","b7f68670ca3c20f6d62a04d9bad79846468d479a8cd0b44f4d38ada76a161cb7","include"],
+    ["Winpass:25winpasst2suhy000417.docx:M02:S03","72311dcde27cda9ee231af89b15f7b43b012e67bf8bc1a5856e72ea7def9278c","include"],
+    ["Winpass:25winpasst2suhy000417.docx:M03:S01","f2253527bc733750867506f0fa3f5db10af5520de8be0c635e8fe489dc3540ff","include"]
+  ],
+  "decision_reason":"All 17 records have exact question/answer provenance, score evidence, figure relationship+asset SHA, and independent_check PASS; each corresponds to a distinct scored source slot.",
+  "cumulative_after_batch":{"reviewed":37,"included":37,"excluded":0,"unreviewed":680},
+  "next":"Continue next unreviewed durable Winpass records without count forcing."
+}
