@@ -4,6 +4,7 @@ on:
     branches: [v11-1000passage-easy-notes]
     paths:
       - 'v11_multi_passage_architecture.js'
+      - 'v11_batch01_passages_001_050.js'
       - 'v10_grammar_vocab_final_sync.js'
       - '.github/workflows/v11-multi-passage-audit.yml'
   workflow_dispatch:
@@ -15,7 +16,7 @@ concurrency:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -26,7 +27,7 @@ jobs:
       - run: |
           npm install --no-save --no-package-lock playwright@1.55.0
           npx playwright install --with-deps chromium
-      - name: Audit scalable passage switching
+      - name: Audit scalable passage switching and Batch01
         shell: bash
         run: |
           python3 -m http.server 8000 >/tmp/v11-multi-http.log 2>&1 &
@@ -34,37 +35,52 @@ jobs:
           trap 'kill $server || true' EXIT
           sleep 2
           set +e
-          node > /tmp/v11-multi.log 2>&1 <<'NODE'
+          timeout 300s node > /tmp/v11-multi.log 2>&1 <<'NODE'
           const {chromium}=require('playwright');
           function assert(c,m){if(!c)throw new Error(m)}
+          function fp(p){return [...new Set(p.sentences)].sort().join('\n')}
           (async()=>{
-            const b=await chromium.launch({headless:true});const p=await b.newPage({viewport:{width:1280,height:900}});const errors=[];
-            p.on('pageerror',e=>errors.push(String(e)));p.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
-            const r=await p.goto('http://127.0.0.1:8000/index.html?multi='+Date.now(),{waitUntil:'domcontentloaded',timeout:90000});assert(r&&r.ok(),'HTTP '+(r&&r.status()));
-            await p.waitForFunction(()=>window.V10_RUNTIME_LOAD_PROGRESS==='complete',{timeout:120000});
-            await p.waitForFunction(()=>window.V11_MULTI_PASSAGE_LOADED===true&&window.__V11_MULTI_PASSAGE_UI_INSTALLED===true,{timeout:30000});
-            await p.selectOption('#textbook','サンシャイン');await p.selectOption('#grade','1');
-            await p.waitForTimeout(100);
-            const sections=await p.locator('#section option').evaluateAll(o=>o.map(x=>x.value));assert(sections.includes('PROGRAM 10-1'),'target section missing');
-            await p.selectOption('#major',await p.locator('#major option').last().getAttribute('value').catch(()=>null)||await p.locator('#major option').last().innerText());
-            await p.selectOption('#section','PROGRAM 10-1');
-            const baseId=await p.evaluate(()=>window.choose()&&window.choose().id);assert(baseId,'base choose missing');
-            const mock={id:'V11-AUDIT-MOCK-001',textbook:'サンシャイン',grade:'1',section:'PROGRAM 10-1',level:'HOP',title:'A Clear Test Passage',genre:'report',sentences:['Yesterday, I was at home.','My friend was with me.','We had homework.','We finished the homework together.','Then we talked about school.'],fullTranslation:'昨日、私は家にいました。友達もいっしょでした。私たちには宿題がありました。私たちはいっしょに宿題を終えました。それから学校について話しました。',slashRows:[{en:'Yesterday, / I was / at home.',jp:'昨日 / 私はいました / 家に'},{en:'My friend was / with me.',jp:'私の友達はいました / 私といっしょに'},{en:'We had / homework.',jp:'私たちにはありました / 宿題が'},{en:'We finished / the homework / together.',jp:'私たちは終えました / その宿題を / いっしょに'},{en:'Then / we talked / about school.',jp:'それから / 私たちは話しました / 学校について'}],questions:[{prompt:'1. 話し手はいつ家にいましたか。',answer:'Yesterday',evidence:'Yesterday, I was at home.',evidenceJp:'昨日、私は家にいました。',reason:'Yesterday が時を表します。'},{prompt:'2. 誰が話し手といっしょにいましたか。',answer:'My friend',evidence:'My friend was with me.',evidenceJp:'友達もいっしょでした。',reason:'My friend が人物です。'},{prompt:'3. 2人には何がありましたか。',answer:'homework',evidence:'We had homework.',evidenceJp:'私たちには宿題がありました。',reason:'homework が対象です。'},{prompt:'4. 2人は何を終えましたか。',answer:'the homework',evidence:'We finished the homework together.',evidenceJp:'私たちはいっしょに宿題を終えました。',reason:'the homework が目的語です。'},{prompt:'5. その後何について話しましたか。',answer:'school',evidence:'Then we talked about school.',evidenceJp:'それから学校について話しました。',reason:'about school が話題です。'}],questionSetB:[]};
-            const reg=await p.evaluate(m=>window.V11_REGISTER_PASSAGES([m]),mock);assert(reg.extraPassages>=1,'registry failed '+JSON.stringify(reg));
-            await p.evaluate(()=>window.render());await p.waitForTimeout(150);
-            const opt=await p.locator('#v11PassageVariant option').allTextContents();assert(opt.length===2,'variant option count '+opt.length+' '+opt.join(' | '));
-            await p.selectOption('#v11PassageVariant','1');await p.evaluate(()=>window.render());await p.waitForTimeout(100);
-            assert((await p.locator('#passage').innerText()).includes('A Clear Test Passage'),'extra title not rendered');
-            assert((await p.locator('#passage').innerText()).includes('We finished the homework together.'),'extra body not rendered');
-            const qs=await p.locator('#questions .q').allTextContents();assert(qs.length===5,'question count '+qs.length);assert(qs[0].includes('いつ家に'),'wrong extra questions '+qs[0]);
-            const ans=await p.locator('#answers').innerText();assert(ans.includes('Yesterday')&&ans.includes('Yesterday, I was at home.'),'answer/evidence mismatch');
-            await p.selectOption('#v11PassageVariant','0');await p.evaluate(()=>window.render());await p.waitForTimeout(100);assert((await p.evaluate(()=>window.choose().id))===baseId,'base switch failed');
-            assert(errors.length===0,'runtime errors '+errors.join(' | '));
-            console.log('BASE '+baseId);console.log('OPTIONS '+JSON.stringify(opt));console.log('V11_MULTI_PASSAGE_PASS');await b.close();
-          })().catch(e=>{console.error('V11_MULTI_PASSAGE_FAIL '+(e.stack||e));process.exitCode=1});
+            let b;
+            try{
+              b=await chromium.launch({headless:true});
+              const p=await b.newPage({viewport:{width:1280,height:900}});const errors=[];
+              p.on('pageerror',e=>errors.push(String(e)));p.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+              const r=await p.goto('http://127.0.0.1:8000/index.html?multi='+Date.now(),{waitUntil:'domcontentloaded',timeout:90000});assert(r&&r.ok(),'HTTP '+(r&&r.status()));
+              await p.waitForFunction(()=>window.V10_RUNTIME_LOAD_PROGRESS==='complete',{timeout:120000});
+              await p.waitForFunction(()=>window.V11_MULTI_PASSAGE_LOADED===true&&window.__V11_MULTI_PASSAGE_UI_INSTALLED===true&&window.V11_BATCH01_LOADED===true,{timeout:60000});
+              const audit=await p.evaluate(()=>{
+                const sets=[window.V10_SUNSHINE_G1||{},window.V10_NEWHORIZON_G1||{},window.V10_PASSAGES_G2_SS||{},window.V10_PASSAGES_G2_NH||{},window.V10_PASSAGES_G3_SS||{},window.V10_PASSAGES_G3_NH||{}];
+                const base=sets.flatMap(d=>Object.values(d||{}));const baseById=new Map(base.map(x=>[x.id,x]));
+                const extra=window.V11_BATCH01_PASSAGES||[];const ids=new Set();const titles=new Set();const bad=[];const exactEvidence=[];
+                for(const x of extra){
+                  if(ids.has(x.id))bad.push(x.id+':duplicate-id');ids.add(x.id);
+                  if(titles.has(x.title))bad.push(x.id+':duplicate-title');titles.add(x.title);
+                  const b=baseById.get(x.sourceSectionBaselineId);if(!b)bad.push(x.id+':missing-baseline '+x.sourceSectionBaselineId);else if(String(b.textbook)!==String(x.textbook)||String(b.grade)!==String(x.grade)||String(b.section)!==String(x.section))bad.push(x.id+':baseline-scope-mismatch');
+                  if(!Array.isArray(x.sentences)||x.sentences.length<8||x.sentences.length>18)bad.push(x.id+':sentence-count');
+                  if(!Array.isArray(x.slashRows)||x.slashRows.length!==x.sentences.length)bad.push(x.id+':slash-count');
+                  if(!Array.isArray(x.questions)||x.questions.length!==5)bad.push(x.id+':A-count');
+                  if(!Array.isArray(x.questionSetB)||x.questionSetB.length!==5)bad.push(x.id+':B-count');
+                  if(!String(x.fullTranslation||'').trim())bad.push(x.id+':translation-empty');
+                  for(const [setName,qs] of [['A',x.questions||[]],['B',x.questionSetB||[]]])for(const q of qs){if(!q.prompt||!q.answer||!q.evidence||!q.evidenceJp||!q.reason)bad.push(x.id+':'+setName+'-incomplete');if(!(x.sentences||[]).includes(q.evidence))exactEvidence.push(x.id+':'+setName+':'+q.evidence);}
+                  if(x.vocabChronology!=='PASS_BY_SECTION_BANK_20260827')bad.push(x.id+':vocab-marker');
+                  if(x.grammarChronology!=='PASS_BY_SECTION_BANK_20260827')bad.push(x.id+':grammar-marker');
+                }
+                const fps=new Map(),duplicateBodies=[];for(const x of extra){const f=[...new Set(x.sentences)].sort().join('\n');if(fps.has(f))duplicateBodies.push([fps.get(f),x.id]);else fps.set(f,x.id);}
+                return {base:base.length,extra:extra.length,batchState:window.V11_BATCH01_STATE||null,multiState:window.V11_MULTI_PASSAGE_STATE||null,bad,exactEvidence,duplicateBodies,sections:[...new Set(extra.map(x=>x.textbook+'|'+x.grade+'|'+x.section))]};
+              });
+              assert(audit.base===168,'base '+audit.base);assert(audit.extra===50,'Batch01 '+audit.extra);assert(audit.batchState&&audit.batchState.count===50&&audit.batchState.totalWithBaseline===218,'batch state '+JSON.stringify(audit.batchState));assert(audit.multiState&&audit.multiState.extraPassages===50,'multi state '+JSON.stringify(audit.multiState));assert(audit.bad.length===0,'structural bad '+audit.bad.join(' | '));assert(audit.exactEvidence.length===0,'evidence not exact sentence '+audit.exactEvidence.slice(0,10).join(' | '));assert(audit.duplicateBodies.length===0,'duplicate bodies '+JSON.stringify(audit.duplicateBodies));
+              const first=await p.evaluate(()=>window.V11_BATCH01_PASSAGES[0]);assert(first&&first.id,'first batch passage missing');
+              await p.selectOption('#textbook',first.textbook);await p.selectOption('#grade',String(first.grade));await p.waitForTimeout(100);
+              const majors=await p.locator('#major option').allTextContents();const targetMajor=majors.find(m=>String(first.section).startsWith(m))||majors[majors.length-1];await p.selectOption('#major',{label:targetMajor});await p.waitForTimeout(100);await p.selectOption('#section',first.section);await p.waitForTimeout(150);
+              const options=await p.locator('#v11PassageVariant option').allTextContents();assert(options.length>=2,'variant options '+options.length);const idx=await p.locator('#v11PassageVariant option').evaluateAll((os,id)=>os.findIndex(o=>o.textContent.includes(id)),first.id);assert(idx>=1,'first Batch01 option not found '+first.id+' '+options.join(' | '));await p.selectOption('#v11PassageVariant',String(idx));await p.evaluate(()=>window.render());await p.waitForTimeout(150);
+              assert((await p.locator('#passage').innerText()).includes(first.title),'Batch01 title not rendered');assert((await p.evaluate(()=>window.choose().id))===first.id,'choose did not select '+first.id);const qs=await p.locator('#questions .q').count();assert(qs===5,'rendered A questions '+qs);await p.locator('#altSetBtn').click();await p.waitForTimeout(100);const qsB=await p.locator('#questions .q').count();assert(qsB===5,'rendered B questions '+qsB);
+              assert(errors.length===0,'runtime errors '+errors.join(' | '));
+              console.log('AUDIT '+JSON.stringify(audit));console.log('FIRST '+JSON.stringify({id:first.id,title:first.title,options:options.length}));console.log('V11_MULTI_BATCH01_PASS_218');
+            } finally {if(b)await b.close().catch(()=>{});}
+          })().catch(e=>{console.error('V11_MULTI_BATCH01_FAIL '+(e.stack||e));process.exitCode=1});
           NODE
           code=$?
-          if grep -q 'V11_MULTI_PASSAGE_PASS' /tmp/v11-multi.log && [ "$code" -eq 0 ]; then result='PASS'; else result='FAIL'; fi
+          if grep -q 'V11_MULTI_BATCH01_PASS_218' /tmp/v11-multi.log && [ "$code" -eq 0 ]; then result='PASS'; else result='FAIL'; fi
           { echo "checked_at_utc=$(date -u '+%Y-%m-%dT%H:%M:%SZ')"; echo "source_sha=${GITHUB_SHA}"; echo "result=$result"; cat /tmp/v11-multi.log; } > V11_MULTI_PASSAGE_AUDIT.txt
           cat V11_MULTI_PASSAGE_AUDIT.txt
           git config user.name github-actions[bot]
