@@ -5,6 +5,7 @@ on:
     paths:
       - 'v11_multi_passage_architecture.js'
       - 'v11_batch01_passages_001_050.js'
+      - 'v11_batch01_uniqueness_repair.js'
       - 'v10_grammar_vocab_final_sync.js'
       - '.github/workflows/v11-multi-passage-audit.yml'
   workflow_dispatch:
@@ -38,7 +39,6 @@ jobs:
           timeout 300s node > /tmp/v11-multi.log 2>&1 <<'NODE'
           const {chromium}=require('playwright');
           function assert(c,m){if(!c)throw new Error(m)}
-          function fp(p){return [...new Set(p.sentences)].sort().join('\n')}
           (async()=>{
             let b;
             try{
@@ -55,7 +55,7 @@ jobs:
                 for(const x of extra){
                   if(ids.has(x.id))bad.push(x.id+':duplicate-id');ids.add(x.id);
                   if(titles.has(x.title))bad.push(x.id+':duplicate-title');titles.add(x.title);
-                  const b=baseById.get(x.sourceSectionBaselineId);if(!b)bad.push(x.id+':missing-baseline '+x.sourceSectionBaselineId);else if(String(b.textbook)!==String(x.textbook)||String(b.grade)!==String(x.grade)||String(b.section)!==String(x.section))bad.push(x.id+':baseline-scope-mismatch');
+                  const bb=baseById.get(x.sourceSectionBaselineId);if(!bb)bad.push(x.id+':missing-baseline '+x.sourceSectionBaselineId);else if(String(bb.textbook)!==String(x.textbook)||String(bb.grade)!==String(x.grade)||String(bb.section)!==String(x.section))bad.push(x.id+':baseline-scope-mismatch');
                   if(!Array.isArray(x.sentences)||x.sentences.length<8||x.sentences.length>18)bad.push(x.id+':sentence-count');
                   if(!Array.isArray(x.slashRows)||x.slashRows.length!==x.sentences.length)bad.push(x.id+':slash-count');
                   if(!Array.isArray(x.questions)||x.questions.length!==5)bad.push(x.id+':A-count');
@@ -70,8 +70,10 @@ jobs:
               });
               assert(audit.base===168,'base '+audit.base);assert(audit.extra===50,'Batch01 '+audit.extra);assert(audit.batchState&&audit.batchState.count===50&&audit.batchState.totalWithBaseline===218,'batch state '+JSON.stringify(audit.batchState));assert(audit.multiState&&audit.multiState.extraPassages===50,'multi state '+JSON.stringify(audit.multiState));assert(audit.bad.length===0,'structural bad '+audit.bad.join(' | '));assert(audit.exactEvidence.length===0,'evidence not exact sentence '+audit.exactEvidence.slice(0,10).join(' | '));assert(audit.duplicateBodies.length===0,'duplicate bodies '+JSON.stringify(audit.duplicateBodies));
               const first=await p.evaluate(()=>window.V11_BATCH01_PASSAGES[0]);assert(first&&first.id,'first batch passage missing');
-              await p.selectOption('#textbook',first.textbook);await p.selectOption('#grade',String(first.grade));await p.waitForTimeout(100);
-              const majors=await p.locator('#major option').allTextContents();const targetMajor=majors.find(m=>String(first.section).startsWith(m))||majors[majors.length-1];await p.selectOption('#major',{label:targetMajor});await p.waitForTimeout(100);await p.selectOption('#section',first.section);await p.waitForTimeout(150);
+              await p.selectOption('#textbook',first.textbook);await p.selectOption('#grade',String(first.grade));await p.waitForTimeout(150);
+              const majorValues=await p.locator('#major option').evaluateAll(os=>os.map(o=>o.value));let sectionFound=false;
+              for(const mv of majorValues){await p.selectOption('#major',mv);await p.waitForTimeout(80);const secs=await p.locator('#section option').evaluateAll(os=>os.map(o=>o.value));if(secs.includes(first.section)){sectionFound=true;break;}}
+              assert(sectionFound,'section not found after scanning majors: '+first.section);await p.selectOption('#section',first.section);await p.waitForTimeout(150);
               const options=await p.locator('#v11PassageVariant option').allTextContents();assert(options.length>=2,'variant options '+options.length);const idx=await p.locator('#v11PassageVariant option').evaluateAll((os,id)=>os.findIndex(o=>o.textContent.includes(id)),first.id);assert(idx>=1,'first Batch01 option not found '+first.id+' '+options.join(' | '));await p.selectOption('#v11PassageVariant',String(idx));await p.evaluate(()=>window.render());await p.waitForTimeout(150);
               assert((await p.locator('#passage').innerText()).includes(first.title),'Batch01 title not rendered');assert((await p.evaluate(()=>window.choose().id))===first.id,'choose did not select '+first.id);const qs=await p.locator('#questions .q').count();assert(qs===5,'rendered A questions '+qs);await p.locator('#altSetBtn').click();await p.waitForTimeout(100);const qsB=await p.locator('#questions .q').count();assert(qsB===5,'rendered B questions '+qsB);
               assert(errors.length===0,'runtime errors '+errors.join(' | '));
@@ -87,5 +89,6 @@ jobs:
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add V11_MULTI_PASSAGE_AUDIT.txt
           git commit -m 'v11: record multi passage audit [skip ci]' || true
+          git pull --rebase origin v11-1000passage-easy-notes || true
           git push origin HEAD:v11-1000passage-easy-notes || true
           if [ "$result" != 'PASS' ]; then exit 1; fi
