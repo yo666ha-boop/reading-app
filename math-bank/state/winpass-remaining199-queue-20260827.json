@@ -1,20 +1,20 @@
 {
   "project":"mikami-math-problem-bank",
-  "workflow":"Winpass exact remaining unique-slot queue after durable 1suhy000417 and 2suhy000519 completion",
-  "recorded_at_jst":"2026-08-27T10:22:00+09:00",
+  "workflow":"Winpass exact remaining unique-slot queue after durable 1suhy000417, 2suhy000519, and 1suhy000519 completion",
+  "recorded_at_jst":"2026-08-27T10:58:00+09:00",
   "source_expected_total":717,
-  "durable_unique_raw_ids":518,
-  "missing_unique_slots":199,
-  "documents_with_missing_slots":22,
-  "documents_fully_absent":22,
+  "durable_unique_raw_ids":528,
+  "missing_unique_slots":189,
+  "documents_with_missing_slots":21,
+  "documents_fully_absent":21,
   "partial_documents":0,
   "current_bucket":"MEDIA_HEAVY",
   "completed_since_1056":[
     {"document":"25winpasst1suhy000417.docx","new_unique":10},
-    {"document":"25winpasst2suhy000519.docx","new_unique":6}
+    {"document":"25winpasst2suhy000519.docx","new_unique":6},
+    {"document":"25winpasst1suhy000519.docx","new_unique":10,"drive_file_id":"1yxR0MNRBbuPh8Kh4JMpB_l13PgUgWLbAJVNHqmprdYc","readback":"PASS","validator":"10/10 PASS"}
   ],
   "remaining_by_document":[
-    {"document":"25winpasst1suhy000519.docx","expected_slots":10,"durable_unique_ids":0,"missing_unique_slots":10},
     {"document":"25winpasst1suhy000523.docx","expected_slots":7,"durable_unique_ids":0,"missing_unique_slots":7},
     {"document":"25winpasst1suhy000625.docx","expected_slots":9,"durable_unique_ids":0,"missing_unique_slots":9},
     {"document":"25winpasst1suhy000626.docx","expected_slots":8,"durable_unique_ids":0,"missing_unique_slots":8},
@@ -37,6 +37,6 @@
     {"document":"25winpasst3suhy000522.docx","expected_slots":10,"durable_unique_ids":0,"missing_unique_slots":10},
     {"document":"25winpasst3suhy000624.docx","expected_slots":10,"durable_unique_ids":0,"missing_unique_slots":10}
   ],
-  "sum_missing":199,
-  "next":"25winpasst1suhy000519.docx; continue MEDIA_HEAVY with complete source figure/table/media identity, readback and independent validator before increment."
+  "sum_missing":189,
+  "next":"25winpasst1suhy000523.docx; continue MEDIA_HEAVY with complete source figure/table/media identity, readback and independent validator before increment."
 }
