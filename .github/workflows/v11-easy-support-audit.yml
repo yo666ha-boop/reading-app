@@ -4,6 +4,8 @@ on:
     branches: [v11-1000passage-easy-notes]
     paths:
       - 'v11_easy_support_notes.js'
+      - 'v11_multi_passage_architecture.js'
+      - 'v11_batch01_passages_001_050.js'
       - 'v10_grammar_vocab_final_sync.js'
       - 'index.html'
       - '.github/workflows/v11-easy-support-audit.yml'
@@ -16,7 +18,7 @@ concurrency:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -35,41 +37,46 @@ jobs:
           trap 'kill $server || true' EXIT
           sleep 2
           set +e
-          node > /tmp/v11-audit.log 2>&1 <<'NODE'
+          timeout 300s node > /tmp/v11-audit.log 2>&1 <<'NODE'
           const {chromium}=require('playwright');
           function assert(c,m){if(!c)throw new Error(m)}
           (async()=>{
-            const b=await chromium.launch({headless:true});
-            const p=await b.newPage({viewport:{width:1280,height:900}});
-            const errors=[];p.on('pageerror',e=>errors.push(String(e)));p.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
-            const r=await p.goto('http://127.0.0.1:8000/index.html?v11='+Date.now(),{waitUntil:'domcontentloaded',timeout:90000});assert(r&&r.ok(),'HTTP '+(r&&r.status()));
-            await p.waitForFunction(()=>window.V10_RUNTIME_LOAD_PROGRESS==='complete',{timeout:120000});
-            await p.waitForFunction(()=>window.V11_EASY_SUPPORT_LOADED===true&&window.__V11_EASY_SUPPORT_UI_INSTALLED===true,{timeout:30000});
-            const state=await p.evaluate(()=>window.V11_EASY_SUPPORT_NOTES_STATE);
-            assert(state&&state.passages===168,'support passage count '+JSON.stringify(state));
-            assert(state.dictTerms>=140,'dictionary too small '+state.dictTerms);
-            assert(state.withExtra>=120,'too few passages with extra notes '+state.withExtra);
-            assert(state.totalExtra>=500,'too few extra notes '+state.totalExtra);
-            const btn=p.locator('#v11WordSupportBtn');assert(await btn.count()===1,'support switch missing');assert((await btn.getAttribute('aria-checked'))==='false','default should be OFF');
-            const sample=await p.evaluate(()=>{
-              const sets=[window.V10_SUNSHINE_G1||{},window.V10_NEWHORIZON_G1||{},window.V10_PASSAGES_G2_SS||{},window.V10_PASSAGES_G2_NH||{},window.V10_PASSAGES_G3_SS||{},window.V10_PASSAGES_G3_NH||{}];
-              const all=sets.flatMap(x=>Object.values(x||{}));
-              const bad=all.filter(x=>!Array.isArray(x.supportNotes)||x.supportNotes.some(n=>!n.english||!n.japanese||n.source!=='v7 canonical support'));
-              const dup=all.filter(x=>new Set((x.supportNotes||[]).map(n=>String(n.english).toLowerCase())).size!==(x.supportNotes||[]).length);
-              return {count:all.length,bad:bad.length,dup:dup.length,max:Math.max(...all.map(x=>(x.supportNotes||[]).length)),examples:all.filter(x=>(x.supportNotes||[]).length>=5).slice(0,5).map(x=>({id:x.id,section:x.section,n:x.supportNotes.length}))};
-            });
-            assert(sample.count===168,'runtime count '+sample.count);assert(sample.bad===0,'bad support notes '+sample.bad);assert(sample.dup===0,'duplicate support notes '+sample.dup);assert(sample.max<=16,'cap broken '+sample.max);
-            await btn.click();assert((await btn.getAttribute('aria-checked'))==='true','switch did not turn ON');await p.waitForTimeout(100);
-            const rendered=await p.evaluate(()=>window.V11_EASY_SUPPORT_LAST_RENDER);assert(rendered&&rendered.on===true,'render state '+JSON.stringify(rendered));
-            assert(await p.locator('.v11-notes').count()===1,'notes block missing after ON');assert(await p.locator('.v11-support-note').count()>=1,'extra support note not rendered');
-            await p.emulateMedia({media:'print'});assert(await p.locator('.v11-notes').count()===1,'notes missing in print DOM');
-            assert(errors.length===0,'runtime errors '+errors.join(' | '));
-            console.log('STATE '+JSON.stringify(state));console.log('SAMPLE '+JSON.stringify(sample));console.log('RENDER '+JSON.stringify(rendered));console.log('V11_EASY_SUPPORT_PASS');
-            await b.close();
+            let b;
+            try{
+              b=await chromium.launch({headless:true});
+              const p=await b.newPage({viewport:{width:1280,height:900}});
+              const errors=[];p.on('pageerror',e=>errors.push(String(e)));p.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+              const r=await p.goto('http://127.0.0.1:8000/index.html?v11='+Date.now(),{waitUntil:'domcontentloaded',timeout:90000});assert(r&&r.ok(),'HTTP '+(r&&r.status()));
+              await p.waitForFunction(()=>window.V10_RUNTIME_LOAD_PROGRESS==='complete',{timeout:120000});
+              await p.waitForFunction(()=>window.V11_EASY_SUPPORT_LOADED===true&&window.__V11_EASY_SUPPORT_UI_INSTALLED===true&&window.V11_BATCH01_LOADED===true,{timeout:60000});
+              const state=await p.evaluate(()=>window.V11_EASY_SUPPORT_NOTES_STATE);
+              assert(state&&state.passages===218,'support passage count '+JSON.stringify(state));
+              assert(state.dictTerms>=200,'dictionary too small '+state.dictTerms);
+              assert(state.withExtra>=160,'too few passages with support notes '+state.withExtra);
+              assert(state.totalExtra>=1500,'too few support notes '+state.totalExtra);
+              const btn=p.locator('#v11WordSupportBtn');assert(await btn.count()===1,'support switch missing');assert((await btn.getAttribute('aria-checked'))==='false','default should be OFF');
+              const sample=await p.evaluate(()=>{
+                const sets=[window.V10_SUNSHINE_G1||{},window.V10_NEWHORIZON_G1||{},window.V10_PASSAGES_G2_SS||{},window.V10_PASSAGES_G2_NH||{},window.V10_PASSAGES_G3_SS||{},window.V10_PASSAGES_G3_NH||{}];
+                const base=sets.flatMap(x=>Object.values(x||{}));
+                const extra=Object.values(window.V11_EXTRA_PASSAGES||{}).flat();
+                const all=[...base,...extra];
+                const bad=all.filter(x=>!Array.isArray(x.supportNotes)||x.supportNotes.some(n=>!n.english||!n.japanese||n.source!=='v7 canonical support'));
+                const dup=all.filter(x=>new Set((x.supportNotes||[]).map(n=>String(n.english).toLowerCase())).size!==(x.supportNotes||[]).length);
+                const extraBad=extra.filter(x=>!Array.isArray(x.supportNotes)||x.supportNotes.length===0);
+                return {base:base.length,extra:extra.length,count:all.length,bad:bad.length,dup:dup.length,extraBad:extraBad.length,max:Math.max(...all.map(x=>(x.supportNotes||[]).length)),examples:extra.slice(0,5).map(x=>({id:x.id,section:x.section,n:x.supportNotes.length}))};
+              });
+              assert(sample.base===168,'base count '+sample.base);assert(sample.extra===50,'extra count '+sample.extra);assert(sample.count===218,'runtime total '+sample.count);assert(sample.bad===0,'bad support notes '+sample.bad);assert(sample.dup===0,'duplicate support notes '+sample.dup);assert(sample.extraBad===0,'Batch01 passage without support notes '+sample.extraBad);assert(sample.max<=16,'cap broken '+sample.max);
+              await btn.click();assert((await btn.getAttribute('aria-checked'))==='true','switch did not turn ON');await p.waitForTimeout(100);
+              const rendered=await p.evaluate(()=>window.V11_EASY_SUPPORT_LAST_RENDER);assert(rendered&&rendered.on===true,'render state '+JSON.stringify(rendered));
+              assert(await p.locator('.v11-notes').count()===1,'notes block missing after ON');assert(await p.locator('.v11-support-note').count()>=1,'support note not rendered');
+              await p.emulateMedia({media:'print'});assert(await p.locator('.v11-notes').count()===1,'notes missing in print DOM');
+              assert(errors.length===0,'runtime errors '+errors.join(' | '));
+              console.log('STATE '+JSON.stringify(state));console.log('SAMPLE '+JSON.stringify(sample));console.log('RENDER '+JSON.stringify(rendered));console.log('V11_EASY_SUPPORT_PASS_218');
+            } finally { if(b) await b.close().catch(()=>{}); }
           })().catch(e=>{console.error('V11_EASY_SUPPORT_FAIL '+(e.stack||e));process.exitCode=1});
           NODE
           code=$?
-          if grep -q 'V11_EASY_SUPPORT_PASS' /tmp/v11-audit.log && [ "$code" -eq 0 ]; then result='PASS'; else result='FAIL'; fi
+          if grep -q 'V11_EASY_SUPPORT_PASS_218' /tmp/v11-audit.log && [ "$code" -eq 0 ]; then result='PASS'; else result='FAIL'; fi
           {
             echo "checked_at_utc=$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
             echo "source_sha=${GITHUB_SHA}"
