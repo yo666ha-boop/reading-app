@@ -1,0 +1,23 @@
+{
+  "project": "mikami-math-problem-bank",
+  "workflow": "Winpass strict dedup reconciliation plus post-audit durable deltas",
+  "recorded_at_jst": "2026-08-27T09:51:37+09:00",
+  "baseline": {
+    "audit_path": "math-bank/state/winpass-strict-dedup-audit-20260827.json",
+    "durable_unique_raw_ids": 458,
+    "corrected_total": 1012,
+    "reason": "prior checkpoint 1030 double-counted 18 raw_id revisions; revisions do not increment unique strict progress"
+  },
+  "post_audit_durable_deltas": [
+    {"source_document":"25winpasst2suhy000623.docx","records":8,"net_new_unique_raw_ids":8,"github_path":"math-bank/state/winpass8-new-2suhy000623-strict-20260827.jsonl","drive_file_id":"1LiY-la3VG0qwVw8rafwWVbh3tfjk81i1","readback_verified":true},
+    {"source_document":"25winpasst2suhy000623.docx","records":1,"net_new_unique_raw_ids":0,"github_path":"math-bank/state/winpass1-replacement-2suhy000623-m02s01-20260827.jsonl","drive_file_id":"1tfwESsIIUTK-HxIx-mo7kW3-uicuZsWR","readback_verified":true,"note":"replacement of existing M02:S01; no progress increment"},
+    {"source_document":"25winpasst2suhy000309.docx","records":6,"net_new_unique_raw_ids":6,"github_path":"math-bank/state/winpass6-new-2suhy000309-strict-20260827.jsonl","drive_file_id":"1OgeFkyaWNGOyAwadyzriG3gXLNVurctn","readback_verified":true},
+    {"source_document":"25winpasst2suhy000311.docx","records":4,"net_new_unique_raw_ids":4,"github_path":"math-bank/state/winpass4-new-2suhy000311-strict-20260827.jsonl","drive_file_id":"17vTe2PihNChDEyv6xn6VBBKFq7Pm05z1","readback_verified":true},
+    {"source_document":"25winpasst2suhy000311.docx","records":2,"net_new_unique_raw_ids":2,"github_path":"math-bank/state/winpass2-new-2suhy000311-figure-strict-20260827.jsonl","drive_file_id":"1BsQZ7Tlf6Ehx-F4fOYw6hsefGMZosbO0","readback_verified":true},
+    {"source_document":"25winpasst3suhy000413.docx","records":9,"net_new_unique_raw_ids":9,"github_path":"math-bank/state/winpass9-new-3suhy000413-strict-20260827.jsonl","drive_file_id":"1a7wviJz9-XK-gWbPjHmKm6UEwFqLnyK8","readback_verified":true},
+    {"source_document":"25winpasst3suhy000523.docx","records":6,"net_new_unique_raw_ids":6,"github_path":"math-bank/state/winpass6-new-3suhy000523-strict-20260827.jsonl","drive_file_id":"1EqHL1xhg8GnI9_5kDgt5PfQIgDVAPJeZ","validation_drive_file_id":"1cdnJzSmVocMCaHE4YliJpqJk_PnSFYT-","readback_verified":true,"drive_size_bytes":9423,"drive_sha256":"98d4cc18d6c760fe95374ddee82bd3e6e2efff9a3ab8e4b986e53087e08e0673","validator":"6/6 PASS"}
+  ],
+  "net_new_after_baseline": 35,
+  "current_progress": {"Standard":317,"実力錬成":237,"Winpass":493,"total":1047,"pending":224},
+  "policy": "Unique raw_id is progress identity. Revisions/replacements may supersede content but never increment progress."
+}
