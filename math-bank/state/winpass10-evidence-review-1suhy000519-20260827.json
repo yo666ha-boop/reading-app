@@ -1,0 +1,44 @@
+{
+  "project": "mikami-math-problem-bank",
+  "batch": "winpass10-evidence-review-1suhy000519",
+  "recorded_at_jst": "2026-08-27T20:55:56+09:00",
+  "source_zip": {
+    "drive_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
+    "bytes": 8296042,
+    "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+    "crc": "PASS",
+    "members": 81
+  },
+  "source_document": {
+    "name": "25winpasst1suhy000519.docx",
+    "bytes": 174191,
+    "sha256": "29c7c4c2b58512ce28b7dee30691e8654fd509d60176cc08ef895457258e630d",
+    "docx_crc": "PASS"
+  },
+  "strict_artifact": {
+    "path": "math-bank/state/winpass10-new-1suhy000519-strict-20260827.jsonl",
+    "blob_sha": "89dc7fe7f26da303aa11ba14d343c73a00cf4e5a"
+  },
+  "validation_artifact": {
+    "path": "math-bank/state/winpass10-new-1suhy000519-validation-20260827.json",
+    "blob_sha": "1bb7f5230f7a7ce6e0c30ab898d5a7f47f73016d",
+    "validation": "PASS"
+  },
+  "gate": "raw_id+record_fingerprint; source_document_sha256; score_evidence; question/answer provenance; figure relationship/media SHA when present; independent_check PASS; source ZIP/docx identity reverified",
+  "reviewed": 10,
+  "included": 10,
+  "excluded": 0,
+  "count_forcing_used": false,
+  "records": [
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M01:S01","record_fingerprint":"b5a23977f17714f299415c0255f1e3a85d9134760c679a23a6ffa501047a558b","decision":"include","reason":"strict evidence gate PASS; source identity and durable validation independently reverified"},
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M01:S02","record_fingerprint":"0621fa656f61220448af68db4e72c42291163980b36b59a1c062b23ff1d01981","decision":"include","reason":"strict evidence gate PASS; source identity and durable validation independently reverified"},
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M01:S03","record_fingerprint":"d5c39f2cf405d0eae76dde4d83ecee1f5f5d509e3ee3332b4f85242565a8e88b","decision":"include","reason":"strict evidence gate PASS; source identity and durable validation independently reverified"},
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M02:S01","record_fingerprint":"9a02dff96dbc7ee839271e17308cc096e9510ae38383db86f7834363c43cf7f9","decision":"include","reason":"strict evidence gate PASS; source identity and durable validation independently reverified"},
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M02:S02","record_fingerprint":"1264b9b5488b70e0577217a06ae48c23b93e9862e301b850f0db42d5a8a7b7d3","decision":"include","reason":"strict evidence gate PASS; source identity and durable validation independently reverified"},
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M02:S03","record_fingerprint":"8b69aedcfa6f756eade525440fa1cbc6981ab56a64165f2b5d90f796e5d5b3e9","decision":"include","reason":"strict evidence gate PASS; source identity and durable validation independently reverified"},
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M03:S01","record_fingerprint":"6ce219423d51ca298a6d5d31fe5ae4ced2b4e188a6d23a57831ad93e42908ce4","decision":"include","reason":"strict evidence gate PASS; source identity and durable validation independently reverified"},
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M03:S02","record_fingerprint":"981a641622830fce3f9d25f40dc9d56e2a799f9a0dfd6a055c264495ae73e287","decision":"include","reason":"strict evidence gate PASS; source identity and durable validation independently reverified"},
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M03:S03","record_fingerprint":"d6c49705c20405f148be6a7a2d809be3f4fab3d2eca70739daf6d9671545ca7d","decision":"include","reason":"strict evidence gate PASS; source identity and durable validation independently reverified"},
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M03:S04","record_fingerprint":"94559a5fb647e29f9932b6ef78db0c9606a8a83a37fdc4e2b1747c97d45d2bc9","decision":"include","reason":"strict evidence gate PASS; source identity and durable validation independently reverified"}
+  ]
+}
