@@ -26,7 +26,7 @@
 (function loadV11Extensions(){
  if(typeof document==='undefined'||window.__V11_EXTENSION_LOADER)return;
  window.__V11_EXTENSION_LOADER=true;
- const BUILD='20260827-v11-004';
+ const BUILD='20260827-v11-005';
  function load(src,ok,fail){const s=document.createElement('script');s.src=src+(src.includes('?')?'&':'?')+'v='+encodeURIComponent(BUILD);s.onload=ok||(()=>{});s.onerror=fail||(()=>{});document.head.appendChild(s);}
  load('v11_easy_support_notes.js',()=>{
    window.V11_EASY_SUPPORT_LOADED=true;
@@ -35,9 +35,11 @@
      window.V11_MULTI_PASSAGE_LOADED=true;
      load('v11_batch01_passages_001_050.js',()=>{
        load('v11_batch01_uniqueness_repair.js',()=>{
-         window.V11_BATCH01_LOADED=true;
-         if(typeof window.V11_APPLY_EASY_SUPPORT_NOTES==='function')window.V11_APPLY_EASY_SUPPORT_NOTES();
-         if(typeof window.render==='function')window.render();
+         load('v11_batch01_grammar_repair.js',()=>{
+           window.V11_BATCH01_LOADED=true;
+           if(typeof window.V11_APPLY_EASY_SUPPORT_NOTES==='function')window.V11_APPLY_EASY_SUPPORT_NOTES();
+           if(typeof window.render==='function')window.render();
+         },()=>{window.V11_BATCH01_GRAMMAR_REPAIR_LOAD_ERROR='v11_batch01_grammar_repair.js failed';});
        },()=>{window.V11_BATCH01_REPAIR_LOAD_ERROR='v11_batch01_uniqueness_repair.js failed';});
      },()=>{window.V11_BATCH01_LOAD_ERROR='v11_batch01_passages_001_050.js failed';});
    },()=>{window.V11_MULTI_PASSAGE_LOAD_ERROR='v11_multi_passage_architecture.js failed';});
