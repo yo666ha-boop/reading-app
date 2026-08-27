@@ -1,0 +1,40 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "WINPASS_717_EVIDENCE_REVIEW",
+  "recorded_at_jst": "2026-08-27T19:00:00+09:00",
+  "review_policy": {
+    "binding": "raw_id + record_fingerprint",
+    "include_requires": ["source_document_sha256","score_evidence","question_offsets","answer_offsets","figure relationship+asset SHA when graphical","independent_check PASS"],
+    "count_forcing_forbidden": true,
+    "exclude_requires": "source evidence + explicit reason"
+  },
+  "batch": {"reviewed":20,"included":20,"excluded":0,"documents":["25winpasst2suhy000414.docx","25winpasst2suhy000415.docx"]},
+  "source_artifacts": [
+    {"path":"math-bank/state/winpass10-new-2suhy000414-strict-20260827.jsonl","blob_sha":"ac2257d5240a4bd5bdcdfb6393da99e7c1547b33"},
+    {"path":"math-bank/state/winpass10-new-2suhy000415-strict-20260827.jsonl","blob_sha":"d619ece0f3267463e3de7d9730b0ec9e1509fb29"}
+  ],
+  "decisions": [
+    ["Winpass:25winpasst2suhy000414.docx:M01:S01","2ffdc3f5ecb4f7d33002720c359d396961111d34ad770a2936ec107b55f5a78c","include"],
+    ["Winpass:25winpasst2suhy000414.docx:M01:S02","bb551ad866a332d66cbe66c96534d0df01da12f35cc216b74b05fe85d4924734","include"],
+    ["Winpass:25winpasst2suhy000414.docx:M01:S03","466c06732649dda975d20e9648f89764a2090314b860d29d71afb145b1eb077b","include"],
+    ["Winpass:25winpasst2suhy000414.docx:M01:S04","94081a389794a15a4a04c29003d7702797caa10654242934479c81c82b0bd83b","include"],
+    ["Winpass:25winpasst2suhy000414.docx:M02:S01","6616c278d7901f2c3ba6e476416b5cb39e3f2e9b368856d3f38965c1ec086092","include"],
+    ["Winpass:25winpasst2suhy000414.docx:M02:S02","5ff4745a195ee20ffa0e75442e3c12ce3d82d80fcaf123c2f43abebaf8de8ac3","include"],
+    ["Winpass:25winpasst2suhy000414.docx:M03:S01","58bb2a24347e8c3dac10226fbd275f7a30069562866acf6d3b566b18c72258fe","include"],
+    ["Winpass:25winpasst2suhy000414.docx:M03:S02","f44b681ffc01fd220b5f6184e1e6f080309f6545db87e57a996f18c89da28407","include"],
+    ["Winpass:25winpasst2suhy000414.docx:M03:S03","edaafae9a9d8088fa11c70d66a7e6190de21f57989453d1e93bb0734d94828ab","include"],
+    ["Winpass:25winpasst2suhy000414.docx:M03:S04","1bb2ef3c966e32f9e19f76438e8cec76f153cdc170ae16727da88dd029c9c67d","include"],
+    ["Winpass:25winpasst2suhy000415.docx:M01:S01","a0d2c2e53c2bb4406a0d25fc76633f5c192080d56e2debcbb18c09a9ebb40a09","include"],
+    ["Winpass:25winpasst2suhy000415.docx:M01:S02","d016c5a061f83157fa389e5eff3b281d648a893c32a7ac1bd29e4a3ce79372b5","include"],
+    ["Winpass:25winpasst2suhy000415.docx:M01:S03","6327cd15549c4b79d27b85317d3938ec2ab881afe0f41b9e54cd63a89ff99e48","include"],
+    ["Winpass:25winpasst2suhy000415.docx:M01:S04","574b152c480e7017140e923bb69436a18a7a8bb7755308451440fa917fbe6d0d","include"],
+    ["Winpass:25winpasst2suhy000415.docx:M01:S05","363b547deb96ea02d0b25a54bdbcc916f3336c46249efe7c08d187e1c88b5fcf","include"],
+    ["Winpass:25winpasst2suhy000415.docx:M01:S06","27477370de1f818b07aa795f809a36332eb899f42aea6b9aaa1531f14abca60a","include"],
+    ["Winpass:25winpasst2suhy000415.docx:M01:S07","e66c85bada4e50af3fc01c5c553cbfc69ef8b780f020bc087fb03fafc467314b","include"],
+    ["Winpass:25winpasst2suhy000415.docx:M01:S08","d416e5c36ee89438c65aedd2688986c6e18badf9a4d1911a1d11c4b56bd31f6d","include"],
+    ["Winpass:25winpasst2suhy000415.docx:M01:S09","7b36b96477a41907b732aba5e6f936263a19e0fbeaa4558a4d7f757cb49f55a3","include"],
+    ["Winpass:25winpasst2suhy000415.docx:M01:S10","643bc8c1cdc78a835ea5a7162244bd3f27fc1ea9c41e508afe035faa25c12de0","include"]
+  ],
+  "decision_reason": "For every included record: exact source question/answer provenance, score evidence, graphical asset relationship+SHA where applicable, and independent recalculation are present and PASS; each is a distinct scored answer slot.",
+  "next": "Continue fingerprint-bound review with next unreviewed durable Winpass records; do not infer final 570 by target count."
+}
