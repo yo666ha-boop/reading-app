@@ -1,19 +1,25 @@
-phase=V11_EASY_SUPPORT_IMPLEMENTATION
+phase=V11_BATCH01_218_COMPLETE
 branch=v11-1000passage-easy-notes
 baseline_passages=168
 target_passages=1000
-remaining_passages=832
+remaining_passages=782
 batch_size=50
-current_total=168
-next_batch_target=218
+current_total=218
+next_batch_target=268
 v10_baseline_status=FINAL_COMPLETE
 v10_main_untouched=true
 v7_vocab_authority=1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4
 v7_records=3975
 easy_support_script=v11_easy_support_notes.js
-easy_support_switch=IMPLEMENTED_BRANCH_NOT_YET_RUNTIME_VERIFIED
+easy_support_switch=IMPLEMENTED_RUNTIME_VERIFIED
 normal_required_notes=preserved
 support_notes_category=already_learned_or_learning_support_not_unlearned
 support_meaning_source=v7_canonical_curated
-next_step=runtime_audit_then_scalable_multi_passage_architecture_then_batch01_plus50
-release_to_main=NO_UNTIL_ALL_GATES_PASS
+batch01_quality=PASS run=33078768827
+batch01_easy_support=PASS run=33078768729
+batch01_multi_passage=PASS run=33078768956
+batch01_vocab_chronology=PASS run=33079043696 passages=50/50 tokens=12527 unregistered=0 future_vocab=0
+batch01_grammar_chronology=PASS run=33079043696 occurrences=708 unresolved=0 future_grammar=0
+batch01_cross_platform=PASS run=33079639549 pc=50 iphone=50 overflow=0 errors=0 a4_sections=6 a4_files=12
+next_step=Batch02 add 50 passages to 268 and require the same quality, easy-support, multi-passage, independent v7 vocabulary chronology, grammar chronology, PC/iPhone and A4 gates before completion
+release_to_main=NO_UNTIL_ALL_BATCHES_AND_RELEASE_GATES_PASS
