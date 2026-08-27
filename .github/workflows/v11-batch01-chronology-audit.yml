@@ -1,0 +1,63 @@
+name: v11 Batch01 chronology audit
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch01_chronology_audit.js'
+      - 'v11_batch01_passages_001_050.js'
+      - 'v11_batch01_uniqueness_repair.js'
+      - 'v10_v7_lexicon_loader.js'
+      - 'v10_v7_lexicon_snapshot.b64.part*'
+      - 'v10_elementary_vocab_allowlist.json'
+      - 'v10_grammar_chronology_candidate_audit.js'
+      - 'v10_grammar_chronology_gate_audit.js'
+      - 'v10_grammar_chronology_evidence*.json'
+      - '.github/workflows/v11-batch01-chronology-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: v11-batch01-chronology-audit
+  cancel-in-progress: true
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install audit dependency
+        run: npm install --no-save --no-package-lock jsdom@24.1.3
+      - name: Run independent v7 vocabulary and grammar chronology gates on Batch01
+        shell: bash
+        run: |
+          set -o pipefail
+          timeout 420s node v11_batch01_chronology_audit.js | tee /tmp/v11-b01-chronology.log
+      - name: Persist chronology evidence
+        if: always()
+        shell: bash
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -f V11_BATCH01_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH01_GRAMMAR_CANDIDATE_REPORT.json V11_BATCH01_GRAMMAR_CHRONOLOGY_REPORT.json V11_BATCH01_CHRONOLOGY_STATUS.txt 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'v11: record Batch01 chronology audit [skip ci]'
+            git pull --rebase origin v11-1000passage-easy-notes || true
+            git push origin HEAD:v11-1000passage-easy-notes
+          fi
+      - name: Upload chronology evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v11-batch01-chronology-audit
+          path: |
+            V11_BATCH01_VOCAB_CHRONOLOGY_REPORT.json
+            V11_BATCH01_GRAMMAR_CANDIDATE_REPORT.json
+            V11_BATCH01_GRAMMAR_CHRONOLOGY_REPORT.json
+            V11_BATCH01_CHRONOLOGY_STATUS.txt
+            /tmp/v11-b01-chronology.log
+          if-no-files-found: warn
