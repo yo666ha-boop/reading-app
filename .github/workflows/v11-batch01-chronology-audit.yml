@@ -6,6 +6,7 @@ on:
       - 'v11_batch01_chronology_audit.js'
       - 'v11_batch01_chronology_audit_v2.js'
       - 'v11_batch01_chronology_audit_v3.js'
+      - 'v11_batch01_chronology_audit_v4.js'
       - 'v11_batch01_passages_001_050.js'
       - 'v11_batch01_uniqueness_repair.js'
       - 'v11_batch01_grammar_repair.js'
@@ -40,7 +41,7 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
-          timeout 420s node v11_batch01_chronology_audit_v3.js | tee /tmp/v11-b01-chronology.log
+          timeout 420s node v11_batch01_chronology_audit_v4.js | tee /tmp/v11-b01-chronology.log
       - name: Persist chronology evidence
         if: always()
         shell: bash
