@@ -26,7 +26,7 @@
 (function loadV11Extensions(){
  if(typeof document==='undefined'||window.__V11_EXTENSION_LOADER)return;
  window.__V11_EXTENSION_LOADER=true;
- const BUILD='20260827-v11-003';
+ const BUILD='20260827-v11-004';
  function load(src,ok,fail){const s=document.createElement('script');s.src=src+(src.includes('?')?'&':'?')+'v='+encodeURIComponent(BUILD);s.onload=ok||(()=>{});s.onerror=fail||(()=>{});document.head.appendChild(s);}
  load('v11_easy_support_notes.js',()=>{
    window.V11_EASY_SUPPORT_LOADED=true;
