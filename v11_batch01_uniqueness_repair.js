@@ -1,5 +1,5 @@
 (function repairV11Batch01Uniqueness(){
-  const VERSION='20260827-b01-unique-001';
+  const VERSION='20260827-b01-unique-002';
   const rows={
     friendSleepy:{en:'My friend was sleepy.',jp:'友達は眠そうでした。',sen:'My friend was / sleepy.',sjp:'私の友達は〜でした / 眠い'},
     schoolWay:{en:'I saw my friend on my way to school.',jp:'学校へ行く途中で友達に会いました。',sen:'I saw / my friend / on my way to school.',sjp:'私は会いました / 友達に / 学校へ行く途中で'},
@@ -8,7 +8,8 @@
     cloud:{en:'A cloud was over the mountain.',jp:'山の上には雲がありました。',sen:'A cloud was / over the mountain.',sjp:'雲がありました / 山の上に'},
     openAir:{en:'A person can sell a coat in the open air.',jp:'人は屋外でコートを売ることができます。',sen:'A person / can sell / a coat / in the open air.',sjp:'人は / 売ることができます / コートを / 屋外で'},
     sold:{en:'One shop sold a coat yesterday.',jp:'ある店は昨日コートを売りました。',sen:'One shop / sold / a coat / yesterday.',sjp:'ある店は / 売りました / コートを / 昨日'},
-    island:{en:'Water can surround an island.',jp:'水は島を囲むことがあります。',sen:'Water can surround / an island.',sjp:'水は囲むことがあります / 島を'}
+    island:{en:'Water can surround an island.',jp:'水は島を囲むことがあります。',sen:'Water can surround / an island.',sjp:'水は囲むことがあります / 島を'},
+    exception:{en:'There is one exception in this trade.',jp:'この貿易には1つの例外があります。',sen:'There is / one exception / in this trade.',sjp:'あります / 1つの例外が / この貿易に'}
   };
   const defs=[
     ['V11-SS-G1-P10-2-007','friendSleepy'],
@@ -17,9 +18,11 @@
     ['V11-SS-G2-P8-3-009','thin'],
     ['V11-NH-G2-U7-4-008','cloud'],
     ['V11-NH-G3-U6-4-006','openAir'],
+    ['V11-NH-G3-U6-4-007','exception'],
     ['V11-NH-G3-U6-4-009','sold'],
     ['V11-NH-G3-U6-4-008','sold'],
-    ['V11-NH-G3-U6-4-010','island']
+    ['V11-NH-G3-U6-4-010','island'],
+    ['V11-NH-G3-U6-4-010','exception']
   ];
   function apply(){
     const all=window.V11_BATCH01_PASSAGES||[];let changed=0;const missing=[];
