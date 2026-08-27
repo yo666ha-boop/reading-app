@@ -1,0 +1,48 @@
+name: v11 Batch01 chronology diagnostic
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - '.github/workflows/v11-batch01-chronology-diagnostic.yml'
+      - 'V11_BATCH01_VOCAB_CHRONOLOGY_REPORT.json'
+      - 'V11_BATCH01_GRAMMAR_CHRONOLOGY_REPORT.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - name: Summarize chronology failures
+        shell: bash
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const v=JSON.parse(fs.readFileSync('V11_BATCH01_VOCAB_CHRONOLOGY_REPORT.json','utf8'));
+          const g=JSON.parse(fs.readFileSync('V11_BATCH01_GRAMMAR_CHRONOLOGY_REPORT.json','utf8'));
+          function counts(a){const m=new Map();for(const x of a||[]){const k=`${x.book||x.textbook}|${x.grade}|${x.section}|${x.word||x.feature}`;m.set(k,(m.get(k)||0)+1)}return [...m].sort((a,b)=>b[1]-a[1]);}
+          const lines=[];
+          lines.push(`vocab_unregistered_occurrences=${v.unregisteredOccurrences}`);
+          lines.push(`vocab_future_occurrences=${v.futureVocabLeakOccurrences}`);
+          lines.push('UNREGISTERED_UNIQUE');
+          for(const [k,n] of counts(v.unresolved))lines.push(`${n}\t${k}`);
+          lines.push('FUTURE_UNIQUE');
+          for(const [k,n] of counts(v.future))lines.push(`${n}\t${k}`);
+          lines.push(`grammar_unresolved_occurrences=${g.unresolvedOccurrences}`);
+          lines.push(`grammar_future_occurrences=${g.futureGrammarLeak}`);
+          lines.push('GRAMMAR_UNRESOLVED');
+          for(const x of g.unresolved||[])lines.push(`${x.occurrences}\t${x.textbook}|${x.grade}|${x.section}|${x.feature}|${x.evidenceStatus}|${x.coarseBoundary||''}`);
+          lines.push('GRAMMAR_FUTURE');
+          for(const x of g.future||[])lines.push(`${x.occurrences}\t${x.textbook}|${x.grade}|${x.section}|${x.feature}|before=${x.boundary}`);
+          fs.writeFileSync('V11_BATCH01_CHRONOLOGY_DIAG.txt',lines.join('\n')+'\n');
+          console.log(lines.join('\n'));
+          NODE
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add V11_BATCH01_CHRONOLOGY_DIAG.txt
+          git commit -m 'v11: record Batch01 chronology diagnostic [skip ci]' || true
+          git pull --rebase origin v11-1000passage-easy-notes || true
+          git push origin HEAD:v11-1000passage-easy-notes || true
