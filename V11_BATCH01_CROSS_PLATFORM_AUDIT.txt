@@ -1,0 +1,24 @@
+checked_at_utc=2026-08-27T13:55:27Z
+source_sha=5e4009fbc61fe450d47fb99587926665e0bf3fe3
+result=FAIL
+V11_BATCH01_PC_IPHONE_A4_FAIL page.selectOption: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('#textbook')
+    - locator resolved to <select id="textbook">…</select>
+  - attempting select option action
+    2 × waiting for element to be visible and enabled
+      - element is not visible
+    - retrying select option action
+    - waiting 20ms
+    2 × waiting for element to be visible and enabled
+      - element is not visible
+    - retrying select option action
+      - waiting 100ms
+    60 × waiting for element to be visible and enabled
+       - element is not visible
+     - retrying select option action
+       - waiting 500ms
+
+    at selectPassage ([stdin]:13:14)
+    at async printAudit ([stdin]:45:27)
+    at async [stdin]:52:101
