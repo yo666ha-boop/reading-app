@@ -1,0 +1,41 @@
+{
+  "project":"mikami-math-problem-bank",
+  "stage":"WINPASS_717_EVIDENCE_REVIEW",
+  "recorded_at_jst":"2026-08-27T22:31:00+09:00",
+  "documents":[
+    {
+      "source_document":"25winpasst2suhy000519.docx",
+      "source_document_sha256":"77d47d985c725f30a09bd4bbb717219af3693f00400440cd103fb7b32f4d4ebf",
+      "records":6,
+      "strict_path":"math-bank/state/winpass6-new-2suhy000519-strict-20260827.jsonl",
+      "validation_path":"math-bank/state/winpass6-new-2suhy000519-validation-20260827.json",
+      "unique_raw_ids":"6/6 PASS",
+      "unique_fingerprints":"6/6 PASS",
+      "score_evidence":"6/6 verified",
+      "question_answer_provenance":"6/6 verified",
+      "figure_relationship_media_sha":"10 refs / 0 missing; rendered inspection PASS",
+      "independent_recalculation":"6/6 PASS",
+      "decision":"include all 6"
+    },
+    {
+      "source_document":"25winpasst2suhy000312.docx",
+      "source_document_sha256":"73add547d249ae0717a08f03f9576c041fb5848717ce93816826850834fd5bbe",
+      "source_document_bytes":115335,
+      "zip_crc":"PASS",
+      "records":9,
+      "strict_path":"math-bank/state/winpass9-new-2suhy000312-strict-20260827.jsonl",
+      "validation_path":"math-bank/state/winpass9-new-2suhy000312-validation-20260827.json",
+      "unique_raw_ids":"9/9 PASS",
+      "unique_fingerprints":"9/9 PASS",
+      "score_evidence":"9/9 verified",
+      "question_answer_provenance":"9/9 verified",
+      "figure_relationship_media_sha":"8/8 record-level figure refs PASS; 3 unique media SHA verified",
+      "rendered_visual_inspection":"PASS",
+      "independent_recalculation":"9/9 PASS",
+      "decision":"include all 9"
+    }
+  ],
+  "summary":{"reviewed":15,"included":15,"excluded":0,"count_forcing_used":false,"cumulative_reviewed":211,"cumulative_included":211,"cumulative_excluded":0,"unreviewed":506},
+  "decision":"include all 15",
+  "reason":"All records are uniquely fingerprint-bound to source SHA, score evidence, question/answer provenance and required figure assets; validation/rendering and independent recalculation pass."
+}
