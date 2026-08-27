@@ -1,0 +1,75 @@
+name: v11 multi passage audit
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_multi_passage_architecture.js'
+      - 'v10_grammar_vocab_final_sync.js'
+      - '.github/workflows/v11-multi-passage-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: v11-multi-passage-audit
+  cancel-in-progress: true
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Audit scalable passage switching
+        shell: bash
+        run: |
+          python3 -m http.server 8000 >/tmp/v11-multi-http.log 2>&1 &
+          server=$!
+          trap 'kill $server || true' EXIT
+          sleep 2
+          set +e
+          node > /tmp/v11-multi.log 2>&1 <<'NODE'
+          const {chromium}=require('playwright');
+          function assert(c,m){if(!c)throw new Error(m)}
+          (async()=>{
+            const b=await chromium.launch({headless:true});const p=await b.newPage({viewport:{width:1280,height:900}});const errors=[];
+            p.on('pageerror',e=>errors.push(String(e)));p.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+            const r=await p.goto('http://127.0.0.1:8000/index.html?multi='+Date.now(),{waitUntil:'domcontentloaded',timeout:90000});assert(r&&r.ok(),'HTTP '+(r&&r.status()));
+            await p.waitForFunction(()=>window.V10_RUNTIME_LOAD_PROGRESS==='complete',{timeout:120000});
+            await p.waitForFunction(()=>window.V11_MULTI_PASSAGE_LOADED===true&&window.__V11_MULTI_PASSAGE_UI_INSTALLED===true,{timeout:30000});
+            await p.selectOption('#textbook','サンシャイン');await p.selectOption('#grade','1');
+            await p.waitForTimeout(100);
+            const sections=await p.locator('#section option').evaluateAll(o=>o.map(x=>x.value));assert(sections.includes('PROGRAM 10-1'),'target section missing');
+            await p.selectOption('#major',await p.locator('#major option').last().getAttribute('value').catch(()=>null)||await p.locator('#major option').last().innerText());
+            await p.selectOption('#section','PROGRAM 10-1');
+            const baseId=await p.evaluate(()=>window.choose()&&window.choose().id);assert(baseId,'base choose missing');
+            const mock={id:'V11-AUDIT-MOCK-001',textbook:'サンシャイン',grade:'1',section:'PROGRAM 10-1',level:'HOP',title:'A Clear Test Passage',genre:'report',sentences:['Yesterday, I was at home.','My friend was with me.','We had homework.','We finished the homework together.','Then we talked about school.'],fullTranslation:'昨日、私は家にいました。友達もいっしょでした。私たちには宿題がありました。私たちはいっしょに宿題を終えました。それから学校について話しました。',slashRows:[{en:'Yesterday, / I was / at home.',jp:'昨日 / 私はいました / 家に'},{en:'My friend was / with me.',jp:'私の友達はいました / 私といっしょに'},{en:'We had / homework.',jp:'私たちにはありました / 宿題が'},{en:'We finished / the homework / together.',jp:'私たちは終えました / その宿題を / いっしょに'},{en:'Then / we talked / about school.',jp:'それから / 私たちは話しました / 学校について'}],questions:[{prompt:'1. 話し手はいつ家にいましたか。',answer:'Yesterday',evidence:'Yesterday, I was at home.',evidenceJp:'昨日、私は家にいました。',reason:'Yesterday が時を表します。'},{prompt:'2. 誰が話し手といっしょにいましたか。',answer:'My friend',evidence:'My friend was with me.',evidenceJp:'友達もいっしょでした。',reason:'My friend が人物です。'},{prompt:'3. 2人には何がありましたか。',answer:'homework',evidence:'We had homework.',evidenceJp:'私たちには宿題がありました。',reason:'homework が対象です。'},{prompt:'4. 2人は何を終えましたか。',answer:'the homework',evidence:'We finished the homework together.',evidenceJp:'私たちはいっしょに宿題を終えました。',reason:'the homework が目的語です。'},{prompt:'5. その後何について話しましたか。',answer:'school',evidence:'Then we talked about school.',evidenceJp:'それから学校について話しました。',reason:'about school が話題です。'}],questionSetB:[]};
+            const reg=await p.evaluate(m=>window.V11_REGISTER_PASSAGES([m]),mock);assert(reg.extraPassages>=1,'registry failed '+JSON.stringify(reg));
+            await p.evaluate(()=>window.render());await p.waitForTimeout(150);
+            const opt=await p.locator('#v11PassageVariant option').allTextContents();assert(opt.length===2,'variant option count '+opt.length+' '+opt.join(' | '));
+            await p.selectOption('#v11PassageVariant','1');await p.evaluate(()=>window.render());await p.waitForTimeout(100);
+            assert((await p.locator('#passage').innerText()).includes('A Clear Test Passage'),'extra title not rendered');
+            assert((await p.locator('#passage').innerText()).includes('We finished the homework together.'),'extra body not rendered');
+            const qs=await p.locator('#questions .q').allTextContents();assert(qs.length===5,'question count '+qs.length);assert(qs[0].includes('いつ家に'),'wrong extra questions '+qs[0]);
+            const ans=await p.locator('#answers').innerText();assert(ans.includes('Yesterday')&&ans.includes('Yesterday, I was at home.'),'answer/evidence mismatch');
+            await p.selectOption('#v11PassageVariant','0');await p.evaluate(()=>window.render());await p.waitForTimeout(100);assert((await p.evaluate(()=>window.choose().id))===baseId,'base switch failed');
+            assert(errors.length===0,'runtime errors '+errors.join(' | '));
+            console.log('BASE '+baseId);console.log('OPTIONS '+JSON.stringify(opt));console.log('V11_MULTI_PASSAGE_PASS');await b.close();
+          })().catch(e=>{console.error('V11_MULTI_PASSAGE_FAIL '+(e.stack||e));process.exitCode=1});
+          NODE
+          code=$?
+          if grep -q 'V11_MULTI_PASSAGE_PASS' /tmp/v11-multi.log && [ "$code" -eq 0 ]; then result='PASS'; else result='FAIL'; fi
+          { echo "checked_at_utc=$(date -u '+%Y-%m-%dT%H:%M:%SZ')"; echo "source_sha=${GITHUB_SHA}"; echo "result=$result"; cat /tmp/v11-multi.log; } > V11_MULTI_PASSAGE_AUDIT.txt
+          cat V11_MULTI_PASSAGE_AUDIT.txt
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add V11_MULTI_PASSAGE_AUDIT.txt
+          git commit -m 'v11: record multi passage audit [skip ci]' || true
+          git push origin HEAD:v11-1000passage-easy-notes || true
+          if [ "$result" != 'PASS' ]; then exit 1; fi
