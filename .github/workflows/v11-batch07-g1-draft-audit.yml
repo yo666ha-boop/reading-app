@@ -1,0 +1,23 @@
+name: v11 Batch07 Grade1 draft audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch07_passages_draft_g1.js'
+      - 'v11_batch07_g1_draft_audit.js'
+      - '.github/workflows/v11-batch07-g1-draft-audit.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node v11_batch07_g1_draft_audit.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-batch07-g1-draft
+          path: V11_BATCH07_G1_DRAFT_AUDIT.json
