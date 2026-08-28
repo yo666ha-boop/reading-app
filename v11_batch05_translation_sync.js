@@ -1,0 +1,61 @@
+(function syncV11Batch05Translations(){
+'use strict';
+const jp={
+'Nobody left the new seats to look for her.':'彼女を探すために新しい座席を離れる人はいませんでした。',
+'It looked like mine, so I almost took the first one.':'それは私のもののように見えたので、私は最初のものをもう少しで取るところでした。',
+'The next student found the correct umbrella easily too.':'次の生徒も正しい傘を簡単に見つけました。',
+'We first came in and did not notice the problem.':'私たちは最初に入ったとき、その問題に気づきませんでした。',
+'Everyone thought we still had time before the start of practice.':'みんな練習が始まるまでまだ時間があると思っていました。',
+'My brother saw me and said, “Check the food inside.”':'兄は私を見て、「中の食べ物を確認して」と言いました。',
+'I was holding his lunch box, so we laughed.':'私は兄の弁当箱を持っていたので、私たちは笑いました。',
+'The next morning, we told the boxes apart at once.':'次の朝、私たちは箱をすぐに見分けました。',
+'I saw a problem with three different meeting places.':'私は三つの異なる集合場所には問題があると分かりました。',
+'We saw the large clock near the main gate easily.':'私たちは正門の近くにある大きな時計を簡単に見つけられました。',
+'We chose one clear place and stopped using the other three ideas.':'私たちは分かりやすい一つの場所を選び、ほかの三つの案を使うのをやめました。',
+'One day, rain started during my walk home from school.':'ある日、学校から歩いて帰る途中で雨が降り始めました。',
+'The homework inside the folder was still dry, and I read it easily.':'フォルダーの中の宿題はまだ乾いていて、私は簡単に読むことができました。',
+'The teacher said, “Begin on page forty-two.”':'先生は「42ページから始めなさい」と言いました。',
+'We returned after lunch, and everyone saw the mark.':'私たちは昼食後に戻り、みんながその印を見ました。',
+'Our coach was calling everyone together, so I did not talk on the phone.':'コーチがみんなを集めていたので、私は電話で話しませんでした。',
+'I looked at my phone again and saw the message.':'私はもう一度携帯電話を見て、そのメッセージに気づきました。',
+'My father said, “Check the direction before we go down.”':'父は「下りる前に方向を確認しよう」と言いました。',
+'We checked the final station name and chose the direction easily.':'私たちは終点の駅名を確認し、進む方向を簡単に選びました。',
+'I changed the old note clearly, and I understood the schedule easily.':'私は古いメモを分かりやすく直し、予定を簡単に理解できました。',
+'The place was pretty, but the photo did not show our school clearly.':'その場所はきれいでしたが、写真では私たちの学校だとはっきり分かりませんでした。',
+'Clear letters above the entrance showed our school name.':'入口の上のはっきりした文字が私たちの学校名を示していました。',
+'Many notebooks had a price tag on the shelf below them.':'多くのノートには、その下の棚に値札がありました。',
+'The worker checked a list and said, “This is the correct amount.”':'店員は一覧を確認して、「これが正しい金額です」と言いました。',
+'It was already getting late, so I wanted to check.':'もう遅くなり始めていたので、私は確認したいと思いました。',
+'We usually met on another floor, so that number surprised me.':'私たちは普段別の階で会っていたので、その数字に驚きました。',
+'Two friends started toward the upstairs rooms without checking.':'二人の友達は確認せずに上の階の部屋へ向かい始めました。',
+'I worried about putting the wrong gift in a bag.':'私は間違った贈り物を袋に入れてしまうことを心配しました。',
+'We used a short list and prepared the three similar bags correctly.':'私たちは短い一覧を使って、よく似た三つの袋を正しく準備しました。',
+'It was actually his bottle, so a teammate stopped me.':'それは実は彼のボトルだったので、チームメートが私を止めました。',
+'We saw the bright mark easily from a short distance.':'私たちは少し離れた所からでも明るい印を簡単に見つけました。',
+'There was no extra cardboard of the size we needed for a new one.':'新しいものを作るのに必要な大きさの予備の段ボールはありませんでした。',
+'We asked a teacher, “Can we use that wall safely?”':'私たちは先生に「その壁を安全に使えますか」と尋ねました。',
+'We changed the place and practiced safely instead of losing the whole day.':'私たちは場所を変え、一日全部を無駄にする代わりに安全に練習しました。',
+'Two friends arrived after me and followed me to the same rack.':'二人の友達が私の後に到着し、私について同じラックへ行きました。',
+'The second rack became more popular during the rest of the week.':'二つ目のラックは、その週の残りの日々にもっとよく使われるようになりました。',
+'Some visitors knew the event name but still walked the wrong way.':'何人かの来場者は行事名を知っていましたが、それでも間違った方向へ歩きました。',
+'Our teacher said, “Read the temporary sign carefully first.”':'先生は「まず仮の案内を注意深く読みなさい」と言いました。',
+'One question gave students two choices: sports and other things.':'一つの質問は、生徒に「スポーツ」と「その他」の二つの選択肢を示しました。',
+'One student liked music and art and did not know which answer to choose.':'ある生徒は音楽と美術が好きで、どちらの答えを選べばよいか分かりませんでした。',
+'Another member said, “Read every attachment name aloud first.”':'別のメンバーは「まずすべての添付ファイル名を声に出して読んで」と言いました。',
+'I started to think the lock was broken and looked for a teacher.':'私は鍵が壊れていると思い始め、先生を探しました。',
+'We found people easily there, but music was playing nearby.':'そこでは人を簡単に見つけられましたが、近くで音楽が流れていました。',
+'We marked only the first-day places, and the detailed map became easier to use.':'私たちは初日の場所だけに印を付け、その詳しい地図は使いやすくなりました。',
+'The number seemed to support our main argument, so it looked useful.':'その数字は私たちの主な主張を裏付けているように見えたので、役立ちそうでした。',
+'The revised graph helped the audience judge the change fairly.':'修正したグラフは、聞き手が変化を公平に判断するのに役立ちました。',
+'Our group still planned to finish one day early, so a small problem would not cause a delay.':'私たちのグループは、小さな問題で遅れないように一日早く終える計画を立てたままにしました。',
+'Everyone liked the photos, and the high rating suggested an easy choice.':'みんな写真を気に入り、高い評価から簡単に選べそうに思えました。',
+'After the fourth stop, one person asked, “Is there a place to sit nearby?”':'四つ目の立ち寄り場所の後、一人が「近くに座る場所はありますか」と尋ねました。',
+'I reached home, and the outside of the bag was wetter.':'私は家に着き、かばんの外側はさらにぬれていました。',
+'The visitor saw both her new friends and our school name.':'その来校者は、新しい友達と私たちの学校名の両方を見ました。'
+};
+const ps=[...(window.V11_BATCH05_G1_PASSAGES||[]),...(window.V11_BATCH05_G2_PASSAGES||[]),...(window.V11_BATCH05_G3_PASSAGES||[])];if(ps.length!==50)throw new Error('Batch05 50 passages missing before translation sync');
+let synced=0;const missing=[];
+for(const p of ps){for(let i=0;i<(p.sentences||[]).length;i++){const en=p.sentences[i];if(!Object.prototype.hasOwnProperty.call(jp,en))continue;if(!p.slashRows||!p.slashRows[i]){missing.push({id:p.id,index:i,en});continue;}p.slashRows[i].jp=jp[en];synced++;}p.fullTranslation=(p.slashRows||[]).map(r=>r&&r.jp||'').join('');p.translationSync='B05_POST_GRAMMAR_SYNC_20260829';}
+if(missing.length)throw new Error('Batch05 missing slash rows during translation sync: '+JSON.stringify(missing));
+window.V11_BATCH05_TRANSLATION_SYNC_STATE={version:'20260829-post-grammar',passages:ps.length,synced,missing:0,ready:ps.length===50};
+})();
