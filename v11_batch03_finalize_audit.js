@@ -4,7 +4,7 @@ function run(s,f){vm.runInContext(fs.readFileSync(f,'utf8'),s,{filename:f})}
 function norm(s){return String(s||'').replace(/^\s*\d+\.\s*/,'').trim()}
 try{
  const s={window:{},console};s.globalThis=s.window;vm.createContext(s);
- for(const f of ['v11_batch03_passages_draft_g1.js','v11_batch03_g1_length_repair.js','v11_batch03_passages_draft_g2.js','v11_batch03_passages_draft_g3.js','v11_batch03_length_repair.js','v11_batch03_chronology_repair.js','v11_batch03_chronology_repair_r2.js','v11_batch03_note_finalize.js','v11_batch03_question_regenerate.js'])run(s,f);
+ for(const f of ['v11_batch03_passages_draft_g1.js','v11_batch03_g1_length_repair.js','v11_batch03_passages_draft_g2.js','v11_batch03_passages_draft_g3.js','v11_batch03_length_repair.js','v11_batch03_chronology_repair.js','v11_batch03_chronology_repair_r2.js','v11_batch03_note_finalize_prepatch.js','v11_batch03_note_finalize.js','v11_batch03_question_regenerate.js'])run(s,f);
  const ps=[...(s.window.V11_BATCH03_DRAFT_G1_PASSAGES||[]),...(s.window.V11_BATCH03_DRAFT_G2_PASSAGES||[]),...(s.window.V11_BATCH03_DRAFT_G3_PASSAGES||[])];
  const failures=[];let totalQuestions=0,totalNotes=0;const promptForms=new Set();
  for(const p of ps){
