@@ -1,0 +1,25 @@
+name: v11 Batch07 Yamaguchi profile audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'V11_BATCH07_50_PASSAGE_PLAN.md'
+      - 'V11_BATCH07_YAMAGUCHI_PROFILE.json'
+      - 'V11_YAMAGUCHI_ENTRANCE_EXAM_READING_MODEL.md'
+      - 'v11_batch07_yamaguchi_profile_audit.js'
+      - '.github/workflows/v11-batch07-yamaguchi-profile-audit.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node v11_batch07_yamaguchi_profile_audit.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-batch07-yamaguchi-profile
+          path: V11_BATCH07_YAMAGUCHI_PROFILE_AUDIT.json
