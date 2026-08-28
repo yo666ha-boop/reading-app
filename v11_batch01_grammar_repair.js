@@ -27,6 +27,12 @@
     if(typeof window.V11_APPLY_EASY_SUPPORT_NOTES==='function')window.V11_APPLY_EASY_SUPPORT_NOTES();
     return state;
   }
+  function bootBatch02(){
+    if(typeof document==='undefined'||window.V11_BATCH02_LOADED||window.V11_BATCH02_BOOTSTRAP_LOADING)return;
+    if(document.querySelector('script[data-v11-b02-bootstrap="1"]'))return;
+    const s=document.createElement('script');s.src='v11_batch02_bootstrap.js';s.async=false;s.dataset.v11B02Bootstrap='1';s.onerror=()=>{window.V11_BATCH02_BOOTSTRAP_ERROR='Failed to load v11_batch02_bootstrap.js';console.error(window.V11_BATCH02_BOOTSTRAP_ERROR)};document.head.appendChild(s);
+  }
   window.V11_APPLY_BATCH01_GRAMMAR_REPAIR=apply;
   apply();
+  bootBatch02();
 })();
