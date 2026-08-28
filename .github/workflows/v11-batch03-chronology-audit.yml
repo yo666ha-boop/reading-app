@@ -1,0 +1,36 @@
+name: v11 Batch03 chronology audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch03_passages_draft_g1.js'
+      - 'v11_batch03_g1_length_repair.js'
+      - 'v11_batch03_passages_draft_g2.js'
+      - 'v11_batch03_passages_draft_g3.js'
+      - 'v11_batch03_length_repair.js'
+      - 'v11_batch03_chronology_audit.js'
+      - 'v10_v7_lexicon_loader.js'
+      - 'v10_elementary_vocab_allowlist.json'
+      - 'v10_grammar_chronology_candidate_audit.js'
+      - 'v10_grammar_chronology_gate_audit.js'
+      - '.github/workflows/v11-batch03-chronology-audit.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-save --no-package-lock jsdom@24.1.3
+      - run: node v11_batch03_chronology_audit.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-batch03-chronology
+          path: |
+            V11_BATCH03_VOCAB_CHRONOLOGY_REPORT.json
+            V11_BATCH03_GRAMMAR_CANDIDATE_REPORT.json
+            V11_BATCH03_GRAMMAR_CHRONOLOGY_REPORT.json
+            V11_BATCH03_CHRONOLOGY_STATUS.txt
