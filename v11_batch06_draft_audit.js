@@ -2,9 +2,8 @@
 const fs=require('fs'),vm=require('vm');
 function run(s,f){vm.runInContext(fs.readFileSync(f,'utf8'),s,{filename:f});}
 function words(s){return (String(s||'').match(/[A-Za-z]+(?:['’][A-Za-z]+)?/g)||[]).length;}
-function fail(reason,data){console.error(JSON.stringify({final:'FAIL',reason,...(data||{})},null,2));process.exit(1);}
 const s={window:{},console};s.globalThis=s.window;vm.createContext(s);
-for(const f of ['v11_batch06_passages_draft_g1.js','v11_batch06_passages_draft_g2.js','v11_batch06_passages_draft_g3.js'])run(s,f);
+for(const f of ['v11_batch06_passages_draft_g1.js','v11_batch06_passages_draft_g2.js','v11_batch06_passages_draft_g3.js','v11_batch06_draft_repairs.js'])run(s,f);
 const ps=s.window.V11_BATCH06_PASSAGES||[];
 const grades={1:0,2:0,3:0},ids=new Set(),lengthIssues=[],structureIssues=[],questionIssues=[];
 for(const p of ps){
