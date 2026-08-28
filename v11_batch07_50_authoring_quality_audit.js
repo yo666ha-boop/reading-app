@@ -1,0 +1,23 @@
+'use strict';
+const fs=require('fs'),vm=require('vm');const sandbox={window:{},console};vm.createContext(sandbox);
+for(const f of [
+'v11_batch07_passages_draft_g1.js','v11_batch07_g1_semantic_repair.js',
+'v11_batch07_passages_draft_g2.js','v11_batch07_g2_semantic_repair.js',
+'v11_batch07_standard_draft_g3.js','v11_batch07_standard_semantic_repair.js',
+'v11_batch07_long_draft_g3.js','v11_batch07_long_semantic_repair.js',
+'v11_batch07_yamaguchi_exam_draft_g3.js','v11_batch07_yamaguchi_semantic_repair.js','v11_batch07_yamaguchi_exam_evidence_sync.js']){
+ vm.runInContext(fs.readFileSync(f,'utf8'),sandbox,{filename:f});
+}
+const groups={g1:sandbox.window.V11_BATCH07_G1_DRAFTS||[],g2:sandbox.window.V11_BATCH07_G2_DRAFTS||[],g3standard:sandbox.window.V11_BATCH07_STANDARD_DRAFTS||[],g3long:sandbox.window.V11_BATCH07_LONG_DRAFTS||[],g3exam:sandbox.window.V11_BATCH07_YAMAGUCHI_EXAM_DRAFTS||[]};
+const ps=Object.values(groups).flat(),errors=[],details=[];const words=s=>(String(s||'').match(/[A-Za-z]+(?:['’][A-Za-z]+)?/g)||[]);const arr=x=>Array.isArray(x)?x:[x];
+const expectedCounts={g1:17,g2:17,g3standard:8,g3long:4,g3exam:4};for(const [k,n] of Object.entries(expectedCounts))if(groups[k].length!==n)errors.push(`group-count:${k}:${groups[k].length}/${n}`);if(ps.length!==50)errors.push(`total:${ps.length}`);if(new Set(ps.map(p=>p.id)).size!==50)errors.push('duplicate-id');if(new Set(ps.map(p=>p.sentences.join(' '))).size!==50)errors.push('duplicate-body');
+function band(p){if(p.grade==='1')return[90,125];if(p.grade==='2')return[115,155];if(p.level==='STANDARD')return[150,230];if(p.level==='LONG')return[240,330];return[330,450];}
+function norm(s){return String(s||'').toLowerCase().replace(/[^a-z0-9 ]+/g,' ').replace(/\s+/g,' ').trim();}function jaccard(a,b){const A=new Set(a.map(norm)),B=new Set(b.map(norm));let hit=0;for(const x of A)if(B.has(x))hit++;return hit/(A.size+B.size-hit||1);}
+for(const p of ps){const [lo,hi]=band(p),body=p.sentences.join(' '),wc=words(body).length,jp=p.slashRows.map(r=>r.jp).join(''),qs=[...(p.questions||[]),...(p.questionSetB||[])],bad=[],review=p.semanticHumanReview||{};
+ if(review.reviewed!==true)bad.push('human-review');if(p.registered!==false)bad.push('registration-lock');if(wc<lo||wc>hi)bad.push(`word-band:${wc}/${lo}-${hi}`);if(p.wordCount!==wc)bad.push('word-field');if(p.sentences.length!==p.slashRows.length||p.slashRows.some((r,i)=>r.en!==p.sentences[i]||!r.jp))bad.push('slash');if(p.fullTranslation!==jp)bad.push('translation');if(qs.length!==10)bad.push(`questions:${qs.length}`);if(new Set(qs.map(q=>q.prompt)).size!==qs.length)bad.push('duplicate-prompt');
+ qs.forEach((q,i)=>{if(!q.questionType||!q.prompt||!q.answer||!q.reason)bad.push(`qfields:${i+1}`);const ev=arr(q.evidence).filter(Boolean),ej=arr(q.evidenceJp).filter(Boolean);if(!ev.length||ev.length!==ej.length)bad.push(`evidence-shape:${i+1}`);ev.forEach((e,j)=>{const row=p.slashRows.find(r=>r.en===e);if(!row)bad.push(`evidence-en:${i+1}:${j+1}`);else if(row.jp!==ej[j])bad.push(`evidence-jp:${i+1}:${j+1}`);});if(q.questionType==='SENTENCE_INSERTION'&&(!Number.isInteger(q.insertAfterSentence)||q.insertAfterSentence<1||q.insertAfterSentence>=p.sentences.length))bad.push(`insertion:${i+1}`);});
+ if(p.level==='ENTRANCE_EXAM'){const fw=p.freeWriteTask||{},fwc=words(fw.modelAnswer).length;if(fw.questionType!=='FREE_WRITE_20_30'||fwc<20||fwc>30)bad.push(`freewrite:${fwc}`);}
+ if(bad.length)errors.push(`${p.id}:${bad.join(',')}`);details.push({id:p.id,grade:p.grade,level:p.level,wordCount:wc,sentences:p.sentences.length,questions:qs.length,humanReviewed:review.reviewed===true,bad});
+}
+const near=[];for(let i=0;i<ps.length;i++)for(let j=i+1;j<ps.length;j++){const score=jaccard(ps[i].sentences,ps[j].sentences);if(score>=0.85)near.push({a:ps[i].id,b:ps[j].id,score:Number(score.toFixed(3))});}if(near.length)errors.push(`near-duplicate:${near.length}`);
+const report={pass:errors.length===0,total:ps.length,counts:Object.fromEntries(Object.entries(groups).map(([k,v])=>[k,v.length])),humanReviewed:ps.filter(p=>p.semanticHumanReview&&p.semanticHumanReview.reviewed).length,registered:ps.filter(p=>p.registered===true).length,nearDuplicates:near,errors,details};fs.writeFileSync('V11_BATCH07_50_AUTHORING_QUALITY_AUDIT.json',JSON.stringify(report,null,2)+'\n');console.log(`BATCH07 50 total=${ps.length} human=${report.humanReviewed} registered=${report.registered} near=${near.length} errors=${errors.length} final=${report.pass?'PASS':'FAIL'}`);for(const d of details.filter(x=>x.bad.length))console.error(d.id,d.bad.join(','));if(errors.length){console.error(errors.join('\n'));process.exit(1);}
