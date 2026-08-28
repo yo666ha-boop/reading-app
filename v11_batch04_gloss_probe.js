@@ -4,7 +4,7 @@ const {loadCanonicalV7}=require('./v10_v7_lexicon_loader');
 function run(s,f){vm.runInContext(fs.readFileSync(f,'utf8'),s,{filename:f});}
 try{
  const s={window:{},console};s.globalThis=s.window;vm.createContext(s);
- for(const f of ['v11_batch04_passages_draft_g1.js','v11_batch04_passages_draft_g2.js','v11_batch04_passages_draft_g3.js','v11_batch04_length_repair.js','v11_batch04_length_repair_r2.js','v11_batch04_chronology_repair.js','v11_batch04_grammar_repair.js','v11_batch04_chronology_repair_r2.js'])run(s,f);
+ for(const f of ['v11_batch04_passages_draft_g1.js','v11_batch04_passages_draft_g2.js','v11_batch04_passages_draft_g3.js','v11_batch04_length_repair.js','v11_batch04_length_repair_r2.js','v11_batch04_chronology_repair.js','v11_batch04_grammar_repair.js','v11_batch04_chronology_repair_r2.js','v11_batch04_notes_finalize_g1.js','v11_batch04_notes_finalize_g2.js','v11_batch04_notes_finalize_g3.js'])run(s,f);
  const ps=[...(s.window.V11_BATCH04_G1_PASSAGES||[]),...(s.window.V11_BATCH04_G2_PASSAGES||[]),...(s.window.V11_BATCH04_G3_PASSAGES||[])];
  const data=loadCanonicalV7();
  const hits={},miss=[];
