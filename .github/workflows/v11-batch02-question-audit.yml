@@ -1,0 +1,27 @@
+name: v11 Batch02 question audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch02_passages_draft.js'
+      - 'v11_batch02_unit_safe_repair.js'
+      - 'v11_batch02_required_notes_repair.js'
+      - 'v11_batch02_question_repair.js'
+      - 'v11_batch02_question_audit.js'
+      - 'v11_batch01_passages_001_050.js'
+      - '.github/workflows/v11-batch02-question-audit.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node v11_batch02_question_audit.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-batch02-question-audit
+          path: V11_BATCH02_QUESTION_AUDIT.json
