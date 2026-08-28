@@ -1,0 +1,38 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "WINPASS_717_EVIDENCE_REVIEW",
+  "recorded_at_jst": "2026-08-28T12:00:00+09:00",
+  "purpose": "Correct cumulative evidence-review progress to unique raw_id/record_fingerprint decisions and prevent duplicate arithmetic.",
+  "pre_reconciliation_checkpoint": {"reviewed":458,"included":458,"excluded":0,"unreviewed":259},
+  "duplicate_groups": [
+    {
+      "canonical_artifact": "math-bank/state/winpass109-evidence-review-final-mediaheavy-20260827.json",
+      "canonical_records": 109,
+      "duplicate_later_artifacts": [
+        "math-bank/state/winpass34-evidence-review-mediaheavy-2suhy000518-000520-000521-000725-20260828.json",
+        "math-bank/state/winpass75-evidence-review-mediaheavy-final75-20260828.json"
+      ],
+      "duplicate_records": 109,
+      "evidence": "winpass109-finalized-manifest-20260827.json lists exactly the same four pre-final75 documents totaling 34 plus the same eight final75 documents totaling 75; raw_id_unique=109 and fingerprint_unique=109."
+    },
+    {
+      "canonical_artifact": "math-bank/state/winpass20-evidence-review-2suhy000414-000415-20260827.json",
+      "canonical_records": 20,
+      "duplicate_later_artifacts": [
+        "math-bank/state/winpass10-evidence-review-2suhy000414-20260828.json",
+        "math-bank/state/winpass10-evidence-review-2suhy000415-20260828.json"
+      ],
+      "duplicate_records": 20,
+      "evidence": "The canonical 20-record artifact contains fingerprint-bound decisions for all 10 slots of 25winpasst2suhy000414.docx and all 10 slots of 25winpasst2suhy000415.docx; the two later 10-record artifacts are the same source documents and strict artifacts."
+    }
+  ],
+  "duplicate_records_removed_from_arithmetic": 129,
+  "post_reconciliation_unique": {"reviewed":329,"included":329,"excluded":0,"unreviewed":388},
+  "calculation": "458 - 109 - 20 = 329 unique reviewed decisions; 717 - 329 = 388 unreviewed.",
+  "count_forcing_used": false,
+  "historical_artifacts_deleted": false,
+  "historical_artifacts_status": "retained as evidence; later duplicate batches must not be counted again",
+  "main_untouched": true,
+  "publication_ready": false,
+  "next": "Continue only with Winpass durable raw_id/fingerprints absent from the unique reviewed-decision union."
+}
