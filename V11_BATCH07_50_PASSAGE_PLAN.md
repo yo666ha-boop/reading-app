@@ -3,14 +3,17 @@
 Status: PLAN_LOCKED / NOT_REGISTERED
 Target after Batch06 finalization: 468 -> 518 passages
 Distribution: Grade 1 = 17, Grade 2 = 17, Grade 3 = 16
+Yamaguchi entrance-exam spec: `V11_YAMAGUCHI_ENTRANCE_EXAM_READING_SPEC.md`
 
 ## Authoring rules
 - Do not register partial drafts. Keep Batch07 outside persistent runtime until all 50 pass every gate.
 - Keep every story distinct from Batch01-06; no shared filler or word-count padding scaffold.
 - Vocabulary and grammar must remain within the assigned textbook/unit chronology. Story-essential exceptions require `unlearned_local_required` notes with final Japanese glosses.
 - Keep final English, fullTranslation, and slashRows semantically synchronized after every repair.
-- Regenerate A/B as 5+5 questions only after final English is stable; every question must include answer, evidence English, matching evidence Japanese, and reason.
-- Final gates: word-count/content/naturalness, v7 vocabulary chronology, grammar chronology, required/easy-support notes, A/B evidence, cross-batch diversity, PC/iPhone, A4 student/teacher, persistent runtime total=518.
+- Regenerate A/B as 5+5 questions only after final English is stable; every question must include answer, evidence English, matching evidence Japanese, reason, and `questionType`.
+- Question types must follow the Yamaguchi taxonomy: DETAIL / GIST / REASON / INFERENCE / SENTENCE_INSERTION / CONTENT_MATCH / CONTEXT_WORD / PHRASE_FILL / SUMMARY_FILL / MATERIAL_LINK / FREE_WRITE_20_30.
+- Grade 3 must contain standard, long and Yamaguchi entrance-exam tiers. Do not treat 210–270 words as the maximum for all Grade 3 passages.
+- Final gates: word-count/content/naturalness, Yamaguchi tier/question-type contract, v7 vocabulary chronology, grammar chronology, required/easy-support notes, A/B evidence, cross-batch diversity, PC/iPhone, A4 student/teacher, persistent runtime total=518.
 
 ## Grade 1 — 17 passages
 1. `V11-B07-G1-001` — Sunshine G1 PROGRAM 10-2 — **The Jacket on the Wrong Hook** — Two similar jackets are mixed up after club practice, and the students use small clues to return each one.
@@ -51,24 +54,38 @@ Distribution: Grade 1 = 17, Grade 2 = 17, Grade 3 = 16
 34. `V11-B07-G2-017` — Sunshine G2 PROGRAM 8-3 — **The Instruction with a Missing Step** — A group tests written instructions and adds the step that every first-time user needed.
 
 ## Grade 3 — 16 passages
-35. `V11-B07-G3-001` — Sunshine G3 PROGRAM 7-3 — **The History Display with One Source** — Students strengthen a local-history display after noticing that all its claims came from one source.
-36. `V11-B07-G3-002` — NH G3 Unit 6-4 — **The Volunteer Form People Skipped** — Organizers redesign a form after learning which questions caused applicants to stop midway.
-37. `V11-B07-G3-003` — Sunshine G3 PROGRAM 7-3 — **The Old Map with a New Street Name** — Students compare an old map with current records and explain why a place appears to have moved when only the name changed.
-38. `V11-B07-G3-004` — NH G3 Unit 6-4 — **A Rule That Helped One Group More** — Students examine who benefits from a school rule and propose a revision after hearing different experiences.
-39. `V11-B07-G3-005` — Sunshine G3 PROGRAM 7-3 — **The Cleanup Day with the Wrong Focus** — A litter record shows that volunteers are cleaning the easiest area rather than the place with the biggest problem.
-40. `V11-B07-G3-006` — NH G3 Unit 6-4 — **The Emergency Message Test** — A team tests how quickly a message reaches members through different channels and revises its communication plan.
-41. `V11-B07-G3-007` — Sunshine G3 PROGRAM 7-3 — **The Empty Lot Community Vote** — Students compare several temporary uses for an empty lot and explain trade-offs instead of choosing only the most popular idea.
-42. `V11-B07-G3-008` — NH G3 Unit 6-4 — **The Festival Entrance Bottleneck** — Students use observations from different times to redesign the entrance flow for a school festival.
-43. `V11-B07-G3-009` — Sunshine G3 PROGRAM 7-3 — **Two Interviews, One Event** — A student writer presents two conflicting accounts without pretending that either memory is complete.
-44. `V11-B07-G3-010` — NH G3 Unit 6-4 — **The Study Space Trial** — Students test a proposed quiet study area for one week and revise the rules after collecting user feedback.
-45. `V11-B07-G3-011` — Sunshine G3 PROGRAM 7-3 — **The Website Page Nobody Updated** — A class creates an ownership schedule after discovering outdated public information on a school page.
-46. `V11-B07-G3-012` — NH G3 Unit 6-4 — **The Fair Way to Share Limited Tools** — A community group compares several methods for sharing scarce equipment and chooses criteria it can explain publicly.
-47. `V11-B07-G3-013` — Sunshine G3 PROGRAM 7-3 — **The Classroom Energy Pattern** — Students compare several weeks of energy-use records and propose changes focused on the times of highest use.
-48. `V11-B07-G3-014` — NH G3 Unit 6-4 — **The Survey Missing Younger Visitors** — Students notice that one visitor group is absent from their sample and redesign when and where they collect responses.
-49. `V11-B07-G3-015` — Sunshine G3 PROGRAM 7-3 — **The Meeting Point in Heavy Rain** — Students test an emergency meeting point under bad-weather conditions and propose a safer alternative.
-50. `V11-B07-G3-016` — NH G3 Unit 6-4 — **The Last Section of the Community Report** — A team uses agreed evidence criteria to decide which issue deserves the final section instead of choosing by personal preference.
+35. `V11-B07-G3-001` — Sunshine G3 PROGRAM 7-3 — **The History Display with One Source** — LONG 240–330 — Students strengthen a local-history display after noticing that all its claims came from one source.
+36. `V11-B07-G3-002` — NH G3 Unit 6-4 — **The Volunteer Form People Skipped** — STANDARD 150–230 — Organizers redesign a form after learning which questions caused applicants to stop midway.
+37. `V11-B07-G3-003` — Sunshine G3 PROGRAM 7-3 — **The Old Map with a New Street Name** — YAMAGUCHI_EXAM 330–450 — Students compare an old map with current records and explain why a place appears to have moved when only the name changed.
+38. `V11-B07-G3-004` — NH G3 Unit 6-4 — **A Rule That Helped One Group More** — LONG 240–330 — Students examine who benefits from a school rule and propose a revision after hearing different experiences.
+39. `V11-B07-G3-005` — Sunshine G3 PROGRAM 7-3 — **The Cleanup Day with the Wrong Focus** — STANDARD 150–230 — A litter record shows that volunteers are cleaning the easiest area rather than the place with the biggest problem.
+40. `V11-B07-G3-006` — NH G3 Unit 6-4 — **The Emergency Message Test** — YAMAGUCHI_EXAM 330–450 — A team tests how quickly a message reaches members through different channels and revises its communication plan.
+41. `V11-B07-G3-007` — Sunshine G3 PROGRAM 7-3 — **The Empty Lot Community Vote** — STANDARD 150–230 — Students compare several temporary uses for an empty lot and explain trade-offs instead of choosing only the most popular idea.
+42. `V11-B07-G3-008` — NH G3 Unit 6-4 — **The Festival Entrance Bottleneck** — LONG 240–330 — Students use observations from different times to redesign the entrance flow for a school festival.
+43. `V11-B07-G3-009` — Sunshine G3 PROGRAM 7-3 — **Two Interviews, One Event** — YAMAGUCHI_EXAM 330–450 — A student writer presents two conflicting accounts without pretending that either memory is complete.
+44. `V11-B07-G3-010` — NH G3 Unit 6-4 — **The Study Space Trial** — STANDARD 150–230 — Students test a proposed quiet study area for one week and revise the rules after collecting user feedback.
+45. `V11-B07-G3-011` — Sunshine G3 PROGRAM 7-3 — **The Website Page Nobody Updated** — STANDARD 150–230 — A class creates an ownership schedule after discovering outdated public information on a school page.
+46. `V11-B07-G3-012` — NH G3 Unit 6-4 — **The Fair Way to Share Limited Tools** — STANDARD 150–230 — A community group compares several methods for sharing scarce equipment and chooses criteria it can explain publicly.
+47. `V11-B07-G3-013` — Sunshine G3 PROGRAM 7-3 — **The Classroom Energy Pattern** — LONG 240–330 — Students compare several weeks of energy-use records and propose changes focused on the times of highest use.
+48. `V11-B07-G3-014` — NH G3 Unit 6-4 — **The Survey Missing Younger Visitors** — YAMAGUCHI_EXAM 330–450 — Students notice that one visitor group is absent from their sample and redesign when and where they collect responses.
+49. `V11-B07-G3-015` — Sunshine G3 PROGRAM 7-3 — **The Meeting Point in Heavy Rain** — STANDARD 150–230 — Students test an emergency meeting point under bad-weather conditions and propose a safer alternative.
+50. `V11-B07-G3-016` — NH G3 Unit 6-4 — **The Last Section of the Community Report** — STANDARD 150–230 — A team uses agreed evidence criteria to decide which issue deserves the final section instead of choosing by personal preference.
+
+## Grade 3 Yamaguchi question contract
+
+For every `YAMAGUCHI_EXAM` passage:
+- A/B remain 5+5 for UI compatibility.
+- Across the 10 reading questions there must be at least 6 distinct `questionType` values.
+- Required coverage: CONTENT_MATCH; REASON or INFERENCE; SENTENCE_INSERTION or SUMMARY_FILL; CONTEXT_WORD or PHRASE_FILL.
+- MATERIAL_LINK is required when the story is built around records, maps, surveys, schedules, charts or comparable material.
+- Add a separate optional 20–30 word `freeWriteTask` linked to the reading situation/theme; it is not counted as one of the 10 A/B questions.
+- Direct extraction alone can never satisfy this contract.
+
+For every `LONG` passage:
+- A covers DETAIL/GIST/REASON/CONTENT_MATCH.
+- B includes at least one non-literal Yamaguchi-style task: INFERENCE, SENTENCE_INSERTION, CONTEXT_WORD, PHRASE_FILL, SUMMARY_FILL or MATERIAL_LINK.
 
 ## Registration lock
 `registered=false`
 
-Do not change the formal runtime to 518 until Batch06 is formally complete at 468 and all Batch07 final gates pass on the completed 50 passages.
+Do not change the formal runtime to 518 until Batch06 is formally complete at 468 and all Batch07 final gates, including the Yamaguchi tier/question contract, pass on the completed 50 passages.
