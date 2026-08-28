@@ -6,6 +6,7 @@ const add={
  'V11-SS-G1-P10-2-021':['started'],
  'V11-SS-G1-P10-2-022':['difference','between'],
  'V11-SS-G1-P10-2-025':['began'],
+ 'V11-NH-G1-U10-2-019':['learned'],
  'V11-NH-G1-U10-2-027':['rule'],
  'V11-SS-G2-P8-3-018':['safely'],
  'V11-NH-G2-U7-4-022':['point'],
@@ -21,5 +22,5 @@ for(const p of ps){
  p.notes=Array.isArray(p.notes)?p.notes:[];const have=new Set(p.notes.map(n=>String(n&&n.english||'').replace(/[’]/g,"'").toLowerCase()));
  for(const w of (add[p.id]||[])){if(have.has(w))continue;p.notes.push({english:w,japanese:'本文で必要な語（最終注整理対象）',kind:'unlearned_local_required',source:'v11 Batch03 chronology repair r2; temporary required-local note pending final gloss/prune audit'});have.add(w);notesAdded++;}
 }
-window.V11_BATCH03_CHRONOLOGY_REPAIR_R2_STATE={version:'20260828-r2',count:ps.length,notesAdded,changed,registered:false,temporaryGlosses:true,questionsPending:true};
+window.V11_BATCH03_CHRONOLOGY_REPAIR_R2_STATE={version:'20260828-r3-final-vocab',count:ps.length,notesAdded,changed,registered:false,temporaryGlosses:true,questionsPending:true};
 })();
