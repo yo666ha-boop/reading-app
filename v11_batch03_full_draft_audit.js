@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm');
 const sandbox={window:{},console};sandbox.globalThis=sandbox.window;vm.createContext(sandbox);
-for(const f of ['v11_batch03_passages_draft_g1.js','v11_batch03_g1_length_repair.js','v11_batch03_passages_draft_g2.js','v11_batch03_passages_draft_g3.js'])vm.runInContext(fs.readFileSync(f,'utf8'),sandbox,{filename:f});
+for(const f of ['v11_batch03_passages_draft_g1.js','v11_batch03_g1_length_repair.js','v11_batch03_passages_draft_g2.js','v11_batch03_passages_draft_g3.js','v11_batch03_length_repair.js'])vm.runInContext(fs.readFileSync(f,'utf8'),sandbox,{filename:f});
 const ps=[...(sandbox.window.V11_BATCH03_DRAFT_G1_PASSAGES||[]),...(sandbox.window.V11_BATCH03_DRAFT_G2_PASSAGES||[]),...(sandbox.window.V11_BATCH03_DRAFT_G3_PASSAGES||[])];
 const problems=[],ids=new Set();
 if(ps.length!==50)problems.push(`count=${ps.length}`);
@@ -15,6 +15,6 @@ for(const p of ps){
  for(const q of [...(p.questions||[]),...(p.questionSetB||[])]){if(!p.sentences.includes(q.evidence))problems.push(`${p.id}:evidence not in text`);if(!q.evidenceJp||!q.reason)problems.push(`${p.id}:question evidence/reason missing`);}
 }
 const byGrade={};for(const p of ps)(byGrade[p.grade]||(byGrade[p.grade]=[])).push({id:p.id,wordCount:p.wordCount,target:p.targetWordBand});
-const out={generatedAt:new Date().toISOString(),count:ps.length,registered:false,currentRuntimeTotal:268,targetRuntimeTotal:318,problems,byGrade,finalPass:ps.length===50&&problems.length===0};
+const out={generatedAt:new Date().toISOString(),count:ps.length,registered:false,currentRuntimeTotal:268,targetRuntimeTotal:318,g1LengthRepair:sandbox.window.V11_BATCH03_G1_LENGTH_REPAIR_STATE||null,g23LengthRepair:sandbox.window.V11_BATCH03_LENGTH_REPAIR_STATE||null,problems,byGrade,finalPass:ps.length===50&&problems.length===0};
 fs.writeFileSync('V11_BATCH03_FULL_DRAFT_AUDIT.json',JSON.stringify(out,null,2)+'\n');
 console.log(`Batch03 full draft count=${ps.length}/50 problems=${problems.length} final=${out.finalPass?'PASS':'FAIL'}`);for(const x of problems)console.log(x);if(!out.finalPass)process.exitCode=1;
