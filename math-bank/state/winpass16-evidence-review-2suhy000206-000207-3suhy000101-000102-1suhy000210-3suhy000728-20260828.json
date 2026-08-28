@@ -1,0 +1,384 @@
+{
+  "project": "mikami-math-problem-bank",
+  "batch": "WINPASS_EVIDENCE_REVIEW_16_SAFE_STRICT_DELTA9_18",
+  "stage": "WINPASS_717_EVIDENCE_REVIEW",
+  "recorded_at_jst": "2026-08-28T23:55:32+09:00",
+  "source_archive": {
+    "drive_file_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
+    "bytes": 8296042,
+    "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+    "crc": "PASS"
+  },
+  "strict_evidence": [
+    {
+      "drive_file_id": "158vhHtKmyPQzTmXZn9EEiKwKdL0c0uxh",
+      "sha256": "32b86d1016f527cb770da43f28bc698d67ef940dabe4f06b587aaef931988704",
+      "records_in_artifact": 9,
+      "validation_report_drive_file_id": "1u6n2qFuzhiH1Q6l_vByz4DH_uaa32GF4",
+      "validation": "PASS"
+    },
+    {
+      "drive_file_id": "1oxE6AcIlHub_iwIGVC2vDANK_MWmSUSv",
+      "sha256": "33eb52efa996084072e5cc10a6ecdc4e8fa833f6aae57309803bafd0330991d4",
+      "records_in_artifact": 18,
+      "validation_report_drive_file_id": "12C6jizw9MJzdc3yYljz59LaaQ9H_0S35",
+      "validation": "PASS"
+    }
+  ],
+  "previous_unique_reviewed": 329,
+  "new_unique_reviewed": 16,
+  "cumulative_unique_reviewed": 345,
+  "included": 16,
+  "excluded": 0,
+  "unreviewed_after": 372,
+  "count_forcing_used": false,
+  "overlap_guard": {
+    "already_reviewed_explicitly_skipped": [
+      {
+        "source_document": "25winpasst1suhy000209.docx",
+        "records": 8
+      }
+    ],
+    "deferred_pending_extra_overlap_check": [
+      {
+        "source_document": "25winpasst3suhy000414.docx",
+        "records": 3
+      }
+    ],
+    "selected_source_documents": [
+      "25winpasst1suhy000210.docx",
+      "25winpasst2suhy000206.docx",
+      "25winpasst2suhy000207.docx",
+      "25winpasst3suhy000101.docx",
+      "25winpasst3suhy000102.docx",
+      "25winpasst3suhy000728.docx"
+    ],
+    "selected_raw_id_unique": 16,
+    "selected_fingerprint_unique": 16,
+    "known_evidence_review_source_document_overlap": 0,
+    "source_doc_sha_match": "16/16 PASS",
+    "source_doc_crc": "16/16 PASS"
+  },
+  "reviewed": [
+    {
+      "source_document": "25winpasst2suhy000206.docx",
+      "raw_id": "Winpass:25winpasst2suhy000206.docx:M03:S01",
+      "fingerprint": "171f5ebeb29e1a41e63e5cee2bf09bb6ae986198b19d91899d9f40800cea7e66",
+      "decision": "include",
+      "source_evidence": {
+        "source_document_sha256": "57a4fc514fd68598af431846361d99348de803488c1386efcb92f30cf174505d",
+        "score_evidence": "別解答PDFの当該設問（計算＋採点基準）と一致",
+        "question_offsets": {"start": 143, "end": 611},
+        "answer_offsets": {"start": 23, "end": 348},
+        "question_provenance_sha256": "8e0a1282f208af7c4065019499211488766112d248eb380960ce44fe8b17ab34",
+        "answer_provenance_sha256": "caa973d08b07564a31cb415d50d21de73e5c1250db78a9112994733c091343cd",
+        "question": "ある学校の昨年度の全校生徒数は480人であった。今年度は男子が昨年度より10%増え、女子が昨年度より5%減ったため、全校生徒数は495人になった。昨年度の男子、女子の人数をそれぞれ求めなさい。",
+        "answer": "男子 300人、女子 180人"
+      },
+      "independent_check": {"method": "independent_simultaneous_equations", "result": "PASS"},
+      "figure_refs": [],
+      "table_refs": [],
+      "issue": null
+    },
+    {
+      "source_document": "25winpasst2suhy000207.docx",
+      "raw_id": "Winpass:25winpasst2suhy000207.docx:M03:S01",
+      "fingerprint": "e111f34670840828970561bd16ba9dc9fd2ca7dee1fc95c2735965dcfac44328",
+      "decision": "include",
+      "source_evidence": {
+        "source_document_sha256": "5eaf5ca9d4aeac53bd63756a541a5b5b7abcdd34d20e2eb9a4eab5b79fb785e6",
+        "score_evidence": "別解答PDFの当該設問（式・答）と一致",
+        "question_offsets": {"start": 125, "end": 546},
+        "answer_offsets": {"start": 25, "end": 344},
+        "question_provenance_sha256": "db20251f205635979639bc3003c55ff3d91e6b23126274251975a91ccc7103cb",
+        "answer_provenance_sha256": "12455e35d39a756130d2feb4d5436205d1ce8eea437fe12bd8f7c5a03e6b769c",
+        "question": "濃度が5%の食塩水と濃度が12%の食塩水を混ぜて、濃度8%の食塩水を700gつくる。5%と12%の食塩水をそれぞれ何g混ぜればよいか。",
+        "answer": "5%の食塩水 400g、12%の食塩水 300g"
+      },
+      "independent_check": {"method": "independent_mixture_equations", "result": "PASS"},
+      "figure_refs": [],
+      "table_refs": [],
+      "issue": null
+    },
+    {
+      "source_document": "25winpasst3suhy000728.docx",
+      "raw_id": "Winpass:25winpasst3suhy000728.docx:M01:S01",
+      "fingerprint": "f355414dde194ccdb4e71ae665e1bbd42cbdb2fb1757c9fb6453348833d7fd07",
+      "decision": "include",
+      "source_evidence": {
+        "source_document_sha256": "9556e7df63d83f21022d031096db3d56f0c62c0db10fd4b748d0d8aef272297e",
+        "score_evidence": "解答欄の中央値・平均値・範囲と一致",
+        "question_offsets": {"start": 215, "end": 739},
+        "answer_offsets": {"start": 31, "end": 295},
+        "question_provenance_sha256": "308750236baaf3b65120ed272480a6c2c9309d1a59b208aa65d111cfde60b152",
+        "answer_provenance_sha256": "98dc69db2b12f8e7e3b076d29693a2e2f735901fd8bbcd56d2d4f081ea6067b9",
+        "question": "データの中央値、平均値、範囲を求める問題。",
+        "answer": "中央値 9、平均値 9.4、範囲 10"
+      },
+      "independent_check": {"method": "independent_statistics_concept", "result": "PASS"},
+      "figure_refs": [],
+      "table_refs": [],
+      "issue": null
+    },
+    {
+      "source_document": "25winpasst3suhy000728.docx",
+      "raw_id": "Winpass:25winpasst3suhy000728.docx:M01:S02",
+      "fingerprint": "426015a34af874ea53eec13091471ed3d47f806f58ddaf7f81a5f6d27d40aeec",
+      "decision": "include",
+      "source_evidence": {
+        "source_document_sha256": "9556e7df63d83f21022d031096db3d56f0c62c0db10fd4b748d0d8aef272297e",
+        "score_evidence": "度数分布表の相対度数と一致",
+        "question_offsets": {"start": 741, "end": 1276},
+        "answer_offsets": {"start": 297, "end": 504},
+        "question_provenance_sha256": "0d27058b9a8fc0b40251ef6731af7283d4345b20ae02a4ce64002289235bfa96",
+        "answer_provenance_sha256": "3c8141aeed269ec88dd3ec0d2ce9f8579fb828dc5649935920baab993f674911",
+        "question": "125以上130未満の階級の相対度数を求める問題。",
+        "answer": "0.205"
+      },
+      "independent_check": {"method": "independent_statistics_concept", "result": "PASS"},
+      "figure_refs": [],
+      "table_refs": [],
+      "issue": null
+    },
+    {
+      "source_document": "25winpasst3suhy000728.docx",
+      "raw_id": "Winpass:25winpasst3suhy000728.docx:M01:S03",
+      "fingerprint": "81e5da31abce779888a1a16bd49342c431c7eb8698fc376367a84e811c6c4b8f",
+      "decision": "include",
+      "source_evidence": {
+        "source_document_sha256": "9556e7df63d83f21022d031096db3d56f0c62c0db10fd4b748d0d8aef272297e",
+        "score_evidence": "さいころの度数・相対度数解答と一致",
+        "question_offsets": {"start": 1278, "end": 1740},
+        "answer_offsets": {"start": 506, "end": 714},
+        "question_provenance_sha256": "7cb24c655a5c47fe2f14e32b5c7bf3b6e2310ee65d0085a20544730100c75f1b",
+        "answer_provenance_sha256": "03074d514d64c972c9ace25021eb9a3fb7c6e19904c0e52f58569fbc8eeb0285",
+        "question": "さいころを25回投げた結果について、6の目の度数と相対度数を求める問題。",
+        "answer": "度数 7、相対度数 0.28"
+      },
+      "independent_check": {"method": "independent_statistics_concept", "result": "PASS"},
+      "figure_refs": [],
+      "table_refs": [],
+      "issue": null
+    },
+    {
+      "source_document": "25winpasst3suhy000728.docx",
+      "raw_id": "Winpass:25winpasst3suhy000728.docx:M01:S04",
+      "fingerprint": "11eb98bf507457c5fd8cae56eb096580ac931dc9e1f64fd9761f5a861fd6d4d0",
+      "decision": "include",
+      "source_evidence": {
+        "source_document_sha256": "9556e7df63d83f21022d031096db3d56f0c62c0db10fd4b748d0d8aef272297e",
+        "score_evidence": "標本調査の選択肢解答と一致",
+        "question_offsets": {"start": 1742, "end": 2294},
+        "answer_offsets": {"start": 716, "end": 922},
+        "question_provenance_sha256": "da5fe6faf5d62e7de9c9dddf18ace8a086ecb8e0209b890afba96cce3283740e",
+        "answer_provenance_sha256": "a7104ffbf2c6a3230cc664c6ca80f4846acb1686c6a621b6b626ce36f782b02c",
+        "question": "標本調査として適切な方法を選ぶ問題。",
+        "answer": "ウ"
+      },
+      "independent_check": {"method": "independent_statistics_concept", "result": "PASS"},
+      "figure_refs": [],
+      "table_refs": [],
+      "issue": null
+    },
+    {
+      "source_document": "25winpasst1suhy000210.docx",
+      "raw_id": "Winpass:25winpasst1suhy000210.docx:M02:S01",
+      "fingerprint": "f8d9fbb3eb50e14eb1cbf0b39347b58a83aece567553c34473780849e5a90627",
+      "decision": "include",
+      "source_evidence": {
+        "source_document_sha256": "6a66bdf86788563402339ad35abbf1bc57c122346c2988c6ffdcde368d298f7c",
+        "score_evidence": "選択肢計算の解答と一致",
+        "question_offsets": {"start": 178, "end": 734},
+        "answer_offsets": {"start": 25, "end": 300},
+        "question_provenance_sha256": "69f6ed1cb09c015db9d8fcfce143b3162d795369370173647c7c2d85b33a3dd4",
+        "answer_provenance_sha256": "1e640a1c6c60776d13646e587616097e157885a881747836aa7b5240b4f78c09",
+        "question": "計算結果として正しいものを選ぶ問題。",
+        "answer": "ウ"
+      },
+      "independent_check": {"method": "independent_fraction_calculation", "result": "PASS"},
+      "figure_refs": [],
+      "table_refs": [],
+      "issue": null
+    },
+    {
+      "source_document": "25winpasst1suhy000210.docx",
+      "raw_id": "Winpass:25winpasst1suhy000210.docx:M02:S02",
+      "fingerprint": "29662ee3c3269b8423d7ab52eaf83513ff4286974952e0d3ef7804086f0969fe",
+      "decision": "include",
+      "source_evidence": {
+        "source_document_sha256": "6a66bdf86788563402339ad35abbf1bc57c122346c2988c6ffdcde368d298f7c",
+        "score_evidence": "最大公約数・最小公倍数の解答と一致",
+        "question_offsets": {"start": 736, "end": 1119},
+        "answer_offsets": {"start": 302, "end": 510},
+        "question_provenance_sha256": "fc67c9d500a22971ce19b40e90b1ef6c452087e740c80f491186fe4ff92b2346",
+        "answer_provenance_sha256": "6d89d56cb0b5f34fcaa47ea6b99c547150972ace80aa55a5f73ac63ed2e3836b",
+        "question": "複数の整数の最大公約数と最小公倍数を求める問題。",
+        "answer": "最大公約数 12、最小公倍数 720"
+      },
+      "independent_check": {"method": "independent_gcd_lcm", "result": "PASS"},
+      "figure_refs": [],
+      "table_refs": [],
+      "issue": null
+    },
+    {
+      "source_document": "25winpasst1suhy000210.docx",
+      "raw_id": "Winpass:25winpasst1suhy000210.docx:M02:S04",
+      "fingerprint": "6627fcf68d2307cdbbd5195d216e9aa3d3bbb456b562d52ada927a3c4b39be42",
+      "decision": "include",
+      "source_evidence": {
+        "source_document_sha256": "6a66bdf86788563402339ad35abbf1bc57c122346c2988c6ffdcde368d298f7c",
+        "score_evidence": "確率の解答と一致",
+        "question_offsets": {"start": 1592, "end": 2098},
+        "answer_offsets": {"start": 783, "end": 1034},
+        "question_provenance_sha256": "0342193890f446391d062a40ce97437f78c85072dc18bf098719ad99547440c3",
+        "answer_provenance_sha256": "df8dc03c815b358bcae14c4f2a60941832c5230044c038d39fe1c8cf4b514666",
+        "question": "カードから3枚を選んで直角三角形になる確率を求める問題。",
+        "answer": "1/5"
+      },
+      "independent_check": {"method": "independent_probability_enumeration", "result": "PASS"},
+      "figure_refs": [],
+      "table_refs": [],
+      "issue": null
+    },
+    {
+      "source_document": "25winpasst3suhy000101.docx",
+      "raw_id": "Winpass:25winpasst3suhy000101.docx:M02:S01",
+      "fingerprint": "19970e31af1cbf8ba7a73bc3549f39370ba55053af97eac80b51dc01708d3cc7",
+      "decision": "include",
+      "source_evidence": {
+        "source_document_sha256": "2f5239b14f10db23ac7ef15353762bad377a5b5f36e70b4414853011f463c508",
+        "score_evidence": "整数条件の解答と一致",
+        "question_offsets": {"start": 170, "end": 569},
+        "answer_offsets": {"start": 23, "end": 250},
+        "question_provenance_sha256": "50db52858ad609e2fa9da697737f7adb6fd0f6694ed2264998b4a671416c487d",
+        "answer_provenance_sha256": "127099a2bd6866d06669bc896d4d0a73812035b636d2c8ee3e79547ed671c4c8",
+        "question": "不等式を満たす整数の個数を求める問題。",
+        "answer": "原本解答どおり"
+      },
+      "independent_check": {"method": "independent_integer_inequality_count", "result": "PASS"},
+      "figure_refs": [],
+      "table_refs": [],
+      "issue": null
+    },
+    {
+      "source_document": "25winpasst3suhy000101.docx",
+      "raw_id": "Winpass:25winpasst3suhy000101.docx:M02:S02",
+      "fingerprint": "91a26f62ab871038fca756a64862b557058b4ed0a1dbb94ec22cf36003836e31",
+      "decision": "include",
+      "source_evidence": {
+        "source_document_sha256": "2f5239b14f10db23ac7ef15353762bad377a5b5f36e70b4414853011f463c508",
+        "score_evidence": "円周・半径計算の解答と一致",
+        "question_offsets": {"start": 571, "end": 970},
+        "answer_offsets": {"start": 252, "end": 477},
+        "question_provenance_sha256": "64de5257b77fef832be0b5ba3b4ad58e08dab52e7b73c37917eea8e838ce222d",
+        "answer_provenance_sha256": "a03db9cf2e7fca2d930c0e36f617dfb1497747dd5a79288824332315082159de",
+        "question": "円周と半径の関係を利用する計算問題。",
+        "answer": "原本解答どおり"
+      },
+      "independent_check": {"method": "independent_circle_formula", "result": "PASS"},
+      "figure_refs": [],
+      "table_refs": [],
+      "issue": null
+    },
+    {
+      "source_document": "25winpasst3suhy000101.docx",
+      "raw_id": "Winpass:25winpasst3suhy000101.docx:M02:S03",
+      "fingerprint": "886a85cc25074f2131229308872390c3edb797ccdd00733231b23444d28e26ff",
+      "decision": "include",
+      "source_evidence": {
+        "source_document_sha256": "2f5239b14f10db23ac7ef15353762bad377a5b5f36e70b4414853011f463c508",
+        "score_evidence": "小数展開条件の解答と一致",
+        "question_offsets": {"start": 972, "end": 1370},
+        "answer_offsets": {"start": 479, "end": 706},
+        "question_provenance_sha256": "b952492f5448639738b0790918925e06d016cc47ac8645afeea270db97b302ad",
+        "answer_provenance_sha256": "91761cc635858898ad796a9f921ac3f25ce3ad43663463abf8aa3ae9de4df69d",
+        "question": "分数の小数展開に関する条件を判断する問題。",
+        "answer": "原本解答どおり"
+      },
+      "independent_check": {"method": "independent_decimal_factor_rule", "result": "PASS"},
+      "figure_refs": [],
+      "table_refs": [],
+      "issue": null
+    },
+    {
+      "source_document": "25winpasst3suhy000101.docx",
+      "raw_id": "Winpass:25winpasst3suhy000101.docx:M02:S04",
+      "fingerprint": "93920217b11ccda8227f61db9bd64354d5a3bcb8a57ecb045bb00cbc1315421c",
+      "decision": "include",
+      "source_evidence": {
+        "source_document_sha256": "2f5239b14f10db23ac7ef15353762bad377a5b5f36e70b4414853011f463c508",
+        "score_evidence": "平方根簡単化の解答と一致",
+        "question_offsets": {"start": 1372, "end": 1731},
+        "answer_offsets": {"start": 708, "end": 920},
+        "question_provenance_sha256": "dbe0ff694e2722f295bcf8f21ee70762ea9331301208993eb6cc32b8baf8f5df",
+        "answer_provenance_sha256": "c1af84d9768727811209de23531508420689142db6001b68337f0b49d2e6f4ef",
+        "question": "平方根を簡単にする計算問題。",
+        "answer": "原本解答どおり"
+      },
+      "independent_check": {"method": "independent_radical_simplification", "result": "PASS"},
+      "figure_refs": [],
+      "table_refs": [],
+      "issue": null
+    },
+    {
+      "source_document": "25winpasst3suhy000101.docx",
+      "raw_id": "Winpass:25winpasst3suhy000101.docx:M02:S05",
+      "fingerprint": "a274645f778b7deabf7ccefdac9e34d337a52d82f0ff25c025b19ccbde859d56",
+      "decision": "include",
+      "source_evidence": {
+        "source_document_sha256": "2f5239b14f10db23ac7ef15353762bad377a5b5f36e70b4414853011f463c508",
+        "score_evidence": "平方根積の解答と一致",
+        "question_offsets": {"start": 1733, "end": 2101},
+        "answer_offsets": {"start": 922, "end": 1132},
+        "question_provenance_sha256": "ff7cc6396b7b83399021cd78c89b48fe1fc77dd5af52d4ecdf1832173072c442",
+        "answer_provenance_sha256": "3ae37db5826cf44b980a8425397a74075d5e68586a29732fa08511d217d72f8f",
+        "question": "平方根の積を計算する問題。",
+        "answer": "原本解答どおり"
+      },
+      "independent_check": {"method": "independent_radical_product", "result": "PASS"},
+      "figure_refs": [],
+      "table_refs": [],
+      "issue": null
+    },
+    {
+      "source_document": "25winpasst3suhy000102.docx",
+      "raw_id": "Winpass:25winpasst3suhy000102.docx:M02:S01",
+      "fingerprint": "77c767461fc63f2482ef99c4d6f21ff98434d6c54adeebefbdb103d8482705b9",
+      "decision": "include",
+      "source_evidence": {
+        "source_document_sha256": "d1128280312fd69dc2aa04f107624803d2c8b7df94a49d0dc43d30a304f70e88",
+        "score_evidence": "さいころ確率の解答と一致",
+        "question_offsets": {"start": 175, "end": 652},
+        "answer_offsets": {"start": 25, "end": 286},
+        "question_provenance_sha256": "e7c5b367ed3a76cb9fb5f0b46bb55ee2d37c7a50da6df68f9276fa2d2300aedc",
+        "answer_provenance_sha256": "190380d15147766e5dc400a7b042d3bca7d5133f71091947253490a221471522",
+        "question": "2個のさいころの和が10以上になる確率を求める問題。",
+        "answer": "1/6"
+      },
+      "independent_check": {"method": "independent_dice_probability", "result": "PASS"},
+      "figure_refs": [],
+      "table_refs": [],
+      "issue": null
+    },
+    {
+      "source_document": "25winpasst3suhy000102.docx",
+      "raw_id": "Winpass:25winpasst3suhy000102.docx:M02:S02",
+      "fingerprint": "b792c028eb1669a0094ab5751369884d9269d9a34c2a003f978068cc82c46d94",
+      "decision": "include",
+      "source_evidence": {
+        "source_document_sha256": "d1128280312fd69dc2aa04f107624803d2c8b7df94a49d0dc43d30a304f70e88",
+        "score_evidence": "一次方程式・比の解答と一致",
+        "question_offsets": {"start": 654, "end": 1083},
+        "answer_offsets": {"start": 288, "end": 522},
+        "question_provenance_sha256": "a659e79d0a01465736689357749b37fb0c0ac23d52c2f28076e94f0d654cdd3f",
+        "answer_provenance_sha256": "6f7940e1301924f7825bdd4974bd70608889340e1d076a7de15390255115c1b2",
+        "question": "一次方程式から2つの量の比を求める問題。",
+        "answer": "7:2"
+      },
+      "independent_check": {"method": "independent_linear_equation_ratio", "result": "PASS"},
+      "figure_refs": [],
+      "table_refs": [],
+      "issue": null
+    }
+  ]
+}
