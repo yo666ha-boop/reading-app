@@ -32,5 +32,10 @@ for(let pi=0;pi<ps.length;pi++){
  p.auditNote=String(p.auditNote||'').replace(/ Generic cross-unit padding removed; audited same-unit sentence bank applied as chronology repair pass 1\. Story-specific arc sentence remains for next violation-focused rewrite\./g,'');
  p.auditNote+=' Unique-structure repair pass applied: shared same-unit rows were merged/rotated into passage-specific sentence structures while preserving the same audited vocabulary. Story-specific semantic rewrite is still pending.';
 }
-window.V11_BATCH02_UNIQUE_STRUCTURE_REPAIR_STATE={version:'20260828-pass3',count:ps.length,registered:false,semanticRewritePending:true};
+const noteSeed={
+ 'V11-SS-G1-P10-2-016':{english:'present',japanese:'贈り物'},
+ 'V11-NH-G1-U10-2-016':{english:'house',japanese:'家'}
+};
+for(const p of ps){const n=noteSeed[p.id];if(!n)continue;p.notes=Array.isArray(p.notes)?p.notes:[];if(!p.notes.some(x=>String(x&&x.english||'').toLowerCase()===n.english))p.notes.push({...n,kind:'unlearned_local_required',source:'v11 Batch02 story-specific required note seed'});}
+window.V11_BATCH02_UNIQUE_STRUCTURE_REPAIR_STATE={version:'20260828-pass4-required-note-seed',count:ps.length,registered:false,semanticRewritePending:true};
 })();
