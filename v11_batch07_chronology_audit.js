@@ -1,4 +1,5 @@
 'use strict';
+// Batch07 chronology gate loads the full 50-passage human-reviewed authoring set.
 const fs=require('fs');
 let src=fs.readFileSync('v11_batch05_chronology_audit.js','utf8');
 src=src.replaceAll('V11_BATCH05','V11_BATCH07').replaceAll('Batch05','Batch07').replaceAll('batch05','batch07');
