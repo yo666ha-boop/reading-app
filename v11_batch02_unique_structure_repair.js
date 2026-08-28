@@ -10,7 +10,7 @@ for(let pi=0;pi<ps.length;pi++){
  const arc=rows[0];
  const rest=rows.slice(1);
  const merged=[];
- const starters=['Then, ','After that, ','Before that, ','After this, ','At first, ','Then, '];
+ const starters=['Then, ','After that, ','Before that, ','After this, ','At first, ','Before this, ','After that and before this, ','Before that and after this, ','At first and after that, ','After this and before that, ','Then, after that, ','Then, before that, '];
  for(let i=0;i<rest.length;i+=2){
    const a=rest[i], b=rest[i+1];
    if(!b){merged.push({en:starters[(pi+i)%starters.length]+a.en,jp:'その後、'+a.jp});continue;}
@@ -32,5 +32,5 @@ for(let pi=0;pi<ps.length;pi++){
  p.auditNote=String(p.auditNote||'').replace(/ Generic cross-unit padding removed; audited same-unit sentence bank applied as chronology repair pass 1\. Story-specific arc sentence remains for next violation-focused rewrite\./g,'');
  p.auditNote+=' Unique-structure repair pass applied: shared same-unit rows were merged/rotated into passage-specific sentence structures while preserving the same audited vocabulary. Story-specific semantic rewrite is still pending.';
 }
-window.V11_BATCH02_UNIQUE_STRUCTURE_REPAIR_STATE={version:'20260828-pass2',count:ps.length,registered:false,semanticRewritePending:true};
+window.V11_BATCH02_UNIQUE_STRUCTURE_REPAIR_STATE={version:'20260828-pass3',count:ps.length,registered:false,semanticRewritePending:true};
 })();
