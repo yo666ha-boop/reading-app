@@ -1,0 +1,40 @@
+name: v11 Batch03 persistent runtime audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch02_bootstrap.js'
+      - 'v11_batch03_bootstrap.js'
+      - 'v11_batch03_register.js'
+      - 'v11_batch03_*.js'
+      - 'index.html'
+      - 'v11_multi_passage_architecture.js'
+      - 'v11_easy_support_notes.js'
+      - '.github/workflows/v11-batch03-persistent-runtime-audit.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium webkit
+      - run: |
+          python3 -m http.server 8000 >/tmp/v11-b03-persistent-http.log 2>&1 &
+          server=$!
+          trap 'kill $server || true' EXIT
+          sleep 2
+          node v11_batch03_persistent_runtime_audit.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-batch03-persistent-runtime
+          path: |
+            V11_BATCH03_PERSISTENT_RUNTIME_AUDIT.json
+            /tmp/v11-b03-persistent-a4/*.pdf
+          if-no-files-found: warn
