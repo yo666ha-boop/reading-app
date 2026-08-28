@@ -1,0 +1,24 @@
+name: v11 Batch02 cross-batch final audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch01_passages_001_050.js'
+      - 'v11_batch02_*.js'
+      - 'v11_batch02_cross_batch_final_audit.js'
+      - '.github/workflows/v11-batch02-cross-batch-final-audit.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node v11_batch02_cross_batch_final_audit.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-batch02-cross-batch-final-audit
+          path: V11_BATCH02_CROSS_BATCH_FINAL_AUDIT.json
