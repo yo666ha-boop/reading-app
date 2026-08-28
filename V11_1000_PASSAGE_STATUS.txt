@@ -1,13 +1,15 @@
-phase=V11_BATCH02_CHRONOLOGY_PASS_CONTENT_REWRITE_PENDING
+phase=V11_BATCH02_COMPLETE_BATCH03_NEXT
 branch=v11-1000passage-easy-notes
 baseline_passages=168
 target_passages=1000
-remaining_passages=782
 batch_size=50
-current_total=218
-next_batch_target=268
-batch02_draft_passages=50
-batch02_registered=false
+batch01_passages=50
+batch02_passages=50
+current_total=268
+remaining_passages=732
+next_batch=Batch03
+next_batch_target=318
+batch02_registered=true
 v10_baseline_status=FINAL_COMPLETE
 v10_main_untouched=true
 v7_vocab_authority=1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4
@@ -23,12 +25,16 @@ batch01_multi_passage=PASS run=33078768956
 batch01_vocab_chronology=PASS run=33079043696 passages=50/50 tokens=12527 unregistered=0 future_vocab=0
 batch01_grammar_chronology=PASS run=33079043696 occurrences=708 unresolved=0 future_grammar=0
 batch01_cross_platform=PASS run=33079639549 pc=50 iphone=50 overflow=0 errors=0 a4_sections=6 a4_files=12
-batch02_draft_structure=PASS run=33127972376 passages=50 registered=false
-batch02_chronology=PASS run=33137033513 passages=50/50 v7_records=3975 tokens=17718 required_note_covered=1842 unregistered=0 future_vocab=0 grammar_occurrences=908 grammar_unresolved=0 future_grammar=0
-batch02_chronology_repair_commit=63953f3c71dcdad86b5be1c9845e85e766aefe38
-batch02_content_quality=IN_PROGRESS_same_unit_safe_repair_is_not_final_story_quality
-batch02_easy_support=PENDING_FINAL_CONTENT
-batch02_cross_batch_quality=PENDING_FINAL_CONTENT
-batch02_cross_platform=PENDING_FINAL_CONTENT
-next_step=Rewrite all 50 Batch02 passages into coherent story-specific long passages while preserving chronology PASS, diversify A/B content-understanding questions, then run easy-support, cross-batch quality, chronology, PC/iPhone and A4 gates; register only after every gate passes
+batch02_content_quality=PASS semantic_rewrite=50/50 word_count_band=PASS
+batch02_vocab_chronology=PASS run=33150063629 unregistered=0 future_vocab=0
+batch02_grammar_chronology=PASS run=33150063629 unresolved=0 future_grammar=0
+batch02_naturalness=PASS run=33150074322 high_shared_pairs=0
+batch02_questions=PASS run=33150163483
+batch02_cross_batch_quality=PASS run=33150487010
+batch02_easy_support=PASS run=33151470579
+batch02_persistent_runtime=PASS run=33151456273 total=268 batch02=50 pc_overflow=0 pc_errors=0 iphone_overflow=0 iphone_errors=0
+batch02_a4=PASS run=33151456273 representative_sections=6 files=12
+batch02_registration_fix_commit=57ce431abf3a0f682c7d5f70b586864a9411e0f7
+batch02_easy_support_audit_fix_commit=c0bfde637708eb25921c85bc96c5ccc4f8cae4f9
+next_step=Start Batch03 as a new 50-passage batch from 268 to 318. Reconfirm Drive 00/99 and GitHub actual first, then lock 50 distinct story designs and section baselines, author coherent passages, and pass chronology, translation/slash, A/B evidence, normal/easy notes, cross-batch diversity, PC/iPhone, A4, and persistent runtime gates before registration.
 release_to_main=NO_UNTIL_ALL_BATCHES_AND_RELEASE_GATES_PASS
