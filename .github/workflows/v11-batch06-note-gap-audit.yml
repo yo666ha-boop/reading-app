@@ -1,0 +1,25 @@
+name: v11 Batch06 note gap audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch06_note_gap_audit.js'
+      - 'v11_batch06_*.js'
+      - '.github/workflows/v11-batch06-note-gap-audit.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node v11_batch06_note_gap_audit.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-batch06-note-gap
+          path: V11_BATCH06_NOTE_GAP_AUDIT.json
+          if-no-files-found: warn
