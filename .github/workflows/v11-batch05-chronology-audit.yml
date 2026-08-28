@@ -9,8 +9,10 @@ on:
       - 'v11_batch05_passages_draft_g3.js'
       - 'v11_batch05_grammar_repair.js'
       - 'v11_batch05_grammar_repair_r2.js'
+      - 'v11_batch05_chronology_repair.js'
       - 'v11_batch05_chronology_audit.js'
       - 'v11_batch05_chronology_audit_repaired.js'
+      - 'v11_batch05_chronology_audit_vocab_repaired.js'
       - 'v10_v7_lexicon_loader.js'
       - 'v10_elementary_vocab_allowlist.json'
       - 'v10_grammar_chronology_candidate_audit.js'
@@ -25,7 +27,7 @@ jobs:
         with:
           node-version: '20'
       - run: npm install --no-save --no-package-lock jsdom@24.1.3
-      - run: node v11_batch05_chronology_audit_repaired.js
+      - run: node v11_batch05_chronology_audit_vocab_repaired.js
       - uses: actions/upload-artifact@v4
         if: always()
         with:
