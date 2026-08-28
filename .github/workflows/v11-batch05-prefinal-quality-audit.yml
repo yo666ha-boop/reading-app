@@ -10,6 +10,9 @@ on:
       - 'v11_batch05_grammar_repair.js'
       - 'v11_batch05_grammar_repair_r2.js'
       - 'v11_batch05_chronology_repair.js'
+      - 'v11_batch05_notes_finalize.js'
+      - 'v11_batch05_translation_sync.js'
+      - 'v11_batch05_question_regenerate.js'
       - 'v11_batch05_prefinal_quality_audit.js'
       - '.github/workflows/v11-batch05-prefinal-quality-audit.yml'
 jobs:
@@ -20,7 +23,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Audit Batch05 prefinal blockers
+      - name: Audit finalized Batch05 content
         run: node v11_batch05_prefinal_quality_audit.js
       - uses: actions/upload-artifact@v4
         if: always()
