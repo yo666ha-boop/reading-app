@@ -1,5 +1,8 @@
-checked_at_utc=2026-08-27T13:59:56Z
-source_sha=e210a203391dd24e49d6d3ec796b162afe7066ab
-result=PASS
-CROSS {"pc":{"passages":50,"overflow":0,"errors":0},"iphone":{"passages":50,"overflow":0,"errors":0},"a4":{"representativeSections":6,"files":12,"details":[{"id":"V11-SS-G1-P10-2-002","teacherBytes":172191,"studentBytes":154166},{"id":"V11-NH-G1-U10-2-002","teacherBytes":171599,"studentBytes":154013},{"id":"V11-SS-G2-P8-3-002","teacherBytes":177166,"studentBytes":159582},{"id":"V11-NH-G2-U7-4-002","teacherBytes":180244,"studentBytes":163348},{"id":"V11-SS-G3-P7-3-002","teacherBytes":181922,"studentBytes":163507},{"id":"V11-NH-G3-U6-4-002","teacherBytes":176610,"studentBytes":159656}]}}
-V11_BATCH01_PC_IPHONE_A4_PASS
+checked_at_utc=2026-08-28T07:21:29Z
+source_sha=27eb2f25f916b1d6b3341548f97684db2273a31a
+result=FAIL
+V11_BATCH01_PC_IPHONE_A4_FAIL Error: chromium runtime errors pageerror:Error: Batch02 runtime totals invalid {"version":"20260827-v11-multipassage-001","groups":6,"extraPassages":100,"lastAdded":50} | console:Error: Batch02 registration did not complete
+    at http://127.0.0.1:8000/v11_batch02_bootstrap.js:23:87 | pageerror:Error: Batch02 registration did not complete
+    at assert (/home/runner/work/reading-app/reading-app/v11_batch01_cross_platform_audit.js:3:34)
+    at auditEngine (/home/runner/work/reading-app/reading-app/v11_batch01_cross_platform_audit.js:39:65)
+    at async /home/runner/work/reading-app/reading-app/v11_batch01_cross_platform_audit.js:66:21
