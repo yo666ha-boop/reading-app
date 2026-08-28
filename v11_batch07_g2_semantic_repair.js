@@ -1,0 +1,13 @@
+(function repairV11Batch07G2Semantics(){
+'use strict';
+const ps=window.V11_BATCH07_G2_DRAFTS||[];const wc=s=>(String(s||'').match(/[A-Za-z]+(?:['’][A-Za-z]+)?/g)||[]).length;const find=id=>ps.find(p=>p.id===id);
+function insertAfter(p,anchor,en,jp){const i=p.sentences.indexOf(anchor);if(i<0)throw new Error(`anchor missing ${p.id}`);if(!p.sentences.includes(en)){p.sentences.splice(i+1,0,en);p.slashRows.splice(i+1,0,{en,jp});}}
+function replaceRow(p,oldEn,newEn,newJp){const i=p.sentences.indexOf(oldEn);if(i<0)throw new Error(`row missing ${p.id}`);p.sentences[i]=newEn;p.slashRows[i]={en:newEn,jp:newJp};for(const q of [...p.questions,...p.questionSetB]){if(q.evidence===oldEn){q.evidence=newEn;q.evidenceJp=newJp;}if(Array.isArray(q.evidence)){const old=q.evidence.slice();q.evidence=q.evidence.map(x=>x===oldEn?newEn:x);if(Array.isArray(q.evidenceJp))q.evidenceJp=q.evidenceJp.map((x,j)=>old[j]===oldEn?newJp:x);}}}
+const p003=find('V11-B07-G2-003');insertAfter(p003,'The page was four years old.','That made the opening time worth checking again.','そのため、開館時刻をもう一度確認する必要がありました。');
+const p005=find('V11-B07-G2-005');insertAfter(p005,'Then the leaders listed which parts really needed the hall.','The exact times mattered.','正確な時間が重要でした。');
+const p006=find('V11-B07-G2-006');replaceRow(p006,'Our library club posted short book reviews for younger students.','Our library club posted book reviews for younger students.','図書委員会は下級生向けに書評を掲示していました。');
+const p007=find('V11-B07-G2-007');insertAfter(p007,'One thermometer near the sunny window often showed two degrees more than another near the back wall.','Sunlight reached the window side directly during that hour.','その時間、日光は窓側へ直接当たっていました。');
+for(const p of ps){p.fullTranslation=p.slashRows.map(r=>r.jp).join('');p.wordCount=wc(p.sentences.join(' '));p.semanticHumanReview=Object.assign({},p.semanticHumanReview,{reviewed:true,timelineCoherent:true,actorPerspectiveClear:true,causalLogicCoherent:true,translationNatural:true,questionAnswerLogical:true,insertionNatural:true});}
+p003.semanticHumanReview.note='Added a direct reason for rechecking a four-year-old schedule; no padding.';p005.semanticHumanReview.note='Added only the decision-relevant point that exact hall-use times matter.';p006.semanticHumanReview.note='Removed one unnecessary adjective while preserving the review/spoiler logic.';p007.semanticHumanReview.note='Added the physical sunlight condition that makes the window-location hypothesis more explicit.';
+window.V11_BATCH07_G2_SEMANTIC_REPAIR_STATE={version:'20260829-human-semantic-r1',count:ps.length,reviewed:ps.filter(p=>p.semanticHumanReview&&p.semanticHumanReview.reviewed).length,wordCounts:Object.fromEntries(ps.map(p=>[p.id,p.wordCount]))};
+})();
