@@ -1,0 +1,28 @@
+name: v11 Batch02 postsemantic content audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch02_semantic_rewrite_pass1.js'
+      - 'v11_batch02_semantic_chronology_repair_pass1.js'
+      - 'v11_batch02_semantic_rewrite_pass2_grade2.js'
+      - 'v11_batch02_grade2_chronology_repair.js'
+      - 'v11_batch02_semantic_rewrite_pass3_grade3.js'
+      - 'v11_batch02_grade3_chronology_repair.js'
+      - 'v11_batch02_postsemantic_content_audit.js'
+      - '.github/workflows/v11-batch02-postsemantic-content-audit.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node v11_batch02_postsemantic_content_audit.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-batch02-postsemantic-content-audit
+          path: V11_BATCH02_POSTSEMANTIC_CONTENT_AUDIT.json
