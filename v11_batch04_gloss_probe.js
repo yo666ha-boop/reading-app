@@ -7,11 +7,9 @@ try{
  for(const f of ['v11_batch04_passages_draft_g1.js','v11_batch04_passages_draft_g2.js','v11_batch04_passages_draft_g3.js','v11_batch04_length_repair.js','v11_batch04_length_repair_r2.js','v11_batch04_chronology_repair.js','v11_batch04_grammar_repair.js','v11_batch04_chronology_repair_r2.js'])run(s,f);
  const ps=[...(s.window.V11_BATCH04_G1_PASSAGES||[]),...(s.window.V11_BATCH04_G2_PASSAGES||[]),...(s.window.V11_BATCH04_G3_PASSAGES||[])];
  const data=loadCanonicalV7();
- const need=[...new Set(ps.flatMap(p=>(p.notes||[]).filter(n=>String(n.japanese||'').includes('最終注整理対象')).map(n=>String(n.english||'').toLowerCase())))].sort();
- const sample={keys:Object.keys(data),source:data.source,unitsType:typeof data.units,unitsKeys:data.units&&typeof data.units==='object'?Object.keys(data.units).slice(0,12):[],lexType:typeof data.lex,lexIsArray:Array.isArray(data.lex),lexKeys:data.lex&&typeof data.lex==='object'?Object.keys(data.lex).slice(0,30):[]};
- const hits={};
- if(data.lex&&typeof data.lex==='object')for(const w of need){const v=data.lex[w];if(v!==undefined)hits[w]=v;}
- const out={sample,passages:ps.length,needed:need.length,hitWords:Object.keys(hits).length,hits};
+ const hits={},miss=[];
+ for(const p of ps){const code=p.textbook==='ニューホライズン'?'NH':'SS';for(const n of (p.notes||[])){if(!String(n.japanese||'').includes('最終注整理対象'))continue;const w=String(n.english||'').toLowerCase(),key=code+'|'+w,v=data.lex&&data.lex[key];if(v!==undefined)hits[key]=v;else miss.push(key);}}
+ const out={source:data.source,passages:ps.length,neededKeys:new Set(Object.keys(hits).concat(miss)).size,hitKeys:Object.keys(hits).length,missKeys:[...new Set(miss)].sort(),hits};
  fs.writeFileSync('V11_BATCH04_GLOSS_PROBE.json',JSON.stringify(out,null,2)+'\n');
- console.log(JSON.stringify({sample,passages:ps.length,needed:need.length,hitWords:Object.keys(hits).length,hitSample:Object.entries(hits).slice(0,10)},null,2));
+ console.log(JSON.stringify({source:data.source,passages:ps.length,neededKeys:out.neededKeys,hitKeys:out.hitKeys,missKeys:out.missKeys.length,hitSample:Object.entries(hits).slice(0,12),missSample:out.missKeys.slice(0,30)},null,2));
 }catch(e){console.error(e.stack||e);process.exitCode=1}
