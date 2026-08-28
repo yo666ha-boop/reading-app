@@ -4,7 +4,7 @@ function run(s,f){vm.runInContext(fs.readFileSync(f,'utf8'),s,{filename:f})}
 function jac(a,b){a=new Set(a);b=new Set(b);let n=0;for(const x of a)if(b.has(x))n++;return n/(a.size+b.size-n||1)}
 try{
  const s={window:{},console};s.globalThis=s.window;vm.createContext(s);
- run(s,'v11_batch02_passages_draft.js');run(s,'v11_batch02_unit_safe_repair.js');run(s,'v11_batch02_unique_structure_repair.js');run(s,'v11_batch02_semantic_rewrite_pass1.js');run(s,'v11_batch02_required_notes_repair.js');
+ run(s,'v11_batch02_passages_draft.js');run(s,'v11_batch02_unit_safe_repair.js');run(s,'v11_batch02_unique_structure_repair.js');run(s,'v11_batch02_semantic_rewrite_pass1.js');run(s,'v11_batch02_semantic_chronology_repair_pass1.js');run(s,'v11_batch02_required_notes_repair.js');
  const ps=JSON.parse(JSON.stringify(s.window.V11_BATCH02_DRAFT_PASSAGES||[]));
  const groups=new Map();for(const p of ps){const k=p.textbook+'|'+p.grade+'|'+p.section;if(!groups.has(k))groups.set(k,[]);groups.get(k).push(p)}
  const pairs=[];for(const [g,xs] of groups)for(let i=0;i<xs.length;i++)for(let j=i+1;j<xs.length;j++){const score=jac(xs[i].sentences,xs[j].sentences);if(score>=0.55)pairs.push({group:g,a:xs[i].id,b:xs[j].id,score:+score.toFixed(3)})}
