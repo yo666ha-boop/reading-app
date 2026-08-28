@@ -1,0 +1,36 @@
+name: v11 Batch05 cross-batch runtime audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch04_bootstrap.js'
+      - 'v11_batch05_bootstrap.js'
+      - 'v11_batch05_register.js'
+      - 'v11_batch05_*.js'
+      - 'index.html'
+      - '.github/workflows/v11-batch05-cross-batch-runtime-audit.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - run: |
+          python3 -m http.server 8000 >/tmp/v11-b05-cross-http.log 2>&1 &
+          server=$!
+          trap 'kill $server || true' EXIT
+          sleep 2
+          node v11_batch05_cross_batch_runtime_audit.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-batch05-cross-batch-runtime
+          path: V11_BATCH05_CROSS_BATCH_RUNTIME_AUDIT.json
+          if-no-files-found: warn
