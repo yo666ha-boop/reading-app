@@ -1,0 +1,22 @@
+name: v11 Batch04 gloss probe
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch04_gloss_probe.js'
+      - '.github/workflows/v11-batch04-gloss-probe.yml'
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node v11_batch04_gloss_probe.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-batch04-gloss-probe
+          path: V11_BATCH04_GLOSS_PROBE.json
