@@ -16,5 +16,5 @@ const files=[
  'v11_batch03_register.js'
 ];
 function load(src){return new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=src;s.async=false;s.onload=resolve;s.onerror=()=>reject(new Error('Batch03 script load failed: '+src));document.head.appendChild(s);});}
-(async()=>{try{for(const f of files)await load(f);if(!window.V11_BATCH03_LOADED)throw new Error('Batch03 registration did not complete');window.V11_BATCH03_BOOTSTRAP_STATE={version:'20260828-final',files:files.length,loaded:true,total:window.V11_BATCH03_STATE&&window.V11_BATCH03_STATE.totalWithBaseline};if(typeof window.render==='function')window.render();}catch(e){window.V11_BATCH03_BOOTSTRAP_ERROR=String(e&&e.stack||e);console.error(e);throw e;}finally{window.V11_BATCH03_BOOTSTRAP_LOADING=false;}})();
+(async()=>{try{for(const f of files)await load(f);if(!window.V11_BATCH03_LOADED)throw new Error('Batch03 registration did not complete');window.V11_BATCH03_BOOTSTRAP_STATE={version:'20260828-final',files:files.length,loaded:true,total:window.V11_BATCH03_STATE&&window.V11_BATCH03_STATE.totalWithBaseline};await load('v11_batch04_bootstrap.js');if(typeof window.render==='function')window.render();}catch(e){window.V11_BATCH03_BOOTSTRAP_ERROR=String(e&&e.stack||e);console.error(e);throw e;}finally{window.V11_BATCH03_BOOTSTRAP_LOADING=false;}})();
 })();
