@@ -1,0 +1,21 @@
+name: v11 Batch06 draft audit
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch06_passages_draft_g1.js'
+      - 'v11_batch06_passages_draft_g2.js'
+      - 'v11_batch06_passages_draft_g3.js'
+      - 'v11_batch06_draft_audit.js'
+      - '.github/workflows/v11-batch06-draft-audit.yml'
+  workflow_dispatch:
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Audit 50 Batch06 drafts
+        run: node v11_batch06_draft_audit.js
