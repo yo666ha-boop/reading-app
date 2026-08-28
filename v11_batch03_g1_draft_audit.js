@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm');
 const sandbox={window:{},console};sandbox.globalThis=sandbox.window;vm.createContext(sandbox);
-vm.runInContext(fs.readFileSync('v11_batch03_passages_draft_g1.js','utf8'),sandbox,{filename:'v11_batch03_passages_draft_g1.js'});
+for(const f of ['v11_batch03_passages_draft_g1.js','v11_batch03_g1_length_repair.js'])vm.runInContext(fs.readFileSync(f,'utf8'),sandbox,{filename:f});
 const ps=sandbox.window.V11_BATCH03_DRAFT_G1_PASSAGES||[];
 const problems=[];
 if(ps.length!==17)problems.push(`count=${ps.length}`);
@@ -15,7 +15,7 @@ for(const p of ps){
  if((p.questions||[]).length!==5||(p.questionSetB||[]).length!==5)problems.push(`${p.id}:questions`);
  for(const q of [...(p.questions||[]),...(p.questionSetB||[])])if(!p.sentences.includes(q.evidence))problems.push(`${p.id}:evidence not in text`);
 }
-const out={generatedAt:new Date().toISOString(),count:ps.length,registered:false,problems,wordCounts:ps.map(p=>({id:p.id,wordCount:p.wordCount,target:p.targetWordBand})),finalPass:ps.length===17&&problems.length===0};
+const out={generatedAt:new Date().toISOString(),count:ps.length,registered:false,lengthRepairChanged:sandbox.window.V11_BATCH03_G1_LENGTH_REPAIR_STATE&&sandbox.window.V11_BATCH03_G1_LENGTH_REPAIR_STATE.changed,problems,wordCounts:ps.map(p=>({id:p.id,wordCount:p.wordCount,target:p.targetWordBand})),finalPass:ps.length===17&&problems.length===0};
 fs.writeFileSync('V11_BATCH03_G1_DRAFT_AUDIT.json',JSON.stringify(out,null,2)+'\n');
 console.log(`Batch03 G1 draft count=${ps.length}/17 problems=${problems.length} final=${out.finalPass?'PASS':'FAIL'}`);
 for(const x of problems)console.log(x);
