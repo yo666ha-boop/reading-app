@@ -2,9 +2,9 @@
 'use strict';
 const groups=[window.V11_BATCH07_G1_DRAFTS||[],window.V11_BATCH07_G2_DRAFTS||[],window.V11_BATCH07_STANDARD_DRAFTS||[],window.V11_BATCH07_LONG_DRAFTS||[],window.V11_BATCH07_YAMAGUCHI_EXAM_DRAFTS||[]];
 const ps=groups.flat();const find=id=>ps.find(p=>p.id===id);const wc=s=>(String(s||'').match(/[A-Za-z]+(?:['’][A-Za-z]+)?/g)||[]).length;
-function replaceRow(id,oldEn,newEn,newJp){const p=find(id);if(!p)throw Error(`missing ${id}`);const i=p.sentences.indexOf(oldEn);if(i<0)throw Error(`missing row ${id}: ${oldEn}`);p.sentences[i]=newEn;p.slashRows[i]={en:newEn,jp:newJp};for(const q of [...(p.questions||[]),...(p.questionSetB||[])]){if(q.evidence===oldEn){q.evidence=newEn;q.evidenceJp=newJp;}if(Array.isArray(q.evidence)){const before=q.evidence.slice();q.evidence=q.evidence.map(x=>x===oldEn?newEn:x);if(Array.isArray(q.evidenceJp))q.evidenceJp=q.evidenceJp.map((x,j)=>before[j]===oldEn?newJp:x);}}}
+const norm=s=>String(s||'').replace(/[’‘]/g,"'").replace(/[“”]/g,'"');
+function replaceRow(id,oldEn,newEn,newJp){const p=find(id);if(!p)throw Error(`missing ${id}`);let i=p.sentences.indexOf(oldEn);if(i<0)i=p.sentences.findIndex(x=>norm(x)===norm(oldEn));if(i<0)throw Error(`missing row ${id}: ${oldEn}`);const actual=p.sentences[i];p.sentences[i]=newEn;p.slashRows[i]={en:newEn,jp:newJp};for(const q of [...(p.questions||[]),...(p.questionSetB||[])]){if(q.evidence===actual||norm(q.evidence)===norm(actual)){q.evidence=newEn;q.evidenceJp=newJp;}if(Array.isArray(q.evidence)){const before=q.evidence.slice();q.evidence=q.evidence.map(x=>norm(x)===norm(actual)?newEn:x);if(Array.isArray(q.evidenceJp))q.evidenceJp=q.evidenceJp.map((x,j)=>norm(before[j])===norm(actual)?newJp:x);}}}
 function replaceFields(id,oldText,newText){const p=find(id);if(!p)throw Error(`missing ${id}`);for(const q of [...(p.questions||[]),...(p.questionSetB||[]),p.freeWriteTask||{}])for(const k of ['prompt','answer','reason','modelAnswer'])if(typeof q[k]==='string')q[k]=q[k].split(oldText).join(newText);}
-// Grade 1: remove grammar that precedes the assigned late-G1 units.
 replaceRow('V11-B07-G1-001',"That jacket had Ken's name, so the two jackets were mixed up.","That jacket had Ken's name, and Ken had Taro's jacket.",'その上着には健の名前があり、健は太郎の上着を持っていました。');
 replaceRow('V11-B07-G1-001','They found Taro in the gym and gave him the short jacket.','They found Taro in the gym, and Taro took the short jacket.','二人は体育館で太郎を見つけ、太郎は短い上着を受け取りました。');
 replaceRow('V11-B07-G1-002','Emi sent a message and said she could not come.',"Emi sent a message: 'I am not coming.'",'恵美から「今日は行きません」というメッセージが届きました。');
@@ -28,7 +28,6 @@ replaceRow('V11-B07-G1-016','The next class could not tell which box or what to 
 replaceRow('V11-B07-G1-016','The red experiment box had to go back on the rear shelf.','The red experiment box belonged on the rear shelf.','赤い実験箱の置き場所は後ろの棚でした。');
 replaceRow('V11-B07-G1-017','For the largest paper, they also used two small clips.','For the big paper, they also used two small clips.','大きな紙には小さなクリップも二つ使いました。');
 replaceFields('V11-B07-G1-017','The display could not be read clearly like that.','The display was not clear like that.');
-// Grade 2: keep question meaning while removing later syntax.
 replaceRow('V11-B07-G2-002','The club moved one reminder sign to the stairs that students used after lunch.','The club moved one reminder sign to the stairs. Students used those stairs after lunch.','部は一つの案内表示を階段へ移しました。その階段は昼食後に生徒が使っていました。');
 replaceFields('V11-B07-G2-003','An old fact may not describe the _____ schedule.','An old fact does not always describe the _____ schedule.');
 replaceRow('V11-B07-G2-004','The class learned that “best route” depends on what makes travel difficult for the person using it.',"The class learned that each person's needs can change the best route.",'「最もよい道」は人それぞれの必要によって変わるとクラスは学びました。');
@@ -37,7 +36,6 @@ replaceRow('V11-B07-G2-009','It also asked whether they walked at least once a w
 replaceRow('V11-B07-G2-010','They posted average waiting times instead of telling students which line was shorter.',"They posted average waiting times instead of a simple 'shorter line' sign.",'単純な「短い列」という表示ではなく、平均待ち時間を掲示しました。');
 replaceRow('V11-B07-G2-012','He moved detailed tables to a final reference slide for people who wanted them.','He moved detailed tables to a final reference slide. Interested people could read them there.','詳しい表は最後の参考スライドへ移しました。必要な人はそこで読めました。');
 replaceFields('V11-B07-G2-017','The missing action was obvious only to people who already knew it.','The missing action was obvious only to experienced users.');
-// Grade 3: remove detector-flagged forms without weakening the ideas.
 replaceRow('V11-B07-G3-005','The entrance still mattered, but it no longer received most of our time simply because it was convenient.','The entrance was convenient and still mattered. It no longer received most of our time.','入口は便利で大切な場所でしたが、作業時間の大部分を使うことはなくなりました。');
 replaceRow('V11-B07-G3-010','The room was large enough to separate these needs.','The room had enough space for two study areas.','その教室には二つの学習区域を作れる十分な広さがありました。');
 replaceRow('V11-B07-G3-015','The team learned that an emergency plan should be checked under the conditions that make it hardest to use.','The team learned to check an emergency plan under difficult conditions.','緊急時の計画は難しい条件でも確認することが大切だとチームは学びました。');
@@ -48,5 +46,5 @@ replaceRow('V11-B07-G3-006','Some members said the phone tree was too slow to us
 replaceRow('V11-B07-G3-009','That made it possible for both memories to contain part of the truth.','That explained how both memories could contain part of the truth.','それによって、二人の記憶のどちらにも一部の事実が含まれ得る理由が説明できました。');
 replaceFields('V11-B07-G3-009','The two people remembered the rain differently partly because they were in different _____.','The two people remembered the rain differently partly as a result of their different _____.');
 for(const p of ps){p.fullTranslation=(p.slashRows||[]).map(r=>r.jp).join('');p.wordCount=wc((p.sentences||[]).join(' '));if(p.semanticHumanReview)p.semanticHumanReview.grammarChronologyRepairReviewed=true;}
-window.V11_BATCH07_GRAMMAR_REPAIR_STATE={version:'20260829-r1',passages:ps.length,reviewed:ps.filter(p=>p.semanticHumanReview&&p.semanticHumanReview.grammarChronologyRepairReviewed).length};
+window.V11_BATCH07_GRAMMAR_REPAIR_STATE={version:'20260829-r2',passages:ps.length,reviewed:ps.filter(p=>p.semanticHumanReview&&p.semanticHumanReview.grammarChronologyRepairReviewed).length};
 })();
