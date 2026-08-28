@@ -1,4 +1,4 @@
-phase=V11_BATCH05_COMPLETE_BATCH06_NEXT
+phase=V11_BATCH06_COMPLETE_BATCH07_NEXT
 branch=v11-1000passage-easy-notes
 baseline_passages=168
 target_passages=1000
@@ -8,13 +8,15 @@ batch02_passages=50
 batch03_passages=50
 batch04_passages=50
 batch05_passages=50
-current_total=418
-remaining_passages=582
-next_batch=Batch06
-next_batch_target=468
+batch06_passages=50
+current_total=468
+remaining_passages=532
+next_batch=Batch07
+next_batch_target=518
 batch03_registered=true
 batch04_registered=true
 batch05_registered=true
+batch06_registered=true
 v10_baseline_status=FINAL_COMPLETE
 v10_main_untouched=true
 v7_vocab_authority=1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4
@@ -69,5 +71,15 @@ batch05_cross_batch_quality=PASS run=33202574445 total_v11_additions=250 duplica
 batch05_persistent_runtime=PASS run=33202564119 total=418 batch05=50 pc=50 pc_overflow=0 pc_errors=0 iphone=50 iphone_overflow=0 iphone_errors=0
 batch05_easy_support=PASS run=33202564119 pc_normal_notes=1186 pc_support_notes=612 iphone_normal_notes=1186 iphone_support_notes=612
 batch05_a4=PASS run=33202564119 representative_sections=6 files=12 student_teacher=PASS
-next_step=Start Batch06 as a new 50-passage batch from 418 to 468. Reconfirm Drive 00/99 and GitHub actual first; design 50 distinct coherent passages, then pass vocabulary/grammar chronology, translation/slash, A/B evidence, required/easy support notes, cross-batch diversity, PC/iPhone, A4, and persistent runtime gates before registration.
+batch06_content_quality=PASS run=33217549202 passages=50 length_issues=0 structure_issues=0 translation_issues=0 question_issues=0 note_issues=0 high_shared_pairs=0 registrationReady=true
+batch06_required_notes=PASS run=33217549202 temporary_glosses_finalized=1096 unresolved=0
+batch06_questions=PASS run=33217549202 passages=50 total_questions=500 a=5 b=5 evidence_in_body=PASS evidence_jp=PASS
+batch06_vocab_chronology=PASS run=33217761290 unregistered=0 future_vocab=0
+batch06_grammar_chronology=PASS run=33217761290 unresolved=0 future_grammar=0
+batch06_persistent_runtime=PASS run=33217742737 total=468 batch06=50 pc=50 pc_overflow=0 pc_errors=0 iphone=50 iphone_overflow=0 iphone_errors=0
+batch06_cross_batch_quality=PASS run=33217742737 total_v11_additions=300 duplicate_id=0 duplicate_body=0 near_duplicate=0
+batch06_easy_support=PASS run=33217742737 normal_and_easy_modes=PASS
+batch06_a4=PASS run=33217742737 student_teacher=PASS
+batch07_plan=LOCKED file=V11_BATCH07_50_PASSAGE_PLAN.md registered=false
+next_step=Author Batch07 50 passages from locked plan, then pass vocabulary/grammar chronology, translation/slash, A/B evidence, required/easy-support notes, cross-batch diversity, PC/iPhone, A4, and persistent runtime gates before registration from 468 to 518.
 release_to_main=NO_UNTIL_ALL_BATCHES_AND_RELEASE_GATES_PASS
