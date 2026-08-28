@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm');
 const sandbox={window:{},console};sandbox.globalThis=sandbox.window;vm.createContext(sandbox);
-for(const f of ['v11_batch04_passages_draft_g1.js','v11_batch04_passages_draft_g2.js','v11_batch04_passages_draft_g3.js'])vm.runInContext(fs.readFileSync(f,'utf8'),sandbox,{filename:f});
+for(const f of ['v11_batch04_passages_draft_g1.js','v11_batch04_passages_draft_g2.js','v11_batch04_passages_draft_g3.js','v11_batch04_length_repair.js'])vm.runInContext(fs.readFileSync(f,'utf8'),sandbox,{filename:f});
 const ps=[...(sandbox.window.V11_BATCH04_G1_PASSAGES||[]),...(sandbox.window.V11_BATCH04_G2_PASSAGES||[]),...(sandbox.window.V11_BATCH04_G3_PASSAGES||[])];
 const problems=[],ids=new Set();
 if(ps.length!==50)problems.push(`count=${ps.length}`);
@@ -17,6 +17,6 @@ for(const p of ps){
  if(!p.semanticRewrite||!String(p.semanticRewrite).includes('BATCH04'))problems.push(`${p.id}:semanticRewrite marker`);
 }
 const byGrade={};for(const p of ps)(byGrade[p.grade]||(byGrade[p.grade]=[])).push({id:p.id,wordCount:p.wordCount,target:p.targetWordBand,title:p.title});
-const out={generatedAt:new Date().toISOString(),count:ps.length,registered:false,currentRuntimeTotal:318,targetRuntimeTotal:368,problems,byGrade,finalPass:ps.length===50&&problems.length===0};
+const out={generatedAt:new Date().toISOString(),count:ps.length,registered:false,currentRuntimeTotal:318,targetRuntimeTotal:368,lengthRepair:sandbox.window.V11_BATCH04_LENGTH_REPAIR_STATE||null,problems,byGrade,finalPass:ps.length===50&&problems.length===0};
 fs.writeFileSync('V11_BATCH04_FULL_DRAFT_AUDIT.json',JSON.stringify(out,null,2)+'\n');
 console.log(`Batch04 full draft count=${ps.length}/50 problems=${problems.length} final=${out.finalPass?'PASS':'FAIL'}`);for(const x of problems)console.log(x);if(!out.finalPass)process.exitCode=1;
