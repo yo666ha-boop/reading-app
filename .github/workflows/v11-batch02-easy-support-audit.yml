@@ -1,0 +1,33 @@
+name: v11 Batch02 easy support audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch02_*.js'
+      - 'v11_easy_support_notes.js'
+      - '.github/workflows/v11-batch02-easy-support-audit.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Audit final Batch02 notes and easy-support mode
+        run: |
+          python3 -m http.server 8000 >/tmp/http.log 2>&1 &
+          server=$!
+          trap 'kill $server || true' EXIT
+          sleep 2
+          node <<'NODE'
+          const {chromium}=require('playwright');
+          const chain=['v11_batch02_passages_draft.js','v11_batch02_unit_safe_repair.js','v11_batch02_unique_structure_repair.js','v11_batch02_semantic_rewrite_pass1.js','v11_batch02_semantic_chronology_repair_pass1.js','v11_batch02_required_notes_repair.js','v11_batch02_semantic_rewrite_pass2_grade2.js','v11_batch02_grade2_chronology_repair.js','v11_batch02_semantic_rewrite_pass3_grade3.js','v11_batch02_grade3_chronology_repair.js','v11_batch02_length_repair.js','v11_batch02_length_repair_r2.js','v11_batch02_postlength_chronology_repair.js','v11_batch02_question_repair.js'];
+          function assert(c,m){if(!c)throw Error(m)}
+          (async()=>{let b;try{b=await chromium.launch({headless:true});const p=await b.newPage({viewport:{width:1280,height:900}});const errs=[];p.on('pageerror',e=>errs.push(String(e)));const r=await p.goto('http://127.0.0.1:8000/index.html?b02support='+Date.now(),{waitUntil:'domcontentloaded',timeout:90000});assert(r&&r.ok(),'HTTP');await p.waitForFunction(()=>window.V10_RUNTIME_LOAD_PROGRESS==='complete',{timeout:120000});await p.waitForFunction(()=>window.V11_EASY_SUPPORT_LOADED===true&&typeof window.V11_APPLY_EASY_SUPPORT_NOTES==='function',{timeout:60000});for(const f of chain)await p.addScriptTag({url:'http://127.0.0.1:8000/'+f});const out=await p.evaluate(()=>{const b02=window.V11_BATCH02_DRAFT_PASSAGES;if(!Array.isArray(b02)||b02.length!==50)throw Error('Batch02 final not 50');window.V11_EXTRA_PASSAGES=window.V11_EXTRA_PASSAGES||{};window.V11_EXTRA_PASSAGES.__BATCH02_AUDIT=b02;const state=window.V11_APPLY_EASY_SUPPORT_NOTES();const badRequired=b02.filter(x=>(x.notes||[]).some(n=>!n||!n.english||!n.japanese));const badSupport=b02.filter(x=>!Array.isArray(x.supportNotes)||x.supportNotes.length===0||x.supportNotes.some(n=>!n.english||!n.japanese||n.source!=='v7 canonical support'));const dup=b02.filter(x=>new Set((x.supportNotes||[]).map(n=>String(n.english).toLowerCase())).size!==(x.supportNotes||[]).length);const overlap=b02.filter(x=>{const req=new Set((x.notes||[]).map(n=>String(n.english).toLowerCase()));return (x.supportNotes||[]).some(n=>req.has(String(n.english).toLowerCase()))});return {state,badRequired:badRequired.map(x=>x.id),badSupport:badSupport.map(x=>x.id),dup:dup.map(x=>x.id),overlap:overlap.map(x=>x.id),minSupport:Math.min(...b02.map(x=>(x.supportNotes||[]).length)),maxSupport:Math.max(...b02.map(x=>(x.supportNotes||[]).length)),totalSupport:b02.reduce((a,x)=>a+(x.supportNotes||[]).length,0),normalNotes:b02.reduce((a,x)=>a+(x.notes||[]).length,0)};});console.log(JSON.stringify(out,null,2));assert(out.badRequired.length===0,'bad normal notes '+out.badRequired);assert(out.badSupport.length===0,'missing/bad support '+out.badSupport);assert(out.dup.length===0,'dup '+out.dup);assert(out.overlap.length===0,'overlap '+out.overlap);assert(out.minSupport>=1,'min support '+out.minSupport);assert(out.maxSupport<=16,'support cap '+out.maxSupport);assert(errs.length===0,'runtime errors '+errs.join(' | '));console.log('V11_BATCH02_EASY_SUPPORT_PASS');}finally{if(b)await b.close().catch(()=>{})}})().catch(e=>{console.error(e.stack||e);process.exit(1)});
+          NODE
