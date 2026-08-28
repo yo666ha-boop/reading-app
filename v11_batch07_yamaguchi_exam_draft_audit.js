@@ -12,12 +12,16 @@ for(const p of ps){
  const qs=[...(p.questions||[]),...(p.questionSetB||[])]; const types=[...new Set(qs.map(x=>x.questionType))];
  const rowOk=(p.sentences||[]).length===(p.slashRows||[]).length && (p.slashRows||[]).every((r,i)=>r.en===p.sentences[i] && r.jp);
  const jpJoin=(p.slashRows||[]).map(r=>r.jp).join('');
- const translationOk=jpJoin===p.fullTranslation;
- const evidenceOk=qs.every(q=>{
+ const badEvidence=[];
+ qs.forEach((q,i)=>{
    const ev=Array.isArray(q.evidence)?q.evidence:[q.evidence];
    const jp=Array.isArray(q.evidenceJp)?q.evidenceJp:[q.evidenceJp];
-   return q.answer && q.reason && ev.filter(Boolean).every(x=>body.includes(x)) && jp.filter(Boolean).every(x=>jpJoin.includes(x));
+   const enMissing=ev.filter(Boolean).filter(x=>!body.includes(x));
+   const jpMissing=jp.filter(Boolean).filter(x=>!jpJoin.includes(x));
+   if(!q.answer||!q.reason||enMissing.length||jpMissing.length) badEvidence.push({index:i+1,type:q.questionType,enMissing,jpMissing,hasAnswer:!!q.answer,hasReason:!!q.reason});
  });
+ const evidenceOk=badEvidence.length===0;
+ const translationOk=jpJoin===p.fullTranslation;
  const required=[types.includes('CONTENT_MATCH'),types.includes('REASON')||types.includes('INFERENCE'),types.includes('SENTENCE_INSERTION')||types.includes('SUMMARY_FILL'),types.includes('CONTEXT_WORD')||types.includes('PHRASE_FILL')];
  if(wc<330||wc>450) errors.push(`word-band:${p.id}:${wc}`);
  if(p.wordCount!==wc) errors.push(`wordCount-field:${p.id}:${p.wordCount}/${wc}`);
@@ -29,10 +33,10 @@ for(const p of ps){
  if(!evidenceOk) errors.push(`evidence:${p.id}`);
  if(!p.materialData||!types.includes('MATERIAL_LINK')) errors.push(`material-link:${p.id}`);
  const fw=p.freeWriteTask||{}; if(fw.questionType!=='FREE_WRITE_20_30'||!fw.modelAnswer||!Array.isArray(fw.wordRange)||fw.wordRange[0]!==20||fw.wordRange[1]!==30) errors.push(`free-write:${p.id}`);
- details.push({id:p.id,wordCount:wc,questionTypes:types,typeCount:types.length,questions:qs.length,translationOk,evidenceOk});
+ details.push({id:p.id,wordCount:wc,questionTypes:types,typeCount:types.length,questions:qs.length,translationOk,evidenceOk,badEvidence});
 }
 const report={pass:errors.length===0,count:ps.length,errors,details};
 fs.writeFileSync('V11_BATCH07_YAMAGUCHI_EXAM_DRAFT_AUDIT.json',JSON.stringify(report,null,2)+'\n');
-for(const d of details) console.log(`${d.id} words=${d.wordCount} questions=${d.questions} types=${d.typeCount} translation=${d.translationOk?'PASS':'FAIL'} evidence=${d.evidenceOk?'PASS':'FAIL'}`);
+for(const d of details){ console.log(`${d.id} words=${d.wordCount} questions=${d.questions} types=${d.typeCount} translation=${d.translationOk?'PASS':'FAIL'} evidence=${d.evidenceOk?'PASS':'FAIL'}`); if(d.badEvidence.length) console.log(JSON.stringify(d.badEvidence)); }
 console.log(`BATCH07 YAMAGUCHI EXAM DRAFT GATE count=${ps.length}/4 errors=${errors.length} final=${report.pass?'PASS':'FAIL'}`);
 if(errors.length){console.error(errors.join('\n'));process.exit(1);}
