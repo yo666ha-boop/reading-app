@@ -1,4 +1,4 @@
-phase=V11_BATCH04_COMPLETE_BATCH05_NEXT
+phase=V11_BATCH05_COMPLETE_BATCH06_NEXT
 branch=v11-1000passage-easy-notes
 baseline_passages=168
 target_passages=1000
@@ -7,12 +7,14 @@ batch01_passages=50
 batch02_passages=50
 batch03_passages=50
 batch04_passages=50
-current_total=368
-remaining_passages=632
-next_batch=Batch05
-next_batch_target=418
+batch05_passages=50
+current_total=418
+remaining_passages=582
+next_batch=Batch06
+next_batch_target=468
 batch03_registered=true
 batch04_registered=true
+batch05_registered=true
 v10_baseline_status=FINAL_COMPLETE
 v10_main_untouched=true
 v7_vocab_authority=1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4
@@ -58,5 +60,14 @@ batch04_easy_support=PASS run=33187990100 normal_and_easy_modes=PASS
 batch04_a4=PASS run=33187990100 student_teacher=PASS
 batch04_cross_batch_quality=PASS run=33188190572 head=7aac0bc7899d40fb1442ea871cf56718b8929073 duplicate_id=0 duplicate_body=0 near_duplicate=0
 batch04_cross_batch_audit_fix_commit=7aac0bc7899d40fb1442ea871cf56718b8929073
-next_step=Start Batch05 as a new 50-passage batch from 368 to 418. Reconfirm Drive 00/99 and GitHub actual first, then lock 50 distinct story designs and section baselines, author coherent passages, and pass chronology, translation/slash, A/B evidence, normal/easy notes, cross-batch diversity, PC/iPhone, A4, and persistent runtime gates before registration.
+batch05_vocab_chronology=PASS run=33198202661 unregistered=0 future_vocab=0
+batch05_grammar_chronology=PASS run=33198202661 unresolved=0 future_grammar=0
+batch05_content_quality=PASS run=33202323511 passages=50 length_issues=0 structure_issues=0 translation_issues=0 question_issues=0 placeholder_gloss=0 registrationReady=true
+batch05_required_notes=PASS run=33202323511 temporary_glosses_finalized=1031 unresolved=0
+batch05_questions=PASS run=33202323511 passages=50 total_questions=500 a=5 b=5 evidence_in_body=PASS evidence_jp=PASS
+batch05_cross_batch_quality=PASS run=33202574445 total_v11_additions=250 duplicate_id=0 duplicate_body=0 near_duplicate=0 page_errors=0
+batch05_persistent_runtime=PASS run=33202564119 total=418 batch05=50 pc=50 pc_overflow=0 pc_errors=0 iphone=50 iphone_overflow=0 iphone_errors=0
+batch05_easy_support=PASS run=33202564119 pc_normal_notes=1186 pc_support_notes=612 iphone_normal_notes=1186 iphone_support_notes=612
+batch05_a4=PASS run=33202564119 representative_sections=6 files=12 student_teacher=PASS
+next_step=Start Batch06 as a new 50-passage batch from 418 to 468. Reconfirm Drive 00/99 and GitHub actual first; design 50 distinct coherent passages, then pass vocabulary/grammar chronology, translation/slash, A/B evidence, required/easy support notes, cross-batch diversity, PC/iPhone, A4, and persistent runtime gates before registration.
 release_to_main=NO_UNTIL_ALL_BATCHES_AND_RELEASE_GATES_PASS
