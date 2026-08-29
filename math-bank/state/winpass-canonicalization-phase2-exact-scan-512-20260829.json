@@ -1,0 +1,55 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "WINPASS_CANONICALIZATION_FROM_EVIDENCE",
+  "phase": "PHASE2_SEMANTIC_EQUIVALENCE_CLUSTERING",
+  "recorded_at_jst": "2026-08-29T17:52:00+09:00",
+  "method": {
+    "normalization": "Unicode NFKC plus whitespace removal only; mathematical symbols/content preserved",
+    "exact_duplicate_key": "normalized question + normalized answer + figure/table/graphical-answer context identity",
+    "secondary_guard": "normalized question + normalized answer without context",
+    "question_only": "candidate signal only; never sufficient to merge"
+  },
+  "previous_scan": {
+    "records": 493,
+    "artifact": "math-bank/state/winpass-canonicalization-phase2-exact-scan-493-20260829.json"
+  },
+  "extension_sources": [
+    {"records": 10, "drive_id": "1vuZNt94WOz-xgSrdkHi2bQlpJryjesct", "name": "mathbank_winpass10_new_1suhy000627_strict_20260827.jsonl", "source_document_sha256": "8cce8c10dcfabcadd02938130682a4e19b532da777f9bcd2116005278cc4c176"},
+    {"records": 9, "drive_id": "1fEi0HUI4pz2vYIDLl4q5poBPzcboBByc", "name": "winpass9-new-2suhy000312-strict-20260827.jsonl", "source_document_sha256": "73add547d249ae0717a08f03f9576c041fb5848717ce93816826850834fd5bbe"}
+  ],
+  "arithmetic": {
+    "records_loaded": 512,
+    "unique_raw_ids": 512,
+    "fingerprints_present": 512,
+    "unique_fingerprints": 512,
+    "new_records": 19,
+    "new_raw_id_overlap_with_previous_scan": 0,
+    "new_fingerprint_overlap_with_previous_scan": 0,
+    "remaining_unscanned": 205,
+    "check": "493 + 10 + 9 = 512; 717 - 512 = 205"
+  },
+  "extension_quality_gate": {
+    "source_document_sha256_present": "19/19",
+    "score_evidence_present": "19/19",
+    "question_offsets_present": "19/19",
+    "answer_offsets_present": "19/19",
+    "content_bound_fingerprint_present": "19/19",
+    "independent_check_pass": "19/19"
+  },
+  "results": {
+    "exact_question_answer_context_duplicate_groups": 0,
+    "exact_question_answer_duplicate_groups_even_when_context_ignored": 0,
+    "automatic_semantic_merges": 0,
+    "question_only_same_text_groups": 4,
+    "question_only_same_text_records": 8,
+    "new_records_in_question_only_groups": 0,
+    "provisional_canonical_count": 717
+  },
+  "guards": {
+    "historical_570_used_as_cutoff": false,
+    "count_forcing_used": false,
+    "main_untouched": true,
+    "publication_ready": false
+  },
+  "next": "Continue identical evidence-backed exact scan over the remaining 205 unique raw_ids; only explicit evidence-backed equivalence clusters may reduce canonical count."
+}
