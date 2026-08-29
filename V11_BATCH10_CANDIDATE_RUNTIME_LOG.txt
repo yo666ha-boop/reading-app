@@ -1,0 +1,14 @@
+/home/runner/work/reading-app/reading-app/v11_batch10_candidate_runtime_audit.js:9
+async function crossAudit(){const ctx=await openReady('chromium','cross');try{return await ctx.page.evaluate(()=>{const all=Object.values(window.V11_EXTRA_PASSAGES||{}).flat(),b10=window.V11_BATCH10_PASSAGES||[],ids=new Set(),dupIds=[],dupBodies=[],near=[];const bodyMap=new Map();for(const p of all){if(ids.has(p.id))dupIds.push(p.id);ids.add(p.id);const body=(p.sentences||[]).join('\n');if(bodyMap.has(body))dupBodies.push([bodyMap.get(body),p.id]);else bodyMap.set(body,p.id)}function jac(a,b){a=new Set(a);b=new Set(b);let n=0;for(const x of a)if(b.has(x))n++;return n/(a.size+b.size-n||1)}const prev=all.filter(p=>!String(p.id||'').startsWith('V11-B10-'));for(const a of b10)for(const b of prev){if(a.textbook!==b.textbook||String(a.grade)!==String(b.grade)||a.section!==b.section)continue;const s=jac(a.sentences||[],b.sentences||[]);if(s>=.85)near.push({a:a.id,b:b.id,score:s})}return{extraCandidate:all.length,b10:b10.length,dupIds,dupBodies,near,pass:all.length===500&&b10.length===50&&!dupIds.length&&!dupBodies.length&&!near.length}}finally{await ctx.context.close();await ctx.browser.close()}}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+
+SyntaxError: missing ) after argument list
+    at wrapSafe (node:internal/modules/cjs/loader:1464:18)
+    at Module._compile (node:internal/modules/cjs/loader:1495:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+    at node:internal/main/run_main_module:28:49
+
+Node.js v20.20.2
