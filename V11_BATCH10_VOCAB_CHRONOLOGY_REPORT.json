@@ -1,13 +1,38 @@
 {
-  "generatedAt": "2026-08-29T11:07:14.637Z",
+  "generatedAt": "2026-08-29T11:19:49.728Z",
   "sourceRecords": 3975,
   "passages": 50,
-  "tokensScanned": 25091,
-  "requiredNoteCoveredOccurrences": 7165,
-  "unregisteredOccurrences": 0,
+  "tokensScanned": 25245,
+  "requiredNoteCoveredOccurrences": 7203,
+  "unregisteredOccurrences": 3,
   "futureVocabLeakOccurrences": 0,
-  "finalPass": true,
-  "unresolved": [],
+  "finalPass": false,
+  "unresolved": [
+    {
+      "id": "V11-B10-G2-001",
+      "book": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "where": "sentence:4",
+      "word": "hard"
+    },
+    {
+      "id": "V11-B10-G2-001",
+      "book": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "where": "slash:4",
+      "word": "hard"
+    },
+    {
+      "id": "V11-B10-G2-001",
+      "book": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "where": "A3.evidence",
+      "word": "hard"
+    }
+  ],
   "future": [],
   "perPassage": [
     {
@@ -185,8 +210,8 @@
       "textbook": "サンシャイン",
       "grade": "2",
       "section": "PROGRAM 8-3",
-      "semanticRewrite": null,
-      "unregistered": 0,
+      "semanticRewrite": "BATCH10_HUMAN_SEMANTIC_R1",
+      "unregistered": 3,
       "future": 0,
       "requiredNoteWords": 27
     },
@@ -235,7 +260,7 @@
       "textbook": "ニューホライズン",
       "grade": "2",
       "section": "Unit 7-4",
-      "semanticRewrite": null,
+      "semanticRewrite": "BATCH10_HUMAN_SEMANTIC_R1",
       "unregistered": 0,
       "future": 0,
       "requiredNoteWords": 37
