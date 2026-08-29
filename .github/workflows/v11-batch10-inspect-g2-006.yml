@@ -1,0 +1,19 @@
+name: v11 Batch10 inspect G2-006
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch10_inspect_g2_006.js'
+      - '.github/workflows/v11-batch10-inspect-g2-006.yml'
+  workflow_dispatch:
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node v11_batch10_inspect_g2_006.js
