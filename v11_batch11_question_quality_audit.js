@@ -5,16 +5,18 @@ const sandbox={window:{},console};sandbox.globalThis=sandbox.window;vm.createCon
 const ps=[...(sandbox.window.V11_BATCH11_G1_DRAFTS||[]),...(sandbox.window.V11_BATCH11_G2_DRAFTS||[]),...(sandbox.window.V11_BATCH11_G3_DRAFTS||[])];
 const failures=[],warnings=[],prompts=new Map(),types={};let questionCount=0,evidenceLinked=0,answerLinked=0,freeWrites=0,yMaterial=0;
 const banned=[/第\s*\d+\s*文/,/第\s*\d+\s*段階/,/空所.{0,12}第\s*\d+/,/sentence\s*\d+/i,/付近.{0,8}答え/i];
+const acceptedStages=new Set(['BATCH11_HUMAN_REWRITE_R2','BATCH11_HUMAN_REWRITE_R3_DISTINCT_EVIDENCE']);
+const acceptedReviews=new Set(['FULL_50_PASSAGE_REVIEW_20260829','FULL_50_PASSAGE_REVIEW_20260829_R3']);
 function fail(id,code,detail){failures.push({id,code,detail});}
 for(const p of ps){
- if(p.questionStage!=='BATCH11_HUMAN_REWRITE_R2')fail(p.id,'STAGE','question r2 not applied');if(p.questionHumanReview!=='FULL_50_PASSAGE_REVIEW_20260829')fail(p.id,'HUMAN_REVIEW','question human review marker missing');
+ if(!acceptedStages.has(p.questionStage))fail(p.id,'STAGE','question human rewrite r2+ not applied');if(!acceptedReviews.has(p.questionHumanReview))fail(p.id,'HUMAN_REVIEW','question human review marker missing');
  const qs=[...(p.questions||[]),...(p.questionSetB||[])];if((p.questions||[]).length!==5||(p.questionSetB||[]).length!==5)fail(p.id,'COUNT',`${(p.questions||[]).length}+${(p.questionSetB||[]).length}`);
  const sent=new Set(p.sentences||[]),jpMap=new Map((p.slashRows||[]).map(r=>[r.en,r.jp]));const localEvidence=new Map();
  qs.forEach((q,idx)=>{questionCount++;types[q.questionType]=(types[q.questionType]||0)+1;const key=String(q.prompt||'').trim();if(!key)fail(p.id,'EMPTY_PROMPT',idx);else{if(prompts.has(key))fail(p.id,'DUPLICATE_PROMPT',`${prompts.get(key)} / ${idx+1}`);prompts.set(key,`${p.id}:${idx+1}`);}for(const re of banned)if(re.test(key))fail(p.id,'MECHANICAL_PROMPT',key);
   if(!q.evidence||!sent.has(q.evidence))fail(p.id,'EVIDENCE_NOT_IN_PASSAGE',idx+1);else{evidenceLinked++;const prior=localEvidence.get(q.evidence)||[];prior.push(q.questionType);localEvidence.set(q.evidence,prior);}
   if(q.questionType==='FREE_WRITE_20_30'){freeWrites++;const wc=(String(q.answer||'').match(/[A-Za-z]+(?:['’][A-Za-z]+)?/g)||[]).length;if(wc<20||wc>30)fail(p.id,'FREE_WRITE_WORDCOUNT',wc);if(!q.scoring||q.scoring.wordMin!==20||q.scoring.wordMax!==30||!Array.isArray(q.scoring.conditions)||q.scoring.conditions.length<3)fail(p.id,'FREE_WRITE_SCORING','missing/invalid');}
   else{const expected=jpMap.get(q.evidence);if(q.answer!==expected||q.evidenceJp!==expected)fail(p.id,'ANSWER_EVIDENCE_MISMATCH',idx+1);else answerLinked++;}
-  if(!q.reason||String(q.reason).length<8)fail(p.id,'WEAK_REASON',idx+1);if(q.questionType==='INFERENCE')fail(p.id,'UNSUPPORTED_INFERENCE_TEMPLATE','R2 must not label a direct evidence answer as inference');
+  if(!q.reason||String(q.reason).length<8)fail(p.id,'WEAK_REASON',idx+1);if(q.questionType==='INFERENCE')fail(p.id,'UNSUPPORTED_INFERENCE_TEMPLATE','direct-evidence template must not be labeled inference');
  });
  if(p.level==='YAMAGUCHI_EXAM'){const m=qs.filter(q=>q.questionType==='MATERIAL_LINK').length;yMaterial+=m;if(m<2)fail(p.id,'YAMAGUCHI_MATERIAL_LINK_COUNT',m);if(!p.materialData)fail(p.id,'YAMAGUCHI_MATERIAL_DATA','missing');}
  for(const [ev,arr] of localEvidence){if(arr.length>1&&!arr.includes('FREE_WRITE_20_30'))warnings.push({id:p.id,code:'REUSED_EVIDENCE',types:arr,evidence:ev});}
