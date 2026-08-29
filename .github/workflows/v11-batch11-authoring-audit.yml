@@ -1,0 +1,24 @@
+name: V11 Batch11 Authoring Audit
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch11_**'
+      - '.github/workflows/v11-batch11-authoring-audit.yml'
+  workflow_dispatch:
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run Batch11 authoring audit
+        run: node v11_batch11_authoring_audit.js
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v11-batch11-authoring-report
+          path: V11_BATCH11_AUTHORING_REPORT.json
