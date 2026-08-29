@@ -8,6 +8,12 @@ on:
       - 'v11_batch10_passages_draft_g2.js'
       - 'v11_batch10_passages_draft_g3.js'
       - 'v11_batch10_length_repair_r1.js'
+      - 'v11_batch10_grammar_repair_r1.js'
+      - 'v11_batch10_vocab_inventory.js'
+      - 'v11_batch10_prior_verified_gloss.js'
+      - 'v11_batch10_manual_gloss_r1.js'
+      - 'v11_batch10_gloss_apply.js'
+      - 'v11_batch10_question_human_rewrite.js'
       - '.github/workflows/v11-batch10-chronology-audit.yml'
   workflow_dispatch:
 permissions:
