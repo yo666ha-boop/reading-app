@@ -1,7 +1,7 @@
 'use strict';
 const fs=require('fs'),vm=require('vm');
 const sandbox={window:{},console};vm.createContext(sandbox);
-for(const f of ['v11_batch08_passages_draft_g1.js','v11_batch08_passages_draft_g2.js','v11_batch08_passages_draft_g3.js','v11_batch08_g3_length_repair.js','v11_batch08_grammar_repair.js','v11_batch08_grammar_repair_r2.js','v11_batch08_grammar_repair_r3.js','v11_batch08_vocab_repair.js','v11_batch08_gloss_apply.js','v11_batch08_semantic_repair_r1.js']) vm.runInContext(fs.readFileSync(f,'utf8'),sandbox,{filename:f});
+for(const f of ['v11_batch08_passages_draft_g1.js','v11_batch08_passages_draft_g2.js','v11_batch08_passages_draft_g3.js','v11_batch08_g3_length_repair.js','v11_batch08_grammar_repair.js','v11_batch08_grammar_repair_r2.js','v11_batch08_grammar_repair_r3.js','v11_batch08_vocab_repair.js','v11_batch08_gloss_apply.js','v11_batch08_semantic_repair_r1.js','v11_batch08_question_human_rewrite.js']) vm.runInContext(fs.readFileSync(f,'utf8'),sandbox,{filename:f});
 const groups=[sandbox.window.V11_BATCH08_G1_DRAFTS||[],sandbox.window.V11_BATCH08_G2_DRAFTS||[],sandbox.window.V11_BATCH08_G3_DRAFTS||[]];
 const ps=groups.flat(),errors=[],details=[];const words=s=>(String(s||'').match(/[A-Za-z]+(?:['’][A-Za-z]+)?/g)||[]);
 const ids=new Set(),bodies=new Map();function sj(a,b){const A=new Set(a),B=new Set(b);let n=0;for(const x of A)if(B.has(x))n++;return n/(A.size+B.size-n||1);}function norm(s){return String(s||'').toLowerCase().replace(/[^a-z0-9 ]/g,'').replace(/\s+/g,' ').trim();}
@@ -14,8 +14,9 @@ for(const p of ps){
  if(!Array.isArray(p.sentences)||p.sentences.length<8||p.sentences.length!==p.slashRows.length)errors.push(`structure:${p.id}`);
  if(p.slashRows.some((r,i)=>r.en!==p.sentences[i]||!r.jp))errors.push(`slash:${p.id}`);if(p.fullTranslation!==p.slashRows.map(r=>r.jp).join(''))errors.push(`translation:${p.id}`);
  if((p.questions||[]).length!==5||(p.questionSetB||[]).length!==5)errors.push(`qcount:${p.id}`);if(qs.length===10&&new Set(qs.map(q=>q.prompt)).size!==10)errors.push(`duplicate-prompt:${p.id}`);
+ const typeCount=new Set(qs.map(q=>q.questionType)).size;if(typeCount<6)errors.push(`question-type-diversity:${p.id}:${typeCount}`);
  qs.forEach((q,i)=>{const es=Array.isArray(q.evidence)?q.evidence:[q.evidence],js=Array.isArray(q.evidenceJp)?q.evidenceJp:[q.evidenceJp];if(!q.questionType||!q.prompt||!q.answer||!q.reason||es.length!==js.length)bad.push(`field:${i+1}`);es.forEach((e,j)=>{const r=p.slashRows.find(x=>x.en===e);if(!r)bad.push(`en:${i+1}`);else if(r.jp!==js[j])bad.push(`jp:${i+1}`);});});if(bad.length)errors.push(`questions:${p.id}:${bad.join(',')}`);
- const k=norm(body);if(bodies.has(k))errors.push(`duplicate-body:${p.id}:${bodies.get(k)}`);else bodies.set(k,p.id);details.push({id:p.id,grade:p.grade,level:p.level,words:wc,sentences:p.sentences.length,questions:qs.length,bad});
+ const k=norm(body);if(bodies.has(k))errors.push(`duplicate-body:${p.id}:${bodies.get(k)}`);else bodies.set(k,p.id);details.push({id:p.id,grade:p.grade,level:p.level,words:wc,sentences:p.sentences.length,questions:qs.length,questionTypes:[...new Set(qs.map(q=>q.questionType))],bad});
 }
 const near=[];for(let i=0;i<ps.length;i++)for(let j=i+1;j<ps.length;j++){const A=ps[i].sentences.map(norm),B=ps[j].sentences.map(norm),v=sj(A,B);if(v>=0.55)near.push({a:ps[i].id,b:ps[j].id,jaccard:+v.toFixed(3)});}if(near.length)errors.push(`near-shared:${near.length}`);
 const g3=groups[2],profile={STANDARD:g3.filter(p=>p.level==='STANDARD').length,LONG:g3.filter(p=>p.level==='LONG').length,YAMAGUCHI_EXAM:g3.filter(p=>p.level==='YAMAGUCHI_EXAM').length};if(profile.STANDARD!==8||profile.LONG!==4||profile.YAMAGUCHI_EXAM!==4)errors.push(`g3-profile:${JSON.stringify(profile)}`);
