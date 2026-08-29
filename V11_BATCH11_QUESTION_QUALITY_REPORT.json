@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-29T16:44:36.764Z",
+  "generatedAt": "2026-08-29T16:44:58.080Z",
   "passages": 50,
   "byGrade": {
     "1": 17,
@@ -8,22 +8,21 @@
   },
   "questionCount": 500,
   "expectedQuestions": 500,
-  "uniquePrompts": 37,
-  "evidenceLinked": 492,
-  "answerLinked": 379,
+  "uniquePrompts": 481,
+  "evidenceLinked": 500,
+  "answerLinked": 500,
   "freeWrites": 0,
-  "yamaguchiMaterialLinks": 4,
+  "yamaguchiMaterialLinks": 8,
   "questionTypes": {
-    "GIST": 130,
     "DETAIL": 96,
-    "REASON": 62,
-    "CONTENT_MATCH": 96,
-    "INFERENCE": 50,
+    "REASON": 96,
+    "CONTENT_MATCH": 50,
+    "RESULT": 50,
     "SUMMARY_FILL": 50,
-    "MATERIAL_LINK": 4,
-    "SENTENCE_INSERTION": 4,
-    "CONTEXT_WORD": 4,
-    "PHRASE_FILL": 4
+    "EVIDENCE": 50,
+    "PHRASE_FILL": 50,
+    "GIST": 50,
+    "MATERIAL_LINK": 8
   },
   "failures": [
     {
@@ -37,31 +36,6 @@
       "detail": "question human review marker missing"
     },
     {
-      "id": "V11-B11-G1-001",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G1-001",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G1-001",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G1-001",
-      "code": "WEAK_REASON",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-001",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
-    },
-    {
       "id": "V11-B11-G1-002",
       "code": "STAGE",
       "detail": "question r2 not applied"
@@ -72,91 +46,6 @@
       "detail": "question human review marker missing"
     },
     {
-      "id": "V11-B11-G1-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-001:1 / 1"
-    },
-    {
-      "id": "V11-B11-G1-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-001:2 / 2"
-    },
-    {
-      "id": "V11-B11-G1-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-001:3 / 3"
-    },
-    {
-      "id": "V11-B11-G1-002",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 3
-    },
-    {
-      "id": "V11-B11-G1-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-001:4 / 4"
-    },
-    {
-      "id": "V11-B11-G1-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-001:5 / 5"
-    },
-    {
-      "id": "V11-B11-G1-002",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G1-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-001:6 / 6"
-    },
-    {
-      "id": "V11-B11-G1-002",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G1-002",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G1-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-001:7 / 7"
-    },
-    {
-      "id": "V11-B11-G1-002",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 7
-    },
-    {
-      "id": "V11-B11-G1-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-001:8 / 8"
-    },
-    {
-      "id": "V11-B11-G1-002",
-      "code": "WEAK_REASON",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-001:9 / 9"
-    },
-    {
-      "id": "V11-B11-G1-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-001:10 / 10"
-    },
-    {
-      "id": "V11-B11-G1-002",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
-    },
-    {
       "id": "V11-B11-G1-003",
       "code": "STAGE",
       "detail": "question r2 not applied"
@@ -165,86 +54,6 @@
       "id": "V11-B11-G1-003",
       "code": "HUMAN_REVIEW",
       "detail": "question human review marker missing"
-    },
-    {
-      "id": "V11-B11-G1-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-002:1 / 1"
-    },
-    {
-      "id": "V11-B11-G1-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-002:2 / 2"
-    },
-    {
-      "id": "V11-B11-G1-003",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 2
-    },
-    {
-      "id": "V11-B11-G1-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-002:3 / 3"
-    },
-    {
-      "id": "V11-B11-G1-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-002:4 / 4"
-    },
-    {
-      "id": "V11-B11-G1-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-002:5 / 5"
-    },
-    {
-      "id": "V11-B11-G1-003",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G1-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-002:6 / 6"
-    },
-    {
-      "id": "V11-B11-G1-003",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G1-003",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G1-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-002:7 / 7"
-    },
-    {
-      "id": "V11-B11-G1-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-002:8 / 8"
-    },
-    {
-      "id": "V11-B11-G1-003",
-      "code": "WEAK_REASON",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-002:9 / 9"
-    },
-    {
-      "id": "V11-B11-G1-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-002:10 / 10"
-    },
-    {
-      "id": "V11-B11-G1-003",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
     },
     {
       "id": "V11-B11-G1-004",
@@ -259,82 +68,7 @@
     {
       "id": "V11-B11-G1-004",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-003:1 / 1"
-    },
-    {
-      "id": "V11-B11-G1-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-003:2 / 2"
-    },
-    {
-      "id": "V11-B11-G1-004",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 2
-    },
-    {
-      "id": "V11-B11-G1-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-003:3 / 3"
-    },
-    {
-      "id": "V11-B11-G1-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-003:4 / 4"
-    },
-    {
-      "id": "V11-B11-G1-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-003:5 / 5"
-    },
-    {
-      "id": "V11-B11-G1-004",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G1-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-003:6 / 6"
-    },
-    {
-      "id": "V11-B11-G1-004",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G1-004",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G1-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-003:7 / 7"
-    },
-    {
-      "id": "V11-B11-G1-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-003:8 / 8"
-    },
-    {
-      "id": "V11-B11-G1-004",
-      "code": "WEAK_REASON",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-003:9 / 9"
-    },
-    {
-      "id": "V11-B11-G1-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-003:10 / 10"
-    },
-    {
-      "id": "V11-B11-G1-004",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
+      "detail": "V11-B11-G1-004:1 / 8"
     },
     {
       "id": "V11-B11-G1-005",
@@ -349,107 +83,7 @@
     {
       "id": "V11-B11-G1-005",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-004:1 / 1"
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-004:2 / 2"
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 2
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-004:3 / 3"
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 3
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-004:4 / 4"
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 4
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-004:5 / 5"
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-004:6 / 6"
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-004:7 / 7"
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 7
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-004:8 / 8"
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "WEAK_REASON",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-004:9 / 9"
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 9
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-004:10 / 10"
-    },
-    {
-      "id": "V11-B11-G1-005",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
+      "detail": "V11-B11-G1-005:1 / 8"
     },
     {
       "id": "V11-B11-G1-006",
@@ -464,87 +98,7 @@
     {
       "id": "V11-B11-G1-006",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-005:1 / 1"
-    },
-    {
-      "id": "V11-B11-G1-006",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 1
-    },
-    {
-      "id": "V11-B11-G1-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-005:2 / 2"
-    },
-    {
-      "id": "V11-B11-G1-006",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 2
-    },
-    {
-      "id": "V11-B11-G1-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-005:3 / 3"
-    },
-    {
-      "id": "V11-B11-G1-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-005:4 / 4"
-    },
-    {
-      "id": "V11-B11-G1-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-005:5 / 5"
-    },
-    {
-      "id": "V11-B11-G1-006",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G1-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-005:6 / 6"
-    },
-    {
-      "id": "V11-B11-G1-006",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G1-006",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G1-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-005:7 / 7"
-    },
-    {
-      "id": "V11-B11-G1-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-005:8 / 8"
-    },
-    {
-      "id": "V11-B11-G1-006",
-      "code": "WEAK_REASON",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-005:9 / 9"
-    },
-    {
-      "id": "V11-B11-G1-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-005:10 / 10"
-    },
-    {
-      "id": "V11-B11-G1-006",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
+      "detail": "V11-B11-G1-006:1 / 8"
     },
     {
       "id": "V11-B11-G1-007",
@@ -559,87 +113,7 @@
     {
       "id": "V11-B11-G1-007",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-006:1 / 1"
-    },
-    {
-      "id": "V11-B11-G1-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-006:2 / 2"
-    },
-    {
-      "id": "V11-B11-G1-007",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 2
-    },
-    {
-      "id": "V11-B11-G1-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-006:3 / 3"
-    },
-    {
-      "id": "V11-B11-G1-007",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 3
-    },
-    {
-      "id": "V11-B11-G1-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-006:4 / 4"
-    },
-    {
-      "id": "V11-B11-G1-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-006:5 / 5"
-    },
-    {
-      "id": "V11-B11-G1-007",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G1-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-006:6 / 6"
-    },
-    {
-      "id": "V11-B11-G1-007",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G1-007",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G1-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-006:7 / 7"
-    },
-    {
-      "id": "V11-B11-G1-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-006:8 / 8"
-    },
-    {
-      "id": "V11-B11-G1-007",
-      "code": "WEAK_REASON",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-006:9 / 9"
-    },
-    {
-      "id": "V11-B11-G1-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-006:10 / 10"
-    },
-    {
-      "id": "V11-B11-G1-007",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
+      "detail": "V11-B11-G1-007:1 / 8"
     },
     {
       "id": "V11-B11-G1-008",
@@ -652,86 +126,6 @@
       "detail": "question human review marker missing"
     },
     {
-      "id": "V11-B11-G1-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-007:1 / 1"
-    },
-    {
-      "id": "V11-B11-G1-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-007:2 / 2"
-    },
-    {
-      "id": "V11-B11-G1-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-007:3 / 3"
-    },
-    {
-      "id": "V11-B11-G1-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-007:4 / 4"
-    },
-    {
-      "id": "V11-B11-G1-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-007:5 / 5"
-    },
-    {
-      "id": "V11-B11-G1-008",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G1-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-007:6 / 6"
-    },
-    {
-      "id": "V11-B11-G1-008",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G1-008",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G1-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-007:7 / 7"
-    },
-    {
-      "id": "V11-B11-G1-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-007:8 / 8"
-    },
-    {
-      "id": "V11-B11-G1-008",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-008",
-      "code": "WEAK_REASON",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-007:9 / 9"
-    },
-    {
-      "id": "V11-B11-G1-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-007:10 / 10"
-    },
-    {
-      "id": "V11-B11-G1-008",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
-    },
-    {
       "id": "V11-B11-G1-009",
       "code": "STAGE",
       "detail": "question r2 not applied"
@@ -740,101 +134,6 @@
       "id": "V11-B11-G1-009",
       "code": "HUMAN_REVIEW",
       "detail": "question human review marker missing"
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-008:1 / 1"
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-008:2 / 2"
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-008:3 / 3"
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 3
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-008:4 / 4"
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 4
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-008:5 / 5"
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-008:6 / 6"
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-008:7 / 7"
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-008:8 / 8"
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "WEAK_REASON",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-008:9 / 9"
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 9
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-008:10 / 10"
-    },
-    {
-      "id": "V11-B11-G1-009",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
     },
     {
       "id": "V11-B11-G1-010",
@@ -849,102 +148,7 @@
     {
       "id": "V11-B11-G1-010",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-009:1 / 1"
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-009:2 / 2"
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-009:3 / 3"
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 3
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-009:4 / 4"
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 4
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-009:5 / 5"
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-009:6 / 6"
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-009:7 / 7"
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 7
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-009:8 / 8"
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "WEAK_REASON",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-009:9 / 9"
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 9
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-009:10 / 10"
-    },
-    {
-      "id": "V11-B11-G1-010",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
+      "detail": "V11-B11-G1-010:1 / 8"
     },
     {
       "id": "V11-B11-G1-011",
@@ -955,96 +159,6 @@
       "id": "V11-B11-G1-011",
       "code": "HUMAN_REVIEW",
       "detail": "question human review marker missing"
-    },
-    {
-      "id": "V11-B11-G1-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-010:1 / 1"
-    },
-    {
-      "id": "V11-B11-G1-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-010:2 / 2"
-    },
-    {
-      "id": "V11-B11-G1-011",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 2
-    },
-    {
-      "id": "V11-B11-G1-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-010:3 / 3"
-    },
-    {
-      "id": "V11-B11-G1-011",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 3
-    },
-    {
-      "id": "V11-B11-G1-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-010:4 / 4"
-    },
-    {
-      "id": "V11-B11-G1-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-010:5 / 5"
-    },
-    {
-      "id": "V11-B11-G1-011",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G1-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-010:6 / 6"
-    },
-    {
-      "id": "V11-B11-G1-011",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G1-011",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G1-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-010:7 / 7"
-    },
-    {
-      "id": "V11-B11-G1-011",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 7
-    },
-    {
-      "id": "V11-B11-G1-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-010:8 / 8"
-    },
-    {
-      "id": "V11-B11-G1-011",
-      "code": "WEAK_REASON",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-010:9 / 9"
-    },
-    {
-      "id": "V11-B11-G1-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-010:10 / 10"
-    },
-    {
-      "id": "V11-B11-G1-011",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
     },
     {
       "id": "V11-B11-G1-012",
@@ -1057,66 +171,6 @@
       "detail": "question human review marker missing"
     },
     {
-      "id": "V11-B11-G1-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-011:1 / 1"
-    },
-    {
-      "id": "V11-B11-G1-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-011:2 / 2"
-    },
-    {
-      "id": "V11-B11-G1-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-011:3 / 3"
-    },
-    {
-      "id": "V11-B11-G1-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-011:4 / 4"
-    },
-    {
-      "id": "V11-B11-G1-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-011:5 / 5"
-    },
-    {
-      "id": "V11-B11-G1-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-011:6 / 6"
-    },
-    {
-      "id": "V11-B11-G1-012",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G1-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-011:7 / 7"
-    },
-    {
-      "id": "V11-B11-G1-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-011:8 / 8"
-    },
-    {
-      "id": "V11-B11-G1-012",
-      "code": "WEAK_REASON",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-011:9 / 9"
-    },
-    {
-      "id": "V11-B11-G1-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-011:10 / 10"
-    },
-    {
       "id": "V11-B11-G1-013",
       "code": "STAGE",
       "detail": "question r2 not applied"
@@ -1127,86 +181,6 @@
       "detail": "question human review marker missing"
     },
     {
-      "id": "V11-B11-G1-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-012:1 / 1"
-    },
-    {
-      "id": "V11-B11-G1-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-012:2 / 2"
-    },
-    {
-      "id": "V11-B11-G1-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-012:3 / 3"
-    },
-    {
-      "id": "V11-B11-G1-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-012:4 / 4"
-    },
-    {
-      "id": "V11-B11-G1-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-012:5 / 5"
-    },
-    {
-      "id": "V11-B11-G1-013",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G1-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-012:6 / 6"
-    },
-    {
-      "id": "V11-B11-G1-013",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G1-013",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G1-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-012:7 / 7"
-    },
-    {
-      "id": "V11-B11-G1-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-012:8 / 8"
-    },
-    {
-      "id": "V11-B11-G1-013",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-013",
-      "code": "WEAK_REASON",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-012:9 / 9"
-    },
-    {
-      "id": "V11-B11-G1-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-012:10 / 10"
-    },
-    {
-      "id": "V11-B11-G1-013",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
-    },
-    {
       "id": "V11-B11-G1-014",
       "code": "STAGE",
       "detail": "question r2 not applied"
@@ -1215,96 +189,6 @@
       "id": "V11-B11-G1-014",
       "code": "HUMAN_REVIEW",
       "detail": "question human review marker missing"
-    },
-    {
-      "id": "V11-B11-G1-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-013:1 / 1"
-    },
-    {
-      "id": "V11-B11-G1-014",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 1
-    },
-    {
-      "id": "V11-B11-G1-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-013:2 / 2"
-    },
-    {
-      "id": "V11-B11-G1-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-013:3 / 3"
-    },
-    {
-      "id": "V11-B11-G1-014",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 3
-    },
-    {
-      "id": "V11-B11-G1-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-013:4 / 4"
-    },
-    {
-      "id": "V11-B11-G1-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-013:5 / 5"
-    },
-    {
-      "id": "V11-B11-G1-014",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G1-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-013:6 / 6"
-    },
-    {
-      "id": "V11-B11-G1-014",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G1-014",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G1-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-013:7 / 7"
-    },
-    {
-      "id": "V11-B11-G1-014",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 7
-    },
-    {
-      "id": "V11-B11-G1-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-013:8 / 8"
-    },
-    {
-      "id": "V11-B11-G1-014",
-      "code": "WEAK_REASON",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-013:9 / 9"
-    },
-    {
-      "id": "V11-B11-G1-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-013:10 / 10"
-    },
-    {
-      "id": "V11-B11-G1-014",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
     },
     {
       "id": "V11-B11-G1-015",
@@ -1319,82 +203,7 @@
     {
       "id": "V11-B11-G1-015",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-014:1 / 1"
-    },
-    {
-      "id": "V11-B11-G1-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-014:2 / 2"
-    },
-    {
-      "id": "V11-B11-G1-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-014:3 / 3"
-    },
-    {
-      "id": "V11-B11-G1-015",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 3
-    },
-    {
-      "id": "V11-B11-G1-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-014:4 / 4"
-    },
-    {
-      "id": "V11-B11-G1-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-014:5 / 5"
-    },
-    {
-      "id": "V11-B11-G1-015",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G1-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-014:6 / 6"
-    },
-    {
-      "id": "V11-B11-G1-015",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G1-015",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G1-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-014:7 / 7"
-    },
-    {
-      "id": "V11-B11-G1-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-014:8 / 8"
-    },
-    {
-      "id": "V11-B11-G1-015",
-      "code": "WEAK_REASON",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-014:9 / 9"
-    },
-    {
-      "id": "V11-B11-G1-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-014:10 / 10"
-    },
-    {
-      "id": "V11-B11-G1-015",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
+      "detail": "V11-B11-G1-015:1 / 8"
     },
     {
       "id": "V11-B11-G1-016",
@@ -1407,76 +216,6 @@
       "detail": "question human review marker missing"
     },
     {
-      "id": "V11-B11-G1-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-015:1 / 1"
-    },
-    {
-      "id": "V11-B11-G1-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-015:2 / 2"
-    },
-    {
-      "id": "V11-B11-G1-016",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 2
-    },
-    {
-      "id": "V11-B11-G1-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-015:3 / 3"
-    },
-    {
-      "id": "V11-B11-G1-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-015:4 / 4"
-    },
-    {
-      "id": "V11-B11-G1-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-015:5 / 5"
-    },
-    {
-      "id": "V11-B11-G1-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-015:6 / 6"
-    },
-    {
-      "id": "V11-B11-G1-016",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G1-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-015:7 / 7"
-    },
-    {
-      "id": "V11-B11-G1-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-015:8 / 8"
-    },
-    {
-      "id": "V11-B11-G1-016",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-016",
-      "code": "WEAK_REASON",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-015:9 / 9"
-    },
-    {
-      "id": "V11-B11-G1-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-015:10 / 10"
-    },
-    {
       "id": "V11-B11-G1-017",
       "code": "STAGE",
       "detail": "question r2 not applied"
@@ -1485,91 +224,6 @@
       "id": "V11-B11-G1-017",
       "code": "HUMAN_REVIEW",
       "detail": "question human review marker missing"
-    },
-    {
-      "id": "V11-B11-G1-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-016:1 / 1"
-    },
-    {
-      "id": "V11-B11-G1-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-016:2 / 2"
-    },
-    {
-      "id": "V11-B11-G1-017",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 2
-    },
-    {
-      "id": "V11-B11-G1-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-016:3 / 3"
-    },
-    {
-      "id": "V11-B11-G1-017",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 3
-    },
-    {
-      "id": "V11-B11-G1-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-016:4 / 4"
-    },
-    {
-      "id": "V11-B11-G1-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-016:5 / 5"
-    },
-    {
-      "id": "V11-B11-G1-017",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G1-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-016:6 / 6"
-    },
-    {
-      "id": "V11-B11-G1-017",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G1-017",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G1-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-016:7 / 7"
-    },
-    {
-      "id": "V11-B11-G1-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-016:8 / 8"
-    },
-    {
-      "id": "V11-B11-G1-017",
-      "code": "WEAK_REASON",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G1-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-016:9 / 9"
-    },
-    {
-      "id": "V11-B11-G1-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-016:10 / 10"
-    },
-    {
-      "id": "V11-B11-G1-017",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
     },
     {
       "id": "V11-B11-G2-001",
@@ -1582,21 +236,6 @@
       "detail": "question human review marker missing"
     },
     {
-      "id": "V11-B11-G2-001",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 3
-    },
-    {
-      "id": "V11-B11-G2-001",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G2-001",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G1-017:10 / 10"
-    },
-    {
       "id": "V11-B11-G2-002",
       "code": "STAGE",
       "detail": "question r2 not applied"
@@ -1609,57 +248,7 @@
     {
       "id": "V11-B11-G2-002",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-001:1 / 1"
-    },
-    {
-      "id": "V11-B11-G2-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-001:2 / 2"
-    },
-    {
-      "id": "V11-B11-G2-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-001:3 / 3"
-    },
-    {
-      "id": "V11-B11-G2-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-001:4 / 4"
-    },
-    {
-      "id": "V11-B11-G2-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-001:5 / 5"
-    },
-    {
-      "id": "V11-B11-G2-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-001:6 / 6"
-    },
-    {
-      "id": "V11-B11-G2-002",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G2-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-001:7 / 7"
-    },
-    {
-      "id": "V11-B11-G2-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-001:8 / 8"
-    },
-    {
-      "id": "V11-B11-G2-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-001:9 / 9"
-    },
-    {
-      "id": "V11-B11-G2-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-001:10 / 10"
+      "detail": "V11-B11-G2-002:1 / 8"
     },
     {
       "id": "V11-B11-G2-003",
@@ -1674,57 +263,7 @@
     {
       "id": "V11-B11-G2-003",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-002:1 / 1"
-    },
-    {
-      "id": "V11-B11-G2-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-002:2 / 2"
-    },
-    {
-      "id": "V11-B11-G2-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-002:3 / 3"
-    },
-    {
-      "id": "V11-B11-G2-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-002:4 / 4"
-    },
-    {
-      "id": "V11-B11-G2-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-002:5 / 5"
-    },
-    {
-      "id": "V11-B11-G2-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-002:6 / 6"
-    },
-    {
-      "id": "V11-B11-G2-003",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G2-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-002:7 / 7"
-    },
-    {
-      "id": "V11-B11-G2-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-002:8 / 8"
-    },
-    {
-      "id": "V11-B11-G2-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-002:9 / 9"
-    },
-    {
-      "id": "V11-B11-G2-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-002:10 / 10"
+      "detail": "V11-B11-G2-003:1 / 8"
     },
     {
       "id": "V11-B11-G2-004",
@@ -1735,71 +274,6 @@
       "id": "V11-B11-G2-004",
       "code": "HUMAN_REVIEW",
       "detail": "question human review marker missing"
-    },
-    {
-      "id": "V11-B11-G2-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-003:1 / 1"
-    },
-    {
-      "id": "V11-B11-G2-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-003:2 / 2"
-    },
-    {
-      "id": "V11-B11-G2-004",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 2
-    },
-    {
-      "id": "V11-B11-G2-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-003:3 / 3"
-    },
-    {
-      "id": "V11-B11-G2-004",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 3
-    },
-    {
-      "id": "V11-B11-G2-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-003:4 / 4"
-    },
-    {
-      "id": "V11-B11-G2-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-003:5 / 5"
-    },
-    {
-      "id": "V11-B11-G2-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-003:6 / 6"
-    },
-    {
-      "id": "V11-B11-G2-004",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G2-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-003:7 / 7"
-    },
-    {
-      "id": "V11-B11-G2-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-003:8 / 8"
-    },
-    {
-      "id": "V11-B11-G2-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-003:9 / 9"
-    },
-    {
-      "id": "V11-B11-G2-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-003:10 / 10"
     },
     {
       "id": "V11-B11-G2-005",
@@ -1814,72 +288,7 @@
     {
       "id": "V11-B11-G2-005",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-004:1 / 1"
-    },
-    {
-      "id": "V11-B11-G2-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-004:2 / 2"
-    },
-    {
-      "id": "V11-B11-G2-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-004:3 / 3"
-    },
-    {
-      "id": "V11-B11-G2-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-004:4 / 4"
-    },
-    {
-      "id": "V11-B11-G2-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-004:5 / 5"
-    },
-    {
-      "id": "V11-B11-G2-005",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G2-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-004:6 / 6"
-    },
-    {
-      "id": "V11-B11-G2-005",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G2-005",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G2-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-004:7 / 7"
-    },
-    {
-      "id": "V11-B11-G2-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-004:8 / 8"
-    },
-    {
-      "id": "V11-B11-G2-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-004:9 / 9"
-    },
-    {
-      "id": "V11-B11-G2-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-004:10 / 10"
-    },
-    {
-      "id": "V11-B11-G2-005",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
+      "detail": "V11-B11-G2-005:1 / 8"
     },
     {
       "id": "V11-B11-G2-006",
@@ -1892,61 +301,6 @@
       "detail": "question human review marker missing"
     },
     {
-      "id": "V11-B11-G2-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-005:1 / 1"
-    },
-    {
-      "id": "V11-B11-G2-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-005:2 / 2"
-    },
-    {
-      "id": "V11-B11-G2-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-005:3 / 3"
-    },
-    {
-      "id": "V11-B11-G2-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-005:4 / 4"
-    },
-    {
-      "id": "V11-B11-G2-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-005:5 / 5"
-    },
-    {
-      "id": "V11-B11-G2-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-005:6 / 6"
-    },
-    {
-      "id": "V11-B11-G2-006",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G2-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-005:7 / 7"
-    },
-    {
-      "id": "V11-B11-G2-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-005:8 / 8"
-    },
-    {
-      "id": "V11-B11-G2-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-005:9 / 9"
-    },
-    {
-      "id": "V11-B11-G2-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-005:10 / 10"
-    },
-    {
       "id": "V11-B11-G2-007",
       "code": "STAGE",
       "detail": "question r2 not applied"
@@ -1955,76 +309,6 @@
       "id": "V11-B11-G2-007",
       "code": "HUMAN_REVIEW",
       "detail": "question human review marker missing"
-    },
-    {
-      "id": "V11-B11-G2-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-006:1 / 1"
-    },
-    {
-      "id": "V11-B11-G2-007",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 1
-    },
-    {
-      "id": "V11-B11-G2-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-006:2 / 2"
-    },
-    {
-      "id": "V11-B11-G2-007",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 2
-    },
-    {
-      "id": "V11-B11-G2-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-006:3 / 3"
-    },
-    {
-      "id": "V11-B11-G2-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-006:4 / 4"
-    },
-    {
-      "id": "V11-B11-G2-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-006:5 / 5"
-    },
-    {
-      "id": "V11-B11-G2-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-006:6 / 6"
-    },
-    {
-      "id": "V11-B11-G2-007",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G2-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-006:7 / 7"
-    },
-    {
-      "id": "V11-B11-G2-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-006:8 / 8"
-    },
-    {
-      "id": "V11-B11-G2-007",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G2-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-006:9 / 9"
-    },
-    {
-      "id": "V11-B11-G2-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-006:10 / 10"
     },
     {
       "id": "V11-B11-G2-008",
@@ -2037,61 +321,6 @@
       "detail": "question human review marker missing"
     },
     {
-      "id": "V11-B11-G2-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-007:1 / 1"
-    },
-    {
-      "id": "V11-B11-G2-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-007:2 / 2"
-    },
-    {
-      "id": "V11-B11-G2-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-007:3 / 3"
-    },
-    {
-      "id": "V11-B11-G2-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-007:4 / 4"
-    },
-    {
-      "id": "V11-B11-G2-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-007:5 / 5"
-    },
-    {
-      "id": "V11-B11-G2-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-007:6 / 6"
-    },
-    {
-      "id": "V11-B11-G2-008",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G2-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-007:7 / 7"
-    },
-    {
-      "id": "V11-B11-G2-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-007:8 / 8"
-    },
-    {
-      "id": "V11-B11-G2-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-007:9 / 9"
-    },
-    {
-      "id": "V11-B11-G2-008",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-007:10 / 10"
-    },
-    {
       "id": "V11-B11-G2-009",
       "code": "STAGE",
       "detail": "question r2 not applied"
@@ -2100,66 +329,6 @@
       "id": "V11-B11-G2-009",
       "code": "HUMAN_REVIEW",
       "detail": "question human review marker missing"
-    },
-    {
-      "id": "V11-B11-G2-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-008:1 / 1"
-    },
-    {
-      "id": "V11-B11-G2-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-008:2 / 2"
-    },
-    {
-      "id": "V11-B11-G2-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-008:3 / 3"
-    },
-    {
-      "id": "V11-B11-G2-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-008:4 / 4"
-    },
-    {
-      "id": "V11-B11-G2-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-008:5 / 5"
-    },
-    {
-      "id": "V11-B11-G2-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-008:6 / 6"
-    },
-    {
-      "id": "V11-B11-G2-009",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G2-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-008:7 / 7"
-    },
-    {
-      "id": "V11-B11-G2-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-008:8 / 8"
-    },
-    {
-      "id": "V11-B11-G2-009",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G2-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-008:9 / 9"
-    },
-    {
-      "id": "V11-B11-G2-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-008:10 / 10"
     },
     {
       "id": "V11-B11-G2-010",
@@ -2174,57 +343,7 @@
     {
       "id": "V11-B11-G2-010",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-009:1 / 1"
-    },
-    {
-      "id": "V11-B11-G2-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-009:2 / 2"
-    },
-    {
-      "id": "V11-B11-G2-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-009:3 / 3"
-    },
-    {
-      "id": "V11-B11-G2-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-009:4 / 4"
-    },
-    {
-      "id": "V11-B11-G2-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-009:5 / 5"
-    },
-    {
-      "id": "V11-B11-G2-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-009:6 / 6"
-    },
-    {
-      "id": "V11-B11-G2-010",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G2-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-009:7 / 7"
-    },
-    {
-      "id": "V11-B11-G2-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-009:8 / 8"
-    },
-    {
-      "id": "V11-B11-G2-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-009:9 / 9"
-    },
-    {
-      "id": "V11-B11-G2-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-009:10 / 10"
+      "detail": "V11-B11-G2-010:1 / 8"
     },
     {
       "id": "V11-B11-G2-011",
@@ -2239,72 +358,7 @@
     {
       "id": "V11-B11-G2-011",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-010:1 / 1"
-    },
-    {
-      "id": "V11-B11-G2-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-010:2 / 2"
-    },
-    {
-      "id": "V11-B11-G2-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-010:3 / 3"
-    },
-    {
-      "id": "V11-B11-G2-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-010:4 / 4"
-    },
-    {
-      "id": "V11-B11-G2-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-010:5 / 5"
-    },
-    {
-      "id": "V11-B11-G2-011",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G2-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-010:6 / 6"
-    },
-    {
-      "id": "V11-B11-G2-011",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G2-011",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G2-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-010:7 / 7"
-    },
-    {
-      "id": "V11-B11-G2-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-010:8 / 8"
-    },
-    {
-      "id": "V11-B11-G2-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-010:9 / 9"
-    },
-    {
-      "id": "V11-B11-G2-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-010:10 / 10"
-    },
-    {
-      "id": "V11-B11-G2-011",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
+      "detail": "V11-B11-G2-011:1 / 8"
     },
     {
       "id": "V11-B11-G2-012",
@@ -2315,66 +369,6 @@
       "id": "V11-B11-G2-012",
       "code": "HUMAN_REVIEW",
       "detail": "question human review marker missing"
-    },
-    {
-      "id": "V11-B11-G2-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-011:1 / 1"
-    },
-    {
-      "id": "V11-B11-G2-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-011:2 / 2"
-    },
-    {
-      "id": "V11-B11-G2-012",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 2
-    },
-    {
-      "id": "V11-B11-G2-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-011:3 / 3"
-    },
-    {
-      "id": "V11-B11-G2-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-011:4 / 4"
-    },
-    {
-      "id": "V11-B11-G2-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-011:5 / 5"
-    },
-    {
-      "id": "V11-B11-G2-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-011:6 / 6"
-    },
-    {
-      "id": "V11-B11-G2-012",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G2-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-011:7 / 7"
-    },
-    {
-      "id": "V11-B11-G2-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-011:8 / 8"
-    },
-    {
-      "id": "V11-B11-G2-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-011:9 / 9"
-    },
-    {
-      "id": "V11-B11-G2-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-011:10 / 10"
     },
     {
       "id": "V11-B11-G2-013",
@@ -2389,57 +383,7 @@
     {
       "id": "V11-B11-G2-013",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-012:1 / 1"
-    },
-    {
-      "id": "V11-B11-G2-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-012:2 / 2"
-    },
-    {
-      "id": "V11-B11-G2-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-012:3 / 3"
-    },
-    {
-      "id": "V11-B11-G2-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-012:4 / 4"
-    },
-    {
-      "id": "V11-B11-G2-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-012:5 / 5"
-    },
-    {
-      "id": "V11-B11-G2-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-012:6 / 6"
-    },
-    {
-      "id": "V11-B11-G2-013",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G2-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-012:7 / 7"
-    },
-    {
-      "id": "V11-B11-G2-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-012:8 / 8"
-    },
-    {
-      "id": "V11-B11-G2-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-012:9 / 9"
-    },
-    {
-      "id": "V11-B11-G2-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-012:10 / 10"
+      "detail": "V11-B11-G2-013:1 / 8"
     },
     {
       "id": "V11-B11-G2-014",
@@ -2450,61 +394,6 @@
       "id": "V11-B11-G2-014",
       "code": "HUMAN_REVIEW",
       "detail": "question human review marker missing"
-    },
-    {
-      "id": "V11-B11-G2-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-013:1 / 1"
-    },
-    {
-      "id": "V11-B11-G2-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-013:2 / 2"
-    },
-    {
-      "id": "V11-B11-G2-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-013:3 / 3"
-    },
-    {
-      "id": "V11-B11-G2-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-013:4 / 4"
-    },
-    {
-      "id": "V11-B11-G2-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-013:5 / 5"
-    },
-    {
-      "id": "V11-B11-G2-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-013:6 / 6"
-    },
-    {
-      "id": "V11-B11-G2-014",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G2-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-013:7 / 7"
-    },
-    {
-      "id": "V11-B11-G2-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-013:8 / 8"
-    },
-    {
-      "id": "V11-B11-G2-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-013:9 / 9"
-    },
-    {
-      "id": "V11-B11-G2-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-013:10 / 10"
     },
     {
       "id": "V11-B11-G2-015",
@@ -2519,57 +408,7 @@
     {
       "id": "V11-B11-G2-015",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-014:1 / 1"
-    },
-    {
-      "id": "V11-B11-G2-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-014:2 / 2"
-    },
-    {
-      "id": "V11-B11-G2-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-014:3 / 3"
-    },
-    {
-      "id": "V11-B11-G2-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-014:4 / 4"
-    },
-    {
-      "id": "V11-B11-G2-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-014:5 / 5"
-    },
-    {
-      "id": "V11-B11-G2-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-014:6 / 6"
-    },
-    {
-      "id": "V11-B11-G2-015",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G2-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-014:7 / 7"
-    },
-    {
-      "id": "V11-B11-G2-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-014:8 / 8"
-    },
-    {
-      "id": "V11-B11-G2-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-014:9 / 9"
-    },
-    {
-      "id": "V11-B11-G2-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-014:10 / 10"
+      "detail": "V11-B11-G2-015:1 / 8"
     },
     {
       "id": "V11-B11-G2-016",
@@ -2580,61 +419,6 @@
       "id": "V11-B11-G2-016",
       "code": "HUMAN_REVIEW",
       "detail": "question human review marker missing"
-    },
-    {
-      "id": "V11-B11-G2-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-015:1 / 1"
-    },
-    {
-      "id": "V11-B11-G2-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-015:2 / 2"
-    },
-    {
-      "id": "V11-B11-G2-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-015:3 / 3"
-    },
-    {
-      "id": "V11-B11-G2-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-015:4 / 4"
-    },
-    {
-      "id": "V11-B11-G2-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-015:5 / 5"
-    },
-    {
-      "id": "V11-B11-G2-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-015:6 / 6"
-    },
-    {
-      "id": "V11-B11-G2-016",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G2-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-015:7 / 7"
-    },
-    {
-      "id": "V11-B11-G2-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-015:8 / 8"
-    },
-    {
-      "id": "V11-B11-G2-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-015:9 / 9"
-    },
-    {
-      "id": "V11-B11-G2-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-015:10 / 10"
     },
     {
       "id": "V11-B11-G2-017",
@@ -2649,57 +433,7 @@
     {
       "id": "V11-B11-G2-017",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-016:1 / 1"
-    },
-    {
-      "id": "V11-B11-G2-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-016:2 / 2"
-    },
-    {
-      "id": "V11-B11-G2-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-016:3 / 3"
-    },
-    {
-      "id": "V11-B11-G2-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-016:4 / 4"
-    },
-    {
-      "id": "V11-B11-G2-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-016:5 / 5"
-    },
-    {
-      "id": "V11-B11-G2-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-016:6 / 6"
-    },
-    {
-      "id": "V11-B11-G2-017",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G2-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-016:7 / 7"
-    },
-    {
-      "id": "V11-B11-G2-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-016:8 / 8"
-    },
-    {
-      "id": "V11-B11-G2-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-016:9 / 9"
-    },
-    {
-      "id": "V11-B11-G2-017",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-016:10 / 10"
+      "detail": "V11-B11-G2-017:1 / 8"
     },
     {
       "id": "V11-B11-G3-001",
@@ -2714,17 +448,7 @@
     {
       "id": "V11-B11-G3-001",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-017:1 / 1"
-    },
-    {
-      "id": "V11-B11-G3-001",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G3-001",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G2-017:10 / 10"
+      "detail": "V11-B11-G3-001:1 / 8"
     },
     {
       "id": "V11-B11-G3-003",
@@ -2735,61 +459,6 @@
       "id": "V11-B11-G3-003",
       "code": "HUMAN_REVIEW",
       "detail": "question human review marker missing"
-    },
-    {
-      "id": "V11-B11-G3-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-001:1 / 1"
-    },
-    {
-      "id": "V11-B11-G3-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-001:2 / 2"
-    },
-    {
-      "id": "V11-B11-G3-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-001:3 / 3"
-    },
-    {
-      "id": "V11-B11-G3-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-001:4 / 4"
-    },
-    {
-      "id": "V11-B11-G3-003",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G3-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-001:5 / 5"
-    },
-    {
-      "id": "V11-B11-G3-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-001:6 / 6"
-    },
-    {
-      "id": "V11-B11-G3-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-001:7 / 7"
-    },
-    {
-      "id": "V11-B11-G3-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-001:8 / 8"
-    },
-    {
-      "id": "V11-B11-G3-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-001:9 / 9"
-    },
-    {
-      "id": "V11-B11-G3-003",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-001:10 / 10"
     },
     {
       "id": "V11-B11-G3-005",
@@ -2804,57 +473,7 @@
     {
       "id": "V11-B11-G3-005",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-003:1 / 1"
-    },
-    {
-      "id": "V11-B11-G3-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-003:2 / 2"
-    },
-    {
-      "id": "V11-B11-G3-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-003:3 / 3"
-    },
-    {
-      "id": "V11-B11-G3-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-003:4 / 4"
-    },
-    {
-      "id": "V11-B11-G3-005",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G3-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-003:5 / 5"
-    },
-    {
-      "id": "V11-B11-G3-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-003:6 / 6"
-    },
-    {
-      "id": "V11-B11-G3-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-003:7 / 7"
-    },
-    {
-      "id": "V11-B11-G3-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-003:8 / 8"
-    },
-    {
-      "id": "V11-B11-G3-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-003:9 / 9"
-    },
-    {
-      "id": "V11-B11-G3-005",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-003:10 / 10"
+      "detail": "V11-B11-G3-005:1 / 8"
     },
     {
       "id": "V11-B11-G3-007",
@@ -2865,61 +484,6 @@
       "id": "V11-B11-G3-007",
       "code": "HUMAN_REVIEW",
       "detail": "question human review marker missing"
-    },
-    {
-      "id": "V11-B11-G3-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-005:1 / 1"
-    },
-    {
-      "id": "V11-B11-G3-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-005:2 / 2"
-    },
-    {
-      "id": "V11-B11-G3-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-005:3 / 3"
-    },
-    {
-      "id": "V11-B11-G3-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-005:4 / 4"
-    },
-    {
-      "id": "V11-B11-G3-007",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G3-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-005:5 / 5"
-    },
-    {
-      "id": "V11-B11-G3-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-005:6 / 6"
-    },
-    {
-      "id": "V11-B11-G3-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-005:7 / 7"
-    },
-    {
-      "id": "V11-B11-G3-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-005:8 / 8"
-    },
-    {
-      "id": "V11-B11-G3-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-005:9 / 9"
-    },
-    {
-      "id": "V11-B11-G3-007",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-005:10 / 10"
     },
     {
       "id": "V11-B11-G3-009",
@@ -2934,57 +498,7 @@
     {
       "id": "V11-B11-G3-009",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-007:1 / 1"
-    },
-    {
-      "id": "V11-B11-G3-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-007:2 / 2"
-    },
-    {
-      "id": "V11-B11-G3-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-007:3 / 3"
-    },
-    {
-      "id": "V11-B11-G3-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-007:4 / 4"
-    },
-    {
-      "id": "V11-B11-G3-009",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G3-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-007:5 / 5"
-    },
-    {
-      "id": "V11-B11-G3-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-007:6 / 6"
-    },
-    {
-      "id": "V11-B11-G3-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-007:7 / 7"
-    },
-    {
-      "id": "V11-B11-G3-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-007:8 / 8"
-    },
-    {
-      "id": "V11-B11-G3-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-007:9 / 9"
-    },
-    {
-      "id": "V11-B11-G3-009",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-007:10 / 10"
+      "detail": "V11-B11-G3-009:1 / 8"
     },
     {
       "id": "V11-B11-G3-011",
@@ -2999,57 +513,7 @@
     {
       "id": "V11-B11-G3-011",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-009:1 / 1"
-    },
-    {
-      "id": "V11-B11-G3-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-009:2 / 2"
-    },
-    {
-      "id": "V11-B11-G3-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-009:3 / 3"
-    },
-    {
-      "id": "V11-B11-G3-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-009:4 / 4"
-    },
-    {
-      "id": "V11-B11-G3-011",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G3-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-009:5 / 5"
-    },
-    {
-      "id": "V11-B11-G3-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-009:6 / 6"
-    },
-    {
-      "id": "V11-B11-G3-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-009:7 / 7"
-    },
-    {
-      "id": "V11-B11-G3-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-009:8 / 8"
-    },
-    {
-      "id": "V11-B11-G3-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-009:9 / 9"
-    },
-    {
-      "id": "V11-B11-G3-011",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-009:10 / 10"
+      "detail": "V11-B11-G3-011:1 / 8"
     },
     {
       "id": "V11-B11-G3-013",
@@ -3062,61 +526,6 @@
       "detail": "question human review marker missing"
     },
     {
-      "id": "V11-B11-G3-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-011:1 / 1"
-    },
-    {
-      "id": "V11-B11-G3-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-011:2 / 2"
-    },
-    {
-      "id": "V11-B11-G3-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-011:3 / 3"
-    },
-    {
-      "id": "V11-B11-G3-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-011:4 / 4"
-    },
-    {
-      "id": "V11-B11-G3-013",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G3-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-011:5 / 5"
-    },
-    {
-      "id": "V11-B11-G3-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-011:6 / 6"
-    },
-    {
-      "id": "V11-B11-G3-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-011:7 / 7"
-    },
-    {
-      "id": "V11-B11-G3-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-011:8 / 8"
-    },
-    {
-      "id": "V11-B11-G3-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-011:9 / 9"
-    },
-    {
-      "id": "V11-B11-G3-013",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-011:10 / 10"
-    },
-    {
       "id": "V11-B11-G3-015",
       "code": "STAGE",
       "detail": "question r2 not applied"
@@ -3125,61 +534,6 @@
       "id": "V11-B11-G3-015",
       "code": "HUMAN_REVIEW",
       "detail": "question human review marker missing"
-    },
-    {
-      "id": "V11-B11-G3-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-013:1 / 1"
-    },
-    {
-      "id": "V11-B11-G3-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-013:2 / 2"
-    },
-    {
-      "id": "V11-B11-G3-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-013:3 / 3"
-    },
-    {
-      "id": "V11-B11-G3-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-013:4 / 4"
-    },
-    {
-      "id": "V11-B11-G3-015",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G3-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-013:5 / 5"
-    },
-    {
-      "id": "V11-B11-G3-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-013:6 / 6"
-    },
-    {
-      "id": "V11-B11-G3-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-013:7 / 7"
-    },
-    {
-      "id": "V11-B11-G3-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-013:8 / 8"
-    },
-    {
-      "id": "V11-B11-G3-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-013:9 / 9"
-    },
-    {
-      "id": "V11-B11-G3-015",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-013:10 / 10"
     },
     {
       "id": "V11-B11-G3-002",
@@ -3194,67 +548,7 @@
     {
       "id": "V11-B11-G3-002",
       "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-015:1 / 1"
-    },
-    {
-      "id": "V11-B11-G3-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-015:2 / 2"
-    },
-    {
-      "id": "V11-B11-G3-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-015:3 / 3"
-    },
-    {
-      "id": "V11-B11-G3-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-015:4 / 4"
-    },
-    {
-      "id": "V11-B11-G3-002",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G3-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-015:5 / 5"
-    },
-    {
-      "id": "V11-B11-G3-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-015:6 / 6"
-    },
-    {
-      "id": "V11-B11-G3-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-015:7 / 7"
-    },
-    {
-      "id": "V11-B11-G3-002",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 7
-    },
-    {
-      "id": "V11-B11-G3-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-015:8 / 8"
-    },
-    {
-      "id": "V11-B11-G3-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-015:9 / 9"
-    },
-    {
-      "id": "V11-B11-G3-002",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-015:10 / 10"
-    },
-    {
-      "id": "V11-B11-G3-002",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
+      "detail": "V11-B11-G3-002:1 / 8"
     },
     {
       "id": "V11-B11-G3-006",
@@ -3267,81 +561,6 @@
       "detail": "question human review marker missing"
     },
     {
-      "id": "V11-B11-G3-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-002:1 / 1"
-    },
-    {
-      "id": "V11-B11-G3-006",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 1
-    },
-    {
-      "id": "V11-B11-G3-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-002:2 / 2"
-    },
-    {
-      "id": "V11-B11-G3-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-002:3 / 3"
-    },
-    {
-      "id": "V11-B11-G3-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-002:4 / 4"
-    },
-    {
-      "id": "V11-B11-G3-006",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G3-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-002:5 / 5"
-    },
-    {
-      "id": "V11-B11-G3-006",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G3-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-002:6 / 6"
-    },
-    {
-      "id": "V11-B11-G3-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-002:7 / 7"
-    },
-    {
-      "id": "V11-B11-G3-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-002:8 / 8"
-    },
-    {
-      "id": "V11-B11-G3-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-002:9 / 9"
-    },
-    {
-      "id": "V11-B11-G3-006",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 9
-    },
-    {
-      "id": "V11-B11-G3-006",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-002:10 / 10"
-    },
-    {
-      "id": "V11-B11-G3-006",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
-    },
-    {
       "id": "V11-B11-G3-010",
       "code": "STAGE",
       "detail": "question r2 not applied"
@@ -3352,66 +571,6 @@
       "detail": "question human review marker missing"
     },
     {
-      "id": "V11-B11-G3-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-006:1 / 1"
-    },
-    {
-      "id": "V11-B11-G3-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-006:2 / 2"
-    },
-    {
-      "id": "V11-B11-G3-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-006:3 / 3"
-    },
-    {
-      "id": "V11-B11-G3-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-006:4 / 4"
-    },
-    {
-      "id": "V11-B11-G3-010",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G3-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-006:5 / 5"
-    },
-    {
-      "id": "V11-B11-G3-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-006:6 / 6"
-    },
-    {
-      "id": "V11-B11-G3-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-006:7 / 7"
-    },
-    {
-      "id": "V11-B11-G3-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-006:8 / 8"
-    },
-    {
-      "id": "V11-B11-G3-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-006:9 / 9"
-    },
-    {
-      "id": "V11-B11-G3-010",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-006:10 / 10"
-    },
-    {
-      "id": "V11-B11-G3-010",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
-    },
-    {
       "id": "V11-B11-G3-014",
       "code": "STAGE",
       "detail": "question r2 not applied"
@@ -3420,76 +579,6 @@
       "id": "V11-B11-G3-014",
       "code": "HUMAN_REVIEW",
       "detail": "question human review marker missing"
-    },
-    {
-      "id": "V11-B11-G3-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-010:1 / 1"
-    },
-    {
-      "id": "V11-B11-G3-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-010:2 / 2"
-    },
-    {
-      "id": "V11-B11-G3-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-010:3 / 3"
-    },
-    {
-      "id": "V11-B11-G3-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-010:4 / 4"
-    },
-    {
-      "id": "V11-B11-G3-014",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G3-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-010:5 / 5"
-    },
-    {
-      "id": "V11-B11-G3-014",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G3-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-010:6 / 6"
-    },
-    {
-      "id": "V11-B11-G3-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-010:7 / 7"
-    },
-    {
-      "id": "V11-B11-G3-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-010:8 / 8"
-    },
-    {
-      "id": "V11-B11-G3-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-010:9 / 9"
-    },
-    {
-      "id": "V11-B11-G3-014",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 9
-    },
-    {
-      "id": "V11-B11-G3-014",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-010:10 / 10"
-    },
-    {
-      "id": "V11-B11-G3-014",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
     },
     {
       "id": "V11-B11-G3-008",
@@ -3502,41 +591,6 @@
       "detail": "question human review marker missing"
     },
     {
-      "id": "V11-B11-G3-008",
-      "code": "EVIDENCE_NOT_IN_PASSAGE",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G3-008",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G3-008",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 7
-    },
-    {
-      "id": "V11-B11-G3-008",
-      "code": "EVIDENCE_NOT_IN_PASSAGE",
-      "detail": 9
-    },
-    {
-      "id": "V11-B11-G3-008",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 9
-    },
-    {
-      "id": "V11-B11-G3-008",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G3-008",
-      "code": "YAMAGUCHI_MATERIAL_LINK_COUNT",
-      "detail": 1
-    },
-    {
       "id": "V11-B11-G3-012",
       "code": "STAGE",
       "detail": "question r2 not applied"
@@ -3545,96 +599,6 @@
       "id": "V11-B11-G3-012",
       "code": "HUMAN_REVIEW",
       "detail": "question human review marker missing"
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-008:1 / 1"
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-008:2 / 2"
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-008:3 / 3"
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-008:4 / 4"
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-008:5 / 5"
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-008:6 / 6"
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "EVIDENCE_NOT_IN_PASSAGE",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-008:7 / 7"
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 7
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-008:8 / 8"
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-008:9 / 9"
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "EVIDENCE_NOT_IN_PASSAGE",
-      "detail": 9
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 9
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-008:10 / 10"
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "YAMAGUCHI_MATERIAL_LINK_COUNT",
-      "detail": 1
     },
     {
       "id": "V11-B11-G3-004",
@@ -3647,91 +611,6 @@
       "detail": "question human review marker missing"
     },
     {
-      "id": "V11-B11-G3-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-012:1 / 1"
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-012:2 / 2"
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-012:3 / 3"
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-012:4 / 4"
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-012:5 / 5"
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-012:6 / 6"
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "code": "EVIDENCE_NOT_IN_PASSAGE",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-012:7 / 7"
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 7
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-012:8 / 8"
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-012:9 / 9"
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "code": "EVIDENCE_NOT_IN_PASSAGE",
-      "detail": 9
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 9
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-012:10 / 10"
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "code": "YAMAGUCHI_MATERIAL_LINK_COUNT",
-      "detail": 1
-    },
-    {
       "id": "V11-B11-G3-016",
       "code": "STAGE",
       "detail": "question r2 not applied"
@@ -3740,116 +619,6 @@
       "id": "V11-B11-G3-016",
       "code": "HUMAN_REVIEW",
       "detail": "question human review marker missing"
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-004:1 / 1"
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-004:2 / 2"
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-004:3 / 3"
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-004:4 / 4"
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-004:5 / 5"
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 5
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-004:6 / 6"
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "EVIDENCE_NOT_IN_PASSAGE",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 6
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-004:7 / 7"
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 7
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-004:8 / 8"
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 8
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-004:9 / 9"
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "EVIDENCE_NOT_IN_PASSAGE",
-      "detail": 9
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 9
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "UNSUPPORTED_INFERENCE_TEMPLATE",
-      "detail": "R2 must not label a direct evidence answer as inference"
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "DUPLICATE_PROMPT",
-      "detail": "V11-B11-G3-004:10 / 10"
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "ANSWER_EVIDENCE_MISMATCH",
-      "detail": 10
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "YAMAGUCHI_MATERIAL_LINK_COUNT",
-      "detail": 1
-    },
-    {
-      "id": "B11",
-      "code": "TYPE_MISSING",
-      "detail": "RESULT"
-    },
-    {
-      "id": "B11",
-      "code": "TYPE_MISSING",
-      "detail": "EVIDENCE"
     }
   ],
   "warnings": [
@@ -3857,791 +626,307 @@
       "id": "V11-B11-G1-001",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "Its pocket was empty, so the librarian returned the yellow slip to that book."
     },
     {
-      "id": "V11-B11-G1-001",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "Emi learned to use several clues to identify where a paper belongs."
-    },
-    {
       "id": "V11-B11-G1-002",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "The second group checked the record and watered only when no earlier mark was there."
     },
     {
-      "id": "V11-B11-G1-002",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "The class learned that shared work needs a clear record."
-    },
-    {
       "id": "V11-B11-G1-003",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "Afterward, the council added the word 'CHANGED' to future room-change messages."
     },
     {
-      "id": "V11-B11-G1-003",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "Kenta learned to follow the newest dated notice after a schedule change."
-    },
-    {
       "id": "V11-B11-G1-004",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "The scratch matched, so Rina returned the bottle to Mao."
     },
     {
-      "id": "V11-B11-G1-004",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "Rina learned that matching details are stronger clues than appearance alone."
-    },
-    {
       "id": "V11-B11-G1-005",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "The lunch room sent only twenty-four trays, and the extra trays stayed clean for another class."
     },
     {
-      "id": "V11-B11-G1-005",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "Yuna learned to update quantities when the number of people changes."
-    },
-    {
       "id": "V11-B11-G1-006",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "He clipped the pages together and added page numbers before closing the window."
     },
     {
-      "id": "V11-B11-G1-006",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "Haruto learned to restore lost page order from dates and events."
-    },
-    {
       "id": "V11-B11-G1-007",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "Yuto watched from the side and helped check their marks instead of running."
     },
     {
-      "id": "V11-B11-G1-007",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "The team learned that a safe replacement also changes the surrounding order."
-    },
-    {
       "id": "V11-B11-G1-008",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "The moved flowers were no longer bending as quickly, although the damaged ones did not become new again."
     },
     {
-      "id": "V11-B11-G1-008",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "Nami learned to change a condition that matched the observed problem."
-    },
-    {
       "id": "V11-B11-G1-009",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "The school also put a new digital map online and marked the old printed copies clearly."
     },
     {
-      "id": "V11-B11-G1-009",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "Kota learned that an old map sometimes needs one important current correction."
-    },
-    {
       "id": "V11-B11-G1-010",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "Mika returned the eraser to Kei and checked her case for other mixed items."
     },
     {
-      "id": "V11-B11-G1-010",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "She learned that asking for a detail first can confirm an owner fairly."
-    },
-    {
       "id": "V11-B11-G1-011",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "The class added light rain to the chart and wrote 'garden club record' below the entry."
     },
     {
-      "id": "V11-B11-G1-011",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "Ryo learned to fill a missing record with evidence, not a nearby-day guess."
-    },
-    {
       "id": "V11-B11-G1-012",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "They continued turning the pot a little each week so different sides received light."
     },
     {
-      "id": "V11-B11-G1-012",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "Mina learned that changing one condition and observing later can test an idea without damaging the plant."
-    },
-    {
       "id": "V11-B11-G1-013",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "Each member gave a name, and Yuki matched it with the size on the list."
     },
     {
-      "id": "V11-B11-G1-013",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "The club learned that sorting by recorded size prevents mix-ups."
-    },
-    {
       "id": "V11-B11-G1-014",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "Each student received one glove and continued looking for its true partner."
     },
     {
-      "id": "V11-B11-G1-014",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "Taku learned to check side and details before pairing similar lost items."
-    },
-    {
       "id": "V11-B11-G1-015",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "After the Thursday presentation ended, the club used the numbered sheet to rebuild the display for Friday."
     },
     {
-      "id": "V11-B11-G1-015",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "The students learned to check the date and shared-space schedule first."
-    },
-    {
       "id": "V11-B11-G1-016",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "From then on, the feeder said the day aloud before making a mark."
     },
     {
-      "id": "V11-B11-G1-016",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "Sota learned that an impossible date can be a clue to check a record before repeating a care task."
-    },
-    {
       "id": "V11-B11-G1-017",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "Miki returned it to the choir shelf and wrote Room B on the temporary move note."
     },
     {
-      "id": "V11-B11-G1-017",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "She learned to trace a moved object and check its label before taking it."
-    },
-    {
       "id": "V11-B11-G2-001",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "The cafeteria then kept the smaller first portion but continued recording waste each week."
     },
     {
-      "id": "V11-B11-G2-001",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "They learned that reducing food waste works better when a change is tested and students can still request enough food."
-    },
-    {
       "id": "V11-B11-G2-002",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "The teacher then required all future reservations to be copied into one shared calendar."
     },
     {
-      "id": "V11-B11-G2-002",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "The clubs learned that a fair solution should match each group's real needs and also remove the cause of the conflict."
-    },
-    {
       "id": "V11-B11-G2-003",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "The club marked the remaining wet spot for another check rather than claiming the problem was completely solved."
     },
     {
-      "id": "V11-B11-G2-003",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "They learned that observing how water actually moves can lead to a smaller and more useful repair."
-    },
-    {
       "id": "V11-B11-G2-004",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "Their report showed all three numbers and explained why the July result should not be treated as a normal month alone."
     },
     {
-      "id": "V11-B11-G2-004",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "The class learned that unusual conditions should be recorded because they can change what a comparison means."
-    },
-    {
       "id": "V11-B11-G2-005",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "By Friday, the sunny plants were less wilted and the club had stayed within its weekly water limit."
     },
     {
-      "id": "V11-B11-G2-005",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "The club learned to match a hot-weather plan to each bed."
-    },
-    {
       "id": "V11-B11-G2-006",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "The final report said displays appeared to influence borrowing but did not claim they changed students' long-term interests."
     },
     {
-      "id": "V11-B11-G2-006",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "The committee learned to separate what a pattern suggests from what the available evidence can actually prove."
-    },
-    {
       "id": "V11-B11-G2-007",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "They marked the damaged nets for limited use and requested money for them in the next budget."
     },
     {
-      "id": "V11-B11-G2-007",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "The committee learned that limited money should be used first where delay creates the greatest practical risk."
-    },
-    {
       "id": "V11-B11-G2-008",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "All three jobs were finished before the visit ended, and nobody had to take a role that felt unsafe."
     },
     {
-      "id": "V11-B11-G2-008",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "The class learned that useful volunteering depends on what an organization needs and what each person can safely do."
-    },
-    {
       "id": "V11-B11-G2-009",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "They planned to review the riverside route again when practice ended in daylight in spring."
     },
     {
-      "id": "V11-B11-G2-009",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "The club learned that route safety can change with season and time even when the road itself has not changed."
-    },
-    {
       "id": "V11-B11-G2-010",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "After another two-week test, the same paper stayed attached much better."
     },
     {
-      "id": "V11-B11-G2-010",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "The club learned to locate the failure point before blaming an entire material for a product problem."
-    },
-    {
       "id": "V11-B11-G2-011",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "A second rehearsal sounded clearer, and players could follow the beat without increasing volume."
     },
     {
-      "id": "V11-B11-G2-011",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "The band learned that changing position and surfaces can solve an acoustic problem, while louder playing can worsen the problem."
-    },
-    {
       "id": "V11-B11-G2-012",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "They kept ventilation and the school's heat-safety rules as separate requirements."
     },
     {
-      "id": "V11-B11-G2-012",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "The students learned that a simple shade measure can help under the right condition without becoming an all-day rule."
-    },
-    {
       "id": "V11-B11-G2-013",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "More small items sold on the second day, while the popular bags still brought in their full price."
     },
     {
-      "id": "V11-B11-G2-013",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "The class learned that a sales change should respond to the specific pattern instead of changing successful items too."
-    },
-    {
       "id": "V11-B11-G2-014",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "Students could now combine appearance with date and location when identifying property."
     },
     {
-      "id": "V11-B11-G2-014",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "The council learned that organization works better when labels include the clues people actually use to recognize an item."
-    },
-    {
       "id": "V11-B11-G2-015",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "After two later storms, the bottom books remained dry, although volunteers continued checking the seal."
     },
     {
-      "id": "V11-B11-G2-015",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "They learned to trace where damage begins before replacing an entire useful structure."
-    },
-    {
       "id": "V11-B11-G2-016",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "The new labels stayed readable through harvest, and the test pieces were kept for next year's comparison."
     },
     {
-      "id": "V11-B11-G2-016",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "The students learned that outdoor information needs materials tested under the weather it will actually face."
-    },
-    {
       "id": "V11-B11-G2-017",
       "code": "REUSED_EVIDENCE",
       "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
+        "DETAIL",
+        "REASON"
       ],
       "evidence": "They also identified the refill point before play began and assigned one adult to check supplies at each break."
-    },
-    {
-      "id": "V11-B11-G2-017",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "GIST",
-        "INFERENCE",
-        "GIST"
-      ],
-      "evidence": "The team learned that shared safety supplies need a backup plan when conditions can increase how much people use."
-    },
-    {
-      "id": "V11-B11-G3-001",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
-      ],
-      "evidence": "They suggested measuring at another bridge and at different times before making a stronger ecological conclusion."
-    },
-    {
-      "id": "V11-B11-G3-003",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
-      ],
-      "evidence": "A note explained both signs so visitors could see how the date range had been reached."
-    },
-    {
-      "id": "V11-B11-G3-005",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
-      ],
-      "evidence": "It recommended testing more recipes before making a permanent menu change."
-    },
-    {
-      "id": "V11-B11-G3-007",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
-      ],
-      "evidence": "The club kept the sunny-day examples but placed them inside the broader record rather than presenting them alone."
-    },
-    {
-      "id": "V11-B11-G3-009",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
-      ],
-      "evidence": "The exhibit became more transparent while keeping the useful teaching object available."
-    },
-    {
-      "id": "V11-B11-G3-011",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
-      ],
-      "evidence": "The student council later added a reminder to check dates and source pages before forwarding important information."
-    },
-    {
-      "id": "V11-B11-G3-013",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
-      ],
-      "evidence": "Their final map used dates and a surviving landmark to connect old and modern geography accurately."
-    },
-    {
-      "id": "V11-B11-G3-015",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
-      ],
-      "evidence": "They learned that a sampling route can bias a result when place and time always change together."
-    },
-    {
-      "id": "V11-B11-G3-002",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
-      ],
-      "evidence": "The proposal succeeded because it reduced one flood problem while preserving another valued use and assigning ongoing work."
-    },
-    {
-      "id": "V11-B11-G3-006",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
-      ],
-      "evidence": "Families could comment on several start-time options instead of only one."
-    },
-    {
-      "id": "V11-B11-G3-010",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
-      ],
-      "evidence": "The next festival kept the deposit but budgeted a washing team and improved exit signs from the beginning."
-    },
-    {
-      "id": "V11-B11-G3-014",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "CONTENT_MATCH",
-        "CONTENT_MATCH"
-      ],
-      "evidence": "The next event kept broad participation while showing limits before arrival."
-    },
-    {
-      "id": "V11-B11-G3-008",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "MATERIAL_LINK",
-        "CONTEXT_WORD"
-      ],
-      "evidence": "Because only six morning seats remained, they reserved four before the trip instead of assuming seats would stay open."
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "MATERIAL_LINK",
-        "CONTEXT_WORD"
-      ],
-      "evidence": "The van could reach A in twenty minutes and B thirty-five minutes after leaving school, both inside the sixty-minute rule."
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "MATERIAL_LINK",
-        "CONTEXT_WORD"
-      ],
-      "evidence": "Students checked the Hill Bridge note and found that its status would be reviewed if the river moved to Level 4."
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "code": "REUSED_EVIDENCE",
-      "types": [
-        "MATERIAL_LINK",
-        "CONTEXT_WORD"
-      ],
-      "evidence": "Organizers prepared an indoor skills final in the gym if the one-o'clock measured index reached 35 or above."
     }
   ],
   "finalPass": false
