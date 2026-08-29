@@ -6,14 +6,30 @@ function replaceRow(id,idx,en,jp,note){const p=byId.get(id);if(!p)throw Error('m
 replaceRow('V11-B09-G1-001',3,'She asked the student about the second note.','彩はその二枚目のメモについて生徒に尋ねました。','Removed an unnecessary Friday-caregiver detail that made the Sunday explanation feel temporally ungrounded; kept the causal chain direct.');
 replaceRow('V11-B09-G1-002',7,'He returned the box to Mao and put a sign on the shelf so food would not be placed there again.','蓮は真央に箱を返し、そこに再び食べ物が置かれないよう棚に表示を付けました。','Changed an unexplained “moved a sign” into the causally clear action of putting a sign on the shelf.');
 replaceRow('V11-B09-G1-006',8,'Leo learned to read the words under an arrow before following it.','レオは、矢印をたどる前にその下の文字を読むことを学びました。','Replaced an awkward abstract closing sentence with a natural lesson directly supported by the incident.');
+replaceRow('V11-B09-G1-007',6,'They reached the field before the game started and put air into the soft ball.','試合開始前にグラウンドへ戻り、空気の少ないボールに空気を入れました。','Replaced unnatural “filled the soft ball” with idiomatic simple English while preserving the event.');
+replaceRow('V11-B09-G1-008',1,'Ten minutes later, a teacher changed the meeting room because Room 3 had a broken light.','10分後、3号室の照明が壊れていたため先生が集会場所を変更しました。','Replaced unnatural “moved the meeting” with a precise room-change statement.');
+replaceRow('V11-B09-G1-010',5,'The second route took two more minutes but did not use the closed stairway.','二つ目の道は2分多くかかりましたが、閉鎖された階段は使いませんでした。','Removed vague spatial wording and stated the safety-relevant route property directly.');
+replaceRow('V11-B09-G1-014',1,'Six students wanted to eat the dish, so the amounts on the card were too small for their group.','六人で料理を食べたかったため、カードに書かれた分量では足りませんでした。','Replaced “the card was too small” with the intended quantity meaning.');
+replaceRow('V11-B09-G1-016',8,'Ko learned that when a plan changes, he should send a clear new message.','予定が変わったときは、明確な新しい連絡を送るべきだと航は学びました。','Replaced unnatural “not silence after an old one” phrasing with a direct supported lesson.');
 const reviewed={
 'V11-B09-G1-001':'Timeline and causal logic reread after repair; note chronology and watering decision now align.',
 'V11-B09-G1-002':'Ownership clues, non-invasive identification, return action, and prevention step reread as one coherent sequence.',
 'V11-B09-G1-003':'Weather change, map check, route comparison, safety check, choice, arrival, and future marking are coherent.',
 'V11-B09-G1-004':'Photo-state evidence supports the corrected chronological order; brightness is intentionally shown as a weak first heuristic.',
 'V11-B09-G1-005':'Old card versus new receipt dates, librarian explanation, planner action, and library label form a consistent information-date lesson.',
-'V11-B09-G1-006':'Wrong-arrow choice, label reading, correct stop, pictogram improvement, and repaired lesson are coherent.'
+'V11-B09-G1-006':'Wrong-arrow choice, label reading, correct stop, pictogram improvement, and repaired lesson are coherent.',
+'V11-B09-G1-007':'Checklist omission, remembered location, recovery before kickoff, ball preparation, and checklist update are coherent after idiom repair.',
+'V11-B09-G1-008':'Announcement, later room change, timestamp comparison, redirection, and notice-format improvement form a consistent update sequence.',
+'V11-B09-G1-009':'Weekend feeding schedule, ambiguous check mark, direct confirmation, actual-time recording, and Sunday welfare check are coherent.',
+'V11-B09-G1-010':'Closure, alternate-route test, two-minute tradeoff, temporary map, and repaired route description are mutually consistent.',
+'V11-B09-G1-011':'Missing start time, conflicting memories, booking-sheet verification, 10:30 correction, and full recheck are coherent.',
+'V11-B09-G1-012':'Competing gym needs are resolved by actual time requirements; dance-before-four and basketball-after-four fit without overlap.',
+'V11-B09-G1-013':'Umbrella identification uses independent handle/thread details and teacher verification; ownership logic is determinate.',
+'V11-B09-G1-014':'Three-person recipe to six-person scaling is consistently doubled across eggs, milk, and onions after quantity wording repair.',
+'V11-B09-G1-015':'Initial window-seat sample is visibly biased; broader same-question survey supports the fair-sampling lesson without overclaiming.',
+'V11-B09-G1-016':'Noon message, 3 p.m. storm change, 4:30 update, and meeting time align; closing lesson is now natural and supported.',
+'V11-B09-G1-017':'Empty Wednesday record is resolved by the dated note; moving the entry explains the weekly-total reconciliation.'
 };
-for(const [id,summary] of Object.entries(reviewed)){const p=byId.get(id);if(!p)throw Error('missing '+id);p.semanticRewrite={version:'20260829-g1-r1',humanRead:true,fullPassageReread:true,timelineCoherent:true,actorsClear:true,causalLogicCoherent:true,translationSynced:true,slashSynced:true,questionEvidenceSynced:true,summary};p.authorReview=Object.assign({},p.authorReview||{},{reviewed:true,timelineCoherent:true,actorPerspectiveClear:true,causalLogicCoherent:true,translationNatural:true});}
-window.V11_BATCH09_SEMANTIC_G1_R1_STATE={version:'20260829-g1-r1',reviewed:Object.keys(reviewed).length,repairedRows:3,registered:false};
+for(const [id,summary] of Object.entries(reviewed)){const p=byId.get(id);if(!p)throw Error('missing '+id);p.semanticRewrite={version:'20260829-g1-r2',humanRead:true,fullPassageReread:true,timelineCoherent:true,actorsClear:true,causalLogicCoherent:true,translationSynced:true,slashSynced:true,questionEvidenceSynced:true,summary};p.authorReview=Object.assign({},p.authorReview||{},{reviewed:true,timelineCoherent:true,actorPerspectiveClear:true,causalLogicCoherent:true,translationNatural:true});}
+window.V11_BATCH09_SEMANTIC_G1_R1_STATE={version:'20260829-g1-r2',reviewed:Object.keys(reviewed).length,repairedRows:8,registered:false};
 })();
