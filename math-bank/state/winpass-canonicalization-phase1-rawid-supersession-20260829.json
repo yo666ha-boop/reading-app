@@ -1,0 +1,76 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "WINPASS_CANONICALIZATION_FROM_EVIDENCE",
+  "phase": "PHASE1_RAW_ID_SUPERSESSION_RESOLUTION",
+  "recorded_at_jst": "2026-08-29T16:13:00+09:00",
+  "input": {
+    "reviewed": 717,
+    "included": 717,
+    "excluded": 0,
+    "unique_raw_ids": 717,
+    "source_archive_sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+    "source_archive_bytes": 8296042,
+    "source_docx_members": 81
+  },
+  "authoritative_prior_evidence": [
+    "math-bank/state/winpass-strict-dedup-audit-20260827.json",
+    "math-bank/state/winpass-dedup-reconciled-progress-20260827.json",
+    "math-bank/state/winpass-evidence-review-reconciliation-20260828.json",
+    "math-bank/state/winpass717-review-completion-manifest-20260829.json"
+  ],
+  "resolved_supersession_groups": {
+    "hardened_revision_raw_ids": [
+      "Winpass:25winpasst1suhy000209.docx:M02:S01",
+      "Winpass:25winpasst1suhy000209.docx:M02:S02",
+      "Winpass:25winpasst1suhy000209.docx:M02:S03",
+      "Winpass:25winpasst1suhy000209.docx:M02:S04",
+      "Winpass:25winpasst1suhy000209.docx:M02:S05",
+      "Winpass:25winpasst1suhy000209.docx:M02:S06",
+      "Winpass:25winpasst1suhy000209.docx:M02:S07",
+      "Winpass:25winpasst1suhy000209.docx:M02:S08",
+      "Winpass:25winpasst1suhy000210.docx:M01:S01",
+      "Winpass:25winpasst1suhy000210.docx:M01:S02",
+      "Winpass:25winpasst1suhy000210.docx:M01:S03",
+      "Winpass:25winpasst1suhy000210.docx:M01:S04",
+      "Winpass:25winpasst1suhy000210.docx:M01:S05",
+      "Winpass:25winpasst1suhy000210.docx:M01:S06",
+      "Winpass:25winpasst1suhy000210.docx:M02:S01",
+      "Winpass:25winpasst1suhy000210.docx:M02:S02",
+      "Winpass:25winpasst1suhy000210.docx:M02:S03",
+      "Winpass:25winpasst1suhy000210.docx:M02:S04"
+    ],
+    "hardened_revision_count": 18,
+    "post_audit_replacement": {
+      "raw_id": "Winpass:25winpasst2suhy000623.docx:M02:S01",
+      "artifact": "math-bank/state/winpass1-replacement-2suhy000623-m02s01-20260827.jsonl",
+      "net_new_unique_raw_ids": 0,
+      "rule": "replacement supersedes existing content for the same raw_id and never increments canonical input identity"
+    },
+    "known_supersession_events": 19,
+    "unique_raw_id_delta": 0
+  },
+  "review_arithmetic_duplicates": {
+    "records_removed_from_review_progress_arithmetic": 129,
+    "groups": [
+      {"records":109,"canonical_artifact":"math-bank/state/winpass109-evidence-review-final-mediaheavy-20260827.json"},
+      {"records":20,"canonical_artifact":"math-bank/state/winpass20-evidence-review-2suhy000414-000415-20260827.json"}
+    ],
+    "effect_on_717_canonical_input": 0,
+    "reason": "These were duplicate review artifacts, not duplicate source problems; the corrected 717 completion union already counts each decision once."
+  },
+  "phase1_result": {
+    "raw_id_supersession_resolved": true,
+    "canonicalization_input_after_supersession": 717,
+    "automatic_removals": 0,
+    "count_forcing_used": false,
+    "historical_target_hint": 570,
+    "historical_target_used_as_cutoff": false
+  },
+  "next_phase": {
+    "name": "PHASE2_SEMANTIC_EQUIVALENCE_CLUSTERING",
+    "rule": "Only merge distinct raw_ids when question semantics, answer semantics, required figure/table context, and provenance support equivalence. Similar topic/lesson/source numbering alone is insufficient.",
+    "required_output": "explicit equivalence clusters with retained raw_id, superseded/merged raw_ids, content evidence, and independent arithmetic verification"
+  },
+  "main_untouched": true,
+  "publication_ready": false
+}
