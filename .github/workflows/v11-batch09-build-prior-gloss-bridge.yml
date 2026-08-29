@@ -1,0 +1,28 @@
+name: v11 Batch09 build prior gloss bridge
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch09_build_prior_gloss_bridge.js'
+      - '.github/workflows/v11-batch09-build-prior-gloss-bridge.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node v11_batch09_build_prior_gloss_bridge.js
+      - name: Persist generated bridge
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f v11_batch09_prior_final_gloss.js
+          git diff --cached --quiet || git commit -m "v11: persist Batch09 prior finalized gloss bridge"
+          git push
