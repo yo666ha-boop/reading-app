@@ -18,6 +18,6 @@ for(const p of ps){
   }
   p.notes=keep;
 }
-window.V11_BATCH09_GLOSS_APPLY_R2_STATE={version:'20260829-r4',passages:ps.length,converted,missing:missing.length,missingWords:[...new Set(missing.map(x=>x[1]))].sort(),registered:false};
-if(missing.length)throw Error(`Batch09 residual final gloss missing ${missing.length} occurrences / ${window.V11_BATCH09_GLOSS_APPLY_R2_STATE.missingWords.length} words: ${window.V11_BATCH09_GLOSS_APPLY_R2_STATE.missingWords.slice(0,120).join(', ')}`);
+window.V11_BATCH09_GLOSS_APPLY_R2_STATE={version:'20260829-r5-gap',passages:ps.length,converted,missing:missing.length,missingWords:[...new Set(missing.map(x=>x[1]))].sort(),registered:false};
+if(missing.length)throw Error(`Batch09 residual final gloss missing ${missing.length} occurrences / ${window.V11_BATCH09_GLOSS_APPLY_R2_STATE.missingWords.length} words: ${window.V11_BATCH09_GLOSS_APPLY_R2_STATE.missingWords.join(', ')}`);
 })();
