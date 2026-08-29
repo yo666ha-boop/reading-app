@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-29T01:39:51.821Z",
+  "generatedAt": "2026-08-29T01:41:10.211Z",
   "detectorVersion": "3.1-v11-b05-grammar-r1+gate-fp3+v7supp",
   "passages": 50,
   "detectedFeatureTypes": 19,
@@ -18,7 +18,7 @@
       "textbook": "サンシャイン",
       "grade": "1",
       "section": "PROGRAM 10-2",
-      "feature": "IF_CLAUSE",
+      "feature": "MODAL_MUST",
       "occurrences": 3,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
@@ -26,18 +26,18 @@
       "samples": [
         {
           "where": "sentence:13",
-          "text": "The club learned this lesson: a notice is useless if people do not actually see the information.",
-          "match": "if people "
+          "text": "The club learned this lesson: people must actually see the information for a notice to be useful.",
+          "match": "must actually"
         },
         {
           "where": "slash:13",
-          "text": "The club learned this lesson: a notice is useless if people do not actually see the information.",
-          "match": "if people "
+          "text": "The club learned this lesson: people must actually see the information for a notice to be useful.",
+          "match": "must actually"
         },
         {
           "where": "B5.evidence",
-          "text": "The club learned this lesson: a notice is useless if people do not actually see the information.",
-          "match": "if people "
+          "text": "The club learned this lesson: people must actually see the information for a notice to be useful.",
+          "match": "must actually"
         }
       ]
     }

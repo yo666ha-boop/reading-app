@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-29T01:39:51.816Z",
+  "generatedAt": "2026-08-29T01:41:10.203Z",
   "passages": 50,
   "classification": "CANDIDATES_FOR_V11_BATCH08_GATE",
   "detectorVersion": "3.1-v11-b05-grammar-r1",
@@ -33,11 +33,12 @@
         "ニューホライズン|3|Unit 6-4"
       ]
     },
-    "IF_CLAUSE": {
-      "sectionCount": 2,
+    "MODAL_MUST": {
+      "sectionCount": 3,
       "sections": [
         "サンシャイン|1|PROGRAM 10-2",
-        "サンシャイン|2|PROGRAM 8-3"
+        "サンシャイン|3|PROGRAM 7-3",
+        "ニューホライズン|3|Unit 6-4"
       ]
     },
     "PASSIVE": {
@@ -99,11 +100,10 @@
         "ニューホライズン|3|Unit 6-4"
       ]
     },
-    "MODAL_MUST": {
-      "sectionCount": 2,
+    "IF_CLAUSE": {
+      "sectionCount": 1,
       "sections": [
-        "サンシャイン|3|PROGRAM 7-3",
-        "ニューホライズン|3|Unit 6-4"
+        "サンシャイン|2|PROGRAM 8-3"
       ]
     },
     "MODAL_MAY_MIGHT": {
@@ -283,21 +283,21 @@
       "section": "PROGRAM 10-2",
       "id": "V11-B08-G1-011",
       "features": {
-        "IF_CLAUSE": [
+        "MODAL_MUST": [
           {
             "where": "sentence:13",
-            "text": "The club learned this lesson: a notice is useless if people do not actually see the information.",
-            "match": "if people "
+            "text": "The club learned this lesson: people must actually see the information for a notice to be useful.",
+            "match": "must actually"
           },
           {
             "where": "slash:13",
-            "text": "The club learned this lesson: a notice is useless if people do not actually see the information.",
-            "match": "if people "
+            "text": "The club learned this lesson: people must actually see the information for a notice to be useful.",
+            "match": "must actually"
           },
           {
             "where": "B5.evidence",
-            "text": "The club learned this lesson: a notice is useless if people do not actually see the information.",
-            "match": "if people "
+            "text": "The club learned this lesson: people must actually see the information for a notice to be useful.",
+            "match": "must actually"
           }
         ]
       }
