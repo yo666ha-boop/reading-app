@@ -1,0 +1,97 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "WINPASS_CANONICALIZATION_FROM_EVIDENCE",
+  "phase": "PHASE2_SEMANTIC_EQUIVALENCE_CLUSTERING",
+  "recorded_at_jst": "2026-08-30T04:06:56+09:00",
+  "previous_scan": {
+    "records": 602,
+    "artifact": "math-bank/state/winpass-canonicalization-phase2-exact-scan-602-20260830.json",
+    "head_before": "cd2f5c6d398b3b5816333a74cab14bcc68a41878"
+  },
+  "extension_sources": [
+    {
+      "records": 6,
+      "path": "math-bank/state/winpass6-new-2suhy000519-strict-20260827.jsonl",
+      "blob_sha": "4d1fd3a3742616e5d02be2e5ea2fa9cd1c8b58a4",
+      "source_document": "25winpasst2suhy000519.docx",
+      "source_document_sha256": "77d47d985c725f30a09bd4bbb717219af3693f00400440cd103fb7b32f4d4ebf",
+      "source_document_bytes": 221930,
+      "source_docx_crc": "PASS"
+    },
+    {
+      "records": 6,
+      "path": "math-bank/state/winpass6-new-3suhy000523-strict-20260827.jsonl",
+      "blob_sha": "aa8ac4fcd6502493c0f838826b36d8cd68f8c2d1",
+      "source_document": "25winpasst3suhy000523.docx",
+      "source_document_sha256": "d37cab115093d5f57898bc7ebe4aa78f2c33201bf9e0edc142c2e842e07ac94e",
+      "source_document_bytes": 116239,
+      "source_docx_crc": "PASS"
+    }
+  ],
+  "quality_gate": {
+    "records_parsed": "12/12",
+    "unique_raw_ids": "12/12",
+    "unique_content_bound_fingerprints": "12/12",
+    "score_evidence": "12/12",
+    "question_answer_ooxml_provenance": "12/12",
+    "figure_relationship_and_asset_sha_when_required": "12/12",
+    "independent_check": "12/12 PASS",
+    "source_docx_sha_matches_strict": "12/12",
+    "ooxml_media_rehashed": "PASS"
+  },
+  "comparison_against_previous_scan": {
+    "previous_records_reconstructed": 602,
+    "previous_unique_raw_ids": 602,
+    "new_raw_id_overlap": 0,
+    "normalization": "Unicode NFKC plus whitespace removal only",
+    "exact_question_answer_overlap": 0,
+    "exact_question_answer_context_overlap": 0,
+    "new_internal_exact_question_answer_duplicates": 0
+  },
+  "arithmetic": {
+    "records_loaded": 614,
+    "new_records": 12,
+    "remaining_unscanned": 103,
+    "check": "602 + 6 + 6 = 614; 717 - 614 = 103"
+  },
+  "semantic_guard": {
+    "automatic_merges_in_extension": 0,
+    "provisional_canonical_count": 717,
+    "historical_570_used_as_cutoff": false,
+    "count_forcing_used": false
+  },
+  "raw_ids": [
+    "Winpass:25winpasst2suhy000519.docx:M01:S01",
+    "Winpass:25winpasst2suhy000519.docx:M01:S02",
+    "Winpass:25winpasst2suhy000519.docx:M01:S03",
+    "Winpass:25winpasst2suhy000519.docx:M01:S04",
+    "Winpass:25winpasst2suhy000519.docx:M02:S01",
+    "Winpass:25winpasst2suhy000519.docx:M03:S01",
+    "Winpass:25winpasst3suhy000523.docx:M01:S01",
+    "Winpass:25winpasst3suhy000523.docx:M01:S02",
+    "Winpass:25winpasst3suhy000523.docx:M02:S01",
+    "Winpass:25winpasst3suhy000523.docx:M02:S02",
+    "Winpass:25winpasst3suhy000523.docx:M03:S01",
+    "Winpass:25winpasst3suhy000523.docx:M03:S02"
+  ],
+  "fingerprints": [
+    "98d16ff566e373a7b4b5d6bbc608f175521817e7172349af7ce26c7bc985dce8",
+    "1c9ee460016053c46ce047fb1c71ab7f1f964475b85506d751c4066203547dc0",
+    "bf7ce221a340b196dbf63de31b72146d593ae602d7678a0ab0534b005289d5d6",
+    "ab23f35aa22554ec1410245974f3567a5e924732e8827a7029421a876af8831f",
+    "f9c635a59082287c63b5192c1c09f21b3c66f02f14d5385d8f4436c434db8863",
+    "639e2f0415a8f01411d9cbd620b0dc7de63fedc515e691768479205cb94f022f",
+    "8ce9861ff159291a2863ad050bc3f277e28737ba0294451ce5357b6e8a516503",
+    "75a7ab0bba99712409e4b0fd3a8c5d913c446fda9b97d4ae99f6144ff14ed424",
+    "d27c8845dfc681217ab3faeb684b9e4f28d1fda8e215caa29cc572b37adcc574",
+    "a1cdcac564a92ded28acd2bf7f77b88d1ea16e9b42d2d5e4f710d12731b321b8",
+    "b6bd6302e38835a76893597f1bf117417b5461f9009e42b765eb566b0749e805",
+    "247d59737af969140679ee1d0272beddd465369dedee3ae01bd100abe77e5f74"
+  ],
+  "guards": {
+    "main_untouched": true,
+    "publication_ready": false,
+    "schedule_changed": false
+  },
+  "next": "Continue evidence-backed Phase2 scan across remaining 103 unique Winpass records. Use actual raw_id union, newest hardened/replacement content for supersession events, and full figure/table evidence gates."
+}
