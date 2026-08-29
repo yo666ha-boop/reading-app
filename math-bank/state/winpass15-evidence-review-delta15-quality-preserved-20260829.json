@@ -2,6 +2,7 @@
   "project": "mikami-math-problem-bank",
   "stage": "WINPASS_717_EVIDENCE_REVIEW",
   "recorded_at_jst": "2026-08-29T10:31:32+09:00",
+  "correction": "Replaced initial manual fingerprint transcription with exact strict_fingerprint_v2 values read from the fixed strict delta15 artifact before any checkpoint arithmetic was advanced.",
   "source_archive": {
     "drive_file_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
     "bytes": 8296042,
@@ -27,11 +28,7 @@
     "cumulative_included": 586,
     "cumulative_excluded": 0,
     "remaining": 131,
-    "candidate_overlap_checks": {
-      "github_exact_docname_search": "0 hits for all three source document names before this artifact was written",
-      "recent_delta_overlap": "1suhy000728 reviewed recent M03 only; this batch M01/M02, so no slot overlap",
-      "count_forcing_used": false
-    }
+    "count_forcing_used": false
   },
   "quality": {
     "source_document_sha": "15/15 PASS",
@@ -44,27 +41,26 @@
     "main_untouched": true,
     "publication_ready": false
   },
-  "notes": [
-    "25winpasst1suhy000520 M03 slots are bound by the ordered two-diagram source asset (left/right), score 15×2, ordered answer entries, and independent geometry recalculation.",
-    "25winpasst1suhy000728 M01 uses an embedded EMF table; values 0.32, 22, 0.96 were independently recomputed from the displayed frequencies/cumulative columns.",
-    "Graphical-answer records 1suhy000728 M02:S02 and 2suhy000313 M02:S02 were checked against the actual embedded answer EMF assets, not inferred text."
-  ],
+  "overlap_check": {
+    "github_exact_document_search_before_write": "0 hits for 25winpasst1suhy000520.docx, 25winpasst1suhy000728.docx, 25winpasst2suhy000313.docx",
+    "recent_known_overlap": "The earlier 1suhy000728 review covered M03; this delta15 contains M01/M02 only."
+  },
   "records": [
-    {"raw_id":"Winpass:25winpasst1suhy000520.docx:M01:S01","strict_fingerprint_v2":"9b143cb402927a7d47cc60cb744157b70dd06d4bfda642c3462ff982bec0f6f9","source_document":"25winpasst1suhy000520.docx","source_document_sha256":"4d1f839d4ac416bc540c25ca78a2da9996b152d3fc814bbdd31747fe171271d7","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"正六角形は6辺、CD=5cmなので周長=6×5=30cm。原本rId8/image2.emfの頂点A-B-C-D-E-Fを実画像確認。"},
-    {"raw_id":"Winpass:25winpasst1suhy000520.docx:M01:S02","strict_fingerprint_v2":"cb210580c4398bbbd90f54ebcaa033bf17f4d7b512cb3a8a9a8c51559ca8aeed","source_document":"25winpasst1suhy000520.docx","source_document_sha256":"4d1f839d4ac416bc540c25ca78a2da9996b152d3fc814bbdd31747fe171271d7","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"正六角形の対称軸は向かい合う頂点を通る3本＋向かい合う辺の中点を通る3本=6本。原本rId8/image2.emfを実画像確認。"},
-    {"raw_id":"Winpass:25winpasst1suhy000520.docx:M01:S03","strict_fingerprint_v2":"cc019a0bf156c28ea2dce58c3c8386e39a5d50b05e1126849a8a254bd9dca359","source_document":"25winpasst1suhy000520.docx","source_document_sha256":"4d1f839d4ac416bc540c25ca78a2da9996b152d3fc814bbdd31747fe171271d7","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"正六角形の中心に関する点対称ではFの反対側の頂点はC。原本rId8/image2.emfのラベル配置を実画像確認。"},
-    {"raw_id":"Winpass:25winpasst1suhy000520.docx:M03:S01","strict_fingerprint_v2":"84a2b5c275128f0b35a3ddebd7f3c78a1b9a740da2838598792c10219a00cc45","source_document":"25winpasst1suhy000520.docx","source_document_sha256":"4d1f839d4ac416bc540c25ca78a2da9996b152d3fc814bbdd31747fe171271d7","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"左図は1辺4cmの正方形から半径4cmの1/4円を除いた斜線部。16-(π×4²/4)=16-4π cm²。原本rId9/image3.emf左図を実画像確認。"},
-    {"raw_id":"Winpass:25winpasst1suhy000520.docx:M03:S02","strict_fingerprint_v2":"7cf5edb85f034c8226b555ac0bec6f05e8880b7c34afef5d846196f30ef8e324","source_document":"25winpasst1suhy000520.docx","source_document_sha256":"4d1f839d4ac416bc540c25ca78a2da9996b152d3fc814bbdd31747fe171271d7","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"右図の斜線部は1辺6cm正方形の4隅の半径3cmの1/4円4個分。4×(π×3²/4)=9π cm²。原本rId9/image3.emf右図を実画像確認。"},
-    {"raw_id":"Winpass:25winpasst1suhy000728.docx:M01:S01","strict_fingerprint_v2":"03bd2fbd7beea138cff3d6195c8a2a36834814603603949177c48577b0925bf6","source_document":"25winpasst1suhy000728.docx","source_document_sha256":"58608f26f050bcb0747b4477c73cec2b22656de72ce8ef6eb9dda7208fc863e8","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"度数合計25、10–15m階級の度数8なので相対度数8/25=0.32。原本rId8/image2.emfの表を実画像確認。"},
-    {"raw_id":"Winpass:25winpasst1suhy000728.docx:M01:S02","strict_fingerprint_v2":"577a924bc0c2b6f083e7fe24278bdc72908369c6df9de14aa813ed53a2ec4a1a","source_document":"25winpasst1suhy000728.docx","source_document_sha256":"58608f26f050bcb0747b4477c73cec2b22656de72ce8ef6eb9dda7208fc863e8","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"15–20mまでの累積度数=4+5+8+5=22。原本rId8/image2.emfの表を実画像確認。"},
-    {"raw_id":"Winpass:25winpasst1suhy000728.docx:M01:S03","strict_fingerprint_v2":"31d8103a28dd428572cdb34c8fa0f59317863296121988413142480c0bc2f5da","source_document":"25winpasst1suhy000728.docx","source_document_sha256":"58608f26f050bcb0747b4477c73cec2b22656de72ce8ef6eb9dda7208fc863e8","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"20–25mまでの累積度数24、合計25なので累積相対度数24/25=0.96。原本rId8/image2.emfの表を実画像確認。"},
-    {"raw_id":"Winpass:25winpasst1suhy000728.docx:M02:S01","strict_fingerprint_v2":"7c6fdd2fa59dced3557ca3e3c8f6d1ca176ff00407761193f0afc35233440a16","source_document":"25winpasst1suhy000728.docx","source_document_sha256":"58608f26f050bcb0747b4477c73cec2b22656de72ce8ef6eb9dda7208fc863e8","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"ヒストグラムの40–45kg階級は11人。全体は各階級2+6+10+14+11+7=50人なので11/50×100=22%。原本rId9/image3.emfを実画像確認。"},
-    {"raw_id":"Winpass:25winpasst1suhy000728.docx:M02:S02","strict_fingerprint_v2":"57eadad8c657534a398fda92d1c28a83b5d70931d06ac0ced3588e484cd41cc4","source_document":"25winpasst1suhy000728.docx","source_document_sha256":"58608f26f050bcb0747b4477c73cec2b22656de72ce8ef6eb9dda7208fc863e8","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"度数折れ線は各階級値(22.5,27.5,32.5,37.5,42.5,47.5)と度数(2,6,10,14,11,7)を結び、両端を0へ落とす。原本解答rId11/image5.emfの赤線を実画像確認。"},
-    {"raw_id":"Winpass:25winpasst2suhy000313.docx:M01:S01","strict_fingerprint_v2":"d1f5439cb4f7167ca18c8dbef2d4cc285f76911f4db2682bcd682249306ab28c","source_document":"25winpasst2suhy000313.docx","source_document_sha256":"4b313233cc914dce119a9af5a54f34d90fa17f90d2b578dcd5bcf76a8ab60247","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"傾き=(3150-1950)/(26-18)=150円/m³。切片=1950-150×18=-750。x=21で150×21-750=2400円。"},
-    {"raw_id":"Winpass:25winpasst2suhy000313.docx:M01:S02","strict_fingerprint_v2":"e90878c60a93588909c9ba7329b4bd53f05c115649c14eebc92ded8238866c72","source_document":"25winpasst2suhy000313.docx","source_document_sha256":"4b313233cc914dce119a9af5a54f34d90fa17f90d2b578dcd5bcf76a8ab60247","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"0kg時30cm、3kg時36cmより増加率=(36-30)/3=2cm/kg。10kg時30+2×10=50cm。"},
-    {"raw_id":"Winpass:25winpasst2suhy000313.docx:M01:S03","strict_fingerprint_v2":"0dcac240628417a425645470d7e76c4d00c059b517f17656b61c270d4b50a9d0","source_document":"25winpasst2suhy000313.docx","source_document_sha256":"4b313233cc914dce119a9af5a54f34d90fa17f90d2b578dcd5bcf76a8ab60247","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"傾き=(32-28)/(600-400)=0.02万円/冊。切片=28-0.02×400=20万円。100冊で20+2=22万円。"},
-    {"raw_id":"Winpass:25winpasst2suhy000313.docx:M02:S01","strict_fingerprint_v2":"d20d6209abc21257a72d6ba009d55c791804fbc06c4f1adf52d2ea8351481753","source_document":"25winpasst2suhy000313.docx","source_document_sha256":"4b313233cc914dce119a9af5a54f34d90fa17f90d2b578dcd5bcf76a8ab60247","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"原本rId8/image2.emfで(0,0)→(20,2000)、休止後(40,2000)→(60,4000)。歩行区間の傾きはいずれも100m/分。"},
-    {"raw_id":"Winpass:25winpasst2suhy000313.docx:M02:S02","strict_fingerprint_v2":"f93f1efcb8c5f90b1f3b27a65dba1a43c2bb8ec9ec73ea88f162df73fd6446e1","source_document":"25winpasst2suhy000313.docx","source_document_sha256":"4b313233cc914dce119a9af5a54f34d90fa17f90d2b578dcd5bcf76a8ab60247","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"弟はx=30でy=0から毎分150mなのでy=150(x-30)。原本解答rId9/image3.emfの赤直線が(30,0)からこの傾きで引かれていることを実画像確認。"}
+    {"raw_id":"Winpass:25winpasst1suhy000520.docx:M01:S01","strict_fingerprint_v2":"1bdc821df182e004800a9ffd280944c31c5ef27f8eba5aabe948ea75ad24155d","decision":"include","check":"CD=5cm in regular hexagon => 6×5=30cm; source rId8/image2.emf labels visually checked."},
+    {"raw_id":"Winpass:25winpasst1suhy000520.docx:M01:S02","strict_fingerprint_v2":"6dd4d56e9ba1e22f62e40f396ac25207375ce53c9b76eeb1464b09bf3400ae33","decision":"include","check":"Regular hexagon has 6 symmetry axes; source rId8/image2.emf visually checked."},
+    {"raw_id":"Winpass:25winpasst1suhy000520.docx:M01:S03","strict_fingerprint_v2":"bb77ad6199b3b01b825585c66953e3626a489a808e7eee6e49592ac310cd55c8","decision":"include","check":"Point symmetry maps F to opposite vertex C; source rId8/image2.emf labels visually checked."},
+    {"raw_id":"Winpass:25winpasst1suhy000520.docx:M03:S01","strict_fingerprint_v2":"61f04d1e2c21ca854600efad08ac1428ed87a5932f7b38d75a716c078d0a822d","decision":"include","check":"Left source diagram: 4cm square minus quarter circle radius 4 => 16-4π cm²; rId9/image3.emf visually checked."},
+    {"raw_id":"Winpass:25winpasst1suhy000520.docx:M03:S02","strict_fingerprint_v2":"0bb3e1a9e44ab3b3718f383f45dcc22c76fe9efc05f3dd5e3e0eb3a90ed5f932","decision":"include","check":"Right source diagram: four quarter circles radius 3 => 9π cm²; rId9/image3.emf visually checked."},
+    {"raw_id":"Winpass:25winpasst1suhy000728.docx:M01:S01","strict_fingerprint_v2":"b7fdd9e23b054ea58fcd4b01adde8b348096be5d6b215dd35727c6a8c2330e8f","decision":"include","check":"Embedded source table shows frequency 8 of total 25 => 8/25=0.32; rId8/image2.emf visually checked."},
+    {"raw_id":"Winpass:25winpasst1suhy000728.docx:M01:S02","strict_fingerprint_v2":"197635f784fae802d5ecd82524c9b4bd5fd1f2aca5bc680d1469a989945fdd08","decision":"include","check":"Cumulative frequency through 15–20m =4+5+8+5=22; source table visually checked."},
+    {"raw_id":"Winpass:25winpasst1suhy000728.docx:M01:S03","strict_fingerprint_v2":"d2319af880725d14a3334ec3b41af606da12db3f5bd538602364d21f6fd898dc","decision":"include","check":"Cumulative relative frequency through 20–25m=24/25=0.96; source table visually checked."},
+    {"raw_id":"Winpass:25winpasst1suhy000728.docx:M02:S01","strict_fingerprint_v2":"0a220f2955e8078863cfbb286f48373f2fe2b1638f6a678397a221041b214305","decision":"include","check":"Histogram frequencies 2,6,10,14,11,7 total 50; 40–45kg has 11 =>22%; rId9/image3.emf visually checked."},
+    {"raw_id":"Winpass:25winpasst1suhy000728.docx:M02:S02","strict_fingerprint_v2":"74fc191466e34da2025b9a213d3e6a4da7c2c565c018a5b21c526fed4f72ed73","decision":"include","check":"Frequency polygon joins class-midpoint frequencies and zero endpoints; actual answer rId11/image5.emf red line visually checked."},
+    {"raw_id":"Winpass:25winpasst2suhy000313.docx:M01:S01","strict_fingerprint_v2":"41b5b87bf81a6bb2f91adffd5585ae9cb1b3187faa6637161d4f18075dba3905","decision":"include","check":"Slope=(3150-1950)/(26-18)=150; intercept=-750; at 21m³ =>2400円."},
+    {"raw_id":"Winpass:25winpasst2suhy000313.docx:M01:S02","strict_fingerprint_v2":"79a1de1151e60a74bac5030f0fd2d0976159fd4042eda5a074a7f3f47903bea1","decision":"include","check":"30cm at 0kg and 36cm at 3kg =>2cm/kg; at 10kg =>50cm."},
+    {"raw_id":"Winpass:25winpasst2suhy000313.docx:M01:S03","strict_fingerprint_v2":"3b808ee5cbe708f9c81fccaafcf46d4337cde3bb47481587fe412a88dd646bd8","decision":"include","check":"Slope=(32-28)/(600-400)=0.02万円/冊; intercept=20万円; 100冊=>22万円."},
+    {"raw_id":"Winpass:25winpasst2suhy000313.docx:M02:S01","strict_fingerprint_v2":"b68322d8251ae93eb60a57c037f3d6d5713ac76fe88c52ffc736669ae6002ed8","decision":"include","check":"Source graph has walking slopes (0,0)-(20,2000) and (40,2000)-(60,4000), both 100m/min; rId8/image2.emf visually checked."},
+    {"raw_id":"Winpass:25winpasst2suhy000313.docx:M02:S02","strict_fingerprint_v2":"13a4a00f1b898b21c8c87d08e1f5cd7e8ebb2730987efdac218630258b1db2c5","decision":"include","check":"Brother starts at (30,0) with 150m/min => y=150(x-30); actual answer rId9/image3.emf red line visually checked."}
   ],
-  "next": "Continue fingerprint-bound review from the remaining 131 Winpass strict raw_id/fingerprints. Do not count-force."
+  "next": "Continue fingerprint-bound evidence review from the remaining 131 Winpass durable raw_id/strict_fingerprint_v2 records. Never count-force."
 }
