@@ -37,7 +37,6 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f V11_BATCH09_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH09_GRAMMAR_CHRONOLOGY_REPORT.json V11_BATCH09_CHRONOLOGY_STATUS.txt
           git diff --cached --quiet || git commit -m "v11: persist Batch09 r6 chronology reports"
-          git pull --rebase origin v11-1000passage-easy-notes
           git push origin HEAD:v11-1000passage-easy-notes
       - uses: actions/upload-artifact@v4
         if: always()
