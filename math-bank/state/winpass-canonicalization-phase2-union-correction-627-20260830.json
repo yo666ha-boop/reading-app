@@ -1,0 +1,132 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "WINPASS_CANONICALIZATION_FROM_EVIDENCE",
+  "phase": "PHASE2_RAW_ID_UNION_ARITHMETIC_CORRECTION",
+  "recorded_at_jst": "2026-08-30T08:08:00+09:00",
+  "reason": "Rebuilt progress from durable raw_id union instead of extension headers. Four duplicate-arithmetic events were proven by exact raw_id/source identity and must not count as new Phase2 scans.",
+  "source_archive": {
+    "drive_file_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
+    "bytes": 8296042,
+    "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+    "outer_zip_crc": "PASS",
+    "docx_members": 81
+  },
+  "prior_reported_state": {
+    "artifact": "math-bank/state/winpass-canonicalization-phase2-exact-scan-660-20260830.json",
+    "reported_scanned": 660,
+    "reported_remaining": 57
+  },
+  "verified_chain": {
+    "scan_279_unique": 279,
+    "scan_493_unique": 493,
+    "scan_512_unique": 512,
+    "note": "279 batches are mutually raw_id-unique; highconf177 has zero raw_id overlap with the 78/92 strict batches and source-document sets used by the 109 batch. The 493 additions and the 512 1suhy000627/2suhy000312 batches are first appearances at those stages."
+  },
+  "duplicate_arithmetic_events": [
+    {
+      "reported_stage": 575,
+      "duplicate_count": 13,
+      "first_seen_in": "mathbank_winpass_strict_highconf_177_v2_20260825.jsonl",
+      "later_artifact": "math-bank/state/winpass-canonicalization-phase2-exact-scan-575-20260829.json",
+      "raw_ids": [
+        "Winpass:25winpasst3suhy000206.docx:M01:S01",
+        "Winpass:25winpasst3suhy000206.docx:M01:S02",
+        "Winpass:25winpasst3suhy000206.docx:M01:S03",
+        "Winpass:25winpasst3suhy000207.docx:M03:S01",
+        "Winpass:25winpasst3suhy000207.docx:M03:S02",
+        "Winpass:25winpasst3suhy000209.docx:M01:S01",
+        "Winpass:25winpasst3suhy000209.docx:M01:S02",
+        "Winpass:25winpasst3suhy000209.docx:M01:S03",
+        "Winpass:25winpasst3suhy000209.docx:M01:S04",
+        "Winpass:25winpasst3suhy000209.docx:M01:S05",
+        "Winpass:25winpasst3suhy000310.docx:M01:S05",
+        "Winpass:25winpasst3suhy000310.docx:M01:S06",
+        "Winpass:25winpasst3suhy000310.docx:M01:S07"
+      ]
+    },
+    {
+      "reported_stage": 623,
+      "duplicate_count": 1,
+      "first_seen_in": "math-bank/state/winpass-canonicalization-phase2-exact-scan-575-20260829.json",
+      "later_artifact": "math-bank/state/winpass-canonicalization-phase2-exact-scan-623-20260830.json",
+      "raw_ids": ["Winpass:25winpasst3suhy000413.docx:M02:S01"]
+    },
+    {
+      "reported_stage": 650,
+      "duplicate_count": 9,
+      "first_seen_in": "math-bank/state/winpass-canonicalization-phase2-exact-scan-512-20260829.json",
+      "later_artifact": "math-bank/state/winpass-canonicalization-phase2-exact-scan-650-20260830.json",
+      "strict_drive_file_id": "1fEi0HUI4pz2vYIDLl4q5poBPzcboBByc",
+      "source_document": "25winpasst2suhy000312.docx",
+      "raw_ids": [
+        "Winpass:25winpasst2suhy000312.docx:M01:S01",
+        "Winpass:25winpasst2suhy000312.docx:M01:S02",
+        "Winpass:25winpasst2suhy000312.docx:M01:S03",
+        "Winpass:25winpasst2suhy000312.docx:M02:S01",
+        "Winpass:25winpasst2suhy000312.docx:M02:S02",
+        "Winpass:25winpasst2suhy000312.docx:M02:S03",
+        "Winpass:25winpasst2suhy000312.docx:M02:S04",
+        "Winpass:25winpasst2suhy000312.docx:M03:S01",
+        "Winpass:25winpasst2suhy000312.docx:M03:S02"
+      ],
+      "proof": "Drive strict batch contains exactly these 9 unique raw_ids; the same 9 are listed as the 650 extension, while 512 already declares this exact source batch as a 9-record extension."
+    },
+    {
+      "reported_stage": 660,
+      "duplicate_count": 10,
+      "first_seen_in": "math-bank/state/winpass-canonicalization-phase2-exact-scan-512-20260829.json",
+      "later_artifact": "math-bank/state/winpass-canonicalization-phase2-exact-scan-660-20260830.json",
+      "strict_drive_file_id": "1vuZNt94WOz-xgSrdkHi2bQlpJryjesct",
+      "source_document": "25winpasst1suhy000627.docx",
+      "raw_ids": [
+        "Winpass:25winpasst1suhy000627.docx:M01:S01",
+        "Winpass:25winpasst1suhy000627.docx:M01:S02",
+        "Winpass:25winpasst1suhy000627.docx:M01:S03",
+        "Winpass:25winpasst1suhy000627.docx:M01:S04",
+        "Winpass:25winpasst1suhy000627.docx:M02:S01",
+        "Winpass:25winpasst1suhy000627.docx:M02:S02",
+        "Winpass:25winpasst1suhy000627.docx:M02:S03",
+        "Winpass:25winpasst1suhy000627.docx:M02:S04",
+        "Winpass:25winpasst1suhy000627.docx:M03:S01",
+        "Winpass:25winpasst1suhy000627.docx:M03:S02"
+      ],
+      "proof": "Drive strict batch contains exactly these 10 unique raw_ids; the same source batch was already declared as a 10-record extension at 512 and was counted again at 660."
+    }
+  ],
+  "post_512_extensions_audited": {
+    "reported_new_after_512_through_660": 148,
+    "duplicate_increments": 33,
+    "actual_unique_new_after_512": 115,
+    "notes": [
+      "585 adds 1suhy000417: source/raw scope distinct from prior scanned sets.",
+      "593 adds 1suhy000626: source/raw scope distinct from prior scanned sets.",
+      "602 adds 1suhy000625 9 raw_ids with overlap=0 against reconstructed 593.",
+      "614 adds 2suhy000519 6 and 3suhy000523 6 raw_ids; distinct source/raw scopes.",
+      "623 has 8 genuinely new raw_ids plus the one 3suhy000413:M02:S01 duplicate listed above.",
+      "629 adds 2suhy000309 M02/M03 6 while prior same-document M01 records are distinct.",
+      "637 adds 2suhy000623 M01 8 while prior same-document M02:S01 is distinct.",
+      "641 adds 2suhy000311 M02 4 while prior same-document M01 records are distinct.",
+      "650 and 660 add zero new raw_ids because those exact batches were already counted at 512."
+    ]
+  },
+  "corrected_arithmetic": {
+    "input_unique_raw_ids": 717,
+    "reported_scanned": 660,
+    "duplicate_increments_removed": 33,
+    "actual_unique_scanned": 627,
+    "remaining_unscanned": 90,
+    "check": "660 - 13 - 1 - 9 - 10 = 627; 717 - 627 = 90"
+  },
+  "semantic_guard": {
+    "automatic_semantic_merges": 0,
+    "provisional_canonical_count": 717,
+    "historical_570_used_as_cutoff": false,
+    "count_forcing_used": false
+  },
+  "guards": {
+    "main_untouched": true,
+    "publication_ready": false,
+    "schedule_changed": false
+  },
+  "next": "Continue Phase2 only from the corrected 627-raw_id union. Rebuild the exact remaining 90 raw_id/fingerprint difference before any further increment; never use prior extension headers as progress arithmetic."
+}
