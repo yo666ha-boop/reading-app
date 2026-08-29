@@ -1,0 +1,37 @@
+name: v11 Batch07 final quality audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch07_*.js'
+      - 'v11_batch06_canonical_gloss.js'
+      - '.github/workflows/v11-batch07-final-quality-audit.yml'
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run Batch07 final quality audit
+        run: node v11_batch07_final_quality_audit.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-batch07-final-quality
+          path: V11_BATCH07_FINAL_QUALITY_AUDIT.json
+      - name: Persist report
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add V11_BATCH07_FINAL_QUALITY_AUDIT.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'v11: record Batch07 final quality [skip ci]'
+            git pull --rebase origin v11-1000passage-easy-notes
+            git push
+          fi
