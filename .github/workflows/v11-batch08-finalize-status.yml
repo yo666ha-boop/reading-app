@@ -1,0 +1,27 @@
+name: v11 Batch08 finalize 568 status
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch08_finalize_status.js'
+      - '.github/workflows/v11-batch08-finalize-status.yml'
+permissions:
+  contents: write
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node v11_batch08_finalize_status.js
+      - run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add V11_1000_PASSAGE_STATUS.txt
+          if ! git diff --cached --quiet; then
+            git commit -m 'v11: register Batch08 complete at 568 and set Batch09 next [skip ci]'
+            git pull --rebase origin v11-1000passage-easy-notes
+            git push
+          fi
