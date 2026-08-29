@@ -1,0 +1,80 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "WINPASS_CANONICALIZATION_FROM_EVIDENCE",
+  "phase": "PHASE2_SEMANTIC_EQUIVALENCE_CLUSTERING",
+  "recorded_at_jst": "2026-08-30T04:08:09+09:00",
+  "previous_scan": {
+    "records": 614,
+    "artifact": "math-bank/state/winpass-canonicalization-phase2-exact-scan-614-20260830.json",
+    "head_before": "08b6ea976880111163d51ec2dda9d5544fa4e7f8"
+  },
+  "extension_source": {
+    "records": 9,
+    "path": "math-bank/state/winpass9-new-3suhy000413-strict-20260827.jsonl",
+    "blob_sha": "becbe47ff5d81a4a9d439c0bd0324c3c6a230b08",
+    "source_document": "25winpasst3suhy000413.docx",
+    "source_document_sha256": "ff0fc8a93658cf3660a7ade7878ec89247cb5191b48a5cb72881e4a2929df741",
+    "source_document_bytes": 99837,
+    "source_docx_crc": "PASS"
+  },
+  "quality_gate": {
+    "records_parsed": "9/9",
+    "unique_raw_ids": "9/9",
+    "unique_content_bound_fingerprints": "9/9",
+    "score_evidence": "9/9",
+    "question_answer_ooxml_provenance": "9/9",
+    "omml_structure_preserved_when_required": "9/9",
+    "figure_dependency": "none required by strict records",
+    "independent_check": "9/9 PASS",
+    "source_docx_sha_matches_strict": "9/9"
+  },
+  "comparison_against_previous_scan": {
+    "previous_records_reconstructed": 614,
+    "previous_unique_raw_ids": 614,
+    "new_raw_id_overlap": 0,
+    "normalization": "Unicode NFKC plus whitespace removal only",
+    "exact_question_answer_overlap": 0,
+    "exact_question_answer_context_overlap": 0,
+    "new_internal_exact_question_answer_duplicates": 0
+  },
+  "arithmetic": {
+    "records_loaded": 623,
+    "new_records": 9,
+    "remaining_unscanned": 94,
+    "check": "614 + 9 = 623; 717 - 623 = 94"
+  },
+  "semantic_guard": {
+    "automatic_merges_in_extension": 0,
+    "provisional_canonical_count": 717,
+    "historical_570_used_as_cutoff": false,
+    "count_forcing_used": false
+  },
+  "raw_ids": [
+    "Winpass:25winpasst3suhy000413.docx:M01:S01",
+    "Winpass:25winpasst3suhy000413.docx:M01:S02",
+    "Winpass:25winpasst3suhy000413.docx:M01:S03",
+    "Winpass:25winpasst3suhy000413.docx:M01:S04",
+    "Winpass:25winpasst3suhy000413.docx:M02:S01",
+    "Winpass:25winpasst3suhy000413.docx:M02:S02",
+    "Winpass:25winpasst3suhy000413.docx:M02:S03",
+    "Winpass:25winpasst3suhy000413.docx:M02:S04",
+    "Winpass:25winpasst3suhy000413.docx:M02:S05"
+  ],
+  "fingerprints": [
+    "6a7eb669c304f3c7f67e421ce609dab793a03a1859c22d2717b7d71f032ec5f2",
+    "1f9a1131e3b89d54c014c461ae0c6f28f37f06337db0cdbc29639f34a8bd69b4",
+    "695e617fc88490a7d07690b828b1e9890c0990fe6882b4c881547bcae1156a03",
+    "1010f7d2ab0e0fc78327dd9510c393776543f868136696d2717a224f28b1e663",
+    "2069ca57ce85daee51989a2c5427f20c7cbaf34ccf1b7afae69f761c62d7a105",
+    "fccc151694f13cfb2c12e72b2a30e6cea98747c30c5cfa5efd4de8921b63cdd8",
+    "e8874b4de21ddadccefd682412aae78dbc2fc7d4cc38e814f46d2774b5295915",
+    "fc9b4bb65cc65ff21aac897d980a0874a073d0020a7dab63b8ca30fbb54f7729",
+    "f9f3ad9523ebe433dcf4660d0f2f48461dabe072102a116807675dbd0c490386"
+  ],
+  "guards": {
+    "main_untouched": true,
+    "publication_ready": false,
+    "schedule_changed": false
+  },
+  "next": "Continue evidence-backed Phase2 scan across remaining 94 unique Winpass records; preserve full provenance/OMML/media gates and known supersession handling."
+}
