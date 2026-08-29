@@ -1,0 +1,78 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "WINPASS_CANONICALIZATION_FROM_EVIDENCE",
+  "phase": "PHASE2_SEMANTIC_EQUIVALENCE_CLUSTERING",
+  "recorded_at_jst": "2026-08-30T04:18:00+09:00",
+  "previous_scan": {
+    "records": 637,
+    "artifact": "math-bank/state/winpass-canonicalization-phase2-exact-scan-637-20260830.json",
+    "head_before": "66d850f259e4e0544f9c683e6b2e43e76e384380"
+  },
+  "extension_source": {
+    "records": 4,
+    "path": "math-bank/state/winpass4-new-2suhy000311-strict-20260827.jsonl",
+    "blob_sha": "d7bebd080b6f181686cec282e3616fac5f371d8d",
+    "source_document": "25winpasst2suhy000311.docx",
+    "source_document_sha256": "066069999326c72dfd3843cb68029c955746aa42ede2e6d93d079e0061b1df06",
+    "source_document_bytes": 129623,
+    "source_docx_crc": "PASS"
+  },
+  "quality_gate": {
+    "records_parsed": "4/4",
+    "unique_raw_ids": "4/4",
+    "unique_content_bound_fingerprints": "4/4",
+    "score_evidence": "4/4",
+    "question_answer_ooxml_provenance": "4/4",
+    "omml_structure_preserved_when_required": "4/4",
+    "figure_dependency": "none required by these four records",
+    "independent_check": "4/4 PASS",
+    "source_docx_sha_matches_strict": "4/4"
+  },
+  "comparison_against_previous_scan": {
+    "previous_records_reconstructed": 637,
+    "previous_unique_raw_ids": 637,
+    "existing_same_document_records": 4,
+    "existing_same_document_scope": "M01:S01-S04 already scanned; extension is M02:S01-S04",
+    "new_raw_id_overlap": 0,
+    "normalization": "Unicode NFKC plus whitespace removal only",
+    "exact_question_answer_overlap": 0,
+    "exact_question_answer_context_overlap": 0,
+    "new_internal_exact_question_answer_duplicates": 0
+  },
+  "arithmetic": {
+    "records_loaded": 641,
+    "new_records": 4,
+    "remaining_unscanned": 76,
+    "check": "637 + 4 = 641; 717 - 641 = 76"
+  },
+  "semantic_guard": {
+    "automatic_merges_in_extension": 0,
+    "provisional_canonical_count": 717,
+    "historical_570_used_as_cutoff": false,
+    "count_forcing_used": false
+  },
+  "raw_ids": [
+    "Winpass:25winpasst2suhy000311.docx:M02:S01",
+    "Winpass:25winpasst2suhy000311.docx:M02:S02",
+    "Winpass:25winpasst2suhy000311.docx:M02:S03",
+    "Winpass:25winpasst2suhy000311.docx:M02:S04"
+  ],
+  "fingerprints": [
+    "ecc1f30763049ee238171095303b790667731b158775743c745bc3ed8c5c0157",
+    "144997f28d5b2d710964f4794a3116f04654ba6b8ecc743eb620c9564949e6c1",
+    "d8b885034c310ba9e90ef3b1bf8b135ff248da28822168f39cf048b2ad873e7c",
+    "f56e3cfc6a24a6493ad72a45469dfa95cc32b9fdfdbcf460dcc7a217bd944796"
+  ],
+  "independent_recalculation_summary": [
+    "2a+3*2=-2 -> a=-4",
+    "4x+5y=20 -> slope -4/5",
+    "2x+y=8 and 3x-2y=5 -> (3,2)",
+    "x+2y+4=0 and x-y-5=0 -> (2,-3)"
+  ],
+  "guards": {
+    "main_untouched": true,
+    "publication_ready": false,
+    "schedule_changed": false
+  },
+  "next": "Continue evidence-backed Phase2 scan across remaining 76 unique Winpass records, preserving newest supersession content and full provenance/media/OMML gates."
+}
