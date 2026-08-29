@@ -1,0 +1,28 @@
+name: v11 Batch10 build verified vocab repairs
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch10_build_vocab_repairs.js'
+      - '.github/workflows/v11-batch10-build-vocab-repairs.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node v11_batch10_build_vocab_repairs.js
+      - name: Persist generated repair layers
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f v11_batch10_vocab_inventory.js v11_batch10_prior_verified_gloss.js v11_batch10_gloss_apply.js V11_BATCH10_PRIOR_GLOSS_COVERAGE.json
+          git diff --cached --quiet || git commit -m "v11: generate Batch10 verified vocab repair layers"
+          git push origin HEAD:v11-1000passage-easy-notes
