@@ -1,0 +1,51 @@
+name: v11 Batch11 chronology audit
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch11_**'
+      - '.github/workflows/v11-batch11-chronology-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install --no-save --package-lock=false jsdom@24
+      - name: Run Batch11 chronology audit and preserve status
+        id: chrono
+        shell: bash
+        run: |
+          set +e
+          node v11_batch11_chronology_audit.js
+          rc=$?
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Persist chronology reports without rolling back concurrent work
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f V11_BATCH11_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH11_GRAMMAR_CHRONOLOGY_REPORT.json V11_BATCH11_CHRONOLOGY_STATUS.txt
+          git diff --cached --quiet || git commit -m "v11: persist Batch11 chronology reports"
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-batch11-chronology
+          path: |
+            V11_BATCH11_VOCAB_CHRONOLOGY_REPORT.json
+            V11_BATCH11_GRAMMAR_CHRONOLOGY_REPORT.json
+            V11_BATCH11_CHRONOLOGY_STATUS.txt
+      - name: Enforce chronology gate
+        if: always()
+        run: test "${{ steps.chrono.outputs.rc }}" = "0"
