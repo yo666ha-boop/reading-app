@@ -1,0 +1,13 @@
+'use strict';
+const fs=require('fs');
+let src=fs.readFileSync('v11_batch10_candidate_runtime_audit.js','utf8');
+src=src.replaceAll('V11_BATCH10','V11_BATCH11').replaceAll('Batch10','Batch11').replaceAll('batch10','batch11').replaceAll('b10','b11');
+const chain=`const chain=['v11_batch11_passages_draft_g1.js','v11_batch11_passages_draft_g2.js','v11_batch11_g3_core.js','v11_batch11_passages_draft_g3_standard.js','v11_batch11_passages_draft_g3_long.js','v11_batch11_passages_draft_g3_yamaguchi_a.js','v11_batch11_passages_draft_g3_yamaguchi_b.js','v11_batch11_length_repair_r1.js','v11_batch11_length_repair_r2.js','v11_batch11_length_repair_r3.js','v11_batch11_length_repair_r4.js','v11_batch11_grammar_repair_r1.js','v11_batch11_grammar_repair_r2.js','v11_batch11_question_human_rewrite_r1.js','v11_batch10_prior_verified_gloss.js','v11_batch10_manual_gloss_r1.js','v11_batch11_manual_gloss_r1.js','v11_batch11_verified_gloss_reuse.js'];`;
+src=src.replace(/const chain=\[[\s\S]*?\];/,chain);
+src=src.replace("assert(st.extraPassages===500&&st.totalWithBaseline===668,'candidate totals '+JSON.stringify(st));","assert(st.extraPassages===550&&st.totalWithBaseline===718,'candidate totals '+JSON.stringify(st));");
+src=src.replace("assert(before.extra===450,'persistent runtime must remain 618 before candidate '+JSON.stringify(before));","assert(before.extra===500,'persistent runtime must remain 668 before candidate '+JSON.stringify(before));");
+src=src.replace("return{extraCandidate:all.length,b11:b11.length,dupIds,dupBodies,near,pass:all.length===500&&b11.length===50&&!dupIds.length&&!dupBodies.length&&!near.length}","return{extraCandidate:all.length,b11:b11.length,dupIds,dupBodies,near,pass:all.length===550&&b11.length===50&&!dupIds.length&&!dupBodies.length&&!near.length}");
+src=src.replace("persistentBefore:618,candidateTotal:668","persistentBefore:668,candidateTotal:718");
+src=src.replace("V11_BATCH11_CANDIDATE_668_PASS","V11_BATCH11_CANDIDATE_718_PASS");
+if(!src.includes("extraPassages===550")||!src.includes("before.extra===500")||!src.includes("all.length===550")||!src.includes("candidateTotal:718"))throw Error('Batch11 candidate audit transform incomplete');
+eval(src);
