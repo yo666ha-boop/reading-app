@@ -3,7 +3,9 @@ on:
   push:
     branches: [v11-1000passage-easy-notes]
     paths:
+      - 'v11_batch10_human_semantic_review_r1.js'
       - 'v11_batch10_question_human_rewrite.js'
+      - 'v11_batch10_question_human_rewrite_r2.js'
       - 'v11_batch10_question_quality_audit.js'
       - '.github/workflows/v11-batch10-question-quality-audit.yml'
   workflow_dispatch:
