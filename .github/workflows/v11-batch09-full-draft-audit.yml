@@ -1,0 +1,21 @@
+name: v11 Batch09 full draft audit
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch09_passages_draft_g1.js'
+      - 'v11_batch09_g1_length_repair.js'
+      - 'v11_batch09_passages_draft_g2.js'
+      - 'v11_batch09_passages_draft_g3.js'
+      - 'v11_batch09_g3_length_repair.js'
+      - 'v11_batch09_full_draft_audit.js'
+      - '.github/workflows/v11-batch09-full-draft-audit.yml'
+  workflow_dispatch:
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - run: node v11_batch09_full_draft_audit.js
