@@ -7,8 +7,10 @@ const norm=w=>String(w||'').toLowerCase().replace(/[’‘]/g,"'").trim();
 let converted=0;const missing=[];
 for(const p of ps){
   p.notes=Array.isArray(p.notes)?p.notes:[];
-  const temps=p.notes.filter(n=>n&&n.kind==='temporary_vocab_inventory');
-  const keep=p.notes.filter(n=>!n||n.kind!=='temporary_vocab_inventory');
+  // Residual repair r2 deliberately uses its own temporary kind so it cannot
+  // accidentally be counted as a final required-local note before glossing.
+  const temps=p.notes.filter(n=>n&&n.kind==='temporary_vocab_inventory_r2');
+  const keep=p.notes.filter(n=>!n||n.kind!=='temporary_vocab_inventory_r2');
   const have=new Set(keep.filter(Boolean).map(n=>norm(n.english)));
   for(const n of temps){
     const w=norm(n.english),g=String(gloss[w]||'').trim();
@@ -18,6 +20,6 @@ for(const p of ps){
   }
   p.notes=keep;
 }
-window.V11_BATCH09_GLOSS_APPLY_R2_STATE={version:'20260829-r2',passages:ps.length,converted,missing:missing.length,missingWords:[...new Set(missing.map(x=>x[1]))].sort(),registered:false};
+window.V11_BATCH09_GLOSS_APPLY_R2_STATE={version:'20260829-r3',passages:ps.length,converted,missing:missing.length,missingWords:[...new Set(missing.map(x=>x[1]))].sort(),registered:false};
 if(missing.length)throw Error(`Batch09 residual final gloss missing ${missing.length} occurrences / ${window.V11_BATCH09_GLOSS_APPLY_R2_STATE.missingWords.length} words: ${window.V11_BATCH09_GLOSS_APPLY_R2_STATE.missingWords.slice(0,80).join(', ')}`);
 })();
