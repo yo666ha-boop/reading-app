@@ -1,0 +1,18 @@
+name: v11 Batch09 residual note diagnostic
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch09_residual_note_diagnostic.js'
+      - 'v11_batch09_vocab_repair_r2.js'
+      - 'v11_batch09_gloss_apply_r2.js'
+  workflow_dispatch:
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node v11_batch09_residual_note_diagnostic.js
