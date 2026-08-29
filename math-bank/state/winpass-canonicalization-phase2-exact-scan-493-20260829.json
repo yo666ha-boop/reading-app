@@ -1,0 +1,38 @@
+{
+  "project":"mikami-math-problem-bank",
+  "stage":"WINPASS_CANONICALIZATION_FROM_EVIDENCE",
+  "phase":"PHASE2_SEMANTIC_EQUIVALENCE_CLUSTERING",
+  "recorded_at_jst":"2026-08-29T16:13:00+09:00",
+  "method":{
+    "normalization":"Unicode NFKC plus whitespace removal only; mathematical symbols/content preserved",
+    "exact_duplicate_key":"normalized question + normalized answer + figure/table/graphical-answer context identity",
+    "secondary_guard":"normalized question + normalized answer without context",
+    "question_only":"candidate signal only; never sufficient to merge"
+  },
+  "records_loaded":493,
+  "unique_raw_ids":493,
+  "unique_record_fingerprints":493,
+  "remaining_unscanned":224,
+  "arithmetic":"717 - 493 = 224",
+  "newly_extended_from_previous_scan":214,
+  "extension_sources":[
+    {"records":177,"drive_id":"1mjoEIGJsMRomqMSEWVUMcXlDAuzeTKkx","name":"mathbank_winpass_strict_highconf_177_v2_20260825.jsonl"},
+    {"records":10,"drive_id":"1W-PlaisrmzMR7VzlUTyLR4fNGtSVUoeK","name":"winpass10-new-2suhy000414-strict-20260827.jsonl"},
+    {"records":10,"drive_id":"1V4ZR3Q2_he6UN31d03_k2JFffKXEm1fC","name":"winpass10-new-2suhy000415-strict-20260827.jsonl"},
+    {"records":9,"drive_id":"1qXPP1I6hyFeeOMbijZasPney9Zu5vG8e","name":"winpass9-new-2suhy000416-strict-20260827.jsonl"},
+    {"records":8,"drive_id":"1P1T3jOyR5bHFpcoyN3l-EUp5-HUXXYK8","name":"winpass8-new-2suhy000417-strict-20260827.jsonl"}
+  ],
+  "results":{
+    "exact_question_answer_context_duplicate_groups":0,
+    "exact_question_answer_duplicate_groups_even_when_context_ignored":0,
+    "automatic_semantic_merges":0,
+    "provisional_canonical_count":717
+  },
+  "guards":{
+    "historical_570_used_as_cutoff":false,
+    "count_forcing_used":false,
+    "main_untouched":true,
+    "publication_ready":false
+  },
+  "next":"Locate and load the remaining 224 durable strict records from earlier Winpass strict-materialization batches. Continue the same conservative exact scan. Only evidence-backed equivalence clusters may reduce the count."
+}
