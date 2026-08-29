@@ -1,0 +1,32 @@
+name: v11 Batch09 chronology audit r4
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch09_gloss_apply.js'
+      - 'v11_batch09_chronology_audit_r4.js'
+      - '.github/workflows/v11-batch09-chronology-audit-r4.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - run: npm install --no-save jsdom@24
+      - run: node v11_batch09_chronology_audit_r4.js || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-batch09-chronology-r4
+          path: |
+            V11_BATCH09_VOCAB_CHRONOLOGY_REPORT.json
+            V11_BATCH09_GRAMMAR_CHRONOLOGY_REPORT.json
+            V11_BATCH09_CHRONOLOGY_STATUS.txt
+      - run: |
+          grep -q '^vocab_unregistered=0$' V11_BATCH09_CHRONOLOGY_STATUS.txt
+          grep -q '^vocab_future_leak=0$' V11_BATCH09_CHRONOLOGY_STATUS.txt
+          grep -q '^grammar_unresolved=0$' V11_BATCH09_CHRONOLOGY_STATUS.txt
+          grep -q '^grammar_future_leak=0$' V11_BATCH09_CHRONOLOGY_STATUS.txt
+          grep -q '^final=PASS$' V11_BATCH09_CHRONOLOGY_STATUS.txt
