@@ -1,0 +1,22 @@
+'use strict';
+const fs=require('fs'),vm=require('vm');
+const sandbox={window:{},console};vm.createContext(sandbox);
+vm.runInContext(fs.readFileSync('v11_batch06_canonical_gloss.js','utf8'),sandbox);
+const inherited={...(sandbox.window.V11_BATCH06_CANONICAL_GLOSS||{})};
+const f7=fs.readFileSync('v11_batch07_notes_finalize.js','utf8');
+const m7=f7.match(/const manual=(\{[\s\S]*?\});\nconst proper=/);if(!m7)throw Error('Batch07 manual gloss map not found');
+Object.assign(inherited,vm.runInNewContext('('+m7[1]+')'));
+const f8=fs.readFileSync('v11_batch08_gloss_finalize.js','utf8');
+const m8=f8.match(/const manual=(\{[\s\S]*?\});\nconst groups=/);if(!m8)throw Error('Batch08 manual gloss map not found');
+const manual=vm.runInNewContext('('+m8[1]+')');
+const repair=fs.readFileSync('v11_batch08_vocab_repair.js','utf8');
+const ma=repair.match(/const add=(\{[\s\S]*?\});\nlet added=/);if(!ma)throw Error('Batch08 exact vocab inventory not found');
+const add=JSON.parse(ma[1]);
+const words=[...new Set(Object.values(add).flat().map(x=>String(x).toLowerCase().replace(/[’‘]/g,"'")))].sort();
+const names=new Set(['ken','mina','taro','aya','emi','riku','yuna','mai','miki','sora','leo','mao','haru','nina','yui','aoi','mika','rena','kota','hina','mei','ryo','yuta','kondo','sato','aki','daichi','haruki','kei','mio','mr','ms','hana','keiko','ren','rina']);
+const all={};const missing=[];
+for(const w of words){const base=w.endsWith("'s")?w.slice(0,-2):null;if(manual[w])all[w]=manual[w];else if(inherited[w])all[w]=inherited[w];else if(base&&(manual[base]||inherited[base]))all[w]=(manual[base]||inherited[base])+'の';else if(names.has(w)||base&&names.has(base))all[w]='固有名詞';else missing.push(w);}
+if(missing.length)throw Error('unresolved final glosses: '+missing.join(','));
+const out=`(function applyV11Batch08FinalGloss(){\n'use strict';\nconst all=${JSON.stringify(all)};\nconst groups=[window.V11_BATCH08_G1_DRAFTS||[],window.V11_BATCH08_G2_DRAFTS||[],window.V11_BATCH08_G3_DRAFTS||[]];\nconst ps=groups.flat();let replaced=0;const unresolved=[];\nfor(const p of ps){for(const n of(Array.isArray(p.notes)?p.notes:[])){const w=String(n&&n.english||'').toLowerCase().replace(/[’‘]/g,"'");if(n&&n.kind==='unlearned_local_required'&&all[w]){n.japanese=all[w];n.source='v11 Batch08 verified final Japanese gloss set 20260829';replaced++;}if(n&&n.kind==='unlearned_local_required'){const j=String(n.japanese||'');if(!j||j.toLowerCase()===w||j.includes('最終注整理対象'))unresolved.push([p.id,w,j]);}}}\nwindow.V11_BATCH08_ALL_FINAL_GLOSS=all;\nwindow.V11_BATCH08_GLOSS_APPLY_STATE={version:'20260829',passages:ps.length,inventoryDistinct:Object.keys(all).length,replaced,unresolved,registered:false};\nif(ps.length&&unresolved.length)throw Error('Batch08 unresolved final notes='+unresolved.length);\n})();\n`;
+fs.writeFileSync('v11_batch08_gloss_apply.js',out);
+console.log(`Batch08 final gloss apply generated: distinct=${Object.keys(all).length}`);
