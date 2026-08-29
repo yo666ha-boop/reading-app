@@ -1,0 +1,47 @@
+{
+  "project":"mikami-math-problem-bank",
+  "stage":"WINPASS_CANONICALIZATION_FROM_EVIDENCE",
+  "phase":"PHASE2_SEMANTIC_EQUIVALENCE_CLUSTERING",
+  "recorded_at_jst":"2026-08-29T16:13:00+09:00",
+  "method":{
+    "normalization":"Unicode NFKC plus whitespace removal only; mathematical symbols/content preserved",
+    "exact_duplicate_key":"normalized question + normalized answer + figure/table/graphical-answer context identity",
+    "secondary_guard":"normalized question + normalized answer without context",
+    "question_only":"candidate signal only; never sufficient to merge"
+  },
+  "scanned_batches":[
+    {"records":109,"evidence":"math-bank/state/winpass109-finalized-manifest-20260827.json","composition":"75 final media-heavy + 7 + 10 + 9 + 8 strict records"},
+    {"records":78,"evidence":"math-bank/state/winpass78-evidence-review-quality-preserved-20260829.json","strict_drive_id":"1L8b85H9VY1BtQGih70s7IrlCY0HQKHSb"},
+    {"records":92,"evidence":"math-bank/state/winpass92-evidence-review-quality-preserved-20260829.json","strict_drive_ids":["1Oex7k9KfUNmpM8ymbOeNyGFp9yXDmAD8","1cM6nOKIuXf2D41UjkLbBvTrZJIpkh4HS","1YLIkTo-5XZWhsg5R9mnCR0rT15U3Mh7U"]}
+  ],
+  "arithmetic":{
+    "records_loaded":279,
+    "unique_raw_ids":279,
+    "fingerprints_present":279,
+    "unique_fingerprints":279,
+    "raw_id_overlap_between_scanned_batches":0,
+    "remaining_unscanned":438,
+    "check":"109 + 78 + 92 = 279; 717 - 279 = 438"
+  },
+  "results":{
+    "exact_question_answer_context_duplicate_groups":0,
+    "exact_question_answer_duplicate_groups_even_when_context_ignored":0,
+    "automatic_semantic_merges":0,
+    "question_only_same_text_groups":4,
+    "question_only_same_text_records":8,
+    "question_only_disposition":"KEEP DISTINCT: four pairs are generic proof-blank labels but answers differ and attached figure asset SHA256 differs"
+  },
+  "question_only_guard_examples":[
+    {"a":"Winpass:25winpasst2suhy000520.docx:M01:S01","b":"Winpass:25winpasst2suhy000521.docx:M01:S01","question":"証明の空欄㋐","answers":["AD=CB","BD=CA"],"figure_sha_different":true},
+    {"a":"Winpass:25winpasst2suhy000520.docx:M01:S02","b":"Winpass:25winpasst2suhy000521.docx:M01:S02","question":"証明の空欄㋑","answers":["∠OCB","AB=DC"],"figure_sha_different":true},
+    {"a":"Winpass:25winpasst2suhy000520.docx:M01:S03","b":"Winpass:25winpasst2suhy000521.docx:M01:S03","question":"証明の空欄㋒","answers":["∠ODA=∠OBC","3組の辺"],"figure_sha_different":true},
+    {"a":"Winpass:25winpasst2suhy000520.docx:M01:S04","b":"Winpass:25winpasst2suhy000521.docx:M01:S04","question":"証明の空欄㋓","answers":["1組の辺とその両端の角","∠BAD=∠CDA"],"figure_sha_different":true}
+  ],
+  "provisional_canonical_count":717,
+  "provisional_only":true,
+  "count_forcing_used":false,
+  "historical_570_used_as_cutoff":false,
+  "next":"Continue the same exact evidence-backed scan over the remaining 438 unique raw_ids, then evaluate only explicit candidate equivalence clusters. Do not merge based on topic, lesson number, generic prompt labels, or fuzzy similarity alone.",
+  "main_untouched":true,
+  "publication_ready":false
+}
