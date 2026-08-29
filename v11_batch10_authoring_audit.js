@@ -7,6 +7,7 @@ require('./v11_batch10_passages_draft_g3.js');
 require('./v11_batch10_length_repair_r1.js');
 require('./v11_batch10_grammar_repair_r1.js');
 require('./v11_batch10_grammar_repair_r2.js');
+require('./v11_batch10_length_repair_r2.js');
 const plan=JSON.parse(fs.readFileSync('v11_batch10_authoring_plan.json','utf8'));
 const groups=[window.V11_BATCH10_G1_DRAFTS,window.V11_BATCH10_G2_DRAFTS,window.V11_BATCH10_G3_DRAFTS];
 const ps=groups.flatMap(x=>Array.isArray(x)?x:[]);
