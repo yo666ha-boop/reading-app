@@ -1,0 +1,24 @@
+name: v11 Batch10 plan audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch09_authoring_plan.json'
+      - 'v11_batch10_authoring_plan.json'
+      - 'v11_batch10_plan_audit.js'
+      - '.github/workflows/v11-batch10-plan-audit.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - run: node v11_batch10_plan_audit.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-batch10-plan-audit
+          path: V11_BATCH10_PLAN_AUDIT.json
+          if-no-files-found: warn
