@@ -5,18 +5,40 @@ on:
     paths:
       - 'v11_batch09_chronology_audit_r6.js'
       - 'v11_batch09_gloss_apply_r2.js'
+      - 'v11_batch09_manual_gloss_residual_r3.js'
       - '.github/workflows/v11-batch09-chronology-audit-r6.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   audit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
       - uses: actions/setup-node@v4
         with:
           node-version: 20
       - run: npm install --no-save jsdom@24
-      - name: Run chronology r6
-        run: node v11_batch09_chronology_audit_r6.js
+      - name: Run chronology r6 and preserve status
+        id: chrono
+        shell: bash
+        run: |
+          set +e
+          node v11_batch09_chronology_audit_r6.js
+          rc=$?
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Persist chronology reports
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f V11_BATCH09_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH09_GRAMMAR_CHRONOLOGY_REPORT.json V11_BATCH09_CHRONOLOGY_STATUS.txt
+          git diff --cached --quiet || git commit -m "v11: persist Batch09 r6 chronology reports"
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -25,3 +47,6 @@ jobs:
             V11_BATCH09_VOCAB_CHRONOLOGY_REPORT.json
             V11_BATCH09_GRAMMAR_CHRONOLOGY_REPORT.json
             V11_BATCH09_CHRONOLOGY_STATUS.txt
+      - name: Enforce chronology gate
+        if: always()
+        run: test "${{ steps.chrono.outputs.rc }}" = "0"
