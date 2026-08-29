@@ -1,0 +1,8 @@
+'use strict';
+const fs=require('fs'),vm=require('vm');const s={window:{},console};vm.createContext(s);
+for(const f of ['v11_batch09_verified_gloss_base.js','v11_batch09_manual_gloss_a_h.js','v11_batch09_manual_gloss_i_r.js'])vm.runInContext(fs.readFileSync(f,'utf8'),s,{filename:f});
+const repair=fs.readFileSync('v11_batch09_vocab_repair.js','utf8');const m=repair.match(/const add=(\{[\s\S]*?\});\nlet added=/);if(!m)throw Error('inventory not found');const add=JSON.parse(m[1]);
+const wanted=[...new Set(Object.values(add).flat().map(w=>String(w).toLowerCase().replace(/[’‘]/g,"'")))].sort();const gloss={...(s.window.V11_BATCH09_VERIFIED_GLOSS_BASE||{}),...(s.window.V11_BATCH09_MANUAL_GLOSS||{})};
+const missing=[],bad=[];for(const w of wanted){const g=String(gloss[w]||'').trim();if(!g)missing.push(w);else if(g.toLowerCase()===w||/最終注整理対象|本文で使用|placeholder|temporary/i.test(g))bad.push([w,g]);}
+const extras=Object.keys(gloss).filter(w=>!wanted.includes(w));const report={wanted:wanted.length,verifiedBase:Object.keys(s.window.V11_BATCH09_VERIFIED_GLOSS_BASE||{}).length,manual:Object.keys(s.window.V11_BATCH09_MANUAL_GLOSS||{}).length,covered:wanted.length-missing.length,missing,bad,extras,pass:missing.length===0&&bad.length===0};
+fs.writeFileSync('V11_BATCH09_FINAL_GLOSS_AUDIT.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));if(!report.pass)process.exit(1);
