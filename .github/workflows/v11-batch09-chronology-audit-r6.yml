@@ -1,0 +1,27 @@
+name: v11 Batch09 chronology audit r6
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch09_chronology_audit_r6.js'
+      - 'v11_batch09_gloss_apply_r2.js'
+      - '.github/workflows/v11-batch09-chronology-audit-r6.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install --no-save jsdom@24
+      - name: Run chronology r6
+        run: node v11_batch09_chronology_audit_r6.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-batch09-chronology-r6
+          path: |
+            V11_BATCH09_VOCAB_CHRONOLOGY_REPORT.json
+            V11_BATCH09_GRAMMAR_CHRONOLOGY_REPORT.json
+            V11_BATCH09_CHRONOLOGY_STATUS.txt
