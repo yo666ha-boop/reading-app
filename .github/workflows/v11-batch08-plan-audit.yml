@@ -1,0 +1,36 @@
+name: v11 Batch08 plan audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'V11_BATCH08_50_PASSAGE_PLAN.md'
+      - 'v11_batch08_plan_audit.js'
+      - '.github/workflows/v11-batch08-plan-audit.yml'
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node v11_batch08_plan_audit.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-batch08-plan-audit
+          path: V11_BATCH08_PLAN_AUDIT.json
+      - name: Persist report
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add V11_BATCH08_PLAN_AUDIT.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'v11: record Batch08 plan audit [skip ci]'
+            git pull --rebase origin v11-1000passage-easy-notes
+            git push
+          fi
