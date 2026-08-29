@@ -10,12 +10,15 @@ on:
       - 'v11_batch10_length_repair_r1.js'
       - 'v11_batch10_grammar_repair_r1.js'
       - 'v11_batch10_grammar_repair_r2.js'
+      - 'v11_batch10_length_repair_r2.js'
+      - 'v11_batch10_human_semantic_review_r1.js'
       - 'v11_batch10_vocab_inventory.js'
       - 'v11_batch10_prior_verified_gloss.js'
       - 'v11_batch10_manual_gloss_r1.js'
       - 'v11_batch10_gloss_apply.js'
       - 'v11_batch10_vocab_residual_r2_apply.js'
       - 'v11_batch10_question_human_rewrite.js'
+      - 'v11_batch10_question_human_rewrite_r2.js'
       - '.github/workflows/v11-batch10-chronology-audit.yml'
   workflow_dispatch:
 permissions:
