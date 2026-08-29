@@ -1,0 +1,21 @@
+name: v11 Batch09 gloss coverage audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch09_vocab_repair.js'
+      - 'v11_batch09_gloss_coverage_audit.js'
+      - '.github/workflows/v11-batch09-gloss-coverage-audit.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - run: node v11_batch09_gloss_coverage_audit.js
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v11-batch09-gloss-coverage
+          path: V11_BATCH09_GLOSS_COVERAGE_AUDIT.json
