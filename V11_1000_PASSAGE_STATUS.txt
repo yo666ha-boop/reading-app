@@ -1,107 +1,36 @@
-phase=V11_BATCH08_COMPLETE_BATCH09_NEXT
+phase=V11_BATCH10_COMPLETE_BATCH11_NEXT
 branch=v11-1000passage-easy-notes
 baseline_passages=168
 target_passages=1000
 batch_size=50
-batch01_passages=50
-batch02_passages=50
-batch03_passages=50
-batch04_passages=50
-batch05_passages=50
-batch06_passages=50
-batch07_passages=50
-current_total=568
-remaining_passages=432
-next_batch=Batch09
-next_batch_target=618
+current_total=668
+remaining_passages=332
+next_batch=Batch11
+next_batch_target=718
+batch01_registered=true
+batch02_registered=true
 batch03_registered=true
 batch04_registered=true
 batch05_registered=true
 batch06_registered=true
 batch07_registered=true
-v10_baseline_status=FINAL_COMPLETE
-v10_main_untouched=true
-v7_vocab_authority=1AkKYV6h-9ZCq1-p8126u4t8z0pvPSRnHlOfY8C-3hH4
-v7_records=3975
-easy_support_script=v11_easy_support_notes.js
-easy_support_switch=IMPLEMENTED_RUNTIME_VERIFIED
-normal_required_notes=preserved
-support_notes_category=already_learned_or_learning_support_not_unlearned
-support_meaning_source=v7_canonical_curated
-batch01_quality=PASS run=33078768827
-batch01_easy_support=PASS run=33078768729
-batch01_multi_passage=PASS run=33078768956
-batch01_vocab_chronology=PASS run=33079043696 passages=50/50 tokens=12527 unregistered=0 future_vocab=0
-batch01_grammar_chronology=PASS run=33079043696 occurrences=708 unresolved=0 future_grammar=0
-batch01_cross_platform=PASS run=33079639549 pc=50 iphone=50 overflow=0 errors=0 a4_sections=6 a4_files=12
-batch02_content_quality=PASS semantic_rewrite=50/50 word_count_band=PASS
-batch02_vocab_chronology=PASS run=33150063629 unregistered=0 future_vocab=0
-batch02_grammar_chronology=PASS run=33150063629 unresolved=0 future_grammar=0
-batch02_naturalness=PASS run=33150074322 high_shared_pairs=0
-batch02_questions=PASS run=33150163483
-batch02_cross_batch_quality=PASS run=33150487010
-batch02_easy_support=PASS run=33151470579
-batch02_persistent_runtime=PASS run=33151456273 total=268 batch02=50 pc_overflow=0 pc_errors=0 iphone_overflow=0 iphone_errors=0
-batch02_a4=PASS run=33151456273 representative_sections=6 files=12
-batch02_registration_fix_commit=57ce431abf3a0f682c7d5f70b586864a9411e0f7
-batch02_easy_support_audit_fix_commit=c0bfde637708eb25921c85bc96c5ccc4f8cae4f9
-batch03_content_quality=PASS run=33161758776 semantic_rewrite=50/50 word_count_issues=0 structure_issues=0 high_shared_pairs=0 high_common_sentence_ratio=0
-batch03_required_notes=PASS run=33162178784 placeholder_gloss=0 unresolved=0
-batch03_questions=PASS run=33162178784 passages=50 total_questions=500 a=5 b=5 evidence_in_body=PASS evidence_jp=PASS
-batch03_vocab_chronology=PASS run=33161803156 unregistered=0 future_vocab=0
-batch03_grammar_chronology=PASS run=33161803156 unresolved=0 future_grammar=0
-batch03_cross_batch_quality=PASS run=33162042021 total_v11_additions=150 duplicate_id=0 duplicate_body=0 near_duplicate=0
-batch03_easy_support=PASS run=33162178790 pc_normal_notes=903 pc_support_notes=643 iphone_normal_notes=903 iphone_support_notes=643 canonical_support=PASS required_overlap=0
-batch03_persistent_runtime=PASS run=33162178790 total=318 batch03=50 pc=50 pc_overflow=0 pc_errors=0 iphone=50 iphone_overflow=0 iphone_errors=0
-batch03_a4=PASS run=33162178790 representative_sections=6 files=12
-batch03_runtime_selector_audit_fix_commit=27ff79922a60e820b0d64e0d37522b2eb1a8783e
-batch04_content_quality=PASS run=33184309327 passages=50 word_count_issues=0 structure_issues=0 translation_issues=0 question_issues=0 high_shared_pairs=0 placeholder_gloss=0
-batch04_vocab_chronology=PASS run=33170265604 unregistered=0 future_vocab=0
-batch04_grammar_chronology=PASS run=33170265604 unresolved=0 future_grammar=0
-batch04_questions=PASS run=33184309327 passages=50 total_questions=500 a=5 b=5 evidence_in_body=PASS evidence_jp=PASS
-batch04_persistent_runtime=PASS run=33187990100 total=368 batch04=50 pc=50 pc_overflow=0 pc_errors=0 iphone=50 iphone_overflow=0 iphone_errors=0
-batch04_easy_support=PASS run=33187990100 normal_and_easy_modes=PASS
-batch04_a4=PASS run=33187990100 student_teacher=PASS
-batch04_cross_batch_quality=PASS run=33188190572 head=7aac0bc7899d40fb1442ea871cf56718b8929073 duplicate_id=0 duplicate_body=0 near_duplicate=0
-batch04_cross_batch_audit_fix_commit=7aac0bc7899d40fb1442ea871cf56718b8929073
-batch05_vocab_chronology=PASS run=33198202661 unregistered=0 future_vocab=0
-batch05_grammar_chronology=PASS run=33198202661 unresolved=0 future_grammar=0
-batch05_content_quality=PASS run=33202323511 passages=50 length_issues=0 structure_issues=0 translation_issues=0 question_issues=0 placeholder_gloss=0 registrationReady=true
-batch05_required_notes=PASS run=33202323511 temporary_glosses_finalized=1031 unresolved=0
-batch05_questions=PASS run=33202323511 passages=50 total_questions=500 a=5 b=5 evidence_in_body=PASS evidence_jp=PASS
-batch05_cross_batch_quality=PASS run=33202574445 total_v11_additions=250 duplicate_id=0 duplicate_body=0 near_duplicate=0 page_errors=0
-batch05_persistent_runtime=PASS run=33202564119 total=418 batch05=50 pc=50 pc_overflow=0 pc_errors=0 iphone=50 iphone_overflow=0 iphone_errors=0
-batch05_easy_support=PASS run=33202564119 pc_normal_notes=1186 pc_support_notes=612 iphone_normal_notes=1186 iphone_support_notes=612
-batch05_a4=PASS run=33202564119 representative_sections=6 files=12 student_teacher=PASS
-batch06_content_quality=PASS run=33217549202 passages=50 length_issues=0 structure_issues=0 translation_issues=0 question_issues=0 note_issues=0 high_shared_pairs=0 registrationReady=true
-batch06_required_notes=PASS run=33217549202 temporary_glosses_finalized=1096 unresolved=0
-batch06_questions=PASS run=33217549202 passages=50 total_questions=500 a=5 b=5 evidence_in_body=PASS evidence_jp=PASS
-batch06_vocab_chronology=PASS run=33217761290 unregistered=0 future_vocab=0
-batch06_grammar_chronology=PASS run=33217761290 unresolved=0 future_grammar=0
-batch06_persistent_runtime=PASS run=33217742737 total=468 batch06=50 pc=50 pc_overflow=0 pc_errors=0 iphone=50 iphone_overflow=0 iphone_errors=0
-batch06_cross_batch_quality=PASS run=33217742737 total_v11_additions=300 duplicate_id=0 duplicate_body=0 near_duplicate=0
-batch06_easy_support=PASS run=33217742737 normal_and_easy_modes=PASS
-batch06_a4=PASS run=33217742737 student_teacher=PASS
-batch07_profile=PASS g1=17 g2=17 g3=16 g3_standard=8 g3_long=4 g3_yamaguchi_exam=4
-batch07_content_quality=PASS run=33224843787 passages=50 length_issues=0 structure_issues=0 translation_issues=0 question_issues=0 note_issues=0 high_shared_pairs=0 registrationReady=true
-batch07_required_notes=PASS run=33224843787 finalized=1386 unresolved=0 temporary_glosses=false
-batch07_questions=PASS run=33224843787 passages=50 total_questions=500 a=5 b=5 evidence_in_body=PASS evidence_jp=PASS
-batch07_vocab_chronology=PASS run=33224880824 unregistered=0 future_vocab=0 tokens=24123 required_note_covered=5657
-batch07_grammar_chronology=PASS run=33224880824 occurrences=540 unresolved=0 future_grammar=0
-batch07_persistent_runtime=PASS run=33224958681 total=518 batch07=50 pc=50 pc_overflow=0 pc_errors=0 iphone=50 iphone_overflow=0 iphone_errors=0
-batch07_cross_batch_quality=PASS run=33224958681 total_v11_additions=350 duplicate_id=0 duplicate_body=0 near_duplicate=0
-batch07_easy_support=PASS run=33224958681 pc_normal_notes=1450 pc_support_notes=584 iphone_normal_notes=1450 iphone_support_notes=584
-batch07_a4=PASS run=33224958681 representative_sections=6 files=12 student_teacher=PASS
-next_step=Begin Batch09 from 568: author 50 new distinct passages only after re-reading Drive 00/99 and branch HEAD; preserve all v7 chronology, human semantic/question, notes, cross-batch, Chromium/iPhone, A4, and persistent runtime gates before 618 registration.
-release_to_main=NO_UNTIL_ALL_BATCHES_AND_RELEASE_GATES_PASS
-batch08_passages=50
 batch08_registered=true
-batch08_profile=PASS g1=17 g2=17 g3=16 g3_standard=8 g3_long=4 g3_yamaguchi_exam=4
-batch08_content_quality=PASS run=33232602390 passages=50 word_count=PASS structure=PASS translation_slash=PASS near_shared=0 human_question_scaffold=0
-batch08_questions=PASS run=33232602390 passages=50 total_questions=500 a=5 b=5 evidence=PASS question_type_diversity=PASS mechanical_scaffold=0
-batch08_vocab_chronology=PASS run=33232724648 unregistered=0 future_vocab=0 tokens=23808 required_note_covered=6622
-batch08_grammar_chronology=PASS run=33232724648 occurrences=469 unresolved=0 future_grammar=0
-batch08_persistent_runtime=PASS run=33232685412 total=568 batch08=50 pc=50 iphone=50 cross_batch=PASS a4_student_teacher=PASS
-batch08_registration_commit=603841b26519d92f1991ab887155e7862d82400e
-batch08_bootstrap_commit=2270a86b26c80c167db3ab632cd2eaad8bcd9c08
-batch08_human_question_rewrite_commit=46693f1e6898dfd5d4c924368e85115dae3cc1a0
+batch09_registered=true
+batch10_registered=true
+batch10_passages=50
+batch10_grade_split=G1_17_G2_17_G3_16
+batch10_vocab_chronology=PASS unregistered=0 future_vocab=0
+batch10_grammar_chronology=PASS unresolved=0 future_grammar=0
+batch10_question_quality=PASS passages=50 total_questions=500
+batch10_content_integrity=PASS passages=50 questions=500 failures=0
+batch10_human_semantic_review=PASS prior_full_50_review_retained changed_G2_001_rechecked=true
+batch10_candidate_runtime=PASS total=668 registered=false pc=PASS iphone=PASS duplicate_id=0 duplicate_body=0 near_duplicate=0 a4_sections=6 a4_files=12
+batch10_persistent_runtime=PASS run=33254272406 total=668 registered=true pc=PASS iphone=PASS cross_batch=PASS a4_student_teacher=PASS
+batch10_registration_commit=a3bcb9fc6d8cb36c6fe7975b8a272205996b91f4
+batch10_bootstrap_commit=45332b5436b2cdc10f8bf32dee8d9f73f975deac
+batch10_chain_commit=4613389608a20d46451c86386aa1c701fa0b4d05
+batch10_persistent_audit_commit=a08c762d8fb8de77d7e90b918dfb7fb8865e86c7
+batch10_semantic_fix=G2-001 removed_unregistered_hard_and_synced_sentence_slash_translation_evidence
+batch10_semantic_fix_commit=021e91ea9d2806b390a91c638e0bc027ae2b118a
+release_to_main=NO_UNTIL_1000_AND_FINAL_RELEASE_GATES_PASS
+next_step=Start Batch11 only after rereading Drive 00/99 and current branch HEAD. Create 50 distinct unregistered passages, then pass human semantic quality, translation/slash sync, A/B question quality, v7 vocab/grammar chronology, normal/easy notes, cross-batch duplication, Chromium/iPhone, A4 student/teacher, and persistent runtime before registering 668->718.
