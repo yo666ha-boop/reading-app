@@ -1,74 +1,19 @@
 {
-  "generatedAt": "2026-08-29T07:08:25.926Z",
+  "generatedAt": "2026-08-29T07:10:03.395Z",
   "detectorVersion": "3.1-v11-b05-grammar-r1+gate-fp3+v7supp",
   "passages": 50,
   "detectedFeatureTypes": 21,
-  "detectedOccurrences": 550,
+  "detectedOccurrences": 542,
   "falsePositiveOccurrencesRemoved": 3,
   "resolvedOccurrences": 542,
   "priorGradeCarryForwardOccurrences": 367,
-  "unresolvedOccurrences": 8,
+  "unresolvedOccurrences": 0,
   "futureGrammarLeak": 0,
-  "sectionChronologyComplete": false,
-  "finalPass": false,
+  "sectionChronologyComplete": true,
+  "finalPass": true,
   "rule": "Fail closed after bounded structural false-positive removal, including canonical-v7 lexical -ing nouns; exact official evidence plus bounded canonical-v7 exact/conservative boundaries only. Exact earlier-grade introductions carry forward. Unit/program-level evidence remains unresolved.",
   "future": [],
-  "unresolved": [
-    {
-      "textbook": "ニューホライズン",
-      "grade": "1",
-      "section": "Unit 10-2",
-      "feature": "PASSIVE",
-      "occurrences": 4,
-      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-      "coarseBoundary": null,
-      "introducedGrade": null,
-      "samples": [
-        {
-          "where": "sentence:8",
-          "text": "He returned the box to Mao and put a sign on the shelf so food would not be placed there again.",
-          "match": "be placed"
-        },
-        {
-          "where": "slash:8",
-          "text": "He returned the box to Mao and put a sign on the shelf so food would not be placed there again.",
-          "match": "be placed"
-        },
-        {
-          "where": "B1.evidence",
-          "text": "He returned the box to Mao and put a sign on the shelf so food would not be placed there again.",
-          "match": "be placed"
-        }
-      ]
-    },
-    {
-      "textbook": "ニューホライズン",
-      "grade": "1",
-      "section": "Unit 10-2",
-      "feature": "MODAL_SHOULD",
-      "occurrences": 4,
-      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-      "coarseBoundary": null,
-      "introducedGrade": null,
-      "samples": [
-        {
-          "where": "sentence:9",
-          "text": "Ko learned that when a plan changes, he should send a clear new message.",
-          "match": "should send"
-        },
-        {
-          "where": "slash:9",
-          "text": "Ko learned that when a plan changes, he should send a clear new message.",
-          "match": "should send"
-        },
-        {
-          "where": "A5.evidence",
-          "text": "Ko learned that when a plan changes, he should send a clear new message.",
-          "match": "should send"
-        }
-      ]
-    }
-  ],
+  "unresolved": [],
   "resolved": [
     {
       "textbook": "サンシャイン",
