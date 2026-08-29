@@ -1,0 +1,31 @@
+name: v11 Batch08 build final gloss apply
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch08_build_gloss_finalize.js'
+      - 'v11_batch08_gloss_finalize.js'
+      - 'v11_batch08_vocab_repair.js'
+      - 'v11_batch06_canonical_gloss.js'
+      - 'v11_batch07_notes_finalize.js'
+      - '.github/workflows/v11-batch08-build-gloss-apply.yml'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node v11_batch08_build_gloss_finalize.js
+      - name: Persist generated final gloss apply
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add v11_batch08_gloss_apply.js
+          git diff --cached --quiet || git commit -m 'v11: generate Batch08 final gloss apply [skip ci]'
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push
