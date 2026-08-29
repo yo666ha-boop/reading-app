@@ -1,0 +1,30 @@
+name: v11 Batch10 human review packet
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch10_build_human_review_packet.js'
+      - '.github/workflows/v11-batch10-human-review-packet.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node v11_batch10_build_human_review_packet.js
+      - name: Persist packet without rolling back concurrent work
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f V11_BATCH10_HUMAN_REVIEW_PACKET.md
+          git diff --cached --quiet || git commit -m "v11: persist Batch10 human review packet"
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
