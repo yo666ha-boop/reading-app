@@ -1,0 +1,89 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "WINPASS_CANONICALIZATION_FROM_EVIDENCE",
+  "phase": "PHASE2_SEMANTIC_EQUIVALENCE_CLUSTERING",
+  "recorded_at_jst": "2026-08-30T04:13:00+09:00",
+  "previous_scan": {
+    "records": 623,
+    "artifact": "math-bank/state/winpass-canonicalization-phase2-exact-scan-623-20260830.json",
+    "head_before": "63772e94248e21d22d1d12a5f4f0cab5bca2bcf1"
+  },
+  "extension_source": {
+    "records": 6,
+    "path": "math-bank/state/winpass6-new-2suhy000309-strict-20260827.jsonl",
+    "blob_sha": "ceaed68868d163ed458be33e4b70d1d948b83956",
+    "source_document": "25winpasst2suhy000309.docx",
+    "source_document_sha256": "21452e2cf93af0a7baddb699968138ac919cf02dbeeb1e567ee7fab6706f74ba",
+    "source_document_bytes": 124271,
+    "source_docx_crc": "PASS"
+  },
+  "quality_gate": {
+    "records_parsed": "6/6",
+    "unique_raw_ids": "6/6",
+    "unique_content_bound_fingerprints": "6/6",
+    "score_evidence": "6/6",
+    "question_answer_ooxml_provenance": "6/6",
+    "omml_structure_preserved_when_required": "6/6",
+    "figure_dependency": "none required by these six records",
+    "independent_check": "6/6 PASS",
+    "source_docx_sha_matches_strict": "6/6"
+  },
+  "comparison_against_previous_scan": {
+    "previous_records_reconstructed": 623,
+    "previous_unique_raw_ids": 623,
+    "existing_same_document_records": 4,
+    "existing_same_document_raw_ids": [
+      "Winpass:25winpasst2suhy000309.docx:M01:S01",
+      "Winpass:25winpasst2suhy000309.docx:M01:S02",
+      "Winpass:25winpasst2suhy000309.docx:M01:S03",
+      "Winpass:25winpasst2suhy000309.docx:M01:S04"
+    ],
+    "new_raw_id_overlap": 0,
+    "normalization": "Unicode NFKC plus whitespace removal only",
+    "exact_question_answer_overlap": 0,
+    "exact_question_answer_context_overlap": 0,
+    "new_internal_exact_question_answer_duplicates": 0
+  },
+  "arithmetic": {
+    "records_loaded": 629,
+    "new_records": 6,
+    "remaining_unscanned": 88,
+    "check": "623 + 6 = 629; 717 - 629 = 88"
+  },
+  "semantic_guard": {
+    "automatic_merges_in_extension": 0,
+    "provisional_canonical_count": 717,
+    "historical_570_used_as_cutoff": false,
+    "count_forcing_used": false
+  },
+  "raw_ids": [
+    "Winpass:25winpasst2suhy000309.docx:M02:S01",
+    "Winpass:25winpasst2suhy000309.docx:M02:S02",
+    "Winpass:25winpasst2suhy000309.docx:M02:S03",
+    "Winpass:25winpasst2suhy000309.docx:M03:S01",
+    "Winpass:25winpasst2suhy000309.docx:M03:S02",
+    "Winpass:25winpasst2suhy000309.docx:M03:S03"
+  ],
+  "fingerprints": [
+    "f06794410997f652b24f6a66ca92549a94cd3b259f2c1929ccc51d8aef462929",
+    "76e7395a600af2b120ec1c893c8071e8d6d7fb902860a784ecc57f561bc31226",
+    "2821b52a668f44b15d73eb34d1127ac9f24eb790ff6a7f028c939ba6404fc031",
+    "d1c06a71e3d5f046797be5b55f99021f0a2a87ee946c41c035c8dd000504fdd7",
+    "ea2c31e32166830027936f2578786e77a27026ec90a206a48b12de2c559bbe2a",
+    "9d80e9af2a75cb842c7948310587c19f20de816aedab13d9d0f6da83ec1ef220"
+  ],
+  "independent_recalculation_summary": [
+    "positive slopes -> ア,ウ,オ,カ",
+    "equal intercepts -> エ and カ",
+    "equal slopes -> ア/ウ and オ/カ",
+    "y=2x+1 at x=3 -> 7",
+    "y=2x+1 at x=-1 -> -1",
+    "2x+1=17 -> x=8"
+  ],
+  "guards": {
+    "main_untouched": true,
+    "publication_ready": false,
+    "schedule_changed": false
+  },
+  "next": "Continue evidence-backed Phase2 scan across remaining 88 unique Winpass records. Preserve raw_id/fingerprint union checks, newest supersession content, and full source/OMML/media evidence gates."
+}
