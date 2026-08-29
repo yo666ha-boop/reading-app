@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-08-29T07:07:18.329Z",
+  "generatedAt": "2026-08-29T07:08:25.926Z",
   "detectorVersion": "3.1-v11-b05-grammar-r1+gate-fp3+v7supp",
   "passages": 50,
   "detectedFeatureTypes": 21,
-  "detectedOccurrences": 546,
+  "detectedOccurrences": 550,
   "falsePositiveOccurrencesRemoved": 3,
   "resolvedOccurrences": 542,
   "priorGradeCarryForwardOccurrences": 367,
-  "unresolvedOccurrences": 4,
+  "unresolvedOccurrences": 8,
   "futureGrammarLeak": 0,
   "sectionChronologyComplete": false,
   "finalPass": false,
@@ -38,6 +38,33 @@
           "where": "B1.evidence",
           "text": "He returned the box to Mao and put a sign on the shelf so food would not be placed there again.",
           "match": "be placed"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "MODAL_SHOULD",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:9",
+          "text": "Ko learned that when a plan changes, he should send a clear new message.",
+          "match": "should send"
+        },
+        {
+          "where": "slash:9",
+          "text": "Ko learned that when a plan changes, he should send a clear new message.",
+          "match": "should send"
+        },
+        {
+          "where": "A5.evidence",
+          "text": "Ko learned that when a plan changes, he should send a clear new message.",
+          "match": "should send"
         }
       ]
     }
