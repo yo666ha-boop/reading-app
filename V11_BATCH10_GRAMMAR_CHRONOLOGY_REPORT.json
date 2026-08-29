@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-08-29T10:48:44.092Z",
+  "generatedAt": "2026-08-29T10:56:19.145Z",
   "detectorVersion": "3.1-v11-b05-grammar-r1+gate-fp3+v7supp",
   "passages": 50,
   "detectedFeatureTypes": 25,
-  "detectedOccurrences": 715,
+  "detectedOccurrences": 735,
   "falsePositiveOccurrencesRemoved": 0,
-  "resolvedOccurrences": 508,
-  "priorGradeCarryForwardOccurrences": 260,
-  "unresolvedOccurrences": 207,
+  "resolvedOccurrences": 532,
+  "priorGradeCarryForwardOccurrences": 266,
+  "unresolvedOccurrences": 203,
   "futureGrammarLeak": 0,
   "sectionChronologyComplete": false,
   "finalPass": false,
@@ -19,7 +19,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "feature": "PASSIVE",
-      "occurrences": 4,
+      "occurrences": 2,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -31,11 +31,6 @@
         },
         {
           "where": "slash:5",
-          "text": "He did not move the whole desk because the desks had already been arranged for a quiz.",
-          "match": "been arranged"
-        },
-        {
-          "where": "A3.evidence",
           "text": "He did not move the whole desk because the desks had already been arranged for a quiz.",
           "match": "been arranged"
         }
@@ -68,7 +63,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "MODAL_MAY_MIGHT",
-      "occurrences": 4,
+      "occurrences": 2,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -80,11 +75,6 @@
         },
         {
           "where": "slash:5",
-          "text": "At first, Yui thought someone might have left the trip early.",
-          "match": "might have"
-        },
-        {
-          "where": "A3.evidence",
           "text": "At first, Yui thought someone might have left the trip early.",
           "match": "might have"
         }
@@ -95,7 +85,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "PRESENT_PERFECT",
-      "occurrences": 4,
+      "occurrences": 2,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -109,11 +99,6 @@
           "where": "slash:5",
           "text": "At first, Yui thought someone might have left the trip early.",
           "match": "have left"
-        },
-        {
-          "where": "A3.evidence",
-          "text": "At first, Yui thought someone might have left the trip early.",
-          "match": "have left"
         }
       ]
     },
@@ -122,7 +107,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "feature": "MODAL_COULD",
-      "occurrences": 2,
+      "occurrences": 3,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -136,6 +121,11 @@
           "where": "slash:2",
           "text": "Some students could not eat peanuts, so each snack needed a clear card.",
           "match": "could not eat"
+        },
+        {
+          "where": "A2.prompt",
+          "text": "「The Snack Table with Allergy Cards」で「Some students could not eat peanuts, so each snack needed a clear card.」とある場面のあと、判断の材料になった具体的な事実は何ですか。",
+          "match": "could not eat"
         }
       ]
     },
@@ -144,7 +134,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "feature": "PASSIVE",
-      "occurrences": 8,
+      "occurrences": 5,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -171,7 +161,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "feature": "MODAL_SHOULD",
-      "occurrences": 4,
+      "occurrences": 3,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -187,7 +177,7 @@
           "match": "should be"
         },
         {
-          "where": "A5.evidence",
+          "where": "B5.evidence",
           "text": "Ken learned that food labels should be checked directly when safety depends on them.",
           "match": "should be"
         }
@@ -198,7 +188,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "WHEN_WHILE_CLAUSE",
-      "occurrences": 2,
+      "occurrences": 3,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -212,6 +202,11 @@
           "where": "slash:2",
           "text": "When she reached the platform, the board showed a ten-minute delay.",
           "match": "When she "
+        },
+        {
+          "where": "A2.prompt",
+          "text": "「A Morning Train Delayed by Ten Minutes」で「When she reached the platform, the board showed a ten-minute delay.」とある場面のあと、判断の材料になった具体的な事実は何ですか。",
+          "match": "When she "
         }
       ]
     },
@@ -220,7 +215,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "BECAUSE_CLAUSE",
-      "occurrences": 4,
+      "occurrences": 2,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -234,11 +229,6 @@
           "where": "slash:5",
           "text": "She did not take an earlier train on another line because it stopped far from the meeting place.",
           "match": "because it "
-        },
-        {
-          "where": "A3.evidence",
-          "text": "She did not take an earlier train on another line because it stopped far from the meeting place.",
-          "match": "because it "
         }
       ]
     },
@@ -247,7 +237,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "SV_OO",
-      "occurrences": 2,
+      "occurrences": 5,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -259,6 +249,11 @@
         },
         {
           "where": "slash:6",
+          "text": "Instead, she sent her teacher a short message about the delay.",
+          "match": "sent her teacher"
+        },
+        {
+          "where": "A4.evidence",
           "text": "Instead, she sent her teacher a short message about the delay.",
           "match": "sent her teacher"
         }
@@ -296,7 +291,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "feature": "PASSIVE",
-      "occurrences": 3,
+      "occurrences": 4,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -312,8 +307,8 @@
           "match": "been carried"
         },
         {
-          "where": "B3.evidence",
-          "text": "She checked the return list and saw her class box had been carried to shelf B.",
+          "where": "A3.prompt",
+          "text": "「The Art Box Returned to Another Class」で最初の考えをそのまま採用できなくなった理由を答えなさい。「She checked the return list and saw her class box had been carried ...」付近の内容を手がかりにしなさい。",
           "match": "been carried"
         }
       ]
@@ -323,7 +318,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "BECAUSE_CLAUSE",
-      "occurrences": 2,
+      "occurrences": 3,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -336,6 +331,11 @@
         {
           "where": "slash:2",
           "text": "Several students put down their pencils because they thought the test had ended.",
+          "match": "because they "
+        },
+        {
+          "where": "A2.prompt",
+          "text": "「A School Bell That Rang during a Test」で「Several students put down their pencils because they thought the test had ended.」とある場面のあと、判断の材料になった具体的な事実は何ですか。",
           "match": "because they "
         }
       ]
@@ -426,7 +426,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "PASSIVE",
-      "occurrences": 4,
+      "occurrences": 6,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -442,7 +442,7 @@
           "match": "was placed"
         },
         {
-          "where": "B1.evidence",
+          "where": "A5.evidence",
           "text": "Afterward, a notice about the special bell test was placed near each classroom clock.",
           "match": "was placed"
         }
@@ -453,7 +453,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "MODAL_MAY_MIGHT",
-      "occurrences": 4,
+      "occurrences": 3,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -469,7 +469,7 @@
           "match": "may need"
         },
         {
-          "where": "A5.evidence",
+          "where": "B5.evidence",
           "text": "The students learned that an unusual signal may need an explanation before they act on it.",
           "match": "may need"
         }
@@ -480,7 +480,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "feature": "BECAUSE_CLAUSE",
-      "occurrences": 4,
+      "occurrences": 2,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -494,11 +494,6 @@
           "where": "slash:5",
           "text": "She did not add more cups because there were already enough for six people.",
           "match": "because there "
-        },
-        {
-          "where": "A3.evidence",
-          "text": "She did not add more cups because there were already enough for six people.",
-          "match": "because there "
         }
       ]
     },
@@ -507,7 +502,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "feature": "MODAL_COULD",
-      "occurrences": 2,
+      "occurrences": 4,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -519,6 +514,11 @@
         },
         {
           "where": "slash:6",
+          "text": "The group also asked the new student whether there was any food he could not eat.",
+          "match": "could not eat"
+        },
+        {
+          "where": "A4.evidence",
           "text": "The group also asked the new student whether there was any food he could not eat.",
           "match": "could not eat"
         }
@@ -529,7 +529,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "feature": "WHETHER_CLAUSE",
-      "occurrences": 2,
+      "occurrences": 5,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -543,6 +543,11 @@
           "where": "slash:6",
           "text": "The group also asked the new student whether there was any food he could not eat.",
           "match": "whether there "
+        },
+        {
+          "where": "A4.evidence",
+          "text": "The group also asked the new student whether there was any food he could not eat.",
+          "match": "whether there "
         }
       ]
     },
@@ -551,7 +556,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "feature": "PASSIVE",
-      "occurrences": 4,
+      "occurrences": 6,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -567,7 +572,7 @@
           "match": "was thrown"
         },
         {
-          "where": "B1.evidence",
+          "where": "A5.evidence",
           "text": "Everyone had enough food at the picnic, and nothing extra was thrown away.",
           "match": "was thrown"
         }
@@ -578,7 +583,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "WHEN_WHILE_CLAUSE",
-      "occurrences": 2,
+      "occurrences": 3,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -592,6 +597,11 @@
           "where": "slash:2",
           "text": "When he reached his bicycle, he remembered that its front light had stopped working that morning.",
           "match": "When he "
+        },
+        {
+          "where": "A2.prompt",
+          "text": "「A Bike Light Found after Sunset」で「When he reached his bicycle, he remembered that its front light had stopped ...」とある場面のあと、判断の材料になった具体的な事実は何ですか。",
+          "match": "When he "
         }
       ]
     },
@@ -600,7 +610,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "GERUND",
-      "occurrences": 4,
+      "occurrences": 2,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -612,11 +622,6 @@
         },
         {
           "where": "slash:5",
-          "text": "He did not start riding just because the street had several bright lamps.",
-          "match": "start riding"
-        },
-        {
-          "where": "A3.evidence",
           "text": "He did not start riding just because the street had several bright lamps.",
           "match": "start riding"
         }
@@ -643,7 +648,7 @@
           "match": "could see"
         },
         {
-          "where": "A4.evidence",
+          "where": "B1.evidence",
           "text": "He rode home slowly and could see the road while other people could also see him.",
           "match": "could see"
         }
@@ -654,7 +659,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "MODAL_SHOULD",
-      "occurrences": 4,
+      "occurrences": 3,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -670,36 +675,9 @@
           "match": "should be"
         },
         {
-          "where": "A5.evidence",
+          "where": "B5.evidence",
           "text": "Tomo learned that a safety problem should be solved before starting a trip, not after it begins.",
           "match": "should be"
-        }
-      ]
-    },
-    {
-      "textbook": "ニューホライズン",
-      "grade": "1",
-      "section": "Unit 10-2",
-      "feature": "PASSIVE",
-      "occurrences": 4,
-      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-      "coarseBoundary": null,
-      "introducedGrade": null,
-      "samples": [
-        {
-          "where": "sentence:9",
-          "text": "Tomo learned that a safety problem should be solved before starting a trip, not after it begins.",
-          "match": "be solved"
-        },
-        {
-          "where": "slash:9",
-          "text": "Tomo learned that a safety problem should be solved before starting a trip, not after it begins.",
-          "match": "be solved"
-        },
-        {
-          "where": "A5.evidence",
-          "text": "Tomo learned that a safety problem should be solved before starting a trip, not after it begins.",
-          "match": "be solved"
         }
       ]
     },
@@ -709,6 +687,33 @@
       "section": "Unit 10-2",
       "feature": "PASSIVE",
       "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:9",
+          "text": "Tomo learned that a safety problem should be solved before starting a trip, not after it begins.",
+          "match": "be solved"
+        },
+        {
+          "where": "slash:9",
+          "text": "Tomo learned that a safety problem should be solved before starting a trip, not after it begins.",
+          "match": "be solved"
+        },
+        {
+          "where": "B5.evidence",
+          "text": "Tomo learned that a safety problem should be solved before starting a trip, not after it begins.",
+          "match": "be solved"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "PASSIVE",
+      "occurrences": 4,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -724,8 +729,8 @@
           "match": "were marked"
         },
         {
-          "where": "B3.evidence",
-          "text": "Both sheets were marked “B,” which showed that the “A” page was missing.",
+          "where": "A3.prompt",
+          "text": "「A Pair Work Sheet with One Missing Page」で最初の考えをそのまま採用できなくなった理由を答えなさい。「Both sheets were marked “B,” which showed that the “A” page was missing.」付近の内容を手がかりにしなさい。",
           "match": "were marked"
         }
       ]
@@ -735,7 +740,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "BECAUSE_CLAUSE",
-      "occurrences": 4,
+      "occurrences": 2,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -747,11 +752,6 @@
         },
         {
           "where": "slash:5",
-          "text": "They did not copy answers from another pair because they still needed the correct questions.",
-          "match": "because they "
-        },
-        {
-          "where": "A3.evidence",
           "text": "They did not copy answers from another pair because they still needed the correct questions.",
           "match": "because they "
         }
@@ -778,7 +778,7 @@
           "match": "gave them one"
         },
         {
-          "where": "A4.evidence",
+          "where": "B1.evidence",
           "text": "The teacher gave them one “A” sheet, and they shared it between them.",
           "match": "gave them one"
         }
@@ -789,7 +789,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "COMPARATIVE",
-      "occurrences": 4,
+      "occurrences": 3,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -805,7 +805,7 @@
           "match": "more useful than"
         },
         {
-          "where": "A5.evidence",
+          "where": "B5.evidence",
           "text": "They learned that identifying the missing part is more useful than simply saying something is wrong.",
           "match": "more useful than"
         }
@@ -816,7 +816,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "feature": "MODAL_COULD",
-      "occurrences": 3,
+      "occurrences": 4,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -832,8 +832,8 @@
           "match": "could describe"
         },
         {
-          "where": "B3.evidence",
-          "text": "The two buildings were close, so both reports could describe the same cat.",
+          "where": "A3.prompt",
+          "text": "「The School Cat Seen near Two Buildings」で最初の考えをそのまま採用できなくなった理由を答えなさい。「The two buildings were close, so both reports could describe the same cat.」付近の内容を手がかりにしなさい。",
           "match": "could describe"
         }
       ]
@@ -843,7 +843,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "feature": "MODAL_MUST",
-      "occurrences": 4,
+      "occurrences": 2,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -857,11 +857,6 @@
           "where": "slash:5",
           "text": "Kumi did not say the cat must still be behind the music building.",
           "match": "must still"
-        },
-        {
-          "where": "A3.evidence",
-          "text": "Kumi did not say the cat must still be behind the music building.",
-          "match": "must still"
         }
       ]
     },
@@ -870,7 +865,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "PASSIVE",
-      "occurrences": 8,
+      "occurrences": 9,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -924,7 +919,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "SUPERLATIVE",
-      "occurrences": 2,
+      "occurrences": 5,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -938,6 +933,11 @@
           "where": "slash:6",
           "text": "Rina checked the other messages and saw that most were dated Friday.",
           "match": "most were"
+        },
+        {
+          "where": "A4.evidence",
+          "text": "Rina checked the other messages and saw that most were dated Friday.",
+          "match": "most were"
         }
       ]
     },
@@ -946,7 +946,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "feature": "BECAUSE_CLAUSE",
-      "occurrences": 4,
+      "occurrences": 2,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -960,11 +960,6 @@
           "where": "slash:5",
           "text": "He did not put the ball into his class basket just because it was nearby.",
           "match": "because it "
-        },
-        {
-          "where": "A3.evidence",
-          "text": "He did not put the ball into his class basket just because it was nearby.",
-          "match": "because it "
         }
       ]
     },
@@ -973,7 +968,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "feature": "ADJECTIVE_TO_INFINITIVE",
-      "occurrences": 4,
+      "occurrences": 6,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -989,7 +984,7 @@
           "match": "easy to see"
         },
         {
-          "where": "B1.evidence",
+          "where": "A5.evidence",
           "text": "Both classes then checked that their equipment marks were still easy to see.",
           "match": "easy to see"
         }
@@ -1000,7 +995,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "PASSIVE",
-      "occurrences": 7,
+      "occurrences": 8,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -1027,7 +1022,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "RELATIVE_PRONOUN",
-      "occurrences": 3,
+      "occurrences": 4,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -1043,8 +1038,8 @@
           "match": "students that the"
         },
         {
-          "where": "B3.evidence",
-          "text": "Before cleaning began, Aoi told the other students that the job was now uncovered.",
+          "where": "A3.prompt",
+          "text": "「A Cleaning Job Changed after an Absence」で最初の考えをそのまま採用できなくなった理由を答えなさい。「Before cleaning began, Aoi told the other students that the job was now ...」付近の内容を手がかりにしなさい。",
           "match": "students that the"
         }
       ]
@@ -1054,7 +1049,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "BECAUSE_CLAUSE",
-      "occurrences": 4,
+      "occurrences": 2,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -1066,11 +1061,6 @@
         },
         {
           "where": "slash:5",
-          "text": "They did not leave the trash for Kaito because he was no longer at school.",
-          "match": "because he "
-        },
-        {
-          "where": "A3.evidence",
           "text": "They did not leave the trash for Kaito because he was no longer at school.",
           "match": "because he "
         }
@@ -1097,7 +1087,7 @@
           "match": "while she "
         },
         {
-          "where": "A4.evidence",
+          "where": "B1.evidence",
           "text": "Another student checked the floor while she was outside.",
           "match": "while she "
         }
@@ -1108,7 +1098,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "feature": "MODAL_SHOULD",
-      "occurrences": 4,
+      "occurrences": 3,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -1124,7 +1114,7 @@
           "match": "should show"
         },
         {
-          "where": "A5.evidence",
+          "where": "B5.evidence",
           "text": "The group learned that a plan should show who can actually do each job that day.",
           "match": "should show"
         }
@@ -1135,7 +1125,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "feature": "SUPERLATIVE",
-      "occurrences": 5,
+      "occurrences": 6,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -1162,7 +1152,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "feature": "ADJECTIVE_TO_INFINITIVE",
-      "occurrences": 3,
+      "occurrences": 4,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -1178,8 +1168,8 @@
           "match": "difficult to sing"
         },
         {
-          "where": "B3.evidence",
-          "text": "Two members found it difficult to sing that song clearly after the other two.",
+          "where": "A3.prompt",
+          "text": "「The English Club Song List in a New Order」で最初の考えをそのまま採用できなくなった理由を答えなさい。「Two members found it difficult to sing that song clearly after the other ...」付近の内容を手がかりにしなさい。",
           "match": "difficult to sing"
         }
       ]
@@ -1189,7 +1179,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "feature": "MODAL_COULD",
-      "occurrences": 4,
+      "occurrences": 2,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -1203,11 +1193,6 @@
           "where": "slash:5",
           "text": "The club did not remove the song because everyone still liked it and could sing it well when fresh.",
           "match": "could sing"
-        },
-        {
-          "where": "A3.evidence",
-          "text": "The club did not remove the song because everyone still liked it and could sing it well when fresh.",
-          "match": "could sing"
         }
       ]
     },
@@ -1216,7 +1201,7 @@
       "grade": "2",
       "section": "PROGRAM 8-3",
       "feature": "MODAL_MAY_MIGHT",
-      "occurrences": 3,
+      "occurrences": 2,
       "evidenceStatus": "UNRANKABLE_SECTION",
       "boundary": "Reading 3",
       "samples": [
@@ -1229,11 +1214,6 @@
           "where": "slash:4",
           "text": "She explained that visitors in a noisy hall or people who could not hear well might have the same problem.",
           "match": "might have"
-        },
-        {
-          "where": "B3.evidence",
-          "text": "She explained that visitors in a noisy hall or people who could not hear well might have the same problem.",
-          "match": "might have"
         }
       ]
     },
@@ -1242,7 +1222,7 @@
       "grade": "2",
       "section": "PROGRAM 8-3",
       "feature": "RELATIVE_PRONOUN",
-      "occurrences": 3,
+      "occurrences": 2,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -1254,11 +1234,6 @@
         },
         {
           "where": "slash:4",
-          "text": "She explained that visitors in a noisy hall or people who could not hear well might have the same problem.",
-          "match": "people who could"
-        },
-        {
-          "where": "B3.evidence",
           "text": "She explained that visitors in a noisy hall or people who could not hear well might have the same problem.",
           "match": "people who could"
         }
@@ -1350,7 +1325,7 @@
       "grade": "2",
       "section": "Unit 7-4",
       "feature": "RELATIVE_PRONOUN",
-      "occurrences": 3,
+      "occurrences": 4,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -1366,8 +1341,8 @@
           "match": "student who sent"
         },
         {
-          "where": "A3.evidence",
-          "text": "She asked the student who sent the recipe to describe the smell, taste, and usual use.",
+          "where": "A3.prompt",
+          "text": "「A Recipe Exchange with an Unknown Ingredient」で最初の考えをそのまま採用できなくなった理由を答えなさい。「She asked the student who sent the recipe to describe the smell, taste, ...」付近の内容を手がかりにしなさい。",
           "match": "student who sent"
         }
       ]
@@ -1399,7 +1374,7 @@
       "grade": "2",
       "section": "Unit 7-4",
       "feature": "PARTICIPLE_POSTMODIFIER",
-      "occurrences": 3,
+      "occurrences": 2,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -1413,11 +1388,6 @@
           "where": "slash:4",
           "text": "Students standing several meters away could not read the event time.",
           "match": "Students standing"
-        },
-        {
-          "where": "B3.evidence",
-          "text": "Students standing several meters away could not read the event time.",
-          "match": "Students standing"
         }
       ]
     },
@@ -1426,7 +1396,7 @@
       "grade": "2",
       "section": "PROGRAM 8-3",
       "feature": "PRESENT_PERFECT",
-      "occurrences": 3,
+      "occurrences": 2,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -1438,11 +1408,6 @@
         },
         {
           "where": "slash:6",
-          "text": "The reporter changed the next question to, “What has surprised you about lunch here?”",
-          "match": "has surprised"
-        },
-        {
-          "where": "B2.evidence",
           "text": "The reporter changed the next question to, “What has surprised you about lunch here?”",
           "match": "has surprised"
         }
@@ -1480,7 +1445,7 @@
       "grade": "2",
       "section": "Unit 7-4",
       "feature": "MODAL_MAY_MIGHT",
-      "occurrences": 4,
+      "occurrences": 3,
       "evidenceStatus": "UNRANKABLE_SECTION",
       "boundary": "Stage Activity 3",
       "samples": [
@@ -1495,7 +1460,7 @@
           "match": "may no"
         },
         {
-          "where": "A5.evidence",
+          "where": "B5.evidence",
           "text": "They learned that user testing reveals gaps that creators may no longer notice.",
           "match": "may no"
         }
@@ -1549,8 +1514,8 @@
           "match": "because it "
         },
         {
-          "where": "A1.evidence",
-          "text": "The first plan used only one fast-growing species because it was cheap and easy to order.",
+          "where": "A2.prompt",
+          "text": "「The Tree-Planting Project That Chose One Species」で「The first plan used only one fast-growing species because it was cheap and ...」とある場面のあと、判断の材料になった具体的な事実は何ですか。",
           "match": "because it "
         }
       ]
@@ -1560,7 +1525,7 @@
       "grade": "3",
       "section": "PROGRAM 7-3",
       "feature": "BECAUSE_CLAUSE",
-      "occurrences": 3,
+      "occurrences": 5,
       "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
       "coarseBoundary": null,
       "introducedGrade": null,
@@ -1576,7 +1541,7 @@
           "match": "because they "
         },
         {
-          "where": "B2.evidence",
+          "where": "A4.evidence",
           "text": "Students kept both photographs because they still showed weather conditions and visible change.",
           "match": "because they "
         }
@@ -1592,7 +1557,7 @@
       "boundary": "Get Ready 1",
       "introducedGrade": 1,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "ニューホライズン",
@@ -1602,7 +1567,7 @@
       "boundary": "Unit 2-2",
       "introducedGrade": 1,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "サンシャイン",
@@ -1612,7 +1577,7 @@
       "boundary": "PROGRAM 10-1",
       "introducedGrade": 1,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 2
     },
     {
       "textbook": "サンシャイン",
@@ -1622,7 +1587,7 @@
       "boundary": "Get Ready 1",
       "introducedGrade": 1,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "サンシャイン",
@@ -1632,7 +1597,7 @@
       "boundary": "PROGRAM 10-1",
       "introducedGrade": 1,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 7
+      "occurrences": 9
     },
     {
       "textbook": "ニューホライズン",
@@ -1642,7 +1607,7 @@
       "boundary": "Unit 2-2",
       "introducedGrade": 1,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "ニューホライズン",
@@ -1652,7 +1617,7 @@
       "boundary": "Unit 2-2",
       "introducedGrade": 1,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "サンシャイン",
@@ -1662,7 +1627,7 @@
       "boundary": "Get Ready 1",
       "introducedGrade": 1,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "サンシャイン",
@@ -1672,7 +1637,7 @@
       "boundary": "PROGRAM 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 8
+      "occurrences": 10
     },
     {
       "textbook": "サンシャイン",
@@ -1682,7 +1647,7 @@
       "boundary": "PROGRAM 8-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 6
     },
     {
       "textbook": "ニューホライズン",
@@ -1692,7 +1657,7 @@
       "boundary": "Unit 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 6
     },
     {
       "textbook": "ニューホライズン",
@@ -1702,7 +1667,7 @@
       "boundary": "Unit 2-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 5
     },
     {
       "textbook": "ニューホライズン",
@@ -1712,7 +1677,7 @@
       "boundary": "Unit 7-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 5
     },
     {
       "textbook": "サンシャイン",
@@ -1732,7 +1697,7 @@
       "boundary": "Unit 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 3
+      "occurrences": 2
     },
     {
       "textbook": "サンシャイン",
@@ -1762,7 +1727,7 @@
       "boundary": "PROGRAM 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 2
+      "occurrences": 5
     },
     {
       "textbook": "サンシャイン",
@@ -1772,7 +1737,7 @@
       "boundary": "PROGRAM 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 6
     },
     {
       "textbook": "サンシャイン",
@@ -1782,7 +1747,7 @@
       "boundary": "PROGRAM 2-2",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "ニューホライズン",
@@ -1802,7 +1767,7 @@
       "boundary": "Unit 4-3",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "サンシャイン",
@@ -1812,7 +1777,7 @@
       "boundary": "PROGRAM 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 9
+      "occurrences": 18
     },
     {
       "textbook": "ニューホライズン",
@@ -1822,7 +1787,7 @@
       "boundary": "Unit 6-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 3
+      "occurrences": 2
     },
     {
       "textbook": "ニューホライズン",
@@ -1832,7 +1797,7 @@
       "boundary": "Unit 2-3",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 3
+      "occurrences": 2
     },
     {
       "textbook": "ニューホライズン",
@@ -1852,7 +1817,7 @@
       "boundary": "PROGRAM 6-2",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 5
+      "occurrences": 7
     },
     {
       "textbook": "サンシャイン",
@@ -1882,7 +1847,7 @@
       "boundary": "PROGRAM 2-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "サンシャイン",
@@ -1892,7 +1857,7 @@
       "boundary": "PROGRAM 8-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "ニューホライズン",
@@ -1902,7 +1867,7 @@
       "boundary": "Unit 3-2",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 2
+      "occurrences": 3
     },
     {
       "textbook": "ニューホライズン",
@@ -1922,7 +1887,7 @@
       "boundary": "Unit 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 7
+      "occurrences": 8
     },
     {
       "textbook": "ニューホライズン",
@@ -1932,7 +1897,7 @@
       "boundary": "Unit 4-3",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "サンシャイン",
@@ -1942,7 +1907,7 @@
       "boundary": "PROGRAM 4-2",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 2
+      "occurrences": 3
     },
     {
       "textbook": "サンシャイン",
@@ -1952,7 +1917,7 @@
       "boundary": "PROGRAM 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 3
+      "occurrences": 4
     },
     {
       "textbook": "サンシャイン",
@@ -2002,7 +1967,7 @@
       "boundary": "PROGRAM 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 5
     },
     {
       "textbook": "サンシャイン",
@@ -2012,7 +1977,7 @@
       "boundary": "Get Ready 1",
       "introducedGrade": 1,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "ニューホライズン",
@@ -2022,7 +1987,7 @@
       "boundary": "Unit 10-2",
       "introducedGrade": 1,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 5
+      "occurrences": 7
     },
     {
       "textbook": "ニューホライズン",
@@ -2032,7 +1997,7 @@
       "boundary": "Unit 7-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 7
+      "occurrences": 9
     },
     {
       "textbook": "ニューホライズン",
@@ -2052,7 +2017,7 @@
       "boundary": "Unit 2-2",
       "introducedGrade": 1,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "ニューホライズン",
@@ -2062,7 +2027,7 @@
       "boundary": "Unit 2-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "サンシャイン",
@@ -2082,7 +2047,7 @@
       "boundary": "PROGRAM 4-3",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 3
+      "occurrences": 4
     },
     {
       "textbook": "サンシャイン",
@@ -2102,7 +2067,7 @@
       "boundary": "Get Ready 1",
       "introducedGrade": 1,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "サンシャイン",
@@ -2112,7 +2077,7 @@
       "boundary": "PROGRAM 2-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "サンシャイン",
@@ -2122,7 +2087,7 @@
       "boundary": "PROGRAM 8-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "ニューホライズン",
@@ -2132,7 +2097,7 @@
       "boundary": "Unit 2-3",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 2
+      "occurrences": 3
     },
     {
       "textbook": "ニューホライズン",
@@ -2162,7 +2127,7 @@
       "boundary": "Unit 2-2",
       "introducedGrade": 1,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 3
+      "occurrences": 4
     },
     {
       "textbook": "サンシャイン",
@@ -2172,7 +2137,7 @@
       "boundary": "PROGRAM 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 3
+      "occurrences": 2
     },
     {
       "textbook": "サンシャイン",
@@ -2182,7 +2147,7 @@
       "boundary": "PROGRAM 6-2",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 3
+      "occurrences": 4
     },
     {
       "textbook": "サンシャイン",
@@ -2192,7 +2157,7 @@
       "boundary": "PROGRAM 8-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 13
+      "occurrences": 14
     },
     {
       "textbook": "サンシャイン",
@@ -2202,7 +2167,7 @@
       "boundary": "PROGRAM 2-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "サンシャイン",
@@ -2212,7 +2177,7 @@
       "boundary": "PROGRAM 8-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 6
+      "occurrences": 5
     },
     {
       "textbook": "サンシャイン",
@@ -2222,7 +2187,7 @@
       "boundary": "PROGRAM 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "ニューホライズン",
@@ -2232,7 +2197,7 @@
       "boundary": "Unit 7-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 9
+      "occurrences": 10
     },
     {
       "textbook": "ニューホライズン",
@@ -2262,7 +2227,7 @@
       "boundary": "Unit 6-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 3
+      "occurrences": 4
     },
     {
       "textbook": "ニューホライズン",
@@ -2272,7 +2237,7 @@
       "boundary": "Unit 8-1",
       "introducedGrade": 1,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 3
+      "occurrences": 2
     },
     {
       "textbook": "ニューホライズン",
@@ -2292,7 +2257,7 @@
       "boundary": "PROGRAM 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 3
+      "occurrences": 2
     },
     {
       "textbook": "サンシャイン",
@@ -2302,7 +2267,7 @@
       "boundary": "PROGRAM 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 2
+      "occurrences": 3
     },
     {
       "textbook": "サンシャイン",
@@ -2312,7 +2277,7 @@
       "boundary": "PROGRAM 8-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 2
+      "occurrences": 3
     },
     {
       "textbook": "サンシャイン",
@@ -2332,7 +2297,7 @@
       "boundary": "Unit 8-1",
       "introducedGrade": 1,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 3
+      "occurrences": 4
     },
     {
       "textbook": "ニューホライズン",
@@ -2372,7 +2337,7 @@
       "boundary": "PROGRAM 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 7
+      "occurrences": 5
     },
     {
       "textbook": "サンシャイン",
@@ -2392,7 +2357,7 @@
       "boundary": "Unit 7-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 12
+      "occurrences": 15
     },
     {
       "textbook": "ニューホライズン",
@@ -2402,7 +2367,7 @@
       "boundary": "Unit 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 12
+      "occurrences": 11
     },
     {
       "textbook": "ニューホライズン",
@@ -2412,7 +2377,7 @@
       "boundary": "Unit 3-2",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 3
+      "occurrences": 2
     },
     {
       "textbook": "ニューホライズン",
@@ -2442,7 +2407,7 @@
       "boundary": "Unit 5-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 2
+      "occurrences": 4
     },
     {
       "textbook": "ニューホライズン",
@@ -2462,7 +2427,7 @@
       "boundary": "PROGRAM 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 3
+      "occurrences": 5
     },
     {
       "textbook": "ニューホライズン",
@@ -2472,7 +2437,7 @@
       "boundary": "Unit 4-3",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 3
+      "occurrences": 2
     },
     {
       "textbook": "ニューホライズン",
@@ -2482,7 +2447,7 @@
       "boundary": "Unit 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 7
+      "occurrences": 8
     },
     {
       "textbook": "ニューホライズン",
@@ -2492,7 +2457,7 @@
       "boundary": "Unit 2-2",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 3
+      "occurrences": 2
     },
     {
       "textbook": "ニューホライズン",
@@ -2502,7 +2467,7 @@
       "boundary": "Unit 7-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 5
+      "occurrences": 4
     },
     {
       "textbook": "サンシャイン",
@@ -2532,7 +2497,7 @@
       "boundary": "Get Ready 1",
       "introducedGrade": 1,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 3
+      "occurrences": 2
     },
     {
       "textbook": "サンシャイン",
@@ -2552,7 +2517,7 @@
       "boundary": "Unit 8-1",
       "introducedGrade": 1,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 2
+      "occurrences": 3
     },
     {
       "textbook": "ニューホライズン",
@@ -2612,7 +2577,7 @@
       "boundary": "Unit 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 4
+      "occurrences": 7
     },
     {
       "textbook": "ニューホライズン",
@@ -2642,7 +2607,7 @@
       "boundary": "PROGRAM 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 10
+      "occurrences": 9
     },
     {
       "textbook": "サンシャイン",
@@ -2652,7 +2617,7 @@
       "boundary": "PROGRAM 5-1",
       "introducedGrade": 3,
       "evidenceStatus": "EXACT_CURRENT_GRADE",
-      "occurrences": 3
+      "occurrences": 5
     },
     {
       "textbook": "サンシャイン",
@@ -2692,7 +2657,7 @@
       "boundary": "Unit 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 4
+      "occurrences": 5
     },
     {
       "textbook": "サンシャイン",
@@ -2702,7 +2667,7 @@
       "boundary": "PROGRAM 8-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 6
+      "occurrences": 5
     },
     {
       "textbook": "サンシャイン",
@@ -2762,7 +2727,7 @@
       "boundary": "Unit 7-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 5
+      "occurrences": 6
     },
     {
       "textbook": "ニューホライズン",
@@ -2772,7 +2737,7 @@
       "boundary": "Unit 6-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 2
+      "occurrences": 5
     },
     {
       "textbook": "サンシャイン",
@@ -2802,7 +2767,7 @@
       "boundary": "PROGRAM 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 4
+      "occurrences": 3
     },
     {
       "textbook": "サンシャイン",
@@ -2822,7 +2787,7 @@
       "boundary": "Unit 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 5
+      "occurrences": 4
     },
     {
       "textbook": "ニューホライズン",
