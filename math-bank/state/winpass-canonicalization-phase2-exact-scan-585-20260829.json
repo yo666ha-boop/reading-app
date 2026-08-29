@@ -1,0 +1,78 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "WINPASS_CANONICALIZATION_FROM_EVIDENCE",
+  "phase": "PHASE2_SEMANTIC_EQUIVALENCE_CLUSTERING",
+  "recorded_at_jst": "2026-08-29T19:15:00+09:00",
+  "method": {
+    "normalization": "Unicode NFKC plus whitespace removal only; mathematical symbols/content preserved",
+    "exact_duplicate_key": "normalized question + normalized answer + figure/table/graphical-answer context identity",
+    "secondary_guard": "normalized question + normalized answer without context",
+    "question_only": "candidate signal only; never sufficient to merge"
+  },
+  "previous_scan": {
+    "records": 575,
+    "artifact": "math-bank/state/winpass-canonicalization-phase2-exact-scan-575-20260829.json",
+    "commit": "ab38f065e3a80cf6e8ec6450c056de307c55e630"
+  },
+  "extension_sources": [
+    {
+      "new_records": 10,
+      "github_path": "math-bank/state/winpass10-1suhy000417-strict-20260827.json",
+      "github_blob_sha": "64d51a390e2bb099253c149e7a7ecf8481289753",
+      "drive_summary_id": "1ne3Wnm5YK-UK29p7QwVqg9ukwxwCN_Xi6jx5P54Wj3s",
+      "source_document": "25winpasst1suhy000417.docx",
+      "source_document_sha256": "c49ef3c336dff17d50fa6f974a86bb89cb2f245d854b28c9f6d55ee498d8a552"
+    }
+  ],
+  "arithmetic": {
+    "records_loaded": 585,
+    "unique_raw_ids": 585,
+    "fingerprints_present": 585,
+    "unique_fingerprints": 585,
+    "new_records": 10,
+    "new_raw_id_overlap_with_previous_scan": 0,
+    "new_fingerprint_overlap_with_previous_scan": 0,
+    "remaining_unscanned": 132,
+    "check": "575 + 10 = 585; 717 - 585 = 132"
+  },
+  "extension_quality_gate": {
+    "source_document_sha256_present": "10/10",
+    "score_evidence_present": "10/10",
+    "question_answer_paragraph_binding_present": "10/10",
+    "content_bound_fingerprint_present": "10/10",
+    "figure_asset_sha_bound_when_required": "6/6 graphical/context records",
+    "independent_check": "10/10 PASS in durable strict artifact"
+  },
+  "results": {
+    "exact_question_answer_context_duplicate_groups": 0,
+    "exact_question_answer_duplicate_groups_even_when_context_ignored": 0,
+    "automatic_semantic_merges": 0,
+    "question_only_same_text_groups": 4,
+    "question_only_same_text_records": 8,
+    "new_records_in_question_only_groups": 0,
+    "provisional_canonical_count": 717
+  },
+  "batch_identity": {
+    "new_raw_id_union_sha256": "af26dd3658739335a37535aeb2051abec253ce86c83217ba1c969259f1cfd38c",
+    "new_fingerprint_union_sha256": "759ef168e8b7e83c3ffc1b85be711f04d1c59b446670a50df5cc77addb3359fc",
+    "new_raw_ids": [
+      "Winpass:25winpasst1suhy000417.docx:M01:S01",
+      "Winpass:25winpasst1suhy000417.docx:M01:S02",
+      "Winpass:25winpasst1suhy000417.docx:M01:S03",
+      "Winpass:25winpasst1suhy000417.docx:M02:S01",
+      "Winpass:25winpasst1suhy000417.docx:M02:S02",
+      "Winpass:25winpasst1suhy000417.docx:M02:S03",
+      "Winpass:25winpasst1suhy000417.docx:M03:S01",
+      "Winpass:25winpasst1suhy000417.docx:M03:S02",
+      "Winpass:25winpasst1suhy000417.docx:M03:S03",
+      "Winpass:25winpasst1suhy000417.docx:M03:S04"
+    ]
+  },
+  "guards": {
+    "historical_570_used_as_cutoff": false,
+    "count_forcing_used": false,
+    "main_untouched": true,
+    "publication_ready": false
+  },
+  "next": "Continue identical evidence-backed exact scan over remaining 132 unique raw_ids; use newest hardened/replacement strict record for known supersession raw_ids."
+}
