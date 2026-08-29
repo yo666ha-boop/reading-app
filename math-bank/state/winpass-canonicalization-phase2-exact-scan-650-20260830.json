@@ -1,0 +1,18 @@
+{
+  "project":"mikami-math-problem-bank",
+  "stage":"WINPASS_CANONICALIZATION_FROM_EVIDENCE",
+  "phase":"PHASE2_SEMANTIC_EQUIVALENCE_CLUSTERING",
+  "recorded_at_jst":"2026-08-30T04:30:00+09:00",
+  "previous_scan":{"records":641,"artifact":"math-bank/state/winpass-canonicalization-phase2-exact-scan-641-20260830.json","head_before":"8b44e448eb799ac2e8d45105be08e213e458bb28"},
+  "extension_source":{"records":9,"path":"math-bank/state/winpass9-new-2suhy000312-strict-20260827.jsonl","blob_sha":"d80871b177310e54afa17357bbd1898ec948d91a","source_document":"25winpasst2suhy000312.docx","source_document_sha256":"73add547d249ae0717a08f03f9576c041fb5848717ce93816826850834fd5bbe","source_document_bytes":115335,"source_docx_crc":"PASS"},
+  "source_archive":{"drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E","bytes":8296042,"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","outer_zip_crc":"PASS","docx_members":81},
+  "quality_gate":{"records_parsed":"9/9","unique_raw_ids":"9/9","unique_content_bound_fingerprints":"9/9","score_evidence":"9/9","question_answer_ooxml_provenance":"9/9","figure_relationship_media_sha":"8/8 applicable record-level refs PASS; 3 unique media SHA verified in prior evidence review","rendered_visual_inspection":"PASS","independent_check":"9/9 PASS","source_docx_sha_matches_strict":"9/9"},
+  "comparison_against_previous_scan":{"previous_records_reconstructed":641,"new_raw_id_overlap":0,"normalization":"Unicode NFKC plus whitespace removal only","automatic_semantic_merges_in_extension":0,"note":"Source document was not among Phase2 extension sources through 641; its 9 raw_ids are distinct. No count forcing or question-only merge used."},
+  "arithmetic":{"records_loaded":650,"new_records":9,"remaining_unscanned":67,"check":"641 + 9 = 650; 717 - 650 = 67"},
+  "semantic_guard":{"automatic_merges_in_extension":0,"provisional_canonical_count":717,"historical_570_used_as_cutoff":false,"count_forcing_used":false},
+  "raw_ids":["Winpass:25winpasst2suhy000312.docx:M01:S01","Winpass:25winpasst2suhy000312.docx:M01:S02","Winpass:25winpasst2suhy000312.docx:M01:S03","Winpass:25winpasst2suhy000312.docx:M02:S01","Winpass:25winpasst2suhy000312.docx:M02:S02","Winpass:25winpasst2suhy000312.docx:M02:S03","Winpass:25winpasst2suhy000312.docx:M02:S04","Winpass:25winpasst2suhy000312.docx:M03:S01","Winpass:25winpasst2suhy000312.docx:M03:S02"],
+  "fingerprints":["603118176833e079d89ec134d49683f0a30d13650cb1e8165274e3073ea69740","5dd95c3311739f6e3776475512299a85112bb53297630052515776e939653f57","57ca2af1b575d3647015764754181c545018a77e11b1308aa0c6da3951a9556d","8192007575080b60a8be70a0501043633438194fc5730e22118c28a8ee94c697","47e5aa84fb31c818c56d3d6e746422ac306022ace637899cdf29eced19548cb1","b1e7bc870068861219fc6d12e89c71c89059e953190894ff6a2fbcb98b0c3863","67b0596d5cc198c09a353d1a2dcf82d3c011977899a59095d2d4fd78bc9a12dd","67e8ab3b126ff5a38fd894b32c5f993f263c0ad99c1a60a050498989985806bf","b83e4520917e7db1d6eec4c13e7473ba28e05f8780424612c08cff48fb40b16d"],
+  "independent_recalculation_summary":["-x+4=6x-3 -> A=(1,3)","B=(0,-3), C=(7,-3) -> BC=7","area ABC=7*6/2=21","AB slope=1 -> y=x+3","C=(0,3) -> CO=3","area ACO=3*3/2=9/2","area AOB=|3*2-6*(-1)|/2=6","midpoint of (4,6),(-2,4)=(1,5)","area-bisector through O passes midpoint (5,4) -> y=(4/5)x"],
+  "guards":{"main_untouched":true,"publication_ready":false,"schedule_changed":false},
+  "next":"Continue evidence-backed Phase2 scan across remaining 67 unique Winpass records, preserving newest supersession content and full provenance/media/OMML gates."
+}
