@@ -1,47 +1,19 @@
 {
-  "generatedAt": "2026-08-29T16:31:36.212Z",
+  "generatedAt": "2026-08-29T16:33:12.268Z",
   "detectorVersion": "3.1-v11-b05-grammar-r1+gate-fp3+v7supp",
   "passages": 50,
-  "detectedFeatureTypes": 20,
-  "detectedOccurrences": 548,
+  "detectedFeatureTypes": 19,
+  "detectedOccurrences": 543,
   "falsePositiveOccurrencesRemoved": 5,
   "resolvedOccurrences": 543,
   "priorGradeCarryForwardOccurrences": 346,
-  "unresolvedOccurrences": 5,
+  "unresolvedOccurrences": 0,
   "futureGrammarLeak": 0,
-  "sectionChronologyComplete": false,
-  "finalPass": false,
+  "sectionChronologyComplete": true,
+  "finalPass": true,
   "rule": "Fail closed after bounded structural false-positive removal, including canonical-v7 lexical -ing nouns; exact official evidence plus bounded canonical-v7 exact/conservative boundaries only. Exact earlier-grade introductions carry forward. Unit/program-level evidence remains unresolved.",
   "future": [],
-  "unresolved": [
-    {
-      "textbook": "サンシャイン",
-      "grade": "2",
-      "section": "PROGRAM 8-3",
-      "feature": "MAKE_O_V",
-      "occurrences": 5,
-      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-      "coarseBoundary": null,
-      "introducedGrade": null,
-      "samples": [
-        {
-          "where": "sentence:9",
-          "text": "The band learned that changing position and surfaces can solve an acoustic problem, while louder playing can make it worse.",
-          "match": "make it worse"
-        },
-        {
-          "where": "slash:9",
-          "text": "The band learned that changing position and surfaces can solve an acoustic problem, while louder playing can make it worse.",
-          "match": "make it worse"
-        },
-        {
-          "where": "A5.evidence",
-          "text": "The band learned that changing position and surfaces can solve an acoustic problem, while louder playing can make it worse.",
-          "match": "make it worse"
-        }
-      ]
-    }
-  ],
+  "unresolved": [],
   "resolved": [
     {
       "textbook": "ニューホライズン",
