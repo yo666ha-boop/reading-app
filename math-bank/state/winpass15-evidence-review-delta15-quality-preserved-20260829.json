@@ -1,0 +1,70 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "WINPASS_717_EVIDENCE_REVIEW",
+  "recorded_at_jst": "2026-08-29T10:31:32+09:00",
+  "source_archive": {
+    "drive_file_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
+    "bytes": 8296042,
+    "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+    "crc": "PASS",
+    "docx_members": 81
+  },
+  "strict_artifact": {
+    "drive_file_id": "1HgxuqdIo_pqu_IE_7fJtC5l7Zis9SXVH",
+    "title": "mathbank_winpass_strict_delta15_validated_20260825.jsonl",
+    "bytes": 32238,
+    "sha256": "3d4c63556a98c3668499841ba86313f4cfbbb5c729b055ddf8c113f41afbf842",
+    "records": 15,
+    "raw_id_unique": true,
+    "fingerprint_unique": true
+  },
+  "review_scope": {
+    "previous_unique_reviewed": 571,
+    "new_unique_reviewed": 15,
+    "new_included": 15,
+    "new_excluded": 0,
+    "cumulative_unique_reviewed": 586,
+    "cumulative_included": 586,
+    "cumulative_excluded": 0,
+    "remaining": 131,
+    "candidate_overlap_checks": {
+      "github_exact_docname_search": "0 hits for all three source document names before this artifact was written",
+      "recent_delta_overlap": "1suhy000728 reviewed recent M03 only; this batch M01/M02, so no slot overlap",
+      "count_forcing_used": false
+    }
+  },
+  "quality": {
+    "source_document_sha": "15/15 PASS",
+    "score_evidence": "15/15 PASS",
+    "question_answer_OOXML_OMML_provenance": "15/15 PASS",
+    "source_media_sha_binding": "all referenced figure/answer assets PASS",
+    "rendered_source_asset_visual_review": "all referenced EMF assets for these 15 records inspected",
+    "independent_recalculation": "15/15 PASS",
+    "unresolved_figure_table_dependency": false,
+    "main_untouched": true,
+    "publication_ready": false
+  },
+  "notes": [
+    "25winpasst1suhy000520 M03 slots are bound by the ordered two-diagram source asset (left/right), score 15×2, ordered answer entries, and independent geometry recalculation.",
+    "25winpasst1suhy000728 M01 uses an embedded EMF table; values 0.32, 22, 0.96 were independently recomputed from the displayed frequencies/cumulative columns.",
+    "Graphical-answer records 1suhy000728 M02:S02 and 2suhy000313 M02:S02 were checked against the actual embedded answer EMF assets, not inferred text."
+  ],
+  "records": [
+    {"raw_id":"Winpass:25winpasst1suhy000520.docx:M01:S01","strict_fingerprint_v2":"9b143cb402927a7d47cc60cb744157b70dd06d4bfda642c3462ff982bec0f6f9","source_document":"25winpasst1suhy000520.docx","source_document_sha256":"4d1f839d4ac416bc540c25ca78a2da9996b152d3fc814bbdd31747fe171271d7","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"正六角形は6辺、CD=5cmなので周長=6×5=30cm。原本rId8/image2.emfの頂点A-B-C-D-E-Fを実画像確認。"},
+    {"raw_id":"Winpass:25winpasst1suhy000520.docx:M01:S02","strict_fingerprint_v2":"cb210580c4398bbbd90f54ebcaa033bf17f4d7b512cb3a8a9a8c51559ca8aeed","source_document":"25winpasst1suhy000520.docx","source_document_sha256":"4d1f839d4ac416bc540c25ca78a2da9996b152d3fc814bbdd31747fe171271d7","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"正六角形の対称軸は向かい合う頂点を通る3本＋向かい合う辺の中点を通る3本=6本。原本rId8/image2.emfを実画像確認。"},
+    {"raw_id":"Winpass:25winpasst1suhy000520.docx:M01:S03","strict_fingerprint_v2":"cc019a0bf156c28ea2dce58c3c8386e39a5d50b05e1126849a8a254bd9dca359","source_document":"25winpasst1suhy000520.docx","source_document_sha256":"4d1f839d4ac416bc540c25ca78a2da9996b152d3fc814bbdd31747fe171271d7","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"正六角形の中心に関する点対称ではFの反対側の頂点はC。原本rId8/image2.emfのラベル配置を実画像確認。"},
+    {"raw_id":"Winpass:25winpasst1suhy000520.docx:M03:S01","strict_fingerprint_v2":"84a2b5c275128f0b35a3ddebd7f3c78a1b9a740da2838598792c10219a00cc45","source_document":"25winpasst1suhy000520.docx","source_document_sha256":"4d1f839d4ac416bc540c25ca78a2da9996b152d3fc814bbdd31747fe171271d7","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"左図は1辺4cmの正方形から半径4cmの1/4円を除いた斜線部。16-(π×4²/4)=16-4π cm²。原本rId9/image3.emf左図を実画像確認。"},
+    {"raw_id":"Winpass:25winpasst1suhy000520.docx:M03:S02","strict_fingerprint_v2":"7cf5edb85f034c8226b555ac0bec6f05e8880b7c34afef5d846196f30ef8e324","source_document":"25winpasst1suhy000520.docx","source_document_sha256":"4d1f839d4ac416bc540c25ca78a2da9996b152d3fc814bbdd31747fe171271d7","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"右図の斜線部は1辺6cm正方形の4隅の半径3cmの1/4円4個分。4×(π×3²/4)=9π cm²。原本rId9/image3.emf右図を実画像確認。"},
+    {"raw_id":"Winpass:25winpasst1suhy000728.docx:M01:S01","strict_fingerprint_v2":"03bd2fbd7beea138cff3d6195c8a2a36834814603603949177c48577b0925bf6","source_document":"25winpasst1suhy000728.docx","source_document_sha256":"58608f26f050bcb0747b4477c73cec2b22656de72ce8ef6eb9dda7208fc863e8","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"度数合計25、10–15m階級の度数8なので相対度数8/25=0.32。原本rId8/image2.emfの表を実画像確認。"},
+    {"raw_id":"Winpass:25winpasst1suhy000728.docx:M01:S02","strict_fingerprint_v2":"577a924bc0c2b6f083e7fe24278bdc72908369c6df9de14aa813ed53a2ec4a1a","source_document":"25winpasst1suhy000728.docx","source_document_sha256":"58608f26f050bcb0747b4477c73cec2b22656de72ce8ef6eb9dda7208fc863e8","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"15–20mまでの累積度数=4+5+8+5=22。原本rId8/image2.emfの表を実画像確認。"},
+    {"raw_id":"Winpass:25winpasst1suhy000728.docx:M01:S03","strict_fingerprint_v2":"31d8103a28dd428572cdb34c8fa0f59317863296121988413142480c0bc2f5da","source_document":"25winpasst1suhy000728.docx","source_document_sha256":"58608f26f050bcb0747b4477c73cec2b22656de72ce8ef6eb9dda7208fc863e8","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"20–25mまでの累積度数24、合計25なので累積相対度数24/25=0.96。原本rId8/image2.emfの表を実画像確認。"},
+    {"raw_id":"Winpass:25winpasst1suhy000728.docx:M02:S01","strict_fingerprint_v2":"7c6fdd2fa59dced3557ca3e3c8f6d1ca176ff00407761193f0afc35233440a16","source_document":"25winpasst1suhy000728.docx","source_document_sha256":"58608f26f050bcb0747b4477c73cec2b22656de72ce8ef6eb9dda7208fc863e8","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"ヒストグラムの40–45kg階級は11人。全体は各階級2+6+10+14+11+7=50人なので11/50×100=22%。原本rId9/image3.emfを実画像確認。"},
+    {"raw_id":"Winpass:25winpasst1suhy000728.docx:M02:S02","strict_fingerprint_v2":"57eadad8c657534a398fda92d1c28a83b5d70931d06ac0ced3588e484cd41cc4","source_document":"25winpasst1suhy000728.docx","source_document_sha256":"58608f26f050bcb0747b4477c73cec2b22656de72ce8ef6eb9dda7208fc863e8","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"度数折れ線は各階級値(22.5,27.5,32.5,37.5,42.5,47.5)と度数(2,6,10,14,11,7)を結び、両端を0へ落とす。原本解答rId11/image5.emfの赤線を実画像確認。"},
+    {"raw_id":"Winpass:25winpasst2suhy000313.docx:M01:S01","strict_fingerprint_v2":"d1f5439cb4f7167ca18c8dbef2d4cc285f76911f4db2682bcd682249306ab28c","source_document":"25winpasst2suhy000313.docx","source_document_sha256":"4b313233cc914dce119a9af5a54f34d90fa17f90d2b578dcd5bcf76a8ab60247","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"傾き=(3150-1950)/(26-18)=150円/m³。切片=1950-150×18=-750。x=21で150×21-750=2400円。"},
+    {"raw_id":"Winpass:25winpasst2suhy000313.docx:M01:S02","strict_fingerprint_v2":"e90878c60a93588909c9ba7329b4bd53f05c115649c14eebc92ded8238866c72","source_document":"25winpasst2suhy000313.docx","source_document_sha256":"4b313233cc914dce119a9af5a54f34d90fa17f90d2b578dcd5bcf76a8ab60247","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"0kg時30cm、3kg時36cmより増加率=(36-30)/3=2cm/kg。10kg時30+2×10=50cm。"},
+    {"raw_id":"Winpass:25winpasst2suhy000313.docx:M01:S03","strict_fingerprint_v2":"0dcac240628417a425645470d7e76c4d00c059b517f17656b61c270d4b50a9d0","source_document":"25winpasst2suhy000313.docx","source_document_sha256":"4b313233cc914dce119a9af5a54f34d90fa17f90d2b578dcd5bcf76a8ab60247","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"傾き=(32-28)/(600-400)=0.02万円/冊。切片=28-0.02×400=20万円。100冊で20+2=22万円。"},
+    {"raw_id":"Winpass:25winpasst2suhy000313.docx:M02:S01","strict_fingerprint_v2":"d20d6209abc21257a72d6ba009d55c791804fbc06c4f1adf52d2ea8351481753","source_document":"25winpasst2suhy000313.docx","source_document_sha256":"4b313233cc914dce119a9af5a54f34d90fa17f90d2b578dcd5bcf76a8ab60247","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"原本rId8/image2.emfで(0,0)→(20,2000)、休止後(40,2000)→(60,4000)。歩行区間の傾きはいずれも100m/分。"},
+    {"raw_id":"Winpass:25winpasst2suhy000313.docx:M02:S02","strict_fingerprint_v2":"f93f1efcb8c5f90b1f3b27a65dba1a43c2bb8ec9ec73ea88f162df73fd6446e1","source_document":"25winpasst2suhy000313.docx","source_document_sha256":"4b313233cc914dce119a9af5a54f34d90fa17f90d2b578dcd5bcf76a8ab60247","decision":"include","independent_recalculation":"PASS","independent_recalculation_detail":"弟はx=30でy=0から毎分150mなのでy=150(x-30)。原本解答rId9/image3.emfの赤直線が(30,0)からこの傾きで引かれていることを実画像確認。"}
+  ],
+  "next": "Continue fingerprint-bound review from the remaining 131 Winpass strict raw_id/fingerprints. Do not count-force."
+}
