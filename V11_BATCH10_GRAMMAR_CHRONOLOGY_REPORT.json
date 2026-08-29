@@ -1,0 +1,2848 @@
+{
+  "generatedAt": "2026-08-29T10:48:44.092Z",
+  "detectorVersion": "3.1-v11-b05-grammar-r1+gate-fp3+v7supp",
+  "passages": 50,
+  "detectedFeatureTypes": 25,
+  "detectedOccurrences": 715,
+  "falsePositiveOccurrencesRemoved": 0,
+  "resolvedOccurrences": 508,
+  "priorGradeCarryForwardOccurrences": 260,
+  "unresolvedOccurrences": 207,
+  "futureGrammarLeak": 0,
+  "sectionChronologyComplete": false,
+  "finalPass": false,
+  "rule": "Fail closed after bounded structural false-positive removal, including canonical-v7 lexical -ing nouns; exact official evidence plus bounded canonical-v7 exact/conservative boundaries only. Exact earlier-grade introductions carry forward. Unit/program-level evidence remains unresolved.",
+  "future": [],
+  "unresolved": [
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "PASSIVE",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:5",
+          "text": "He did not move the whole desk because the desks had already been arranged for a quiz.",
+          "match": "been arranged"
+        },
+        {
+          "where": "slash:5",
+          "text": "He did not move the whole desk because the desks had already been arranged for a quiz.",
+          "match": "been arranged"
+        },
+        {
+          "where": "A3.evidence",
+          "text": "He did not move the whole desk because the desks had already been arranged for a quiz.",
+          "match": "been arranged"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "RELATIVE_PRONOUN",
+      "occurrences": 2,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:2",
+          "text": "Yui counted thirty students in the picture, although the class had thirty-one students that day.",
+          "match": "students that day"
+        },
+        {
+          "where": "slash:2",
+          "text": "Yui counted thirty students in the picture, although the class had thirty-one students that day.",
+          "match": "students that day"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "MODAL_MAY_MIGHT",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:5",
+          "text": "At first, Yui thought someone might have left the trip early.",
+          "match": "might have"
+        },
+        {
+          "where": "slash:5",
+          "text": "At first, Yui thought someone might have left the trip early.",
+          "match": "might have"
+        },
+        {
+          "where": "A3.evidence",
+          "text": "At first, Yui thought someone might have left the trip early.",
+          "match": "might have"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "PRESENT_PERFECT",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:5",
+          "text": "At first, Yui thought someone might have left the trip early.",
+          "match": "have left"
+        },
+        {
+          "where": "slash:5",
+          "text": "At first, Yui thought someone might have left the trip early.",
+          "match": "have left"
+        },
+        {
+          "where": "A3.evidence",
+          "text": "At first, Yui thought someone might have left the trip early.",
+          "match": "have left"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "MODAL_COULD",
+      "occurrences": 2,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:2",
+          "text": "Some students could not eat peanuts, so each snack needed a clear card.",
+          "match": "could not eat"
+        },
+        {
+          "where": "slash:2",
+          "text": "Some students could not eat peanuts, so each snack needed a clear card.",
+          "match": "could not eat"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "PASSIVE",
+      "occurrences": 8,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:5",
+          "text": "The package said the cookies contained peanuts, so the card had been placed by the wrong plate.",
+          "match": "been placed"
+        },
+        {
+          "where": "sentence:9",
+          "text": "Ken learned that food labels should be checked directly when safety depends on them.",
+          "match": "be checked"
+        },
+        {
+          "where": "slash:5",
+          "text": "The package said the cookies contained peanuts, so the card had been placed by the wrong plate.",
+          "match": "been placed"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "MODAL_SHOULD",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:9",
+          "text": "Ken learned that food labels should be checked directly when safety depends on them.",
+          "match": "should be"
+        },
+        {
+          "where": "slash:9",
+          "text": "Ken learned that food labels should be checked directly when safety depends on them.",
+          "match": "should be"
+        },
+        {
+          "where": "A5.evidence",
+          "text": "Ken learned that food labels should be checked directly when safety depends on them.",
+          "match": "should be"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "WHEN_WHILE_CLAUSE",
+      "occurrences": 2,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:2",
+          "text": "When she reached the platform, the board showed a ten-minute delay.",
+          "match": "When she "
+        },
+        {
+          "where": "slash:2",
+          "text": "When she reached the platform, the board showed a ten-minute delay.",
+          "match": "When she "
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "BECAUSE_CLAUSE",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:5",
+          "text": "She did not take an earlier train on another line because it stopped far from the meeting place.",
+          "match": "because it "
+        },
+        {
+          "where": "slash:5",
+          "text": "She did not take an earlier train on another line because it stopped far from the meeting place.",
+          "match": "because it "
+        },
+        {
+          "where": "A3.evidence",
+          "text": "She did not take an earlier train on another line because it stopped far from the meeting place.",
+          "match": "because it "
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "SV_OO",
+      "occurrences": 2,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:6",
+          "text": "Instead, she sent her teacher a short message about the delay.",
+          "match": "sent her teacher"
+        },
+        {
+          "where": "slash:6",
+          "text": "Instead, she sent her teacher a short message about the delay.",
+          "match": "sent her teacher"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "MODAL_COULD",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:1",
+          "text": "After art class, Nao could not find her class's box of colored pencils.",
+          "match": "could not find"
+        },
+        {
+          "where": "slash:1",
+          "text": "After art class, Nao could not find her class's box of colored pencils.",
+          "match": "could not find"
+        },
+        {
+          "where": "A1.evidence",
+          "text": "After art class, Nao could not find her class's box of colored pencils.",
+          "match": "could not find"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "PASSIVE",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:4",
+          "text": "She checked the return list and saw her class box had been carried to shelf B.",
+          "match": "been carried"
+        },
+        {
+          "where": "slash:4",
+          "text": "She checked the return list and saw her class box had been carried to shelf B.",
+          "match": "been carried"
+        },
+        {
+          "where": "B3.evidence",
+          "text": "She checked the return list and saw her class box had been carried to shelf B.",
+          "match": "been carried"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "BECAUSE_CLAUSE",
+      "occurrences": 2,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:2",
+          "text": "Several students put down their pencils because they thought the test had ended.",
+          "match": "because they "
+        },
+        {
+          "where": "slash:2",
+          "text": "Several students put down their pencils because they thought the test had ended.",
+          "match": "because they "
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "WILL_FUTURE",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:3",
+          "text": "The teacher immediately said, “Please keep working; I will tell you when time is up.”",
+          "match": "will tell"
+        },
+        {
+          "where": "slash:3",
+          "text": "The teacher immediately said, “Please keep working; I will tell you when time is up.”",
+          "match": "will tell"
+        },
+        {
+          "where": "A2.evidence",
+          "text": "The teacher immediately said, “Please keep working; I will tell you when time is up.”",
+          "match": "will tell"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "GERUND",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:3",
+          "text": "The teacher immediately said, “Please keep working; I will tell you when time is up.”",
+          "match": "keep working"
+        },
+        {
+          "where": "slash:3",
+          "text": "The teacher immediately said, “Please keep working; I will tell you when time is up.”",
+          "match": "keep working"
+        },
+        {
+          "where": "A2.evidence",
+          "text": "The teacher immediately said, “Please keep working; I will tell you when time is up.”",
+          "match": "keep working"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "SV_OO",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:3",
+          "text": "The teacher immediately said, “Please keep working; I will tell you when time is up.”",
+          "match": "tell you when"
+        },
+        {
+          "where": "slash:3",
+          "text": "The teacher immediately said, “Please keep working; I will tell you when time is up.”",
+          "match": "tell you when"
+        },
+        {
+          "where": "A2.evidence",
+          "text": "The teacher immediately said, “Please keep working; I will tell you when time is up.”",
+          "match": "tell you when"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "PASSIVE",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:8",
+          "text": "Afterward, a notice about the special bell test was placed near each classroom clock.",
+          "match": "was placed"
+        },
+        {
+          "where": "slash:8",
+          "text": "Afterward, a notice about the special bell test was placed near each classroom clock.",
+          "match": "was placed"
+        },
+        {
+          "where": "B1.evidence",
+          "text": "Afterward, a notice about the special bell test was placed near each classroom clock.",
+          "match": "was placed"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "MODAL_MAY_MIGHT",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:9",
+          "text": "The students learned that an unusual signal may need an explanation before they act on it.",
+          "match": "may need"
+        },
+        {
+          "where": "slash:9",
+          "text": "The students learned that an unusual signal may need an explanation before they act on it.",
+          "match": "may need"
+        },
+        {
+          "where": "A5.evidence",
+          "text": "The students learned that an unusual signal may need an explanation before they act on it.",
+          "match": "may need"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "BECAUSE_CLAUSE",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:5",
+          "text": "She did not add more cups because there were already enough for six people.",
+          "match": "because there "
+        },
+        {
+          "where": "slash:5",
+          "text": "She did not add more cups because there were already enough for six people.",
+          "match": "because there "
+        },
+        {
+          "where": "A3.evidence",
+          "text": "She did not add more cups because there were already enough for six people.",
+          "match": "because there "
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "MODAL_COULD",
+      "occurrences": 2,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:6",
+          "text": "The group also asked the new student whether there was any food he could not eat.",
+          "match": "could not eat"
+        },
+        {
+          "where": "slash:6",
+          "text": "The group also asked the new student whether there was any food he could not eat.",
+          "match": "could not eat"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "WHETHER_CLAUSE",
+      "occurrences": 2,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:6",
+          "text": "The group also asked the new student whether there was any food he could not eat.",
+          "match": "whether there "
+        },
+        {
+          "where": "slash:6",
+          "text": "The group also asked the new student whether there was any food he could not eat.",
+          "match": "whether there "
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "PASSIVE",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:8",
+          "text": "Everyone had enough food at the picnic, and nothing extra was thrown away.",
+          "match": "was thrown"
+        },
+        {
+          "where": "slash:8",
+          "text": "Everyone had enough food at the picnic, and nothing extra was thrown away.",
+          "match": "was thrown"
+        },
+        {
+          "where": "B1.evidence",
+          "text": "Everyone had enough food at the picnic, and nothing extra was thrown away.",
+          "match": "was thrown"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "WHEN_WHILE_CLAUSE",
+      "occurrences": 2,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:2",
+          "text": "When he reached his bicycle, he remembered that its front light had stopped working that morning.",
+          "match": "When he "
+        },
+        {
+          "where": "slash:2",
+          "text": "When he reached his bicycle, he remembered that its front light had stopped working that morning.",
+          "match": "When he "
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "GERUND",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:5",
+          "text": "He did not start riding just because the street had several bright lamps.",
+          "match": "start riding"
+        },
+        {
+          "where": "slash:5",
+          "text": "He did not start riding just because the street had several bright lamps.",
+          "match": "start riding"
+        },
+        {
+          "where": "A3.evidence",
+          "text": "He did not start riding just because the street had several bright lamps.",
+          "match": "start riding"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "MODAL_COULD",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:7",
+          "text": "He rode home slowly and could see the road while other people could also see him.",
+          "match": "could see"
+        },
+        {
+          "where": "slash:7",
+          "text": "He rode home slowly and could see the road while other people could also see him.",
+          "match": "could see"
+        },
+        {
+          "where": "A4.evidence",
+          "text": "He rode home slowly and could see the road while other people could also see him.",
+          "match": "could see"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "MODAL_SHOULD",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:9",
+          "text": "Tomo learned that a safety problem should be solved before starting a trip, not after it begins.",
+          "match": "should be"
+        },
+        {
+          "where": "slash:9",
+          "text": "Tomo learned that a safety problem should be solved before starting a trip, not after it begins.",
+          "match": "should be"
+        },
+        {
+          "where": "A5.evidence",
+          "text": "Tomo learned that a safety problem should be solved before starting a trip, not after it begins.",
+          "match": "should be"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "PASSIVE",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:9",
+          "text": "Tomo learned that a safety problem should be solved before starting a trip, not after it begins.",
+          "match": "be solved"
+        },
+        {
+          "where": "slash:9",
+          "text": "Tomo learned that a safety problem should be solved before starting a trip, not after it begins.",
+          "match": "be solved"
+        },
+        {
+          "where": "A5.evidence",
+          "text": "Tomo learned that a safety problem should be solved before starting a trip, not after it begins.",
+          "match": "be solved"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "PASSIVE",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:4",
+          "text": "Both sheets were marked “B,” which showed that the “A” page was missing.",
+          "match": "were marked"
+        },
+        {
+          "where": "slash:4",
+          "text": "Both sheets were marked “B,” which showed that the “A” page was missing.",
+          "match": "were marked"
+        },
+        {
+          "where": "B3.evidence",
+          "text": "Both sheets were marked “B,” which showed that the “A” page was missing.",
+          "match": "were marked"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "BECAUSE_CLAUSE",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:5",
+          "text": "They did not copy answers from another pair because they still needed the correct questions.",
+          "match": "because they "
+        },
+        {
+          "where": "slash:5",
+          "text": "They did not copy answers from another pair because they still needed the correct questions.",
+          "match": "because they "
+        },
+        {
+          "where": "A3.evidence",
+          "text": "They did not copy answers from another pair because they still needed the correct questions.",
+          "match": "because they "
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "SV_OO",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:7",
+          "text": "The teacher gave them one “A” sheet, and they shared it between them.",
+          "match": "gave them one"
+        },
+        {
+          "where": "slash:7",
+          "text": "The teacher gave them one “A” sheet, and they shared it between them.",
+          "match": "gave them one"
+        },
+        {
+          "where": "A4.evidence",
+          "text": "The teacher gave them one “A” sheet, and they shared it between them.",
+          "match": "gave them one"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "COMPARATIVE",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:9",
+          "text": "They learned that identifying the missing part is more useful than simply saying something is wrong.",
+          "match": "more useful than"
+        },
+        {
+          "where": "slash:9",
+          "text": "They learned that identifying the missing part is more useful than simply saying something is wrong.",
+          "match": "more useful than"
+        },
+        {
+          "where": "A5.evidence",
+          "text": "They learned that identifying the missing part is more useful than simply saying something is wrong.",
+          "match": "more useful than"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "MODAL_COULD",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:4",
+          "text": "The two buildings were close, so both reports could describe the same cat.",
+          "match": "could describe"
+        },
+        {
+          "where": "slash:4",
+          "text": "The two buildings were close, so both reports could describe the same cat.",
+          "match": "could describe"
+        },
+        {
+          "where": "B3.evidence",
+          "text": "The two buildings were close, so both reports could describe the same cat.",
+          "match": "could describe"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "MODAL_MUST",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:5",
+          "text": "Kumi did not say the cat must still be behind the music building.",
+          "match": "must still"
+        },
+        {
+          "where": "slash:5",
+          "text": "Kumi did not say the cat must still be behind the music building.",
+          "match": "must still"
+        },
+        {
+          "where": "A3.evidence",
+          "text": "Kumi did not say the cat must still be behind the music building.",
+          "match": "must still"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "PASSIVE",
+      "occurrences": 8,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:2",
+          "text": "The class party had been on Friday, but one message on the card was dated Saturday.",
+          "match": "was dated"
+        },
+        {
+          "where": "sentence:5",
+          "text": "The Saturday date showed when his message was written, not when the party happened.",
+          "match": "was written"
+        },
+        {
+          "where": "sentence:6",
+          "text": "Rina checked the other messages and saw that most were dated Friday.",
+          "match": "were dated"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "WHETHER_CLAUSE",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:3",
+          "text": "Rina first wondered whether she had remembered the party date incorrectly.",
+          "match": "whether she "
+        },
+        {
+          "where": "slash:3",
+          "text": "Rina first wondered whether she had remembered the party date incorrectly.",
+          "match": "whether she "
+        },
+        {
+          "where": "A2.evidence",
+          "text": "Rina first wondered whether she had remembered the party date incorrectly.",
+          "match": "whether she "
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "SUPERLATIVE",
+      "occurrences": 2,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:6",
+          "text": "Rina checked the other messages and saw that most were dated Friday.",
+          "match": "most were"
+        },
+        {
+          "where": "slash:6",
+          "text": "Rina checked the other messages and saw that most were dated Friday.",
+          "match": "most were"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "BECAUSE_CLAUSE",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:5",
+          "text": "He did not put the ball into his class basket just because it was nearby.",
+          "match": "because it "
+        },
+        {
+          "where": "slash:5",
+          "text": "He did not put the ball into his class basket just because it was nearby.",
+          "match": "because it "
+        },
+        {
+          "where": "A3.evidence",
+          "text": "He did not put the ball into his class basket just because it was nearby.",
+          "match": "because it "
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "ADJECTIVE_TO_INFINITIVE",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:8",
+          "text": "Both classes then checked that their equipment marks were still easy to see.",
+          "match": "easy to see"
+        },
+        {
+          "where": "slash:8",
+          "text": "Both classes then checked that their equipment marks were still easy to see.",
+          "match": "easy to see"
+        },
+        {
+          "where": "B1.evidence",
+          "text": "Both classes then checked that their equipment marks were still easy to see.",
+          "match": "easy to see"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "PASSIVE",
+      "occurrences": 7,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:1",
+          "text": "Four students were assigned to clean the classroom after school.",
+          "match": "were assigned"
+        },
+        {
+          "where": "sentence:8",
+          "text": "They wrote the change on the chart so the teacher knew how the work had been shared.",
+          "match": "been shared"
+        },
+        {
+          "where": "slash:1",
+          "text": "Four students were assigned to clean the classroom after school.",
+          "match": "were assigned"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "RELATIVE_PRONOUN",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:4",
+          "text": "Before cleaning began, Aoi told the other students that the job was now uncovered.",
+          "match": "students that the"
+        },
+        {
+          "where": "slash:4",
+          "text": "Before cleaning began, Aoi told the other students that the job was now uncovered.",
+          "match": "students that the"
+        },
+        {
+          "where": "B3.evidence",
+          "text": "Before cleaning began, Aoi told the other students that the job was now uncovered.",
+          "match": "students that the"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "BECAUSE_CLAUSE",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:5",
+          "text": "They did not leave the trash for Kaito because he was no longer at school.",
+          "match": "because he "
+        },
+        {
+          "where": "slash:5",
+          "text": "They did not leave the trash for Kaito because he was no longer at school.",
+          "match": "because he "
+        },
+        {
+          "where": "A3.evidence",
+          "text": "They did not leave the trash for Kaito because he was no longer at school.",
+          "match": "because he "
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "WHEN_WHILE_CLAUSE",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:7",
+          "text": "Another student checked the floor while she was outside.",
+          "match": "while she "
+        },
+        {
+          "where": "slash:7",
+          "text": "Another student checked the floor while she was outside.",
+          "match": "while she "
+        },
+        {
+          "where": "A4.evidence",
+          "text": "Another student checked the floor while she was outside.",
+          "match": "while she "
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "MODAL_SHOULD",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:9",
+          "text": "The group learned that a plan should show who can actually do each job that day.",
+          "match": "should show"
+        },
+        {
+          "where": "slash:9",
+          "text": "The group learned that a plan should show who can actually do each job that day.",
+          "match": "should show"
+        },
+        {
+          "where": "A5.evidence",
+          "text": "The group learned that a plan should show who can actually do each job that day.",
+          "match": "should show"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "SUPERLATIVE",
+      "occurrences": 5,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:2",
+          "text": "Their first list put the fastest song at the end.",
+          "match": "the fastest"
+        },
+        {
+          "where": "sentence:3",
+          "text": "During practice, the club noticed that the final song needed the most breath and energy.",
+          "match": "the most breath"
+        },
+        {
+          "where": "slash:2",
+          "text": "Their first list put the fastest song at the end.",
+          "match": "the fastest"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "ADJECTIVE_TO_INFINITIVE",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:4",
+          "text": "Two members found it difficult to sing that song clearly after the other two.",
+          "match": "difficult to sing"
+        },
+        {
+          "where": "slash:4",
+          "text": "Two members found it difficult to sing that song clearly after the other two.",
+          "match": "difficult to sing"
+        },
+        {
+          "where": "B3.evidence",
+          "text": "Two members found it difficult to sing that song clearly after the other two.",
+          "match": "difficult to sing"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "MODAL_COULD",
+      "occurrences": 4,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:5",
+          "text": "The club did not remove the song because everyone still liked it and could sing it well when fresh.",
+          "match": "could sing"
+        },
+        {
+          "where": "slash:5",
+          "text": "The club did not remove the song because everyone still liked it and could sing it well when fresh.",
+          "match": "could sing"
+        },
+        {
+          "where": "A3.evidence",
+          "text": "The club did not remove the song because everyone still liked it and could sing it well when fresh.",
+          "match": "could sing"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "MODAL_MAY_MIGHT",
+      "occurrences": 3,
+      "evidenceStatus": "UNRANKABLE_SECTION",
+      "boundary": "Reading 3",
+      "samples": [
+        {
+          "where": "sentence:4",
+          "text": "She explained that visitors in a noisy hall or people who could not hear well might have the same problem.",
+          "match": "might have"
+        },
+        {
+          "where": "slash:4",
+          "text": "She explained that visitors in a noisy hall or people who could not hear well might have the same problem.",
+          "match": "might have"
+        },
+        {
+          "where": "B3.evidence",
+          "text": "She explained that visitors in a noisy hall or people who could not hear well might have the same problem.",
+          "match": "might have"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "RELATIVE_PRONOUN",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:4",
+          "text": "She explained that visitors in a noisy hall or people who could not hear well might have the same problem.",
+          "match": "people who could"
+        },
+        {
+          "where": "slash:4",
+          "text": "She explained that visitors in a noisy hall or people who could not hear well might have the same problem.",
+          "match": "people who could"
+        },
+        {
+          "where": "B3.evidence",
+          "text": "She explained that visitors in a noisy hall or people who could not hear well might have the same problem.",
+          "match": "people who could"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "WHETHER_CLAUSE",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:3",
+          "text": "His teacher asked whether someone outside the town would know what that word meant.",
+          "match": "whether someone "
+        },
+        {
+          "where": "slash:3",
+          "text": "His teacher asked whether someone outside the town would know what that word meant.",
+          "match": "whether someone "
+        },
+        {
+          "where": "A2.evidence",
+          "text": "His teacher asked whether someone outside the town would know what that word meant.",
+          "match": "whether someone "
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "INDIRECT_QUESTION",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:3",
+          "text": "His teacher asked whether someone outside the town would know what that word meant.",
+          "match": "know what that "
+        },
+        {
+          "where": "slash:3",
+          "text": "His teacher asked whether someone outside the town would know what that word meant.",
+          "match": "know what that "
+        },
+        {
+          "where": "A2.evidence",
+          "text": "His teacher asked whether someone outside the town would know what that word meant.",
+          "match": "know what that "
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "PARTICIPLE_POSTMODIFIER",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:3",
+          "text": "During a practice visit, a student using a wheelchair could not pass between the boards.",
+          "match": "student using"
+        },
+        {
+          "where": "slash:3",
+          "text": "During a practice visit, a student using a wheelchair could not pass between the boards.",
+          "match": "student using"
+        },
+        {
+          "where": "A2.evidence",
+          "text": "During a practice visit, a student using a wheelchair could not pass between the boards.",
+          "match": "student using"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "RELATIVE_PRONOUN",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:5",
+          "text": "She asked the student who sent the recipe to describe the smell, taste, and usual use.",
+          "match": "student who sent"
+        },
+        {
+          "where": "slash:5",
+          "text": "She asked the student who sent the recipe to describe the smell, taste, and usual use.",
+          "match": "student who sent"
+        },
+        {
+          "where": "A3.evidence",
+          "text": "She asked the student who sent the recipe to describe the smell, taste, and usual use.",
+          "match": "student who sent"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "RELATIVE_PRONOUN",
+      "occurrences": 2,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:9",
+          "text": "Two students who had not heard the original could explain the main point after listening once.",
+          "match": "students who had"
+        },
+        {
+          "where": "slash:9",
+          "text": "Two students who had not heard the original could explain the main point after listening once.",
+          "match": "students who had"
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "PARTICIPLE_POSTMODIFIER",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:4",
+          "text": "Students standing several meters away could not read the event time.",
+          "match": "Students standing"
+        },
+        {
+          "where": "slash:4",
+          "text": "Students standing several meters away could not read the event time.",
+          "match": "Students standing"
+        },
+        {
+          "where": "B3.evidence",
+          "text": "Students standing several meters away could not read the event time.",
+          "match": "Students standing"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "PRESENT_PERFECT",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:6",
+          "text": "The reporter changed the next question to, “What has surprised you about lunch here?”",
+          "match": "has surprised"
+        },
+        {
+          "where": "slash:6",
+          "text": "The reporter changed the next question to, “What has surprised you about lunch here?”",
+          "match": "has surprised"
+        },
+        {
+          "where": "B2.evidence",
+          "text": "The reporter changed the next question to, “What has surprised you about lunch here?”",
+          "match": "has surprised"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "BECAUSE_CLAUSE",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:3",
+          "text": "At the second hallway, the visitors stopped because they could not remember whether to turn left or right.",
+          "match": "because they "
+        },
+        {
+          "where": "slash:3",
+          "text": "At the second hallway, the visitors stopped because they could not remember whether to turn left or right.",
+          "match": "because they "
+        },
+        {
+          "where": "A2.evidence",
+          "text": "At the second hallway, the visitors stopped because they could not remember whether to turn left or right.",
+          "match": "because they "
+        }
+      ]
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "MODAL_MAY_MIGHT",
+      "occurrences": 4,
+      "evidenceStatus": "UNRANKABLE_SECTION",
+      "boundary": "Stage Activity 3",
+      "samples": [
+        {
+          "where": "sentence:11",
+          "text": "They learned that user testing reveals gaps that creators may no longer notice.",
+          "match": "may no"
+        },
+        {
+          "where": "slash:11",
+          "text": "They learned that user testing reveals gaps that creators may no longer notice.",
+          "match": "may no"
+        },
+        {
+          "where": "A5.evidence",
+          "text": "They learned that user testing reveals gaps that creators may no longer notice.",
+          "match": "may no"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "RELATIVE_PRONOUN",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:1",
+          "text": "The festival committee prepared a short speech to thank people who had helped the school event.",
+          "match": "people who had"
+        },
+        {
+          "where": "slash:1",
+          "text": "The festival committee prepared a short speech to thank people who had helped the school event.",
+          "match": "people who had"
+        },
+        {
+          "where": "A1.evidence",
+          "text": "The festival committee prepared a short speech to thank people who had helped the school event.",
+          "match": "people who had"
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "BECAUSE_CLAUSE",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:2",
+          "text": "The first plan used only one fast-growing species because it was cheap and easy to order.",
+          "match": "because it "
+        },
+        {
+          "where": "slash:2",
+          "text": "The first plan used only one fast-growing species because it was cheap and easy to order.",
+          "match": "because it "
+        },
+        {
+          "where": "A1.evidence",
+          "text": "The first plan used only one fast-growing species because it was cheap and easy to order.",
+          "match": "because it "
+        }
+      ]
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "BECAUSE_CLAUSE",
+      "occurrences": 3,
+      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+      "coarseBoundary": null,
+      "introducedGrade": null,
+      "samples": [
+        {
+          "where": "sentence:9",
+          "text": "Students kept both photographs because they still showed weather conditions and visible change.",
+          "match": "because they "
+        },
+        {
+          "where": "slash:9",
+          "text": "Students kept both photographs because they still showed weather conditions and visible change.",
+          "match": "because they "
+        },
+        {
+          "where": "B2.evidence",
+          "text": "Students kept both photographs because they still showed weather conditions and visible change.",
+          "match": "because they "
+        }
+      ]
+    }
+  ],
+  "resolved": [
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "MODAL_CAN",
+      "boundary": "Get Ready 1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "MODAL_CAN",
+      "boundary": "Unit 2-2",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "PAST_PROGRESSIVE",
+      "boundary": "PROGRAM 10-1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "MODAL_CAN",
+      "boundary": "Get Ready 1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "PAST_PROGRESSIVE",
+      "boundary": "PROGRAM 10-1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 7
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "MODAL_CAN",
+      "boundary": "Unit 2-2",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "1",
+      "section": "Unit 10-2",
+      "feature": "MODAL_CAN",
+      "boundary": "Unit 2-2",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "1",
+      "section": "PROGRAM 10-2",
+      "feature": "MODAL_CAN",
+      "boundary": "Get Ready 1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "MODAL_COULD",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 8
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "PASSIVE",
+      "boundary": "PROGRAM 8-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "MODAL_COULD",
+      "boundary": "Unit 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "WHEN_WHILE_CLAUSE",
+      "boundary": "Unit 2-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "PASSIVE",
+      "boundary": "Unit 7-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "MODAL_COULD",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 6
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "MODAL_COULD",
+      "boundary": "Unit 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "PASSIVE",
+      "boundary": "PROGRAM 8-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "SUPERLATIVE",
+      "boundary": "PROGRAM 6-2",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 7
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "ADJECTIVE_TO_INFINITIVE",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 2
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "MODAL_COULD",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "WHEN_WHILE_CLAUSE",
+      "boundary": "PROGRAM 2-2",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "PASSIVE",
+      "boundary": "Unit 7-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 11
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "MODAL_SHOULD",
+      "boundary": "Unit 4-3",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "MODAL_COULD",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 9
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "SUPERLATIVE",
+      "boundary": "Unit 6-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "BECAUSE_CLAUSE",
+      "boundary": "Unit 2-3",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "MODAL_COULD",
+      "boundary": "Unit 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 2
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "SUPERLATIVE",
+      "boundary": "PROGRAM 6-2",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 5
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "MODAL_COULD",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "COMPARATIVE",
+      "boundary": "PROGRAM 6-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "MODAL_SHOULD",
+      "boundary": "PROGRAM 2-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "PASSIVE",
+      "boundary": "PROGRAM 8-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "ADJECTIVE_TO_INFINITIVE",
+      "boundary": "Unit 3-2",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 2
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "PASSIVE",
+      "boundary": "Unit 7-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 10
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "MODAL_COULD",
+      "boundary": "Unit 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 7
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "MODAL_SHOULD",
+      "boundary": "Unit 4-3",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "MODAL_MUST",
+      "boundary": "PROGRAM 4-2",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 2
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "MODAL_COULD",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "WANT_TO",
+      "boundary": "Get Ready 1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "PASSIVE",
+      "boundary": "Unit 7-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "WANT_TO",
+      "boundary": "Unit 8-1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "MODAL_COULD",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "ADJECTIVE_TO_INFINITIVE",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "MODAL_CAN",
+      "boundary": "Get Ready 1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 4
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "PAST_PROGRESSIVE",
+      "boundary": "Unit 10-2",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 5
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "PASSIVE",
+      "boundary": "Unit 7-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 7
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "MODAL_COULD",
+      "boundary": "Unit 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 2
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "MODAL_CAN",
+      "boundary": "Unit 2-2",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 4
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "WHEN_WHILE_CLAUSE",
+      "boundary": "Unit 2-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "MODAL_COULD",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "HAVE_TO",
+      "boundary": "PROGRAM 4-3",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "WH_TO_INFINITIVE",
+      "boundary": "PROGRAM 5-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "MODAL_CAN",
+      "boundary": "Get Ready 1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 4
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "MODAL_SHOULD",
+      "boundary": "PROGRAM 2-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "PASSIVE",
+      "boundary": "PROGRAM 8-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "BECAUSE_CLAUSE",
+      "boundary": "Unit 2-3",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 2
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "WHEN_WHILE_CLAUSE",
+      "boundary": "Unit 2-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "PASSIVE",
+      "boundary": "Unit 7-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "2",
+      "section": "Unit 7-4",
+      "feature": "MODAL_CAN",
+      "boundary": "Unit 2-2",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "ADJECTIVE_TO_INFINITIVE",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "SUPERLATIVE",
+      "boundary": "PROGRAM 6-2",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "PASSIVE",
+      "boundary": "PROGRAM 8-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 13
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "2",
+      "section": "PROGRAM 8-3",
+      "feature": "MODAL_SHOULD",
+      "boundary": "PROGRAM 2-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 4
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "PASSIVE",
+      "boundary": "PROGRAM 8-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 6
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "MODAL_COULD",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 4
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "PASSIVE",
+      "boundary": "Unit 7-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 9
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "MODAL_SHOULD",
+      "boundary": "Unit 4-3",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 2
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "PARTICIPLE_POSTMODIFIER",
+      "boundary": "Unit 4-3",
+      "introducedGrade": 3,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 2
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "SUPERLATIVE",
+      "boundary": "Unit 6-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "VERB_TO_INFINITIVE",
+      "boundary": "Unit 8-1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "MODAL_COULD",
+      "boundary": "Unit 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 5
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "ADJECTIVE_TO_INFINITIVE",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "MODAL_COULD",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 2
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "PASSIVE",
+      "boundary": "PROGRAM 8-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 2
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "MODAL_CAN",
+      "boundary": "Get Ready 1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "WANT_TO",
+      "boundary": "Unit 8-1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "HAVE_TO",
+      "boundary": "Unit 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 2
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "MODAL_COULD",
+      "boundary": "Unit 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 4
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "MODAL_MUST",
+      "boundary": "Unit 4-2",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "MODAL_COULD",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 7
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "MODAL_CAN",
+      "boundary": "Get Ready 1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "PASSIVE",
+      "boundary": "Unit 7-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 12
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "MODAL_COULD",
+      "boundary": "Unit 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 12
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "ADJECTIVE_TO_INFINITIVE",
+      "boundary": "Unit 3-2",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "VERB_TO_INFINITIVE",
+      "boundary": "Unit 8-1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 2
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "MODAL_SHOULD",
+      "boundary": "Unit 4-3",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "WH_TO_INFINITIVE",
+      "boundary": "Unit 5-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 2
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "MODAL_CAN",
+      "boundary": "Unit 2-2",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "MODAL_COULD",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "MODAL_SHOULD",
+      "boundary": "Unit 4-3",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "MODAL_COULD",
+      "boundary": "Unit 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 7
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "IF_CLAUSE",
+      "boundary": "Unit 2-2",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "PASSIVE",
+      "boundary": "Unit 7-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 5
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "PASSIVE",
+      "boundary": "PROGRAM 8-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 5
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "WHEN_WHILE_CLAUSE",
+      "boundary": "PROGRAM 2-2",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "MODAL_CAN",
+      "boundary": "Get Ready 1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "MODAL_MAY_MIGHT",
+      "boundary": "Reading 3",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "WANT_TO",
+      "boundary": "Unit 8-1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 2
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "PASSIVE",
+      "boundary": "Unit 7-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 6
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "SUPERLATIVE",
+      "boundary": "Unit 6-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 2
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "MODAL_MAY_MIGHT",
+      "boundary": "Stage Activity 3",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "PARTICIPLE_POSTMODIFIER",
+      "boundary": "Unit 4-3",
+      "introducedGrade": 3,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 5
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "MODAL_SHOULD",
+      "boundary": "Unit 4-3",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 2
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "MODAL_COULD",
+      "boundary": "Unit 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 4
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "HAVE_TO",
+      "boundary": "Unit 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 2
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "BECAUSE_CLAUSE",
+      "boundary": "Unit 2-3",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 2
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "MODAL_COULD",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 10
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "RELATIVE_PRONOUN",
+      "boundary": "PROGRAM 5-1",
+      "introducedGrade": 3,
+      "evidenceStatus": "EXACT_CURRENT_GRADE",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "MODAL_MUST",
+      "boundary": "PROGRAM 4-2",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "PASSIVE",
+      "boundary": "PROGRAM 8-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "WANT_TO",
+      "boundary": "Unit 8-1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 2
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "MODAL_COULD",
+      "boundary": "Unit 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 4
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "PASSIVE",
+      "boundary": "PROGRAM 8-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 6
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "MODAL_COULD",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 5
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "MODAL_MAY_MIGHT",
+      "boundary": "Reading 3",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "IF_CLAUSE",
+      "boundary": "Unit 2-2",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 2
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "WANT_TO",
+      "boundary": "Unit 8-1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "MODAL_COULD",
+      "boundary": "Unit 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 2
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "PASSIVE",
+      "boundary": "Unit 7-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 5
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "SUPERLATIVE",
+      "boundary": "Unit 6-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 2
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "WANT_TO",
+      "boundary": "Get Ready 1",
+      "introducedGrade": 1,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 2
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "PASSIVE",
+      "boundary": "PROGRAM 8-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 6
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "MODAL_COULD",
+      "boundary": "PROGRAM 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 4
+    },
+    {
+      "textbook": "サンシャイン",
+      "grade": "3",
+      "section": "PROGRAM 7-3",
+      "feature": "MODAL_MUST",
+      "boundary": "PROGRAM 4-2",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "MODAL_COULD",
+      "boundary": "Unit 4-1",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 5
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "MODAL_MAY_MIGHT",
+      "boundary": "Stage Activity 3",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 2
+    },
+    {
+      "textbook": "ニューホライズン",
+      "grade": "3",
+      "section": "Unit 6-4",
+      "feature": "MODAL_MUST",
+      "boundary": "Unit 4-2",
+      "introducedGrade": 2,
+      "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
+      "occurrences": 3
+    }
+  ]
+}
