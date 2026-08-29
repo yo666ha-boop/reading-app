@@ -1,6 +1,6 @@
 'use strict';
 const fs=require('fs'),vm=require('vm');
-const files=['v11_batch10_passages_draft_g1.js','v11_batch10_passages_draft_g2.js','v11_batch10_passages_draft_g3.js','v11_batch10_length_repair_r1.js','v11_batch10_question_human_rewrite.js'];
+const files=['v11_batch10_passages_draft_g1.js','v11_batch10_passages_draft_g2.js','v11_batch10_passages_draft_g3.js','v11_batch10_length_repair_r1.js','v11_batch10_grammar_repair_r1.js','v11_batch10_grammar_repair_r2.js','v11_batch10_question_human_rewrite.js'];
 const sandbox={window:{},console};sandbox.globalThis=sandbox.window;vm.createContext(sandbox);for(const f of files)vm.runInContext(fs.readFileSync(f,'utf8'),sandbox,{filename:f});
 const ps=[...(sandbox.window.V11_BATCH10_G1_DRAFTS||[]),...(sandbox.window.V11_BATCH10_G2_DRAFTS||[]),...(sandbox.window.V11_BATCH10_G3_DRAFTS||[])];
 const failures=[],warnings=[],prompts=new Map();let questionCount=0,evidenceLinked=0,answerLinked=0,freeWrites=0;
