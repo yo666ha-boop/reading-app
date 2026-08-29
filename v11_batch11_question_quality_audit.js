@@ -1,6 +1,6 @@
 'use strict';
 const fs=require('fs'),vm=require('vm');
-const files=['v11_batch11_passages_draft_g1.js','v11_batch11_passages_draft_g2.js','v11_batch11_g3_core.js','v11_batch11_passages_draft_g3_standard.js','v11_batch11_passages_draft_g3_long.js','v11_batch11_passages_draft_g3_yamaguchi_a.js','v11_batch11_passages_draft_g3_yamaguchi_b.js','v11_batch11_length_repair_r1.js','v11_batch11_length_repair_r2.js','v11_batch11_length_repair_r3.js','v11_batch11_length_repair_r4.js','v11_batch11_grammar_repair_r1.js','v11_batch11_grammar_repair_r2.js'];
+const files=['v11_batch11_passages_draft_g1.js','v11_batch11_passages_draft_g2.js','v11_batch11_g3_core.js','v11_batch11_passages_draft_g3_standard.js','v11_batch11_passages_draft_g3_long.js','v11_batch11_passages_draft_g3_yamaguchi_a.js','v11_batch11_passages_draft_g3_yamaguchi_b.js','v11_batch11_length_repair_r1.js','v11_batch11_length_repair_r2.js','v11_batch11_length_repair_r3.js','v11_batch11_length_repair_r4.js','v11_batch11_grammar_repair_r1.js','v11_batch11_grammar_repair_r2.js','v11_batch11_question_human_rewrite_r1.js'];
 const sandbox={window:{},console};sandbox.globalThis=sandbox.window;vm.createContext(sandbox);for(const f of files)vm.runInContext(fs.readFileSync(f,'utf8'),sandbox,{filename:f});
 const ps=[...(sandbox.window.V11_BATCH11_G1_DRAFTS||[]),...(sandbox.window.V11_BATCH11_G2_DRAFTS||[]),...(sandbox.window.V11_BATCH11_G3_DRAFTS||[])];
 const failures=[],warnings=[],prompts=new Map(),types={};let questionCount=0,evidenceLinked=0,answerLinked=0,freeWrites=0,yMaterial=0;
