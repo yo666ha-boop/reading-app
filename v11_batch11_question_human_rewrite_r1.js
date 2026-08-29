@@ -6,12 +6,14 @@ const clip=s=>{const x=String(s||'').replace(/[“”"']/g,'').replace(/\s+/g,' 
 const causeRe=/\b(because|therefore|so|since|reason|meant|required|needed|could not|couldn't|failed|instead|rather than|in order to|so that|without|only when|enough|less than|more than)\b/i;
 const resultRe=/\b(after|afterward|then|finally|result|returned|reached|changed|added|found|showed|ended|stayed|became|completed|arrived|sent|received)\b/i;
 function pick(s,re,fallback,used){
+  const conclusion=s[s.length-1];
   const candidates=[];
   for(const raw of fallback){const k=Math.max(0,Math.min(s.length-1,raw));if(!candidates.includes(k))candidates.push(k);}
-  for(const k of candidates){if(!used.has(k)&&re.test(s[k]))return k;}
-  for(const k of candidates){if(!used.has(k))return k;}
-  for(let i=0;i<Math.max(0,s.length-1);i++){if(!used.has(i)&&re.test(s[i]))return i;}
-  for(let i=0;i<Math.max(0,s.length-1);i++){if(!used.has(i))return i;}
+  const ok=k=>!used.has(k)&&s[k]!==conclusion;
+  for(const k of candidates){if(ok(k)&&re.test(s[k]))return k;}
+  for(const k of candidates){if(ok(k))return k;}
+  for(let i=0;i<Math.max(0,s.length-1);i++){if(ok(i)&&re.test(s[i]))return i;}
+  for(let i=0;i<Math.max(0,s.length-1);i++){if(ok(i))return i;}
   for(let i=0;i<s.length;i++)if(!used.has(i))return i;
   return Math.max(0,s.length-1);
 }
