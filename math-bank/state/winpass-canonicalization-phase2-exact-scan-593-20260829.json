@@ -1,0 +1,15 @@
+{
+  "project":"mikami-math-problem-bank",
+  "stage":"WINPASS_CANONICALIZATION_FROM_EVIDENCE",
+  "phase":"PHASE2_SEMANTIC_EQUIVALENCE_CLUSTERING",
+  "recorded_at_jst":"2026-08-29T20:53:00+09:00",
+  "previous_scan":{"records":585,"artifact":"math-bank/state/winpass-canonicalization-phase2-exact-scan-585-20260829.json","head_before":"d5cb04c2e9d16caa1cb13560bafe855531e259d3"},
+  "extension_source":{"records":8,"path":"math-bank/state/winpass8-new-1suhy000626-strict-20260827.jsonl","blob_sha":"ab5ac0746245e786a52a1e100dc406d74750d1b3","source_document":"25winpasst1suhy000626.docx","source_document_sha256":"834d9d1ce209391057c7298c72ef7002fc72dae2759dc0e4f98b77faf2234e42"},
+  "quality_gate":{"records_parsed":"8/8","unique_raw_ids":"8/8","unique_content_bound_fingerprints":"8/8","score_evidence":"8/8","question_offsets":"8/8","answer_offsets":"8/8","figure_relationship_and_asset_sha_when_required":"8/8","independent_check":"8/8 PASS","graphical_answer_assets_bound":"2/2"},
+  "raw_ids":["Winpass:25winpasst1suhy000626.docx:M01:S01","Winpass:25winpasst1suhy000626.docx:M01:S02","Winpass:25winpasst1suhy000626.docx:M01:S03","Winpass:25winpasst1suhy000626.docx:M02:S01","Winpass:25winpasst1suhy000626.docx:M02:S02","Winpass:25winpasst1suhy000626.docx:M03:S01","Winpass:25winpasst1suhy000626.docx:M03:S02","Winpass:25winpasst1suhy000626.docx:M03:S03"],
+  "fingerprints":["8b69918a037e64a6d5affafc6be1689e38ac47765b695192e8ee5d1f086d04d6","69a0f9b2d596b549ae1024f48b1bd2f6cae6b2cf79ed88cce882d99bb6d2c921","33649c900ce9b96c9ac49556299e3ab9c1590ea0fe74dd5ce044fc506e02b94e","0cd35396c27a4ff038868fae3f4a3e2337d5daf9c96311ef82f3eb738a141132","29360845527b677dbf8a1984fe769a3133a1dc1c994feb6c2a92e0cfea2953f5","b3c25f303f43f097156dd2fd958f452695c8a1ec47c3421fa85799d815ab22ac","d58cafcbac851bfa75d0f302e97c0f5731ab168f998f30f533abee47cd2a95b2","5ed93326819c530caf540fede659eb33da7074057e9ca542b5667bfe78fbdb4a"],
+  "arithmetic":{"records_loaded":593,"new_records":8,"remaining_unscanned":124,"check":"585 + 8 = 593; 717 - 593 = 124"},
+  "semantic_guard":{"automatic_merges_in_extension":0,"note":"No merge is authorized by question-only similarity; all eight records remain distinct because their question/answer and required figure/graphical-answer context are materially distinct."},
+  "guards":{"historical_570_used_as_cutoff":false,"count_forcing_used":false,"main_untouched":true,"publication_ready":false},
+  "next":"Continue evidence-backed Phase2 scan across remaining 124 unique Winpass records; prefer durable strict batches not already represented, and preserve newest hardened/replacement records for known supersession events."
+}
