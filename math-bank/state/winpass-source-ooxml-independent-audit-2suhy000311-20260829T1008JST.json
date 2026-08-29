@@ -1,0 +1,40 @@
+{
+  "schema": "math-bank.winpass.source-ooxml-independent-audit.v1",
+  "created_at_jst": "2026-08-29T10:08:32+09:00",
+  "source_archive": {
+    "drive_file_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
+    "bytes": 8296042,
+    "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+    "zip_crc": "PASS",
+    "member_count": 81
+  },
+  "source_docx": {
+    "member": "25winpasst2suhy000311.docx",
+    "bytes": 129623,
+    "sha256": "066069999326c72dfd3843cb68029c955746aa42ede2e6d93d079e0061b1df06",
+    "docx_zip_crc": "PASS",
+    "docx_member_count": 21,
+    "media_members": 6
+  },
+  "ooxml_evidence": {
+    "paragraph_61": "方程式 2x+3y=-2 のグラフが点 (a, 2) を通るとき、a の値を",
+    "paragraph_62": "求めなさい。",
+    "paragraph_63": "方程式 4x+5y=20 のグラフの傾きを求めなさい。",
+    "paragraph_64": "２直線 2x+y=8、3x-2y=5 の交点の座標を求めなさい。",
+    "paragraph_65": "２直線 x+2y+4=0、x-y-5=0 の交点の座標を求めなさい。",
+    "note": "OMML math text was included during extraction; ordinary w:t-only extraction omits equation operands."
+  },
+  "independent_recalculation": {
+    "target": "2suhy000311-m02",
+    "substitution": "2a + 3*2 = -2",
+    "result": "a = -4",
+    "expected_answer": "-4",
+    "status": "PASS"
+  },
+  "relationship_observation": {
+    "media_count": 6,
+    "m02_requires_media": false,
+    "status": "PASS"
+  },
+  "purpose": "Independent source-level audit only. This artifact does not increment review counts and must not be used as duplicate progress arithmetic."
+}
