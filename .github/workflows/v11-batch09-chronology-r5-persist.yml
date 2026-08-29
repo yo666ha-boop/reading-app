@@ -1,0 +1,30 @@
+name: v11 Batch09 chronology r5 persist
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch09_chronology_audit_r5.js'
+      - 'v11_batch09_vocab_repair_r2.js'
+      - '.github/workflows/v11-batch09-chronology-r5-persist.yml'
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - run: npm install --no-save jsdom@24
+      - run: node v11_batch09_chronology_audit_r5.js || true
+      - name: Persist current residual reports
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add V11_BATCH09_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH09_GRAMMAR_CHRONOLOGY_REPORT.json V11_BATCH09_CHRONOLOGY_STATUS.txt
+          if ! git diff --cached --quiet; then
+            git commit -m 'v11: persist Batch09 chronology r5 residuals [skip ci]'
+            git pull --rebase origin v11-1000passage-easy-notes
+            git push
+          fi
