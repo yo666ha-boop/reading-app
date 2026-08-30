@@ -1,7 +1,6 @@
-checked_at_utc=2026-08-27T13:49:05Z
-source_sha=efa807ef345d55e761dc925b08cced5efca72b5c
-result=PASS
-STATE {"version":"20260827-v11-easy-support-002","passages":218,"withExtra":217,"totalExtra":2194,"dictTerms":212}
-SAMPLE {"base":168,"extra":50,"count":218,"bad":0,"dup":0,"extraBad":0,"max":16,"examples":[{"id":"V11-SS-G1-P10-2-002","section":"PROGRAM 10-2","n":8},{"id":"V11-SS-G1-P10-2-003","section":"PROGRAM 10-2","n":9},{"id":"V11-SS-G1-P10-2-004","section":"PROGRAM 10-2","n":9},{"id":"V11-SS-G1-P10-2-005","section":"PROGRAM 10-2","n":8},{"id":"V11-SS-G1-P10-2-006","section":"PROGRAM 10-2","n":8}]}
-RENDER {"required":0,"extra":3,"total":3,"on":true,"passageId":"V10-SUN-G1-GR2-001"}
-V11_EASY_SUPPORT_PASS_218
+checked_at_utc=2026-08-30T09:11:03Z
+source_sha=8cef5a83826f5625b0cfde3193637f1729184b58
+result=FAIL
+V11_EASY_SUPPORT_FAIL Error: notes block missing after ON
+    at assert ([stdin]:2:34)
+    at [stdin]:31:5
