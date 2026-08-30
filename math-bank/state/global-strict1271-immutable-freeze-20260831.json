@@ -1,0 +1,35 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "GLOBAL_CANONICAL_VALIDATION_AND_IMMUTABLE_FREEZE",
+  "recorded_at_jst": "2026-08-31T08:05:00+09:00",
+  "source_archives": {
+    "Standard": {"drive_file_id":"1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU","bytes":9689250,"sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6"},
+    "Jitsuren": {"drive_file_id":"1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb","bytes":7287279,"sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33"},
+    "Winpass": {"drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E","bytes":8296042,"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf"}
+  },
+  "canonical_counts": {"Standard":317,"Jitsuren":237,"Winpass":717,"global":1271},
+  "identity_validation": {
+    "global_unique_raw_ids":1271,
+    "global_fingerprints_present":1271,
+    "global_unique_fingerprints":1271,
+    "global_raw_id_union_sha256":"6727c66d72dc5ef28ed4b35ab1d8c5c82ccbf765e01a2d019a8f44b7663c84af",
+    "global_fingerprint_union_sha256":"5f05d7b774375453a85310bc8ee01542d12dd5c0c5d06694c9f7ee4769ec80a7",
+    "Standard":{"raw_id_union_sha256":"b3bedcc7273e32a3e5b761015f6a999d2f4b26ae7d668bcc0f8799cacd1aa20a","fingerprint_union_sha256":"94877469836d55a3596d88c4bf631e970bd2075853936d5bbfb87ccaec0ae766"},
+    "Jitsuren":{"raw_id_union_sha256":"e4a66949a07313647500c3ce6d848c9cf7b8bc3ed03b992601ca96fbf9420de3","fingerprint_union_sha256":"a3893ffbeb91d780c5f3a4100476b54d314cf17ff5f58c0379269343e8eda1de"},
+    "Winpass":{"raw_id_union_sha256":"932aef6b04778d4456267a4cd569942f005e7c832cf0da954a6fa180b8ef4d1e","fingerprint_union_sha256":"8d17721d4c1b1b190d6329af853fb3863a08cf586af16f5e1e1284ebf5e72a9f"}
+  },
+  "quality_validation": {
+    "Standard_score_evidence":"317/317",
+    "Standard_source_document_sha":"317/317",
+    "Standard_graphical_answer_records":"26/26 bound to graphical_answer_asset",
+    "Jitsuren_score_evidence":"237/237",
+    "Jitsuren_source_document_sha":"237/237",
+    "Jitsuren_graphical_answer_records":"18/18 bound to graphical_answer_asset",
+    "Winpass_evidence_review":"717/717",
+    "Winpass_phase2":"717/717; exact Q+A duplicate groups 0; semantic automatic merges 0",
+    "count_forcing_used":false
+  },
+  "freeze": {"status":"IMMUTABLE_FREEZE_PASS","records":1271,"source_order_preserved":true},
+  "guards":{"main_untouched":true,"publication_ready":false,"schedule_changed":false},
+  "next":"Proceed to safe variant generation and independent recalculation, then app mapping and full UI/print/browser/release/public verification gates."
+}
