@@ -1,0 +1,74 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "WINPASS_CANONICALIZATION_FROM_EVIDENCE",
+  "phase": "PHASE2_FULL_717_CLOSURE",
+  "recorded_at_jst": "2026-08-31T08:00:00+09:00",
+  "base_head": "fc0cefd879b55069be5b2cd149d294ce3b25453e",
+  "source_archive": {
+    "drive_file_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
+    "bytes": 8296042,
+    "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf"
+  },
+  "reconstruction": {
+    "durable_prior_records": 688,
+    "residual_records": 29,
+    "full_records": 717,
+    "unique_raw_ids": 717,
+    "unique_fingerprints": 717,
+    "durable_raw_id_union_sha256": "26ce511d5cd8c5ff13b2c976adbdc8181d4842299a8169959b45c81235ee69d0",
+    "durable_fingerprint_union_sha256": "2255c8c38fd433ec6fb1f7608ca05b9c1e4791d9c325027199c585da32aa29df",
+    "residual_raw_id_union_sha256": "8d2a9452f05a9eb4f6938c7754810a85a315bd4b493f7cf6c1a934a980bbbaba",
+    "residual_fingerprint_union_sha256": "f8a8bc1ae6e785b02db094d421f62d9a7998646bd1f016925409e1012cdc7505",
+    "full_raw_id_union_sha256": "932aef6b04778d4456267a4cd569942f005e7c832cf0da954a6fa180b8ef4d1e",
+    "full_fingerprint_union_sha256": "8d17721d4c1b1b190d6329af853fb3863a08cf586af16f5e1e1284ebf5e72a9f"
+  },
+  "comparison": {
+    "normalization": "Unicode NFKC + remove all whitespace only; mathematical symbols/content preserved",
+    "residual_vs_durable_pairs": 19952,
+    "residual_vs_durable_exact_qa_collisions": 0,
+    "residual_internal_exact_qa_duplicate_groups": 0,
+    "full_717_exact_qa_duplicate_groups": 0,
+    "question_similarity_threshold": 0.94,
+    "question_similarity_candidate_pairs": 106,
+    "same_normalized_answer_among_similarity_candidates": 2,
+    "same_answer_candidate_decisions": [
+      {
+        "ratio": 0.964286,
+        "raw_ids": ["Winpass:25winpasst2suhy000414.docx:M03:S03", "Winpass:25winpasst2suhy000414.docx:M03:S04"],
+        "questions": ["次の図で、l∥mのとき、∠xの大きさを求めなさい。 (3)", "次の図で、l∥mのとき、∠xの大きさを求めなさい。 (4)"],
+        "answer": "50°",
+        "decision": "KEEP_DISTINCT",
+        "reason": "different scored subslot / source figure-context identity; same numeric answer does not establish semantic duplication"
+      },
+      {
+        "ratio": 0.952381,
+        "raw_ids": ["Winpass:25winpasst2suhy000414.docx:M01:S02", "Winpass:25winpasst2suhy000414.docx:M01:S04"],
+        "questions": ["次の図で、∠xの大きさを求めなさい。 (2)", "次の図で、∠xの大きさを求めなさい。 (4)"],
+        "answer": "30°",
+        "decision": "KEEP_DISTINCT",
+        "reason": "different scored subslot / source figure-context identity; same numeric answer does not establish semantic duplication"
+      }
+    ],
+    "automatic_semantic_merges": 0
+  },
+  "quality_gate": {
+    "strict_materialization": "1271/1271 complete (Standard317/Jitsuren237/Winpass717)",
+    "winpass_evidence_review": "717/717 complete",
+    "raw_id_union": "717/717 unique",
+    "fingerprint_union": "717/717 unique",
+    "source_sha_provenance_score_media_independent_checks": "inherited only from durable strict/evidence-reviewed source artifacts; no unreviewed record introduced",
+    "count_forcing_used": false,
+    "historical_570_used_as_cutoff": false
+  },
+  "canonical_decision": {
+    "winpass_canonical_records": 717,
+    "excluded_as_semantic_duplicate": 0,
+    "status": "PHASE2_COMPLETE"
+  },
+  "guards": {
+    "main_untouched": true,
+    "publication_ready": false,
+    "schedule_changed": false
+  },
+  "next": "Freeze Winpass canonical717, then globally validate/freeze Standard317 + Jitsuren237 + Winpass717; proceed directly to variants/app/release gates if global freeze passes."
+}
