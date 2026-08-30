@@ -1,0 +1,101 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "WINPASS_CANONICALIZATION_FROM_EVIDENCE",
+  "phase": "PHASE2_RESIDUAL29_IDENTITY_AND_SOURCE_QUALITY_GATE",
+  "recorded_at_jst": "2026-08-31T01:00:00+09:00",
+  "head_before": "ef1cc23ea779da48f4be00d254379b0243a37feb",
+  "base_scanned_union": {
+    "artifact": "math-bank/state/winpass-phase2-source-union-repair-and-review-688-20260830.json",
+    "records": 688,
+    "remaining": 29
+  },
+  "source_archive": {
+    "drive_file_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
+    "bytes": 8296042,
+    "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+    "zip_crc": "PASS",
+    "docx_members": 81
+  },
+  "expected_deficit_by_document": {
+    "25winpasst1suhy000209.docx": 8,
+    "25winpasst1suhy000210.docx": 3,
+    "25winpasst2suhy000206.docx": 1,
+    "25winpasst2suhy000207.docx": 1,
+    "25winpasst2suhy000311.docx": 2,
+    "25winpasst3suhy000101.docx": 5,
+    "25winpasst3suhy000102.docx": 2,
+    "25winpasst3suhy000414.docx": 3,
+    "25winpasst3suhy000728.docx": 4
+  },
+  "residual_sources": [
+    {
+      "kind": "durable_delta27",
+      "drive_file_ids": ["158vhHtKmyPQzTmXZn9EEiKwKdL0c0uxh", "1oxE6AcIlHub_iwIGVC2vDANK_MWmSUSv"],
+      "records": 27,
+      "manifest": "math-bank/state/winpass27-strict-deltas-20260825.json"
+    },
+    {
+      "kind": "figure_strict",
+      "path": "math-bank/state/winpass2-new-2suhy000311-figure-strict-20260827.jsonl",
+      "blob_sha": "33db35c47ab86a020eacb436347920ab8807f693",
+      "records": 2
+    }
+  ],
+  "quality_gate": {
+    "records": 29,
+    "unique_raw_id": 29,
+    "unique_fingerprint": 29,
+    "source_doc_sha_match": "29/29",
+    "docx_crc_pass": "29/29",
+    "score_evidence": "29/29",
+    "question_provenance": "29/29",
+    "answer_provenance": "29/29",
+    "independent_check_pass": "29/29",
+    "required_media_asset_sha_match": "29/29"
+  },
+  "set_gate": {
+    "residual_raw_id_unique": 29,
+    "residual_fingerprint_unique": 29,
+    "document_deficit_sum": 29,
+    "count_forcing_used": false
+  },
+  "records": [
+    {"raw_id":"Winpass:25winpasst2suhy000206.docx:M03:S01","fingerprint":"171f5ebeb29e1a41e63e5cee2bf09bb6ae986198b19d91899d9f40800cea7e66","source_document":"25winpasst2suhy000206.docx","source_document_sha256":"572530eb880b8067658f4aa52d36d388d8dab7fb06033cee612a65c522191e50"},
+    {"raw_id":"Winpass:25winpasst2suhy000207.docx:M03:S01","fingerprint":"e111f34670840828970561bd16ba9dc9fd2ca7dee1fc95c2735965dcfac44328","source_document":"25winpasst2suhy000207.docx","source_document_sha256":"17bd001b65be9efc447c144df4ff05d30cabb12a0f00e5d463d2b6969673fd19"},
+    {"raw_id":"Winpass:25winpasst3suhy000101.docx:M03:S01","fingerprint":"3def01712904f0334654e015806a8661925254326a052357c967883fd6da20d5","source_document":"25winpasst3suhy000101.docx","source_document_sha256":"fa56dba403d934662f3761610bd052c65de4f31d32d55d9e764722932181c611"},
+    {"raw_id":"Winpass:25winpasst3suhy000102.docx:M03:S01","fingerprint":"aff818eb682f738338552063d08544305bd2906b63530a7c3a08772ca95c1d3f","source_document":"25winpasst3suhy000102.docx","source_document_sha256":"7a9bb7797969be08d981cd9f45cc41958c22344580fc59e08b0c75928f75f731"},
+    {"raw_id":"Winpass:25winpasst3suhy000414.docx:M01:S01","fingerprint":"4545db50a03d78317a8b08914bf37876918073264555e981977433fa0efba9ea","source_document":"25winpasst3suhy000414.docx","source_document_sha256":"4a3909eeb8bf47e9142f5f3e701a889031db870b3e19a5800e5f94519ef80483"},
+    {"raw_id":"Winpass:25winpasst3suhy000728.docx:M01:S01","fingerprint":"b61430c70da8107762629a69e502d66028b83ef7bf5cd3f2ed8bce84848a05c8","source_document":"25winpasst3suhy000728.docx","source_document_sha256":"6a33291f01fb7d3eb4cff94d67b6d0ec9e580dc22dc66d5e309fb100b01d304e"},
+    {"raw_id":"Winpass:25winpasst3suhy000728.docx:M01:S02","fingerprint":"b5321a0b5f5ef14ac4c258c26fe56f99c84182c4b835dbdfb5e1839ae38d77d0","source_document":"25winpasst3suhy000728.docx","source_document_sha256":"6a33291f01fb7d3eb4cff94d67b6d0ec9e580dc22dc66d5e309fb100b01d304e"},
+    {"raw_id":"Winpass:25winpasst3suhy000728.docx:M01:S03","fingerprint":"1ec36ea20e5bddb387dd8f84bf52c14cebb8b4a42c41dcfe61404fe8153a58e5","source_document":"25winpasst3suhy000728.docx","source_document_sha256":"6a33291f01fb7d3eb4cff94d67b6d0ec9e580dc22dc66d5e309fb100b01d304e"},
+    {"raw_id":"Winpass:25winpasst3suhy000728.docx:M01:S04","fingerprint":"c20c201d1af4f522a2300004bcc5154c3de26b87a446177415a4da44d50f174d","source_document":"25winpasst3suhy000728.docx","source_document_sha256":"6a33291f01fb7d3eb4cff94d67b6d0ec9e580dc22dc66d5e309fb100b01d304e"},
+    {"raw_id":"Winpass:25winpasst1suhy000209.docx:M02:S01","fingerprint":"e414fe7bdbc7a64f0e94dd215b519360e7da006c3115aa113fddd391adc1545c","source_document":"25winpasst1suhy000209.docx","source_document_sha256":"b4b69bf6f63ab2598719785094635ee786e9d1fb903401ba1d4eb9a738db406b"},
+    {"raw_id":"Winpass:25winpasst1suhy000209.docx:M02:S02","fingerprint":"20d5e72f22a4642f1338003c5482338a54b1ff2783d40be425d7b8c449687f7b","source_document":"25winpasst1suhy000209.docx","source_document_sha256":"b4b69bf6f63ab2598719785094635ee786e9d1fb903401ba1d4eb9a738db406b"},
+    {"raw_id":"Winpass:25winpasst1suhy000209.docx:M02:S03","fingerprint":"bf8e4a1efdc6697e843c27f39a97bb3b913025094e1c2dbf25b290e696dbe4ea","source_document":"25winpasst1suhy000209.docx","source_document_sha256":"b4b69bf6f63ab2598719785094635ee786e9d1fb903401ba1d4eb9a738db406b"},
+    {"raw_id":"Winpass:25winpasst1suhy000209.docx:M02:S04","fingerprint":"1e31c45da5725fd95c43e09163195eb4a05bbfe7226dcf7fdfe97f4748445191","source_document":"25winpasst1suhy000209.docx","source_document_sha256":"b4b69bf6f63ab2598719785094635ee786e9d1fb903401ba1d4eb9a738db406b"},
+    {"raw_id":"Winpass:25winpasst1suhy000209.docx:M02:S05","fingerprint":"269bc996de58744b9ad65f927be14f01718598948c0db44d99a240b3dccd9e71","source_document":"25winpasst1suhy000209.docx","source_document_sha256":"b4b69bf6f63ab2598719785094635ee786e9d1fb903401ba1d4eb9a738db406b"},
+    {"raw_id":"Winpass:25winpasst1suhy000209.docx:M02:S06","fingerprint":"78e9cae11f932313254314cf43f9ff00dabf60622b188df4716567f88f06ef4c","source_document":"25winpasst1suhy000209.docx","source_document_sha256":"b4b69bf6f63ab2598719785094635ee786e9d1fb903401ba1d4eb9a738db406b"},
+    {"raw_id":"Winpass:25winpasst1suhy000209.docx:M02:S07","fingerprint":"67da7a736f3e40131fe85e7a9ece12211871089238d67ddf7d077dc7f03c26f7","source_document":"25winpasst1suhy000209.docx","source_document_sha256":"b4b69bf6f63ab2598719785094635ee786e9d1fb903401ba1d4eb9a738db406b"},
+    {"raw_id":"Winpass:25winpasst1suhy000209.docx:M02:S08","fingerprint":"66b3d47589d378e196b4e5537da45f95793016753592a256517048cb6d377c2a","source_document":"25winpasst1suhy000209.docx","source_document_sha256":"b4b69bf6f63ab2598719785094635ee786e9d1fb903401ba1d4eb9a738db406b"},
+    {"raw_id":"Winpass:25winpasst1suhy000210.docx:M02:S01","fingerprint":"3065fb88d1c1349036d1753f21a59f6b60d07ee57f454277c4fb2f05b4bccf68","source_document":"25winpasst1suhy000210.docx","source_document_sha256":"314bbb0be412875dec4b233a08d364c7babf29291fb2d6dbdeba2799403dd5e3"},
+    {"raw_id":"Winpass:25winpasst1suhy000210.docx:M02:S02","fingerprint":"c750f3019bcc034896213059d59ac77cf5d9f3298070222c6e2a13ea1810f982","source_document":"25winpasst1suhy000210.docx","source_document_sha256":"314bbb0be412875dec4b233a08d364c7babf29291fb2d6dbdeba2799403dd5e3"},
+    {"raw_id":"Winpass:25winpasst1suhy000210.docx:M02:S04","fingerprint":"b3711543208190481582cd0626157929583b94658012f9f66f05e5616386f374","source_document":"25winpasst1suhy000210.docx","source_document_sha256":"314bbb0be412875dec4b233a08d364c7babf29291fb2d6dbdeba2799403dd5e3"},
+    {"raw_id":"Winpass:25winpasst3suhy000101.docx:M03:S02","fingerprint":"42e5d1cfa027cc4882b71d69bbdd1ad9205f1f0667ccce0462776f554ddf40a6","source_document":"25winpasst3suhy000101.docx","source_document_sha256":"fa56dba403d934662f3761610bd052c65de4f31d32d55d9e764722932181c611"},
+    {"raw_id":"Winpass:25winpasst3suhy000101.docx:M03:S03","fingerprint":"9b0ced3d156b2cae3bc1843fcd440ee90fbdd60e292e290cb77ae59202e36e82","source_document":"25winpasst3suhy000101.docx","source_document_sha256":"fa56dba403d934662f3761610bd052c65de4f31d32d55d9e764722932181c611"},
+    {"raw_id":"Winpass:25winpasst3suhy000101.docx:M03:S04","fingerprint":"28913a135a14248a1999242ce1fdd4df595e1520c53a950cbb010af736e34b7d","source_document":"25winpasst3suhy000101.docx","source_document_sha256":"fa56dba403d934662f3761610bd052c65de4f31d32d55d9e764722932181c611"},
+    {"raw_id":"Winpass:25winpasst3suhy000101.docx:M03:S05","fingerprint":"cb64d4f086bd81c5dc56800033ef67701556e3cd501896455441bed726a57122","source_document":"25winpasst3suhy000101.docx","source_document_sha256":"fa56dba403d934662f3761610bd052c65de4f31d32d55d9e764722932181c611"},
+    {"raw_id":"Winpass:25winpasst3suhy000102.docx:M03:S02","fingerprint":"cab4775260c633a185b157558982491bf3525e3415db0877d97e21c928ca67da","source_document":"25winpasst3suhy000102.docx","source_document_sha256":"7a9bb7797969be08d981cd9f45cc41958c22344580fc59e08b0c75928f75f731"},
+    {"raw_id":"Winpass:25winpasst3suhy000414.docx:M01:S02","fingerprint":"05d4de7fdecb64d098c524c6cef3418289a10381cf21b515a49cc6116a31ac23","source_document":"25winpasst3suhy000414.docx","source_document_sha256":"4a3909eeb8bf47e9142f5f3e701a889031db870b3e19a5800e5f94519ef80483"},
+    {"raw_id":"Winpass:25winpasst3suhy000414.docx:M01:S03","fingerprint":"bcfdf71f2b24a4a7d2de6406e3f146c7975648268951eec745c38e80f3b63e87","source_document":"25winpasst3suhy000414.docx","source_document_sha256":"4a3909eeb8bf47e9142f5f3e701a889031db870b3e19a5800e5f94519ef80483"},
+    {"raw_id":"Winpass:25winpasst2suhy000311.docx:M03:S01","fingerprint":"cb6c637c8260f0a106b1cc3d946b980c81ff57ee1f65a1a334c253287653d06e","source_document":"25winpasst2suhy000311.docx","source_document_sha256":"066069999326c72dfd3843cb68029c955746aa42ede2e6d93d079e0061b1df06"},
+    {"raw_id":"Winpass:25winpasst2suhy000311.docx:M03:S02","fingerprint":"8a7071d2444a7142d51aacca19bc8c635322f7bae9e9069d667582ade906a729","source_document":"25winpasst2suhy000311.docx","source_document_sha256":"066069999326c72dfd3843cb68029c955746aa42ede2e6d93d079e0061b1df06"}
+  ],
+  "guard": {
+    "semantic_duplicate_comparison_against_full_688_not_yet_durably_completed": true,
+    "phase2_scanned_remains": 688,
+    "remaining": 29,
+    "main_untouched": true,
+    "publication_ready": false
+  },
+  "next": "Use this exact fingerprint-bound residual29 as the only next semantic-scan input. Compare normalized question+answer first against the durable scanned688; if zero collisions, finish 717/717 Phase2. If any collision, require context-aware manual resolution; do not count-force."
+}
