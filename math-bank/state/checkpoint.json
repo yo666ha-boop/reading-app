@@ -1,1 +1,37 @@
-{"project":"mikami-math-problem-bank","status":"IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP","current_stage":"APP_PIPELINE_1271_MIGRATION_AFTER_SAFE_VARIANTS","current_bucket":"VARIANT_GENERATION_AND_1271_APP_MAPPING","recorded_at_jst":"2026-08-31T09:05:00+09:00","main_touched":false,"schedule_changed":false,"source_identity":{"Standard":{"drive_file_id":"1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU","sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","bytes":9689250},"実力錬成":{"drive_file_id":"1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb","sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","bytes":7287279},"Winpass":{"drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E","sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","bytes":8296042}},"raw_slots":{"Winpass":717,"実力錬成":237,"Standard":317,"total":1271,"count_forcing_used":false},"strict_progress":{"Standard":317,"実力錬成":237,"Winpass":717,"total":1271,"pending":0,"readback_verified":1271,"validator_pass":1271,"durable_records":1271},"downstream":{"winpass_decisions":{"reviewed":717,"included":717,"excluded":0,"unreviewed":0,"evidence_review_complete":true,"count_forcing_forbidden":true},"winpass_canonical":{"status":"PHASE2_COMPLETE","count":717,"input_unique_raw_ids":717,"input_unique_fingerprints":717,"semantic_records_scanned":717,"semantic_records_remaining":0,"automatic_semantic_merges":0,"exact_qa_duplicate_groups":0,"phase2_closure_artifact":"math-bank/state/winpass-phase2-full717-closure-20260831.json"},"global":{"validated":1271,"immutable_frozen":1271,"target_count":1271,"unique_raw_ids":1271,"unique_fingerprints":1271,"freeze_artifact":"math-bank/state/global-strict1271-immutable-freeze-20260831.json"},"variants":{"verified":52,"distinct_verified_parents":26,"parent_coverage":"26/1271","artifacts":["math-bank/state/global1271-safe-variants-algebra26-20260831.json","math-bank/state/global1271-safe-variants-algebra26-v2-20260831.json"],"status":"IN_PROGRESS"},"app_pipeline":{"legacy_1124_570_guards_migrated_to_1271_717":["math-bank/scripts/validate_rebuilt_originals.py","math-bank/scripts/validate_rebuilt_app_mapping.py","math-bank/scripts/freeze_rebuilt_originals.py","math-bank/scripts/validate_frozen_rebuilt_originals.py","math-bank/app/validate_rebuilt_expanded_variant_layer.py","math-bank/app/compose_rebuilt_expanded_app_records.py"],"runtime_validation":"PENDING","app_records":0},"publication_ready":false},"exact_stop":"Winpass canonical 717 and immutable global1271 remain closed. Two algebra variant artifacts now contain 52 independently verified variants across 26 verified parents. Core rebuilt-originals/app-mapping/freeze/expanded-composer guards were migrated from legacy1124/Winpass570 to immutable1271/Winpass717, but runtime validation against reconstructed 1271 app records is still pending.","next_start":"Reconstruct or locate the exact immutable1271 app-record parent payload and mapping evidence, run the migrated validators/freeze/expanded composer fail-closed, then continue grade/unit/filter/search/random/source-order/answer/figure/localStorage/A4/browser/device/release/public gates. Do not publish before all PASS.","main_untouched":true}
+{
+  "project": "mikami-math-problem-bank",
+  "status": "IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP",
+  "current_stage": "APP1271_RUNTIME_PARENT_RECONSTRUCTION_FROM_FIXED_SOURCES",
+  "current_bucket": "EXACT_1271_RECORD_BODY_RECOVERY_OR_REBUILD",
+  "recorded_at_jst": "2026-08-31T17:03:00+09:00",
+  "main_touched": false,
+  "schedule_changed": false,
+  "source_identity": {
+    "Standard": {"drive_file_id": "1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU", "sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6", "bytes": 9689250, "crc32": "f8e307bb", "zip_test": "PASS"},
+    "実力錬成": {"drive_file_id": "1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb", "sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33", "bytes": 7287279, "crc32": "1a020f98", "zip_test": "PASS"},
+    "Winpass": {"drive_file_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E", "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf", "bytes": 8296042, "crc32": "992b0ca2", "zip_test": "PASS"}
+  },
+  "raw_slots": {"Winpass": 717, "実力錬成": 237, "Standard": 317, "total": 1271, "count_forcing_used": false},
+  "strict_progress": {"Standard": 317, "実力錬成": 237, "Winpass": 717, "total": 1271, "pending": 0, "readback_verified": 1271, "validator_pass": 1271, "durable_records": 1271},
+  "downstream": {
+    "winpass_decisions": {"reviewed": 717, "included": 717, "excluded": 0, "unreviewed": 0, "evidence_review_complete": true, "count_forcing_forbidden": true},
+    "winpass_canonical": {"status": "PHASE2_COMPLETE", "count": 717, "input_unique_raw_ids": 717, "input_unique_fingerprints": 717, "semantic_records_scanned": 717, "semantic_records_remaining": 0, "automatic_semantic_merges": 0, "exact_qa_duplicate_groups": 0, "phase2_closure_artifact": "math-bank/state/winpass-phase2-full717-closure-20260831.json"},
+    "global": {"validated": 1271, "immutable_frozen": 1271, "target_count": 1271, "unique_raw_ids": 1271, "unique_fingerprints": 1271, "freeze_artifact": "math-bank/state/global-strict1271-immutable-freeze-20260831.json", "freeze_artifact_contains_record_bodies": false},
+    "variants": {"verified": 52, "distinct_verified_parents": 26, "parent_coverage": "26/1271", "artifacts": ["math-bank/state/global1271-safe-variants-algebra26-20260831.json", "math-bank/state/global1271-safe-variants-algebra26-v2-20260831.json"], "status": "IN_PROGRESS"},
+    "app_pipeline": {
+      "legacy_1124_570_guards_migrated_to_1271_717": ["math-bank/scripts/validate_rebuilt_originals.py", "math-bank/scripts/validate_rebuilt_app_mapping.py", "math-bank/scripts/freeze_rebuilt_originals.py", "math-bank/scripts/validate_frozen_rebuilt_originals.py", "math-bank/app/validate_rebuilt_expanded_variant_layer.py", "math-bank/app/compose_rebuilt_expanded_app_records.py"],
+      "runtime_validation": "BLOCKED_EXACT_1271_RECORD_BODIES_REQUIRED",
+      "app_records": 0,
+      "verified_1271_runtime_parent_payload_present": false,
+      "repo_app_data_directory_present": false,
+      "actions_artifact_scan_complete": true,
+      "actions_canonical_absence_proven": true,
+      "reconstruction_audit": "math-bank/state/app1271-runtime-reconstruction-audit-latest.json",
+      "legacy_runtime_validator_still_fixed_to_1124_570_1231_107": "math-bank/app/validate_app_records.py"
+    },
+    "publication_ready": false
+  },
+  "exact_stop": "Winpass canonical717 and immutable global1271 remain closed, and 52 variants remain independently verified across 26 parents. This run reverified all three fixed source ZIP identities/CRC and proved that the global freeze artifact is a summary rather than the 1271 Q/A record-body payload. At current HEAD, math-bank/app/data and originals.json are absent, while the complete Actions artifact scan reports canonical_absence_proven=true. Runtime promotion is therefore fail-closed until the exact 1271 record bodies are recovered or rebuilt from the fixed archives/evidence and validated again.",
+  "next_start": "Use the fixed source ZIPs and the strict reconstruction tools/evidence to recover or rebuild exact 1271 record bodies with raw_id/fingerprint/source-document SHA/score/OOXML/figure provenance. Read back and pass validate_raw1271_materialization.py, then build explicit mapping evidence and run validate_rebuilt_app_mapping.py plus freeze_rebuilt_originals.py. Do not relabel legacy1124/1231 data, do not infer missing metadata, and do not publish before all downstream UI/A4/browser/device/release/public gates PASS.",
+  "main_untouched": true
+}
