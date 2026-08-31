@@ -1,0 +1,47 @@
+{
+  "schema": "app1271_winpass_final109_exact_provenance40_v1",
+  "project": "mikami-math-problem-bank",
+  "stage": "APP1271_RUNTIME_PARENT_RECONSTRUCTION_FROM_FIXED_SOURCES",
+  "status": "PASS_DURABLE_CURRENT_SCHEMA_40_NO_RUNTIME_PROMOTION",
+  "recorded_at_jst": "2026-08-31T21:57:00+09:00",
+  "source_batch": {
+    "github_manifest": "math-bank/state/winpass109-finalized-manifest-20260827.json",
+    "records": 109,
+    "documents": 12,
+    "historical_gate": "109/109 strict + independent recalculation + rendered visual inspection PASS"
+  },
+  "migration": {
+    "records": 40,
+    "unique_raw_ids": 40,
+    "unique_current_fingerprints": 40,
+    "question_provenance": "40/40 exact OOXML text and/or bound figure relationship paragraph",
+    "answer_provenance": "40/40 exact normalized OOXML answer paragraph",
+    "paragraph_text_sha256_bound_in_offsets": "PASS",
+    "source_document_sha256_against_fixed_winpass_zip": "40/40 PASS",
+    "nested_docx_zip_test": "PASS for all 8 source documents used",
+    "current_fingerprint_recalculation": "40/40 PASS",
+    "current_structural_gate": "40/40 PASS"
+  },
+  "drive_artifact": {
+    "file_id": "1lY0GPHiEOMbLHC5ftZYmOaeD1LSEuWaz",
+    "file_name": "winpass40-final109-current-schema-exact-provenance-20260831T2134JST.jsonl",
+    "bytes": 51468,
+    "sha256": "68727af521d2217cb62beae2015e5974c1a506d3afbfa38dde5ec0e7d8ed8ffa",
+    "readback": "40 records / 40 unique raw_id / 40 unique fingerprint / fingerprint recomputation 40/40 PASS"
+  },
+  "aggregate_current_schema": {
+    "baseline_ready": 547,
+    "score_evidence_migrated": 41,
+    "historical10_materialized": 10,
+    "final109_exact_provenance_migrated": 40,
+    "ready_total": 638,
+    "remaining": 79,
+    "runtime_promotion_count": 0,
+    "note": "No promotion count is used as publication progress. These are schema/provenance materializations only; full canonical717 union and full1271 validator PASS remain mandatory before app mapping/runtime promotion."
+  },
+  "guards": {
+    "count_forcing_used": false,
+    "main_touched": false,
+    "publication_ready": false
+  }
+}
