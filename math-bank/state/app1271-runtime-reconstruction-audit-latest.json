@@ -1,0 +1,82 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "APP1271_RUNTIME_PARENT_RECONSTRUCTION_INPUT_AUDIT",
+  "branch": "math-problem-bank-bootstrap",
+  "audited_head_before_write": "787925e281f22a967e4850619338d5c1f32d3bc4",
+  "source_archives": {
+    "Standard": {
+      "drive_file_id": "1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU",
+      "bytes": 9689250,
+      "sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6",
+      "crc32": "f8e307bb",
+      "zip_test": "PASS"
+    },
+    "実力錬成": {
+      "drive_file_id": "1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb",
+      "bytes": 7287279,
+      "sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33",
+      "crc32": "1a020f98",
+      "zip_test": "PASS"
+    },
+    "Winpass": {
+      "drive_file_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
+      "bytes": 8296042,
+      "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+      "crc32": "992b0ca2",
+      "zip_test": "PASS"
+    }
+  },
+  "durable_upstream_state": {
+    "strict_materialization": 1271,
+    "counts": {"Winpass": 717, "実力錬成": 237, "Standard": 317},
+    "winpass_canonical": 717,
+    "global_immutable_freeze": 1271,
+    "verified_variants": 52,
+    "distinct_verified_variant_parents": 26
+  },
+  "runtime_parent_findings": {
+    "global_freeze_artifact": "math-bank/state/global-strict1271-immutable-freeze-20260831.json",
+    "global_freeze_artifact_contains_record_bodies": false,
+    "global_freeze_artifact_role": "identity/count/quality/freeze summary only",
+    "repo_app_data_directory_present_at_audited_head": false,
+    "repo_originals_json_present_at_audited_head": false,
+    "actions_artifact_scan_complete": true,
+    "actions_canonical_absence_proven": true,
+    "actions_canonical_hits": 0,
+    "actions_valid_audit_hits": 0,
+    "actions_paired_recovery_hits": 0,
+    "verified_1271_runtime_parent_payload_present": false
+  },
+  "contract_findings": {
+    "raw1271_validator": "math-bank/scripts/validate_raw1271_materialization.py",
+    "raw1271_validator_expected_total": 1271,
+    "raw1271_validator_requires_content_bound_fingerprint": true,
+    "raw1271_validator_requires_ooxml_question_answer_provenance": true,
+    "raw1271_validator_requires_score_evidence": true,
+    "raw1271_validator_requires_figure_asset_identity": true,
+    "freeze_script": "math-bank/scripts/freeze_rebuilt_originals.py",
+    "freeze_requires_mapping_evidence_before_freeze": true,
+    "freeze_requires_full_record_sha256": true,
+    "expanded_composer": "math-bank/app/compose_rebuilt_expanded_app_records.py",
+    "expanded_composer_expected_base": 1271,
+    "legacy_runtime_validator": "math-bank/app/validate_app_records.py",
+    "legacy_runtime_validator_still_fixed_to_originals": 1124,
+    "legacy_runtime_validator_still_fixed_to_winpass": 570,
+    "legacy_runtime_validator_still_fixed_to_final_total": 1231,
+    "legacy_runtime_validator_still_fixed_to_variants": 107
+  },
+  "decision": {
+    "status": "BLOCKED_FROM_RUNTIME_PROMOTION_UNTIL_EXACT_1271_RECORD_BODIES_ARE_RECONSTRUCTED_OR_RECOVERED",
+    "old_1124_or_1231_payload_may_be_relabelled_as_1271": false,
+    "count_forcing_allowed": false,
+    "historical_107_variant_bodies_may_be_reconstructed_without_bytes": false,
+    "publication_ready": false,
+    "main_may_be_touched": false
+  },
+  "next": [
+    "Rebuild or recover the exact 1271 strict record bodies from the fixed source archives and existing evidence, preserving raw_id, record_fingerprint, source_document_sha256, score evidence, OOXML offsets, and figure/graphical asset identities.",
+    "Read back and validate 1271 records with validate_raw1271_materialization.py; require 717/237/317 counts, 1271 unique raw_id/fingerprint, exact fingerprint recomputation, and figure evidence gates.",
+    "Build explicit per-record app mapping evidence without defaults or inference, then run validate_rebuilt_app_mapping.py and freeze_rebuilt_originals.py so full_record_sha256 binds the runtime parent payload.",
+    "Only after a verified immutable1271 runtime parent exists, append independently verified variants and continue UI/A4/browser/device/release/public isolated verification."
+  ]
+}
