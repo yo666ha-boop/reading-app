@@ -1,0 +1,44 @@
+{
+  "schema": "app1271_winpass_final109_migration_arithmetic_reconciliation_v1",
+  "project": "mikami-math-problem-bank",
+  "stage": "APP1271_RUNTIME_PARENT_RECONSTRUCTION_FROM_FIXED_SOURCES",
+  "recorded_at_jst": "2026-08-31T23:00:00+09:00",
+  "status": "PASS_ARITHMETIC_CORRECTION_NO_PROMOTION",
+  "inputs": {
+    "manifest": "math-bank/state/winpass109-finalized-manifest-20260827.json",
+    "manifest_records": 109,
+    "manifest_unique_raw_ids": 109,
+    "current_schema_migration_artifact": "math-bank/state/app1271-winpass-final109-exact-provenance40-20260831T2157JST.json",
+    "migration_drive_file_id": "1lY0GPHiEOMbLHC5ftZYmOaeD1LSEuWaz",
+    "migration_records": 40,
+    "migration_unique_raw_ids": 40
+  },
+  "reconciliation": {
+    "migration_raw_ids_subset_of_final109": true,
+    "migration_raw_ids_not_in_final109": 0,
+    "final109_unmigrated_unique_raw_ids": 69,
+    "equation": "109 - 40 = 69",
+    "previous_checkpoint_final109_remaining_text": 79,
+    "correction": "79 is the aggregate Winpass current-contract remaining count from 717-638; it must not be described as the remaining final109 count. The exact final109 residual is 69 unique raw_ids.",
+    "residual_by_source_document": {
+      "25winpasst2suhy000518.docx": 1,
+      "25winpasst2suhy000725.docx": 1,
+      "25winpasst3suhy000415.docx": 10,
+      "25winpasst3suhy000416.docx": 6,
+      "25winpasst3suhy000517.docx": 10,
+      "25winpasst3suhy000518.docx": 10,
+      "25winpasst3suhy000519.docx": 3,
+      "25winpasst3suhy000521.docx": 9,
+      "25winpasst3suhy000522.docx": 9,
+      "25winpasst3suhy000624.docx": 10
+    }
+  },
+  "quality_guards": {
+    "count_forcing_used": false,
+    "promotion_count": 0,
+    "main_touched": false,
+    "publication_ready": false,
+    "note": "This artifact corrects bookkeeping only. No unresolved record is promoted without exact provenance and current fingerprint validation."
+  },
+  "next": "Treat the 69 raw_id final109 residual as the exact final109 worklist. Separately identify the other 10 records in the aggregate 79 current-contract residual by set difference against the 638-ready union before any aggregate completion claim."
+}
