@@ -38,6 +38,8 @@ for(const p of ps){
 }
 const cloneNotes=v=>(Array.isArray(v)?v:[]).map(n=>({...n}));
 const frozenById=new Map(ps.map(p=>[p.id,{supportNotes:cloneNotes(p.supportNotes),supportNotesVersion:p.supportNotesVersion}]));
+function exportVerifiedSnapshots(){return [...frozenById.entries()].map(([id,s])=>({id,supportNotes:cloneNotes(s.supportNotes),supportNotesVersion:s.supportNotesVersion}));}
+window.V11_GET_BATCH11_VERIFIED_SUPPORT_SNAPSHOTS=exportVerifiedSnapshots;
 const protectedObjects=new WeakSet();
 function restoreOne(p){
   const src=frozenById.get(p&&p.id);if(!src)return false;
@@ -92,10 +94,8 @@ window.V11_APPLY_BATCH11_EASY_SUPPORT_NOTES=function(){
   const applied=restoreRegistry();installChooseGuard(true);installRenderGuard(true);
   return{applied,expected:frozenById.size,pass:applied===frozenById.size};
 };
-// Protect the original objects now; restoreOne also protects any later replacement
-// object that appears under the same passage ID in the runtime registry.
 for(const p of ps)restoreOne(p);
 installChooseGuard(false);installRenderGuard(false);
 const guardTimer=setInterval(keepGuard,5);window.__V11_BATCH11_SUPPORT_GUARD_TIMER=guardTimer;
-window.V11_BATCH11_EASY_SUPPORT_STATE={passages:ps.length,total,min,max,registered:false,replacementObjectGuard:true,version:'20260831-b11-r9-replacement-object-guard'};
+window.V11_BATCH11_EASY_SUPPORT_STATE={passages:ps.length,total,min,max,registered:false,replacementObjectGuard:true,authoritativeSnapshotExport:true,version:'20260831-b11-r10-authoritative-snapshot'};
 })();
