@@ -1,7 +1,7 @@
 {
   "batch": "V11-B12",
   "registered": false,
-  "status": "ASSEMBLED_AFTER_SEMANTIC_R1_HUMAN_REVIEW_REQUIRED",
+  "status": "ASSEMBLED_AFTER_SEMANTIC_R2_PARTIAL_HUMAN_REVIEW",
   "officialTotal": 718,
   "targetAfterFullGates": 768,
   "anchors": {
@@ -46,8 +46,15 @@
     "V11-B12-G2-004",
     "V11-B12-G3-004",
     "V11-B12-G3-012",
-    "V11-B12-G3-016"
+    "V11-B12-G3-016",
+    "V11-B12-G1-003",
+    "V11-B12-G1-016",
+    "V11-B12-G2-001",
+    "V11-B12-G2-002",
+    "V11-B12-G3-008"
   ],
+  "humanReviewedCount": 35,
+  "humanReviewPendingCount": 15,
   "passages": [
     {
       "id": "V11-B12-G1-001",
@@ -62,7 +69,7 @@
         "unit": "PROGRAM 10-2"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -80,7 +87,7 @@
         "unit": "Unit 10-2"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -88,8 +95,9 @@
     {
       "id": "V11-B12-G1-003",
       "title": "The Classroom Clock Five Minutes Ahead",
-      "body": "Aya's class had to meet in the hall at ten o'clock. At 9:50, the classroom clock showed 9:55, so some students started to line up. Aya looked at the clock on her tablet, which showed 9:50. Their teacher checked the office clock and found that the classroom clock was five minutes fast. The class waited a little longer and reached the hall at the planned time. Later, the teacher reset the classroom clock. The students learned why they had seemed to be late even though the schedule had not changed.",
-      "fullTranslation": "アヤのクラスは10時にホールへ集合することになっていました。9時50分、教室の時計は9時55分を示していたため、何人かの生徒は並び始めました。アヤがタブレットの時計を見ると9時50分でした。先生が職員室の時計を確認すると、教室の時計が5分進んでいることが分かりました。クラスは少し待ち、予定どおりの時刻にホールへ着きました。その後、先生は教室の時計を直しました。予定は変わっていないのに、なぜ遅れそうに感じたのか生徒たちは理解しました。",
+      "body": "Aya's class had to meet in the hall at ten o'clock. At 9:50, the classroom clock showed 9:55, so some students started to line up. Aya looked at the clock on her tablet, which showed 9:50. Their teacher checked the office clock and found that the classroom clock was five minutes fast. The class waited a little longer and reached the hall at the planned time. Later, the teacher reset the classroom clock. The students learned why they had started lining up early even though the schedule had not changed.",
+      "fullTranslation": "アヤのクラスは10時にホールへ集合することになっていました。9時50分、教室の時計は9時55分を示していたため、何人かの生徒は並び始めました。アヤがタブレットの時計を見ると9時50分でした。先生が職員室の時計を確認すると、教室の時計が5分進んでいることが分かりました。クラスは少し待ち、予定どおりの時刻にホールへ着きました。その後、先生は教室の時計を直しました。予定は変わっていないのに、なぜ早く並び始めてしまったのか生徒たちは理解しました。",
+      "semanticRepair": "R2_HUMAN_APPLIED",
       "level": "STANDARD",
       "focus": "comparing two clocks and explaining an early line-up",
       "anchor": {
@@ -98,7 +106,7 @@
         "unit": "PROGRAM 10-2"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -116,7 +124,7 @@
         "unit": "Unit 10-2"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -134,7 +142,7 @@
         "unit": "PROGRAM 10-2"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -152,7 +160,7 @@
         "unit": "Unit 10-2"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -170,7 +178,7 @@
         "unit": "PROGRAM 10-2"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -188,7 +196,7 @@
         "unit": "Unit 10-2"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -206,7 +214,7 @@
         "unit": "PROGRAM 10-2"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -224,7 +232,7 @@
         "unit": "Unit 10-2"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -242,7 +250,7 @@
         "unit": "PROGRAM 10-2"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -260,7 +268,7 @@
         "unit": "Unit 10-2"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -278,7 +286,7 @@
         "unit": "PROGRAM 10-2"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -296,7 +304,7 @@
         "unit": "Unit 10-2"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -314,7 +322,7 @@
         "unit": "PROGRAM 10-2"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -322,8 +330,9 @@
     {
       "id": "V11-B12-G1-016",
       "title": "A Science Cup Placed under the Wrong Window",
-      "body": "The class was comparing how two bean plants grew in different amounts of light. Cup A was supposed to stay by the bright south window, and Cup B by the darker north window. After cleaning time, Rina noticed Cup B beside the south window too. She checked the labels and the class chart before moving anything. The chart confirmed the two planned places, so she returned Cup B to the north window and told the teacher. Because the mistake was found early, the class could continue the observation without treating both cups as if they had received different light all day.",
-      "fullTranslation": "クラスでは、光の量が違う場所で2本の豆がどう育つか比べていました。Aのカップは明るい南側の窓、Bは暗めの北側の窓に置く予定でした。掃除の後、リナはBも南側の窓にあることに気づきました。何かを動かす前にラベルとクラスの記録表を確認しました。表で予定の場所が確認できたため、Bを北側へ戻し先生に伝えました。早く間違いに気づいたので、二つが一日中違う光を受けたかのように扱わず、観察を続けることができました。",
+      "body": "The class was comparing how two bean plants grew in different amounts of light. Cup A was supposed to stay by the bright south window, and Cup B by the darker north window. After cleaning time, Rina noticed Cup B beside the south window too. She checked the labels and the class chart before moving anything. The chart confirmed the two planned places, so she returned Cup B to the north window and told the teacher. Because the mistake was found early, the class could record the mix-up and continue the observation without assuming that Cup B had stayed by the north window all day.",
+      "fullTranslation": "クラスでは、光の量が違う場所で2本の豆がどう育つか比べていました。Aのカップは明るい南側の窓、Bは暗めの北側の窓に置く予定でした。掃除の後、リナはBも南側の窓にあることに気づきました。何かを動かす前にラベルとクラスの記録表を確認しました。表で予定の場所が確認できたため、Bを北側へ戻し先生に伝えました。早く間違いに気づいたので、その入れ替わりを記録し、Bが一日中北側の窓にあったと決めつけずに観察を続けることができました。",
+      "semanticRepair": "R2_HUMAN_APPLIED",
       "level": "STANDARD",
       "focus": "comparing light conditions and moving one observation sample",
       "anchor": {
@@ -332,7 +341,7 @@
         "unit": "Unit 10-2"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -350,7 +359,7 @@
         "unit": "PROGRAM 10-2"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -359,7 +368,8 @@
       "id": "V11-B12-G2-001",
       "title": "The Water Fountain Queue after One Tap Was Closed",
       "body": "One of the two water taps near the gym was closed for repair, and a long line formed during the morning break. At first, the student council planned to tell everyone to drink faster. Aoi watched the line for three breaks instead. She found that the longest wait came in the first five minutes, when two classes arrived together. The council asked one class to begin its break at the courtyard fountain and the other to use the gym fountain first. The next day, they measured the waits again. No student waited more than four minutes, and both groups still had enough time to drink. The council kept the temporary schedule until the second tap was repaired.",
-      "fullTranslation": "体育館近くにある二つの水道のうち一つが修理のため使えなくなり、午前の休み時間に長い列ができました。生徒会は最初、みんなにもっと早く水を飲むよう呼びかけようと考えました。しかしアオイは三回の休み時間に列を観察しました。いちばん待ち時間が長かったのは、二つのクラスが同時に来る最初の5分間だと分かりました。そこで生徒会は、一方のクラスには中庭の水道から使い始めてもらい、もう一方には体育館の水道を先に使ってもらいました。翌日、もう一度待ち時間を測ると、4分以上待つ生徒はいなくなり、どちらのグループも十分に水を飲めました。二つ目の水道が直るまで、この臨時の時間分けを続けました。",
+      "fullTranslation": "体育館近くにある二つの水道のうち一つが修理のため使えなくなり、午前の休み時間に長い列ができました。生徒会は最初、みんなにもっと早く水を飲むよう呼びかけようと考えました。しかしアオイは三回の休み時間に列を観察しました。いちばん待ち時間が長かったのは、二つのクラスが同時に来る最初の5分間だと分かりました。そこで生徒会は、一方のクラスには中庭の水道から使い始めてもらい、もう一方には体育館の水道を先に使ってもらいました。翌日、もう一度待ち時間を測ると、4分を超えて待つ生徒はいなくなり、どちらのグループも十分に水を飲めました。二つ目の水道が直るまで、この臨時の時間分けを続けました。",
+      "semanticRepair": "R2_HUMAN_APPLIED",
       "level": "STANDARD",
       "focus": "observing waiting time and testing a fair break schedule",
       "anchor": {
@@ -368,7 +378,7 @@
         "unit": "PROGRAM 8-3"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -377,7 +387,8 @@
       "id": "V11-B12-G2-002",
       "title": "A Classroom Fan Trial with Papers Blowing from Desks",
       "body": "In June, Class 2-2 tried a new floor fan because the back of the room felt hot. During the first lesson, the fan cooled the students near the windows, but worksheets on three desks blew onto the floor. Turning the fan off solved the paper problem but made the room uncomfortable again. Rena suggested moving it to the back corner and pointing it slightly upward. The class tested that position during two lessons. The air reached the center of the room, and only one loose note moved. Students then used small clips for papers during fan time. Their final plan solved both problems better than simply choosing between a hot room and flying worksheets.",
-      "fullTranslation": "6月、2年2組では教室の後ろが暑かったため、新しい床置き扇風機を試しました。最初の授業では窓側の生徒は涼しくなりましたが、三つの机のプリントが床へ飛んでしまいました。扇風機を止めると紙の問題は解決しましたが、また教室が暑くなりました。レナは扇風機を後ろの角へ移し、少し上向きにすることを提案しました。クラスはその位置を二時間の授業で試しました。風は教室中央まで届き、動いたのは留めていないメモ一枚だけでした。その後、扇風機を使う時間には紙を小さなクリップで留めることにしました。暑さか紙が飛ぶかの二択にせず、両方の問題をよりよく解決できました。",
+      "fullTranslation": "6月、2年2組では教室の後ろが暑かったため、新しい床置き扇風機を試しました。最初の授業では窓側の生徒は涼しくなりましたが、三つの机のプリントが床へ飛んでしまいました。扇風機を止めると紙の問題は解決しましたが、また教室が暑くなりました。レナは扇風機を後ろの角へ移し、少し上向きにすることを提案しました。クラスはその位置を二回の授業で試しました。風は教室中央まで届き、動いたのは留めていないメモ一枚だけでした。その後、扇風機を使う時間には紙を小さなクリップで留めることにしました。暑さか紙が飛ぶかの二択にせず、両方の問題をよりよく解決できました。",
+      "semanticRepair": "R2_HUMAN_APPLIED",
       "level": "STANDARD",
       "focus": "balancing cooling with a new fan position and checking the result",
       "anchor": {
@@ -386,7 +397,7 @@
         "unit": "Unit 7-4"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -404,7 +415,7 @@
         "unit": "PROGRAM 8-3"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -423,7 +434,7 @@
         "unit": "Unit 7-4"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -441,7 +452,7 @@
         "unit": "PROGRAM 8-3"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -459,7 +470,7 @@
         "unit": "Unit 7-4"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -477,7 +488,7 @@
         "unit": "PROGRAM 8-3"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -495,7 +506,7 @@
         "unit": "Unit 7-4"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -513,7 +524,7 @@
         "unit": "PROGRAM 8-3"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -531,7 +542,7 @@
         "unit": "Unit 7-4"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -675,7 +686,7 @@
         "unit": "PROGRAM 7-3"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -693,7 +704,7 @@
         "unit": "Unit 6-4"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -711,7 +722,7 @@
         "unit": "PROGRAM 7-3"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -734,9 +745,9 @@
           "Harbor 16:20 -> Station 16:45"
         ]
       },
-      "body": "The health club at Midori High School planned a visit to a small island clinic. The students wanted to interview a nurse about emergency care in places with few medical workers. Four students and their teacher would travel from the city station, use the ferry, spend about ninety minutes at the clinic, and return to school the same day. At first, they chose the 10:20 ferry because it allowed everyone to meet after the morning homeroom. When Aya checked the clinic information, however, she noticed that reception ended at noon and new patients were accepted only until 11:30. Their interview was not a medical appointment, but the clinic had asked visitors to arrive before the busy final hour so staff could guide them safely. The 10:20 ferry reached the island at 10:55, leaving little time before 11:30. Aya then compared the earlier ferry, the weather notice, and the return buses. The 8:10 ferry arrived at 8:45, so the group could walk to the clinic and begin soon after 9:00. If they finished around 11:00, they could eat lunch near the port and take the 13:40 ferry back. That ferry reached the city harbor at 14:15, leaving twenty minutes before the 14:35 bus. The later 15:30 ferry seemed convenient too, but the weather notice warned of strong winds after 14:00 and said that sailing might be canceled. The group did not want a plan that depended on the most uncertain ferry of the day. They therefore asked the school for permission to leave before regular homeroom and chose the 8:10 ferry and the 13:40 return. Their final plan was less convenient in the morning, but it respected clinic operations and reduced weather risk. The students also wrote a backup rule: if the morning ferry was canceled, they would postpone the visit rather than arrive late and pressure the clinic staff. The timetable did not provide one answer by itself. A workable choice appeared only after they connected travel time, clinic conditions, weather risk, and the return bus.",
-      "fullTranslation": "緑高校の保健部は、小さな島の診療所を訪問する計画を立てました。医療従事者の少ない地域での救急対応について看護師へインタビューするためです。生徒4人と先生は市内の駅から出発し、フェリーで島へ渡り、診療所で約90分過ごして、その日のうちに学校へ戻る予定でした。最初は朝のホームルーム後に集合できる10時20分のフェリーを選びました。しかしアヤが診療所の情報を確認すると、受付は正午までで、新しい患者の受付は11時30分までだと分かりました。インタビューは診察ではありませんが、診療所からは安全に案内できるよう忙しい最後の時間帯より前に来てほしいと言われていました。10時20分の便は10時55分に島へ着くため、11時30分までほとんど余裕がありません。そこでアヤは早い便、天気予報、帰りのバスを比べました。8時10分の便なら8時45分に到着し、歩いて診療所へ行けば9時過ぎに始められます。11時ごろ終われば港近くで昼食を取り、13時40分の便で戻れます。その便は14時15分に市の港へ着き、14時35分のバスまで20分あります。15時30分の便も便利に見えましたが、14時以降は強風が予想され、欠航の可能性がありました。そこで学校に通常のホームルーム前に出発する許可を求め、8時10分の往路と13時40分の復路を選びました。朝は不便になりましたが、診療所の運営を尊重し、天候リスクも減らせます。さらに、朝の便が欠航した場合は遅れて診療所へ行くのではなく訪問を延期するという予備ルールも決めました。一つの時刻表だけでは答えは出ず、移動時間、診療所の条件、天候、帰りのバスを結びつけて初めて実行可能な計画になりました。",
-      "semanticRepair": "R1_APPLIED",
+      "body": "The health club at Midori High School planned a visit to a small island clinic. The students wanted to interview a nurse about emergency care in places with few medical workers. Four students and their teacher would travel from the city station, use the ferry, spend about ninety minutes at the clinic, and return to school the same day. At first, they chose the 10:20 ferry because it allowed everyone to meet after the morning homeroom. When Aya checked the clinic information, however, she noticed that reception ended at noon and new patients were accepted only until 11:30. Their interview was not a medical appointment, but the clinic had asked visitors to arrive before the busy final hour so staff could guide them safely. The 10:20 ferry reached the island at 10:55, leaving little time before 11:30. Aya then compared the earlier ferry, the weather notice, and the return buses. The 8:10 ferry arrived at 8:45, so the group could walk to the clinic and begin around 9:15. After about ninety minutes, they could finish around 10:45, eat lunch near the port, and take the 13:40 ferry back. That ferry reached the city harbor at 14:15, leaving twenty minutes before the 14:35 bus. The later 15:30 ferry seemed convenient too, but the weather notice warned of strong winds after 14:00 and said that sailing might be canceled. The group did not want a plan that depended on the most uncertain ferry of the day. They therefore asked the school for permission to leave before regular homeroom and chose the 8:10 ferry and the 13:40 return. Their final plan was less convenient in the morning, but it respected clinic operations and reduced weather risk. The students also wrote a backup rule: if the morning ferry was canceled, they would postpone the visit rather than arrive late and pressure the clinic staff. The timetable did not provide one answer by itself. A workable choice appeared only after they connected travel time, clinic conditions, weather risk, and the return bus.",
+      "fullTranslation": "緑高校の保健部は、小さな島の診療所を訪問する計画を立てました。医療従事者の少ない地域での救急対応について看護師へインタビューするためです。生徒4人と先生は市内の駅から出発し、フェリーで島へ渡り、診療所で約90分過ごして、その日のうちに学校へ戻る予定でした。最初は朝のホームルーム後に集合できる10時20分のフェリーを選びました。しかしアヤが診療所の情報を確認すると、受付は正午までで、新しい患者の受付は11時30分までだと分かりました。インタビューは診察ではありませんが、診療所からは安全に案内できるよう忙しい最後の時間帯より前に来てほしいと言われていました。10時20分の便は10時55分に島へ着くため、11時30分までほとんど余裕がありません。そこでアヤは早い便、天気予報、帰りのバスを比べました。8時10分の便なら8時45分に到着し、歩いて診療所へ行けば9時15分ごろに始められます。約90分のインタビューを10時45分ごろに終え、港近くで昼食を取り、13時40分の便で戻れます。その便は14時15分に市の港へ着き、14時35分のバスまで20分あります。15時30分の便も便利に見えましたが、14時以降は強風が予想され、欠航の可能性がありました。そこで学校に通常のホームルーム前に出発する許可を求め、8時10分の往路と13時40分の復路を選びました。朝は不便になりましたが、診療所の運営を尊重し、天候リスクも減らせます。さらに、朝の便が欠航した場合は遅れて診療所へ行くのではなく訪問を延期するという予備ルールも決めました。一つの時刻表だけでは答えは出ず、移動時間、診療所の条件、天候、帰りのバスを結びつけて初めて実行可能な計画になりました。",
+      "semanticRepair": "R1_APPLIED+R2_HUMAN_APPLIED",
       "focus": "time-weather-service integration for one feasible visit plan",
       "anchor": {
         "textbook": "New Horizon",
@@ -744,7 +755,7 @@
         "unit": "Unit 6-4"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -762,7 +773,7 @@
         "unit": "PROGRAM 7-3"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -780,7 +791,7 @@
         "unit": "Unit 6-4"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -798,7 +809,7 @@
         "unit": "PROGRAM 7-3"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
@@ -814,10 +825,11 @@
           "Family Science Show: Hall 1F, 13:00-13:50, all ages"
         ],
         "elevator": "Elevator closed 9:30-12:30 for inspection. Stairs remain open.",
-        "family": "Mother, 13-year-old son, 8-year-old daughter; daughter cannot use stairs safely for more than one floor."
+        "family": "Mother, 13-year-old son, 8-year-old daughter; daughter cannot use stairs safely and needs the elevator for floor changes."
       },
-      "body": "Ryo's family wanted to attend the city library's learning day. Ryo was thirteen, his sister Hana was eight, and their mother hoped to choose activities that both children could enjoy without leaving Hana alone. The event guide listed a robot workshop on the third floor from 10:00 to 11:20 for ages ten to fifteen, a picture-book lab on the second floor from 11:00 to 11:45 for ages six to ten, and a family science show in the first-floor hall from 13:00 to 13:50 for all ages. At first, Ryo proposed the robot workshop for himself and the picture-book lab for Hana. Their mother could wait between the rooms. Then she noticed an elevator maintenance notice: the elevator would be closed from 9:30 until 12:30. Stairs would remain open, but Hana could not safely use more than one floor of stairs because of a leg condition. The family considered three possibilities. First, they could arrive early and take the elevator to the third floor before 9:30, but Hana would still need to move between floors later, and the picture-book lab did not begin until 11:00. Second, they could attend only the picture-book lab. That was possible if Hana slowly used one flight of stairs, but Ryo would have no activity designed for his age. Third, they could arrive after 12:30 and attend the family science show together on the first floor. That option did not use the age-specific workshops, but it met the access condition and kept the family together. Ryo was disappointed at first because he liked robots. His mother suggested that they ask whether the robot workshop would be offered again on another day. The library replied that the same workshop was planned for the next month. The family therefore chose the science show for learning day and saved the robot workshop for the later date. Their decision came from connecting time, age, floor location, and access information rather than simply choosing the most interesting activities on the event list.",
-      "fullTranslation": "リョウの家族は市立図書館の学習イベントへ行こうとしていました。リョウは13歳、妹のハナは8歳で、母親はハナを一人にせず二人が楽しめる活動を選びたいと考えました。案内には、10時から11時20分まで3階で行う10〜15歳向けロボット教室、11時から11時45分まで2階で行う6〜10歳向け絵本ラボ、13時から13時50分まで1階ホールで行う全年齢向け家族科学ショーがありました。リョウは最初、自分はロボット教室、ハナは絵本ラボへ行けばよいと考えました。しかし母親は、9時30分から12時30分までエレベーター点検で使えないという知らせに気づきました。階段は使えますが、ハナは脚の状態のため一階分を超える階段を安全に使えません。家族は三つの案を考えました。9時30分前に着いてエレベーターで3階へ上がる案では、その後ハナが階を移動できず、絵本ラボの開始も11時です。絵本ラボだけに参加する案ならハナはゆっくり一階分の階段を使えますが、リョウ向けの活動がありません。12時30分以降に来て1階の家族科学ショーへ一緒に参加する案なら、年齢別教室には参加できませんが、移動条件を満たし家族も一緒にいられます。リョウはロボット教室に行けず残念でしたが、母親が別の日の開催を尋ねると、翌月にも同じ教室があると分かりました。そこで今回は科学ショーを選び、ロボット教室は翌月にしました。この判断は、活動の面白さだけでなく、時間、年齢、階、移動条件を結びつけて行われました。",
+      "body": "Ryo's family wanted to attend the city library's learning day. Ryo was thirteen, his sister Hana was eight, and their mother hoped to choose activities that both children could enjoy without leaving Hana alone. The event guide listed a robot workshop on the third floor from 10:00 to 11:20 for ages ten to fifteen, a picture-book lab on the second floor from 11:00 to 11:45 for ages six to ten, and a family science show in the first-floor hall from 13:00 to 13:50 for all ages. At first, Ryo proposed the robot workshop for himself and the picture-book lab for Hana. Their mother could wait between the rooms. Then she noticed an elevator maintenance notice: the elevator would be closed from 9:30 until 12:30. Stairs would remain open, but Hana could not safely use the stairs because of a leg condition and needed the elevator for floor changes. The family considered three possibilities. First, they could arrive early and take the elevator to the third floor before 9:30, but Hana would still need to move between floors later, and the picture-book lab did not begin until 11:00. Second, they considered attending only the picture-book lab, but it ended before the elevator reopened, so Hana could not reach the second floor safely. Third, they could arrive after 12:30 and attend the family science show together on the first floor. That option did not use the age-specific workshops, but it met the access condition and kept the family together. Ryo was disappointed at first because he liked robots. His mother suggested that they ask whether the robot workshop would be offered again on another day. The library replied that the same workshop was planned for the next month. The family therefore chose the science show for learning day and saved the robot workshop for the later date. Their decision came from connecting time, age, floor location, and access information rather than simply choosing the most interesting activities on the event list.",
+      "fullTranslation": "リョウの家族は市立図書館の学習イベントへ行こうとしていました。リョウは13歳、妹のハナは8歳で、母親はハナを一人にせず二人が楽しめる活動を選びたいと考えました。案内には、10時から11時20分まで3階で行う10〜15歳向けロボット教室、11時から11時45分まで2階で行う6〜10歳向け絵本ラボ、13時から13時50分まで1階ホールで行う全年齢向け家族科学ショーがありました。リョウは最初、自分はロボット教室、ハナは絵本ラボへ行けばよいと考えました。しかし母親は、9時30分から12時30分までエレベーター点検で使えないという知らせに気づきました。階段は使えますが、ハナは脚の状態のため階段を安全に使えず、階を移動するにはエレベーターが必要です。家族は三つの案を考えました。9時30分前に着いてエレベーターで3階へ上がる案では、その後ハナが階を移動できず、絵本ラボの開始も11時です。絵本ラボだけに参加する案も考えましたが、ラボはエレベーターの再開前に終わるため、ハナは安全に2階へ行けません。12時30分以降に来て1階の家族科学ショーへ一緒に参加する案なら、年齢別教室には参加できませんが、移動条件を満たし家族も一緒にいられます。リョウはロボット教室に行けず残念でしたが、母親が別の日の開催を尋ねると、翌月にも同じ教室があると分かりました。そこで今回は科学ショーを選び、ロボット教室は翌月にしました。この判断は、活動の面白さだけでなく、時間、年齢、階、移動条件を結びつけて行われました。",
+      "semanticRepair": "R2_HUMAN_APPLIED",
       "focus": "schedule-age-access integration to select a workable family plan",
       "anchor": {
         "textbook": "New Horizon",
@@ -825,7 +837,7 @@
         "unit": "Unit 6-4"
       },
       "registered": false,
-      "humanSemanticReview": "PENDING_FINAL_50_REVIEW",
+      "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [],
       "questions": [],
       "questionSetB": []
