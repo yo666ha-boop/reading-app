@@ -1,0 +1,22 @@
+name: v11 Batch12 grouped slash human gate
+
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch12_slash_question_scaffold.json'
+      - 'v11_batch12_grouped_slash_human_review_r5.json'
+      - 'v11_batch12_grouped_slash_human_gate.js'
+      - '.github/workflows/v11-batch12-grouped-slash-human-gate.yml'
+  workflow_dispatch:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate grouped slash human review
+        run: node v11_batch12_grouped_slash_human_gate.js
