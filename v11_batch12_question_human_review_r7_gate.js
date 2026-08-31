@@ -1,6 +1,7 @@
 const fs=require('fs');
 const scaffold=JSON.parse(fs.readFileSync('v11_batch12_slash_question_scaffold.json','utf8'));
-const r=JSON.parse(fs.readFileSync('v11_batch12_question_human_review_r7_g1_011_017.json','utf8'));
+const syncR7=require('./v11_batch12_question_human_review_r7_semantic_sync.js');
+const r=syncR7(JSON.parse(fs.readFileSync('v11_batch12_question_human_review_r7_g1_011_017.json','utf8')));
 function fail(m){throw new Error(m)}
 if(scaffold.registered!==false||r.registered!==false)fail('Batch12 must remain unregistered');
 if(scaffold.officialTotal!==718||r.officialTotal!==718)fail('official total drift');
@@ -26,4 +27,4 @@ for(const rp of r.passages){
 }
 if(n!==70||r.reviewedQuestions!==70)fail('review count mismatch');
 if(new Set(prompts).size!==prompts.length)fail('duplicate R7 prompts');
-console.log(JSON.stringify({batch:'V11-B12',registered:false,officialTotal:718,r7Passages:7,r7Questions:70,previousHumanReviewed:110,cumulativeHumanReviewed:180,humanReviewPending:320,evidenceExactBody:'PASS',evidenceJpExactTranslation:'PASS',questionCompleteness:'PASS',questionTypeDiversity:'PASS',genericScaffoldPromptExcluded:'PASS',finalRegistrationReady:false},null,2));
+console.log(JSON.stringify({batch:'V11-B12',registered:false,officialTotal:718,r7Passages:7,r7Questions:70,previousHumanReviewed:110,cumulativeHumanReviewed:180,humanReviewPending:320,evidenceExactBody:'PASS',evidenceJpExactTranslation:'PASS',questionCompleteness:'PASS',questionTypeDiversity:'PASS',genericScaffoldPromptExcluded:'PASS',semanticSyncG1016:'PASS',finalRegistrationReady:false},null,2));
