@@ -1,0 +1,80 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "APP1271_RUNTIME_PARENT_RECONSTRUCTION_FROM_FIXED_SOURCES",
+  "recorded_at_jst": "2026-08-31T19:54:59+09:00",
+  "purpose": "Migrate 17 durable Winpass exact-body records from legacy stored fingerprints to the current validate_raw1271_materialization.py content-bound fingerprint contract without changing raw_id, Q/A, provenance, source SHA, score evidence, or figure assets.",
+  "inputs": [
+    {
+      "source_document": "25winpasst1suhy000519.docx",
+      "drive_jsonl_id": "1NGfLr2Pbn8tn0QdaRN_5RfEJATqrlC5Q",
+      "records": 10,
+      "raw_bytes": 11701,
+      "raw_sha256": "7441dbd3053aee258ef0277107e4fe3d61dd7da208c02fd4ff4cb69a35b60113",
+      "source_document_bytes": 174191,
+      "source_document_sha256": "29c7c4c2b58512ce28b7dee30691e8654fd509d60176cc08ef895457258e630d"
+    },
+    {
+      "source_document": "25winpasst1suhy000523.docx",
+      "drive_jsonl_id": "18GOV14Ktwtpa6uve80gQKePPV2W2bXsq",
+      "records": 7,
+      "raw_bytes": 11111,
+      "raw_sha256": "c3067c16c88e9ab97b58e59715087aec701d584c60ee4c3c786a1a662c3fd765",
+      "source_document_bytes": 126112,
+      "source_document_sha256": "37ac06622a87fc81fbfa07f9c73c0e0520d58ff6bc8478b0c9679539f2ef1622"
+    }
+  ],
+  "fixed_winpass_archive": {
+    "drive_file_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
+    "bytes": 8296042,
+    "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+    "crc32": "992b0ca2",
+    "zip_test": "PASS",
+    "docx_members": 81
+  },
+  "source_revalidation": {
+    "source_doc_sha_match": "17/17",
+    "nested_docx_crc": "PASS for both source DOCX",
+    "required_media_asset_sha_matches": "8/8 referenced unique assets checked across the two source documents",
+    "independent_check": "17/17 PASS retained from durable strict records",
+    "current_validator_required_fields_after_migration": "17/17 PASS",
+    "current_fingerprint_recompute": "17/17 PASS",
+    "unique_raw_ids": 17,
+    "unique_current_record_fingerprints": 17
+  },
+  "canonical_identity_evidence": {
+    "phase2_artifact": "math-bank/state/winpass-canonicalization-phase2-exact-scan-575-20260829.json",
+    "phase2_commit": "ab38f065e3a80cf6e8ec6450c056de307c55e630",
+    "raw_ids_present_as_new_unique_in_phase2": "17/17",
+    "phase2_new_raw_id_overlap_with_previous_scan": 0,
+    "note": "This proves canonical membership/identity. It does not by itself prove absence from the later current403 recovery inventory."
+  },
+  "counting_guard": {
+    "current_exact_body_recovery_before": 957,
+    "current_winpass_exact_body_recovery_before": 403,
+    "promotion_count_this_artifact": 0,
+    "reason": "These 17 have durable JSONL copies in Drive and may already be part of the 385 Drive-record recovery union. Until current403 raw_id/fingerprint inventory is materialized and directly diffed, no count is added.",
+    "publication_ready": false,
+    "main_untouched": true
+  },
+  "fingerprint_migration": [
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M01:S01","legacy_record_fingerprint":"b5a23977f17714f299415c0255f1e3a85d9134760c679a23a6ffa501047a558b","current_record_fingerprint":"bca962dce7d57b68dc29f30ba90a85659d0bae7abede677b763cd16ec183b50f","validation_errors":[]},
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M01:S02","legacy_record_fingerprint":"0621fa656f61220448af68db4e72c42291163980b36b59a1c062b23ff1d01981","current_record_fingerprint":"915809ac8547b72fa4c61da4fe468dc05132c275437f31de78357d14a65f2136","validation_errors":[]},
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M01:S03","legacy_record_fingerprint":"d5c39f2cf405d0eae76dde4d83ecee1f5f5d509e3ee3332b4f85242565a8e88b","current_record_fingerprint":"03f643476c47b217ec8c0c3961925d75fb4ba64094531409f47cf9b2efdceb1a","validation_errors":[]},
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M02:S01","legacy_record_fingerprint":"9a02dff96dbc7ee839271e17308cc096e9510ae38383db86f7834363c43cf7f9","current_record_fingerprint":"d1d7519d2bf9133af142e16334dc6c5931d4a9826bcbc9387c425ec9d310e0ec","validation_errors":[]},
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M02:S02","legacy_record_fingerprint":"1264b9b5488b70e0577217a06ae48c23b93e9862e301b850f0db42d5a8a7b7d3","current_record_fingerprint":"2a3274ea2b4a5f44032d6d90c6847444e65db2a358cf96cee2aad90b1c50fe06","validation_errors":[]},
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M02:S03","legacy_record_fingerprint":"8b69aedcfa6f756eade525440fa1cbc6981ab56a64165f2b5d90f796e5d5b3e9","current_record_fingerprint":"fa4b542b94cf92fad7ad713b497288d3f3778d637b348b1c316bbfedb05b9b88","validation_errors":[]},
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M03:S01","legacy_record_fingerprint":"6ce219423d51ca298a6d5d31fe5ae4ced2b4e188a6d23a57831ad93e42908ce4","current_record_fingerprint":"d458c7b50ff6d32499161bb84e61b4d025482f5e43d0f2e21af0620c48c17583","validation_errors":[]},
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M03:S02","legacy_record_fingerprint":"981a641622830fce3f9d25f40dc9d56e2a799f9a0dfd6a055c264495ae73e287","current_record_fingerprint":"442f9838a0d0930426c21c331063b32c3fd9b7f3cdb13ef32f94e5e6ecf13fd4","validation_errors":[]},
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M03:S03","legacy_record_fingerprint":"d6c49705c20405f148be6a7a2d809be3f4fab3d2eca70739daf6d9671545ca7d","current_record_fingerprint":"bf198313507141a30d7823d299d5b156b80a37cd8062a34b5e4ed8128d02cab7","validation_errors":[]},
+    {"raw_id":"Winpass:25winpasst1suhy000519.docx:M03:S04","legacy_record_fingerprint":"94559a5fb647e29f9932b6ef78db0c9606a8a83a37fdc4e2b1747c97d45d2bc9","current_record_fingerprint":"f739bbc902a6e35c9c2081a9af57a26d41beddd6fe7e80510fed8b6d7d34a817","validation_errors":[]},
+    {"raw_id":"Winpass:25winpasst1suhy000523.docx:M01:S01","legacy_record_fingerprint":"893f028efede12323ac3a593666500a94730d7d8235a6248badac0418279b8cb","current_record_fingerprint":"c75ff2ed3ef84e72132fa92a158b503beed3ac206eccb5062d13ab700f93c701","validation_errors":[]},
+    {"raw_id":"Winpass:25winpasst1suhy000523.docx:M01:S02","legacy_record_fingerprint":"123e1f6e266e4a40ce6d45536f8e56cb6aaf49db3cd05d89b27cc14a80347fda","current_record_fingerprint":"269de1bbbb267420c7f014dc9af85b3555cc1d44cb7ca455f8c70161d58cf29d","validation_errors":[]},
+    {"raw_id":"Winpass:25winpasst1suhy000523.docx:M01:S03","legacy_record_fingerprint":"13033a495cdc04b811061ccd343f3cde98d0e099a798395b692618018ee53ad1","current_record_fingerprint":"e37e7d589fba6062f4838f60545512517b273bedbe60798b8ab93c75ac444a36","validation_errors":[]},
+    {"raw_id":"Winpass:25winpasst1suhy000523.docx:M02:S01","legacy_record_fingerprint":"1456bd83fa9cdc45839fc08e2c90ef63bdbbcea2c1fd1f01b8c35dbb4c6b6944","current_record_fingerprint":"94fae882f922a170be99f3aff48001e56c5c8809b27dee17a99c0cda7918e62e","validation_errors":[]},
+    {"raw_id":"Winpass:25winpasst1suhy000523.docx:M02:S02","legacy_record_fingerprint":"4c9cd26c36398c7a1deff04dca0209330e5f12d7e0177fdff65f46c5c3c1e2f7","current_record_fingerprint":"5a3eacbcb9e4016946ad22252d26800507c784fe5b0462e81116413d4c788ff1","validation_errors":[]},
+    {"raw_id":"Winpass:25winpasst1suhy000523.docx:M02:S03","legacy_record_fingerprint":"af0b10327de192833dc62ebfb7fe1ee5d83cd2251819bd85281cc83260ab2cb6","current_record_fingerprint":"c3bb7aeb69490884269ed78c9911f572c2b268ccbf2f105460007817867353e8","validation_errors":[]},
+    {"raw_id":"Winpass:25winpasst1suhy000523.docx:M02:S04","legacy_record_fingerprint":"1229cfe7e8f0f03f661ea6e52a662885b09c2c0a784e645c4e6ba99cbbef2357","current_record_fingerprint":"1d562d9fd792527612479713e43700531d86a224ba768a247c58d020794100a9","validation_errors":[]}
+  ],
+  "migrated_jsonl_sha256": "50f237fc780a37ba96a7f726a1536375a49e18b260d1353cb4351694ffb2d61d",
+  "next": "Materialize the current403 raw_id inventory; diff these 17 and the other recovery candidates. Reuse the migrated current-validator-ready bodies only for raw_ids absent from the current current-schema union, never double-count."
+}
