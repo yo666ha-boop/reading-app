@@ -8,6 +8,7 @@ on:
       - 'v11_batch12_g2_body_draft.json'
       - 'v11_batch12_g3_body_draft.json'
       - 'v11_batch12_body_semantic_repair_r1.json'
+      - 'v11_batch12_body_semantic_repair_r2.json'
       - 'v11_batch12_assemble_semantic_draft.js'
       - '.github/workflows/v11-batch12-assemble-semantic-draft.yml'
   workflow_dispatch:
@@ -23,7 +24,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Assemble repaired 50-passage draft
+      - name: Assemble repaired and human-reviewed 50-passage draft
         run: node v11_batch12_assemble_semantic_draft.js
       - name: Persist assembled draft
         run: |
