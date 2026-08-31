@@ -2,7 +2,8 @@
 'use strict';
 const ps=[...(window.V11_BATCH11_G1_DRAFTS||[]),...(window.V11_BATCH11_G2_DRAFTS||[]),...(window.V11_BATCH11_G3_DRAFTS||[])];
 if(ps.length!==50)throw Error('Batch11 50 passages missing');
-const gloss={...(window.V11_BATCH10_PRIOR_VERIFIED_GLOSS||{}),...(window.V11_BATCH10_MANUAL_GLOSS||{}),...(window.V11_BATCH11_MANUAL_GLOSS||{}),...(window.V11_EASY_SUPPORT_DICT||{})};
+const batch11SupportGloss={school:'学校',student:'生徒',teacher:'先生',class:'クラス',club:'部・クラブ',time:'時間・時刻',day:'日',week:'週',year:'年',old:'古い',new:'新しい',book:'本',paper:'紙',room:'部屋・教室',water:'水',food:'食べ物',place:'場所',work:'仕事・作業',people:'人々',group:'グループ',name:'名前',date:'日付',plan:'計画・予定',page:'ページ',map:'地図',report:'報告',morning:'朝',afternoon:'午後',weather:'天気'};
+const gloss={...batch11SupportGloss,...(window.V11_BATCH10_PRIOR_VERIFIED_GLOSS||{}),...(window.V11_BATCH10_MANUAL_GLOSS||{}),...(window.V11_BATCH11_MANUAL_GLOSS||{}),...(window.V11_EASY_SUPPORT_DICT||{})};
 const norm=w=>String(w||'').toLowerCase().replace(/[’‘]/g,"'").trim();
 const tok=s=>(String(s||'').replace(/[’‘]/g,"'").match(/[A-Za-z]+(?:'[A-Za-z]+)*/g)||[]).map(norm);
 const stop=new Set(['i','a','an','the','am','is','are','was','were','be','been','being','do','does','did','can','could','will','would','should','must','may','might','have','has','had','to','of','in','on','at','for','from','by','with','and','but','or','so','if','that','this','these','those','it','he','she','we','they','you','my','your','his','her','our','their','me','him','us','them','not','no','yes','too','very']);
@@ -33,11 +34,12 @@ for(const p of ps){
     if(out.length>=16)break;
   }
   if(!out.length)throw Error(p.id+' no verified easy support candidate');
-  p.supportNotes=out;p.supportNotesVersion='20260830-b11-r3';
+  p.supportNotes=out;p.supportNotesVersion='20260831-b11-r11-curated-fallback';
   total+=out.length;min=Math.min(min,out.length);max=Math.max(max,out.length);
 }
 const cloneNotes=v=>(Array.isArray(v)?v:[]).map(n=>({...n}));
 const frozenById=new Map(ps.map(p=>[p.id,{supportNotes:cloneNotes(p.supportNotes),supportNotesVersion:p.supportNotesVersion}]));
+if(frozenById.size!==50){const ids=ps.map(p=>p&&p.id),dup=[...new Set(ids.filter((id,i)=>ids.indexOf(id)!==i))];throw Error('Batch11 easy support requires 50 unique passage IDs, got '+frozenById.size+' duplicates='+JSON.stringify(dup));}
 function exportVerifiedSnapshots(){return [...frozenById.entries()].map(([id,s])=>({id,supportNotes:cloneNotes(s.supportNotes),supportNotesVersion:s.supportNotesVersion}));}
 window.V11_GET_BATCH11_VERIFIED_SUPPORT_SNAPSHOTS=exportVerifiedSnapshots;
 const protectedObjects=new WeakSet();
@@ -97,5 +99,5 @@ window.V11_APPLY_BATCH11_EASY_SUPPORT_NOTES=function(){
 for(const p of ps)restoreOne(p);
 installChooseGuard(false);installRenderGuard(false);
 const guardTimer=setInterval(keepGuard,5);window.__V11_BATCH11_SUPPORT_GUARD_TIMER=guardTimer;
-window.V11_BATCH11_EASY_SUPPORT_STATE={passages:ps.length,total,min,max,registered:false,replacementObjectGuard:true,authoritativeSnapshotExport:true,version:'20260831-b11-r10-authoritative-snapshot'};
+window.V11_BATCH11_EASY_SUPPORT_STATE={passages:ps.length,snapshots:frozenById.size,total,min,max,registered:false,replacementObjectGuard:true,authoritativeSnapshotExport:true,curatedFallbackGloss:true,version:'20260831-b11-r11-curated-fallback'};
 })();
