@@ -15,6 +15,8 @@ const out={
   rowCount:passages.reduce((n,p)=>n+p.groupedRows.length,0),
   passages
 };
-if(out.passageCount!==22) throw new Error(`expected 22 grouped passages, got ${out.passageCount}`);
+if(out.passageCount!==src.slashGroupedBoundaryPassages) throw new Error(`packet/scaffold grouped passage mismatch packet=${out.passageCount} scaffold=${src.slashGroupedBoundaryPassages}`);
+const actualRows=(src.passages||[]).reduce((n,p)=>n+(p.slashRows||[]).filter(r=>r.humanReview==='PENDING_GROUP_BOUNDARY').length,0);
+if(out.rowCount!==actualRows) throw new Error(`packet/scaffold grouped row mismatch packet=${out.rowCount} scaffold=${actualRows}`);
 fs.writeFileSync('v11_batch12_grouped_slash_review_packet.json',JSON.stringify(out,null,2)+'\n');
 console.log(JSON.stringify({passageCount:out.passageCount,rowCount:out.rowCount,registered:false},null,2));
