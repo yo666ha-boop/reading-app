@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T09:01:10.673Z",
+  "generatedAt": "2026-08-31T09:07:12.221Z",
   "count": 6,
   "passages": [
     {
@@ -63,95 +63,141 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「The Old Entrance Still Shown on a School Map」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "印刷された学校地図では、来訪者は東門から入るようになっていました。",
-          "evidence": "A printed school map showed visitors entering through the east gate.",
-          "evidenceJp": "印刷された学校地図では、来訪者は東門から入るようになっていました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "古い地図と新しい案内では、来訪者が使う門はそれぞれどこでしたか。",
+          "answer": "古い地図では東門、新しい案内では南門。",
+          "evidence": [
+            "A printed school map showed visitors entering through the east gate.",
+            "On Friday, Kota saw a new sign outside: “Visitors, use the south gate.”"
+          ],
+          "evidenceJp": [
+            "印刷された学校地図では、来訪者は東門から入るようになっていました。",
+            "金曜日、航太は外の新しい案内に「来訪者は南門を使ってください」と書かれているのを見ました。"
+          ],
+          "reason": "二つの案内を対比します。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         },
         {
           "questionType": "REASON",
-          "prompt": "「The Old Entrance Still Shown on a School Map」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "多くの道路はまだ正しかったため、その地図を残しました。",
+          "prompt": "航太が古い地図を捨てずに残したのはなぜですか。",
+          "answer": "多くの道路情報はまだ正しかったから。",
           "evidence": "He kept the map because many roads were still correct.",
           "evidenceJp": "多くの道路はまだ正しかったため、その地図を残しました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "本文に直接理由があります。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「The Old Entrance Still Shown on a School Map」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "工事で東門は閉鎖されていましたが、駅のそばには古い地図がまだ何枚か置かれていました。",
-          "evidence": "Construction had closed the east gate, but several old maps were still beside the station.",
-          "evidenceJp": "工事で東門は閉鎖されていましたが、駅のそばには古い地図がまだ何枚か置かれていました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "航太が地図の日付を確認すると、いつの地図だと分かりましたか。",
+          "answer": "前年の地図。",
+          "evidence": "Kota checked the date at the bottom of one map and saw a date from last year.",
+          "evidenceJp": "航太が地図の下の日付を見ると、前年の日付だと分かりました。",
+          "reason": "地図の新しさを確認した結果です。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「The Old Entrance Still Shown on a School Map」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "シールは工事終了まで来訪者を南門へ案内しました。",
-          "evidence": "The sticker directed visitors to the south gate until construction ended.",
-          "evidenceJp": "シールは工事終了まで来訪者を南門へ案内しました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "先生に伝えたあと、古い入口表示はどう直されましたか。",
+          "answer": "古い入口の矢印に訂正シールを貼り、南門へ案内するようにした。",
+          "evidence": [
+            "He told the teacher, and they placed a bright correction sticker over the old entrance arrow.",
+            "The sticker directed visitors to the south gate until construction ended."
+          ],
+          "evidenceJp": [
+            "先生に伝え、古い入口の矢印の上に目立つ訂正シールを貼りました。",
+            "シールは工事終了まで来訪者を南門へ案内しました。"
+          ],
+          "reason": "訂正方法と案内先を答えます。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「The Old Entrance Still Shown on a School Map」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "金曜日、航太は外の新しい案内に「来訪者は南門を使ってください」と書かれているのを見ました。",
-          "evidence": "On Friday, Kota saw a new sign outside: “Visitors, use the south gate.”",
-          "evidenceJp": "金曜日、航太は外の新しい案内に「来訪者は南門を使ってください」と書かれているのを見ました。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "東門が閉鎖され、道路情報の多くは正しかったため、学校は地図を捨てずに【　】。",
+          "answer": "入口だけを訂正して南門へ案内した。",
+          "evidence": [
+            "He kept the map because many roads were still correct.",
+            "He told the teacher, and they placed a bright correction sticker over the old entrance arrow.",
+            "The sticker directed visitors to the south gate until construction ended."
+          ],
+          "evidenceJp": [
+            "多くの道路はまだ正しかったため、その地図を残しました。",
+            "先生に伝え、古い入口の矢印の上に目立つ訂正シールを貼りました。",
+            "シールは工事終了まで来訪者を南門へ案内しました。"
+          ],
+          "reason": "判断と対応を要約します。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「The Old Entrance Still Shown on a School Map」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "先生に伝え、古い入口の矢印の上に目立つ訂正シールを貼りました。",
-          "evidence": "He told the teacher, and they placed a bright correction sticker over the old entrance arrow.",
-          "evidenceJp": "先生に伝え、古い入口の矢印の上に目立つ訂正シールを貼りました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "入口情報が古いと判断できる二つの事実を答えなさい。",
+          "answer": "新しい案内が南門を示し、工事で東門が閉鎖されていたこと。",
+          "evidence": [
+            "On Friday, Kota saw a new sign outside: “Visitors, use the south gate.”",
+            "Construction had closed the east gate, but several old maps were still beside the station."
+          ],
+          "evidenceJp": [
+            "金曜日、航太は外の新しい案内に「来訪者は南門を使ってください」と書かれているのを見ました。",
+            "工事で東門は閉鎖されていましたが、駅のそばには古い地図がまだ何枚か置かれていました。"
+          ],
+          "reason": "現在の案内と実際の状態が一致します。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「The Old Entrance Still Shown on a School Map」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "学校は新しいデジタル地図も公開し、古い印刷版にははっきり印を付けました。",
-          "evidence": "The school also put a new digital map online and marked the old printed copies clearly.",
-          "evidenceJp": "学校は新しいデジタル地図も公開し、古い印刷版にははっきり印を付けました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "訂正シールは工事が終わるまで来訪者を【　】へ案内しました。",
+          "answer": "南門。",
+          "evidence": "The sticker directed visitors to the south gate until construction ended.",
+          "evidenceJp": "シールは工事終了まで来訪者を南門へ案内しました。",
+          "reason": "本文の案内先です。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「The Old Entrance Still Shown on a School Map」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "航太が地図の下の日付を見ると、前年の日付だと分かりました。",
-          "evidence": "Kota checked the date at the bottom of one map and saw a date from last year.",
-          "evidenceJp": "航太が地図の下の日付を見ると、前年の日付だと分かりました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "学校は訂正シール以外に地図情報を新しくするため何をしましたか。",
+          "answer": "新しいデジタル地図を公開し、古い印刷版には印を付けた。",
+          "evidence": "The school also put a new digital map online and marked the old printed copies clearly.",
+          "evidenceJp": "学校は新しいデジタル地図も公開し、古い印刷版にははっきり印を付けました。",
+          "reason": "追加対応を答えます。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「The Old Entrance Still Shown on a School Map」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "航太は、古い地図には大切な最新の訂正が一つ必要なこともあると学びました。",
-          "evidence": "Kota learned that an old map sometimes needs one important current correction.",
-          "evidenceJp": "航太は、古い地図には大切な最新の訂正が一つ必要なこともあると学びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "古い地図を全部捨てず入口だけ直したのはなぜだと考えられますか。",
+          "answer": "多くの道路情報はまだ正しく、古い重要部分だけ直せば使えたから。",
+          "evidence": [
+            "Kota checked the date at the bottom of one map and saw a date from last year.",
+            "He kept the map because many roads were still correct.",
+            "He told the teacher, and they placed a bright correction sticker over the old entrance arrow."
+          ],
+          "evidenceJp": [
+            "航太が地図の下の日付を見ると、前年の日付だと分かりました。",
+            "多くの道路はまだ正しかったため、その地図を残しました。",
+            "先生に伝え、古い入口の矢印の上に目立つ訂正シールを貼りました。"
+          ],
+          "reason": "本文の範囲で推論できます。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         },
         {
           "questionType": "GIST",
-          "prompt": "「The Old Entrance Still Shown on a School Map」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "航太は、古い地図には大切な最新の訂正が一つ必要なこともあると学びました。",
-          "evidence": "Kota learned that an old map sometimes needs one important current correction.",
-          "evidenceJp": "航太は、古い地図には大切な最新の訂正が一つ必要なこともあると学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "古い案内資料を使うときに大切だと分かることは何ですか。",
+          "answer": "日付と現在の状況を確認し、古くなった重要情報を明確に訂正すること。",
+          "evidence": [
+            "Kota checked the date at the bottom of one map and saw a date from last year.",
+            "He kept the map because many roads were still correct.",
+            "He told the teacher, and they placed a bright correction sticker over the old entrance arrow.",
+            "The school also put a new digital map online and marked the old printed copies clearly.",
+            "Kota learned that an old map sometimes needs one important current correction."
+          ],
+          "evidenceJp": [
+            "航太が地図の下の日付を見ると、前年の日付だと分かりました。",
+            "多くの道路はまだ正しかったため、その地図を残しました。",
+            "先生に伝え、古い入口の矢印の上に目立つ訂正シールを貼りました。",
+            "学校は新しいデジタル地図も公開し、古い印刷版にははっきり印を付けました。",
+            "航太は、古い地図には大切な最新の訂正が一つ必要なこともあると学びました。"
+          ],
+          "reason": "話全体をまとめます。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         }
       ],
       "materialData": null,
@@ -164,7 +210,15 @@
         "translationNatural": true
       },
       "humanReviewR4": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
+      "humanReviewR5": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "humanReviewR6": null,
+      "questionStage": "BATCH11_R5_HUMAN_REVIEW"
     },
     {
       "id": "V11-B11-G1-010",
@@ -227,95 +281,141 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「An Eraser Returned inside the Wrong Pencil Case」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "美香は美術の授業後、自分の筆箱の中に白い消しゴムを見つけました。",
-          "evidence": "Mika found a white eraser inside her pencil case after art class.",
-          "evidenceJp": "美香は美術の授業後、自分の筆箱の中に白い消しゴムを見つけました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "美香が白い消しゴムを自分の物ではないと分かったのはなぜですか。",
+          "answer": "自分の青い消しゴムがすでにあったから。",
+          "evidence": [
+            "Mika found a white eraser inside her pencil case after art class.",
+            "She already had her blue eraser, so the white one was not hers."
+          ],
+          "evidenceJp": [
+            "美香は美術の授業後、自分の筆箱の中に白い消しゴムを見つけました。",
+            "自分の青い消しゴムがあったため、白い方は自分の物ではありませんでした。"
+          ],
+          "reason": "二つの消しゴムの存在が根拠です。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         },
         {
           "questionType": "REASON",
-          "prompt": "「An Eraser Returned inside the Wrong Pencil Case」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "Kの名前の生徒が二人いたため、文字だけでは決めませんでした。",
+          "prompt": "Kの文字だけで持ち主を決めなかったのはなぜですか。",
+          "answer": "Kで始まる名前の生徒が二人いたから。",
           "evidence": "Mika did not decide from K alone because two students had K names.",
           "evidenceJp": "Kの名前の生徒が二人いたため、文字だけでは決めませんでした。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "候補を一人に絞れません。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「An Eraser Returned inside the Wrong Pencil Case」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "白い消しゴムの角には小さな星形の切り込みと薄いKの文字がありました。",
+          "prompt": "白い消しゴムにはどんな二つの特徴がありましたか。",
+          "answer": "星形の切り込みと薄いKの文字。",
           "evidence": "The white eraser had a small star cut into one corner and a faint letter K.",
           "evidenceJp": "白い消しゴムの角には小さな星形の切り込みと薄いKの文字がありました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "実物の特徴です。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「An Eraser Returned inside the Wrong Pencil Case」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "圭は姉が星形の切り込みを入れた物だと言い、久美は赤いカバー付きだと言いました。",
-          "evidence": "Kei said his had a star cut made by his older sister, while Kumi said hers had a red cover.",
-          "evidenceJp": "圭は姉が星形の切り込みを入れた物だと言い、久美は赤いカバー付きだと言いました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "見せる前に特徴を尋ねると、圭と久美はそれぞれ何と答えましたか。",
+          "answer": "圭は星形の切り込み、久美は赤いカバーがあると答えた。",
+          "evidence": [
+            "She asked both students to describe the missing erasers before showing it.",
+            "Kei said his had a star cut made by his older sister, while Kumi said hers had a red cover."
+          ],
+          "evidenceJp": [
+            "消しゴムを見せる前に、二人へなくした物の特徴を尋ねました。",
+            "圭は姉が星形の切り込みを入れた物だと言い、久美は赤いカバー付きだと言いました。"
+          ],
+          "reason": "二人の説明を対比します。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「An Eraser Returned inside the Wrong Pencil Case」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "自分の青い消しゴムがあったため、白い方は自分の物ではありませんでした。",
-          "evidence": "She already had her blue eraser, so the white one was not hers.",
-          "evidenceJp": "自分の青い消しゴムがあったため、白い方は自分の物ではありませんでした。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "Kだけでは決められなかったので、美香は消しゴムを見せる前に【　】。",
+          "answer": "二人へなくした消しゴムの特徴を尋ねた。",
+          "evidence": [
+            "Mika did not decide from K alone because two students had K names.",
+            "She asked both students to describe the missing erasers before showing it."
+          ],
+          "evidenceJp": [
+            "Kの名前の生徒が二人いたため、文字だけでは決めませんでした。",
+            "消しゴムを見せる前に、二人へなくした物の特徴を尋ねました。"
+          ],
+          "reason": "中心行動を補います。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「An Eraser Returned inside the Wrong Pencil Case」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "消しゴムを見せる前に、二人へなくした物の特徴を尋ねました。",
-          "evidence": "She asked both students to describe the missing erasers before showing it.",
-          "evidenceJp": "消しゴムを見せる前に、二人へなくした物の特徴を尋ねました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "圭が持ち主だと判断する決め手になった事実は何ですか。",
+          "answer": "圭が見る前に星形の切り込みを説明し、それが実物と一致したこと。",
+          "evidence": [
+            "The white eraser had a small star cut into one corner and a faint letter K.",
+            "She asked both students to describe the missing erasers before showing it.",
+            "Kei said his had a star cut made by his older sister, while Kumi said hers had a red cover."
+          ],
+          "evidenceJp": [
+            "白い消しゴムの角には小さな星形の切り込みと薄いKの文字がありました。",
+            "消しゴムを見せる前に、二人へなくした物の特徴を尋ねました。",
+            "圭は姉が星形の切り込みを入れた物だと言い、久美は赤いカバー付きだと言いました。"
+          ],
+          "reason": "事前説明と実物が一致しました。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「An Eraser Returned inside the Wrong Pencil Case」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "美香は消しゴムを圭へ返し、ほかの物も自分の筆箱に混ざっていないか確認しました。",
-          "evidence": "Mika returned the eraser to Kei and checked her case for other mixed items.",
-          "evidenceJp": "美香は消しゴムを圭へ返し、ほかの物も自分の筆箱に混ざっていないか確認しました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "美香は二人に特徴を尋ねたのは、消しゴムを【　】前でした。",
+          "answer": "見せる。",
+          "evidence": "She asked both students to describe the missing erasers before showing it.",
+          "evidenceJp": "消しゴムを見せる前に、二人へなくした物の特徴を尋ねました。",
+          "reason": "確認の順序を答えます。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「An Eraser Returned inside the Wrong Pencil Case」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "美術の時間、四人分の筆箱が一つの机に置かれていました。",
+          "prompt": "持ち物が混ざった可能性があったのはどんな状況だったからですか。",
+          "answer": "四人分の筆箱が一つの机に置かれていたから。",
           "evidence": "During art, four pencil cases were together on one table.",
           "evidenceJp": "美術の時間、四人分の筆箱が一つの机に置かれていました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "混入の背景です。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「An Eraser Returned inside the Wrong Pencil Case」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "美香は、先に特徴を尋ねると公平に持ち主を確認できると学びました。",
-          "evidence": "She learned that asking for a detail first can confirm an owner fairly.",
-          "evidenceJp": "美香は、先に特徴を尋ねると公平に持ち主を確認できると学びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "先に消しゴムを見せず特徴を尋ねたことには、どんな良さがありますか。",
+          "answer": "見た特徴を答えるのではなく、本人が知る情報で公平に持ち主を確かめられること。",
+          "evidence": [
+            "She asked both students to describe the missing erasers before showing it.",
+            "Kei said his had a star cut made by his older sister, while Kumi said hers had a red cover.",
+            "She learned that asking for a detail first can confirm an owner fairly."
+          ],
+          "evidenceJp": [
+            "消しゴムを見せる前に、二人へなくした物の特徴を尋ねました。",
+            "圭は姉が星形の切り込みを入れた物だと言い、久美は赤いカバー付きだと言いました。",
+            "美香は、先に特徴を尋ねると公平に持ち主を確認できると学びました。"
+          ],
+          "reason": "質問順と学びから推論します。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         },
         {
           "questionType": "GIST",
-          "prompt": "「An Eraser Returned inside the Wrong Pencil Case」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "美香は、先に特徴を尋ねると公平に持ち主を確認できると学びました。",
-          "evidence": "She learned that asking for a detail first can confirm an owner fairly.",
-          "evidenceJp": "美香は、先に特徴を尋ねると公平に持ち主を確認できると学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "名前や文字だけでは持ち主を決められないとき、大切なことは何ですか。",
+          "answer": "本人から先に特徴を聞き、実物と一致するか確かめてから返すこと。",
+          "evidence": [
+            "The white eraser had a small star cut into one corner and a faint letter K.",
+            "Mika did not decide from K alone because two students had K names.",
+            "She asked both students to describe the missing erasers before showing it.",
+            "Kei said his had a star cut made by his older sister, while Kumi said hers had a red cover.",
+            "She learned that asking for a detail first can confirm an owner fairly."
+          ],
+          "evidenceJp": [
+            "白い消しゴムの角には小さな星形の切り込みと薄いKの文字がありました。",
+            "Kの名前の生徒が二人いたため、文字だけでは決めませんでした。",
+            "消しゴムを見せる前に、二人へなくした物の特徴を尋ねました。",
+            "圭は姉が星形の切り込みを入れた物だと言い、久美は赤いカバー付きだと言いました。",
+            "美香は、先に特徴を尋ねると公平に持ち主を確認できると学びました。"
+          ],
+          "reason": "話全体をまとめます。",
+          "questionReview": "B11_R5_HUMAN_REVIEW"
         }
       ],
       "materialData": null,
@@ -328,7 +428,15 @@
         "translationNatural": true
       },
       "humanReviewR4": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
+      "humanReviewR5": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "humanReviewR6": null,
+      "questionStage": "BATCH11_R5_HUMAN_REVIEW"
     },
     {
       "id": "V11-B11-G1-011",
@@ -391,95 +499,137 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「The Weather Chart with One Blank Tuesday」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "理科のクラスは二週間、毎朝八時に天気を記録しました。",
-          "evidence": "The science class recorded the weather at eight every morning for two weeks.",
-          "evidenceJp": "理科のクラスは二週間、毎朝八時に天気を記録しました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "天気表で記録が空白になっていたのはいつですか。",
+          "answer": "二週目の火曜日。",
+          "evidence": "They made a wall chart, and Tuesday of the second week was blank.",
+          "evidenceJp": "壁の表を作ると、二週目の火曜日だけ空白でした。",
+          "reason": "空白の日を特定します。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "REASON",
-          "prompt": "「The Weather Chart with One Blank Tuesday」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "亮がクラスノートを調べると、火曜日の係の生徒が欠席していたと分かりました。",
-          "evidence": "Ryo checked the class notebook and found that the student on duty had been absent Tuesday.",
-          "evidenceJp": "亮がクラスノートを調べると、火曜日の係の生徒が欠席していたと分かりました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "月曜と水曜の天気を使って火曜の空欄を埋めなかったのはなぜですか。",
+          "answer": "月曜と水曜の天気だけでは火曜の天気を証明できなかったから。",
+          "evidence": [
+            "Monday was sunny and Wednesday cloudy, but neither proved Tuesday's weather.",
+            "The class did not fill the blank by copying a nearby day."
+          ],
+          "evidenceJp": [
+            "月曜は晴れ、水曜は曇りでしたが、どちらも火曜の天気を証明しませんでした。",
+            "クラスは前後の日を写して空欄を埋めませんでした。"
+          ],
+          "reason": "前後の日は証拠になりません。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「The Weather Chart with One Blank Tuesday」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "月曜は晴れ、水曜は曇りでしたが、どちらも火曜の天気を証明しませんでした。",
-          "evidence": "Monday was sunny and Wednesday cloudy, but neither proved Tuesday's weather.",
-          "evidenceJp": "月曜は晴れ、水曜は曇りでしたが、どちらも火曜の天気を証明しませんでした。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "火曜日の記録がなかった理由として、亮は何を確認しましたか。",
+          "answer": "火曜日の係の生徒が欠席していたこと。",
+          "evidence": "Ryo checked the class notebook and found that the student on duty had been absent Tuesday.",
+          "evidenceJp": "亮がクラスノートを調べると、火曜日の係の生徒が欠席していたと分かりました。",
+          "reason": "クラスノートで確認した事実です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「The Weather Chart with One Blank Tuesday」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "園芸部はその火曜日の水やり表に「8時、小雨」と書いていました。",
-          "evidence": "The garden club had written 'light rain at 8:00' on its watering sheet that Tuesday.",
-          "evidenceJp": "園芸部はその火曜日の水やり表に「8時、小雨」と書いていました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "同じ時刻の別記録を探した結果、火曜日の天気は何だと分かりましたか。",
+          "answer": "午前8時は小雨だった。",
+          "evidence": [
+            "They looked for another school record from the same time.",
+            "The garden club had written 'light rain at 8:00' on its watering sheet that Tuesday."
+          ],
+          "evidenceJp": [
+            "同じ時刻の別の学校記録がないか調べました。",
+            "園芸部はその火曜日の水やり表に「8時、小雨」と書いていました。"
+          ],
+          "reason": "園芸部の同時刻記録が根拠です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「The Weather Chart with One Blank Tuesday」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "クラスは前後の日を写して空欄を埋めませんでした。",
-          "evidence": "The class did not fill the blank by copying a nearby day.",
-          "evidenceJp": "クラスは前後の日を写して空欄を埋めませんでした。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "クラスは前後の日から推測せず、【　】を使って火曜日の空欄を埋めました。",
+          "answer": "園芸部の同じ時刻の記録。",
+          "evidence": [
+            "They looked for another school record from the same time.",
+            "The garden club had written 'light rain at 8:00' on its watering sheet that Tuesday.",
+            "The class added light rain to the chart and wrote 'garden club record' below the entry."
+          ],
+          "evidenceJp": [
+            "同じ時刻の別の学校記録がないか調べました。",
+            "園芸部はその火曜日の水やり表に「8時、小雨」と書いていました。",
+            "クラスは表に小雨と加え、その下に「園芸部記録」と書きました。"
+          ],
+          "reason": "推測ではなく別記録を使った流れです。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「The Weather Chart with One Blank Tuesday」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "同じ時刻の別の学校記録がないか調べました。",
-          "evidence": "They looked for another school record from the same time.",
-          "evidenceJp": "同じ時刻の別の学校記録がないか調べました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "火曜日が小雨だったことを直接示す証拠は何ですか。",
+          "answer": "園芸部の水やり表に、その火曜日の「8時、小雨」と書かれていたこと。",
+          "evidence": "The garden club had written 'light rain at 8:00' on its watering sheet that Tuesday.",
+          "evidenceJp": "園芸部はその火曜日の水やり表に「8時、小雨」と書いていました。",
+          "reason": "同日同時刻の記録です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「The Weather Chart with One Blank Tuesday」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "クラスは表に小雨と加え、その下に「園芸部記録」と書きました。",
+          "prompt": "クラスは天気表に「小雨」と書き、その下に【　】と記しました。",
+          "answer": "「園芸部記録」。",
           "evidence": "The class added light rain to the chart and wrote 'garden club record' below the entry.",
           "evidenceJp": "クラスは表に小雨と加え、その下に「園芸部記録」と書きました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "情報源も残しました。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「The Weather Chart with One Blank Tuesday」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "壁の表を作ると、二週目の火曜日だけ空白でした。",
-          "evidence": "They made a wall chart, and Tuesday of the second week was blank.",
-          "evidenceJp": "壁の表を作ると、二週目の火曜日だけ空白でした。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "理科のクラスは何時に天気を記録していましたか。",
+          "answer": "毎朝8時。",
+          "evidence": "The science class recorded the weather at eight every morning for two weeks.",
+          "evidenceJp": "理科のクラスは二週間、毎朝八時に天気を記録しました。",
+          "reason": "比較する時刻の条件です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「The Weather Chart with One Blank Tuesday」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "亮は、欠けた記録は前後の日の推測でなく証拠で補うと学びました。",
-          "evidence": "Ryo learned to fill a missing record with evidence, not a nearby-day guess.",
-          "evidenceJp": "亮は、欠けた記録は前後の日の推測でなく証拠で補うと学びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "クラスが「園芸部記録」と情報源まで書いたのはなぜ大切だと考えられますか。",
+          "answer": "後から、その空欄を推測ではなく別の実記録で補ったと確認できるから。",
+          "evidence": [
+            "The garden club had written 'light rain at 8:00' on its watering sheet that Tuesday.",
+            "The class added light rain to the chart and wrote 'garden club record' below the entry.",
+            "Ryo learned to fill a missing record with evidence, not a nearby-day guess."
+          ],
+          "evidenceJp": [
+            "園芸部はその火曜日の水やり表に「8時、小雨」と書いていました。",
+            "クラスは表に小雨と加え、その下に「園芸部記録」と書きました。",
+            "亮は、欠けた記録は前後の日の推測でなく証拠で補うと学びました。"
+          ],
+          "reason": "証拠の由来を残す意味を本文から推論します。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "GIST",
-          "prompt": "「The Weather Chart with One Blank Tuesday」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "亮は、欠けた記録は前後の日の推測でなく証拠で補うと学びました。",
-          "evidence": "Ryo learned to fill a missing record with evidence, not a nearby-day guess.",
-          "evidenceJp": "亮は、欠けた記録は前後の日の推測でなく証拠で補うと学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "欠けた記録を補うとき、この話が大切だと伝えていることは何ですか。",
+          "answer": "前後から推測せず、同じ条件の証拠を探し、情報源も明記すること。",
+          "evidence": [
+            "Monday was sunny and Wednesday cloudy, but neither proved Tuesday's weather.",
+            "The class did not fill the blank by copying a nearby day.",
+            "They looked for another school record from the same time.",
+            "The garden club had written 'light rain at 8:00' on its watering sheet that Tuesday.",
+            "The class added light rain to the chart and wrote 'garden club record' below the entry.",
+            "Ryo learned to fill a missing record with evidence, not a nearby-day guess."
+          ],
+          "evidenceJp": [
+            "月曜は晴れ、水曜は曇りでしたが、どちらも火曜の天気を証明しませんでした。",
+            "クラスは前後の日を写して空欄を埋めませんでした。",
+            "同じ時刻の別の学校記録がないか調べました。",
+            "園芸部はその火曜日の水やり表に「8時、小雨」と書いていました。",
+            "クラスは表に小雨と加え、その下に「園芸部記録」と書きました。",
+            "亮は、欠けた記録は前後の日の推測でなく証拠で補うと学びました。"
+          ],
+          "reason": "話全体をまとめます。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         }
       ],
       "materialData": null,
@@ -492,7 +642,15 @@
         "translationNatural": true
       },
       "humanReviewR4": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
+      "humanReviewR5": null,
+      "humanReviewR6": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R6_HUMAN_REVIEW"
     },
     {
       "id": "V11-B11-G1-012",
@@ -555,95 +713,133 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「The Classroom Plant Leaning toward the Window」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "小さな教室の植物が後ろの壁近くの棚に置かれていました。",
-          "evidence": "A small classroom plant stood on a shelf near the back wall.",
-          "evidenceJp": "小さな教室の植物が後ろの壁近くの棚に置かれていました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "一週間後、植物の上の葉はどちらへ傾いていましたか。",
+          "answer": "左側の窓の方。",
+          "evidence": "After one week, its top leaves leaned strongly toward the window on the left.",
+          "evidenceJp": "一週間後、上の葉が左側の窓へ大きく傾いていました。",
+          "reason": "最初の観察結果です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "REASON",
-          "prompt": "「The Classroom Plant Leaning toward the Window」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "鉢は安定しており、新しい茎が光の方向へ曲がっていることを確認しました。",
-          "evidence": "She checked the pot and found it stable, while the new stems were bending toward the light.",
-          "evidenceJp": "鉢は安定しており、新しい茎が光の方向へ曲がっていることを確認しました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "美奈が茎をすぐ切ったり縛ったりしなかったのはなぜですか。",
+          "answer": "植物を傷つけず、傾きの原因を確かめたかったから。",
+          "evidence": [
+            "She checked the pot and found it stable, while the new stems were bending toward the light.",
+            "She did not cut the leaning stems or tie them straight immediately.",
+            "Mina learned that changing one condition and observing later can test an idea without damaging the plant."
+          ],
+          "evidenceJp": [
+            "鉢は安定しており、新しい茎が光の方向へ曲がっていることを確認しました。",
+            "傾いた茎をすぐ切ったり、まっすぐ縛ったりはしませんでした。",
+            "美奈は、一つの条件を変えて後で観察すれば植物を傷つけず考えを確かめられると学びました。"
+          ],
+          "reason": "観察と最後の学びから理由をまとめます。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「The Classroom Plant Leaning toward the Window」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "美奈は、片側が重くて倒れかけているだけではないかと思いました。",
-          "evidence": "Mina wondered whether the plant was simply falling because one side was heavier.",
-          "evidenceJp": "美奈は、片側が重くて倒れかけているだけではないかと思いました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "鉢そのものが倒れかけているだけではないと考える手がかりは何でしたか。",
+          "answer": "鉢は安定しており、新しい茎が光の方向へ曲がっていたこと。",
+          "evidence": "She checked the pot and found it stable, while the new stems were bending toward the light.",
+          "evidenceJp": "鉢は安定しており、新しい茎が光の方向へ曲がっていることを確認しました。",
+          "reason": "仮説を見直す観察です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「The Classroom Plant Leaning toward the Window」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "三日後、最も新しい葉は再び窓の方へ向き始めました。",
-          "evidence": "Three days later, the newest leaves had begun turning back toward the window.",
-          "evidenceJp": "三日後、最も新しい葉は再び窓の方へ向き始めました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "鉢を半回転させて三日後、最も新しい葉はどうなりましたか。",
+          "answer": "再び窓の方へ向き始めた。",
+          "evidence": [
+            "The class turned the pot halfway around and marked its new position.",
+            "Three days later, the newest leaves had begun turning back toward the window."
+          ],
+          "evidenceJp": [
+            "クラスは鉢を半回転させ、新しい向きを記録しました。",
+            "三日後、最も新しい葉は再び窓の方へ向き始めました。"
+          ],
+          "reason": "条件変更後の結果です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「The Classroom Plant Leaning toward the Window」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "傾いた茎をすぐ切ったり、まっすぐ縛ったりはしませんでした。",
-          "evidence": "She did not cut the leaning stems or tie them straight immediately.",
-          "evidenceJp": "傾いた茎をすぐ切ったり、まっすぐ縛ったりはしませんでした。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "クラスは植物を傷つけず原因を確かめるため、鉢を【　】。",
+          "answer": "半回転させて新しい位置を記録した。",
+          "evidence": "The class turned the pot halfway around and marked its new position.",
+          "evidenceJp": "クラスは鉢を半回転させ、新しい向きを記録しました。",
+          "reason": "実験として行った変更です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「The Classroom Plant Leaning toward the Window」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "クラスは鉢を半回転させ、新しい向きを記録しました。",
-          "evidence": "The class turned the pot halfway around and marked its new position.",
-          "evidenceJp": "クラスは鉢を半回転させ、新しい向きを記録しました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "葉が光の方向に反応していると考える根拠となる二つの観察は何ですか。",
+          "answer": "新しい茎が光へ曲がっていたことと、鉢を回した三日後に新しい葉が再び窓へ向き始めたこと。",
+          "evidence": [
+            "She checked the pot and found it stable, while the new stems were bending toward the light.",
+            "Three days later, the newest leaves had begun turning back toward the window."
+          ],
+          "evidenceJp": [
+            "鉢は安定しており、新しい茎が光の方向へ曲がっていることを確認しました。",
+            "三日後、最も新しい葉は再び窓の方へ向き始めました。"
+          ],
+          "reason": "変更前後の観察を結びます。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「The Classroom Plant Leaning toward the Window」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "さまざまな側が光を受けるよう、毎週少しずつ鉢を回すことにしました。",
+          "prompt": "クラスは毎週鉢を少しずつ回し、植物の【　】が光を受けるようにしました。",
+          "answer": "さまざまな側。",
           "evidence": "They continued turning the pot a little each week so different sides received light.",
           "evidenceJp": "さまざまな側が光を受けるよう、毎週少しずつ鉢を回すことにしました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "継続対応の目的です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「The Classroom Plant Leaning toward the Window」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "一週間後、上の葉が左側の窓へ大きく傾いていました。",
-          "evidence": "After one week, its top leaves leaned strongly toward the window on the left.",
-          "evidenceJp": "一週間後、上の葉が左側の窓へ大きく傾いていました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "クラスは鉢を回したとき、何もせずに終わらず何を記録しましたか。",
+          "answer": "鉢の新しい位置。",
+          "evidence": "The class turned the pot halfway around and marked its new position.",
+          "evidenceJp": "クラスは鉢を半回転させ、新しい向きを記録しました。",
+          "reason": "比較のための記録です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「The Classroom Plant Leaning toward the Window」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "美奈は、一つの条件を変えて後で観察すれば植物を傷つけず考えを確かめられると学びました。",
-          "evidence": "Mina learned that changing one condition and observing later can test an idea without damaging the plant.",
-          "evidenceJp": "美奈は、一つの条件を変えて後で観察すれば植物を傷つけず考えを確かめられると学びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "鉢の向きを変える方法が原因を調べるのに適していたのはなぜですか。",
+          "answer": "植物を切ったり縛ったりせず、光に対する向きの変化だけを観察できたから。",
+          "evidence": [
+            "She did not cut the leaning stems or tie them straight immediately.",
+            "The class turned the pot halfway around and marked its new position.",
+            "Three days later, the newest leaves had begun turning back toward the window.",
+            "Mina learned that changing one condition and observing later can test an idea without damaging the plant."
+          ],
+          "evidenceJp": [
+            "傾いた茎をすぐ切ったり、まっすぐ縛ったりはしませんでした。",
+            "クラスは鉢を半回転させ、新しい向きを記録しました。",
+            "三日後、最も新しい葉は再び窓の方へ向き始めました。",
+            "美奈は、一つの条件を変えて後で観察すれば植物を傷つけず考えを確かめられると学びました。"
+          ],
+          "reason": "一つの条件だけ変えた実験の意味です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "GIST",
-          "prompt": "「The Classroom Plant Leaning toward the Window」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "美奈は、一つの条件を変えて後で観察すれば植物を傷つけず考えを確かめられると学びました。",
-          "evidence": "Mina learned that changing one condition and observing later can test an idea without damaging the plant.",
-          "evidenceJp": "美奈は、一つの条件を変えて後で観察すれば植物を傷つけず考えを確かめられると学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "この話から、植物を傷つけず考えを確かめる方法として何が大切だと分かりますか。",
+          "answer": "一つの条件だけを変え、時間をおいて結果を観察すること。",
+          "evidence": [
+            "The class turned the pot halfway around and marked its new position.",
+            "Three days later, the newest leaves had begun turning back toward the window.",
+            "Mina learned that changing one condition and observing later can test an idea without damaging the plant."
+          ],
+          "evidenceJp": [
+            "クラスは鉢を半回転させ、新しい向きを記録しました。",
+            "三日後、最も新しい葉は再び窓の方へ向き始めました。",
+            "美奈は、一つの条件を変えて後で観察すれば植物を傷つけず考えを確かめられると学びました。"
+          ],
+          "reason": "最後の学びと実験全体をまとめます。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         }
       ],
       "materialData": null,
@@ -656,7 +852,15 @@
         "translationNatural": true
       },
       "humanReviewR4": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
+      "humanReviewR5": null,
+      "humanReviewR6": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R6_HUMAN_REVIEW"
     },
     {
       "id": "V11-B11-G1-013",
@@ -719,95 +923,135 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「A Club Badge Box with Two Different Sizes」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "テニス部はユニフォーム用の新しい布バッジが入った箱を受け取りました。",
-          "evidence": "The tennis club received a box of new cloth badges for its uniforms.",
-          "evidenceJp": "テニス部はユニフォーム用の新しい布バッジが入った箱を受け取りました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "注文表では小さいバッジと大きいバッジはそれぞれ何枚でしたか。",
+          "answer": "小8枚、大12枚。",
+          "evidence": "The order sheet showed eight small and twelve large badges for twenty members.",
+          "evidenceJp": "注文表には二十人分として小八枚、大十二枚とありました。",
+          "reason": "20人分の内訳です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "REASON",
-          "prompt": "「A Club Badge Box with Two Different Sizes」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "由紀は最初箱からそのまま配ろうとし、サイズ違いの恐れがありました。",
-          "evidence": "Yuki first planned to hand them out from the box, risking wrong sizes.",
-          "evidenceJp": "由紀は最初箱からそのまま配ろうとし、サイズ違いの恐れがありました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "由紀が箱からそのまま配る方法をやめたのはなぜですか。",
+          "answer": "小と大が混ざっており、間違ったサイズを渡すおそれがあったから。",
+          "evidence": [
+            "The box held small and large badges together.",
+            "Yuki first planned to hand them out from the box, risking wrong sizes."
+          ],
+          "evidenceJp": [
+            "箱には小さいバッジと大きいバッジが一緒に入っていました。",
+            "由紀は最初箱からそのまま配ろうとし、サイズ違いの恐れがありました。"
+          ],
+          "reason": "混在と誤配の危険が理由です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「A Club Badge Box with Two Different Sizes」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "注文表には二十人分として小八枚、大十二枚とありました。",
-          "evidence": "The order sheet showed eight small and twelve large badges for twenty members.",
-          "evidenceJp": "注文表には二十人分として小八枚、大十二枚とありました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "各部員に必要なサイズを確認するため、由紀は何を見ましたか。",
+          "answer": "各部員のバッジサイズが記録されたユニフォーム表。",
+          "evidence": "She checked the uniform list, which already recorded each member's badge size.",
+          "evidenceJp": "そこで、各部員のバッジサイズが記録されているユニフォーム表を確認しました。",
+          "reason": "個人別サイズの正本です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「A Club Badge Box with Two Different Sizes」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "配る前にSが八枚、Lが十二枚あることを数えました。",
-          "evidence": "They counted eight in the S tray and twelve in the L tray before distribution.",
-          "evidenceJp": "配る前にSが八枚、Lが十二枚あることを数えました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "配る前にバッジをどう整理し、枚数をどう確認しましたか。",
+          "answer": "SとLの二つのトレーに分け、S8枚・L12枚を数えた。",
+          "evidence": [
+            "The club separated the badges into two trays and labeled them S and L.",
+            "They counted eight in the S tray and twelve in the L tray before distribution."
+          ],
+          "evidenceJp": [
+            "部はバッジを二つのトレーに分け、SとLの表示を付けました。",
+            "配る前にSが八枚、Lが十二枚あることを数えました。"
+          ],
+          "reason": "分類と数量確認をまとめます。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「A Club Badge Box with Two Different Sizes」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "そこで、各部員のバッジサイズが記録されているユニフォーム表を確認しました。",
-          "evidence": "She checked the uniform list, which already recorded each member's badge size.",
-          "evidenceJp": "そこで、各部員のバッジサイズが記録されているユニフォーム表を確認しました。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "取り違えを防ぐため、部員は名前を言い、由紀は【　】。",
+          "answer": "名前をユニフォーム表のサイズと照合した。",
+          "evidence": "The members said their names one by one, and Yuki matched each name with the size on the list.",
+          "evidenceJp": "部員たちは順番に名前を言い、由紀がそれぞれの名前を表のサイズと照合しました。",
+          "reason": "配布時の確認方法です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「A Club Badge Box with Two Different Sizes」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "部はバッジを二つのトレーに分け、SとLの表示を付けました。",
-          "evidence": "The club separated the badges into two trays and labeled them S and L.",
-          "evidenceJp": "部はバッジを二つのトレーに分け、SとLの表示を付けました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "S8枚・L12枚という分類が注文内容と合っていると確認できる二つの記述は何ですか。",
+          "answer": "注文表が小8枚・大12枚で、分けた後のトレーもS8枚・L12枚だったこと。",
+          "evidence": [
+            "The order sheet showed eight small and twelve large badges for twenty members.",
+            "They counted eight in the S tray and twelve in the L tray before distribution."
+          ],
+          "evidenceJp": [
+            "注文表には二十人分として小八枚、大十二枚とありました。",
+            "配る前にSが八枚、Lが十二枚あることを数えました。"
+          ],
+          "reason": "注文数と実数が一致します。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「A Club Badge Box with Two Different Sizes」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "部員たちは順番に名前を言い、由紀がそれぞれの名前を表のサイズと照合しました。",
-          "evidence": "The members said their names one by one, and Yuki matched each name with the size on the list.",
-          "evidenceJp": "部員たちは順番に名前を言い、由紀がそれぞれの名前を表のサイズと照合しました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "バッジを分けた二つのトレーには【　】と表示しました。",
+          "answer": "SとL。",
+          "evidence": "The club separated the badges into two trays and labeled them S and L.",
+          "evidenceJp": "部はバッジを二つのトレーに分け、SとLの表示を付けました。",
+          "reason": "分類ラベルです。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「A Club Badge Box with Two Different Sizes」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "箱には小さいバッジと大きいバッジが一緒に入っていました。",
-          "evidence": "The box held small and large badges together.",
-          "evidenceJp": "箱には小さいバッジと大きいバッジが一緒に入っていました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "バッジを受け取るとき、部員たちは一人ずつ何をしましたか。",
+          "answer": "自分の名前を言った。",
+          "evidence": "The members said their names one by one, and Yuki matched each name with the size on the list.",
+          "evidenceJp": "部員たちは順番に名前を言い、由紀がそれぞれの名前を表のサイズと照合しました。",
+          "reason": "配布時の行動です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「A Club Badge Box with Two Different Sizes」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "部は、記録されたサイズで先に分けると取り違えを防げると学びました。",
-          "evidence": "The club learned that sorting by recorded size prevents mix-ups.",
-          "evidenceJp": "部は、記録されたサイズで先に分けると取り違えを防げると学びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "枚数を数えるだけでなく、名前とサイズを照合したのはなぜですか。",
+          "answer": "全体の枚数が合っていても、個人に違うサイズを渡す可能性があるから。",
+          "evidence": [
+            "The order sheet showed eight small and twelve large badges for twenty members.",
+            "She checked the uniform list, which already recorded each member's badge size.",
+            "They counted eight in the S tray and twelve in the L tray before distribution.",
+            "The members said their names one by one, and Yuki matched each name with the size on the list."
+          ],
+          "evidenceJp": [
+            "注文表には二十人分として小八枚、大十二枚とありました。",
+            "そこで、各部員のバッジサイズが記録されているユニフォーム表を確認しました。",
+            "配る前にSが八枚、Lが十二枚あることを数えました。",
+            "部員たちは順番に名前を言い、由紀がそれぞれの名前を表のサイズと照合しました。"
+          ],
+          "reason": "総数確認と個人確認の役割の違いから推論します。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "GIST",
-          "prompt": "「A Club Badge Box with Two Different Sizes」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "部は、記録されたサイズで先に分けると取り違えを防げると学びました。",
-          "evidence": "The club learned that sorting by recorded size prevents mix-ups.",
-          "evidenceJp": "部は、記録されたサイズで先に分けると取り違えを防げると学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "この話から、サイズの違う物を複数人へ配るときに大切だと分かることは何ですか。",
+          "answer": "記録されたサイズで先に分類し、総数と一人ずつのサイズを確認して配ること。",
+          "evidence": [
+            "She checked the uniform list, which already recorded each member's badge size.",
+            "The club separated the badges into two trays and labeled them S and L.",
+            "They counted eight in the S tray and twelve in the L tray before distribution.",
+            "The members said their names one by one, and Yuki matched each name with the size on the list.",
+            "The club learned that sorting by recorded size prevents mix-ups."
+          ],
+          "evidenceJp": [
+            "そこで、各部員のバッジサイズが記録されているユニフォーム表を確認しました。",
+            "部はバッジを二つのトレーに分け、SとLの表示を付けました。",
+            "配る前にSが八枚、Lが十二枚あることを数えました。",
+            "部員たちは順番に名前を言い、由紀がそれぞれの名前を表のサイズと照合しました。",
+            "部は、記録されたサイズで先に分けると取り違えを防げると学びました。"
+          ],
+          "reason": "一連の配布手順をまとめます。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         }
       ],
       "materialData": null,
@@ -820,7 +1064,15 @@
         "translationNatural": true
       },
       "humanReviewR4": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
+      "humanReviewR5": null,
+      "humanReviewR6": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R6_HUMAN_REVIEW"
     },
     {
       "id": "V11-B11-G1-014",
@@ -883,95 +1135,131 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「The Two Gloves That Did Not Make a Pair」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "寒い朝の後、落とし物箱には二つの黒い手袋が入っていました。",
-          "evidence": "After a cold morning, the lost-item box held two black gloves.",
-          "evidenceJp": "寒い朝の後、落とし物箱には二つの黒い手袋が入っていました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "拓が二つの黒い手袋を一組だと思った最初の理由は何ですか。",
+          "answer": "遠くから見るとよく似ていたから。",
+          "evidence": "They looked similar from far away, so Taku put them together as one pair.",
+          "evidenceJp": "遠くからは似て見えたため、拓は一組として並べました。",
+          "reason": "最初の誤判断の理由です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "REASON",
-          "prompt": "「The Two Gloves That Did Not Make a Pair」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "拓は色が同じだけでは一組にしませんでした。",
-          "evidence": "Taku did not pair them just because their color matched.",
-          "evidenceJp": "拓は色が同じだけでは一組にしませんでした。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "二つの手袋を一組として扱わないことにした決定的な理由は何ですか。",
+          "answer": "どちらも左手用だったから。",
+          "evidence": [
+            "He picked them up and saw that both were left-hand gloves.",
+            "Taku did not pair them just because their color matched."
+          ],
+          "evidenceJp": [
+            "手に取ると、どちらも左手用だと分かりました。",
+            "拓は色が同じだけでは一組にしませんでした。"
+          ],
+          "reason": "左右を確認すると一組では成立しません。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「The Two Gloves That Did Not Make a Pair」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "手に取ると、どちらも左手用だと分かりました。",
-          "evidence": "He picked them up and saw that both were left-hand gloves.",
-          "evidenceJp": "手に取ると、どちらも左手用だと分かりました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "二つの手袋にはそれぞれどんな違う特徴がありましたか。",
+          "answer": "一つは手首に灰色の線が三本、もう一つは親指近くに赤い糸があった。",
+          "evidence": "One had three gray lines at the wrist, while the other had a small red thread near the thumb.",
+          "evidenceJp": "一つは手首に灰色の線が三本あり、もう一つは親指近くに小さな赤い糸がありました。",
+          "reason": "個別特徴を対比します。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「The Two Gloves That Did Not Make a Pair」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "それぞれの手袋を別に置き、見つかった場所のメモを付けました。",
-          "evidence": "He placed each glove separately and added a note about the place.",
-          "evidenceJp": "それぞれの手袋を別に置き、見つかった場所のメモを付けました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "拓が手袋を別々にしておいたあと、持ち主を確かめる手がかりとして何が起きましたか。",
+          "answer": "一人は灰色の線を、別の一人は赤い糸を説明した。",
+          "evidence": [
+            "He placed each glove separately and added a note about the place.",
+            "Later, one student described the gray lines and another described the red thread."
+          ],
+          "evidenceJp": [
+            "それぞれの手袋を別に置き、見つかった場所のメモを付けました。",
+            "後で一人の生徒が灰色の線を、別の生徒が赤い糸を説明しました。"
+          ],
+          "reason": "別々の持ち主につながる説明です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「The Two Gloves That Did Not Make a Pair」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "遠くからは似て見えたため、拓は一組として並べました。",
-          "evidence": "They looked similar from far away, so Taku put them together as one pair.",
-          "evidenceJp": "遠くからは似て見えたため、拓は一組として並べました。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "見た目は似ていたが両方とも左手用だったため、拓は【　】。",
+          "answer": "二つを別々に置き、見つかった場所のメモを付けた。",
+          "evidence": [
+            "He picked them up and saw that both were left-hand gloves.",
+            "He placed each glove separately and added a note about the place."
+          ],
+          "evidenceJp": [
+            "手に取ると、どちらも左手用だと分かりました。",
+            "それぞれの手袋を別に置き、見つかった場所のメモを付けました。"
+          ],
+          "reason": "誤って一組にしない対応です。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「The Two Gloves That Did Not Make a Pair」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "後で一人の生徒が灰色の線を、別の生徒が赤い糸を説明しました。",
-          "evidence": "Later, one student described the gray lines and another described the red thread.",
-          "evidenceJp": "後で一人の生徒が灰色の線を、別の生徒が赤い糸を説明しました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "二つの手袋が別々の持ち主の物だと判断する根拠を二つ答えなさい。",
+          "answer": "両方とも左手用だったことと、灰色の線と赤い糸という違う特徴を別々の生徒が説明したこと。",
+          "evidence": [
+            "He picked them up and saw that both were left-hand gloves.",
+            "One had three gray lines at the wrist, while the other had a small red thread near the thumb.",
+            "Later, one student described the gray lines and another described the red thread."
+          ],
+          "evidenceJp": [
+            "手に取ると、どちらも左手用だと分かりました。",
+            "一つは手首に灰色の線が三本あり、もう一つは親指近くに小さな赤い糸がありました。",
+            "後で一人の生徒が灰色の線を、別の生徒が赤い糸を説明しました。"
+          ],
+          "reason": "左右と持ち主の説明を合わせます。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「The Two Gloves That Did Not Make a Pair」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "それぞれが一つの手袋を受け取り、本当の片方を探し続けました。",
-          "evidence": "Each student received one glove and continued looking for its true partner.",
-          "evidenceJp": "それぞれが一つの手袋を受け取り、本当の片方を探し続けました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "一つの手袋には手首に灰色の線が三本あり、もう一つには親指近くに小さな【　】がありました。",
+          "answer": "赤い糸。",
+          "evidence": "One had three gray lines at the wrist, while the other had a small red thread near the thumb.",
+          "evidenceJp": "一つは手首に灰色の線が三本あり、もう一つは親指近くに小さな赤い糸がありました。",
+          "reason": "識別特徴を補います。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「The Two Gloves That Did Not Make a Pair」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "一つは手首に灰色の線が三本あり、もう一つは親指近くに小さな赤い糸がありました。",
-          "evidence": "One had three gray lines at the wrist, while the other had a small red thread near the thumb.",
-          "evidenceJp": "一つは手首に灰色の線が三本あり、もう一つは親指近くに小さな赤い糸がありました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "それぞれの生徒が自分の手袋を受け取ったあと、何を続けましたか。",
+          "answer": "本当の片方の手袋を探し続けた。",
+          "evidence": "Each student received one glove and continued looking for its true partner.",
+          "evidenceJp": "それぞれが一つの手袋を受け取り、本当の片方を探し続けました。",
+          "reason": "まだ一組が完成していないことを示します。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「The Two Gloves That Did Not Make a Pair」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "拓は、似た落とし物を組にする前に左右と細部を確認すると学びました。",
-          "evidence": "Taku learned to check side and details before pairing similar lost items.",
-          "evidenceJp": "拓は、似た落とし物を組にする前に左右と細部を確認すると学びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "拓が見つかった場所のメモを付けたことは、なぜ持ち主確認に役立つと考えられますか。",
+          "answer": "見た目の特徴だけでなく、どこで見つかったかも別の手がかりとして使えるから。",
+          "evidence": "He placed each glove separately and added a note about the place.",
+          "evidenceJp": "それぞれの手袋を別に置き、見つかった場所のメモを付けました。",
+          "reason": "メモを付けた目的を本文範囲で推論します。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         },
         {
           "questionType": "GIST",
-          "prompt": "「The Two Gloves That Did Not Make a Pair」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "拓は、似た落とし物を組にする前に左右と細部を確認すると学びました。",
-          "evidence": "Taku learned to check side and details before pairing similar lost items.",
-          "evidenceJp": "拓は、似た落とし物を組にする前に左右と細部を確認すると学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "似た落とし物を一組だと判断する前に何を確かめるべきだと、この話は伝えていますか。",
+          "answer": "色や見た目だけでなく、左右と細かな特徴を確認すること。",
+          "evidence": [
+            "He picked them up and saw that both were left-hand gloves.",
+            "One had three gray lines at the wrist, while the other had a small red thread near the thumb.",
+            "Taku did not pair them just because their color matched.",
+            "Taku learned to check side and details before pairing similar lost items."
+          ],
+          "evidenceJp": [
+            "手に取ると、どちらも左手用だと分かりました。",
+            "一つは手首に灰色の線が三本あり、もう一つは親指近くに小さな赤い糸がありました。",
+            "拓は色が同じだけでは一組にしませんでした。",
+            "拓は、似た落とし物を組にする前に左右と細部を確認すると学びました。"
+          ],
+          "reason": "話全体の学びです。",
+          "questionReview": "B11_R6_HUMAN_REVIEW"
         }
       ],
       "materialData": null,
@@ -984,7 +1272,15 @@
         "translationNatural": true
       },
       "humanReviewR4": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
+      "humanReviewR5": null,
+      "humanReviewR6": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R6_HUMAN_REVIEW"
     }
   ]
 }
