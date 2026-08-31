@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T09:07:40.552Z",
+  "generatedAt": "2026-08-31T10:00:58.583Z",
   "count": 6,
   "passages": [
     {
@@ -63,95 +63,121 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「A Hallway Display Put Up One Day Too Early」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "美術部は金曜日の学校行事に向けて廊下の展示を準備しました。",
-          "evidence": "The art club prepared a hallway display for a Friday school event.",
-          "evidenceJp": "美術部は金曜日の学校行事に向けて廊下の展示を準備しました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "美術部が廊下に絵を飾ったのは何曜日でしたか。",
+          "answer": "水曜日。",
+          "evidence": "On Wednesday, a student read the calendar quickly and thought the event was Thursday.",
+          "evidenceJp": "水曜日、一人の生徒がカレンダーを急いで見て行事は木曜日だと思いました。",
+          "reason": "日付を取り違えた時点を確認します。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "REASON",
-          "prompt": "「A Hallway Display Put Up One Day Too Early」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "先生が、その壁は木曜朝に別のクラスが発表で使うと伝えました。",
-          "evidence": "A teacher then pointed out that another class needed the wall for a Thursday morning presentation.",
-          "evidenceJp": "先生が、その壁は木曜朝に別のクラスが発表で使うと伝えました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "美術部がいったん絵を外す必要があったのはなぜですか。",
+          "answer": "木曜朝に別のクラスがその壁を発表で使う予定だったから。",
+          "evidence": [
+            "A teacher then pointed out that another class needed the wall for a Thursday morning presentation.",
+            "The club checked the event calendar and confirmed Friday as its display date."
+          ],
+          "evidenceJp": [
+            "先生が、その壁は木曜朝に別のクラスが発表で使うと伝えました。",
+            "部が行事予定を確認すると、自分たちの展示日は金曜日だと確認できました。"
+          ],
+          "reason": "共有場所の予定と本来の展示日が根拠です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「A Hallway Display Put Up One Day Too Early」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "部はその日の午後、すべての絵を廊下の壁に飾りました。",
-          "evidence": "The club put all the pictures on the hallway wall that afternoon.",
-          "evidenceJp": "部はその日の午後、すべての絵を廊下の壁に飾りました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "予定表を確認して分かった、美術部の正しい展示日はいつでしたか。",
+          "answer": "金曜日。",
+          "evidence": "The club checked the event calendar and confirmed Friday as its display date.",
+          "evidenceJp": "部が行事予定を確認すると、自分たちの展示日は金曜日だと確認できました。",
+          "reason": "確認後の正しい日付です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「A Hallway Display Put Up One Day Too Early」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "絵を外し、順番に番号を付けて一晩保管しました。",
+          "prompt": "絵を外すとき、翌日に同じ順番で戻せるように何をしましたか。",
+          "answer": "飾る順番を番号付きの紙に残した。",
           "evidence": "They removed the pictures, numbered their order, and stored them overnight.",
           "evidenceJp": "絵を外し、順番に番号を付けて一晩保管しました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "再設置のための具体的対応です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「A Hallway Display Put Up One Day Too Early」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "部が行事予定を確認すると、自分たちの展示日は金曜日だと確認できました。",
-          "evidence": "The club checked the event calendar and confirmed Friday as its display date.",
-          "evidenceJp": "部が行事予定を確認すると、自分たちの展示日は金曜日だと確認できました。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "木曜の発表が終わったあと、美術部は【　】。",
+          "answer": "番号表を使って金曜日の展示を作り直した。",
+          "evidence": "After the Thursday presentation ended, the club used the numbered sheet to rebuild the display for Friday.",
+          "evidenceJp": "木曜の発表後、番号表を使って金曜日の展示を作り直しました。",
+          "reason": "出来事の最終的な解決を補います。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「A Hallway Display Put Up One Day Too Early」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "別のクラスに予定された発表を変えてもらうことはしませんでした。",
-          "evidence": "They did not ask the other class to change its scheduled presentation.",
-          "evidenceJp": "別のクラスに予定された発表を変えてもらうことはしませんでした。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "展示を木曜日に出すという考えが誤りだと分かる二つの情報は何ですか。",
+          "answer": "別のクラスが木曜朝に壁を使う予定だったことと、予定表では美術部の展示日が金曜日だったこと。",
+          "evidence": [
+            "A teacher then pointed out that another class needed the wall for a Thursday morning presentation.",
+            "The club checked the event calendar and confirmed Friday as its display date."
+          ],
+          "evidenceJp": [
+            "先生が、その壁は木曜朝に別のクラスが発表で使うと伝えました。",
+            "部が行事予定を確認すると、自分たちの展示日は金曜日だと確認できました。"
+          ],
+          "reason": "共有場所と日付の二つを合わせます。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「A Hallway Display Put Up One Day Too Early」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "木曜の発表後、番号表を使って金曜日の展示を作り直しました。",
-          "evidence": "After the Thursday presentation ended, the club used the numbered sheet to rebuild the display for Friday.",
-          "evidenceJp": "木曜の発表後、番号表を使って金曜日の展示を作り直しました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "絵を一晩保管する前、美術部は飾る【　】を番号付きの紙に残しました。",
+          "answer": "順番。",
+          "evidence": "They removed the pictures, numbered their order, and stored them overnight.",
+          "evidenceJp": "絵を外し、順番に番号を付けて一晩保管しました。",
+          "reason": "翌日の再設置に必要な情報です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「A Hallway Display Put Up One Day Too Early」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "水曜日、一人の生徒がカレンダーを急いで見て行事は木曜日だと思いました。",
-          "evidence": "On Wednesday, a student read the calendar quickly and thought the event was Thursday.",
-          "evidenceJp": "水曜日、一人の生徒がカレンダーを急いで見て行事は木曜日だと思いました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "美術部は予定が重なったとき、別のクラスに何を求めませんでしたか。",
+          "answer": "予定されていた木曜朝の発表を変更すること。",
+          "evidence": "They did not ask the other class to change its scheduled presentation.",
+          "evidenceJp": "別のクラスに予定された発表を変えてもらうことはしませんでした。",
+          "reason": "相手の予定を変えなかった点を確認します。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「A Hallway Display Put Up One Day Too Early」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "生徒たちは、先に日付と共有場所の予定を確認すると学びました。",
-          "evidence": "The students learned to check the date and shared-space schedule first.",
-          "evidenceJp": "生徒たちは、先に日付と共有場所の予定を確認すると学びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "番号表を作ったことで、金曜日の再展示にはどんな利点があったと考えられますか。",
+          "answer": "絵の元の並びを覚え直さなくても同じ順番で戻しやすくなった。",
+          "evidence": [
+            "They removed the pictures, numbered their order, and stored them overnight.",
+            "After the Thursday presentation ended, the club used the numbered sheet to rebuild the display for Friday."
+          ],
+          "evidenceJp": [
+            "絵を外し、順番に番号を付けて一晩保管しました。",
+            "木曜の発表後、番号表を使って金曜日の展示を作り直しました。"
+          ],
+          "reason": "番号表の利用から本文範囲で推論します。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "GIST",
-          "prompt": "「A Hallway Display Put Up One Day Too Early」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "生徒たちは、先に日付と共有場所の予定を確認すると学びました。",
-          "evidence": "The students learned to check the date and shared-space schedule first.",
-          "evidenceJp": "生徒たちは、先に日付と共有場所の予定を確認すると学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "この話が、共有場所で行事準備をするとき大切だと伝えていることは何ですか。",
+          "answer": "作業を始める前に自分の日付と共有場所の予定の両方を確認すること。",
+          "evidence": [
+            "A teacher then pointed out that another class needed the wall for a Thursday morning presentation.",
+            "The club checked the event calendar and confirmed Friday as its display date.",
+            "The students learned to check the date and shared-space schedule first."
+          ],
+          "evidenceJp": [
+            "先生が、その壁は木曜朝に別のクラスが発表で使うと伝えました。",
+            "部が行事予定を確認すると、自分たちの展示日は金曜日だと確認できました。",
+            "生徒たちは、先に日付と共有場所の予定を確認すると学びました。"
+          ],
+          "reason": "原因と最後の学びをまとめます。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         }
       ],
       "materialData": null,
@@ -166,7 +192,14 @@
       "humanReviewR4": null,
       "humanReviewR5": null,
       "humanReviewR6": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
+      "humanReviewR7": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R7_HUMAN_REVIEW"
     },
     {
       "id": "V11-B11-G1-016",
@@ -229,95 +262,121 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「The Aquarium Feeding Mark Written in the Wrong Row」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "二人の生徒が交代で教室の水槽の魚に餌をやっていました。",
-          "evidence": "Two students took turns feeding the fish in the classroom aquarium.",
-          "evidenceJp": "二人の生徒が交代で教室の水槽の魚に餌をやっていました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "木曜朝、颯太は餌やり表のどこに新しい印を見つけましたか。",
+          "answer": "金曜日の欄。",
+          "evidence": "He was about to feed the fish, but a fresh mark in Friday's row stopped him.",
+          "evidenceJp": "魚に餌をやろうとしましたが、金曜日の欄の新しい印を見て手を止めました。",
+          "reason": "まだ来ていない曜日の欄でした。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "REASON",
-          "prompt": "「The Aquarium Feeding Mark Written in the Wrong Row」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "金曜日はまだなので、颯太は彩に間違った欄の印について尋ねました。",
-          "evidence": "Friday had not come yet, so Sota asked Aya about the mark in the wrong row.",
-          "evidenceJp": "金曜日はまだなので、颯太は彩に間違った欄の印について尋ねました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "颯太が魚へすぐ餌をやらず、彩に確認したのはなぜですか。",
+          "answer": "まだ金曜日ではないのに金曜日の欄に新しい印があり、記入場所を間違えた可能性があったから。",
+          "evidence": [
+            "He was about to feed the fish, but a fresh mark in Friday's row stopped him.",
+            "Friday had not come yet, so Sota asked Aya about the mark in the wrong row."
+          ],
+          "evidenceJp": [
+            "魚に餌をやろうとしましたが、金曜日の欄の新しい印を見て手を止めました。",
+            "金曜日はまだなので、颯太は彩に間違った欄の印について尋ねました。"
+          ],
+          "reason": "あり得ない日付が確認の手がかりです。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「The Aquarium Feeding Mark Written in the Wrong Row」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "魚に餌をやろうとしましたが、金曜日の欄の新しい印を見て手を止めました。",
-          "evidence": "He was about to feed the fish, but a fresh mark in Friday's row stopped him.",
-          "evidenceJp": "魚に餌をやろうとしましたが、金曜日の欄の新しい印を見て手を止めました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "彩は何を思い出して記入ミスだと確認しましたか。",
+          "answer": "十分前に魚へ餌をやったこと。",
+          "evidence": "Aya remembered feeding the fish ten minutes earlier and confirmed the mistake.",
+          "evidenceJp": "彩は10分前に餌をやったことを思い出し、記入ミスを確認しました。",
+          "reason": "直前の世話の記憶です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「The Aquarium Feeding Mark Written in the Wrong Row」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "印を木曜日へ移し、その横に餌をやった時刻も書きました。",
+          "prompt": "二人は間違った印をどのように直しましたか。",
+          "answer": "印を木曜日へ移し、その横に餌をやった時刻も書いた。",
           "evidence": "They moved the mark to Thursday and added the feeding time beside it.",
           "evidenceJp": "印を木曜日へ移し、その横に餌をやった時刻も書きました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "記録の訂正内容です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「The Aquarium Feeding Mark Written in the Wrong Row」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "彩は10分前に餌をやったことを思い出し、記入ミスを確認しました。",
-          "evidence": "Aya remembered feeding the fish ten minutes earlier and confirmed the mistake.",
-          "evidenceJp": "彩は10分前に餌をやったことを思い出し、記入ミスを確認しました。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "記録を確認したため、颯太は魚に【　】。",
+          "answer": "二回目の餌をやらなかった。",
+          "evidence": "Sota did not feed the fish a second time.",
+          "evidenceJp": "颯太は魚に二回目の餌をやりませんでした。",
+          "reason": "重複した世話を避けた結果です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「The Aquarium Feeding Mark Written in the Wrong Row」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "颯太は魚に二回目の餌をやりませんでした。",
-          "evidence": "Sota did not feed the fish a second time.",
-          "evidenceJp": "颯太は魚に二回目の餌をやりませんでした。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "魚がすでに餌をもらっていたと判断できる直接の情報は何ですか。",
+          "answer": "彩が十分前に餌をやったことを思い出し、記入ミスを確認したこと。",
+          "evidence": "Aya remembered feeding the fish ten minutes earlier and confirmed the mistake.",
+          "evidenceJp": "彩は10分前に餌をやったことを思い出し、記入ミスを確認しました。",
+          "reason": "実際に世話をした本人の確認です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「The Aquarium Feeding Mark Written in the Wrong Row」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "それ以降、餌をやる人は印を付ける前に曜日を声に出すことにしました。",
-          "evidence": "From then on, the feeder said the day aloud before making a mark.",
-          "evidenceJp": "それ以降、餌をやる人は印を付ける前に曜日を声に出すことにしました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "二人は木曜日の印の横に、餌をやった【　】も書きました。",
+          "answer": "時刻。",
+          "evidence": "They moved the mark to Thursday and added the feeding time beside it.",
+          "evidenceJp": "印を木曜日へ移し、その横に餌をやった時刻も書きました。",
+          "reason": "再発防止につながる追加記録です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「The Aquarium Feeding Mark Written in the Wrong Row」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "木曜の朝、颯太は餌やり表の木曜日の欄に印がないのを見ました。",
-          "evidence": "On Thursday morning, Sota saw no mark in the Thursday row of the feeding chart.",
-          "evidenceJp": "木曜の朝、颯太は餌やり表の木曜日の欄に印がないのを見ました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "その後、餌をやる人は印を付ける前に何をすることにしましたか。",
+          "answer": "曜日を声に出すこと。",
+          "evidence": "From then on, the feeder said the day aloud before making a mark.",
+          "evidenceJp": "それ以降、餌をやる人は印を付ける前に曜日を声に出すことにしました。",
+          "reason": "記入欄の取り違えを防ぐ工夫です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「The Aquarium Feeding Mark Written in the Wrong Row」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "颯太は、あり得ない日付は世話を重ねる前に記録を確認する手がかりになると学びました。",
-          "evidence": "Sota learned that an impossible date can be a clue to check a record before repeating a care task.",
-          "evidenceJp": "颯太は、あり得ない日付は世話を重ねる前に記録を確認する手がかりになると学びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "金曜日の欄の印をそのまま無視して木曜日にも印を付けるだけでは不十分なのはなぜですか。",
+          "answer": "誤った印が残ると、翌日の記録と誤解されて次の餌やり判断をまた混乱させるから。",
+          "evidence": [
+            "He was about to feed the fish, but a fresh mark in Friday's row stopped him.",
+            "They moved the mark to Thursday and added the feeding time beside it.",
+            "From then on, the feeder said the day aloud before making a mark."
+          ],
+          "evidenceJp": [
+            "魚に餌をやろうとしましたが、金曜日の欄の新しい印を見て手を止めました。",
+            "印を木曜日へ移し、その横に餌をやった時刻も書きました。",
+            "それ以降、餌をやる人は印を付ける前に曜日を声に出すことにしました。"
+          ],
+          "reason": "誤記を正しい欄へ移す必要性から推論します。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "GIST",
-          "prompt": "「The Aquarium Feeding Mark Written in the Wrong Row」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "颯太は、あり得ない日付は世話を重ねる前に記録を確認する手がかりになると学びました。",
-          "evidence": "Sota learned that an impossible date can be a clue to check a record before repeating a care task.",
-          "evidenceJp": "颯太は、あり得ない日付は世話を重ねる前に記録を確認する手がかりになると学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "この話から、世話の記録で不自然な日付を見つけたとき何をすべきだと分かりますか。",
+          "answer": "同じ作業を繰り返す前に記録と実際の世話を確認し、誤記を直すこと。",
+          "evidence": [
+            "Friday had not come yet, so Sota asked Aya about the mark in the wrong row.",
+            "Aya remembered feeding the fish ten minutes earlier and confirmed the mistake.",
+            "Sota did not feed the fish a second time.",
+            "They moved the mark to Thursday and added the feeding time beside it.",
+            "Sota learned that an impossible date can be a clue to check a record before repeating a care task."
+          ],
+          "evidenceJp": [
+            "金曜日はまだなので、颯太は彩に間違った欄の印について尋ねました。",
+            "彩は10分前に餌をやったことを思い出し、記入ミスを確認しました。",
+            "颯太は魚に二回目の餌をやりませんでした。",
+            "印を木曜日へ移し、その横に餌をやった時刻も書きました。",
+            "颯太は、あり得ない日付は世話を重ねる前に記録を確認する手がかりになると学びました。"
+          ],
+          "reason": "二重の餌やりを防いだ流れをまとめます。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         }
       ],
       "materialData": null,
@@ -332,7 +391,14 @@
       "humanReviewR4": null,
       "humanReviewR5": null,
       "humanReviewR6": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
+      "humanReviewR7": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R7_HUMAN_REVIEW"
     },
     {
       "id": "V11-B11-G1-017",
@@ -395,95 +461,125 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「A Choir Folder Taken to the Practice Room Next Door」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "合唱部は昼食後、音楽室Aで練習しました。",
-          "evidence": "The school choir practiced in Music Room A after lunch.",
-          "evidenceJp": "合唱部は昼食後、音楽室Aで練習しました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "美紀が探していた青いファイルには何の楽譜が入っていましたか。",
+          "answer": "合唱部のアルトの楽譜。",
+          "evidence": "Practice ended, but Miki did not find the blue folder with the alto music.",
+          "evidenceJp": "練習が終わりましたが、美紀はアルトの楽譜が入った青いファイルを見つけられませんでした。",
+          "reason": "探している物を特定します。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "REASON",
-          "prompt": "「A Choir Folder Taken to the Practice Room Next Door」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "「吹奏楽」と表示されていたため、そのファイルは持ち出しませんでした。",
-          "evidence": "She left it because its label clearly said 'Brass.'",
-          "evidenceJp": "「吹奏楽」と表示されていたため、そのファイルは持ち出しませんでした。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "美紀が音楽室Bで最初に見つけた青いファイルを持ち帰らなかったのはなぜですか。",
+          "answer": "表紙に「吹奏楽」と書かれていて、別の部の物だと分かったから。",
+          "evidence": [
+            "Miki checked Room B but first saw only a similar blue folder for the brass band.",
+            "She left it because its label clearly said 'Brass.'"
+          ],
+          "evidenceJp": [
+            "美紀がB室を調べると、最初に見えたのは似た青い吹奏楽部のファイルだけでした。",
+            "「吹奏楽」と表示されていたため、そのファイルは持ち出しませんでした。"
+          ],
+          "reason": "色だけで判断しなかった理由です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「A Choir Folder Taken to the Practice Room Next Door」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "誰かが隣の音楽室Bへ二冊のファイルを移したことを思い出しました。",
+          "prompt": "合唱部のファイルが音楽室Bにある可能性を考えた手がかりは何でしたか。",
+          "answer": "Aのピアノを動かしたとき、二冊のファイルを隣のBへ運んだという記憶。",
           "evidence": "Someone remembered moving two folders into Music Room B next door.",
           "evidenceJp": "誰かが隣の音楽室Bへ二冊のファイルを移したことを思い出しました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "移動履歴の情報です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「A Choir Folder Taken to the Practice Room Next Door」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "ピアノ椅子の横を見ると、黒いケースの下に別の青いファイルが少し見えました。",
-          "evidence": "She looked beside the piano bench and found another blue folder partly under a black case.",
-          "evidenceJp": "ピアノ椅子の横を見ると、黒いケースの下に別の青いファイルが少し見えました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "黒いケースの下から見つけたファイルが探していた物だと何で確認しましたか。",
+          "answer": "表示が「合唱アルト」で、最初のページも練習した曲と一致したこと。",
+          "evidence": [
+            "She looked beside the piano bench and found another blue folder partly under a black case.",
+            "Its label said 'Choir Alto,' and the first page matched the song they had practiced."
+          ],
+          "evidenceJp": [
+            "ピアノ椅子の横を見ると、黒いケースの下に別の青いファイルが少し見えました。",
+            "表示は「合唱アルト」で、最初のページは練習した曲と一致しました。"
+          ],
+          "reason": "表示と中身の二つが一致しました。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「A Choir Folder Taken to the Practice Room Next Door」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "練習が終わりましたが、美紀はアルトの楽譜が入った青いファイルを見つけられませんでした。",
-          "evidence": "Practice ended, but Miki did not find the blue folder with the alto music.",
-          "evidenceJp": "練習が終わりましたが、美紀はアルトの楽譜が入った青いファイルを見つけられませんでした。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "ファイルを合唱部の棚へ戻したあと、美紀は【　】。",
+          "answer": "一時移動のメモに音楽室Bと書いた。",
+          "evidence": "Miki returned it to the choir shelf and wrote Room B on the temporary move note.",
+          "evidenceJp": "美紀はファイルを合唱部の棚へ戻し、一時移動のメモにB室と書きました。",
+          "reason": "次回の追跡に残した記録です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「A Choir Folder Taken to the Practice Room Next Door」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "表示は「合唱アルト」で、最初のページは練習した曲と一致しました。",
+          "prompt": "見つけた二冊目の青いファイルが合唱部の物だと判断できる二つの証拠は何ですか。",
+          "answer": "「合唱アルト」という表示と、最初のページが練習した曲と一致したこと。",
           "evidence": "Its label said 'Choir Alto,' and the first page matched the song they had practiced.",
           "evidenceJp": "表示は「合唱アルト」で、最初のページは練習した曲と一致しました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "外側の表示と中身を照合しています。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「A Choir Folder Taken to the Practice Room Next Door」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "美紀はファイルを合唱部の棚へ戻し、一時移動のメモにB室と書きました。",
-          "evidence": "Miki returned it to the choir shelf and wrote Room B on the temporary move note.",
-          "evidenceJp": "美紀はファイルを合唱部の棚へ戻し、一時移動のメモにB室と書きました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "美紀はピアノ椅子の横で、黒いケースの【　】に青いファイルを見つけました。",
+          "answer": "下。",
+          "evidence": "She looked beside the piano bench and found another blue folder partly under a black case.",
+          "evidenceJp": "ピアノ椅子の横を見ると、黒いケースの下に別の青いファイルが少し見えました。",
+          "reason": "発見場所を補います。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「A Choir Folder Taken to the Practice Room Next Door」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "美紀がB室を調べると、最初に見えたのは似た青い吹奏楽部のファイルだけでした。",
-          "evidence": "Miki checked Room B but first saw only a similar blue folder for the brass band.",
-          "evidenceJp": "美紀がB室を調べると、最初に見えたのは似た青い吹奏楽部のファイルだけでした。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "合唱部のファイルを一時的にBへ運んだのは、Aで何をしていたときですか。",
+          "answer": "ピアノを動かしていたとき。",
+          "evidence": "Someone remembered moving two folders into Music Room B next door.",
+          "evidenceJp": "誰かが隣の音楽室Bへ二冊のファイルを移したことを思い出しました。",
+          "reason": "物が移動した背景です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「A Choir Folder Taken to the Practice Room Next Door」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "美紀は、移動先をたどり表示を確認してから物を取ると学びました。",
-          "evidence": "She learned to trace a moved object and check its label before taking it.",
-          "evidenceJp": "美紀は、移動先をたどり表示を確認してから物を取ると学びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "似た青いファイルをすぐ持ち帰らず表示を確認したことがなぜ大切でしたか。",
+          "answer": "色だけでは所有者を区別できず、吹奏楽部の物を誤って持ち去る可能性があったから。",
+          "evidence": [
+            "Miki checked Room B but first saw only a similar blue folder for the brass band.",
+            "She left it because its label clearly said 'Brass.'",
+            "She learned to trace a moved object and check its label before taking it."
+          ],
+          "evidenceJp": [
+            "美紀がB室を調べると、最初に見えたのは似た青い吹奏楽部のファイルだけでした。",
+            "「吹奏楽」と表示されていたため、そのファイルは持ち出しませんでした。",
+            "美紀は、移動先をたどり表示を確認してから物を取ると学びました。"
+          ],
+          "reason": "別の部の所有物を守る判断を推論します。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "GIST",
-          "prompt": "「A Choir Folder Taken to the Practice Room Next Door」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "美紀は、移動先をたどり表示を確認してから物を取ると学びました。",
-          "evidence": "She learned to trace a moved object and check its label before taking it.",
-          "evidenceJp": "美紀は、移動先をたどり表示を確認してから物を取ると学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "この話で、移動後に見つからない物を探すとき有効だと示されている方法は何ですか。",
+          "answer": "どこへ移したかをたどり、似た物でも表示や中身を確認して特定すること。",
+          "evidence": [
+            "Someone remembered moving two folders into Music Room B next door.",
+            "Miki checked Room B but first saw only a similar blue folder for the brass band.",
+            "Its label said 'Choir Alto,' and the first page matched the song they had practiced.",
+            "She learned to trace a moved object and check its label before taking it."
+          ],
+          "evidenceJp": [
+            "誰かが隣の音楽室Bへ二冊のファイルを移したことを思い出しました。",
+            "美紀がB室を調べると、最初に見えたのは似た青い吹奏楽部のファイルだけでした。",
+            "表示は「合唱アルト」で、最初のページは練習した曲と一致しました。",
+            "美紀は、移動先をたどり表示を確認してから物を取ると学びました。"
+          ],
+          "reason": "移動履歴と識別情報を組み合わせます。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         }
       ],
       "materialData": null,
@@ -498,7 +594,14 @@
       "humanReviewR4": null,
       "humanReviewR5": null,
       "humanReviewR6": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
+      "humanReviewR7": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R7_HUMAN_REVIEW"
     },
     {
       "id": "V11-B11-G2-001",
@@ -561,95 +664,127 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「The Cafeteria Portion Test after Too Much Rice Was Left」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "給食係は三週続けて月曜日の昼食後、多くの茶わんにご飯が残っていることに気づきました。",
+          "prompt": "給食係が三週続けて月曜日に気づいた問題は何でしたか。",
+          "answer": "昼食後、多くの茶わんにご飯が残っていたこと。",
           "evidence": "The cafeteria team noticed that many bowls still held rice after lunch on three Mondays.",
           "evidenceJp": "給食係は三週続けて月曜日の昼食後、多くの茶わんにご飯が残っていることに気づきました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "繰り返し観察された問題です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "REASON",
-          "prompt": "「The Cafeteria Portion Test after Too Much Rice Was Left」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "短いアンケートでは、多くの生徒が料理は好きだが標準のご飯量が多すぎると答えました。",
-          "evidence": "A short survey showed that most students liked the food but felt the standard rice serving was too large.",
-          "evidenceJp": "短いアンケートでは、多くの生徒が料理は好きだが標準のご飯量が多すぎると答えました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "給食係が「月曜日の主菜が嫌われている」と考え直したのはなぜですか。",
+          "answer": "アンケートで、多くの生徒は料理が好きだが標準のご飯量が多すぎると分かったから。",
+          "evidence": [
+            "At first, they thought students simply disliked Monday's main dishes.",
+            "A short survey showed that most students liked the food but felt the standard rice serving was too large."
+          ],
+          "evidenceJp": [
+            "最初は、月曜日の主菜が生徒に好まれていないのだと思いました。",
+            "短いアンケートでは、多くの生徒が料理は好きだが標準のご飯量が多すぎると答えました。"
+          ],
+          "reason": "最初の仮説と調査結果を比べます。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「The Cafeteria Portion Test after Too Much Rice Was Left」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "残ったご飯を量ると、火曜や水曜よりかなり多いと分かりました。",
-          "evidence": "They weighed the leftover rice and found much more waste than on Tuesday or Wednesday.",
-          "evidenceJp": "残ったご飯を量ると、火曜や水曜よりかなり多いと分かりました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "給食係は変更の効果を試すため、二週間どんな方法を取りましたか。",
+          "answer": "一つの列だけ最初のご飯を少なめにし、必要ならおかわりできるようにした。",
+          "evidence": "For two weeks, one line offered a slightly smaller first serving and allowed students to ask for more.",
+          "evidenceJp": "二週間、一つの列では最初の量を少し減らし、必要ならおかわりできるようにしました。",
+          "reason": "試行の条件です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「The Cafeteria Portion Test after Too Much Rice Was Left」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "残飯は減り、おかわりを求める生徒数も少ないままでした。",
+          "prompt": "二週間の試行では、残飯とおかわり希望者はどうなりましたか。",
+          "answer": "残飯は減り、おかわりを求める生徒数は少ないままだった。",
           "evidence": "Waste fell, while the number of students asking for a second serving stayed small.",
           "evidenceJp": "残飯は減り、おかわりを求める生徒数も少ないままでした。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "変更後の実測結果です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「The Cafeteria Portion Test after Too Much Rice Was Left」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "一週間の結果だけでは全員の様子を示せないため、すぐすべての食事量を減らしませんでした。",
-          "evidence": "The team did not reduce every meal immediately; one week's result did not show all students.",
-          "evidenceJp": "一週間の結果だけでは全員の様子を示せないため、すぐすべての食事量を減らしませんでした。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "試行後、給食係は少なめの最初の量を続けながら【　】。",
+          "answer": "毎週の残飯量を記録し続けた。",
+          "evidence": "The cafeteria then kept the smaller first portion but continued recording waste each week.",
+          "evidenceJp": "そこで給食係は最初の量を少なめにしつつ、毎週残飯量を記録し続けました。",
+          "reason": "変更後も監視を続けた点です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「The Cafeteria Portion Test after Too Much Rice Was Left」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "二週間、一つの列では最初の量を少し減らし、必要ならおかわりできるようにしました。",
-          "evidence": "For two weeks, one line offered a slightly smaller first serving and allowed students to ask for more.",
-          "evidenceJp": "二週間、一つの列では最初の量を少し減らし、必要ならおかわりできるようにしました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "標準のご飯量が多すぎるという考えを支える情報を二つ答えなさい。",
+          "answer": "アンケートで多くの生徒が量が多いと答えたことと、少なめの試行で残飯が減り、おかわり希望者も少なかったこと。",
+          "evidence": [
+            "A short survey showed that most students liked the food but felt the standard rice serving was too large.",
+            "Waste fell, while the number of students asking for a second serving stayed small."
+          ],
+          "evidenceJp": [
+            "短いアンケートでは、多くの生徒が料理は好きだが標準のご飯量が多すぎると答えました。",
+            "残飯は減り、おかわりを求める生徒数も少ないままでした。"
+          ],
+          "reason": "意見と実測の両方を根拠にします。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「The Cafeteria Portion Test after Too Much Rice Was Left」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "そこで給食係は最初の量を少なめにしつつ、毎週残飯量を記録し続けました。",
-          "evidence": "The cafeteria then kept the smaller first portion but continued recording waste each week.",
-          "evidenceJp": "そこで給食係は最初の量を少なめにしつつ、毎週残飯量を記録し続けました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "試行した列では、最初の量を少なくしても必要なら【　】できるようにしました。",
+          "answer": "おかわり。",
+          "evidence": "For two weeks, one line offered a slightly smaller first serving and allowed students to ask for more.",
+          "evidenceJp": "二週間、一つの列では最初の量を少し減らし、必要ならおかわりできるようにしました。",
+          "reason": "不足を避ける仕組みです。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「The Cafeteria Portion Test after Too Much Rice Was Left」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "最初は、月曜日の主菜が生徒に好まれていないのだと思いました。",
-          "evidence": "At first, they thought students simply disliked Monday's main dishes.",
-          "evidenceJp": "最初は、月曜日の主菜が生徒に好まれていないのだと思いました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "給食係は残ったご飯の量を何曜日と比較しましたか。",
+          "answer": "火曜日と水曜日。",
+          "evidence": "They weighed the leftover rice and found much more waste than on Tuesday or Wednesday.",
+          "evidenceJp": "残ったご飯を量ると、火曜や水曜よりかなり多いと分かりました。",
+          "reason": "月曜日だけ多いかを見る比較です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「The Cafeteria Portion Test after Too Much Rice Was Left」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "生徒たちは、食品ロス削減は変更を試しつつ必要量を追加できるようにするとよりよく進むと学びました。",
-          "evidence": "They learned that reducing food waste works better when a change is tested and students can still request enough food.",
-          "evidenceJp": "生徒たちは、食品ロス削減は変更を試しつつ必要量を追加できるようにするとよりよく進むと学びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "給食係が一週間の結果だけで全食事をすぐ減らさなかった判断はなぜ適切でしたか。",
+          "answer": "一度の結果だけでは全生徒や別の日にも同じ傾向があると確かめられないから。",
+          "evidence": [
+            "The team did not reduce every meal immediately; one week's result did not show all students.",
+            "For two weeks, one line offered a slightly smaller first serving and allowed students to ask for more.",
+            "Waste fell, while the number of students asking for a second serving stayed small."
+          ],
+          "evidenceJp": [
+            "一週間の結果だけでは全員の様子を示せないため、すぐすべての食事量を減らしませんでした。",
+            "二週間、一つの列では最初の量を少し減らし、必要ならおかわりできるようにしました。",
+            "残飯は減り、おかわりを求める生徒数も少ないままでした。"
+          ],
+          "reason": "小さく試してから判断した流れから推論します。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "GIST",
-          "prompt": "「The Cafeteria Portion Test after Too Much Rice Was Left」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "生徒たちは、食品ロス削減は変更を試しつつ必要量を追加できるようにするとよりよく進むと学びました。",
-          "evidence": "They learned that reducing food waste works better when a change is tested and students can still request enough food.",
-          "evidenceJp": "生徒たちは、食品ロス削減は変更を試しつつ必要量を追加できるようにするとよりよく進むと学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "この話が食品ロスを減らす方法として伝えていることは何ですか。",
+          "answer": "原因を調べ、小さく変更を試し、必要量を取れる選択肢を残しながら結果を記録すること。",
+          "evidence": [
+            "A short survey showed that most students liked the food but felt the standard rice serving was too large.",
+            "For two weeks, one line offered a slightly smaller first serving and allowed students to ask for more.",
+            "Waste fell, while the number of students asking for a second serving stayed small.",
+            "The cafeteria then kept the smaller first portion but continued recording waste each week.",
+            "They learned that reducing food waste works better when a change is tested and students can still request enough food."
+          ],
+          "evidenceJp": [
+            "短いアンケートでは、多くの生徒が料理は好きだが標準のご飯量が多すぎると答えました。",
+            "二週間、一つの列では最初の量を少し減らし、必要ならおかわりできるようにしました。",
+            "残飯は減り、おかわりを求める生徒数も少ないままでした。",
+            "そこで給食係は最初の量を少なめにしつつ、毎週残飯量を記録し続けました。",
+            "生徒たちは、食品ロス削減は変更を試しつつ必要量を追加できるようにするとよりよく進むと学びました。"
+          ],
+          "reason": "調査・試行・継続記録をまとめます。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         }
       ],
       "materialData": null,
@@ -664,7 +799,14 @@
       "humanReviewR4": null,
       "humanReviewR5": null,
       "humanReviewR6": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
+      "humanReviewR7": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R7_HUMAN_REVIEW"
     },
     {
       "id": "V11-B11-G2-002",
@@ -727,95 +869,121 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「Two Clubs Asked for the Same Study Room」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "科学部と英語部がどちらも木曜放課後の第三自習室を予約していました。",
-          "evidence": "The science club and the English club both reserved Study Room 3 for Thursday after school.",
-          "evidenceJp": "科学部と英語部がどちらも木曜放課後の第三自習室を予約していました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "二つの部が同じ第三自習室を予約してしまった原因は何でしたか。",
+          "answer": "一方は紙、もう一方はオンラインで申請し、予約情報が別々だったから。",
+          "evidence": "The conflict appeared because one request had been written on paper while the other had been entered online.",
+          "evidenceJp": "一方は紙、もう一方はオンラインで申請したため、重複に気づきませんでした。",
+          "reason": "重複の仕組み上の原因です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "REASON",
-          "prompt": "「Two Clubs Asked for the Same Study Room」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "早い申請の部が自動的に勝つと決めず、ほかの部屋も調べました。",
-          "evidence": "They checked other rooms instead of deciding that the club with the earlier message automatically won.",
-          "evidenceJp": "早い申請の部が自動的に勝つと決めず、ほかの部屋も調べました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "一時間を半分ずつ使う案を採らなかったのはなぜですか。",
+          "answer": "科学部の実験を途中で移すには時間がかかりすぎたから。",
+          "evidence": "The clubs first discussed splitting the hour equally, but moving the experiment halfway through would take too long.",
+          "evidenceJp": "最初は一時間を半分ずつ使う案を考えましたが、実験を途中で移すには時間がかかりすぎました。",
+          "reason": "部屋を途中交代できない理由です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「Two Clubs Asked for the Same Study Room」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "科学部は短い実験のため室内の流しを必要とし、英語部は会話練習の静かな場所を必要としていました。",
+          "prompt": "科学部と英語部がそれぞれ部屋に必要としていた条件は何ですか。",
+          "answer": "科学部は流し、英語部は会話練習のための静かな場所。",
           "evidence": "Science needed sinks in the room for a short experiment, while English needed a quiet place for speaking practice.",
           "evidenceJp": "科学部は短い実験のため室内の流しを必要とし、英語部は会話練習の静かな場所を必要としていました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "異なる必要条件を対比します。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「Two Clubs Asked for the Same Study Room」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "英語部が第五教室へ移り、科学部は実験のため第三自習室を使いました。",
-          "evidence": "English moved to Room 5, and science kept Room 3 for the experiment.",
-          "evidenceJp": "英語部が第五教室へ移り、科学部は実験のため第三自習室を使いました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "別の部屋を調べた結果、二つの部はどう分かれて活動しましたか。",
+          "answer": "英語部が第五教室へ移り、科学部が第三自習室を使った。",
+          "evidence": [
+            "Room 5 had no sinks but was quiet and open for the full hour.",
+            "English moved to Room 5, and science kept Room 3 for the experiment."
+          ],
+          "evidenceJp": [
+            "第五教室には流しはありませんが、静かで一時間ずっと空いていました。",
+            "英語部が第五教室へ移り、科学部は実験のため第三自習室を使いました。"
+          ],
+          "reason": "条件に合う最終配置です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「Two Clubs Asked for the Same Study Room」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "一方は紙、もう一方はオンラインで申請したため、重複に気づきませんでした。",
-          "evidence": "The conflict appeared because one request had been written on paper while the other had been entered online.",
-          "evidenceJp": "一方は紙、もう一方はオンラインで申請したため、重複に気づきませんでした。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "同じ問題を繰り返さないため、先生は今後すべての予約を【　】。",
+          "answer": "一つの共有カレンダーにも記録することにした。",
+          "evidence": "The teacher then required all future reservations to be copied into one shared calendar.",
+          "evidenceJp": "先生は今後すべての予約を一つの共有カレンダーにも記録することにしました。",
+          "reason": "予約重複の原因そのものへの対策です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「Two Clubs Asked for the Same Study Room」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "第五教室には流しはありませんが、静かで一時間ずっと空いていました。",
+          "prompt": "第五教室が英語部に適していたと判断できる情報は何ですか。",
+          "answer": "流しはないが、静かで一時間ずっと空いていたこと。",
           "evidence": "Room 5 had no sinks but was quiet and open for the full hour.",
           "evidenceJp": "第五教室には流しはありませんが、静かで一時間ずっと空いていました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "英語部の必要条件に合います。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「Two Clubs Asked for the Same Study Room」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "先生は今後すべての予約を一つの共有カレンダーにも記録することにしました。",
-          "evidence": "The teacher then required all future reservations to be copied into one shared calendar.",
-          "evidenceJp": "先生は今後すべての予約を一つの共有カレンダーにも記録することにしました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "科学部は短い実験のため第三自習室の【　】を必要としていました。",
+          "answer": "流し。",
+          "evidence": "Science needed sinks in the room for a short experiment, while English needed a quiet place for speaking practice.",
+          "evidenceJp": "科学部は短い実験のため室内の流しを必要とし、英語部は会話練習の静かな場所を必要としていました。",
+          "reason": "科学部だけに必要な設備です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「Two Clubs Asked for the Same Study Room」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "最初は一時間を半分ずつ使う案を考えましたが、実験を途中で移すには時間がかかりすぎました。",
-          "evidence": "The clubs first discussed splitting the hour equally, but moving the experiment halfway through would take too long.",
-          "evidenceJp": "最初は一時間を半分ずつ使う案を考えましたが、実験を途中で移すには時間がかかりすぎました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "二つの部は、どちらが部屋を使うかを申請の早さだけで決めましたか。",
+          "answer": "決めず、ほかの部屋も調べた。",
+          "evidence": "They checked other rooms instead of deciding that the club with the earlier message automatically won.",
+          "evidenceJp": "早い申請の部が自動的に勝つと決めず、ほかの部屋も調べました。",
+          "reason": "公平な解決手順です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「Two Clubs Asked for the Same Study Room」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "両部は、公平な解決には各班の本当の必要に合わせ、重複の原因もなくすことが大切だと学びました。",
-          "evidence": "The clubs learned that a fair solution should match each group's real needs and also remove the cause of the conflict.",
-          "evidenceJp": "両部は、公平な解決には各班の本当の必要に合わせ、重複の原因もなくすことが大切だと学びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "英語部を第五教室へ移す案が、単純な「先着順」より双方の必要に合っていたのはなぜですか。",
+          "answer": "英語部は静かな場所を確保でき、流しが必要な科学部は第三自習室を使い続けられたから。",
+          "evidence": [
+            "Science needed sinks in the room for a short experiment, while English needed a quiet place for speaking practice.",
+            "Room 5 had no sinks but was quiet and open for the full hour.",
+            "English moved to Room 5, and science kept Room 3 for the experiment."
+          ],
+          "evidenceJp": [
+            "科学部は短い実験のため室内の流しを必要とし、英語部は会話練習の静かな場所を必要としていました。",
+            "第五教室には流しはありませんが、静かで一時間ずっと空いていました。",
+            "英語部が第五教室へ移り、科学部は実験のため第三自習室を使いました。"
+          ],
+          "reason": "限られた設備を必要な側へ残しています。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "GIST",
-          "prompt": "「Two Clubs Asked for the Same Study Room」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "両部は、公平な解決には各班の本当の必要に合わせ、重複の原因もなくすことが大切だと学びました。",
-          "evidence": "The clubs learned that a fair solution should match each group's real needs and also remove the cause of the conflict.",
-          "evidenceJp": "両部は、公平な解決には各班の本当の必要に合わせ、重複の原因もなくすことが大切だと学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "この話が予約の衝突を公平に解くうえで大切だと示していることは何ですか。",
+          "answer": "各グループの実際の必要条件に合う代案を探し、予約情報も一つにまとめて原因を直すこと。",
+          "evidence": [
+            "Science needed sinks in the room for a short experiment, while English needed a quiet place for speaking practice.",
+            "They checked other rooms instead of deciding that the club with the earlier message automatically won.",
+            "Room 5 had no sinks but was quiet and open for the full hour.",
+            "The teacher then required all future reservations to be copied into one shared calendar.",
+            "The clubs learned that a fair solution should match each group's real needs and also remove the cause of the conflict."
+          ],
+          "evidenceJp": [
+            "科学部は短い実験のため室内の流しを必要とし、英語部は会話練習の静かな場所を必要としていました。",
+            "早い申請の部が自動的に勝つと決めず、ほかの部屋も調べました。",
+            "第五教室には流しはありませんが、静かで一時間ずっと空いていました。",
+            "先生は今後すべての予約を一つの共有カレンダーにも記録することにしました。",
+            "両部は、公平な解決には各班の本当の必要に合わせ、重複の原因もなくすことが大切だと学びました。"
+          ],
+          "reason": "今回の解決と再発防止をまとめます。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         }
       ],
       "materialData": null,
@@ -830,7 +998,14 @@
       "humanReviewR4": null,
       "humanReviewR5": null,
       "humanReviewR6": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
+      "humanReviewR7": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R7_HUMAN_REVIEW"
     },
     {
       "id": "V11-B11-G2-003",
@@ -893,95 +1068,127 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「Rainwater Collected beside the Bicycle Parking Area」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "大雨の後、生徒たちは自転車置き場の横に大きな水たまりを見つけました。",
-          "evidence": "After heavy rain, students found a wide puddle beside the bicycle parking area.",
-          "evidenceJp": "大雨の後、生徒たちは自転車置き場の横に大きな水たまりを見つけました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "大雨のあと、自転車置き場のどこに問題が起きましたか。",
+          "answer": "奥の列から自転車を出す人が水に入らなければならないほどの大きな水たまりが横にできた。",
+          "evidence": [
+            "After heavy rain, students found a wide puddle beside the bicycle parking area.",
+            "Riders had to step into the water when they moved bicycles from the back row."
+          ],
+          "evidenceJp": [
+            "大雨の後、生徒たちは自転車置き場の横に大きな水たまりを見つけました。",
+            "奥の列から自転車を出すとき、利用者は水の中へ足を入れなければなりませんでした。"
+          ],
+          "reason": "利用者への具体的影響です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "REASON",
-          "prompt": "「Rainwater Collected beside the Bicycle Parking Area」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "全体を覆っても、多くの水が来る場所は変わらず費用だけ増えると気づきました。",
-          "evidence": "They realized that covering the whole area would cost more without changing where most water arrived.",
-          "evidenceJp": "全体を覆っても、多くの水が来る場所は変わらず費用だけ増えると気づきました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "環境部が周り全体へ砂利を敷く案をそのまま実行しなかったのはなぜですか。",
+          "answer": "観察すると一本の雨どいから低い角へ多くの水が流れており、全体を覆っても水の来る場所は変わらず費用が増えると分かったから。",
+          "evidence": [
+            "Before buying anything, they watched the next rain and saw water flowing from one roof pipe toward a low corner.",
+            "They realized that covering the whole area would cost more without changing where most water arrived."
+          ],
+          "evidenceJp": [
+            "購入前に次の雨を観察すると、一本の雨どいから低い角へ水が流れていると分かりました。",
+            "全体を覆っても、多くの水が来る場所は変わらず費用だけ増えると気づきました。"
+          ],
+          "reason": "水の流れを観察して案を見直しました。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「Rainwater Collected beside the Bicycle Parking Area」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "環境部は最初、自転車置き場の周り全体に砂利を増やす案を出しました。",
-          "evidence": "The environment club first suggested adding more gravel everywhere around the parking area.",
-          "evidenceJp": "環境部は最初、自転車置き場の周り全体に砂利を増やす案を出しました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "環境部と学校管理者が実際に行った二つの改善は何ですか。",
+          "answer": "近くの排水口の葉を取り、雨どいから排水口へ浅い砂利の水路を作った。",
+          "evidence": "With the school manager, they cleared leaves from a nearby drain and made a shallow gravel channel from the pipe to it.",
+          "evidenceJp": "学校管理者と一緒に近くの排水口の葉を取り、雨どいからそこへ浅い砂利の水路を作りました。",
+          "reason": "原因に直接対応した作業です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「Rainwater Collected beside the Bicycle Parking Area」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "次の嵐では水路が大部分の水を流し、水たまりはかなり小さくなりました。",
+          "prompt": "次の嵐で、作った水路はどのような結果をもたらしましたか。",
+          "answer": "大部分の水を流し、水たまりをかなり小さくした。",
           "evidence": "During the next storm, the channel carried most water away and the puddle became much smaller.",
           "evidenceJp": "次の嵐では水路が大部分の水を流し、水たまりはかなり小さくなりました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "修理後の観察結果です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「Rainwater Collected beside the Bicycle Parking Area」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "奥の列から自転車を出すとき、利用者は水の中へ足を入れなければなりませんでした。",
-          "evidence": "Riders had to step into the water when they moved bicycles from the back row.",
-          "evidenceJp": "奥の列から自転車を出すとき、利用者は水の中へ足を入れなければなりませんでした。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "水たまりが小さくなったあとも、環境部は【　】。",
+          "answer": "残った湿った場所に印を付け、もう一度確認することにした。",
+          "evidence": "The club marked the remaining wet spot for another check rather than claiming the problem was completely solved.",
+          "evidenceJp": "部は問題が完全に解決したとせず、残った湿った場所を次の確認用に記録しました。",
+          "reason": "完全解決と決めつけず追跡しました。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「Rainwater Collected beside the Bicycle Parking Area」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "学校管理者と一緒に近くの排水口の葉を取り、雨どいからそこへ浅い砂利の水路を作りました。",
-          "evidence": "With the school manager, they cleared leaves from a nearby drain and made a shallow gravel channel from the pipe to it.",
-          "evidenceJp": "学校管理者と一緒に近くの排水口の葉を取り、雨どいからそこへ浅い砂利の水路を作りました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "水たまりの主な原因が一か所から来る水だと考える根拠は何でしたか。",
+          "answer": "次の雨を観察したとき、一本の雨どいから低い角へ水が流れていたこと。",
+          "evidence": "Before buying anything, they watched the next rain and saw water flowing from one roof pipe toward a low corner.",
+          "evidenceJp": "購入前に次の雨を観察すると、一本の雨どいから低い角へ水が流れていると分かりました。",
+          "reason": "実際の水の動きの観察です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「Rainwater Collected beside the Bicycle Parking Area」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "部は問題が完全に解決したとせず、残った湿った場所を次の確認用に記録しました。",
-          "evidence": "The club marked the remaining wet spot for another check rather than claiming the problem was completely solved.",
-          "evidenceJp": "部は問題が完全に解決したとせず、残った湿った場所を次の確認用に記録しました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "雨どいから近くの排水口へ、浅い砂利の【　】を作りました。",
+          "answer": "水路。",
+          "evidence": "With the school manager, they cleared leaves from a nearby drain and made a shallow gravel channel from the pipe to it.",
+          "evidenceJp": "学校管理者と一緒に近くの排水口の葉を取り、雨どいからそこへ浅い砂利の水路を作りました。",
+          "reason": "水の通り道を補います。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「Rainwater Collected beside the Bicycle Parking Area」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "購入前に次の雨を観察すると、一本の雨どいから低い角へ水が流れていると分かりました。",
+          "prompt": "砂利を買う前に、環境部は何をしましたか。",
+          "answer": "次の雨を観察して水がどこから流れるか確かめた。",
           "evidence": "Before buying anything, they watched the next rain and saw water flowing from one roof pipe toward a low corner.",
           "evidenceJp": "購入前に次の雨を観察すると、一本の雨どいから低い角へ水が流れていると分かりました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "対策前の調査です。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「Rainwater Collected beside the Bicycle Parking Area」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "生徒たちは、水が実際にどう動くか観察すれば、より小さく効果的な改善につながると学びました。",
-          "evidence": "They learned that observing how water actually moves can lead to a smaller and more useful repair.",
-          "evidenceJp": "生徒たちは、水が実際にどう動くか観察すれば、より小さく効果的な改善につながると学びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "水たまりが小さくなっても残った湿った場所を記録したのはなぜですか。",
+          "answer": "改善は確認できても問題が完全になくなったとはまだ言えず、次の雨でも確かめる必要があったから。",
+          "evidence": [
+            "During the next storm, the channel carried most water away and the puddle became much smaller.",
+            "The club marked the remaining wet spot for another check rather than claiming the problem was completely solved."
+          ],
+          "evidenceJp": [
+            "次の嵐では水路が大部分の水を流し、水たまりはかなり小さくなりました。",
+            "部は問題が完全に解決したとせず、残った湿った場所を次の確認用に記録しました。"
+          ],
+          "reason": "結果を過大評価しない姿勢を推論します。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         },
         {
           "questionType": "GIST",
-          "prompt": "「Rainwater Collected beside the Bicycle Parking Area」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "生徒たちは、水が実際にどう動くか観察すれば、より小さく効果的な改善につながると学びました。",
-          "evidence": "They learned that observing how water actually moves can lead to a smaller and more useful repair.",
-          "evidenceJp": "生徒たちは、水が実際にどう動くか観察すれば、より小さく効果的な改善につながると学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "この話が小さく効果的な修理につなげる方法として示していることは何ですか。",
+          "answer": "先に問題の実際の流れを観察し、原因が集中する場所へ対策し、その後も結果を確認すること。",
+          "evidence": [
+            "Before buying anything, they watched the next rain and saw water flowing from one roof pipe toward a low corner.",
+            "They realized that covering the whole area would cost more without changing where most water arrived.",
+            "With the school manager, they cleared leaves from a nearby drain and made a shallow gravel channel from the pipe to it.",
+            "During the next storm, the channel carried most water away and the puddle became much smaller.",
+            "The club marked the remaining wet spot for another check rather than claiming the problem was completely solved.",
+            "They learned that observing how water actually moves can lead to a smaller and more useful repair."
+          ],
+          "evidenceJp": [
+            "購入前に次の雨を観察すると、一本の雨どいから低い角へ水が流れていると分かりました。",
+            "全体を覆っても、多くの水が来る場所は変わらず費用だけ増えると気づきました。",
+            "学校管理者と一緒に近くの排水口の葉を取り、雨どいからそこへ浅い砂利の水路を作りました。",
+            "次の嵐では水路が大部分の水を流し、水たまりはかなり小さくなりました。",
+            "部は問題が完全に解決したとせず、残った湿った場所を次の確認用に記録しました。",
+            "生徒たちは、水が実際にどう動くか観察すれば、より小さく効果的な改善につながると学びました。"
+          ],
+          "reason": "観察から修理・再確認までをまとめます。",
+          "questionReview": "B11_R7_HUMAN_REVIEW"
         }
       ],
       "materialData": null,
@@ -996,7 +1203,14 @@
       "humanReviewR4": null,
       "humanReviewR5": null,
       "humanReviewR6": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
+      "humanReviewR7": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R7_HUMAN_REVIEW"
     }
   ]
 }
