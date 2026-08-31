@@ -1,0 +1,42 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "APP1271_RUNTIME_PARENT_RECONSTRUCTION_FROM_FIXED_SOURCES",
+  "recorded_at_jst": "2026-09-01T04:58:00+09:00",
+  "status": "PASS_CURRENT_CONTRACT_FINAL10_NO_RUNTIME_PROMOTION",
+  "identity_source": "math-bank/state/app1271-winpass-mime-independent-exact-body-recovery-20260831T2113JST.json",
+  "historical_strict_source": "math-bank/state/winpass10-1suhy000417-strict-20260827.json",
+  "current_schema_jsonl": "math-bank/state/winpass10-1suhy000417-current-schema-20260901T0458JST.jsonl",
+  "source_document": "25winpasst1suhy000417.docx",
+  "source_document_sha256": "c49ef3c336dff17d50fa6f974a86bb89cb2f245d854b28c9f6d55ee498d8a552",
+  "records": 10,
+  "unique_raw_ids": 10,
+  "unique_current_fingerprints": 10,
+  "raw_id_union_sha256": "af26dd3658739335a37535aeb2051abec253ce86c83217ba1c969259f1cfd38c",
+  "current_fingerprint_union_sha256": "3bfffe861a478e8969ace9efd93aa3deb4bcfbf7b9aa37a8a0c55142764bce8c",
+  "jsonl_bytes": 7548,
+  "jsonl_sha256": "ef644ab802b3240332c4e4b052290da978d96335e4616bdeab234a340a3828ca",
+  "quality_gate": {
+    "known717_identity_partition": "707 full-body records + these historical structured strict 10 = 717 unique raw_ids",
+    "source_document_sha256": "PASS durable fixed-source identity",
+    "score_evidence": "10/10 PASS",
+    "question_offsets": "10/10 PASS ordered OOXML paragraph binding",
+    "answer_offsets": "10/10 PASS ordered OOXML paragraph binding",
+    "figure_relationship_asset_identity": "9 refs across 6 figure-dependent records PASS",
+    "independent_checks": "10/10 PASS inherited and rechecked against strict semantics",
+    "current_record_validator": "10/10 per-record PASS",
+    "fingerprint_recalculation": "10/10 PASS"
+  },
+  "winpass_current_contract": {
+    "previous_ready": 707,
+    "newly_ready": 10,
+    "ready": 717,
+    "remaining": 0,
+    "runtime_promotion_count": 0
+  },
+  "guards": {
+    "count_forcing_used": false,
+    "main_touched": false,
+    "publication_ready": false
+  },
+  "next": "Assemble the complete current-contract Winpass717 union with Standard317 and Jitsuren237 and run validate_raw1271_materialization.py on all 1271 records before any app mapping or runtime promotion."
+}
