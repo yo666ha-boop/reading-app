@@ -21,19 +21,24 @@ function restore(p){
   p.supportNotesVersion=s.version;
   return p;
 }
-// Keep this wrapper outermost even when later shared runtime code replaces window.choose.
-// The setter only swaps the delegate. Every choose result therefore passes through restore().
+// R6: keep the outer wrapper structurally installed. R5 left the property
+// configurable, so later runtime code could replace the descriptor itself and
+// bypass the setter. With configurable:false, ordinary later assignments still
+// update the delegate through the setter, while descriptor replacement cannot
+// remove the restore boundary.
 let delegate=window.choose;
 if(typeof delegate==='function'){
   const guardedChoose=function(){return restore(delegate.apply(this,arguments));};
   guardedChoose.__V11_B11_PROPERTY_GUARD=true;
   guardedChoose.__V11_B11_PROPERTY_BASE=delegate;
   try{
-    Object.defineProperty(window,'choose',{configurable:true,enumerable:true,get(){return guardedChoose;},set(fn){
+    Object.defineProperty(window,'choose',{configurable:false,enumerable:true,get(){return guardedChoose;},set(fn){
       if(typeof fn==='function'&&fn!==guardedChoose){delegate=fn;guardedChoose.__V11_B11_PROPERTY_BASE=fn;}
     }});
-  }catch(_e){try{window.choose=guardedChoose;}catch(__e){}}
+    const d=Object.getOwnPropertyDescriptor(window,'choose');
+    if(!d||d.configurable!==false||typeof d.get!=='function'||typeof d.set!=='function')throw Error('non-configurable choose descriptor not installed');
+  }catch(e){throw Error('Batch11 outer choose guard R6: '+e.message);}
 }
 for(const arr of Object.values(window.V11_EXTRA_PASSAGES||{}))for(const p of arr||[])restore(p);
-window.V11_BATCH11_CHOOSE_PROPERTY_GUARD={installed:true,snapshots:frozen.size,passagePropertyGuard:true,defensiveClone:true,outerChooseGuard:true,version:'20260831-b11-support-property-guard-r5'};
+window.V11_BATCH11_CHOOSE_PROPERTY_GUARD={installed:true,snapshots:frozen.size,passagePropertyGuard:true,defensiveClone:true,outerChooseGuard:true,nonConfigurableChoose:true,version:'20260831-b11-support-property-guard-r6'};
 })();
