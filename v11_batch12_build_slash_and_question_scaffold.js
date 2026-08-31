@@ -4,11 +4,24 @@ if(src.registered!==false||src.humanReviewedCount!==50||src.humanReviewPendingCo
 const enSeg=new Intl.Segmenter('en',{granularity:'sentence'}),jpSeg=new Intl.Segmenter('ja',{granularity:'sentence'});
 function splitWith(seg,s){return [...seg.segment(s)].map(x=>x.segment.trim()).filter(Boolean)}
 function splitEn(s){return splitWith(enSeg,s)} function splitJp(s){return splitWith(jpSeg,s)}
-function partition(a,k){if(k<1||k>a.length)throw new Error('invalid partition');const out=[];let from=0;for(let i=0;i<k;i++){const to=Math.round((i+1)*a.length/k);out.push(a.slice(from,to));from=to;}return out}
-function align(en,jp){const k=Math.min(en.length,jp.length),eg=partition(en,k),jg=partition(jp,k);return eg.map((x,i)=>({en:x.join(' '),jp:jg[i].join(''),humanReview:(x.length===1&&jg[i].length===1)?'PENDING_CONFIRM':'PENDING_GROUP_BOUNDARY'}))}
+function digits(s){return [...s.matchAll(/\d+(?::\d+)?/g)].map(m=>m[0].replace(/^0+/,'')).sort().join('|')}
+function coreLen(s){return Math.max(1,[...s.replace(/[\s\p{P}\p{S}]/gu,'')].length)}
+function groupCost(ea,ja,ratio,ec,jc){const e=ea.join(' '),j=ja.join('');const lenCost=Math.abs(Math.log((coreLen(j)/coreLen(e))/ratio));const de=digits(e),dj=digits(j);const digitCost=(de||dj)&&de!==dj?1.35:0;const mergePenalty=(ec+jc-2)*0.22;return lenCost+digitCost+mergePenalty}
+function align(en,jp,id){
+  const ratio=jp.reduce((a,s)=>a+coreLen(s),0)/en.reduce((a,s)=>a+coreLen(s),0);
+  const N=en.length,M=jp.length,INF=1e9;
+  const dp=Array.from({length:N+1},()=>Array(M+1).fill(INF)),prev=Array.from({length:N+1},()=>Array(M+1).fill(null));dp[0][0]=0;
+  const steps=[[1,1],[1,2],[2,1],[2,2]];
+  for(let i=0;i<=N;i++)for(let j=0;j<=M;j++)if(dp[i][j]<INF)for(const [ec,jc] of steps){if(i+ec>N||j+jc>M)continue;const c=groupCost(en.slice(i,i+ec),jp.slice(j,j+jc),ratio,ec,jc);const v=dp[i][j]+c;if(v<dp[i+ec][j+jc]){dp[i+ec][j+jc]=v;prev[i+ec][j+jc]={i,j,ec,jc,c};}}
+  if(dp[N][M]>=INF)throw new Error(`${id} slash sequence alignment impossible en=${N} jp=${M}`);
+  const rev=[];let i=N,j=M;while(i||j){const p=prev[i][j];if(!p)throw new Error(`${id} slash traceback failed at ${i}/${j}`);rev.push({en:en.slice(p.i,i).join(' '),jp:jp.slice(p.j,j).join(''),ec:p.ec,jc:p.jc,cost:+p.c.toFixed(4)});i=p.i;j=p.j;}
+  const groups=rev.reverse();const avg=dp[N][M]/groups.length;
+  if(avg>0.95)throw new Error(`${id} slash alignment confidence too low avg=${avg.toFixed(3)}`);
+  return groups.map(g=>({en:g.en,jp:g.jp,humanReview:(g.ec===1&&g.jc===1)?'PENDING_CONFIRM':'PENDING_GROUP_BOUNDARY',alignmentCost:g.cost,alignmentShape:`${g.ec}:${g.jc}`}));
+}
 function Q(type,prompt,answer,evidence,evidenceJp,reason){return{questionType:type,prompt,answer,evidence,evidenceJp,reason,humanReview:'PENDING'}}
-const out=JSON.parse(JSON.stringify(src));let rows=0,q=0,grouped=0;
-for(const p of out.passages){const en=splitEn(p.body),jp=splitJp(p.fullTranslation);if(en.length<6||jp.length<6)throw new Error(`${p.id} too few sentence units en=${en.length} jp=${jp.length}`);p.sentences=en;p.slashRows=align(en,jp);if(p.slashRows.some(r=>r.humanReview==='PENDING_GROUP_BOUNDARY'))grouped++;rows+=p.slashRows.length;const n=p.slashRows.length,idx={first:0,clue:Math.min(2,n-1),turn:Math.max(1,Math.floor(n/2)-1),action:Math.max(1,n-2),last:n-1};const mk=i=>p.slashRows[i];let x;
+const out=JSON.parse(JSON.stringify(src));let rows=0,q=0,grouped=0;const alignmentAudit=[];
+for(const p of out.passages){const en=splitEn(p.body),jp=splitJp(p.fullTranslation);if(en.length<6||jp.length<6)throw new Error(`${p.id} too few sentence units en=${en.length} jp=${jp.length}`);p.sentences=en;p.slashRows=align(en,jp,p.id);const groupedRows=p.slashRows.filter(r=>r.humanReview==='PENDING_GROUP_BOUNDARY');if(groupedRows.length)grouped++;alignmentAudit.push({id:p.id,enUnits:en.length,jpUnits:jp.length,rows:p.slashRows.length,groupedRows:groupedRows.length,shapes:groupedRows.map(r=>r.alignmentShape)});rows+=p.slashRows.length;const n=p.slashRows.length,idx={first:0,clue:Math.min(2,n-1),turn:Math.max(1,Math.floor(n/2)-1),action:Math.max(1,n-2),last:n-1};const mk=i=>p.slashRows[i];let x;
 x=mk(idx.first);p.questions=[Q('GIST','本文の最初に示された状況・問題を答えなさい。',x.jp,x.en,x.jp,'冒頭の状況を本文から確認します。')];
 x=mk(idx.clue);p.questions.push(Q('DETAIL','判断の手がかりになった具体的な情報を一つ答えなさい。',x.jp,x.en,x.jp,'本文中の具体情報が根拠です。'));
 x=mk(idx.turn);p.questions.push(Q('REASON','最初の考えをそのまま実行せず、確認や見直しをした理由を答えなさい。',x.jp,x.en,x.jp,'判断が変わる付近の記述を根拠にします。'));
@@ -19,6 +32,6 @@ x=mk(idx.turn);p.questionSetB.push(Q('SUMMARY_FILL','確認後、話の流れを
 x=mk(idx.clue);p.questionSetB.push(Q('DETAIL','判断を変えるきっかけになった情報を答えなさい。',x.jp,x.en,x.jp,'具体的な手がかりを本文から探します。'));
 x=mk(idx.action);p.questionSetB.push(Q('CONTENT_MATCH','最終的に行った変更・決定・対応を答えなさい。',x.jp,x.en,x.jp,'終盤の決定と一致する内容です。'));
 x=mk(idx.last);p.questionSetB.push(Q('GIST','文章全体を最もよく表す学び・結論を答えなさい。',x.jp,x.en,x.jp,'最後の文を中心に文章全体をまとめます。'));
-p.slashStage='B12_SLASH_SCAFFOLD_HUMAN_REVIEW_REQUIRED';p.questionStage='B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED';q+=10;}
-if(out.passages.length!==50||q!==500)throw new Error('count mismatch');out.status='SLASH_AND_QUESTION_SCAFFOLD_READY_HUMAN_REVIEW_REQUIRED';out.slashScaffoldPassages=50;out.slashRowsTotal=rows;out.slashGroupedBoundaryPassages=grouped;out.slashHumanReviewed=0;out.questionScaffoldCount=q;out.humanQuestionReviewed=0;out.registered=false;
+p.slashStage='B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED';p.questionStage='B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED';q+=10;}
+if(out.passages.length!==50||q!==500)throw new Error('count mismatch');out.status='SLASH_SEQUENCE_ALIGNED_QUESTION_SCAFFOLD_READY_HUMAN_REVIEW_REQUIRED';out.slashScaffoldPassages=50;out.slashRowsTotal=rows;out.slashGroupedBoundaryPassages=grouped;out.slashHumanReviewed=0;out.questionScaffoldCount=q;out.humanQuestionReviewed=0;out.alignmentAudit=alignmentAudit;out.registered=false;
 fs.writeFileSync('v11_batch12_slash_question_scaffold.json',JSON.stringify(out,null,2)+'\n');console.log(JSON.stringify({passages:50,slashRows:rows,groupedBoundaryPassages:grouped,questions:q,slashHumanReviewed:0,humanQuestionReviewed:0,registered:false},null,2));
