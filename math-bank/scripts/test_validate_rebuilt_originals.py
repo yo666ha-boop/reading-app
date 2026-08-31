@@ -50,7 +50,7 @@ def main() -> None:
         assert m.validate(wrong_count, set())["pass"] is False
     finally:
         m.TARGETS.clear(); m.TARGETS.update(old_targets); m.TOTAL = old_total
-    print("PASS_REBUILT_ORIGINALS_1124_COUNTS_ID_FINGERPRINT_FIGURE_GENERATED_GATES")
+    print("PASS_REBUILT_ORIGINALS_1271_COUNTS_ID_FINGERPRINT_FIGURE_GENERATED_GATES")
 
 
 if __name__ == "__main__":
