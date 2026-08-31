@@ -22,13 +22,13 @@ class GateTest(unittest.TestCase):
     def test_missing_figure_rejected(self):
         r=make_record(); r["figure_refs"]=[{"relationship_id":"rId5","target":"word/media/image5.png","missing":True}]; r["record_fingerprint"]=gate.recompute_fingerprint(r); self.assertTrue(any("marked missing" in e for e in gate.validate_record(r,1)))
     def test_figure_count_not_historical_constant(self):
-        old_expected=gate.EXPECTED.copy()
+        old_expected=gate.EXPECTED.copy(); old_total=gate.EXPECTED_TOTAL
         try:
-            gate.EXPECTED.clear(); gate.EXPECTED.update({"Winpass":1,"実力錬成":0,"Standard":0})
-            r=make_record(); r["figure_refs"]=[{"relationship_id":"rId1","target":"word/media/image1.png","asset_sha256":"b"*64} for _ in range(3)]; r["record_fingerprint"]=gate.recompute_fingerprint(r)
+            gate.EXPECTED.clear(); gate.EXPECTED.update({"Winpass":1,"実力錬成":0,"Standard":0}); gate.EXPECTED_TOTAL=1
+            r=make_record(); r["figure_refs"]=[{"relationship_id":f"rId{i+1}","target":f"word/media/image{i+1}.png","asset_sha256":("%064x" % (i+1))} for i in range(3)]; r["record_fingerprint"]=gate.recompute_fingerprint(r)
             report=gate.build_report([r]); self.assertTrue(report["pass"]); self.assertEqual(report["figure_refs"],3)
             strict=gate.build_report([r], expected_figure_refs=2); self.assertFalse(strict["pass"]); self.assertTrue(any("evidence-derived expected" in e for e in strict["errors"]))
         finally:
-            gate.EXPECTED.clear(); gate.EXPECTED.update(old_expected)
+            gate.EXPECTED.clear(); gate.EXPECTED.update(old_expected); gate.EXPECTED_TOTAL=old_total
 
 if __name__ == "__main__": unittest.main()
