@@ -1,0 +1,24 @@
+name: V11 Batch12 Unique Human Question Coverage Gate
+
+on:
+  push:
+    branches:
+      - v11-1000passage-easy-notes
+    paths:
+      - 'v11_batch12_human_review_layer_r4.json'
+      - 'v11_batch12_question_human_review_r5_g1_002_005.json'
+      - 'v11_batch12_question_human_review_r6_g1_006_010.json'
+      - 'v11_batch12_question_human_review_r7_g1_011_017.json'
+      - 'v11_batch12_question_human_review_r8_g2_001_007.json'
+      - 'v11_batch12_question_human_review_r9_g2_008_013.json'
+      - 'v11_batch12_question_human_unique_coverage_gate.js'
+      - '.github/workflows/v11_batch12_question_human_unique_coverage_gate.yml'
+  workflow_dispatch:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate unique human-review coverage
+        run: node v11_batch12_question_human_unique_coverage_gate.js
