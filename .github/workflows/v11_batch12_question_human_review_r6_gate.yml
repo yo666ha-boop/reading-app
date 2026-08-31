@@ -1,0 +1,19 @@
+name: V11 Batch12 Question Human Review R6 Gate
+
+on:
+  push:
+    branches:
+      - v11-1000passage-easy-notes
+    paths:
+      - 'v11_batch12_question_human_review_r6_g1_006_010.json'
+      - 'v11_batch12_question_human_review_r6_gate.js'
+      - '.github/workflows/v11_batch12_question_human_review_r6_gate.yml'
+  workflow_dispatch:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Batch12 R6 human questions
+        run: node v11_batch12_question_human_review_r6_gate.js
