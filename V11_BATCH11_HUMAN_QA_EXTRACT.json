@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T10:07:14.429Z",
+  "generatedAt": "2026-08-31T10:10:51.696Z",
   "count": 6,
   "passages": [
     {
@@ -63,95 +63,123 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「The School Garden Labels Faded before Harvest Time」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "学校菜園では手書きの札で野菜名と植え付け日を示していました。",
-          "evidence": "The school garden used handwritten labels to show the names and planting dates of vegetables.",
-          "evidenceJp": "学校菜園では手書きの札で野菜名と植え付け日を示していました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "真夏までに、菜園の札にはどんな問題が起きましたか。",
+          "answer": "日光と雨で何枚かの札が薄れ、ほとんど読めなくなった。",
+          "evidence": "By midsummer, sunlight and rain had faded several labels until students could barely read them.",
+          "evidenceJp": "真夏までに日光と雨で何枚かの札が薄れ、生徒はほとんど読めなくなりました。",
+          "reason": "札が使えなくなった具体的な状態です。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         },
         {
           "questionType": "REASON",
-          "prompt": "「The School Garden Labels Faded before Harvest Time」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "その前に、三種類のペンを予備のプラスチック片へ書き、二週間外で試しました。",
-          "evidence": "Before doing that, they tested three marker types on spare plastic pieces outside for two weeks.",
-          "evidenceJp": "その前に、三種類のペンを予備のプラスチック片へ書き、二週間外で試しました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "生徒がすぐ濃いペンで書き直さず、三種類を外で試したのはなぜですか。",
+          "answer": "濃さだけでは屋外で雨や日光に耐えるか分からず、実際の天候で材料を比べる必要があったから。",
+          "evidence": [
+            "One group suggested writing the same words again with a darker pen.",
+            "Before doing that, they tested three marker types on spare plastic pieces outside for two weeks.",
+            "The darkest indoor marker faded quickly, while an outdoor paint marker remained clear after rain and sun."
+          ],
+          "evidenceJp": [
+            "ある班は同じ言葉をより濃いペンで書き直す案を出しました。",
+            "その前に、三種類のペンを予備のプラスチック片へ書き、二週間外で試しました。",
+            "最も濃い室内用ペンはすぐ薄れましたが、屋外用ペイントペンは雨と日光の後もはっきりしていました。"
+          ],
+          "reason": "提案と試験結果を結びつけて判断します。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「The School Garden Labels Faded before Harvest Time」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "ある班は同じ言葉をより濃いペンで書き直す案を出しました。",
-          "evidence": "One group suggested writing the same words again with a darker pen.",
-          "evidenceJp": "ある班は同じ言葉をより濃いペンで書き直す案を出しました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "二週間の試験で最もよい結果だったのはどのペンでしたか。",
+          "answer": "屋外用ペイントペン。",
+          "evidence": "The darkest indoor marker faded quickly, while an outdoor paint marker remained clear after rain and sun.",
+          "evidenceJp": "最も濃い室内用ペンはすぐ薄れましたが、屋外用ペイントペンは雨と日光の後もはっきりしていました。",
+          "reason": "雨と日光の後も明瞭だった材料です。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「The School Garden Labels Faded before Harvest Time」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "分からない日付は推測せず、一枚は先生確認用の印を付けました。",
-          "evidence": "They did not guess any missing date; one uncertain label was marked for the teacher to check.",
-          "evidenceJp": "分からない日付は推測せず、一枚は先生確認用の印を付けました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "新しい札へ名前と日付を写すとき、不明な日付はどう扱いましたか。",
+          "answer": "推測せず、一枚を先生確認用として印を付けた。",
+          "evidence": [
+            "The class copied the original plant names and dates from its garden notebook onto new labels.",
+            "They did not guess any missing date; one uncertain label was marked for the teacher to check."
+          ],
+          "evidenceJp": [
+            "クラスは菜園ノートから元の植物名と日付を新しい札へ写しました。",
+            "分からない日付は推測せず、一枚は先生確認用の印を付けました。"
+          ],
+          "reason": "記録の正確さを守る対応です。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「The School Garden Labels Faded before Harvest Time」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "最も濃い室内用ペンはすぐ薄れましたが、屋外用ペイントペンは雨と日光の後もはっきりしていました。",
-          "evidence": "The darkest indoor marker faded quickly, while an outdoor paint marker remained clear after rain and sun.",
-          "evidenceJp": "最も濃い室内用ペンはすぐ薄れましたが、屋外用ペイントペンは雨と日光の後もはっきりしていました。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "新しい札は収穫まで読める状態を保ち、試験片は【　】。",
+          "answer": "翌年の比較用に残された。",
+          "evidence": "The new labels stayed readable through harvest, and the test pieces were kept for next year's comparison.",
+          "evidenceJp": "新しい札は収穫まで読める状態を保ち、試験片は翌年の比較用に残しました。",
+          "reason": "対策後の結果を要約します。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「The School Garden Labels Faded before Harvest Time」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "クラスは菜園ノートから元の植物名と日付を新しい札へ写しました。",
-          "evidence": "The class copied the original plant names and dates from its garden notebook onto new labels.",
-          "evidenceJp": "クラスは菜園ノートから元の植物名と日付を新しい札へ写しました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "屋外用ペイントペンを選ぶ根拠となった比較結果は何ですか。",
+          "answer": "最も濃い室内用ペンはすぐ薄れたが、屋外用ペイントペンは雨と日光の後もはっきりしていた。",
+          "evidence": "The darkest indoor marker faded quickly, while an outdoor paint marker remained clear after rain and sun.",
+          "evidenceJp": "最も濃い室内用ペンはすぐ薄れましたが、屋外用ペイントペンは雨と日光の後もはっきりしていました。",
+          "reason": "同じ条件で三種類を試した結果です。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「The School Garden Labels Faded before Harvest Time」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "新しい札は収穫まで読める状態を保ち、試験片は翌年の比較用に残しました。",
-          "evidence": "The new labels stayed readable through harvest, and the test pieces were kept for next year's comparison.",
-          "evidenceJp": "新しい札は収穫まで読める状態を保ち、試験片は翌年の比較用に残しました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "クラスは元の植物名と日付を【　】から新しい札へ写しました。",
+          "answer": "菜園ノート。",
+          "evidence": "The class copied the original plant names and dates from its garden notebook onto new labels.",
+          "evidenceJp": "クラスは菜園ノートから元の植物名と日付を新しい札へ写しました。",
+          "reason": "元データの確認先です。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「The School Garden Labels Faded before Harvest Time」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "真夏までに日光と雨で何枚かの札が薄れ、生徒はほとんど読めなくなりました。",
-          "evidence": "By midsummer, sunlight and rain had faded several labels until students could barely read them.",
-          "evidenceJp": "真夏までに日光と雨で何枚かの札が薄れ、生徒はほとんど読めなくなりました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "三種類のペンはどのくらいの期間、どこで試しましたか。",
+          "answer": "予備のプラスチック片に書き、二週間屋外で試した。",
+          "evidence": "Before doing that, they tested three marker types on spare plastic pieces outside for two weeks.",
+          "evidenceJp": "その前に、三種類のペンを予備のプラスチック片へ書き、二週間外で試しました。",
+          "reason": "実際の使用環境に近い試験条件です。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「The School Garden Labels Faded before Harvest Time」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "生徒たちは、屋外情報には実際に受ける天候で試した材料が必要だと学びました。",
-          "evidence": "The students learned that outdoor information needs materials tested under the weather it will actually face.",
-          "evidenceJp": "生徒たちは、屋外情報には実際に受ける天候で試した材料が必要だと学びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "読めない日付を推測しなかったことが大切なのはなぜですか。",
+          "answer": "誤った植え付け日を新しい札に固定してしまうのを避け、確認できる情報だけを残せるから。",
+          "evidence": [
+            "The class copied the original plant names and dates from its garden notebook onto new labels.",
+            "They did not guess any missing date; one uncertain label was marked for the teacher to check."
+          ],
+          "evidenceJp": [
+            "クラスは菜園ノートから元の植物名と日付を新しい札へ写しました。",
+            "分からない日付は推測せず、一枚は先生確認用の印を付けました。"
+          ],
+          "reason": "記録の正確さを守る行動から推論します。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         },
         {
           "questionType": "GIST",
-          "prompt": "「The School Garden Labels Faded before Harvest Time」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "生徒たちは、屋外情報には実際に受ける天候で試した材料が必要だと学びました。",
-          "evidence": "The students learned that outdoor information needs materials tested under the weather it will actually face.",
-          "evidenceJp": "生徒たちは、屋外情報には実際に受ける天候で試した材料が必要だと学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "この話が屋外で使う表示を作るとき大切だと伝えていることは何ですか。",
+          "answer": "見た目の濃さだけで選ばず、実際の雨や日光の条件で材料を試してから使うこと。",
+          "evidence": [
+            "Before doing that, they tested three marker types on spare plastic pieces outside for two weeks.",
+            "The darkest indoor marker faded quickly, while an outdoor paint marker remained clear after rain and sun.",
+            "The students learned that outdoor information needs materials tested under the weather it will actually face."
+          ],
+          "evidenceJp": [
+            "その前に、三種類のペンを予備のプラスチック片へ書き、二週間外で試しました。",
+            "最も濃い室内用ペンはすぐ薄れましたが、屋外用ペイントペンは雨と日光の後もはっきりしていました。",
+            "生徒たちは、屋外情報には実際に受ける天候で試した材料が必要だと学びました。"
+          ],
+          "reason": "試験と結末の学びをまとめます。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         }
       ],
       "materialData": null,
@@ -169,7 +197,14 @@
       "humanReviewR7": null,
       "humanReviewR8": null,
       "humanReviewR9": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
+      "humanReviewR10": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R10_HUMAN_REVIEW"
     },
     {
       "id": "V11-B11-G2-017",
@@ -232,95 +267,123 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「A Practice Match Stopped because the Water Bottles Ran Out」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "サッカーチームは二時間の練習試合に大きな箱一つ分の水を持って行きました。",
-          "evidence": "A soccer team brought one large box of water bottles to a two-hour practice match.",
-          "evidenceJp": "サッカーチームは二時間の練習試合に大きな箱一つ分の水を持って行きました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "練習試合の日、水が予想より早く減った主な条件は何でしたか。",
+          "answer": "予想より暑くなり、多くの選手が後半前に一本目を飲み終えたこと。",
+          "evidence": "The day became warmer than expected, and many players finished their first bottles before the second half.",
+          "evidenceJp": "予想より暑くなり、多くの選手が後半前に一本目を飲み終えました。",
+          "reason": "消費量が増えた直接の条件です。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         },
         {
           "questionType": "REASON",
-          "prompt": "「A Practice Match Stopped because the Water Bottles Ran Out」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "未開封は四本だけで、両チームが安全に続けるには足りませんでした。",
-          "evidence": "Only four unopened bottles remained, which was not enough for both teams to continue safely.",
-          "evidenceJp": "未開封は四本だけで、両チームが安全に続けるには足りませんでした。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "未開封の水が四本残っていても、コーチが試合を止めたのはなぜですか。",
+          "answer": "四本では両チームが安全に続けるには足りなかったから。",
+          "evidence": [
+            "Only four unopened bottles remained, which was not enough for both teams to continue safely.",
+            "The coaches stopped the match instead of asking players to wait until the end to drink."
+          ],
+          "evidenceJp": [
+            "未開封は四本だけで、両チームが安全に続けるには足りませんでした。",
+            "コーチは試合終了まで水を我慢させず、試合を止めました。"
+          ],
+          "reason": "安全に必要な量が不足していました。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「A Practice Match Stopped because the Water Bottles Ran Out」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "予想より暑くなり、多くの選手が後半前に一本目を飲み終えました。",
-          "evidence": "The day became warmer than expected, and many players finished their first bottles before the second half.",
-          "evidenceJp": "予想より暑くなり、多くの選手が後半前に一本目を飲み終えました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "試合を止めたあと、チームはどのように水を補いましたか。",
+          "answer": "近くの屋内水道で各自のボトルを補充し、休憩を延ばした。",
+          "evidence": "They used a nearby indoor tap to refill personal bottles and extended the break.",
+          "evidenceJp": "近くの屋内水道で各自のボトルへ水を補給し、休憩を延ばしました。",
+          "reason": "その場で取った安全対策です。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「A Practice Match Stopped because the Water Bottles Ran Out」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "次の試合では人数だけでなく時間と天候から必要な水を見積もりました。",
+          "prompt": "次の試合では、水の必要量を何に基づいて見積もることにしましたか。",
+          "answer": "人数だけでなく、試合時間と天候。",
           "evidence": "For the next match, the team estimated water by time and weather, not only by the number of people.",
           "evidenceJp": "次の試合では人数だけでなく時間と天候から必要な水を見積もりました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "不足経験を受けた計画変更です。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「A Practice Match Stopped because the Water Bottles Ran Out」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "コーチは試合終了まで水を我慢させず、試合を止めました。",
-          "evidence": "The coaches stopped the match instead of asking players to wait until the end to drink.",
-          "evidenceJp": "コーチは試合終了まで水を我慢させず、試合を止めました。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "次回は試合前に補給場所を確認し、各休憩で【　】。",
+          "answer": "大人一人が水の残量を確認することにした。",
+          "evidence": "They also identified the refill point before play began and assigned one adult to check supplies at each break.",
+          "evidenceJp": "試合前に補給場所を確認し、各休憩で大人一人が残量を見ることにしました。",
+          "reason": "バックアップ運用を補います。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「A Practice Match Stopped because the Water Bottles Ran Out」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "近くの屋内水道で各自のボトルへ水を補給し、休憩を延ばしました。",
-          "evidence": "They used a nearby indoor tap to refill personal bottles and extended the break.",
-          "evidenceJp": "近くの屋内水道で各自のボトルへ水を補給し、休憩を延ばしました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "最初の水の計画が実際の条件に合わなくなったと分かる二つの情報は何ですか。",
+          "answer": "予想より暑くなって多くの選手が早く一本目を飲み終え、未開封が四本しか残らなかったこと。",
+          "evidence": [
+            "The day became warmer than expected, and many players finished their first bottles before the second half.",
+            "Only four unopened bottles remained, which was not enough for both teams to continue safely."
+          ],
+          "evidenceJp": [
+            "予想より暑くなり、多くの選手が後半前に一本目を飲み終えました。",
+            "未開封は四本だけで、両チームが安全に続けるには足りませんでした。"
+          ],
+          "reason": "天候変化と残量の両方が不足を示します。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「A Practice Match Stopped because the Water Bottles Ran Out」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "試合前に補給場所を確認し、各休憩で大人一人が残量を見ることにしました。",
-          "evidence": "They also identified the refill point before play began and assigned one adult to check supplies at each break.",
-          "evidenceJp": "試合前に補給場所を確認し、各休憩で大人一人が残量を見ることにしました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "次の試合では人数だけでなく、時間と【　】から必要な水を見積もりました。",
+          "answer": "天候。",
+          "evidence": "For the next match, the team estimated water by time and weather, not only by the number of people.",
+          "evidenceJp": "次の試合では人数だけでなく時間と天候から必要な水を見積もりました。",
+          "reason": "消費量を左右する条件です。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「A Practice Match Stopped because the Water Bottles Ran Out」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "コーチは選手一人一本と先生用の予備数本を数えていました。",
+          "prompt": "最初の計画では、水はどのように数えていましたか。",
+          "answer": "選手一人一本と、先生用の予備数本。",
           "evidence": "The coach had counted one bottle for each player and several extra for teachers.",
           "evidenceJp": "コーチは選手一人一本と先生用の予備数本を数えていました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "不足前の計画方法です。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「A Practice Match Stopped because the Water Bottles Ran Out」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "チームは、条件によって必要量が増える共有の安全用品には予備計画が必要だと学びました。",
-          "evidence": "The team learned that shared safety supplies need a backup plan when conditions can increase how much people use.",
-          "evidenceJp": "チームは、条件によって必要量が増える共有の安全用品には予備計画が必要だと学びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "試合開始前に補給場所を確認しておく利点は何ですか。",
+          "answer": "持参した水が予想以上に減っても、必要になった時点ですぐ安全に補給できるから。",
+          "evidence": [
+            "They used a nearby indoor tap to refill personal bottles and extended the break.",
+            "They also identified the refill point before play began and assigned one adult to check supplies at each break.",
+            "The team learned that shared safety supplies need a backup plan when conditions can increase how much people use."
+          ],
+          "evidenceJp": [
+            "近くの屋内水道で各自のボトルへ水を補給し、休憩を延ばしました。",
+            "試合前に補給場所を確認し、各休憩で大人一人が残量を見ることにしました。",
+            "チームは、条件によって必要量が増える共有の安全用品には予備計画が必要だと学びました。"
+          ],
+          "reason": "今回の不足と次回の備えから推論します。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         },
         {
           "questionType": "GIST",
-          "prompt": "「A Practice Match Stopped because the Water Bottles Ran Out」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "チームは、条件によって必要量が増える共有の安全用品には予備計画が必要だと学びました。",
-          "evidence": "The team learned that shared safety supplies need a backup plan when conditions can increase how much people use.",
-          "evidenceJp": "チームは、条件によって必要量が増える共有の安全用品には予備計画が必要だと学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "この話が共有の安全用品を準備するとき大切だと伝えていることは何ですか。",
+          "answer": "人数だけで固定量を決めず、時間や天候で使用量が増える場合に備えて補給方法と残量確認も計画すること。",
+          "evidence": [
+            "For the next match, the team estimated water by time and weather, not only by the number of people.",
+            "They also identified the refill point before play began and assigned one adult to check supplies at each break.",
+            "The team learned that shared safety supplies need a backup plan when conditions can increase how much people use."
+          ],
+          "evidenceJp": [
+            "次の試合では人数だけでなく時間と天候から必要な水を見積もりました。",
+            "試合前に補給場所を確認し、各休憩で大人一人が残量を見ることにしました。",
+            "チームは、条件によって必要量が増える共有の安全用品には予備計画が必要だと学びました。"
+          ],
+          "reason": "不足の原因と再発防止をまとめます。",
+          "questionReview": "B11_R10_HUMAN_REVIEW"
         }
       ],
       "materialData": null,
@@ -338,7 +401,14 @@
       "humanReviewR7": null,
       "humanReviewR8": null,
       "humanReviewR9": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
+      "humanReviewR10": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R10_HUMAN_REVIEW"
     },
     {
       "id": "V11-B11-G3-001",
@@ -522,6 +592,7 @@
       "humanReviewR7": null,
       "humanReviewR8": null,
       "humanReviewR9": null,
+      "humanReviewR10": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
     },
     {
@@ -706,6 +777,7 @@
       "humanReviewR7": null,
       "humanReviewR8": null,
       "humanReviewR9": null,
+      "humanReviewR10": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
     },
     {
@@ -930,6 +1002,7 @@
       "humanReviewR7": null,
       "humanReviewR8": null,
       "humanReviewR9": null,
+      "humanReviewR10": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
     },
     {
@@ -1200,6 +1273,7 @@
       "humanReviewR7": null,
       "humanReviewR8": null,
       "humanReviewR9": null,
+      "humanReviewR10": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
     }
   ]
