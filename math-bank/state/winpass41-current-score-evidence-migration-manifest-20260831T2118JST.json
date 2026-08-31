@@ -1,0 +1,29 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "CURRENT_CONTRACT_SCORE_EVIDENCE_MIGRATION",
+  "recorded_at_jst": "2026-08-31T21:18:00+09:00",
+  "input": {
+    "file": "mathbank_winpass_strict_delta78_validated_20260825.jsonl",
+    "drive_file_id": "1L8b85H9VY1BtQGih70s7IrlCY0HQKHSb",
+    "records_in_source": 78,
+    "affected_records": 41,
+    "source_documents": ["25winpasst1suhy000101.docx","25winpasst1suhy000105.docx","25winpasst1suhy000106.docx","25winpasst1suhy000207.docx","25winpasst1suhy000208.docx","25winpasst1suhy000624.docx","25winpasst2suhy000204.docx","25winpasst3suhy000312.docx"]
+  },
+  "method": "For each affected strict record, use its existing score_table_paragraph_index/score_paragraph_index, re-read that exact paragraph from the fixed source DOCX word/document.xml, require a non-empty score allocation string, set only score_evidence.text and score_evidence.source_path, preserve raw_id/Q/A/question_offsets/answer_offsets/figure/provenance fields, then recompute record_fingerprint under the current validate_raw1271_materialization.py payload contract.",
+  "quality": {
+    "fixed_winpass_archive_sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+    "source_doc_sha_crc": "41/41 PASS",
+    "score_paragraph_resolved_nonempty": "41/41",
+    "post_migration_structural_gate": "41/41 PASS",
+    "current_fingerprint_recompute": "41/41 PASS",
+    "unique_raw_ids": 41,
+    "unique_current_fingerprints": 41,
+    "raw_id_union_sha256": "03232a53455fcbc91736d2babfc862f18fba1c022fd1dde6ba961d7e0b71b4d9",
+    "current_fingerprint_union_sha256": "01606633e7fcd566ba6685887f6791722ec68e851813b7ea92622ff6507d93ed",
+    "generated_jsonl_bytes": 85532,
+    "generated_jsonl_sha256": "9760efa125f5595fb3fa95d836ad717861cb22d557a4a8e35b197a575619eb6d"
+  },
+  "durability_note": "This manifest records a deterministic source-bound migration and its identities. The generated 41-record JSONL is not counted as runtime promotion until the migrated record bodies themselves are durably materialized/read back and incorporated into a full Winpass717 current-contract union.",
+  "guards": {"runtime_promotion_count":0,"main_untouched":true,"publication_ready":false,"count_forcing_used":false},
+  "next": "Durably materialize the generated 41 migrated bodies or regenerate them deterministically from this manifest and the fixed source; continue the 109 missing-offset records and the historical10 1suhy000417 current-schema materialization."
+}
