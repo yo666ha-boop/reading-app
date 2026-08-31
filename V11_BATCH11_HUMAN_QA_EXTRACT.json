@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T10:10:51.696Z",
+  "generatedAt": "2026-08-31T10:16:09.302Z",
   "count": 6,
   "passages": [
     {
@@ -204,6 +204,7 @@
         "questions": 10,
         "reviewedAt": "2026-08-31"
       },
+      "humanReviewR11": null,
       "questionStage": "BATCH11_R10_HUMAN_REVIEW"
     },
     {
@@ -408,6 +409,7 @@
         "questions": 10,
         "reviewedAt": "2026-08-31"
       },
+      "humanReviewR11": null,
       "questionStage": "BATCH11_R10_HUMAN_REVIEW"
     },
     {
@@ -486,95 +488,121 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「The River Temperature Log and the Fish Seen near One Bridge」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "理科のクラスは六週間、毎週金曜日に同じ橋で川の水温を測りました。",
-          "evidence": "A science class measured river temperature at the same bridge every Friday for six weeks.",
-          "evidenceJp": "理科のクラスは六週間、毎週金曜日に同じ橋で川の水温を測りました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "最初の四週間、水温と魚の目撃数はどのような状態でしたか。",
+          "answer": "水温は18度前後で、通常は小さな魚を数匹見た。",
+          "evidence": "In the first four weeks, water stayed near eighteen degrees and students usually saw several small fish.",
+          "evidenceJp": "最初の四週間は水温が十八度前後で、小さな魚を何匹か見られました。",
+          "reason": "比較の基準となる最初の四週間です。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "REASON",
-          "prompt": "「The River Temperature Log and the Fish Seen near One Bridge」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "暑い第五週には二十三度まで上がり、魚は一匹しか見えませんでした。",
-          "evidence": "During a hot fifth week, the temperature reached twenty-three degrees and they saw only one fish.",
-          "evidenceJp": "暑い第五週には二十三度まで上がり、魚は一匹しか見えませんでした。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "第五週に魚が一匹しか見えなくても、水温だけで「魚が全部逃げた」と結論づけなかったのはなぜですか。",
+          "answer": "観察は一つの橋・一つの時刻・水面からだけで、川全体を代表するとは言えなかったから。",
+          "evidence": [
+            "Some students wanted to conclude that warmer water had driven all the fish away.",
+            "The teacher asked what their observation could actually tell them about the whole river.",
+            "The class had watched only one bridge, at one time of day, and only from the surface."
+          ],
+          "evidenceJp": [
+            "一部の生徒は、水温上昇ですべての魚が逃げたと結論づけようとしました。",
+            "先生は、その観察から川全体について何が本当に言えるか尋ねました。",
+            "クラスは一つの橋で一日の一時刻、しかも水面からだけ観察していました。"
+          ],
+          "reason": "観察範囲の限界が明示されています。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「The River Temperature Log and the Fish Seen near One Bridge」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "最初の四週間は水温が十八度前後で、小さな魚を何匹か見られました。",
-          "evidence": "In the first four weeks, water stayed near eighteen degrees and students usually saw several small fish.",
-          "evidenceJp": "最初の四週間は水温が十八度前後で、小さな魚を何匹か見られました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "第六週、水がまだ暖かいのに魚はどこで何匹見えましたか。",
+          "answer": "橋の下の日陰の石の近くで8匹。",
+          "evidence": "On the sixth week, water was still warm, but eight fish appeared near shaded stones below the bridge.",
+          "evidenceJp": "第六週も水は暖かいままでしたが、橋の下の日陰の石近くに八匹の魚が現れました。",
+          "reason": "温度以外の条件に注目する契機です。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「The River Temperature Log and the Fish Seen near One Bridge」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "報告は調査中に魚の目撃数が変わったと述べましたが、水温だけが原因とはしませんでした。",
-          "evidence": "Their report said fish sightings changed during the study but did not claim temperature was the only cause.",
-          "evidenceJp": "報告は調査中に魚の目撃数が変わったと述べましたが、水温だけが原因とはしませんでした。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "第六週の観察後、記録には何を追加しましたか。",
+          "answer": "水温だけでなく、日陰と観察位置。",
+          "evidence": "Students added shade and observation position to their log instead of recording temperature alone.",
+          "evidenceJp": "生徒たちは水温だけでなく、日陰と観察位置も記録に加えました。",
+          "reason": "追加した観察条件です。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「The River Temperature Log and the Fish Seen near One Bridge」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "クラスは一つの橋で一日の一時刻、しかも水面からだけ観察していました。",
-          "evidence": "The class had watched only one bridge, at one time of day, and only from the surface.",
-          "evidenceJp": "クラスは一つの橋で一日の一時刻、しかも水面からだけ観察していました。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "報告書は魚の目撃数が変化したと述べたが、【　】とは主張しませんでした。",
+          "answer": "水温だけが原因である。",
+          "evidence": "Their report said fish sightings changed during the study but did not claim temperature was the only cause.",
+          "evidenceJp": "報告は調査中に魚の目撃数が変わったと述べましたが、水温だけが原因とはしませんでした。",
+          "reason": "証拠を超えた因果断定を避けました。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「The River Temperature Log and the Fish Seen near One Bridge」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "先生は、その観察から川全体について何が本当に言えるか尋ねました。",
-          "evidence": "The teacher asked what their observation could actually tell them about the whole river.",
-          "evidenceJp": "先生は、その観察から川全体について何が本当に言えるか尋ねました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "水温だけでは魚の見え方を説明しきれないと考える手がかりは何ですか。",
+          "answer": "第六週も水は暖かかったが、日陰の石の近くに8匹の魚が現れたこと。",
+          "evidence": "On the sixth week, water was still warm, but eight fish appeared near shaded stones below the bridge.",
+          "evidenceJp": "第六週も水は暖かいままでしたが、橋の下の日陰の石近くに八匹の魚が現れました。",
+          "reason": "高い水温でも観察位置により目撃数が変わりました。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「The River Temperature Log and the Fish Seen near One Bridge」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "第六週も水は暖かいままでしたが、橋の下の日陰の石近くに八匹の魚が現れました。",
-          "evidence": "On the sixth week, water was still warm, but eight fish appeared near shaded stones below the bridge.",
-          "evidenceJp": "第六週も水は暖かいままでしたが、橋の下の日陰の石近くに八匹の魚が現れました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "より強い生態的結論の前に、別の橋と異なる【　】でも測ることを提案しました。",
+          "answer": "時刻。",
+          "evidence": "They suggested measuring at another bridge and at different times before making a stronger ecological conclusion.",
+          "evidenceJp": "より強い生態的結論を出す前に、別の橋や異なる時刻でも測ることを提案しました。",
+          "reason": "観察範囲を広げる案です。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「The River Temperature Log and the Fish Seen near One Bridge」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "より強い生態的結論を出す前に、別の橋や異なる時刻でも測ることを提案しました。",
-          "evidence": "They suggested measuring at another bridge and at different times before making a stronger ecological conclusion.",
-          "evidenceJp": "より強い生態的結論を出す前に、別の橋や異なる時刻でも測ることを提案しました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "毎週の魚の観察時間は何分でしたか。",
+          "answer": "10分。",
+          "evidence": "They also wrote down which fish they could see from the bank during a ten-minute observation.",
+          "evidenceJp": "さらに岸から十分間観察し、見えた魚を記録しました。",
+          "reason": "観察条件を確認します。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「The River Temperature Log and the Fish Seen near One Bridge」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "生徒たちは水温だけでなく、日陰と観察位置も記録に加えました。",
-          "evidence": "Students added shade and observation position to their log instead of recording temperature alone.",
-          "evidenceJp": "生徒たちは水温だけでなく、日陰と観察位置も記録に加えました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "日陰と観察位置を記録することで、次の調査はどのように改善されますか。",
+          "answer": "魚が見えた数を水温だけに結びつけず、場所や日陰など他の条件と一緒に比較できる。",
+          "evidence": [
+            "On the sixth week, water was still warm, but eight fish appeared near shaded stones below the bridge.",
+            "Students added shade and observation position to their log instead of recording temperature alone.",
+            "They suggested measuring at another bridge and at different times before making a stronger ecological conclusion."
+          ],
+          "evidenceJp": [
+            "第六週も水は暖かいままでしたが、橋の下の日陰の石近くに八匹の魚が現れました。",
+            "生徒たちは水温だけでなく、日陰と観察位置も記録に加えました。",
+            "より強い生態的結論を出す前に、別の橋や異なる時刻でも測ることを提案しました。"
+          ],
+          "reason": "追加変数の目的から推論します。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "GIST",
-          "prompt": "「The River Temperature Log and the Fish Seen near One Bridge」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "クラスは、限られた観察でも傾向は見えるが、どこでも同じだと証明するわけではないと学びました。",
-          "evidence": "The class learned that a limited observation can reveal a pattern without proving what happens everywhere.",
-          "evidenceJp": "クラスは、限られた観察でも傾向は見えるが、どこでも同じだと証明するわけではないと学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "この調査から学べる、限られた観察データの扱い方は何ですか。",
+          "answer": "傾向は示せても川全体の原因まで証明したとはせず、別地点や別時刻でも確かめること。",
+          "evidence": [
+            "The class had watched only one bridge, at one time of day, and only from the surface.",
+            "Their report said fish sightings changed during the study but did not claim temperature was the only cause.",
+            "They suggested measuring at another bridge and at different times before making a stronger ecological conclusion.",
+            "The class learned that a limited observation can reveal a pattern without proving what happens everywhere."
+          ],
+          "evidenceJp": [
+            "クラスは一つの橋で一日の一時刻、しかも水面からだけ観察していました。",
+            "報告は調査中に魚の目撃数が変わったと述べましたが、水温だけが原因とはしませんでした。",
+            "より強い生態的結論を出す前に、別の橋や異なる時刻でも測ることを提案しました。",
+            "クラスは、限られた観察でも傾向は見えるが、どこでも同じだと証明するわけではないと学びました。"
+          ],
+          "reason": "観察範囲と結論の強さを対応させます。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         }
       ],
       "materialData": null,
@@ -593,7 +621,14 @@
       "humanReviewR8": null,
       "humanReviewR9": null,
       "humanReviewR10": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
+      "humanReviewR11": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R11_HUMAN_REVIEW"
     },
     {
       "id": "V11-B11-G3-003",
@@ -671,95 +706,145 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「The Archive Photo Dated by a Store Sign in the Background」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "歴史部は旧駅近くの混んだ通りを写した日付不明の写真を見つけました。",
-          "evidence": "A history club found an undated photograph showing a crowded street near the old station.",
-          "evidenceJp": "歴史部は旧駅近くの混んだ通りを写した日付不明の写真を見つけました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "写真の背景にあった「青葉カメラ 新店舗開店」の看板から、何が分かりましたか。",
+          "answer": "青葉カメラがその建物へ移った1966年4月以後の写真だと絞る手がかりになった。",
+          "evidence": [
+            "In the background, students noticed a shop sign reading 'Aoba Camera, New Building Open.'",
+            "A local newspaper index showed that Aoba Camera moved to that building in April 1966."
+          ],
+          "evidenceJp": [
+            "背景に「青葉カメラ 新店舗開店」と書かれた看板があることに生徒が気づきました。",
+            "地域新聞の索引では、青葉カメラがその建物へ移ったのは一九六六年四月でした。"
+          ],
+          "reason": "店の移転時期が下限を与えます。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "REASON",
-          "prompt": "「The Archive Photo Dated by a Store Sign in the Background」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "地域新聞の索引では、青葉カメラがその建物へ移ったのは一九六六年四月でした。",
-          "evidence": "A local newspaper index showed that Aoba Camera moved to that building in April 1966.",
-          "evidenceJp": "地域新聞の索引では、青葉カメラがその建物へ移ったのは一九六六年四月でした。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "写真を「1966年4月」と一日・一か月に固定しなかったのはなぜですか。",
+          "answer": "開店看板は実際の開店後も数日や数週間残る可能性があり、撮影日そのものを証明しないから。",
+          "evidence": [
+            "At first, the club considered labeling the photograph 'April 1966.'",
+            "Then a member pointed out that an opening sign might remain for days or weeks after the exact opening date."
+          ],
+          "evidenceJp": [
+            "部は最初、写真を「一九六六年四月」と表示しようとしました。",
+            "しかし、開店看板は正確な開店日の後も数日や数週間残ることがあると部員が指摘しました。"
+          ],
+          "reason": "看板の存在から言える精度に限界があります。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「The Archive Photo Dated by a Store Sign in the Background」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "背景に「青葉カメラ 新店舗開店」と書かれた看板があることに生徒が気づきました。",
-          "evidence": "In the background, students noticed a shop sign reading 'Aoba Camera, New Building Open.'",
-          "evidenceJp": "背景に「青葉カメラ 新店舗開店」と書かれた看板があることに生徒が気づきました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "隣の薬局の情報は写真年代の上限をどう絞りましたか。",
+          "answer": "薬局は1966年9月に改名したが写真には旧名があるため、写真はその改名前だと分かった。",
+          "evidence": [
+            "The club checked city records and learned that the neighboring pharmacy changed its name in September 1966.",
+            "The older pharmacy name was still visible in the photograph."
+          ],
+          "evidenceJp": [
+            "市の記録を調べると、隣の薬局は一九六六年九月に名前を変えたと分かりました。",
+            "写真にはまだ古い薬局名が写っていました。"
+          ],
+          "reason": "旧店名が上限の手がかりです。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「The Archive Photo Dated by a Store Sign in the Background」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "二つの手がかりから、写真はカメラ店移転後で薬局改名前だと分かりました。",
-          "evidence": "Together, the clues placed the photograph after the camera shop moved but before the pharmacy changed its name.",
-          "evidenceJp": "二つの手がかりから、写真はカメラ店移転後で薬局改名前だと分かりました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "二つの手がかりを合わせ、展示では撮影時期をどう表示しましたか。",
+          "answer": "1966年4月から8月の間。",
+          "evidence": [
+            "Together, the clues placed the photograph after the camera shop moved but before the pharmacy changed its name.",
+            "The exhibit therefore labeled it 'between April and August 1966' instead of choosing one unsupported day."
+          ],
+          "evidenceJp": [
+            "二つの手がかりから、写真はカメラ店移転後で薬局改名前だと分かりました。",
+            "そこで展示は根拠のない一日を選ばず「一九六六年四月から八月の間」としました。"
+          ],
+          "reason": "移転後かつ改名前という範囲です。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「The Archive Photo Dated by a Store Sign in the Background」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "市の記録を調べると、隣の薬局は一九六六年九月に名前を変えたと分かりました。",
-          "evidence": "The club checked city records and learned that the neighboring pharmacy changed its name in September 1966.",
-          "evidenceJp": "市の記録を調べると、隣の薬局は一九六六年九月に名前を変えたと分かりました。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "展示には年代幅だけでなく、来場者が判断過程を確認できるよう【　】。",
+          "answer": "二つの看板の手がかりを説明する注記を付けた。",
+          "evidence": "A note explained both signs so visitors could see how the date range had been reached.",
+          "evidenceJp": "来場者が年代幅の根拠を分かるよう、二つの看板を注記しました。",
+          "reason": "結論の透明性を示します。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「The Archive Photo Dated by a Store Sign in the Background」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "しかし、開店看板は正確な開店日の後も数日や数週間残ることがあると部員が指摘しました。",
-          "evidence": "Then a member pointed out that an opening sign might remain for days or weeks after the exact opening date.",
-          "evidenceJp": "しかし、開店看板は正確な開店日の後も数日や数週間残ることがあると部員が指摘しました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "「1960年代のどこか」より狭く、しかし一日には固定できない理由となる二つの証拠は何ですか。",
+          "answer": "青葉カメラは1966年4月に移転し、隣の薬局は1966年9月に改名した一方、写真には旧薬局名が残っていること。",
+          "evidence": [
+            "A local newspaper index showed that Aoba Camera moved to that building in April 1966.",
+            "The club checked city records and learned that the neighboring pharmacy changed its name in September 1966.",
+            "The older pharmacy name was still visible in the photograph."
+          ],
+          "evidenceJp": [
+            "地域新聞の索引では、青葉カメラがその建物へ移ったのは一九六六年四月でした。",
+            "市の記録を調べると、隣の薬局は一九六六年九月に名前を変えたと分かりました。",
+            "写真にはまだ古い薬局名が写っていました。"
+          ],
+          "reason": "下限と上限を別の記録から作ります。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「The Archive Photo Dated by a Store Sign in the Background」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "写真にはまだ古い薬局名が写っていました。",
-          "evidence": "The older pharmacy name was still visible in the photograph.",
-          "evidenceJp": "写真にはまだ古い薬局名が写っていました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "写真はカメラ店の移転【　】で、薬局の改名【　】だと分かりました。",
+          "answer": "後／前。",
+          "evidence": "Together, the clues placed the photograph after the camera shop moved but before the pharmacy changed its name.",
+          "evidenceJp": "二つの手がかりから、写真はカメラ店移転後で薬局改名前だと分かりました。",
+          "reason": "年代幅の論理関係です。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「The Archive Photo Dated by a Store Sign in the Background」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "来場者が年代幅の根拠を分かるよう、二つの看板を注記しました。",
-          "evidence": "A note explained both signs so visitors could see how the date range had been reached.",
-          "evidenceJp": "来場者が年代幅の根拠を分かるよう、二つの看板を注記しました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "当初の資料カードには写真の年代がどの程度までしか書かれていませんでしたか。",
+          "answer": "1960年代のどこか。",
+          "evidence": "The archive card said only that it was probably taken sometime in the 1960s.",
+          "evidenceJp": "資料カードには、一九六〇年代のどこかだろうとだけ書かれていました。",
+          "reason": "調査前の不確かな情報です。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「The Archive Photo Dated by a Store Sign in the Background」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "そこで展示は根拠のない一日を選ばず「一九六六年四月から八月の間」としました。",
-          "evidence": "The exhibit therefore labeled it 'between April and August 1966' instead of choosing one unsupported day.",
-          "evidenceJp": "そこで展示は根拠のない一日を選ばず「一九六六年四月から八月の間」としました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "展示に根拠となる看板の説明も付ける利点は何ですか。",
+          "answer": "来場者が年代範囲の根拠を確認でき、証拠以上に正確な日付だと誤解しにくくなる。",
+          "evidence": [
+            "The exhibit therefore labeled it 'between April and August 1966' instead of choosing one unsupported day.",
+            "A note explained both signs so visitors could see how the date range had been reached.",
+            "The club learned that a visual clue can narrow a date strongly without proving more precision than the evidence allows."
+          ],
+          "evidenceJp": [
+            "そこで展示は根拠のない一日を選ばず「一九六六年四月から八月の間」としました。",
+            "来場者が年代幅の根拠を分かるよう、二つの看板を注記しました。",
+            "部は、視覚的手がかりは年代を大きく絞れても証拠以上の正確さを証明しないと学びました。"
+          ],
+          "reason": "透明性と不確実性の扱いから推論します。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "GIST",
-          "prompt": "「The Archive Photo Dated by a Store Sign in the Background」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "部は、視覚的手がかりは年代を大きく絞れても証拠以上の正確さを証明しないと学びました。",
-          "evidence": "The club learned that a visual clue can narrow a date strongly without proving more precision than the evidence allows.",
-          "evidenceJp": "部は、視覚的手がかりは年代を大きく絞れても証拠以上の正確さを証明しないと学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "この話が歴史資料の日付推定で大切だと伝えていることは何ですか。",
+          "answer": "複数の手がかりで範囲を狭めても、証拠が支える以上の精度を断定しないこと。",
+          "evidence": [
+            "Then a member pointed out that an opening sign might remain for days or weeks after the exact opening date.",
+            "Together, the clues placed the photograph after the camera shop moved but before the pharmacy changed its name.",
+            "The exhibit therefore labeled it 'between April and August 1966' instead of choosing one unsupported day.",
+            "The club learned that a visual clue can narrow a date strongly without proving more precision than the evidence allows."
+          ],
+          "evidenceJp": [
+            "しかし、開店看板は正確な開店日の後も数日や数週間残ることがあると部員が指摘しました。",
+            "二つの手がかりから、写真はカメラ店移転後で薬局改名前だと分かりました。",
+            "そこで展示は根拠のない一日を選ばず「一九六六年四月から八月の間」としました。",
+            "部は、視覚的手がかりは年代を大きく絞れても証拠以上の正確さを証明しないと学びました。"
+          ],
+          "reason": "年代推定と証拠の限界をまとめます。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         }
       ],
       "materialData": null,
@@ -778,7 +863,14 @@
       "humanReviewR8": null,
       "humanReviewR9": null,
       "humanReviewR10": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
+      "humanReviewR11": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R11_HUMAN_REVIEW"
     },
     {
       "id": "V11-B11-G3-002",
@@ -896,95 +988,145 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「The Vacant Lot Proposed as a Rain Garden」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "住宅地近くの空き地は強い雨の後、浅い水でいっぱいになりました。",
-          "evidence": "A vacant lot near a row of houses filled with shallow water after strong rain.",
-          "evidenceJp": "住宅地近くの空き地は強い雨の後、浅い水でいっぱいになりました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "追加の二回の嵐を観察した結果、水は空き地のどこに多くたまりましたか。",
+          "answer": "道路側から入り、東半分に多く残った。",
+          "evidence": [
+            "They measured where water actually collected after two more storms.",
+            "Most water entered from the road side and stayed in the eastern half of the lot."
+          ],
+          "evidenceJp": [
+            "さらに二回の嵐の後、水が実際にたまる場所を測りました。",
+            "水の大部分は道路側から入り、空き地の東半分に残りました。"
+          ],
+          "reason": "実際の水の流れを測った結果です。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "REASON",
-          "prompt": "「The Vacant Lot Proposed as a Rain Garden」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "洪水対策には賛成する住民も、子どもが今は乾いた側で遊んでいると話しました。",
-          "evidence": "Several residents liked the flood idea but said children currently used the dry side of the lot for small games.",
-          "evidenceJp": "洪水対策には賛成する住民も、子どもが今は乾いた側で遊んでいると話しました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "空き地全体をレインガーデンにする最初の案を変更したのはなぜですか。",
+          "answer": "西側は早く乾き子どもが遊びに使っており、排水だけを解決すると別の地域利用を失うから。",
+          "evidence": [
+            "Several residents liked the flood idea but said children currently used the dry side of the lot for small games.",
+            "The group realized that solving drainage by removing every other use could create a different community problem.",
+            "The western half drained quickly and was the area children used most often."
+          ],
+          "evidenceJp": [
+            "洪水対策には賛成する住民も、子どもが今は乾いた側で遊んでいると話しました。",
+            "排水を解決するため他の利用をすべてなくすと、別の地域問題を作ると気づきました。",
+            "西半分は早く乾き、子どもが最もよく使う場所でした。"
+          ],
+          "reason": "環境対策と既存利用の両立が必要でした。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「The Vacant Lot Proposed as a Rain Garden」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "最初の図面では空き地のほぼ全部を低い地面、石、水を好む植物に使いました。",
-          "evidence": "The first drawing used almost the whole lot for low ground, stones, and water-loving plants.",
-          "evidenceJp": "最初の図面では空き地のほぼ全部を低い地面、石、水を好む植物に使いました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "修正版では東側と西側をそれぞれどう使いましたか。",
+          "answer": "東半分をレインガーデンにし、西側には乾いた広場を残した。",
+          "evidence": [
+            "A landscape volunteer suggested placing the rain garden only in the eastern half and adding a raised path around it.",
+            "The revised design kept an open dry area on the west and connected it to the sidewalk."
+          ],
+          "evidenceJp": [
+            "造園ボランティアは、東半分だけをレインガーデンにし、その周りに高い通路を作る案を出しました。",
+            "修正版では西側に乾いた広場を残し、歩道とつなげました。"
+          ],
+          "reason": "水の分布と利用実態に合わせた設計です。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「The Vacant Lot Proposed as a Rain Garden」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "排水口の詰まりが一度あり、試行を完璧とせず管理チェック表を修正しました。",
-          "evidence": "The group still recorded one blocked drain and changed its maintenance checklist rather than calling the trial perfect.",
-          "evidenceJp": "排水口の詰まりが一度あり、試行を完璧とせず管理チェック表を修正しました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "最初の雨季、レインガーデンはどんな結果を示しましたか。",
+          "answer": "二度、水が空き地全体へ広がらず庭の中にとどまった。",
+          "evidence": "During the first rainy season, water stayed in the garden instead of spreading across the whole lot twice.",
+          "evidenceJp": "最初の雨季には二度、水が空き地全体へ広がらず庭の中にとどまりました。",
+          "reason": "治水機能の実測結果です。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「The Vacant Lot Proposed as a Rain Garden」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "修正版では西側に乾いた広場を残し、歩道とつなげました。",
-          "evidence": "The revised design kept an open dry area on the west and connected it to the sidewalk.",
-          "evidenceJp": "修正版では西側に乾いた広場を残し、歩道とつなげました。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "排水口が一度詰まったため、グループは試行を完璧とせず【　】。",
+          "answer": "管理チェック表を修正した。",
+          "evidence": "The group still recorded one blocked drain and changed its maintenance checklist rather than calling the trial perfect.",
+          "evidenceJp": "排水口の詰まりが一度あり、試行を完璧とせず管理チェック表を修正しました。",
+          "reason": "運用後の改善を補います。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「The Vacant Lot Proposed as a Rain Garden」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "排水を解決するため他の利用をすべてなくすと、別の地域問題を作ると気づきました。",
-          "evidence": "The group realized that solving drainage by removing every other use could create a different community problem.",
-          "evidenceJp": "排水を解決するため他の利用をすべてなくすと、別の地域問題を作ると気づきました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "西側を遊び場として残す判断を支える二つの観察は何ですか。",
+          "answer": "西半分は早く乾き、子どもが最もよく使う場所だったこと。",
+          "evidence": "The western half drained quickly and was the area children used most often.",
+          "evidenceJp": "西半分は早く乾き、子どもが最もよく使う場所でした。",
+          "reason": "乾燥条件と既存利用の両方があります。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「The Vacant Lot Proposed as a Rain Garden」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "さらに二回の嵐の後、水が実際にたまる場所を測りました。",
-          "evidence": "They measured where water actually collected after two more storms.",
-          "evidenceJp": "さらに二回の嵐の後、水が実際にたまる場所を測りました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "最初の夏は月一回では足りず、集合住宅の会がごみと排水口を【　】確認することにしました。",
+          "answer": "週ごとに交代で。",
+          "evidence": [
+            "The group found monthly maintenance was not enough during the first summer.",
+            "A nearby apartment association agreed to rotate weekly checks for litter and blocked drains during that season."
+          ],
+          "evidenceJp": [
+            "グループは、最初の夏は月一回の管理では足りないと分かりました。",
+            "近くの集合住宅の会が、その季節はごみと排水口を週ごとに交代で確認することに同意しました。"
+          ],
+          "reason": "継続管理の頻度です。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「The Vacant Lot Proposed as a Rain Garden」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "水の大部分は道路側から入り、空き地の東半分に残りました。",
-          "evidence": "Most water entered from the road side and stayed in the eastern half of the lot.",
-          "evidenceJp": "水の大部分は道路側から入り、空き地の東半分に残りました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "市が一年間の試行で大雨後に記録するよう求めたものは何ですか。",
+          "answer": "水位の写真。",
+          "evidence": "The city approved a one-year trial and asked the group to photograph water levels after major storms.",
+          "evidenceJp": "市は一年間の試行を認め、大雨後の水位を写真で記録するよう求めました。",
+          "reason": "試行効果を後から確認する記録です。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「The Vacant Lot Proposed as a Rain Garden」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "この案は洪水問題を減らしながら別の大切な利用を残し、継続作業も決めたため成立しました。",
-          "evidence": "The proposal succeeded because it reduced one flood problem while preserving another valued use and assigning ongoing work.",
-          "evidenceJp": "この案は洪水問題を減らしながら別の大切な利用を残し、継続作業も決めたため成立しました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "在来植物を湿った時期だけでなく数日の乾燥にも耐えられる種類にしたのはなぜ合理的ですか。",
+          "answer": "レインガーデンは雨の後は水を受ける一方、雨のない日には乾くため両方の条件に対応する必要があるから。",
+          "evidence": [
+            "Most water entered from the road side and stayed in the eastern half of the lot.",
+            "Native plants were chosen because they could handle both wet periods and several dry days."
+          ],
+          "evidenceJp": [
+            "水の大部分は道路側から入り、空き地の東半分に残りました。",
+            "在来植物は湿った時期と数日の乾燥の両方に耐えられるため選ばれました。"
+          ],
+          "reason": "場所の水分条件と植物選択を結びつけます。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "GIST",
-          "prompt": "「The Vacant Lot Proposed as a Rain Garden」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "住民は、実用的な設計には水、管理、現在の利用者を合わせる必要があると学びました。",
-          "evidence": "Residents learned that practical design must fit water, maintenance, and current users.",
-          "evidenceJp": "住民は、実用的な設計には水、管理、現在の利用者を合わせる必要があると学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "このレインガーデン計画が実用的になった理由をまとめなさい。",
+          "answer": "水のたまる東側へ対策を絞り、西側の利用を残し、管理担当と試行後の見直しまで決めたから。",
+          "evidence": [
+            "Most water entered from the road side and stayed in the eastern half of the lot.",
+            "The western half drained quickly and was the area children used most often.",
+            "A landscape volunteer suggested placing the rain garden only in the eastern half and adding a raised path around it.",
+            "The revised design kept an open dry area on the west and connected it to the sidewalk.",
+            "A nearby apartment association agreed to rotate weekly checks for litter and blocked drains during that season.",
+            "The group still recorded one blocked drain and changed its maintenance checklist rather than calling the trial perfect.",
+            "The proposal succeeded because it reduced one flood problem while preserving another valued use and assigning ongoing work.",
+            "Residents learned that practical design must fit water, maintenance, and current users."
+          ],
+          "evidenceJp": [
+            "水の大部分は道路側から入り、空き地の東半分に残りました。",
+            "西半分は早く乾き、子どもが最もよく使う場所でした。",
+            "造園ボランティアは、東半分だけをレインガーデンにし、その周りに高い通路を作る案を出しました。",
+            "修正版では西側に乾いた広場を残し、歩道とつなげました。",
+            "近くの集合住宅の会が、その季節はごみと排水口を週ごとに交代で確認することに同意しました。",
+            "排水口の詰まりが一度あり、試行を完璧とせず管理チェック表を修正しました。",
+            "この案は洪水問題を減らしながら別の大切な利用を残し、継続作業も決めたため成立しました。",
+            "住民は、実用的な設計には水、管理、現在の利用者を合わせる必要があると学びました。"
+          ],
+          "reason": "水・利用・維持管理を統合した点が中心です。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         }
       ],
       "materialData": null,
@@ -1003,7 +1145,14 @@
       "humanReviewR8": null,
       "humanReviewR9": null,
       "humanReviewR10": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
+      "humanReviewR11": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R11_HUMAN_REVIEW"
     },
     {
       "id": "V11-B11-G3-004",
@@ -1136,95 +1285,153 @@
       "questions": [
         {
           "questionType": "MATERIAL_LINK",
-          "prompt": "「The Heavy-Rain Warning, Bridge Closure Map, Shelter Capacity, and Walking Times」で、資料の数値・条件と本文を合わせると確実に言えることを答えなさい。",
-          "answer": "地図には東橋と丘橋という二つの川の横断地点がありました。",
-          "evidence": "A map showed two river crossings, East Bridge and Hill Bridge.",
-          "evidenceJp": "地図には東橋と丘橋という二つの川の横断地点がありました。",
-          "reason": "資料の条件と本文の数値・時刻・数量を対応させて判断します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "川がLevel 3のとき、地域ホールが44人を収容できても選べないのはなぜですか。",
+          "answer": "地域ホールへ行くために必要なEast BridgeがLevel 3では利用不可だから。",
+          "evidence": [
+            "The current notice placed the river at Level 3, and the route table marked East Bridge unavailable at that level.",
+            "At first, several students selected Community Hall because it was shortest and large enough for forty-four people.",
+            "When they linked that choice to the route table, they saw that its required bridge was not available."
+          ],
+          "evidenceJp": [
+            "現在の案内は川をレベル3とし、経路表ではそのレベルで東橋は利用不可となっていました。",
+            "最初、何人かは最短で四十四人を収容できる地域ホールを選びました。",
+            "しかし経路表と結びつけると、その場所へ必要な橋が利用できないと分かりました。"
+          ],
+          "reason": "定員だけでなく経路条件を資料と結びつけます。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
-          "questionType": "DETAIL",
-          "prompt": "「The Heavy-Rain Warning, Bridge Closure Map, Shelter Capacity, and Walking Times」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "地域の学校は非常に強い雨のときの集合場所を選ぶ計画演習を行いました。",
-          "evidence": "A neighborhood school used a planning exercise to choose a meeting place during very heavy rain.",
-          "evidenceJp": "地域の学校は非常に強い雨のときの集合場所を選ぶ計画演習を行いました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
-        },
-        {
-          "questionType": "REASON",
-          "prompt": "「The Heavy-Rain Warning, Bridge Closure Map, Shelter Capacity, and Walking Times」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "最初、何人かは最短で四十四人を収容できる地域ホールを選びました。",
-          "evidence": "At first, several students selected Community Hall because it was shortest and large enough for forty-four people.",
-          "evidenceJp": "最初、何人かは最短で四十四人を収容できる地域ホールを選びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "MATERIAL_LINK",
+          "prompt": "図書館別館が集合先になれない理由を、人数と定員で答えなさい。",
+          "answer": "クラスは44人だが図書館別館の定員は38人で、6人分足りないから。",
+          "evidence": [
+            "The class had to move forty students and four teachers from the school to one listed community center.",
+            "Three meeting places were listed: Community Hall for fifty people, Library Annex for thirty-eight, and Hill Gym for eighty.",
+            "The Library Annex did not need a river crossing, but its capacity was six places too small for the whole class group."
+          ],
+          "evidenceJp": [
+            "クラスは生徒四十人と先生四人を学校から一覧にある一つの地域施設へ移す必要がありました。",
+            "集合場所は定員五十人の地域ホール、三十八人の図書館別館、八十人の丘体育館でした。",
+            "図書館別館は川を渡りませんが、クラス全体には六人分定員が足りませんでした。"
+          ],
+          "reason": "groupSizeとcapacityを照合します。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「The Heavy-Rain Warning, Bridge Closure Map, Shelter Capacity, and Walking Times」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "しかし経路表と結びつけると、その場所へ必要な橋が利用できないと分かりました。",
-          "evidence": "When they linked that choice to the route table, they saw that its required bridge was not available.",
-          "evidenceJp": "しかし経路表と結びつけると、その場所へ必要な橋が利用できないと分かりました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "Level 3で経路と定員の両方を満たす一覧先はどこでしたか。",
+          "answer": "Hill Gym。",
+          "evidence": "Hill Gym was therefore the only listed place meeting both route and capacity conditions at Level 3.",
+          "evidenceJp": "そのためレベル3で経路と定員の両方を満たす一覧先は丘体育館だけでした。",
+          "reason": "他二候補を除いた結論です。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
-          "questionType": "SUMMARY_FILL",
-          "prompt": "「The Heavy-Rain Warning, Bridge Closure Map, Shelter Capacity, and Walking Times」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "生徒が丘橋の注記を見ると、川がレベル4になれば利用状況を再確認すると分かりました。",
-          "evidence": "Students checked the Hill Bridge note and found that its status would be reviewed if the river moved to Level 4.",
-          "evidenceJp": "生徒が丘橋の注記を見ると、川がレベル4になれば利用状況を再確認すると分かりました。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "REASON",
+          "prompt": "Hill Gymへ出発する直前に情報をもう一度確認することにしたのはなぜですか。",
+          "answer": "徒歩28分かかり、川がLevel 4になればHill Bridgeの状況を再確認する必要があったから。",
+          "evidence": [
+            "Students checked the Hill Bridge note and found that its status would be reviewed if the river moved to Level 4.",
+            "Because the walk was twenty-eight minutes, the teacher added another information check immediately before departure."
+          ],
+          "evidenceJp": [
+            "生徒が丘橋の注記を見ると、川がレベル4になれば利用状況を再確認すると分かりました。",
+            "徒歩が二十八分あるため、先生は出発直前に情報をもう一度確認することにしました。"
+          ],
+          "reason": "移動中の状況変化を考慮しています。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
+        },
+        {
+          "questionType": "RESULT",
+          "prompt": "練習歩行中に脇道が倒木で塞がれたとき、どう対応しましたか。",
+          "answer": "地図にある平行道路の迂回路を使い、クラスを分けず一緒に移動した。",
+          "evidence": [
+            "During the practice walk, a fallen branch blocked one side street on the planned route.",
+            "The map showed a parallel street that returned to the Hill Bridge route after adding about three minutes.",
+            "Teachers used that marked detour and kept the class together rather than sending separate groups in different directions."
+          ],
+          "evidenceJp": [
+            "練習歩行中、予定経路の脇道一本が倒れた枝で塞がれていました。",
+            "地図には約三分追加で丘橋経路へ戻れる平行道路がありました。",
+            "先生はその記載された迂回路を使い、班を別方向へ分けずクラスを一緒に保ちました。"
+          ],
+          "reason": "事前に確認できる代替経路を使いました。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         }
       ],
       "questionSetB": [
         {
           "questionType": "MATERIAL_LINK",
-          "prompt": "「The Heavy-Rain Warning, Bridge Closure Map, Shelter Capacity, and Walking Times」で、資料の数値・条件と本文を合わせると確実に言えることを答えなさい。",
-          "answer": "徒歩時間は東橋経由の地域ホール十二分、図書館別館二十二分、丘橋経由の丘体育館二十八分でした。",
-          "evidence": "Walking times were twelve minutes to Community Hall by East Bridge, twenty-two minutes to the Library Annex, and twenty-eight minutes to Hill Gym by Hill Bridge.",
-          "evidenceJp": "徒歩時間は東橋経由の地域ホール十二分、図書館別館二十二分、丘橋経由の丘体育館二十八分でした。",
-          "reason": "資料の条件と本文の数値・時刻・数量を対応させて判断します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
-        },
-        {
-          "questionType": "EVIDENCE",
-          "prompt": "「The Heavy-Rain Warning, Bridge Closure Map, Shelter Capacity, and Walking Times」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "地図には約三分追加で丘橋経路へ戻れる平行道路がありました。",
-          "evidence": "The map showed a parallel street that returned to the Hill Bridge route after adding about three minutes.",
-          "evidenceJp": "地図には約三分追加で丘橋経路へ戻れる平行道路がありました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "元の28分に約3分の迂回を加えた場合、実際の到着31分は資料上の見積りと一致しますか。",
+          "answer": "一致する。28分＋約3分＝31分。",
+          "evidence": [
+            "The map showed a parallel street that returned to the Hill Bridge route after adding about three minutes.",
+            "The group reached Hill Gym in thirty-one minutes, matching the original twenty-eight-minute estimate plus the detour."
+          ],
+          "evidenceJp": [
+            "地図には約三分追加で丘橋経路へ戻れる平行道路がありました。",
+            "グループは三十一分で丘体育館へ着き、元の二十八分に迂回三分を加えた時間と一致しました。"
+          ],
+          "reason": "数値が本文と資料で一致します。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「The Heavy-Rain Warning, Bridge Closure Map, Shelter Capacity, and Walking Times」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "グループは三十一分で丘体育館へ着き、元の二十八分に迂回三分を加えた時間と一致しました。",
-          "evidence": "The group reached Hill Gym in thirty-one minutes, matching the original twenty-eight-minute estimate plus the detour.",
-          "evidenceJp": "グループは三十一分で丘体育館へ着き、元の二十八分に迂回三分を加えた時間と一致しました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "Hill Bridgeは川がLevel【　】になれば利用状況を再確認する注記でした。",
+          "answer": "4。",
+          "evidence": "Students checked the Hill Bridge note and found that its status would be reviewed if the river moved to Level 4.",
+          "evidenceJp": "生徒が丘橋の注記を見ると、川がレベル4になれば利用状況を再確認すると分かりました。",
+          "reason": "経路状況の更新条件です。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
-          "questionType": "RESULT",
-          "prompt": "「The Heavy-Rain Warning, Bridge Closure Map, Shelter Capacity, and Walking Times」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "丘体育館は現在のレベル3情報に基づく判断であり、すべての状況で固定の答えではないとも記しました。",
-          "evidence": "They also noted that Hill Gym was a decision for the current Level 3 information, not a permanent answer for every situation.",
-          "evidenceJp": "丘体育館は現在のレベル3情報に基づく判断であり、すべての状況で固定の答えではないとも記しました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "DETAIL",
+          "prompt": "一台の携帯や一人だけに頼らないため、何人の生徒リーダーが紙地図を持ちましたか。",
+          "answer": "4人。",
+          "evidence": "Four student leaders carried paper maps so the group would not depend on one phone or one person.",
+          "evidenceJp": "一台の携帯や一人だけに頼らないよう、四人の生徒リーダーが紙の地図を持ちました。",
+          "reason": "情報手段の冗長性を確認します。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
+        },
+        {
+          "questionType": "INFERENCE",
+          "prompt": "学校内の待機場所を決めたことにはどんな意味がありますか。",
+          "answer": "出発直前に川や橋の状況が変わっても、危険な経路へ進まず全員で次の指示を待てる。",
+          "evidence": [
+            "Because the walk was twenty-eight minutes, the teacher added another information check immediately before departure.",
+            "The class also marked an indoor waiting point at school in case the route status changed before they left."
+          ],
+          "evidenceJp": [
+            "徒歩が二十八分あるため、先生は出発直前に情報をもう一度確認することにしました。",
+            "出発前に経路状況が変わった場合に備え、学校内の待機場所も決めました。"
+          ],
+          "reason": "状況変化への代替行動から推論します。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         },
         {
           "questionType": "GIST",
-          "prompt": "「The Heavy-Rain Warning, Bridge Closure Map, Shelter Capacity, and Walking Times」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "クラスは、実行できる経路計画には最新情報、経路利用状況、定員、徒歩時間、明確な代替案を結びつける必要があると学びました。",
-          "evidence": "The class learned that a workable route plan must connect current information, route availability, capacity, walking time, and a clear alternative.",
-          "evidenceJp": "クラスは、実行できる経路計画には最新情報、経路利用状況、定員、徒歩時間、明確な代替案を結びつける必要があると学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "この避難計画で、一つの条件だけで目的地を選べない理由をまとめなさい。",
+          "answer": "最新の川情報、橋の利用可否、44人を収容できる定員、徒歩時間、迂回路を同時に満たす必要があるから。",
+          "evidence": [
+            "The current notice placed the river at Level 3, and the route table marked East Bridge unavailable at that level.",
+            "Three meeting places were listed: Community Hall for fifty people, Library Annex for thirty-eight, and Hill Gym for eighty.",
+            "Walking times were twelve minutes to Community Hall by East Bridge, twenty-two minutes to the Library Annex, and twenty-eight minutes to Hill Gym by Hill Bridge.",
+            "Hill Gym was therefore the only listed place meeting both route and capacity conditions at Level 3.",
+            "Because the walk was twenty-eight minutes, the teacher added another information check immediately before departure.",
+            "The map showed a parallel street that returned to the Hill Bridge route after adding about three minutes.",
+            "The class learned that a workable route plan must connect current information, route availability, capacity, walking time, and a clear alternative."
+          ],
+          "evidenceJp": [
+            "現在の案内は川をレベル3とし、経路表ではそのレベルで東橋は利用不可となっていました。",
+            "集合場所は定員五十人の地域ホール、三十八人の図書館別館、八十人の丘体育館でした。",
+            "徒歩時間は東橋経由の地域ホール十二分、図書館別館二十二分、丘橋経由の丘体育館二十八分でした。",
+            "そのためレベル3で経路と定員の両方を満たす一覧先は丘体育館だけでした。",
+            "徒歩が二十八分あるため、先生は出発直前に情報をもう一度確認することにしました。",
+            "地図には約三分追加で丘橋経路へ戻れる平行道路がありました。",
+            "クラスは、実行できる経路計画には最新情報、経路利用状況、定員、徒歩時間、明確な代替案を結びつける必要があると学びました。"
+          ],
+          "reason": "資料条件を統合して判断する問題です。",
+          "questionReview": "B11_R11_HUMAN_REVIEW"
         }
       ],
       "materialData": {
@@ -1274,7 +1481,14 @@
       "humanReviewR8": null,
       "humanReviewR9": null,
       "humanReviewR10": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN"
+      "humanReviewR11": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R11_HUMAN_REVIEW"
     }
   ]
 }
