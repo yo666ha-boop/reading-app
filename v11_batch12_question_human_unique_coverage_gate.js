@@ -9,10 +9,11 @@ const r9=read('v11_batch12_question_human_review_r9_g2_008_013.json');
 function fail(m){throw new Error(m)}
 const map=new Map(); const overlaps=[];
 function add(stage,ps){for(const p of ps){if(map.has(p.id))overlaps.push({id:p.id,old:map.get(p.id).stage,new:stage});map.set(p.id,{stage,p});}}
-add('R4',r4.questionHumanRewrites||[]);add('R5',r5.passages);add('R6',r6.passages);add('R7',r7.passages);add('R8',r8.passages);add('R9',r9.passages);
+const r4Passages=Object.entries(r4.questionRewrites||{}).map(([id,v])=>({id,questions:v.A,questionSetB:v.B}));
+add('R4',r4Passages);add('R5',r5.passages);add('R6',r6.passages);add('R7',r7.passages);add('R8',r8.passages);add('R9',r9.passages);
 if(overlaps.length!==1||overlaps[0].id!=='V11-B12-G1-014'||overlaps[0].old!=='R4'||overlaps[0].new!=='R7')fail('unexpected review overlap '+JSON.stringify(overlaps));
 const expected=[];for(let i=1;i<=17;i++)expected.push(`V11-B12-G1-${String(i).padStart(3,'0')}`);for(let i=1;i<=13;i++)expected.push(`V11-B12-G2-${String(i).padStart(3,'0')}`);
-const got=[...map.keys()].sort();const want=[...expected].sort();if(JSON.stringify(got)!==JSON.stringify(want))fail('unique reviewed ID coverage mismatch');
+const got=[...map.keys()].sort();const want=[...expected].sort();if(JSON.stringify(got)!==JSON.stringify(want))fail('unique reviewed ID coverage mismatch got='+JSON.stringify(got)+' want='+JSON.stringify(want));
 let qn=0;for(const {p} of map.values()){if(!Array.isArray(p.questions)||!Array.isArray(p.questionSetB)||p.questions.length!==5||p.questionSetB.length!==5)fail(p.id+' A/B count');qn+=10;}
 if(map.size!==30||qn!==300)fail(`coverage count ${map.size}/${qn}`);
 console.log(JSON.stringify({batch:'V11-B12',registered:false,officialTotal:718,uniqueHumanReviewedPassages:30,uniqueHumanReviewedQuestions:300,pendingPassages:20,pendingQuestions:200,explicitSupersession:'V11-B12-G1-014 R7 supersedes R4',unexpectedOverlapCount:0,finalRegistrationReady:false},null,2));
