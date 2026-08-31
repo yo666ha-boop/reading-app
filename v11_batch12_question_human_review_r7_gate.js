@@ -27,4 +27,5 @@ for(const rp of r.passages){
 }
 if(n!==70||r.reviewedQuestions!==70)fail('review count mismatch');
 if(new Set(prompts).size!==prompts.length)fail('duplicate R7 prompts');
-console.log(JSON.stringify({batch:'V11-B12',registered:false,officialTotal:718,r7Passages:7,r7Questions:70,previousHumanReviewed:110,cumulativeHumanReviewed:180,humanReviewPending:320,evidenceExactBody:'PASS',evidenceJpExactTranslation:'PASS',questionCompleteness:'PASS',questionTypeDiversity:'PASS',genericScaffoldPromptExcluded:'PASS',semanticSyncG1016:'PASS',finalRegistrationReady:false},null,2));
+// G1-014 was already human-reviewed in R4. R7 is its superseding re-review, not 10 new unique questions.
+console.log(JSON.stringify({batch:'V11-B12',registered:false,officialTotal:718,r7Passages:7,r7Questions:70,r7NetNewUniquePassages:6,r7NetNewUniqueQuestions:60,supersedes:['V11-B12-G1-014:R4'],previousUniqueHumanReviewed:110,cumulativeUniqueHumanReviewed:170,humanReviewPending:330,evidenceExactBody:'PASS',evidenceJpExactTranslation:'PASS',questionCompleteness:'PASS',questionTypeDiversity:'PASS',genericScaffoldPromptExcluded:'PASS',semanticSyncG1016:'PASS',finalRegistrationReady:false},null,2));
