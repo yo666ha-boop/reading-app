@@ -1,0 +1,35 @@
+name: v11 Batch11 support snapshot audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch11_support_snapshot_audit.js'
+      - 'v11_batch11_passages_draft_g*.js'
+      - 'v11_batch11_g3_core.js'
+      - 'v11_batch11_length_repair_r*.js'
+      - 'v11_batch11_grammar_repair_r*.js'
+      - 'v11_batch11_semantic_repair_r*.js'
+      - 'v11_batch11_question_human_rewrite_r*.js'
+      - 'v11_batch11_manual_gloss_r1.js'
+      - 'v11_batch11_verified_gloss_reuse.js'
+      - 'v11_batch11_easy_support_r1.js'
+      - '.github/workflows/v11-batch11-support-snapshot-audit.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Audit support snapshots
+        run: node v11_batch11_support_snapshot_audit.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-batch11-support-snapshot-audit
+          path: V11_BATCH11_SUPPORT_SNAPSHOT_AUDIT.json
+          if-no-files-found: warn
