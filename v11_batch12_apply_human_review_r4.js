@@ -43,6 +43,14 @@ for (const [id, repair] of Object.entries(layer.translationBoundaryRepairs)) {
   p.slashRows.forEach(r => { if (r.humanReview !== 'HUMAN_REVIEW_R4_CONFIRMED') r.humanReview = 'PENDING_R4_REBUILD'; });
 }
 
+// Only Japanese quote glyphs and Unicode width are normalized here. Content words,
+// punctuation other than equivalent quote marks, and sequence still must match.
+const normJpQuotes = s => String(s)
+  .normalize('NFKC')
+  .replace(/[『「]/g, '「')
+  .replace(/[』」]/g, '」');
+const jpContains = (container, needle) => normJpQuotes(container).includes(normJpQuotes(needle));
+
 let reviewedQuestions = 0;
 for (const [id, sets] of Object.entries(layer.questionRewrites)) {
   const p = byId.get(id);
@@ -53,8 +61,8 @@ for (const [id, sets] of Object.entries(layer.questionRewrites)) {
     for (const key of ['questionType','prompt','answer','evidence','evidenceJp','reason','humanReview']) if (!q[key] || !String(q[key]).trim()) throw new Error(`${id} question missing ${key}`);
     if (q.humanReview !== 'HUMAN_REVIEW_R4') throw new Error(`${id} question is not marked HUMAN_REVIEW_R4`);
     if (!p.body.includes(q.evidence)) throw new Error(`${id} evidence not found verbatim in body: ${q.evidence}`);
-    if (!p.fullTranslation.includes(q.evidenceJp)) {
-      const slashHas = p.slashRows.some(r => r.jp.includes(q.evidenceJp) || q.evidenceJp.includes(r.jp));
+    if (!jpContains(p.fullTranslation, q.evidenceJp)) {
+      const slashHas = p.slashRows.some(r => jpContains(r.jp, q.evidenceJp) || jpContains(q.evidenceJp, r.jp));
       if (!slashHas) throw new Error(`${id} evidenceJp not found in translation/slash: ${q.evidenceJp}`);
     }
     if (prompts.has(q.prompt)) throw new Error(`${id} duplicate prompt within A/B sets`);
