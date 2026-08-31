@@ -124,96 +124,96 @@
       ],
       "questions": [
         {
-          "questionType": "GIST",
-          "prompt": "本文の最初に示された状況・問題を答えなさい。",
-          "answer": "昼食後、メイは学校の玄関近くで青い傘を見つけました。",
-          "evidence": "After lunch, Mei found a blue umbrella near the school entrance.",
-          "evidenceJp": "昼食後、メイは学校の玄関近くで青い傘を見つけました。",
-          "reason": "冒頭の状況を本文から確認します。",
-          "humanReview": "PENDING"
-        },
-        {
           "questionType": "DETAIL",
-          "prompt": "判断の手がかりになった具体的な情報を一つ答えなさい。",
-          "answer": "メイはすぐにどちらかの教室へ持って行くことはしませんでした。",
-          "evidence": "Mei did not take it to either classroom at once.",
-          "evidenceJp": "メイはすぐにどちらかの教室へ持って行くことはしませんでした。",
-          "reason": "本文中の具体情報が根拠です。",
-          "humanReview": "PENDING"
+          "prompt": "傘のタグには何組と書かれていましたか。",
+          "answer": "1年3組です。",
+          "evidence": "A tag on it said Class 1-3, but the umbrella was in the Class 1-2 stand.",
+          "evidenceJp": "タグには1年3組と書かれていましたが、その傘は1年2組の傘立てにありました。",
+          "reason": "タグに書かれた組番号を直接確認する問題です。",
+          "humanReview": "HUMAN_REVIEW_R4"
         },
         {
           "questionType": "REASON",
-          "prompt": "最初の考えをそのまま実行せず、確認や見直しをした理由を答えなさい。",
-          "answer": "メイはすぐにどちらかの教室へ持って行くことはしませんでした。",
-          "evidence": "Mei did not take it to either classroom at once.",
-          "evidenceJp": "メイはすぐにどちらかの教室へ持って行くことはしませんでした。",
-          "reason": "判断が変わる付近の記述を根拠にします。",
-          "humanReview": "PENDING"
+          "prompt": "メイが傘をすぐ1年2組か1年3組の教室へ持って行かなかったのはなぜですか。",
+          "answer": "タグは1年3組なのに傘は1年2組の傘立てにあり、持ち主を決めるには情報が食い違っていたからです。",
+          "evidence": "A tag on it said Class 1-3, but the umbrella was in the Class 1-2 stand.",
+          "evidenceJp": "タグには1年3組と書かれていましたが、その傘は1年2組の傘立てにありました。",
+          "reason": "組番号と置かれていた場所が一致していないため、推測せず確認する必要がありました。",
+          "humanReview": "HUMAN_REVIEW_R4"
+        },
+        {
+          "questionType": "DETAIL",
+          "prompt": "落とし物の表には、だれからのメモがありましたか。",
+          "answer": "1年3組のケンからのメモです。",
+          "evidence": "She checked the lost-item table and saw a note from Ken in Class 1-3.",
+          "evidenceJp": "落とし物の表を確認すると、1年3組のケンからのメモがありました。",
+          "reason": "落とし物の表で確認した具体情報を問います。",
+          "humanReview": "HUMAN_REVIEW_R4"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "問題を解決するために行った中心的な対応を答えなさい。",
-          "answer": "メイは傘を職員室へ持って行き、ケンに場所を伝えました。",
+          "prompt": "メイが持ち主を確かめたあとにしたことを二つ答えなさい。",
+          "answer": "傘を職員室へ持って行き、ケンに傘の場所を伝えました。",
           "evidence": "Mei took the umbrella to the school office and told Ken where it was.",
           "evidenceJp": "メイは傘を職員室へ持って行き、ケンに場所を伝えました。",
-          "reason": "終盤の行動が根拠です。",
-          "humanReview": "PENDING"
+          "reason": "確認後の二つの具体的行動を本文からまとめます。",
+          "humanReview": "HUMAN_REVIEW_R4"
         },
         {
           "questionType": "GIST",
-          "prompt": "この出来事から分かったこと・最後に確かめられたことを答えなさい。",
-          "answer": "組の番号と場所の手がかりのおかげで、メイは推測せず正しい傘を返すことができました。",
+          "prompt": "この話でメイが正しい傘を返すために最も大切にしたことは何ですか。",
+          "answer": "組番号と傘が置かれていた場所の両方を手がかりにし、推測だけで決めなかったことです。",
           "evidence": "The class number and the place helped her return the right umbrella without guessing.",
           "evidenceJp": "組の番号と場所の手がかりのおかげで、メイは推測せず正しい傘を返すことができました。",
-          "reason": "結末の記述が文章全体をまとめています。",
-          "humanReview": "PENDING"
+          "reason": "結末が本文全体の判断方法をまとめています。",
+          "humanReview": "HUMAN_REVIEW_R4"
         }
       ],
       "questionSetB": [
         {
           "questionType": "INFERENCE",
-          "prompt": "本文全体から、同じような場面で大切だと考えられることを答えなさい。",
-          "answer": "組の番号と場所の手がかりのおかげで、メイは推測せず正しい傘を返すことができました。",
-          "evidence": "The class number and the place helped her return the right umbrella without guessing.",
-          "evidenceJp": "組の番号と場所の手がかりのおかげで、メイは推測せず正しい傘を返すことができました。",
-          "reason": "本文の結末とそれまでの判断過程から読み取ります。",
-          "humanReview": "PENDING"
-        },
-        {
-          "questionType": "SUMMARY_FILL",
-          "prompt": "確認後、話の流れを変えた中心的な出来事を答えなさい。",
-          "answer": "メイはすぐにどちらかの教室へ持って行くことはしませんでした。",
-          "evidence": "Mei did not take it to either classroom at once.",
-          "evidenceJp": "メイはすぐにどちらかの教室へ持って行くことはしませんでした。",
-          "reason": "中盤の転換点が根拠です。",
-          "humanReview": "PENDING"
-        },
-        {
-          "questionType": "DETAIL",
-          "prompt": "判断を変えるきっかけになった情報を答えなさい。",
-          "answer": "メイはすぐにどちらかの教室へ持って行くことはしませんでした。",
-          "evidence": "Mei did not take it to either classroom at once.",
-          "evidenceJp": "メイはすぐにどちらかの教室へ持って行くことはしませんでした。",
-          "reason": "具体的な手がかりを本文から探します。",
-          "humanReview": "PENDING"
+          "prompt": "もしメイが傘立ての場所だけを見て判断していたら、どんな間違いが起こる可能性がありましたか。",
+          "answer": "1年2組の生徒の傘だと誤って判断する可能性がありました。",
+          "evidence": "A tag on it said Class 1-3, but the umbrella was in the Class 1-2 stand.",
+          "evidenceJp": "タグには1年3組と書かれていましたが、その傘は1年2組の傘立てにありました。",
+          "reason": "置き場所だけではタグの情報と矛盾するため、本文から妥当に推論できます。",
+          "humanReview": "HUMAN_REVIEW_R4"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "最終的に行った変更・決定・対応を答えなさい。",
-          "answer": "メイは傘を職員室へ持って行き、ケンに場所を伝えました。",
-          "evidence": "Mei took the umbrella to the school office and told Ken where it was.",
-          "evidenceJp": "メイは傘を職員室へ持って行き、ケンに場所を伝えました。",
-          "reason": "終盤の決定と一致する内容です。",
-          "humanReview": "PENDING"
+          "prompt": "ケンがその傘の持ち主だと考える根拠として、本文にある情報を二つ答えなさい。",
+          "answer": "ケンが1年3組であることと、昼食前に玄関近くへ青い傘を置き忘れたことです。",
+          "evidence": "He had left a blue umbrella near the entrance before lunch.",
+          "evidenceJp": "ケンは昼食前に玄関近くへ青い傘を置き忘れていました。",
+          "reason": "タグの1年3組と、ケンのメモにある色・場所・時刻が一致します。",
+          "humanReview": "HUMAN_REVIEW_R4"
+        },
+        {
+          "questionType": "SUMMARY_FILL",
+          "prompt": "「情報が食い違う→（　）→持ち主を特定する」という流れになるよう、（　）に入る内容を答えなさい。",
+          "answer": "落とし物の表を確認する。",
+          "evidence": "She checked the lost-item table and saw a note from Ken in Class 1-3.",
+          "evidenceJp": "落とし物の表を確認すると、1年3組のケンからのメモがありました。",
+          "reason": "食い違いのあと、持ち主を決める前に行った確認行動です。",
+          "humanReview": "HUMAN_REVIEW_R4"
+        },
+        {
+          "questionType": "CONTEXT_WORD",
+          "prompt": "最後の without guessing が表しているメイの行動を、日本語で具体的に説明しなさい。",
+          "answer": "一つの手がかりだけで決めつけず、複数の情報を確認してから判断したことです。",
+          "evidence": "The class number and the place helped her return the right umbrella without guessing.",
+          "evidenceJp": "組の番号と場所の手がかりのおかげで、メイは推測せず正しい傘を返すことができました。",
+          "reason": "語句の意味を本文中の実際の行動に結び付けます。",
+          "humanReview": "HUMAN_REVIEW_R4"
         },
         {
           "questionType": "GIST",
-          "prompt": "文章全体を最もよく表す学び・結論を答えなさい。",
-          "answer": "組の番号と場所の手がかりのおかげで、メイは推測せず正しい傘を返すことができました。",
+          "prompt": "本文に最も合う題名として『二つの手がかりで傘の持ち主を確かめる』が適切なのはなぜですか。",
+          "answer": "組番号と置かれていた場所を照合し、落とし物の表も確認して持ち主を確かめた話だからです。",
           "evidence": "The class number and the place helped her return the right umbrella without guessing.",
           "evidenceJp": "組の番号と場所の手がかりのおかげで、メイは推測せず正しい傘を返すことができました。",
-          "reason": "最後の文を中心に文章全体をまとめます。",
-          "humanReview": "PENDING"
+          "reason": "本文全体の中心行動と結末をまとめた題名になっています。",
+          "humanReview": "HUMAN_REVIEW_R4"
         }
       ],
       "sentences": [
@@ -225,8 +225,8 @@
         "Mei took the umbrella to the school office and told Ken where it was.",
         "The class number and the place helped her return the right umbrella without guessing."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_HUMAN_REVIEW_R4",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G1-002",
@@ -397,8 +397,8 @@
         "After lunch, the librarian collected the Thursday cards as the chart said.",
         "A quick check of the weekday kept Sora's card from waiting an extra day."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G1-003",
@@ -569,8 +569,8 @@
         "Later, the teacher reset the classroom clock.",
         "The students learned why they had started lining up early even though the schedule had not changed."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G1-004",
@@ -732,8 +732,8 @@
         "Before more visitors arrived, they covered the wrong arrow and added a new one.",
         "The changed sign helped the next group reach Room 204 directly."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G1-005",
@@ -903,8 +903,8 @@
         "When the game began, every player had a bib.",
         "Recounting after the group changed prevented a problem on the field."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G1-006",
@@ -1082,8 +1082,8 @@
         "The note had slipped under Yui's mat while the desks were being cleaned.",
         "By checking the clues, Yui found the right owner."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G1-007",
@@ -1253,8 +1253,8 @@
         "When the next class entered, the table was clear and the pictures were safe.",
         "Moving the wet materials before someone knocked them over protected the class's work."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G1-008",
@@ -1416,8 +1416,8 @@
         "Nao showed the note to her teacher, who explained the change to the class before they boarded.",
         "No one walked to another stop just because the printed sheet used the old name."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G1-009",
@@ -1479,96 +1479,96 @@
       ],
       "questions": [
         {
-          "questionType": "GIST",
-          "prompt": "本文の最初に示された状況・問題を答えなさい。",
-          "answer": "ミオとレンは二人とも飼育当番でした。",
-          "evidence": "Mio and Ren were both on animal duty.",
-          "evidenceJp": "ミオとレンは二人とも飼育当番でした。",
-          "reason": "冒頭の状況を本文から確認します。",
-          "humanReview": "PENDING"
-        },
-        {
           "questionType": "DETAIL",
-          "prompt": "判断の手がかりになった具体的な情報を一つ答えなさい。",
-          "answer": "5分後、レンは表が空欄なのを見て、扉をもう一度確認しました。",
-          "evidence": "Five minutes later, Ren saw the empty box on the chart and checked the door again.",
-          "evidenceJp": "5分後、レンは表が空欄なのを見て、扉をもう一度確認しました。",
-          "reason": "本文中の具体情報が根拠です。",
-          "humanReview": "PENDING"
+          "prompt": "ミオがハムスターの世話をしたあと、し忘れたことは何ですか。",
+          "answer": "当番表に印を付けることです。",
+          "evidence": "She forgot to mark the duty chart.",
+          "evidenceJp": "当番表に印を付け忘れました。",
+          "reason": "重複作業の原因になった具体的なミスを問います。",
+          "humanReview": "HUMAN_REVIEW_R4"
         },
         {
           "questionType": "REASON",
-          "prompt": "最初の考えをそのまま実行せず、確認や見直しをした理由を答えなさい。",
-          "answer": "5分後、レンは表が空欄なのを見て、扉をもう一度確認しました。",
+          "prompt": "レンが5分後にケージの扉をもう一度確認したのはなぜですか。",
+          "answer": "当番表の欄が空いていて、扉の確認が終わったと分からなかったからです。",
           "evidence": "Five minutes later, Ren saw the empty box on the chart and checked the door again.",
           "evidenceJp": "5分後、レンは表が空欄なのを見て、扉をもう一度確認しました。",
-          "reason": "判断が変わる付近の記述を根拠にします。",
-          "humanReview": "PENDING"
+          "reason": "空欄を未実施のサインと受け取ったことが再確認の直接原因です。",
+          "humanReview": "HUMAN_REVIEW_R4"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "問題を解決するために行った中心的な対応を答えなさい。",
-          "answer": "そこで仕事を終えた人がすぐ表に印を付けることにしました。",
+          "prompt": "二人が同じ仕事を繰り返さないために決めた新しいルールは何ですか。",
+          "answer": "仕事を終えた人がすぐ当番表に印を付けることです。",
           "evidence": "They decided that the person who finished each job would mark the chart at once.",
           "evidenceJp": "そこで仕事を終えた人がすぐ表に印を付けることにしました。",
-          "reason": "終盤の行動が根拠です。",
-          "humanReview": "PENDING"
+          "reason": "問題に対する具体的な改善策です。",
+          "humanReview": "HUMAN_REVIEW_R4"
+        },
+        {
+          "questionType": "DETAIL",
+          "prompt": "新しいルールを使った翌日、レンは何をしましたか。",
+          "answer": "ミオの印を見て、扉を再確認せず水皿を洗いました。",
+          "evidence": "The next day, Ren saw Mio's mark and cleaned the water dish instead of repeating the door check.",
+          "evidenceJp": "翌日、レンはミオの印を見て、扉を再確認する代わりに水皿を洗いました。",
+          "reason": "改善後に重複を避けられた具体例です。",
+          "humanReview": "HUMAN_REVIEW_R4"
         },
         {
           "questionType": "GIST",
-          "prompt": "この出来事から分かったこと・最後に確かめられたことを答えなさい。",
-          "answer": "翌日、レンはミオの印を見て、扉を再確認する代わりに水皿を洗いました。",
-          "evidence": "The next day, Ren saw Mio's mark and cleaned the water dish instead of repeating the door check.",
-          "evidenceJp": "翌日、レンはミオの印を見て、扉を再確認する代わりに水皿を洗いました。",
-          "reason": "結末の記述が文章全体をまとめています。",
-          "humanReview": "PENDING"
+          "prompt": "この話の中心となる問題は何でしたか。",
+          "answer": "作業自体は終わっていても記録がなかったため、二人が同じ確認作業をしてしまったことです。",
+          "evidence": "The hamster was safe, but the two students had done the same task.",
+          "evidenceJp": "ハムスターは安全でしたが、二人は同じ仕事をしていました。",
+          "reason": "事故ではなく、情報共有不足による重複が中心問題です。",
+          "humanReview": "HUMAN_REVIEW_R4"
         }
       ],
       "questionSetB": [
         {
           "questionType": "INFERENCE",
-          "prompt": "本文全体から、同じような場面で大切だと考えられることを答えなさい。",
-          "answer": "翌日、レンはミオの印を見て、扉を再確認する代わりに水皿を洗いました。",
+          "prompt": "当番表の印には、単なる記録以外にどんな役割がありますか。",
+          "answer": "次の人に、その仕事がすでに終わっていると伝える役割があります。",
           "evidence": "The next day, Ren saw Mio's mark and cleaned the water dish instead of repeating the door check.",
           "evidenceJp": "翌日、レンはミオの印を見て、扉を再確認する代わりに水皿を洗いました。",
-          "reason": "本文の結末とそれまでの判断過程から読み取ります。",
-          "humanReview": "PENDING"
+          "reason": "印を見たことで別の仕事へ進めたことから推論できます。",
+          "humanReview": "HUMAN_REVIEW_R4"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "確認後、話の流れを変えた中心的な出来事を答えなさい。",
-          "answer": "5分後、レンは表が空欄なのを見て、扉をもう一度確認しました。",
-          "evidence": "Five minutes later, Ren saw the empty box on the chart and checked the door again.",
-          "evidenceJp": "5分後、レンは表が空欄なのを見て、扉をもう一度確認しました。",
-          "reason": "中盤の転換点が根拠です。",
-          "humanReview": "PENDING"
-        },
-        {
-          "questionType": "DETAIL",
-          "prompt": "判断を変えるきっかけになった情報を答えなさい。",
-          "answer": "5分後、レンは表が空欄なのを見て、扉をもう一度確認しました。",
-          "evidence": "Five minutes later, Ren saw the empty box on the chart and checked the door again.",
-          "evidenceJp": "5分後、レンは表が空欄なのを見て、扉をもう一度確認しました。",
-          "reason": "具体的な手がかりを本文から探します。",
-          "humanReview": "PENDING"
+          "prompt": "「世話をする→（　）→次の人が別の仕事へ進む」という流れの（　）に入る行動を答えなさい。",
+          "answer": "終えた仕事を当番表にすぐ記録する。",
+          "evidence": "They decided that the person who finished each job would mark the chart at once.",
+          "evidenceJp": "そこで仕事を終えた人がすぐ表に印を付けることにしました。",
+          "reason": "新ルールが前後の行動をつなぐ役割を果たします。",
+          "humanReview": "HUMAN_REVIEW_R4"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "最終的に行った変更・決定・対応を答えなさい。",
-          "answer": "そこで仕事を終えた人がすぐ表に印を付けることにしました。",
+          "prompt": "本文から、ハムスターが危険な状態になったわけではないと分かる文を答えなさい。",
+          "answer": "The hamster was safe. です。",
+          "evidence": "The hamster was safe, but the two students had done the same task.",
+          "evidenceJp": "ハムスターは安全でしたが、二人は同じ仕事をしていました。",
+          "reason": "問題の性質を区別するための直接的な根拠です。",
+          "humanReview": "HUMAN_REVIEW_R4"
+        },
+        {
+          "questionType": "REASON",
+          "prompt": "新しいルールが『扉を二度確認しない』ではなく『終えた人が記録する』だったのはなぜだと考えられますか。",
+          "answer": "どの仕事にも使え、終わった仕事を次の人が確認できる方法だからです。",
           "evidence": "They decided that the person who finished each job would mark the chart at once.",
           "evidenceJp": "そこで仕事を終えた人がすぐ表に印を付けることにしました。",
-          "reason": "終盤の決定と一致する内容です。",
-          "humanReview": "PENDING"
+          "reason": "本文のルールは特定の作業だけでなく each job を対象にしています。",
+          "humanReview": "HUMAN_REVIEW_R4"
         },
         {
           "questionType": "GIST",
-          "prompt": "文章全体を最もよく表す学び・結論を答えなさい。",
-          "answer": "翌日、レンはミオの印を見て、扉を再確認する代わりに水皿を洗いました。",
-          "evidence": "The next day, Ren saw Mio's mark and cleaned the water dish instead of repeating the door check.",
-          "evidenceJp": "翌日、レンはミオの印を見て、扉を再確認する代わりに水皿を洗いました。",
-          "reason": "最後の文を中心に文章全体をまとめます。",
-          "humanReview": "PENDING"
+          "prompt": "この本文から学べることを一文でまとめなさい。",
+          "answer": "共同作業では、終わった仕事をすぐ共有できる形で記録すると重複を防げます。",
+          "evidence": "They decided that the person who finished each job would mark the chart at once.",
+          "evidenceJp": "そこで仕事を終えた人がすぐ表に印を付けることにしました。",
+          "reason": "原因・改善策・翌日の結果をまとめた内容です。",
+          "humanReview": "HUMAN_REVIEW_R4"
         }
       ],
       "sentences": [
@@ -1580,8 +1580,8 @@
         "They decided that the person who finished each job would mark the chart at once.",
         "The next day, Ren saw Mio's mark and cleaned the water dish instead of repeating the door check."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_HUMAN_REVIEW_R4",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G1-010",
@@ -1743,8 +1743,8 @@
         "The student later identified a small star mark inside the scarf.",
         "Time, place, and the mark all supported the return."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G1-011",
@@ -1906,8 +1906,8 @@
         "Together they placed it beside the return desk, where it did not block shelves or the aisle.",
         "The younger student could reach the book, and visitors could still move safely through the library."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G1-012",
@@ -2077,8 +2077,8 @@
         "The club changed the order and sang again.",
         "This time the story moved naturally from meeting to spending time together and then parting."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G1-013",
@@ -2248,8 +2248,8 @@
         "The next visitors followed the arrow to the flower beds.",
         "Hana also added a note to the garden check sheet so the sign would be checked after strong wind."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G1-014",
@@ -2318,96 +2318,96 @@
       ],
       "questions": [
         {
-          "questionType": "GIST",
-          "prompt": "本文の最初に示された状況・問題を答えなさい。",
-          "answer": "靴箱のところで、ジュンは床に白い上履きが一組あるのを見つけました。",
-          "evidence": "At the shoe shelves, Jun found a pair of white indoor shoes on the floor.",
-          "evidenceJp": "靴箱のところで、ジュンは床に白い上履きが一組あるのを見つけました。",
-          "reason": "冒頭の状況を本文から確認します。",
-          "humanReview": "PENDING"
-        },
-        {
           "questionType": "DETAIL",
-          "prompt": "判断の手がかりになった具体的な情報を一つ答えなさい。",
-          "answer": "もう片方には薄い古い名前と、「ユ」のように見える新しい印がありました。",
-          "evidence": "The other had an old, faint name and a newer mark that looked like Yu.",
-          "evidenceJp": "もう片方には薄い古い名前と、「ユ」のように見える新しい印がありました。",
-          "reason": "本文中の具体情報が根拠です。",
-          "humanReview": "PENDING"
+          "prompt": "床にあった二足の上履きのうち、片方にはどんな名前がありましたか。",
+          "answer": "ユウタという名前がはっきり書かれていました。",
+          "evidence": "One shoe had the name Yuta written clearly inside.",
+          "evidenceJp": "片方の内側にはユウタという名前がはっきり書かれていました。",
+          "reason": "一足目の明確な情報を直接確認します。",
+          "humanReview": "HUMAN_REVIEW_R4"
         },
         {
           "questionType": "REASON",
-          "prompt": "最初の考えをそのまま実行せず、確認や見直しをした理由を答えなさい。",
-          "answer": "もう片方には薄い古い名前と、「ユ」のように見える新しい印がありました。",
+          "prompt": "ジュンが二足ともユウタの箱へ入れなかったのはなぜですか。",
+          "answer": "もう片方には古い名前と『ユ』のような新しい印しかなく、同じ持ち主だと確定できなかったからです。",
           "evidence": "The other had an old, faint name and a newer mark that looked like Yu.",
-          "evidenceJp": "もう片方には薄い古い名前と、「ユ」のように見える新しい印がありました。",
-          "reason": "判断が変わる付近の記述を根拠にします。",
-          "humanReview": "PENDING"
+          "evidenceJp": "もう片方には薄い古い名前と、『ユ』のように見える新しい印がありました。",
+          "reason": "二足目の名前情報が曖昧だったことが確認行動の理由です。",
+          "humanReview": "HUMAN_REVIEW_R4"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "問題を解決するために行った中心的な対応を答えなさい。",
-          "answer": "二足目は名前が「ユ」で始まる別の生徒の物でした。",
+          "prompt": "ユウタは二足を確認して何と言いましたか。",
+          "answer": "最初の一足だけが自分の物で、もう片方の自分の上履きはすでにかばんにあると言いました。",
+          "evidence": "Yuta recognized only the first shoe and said his other shoe was already in his bag.",
+          "evidenceJp": "ユウタは最初の一足だけ自分の物だと分かり、もう片方はすでにかばんにあると言いました。",
+          "reason": "本人確認で分かった二つの情報をまとめます。",
+          "humanReview": "HUMAN_REVIEW_R4"
+        },
+        {
+          "questionType": "DETAIL",
+          "prompt": "二足目の上履きはだれの物でしたか。",
+          "answer": "名前が『ユ』で始まる別の生徒の物でした。",
           "evidence": "The second shoe belonged to another student whose name began with Yu.",
-          "evidenceJp": "二足目は名前が「ユ」で始まる別の生徒の物でした。",
-          "reason": "終盤の行動が根拠です。",
-          "humanReview": "PENDING"
+          "evidenceJp": "二足目は名前が『ユ』で始まる別の生徒の物でした。",
+          "reason": "持ち主について本文が明示しています。",
+          "humanReview": "HUMAN_REVIEW_R4"
         },
         {
           "questionType": "GIST",
-          "prompt": "この出来事から分かったこと・最後に確かめられたことを答えなさい。",
-          "answer": "返す前に確認したことで、違う上履きが再び混ざるのを防げました。",
+          "prompt": "ジュンの確認によって防げたことは何ですか。",
+          "answer": "別々の生徒の上履きを一組として再び混ぜてしまうことです。",
           "evidence": "Asking before returning the pair prevented two different shoes from being mixed again.",
           "evidenceJp": "返す前に確認したことで、違う上履きが再び混ざるのを防げました。",
-          "reason": "結末の記述が文章全体をまとめています。",
-          "humanReview": "PENDING"
+          "reason": "結末が確認の効果を直接示しています。",
+          "humanReview": "HUMAN_REVIEW_R4"
         }
       ],
       "questionSetB": [
         {
           "questionType": "INFERENCE",
-          "prompt": "本文全体から、同じような場面で大切だと考えられることを答えなさい。",
-          "answer": "返す前に確認したことで、違う上履きが再び混ざるのを防げました。",
-          "evidence": "Asking before returning the pair prevented two different shoes from being mixed again.",
-          "evidenceJp": "返す前に確認したことで、違う上履きが再び混ざるのを防げました。",
-          "reason": "本文の結末とそれまでの判断過程から読み取ります。",
-          "humanReview": "PENDING"
+          "prompt": "『Yu』という印だけで二足目をユウタの物と決められないのはなぜですか。",
+          "answer": "『ユ』で始まる名前の別の生徒もいるため、その印だけでは一人に特定できないからです。",
+          "evidence": "The second shoe belonged to another student whose name began with Yu.",
+          "evidenceJp": "二足目は名前が『ユ』で始まる別の生徒の物でした。",
+          "reason": "本文の結果から、短い名前の印が一意ではないと分かります。",
+          "humanReview": "HUMAN_REVIEW_R4"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "確認後、話の流れを変えた中心的な出来事を答えなさい。",
-          "answer": "もう片方には薄い古い名前と、「ユ」のように見える新しい印がありました。",
-          "evidence": "The other had an old, faint name and a newer mark that looked like Yu.",
-          "evidenceJp": "もう片方には薄い古い名前と、「ユ」のように見える新しい印がありました。",
-          "reason": "中盤の転換点が根拠です。",
-          "humanReview": "PENDING"
-        },
-        {
-          "questionType": "DETAIL",
-          "prompt": "判断を変えるきっかけになった情報を答えなさい。",
-          "answer": "もう片方には薄い古い名前と、「ユ」のように見える新しい印がありました。",
-          "evidence": "The other had an old, faint name and a newer mark that looked like Yu.",
-          "evidenceJp": "もう片方には薄い古い名前と、「ユ」のように見える新しい印がありました。",
-          "reason": "具体的な手がかりを本文から探します。",
-          "humanReview": "PENDING"
+          "prompt": "「二足の印が一致しない→（　）→別々の持ち主だと分かる」の（　）に入る内容を答えなさい。",
+          "answer": "ユウタ本人に二足を確認してもらう。",
+          "evidence": "He asked Yuta to check them.",
+          "evidenceJp": "ジュンは二足ともユウタの箱へ入れず、本人に確認しました。",
+          "reason": "判断を確定させた中間行動です。",
+          "humanReview": "HUMAN_REVIEW_R4"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "最終的に行った変更・決定・対応を答えなさい。",
-          "answer": "二足目は名前が「ユ」で始まる別の生徒の物でした。",
-          "evidence": "The second shoe belonged to another student whose name began with Yu.",
-          "evidenceJp": "二足目は名前が「ユ」で始まる別の生徒の物でした。",
-          "reason": "終盤の決定と一致する内容です。",
-          "humanReview": "PENDING"
+          "prompt": "本文中で、ジュンが推測より確認を優先したことが最もよく分かる行動を答えなさい。",
+          "answer": "二足とも箱へ入れず、ユウタ本人に確認したことです。",
+          "evidence": "Jun did not put both shoes into Yuta's box. He asked Yuta to check them.",
+          "evidenceJp": "ジュンは二足ともユウタの箱へ入れず、本人に確認しました。",
+          "reason": "誤った返却を止め、直接確認へ切り替えた場面です。",
+          "humanReview": "HUMAN_REVIEW_R4"
+        },
+        {
+          "questionType": "CONTEXT_WORD",
+          "prompt": "最後の mixed again は、この話では何がどのようになることを指しますか。",
+          "answer": "別々の生徒の二足の上履きが、同じ一組として扱われてしまうことです。",
+          "evidence": "Asking before returning the pair prevented two different shoes from being mixed again.",
+          "evidenceJp": "返す前に確認したことで、違う上履きが再び混ざるのを防げました。",
+          "reason": "語句を本文の具体的状況に置き換えて説明します。",
+          "humanReview": "HUMAN_REVIEW_R4"
         },
         {
           "questionType": "GIST",
-          "prompt": "文章全体を最もよく表す学び・結論を答えなさい。",
-          "answer": "返す前に確認したことで、違う上履きが再び混ざるのを防げました。",
+          "prompt": "この話の中心的な学びを最もよく表すものを答えなさい。",
+          "answer": "似た印があっても一つの情報だけで持ち主を決めず、本人確認など別の根拠を使うことが大切です。",
           "evidence": "Asking before returning the pair prevented two different shoes from being mixed again.",
           "evidenceJp": "返す前に確認したことで、違う上履きが再び混ざるのを防げました。",
-          "reason": "最後の文を中心に文章全体をまとめます。",
-          "humanReview": "PENDING"
+          "reason": "問題・確認行動・結果を一つの学びとしてまとめています。",
+          "humanReview": "HUMAN_REVIEW_R4"
         }
       ],
       "sentences": [
@@ -2420,8 +2420,8 @@
         "The second shoe belonged to another student whose name began with Yu.",
         "Asking before returning the pair prevented two different shoes from being mixed again."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_HUMAN_REVIEW_R4",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G1-015",
@@ -2584,8 +2584,8 @@
         "Everyone received one snack.",
         "Using today's attendance instead of yesterday's number made the count correct."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G1-016",
@@ -2748,8 +2748,8 @@
         "The chart confirmed the two planned places, so she returned Cup B to the north window and told the teacher.",
         "Because the mistake was found early, the class could record the mix-up and continue the observation without assuming that Cup B had stayed by the north window all day."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G1-017",
@@ -2919,8 +2919,8 @@
         "Daichi returned it to the open place in the final row and counted all twenty chairs again.",
         "The arrangement then matched the plan without adding an unnecessary extra chair."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G2-001",
@@ -3092,8 +3092,8 @@
         "No student waited more than four minutes, and both groups still had enough time to drink.",
         "The council kept the temporary schedule until the second tap was repaired."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G2-002",
@@ -3272,8 +3272,8 @@
         "Students then used small clips for papers during fan time.",
         "Their final plan solved both problems better than simply choosing between a hot room and flying worksheets."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G2-003",
@@ -3451,8 +3451,8 @@
         "In the next hour, families found items more quickly, and volunteers had fewer questions to answer.",
         "The same table worked well once the information was organized around what visitors needed to know first."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G2-004",
@@ -3624,8 +3624,8 @@
         "The club compared sunset times for September and late October and changed its rule from that week on: lights would be checked before every evening ride, and the group would leave ten minutes earlier.",
         "The new rule was based on the season and the actual condition of the bicycles, not on the brighter rides they remembered from summer."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G2-005",
@@ -3803,8 +3803,8 @@
         "A later test showed that students there could now get the message in two ways.",
         "Testing the location revealed a problem that the studio alone could not show."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G2-006",
@@ -3983,8 +3983,8 @@
         "The club kept composting but added a simple rule about balancing wet scraps with dry material.",
         "Their decision came from the recent records rather than from assuming that compost itself was the problem."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G2-007",
@@ -4170,8 +4170,8 @@
         "At the next cleanup, volunteers chose the correct bag without asking.",
         "The problem was not solved by carrying bags more carefully; it was solved by matching the bag to the material."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G2-008",
@@ -4342,8 +4342,8 @@
         "The committee reported both patterns and explained how the first survey had missed some students.",
         "By changing where they asked the question, they learned more about the whole school instead of only one group."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G2-009",
@@ -4522,8 +4522,8 @@
         "In the next hour, orders moved faster and fewer people asked about prices.",
         "The test showed that the problem was information order, not simply menu length."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G2-010",
@@ -4709,8 +4709,8 @@
         "During the next week, students no longer needed to lift heavy balls out of the way.",
         "Changing storage by weight and height removed the repeated risk."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G2-011",
@@ -4889,8 +4889,8 @@
         "The group reached the bridge together.",
         "Checking the route in advance allowed them to choose a path that everyone could actually use."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G2-012",
@@ -5060,8 +5060,8 @@
         "The next count showed similar waiting times.",
         "Looking at the work behind each line helped the team fix the real cause instead of changing the payment system."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G2-013",
@@ -5239,8 +5239,8 @@
         "The club's first schedule had shown only one part of the pattern.",
         "Using several times gave them a fairer comparison of the two locations."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G2-014",
@@ -5426,8 +5426,8 @@
         "After a week, every tablet began the morning above eighty percent.",
         "The new routine made responsibility visible instead of assuming that returning a device meant it was ready."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G2-015",
@@ -5606,8 +5606,8 @@
         "During the next break, buyers could compare plants while standing, and repeated questions fell sharply.",
         "The club did not remove information; it changed the size and place so people could use it."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G2-016",
@@ -5793,8 +5793,8 @@
         "Two weeks later, the Friday check caught a low supply of bandages before they ran out.",
         "The new system used both records and a physical check instead of waiting for the next emergency."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G2-017",
@@ -5972,8 +5972,8 @@
         "A month later, different groups were using the board, and expired posters no longer covered current information.",
         "The rotation rule protected access without excluding any group."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G3-001",
@@ -6152,8 +6152,8 @@
         "Instead of naming one best place, it showed which areas worked better at different times.",
         "The second survey did not make the first measurements wrong; it showed that the first question had been too narrow for the decision they wanted to make."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G3-002",
@@ -6372,8 +6372,8 @@
         "After six weeks, the group would decide whether the space should continue and what would need to change.",
         "The proposal became less ambitious, but it also became more realistic because it included the people who would be affected by the project rather than only the people who wanted to use it."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G3-003",
@@ -6567,8 +6567,8 @@
         "She also kept both interviews in the project archive.",
         "Her final report respected the speakers' memories while making a clear distinction between remembered dates and dates supported by independent records."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G3-004",
@@ -6842,8 +6842,8 @@
         "The timetable did not provide one answer by itself.",
         "A workable choice appeared only after they connected travel time, clinic conditions, weather risk, and the return bus."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G3-005",
@@ -7031,8 +7031,8 @@
         "They still reported the weekly totals, but they no longer treated room size and use time as unimportant details.",
         "The revised poster taught students how a number can be correct while the conclusion based on it is still too simple."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G3-006",
@@ -7250,8 +7250,8 @@
         "The decision was based not only on attendance but also on whether the revised procedure made responsibilities and limits clearer.",
         "The event became safer because the group treated communication as part of food safety rather than as an extra sign added after cooking."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G3-007",
@@ -7446,8 +7446,8 @@
         "Cropping became misleading when it removed information needed to understand what was happening.",
         "The revised post received fewer angry comments and led to a more useful discussion about bicycle access during construction."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G3-008",
@@ -7463,7 +7463,7 @@
         "family": "Mother, 13-year-old son, 8-year-old daughter; daughter cannot use stairs safely and needs the elevator for floor changes."
       },
       "body": "Ryo's family wanted to attend the city library's learning day. Ryo was thirteen, his sister Hana was eight, and their mother hoped to choose activities that both children could enjoy without leaving Hana alone. The event guide listed a robot workshop on the third floor from 10:00 to 11:20 for ages ten to fifteen, a picture-book lab on the second floor from 11:00 to 11:45 for ages six to ten, and a family science show in the first-floor hall from 13:00 to 13:50 for all ages. At first, Ryo proposed the robot workshop for himself and the picture-book lab for Hana. Their mother could wait between the rooms. Then she noticed an elevator maintenance notice: the elevator would be closed from 9:30 until 12:30. Stairs would remain open, but Hana could not safely use the stairs because of a leg condition and needed the elevator for floor changes. The family considered three possibilities. First, they could arrive early and take the elevator to the third floor before 9:30, but Hana would still need to move between floors later, and the picture-book lab did not begin until 11:00. Second, they considered attending only the picture-book lab, but it ended before the elevator reopened, so Hana could not reach the second floor safely. Third, they could arrive after 12:30 and attend the family science show together on the first floor. That option did not use the age-specific workshops, but it met the access condition and kept the family together. Ryo was disappointed at first because he liked robots. His mother suggested that they ask whether the robot workshop would be offered again on another day. The library replied that the same workshop was planned for the next month. The family therefore chose the science show for learning day and saved the robot workshop for the later date. Their decision came from connecting time, age, floor location, and access information rather than simply choosing the most interesting activities on the event list.",
-      "fullTranslation": "リョウの家族は市立図書館の学習イベントへ行こうとしていました。リョウは13歳、妹のハナは8歳で、母親はハナを一人にせず二人が楽しめる活動を選びたいと考えました。案内には、10時から11時20分まで3階で行う10〜15歳向けロボット教室、11時から11時45分まで2階で行う6〜10歳向け絵本ラボ、13時から13時50分まで1階ホールで行う全年齢向け家族科学ショーがありました。リョウは最初、自分はロボット教室、ハナは絵本ラボへ行けばよいと考えました。しかし母親は、9時30分から12時30分までエレベーター点検で使えないという知らせに気づきました。階段は使えますが、ハナは脚の状態のため階段を安全に使えず、階を移動するにはエレベーターが必要です。家族は三つの案を考えました。9時30分前に着いてエレベーターで3階へ上がる案では、その後ハナが階を移動できず、絵本ラボの開始も11時です。絵本ラボだけに参加する案も考えましたが、ラボはエレベーターの再開前に終わるため、ハナは安全に2階へ行けません。12時30分以降に来て1階の家族科学ショーへ一緒に参加する案なら、年齢別教室には参加できませんが、移動条件を満たし家族も一緒にいられます。リョウはロボット教室に行けず残念でしたが、母親が別の日の開催を尋ねると、翌月にも同じ教室があると分かりました。そこで今回は科学ショーを選び、ロボット教室は翌月にしました。この判断は、活動の面白さだけでなく、時間、年齢、階、移動条件を結びつけて行われました。",
+      "fullTranslation": "リョウの家族は市立図書館の学習イベントへ行こうとしていました。リョウは13歳、妹のハナは8歳で、母親はハナを一人にせず二人が楽しめる活動を選びたいと考えました。案内には、10時から11時20分まで3階で行う10〜15歳向けロボット教室、11時から11時45分まで2階で行う6〜10歳向け絵本ラボ、13時から13時50分まで1階ホールで行う全年齢向け家族科学ショーがありました。リョウは最初、自分はロボット教室、ハナは絵本ラボへ行けばよいと考え、母親は二つの部屋の間で待てると思いました。しかし母親は、9時30分から12時30分までエレベーター点検で使えないという知らせに気づきました。階段は使えますが、ハナは脚の状態のため階段を安全に使えず、階を移動するにはエレベーターが必要です。家族は三つの案を考えました。9時30分前に着いてエレベーターで3階へ上がる案では、その後ハナが階を移動できず、絵本ラボの開始も11時です。絵本ラボだけに参加する案も考えましたが、ラボはエレベーターの再開前に終わるため、ハナは安全に2階へ行けません。12時30分以降に来て1階の家族科学ショーへ一緒に参加する案なら、年齢別教室には参加できませんが、移動条件を満たし家族も一緒にいられます。リョウはロボット教室に行けず残念でした。母親は、ロボット教室が別の日にも行われるか尋ねようと提案しました。図書館から、翌月にも同じ教室があると返事がありました。そこで今回は科学ショーを選び、ロボット教室は翌月にしました。この判断は、活動の面白さだけでなく、時間、年齢、階、移動条件を結びつけて行われました。",
       "semanticRepair": "R2_HUMAN_APPLIED",
       "focus": "schedule-age-access integration to select a workable family plan",
       "anchor": {
@@ -7478,92 +7478,106 @@
           "en": "Ryo's family wanted to attend the city library's learning day.",
           "jp": "リョウの家族は市立図書館の学習イベントへ行こうとしていました。",
           "humanReview": "PENDING_CONFIRM",
-          "alignmentCost": 0.4466,
+          "alignmentCost": 0.3826,
           "alignmentShape": "1:1"
         },
         {
           "en": "Ryo was thirteen, his sister Hana was eight, and their mother hoped to choose activities that both children could enjoy without leaving Hana alone.",
           "jp": "リョウは13歳、妹のハナは8歳で、母親はハナを一人にせず二人が楽しめる活動を選びたいと考えました。",
           "humanReview": "PENDING_CONFIRM",
-          "alignmentCost": 1.3597,
+          "alignmentCost": 1.4238,
           "alignmentShape": "1:1"
         },
         {
           "en": "The event guide listed a robot workshop on the third floor from 10:00 to 11:20 for ages ten to fifteen, a picture-book lab on the second floor from 11:00 to 11:45 for ages six to ten, and a family science show in the first-floor hall from 13:00 to 13:50 for all ages.",
           "jp": "案内には、10時から11時20分まで3階で行う10〜15歳向けロボット教室、11時から11時45分まで2階で行う6〜10歳向け絵本ラボ、13時から13時50分まで1階ホールで行う全年齢向け家族科学ショーがありました。",
           "humanReview": "PENDING_CONFIRM",
-          "alignmentCost": 1.6094,
+          "alignmentCost": 1.5454,
           "alignmentShape": "1:1"
         },
         {
-          "en": "At first, Ryo proposed the robot workshop for himself and the picture-book lab for Hana.",
-          "jp": "リョウは最初、自分はロボット教室、ハナは絵本ラボへ行けばよいと考えました。",
-          "humanReview": "PENDING_CONFIRM",
-          "alignmentCost": 0.2211,
-          "alignmentShape": "1:1"
-        },
-        {
-          "en": "Their mother could wait between the rooms. Then she noticed an elevator maintenance notice: the elevator would be closed from 9:30 until 12:30.",
-          "jp": "しかし母親は、9時30分から12時30分までエレベーター点検で使えないという知らせに気づきました。",
+          "en": "At first, Ryo proposed the robot workshop for himself and the picture-book lab for Hana. Their mother could wait between the rooms.",
+          "jp": "リョウは最初、自分はロボット教室、ハナは絵本ラボへ行けばよいと考え、母親は二つの部屋の間で待てると思いました。",
           "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 0.274,
+          "alignmentCost": 1.7318,
           "alignmentShape": "2:1"
+        },
+        {
+          "en": "Then she noticed an elevator maintenance notice: the elevator would be closed from 9:30 until 12:30.",
+          "jp": "しかし母親は、9時30分から12時30分までエレベーター点検で使えないという知らせに気づきました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.3491,
+          "alignmentShape": "1:1"
         },
         {
           "en": "Stairs would remain open, but Hana could not safely use the stairs because of a leg condition and needed the elevator for floor changes.",
           "jp": "階段は使えますが、ハナは脚の状態のため階段を安全に使えず、階を移動するにはエレベーターが必要です。",
           "humanReview": "PENDING_CONFIRM",
-          "alignmentCost": 0.0765,
+          "alignmentCost": 0.0125,
           "alignmentShape": "1:1"
         },
         {
           "en": "The family considered three possibilities.",
           "jp": "家族は三つの案を考えました。",
           "humanReview": "PENDING_CONFIRM",
-          "alignmentCost": 0.0886,
+          "alignmentCost": 0.1526,
           "alignmentShape": "1:1"
         },
         {
           "en": "First, they could arrive early and take the elevator to the third floor before 9:30, but Hana would still need to move between floors later, and the picture-book lab did not begin until 11:00.",
           "jp": "9時30分前に着いてエレベーターで3階へ上がる案では、その後ハナが階を移動できず、絵本ラボの開始も11時です。",
           "humanReview": "PENDING_CONFIRM",
-          "alignmentCost": 1.4652,
+          "alignmentCost": 1.5292,
           "alignmentShape": "1:1"
         },
         {
           "en": "Second, they considered attending only the picture-book lab, but it ended before the elevator reopened, so Hana could not reach the second floor safely.",
           "jp": "絵本ラボだけに参加する案も考えましたが、ラボはエレベーターの再開前に終わるため、ハナは安全に2階へ行けません。",
           "humanReview": "PENDING_CONFIRM",
-          "alignmentCost": 1.4384,
+          "alignmentCost": 1.3744,
           "alignmentShape": "1:1"
         },
         {
           "en": "Third, they could arrive after 12:30 and attend the family science show together on the first floor. That option did not use the age-specific workshops, but it met the access condition and kept the family together.",
           "jp": "12時30分以降に来て1階の家族科学ショーへ一緒に参加する案なら、年齢別教室には参加できませんが、移動条件を満たし家族も一緒にいられます。",
           "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.5762,
+          "alignmentCost": 1.6402,
           "alignmentShape": "2:1"
         },
         {
-          "en": "Ryo was disappointed at first because he liked robots. His mother suggested that they ask whether the robot workshop would be offered again on another day.",
-          "jp": "リョウはロボット教室に行けず残念でしたが、母親が別の日の開催を尋ねると、翌月にも同じ教室があると分かりました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 0.2766,
-          "alignmentShape": "2:1"
-        },
-        {
-          "en": "The library replied that the same workshop was planned for the next month.",
-          "jp": "そこで今回は科学ショーを選び、ロボット教室は翌月にしました。",
+          "en": "Ryo was disappointed at first because he liked robots.",
+          "jp": "リョウはロボット教室に行けず残念でした。",
           "humanReview": "PENDING_CONFIRM",
-          "alignmentCost": 0.1787,
+          "alignmentCost": 0.0312,
           "alignmentShape": "1:1"
         },
         {
-          "en": "The family therefore chose the science show for learning day and saved the robot workshop for the later date. Their decision came from connecting time, age, floor location, and access information rather than simply choosing the most interesting activities on the event list.",
+          "en": "His mother suggested that they ask whether the robot workshop would be offered again on another day.",
+          "jp": "母親は、ロボット教室が別の日にも行われるか尋ねようと提案しました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.0915,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "The library replied that the same workshop was planned for the next month.",
+          "jp": "図書館から、翌月にも同じ教室があると返事がありました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.0014,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "The family therefore chose the science show for learning day and saved the robot workshop for the later date.",
+          "jp": "そこで今回は科学ショーを選び、ロボット教室は翌月にしました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.2742,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "Their decision came from connecting time, age, floor location, and access information rather than simply choosing the most interesting activities on the event list.",
           "jp": "この判断は、活動の面白さだけでなく、時間、年齢、階、移動条件を結びつけて行われました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.0766,
-          "alignmentShape": "2:1"
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.4157,
+          "alignmentShape": "1:1"
         }
       ],
       "questions": [
@@ -7588,9 +7602,9 @@
         {
           "questionType": "REASON",
           "prompt": "最初の考えをそのまま実行せず、確認や見直しをした理由を答えなさい。",
-          "answer": "階段は使えますが、ハナは脚の状態のため階段を安全に使えず、階を移動するにはエレベーターが必要です。",
-          "evidence": "Stairs would remain open, but Hana could not safely use the stairs because of a leg condition and needed the elevator for floor changes.",
-          "evidenceJp": "階段は使えますが、ハナは脚の状態のため階段を安全に使えず、階を移動するにはエレベーターが必要です。",
+          "answer": "家族は三つの案を考えました。",
+          "evidence": "The family considered three possibilities.",
+          "evidenceJp": "家族は三つの案を考えました。",
           "reason": "判断が変わる付近の記述を根拠にします。",
           "humanReview": "PENDING"
         },
@@ -7598,7 +7612,7 @@
           "questionType": "CONTENT_MATCH",
           "prompt": "問題を解決するために行った中心的な対応を答えなさい。",
           "answer": "そこで今回は科学ショーを選び、ロボット教室は翌月にしました。",
-          "evidence": "The library replied that the same workshop was planned for the next month.",
+          "evidence": "The family therefore chose the science show for learning day and saved the robot workshop for the later date.",
           "evidenceJp": "そこで今回は科学ショーを選び、ロボット教室は翌月にしました。",
           "reason": "終盤の行動が根拠です。",
           "humanReview": "PENDING"
@@ -7607,7 +7621,7 @@
           "questionType": "GIST",
           "prompt": "この出来事から分かったこと・最後に確かめられたことを答えなさい。",
           "answer": "この判断は、活動の面白さだけでなく、時間、年齢、階、移動条件を結びつけて行われました。",
-          "evidence": "The family therefore chose the science show for learning day and saved the robot workshop for the later date. Their decision came from connecting time, age, floor location, and access information rather than simply choosing the most interesting activities on the event list.",
+          "evidence": "Their decision came from connecting time, age, floor location, and access information rather than simply choosing the most interesting activities on the event list.",
           "evidenceJp": "この判断は、活動の面白さだけでなく、時間、年齢、階、移動条件を結びつけて行われました。",
           "reason": "結末の記述が文章全体をまとめています。",
           "humanReview": "PENDING"
@@ -7618,7 +7632,7 @@
           "questionType": "INFERENCE",
           "prompt": "本文全体から、同じような場面で大切だと考えられることを答えなさい。",
           "answer": "この判断は、活動の面白さだけでなく、時間、年齢、階、移動条件を結びつけて行われました。",
-          "evidence": "The family therefore chose the science show for learning day and saved the robot workshop for the later date. Their decision came from connecting time, age, floor location, and access information rather than simply choosing the most interesting activities on the event list.",
+          "evidence": "Their decision came from connecting time, age, floor location, and access information rather than simply choosing the most interesting activities on the event list.",
           "evidenceJp": "この判断は、活動の面白さだけでなく、時間、年齢、階、移動条件を結びつけて行われました。",
           "reason": "本文の結末とそれまでの判断過程から読み取ります。",
           "humanReview": "PENDING"
@@ -7626,9 +7640,9 @@
         {
           "questionType": "SUMMARY_FILL",
           "prompt": "確認後、話の流れを変えた中心的な出来事を答えなさい。",
-          "answer": "階段は使えますが、ハナは脚の状態のため階段を安全に使えず、階を移動するにはエレベーターが必要です。",
-          "evidence": "Stairs would remain open, but Hana could not safely use the stairs because of a leg condition and needed the elevator for floor changes.",
-          "evidenceJp": "階段は使えますが、ハナは脚の状態のため階段を安全に使えず、階を移動するにはエレベーターが必要です。",
+          "answer": "家族は三つの案を考えました。",
+          "evidence": "The family considered three possibilities.",
+          "evidenceJp": "家族は三つの案を考えました。",
           "reason": "中盤の転換点が根拠です。",
           "humanReview": "PENDING"
         },
@@ -7645,7 +7659,7 @@
           "questionType": "CONTENT_MATCH",
           "prompt": "最終的に行った変更・決定・対応を答えなさい。",
           "answer": "そこで今回は科学ショーを選び、ロボット教室は翌月にしました。",
-          "evidence": "The library replied that the same workshop was planned for the next month.",
+          "evidence": "The family therefore chose the science show for learning day and saved the robot workshop for the later date.",
           "evidenceJp": "そこで今回は科学ショーを選び、ロボット教室は翌月にしました。",
           "reason": "終盤の決定と一致する内容です。",
           "humanReview": "PENDING"
@@ -7654,12 +7668,13 @@
           "questionType": "GIST",
           "prompt": "文章全体を最もよく表す学び・結論を答えなさい。",
           "answer": "この判断は、活動の面白さだけでなく、時間、年齢、階、移動条件を結びつけて行われました。",
-          "evidence": "The family therefore chose the science show for learning day and saved the robot workshop for the later date. Their decision came from connecting time, age, floor location, and access information rather than simply choosing the most interesting activities on the event list.",
+          "evidence": "Their decision came from connecting time, age, floor location, and access information rather than simply choosing the most interesting activities on the event list.",
           "evidenceJp": "この判断は、活動の面白さだけでなく、時間、年齢、階、移動条件を結びつけて行われました。",
           "reason": "最後の文を中心に文章全体をまとめます。",
           "humanReview": "PENDING"
         }
       ],
+      "translationHumanRepair": "R4",
       "sentences": [
         "Ryo's family wanted to attend the city library's learning day.",
         "Ryo was thirteen, his sister Hana was eight, and their mother hoped to choose activities that both children could enjoy without leaving Hana alone.",
@@ -7679,8 +7694,8 @@
         "The family therefore chose the science show for learning day and saved the robot workshop for the later date.",
         "Their decision came from connecting time, age, floor location, and access information rather than simply choosing the most interesting activities on the event list."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G3-009",
@@ -7866,8 +7881,8 @@
         "The first survey accurately described the beach after a busy holiday, but it could not describe all seasons or all users.",
         "Their campaign finally had two parts: more food-waste bins near festival areas and a separate collection point for damaged fishing material near the harbor."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G3-010",
@@ -8080,15 +8095,15 @@
         "It was to make the same action clear to a different audience while preserving important safety information.",
         "The final notice was slightly longer than the original, but it required less guessing from visitors."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G3-011",
       "level": "STANDARD",
       "title": "The Old Recipe Notebook with Measurements in Two Systems",
       "body": "A local museum found a cake recipe in a notebook from the 1950s. Some ingredients were written in grams, but milk was listed as 'one cup' without explaining the cup size. A volunteer converted every amount using a modern 200-milliliter cup and baked a test cake. It was much softer than the photograph in the notebook suggested. Saki checked other pages and found that the writer sometimes used an older measuring cup kept in the same household. A family photograph showed a metal cup that held about 180 milliliters. The museum could not prove that this cup was used for the cake recipe, so Saki did not rewrite the historical record as a certain fact. Instead, the exhibit displayed both possible amounts and explained why the difference mattered. The museum baked two small test cakes and let visitors compare the results. The project showed that conversion is not only a calculation problem; first, researchers must know what the original unit meant in its historical setting.",
-      "fullTranslation": "地域博物館は1950年代のノートからケーキのレシピを見つけました。材料の一部はグラムで書かれていましたが、牛乳は『1カップ』とだけあり、カップの大きさは書かれていませんでした。ボランティアが現代の200ミリリットルのカップとして換算して試作すると、ノートの写真よりかなり柔らかいケーキになりました。サキがほかのページを調べると、書き手が同じ家にあった古い計量カップを使うことがあったと分かりました。家族写真には約180ミリリットル入る金属カップも写っていました。ただし、そのカップがこのケーキに使われたとは証明できなかったため、サキは歴史記録を確定事項のように書き換えませんでした。代わりに展示では二つの可能な分量を示し、その違いがなぜ重要か説明しました。博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
+      "fullTranslation": "地域博物館は1950年代のノートからケーキのレシピを見つけました。材料の一部はグラムで書かれていましたが、牛乳は『1カップ』とだけあり、カップの大きさは書かれていませんでした。ボランティアが現代の200ミリリットルのカップとして換算して試作しました。そのケーキは、ノートの写真から想像されるものよりかなり柔らかくなりました。サキがほかのページを調べると、書き手が同じ家にあった古い計量カップを使うことがあったと分かりました。家族写真には約180ミリリットル入る金属カップも写っていました。ただし、そのカップがこのケーキに使われたとは証明できなかったため、サキは歴史記録を確定事項のように書き換えませんでした。代わりに展示では二つの可能な分量を示し、その違いがなぜ重要か説明しました。博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
       "focus": "source interpretation, conversion checks, and avoiding a false reconstruction",
       "anchor": {
         "textbook": "Sunshine",
@@ -8102,57 +8117,71 @@
           "en": "A local museum found a cake recipe in a notebook from the 1950s.",
           "jp": "地域博物館は1950年代のノートからケーキのレシピを見つけました。",
           "humanReview": "PENDING_CONFIRM",
-          "alignmentCost": 0.2371,
+          "alignmentCost": 0.2072,
           "alignmentShape": "1:1"
         },
         {
           "en": "Some ingredients were written in grams, but milk was listed as 'one cup' without explaining the cup size.",
           "jp": "材料の一部はグラムで書かれていましたが、牛乳は『1カップ』とだけあり、カップの大きさは書かれていませんでした。",
           "humanReview": "PENDING_CONFIRM",
-          "alignmentCost": 0.1844,
+          "alignmentCost": 0.1545,
           "alignmentShape": "1:1"
         },
         {
-          "en": "A volunteer converted every amount using a modern 200-milliliter cup and baked a test cake. It was much softer than the photograph in the notebook suggested.",
-          "jp": "ボランティアが現代の200ミリリットルのカップとして換算して試作すると、ノートの写真よりかなり柔らかいケーキになりました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 0.2991,
-          "alignmentShape": "2:1"
+          "en": "A volunteer converted every amount using a modern 200-milliliter cup and baked a test cake.",
+          "jp": "ボランティアが現代の200ミリリットルのカップとして換算して試作しました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.0607,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "It was much softer than the photograph in the notebook suggested.",
+          "jp": "そのケーキは、ノートの写真から想像されるものよりかなり柔らかくなりました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.2397,
+          "alignmentShape": "1:1"
         },
         {
           "en": "Saki checked other pages and found that the writer sometimes used an older measuring cup kept in the same household.",
           "jp": "サキがほかのページを調べると、書き手が同じ家にあった古い計量カップを使うことがあったと分かりました。",
           "humanReview": "PENDING_CONFIRM",
-          "alignmentCost": 0.0101,
+          "alignmentCost": 0.0199,
           "alignmentShape": "1:1"
         },
         {
           "en": "A family photograph showed a metal cup that held about 180 milliliters.",
           "jp": "家族写真には約180ミリリットル入る金属カップも写っていました。",
           "humanReview": "PENDING_CONFIRM",
-          "alignmentCost": 0.0597,
+          "alignmentCost": 0.0297,
           "alignmentShape": "1:1"
         },
         {
-          "en": "The museum could not prove that this cup was used for the cake recipe, so Saki did not rewrite the historical record as a certain fact. Instead, the exhibit displayed both possible amounts and explained why the difference mattered.",
+          "en": "The museum could not prove that this cup was used for the cake recipe, so Saki did not rewrite the historical record as a certain fact.",
           "jp": "ただし、そのカップがこのケーキに使われたとは証明できなかったため、サキは歴史記録を確定事項のように書き換えませんでした。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 0.7155,
-          "alignmentShape": "2:1"
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.0342,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "Instead, the exhibit displayed both possible amounts and explained why the difference mattered.",
+          "jp": "代わりに展示では二つの可能な分量を示し、その違いがなぜ重要か説明しました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.5158,
+          "alignmentShape": "1:1"
         },
         {
           "en": "The museum baked two small test cakes and let visitors compare the results.",
-          "jp": "代わりに展示では二つの可能な分量を示し、その違いがなぜ重要か説明しました。",
+          "jp": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。",
           "humanReview": "PENDING_CONFIRM",
-          "alignmentCost": 0.1314,
+          "alignmentCost": 1.3619,
           "alignmentShape": "1:1"
         },
         {
           "en": "The project showed that conversion is not only a calculation problem; first, researchers must know what the original unit meant in its historical setting.",
-          "jp": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 0.49,
-          "alignmentShape": "1:2"
+          "jp": "この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.2469,
+          "alignmentShape": "1:1"
         }
       ],
       "questions": [
@@ -8168,9 +8197,9 @@
         {
           "questionType": "DETAIL",
           "prompt": "判断の手がかりになった具体的な情報を一つ答えなさい。",
-          "answer": "ボランティアが現代の200ミリリットルのカップとして換算して試作すると、ノートの写真よりかなり柔らかいケーキになりました。",
-          "evidence": "A volunteer converted every amount using a modern 200-milliliter cup and baked a test cake. It was much softer than the photograph in the notebook suggested.",
-          "evidenceJp": "ボランティアが現代の200ミリリットルのカップとして換算して試作すると、ノートの写真よりかなり柔らかいケーキになりました。",
+          "answer": "ボランティアが現代の200ミリリットルのカップとして換算して試作しました。",
+          "evidence": "A volunteer converted every amount using a modern 200-milliliter cup and baked a test cake.",
+          "evidenceJp": "ボランティアが現代の200ミリリットルのカップとして換算して試作しました。",
           "reason": "本文中の具体情報が根拠です。",
           "humanReview": "PENDING"
         },
@@ -8186,18 +8215,18 @@
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "問題を解決するために行った中心的な対応を答えなさい。",
-          "answer": "代わりに展示では二つの可能な分量を示し、その違いがなぜ重要か説明しました。",
+          "answer": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。",
           "evidence": "The museum baked two small test cakes and let visitors compare the results.",
-          "evidenceJp": "代わりに展示では二つの可能な分量を示し、その違いがなぜ重要か説明しました。",
+          "evidenceJp": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。",
           "reason": "終盤の行動が根拠です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "GIST",
           "prompt": "この出来事から分かったこと・最後に確かめられたことを答えなさい。",
-          "answer": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
+          "answer": "この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
           "evidence": "The project showed that conversion is not only a calculation problem; first, researchers must know what the original unit meant in its historical setting.",
-          "evidenceJp": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
+          "evidenceJp": "この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
           "reason": "結末の記述が文章全体をまとめています。",
           "humanReview": "PENDING"
         }
@@ -8206,9 +8235,9 @@
         {
           "questionType": "INFERENCE",
           "prompt": "本文全体から、同じような場面で大切だと考えられることを答えなさい。",
-          "answer": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
+          "answer": "この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
           "evidence": "The project showed that conversion is not only a calculation problem; first, researchers must know what the original unit meant in its historical setting.",
-          "evidenceJp": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
+          "evidenceJp": "この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
           "reason": "本文の結末とそれまでの判断過程から読み取ります。",
           "humanReview": "PENDING"
         },
@@ -8224,32 +8253,33 @@
         {
           "questionType": "DETAIL",
           "prompt": "判断を変えるきっかけになった情報を答えなさい。",
-          "answer": "ボランティアが現代の200ミリリットルのカップとして換算して試作すると、ノートの写真よりかなり柔らかいケーキになりました。",
-          "evidence": "A volunteer converted every amount using a modern 200-milliliter cup and baked a test cake. It was much softer than the photograph in the notebook suggested.",
-          "evidenceJp": "ボランティアが現代の200ミリリットルのカップとして換算して試作すると、ノートの写真よりかなり柔らかいケーキになりました。",
+          "answer": "ボランティアが現代の200ミリリットルのカップとして換算して試作しました。",
+          "evidence": "A volunteer converted every amount using a modern 200-milliliter cup and baked a test cake.",
+          "evidenceJp": "ボランティアが現代の200ミリリットルのカップとして換算して試作しました。",
           "reason": "具体的な手がかりを本文から探します。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "最終的に行った変更・決定・対応を答えなさい。",
-          "answer": "代わりに展示では二つの可能な分量を示し、その違いがなぜ重要か説明しました。",
+          "answer": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。",
           "evidence": "The museum baked two small test cakes and let visitors compare the results.",
-          "evidenceJp": "代わりに展示では二つの可能な分量を示し、その違いがなぜ重要か説明しました。",
+          "evidenceJp": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。",
           "reason": "終盤の決定と一致する内容です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "GIST",
           "prompt": "文章全体を最もよく表す学び・結論を答えなさい。",
-          "answer": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
+          "answer": "この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
           "evidence": "The project showed that conversion is not only a calculation problem; first, researchers must know what the original unit meant in its historical setting.",
-          "evidenceJp": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
+          "evidenceJp": "この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
           "reason": "最後の文を中心に文章全体をまとめます。",
           "humanReview": "PENDING"
         }
       ],
       "slashBoundaryRepair": "HUMAN_R3_APPLIED",
+      "translationHumanRepair": "R4",
       "sentences": [
         "A local museum found a cake recipe in a notebook from the 1950s.",
         "Some ingredients were written in grams, but milk was listed as 'one cup' without explaining the cup size.",
@@ -8262,8 +8292,8 @@
         "The museum baked two small test cakes and let visitors compare the results.",
         "The project showed that conversion is not only a calculation problem; first, researchers must know what the original unit meant in its historical setting."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G3-012",
@@ -8554,8 +8584,8 @@
         "Instead, it matched actual arrival times, break rules, staffing needs, and room limits.",
         "The center accepted the plan because every assigned worker could follow the same rules rather than receiving a special exception for arriving late."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G3-013",
@@ -8749,8 +8779,8 @@
         "The club changed its report from a simple ranking to a description of how habitat affected what they found.",
         "A fair comparison required broader sampling, not just more counts from the easiest place."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G3-014",
@@ -8985,8 +9015,8 @@
         "At the review meeting, organizers decided to continue the mixed policy rather than move to either a large deposit for everything or no responsibility at all.",
         "The pilot suggested that different risks needed different responses, and that access and protection did not have to be treated as opposite goals."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G3-015",
@@ -9172,8 +9202,8 @@
         "The original answers were not false, but the sampling frame had excluded a large part of the neighborhood.",
         "Fixing the map changed whose experiences could be heard."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     },
     {
       "id": "V11-B12-G3-016",
@@ -9472,8 +9502,8 @@
         "The center posted the change before noon and asked families to choose the early shuttle if possible.",
         "Mai's plan worked because it treated the forecast, room map, shuttle times, and attendance limits as connected conditions rather than separate pieces of information."
       ],
-      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED",
-      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED"
+      "questionStage": "B12_QUESTION_SCAFFOLD_HUMAN_REVIEW_REQUIRED",
+      "slashStage": "B12_SLASH_SEQUENCE_ALIGNED_HUMAN_REVIEW_REQUIRED"
     }
   ],
   "slashBoundaryRepairRound": "R3_HUMAN_TRANSLATION_BOUNDARY_SYNC",
@@ -9484,11 +9514,11 @@
     "V11-B12-G3-016"
   ],
   "slashScaffoldPassages": 50,
-  "slashRowsTotal": 445,
-  "slashGroupedBoundaryPassages": 20,
+  "slashRowsTotal": 449,
+  "slashGroupedBoundaryPassages": 19,
   "slashHumanReviewed": 0,
   "questionScaffoldCount": 500,
-  "humanQuestionReviewed": 0,
+  "humanQuestionReviewed": 30,
   "alignmentAudit": [
     {
       "id": "V11-B12-G1-001",
@@ -9852,12 +9882,10 @@
     {
       "id": "V11-B12-G3-008",
       "enUnits": 17,
-      "jpUnits": 13,
-      "rows": 13,
-      "groupedRows": 4,
+      "jpUnits": 15,
+      "rows": 15,
+      "groupedRows": 2,
       "shapes": [
-        "2:1",
-        "2:1",
         "2:1",
         "2:1"
       ]
@@ -9885,14 +9913,10 @@
     {
       "id": "V11-B12-G3-011",
       "enUnits": 10,
-      "jpUnits": 9,
-      "rows": 8,
-      "groupedRows": 3,
-      "shapes": [
-        "2:1",
-        "2:1",
-        "1:2"
-      ]
+      "jpUnits": 10,
+      "rows": 10,
+      "groupedRows": 0,
+      "shapes": []
     },
     {
       "id": "V11-B12-G3-012",
@@ -9941,5 +9965,6 @@
       "groupedRows": 0,
       "shapes": []
     }
-  ]
+  ],
+  "r4TranslationRepairsApplied": 2
 }
