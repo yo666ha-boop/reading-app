@@ -20,5 +20,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Validate unique human-review coverage
+      - name: Validate unique human-review coverage after R4 loader fix
         run: node v11_batch12_question_human_unique_coverage_gate.js
