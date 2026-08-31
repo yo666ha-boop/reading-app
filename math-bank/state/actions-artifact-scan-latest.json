@@ -7,8 +7,8 @@
   "created_since": "2026-08-19T00:00:00Z",
   "all_artifacts_seen": 1000,
   "candidate_artifacts": 970,
-  "reused_verified_artifacts": 828,
-  "downloaded_artifacts_this_run": 142,
+  "reused_verified_artifacts": 969,
+  "downloaded_artifacts_this_run": 1,
   "canonical_hits": 0,
   "audit_name_hits": 0,
   "valid_audit_hits": 0,
@@ -23,6 +23,35 @@
   "canonical_absence_proven": true,
   "listing_errors": [],
   "artifacts": [
+    {
+      "artifact_id": 9777383194,
+      "name": "math-browser-regression-diagnostics",
+      "size_in_bytes": 1009,
+      "created_at": "2026-08-31T22:00:59Z",
+      "updated_at": "2026-08-31T22:00:59Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 33444012776,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "e540b9a475e94c8a631caccad77711cd14db59ba"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 2,
+        "members_sha256_checked": 2,
+        "member_bytes_hashed": 2610,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1009
+    },
     {
       "artifact_id": 9769562160,
       "name": "v11-batch11-support-snapshot-audit",
@@ -28123,38 +28152,9 @@
       },
       "errors": [],
       "archive_download_bytes": 1009
-    },
-    {
-      "artifact_id": 9505335448,
-      "name": "math-browser-regression-diagnostics",
-      "size_in_bytes": 1009,
-      "created_at": "2026-08-24T03:00:29Z",
-      "updated_at": "2026-08-24T03:00:29Z",
-      "expired": false,
-      "workflow_run": {
-        "id": 32684856085,
-        "repository_id": 1211918933,
-        "head_repository_id": 1211918933,
-        "head_branch": "math-problem-bank-bootstrap",
-        "head_sha": "550f5aafa3226fa1b0a9ed54d9d571b924f72596"
-      },
-      "downloaded": true,
-      "interesting_members": [],
-      "canonical_sha_hits": [],
-      "valid_final_audit_hits": [],
-      "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 2,
-        "members_sha256_checked": 2,
-        "member_bytes_hashed": 2610,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 1009
     }
   ],
   "recovered_files": [],
-  "completed_at_utc": "2026-08-31T22:00:53.480087+00:00",
+  "completed_at_utc": "2026-08-31T22:01:34.494010+00:00",
   "policy": "Artifact results are reused only when artifact id, size, and updated_at match exactly, the previous download completed without errors, and the artifact was not pair-eligible. New or changed artifacts are downloaded and every member under the size cap is SHA-256 checked. Any 403/timeout/download/listing failure makes the scan incomplete and is never absence evidence. Exact immutable SHA plus one unambiguous valid final audit from the same artifact remains required; no reconstruction."
 }
