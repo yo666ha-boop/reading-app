@@ -5,6 +5,7 @@ on:
     paths:
       - 'v11_batch12_assembled_draft.json'
       - 'v11_batch12_build_slash_and_question_scaffold.js'
+      - 'v11_batch12_extract_grouped_slash_review.js'
       - '.github/workflows/v11-batch12-slash-question-scaffold.yml'
   workflow_dispatch:
 jobs:
@@ -21,11 +22,13 @@ jobs:
           node-version: '20'
       - name: Build slash rows and question scaffold
         run: node v11_batch12_build_slash_and_question_scaffold.js
-      - name: Persist scaffold
+      - name: Build grouped slash review packet
+        run: node v11_batch12_extract_grouped_slash_review.js
+      - name: Persist scaffold and grouped review packet
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -f v11_batch12_slash_question_scaffold.json
+          git add -f v11_batch12_slash_question_scaffold.json v11_batch12_grouped_slash_review_packet.json
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'bot: persist Batch12 slash question scaffold [skip ci]'
+          git commit -m 'bot: persist Batch12 slash scaffold and review packet [skip ci]'
           git push
