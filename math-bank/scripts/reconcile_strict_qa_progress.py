@@ -14,7 +14,6 @@ import validate_raw1271_materialization as strict_gate
 SOURCE_ORDER = ("Standard", "実力錬成", "Winpass")
 EXPECTED = strict_gate.EXPECTED
 EXPECTED_TOTAL = strict_gate.EXPECTED_TOTAL
-EXPECTED_FIGURE_REFS = strict_gate.EXPECTED_FIGURE_REFS
 
 
 def sha256_file(path: Path) -> str:
@@ -61,7 +60,7 @@ def sort_key(record: dict) -> tuple[int, str]:
     return source_index, str(record.get("raw_id", ""))
 
 
-def reconcile(paths: list[Path]) -> tuple[list[dict], dict]:
+def reconcile(paths: list[Path], *, expected_figure_refs: int | None = None) -> tuple[list[dict], dict]:
     errors: list[str] = []
     file_manifest: list[dict[str, Any]] = []
     valid_by_id: dict[str, dict] = {}
@@ -76,29 +75,15 @@ def reconcile(paths: list[Path]) -> tuple[list[dict], dict]:
             errors.append(f"missing strict input: {path}")
             continue
         records = load_jsonl(path)
-        file_manifest.append({
-            "path": str(path),
-            "sha256": sha256_file(path),
-            "records": len(records),
-        })
+        file_manifest.append({"path": str(path), "sha256": sha256_file(path), "records": len(records)})
         for line_no, record in enumerate(records, 1):
             record_errors = strict_gate.validate_record(record, line_no)
             raw_id = record.get("raw_id")
             if record_errors:
-                invalid_records.append({
-                    "path": str(path),
-                    "line": line_no,
-                    "raw_id": raw_id,
-                    "errors": record_errors,
-                })
+                invalid_records.append({"path": str(path), "line": line_no, "raw_id": raw_id, "errors": record_errors})
                 continue
             if not isinstance(raw_id, str) or not raw_id.strip():
-                invalid_records.append({
-                    "path": str(path),
-                    "line": line_no,
-                    "raw_id": raw_id,
-                    "errors": ["validated record has no usable raw_id"],
-                })
+                invalid_records.append({"path": str(path), "line": line_no, "raw_id": raw_id, "errors": ["validated record has no usable raw_id"]})
                 continue
             old = valid_by_id.get(raw_id)
             if old is None:
@@ -128,9 +113,7 @@ def reconcile(paths: list[Path]) -> tuple[list[dict], dict]:
         refs = record.get("figure_refs") or []
         figure_refs += len(refs) if isinstance(refs, list) else 0
         if isinstance(refs, list):
-            missing_figure_refs += sum(
-                1 for ref in refs if isinstance(ref, dict) and ref.get("missing") is True
-            )
+            missing_figure_refs += sum(1 for ref in refs if isinstance(ref, dict) and ref.get("missing") is True)
         if strict_gate.meaningful_text(record.get("graphical_answer_asset")):
             graphical_answers += 1
 
@@ -138,18 +121,13 @@ def reconcile(paths: list[Path]) -> tuple[list[dict], dict]:
         errors.append(f"missing figure refs among strict records: {missing_figure_refs}")
 
     exact_counts = all(counts.get(source, 0) == expected for source, expected in EXPECTED.items())
-    complete_1271 = (
-        not errors
-        and len(combined) == EXPECTED_TOTAL
-        and exact_counts
-        and figure_refs == EXPECTED_FIGURE_REFS
-        and missing_figure_refs == 0
-    )
+    complete_base = not errors and len(combined) == EXPECTED_TOTAL and exact_counts and missing_figure_refs == 0
+    figure_count_matches = expected_figure_refs is None or figure_refs == expected_figure_refs
+    if complete_base and expected_figure_refs is not None and not figure_count_matches:
+        errors.append(f"figure refs {figure_refs} != evidence-derived expected {expected_figure_refs}")
+    complete_1271 = complete_base and expected_figure_refs is not None and figure_count_matches
 
-    remaining = {
-        source: max(0, expected - counts.get(source, 0))
-        for source, expected in EXPECTED.items()
-    }
+    remaining = {source: max(0, expected - counts.get(source, 0)) for source, expected in EXPECTED.items()}
     report = {
         "workflow": "Persisted strict Q/A progress reconciliation",
         "input_files": file_manifest,
@@ -161,25 +139,20 @@ def reconcile(paths: list[Path]) -> tuple[list[dict], dict]:
         "duplicate_identical_copies": duplicate_identical,
         "invalid_records": invalid_records,
         "figure_refs_revalidated_in_strict_subset": figure_refs,
+        "expected_figure_refs": expected_figure_refs,
+        "figure_count_policy": "No historical hard-coded figure count. Complete-1271 certification requires an evidence-derived expected figure-ref total supplied by the caller after assembling the durable union.",
         "missing_figure_refs_in_strict_subset": missing_figure_refs,
         "graphical_answers_with_asset_identity": graphical_answers,
         "partial_progress_pass": not errors,
         "complete_1271": complete_1271,
         "errors": errors,
-        "policy": (
-            "Progress counts only unique raw_id records that independently pass the strict "
-            "Q/A/OOXML/score/figure/fingerprint validator. Identical duplicate copies do not "
-            "increase progress; conflicting fingerprints or invalid records fail reconciliation."
-        ),
+        "policy": "Progress counts only unique raw_id records that independently pass the strict Q/A/OOXML/score/figure/fingerprint validator. Identical duplicate copies do not increase progress; conflicting fingerprints or invalid records fail reconciliation.",
     }
     return combined, report
 
 
 def jsonl_text(records: list[dict]) -> str:
-    return "".join(
-        json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n"
-        for record in records
-    )
+    return "".join(json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n" for record in records)
 
 
 def main() -> int:
@@ -187,9 +160,9 @@ def main() -> int:
     ap.add_argument("strict_jsonl", nargs="+", type=Path)
     ap.add_argument("--output-combined", type=Path)
     ap.add_argument("--report", type=Path)
+    ap.add_argument("--expected-figure-refs", type=int)
     args = ap.parse_args()
-
-    combined, report = reconcile(args.strict_jsonl)
+    combined, report = reconcile(args.strict_jsonl, expected_figure_refs=args.expected_figure_refs)
     if args.output_combined:
         atomic_write_text(args.output_combined, jsonl_text(combined))
     report_text = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
