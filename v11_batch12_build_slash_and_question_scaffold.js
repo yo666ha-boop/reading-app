@@ -1,8 +1,10 @@
 const fs=require('fs');
 const src=require('./v11_batch12_assembled_draft.json');
 if(src.registered!==false||src.humanReviewedCount!==50||src.humanReviewPendingCount!==0)throw new Error('Batch12 semantic review must be complete and unregistered');
-function splitEn(s){return (s.match(/[^.!?]+[.!?]+(?:[”"'](?=\s|$))?|[^.!?]+$/g)||[]).map(x=>x.trim()).filter(Boolean)}
-function splitJp(s){return (s.match(/[^。！？]+[。！？]/g)||[]).map(x=>x.trim()).filter(Boolean)}
+const enSeg=new Intl.Segmenter('en',{granularity:'sentence'}),jpSeg=new Intl.Segmenter('ja',{granularity:'sentence'});
+function splitWith(seg,s){return [...seg.segment(s)].map(x=>x.segment.trim()).filter(Boolean)}
+function splitEn(s){return splitWith(enSeg,s)}
+function splitJp(s){return splitWith(jpSeg,s)}
 function Q(type,prompt,answer,evidence,evidenceJp,reason){return{questionType:type,prompt,answer,evidence,evidenceJp,reason,humanReview:'PENDING'}}
 const mismatch=[];
 for(const p of src.passages){const en=splitEn(p.body),jp=splitJp(p.fullTranslation);if(en.length!==jp.length||en.length<6)mismatch.push({id:p.id,en:en.length,jp:jp.length});}
