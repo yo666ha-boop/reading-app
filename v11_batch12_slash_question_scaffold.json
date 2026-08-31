@@ -751,11 +751,18 @@
       "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [
         {
-          "en": "Before PE, Haru counted twelve soccer bibs for two teams of six. A few minutes later, the teacher said that four students from another class would join the game.",
-          "jp": "体育の前、ハルは6人ずつ2チーム分としてサッカーのビブスを12枚数えました。数分後、先生が別のクラスから4人加わると伝えました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 0.5123,
-          "alignmentShape": "2:2"
+          "en": "Before PE, Haru counted twelve soccer bibs for two teams of six.",
+          "jp": "体育の前、ハルは6人ずつ2チーム分としてサッカーのビブスを12枚数えました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.3448,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "A few minutes later, the teacher said that four students from another class would join the game.",
+          "jp": "数分後、先生が別のクラスから4人加わると伝えました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.4855,
+          "alignmentShape": "1:1"
         },
         {
           "en": "Haru first thought twelve bibs were still enough because the bags were already ready.",
@@ -797,27 +804,27 @@
         {
           "questionType": "GIST",
           "prompt": "本文の最初に示された状況・問題を答えなさい。",
-          "answer": "体育の前、ハルは6人ずつ2チーム分としてサッカーのビブスを12枚数えました。数分後、先生が別のクラスから4人加わると伝えました。",
-          "evidence": "Before PE, Haru counted twelve soccer bibs for two teams of six. A few minutes later, the teacher said that four students from another class would join the game.",
-          "evidenceJp": "体育の前、ハルは6人ずつ2チーム分としてサッカーのビブスを12枚数えました。数分後、先生が別のクラスから4人加わると伝えました。",
+          "answer": "体育の前、ハルは6人ずつ2チーム分としてサッカーのビブスを12枚数えました。",
+          "evidence": "Before PE, Haru counted twelve soccer bibs for two teams of six.",
+          "evidenceJp": "体育の前、ハルは6人ずつ2チーム分としてサッカーのビブスを12枚数えました。",
           "reason": "冒頭の状況を本文から確認します。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "DETAIL",
           "prompt": "判断の手がかりになった具体的な情報を一つ答えなさい。",
-          "answer": "しかし選手を数えると、16人を8人ずつの2チームにする必要がありました。",
-          "evidence": "Then he counted the players: sixteen students needed two teams of eight.",
-          "evidenceJp": "しかし選手を数えると、16人を8人ずつの2チームにする必要がありました。",
+          "answer": "袋の準備が終わっていたため、ハルは最初12枚のままで足りると思いました。",
+          "evidence": "Haru first thought twelve bibs were still enough because the bags were already ready.",
+          "evidenceJp": "袋の準備が終わっていたため、ハルは最初12枚のままで足りると思いました。",
           "reason": "本文中の具体情報が根拠です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "REASON",
           "prompt": "最初の考えをそのまま実行せず、確認や見直しをした理由を答えなさい。",
-          "answer": "しかし選手を数えると、16人を8人ずつの2チームにする必要がありました。",
-          "evidence": "Then he counted the players: sixteen students needed two teams of eight.",
-          "evidenceJp": "しかし選手を数えると、16人を8人ずつの2チームにする必要がありました。",
+          "answer": "袋の準備が終わっていたため、ハルは最初12枚のままで足りると思いました。",
+          "evidence": "Haru first thought twelve bibs were still enough because the bags were already ready.",
+          "evidenceJp": "袋の準備が終わっていたため、ハルは最初12枚のままで足りると思いました。",
           "reason": "判断が変わる付近の記述を根拠にします。",
           "humanReview": "PENDING"
         },
@@ -853,18 +860,18 @@
         {
           "questionType": "SUMMARY_FILL",
           "prompt": "確認後、話の流れを変えた中心的な出来事を答えなさい。",
-          "answer": "しかし選手を数えると、16人を8人ずつの2チームにする必要がありました。",
-          "evidence": "Then he counted the players: sixteen students needed two teams of eight.",
-          "evidenceJp": "しかし選手を数えると、16人を8人ずつの2チームにする必要がありました。",
+          "answer": "袋の準備が終わっていたため、ハルは最初12枚のままで足りると思いました。",
+          "evidence": "Haru first thought twelve bibs were still enough because the bags were already ready.",
+          "evidenceJp": "袋の準備が終わっていたため、ハルは最初12枚のままで足りると思いました。",
           "reason": "中盤の転換点が根拠です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "DETAIL",
           "prompt": "判断を変えるきっかけになった情報を答えなさい。",
-          "answer": "しかし選手を数えると、16人を8人ずつの2チームにする必要がありました。",
-          "evidence": "Then he counted the players: sixteen students needed two teams of eight.",
-          "evidenceJp": "しかし選手を数えると、16人を8人ずつの2チームにする必要がありました。",
+          "answer": "袋の準備が終わっていたため、ハルは最初12枚のままで足りると思いました。",
+          "evidence": "Haru first thought twelve bibs were still enough because the bags were already ready.",
+          "evidenceJp": "袋の準備が終わっていたため、ハルは最初12枚のままで足りると思いました。",
           "reason": "具体的な手がかりを本文から探します。",
           "humanReview": "PENDING"
         },
@@ -1769,25 +1776,32 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "Emi first moved the cart into the aisle, but then people had to walk around it. She asked the librarian where it should go.",
+          "en": "Emi first moved the cart into the aisle, but then people had to walk around it.",
           "jp": "エミは最初カートを通路へ動かしましたが、今度は人がよけて歩かなければなりませんでした。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 0.3556,
-          "alignmentShape": "2:1"
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.312,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "She asked the librarian where it should go.",
+          "jp": "そこで司書の先生に置き場所を尋ね、一緒に返却カウンターの横へ移しました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.6966,
+          "alignmentShape": "1:1"
         },
         {
           "en": "Together they placed it beside the return desk, where it did not block shelves or the aisle.",
-          "jp": "そこで司書の先生に置き場所を尋ね、一緒に返却カウンターの横へ移しました。",
+          "jp": "そこなら本棚も通路もふさぎません。",
           "humanReview": "PENDING_CONFIRM",
-          "alignmentCost": 0.0521,
+          "alignmentCost": 0.8059,
           "alignmentShape": "1:1"
         },
         {
           "en": "The younger student could reach the book, and visitors could still move safely through the library.",
-          "jp": "そこなら本棚も通路もふさぎません。年下の生徒は本を取れ、利用者も安全に図書室を歩けました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 0.2765,
-          "alignmentShape": "1:2"
+          "jp": "年下の生徒は本を取れ、利用者も安全に図書室を歩けました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.423,
+          "alignmentShape": "1:1"
         }
       ],
       "questions": [
@@ -1804,7 +1818,7 @@
           "questionType": "DETAIL",
           "prompt": "判断の手がかりになった具体的な情報を一つ答えなさい。",
           "answer": "エミは最初カートを通路へ動かしましたが、今度は人がよけて歩かなければなりませんでした。",
-          "evidence": "Emi first moved the cart into the aisle, but then people had to walk around it. She asked the librarian where it should go.",
+          "evidence": "Emi first moved the cart into the aisle, but then people had to walk around it.",
           "evidenceJp": "エミは最初カートを通路へ動かしましたが、今度は人がよけて歩かなければなりませんでした。",
           "reason": "本文中の具体情報が根拠です。",
           "humanReview": "PENDING"
@@ -1812,27 +1826,27 @@
         {
           "questionType": "REASON",
           "prompt": "最初の考えをそのまま実行せず、確認や見直しをした理由を答えなさい。",
-          "answer": "年下の生徒が本を取ろうとしましたが、十分近づけませんでした。",
-          "evidence": "A younger student tried to reach a book but could not get close enough.",
-          "evidenceJp": "年下の生徒が本を取ろうとしましたが、十分近づけませんでした。",
+          "answer": "エミは最初カートを通路へ動かしましたが、今度は人がよけて歩かなければなりませんでした。",
+          "evidence": "Emi first moved the cart into the aisle, but then people had to walk around it.",
+          "evidenceJp": "エミは最初カートを通路へ動かしましたが、今度は人がよけて歩かなければなりませんでした。",
           "reason": "判断が変わる付近の記述を根拠にします。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "問題を解決するために行った中心的な対応を答えなさい。",
-          "answer": "そこで司書の先生に置き場所を尋ね、一緒に返却カウンターの横へ移しました。",
+          "answer": "そこなら本棚も通路もふさぎません。",
           "evidence": "Together they placed it beside the return desk, where it did not block shelves or the aisle.",
-          "evidenceJp": "そこで司書の先生に置き場所を尋ね、一緒に返却カウンターの横へ移しました。",
+          "evidenceJp": "そこなら本棚も通路もふさぎません。",
           "reason": "終盤の行動が根拠です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "GIST",
           "prompt": "この出来事から分かったこと・最後に確かめられたことを答えなさい。",
-          "answer": "そこなら本棚も通路もふさぎません。年下の生徒は本を取れ、利用者も安全に図書室を歩けました。",
+          "answer": "年下の生徒は本を取れ、利用者も安全に図書室を歩けました。",
           "evidence": "The younger student could reach the book, and visitors could still move safely through the library.",
-          "evidenceJp": "そこなら本棚も通路もふさぎません。年下の生徒は本を取れ、利用者も安全に図書室を歩けました。",
+          "evidenceJp": "年下の生徒は本を取れ、利用者も安全に図書室を歩けました。",
           "reason": "結末の記述が文章全体をまとめています。",
           "humanReview": "PENDING"
         }
@@ -1841,18 +1855,18 @@
         {
           "questionType": "INFERENCE",
           "prompt": "本文全体から、同じような場面で大切だと考えられることを答えなさい。",
-          "answer": "そこなら本棚も通路もふさぎません。年下の生徒は本を取れ、利用者も安全に図書室を歩けました。",
+          "answer": "年下の生徒は本を取れ、利用者も安全に図書室を歩けました。",
           "evidence": "The younger student could reach the book, and visitors could still move safely through the library.",
-          "evidenceJp": "そこなら本棚も通路もふさぎません。年下の生徒は本を取れ、利用者も安全に図書室を歩けました。",
+          "evidenceJp": "年下の生徒は本を取れ、利用者も安全に図書室を歩けました。",
           "reason": "本文の結末とそれまでの判断過程から読み取ります。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "SUMMARY_FILL",
           "prompt": "確認後、話の流れを変えた中心的な出来事を答えなさい。",
-          "answer": "年下の生徒が本を取ろうとしましたが、十分近づけませんでした。",
-          "evidence": "A younger student tried to reach a book but could not get close enough.",
-          "evidenceJp": "年下の生徒が本を取ろうとしましたが、十分近づけませんでした。",
+          "answer": "エミは最初カートを通路へ動かしましたが、今度は人がよけて歩かなければなりませんでした。",
+          "evidence": "Emi first moved the cart into the aisle, but then people had to walk around it.",
+          "evidenceJp": "エミは最初カートを通路へ動かしましたが、今度は人がよけて歩かなければなりませんでした。",
           "reason": "中盤の転換点が根拠です。",
           "humanReview": "PENDING"
         },
@@ -1860,7 +1874,7 @@
           "questionType": "DETAIL",
           "prompt": "判断を変えるきっかけになった情報を答えなさい。",
           "answer": "エミは最初カートを通路へ動かしましたが、今度は人がよけて歩かなければなりませんでした。",
-          "evidence": "Emi first moved the cart into the aisle, but then people had to walk around it. She asked the librarian where it should go.",
+          "evidence": "Emi first moved the cart into the aisle, but then people had to walk around it.",
           "evidenceJp": "エミは最初カートを通路へ動かしましたが、今度は人がよけて歩かなければなりませんでした。",
           "reason": "具体的な手がかりを本文から探します。",
           "humanReview": "PENDING"
@@ -1868,18 +1882,18 @@
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "最終的に行った変更・決定・対応を答えなさい。",
-          "answer": "そこで司書の先生に置き場所を尋ね、一緒に返却カウンターの横へ移しました。",
+          "answer": "そこなら本棚も通路もふさぎません。",
           "evidence": "Together they placed it beside the return desk, where it did not block shelves or the aisle.",
-          "evidenceJp": "そこで司書の先生に置き場所を尋ね、一緒に返却カウンターの横へ移しました。",
+          "evidenceJp": "そこなら本棚も通路もふさぎません。",
           "reason": "終盤の決定と一致する内容です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "GIST",
           "prompt": "文章全体を最もよく表す学び・結論を答えなさい。",
-          "answer": "そこなら本棚も通路もふさぎません。年下の生徒は本を取れ、利用者も安全に図書室を歩けました。",
+          "answer": "年下の生徒は本を取れ、利用者も安全に図書室を歩けました。",
           "evidence": "The younger student could reach the book, and visitors could still move safely through the library.",
-          "evidenceJp": "そこなら本棚も通路もふさぎません。年下の生徒は本を取れ、利用者も安全に図書室を歩けました。",
+          "evidenceJp": "年下の生徒は本を取れ、利用者も安全に図書室を歩けました。",
           "reason": "最後の文を中心に文章全体をまとめます。",
           "humanReview": "PENDING"
         }
@@ -1939,11 +1953,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "One page introduced the friends, another described their day together, and the last ended with goodbye. The club changed the order and sang again.",
-          "jp": "1枚は友達が出会い、次の1枚は一緒に過ごす一日を描き、最後の1枚は別れで終わっていました。部員は順番を直してもう一度歌いました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.9083,
-          "alignmentShape": "2:2"
+          "en": "One page introduced the friends, another described their day together, and the last ended with goodbye.",
+          "jp": "1枚は友達が出会い、次の1枚は一緒に過ごす一日を描き、最後の1枚は別れで終わっていました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.4481,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "The club changed the order and sang again.",
+          "jp": "部員は順番を直してもう一度歌いました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.5171,
+          "alignmentShape": "1:1"
         },
         {
           "en": "This time the story moved naturally from meeting to spending time together and then parting.",
@@ -1984,9 +2005,9 @@
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "問題を解決するために行った中心的な対応を答えなさい。",
-          "answer": "1枚は友達が出会い、次の1枚は一緒に過ごす一日を描き、最後の1枚は別れで終わっていました。部員は順番を直してもう一度歌いました。",
-          "evidence": "One page introduced the friends, another described their day together, and the last ended with goodbye. The club changed the order and sang again.",
-          "evidenceJp": "1枚は友達が出会い、次の1枚は一緒に過ごす一日を描き、最後の1枚は別れで終わっていました。部員は順番を直してもう一度歌いました。",
+          "answer": "部員は順番を直してもう一度歌いました。",
+          "evidence": "The club changed the order and sang again.",
+          "evidenceJp": "部員は順番を直してもう一度歌いました。",
           "reason": "終盤の行動が根拠です。",
           "humanReview": "PENDING"
         },
@@ -2031,9 +2052,9 @@
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "最終的に行った変更・決定・対応を答えなさい。",
-          "answer": "1枚は友達が出会い、次の1枚は一緒に過ごす一日を描き、最後の1枚は別れで終わっていました。部員は順番を直してもう一度歌いました。",
-          "evidence": "One page introduced the friends, another described their day together, and the last ended with goodbye. The club changed the order and sang again.",
-          "evidenceJp": "1枚は友達が出会い、次の1枚は一緒に過ごす一日を描き、最後の1枚は別れで終わっていました。部員は順番を直してもう一度歌いました。",
+          "answer": "部員は順番を直してもう一度歌いました。",
+          "evidence": "The club changed the order and sang again.",
+          "evidenceJp": "部員は順番を直してもう一度歌いました。",
           "reason": "終盤の決定と一致する内容です。",
           "humanReview": "PENDING"
         },
@@ -2274,11 +2295,18 @@
           "alignmentShape": "2:1"
         },
         {
-          "en": "Yuta recognized only the first shoe and said his other shoe was already in his bag. The second shoe belonged to another student whose name began with Yu.",
-          "jp": "ユウタは最初の一足だけ自分の物だと分かり、もう片方はすでにかばんにあると言いました。二足目は名前が「ユ」で始まる別の生徒の物でした。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 0.4759,
-          "alignmentShape": "2:2"
+          "en": "Yuta recognized only the first shoe and said his other shoe was already in his bag.",
+          "jp": "ユウタは最初の一足だけ自分の物だと分かり、もう片方はすでにかばんにあると言いました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.1577,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "The second shoe belonged to another student whose name began with Yu.",
+          "jp": "二足目は名前が「ユ」で始まる別の生徒の物でした。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.325,
+          "alignmentShape": "1:1"
         },
         {
           "en": "Asking before returning the pair prevented two different shoes from being mixed again.",
@@ -2319,9 +2347,9 @@
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "問題を解決するために行った中心的な対応を答えなさい。",
-          "answer": "ユウタは最初の一足だけ自分の物だと分かり、もう片方はすでにかばんにあると言いました。二足目は名前が「ユ」で始まる別の生徒の物でした。",
-          "evidence": "Yuta recognized only the first shoe and said his other shoe was already in his bag. The second shoe belonged to another student whose name began with Yu.",
-          "evidenceJp": "ユウタは最初の一足だけ自分の物だと分かり、もう片方はすでにかばんにあると言いました。二足目は名前が「ユ」で始まる別の生徒の物でした。",
+          "answer": "二足目は名前が「ユ」で始まる別の生徒の物でした。",
+          "evidence": "The second shoe belonged to another student whose name began with Yu.",
+          "evidenceJp": "二足目は名前が「ユ」で始まる別の生徒の物でした。",
           "reason": "終盤の行動が根拠です。",
           "humanReview": "PENDING"
         },
@@ -2366,9 +2394,9 @@
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "最終的に行った変更・決定・対応を答えなさい。",
-          "answer": "ユウタは最初の一足だけ自分の物だと分かり、もう片方はすでにかばんにあると言いました。二足目は名前が「ユ」で始まる別の生徒の物でした。",
-          "evidence": "Yuta recognized only the first shoe and said his other shoe was already in his bag. The second shoe belonged to another student whose name began with Yu.",
-          "evidenceJp": "ユウタは最初の一足だけ自分の物だと分かり、もう片方はすでにかばんにあると言いました。二足目は名前が「ユ」で始まる別の生徒の物でした。",
+          "answer": "二足目は名前が「ユ」で始まる別の生徒の物でした。",
+          "evidence": "The second shoe belonged to another student whose name began with Yu.",
+          "evidenceJp": "二足目は名前が「ユ」で始まる別の生徒の物でした。",
           "reason": "終盤の決定と一致する内容です。",
           "humanReview": "PENDING"
         },
@@ -2604,11 +2632,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "The chart confirmed the two planned places, so she returned Cup B to the north window and told the teacher. Because the mistake was found early, the class could record the mix-up and continue the observation without assuming that Cup B had stayed by the north window all day.",
-          "jp": "表で予定の場所が確認できたため、Bを北側へ戻し先生に伝えました。早く間違いに気づいたので、その入れ替わりを記録し、Bが一日中北側の窓にあったと決めつけずに観察を続けることができました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.8695,
-          "alignmentShape": "2:2"
+          "en": "The chart confirmed the two planned places, so she returned Cup B to the north window and told the teacher.",
+          "jp": "表で予定の場所が確認できたため、Bを北側へ戻し先生に伝えました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.5459,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "Because the mistake was found early, the class could record the mix-up and continue the observation without assuming that Cup B had stayed by the north window all day.",
+          "jp": "早く間違いに気づいたので、その入れ替わりを記録し、Bが一日中北側の窓にあったと決めつけずに観察を続けることができました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.3623,
+          "alignmentShape": "1:1"
         }
       ],
       "questions": [
@@ -2633,27 +2668,27 @@
         {
           "questionType": "REASON",
           "prompt": "最初の考えをそのまま実行せず、確認や見直しをした理由を答えなさい。",
-          "answer": "Aのカップは明るい南側の窓、Bは暗めの北側の窓に置く予定でした。",
-          "evidence": "Cup A was supposed to stay by the bright south window, and Cup B by the darker north window.",
-          "evidenceJp": "Aのカップは明るい南側の窓、Bは暗めの北側の窓に置く予定でした。",
+          "answer": "掃除の後、リナはBも南側の窓にあることに気づきました。",
+          "evidence": "After cleaning time, Rina noticed Cup B beside the south window too.",
+          "evidenceJp": "掃除の後、リナはBも南側の窓にあることに気づきました。",
           "reason": "判断が変わる付近の記述を根拠にします。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "問題を解決するために行った中心的な対応を答えなさい。",
-          "answer": "何かを動かす前にラベルとクラスの記録表を確認しました。",
-          "evidence": "She checked the labels and the class chart before moving anything.",
-          "evidenceJp": "何かを動かす前にラベルとクラスの記録表を確認しました。",
+          "answer": "表で予定の場所が確認できたため、Bを北側へ戻し先生に伝えました。",
+          "evidence": "The chart confirmed the two planned places, so she returned Cup B to the north window and told the teacher.",
+          "evidenceJp": "表で予定の場所が確認できたため、Bを北側へ戻し先生に伝えました。",
           "reason": "終盤の行動が根拠です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "GIST",
           "prompt": "この出来事から分かったこと・最後に確かめられたことを答えなさい。",
-          "answer": "表で予定の場所が確認できたため、Bを北側へ戻し先生に伝えました。早く間違いに気づいたので、その入れ替わりを記録し、Bが一日中北側の窓にあったと決めつけずに観察を続けることができました。",
-          "evidence": "The chart confirmed the two planned places, so she returned Cup B to the north window and told the teacher. Because the mistake was found early, the class could record the mix-up and continue the observation without assuming that Cup B had stayed by the north window all day.",
-          "evidenceJp": "表で予定の場所が確認できたため、Bを北側へ戻し先生に伝えました。早く間違いに気づいたので、その入れ替わりを記録し、Bが一日中北側の窓にあったと決めつけずに観察を続けることができました。",
+          "answer": "早く間違いに気づいたので、その入れ替わりを記録し、Bが一日中北側の窓にあったと決めつけずに観察を続けることができました。",
+          "evidence": "Because the mistake was found early, the class could record the mix-up and continue the observation without assuming that Cup B had stayed by the north window all day.",
+          "evidenceJp": "早く間違いに気づいたので、その入れ替わりを記録し、Bが一日中北側の窓にあったと決めつけずに観察を続けることができました。",
           "reason": "結末の記述が文章全体をまとめています。",
           "humanReview": "PENDING"
         }
@@ -2662,18 +2697,18 @@
         {
           "questionType": "INFERENCE",
           "prompt": "本文全体から、同じような場面で大切だと考えられることを答えなさい。",
-          "answer": "表で予定の場所が確認できたため、Bを北側へ戻し先生に伝えました。早く間違いに気づいたので、その入れ替わりを記録し、Bが一日中北側の窓にあったと決めつけずに観察を続けることができました。",
-          "evidence": "The chart confirmed the two planned places, so she returned Cup B to the north window and told the teacher. Because the mistake was found early, the class could record the mix-up and continue the observation without assuming that Cup B had stayed by the north window all day.",
-          "evidenceJp": "表で予定の場所が確認できたため、Bを北側へ戻し先生に伝えました。早く間違いに気づいたので、その入れ替わりを記録し、Bが一日中北側の窓にあったと決めつけずに観察を続けることができました。",
+          "answer": "早く間違いに気づいたので、その入れ替わりを記録し、Bが一日中北側の窓にあったと決めつけずに観察を続けることができました。",
+          "evidence": "Because the mistake was found early, the class could record the mix-up and continue the observation without assuming that Cup B had stayed by the north window all day.",
+          "evidenceJp": "早く間違いに気づいたので、その入れ替わりを記録し、Bが一日中北側の窓にあったと決めつけずに観察を続けることができました。",
           "reason": "本文の結末とそれまでの判断過程から読み取ります。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "SUMMARY_FILL",
           "prompt": "確認後、話の流れを変えた中心的な出来事を答えなさい。",
-          "answer": "Aのカップは明るい南側の窓、Bは暗めの北側の窓に置く予定でした。",
-          "evidence": "Cup A was supposed to stay by the bright south window, and Cup B by the darker north window.",
-          "evidenceJp": "Aのカップは明るい南側の窓、Bは暗めの北側の窓に置く予定でした。",
+          "answer": "掃除の後、リナはBも南側の窓にあることに気づきました。",
+          "evidence": "After cleaning time, Rina noticed Cup B beside the south window too.",
+          "evidenceJp": "掃除の後、リナはBも南側の窓にあることに気づきました。",
           "reason": "中盤の転換点が根拠です。",
           "humanReview": "PENDING"
         },
@@ -2689,18 +2724,18 @@
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "最終的に行った変更・決定・対応を答えなさい。",
-          "answer": "何かを動かす前にラベルとクラスの記録表を確認しました。",
-          "evidence": "She checked the labels and the class chart before moving anything.",
-          "evidenceJp": "何かを動かす前にラベルとクラスの記録表を確認しました。",
+          "answer": "表で予定の場所が確認できたため、Bを北側へ戻し先生に伝えました。",
+          "evidence": "The chart confirmed the two planned places, so she returned Cup B to the north window and told the teacher.",
+          "evidenceJp": "表で予定の場所が確認できたため、Bを北側へ戻し先生に伝えました。",
           "reason": "終盤の決定と一致する内容です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "GIST",
           "prompt": "文章全体を最もよく表す学び・結論を答えなさい。",
-          "answer": "表で予定の場所が確認できたため、Bを北側へ戻し先生に伝えました。早く間違いに気づいたので、その入れ替わりを記録し、Bが一日中北側の窓にあったと決めつけずに観察を続けることができました。",
-          "evidence": "The chart confirmed the two planned places, so she returned Cup B to the north window and told the teacher. Because the mistake was found early, the class could record the mix-up and continue the observation without assuming that Cup B had stayed by the north window all day.",
-          "evidenceJp": "表で予定の場所が確認できたため、Bを北側へ戻し先生に伝えました。早く間違いに気づいたので、その入れ替わりを記録し、Bが一日中北側の窓にあったと決めつけずに観察を続けることができました。",
+          "answer": "早く間違いに気づいたので、その入れ替わりを記録し、Bが一日中北側の窓にあったと決めつけずに観察を続けることができました。",
+          "evidence": "Because the mistake was found early, the class could record the mix-up and continue the observation without assuming that Cup B had stayed by the north window all day.",
+          "evidenceJp": "早く間違いに気づいたので、その入れ替わりを記録し、Bが一日中北側の窓にあったと決めつけずに観察を続けることができました。",
           "reason": "最後の文を中心に文章全体をまとめます。",
           "humanReview": "PENDING"
         }
@@ -2932,18 +2967,25 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "The council asked one class to begin its break at the courtyard fountain and the other to use the gym fountain first. The next day, they measured the waits again.",
+          "en": "The council asked one class to begin its break at the courtyard fountain and the other to use the gym fountain first.",
           "jp": "そこで生徒会は、一方のクラスには中庭の水道から使い始めてもらい、もう一方には体育館の水道を先に使ってもらいました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.4428,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "The next day, they measured the waits again. No student waited more than four minutes, and both groups still had enough time to drink.",
+          "jp": "翌日、もう一度待ち時間を測ると、4分を超えて待つ生徒はいなくなり、どちらのグループも十分に水を飲めました。",
           "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.7908,
+          "alignmentCost": 1.6933,
           "alignmentShape": "2:1"
         },
         {
-          "en": "No student waited more than four minutes, and both groups still had enough time to drink. The council kept the temporary schedule until the second tap was repaired.",
-          "jp": "翌日、もう一度待ち時間を測ると、4分を超えて待つ生徒はいなくなり、どちらのグループも十分に水を飲めました。二つ目の水道が直るまで、この臨時の時間分けを続けました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.8674,
-          "alignmentShape": "2:2"
+          "en": "The council kept the temporary schedule until the second tap was repaired.",
+          "jp": "二つ目の水道が直るまで、この臨時の時間分けを続けました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.5613,
+          "alignmentShape": "1:1"
         }
       ],
       "questions": [
@@ -2977,18 +3019,18 @@
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "問題を解決するために行った中心的な対応を答えなさい。",
-          "answer": "そこで生徒会は、一方のクラスには中庭の水道から使い始めてもらい、もう一方には体育館の水道を先に使ってもらいました。",
-          "evidence": "The council asked one class to begin its break at the courtyard fountain and the other to use the gym fountain first. The next day, they measured the waits again.",
-          "evidenceJp": "そこで生徒会は、一方のクラスには中庭の水道から使い始めてもらい、もう一方には体育館の水道を先に使ってもらいました。",
+          "answer": "翌日、もう一度待ち時間を測ると、4分を超えて待つ生徒はいなくなり、どちらのグループも十分に水を飲めました。",
+          "evidence": "The next day, they measured the waits again. No student waited more than four minutes, and both groups still had enough time to drink.",
+          "evidenceJp": "翌日、もう一度待ち時間を測ると、4分を超えて待つ生徒はいなくなり、どちらのグループも十分に水を飲めました。",
           "reason": "終盤の行動が根拠です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "GIST",
           "prompt": "この出来事から分かったこと・最後に確かめられたことを答えなさい。",
-          "answer": "翌日、もう一度待ち時間を測ると、4分を超えて待つ生徒はいなくなり、どちらのグループも十分に水を飲めました。二つ目の水道が直るまで、この臨時の時間分けを続けました。",
-          "evidence": "No student waited more than four minutes, and both groups still had enough time to drink. The council kept the temporary schedule until the second tap was repaired.",
-          "evidenceJp": "翌日、もう一度待ち時間を測ると、4分を超えて待つ生徒はいなくなり、どちらのグループも十分に水を飲めました。二つ目の水道が直るまで、この臨時の時間分けを続けました。",
+          "answer": "二つ目の水道が直るまで、この臨時の時間分けを続けました。",
+          "evidence": "The council kept the temporary schedule until the second tap was repaired.",
+          "evidenceJp": "二つ目の水道が直るまで、この臨時の時間分けを続けました。",
           "reason": "結末の記述が文章全体をまとめています。",
           "humanReview": "PENDING"
         }
@@ -2997,9 +3039,9 @@
         {
           "questionType": "INFERENCE",
           "prompt": "本文全体から、同じような場面で大切だと考えられることを答えなさい。",
-          "answer": "翌日、もう一度待ち時間を測ると、4分を超えて待つ生徒はいなくなり、どちらのグループも十分に水を飲めました。二つ目の水道が直るまで、この臨時の時間分けを続けました。",
-          "evidence": "No student waited more than four minutes, and both groups still had enough time to drink. The council kept the temporary schedule until the second tap was repaired.",
-          "evidenceJp": "翌日、もう一度待ち時間を測ると、4分を超えて待つ生徒はいなくなり、どちらのグループも十分に水を飲めました。二つ目の水道が直るまで、この臨時の時間分けを続けました。",
+          "answer": "二つ目の水道が直るまで、この臨時の時間分けを続けました。",
+          "evidence": "The council kept the temporary schedule until the second tap was repaired.",
+          "evidenceJp": "二つ目の水道が直るまで、この臨時の時間分けを続けました。",
           "reason": "本文の結末とそれまでの判断過程から読み取ります。",
           "humanReview": "PENDING"
         },
@@ -3024,18 +3066,18 @@
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "最終的に行った変更・決定・対応を答えなさい。",
-          "answer": "そこで生徒会は、一方のクラスには中庭の水道から使い始めてもらい、もう一方には体育館の水道を先に使ってもらいました。",
-          "evidence": "The council asked one class to begin its break at the courtyard fountain and the other to use the gym fountain first. The next day, they measured the waits again.",
-          "evidenceJp": "そこで生徒会は、一方のクラスには中庭の水道から使い始めてもらい、もう一方には体育館の水道を先に使ってもらいました。",
+          "answer": "翌日、もう一度待ち時間を測ると、4分を超えて待つ生徒はいなくなり、どちらのグループも十分に水を飲めました。",
+          "evidence": "The next day, they measured the waits again. No student waited more than four minutes, and both groups still had enough time to drink.",
+          "evidenceJp": "翌日、もう一度待ち時間を測ると、4分を超えて待つ生徒はいなくなり、どちらのグループも十分に水を飲めました。",
           "reason": "終盤の決定と一致する内容です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "GIST",
           "prompt": "文章全体を最もよく表す学び・結論を答えなさい。",
-          "answer": "翌日、もう一度待ち時間を測ると、4分を超えて待つ生徒はいなくなり、どちらのグループも十分に水を飲めました。二つ目の水道が直るまで、この臨時の時間分けを続けました。",
-          "evidence": "No student waited more than four minutes, and both groups still had enough time to drink. The council kept the temporary schedule until the second tap was repaired.",
-          "evidenceJp": "翌日、もう一度待ち時間を測ると、4分を超えて待つ生徒はいなくなり、どちらのグループも十分に水を飲めました。二つ目の水道が直るまで、この臨時の時間分けを続けました。",
+          "answer": "二つ目の水道が直るまで、この臨時の時間分けを続けました。",
+          "evidence": "The council kept the temporary schedule until the second tap was repaired.",
+          "evidenceJp": "二つ目の水道が直るまで、この臨時の時間分けを続けました。",
           "reason": "最後の文を中心に文章全体をまとめます。",
           "humanReview": "PENDING"
         }
@@ -3112,11 +3154,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "Students then used small clips for papers during fan time. Their final plan solved both problems better than simply choosing between a hot room and flying worksheets.",
-          "jp": "その後、扇風機を使う時間には紙を小さなクリップで留めることにしました。暑さか紙が飛ぶかの二択にせず、両方の問題をよりよく解決できました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 0.4862,
-          "alignmentShape": "2:2"
+          "en": "Students then used small clips for papers during fan time.",
+          "jp": "その後、扇風機を使う時間には紙を小さなクリップで留めることにしました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.3474,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "Their final plan solved both problems better than simply choosing between a hot room and flying worksheets.",
+          "jp": "暑さか紙が飛ぶかの二択にせず、両方の問題をよりよく解決できました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.3437,
+          "alignmentShape": "1:1"
         }
       ],
       "questions": [
@@ -3141,27 +3190,27 @@
         {
           "questionType": "REASON",
           "prompt": "最初の考えをそのまま実行せず、確認や見直しをした理由を答えなさい。",
-          "answer": "扇風機を止めると紙の問題は解決しましたが、また教室が暑くなりました。",
-          "evidence": "Turning the fan off solved the paper problem but made the room uncomfortable again.",
-          "evidenceJp": "扇風機を止めると紙の問題は解決しましたが、また教室が暑くなりました。",
+          "answer": "レナは扇風機を後ろの角へ移し、少し上向きにすることを提案しました。",
+          "evidence": "Rena suggested moving it to the back corner and pointing it slightly upward.",
+          "evidenceJp": "レナは扇風機を後ろの角へ移し、少し上向きにすることを提案しました。",
           "reason": "判断が変わる付近の記述を根拠にします。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "問題を解決するために行った中心的な対応を答えなさい。",
-          "answer": "風は教室中央まで届き、動いたのは留めていないメモ一枚だけでした。",
-          "evidence": "The air reached the center of the room, and only one loose note moved.",
-          "evidenceJp": "風は教室中央まで届き、動いたのは留めていないメモ一枚だけでした。",
+          "answer": "その後、扇風機を使う時間には紙を小さなクリップで留めることにしました。",
+          "evidence": "Students then used small clips for papers during fan time.",
+          "evidenceJp": "その後、扇風機を使う時間には紙を小さなクリップで留めることにしました。",
           "reason": "終盤の行動が根拠です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "GIST",
           "prompt": "この出来事から分かったこと・最後に確かめられたことを答えなさい。",
-          "answer": "その後、扇風機を使う時間には紙を小さなクリップで留めることにしました。暑さか紙が飛ぶかの二択にせず、両方の問題をよりよく解決できました。",
-          "evidence": "Students then used small clips for papers during fan time. Their final plan solved both problems better than simply choosing between a hot room and flying worksheets.",
-          "evidenceJp": "その後、扇風機を使う時間には紙を小さなクリップで留めることにしました。暑さか紙が飛ぶかの二択にせず、両方の問題をよりよく解決できました。",
+          "answer": "暑さか紙が飛ぶかの二択にせず、両方の問題をよりよく解決できました。",
+          "evidence": "Their final plan solved both problems better than simply choosing between a hot room and flying worksheets.",
+          "evidenceJp": "暑さか紙が飛ぶかの二択にせず、両方の問題をよりよく解決できました。",
           "reason": "結末の記述が文章全体をまとめています。",
           "humanReview": "PENDING"
         }
@@ -3170,18 +3219,18 @@
         {
           "questionType": "INFERENCE",
           "prompt": "本文全体から、同じような場面で大切だと考えられることを答えなさい。",
-          "answer": "その後、扇風機を使う時間には紙を小さなクリップで留めることにしました。暑さか紙が飛ぶかの二択にせず、両方の問題をよりよく解決できました。",
-          "evidence": "Students then used small clips for papers during fan time. Their final plan solved both problems better than simply choosing between a hot room and flying worksheets.",
-          "evidenceJp": "その後、扇風機を使う時間には紙を小さなクリップで留めることにしました。暑さか紙が飛ぶかの二択にせず、両方の問題をよりよく解決できました。",
+          "answer": "暑さか紙が飛ぶかの二択にせず、両方の問題をよりよく解決できました。",
+          "evidence": "Their final plan solved both problems better than simply choosing between a hot room and flying worksheets.",
+          "evidenceJp": "暑さか紙が飛ぶかの二択にせず、両方の問題をよりよく解決できました。",
           "reason": "本文の結末とそれまでの判断過程から読み取ります。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "SUMMARY_FILL",
           "prompt": "確認後、話の流れを変えた中心的な出来事を答えなさい。",
-          "answer": "扇風機を止めると紙の問題は解決しましたが、また教室が暑くなりました。",
-          "evidence": "Turning the fan off solved the paper problem but made the room uncomfortable again.",
-          "evidenceJp": "扇風機を止めると紙の問題は解決しましたが、また教室が暑くなりました。",
+          "answer": "レナは扇風機を後ろの角へ移し、少し上向きにすることを提案しました。",
+          "evidence": "Rena suggested moving it to the back corner and pointing it slightly upward.",
+          "evidenceJp": "レナは扇風機を後ろの角へ移し、少し上向きにすることを提案しました。",
           "reason": "中盤の転換点が根拠です。",
           "humanReview": "PENDING"
         },
@@ -3197,18 +3246,18 @@
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "最終的に行った変更・決定・対応を答えなさい。",
-          "answer": "風は教室中央まで届き、動いたのは留めていないメモ一枚だけでした。",
-          "evidence": "The air reached the center of the room, and only one loose note moved.",
-          "evidenceJp": "風は教室中央まで届き、動いたのは留めていないメモ一枚だけでした。",
+          "answer": "その後、扇風機を使う時間には紙を小さなクリップで留めることにしました。",
+          "evidence": "Students then used small clips for papers during fan time.",
+          "evidenceJp": "その後、扇風機を使う時間には紙を小さなクリップで留めることにしました。",
           "reason": "終盤の決定と一致する内容です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "GIST",
           "prompt": "文章全体を最もよく表す学び・結論を答えなさい。",
-          "answer": "その後、扇風機を使う時間には紙を小さなクリップで留めることにしました。暑さか紙が飛ぶかの二択にせず、両方の問題をよりよく解決できました。",
-          "evidence": "Students then used small clips for papers during fan time. Their final plan solved both problems better than simply choosing between a hot room and flying worksheets.",
-          "evidenceJp": "その後、扇風機を使う時間には紙を小さなクリップで留めることにしました。暑さか紙が飛ぶかの二択にせず、両方の問題をよりよく解決できました。",
+          "answer": "暑さか紙が飛ぶかの二択にせず、両方の問題をよりよく解決できました。",
+          "evidence": "Their final plan solved both problems better than simply choosing between a hot room and flying worksheets.",
+          "evidenceJp": "暑さか紙が飛ぶかの二択にせず、両方の問題をよりよく解決できました。",
           "reason": "最後の文を中心に文章全体をまとめます。",
           "humanReview": "PENDING"
         }
@@ -5065,11 +5114,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "Feeder B received most of its visits later in the day because the nearby playground was quiet then. The club's first schedule had shown only one part of the pattern.",
-          "jp": "Bの近くの運動場が静かになるため、Bへの訪問は一日の後半に多いと分かりました。最初の観察時間では、全体の一部分しか見えていませんでした。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 0.4726,
-          "alignmentShape": "2:2"
+          "en": "Feeder B received most of its visits later in the day because the nearby playground was quiet then.",
+          "jp": "Bの近くの運動場が静かになるため、Bへの訪問は一日の後半に多いと分かりました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.4347,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "The club's first schedule had shown only one part of the pattern.",
+          "jp": "最初の観察時間では、全体の一部分しか見えていませんでした。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.3934,
+          "alignmentShape": "1:1"
         },
         {
           "en": "Using several times gave them a fairer comparison of the two locations.",
@@ -5101,18 +5157,18 @@
         {
           "questionType": "REASON",
           "prompt": "最初の考えをそのまま実行せず、確認や見直しをした理由を答えなさい。",
-          "answer": "Aには多くの鳥が来ましたが、Bにはほとんど来なかったため、部員は鳥がBの場所を好まないと結論づけそうになりました。",
-          "evidence": "Feeder A had many visits, while Feeder B had almost none, so they nearly concluded that birds disliked B's location.",
-          "evidenceJp": "Aには多くの鳥が来ましたが、Bにはほとんど来なかったため、部員は鳥がBの場所を好まないと結論づけそうになりました。",
+          "answer": "しかしケンは、午後の部員がBの近くで鳥をよく見ていることに気づきました。",
+          "evidence": "Then Ken noticed that afternoon club members often saw birds near Feeder B.",
+          "evidenceJp": "しかしケンは、午後の部員がBの近くで鳥をよく見ていることに気づきました。",
           "reason": "判断が変わる付近の記述を根拠にします。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "問題を解決するために行った中心的な対応を答えなさい。",
-          "answer": "Bの近くの運動場が静かになるため、Bへの訪問は一日の後半に多いと分かりました。最初の観察時間では、全体の一部分しか見えていませんでした。",
-          "evidence": "Feeder B received most of its visits later in the day because the nearby playground was quiet then. The club's first schedule had shown only one part of the pattern.",
-          "evidenceJp": "Bの近くの運動場が静かになるため、Bへの訪問は一日の後半に多いと分かりました。最初の観察時間では、全体の一部分しか見えていませんでした。",
+          "answer": "最初の観察時間では、全体の一部分しか見えていませんでした。",
+          "evidence": "The club's first schedule had shown only one part of the pattern.",
+          "evidenceJp": "最初の観察時間では、全体の一部分しか見えていませんでした。",
           "reason": "終盤の行動が根拠です。",
           "humanReview": "PENDING"
         },
@@ -5139,9 +5195,9 @@
         {
           "questionType": "SUMMARY_FILL",
           "prompt": "確認後、話の流れを変えた中心的な出来事を答えなさい。",
-          "answer": "Aには多くの鳥が来ましたが、Bにはほとんど来なかったため、部員は鳥がBの場所を好まないと結論づけそうになりました。",
-          "evidence": "Feeder A had many visits, while Feeder B had almost none, so they nearly concluded that birds disliked B's location.",
-          "evidenceJp": "Aには多くの鳥が来ましたが、Bにはほとんど来なかったため、部員は鳥がBの場所を好まないと結論づけそうになりました。",
+          "answer": "しかしケンは、午後の部員がBの近くで鳥をよく見ていることに気づきました。",
+          "evidence": "Then Ken noticed that afternoon club members often saw birds near Feeder B.",
+          "evidenceJp": "しかしケンは、午後の部員がBの近くで鳥をよく見ていることに気づきました。",
           "reason": "中盤の転換点が根拠です。",
           "humanReview": "PENDING"
         },
@@ -5157,9 +5213,9 @@
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "最終的に行った変更・決定・対応を答えなさい。",
-          "answer": "Bの近くの運動場が静かになるため、Bへの訪問は一日の後半に多いと分かりました。最初の観察時間では、全体の一部分しか見えていませんでした。",
-          "evidence": "Feeder B received most of its visits later in the day because the nearby playground was quiet then. The club's first schedule had shown only one part of the pattern.",
-          "evidenceJp": "Bの近くの運動場が静かになるため、Bへの訪問は一日の後半に多いと分かりました。最初の観察時間では、全体の一部分しか見えていませんでした。",
+          "answer": "最初の観察時間では、全体の一部分しか見えていませんでした。",
+          "evidence": "The club's first schedule had shown only one part of the pattern.",
+          "evidenceJp": "最初の観察時間では、全体の一部分しか見えていませんでした。",
           "reason": "終盤の決定と一致する内容です。",
           "humanReview": "PENDING"
         },
@@ -5209,11 +5265,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "One morning, Class 2-1 opened it and found six devices below twenty percent battery. The previous class had returned all twenty, so at first no one knew what had happened.",
-          "jp": "ある朝、2年1組が開けると、6台の充電が20％未満でした。前のクラスは20台すべて返していたため、最初は原因が分かりませんでした。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.9064,
-          "alignmentShape": "2:2"
+          "en": "One morning, Class 2-1 opened it and found six devices below twenty percent battery.",
+          "jp": "ある朝、2年1組が開けると、6台の充電が20％未満でした。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.6246,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "The previous class had returned all twenty, so at first no one knew what had happened.",
+          "jp": "前のクラスは20台すべて返していたため、最初は原因が分かりませんでした。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.3683,
+          "alignmentShape": "1:1"
         },
         {
           "en": "Akira checked the charging screen and saw that several cables were loose.",
@@ -5230,11 +5293,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "The classes created a two-step routine: connect each cable and check for the charging symbol before closing the cart. A student then recorded the lowest battery level at the end of the day.",
-          "jp": "そこで各クラスは、ケーブルをつなぎ、カートを閉める前に充電マークを確かめる二段階の手順を作りました。さらに一日の終わりに最も低い充電率を記録しました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.8317,
-          "alignmentShape": "2:2"
+          "en": "The classes created a two-step routine: connect each cable and check for the charging symbol before closing the cart.",
+          "jp": "そこで各クラスは、ケーブルをつなぎ、カートを閉める前に充電マークを確かめる二段階の手順を作りました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.3618,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "A student then recorded the lowest battery level at the end of the day.",
+          "jp": "さらに一日の終わりに最も低い充電率を記録しました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.489,
+          "alignmentShape": "1:1"
         },
         {
           "en": "After a week, every tablet began the morning above eighty percent.",
@@ -5264,9 +5334,9 @@
         {
           "questionType": "DETAIL",
           "prompt": "判断の手がかりになった具体的な情報を一つ答えなさい。",
-          "answer": "アキラが充電画面を確認すると、いくつかのケーブルが緩んでいました。",
-          "evidence": "Akira checked the charging screen and saw that several cables were loose.",
-          "evidenceJp": "アキラが充電画面を確認すると、いくつかのケーブルが緩んでいました。",
+          "answer": "前のクラスは20台すべて返していたため、最初は原因が分かりませんでした。",
+          "evidence": "The previous class had returned all twenty, so at first no one knew what had happened.",
+          "evidenceJp": "前のクラスは20台すべて返していたため、最初は原因が分かりませんでした。",
           "reason": "本文中の具体情報が根拠です。",
           "humanReview": "PENDING"
         },
@@ -5320,9 +5390,9 @@
         {
           "questionType": "DETAIL",
           "prompt": "判断を変えるきっかけになった情報を答えなさい。",
-          "answer": "アキラが充電画面を確認すると、いくつかのケーブルが緩んでいました。",
-          "evidence": "Akira checked the charging screen and saw that several cables were loose.",
-          "evidenceJp": "アキラが充電画面を確認すると、いくつかのケーブルが緩んでいました。",
+          "answer": "前のクラスは20台すべて返していたため、最初は原因が分かりませんでした。",
+          "evidence": "The previous class had returned all twenty, so at first no one knew what had happened.",
+          "evidenceJp": "前のクラスは20台すべて返していたため、最初は原因が分かりませんでした。",
           "reason": "具体的な手がかりを本文から探します。",
           "humanReview": "PENDING"
         },
@@ -5756,11 +5826,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "Students helping the community center measured the board and listed every poster for two weeks. They found that old event posters used almost one third of the space.",
-          "jp": "公民館を手伝う生徒たちは掲示板の大きさを測り、二週間すべての掲示物を記録しました。すると、終了した行事のポスターが約3分の1の場所を使っていると分かりました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.8568,
-          "alignmentShape": "2:2"
+          "en": "Students helping the community center measured the board and listed every poster for two weeks.",
+          "jp": "公民館を手伝う生徒たちは掲示板の大きさを測り、二週間すべての掲示物を記録しました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.4065,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "They found that old event posters used almost one third of the space.",
+          "jp": "すると、終了した行事のポスターが約3分の1の場所を使っていると分かりました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.5701,
+          "alignmentShape": "1:1"
         },
         {
           "en": "The center considered banning large posters, but the students suggested a fairer rule: every notice would show a removal date, large posters could stay for ten days, and one section would always be kept for small notices.",
@@ -5804,18 +5881,18 @@
         {
           "questionType": "DETAIL",
           "prompt": "判断の手がかりになった具体的な情報を一つ答えなさい。",
-          "answer": "公民館を手伝う生徒たちは掲示板の大きさを測り、二週間すべての掲示物を記録しました。すると、終了した行事のポスターが約3分の1の場所を使っていると分かりました。",
-          "evidence": "Students helping the community center measured the board and listed every poster for two weeks. They found that old event posters used almost one third of the space.",
-          "evidenceJp": "公民館を手伝う生徒たちは掲示板の大きさを測り、二週間すべての掲示物を記録しました。すると、終了した行事のポスターが約3分の1の場所を使っていると分かりました。",
+          "answer": "公民館を手伝う生徒たちは掲示板の大きさを測り、二週間すべての掲示物を記録しました。",
+          "evidence": "Students helping the community center measured the board and listed every poster for two weeks.",
+          "evidenceJp": "公民館を手伝う生徒たちは掲示板の大きさを測り、二週間すべての掲示物を記録しました。",
           "reason": "本文中の具体情報が根拠です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "REASON",
           "prompt": "最初の考えをそのまま実行せず、確認や見直しをした理由を答えなさい。",
-          "answer": "公民館を手伝う生徒たちは掲示板の大きさを測り、二週間すべての掲示物を記録しました。すると、終了した行事のポスターが約3分の1の場所を使っていると分かりました。",
-          "evidence": "Students helping the community center measured the board and listed every poster for two weeks. They found that old event posters used almost one third of the space.",
-          "evidenceJp": "公民館を手伝う生徒たちは掲示板の大きさを測り、二週間すべての掲示物を記録しました。すると、終了した行事のポスターが約3分の1の場所を使っていると分かりました。",
+          "answer": "すると、終了した行事のポスターが約3分の1の場所を使っていると分かりました。",
+          "evidence": "They found that old event posters used almost one third of the space.",
+          "evidenceJp": "すると、終了した行事のポスターが約3分の1の場所を使っていると分かりました。",
           "reason": "判断が変わる付近の記述を根拠にします。",
           "humanReview": "PENDING"
         },
@@ -5851,18 +5928,18 @@
         {
           "questionType": "SUMMARY_FILL",
           "prompt": "確認後、話の流れを変えた中心的な出来事を答えなさい。",
-          "answer": "公民館を手伝う生徒たちは掲示板の大きさを測り、二週間すべての掲示物を記録しました。すると、終了した行事のポスターが約3分の1の場所を使っていると分かりました。",
-          "evidence": "Students helping the community center measured the board and listed every poster for two weeks. They found that old event posters used almost one third of the space.",
-          "evidenceJp": "公民館を手伝う生徒たちは掲示板の大きさを測り、二週間すべての掲示物を記録しました。すると、終了した行事のポスターが約3分の1の場所を使っていると分かりました。",
+          "answer": "すると、終了した行事のポスターが約3分の1の場所を使っていると分かりました。",
+          "evidence": "They found that old event posters used almost one third of the space.",
+          "evidenceJp": "すると、終了した行事のポスターが約3分の1の場所を使っていると分かりました。",
           "reason": "中盤の転換点が根拠です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "DETAIL",
           "prompt": "判断を変えるきっかけになった情報を答えなさい。",
-          "answer": "公民館を手伝う生徒たちは掲示板の大きさを測り、二週間すべての掲示物を記録しました。すると、終了した行事のポスターが約3分の1の場所を使っていると分かりました。",
-          "evidence": "Students helping the community center measured the board and listed every poster for two weeks. They found that old event posters used almost one third of the space.",
-          "evidenceJp": "公民館を手伝う生徒たちは掲示板の大きさを測り、二週間すべての掲示物を記録しました。すると、終了した行事のポスターが約3分の1の場所を使っていると分かりました。",
+          "answer": "公民館を手伝う生徒たちは掲示板の大きさを測り、二週間すべての掲示物を記録しました。",
+          "evidence": "Students helping the community center measured the board and listed every poster for two weeks.",
+          "evidenceJp": "公民館を手伝う生徒たちは掲示板の大きさを測り、二週間すべての掲示物を記録しました。",
           "reason": "具体的な手がかりを本文から探します。",
           "humanReview": "PENDING"
         },
@@ -6108,11 +6185,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "The owner offered a low three-month rent because he wanted to know whether the idea could work. At first, the students were excited by the location and planned to open every evening until 9:00.",
-          "jp": "店主は、その案がうまくいくか確かめたいと考え、三か月間は安い家賃でよいと言いました。学生たちは場所の便利さに喜び、最初は毎晩9時まで開ける計画でした。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.8473,
-          "alignmentShape": "2:2"
+          "en": "The owner offered a low three-month rent because he wanted to know whether the idea could work.",
+          "jp": "店主は、その案がうまくいくか確かめたいと考え、三か月間は安い家賃でよいと言いました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.522,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "At first, the students were excited by the location and planned to open every evening until 9:00.",
+          "jp": "学生たちは場所の便利さに喜び、最初は毎晩9時まで開ける計画でした。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.4205,
+          "alignmentShape": "1:1"
         },
         {
           "en": "Then they interviewed nearby residents, parents, and students.",
@@ -6122,11 +6206,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "Residents were not against the project, but several worried about voices and bicycle noise after 8:00. Parents asked who would be responsible if younger students stayed late, and one wheelchair user pointed out that the front step made the entrance difficult.",
-          "jp": "住民は計画そのものに反対ではありませんでしたが、8時以降の話し声や自転車の音を心配する人がいました。保護者は年下の生徒が遅くまで残る場合の責任者を尋ね、車いす利用者は入口の段差が入りにくいと指摘しました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.8612,
-          "alignmentShape": "2:2"
+          "en": "Residents were not against the project, but several worried about voices and bicycle noise after 8:00.",
+          "jp": "住民は計画そのものに反対ではありませんでしたが、8時以降の話し声や自転車の音を心配する人がいました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.6426,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "Parents asked who would be responsible if younger students stayed late, and one wheelchair user pointed out that the front step made the entrance difficult.",
+          "jp": "保護者は年下の生徒が遅くまで残る場合の責任者を尋ね、車いす利用者は入口の段差が入りにくいと指摘しました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.4533,
+          "alignmentShape": "1:1"
         },
         {
           "en": "The group revised its plan before signing any agreement.",
@@ -6184,18 +6275,18 @@
         {
           "questionType": "DETAIL",
           "prompt": "判断の手がかりになった具体的な情報を一つ答えなさい。",
-          "answer": "店主は、その案がうまくいくか確かめたいと考え、三か月間は安い家賃でよいと言いました。学生たちは場所の便利さに喜び、最初は毎晩9時まで開ける計画でした。",
-          "evidence": "The owner offered a low three-month rent because he wanted to know whether the idea could work. At first, the students were excited by the location and planned to open every evening until 9:00.",
-          "evidenceJp": "店主は、その案がうまくいくか確かめたいと考え、三か月間は安い家賃でよいと言いました。学生たちは場所の便利さに喜び、最初は毎晩9時まで開ける計画でした。",
+          "answer": "店主は、その案がうまくいくか確かめたいと考え、三か月間は安い家賃でよいと言いました。",
+          "evidence": "The owner offered a low three-month rent because he wanted to know whether the idea could work.",
+          "evidenceJp": "店主は、その案がうまくいくか確かめたいと考え、三か月間は安い家賃でよいと言いました。",
           "reason": "本文中の具体情報が根拠です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "REASON",
           "prompt": "最初の考えをそのまま実行せず、確認や見直しをした理由を答えなさい。",
-          "answer": "住民は計画そのものに反対ではありませんでしたが、8時以降の話し声や自転車の音を心配する人がいました。保護者は年下の生徒が遅くまで残る場合の責任者を尋ね、車いす利用者は入口の段差が入りにくいと指摘しました。",
-          "evidence": "Residents were not against the project, but several worried about voices and bicycle noise after 8:00. Parents asked who would be responsible if younger students stayed late, and one wheelchair user pointed out that the front step made the entrance difficult.",
-          "evidenceJp": "住民は計画そのものに反対ではありませんでしたが、8時以降の話し声や自転車の音を心配する人がいました。保護者は年下の生徒が遅くまで残る場合の責任者を尋ね、車いす利用者は入口の段差が入りにくいと指摘しました。",
+          "answer": "住民は計画そのものに反対ではありませんでしたが、8時以降の話し声や自転車の音を心配する人がいました。",
+          "evidence": "Residents were not against the project, but several worried about voices and bicycle noise after 8:00.",
+          "evidenceJp": "住民は計画そのものに反対ではありませんでしたが、8時以降の話し声や自転車の音を心配する人がいました。",
           "reason": "判断が変わる付近の記述を根拠にします。",
           "humanReview": "PENDING"
         },
@@ -6231,18 +6322,18 @@
         {
           "questionType": "SUMMARY_FILL",
           "prompt": "確認後、話の流れを変えた中心的な出来事を答えなさい。",
-          "answer": "住民は計画そのものに反対ではありませんでしたが、8時以降の話し声や自転車の音を心配する人がいました。保護者は年下の生徒が遅くまで残る場合の責任者を尋ね、車いす利用者は入口の段差が入りにくいと指摘しました。",
-          "evidence": "Residents were not against the project, but several worried about voices and bicycle noise after 8:00. Parents asked who would be responsible if younger students stayed late, and one wheelchair user pointed out that the front step made the entrance difficult.",
-          "evidenceJp": "住民は計画そのものに反対ではありませんでしたが、8時以降の話し声や自転車の音を心配する人がいました。保護者は年下の生徒が遅くまで残る場合の責任者を尋ね、車いす利用者は入口の段差が入りにくいと指摘しました。",
+          "answer": "住民は計画そのものに反対ではありませんでしたが、8時以降の話し声や自転車の音を心配する人がいました。",
+          "evidence": "Residents were not against the project, but several worried about voices and bicycle noise after 8:00.",
+          "evidenceJp": "住民は計画そのものに反対ではありませんでしたが、8時以降の話し声や自転車の音を心配する人がいました。",
           "reason": "中盤の転換点が根拠です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "DETAIL",
           "prompt": "判断を変えるきっかけになった情報を答えなさい。",
-          "answer": "店主は、その案がうまくいくか確かめたいと考え、三か月間は安い家賃でよいと言いました。学生たちは場所の便利さに喜び、最初は毎晩9時まで開ける計画でした。",
-          "evidence": "The owner offered a low three-month rent because he wanted to know whether the idea could work. At first, the students were excited by the location and planned to open every evening until 9:00.",
-          "evidenceJp": "店主は、その案がうまくいくか確かめたいと考え、三か月間は安い家賃でよいと言いました。学生たちは場所の便利さに喜び、最初は毎晩9時まで開ける計画でした。",
+          "answer": "店主は、その案がうまくいくか確かめたいと考え、三か月間は安い家賃でよいと言いました。",
+          "evidence": "The owner offered a low three-month rent because he wanted to know whether the idea could work.",
+          "evidenceJp": "店主は、その案がうまくいくか確かめたいと考え、三か月間は安い家賃でよいと言いました。",
           "reason": "具体的な手がかりを本文から探します。",
           "humanReview": "PENDING"
         },
@@ -6356,11 +6447,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "She also kept both interviews in the project archive. Her final report respected the speakers' memories while making a clear distinction between remembered dates and dates supported by independent records.",
-          "jp": "そして二つのインタビューの両方を資料として保存しました。最終報告では話し手の記憶を尊重しながら、記憶された年代と独立した記録で確かめられる年代を区別しました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.8064,
-          "alignmentShape": "2:2"
+          "en": "She also kept both interviews in the project archive.",
+          "jp": "そして二つのインタビューの両方を資料として保存しました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.6678,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "Her final report respected the speakers' memories while making a clear distinction between remembered dates and dates supported by independent records.",
+          "jp": "最終報告では話し手の記憶を尊重しながら、記憶された年代と独立した記録で確かめられる年代を区別しました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.1618,
+          "alignmentShape": "1:1"
         }
       ],
       "questions": [
@@ -6385,27 +6483,27 @@
         {
           "questionType": "REASON",
           "prompt": "最初の考えをそのまま実行せず、確認や見直しをした理由を答えなさい。",
-          "answer": "ハルは、先に録音したからという理由だけで最初の年を選びたくありませんでした。",
-          "evidence": "Haru did not want to choose the date that appeared in the first interview simply because it had been recorded earlier.",
-          "evidenceJp": "ハルは、先に録音したからという理由だけで最初の年を選びたくありませんでした。",
+          "answer": "そこで町の新聞索引、店主の日記、図書館に保存された写真を調べました。",
+          "evidence": "She checked a town newspaper index, a shop owner's diary, and a photograph kept at the library.",
+          "evidenceJp": "そこで町の新聞索引、店主の日記、図書館に保存された写真を調べました。",
           "reason": "判断が変わる付近の記述を根拠にします。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "問題を解決するために行った中心的な対応を答えなさい。",
-          "answer": "ハルは、家族の記憶には違いがあるものの、残っている資料は1965年を支持すると報告しました。",
-          "evidence": "Haru wrote that the family's memory differed, but the surviving documents supported 1965.",
-          "evidenceJp": "ハルは、家族の記憶には違いがあるものの、残っている資料は1965年を支持すると報告しました。",
+          "answer": "そして二つのインタビューの両方を資料として保存しました。",
+          "evidence": "She also kept both interviews in the project archive.",
+          "evidenceJp": "そして二つのインタビューの両方を資料として保存しました。",
           "reason": "終盤の行動が根拠です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "GIST",
           "prompt": "この出来事から分かったこと・最後に確かめられたことを答えなさい。",
-          "answer": "そして二つのインタビューの両方を資料として保存しました。最終報告では話し手の記憶を尊重しながら、記憶された年代と独立した記録で確かめられる年代を区別しました。",
-          "evidence": "She also kept both interviews in the project archive. Her final report respected the speakers' memories while making a clear distinction between remembered dates and dates supported by independent records.",
-          "evidenceJp": "そして二つのインタビューの両方を資料として保存しました。最終報告では話し手の記憶を尊重しながら、記憶された年代と独立した記録で確かめられる年代を区別しました。",
+          "answer": "最終報告では話し手の記憶を尊重しながら、記憶された年代と独立した記録で確かめられる年代を区別しました。",
+          "evidence": "Her final report respected the speakers' memories while making a clear distinction between remembered dates and dates supported by independent records.",
+          "evidenceJp": "最終報告では話し手の記憶を尊重しながら、記憶された年代と独立した記録で確かめられる年代を区別しました。",
           "reason": "結末の記述が文章全体をまとめています。",
           "humanReview": "PENDING"
         }
@@ -6414,18 +6512,18 @@
         {
           "questionType": "INFERENCE",
           "prompt": "本文全体から、同じような場面で大切だと考えられることを答えなさい。",
-          "answer": "そして二つのインタビューの両方を資料として保存しました。最終報告では話し手の記憶を尊重しながら、記憶された年代と独立した記録で確かめられる年代を区別しました。",
-          "evidence": "She also kept both interviews in the project archive. Her final report respected the speakers' memories while making a clear distinction between remembered dates and dates supported by independent records.",
-          "evidenceJp": "そして二つのインタビューの両方を資料として保存しました。最終報告では話し手の記憶を尊重しながら、記憶された年代と独立した記録で確かめられる年代を区別しました。",
+          "answer": "最終報告では話し手の記憶を尊重しながら、記憶された年代と独立した記録で確かめられる年代を区別しました。",
+          "evidence": "Her final report respected the speakers' memories while making a clear distinction between remembered dates and dates supported by independent records.",
+          "evidenceJp": "最終報告では話し手の記憶を尊重しながら、記憶された年代と独立した記録で確かめられる年代を区別しました。",
           "reason": "本文の結末とそれまでの判断過程から読み取ります。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "SUMMARY_FILL",
           "prompt": "確認後、話の流れを変えた中心的な出来事を答えなさい。",
-          "answer": "ハルは、先に録音したからという理由だけで最初の年を選びたくありませんでした。",
-          "evidence": "Haru did not want to choose the date that appeared in the first interview simply because it had been recorded earlier.",
-          "evidenceJp": "ハルは、先に録音したからという理由だけで最初の年を選びたくありませんでした。",
+          "answer": "そこで町の新聞索引、店主の日記、図書館に保存された写真を調べました。",
+          "evidence": "She checked a town newspaper index, a shop owner's diary, and a photograph kept at the library.",
+          "evidenceJp": "そこで町の新聞索引、店主の日記、図書館に保存された写真を調べました。",
           "reason": "中盤の転換点が根拠です。",
           "humanReview": "PENDING"
         },
@@ -6441,18 +6539,18 @@
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "最終的に行った変更・決定・対応を答えなさい。",
-          "answer": "ハルは、家族の記憶には違いがあるものの、残っている資料は1965年を支持すると報告しました。",
-          "evidence": "Haru wrote that the family's memory differed, but the surviving documents supported 1965.",
-          "evidenceJp": "ハルは、家族の記憶には違いがあるものの、残っている資料は1965年を支持すると報告しました。",
+          "answer": "そして二つのインタビューの両方を資料として保存しました。",
+          "evidence": "She also kept both interviews in the project archive.",
+          "evidenceJp": "そして二つのインタビューの両方を資料として保存しました。",
           "reason": "終盤の決定と一致する内容です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "GIST",
           "prompt": "文章全体を最もよく表す学び・結論を答えなさい。",
-          "answer": "そして二つのインタビューの両方を資料として保存しました。最終報告では話し手の記憶を尊重しながら、記憶された年代と独立した記録で確かめられる年代を区別しました。",
-          "evidence": "She also kept both interviews in the project archive. Her final report respected the speakers' memories while making a clear distinction between remembered dates and dates supported by independent records.",
-          "evidenceJp": "そして二つのインタビューの両方を資料として保存しました。最終報告では話し手の記憶を尊重しながら、記憶された年代と独立した記録で確かめられる年代を区別しました。",
+          "answer": "最終報告では話し手の記憶を尊重しながら、記憶された年代と独立した記録で確かめられる年代を区別しました。",
+          "evidence": "Her final report respected the speakers' memories while making a clear distinction between remembered dates and dates supported by independent records.",
+          "evidenceJp": "最終報告では話し手の記憶を尊重しながら、記憶された年代と独立した記録で確かめられる年代を区別しました。",
           "reason": "最後の文を中心に文章全体をまとめます。",
           "humanReview": "PENDING"
         }
@@ -6748,11 +6846,18 @@
       "humanSemanticReview": "B12_HUMAN_REVIEW_R2_COMPLETE",
       "slashRows": [
         {
-          "en": "The science club made a poster comparing electricity use in three school rooms. The music room used more electricity in one week than either of the two classrooms, so the first draft called it the least efficient room.",
-          "jp": "科学部は校内三部屋の電気使用量を比べるポスターを作りました。一週間では音楽室が二つの教室より多く電気を使っていたため、最初の案では音楽室を最も効率の悪い部屋としました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.8315,
-          "alignmentShape": "2:2"
+          "en": "The science club made a poster comparing electricity use in three school rooms.",
+          "jp": "科学部は校内三部屋の電気使用量を比べるポスターを作りました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.3565,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "The music room used more electricity in one week than either of the two classrooms, so the first draft called it the least efficient room.",
+          "jp": "一週間では音楽室が二つの教室より多く電気を使っていたため、最初の案では音楽室を最も効率の悪い部屋としました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.4116,
+          "alignmentShape": "1:1"
         },
         {
           "en": "Ken noticed that the rooms were not used in the same way.",
@@ -6808,27 +6913,27 @@
         {
           "questionType": "GIST",
           "prompt": "本文の最初に示された状況・問題を答えなさい。",
-          "answer": "科学部は校内三部屋の電気使用量を比べるポスターを作りました。一週間では音楽室が二つの教室より多く電気を使っていたため、最初の案では音楽室を最も効率の悪い部屋としました。",
-          "evidence": "The science club made a poster comparing electricity use in three school rooms. The music room used more electricity in one week than either of the two classrooms, so the first draft called it the least efficient room.",
-          "evidenceJp": "科学部は校内三部屋の電気使用量を比べるポスターを作りました。一週間では音楽室が二つの教室より多く電気を使っていたため、最初の案では音楽室を最も効率の悪い部屋としました。",
+          "answer": "科学部は校内三部屋の電気使用量を比べるポスターを作りました。",
+          "evidence": "The science club made a poster comparing electricity use in three school rooms.",
+          "evidenceJp": "科学部は校内三部屋の電気使用量を比べるポスターを作りました。",
           "reason": "冒頭の状況を本文から確認します。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "DETAIL",
           "prompt": "判断の手がかりになった具体的な情報を一つ答えなさい。",
-          "answer": "音楽室は広く、エアコンが二台あり、その週は三日間夕方の練習にも使われていました。",
-          "evidence": "The music room was larger, had two air conditioners, and was used for evening practice three days that week.",
-          "evidenceJp": "音楽室は広く、エアコンが二台あり、その週は三日間夕方の練習にも使われていました。",
+          "answer": "しかしケンは、部屋の使われ方が同じではないことに気づきました。",
+          "evidence": "Ken noticed that the rooms were not used in the same way.",
+          "evidenceJp": "しかしケンは、部屋の使われ方が同じではないことに気づきました。",
           "reason": "本文中の具体情報が根拠です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "REASON",
           "prompt": "最初の考えをそのまま実行せず、確認や見直しをした理由を答えなさい。",
-          "answer": "そこで使用時間と利用人数も合わせて比べました。",
-          "evidence": "He asked the group to compare electricity use with hours of use and the number of people present.",
-          "evidenceJp": "そこで使用時間と利用人数も合わせて比べました。",
+          "answer": "音楽室は広く、エアコンが二台あり、その週は三日間夕方の練習にも使われていました。",
+          "evidence": "The music room was larger, had two air conditioners, and was used for evening practice three days that week.",
+          "evidenceJp": "音楽室は広く、エアコンが二台あり、その週は三日間夕方の練習にも使われていました。",
           "reason": "判断が変わる付近の記述を根拠にします。",
           "humanReview": "PENDING"
         },
@@ -6864,18 +6969,18 @@
         {
           "questionType": "SUMMARY_FILL",
           "prompt": "確認後、話の流れを変えた中心的な出来事を答えなさい。",
-          "answer": "そこで使用時間と利用人数も合わせて比べました。",
-          "evidence": "He asked the group to compare electricity use with hours of use and the number of people present.",
-          "evidenceJp": "そこで使用時間と利用人数も合わせて比べました。",
+          "answer": "音楽室は広く、エアコンが二台あり、その週は三日間夕方の練習にも使われていました。",
+          "evidence": "The music room was larger, had two air conditioners, and was used for evening practice three days that week.",
+          "evidenceJp": "音楽室は広く、エアコンが二台あり、その週は三日間夕方の練習にも使われていました。",
           "reason": "中盤の転換点が根拠です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "DETAIL",
           "prompt": "判断を変えるきっかけになった情報を答えなさい。",
-          "answer": "音楽室は広く、エアコンが二台あり、その週は三日間夕方の練習にも使われていました。",
-          "evidence": "The music room was larger, had two air conditioners, and was used for evening practice three days that week.",
-          "evidenceJp": "音楽室は広く、エアコンが二台あり、その週は三日間夕方の練習にも使われていました。",
+          "answer": "しかしケンは、部屋の使われ方が同じではないことに気づきました。",
+          "evidence": "Ken noticed that the rooms were not used in the same way.",
+          "evidenceJp": "しかしケンは、部屋の使われ方が同じではないことに気づきました。",
           "reason": "具体的な手がかりを本文から探します。",
           "humanReview": "PENDING"
         },
@@ -6937,11 +7042,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "The first two weeks were popular, but one family stopped attending after discovering that a soup contained sesame. No one had become ill because the family asked before eating, yet the incident showed that the kitchen's information system was weak.",
-          "jp": "最初の二週間は人気でしたが、ある家族がスープにごまが入っていると分かってから参加をやめました。その家族は食べる前に確認したため体調を崩した人はいませんでしたが、キッチンの情報の出し方に弱点があると分かりました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.9493,
-          "alignmentShape": "2:2"
+          "en": "The first two weeks were popular, but one family stopped attending after discovering that a soup contained sesame.",
+          "jp": "最初の二週間は人気でしたが、ある家族がスープにごまが入っていると分かってから参加をやめました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.4651,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "No one had become ill because the family asked before eating, yet the incident showed that the kitchen's information system was weak.",
+          "jp": "その家族は食べる前に確認したため体調を崩した人はいませんでしたが、キッチンの情報の出し方に弱点があると分かりました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.5463,
+          "alignmentShape": "1:1"
         },
         {
           "en": "Ingredients were written on a small sheet near the cooking table, and some labels used only Japanese even when visiting students from abroad joined the event.",
@@ -6986,11 +7098,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "They kept a separate preparation area for one severe allergy and told volunteers not to promise that every dish was safe for everyone. At the end of the trial, the center decided to continue the kitchen for three more months.",
-          "jp": "重いアレルギー一件には別の調理場所を設け、誰にでも安全だと約束しないようボランティアにも伝えました。試行終了時、センターはさらに三か月続けることを決めました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.8197,
-          "alignmentShape": "2:2"
+          "en": "They kept a separate preparation area for one severe allergy and told volunteers not to promise that every dish was safe for everyone.",
+          "jp": "重いアレルギー一件には別の調理場所を設け、誰にでも安全だと約束しないようボランティアにも伝えました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.374,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "At the end of the trial, the center decided to continue the kitchen for three more months.",
+          "jp": "試行終了時、センターはさらに三か月続けることを決めました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.4685,
+          "alignmentShape": "1:1"
         },
         {
           "en": "The decision was based not only on attendance but also on whether the revised procedure made responsibilities and limits clearer.",
@@ -7020,9 +7139,9 @@
         {
           "questionType": "DETAIL",
           "prompt": "判断の手がかりになった具体的な情報を一つ答えなさい。",
-          "answer": "材料は調理台近くの小さな紙に書かれ、一部の表示は海外から来た生徒が参加しても日本語だけでした。",
-          "evidence": "Ingredients were written on a small sheet near the cooking table, and some labels used only Japanese even when visiting students from abroad joined the event.",
-          "evidenceJp": "材料は調理台近くの小さな紙に書かれ、一部の表示は海外から来た生徒が参加しても日本語だけでした。",
+          "answer": "その家族は食べる前に確認したため体調を崩した人はいませんでしたが、キッチンの情報の出し方に弱点があると分かりました。",
+          "evidence": "No one had become ill because the family asked before eating, yet the incident showed that the kitchen's information system was weak.",
+          "evidenceJp": "その家族は食べる前に確認したため体調を崩した人はいませんでしたが、キッチンの情報の出し方に弱点があると分かりました。",
           "reason": "本文中の具体情報が根拠です。",
           "humanReview": "PENDING"
         },
@@ -7076,9 +7195,9 @@
         {
           "questionType": "DETAIL",
           "prompt": "判断を変えるきっかけになった情報を答えなさい。",
-          "answer": "材料は調理台近くの小さな紙に書かれ、一部の表示は海外から来た生徒が参加しても日本語だけでした。",
-          "evidence": "Ingredients were written on a small sheet near the cooking table, and some labels used only Japanese even when visiting students from abroad joined the event.",
-          "evidenceJp": "材料は調理台近くの小さな紙に書かれ、一部の表示は海外から来た生徒が参加しても日本語だけでした。",
+          "answer": "その家族は食べる前に確認したため体調を崩した人はいませんでしたが、キッチンの情報の出し方に弱点があると分かりました。",
+          "evidence": "No one had become ill because the family asked before eating, yet the incident showed that the kitchen's information system was weak.",
+          "evidenceJp": "その家族は食べる前に確認したため体調を崩した人はいませんでしたが、キッチンの情報の出し方に弱点があると分かりました。",
           "reason": "具体的な手がかりを本文から探します。",
           "humanReview": "PENDING"
         },
@@ -7348,11 +7467,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "Ryo was thirteen, his sister Hana was eight, and their mother hoped to choose activities that both children could enjoy without leaving Hana alone. The event guide listed a robot workshop on the third floor from 10:00 to 11:20 for ages ten to fifteen, a picture-book lab on the second floor from 11:00 to 11:45 for ages six to ten, and a family science show in the first-floor hall from 13:00 to 13:50 for all ages.",
-          "jp": "リョウは13歳、妹のハナは8歳で、母親はハナを一人にせず二人が楽しめる活動を選びたいと考えました。案内には、10時から11時20分まで3階で行う10〜15歳向けロボット教室、11時から11時45分まで2階で行う6〜10歳向け絵本ラボ、13時から13時50分まで1階ホールで行う全年齢向け家族科学ショーがありました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.9577,
-          "alignmentShape": "2:2"
+          "en": "Ryo was thirteen, his sister Hana was eight, and their mother hoped to choose activities that both children could enjoy without leaving Hana alone.",
+          "jp": "リョウは13歳、妹のハナは8歳で、母親はハナを一人にせず二人が楽しめる活動を選びたいと考えました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.3597,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "The event guide listed a robot workshop on the third floor from 10:00 to 11:20 for ages ten to fifteen, a picture-book lab on the second floor from 11:00 to 11:45 for ages six to ten, and a family science show in the first-floor hall from 13:00 to 13:50 for all ages.",
+          "jp": "案内には、10時から11時20分まで3階で行う10〜15歳向けロボット教室、11時から11時45分まで2階で行う6〜10歳向け絵本ラボ、13時から13時50分まで1階ホールで行う全年齢向け家族科学ショーがありました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.6094,
+          "alignmentShape": "1:1"
         },
         {
           "en": "At first, Ryo proposed the robot workshop for himself and the picture-book lab for Hana.",
@@ -7383,11 +7509,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "First, they could arrive early and take the elevator to the third floor before 9:30, but Hana would still need to move between floors later, and the picture-book lab did not begin until 11:00. Second, they considered attending only the picture-book lab, but it ended before the elevator reopened, so Hana could not reach the second floor safely.",
-          "jp": "9時30分前に着いてエレベーターで3階へ上がる案では、その後ハナが階を移動できず、絵本ラボの開始も11時です。絵本ラボだけに参加する案も考えましたが、ラボはエレベーターの再開前に終わるため、ハナは安全に2階へ行けません。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.8086,
-          "alignmentShape": "2:2"
+          "en": "First, they could arrive early and take the elevator to the third floor before 9:30, but Hana would still need to move between floors later, and the picture-book lab did not begin until 11:00.",
+          "jp": "9時30分前に着いてエレベーターで3階へ上がる案では、その後ハナが階を移動できず、絵本ラボの開始も11時です。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.4652,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "Second, they considered attending only the picture-book lab, but it ended before the elevator reopened, so Hana could not reach the second floor safely.",
+          "jp": "絵本ラボだけに参加する案も考えましたが、ラボはエレベーターの再開前に終わるため、ハナは安全に2階へ行けません。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.4384,
+          "alignmentShape": "1:1"
         },
         {
           "en": "Third, they could arrive after 12:30 and attend the family science show together on the first floor. That option did not use the age-specific workshops, but it met the access condition and kept the family together.",
@@ -7431,9 +7564,9 @@
         {
           "questionType": "DETAIL",
           "prompt": "判断の手がかりになった具体的な情報を一つ答えなさい。",
-          "answer": "リョウは最初、自分はロボット教室、ハナは絵本ラボへ行けばよいと考えました。",
-          "evidence": "At first, Ryo proposed the robot workshop for himself and the picture-book lab for Hana.",
-          "evidenceJp": "リョウは最初、自分はロボット教室、ハナは絵本ラボへ行けばよいと考えました。",
+          "answer": "案内には、10時から11時20分まで3階で行う10〜15歳向けロボット教室、11時から11時45分まで2階で行う6〜10歳向け絵本ラボ、13時から13時50分まで1階ホールで行う全年齢向け家族科学ショーがありました。",
+          "evidence": "The event guide listed a robot workshop on the third floor from 10:00 to 11:20 for ages ten to fifteen, a picture-book lab on the second floor from 11:00 to 11:45 for ages six to ten, and a family science show in the first-floor hall from 13:00 to 13:50 for all ages.",
+          "evidenceJp": "案内には、10時から11時20分まで3階で行う10〜15歳向けロボット教室、11時から11時45分まで2階で行う6〜10歳向け絵本ラボ、13時から13時50分まで1階ホールで行う全年齢向け家族科学ショーがありました。",
           "reason": "本文中の具体情報が根拠です。",
           "humanReview": "PENDING"
         },
@@ -7487,9 +7620,9 @@
         {
           "questionType": "DETAIL",
           "prompt": "判断を変えるきっかけになった情報を答えなさい。",
-          "answer": "リョウは最初、自分はロボット教室、ハナは絵本ラボへ行けばよいと考えました。",
-          "evidence": "At first, Ryo proposed the robot workshop for himself and the picture-book lab for Hana.",
-          "evidenceJp": "リョウは最初、自分はロボット教室、ハナは絵本ラボへ行けばよいと考えました。",
+          "answer": "案内には、10時から11時20分まで3階で行う10〜15歳向けロボット教室、11時から11時45分まで2階で行う6〜10歳向け絵本ラボ、13時から13時50分まで1階ホールで行う全年齢向け家族科学ショーがありました。",
+          "evidence": "The event guide listed a robot workshop on the third floor from 10:00 to 11:20 for ages ten to fifteen, a picture-book lab on the second floor from 11:00 to 11:45 for ages six to ten, and a family science show in the first-floor hall from 13:00 to 13:50 for all ages.",
+          "evidenceJp": "案内には、10時から11時20分まで3階で行う10〜15歳向けロボット教室、11時から11時45分まで2階で行う6〜10歳向け絵本ラボ、13時から13時50分まで1階ホールで行う全年齢向け家族科学ショーがありました。",
           "reason": "具体的な手がかりを本文から探します。",
           "humanReview": "PENDING"
         },
@@ -7994,17 +8127,17 @@
         },
         {
           "en": "Instead, the exhibit displayed both possible amounts and explained why the difference mattered. The museum baked two small test cakes and let visitors compare the results.",
-          "jp": "そこでサキは歴史記録を確定事項のように書き換えず、展示では二つの可能な分量を示し、その違いがなぜ重要か説明しました。博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。",
+          "jp": "そこでサキは歴史記録を確定事項のように書き換えず、展示では二つの可能な分量を示し、その違いがなぜ重要か説明しました。",
           "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 0.6693,
-          "alignmentShape": "2:2"
+          "alignmentCost": 0.4492,
+          "alignmentShape": "2:1"
         },
         {
           "en": "The project showed that conversion is not only a calculation problem; first, researchers must know what the original unit meant in its historical setting.",
-          "jp": "この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
-          "humanReview": "PENDING_CONFIRM",
-          "alignmentCost": 0.1939,
-          "alignmentShape": "1:1"
+          "jp": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
+          "humanReview": "PENDING_GROUP_BOUNDARY",
+          "alignmentCost": 0.5131,
+          "alignmentShape": "1:2"
         }
       ],
       "questions": [
@@ -8038,18 +8171,18 @@
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "問題を解決するために行った中心的な対応を答えなさい。",
-          "answer": "そこでサキは歴史記録を確定事項のように書き換えず、展示では二つの可能な分量を示し、その違いがなぜ重要か説明しました。博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。",
+          "answer": "そこでサキは歴史記録を確定事項のように書き換えず、展示では二つの可能な分量を示し、その違いがなぜ重要か説明しました。",
           "evidence": "Instead, the exhibit displayed both possible amounts and explained why the difference mattered. The museum baked two small test cakes and let visitors compare the results.",
-          "evidenceJp": "そこでサキは歴史記録を確定事項のように書き換えず、展示では二つの可能な分量を示し、その違いがなぜ重要か説明しました。博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。",
+          "evidenceJp": "そこでサキは歴史記録を確定事項のように書き換えず、展示では二つの可能な分量を示し、その違いがなぜ重要か説明しました。",
           "reason": "終盤の行動が根拠です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "GIST",
           "prompt": "この出来事から分かったこと・最後に確かめられたことを答えなさい。",
-          "answer": "この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
+          "answer": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
           "evidence": "The project showed that conversion is not only a calculation problem; first, researchers must know what the original unit meant in its historical setting.",
-          "evidenceJp": "この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
+          "evidenceJp": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
           "reason": "結末の記述が文章全体をまとめています。",
           "humanReview": "PENDING"
         }
@@ -8058,9 +8191,9 @@
         {
           "questionType": "INFERENCE",
           "prompt": "本文全体から、同じような場面で大切だと考えられることを答えなさい。",
-          "answer": "この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
+          "answer": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
           "evidence": "The project showed that conversion is not only a calculation problem; first, researchers must know what the original unit meant in its historical setting.",
-          "evidenceJp": "この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
+          "evidenceJp": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
           "reason": "本文の結末とそれまでの判断過程から読み取ります。",
           "humanReview": "PENDING"
         },
@@ -8085,18 +8218,18 @@
         {
           "questionType": "CONTENT_MATCH",
           "prompt": "最終的に行った変更・決定・対応を答えなさい。",
-          "answer": "そこでサキは歴史記録を確定事項のように書き換えず、展示では二つの可能な分量を示し、その違いがなぜ重要か説明しました。博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。",
+          "answer": "そこでサキは歴史記録を確定事項のように書き換えず、展示では二つの可能な分量を示し、その違いがなぜ重要か説明しました。",
           "evidence": "Instead, the exhibit displayed both possible amounts and explained why the difference mattered. The museum baked two small test cakes and let visitors compare the results.",
-          "evidenceJp": "そこでサキは歴史記録を確定事項のように書き換えず、展示では二つの可能な分量を示し、その違いがなぜ重要か説明しました。博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。",
+          "evidenceJp": "そこでサキは歴史記録を確定事項のように書き換えず、展示では二つの可能な分量を示し、その違いがなぜ重要か説明しました。",
           "reason": "終盤の決定と一致する内容です。",
           "humanReview": "PENDING"
         },
         {
           "questionType": "GIST",
           "prompt": "文章全体を最もよく表す学び・結論を答えなさい。",
-          "answer": "この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
+          "answer": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
           "evidence": "The project showed that conversion is not only a calculation problem; first, researchers must know what the original unit meant in its historical setting.",
-          "evidenceJp": "この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
+          "evidenceJp": "博物館は二種類の小さな試作ケーキを焼き、来館者に比べてもらいました。この調査は、換算が計算だけの問題ではなく、まず元の単位が当時どんな意味だったかを知る必要があると示しました。",
           "reason": "最後の文を中心に文章全体をまとめます。",
           "humanReview": "PENDING"
         }
@@ -8166,11 +8299,18 @@
           "alignmentShape": "2:1"
         },
         {
-          "en": "The center also used two preparation rooms: East held eight people and West held five. Ten volunteers were needed in the morning and eleven in the afternoon.",
-          "jp": "また両方の時間帯で働く人は45分の昼食休憩が必要です。準備室は東が8人、西が5人までで、必要人数は午前10人、午後11人でした。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 2.0064,
-          "alignmentShape": "2:2"
+          "en": "The center also used two preparation rooms: East held eight people and West held five.",
+          "jp": "また両方の時間帯で働く人は45分の昼食休憩が必要です。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.3505,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "Ten volunteers were needed in the morning and eleven in the afternoon.",
+          "jp": "準備室は東が8人、西が5人までで、必要人数は午前10人、午後11人でした。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.7769,
+          "alignmentShape": "1:1"
         },
         {
           "en": "Yuta's school planned to send six students by train.",
@@ -8284,9 +8424,9 @@
         {
           "questionType": "DETAIL",
           "prompt": "判断の手がかりになった具体的な情報を一つ答えなさい。",
-          "answer": "また両方の時間帯で働く人は45分の昼食休憩が必要です。準備室は東が8人、西が5人までで、必要人数は午前10人、午後11人でした。",
-          "evidence": "The center also used two preparation rooms: East held eight people and West held five. Ten volunteers were needed in the morning and eleven in the afternoon.",
-          "evidenceJp": "また両方の時間帯で働く人は45分の昼食休憩が必要です。準備室は東が8人、西が5人までで、必要人数は午前10人、午後11人でした。",
+          "answer": "また両方の時間帯で働く人は45分の昼食休憩が必要です。",
+          "evidence": "The center also used two preparation rooms: East held eight people and West held five.",
+          "evidenceJp": "また両方の時間帯で働く人は45分の昼食休憩が必要です。",
           "reason": "本文中の具体情報が根拠です。",
           "humanReview": "PENDING"
         },
@@ -8340,9 +8480,9 @@
         {
           "questionType": "DETAIL",
           "prompt": "判断を変えるきっかけになった情報を答えなさい。",
-          "answer": "また両方の時間帯で働く人は45分の昼食休憩が必要です。準備室は東が8人、西が5人までで、必要人数は午前10人、午後11人でした。",
-          "evidence": "The center also used two preparation rooms: East held eight people and West held five. Ten volunteers were needed in the morning and eleven in the afternoon.",
-          "evidenceJp": "また両方の時間帯で働く人は45分の昼食休憩が必要です。準備室は東が8人、西が5人までで、必要人数は午前10人、午後11人でした。",
+          "answer": "また両方の時間帯で働く人は45分の昼食休憩が必要です。",
+          "evidence": "The center also used two preparation rooms: East held eight people and West held five.",
+          "evidenceJp": "また両方の時間帯で働く人は45分の昼食休憩が必要です。",
           "reason": "具体的な手がかりを本文から探します。",
           "humanReview": "PENDING"
         },
@@ -8423,11 +8563,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "They found many water insects and reported that the pond had greater insect diversity than the second pond. A teacher asked whether both ponds had been sampled in the same kinds of places.",
-          "jp": "多くの水生昆虫が見つかり、二つ目の池より多様だと報告しました。先生は、二つの池で同じ種類の場所を調べたのか尋ねました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 2.0217,
-          "alignmentShape": "2:2"
+          "en": "They found many water insects and reported that the pond had greater insect diversity than the second pond.",
+          "jp": "多くの水生昆虫が見つかり、二つ目の池より多様だと報告しました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.6734,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "A teacher asked whether both ponds had been sampled in the same kinds of places.",
+          "jp": "先生は、二つの池で同じ種類の場所を調べたのか尋ねました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.4684,
+          "alignmentShape": "1:1"
         },
         {
           "en": "The second pond had been checked beside open water, low grass, and fallen branches.",
@@ -8444,11 +8591,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "On the next visit, members selected three habitat types in each pond and used the same net time at every point. The new survey still found many insects in the first pond, but several species appeared only near fallen branches in the second.",
-          "jp": "次の調査では両方の池で三種類の環境を選び、それぞれ同じ時間だけ網を使いました。最初の池ではやはり多くの昆虫が見つかりましたが、二つ目の池では落ちた枝の近くだけに現れる種類もありました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.7974,
-          "alignmentShape": "2:2"
+          "en": "On the next visit, members selected three habitat types in each pond and used the same net time at every point.",
+          "jp": "次の調査では両方の池で三種類の環境を選び、それぞれ同じ時間だけ網を使いました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.4298,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "The new survey still found many insects in the first pond, but several species appeared only near fallen branches in the second.",
+          "jp": "最初の池ではやはり多くの昆虫が見つかりましたが、二つ目の池では落ちた枝の近くだけに現れる種類もありました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.4258,
+          "alignmentShape": "1:1"
         },
         {
           "en": "The club changed its report from a simple ranking to a description of how habitat affected what they found.",
@@ -8478,9 +8632,9 @@
         {
           "questionType": "DETAIL",
           "prompt": "判断の手がかりになった具体的な情報を一つ答えなさい。",
-          "answer": "多くの水生昆虫が見つかり、二つ目の池より多様だと報告しました。先生は、二つの池で同じ種類の場所を調べたのか尋ねました。",
-          "evidence": "They found many water insects and reported that the pond had greater insect diversity than the second pond. A teacher asked whether both ponds had been sampled in the same kinds of places.",
-          "evidenceJp": "多くの水生昆虫が見つかり、二つ目の池より多様だと報告しました。先生は、二つの池で同じ種類の場所を調べたのか尋ねました。",
+          "answer": "多くの水生昆虫が見つかり、二つ目の池より多様だと報告しました。",
+          "evidence": "They found many water insects and reported that the pond had greater insect diversity than the second pond.",
+          "evidenceJp": "多くの水生昆虫が見つかり、二つ目の池より多様だと報告しました。",
           "reason": "本文中の具体情報が根拠です。",
           "humanReview": "PENDING"
         },
@@ -8534,9 +8688,9 @@
         {
           "questionType": "DETAIL",
           "prompt": "判断を変えるきっかけになった情報を答えなさい。",
-          "answer": "多くの水生昆虫が見つかり、二つ目の池より多様だと報告しました。先生は、二つの池で同じ種類の場所を調べたのか尋ねました。",
-          "evidence": "They found many water insects and reported that the pond had greater insect diversity than the second pond. A teacher asked whether both ponds had been sampled in the same kinds of places.",
-          "evidenceJp": "多くの水生昆虫が見つかり、二つ目の池より多様だと報告しました。先生は、二つの池で同じ種類の場所を調べたのか尋ねました。",
+          "answer": "多くの水生昆虫が見つかり、二つ目の池より多様だと報告しました。",
+          "evidence": "They found many water insects and reported that the pond had greater insect diversity than the second pond.",
+          "evidenceJp": "多くの水生昆虫が見つかり、二つ目の池より多様だと報告しました。",
           "reason": "具体的な手がかりを本文から探します。",
           "humanReview": "PENDING"
         },
@@ -8625,11 +8779,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "Rather than choosing one side immediately, the center studied six months of records from a similar program in another city. Most late returns involved low-cost hand tools, while the largest repair costs came from two electric tools used without instruction.",
-          "jp": "そこで二者択一にせず、別の市の類似制度について6か月分の記録を調べました。返却遅れの多くは安い手工具で起きていましたが、大きな修理費は、説明を受けず使われた電動工具二件から生じていました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.7996,
-          "alignmentShape": "2:2"
+          "en": "Rather than choosing one side immediately, the center studied six months of records from a similar program in another city.",
+          "jp": "そこで二者択一にせず、別の市の類似制度について6か月分の記録を調べました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.5374,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "Most late returns involved low-cost hand tools, while the largest repair costs came from two electric tools used without instruction.",
+          "jp": "返却遅れの多くは安い手工具で起きていましたが、大きな修理費は、説明を受けず使われた電動工具二件から生じていました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.5117,
+          "alignmentShape": "1:1"
         },
         {
           "en": "The group designed a two-month pilot.",
@@ -8710,9 +8871,9 @@
         {
           "questionType": "REASON",
           "prompt": "最初の考えをそのまま実行せず、確認や見直しをした理由を答えなさい。",
-          "answer": "そこで2か月の試行を行いました。",
-          "evidence": "The group designed a two-month pilot.",
-          "evidenceJp": "そこで2か月の試行を行いました。",
+          "answer": "返却遅れの多くは安い手工具で起きていましたが、大きな修理費は、説明を受けず使われた電動工具二件から生じていました。",
+          "evidence": "Most late returns involved low-cost hand tools, while the largest repair costs came from two electric tools used without instruction.",
+          "evidenceJp": "返却遅れの多くは安い手工具で起きていましたが、大きな修理費は、説明を受けず使われた電動工具二件から生じていました。",
           "reason": "判断が変わる付近の記述を根拠にします。",
           "humanReview": "PENDING"
         },
@@ -8748,9 +8909,9 @@
         {
           "questionType": "SUMMARY_FILL",
           "prompt": "確認後、話の流れを変えた中心的な出来事を答えなさい。",
-          "answer": "そこで2か月の試行を行いました。",
-          "evidence": "The group designed a two-month pilot.",
-          "evidenceJp": "そこで2か月の試行を行いました。",
+          "answer": "返却遅れの多くは安い手工具で起きていましたが、大きな修理費は、説明を受けず使われた電動工具二件から生じていました。",
+          "evidence": "Most late returns involved low-cost hand tools, while the largest repair costs came from two electric tools used without instruction.",
+          "evidenceJp": "返却遅れの多くは安い手工具で起きていましたが、大きな修理費は、説明を受けず使われた電動工具二件から生じていました。",
           "reason": "中盤の転換点が根拠です。",
           "humanReview": "PENDING"
         },
@@ -8840,11 +9001,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "Sana compared the survey map with the city's public address map and discovered that three large apartment buildings had not been drawn on the students' older map. Together, those buildings contained more households than two of the small blocks they had already visited.",
-          "jp": "サナが市の公開住所地図と比べると、生徒が使っていた古い地図には大きな集合住宅が三棟載っていないと分かりました。その三棟の世帯数を合わせると、すでに調査した小さな二区画より多くなります。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.93,
-          "alignmentShape": "2:2"
+          "en": "Sana compared the survey map with the city's public address map and discovered that three large apartment buildings had not been drawn on the students' older map.",
+          "jp": "サナが市の公開住所地図と比べると、生徒が使っていた古い地図には大きな集合住宅が三棟載っていないと分かりました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.4847,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "Together, those buildings contained more households than two of the small blocks they had already visited.",
+          "jp": "その三棟の世帯数を合わせると、すでに調査した小さな二区画より多くなります。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.4979,
+          "alignmentShape": "1:1"
         },
         {
           "en": "The team added the buildings, asked the same questions there, and reported the two rounds separately before combining them.",
@@ -8897,9 +9065,9 @@
         {
           "questionType": "REASON",
           "prompt": "最初の考えをそのまま実行せず、確認や見直しをした理由を答えなさい。",
-          "answer": "サナが市の公開住所地図と比べると、生徒が使っていた古い地図には大きな集合住宅が三棟載っていないと分かりました。その三棟の世帯数を合わせると、すでに調査した小さな二区画より多くなります。",
-          "evidence": "Sana compared the survey map with the city's public address map and discovered that three large apartment buildings had not been drawn on the students' older map. Together, those buildings contained more households than two of the small blocks they had already visited.",
-          "evidenceJp": "サナが市の公開住所地図と比べると、生徒が使っていた古い地図には大きな集合住宅が三棟載っていないと分かりました。その三棟の世帯数を合わせると、すでに調査した小さな二区画より多くなります。",
+          "answer": "サナが市の公開住所地図と比べると、生徒が使っていた古い地図には大きな集合住宅が三棟載っていないと分かりました。",
+          "evidence": "Sana compared the survey map with the city's public address map and discovered that three large apartment buildings had not been drawn on the students' older map.",
+          "evidenceJp": "サナが市の公開住所地図と比べると、生徒が使っていた古い地図には大きな集合住宅が三棟載っていないと分かりました。",
           "reason": "判断が変わる付近の記述を根拠にします。",
           "humanReview": "PENDING"
         },
@@ -8935,9 +9103,9 @@
         {
           "questionType": "SUMMARY_FILL",
           "prompt": "確認後、話の流れを変えた中心的な出来事を答えなさい。",
-          "answer": "サナが市の公開住所地図と比べると、生徒が使っていた古い地図には大きな集合住宅が三棟載っていないと分かりました。その三棟の世帯数を合わせると、すでに調査した小さな二区画より多くなります。",
-          "evidence": "Sana compared the survey map with the city's public address map and discovered that three large apartment buildings had not been drawn on the students' older map. Together, those buildings contained more households than two of the small blocks they had already visited.",
-          "evidenceJp": "サナが市の公開住所地図と比べると、生徒が使っていた古い地図には大きな集合住宅が三棟載っていないと分かりました。その三棟の世帯数を合わせると、すでに調査した小さな二区画より多くなります。",
+          "answer": "サナが市の公開住所地図と比べると、生徒が使っていた古い地図には大きな集合住宅が三棟載っていないと分かりました。",
+          "evidence": "Sana compared the survey map with the city's public address map and discovered that three large apartment buildings had not been drawn on the students' older map.",
+          "evidenceJp": "サナが市の公開住所地図と比べると、生徒が使っていた古い地図には大きな集合住宅が三棟載っていないと分かりました。",
           "reason": "中盤の転換点が根拠です。",
           "humanReview": "PENDING"
         },
@@ -9051,11 +9219,18 @@
           "alignmentShape": "1:1"
         },
         {
-          "en": "A weather forecast issued that morning changed the situation: snow was expected to become heavy after 15:00, and roads might slow after 16:00. The center had three return shuttles to the station at 15:10, 16:10, and 17:10.",
-          "jp": "しかし当日朝の予報で、15時以降は雪が強くなり、16時以降は道路が遅れる可能性があると分かりました。駅への帰りのシャトルは15時10分、16時10分、17時10分です。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 1.832,
-          "alignmentShape": "2:2"
+          "en": "A weather forecast issued that morning changed the situation: snow was expected to become heavy after 15:00, and roads might slow after 16:00.",
+          "jp": "しかし当日朝の予報で、15時以降は雪が強くなり、16時以降は道路が遅れる可能性があると分かりました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.3947,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "The center had three return shuttles to the station at 15:10, 16:10, and 17:10.",
+          "jp": "駅への帰りのシャトルは15時10分、16時10分、17時10分です。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 1.5397,
+          "alignmentShape": "1:1"
         },
         {
           "en": "Hall A was heated and held eighty people, Room B was heated and held thirty-five, and the outdoor stage held 120 but had no heating. The staff first considered moving all activities into Hall A.",
@@ -9065,11 +9240,18 @@
           "alignmentShape": "2:1"
         },
         {
-          "en": "That would solve the cold-weather problem, but ninety-five registered participants could not all enter a room with a capacity of eighty. A student volunteer, Mai, proposed using the two heated rooms as parallel tracks instead.",
-          "jp": "スタッフはまず全活動をAホールへ移そうとしましたが、95人は定員80人を超えます。そこで生徒ボランティアのマイは、暖房のある二室を同時に別コースとして使う案を出しました。",
-          "humanReview": "PENDING_GROUP_BOUNDARY",
-          "alignmentCost": 0.4642,
-          "alignmentShape": "2:2"
+          "en": "That would solve the cold-weather problem, but ninety-five registered participants could not all enter a room with a capacity of eighty.",
+          "jp": "スタッフはまず全活動をAホールへ移そうとしましたが、95人は定員80人を超えます。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.2048,
+          "alignmentShape": "1:1"
+        },
+        {
+          "en": "A student volunteer, Mai, proposed using the two heated rooms as parallel tracks instead.",
+          "jp": "そこで生徒ボランティアのマイは、暖房のある二室を同時に別コースとして使う案を出しました。",
+          "humanReview": "PENDING_CONFIRM",
+          "alignmentCost": 0.2973,
+          "alignmentShape": "1:1"
         },
         {
           "en": "From 13:30 to 15:00, the thirty-five-person craft group would stay in Room B for a short read-aloud and the planned craft activity.",
@@ -9164,9 +9346,9 @@
         {
           "questionType": "REASON",
           "prompt": "最初の考えをそのまま実行せず、確認や見直しをした理由を答えなさい。",
-          "answer": "13時30分から15時まで、35人の工作グループはB室で短い読み聞かせと予定していた工作を行います。",
-          "evidence": "From 13:30 to 15:00, the thirty-five-person craft group would stay in Room B for a short read-aloud and the planned craft activity.",
-          "evidenceJp": "13時30分から15時まで、35人の工作グループはB室で短い読み聞かせと予定していた工作を行います。",
+          "answer": "そこで生徒ボランティアのマイは、暖房のある二室を同時に別コースとして使う案を出しました。",
+          "evidence": "A student volunteer, Mai, proposed using the two heated rooms as parallel tracks instead.",
+          "evidenceJp": "そこで生徒ボランティアのマイは、暖房のある二室を同時に別コースとして使う案を出しました。",
           "reason": "判断が変わる付近の記述を根拠にします。",
           "humanReview": "PENDING"
         },
@@ -9202,9 +9384,9 @@
         {
           "questionType": "SUMMARY_FILL",
           "prompt": "確認後、話の流れを変えた中心的な出来事を答えなさい。",
-          "answer": "13時30分から15時まで、35人の工作グループはB室で短い読み聞かせと予定していた工作を行います。",
-          "evidence": "From 13:30 to 15:00, the thirty-five-person craft group would stay in Room B for a short read-aloud and the planned craft activity.",
-          "evidenceJp": "13時30分から15時まで、35人の工作グループはB室で短い読み聞かせと予定していた工作を行います。",
+          "answer": "そこで生徒ボランティアのマイは、暖房のある二室を同時に別コースとして使う案を出しました。",
+          "evidence": "A student volunteer, Mai, proposed using the two heated rooms as parallel tracks instead.",
+          "evidenceJp": "そこで生徒ボランティアのマイは、暖房のある二室を同時に別コースとして使う案を出しました。",
           "reason": "中盤の転換点が根拠です。",
           "humanReview": "PENDING"
         },
@@ -9263,8 +9445,8 @@
     }
   ],
   "slashScaffoldPassages": 50,
-  "slashRowsTotal": 415,
-  "slashGroupedBoundaryPassages": 33,
+  "slashRowsTotal": 441,
+  "slashGroupedBoundaryPassages": 22,
   "slashHumanReviewed": 0,
   "questionScaffoldCount": 500,
   "humanQuestionReviewed": 0,
@@ -9305,11 +9487,9 @@
       "id": "V11-B12-G1-005",
       "enUnits": 7,
       "jpUnits": 7,
-      "rows": 6,
-      "groupedRows": 1,
-      "shapes": [
-        "2:2"
-      ]
+      "rows": 7,
+      "groupedRows": 0,
+      "shapes": []
     },
     {
       "id": "V11-B12-G1-006",
@@ -9357,22 +9537,17 @@
       "id": "V11-B12-G1-011",
       "enUnits": 6,
       "jpUnits": 6,
-      "rows": 5,
-      "groupedRows": 2,
-      "shapes": [
-        "2:1",
-        "1:2"
-      ]
+      "rows": 6,
+      "groupedRows": 0,
+      "shapes": []
     },
     {
       "id": "V11-B12-G1-012",
       "enUnits": 7,
       "jpUnits": 7,
-      "rows": 6,
-      "groupedRows": 1,
-      "shapes": [
-        "2:2"
-      ]
+      "rows": 7,
+      "groupedRows": 0,
+      "shapes": []
     },
     {
       "id": "V11-B12-G1-013",
@@ -9386,11 +9561,10 @@
       "id": "V11-B12-G1-014",
       "enUnits": 8,
       "jpUnits": 7,
-      "rows": 6,
-      "groupedRows": 2,
+      "rows": 7,
+      "groupedRows": 1,
       "shapes": [
-        "2:1",
-        "2:2"
+        "2:1"
       ]
     },
     {
@@ -9407,11 +9581,9 @@
       "id": "V11-B12-G1-016",
       "enUnits": 6,
       "jpUnits": 6,
-      "rows": 5,
-      "groupedRows": 1,
-      "shapes": [
-        "2:2"
-      ]
+      "rows": 6,
+      "groupedRows": 0,
+      "shapes": []
     },
     {
       "id": "V11-B12-G1-017",
@@ -9425,22 +9597,19 @@
       "id": "V11-B12-G2-001",
       "enUnits": 8,
       "jpUnits": 7,
-      "rows": 6,
-      "groupedRows": 2,
+      "rows": 7,
+      "groupedRows": 1,
       "shapes": [
-        "2:1",
-        "2:2"
+        "2:1"
       ]
     },
     {
       "id": "V11-B12-G2-002",
       "enUnits": 8,
       "jpUnits": 8,
-      "rows": 7,
-      "groupedRows": 1,
-      "shapes": [
-        "2:2"
-      ]
+      "rows": 8,
+      "groupedRows": 0,
+      "shapes": []
     },
     {
       "id": "V11-B12-G2-003",
@@ -9536,22 +9705,17 @@
       "id": "V11-B12-G2-013",
       "enUnits": 8,
       "jpUnits": 8,
-      "rows": 7,
-      "groupedRows": 1,
-      "shapes": [
-        "2:2"
-      ]
+      "rows": 8,
+      "groupedRows": 0,
+      "shapes": []
     },
     {
       "id": "V11-B12-G2-014",
       "enUnits": 9,
       "jpUnits": 9,
-      "rows": 7,
-      "groupedRows": 2,
-      "shapes": [
-        "2:2",
-        "2:2"
-      ]
+      "rows": 9,
+      "groupedRows": 0,
+      "shapes": []
     },
     {
       "id": "V11-B12-G2-015",
@@ -9575,10 +9739,9 @@
       "id": "V11-B12-G2-017",
       "enUnits": 8,
       "jpUnits": 9,
-      "rows": 7,
-      "groupedRows": 2,
+      "rows": 8,
+      "groupedRows": 1,
       "shapes": [
-        "2:2",
         "1:2"
       ]
     },
@@ -9596,11 +9759,9 @@
       "id": "V11-B12-G3-002",
       "enUnits": 14,
       "jpUnits": 13,
-      "rows": 11,
-      "groupedRows": 3,
+      "rows": 13,
+      "groupedRows": 1,
       "shapes": [
-        "2:2",
-        "2:2",
         "2:1"
       ]
     },
@@ -9608,11 +9769,9 @@
       "id": "V11-B12-G3-003",
       "enUnits": 10,
       "jpUnits": 10,
-      "rows": 9,
-      "groupedRows": 1,
-      "shapes": [
-        "2:2"
-      ]
+      "rows": 10,
+      "groupedRows": 0,
+      "shapes": []
     },
     {
       "id": "V11-B12-G3-004",
@@ -9629,10 +9788,9 @@
       "id": "V11-B12-G3-005",
       "enUnits": 11,
       "jpUnits": 9,
-      "rows": 8,
-      "groupedRows": 3,
+      "rows": 9,
+      "groupedRows": 2,
       "shapes": [
-        "2:2",
         "2:1",
         "2:1"
       ]
@@ -9641,12 +9799,9 @@
       "id": "V11-B12-G3-006",
       "enUnits": 13,
       "jpUnits": 13,
-      "rows": 11,
-      "groupedRows": 2,
-      "shapes": [
-        "2:2",
-        "2:2"
-      ]
+      "rows": 13,
+      "groupedRows": 0,
+      "shapes": []
     },
     {
       "id": "V11-B12-G3-007",
@@ -9662,12 +9817,10 @@
       "id": "V11-B12-G3-008",
       "enUnits": 17,
       "jpUnits": 13,
-      "rows": 11,
-      "groupedRows": 6,
+      "rows": 13,
+      "groupedRows": 4,
       "shapes": [
-        "2:2",
         "2:1",
-        "2:2",
         "2:1",
         "2:1",
         "2:1"
@@ -9698,21 +9851,21 @@
       "enUnits": 10,
       "jpUnits": 9,
       "rows": 8,
-      "groupedRows": 2,
+      "groupedRows": 3,
       "shapes": [
         "2:1",
-        "2:2"
+        "2:1",
+        "1:2"
       ]
     },
     {
       "id": "V11-B12-G3-012",
       "enUnits": 23,
       "jpUnits": 18,
-      "rows": 17,
-      "groupedRows": 6,
+      "rows": 18,
+      "groupedRows": 5,
       "shapes": [
         "2:1",
-        "2:2",
         "2:1",
         "2:1",
         "2:1",
@@ -9723,21 +9876,17 @@
       "id": "V11-B12-G3-013",
       "enUnits": 10,
       "jpUnits": 10,
-      "rows": 8,
-      "groupedRows": 2,
-      "shapes": [
-        "2:2",
-        "2:2"
-      ]
+      "rows": 10,
+      "groupedRows": 0,
+      "shapes": []
     },
     {
       "id": "V11-B12-G3-014",
       "enUnits": 16,
       "jpUnits": 15,
-      "rows": 14,
-      "groupedRows": 2,
+      "rows": 15,
+      "groupedRows": 1,
       "shapes": [
-        "2:2",
         "2:1"
       ]
     },
@@ -9745,22 +9894,18 @@
       "id": "V11-B12-G3-015",
       "enUnits": 9,
       "jpUnits": 9,
-      "rows": 8,
-      "groupedRows": 1,
-      "shapes": [
-        "2:2"
-      ]
+      "rows": 9,
+      "groupedRows": 0,
+      "shapes": []
     },
     {
       "id": "V11-B12-G3-016",
       "enUnits": 20,
       "jpUnits": 19,
-      "rows": 17,
-      "groupedRows": 3,
+      "rows": 19,
+      "groupedRows": 1,
       "shapes": [
-        "2:2",
-        "2:1",
-        "2:2"
+        "2:1"
       ]
     }
   ]
