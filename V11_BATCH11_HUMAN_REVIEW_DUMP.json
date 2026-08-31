@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T01:03:52.060Z",
+  "generatedAt": "2026-08-31T01:05:30.098Z",
   "count": 50,
   "registered": 0,
   "passages": [
@@ -189,6 +189,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": {
         "reviewed": true,
         "passageMeaning": true,
@@ -197,6 +198,7 @@
         "reviewedAt": "2026-08-31"
       },
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_HUMAN_REVIEW_R2",
       "questionHumanReview": "REVIEWED_R2",
       "registered": false
@@ -395,6 +397,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": {
         "reviewed": true,
         "passageMeaning": true,
@@ -403,6 +406,7 @@
         "reviewedAt": "2026-08-31"
       },
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_HUMAN_REVIEW_R2",
       "questionHumanReview": "REVIEWED_R2",
       "registered": false
@@ -597,6 +601,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": {
         "reviewed": true,
@@ -605,6 +610,7 @@
         "questions": 10,
         "reviewedAt": "2026-08-31"
       },
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_HUMAN_REVIEW_R3",
       "questionHumanReview": "REVIEWED_R3",
       "registered": false
@@ -813,6 +819,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": {
         "reviewed": true,
@@ -821,6 +828,7 @@
         "questions": 10,
         "reviewedAt": "2026-08-31"
       },
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_HUMAN_REVIEW_R3",
       "questionHumanReview": "REVIEWED_R3",
       "registered": false
@@ -892,95 +900,135 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「A Lunch Tray Count after the Class Trip Changed」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "給食係は一年C組の三十二人分のトレーを準備しました。",
-          "evidence": "The lunch staff prepared trays for thirty-two students in Class 1-C.",
-          "evidenceJp": "給食係は一年C組の三十二人分のトレーを準備しました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "校外学習に出かけた八人を除くと、教室には何人残っていましたか。",
+          "answer": "二十四人。",
+          "evidence": [
+            "That morning, eight students left school for a half-day class trip before lunch.",
+            "Yuna counted the class and found twenty-four students in the classroom."
+          ],
+          "evidenceJp": [
+            "その朝、八人の生徒が昼食前から半日の校外学習へ出かけました。",
+            "優奈がクラスの人数を数えると、教室には二十四人いました。"
+          ],
+          "reason": "三十二人のうち八人が校外学習へ行き、実際の教室人数も二十四人と確認されています。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         },
         {
           "questionType": "REASON",
-          "prompt": "「A Lunch Tray Count after the Class Trip Changed」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "余った給食を捨てたり、誰が必要かを推測したりしませんでした。",
-          "evidence": "She did not throw away the extra lunches or guess who needed them.",
-          "evidenceJp": "余った給食を捨てたり、誰が必要かを推測したりしませんでした。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "優奈が古い給食表の三十二人分をそのまま使わなかったのはなぜですか。",
+          "answer": "実際に教室にいる人数を数えると二十四人だったから。",
+          "evidence": [
+            "The old lunch list still showed thirty-two students.",
+            "Yuna counted the class and found twenty-four students in the classroom."
+          ],
+          "evidenceJp": [
+            "古い給食表はまだ三十二人のままでした。",
+            "優奈がクラスの人数を数えると、教室には二十四人いました。"
+          ],
+          "reason": "古い表と当日の実人数が一致していないことが判断理由です。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「A Lunch Tray Count after the Class Trip Changed」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "古い給食表はまだ三十二人のままでした。",
-          "evidence": "The old lunch list still showed thirty-two students.",
-          "evidenceJp": "古い給食表はまだ三十二人のままでした。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "優奈は給食を配る前に、先生へ何を示しましたか。",
+          "answer": "新しく数えた二十四人というクラス人数。",
+          "evidence": "She told the teacher before lunch service and showed the new class count.",
+          "evidenceJp": "給食を配る前に先生へ伝え、新しい人数を示しました。",
+          "reason": "先生へ報告した具体的内容を答えます。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「A Lunch Tray Count after the Class Trip Changed」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "給食を配る前に先生へ伝え、新しい人数を示しました。",
-          "evidence": "She told the teacher before lunch service and showed the new class count.",
-          "evidenceJp": "給食を配る前に先生へ伝え、新しい人数を示しました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "先生が給食室へ連絡した結果、トレーはどうなりましたか。",
+          "answer": "二十四人分だけが送られ、余分なトレーは食べ物を載せず別のクラスに使えた。",
+          "evidence": [
+            "The teacher called the lunch room, which had not yet placed food on the extra trays.",
+            "The lunch room sent only twenty-four trays, and the extra trays stayed clean for another class."
+          ],
+          "evidenceJp": [
+            "先生が給食室へ連絡すると、余分なトレーにはまだ食べ物が載せられていませんでした。",
+            "給食室は二十四人分だけを送り、余分なトレーはきれいなまま別のクラスに使えました。"
+          ],
+          "reason": "連絡時点では余分なトレーに食べ物がなく、その後必要数だけ送られました。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「A Lunch Tray Count after the Class Trip Changed」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "その朝、八人の生徒が昼食前から半日の校外学習へ出かけました。",
-          "evidence": "That morning, eight students left school for a half-day class trip before lunch.",
-          "evidenceJp": "その朝、八人の生徒が昼食前から半日の校外学習へ出かけました。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "「古い表は三十二人のままだったが、優奈が数えると【　】。」の【　】に入る内容を答えなさい。",
+          "answer": "教室には二十四人しかいなかった。",
+          "evidence": "Yuna counted the class and found twenty-four students in the classroom.",
+          "evidenceJp": "優奈がクラスの人数を数えると、教室には二十四人いました。",
+          "reason": "予定数と実人数のずれが話の中心となる問題です。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「A Lunch Tray Count after the Class Trip Changed」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "先生が給食室へ連絡すると、余分なトレーにはまだ食べ物が載せられていませんでした。",
-          "evidence": "The teacher called the lunch room, which had not yet placed food on the extra trays.",
-          "evidenceJp": "先生が給食室へ連絡すると、余分なトレーにはまだ食べ物が載せられていませんでした。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "給食数を三十二人分から減らす必要があると判断できる二つの事実は何ですか。",
+          "answer": "八人が校外学習へ出かけ、教室に二十四人しか残っていなかったこと。",
+          "evidence": [
+            "That morning, eight students left school for a half-day class trip before lunch.",
+            "Yuna counted the class and found twenty-four students in the classroom."
+          ],
+          "evidenceJp": [
+            "その朝、八人の生徒が昼食前から半日の校外学習へ出かけました。",
+            "優奈がクラスの人数を数えると、教室には二十四人いました。"
+          ],
+          "reason": "欠席理由と実人数の両方が必要数の変更を示します。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「A Lunch Tray Count after the Class Trip Changed」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "給食室は二十四人分だけを送り、余分なトレーはきれいなまま別のクラスに使えました。",
+          "prompt": "「給食室は【　】人分だけを送り、余分なトレーは別のクラスに使えた。」の【　】を答えなさい。",
+          "answer": "二十四。",
           "evidence": "The lunch room sent only twenty-four trays, and the extra trays stayed clean for another class.",
           "evidenceJp": "給食室は二十四人分だけを送り、余分なトレーはきれいなまま別のクラスに使えました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "変更後の実人数と送られたトレー数が一致しています。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「A Lunch Tray Count after the Class Trip Changed」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "優奈がクラスの人数を数えると、教室には二十四人いました。",
-          "evidence": "Yuna counted the class and found twenty-four students in the classroom.",
-          "evidenceJp": "優奈がクラスの人数を数えると、教室には二十四人いました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "先生が給食室へ電話した時点で、余分なトレーはどのような状態でしたか。",
+          "answer": "まだ食べ物が載せられていなかった。",
+          "evidence": "The teacher called the lunch room, which had not yet placed food on the extra trays.",
+          "evidenceJp": "先生が給食室へ連絡すると、余分なトレーにはまだ食べ物が載せられていませんでした。",
+          "reason": "食べ物を無駄にせず調整できた重要な条件です。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「A Lunch Tray Count after the Class Trip Changed」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "優奈は、人数が変われば必要数も更新すると学びました。",
-          "evidence": "Yuna learned to update quantities when the number of people changes.",
-          "evidenceJp": "優奈は、人数が変われば必要数も更新すると学びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "優奈が配膳前に人数の違いを伝えたことには、どんな良さがありましたか。",
+          "answer": "不要な給食を準備して無駄にする前に、必要な数へ変更できたこと。",
+          "evidence": [
+            "She told the teacher before lunch service and showed the new class count.",
+            "The teacher called the lunch room, which had not yet placed food on the extra trays.",
+            "The lunch room sent only twenty-four trays, and the extra trays stayed clean for another class."
+          ],
+          "evidenceJp": [
+            "給食を配る前に先生へ伝え、新しい人数を示しました。",
+            "先生が給食室へ連絡すると、余分なトレーにはまだ食べ物が載せられていませんでした。",
+            "給食室は二十四人分だけを送り、余分なトレーはきれいなまま別のクラスに使えました。"
+          ],
+          "reason": "連絡の時点とその後の結果を結び付けて推論できます。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         },
         {
           "questionType": "GIST",
-          "prompt": "「A Lunch Tray Count after the Class Trip Changed」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "優奈は、人数が変われば必要数も更新すると学びました。",
-          "evidence": "Yuna learned to update quantities when the number of people changes.",
-          "evidenceJp": "優奈は、人数が変われば必要数も更新すると学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "この話から、人数が変わる予定を扱うときに大切だと分かることは何ですか。",
+          "answer": "古い表だけに頼らず、現在の人数を確認して必要な数量を更新すること。",
+          "evidence": [
+            "The old lunch list still showed thirty-two students.",
+            "Yuna counted the class and found twenty-four students in the classroom.",
+            "Yuna learned to update quantities when the number of people changes."
+          ],
+          "evidenceJp": [
+            "古い給食表はまだ三十二人のままでした。",
+            "優奈がクラスの人数を数えると、教室には二十四人いました。",
+            "優奈は、人数が変われば必要数も更新すると学びました。"
+          ],
+          "reason": "本文全体で古い予定数を当日の実人数に合わせ直しています。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         }
       ],
       "authorReview": {
@@ -991,10 +1039,18 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
-      "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
+      "humanReviewR4": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R4_HUMAN_REVIEW_R4",
+      "questionHumanReview": "REVIEWED_R4",
       "registered": false
     },
     {
@@ -1004,7 +1060,7 @@
       "grade": "1",
       "section": "Unit 10-2",
       "level": "STANDARD",
-      "wordCount": 121,
+      "wordCount": 125,
       "targetWordBand": [
         90,
         125
@@ -1012,7 +1068,7 @@
       "sentences": [
         "Haruto left his project notebook open while carrying books.",
         "A strong wind came through the window and blew three loose pages onto the floor.",
-        "The pages had no numbers, but each ended by leading to the next step.",
+        "The pages had no numbers, but the ending of each page gave a clue about what came next.",
         "One page described planting seeds, another showed the first leaves, and a third recorded flowers.",
         "Haruto did not put them back in the order in which he picked them up.",
         "He read the dates and the changes in the plant from each page.",
@@ -1020,7 +1076,7 @@
         "He clipped the pages together and added page numbers before closing the window.",
         "Haruto learned to restore lost page order from dates and events."
       ],
-      "fullTranslation": "陽斗は本を運ぶ間、調べ学習ノートを開いたままにしました。強い風が窓から入り、三枚のページが床へ飛びました。ページ番号はありませんでしたが、各ページ末は次の段階につながっていました。一枚は種まき、別の一枚は最初の葉、三枚目は花について書かれていました。陽斗は拾った順番のまま戻しませんでした。各ページの日付と植物の変化を読みました。種のページが最初で、その後に葉、さらに後に花の記録が続きました。ページを留め、ページ番号を付けてから窓を閉めました。陽斗は、日付と出来事から失われたページ順を戻せると学びました。",
+      "fullTranslation": "陽斗は本を運ぶ間、調べ学習ノートを開いたままにしました。強い風が窓から入り、三枚のページが床へ飛びました。ページ番号はありませんでしたが、各ページの終わりには次に何が続くかを示す手がかりがありました。一枚は種まき、別の一枚は最初の葉、三枚目は花について書かれていました。陽斗は拾った順番のまま戻しませんでした。各ページの日付と植物の変化を読みました。種のページが最初で、その後に葉、さらに後に花の記録が続きました。ページを留め、ページ番号を付けてから窓を閉めました。陽斗は、日付と出来事から失われたページ順を戻せると学びました。",
       "slashRows": [
         {
           "en": "Haruto left his project notebook open while carrying books.",
@@ -1031,8 +1087,8 @@
           "jp": "強い風が窓から入り、三枚のページが床へ飛びました。"
         },
         {
-          "en": "The pages had no numbers, but each ended by leading to the next step.",
-          "jp": "ページ番号はありませんでしたが、各ページ末は次の段階につながっていました。"
+          "en": "The pages had no numbers, but the ending of each page gave a clue about what came next.",
+          "jp": "ページ番号はありませんでしたが、各ページの終わりには次に何が続くかを示す手がかりがありました。"
         },
         {
           "en": "One page described planting seeds, another showed the first leaves, and a third recorded flowers.",
@@ -1064,95 +1120,139 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「The Notebook Pages Mixed by an Open Window」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "陽斗は本を運ぶ間、調べ学習ノートを開いたままにしました。",
-          "evidence": "Haruto left his project notebook open while carrying books.",
-          "evidenceJp": "陽斗は本を運ぶ間、調べ学習ノートを開いたままにしました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "風で床へ飛んだページは何枚でしたか。",
+          "answer": "三枚。",
+          "evidence": "A strong wind came through the window and blew three loose pages onto the floor.",
+          "evidenceJp": "強い風が窓から入り、三枚のページが床へ飛びました。",
+          "reason": "修正後本文では三枚と明記されています。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         },
         {
           "questionType": "REASON",
-          "prompt": "「The Notebook Pages Mixed by an Open Window」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "一枚は種まき、別の一枚は最初の葉、三枚目は花について書かれていました。",
-          "evidence": "One page described planting seeds, another showed the first leaves, and a third recorded flowers.",
-          "evidenceJp": "一枚は種まき、別の一枚は最初の葉、三枚目は花について書かれていました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "陽斗が拾った順番のままページを戻さなかったのはなぜですか。",
+          "answer": "ページ番号がなく、拾った順番が本来の順番とは限らなかったから。",
+          "evidence": [
+            "The pages had no numbers, but the ending of each page gave a clue about what came next.",
+            "Haruto did not put them back in the order in which he picked them up."
+          ],
+          "evidenceJp": [
+            "ページ番号はありませんでしたが、各ページの終わりには次に何が続くかを示す手がかりがありました。",
+            "陽斗は拾った順番のまま戻しませんでした。"
+          ],
+          "reason": "番号が失われており、拾った順序を採用しない判断が続いています。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「The Notebook Pages Mixed by an Open Window」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "ページ番号はありませんでしたが、各ページ末は次の段階につながっていました。",
-          "evidence": "The pages had no numbers, but each ended by leading to the next step.",
-          "evidenceJp": "ページ番号はありませんでしたが、各ページ末は次の段階につながっていました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "三枚のページには、植物のどんな段階が書かれていましたか。",
+          "answer": "種まき、最初の葉、花の記録。",
+          "evidence": "One page described planting seeds, another showed the first leaves, and a third recorded flowers.",
+          "evidenceJp": "一枚は種まき、別の一枚は最初の葉、三枚目は花について書かれていました。",
+          "reason": "各ページの内容が三段階で示されています。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「The Notebook Pages Mixed by an Open Window」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "種のページが最初で、その後に葉、さらに後に花の記録が続きました。",
-          "evidence": "The seed page came first, the leaf page followed it, and the flower record came later.",
-          "evidenceJp": "種のページが最初で、その後に葉、さらに後に花の記録が続きました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "日付と植物の変化を読んだ結果、陽斗はどんな順番だと分かりましたか。",
+          "answer": "種のページ、葉のページ、花の記録の順。",
+          "evidence": [
+            "He read the dates and the changes in the plant from each page.",
+            "The seed page came first, the leaf page followed it, and the flower record came later."
+          ],
+          "evidenceJp": [
+            "各ページの日付と植物の変化を読みました。",
+            "種のページが最初で、その後に葉、さらに後に花の記録が続きました。"
+          ],
+          "reason": "確認した情報から復元したページ順です。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「The Notebook Pages Mixed by an Open Window」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "陽斗は拾った順番のまま戻しませんでした。",
-          "evidence": "Haruto did not put them back in the order in which he picked them up.",
-          "evidenceJp": "陽斗は拾った順番のまま戻しませんでした。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "「陽斗は日付と植物の変化を手がかりに、【　】。」の【　】に入る内容を答えなさい。",
+          "answer": "三枚のページを正しい順番に戻した。",
+          "evidence": [
+            "He read the dates and the changes in the plant from each page.",
+            "The seed page came first, the leaf page followed it, and the flower record came later.",
+            "He clipped the pages together and added page numbers before closing the window."
+          ],
+          "evidenceJp": [
+            "各ページの日付と植物の変化を読みました。",
+            "種のページが最初で、その後に葉、さらに後に花の記録が続きました。",
+            "ページを留め、ページ番号を付けてから窓を閉めました。"
+          ],
+          "reason": "確認から並べ替え、固定までの中心行動をまとめます。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「The Notebook Pages Mixed by an Open Window」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "各ページの日付と植物の変化を読みました。",
-          "evidence": "He read the dates and the changes in the plant from each page.",
-          "evidenceJp": "各ページの日付と植物の変化を読みました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "ページの正しい順番を考えるために陽斗が使った二種類の手がかりは何ですか。",
+          "answer": "各ページの日付と、植物が種・葉・花へ変化する順序。",
+          "evidence": [
+            "One page described planting seeds, another showed the first leaves, and a third recorded flowers.",
+            "He read the dates and the changes in the plant from each page.",
+            "The seed page came first, the leaf page followed it, and the flower record came later."
+          ],
+          "evidenceJp": [
+            "一枚は種まき、別の一枚は最初の葉、三枚目は花について書かれていました。",
+            "各ページの日付と植物の変化を読みました。",
+            "種のページが最初で、その後に葉、さらに後に花の記録が続きました。"
+          ],
+          "reason": "時間情報と植物の成長段階の二つを照合しています。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「The Notebook Pages Mixed by an Open Window」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "ページを留め、ページ番号を付けてから窓を閉めました。",
-          "evidence": "He clipped the pages together and added page numbers before closing the window.",
-          "evidenceJp": "ページを留め、ページ番号を付けてから窓を閉めました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "「種のページが最初で、次に【　】、その後に花の記録が続いた。」の【　】を答えなさい。",
+          "answer": "葉のページ。",
+          "evidence": "The seed page came first, the leaf page followed it, and the flower record came later.",
+          "evidenceJp": "種のページが最初で、その後に葉、さらに後に花の記録が続きました。",
+          "reason": "本文で復元された三段階の順番を補います。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「The Notebook Pages Mixed by an Open Window」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "強い風が窓から入り、三枚のページが床へ飛びました。",
-          "evidence": "A strong wind came through the window and blew three loose pages onto the floor.",
-          "evidenceJp": "強い風が窓から入り、三枚のページが床へ飛びました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "ページを正しい順番に戻したあと、陽斗は再び混ざらないよう何をしましたか。",
+          "answer": "ページを留めてページ番号を付けた。",
+          "evidence": "He clipped the pages together and added page numbers before closing the window.",
+          "evidenceJp": "ページを留め、ページ番号を付けてから窓を閉めました。",
+          "reason": "並べ替え後の具体的な再発防止策です。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「The Notebook Pages Mixed by an Open Window」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "陽斗は、日付と出来事から失われたページ順を戻せると学びました。",
-          "evidence": "Haruto learned to restore lost page order from dates and events.",
-          "evidenceJp": "陽斗は、日付と出来事から失われたページ順を戻せると学びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "ページ末の「次に何が続くかを示す手がかり」は、番号がなくても順番を考えるのに役立つのはなぜですか。",
+          "answer": "前のページの内容と次の出来事をつなげて、自然な時間順を判断できるから。",
+          "evidence": [
+            "The pages had no numbers, but the ending of each page gave a clue about what came next.",
+            "He read the dates and the changes in the plant from each page.",
+            "The seed page came first, the leaf page followed it, and the flower record came later."
+          ],
+          "evidenceJp": [
+            "ページ番号はありませんでしたが、各ページの終わりには次に何が続くかを示す手がかりがありました。",
+            "各ページの日付と植物の変化を読みました。",
+            "種のページが最初で、その後に葉、さらに後に花の記録が続きました。"
+          ],
+          "reason": "ページ末のつながりと日付・植物の変化を合わせて順序を復元しています。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         },
         {
           "questionType": "GIST",
-          "prompt": "「The Notebook Pages Mixed by an Open Window」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "陽斗は、日付と出来事から失われたページ順を戻せると学びました。",
-          "evidence": "Haruto learned to restore lost page order from dates and events.",
-          "evidenceJp": "陽斗は、日付と出来事から失われたページ順を戻せると学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "この話が、順番の分からない記録を直す方法として伝えていることは何ですか。",
+          "answer": "日付や出来事の前後関係など複数の手がかりを使って順番を確かめること。",
+          "evidence": [
+            "The pages had no numbers, but the ending of each page gave a clue about what came next.",
+            "He read the dates and the changes in the plant from each page.",
+            "Haruto learned to restore lost page order from dates and events."
+          ],
+          "evidenceJp": [
+            "ページ番号はありませんでしたが、各ページの終わりには次に何が続くかを示す手がかりがありました。",
+            "各ページの日付と植物の変化を読みました。",
+            "陽斗は、日付と出来事から失われたページ順を戻せると学びました。"
+          ],
+          "reason": "本文全体で番号以外の時間・内容の手がかりから順序を戻しています。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R4"
         }
       ],
       "authorReview": {
@@ -1168,10 +1268,24 @@
         "translationSynced": true,
         "reviewedAt": "2026-08-31"
       },
+      "semanticReviewR6": {
+        "reviewed": true,
+        "meaningCoherent": true,
+        "naturalnessFixed": true,
+        "translationSynced": true,
+        "reviewedAt": "2026-08-31"
+      },
       "humanReviewR2": null,
       "humanReviewR3": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
-      "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
+      "humanReviewR4": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R4_HUMAN_REVIEW_R4",
+      "questionHumanReview": "REVIEWED_R4",
       "registered": false
     },
     {
@@ -1340,8 +1454,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -1517,8 +1633,10 @@
         "translationSynced": true,
         "reviewedAt": "2026-08-31"
       },
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -1689,8 +1807,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -1861,8 +1981,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -2033,8 +2155,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -2205,8 +2329,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -2382,8 +2508,10 @@
         "translationSynced": true,
         "reviewedAt": "2026-08-31"
       },
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -2554,8 +2682,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -2726,8 +2856,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -2903,8 +3035,10 @@
         "translationSynced": true,
         "reviewedAt": "2026-08-31"
       },
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -3075,8 +3209,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -3247,8 +3383,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -3419,8 +3557,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -3591,8 +3731,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -3763,8 +3905,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -3935,8 +4079,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -4107,8 +4253,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -4279,8 +4427,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -4451,8 +4601,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -4623,8 +4775,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -4795,8 +4949,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -4967,8 +5123,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -5139,8 +5297,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -5311,8 +5471,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -5483,8 +5645,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -5655,8 +5819,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -5827,8 +5993,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -5999,8 +6167,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -6186,8 +6356,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -6373,8 +6545,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -6560,8 +6734,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -6747,8 +6923,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -6934,8 +7112,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -7121,8 +7301,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -7308,8 +7490,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -7495,8 +7679,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -7722,8 +7908,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -7949,8 +8137,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -8171,8 +8361,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -8398,8 +8590,10 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -8681,8 +8875,10 @@
         "materialConsistent": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -8960,8 +9156,10 @@
         "materialConsistent": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -9233,8 +9431,10 @@
         "materialConsistent": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -9537,8 +9737,10 @@
         "materialConsistent": true
       },
       "semanticReviewR5": null,
+      "semanticReviewR6": null,
       "humanReviewR2": null,
       "humanReviewR3": null,
+      "humanReviewR4": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
