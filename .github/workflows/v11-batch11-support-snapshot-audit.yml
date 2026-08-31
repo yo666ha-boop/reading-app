@@ -15,9 +15,13 @@ on:
       - 'v11_batch11_verified_gloss_reuse.js'
       - 'v11_batch11_easy_support_r1.js'
       - '.github/workflows/v11-batch11-support-snapshot-audit.yml'
+concurrency:
+  group: v11-batch11-support-snapshot-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   audit:
     runs-on: ubuntu-latest
+    timeout-minutes: 3
     steps:
       - uses: actions/checkout@v4
         with:
