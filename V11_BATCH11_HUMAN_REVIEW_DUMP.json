@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T00:59:57.894Z",
+  "generatedAt": "2026-08-31T01:02:17.817Z",
   "count": 50,
   "registered": 0,
   "passages": [
@@ -70,95 +70,115 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「The Library Slip Found inside the Wrong Book」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "月曜日、恵美は学校の図書館で理科の本を借りました。",
-          "evidence": "On Monday, Emi borrowed a science book from the school library.",
-          "evidenceJp": "月曜日、恵美は学校の図書館で理科の本を借りました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "貸出票には、持ち主や本を確かめるためのどんな情報が書かれていましたか。三つ答えなさい。",
+          "answer": "浩二の名前、金曜日の日付、歴史の本という題名。",
+          "evidence": "The slip had Koji's name and Friday's date, but the title on it was a history book.",
+          "evidenceJp": "貸出票には浩二の名前と金曜日の日付がありましたが、書かれていた題名は歴史の本でした。",
+          "reason": "貸出票に書かれた三つの情報をそのまま確認します。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         },
         {
           "questionType": "REASON",
-          "prompt": "「The Library Slip Found inside the Wrong Book」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "番号は違っていたので、何も書き込まず貸出票を図書館へ持って行きました。",
-          "evidence": "The numbers were different, so she took the slip to the library without writing on it.",
-          "evidenceJp": "番号は違っていたので、何も書き込まず貸出票を図書館へ持って行きました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "恵美が貸出票を自分の理科の本のものだと決めつけなかったのはなぜですか。",
+          "answer": "貸出票の請求番号と自分の本の番号が違っていたから。",
+          "evidence": [
+            "Then she noticed a small call number on the slip and compared it with the number on her book.",
+            "The numbers were different, so she took the slip to the library without writing on it."
+          ],
+          "evidenceJp": [
+            "そこで貸出票の小さな請求番号に気づき、自分の本の番号と比べました。",
+            "番号は違っていたので、何も書き込まず貸出票を図書館へ持って行きました。"
+          ],
+          "reason": "番号を比較した結果が、最初の考えを見直す直接の理由になっています。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「The Library Slip Found inside the Wrong Book」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "貸出票には浩二の名前と金曜日の日付がありましたが、書かれていた題名は歴史の本でした。",
-          "evidence": "The slip had Koji's name and Friday's date, but the title on it was a history book.",
-          "evidenceJp": "貸出票には浩二の名前と金曜日の日付がありましたが、書かれていた題名は歴史の本でした。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "司書が返却用の台車を調べて見つけたものは何ですか。",
+          "answer": "浩二の歴史の本。",
+          "evidence": "The librarian checked the return cart and found Koji's history book there.",
+          "evidenceJp": "司書が返却用の台車を調べると、そこに浩二の歴史の本がありました。",
+          "reason": "本文に明記された発見内容です。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「The Library Slip Found inside the Wrong Book」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "司書が返却用の台車を調べると、そこに浩二の歴史の本がありました。",
-          "evidence": "The librarian checked the return cart and found Koji's history book there.",
-          "evidenceJp": "司書が返却用の台車を調べると、そこに浩二の歴史の本がありました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "浩二の歴史の本のポケットが空だと分かったあと、司書はどうしましたか。",
+          "answer": "黄色い貸出票をその歴史の本に戻した。",
+          "evidence": "Its pocket was empty, so the librarian returned the yellow slip to that book.",
+          "evidenceJp": "その本のポケットは空だったため、司書は黄色い貸出票をその本へ戻しました。",
+          "reason": "空のポケットを確認した直後の行動を答えます。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「The Library Slip Found inside the Wrong Book」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "そこで貸出票の小さな請求番号に気づき、自分の本の番号と比べました。",
+          "prompt": "「恵美は貸出票の請求番号に気づき、【　】。」の【　】に入る内容を本文に合わせて答えなさい。",
+          "answer": "自分の本の番号と比べた。",
           "evidence": "Then she noticed a small call number on the slip and compared it with the number on her book.",
           "evidenceJp": "そこで貸出票の小さな請求番号に気づき、自分の本の番号と比べました。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "本文の比較行動を入れると出来事の流れが自然につながります。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「The Library Slip Found inside the Wrong Book」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "家で開くと、本から黄色い貸出票が落ちました。",
-          "evidence": "At home, a yellow slip fell from the book.",
-          "evidenceJp": "家で開くと、本から黄色い貸出票が落ちました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "貸出票が恵美の理科の本のものではないと考える決め手になった事実は何ですか。",
+          "answer": "貸出票の番号と理科の本の番号が違っていたこと。",
+          "evidence": "The numbers were different, so she took the slip to the library without writing on it.",
+          "evidenceJp": "番号は違っていたので、何も書き込まず貸出票を図書館へ持って行きました。",
+          "reason": "二つの番号の不一致が判断を支える直接の証拠です。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「The Library Slip Found inside the Wrong Book」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "その本のポケットは空だったため、司書は黄色い貸出票をその本へ戻しました。",
-          "evidence": "Its pocket was empty, so the librarian returned the yellow slip to that book.",
-          "evidenceJp": "その本のポケットは空だったため、司書は黄色い貸出票をその本へ戻しました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "「二つの番号は【　】ので、恵美は貸出票を図書館へ持って行った。」の【　】に入る内容を答えなさい。",
+          "answer": "違っていた。",
+          "evidence": "The numbers were different, so she took the slip to the library without writing on it.",
+          "evidenceJp": "番号は違っていたので、何も書き込まず貸出票を図書館へ持って行きました。",
+          "reason": "理由を表す so の前にある事実を入れると文脈が自然です。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「The Library Slip Found inside the Wrong Book」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "恵美は最初、図書館が理科の本に間違った貸出票を入れたのだと思いました。",
-          "evidence": "Emi first thought the library had put the wrong slip in her science book.",
-          "evidenceJp": "恵美は最初、図書館が理科の本に間違った貸出票を入れたのだと思いました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "浩二の歴史の本はどこで見つかりましたか。",
+          "answer": "返却用の台車の中。",
+          "evidence": "The librarian checked the return cart and found Koji's history book there.",
+          "evidenceJp": "司書が返却用の台車を調べると、そこに浩二の歴史の本がありました。",
+          "reason": "本が見つかった場所を問う具体的情報です。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         },
         {
           "questionType": "REASON",
-          "prompt": "「The Library Slip Found inside the Wrong Book」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "恵美は、複数の手がかりで紙の正しい場所を確かめられると学びました。",
-          "evidence": "Emi learned to use several clues to identify where a paper belongs.",
-          "evidenceJp": "恵美は、複数の手がかりで紙の正しい場所を確かめられると学びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "司書が黄色い貸出票を浩二の歴史の本へ戻したのはなぜですか。",
+          "answer": "その歴史の本のポケットが空で、貸出票の情報とも合っていたから。",
+          "evidence": [
+            "The slip had Koji's name and Friday's date, but the title on it was a history book.",
+            "Its pocket was empty, so the librarian returned the yellow slip to that book."
+          ],
+          "evidenceJp": [
+            "貸出票には浩二の名前と金曜日の日付がありましたが、書かれていた題名は歴史の本でした。",
+            "その本のポケットは空だったため、司書は黄色い貸出票をその本へ戻しました。"
+          ],
+          "reason": "貸出票の題名と、歴史の本の空のポケットを合わせると返却理由が分かります。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         },
         {
           "questionType": "GIST",
-          "prompt": "「The Library Slip Found inside the Wrong Book」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "恵美は、複数の手がかりで紙の正しい場所を確かめられると学びました。",
-          "evidence": "Emi learned to use several clues to identify where a paper belongs.",
-          "evidenceJp": "恵美は、複数の手がかりで紙の正しい場所を確かめられると学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "この話から分かる、落とし物や書類の持ち主を確かめるときに大切なことは何ですか。",
+          "answer": "一つの見た目だけで決めず、名前・日付・番号など複数の手がかりを確かめること。",
+          "evidence": [
+            "The slip had Koji's name and Friday's date, but the title on it was a history book.",
+            "Then she noticed a small call number on the slip and compared it with the number on her book.",
+            "Emi learned to use several clues to identify where a paper belongs."
+          ],
+          "evidenceJp": [
+            "貸出票には浩二の名前と金曜日の日付がありましたが、書かれていた題名は歴史の本でした。",
+            "そこで貸出票の小さな請求番号に気づき、自分の本の番号と比べました。",
+            "恵美は、複数の手がかりで紙の正しい場所を確かめられると学びました。"
+          ],
+          "reason": "本文全体で複数の手がかりを照合して正しい本を特定しています。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         }
       ],
       "authorReview": {
@@ -169,8 +189,15 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
-      "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
+      "humanReviewR2": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R4_HUMAN_REVIEW_R2",
+      "questionHumanReview": "REVIEWED_R2",
       "registered": false
     },
     {
@@ -240,95 +267,123 @@
       "questions": [
         {
           "questionType": "DETAIL",
-          "prompt": "「The Seed Cups Watered by Two Groups」で述べられている重要な具体的事実を一つ答えなさい。",
-          "answer": "一年A組は教室の窓辺で十二個の紙コップに豆の種を植えました。",
-          "evidence": "Class 1-A planted bean seeds in twelve paper cups by the classroom window.",
-          "evidenceJp": "一年A組は教室の窓辺で十二個の紙コップに豆の種を植えました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "午後の班がもう一度すべてのコップに水をやったのは、何を見たからですか。",
+          "answer": "土の表面が乾いているのを見たから。",
+          "evidence": "After lunch, the afternoon group saw dry soil on top and watered every cup again.",
+          "evidenceJp": "昼食後、午後の班は表面の土が乾いているのを見て、全部のコップにもう一度水をやりました。",
+          "reason": "午後の班が水やりをした直前の観察内容です。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         },
         {
           "questionType": "REASON",
-          "prompt": "「The Seed Cups Watered by Two Groups」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "翌日、二つのコップの底に水がたまり、一つの種は土の上へ動いていました。",
-          "evidence": "The next day, two cups had water standing at the bottom, and one seed had moved above the soil.",
-          "evidenceJp": "翌日、二つのコップの底に水がたまり、一つの種は土の上へ動いていました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "クラスが水やりの記録方法を変えることにしたのはなぜですか。",
+          "answer": "月曜日に朝と午後の両方の班が同じ水やりをしていたと分かったから。",
+          "evidence": [
+            "The next day, two cups had water standing at the bottom, and one seed had moved above the soil.",
+            "The sheet showed that both groups had watered the cups on Monday.",
+            "They kept caring for the plants, but they changed the job record."
+          ],
+          "evidenceJp": [
+            "翌日、二つのコップの底に水がたまり、一つの種は土の上へ動いていました。",
+            "表を見ると、月曜日に二つの班が水をやっていたと分かりました。",
+            "植物の世話は続けましたが、作業の記録方法を変えました。"
+          ],
+          "reason": "翌日の状態と記録確認によって二重の水やりが判明したことが変更理由です。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         },
         {
           "questionType": "CONTENT_MATCH",
-          "prompt": "「The Seed Cups Watered by Two Groups」の内容と一致する事実を、本文に基づいて一つ答えなさい。",
-          "answer": "昼食後、午後の班は表面の土が乾いているのを見て、全部のコップにもう一度水をやりました。",
-          "evidence": "After lunch, the afternoon group saw dry soil on top and watered every cup again.",
-          "evidenceJp": "昼食後、午後の班は表面の土が乾いているのを見て、全部のコップにもう一度水をやりました。",
-          "reason": "本文の記述と一致する内容を、根拠の範囲を超えずに答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "火曜日から、水やりをした生徒は何を記録することにしましたか。",
+          "answer": "名前と時刻。",
+          "evidence": "From Tuesday, each student wrote a name and time after the job.",
+          "evidenceJp": "火曜日からは、各生徒が作業後に名前と時刻を書くことにしました。",
+          "reason": "新しい記録方法に書かれた具体的情報です。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         },
         {
           "questionType": "RESULT",
-          "prompt": "「The Seed Cups Watered by Two Groups」で、行動や確認のあとに起きたこと・分かったことを答えなさい。",
-          "answer": "火曜日からは、各生徒が作業後に名前と時刻を書くことにしました。",
-          "evidence": "From Tuesday, each student wrote a name and time after the job.",
-          "evidenceJp": "火曜日からは、各生徒が作業後に名前と時刻を書くことにしました。",
-          "reason": "本文の時間順を追い、行動や確認の結果を示す記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "新しい記録方法になってから、二つ目の班はいつ水をやることにしましたか。",
+          "answer": "前の水やりの印がないときだけ。",
+          "evidence": "The second group checked the record and watered only when no earlier mark was there.",
+          "evidenceJp": "二つ目の班は記録を確かめ、前の印がないときだけ水をやりました。",
+          "reason": "記録を確認した後の新しい行動ルールです。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         },
         {
           "questionType": "SUMMARY_FILL",
-          "prompt": "「The Seed Cups Watered by Two Groups」の流れを要約するとき、空所【　】に入る重要な内容を本文に基づいて答えなさい。",
-          "answer": "表を見ると、月曜日に二つの班が水をやっていたと分かりました。",
-          "evidence": "The sheet showed that both groups had watered the cups on Monday.",
-          "evidenceJp": "表を見ると、月曜日に二つの班が水をやっていたと分かりました。",
-          "reason": "本文全体の流れを保つうえで必要な内容を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "「二つの班が同じ日に水をやったと分かり、クラスは【　】。」の【　】に入る内容を答えなさい。",
+          "answer": "水やりをやめず、作業の記録方法を変えた。",
+          "evidence": "They kept caring for the plants, but they changed the job record.",
+          "evidenceJp": "植物の世話は続けましたが、作業の記録方法を変えました。",
+          "reason": "問題の原因に対応した中心的な解決策です。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         }
       ],
       "questionSetB": [
         {
           "questionType": "EVIDENCE",
-          "prompt": "「The Seed Cups Watered by Two Groups」で、登場人物の判断を支える手がかり・証拠となった内容を答えなさい。",
-          "answer": "植物の世話は続けましたが、作業の記録方法を変えました。",
-          "evidence": "They kept caring for the plants, but they changed the job record.",
-          "evidenceJp": "植物の世話は続けましたが、作業の記録方法を変えました。",
-          "reason": "判断を支える具体的な本文記述を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "月曜日に水をやりすぎた可能性を示す二つの手がかりは何ですか。",
+          "answer": "翌日、二つのコップの底に水がたまっていたことと、表で二つの班が水をやったと分かったこと。",
+          "evidence": [
+            "The next day, two cups had water standing at the bottom, and one seed had moved above the soil.",
+            "The sheet showed that both groups had watered the cups on Monday."
+          ],
+          "evidenceJp": [
+            "翌日、二つのコップの底に水がたまり、一つの種は土の上へ動いていました。",
+            "表を見ると、月曜日に二つの班が水をやっていたと分かりました。"
+          ],
+          "reason": "植物の状態と作業記録の二つが二重の水やりを示します。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         },
         {
           "questionType": "PHRASE_FILL",
-          "prompt": "「The Seed Cups Watered by Two Groups」の出来事の流れを自然につなぐため、空所【　】に入る内容を本文に基づいて答えなさい。",
-          "answer": "二つ目の班は記録を確かめ、前の印がないときだけ水をやりました。",
-          "evidence": "The second group checked the record and watered only when no earlier mark was there.",
-          "evidenceJp": "二つ目の班は記録を確かめ、前の印がないときだけ水をやりました。",
-          "reason": "前後の出来事・判断のつながりが自然になる内容を本文から確認します。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "「火曜日から、生徒は水やりのあとに【　】を書いた。」の【　】に入る内容を答えなさい。",
+          "answer": "名前と時刻。",
+          "evidence": "From Tuesday, each student wrote a name and time after the job.",
+          "evidenceJp": "火曜日からは、各生徒が作業後に名前と時刻を書くことにしました。",
+          "reason": "変更後の記録内容を本文から補います。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         },
         {
           "questionType": "DETAIL",
-          "prompt": "「The Seed Cups Watered by Two Groups」の後半で述べられている具体的な事実を一つ答えなさい。",
-          "answer": "朝の班は水をやり、世話の表の月曜日に印を付けました。",
+          "prompt": "朝の班は月曜日の水やりのあと、世話の表に何をしましたか。",
+          "answer": "月曜日に印を付けた。",
           "evidence": "The morning group watered them and marked Monday on the care sheet.",
           "evidenceJp": "朝の班は水をやり、世話の表の月曜日に印を付けました。",
-          "reason": "本文に直接書かれた具体的事実を根拠に答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "reason": "朝の班が残した記録を問う問題です。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         },
         {
-          "questionType": "REASON",
-          "prompt": "「The Seed Cups Watered by Two Groups」で、登場人物がその判断・行動をした理由または必要だった条件を答えなさい。",
-          "answer": "クラスは、共同作業には明確な記録が必要だと学びました。",
-          "evidence": "The class learned that shared work needs a clear record.",
-          "evidenceJp": "クラスは、共同作業には明確な記録が必要だと学びました。",
-          "reason": "判断や行動の前後を読み、原因・条件を示す本文記述から答えます。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "questionType": "INFERENCE",
+          "prompt": "新しい記録方法によって、同じ日に二度水をやる失敗が減ると考えられるのはなぜですか。",
+          "answer": "後の班が、先に水やりをした人の名前と時刻を確認できるから。",
+          "evidence": [
+            "From Tuesday, each student wrote a name and time after the job.",
+            "The second group checked the record and watered only when no earlier mark was there."
+          ],
+          "evidenceJp": [
+            "火曜日からは、各生徒が作業後に名前と時刻を書くことにしました。",
+            "二つ目の班は記録を確かめ、前の印がないときだけ水をやりました。"
+          ],
+          "reason": "名前と時刻の記録を確認してから水やりする仕組みになったためです。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         },
         {
           "questionType": "GIST",
-          "prompt": "「The Seed Cups Watered by Two Groups」全体を読んで、筆者が最も伝えたいことを答えなさい。",
-          "answer": "クラスは、共同作業には明確な記録が必要だと学びました。",
-          "evidence": "The class learned that shared work needs a clear record.",
-          "evidenceJp": "クラスは、共同作業には明確な記録が必要だと学びました。",
-          "reason": "結末だけでなく、本文全体の出来事や判断をまとめて考える必要があります。",
-          "questionReview": "B11_R4_NONLEAK_PENDING_HUMAN"
+          "prompt": "この話でクラスが学んだ、共同作業をうまく進めるために大切なことは何ですか。",
+          "answer": "誰がいつ作業したか分かる明確な記録を共有すること。",
+          "evidence": [
+            "From Tuesday, each student wrote a name and time after the job.",
+            "The second group checked the record and watered only when no earlier mark was there.",
+            "The class learned that shared work needs a clear record."
+          ],
+          "evidenceJp": [
+            "火曜日からは、各生徒が作業後に名前と時刻を書くことにしました。",
+            "二つ目の班は記録を確かめ、前の印がないときだけ水をやりました。",
+            "クラスは、共同作業には明確な記録が必要だと学びました。"
+          ],
+          "reason": "結末だけでなく、二重作業の原因と改善策をまとめるとこの要点になります。",
+          "questionReview": "B11_R4_HUMAN_REVIEW_R2"
         }
       ],
       "authorReview": {
@@ -339,8 +394,15 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
-      "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
-      "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
+      "humanReviewR2": {
+        "reviewed": true,
+        "passageMeaning": true,
+        "translation": true,
+        "questions": 10,
+        "reviewedAt": "2026-08-31"
+      },
+      "questionStage": "BATCH11_R4_HUMAN_REVIEW_R2",
+      "questionHumanReview": "REVIEWED_R2",
       "registered": false
     },
     {
@@ -509,6 +571,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -679,6 +742,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -849,6 +913,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -1024,6 +1089,7 @@
         "translationSynced": true,
         "reviewedAt": "2026-08-31"
       },
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -1194,6 +1260,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -1369,6 +1436,7 @@
         "translationSynced": true,
         "reviewedAt": "2026-08-31"
       },
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -1539,6 +1607,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -1709,6 +1778,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -1879,6 +1949,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -2049,6 +2120,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -2224,6 +2296,7 @@
         "translationSynced": true,
         "reviewedAt": "2026-08-31"
       },
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -2394,6 +2467,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -2564,6 +2638,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -2739,6 +2814,7 @@
         "translationSynced": true,
         "reviewedAt": "2026-08-31"
       },
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -2909,6 +2985,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -3079,6 +3156,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -3249,6 +3327,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -3419,6 +3498,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -3589,6 +3669,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -3759,6 +3840,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -3929,6 +4011,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -4099,6 +4182,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -4269,6 +4353,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -4439,6 +4524,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -4609,6 +4695,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -4779,6 +4866,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -4949,6 +5037,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -5119,6 +5208,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -5289,6 +5379,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -5459,6 +5550,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -5629,6 +5721,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -5799,6 +5892,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -5984,6 +6078,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -6169,6 +6264,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -6354,6 +6450,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -6539,6 +6636,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -6724,6 +6822,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -6909,6 +7008,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -7094,6 +7194,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -7279,6 +7380,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -7504,6 +7606,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -7729,6 +7832,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -7949,6 +8053,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -8174,6 +8279,7 @@
         "translationNatural": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -8455,6 +8561,7 @@
         "materialConsistent": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -8732,6 +8839,7 @@
         "materialConsistent": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -9003,6 +9111,7 @@
         "materialConsistent": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
@@ -9305,6 +9414,7 @@
         "materialConsistent": true
       },
       "semanticReviewR5": null,
+      "humanReviewR2": null,
       "questionStage": "BATCH11_R4_NONLEAK_PENDING_HUMAN",
       "questionHumanReview": "PENDING_FULL_50_PASSAGE_REVIEW_R4",
       "registered": false
