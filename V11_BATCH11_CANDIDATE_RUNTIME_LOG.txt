@@ -1,5 +1,7 @@
-page.evaluate: Error: Batch11 registry guard installer missing
-    at eval (eval at evaluate (:291:30), <anonymous>:1:86)
+page.evaluate: Error: Batch11 support property guard requires 50 verified snapshots at install boundary, got 39
+    at buildFrozen (http://127.0.0.1:8000/v11_batch11_choose_property_guard.js:10:27)
+    at installRegistryGuards (http://127.0.0.1:8000/v11_batch11_choose_property_guard.js:26:3)
+    at eval (eval at evaluate (:291:30), <anonymous>:1:150)
     at UtilityScript.evaluate (<anonymous>:293:16)
     at UtilityScript.<anonymous> (<anonymous>:1:44)
     at openReady (<anonymous>:6:1209)
