@@ -5,6 +5,7 @@ on:
     branches: [v11-1000passage-easy-notes]
     paths:
       - 'v11_batch11_human_qa_extract.js'
+      - 'v11_batch11_question_human_rewrite_r7.js'
       - '.github/workflows/v11-batch11-human-qa-extract.yml'
 permissions:
   contents: write
@@ -19,7 +20,7 @@ jobs:
         with:
           node-version: '20'
       - name: Extract next human QA passages
-        run: node v11_batch11_human_qa_extract.js V11-B11-G1-015 V11-B11-G1-016 V11-B11-G1-017 V11-B11-G2-001 V11-B11-G2-002 V11-B11-G2-003
+        run: node v11_batch11_human_qa_extract.js V11-B11-G2-004 V11-B11-G2-005 V11-B11-G2-006 V11-B11-G2-007 V11-B11-G2-008 V11-B11-G2-009
       - name: Persist extract
         run: |
           git config user.name "github-actions[bot]"
