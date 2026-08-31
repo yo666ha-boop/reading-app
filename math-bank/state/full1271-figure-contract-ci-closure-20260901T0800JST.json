@@ -1,0 +1,34 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "FULL_1271_CURRENT_CONTRACT_VALIDATION",
+  "recorded_at_jst": "2026-09-01T08:00:00+09:00",
+  "source_reverification": {
+    "Standard": {"drive_file_id":"1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU","bytes":9689250,"sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","crc32":"f8e307bb","zip_test":"PASS"},
+    "実力錬成": {"drive_file_id":"1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb","bytes":7287279,"sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","crc32":"1a020f98","zip_test":"PASS"},
+    "Winpass": {"drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E","bytes":8296042,"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","crc32":"992b0ca2","zip_test":"PASS"}
+  },
+  "figure_contract": {
+    "historical_constant_41_removed_from_validator": true,
+    "stale_dependency_in_reconcile_strict_qa_progress_removed": true,
+    "policy": "No historical hard-coded figure count. Full-1271 certification requires the evidence-derived total from the assembled durable union; every present figure ref must carry relationship/target/asset identity and none may be marked missing.",
+    "known_preassembly_counts": {"Standard":154,"実力錬成":81,"subtotal":235},
+    "full1271_expected_figure_refs": null,
+    "reason_null": "Winpass717 durable current-contract union must be assembled before deriving the full evidence total; do not infer by count forcing."
+  },
+  "ci": {
+    "raw1271_strict_tests_head":"807095e3a5039867174c0fa22c5d0e43080f1f02",
+    "raw1271_strict_tests":"PASS",
+    "strict_tooling_head":"2ba6f3e9e31218a7e82e2f2ba9849fdca1611ef9",
+    "strict_tooling_run_id":"33448676497",
+    "strict_tooling":"PASS",
+    "strict_tooling_unit_test_step":"PASS"
+  },
+  "progress_claim": {
+    "Winpass_current_contract":"717/717",
+    "full1271_validator_pass":false,
+    "runtime_promotion":0,
+    "PUBLICATION_READY":false,
+    "main_touched":false
+  },
+  "next": "Durably materialize Standard317 and Jitsuren237 current-fingerprint bodies, assemble with Winpass717, derive actual full1271 figure-ref total from that union, then run validate_raw1271_materialization.py with --expected-figure-refs equal to that evidence-derived total and require zero errors before app mapping."
+}
