@@ -2,29 +2,11 @@
   "project": "mikami-math-problem-bank",
   "stage": "APP1271_RUNTIME_PARENT_RECONSTRUCTION_INPUT_AUDIT",
   "branch": "math-problem-bank-bootstrap",
-  "audited_head_before_write": "787925e281f22a967e4850619338d5c1f32d3bc4",
+  "audited_head_before_write": "8474556c082fea59d80df1aa69f45c2473bd83a4",
   "source_archives": {
-    "Standard": {
-      "drive_file_id": "1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU",
-      "bytes": 9689250,
-      "sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6",
-      "crc32": "f8e307bb",
-      "zip_test": "PASS"
-    },
-    "実力錬成": {
-      "drive_file_id": "1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb",
-      "bytes": 7287279,
-      "sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33",
-      "crc32": "1a020f98",
-      "zip_test": "PASS"
-    },
-    "Winpass": {
-      "drive_file_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
-      "bytes": 8296042,
-      "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
-      "crc32": "992b0ca2",
-      "zip_test": "PASS"
-    }
+    "Standard": {"drive_file_id": "1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU", "bytes": 9689250, "sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6", "crc32": "f8e307bb", "zip_test": "PASS"},
+    "実力錬成": {"drive_file_id": "1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb", "bytes": 7287279, "sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33", "crc32": "1a020f98", "zip_test": "PASS"},
+    "Winpass": {"drive_file_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E", "bytes": 8296042, "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf", "crc32": "992b0ca2", "zip_test": "PASS"}
   },
   "durable_upstream_state": {
     "strict_materialization": 1271,
@@ -33,6 +15,33 @@
     "global_immutable_freeze": 1271,
     "verified_variants": 52,
     "distinct_verified_variant_parents": 26
+  },
+  "exact_record_body_recovery": {
+    "status": "IN_PROGRESS",
+    "standard": {"exact_records_recovered": 317, "expected": 317, "drive_strict_id": "1L6n6iGfFQdii0jTzM224fT0U5MAXZcYS"},
+    "jitsuren": {"exact_records_recovered": 237, "expected": 237, "drive_strict_id": "1ZrG7Xw0iMjaR27UfzpPJmWnMK_2wlC2P"},
+    "winpass": {
+      "exact_records_recovered": 403,
+      "expected": 717,
+      "remaining": 314,
+      "drive_jsonl_records_parsed": 385,
+      "drive_jsonl_files_parsed": 32,
+      "drive_json_parse_errors": 0,
+      "drive_winpass_unique_raw_ids": 385,
+      "drive_winpass_duplicate_raw_ids": 0,
+      "drive_winpass_core_conflicts": 0,
+      "historical_github_exact_bodies_added": 18,
+      "historical_exact_body_sources": [
+        {"path": "math-bank/state/winpass8-algebra-strict-delta-20260826.jsonl", "ref": "b7a3dd482f6aad3d056b2aef62a1a7e315277470", "records": 8, "source_document": "25winpasst1suhy000209.docx"},
+        {"path": "math-bank/state/winpass9-relations-strict-delta-20260826.jsonl", "ref": "4b486f620c50274bbd93f6236490d2ededfc5d30", "records": 9, "source_document": "25winpasst1suhy000210.docx"},
+        {"path": "math-bank/state/winpass1-figure-strict-delta-20260826.jsonl", "ref": "4d21316ea9b5dc066c7f10a2d3a431ff02da11f6", "records": 1, "source_document": "25winpasst1suhy000210.docx"}
+      ]
+    },
+    "total_exact_record_bodies_recovered": 957,
+    "expected_total": 1271,
+    "remaining_total": 314,
+    "promotion_count": 0,
+    "note": "Recovery count is an evidence/reconstruction inventory only; it is not runtime app progress and is not promoted until the exact 1271 union passes the strict validator and freeze binding."
   },
   "runtime_parent_findings": {
     "global_freeze_artifact": "math-bank/state/global-strict1271-immutable-freeze-20260831.json",
@@ -66,7 +75,7 @@
     "legacy_runtime_validator_still_fixed_to_variants": 107
   },
   "decision": {
-    "status": "BLOCKED_FROM_RUNTIME_PROMOTION_UNTIL_EXACT_1271_RECORD_BODIES_ARE_RECONSTRUCTED_OR_RECOVERED",
+    "status": "BLOCKED_FROM_RUNTIME_PROMOTION_UNTIL_EXACT_1271_RECORD_BODY_UNION_IS_COMPLETE_AND_REVALIDATED",
     "old_1124_or_1231_payload_may_be_relabelled_as_1271": false,
     "count_forcing_allowed": false,
     "historical_107_variant_bodies_may_be_reconstructed_without_bytes": false,
@@ -74,9 +83,9 @@
     "main_may_be_touched": false
   },
   "next": [
-    "Rebuild or recover the exact 1271 strict record bodies from the fixed source archives and existing evidence, preserving raw_id, record_fingerprint, source_document_sha256, score evidence, OOXML offsets, and figure/graphical asset identities.",
-    "Read back and validate 1271 records with validate_raw1271_materialization.py; require 717/237/317 counts, 1271 unique raw_id/fingerprint, exact fingerprint recomputation, and figure evidence gates.",
+    "Recover the remaining 314 Winpass strict record bodies by mining durable Drive strict artifacts and historical GitHub commits before rebuilding any missing slot from source.",
+    "When Winpass reaches an exact 717 raw_id union, combine with Standard317 and Jitsuren237 and run validate_raw1271_materialization.py on all 1271 records, including exact fingerprint recomputation and figure evidence gates.",
     "Build explicit per-record app mapping evidence without defaults or inference, then run validate_rebuilt_app_mapping.py and freeze_rebuilt_originals.py so full_record_sha256 binds the runtime parent payload.",
-    "Only after a verified immutable1271 runtime parent exists, append independently verified variants and continue UI/A4/browser/device/release/public isolated verification."
+    "Only after verified immutable1271 runtime parents exist, append independently verified variants and continue UI/A4/browser/device/release/public isolated verification."
   ]
 }
