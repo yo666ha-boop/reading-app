@@ -1,0 +1,34 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "APP1271_WINPASS_HISTORICAL_STRICT_RECOVERY_MAP",
+  "audited_head": "14a7a2aa3ee7e20d0184657b664b4e0f22956b6b",
+  "source_archives_verified_this_run": {
+    "Standard": {"bytes":9689250,"sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","crc32":"f8e307bb","zip_test":"PASS"},
+    "実力錬成": {"bytes":7287279,"sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","crc32":"1a020f98","zip_test":"PASS"},
+    "Winpass": {"bytes":8296042,"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","crc32":"992b0ca2","zip_test":"PASS"}
+  },
+  "baseline_exact_recovery": {"total":957,"Standard":317,"実力錬成":237,"Winpass":403,"Winpass_remaining":314},
+  "historical_durable_strict_artifacts_located": [
+    {"source_document":"25winpasst1suhy000627.docx","records":10,"drive_strict_id":"1vuZNt94WOz-xgSrdkHi2bQlpJryjesct","drive_validation_id":"1vxKHkxe2p9Ab7h3VnEr4JPm5aZvgA_P2","strict_readback_bytes":13726,"strict_readback_sha256":"6b6f4ad73d6e772475961c9e30334ae402b1b5229e37a606a8cee4f877f27024","source_document_sha256":"8cce8c10dcfabcadd02938130682a4e19b532da777f9bcd2116005278cc4c176","quality":"10/10 raw_id unique; 10/10 fingerprint unique; relationship/media SHA 10/10; independent recalculation 10/10; rendered inspection PASS"},
+    {"source_document":"25winpasst2suhy000312.docx","records":9,"drive_strict_id":"1fEi0HUI4pz2vYIDLl4q5poBPzcboBByc","drive_validation_id":"14qDoj3KHRsX1Ekauh5aY155fzp-HISEe","quality":"9/9 raw_id unique; 9/9 fingerprint unique; independent recalculation 9/9; rendered inspection PASS"}
+  ],
+  "historical_union_evidence": {
+    "phase2_existing_before_these_two_batches":493,
+    "phase2_after_627_and_312":512,
+    "raw_id_unique":512,
+    "fingerprint_unique":512,
+    "new_overlap_at_that_historical_union":0
+  },
+  "promotion": {
+    "count_added_to_current_exact_recovery":0,
+    "reason":"Do not promote until current403 raw_id/fingerprint union is materialized and these 19 bodies are diffed against it, then rebound to canonical717 fingerprints. Historical existence and quality are proven; present-union novelty is not yet proven."
+  },
+  "next": [
+    "Materialize current403 Winpass recovered raw_id/fingerprint inventory.",
+    "Diff the 10+9 historical strict bodies against current403 by raw_id and fingerprint.",
+    "For absent candidates, recompute content-bound fingerprint and require exact match to canonical717 identity before promotion.",
+    "Continue mining historical durable strict artifacts from the corrected 512->641 and subsequent +47 chains; never add header counts without union verification."
+  ],
+  "publication_ready": false,
+  "main_touched": false
+}
