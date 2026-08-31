@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '20'
       - name: Extract next human QA passages
-        run: node v11_batch11_human_qa_extract.js V11-B11-G1-009 V11-B11-G1-010 V11-B11-G1-011 V11-B11-G1-012 V11-B11-G1-013 V11-B11-G1-014
+        run: node v11_batch11_human_qa_extract.js V11-B11-G1-015 V11-B11-G1-016 V11-B11-G1-017 V11-B11-G2-001 V11-B11-G2-002 V11-B11-G2-003
       - name: Persist extract
         run: |
           git config user.name "github-actions[bot]"
