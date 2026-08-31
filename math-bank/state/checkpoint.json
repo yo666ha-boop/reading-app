@@ -3,7 +3,7 @@
   "status": "IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP",
   "current_stage": "APP1271_RUNTIME_PARENT_RECONSTRUCTION_FROM_FIXED_SOURCES",
   "current_bucket": "CURRENT_CONTRACT_SCHEMA_PROVENANCE_AND_FINGERPRINT_MIGRATION",
-  "recorded_at_jst": "2026-08-31T23:00:00+09:00",
+  "recorded_at_jst": "2026-09-01T01:56:00+09:00",
   "main_touched": false,
   "schedule_changed": false,
   "source_identity": {
@@ -37,6 +37,9 @@
         "historical10":"PASS durable Drive readback",
         "final109_exact_provenance40":"PASS durable Drive readback",
         "final109_exact_residual":69,
+        "final109_residual69_identity_source_gate":"PASS durable GitHub readback; 69/69 source SHA + nested DOCX ZIP PASS",
+        "final109_residual69_worklist_artifact":"math-bank/state/app1271-winpass-final109-residual69-exact-worklist-source-gate-20260901T0156JST.json",
+        "final109_residual69_raw_id_union_sha256":"38ce336ad197f3983552f7e8ebff3857c50051ba54c43253498ca037a5be1def",
         "aggregate_other_residual_pending_identity":10,
         "durably_migrated_after_baseline":91,
         "artifact_51":"math-bank/state/app1271-winpass-current-schema-migration-durable-20260831T2134JST.json",
@@ -50,7 +53,7 @@
     "app_pipeline": {"runtime_validation":"BLOCKED_REMAINING_79_CURRENT_CONTRACT_AND_FULL_1271_VALIDATION","app_records":0,"verified_1271_runtime_parent_payload_present":false,"legacy_runtime_validator_still_fixed_to_1124_570_1231_107":"math-bank/app/validate_app_records.py"},
     "publication_ready": false
   },
-  "exact_stop": "Winpass identity/body evidence is closed at 717/717. Current-schema materialization is durably verified for 638/717. Aggregate remaining is 79, but raw_id reconciliation proves only 69 of those are residual members of final109 (109-40=69); the other 10 must be identified separately by set difference. No unresolved record is promoted without exact provenance/current fingerprint validation.",
-  "next_start": "Use the exact 69-raw_id final109 residual from app1271-winpass-final109-migration-arithmetic-reconciliation-20260831T2300JST.json, and separately identify the other 10 aggregate residual raw_ids. Bind question/answer offsets only where fixed Winpass OOXML plus durable validation/figure/media evidence yields exact source provenance; do not use weak text similarity. Recompute current fingerprints and durable-readback, then require full Winpass717 + Standard317 + Jitsuren237 validate_raw1271_materialization.py PASS before app mapping/runtime promotion.",
+  "exact_stop": "Winpass identity/body evidence is closed at 717/717. Current-schema materialization remains 638/717. The final109 residual is now an exact durable 69-raw_id worklist: all five strict source artifacts match their durable bytes/SHA and all 69 records match fixed-Winpass source_document SHA with nested DOCX ZIP PASS. This closes identity/source integrity only; exact current OOXML offsets and current fingerprints remain pending. The other aggregate residual 10 is still separately unidentified. No unresolved record is promoted.",
+  "next_start": "Use only the exact residual69 worklist artifact for final109 migration; bind Q/A offsets only from fixed OOXML plus durable validation/figure/media evidence, then recompute current fingerprints. Separately identify the other 10 aggregate residual raw_ids by set difference against the exact 638-ready union. Keep promotion at zero until Winpass717 current-contract union and full Standard317+Jitsuren237+Winpass717 validate_raw1271_materialization.py PASS, then explicit app mapping/freeze/runtime/UI/A4/browser/device/release/public isolated verification.",
   "main_untouched": true
 }
