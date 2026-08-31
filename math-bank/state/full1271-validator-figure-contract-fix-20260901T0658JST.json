@@ -1,0 +1,28 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-09-01T06:58:00+09:00",
+  "stage": "FULL_1271_CURRENT_CONTRACT_VALIDATION",
+  "problem": "validate_raw1271_materialization.py hard-coded EXPECTED_FIGURE_REFS=41 even though durable Standard317 has 154 figure_refs and Jitsuren237 has 81, totaling 235 before Winpass717 is assembled.",
+  "evidence": {
+    "prior_audit": "math-bank/state/full1271-preassembly-contract-audit-20260901T0554JST.json",
+    "standard_figure_refs": 154,
+    "jitsuren_figure_refs": 81,
+    "known_pre_winpass_total": 235
+  },
+  "fix": {
+    "validator": "math-bank/scripts/validate_raw1271_materialization.py",
+    "removed_historical_fixed_figure_target": 41,
+    "default_policy": "validate every figure ref identity and missing=false without forcing an obsolete aggregate count",
+    "strict_optional_policy": "--expected-figure-refs N may be supplied only after N is derived from the assembled durable 1271 evidence union",
+    "report_additions": ["figure_refs_by_source", "expected_figure_refs", "figure_count_policy"],
+    "validator_commit": "e540b9a475e94c8a631caccad77711cd14db59ba",
+    "test_commit": "fd7b6ff92c61922cc232129736c02ecaad0a3700"
+  },
+  "safety": {
+    "records_promoted": 0,
+    "figure_refs_deleted_to_match_41": 0,
+    "main_touched": false,
+    "publication_ready": false
+  },
+  "next": "Durably materialize/read back the Standard317 and Jitsuren237 current-fingerprint bodies, assemble them with Winpass717, derive actual full1271 figure_refs from that exact union, then run the corrected validator with the evidence-derived figure count and require zero errors."
+}
