@@ -1,0 +1,52 @@
+{
+  "batch": "V11-B12",
+  "stage": "HUMAN_SEMANTIC_REVIEW_R2_PARTIAL",
+  "reviewedIds": [
+    "V11-B12-G1-001","V11-B12-G1-002","V11-B12-G1-003","V11-B12-G1-004","V11-B12-G1-005","V11-B12-G1-006","V11-B12-G1-007","V11-B12-G1-008","V11-B12-G1-009","V11-B12-G1-010","V11-B12-G1-011","V11-B12-G1-012","V11-B12-G1-013","V11-B12-G1-014","V11-B12-G1-015","V11-B12-G1-016","V11-B12-G1-017",
+    "V11-B12-G2-001","V11-B12-G2-002","V11-B12-G2-003","V11-B12-G2-004","V11-B12-G2-005","V11-B12-G2-006","V11-B12-G2-007","V11-B12-G2-008","V11-B12-G2-009","V11-B12-G2-010",
+    "V11-B12-G3-001","V11-B12-G3-002","V11-B12-G3-003","V11-B12-G3-004","V11-B12-G3-005","V11-B12-G3-006","V11-B12-G3-007","V11-B12-G3-008"
+  ],
+  "replacements": [
+    {
+      "id": "V11-B12-G1-003",
+      "bodyReplaces": [{"from":"The students learned why they had seemed to be late even though the schedule had not changed.","to":"The students learned why they had started lining up early even though the schedule had not changed."}],
+      "translationReplaces": [{"from":"予定は変わっていないのに、なぜ遅れそうに感じたのか生徒たちは理解しました。","to":"予定は変わっていないのに、なぜ早く並び始めてしまったのか生徒たちは理解しました。"}],
+      "reason": "A clock five minutes fast caused an early line-up, not a feeling of being late."
+    },
+    {
+      "id": "V11-B12-G1-016",
+      "bodyReplaces": [{"from":"Because the mistake was found early, the class could continue the observation without treating both cups as if they had received different light all day.","to":"Because the mistake was found early, the class could record the mix-up and continue the observation without assuming that Cup B had stayed by the north window all day."}],
+      "translationReplaces": [{"from":"早く間違いに気づいたので、二つが一日中違う光を受けたかのように扱わず、観察を続けることができました。","to":"早く間違いに気づいたので、その入れ替わりを記録し、Bが一日中北側の窓にあったと決めつけずに観察を続けることができました。"}],
+      "reason": "The original ending described the intended different-light condition as if it were the mistake."
+    },
+    {
+      "id": "V11-B12-G2-001",
+      "translationReplaces": [{"from":"4分以上待つ生徒はいなくなり","to":"4分を超えて待つ生徒はいなくなり"}],
+      "reason": "English 'no more than four minutes' permits exactly four minutes."
+    },
+    {
+      "id": "V11-B12-G2-002",
+      "translationReplaces": [{"from":"クラスはその位置を二時間の授業で試しました。","to":"クラスはその位置を二回の授業で試しました。"}],
+      "reason": "two lessons means two class periods, not two hours."
+    },
+    {
+      "id": "V11-B12-G3-004",
+      "bodyReplaces": [{"from":"The 8:10 ferry arrived at 8:45, so the group could walk to the clinic and begin soon after 9:00. If they finished around 11:00, they could eat lunch near the port and take the 13:40 ferry back.","to":"The 8:10 ferry arrived at 8:45, so the group could walk to the clinic and begin around 9:15. After about ninety minutes, they could finish around 10:45, eat lunch near the port, and take the 13:40 ferry back."}],
+      "translationReplaces": [{"from":"8時10分の便なら8時45分に到着し、歩いて診療所へ行けば9時過ぎに始められます。11時ごろ終われば港近くで昼食を取り、13時40分の便で戻れます。","to":"8時10分の便なら8時45分に到着し、歩いて診療所へ行けば9時15分ごろに始められます。約90分のインタビューを10時45分ごろに終え、港近くで昼食を取り、13時40分の便で戻れます。"}],
+      "reason": "The passage promised about 90 minutes at the clinic, but the former 9:00-to-11:00 description implied roughly two hours."
+    },
+    {
+      "id": "V11-B12-G3-008",
+      "materialsPatch": {"family":"Mother, 13-year-old son, 8-year-old daughter; daughter cannot use stairs safely and needs the elevator for floor changes."},
+      "bodyReplaces": [
+        {"from":"Stairs would remain open, but Hana could not safely use more than one floor of stairs because of a leg condition.","to":"Stairs would remain open, but Hana could not safely use the stairs because of a leg condition and needed the elevator for floor changes."},
+        {"from":"Second, they could attend only the picture-book lab. That was possible if Hana slowly used one flight of stairs, but Ryo would have no activity designed for his age.","to":"Second, they considered attending only the picture-book lab, but it ended before the elevator reopened, so Hana could not reach the second floor safely."}
+      ],
+      "translationReplaces": [
+        {"from":"階段は使えますが、ハナは脚の状態のため一階分を超える階段を安全に使えません。","to":"階段は使えますが、ハナは脚の状態のため階段を安全に使えず、階を移動するにはエレベーターが必要です。"},
+        {"from":"絵本ラボだけに参加する案ならハナはゆっくり一階分の階段を使えますが、リョウ向けの活動がありません。","to":"絵本ラボだけに参加する案も考えましたが、ラボはエレベーターの再開前に終わるため、ハナは安全に2階へ行けません。"}
+      ],
+      "reason": "The previous one-floor stair condition accidentally made the 3F-to-2F move plausible, undermining the intended access reasoning."
+    }
+  ]
+}
