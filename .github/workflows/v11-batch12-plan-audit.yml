@@ -1,0 +1,34 @@
+name: v11 Batch12 plan audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch12_authoring_plan.json'
+      - 'v11_batch12_plan_audit.js'
+      - '.github/workflows/v11-batch12-plan-audit.yml'
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run plan audit
+        run: node v11_batch12_plan_audit.js
+      - name: Persist plan audit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f V11_BATCH12_PLAN_AUDIT.json
+          git diff --cached --quiet || git commit -m "v11: persist Batch12 plan audit"
+          for n in 1 2 3; do
+            git pull --rebase origin v11-1000passage-easy-notes && git push origin HEAD:v11-1000passage-easy-notes && exit 0
+            sleep $((n*2))
+          done
+          exit 1
