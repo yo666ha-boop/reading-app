@@ -1,5 +1,6 @@
 const fs=require('fs');
 const src=require('./v11_batch12_assembled_draft.json');
+// Rerun after human-reviewed sentence-alignment repairs; still fail closed on every mismatch.
 if(src.registered!==false||src.humanReviewedCount!==50||src.humanReviewPendingCount!==0)throw new Error('Batch12 semantic review must be complete and unregistered');
 function splitEn(s){return (s.match(/[^.!?]+[.!?]+(?:[”"'](?=\s|$))?|[^.!?]+$/g)||[]).map(x=>x.trim()).filter(Boolean)}
 function splitJp(s){return (s.match(/[^。！？]+[。！？]/g)||[]).map(x=>x.trim()).filter(Boolean)}
