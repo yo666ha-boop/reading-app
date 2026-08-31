@@ -8,9 +8,14 @@ function restore(p){const s=frozen.get(p&&p.id);if(!s)return p;p.supportNotes=s.
 function wrap(fn){if(typeof fn!=='function')return fn;if(fn.__V11_B11_PROPERTY_GUARD)return fn;const g=function(){return restore(fn.apply(this,arguments));};g.__V11_B11_PROPERTY_GUARD=true;g.__V11_B11_PROPERTY_BASE=fn;return g;}
 let current=wrap(window.choose);
 try{
-  Object.defineProperty(window,'choose',{configurable:true,enumerable:true,get(){return current;},set(fn){current=wrap(fn);}});
+  // Keep the accessor non-configurable. The shared runtime redefines `window.choose`
+  // during render/refresh; a configurable accessor was silently replaced and the
+  // curated Batch11 supportNotes disappeared. Ordinary assignments still flow
+  // through this setter and are re-wrapped, while later descriptor replacement
+  // can no longer remove the guard.
+  Object.defineProperty(window,'choose',{configurable:false,enumerable:true,get(){return current;},set(fn){current=wrap(fn);}});
 }catch(e){throw Error('Batch11 choose property guard install failed: '+e.message);}
 window.choose=current;
 for(const arr of Object.values(window.V11_EXTRA_PASSAGES||{})) for(const p of arr||[]) restore(p);
-window.V11_BATCH11_CHOOSE_PROPERTY_GUARD={installed:true,snapshots:frozen.size,version:'20260831-b11-property-guard-r1'};
+window.V11_BATCH11_CHOOSE_PROPERTY_GUARD={installed:true,snapshots:frozen.size,nonConfigurable:true,version:'20260831-b11-property-guard-r2'};
 })();
