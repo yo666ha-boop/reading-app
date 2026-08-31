@@ -1,0 +1,19 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "APP1271_WINPASS_ADDITIONAL_HISTORICAL_BODY_RECOVERY",
+  "baseline": {"exact_total":957,"Standard":317,"実力錬成":237,"Winpass":403,"Winpass_remaining":314},
+  "quality_rule": "Historical bodies are recovery candidates only until diffed against the materialized current403 union and rebound to canonical717 raw_id/fingerprint identities. No header-count promotion.",
+  "additional_durable_sources_located": [
+    {"source_document":"25winpasst1suhy000519.docx","drive_id":"1yxR0MNRBbuPh8Kh4JMpB_l13PgUgWLbAJVNHqmprdYc","records":10,"unique_raw_ids":10,"unique_fingerprints":10,"source_document_sha256":"29c7c4c2b58512ce28b7dee30691e8654fd509d60176cc08ef895457258e630d","independent_checks":"10/10 PASS","figure_asset_binding":"PASS","ordered_provenance":"PASS"},
+    {"source_document":"25winpasst1suhy000523.docx","drive_id":"1pVEV4JxQWBdRM-lqDivY7UNwwMfxMGPo2Topw4gC7wQ","records":7,"unique_raw_ids":7,"unique_fingerprints":7,"source_document_sha256":"37ac06622a87fc81fbfa07f9c73c0e0520d58ff6bc8478b0c9679539f2ef1622","independent_checks":"7/7 PASS","graphical_answers":"3/3 PASS","figure_asset_binding":"PASS"},
+    {"source_documents":["25winpasst2suhy000309.docx","25winpasst2suhy000311.docx","25winpasst3suhy000413.docx"],"drive_id":"1NU_t0cGffEw_bDUSRnno46NonVb90gz72dg2Qmut-Rg","records":9,"unique_raw_ids":9,"unique_fingerprints":9,"independent_checks":"9/9 PASS","graph_question_answer_asset_binding":"PASS"},
+    {"source_document":"25winpasst1suhy000417.docx","drive_id":"1ne3Wnm5YK-UK29p7QwVqg9ukwxwCN_Xi6jx5P54Wj3s","github_path":"math-bank/state/winpass10-1suhy000417-strict-20260827.json","github_ref":"63b62e870dd77295fa17dcc95f5925ab43f3211f","records":10,"unique_raw_ids":10,"unique_fingerprints":10,"source_document_sha256":"c49ef3c336dff17d50fa6f974a86bb89cb2f245d854b28c9f6d55ee498d8a552","independent_checks":"10/10 PASS","figure_asset_binding":"PASS"}
+  ],
+  "candidate_records_located_this_run":36,
+  "previously_mapped_candidate_records":19,
+  "historical_candidate_pool_mapped":55,
+  "promotion":{"count_added_to_current_exact_recovery":0,"reason":"Current403 raw_id/fingerprint inventory is not stored as a full body/identity union in the current audit artifact. Novelty against current403 must be proven before promotion."},
+  "next":["Materialize current403 raw_id/fingerprint inventory from its 32 parsed Drive JSONLs plus 18 historical GitHub bodies.","Diff all mapped historical candidates by raw_id and fingerprint.","Promote only absent candidates whose strict content-bound fingerprint exactly rebinds to canonical717 identity.","Continue the corrected historical 512->641 and +47 chain until exact Winpass union reaches 717."],
+  "publication_ready":false,
+  "main_touched":false
+}
