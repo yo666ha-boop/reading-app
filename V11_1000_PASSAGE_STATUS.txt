@@ -1,12 +1,12 @@
-phase=V11_BATCH10_COMPLETE_BATCH11_NEXT
+phase=V11_BATCH11_COMPLETE_BATCH12_NEXT
 branch=v11-1000passage-easy-notes
 baseline_passages=168
 target_passages=1000
 batch_size=50
-current_total=668
-remaining_passages=332
-next_batch=Batch11
-next_batch_target=718
+current_total=718
+remaining_passages=282
+next_batch=Batch12
+next_batch_target=768
 batch01_registered=true
 batch02_registered=true
 batch03_registered=true
@@ -17,20 +17,18 @@ batch07_registered=true
 batch08_registered=true
 batch09_registered=true
 batch10_registered=true
-batch10_passages=50
-batch10_grade_split=G1_17_G2_17_G3_16
-batch10_vocab_chronology=PASS unregistered=0 future_vocab=0
-batch10_grammar_chronology=PASS unresolved=0 future_grammar=0
-batch10_question_quality=PASS passages=50 total_questions=500
-batch10_content_integrity=PASS passages=50 questions=500 failures=0
-batch10_human_semantic_review=PASS prior_full_50_review_retained changed_G2_001_rechecked=true
-batch10_candidate_runtime=PASS total=668 registered=false pc=PASS iphone=PASS duplicate_id=0 duplicate_body=0 near_duplicate=0 a4_sections=6 a4_files=12
-batch10_persistent_runtime=PASS run=33254272406 total=668 registered=true pc=PASS iphone=PASS cross_batch=PASS a4_student_teacher=PASS
-batch10_registration_commit=a3bcb9fc6d8cb36c6fe7975b8a272205996b91f4
-batch10_bootstrap_commit=45332b5436b2cdc10f8bf32dee8d9f73f975deac
-batch10_chain_commit=4613389608a20d46451c86386aa1c701fa0b4d05
-batch10_persistent_audit_commit=a08c762d8fb8de77d7e90b918dfb7fb8865e86c7
-batch10_semantic_fix=G2-001 removed_unregistered_hard_and_synced_sentence_slash_translation_evidence
-batch10_semantic_fix_commit=021e91ea9d2806b390a91c638e0bc027ae2b118a
+batch11_registered=true
+batch11_passages=50
+batch11_grade_split=G1_17_G2_17_G3_16
+batch11_vocab_chronology=PASS unregistered=0 future_vocab=0
+batch11_grammar_chronology=PASS unresolved=0 future_grammar=0
+batch11_human_question_gate=PASS passages=50 unique_ids=50 questions=500 reviewed_passages=50 issues=0
+batch11_verified_support_snapshots=50
+batch11_candidate_runtime=PASS total=718 registered=false pc=PASS iphone=PASS duplicate_id=0 duplicate_body=0 near_duplicate=0 self_pair=0 a4_sections=6 a4_files=12
+batch11_persistent_runtime=PASS run=33394894977 total=718 registered=true pc=PASS iphone=PASS cross_batch=PASS a4_student_teacher=PASS normal_notes=3928 support_notes=489
+batch11_bootstrap_commit=15cf8584a2d1d4b1e0d773687dee5fbe869cea05
+batch11_chain_commit=a7d909b54b8432b8dd868a19c4c06d4f4260291c
+batch11_persistent_workflow_commit=98bc87274847c4d3a72516e34e5d2eb8e0f24fbd
+batch11_persistent_result_commit=ed9d83e47308ff2e7d6bde6c800a7c2e0793bd6b
 release_to_main=NO_UNTIL_1000_AND_FINAL_RELEASE_GATES_PASS
-next_step=Start Batch11 only after rereading Drive 00/99 and current branch HEAD. Create 50 distinct unregistered passages, then pass human semantic quality, translation/slash sync, A/B question quality, v7 vocab/grammar chronology, normal/easy notes, cross-batch duplication, Chromium/iPhone, A4 student/teacher, and persistent runtime before registering 668->718.
+next_step=Start Batch12 only after rereading Drive 00/99 and current branch HEAD. Create 50 distinct unregistered passages, then pass human semantic quality, translation/slash sync, A/B question quality, v7 vocab/grammar chronology, normal/easy notes, cross-batch duplication, Chromium/iPhone, A4 student/teacher, and persistent runtime before registering 718->768.
