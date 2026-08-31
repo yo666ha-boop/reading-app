@@ -1,0 +1,36 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "FULL_1271_CURRENT_CONTRACT_PREASSEMBLY_AUDIT",
+  "recorded_at_jst": "2026-09-01T05:54:00+09:00",
+  "inputs": {
+    "Standard": {"drive_strict_id":"1L6n6iGfFQdii0jTzM224fT0U5MAXZcYS","records":317,"bytes":610417},
+    "実力錬成": {"drive_strict_id":"1ZrG7Xw0iMjaR27UfzpPJmWnMK_2wlC2P","records":237,"bytes":423021},
+    "Winpass": {"current_contract_ready":717,"checkpoint_evidence":true}
+  },
+  "actual_body_audit": {
+    "Standard": {"raw_id_unique":"317/317","stored_current_fingerprint_matches":"291/317","fingerprints_requiring_current_contract_recompute":26,"post_recompute_unique_fingerprints":"317/317","structural_record_gate_errors_after_recompute":0,"figure_refs":154},
+    "実力錬成": {"raw_id_unique":"237/237","stored_record_fingerprint_present":0,"fingerprints_requiring_current_contract_recompute":237,"post_recompute_unique_fingerprints":"237/237","structural_record_gate_errors_after_recompute":0,"figure_refs":81}
+  },
+  "validator_contract_audit": {
+    "path":"math-bank/scripts/validate_raw1271_materialization.py",
+    "expected_total":1271,
+    "expected_source_counts":{"Standard":317,"実力錬成":237,"Winpass":717},
+    "hardcoded_expected_figure_refs":41,
+    "observed_figure_refs_before_Winpass":235,
+    "finding":"The validator's hardcoded EXPECTED_FIGURE_REFS=41 cannot pass the actual Standard317 + Jitsuren237 durable bodies because those two sources alone contain 235 non-missing figure_refs. This is a validator-target inconsistency, not evidence to delete figure relationships.",
+    "count_forcing_or_figure_deletion_allowed":false
+  },
+  "durability": {
+    "migrated_Standard_and_Jitsuren_bodies_committed":false,
+    "reason":"Current-contract fingerprints were recomputed and structurally checked in-run, but the migrated JSONL bodies were not durably committed in this run. Therefore no runtime promotion or full1271 PASS is claimed."
+  },
+  "next": [
+    "Durably materialize Standard317 and Jitsuren237 with recomputed current-contract record_fingerprint while preserving exact bodies/provenance/figure refs.",
+    "Read back those migrated bodies and verify 317/317 and 237/237 unique raw_id/fingerprint with zero structural errors.",
+    "Reconcile EXPECTED_FIGURE_REFS against the actual 1271 evidence union; do not reduce figure refs to satisfy the stale constant.",
+    "Assemble with Winpass717 and run the corrected full1271 validator before runtime promotion."
+  ],
+  "runtime_promotion":0,
+  "publication_ready":false,
+  "main_touched":false
+}
