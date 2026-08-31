@@ -1,1 +1,46 @@
-PLACEHOLDER
+{
+  "schema": "app1271_winpass_final109_residual69_exact_identity_source_gate_v1",
+  "project": "mikami-math-problem-bank",
+  "stage": "APP1271_RUNTIME_PARENT_RECONSTRUCTION_FROM_FIXED_SOURCES",
+  "recorded_at_jst": "2026-09-01T01:56:00+09:00",
+  "status": "PASS_RESIDUAL69_EXACT_IDENTITY_SOURCE_GATE_NO_PROMOTION",
+  "fixed_winpass_source": {"drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E","bytes":8296042,"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","crc32":"992b0ca2","zip_test":"PASS","members":81},
+  "inputs": {
+    "final109_manifest":"math-bank/state/winpass109-finalized-manifest-20260827.json",
+    "final109_records":109,
+    "migrated40_artifact":"math-bank/state/app1271-winpass-final109-exact-provenance40-20260831T2157JST.json",
+    "migrated40_records":40,
+    "strict_body_artifacts":[
+      {"drive_file_id":"1MIBmPnWWxyoJ1rh-IKH163EbXoavxC1J","file":"25winpasst2suhy000518-strict-20260827.jsonl","bytes":6697,"sha256":"b4fc501329b9302ba417176fe9c5edeecd19f7bc5b83b4901f9e420fd0ca4529","records":7},
+      {"drive_file_id":"18ayB79VUnOC9ahAuUNluTp1nouLZTyd5","file":"25winpasst2suhy000520-strict-20260827.jsonl","bytes":9030,"sha256":"9380e46c935bddbd61b12118fba48720bdccebd80f00efa4fba97297fa314cd1","records":10},
+      {"drive_file_id":"1A2jMeCoed7EhbxXEUo1SySGjWQPR2fNM","file":"25winpasst2suhy000521-strict-20260827.jsonl","bytes":8162,"sha256":"1b01ac8ad5a007d0b563f6c6d60b88bbad6ed9d3ff9cfb9982e7450750cdba0b","records":9},
+      {"drive_file_id":"1GhfZxP_CiG0QqH7wYWdmF4DfdMoaTe3-","file":"25winpasst2suhy000725-strict-20260827.jsonl","bytes":7271,"sha256":"dafcbdc8a8ecb2a98098678b47a986bed600926ec6101b0c3ba720843fa73c8c","records":8},
+      {"drive_file_id":"1Rr5EfCx1jVegEaedJk5dILFikveqxPf_","file":"winpass75-final-mediaheavy-strict-20260827.jsonl","bytes":51500,"sha256":"0c28aa3a9648b594ccd8f5a13be5eaebb8c053fd45426e8edb3b0a63fe310d1b","records":75}
+    ]
+  },
+  "reconciliation": {
+    "equation":"109 - 40 = 69",
+    "residual_records":69,
+    "residual_unique_raw_ids":69,
+    "residual_raw_id_union_sha256":"38ce336ad197f3983552f7e8ebff3857c50051ba54c43253498ca037a5be1def",
+    "residual_by_source_document":{"25winpasst2suhy000518.docx":1,"25winpasst2suhy000725.docx":1,"25winpasst3suhy000415.docx":10,"25winpasst3suhy000416.docx":6,"25winpasst3suhy000517.docx":10,"25winpasst3suhy000518.docx":10,"25winpasst3suhy000519.docx":3,"25winpasst3suhy000521.docx":9,"25winpasst3suhy000522.docx":9,"25winpasst3suhy000624.docx":10},
+    "residual_raw_ids":["Winpass:25winpasst2suhy000518.docx:M02:S01","Winpass:25winpasst2suhy000725.docx:M01:S06","Winpass:25winpasst3suhy000415.docx:M01:S01","Winpass:25winpasst3suhy000415.docx:M01:S02","Winpass:25winpasst3suhy000415.docx:M01:S03","Winpass:25winpasst3suhy000415.docx:M01:S04","Winpass:25winpasst3suhy000415.docx:M01:S05","Winpass:25winpasst3suhy000415.docx:M02:S01","Winpass:25winpasst3suhy000415.docx:M02:S02","Winpass:25winpasst3suhy000415.docx:M02:S03","Winpass:25winpasst3suhy000415.docx:M02:S04","Winpass:25winpasst3suhy000415.docx:M02:S05","Winpass:25winpasst3suhy000416.docx:M01:S01","Winpass:25winpasst3suhy000416.docx:M01:S02","Winpass:25winpasst3suhy000416.docx:M01:S03","Winpass:25winpasst3suhy000416.docx:M02:S01","Winpass:25winpasst3suhy000416.docx:M02:S03","Winpass:25winpasst3suhy000416.docx:M03:S01","Winpass:25winpasst3suhy000517.docx:M01:S01","Winpass:25winpasst3suhy000517.docx:M01:S02","Winpass:25winpasst3suhy000517.docx:M01:S03","Winpass:25winpasst3suhy000517.docx:M02:S01","Winpass:25winpasst3suhy000517.docx:M02:S02","Winpass:25winpasst3suhy000517.docx:M02:S03","Winpass:25winpasst3suhy000517.docx:M02:S04","Winpass:25winpasst3suhy000517.docx:M02:S05","Winpass:25winpasst3suhy000517.docx:M02:S06","Winpass:25winpasst3suhy000517.docx:M03:S01","Winpass:25winpasst3suhy000518.docx:M01:S01","Winpass:25winpasst3suhy000518.docx:M01:S02","Winpass:25winpasst3suhy000518.docx:M01:S03","Winpass:25winpasst3suhy000518.docx:M02:S01","Winpass:25winpasst3suhy000518.docx:M02:S02","Winpass:25winpasst3suhy000518.docx:M02:S03","Winpass:25winpasst3suhy000518.docx:M03:S01","Winpass:25winpasst3suhy000518.docx:M03:S02","Winpass:25winpasst3suhy000518.docx:M03:S03","Winpass:25winpasst3suhy000518.docx:M03:S04","Winpass:25winpasst3suhy000519.docx:M01:S01","Winpass:25winpasst3suhy000519.docx:M01:S02","Winpass:25winpasst3suhy000519.docx:M03:S01","Winpass:25winpasst3suhy000521.docx:M01:S01","Winpass:25winpasst3suhy000521.docx:M01:S02","Winpass:25winpasst3suhy000521.docx:M01:S03","Winpass:25winpasst3suhy000521.docx:M01:S04","Winpass:25winpasst3suhy000521.docx:M01:S05","Winpass:25winpasst3suhy000521.docx:M02:S01","Winpass:25winpasst3suhy000521.docx:M02:S03","Winpass:25winpasst3suhy000521.docx:M02:S04","Winpass:25winpasst3suhy000521.docx:M02:S05","Winpass:25winpasst3suhy000522.docx:M01:S01","Winpass:25winpasst3suhy000522.docx:M01:S02","Winpass:25winpasst3suhy000522.docx:M01:S03","Winpass:25winpasst3suhy000522.docx:M01:S04","Winpass:25winpasst3suhy000522.docx:M01:S05","Winpass:25winpasst3suhy000522.docx:M01:S06","Winpass:25winpasst3suhy000522.docx:M01:S07","Winpass:25winpasst3suhy000522.docx:M01:S08","Winpass:25winpasst3suhy000522.docx:M02:S01","Winpass:25winpasst3suhy000624.docx:M01:S01","Winpass:25winpasst3suhy000624.docx:M01:S02","Winpass:25winpasst3suhy000624.docx:M01:S03","Winpass:25winpasst3suhy000624.docx:M01:S04","Winpass:25winpasst3suhy000624.docx:M02:S01","Winpass:25winpasst3suhy000624.docx:M02:S02","Winpass:25winpasst3suhy000624.docx:M02:S03","Winpass:25winpasst3suhy000624.docx:M02:S04","Winpass:25winpasst3suhy000624.docx:M03:S01","Winpass:25winpasst3suhy000624.docx:M03:S02"]
+  },
+  "fixed_source_document_gate": {
+    "source_documents":10,"records":69,"source_document_sha256_match":"69/69 PASS","nested_docx_zip_test":"69/69 PASS",
+    "documents":{
+      "25winpasst2suhy000518.docx":{"records":1,"bytes":120871,"sha256":"a4ce326ac3496193d7493698f69c70356c608e8555032e9048a946c5d83a5c65","crc32":"b4092542","nested_docx_zip_test":"PASS"},
+      "25winpasst2suhy000725.docx":{"records":1,"bytes":120332,"sha256":"5a03e8429d8cf402bf2d427f58ff89e053dc877b60a0206fb7d2a24aa3731e88","crc32":"e5644908","nested_docx_zip_test":"PASS"},
+      "25winpasst3suhy000415.docx":{"records":10,"bytes":108709,"sha256":"592392b48883536d9060ea377d234f3a2211016d3a5419f47f8e7842421ef0a1","crc32":"b5eadabd","nested_docx_zip_test":"PASS"},
+      "25winpasst3suhy000416.docx":{"records":6,"bytes":111289,"sha256":"f663eaabc95a2e825ca033b63b46792acc4093fd9fb6d4d7c3f77fdb3a49cee0","crc32":"cb661135","nested_docx_zip_test":"PASS"},
+      "25winpasst3suhy000517.docx":{"records":10,"bytes":135009,"sha256":"d6bd4c3679b264aacc5a8c9ac6361e764c47bee757f2fa2d890c497e9f81a315","crc32":"3c64f571","nested_docx_zip_test":"PASS"},
+      "25winpasst3suhy000518.docx":{"records":10,"bytes":195821,"sha256":"5015cb821b9c6b744d1d04ca41b5ab0c5d9a117366a7fdf44d0c2ddcc028b81d","crc32":"78d1558e","nested_docx_zip_test":"PASS"},
+      "25winpasst3suhy000519.docx":{"records":3,"bytes":115498,"sha256":"7344885609b0b4eff49c3afc0e3d916b4e6f99c860f1b7d30c9cf30a66e0b628","crc32":"16b6ce91","nested_docx_zip_test":"PASS"},
+      "25winpasst3suhy000521.docx":{"records":9,"bytes":98879,"sha256":"e670f5b92aaceb23f469f9ed9b85308cc9215f915e7d3a43beac8c31b4c76735","crc32":"d8589772","nested_docx_zip_test":"PASS"},
+      "25winpasst3suhy000522.docx":{"records":9,"bytes":137957,"sha256":"0d5b25e3ba389932259ac2df82b558190fb870049c67c8931e846ddf69934759","crc32":"e39d6cdd","nested_docx_zip_test":"PASS"},
+      "25winpasst3suhy000624.docx":{"records":10,"bytes":125248,"sha256":"1680967cd9e9c282ed0e45cc2347e4cd55e17559883dbcbe798bf7f9b7d56b47","crc32":"63fe87f0","nested_docx_zip_test":"PASS"}
+    }
+  },
+  "quality_guards":{"strict_body_bytes_sha_readback":"PASS against durable manifest","exact_ooxml_question_answer_current_offsets":"PENDING_FOR_RESIDUAL69","current_fingerprint_recalculation":"PENDING_FOR_RESIDUAL69","promotion_count":0,"count_forcing_used":false,"main_touched":false,"publication_ready":false,"note":"Identity/body/source gate only. No current-validator completion is claimed; weak text similarity is forbidden."},
+  "next":"Use only these 69 exact raw_ids. Bind current question/answer offsets from fixed OOXML and durable figure/media/score evidence only when exact. Recompute current fingerprints after provenance is exact. Separately identify the other 10 records in the aggregate 79 residual by set difference. Do not promote or decrement remaining counts until those gates pass."
+}
