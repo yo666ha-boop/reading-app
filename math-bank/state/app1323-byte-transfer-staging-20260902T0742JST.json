@@ -1,0 +1,57 @@
+{
+  "schema": "mikami_math_exact1323_byte_transfer_staging_evidence_v1",
+  "recorded_at_jst": "2026-09-02T07:42:00+09:00",
+  "project": "みかみ塾 数学問題バンク／数学アプリ再構築",
+  "source": {
+    "drive_file_id": "1l29gpomqPrEEqWCnlCuZH1BiZSw5lg4y",
+    "bytes": 6819806,
+    "sha256": "47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521",
+    "records": 1323,
+    "embedded_assets": 282
+  },
+  "source_archives_revalidated_this_run": {
+    "Standard": {"bytes":9689250,"sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","crc32":"f8e307bb","zip_test":"PASS"},
+    "実力錬成": {"bytes":7287279,"sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","crc32":"1a020f98","zip_test":"PASS"},
+    "Winpass": {"bytes":8296042,"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","crc32":"992b0ca2","zip_test":"PASS","docx_members":81}
+  },
+  "transport": {
+    "codec": "brotli-quality-11-then-base64-ascii",
+    "brotli_bytes": 3923915,
+    "brotli_sha256": "8f78b6dc4e26b5349d9a6dedc7b6d6efad931c7ed3da58d0767ce6b8d36dc003",
+    "base64_chars": 5231888,
+    "operational_chunk_chars": 12000,
+    "planned_total_chunks": 436,
+    "durable_chunks": 1,
+    "durable_base64_chars": 12000,
+    "chunk_000": {
+      "sha256": "38a22d6282d1c00f5431b358bcf14aa3102c7e54502b4b2a34aea99310fe1e92",
+      "precomputed_git_blob_sha1": "de6286b5a58d5fe7ac0f655fda48b0b0284fbcb1",
+      "github_returned_git_blob_sha1": "de6286b5a58d5fe7ac0f655fda48b0b0284fbcb1",
+      "match": true,
+      "path": "math-bank/transfer/app1323-exact-br-b64/chunks/000.txt"
+    }
+  },
+  "durability": {
+    "staging_commit": "077c213ca78a68f50dac8761d5cdd528178a4aa1",
+    "staging_tree": "a82064e149711474460136c8e4ac5eeb4be04d1c",
+    "manifest_path": "math-bank/transfer/app1323-exact-br-b64/manifest.partial.json",
+    "readback": "PASS_PATH_AND_CONTENT_READBACK",
+    "release_credit": false
+  },
+  "rejected_shortcuts_this_run": [
+    "Vercel connected deploy wrapper does not dereference sandbox paths, sediment URIs, connector file IDs, or local paths into bytes",
+    "Google Drive personal account has no anonymous-public share action in connected surface; organization-share probe on temporary copy failed and the temporary copy was deleted",
+    "No reusable GitHub release/artifact/history copy of the exact 6,819,806-byte app was found",
+    "No Google Drive authentication secret path was found in existing GitHub Actions",
+    "No connected Vercel binary /v2/files upload surface or locally exposed OAuth token is available"
+  ],
+  "quality_gate": {
+    "partial_transfer_is_not_release_progress": true,
+    "reconstruct_only_after_all_chunks_durable": true,
+    "require_reconstructed_source_bytes": 6819806,
+    "require_reconstructed_source_sha256": "47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521",
+    "main_touched": false,
+    "publication_ready": false
+  },
+  "next_start": "Continue byte-preserving GitHub chunk staging from chunk 001. Each chunk must match independently precomputed Git object SHA. After every chunk is durable, concatenate base64, decode, Brotli-decompress, require exact 6,819,806 bytes and exact source SHA, then deploy only to the isolated Vercel project and continue exact-origin browser/localStorage/A4/physical-Fire/strict-release/public verification."
+}
