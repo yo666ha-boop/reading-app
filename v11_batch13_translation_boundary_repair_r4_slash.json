@@ -1,0 +1,20 @@
+{
+  "batch": "V11-B13",
+  "registered": false,
+  "humanReviewed": true,
+  "reviewStage": "B13_SLASH_HUMAN_BOUNDARY_REPAIR_R4",
+  "repairs": [
+    {
+      "id": "V11-B13-G3-001",
+      "find": "最終報告では一つの部屋をいつでも最高とはせず、C室は曇天時に使いやすく、A室は晴れた午後でも温度が安定し、空席も多いことが多いと説明しました。",
+      "replace": "最終報告では一つの部屋をいつでも最高とはしませんでした。C室は曇天時に使いやすく、A室は晴れた午後でも温度が安定し、空席も多いことが多いと説明しました。",
+      "reason": "English has two independent sentences here; the Japanese had compressed both into one and shifted slash alignment. Split into two natural Japanese sentences without changing the meaning."
+    },
+    {
+      "id": "V11-B13-G3-006",
+      "find": "母は「近いA避難所へすぐ歩く方がよいのではない？」と尋ねました。ハルトは距離だけでなく経路全体を比べました。",
+      "replace": "母は「近いA避難所へすぐ歩く方がよいのではない？」と尋ねました。「そちらの方が近いでしょう。」ハルトは距離だけでなく経路全体を比べました。",
+      "reason": "The English sentence “It is closer.” had no Japanese counterpart, causing every later slash row to shift. Restore the omitted meaning as its own natural Japanese sentence."
+    }
+  ]
+}
