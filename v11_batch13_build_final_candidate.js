@@ -8,9 +8,9 @@ function norm(s){return String(s||'').replace(/[「」『』]/g,'"').replace(/\s
 function applyCorrections(doc,file){if(!file)return;const c=read(file);if(c.humanReviewed!==true||c.registered!==false)die(`correction metadata ${file}`);for(const x of c.corrections||[]){const qs=doc.questionsByPassage&&doc.questionsByPassage[x.id];const q=qs&&qs.find(v=>v.set===x.set&&v.no===x.no);if(!q)die(`correction target ${x.id} ${x.set}${x.no}`);for(const k of ['prompt','answer','evidence','evidenceJp','reason','type'])if(x[k])q[k]=x[k];}}
 module.exports=function build(){
  const candidate=buildBody();
- const boundary=read('v11_batch13_question_boundary_corrections.json');
- if(boundary.humanReviewed!==true||boundary.registered!==false)die('boundary correction metadata');
- const boundaryMap=new Map();for(const x of boundary.corrections||[]){const k=`${x.id}|${x.set}|${x.no}`;if(boundaryMap.has(k))die(`duplicate boundary correction ${k}`);boundaryMap.set(k,x);}
+ const boundaryFiles=['v11_batch13_question_boundary_corrections.json','v11_batch13_question_human_slash_sync_r1.json'];
+ const boundaryMap=new Map();
+ for(const file of boundaryFiles){const boundary=read(file);if(boundary.humanReviewed!==true||boundary.registered!==false)die(`boundary correction metadata ${file}`);for(const x of boundary.corrections||[]){const k=`${x.id}|${x.set}|${x.no}`;boundaryMap.set(k,x);}}
  const applied=new Set();
  const layers=[
   ['v11_batch13_question_human_review_r1_g1_001_004.json','v11_batch13_question_human_corrections_r1.json'],
