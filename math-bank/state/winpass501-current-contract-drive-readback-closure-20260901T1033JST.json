@@ -1,0 +1,38 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-09-01T10:33:25+09:00",
+  "stage": "WINPASS_RUNTIME_CURRENT_CONTRACT_BODY_RECONSTRUCTION",
+  "input": {
+    "drive_file_id": "18VryMocavojjbTk9J4lL_ZeyfcTWKawF",
+    "title": "winpass501-current-contract-known-union-20260901T1045JST.jsonl",
+    "bytes": 822570,
+    "sha256": "68a8d4fcba9ad4c5539c0a20a9e3babdbaa2ba01b59c807e5f2bbd9dd8664ebc"
+  },
+  "independent_readback_validation": {
+    "records": 501,
+    "unique_raw_ids": 501,
+    "unique_record_fingerprints": 501,
+    "raw_id_union_sha256": "1d01991a9ef4d6e78a534bb80c60f3199ca02378726fc8e30e3acc101698e8b9",
+    "fingerprint_union_sha256": "580ca4ebb2ccab2e249d9ebcd3f124c72f0bec6f4e395e1255cced45251e5034",
+    "source_documents": 70,
+    "source_document_sha_matches_against_fixed_winpass_zip": "501/501",
+    "figure_refs": 270,
+    "current_contract_structural_errors": 0,
+    "record_fingerprint_recomputation": "501/501 PASS"
+  },
+  "fixed_source_reverification": {
+    "Standard": {"bytes": 9689250, "sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6", "crc32": "f8e307bb", "zip_test": "PASS"},
+    "実力錬成": {"bytes": 7287279, "sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33", "crc32": "1a020f98", "zip_test": "PASS"},
+    "Winpass": {"bytes": 8296042, "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf", "crc32": "992b0ca2", "zip_test": "PASS", "docx_members": 81}
+  },
+  "progress": {
+    "winpass_readable_current_contract": 501,
+    "expected": 717,
+    "remaining": 216,
+    "runtime_promotion": 0,
+    "publication_ready": false,
+    "main_touched": false,
+    "count_forcing": false
+  },
+  "note": "This adopts the furthest durable Drive body union only after independent byte/hash/content/fingerprint/source-document-SHA validation. It does not claim full717 or runtime promotion."
+}
