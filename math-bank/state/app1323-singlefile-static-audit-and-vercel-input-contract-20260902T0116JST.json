@@ -1,0 +1,65 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-09-02T01:16:00+09:00",
+  "branch": "math-problem-bank-bootstrap",
+  "main_touched": false,
+  "publication_ready": false,
+  "exact_candidate": {
+    "drive_file_id": "1l29gpomqPrEEqWCnlCuZH1BiZSw5lg4y",
+    "bytes": 6819806,
+    "sha256": "47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521",
+    "authenticated_drive_readback": "PASS"
+  },
+  "independent_singlefile_static_audit": {
+    "records": 1323,
+    "unique_ids": 1323,
+    "originals": 1271,
+    "variants": 52,
+    "source_counts": {
+      "Winpass": 717,
+      "実力錬成": 237,
+      "Standard": 317
+    },
+    "figure_ref_entries": 602,
+    "unique_figure_paths": 282,
+    "embedded_asset_entries": 282,
+    "missing_assets": 0,
+    "bad_asset_data_uri": 0,
+    "asset_base64_decode_errors": 0,
+    "unique_decoded_asset_sha256": 282,
+    "variant_parent_errors": 0,
+    "result": "PASS"
+  },
+  "runtime_browser_attempt": {
+    "method": "local Chromium full --dump-dom against exact 6.8MB single-file",
+    "result": "ENVIRONMENT_TIMEOUT_BEFORE_VERIFIABLE_DOM_RESULT",
+    "progress_credit": 0,
+    "interpretation": "Not counted as application failure or browser pass. Existing prior set-content and environment browser gates remain unchanged."
+  },
+  "vercel_connector_contract": {
+    "fixed_project": "mikami-math-1323-isolated",
+    "fixed_project_id": "prj_klR6v3xfehqPFqb2BPwZaaoy9m3A",
+    "team_id": "team_LXgcBDLoBpU1lMxZrMyxUQlg",
+    "inline_preview_probe_deployment_id": "dpl_7a3G6NQ66ggrqPewzZGuf7E36PVm",
+    "inline_preview_probe_ready": true,
+    "inline_project_scope": "PASS",
+    "file_contract": "files[].data must be a string; Vercel MCP accepts utf-8 or base64 inline content",
+    "drive_file_uri_object_direct_pass": "REJECTED_EXPECTED_STRING",
+    "mounted_path_without_data": "NOT_SUPPORTED_BY_DEPLOY_INPUT_CONTRACT",
+    "project_scope_blocker": false,
+    "remaining_blocker": "byte-preserving movement of exact 6,819,806 bytes into inline/base64 or an uploaded-file SHA channel without re-encoding corruption"
+  },
+  "actions_artifact_reuse_audit": {
+    "chromium_storage_print_run": 33476106064,
+    "cross_browser_run": 33476125609,
+    "artifacts_currently_available": 0,
+    "result": "NO_FULL1323_REUSABLE_ARTIFACT_FOUND_IN_KNOWN_BROWSER_RUNS"
+  },
+  "safety": {
+    "existing_production_replaced": false,
+    "strict_release_changed": false,
+    "public_isolated_verification_claimed": false,
+    "physical_fire_complete": false
+  },
+  "next_safe_action": "Keep the exact Drive bytes fixed. Do not fall back to anonymous Drive URLs. Continue finding or creating a byte-preserving transport into either GitHub Actions or Vercel UploadedFile/inline base64, verify the 6,819,806-byte SHA before deploy, then rerun exact-origin browser/storage/A4 gates. Physical Fire remains mandatory before PUBLICATION_READY."
+}
