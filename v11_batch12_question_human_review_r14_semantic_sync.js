@@ -4,12 +4,13 @@ function syncR14(f){
   const p=f.passages.find(x=>x.id==='V11-B12-G3-013');
   if(!p)throw new Error('R14 semantic sync: G3-013 missing');
   const all=[...(p.questions||[]),...(p.questionSetB||[])];
-  const q=all.find(x=>x.evidence==='Several species appeared only near fallen branches in the second.');
-  if(!q)throw new Error('R14 semantic sync: fallen-branches question missing');
-  q.evidence='The new survey still found many insects in the first pond, but several species appeared only near fallen branches in the second.';
-  q.evidenceJp='最初の池ではやはり多くの昆虫が見つかりましたが、二つ目の池では落ちた枝の近くだけに現れる種類もありました。';
-  q.reason='再調査でも第一の池に多くの昆虫がいた一方、第二の池の落ちた枝だけに現れる種類があったという対比全体を根拠にします。';
-  q.humanReview='HUMAN_REVIEW_R14_SEMANTIC_SYNC';
+  const targets=all.filter(x=>x.evidence==='Several species appeared only near fallen branches in the second.'||x.evidence==='The new survey still found many insects in the first pond.');
+  if(targets.length!==2)throw new Error('R14 semantic sync: expected two contrast questions, got '+targets.length);
+  for(const q of targets){
+    q.evidence='The new survey still found many insects in the first pond, but several species appeared only near fallen branches in the second.';
+    q.evidenceJp='最初の池ではやはり多くの昆虫が見つかりましたが、二つ目の池では落ちた枝の近くだけに現れる種類もありました。';
+    q.humanReview='HUMAN_REVIEW_R14_SEMANTIC_SYNC';
+  }
   return f;
 }
 if(typeof module!=='undefined'&&module.exports)module.exports=syncR14;
