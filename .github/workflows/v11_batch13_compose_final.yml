@@ -16,20 +16,43 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Compose and fail closed
+      - name: Compose and capture fail-closed diagnostic
+        id: compose
+        shell: bash
         run: |
-          # Explicit rerun checkpoint after the reviewed Grade1 boundary-evidence sweep.
-          node v11_batch13_build_final_candidate.js > v11_batch13_final_candidate.json
-          node - <<'NODE'
+          set +e
+          node v11_batch13_build_final_candidate.js > v11_batch13_final_candidate.json 2> v11_batch13_compose_error.txt
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          if [ "$code" -eq 0 ]; then
+            node - <<'NODE' >> v11_batch13_compose_error.txt 2>&1
           const fs=require('fs'); const d=JSON.parse(fs.readFileSync('v11_batch13_final_candidate.json','utf8'));
           if(d.registered!==false||d.officialTotal!==768||d.passages?.length!==50) throw Error('candidate metadata/count');
           let q=0; for(const p of d.passages){if(p.registered!==false)throw Error('registered '+p.id); if(p.questions?.length!==5||p.questionSetB?.length!==5)throw Error('A/B '+p.id); q+=10;}
           if(q!==500)throw Error('question total '+q);
           console.log(JSON.stringify({pass:true,passages:d.passages.length,questions:q,registered:d.registered,officialTotal:d.officialTotal}));
-          NODE
-      - name: Commit composed actual
+NODE
+            verify=$?
+            if [ "$verify" -ne 0 ]; then code=$verify; fi
+          fi
+          echo "final_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Commit diagnostic on failure
+        if: steps.compose.outputs.final_code != '0'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add v11_batch13_final_candidate.json
+          git add v11_batch13_compose_error.txt
+          git commit -m 'Batch13: record fail-closed compose diagnostic' || true
+          git push
+      - name: Fail after diagnostic is persisted
+        if: steps.compose.outputs.final_code != '0'
+        run: exit 1
+      - name: Commit composed actual
+        if: steps.compose.outputs.final_code == '0'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          rm -f v11_batch13_compose_error.txt
+          git add -A v11_batch13_final_candidate.json v11_batch13_compose_error.txt
           if git diff --cached --quiet; then echo 'No change'; else git commit -m 'Batch13: materialize final 500-question candidate'; git push; fi
