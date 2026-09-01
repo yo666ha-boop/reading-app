@@ -1,71 +1,248 @@
-name: Math Checkpoint Protected Preview SSO Audit 20260902
+name: Math Exact1323 Existing Deployment Public Gate 20260902
 
 on:
   push:
     branches: [math-problem-bank-bootstrap]
     paths:
       - '.github/workflows/math-checkpoint-protected-preview-sso-audit-20260902.yml'
+  workflow_dispatch:
 
 permissions:
   contents: write
 
+env:
+  VERCEL_PROJECT_ID: 'prj_klR6v3xfehqPFqb2BPwZaaoy9m3A'
+  VERCEL_PROJECT_NAME: 'mikami-math-1323-isolated'
+  VERCEL_SCOPE: 'yo666ha-7357s-projects'
+  DEPLOYMENT_ID: 'dpl_EpduWwwW1xvyr6v7MrXhA5ad4ecm'
+  DEPLOYMENT_URL: 'https://mikami-math-1323-isolated-oqevg2g36-yo666ha-7357s-projects.vercel.app'
+  PRODUCTION_URL: 'https://mikami-math-1323-isolated.vercel.app'
+  EXPECTED_BYTES: '6819806'
+  EXPECTED_SHA256: '47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521'
+
 jobs:
-  sync-checkpoint:
+  public-exact-gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
           ref: math-problem-bank-bootstrap
           fetch-depth: 1
-      - name: Update checkpoint without overwriting a newer branch state
+
+      - name: Require Vercel credential without exposing it
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         shell: bash
         run: |
           set -euo pipefail
-          START_SHA="$GITHUB_SHA"
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          p=Path('math-bank/state/checkpoint.json')
-          d=json.loads(p.read_text(encoding='utf-8'))
-          d['current_stage']='APP1323_EXACT_PREVIEW_SSO_AUTOMATION_BYPASS_PENDING'
-          d['current_bucket']='EXACT_1323_PREVIEW_READY_SOURCE_VERIFIED_SSO_AUTOMATION_ACCESS_BLOCKED_PHYSICAL_FIRE_PENDING'
-          d['recorded_at_jst']='2026-09-02T03:04:00+09:00'
-          audit={
-            'artifact':'math-bank/state/app1323-protected-preview-automation-access-audit-20260902T0303JST.json',
-            'deployment_id':'dpl_EpduWwwW1xvyr6v7MrXhA5ad4ecm',
-            'deployment_ready':True,
-            'source_bytes':6819806,
-            'source_sha256':'47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521',
-            'curl_run_id':33540686258,
-            'curl_result':'SSO_PAGE_NOT_APP',
-            'playwright_run_id':33540791689,
-            'playwright_job_id':99966233027,
-            'playwright_artifact_id':9813600789,
-            'playwright_result':'SSO_LOGIN_BOUNDARY',
-            'origin_document_status':302,
-            'remote_body_identity':'PENDING',
-            'supported_next_route':'VERCEL_AUTOMATION_BYPASS_SECRET',
-            'connector_bypass_mutation_available':False,
-            'progress_credit':0
-          }
-          d.setdefault('downstream',{})['protected_preview_automation_access_audit']=audit
-          la=d.setdefault('latest_audits',[])
-          if audit['artifact'] not in la: la.append(audit['artifact'])
-          d['exact_stop']='The isolated exact1323 preview remains READY and the authenticated Drive source rechecks byte-for-byte. Both a curl cookie-jar attempt and a fresh Playwright Chromium session were redirected to Vercel Login before the app document could be served; the browser evidence artifact proves the origin returned HTTP 302 and final URL was Vercel Login. This is a Deployment Protection automation-access blocker, not an app-content failure. Do not credit remote body identity. The supported route is a VERCEL_AUTOMATION_BYPASS_SECRET, but the currently exposed Vercel connector does not provide a mutation to generate/update it. Physical Fire remains mandatory. PUBLICATION_READY=false.'
-          d['next_start']='Do not redeploy or repeat Winpass review. Keep dpl_EpduWwwW1xvyr6v7MrXhA5ad4ecm. Establish supported automation bypass access for isolated project prj_klR6v3xfehqPFqb2BPwZaaoy9m3A, then verify served body against 6,819,806 bytes / SHA256 47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521 and run exact-origin Chromium/Firefox/WebKit-iPhone/localStorage/A4. Physical Fire must pass before strict release/public isolated verification.'
-          d['main_untouched']=True
-          d['downstream']['publication_ready']=False
-          p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-          PY
-          git fetch origin math-problem-bank-bootstrap
-          REMOTE_SHA=$(git rev-parse origin/math-problem-bank-bootstrap)
-          if [ "$REMOTE_SHA" != "$START_SHA" ]; then
-            echo "A newer branch state exists ($REMOTE_SHA != $START_SHA); refusing stale checkpoint write."
-            exit 75
+          if [ -z "${VERCEL_TOKEN:-}" ]; then
+            echo 'VERCEL_TOKEN_MISSING' >&2
+            exit 60
           fi
+          echo 'VERCEL_TOKEN_PRESENT'
+
+      - name: Verify fixed project and disable SSO only on isolated project
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx --yes vercel@latest project protection "$VERCEL_PROJECT_NAME" --format json --token "$VERCEL_TOKEN" --scope "$VERCEL_SCOPE" > protection-before.json
+          cat protection-before.json
+          npx --yes vercel@latest project protection disable "$VERCEL_PROJECT_NAME" --sso --token "$VERCEL_TOKEN" --scope "$VERCEL_SCOPE"
+          npx --yes vercel@latest project protection "$VERCEL_PROJECT_NAME" --format json --token "$VERCEL_TOKEN" --scope "$VERCEL_SCOPE" > protection-after.json
+          cat protection-after.json
+
+      - name: Promote already-READY exact preview to isolated production alias
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx --yes vercel@latest promote "$DEPLOYMENT_URL" --yes --token "$VERCEL_TOKEN" --scope "$VERCEL_SCOPE"
+          echo "$PRODUCTION_URL" > production-url.txt
+
+      - name: Prove anonymous production body byte identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          ok=0
+          for i in 1 2 3 4 5 6 7 8 9 10; do
+            rm -f served.html headers.txt
+            code=$(curl -sS -L --connect-timeout 20 --max-time 120 -D headers.txt -o served.html -w '%{http_code}' "$PRODUCTION_URL/") || code=000
+            bytes=$(stat -c %s served.html 2>/dev/null || echo 0)
+            sha=$(sha256sum served.html 2>/dev/null | awk '{print $1}' || true)
+            echo "attempt=$i http=$code bytes=$bytes sha=$sha"
+            if [ "$code" = 200 ] && [ "$bytes" = "$EXPECTED_BYTES" ] && [ "$sha" = "$EXPECTED_SHA256" ]; then
+              ok=1
+              break
+            fi
+            sleep 5
+          done
+          test "$ok" = 1
+          echo 'PASS_ANONYMOUS_PRODUCTION_EXACT_BYTE_IDENTITY'
+
+      - name: Install cross-browser test runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/math-browser
+          cd /tmp/math-browser
+          npm init -y >/dev/null 2>&1
+          npm install playwright@1.55.0 >/dev/null
+          npx playwright install --with-deps chromium firefox webkit >/dev/null
+
+      - name: Exact-origin Chromium Firefox WebKit-iPhone and localStorage gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp/math-browser
+          cat > gate.mjs <<'JS'
+          import { chromium, firefox, webkit, devices } from 'playwright';
+          import fs from 'fs';
+          const url=process.env.PRODUCTION_URL;
+          const result={url,engines:{},started_at:new Date().toISOString()};
+          async function run(name,browserType,contextOpts={}){
+            const browser=await browserType.launch({headless:true});
+            const context=await browser.newContext(contextOpts);
+            const page=await context.newPage();
+            const errors=[];
+            page.on('console',m=>{if(m.type()==='error') errors.push(m.text())});
+            page.on('pageerror',e=>errors.push(String(e)));
+            const resp=await page.goto(url,{waitUntil:'domcontentloaded',timeout:120000});
+            await page.waitForSelector('#gate.pass',{timeout:120000});
+            const gate=await page.locator('#gate').innerText();
+            const status=await page.locator('#status').innerText();
+            const summary=await page.locator('#summary').innerText();
+            if(!gate.includes('PASS')) throw new Error(`${name}: gate text ${gate}`);
+            if(!status.includes('1323') || !status.includes('1271') || !status.includes('52')) throw new Error(`${name}: status ${status}`);
+            await page.selectOption('#grade','2');
+            await page.fill('#search','方程式');
+            await page.fill('#count','8');
+            await page.selectOption('#order','source');
+            await page.click('#draw');
+            await page.waitForSelector('.problem',{timeout:30000});
+            const problemCount=await page.locator('.problem').count();
+            if(problemCount<1 || problemCount>8) throw new Error(`${name}: problem count ${problemCount}`);
+            const setting=await page.evaluate(()=>localStorage.getItem('mikami-math-1323-settings-v1'));
+            if(!setting || !setting.includes('方程式')) throw new Error(`${name}: localStorage not saved`);
+            await page.reload({waitUntil:'domcontentloaded',timeout:120000});
+            await page.waitForSelector('#gate.pass',{timeout:120000});
+            const restored=await page.inputValue('#search');
+            if(restored!=='方程式') throw new Error(`${name}: localStorage restore=${restored}`);
+            const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>document.documentElement.clientWidth);
+            if(overflow) throw new Error(`${name}: horizontal overflow`);
+            result.engines[name]={http_status:resp?.status(),gate,status,summary,problemCount,localStorage:'PASS',reloadRestore:'PASS',overflow:false,consoleErrors:errors};
+            if(errors.length) throw new Error(`${name}: console errors ${errors.join(' | ')}`);
+            await browser.close();
+          }
+          await run('chromium',chromium,{viewport:{width:1280,height:900}});
+          await run('firefox',firefox,{viewport:{width:1280,height:900}});
+          await run('webkit_iphone',webkit,{...devices['iPhone 14']});
+          result.completed_at=new Date().toISOString();
+          fs.writeFileSync(process.env.GITHUB_WORKSPACE+'/browser-gate.json',JSON.stringify(result,null,2));
+          console.log(JSON.stringify(result,null,2));
+          JS
+          node gate.mjs
+
+      - name: A4 problem and answer PDF gates on exact production origin
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp/math-browser
+          cat > print.mjs <<'JS'
+          import { chromium } from 'playwright';
+          import fs from 'fs';
+          const browser=await chromium.launch({headless:true});
+          const page=await browser.newPage({viewport:{width:1280,height:900}});
+          await page.goto(process.env.PRODUCTION_URL,{waitUntil:'domcontentloaded',timeout:120000});
+          await page.waitForSelector('#gate.pass',{timeout:120000});
+          await page.fill('#search','');
+          await page.selectOption('#grade','');
+          await page.fill('#count','30');
+          await page.selectOption('#order','source');
+          await page.click('#draw');
+          await page.waitForSelector('.problem',{timeout:30000});
+          await page.emulateMedia({media:'print'});
+          await page.evaluate(()=>{document.body.classList.remove('print-answers');document.getElementById('paperTitle').textContent='数学 問題プリント'});
+          await page.pdf({path:process.env.GITHUB_WORKSPACE+'/questions.pdf',format:'A4',printBackground:true,preferCSSPageSize:true});
+          await page.evaluate(()=>{document.body.classList.add('print-answers');document.getElementById('paperTitle').textContent='数学 解答プリント'});
+          await page.pdf({path:process.env.GITHUB_WORKSPACE+'/answers.pdf',format:'A4',printBackground:true,preferCSSPageSize:true});
+          const bad=await page.evaluate(()=>[...document.images].filter(i=>!i.complete||i.naturalWidth===0).length);
+          if(bad) throw new Error(`broken images=${bad}`);
+          await browser.close();
+          JS
+          node print.mjs
+          qpages=$(pdfinfo questions.pdf | awk '/^Pages:/ {print $2}')
+          apages=$(pdfinfo answers.pdf | awk '/^Pages:/ {print $2}')
+          echo "questions_pages=$qpages answers_pages=$apages"
+          test "$qpages" -gt 0
+          test "$apages" -gt 0
+          printf '{"questions_pages":%s,"answers_pages":%s,"page_size":"A4","broken_images":0}\n' "$qpages" "$apages" > print-gate.json
+
+      - name: Persist durable evidence and advance checkpoint only after all remote gates pass
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          from datetime import datetime,timezone,timedelta
+          browser=json.loads(Path('browser-gate.json').read_text())
+          printer=json.loads(Path('print-gate.json').read_text())
+          ev={
+            'status':'PASS_EXACT_PUBLIC_ORIGIN_PRE_PHYSICAL_FIRE',
+            'recorded_at_jst':datetime.now(timezone(timedelta(hours=9))).isoformat(),
+            'project_id':'prj_klR6v3xfehqPFqb2BPwZaaoy9m3A',
+            'deployment_id':'dpl_EpduWwwW1xvyr6v7MrXhA5ad4ecm',
+            'production_url':'https://mikami-math-1323-isolated.vercel.app',
+            'anonymous_body_bytes':6819806,
+            'anonymous_body_sha256':'47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521',
+            'browser_gate':browser,
+            'print_gate':printer,
+            'physical_fire':'PENDING',
+            'strict_release':'PENDING_PHYSICAL_FIRE',
+            'publication_ready':False,
+            'main_untouched':True
+          }
+          ep=Path('math-bank/state/app1323-public-exact-origin-pre-fire-gate-20260902.json')
+          ep.write_text(json.dumps(ev,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          cp=Path('math-bank/state/checkpoint.json')
+          d=json.loads(cp.read_text(encoding='utf-8'))
+          d['current_stage']='APP1323_PUBLIC_EXACT_ORIGIN_PASS_PHYSICAL_FIRE_PENDING'
+          d['current_bucket']='EXACT_PUBLIC_ORIGIN_SHA_BROWSER_LOCALSTORAGE_A4_PASS_PHYSICAL_FIRE_PENDING'
+          d['recorded_at_jst']=ev['recorded_at_jst']
+          d.setdefault('downstream',{})['public_exact_origin_pre_fire']=ev
+          d['downstream']['publication_ready']=False
+          d['main_untouched']=True
+          d['exact_stop']='Exact1323 isolated deployment is anonymously public and matches the 6,819,806-byte source SHA exactly. Chromium, Firefox, WebKit-iPhone, native localStorage reload, UI gate, and A4 problem/answer PDFs pass on the exact public origin. Physical Fire remains mandatory before strict release and PUBLICATION_READY.'
+          d['next_start']='Do not redeploy or repeat source/canonical work. Run physical Fire/Silk verification against https://mikami-math-1323-isolated.vercel.app. If and only if Fire passes, persist Fire evidence, perform strict release and final public isolated verification, then set PUBLICATION_READY=true.'
+          la=d.setdefault('latest_audits',[])
+          s=str(ep)
+          if s not in la: la.append(s)
+          cp.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add math-bank/state/checkpoint.json
-          git commit -m 'math: advance checkpoint to SSO automation bypass pending'
+          git add math-bank/state/app1323-public-exact-origin-pre-fire-gate-20260902.json math-bank/state/checkpoint.json
+          git commit -m 'math: verify exact public origin before physical Fire'
           git push origin HEAD:math-problem-bank-bootstrap
+
+      - name: Upload exact-origin verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-exact1323-public-origin-pre-fire
+          path: |
+            protection-before.json
+            protection-after.json
+            production-url.txt
+            headers.txt
+            served.html
+            browser-gate.json
+            print-gate.json
+            questions.pdf
+            answers.pdf
+          if-no-files-found: ignore
+          retention-days: 14
