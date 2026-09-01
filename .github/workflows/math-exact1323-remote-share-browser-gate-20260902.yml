@@ -1,0 +1,126 @@
+name: Math Exact1323 Remote Share Browser Gate 20260902
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-exact1323-remote-share-browser-gate-20260902.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-remote-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      SHARE_URL: 'https://mikami-math-1323-isolated-oqevg2g36-yo666ha-7357s-projects.vercel.app/?_vercel_share=9xqO5VJJYYkZEC3mPpckRALjCoV7ZPN9'
+      EXPECTED_BYTES: '6819806'
+      EXPECTED_SHA256: '47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+      - name: Fetch protected preview with persistent cookie jar and verify exact bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f /tmp/vercel.cookies /tmp/served.html /tmp/headers.txt
+          curl --fail --show-error --silent --location --max-redirs 10 \
+            --cookie-jar /tmp/vercel.cookies --cookie /tmp/vercel.cookies \
+            -D /tmp/headers.txt "$SHARE_URL" -o /tmp/served.html
+          bytes=$(wc -c < /tmp/served.html | tr -d ' ')
+          sha=$(sha256sum /tmp/served.html | awk '{print $1}')
+          echo "REMOTE_BYTES=$bytes"
+          echo "REMOTE_SHA256=$sha"
+          test "$bytes" = "$EXPECTED_BYTES"
+          test "$sha" = "$EXPECTED_SHA256"
+          grep -q '<title>みかみ塾 数学問題プリント作成アプリ</title>' /tmp/served.html
+          grep -q 'const EMBEDDED_RECORDS=' /tmp/served.html
+          grep -q 'const ASSET_DATA=' /tmp/served.html
+          echo PASS_REMOTE_EXACT_BODY_IDENTITY
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned Playwright browser harness
+        run: |
+          mkdir -p /tmp/pw && cd /tmp/pw
+          npm init -y >/dev/null
+          npm install playwright@1.55.0 >/dev/null
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Run exact remote origin cross-browser, localStorage, mobile and A4 gates
+        shell: bash
+        run: |
+          cat > /tmp/pw/gate.mjs <<'NODE'
+          import { chromium, firefox, webkit } from 'playwright';
+          import fs from 'node:fs';
+          const SHARE_URL=process.env.SHARE_URL;
+          const expected={total:1323, original:1271, variant:52, winpass:717, jitsuryoku:237, standard:317};
+          const results=[];
+          async function runOne(name,browserType,opts={}) {
+            const browser=await browserType.launch({headless:true});
+            const context=await browser.newContext(opts.context||{});
+            const page=await context.newPage();
+            const consoleErrors=[];
+            page.on('console',m=>{ if(m.type()==='error') consoleErrors.push(m.text()); });
+            page.on('pageerror',e=>consoleErrors.push('PAGEERROR:'+e.message));
+            await page.goto(SHARE_URL,{waitUntil:'domcontentloaded',timeout:120000});
+            await page.waitForSelector('#gate.pass',{timeout:120000});
+            const gate=await page.locator('#gate').innerText();
+            const status=await page.locator('#status').innerText();
+            if(!gate.includes('PASS')) throw new Error(`${name}: gate not pass: ${gate}`);
+            for(const token of ['1323','1271','52','717','237','317']) if(!status.includes(token)) throw new Error(`${name}: status missing ${token}: ${status}`);
+            const embedded=await page.evaluate(()=>({records:EMBEDDED_RECORDS.length,assets:Object.keys(ASSET_DATA).length,unique:new Set(EMBEDDED_RECORDS.map(r=>r.id)).size}));
+            if(embedded.records!==1323||embedded.assets!==282||embedded.unique!==1323) throw new Error(`${name}: embedded identity ${JSON.stringify(embedded)}`);
+            await page.selectOption('#grade','2');
+            await page.fill('#count','7');
+            await page.click('#draw');
+            await page.waitForSelector('.problem');
+            const rendered=await page.locator('.problem').count();
+            if(rendered<1||rendered>7) throw new Error(`${name}: rendered=${rendered}`);
+            await page.click('#toggle');
+            if(!await page.locator('body').evaluate(el=>el.classList.contains('show-answers'))) throw new Error(`${name}: answer toggle failed`);
+            await page.evaluate(()=>localStorage.setItem('mikami-math-1323-settings-v1',JSON.stringify({grade:'2',major:'',minor:'',skill:'',difficulty:'',qformat:'',kind:'both',book:'',count:'7',order:'source',search:''})));
+            await page.reload({waitUntil:'domcontentloaded',timeout:120000});
+            await page.waitForSelector('#gate.pass',{timeout:120000});
+            const restored=await page.inputValue('#grade');
+            if(restored!=='2') throw new Error(`${name}: localStorage reload failed: ${restored}`);
+            const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>document.documentElement.clientWidth+1);
+            if(overflow) throw new Error(`${name}: horizontal overflow`);
+            if(consoleErrors.length) throw new Error(`${name}: console errors: ${consoleErrors.slice(0,5).join(' | ')}`);
+            results.push({name,gate,status,embedded,rendered,localStorageReload:'PASS',overflow:false,consoleErrors:0});
+            await browser.close();
+          }
+          await runOne('chromium',chromium,{context:{viewport:{width:1280,height:900}}});
+          await runOne('firefox',firefox,{context:{viewport:{width:1280,height:900}}});
+          await runOne('webkit-iphone',webkit,{context:{viewport:{width:390,height:844},deviceScaleFactor:3,isMobile:true,hasTouch:true}});
+          const browser=await chromium.launch({headless:true});
+          const context=await browser.newContext({viewport:{width:1280,height:900}});
+          const page=await context.newPage();
+          await page.goto(SHARE_URL,{waitUntil:'domcontentloaded',timeout:120000});
+          await page.waitForSelector('#gate.pass',{timeout:120000});
+          await page.fill('#count','30');
+          await page.selectOption('#order','source');
+          await page.click('#draw');
+          await page.waitForSelector('.problem');
+          await page.evaluate(()=>document.body.classList.remove('print-answers'));
+          await page.pdf({path:'/tmp/questions.pdf',format:'A4',printBackground:true,margin:{top:'12mm',bottom:'12mm',left:'12mm',right:'12mm'}});
+          await page.evaluate(()=>document.body.classList.add('print-answers'));
+          await page.pdf({path:'/tmp/answers.pdf',format:'A4',printBackground:true,margin:{top:'12mm',bottom:'12mm',left:'12mm',right:'12mm'}});
+          await browser.close();
+          fs.writeFileSync('/tmp/exact1323-remote-browser-result.json',JSON.stringify({result:'PASS',remoteExactBody:'PASS',expected,results,a4:{questionsBytes:fs.statSync('/tmp/questions.pdf').size,answersBytes:fs.statSync('/tmp/answers.pdf').size}},null,2));
+          console.log(fs.readFileSync('/tmp/exact1323-remote-browser-result.json','utf8'));
+          NODE
+          cd /tmp/pw
+          node gate.mjs
+      - name: Upload evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: exact1323-remote-browser-gate-20260902
+          path: |
+            /tmp/exact1323-remote-browser-result.json
+            /tmp/questions.pdf
+            /tmp/answers.pdf
+            /tmp/headers.txt
+          retention-days: 7
