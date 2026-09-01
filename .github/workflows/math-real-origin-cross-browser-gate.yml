@@ -31,7 +31,7 @@ jobs:
           npx playwright install --with-deps ${{ matrix.browser }}
       - name: Run HTTPS origin compatibility gate
         env:
-          TARGET_URL: https://mikami-math-1323-origin-public-gate-qoo0wrajq.vercel.app
+          TARGET_URL: https://mikami-math-1323-origin-public-gate-qoo0wrajq.vercel.app/?_vercel_share=XpjVBQwR8pnMZy6zkUAIvh0WLrFUKHBh
           BROWSER: ${{ matrix.browser }}
         run: |
           node <<'NODE'
@@ -69,7 +69,7 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Fire/Silk compatibility emulation (not real-device certification)
         env:
-          TARGET_URL: https://mikami-math-1323-origin-public-gate-qoo0wrajq.vercel.app
+          TARGET_URL: https://mikami-math-1323-origin-public-gate-qoo0wrajq.vercel.app/?_vercel_share=XpjVBQwR8pnMZy6zkUAIvh0WLrFUKHBh
         run: |
           node <<'NODE'
           const {chromium}=require('playwright'),assert=require('assert');
