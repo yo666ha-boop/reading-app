@@ -9,6 +9,7 @@ on:
       - 'v11_batch12_question_human_review_r*_semantic_sync.js'
       - 'v11_batch12_final_semantic_repair_r*.js'
       - 'v11_batch12_grammar_repair_r*.js'
+      - 'v11_batch12_length_repair_r8.js'
       - 'v11_batch12_easy_support.js'
       - '.github/workflows/v11-batch12-final-candidate-audit.yml'
   workflow_dispatch:
@@ -26,6 +27,7 @@ jobs:
           if(x.registered!==false||x.officialTotal!==718||x.passages.length!==50)throw Error('candidate state');
           let q=0,support=0;for(const p of x.passages){if(p.registered!==false)throw Error('partial registration '+p.id);if(!p.humanSemanticReview)throw Error('semantic review '+p.id);if(!Array.isArray(p.slashRows)||!p.slashRows.length)throw Error('slash '+p.id);if(p.questions.length!==5||p.questionSetB.length!==5)throw Error('questions '+p.id);if(!Array.isArray(p.supportNotes)||p.supportNotes.length<4)throw Error('support '+p.id);support+=p.supportNotes.length;q+=10;}
           if(q!==500||x.questionHumanReviewedQuestions!==500||x.questionHumanPending!==0)throw Error('question total');
-          if(!x.finalSlashHumanReview||!String(x.finalSlashHumanReview).includes('R7'))throw Error('final slash human review marker');
-          console.log(JSON.stringify({passages:50,questions:q,registered:false,humanQuestions:500,supportNotes:support,pass:true},null,2));
+          if(x.finalSlashHumanReview!=='B12_FINAL_SLASH_HUMAN_REVIEW_R8_LENGTH_REPAIRED')throw Error('final slash human review marker');
+          if(!x.lengthRepairR8||x.lengthRepairR8.ids.length!==12)throw Error('R8 length contract');
+          console.log(JSON.stringify({passages:50,questions:q,registered:false,humanQuestions:500,supportNotes:support,lengthRepair:12,pass:true},null,2));
           NODE
