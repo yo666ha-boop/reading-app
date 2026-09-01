@@ -1,0 +1,132 @@
+name: Math Protected Preview Trusted OIDC Gate
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-protected-preview-trusted-oidc-gate.yml'
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: math-protected-preview-trusted-oidc-gate
+  cancel-in-progress: false
+
+jobs:
+  trusted-oidc-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      DEPLOYMENT_URL: https://mikami-math-1323-isolated-oqevg2g36-yo666ha-7357s-projects.vercel.app/
+      EXPECTED_BYTES: '6819806'
+      EXPECTED_SHA256: 47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 1
+
+      - name: Mint GitHub OIDC token
+        id: oidc
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const token = await core.getIDToken();
+            core.setSecret(token);
+            core.setOutput('token', token);
+
+      - name: Fetch protected exact preview with trusted OIDC
+        id: fetch
+        shell: bash
+        env:
+          OIDC_TOKEN: ${{ steps.oidc.outputs.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/math-oidc
+          status=$(curl -sS -D /tmp/math-oidc/headers.txt -o /tmp/math-oidc/remote.html -w '%{http_code}' \
+            -H "x-vercel-trusted-oidc-idp-token: ${OIDC_TOKEN}" \
+            "${DEPLOYMENT_URL}")
+          bytes=$(wc -c < /tmp/math-oidc/remote.html | tr -d ' ')
+          sha=$(sha256sum /tmp/math-oidc/remote.html | awk '{print $1}')
+          title=$(python - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('/tmp/math-oidc/remote.html').read_text('utf-8',errors='replace')
+          m=re.search(r'<title>(.*?)</title>',s,re.I|re.S)
+          print((m.group(1).strip() if m else '')[:160])
+          PY
+          )
+          echo "http_status=$status" >> "$GITHUB_OUTPUT"
+          echo "bytes=$bytes" >> "$GITHUB_OUTPUT"
+          echo "sha256=$sha" >> "$GITHUB_OUTPUT"
+          echo "title=$title" >> "$GITHUB_OUTPUT"
+          echo "HTTP_STATUS=$status"
+          echo "BYTES=$bytes"
+          echo "SHA256=$sha"
+          echo "TITLE=$title"
+
+      - name: Build durable evidence
+        if: always()
+        shell: bash
+        env:
+          HTTP_STATUS: ${{ steps.fetch.outputs.http_status }}
+          REMOTE_BYTES: ${{ steps.fetch.outputs.bytes }}
+          REMOTE_SHA: ${{ steps.fetch.outputs.sha256 }}
+          REMOTE_TITLE: ${{ steps.fetch.outputs.title }}
+        run: |
+          python - <<'PY'
+          import json, os, datetime
+          from pathlib import Path
+          remote=Path('/tmp/math-oidc/remote.html')
+          headers=Path('/tmp/math-oidc/headers.txt')
+          text=remote.read_text('utf-8',errors='replace') if remote.exists() else ''
+          d={
+            'project':'みかみ塾 数学問題バンク／数学アプリ再構築',
+            'recorded_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            'deployment_id':'dpl_EpduWwwW1xvyr6v7MrXhA5ad4ecm',
+            'deployment_url':os.environ['DEPLOYMENT_URL'],
+            'auth_method':'GITHUB_ACTIONS_OIDC_X_VERCEL_TRUSTED_OIDC_IDP_TOKEN',
+            'http_status':os.environ.get('HTTP_STATUS',''),
+            'remote_bytes':int(os.environ.get('REMOTE_BYTES') or 0),
+            'remote_sha256':os.environ.get('REMOTE_SHA',''),
+            'remote_title':os.environ.get('REMOTE_TITLE',''),
+            'expected_bytes':int(os.environ['EXPECTED_BYTES']),
+            'expected_sha256':os.environ['EXPECTED_SHA256'],
+            'has_1323_gate_token':'1323実データゲート' in text,
+            'has_embedded_records':'const EMBEDDED_RECORDS=' in text,
+            'looks_like_vercel_login':'Vercel Login' in text or '/sso-api' in text,
+            'response_headers':headers.read_text('utf-8',errors='replace')[:12000] if headers.exists() else '',
+          }
+          d['exact_byte_identity']=d['http_status']=='200' and d['remote_bytes']==d['expected_bytes'] and d['remote_sha256']==d['expected_sha256']
+          d['trusted_oidc_access_pass']=d['http_status']=='200' and not d['looks_like_vercel_login']
+          out=Path('math-bank/state/app1323-protected-preview-trusted-oidc-gate-20260902T0500JST.json')
+          out.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(d,ensure_ascii=False,indent=2))
+          PY
+
+      - name: Persist evidence without changing main
+        if: always()
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add math-bank/state/app1323-protected-preview-trusted-oidc-gate-20260902T0500JST.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'math: audit protected exact preview via trusted GitHub OIDC'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
+
+      - name: Upload diagnostic artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-protected-preview-trusted-oidc-gate
+          path: |
+            /tmp/math-oidc/headers.txt
+            /tmp/math-oidc/remote.html
+            math-bank/state/app1323-protected-preview-trusted-oidc-gate-20260902T0500JST.json
+          if-no-files-found: warn
+          retention-days: 7
