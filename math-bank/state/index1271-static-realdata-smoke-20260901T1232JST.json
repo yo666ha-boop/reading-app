@@ -1,0 +1,14 @@
+{
+  "workflow": "1271 UI candidate static + real-data contract smoke",
+  "pass_static": true,
+  "index_candidate": "math-bank/app/index1271.html",
+  "node_syntax": "PASS",
+  "old_1124_107_contract_present": false,
+  "expected_1271_contract_present": true,
+  "required_features": {"localStorage":true,"sourceSort":true,"window.print":true,"A4_css":true,"search":true,"figure_refs":true,"1271_gate":true},
+  "real_data": {"records":1271,"grade_counts":{"1":808,"2":214,"3":249},"book_counts":{"Winpass":717,"実力錬成":237,"Standard":317},"unique_ids":1271,"figure_ref_entries":602,"unique_figure_paths":282,"missing_runtime_assets":0},
+  "filter_smoke": {"search_token":"25astandardt1suhy000101","search_hits":14,"standard_count":317,"first_5_standard_source_order_ids":["orig:Standard:25astandardt1suhy000101:M01:S01","orig:Standard:25astandardt1suhy000101:M01:S02","orig:Standard:25astandardt1suhy000101:M01:S03","orig:Standard:25astandardt1suhy000101:M02:S01","orig:Standard:25astandardt1suhy000101:M02:S02"]},
+  "browser_attempt": {"status":"ENVIRONMENT_BLOCKED","detail":"Headless Chromium navigation to 127.0.0.1 returned net::ERR_BLOCKED_BY_ADMINISTRATOR before app code executed; browser PASS is not claimed."},
+  "publication_ready": false,
+  "main_touched": false
+}
