@@ -1,0 +1,29 @@
+name: V11 Batch12 Chronology Audit
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch12_chronology_audit.js'
+      - 'v11_batch12_build_final_candidate.js'
+      - 'v11_batch12_slash_question_scaffold.json'
+      - 'v11_batch12_question_human_review_r*.json'
+      - 'v11_batch12_question_human_review_r*_semantic_sync.js'
+      - '.github/workflows/v11-batch12-chronology-audit.yml'
+  workflow_dispatch:
+jobs:
+  chronology:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit Batch12 vocabulary and grammar chronology
+        run: node v11_batch12_chronology_audit.js
+      - name: Upload chronology reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v11-batch12-chronology-reports
+          path: |
+            V11_BATCH12_VOCAB_CHRONOLOGY_REPORT.json
+            V11_BATCH12_GRAMMAR_CANDIDATE_REPORT.json
+            V11_BATCH12_GRAMMAR_CHRONOLOGY_REPORT.json
+            V11_BATCH12_CHRONOLOGY_STATUS.txt
