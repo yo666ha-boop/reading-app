@@ -1,0 +1,89 @@
+name: Math Persist Vercel SSO Blocker 20260902
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-persist-vercel-sso-blocker-20260902.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  persist:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 1
+      - name: Persist blocker evidence and checkpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from datetime import datetime, timezone, timedelta
+          jst=timezone(timedelta(hours=9))
+          now=datetime.now(jst).isoformat()
+          ev={
+            'status':'BLOCKED_ONLY_AT_VERCEL_DEPLOYMENT_PROTECTION_AUTOMATION_WRITE',
+            'recorded_at_jst':now,
+            'project':'みかみ塾 数学問題バンク／数学アプリ再構築',
+            'branch':'math-problem-bank-bootstrap',
+            'source_recheck':{
+              'Standard':{'bytes':9689250,'sha256':'c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6','crc32':'f8e307bb','zip_test':'PASS'},
+              '実力錬成':{'bytes':7287279,'sha256':'faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33','crc32':'1a020f98','zip_test':'PASS'},
+              'Winpass':{'bytes':8296042,'sha256':'29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf','crc32':'992b0ca2','zip_test':'PASS','docx_members':81}
+            },
+            'exact_deployment':{
+              'project_id':'prj_klR6v3xfehqPFqb2BPwZaaoy9m3A',
+              'project_name':'mikami-math-1323-isolated',
+              'deployment_id':'dpl_EpduWwwW1xvyr6v7MrXhA5ad4ecm',
+              'deployment_url':'https://mikami-math-1323-isolated-oqevg2g36-yo666ha-7357s-projects.vercel.app',
+              'ready':True,
+              'source_bytes':6819806,
+              'source_sha256':'47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521',
+              'remote_body_identity':'PENDING_SSO'
+            },
+            'new_findings':{
+              'github_vercel_token':'MISSING_CONFIRMED_BY_RUN_33546990627',
+              'github_run_result':'FAIL_CLOSED_BEFORE_MUTATION',
+              'repo_app_records_json':'ABSENT_404',
+              'repo_assets_directory':'ABSENT_404',
+              'small_github_shell_publication_route':'NOT_AVAILABLE',
+              'vercel_connected_mcp_write_for_sso_or_promote':'NOT_EXPOSED',
+              'local_vercel_cli_existing_auth':'NOT_AVAILABLE_IN_RUNTIME',
+              'vercel_official_api_route':'PATCH_PROJECT_SSO_NULL_OR_PROTECTION_BYPASS_CONFIRMED',
+              'progress_credit':0
+            },
+            'quality_state':{
+              'strict':1271,'winpass_reviewed':717,'winpass_canonical':717,'verified_variants':52,'runtime':1323,'assets':282,
+              'publication_ready':False,'main_untouched':True
+            },
+            'next_start':'Do not redo Winpass/canonical/source/deploy. Continue from exact READY preview. Obtain a write-capable authenticated Vercel path to set only isolated project ssoProtection=null or generate automation bypass, then verify anonymous 6,819,806-byte SHA, exact-origin Chromium/Firefox/WebKit-iPhone/localStorage/A4, physical Fire, strict release, and final public isolated verification.'
+          }
+          ep=Path('math-bank/state/app1323-vercel-sso-write-channel-audit-20260902T0400JST.json')
+          ep.write_text(json.dumps(ev,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          cp=Path('math-bank/state/checkpoint.json')
+          d=json.loads(cp.read_text(encoding='utf-8'))
+          d['current_stage']='APP1323_EXACT_READY_VERCEL_SSO_WRITE_CHANNEL_BLOCKED'
+          d['current_bucket']='EXACT_READY_SOURCE_VERIFIED_GITHUB_TOKEN_MISSING_MCP_WRITE_NOT_EXPOSED_PHYSICAL_FIRE_PENDING'
+          d['recorded_at_jst']=now
+          d.setdefault('downstream',{})['vercel_sso_write_channel_audit']=ev
+          d['downstream']['publication_ready']=False
+          d['main_untouched']=True
+          d['exact_stop']='Exact 1323 preview is READY and source identity remains verified. Automated public-origin verification is blocked only by Vercel Deployment Protection write access: GitHub VERCEL_TOKEN is absent and connected Vercel MCP exposes no SSO/protection-bypass/promote mutation. No weaker result is credited.'
+          d['next_start']=ev['next_start']
+          la=d.setdefault('latest_audits',[])
+          if str(ep) not in la: la.append(str(ep))
+          cp.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add math-bank/state/app1323-vercel-sso-write-channel-audit-20260902T0400JST.json math-bank/state/checkpoint.json
+          git commit -m 'math: persist exact preview SSO write-channel blocker'
+          git push origin HEAD:math-problem-bank-bootstrap
