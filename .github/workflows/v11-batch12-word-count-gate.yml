@@ -1,0 +1,41 @@
+name: V11 Batch12 Word Count Gate
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch12_word_count_gate.js'
+      - 'v11_batch12_build_final_candidate.js'
+      - 'v11_batch12_final_semantic_repair_r*.js'
+      - '.github/workflows/v11-batch12-word-count-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  word-count:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - name: Run Batch12 word-count gate
+        id: audit
+        shell: bash
+        run: |
+          set +e
+          node v11_batch12_word_count_gate.js
+          rc=$?
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Persist report safely
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f V11_BATCH12_WORD_COUNT_GATE.json 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "v11: persist Batch12 word-count gate"
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
+      - name: Enforce word-count gate
+        if: always()
+        run: test "${{ steps.audit.outputs.rc }}" = "0"
