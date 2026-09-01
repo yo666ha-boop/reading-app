@@ -1,0 +1,35 @@
+{
+  "schema": "mikami_math_exact1323_transfer_staging_v1",
+  "status": "PARTIAL_TRANSFER_STAGING_NOT_RELEASE_CREDIT",
+  "source": {
+    "drive_file_id": "1l29gpomqPrEEqWCnlCuZH1BiZSw5lg4y",
+    "bytes": 6819806,
+    "sha256": "47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521"
+  },
+  "transport": {
+    "codec": "brotli-quality-11-then-base64-ascii",
+    "brotli_bytes": 3923915,
+    "brotli_sha256": "8f78b6dc4e26b5349d9a6dedc7b6d6efad931c7ed3da58d0767ce6b8d36dc003",
+    "base64_chars": 5231888,
+    "operational_chunk_chars": 12000,
+    "planned_total_chunks": 436
+  },
+  "durable_chunks": [
+    {
+      "index": 0,
+      "chars": 12000,
+      "sha256": "38a22d6282d1c00f5431b358bcf14aa3102c7e54502b4b2a34aea99310fe1e92",
+      "git_blob_sha1": "de6286b5a58d5fe7ac0f655fda48b0b0284fbcb1",
+      "path": "math-bank/transfer/app1323-exact-br-b64/chunks/000.txt"
+    }
+  ],
+  "durable_chunk_count": 1,
+  "durable_base64_chars": 12000,
+  "release_credit": false,
+  "publication_ready": false,
+  "notes": [
+    "Chunk 000 Git blob SHA equals independently precomputed Git object SHA.",
+    "Do not reconstruct, deploy, or count release progress until every planned chunk is durable and end-to-end source SHA matches.",
+    "main remains untouched."
+  ]
+}
