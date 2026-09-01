@@ -15,6 +15,8 @@ module.exports=function build(){
  applyRepairDoc(passages,'v11_batch13_semantic_repair_r4_residual.json','B13_HUMAN_REVIEW_COMPLETE_R4');
  applyRepairDoc(passages,'v11_batch13_semantic_repair_r5_final_vocab.json','B13_HUMAN_REVIEW_COMPLETE_R5');
  applyRepairDoc(passages,'v11_batch13_semantic_repair_r6_final_zero.json','B13_HUMAN_REVIEW_COMPLETE_R6');
+ // Human-reviewed translation boundary normalizations are deliberately separate
+ // from semantic repairs so wording/meaning remains auditable.
  applyTranslationBoundaryRepair(passages,'v11_batch13_translation_boundary_repair_r1_g1.json','B13_G1_TRANSLATION_BOUNDARY_HUMAN_R1');
  applyTranslationBoundaryRepair(passages,'v11_batch13_translation_boundary_repair_r2_g2.json','B13_G2_TRANSLATION_BOUNDARY_HUMAN_R2');
  applyTranslationBoundaryRepair(passages,'v11_batch13_translation_boundary_repair_r3_g3.json','B13_G3_TRANSLATION_BOUNDARY_HUMAN_R3');
