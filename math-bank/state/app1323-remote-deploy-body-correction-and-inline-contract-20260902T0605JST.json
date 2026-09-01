@@ -1,0 +1,46 @@
+{
+  "project": "みかみ塾 数学問題バンク／数学アプリ再構築",
+  "recorded_at_jst": "2026-09-02T06:05:00+09:00",
+  "branch": "math-problem-bank-bootstrap",
+  "source_exact": {
+    "drive_file_id": "1l29gpomqPrEEqWCnlCuZH1BiZSw5lg4y",
+    "bytes": 6819806,
+    "sha256": "47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521",
+    "records": 1323,
+    "assets": 282
+  },
+  "critical_correction": {
+    "deployment_id": "dpl_EpduWwwW1xvyr6v7MrXhA5ad4ecm",
+    "previous_claim": "mounted_path_transfer_PASS",
+    "authenticated_remote_fetch_status": 200,
+    "authenticated_remote_body_observed": "/mnt/data/index.html plus Vercel toolbar injection",
+    "result": "FAIL_NOT_EXACT_BYTES_PATH_STRING_WAS_DEPLOYED",
+    "remote_body_identity": "FAIL",
+    "progress_credit": 0
+  },
+  "deploy_tool_contract_reaudit": {
+    "inline_utf8_data_probe": "PASS",
+    "base64_encoding_probe": "PASS_DECODED_TO_FILE_BYTES",
+    "local_path_field": "UNSUPPORTED_DATA_REQUIRED",
+    "uploaded_sha_reference": "UNSUPPORTED_BY_EXPOSED_TOOL_DATA_REQUIRED",
+    "required_fields_discovered": ["target", "name", "files"],
+    "target_values_verified": ["preview", "production"]
+  },
+  "public_surface": {
+    "production_alias_publicly_fetchable": true,
+    "old_probe_body_bytes": 69,
+    "temporary_chunk_probe_restored": true,
+    "safe_holding_deployment": "dpl_B3xVRs92g6N6omPe8CUmiVH9EY6r",
+    "safe_holding_page": "みかみ塾 数学アプリ / 公開版を最終検証中です。"
+  },
+  "transfer_routes_audited": {
+    "drive_domain_share": "UNAVAILABLE_PERSONAL_ACCOUNT_DOMAIN_PERMISSION_INVALID",
+    "github_existing_asset_hash_lookup": "NOT_FOUND_FOR_KNOWN_ASSET_HASH",
+    "gzip_exact_bytes": 4080408,
+    "gzip_chunks_prepared_locally": 17,
+    "gzip_chunk_durable_upload": "NOT_YET_COMPLETE_DO_NOT_CREDIT"
+  },
+  "next": "Do not credit dpl_Epdu as exact. Use inline/base64 byte data or a durable public chunk store, reconstruct and SHA-verify exact 6819806 bytes before browser/release credit. Keep production on safe holding page until exact public app passes. Physical Fire remains mandatory.",
+  "main_touched": false,
+  "publication_ready": false
+}
