@@ -16,30 +16,13 @@ jobs:
     timeout-minutes: 25
     env:
       SHARE_URL: 'https://mikami-math-1323-isolated-oqevg2g36-yo666ha-7357s-projects.vercel.app/?_vercel_share=9xqO5VJJYYkZEC3mPpckRALjCoV7ZPN9'
+      ORIGIN_HOST: 'mikami-math-1323-isolated-oqevg2g36-yo666ha-7357s-projects.vercel.app'
       EXPECTED_BYTES: '6819806'
       EXPECTED_SHA256: '47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521'
     steps:
       - uses: actions/checkout@v4
         with:
           ref: math-problem-bank-bootstrap
-      - name: Fetch protected preview with persistent cookie jar and verify exact bytes
-        shell: bash
-        run: |
-          set -euo pipefail
-          rm -f /tmp/vercel.cookies /tmp/served.html /tmp/headers.txt
-          curl --fail --show-error --silent --location --max-redirs 10 \
-            --cookie-jar /tmp/vercel.cookies --cookie /tmp/vercel.cookies \
-            -D /tmp/headers.txt "$SHARE_URL" -o /tmp/served.html
-          bytes=$(wc -c < /tmp/served.html | tr -d ' ')
-          sha=$(sha256sum /tmp/served.html | awk '{print $1}')
-          echo "REMOTE_BYTES=$bytes"
-          echo "REMOTE_SHA256=$sha"
-          test "$bytes" = "$EXPECTED_BYTES"
-          test "$sha" = "$EXPECTED_SHA256"
-          grep -q '<title>みかみ塾 数学問題プリント作成アプリ</title>' /tmp/served.html
-          grep -q 'const EMBEDDED_RECORDS=' /tmp/served.html
-          grep -q 'const ASSET_DATA=' /tmp/served.html
-          echo PASS_REMOTE_EXACT_BODY_IDENTITY
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -49,24 +32,75 @@ jobs:
           npm init -y >/dev/null
           npm install playwright@1.55.0 >/dev/null
           npx playwright install --with-deps chromium firefox webkit
-      - name: Run exact remote origin cross-browser, localStorage, mobile and A4 gates
+      - name: Run protected preview exact-body and cross-browser gates
         shell: bash
         run: |
           cat > /tmp/pw/gate.mjs <<'NODE'
           import { chromium, firefox, webkit } from 'playwright';
           import fs from 'node:fs';
+          import crypto from 'node:crypto';
           const SHARE_URL=process.env.SHARE_URL;
+          const ORIGIN_HOST=process.env.ORIGIN_HOST;
+          const EXPECTED_BYTES=Number(process.env.EXPECTED_BYTES);
+          const EXPECTED_SHA256=process.env.EXPECTED_SHA256;
           const expected={total:1323, original:1271, variant:52, winpass:717, jitsuryoku:237, standard:317};
-          const results=[];
-          async function runOne(name,browserType,opts={}) {
+          const report={result:'IN_PROGRESS',remoteExactBody:'PENDING',expected,results:[],navigation:[]};
+          fs.writeFileSync('/tmp/exact1323-remote-browser-result.json',JSON.stringify(report,null,2));
+
+          async function accessProtected(page,name){
+            const docs=[];
+            page.on('response',async r=>{
+              try{
+                const u=new URL(r.url());
+                const ct=(r.headers()['content-type']||'');
+                if(u.hostname===ORIGIN_HOST && r.request().resourceType()==='document') docs.push({url:r.url(),status:r.status(),ct,response:r});
+              }catch{}
+            });
+            await page.goto(SHARE_URL,{waitUntil:'domcontentloaded',timeout:120000});
+            try { await page.waitForSelector('#gate.pass',{timeout:120000}); }
+            catch(e){
+              report.navigation.push({name,finalUrl:page.url(),title:await page.title().catch(()=>''),documents:docs.map(x=>({url:x.url,status:x.status,ct:x.ct}))});
+              fs.writeFileSync('/tmp/exact1323-remote-browser-result.json',JSON.stringify(report,null,2));
+              throw e;
+            }
+            report.navigation.push({name,finalUrl:page.url(),title:await page.title(),documents:docs.map(x=>({url:x.url,status:x.status,ct:x.ct}))});
+            return docs;
+          }
+
+          async function verifyRemoteBody(){
+            const browser=await chromium.launch({headless:true});
+            const context=await browser.newContext({viewport:{width:1280,height:900}});
+            const page=await context.newPage();
+            const docs=await accessProtected(page,'identity-chromium');
+            let match=null;
+            for(const d of docs){
+              if(d.status!==200 || !d.ct.includes('text/html')) continue;
+              try {
+                const body=await d.response.body();
+                const sha=crypto.createHash('sha256').update(body).digest('hex');
+                if(body.length===EXPECTED_BYTES && sha===EXPECTED_SHA256){ match={bytes:body.length,sha256:sha,url:d.url}; break; }
+              } catch {}
+            }
+            if(!match){
+              const content=Buffer.from(await page.content(),'utf8');
+              const sha=crypto.createHash('sha256').update(content).digest('hex');
+              report.remoteFallback={pageContentBytes:content.length,pageContentSha256:sha};
+              fs.writeFileSync('/tmp/exact1323-remote-browser-result.json',JSON.stringify(report,null,2));
+              throw new Error('remote document response did not match exact source bytes');
+            }
+            report.remoteExactBody='PASS'; report.remoteIdentity=match;
+            fs.writeFileSync('/tmp/exact1323-remote-browser-result.json',JSON.stringify(report,null,2));
+            await browser.close();
+          }
+
+          async function runOne(name,browserType,contextOptions={}) {
             const browser=await browserType.launch({headless:true});
-            const context=await browser.newContext(opts.context||{});
+            const context=await browser.newContext(contextOptions);
             const page=await context.newPage();
             const consoleErrors=[];
             page.on('console',m=>{ if(m.type()==='error') consoleErrors.push(m.text()); });
             page.on('pageerror',e=>consoleErrors.push('PAGEERROR:'+e.message));
-            await page.goto(SHARE_URL,{waitUntil:'domcontentloaded',timeout:120000});
-            await page.waitForSelector('#gate.pass',{timeout:120000});
+            await accessProtected(page,name);
             const gate=await page.locator('#gate').innerText();
             const status=await page.locator('#status').innerText();
             if(!gate.includes('PASS')) throw new Error(`${name}: gate not pass: ${gate}`);
@@ -89,32 +123,44 @@ jobs:
             const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>document.documentElement.clientWidth+1);
             if(overflow) throw new Error(`${name}: horizontal overflow`);
             if(consoleErrors.length) throw new Error(`${name}: console errors: ${consoleErrors.slice(0,5).join(' | ')}`);
-            results.push({name,gate,status,embedded,rendered,localStorageReload:'PASS',overflow:false,consoleErrors:0});
+            report.results.push({name,gate,status,embedded,rendered,localStorageReload:'PASS',overflow:false,consoleErrors:0});
+            fs.writeFileSync('/tmp/exact1323-remote-browser-result.json',JSON.stringify(report,null,2));
             await browser.close();
           }
-          await runOne('chromium',chromium,{context:{viewport:{width:1280,height:900}}});
-          await runOne('firefox',firefox,{context:{viewport:{width:1280,height:900}}});
-          await runOne('webkit-iphone',webkit,{context:{viewport:{width:390,height:844},deviceScaleFactor:3,isMobile:true,hasTouch:true}});
-          const browser=await chromium.launch({headless:true});
-          const context=await browser.newContext({viewport:{width:1280,height:900}});
-          const page=await context.newPage();
-          await page.goto(SHARE_URL,{waitUntil:'domcontentloaded',timeout:120000});
-          await page.waitForSelector('#gate.pass',{timeout:120000});
-          await page.fill('#count','30');
-          await page.selectOption('#order','source');
-          await page.click('#draw');
-          await page.waitForSelector('.problem');
-          await page.evaluate(()=>document.body.classList.remove('print-answers'));
-          await page.pdf({path:'/tmp/questions.pdf',format:'A4',printBackground:true,margin:{top:'12mm',bottom:'12mm',left:'12mm',right:'12mm'}});
-          await page.evaluate(()=>document.body.classList.add('print-answers'));
-          await page.pdf({path:'/tmp/answers.pdf',format:'A4',printBackground:true,margin:{top:'12mm',bottom:'12mm',left:'12mm',right:'12mm'}});
-          await browser.close();
-          fs.writeFileSync('/tmp/exact1323-remote-browser-result.json',JSON.stringify({result:'PASS',remoteExactBody:'PASS',expected,results,a4:{questionsBytes:fs.statSync('/tmp/questions.pdf').size,answersBytes:fs.statSync('/tmp/answers.pdf').size}},null,2));
-          console.log(fs.readFileSync('/tmp/exact1323-remote-browser-result.json','utf8'));
+
+          try {
+            await verifyRemoteBody();
+            await runOne('chromium',chromium,{viewport:{width:1280,height:900}});
+            await runOne('firefox',firefox,{viewport:{width:1280,height:900}});
+            await runOne('webkit-iphone',webkit,{viewport:{width:390,height:844},deviceScaleFactor:3,isMobile:true,hasTouch:true});
+            const browser=await chromium.launch({headless:true});
+            const context=await browser.newContext({viewport:{width:1280,height:900}});
+            const page=await context.newPage();
+            await accessProtected(page,'a4-chromium');
+            await page.fill('#count','30');
+            await page.selectOption('#order','source');
+            await page.click('#draw');
+            await page.waitForSelector('.problem');
+            await page.evaluate(()=>document.body.classList.remove('print-answers'));
+            await page.pdf({path:'/tmp/questions.pdf',format:'A4',printBackground:true,margin:{top:'12mm',bottom:'12mm',left:'12mm',right:'12mm'}});
+            await page.evaluate(()=>document.body.classList.add('print-answers'));
+            await page.pdf({path:'/tmp/answers.pdf',format:'A4',printBackground:true,margin:{top:'12mm',bottom:'12mm',left:'12mm',right:'12mm'}});
+            await browser.close();
+            report.a4={questionsBytes:fs.statSync('/tmp/questions.pdf').size,answersBytes:fs.statSync('/tmp/answers.pdf').size};
+            report.result='PASS';
+            fs.writeFileSync('/tmp/exact1323-remote-browser-result.json',JSON.stringify(report,null,2));
+            console.log(JSON.stringify(report,null,2));
+          } catch(e) {
+            report.result='FAIL'; report.error=String(e?.stack||e);
+            fs.writeFileSync('/tmp/exact1323-remote-browser-result.json',JSON.stringify(report,null,2));
+            console.error(report.error);
+            process.exit(1);
+          }
           NODE
           cd /tmp/pw
           node gate.mjs
       - name: Upload evidence
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: exact1323-remote-browser-gate-20260902
@@ -122,5 +168,5 @@ jobs:
             /tmp/exact1323-remote-browser-result.json
             /tmp/questions.pdf
             /tmp/answers.pdf
-            /tmp/headers.txt
+          if-no-files-found: warn
           retention-days: 7
