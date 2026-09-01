@@ -1,0 +1,21 @@
+name: v11 Batch13 human question gate
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch13_question_human_review_*.json'
+      - 'v11_batch13_question_human_gate_*.js'
+      - 'v11_batch13_build_body_candidate.js'
+      - 'v11_batch13_*_body_draft.json'
+      - 'v11_batch13_semantic_repair_*.json'
+      - '.github/workflows/v11_batch13_question_human_gate.yml'
+  workflow_dispatch:
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node v11_batch13_question_human_gate_r1.js
