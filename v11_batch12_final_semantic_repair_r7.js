@@ -14,7 +14,7 @@ module.exports=function repairBatch12FinalSemanticR7(candidate){
     }
   };
 
-  // G1-011: the old JP row 4 prematurely contained the action from English row 5.
+  // Applied before grammar-repair R1: validate against the pre-grammar English source, then let R1 rewrite English globally.
   {
     const p=byId('V11-B12-G1-011');
     const old4='そこで司書の先生に置き場所を尋ね、一緒に返却カウンターの横へ移しました。';
@@ -24,14 +24,13 @@ module.exports=function repairBatch12FinalSemanticR7(candidate){
     if(!String(p.fullTranslation||'').includes(old4)||!String(p.fullTranslation||'').includes(old5))throw new Error('R7 semantic repair: G1-011 translation source mismatch');
     p.fullTranslation=p.fullTranslation.replace(old4,new4).replace(old5,new5);
     const r4=p.slashRows&&p.slashRows[3],r5=p.slashRows&&p.slashRows[4];
-    if(!r4||!r5||r4.en!=='She asked the librarian about the right place for it.'||r5.en!=='Together they placed it beside the return desk, where it did not block shelves or the aisle.')throw new Error('R7 semantic repair: G1-011 slash source mismatch');
+    if(!r4||!r5||r4.en!=='She asked the librarian where it should go.'||r5.en!=='Together they placed it beside the return desk, where it did not block shelves or the aisle.')throw new Error('R7 semantic repair: G1-011 pre-grammar slash source mismatch');
     r4.jp=new4;r5.jp=new5;
     r4.humanReview='HUMAN_REVIEW_1TO1_R7_REPAIRED';r5.humanReview='HUMAN_REVIEW_1TO1_R7_REPAIRED';
     replaceAllQuestionJp(p,old4,new4);replaceAllQuestionJp(p,old5,new5);
     p.humanSemanticReview='B12_HUMAN_REVIEW_R7_SLASH_BOUNDARY_SYNC';
   }
 
-  // G1-014: Japanese counters made individual shoes sound like pairs; restore one-shoe meaning and the explicit confirmation.
   {
     const p=byId('V11-B12-G1-014');
     const fixes=[
@@ -46,12 +45,12 @@ module.exports=function repairBatch12FinalSemanticR7(candidate){
     }
     const rows=p.slashRows||[];
     const expected=[
-      [3,"Jun did not put both shoes into Yuta's box. He showed both shoes to Yuta and asked, 'Are these yours?'",fixes[0][1]],
+      [3,"Jun did not put both shoes into Yuta's box. He asked Yuta to check them.",fixes[0][1]],
       [4,"Yuta recognized only the first shoe and said his other shoe was already in his bag.",fixes[1][1]],
       [5,"The second shoe belonged to another student whose name began with Yu.",fixes[2][1]]
     ];
     for(const [idx,en,jp] of expected){
-      if(!rows[idx]||rows[idx].en!==en)throw new Error('R7 semantic repair: G1-014 slash source mismatch row '+(idx+1));
+      if(!rows[idx]||rows[idx].en!==en)throw new Error('R7 semantic repair: G1-014 pre-grammar slash source mismatch row '+(idx+1));
       rows[idx].jp=jp;rows[idx].humanReview='HUMAN_REVIEW_1TO1_R7_REPAIRED';
     }
     p.humanSemanticReview='B12_HUMAN_REVIEW_R7_COUNTER_AND_CONFIRMATION_SYNC';
