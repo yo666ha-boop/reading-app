@@ -1,0 +1,63 @@
+name: Math Real Origin Storage Gate
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-real-origin-storage-gate.yml'
+      - 'math-bank/app/real-origin-gate-trigger.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  real-origin-storage-print:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser runtime
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Verify native real-origin persistence and print invocation
+        env:
+          TARGET_URL: https://mikami-math-1323-origin-gate-b4bvihily-yo666ha-7357s-projects.vercel.app
+        run: |
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          const assert = require('assert');
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const page=await browser.newPage({viewport:{width:390,height:844}});
+            const errors=[]; page.on('console',m=>{if(m.type()==='error') errors.push(m.text())});
+            await page.goto(process.env.TARGET_URL,{waitUntil:'networkidle',timeout:60000});
+            assert.ok(page.url().startsWith('https://mikami-math-1323-origin-gate-'));
+            assert.equal(await page.evaluate(()=>location.protocol),'https:');
+            await page.selectOption('#grade','2');
+            await page.selectOption('#kind','variant');
+            await page.fill('#count','37');
+            await page.fill('#search','一次関数');
+            await page.click('#save');
+            const key='mikami-math-1323-settings-v1';
+            const stored=JSON.parse(await page.evaluate(k=>localStorage.getItem(k),key));
+            assert.deepStrictEqual({grade:stored.grade,kind:stored.kind,count:stored.count,search:stored.search},{grade:'2',kind:'variant',count:'37',search:'一次関数'});
+            await page.reload({waitUntil:'networkidle'});
+            const values=await page.evaluate(()=>Object.fromEntries(['grade','kind','count','search'].map(id=>[id,document.getElementById(id).value])));
+            assert.deepStrictEqual(values,{grade:'2',kind:'variant',count:'37',search:'一次関数'});
+            await page.click('#printQ');
+            await page.waitForTimeout(500);
+            const beforeprint=await page.evaluate(()=>window.__beforeprint);
+            assert.ok(beforeprint>=1,`beforeprint=${beforeprint}`);
+            const dims=await page.evaluate(()=>({innerWidth,scrollWidth:document.documentElement.scrollWidth}));
+            assert.ok(dims.scrollWidth<=dims.innerWidth,JSON.stringify(dims));
+            assert.deepStrictEqual(errors,[]);
+            console.log(JSON.stringify({pass:true,url:page.url(),stored,values,beforeprint,dims,console_errors:errors},null,2));
+            await browser.close();
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
