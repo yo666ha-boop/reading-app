@@ -1,0 +1,42 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-09-01T09:20:00+09:00",
+  "stage": "FULL_1271_CURRENT_CONTRACT_VALIDATION",
+  "status": "CORRECTION_REQUIRED_NO_RUNTIME_PROMOTION",
+  "fixed_sources_reverified_this_run": {
+    "Standard": {"drive_file_id":"1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU","bytes":9689250,"sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","crc32":"f8e307bb","zip_test":"PASS"},
+    "実力錬成": {"drive_file_id":"1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb","bytes":7287279,"sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","crc32":"1a020f98","zip_test":"PASS"},
+    "Winpass": {"drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E","bytes":8296042,"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","crc32":"992b0ca2","zip_test":"PASS"}
+  },
+  "current_contract_bodies": {
+    "Standard": {"records":317,"unique_raw_ids":317,"unique_fingerprints":317,"figure_refs":154,"structural_errors":0,"drive_file_id":"1piSuh8fRPDKi4c3z4y1VQXvGubvBwDtM","sha256":"80d3e4d81793f3df6218dc786ae2239aedd4a5cc1aa4ad310f7ab1d64421cee5"},
+    "実力錬成": {"records":237,"unique_raw_ids":237,"unique_fingerprints":237,"figure_refs":81,"structural_errors":0,"drive_file_id":"1FAFQJlwJK_m9iidhOJsJWu_Xxv-rk-cf","sha256":"659cd8789b52eaea78f49f9b632facb7735b366594883e42f344f1b5dc615501"},
+    "Winpass_revalidated_subsets_this_run": {
+      "final109_current40": {"records":40,"drive_file_id":"1lY0GPHiEOMbLHC5ftZYmOaeD1LSEuWaz","fingerprint_recompute":"40/40 PASS","figure_refs":32},
+      "score_evidence_current41": {"records":41,"drive_file_id":"1DxFUOi6M7Mev0kSk1pRrHCKU9a8MGMBt","fingerprint_recompute":"41/41 PASS","figure_refs":5},
+      "corrected_residual69": {"records":69,"drive_file_id":"14hdn_lBb92fB2Xqoo3sSCSNcUBhOh7Cj","evidence_drive_file_id":"1KKimgMoElsHPezjdegHvJMiKS21AhvCM","bytes":66438,"sha256":"a28e6c6ae4c3fd6ecb3abfce54e96da82aad109d0b30bd4dc6fff8a01e43e28c","unique_raw_ids":69,"unique_fingerprints":69,"figure_refs":46,"structural_errors":0,"raw_id_union_sha256":"38ce336ad197f3983552f7e8ebff3857c50051ba54c43253498ca037a5be1def"}
+    },
+    "Winpass_latest_final10": {"records":10,"github_path":"math-bank/state/winpass10-1suhy000417-current-schema-20260901T0458JST.jsonl","existing_current_contract_gate":"PASS","figure_refs":9}
+  },
+  "corruption_found": {
+    "path":"math-bank/state/winpass69-final109-residual-current-schema-exact-ooxml-20260901T0253JST.jsonl",
+    "actual_blob_sha":"850ffbab6ff463858aed1bd23b2a133bcb522b56",
+    "actual_content":"<TOOL_ARGUMENT_TOO_LARGE>",
+    "impact":"The historical 69-record body file is not a usable JSONL and cannot support runtime promotion. Its separate evidence manifest remains usable as provenance input.",
+    "corrective_action":"Rebuilt the exact residual69 from fixed Winpass OOXML + five durable strict body artifacts + frozen q/a/relationship evidence; fresh current-contract fingerprints; no text similarity or count forcing."
+  },
+  "repo_state_audit": {
+    "workflow_run_id":33453487270,
+    "jsonl_files_scanned":25,
+    "lines_scanned":179,
+    "current_validator_pass_unique_winpass_in_repo_state_before_corrected_drive_rebuild":40,
+    "structural_reject_lines":138,
+    "raw_id_conflicts":0,
+    "json_parse_failures":1
+  },
+  "important_correction":"Identity/evidence recovery for Winpass717 remains valid, and review/canonical/global immutable counts are unchanged. However, a complete readable current-contract Winpass717 body union has not yet been reassembled and passed as one payload. Therefore the previous checkpoint wording '717/717 current-contract record bodies structurally ready' must not be used as runtime-body completion evidence.",
+  "runtime_promotion_count":0,
+  "publication_ready":false,
+  "main_touched":false,
+  "next":"Recover/reassemble the remaining Winpass durable body sources into one 717-record current-contract union, validate unique raw_id/fingerprint and all provenance/media gates, combine with Standard317 and Jitsuren237, derive full figure count, and require validate_raw1271_materialization.py zero errors before app mapping/runtime promotion."
+}
