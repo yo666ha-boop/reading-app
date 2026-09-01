@@ -27,7 +27,7 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Verify native real-origin persistence and print invocation
         env:
-          TARGET_URL: https://mikami-math-1323-origin-gate-b4bvihily-yo666ha-7357s-projects.vercel.app
+          TARGET_URL: https://mikami-math-1323-origin-public-gate-qoo0wrajq.vercel.app
         run: |
           node <<'NODE'
           const { chromium } = require('playwright');
