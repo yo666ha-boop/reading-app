@@ -1,0 +1,27 @@
+name: V11 Batch12 Final Candidate Audit
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch12_build_final_candidate.js'
+      - 'v11_batch12_slash_question_scaffold.json'
+      - 'v11_batch12_question_human_review_r*.json'
+      - 'v11_batch12_question_human_review_r*_semantic_sync.js'
+      - '.github/workflows/v11-batch12-final-candidate-audit.yml'
+  workflow_dispatch:
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assemble final unregistered Batch12 candidate
+        run: node v11_batch12_build_final_candidate.js
+      - name: Validate candidate invariants
+        run: |
+          node - <<'NODE'
+          const x=require('./v11_batch12_final_candidate.json');
+          if(x.registered!==false||x.officialTotal!==718||x.passages.length!==50)throw Error('candidate state');
+          let q=0;for(const p of x.passages){if(p.registered!==false)throw Error('partial registration '+p.id);if(!p.humanSemanticReview)throw Error('semantic review '+p.id);if(!Array.isArray(p.slashRows)||!p.slashRows.length)throw Error('slash '+p.id);if(p.questions.length!==5||p.questionSetB.length!==5)throw Error('questions '+p.id);q+=10;}
+          if(q!==500||x.questionHumanReviewedQuestions!==500||x.questionHumanPending!==0)throw Error('question total');
+          console.log(JSON.stringify({passages:50,questions:q,registered:false,humanQuestions:500,pass:true},null,2));
+          NODE
