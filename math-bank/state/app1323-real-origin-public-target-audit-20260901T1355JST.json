@@ -1,0 +1,30 @@
+{
+  "project":"mikami-math-problem-bank",
+  "recorded_at_jst":"2026-09-01T13:55:00+09:00",
+  "stage":"APP1323_RUNTIME_UI_BROWSER_A4_VERIFICATION",
+  "result":"REAL_ORIGIN_AVAILABLE_BUT_DEPLOYED_CONTENT_IS_NOT_CURRENT_1323_CANDIDATE",
+  "vercel_team":"team_LXgcBDLoBpU1lMxZrMyxUQlg",
+  "deployment_audit":{
+    "sansu-app-20260829":{
+      "project_id":"prj_CgBYJjsceXmyUy8hYdc77jObPKRt",
+      "latest_deployment":"dpl_CPwQv9s7oifZVJcyor4FbkqFdRba",
+      "state":"READY",
+      "production_alias":"https://sansu-app-20260829.vercel.app",
+      "http_status":200,
+      "observed_content":"legacy 算数プリントメーカー gzip bootstrap fetching c1.txt/c2.txt",
+      "current_1323_candidate":false
+    },
+    "sansu-v16-canary":{
+      "project_id":"prj_TP3ohPY6E45jt3VI3LdcVSyzSnjo",
+      "latest_deployment":"dpl_7JDpvwAJZjP99SA4ry1FBNidAAYt",
+      "state":"READY",
+      "production_alias":"https://sansu-v16-canary.vercel.app",
+      "http_status":200,
+      "observed_content":"literal /mnt/data/index.html",
+      "current_1323_candidate":false
+    }
+  },
+  "safety_decision":"Do not treat either existing production target as the 1323 release candidate and do not run localStorage/public-isolated PASS against the wrong app. Do not overwrite production/main before strict release gates.",
+  "durable_parent_state":{"records":1323,"originals":1271,"variants":52,"unique_ids":1323,"unique_figure_paths":282,"publication_ready":false,"main_touched":false},
+  "next":"Create or deploy an isolated preview/canary containing exactly math-bank/app/index1323.html plus the verified runtime1323 data/assets, then verify native localStorage persistence and actual print behavior on that real origin. Continue Firefox/WebKit-iPhone/Fire and strict release only after exact-candidate identity is proven."
+}
