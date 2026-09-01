@@ -8,6 +8,7 @@ on:
     paths:
       - 'math-bank/scripts/audit_current_contract_state_records.py'
       - 'math-bank/scripts/audit_recover_winpass69_from_strict.py'
+      - 'math-bank/scripts/migrate_durable_strict_to_current_contract.py'
       - 'math-bank/scripts/validate_raw1271_materialization.py'
       - '.github/workflows/math-current-contract-union-audit.yml'
 
@@ -30,19 +31,23 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Compile audit and validator
-        run: python -m py_compile math-bank/scripts/audit_current_contract_state_records.py math-bank/scripts/audit_recover_winpass69_from_strict.py math-bank/scripts/validate_raw1271_materialization.py
+      - name: Compile audit migration and validator
+        run: python -m py_compile math-bank/scripts/audit_current_contract_state_records.py math-bank/scripts/audit_recover_winpass69_from_strict.py math-bank/scripts/migrate_durable_strict_to_current_contract.py math-bank/scripts/validate_raw1271_materialization.py
       - name: Audit durable state JSONL current-contract union
         run: python math-bank/scripts/audit_current_contract_state_records.py --strict-conflicts --report math-bank/state/current-contract-union-audit-ci.json
+      - name: Safely migrate structurally complete durable strict records to current contract
+        run: python math-bank/scripts/migrate_durable_strict_to_current_contract.py --output math-bank/state/current-contract-safe-migrated-ci.jsonl --report math-bank/state/current-contract-safe-migration-report-ci.json
       - name: Audit exact recovery path for corrupted Winpass69 artifact
         run: python math-bank/scripts/audit_recover_winpass69_from_strict.py --evidence math-bank/state/app1271-winpass-final109-residual69-current-schema-exact-ooxml-20260901T0253JST.json --report math-bank/state/winpass69-exact-recovery-audit-ci.json
-      - name: Upload audit and frozen recovery evidence
+      - name: Upload audit and migration evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: math-current-contract-union-audit
           path: |
             math-bank/state/current-contract-union-audit-ci.json
+            math-bank/state/current-contract-safe-migrated-ci.jsonl
+            math-bank/state/current-contract-safe-migration-report-ci.json
             math-bank/state/winpass69-exact-recovery-audit-ci.json
             math-bank/state/app1271-winpass-final109-residual69-current-schema-exact-ooxml-20260901T0253JST.json
           if-no-files-found: error
