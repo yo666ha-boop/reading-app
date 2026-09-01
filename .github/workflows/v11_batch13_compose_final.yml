@@ -23,17 +23,9 @@ jobs:
           set +e
           node v11_batch13_build_final_candidate.js > v11_batch13_final_candidate.json 2> v11_batch13_compose_error.txt
           code=$?
-          echo "code=$code" >> "$GITHUB_OUTPUT"
           if [ "$code" -eq 0 ]; then
-            node - <<'NODE' >> v11_batch13_compose_error.txt 2>&1
-          const fs=require('fs'); const d=JSON.parse(fs.readFileSync('v11_batch13_final_candidate.json','utf8'));
-          if(d.registered!==false||d.officialTotal!==768||d.passages?.length!==50) throw Error('candidate metadata/count');
-          let q=0; for(const p of d.passages){if(p.registered!==false)throw Error('registered '+p.id); if(p.questions?.length!==5||p.questionSetB?.length!==5)throw Error('A/B '+p.id); q+=10;}
-          if(q!==500)throw Error('question total '+q);
-          console.log(JSON.stringify({pass:true,passages:d.passages.length,questions:q,registered:d.registered,officialTotal:d.officialTotal}));
-NODE
-            verify=$?
-            if [ "$verify" -ne 0 ]; then code=$verify; fi
+            node -e "const fs=require('fs');const d=JSON.parse(fs.readFileSync('v11_batch13_final_candidate.json','utf8'));if(d.registered!==false||d.officialTotal!==768||d.passages?.length!==50)throw Error('candidate metadata/count');let q=0;for(const p of d.passages){if(p.registered!==false)throw Error('registered '+p.id);if(p.questions?.length!==5||p.questionSetB?.length!==5)throw Error('A/B '+p.id);q+=10;}if(q!==500)throw Error('question total '+q);console.log(JSON.stringify({pass:true,passages:d.passages.length,questions:q,registered:d.registered,officialTotal:d.officialTotal}));" >> v11_batch13_compose_error.txt 2>&1
+            code=$?
           fi
           echo "final_code=$code" >> "$GITHUB_OUTPUT"
           exit 0
