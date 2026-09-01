@@ -1,0 +1,77 @@
+name: Math Real Origin Cross Browser Gate
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-real-origin-cross-browser-gate.yml'
+      - 'math-bank/app/real-origin-cross-browser-trigger.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cross-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright browser
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps ${{ matrix.browser }}
+      - name: Run HTTPS origin compatibility gate
+        env:
+          TARGET_URL: https://mikami-math-1323-origin-gate-b4bvihily-yo666ha-7357s-projects.vercel.app
+          BROWSER: ${{ matrix.browser }}
+        run: |
+          node <<'NODE'
+          const pw=require('playwright'),assert=require('assert');
+          (async()=>{
+            const type=pw[process.env.BROWSER];
+            const browser=await type.launch({headless:true});
+            const context= process.env.BROWSER==='webkit'
+              ? await browser.newContext({viewport:{width:390,height:844},userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Version/18.0 Mobile/15E148 Safari/604.1'})
+              : await browser.newContext({viewport:{width:390,height:844}});
+            const page=await context.newPage(),errors=[];page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+            await page.goto(process.env.TARGET_URL,{waitUntil:'networkidle',timeout:60000});
+            const identity=await page.evaluate(()=>({protocol:location.protocol,title:document.title,key:document.getElementById('out')?.textContent||''}));
+            assert.equal(identity.protocol,'https:'); assert.equal(identity.title,'Math 1323 origin gate'); assert.ok(identity.key.includes('mikami-math-1323-settings-v1'));
+            await page.selectOption('#grade','3'); await page.selectOption('#kind','original'); await page.fill('#count','41'); await page.fill('#search','平方根'); await page.click('#save');
+            await page.reload({waitUntil:'networkidle'});
+            const values=await page.evaluate(()=>Object.fromEntries(['grade','kind','count','search'].map(id=>[id,document.getElementById(id).value])));
+            assert.deepStrictEqual(values,{grade:'3',kind:'original',count:'41',search:'平方根'});
+            const dims=await page.evaluate(()=>({innerWidth,scrollWidth:document.documentElement.scrollWidth})); assert.ok(dims.scrollWidth<=dims.innerWidth,JSON.stringify(dims));
+            assert.deepStrictEqual(errors,[]);
+            console.log(JSON.stringify({pass:true,browser:process.env.BROWSER,identity,values,dims,console_errors:errors},null,2));
+            await browser.close();
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+
+  fire-silk-emulation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Fire/Silk compatibility emulation (not real-device certification)
+        env:
+          TARGET_URL: https://mikami-math-1323-origin-gate-b4bvihily-yo666ha-7357s-projects.vercel.app
+        run: |
+          node <<'NODE'
+          const {chromium}=require('playwright'),assert=require('assert');
+          (async()=>{const b=await chromium.launch({headless:true});const c=await b.newContext({viewport:{width:800,height:1280},userAgent:'Mozilla/5.0 (Linux; U; en-US; KFTRWI Build/JDQ39) AppleWebKit/535.19 (KHTML, like Gecko) Silk/124.4.1 like Chrome Safari/535.19'});const p=await c.newPage();await p.goto(process.env.TARGET_URL,{waitUntil:'networkidle',timeout:60000});assert.equal(await p.title(),'Math 1323 origin gate');await p.selectOption('#grade','1');await p.fill('#count','50');await p.click('#save');await p.reload({waitUntil:'networkidle'});assert.equal(await p.inputValue('#grade'),'1');assert.equal(await p.inputValue('#count'),'50');const d=await p.evaluate(()=>({innerWidth,scrollWidth:document.documentElement.scrollWidth}));assert.ok(d.scrollWidth<=d.innerWidth);console.log(JSON.stringify({pass:true,classification:'FIRE_SILK_EMULATION_ONLY_NOT_REAL_DEVICE',dims:d},null,2));await b.close()})().catch(e=>{console.error(e);process.exit(1)});
+          NODE
