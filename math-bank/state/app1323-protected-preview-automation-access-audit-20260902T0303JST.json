@@ -1,0 +1,81 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-09-02T03:03:00+09:00",
+  "stage": "APP1323_EXACT_PREVIEW_SSO_AUTOMATION_ACCESS_AUDIT",
+  "source_identity": {
+    "single_html_drive_file_id": "1l29gpomqPrEEqWCnlCuZH1BiZSw5lg4y",
+    "bytes": 6819806,
+    "sha256": "47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521",
+    "records": 1323,
+    "assets": 282,
+    "authenticated_drive_readback": "PASS"
+  },
+  "fixed_source_recheck": {
+    "Standard": {"bytes": 9689250, "sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6", "crc32": "f8e307bb", "zip_test": "PASS", "docx_members": 85},
+    "実力錬成": {"bytes": 7287279, "sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33", "crc32": "1a020f98", "zip_test": "PASS", "docx_members": 80},
+    "Winpass": {"bytes": 8296042, "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf", "crc32": "992b0ca2", "zip_test": "PASS", "docx_members": 81}
+  },
+  "isolated_preview": {
+    "team_id": "team_LXgcBDLoBpU1lMxZrMyxUQlg",
+    "project_id": "prj_klR6v3xfehqPFqb2BPwZaaoy9m3A",
+    "deployment_id": "dpl_EpduWwwW1xvyr6v7MrXhA5ad4ecm",
+    "url": "https://mikami-math-1323-isolated-oqevg2g36-yo666ha-7357s-projects.vercel.app",
+    "state": "READY",
+    "target": "preview",
+    "production_replaced": false
+  },
+  "access_attempts": [
+    {
+      "method": "vercel_mcp_share_url_then_authenticated_fetch",
+      "result": "BLOCKED_BY_SSO_REDIRECT",
+      "detail": "share URL still redirects to Vercel SSO in available authenticated fetch surface"
+    },
+    {
+      "method": "github_actions_curl_cookie_jar",
+      "workflow_run_id": 33540686258,
+      "result": "FAIL_SSO_PAGE_NOT_APP",
+      "returned_bytes": 339252,
+      "returned_sha256": "b56a54d1d41a8dc3742da25dc4b9c07fc1983bbccedbe7905208a3ff5891d5cb",
+      "progress_credit": 0
+    },
+    {
+      "method": "github_actions_playwright_real_browser",
+      "workflow_run_id": 33540791689,
+      "job_id": 99966233027,
+      "artifact_id": 9813600789,
+      "artifact_name": "exact1323-remote-browser-gate-20260902",
+      "result": "FAIL_SSO_LOGIN_BOUNDARY",
+      "origin_document_status": 302,
+      "final_url": "https://vercel.com/login",
+      "final_title": "Login – Vercel",
+      "gate_selector_reached": false,
+      "remote_body_sha_verified": false,
+      "progress_credit": 0
+    }
+  ],
+  "diagnosis": {
+    "app_content_failure": false,
+    "deployment_ready_failure": false,
+    "blocker": "VERCEL_SSO_AUTOMATION_ACCESS",
+    "official_supported_route": "VERCEL_AUTOMATION_BYPASS_SECRET with x-vercel-protection-bypass and x-vercel-set-bypass-cookie headers",
+    "available_connector_can_generate_or_update_bypass_secret": false
+  },
+  "gates_preserved": {
+    "strict_1271": "PASS",
+    "winpass_review_717": "PASS",
+    "winpass_canonical_717": "PASS",
+    "global_immutable_1271": "PASS",
+    "verified_variants_52": "PASS",
+    "runtime_1323": "PASS",
+    "local_exact_chromium_setcontent": "PASS_PREVIOUSLY",
+    "local_a4_4_6_pages": "PASS_PREVIOUSLY",
+    "remote_exact_body_identity": "PENDING",
+    "remote_exact_origin_cross_browser": "PENDING",
+    "physical_fire": "PENDING",
+    "strict_release": "PENDING",
+    "public_isolated_verification": "PENDING",
+    "publication_ready": false,
+    "main_touched": false
+  },
+  "next_start": "Do not redeploy or re-run Winpass review. Keep deployment dpl_EpduWwwW1xvyr6v7MrXhA5ad4ecm. Establish Vercel automation bypass access for the isolated project using a supported project protection-bypass route, then verify served 6,819,806-byte SHA256 47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521 and run exact-origin Chromium/Firefox/WebKit-iPhone/localStorage/A4. Physical Fire remains mandatory before strict release and PUBLICATION_READY."
+}
