@@ -7,22 +7,109 @@
   "created_since": "2026-08-19T00:00:00Z",
   "all_artifacts_seen": 1000,
   "candidate_artifacts": 970,
-  "reused_verified_artifacts": 969,
-  "downloaded_artifacts_this_run": 1,
+  "reused_verified_artifacts": 967,
+  "downloaded_artifacts_this_run": 3,
   "canonical_hits": 0,
   "audit_name_hits": 0,
   "valid_audit_hits": 0,
   "paired_recovery_hits": 0,
   "recovery_hint_hits": 0,
   "download_failures": 0,
-  "all_members_sha256_checked": 4039,
-  "all_member_bytes_hashed": 721840109,
+  "all_members_sha256_checked": 4037,
+  "all_member_bytes_hashed": 721820326,
   "zip_signature_members": 0,
   "oversize_members_skipped": 0,
   "scan_complete": true,
   "canonical_absence_proven": true,
   "listing_errors": [],
   "artifacts": [
+    {
+      "artifact_id": 9780589126,
+      "name": "math-current-contract-union-audit",
+      "size_in_bytes": 2513,
+      "created_at": "2026-09-01T00:07:44Z",
+      "updated_at": "2026-09-01T00:07:44Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 33453487270,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "cb964b6d253870e6787de36e9eb062862ef254be"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 2,
+        "members_sha256_checked": 2,
+        "member_bytes_hashed": 30710,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 2513
+    },
+    {
+      "artifact_id": 9780581889,
+      "name": "math-browser-regression-diagnostics",
+      "size_in_bytes": 1009,
+      "created_at": "2026-09-01T00:07:26Z",
+      "updated_at": "2026-09-01T00:07:26Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 33453402806,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "9b8c3eabff011f2ca77bf5268501dac847343001"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 2,
+        "members_sha256_checked": 2,
+        "member_bytes_hashed": 2610,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1009
+    },
+    {
+      "artifact_id": 9780561447,
+      "name": "math-current-contract-union-audit",
+      "size_in_bytes": 910,
+      "created_at": "2026-09-01T00:06:36Z",
+      "updated_at": "2026-09-01T00:06:36Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 33453409741,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "b817acc26ca95acfbdc75c392b869ddbdefc3e8e"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 1861,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 910
+    },
     {
       "artifact_id": 9778974236,
       "name": "math-browser-regression-diagnostics",
@@ -2893,35 +2980,6 @@
       },
       "errors": [],
       "archive_download_bytes": 1216
-    },
-    {
-      "artifact_id": 9753493328,
-      "name": "v11-batch11-chronology",
-      "size_in_bytes": 3216,
-      "created_at": "2026-08-31T09:59:56Z",
-      "updated_at": "2026-08-31T09:59:56Z",
-      "expired": false,
-      "workflow_run": {
-        "id": 33380330946,
-        "repository_id": 1211918933,
-        "head_repository_id": 1211918933,
-        "head_branch": "v11-1000passage-easy-notes",
-        "head_sha": "47298e10cbc670b68b8085c14882db65c8d7120a"
-      },
-      "downloaded": true,
-      "interesting_members": [],
-      "canonical_sha_hits": [],
-      "valid_final_audit_hits": [],
-      "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 3,
-        "members_sha256_checked": 3,
-        "member_bytes_hashed": 49744,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 3216
     },
     {
       "artifact_id": 9753493328,
@@ -28094,67 +28152,9 @@
       },
       "errors": [],
       "archive_download_bytes": 1009
-    },
-    {
-      "artifact_id": 9506433058,
-      "name": "math-browser-regression-diagnostics",
-      "size_in_bytes": 1009,
-      "created_at": "2026-08-24T04:00:35Z",
-      "updated_at": "2026-08-24T04:00:35Z",
-      "expired": false,
-      "workflow_run": {
-        "id": 32688319866,
-        "repository_id": 1211918933,
-        "head_repository_id": 1211918933,
-        "head_branch": "math-problem-bank-bootstrap",
-        "head_sha": "3935de5600ebbdab77b4c7e43abd4f7f1e76de47"
-      },
-      "downloaded": true,
-      "interesting_members": [],
-      "canonical_sha_hits": [],
-      "valid_final_audit_hits": [],
-      "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 2,
-        "members_sha256_checked": 2,
-        "member_bytes_hashed": 2610,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 1009
-    },
-    {
-      "artifact_id": 9505475521,
-      "name": "math-browser-regression-diagnostics",
-      "size_in_bytes": 1009,
-      "created_at": "2026-08-24T03:08:04Z",
-      "updated_at": "2026-08-24T03:08:04Z",
-      "expired": false,
-      "workflow_run": {
-        "id": 32685285274,
-        "repository_id": 1211918933,
-        "head_repository_id": 1211918933,
-        "head_branch": "math-problem-bank-bootstrap",
-        "head_sha": "63c5b3e70fcac13f07caa3797b71e6849c15f179"
-      },
-      "downloaded": true,
-      "interesting_members": [],
-      "canonical_sha_hits": [],
-      "valid_final_audit_hits": [],
-      "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 2,
-        "members_sha256_checked": 2,
-        "member_bytes_hashed": 2610,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 1009
     }
   ],
   "recovered_files": [],
-  "completed_at_utc": "2026-09-01T00:06:41.170076+00:00",
+  "completed_at_utc": "2026-09-01T00:07:59.076036+00:00",
   "policy": "Artifact results are reused only when artifact id, size, and updated_at match exactly, the previous download completed without errors, and the artifact was not pair-eligible. New or changed artifacts are downloaded and every member under the size cap is SHA-256 checked. Any 403/timeout/download/listing failure makes the scan incomplete and is never absence evidence. Exact immutable SHA plus one unambiguous valid final audit from the same artifact remains required; no reconstruction."
 }
