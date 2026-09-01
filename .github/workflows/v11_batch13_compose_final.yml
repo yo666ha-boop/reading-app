@@ -4,6 +4,11 @@ on:
     branches: [v11-1000passage-easy-notes]
     paths:
       - '.github/workflows/v11_batch13_compose_final.yml'
+      - 'v11_batch13_question_boundary_corrections.json'
+      - 'v11_batch13_question_human_corrections*.json'
+      - 'v11_batch13_translation_boundary_repair_*.json'
+      - 'v11_batch13_build_final_candidate.js'
+      - 'v11_batch13_build_body_candidate.js'
 permissions:
   contents: write
 jobs:
