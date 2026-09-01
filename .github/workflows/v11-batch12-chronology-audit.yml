@@ -10,13 +10,39 @@ on:
       - 'v11_batch12_question_human_review_r*_semantic_sync.js'
       - '.github/workflows/v11-batch12-chronology-audit.yml'
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   chronology:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install --no-save --package-lock=false jsdom@24
       - name: Audit Batch12 vocabulary and grammar chronology
-        run: node v11_batch12_chronology_audit.js
+        id: chrono
+        shell: bash
+        run: |
+          set +e
+          node v11_batch12_chronology_audit.js
+          rc=$?
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Persist chronology reports without rolling back concurrent work
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f V11_BATCH12_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH12_GRAMMAR_CANDIDATE_REPORT.json V11_BATCH12_GRAMMAR_CHRONOLOGY_REPORT.json V11_BATCH12_CHRONOLOGY_STATUS.txt 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "v11: persist Batch12 chronology reports"
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
       - name: Upload chronology reports
         if: always()
         uses: actions/upload-artifact@v4
@@ -27,3 +53,6 @@ jobs:
             V11_BATCH12_GRAMMAR_CANDIDATE_REPORT.json
             V11_BATCH12_GRAMMAR_CHRONOLOGY_REPORT.json
             V11_BATCH12_CHRONOLOGY_STATUS.txt
+      - name: Enforce chronology gate
+        if: always()
+        run: test "${{ steps.chrono.outputs.rc }}" = "0"
