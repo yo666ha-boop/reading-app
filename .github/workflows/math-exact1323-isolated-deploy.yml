@@ -17,7 +17,9 @@ env:
   EXACT_BYTES: '6819806'
   EXACT_SHA256: '47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521'
   VERCEL_PROJECT_ID: 'prj_klR6v3xfehqPFqb2BPwZaaoy9m3A'
+  VERCEL_PROJECT_NAME: 'mikami-math-1323-isolated'
   VERCEL_ORG_ID: 'team_LXgcBDLoBpU1lMxZrMyxUQlg'
+  VERCEL_SCOPE: 'yo666ha-7357s-projects'
 
 jobs:
   exact1323:
@@ -89,11 +91,22 @@ jobs:
         run: |
           if [ -n "${VERCEL_TOKEN:-}" ]; then
             echo 'available=true' >> "$GITHUB_OUTPUT"
-            echo 'VERCEL_TOKEN secret is available; proceeding with fixed-project preview deploy.'
+            echo 'VERCEL_TOKEN secret is available; proceeding with fixed-project isolated publish verification.'
           else
             echo 'available=false' >> "$GITHUB_OUTPUT"
             echo 'VERCEL_TOKEN secret is not available; exact artifact is still preserved and validated.'
           fi
+
+      - name: Disable access protection on fixed isolated publication project
+        if: steps.vercel_secret.outputs.available == 'true'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          # This project exists only for the math-1323 isolated publication gate.
+          # Never target reading-app/main or any pre-existing production project here.
+          npx --yes vercel@latest project protection disable "$VERCEL_PROJECT_NAME" --sso --token "$VERCEL_TOKEN" --scope "$VERCEL_SCOPE"
 
       - name: Deploy exact1323 to fixed isolated Vercel preview
         if: steps.vercel_secret.outputs.available == 'true'
@@ -104,17 +117,41 @@ jobs:
           set -euo pipefail
           mkdir -p exact1323/.vercel
           printf '{"orgId":"%s","projectId":"%s"}\n' "$VERCEL_ORG_ID" "$VERCEL_PROJECT_ID" > exact1323/.vercel/project.json
-          npx --yes vercel@latest deploy exact1323 --yes --token "$VERCEL_TOKEN" > vercel-url.txt
+          npx --yes vercel@latest deploy exact1323 --yes --token "$VERCEL_TOKEN" --scope "$VERCEL_SCOPE" > vercel-url.txt
           url="$(tail -n 1 vercel-url.txt | tr -d '\r')"
           echo "deployed_url=$url"
           if [ -z "$url" ]; then exit 42; fi
-          curl -fL --retry 6 --retry-delay 3 --max-time 120 "$url" -o deployed.html
-          bytes="$(stat -c %s deployed.html)"
-          sha="$(sha256sum deployed.html | awk '{print $1}')"
-          echo "deployed_bytes=$bytes deployed_sha256=$sha"
-          test "$bytes" = "$EXACT_BYTES"
-          test "$sha" = "$EXACT_SHA256"
           printf '%s\n' "$url" > exact1323-vercel-preview-url.txt
+
+          # Authenticated CLI read proves the deployment itself is the expected bytes even if edge
+          # protection propagation is not instantaneous.
+          npx --yes vercel@latest curl / --deployment "$url" --token "$VERCEL_TOKEN" --scope "$VERCEL_SCOPE" > deployed-auth.html
+          auth_bytes="$(stat -c %s deployed-auth.html)"
+          auth_sha="$(sha256sum deployed-auth.html | awk '{print $1}')"
+          echo "authenticated_deployed_bytes=$auth_bytes authenticated_deployed_sha256=$auth_sha"
+          test "$auth_bytes" = "$EXACT_BYTES"
+          test "$auth_sha" = "$EXACT_SHA256"
+
+          # Final publication gate is anonymous HTTP, not a Vercel-authenticated fetch.
+          anonymous_ok=0
+          for i in 1 2 3 4 5 6 7 8; do
+            rm -f deployed-public.html
+            if curl -fL --connect-timeout 20 --max-time 120 "$url" -o deployed-public.html; then
+              public_bytes="$(stat -c %s deployed-public.html)"
+              public_sha="$(sha256sum deployed-public.html | awk '{print $1}')"
+              echo "anonymous_attempt=$i bytes=$public_bytes sha=$public_sha"
+              if [ "$public_bytes" = "$EXACT_BYTES" ] && [ "$public_sha" = "$EXACT_SHA256" ]; then
+                anonymous_ok=1
+                break
+              fi
+            fi
+            sleep 5
+          done
+          if [ "$anonymous_ok" != 1 ]; then
+            echo 'Anonymous exact-byte publication gate failed.' >&2
+            exit 43
+          fi
+          echo 'PASS_PUBLIC_EXACT1323_BYTE_IDENTITY'
 
       - name: Upload deployment evidence
         if: always()
@@ -124,5 +161,7 @@ jobs:
           path: |
             vercel-url.txt
             exact1323-vercel-preview-url.txt
+            deployed-auth.html
+            deployed-public.html
           if-no-files-found: ignore
           retention-days: 14
