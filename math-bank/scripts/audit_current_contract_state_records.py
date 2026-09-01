@@ -32,6 +32,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--state-root", type=Path, default=Path("math-bank/state"))
     ap.add_argument("--report", type=Path)
+    ap.add_argument("--records-output", type=Path)
     ap.add_argument("--strict-conflicts", action="store_true")
     args = ap.parse_args()
 
@@ -58,21 +59,25 @@ def main() -> int:
                 continue
             raw_id = record.get("raw_id")
             fp = record.get("record_fingerprint")
-            by_source_raw[source][raw_id].append({"fingerprint": fp, "file": rel, "line": line_no})
+            by_source_raw[source][raw_id].append({"fingerprint": fp, "file": rel, "line": line_no, "record": record})
             contributors[rel] += 1
 
     counts = {}
     conflicts = []
     exact_duplicate_raw_ids = []
+    unique_records = []
     for source in gate.EXPECTED:
         raw_map = by_source_raw[source]
         counts[source] = len(raw_map)
         for raw_id, occ in sorted(raw_map.items()):
             fps = sorted({x["fingerprint"] for x in occ})
+            public_occ = [{k:v for k,v in x.items() if k != "record"} for x in occ]
             if len(fps) > 1:
-                conflicts.append({"source": source, "raw_id": raw_id, "fingerprints": fps, "occurrences": occ})
-            elif len(occ) > 1:
-                exact_duplicate_raw_ids.append({"source": source, "raw_id": raw_id, "fingerprint": fps[0], "occurrences": occ})
+                conflicts.append({"source": source, "raw_id": raw_id, "fingerprints": fps, "occurrences": public_occ})
+            else:
+                unique_records.append(occ[-1]["record"])
+                if len(occ) > 1:
+                    exact_duplicate_raw_ids.append({"source": source, "raw_id": raw_id, "fingerprint": fps[0], "occurrences": public_occ})
 
     total_unique = sum(counts.values())
     report = {
@@ -91,13 +96,18 @@ def main() -> int:
         "top_contributing_files": contributors.most_common(80),
         "json_parse_errors": len(json_errors),
         "json_parse_error_examples": json_errors[:20],
-        "policy": "Counts include only records that pass the current strict per-record validator including content-bound fingerprint. Multiple occurrences with the same raw_id+fingerprint are counted once. Any same raw_id with multiple current fingerprints is reported as a conflict and never auto-resolved.",
+        "records_output_count": len(unique_records) if not conflicts else 0,
+        "policy": "Counts include only records that pass the current strict per-record validator including content-bound fingerprint. Multiple occurrences with the same raw_id+fingerprint are counted once. Any same raw_id with multiple current fingerprints is reported as a conflict and never auto-resolved. records-output is emitted only when there are zero current-contract conflicts.",
     }
     text = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
     print(text, end="")
     if args.report:
         args.report.parent.mkdir(parents=True, exist_ok=True)
         args.report.write_text(text, encoding="utf-8")
+    if args.records_output and not conflicts:
+        args.records_output.parent.mkdir(parents=True, exist_ok=True)
+        unique_records.sort(key=lambda r: (str(r.get("source")), str(r.get("raw_id"))))
+        args.records_output.write_text("".join(json.dumps(r, ensure_ascii=False, separators=(",", ":")) + "\n" for r in unique_records), encoding="utf-8")
     return 11 if args.strict_conflicts and conflicts else 0
 
 
