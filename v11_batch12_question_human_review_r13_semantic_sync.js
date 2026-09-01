@@ -1,16 +1,16 @@
 function syncR13(f){
   'use strict';
   if(!f||!Array.isArray(f.passages))return f;
-  const p=f.passages.find(x=>x.id==='V11-B12-G3-009');
-  if(!p)throw new Error('R13 semantic sync: G3-009 missing');
-  const all=[...(p.questions||[]),...(p.questionSetB||[])];
-  const targets=all.filter(x=>x.evidence==='Some fishing rope appeared near the working harbor but not near the swimming area.');
-  if(targets.length!==2)throw new Error('R13 semantic sync: expected two harbor-rope questions, got '+targets.length);
-  for(const q of targets){
-    q.evidence='The later counts were much lower, and some fishing rope appeared near the working harbor but not near the swimming area.';
-    q.evidenceJp='その後の数はずっと少なく、漁港近くでは漁網の一部が見つかりましたが、遊泳区域では見つかりませんでした。';
-    q.humanReview='HUMAN_REVIEW_R13_SEMANTIC_SYNC';
-  }
+  const p9=f.passages.find(x=>x.id==='V11-B12-G3-009');if(!p9)throw new Error('R13 semantic sync: G3-009 missing');
+  const a9=[...(p9.questions||[]),...(p9.questionSetB||[])];
+  const rope=a9.filter(x=>x.evidence==='Some fishing rope appeared near the working harbor but not near the swimming area.');
+  if(rope.length!==2)throw new Error('R13 semantic sync: expected two harbor-rope questions, got '+rope.length);
+  for(const q of rope){q.evidence='The later counts were much lower, and some fishing rope appeared near the working harbor but not near the swimming area.';q.evidenceJp='その後の数はずっと少なく、漁港近くでは漁網の一部が見つかりましたが、遊泳区域では見つかりませんでした。';q.humanReview='HUMAN_REVIEW_R13_SEMANTIC_SYNC';}
+  const p10=f.passages.find(x=>x.id==='V11-B12-G3-010');if(!p10)throw new Error('R13 semantic sync: G3-010 missing');
+  const a10=[...(p10.questions||[]),...(p10.questionSetB||[])];
+  const shelf=a10.filter(x=>x.evidence==='The translators checked the entrance and found two shelves, one beside the reception table and one near the emergency door.'||x.evidence==='Only the shelf beside reception held visitor slippers.');
+  if(shelf.length!==2)throw new Error('R13 semantic sync: expected two shelf-layout questions, got '+shelf.length);
+  for(const q of shelf){q.evidence='The translators checked the entrance and found two shelves, one beside the reception table and one near the emergency door. Only the shelf beside reception held visitor slippers.';q.evidenceJp='翻訳チームが入口を確認すると、受付の横と非常口の近くに二つの棚があり、来客用スリッパがあるのは受付横だけでした。';q.humanReview='HUMAN_REVIEW_R13_SEMANTIC_SYNC';}
   return f;
 }
 if(typeof module!=='undefined'&&module.exports)module.exports=syncR13;
