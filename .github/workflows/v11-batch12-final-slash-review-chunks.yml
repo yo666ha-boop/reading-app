@@ -1,0 +1,30 @@
+name: V11 Batch12 Final Slash Review Chunks
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch12_extract_final_slash_review_chunks.js'
+      - 'v11_batch12_build_final_candidate.js'
+      - 'v11_batch12_grammar_repair_r*.js'
+      - 'v11_batch12_final_semantic_repair_r*.js'
+      - '.github/workflows/v11-batch12-final-slash-review-chunks.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - run: node v11_batch12_extract_final_slash_review_chunks.js
+      - name: Persist chunks safely
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add V11_BATCH12_FINAL_SLASH_REVIEW_*.txt V11_BATCH12_FINAL_SLASH_REVIEW_MANIFEST.json
+          git diff --cached --quiet || git commit -m "v11: persist final Batch12 slash review chunks"
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
