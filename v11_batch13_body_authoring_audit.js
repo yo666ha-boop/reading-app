@@ -1,8 +1,17 @@
 const fs=require('fs');
 const files=['v11_batch13_g1_body_draft.json','v11_batch13_g2_body_draft.json','v11_batch13_g3_standard_long_draft.json','v11_batch13_g3_yamaguchi_exam_draft.json'];
 const docs=files.map(f=>JSON.parse(fs.readFileSync(f,'utf8')));
-const passages=docs.flatMap(d=>d.passages||[]);
+const passages=docs.flatMap(d=>d.passages||[]).map(p=>({...p}));
 const issues=[];
+const repairDoc=JSON.parse(fs.readFileSync('v11_batch13_g3_length_repair_r1.json','utf8'));
+const repairMap=new Map((repairDoc.repairs||[]).map(r=>[r.id,r]));
+for(const [id,r] of repairMap){
+ const p=passages.find(x=>x.id===id);
+ if(!p){issues.push(`repair target missing ${id}`);continue;}
+ if(r.humanReviewed!==true)issues.push(`repair not human reviewed ${id}`);
+ p.body=(p.body||'')+(r.bodyAppend||'');
+ p.fullTranslation=(p.fullTranslation||'')+(r.translationAppend||'');
+}
 const wc=s=>(s.match(/[A-Za-z]+(?:['’-][A-Za-z]+)*/g)||[]).length;
 const sent=s=>s.split(/(?<=[.!?])\s+/).map(x=>x.trim()).filter(Boolean);
 const ids=new Set(), titles=new Set();
@@ -32,7 +41,8 @@ if((tiers.STANDARD||0)!==8||(tiers.LONG||0)!==4||(tiers.YAMAGUCHI_EXAM||0)!==4)i
 const sentenceOwners=new Map();
 for(const p of passages) for(const s of sent(p.body||'')){const k=s.toLowerCase().replace(/[^a-z0-9 ]/g,'').replace(/\s+/g,' ').trim(); if(k.split(' ').length<7)continue; const arr=sentenceOwners.get(k)||[]; arr.push(p.id); sentenceOwners.set(k,arr);}
 for(const [s,owners] of sentenceOwners) if(new Set(owners).size>1)issues.push(`shared sentence ${owners.join(',')} :: ${s.slice(0,80)}`);
-const report={batch:'V11-B13',passageCount:passages.length,uniqueIds:ids.size,uniqueTitles:titles.size,gradeCounts,g3Tiers:tiers,issues,registered:false,officialBefore:768,targetAfterFullGates:818,finalPass:issues.length===0};
+const wordCounts=Object.fromEntries(passages.map(p=>[p.id,wc(p.body||'')]));
+const report={batch:'V11-B13',passageCount:passages.length,uniqueIds:ids.size,uniqueTitles:titles.size,gradeCounts,g3Tiers:tiers,lengthRepairCount:repairMap.size,wordCounts,issues,registered:false,officialBefore:768,targetAfterFullGates:818,finalPass:issues.length===0};
 fs.writeFileSync('V11_BATCH13_BODY_AUTHORING_AUDIT.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report,null,2));
 if(issues.length)process.exit(1);
