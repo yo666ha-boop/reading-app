@@ -52,5 +52,8 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           rm -f v11_batch13_compose_error.txt
-          git add -A v11_batch13_final_candidate.json v11_batch13_compose_error.txt
+          git add -A v11_batch13_final_candidate.json
+          if git ls-files --error-unmatch v11_batch13_compose_error.txt >/dev/null 2>&1; then
+            git add -u v11_batch13_compose_error.txt
+          fi
           if git diff --cached --quiet; then echo 'No change'; else git commit -m 'Batch13: materialize final 500-question candidate'; git push; fi
