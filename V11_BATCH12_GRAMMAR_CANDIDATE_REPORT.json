@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-01T03:42:04.441Z",
+  "generatedAt": "2026-09-01T03:46:23.848Z",
   "passages": 50,
   "classification": "CANDIDATES_FOR_V11_BATCH12_GATE",
   "detectorVersion": "3.1-v11-b05-grammar-r1",
@@ -14,9 +14,8 @@
       ]
     },
     "PASSIVE": {
-      "sectionCount": 5,
+      "sectionCount": 4,
       "sections": [
-        "サンシャイン|1|PROGRAM 10-2",
         "サンシャイン|2|PROGRAM 8-3",
         "ニューホライズン|2|Unit 7-4",
         "ニューホライズン|3|Unit 6-4",
@@ -274,15 +273,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "id": "V11-B12-G1-011",
-      "features": {
-        "PASSIVE": [
-          {
-            "where": "slash:7",
-            "text": "The librarian also marked that place so the cart would be returned there after use.",
-            "match": "be returned"
-          }
-        ]
-      }
+      "features": {}
     },
     {
       "textbook": "ニューホライズン",
@@ -2112,6 +2103,11 @@
             "where": "slash:10",
             "text": "Third, they could arrive after 12:30 and attend the family science show together on the first floor. That option did not use the age-specific workshops, but it met the access condition and kept the family together.",
             "match": "could arrive"
+          },
+          {
+            "where": "slash:16",
+            "text": "Before the visit, their mother called the library and learned that they could join the first-floor science show that day.",
+            "match": "could join"
           },
           {
             "where": "A1.evidence",

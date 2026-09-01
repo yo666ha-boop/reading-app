@@ -1,37 +1,19 @@
 {
-  "generatedAt": "2026-09-01T03:42:04.446Z",
+  "generatedAt": "2026-09-01T03:46:23.855Z",
   "detectorVersion": "3.1-v11-b05-grammar-r1+gate-fp3+v7supp",
   "passages": 50,
   "detectedFeatureTypes": 20,
   "detectedOccurrences": 450,
   "falsePositiveOccurrencesRemoved": 0,
-  "resolvedOccurrences": 449,
-  "priorGradeCarryForwardOccurrences": 279,
-  "unresolvedOccurrences": 1,
+  "resolvedOccurrences": 450,
+  "priorGradeCarryForwardOccurrences": 280,
+  "unresolvedOccurrences": 0,
   "futureGrammarLeak": 0,
-  "sectionChronologyComplete": false,
-  "finalPass": false,
+  "sectionChronologyComplete": true,
+  "finalPass": true,
   "rule": "Fail closed after bounded structural false-positive removal, including canonical-v7 lexical -ing nouns; exact official evidence plus bounded canonical-v7 exact/conservative boundaries only. Exact earlier-grade introductions carry forward. Unit/program-level evidence remains unresolved.",
   "future": [],
-  "unresolved": [
-    {
-      "textbook": "サンシャイン",
-      "grade": "1",
-      "section": "PROGRAM 10-2",
-      "feature": "PASSIVE",
-      "occurrences": 1,
-      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-      "coarseBoundary": null,
-      "introducedGrade": null,
-      "samples": [
-        {
-          "where": "slash:7",
-          "text": "The librarian also marked that place so the cart would be returned there after use.",
-          "match": "be returned"
-        }
-      ]
-    }
-  ],
+  "unresolved": [],
   "resolved": [
     {
       "textbook": "ニューホライズン",
@@ -721,7 +703,7 @@
       "boundary": "Unit 4-1",
       "introducedGrade": 2,
       "evidenceStatus": "EXACT_PRIOR_GRADE_CARRY_FORWARD",
-      "occurrences": 16
+      "occurrences": 17
     },
     {
       "textbook": "ニューホライズン",
