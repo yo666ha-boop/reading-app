@@ -1,0 +1,78 @@
+{
+  "batch":"V11-B12",
+  "registered":false,
+  "officialTotal":718,
+  "reviewStage":"B12_QUESTION_HUMAN_REVIEW_R10",
+  "reviewedPassages":4,
+  "reviewedQuestions":40,
+  "passages":[
+    {
+      "id":"V11-B12-G2-014",
+      "questions":[
+        {"questionType":"DETAIL","prompt":"2年1組が朝カートを開けたとき、20％未満だったタブレットは何台ありましたか。","answer":"6台です。","evidence":"One morning, Class 2-1 opened it and found six devices below twenty percent battery.","evidenceJp":"ある朝、2年1組が開けると、6台の充電が20％未満でした。","reason":"最初に見つかった具体的な問題の規模を確認します。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"REASON","prompt":"20台すべて返却されていたのに、朝の充電が不足したのはなぜですか。","answer":"いくつかの充電ケーブルが緩み、返却時に充電開始を確認する手順もなかったからです。","evidence":"Akira checked the charging screen and saw that several cables were loose.","evidenceJp":"アキラが充電画面を確認すると、いくつかのケーブルが緩んでいました。","reason":"返却台数ではなく、実際に充電が始まっていたかが原因でした。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"CONTENT_MATCH","prompt":"新しい二段階の手順では、カートを閉める前に何をしますか。","answer":"各ケーブルをつなぎ、充電マークが出ていることを確認します。","evidence":"The classes created a two-step routine: connect each cable and check for the charging symbol before closing the cart.","evidenceJp":"そこで各クラスは、ケーブルをつなぎ、カートを閉める前に充電マークを確かめる二段階の手順を作りました。","reason":"改善策の二つの動作を本文どおりにまとめます。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"DETAIL","prompt":"一日の終わりに記録することにした数値は何ですか。","answer":"その日の最も低い充電率です。","evidence":"A student then recorded the lowest battery level at the end of the day.","evidenceJp":"さらに一日の終わりに最も低い充電率を記録しました。","reason":"新しい確認方法に追加された記録項目を問います。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"GIST","prompt":"この話で『返却済み』だけでは準備完了と判断できないと分かったのはなぜですか。","answer":"端末が戻っていても充電が始まっていない場合があり、実際の充電状態を確認する必要があったからです。","evidence":"The new routine made responsibility visible instead of assuming that returning a device meant it was ready.","evidenceJp":"返却したから準備完了と考えず、責任を確認できる手順に変えました。","reason":"本文全体の中心となる『返却』と『使用準備』の違いを捉えます。","humanReview":"HUMAN_REVIEW_R10"}
+      ],
+      "questionSetB":[
+        {"questionType":"INFERENCE","prompt":"もしケーブルを差すだけで充電マークを確認しなかったら、どんな問題が再び起こる可能性がありますか。","answer":"ケーブルが緩んだ端末に気づかず、翌朝充電不足の端末が出る可能性があります。","evidence":"Akira checked the charging screen and saw that several cables were loose.","evidenceJp":"アキラが充電画面を確認すると、いくつかのケーブルが緩んでいました。","reason":"実際に見つかった原因から、確認を省いた場合の結果を本文の範囲内で推論します。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"SUMMARY_FILL","prompt":"「朝の充電不足を発見→原因を確認→（　）→一週間後は全台80％以上」の（　）に入る内容を答えなさい。","answer":"ケーブル接続と充電マーク確認を行い、最低充電率も記録する手順を作る。","evidence":"The classes created a two-step routine: connect each cable and check for the charging symbol before closing the cart.","evidenceJp":"そこで各クラスは、ケーブルをつなぎ、カートを閉める前に充電マークを確かめる二段階の手順を作りました。","reason":"原因確認と結果の間に入る改善行動をまとめます。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"CONTEXT_WORD","prompt":"最後の made responsibility visible は、この話では具体的にどのような状態を表しますか。","answer":"誰が返したかだけでなく、充電開始を確認し記録することで、準備できているかを確かめられる状態です。","evidence":"The new routine made responsibility visible instead of assuming that returning a device meant it was ready.","evidenceJp":"返却したから準備完了と考えず、責任を確認できる手順に変えました。","reason":"抽象表現を本文中の具体的な確認手順へ結び付けます。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"CONTENT_MATCH","prompt":"新しい手順を一週間続けた後、朝のタブレットはどのような状態になりましたか。","answer":"すべてのタブレットが80％を超える充電で朝を始められるようになりました。","evidence":"After a week, every tablet began the morning above eighty percent.","evidenceJp":"一週間後、すべての端末が朝80％以上で始められるようになりました。","reason":"改善策の効果を数値で確認します。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"GIST","prompt":"この話から、共有機器を次の人のために準備するとき大切だと言えることは何ですか。","answer":"物を元の場所へ戻すだけでなく、実際に次の利用に使える状態になったことまで確認することです。","evidence":"The new routine made responsibility visible instead of assuming that returning a device meant it was ready.","evidenceJp":"返却したから準備完了と考えず、責任を確認できる手順に変えました。","reason":"本文の結論を共有機器管理の原則としてまとめます。","humanReview":"HUMAN_REVIEW_R10"}
+      ]
+    },
+    {
+      "id":"V11-B12-G2-015",
+      "questions":[
+        {"questionType":"DETAIL","prompt":"最初の鉢ラベルには、どの三種類の情報が書かれていましたか。","answer":"植物の名前、値段、育て方です。","evidence":"Each pot had a neat label with its name, price, and care instructions, but the print was tiny.","evidenceJp":"各鉢には名前、値段、育て方がきれいに書かれていましたが、文字がとても小さかったのです。","reason":"表示されていた情報の内容を確認します。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"REASON","prompt":"担当者が同じ質問に何度も答えることになった主な原因は何ですか。","answer":"必要な情報は書かれていたものの、文字が小さく購入者が読み取りにくかったからです。","evidence":"During the first break, volunteers answered the same questions again and again: How much is this? Does it need much sun?","evidenceJp":"最初の休み時間、担当者は「これはいくらですか」「日光はたくさん必要ですか」と同じ質問に何度も答えました。","reason":"質問内容と小さな表示という前後の情報を結び付けて原因を答えます。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"CONTENT_MATCH","prompt":"大きなカードでは、どの三つの情報を同じ順番で並べましたか。","answer":"値段、光、水やりの情報です。","evidence":"The club made large cards for each plant type and put price, light, and watering information in the same order on every card.","evidenceJp":"そこで植物の種類ごとに大きなカードを作り、値段、光、水やりの情報をどのカードでも同じ順に並べました。","reason":"改善後の情報設計を具体的に確認します。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"DETAIL","prompt":"大きなカードを作った後も鉢に残したものは何ですか。","answer":"小さな個別ラベルです。","evidence":"Small individual labels stayed on the pots.","evidenceJp":"鉢の小さな個別ラベルは残しました。","reason":"情報を削除したのではないことを示す具体例です。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"GIST","prompt":"園芸部が改善したのは情報の量ですか、それとも情報の見せ方ですか。理由とともに答えなさい。","answer":"情報の見せ方です。情報自体は残し、文字の大きさと置く場所を変えて読みやすくしたからです。","evidence":"The club did not remove information; it changed the size and place so people could use it.","evidenceJp":"情報を減らすのではなく、大きさと置く場所を変えて使いやすくしました。","reason":"結論文が改善の本質を明示しています。","humanReview":"HUMAN_REVIEW_R10"}
+      ],
+      "questionSetB":[
+        {"questionType":"INFERENCE","prompt":"購入者が鉢へ顔を近づけていた様子から、ユイはどんな問題を考えたと推測できますか。","answer":"ラベルの文字が小さく、立ったままでは情報を読み取りにくいという問題です。","evidence":"Yui watched buyers and noticed that many bent down close to the pots before asking.","evidenceJp":"ユイが購入者を見ていると、多くの人が質問する前に鉢へ顔を近づけていました。","reason":"観察された行動と直前の小さな文字という事実から妥当に推論します。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"SUMMARY_FILL","prompt":"「同じ質問が続く→購入者の様子を観察→（　）→質問が大きく減る」の（　）を答えなさい。","answer":"植物ごとに大きなカードを作り、必要な情報を同じ順に並べる。","evidence":"The club made large cards for each plant type and put price, light, and watering information in the same order on every card.","evidenceJp":"そこで植物の種類ごとに大きなカードを作り、値段、光、水やりの情報をどのカードでも同じ順に並べました。","reason":"観察から効果へつながる具体的な改善策です。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"CONTEXT_WORD","prompt":"最後の so people could use it の it は何を指しますか。","answer":"植物の名前・値段・育て方など、表示されている情報です。","evidence":"The club did not remove information; it changed the size and place so people could use it.","evidenceJp":"情報を減らすのではなく、大きさと置く場所を変えて使いやすくしました。","reason":"代名詞を直前の information に対応させます。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"CONTENT_MATCH","prompt":"改善後、購入者の行動と担当者への質問にはどんな変化がありましたか。","answer":"立ったまま植物を比較できるようになり、繰り返しの質問が大きく減りました。","evidence":"During the next break, buyers could compare plants while standing, and repeated questions fell sharply.","evidenceJp":"次の休み時間には、立ったまま植物を比べられ、繰り返しの質問が大きく減りました。","reason":"利用者側と運営側の二つの効果をまとめます。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"GIST","prompt":"案内表示を分かりやすくするとき、この話が示す重要な視点は何ですか。","answer":"情報を減らす前に、利用者が見やすい大きさ・位置・順序で示されているかを確かめることです。","evidence":"The club did not remove information; it changed the size and place so people could use it.","evidenceJp":"情報を減らすのではなく、大きさと置く場所を変えて使いやすくしました。","reason":"本文の改善方法を一般化して答えます。","humanReview":"HUMAN_REVIEW_R10"}
+      ]
+    },
+    {
+      "id":"V11-B12-G2-016",
+      "questions":[
+        {"questionType":"DETAIL","prompt":"練習後、救急箱で不足していた物は何ですか。","answer":"テープです。","evidence":"After basketball practice, a player needed tape, but the first-aid box had none.","evidenceJp":"バスケットボールの練習後、選手がテープを必要としましたが、救急箱には一本も残っていませんでした。","reason":"問題のきっかけとなった不足品を確認します。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"REASON","prompt":"ハルトがすぐに新しいテープを買うだけで済ませなかったのはなぜですか。","answer":"なぜ在庫がなくなったのかを確かめ、同じ不足を防ぐ仕組みが必要だったからです。","evidence":"Rather than simply buying more, Haruto checked the inventory sheet.","evidenceJp":"ハルトはただ買い足すのではなく、在庫表を確認しました。","reason":"一時的な補充ではなく原因と管理方法を確認した行動を問います。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"CONTENT_MATCH","prompt":"在庫表を調べて分かった記録上の問題は何ですか。","answer":"テープを使った回数は記録されていても、残りがいくつかは記録されていなかったことです。","evidence":"It showed that tape had been used three times, but no one had written how much remained.","evidenceJp":"テープを三回使った記録はありましたが、残りの数を書いた人はいませんでした。","reason":"使用記録と残量記録の違いを確認します。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"DETAIL","prompt":"毎週金曜日、担当者は何と何を比べますか。","answer":"記録の印と実際の救急箱です。","evidence":"Every Friday, one manager compared the marks with the actual box and restocked anything below the minimum.","evidenceJp":"毎週金曜日、一人の担当が印と実際の箱を比べ、最低数を下回った物を補充します。","reason":"定期確認の二つの情報源を問います。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"GIST","prompt":"新しい仕組みが、次の緊急時まで待つ方法よりよいのはなぜですか。","answer":"記録と実物を定期的に確認して、不足する前に補充できるからです。","evidence":"The new system used both records and a physical check instead of waiting for the next emergency.","evidenceJp":"次の緊急時まで待つのではなく、記録と実物確認の両方を使う仕組みにしました。","reason":"本文最後の対比から仕組みの目的をまとめます。","humanReview":"HUMAN_REVIEW_R10"}
+      ],
+      "questionSetB":[
+        {"questionType":"INFERENCE","prompt":"使用回数だけ記録して残量を確認しない方法では、どんな問題が起こり得ますか。","answer":"何度使ったかは分かっても、必要な量が残っているか判断できず、急に不足する可能性があります。","evidence":"It showed that tape had been used three times, but no one had written how much remained.","evidenceJp":"テープを三回使った記録はありましたが、残りの数を書いた人はいませんでした。","reason":"本文で実際に起きた不足と記録の欠点から推論します。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"SUMMARY_FILL","prompt":"「テープ不足を発見→在庫表の弱点を確認→（　）→不足前に包帯を補充」の（　）を答えなさい。","answer":"最低必要数と最後の包装を開けた印を決め、毎週実物と比べる仕組みを作る。","evidence":"The club added a minimum number beside each item and asked the student who opened the last package to mark it.","evidenceJp":"そこで各用品に最低必要数を書き、最後の包装を開けた生徒が印を付けることにしました。","reason":"問題の発見と改善効果の間にある管理方法をまとめます。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"CONTEXT_WORD","prompt":"本文中の physical check は何をすることですか。","answer":"記録だけを見るのではなく、救急箱の中に実際に残っている用品を確認することです。","evidence":"Every Friday, one manager compared the marks with the actual box and restocked anything below the minimum.","evidenceJp":"毎週金曜日、一人の担当が印と実際の箱を比べ、最低数を下回った物を補充します。","reason":"抽象表現を具体的な金曜日の確認行動へ戻します。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"CONTENT_MATCH","prompt":"二週間後、金曜日の確認はどんな不足を事前に見つけましたか。","answer":"包帯の在庫が少なくなっていることです。","evidence":"Two weeks later, the Friday check caught a low supply of bandages before they ran out.","evidenceJp":"二週間後、金曜の確認で包帯が少ないことを、なくなる前に見つけました。","reason":"新しい仕組みが実際に機能した例を確認します。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"GIST","prompt":"この話が示す在庫管理の基本的な考え方は何ですか。","answer":"記録だけにも実物だけにも頼らず、必要最低数を決めて両方を定期的に照合することです。","evidence":"The new system used both records and a physical check instead of waiting for the next emergency.","evidenceJp":"次の緊急時まで待つのではなく、記録と実物確認の両方を使う仕組みにしました。","reason":"本文の結論を管理原則としてまとめます。","humanReview":"HUMAN_REVIEW_R10"}
+      ]
+    },
+    {
+      "id":"V11-B12-G2-017",
+      "questions":[
+        {"questionType":"DETAIL","prompt":"古いイベントポスターは掲示板のおよそどれくらいの面積を使っていましたか。","answer":"約3分の1です。","evidence":"They found that old event posters used almost one third of the space.","evidenceJp":"すると、終了した行事のポスターが約3分の1の場所を使っていると分かりました。","reason":"調査で分かった空間利用の具体的な割合を確認します。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"REASON","prompt":"生徒たちが大きなポスターを全面禁止する案ではなく別のルールを提案したのはなぜですか。","answer":"大きな掲示をする団体も排除せず、小さな案内にも公平に場所を確保するためです。","evidence":"The center considered banning large posters, but the students suggested a fairer rule: every notice would show a removal date, large posters could stay for ten days, and one section would always be kept for small notices.","evidenceJp":"公民館は大きなポスターを禁止する案も考えましたが、生徒はより公平な方法を提案しました。すべての掲示に撤去日を書き、大きなポスターは10日間まで、そして一つの区画は常に小さな案内用に残します。","reason":"禁止ではなく利用機会を調整する案を選んだ理由を問います。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"CONTENT_MATCH","prompt":"生徒たちが提案した公平な掲示ルールを三つ答えなさい。","answer":"撤去日を表示すること、大きなポスターは10日間までにすること、一つの区画を常に小さな案内用にすることです。","evidence":"The center considered banning large posters, but the students suggested a fairer rule: every notice would show a removal date, large posters could stay for ten days, and one section would always be kept for small notices.","evidenceJp":"公民館は大きなポスターを禁止する案も考えましたが、生徒はより公平な方法を提案しました。すべての掲示に撤去日を書き、大きなポスターは10日間まで、そして一つの区画は常に小さな案内用に残します。","reason":"公平なローテーションを成立させる三条件をまとめます。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"DETAIL","prompt":"ボランティアは掲示の撤去日をどのくらいの頻度で確認しましたか。","answer":"週に2回です。","evidence":"Volunteers checked the dates twice a week.","evidenceJp":"ボランティアが週二回日付を確認しました。","reason":"ルールを維持するための定期確認頻度を問います。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"GIST","prompt":"この掲示板の改善は、限られた場所をどのように公平に使う方法でしたか。","answer":"一つの種類を禁止せず、期限と専用区画を設けて複数の団体が順番に使えるようにする方法でした。","evidence":"The rotation rule protected access without excluding any group.","evidenceJp":"どの団体も排除せず、交代のルールで利用機会を守りました。","reason":"本文最後の結論から公平性の考え方をまとめます。","humanReview":"HUMAN_REVIEW_R10"}
+      ],
+      "questionSetB":[
+        {"questionType":"INFERENCE","prompt":"撤去日を決めても誰も確認しなかった場合、どんな問題が残る可能性がありますか。","answer":"期限切れのポスターがそのまま残り、新しい案内の場所を再びふさぐ可能性があります。","evidence":"Volunteers checked the dates twice a week.","evidenceJp":"ボランティアが週二回日付を確認しました。","reason":"ルールだけでなく定期確認が必要だったことから妥当に推論します。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"SUMMARY_FILL","prompt":"「古い大判ポスターが場所を占める→二週間記録する→（　）→一か月後は複数団体が利用」の（　）を答えなさい。","answer":"撤去日・10日間の上限・小さな案内専用区画を決め、週二回確認する。","evidence":"The center considered banning large posters, but the students suggested a fairer rule: every notice would show a removal date, large posters could stay for ten days, and one section would always be kept for small notices.","evidenceJp":"公民館は大きなポスターを禁止する案も考えましたが、生徒はより公平な方法を提案しました。すべての掲示に撤去日を書き、大きなポスターは10日間まで、そして一つの区画は常に小さな案内用に残します。","reason":"調査結果から改善結果へつながる運用ルールをまとめます。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"CONTEXT_WORD","prompt":"最後の without excluding any group は、この改善のどんな点を強調していますか。","answer":"大きなポスターを使う団体も禁止せず、利用できる時間と場所を調整して公平にした点です。","evidence":"The rotation rule protected access without excluding any group.","evidenceJp":"どの団体も排除せず、交代のルールで利用機会を守りました。","reason":"語句を禁止案との対比に結び付けます。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"CONTENT_MATCH","prompt":"新しいルールを始めて一か月後、掲示板にはどんな二つの変化が見られましたか。","answer":"さまざまな団体が使うようになり、期限切れポスターが新しい情報を覆わなくなりました。","evidence":"A month later, different groups were using the board, and expired posters no longer covered current information.","evidenceJp":"一か月後にはさまざまな団体が掲示板を使い、期限切れのポスターが新しい情報を覆うこともなくなりました。","reason":"公平性と情報更新の二つの成果を確認します。","humanReview":"HUMAN_REVIEW_R10"},
+        {"questionType":"GIST","prompt":"限られた共有スペースを公平に使うため、この話が示す考え方は何ですか。","answer":"一部の利用者を排除するのではなく、利用期間と確保する区画を明確にして定期的に入れ替えることです。","evidence":"The rotation rule protected access without excluding any group.","evidenceJp":"どの団体も排除せず、交代のルールで利用機会を守りました。","reason":"本文の中心となる公平なローテーションの原則をまとめます。","humanReview":"HUMAN_REVIEW_R10"}
+      ]
+    }
+  ]
+}
