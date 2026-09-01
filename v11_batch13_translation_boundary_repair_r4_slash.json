@@ -13,8 +13,8 @@
     {
       "id": "V11-B13-G3-006",
       "find": "母は「近いA避難所へすぐ歩く方がよいのではない？」と尋ねました。ハルトは距離だけでなく経路全体を比べました。",
-      "replace": "母は「近いA避難所へすぐ歩く方がよいのではない？ そちらの方が近いでしょう」と尋ねました。ハルトは距離だけでなく経路全体を比べました。",
-      "reason": "The English quote contains the additional sentence “It is closer.” The Japanese had omitted that meaning. Restore it inside the mother's same natural utterance so the quote remains coherent and the following Haruto sentence stays separate."
+      "replace": "母は「近いA避難所へすぐ歩く方がよいのではない？」と尋ねました。さらに「そちらの方が近いでしょう」と言いました。ハルトは距離だけでなく経路全体を比べました。",
+      "reason": "The English quote has two sentence units. The Japanese had omitted “It is closer.” Restore it as a separate natural utterance so the sentence sequence remains explicit 1:1 and the alignment engine cannot compensate at an unrelated later row."
     }
   ]
 }
