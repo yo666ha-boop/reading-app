@@ -30,8 +30,9 @@ jobs:
           node v11_batch13_question_human_gate_g2_r4.js >> V11_BATCH13_QUESTION_GATE.log 2>&1; g2a=$?
           node v11_batch13_question_human_gate_g2_complete.js >> V11_BATCH13_QUESTION_GATE.log 2>&1; g2b=$?
           node v11_batch13_question_human_gate_g3_r6.js >> V11_BATCH13_QUESTION_GATE.log 2>&1; g3a=$?
+          node v11_batch13_question_human_gate_g3_r7.js >> V11_BATCH13_QUESTION_GATE.log 2>&1; g3b=$?
           cat V11_BATCH13_QUESTION_GATE.log
-          if [ "$r1" -ne 0 ] || [ "$g1" -ne 0 ] || [ "$g2a" -ne 0 ] || [ "$g2b" -ne 0 ] || [ "$g3a" -ne 0 ]; then code=1; else code=0; fi
+          if [ "$r1" -ne 0 ] || [ "$g1" -ne 0 ] || [ "$g2a" -ne 0 ] || [ "$g2b" -ne 0 ] || [ "$g3a" -ne 0 ] || [ "$g3b" -ne 0 ]; then code=1; else code=0; fi
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
           exit 0
       - name: Upload gate diagnostic
