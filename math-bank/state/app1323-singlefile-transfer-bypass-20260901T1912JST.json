@@ -1,0 +1,51 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-09-01T19:12:00+09:00",
+  "result": "EXACT1323_SINGLE_FILE_TRANSFER_ARTIFACT_DURABLE_AND_BYTE_ROUNDTRIP_VERIFIED_DEPLOY_PENDING",
+  "purpose": "Remove the 283-file nested transfer blocker by embedding the exact 1323-record JSON and all 282 audited asset bytes into one HTML while preserving source path validation and exact asset bytes.",
+  "input": {
+    "deploy_package_drive_file_id": "1c9QGSmzAyL5iQZhiGoHoDCTH3Z4zf0I7",
+    "deploy_package_sha256": "88346c8f905ed1de8c3ad6b32d8dee634c5e9b120bf28d8d61a4850c5816ce52",
+    "index_sha256": "e929c458f1b92aec73add19d5c25c062fd5bf5cb7a9c487a284cc4d953552874",
+    "app_records_sha256": "14f05319b0c5f11c3ddcc273b8fe8edd445d819e61c90b9cc0c03a59bb595b0d",
+    "records": 1323,
+    "assets": 282
+  },
+  "source_reverification_this_run": {
+    "Standard": {"drive_file_id":"1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU","bytes":9689250,"sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","zip_test":"PASS"},
+    "実力錬成": {"drive_file_id":"1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb","bytes":7287279,"sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","zip_test":"PASS"},
+    "Winpass": {"drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E","bytes":8296042,"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","zip_test":"PASS"}
+  },
+  "single_file_artifact": {
+    "drive_file_id": "1l29gpomqPrEEqWCnlCuZH1BiZSw5lg4y",
+    "filename": "mikami_math_1323_singlefile_exactbytes_20260901T1910JST.html",
+    "bytes": 6819806,
+    "sha256": "47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521",
+    "drive_readback_bytes": 6819806,
+    "drive_readback_sha256": "47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521",
+    "drive_readback_byte_for_byte_match": true
+  },
+  "transformation_contract": {
+    "records_embedded_from_exact_app_records": 1323,
+    "external_app_records_fetch_remaining": false,
+    "asset_paths_kept_as_audited_keys": true,
+    "asset_resolver": "audited asset path -> embedded data URI",
+    "asset_embedded_count": 282,
+    "asset_decode_back_to_original_bytes_pass": 282,
+    "asset_decode_back_to_original_bytes_fail": 0,
+    "javascript_syntax_node_check": "PASS",
+    "html_script_close_count": 1,
+    "unescaped_script_termination_detected": false
+  },
+  "scope_and_nonclaims": {
+    "isolated_vercel_project_id": "prj_klR6v3xfehqPFqb2BPwZaaoy9m3A",
+    "isolated_vercel_project_name": "mikami-math-1323-isolated",
+    "single_file_deployed": false,
+    "reason_not_deployed_this_run": "The currently exposed Vercel connector no longer exposes the prior file-scoped deployment schema; only an argument-less deploy_current_project action is available. Calling it would not prove project/file scope and was therefore not used.",
+    "runtime_browser_release_gate": "NOT_COUNTED_FROM_SINGLE_FILE_ARTIFACT",
+    "existing_production_replaced": false,
+    "main_touched": false,
+    "publication_ready": false
+  },
+  "next": "Use the already proven isolated preview project and deploy this single durable HTML through a project/file-scoped write path. Verify deployed SHA/identity and then rerun exact-origin 1323 UI, all 282 rendered assets, native localStorage reload, A4 print, Chromium, Firefox, WebKit-iPhone. Physical Fire remains mandatory before strict release and final public isolated verification."
+}
