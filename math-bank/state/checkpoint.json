@@ -1,48 +1,75 @@
 {
-  "project":"mikami-math-problem-bank",
-  "status":"IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP",
-  "current_stage":"RUNTIME1271_UI_VARIANTS_AND_RELEASE_VALIDATION",
-  "current_bucket":"UI1271_CANDIDATE_PLUS_VERIFIED_VARIANTS",
-  "recorded_at_jst":"2026-09-01T12:36:00+09:00",
-  "main_touched":false,
-  "schedule_changed":false,
-  "source_identity":{
-    "Standard":{"drive_file_id":"1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU","sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","bytes":9689250,"crc32":"f8e307bb","zip_test":"PASS"},
-    "実力錬成":{"drive_file_id":"1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb","sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","bytes":7287279,"crc32":"1a020f98","zip_test":"PASS"},
-    "Winpass":{"drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E","sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","bytes":8296042,"crc32":"992b0ca2","zip_test":"PASS","docx_members":81}
+  "project": "mikami-math-problem-bank",
+  "status": "IN_PROGRESS_APP1323_RUNTIME_BROWSER_DEVICE_RELEASE",
+  "current_stage": "APP1323_RUNTIME_UI_BROWSER_A4_VERIFICATION",
+  "current_bucket": "CHROMIUM_LOGIC_AND_A4_PASS_OTHER_REAL_ORIGIN_DEVICE_RELEASE_PENDING",
+  "recorded_at_jst": "2026-09-01T13:08:00+09:00",
+  "main_touched": false,
+  "schedule_changed": false,
+  "source_identity": {
+    "Standard": {"drive_file_id":"1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU","sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","bytes":9689250,"crc32":"f8e307bb","zip_test":"PASS"},
+    "実力錬成": {"drive_file_id":"1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb","sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","bytes":7287279,"crc32":"1a020f98","zip_test":"PASS"},
+    "Winpass": {"drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E","sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","bytes":8296042,"crc32":"992b0ca2","zip_test":"PASS","docx_members":81}
   },
-  "strict_progress":{"Standard":317,"実力錬成":237,"Winpass":717,"total":1271,"pending":0,"readback_verified":1271,"validator_pass":1271},
-  "downstream":{
-    "winpass_decisions":{"reviewed":717,"included":717,"excluded":0,"unreviewed":0,"evidence_review_complete":true},
-    "winpass_canonical":{"status":"PHASE2_COMPLETE","count":717,"automatic_semantic_merges":0},
-    "global":{"validated":1271,"immutable_frozen":1271,"unique_raw_ids":1271,"unique_fingerprints":1271},
-    "variants":{"verified":52,"distinct_verified_parents":26,"parent_coverage":"26/1271","status":"IN_PROGRESS","artifacts":["math-bank/state/global1271-safe-variants-algebra26-20260831.json","math-bank/state/global1271-safe-variants-algebra26-v2-20260831.json"]},
-    "runtime_parent":{
-      "status":"PASS_PROMOTED_ISOLATED_RUNTIME_PARENT_BUNDLE",
-      "records":1271,"source_counts":{"Standard":317,"実力錬成":237,"Winpass":717},"unique_ids":1271,
-      "figure_ref_entries":602,"unique_figure_paths":282,"resolved_assets":282,"missing_assets":0,
-      "runtime_bundle_drive_file_id":"1m2aLM8D0IFNMVLw0VfTpUXyrZQbl1IQW",
-      "runtime_bundle_bytes":4174367,"runtime_bundle_sha256":"14104dc6a901045fb0697c1475de64edbd9a0554e3e9be530a6d06632ef32754",
-      "promotion_report_drive_file_id":"1uEtqkD-IKmZw4BAy2fJvvnCe-st6_xLd",
-      "promoter":"math-bank/app/promote_validated_1271_runtime.py"
+  "strict_progress": {"Standard":317,"実力錬成":237,"Winpass":717,"total":1271,"pending":0,"readback_verified":1271,"validator_pass":1271},
+  "downstream": {
+    "winpass_decisions": {"reviewed":717,"included":717,"excluded":0,"unreviewed":0,"evidence_review_complete":true},
+    "winpass_canonical": {"status":"PHASE2_COMPLETE","count":717,"automatic_semantic_merges":0},
+    "global": {"validated":1271,"immutable_frozen":1271,"unique_raw_ids":1271,"unique_fingerprints":1271},
+    "variants": {"verified":52,"distinct_verified_parents":26,"parent_coverage":"26/1271","composition_status":"PASS","combined_runtime_total":1323},
+    "runtime1323": {
+      "status":"PASS_COMPOSED_RUNTIME_CONTRACT",
+      "runtime_bundle_drive_file_id":"16emP0jNoYTTVsj_RxQKZksCPeNOBya1V",
+      "runtime_bundle_bytes":4201114,
+      "runtime_bundle_sha256":"019c60a8e782034ccb3750df5b17ff2c28070fcebefdb833865eb79ed728a17b",
+      "runtime_bundle_crc32":"577fc375",
+      "records":1323,
+      "originals":1271,
+      "variants":52,
+      "unique_ids":1323,
+      "original_source_counts":{"Standard":317,"実力錬成":237,"Winpass":717},
+      "figure_ref_entries":602,
+      "unique_figure_paths":282,
+      "missing_assets":0,
+      "variant_missing_parents":0
     },
-    "ui1271":{
-      "candidate":"math-bank/app/index1271.html",
-      "static_realdata_smoke":"PASS",
-      "node_syntax":"PASS",
-      "old_1124_107_contract_present":false,
-      "expected_1271_contract_present":true,
-      "filter_search_source_order_static_realdata":"PASS",
-      "local_storage_and_A4_contract_present":true,
-      "missing_runtime_assets":0,
-      "smoke_drive_file_id":"1KYhqq6Vm2MZ6qhoqMt8ZnTXtwYCIw68b",
-      "browser_status":"NOT_PASS_ENVIRONMENT_BLOCKED",
-      "browser_detail":"Local headless Chromium was blocked by environment policy with net::ERR_BLOCKED_BY_ADMINISTRATOR before app code executed; no browser PASS claimed."
+    "ui1323": {
+      "candidate":"math-bank/app/index1323.html",
+      "exact_app_logic_chromium":"PASS_WITH_SET_CONTENT_METHOD",
+      "gate_text":"1323実データゲート PASS",
+      "console_errors":0,
+      "variant_filter":"PASS",
+      "standard_original_filter":"PASS",
+      "grade_filter":"PASS",
+      "exact_id_search":"PASS",
+      "title_search":"PASS",
+      "source_order_repeatability":"PASS",
+      "random_draw_5x50":"PASS",
+      "answer_toggles":"PASS",
+      "mobile_390x844_horizontal_overflow":false,
+      "all_282_assets_filesystem_decode":"PASS",
+      "all_282_assets_chromium_decode":"PASS",
+      "direct_real_origin_navigation":"PENDING_ENVIRONMENT_BLOCKED",
+      "native_localStorage_real_origin":"PENDING"
     },
-    "publication_ready":false
+    "a4": {
+      "status":"PASS_SAMPLE30_STANDARD_CHROMIUM",
+      "scope":"first 30 Standard originals in source order",
+      "questions_pages":4,
+      "answers_pages":6,
+      "page_size":"A4",
+      "visual_clipping_or_broken_diagram_observed":false
+    },
+    "device_matrix": {"Chromium_exact_logic":"PASS_WITH_SET_CONTENT_METHOD","Firefox":"PENDING_UNAVAILABLE","WebKit_iPhone":"PENDING_UNAVAILABLE","Fire":"PENDING_UNAVAILABLE"},
+    "release": {"strict_release":"PENDING","public_isolated_verification":"PENDING"},
+    "publication_ready": false
   },
-  "latest_audits":["math-bank/state/app1271-public-asset-repair-closure-20260901T1205JST.json","math-bank/state/index1271-static-realdata-smoke-20260901T1232JST.json"],
-  "exact_stop":"Validated frozen1271 parents plus all 282 public assets have been promoted into an isolated runtime-parent bundle with zero promotion errors. A separate 1271 UI candidate passes syntax/static/real-data contract smoke, but real browser PASS is not claimed because local Chromium navigation was administratively blocked before app execution. Verified variants remain 52 across 26 parents and are not yet composed into the runtime candidate.",
-  "next_start":"Compose the durable 52 independently verified variants against exact parent IDs without weakening taxonomy/answer recalculation gates, then validate the combined runtime. Continue UI/browser testing in an environment that permits navigation, A4 question/answer printing, Chromium/Firefox/WebKit-iPhone/Fire, strict release and public isolated verification. Do not touch main or set publication ready before all gates pass.",
-  "main_untouched":true
+  "latest_audits": [
+    "math-bank/state/app1271-public-asset-repair-closure-20260901T1205JST.json",
+    "math-bank/state/index1323-static-realdata-smoke-20260901T1320JST.json",
+    "math-bank/state/app1323-chromium-a4-runtime-verification-20260901T1307JST.json"
+  ],
+  "exact_stop": "The composed 1323 runtime is structurally sound: 1271 originals plus 52 independently verified variants, 1323 unique IDs, 282/282 runtime image assets resolve and decode both at filesystem level and in Chromium, and exact app logic passes filters/search/source-order/random/answers/mobile-width checks under set_content routing. Chromium A4 actual render for a 30-Standard sample is A4 and visually passes. Direct navigable-origin/localStorage verification is still blocked by the execution environment, and Firefox/WebKit-iPhone/Fire plus strict release/public isolated verification remain pending. No completion or publication readiness is claimed.",
+  "next_start": "Use a real navigable origin for the exact 1323 candidate and verify native localStorage persistence plus actual print invocation behavior. Then run Firefox, WebKit-iPhone and Fire verification. Continue immediately to strict release and isolated public deployment verification only after those gates pass. Keep PUBLICATION_READY=false and main untouched until every final gate passes.",
+  "main_untouched": true
 }
