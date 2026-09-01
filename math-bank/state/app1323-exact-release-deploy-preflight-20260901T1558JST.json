@@ -1,0 +1,78 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-09-01T15:58:00+09:00",
+  "stage": "APP1323_EXACT_RELEASE_DEPLOYMENT_PREFLIGHT",
+  "runtime_bundle": {
+    "drive_file_id": "16emP0jNoYTTVsj_RxQKZksCPeNOBya1V",
+    "bytes": 4201114,
+    "sha256": "019c60a8e782034ccb3750df5b17ff2c28070fcebefdb833865eb79ed728a17b",
+    "zip_test": "PASS"
+  },
+  "independent_runtime_audit": {
+    "records": 1323,
+    "unique_ids": 1323,
+    "originals": 1271,
+    "variants": 52,
+    "source_counts": {
+      "Standard": 317,
+      "実力錬成": 237,
+      "Winpass": 717
+    },
+    "variant_parent_errors": 0,
+    "figure_ref_entries": 602,
+    "unique_figure_paths": 282,
+    "missing_asset_paths": 0,
+    "asset_manifest_entries": 282,
+    "asset_manifest_unique_paths": 282,
+    "manifest_hash_or_byte_errors": 0,
+    "record_refs_not_in_manifest": 0,
+    "manifest_paths_not_referenced": 0,
+    "asset_decode_errors": 0,
+    "app_records_bytes": 1530922,
+    "app_records_sha256": "14f05319b0c5f11c3ddcc273b8fe8edd445d819e61c90b9cc0c03a59bb595b0d",
+    "asset_manifest_sha256": "c8f5af060bb6d67a452e26d70407f3fa80a720b9102edc4711623da2a073cc4e"
+  },
+  "ui_identity": {
+    "repo_path": "math-bank/app/index1323.html",
+    "git_blob_sha": "164e4d74df08c30df020177738fbd8048f6b4a75",
+    "expected_sha256": "e929c458f1b92aec73add19d5c25c062fd5bf5cb7a9c487a284cc4d953552874",
+    "data_url": "./app-records.json",
+    "expected_total": 1323,
+    "settings_key": "mikami-math-1323-settings-v1"
+  },
+  "fixed_sources_reverified": {
+    "Standard": {
+      "bytes": 9689250,
+      "sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6",
+      "crc32": "f8e307bb",
+      "zip_test": "PASS"
+    },
+    "実力錬成": {
+      "bytes": 7287279,
+      "sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33",
+      "crc32": "1a020f98",
+      "zip_test": "PASS"
+    },
+    "Winpass": {
+      "bytes": 8296042,
+      "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+      "crc32": "992b0ca2",
+      "zip_test": "PASS"
+    }
+  },
+  "vercel_isolated_target": {
+    "project_id": "prj_klR6v3xfehqPFqb2BPwZaaoy9m3A",
+    "project_name": "mikami-math-1323-isolated",
+    "observed_deployment_id": "dpl_9RKmFTuF2vipUcjy8iKSMWZDJyrd",
+    "observed_state": "READY",
+    "observed_root_identity": "probe-only, not exact 1323",
+    "exact_1323_deployed": false
+  },
+  "deployment_safety": {
+    "existing_production_replaced": false,
+    "main_touched": false,
+    "publication_ready": false,
+    "reason_not_deployed_in_this_step": "Connected Vercel deploy write is not project/file scoped in the available action; no local Vercel auth/CLI is present. Refused to invoke an ambiguous deployment that could target the wrong workspace. Exact runtime and target project identity are now independently pinned for the next safe scoped deployment path."
+  },
+  "next": "Use a project-scoped deployment path for mikami-math-1323-isolated with exact index1323.html + audited app-records.json + all 282 assets; verify deployed identity and rerun full UI/assets/A4 on real origin in Chromium/Firefox/WebKit-iPhone, then physical Fire, strict release and public isolated verification."
+}
