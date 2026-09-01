@@ -1,0 +1,53 @@
+{
+  "project":"mikami-math-problem-bank",
+  "recorded_at_jst":"2026-09-01T12:45:00+09:00",
+  "stage":"RUNTIME1271_PLUS_VERIFIED_VARIANTS52",
+  "status":"PASS",
+  "inputs":{
+    "runtime_parent1271_drive_file_id":"1m2aLM8D0IFNMVLw0VfTpUXyrZQbl1IQW",
+    "variant_artifact_1":"math-bank/state/global1271-safe-variants-algebra26-20260831.json",
+    "variant_artifact_1_sha256":"a4216d6b918bafecb8094e03fcd6311aa75c7807fa4390bb73644d2bccb94e81",
+    "variant_artifact_2":"math-bank/state/global1271-safe-variants-algebra26-v2-20260831.json",
+    "variant_artifact_2_sha256":"0e5d53e722b1ed01dfad886030ce449fd35c26a9544bedbc122756fb034fc983"
+  },
+  "verification":{
+    "parent_records":1271,
+    "variant_records":52,
+    "combined_records":1323,
+    "distinct_variant_parents":26,
+    "variants_per_parent":2,
+    "unique_variant_ids":52,
+    "unique_combined_ids":1323,
+    "symbolic_identity_independently_recalculated":52,
+    "five_point_numeric_crosschecks_independently_passed":52,
+    "variant_parent_exact_question_answer_surface_overlap":0,
+    "nonfigure_variants":52,
+    "taxonomy_copied_from_exact_parent":"PASS",
+    "choices_match_parent":"PASS (all 52 parent/variant choices null)",
+    "figure_refs":"PASS (all 52 variants empty; parents were preverified nonfigure)",
+    "errors":[]
+  },
+  "calculator_correction":{
+    "issue":"Initial independent parser normalized superscript ² and circled item numbers too early, which could turn ² into 2 and ⑵ into an ordinary leading coefficient.",
+    "resolution":"Remove circled item glyphs before NFKC and convert superscripts before NFKC; ordinary leading coefficients are preserved.",
+    "records_dropped_to_force_count":0,
+    "final_recalculation":"52/52 PASS"
+  },
+  "durable_drive":{
+    "variants52_app_records":"12FmGmy8bAuDFl92uacT9iFQw8bEZiEO4",
+    "combined1323_json":"1mleK-4LwvF-kTADuipLxw9Qh2ZutTAxl",
+    "composition_report":"10buOIJNO9eSAku8olrrLkI26YzhTHvKE",
+    "composition_evidence":"1OI67oZZH0e-OvvzjG-B7Es2tEE1BMGQn",
+    "combined1323_bundle_zip":"16emP0jNoYTTVsj_RxQKZksCPeNOBya1V",
+    "combined1323_bundle_zip_bytes":4201114,
+    "combined1323_bundle_zip_sha256":"019c60a8e782034ccb3750df5b17ff2c28070fcebefdb833865eb79ed728a17b",
+    "combined1323_bundle_zip_crc":"PASS"
+  },
+  "hashes":{
+    "variants52_sha256":"054bb8aa40ae988e4733a98d4c0535abdbe49daf554c17e8b8c41b9b830f1158",
+    "combined1323_sha256":"14f05319b0c5f11c3ddcc273b8fe8edd445d819e61c90b9cc0c03a59bb595b0d",
+    "composition_evidence_sha256":"6234f4cbf7907c67a9017973341f68568aa2fe0d07cc4d5e14300795fa81b00b"
+  },
+  "safety":{"main_touched":false,"publication_ready":false,"schedule_changed":false},
+  "next":"Validate a variant-aware 1271+52 UI candidate against this exact 1323 runtime and complete A4/browser/device/release/public isolated gates."
+}
