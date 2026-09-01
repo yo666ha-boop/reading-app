@@ -18,24 +18,20 @@ function syncStage(stage,x){
  if(stage==='R11'){
    const p=x.passages.find(v=>v.id==='V11-B12-G3-004'); if(!p)fail('R11 G3-004 missing');
    const all=[...(p.questions||[]),...(p.questionSetB||[])];
-   const plan=all.find(v=>v.prompt&&v.prompt.includes('診療所での活動と帰路'));
-   if(!plan)fail('R11 G3-004 visit-plan question missing');
+   const plan=all.find(v=>v.prompt&&v.prompt.includes('診療所での活動と帰路'));if(!plan)fail('R11 G3-004 visit-plan question missing');
    plan.answer='8時45分に島へ着き、9時15分ごろに始め、約90分後の10時45分ごろに終えて、昼食後13時40分の便で戻れます。';
    plan.evidence='The 8:10 ferry arrived at 8:45, so the group could walk to the clinic and begin around 9:15. After about ninety minutes, they could finish around 10:45, eat lunch near the port, and take the 13:40 ferry back.';
-   plan.evidenceJp='8時10分の便なら8時45分に到着し、歩いて診療所へ行けば9時15分ごろに始められます。約90分のインタビューを10時45分ごろに終え、港近くで昼食を取り、13時40分の便で戻れます。';
-   plan.reason='往路・約90分の訪問・復路を、修正後の9時15分開始と10時45分終了で一続きに確認します。';
-   plan.humanReview='HUMAN_REVIEW_R11_SEMANTIC_SYNC';
-   const bus=all.find(v=>v.prompt&&v.prompt.includes('14時35分のバス'));
-   if(!bus)fail('R11 G3-004 ferry question missing');
+   plan.evidenceJp='8時10分の便なら8時45分に到着し、歩いて診療所へ行けば9時15分ごろに始められます。約90分のインタビューを10時45分ごろに終え、港近くで昼食を取り、13時40分の便で戻れます。';plan.reason='往路・約90分の訪問・復路を、修正後の9時15分開始と10時45分終了で一続きに確認します。';plan.humanReview='HUMAN_REVIEW_R11_SEMANTIC_SYNC';
+   const bus=all.find(v=>v.prompt&&v.prompt.includes('14時35分のバス'));if(!bus)fail('R11 G3-004 ferry question missing');
    bus.answer='フェリーが14時15分に港へ着くため、14時35分のバスまで20分あるからです。';bus.evidence='That ferry reached the city harbor at 14:15, leaving twenty minutes before the 14:35 bus.';bus.evidenceJp='その便は14時15分に市の港へ着き、14時35分のバスまで20分あります。';bus.reason='13時40分便の到着14時15分と、14時35分発の帰りバスの20分差を資料と本文の両方から確認します。';bus.humanReview='HUMAN_REVIEW_R11_SEMANTIC_SYNC';
+   const gist=all.find(v=>v.prompt&&v.prompt.includes('一つの時刻表だけを見て'));if(!gist)fail('R11 G3-004 final GIST missing');
+   gist.evidenceJp='一つの時刻表だけでは答えは出ませんでした。移動時間、診療所の条件、天候、帰りのバスを結びつけて初めて実行可能な計画になりました。';gist.humanReview='HUMAN_REVIEW_R11_SEMANTIC_SYNC';
  }
  return x;
 }
-const r4Passages=Object.entries(r4.questionRewrites||{}).map(([id,v])=>({id,questions:v.A,questionSetB:v.B}));
-add('R4',r4Passages);for(const [stage,path] of stages){let x=read(path);if(x.registered!==false||x.officialTotal!==718)fail(stage+' state');x=syncStage(stage,x);add(stage,x.passages||[])}
+const r4Passages=Object.entries(r4.questionRewrites||{}).map(([id,v])=>({id,questions:v.A,questionSetB:v.B}));add('R4',r4Passages);for(const [stage,path] of stages){let x=read(path);if(x.registered!==false||x.officialTotal!==718)fail(stage+' state');x=syncStage(stage,x);add(stage,x.passages||[])}
 if(overlaps.length!==1||overlaps[0].id!=='V11-B12-G1-014'||overlaps[0].old!=='R4'||overlaps[0].new!=='R7')fail('unexpected review overlap '+JSON.stringify(overlaps));
-const expected=[];for(let g=1;g<=3;g++){const n=g===3?16:17;for(let i=1;i<=n;i++)expected.push(`V11-B12-G${g}-${String(i).padStart(3,'0')}`)}
-if(JSON.stringify([...map.keys()].sort())!==JSON.stringify([...expected].sort()))fail('unique reviewed ID coverage mismatch');
+const expected=[];for(let g=1;g<=3;g++){const n=g===3?16:17;for(let i=1;i<=n;i++)expected.push(`V11-B12-G${g}-${String(i).padStart(3,'0')}`)}if(JSON.stringify([...map.keys()].sort())!==JSON.stringify([...expected].sort()))fail('unique reviewed ID coverage mismatch');
 const generic=[/第\s*\d+\s*(文|段階)/,/本文の内容を表す空所/,/根拠となる文を選/,/本文から抜き出/];const prompts=new Map();let qn=0;const typeCounts={};
 for(const id of expected){const rec=map.get(id),base=src.get(id);if(!rec||!base)fail(id+' missing');const A=rec.p.questions,B=rec.p.questionSetB;if(!Array.isArray(A)||!Array.isArray(B)||A.length!==5||B.length!==5)fail(id+' A/B count');for(const q of [...A,...B]){qn++;if(!q.questionType||!q.prompt||!q.answer||!q.evidence||!q.evidenceJp||!q.reason)fail(id+' required field');if(!String(q.humanReview||'').startsWith('HUMAN_REVIEW'))fail(id+' human marker');if(generic.some(r=>r.test(q.prompt)))fail(id+' generic prompt '+q.prompt);if(!norm(base.body).includes(norm(q.evidence)))fail(id+' evidence not in body: '+q.evidence);if(!norm(base.fullTranslation).includes(norm(q.evidenceJp)))fail(id+' evidenceJp not in translation: '+q.evidenceJp);const pk=norm(q.prompt);if(prompts.has(pk)&&prompts.get(pk)!==id)fail('cross-passage duplicate prompt '+id+' / '+prompts.get(pk));prompts.set(pk,id);typeCounts[q.questionType]=(typeCounts[q.questionType]||0)+1;}}
 if(map.size!==50||qn!==500)fail(`coverage count ${map.size}/${qn}`);const distinctTypes=Object.keys(typeCounts).length;if(distinctTypes<7)fail('question type diversity '+distinctTypes);
