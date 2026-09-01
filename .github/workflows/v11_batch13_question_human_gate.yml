@@ -19,4 +19,23 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node v11_batch13_question_human_gate_r1.js
+      - name: Run fail-closed Batch13 question gate
+        id: gate
+        shell: bash
+        run: |
+          set +e
+          node v11_batch13_question_human_gate_r1.js > V11_BATCH13_QUESTION_GATE_R1.log 2>&1
+          code=$?
+          cat V11_BATCH13_QUESTION_GATE_R1.log
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Upload gate diagnostic
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v11-batch13-question-gate-r1-diagnostic
+          path: V11_BATCH13_QUESTION_GATE_R1.log
+          if-no-files-found: error
+      - name: Enforce fail-closed result
+        if: steps.gate.outputs.exit_code != '0'
+        run: exit 1
