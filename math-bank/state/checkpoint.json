@@ -1,75 +1,32 @@
 {
-  "project": "mikami-math-problem-bank",
-  "status": "IN_PROGRESS_APP1323_RUNTIME_BROWSER_DEVICE_RELEASE",
-  "current_stage": "APP1323_RUNTIME_UI_BROWSER_A4_VERIFICATION",
-  "current_bucket": "CHROMIUM_LOGIC_AND_A4_PASS_OTHER_REAL_ORIGIN_DEVICE_RELEASE_PENDING",
-  "recorded_at_jst": "2026-09-01T13:08:00+09:00",
-  "main_touched": false,
-  "schedule_changed": false,
-  "source_identity": {
-    "Standard": {"drive_file_id":"1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU","sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","bytes":9689250,"crc32":"f8e307bb","zip_test":"PASS"},
-    "実力錬成": {"drive_file_id":"1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb","sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","bytes":7287279,"crc32":"1a020f98","zip_test":"PASS"},
-    "Winpass": {"drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E","sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","bytes":8296042,"crc32":"992b0ca2","zip_test":"PASS","docx_members":81}
+  "project":"mikami-math-problem-bank",
+  "status":"IN_PROGRESS_APP1323_RUNTIME_BROWSER_DEVICE_RELEASE",
+  "current_stage":"APP1323_REAL_ORIGIN_BROWSER_ENVIRONMENT_AND_EXACT_RELEASE_DEPLOYMENT",
+  "current_bucket":"REAL_ORIGIN_ENVIRONMENT_PASS_EXACT_1323_DEPLOYMENT_AND_PHYSICAL_FIRE_PENDING",
+  "recorded_at_jst":"2026-09-01T15:07:00+09:00",
+  "main_touched":false,
+  "schedule_changed":false,
+  "source_identity":{
+    "Standard":{"drive_file_id":"1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU","sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","bytes":9689250,"crc32":"f8e307bb","zip_test":"PASS"},
+    "実力錬成":{"drive_file_id":"1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb","sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","bytes":7287279,"crc32":"1a020f98","zip_test":"PASS"},
+    "Winpass":{"drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E","sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","bytes":8296042,"crc32":"992b0ca2","zip_test":"PASS","docx_members":81}
   },
-  "strict_progress": {"Standard":317,"実力錬成":237,"Winpass":717,"total":1271,"pending":0,"readback_verified":1271,"validator_pass":1271},
-  "downstream": {
-    "winpass_decisions": {"reviewed":717,"included":717,"excluded":0,"unreviewed":0,"evidence_review_complete":true},
-    "winpass_canonical": {"status":"PHASE2_COMPLETE","count":717,"automatic_semantic_merges":0},
-    "global": {"validated":1271,"immutable_frozen":1271,"unique_raw_ids":1271,"unique_fingerprints":1271},
-    "variants": {"verified":52,"distinct_verified_parents":26,"parent_coverage":"26/1271","composition_status":"PASS","combined_runtime_total":1323},
-    "runtime1323": {
-      "status":"PASS_COMPOSED_RUNTIME_CONTRACT",
-      "runtime_bundle_drive_file_id":"16emP0jNoYTTVsj_RxQKZksCPeNOBya1V",
-      "runtime_bundle_bytes":4201114,
-      "runtime_bundle_sha256":"019c60a8e782034ccb3750df5b17ff2c28070fcebefdb833865eb79ed728a17b",
-      "runtime_bundle_crc32":"577fc375",
-      "records":1323,
-      "originals":1271,
-      "variants":52,
-      "unique_ids":1323,
-      "original_source_counts":{"Standard":317,"実力錬成":237,"Winpass":717},
-      "figure_ref_entries":602,
-      "unique_figure_paths":282,
-      "missing_assets":0,
-      "variant_missing_parents":0
-    },
-    "ui1323": {
-      "candidate":"math-bank/app/index1323.html",
-      "exact_app_logic_chromium":"PASS_WITH_SET_CONTENT_METHOD",
-      "gate_text":"1323実データゲート PASS",
-      "console_errors":0,
-      "variant_filter":"PASS",
-      "standard_original_filter":"PASS",
-      "grade_filter":"PASS",
-      "exact_id_search":"PASS",
-      "title_search":"PASS",
-      "source_order_repeatability":"PASS",
-      "random_draw_5x50":"PASS",
-      "answer_toggles":"PASS",
-      "mobile_390x844_horizontal_overflow":false,
-      "all_282_assets_filesystem_decode":"PASS",
-      "all_282_assets_chromium_decode":"PASS",
-      "direct_real_origin_navigation":"PENDING_ENVIRONMENT_BLOCKED",
-      "native_localStorage_real_origin":"PENDING"
-    },
-    "a4": {
-      "status":"PASS_SAMPLE30_STANDARD_CHROMIUM",
-      "scope":"first 30 Standard originals in source order",
-      "questions_pages":4,
-      "answers_pages":6,
-      "page_size":"A4",
-      "visual_clipping_or_broken_diagram_observed":false
-    },
-    "device_matrix": {"Chromium_exact_logic":"PASS_WITH_SET_CONTENT_METHOD","Firefox":"PENDING_UNAVAILABLE","WebKit_iPhone":"PENDING_UNAVAILABLE","Fire":"PENDING_UNAVAILABLE"},
-    "release": {"strict_release":"PENDING","public_isolated_verification":"PENDING"},
-    "publication_ready": false
+  "strict_progress":{"Standard":317,"実力錬成":237,"Winpass":717,"total":1271,"pending":0,"readback_verified":1271,"validator_pass":1271},
+  "downstream":{
+    "winpass_decisions":{"reviewed":717,"included":717,"excluded":0,"unreviewed":0,"evidence_review_complete":true},
+    "winpass_canonical":{"status":"PHASE2_COMPLETE","count":717,"automatic_semantic_merges":0},
+    "global":{"validated":1271,"immutable_frozen":1271,"unique_raw_ids":1271,"unique_fingerprints":1271},
+    "variants":{"verified":52,"distinct_verified_parents":26,"composition_status":"PASS","combined_runtime_total":1323},
+    "runtime1323":{"status":"PASS_COMPOSED_RUNTIME_CONTRACT","runtime_bundle_drive_file_id":"16emP0jNoYTTVsj_RxQKZksCPeNOBya1V","runtime_bundle_bytes":4201114,"runtime_bundle_sha256":"019c60a8e782034ccb3750df5b17ff2c28070fcebefdb833865eb79ed728a17b","records":1323,"originals":1271,"variants":52,"unique_ids":1323,"figure_ref_entries":602,"unique_figure_paths":282,"missing_assets":0},
+    "ui1323":{"candidate":"math-bank/app/index1323.html","index_git_blob_sha":"164e4d74df08c30df020177738fbd8048f6b4a75","index_sha256":"e929c458f1b92aec73add19d5c25c062fd5bf5cb7a9c487a284cc4d953552874","exact_app_logic_chromium":"PASS_WITH_SET_CONTENT_METHOD","console_errors":0,"filters_search_random_answers":"PASS","mobile_390x844_horizontal_overflow":false,"all_282_assets_filesystem_decode":"PASS","all_282_assets_chromium_decode":"PASS"},
+    "a4":{"status":"PASS_SAMPLE30_STANDARD_CHROMIUM","questions_pages":4,"answers_pages":6,"page_size":"A4","visual_clipping_or_broken_diagram_observed":false},
+    "real_origin_environment":{"artifact":"math-bank/state/app1323-real-origin-browser-environment-gate-20260901T1506JST.json","chromium_storage_print_run":33476106064,"chromium_storage_reload":"PASS","print_beforeprint":"PASS","cross_browser_run":33476125609,"chromium":"PASS","firefox":"PASS","webkit_iphone_emulation":"PASS","fire_silk_emulation":"PASS_NOT_PHYSICAL_DEVICE","scope":"environment-only harness, not exact full 1323 deployed release"},
+    "device_matrix":{"Chromium_exact_logic":"PASS_WITH_SET_CONTENT_METHOD","Firefox_real_origin_environment":"PASS","WebKit_iPhone_real_origin_environment":"PASS_EMULATION_NOT_PHYSICAL","Fire":"PENDING_PHYSICAL; SILK_EMULATION_PASS"},
+    "release":{"exact_1323_isolated_deployment":"PENDING","strict_release":"PENDING","public_isolated_verification":"PENDING"},
+    "publication_ready":false
   },
-  "latest_audits": [
-    "math-bank/state/app1271-public-asset-repair-closure-20260901T1205JST.json",
-    "math-bank/state/index1323-static-realdata-smoke-20260901T1320JST.json",
-    "math-bank/state/app1323-chromium-a4-runtime-verification-20260901T1307JST.json"
-  ],
-  "exact_stop": "The composed 1323 runtime is structurally sound: 1271 originals plus 52 independently verified variants, 1323 unique IDs, 282/282 runtime image assets resolve and decode both at filesystem level and in Chromium, and exact app logic passes filters/search/source-order/random/answers/mobile-width checks under set_content routing. Chromium A4 actual render for a 30-Standard sample is A4 and visually passes. Direct navigable-origin/localStorage verification is still blocked by the execution environment, and Firefox/WebKit-iPhone/Fire plus strict release/public isolated verification remain pending. No completion or publication readiness is claimed.",
-  "next_start": "Use a real navigable origin for the exact 1323 candidate and verify native localStorage persistence plus actual print invocation behavior. Then run Firefox, WebKit-iPhone and Fire verification. Continue immediately to strict release and isolated public deployment verification only after those gates pass. Keep PUBLICATION_READY=false and main untouched until every final gate passes.",
-  "main_untouched": true
+  "latest_audits":["math-bank/state/app1323-chromium-a4-runtime-verification-20260901T1307JST.json","math-bank/state/app1323-real-origin-browser-environment-gate-20260901T1506JST.json"],
+  "exact_stop":"Native HTTPS-origin localStorage save/reload and print invocation now pass in Chromium, and the same isolated-origin persistence contract passes Chromium, Firefox and WebKit with iPhone UA; Fire/Silk compatibility emulation also passes but is not physical-device certification. These results validate the browser/origin environment only. The complete exact 1323 candidate (index1323 + exact app-records + all 282 assets) has not yet been deployed to this verifier origin, so PUBLICATION_READY remains false.",
+  "next_start":"Deploy the exact complete 1323 candidate bundle to an isolated navigable origin without replacing existing production, verify release identity and rerun full UI/assets/A4/browser checks there. Then obtain physical Fire verification if required, run strict release, and perform final public isolated verification. Keep main untouched and PUBLICATION_READY=false until every gate passes.",
+  "main_untouched":true
 }
