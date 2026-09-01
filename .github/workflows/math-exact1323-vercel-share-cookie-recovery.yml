@@ -1,0 +1,143 @@
+name: Math Exact1323 Vercel Share Cookie Recovery
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-exact1323-vercel-share-cookie-recovery.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: math-exact1323-vercel-share-cookie-recovery
+  cancel-in-progress: false
+
+env:
+  ORIGIN: 'https://mikami-math-1323-isolated-oqevg2g36-yo666ha-7357s-projects.vercel.app/'
+  SHARE_URL: 'https://mikami-math-1323-isolated-oqevg2g36-yo666ha-7357s-projects.vercel.app/?_vercel_share=kTX7PhoYz6qJaxpo7r2veSpEkefHNNfb'
+  EXPECTED_BYTES: '6819806'
+  EXPECTED_SHA256: '47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521'
+
+jobs:
+  fetch-exact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 1
+
+      - name: Follow Vercel share flow with persistent cookies
+        id: fetch
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/vercel-share
+          curl -sS -L --max-redirs 12 \
+            -c /tmp/vercel-share/cookies.txt \
+            -b /tmp/vercel-share/cookies.txt \
+            -D /tmp/vercel-share/headers.txt \
+            -w '%{http_code}\n%{url_effective}\n' \
+            "$SHARE_URL" \
+            -o /tmp/vercel-share/body.bin > /tmp/vercel-share/result.txt
+          echo '--- result ---'
+          cat /tmp/vercel-share/result.txt
+          bytes=$(stat -c %s /tmp/vercel-share/body.bin)
+          sha=$(sha256sum /tmp/vercel-share/body.bin | awk '{print $1}')
+          echo "bytes=$bytes sha=$sha"
+          file /tmp/vercel-share/body.bin || true
+          head -c 1000 /tmp/vercel-share/body.bin > /tmp/vercel-share/body.head || true
+          if [ "$bytes" = "$EXPECTED_BYTES" ] && [ "$sha" = "$EXPECTED_SHA256" ]; then
+            echo 'identity=PASS' >> "$GITHUB_OUTPUT"
+            echo 'PASS_EXACT_REMOTE_BODY_IDENTITY'
+          else
+            echo 'identity=FAIL' >> "$GITHUB_OUTPUT"
+            echo 'REMOTE_BODY_IDENTITY_NOT_EXACT'
+          fi
+
+      - name: Re-request origin using established cookie jar
+        if: steps.fetch.outputs.identity != 'PASS'
+        id: origin
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sS -L --max-redirs 12 \
+            -c /tmp/vercel-share/cookies.txt \
+            -b /tmp/vercel-share/cookies.txt \
+            -D /tmp/vercel-share/origin.headers \
+            -w '%{http_code}\n%{url_effective}\n' \
+            "$ORIGIN" \
+            -o /tmp/vercel-share/origin.bin > /tmp/vercel-share/origin.result.txt
+          cat /tmp/vercel-share/origin.result.txt
+          bytes=$(stat -c %s /tmp/vercel-share/origin.bin)
+          sha=$(sha256sum /tmp/vercel-share/origin.bin | awk '{print $1}')
+          echo "origin_bytes=$bytes origin_sha=$sha"
+          file /tmp/vercel-share/origin.bin || true
+          head -c 1000 /tmp/vercel-share/origin.bin > /tmp/vercel-share/origin.head || true
+          if [ "$bytes" = "$EXPECTED_BYTES" ] && [ "$sha" = "$EXPECTED_SHA256" ]; then
+            cp /tmp/vercel-share/origin.bin /tmp/vercel-share/body.bin
+            echo 'identity=PASS' >> "$GITHUB_OUTPUT"
+            echo 'PASS_EXACT_REMOTE_BODY_IDENTITY_AFTER_COOKIE'
+          else
+            echo 'identity=FAIL' >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Persist exact remote body and evidence only on SHA match
+        if: steps.fetch.outputs.identity == 'PASS' || steps.origin.outputs.identity == 'PASS'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p math-bank/public-origin
+          cp /tmp/vercel-share/body.bin math-bank/public-origin/index1323-exact-remote.html
+          test "$(stat -c %s math-bank/public-origin/index1323-exact-remote.html)" = "$EXPECTED_BYTES"
+          test "$(sha256sum math-bank/public-origin/index1323-exact-remote.html | awk '{print $1}')" = "$EXPECTED_SHA256"
+          python - <<'PY'
+          import json,datetime
+          from pathlib import Path
+          d={
+            'project':'みかみ塾 数学問題バンク／数学アプリ再構築',
+            'recorded_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            'deployment_id':'dpl_EpduWwwW1xvyr6v7MrXhA5ad4ecm',
+            'origin':'https://mikami-math-1323-isolated-oqevg2g36-yo666ha-7357s-projects.vercel.app/',
+            'remote_bytes':6819806,
+            'remote_sha256':'47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521',
+            'remote_body_identity':'PASS',
+            'access_method':'vercel_share_cookie_flow',
+            'branch_path':'math-bank/public-origin/index1323-exact-remote.html',
+            'main_touched':False,
+            'publication_ready':False,
+          }
+          Path('math-bank/state/app1323-vercel-share-remote-identity-20260902T0530JST.json').write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add math-bank/public-origin/index1323-exact-remote.html math-bank/state/app1323-vercel-share-remote-identity-20260902T0530JST.json
+          git commit -m 'math: persist exact remote1323 body after Vercel share identity pass'
+          git push origin HEAD:math-problem-bank-bootstrap
+
+      - name: Fail closed if remote body is not exact
+        if: steps.fetch.outputs.identity != 'PASS' && steps.origin.outputs.identity != 'PASS'
+        shell: bash
+        run: |
+          echo 'Exact remote body identity remains unproven; no progress credit.'
+          exit 1
+
+      - name: Upload diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exact1323-vercel-share-cookie-recovery
+          path: |
+            /tmp/vercel-share/result.txt
+            /tmp/vercel-share/headers.txt
+            /tmp/vercel-share/body.head
+            /tmp/vercel-share/cookies.txt
+            /tmp/vercel-share/origin.result.txt
+            /tmp/vercel-share/origin.headers
+            /tmp/vercel-share/origin.head
+            math-bank/state/app1323-vercel-share-remote-identity-20260902T0530JST.json
+          if-no-files-found: ignore
+          retention-days: 7
