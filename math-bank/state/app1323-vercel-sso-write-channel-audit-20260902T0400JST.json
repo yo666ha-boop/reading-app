@@ -1,0 +1,59 @@
+{
+  "status": "BLOCKED_ONLY_AT_VERCEL_DEPLOYMENT_PROTECTION_AUTOMATION_WRITE",
+  "recorded_at_jst": "2026-09-02T04:07:14.903427+09:00",
+  "project": "みかみ塾 数学問題バンク／数学アプリ再構築",
+  "branch": "math-problem-bank-bootstrap",
+  "source_recheck": {
+    "Standard": {
+      "bytes": 9689250,
+      "sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6",
+      "crc32": "f8e307bb",
+      "zip_test": "PASS"
+    },
+    "実力錬成": {
+      "bytes": 7287279,
+      "sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33",
+      "crc32": "1a020f98",
+      "zip_test": "PASS"
+    },
+    "Winpass": {
+      "bytes": 8296042,
+      "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+      "crc32": "992b0ca2",
+      "zip_test": "PASS",
+      "docx_members": 81
+    }
+  },
+  "exact_deployment": {
+    "project_id": "prj_klR6v3xfehqPFqb2BPwZaaoy9m3A",
+    "project_name": "mikami-math-1323-isolated",
+    "deployment_id": "dpl_EpduWwwW1xvyr6v7MrXhA5ad4ecm",
+    "deployment_url": "https://mikami-math-1323-isolated-oqevg2g36-yo666ha-7357s-projects.vercel.app",
+    "ready": true,
+    "source_bytes": 6819806,
+    "source_sha256": "47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521",
+    "remote_body_identity": "PENDING_SSO"
+  },
+  "new_findings": {
+    "github_vercel_token": "MISSING_CONFIRMED_BY_RUN_33546990627",
+    "github_run_result": "FAIL_CLOSED_BEFORE_MUTATION",
+    "repo_app_records_json": "ABSENT_404",
+    "repo_assets_directory": "ABSENT_404",
+    "small_github_shell_publication_route": "NOT_AVAILABLE",
+    "vercel_connected_mcp_write_for_sso_or_promote": "NOT_EXPOSED",
+    "local_vercel_cli_existing_auth": "NOT_AVAILABLE_IN_RUNTIME",
+    "vercel_official_api_route": "PATCH_PROJECT_SSO_NULL_OR_PROTECTION_BYPASS_CONFIRMED",
+    "progress_credit": 0
+  },
+  "quality_state": {
+    "strict": 1271,
+    "winpass_reviewed": 717,
+    "winpass_canonical": 717,
+    "verified_variants": 52,
+    "runtime": 1323,
+    "assets": 282,
+    "publication_ready": false,
+    "main_untouched": true
+  },
+  "next_start": "Do not redo Winpass/canonical/source/deploy. Continue from exact READY preview. Obtain a write-capable authenticated Vercel path to set only isolated project ssoProtection=null or generate automation bypass, then verify anonymous 6,819,806-byte SHA, exact-origin Chromium/Firefox/WebKit-iPhone/localStorage/A4, physical Fire, strict release, and final public isolated verification."
+}
