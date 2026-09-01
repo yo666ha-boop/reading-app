@@ -6,11 +6,13 @@ on:
       - v11-1000passage-easy-notes
     paths:
       - 'v11_batch13_*.js'
+      - 'v11_batch13_question_boundary_corrections.json'
+      - 'v11_batch13_translation_boundary_repair_*.json'
       - '.github/workflows/v11-batch13-slash-review.yml'
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build-slash-review-packet:
@@ -18,13 +20,34 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Build fail-closed packet
-        run: node v11_batch13_build_slash_review_packet.js
+      - name: Build fail-closed packet with diagnostic
+        id: build
+        shell: bash
+        run: |
+          set +e
+          node v11_batch13_build_slash_review_packet.js 2> v11_batch13_slash_error.txt
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Commit slash diagnostic on failure
+        if: steps.build.outputs.code != '0'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add v11_batch13_slash_error.txt
+          git commit -m 'Batch13: record fail-closed slash diagnostic' || true
+          git push
+      - name: Fail after diagnostic is persisted
+        if: steps.build.outputs.code != '0'
+        run: exit 1
       - name: Verify review boundary
+        if: steps.build.outputs.code == '0'
         run: |
           node - <<'NODE'
           const fs=require('fs');
@@ -42,7 +65,11 @@ jobs:
           if(autoReviewed) throw new Error(`auto-reviewed rows=${autoReviewed}`);
           console.log(JSON.stringify({passages:p.summary.passages,rows:p.summary.rows,illegal,autoReviewed}));
           NODE
+      - name: Remove stale slash diagnostic
+        if: steps.build.outputs.code == '0'
+        run: rm -f v11_batch13_slash_error.txt
       - name: Upload review packet
+        if: steps.build.outputs.code == '0'
         uses: actions/upload-artifact@v4
         with:
           name: v11-batch13-slash-review-packet
