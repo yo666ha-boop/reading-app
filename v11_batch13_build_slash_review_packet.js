@@ -4,13 +4,21 @@ const build=require('./v11_batch13_build_final_candidate.js');
 function die(m){throw new Error(m);}
 function segEn(text){return [...new Intl.Segmenter('en',{granularity:'sentence'}).segment(String(text||''))].map(x=>x.segment.trim()).filter(Boolean);}
 function segJa(text){
-  // Japanese full translations are authored with Japanese terminal punctuation.
-  // Split ONLY on 。！？ so Latin abbreviations/initials such as M.K. and quoted
-  // labels such as 「Morning」 cannot create fake sentence boundaries.
+  // Full translations can contain Japanese quotes whose internal punctuation is
+  // not the end of the surrounding grammatical sentence, e.g.
+  // 「...？」と尋ねました / 「A。B。」と書き直しました.
+  // Split only at Japanese terminal punctuation while OUTSIDE a quote. This
+  // keeps attribution/continuation text attached to the quote and avoids fake
+  // sentence fragments. Latin initials (M.K.) are naturally ignored as well.
   const s=String(text||'').trim(),out=[];let buf='';
+  const stack=[];
+  const openToClose={'「':'」','『':'』','“':'”','‘':'’'};
+  const closes=new Set(Object.values(openToClose));
   for(let i=0;i<s.length;i++){
-    buf+=s[i];
-    if(/[。！？]/.test(s[i])){
+    const ch=s[i];buf+=ch;
+    if(openToClose[ch]) stack.push(openToClose[ch]);
+    else if(closes.has(ch) && stack.length && stack[stack.length-1]===ch) stack.pop();
+    if(/[。！？]/.test(ch) && stack.length===0){
       while(i+1<s.length && /[」』”’）\]】〉》]/.test(s[i+1])) buf+=s[++i];
       if(buf.trim()) out.push(buf.trim());
       buf='';
