@@ -1,0 +1,56 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-09-01T18:03:00+09:00",
+  "result": "SCOPED_VERCEL_WRITE_PROVEN_AND_EXACT_INDEX_PREVIEW_READY_FULL_PAYLOAD_PENDING",
+  "source_reverification": {
+    "Standard": {"drive_file_id":"1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU","bytes":9689250,"sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","crc32":"f8e307bb","zip_test":"PASS"},
+    "実力錬成": {"drive_file_id":"1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb","bytes":7287279,"sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","crc32":"1a020f98","zip_test":"PASS"},
+    "Winpass": {"drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E","bytes":8296042,"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","crc32":"992b0ca2","zip_test":"PASS","docx_members":81}
+  },
+  "deploy_package": {
+    "drive_file_id":"1c9QGSmzAyL5iQZhiGoHoDCTH3Z4zf0I7",
+    "bytes":4194529,
+    "sha256":"88346c8f905ed1de8c3ad6b32d8dee634c5e9b120bf28d8d61a4850c5816ce52",
+    "members":288,
+    "index_sha256":"e929c458f1b92aec73add19d5c25c062fd5bf5cb7a9c487a284cc4d953552874",
+    "app_records_sha256":"14f05319b0c5f11c3ddcc273b8fe8edd445d819e61c90b9cc0c03a59bb595b0d",
+    "records":1323,
+    "assets":282
+  },
+  "vercel_target": {
+    "team_id":"team_LXgcBDLoBpU1lMxZrMyxUQlg",
+    "project_id":"prj_klR6v3xfehqPFqb2BPwZaaoy9m3A",
+    "project_name":"mikami-math-1323-isolated",
+    "existing_production_replaced":false
+  },
+  "scope_proof": {
+    "deployment_id":"dpl_g73Tncd9go5egrSo87tnjwzG4TL4",
+    "target":"preview",
+    "state":"READY",
+    "project_id_verified":"prj_klR6v3xfehqPFqb2BPwZaaoy9m3A",
+    "payload":"identity.txt only"
+  },
+  "transfer_behavior_probe": {
+    "deployment_id":"dpl_CXBsoNB3wB86tnxCucaXijJHAcTG",
+    "state":"READY",
+    "finding":"nested files[].data treats a local path string literally; connector file objects are not accepted as data strings, and proxied mount rewrite is not available through the exposed nested schema",
+    "counted_as_release_progress":false
+  },
+  "exact_index_preview": {
+    "deployment_id":"dpl_J6KbJm7espvBGpcGyJdTh4GDbsY2",
+    "target":"preview",
+    "state":"READY",
+    "project_id":"prj_klR6v3xfehqPFqb2BPwZaaoy9m3A",
+    "index_sha256":"e929c458f1b92aec73add19d5c25c062fd5bf5cb7a9c487a284cc4d953552874",
+    "http_root":200,
+    "title":"みかみ塾 数学問題プリント作成アプリ",
+    "full_app_records_present":false,
+    "assets_present":false,
+    "release_gate_pass":false
+  },
+  "remaining_blocker": "The intended isolated Vercel project is now safely writable and the exact pinned index can be deployed. The exposed deploy action still requires inlined string/base64 data per file and does not currently accept the mounted durable ZIP or nested connector file references. Full exact app-records.json plus 282 binary assets therefore remain to be transferred without altering their audited identities.",
+  "publication_ready": false,
+  "main_touched": false,
+  "count_forcing": false,
+  "next": "Continue on the proven preview-scoped isolated project. Establish a byte-preserving full-payload transfer path for app-records.json and all 282 audited assets; then verify exact deployed SHA/count/asset identities and rerun exact-origin UI/localStorage/A4/Chromium/Firefox/WebKit-iPhone. Physical Fire remains mandatory before strict release/public verification."
+}
