@@ -1,0 +1,169 @@
+name: Math Exact1323 Drive Public Confirm Recovery
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-exact1323-drive-public-confirm-recovery.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: math-exact1323-drive-public-confirm-recovery
+  cancel-in-progress: false
+
+env:
+  FILE_ID: '1l29gpomqPrEEqWCnlCuZH1BiZSw5lg4y'
+  EXPECTED_BYTES: '6819806'
+  EXPECTED_SHA256: '47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521'
+
+jobs:
+  recover-exact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Try gdown confirmation-aware fetch
+        id: gdown
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -u
+          mkdir -p /tmp/exact1323
+          python -m pip install --disable-pip-version-check -q 'gdown>=5.2,<6'
+          rm -f /tmp/exact1323/gdown.html
+          gdown --fuzzy "https://drive.google.com/file/d/${FILE_ID}/view" -O /tmp/exact1323/gdown.html || exit $?
+          bytes=$(stat -c %s /tmp/exact1323/gdown.html)
+          sha=$(sha256sum /tmp/exact1323/gdown.html | awk '{print $1}')
+          echo "gdown bytes=$bytes sha=$sha"
+          test "$bytes" = "$EXPECTED_BYTES" && test "$sha" = "$EXPECTED_SHA256"
+
+      - name: Diagnostic cookie and confirm-form fetch
+        id: confirm
+        if: steps.gdown.outcome != 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -u
+          mkdir -p /tmp/exact1323
+          base="https://drive.usercontent.google.com/download?id=${FILE_ID}&export=download"
+          curl -sS -L -c /tmp/exact1323/cookies.txt -D /tmp/exact1323/first.headers "$base" -o /tmp/exact1323/first.body || exit $?
+          echo "first_bytes=$(stat -c %s /tmp/exact1323/first.body)"
+          file /tmp/exact1323/first.body || true
+          head -c 3000 /tmp/exact1323/first.body > /tmp/exact1323/first.head || true
+          python - <<'PY'
+          from pathlib import Path
+          import re, html, urllib.parse
+          p=Path('/tmp/exact1323/first.body')
+          raw=p.read_bytes()
+          txt=raw.decode('utf-8','replace')
+          print('has_google_login', 'accounts.google.com' in txt or 'Sign in' in txt)
+          print('has_download_form', '<form' in txt and 'download' in txt.lower())
+          print('confirm_tokens', re.findall(r'(?:confirm|uuid)=([^&"\'<> ]+)', txt)[:10])
+          # Google large-file page often has a form action + hidden inputs.
+          m=re.search(r'<form[^>]+action="([^"]+)"[^>]*>(.*?)</form>', txt, re.I|re.S)
+          if not m:
+              raise SystemExit(12)
+          action=html.unescape(m.group(1))
+          body=m.group(2)
+          params=[]
+          for im in re.finditer(r'<input[^>]+name="([^"]+)"[^>]+value="([^"]*)"', body, re.I):
+              params.append((html.unescape(im.group(1)), html.unescape(im.group(2))))
+          url=action + ('&' if '?' in action else '?') + urllib.parse.urlencode(params)
+          Path('/tmp/exact1323/confirm.url').write_text(url)
+          print('confirm_url_host', urllib.parse.urlparse(url).netloc)
+          print('hidden_names', [k for k,v in params])
+          PY
+          url=$(cat /tmp/exact1323/confirm.url)
+          curl -sS -L -b /tmp/exact1323/cookies.txt -c /tmp/exact1323/cookies.txt -D /tmp/exact1323/second.headers "$url" -o /tmp/exact1323/confirmed.html || exit $?
+          bytes=$(stat -c %s /tmp/exact1323/confirmed.html)
+          sha=$(sha256sum /tmp/exact1323/confirmed.html | awk '{print $1}')
+          echo "confirmed bytes=$bytes sha=$sha"
+          test "$bytes" = "$EXPECTED_BYTES" && test "$sha" = "$EXPECTED_SHA256"
+
+      - name: Select exact recovered artifact
+        id: select
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -f /tmp/exact1323/gdown.html ]; then
+            b=$(stat -c %s /tmp/exact1323/gdown.html); s=$(sha256sum /tmp/exact1323/gdown.html|awk '{print $1}')
+            if [ "$b" = "$EXPECTED_BYTES" ] && [ "$s" = "$EXPECTED_SHA256" ]; then cp /tmp/exact1323/gdown.html /tmp/exact1323/index.html; echo 'method=gdown' >> "$GITHUB_OUTPUT"; fi
+          fi
+          if [ ! -f /tmp/exact1323/index.html ] && [ -f /tmp/exact1323/confirmed.html ]; then
+            b=$(stat -c %s /tmp/exact1323/confirmed.html); s=$(sha256sum /tmp/exact1323/confirmed.html|awk '{print $1}')
+            if [ "$b" = "$EXPECTED_BYTES" ] && [ "$s" = "$EXPECTED_SHA256" ]; then cp /tmp/exact1323/confirmed.html /tmp/exact1323/index.html; echo 'method=confirm-form' >> "$GITHUB_OUTPUT"; fi
+          fi
+          test -f /tmp/exact1323/index.html
+          test "$(stat -c %s /tmp/exact1323/index.html)" = "$EXPECTED_BYTES"
+          test "$(sha256sum /tmp/exact1323/index.html|awk '{print $1}')" = "$EXPECTED_SHA256"
+          echo 'exact_recovery=PASS'
+
+      - name: Static contract recheck
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,re
+          p=Path('/tmp/exact1323/index.html'); b=p.read_bytes(); t=b.decode('utf-8')
+          assert len(b)==6819806
+          assert hashlib.sha256(b).hexdigest()=='47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521'
+          assert 'const EMBEDDED_RECORDS=' in t
+          assert len(re.findall(r'data:image/[^;]+;base64,',t))==282
+          assert '1323実データゲート' in t
+          print('PASS_EXACT_STATIC_CONTRACT')
+          PY
+
+      - name: Persist exact HTML to branch and evidence
+        shell: bash
+        env:
+          METHOD: ${{ steps.select.outputs.method }}
+        run: |
+          set -euo pipefail
+          mkdir -p math-bank/public-origin
+          cp /tmp/exact1323/index.html math-bank/public-origin/index1323-exact.html
+          python - <<'PY'
+          import json,datetime,os
+          from pathlib import Path
+          d={
+            'project':'みかみ塾 数学問題バンク／数学アプリ再構築',
+            'recorded_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            'drive_file_id':os.environ['FILE_ID'],
+            'recovery_method':os.environ.get('METHOD',''),
+            'bytes':6819806,
+            'sha256':'47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521',
+            'static_contract':'PASS',
+            'branch_path':'math-bank/public-origin/index1323-exact.html',
+            'main_touched':False,
+            'publication_ready':False,
+          }
+          Path('math-bank/state/app1323-drive-confirm-recovery-20260902T0510JST.json').write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add math-bank/public-origin/index1323-exact.html math-bank/state/app1323-drive-confirm-recovery-20260902T0510JST.json
+          git commit -m 'math: persist byte-identical exact1323 public-origin source'
+          git push origin HEAD:math-problem-bank-bootstrap
+
+      - name: Upload diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exact1323-drive-confirm-recovery
+          path: |
+            /tmp/exact1323/first.headers
+            /tmp/exact1323/first.head
+            /tmp/exact1323/second.headers
+            math-bank/state/app1323-drive-confirm-recovery-20260902T0510JST.json
+          if-no-files-found: ignore
+          retention-days: 7
