@@ -2,9 +2,11 @@
 const fs=require('fs');
 const build=require('./v11_batch13_build_body_candidate.js');
 const d=JSON.parse(fs.readFileSync('v11_batch13_question_human_review_r5_g2_005_017.json','utf8'));
+const c=JSON.parse(fs.readFileSync('v11_batch13_question_human_corrections_r5_g2_017.json','utf8'));
 function norm(s){return String(s||'').replace(/[「」『』]/g,'"').replace(/\s+/g,' ').trim();}
 function die(m){throw new Error(m);}
-if(d.humanReviewed!==true||d.registered!==false)die('metadata');
+if(d.humanReviewed!==true||d.registered!==false||c.humanReviewed!==true||c.registered!==false)die('metadata');
+for(const x of c.corrections||[]){const qs=d.questionsByPassage&&d.questionsByPassage[x.id];const q=qs&&qs.find(v=>v.set===x.set&&v.no===x.no);if(!q)die(`correction target ${x.id} ${x.set}${x.no}`);if(x.evidence)q.evidence=x.evidence;if(x.evidenceJp)q.evidenceJp=x.evidenceJp;if(x.answer)q.answer=x.answer;if(x.reason)q.reason=x.reason;}
 const candidate=build();let count=0;
 if((d.scope||[]).length!==13||new Set(d.scope).size!==13)die('scope');
 for(const id of d.scope){
@@ -21,4 +23,4 @@ for(const id of d.scope){
  }
 }
 if(count!==130)die(`question total ${count}`);
-console.log(JSON.stringify({pass:true,batch:'V11-B13',grade:2,humanReviewedPassages:13,humanReviewedQuestions:130,registered:false,officialTotal:candidate.officialTotal},null,2));
+console.log(JSON.stringify({pass:true,batch:'V11-B13',grade:2,humanReviewedPassages:13,humanReviewedQuestions:130,correctionsApplied:(c.corrections||[]).length,registered:false,officialTotal:candidate.officialTotal},null,2));
