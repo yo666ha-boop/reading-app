@@ -36,7 +36,7 @@ jobs:
         run: python math-bank/scripts/audit_current_contract_state_records.py --strict-conflicts --report math-bank/state/current-contract-union-audit-ci.json
       - name: Audit exact recovery path for corrupted Winpass69 artifact
         run: python math-bank/scripts/audit_recover_winpass69_from_strict.py --evidence math-bank/state/app1271-winpass-final109-residual69-current-schema-exact-ooxml-20260901T0253JST.json --report math-bank/state/winpass69-exact-recovery-audit-ci.json
-      - name: Upload audit reports
+      - name: Upload audit and frozen recovery evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -44,4 +44,5 @@ jobs:
           path: |
             math-bank/state/current-contract-union-audit-ci.json
             math-bank/state/winpass69-exact-recovery-audit-ci.json
+            math-bank/state/app1271-winpass-final109-residual69-current-schema-exact-ooxml-20260901T0253JST.json
           if-no-files-found: error
