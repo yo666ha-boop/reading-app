@@ -1,0 +1,43 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-09-01T09:54:00+09:00",
+  "stage": "FULL_1271_CURRENT_CONTRACT_VALIDATION",
+  "purpose": "Migrate 26 durable Drive strict records to the current content-bound contract without changing Q/A/evidence semantics.",
+  "fixed_winpass_source": {
+    "drive_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
+    "bytes": 8296042,
+    "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+    "crc32": "992b0ca2",
+    "zip_test": "PASS",
+    "docx_members": 81
+  },
+  "strict_inputs": [
+    {"drive_id":"1yxR0MNRBbuPh8Kh4JMpB_l13PgUgWLbAJVNHqmprdYc","records":10,"source_document":"25winpasst1suhy000519.docx"},
+    {"drive_id":"1pVEV4JxQWBdRM-lqDivY7UNwwMfxMGPo2Topw4gC7wQ","records":7,"source_document":"25winpasst1suhy000523.docx"},
+    {"drive_id":"1NU_t0cGffEw_bDUSRnno46NonVb90gz72dg2Qmut-Rg","records":9,"source_documents":["25winpasst2suhy000309.docx","25winpasst2suhy000311.docx","25winpasst3suhy000413.docx"]}
+  ],
+  "current_contract_jsonl": {
+    "drive_id": "1pDIRISInsJUxWxvq6iQcpBkt4OYCvD7d",
+    "bytes": 33290,
+    "sha256": "9175cc34a9dc09e9044445dd7ed9daa76606d7a934d62e9976300faa04808571",
+    "readback_verified": true
+  },
+  "validation": {
+    "records": 26,
+    "unique_raw_ids": 26,
+    "unique_current_fingerprints": 26,
+    "source_document_sha_match": "26/26",
+    "figure_refs": 38,
+    "figure_relationship_target_asset_sha_match": "38/38",
+    "structural_errors": 0,
+    "overlap_with_rebuilt_residual69": 0,
+    "current40_overlap_audit": "source major/subslot partitions checked against durable current contributors; no overlap identified"
+  },
+  "guards": {
+    "runtime_promotion": 0,
+    "publication_ready": false,
+    "main_touched": false,
+    "count_forcing": false
+  },
+  "next": "Continue materializing the remaining recovery-inventory body sources. Only claim Winpass717 runtime body closure after an actual 717 unique raw_id/current-fingerprint union readback, then assemble Standard317 + Jitsuren237 + Winpass717 and run the full1271 validator with evidence-derived figure count."
+}
