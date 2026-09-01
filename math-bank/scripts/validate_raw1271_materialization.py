@@ -60,7 +60,9 @@ def valid_offsets(value: Any) -> bool:
 
 def valid_score_evidence(value: Any) -> bool:
     if isinstance(value, str): return bool(value.strip())
-    return isinstance(value, dict) and bool(value.get("text") or value.get("rule") or value.get("source_path"))
+    if not isinstance(value, dict): return False
+    if value.get("text") or value.get("rule") or value.get("source_path"): return True
+    return isinstance(value.get("score_table_paragraph_index"), int) and isinstance(value.get("slot_count"), int) and value.get("slot_count") > 0
 
 
 def validate_table_ref(ref: Any, label: str) -> list[str]:
@@ -145,7 +147,7 @@ def build_report(records: list[dict], *, expected_figure_refs: int | None = None
     if missing_figure_refs: errors.append(f"missing figure refs {missing_figure_refs} != 0")
     questions_ok = sum(meaningful_text(r.get("question")) and valid_offsets(r.get("question_offsets")) for r in records)
     answers_ok = sum((meaningful_text(r.get("answer")) and valid_offsets(r.get("answer_offsets"))) or meaningful_text(r.get("graphical_answer_asset")) for r in records)
-    return {"workflow":"Raw1271 materialization Q/A/figure/table provenance gate","record_count":len(records),"counts":dict(sorted(counts.items(), key=lambda x: str(x[0]))),"unique_raw_ids":len(set(ids)),"unique_record_fingerprints":len(set(fps)),"questions_with_exact_provenance":questions_ok,"answers_with_exact_provenance_or_graphical_asset":answers_ok,"figure_refs":figure_refs,"figure_refs_by_source":figure_refs_by_source,"table_refs":table_refs,"table_refs_by_source":table_refs_by_source,"expected_figure_refs":expected_figure_refs,"figure_count_policy":"No historical hard-coded figure count. Every present figure ref must carry relationship/target/asset identity and none may be marked missing. Use --expected-figure-refs only after deriving the total from the assembled durable evidence union.","missing_figure_refs":missing_figure_refs,"errors":errors,"pass":not errors,"policy":"A slot passes only with exact Q/A content plus ordered OOXML offsets (or a graphical answer asset), source score evidence, figure relationship/asset identity, optional table OOXML or embedded-table asset identity, and a recomputed content-bound fingerprint. Graphical answer asset identity and table_refs are included in the fingerprint when present. Non-empty placeholder text is insufficient."}
+    return {"workflow":"Raw1271 materialization Q/A/figure/table provenance gate","record_count":len(records),"counts":dict(sorted(counts.items(), key=lambda x: str(x[0]))),"unique_raw_ids":len(set(ids)),"unique_record_fingerprints":len(set(fps)),"questions_with_exact_provenance":questions_ok,"answers_with_exact_provenance_or_graphical_asset":answers_ok,"figure_refs":figure_refs,"figure_refs_by_source":figure_refs_by_source,"table_refs":table_refs,"table_refs_by_source":table_refs_by_source,"expected_figure_refs":expected_figure_refs,"figure_count_policy":"No historical hard-coded figure count. Every present figure ref must carry relationship/target/asset identity and none may be marked missing. Use --expected-figure-refs only after deriving the total from the assembled durable evidence union.","missing_figure_refs":missing_figure_refs,"errors":errors,"pass":not errors,"policy":"A slot passes only with exact Q/A content plus ordered OOXML offsets (or a graphical answer asset), source score evidence (text/rule/path or a concrete score-table paragraph pointer plus slot count), figure relationship/asset identity, optional table OOXML or embedded-table asset identity, and a recomputed content-bound fingerprint. Graphical answer asset identity and table_refs are included in the fingerprint when present. Non-empty placeholder text is insufficient."}
 
 
 def main() -> int:
