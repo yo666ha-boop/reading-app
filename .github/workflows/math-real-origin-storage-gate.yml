@@ -37,8 +37,10 @@ jobs:
             const page=await browser.newPage({viewport:{width:390,height:844}});
             const errors=[]; page.on('console',m=>{if(m.type()==='error') errors.push(m.text())});
             await page.goto(process.env.TARGET_URL,{waitUntil:'networkidle',timeout:60000});
-            assert.ok(page.url().startsWith('https://mikami-math-1323-origin-gate-'));
-            assert.equal(await page.evaluate(()=>location.protocol),'https:');
+            const identity=await page.evaluate(()=>({protocol:location.protocol,origin:location.origin,title:document.title,out:document.getElementById('out')?.textContent||''}));
+            assert.equal(identity.protocol,'https:');
+            assert.equal(identity.title,'Math 1323 origin gate');
+            assert.ok(identity.out.includes('mikami-math-1323-settings-v1'),JSON.stringify(identity));
             await page.selectOption('#grade','2');
             await page.selectOption('#kind','variant');
             await page.fill('#count','37');
@@ -57,7 +59,7 @@ jobs:
             const dims=await page.evaluate(()=>({innerWidth,scrollWidth:document.documentElement.scrollWidth}));
             assert.ok(dims.scrollWidth<=dims.innerWidth,JSON.stringify(dims));
             assert.deepStrictEqual(errors,[]);
-            console.log(JSON.stringify({pass:true,url:page.url(),stored,values,beforeprint,dims,console_errors:errors},null,2));
+            console.log(JSON.stringify({pass:true,identity,url:page.url(),stored,values,beforeprint,dims,console_errors:errors},null,2));
             await browser.close();
           })().catch(e=>{console.error(e);process.exit(1)});
           NODE
