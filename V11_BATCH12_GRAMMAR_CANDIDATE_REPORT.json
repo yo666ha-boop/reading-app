@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-01T03:15:47.596Z",
+  "generatedAt": "2026-09-01T03:16:28.676Z",
   "passages": 50,
   "classification": "CANDIDATES_FOR_V11_BATCH12_GATE",
   "detectorVersion": "3.1-v11-b05-grammar-r1",
@@ -13,36 +13,9 @@
         "サンシャイン|3|PROGRAM 7-3"
       ]
     },
-    "MAKE_O_V": {
-      "sectionCount": 1,
-      "sections": [
-        "サンシャイン|1|PROGRAM 10-2"
-      ]
-    },
-    "BECAUSE_CLAUSE": {
-      "sectionCount": 2,
-      "sections": [
-        "サンシャイン|1|PROGRAM 10-2",
-        "ニューホライズン|3|Unit 6-4"
-      ]
-    },
-    "MODAL_MAY_MIGHT": {
-      "sectionCount": 2,
-      "sections": [
-        "サンシャイン|1|PROGRAM 10-2",
-        "ニューホライズン|3|Unit 6-4"
-      ]
-    },
-    "PRESENT_PERFECT": {
-      "sectionCount": 1,
-      "sections": [
-        "サンシャイン|1|PROGRAM 10-2"
-      ]
-    },
     "PASSIVE": {
-      "sectionCount": 5,
+      "sectionCount": 4,
       "sections": [
-        "サンシャイン|1|PROGRAM 10-2",
         "サンシャイン|2|PROGRAM 8-3",
         "ニューホライズン|2|Unit 7-4",
         "ニューホライズン|3|Unit 6-4",
@@ -140,6 +113,12 @@
         "ニューホライズン|3|Unit 6-4"
       ]
     },
+    "BECAUSE_CLAUSE": {
+      "sectionCount": 1,
+      "sections": [
+        "ニューホライズン|3|Unit 6-4"
+      ]
+    },
     "VERB_TO_INFINITIVE": {
       "sectionCount": 1,
       "sections": [
@@ -147,6 +126,12 @@
       ]
     },
     "RELATIVE_PRONOUN": {
+      "sectionCount": 1,
+      "sections": [
+        "ニューホライズン|3|Unit 6-4"
+      ]
+    },
+    "MODAL_MAY_MIGHT": {
       "sectionCount": 1,
       "sections": [
         "ニューホライズン|3|Unit 6-4"
@@ -288,30 +273,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "id": "V11-B12-G1-011",
-      "features": {
-        "MAKE_O_V": [
-          {
-            "where": "sentence:3",
-            "text": "Emi first moved the cart into the aisle, and that made people walk around it.",
-            "match": "made people walk"
-          },
-          {
-            "where": "slash:3",
-            "text": "Emi first moved the cart into the aisle, and that made people walk around it.",
-            "match": "made people walk"
-          },
-          {
-            "where": "A2.evidence",
-            "text": "Emi first moved the cart into the aisle, and that made people walk around it.",
-            "match": "made people walk"
-          },
-          {
-            "where": "B1.evidence",
-            "text": "Emi first moved the cart into the aisle, and that made people walk around it.",
-            "match": "made people walk"
-          }
-        ]
-      }
+      "features": {}
     },
     {
       "textbook": "ニューホライズン",
@@ -366,51 +328,7 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "id": "V11-B12-G1-017",
-      "features": {
-        "BECAUSE_CLAUSE": [
-          {
-            "where": "sentence:3",
-            "text": "He did not bring a new chair immediately because he first thought someone moved one.",
-            "match": "because he "
-          },
-          {
-            "where": "slash:3",
-            "text": "He did not bring a new chair immediately because he first thought someone moved one.",
-            "match": "because he "
-          },
-          {
-            "where": "A3.evidence",
-            "text": "He did not bring a new chair immediately because he first thought someone moved one.",
-            "match": "because he "
-          },
-          {
-            "where": "B3.evidence",
-            "text": "He did not bring a new chair immediately because he first thought someone moved one.",
-            "match": "because he "
-          }
-        ],
-        "MODAL_MAY_MIGHT": [
-          {
-            "where": "B3.prompt",
-            "text": "one might simply have been moved の one は何を指しますか。",
-            "match": "might simply"
-          }
-        ],
-        "PRESENT_PERFECT": [
-          {
-            "where": "B3.prompt",
-            "text": "one might simply have been moved の one は何を指しますか。",
-            "match": "have been"
-          }
-        ],
-        "PASSIVE": [
-          {
-            "where": "B3.prompt",
-            "text": "one might simply have been moved の one は何を指しますか。",
-            "match": "been moved"
-          }
-        ]
-      }
+      "features": {}
     },
     {
       "textbook": "サンシャイン",

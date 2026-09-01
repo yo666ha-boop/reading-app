@@ -1,125 +1,19 @@
 {
-  "generatedAt": "2026-09-01T03:15:47.603Z",
+  "generatedAt": "2026-09-01T03:16:28.681Z",
   "detectorVersion": "3.1-v11-b05-grammar-r1+gate-fp3+v7supp",
   "passages": 50,
-  "detectedFeatureTypes": 22,
-  "detectedOccurrences": 460,
+  "detectedFeatureTypes": 20,
+  "detectedOccurrences": 449,
   "falsePositiveOccurrencesRemoved": 0,
   "resolvedOccurrences": 449,
   "priorGradeCarryForwardOccurrences": 279,
-  "unresolvedOccurrences": 11,
+  "unresolvedOccurrences": 0,
   "futureGrammarLeak": 0,
-  "sectionChronologyComplete": false,
-  "finalPass": false,
+  "sectionChronologyComplete": true,
+  "finalPass": true,
   "rule": "Fail closed after bounded structural false-positive removal, including canonical-v7 lexical -ing nouns; exact official evidence plus bounded canonical-v7 exact/conservative boundaries only. Exact earlier-grade introductions carry forward. Unit/program-level evidence remains unresolved.",
   "future": [],
-  "unresolved": [
-    {
-      "textbook": "サンシャイン",
-      "grade": "1",
-      "section": "PROGRAM 10-2",
-      "feature": "MAKE_O_V",
-      "occurrences": 4,
-      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-      "coarseBoundary": null,
-      "introducedGrade": null,
-      "samples": [
-        {
-          "where": "sentence:3",
-          "text": "Emi first moved the cart into the aisle, and that made people walk around it.",
-          "match": "made people walk"
-        },
-        {
-          "where": "slash:3",
-          "text": "Emi first moved the cart into the aisle, and that made people walk around it.",
-          "match": "made people walk"
-        },
-        {
-          "where": "A2.evidence",
-          "text": "Emi first moved the cart into the aisle, and that made people walk around it.",
-          "match": "made people walk"
-        }
-      ]
-    },
-    {
-      "textbook": "サンシャイン",
-      "grade": "1",
-      "section": "PROGRAM 10-2",
-      "feature": "BECAUSE_CLAUSE",
-      "occurrences": 4,
-      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-      "coarseBoundary": null,
-      "introducedGrade": null,
-      "samples": [
-        {
-          "where": "sentence:3",
-          "text": "He did not bring a new chair immediately because he first thought someone moved one.",
-          "match": "because he "
-        },
-        {
-          "where": "slash:3",
-          "text": "He did not bring a new chair immediately because he first thought someone moved one.",
-          "match": "because he "
-        },
-        {
-          "where": "A3.evidence",
-          "text": "He did not bring a new chair immediately because he first thought someone moved one.",
-          "match": "because he "
-        }
-      ]
-    },
-    {
-      "textbook": "サンシャイン",
-      "grade": "1",
-      "section": "PROGRAM 10-2",
-      "feature": "MODAL_MAY_MIGHT",
-      "occurrences": 1,
-      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-      "coarseBoundary": null,
-      "introducedGrade": null,
-      "samples": [
-        {
-          "where": "B3.prompt",
-          "text": "one might simply have been moved の one は何を指しますか。",
-          "match": "might simply"
-        }
-      ]
-    },
-    {
-      "textbook": "サンシャイン",
-      "grade": "1",
-      "section": "PROGRAM 10-2",
-      "feature": "PRESENT_PERFECT",
-      "occurrences": 1,
-      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-      "coarseBoundary": null,
-      "introducedGrade": null,
-      "samples": [
-        {
-          "where": "B3.prompt",
-          "text": "one might simply have been moved の one は何を指しますか。",
-          "match": "have been"
-        }
-      ]
-    },
-    {
-      "textbook": "サンシャイン",
-      "grade": "1",
-      "section": "PROGRAM 10-2",
-      "feature": "PASSIVE",
-      "occurrences": 1,
-      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-      "coarseBoundary": null,
-      "introducedGrade": null,
-      "samples": [
-        {
-          "where": "B3.prompt",
-          "text": "one might simply have been moved の one は何を指しますか。",
-          "match": "been moved"
-        }
-      ]
-    }
-  ],
+  "unresolved": [],
   "resolved": [
     {
       "textbook": "ニューホライズン",
