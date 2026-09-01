@@ -1,4 +1,5 @@
 'use strict';
+// Final candidate extraction is intentionally regenerated after chronology/content repairs.
 const fs=require('fs');const build=require('./v11_batch12_build_final_candidate.js');const x=build();
 if(x.registered!==false||x.passages.length!==50)throw Error('final candidate state');
 const groups=[['G1-001_005',0,5],['G1-006_010',5,10],['G1-011_015',10,15],['G1-016_G2-003',15,20],['G2-004_008',20,25],['G2-009_013',25,30],['G2-014_G3-001',30,35],['G3-002_006',35,40],['G3-007_011',40,45],['G3-012_016',45,50]];
