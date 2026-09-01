@@ -1,0 +1,28 @@
+name: V11 Batch12 One-to-One Slash Review Packet
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch12_extract_1to1_slash_review_packet.js'
+      - 'v11_batch12_slash_question_scaffold.json'
+      - '.github/workflows/v11-batch12-1to1-slash-review-packet.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - run: node v11_batch12_extract_1to1_slash_review_packet.js
+      - name: Persist packet safely
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add V11_BATCH12_1TO1_SLASH_REVIEW_PACKET.json V11_BATCH12_1TO1_SLASH_REVIEW_PACKET.tsv
+          git diff --cached --quiet || git commit -m "v11: persist Batch12 one-to-one slash review packet"
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
