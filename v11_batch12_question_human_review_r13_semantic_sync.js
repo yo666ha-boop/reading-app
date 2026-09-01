@@ -15,6 +15,10 @@ function syncR13(f){
   bg.evidence='The Japanese notice made sense to regular students because everyone already knew the entrance layout, but the English version had to work for people without that background knowledge.';bg.evidenceJp='日本語案内は校内の配置を知っている普段の生徒には通じますが、英語版はその知識のない人にも分かる必要があります。';bg.reason='background knowledgeを、普段の生徒が知る入口配置と、初めて来る人が持たない知識の対比から特定します。';bg.humanReview='HUMAN_REVIEW_R13_SEMANTIC_SYNC';
   const test=a10.find(x=>x.questionType==='GIST'&&x.prompt&&x.prompt.includes('場所を示す案内'));if(!test)throw new Error('R13 semantic sync: visitor-test GIST missing');
   test.evidence='They then tested the new version with five students who had never attended the event. All five chose the correct shelf.';test.evidenceJp='初めてイベントへ来る五人の生徒に試すと、全員が正しい棚を選べました。';test.reason='現場確認だけでなく、初参加者5人の実利用テストで全員が正しい棚を選べたことまでを根拠に一般化します。';test.humanReview='HUMAN_REVIEW_R13_SEMANTIC_SYNC';
+  const p11=f.passages.find(x=>x.id==='V11-B12-G3-011');if(!p11)throw new Error('R13 semantic sync: G3-011 missing');
+  const a11=[...(p11.questions||[]),...(p11.questionSetB||[])];
+  const proof=a11.find(x=>x.questionType==='INFERENCE'&&x.evidence==='The museum could not prove that this cup was used for the cake recipe.');if(!proof)throw new Error('R13 semantic sync: G3-011 proof inference missing');
+  proof.evidence='The museum could not prove that this cup was used for the cake recipe, so Saki did not rewrite the historical record as a certain fact.';proof.evidenceJp='ただし、そのカップがこのケーキに使われたとは証明できなかったため、サキは歴史記録を確定事項のように書き換えませんでした。';proof.reason='180ml説を示す手がかりがあっても、実際にそのレシピで使われた証明がないため確定できないという因果文全体を根拠にします。';proof.humanReview='HUMAN_REVIEW_R13_SEMANTIC_SYNC';
   return f;
 }
 if(typeof module!=='undefined'&&module.exports)module.exports=syncR13;
