@@ -1,0 +1,23 @@
+name: Math Vercel Preview Public Fetch Probe
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-vercel-preview-public-fetch-probe.yml'
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Assert isolated preview chunk is anonymously fetchable
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL='https://mikami-math-1323-isolated-cr603ummc-yo666ha-7357s-projects.vercel.app/x.txt'
+          body="$(curl -fsSL --retry 2 "$URL")"
+          test "$body" = 'HELLO'
+          printf '%s' "$body" | sha256sum
+          echo 'PASS_PUBLIC_CROSS_DEPLOYMENT_FETCH'
