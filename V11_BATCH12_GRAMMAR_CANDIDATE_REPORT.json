@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-01T03:31:54.132Z",
+  "generatedAt": "2026-09-01T03:42:04.441Z",
   "passages": 50,
   "classification": "CANDIDATES_FOR_V11_BATCH12_GATE",
   "detectorVersion": "3.1-v11-b05-grammar-r1",
@@ -14,8 +14,9 @@
       ]
     },
     "PASSIVE": {
-      "sectionCount": 4,
+      "sectionCount": 5,
       "sections": [
+        "サンシャイン|1|PROGRAM 10-2",
         "サンシャイン|2|PROGRAM 8-3",
         "ニューホライズン|2|Unit 7-4",
         "ニューホライズン|3|Unit 6-4",
@@ -273,7 +274,15 @@
       "grade": "1",
       "section": "PROGRAM 10-2",
       "id": "V11-B12-G1-011",
-      "features": {}
+      "features": {
+        "PASSIVE": [
+          {
+            "where": "slash:7",
+            "text": "The librarian also marked that place so the cart would be returned there after use.",
+            "match": "be returned"
+          }
+        ]
+      }
     },
     {
       "textbook": "ニューホライズン",
