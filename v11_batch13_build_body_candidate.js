@@ -11,6 +11,7 @@ module.exports=function build(){
  for(const r of repair.repairs||[]){const p=passages.find(x=>x.id===r.id);if(!p)throw Error(`missing repair target ${r.id}`);if(r.humanReviewed!==true)throw Error(`unreviewed repair ${r.id}`);p.body+=r.bodyAppend||'';p.fullTranslation+=r.translationAppend||'';}
  applyRepairDoc(passages,'v11_batch13_semantic_repair_r2.json','B13_HUMAN_REVIEW_COMPLETE_R2');
  applyRepairDoc(passages,'v11_batch13_semantic_repair_r3_grammar.json','B13_HUMAN_REVIEW_COMPLETE_R3');
+ applyRepairDoc(passages,'v11_batch13_semantic_repair_r4_residual.json','B13_HUMAN_REVIEW_COMPLETE_R4');
  if(passages.length!==50||new Set(passages.map(p=>p.id)).size!==50)throw Error('Batch13 candidate count/id failure');
  for(const p of passages){p.registered=false;p.sentences=splitSentences(p.body);if(!p.sentences.length)throw Error(`no chronology sentences ${p.id}`);p.slashRows=[];p.questions=[];p.questionSetB=[];}
  return {batch:'V11-B13',registered:false,officialTotal:768,targetAfterFullGates:818,status:'BODY_TRANSLATION_CANDIDATE_QUESTIONS_SLASH_PENDING',passages};
