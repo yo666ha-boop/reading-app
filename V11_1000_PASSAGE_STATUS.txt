@@ -1,12 +1,12 @@
-phase=V11_BATCH11_COMPLETE_BATCH12_NEXT
+phase=V11_BATCH12_COMPLETE_BATCH13_NEXT
 branch=v11-1000passage-easy-notes
 baseline_passages=168
 target_passages=1000
 batch_size=50
-current_total=718
-remaining_passages=282
-next_batch=Batch12
-next_batch_target=768
+current_total=768
+remaining_passages=232
+next_batch=Batch13
+next_batch_target=818
 batch01_registered=true
 batch02_registered=true
 batch03_registered=true
@@ -18,17 +18,14 @@ batch08_registered=true
 batch09_registered=true
 batch10_registered=true
 batch11_registered=true
-batch11_passages=50
-batch11_grade_split=G1_17_G2_17_G3_16
-batch11_vocab_chronology=PASS unregistered=0 future_vocab=0
-batch11_grammar_chronology=PASS unresolved=0 future_grammar=0
-batch11_human_question_gate=PASS passages=50 unique_ids=50 questions=500 reviewed_passages=50 issues=0
-batch11_verified_support_snapshots=50
-batch11_candidate_runtime=PASS total=718 registered=false pc=PASS iphone=PASS duplicate_id=0 duplicate_body=0 near_duplicate=0 self_pair=0 a4_sections=6 a4_files=12
-batch11_persistent_runtime=PASS run=33394894977 total=718 registered=true pc=PASS iphone=PASS cross_batch=PASS a4_student_teacher=PASS normal_notes=3928 support_notes=489
-batch11_bootstrap_commit=15cf8584a2d1d4b1e0d773687dee5fbe869cea05
-batch11_chain_commit=a7d909b54b8432b8dd868a19c4c06d4f4260291c
-batch11_persistent_workflow_commit=98bc87274847c4d3a72516e34e5d2eb8e0f24fbd
-batch11_persistent_result_commit=ed9d83e47308ff2e7d6bde6c800a7c2e0793bd6b
+batch12_registered=true
+batch12_passages=50
+batch12_grade_split=G1_17_G2_17_G3_16
+batch12_human_semantic_review=PASS passages=50
+batch12_human_question_gate=PASS questions=500 pending=0
+batch12_final_slash_human_gate=PASS passages=50 rows=461 length_repair_reviewed=12 failures=0
+batch12_final_content_integrity=PASS passages=50 questions=500 uncovered_gloss=0 failures=0
+batch12_candidate_runtime=PASS total=768 registered=false candidate_only=true pc=PASS iphone=PASS overflow=0 errors=0 duplicate_id=0 duplicate_body=0 near_duplicate=0 a4_sections=6 a4_files=12
+batch12_registration=ALL_50_TOGETHER_AFTER_FULL_FINAL_GATES
 release_to_main=NO_UNTIL_1000_AND_FINAL_RELEASE_GATES_PASS
-next_step=Start Batch12 only after rereading Drive 00/99 and current branch HEAD. Create 50 distinct unregistered passages, then pass human semantic quality, translation/slash sync, A/B question quality, v7 vocab/grammar chronology, normal/easy notes, cross-batch duplication, Chromium/iPhone, A4 student/teacher, and persistent runtime before registering 718->768.
+next_step=Start Batch13 from current branch HEAD and latest Drive 00/99. Build 50 distinct unregistered passages from current v7 textbook chronology and latest Yamaguchi profile; human-read every passage and synchronize translation/slash/questions/evidence before chronology, notes, duplicate, Chromium/WebKit, A4 and persistent-runtime gates. Register 768->818 only after every Batch13 gate passes.
