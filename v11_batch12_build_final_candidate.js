@@ -50,6 +50,7 @@ function build(){
   out=require('./v11_batch12_final_semantic_repair_r7.js')(out);
   out=require('./v11_batch12_grammar_repair_r1.js')(out);
   out=require('./v11_batch12_grammar_repair_r2.js')(out);
+  out=require('./v11_batch12_length_repair_r8.js')(out);
   out=require('./v11_batch12_apply_verified_gloss.js')(out);
   out=require('./v11_batch12_easy_support.js')(out);
   const ids=new Set(out.passages.map(p=>p.id));if(ids.size!==50)throw Error('candidate unique IDs');
@@ -57,5 +58,5 @@ function build(){
   if(out.verifiedGlossReuse&&out.verifiedGlossReuse.uncoveredDistinct!==0)throw Error('candidate uncovered required gloss '+out.verifiedGlossReuse.uncoveredDistinct);
   return out;
 }
-if(require.main===module){const out=build();fs.writeFileSync('v11_batch12_final_candidate.json',JSON.stringify(out,null,2)+'\n');console.log(JSON.stringify({passages:out.passages.length,questions:500,registered:out.registered,status:out.status,finalSemanticRepairs:out.finalSemanticRepairs||[],finalSlashHumanReview:out.finalSlashHumanReview||null,easySupport:out.easySupport||null,verifiedGlossReuse:out.verifiedGlossReuse||null,grammarRepair:out.grammarRepair||null,grammarRepairR2:out.grammarRepairR2||null},null,2));}
+if(require.main===module){const out=build();fs.writeFileSync('v11_batch12_final_candidate.json',JSON.stringify(out,null,2)+'\n');console.log(JSON.stringify({passages:out.passages.length,questions:500,registered:out.registered,status:out.status,finalSemanticRepairs:out.finalSemanticRepairs||[],finalSlashHumanReview:out.finalSlashHumanReview||null,lengthRepairR8:out.lengthRepairR8||null,easySupport:out.easySupport||null,verifiedGlossReuse:out.verifiedGlossReuse||null,grammarRepair:out.grammarRepair||null,grammarRepairR2:out.grammarRepairR2||null},null,2));}
 module.exports=build;
