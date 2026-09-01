@@ -48,9 +48,10 @@ function build(){
   }
   out=require('./v11_batch12_final_semantic_repair_r6.js')(out);
   out=require('./v11_batch12_grammar_repair_r1.js')(out);
+  out=require('./v11_batch12_grammar_repair_r2.js')(out);
   const ids=new Set(out.passages.map(p=>p.id));if(ids.size!==50)throw Error('candidate unique IDs');
   let qn=0;for(const p of out.passages)qn+=(p.questions||[]).length+(p.questionSetB||[]).length;if(qn!==500)throw Error('candidate question total '+qn);
   return out;
 }
-if(require.main===module){const out=build();fs.writeFileSync('v11_batch12_final_candidate.json',JSON.stringify(out,null,2)+'\n');console.log(JSON.stringify({passages:out.passages.length,questions:500,registered:out.registered,status:out.status,finalSemanticRepairs:out.finalSemanticRepairs||[],grammarRepair:out.grammarRepair||null},null,2));}
+if(require.main===module){const out=build();fs.writeFileSync('v11_batch12_final_candidate.json',JSON.stringify(out,null,2)+'\n');console.log(JSON.stringify({passages:out.passages.length,questions:500,registered:out.registered,status:out.status,finalSemanticRepairs:out.finalSemanticRepairs||[],grammarRepair:out.grammarRepair||null,grammarRepairR2:out.grammarRepairR2||null},null,2));}
 module.exports=build;
