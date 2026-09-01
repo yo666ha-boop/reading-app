@@ -1,0 +1,33 @@
+{
+  "project": "mikami-math-problem-bank",
+  "artifact_type": "exact1323_transfer_channel_audit",
+  "recorded_at_jst": "2026-09-01T22:15:00+09:00",
+  "branch": "math-problem-bank-bootstrap",
+  "main_touched": false,
+  "publication_ready": false,
+  "exact_candidate": {
+    "drive_file_id": "1l29gpomqPrEEqWCnlCuZH1BiZSw5lg4y",
+    "filename": "mikami_math_1323_singlefile_exactbytes_20260901T1910JST.html",
+    "expected_bytes": 6819806,
+    "expected_sha256": "47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521",
+    "authenticated_drive_fetch_bytes": 6819806,
+    "authenticated_drive_fetch_sha256": "47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521",
+    "authenticated_drive_fetch_identity": "PASS"
+  },
+  "github_actions": {
+    "workflow": ".github/workflows/math-exact1323-isolated-deploy.yml",
+    "workflow_update_commit": "7a751af1e42700078e1a7fa103a0db6eb429520a",
+    "run_id": 33511597849,
+    "job_id": 99868339732,
+    "result": "FAIL_BEFORE_DEPLOY",
+    "failed_step": "Download exact single-file candidate from fixed Drive ID",
+    "public_drive_attempts": [
+      {"bytes": 906054, "sha256": "29c3746dcd40fb8cdd5041a978f9583f8f138525d2fb37972db7bb1fc3de7ed0"},
+      {"bytes": 905843, "sha256": "9103c6d54550950fe72585d23ba77f18d7cab0ef9259b9d17f5fcc831c1f132e"}
+    ],
+    "vercel_protection_step_executed": false,
+    "vercel_deploy_step_executed": false
+  },
+  "diagnosis": "The exact 6,819,806-byte HTML is healthy when fetched through the authenticated Drive connector, but anonymous Google Drive download URLs used by GitHub Actions return a different ~906 KB response. Therefore the public Drive URL is not a valid byte-preserving transfer channel. No deployment/release/browser PASS is claimed from this run.",
+  "next_safe_action": "Preserve the exact Drive artifact and replace the anonymous Drive download step with a durable authenticated or repository-contained byte-preserving transfer channel. Reconstruct and verify 6,819,806 bytes and SHA256 47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521 inside GitHub Actions before reaching the fixed isolated Vercel project. Then execute anonymous exact-byte deployment verification and the exact-origin browser matrix. Physical Fire remains mandatory for final completion."
+}
