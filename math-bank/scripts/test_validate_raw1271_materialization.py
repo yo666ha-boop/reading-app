@@ -21,6 +21,14 @@ class GateTest(unittest.TestCase):
         r=make_record(); t=copy.deepcopy(r); t["answer"]="x=2"; self.assertTrue(any("record_fingerprint mismatch" in e for e in gate.validate_record(t,1)))
     def test_missing_figure_rejected(self):
         r=make_record(); r["figure_refs"]=[{"relationship_id":"rId5","target":"word/media/image5.png","missing":True}]; r["record_fingerprint"]=gate.recompute_fingerprint(r); self.assertTrue(any("marked missing" in e for e in gate.validate_record(r,1)))
+    def test_native_table_evidence_is_fingerprint_bound(self):
+        r=make_record(); r["table_refs"]=[{"path":"word/document.xml","rows":[["x","1"],["y","2"]],"table_xml_sha256":"b"*64,"structured_text":"x:1 / y:2"}]; r["record_fingerprint"]=gate.recompute_fingerprint(r); self.assertEqual(gate.validate_record(r,1),[])
+        t=copy.deepcopy(r); t["table_refs"][0]["table_xml_sha256"]="c"*64; self.assertTrue(any("record_fingerprint mismatch" in e for e in gate.validate_record(t,1)))
+    def test_embedded_table_asset_is_fingerprint_bound(self):
+        r=make_record(); r["table_refs"]=[{"kind":"embedded_table_image","relationship_id":"rId10","path":"word/media/image4.emf","sha256":"b"*64,"visual_table":[["階級","度数"],["0～10","3"]]}]; r["record_fingerprint"]=gate.recompute_fingerprint(r); self.assertEqual(gate.validate_record(r,1),[])
+        t=copy.deepcopy(r); t["table_refs"][0]["sha256"]="c"*64; self.assertTrue(any("record_fingerprint mismatch" in e for e in gate.validate_record(t,1)))
+    def test_table_missing_identity_rejected(self):
+        r=make_record(); r["table_refs"]=[{"rows":[["x","1"]]}]; r["record_fingerprint"]=gate.recompute_fingerprint(r); self.assertTrue(any("table_xml_sha256" in e for e in gate.validate_record(r,1)))
     def test_figure_count_not_historical_constant(self):
         old_expected=gate.EXPECTED.copy(); old_total=gate.EXPECTED_TOTAL
         try:
