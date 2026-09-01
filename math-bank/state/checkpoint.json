@@ -2,8 +2,8 @@
   "project":"mikami-math-problem-bank",
   "status":"IN_PROGRESS_APP1323_RUNTIME_BROWSER_DEVICE_RELEASE",
   "current_stage":"APP1323_REAL_ORIGIN_BROWSER_ENVIRONMENT_AND_EXACT_RELEASE_DEPLOYMENT",
-  "current_bucket":"REAL_ORIGIN_ENVIRONMENT_PASS_EXACT_1323_DEPLOYMENT_AND_PHYSICAL_FIRE_PENDING",
-  "recorded_at_jst":"2026-09-01T15:07:00+09:00",
+  "current_bucket":"EXACT_1323_RUNTIME_PREFLIGHT_PASS_SCOPED_DEPLOYMENT_AND_PHYSICAL_FIRE_PENDING",
+  "recorded_at_jst":"2026-09-01T15:58:00+09:00",
   "main_touched":false,
   "schedule_changed":false,
   "source_identity":{
@@ -17,16 +17,17 @@
     "winpass_canonical":{"status":"PHASE2_COMPLETE","count":717,"automatic_semantic_merges":0},
     "global":{"validated":1271,"immutable_frozen":1271,"unique_raw_ids":1271,"unique_fingerprints":1271},
     "variants":{"verified":52,"distinct_verified_parents":26,"composition_status":"PASS","combined_runtime_total":1323},
-    "runtime1323":{"status":"PASS_COMPOSED_RUNTIME_CONTRACT","runtime_bundle_drive_file_id":"16emP0jNoYTTVsj_RxQKZksCPeNOBya1V","runtime_bundle_bytes":4201114,"runtime_bundle_sha256":"019c60a8e782034ccb3750df5b17ff2c28070fcebefdb833865eb79ed728a17b","records":1323,"originals":1271,"variants":52,"unique_ids":1323,"figure_ref_entries":602,"unique_figure_paths":282,"missing_assets":0},
+    "runtime1323":{"status":"PASS_COMPOSED_RUNTIME_CONTRACT_AND_INDEPENDENT_DEPLOY_PREFLIGHT","runtime_bundle_drive_file_id":"16emP0jNoYTTVsj_RxQKZksCPeNOBya1V","runtime_bundle_bytes":4201114,"runtime_bundle_sha256":"019c60a8e782034ccb3750df5b17ff2c28070fcebefdb833865eb79ed728a17b","records":1323,"originals":1271,"variants":52,"unique_ids":1323,"figure_ref_entries":602,"unique_figure_paths":282,"missing_assets":0,"app_records_sha256":"14f05319b0c5f11c3ddcc273b8fe8edd445d819e61c90b9cc0c03a59bb595b0d","asset_manifest_entries":282,"asset_manifest_hash_byte_errors":0,"asset_decode_errors":0,"variant_parent_errors":0},
     "ui1323":{"candidate":"math-bank/app/index1323.html","index_git_blob_sha":"164e4d74df08c30df020177738fbd8048f6b4a75","index_sha256":"e929c458f1b92aec73add19d5c25c062fd5bf5cb7a9c487a284cc4d953552874","exact_app_logic_chromium":"PASS_WITH_SET_CONTENT_METHOD","console_errors":0,"filters_search_random_answers":"PASS","mobile_390x844_horizontal_overflow":false,"all_282_assets_filesystem_decode":"PASS","all_282_assets_chromium_decode":"PASS"},
     "a4":{"status":"PASS_SAMPLE30_STANDARD_CHROMIUM","questions_pages":4,"answers_pages":6,"page_size":"A4","visual_clipping_or_broken_diagram_observed":false},
     "real_origin_environment":{"artifact":"math-bank/state/app1323-real-origin-browser-environment-gate-20260901T1506JST.json","chromium_storage_print_run":33476106064,"chromium_storage_reload":"PASS","print_beforeprint":"PASS","cross_browser_run":33476125609,"chromium":"PASS","firefox":"PASS","webkit_iphone_emulation":"PASS","fire_silk_emulation":"PASS_NOT_PHYSICAL_DEVICE","scope":"environment-only harness, not exact full 1323 deployed release"},
+    "exact_release_deploy_preflight":{"artifact":"math-bank/state/app1323-exact-release-deploy-preflight-20260901T1558JST.json","result":"PASS_RUNTIME_AND_ASSET_IDENTITY; DEPLOYMENT_PENDING","vercel_project_id":"prj_klR6v3xfehqPFqb2BPwZaaoy9m3A","vercel_project":"mikami-math-1323-isolated","observed_deployment_id":"dpl_9RKmFTuF2vipUcjy8iKSMWZDJyrd","observed_root_identity":"probe-only, not exact 1323","existing_production_replaced":false},
     "device_matrix":{"Chromium_exact_logic":"PASS_WITH_SET_CONTENT_METHOD","Firefox_real_origin_environment":"PASS","WebKit_iPhone_real_origin_environment":"PASS_EMULATION_NOT_PHYSICAL","Fire":"PENDING_PHYSICAL; SILK_EMULATION_PASS"},
-    "release":{"exact_1323_isolated_deployment":"PENDING","strict_release":"PENDING","public_isolated_verification":"PENDING"},
+    "release":{"exact_1323_isolated_deployment":"PENDING_SAFE_PROJECT_SCOPED_WRITE","strict_release":"PENDING","public_isolated_verification":"PENDING"},
     "publication_ready":false
   },
-  "latest_audits":["math-bank/state/app1323-chromium-a4-runtime-verification-20260901T1307JST.json","math-bank/state/app1323-real-origin-browser-environment-gate-20260901T1506JST.json"],
-  "exact_stop":"Native HTTPS-origin localStorage save/reload and print invocation now pass in Chromium, and the same isolated-origin persistence contract passes Chromium, Firefox and WebKit with iPhone UA; Fire/Silk compatibility emulation also passes but is not physical-device certification. These results validate the browser/origin environment only. The complete exact 1323 candidate (index1323 + exact app-records + all 282 assets) has not yet been deployed to this verifier origin, so PUBLICATION_READY remains false.",
-  "next_start":"Deploy the exact complete 1323 candidate bundle to an isolated navigable origin without replacing existing production, verify release identity and rerun full UI/assets/A4/browser checks there. Then obtain physical Fire verification if required, run strict release, and perform final public isolated verification. Keep main untouched and PUBLICATION_READY=false until every gate passes.",
+  "latest_audits":["math-bank/state/app1323-chromium-a4-runtime-verification-20260901T1307JST.json","math-bank/state/app1323-real-origin-browser-environment-gate-20260901T1506JST.json","math-bank/state/app1323-exact-release-deploy-preflight-20260901T1558JST.json"],
+  "exact_stop":"The exact Drive runtime ZIP was fetched directly and independently re-audited: 1323/1323 unique IDs, 1271 originals + 52 verified variants, Standard317/Jitsuren237/Winpass717, 602 figure references resolving to exactly 282 manifest-bound assets, zero missing paths, zero manifest SHA/byte mismatches, zero image decode failures and zero variant-parent contract errors. The pinned Vercel isolated project exists, but its current root still serves only the prior probe and is not the exact 1323 release. The available connected deploy action is not project/file scoped and this runtime has no Vercel token/CLI, so an ambiguous deployment was deliberately not invoked. PUBLICATION_READY remains false.",
+  "next_start":"Perform a safely project-scoped deployment to Vercel project prj_klR6v3xfehqPFqb2BPwZaaoy9m3A using exact math-bank/app/index1323.html plus the audited Drive app-records.json and all 282 assets. Verify deployed index/data/asset identity, then rerun complete UI/assets/A4/localStorage in Chromium/Firefox/WebKit-iPhone on that exact real origin. After that obtain physical Fire verification, strict release, and final public isolated verification. Keep main untouched and PUBLICATION_READY=false until every gate passes.",
   "main_untouched":true
 }
