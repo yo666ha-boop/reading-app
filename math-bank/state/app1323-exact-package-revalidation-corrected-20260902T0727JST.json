@@ -1,0 +1,54 @@
+{
+  "project": "mikami-math-problem-bank",
+  "audit_at_jst": "2026-09-02T07:27:00+09:00",
+  "stage": "EXACT_1323_DEPLOY_PACKAGE_REVALIDATION_CORRECTED_RAW_ID_NAMESPACE",
+  "correction": {
+    "supersedes_local_precheck": "2026-09-02T07:20:00+09:00",
+    "reason": "manifest.references[].raw_id must match source.original_no / id without orig: prefix; direct runtime id comparison was invalid"
+  },
+  "package": {
+    "drive_file_id": "1c9QGSmzAyL5iQZhiGoHoDCTH3Z4zf0I7",
+    "bytes": 4194529,
+    "sha256": "88346c8f905ed1de8c3ad6b32d8dee634c5e9b120bf28d8d61a4850c5816ce52",
+    "crc32": "01f83944",
+    "zip_members": 288,
+    "zip_test": "PASS",
+    "expanded_bytes": 5954295
+  },
+  "core_files": {
+    "index.html": {"bytes": 13817, "sha256": "e929c458f1b92aec73add19d5c25c062fd5bf5cb7a9c487a284cc4d953552874"},
+    "app-records.json": {"bytes": 1530922, "sha256": "14f05319b0c5f11c3ddcc273b8fe8edd445d819e61c90b9cc0c03a59bb595b0d"},
+    "asset-binding-manifest.json": {"bytes": 228621, "sha256": "c8f5af060bb6d67a452e26d70407f3fa80a720b9102edc4711623da2a073cc4e"}
+  },
+  "records": {
+    "total": 1323,
+    "unique_ids": 1323,
+    "originals": 1271,
+    "variants": 52,
+    "by_book": {"Winpass": 717, "実力錬成": 237, "Standard": 317},
+    "figure_ref_entries": 602,
+    "unique_figure_paths": 282,
+    "raw_id_map_entries": 1271
+  },
+  "assets": {
+    "manifest_entries": 282,
+    "manifest_unique_paths": 282,
+    "png_files": 282,
+    "manifest_hash_or_size_errors": 0,
+    "normalized_record_manifest_relationship_errors": 0,
+    "unsafe_paths": 0
+  },
+  "parents": {"variant_parent_errors": 0},
+  "gates": {
+    "package_integrity": true,
+    "records_1323_unique": true,
+    "split_1271_52": true,
+    "source_split_717_237_317": true,
+    "assets_282_bound": true,
+    "parents": true,
+    "safe_paths": true,
+    "all_package_static_gates_pass": true
+  },
+  "remote_transfer_status": "PENDING",
+  "publication_ready": false
+}
