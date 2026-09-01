@@ -1,0 +1,49 @@
+{
+  "batch": "V11-B13",
+  "branch": "v11-1000passage-easy-notes",
+  "officialBefore": 768,
+  "targetAfterFullGates": 818,
+  "registered": false,
+  "passageCount": 50,
+  "gradeSplit": {"G1":17,"G2":17,"G3":16},
+  "idRanges": {"G1":"V11-B13-G1-001..017","G2":"V11-B13-G2-001..017","G3":"V11-B13-G3-001..016"},
+  "authoringRules": {
+    "humanSemanticReviewRequired": true,
+    "naturalEnglish": true,
+    "naturalFullTranslation": true,
+    "slashForwardMeaningAccumulation": true,
+    "questionSets": {"A":5,"B":5},
+    "questionEvidenceSyncRequired": true,
+    "noMechanicalPadding": true,
+    "noPartialRegistration": true
+  },
+  "chronology": {
+    "vocabSource": "current v7 textbook chronology actual",
+    "grammarSource": "current textbook grammar chronology actual",
+    "required": {"unregistered_vocab":0,"future_vocab":0,"grammar_unresolved":0,"future_grammar":0},
+    "requiredLocalGlossOnlyForContentNecessaryUnlearnedWords": true
+  },
+  "g3": {
+    "yamaguchiSource": "latest Drive/GitHub Yamaguchi spec/profile actual",
+    "copyRealExamText": false,
+    "requireNaturalIntegratedReasoning": true
+  },
+  "finalGates": [
+    "human_semantic_naturalness",
+    "word_count",
+    "full_translation_sync",
+    "slash_en_jp_alignment",
+    "A_B_question_evidence",
+    "v7_vocab_chronology",
+    "grammar_chronology",
+    "normal_notes",
+    "easy_support_notes",
+    "required_local_gloss",
+    "cross_batch_exact_near_duplicate",
+    "PC_Chromium",
+    "iPhone_WebKit",
+    "A4_student_teacher",
+    "persistent_runtime"
+  ],
+  "nextExactAction": "Load latest v7 chronology and latest Yamaguchi profile, assign 50 distinct anchors/topics, then author G1-001 through G1-017 without registering any passage."
+}
