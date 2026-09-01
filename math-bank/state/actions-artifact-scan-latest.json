@@ -7,22 +7,138 @@
   "created_since": "2026-08-19T00:00:00Z",
   "all_artifacts_seen": 1000,
   "candidate_artifacts": 970,
-  "reused_verified_artifacts": 968,
-  "downloaded_artifacts_this_run": 2,
+  "reused_verified_artifacts": 966,
+  "downloaded_artifacts_this_run": 4,
   "canonical_hits": 0,
   "audit_name_hits": 0,
   "valid_audit_hits": 0,
   "paired_recovery_hits": 0,
   "recovery_hint_hits": 0,
   "download_failures": 0,
-  "all_members_sha256_checked": 4054,
-  "all_member_bytes_hashed": 723212615,
+  "all_members_sha256_checked": 4057,
+  "all_member_bytes_hashed": 726284876,
   "zip_signature_members": 0,
   "oversize_members_skipped": 0,
   "scan_complete": true,
   "canonical_absence_proven": true,
   "listing_errors": [],
   "artifacts": [
+    {
+      "artifact_id": 9784507016,
+      "name": "v11-batch12-chronology-reports",
+      "size_in_bytes": 23947,
+      "created_at": "2026-09-01T03:06:06Z",
+      "updated_at": "2026-09-01T03:06:06Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 33464956078,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "v11-1000passage-easy-notes",
+        "head_sha": "1629c08048d2f2646c66fa4bc0df9c61bd7ff3e7"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 4,
+        "members_sha256_checked": 4,
+        "member_bytes_hashed": 351741,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 23947
+    },
+    {
+      "artifact_id": 9784430054,
+      "name": "v11-batch12-chronology-reports",
+      "size_in_bytes": 56141,
+      "created_at": "2026-09-01T03:02:12Z",
+      "updated_at": "2026-09-01T03:02:12Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 33464717438,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "v11-1000passage-easy-notes",
+        "head_sha": "52010f079d07819a5f56035e2b1edd6cc7779939"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 4,
+        "members_sha256_checked": 4,
+        "member_bytes_hashed": 1464110,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 56141
+    },
+    {
+      "artifact_id": 9784414355,
+      "name": "v11-batch12-chronology-reports",
+      "size_in_bytes": 38167,
+      "created_at": "2026-09-01T03:01:25Z",
+      "updated_at": "2026-09-01T03:01:25Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 33464679600,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "v11-1000passage-easy-notes",
+        "head_sha": "8a606dcca2187c8c5fa2b6379cd46a0424bcddde"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 1264240,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 38167
+    },
+    {
+      "artifact_id": 9782734949,
+      "name": "math-browser-regression-diagnostics",
+      "size_in_bytes": 1009,
+      "created_at": "2026-09-01T01:42:23Z",
+      "updated_at": "2026-09-01T01:42:23Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 33459596597,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "2a94410cc56990facbf4a85e4f36debc2fbd34d9"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 2,
+        "members_sha256_checked": 2,
+        "member_bytes_hashed": 2610,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1009
+    },
     {
       "artifact_id": 9782692639,
       "name": "math-browser-regression-diagnostics",
@@ -28036,125 +28152,9 @@
       },
       "errors": [],
       "archive_download_bytes": 1009
-    },
-    {
-      "artifact_id": 9509329941,
-      "name": "math-browser-regression-diagnostics",
-      "size_in_bytes": 1009,
-      "created_at": "2026-08-24T06:28:54Z",
-      "updated_at": "2026-08-24T06:28:54Z",
-      "expired": false,
-      "workflow_run": {
-        "id": 32697417667,
-        "repository_id": 1211918933,
-        "head_repository_id": 1211918933,
-        "head_branch": "math-problem-bank-bootstrap",
-        "head_sha": "1a6cb2f40c95248e0f0aa6837aa080a5dd999c5d"
-      },
-      "downloaded": true,
-      "interesting_members": [],
-      "canonical_sha_hits": [],
-      "valid_final_audit_hits": [],
-      "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 2,
-        "members_sha256_checked": 2,
-        "member_bytes_hashed": 2610,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 1009
-    },
-    {
-      "artifact_id": 9508975008,
-      "name": "math-browser-regression-diagnostics",
-      "size_in_bytes": 1009,
-      "created_at": "2026-08-24T06:14:29Z",
-      "updated_at": "2026-08-24T06:14:29Z",
-      "expired": false,
-      "workflow_run": {
-        "id": 32696422282,
-        "repository_id": 1211918933,
-        "head_repository_id": 1211918933,
-        "head_branch": "math-problem-bank-bootstrap",
-        "head_sha": "ba4f0097bd3e977fef13f4efad6324f3d251e730"
-      },
-      "downloaded": true,
-      "interesting_members": [],
-      "canonical_sha_hits": [],
-      "valid_final_audit_hits": [],
-      "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 2,
-        "members_sha256_checked": 2,
-        "member_bytes_hashed": 2610,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 1009
-    },
-    {
-      "artifact_id": 9508799685,
-      "name": "math-browser-regression-diagnostics",
-      "size_in_bytes": 1009,
-      "created_at": "2026-08-24T06:06:14Z",
-      "updated_at": "2026-08-24T06:06:14Z",
-      "expired": false,
-      "workflow_run": {
-        "id": 32695859357,
-        "repository_id": 1211918933,
-        "head_repository_id": 1211918933,
-        "head_branch": "math-problem-bank-bootstrap",
-        "head_sha": "852d1d5dd5fdfe1b31820a43dec2e59d2d431f07"
-      },
-      "downloaded": true,
-      "interesting_members": [],
-      "canonical_sha_hits": [],
-      "valid_final_audit_hits": [],
-      "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 2,
-        "members_sha256_checked": 2,
-        "member_bytes_hashed": 2610,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 1009
-    },
-    {
-      "artifact_id": 9508745732,
-      "name": "math-browser-regression-diagnostics",
-      "size_in_bytes": 1009,
-      "created_at": "2026-08-24T06:03:20Z",
-      "updated_at": "2026-08-24T06:03:20Z",
-      "expired": false,
-      "workflow_run": {
-        "id": 32695657781,
-        "repository_id": 1211918933,
-        "head_repository_id": 1211918933,
-        "head_branch": "math-problem-bank-bootstrap",
-        "head_sha": "89a89d4e26ec3186557ef92f6d2c80f29641b2c0"
-      },
-      "downloaded": true,
-      "interesting_members": [],
-      "canonical_sha_hits": [],
-      "valid_final_audit_hits": [],
-      "paired_recovery_eligible": false,
-      "member_scan_metrics": {
-        "members_seen": 2,
-        "members_sha256_checked": 2,
-        "member_bytes_hashed": 2610,
-        "zip_signature_members": 0,
-        "oversize_members_skipped": 0
-      },
-      "errors": [],
-      "archive_download_bytes": 1009
     }
   ],
   "recovered_files": [],
-  "completed_at_utc": "2026-09-01T01:41:10.321735+00:00",
+  "completed_at_utc": "2026-09-01T03:09:01.862188+00:00",
   "policy": "Artifact results are reused only when artifact id, size, and updated_at match exactly, the previous download completed without errors, and the artifact was not pair-eligible. New or changed artifacts are downloaded and every member under the size cap is SHA-256 checked. Any 403/timeout/download/listing failure makes the scan incomplete and is never absence evidence. Exact immutable SHA plus one unambiguous valid final audit from the same artifact remains required; no reconstruction."
 }
