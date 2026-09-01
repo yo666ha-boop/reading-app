@@ -1,0 +1,27 @@
+name: V11 Batch12 Post-Grammar Residual
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch12_postgrammar_residual.js'
+      - '.github/workflows/v11-batch12-postgrammar-residual.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  residual:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - run: node v11_batch12_postgrammar_residual.js
+      - name: Persist residual safely
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add V11_BATCH12_POSTGRAMMAR_RESIDUAL.json V11_BATCH12_POSTGRAMMAR_RESIDUAL.txt
+          git diff --cached --quiet || git commit -m "v11: persist Batch12 post-grammar residual"
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
