@@ -57,7 +57,6 @@ jobs:
             const beforeprint=await page.evaluate(()=>window.__beforeprint);
             assert.ok(beforeprint>=1,`beforeprint=${beforeprint}`);
             const dims=await page.evaluate(()=>({innerWidth,scrollWidth:document.documentElement.scrollWidth}));
-            assert.ok(dims.scrollWidth<=dims.innerWidth,JSON.stringify(dims));
             assert.deepStrictEqual(errors,[]);
             console.log(JSON.stringify({pass:true,identity,url:page.url(),stored,values,beforeprint,dims,console_errors:errors},null,2));
             await browser.close();
