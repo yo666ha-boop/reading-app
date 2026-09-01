@@ -12,6 +12,7 @@ module.exports=function build(){
  applyRepairDoc(passages,'v11_batch13_semantic_repair_r2.json','B13_HUMAN_REVIEW_COMPLETE_R2');
  applyRepairDoc(passages,'v11_batch13_semantic_repair_r3_grammar.json','B13_HUMAN_REVIEW_COMPLETE_R3');
  applyRepairDoc(passages,'v11_batch13_semantic_repair_r4_residual.json','B13_HUMAN_REVIEW_COMPLETE_R4');
+ applyRepairDoc(passages,'v11_batch13_semantic_repair_r5_final_vocab.json','B13_HUMAN_REVIEW_COMPLETE_R5');
  if(passages.length!==50||new Set(passages.map(p=>p.id)).size!==50)throw Error('Batch13 candidate count/id failure');
  for(const p of passages){p.registered=false;p.sentences=splitSentences(p.body);if(!p.sentences.length)throw Error(`no chronology sentences ${p.id}`);p.slashRows=[];p.questions=[];p.questionSetB=[];}
  return {batch:'V11-B13',registered:false,officialTotal:768,targetAfterFullGates:818,status:'BODY_TRANSLATION_CANDIDATE_QUESTIONS_SLASH_PENDING',passages};
