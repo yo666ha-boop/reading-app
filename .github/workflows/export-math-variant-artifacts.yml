@@ -1,0 +1,39 @@
+name: Export Math Variant Artifacts
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/export-math-variant-artifacts.yml'
+      - 'math-bank/state/global1271-safe-variants-algebra26-20260831.json'
+      - 'math-bank/state/global1271-safe-variants-algebra26-v2-20260831.json'
+  workflow_dispatch:
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+      - name: Verify source artifacts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          paths=[Path('math-bank/state/global1271-safe-variants-algebra26-20260831.json'),Path('math-bank/state/global1271-safe-variants-algebra26-v2-20260831.json')]
+          total=0
+          for p in paths:
+              o=json.loads(p.read_text())
+              assert o.get('verified')==26
+              assert len(o.get('variants',[]))==26
+              total += len(o['variants'])
+          assert total==52
+          print('PASS_VARIANT_ARTIFACTS_52')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: math-verified-variants52-source
+          path: |
+            math-bank/state/global1271-safe-variants-algebra26-20260831.json
+            math-bank/state/global1271-safe-variants-algebra26-v2-20260831.json
+          if-no-files-found: error
+          retention-days: 7
