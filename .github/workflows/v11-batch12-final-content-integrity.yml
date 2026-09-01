@@ -1,0 +1,44 @@
+name: V11 Batch12 Final Content Integrity
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch12_final_content_integrity_audit.js'
+      - 'v11_batch12_build_final_candidate.js'
+      - 'v11_batch12_apply_verified_gloss.js'
+      - 'v11_batch12_manual_gloss_r1.js'
+      - 'v11_batch12_final_semantic_repair_r6.js'
+      - 'v11_batch12_grammar_repair_r*.js'
+      - '.github/workflows/v11-batch12-final-content-integrity.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - name: Audit final Batch12 candidate
+        id: audit
+        shell: bash
+        run: |
+          set +e
+          node v11_batch12_final_content_integrity_audit.js
+          rc=$?
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Persist integrity report safely
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f V11_BATCH12_FINAL_CONTENT_INTEGRITY.json 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "v11: persist Batch12 final content integrity"
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
+      - name: Enforce final content integrity
+        if: always()
+        run: test "${{ steps.audit.outputs.rc }}" = "0"
