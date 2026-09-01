@@ -1,0 +1,32 @@
+name: V11 Batch12 Build Runtime Bundle
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch12_build_runtime_bundle.js'
+      - 'v11_batch12_build_final_candidate.js'
+      - 'v11_batch12_final_semantic_repair_r*.js'
+      - 'v11_batch12_easy_support.js'
+      - 'v11_batch12_apply_verified_gloss.js'
+      - '.github/workflows/v11-batch12-build-runtime-bundle.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - name: Build Batch12 browser bundle
+        run: node v11_batch12_build_runtime_bundle.js
+      - name: Persist bundle safely
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f v11_batch12_runtime_bundle.js V11_BATCH12_RUNTIME_BUNDLE_STATUS.json
+          git diff --cached --quiet || git commit -m "v11: persist Batch12 browser runtime bundle"
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
