@@ -1,0 +1,60 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-09-01T15:06:30+09:00",
+  "stage": "APP1323_REAL_ORIGIN_BROWSER_ENVIRONMENT_GATE",
+  "scope": "Browser/origin environment validation only. This does not claim that the complete 1323-record release bundle has been deployed to this verifier origin.",
+  "validated_release_candidate_identity": {
+    "runtime_zip_drive_id": "16emP0jNoYTTVsj_RxQKZksCPeNOBya1V",
+    "runtime_zip_sha256": "019c60a8e782034ccb3750df5b17ff2c28070fcebefdb833865eb79ed728a17b",
+    "records": 1323,
+    "originals": 1271,
+    "variants": 52,
+    "unique_public_asset_paths": 282,
+    "index1323_git_blob_sha": "164e4d74df08c30df020177738fbd8048f6b4a75",
+    "index1323_sha256": "e929c458f1b92aec73add19d5c25c062fd5bf5cb7a9c487a284cc4d953552874"
+  },
+  "isolated_verifier": {
+    "vercel_deployment_id": "dpl_3YDskRDuX3hDsbT5MqTSQV6VtTAi",
+    "purpose": "native HTTPS-origin storage/print/cross-browser environment gate",
+    "existing_math_production_overwritten": false,
+    "full_1323_release_identity": false
+  },
+  "chromium_real_origin_storage_print": {
+    "workflow_run_id": 33476106064,
+    "job_id": 99755586432,
+    "conclusion": "success",
+    "protocol": "https:",
+    "local_storage_key": "mikami-math-1323-settings-v1",
+    "written_values": {"grade":"2","kind":"variant","count":"37","search":"一次関数"},
+    "reload_restored_exact_values": true,
+    "beforeprint_events": 1,
+    "console_errors": 0
+  },
+  "cross_browser_real_origin": {
+    "workflow_run_id": 33476125609,
+    "conclusion": "success",
+    "chromium": {"job_id":99755642624,"conclusion":"success"},
+    "firefox": {"job_id":99755642805,"conclusion":"success"},
+    "webkit_iphone_emulation": {"job_id":99755642854,"conclusion":"success","viewport":"390x844","classification":"WebKit engine with iPhone Safari UA; not physical iPhone certification"},
+    "fire_silk_emulation": {"job_id":99755642840,"conclusion":"success","classification":"compatibility emulation only; not physical Fire certification"}
+  },
+  "prior_exact_candidate_gates_preserved": {
+    "chromium_1323_logic_ui": "PASS",
+    "mobile_390x844_overflow": "PASS on exact index1323",
+    "public_asset_decode": "282/282 PASS",
+    "a4_actual_render_sample": "PASS"
+  },
+  "remaining_before_publication_ready": [
+    "deploy the exact complete 1323 candidate bundle (index1323 + exact app-records + all 282 referenced public assets) to an isolated navigable origin and verify release identity",
+    "run browser/UI/A4 checks against that exact deployed candidate rather than the environment-only harness",
+    "physical Fire verification if required by completion rules",
+    "strict release gate",
+    "public isolated verification"
+  ],
+  "safety": {
+    "main_touched": false,
+    "publication_ready": false,
+    "existing_production_replaced": false,
+    "count_forcing_used": false
+  }
+}
