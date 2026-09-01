@@ -10,159 +10,56 @@
     "runtime_bundle_crc32": "577fc375"
   },
   "source_identity_recheck": {
-    "Standard": {
-      "bytes": 9689250,
-      "expected_bytes": 9689250,
-      "sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6",
-      "expected_sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6",
-      "crc32": "f8e307bb",
-      "expected_crc32": "f8e307bb",
-      "zip_test": "PASS",
-      "pass": true
-    },
-    "実力錬成": {
-      "bytes": 7287279,
-      "expected_bytes": 7287279,
-      "sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33",
-      "expected_sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33",
-      "crc32": "1a020f98",
-      "expected_crc32": "1a020f98",
-      "zip_test": "PASS",
-      "pass": true
-    },
-    "Winpass": {
-      "bytes": 8296042,
-      "expected_bytes": 8296042,
-      "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
-      "expected_sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
-      "crc32": "992b0ca2",
-      "expected_crc32": "992b0ca2",
-      "zip_test": "PASS",
-      "pass": true
-    }
+    "Standard": {"bytes":9689250,"expected_bytes":9689250,"sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","expected_sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","crc32":"f8e307bb","expected_crc32":"f8e307bb","zip_test":"PASS","pass":true},
+    "実力錬成": {"bytes":7287279,"expected_bytes":7287279,"sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","expected_sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","crc32":"1a020f98","expected_crc32":"1a020f98","zip_test":"PASS","pass":true},
+    "Winpass": {"bytes":8296042,"expected_bytes":8296042,"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","expected_sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","crc32":"992b0ca2","expected_crc32":"992b0ca2","zip_test":"PASS","pass":true}
   },
   "runtime_contract": {
-    "records": 1323,
-    "originals": 1271,
-    "variants": 52,
-    "unique_ids": 1323,
-    "original_source_counts": {
-      "Winpass": 717,
-      "実力錬成": 237,
-      "Standard": 317
-    },
-    "figure_ref_entries": 602,
-    "unique_figure_paths": 282,
-    "missing_asset_paths": 0,
-    "variant_missing_parents": 0
+    "records":1323,"originals":1271,"variants":52,"unique_ids":1323,
+    "original_source_counts":{"Winpass":717,"実力錬成":237,"Standard":317},
+    "figure_ref_entries":602,"unique_figure_paths":282,"missing_asset_paths":0,"variant_missing_parents":0
   },
   "asset_integrity": {
-    "filesystem_image_decode_total": 282,
-    "filesystem_image_decode_pass": 282,
-    "filesystem_image_decode_fail": 0,
-    "filesystem_failures": [],
-    "chromium_image_decode_total": 282,
-    "chromium_image_decode_pass": 282,
-    "chromium_image_decode_fail": 0,
-    "chromium_failures": []
+    "filesystem_image_decode_total":282,"filesystem_image_decode_pass":282,"filesystem_image_decode_fail":0,"filesystem_failures":[],
+    "chromium_image_decode_total":282,"chromium_image_decode_pass":282,"chromium_image_decode_fail":0,"chromium_failures":[]
   },
   "chromium_exact_app_logic_set_content": {
-    "method": "Exact index.html + exact app-records.json + exact asset bytes; page.set_content with routed app.local resources because direct local/custom navigation is administratively blocked before app code executes.",
-    "gate": "1323実データゲート PASS",
-    "status": "読込 1323 / 原 1271 / 類 52 / Winpass 717 / 実力錬成 237 / Standard 317 / 構造 0 / 親 0 / 図版 0",
-    "console_errors": [],
-    "initial_render_count": 10,
-    "variant_filter": {
-      "summary": "候補 52\n原問題 0\n類題 52\nWinpass系 52",
-      "rendered": 52,
-      "all_variant": true
-    },
-    "standard_original_filter": {
-      "summary": "候補 317\n原問題 317\n類題 0\nWinpass系 0",
-      "rendered": 200,
-      "all_standard_original": true,
-      "rendered_images": 17,
-      "broken_images": 0
-    },
-    "grade1_filter": {
-      "summary": "候補 808\n原問題 808\n類題 0\nWinpass系 254",
-      "all_grade1": true
-    },
-    "exact_id_search": {
-      "target": "orig:Standard:25astandardt1suhy000101:M01:S01",
-      "count": 1,
-      "match": true
-    },
-    "title_search": {
-      "count": 1,
-      "contains_target": true
-    },
-    "source_order": {
-      "count": 50,
-      "repeat_stable": true,
-      "unique": true
-    },
-    "random_draw": {
-      "draws": 5,
-      "each_count_50": true,
-      "each_unique": true,
-      "distinct_draws": 5
-    },
-    "answers": {
-      "global_toggle": true,
-      "individual_toggle": true
-    },
-    "print_dom": {
-      "controls_hidden": true,
-      "question_answers_hidden": true,
-      "answer_answers_visible": true,
-      "a4_css": true
-    },
-    "chromium_mobile_viewport_390x844": {
-      "scroll_width": 390,
-      "inner_width": 390,
-      "horizontal_overflow": false
-    }
+    "method":"Exact index.html + exact app-records.json + exact asset bytes; page.set_content with routed app.local resources because direct local/custom navigation is administratively blocked before app code executes.",
+    "gate":"1323実データゲート PASS",
+    "status":"読込 1323 / 原 1271 / 類 52 / Winpass 717 / 実力錬成 237 / Standard 317 / 構造 0 / 親 0 / 図版 0",
+    "console_errors":[],"initial_render_count":10,
+    "variant_filter":{"summary":"候補 52\n原問題 0\n類題 52\nWinpass系 52","rendered":52,"all_variant":true},
+    "standard_original_filter":{"summary":"候補 317\n原問題 317\n類題 0\nWinpass系 0","rendered":200,"all_standard_original":true,"rendered_images":17,"broken_images":0},
+    "grade1_filter":{"summary":"候補 808\n原問題 808\n類題 0\nWinpass系 254","all_grade1":true},
+    "exact_id_search":{"target":"orig:Standard:25astandardt1suhy000101:M01:S01","count":1,"match":true},
+    "title_search":{"count":1,"contains_target":true},
+    "source_order":{"count":50,"repeat_stable":true,"unique":true},
+    "random_draw":{"draws":5,"each_count_50":true,"each_unique":true,"distinct_draws":5},
+    "answers":{"global_toggle":true,"individual_toggle":true},
+    "print_dom":{"controls_hidden":true,"question_answers_hidden":true,"answer_answers_visible":true,"a4_css":true},
+    "chromium_mobile_viewport_390x844":{"scroll_width":390,"inner_width":390,"horizontal_overflow":false}
   },
   "a4_chromium_actual_render_sample": {
-    "scope": "first 30 Standard original records in source order",
-    "questions_pdf": {
-      "bytes": 173618,
-      "sha256": "2adcabdb07574aeefb3d1e8a9c42e1083129459caf871418d9201fdfa3857d1a",
-      "pages": 4,
-      "page_size": "A4",
-      "visual_montage_inspected": true,
-      "clipping_or_broken_diagram_observed": false
-    },
-    "answers_pdf": {
-      "bytes": 393655,
-      "sha256": "d46ccb9020a9f9478789f6e4806192c99bf79088443af079e977155dc7fd12d8",
-      "pages": 6,
-      "page_size": "A4",
-      "visual_montage_inspected": true,
-      "clipping_or_broken_diagram_observed": false
-    }
+    "scope":"first 30 Standard original records in source order",
+    "questions_pdf":{"bytes":173618,"sha256":"2adcabdb07574aeefb3d1e8a9c42e1083129459caf871418d9201fdfa3857d1a","pages":4,"page_size":"A4","visual_montage_inspected":true,"clipping_or_broken_diagram_observed":false},
+    "answers_pdf":{"bytes":393655,"sha256":"d46ccb9020a9f9478789f6e4806192c99bf79088443af079e977155dc7fd12d8","pages":6,"page_size":"A4","visual_montage_inspected":true,"clipping_or_broken_diagram_observed":false}
   },
   "gates": {
-    "runtime1323_contract": "PASS",
-    "assets_filesystem_decode_282": "PASS",
-    "assets_chromium_decode_282": "PASS",
-    "chromium_exact_app_logic": "PASS_WITH_SET_CONTENT_METHOD",
-    "a4_sample30_standard": "PASS",
-    "direct_real_origin_navigation": "PENDING_ENVIRONMENT_BLOCKED",
-    "native_localStorage_real_origin": "PENDING",
-    "firefox": "PENDING_UNAVAILABLE",
-    "webkit_iphone": "PENDING_UNAVAILABLE",
-    "fire_device": "PENDING_UNAVAILABLE",
-    "strict_release": "PENDING",
-    "public_isolated_verification": "PENDING",
-    "publication_ready": false,
-    "main_touched": false,
-    "count_forcing_used": false
+    "runtime1323_contract":"PASS","assets_filesystem_decode_282":"PASS","assets_chromium_decode_282":"PASS","chromium_exact_app_logic":"PASS_WITH_SET_CONTENT_METHOD","a4_sample30_standard":"PASS",
+    "direct_real_origin_navigation":"PENDING_ENVIRONMENT_BLOCKED","native_localStorage_real_origin":"PENDING","firefox":"PENDING_UNAVAILABLE","webkit_iphone":"PENDING_UNAVAILABLE","fire_device":"PENDING_UNAVAILABLE","strict_release":"PENDING","public_isolated_verification":"PENDING",
+    "publication_ready":false,"main_touched":false,"count_forcing_used":false
   },
   "blockers_and_next": [
     "Run the same 1323 candidate at a navigable real origin to verify native localStorage persistence and window.print behavior without set_content fallback.",
     "Run Firefox, WebKit-iPhone and Fire-device/browser verification; these engines/devices are not installed/available in this execution environment.",
     "Only after all browser/device/A4/release gates pass, create strict release and perform isolated public deployment verification; then and only then set PUBLICATION_READY=true and touch main if release policy requires it."
-  ]
+  ],
+  "environment_attempts": {
+    "playwright_firefox_webkit_install": {
+      "attempted": true,
+      "result": "FAILED_TRANSIENT_NETWORK_DNS",
+      "error_codes": ["EAI_AGAIN cdn.playwright.dev","EAI_AGAIN playwright.download.prss.microsoft.com"],
+      "interpretation": "Firefox/WebKit remain unverified; installation failure is environment/network availability, not an app test failure."
+    }
+  }
 }
