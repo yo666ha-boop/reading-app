@@ -1,0 +1,34 @@
+name: V11 Batch13 compose final candidate
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - '.github/workflows/v11_batch13_compose_final.yml'
+permissions:
+  contents: write
+jobs:
+  compose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compose and fail closed
+        run: |
+          node v11_batch13_build_final_candidate.js > v11_batch13_final_candidate.json
+          node - <<'NODE'
+          const fs=require('fs'); const d=JSON.parse(fs.readFileSync('v11_batch13_final_candidate.json','utf8'));
+          if(d.registered!==false||d.officialTotal!==768||d.passages?.length!==50) throw Error('candidate metadata/count');
+          let q=0; for(const p of d.passages){if(p.registered!==false)throw Error('registered '+p.id); if(p.questions?.length!==5||p.questionSetB?.length!==5)throw Error('A/B '+p.id); q+=10;}
+          if(q!==500)throw Error('question total '+q);
+          console.log(JSON.stringify({pass:true,passages:d.passages.length,questions:q,registered:d.registered,officialTotal:d.officialTotal}));
+          NODE
+      - name: Commit composed actual
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add v11_batch13_final_candidate.json
+          if git diff --cached --quiet; then echo 'No change'; else git commit -m 'Batch13: materialize final 500-question candidate'; git push; fi
