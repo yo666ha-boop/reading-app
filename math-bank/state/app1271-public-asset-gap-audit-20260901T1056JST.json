@@ -1,0 +1,77 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-09-01T10:56:00+09:00",
+  "stage": "APP_MAPPING_AND_PUBLIC_ASSET_COMPLETENESS",
+  "source_reverification": {
+    "Standard": {"bytes": 9689250, "sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6", "crc32": "f8e307bb", "zip_test": "PASS", "members": 85},
+    "実力錬成": {"bytes": 7287279, "sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33", "crc32": "1a020f98", "zip_test": "PASS", "members": 80},
+    "Winpass": {"bytes": 8296042, "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf", "crc32": "992b0ca2", "zip_test": "PASS", "members": 81}
+  },
+  "drive_forward_state_verified": {
+    "mapping_report_file_id": "15eAwQhk9dn3n0dCb6Zz6VbCBWmPiFKWB",
+    "mapping_records": 1271,
+    "mapping_evidence": 1271,
+    "mapping_unique_ids": 1271,
+    "mapping_issues": 0,
+    "mapping_pass": true,
+    "frozen_parent_file_id": "1ZstN3-dIWJT4-O14zHI-wKOmm3CuIiLw",
+    "frozen_validation_report_file_id": "1oRwU0HdbNQzuo0Pzpn0vyLQnPLRXsdsE",
+    "frozen_validation_pass": true,
+    "frozen_unique_ids": 1271,
+    "frozen_duplicate_ids": 0,
+    "frozen_duplicate_fingerprints": 0
+  },
+  "independent_runtime_asset_audit": {
+    "asset_zip_file_id": "1y8jJgzhLZS5ZxXWNUeV1uDt4qqm0vgFx",
+    "asset_zip_bytes": 2389037,
+    "asset_zip_sha256": "7ba6da0f771f1c899942c160cbd4f6ed24cf193ad4a462676f901223ac1f7dfd",
+    "asset_zip_crc_test": "PASS",
+    "frozen_figure_ref_entries": 602,
+    "frozen_unique_figure_paths": 282,
+    "asset_binding_manifest_public_assets": 277,
+    "asset_binding_report_pass": true,
+    "missing_public_paths": [
+      "assets/math/rendered_answers/58a811621a19fe0a7748de9d1556ca22dafa193fead2b1d81e1dcc087fdbefca.png",
+      "assets/math/rendered_answers/82d160564b53e481f28af0906c5995a2d594cb64f541db894729ef6702040d10.png",
+      "assets/math/rendered_answers/9fff9369a03cdc5507e1c12527c1d99f55a0dbabc314d8334498e82aeec17596.png",
+      "assets/math/rendered_answers/b07e6311d0ed1d8c325d90f9eaa7b199fe2be0b7c2d7acbc9ba5199d6a5d2e64.png",
+      "assets/math/rendered_answers/e4f3a4c1f73dcf482436919178e57c7a3d86f3fa47a835f9a321cea8865fd066.png"
+    ],
+    "missing_public_path_count": 5,
+    "affected_records": 15,
+    "affected_source_documents": [
+      "25astandardt1suhy000521.docx",
+      "25astandardt1suhy000522.docx",
+      "25astandardt1suhy000523.docx",
+      "25astandardt1suhy000524.docx",
+      "25astandardt1suhy000628.docx"
+    ],
+    "duplicate_question_answer_review": {
+      "groups": 1,
+      "records": [
+        "orig:Standard:25astandardt1suhy000628:M02:S01",
+        "orig:Standard:25astandardt1suhy000628:M02:S02"
+      ],
+      "disposition": "KEEP_DISTINCT_PENDING_ASSET_REPAIR; distinct raw slots/ids are retained, no count-forcing merge"
+    }
+  },
+  "recovery_work_performed": {
+    "fixed_standard_docx_extracted": 5,
+    "source_docx_to_pdf_rendered": 5,
+    "pdf_page_counts": {
+      "25astandardt1suhy000521.docx": 3,
+      "25astandardt1suhy000522.docx": 2,
+      "25astandardt1suhy000523.docx": 3,
+      "25astandardt1suhy000524.docx": 3,
+      "25astandardt1suhy000628.docx": 2
+    },
+    "purpose": "Recover the five source-grounded graphical-answer render assets without OCR or fabricated placeholders."
+  },
+  "safety": {
+    "runtime_publication_promoted": false,
+    "publication_ready": false,
+    "main_touched": false,
+    "records_deleted_or_count_forced": 0
+  },
+  "next": "Recover/crop the five graphical-answer images from the five fixed Standard DOCX renderings, bind them to the existing rendered_answers paths (or remap with recomputed evidence if bytes/path hashes change), rebuild the public asset bundle, then require 282/282 unique frozen figure paths resolvable before UI/A4/browser/device release gates."
+}
