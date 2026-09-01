@@ -1,0 +1,6 @@
+'use strict';
+const fs=require('fs');const build=require('./v11_batch12_build_final_candidate.js');const x=build();
+if(x.registered!==false||x.passages.length!==50)throw Error('final candidate state');
+const groups=[['G1-001_005',0,5],['G1-006_010',5,10],['G1-011_015',10,15],['G1-016_G2-003',15,20],['G2-004_008',20,25],['G2-009_013',25,30],['G2-014_G3-001',30,35],['G3-002_006',35,40],['G3-007_011',40,45],['G3-012_016',45,50]];
+const manifest=[];for(const [name,a,b] of groups){const ps=x.passages.slice(a,b);const lines=[];let rows=0;for(const p of ps){lines.push('### '+p.id+' | '+p.title);for(let i=0;i<(p.slashRows||[]).length;i++){const r=p.slashRows[i];rows++;lines.push(`${i+1}\t${r.alignmentShape||'?'}\tEN: ${r.en}`);lines.push(`\t\tJP: ${r.jp}`);}lines.push('');}const file=`V11_BATCH12_FINAL_SLASH_REVIEW_${name}.txt`;fs.writeFileSync(file,lines.join('\n')+'\n');manifest.push({file,passages:ps.map(p=>p.id),rowCount:rows});}
+fs.writeFileSync('V11_BATCH12_FINAL_SLASH_REVIEW_MANIFEST.json',JSON.stringify({registered:false,officialTotal:718,passages:50,chunks:manifest,totalRows:manifest.reduce((s,x)=>s+x.rowCount,0),status:'FINAL_CANDIDATE_HUMAN_REVIEW_REQUIRED'},null,2)+'\n');console.log(JSON.stringify({chunks:manifest.map(x=>({file:x.file,rows:x.rowCount})),totalRows:manifest.reduce((s,x)=>s+x.rowCount,0)},null,2));
