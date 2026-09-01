@@ -20,6 +20,7 @@ module.exports=function build(){
  applyTranslationBoundaryRepair(passages,'v11_batch13_translation_boundary_repair_r1_g1.json','B13_G1_TRANSLATION_BOUNDARY_HUMAN_R1');
  applyTranslationBoundaryRepair(passages,'v11_batch13_translation_boundary_repair_r2_g2.json','B13_G2_TRANSLATION_BOUNDARY_HUMAN_R2');
  applyTranslationBoundaryRepair(passages,'v11_batch13_translation_boundary_repair_r3_g3.json','B13_G3_TRANSLATION_BOUNDARY_HUMAN_R3');
+ applyTranslationBoundaryRepair(passages,'v11_batch13_translation_boundary_repair_r4_slash.json','B13_G3_SLASH_BOUNDARY_HUMAN_R4');
  if(passages.length!==50||new Set(passages.map(p=>p.id)).size!==50)throw Error('Batch13 candidate count/id failure');
  for(const p of passages){p.registered=false;p.sentences=splitSentences(p.body);if(!p.sentences.length)throw Error(`no chronology sentences ${p.id}`);p.slashRows=[];p.questions=[];p.questionSetB=[];}
  return {batch:'V11-B13',registered:false,officialTotal:768,targetAfterFullGates:818,status:'BODY_TRANSLATION_CANDIDATE_QUESTIONS_SLASH_PENDING',passages};
