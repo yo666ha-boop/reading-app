@@ -1,0 +1,26 @@
+{
+  "batch": "V11-B12",
+  "registered": false,
+  "officialTotal": 718,
+  "status": "FINAL_SLASH_HUMAN_REVIEW_COMPLETE_R7",
+  "reviewedPassageCount": 50,
+  "reviewedRowCount": 449,
+  "reviewedIds": [
+    "V11-B12-G1-001","V11-B12-G1-002","V11-B12-G1-003","V11-B12-G1-004","V11-B12-G1-005","V11-B12-G1-006","V11-B12-G1-007","V11-B12-G1-008","V11-B12-G1-009","V11-B12-G1-010","V11-B12-G1-011","V11-B12-G1-012","V11-B12-G1-013","V11-B12-G1-014","V11-B12-G1-015","V11-B12-G1-016","V11-B12-G1-017",
+    "V11-B12-G2-001","V11-B12-G2-002","V11-B12-G2-003","V11-B12-G2-004","V11-B12-G2-005","V11-B12-G2-006","V11-B12-G2-007","V11-B12-G2-008","V11-B12-G2-009","V11-B12-G2-010","V11-B12-G2-011","V11-B12-G2-012","V11-B12-G2-013","V11-B12-G2-014","V11-B12-G2-015","V11-B12-G2-016","V11-B12-G2-017",
+    "V11-B12-G3-001","V11-B12-G3-002","V11-B12-G3-003","V11-B12-G3-004","V11-B12-G3-005","V11-B12-G3-006","V11-B12-G3-007","V11-B12-G3-008","V11-B12-G3-009","V11-B12-G3-010","V11-B12-G3-011","V11-B12-G3-012","V11-B12-G3-013","V11-B12-G3-014","V11-B12-G3-015","V11-B12-G3-016"
+  ],
+  "repairsFoundDuringFinalRead": [
+    {
+      "id": "V11-B12-G1-011",
+      "issue": "Japanese row 4 prematurely contained the action belonging to English row 5, so the 1:1 forward-reading boundary was wrong.",
+      "resolution": "Split asking the librarian from moving the cart beside the return desk; synchronize fullTranslation, slashRows, and question Japanese evidence."
+    },
+    {
+      "id": "V11-B12-G1-014",
+      "issue": "Japanese counters treated individual shoes as pairs and compressed the explicit confirmation question.",
+      "resolution": "Use 両方/片方/もう片方 for individual shoes and restore the explicit confirmation; synchronize fullTranslation, slashRows, and question Japanese evidence."
+    }
+  ],
+  "result": "PASS_AFTER_R7_REPAIRS"
+}
