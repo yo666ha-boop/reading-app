@@ -1,0 +1,51 @@
+name: v11 Batch13 Slash Review Packet
+
+on:
+  push:
+    branches:
+      - v11-1000passage-easy-notes
+    paths:
+      - 'v11_batch13_*.js'
+      - '.github/workflows/v11-batch13-slash-review.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-slash-review-packet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Build fail-closed packet
+        run: node v11_batch13_build_slash_review_packet.js
+      - name: Verify review boundary
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const p=JSON.parse(fs.readFileSync('v11_batch13_slash_review_packet.json','utf8'));
+          if(p.registered!==false) throw new Error('packet must stay unregistered');
+          if(p.humanReviewed!==false) throw new Error('packet must not auto-pass human review');
+          if(!p.summary || p.summary.passages!==50) throw new Error('expected 50 passages');
+          if(!Number.isInteger(p.summary.rows) || p.summary.rows<=0) throw new Error('row count missing');
+          let illegal=0, autoReviewed=0;
+          for(const x of p.passages||[]) for(const r of x.rows||[]){
+            if(![[1,1],[1,2],[2,1]].some(([a,b])=>r.enSentenceCount===a&&r.jpSentenceCount===b)) illegal++;
+            if(r.humanReviewed!==false) autoReviewed++;
+          }
+          if(illegal) throw new Error(`illegal alignment rows=${illegal}`);
+          if(autoReviewed) throw new Error(`auto-reviewed rows=${autoReviewed}`);
+          console.log(JSON.stringify({passages:p.summary.passages,rows:p.summary.rows,illegal,autoReviewed}));
+          NODE
+      - name: Upload review packet
+        uses: actions/upload-artifact@v4
+        with:
+          name: v11-batch13-slash-review-packet
+          path: v11_batch13_slash_review_packet.json
+          if-no-files-found: error
+          retention-days: 14
