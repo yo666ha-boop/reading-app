@@ -3,9 +3,10 @@ on:
   push:
     branches: [v11-1000passage-easy-notes]
     paths:
-      - 'v11_batch12_final_slash_human_review_r7.json'
+      - 'v11_batch12_final_slash_human_review_r8.json'
       - 'v11_batch12_final_slash_human_gate.js'
       - 'v11_batch12_final_semantic_repair_r7.js'
+      - 'v11_batch12_length_repair_r8.js'
       - 'v11_batch12_build_final_candidate.js'
       - '.github/workflows/v11-batch12-final-slash-human-gate.yml'
   workflow_dispatch:
