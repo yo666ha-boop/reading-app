@@ -27,7 +27,7 @@ jobs:
           npx playwright install --with-deps chromium webkit
       - name: Start static server
         run: python3 -m http.server 8000 >/tmp/v11-b12-http.log 2>&1 &
-      - name: Run Batch12 candidate runtime audit
+      - name: Run Batch12 candidate runtime audit after runtime textbook remap
         id: audit
         shell: bash
         run: |
