@@ -1,0 +1,49 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-09-01T12:05:00+09:00",
+  "stage": "APP_MAPPING_AND_PUBLIC_ASSET_COMPLETENESS",
+  "repair": {
+    "source": "fixed Standard ZIP 1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU",
+    "source_zip_sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6",
+    "source_zip_bytes": 9689250,
+    "documents": [
+      "25astandardt1suhy000521.docx",
+      "25astandardt1suhy000522.docx",
+      "25astandardt1suhy000523.docx",
+      "25astandardt1suhy000524.docx",
+      "25astandardt1suhy000628.docx"
+    ],
+    "render_method": "LibreOffice headless DOCX→PDF, then PDF page 2 via pdftoppm PNG 180dpi",
+    "rendered_pages": 5,
+    "rendered_dimensions": "1489x2105",
+    "affected_records": 15
+  },
+  "repaired_bundle": {
+    "file_name": "math1271-app-assets-repaired-20260901T1205JST.zip",
+    "bytes": 4081389,
+    "sha256": "155bc7b0ce7cdad184a311d93a89e7ff6bd8ad647bed2eae0ba6913725f63a47",
+    "zip_crc_test": "PASS",
+    "manifest_entries": 282,
+    "manifest_unique_public_paths": 282,
+    "manifest_unique_public_asset_sha256": 282,
+    "frozen_unique_figure_paths": 282,
+    "frozen_paths_resolved": 282,
+    "missing_paths": 0,
+    "manifest_sha_mismatch": 0,
+    "rendered_answer_png_assets": 5
+  },
+  "durable_drive": {
+    "repaired_asset_bundle_file_id": "1mImNnADulBZRrqbeJISsGimICux-G2eX",
+    "repair_validation_file_id": "1i5bklaCfbo_7umzZZqaHcqaYWYfx9jCL",
+    "readback_bundle_bytes": 4081389,
+    "readback_bundle_sha256": "155bc7b0ce7cdad184a311d93a89e7ff6bd8ad647bed2eae0ba6913725f63a47",
+    "readback_validation_bytes": 1681
+  },
+  "safety": {
+    "records_deleted_or_count_forced": 0,
+    "main_touched": false,
+    "publication_ready": false,
+    "runtime_publication_promoted": false
+  },
+  "next": "Promote the validated 1271 frozen parents with the complete 282/282 asset bundle into the runtime/app test path and continue variants/UI/A4/browser/device/release gates."
+}
