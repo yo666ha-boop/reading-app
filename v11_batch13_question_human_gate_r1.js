@@ -2,8 +2,11 @@
 const fs=require('fs');
 const build=require('./v11_batch13_build_body_candidate.js');
 const review=JSON.parse(fs.readFileSync('v11_batch13_question_human_review_r1_g1_001_004.json','utf8'));
+const corrections=JSON.parse(fs.readFileSync('v11_batch13_question_human_corrections_r1.json','utf8'));
 function norm(s){return String(s||'').replace(/[「」『』]/g,'"').replace(/\s+/g,' ').trim();}
 function die(m){throw new Error(m);}
+if(corrections.humanReviewed!==true||corrections.registered!==false)die('invalid corrections metadata');
+for(const c of corrections.corrections||[]){const qs=review.questionsByPassage&&review.questionsByPassage[c.id];const q=qs&&qs.find(x=>x.set===c.set&&x.no===c.no);if(!q)die(`correction target missing ${c.id} ${c.set}${c.no}`);for(const k of ['evidence','evidenceJp','reason'])if(c[k])q[k]=c[k];}
 const candidate=build();
 if(review.humanReviewed!==true)die('review not humanReviewed');
 if(review.registered!==false)die('review must remain unregistered');
@@ -25,4 +28,4 @@ for(const id of scope){
  }
 }
 if(qCount!==40)die(`question total ${qCount}`);
-console.log(JSON.stringify({pass:true,batch:'V11-B13',humanReviewedPassages:scope.length,humanReviewedQuestions:qCount,registered:false,officialTotal:candidate.officialTotal},null,2));
+console.log(JSON.stringify({pass:true,batch:'V11-B13',humanReviewedPassages:scope.length,humanReviewedQuestions:qCount,registered:false,officialTotal:candidate.officialTotal,correctionsApplied:(corrections.corrections||[]).length},null,2));
