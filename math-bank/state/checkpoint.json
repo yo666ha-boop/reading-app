@@ -1,58 +1,48 @@
 {
-  "project": "mikami-math-problem-bank",
-  "status": "IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP",
-  "current_stage": "RUNTIME_PARENT_PROMOTION_AND_VARIANTS",
-  "current_bucket": "PROMOTE_VALIDATED_1271_WITH_COMPLETE_282_ASSETS",
-  "recorded_at_jst": "2026-09-01T12:08:00+09:00",
-  "main_touched": false,
-  "schedule_changed": false,
-  "source_identity": {
-    "Standard": {"drive_file_id":"1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU","sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","bytes":9689250,"crc32":"f8e307bb","zip_test":"PASS"},
-    "実力錬成": {"drive_file_id":"1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb","sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","bytes":7287279,"crc32":"1a020f98","zip_test":"PASS"},
-    "Winpass": {"drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E","sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","bytes":8296042,"crc32":"992b0ca2","zip_test":"PASS","docx_members":81}
+  "project":"mikami-math-problem-bank",
+  "status":"IN_PROGRESS_REBUILD_REAL_PARENTS_THEN_VARIANTS_AND_APP",
+  "current_stage":"RUNTIME1271_UI_VARIANTS_AND_RELEASE_VALIDATION",
+  "current_bucket":"UI1271_CANDIDATE_PLUS_VERIFIED_VARIANTS",
+  "recorded_at_jst":"2026-09-01T12:36:00+09:00",
+  "main_touched":false,
+  "schedule_changed":false,
+  "source_identity":{
+    "Standard":{"drive_file_id":"1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU","sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","bytes":9689250,"crc32":"f8e307bb","zip_test":"PASS"},
+    "実力錬成":{"drive_file_id":"1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb","sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","bytes":7287279,"crc32":"1a020f98","zip_test":"PASS"},
+    "Winpass":{"drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E","sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","bytes":8296042,"crc32":"992b0ca2","zip_test":"PASS","docx_members":81}
   },
-  "raw_slots": {"Winpass":717,"実力錬成":237,"Standard":317,"total":1271,"count_forcing_used":false},
-  "strict_progress": {"Standard":317,"実力錬成":237,"Winpass":717,"total":1271,"pending":0,"readback_verified":1271,"validator_pass":1271,"durable_records":1271},
-  "downstream": {
-    "winpass_decisions": {"reviewed":717,"included":717,"excluded":0,"unreviewed":0,"evidence_review_complete":true},
-    "winpass_canonical": {"status":"PHASE2_COMPLETE","count":717,"automatic_semantic_merges":0,"exact_qa_duplicate_groups":0},
-    "global": {"validated":1271,"immutable_frozen":1271,"unique_raw_ids":1271,"unique_fingerprints":1271},
-    "variants": {"verified":52,"distinct_verified_parents":26,"parent_coverage":"26/1271","status":"IN_PROGRESS"},
-    "runtime_parent_recovery": {
-      "full1271_current_contract_status":"PASS",
-      "full1271_drive_file_id":"1vAkPiQ6ESQNEC6a559LJRi2w0ZyxVcxF",
-      "full1271_records":1271,
-      "full1271_source_counts":{"Standard":317,"実力錬成":237,"Winpass":717},
-      "full1271_unique_raw_ids":1271,
-      "full1271_unique_current_fingerprints":1271,
-      "full1271_structural_errors":0
+  "strict_progress":{"Standard":317,"実力錬成":237,"Winpass":717,"total":1271,"pending":0,"readback_verified":1271,"validator_pass":1271},
+  "downstream":{
+    "winpass_decisions":{"reviewed":717,"included":717,"excluded":0,"unreviewed":0,"evidence_review_complete":true},
+    "winpass_canonical":{"status":"PHASE2_COMPLETE","count":717,"automatic_semantic_merges":0},
+    "global":{"validated":1271,"immutable_frozen":1271,"unique_raw_ids":1271,"unique_fingerprints":1271},
+    "variants":{"verified":52,"distinct_verified_parents":26,"parent_coverage":"26/1271","status":"IN_PROGRESS","artifacts":["math-bank/state/global1271-safe-variants-algebra26-20260831.json","math-bank/state/global1271-safe-variants-algebra26-v2-20260831.json"]},
+    "runtime_parent":{
+      "status":"PASS_PROMOTED_ISOLATED_RUNTIME_PARENT_BUNDLE",
+      "records":1271,"source_counts":{"Standard":317,"実力錬成":237,"Winpass":717},"unique_ids":1271,
+      "figure_ref_entries":602,"unique_figure_paths":282,"resolved_assets":282,"missing_assets":0,
+      "runtime_bundle_drive_file_id":"1m2aLM8D0IFNMVLw0VfTpUXyrZQbl1IQW",
+      "runtime_bundle_bytes":4174367,"runtime_bundle_sha256":"14104dc6a901045fb0697c1475de64edbd9a0554e3e9be530a6d06632ef32754",
+      "promotion_report_drive_file_id":"1uEtqkD-IKmZw4BAy2fJvvnCe-st6_xLd",
+      "promoter":"math-bank/app/promote_validated_1271_runtime.py"
     },
-    "app_pipeline": {
-      "mapping_status":"PASS",
-      "mapping_records":1271,
-      "mapping_evidence":1271,
-      "mapping_validation_report_drive_file_id":"15eAwQhk9dn3n0dCb6Zz6VbCBWmPiFKWB",
-      "frozen_parent_status":"PASS_LOCAL_RECORD_VALIDATION",
-      "frozen_parent_drive_file_id":"1ZstN3-dIWJT4-O14zHI-wKOmm3CuIiLw",
-      "frozen_parent_validation_report_drive_file_id":"1oRwU0HdbNQzuo0Pzpn0vyLQnPLRXsdsE",
-      "frozen_records":1271,
-      "public_asset_bundle_status":"PASS_282_OF_282",
-      "public_asset_bundle_drive_file_id":"1mImNnADulBZRrqbeJISsGimICux-G2eX",
-      "public_asset_bundle_sha256":"155bc7b0ce7cdad184a311d93a89e7ff6bd8ad647bed2eae0ba6913725f63a47",
-      "public_asset_validation_drive_file_id":"1i5bklaCfbo_7umzZZqaHcqaYWYfx9jCL",
-      "frozen_figure_ref_entries":602,
-      "frozen_unique_figure_paths":282,
-      "public_asset_manifest_count":282,
-      "resolved_public_asset_paths":282,
-      "missing_graphical_answer_assets":0,
-      "repaired_graphical_answer_assets":5,
-      "affected_records_repaired":15,
-      "runtime_publication_promoted":false
+    "ui1271":{
+      "candidate":"math-bank/app/index1271.html",
+      "static_realdata_smoke":"PASS",
+      "node_syntax":"PASS",
+      "old_1124_107_contract_present":false,
+      "expected_1271_contract_present":true,
+      "filter_search_source_order_static_realdata":"PASS",
+      "local_storage_and_A4_contract_present":true,
+      "missing_runtime_assets":0,
+      "smoke_drive_file_id":"1KYhqq6Vm2MZ6qhoqMt8ZnTXtwYCIw68b",
+      "browser_status":"NOT_PASS_ENVIRONMENT_BLOCKED",
+      "browser_detail":"Local headless Chromium was blocked by environment policy with net::ERR_BLOCKED_BY_ADMINISTRATOR before app code executed; no browser PASS claimed."
     },
-    "publication_ready": false
+    "publication_ready":false
   },
-  "latest_audit":"math-bank/state/app1271-public-asset-repair-closure-20260901T1205JST.json",
-  "exact_stop":"The five missing Standard graphical-answer render assets were recovered from the fixed Standard source ZIP by rendering each source DOCX answer page (page 2) at 180dpi. The rebuilt bundle has 282 manifest entries and all 282 unique frozen figure paths resolve with zero SHA/byte mismatches and ZIP CRC PASS. Runtime publication is not yet claimed until the validated 1271 parents plus complete asset bundle pass runtime/variant/UI/A4/browser/device gates.",
-  "next_start":"Promote the validated frozen1271 parents with the repaired 282/282 asset bundle into the runtime/app test path. Then continue verified variants, UI/filter/search/random/source-order/answer/figure/localStorage, A4 printing, Chromium/Firefox/WebKit-iPhone/Fire, strict release and public isolated verification.",
-  "main_untouched": true
+  "latest_audits":["math-bank/state/app1271-public-asset-repair-closure-20260901T1205JST.json","math-bank/state/index1271-static-realdata-smoke-20260901T1232JST.json"],
+  "exact_stop":"Validated frozen1271 parents plus all 282 public assets have been promoted into an isolated runtime-parent bundle with zero promotion errors. A separate 1271 UI candidate passes syntax/static/real-data contract smoke, but real browser PASS is not claimed because local Chromium navigation was administratively blocked before app execution. Verified variants remain 52 across 26 parents and are not yet composed into the runtime candidate.",
+  "next_start":"Compose the durable 52 independently verified variants against exact parent IDs without weakening taxonomy/answer recalculation gates, then validate the combined runtime. Continue UI/browser testing in an environment that permits navigation, A4 question/answer printing, Chromium/Firefox/WebKit-iPhone/Fire, strict release and public isolated verification. Do not touch main or set publication ready before all gates pass.",
+  "main_untouched":true
 }
