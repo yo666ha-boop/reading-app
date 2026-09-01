@@ -23,11 +23,12 @@ module.exports=function build(){
   ['v11_batch13_question_human_review_r8_g3_009_012.json','v11_batch13_question_human_corrections_r8_g3_009.json'],
   ['v11_batch13_question_human_review_r9_g3_013_016.json',null]
  ];
- const seen=new Set();let qCount=0;
+ const seen=new Set();let qCount=0;const evidenceFailures=[];
  for(const [file,corr] of layers){const d=read(file);if(d.humanReviewed!==true||d.registered!==false)die(`review metadata ${file}`);applyCorrections(d,corr);for(const id of d.scope||[]){if(seen.has(id))die(`duplicate review scope ${id}`);seen.add(id);const p=candidate.passages.find(x=>x.id===id);if(!p)die(`missing passage ${id}`);const qs=clone(d.questionsByPassage&&d.questionsByPassage[id]);if(!Array.isArray(qs)||qs.length!==10)die(`question count ${id}`);
    for(const q of qs){const k=`${id}|${q.set}|${q.no}`;const x=boundaryMap.get(k);if(x){for(const f of ['prompt','answer','evidence','evidenceJp','reason','type'])if(x[f])q[f]=x[f];applied.add(k);}}
-   const a=qs.filter(q=>q.set==='A'),b=qs.filter(q=>q.set==='B');if(a.length!==5||b.length!==5)die(`A/B ${id}`);if(new Set(qs.map(q=>q.prompt)).size!==10)die(`duplicate prompt ${id}`);if(new Set(qs.map(q=>q.type)).size<5)die(`type diversity ${id}`);for(const q of qs){for(const k of ['prompt','answer','evidence','evidenceJp','reason'])if(!String(q[k]||'').trim())die(`blank ${id} ${q.set}${q.no} ${k}`);if(!norm(p.body).includes(norm(q.evidence)))die(`English evidence mismatch ${id} ${q.set}${q.no}`);if(!norm(p.fullTranslation).includes(norm(q.evidenceJp)))die(`Japanese evidence mismatch ${id} ${q.set}${q.no}`);}p.questions=a;p.questionSetB=b;qCount+=10;}}
+   const a=qs.filter(q=>q.set==='A'),b=qs.filter(q=>q.set==='B');if(a.length!==5||b.length!==5)die(`A/B ${id}`);if(new Set(qs.map(q=>q.prompt)).size!==10)die(`duplicate prompt ${id}`);if(new Set(qs.map(q=>q.type)).size<5)die(`type diversity ${id}`);for(const q of qs){for(const k of ['prompt','answer','evidence','evidenceJp','reason'])if(!String(q[k]||'').trim())die(`blank ${id} ${q.set}${q.no} ${k}`);if(!norm(p.body).includes(norm(q.evidence)))evidenceFailures.push(`English evidence mismatch ${id} ${q.set}${q.no} :: ${q.evidence}`);if(!norm(p.fullTranslation).includes(norm(q.evidenceJp)))evidenceFailures.push(`Japanese evidence mismatch ${id} ${q.set}${q.no} :: ${q.evidenceJp}`);}p.questions=a;p.questionSetB=b;qCount+=10;}}
  if(applied.size!==boundaryMap.size)die(`unused boundary corrections ${boundaryMap.size-applied.size}`);
+ if(evidenceFailures.length)die(`evidence mismatches ${evidenceFailures.length}\n${evidenceFailures.join('\n')}`);
  if(seen.size!==50||qCount!==500)die(`coverage ${seen.size}/${qCount}`);
  for(const p of candidate.passages){if(!seen.has(p.id))die(`unreviewed ${p.id}`);p.questionHumanReview='B13_500Q_HUMAN_PASS';p.registered=false;}
  candidate.status='BODY_TRANSLATION_QUESTIONS_FINAL_SLASH_PENDING';candidate.humanQuestionReview={passages:50,questions:500,registered:false};
