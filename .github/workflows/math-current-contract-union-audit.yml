@@ -7,6 +7,7 @@ on:
       - math-problem-bank-bootstrap
     paths:
       - 'math-bank/scripts/audit_current_contract_state_records.py'
+      - 'math-bank/scripts/audit_recover_winpass69_from_strict.py'
       - 'math-bank/scripts/validate_raw1271_materialization.py'
       - '.github/workflows/math-current-contract-union-audit.yml'
 
@@ -30,13 +31,17 @@ jobs:
         with:
           python-version: '3.12'
       - name: Compile audit and validator
-        run: python -m py_compile math-bank/scripts/audit_current_contract_state_records.py math-bank/scripts/validate_raw1271_materialization.py
+        run: python -m py_compile math-bank/scripts/audit_current_contract_state_records.py math-bank/scripts/audit_recover_winpass69_from_strict.py math-bank/scripts/validate_raw1271_materialization.py
       - name: Audit durable state JSONL current-contract union
         run: python math-bank/scripts/audit_current_contract_state_records.py --strict-conflicts --report math-bank/state/current-contract-union-audit-ci.json
-      - name: Upload audit report
+      - name: Audit exact recovery path for corrupted Winpass69 artifact
+        run: python math-bank/scripts/audit_recover_winpass69_from_strict.py --evidence math-bank/state/app1271-winpass-final109-residual69-current-schema-exact-ooxml-20260901T0253JST.json --report math-bank/state/winpass69-exact-recovery-audit-ci.json
+      - name: Upload audit reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: math-current-contract-union-audit
-          path: math-bank/state/current-contract-union-audit-ci.json
+          path: |
+            math-bank/state/current-contract-union-audit-ci.json
+            math-bank/state/winpass69-exact-recovery-audit-ci.json
           if-no-files-found: error
