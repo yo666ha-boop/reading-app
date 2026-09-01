@@ -18,6 +18,14 @@ function syncR14(f){
   const a15=[...(p15.questions||[]),...(p15.questionSetB||[])];
   const lighting=a15.find(x=>x.evidence==='Apartment residents used the park more often in the evening and asked for brighter path lighting.');if(!lighting)throw new Error('R14 semantic sync: G3-015 lighting inference missing');
   lighting.evidence='Apartment residents used the park more often in the evening and asked for brighter path lighting, a pattern that had barely appeared in the first results.';lighting.evidenceJp='集合住宅の住民は夕方に公園を使う割合が高く、通路を明るくしてほしいという希望も多く、最初の結果にはほとんど現れていませんでした。';lighting.reason='集合住宅の追加調査で初めて強く現れた夕方利用・照明要望と、旧地図でその住民が抜けていたことを結び付けます。';lighting.humanReview='HUMAN_REVIEW_R14_SEMANTIC_SYNC';
+
+  const p16=f.passages.find(x=>x.id==='V11-B12-G3-016');if(!p16)throw new Error('R14 semantic sync: G3-016 missing');
+  const a16=[...(p16.questions||[]),...(p16.questionSetB||[])];
+  const roomCap=a16.find(x=>x.evidence==='Room B was heated and held thirty-five.');if(!roomCap)throw new Error('R14 semantic sync: G3-016 room-capacity inference missing');
+  roomCap.evidence='Hall A was heated and held eighty people, Room B was heated and held thirty-five, and the outdoor stage held 120 but had no heating.';
+  roomCap.evidenceJp='Aホールは暖房があり定員80人、B室は暖房があり定員35人、屋外ステージは120人入れますが暖房はありません。';
+  roomCap.reason='B室の定員35人を、同じ正本文に示された部屋条件全体から確認し、60人を入れると25人超過すると推論します。';
+  roomCap.humanReview='HUMAN_REVIEW_R14_SEMANTIC_SYNC';
   return f;
 }
 if(typeof module!=='undefined'&&module.exports)module.exports=syncR14;
