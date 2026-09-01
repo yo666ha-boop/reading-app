@@ -18,7 +18,7 @@ jobs:
           node-version: '22'
       - name: Compose and fail closed
         run: |
-          # Explicit rerun checkpoint after reviewed evidence-boundary synchronization.
+          # Explicit rerun checkpoint after the reviewed Grade1 boundary-evidence sweep.
           node v11_batch13_build_final_candidate.js > v11_batch13_final_candidate.json
           node - <<'NODE'
           const fs=require('fs'); const d=JSON.parse(fs.readFileSync('v11_batch13_final_candidate.json','utf8'));
