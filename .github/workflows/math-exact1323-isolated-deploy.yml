@@ -1,0 +1,128 @@
+name: Math Exact1323 Isolated Deploy
+
+on:
+  push:
+    branches:
+      - math-problem-bank-bootstrap
+    paths:
+      - '.github/workflows/math-exact1323-isolated-deploy.yml'
+      - 'math-bank/state/exact1323-deploy-trigger.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  EXACT_DRIVE_ID: '1l29gpomqPrEEqWCnlCuZH1BiZSw5lg4y'
+  EXACT_BYTES: '6819806'
+  EXACT_SHA256: '47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521'
+  VERCEL_PROJECT_ID: 'prj_klR6v3xfehqPFqb2BPwZaaoy9m3A'
+  VERCEL_ORG_ID: 'team_LXgcBDLoBpU1lMxZrMyxUQlg'
+
+jobs:
+  exact1323:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download exact single-file candidate from fixed Drive ID
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p exact1323
+          urls=(
+            "https://drive.usercontent.google.com/download?id=${EXACT_DRIVE_ID}&export=download&confirm=t"
+            "https://drive.google.com/uc?export=download&id=${EXACT_DRIVE_ID}&confirm=t"
+          )
+          ok=0
+          for url in "${urls[@]}"; do
+            rm -f exact1323/index.html
+            if curl -fL --retry 3 --retry-delay 2 --connect-timeout 20 --max-time 180 "$url" -o exact1323/index.html; then
+              got_bytes="$(stat -c %s exact1323/index.html)"
+              got_sha="$(sha256sum exact1323/index.html | awk '{print $1}')"
+              echo "candidate bytes=$got_bytes sha=$got_sha"
+              if [ "$got_bytes" = "$EXACT_BYTES" ] && [ "$got_sha" = "$EXACT_SHA256" ]; then
+                ok=1
+                break
+              fi
+            fi
+          done
+          if [ "$ok" != 1 ]; then
+            echo 'Exact Drive artifact could not be fetched byte-identically from public download endpoints.' >&2
+            exit 41
+          fi
+
+      - name: Validate embedded runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,re
+          p=Path('exact1323/index.html')
+          b=p.read_bytes()
+          assert len(b)==6819806, len(b)
+          assert hashlib.sha256(b).hexdigest()=='47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521'
+          t=b.decode('utf-8')
+          n_data=len(re.findall(r'data:image/[^;]+;base64,',t))
+          if n_data != 282:
+              raise SystemExit(f'embedded image count mismatch: {n_data}')
+          if './app-records.json' in t or 'fetch("app-records.json")' in t or "fetch('app-records.json')" in t:
+              raise SystemExit('external app-records fetch remains')
+          print('exact_singlefile_gate=PASS embedded_assets=282')
+          PY
+
+      - name: Upload byte-identical deployment input
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-exact1323-singlefile
+          path: exact1323/index.html
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Detect Vercel credential channel
+        id: vercel_secret
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        shell: bash
+        run: |
+          if [ -n "${VERCEL_TOKEN:-}" ]; then
+            echo 'available=true' >> "$GITHUB_OUTPUT"
+            echo 'VERCEL_TOKEN secret is available; proceeding with fixed-project preview deploy.'
+          else
+            echo 'available=false' >> "$GITHUB_OUTPUT"
+            echo 'VERCEL_TOKEN secret is not available; exact artifact is still preserved and validated.'
+          fi
+
+      - name: Deploy exact1323 to fixed isolated Vercel preview
+        if: steps.vercel_secret.outputs.available == 'true'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p exact1323/.vercel
+          printf '{"orgId":"%s","projectId":"%s"}\n' "$VERCEL_ORG_ID" "$VERCEL_PROJECT_ID" > exact1323/.vercel/project.json
+          npx --yes vercel@latest deploy exact1323 --yes --token "$VERCEL_TOKEN" > vercel-url.txt
+          url="$(tail -n 1 vercel-url.txt | tr -d '\r')"
+          echo "deployed_url=$url"
+          if [ -z "$url" ]; then exit 42; fi
+          curl -fL --retry 6 --retry-delay 3 --max-time 120 "$url" -o deployed.html
+          bytes="$(stat -c %s deployed.html)"
+          sha="$(sha256sum deployed.html | awk '{print $1}')"
+          echo "deployed_bytes=$bytes deployed_sha256=$sha"
+          test "$bytes" = "$EXACT_BYTES"
+          test "$sha" = "$EXACT_SHA256"
+          printf '%s\n' "$url" > exact1323-vercel-preview-url.txt
+
+      - name: Upload deployment evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-exact1323-isolated-deploy-evidence
+          path: |
+            vercel-url.txt
+            exact1323-vercel-preview-url.txt
+          if-no-files-found: ignore
+          retention-days: 14
