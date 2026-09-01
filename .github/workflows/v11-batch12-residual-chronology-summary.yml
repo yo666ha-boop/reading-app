@@ -1,0 +1,27 @@
+name: V11 Batch12 Residual Chronology Summary
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch12_residual_chronology_summary.js'
+      - '.github/workflows/v11-batch12-residual-chronology-summary.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  summary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - run: node v11_batch12_residual_chronology_summary.js
+      - name: Persist summary safely
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add V11_BATCH12_RESIDUAL_CHRONOLOGY_SUMMARY.json
+          git diff --cached --quiet || git commit -m "v11: persist Batch12 residual chronology summary"
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
