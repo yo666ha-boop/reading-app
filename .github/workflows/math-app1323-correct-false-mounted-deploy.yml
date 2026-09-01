@@ -1,0 +1,72 @@
+name: Math App1323 Correct False Mounted Deploy
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-app1323-correct-false-mounted-deploy.yml'
+      - 'math-bank/state/app1323-remote-deploy-body-correction-and-inline-contract-20260902T0605JST.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: math-app1323-correct-false-mounted-deploy
+  cancel-in-progress: false
+
+jobs:
+  correct-checkpoint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 1
+      - name: Patch checkpoint fail-closed
+        run: |
+          python - <<'PY'
+          import json, datetime
+          from pathlib import Path
+          p=Path('math-bank/state/checkpoint.json')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          d['current_stage']='APP1323_EXACT_PUBLIC_BYTE_TRANSFER_REPAIR_AFTER_REMOTE_IDENTITY_CORRECTION'
+          d['current_bucket']='SOURCE_EXACT_LOCAL_PASS_REMOTE_MOUNTED_DEPLOY_FALSE_INLINE_DATA_CONTRACT_PASS_GZIP_PUBLIC_CHUNK_ROUTE_PENDING_PHYSICAL_FIRE_PENDING'
+          d['recorded_at_jst']='2026-09-02T06:05:00+09:00'
+          down=d.setdefault('downstream',{})
+          m=down.setdefault('exact_mounted_preview',{})
+          m['deployment_id']='dpl_EpduWwwW1xvyr6v7MrXhA5ad4ecm'
+          m['mounted_path_transfer']='FAIL_PATH_STRING_DEPLOYED_NOT_FILE_BYTES'
+          m['remote_body_identity']='FAIL_AUTHENTICATED_BODY_IS_PATH_STRING'
+          m['progress_credit']=0
+          down['remote_deploy_correction']={
+            'artifact':'math-bank/state/app1323-remote-deploy-body-correction-and-inline-contract-20260902T0605JST.json',
+            'source_bytes':6819806,
+            'source_sha256':'47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521',
+            'inline_utf8_probe':'PASS',
+            'inline_base64_probe':'PASS',
+            'mounted_path':'FAIL_PATH_STRING',
+            'production_safe_holding_deployment':'dpl_B3xVRs92g6N6omPe8CUmiVH9EY6r',
+            'publication_ready':False
+          }
+          rel=down.setdefault('release',{})
+          rel['exact_1323_isolated_deployment']='PENDING_TRUE_BYTE_TRANSFER; PRIOR_MOUNTED_PREVIEW_INVALIDATED'
+          rel['strict_release']='PENDING'
+          rel['public_isolated_verification']='PENDING'
+          down['publication_ready']=False
+          d['main_touched']=False
+          d['main_untouched']=True
+          d['exact_stop']='Authenticated fetch proved dpl_Epdu serves a local path string, not the 6,819,806-byte exact HTML. Prior mounted-path PASS is invalidated. Inline UTF-8/base64 deploy contracts are proven. Do not credit remote browser/release until exact bytes are publicly reconstructed and SHA-verified.'
+          d['next_start']='Do not repeat Winpass/canonical/runtime. Transfer exact 6,819,806-byte HTML through proven inline/base64 or durable public gzip chunks; verify reconstructed SHA 47893e...; then exact-origin Chromium/Firefox/WebKit-iPhone/localStorage/A4, physical Fire, strict release, final public isolated verification.'
+          p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+      - name: Commit checkpoint correction
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add math-bank/state/checkpoint.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'math: invalidate false mounted exact deploy checkpoint'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
