@@ -1,0 +1,46 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-09-01T16:55:00+09:00",
+  "stage": "EXACT_1323_ISOLATED_DEPLOY_PACKAGE_DURABILITY",
+  "inputs": {
+    "runtime_drive_file_id": "16emP0jNoYTTVsj_RxQKZksCPeNOBya1V",
+    "runtime_zip_sha256": "019c60a8e782034ccb3750df5b17ff2c28070fcebefdb833865eb79ed728a17b",
+    "index_git_blob_sha": "164e4d74df08c30df020177738fbd8048f6b4a75",
+    "index_sha256": "e929c458f1b92aec73add19d5c25c062fd5bf5cb7a9c487a284cc4d953552874",
+    "app_records_sha256": "14f05319b0c5f11c3ddcc273b8fe8edd445d819e61c90b9cc0c03a59bb595b0d"
+  },
+  "audited_runtime": {
+    "records": 1323,
+    "originals": 1271,
+    "variants": 52,
+    "unique_ids": 1323,
+    "figure_ref_entries": 602,
+    "unique_asset_paths": 282,
+    "missing_assets": 0,
+    "decode_errors": 0
+  },
+  "deploy_ready_package": {
+    "drive_file_id": "1c9QGSmzAyL5iQZhiGoHoDCTH3Z4zf0I7",
+    "file_name": "exact1323-isolated-deploy-ready-20260901T1655JST.zip",
+    "bytes": 4194529,
+    "sha256": "88346c8f905ed1de8c3ad6b32d8dee634c5e9b120bf28d8d61a4850c5816ce52",
+    "zip_members": 288,
+    "zip_test": "PASS",
+    "contents": ["index.html", "app-records.json", "asset-binding-manifest.json", "assets/math/*"]
+  },
+  "vercel_target": {
+    "project_id": "prj_klR6v3xfehqPFqb2BPwZaaoy9m3A",
+    "project_name": "mikami-math-1323-isolated",
+    "current_deployment_id": "dpl_9RKmFTuF2vipUcjy8iKSMWZDJyrd",
+    "current_root_identity": "probe-only",
+    "scoped_deployment_completed": false,
+    "reason": "Connected deploy action remains argumentless/current-project scoped; no Vercel token/CLI is available in the runtime. Exact package was made durable instead of risking an ambiguous write."
+  },
+  "local_real_origin_attempt": {
+    "result": "BLOCKED_BY_ADMINISTRATOR_BEFORE_APP_EXECUTION",
+    "note": "Chromium navigation to 127.0.0.1 was blocked by runtime policy; this is not an application FAIL and is not counted as browser verification."
+  },
+  "publication_ready": false,
+  "main_touched": false,
+  "next_start": "Use the durable exact deploy-ready package Drive ID 1c9QGSmzAyL5iQZhiGoHoDCTH3Z4zf0I7 in a safely project-scoped deploy to prj_klR6v3xfehqPFqb2BPwZaaoy9m3A; verify deployed index/data/282-asset identity, then rerun exact-origin Chromium/Firefox/WebKit-iPhone UI/storage/A4 and physical Fire before strict release."
+}
