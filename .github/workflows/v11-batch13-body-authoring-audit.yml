@@ -1,0 +1,25 @@
+name: v11 Batch13 body authoring audit
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch13_*.json'
+      - 'v11_batch13_body_authoring_audit.js'
+      - '.github/workflows/v11-batch13-body-authoring-audit.yml'
+  workflow_dispatch:
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Audit Batch13 authored bodies
+        run: node v11_batch13_body_authoring_audit.js
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v11-batch13-body-authoring-audit
+          path: V11_BATCH13_BODY_AUTHORING_AUDIT.json
