@@ -1,0 +1,29 @@
+name: v11 Batch13 chronology audit
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch13_*.json'
+      - 'v11_batch13_build_body_candidate.js'
+      - 'v11_batch13_chronology_audit.js'
+      - '.github/workflows/v11-batch13-chronology-audit.yml'
+  workflow_dispatch:
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run Batch13 chronology audit
+        run: node v11_batch13_chronology_audit.js
+      - name: Upload chronology reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v11-batch13-chronology
+          path: |
+            V11_BATCH13_CHRONOLOGY_STATUS.txt
+            V11_BATCH13_VOCAB_CHRONOLOGY_AUDIT.json
+            V11_BATCH13_GRAMMAR_CHRONOLOGY_AUDIT.json
