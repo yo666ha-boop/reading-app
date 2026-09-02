@@ -1,0 +1,53 @@
+name: Math Exact1323 Extend Manifest 412k 20260903
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths: ['.github/workflows/math-exact1323-extend-412k-20260903.yml']
+permissions:
+  contents: write
+jobs:
+  extend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+      - name: Verify SHA-bound segments 041-042 and extend manifest
+        shell: python
+        run: |
+          import json, pathlib, subprocess
+          mp=pathlib.Path('math-bank/transfer/app1323-exact-br-b64/bulk7k/manifest.json')
+          m=json.loads(mp.read_text())
+          expected=[
+            ('041.txt',398000,405000,'6a6c7ecd9f3edec239174f6b084a1616f2c95886'),
+            ('042.txt',405000,412000,'d46e30d7d63617e64dce7c73684b9a1629483a22'),
+          ]
+          assert m['durable_end_offset'] in (398000,412000), m['durable_end_offset']
+          existing={x['file']:x for x in m.get('segments',[])}
+          cursor=398000
+          for fn,start,end,sha in expected:
+            p=pathlib.Path('math-bank/transfer/app1323-exact-br-b64/bulk7k')/fn
+            b=p.read_bytes()
+            assert len(b)==7000,(fn,len(b))
+            actual=subprocess.check_output(['git','hash-object',str(p)],text=True).strip()
+            assert actual==sha,(fn,actual,sha)
+            ent={'file':fn,'path':str(p),'start':start,'end':end,'chars':7000,'git_blob_sha1':sha}
+            if fn in existing:
+              assert existing[fn]==ent,(existing[fn],ent)
+            else:
+              assert m['durable_end_offset']==cursor,(m['durable_end_offset'],cursor)
+              m['segments'].append(ent)
+              m['durable_end_offset']=end
+            cursor=end
+          assert m['durable_end_offset']==412000
+          assert m.get('release_credit') is False
+          mp.write_text(json.dumps(m,ensure_ascii=False,separators=(',',':'))+'\n')
+      - name: Commit manifest extension
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add math-bank/transfer/app1323-exact-br-b64/bulk7k/manifest.json
+          git commit -m 'Extend exact1323 SHA-bound manifest through 412000' || exit 0
+          git pull --rebase origin math-problem-bank-bootstrap
+          git push origin HEAD:math-problem-bank-bootstrap
