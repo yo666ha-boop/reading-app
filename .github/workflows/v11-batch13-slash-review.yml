@@ -6,6 +6,7 @@ on:
       - v11-1000passage-easy-notes
     paths:
       - 'v11_batch13_*.js'
+      - 'v11_batch13_slash_human_review_manifest.json'
       - 'v11_batch13_question_boundary_corrections.json'
       - 'v11_batch13_question_human_slash_sync_*.json'
       - 'v11_batch13_translation_boundary_repair_*.json'
@@ -66,14 +67,19 @@ jobs:
           if(autoReviewed) throw new Error(`auto-reviewed rows=${autoReviewed}`);
           console.log(JSON.stringify({passages:p.summary.passages,rows:p.summary.rows,illegal,autoReviewed}));
           NODE
+      - name: Verify exact human-reviewed packet digest
+        if: steps.build.outputs.code == '0'
+        run: node v11_batch13_verify_slash_human_review.js
       - name: Remove stale slash diagnostic
         if: steps.build.outputs.code == '0'
         run: rm -f v11_batch13_slash_error.txt
-      - name: Upload review packet
+      - name: Upload review packet and human gate
         if: steps.build.outputs.code == '0'
         uses: actions/upload-artifact@v4
         with:
           name: v11-batch13-slash-review-packet
-          path: v11_batch13_slash_review_packet.json
+          path: |
+            v11_batch13_slash_review_packet.json
+            v11_batch13_slash_human_gate.json
           if-no-files-found: error
           retention-days: 14
