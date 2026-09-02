@@ -13,27 +13,58 @@ jobs:
         with:
           ref: math-problem-bank-bootstrap
           fetch-depth: 0
-      - name: Verify and sync 71k
+      - name: Verify manifest-bound exact byte staging and sync checkpoint
         run: |
           python - <<'PY'
           from pathlib import Path
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
           import hashlib,json
-          root=Path('math-bank/transfer/app1323-exact-br-b64/chunks'); fs=sorted(root.glob('*.txt')); nums=[int(p.stem) for p in fs]
-          assert nums==list(range(45)),nums[-5:]
-          sizes={int(p.stem):len(p.read_text()) for p in fs}; assert sizes[0]==12000 and sizes[1]==7000 and sizes[2]==7000 and sizes[3]==4000 and all(sizes[i]==1000 for i in range(4,45)); total=sum(sizes.values()); assert total==71000,total
-          def gsha(p):
-            b=p.read_bytes(); return hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()
-          assert gsha(root/'043.txt')=='1dd24bf7ff5e8c6dda294597898ccc25626f9f9f'; assert gsha(root/'044.txt')=='cf2b94d1ad61fedd23f8a5faf73d0d8a5ba61790'
-          cp=Path('math-bank/state/checkpoint.json'); d=json.loads(cp.read_text()); d['recorded_at_jst']='2026-09-02T11:05:00+09:00'; d['current_stage']='APP1323_EXACT_TRUE_BYTE_TRANSFER_GIT_DATA_BLOB_CHANNEL_PROVEN_PARTIAL'
-          st=d['downstream']['github_exact_byte_staging']; st.update({'durable_chunks':45,'durable_base64_chars':71000,'next_offset':71000,'latest_verified_range':'chunks000-044 contiguous; 71000 base64 chars; exact-size and Git blob SHA gates retained','release_credit':False,'chunk043_git_blob_sha1':'1dd24bf7ff5e8c6dda294597898ccc25626f9f9f','chunk043_git_sha_precompute_match':True,'chunk044_git_blob_sha1':'cf2b94d1ad61fedd23f8a5faf73d0d8a5ba61790','chunk044_git_sha_precompute_match':True})
-          d['publication_ready']=False; d['downstream']['release']['publication_ready']=False; d['exact_stop']='Partial byte transport is not release credit. Full reconstruction must equal 6,819,806 bytes and SHA256 47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521.'; d['next_start']='Continue from base64 offset 71000 with exact-size plus independently precomputed Git blob SHA. After all 5,231,888 chars: decode/decompress and verify exact source, then isolated remote/browser/Fire/release/public verification.'
-          ev=Path('math-bank/state/app1323-git-data-blob-channel-20260902T1105JST.json'); ev.write_text(json.dumps({'recorded_at_jst':'2026-09-02T11:05:00+09:00','durable_chunks':45,'durable_base64_chars':71000,'next_offset':71000,'source_bytes':6819806,'source_sha256':'47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521','chunk043_sha':'1dd24bf7ff5e8c6dda294597898ccc25626f9f9f','chunk044_sha':'cf2b94d1ad61fedd23f8a5faf73d0d8a5ba61790','release_credit':False,'publication_ready':False},indent=2)+'\n'); d['latest_audits'].append(str(ev)) if str(ev) not in d['latest_audits'] else None; cp.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+          manifest_path=Path('math-bank/transfer/app1323-exact-br-b64/bulk7k/manifest.json')
+          m=json.loads(manifest_path.read_text())
+          assert m['base_offset']==97000
+          items=[m['probe']]+m['segments']
+          expected=97000
+          verified=[]
+          for x in items:
+            assert x['start']==expected,(expected,x)
+            assert x['end']-x['start']==x['chars'],x
+            p=Path(x.get('path') or ('math-bank/transfer/app1323-exact-br-b64/bulk7k/'+x['file']))
+            b=p.read_bytes()
+            assert len(b)==x['chars'],(p,len(b),x['chars'])
+            sha=hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()
+            assert sha==x['git_blob_sha1'],(p,sha,x['git_blob_sha1'])
+            verified.append({'path':str(p),'start':x['start'],'end':x['end'],'chars':len(b),'git_blob_sha1':sha})
+            expected=x['end']
+          assert expected==m['durable_end_offset']
+          assert m.get('release_credit') is False
+          now=datetime.now(ZoneInfo('Asia/Tokyo')).isoformat(timespec='seconds')
+          cp=Path('math-bank/state/checkpoint.json'); d=json.loads(cp.read_text())
+          st=d['downstream']['github_exact_byte_staging']
+          st.update({
+            'durable_base64_chars':expected,
+            'next_offset':expected,
+            'bulk7k_extra_chars':expected-97000,
+            'git_data_blob_channel':f'PROVEN_FOR_SHA_BOUND_BRANCH_ATTACHED_BYTES_THROUGH_OFFSET_{expected}',
+            'latest_verified_range':f'legacy through 97000 plus manifest-bound SHA verified extension through {expected}',
+            'release_credit':False,
+            'bulk7k_manifest':str(manifest_path)
+          })
+          d['recorded_at_jst']=now
+          d['current_stage']='APP1323_EXACT_TRUE_BYTE_TRANSFER_GIT_DATA_BLOB_CHANNEL_PROVEN_PARTIAL'
+          d['publication_ready']=False
+          d['downstream']['release']['publication_ready']=False
+          d['next_start']=f'Continue exact SHA-bound staging from base64 offset {expected}. After all 5,231,888 chars, decode/decompress and verify exact 6,819,806 bytes + SHA256 47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521, then isolated remote/browser/physical Fire/release/public verification.'
+          ev=Path('math-bank/state/app1323-byte-transfer-manifest-audit-latest.json')
+          ev.write_text(json.dumps({'recorded_at_jst':now,'manifest':str(manifest_path),'base_offset':97000,'durable_end_offset':expected,'verified_entries':verified,'failed_attempts':m.get('failed_attempts',[]),'source_bytes':6819806,'source_sha256':'47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521','brotli_bytes':3923915,'brotli_sha256':'8f78b6dc4e26b5349d9a6dedc7b6d6efad931c7ed3da58d0767ce6b8d36dc003','base64_chars':5231888,'release_credit':False,'publication_ready':False},ensure_ascii=False,indent=2)+'\n')
+          if str(ev) not in d.get('latest_audits',[]): d.setdefault('latest_audits',[]).append(str(ev))
+          cp.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
           PY
-      - name: Commit
+      - name: Commit audit and checkpoint
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add math-bank/state/checkpoint.json math-bank/state/app1323-git-data-blob-channel-20260902T1105JST.json
-          git commit -m 'Update exact1323 Git Data transport checkpoint to 71k'
+          git add math-bank/state/checkpoint.json math-bank/state/app1323-byte-transfer-manifest-audit-latest.json
+          git commit -m 'Sync exact1323 manifest-bound byte staging checkpoint' || exit 0
           git pull --rebase origin math-problem-bank-bootstrap
           git push origin HEAD:math-problem-bank-bootstrap
