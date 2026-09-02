@@ -24,7 +24,7 @@ jobs:
       - name: Audit contiguous exact-byte staging and patch checkpoint
         shell: python
         run: |
-          import json, pathlib, re, datetime, hashlib, subprocess
+          import json, pathlib, re, datetime, subprocess
 
           root = pathlib.Path('math-bank/transfer/app1323-exact-br-b64/chunks')
           files = sorted(root.glob('*.txt'))
@@ -62,8 +62,8 @@ jobs:
 
               bulk_root = pathlib.Path('math-bank/transfer/app1323-exact-br-b64/bulk7k')
               segs = bulk_manifest.get('segments', [])
-              for idx, seg in enumerate(segs, start=1):
-                  p = bulk_root / seg['file']
+              for seg in segs:
+                  p = pathlib.Path(seg.get('path')) if seg.get('path') else (bulk_root / seg['file'])
                   if not p.exists() or p.stat().st_size != seg['chars']:
                       raise SystemExit(f'bulk segment missing/size mismatch: {seg}')
                   if seg['start'] != cursor or seg['end'] != seg['start'] + seg['chars']:
