@@ -6,6 +6,9 @@ on:
       - math-problem-bank-bootstrap
     paths:
       - 'math-bank/transfer/app1323-exact-br-b64/chunks/**'
+      - 'math-bank/transfer/app1323-exact-br-b64/probes/**'
+      - 'math-bank/transfer/app1323-exact-br-b64/bulk7k/**'
+      - '.github/workflows/math-exact1323-transfer-progress.yml'
 
 permissions:
   contents: write
@@ -18,10 +21,11 @@ jobs:
         with:
           ref: math-problem-bank-bootstrap
           fetch-depth: 0
-      - name: Audit contiguous chunks and patch checkpoint
+      - name: Audit contiguous exact-byte staging and patch checkpoint
         shell: python
         run: |
-          import json, pathlib, re, datetime
+          import json, pathlib, re, datetime, hashlib, subprocess
+
           root = pathlib.Path('math-bank/transfer/app1323-exact-br-b64/chunks')
           files = sorted(root.glob('*.txt'))
           nums = [int(p.stem) for p in files if re.fullmatch(r'\d{3}', p.stem)]
@@ -33,24 +37,66 @@ jobs:
               raise SystemExit(f'prefix size mismatch: {sizes[:4]}')
           if any(x != 1000 for x in sizes[4:]):
               raise SystemExit('post-003 chunk size mismatch')
-          total = sum(sizes)
+          legacy_total = sum(sizes)
+
+          manifest_path = pathlib.Path('math-bank/transfer/app1323-exact-br-b64/bulk7k/manifest.json')
+          extra_total = 0
+          durable_end = legacy_total
+          bulk_manifest = None
+          if manifest_path.exists():
+              bulk_manifest = json.loads(manifest_path.read_text())
+              if bulk_manifest.get('base_offset') != legacy_total:
+                  raise SystemExit(f'bulk base_offset {bulk_manifest.get("base_offset")} != legacy total {legacy_total}')
+
+              probe = bulk_manifest['probe']
+              probe_path = pathlib.Path(probe['path'])
+              if not probe_path.exists() or probe_path.stat().st_size != probe['chars']:
+                  raise SystemExit('probe missing or size mismatch')
+              probe_sha = subprocess.check_output(['git','hash-object',str(probe_path)], text=True).strip()
+              if probe_sha != probe['git_blob_sha1']:
+                  raise SystemExit(f'probe git sha mismatch: {probe_sha}')
+              if probe['start'] != legacy_total or probe['end'] != probe['start'] + probe['chars']:
+                  raise SystemExit('probe offset mismatch')
+              cursor = probe['end']
+              extra_total += probe['chars']
+
+              bulk_root = pathlib.Path('math-bank/transfer/app1323-exact-br-b64/bulk7k')
+              segs = bulk_manifest.get('segments', [])
+              for idx, seg in enumerate(segs, start=1):
+                  p = bulk_root / seg['file']
+                  if not p.exists() or p.stat().st_size != seg['chars']:
+                      raise SystemExit(f'bulk segment missing/size mismatch: {seg}')
+                  if seg['start'] != cursor or seg['end'] != seg['start'] + seg['chars']:
+                      raise SystemExit(f'bulk offset mismatch: {seg}')
+                  sha = subprocess.check_output(['git','hash-object',str(p)], text=True).strip()
+                  if sha != seg['git_blob_sha1']:
+                      raise SystemExit(f'bulk git sha mismatch: {seg["file"]} {sha}')
+                  cursor = seg['end']
+                  extra_total += seg['chars']
+              durable_end = cursor
+              if durable_end != bulk_manifest.get('durable_end_offset'):
+                  raise SystemExit(f'bulk durable_end mismatch: {durable_end}')
+
           cp_path = pathlib.Path('math-bank/state/checkpoint.json')
           cp = json.loads(cp_path.read_text())
           st = cp['downstream']['github_exact_byte_staging']
           st['durable_chunks'] = len(files)
-          st['durable_base64_chars'] = total
-          st['next_offset'] = total
-          st['latest_verified_range'] = f'chunks000-{len(files)-1:03d} contiguous; {total} base64 chars; exact-size and Git blob SHA gates retained'
-          st['git_data_blob_channel'] = f'PROVEN_FOR_VERIFIED_BRANCH_ATTACHED_CHUNKS_THROUGH_OFFSET_{total}'
+          st['durable_base64_chars'] = durable_end
+          st['next_offset'] = durable_end
+          st['latest_verified_range'] = f'legacy chunks 000-{len(files)-1:03d} through {legacy_total}; SHA-bound probe/bulk extension through {durable_end}'
+          st['git_data_blob_channel'] = f'PROVEN_FOR_SHA_BOUND_BRANCH_ATTACHED_BYTES_THROUGH_OFFSET_{durable_end}'
+          st['bulk7k_manifest'] = str(manifest_path) if bulk_manifest else None
+          st['bulk7k_extra_chars'] = extra_total
           cp['recorded_at_jst'] = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(timespec='seconds')
           cp_path.write_text(json.dumps(cp, ensure_ascii=False, indent=2) + '\n')
+
           ev = {
             'project':'mikami-math-problem-bank',
             'stage':'APP1323_EXACT_TRUE_BYTE_TRANSFER_GIT_DATA_BLOB_CHANNEL_PROVEN_PARTIAL',
-            'durable_chunks':len(files),
-            'durable_base64_chars':total,
-            'first_four_sizes':sizes[:4],
-            'post003_all_1000':all(x==1000 for x in sizes[4:]),
+            'legacy_chunk_files':len(files),
+            'legacy_base64_chars':legacy_total,
+            'sha_bound_extension_chars':extra_total,
+            'durable_base64_chars':durable_end,
             'source_bytes':st['source_bytes'],
             'source_sha256':st['source_sha256'],
             'brotli_bytes':st['brotli_bytes'],
@@ -59,7 +105,8 @@ jobs:
             'release_credit':False,
             'main_touched':False,
             'publication_ready':False,
-            'physical_fire':'PENDING'
+            'physical_fire':'PENDING',
+            'bulk_manifest': str(manifest_path) if bulk_manifest else None
           }
           pathlib.Path('math-bank/state/app1323-transfer-progress-latest.json').write_text(json.dumps(ev, ensure_ascii=False, indent=2) + '\n')
       - name: Commit synchronized durable state
@@ -68,5 +115,5 @@ jobs:
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add math-bank/state/checkpoint.json math-bank/state/app1323-transfer-progress-latest.json
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Sync exact1323 transfer progress"
+          git commit -m "Sync exact1323 SHA-bound transfer progress"
           git push origin HEAD:math-problem-bank-bootstrap
