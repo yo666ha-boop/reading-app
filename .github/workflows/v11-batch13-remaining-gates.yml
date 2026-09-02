@@ -1,0 +1,63 @@
+name: v11 Batch13 Remaining Gates
+
+on:
+  workflow_dispatch:
+
+jobs:
+  batch13-remaining-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Locate Batch13 and existing v11 audit tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo '=== Batch13 files ==='
+          find . -type f | grep -Ei 'batch13|batch_13|b13' | sort || true
+          echo '=== candidate audit/runtime scripts ==='
+          find . -type f \( -name '*.js' -o -name '*.mjs' -o -name '*.cjs' -o -name '*.py' \) | grep -Ei 'v11|audit|runtime|duplicate|print|webkit|chromium|note|gloss' | sort || true
+      - name: Structural Batch13 gate discovery
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          keys=('batch13','batch_13','b13')
+          fs=[]
+          for p in Path('.').rglob('*'):
+              if p.is_file() and any(k in str(p).lower() for k in keys): fs.append(p)
+          print('batch13_file_count=',len(fs))
+          for p in fs[:300]: print(p)
+          if not fs: raise SystemExit('FAIL: no Batch13 actual found')
+          PY
+      - name: Run repository tests if defined
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -f package.json ]; then
+            npm install --ignore-scripts --no-audit --no-fund
+            node -e "const p=require('./package.json'); console.log(p.scripts||{})"
+            npm test --if-present
+          fi
+      - name: Preserve remaining-gate discovery actual
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "head=${GITHUB_SHA}"
+            echo "branch=${GITHUB_REF_NAME}"
+            echo "registered_target_before=768"
+            echo "batch13_target=50"
+            echo "registered=false"
+            echo "purpose=discover_and_execute_existing_Batch13_remaining_gate_paths_without_weakening_gates"
+            echo "timestamp=$(date -u +%FT%TZ)"
+          } > V11_BATCH13_REMAINING_GATES_DISCOVERY_STATUS.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v11-batch13-remaining-gates-discovery
+          path: V11_BATCH13_REMAINING_GATES_DISCOVERY_STATUS.txt
