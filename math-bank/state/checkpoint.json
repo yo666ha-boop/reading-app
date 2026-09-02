@@ -3,7 +3,7 @@
   "status": "IN_PROGRESS_APP1323_RUNTIME_BROWSER_DEVICE_RELEASE",
   "current_stage": "APP1323_EXACT_TRUE_BYTE_TRANSFER_GIT_DATA_BLOB_CHANNEL_PROVEN_PARTIAL",
   "current_bucket": "SOURCE_STRICT_CANONICAL_RUNTIME_PACKAGE_STATIC_PASS_EXACT_GITHUB_BYTE_STAGING_PARTIAL_REMOTE_TRUE_BYTES_PENDING_PHYSICAL_FIRE_PENDING",
-  "recorded_at_jst": "2026-09-02T08:16:00+09:00",
+  "recorded_at_jst": "2026-09-02T09:25:00+09:00",
   "main_touched": false,
   "schedule_changed": false,
   "source_identity": {
@@ -119,10 +119,10 @@
       "brotli_bytes": 3923915,
       "brotli_sha256": "8f78b6dc4e26b5349d9a6dedc7b6d6efad931c7ed3da58d0767ce6b8d36dc003",
       "base64_chars": 5231888,
-      "operational_chunk_chars": 7000,
-      "planned_total_chunks": 436,
-      "durable_chunks": 3,
-      "durable_base64_chars": 26000,
+      "operational_chunk_chars": 4000,
+      "planned_total_chunks": null,
+      "durable_chunks": 4,
+      "durable_base64_chars": 30000,
       "chunk000_git_blob_sha1": "de6286b5a58d5fe7ac0f655fda48b0b0284fbcb1",
       "chunk000_git_sha_precompute_match": true,
       "manifest": "math-bank/transfer/app1323-exact-br-b64/manifest.partial.json",
@@ -135,9 +135,14 @@
       "chunk001_git_sha_precompute_match": true,
       "chunk002_git_blob_sha1": "f44316a09027caa9ebc526d586fcccb5d68dbd55",
       "chunk002_git_sha_precompute_match": true,
-      "git_data_blob_channel": "PROVEN_FOR_7000_ON_CHUNKS_001_002",
+      "git_data_blob_channel": "PROVEN_FOR_VERIFIED_BRANCH_ATTACHED_CHUNKS_THROUGH_OFFSET_30000",
       "chunk003_7000_attempt": "FAIL_PRECOMPUTED_SHA_MISMATCH_DETACHED_NO_CREDIT",
-      "large_12000_git_blob_attempt": "BLOCKED_BY_TOOL_SAFETY_NO_CREDIT"
+      "large_12000_git_blob_attempt": "BLOCKED_BY_TOOL_SAFETY_NO_CREDIT",
+      "planning_note": "Mixed verified staging: chunk000=12000, chunk001/002=7000, chunk003=4000. Do not infer total chunk count until stable route size is established.",
+      "next_offset": 30000,
+      "chunk003_git_blob_sha1": "f1ad437af470a7d2ffc47161b00c70a2ead42587",
+      "chunk003_git_sha_precompute_match": true,
+      "chunk003_4000_retry": "PASS_PRECOMPUTED_SHA_MATCH_BRANCH_ATTACHED"
     },
     "browser_matrix": {
       "exact_logic_chromium_set_content": "PASS",
@@ -170,8 +175,8 @@
     "math-bank/state/app1323-git-data-blob-channel-20260902T0915JST.json"
   ],
   "correction_note": "The 07:20 local manifest relationship precheck directly compared raw_id to runtime id and falsely reported 1207 errors. It was corrected in-run by normalizing manifest raw_id to source.original_no / id without orig:. Corrected relationship errors are 0; the false precheck was never credited as durable progress.",
-  "exact_stop": "Do not credit remote/browser/release from partial transport. Git Data blob transport is proven byte-exact for branch-attached chunk001 and chunk002 at 7000 chars each, while chunk003 returned a mismatched blob SHA and remains detached/not credited. Only exact precomputed Git blob SHA matches may be attached. Full reconstruction must equal 6,819,806 bytes and SHA256 47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521 before isolated deploy credit.",
-  "next_start": "Continue exact-byte staging from base64 offset 26000 using only a payload route/size that passes exact character count plus independently precomputed Git blob SHA. Do not attach mismatched blobs. After full reconstruction verify original length/SHA, then isolated Vercel remote body identity, exact-origin Chromium/Firefox/WebKit-iPhone/localStorage/A4, physical Fire, strict release, and final public isolated verification.",
+  "exact_stop": "Do not credit remote/browser/release from partial transport. Branch-attached chunks are byte-exact through base64 offset 30000. The 7000-char attempt at offset 26000 failed SHA and stayed detached; the 4000-char retry passed independently precomputed Git blob SHA and is attached. Full reconstruction must equal 6,819,806 bytes and SHA256 47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521 before isolated deploy credit.",
+  "next_start": "Continue exact-byte staging from base64 offset 30000, initially using 4000-char Git Data blobs with exact character count plus independently precomputed Git blob SHA. Only matching blobs may be attached. After full reconstruction verify original length/SHA, then isolated Vercel remote body identity, exact-origin Chromium/Firefox/WebKit-iPhone/localStorage/A4, physical Fire, strict release, and final public isolated verification.",
   "main_untouched": true,
   "publication_ready": false
 }
