@@ -1,0 +1,59 @@
+name: Math Exact1323 Git Data Transport Progress 20260902
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-exact1323-git-data-progress-20260902.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  checkpoint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+      - name: Patch checkpoint fail-closed
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('math-bank/state/checkpoint.json')
+          d=json.loads(p.read_text())
+          d['current_stage']='APP1323_EXACT_TRUE_BYTE_TRANSFER_GIT_DATA_BLOB_CHANNEL_PROVEN_PARTIAL'
+          st=d['downstream']['github_exact_byte_staging']
+          st['status']='PARTIAL_TRANSFER_GIT_DATA_BLOB_CHANNEL_PROVEN_NOT_RELEASE_CREDIT'
+          st['operational_chunk_chars']=7000
+          st['durable_chunks']=3
+          st['durable_base64_chars']=26000
+          st['chunk001_git_blob_sha1']='b2325e6cc8b37a4aa7ac8e4da500392327ecd83a'
+          st['chunk001_git_sha_precompute_match']=True
+          st['chunk002_git_blob_sha1']='f44316a09027caa9ebc526d586fcccb5d68dbd55'
+          st['chunk002_git_sha_precompute_match']=True
+          st['git_data_blob_channel']='PROVEN_FOR_7000_ON_CHUNKS_001_002'
+          st['chunk003_7000_attempt']='FAIL_PRECOMPUTED_SHA_MISMATCH_DETACHED_NO_CREDIT'
+          st['large_12000_git_blob_attempt']='BLOCKED_BY_TOOL_SAFETY_NO_CREDIT'
+          st['release_credit']=False
+          audit='math-bank/state/app1323-git-data-blob-channel-20260902T0915JST.json'
+          if audit not in d['latest_audits']:
+              d['latest_audits'].append(audit)
+          d['exact_stop']='Do not credit remote/browser/release from partial transport. Git Data blob transport is proven byte-exact for branch-attached chunk001 and chunk002 at 7000 chars each, while chunk003 returned a mismatched blob SHA and remains detached/not credited. Only exact precomputed Git blob SHA matches may be attached. Full reconstruction must equal 6,819,806 bytes and SHA256 47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521 before isolated deploy credit.'
+          d['next_start']='Continue exact-byte staging from base64 offset 26000 using only a payload route/size that passes exact character count plus independently precomputed Git blob SHA. Do not attach mismatched blobs. After full reconstruction verify original length/SHA, then isolated Vercel remote body identity, exact-origin Chromium/Firefox/WebKit-iPhone/localStorage/A4, physical Fire, strict release, and final public isolated verification.'
+          d['publication_ready']=False
+          d['downstream']['release']['publication_ready']=False
+          p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+          PY
+      - name: Commit checkpoint
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add math-bank/state/checkpoint.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Update exact1323 Git Data transport checkpoint'
+          git pull --rebase origin math-problem-bank-bootstrap
+          git push origin HEAD:math-problem-bank-bootstrap
