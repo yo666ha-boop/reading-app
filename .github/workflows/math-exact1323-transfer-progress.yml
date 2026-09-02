@@ -1,0 +1,72 @@
+name: Math Exact1323 Transfer Progress
+
+on:
+  push:
+    branches:
+      - math-problem-bank-bootstrap
+    paths:
+      - 'math-bank/transfer/app1323-exact-br-b64/chunks/**'
+
+permissions:
+  contents: write
+
+jobs:
+  audit-and-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+      - name: Audit contiguous chunks and patch checkpoint
+        shell: python
+        run: |
+          import json, pathlib, re, datetime
+          root = pathlib.Path('math-bank/transfer/app1323-exact-br-b64/chunks')
+          files = sorted(root.glob('*.txt'))
+          nums = [int(p.stem) for p in files if re.fullmatch(r'\d{3}', p.stem)]
+          if nums != list(range(len(nums))):
+              raise SystemExit(f'non-contiguous chunk indexes: {nums[:5]}...{nums[-5:]}')
+          sizes = [p.stat().st_size for p in files]
+          expected_prefix = [12000,7000,7000,4000]
+          if sizes[:4] != expected_prefix:
+              raise SystemExit(f'prefix size mismatch: {sizes[:4]}')
+          if any(x != 1000 for x in sizes[4:]):
+              raise SystemExit('post-003 chunk size mismatch')
+          total = sum(sizes)
+          cp_path = pathlib.Path('math-bank/state/checkpoint.json')
+          cp = json.loads(cp_path.read_text())
+          st = cp['downstream']['github_exact_byte_staging']
+          st['durable_chunks'] = len(files)
+          st['durable_base64_chars'] = total
+          st['next_offset'] = total
+          st['latest_verified_range'] = f'chunks000-{len(files)-1:03d} contiguous; {total} base64 chars; exact-size and Git blob SHA gates retained'
+          st['git_data_blob_channel'] = f'PROVEN_FOR_VERIFIED_BRANCH_ATTACHED_CHUNKS_THROUGH_OFFSET_{total}'
+          cp['recorded_at_jst'] = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(timespec='seconds')
+          cp_path.write_text(json.dumps(cp, ensure_ascii=False, indent=2) + '\n')
+          ev = {
+            'project':'mikami-math-problem-bank',
+            'stage':'APP1323_EXACT_TRUE_BYTE_TRANSFER_GIT_DATA_BLOB_CHANNEL_PROVEN_PARTIAL',
+            'durable_chunks':len(files),
+            'durable_base64_chars':total,
+            'first_four_sizes':sizes[:4],
+            'post003_all_1000':all(x==1000 for x in sizes[4:]),
+            'source_bytes':st['source_bytes'],
+            'source_sha256':st['source_sha256'],
+            'brotli_bytes':st['brotli_bytes'],
+            'brotli_sha256':st['brotli_sha256'],
+            'base64_chars_total':st['base64_chars'],
+            'release_credit':False,
+            'main_touched':False,
+            'publication_ready':False,
+            'physical_fire':'PENDING'
+          }
+          pathlib.Path('math-bank/state/app1323-transfer-progress-latest.json').write_text(json.dumps(ev, ensure_ascii=False, indent=2) + '\n')
+      - name: Commit synchronized durable state
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add math-bank/state/checkpoint.json math-bank/state/app1323-transfer-progress-latest.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Sync exact1323 transfer progress"
+          git push origin HEAD:math-problem-bank-bootstrap
