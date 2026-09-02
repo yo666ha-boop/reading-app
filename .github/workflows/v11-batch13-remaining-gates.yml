@@ -2,6 +2,12 @@ name: v11 Batch13 Remaining Gates
 
 on:
   workflow_dispatch:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - '.github/workflows/v11-batch13-remaining-gates.yml'
+      - 'v11_batch13*'
+      - 'V11_BATCH13*'
 
 jobs:
   batch13-remaining-gates:
@@ -9,37 +15,82 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Locate Batch13 and existing v11 audit tools
+      - name: Install browser test dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium webkit
+      - name: Locate Batch13 actual and reusable strong v11 gates
         shell: bash
         run: |
           set -euo pipefail
           echo '=== Batch13 files ==='
-          find . -type f | grep -Ei 'batch13|batch_13|b13' | sort || true
-          echo '=== candidate audit/runtime scripts ==='
-          find . -type f \( -name '*.js' -o -name '*.mjs' -o -name '*.cjs' -o -name '*.py' \) | grep -Ei 'v11|audit|runtime|duplicate|print|webkit|chromium|note|gloss' | sort || true
-      - name: Structural Batch13 gate discovery
+          find . -type f | grep -Ei 'batch13|batch_13|b13' | sort | tee /tmp/b13-files.txt || true
+          echo '=== candidate gate files ==='
+          find . -type f | grep -Ei 'v11.*(audit|runtime|duplicate|print|webkit|chromium|note|gloss)|((audit|runtime|duplicate|print|webkit|chromium|note|gloss).*v11)' | sort | tee /tmp/gate-files.txt || true
+          test -s /tmp/b13-files.txt
+      - name: Structural Batch13 actual gate
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
           from pathlib import Path
-          keys=('batch13','batch_13','b13')
-          fs=[]
-          for p in Path('.').rglob('*'):
-              if p.is_file() and any(k in str(p).lower() for k in keys): fs.append(p)
+          fs=[p for p in Path('.').rglob('*') if p.is_file() and any(k in str(p).lower() for k in ('batch13','batch_13','b13'))]
           print('batch13_file_count=',len(fs))
-          for p in fs[:300]: print(p)
+          for p in fs[:400]: print(p)
           if not fs: raise SystemExit('FAIL: no Batch13 actual found')
+          status=Path('V11_BATCH13_CHRONOLOGY_STATUS.txt')
+          if not status.exists(): raise SystemExit('FAIL: chronology status actual missing')
+          s=status.read_text(encoding='utf-8')
+          required=['batch13_passages=50/50','registered=false','vocab_unregistered=0','vocab_future_leak=0','grammar_unresolved=0','grammar_future_leak=0','final=PASS']
+          miss=[x for x in required if x not in s]
+          print('chronology_required_missing=',miss)
+          if miss: raise SystemExit('FAIL: chronology durable actual inconsistent')
           PY
-      - name: Run repository tests if defined
+      - name: Runtime inventory and cross-batch baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8000 >/tmp/v11-b13-http.log 2>&1 &
+          server=$!
+          trap 'kill $server || true' EXIT
+          sleep 2
+          node <<'NODE'
+          const {chromium}=require('playwright');
+          function assert(c,m){if(!c)throw new Error(m)}
+          (async()=>{let b;try{
+            b=await chromium.launch({headless:true});
+            const p=await b.newPage({viewport:{width:1280,height:900}});
+            const errs=[]; p.on('pageerror',e=>errs.push(String(e)));
+            const r=await p.goto('http://127.0.0.1:8000/index.html?b13inventory='+Date.now(),{waitUntil:'domcontentloaded',timeout:90000});
+            assert(r&&r.ok(),'HTTP '+(r&&r.status()));
+            await p.waitForFunction(()=>window.V10_RUNTIME_LOAD_PROGRESS==='complete',{timeout:120000});
+            const inv=await p.evaluate(()=>{
+              const out={runtimeTotal:null,v11Arrays:{},batch13Globals:{}};
+              for(const k of Object.keys(window)){
+                if(/^V11_BATCH\d+_PASSAGES$/.test(k)&&Array.isArray(window[k])) out.v11Arrays[k]=window[k].length;
+                if(/BATCH13/i.test(k)) { const v=window[k]; out.batch13Globals[k]=Array.isArray(v)?v.length:typeof v; }
+              }
+              const candidates=['PASSAGES','passages','ALL_PASSAGES','READING_PASSAGES'];
+              for(const k of candidates) if(Array.isArray(window[k])) out.runtimeTotal=window[k].length;
+              return out;
+            });
+            console.log('BATCH13_RUNTIME_INVENTORY='+JSON.stringify(inv));
+            console.log('PAGE_ERRORS='+JSON.stringify(errs));
+            assert(errs.length===0,errs.join(' | '));
+          }finally{if(b)await b.close().catch(()=>{})}})().catch(e=>{console.error(e.stack||e);process.exit(1)});
+          NODE
+      - name: Repository tests
         shell: bash
         run: |
           set -euo pipefail
           if [ -f package.json ]; then
-            npm install --ignore-scripts --no-audit --no-fund
             node -e "const p=require('./package.json'); console.log(p.scripts||{})"
             npm test --if-present
           fi
@@ -53,11 +104,17 @@ jobs:
             echo "registered_target_before=768"
             echo "batch13_target=50"
             echo "registered=false"
-            echo "purpose=discover_and_execute_existing_Batch13_remaining_gate_paths_without_weakening_gates"
+            echo "purpose=Batch13 remaining-gate discovery and runtime inventory without weakening gates"
             echo "timestamp=$(date -u +%FT%TZ)"
+            echo '--- batch13 files ---'
+            cat /tmp/b13-files.txt 2>/dev/null || true
+            echo '--- candidate gate files ---'
+            cat /tmp/gate-files.txt 2>/dev/null || true
           } > V11_BATCH13_REMAINING_GATES_DISCOVERY_STATUS.txt
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: v11-batch13-remaining-gates-discovery
-          path: V11_BATCH13_REMAINING_GATES_DISCOVERY_STATUS.txt
+          path: |
+            V11_BATCH13_REMAINING_GATES_DISCOVERY_STATUS.txt
+            /tmp/v11-b13-http.log
