@@ -2,7 +2,13 @@
   "project": "mikami-math-problem-bank",
   "codec": "brotli-quality-11-then-base64-ascii",
   "base_offset": 97000,
-  "probe": {"path":"math-bank/transfer/app1323-exact-br-b64/probes/097000-104000-7k.txt","start":97000,"end":104000,"chars":7000,"git_blob_sha1":"0f9e927f08daf4b90a807e5f67db69deabd29a16"},
+  "probe": {
+    "path": "math-bank/transfer/app1323-exact-br-b64/probes/097000-104000-7k.txt",
+    "start": 97000,
+    "end": 104000,
+    "chars": 7000,
+    "git_blob_sha1": "0f9e927f08daf4b90a807e5f67db69deabd29a16"
+  },
   "segments": [
     {"file":"001.txt","start":104000,"end":111000,"chars":7000,"git_blob_sha1":"ac2d425f9822925eeafea43c31e375fa799fa2cb"},
     {"file":"002.txt","start":111000,"end":118000,"chars":7000,"git_blob_sha1":"f3d27d10fe660ef02028955092b5532115b3f7b1"},
@@ -20,9 +26,13 @@
     {"file":"013.txt","path":"math-bank/transfer/app1323-exact-br-b64/bulk7k/013.txt","start":202000,"end":209000,"chars":7000,"git_blob_sha1":"13390675666de008dd2f761526e01e370358e2a7"},
     {"file":"014.txt","path":"math-bank/transfer/app1323-exact-br-b64/bulk7k/014.txt","start":209000,"end":216000,"chars":7000,"git_blob_sha1":"c9833609bfcb4ff6a6217e3b0dd3e57b4a24824a"},
     {"file":"015.txt","path":"math-bank/transfer/app1323-exact-br-b64/bulk7k/015.txt","start":216000,"end":223000,"chars":7000,"git_blob_sha1":"47fe70e952e5349b1bb1bde1cf0878e59a0f703d"},
-    {"file":"016.txt","path":"math-bank/transfer/app1323-exact-br-b64/bulk7k/016.txt","start":223000,"end":230000,"chars":7000,"git_blob_sha1":"c22491669ae104d9e635df873dba3055a162a4a4"}
+    {"file":"016.txt","path":"math-bank/transfer/app1323-exact-br-b64/bulk7k/016.txt","start":223000,"end":230000,"chars":7000,"git_blob_sha1":"c22491669ae104d9e635df873dba3055a162a4a4"},
+    {"file":"017.txt","path":"math-bank/transfer/app1323-exact-br-b64/bulk7k/017.txt","start":230000,"end":237000,"chars":7000,"git_blob_sha1":"eb9a1d0aa2f9195dd00bdebbb70e0eb49e73c999"},
+    {"file":"018.txt","path":"math-bank/transfer/app1323-exact-br-b64/bulk7k/018.txt","start":237000,"end":244000,"chars":7000,"git_blob_sha1":"55b1f31331c795e4a86b669bf6e823fc26ba6973"},
+    {"file":"019.txt","path":"math-bank/transfer/app1323-exact-br-b64/bulk7k/019.txt","start":244000,"end":251000,"chars":7000,"git_blob_sha1":"e40813c7029726734f8537f552521a73016b6d49"},
+    {"file":"020.txt","path":"math-bank/transfer/app1323-exact-br-b64/bulk7k/020.txt","start":251000,"end":258000,"chars":7000,"git_blob_sha1":"9ac50bf6a21e4ed7d55a8d925b27bf187d20b8a1"}
   ],
-  "durable_end_offset": 230000,
+  "durable_end_offset": 258000,
   "readback_sha_bound": true,
   "failed_attempts": [{"path":"math-bank/transfer/app1323-exact-br-b64/bulk14k/001.txt","start":202000,"end":216000,"expected_sha1":"8918c699fdadff778b7c6301a5341a4c53465d2b","observed_sha1":"4fa22eae9399eeef82240a478bec010780544e94","action":"deleted_no_credit"}],
   "release_credit": false
