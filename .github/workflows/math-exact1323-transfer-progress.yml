@@ -43,6 +43,7 @@ jobs:
           extra_total = 0
           durable_end = legacy_total
           bulk_manifest = None
+          manifest_changed = False
           if manifest_path.exists():
               bulk_manifest = json.loads(manifest_path.read_text())
               if bulk_manifest.get('base_offset') != legacy_total:
@@ -57,12 +58,45 @@ jobs:
                   raise SystemExit(f'probe git sha mismatch: {probe_sha}')
               if probe['start'] != legacy_total or probe['end'] != probe['start'] + probe['chars']:
                   raise SystemExit('probe offset mismatch')
-              cursor = probe['end']
-              extra_total += probe['chars']
 
+              # Extend the manifest only with contiguous numeric 7k files already attached
+              # to this branch. Every appended entry is bound to its actual Git object SHA;
+              # the full validation loop below then rechecks all offsets, sizes and SHAs.
               bulk_root = pathlib.Path('math-bank/transfer/app1323-exact-br-b64/bulk7k')
               segs = bulk_manifest.get('segments', [])
-              for seg in segs:
+              cursor = probe['end'] if not segs else segs[-1]['end']
+              numeric_existing = []
+              for p in bulk_root.glob('*.txt'):
+                  if re.fullmatch(r'\d{3}\.txt', p.name):
+                      numeric_existing.append((int(p.stem), p))
+              numeric_existing.sort()
+              represented = {int(pathlib.Path(s['file']).stem) for s in segs if re.fullmatch(r'\d{3}\.txt', s.get('file',''))}
+              next_num = max(represented) + 1 if represented else 1
+              by_num = dict(numeric_existing)
+              while next_num in by_num:
+                  p = by_num[next_num]
+                  if p.stat().st_size != 7000:
+                      raise SystemExit(f'candidate bulk segment size mismatch: {p}')
+                  sha = subprocess.check_output(['git','hash-object',str(p)], text=True).strip()
+                  segs.append({
+                      'file': p.name,
+                      'path': str(p),
+                      'start': cursor,
+                      'end': cursor + 7000,
+                      'chars': 7000,
+                      'git_blob_sha1': sha,
+                  })
+                  cursor += 7000
+                  next_num += 1
+                  manifest_changed = True
+              if manifest_changed:
+                  bulk_manifest['segments'] = segs
+                  bulk_manifest['durable_end_offset'] = cursor
+                  manifest_path.write_text(json.dumps(bulk_manifest, ensure_ascii=False, separators=(',',':')) + '\n')
+
+              cursor = probe['end']
+              extra_total += probe['chars']
+              for seg in bulk_manifest.get('segments', []):
                   p = pathlib.Path(seg.get('path')) if seg.get('path') else (bulk_root / seg['file'])
                   if not p.exists() or p.stat().st_size != seg['chars']:
                       raise SystemExit(f'bulk segment missing/size mismatch: {seg}')
@@ -113,8 +147,8 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add math-bank/state/checkpoint.json math-bank/state/app1323-transfer-progress-latest.json
+          git add math-bank/transfer/app1323-exact-br-b64/bulk7k/manifest.json math-bank/state/checkpoint.json math-bank/state/app1323-transfer-progress-latest.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Sync exact1323 SHA-bound transfer progress"
           git push origin HEAD:math-problem-bank-bootstrap
-# trigger: audit manifest through 412000 on 2026-09-03 JST
+# trigger: safely auto-extend contiguous verified 7k manifest entries
