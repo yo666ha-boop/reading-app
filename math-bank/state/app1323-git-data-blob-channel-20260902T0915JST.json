@@ -1,0 +1,33 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-09-02T09:15:00+09:00",
+  "stage": "APP1323_EXACT_TRUE_BYTE_TRANSFER_GIT_DATA_BLOB_CHANNEL_PROVEN_PARTIAL",
+  "source": {
+    "drive_file_id": "1l29gpomqPrEEqWCnlCuZH1BiZSw5lg4y",
+    "bytes": 6819806,
+    "sha256": "47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521",
+    "brotli_q11_bytes": 3923915,
+    "brotli_q11_sha256": "8f78b6dc4e26b5349d9a6dedc7b6d6efad931c7ed3da58d0767ce6b8d36dc003",
+    "base64_chars": 5231888
+  },
+  "source_revalidation_this_run": {
+    "Standard": {"bytes":9689250,"sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","crc32":"f8e307bb","zip_test":"PASS","members":85},
+    "実力錬成": {"bytes":7287279,"sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","crc32":"1a020f98","zip_test":"PASS","members":80},
+    "Winpass": {"bytes":8296042,"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","crc32":"992b0ca2","zip_test":"PASS","docx_members":81}
+  },
+  "transport": {
+    "previous_durable_chunk000": {"chars":12000,"git_blob_sha1":"de6286b5a58d5fe7ac0f655fda48b0b0284fbcb1"},
+    "chunk001": {"offset":12000,"chars":7000,"git_blob_sha1":"b2325e6cc8b37a4aa7ac8e4da500392327ecd83a","precomputed_sha_match":true,"branch_path":"math-bank/transfer/app1323-exact-br-b64/chunks/001.txt","commit":"3888e3b28754e3c7a6bf4a53c19277b02f4c79a9"},
+    "chunk002": {"offset":19000,"chars":7000,"git_blob_sha1":"f44316a09027caa9ebc526d586fcccb5d68dbd55","precomputed_sha_match":true,"branch_path":"math-bank/transfer/app1323-exact-br-b64/chunks/002.txt","commit":"d085cafa5bb064a15de5cb2262d9ec0d71be62a4"},
+    "chunk003_attempt": {"offset":26000,"requested_chars":7000,"expected_git_blob_sha1":"f44316a09027caa9ebc526d586fcccb5d68dbd55","returned_git_blob_sha1":"7966ab9a74304e04846618da3b5c370789eed838","status":"FAIL_SHA_MISMATCH_DETACHED_NOT_CREDITED"},
+    "large_12000_blob_attempt": "BLOCKED_BY_TOOL_SAFETY_NOT_DATA_FAILURE_NOT_CREDITED",
+    "contents_4000_probe": "PASS_THEN_REMOVED_AFTER_GIT_DATA_CHANNEL_PROVEN",
+    "durable_branch_chunks": 3,
+    "durable_base64_chars": 26000,
+    "release_credit": false
+  },
+  "quality_gate": "Only branch-attached chunks whose exact character range and independently precomputed Git blob SHA match are credited. Detached or mismatched blobs are not credited. Full reconstruction plus original byte length/SHA is mandatory before any isolated deployment credit.",
+  "main_touched": false,
+  "publication_ready": false,
+  "physical_fire": "PENDING"
+}
