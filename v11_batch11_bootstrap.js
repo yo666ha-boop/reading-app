@@ -17,10 +17,10 @@ window.V11_BATCH11_DRAFTS=[...g1,...g2,...g3];window.V11_BATCH11_DRAFT_READY=tru
 const st=window.V11_BATCH11_STATE;
 if(!window.V11_BATCH11_LOADED||!st||st.registered!==true||st.totalWithBaseline!==718||st.batch11Passages!==50||st.humanReviewedPassages!==50||st.humanReviewedQuestions!==500||st.supportSnapshots!==50)throw new Error('Batch11 final state invalid '+JSON.stringify(st));
 window.V11_BATCH11_DRAFT_STATE={count:50,g1:g1.length,g2:g2.length,g3:g3.length,registered:true,version:'20260831-human-r14-support-r11-locked'};
-window.V11_BATCH11_BOOTSTRAP_STATE={version:'20260903-b12-persistent-chain',files:files.length,loaded:true,total:st.totalWithBaseline,registered:true};
+window.V11_BATCH11_BOOTSTRAP_STATE={version:'20260903-b12-persistent-chain-r2',files:files.length,loaded:true,total:st.totalWithBaseline,registered:true};
 const search=String(location&&location.search||'');
-const isBatch12Candidate=/[?&]b12candidate=/.test(search);
-if(!isBatch12Candidate&&!window.V11_BATCH12_LOADED){
+const freezeAt718=/[?&](?:b12candidate|b11persistent)=/.test(search);
+if(!freezeAt718&&!window.V11_BATCH12_LOADED){
   await load('v11_batch12_bootstrap.js');
   await waitFor(()=>window.V11_BATCH12_LOADED===true||!!window.V11_BATCH12_BOOTSTRAP_ERROR,'Batch12 bootstrap');
   if(window.V11_BATCH12_BOOTSTRAP_ERROR)throw new Error(window.V11_BATCH12_BOOTSTRAP_ERROR);
