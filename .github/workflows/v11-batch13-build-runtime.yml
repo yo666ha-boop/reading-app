@@ -1,0 +1,46 @@
+name: v11 Batch13 Build Runtime Bundle
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - v11-1000passage-easy-notes
+    paths:
+      - '.github/workflows/v11-batch13-build-runtime.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+
+      - name: Generate Batch13 runtime bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          node v11_batch13_build_runtime_bundle.js
+          test -s v11_batch13_runtime_bundle.js
+          test -s V11_BATCH13_RUNTIME_BUNDLE_STATUS.json
+          grep -q 'V11_BATCH13_FINAL_BUNDLE' v11_batch13_runtime_bundle.js
+          grep -q '"pass": true' V11_BATCH13_RUNTIME_BUNDLE_STATUS.json
+
+      - name: Commit generated runtime bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add v11_batch13_runtime_bundle.js V11_BATCH13_RUNTIME_BUNDLE_STATUS.json
+          if git diff --cached --quiet; then
+            echo 'Runtime bundle already current.'
+            exit 0
+          fi
+          git commit -m 'fix: add generated Batch13 runtime bundle for 818 preview'
+          git push origin HEAD:v11-1000passage-easy-notes
