@@ -13,8 +13,13 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with: {node-version: '20'}
+      - name: Sync latest branch before repair
+        run: git pull --rebase origin v11-1000passage-easy-notes
       - name: Apply reviewed semantic repairs
         run: node v11_batch14_g1_length_repair.js
       - name: Verify repaired draft
@@ -26,6 +31,5 @@ jobs:
           git add v11_batch14_g1_body_draft.json V11_BATCH14_G1_DRAFT_AUDIT.json
           if ! git diff --cached --quiet; then
             git commit -m 'v11: repair Batch14 G1 long passage lengths'
-            git pull --rebase origin v11-1000passage-easy-notes
-            git push
+            git push origin HEAD:v11-1000passage-easy-notes
           fi
