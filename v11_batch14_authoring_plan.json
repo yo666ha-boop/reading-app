@@ -6,17 +6,7 @@
   "registered": false,
   "passageCount": 50,
   "gradeSplit": {"G1":17,"G2":17,"G3":16},
-  "rules": {
-    "humanSemanticReviewRequired": true,
-    "noMechanicalPadding": true,
-    "noPartialRegistration": true,
-    "questionsPerPassage": 10,
-    "questionSets": {"A":5,"B":5},
-    "vocabChronology": "current v7 actual",
-    "grammarChronology": "current actual",
-    "requiredChronologyZeros": ["unregistered_vocab","future_vocab","grammar_unresolved","future_grammar"],
-    "yamaguchiSpec": "V11_YAMAGUCHI_ENTRANCE_EXAM_READING_SPEC.md"
-  },
+  "rules": {"humanSemanticReviewRequired":true,"noMechanicalPadding":true,"noPartialRegistration":true,"questionsPerPassage":10,"questionSets":{"A":5,"B":5},"vocabChronology":"current v7 actual","grammarChronology":"current actual","requiredChronologyZeros":["unregistered_vocab","future_vocab","grammar_unresolved","future_grammar"],"yamaguchiSpec":"V11_YAMAGUCHI_ENTRANCE_EXAM_READING_SPEC.md"},
   "passages": [
     {"id":"V11-B14-G1-001","grade":1,"anchor":"Sunshine PROGRAM 10-2","tier":"STANDARD","title":"The Umbrella Tag at the Entrance","focus":"Mina identifies a borrowed umbrella by checking a color tag and the class lending list."},
     {"id":"V11-B14-G1-002","grade":1,"anchor":"NH Unit 10-2","tier":"STANDARD","title":"A Note under the Music Stand","focus":"Ren finds a rehearsal note under one stand and uses the room schedule to return it to the correct group."},
@@ -35,7 +25,6 @@
     {"id":"V11-B14-G1-015","grade":1,"anchor":"Sunshine PROGRAM 10-2","tier":"STANDARD","title":"A Blue Line on the Floor","focus":"Mio follows a temporary blue line and learns it guides visitors to a different entrance during repairs."},
     {"id":"V11-B14-G1-016","grade":1,"anchor":"NH Unit 10-2","tier":"LONG","title":"The Book Returned Too Early","focus":"Kenta checks a due-date slip and event calendar before realizing a classmate returned a display book before the exhibit ended."},
     {"id":"V11-B14-G1-017","grade":1,"anchor":"Sunshine PROGRAM 10-2","tier":"STANDARD","title":"The Small Star on the Map","focus":"Rina uses a star mark and legend on a school map to guide a guest to the nurse room rather than the office."},
-
     {"id":"V11-B14-G2-001","grade":2,"anchor":"Sunshine PROGRAM 8-3","tier":"STANDARD","title":"The Library Seat Survey","focus":"Students compare morning and after-school seat use before changing where quiet-study signs are placed."},
     {"id":"V11-B14-G2-002","grade":2,"anchor":"NH Unit 7-4","tier":"STANDARD","title":"A Message That Arrived Twice","focus":"A class traces duplicate event messages to two mailing lists and creates one clearer communication route."},
     {"id":"V11-B14-G2-003","grade":2,"anchor":"Sunshine PROGRAM 8-3","tier":"LONG","title":"Testing the New Water Station","focus":"Students observe bottle-filling time and queue length, then move a table rather than replacing the machine."},
@@ -53,7 +42,6 @@
     {"id":"V11-B14-G2-015","grade":2,"anchor":"Sunshine PROGRAM 8-3","tier":"LONG","title":"The Refill Cup Experiment","focus":"A school event compares disposable and refill-cup stations using return counts and cleaning time before choosing a mixed system."},
     {"id":"V11-B14-G2-016","grade":2,"anchor":"NH Unit 7-4","tier":"STANDARD","title":"Who Could Hear the Announcement?","focus":"Students test an announcement in three school areas and discover one speaker is blocked by a closed fire door."},
     {"id":"V11-B14-G2-017","grade":2,"anchor":"Sunshine PROGRAM 8-3","tier":"STANDARD","title":"The First Question on the Form","focus":"A survey team finds the opening question discourages younger students and revises order after a small user test."},
-
     {"id":"V11-B14-G3-001","grade":3,"anchor":"Sunshine PROGRAM 7-3","tier":"LONG","title":"The Community Freezer Log","focus":"Students analyze donation and pickup records to reduce food waste while preserving emergency stock."},
     {"id":"V11-B14-G3-002","grade":3,"anchor":"NH Unit 6-4","tier":"STANDARD","title":"A Translation with One Missing Warning","focus":"A student compares a bilingual safety notice with the original and restores a condition omitted in translation."},
     {"id":"V11-B14-G3-003","grade":3,"anchor":"Sunshine PROGRAM 7-3","tier":"YAMAGUCHI_EXAM","title":"The River Path Detour Board","focus":"Students combine a detour map, construction times and bus schedule to recommend a safe route for event visitors.","material":"route map + closure table + bus schedule","requiredQuestionTypes":["CONTENT_MATCH","MATERIAL_LINK","REASON","SUMMARY_FILL","CONTEXT_WORD","INFERENCE"],"freeWrite":true},
@@ -66,10 +54,10 @@
     {"id":"V11-B14-G3-010","grade":3,"anchor":"NH Unit 6-4","tier":"STANDARD","title":"A Source behind the Famous Number","focus":"Students trace a widely repeated local statistic to its original report and discover it refers to a narrower group than claimed."},
     {"id":"V11-B14-G3-011","grade":3,"anchor":"Sunshine PROGRAM 7-3","tier":"LONG","title":"The Shared Garden Water Plan","focus":"Residents compare soil conditions and watering records, and students propose different schedules for sunny and shaded beds."},
     {"id":"V11-B14-G3-012","grade":3,"anchor":"NH Unit 6-4","tier":"STANDARD","title":"When Two Witnesses Disagree","focus":"A student committee compares two accounts of a bicycle incident and separates observed facts from assumptions."},
-    {"id":"V11-B14-G3-013","grade":3,"anchor":"Sunshine PROGRAM 7-3","tier":"LONG","title":"The Audio Guide Trial","focus":"Museum volunteers compare visitor completion rates and comments for two audio-guide versions, then revise segment length rather than content."},
+    {"id":"V11-B14-G3-013","grade":3,"anchor":"Sunshine PROGRAM 7-3","tier":"STANDARD","title":"The Audio Guide Trial","focus":"Museum volunteers compare visitor completion rates and comments for two audio-guide versions, then revise segment length rather than content."},
     {"id":"V11-B14-G3-014","grade":3,"anchor":"NH Unit 6-4","tier":"YAMAGUCHI_EXAM","title":"The Evacuation Center Supply Choice","focus":"Students combine family profiles, supply limits and delivery times to prioritize items for a temporary evacuation center.","material":"family-needs table + stock list + delivery timetable","requiredQuestionTypes":["CONTENT_MATCH","MATERIAL_LINK","SENTENCE_INSERTION","PHRASE_FILL","REASON","INFERENCE"],"freeWrite":true},
     {"id":"V11-B14-G3-015","grade":3,"anchor":"Sunshine PROGRAM 7-3","tier":"STANDARD","title":"The Headline before the Evidence","focus":"A newspaper club rewrites a strong headline after checking that survey data support only a limited conclusion."},
     {"id":"V11-B14-G3-016","grade":3,"anchor":"NH Unit 6-4","tier":"STANDARD","title":"The Tree Record from Two Years","focus":"Students compare tree-health records from two years and avoid claiming improvement until measurement conditions are matched."}
   ],
-  "finalGates": ["human_semantic_naturalness","word_count","full_translation_sync","slash_en_jp_alignment","A_B_question_evidence","v7_vocab_chronology","grammar_chronology","normal_notes","easy_support_notes","required_local_gloss","cross_batch_exact_near_duplicate","PC_Chromium","iPhone_WebKit","A4_student_teacher","persistent_runtime"]
+  "finalGates":["human_semantic_naturalness","word_count","full_translation_sync","slash_en_jp_alignment","A_B_question_evidence","v7_vocab_chronology","grammar_chronology","normal_notes","easy_support_notes","required_local_gloss","cross_batch_exact_near_duplicate","PC_Chromium","iPhone_WebKit","A4_student_teacher","persistent_runtime"]
 }
