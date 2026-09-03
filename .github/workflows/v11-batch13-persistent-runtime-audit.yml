@@ -9,6 +9,7 @@ on:
       - 'v11_batch13_runtime_bundle.js'
       - 'v11_batch13_persistent_runtime_audit.js'
       - '.github/workflows/v11-batch13-persistent-runtime-audit.yml'
+      - '.github/workflows/v11-preview-publish.yml'
   workflow_dispatch:
 jobs:
   audit:
