@@ -62,4 +62,7 @@ jobs:
           git add math-bank/transfer/app1323-exact-br-b64/bulk7k/*.txt
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Promote exact1323 verified micro1k group"
+          # A checkpoint-sync bot may advance the same branch while this job is running.
+          # Never force/rewind; rebase the independent bulk-file commit onto latest actual.
+          git pull --rebase origin math-problem-bank-bootstrap
           git push origin HEAD:math-problem-bank-bootstrap
