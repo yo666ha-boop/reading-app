@@ -1,0 +1,34 @@
+{
+  "project": "みかみ塾 数学問題バンク／数学アプリ再構築",
+  "branch": "math-problem-bank-bootstrap",
+  "stage": "APP1323_EXACT_TRANSFER",
+  "source": {
+    "drive_file_id": "1l29gpomqPrEEqWCnlCuZH1BiZSw5lg4y",
+    "bytes": 6819806,
+    "sha256": "47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521",
+    "brotli_q11_bytes": 3923915,
+    "brotli_q11_sha256": "8f78b6dc4e26b5349d9a6dedc7b6d6efad931c7ed3da58d0767ce6b8d36dc003",
+    "base64_chars": 5231888
+  },
+  "prior_verified_endpoint": 761000,
+  "bulk_verification": [
+    {"path":"math-bank/transfer/app1323-exact-br-b64/bulk7k/092.txt","start":755000,"end":762000,"chars":7000,"expected_git_blob_sha":"fc1b79bb3e5b38cb24c16f650962218ccf2e43ae","actual_git_blob_sha":"fc1b79bb3e5b38cb24c16f650962218ccf2e43ae","pass":true},
+    {"path":"math-bank/transfer/app1323-exact-br-b64/bulk7k/093.txt","start":762000,"end":769000,"chars":7000,"expected_git_blob_sha":"052f12a03b9167cd2bea5829b6d8fac3d01682c9","actual_git_blob_sha":"052f12a03b9167cd2bea5829b6d8fac3d01682c9","pass":true},
+    {"path":"math-bank/transfer/app1323-exact-br-b64/bulk7k/094.txt","start":769000,"end":776000,"chars":7000,"expected_git_blob_sha":"704d641120125d36628f5d23eeb36347b007fb43","actual_git_blob_sha":"704d641120125d36628f5d23eeb36347b007fb43","pass":true},
+    {"path":"math-bank/transfer/app1323-exact-br-b64/bulk7k/095.txt","start":776000,"end":783000,"chars":7000,"expected_git_blob_sha":"fbbb769911a919ebef929ccc09e7f476358bde9f","actual_git_blob_sha":"fbbb769911a919ebef929ccc09e7f476358bde9f","pass":true}
+  ],
+  "verified_durable_endpoint": 783000,
+  "new_verified_chars_this_run": 22000,
+  "remaining_base64_chars": 4448888,
+  "next_offset": 783000,
+  "fixed_originals": [
+    {"name":"Standard","drive_file_id":"1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU","bytes":9689250,"sha256":"c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6","crc32":"f8e307bb","zip_test":"PASS"},
+    {"name":"実力錬成","drive_file_id":"1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb","bytes":7287279,"sha256":"faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33","crc32":"1a020f98","zip_test":"PASS"},
+    {"name":"Winpass","drive_file_id":"13SySbXL02mm4YPikgYN_BlVE3S2APs7E","bytes":8296042,"sha256":"29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf","crc32":"992b0ca2","zip_test":"PASS"}
+  ],
+  "preexisting_quality_state": {"strict_materialization":"1271/1271","winpass_evidence_review":"717/717 include717 exclude0","winpass_canonical":717,"global_immutable":1271,"variants_independent":52,"runtime_total":1323,"embedded_assets":282},
+  "publication_ready": false,
+  "main_untouched": true,
+  "physical_fire": "PENDING",
+  "head_after_promotion": "6578e65a8353cabbbb1fd0d997e9f90c4a3d88cd"
+}
