@@ -1,0 +1,37 @@
+name: v11 Batch14 G1 draft audit
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch14_authoring_plan.json'
+      - 'v11_batch14_g1_body_draft.json'
+      - 'v11_batch14_g1_draft_audit.js'
+      - '.github/workflows/v11-batch14-g1-draft-audit.yml'
+  workflow_dispatch:
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - name: Audit G1 drafts
+        id: audit
+        continue-on-error: true
+        run: node v11_batch14_g1_draft_audit.js
+      - name: Persist actual
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add V11_BATCH14_G1_DRAFT_AUDIT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'v11: persist Batch14 G1 draft audit actual'
+            git pull --rebase origin v11-1000passage-easy-notes
+            git push
+          fi
+      - name: Enforce result
+        if: steps.audit.outcome != 'success'
+        run: exit 1
