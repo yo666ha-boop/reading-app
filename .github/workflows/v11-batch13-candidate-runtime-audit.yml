@@ -59,7 +59,17 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -f v11_batch13_runtime_bundle.js V11_BATCH13_RUNTIME_BUNDLE_STATUS.json V11_BATCH13_RUNTIME_BUNDLE_LOG.txt V11_BATCH13_REQUIRED_GLOSS_FAIL.json V11_BATCH13_CANDIDATE_RUNTIME_AUDIT.json V11_BATCH13_CANDIDATE_RUNTIME_LOG.txt v11_batch13_slash_human_gate.json v11_batch13_slash_review_packet.json 2>/dev/null || true
+          for f in \
+            v11_batch13_runtime_bundle.js \
+            V11_BATCH13_RUNTIME_BUNDLE_STATUS.json \
+            V11_BATCH13_RUNTIME_BUNDLE_LOG.txt \
+            V11_BATCH13_REQUIRED_GLOSS_FAIL.json \
+            V11_BATCH13_CANDIDATE_RUNTIME_AUDIT.json \
+            V11_BATCH13_CANDIDATE_RUNTIME_LOG.txt \
+            v11_batch13_slash_human_gate.json \
+            v11_batch13_slash_review_packet.json; do
+            test -e "$f" && git add -f "$f"
+          done
           git diff --cached --quiet || git commit -m 'v11: persist Batch13 818 candidate runtime actuals'
           git pull --rebase origin v11-1000passage-easy-notes
           git push origin HEAD:v11-1000passage-easy-notes
@@ -77,4 +87,4 @@ jobs:
             V11_BATCH13_CANDIDATE_RUNTIME_AUDIT.json
             V11_BATCH13_CANDIDATE_RUNTIME_LOG.txt
           if-no-files-found: warn
-# rerun after preview-chain and persistent-runtime repair
+# rerun after preview-chain and persistent-runtime repair; persist each existing actual independently
