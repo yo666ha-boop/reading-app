@@ -59,9 +59,6 @@ jobs:
               if probe['start'] != legacy_total or probe['end'] != probe['start'] + probe['chars']:
                   raise SystemExit('probe offset mismatch')
 
-              # Extend the manifest only with contiguous numeric 7k files already attached
-              # to this branch. Every appended entry is bound to its actual Git object SHA;
-              # the full validation loop below then rechecks all offsets, sizes and SHAs.
               bulk_root = pathlib.Path('math-bank/transfer/app1323-exact-br-b64/bulk7k')
               segs = bulk_manifest.get('segments', [])
               cursor = probe['end'] if not segs else segs[-1]['end']
@@ -78,14 +75,7 @@ jobs:
                   if p.stat().st_size != 7000:
                       raise SystemExit(f'candidate bulk segment size mismatch: {p}')
                   sha = subprocess.check_output(['git','hash-object',str(p)], text=True).strip()
-                  segs.append({
-                      'file': p.name,
-                      'path': str(p),
-                      'start': cursor,
-                      'end': cursor + 7000,
-                      'chars': 7000,
-                      'git_blob_sha1': sha,
-                  })
+                  segs.append({'file':p.name,'path':str(p),'start':cursor,'end':cursor+7000,'chars':7000,'git_blob_sha1':sha})
                   cursor += 7000
                   next_num += 1
                   manifest_changed = True
@@ -123,25 +113,7 @@ jobs:
           st['bulk7k_extra_chars'] = extra_total
           cp['recorded_at_jst'] = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(timespec='seconds')
           cp_path.write_text(json.dumps(cp, ensure_ascii=False, indent=2) + '\n')
-
-          ev = {
-            'project':'mikami-math-problem-bank',
-            'stage':'APP1323_EXACT_TRUE_BYTE_TRANSFER_GIT_DATA_BLOB_CHANNEL_PROVEN_PARTIAL',
-            'legacy_chunk_files':len(files),
-            'legacy_base64_chars':legacy_total,
-            'sha_bound_extension_chars':extra_total,
-            'durable_base64_chars':durable_end,
-            'source_bytes':st['source_bytes'],
-            'source_sha256':st['source_sha256'],
-            'brotli_bytes':st['brotli_bytes'],
-            'brotli_sha256':st['brotli_sha256'],
-            'base64_chars_total':st['base64_chars'],
-            'release_credit':False,
-            'main_touched':False,
-            'publication_ready':False,
-            'physical_fire':'PENDING',
-            'bulk_manifest': str(manifest_path) if bulk_manifest else None
-          }
+          ev={'project':'mikami-math-problem-bank','stage':'APP1323_EXACT_TRUE_BYTE_TRANSFER_GIT_DATA_BLOB_CHANNEL_PROVEN_PARTIAL','legacy_chunk_files':len(files),'legacy_base64_chars':legacy_total,'sha_bound_extension_chars':extra_total,'durable_base64_chars':durable_end,'source_bytes':st['source_bytes'],'source_sha256':st['source_sha256'],'brotli_bytes':st['brotli_bytes'],'brotli_sha256':st['brotli_sha256'],'base64_chars_total':st['base64_chars'],'release_credit':False,'main_touched':False,'publication_ready':False,'physical_fire':'PENDING','bulk_manifest':str(manifest_path) if bulk_manifest else None}
           pathlib.Path('math-bank/state/app1323-transfer-progress-latest.json').write_text(json.dumps(ev, ensure_ascii=False, indent=2) + '\n')
       - name: Commit synchronized durable state
         run: |
@@ -153,3 +125,4 @@ jobs:
           git push origin HEAD:math-problem-bank-bootstrap
 # trigger: safely auto-extend contiguous verified 7k manifest entries
 # trigger: audit bot-promoted 077-082 through offset 692000
+# trigger: audit bot-promoted 083-084 through offset 706000
