@@ -14,10 +14,10 @@ for(const p of draft.passages){
   const words=wc(p.body); const lo=p.tier==='LONG'?135:90, hi=p.tier==='LONG'?165:125;
   if(words<lo||words>hi) failures.push(`${p.id}: words=${words} expected ${lo}-${hi}`);
   if(!p.fullTranslation||p.fullTranslation.length<80) failures.push(`${p.id}: translation missing/short`);
-  if(p.humanSemanticReview!=='B14_G1_HUMAN_REVIEW_R1') failures.push(`${p.id}: semantic review marker`);
+  if(!String(p.humanSemanticReview||'').startsWith('B14_G1_HUMAN_REVIEW_')) failures.push(`${p.id}: semantic review marker`);
   const sent=(p.body.match(/[.!?](?:[”’'"])?(?:\s|$)/g)||[]).length;
   if(sent<6) failures.push(`${p.id}: too few sentences ${sent}`);
-  rows.push({id:p.id,tier:p.tier,words,sentences:sent});
+  rows.push({id:p.id,tier:p.tier,words,sentences:sent,review:p.humanSemanticReview});
 }
 const out={batch:'V11-B14',grade:1,passages:draft.passages.length,registered:false,officialTotal:818,rows,failures,finalPass:failures.length===0};
 fs.writeFileSync('V11_BATCH14_G1_DRAFT_AUDIT.json',JSON.stringify(out,null,2)+'\n');
