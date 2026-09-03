@@ -1,0 +1,66 @@
+const fs=require('fs');
+const {chromium,webkit,devices}=require('playwright');
+function assert(c,m){if(!c)throw new Error(m)}
+async function ready(page,label){
+  const errors=[];
+  page.on('pageerror',e=>errors.push('pageerror:'+String(e)));
+  page.on('console',m=>{if(m.type()==='error')errors.push('console:'+m.text())});
+  const r=await page.goto('http://127.0.0.1:8000/index.html?cross='+label+'-'+Date.now(),{waitUntil:'domcontentloaded',timeout:90000});
+  assert(r&&r.ok(),label+' HTTP');
+  await page.waitForFunction(()=>window.V10_RUNTIME_LOAD_PROGRESS==='complete',{timeout:120000});
+  await page.waitForFunction(()=>window.V11_BATCH01_LOADED===true&&window.__V11_MULTI_PASSAGE_UI_INSTALLED===true&&window.V11_BATCH01_GRAMMAR_REPAIR_STATE&&window.V11_BATCH01_GRAMMAR_REPAIR_STATE.applied===true,{timeout:60000});
+  return errors;
+}
+async function selectPassage(page,id){
+  const x=await page.evaluate(id=>window.V11_BATCH01_PASSAGES.find(p=>p.id===id),id); assert(x,id+' missing');
+  await page.selectOption('#textbook',x.textbook); await page.selectOption('#grade',String(x.grade)); await page.waitForTimeout(30);
+  const majors=await page.locator('#major option').evaluateAll(os=>os.map(o=>o.value)); let found=false;
+  for(const m of majors){await page.selectOption('#major',m); await page.waitForTimeout(15); const secs=await page.locator('#section option').evaluateAll(os=>os.map(o=>o.value)); if(secs.includes(x.section)){found=true;break;}}
+  assert(found,id+' section missing '+x.section); await page.selectOption('#section',x.section); await page.waitForTimeout(20);
+  const idx=await page.locator('#v11PassageVariant option').evaluateAll((os,title)=>os.findIndex(o=>o.textContent.includes(title)),x.title); assert(idx>=1,id+' variant missing');
+  await page.selectOption('#v11PassageVariant',String(idx)); await page.evaluate(()=>window.render()); await page.waitForTimeout(15);
+  assert((await page.evaluate(()=>window.choose().id))===id,id+' choose mismatch');
+  assert((await page.locator('#passage h2').innerText())===x.title,id+' title mismatch');
+  assert((await page.locator('#questions .q').count())===5,id+' A count');
+  if(await page.locator('#questions').evaluate(el=>el.textContent.includes('問題セット B'))){await page.locator('#altSetBtn').click(); await page.waitForTimeout(10);}
+  if(!(await page.locator('#questions').evaluate(el=>el.textContent.includes('問題セット B')))){await page.locator('#altSetBtn').click(); await page.waitForTimeout(10);}
+  assert((await page.locator('#questions .q').count())===5,id+' B count');
+  const evidenceOk=await page.evaluate(()=>{const p=window.choose();return [...(p.questions||[]),...(p.questionSetB||[])].every(q=>(p.sentences||[]).includes(q.evidence));});
+  assert(evidenceOk,id+' evidence mismatch');
+  return x;
+}
+async function auditEngine(type){
+  const browser=type==='chromium'?await chromium.launch({headless:true}):await webkit.launch({headless:true});
+  try{
+    const context=type==='chromium'?await browser.newContext({viewport:{width:1366,height:900}}):await browser.newContext({...devices['iPhone 13']});
+    const page=await context.newPage(); const errors=await ready(page,type); const ids=await page.evaluate(()=>window.V11_BATCH01_PASSAGES.map(x=>x.id)); assert(ids.length===50,type+' count '+ids.length);
+    let overflow=0;
+    for(const id of ids){await selectPassage(page,id); const bad=await page.evaluate(()=>document.documentElement.scrollWidth>document.documentElement.clientWidth+2); if(bad)overflow++;}
+    assert(overflow===0,type+' horizontal overflow '+overflow); assert(errors.length===0,type+' runtime errors '+errors.join(' | '));
+    await context.close(); return {passages:ids.length,overflow,errors:errors.length};
+  }finally{await browser.close();}
+}
+async function printAudit(){
+  const browser=await chromium.launch({headless:true}); const out=[];
+  try{
+    const page=await browser.newPage({viewport:{width:1366,height:900}}); const errors=await ready(page,'print');
+    const reps=await page.evaluate(()=>{const seen=new Set(),out=[];for(const p of window.V11_BATCH01_PASSAGES){const k=p.textbook+'|'+p.grade+'|'+p.section;if(!seen.has(k)){seen.add(k);out.push(p.id);}}return out;});
+    fs.mkdirSync('/tmp/v11-a4',{recursive:true});
+    for(const id of reps){
+      // Print CSS hides selectors, so explicitly return to screen media before selecting the next passage.
+      await page.emulateMedia({media:'screen'});
+      await selectPassage(page,id);
+      await page.emulateMedia({media:'print'});
+      const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>document.documentElement.clientWidth+3); assert(!overflow,id+' print overflow');
+      const teacher='/tmp/v11-a4/'+id.replace(/[^A-Za-z0-9_-]/g,'_')+'-teacher.pdf';
+      await page.pdf({path:teacher,format:'A4',printBackground:true,preferCSSPageSize:false}); assert(fs.statSync(teacher).size>5000,id+' teacher pdf too small');
+      await page.addStyleTag({content:'@media print{#answers{display:none!important}#audit{display:none!important}}'});
+      const student=teacher.replace('-teacher.pdf','-student.pdf'); await page.pdf({path:student,format:'A4',printBackground:true,preferCSSPageSize:false}); assert(fs.statSync(student).size>5000,id+' student pdf too small');
+      out.push({id,teacherBytes:fs.statSync(teacher).size,studentBytes:fs.statSync(student).size});
+      await page.emulateMedia({media:'screen'}); await page.reload({waitUntil:'domcontentloaded'}); await page.waitForFunction(()=>window.V11_BATCH01_LOADED===true,{timeout:60000});
+    }
+    assert(errors.length===0,'print runtime errors '+errors.join(' | '));
+    return {representativeSections:reps.length,files:out.length*2,details:out};
+  }finally{await browser.close();}
+}
+(async()=>{const pc=await auditEngine('chromium'); const iphone=await auditEngine('webkit'); const a4=await printAudit(); console.log('CROSS '+JSON.stringify({pc,iphone,a4})); console.log('V11_BATCH01_PC_IPHONE_A4_PASS');})().catch(e=>{console.error('V11_BATCH01_PC_IPHONE_A4_FAIL '+(e.stack||e));process.exitCode=1});

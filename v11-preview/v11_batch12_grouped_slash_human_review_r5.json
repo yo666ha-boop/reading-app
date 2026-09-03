@@ -1,0 +1,50 @@
+{
+  "batch": "V11-B12",
+  "registered": false,
+  "officialTotal": 718,
+  "status": "GROUPED_SLASH_HUMAN_REVIEW_COMPLETE_QUESTION_REVIEW_PENDING",
+  "sourceScaffoldHead": "b54a3ecb0d36e6ce146e4c7b167fb99585560cd2",
+  "reviewedGroupedPassageCount": 19,
+  "reviewedGroupedRowCount": 26,
+  "confirmedPassages": [
+    "V11-B12-G1-009",
+    "V11-B12-G1-014",
+    "V11-B12-G1-015",
+    "V11-B12-G2-001",
+    "V11-B12-G2-004",
+    "V11-B12-G2-006",
+    "V11-B12-G2-008",
+    "V11-B12-G2-009",
+    "V11-B12-G2-011",
+    "V11-B12-G2-015",
+    "V11-B12-G2-017",
+    "V11-B12-G3-001",
+    "V11-B12-G3-002",
+    "V11-B12-G3-005",
+    "V11-B12-G3-007",
+    "V11-B12-G3-008",
+    "V11-B12-G3-010",
+    "V11-B12-G3-012",
+    "V11-B12-G3-014"
+  ],
+  "repairedAndRechecked": [
+    {
+      "id": "V11-B12-G3-008",
+      "result": "PASS",
+      "note": "After R4 translation-boundary repair, the remaining two grouped rows preserve forward-reading meaning: robot/picture-book choice with the mother waiting between rooms, and the post-12:30 science-show/access condition."
+    },
+    {
+      "id": "V11-B12-G3-011",
+      "result": "PASS_REMOVED_FROM_GROUPED_SET",
+      "note": "R4 separated the 200 ml trial, two displayed possible amounts, two trial cakes, and the conclusion. Rebuild removed this passage from the grouped-boundary packet."
+    }
+  ],
+  "reviewRule": "A grouped row passes only when the English and Japanese preserve the same event/condition/conclusion in forward-reading order. No row-count matching by forced Japanese splitting is allowed.",
+  "questionHumanReview": {
+    "reviewed": 30,
+    "total": 500,
+    "pending": 470,
+    "status": "PENDING"
+  },
+  "next": "Confirm remaining 1:1 slash rows and continue passage-specific human rewrite of the remaining 470 questions. Do not register Batch12 until all final gates pass."
+}

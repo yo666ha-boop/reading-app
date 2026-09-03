@@ -1,0 +1,32 @@
+{
+  "batch": "V11-B13",
+  "registered": false,
+  "humanReviewed": true,
+  "reviewStage": "B13_SLASH_HUMAN_NATURALNESS_R5",
+  "repairs": [
+    {
+      "id": "V11-B13-G1-002",
+      "find": "コウタはプリントを「朝」のトレーへ移し、クラスは正しいページで始めることができました。",
+      "replace": "コウタはプリントを「朝」のトレーへ移し、クラスは正しいプリントで授業を始めることができました。",
+      "reason": "The original Japanese '正しいページで始める' was unnatural. Keep the English meaning while using natural Japanese for starting class with the correct worksheets."
+    },
+    {
+      "id": "V11-B13-G1-011",
+      "find": "角から来た低学年の生徒が急いでその場に止まりました。",
+      "replace": "角から来た低学年の生徒が急に立ち止まりました。",
+      "reason": "The original Japanese '急いでその場に止まりました' was unnatural. '急に立ち止まりました' naturally preserves 'quickly stood still' without adding a new cause."
+    },
+    {
+      "id": "V11-B13-G2-008",
+      "find": "担当者は喜びましたが、クラス名を確認しました。",
+      "replace": "担当者は喜んでいましたが、それはクラス名を確認するまででした。",
+      "reason": "The original translation lost the meaning of 'until': the organizers' happiness lasted only until they checked the class names. Restore that temporal contrast naturally."
+    },
+    {
+      "id": "V11-B13-G2-011",
+      "find": "問題の原因はどちらかの部がルールを無視したことではなく、予定表が二つの違う状態になっていたことでした。",
+      "replace": "問題の原因はどちらかの部がルールを無視したことではなく、異なる二つの版の予定表があったことでした。",
+      "reason": "The original Japanese '予定表が二つの違う状態' was mechanical and unnatural. '異なる二つの版の予定表' directly and naturally matches 'two different versions of the schedule'."
+    }
+  ]
+}

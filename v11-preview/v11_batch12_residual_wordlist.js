@@ -1,0 +1,3 @@
+'use strict';
+const fs=require('fs');const x=JSON.parse(fs.readFileSync('V11_BATCH12_RESIDUAL_CHRONOLOGY_SUMMARY.json','utf8'));
+const u=(x.vocab.unregistered||[]).map(r=>r.word);const f=(x.vocab.future||[]).map(r=>r.word);const lines=[`unregistered_distinct=${u.length}`,u.join('\n'),'---FUTURE---',`future_distinct=${f.length}`,f.join('\n'),'---GRAMMAR_TYPES---',JSON.stringify(x.grammar.types||{},null,2),'---GRAMMAR_ROWS---',JSON.stringify(x.grammar.unresolved||[],null,2)];fs.writeFileSync('V11_BATCH12_RESIDUAL_WORDLIST.txt',lines.join('\n')+'\n');console.log(`u=${u.length} f=${f.length} grammar=${x.grammar.unresolvedOccurrences}`);

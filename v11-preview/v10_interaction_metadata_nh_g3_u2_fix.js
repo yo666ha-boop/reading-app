@@ -1,0 +1,1 @@
+(()=>{const m=window.V10_INTERACTION_META_G3_NH_U2&&window.V10_INTERACTION_META_G3_NH_U2['ニューホライズン|3|Unit 2-3'];if(!m)return;m.questionSetB[4]={prompt:'5. この考えは何につながることがありますか。本文から英語で答えなさい。',answer:'a better product',evidence:'This idea can lead to a better product.',evidenceJp:'この考えはよりよい製品につながることがあります。',reason:'lead to の後ろが a better product です。'};})();

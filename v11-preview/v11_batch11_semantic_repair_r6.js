@@ -1,0 +1,11 @@
+(function(){'use strict';
+const all=[...(window.V11_BATCH11_G1_DRAFTS||[]),...(window.V11_BATCH11_G2_DRAFTS||[]),...(window.V11_BATCH11_G3_DRAFTS||[])],p=all.find(x=>x.id==='V11-B11-G1-006');
+if(!p)throw Error('missing V11-B11-G1-006');
+const old='The pages had no numbers, but each ended by leading to the next step.';
+const i=p.sentences.indexOf(old);if(i<0)throw Error('old sentence missing');
+const en='The pages had no numbers, but the ending of each page gave a clue about what came next.';
+const jp='ページ番号はありませんでしたが、各ページの終わりには次に何が続くかを示す手がかりがありました。';
+p.sentences[i]=en;p.slashRows[i]={...p.slashRows[i],en,jp};p.fullTranslation=p.slashRows.map(r=>r.jp||'').join('');p.wordCount=(p.sentences.join(' ').match(/[A-Za-z]+(?:['’][A-Za-z]+)?/g)||[]).length;
+p.semanticReviewR6={reviewed:true,meaningCoherent:true,naturalnessFixed:true,translationSynced:true,reviewedAt:'2026-08-31'};
+window.V11_BATCH11_SEMANTIC_REPAIR_R6_STATE={repaired:1,id:p.id,registered:false,version:'20260831-r6'};
+})();

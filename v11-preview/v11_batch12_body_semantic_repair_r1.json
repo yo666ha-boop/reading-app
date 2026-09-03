@@ -1,0 +1,35 @@
+{
+  "batch":"V11-B12",
+  "repair":"SEMANTIC_R1",
+  "registered":false,
+  "reason":"Human semantic review found chronology, arithmetic, and material-capacity inconsistencies. These replacements are required before slash/question/chronology assembly.",
+  "replacements":[
+    {
+      "id":"V11-B12-G2-004",
+      "body":"The cycling club usually left school at 5:20 for its short practice ride. In September, that time still felt bright, so members only checked their lights once a month. By late October, the return trip was much darker. One evening, Sota noticed that Aya's rear light was weak before the group left. They replaced its batteries, then checked every bicycle. Two more lights needed attention. The club compared sunset times for September and late October and changed its rule from that week on: lights would be checked before every evening ride, and the group would leave ten minutes earlier. The new rule was based on the season and the actual condition of the bicycles, not on the brighter rides they remembered from summer.",
+      "fullTranslation":"自転車部は普段、短い練習走行のため5時20分に学校を出ていました。9月はその時間でもまだ明るく感じたので、ライトの確認は月に一度だけでした。10月下旬になると、帰り道はずっと暗くなりました。ある夕方、出発前にソウタがアヤの後ろのライトが弱いことに気づきました。電池を交換し、続けて全員の自転車を確認すると、さらに二つのライトに手入れが必要でした。部員は9月と10月下旬の日没時刻を比べ、その週からは夕方の走行前に毎回ライトを確認し、10分早く出発することにしました。夏の明るい走行の記憶ではなく、季節と実際の自転車の状態に基づくルールになりました。",
+      "reviewNote":"Removed retroactive 'from October' rule after the story had already reached late October."
+    },
+    {
+      "id":"V11-B12-G3-004",
+      "bodyReplace":{"from":"That ferry reached the city harbor at 14:15, five minutes before the 14:35 bus boarding area opened.","to":"That ferry reached the city harbor at 14:15, leaving twenty minutes before the 14:35 bus."},
+      "translationReplace":{"from":"その便は14時15分に市の港へ着き、14時35分のバスに十分間に合います。","to":"その便は14時15分に市の港へ着き、14時35分のバスまで20分あります。"},
+      "reviewNote":"Corrected 14:15→14:35 arithmetic from five minutes to twenty and removed unsupported boarding-area opening detail."
+    },
+    {
+      "id":"V11-B12-G3-012",
+      "materialsPatch":{"existingAdults":"Morning 7 adult volunteers; Afternoon 6 adult volunteers."},
+      "bodyReplace":{"from":"With the center's existing adult volunteers, the totals became ten in the morning and eleven in the afternoon.","to":"The center already had seven adult volunteers in the morning and six in the afternoon, so the totals became ten in the morning and eleven in the afternoon."},
+      "translationReplace":{"from":"これで生徒は午前3人、午後5人となり、既存の大人を合わせると午前10人、午後11人になります。","to":"これで生徒は午前3人、午後5人となります。センターにはもともと午前7人、午後6人の大人がいるため、合計は午前10人、午後11人になります。"},
+      "reviewNote":"Made the adult staffing counts explicit so the final 10/11 totals are derivable from the material rather than implied."
+    },
+    {
+      "id":"V11-B12-G3-016",
+      "materialsPatch":{"craftRegistration":"Craft track: 30 pre-registered children and 5 accompanying adults; total 35."},
+      "body":"A community center planned a winter reading event from 13:30 to 17:00. Ninety-five people had registered, including thirty children who had pre-registered for the craft track. Five accompanying adults were assigned to stay with that group, making a craft group of thirty-five. The original plan used the outdoor stage for the opening, Hall A for two reading sessions, and Room B for crafts. A weather forecast issued that morning changed the situation: snow was expected to become heavy after 15:00, and roads might slow after 16:00. The center had three return shuttles to the station at 15:10, 16:10, and 17:10. Hall A was heated and held eighty people, Room B was heated and held thirty-five, and the outdoor stage held 120 but had no heating. The staff first considered moving all activities into Hall A. That would solve the cold-weather problem, but ninety-five registered participants could not all enter a room with a capacity of eighty. A student volunteer, Mai, proposed using the two heated rooms as parallel tracks instead. From 13:30 to 15:00, the thirty-five-person craft group would stay in Room B for a short read-aloud and the planned craft activity. The other sixty participants would attend the main reading program in Hall A. Neither room would exceed its limit, and families in the craft group would stay together. The formal program would end at 15:00, allowing people who were worried about snow to take the 15:10 shuttle. A smaller optional reading circle for up to thirty-five people could continue in Room B until 15:50, still giving participants time for the 16:10 shuttle. The outdoor stage would not be used. Staff checked the registration list before announcing the change and confirmed the group sizes. The revised plan shortened the event and offered fewer chances to move between activities, but it respected room capacities, provided heated space, and reduced dependence on travel after the forecast's risk period. The center posted the change before noon and asked families to choose the early shuttle if possible. Mai's plan worked because it treated the forecast, room map, shuttle times, and attendance limits as connected conditions rather than separate pieces of information.",
+      "fullTranslation":"地域センターは13時30分から17時まで冬の読書イベントを計画していました。登録者は95人で、そのうち30人の子どもが工作コースへ事前登録していました。そのグループには付き添いの大人5人が入り、工作グループは合計35人です。最初の計画では、開会を屋外ステージで行い、二つの読書会をAホール、工作をB室で行う予定でした。しかし当日朝の予報で、15時以降は雪が強くなり、16時以降は道路が遅れる可能性があると分かりました。駅への帰りのシャトルは15時10分、16時10分、17時10分です。Aホールは暖房があり定員80人、B室は暖房があり定員35人、屋外ステージは120人入れますが暖房はありません。スタッフはまず全活動をAホールへ移そうとしましたが、95人は定員80人を超えます。そこで生徒ボランティアのマイは、暖房のある二室を同時に別コースとして使う案を出しました。13時30分から15時まで、35人の工作グループはB室で短い読み聞かせと予定していた工作を行います。残り60人はAホールで主な読書プログラムに参加します。どちらの部屋も定員を超えず、工作グループの家族も一緒にいられます。正式プログラムは15時に終了し、雪が心配な人は15時10分のシャトルを使えます。希望者35人までの小さな読書会だけをB室で15時50分まで続ければ、16時10分の便にも間に合います。屋外ステージは使いません。スタッフは変更を発表する前に登録名簿を確認し、各グループの人数を確かめました。修正版はイベントが短くなり、活動間を移動する機会も減りますが、定員を守り、暖房のある場所を確保し、予報で危険が高まる時間以降の移動への依存を減らします。センターは正午前に変更を知らせ、可能なら早いシャトルを使うよう家族へ依頼しました。マイの案が成立したのは、天気予報、部屋の地図、シャトル時刻、参加人数を別々ではなく関連する条件として扱ったからです。",
+      "freeWriteTask":{"prompt":"In 20-30 English words, explain one reason the revised plan is safer than the original plan.","scoringConditions":["20-30 words","mentions at least one concrete condition from the passage","explains the safety connection rather than copying one sentence"],"modelAnswer":"The revised plan keeps everyone in heated rooms and lets many families leave before heavy snow may make the roads slower."},
+      "reviewNote":"Removed impossible room swap. Fixed the craft group at 35 so every capacity claim is derivable from the material."
+    }
+  ]
+}

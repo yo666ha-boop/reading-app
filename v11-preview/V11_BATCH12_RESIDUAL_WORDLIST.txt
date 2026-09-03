@@ -1,0 +1,868 @@
+unregistered_distinct=145
+shoe
+jar
+scarf
+courtyard
+slippers
+cash
+electric
+bibs
+cake
+post
+robot
+aisle
+beach
+pilot
+apartment
+frame
+habitat
+preparation
+scraps
+speakers
+tool
+flies
+removal
+sang
+worksheets
+yu
+bin
+buyers
+compost
+cropping
+fountain
+haruna
+jackets
+mat
+toma
+composting
+distinction
+examined
+excluding
+expecting
+naturally
+rotation
+spent
+sunset
+supposed
+tag
+akira
+allergies
+attention
+borrowers
+crutches
+fix
+flying
+fruit
+insect
+knocked
+leg
+mixture
+procedure
+restocked
+rewrite
+sense
+torn
+tracks
+unimportant
+allergens
+allergy
+ambitious
+audience
+bandages
+bent
+bib
+cakes
+calculation
+clips
+complaint
+conducted
+containers
+continuously
+conversion
+converted
+coordinator
+cycling
+dependence
+detached
+dirty
+efficient
+everyday
+fixing
+formal
+incident
+inventory
+kaho
+lunchtime
+milliliter
+ml
+neatly
+port
+postpone
+pressure
+protection
+rear
+recounting
+reeds
+rena
+reset
+ring
+sailing
+sesame
+smooth
+split
+stretched
+talking
+taught
+tightened
+tore
+wiped
+accompanying
+balancing
+cafe
+cage
+ceiling
+disappointed
+exceed
+fed
+fund
+grams
+grew
+hoped
+inexpensive
+lending
+lift
+loss
+maximize
+membership
+midori
+patients
+pre
+prepaid
+protest
+rent
+reopened
+robots
+rolls
+track
+---FUTURE---
+future_distinct=14
+goodbye
+ride
+hamster
+beds
+device
+sink
+connect
+done
+protected
+rides
+tool
+holder
+lift
+prepare
+---GRAMMAR_TYPES---
+{
+  "SV_OO": 1,
+  "PASSIVE": 8,
+  "HAVE_TO": 2,
+  "MODAL_COULD": 3,
+  "RELATIVE_PRONOUN": 3,
+  "WHEN_WHILE_CLAUSE": 1,
+  "MODAL_SHOULD": 1,
+  "ASK_TELL_WANT_O_TO": 1,
+  "MODAL_MAY_MIGHT": 1,
+  "PRESENT_PERFECT": 1,
+  "ENOUGH_TO": 1,
+  "BECAUSE_CLAUSE": 2,
+  "NOT_ONLY_BUT_ALSO": 1
+}
+---GRAMMAR_ROWS---
+[
+  {
+    "textbook": "サンシャイン",
+    "grade": "1",
+    "section": "PROGRAM 10-2",
+    "feature": "SV_OO",
+    "occurrences": 3,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:6",
+        "text": "Mei took the umbrella to the school office and told Ken where it was.",
+        "match": "told Ken where"
+      },
+      {
+        "where": "slash:6",
+        "text": "Mei took the umbrella to the school office and told Ken where it was.",
+        "match": "told Ken where"
+      },
+      {
+        "where": "A4.evidence",
+        "text": "Mei took the umbrella to the school office and told Ken where it was.",
+        "match": "told Ken where"
+      }
+    ]
+  },
+  {
+    "textbook": "ニューホライズン",
+    "grade": "1",
+    "section": "Unit 10-2",
+    "feature": "PASSIVE",
+    "occurrences": 3,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:4",
+        "text": "Thursday's cards would be collected after lunch, but Friday's box was for the next day.",
+        "match": "be collected"
+      },
+      {
+        "where": "slash:4",
+        "text": "Thursday's cards would be collected after lunch, but Friday's box was for the next day.",
+        "match": "be collected"
+      },
+      {
+        "where": "A3.evidence",
+        "text": "Thursday's cards would be collected after lunch, but Friday's box was for the next day.",
+        "match": "be collected"
+      }
+    ]
+  },
+  {
+    "textbook": "サンシャイン",
+    "grade": "1",
+    "section": "PROGRAM 10-2",
+    "feature": "HAVE_TO",
+    "occurrences": 2,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:1",
+        "text": "Aya's class had to meet in the hall at ten o'clock.",
+        "match": "had to meet"
+      },
+      {
+        "where": "slash:1",
+        "text": "Aya's class had to meet in the hall at ten o'clock.",
+        "match": "had to meet"
+      }
+    ]
+  },
+  {
+    "textbook": "ニューホライズン",
+    "grade": "1",
+    "section": "Unit 10-2",
+    "feature": "PASSIVE",
+    "occurrences": 4,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:2",
+        "text": "Riku followed it and reached the old music room, but the door was locked.",
+        "match": "was locked"
+      },
+      {
+        "where": "slash:2",
+        "text": "Riku followed it and reached the old music room, but the door was locked.",
+        "match": "was locked"
+      },
+      {
+        "where": "A2.evidence",
+        "text": "Riku followed it and reached the old music room, but the door was locked.",
+        "match": "was locked"
+      }
+    ]
+  },
+  {
+    "textbook": "ニューホライズン",
+    "grade": "1",
+    "section": "Unit 10-2",
+    "feature": "MODAL_COULD",
+    "occurrences": 3,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:4",
+        "text": "The name at the bottom was partly covered, but she could read the first letter, M.",
+        "match": "could read"
+      },
+      {
+        "where": "slash:4",
+        "text": "The name at the bottom was partly covered, but she could read the first letter, M.",
+        "match": "could read"
+      },
+      {
+        "where": "A2.evidence",
+        "text": "The name at the bottom was partly covered, but she could read the first letter, M.",
+        "match": "could read"
+      }
+    ]
+  },
+  {
+    "textbook": "ニューホライズン",
+    "grade": "1",
+    "section": "Unit 10-2",
+    "feature": "PASSIVE",
+    "occurrences": 5,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:4",
+        "text": "The bus number and location were unchanged.",
+        "match": "were unchanged"
+      },
+      {
+        "where": "slash:4",
+        "text": "The bus number and location were unchanged.",
+        "match": "were unchanged"
+      },
+      {
+        "where": "A3.evidence",
+        "text": "The bus number and location were unchanged.",
+        "match": "were unchanged"
+      }
+    ]
+  },
+  {
+    "textbook": "サンシャイン",
+    "grade": "1",
+    "section": "PROGRAM 10-2",
+    "feature": "PASSIVE",
+    "occurrences": 2,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:2",
+        "text": "Mio fed the hamster and checked that the cage door was closed.",
+        "match": "was closed"
+      },
+      {
+        "where": "slash:2",
+        "text": "Mio fed the hamster and checked that the cage door was closed. She forgot to mark the duty chart.",
+        "match": "was closed"
+      }
+    ]
+  },
+  {
+    "textbook": "サンシャイン",
+    "grade": "1",
+    "section": "PROGRAM 10-2",
+    "feature": "RELATIVE_PRONOUN",
+    "occurrences": 6,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:6",
+        "text": "They decided that the person who finished each job would mark the chart at once.",
+        "match": "person who finished"
+      },
+      {
+        "where": "slash:5",
+        "text": "They decided that the person who finished each job would mark the chart at once.",
+        "match": "person who finished"
+      },
+      {
+        "where": "A3.evidence",
+        "text": "They decided that the person who finished each job would mark the chart at once.",
+        "match": "person who finished"
+      }
+    ]
+  },
+  {
+    "textbook": "ニューホライズン",
+    "grade": "1",
+    "section": "Unit 10-2",
+    "feature": "WHEN_WHILE_CLAUSE",
+    "occurrences": 3,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:4",
+        "text": "Toma took the scarf to the office and mentioned where and when he had found it.",
+        "match": "when he "
+      },
+      {
+        "where": "slash:4",
+        "text": "Toma took the scarf to the office and mentioned where and when he had found it.",
+        "match": "when he "
+      },
+      {
+        "where": "B3.evidence",
+        "text": "Toma took the scarf to the office and mentioned where and when he had found it.",
+        "match": "when he "
+      }
+    ]
+  },
+  {
+    "textbook": "サンシャイン",
+    "grade": "1",
+    "section": "PROGRAM 10-2",
+    "feature": "PASSIVE",
+    "occurrences": 2,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:1",
+        "text": "In the library, Emi noticed that the return cart was parked in front of a low shelf.",
+        "match": "was parked"
+      },
+      {
+        "where": "slash:1",
+        "text": "In the library, Emi noticed that the return cart was parked in front of a low shelf.",
+        "match": "was parked"
+      }
+    ]
+  },
+  {
+    "textbook": "サンシャイン",
+    "grade": "1",
+    "section": "PROGRAM 10-2",
+    "feature": "MODAL_COULD",
+    "occurrences": 7,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:2",
+        "text": "A younger student tried to reach a book but could not get close enough.",
+        "match": "could not get"
+      },
+      {
+        "where": "sentence:6",
+        "text": "The younger student could reach the book, and visitors could still move safely through the library.",
+        "match": "could reach"
+      },
+      {
+        "where": "slash:2",
+        "text": "A younger student tried to reach a book but could not get close enough.",
+        "match": "could not get"
+      }
+    ]
+  },
+  {
+    "textbook": "サンシャイン",
+    "grade": "1",
+    "section": "PROGRAM 10-2",
+    "feature": "HAVE_TO",
+    "occurrences": 4,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:3",
+        "text": "Emi first moved the cart into the aisle, but then people had to walk around it.",
+        "match": "had to walk"
+      },
+      {
+        "where": "slash:3",
+        "text": "Emi first moved the cart into the aisle, but then people had to walk around it.",
+        "match": "had to walk"
+      },
+      {
+        "where": "A2.evidence",
+        "text": "Emi first moved the cart into the aisle, but then people had to walk around it.",
+        "match": "had to walk"
+      }
+    ]
+  },
+  {
+    "textbook": "サンシャイン",
+    "grade": "1",
+    "section": "PROGRAM 10-2",
+    "feature": "MODAL_SHOULD",
+    "occurrences": 6,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:4",
+        "text": "She asked the librarian where it should go.",
+        "match": "should go"
+      },
+      {
+        "where": "slash:4",
+        "text": "She asked the librarian where it should go.",
+        "match": "should go"
+      },
+      {
+        "where": "A3.evidence",
+        "text": "She asked the librarian where it should go. Together they placed it beside the return desk, where it did not block shelves or the aisle.",
+        "match": "should go"
+      }
+    ]
+  },
+  {
+    "textbook": "サンシャイン",
+    "grade": "1",
+    "section": "PROGRAM 10-2",
+    "feature": "PASSIVE",
+    "occurrences": 6,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:1",
+        "text": "Visitors to the school garden were supposed to follow a sign toward the flower beds.",
+        "match": "were supposed"
+      },
+      {
+        "where": "sentence:7",
+        "text": "Hana also added a note to the garden check sheet so the sign would be checked after strong wind.",
+        "match": "be checked"
+      },
+      {
+        "where": "slash:1",
+        "text": "Visitors to the school garden were supposed to follow a sign toward the flower beds.",
+        "match": "were supposed"
+      }
+    ]
+  },
+  {
+    "textbook": "ニューホライズン",
+    "grade": "1",
+    "section": "Unit 10-2",
+    "feature": "ASK_TELL_WANT_O_TO",
+    "occurrences": 5,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:5",
+        "text": "He asked Yuta to check them.",
+        "match": "asked Yuta to check"
+      },
+      {
+        "where": "slash:4",
+        "text": "Jun did not put both shoes into Yuta's box. He asked Yuta to check them.",
+        "match": "asked Yuta to check"
+      },
+      {
+        "where": "B2.evidence",
+        "text": "He asked Yuta to check them.",
+        "match": "asked Yuta to check"
+      }
+    ]
+  },
+  {
+    "textbook": "ニューホライズン",
+    "grade": "1",
+    "section": "Unit 10-2",
+    "feature": "PASSIVE",
+    "occurrences": 7,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:2",
+        "text": "Cup A was supposed to stay by the bright south window, and Cup B by the darker north window.",
+        "match": "was supposed"
+      },
+      {
+        "where": "sentence:6",
+        "text": "Because the mistake was found early, the class could record the mix-up and continue the observation without assuming that Cup B had stayed by the north window all day.",
+        "match": "was found"
+      },
+      {
+        "where": "slash:2",
+        "text": "Cup A was supposed to stay by the bright south window, and Cup B by the darker north window.",
+        "match": "was supposed"
+      }
+    ]
+  },
+  {
+    "textbook": "ニューホライズン",
+    "grade": "1",
+    "section": "Unit 10-2",
+    "feature": "MODAL_COULD",
+    "occurrences": 4,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:6",
+        "text": "Because the mistake was found early, the class could record the mix-up and continue the observation without assuming that Cup B had stayed by the north window all day.",
+        "match": "could record"
+      },
+      {
+        "where": "slash:6",
+        "text": "Because the mistake was found early, the class could record the mix-up and continue the observation without assuming that Cup B had stayed by the north window all day.",
+        "match": "could record"
+      },
+      {
+        "where": "A5.evidence",
+        "text": "Because the mistake was found early, the class could record the mix-up and continue the observation without assuming that Cup B had stayed by the north window all day.",
+        "match": "could record"
+      }
+    ]
+  },
+  {
+    "textbook": "サンシャイン",
+    "grade": "1",
+    "section": "PROGRAM 10-2",
+    "feature": "MODAL_MAY_MIGHT",
+    "occurrences": 5,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:3",
+        "text": "He did not bring a new chair immediately because one might simply have been moved.",
+        "match": "might simply"
+      },
+      {
+        "where": "slash:3",
+        "text": "He did not bring a new chair immediately because one might simply have been moved.",
+        "match": "might simply"
+      },
+      {
+        "where": "A3.evidence",
+        "text": "He did not bring a new chair immediately because one might simply have been moved.",
+        "match": "might simply"
+      }
+    ]
+  },
+  {
+    "textbook": "サンシャイン",
+    "grade": "1",
+    "section": "PROGRAM 10-2",
+    "feature": "PRESENT_PERFECT",
+    "occurrences": 5,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:3",
+        "text": "He did not bring a new chair immediately because one might simply have been moved.",
+        "match": "have been"
+      },
+      {
+        "where": "slash:3",
+        "text": "He did not bring a new chair immediately because one might simply have been moved.",
+        "match": "have been"
+      },
+      {
+        "where": "A3.evidence",
+        "text": "He did not bring a new chair immediately because one might simply have been moved.",
+        "match": "have been"
+      }
+    ]
+  },
+  {
+    "textbook": "サンシャイン",
+    "grade": "1",
+    "section": "PROGRAM 10-2",
+    "feature": "PASSIVE",
+    "occurrences": 5,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:3",
+        "text": "He did not bring a new chair immediately because one might simply have been moved.",
+        "match": "been moved"
+      },
+      {
+        "where": "slash:3",
+        "text": "He did not bring a new chair immediately because one might simply have been moved.",
+        "match": "been moved"
+      },
+      {
+        "where": "A3.evidence",
+        "text": "He did not bring a new chair immediately because one might simply have been moved.",
+        "match": "been moved"
+      }
+    ]
+  },
+  {
+    "textbook": "サンシャイン",
+    "grade": "2",
+    "section": "PROGRAM 8-3",
+    "feature": "ENOUGH_TO",
+    "occurrences": 3,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:7",
+        "text": "No student waited more than four minutes, and both groups still had enough time to drink.",
+        "match": "enough time to drink"
+      },
+      {
+        "where": "slash:6",
+        "text": "The next day, they measured the waits again. No student waited more than four minutes, and both groups still had enough time to drink.",
+        "match": "enough time to drink"
+      },
+      {
+        "where": "A5.evidence",
+        "text": "No student waited more than four minutes, and both groups still had enough time to drink.",
+        "match": "enough time to drink"
+      }
+    ]
+  },
+  {
+    "textbook": "ニューホライズン",
+    "grade": "2",
+    "section": "Unit 7-4",
+    "feature": "RELATIVE_PRONOUN",
+    "occurrences": 3,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:4",
+        "text": "Kaho was ready to report that result, but she noticed that almost every response came from students who already used the library.",
+        "match": "students who already"
+      },
+      {
+        "where": "slash:3",
+        "text": "Kaho was ready to report that result, but she noticed that almost every response came from students who already used the library.",
+        "match": "students who already"
+      },
+      {
+        "where": "A2.evidence",
+        "text": "Kaho was ready to report that result, but she noticed that almost every response came from students who already used the library.",
+        "match": "students who already"
+      }
+    ]
+  },
+  {
+    "textbook": "サンシャイン",
+    "grade": "2",
+    "section": "PROGRAM 8-3",
+    "feature": "BECAUSE_CLAUSE",
+    "occurrences": 3,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:2",
+        "text": "Their printed route used the east sidewalk because it was the shortest path.",
+        "match": "because it "
+      },
+      {
+        "where": "slash:2",
+        "text": "Their printed route used the east sidewalk because it was the shortest path.",
+        "match": "because it "
+      },
+      {
+        "where": "A1.evidence",
+        "text": "Their printed route used the east sidewalk because it was the shortest path.",
+        "match": "because it "
+      }
+    ]
+  },
+  {
+    "textbook": "ニューホライズン",
+    "grade": "2",
+    "section": "Unit 7-4",
+    "feature": "RELATIVE_PRONOUN",
+    "occurrences": 3,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:6",
+        "text": "The club added a minimum number beside each item and asked the student who opened the last package to mark it.",
+        "match": "student who opened"
+      },
+      {
+        "where": "slash:6",
+        "text": "The club added a minimum number beside each item and asked the student who opened the last package to mark it.",
+        "match": "student who opened"
+      },
+      {
+        "where": "B2.evidence",
+        "text": "The club added a minimum number beside each item and asked the student who opened the last package to mark it.",
+        "match": "student who opened"
+      }
+    ]
+  },
+  {
+    "textbook": "サンシャイン",
+    "grade": "3",
+    "section": "PROGRAM 7-3",
+    "feature": "BECAUSE_CLAUSE",
+    "occurrences": 3,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:4",
+        "text": "Haru did not want to choose the date that appeared in the first interview simply because it had been recorded earlier.",
+        "match": "because it "
+      },
+      {
+        "where": "slash:4",
+        "text": "Haru did not want to choose the date that appeared in the first interview simply because it had been recorded earlier.",
+        "match": "because it "
+      },
+      {
+        "where": "A2.evidence",
+        "text": "Haru did not want to choose the date that appeared in the first interview simply because it had been recorded earlier.",
+        "match": "because it "
+      }
+    ]
+  },
+  {
+    "textbook": "ニューホライズン",
+    "grade": "3",
+    "section": "Unit 6-4",
+    "feature": "NOT_ONLY_BUT_ALSO",
+    "occurrences": 4,
+    "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
+    "coarseBoundary": null,
+    "introducedGrade": null,
+    "samples": [
+      {
+        "where": "sentence:12",
+        "text": "The decision was based not only on attendance but also on whether the revised procedure made responsibilities and limits clearer.",
+        "match": "not only on attendance but also"
+      },
+      {
+        "where": "slash:12",
+        "text": "The decision was based not only on attendance but also on whether the revised procedure made responsibilities and limits clearer.",
+        "match": "not only on attendance but also"
+      },
+      {
+        "where": "B3.evidence",
+        "text": "The decision was based not only on attendance but also on whether the revised procedure made responsibilities and limits clearer.",
+        "match": "not only on attendance but also"
+      }
+    ]
+  }
+]

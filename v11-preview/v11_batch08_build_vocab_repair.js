@@ -1,0 +1,8 @@
+'use strict';
+const fs=require('fs');
+const r=JSON.parse(fs.readFileSync('V11_BATCH08_VOCAB_CHRONOLOGY_REPORT.json','utf8'));
+const by={};for(const x of [...(r.unresolved||[]),...(r.future||[])]){(by[x.id]??=new Set()).add(String(x.word).toLowerCase().replace(/[’‘]/g,"'"));}
+const plain={};for(const [id,s] of Object.entries(by))plain[id]=[...s].sort();
+const out=`(function repairV11Batch08VocabChronology(){\n'use strict';\nconst groups=[window.V11_BATCH08_G1_DRAFTS||[],window.V11_BATCH08_G2_DRAFTS||[],window.V11_BATCH08_G3_DRAFTS||[]];\nconst ps=groups.flat();if(ps.length!==50)throw Error('Batch08 50 passages missing');\nconst add=${JSON.stringify(plain)};\nlet added=0;for(const p of ps){p.notes=Array.isArray(p.notes)?p.notes:[];p.notes=p.notes.filter(n=>n&&n.kind!=='temporary_vocab_inventory');const have=new Set(p.notes.map(n=>String(n.english||'').toLowerCase().replace(/[’‘]/g,"'")));for(const w of(add[p.id]||[])){if(have.has(w))continue;p.notes.push({english:w,japanese:w+'（本文で使用・最終注整理対象）',kind:'unlearned_local_required',source:'v11 Batch08 exact chronology report; temporary gloss pending verified Japanese finalization'});have.add(w);added++;}}\nwindow.V11_BATCH08_VOCAB_REPAIR_STATE={version:'20260829',passages:ps.length,distinctPassageWords:Object.values(add).reduce((n,a)=>n+a.length,0),notesAdded:added,temporaryGlosses:true,registered:false};\n})();\n`;
+fs.writeFileSync('v11_batch08_vocab_repair.js',out);
+console.log(`generated passages=${Object.keys(plain).length} passageWords=${Object.values(plain).reduce((n,a)=>n+a.length,0)}`);

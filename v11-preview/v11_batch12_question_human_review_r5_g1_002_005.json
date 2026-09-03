@@ -1,0 +1,78 @@
+{
+  "batch": "V11-B12",
+  "registered": false,
+  "officialTotal": 718,
+  "reviewStage": "B12_QUESTION_HUMAN_REVIEW_R5",
+  "reviewedPassages": 4,
+  "reviewedQuestions": 40,
+  "passages": [
+    {
+      "id": "V11-B12-G1-002",
+      "questions": [
+        {"questionType":"DETAIL","prompt":"ソラが最初、読書カードを金曜日の箱へ入れそうになったのはなぜですか。","answer":"金曜日の箱にすでに何枚かカードが入っていたからです。","evidence":"He almost put it into the box marked Friday because several cards were already there.","evidenceJp":"金曜日と書かれた箱にすでに何枚かカードが入っていたので、そこへ入れそうになりました。","reason":"最初の誤判断の直接の理由を本文から確認します。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"DETAIL","prompt":"ソラが箱の横で確認したものは何ですか。","answer":"カードの回収表です。","evidence":"Then he looked at the collection chart beside the boxes.","evidenceJp":"そこで、ソラは箱の横の回収表を見ました。","reason":"判断を変えるために確認した具体物を問います。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"REASON","prompt":"回収表を見たあと、ソラがカードを木曜日の箱へ移したのはなぜですか。","answer":"木曜日のカードはその日の昼食後に回収され、金曜日の箱は翌日用だと分かったからです。","evidence":"Thursday's cards would be collected after lunch, but Friday's box was for the next day.","evidenceJp":"木曜日のカードは昼食後に回収され、金曜日の箱は翌日用だと分かりました。","reason":"曜日と回収時刻の情報が移動の判断を直接支えています。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"CONTENT_MATCH","prompt":"回収表を確認したあとにソラがしたことを二つ答えなさい。","answer":"カードを木曜日の箱へ移し、その理由を友達に伝えました。","evidence":"Sora moved his card to the Thursday box and told his friend why.","evidenceJp":"ソラはカードを木曜日の箱へ移し、友達にも理由を伝えました。","reason":"確認後の二つの行動を一文から正確にまとめます。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"GIST","prompt":"この話で、ソラが読書カードを一日余計に待たせずにすんだ決め手は何ですか。","answer":"箱に入っている他のカードにつられず、曜日と回収表を確認したことです。","evidence":"A quick check of the weekday kept Sora's card from waiting an extra day.","evidenceJp":"曜日を少し確認したことで、ソラのカードが一日余計に待つことを防げました。","reason":"結末が本文全体の判断の要点を示しています。","humanReview":"HUMAN_REVIEW_R5"}
+      ],
+      "questionSetB": [
+        {"questionType":"INFERENCE","prompt":"もしソラが金曜日の箱へそのままカードを入れていたら、カードはどうなったと考えられますか。","answer":"木曜日には回収されず、翌日の金曜日まで余計に待つことになったと考えられます。","evidence":"A quick check of the weekday kept Sora's card from waiting an extra day.","evidenceJp":"曜日を少し確認したことで、ソラのカードが一日余計に待つことを防げました。","reason":"実際には確認によって一日待つのを防いだため、その逆の結果を本文の範囲内で推論できます。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"SUMMARY_FILL","prompt":"「金曜日の箱に入れそうになる→（　）→木曜日の箱へ移す」となるよう、（　）に入る中心的な行動を答えなさい。","answer":"箱の横の回収表を確認する。","evidence":"Then he looked at the collection chart beside the boxes.","evidenceJp":"そこで、ソラは箱の横の回収表を見ました。","reason":"誤判断と修正の間にある転換点を問います。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"CONTEXT_WORD","prompt":"最後の an extra day は、ソラのカードについて具体的に何が一日余計になることを表しますか。","answer":"正しい日に回収されず、箱の中で回収を待つ時間が一日長くなることです。","evidence":"A quick check of the weekday kept Sora's card from waiting an extra day.","evidenceJp":"曜日を少し確認したことで、ソラのカードが一日余計に待つことを防げました。","reason":"文脈中の抽象表現を出来事に即して説明します。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"CONTENT_MATCH","prompt":"本文の時系列として正しい内容を答えなさい。","answer":"木曜日の朝にカードを書き、回収表を確認して木曜日の箱へ移し、昼食後に図書委員が木曜日のカードを回収しました。","evidence":"After lunch, the librarian collected the Thursday cards as the chart said.","evidenceJp":"昼食後、図書委員は表のとおり木曜日のカードを回収しました。","reason":"冒頭・転換・結末をつないで時系列を確認します。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"GIST","prompt":"本文に最も合う学びを一文で答えなさい。","answer":"周りの人の行動だけで判断せず、曜日や回収予定のような確かな情報を確認することが大切です。","evidence":"A quick check of the weekday kept Sora's card from waiting an extra day.","evidenceJp":"曜日を少し確認したことで、ソラのカードが一日余計に待つことを防げました。","reason":"ソラの誤りかけた理由と、確認によって防げた結果の両方をまとめます。","humanReview":"HUMAN_REVIEW_R5"}
+      ]
+    },
+    {
+      "id": "V11-B12-G1-003",
+      "questions": [
+        {"questionType":"DETAIL","prompt":"9時50分の時点で、教室の時計は何時を示していましたか。","answer":"9時55分です。","evidence":"At 9:50, the classroom clock showed 9:55, so some students started to line up.","evidenceJp":"9時50分、教室の時計は9時55分を示していたため、何人かの生徒は並び始めました。","reason":"二つの時刻を混同せず、教室の時計の表示を確認します。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"DETAIL","prompt":"アヤのタブレットの時計は何時を示していましたか。","answer":"9時50分です。","evidence":"Aya looked at the clock on her tablet, which showed 9:50.","evidenceJp":"アヤがタブレットの時計を見ると9時50分でした。","reason":"教室の時計と比較するための別の時刻を問います。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"REASON","prompt":"先生が職員室の時計を確認したのは、何を確かめるためだと考えられますか。","answer":"教室の時計とアヤのタブレットで時刻が違っていたので、正しい時刻を確かめるためです。","evidence":"Their teacher checked the office clock and found that the classroom clock was five minutes fast.","evidenceJp":"先生が職員室の時計を確認すると、教室の時計が5分進んでいることが分かりました。","reason":"二つの時計の食い違いのあとに第三の時計を確認した流れから判断できます。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"CONTENT_MATCH","prompt":"確認の結果、教室の時計にはどんな問題があると分かりましたか。","answer":"正しい時刻より5分進んでいました。","evidence":"Their teacher checked the office clock and found that the classroom clock was five minutes fast.","evidenceJp":"先生が職員室の時計を確認すると、教室の時計が5分進んでいることが分かりました。","reason":"確認によって判明した具体的なずれを問います。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"GIST","prompt":"予定自体は変わっていないのに、生徒たちが早く並び始めた原因は何でしたか。","answer":"教室の時計が5分進んでいたことです。","evidence":"The students learned why they had started lining up early even though the schedule had not changed.","evidenceJp":"予定は変わっていないのに、なぜ早く並び始めてしまったのか生徒たちは理解しました。","reason":"本文全体の問題と結論を結び付けます。","humanReview":"HUMAN_REVIEW_R5"}
+      ],
+      "questionSetB": [
+        {"questionType":"INFERENCE","prompt":"アヤがタブレットの時計を見なかった場合、クラスはどうしていた可能性がありますか。","answer":"教室の時計を正しいと思い、予定より早くホールへ向かっていた可能性があります。","evidence":"At 9:50, the classroom clock showed 9:55, so some students started to line up.","evidenceJp":"9時50分、教室の時計は9時55分を示していたため、何人かの生徒は並び始めました。","reason":"誤った時計表示が実際に早い整列を引き起こしていたため、本文の範囲内の推論です。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"SUMMARY_FILL","prompt":"「教室の時計9:55→タブレット9:50→（　）→教室の時計が5分進んでいると判明」となるよう、（　）を埋めなさい。","answer":"先生が職員室の時計を確認する。","evidence":"Their teacher checked the office clock and found that the classroom clock was five minutes fast.","evidenceJp":"先生が職員室の時計を確認すると、教室の時計が5分進んでいることが分かりました。","reason":"時刻の食い違いを解決した確認行動を問います。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"CONTENT_MATCH","prompt":"時計のずれが分かったあと、クラスと先生がそれぞれしたことを答えなさい。","answer":"クラスは少し待って予定時刻にホールへ行き、先生はあとで教室の時計を直しました。","evidence":"The class waited a little longer and reached the hall at the planned time. Later, the teacher reset the classroom clock.","evidenceJp":"クラスは少し待ち、予定どおりの時刻にホールへ着きました。その後、先生は教室の時計を直しました。","reason":"原因判明後の二つの対応を時系列でまとめます。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"CONTEXT_WORD","prompt":"five minutes fast は、この教室の時計についてどんな状態を表しますか。","answer":"実際の時刻より5分先の時刻を表示している状態です。","evidence":"Their teacher checked the office clock and found that the classroom clock was five minutes fast.","evidenceJp":"先生が職員室の時計を確認すると、教室の時計が5分進んでいることが分かりました。","reason":"fast を『速い』とだけ訳さず、時計の文脈で具体化します。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"GIST","prompt":"この話から分かる、予定時刻を判断するときの大切な点は何ですか。","answer":"時計同士で時刻が食い違ったら、信頼できる別の時計でも確認してから行動することです。","evidence":"Their teacher checked the office clock and found that the classroom clock was five minutes fast.","evidenceJp":"先生が職員室の時計を確認すると、教室の時計が5分進んでいることが分かりました。","reason":"誤表示の発見方法とその後の正しい行動をまとめます。","humanReview":"HUMAN_REVIEW_R5"}
+      ]
+    },
+    {
+      "id": "V11-B12-G1-004",
+      "questions": [
+        {"questionType":"DETAIL","prompt":"階段近くの古いポスターの矢印はどちらを指していましたか。","answer":"左です。","evidence":"A poster near the stairs said, 'Music Club Welcome Day,' and its arrow pointed left.","evidenceJp":"階段の近くに「音楽部歓迎会」と書かれたポスターがあり、矢印は左を指していました。","reason":"最初の案内の具体的な方向を確認します。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"CONTENT_MATCH","prompt":"リクが古い矢印に従った結果、どこへ着き、そこで何が分かりましたか。","answer":"旧音楽室へ着きましたが、扉には鍵がかかっていました。","evidence":"Riku followed it and reached the old music room, but the door was locked.","evidenceJp":"リクがそのとおり進むと旧音楽室に着きましたが、扉には鍵がかかっていました。","reason":"古い案内が正しくないと気づく最初の出来事を問います。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"DETAIL","prompt":"扉の小さな掲示には、音楽部の現在の活動場所がどこだと書かれていましたか。","answer":"階段の右側にある204教室です。","evidence":"A smaller notice on the door said that the club now met in Room 204 on the right side of the stairs.","evidenceJp":"扉の小さな掲示には、音楽部は今は階段の右側にある204教室で活動すると書かれていました。","reason":"古い案内を訂正する新しい情報を確認します。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"REASON","prompt":"リクが部長に古い矢印のことを伝えたのはなぜですか。","answer":"古い矢印が旧音楽室を案内しており、これから来る人も間違える可能性があったからです。","evidence":"Riku found the new room and told the club leader about the old arrow.","evidenceJp":"リクは新しい部屋を見つけ、部長に古い矢印のことを伝えました。","reason":"その後すぐ案内を直した流れから、伝えた目的を本文の範囲で説明できます。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"GIST","prompt":"案内を直したことで、次に来た人たちにはどんな変化がありましたか。","answer":"迷って旧音楽室へ行かず、直接204教室へ行けました。","evidence":"The changed sign helped the next group reach Room 204 directly.","evidenceJp":"直した案内のおかげで、次の人たちは直接204教室へ行けました。","reason":"修正の効果を結末から読み取ります。","humanReview":"HUMAN_REVIEW_R5"}
+      ],
+      "questionSetB": [
+        {"questionType":"INFERENCE","prompt":"もしリクたちが古い矢印を直さなかったら、次の来客に何が起こる可能性がありましたか。","answer":"リクと同じように左へ進み、鍵のかかった旧音楽室へ行ってしまう可能性がありました。","evidence":"Riku followed it and reached the old music room, but the door was locked.","evidenceJp":"リクがそのとおり進むと旧音楽室に着きましたが、扉には鍵がかかっていました。","reason":"リクに実際に起きたことから、同じ案内を使う次の来客への影響を推論できます。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"SUMMARY_FILL","prompt":"「左を示す古い矢印→旧音楽室は施錠→（　）→案内を修正」となるよう、（　）に入る情報を答えなさい。","answer":"扉の掲示で、現在は右側の204教室だと分かる。","evidence":"A smaller notice on the door said that the club now met in Room 204 on the right side of the stairs.","evidenceJp":"扉の小さな掲示には、音楽部は今は階段の右側にある204教室で活動すると書かれていました。","reason":"古い案内が誤りだと確定させた情報を入れます。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"CONTENT_MATCH","prompt":"案内を直すとき、リクたちは具体的に何をしましたか。","answer":"間違った矢印を隠し、新しい矢印を付けました。","evidence":"Before more visitors arrived, they covered the wrong arrow and added a new one.","evidenceJp":"さらに来客が来る前に、みんなで間違った矢印を隠し、新しい矢印を付けました。","reason":"修正作業の二つの内容を直接確認します。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"CONTEXT_WORD","prompt":"最後の directly は、次の人たちの移動がリクの最初の移動とどう違ったことを表しますか。","answer":"旧音楽室へ回り道せず、最初から204教室へ行けたことです。","evidence":"The changed sign helped the next group reach Room 204 directly.","evidenceJp":"直した案内のおかげで、次の人たちは直接204教室へ行けました。","reason":"directly を前半の迷いと対比して具体化します。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"GIST","prompt":"この話の中心に最も近い内容を答えなさい。","answer":"古い案内の誤りを新しい掲示で確認し、次の人が迷わないよう案内そのものを直した話です。","evidence":"Before more visitors arrived, they covered the wrong arrow and added a new one.","evidenceJp":"さらに来客が来る前に、みんなで間違った矢印を隠し、新しい矢印を付けました。","reason":"発見だけで終わらず、再発防止まで行った本文全体をまとめます。","humanReview":"HUMAN_REVIEW_R5"}
+      ]
+    },
+    {
+      "id": "V11-B12-G1-005",
+      "questions": [
+        {"questionType":"DETAIL","prompt":"最初、ハルは何人分のビブスを用意していましたか。","answer":"12人分です。","evidence":"Before PE, Haru counted twelve soccer bibs for two teams of six.","evidenceJp":"体育の前、ハルは6人ずつ2チーム分としてサッカーのビブスを12枚数えました。","reason":"当初の人数とビブス枚数を確認します。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"DETAIL","prompt":"先生の知らせによって、参加する生徒は何人増えましたか。","answer":"4人です。","evidence":"A few minutes later, the teacher said that four students from another class would join the game.","evidenceJp":"数分後、先生が別のクラスから4人加わると伝えました。","reason":"人数変更の原因となった具体的な増加数を問います。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"REASON","prompt":"ハルが最初は12枚のままで足りると思ったのはなぜですか。","answer":"すでに袋の準備が終わっていたからです。","evidence":"Haru first thought twelve bibs were still enough because the bags were already ready.","evidenceJp":"袋の準備が終わっていたため、ハルは最初12枚のままで足りると思いました。","reason":"最初の考えを生んだ直接の理由を確認します。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"CONTENT_MATCH","prompt":"選手を数え直した結果、二つのチームはそれぞれ何人必要だと分かりましたか。","answer":"8人ずつです。","evidence":"Then he counted the players: sixteen students needed two teams of eight.","evidenceJp":"しかし選手を数えると、16人を8人ずつの2チームにする必要がありました。","reason":"16人という合計とチーム分けを正しく対応させます。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"GIST","prompt":"人数が変わったあとに数え直したことで、どんな問題を防げましたか。","answer":"試合開始時にビブスが足りず、着けられない選手が出ることを防げました。","evidence":"When the game began, every player had a bib.","evidenceJp":"試合が始まると全員がビブスを着けられました。","reason":"実際の成功結果から、防げた具体的な問題を読み取ります。","humanReview":"HUMAN_REVIEW_R5"}
+      ],
+      "questionSetB": [
+        {"questionType":"INFERENCE","prompt":"ハルが4枚追加しなかった場合、何人の選手にビブスが足りなかったと考えられますか。","answer":"4人です。","evidence":"Then he counted the players: sixteen students needed two teams of eight. He brought four more bibs from the storage room and counted again.","evidenceJp":"しかし選手を数えると、16人を8人ずつの2チームにする必要がありました。ハルは倉庫から4枚追加し、もう一度数えました。","reason":"16人に対して元は12枚なので、本文の数値から4枚不足と計算できます。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"SUMMARY_FILL","prompt":"「12枚を準備→4人追加→（　）→4枚追加」となるよう、（　）に入る行動と結果を答えなさい。","answer":"選手を数え直し、16人で8人ずつの2チームになると確認する。","evidence":"Then he counted the players: sixteen students needed two teams of eight.","evidenceJp":"しかし選手を数えると、16人を8人ずつの2チームにする必要がありました。","reason":"追加行動を決める直前の再確認を問います。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"CONTENT_MATCH","prompt":"ハルは不足が分かったあと、どのように対応しましたか。","answer":"倉庫からビブスを4枚持って来て、もう一度数えました。","evidence":"He brought four more bibs from the storage room and counted again.","evidenceJp":"ハルは倉庫から4枚追加し、もう一度数えました。","reason":"結果ではなく、問題解決のために本人が行った対応を問います。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"CONTEXT_WORD","prompt":"最後の after the group changed は、この話では具体的にどんな変化を指しますか。","answer":"別のクラスの4人が加わり、参加者が12人から16人になったことです。","evidence":"A few minutes later, the teacher said that four students from another class would join the game.","evidenceJp":"数分後、先生が別のクラスから4人加わると伝えました。","reason":"抽象的な group changed を本文の人数変化に結び付けます。","humanReview":"HUMAN_REVIEW_R5"},
+        {"questionType":"GIST","prompt":"この話が示す、準備を終えたあとでも確認し直すべき場面はどんなときですか。","answer":"参加人数など、準備の前提となる条件が変わったときです。","evidence":"Recounting after the group changed prevented a problem on the field.","evidenceJp":"人数が変わった後に数え直したことで、グラウンドでの問題を防げました。","reason":"人数変更→再計数→不足解消という本文全体の因果を一般化します。","humanReview":"HUMAN_REVIEW_R5"}
+      ]
+    }
+  ]
+}

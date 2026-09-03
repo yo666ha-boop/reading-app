@@ -1,0 +1,1 @@
+window.V10_NEWHORIZON_G2=window.V10_PASSAGES_G2_NH||{};

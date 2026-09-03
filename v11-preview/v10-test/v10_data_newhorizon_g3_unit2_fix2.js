@@ -1,0 +1,20 @@
+(()=>{const D=window.V10_PASSAGES_G3_NH;
+let m=D['Unit 2-2'];
+m.sentences[11]='This idea can help us think about fashion.';
+m.slashRows[11]={en:'This idea can help / us / think about fashion.',jp:'この考えは助けます / 私たちが / ファッションについて考えるのを'};
+m.fullTranslation='「私は新しいデザインについてデザイナーに電話をします。私は『このデザインについてどれくらい長く知っていますか』とたずねます。答えは『去年から知っています』です。そのデザイナーは今年そのデザインを導入できます。そのデザインはよい影響を与えることができます。私たちは古いアクセサリーをリサイクルできます。古いアクセサリーは新しい製品になることができます。私はこの考えを2年間知っています。友達は去年からそれを知っています。私たちは放課後、そのデザインについて話します。私はその影響についてもっと学びたいです。この考えは私たちがファッションについて考える助けになります。」';
+m.allowedWords[1][0]='designer / know-known / year / good / old / new / product / idea / friend / after school / want to / learn / more / can / help / think about / fashion';
+m.auditNote+=' ReadThink初出clothingの先取りを削除しfashionへ戻した。';
+
+m=D['Unit 2-3'];
+m.sentences[0]='I read about a company.';
+m.sentences[8]='I read, “You’ve read a lot.”';
+m.sentences[11]='I want to know more about the company.';
+m.slashRows[0]={en:'I read about / a company.',jp:'私は読みます / 会社について'};
+m.slashRows[8]={en:'I read, / “You’ve read a lot.”',jp:'私は読みます / 「たくさん読んだね」'};
+m.slashRows[11]={en:'I want to know / more / about the company.',jp:'私は知りたいです / もっと / その会社について'};
+m.fullTranslation='「私はある会社について読みます。会社の人々はより少ない材料を使いたいと考えています。羊毛を使いすぎることを避けることができます。その会社は製品に古い材料を含めることができます。さらに、古いデザインをもう一度使うこともできます。私は労働者と羊毛の使用について話します。その会社は羊毛を使いすぎることを禁止できます。この行動はよりよい製品につながることがあります。私は『たくさん読んだね』と読みます。私はその会社によい考えがあると思います。私たちは授業でその会社について書きます。私はその会社についてもっと知りたいです。」';
+m.questions[0]={prompt:'1. 何について読みますか。本文から英語で答えなさい。',answer:'a company',evidence:'I read about a company.',evidenceJp:'私はある会社について読みます。',reason:'read about の後ろが a company です。'};
+m.allowedWords[1][0]='material / product / old / design / again / action / better / friend / read / think / good / idea / write about / class / want to / know / more / people / talk with';
+m.auditNote+=' 共通プール後半初出clothingと未登録learnedを削除し、You’ve readへ修正。';
+})();

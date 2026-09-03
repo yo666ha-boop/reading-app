@@ -1,0 +1,12 @@
+'use strict';
+const fs=require('fs');
+const src=fs.readFileSync('V11_BATCH07_50_PASSAGE_PLAN.md','utf8');
+const rows=[...src.matchAll(/^\d+\. `([^`]+)` — (.+?) — \*\*(.+?)\*\* — (.+)$/gm)].map(m=>({id:m[1],mapping:m[2],title:m[3],story:m[4]}));
+const ids=new Set(rows.map(x=>x.id)),titles=new Set(rows.map(x=>x.title.toLowerCase()));
+const counts={g1:rows.filter(x=>/-G1-/.test(x.id)).length,g2:rows.filter(x=>/-G2-/.test(x.id)).length,g3:rows.filter(x=>/-G3-/.test(x.id)).length};
+const badIds=rows.filter((x,i)=>x.id!==`V11-B07-G${i<17?1:i<34?2:3}-${String(i<17?i+1:i<34?i-16:i-33).padStart(3,'0')}`).map(x=>x.id);
+const allowedMappings={g1:['Sunshine G1 PROGRAM 10-2','NH G1 Unit 10-2'],g2:['Sunshine G2 PROGRAM 8-3','NH G2 Unit 7-4'],g3:['Sunshine G3 PROGRAM 7-3','NH G3 Unit 6-4']};
+const mappingIssues=rows.filter(x=>{const k=/-G1-/.test(x.id)?'g1':/-G2-/.test(x.id)?'g2':'g3';return !allowedMappings[k].includes(x.mapping)}).map(x=>({id:x.id,mapping:x.mapping}));
+const storyShort=rows.filter(x=>x.story.split(/\s+/).length<12).map(x=>x.id);
+const out={generatedAt:new Date().toISOString(),rows:rows.length,uniqueIds:ids.size,uniqueTitles:titles.size,counts,badIds,mappingIssues,storyShort,registered:/`registered=true`/.test(src),pass:rows.length===50&&ids.size===50&&titles.size===50&&counts.g1===17&&counts.g2===17&&counts.g3===16&&!badIds.length&&!mappingIssues.length&&!storyShort.length&&!/`registered=true`/.test(src)};
+fs.writeFileSync('V11_BATCH07_PLAN_AUDIT.json',JSON.stringify(out,null,2)+'\n');console.log(JSON.stringify(out,null,2));if(!out.pass)process.exitCode=1;

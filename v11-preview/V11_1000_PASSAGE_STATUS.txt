@@ -1,0 +1,31 @@
+phase=V11_BATCH12_COMPLETE_BATCH13_NEXT
+branch=v11-1000passage-easy-notes
+baseline_passages=168
+target_passages=1000
+batch_size=50
+current_total=768
+remaining_passages=232
+next_batch=Batch13
+next_batch_target=818
+batch01_registered=true
+batch02_registered=true
+batch03_registered=true
+batch04_registered=true
+batch05_registered=true
+batch06_registered=true
+batch07_registered=true
+batch08_registered=true
+batch09_registered=true
+batch10_registered=true
+batch11_registered=true
+batch12_registered=true
+batch12_passages=50
+batch12_grade_split=G1_17_G2_17_G3_16
+batch12_human_semantic_review=PASS passages=50
+batch12_human_question_gate=PASS questions=500 pending=0
+batch12_final_slash_human_gate=PASS passages=50 rows=461 length_repair_reviewed=12 failures=0
+batch12_final_content_integrity=PASS passages=50 questions=500 uncovered_gloss=0 failures=0
+batch12_candidate_runtime=PASS total=768 registered=false candidate_only=true pc=PASS iphone=PASS overflow=0 errors=0 duplicate_id=0 duplicate_body=0 near_duplicate=0 a4_sections=6 a4_files=12
+batch12_registration=ALL_50_TOGETHER_AFTER_FULL_FINAL_GATES
+release_to_main=NO_UNTIL_1000_AND_FINAL_RELEASE_GATES_PASS
+next_step=Start Batch13 from current branch HEAD and latest Drive 00/99. Build 50 distinct unregistered passages from current v7 textbook chronology and latest Yamaguchi profile; human-read every passage and synchronize translation/slash/questions/evidence before chronology, notes, duplicate, Chromium/WebKit, A4 and persistent-runtime gates. Register 768->818 only after every Batch13 gate passes.

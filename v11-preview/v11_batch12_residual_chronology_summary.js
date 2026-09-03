@@ -1,0 +1,9 @@
+'use strict';
+const fs=require('fs');
+const vocab=JSON.parse(fs.readFileSync('V11_BATCH12_VOCAB_CHRONOLOGY_REPORT.json','utf8'));
+const grammar=JSON.parse(fs.readFileSync('V11_BATCH12_GRAMMAR_CHRONOLOGY_REPORT.json','utf8'));
+function compact(rows){const m=new Map();for(const r of rows||[]){const w=String(r.word||r.base||'').toLowerCase();if(!m.has(w))m.set(w,{word:w,count:0,ids:new Set(),samples:[]});const x=m.get(w);x.count++;x.ids.add(r.id);if(x.samples.length<4)x.samples.push({id:r.id,where:r.where});}return [...m.values()].sort((a,b)=>b.count-a.count||a.word.localeCompare(b.word)).map(x=>({word:x.word,count:x.count,passages:x.ids.size,ids:[...x.ids],samples:x.samples}));}
+const unresolved=compact(vocab.unresolved),future=compact(vocab.future);
+const grow=grammar.unresolved||grammar.unresolvedRows||grammar.issues||[];const types={};for(const r of grow){const k=r.feature||r.type||r.rule||r.grammar||'(unknown)';types[k]=(types[k]||0)+1;}
+const out={generatedAt:new Date().toISOString(),status:'RESIDUAL_AFTER_PRIOR_VERIFIED_GLOSS_REUSE',vocab:{unregisteredOccurrences:vocab.unregisteredOccurrences,unregisteredDistinct:unresolved.length,unregistered:unresolved,futureOccurrences:vocab.futureVocabLeakOccurrences,futureDistinct:future.length,future},grammar:{detectedOccurrences:grammar.detectedOccurrences,unresolvedOccurrences:grammar.unresolvedOccurrences,futureGrammarLeak:grammar.futureGrammarLeak,types,unresolved:grow}};
+fs.writeFileSync('V11_BATCH12_RESIDUAL_CHRONOLOGY_SUMMARY.json',JSON.stringify(out,null,2)+'\n');console.log(JSON.stringify({unregisteredOccurrences:out.vocab.unregisteredOccurrences,unregisteredDistinct:unresolved.length,futureOccurrences:out.vocab.futureOccurrences,futureDistinct:future.length,grammarUnresolved:out.grammar.unresolvedOccurrences,grammarTypes:types,topUnregistered:unresolved.slice(0,40),topFuture:future.slice(0,40)},null,2));

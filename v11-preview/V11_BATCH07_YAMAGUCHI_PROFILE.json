@@ -1,0 +1,35 @@
+{
+  "version": "20260829",
+  "appliesTo": "Batch07 Grade3",
+  "sourceModel": "V11_YAMAGUCHI_ENTRANCE_EXAM_READING_MODEL.md",
+  "distribution": {
+    "standard_140_220": 8,
+    "medium_long_230_320": 4,
+    "yamaguchi_long_350_450": 4
+  },
+  "passages": [
+    {"id":"V11-B07-G3-001","tier":"standard_140_220","questionProfile":["content_match","reason","context_fill"]},
+    {"id":"V11-B07-G3-002","tier":"standard_140_220","questionProfile":["reason","short_english_answer","context_fill"]},
+    {"id":"V11-B07-G3-003","tier":"medium_long_230_320","questionProfile":["content_match","sequence_condition","summary_fill"]},
+    {"id":"V11-B07-G3-004","tier":"standard_140_220","questionProfile":["reason","content_match","paraphrase"]},
+    {"id":"V11-B07-G3-005","tier":"standard_140_220","questionProfile":["content_match","reason","sequence_condition"]},
+    {"id":"V11-B07-G3-006","tier":"medium_long_230_320","questionProfile":["sequence_condition","short_english_answer","summary_fill"]},
+    {"id":"V11-B07-G3-007","tier":"standard_140_220","questionProfile":["reason","content_match","paraphrase"]},
+    {"id":"V11-B07-G3-008","tier":"yamaguchi_long_350_450","questionProfile":["integrated_material","sequence_condition","content_match","short_english_answer"]},
+    {"id":"V11-B07-G3-009","tier":"standard_140_220","questionProfile":["content_match","reason","context_fill"]},
+    {"id":"V11-B07-G3-010","tier":"medium_long_230_320","questionProfile":["content_match","short_english_answer","summary_fill"]},
+    {"id":"V11-B07-G3-011","tier":"standard_140_220","questionProfile":["reason","paraphrase","context_fill"]},
+    {"id":"V11-B07-G3-012","tier":"yamaguchi_long_350_450","questionProfile":["integrated_material","content_match","reason","summary_fill"]},
+    {"id":"V11-B07-G3-013","tier":"medium_long_230_320","questionProfile":["integrated_material","content_match","sequence_condition"]},
+    {"id":"V11-B07-G3-014","tier":"yamaguchi_long_350_450","questionProfile":["integrated_material","content_match","short_english_answer","summary_fill"]},
+    {"id":"V11-B07-G3-015","tier":"standard_140_220","questionProfile":["sequence_condition","reason","content_match"]},
+    {"id":"V11-B07-G3-016","tier":"yamaguchi_long_350_450","questionProfile":["content_match","reason","short_english_answer","summary_fill"]}
+  ],
+  "requirements": {
+    "minIntegratedMaterialAmongYamaguchiLong": 2,
+    "minShortEnglishOrSummaryAmongYamaguchiLong": 2,
+    "allQuestionsRequireEvidence": true,
+    "chronologyMustRemainZeroViolation": true,
+    "registered": false
+  }
+}
