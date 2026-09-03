@@ -9,6 +9,8 @@ function load(src){return new Promise((resolve,reject)=>{const s=document.create
   const ps=window.V11_BATCH12_PASSAGES||[],st=window.V11_BATCH12_STATE;
   if(ps.length!==50||!window.V11_BATCH12_LOADED||!st||st.registered!==true||st.totalWithBaseline!==768||st.batch12Passages!==50||st.humanReviewedQuestions!==500||st.slashReviewedPassages!==50||st.version!=='20260901-b12-r8-final')throw new Error('Batch12 final state invalid '+JSON.stringify(st));
   window.V11_BATCH12_BOOTSTRAP_STATE={version:'20260901-b12-r8-final',files:files.length,loaded:true,total:768,registered:true};
+  const candidateMode=new URLSearchParams(location.search).has('b13candidate');
+  if(!candidateMode&&!window.V11_BATCH13_LOADED&&!window.V11_BATCH13_BOOTSTRAP_LOADING)await load('v11_batch13_bootstrap.js');
   if(typeof window.render==='function')window.render();
 }catch(e){window.V11_BATCH12_BOOTSTRAP_ERROR=String(e&&e.stack||e);console.error(e);throw e;}finally{window.V11_BATCH12_BOOTSTRAP_LOADING=false;}})();
 })();
