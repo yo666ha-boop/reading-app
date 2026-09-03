@@ -1,0 +1,37 @@
+name: v11 Batch14 G1 chronology repair
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch14_g1_chronology_repair.js'
+      - '.github/workflows/v11-batch14-g1-chronology-repair.yml'
+  workflow_dispatch:
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - name: Sync branch
+        run: git pull --rebase origin v11-1000passage-easy-notes
+      - name: Repair chronology in actual draft
+        run: node v11_batch14_g1_chronology_repair.js
+      - name: Re-run G1 draft quality gate
+        run: node v11_batch14_g1_draft_audit.js
+      - name: Persist actuals
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          for f in v11_batch14_g1_body_draft.json V11_BATCH14_G1_CHRONOLOGY_REPAIR.json V11_BATCH14_G1_DRAFT_AUDIT.json; do
+            [ -f "$f" ] && git add "$f"
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m 'v11: repair Batch14 G1 chronology violations'
+            git push origin HEAD:v11-1000passage-easy-notes
+          fi
