@@ -45,23 +45,33 @@ jobs:
           from pathlib import Path
           p = Path('public/v11-preview/index.html')
           s = p.read_text(encoding='utf-8')
-          # The v10 shell defines choose/render late in the document.  v11 runtime
-          # architecture and the registered batch chain therefore must be inserted
-          # immediately before </body>, in this exact order.
-          marker = '<script src="v11_multi_passage_architecture.js"></script>\n<script src="v11_easy_support_notes.js"></script>\n<script src="v11_batch01_bootstrap.js"></script>'
-          old = '<script src="v11_batch11_bootstrap.js"></script>'
-          s = s.replace(old, '')
-          if marker not in s:
+          # Real Batch01 entry chain. grammar_repair boots Batch02, and each later
+          # bootstrap advances the registered chain through Batch13.
+          marker = '\n'.join([
+              '<script src="v11_multi_passage_architecture.js"></script>',
+              '<script src="v11_easy_support_notes.js"></script>',
+              '<script src="v11_batch01_passages_001_050.js"></script>',
+              '<script src="v11_batch01_uniqueness_repair.js"></script>',
+              '<script src="v11_batch01_grammar_repair.js"></script>',
+          ])
+          for old in ('<script src="v11_batch11_bootstrap.js"></script>', '<script src="v11_batch01_bootstrap.js"></script>'):
+              s = s.replace(old, '')
+          if '<script src="v11_batch01_grammar_repair.js"></script>' not in s:
               s = s.replace('</body></html>', marker + '\n</body></html>')
           s = s.replace('<title>長文読解問題作成アプリ v10 stage2</title>', '<title>みかみ塾 英語長文読解アプリ v11</title>')
           s = s.replace('<h1>長文読解問題作成アプリ v10</h1>', '<h1>みかみ塾 英語長文読解アプリ v11</h1>')
           p.write_text(s, encoding='utf-8')
           PY
           grep -q 'v11_multi_passage_architecture.js' public/v11-preview/index.html
-          grep -q 'v11_batch01_bootstrap.js' public/v11-preview/index.html
+          grep -q 'v11_batch01_passages_001_050.js' public/v11-preview/index.html
+          grep -q 'v11_batch01_uniqueness_repair.js' public/v11-preview/index.html
+          grep -q 'v11_batch01_grammar_repair.js' public/v11-preview/index.html
           test -f public/v11-preview/v11_multi_passage_architecture.js
           test -f public/v11-preview/v11_easy_support_notes.js
-          test -f public/v11-preview/v11_batch01_bootstrap.js
+          test -f public/v11-preview/v11_batch01_passages_001_050.js
+          test -f public/v11-preview/v11_batch01_uniqueness_repair.js
+          test -f public/v11-preview/v11_batch01_grammar_repair.js
+          test -f public/v11-preview/v11_batch02_bootstrap.js
           test -f public/v11-preview/v11_batch11_bootstrap.js
           test -f public/v11-preview/v11_batch12_bootstrap.js
           test -f public/v11-preview/v11_batch13_bootstrap.js
@@ -70,7 +80,7 @@ jobs:
           source_sha=${GITHUB_SHA}
           published_at_utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)
           expected_registered_total=818
-          bootstrap_entry=v11_batch01_bootstrap.js
+          bootstrap_entry=v11_batch01_passages_001_050.js+v11_batch01_uniqueness_repair.js+v11_batch01_grammar_repair.js
           purpose=WORKING_PREVIEW_NOT_PRODUCTION_RELEASE
           EOF
 
