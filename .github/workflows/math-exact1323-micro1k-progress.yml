@@ -22,15 +22,19 @@ jobs:
       - name: Audit SHA-bound 1k extension and patch checkpoint
         shell: python
         run: |
-          import json, pathlib, subprocess, datetime, re
+          import json, pathlib, subprocess, datetime
           mpath=pathlib.Path('math-bank/transfer/app1323-exact-br-b64/micro1k/manifest.json')
           cp_path=pathlib.Path('math-bank/state/checkpoint.json')
           m=json.loads(mpath.read_text())
           cp=json.loads(cp_path.read_text())
           st=cp['downstream']['github_exact_byte_staging']
-          base=m['base_offset']
-          if st['durable_base64_chars'] != base or st['next_offset'] != base:
-              raise SystemExit(f'base mismatch checkpoint={st["durable_base64_chars"]}/{st["next_offset"]} manifest={base}')
+          base=int(m['base_offset'])
+          durable=int(st['durable_base64_chars'])
+          nxt=int(st['next_offset'])
+          if durable != nxt:
+              raise SystemExit(f'checkpoint durable/next mismatch {durable}/{nxt}')
+          if durable < base or durable > int(m['durable_end_offset']):
+              raise SystemExit(f'checkpoint outside manifest range checkpoint={durable} manifest={base}-{m["durable_end_offset"]}')
           cursor=base
           root=mpath.parent
           segs=m['segments']
@@ -38,16 +42,18 @@ jobs:
               raise SystemExit('non-contiguous micro indexes')
           for s in segs:
               p=root/s['file']
-              if s['start'] != cursor or s['end'] != cursor+1000 or s['chars'] != 1000:
+              if int(s['start']) != cursor or int(s['end']) != cursor+1000 or int(s['chars']) != 1000:
                   raise SystemExit(f'offset/size metadata mismatch {s}')
               if not p.exists() or p.stat().st_size != 1000:
                   raise SystemExit(f'missing/size mismatch {p}')
               sha=subprocess.check_output(['git','hash-object',str(p)],text=True).strip()
               if sha != s['git_blob_sha1']:
                   raise SystemExit(f'git sha mismatch {p}: {sha}')
-              cursor=s['end']
-          if cursor != m['durable_end_offset']:
+              cursor=int(s['end'])
+          if cursor != int(m['durable_end_offset']):
               raise SystemExit('durable_end mismatch')
+          if cursor < durable:
+              raise SystemExit(f'manifest regresses checkpoint {cursor} < {durable}')
           st['durable_base64_chars']=cursor
           st['next_offset']=cursor
           st['git_data_blob_channel']=f'PROVEN_FOR_SHA_BOUND_BRANCH_ATTACHED_BYTES_THROUGH_OFFSET_{cursor}'
@@ -56,7 +62,7 @@ jobs:
           st['release_credit']=False
           cp['recorded_at_jst']=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(timespec='seconds')
           cp_path.write_text(json.dumps(cp,ensure_ascii=False,indent=2)+'\n')
-          ev={'project':'mikami-math-problem-bank','stage':'APP1323_EXACT_TRUE_BYTE_TRANSFER_MICRO1K_SHA_BOUND','base_offset':base,'durable_base64_chars':cursor,'micro_segments':len(segs),'source_sha256':st['source_sha256'],'brotli_sha256':st['brotli_sha256'],'release_credit':False,'main_touched':False,'publication_ready':False,'physical_fire':'PENDING','manifest':str(mpath)}
+          ev={'project':'mikami-math-problem-bank','stage':'APP1323_EXACT_TRUE_BYTE_TRANSFER_MICRO1K_SHA_BOUND','base_offset':base,'previous_durable_base64_chars':durable,'durable_base64_chars':cursor,'micro_segments':len(segs),'source_sha256':st['source_sha256'],'brotli_sha256':st['brotli_sha256'],'release_credit':False,'main_touched':False,'publication_ready':False,'physical_fire':'PENDING','manifest':str(mpath)}
           pathlib.Path('math-bank/state/app1323-micro1k-progress-latest.json').write_text(json.dumps(ev,ensure_ascii=False,indent=2)+'\n')
       - name: Commit synchronized durable state
         run: |
