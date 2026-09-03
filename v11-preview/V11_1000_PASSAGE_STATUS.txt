@@ -1,12 +1,12 @@
-phase=V11_BATCH12_COMPLETE_BATCH13_NEXT
+phase=V11_BATCH13_COMPLETE_BATCH14_NEXT
 branch=v11-1000passage-easy-notes
 baseline_passages=168
 target_passages=1000
 batch_size=50
-current_total=768
-remaining_passages=232
-next_batch=Batch13
-next_batch_target=818
+current_total=818
+remaining_passages=182
+next_batch=Batch14
+next_batch_target=868
 batch01_registered=true
 batch02_registered=true
 batch03_registered=true
@@ -19,13 +19,18 @@ batch09_registered=true
 batch10_registered=true
 batch11_registered=true
 batch12_registered=true
-batch12_passages=50
-batch12_grade_split=G1_17_G2_17_G3_16
-batch12_human_semantic_review=PASS passages=50
-batch12_human_question_gate=PASS questions=500 pending=0
-batch12_final_slash_human_gate=PASS passages=50 rows=461 length_repair_reviewed=12 failures=0
-batch12_final_content_integrity=PASS passages=50 questions=500 uncovered_gloss=0 failures=0
-batch12_candidate_runtime=PASS total=768 registered=false candidate_only=true pc=PASS iphone=PASS overflow=0 errors=0 duplicate_id=0 duplicate_body=0 near_duplicate=0 a4_sections=6 a4_files=12
-batch12_registration=ALL_50_TOGETHER_AFTER_FULL_FINAL_GATES
+batch13_registered=true
+batch13_passages=50
+batch13_grade_split=G1_17_G2_17_G3_16
+batch13_human_semantic_review=PASS passages=50
+batch13_human_question_gate=PASS questions=500 pending=0
+batch13_vocab_chronology=PASS v7_records=3975 tokens_scanned=7672 required_note_covered=1948 unregistered=0 future_vocab=0
+batch13_grammar_chronology=PASS occurrences=134 unresolved=0 future_grammar=0
+batch13_word_count=PASS passages=50 failures=0 run=33617058095
+batch13_final_slash_human_gate=PASS passages=50 rows=558 canonical_1to1=557 canonical_2to1=1 failures=0
+batch13_candidate_runtime=PASS run=33787675874 total=818 registered=false candidate_only=true pc_passages=50 pc_overflow=0 pc_errors=0 iphone_passages=50 iphone_overflow=0 iphone_errors=0 normal_notes=1393 support_notes=556 duplicate_id=0 duplicate_body=0 near_duplicate=0 a4_sections=6 a4_files=12
+batch13_persistent_runtime=PASS run=33781831276 registered=true total=818 chromium=PASS webkit_iphone=PASS
+batch13_preview_publish=PASS run=33787675869 source_sha=20e5f6b622a0bb8c53379036a2bfe6df6b18d6fb expected_registered_total=818
+batch13_registration=ALL_50_REGISTERED_TOGETHER_AFTER_FULL_FINAL_GATES
 release_to_main=NO_UNTIL_1000_AND_FINAL_RELEASE_GATES_PASS
-next_step=Start Batch13 from current branch HEAD and latest Drive 00/99. Build 50 distinct unregistered passages from current v7 textbook chronology and latest Yamaguchi profile; human-read every passage and synchronize translation/slash/questions/evidence before chronology, notes, duplicate, Chromium/WebKit, A4 and persistent-runtime gates. Register 768->818 only after every Batch13 gate passes.
+next_step=Start Batch14 from current branch HEAD and latest Drive 00/99. Build 50 distinct unregistered passages (818->868 candidate) from current v7 textbook chronology and latest Yamaguchi profile; human-read every passage first, synchronize fullTranslation/slashRows/A+B questions/answers/evidence/evidenceJp/reasons, then run chronology, notes/support, duplicate, Chromium/WebKit, A4 and persistent-runtime gates. Keep Batch14 registered=false until every gate passes.
