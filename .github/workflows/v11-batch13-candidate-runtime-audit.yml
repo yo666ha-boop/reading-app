@@ -6,6 +6,9 @@ on:
       - 'v11_batch13_build_runtime_bundle.js'
       - 'v11_batch13_register.js'
       - 'v11_batch13_candidate_runtime_audit.js'
+      - 'v11_batch13_manual_gloss_r1.js'
+      - 'v11_batch13_apply_prior_verified_gloss.js'
+      - 'v11_batch13_slash_human_review_manifest.json'
       - '.github/workflows/v11-batch13-candidate-runtime-audit.yml'
   workflow_dispatch:
 permissions:
@@ -23,19 +26,29 @@ jobs:
         with:
           node-version: 22
       - name: Build fail-closed Batch13 runtime bundle
-        run: node v11_batch13_build_runtime_bundle.js
+        id: build
+        shell: bash
+        run: |
+          set +e
+          node v11_batch13_build_runtime_bundle.js |& tee V11_BATCH13_RUNTIME_BUNDLE_LOG.txt
+          rc=${PIPESTATUS[0]}
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
       - name: Install Playwright
+        if: steps.build.outputs.rc == '0'
         run: |
           npm install --no-save --no-package-lock playwright@1.55.0
           npx playwright install --with-deps chromium webkit
       - name: Start static server
+        if: steps.build.outputs.rc == '0'
         run: python3 -m http.server 8000 >/tmp/v11-b13-candidate-http.log 2>&1 &
       - name: Run Batch13 full candidate runtime audit
+        if: steps.build.outputs.rc == '0'
         id: audit
         shell: bash
         run: |
           set +e
-          node v11_batch13_candidate_runtime_audit.js | tee V11_BATCH13_CANDIDATE_RUNTIME_LOG.txt
+          node v11_batch13_candidate_runtime_audit.js |& tee V11_BATCH13_CANDIDATE_RUNTIME_LOG.txt
           rc=${PIPESTATUS[0]}
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
           exit 0
@@ -44,19 +57,21 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -f v11_batch13_runtime_bundle.js V11_BATCH13_RUNTIME_BUNDLE_STATUS.json V11_BATCH13_CANDIDATE_RUNTIME_AUDIT.json V11_BATCH13_CANDIDATE_RUNTIME_LOG.txt v11_batch13_slash_human_gate.json v11_batch13_slash_review_packet.json 2>/dev/null || true
+          git add -f v11_batch13_runtime_bundle.js V11_BATCH13_RUNTIME_BUNDLE_STATUS.json V11_BATCH13_RUNTIME_BUNDLE_LOG.txt V11_BATCH13_REQUIRED_GLOSS_FAIL.json V11_BATCH13_CANDIDATE_RUNTIME_AUDIT.json V11_BATCH13_CANDIDATE_RUNTIME_LOG.txt v11_batch13_slash_human_gate.json v11_batch13_slash_review_packet.json 2>/dev/null || true
           git diff --cached --quiet || git commit -m 'v11: persist Batch13 818 candidate runtime actuals'
           git pull --rebase origin v11-1000passage-easy-notes
           git push origin HEAD:v11-1000passage-easy-notes
       - name: Enforce full candidate gate
         if: always()
-        run: test "${{ steps.audit.outputs.rc }}" = "0"
+        run: test "${{ steps.build.outputs.rc }}" = "0" -a "${{ steps.audit.outputs.rc }}" = "0"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: v11-batch13-candidate-runtime-audit
           path: |
             V11_BATCH13_RUNTIME_BUNDLE_STATUS.json
+            V11_BATCH13_RUNTIME_BUNDLE_LOG.txt
+            V11_BATCH13_REQUIRED_GLOSS_FAIL.json
             V11_BATCH13_CANDIDATE_RUNTIME_AUDIT.json
             V11_BATCH13_CANDIDATE_RUNTIME_LOG.txt
           if-no-files-found: warn
