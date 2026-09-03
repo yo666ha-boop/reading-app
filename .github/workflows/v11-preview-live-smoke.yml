@@ -1,0 +1,127 @@
+name: v11 Preview Live Smoke
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - v11-1000passage-easy-notes
+    paths:
+      - '.github/workflows/v11-preview-live-smoke.yml'
+
+jobs:
+  live-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      PREVIEW_URL: https://yo666ha-boop.github.io/reading-app/v11-preview/
+      EXPECTED_TOTAL: '818'
+    steps:
+      - name: Wait for GitHub Pages preview publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          for i in $(seq 1 36); do
+            body="$(curl -fsSL --max-time 20 "${PREVIEW_URL}PREVIEW_SOURCE.txt" || true)"
+            echo "attempt=$i"
+            echo "$body"
+            if echo "$body" | grep -q 'expected_runtime_total=818'; then
+              exit 0
+            fi
+            sleep 5
+          done
+          echo 'Preview source marker did not reach expected_runtime_total=818' >&2
+          exit 1
+
+      - name: Install Playwright Chromium
+        shell: bash
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Verify live 818 runtime in Chromium
+        shell: bash
+        run: |
+          cat > /tmp/v11-live-smoke.cjs <<'NODE'
+          const { chromium } = require('playwright');
+
+          (async () => {
+            const url = process.env.PREVIEW_URL;
+            const expected = Number(process.env.EXPECTED_TOTAL || 818);
+            const browser = await chromium.launch({headless: true});
+            const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+            const consoleErrors = [];
+            const pageErrors = [];
+            page.on('console', msg => {
+              if (msg.type() === 'error') consoleErrors.push(msg.text());
+            });
+            page.on('pageerror', err => pageErrors.push(String(err && err.stack || err)));
+
+            try {
+              await page.goto(url + '?liveSmoke=' + Date.now(), { waitUntil: 'domcontentloaded', timeout: 120000 });
+              await page.waitForFunction((n) => {
+                try {
+                  if (window.V11_BATCH11_BOOTSTRAP_ERROR || window.V11_BATCH12_BOOTSTRAP_ERROR || window.V11_BATCH13_BOOTSTRAP_ERROR) return false;
+                  return typeof window.getAllPassages === 'function' &&
+                    window.V11_BATCH13_STATE &&
+                    window.V11_BATCH13_STATE.registered === true &&
+                    window.V11_BATCH13_STATE.totalWithBaseline === n &&
+                    window.getAllPassages().length === n;
+                } catch (_) { return false; }
+              }, expected, { timeout: 240000 });
+
+              const result = await page.evaluate((n) => {
+                const all = window.getAllPassages();
+                const last = all[n - 1] || null;
+                const errors = {
+                  b11: window.V11_BATCH11_BOOTSTRAP_ERROR || null,
+                  b12: window.V11_BATCH12_BOOTSTRAP_ERROR || null,
+                  b13: window.V11_BATCH13_BOOTSTRAP_ERROR || null,
+                };
+                return {
+                  total: all.length,
+                  lastId: last && (last.id || last.passageId || last.uid || null),
+                  lastTitle: last && (last.title || last.name || null),
+                  lastKeys: last ? Object.keys(last) : [],
+                  batch11: window.V11_BATCH11_STATE || null,
+                  batch12: window.V11_BATCH12_STATE || null,
+                  batch13: window.V11_BATCH13_STATE || null,
+                  bootstrap13: window.V11_BATCH13_BOOTSTRAP_STATE || null,
+                  errors,
+                  bodyTextLength: document.body.innerText.length,
+                  title: document.title
+                };
+              }, expected);
+
+              console.log('LIVE_RESULT=' + JSON.stringify(result));
+              console.log('PAGE_ERRORS=' + JSON.stringify(pageErrors));
+              console.log('CONSOLE_ERRORS=' + JSON.stringify(consoleErrors));
+
+              if (result.total !== expected) throw new Error(`runtime total ${result.total} != ${expected}`);
+              if (!result.batch13 || result.batch13.registered !== true || result.batch13.totalWithBaseline !== expected) {
+                throw new Error('Batch13 registered state invalid: ' + JSON.stringify(result.batch13));
+              }
+              if (result.errors.b11 || result.errors.b12 || result.errors.b13) {
+                throw new Error('Bootstrap error present: ' + JSON.stringify(result.errors));
+              }
+              if (pageErrors.length) throw new Error('pageerror detected: ' + pageErrors.join('\n'));
+              if (result.bodyTextLength < 100) throw new Error('UI body did not render');
+
+              await page.screenshot({ path: '/tmp/v11-preview-live.png', fullPage: true });
+            } finally {
+              await browser.close();
+            }
+          })().catch(err => {
+            console.error(err && err.stack || err);
+            process.exit(1);
+          });
+          NODE
+          node /tmp/v11-live-smoke.cjs
+
+      - name: Upload live screenshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v11-preview-live-smoke
+          path: /tmp/v11-preview-live.png
+          if-no-files-found: ignore
