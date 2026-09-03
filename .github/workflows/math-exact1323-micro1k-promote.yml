@@ -1,0 +1,65 @@
+name: Math Exact1323 Micro1k Promote
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - 'math-bank/transfer/app1323-exact-br-b64/micro1k/**'
+      - '.github/workflows/math-exact1323-micro1k-promote.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  promote:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+      - name: Reassemble contiguous verified micro chunks
+        shell: python
+        run: |
+          import json, pathlib, re, subprocess
+          manifest_path = pathlib.Path('math-bank/transfer/app1323-exact-br-b64/bulk7k/manifest.json')
+          manifest = json.loads(manifest_path.read_text())
+          start = int(manifest['durable_end_offset'])
+          represented = [int(pathlib.Path(s['file']).stem) for s in manifest.get('segments',[]) if re.fullmatch(r'\d{3}\.txt',s.get('file',''))]
+          segnum = max(represented)+1 if represented else 1
+          micro = pathlib.Path('math-bank/transfer/app1323-exact-br-b64/micro1k')
+          bulk = pathlib.Path('math-bank/transfer/app1323-exact-br-b64/bulk7k')
+          made=[]
+          while True:
+              parts=[]
+              for i in range(7):
+                  a=start+i*1000; b=a+1000
+                  p=micro/f'{a:06d}-{b:06d}.txt'
+                  if not p.exists(): parts=[]; break
+                  if p.stat().st_size != 1000: raise SystemExit(f'bad micro size {p}')
+                  parts.append(p)
+              if not parts: break
+              data=b''.join(p.read_bytes() for p in parts)
+              if len(data)!=7000: raise SystemExit('reassembly size mismatch')
+              out=bulk/f'{segnum:03d}.txt'
+              if out.exists():
+                  if out.read_bytes()!=data: raise SystemExit(f'existing bulk mismatch {out}')
+              else:
+                  out.write_bytes(data)
+              sha=subprocess.check_output(['git','hash-object',str(out)],text=True).strip()
+              made.append((str(out),start,start+7000,sha))
+              start += 7000; segnum += 1
+          if not made:
+              print('no complete new micro group')
+          else:
+              pathlib.Path('/tmp/made.txt').write_text('\n'.join(f'{p} {a}-{b} {sha}' for p,a,b,sha in made)+'\n')
+              print(pathlib.Path('/tmp/made.txt').read_text())
+      - name: Commit promoted bulk segments
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add math-bank/transfer/app1323-exact-br-b64/bulk7k/*.txt
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Promote exact1323 verified micro1k group"
+          git push origin HEAD:math-problem-bank-bootstrap
