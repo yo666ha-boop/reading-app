@@ -22,16 +22,29 @@ jobs:
         run: git pull --rebase origin v11-1000passage-easy-notes
       - name: Repair chronology in actual draft
         run: node v11_batch14_g1_chronology_repair.js
-      - name: Re-run G1 draft quality gate
-        run: node v11_batch14_g1_draft_audit.js
-      - name: Persist actuals
+      - name: Re-run G1 draft quality gate and keep diagnostics
+        id: audit
+        shell: bash
+        run: |
+          set +e
+          node v11_batch14_g1_draft_audit.js
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Persist actuals and diagnostics
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git pull --rebase origin v11-1000passage-easy-notes
           for f in v11_batch14_g1_body_draft.json V11_BATCH14_G1_CHRONOLOGY_REPAIR.json V11_BATCH14_G1_DRAFT_AUDIT.json; do
             [ -f "$f" ] && git add "$f"
           done
           if ! git diff --cached --quiet; then
-            git commit -m 'v11: repair Batch14 G1 chronology violations'
+            git commit -m 'v11: persist Batch14 G1 chronology repair diagnostics'
             git push origin HEAD:v11-1000passage-easy-notes
           fi
+      - name: Enforce G1 draft gate
+        if: steps.audit.outputs.exit_code != '0'
+        run: |
+          echo 'Batch14 G1 draft quality gate failed; diagnostics were persisted.'
+          exit 1
