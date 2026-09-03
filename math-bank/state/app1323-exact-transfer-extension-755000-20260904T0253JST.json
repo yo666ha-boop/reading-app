@@ -1,0 +1,70 @@
+{
+  "project": "みかみ塾 数学問題バンク／数学アプリ再構築",
+  "phase": "APP1323_EXACT_REMOTE_BYTES_TRANSFER",
+  "source_singlefile": {
+    "drive_id": "1l29gpomqPrEEqWCnlCuZH1BiZSw5lg4y",
+    "bytes": 6819806,
+    "sha256": "47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521"
+  },
+  "transfer": {
+    "codec": "brotli-q11+base64",
+    "brotli_bytes": 3923915,
+    "brotli_sha256": "8f78b6dc4e26b5349d9a6dedc7b6d6efad931c7ed3da58d0767ce6b8d36dc003",
+    "base64_total_chars": 5231888,
+    "previous_durable_endpoint": 748000,
+    "new_durable_endpoint": 755000,
+    "remaining_chars": 4476888
+  },
+  "source_identity_revalidated": {
+    "standard": {
+      "drive_id": "1qF43IMEDNjpy8i3EYOx2tTNEGsq9u6hU",
+      "bytes": 9689250,
+      "sha256": "c26dfbe04e9d28796fecd69e07162ebed7c68e20c9a5c2f6418ce203924d3bf6",
+      "crc32": "f8e307bb",
+      "zip_test": "PASS",
+      "members": 85
+    },
+    "jitsuryoku": {
+      "drive_id": "1qD-_GDQbNKjuFcFgkxj536Bc9NeJWwDb",
+      "bytes": 7287279,
+      "sha256": "faf6be5a540d9636a8ff07ca6e0c72824ad051a7881f4eb466e8274c58a02f33",
+      "crc32": "1a020f98",
+      "zip_test": "PASS",
+      "members": 80
+    },
+    "winpass": {
+      "drive_id": "13SySbXL02mm4YPikgYN_BlVE3S2APs7E",
+      "bytes": 8296042,
+      "sha256": "29bd0cfc8a40287394e8fddf927cb744105e59fed0864e1272aaf1f795d31edf",
+      "crc32": "992b0ca2",
+      "zip_test": "PASS",
+      "members": 81
+    }
+  },
+  "new_durable_records": [
+    {
+      "path": "math-bank/transfer/app1323-exact-br-b64/bulk7k/091.txt",
+      "start": 748000,
+      "end": 755000,
+      "size": 7000,
+      "git_blob_sha": "336eaa91ea5a55e9a372f9f21110c1870b9712e9",
+      "commit": "63a669c2aa732f09b3b9d33e42a159464afebee4",
+      "readback": "PASS"
+    }
+  ],
+  "rejected_not_counted": [
+    {
+      "path": "math-bank/transfer/app1323-exact-br-b64/bulk7k/092.txt",
+      "reason": "readback size 5873 != required 7000; rejected before progress accounting",
+      "observed_git_blob_sha": "2b36f63827f4464e6fde0431b7e01275e9640787",
+      "expected_git_blob_sha": "fc1b79bb3e5b38cb24c16f650962218ccf2e43ae",
+      "delete_commit": "8c67b890c3c424dfd19216dd10525fce1964a57c",
+      "post_delete_readback": "404_NOT_FOUND_PASS"
+    }
+  ],
+  "checkpoint_note": "math-bank/state/checkpoint.json trails durable exact-transfer files at 734000; do not roll back. Adopt actual durable union/readback endpoint 755000.",
+  "next_offset": 755000,
+  "main_untouched": true,
+  "PUBLICATION_READY": false,
+  "physical_fire": "PENDING"
+}
