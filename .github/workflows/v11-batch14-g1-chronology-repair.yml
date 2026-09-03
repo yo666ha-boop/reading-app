@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with: {node-version: '20'}
-      - name: Sync branch
+      - name: Sync branch before editing
         run: git pull --rebase origin v11-1000passage-easy-notes
       - name: Repair chronology in actual draft
         run: node v11_batch14_g1_chronology_repair.js
@@ -35,7 +35,6 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git pull --rebase origin v11-1000passage-easy-notes
           for f in v11_batch14_g1_body_draft.json V11_BATCH14_G1_CHRONOLOGY_REPAIR.json V11_BATCH14_G1_DRAFT_AUDIT.json; do
             [ -f "$f" ] && git add "$f"
           done
