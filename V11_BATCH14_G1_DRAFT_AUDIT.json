@@ -8,16 +8,16 @@
     {
       "id": "V11-B14-G1-001",
       "tier": "STANDARD",
-      "words": 96,
+      "words": 92,
       "sentences": 9,
-      "review": "B14_G1_HUMAN_REVIEW_R1"
+      "review": "B14_G1_HUMAN_REVIEW_R3_CHRONOLOGY_SYNC"
     },
     {
       "id": "V11-B14-G1-002",
       "tier": "STANDARD",
-      "words": 101,
+      "words": 103,
       "sentences": 9,
-      "review": "B14_G1_HUMAN_REVIEW_R1"
+      "review": "B14_G1_HUMAN_REVIEW_R3_CHRONOLOGY_SYNC"
     },
     {
       "id": "V11-B14-G1-003",
@@ -29,9 +29,9 @@
     {
       "id": "V11-B14-G1-004",
       "tier": "LONG",
-      "words": 148,
-      "sentences": 12,
-      "review": "B14_G1_HUMAN_REVIEW_R2_LENGTH_SYNC"
+      "words": 147,
+      "sentences": 14,
+      "review": "B14_G1_HUMAN_REVIEW_R3_CHRONOLOGY_SYNC"
     },
     {
       "id": "V11-B14-G1-005",
@@ -43,44 +43,44 @@
     {
       "id": "V11-B14-G1-006",
       "tier": "STANDARD",
-      "words": 103,
+      "words": 100,
       "sentences": 9,
-      "review": "B14_G1_HUMAN_REVIEW_R1"
+      "review": "B14_G1_HUMAN_REVIEW_R3_CHRONOLOGY_SYNC"
     },
     {
       "id": "V11-B14-G1-007",
       "tier": "LONG",
-      "words": 148,
-      "sentences": 12,
-      "review": "B14_G1_HUMAN_REVIEW_R2_LENGTH_SYNC"
+      "words": 135,
+      "sentences": 13,
+      "review": "B14_G1_HUMAN_REVIEW_R3_CHRONOLOGY_SYNC"
     },
     {
       "id": "V11-B14-G1-008",
       "tier": "STANDARD",
-      "words": 92,
+      "words": 93,
       "sentences": 11,
-      "review": "B14_G1_HUMAN_REVIEW_R1"
+      "review": "B14_G1_HUMAN_REVIEW_R3_CHRONOLOGY_SYNC"
     },
     {
       "id": "V11-B14-G1-009",
       "tier": "STANDARD",
-      "words": 99,
+      "words": 98,
       "sentences": 8,
-      "review": "B14_G1_HUMAN_REVIEW_R1"
+      "review": "B14_G1_HUMAN_REVIEW_R3_CHRONOLOGY_SYNC"
     },
     {
       "id": "V11-B14-G1-010",
       "tier": "LONG",
-      "words": 161,
-      "sentences": 14,
-      "review": "B14_G1_HUMAN_REVIEW_R2_LENGTH_SYNC"
+      "words": 163,
+      "sentences": 15,
+      "review": "B14_G1_HUMAN_REVIEW_R3_CHRONOLOGY_SYNC"
     },
     {
       "id": "V11-B14-G1-011",
       "tier": "STANDARD",
       "words": 100,
       "sentences": 9,
-      "review": "B14_G1_HUMAN_REVIEW_R1"
+      "review": "B14_G1_HUMAN_REVIEW_R3_CHRONOLOGY_SYNC"
     },
     {
       "id": "V11-B14-G1-012",
@@ -92,30 +92,30 @@
     {
       "id": "V11-B14-G1-013",
       "tier": "LONG",
-      "words": 154,
-      "sentences": 13,
-      "review": "B14_G1_HUMAN_REVIEW_R2_LENGTH_SYNC"
+      "words": 146,
+      "sentences": 14,
+      "review": "B14_G1_HUMAN_REVIEW_R3_CHRONOLOGY_SYNC"
     },
     {
       "id": "V11-B14-G1-014",
       "tier": "STANDARD",
       "words": 102,
-      "sentences": 9,
-      "review": "B14_G1_HUMAN_REVIEW_R1"
+      "sentences": 10,
+      "review": "B14_G1_HUMAN_REVIEW_R3_CHRONOLOGY_SYNC"
     },
     {
       "id": "V11-B14-G1-015",
       "tier": "STANDARD",
-      "words": 100,
+      "words": 102,
       "sentences": 9,
-      "review": "B14_G1_HUMAN_REVIEW_R1"
+      "review": "B14_G1_HUMAN_REVIEW_R3_CHRONOLOGY_SYNC"
     },
     {
       "id": "V11-B14-G1-016",
       "tier": "LONG",
-      "words": 137,
-      "sentences": 11,
-      "review": "B14_G1_HUMAN_REVIEW_R1"
+      "words": 128,
+      "sentences": 12,
+      "review": "B14_G1_HUMAN_REVIEW_R3_CHRONOLOGY_SYNC"
     },
     {
       "id": "V11-B14-G1-017",
@@ -125,6 +125,8 @@
       "review": "B14_G1_HUMAN_REVIEW_R1"
     }
   ],
-  "failures": [],
-  "finalPass": true
+  "failures": [
+    "V11-B14-G1-016: words=128 expected 135-165"
+  ],
+  "finalPass": false
 }
