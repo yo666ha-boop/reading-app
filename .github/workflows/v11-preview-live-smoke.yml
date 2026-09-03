@@ -42,7 +42,7 @@ jobs:
       - name: Verify live 818 runtime in Chromium
         shell: bash
         run: |
-          cat > /tmp/v11-live-smoke.cjs <<'NODE'
+          cat > v11-live-smoke.cjs <<'NODE'
           const { chromium } = require('playwright');
 
           (async () => {
@@ -116,7 +116,7 @@ jobs:
             process.exit(1);
           });
           NODE
-          node /tmp/v11-live-smoke.cjs
+          node v11-live-smoke.cjs
 
       - name: Upload live screenshot
         if: always()
