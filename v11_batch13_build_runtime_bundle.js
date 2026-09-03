@@ -11,7 +11,12 @@ if(gate.status!=='PASS'||gate.humanReviewed!==true||gate.passages!==50||gate.row
 const packet=JSON.parse(fs.readFileSync('v11_batch13_slash_review_packet.json','utf8'));
 const c=applyGloss(build());
 if(c.registered!==false||c.officialTotal!==768||c.targetAfterFullGates!==818||c.passages.length!==50)die('Batch13 candidate contract');
-if(!c.priorVerifiedGlossReuse||c.priorVerifiedGlossReuse.uncoveredDistinct!==0)die('Batch13 required-local gloss uncovered');
+if(!c.priorVerifiedGlossReuse||c.priorVerifiedGlossReuse.uncoveredDistinct!==0){
+  const x=c.priorVerifiedGlossReuse||{};
+  console.error('BATCH13_REQUIRED_GLOSS_UNCOVERED='+JSON.stringify({count:x.uncoveredDistinct,words:x.uncoveredWords||[]}));
+  fs.writeFileSync('V11_BATCH13_REQUIRED_GLOSS_FAIL.json',JSON.stringify(x,null,2)+'\n');
+  die('Batch13 required-local gloss uncovered');
+}
 const byId=new Map(packet.passages.map(x=>[x.id,x]));
 const textbookRuntimeName=s=>{const v=String(s||'').trim().toLowerCase();if(['sunshine','サンシャイン','ss'].includes(v))return 'サンシャイン';if(['new horizon','newhorizon','ニューホライズン','nh'].includes(v))return 'ニューホライズン';throw Error('unknown textbook '+s)};
 const ps=c.passages.map(p=>{const q=JSON.parse(JSON.stringify(p)),a=byId.get(q.id);if(!a||!a.rows||!a.rows.length)die(q.id+' slash packet missing');q.textbook=textbookRuntimeName(q.anchor&&q.anchor.textbook);q.grade=String(q.anchor.grade);q.section=q.anchor.unit;q.slashRows=a.rows.map(r=>({en:r.suggestedEn||r.en,jp:r.suggestedJp||r.jp,humanReview:'B13_HUMAN_SLASH_PASS',alignmentShape:`${r.enSentenceCount}:${r.jpSentenceCount}`}));q.sentences=q.slashRows.map(r=>r.en.replace(/\s*\/\s*/g,' '));q.registered=false;q.batch='V11-B13';q.finalHumanQuestionReview=true;q.finalSlashHumanReview='B13_SLASH_HUMAN_REVIEW_PASS';return q});
