@@ -24,12 +24,12 @@ jobs:
             body="$(curl -fsSL --max-time 20 "${PREVIEW_URL}PREVIEW_SOURCE.txt" || true)"
             echo "attempt=$i"
             echo "$body"
-            if echo "$body" | grep -q 'expected_runtime_total=818'; then
+            if echo "$body" | grep -q "expected_registered_total=${EXPECTED_TOTAL}"; then
               exit 0
             fi
             sleep 5
           done
-          echo 'Preview source marker did not reach expected_runtime_total=818' >&2
+          echo "Preview source marker did not reach expected_registered_total=${EXPECTED_TOTAL}" >&2
           exit 1
 
       - name: Install Playwright Chromium
