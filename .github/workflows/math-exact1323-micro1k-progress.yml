@@ -1,0 +1,68 @@
+name: Math Exact1323 Micro1k Progress
+
+on:
+  push:
+    branches:
+      - math-problem-bank-bootstrap
+    paths:
+      - 'math-bank/transfer/app1323-exact-br-b64/micro1k/**'
+      - '.github/workflows/math-exact1323-micro1k-progress.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  audit-and-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: math-problem-bank-bootstrap
+          fetch-depth: 0
+      - name: Audit SHA-bound 1k extension and patch checkpoint
+        shell: python
+        run: |
+          import json, pathlib, subprocess, datetime, re
+          mpath=pathlib.Path('math-bank/transfer/app1323-exact-br-b64/micro1k/manifest.json')
+          cp_path=pathlib.Path('math-bank/state/checkpoint.json')
+          m=json.loads(mpath.read_text())
+          cp=json.loads(cp_path.read_text())
+          st=cp['downstream']['github_exact_byte_staging']
+          base=m['base_offset']
+          if st['durable_base64_chars'] != base or st['next_offset'] != base:
+              raise SystemExit(f'base mismatch checkpoint={st["durable_base64_chars"]}/{st["next_offset"]} manifest={base}')
+          cursor=base
+          root=mpath.parent
+          segs=m['segments']
+          if [s['file'] for s in segs] != [f'{i:03d}.txt' for i in range(len(segs))]:
+              raise SystemExit('non-contiguous micro indexes')
+          for s in segs:
+              p=root/s['file']
+              if s['start'] != cursor or s['end'] != cursor+1000 or s['chars'] != 1000:
+                  raise SystemExit(f'offset/size metadata mismatch {s}')
+              if not p.exists() or p.stat().st_size != 1000:
+                  raise SystemExit(f'missing/size mismatch {p}')
+              sha=subprocess.check_output(['git','hash-object',str(p)],text=True).strip()
+              if sha != s['git_blob_sha1']:
+                  raise SystemExit(f'git sha mismatch {p}: {sha}')
+              cursor=s['end']
+          if cursor != m['durable_end_offset']:
+              raise SystemExit('durable_end mismatch')
+          st['durable_base64_chars']=cursor
+          st['next_offset']=cursor
+          st['git_data_blob_channel']=f'PROVEN_FOR_SHA_BOUND_BRANCH_ATTACHED_BYTES_THROUGH_OFFSET_{cursor}'
+          st['micro1k_manifest']=str(mpath)
+          st['micro1k_extra_chars']=cursor-base
+          st['release_credit']=False
+          cp['recorded_at_jst']=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(timespec='seconds')
+          cp_path.write_text(json.dumps(cp,ensure_ascii=False,indent=2)+'\n')
+          ev={'project':'mikami-math-problem-bank','stage':'APP1323_EXACT_TRUE_BYTE_TRANSFER_MICRO1K_SHA_BOUND','base_offset':base,'durable_base64_chars':cursor,'micro_segments':len(segs),'source_sha256':st['source_sha256'],'brotli_sha256':st['brotli_sha256'],'release_credit':False,'main_touched':False,'publication_ready':False,'physical_fire':'PENDING','manifest':str(mpath)}
+          pathlib.Path('math-bank/state/app1323-micro1k-progress-latest.json').write_text(json.dumps(ev,ensure_ascii=False,indent=2)+'\n')
+      - name: Commit synchronized durable state
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add math-bank/state/checkpoint.json math-bank/state/app1323-micro1k-progress-latest.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Sync exact1323 micro1k transfer progress"
+          git push origin HEAD:math-problem-bank-bootstrap
