@@ -7,6 +7,8 @@ on:
       - v11-1000passage-easy-notes
     paths:
       - '.github/workflows/v11-preview-live-smoke.yml'
+      - 'v11_batch13_runtime_bundle.js'
+      - 'V11_BATCH13_RUNTIME_BUNDLE_STATUS.json'
 
 jobs:
   live-smoke:
@@ -16,20 +18,20 @@ jobs:
       PREVIEW_URL: https://yo666ha-boop.github.io/reading-app/v11-preview/
       EXPECTED_TOTAL: '818'
     steps:
-      - name: Wait for GitHub Pages preview publication
+      - name: Wait for exact GitHub Pages preview publication
         shell: bash
         run: |
           set -euo pipefail
-          for i in $(seq 1 36); do
-            body="$(curl -fsSL --max-time 20 "${PREVIEW_URL}PREVIEW_SOURCE.txt" || true)"
+          for i in $(seq 1 48); do
+            body="$(curl -fsSL --max-time 20 "${PREVIEW_URL}PREVIEW_SOURCE.txt?ts=$(date +%s)" || true)"
             echo "attempt=$i"
             echo "$body"
-            if echo "$body" | grep -q "expected_registered_total=${EXPECTED_TOTAL}"; then
+            if echo "$body" | grep -q "expected_registered_total=${EXPECTED_TOTAL}" && echo "$body" | grep -q "source_sha=${GITHUB_SHA}"; then
               exit 0
             fi
             sleep 5
           done
-          echo "Preview source marker did not reach expected_registered_total=${EXPECTED_TOTAL}" >&2
+          echo "Preview did not publish exact source_sha=${GITHUB_SHA} with expected_registered_total=${EXPECTED_TOTAL}" >&2
           exit 1
 
       - name: Install Playwright Chromium
@@ -52,69 +54,62 @@ jobs:
             const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
             const consoleErrors = [];
             const pageErrors = [];
-            page.on('console', msg => {
-              if (msg.type() === 'error') consoleErrors.push(msg.text());
-            });
+            const failedRequests = [];
+            page.on('console', msg => { if (msg.type() === 'error') consoleErrors.push(msg.text()); });
             page.on('pageerror', err => pageErrors.push(String(err && err.stack || err)));
+            page.on('requestfailed', req => failedRequests.push({url:req.url(), error:req.failure() && req.failure().errorText}));
 
             try {
               await page.goto(url + '?liveSmoke=' + Date.now(), { waitUntil: 'domcontentloaded', timeout: 120000 });
-              await page.waitForFunction((n) => {
-                try {
-                  if (window.V11_BATCH11_BOOTSTRAP_ERROR || window.V11_BATCH12_BOOTSTRAP_ERROR || window.V11_BATCH13_BOOTSTRAP_ERROR) return false;
-                  return typeof window.getAllPassages === 'function' &&
-                    window.V11_BATCH13_STATE &&
-                    window.V11_BATCH13_STATE.registered === true &&
-                    window.V11_BATCH13_STATE.totalWithBaseline === n &&
-                    window.getAllPassages().length === n;
-                } catch (_) { return false; }
-              }, expected, { timeout: 240000 });
-
-              const result = await page.evaluate((n) => {
-                const all = window.getAllPassages();
-                const last = all[n - 1] || null;
-                const errors = {
-                  b11: window.V11_BATCH11_BOOTSTRAP_ERROR || null,
-                  b12: window.V11_BATCH12_BOOTSTRAP_ERROR || null,
-                  b13: window.V11_BATCH13_BOOTSTRAP_ERROR || null,
-                };
-                return {
-                  total: all.length,
-                  lastId: last && (last.id || last.passageId || last.uid || null),
-                  lastTitle: last && (last.title || last.name || null),
-                  lastKeys: last ? Object.keys(last) : [],
-                  batch11: window.V11_BATCH11_STATE || null,
-                  batch12: window.V11_BATCH12_STATE || null,
-                  batch13: window.V11_BATCH13_STATE || null,
-                  bootstrap13: window.V11_BATCH13_BOOTSTRAP_STATE || null,
-                  errors,
-                  bodyTextLength: document.body.innerText.length,
-                  title: document.title
-                };
-              }, expected);
+              const deadline = Date.now() + 120000;
+              let result = null;
+              while (Date.now() < deadline) {
+                result = await page.evaluate(() => {
+                  let total = null;
+                  try { if (typeof window.getAllPassages === 'function') total = window.getAllPassages().length; } catch (_) {}
+                  return {
+                    total,
+                    getAllPassages: typeof window.getAllPassages,
+                    b11: window.V11_BATCH11_STATE || null,
+                    b12: window.V11_BATCH12_STATE || null,
+                    b13: window.V11_BATCH13_STATE || null,
+                    bs11: window.V11_BATCH11_BOOTSTRAP_STATE || null,
+                    bs12: window.V11_BATCH12_BOOTSTRAP_STATE || null,
+                    bs13: window.V11_BATCH13_BOOTSTRAP_STATE || null,
+                    loading11: !!window.V11_BATCH11_BOOTSTRAP_LOADING,
+                    loading12: !!window.V11_BATCH12_BOOTSTRAP_LOADING,
+                    loading13: !!window.V11_BATCH13_BOOTSTRAP_LOADING,
+                    errors: {
+                      b11: window.V11_BATCH11_BOOTSTRAP_ERROR || null,
+                      b12: window.V11_BATCH12_BOOTSTRAP_ERROR || null,
+                      b13: window.V11_BATCH13_BOOTSTRAP_ERROR || null
+                    },
+                    bodyTextLength: document.body.innerText.length,
+                    title: document.title
+                  };
+                });
+                if (result.total === expected && result.b13 && result.b13.registered === true && result.b13.totalWithBaseline === expected && !result.errors.b11 && !result.errors.b12 && !result.errors.b13) break;
+                if (result.errors.b11 || result.errors.b12 || result.errors.b13) break;
+                await page.waitForTimeout(1000);
+              }
 
               console.log('LIVE_RESULT=' + JSON.stringify(result));
               console.log('PAGE_ERRORS=' + JSON.stringify(pageErrors));
               console.log('CONSOLE_ERRORS=' + JSON.stringify(consoleErrors));
+              console.log('FAILED_REQUESTS=' + JSON.stringify(failedRequests));
 
-              if (result.total !== expected) throw new Error(`runtime total ${result.total} != ${expected}`);
-              if (!result.batch13 || result.batch13.registered !== true || result.batch13.totalWithBaseline !== expected) {
-                throw new Error('Batch13 registered state invalid: ' + JSON.stringify(result.batch13));
-              }
-              if (result.errors.b11 || result.errors.b12 || result.errors.b13) {
-                throw new Error('Bootstrap error present: ' + JSON.stringify(result.errors));
-              }
+              if (!result || result.total !== expected) throw new Error(`runtime total ${result && result.total} != ${expected}`);
+              if (!result.b13 || result.b13.registered !== true || result.b13.totalWithBaseline !== expected) throw new Error('Batch13 registered state invalid: ' + JSON.stringify(result && result.b13));
+              if (result.errors.b11 || result.errors.b12 || result.errors.b13) throw new Error('Bootstrap error present: ' + JSON.stringify(result.errors));
               if (pageErrors.length) throw new Error('pageerror detected: ' + pageErrors.join('\n'));
+              if (failedRequests.some(x => /v11_batch1[123].*\.js/.test(x.url))) throw new Error('required Batch11/12/13 request failed: ' + JSON.stringify(failedRequests));
               if (result.bodyTextLength < 100) throw new Error('UI body did not render');
 
               await page.screenshot({ path: '/tmp/v11-preview-live.png', fullPage: true });
             } finally {
               await browser.close();
             }
-          })().catch(err => {
-            console.error(err && err.stack || err);
-            process.exit(1);
-          });
+          })().catch(err => { console.error(err && err.stack || err); process.exit(1); });
           NODE
           node v11-live-smoke.cjs
 
