@@ -13,6 +13,14 @@ window.V11_BATCH13_PASSAGES=ps;
 const st=window.V11_REGISTER_PASSAGES(ps),extra=Number(st&&st.extraPassages||0),totalWithBaseline=168+extra;
 if(!st||extra!==650||totalWithBaseline!==818)throw new Error('Batch13 runtime totals invalid '+JSON.stringify(st));
 if(typeof window.V11_APPLY_EASY_SUPPORT_NOTES==='function')window.V11_APPLY_EASY_SUPPORT_NOTES();
-window.V11_BATCH13_STATE={...st,totalWithBaseline,batch13Passages:50,registered:true,humanReviewedPassages:50,humanReviewedQuestions:500,slashReviewedPassages:50,normalNotes:ps.reduce((n,p)=>n+(p.notes||[]).length,0),version:'20260903-b13-candidate'};
+// Human-curated easy-support additions for passages where the generic support dictionary
+// legitimately produced fewer than four non-overlapping notes. Each phrase occurs verbatim
+// in the reviewed passage and is intentionally broader than the required/local word notes.
+const easySupportAdditions={
+  'V11-B13-G1-004':[{english:'right after each job',japanese:'それぞれの仕事が終わったすぐ後に'}],
+  'V11-B13-G1-010':[{english:'during the break',japanese:'休み時間の間に'}]
+};
+for(const p of ps){const adds=easySupportAdditions[p.id]||[];if(!adds.length)continue;const body=String(p.body||((p.sentences||[]).join(' '))),normal=new Set((p.notes||[]).map(n=>norm(n.english).toLowerCase())),support=Array.isArray(p.supportNotes)?p.supportNotes:[];const seen=new Set(support.map(n=>norm(n&&n.english).toLowerCase()));for(const n of adds){const k=norm(n.english).toLowerCase();if(!contains(body,n.english))throw new Error(p.id+' curated easy-support phrase missing from body: '+n.english);if(normal.has(k))throw new Error(p.id+' curated easy-support overlaps required note: '+n.english);if(!seen.has(k)){support.push({...n,kind:'easy_support_human_b13'});seen.add(k)}}p.supportNotes=support;}
+window.V11_BATCH13_STATE={...st,totalWithBaseline,batch13Passages:50,registered:true,humanReviewedPassages:50,humanReviewedQuestions:500,slashReviewedPassages:50,normalNotes:ps.reduce((n,p)=>n+(p.notes||[]).length,0),version:'20260903-b13-candidate-support-r1'};
 window.V11_BATCH13_LOADED=true;
 })();
