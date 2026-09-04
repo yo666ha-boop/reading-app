@@ -1,0 +1,43 @@
+name: v11 Batch14 G1 chronology audit
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch14_g1_body_draft.json'
+      - 'v11_batch14_g1_chronology_audit.js'
+      - '.github/workflows/v11-batch14-g1-chronology-audit.yml'
+  workflow_dispatch:
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-save --package-lock=false jsdom@24
+      - name: Run Batch14 G1 chronology audit
+        id: audit
+        continue-on-error: true
+        run: node v11_batch14_g1_chronology_audit.js
+      - name: Persist chronology actuals
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git pull --rebase origin v11-1000passage-easy-notes
+          for f in V11_BATCH14_G1_CHRONOLOGY_STATUS.txt V11_BATCH14_G1_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH14_G1_GRAMMAR_CANDIDATE_REPORT.json V11_BATCH14_G1_GRAMMAR_CHRONOLOGY_REPORT.json; do
+            [ -f "$f" ] && git add "$f"
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m 'v11: persist Batch14 G1 chronology actuals'
+            git push origin HEAD:v11-1000passage-easy-notes
+          fi
+      - name: Enforce chronology gate
+        if: steps.audit.outcome != 'success'
+        run: exit 1
