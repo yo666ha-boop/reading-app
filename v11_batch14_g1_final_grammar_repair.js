@@ -1,0 +1,17 @@
+const fs=require('fs');
+const path='v11_batch14_g1_body_draft.json';
+const d=JSON.parse(fs.readFileSync(path,'utf8'));
+const p=d.passages.find(x=>x.id==='V11-B14-G1-015');
+if(!p) throw new Error('G1-015 not found');
+const oldEn='Later, two visitors asked her where to go. She showed them the blue line and the sign.';
+const newEn='Later, two visitors said, “Where do we go?” Mio showed them the blue line and the sign.';
+const oldJp='後で二人の来校者に道を聞かれたとき、ミオは青い線と表示を案内しました。';
+const newJp='後で二人の来校者が「どこへ行けばいいですか」と言ったので、ミオは青い線と表示を案内しました。';
+if(!p.body.includes(oldEn)) throw new Error('expected English source not found');
+if(!p.fullTranslation.includes(oldJp)) throw new Error('expected Japanese source not found');
+p.body=p.body.replace(oldEn,newEn);
+p.fullTranslation=p.fullTranslation.replace(oldJp,newJp);
+p.humanSemanticReview='B14_G1_HUMAN_REVIEW_R6_FINAL_GRAMMAR_SYNC';
+d.status='BODY_TRANSLATION_HUMAN_SEMANTIC_REVIEWED_R6_FINAL_GRAMMAR_REPAIRED';
+fs.writeFileSync(path,JSON.stringify(d,null,2)+'\n');
+console.log('repaired G1-015 where-to chronology issue');
