@@ -78,3 +78,5 @@ const status=[`batch14_g1_passages=17/17`,`semantic_rewrite_complete=${ps.filter
 fs.writeFileSync('V11_BATCH14_G1_CHRONOLOGY_STATUS.txt',status);
 console.log(status);
 if(!final)process.exitCode=1;
+
+// rerun-trigger: latest G1-015 repair verification
