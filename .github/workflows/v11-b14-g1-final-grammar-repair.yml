@@ -1,0 +1,33 @@
+name: v11 B14 G1 final grammar repair
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch14_g1_final_grammar_repair.js'
+  workflow_dispatch:
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - run: git pull --rebase origin v11-1000passage-easy-notes
+      - name: Repair G1-015 and synchronize translation
+        run: node v11_batch14_g1_final_grammar_repair.js
+      - name: Re-run G1 draft gate
+        run: node v11_batch14_g1_draft_audit.js
+      - name: Persist repair and audit
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add v11_batch14_g1_body_draft.json V11_BATCH14_G1_DRAFT_AUDIT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'v11: persist Batch14 G1-015 final grammar repair'
+            git push origin HEAD:v11-1000passage-easy-notes
+          fi
