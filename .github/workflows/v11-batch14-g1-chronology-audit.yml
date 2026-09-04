@@ -30,7 +30,6 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git pull --rebase origin v11-1000passage-easy-notes
           for f in V11_BATCH14_G1_CHRONOLOGY_STATUS.txt V11_BATCH14_G1_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH14_G1_GRAMMAR_CANDIDATE_REPORT.json V11_BATCH14_G1_GRAMMAR_CHRONOLOGY_REPORT.json; do
             [ -f "$f" ] && git add "$f"
           done
