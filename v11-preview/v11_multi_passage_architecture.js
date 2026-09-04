@@ -1,5 +1,5 @@
 (function installV11MultiPassageArchitecture(){
-  const VERSION='20260904-v11-multipassage-002-public-preview-sync';
+  const VERSION='20260904-v11-multipassage-003-filter-safe';
   const registry=window.V11_EXTRA_PASSAGES=window.V11_EXTRA_PASSAGES||{};
 
   function norm(v){
@@ -133,6 +133,23 @@
       return vs.find(p=>String(p.id||'')===wanted)||vs[0];
     }
 
+    function selectedRegisteredForSection(sec){
+      if(!select)return null;
+      const wanted=String(select.value||'');
+      if(!wanted)return null;
+      const textbook=document.getElementById('textbook');
+      const grade=document.getElementById('grade');
+      const wantedTextbook=textbook?norm(textbook.value):'';
+      const wantedGrade=grade?String(grade.value):'';
+      const wantedSection=normSection(sec);
+      for(const arr of Object.values(registry)){
+        if(!Array.isArray(arr))continue;
+        const p=arr.find(x=>x&&String(x.id||'')===wanted&&normSection(x.section)===wantedSection&&(!wantedTextbook||norm(x.textbook)===wantedTextbook)&&(!wantedGrade||String(x.grade)===wantedGrade));
+        if(p)return p;
+      }
+      return null;
+    }
+
     function refresh(base,opts){
       opts=opts||{};
       if(!select||!base)return base;
@@ -181,17 +198,17 @@
       return selectedVariant(base);
     };
 
+    // Do not call baseChoose() here. The original choose() calls metaFor()
+    // while applying the genre filter; calling choose() from metaFor() would recurse.
     window.metaFor=function(sec){
-      const base=baseChoose();
-      if(!base)return baseMetaFor(sec);
-      const selected=selectedVariant(base);
-      if(selected&&selected!==base){
-        return {
-          genre:selected.genre||'report',
-          questionSetB:Array.isArray(selected.questionSetB)?selected.questionSetB:[]
-        };
-      }
-      return baseMetaFor(sec);
+      const baseMeta=baseMetaFor(sec)||{};
+      const selected=selectedRegisteredForSection(sec);
+      if(!selected)return baseMeta;
+      return {
+        ...baseMeta,
+        genre:selected.genre||baseMeta.genre||'report',
+        questionSetB:Array.isArray(selected.questionSetB)?selected.questionSetB:[]
+      };
     };
 
     const originalRender=window.render;

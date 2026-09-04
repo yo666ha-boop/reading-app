@@ -1,5 +1,24 @@
-checked_at_utc=2026-08-30T09:12:24Z
-source_sha=8cef5a83826f5625b0cfde3193637f1729184b58
-result=PASS
-CROSS {"pc":{"passages":50,"overflow":0,"errors":0},"iphone":{"passages":50,"overflow":0,"errors":0},"a4":{"representativeSections":6,"files":12,"details":[{"id":"V11-SS-G1-P10-2-002","teacherBytes":172191,"studentBytes":154166},{"id":"V11-NH-G1-U10-2-002","teacherBytes":171599,"studentBytes":154013},{"id":"V11-SS-G2-P8-3-002","teacherBytes":177166,"studentBytes":159582},{"id":"V11-NH-G2-U7-4-002","teacherBytes":180244,"studentBytes":163348},{"id":"V11-SS-G3-P7-3-002","teacherBytes":181922,"studentBytes":163507},{"id":"V11-NH-G3-U6-4-002","teacherBytes":176610,"studentBytes":159656}]}}
-V11_BATCH01_PC_IPHONE_A4_PASS
+checked_at_utc=2026-09-04T10:54:28Z
+source_sha=d677a37526b1c9e1284704c9284afc130783acaa
+result=FAIL
+V11_BATCH01_PC_IPHONE_A4_FAIL page.selectOption: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('#v11PassageVariant')
+    - locator resolved to <select aria-label="本文" id="v11PassageVariant">…</select>
+  - attempting select option action
+    2 × waiting for element to be visible and enabled
+      - did not find some options
+    - retrying select option action
+    - waiting 20ms
+    2 × waiting for element to be visible and enabled
+      - did not find some options
+    - retrying select option action
+      - waiting 100ms
+    59 × waiting for element to be visible and enabled
+       - did not find some options
+     - retrying select option action
+       - waiting 500ms
+
+    at selectPassage (/home/runner/work/reading-app/reading-app/v11_batch01_cross_platform_audit.js:21:14)
+    at async auditEngine (/home/runner/work/reading-app/reading-app/v11_batch01_cross_platform_audit.js:38:26)
+    at async /home/runner/work/reading-app/reading-app/v11_batch01_cross_platform_audit.js:66:21
