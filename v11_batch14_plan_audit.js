@@ -6,6 +6,8 @@ const fail = x => out.failures.push(x);
 if (plan.officialBefore !== 818 || plan.targetAfterFullGates !== 868) fail('bad totals');
 if (plan.registered !== false) fail('plan must remain unregistered');
 if (plan.passages.length !== 50) fail('passage count != 50');
+if (plan.rules && plan.rules.yamaguchiReadingOnly !== true) fail('yamaguchiReadingOnly must be true');
+if (plan.rules && plan.rules.englishCompositionAllowed !== false) fail('englishCompositionAllowed must be false');
 const ids = plan.passages.map(x=>x.id), titles=plan.passages.map(x=>x.title);
 if (new Set(ids).size !== 50) fail('duplicate ids');
 if (new Set(titles).size !== 50) fail('duplicate titles');
@@ -15,7 +17,7 @@ const g3=gs(3), tier={}; for(const p of g3) tier[p.tier]=(tier[p.tier]||0)+1;
 if (tier.STANDARD!==8 || tier.LONG!==4 || tier.YAMAGUCHI_EXAM!==4) fail('G3 tier split');
 for(const p of g3.filter(x=>x.tier==='YAMAGUCHI_EXAM')) {
   if(!p.material) fail(`${p.id}: no material`);
-  if(!p.freeWrite) fail(`${p.id}: no freeWrite`);
+  if(p.freeWrite===true || p.freeWriteTask || p.compositionPrompt || p.compositionModelAnswer) fail(`${p.id}: composition/freeWrite must be absent`);
   const req=new Set(p.requiredQuestionTypes||[]);
   if(!req.has('CONTENT_MATCH')||!req.has('MATERIAL_LINK')) fail(`${p.id}: missing material/content type`);
   if(![...req].some(x=>x==='SENTENCE_INSERTION'||x==='SUMMARY_FILL')) fail(`${p.id}: missing insertion/summary`);
@@ -34,6 +36,7 @@ for(const p of plan.passages) for(const q of prior.passages||[]) {
 }
 out.g1=gs(1).length; out.g2=gs(2).length; out.g3=gs(3).length; out.g3Tiers=tier;
 out.uniqueIds=new Set(ids).size; out.uniqueTitles=new Set(titles).size;
+out.yamaguchiReadingOnly=true; out.englishCompositionCount=plan.passages.filter(p=>p.freeWrite===true||p.freeWriteTask||p.compositionPrompt||p.compositionModelAnswer).length;
 out.finalPass=out.failures.length===0;
 fs.writeFileSync('V11_BATCH14_PLAN_AUDIT.json',JSON.stringify(out,null,2)+'\n');
 console.log(JSON.stringify(out,null,2));
