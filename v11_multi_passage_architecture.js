@@ -1,6 +1,6 @@
 (function installV11MultiPassageArchitecture(){
   'use strict';
-  const VERSION='20260905-v11-range-wordcount-002-visible-switch';
+  const VERSION='20260905-v11-selected-section-003-visible-switch';
   const registry=window.V11_EXTRA_PASSAGES=window.V11_EXTRA_PASSAGES||{};
   const required=['id','textbook','grade','section','title','sentences','fullTranslation','slashRows','questions'];
 
@@ -66,7 +66,7 @@
     let candidateField=document.getElementById('v11PassageVariantField');
     if(!candidateField){
       candidateField=document.createElement('div'); candidateField.className='field'; candidateField.id='v11PassageVariantField'; candidateField.style.minWidth='360px'; candidateField.style.flex='2 1 360px';
-      candidateField.innerHTML='<label>長文候補（選択した小単元まで）</label><select id="v11PassageVariant" aria-label="長文候補"></select><div id="v11CandidateInline" class="muted" style="margin-top:4px"></div>';
+      candidateField.innerHTML='<label>長文候補（選択した小単元）</label><select id="v11PassageVariant" aria-label="長文候補"></select><div id="v11CandidateInline" class="muted" style="margin-top:4px"></div>';
       const pattern=document.getElementById('pattern'); const pf=pattern&&pattern.closest('.field'); if(pf)row.insertBefore(candidateField,pf);else row.appendChild(candidateField);
     }
     const select=document.getElementById('v11PassageVariant');
@@ -90,8 +90,8 @@
     }
     function rangeKeys(){
       const ds=dataset(); const all=Object.keys(ds); const sec=document.getElementById('section');
-      if(!sec||!sec.value)return all;
-      const ix=all.indexOf(sec.value); return ix>=0?all.slice(0,ix+1):all;
+      if(!sec||!sec.value)return [];
+      return all.includes(sec.value)?[sec.value]:[];
     }
     function matchesWord(p){
       const n=wordCount(p),m=wordFilter?wordFilter.value:'all';
