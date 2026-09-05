@@ -32,9 +32,44 @@ async function settle(page){
 async function inspect(page){
   return page.evaluate(()=>{
     const p=window.choose&&window.choose();
+    const sectionMeta=(window.metaFor&&p)?(window.metaFor(p.section)||{}):{};
     const opts=Array.from(document.querySelectorAll('#v11PassageVariant option')).map(o=>({value:o.value,label:o.textContent}));
-    return {id:p&&p.id,section:p&&p.section,title:p&&p.title,wordFilter:!!document.getElementById('v11WordCountFilter'),opts,meta:(document.getElementById('v11PassageSourceMeta')||{}).textContent||'',master:(document.getElementById('masterCount')||{}).textContent||'',passage:(document.getElementById('passage')||{}).textContent||'',slash:(document.getElementById('slash')||{}).textContent||'',questions:(document.getElementById('questions')||{}).textContent||'',answers:(document.getElementById('answers')||{}).textContent||'',sentences:p&&p.sentences||[],fullTranslation:p&&p.fullTranslation||'',slashRows:p&&p.slashRows||[],qA:p&&p.questions||[],qB:p&&p.questionSetB||[],words:p?((p.sentences||[]).join(' ').match(/[A-Za-z0-9]+(?:['’-][A-Za-z0-9]+)*/g)||[]).length:0,ui:window.V11_MULTI_PASSAGE_UI_STATE||null};
+    const supportBtn=document.getElementById('v11WordSupportBtn');
+    return {id:p&&p.id,section:p&&p.section,title:p&&p.title,wordFilter:!!document.getElementById('v11WordCountFilter'),opts,meta:(document.getElementById('v11PassageSourceMeta')||{}).textContent||'',master:(document.getElementById('masterCount')||{}).textContent||'',passage:(document.getElementById('passage')||{}).textContent||'',slash:(document.getElementById('slash')||{}).textContent||'',questions:(document.getElementById('questions')||{}).textContent||'',answers:(document.getElementById('answers')||{}).textContent||'',sentences:p&&p.sentences||[],fullTranslation:p&&p.fullTranslation||'',slashRows:p&&p.slashRows||[],qA:p&&p.questions||[],qB:(p&&Array.isArray(p.questionSetB)?p.questionSetB:sectionMeta.questionSetB)||[],notes:p&&p.notes||[],supportNotes:p&&p.supportNotes||[],supportState:window.V11_EASY_SUPPORT_LAST_RENDER||null,supportChecked:supportBtn&&supportBtn.getAttribute('aria-checked'),words:p?((p.sentences||[]).join(' ').match(/[A-Za-z0-9]+(?:['’-][A-Za-z0-9]+)*/g)||[]).length:0,ui:window.V11_MULTI_PASSAGE_UI_STATE||null};
   });
+}
+async function verifySync(page,x,name,section,kind,failures){
+  const prefix=`${name} ${section} ${kind} ${x.id||'NO-ID'}`;
+  need(x.section===section,`${prefix}: section=${x.section}`,failures);
+  need(x.sentences.length>0&&norm(x.passage).includes(norm(x.sentences[0])),`${prefix}: passage body not synced`,failures);
+  need(!!x.fullTranslation&&norm(x.passage).includes(norm(x.fullTranslation)),`${prefix}: full translation not synced`,failures);
+  need(x.slashRows[0]&&norm(x.slash).includes(norm(x.slashRows[0].en))&&norm(x.slash).includes(norm(x.slashRows[0].jp)),`${prefix}: slash not synced`,failures);
+  for(const [label,arr] of [['A',x.qA],['B',x.qB]]){
+    need(Array.isArray(arr)&&arr.length===5,`${prefix}: ${label} count=${arr&&arr.length}`,failures);
+    for(let i=0;i<(arr||[]).length;i++){
+      const q=arr[i]||{};
+      need(!!q.prompt,`${prefix}: ${label}[${i}] prompt missing`,failures);
+      need(q.answer!=null&&String(q.answer).length>0,`${prefix}: ${label}[${i}] answer missing`,failures);
+      need(!!q.evidence,`${prefix}: ${label}[${i}] evidence missing`,failures);
+      need(!!q.evidenceJp,`${prefix}: ${label}[${i}] evidenceJp missing`,failures);
+      need(!!q.reason,`${prefix}: ${label}[${i}] reason missing`,failures);
+      need(norm((x.sentences||[]).join(' ')).includes(norm(q.evidence)),`${prefix}: ${label}[${i}] evidence not in selected passage`,failures);
+      need(norm(x.fullTranslation).includes(norm(q.evidenceJp)),`${prefix}: ${label}[${i}] evidenceJp not in selected translation`,failures);
+    }
+    if(arr&&arr[0]){
+      need(norm(x.questions).includes(qtext(arr[0].prompt)),`${prefix}: ${label} prompt not rendered`,failures);
+      need(norm(x.answers).includes(norm(arr[0].evidence)),`${prefix}: ${label} evidence not rendered`,failures);
+      need(norm(x.answers).includes(norm(arr[0].evidenceJp)),`${prefix}: ${label} evidenceJp not rendered`,failures);
+      need(norm(x.answers).includes(norm(arr[0].reason)),`${prefix}: ${label} reason not rendered`,failures);
+    }
+  }
+  const btn=page.locator('#v11WordSupportBtn');
+  if((await btn.getAttribute('aria-checked'))!=='true'){await btn.click();await page.waitForTimeout(120);}
+  const on=await inspect(page);
+  need(on.supportChecked==='true',`${prefix}: word support did not turn on`,failures);
+  need(on.supportState&&on.supportState.passageId===x.id,`${prefix}: support passageId=${on.supportState&&on.supportState.passageId}`,failures);
+  need(norm(on.passage).includes('単語サポート（多め）')||((on.notes||[]).length===0&&(on.supportNotes||[]).length===0),`${prefix}: support panel not synced`,failures);
+  return on;
 }
 async function auditEngine(browserType,name){
   const browser=await browserType.launch();
@@ -55,10 +90,25 @@ async function auditEngine(browserType,name){
     need(x.section===s.section,`${name} ${s.section}: choose() section=${x.section}`,failures);
     need(/該当長文\s*\d+題/.test(x.master),`${name} ${s.section}: selected-count summary missing`,failures);
     need(x.ui&&x.ui.optionCount===x.opts.length&&x.ui.baseCount===baseLabels.length&&x.ui.extraCount===extraLabels.length,`${name} ${s.section}: UI candidate counts out of sync`,failures);
+    const base=x.opts.find(o=>/^基本\s*｜/.test(o.label));
     const extra=x.opts.find(o=>/^追加(?:\d+)?\s*｜/.test(o.label));
+    if(base){
+      await page.selectOption('#v11PassageVariant',base.value);await page.waitForTimeout(120);x=await inspect(page);
+      need(x.id===base.value,`${name} ${s.section}: base selection mismatch`,failures);
+      await verifySync(page,x,name,s.section,'basic',failures);
+    }
+    let extraSnap=null;
     if(extra){
-      await page.selectOption('#v11PassageVariant',extra.value);await page.waitForTimeout(120);x=await inspect(page);need(x.id===extra.value,`${name} ${s.section}: extra selection mismatch`,failures);need(x.section===s.section,`${name} ${s.section}: selected extra section=${x.section}`,failures);need(x.meta.includes('追加本文')&&x.meta.includes(x.words+' words'),`${name} ${s.section}: selected source/words meta missing`,failures);need(norm(x.passage).includes(norm(x.fullTranslation)),`${name} ${s.section}: translation not synced`,failures);need(x.slashRows[0]&&norm(x.slash).includes(norm(x.slashRows[0].en))&&norm(x.slash).includes(norm(x.slashRows[0].jp)),`${name} ${s.section}: slash not synced`,failures);need(x.qA.length===5&&norm(x.questions).includes(qtext(x.qA[0]&&x.qA[0].prompt)),`${name} ${s.section}: A questions not synced`,failures);need(x.qA[0]&&norm(x.answers).includes(norm(x.qA[0].evidence))&&norm(x.answers).includes(norm(x.qA[0].evidenceJp)),`${name} ${s.section}: A evidence not synced`,failures);
+      await page.selectOption('#v11PassageVariant',extra.value);await page.waitForTimeout(120);x=await inspect(page);
+      need(x.id===extra.value,`${name} ${s.section}: extra selection mismatch`,failures);
+      need(x.meta.includes('追加本文')&&x.meta.includes(x.words+' words'),`${name} ${s.section}: selected source/words meta missing`,failures);
+      extraSnap=await verifySync(page,x,name,s.section,'extra',failures);
       const band=bandFor(x.words);await page.selectOption('#v11WordCountFilter',band);await page.waitForTimeout(150);const y=await inspect(page);const counts=y.opts.map(o=>{const m=o.label.match(/｜(\d+) words｜/);return m?Number(m[1]):NaN});need(counts.length>0&&counts.every(n=>Number.isFinite(n)&&inBand(n,band)),`${name} ${s.section}: Word数 filter ${band} failed counts=${counts.join(',')}`,failures);need(y.opts.every(o=>(o.label.split('｜')[1]||'').trim()===s.section),`${name} ${s.section}: Word数 filter leaked another section`,failures);await page.selectOption('#v11WordCountFilter','all');
+    }
+    if(base&&extra&&extraSnap){
+      await page.selectOption('#v11PassageVariant',base.value);await page.waitForTimeout(120);const back=await inspect(page);
+      need(back.id===base.value,`${name} ${s.section}: switching back to basic failed`,failures);
+      need(norm(back.passage)!==norm(extraSnap.passage),`${name} ${s.section}: basic/extra body did not change`,failures);
     }
     results.push({...s,optionCount:x.opts.length,baseCount:baseLabels.length,extraCount:extraLabels.length,sections,selectedId:x.id,words:x.words});
   }
