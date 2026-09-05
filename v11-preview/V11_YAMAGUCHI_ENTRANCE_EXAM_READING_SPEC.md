@@ -1,11 +1,13 @@
 # V11 Yamaguchi Entrance Exam Reading Specification
 
-Status: ACTIVE_SPEC / applies to Batch07 onward and final 1000-passage release audit
-Updated: 2026-08-29 JST
+Status: ACTIVE_SPEC / READING_ONLY / applies to Batch07 onward and final 1000-passage release audit
+Updated: 2026-09-05 JST
 
 ## Purpose
 
-The v11 app must not imitate Yamaguchi entrance-exam preparation only by making passages longer. It must train the reading operations and question forms that appear in actual Yamaguchi Prefecture public high-school entrance examinations, while preserving textbook/unit vocabulary and grammar chronology.
+The v11 app is an English long-reading comprehension app. The Yamaguchi exam-style track must train reading operations and reading-question forms that appear in Yamaguchi Prefecture public high-school entrance examinations, while preserving textbook/unit vocabulary and grammar chronology.
+
+**English composition / free writing is out of scope for this app.** Even when an actual Yamaguchi examination includes a composition task, v11 does not reproduce, model, score, or count that task. The dedicated Yamaguchi-style 100-passage subset is reading comprehension only.
 
 This specification is an original structural analysis. It does not copy or redistribute copyrighted exam passages.
 
@@ -20,7 +22,7 @@ Primary / actual-paper sources checked:
   - https://newsdig.tbs.co.jp/articles/-/1767650
 - 2026 Yamaguchi English problem/answer image set published by tys / TBS NEWS DIG.
   - https://newsdig.tbs.co.jp/articles/-/2507925
-- Yamaguchi Prefecture official result/overview material for the 2022 selection, confirming emphasis on grasping gist, key points and necessary information from dialogues/stories and on writing English according to purpose/situation/context.
+- Yamaguchi Prefecture official result/overview material for the 2022 selection, confirming emphasis on grasping gist, key points and necessary information from dialogues/stories.
   - https://www.pref.yamaguchi.lg.jp/uploaded/attachment/114691.pdf
 
 Secondary trend sources were used only to corroborate overall volume/format, not as substitutes for reading actual problem pages.
@@ -39,7 +41,8 @@ The app must cover these operations as separate question types instead of treati
 8. PHRASE_FILL — complete a short phrase/expression that fits the dialogue or passage context.
 9. SUMMARY_FILL — complete a post-reading summary/dialogue using information from the text.
 10. MATERIAL_LINK — integrate a chart, table, sign, schedule, map, survey, graph or other material with the English text.
-11. FREE_WRITE_20_30 — write an original 20–30 word response linked to the situation/theme. This is an output task and should not replace reading-comprehension questions.
+
+No free-writing/composition question type belongs to this reading-app taxonomy.
 
 ## Concrete actual-paper observations
 
@@ -54,7 +57,7 @@ The inspected long narrative uses a coherent multi-stage story rather than isola
 This establishes that Yamaguchi-style practice must include discourse cohesion, cause/reason, intention, accurate detail comparison and contextual lexical completion in the same reading set.
 
 ### 2025
-The actual-paper set and answer information confirm a six-major-question structure with multiple reading sections. Contemporary analysis of the same paper describes two shorter dialogue readings and two longer reading passages, plus a 20–30 word free composition tied to a communicative situation. Answer forms also include contextual single-word/short-phrase completion rather than only multiple choice.
+The actual-paper set and answer information confirm a multi-section structure with multiple reading sections. For this app, only the reading-comprehension components are modeled: shorter dialogue reading, longer coherent passages, material/information integration and contextual single-word/short-phrase completion. Any composition component in the real examination is intentionally excluded.
 
 ### 2022–2023
 The archived full page sets and official 2022 overview confirm continued use of dialogue/story reading to obtain gist, key points and necessary information. The yearly page organization supports treating the exam as a sequence of short contextual reading, information/material reading and longer coherent reading rather than one isolated long passage only.
@@ -96,7 +99,7 @@ The remaining eight Grade 3 passages are STANDARD.
 
 ## Question-set contract
 
-The UI may continue to present A/B sets, but each question object must carry a `questionType` from the taxonomy above.
+The UI may continue to present A/B sets, but each question object must carry a `questionType` from the reading-only taxonomy above.
 
 For Grade 1/2 and Grade 3 STANDARD:
 - keep A 5 + B 5;
@@ -110,13 +113,14 @@ For Grade 3 LONG:
 
 For Grade 3 YAMAGUCHI_EXAM:
 - keep A 5 + B 5 for app compatibility;
-- at least 6 distinct question types across the 10 questions;
+- all ten items must be reading-comprehension items;
+- at least 6 distinct reading question types across the 10 questions;
 - must include CONTENT_MATCH;
 - must include at least one of SENTENCE_INSERTION or SUMMARY_FILL;
 - must include at least one of CONTEXT_WORD or PHRASE_FILL;
 - must include at least one of REASON or INFERENCE;
-- when the story naturally supports it, include MATERIAL_LINK;
-- add one separate optional `freeWriteTask` of 20–30 words tied to the passage/situation. It is not counted among the ten A/B reading questions.
+- when the passage naturally supports it, include MATERIAL_LINK;
+- no `freeWriteTask`, `freeWrite`, composition prompt, composition model answer, or writing-score condition is permitted.
 
 ## Evidence contract for non-literal tasks
 
@@ -125,14 +129,19 @@ For Grade 3 YAMAGUCHI_EXAM:
 - SENTENCE_INSERTION: store the selected position plus the sentence(s) immediately before/after that justify cohesion; explanation must identify pronoun/reference/connective/topic flow rather than saying only “it fits.”
 - CONTEXT_WORD / PHRASE_FILL / SUMMARY_FILL: store the passage evidence and the grammatical/contextual constraint that determines the answer.
 - MATERIAL_LINK: store both passage evidence and structured material evidence.
-- FREE_WRITE_20_30: store scoring conditions and an original model answer; do not require one fixed wording.
+
+## Dedicated Yamaguchi-style 100-passage subset
+
+Before v11 final release, maintain a dedicated count of 100 original Yamaguchi-style reading passages inside the 1000-passage corpus. The 100 are not a separate composition course and do not add writing tasks. They must collectively cover passage-length stamina, content matching, reasons/inference, sentence insertion, contextual vocabulary/phrase completion, summary completion and material-integrated reading.
 
 ## Final 1000-passage release requirement
 
 Before v11 is considered complete:
-- audit the distribution of word-count tiers across all Grade 3 passages;
+- audit the dedicated Yamaguchi-style reading subset and require exactly 100 qualifying passages;
+- audit the distribution of word-count tiers across Grade 3 passages;
 - ensure YAMAGUCHI_EXAM passages are not concentrated only in the last batch;
-- ensure all taxonomy types occur repeatedly across the exam-preparation subset;
+- ensure all reading taxonomy types occur repeatedly across the exam-preparation subset;
+- require English-composition/free-writing task count = 0 in the reading app;
 - ensure no copied Yamaguchi exam text is stored in the app; all training passages/questions must be original;
 - keep the existing vocabulary chronology, grammar chronology, translation/slash, required-note/easy-support, cross-batch diversity, PC/iPhone and A4 gates.
 
