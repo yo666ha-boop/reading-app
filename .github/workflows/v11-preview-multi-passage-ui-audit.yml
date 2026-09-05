@@ -1,4 +1,4 @@
-name: v11 Preview Multi Passage UI Audit
+name: v11 Preview Range WordCount UI Audit
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
     paths:
       - 'v11_multi_passage_architecture.js'
       - 'v11_easy_support_notes.js'
-      - 'v11_preview_multi_passage_ui_audit.js'
+      - 'v11_preview_range_wordcount_ui_audit.js'
       - '.github/workflows/v11-preview-multi-passage-ui-audit.yml'
       - '.github/workflows/v11-preview-publish.yml'
   workflow_dispatch:
@@ -15,7 +15,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: v11-preview-multi-passage-ui-audit
+  group: v11-preview-range-wordcount-ui-audit
   cancel-in-progress: true
 
 jobs:
@@ -34,50 +34,50 @@ jobs:
       - run: npm install --no-save playwright@1.55.0
       - run: npx playwright install --with-deps chromium webkit
 
-      - name: Audit published v11-preview multiple passage UI
+      - name: Audit published v11-preview learned-range and Word count UI
         id: audit
         shell: bash
         run: |
           set +e
           EXPECTED_SOURCE_SHA="${GITHUB_SHA}" \
           V11_PREVIEW_URL="https://yo666ha-boop.github.io/reading-app/v11-preview/" \
-            node v11_preview_multi_passage_ui_audit.js
+            node v11_preview_range_wordcount_ui_audit.js
           code=$?
-          echo "$code" > /tmp/v11_preview_multi_passage_ui_audit_exit_code
+          echo "$code" > /tmp/v11_preview_range_wordcount_ui_audit_exit_code
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
           exit 0
 
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: v11-preview-multi-passage-ui-audit
+          name: v11-preview-range-wordcount-ui-audit
           path: |
-            V11_PREVIEW_MULTI_PASSAGE_UI_AUDIT.json
+            V11_PREVIEW_RANGE_WORDCOUNT_UI_AUDIT.json
 
       - name: Persist audit result on work branch
         if: always()
         shell: bash
         run: |
           set -euo pipefail
-          cp V11_PREVIEW_MULTI_PASSAGE_UI_AUDIT.json /tmp/V11_PREVIEW_MULTI_PASSAGE_UI_AUDIT.json
+          cp V11_PREVIEW_RANGE_WORDCOUNT_UI_AUDIT.json /tmp/V11_PREVIEW_RANGE_WORDCOUNT_UI_AUDIT.json
           git reset --hard HEAD
           git pull --rebase origin v11-1000passage-easy-notes
-          cp /tmp/V11_PREVIEW_MULTI_PASSAGE_UI_AUDIT.json V11_PREVIEW_MULTI_PASSAGE_UI_AUDIT.json
+          cp /tmp/V11_PREVIEW_RANGE_WORDCOUNT_UI_AUDIT.json V11_PREVIEW_RANGE_WORDCOUNT_UI_AUDIT.json
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add V11_PREVIEW_MULTI_PASSAGE_UI_AUDIT.json
+          git add V11_PREVIEW_RANGE_WORDCOUNT_UI_AUDIT.json
           if git diff --cached --quiet; then
             echo 'Audit result already current.'
           else
-            git commit -m 'v11: persist public multi-passage UI audit'
+            git commit -m 'v11: persist public range/word-count UI audit'
             git push origin HEAD:v11-1000passage-easy-notes
           fi
 
       - name: Enforce public preview gate
         shell: bash
         run: |
-          code=$(cat /tmp/v11_preview_multi_passage_ui_audit_exit_code)
+          code=$(cat /tmp/v11_preview_range_wordcount_ui_audit_exit_code)
           if [ "$code" != "0" ]; then
-            echo "Public v11 multi-passage UI audit failed with exit code $code"
+            echo "Public v11 range/word-count UI audit failed with exit code $code"
             exit "$code"
           fi
