@@ -8,6 +8,7 @@ on:
       - 'v11_batch14_g2_reuse_gloss_repair.js'
       - 'v11_batch14_g2_manual_gloss_repair.js'
       - 'v11_batch14_g2_grammar_repair.js'
+      - 'v11_batch14_g2_postgrammar_gloss_repair.js'
       - 'v11_batch14_g2_draft_audit.js'
       - 'v11_batch14_g2_chronology_audit.js'
       - 'v11_batch14_g2_compact_failures.js'
@@ -39,6 +40,9 @@ jobs:
       - name: Repair unresolved grammar chronology
         id: grammar_repair
         run: node v11_batch14_g2_grammar_repair.js
+      - name: Cover post-grammar vocabulary
+        id: postgrammar_gloss
+        run: node v11_batch14_g2_postgrammar_gloss_repair.js
       - name: Run Batch14 G2 draft audit
         id: draft
         continue-on-error: true
@@ -59,9 +63,9 @@ jobs:
             [ -f "$f" ] && git add "$f"
           done
           if ! git diff --cached --quiet; then
-            git commit -m 'v11: persist Batch14 G2 formal chronology repairs and actuals'
+            git commit -m 'v11: persist Batch14 G2 zero-chronology actuals'
             git push origin HEAD:v11-1000passage-easy-notes
           fi
       - name: Enforce G2 gates
-        if: steps.repair.outcome != 'success' || steps.reuse_gloss.outcome != 'success' || steps.manual_gloss.outcome != 'success' || steps.grammar_repair.outcome != 'success' || steps.draft.outcome != 'success' || steps.chronology.outcome != 'success'
+        if: steps.repair.outcome != 'success' || steps.reuse_gloss.outcome != 'success' || steps.manual_gloss.outcome != 'success' || steps.grammar_repair.outcome != 'success' || steps.postgrammar_gloss.outcome != 'success' || steps.draft.outcome != 'success' || steps.chronology.outcome != 'success'
         run: exit 1
