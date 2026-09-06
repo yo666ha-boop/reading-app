@@ -11,6 +11,12 @@ src=src.replaceAll('B14_G1','B14_G3');
 src=src.replaceAll('v11-b14-g1','v11-b14-g3');
 src=src.replace('grade:1,section:p.anchor','grade:3,section:p.anchor');
 src=src.replace("classification:'CANDIDATES_FOR_V11_BATCH14_G1_GATE'","classification:'CANDIDATES_FOR_V11_BATCH14_G3_GATE'");
+// G3 has 16 passages (G1/G2 have 17). Keep every inherited fail-closed
+// invariant/report/status count aligned with the actual Batch14 grade split.
+src=src.replaceAll('draft.passages.length!==17','draft.passages.length!==16');
+src=src.replaceAll('passages:17','passages:16');
+src=src.replaceAll('batch14_g3_passages=17/17','batch14_g3_passages=16/16');
+src=src.replaceAll('length}/17','length}/16');
 const runner=path.join(__dirname,'.v11_batch14_g3_chronology_runtime.cjs');
 fs.writeFileSync(runner,src);
 try { require(runner); } finally { try{fs.unlinkSync(runner)}catch(e){} }
