@@ -19,7 +19,7 @@ permissions:
 
 concurrency:
   group: v11-preview-strict-public-ui-audits
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   audit-public-preview:
