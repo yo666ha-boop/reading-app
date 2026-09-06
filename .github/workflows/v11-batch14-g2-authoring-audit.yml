@@ -7,6 +7,7 @@ on:
       - 'v11_batch14_g2_wordcount_repair.js'
       - 'v11_batch14_g2_draft_audit.js'
       - 'v11_batch14_g2_chronology_audit.js'
+      - 'v11_batch14_g2_compact_failures.js'
       - '.github/workflows/v11-batch14-g2-authoring-audit.yml'
   workflow_dispatch:
 jobs:
@@ -34,12 +35,15 @@ jobs:
         id: chronology
         continue-on-error: true
         run: node v11_batch14_g2_chronology_audit.js
+      - name: Write compact failure list
+        if: always()
+        run: node v11_batch14_g2_compact_failures.js || true
       - name: Persist G2 draft and actuals
         if: always()
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          for f in v11_batch14_g2_body_draft.json V11_BATCH14_G2_DRAFT_AUDIT.json V11_BATCH14_G2_CHRONOLOGY_STATUS.txt V11_BATCH14_G2_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH14_G2_GRAMMAR_CANDIDATE_REPORT.json V11_BATCH14_G2_GRAMMAR_CHRONOLOGY_REPORT.json; do
+          for f in v11_batch14_g2_body_draft.json V11_BATCH14_G2_DRAFT_AUDIT.json V11_BATCH14_G2_CHRONOLOGY_STATUS.txt V11_BATCH14_G2_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH14_G2_GRAMMAR_CANDIDATE_REPORT.json V11_BATCH14_G2_GRAMMAR_CHRONOLOGY_REPORT.json V11_BATCH14_G2_COMPACT_FAILURES.txt; do
             [ -f "$f" ] && git add "$f"
           done
           if ! git diff --cached --quiet; then
