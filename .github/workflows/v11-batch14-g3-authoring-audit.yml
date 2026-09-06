@@ -55,6 +55,8 @@ jobs:
           const out={generatedAt:new Date().toISOString(),unregisteredOccurrences:r.unregisteredOccurrences,futureVocabLeakOccurrences:r.futureVocabLeakOccurrences,unregisteredUnique:compact(r.unresolved),futureUnique:compact(r.future)};
           out.unregisteredUniqueCount=out.unregisteredUnique.length; out.futureUniqueCount=out.futureUnique.length;
           fs.writeFileSync('V11_BATCH14_G3_MISSING_VOCAB_UNIQUE.json',JSON.stringify(out,null,2)+'\n');
+          fs.writeFileSync('V11_BATCH14_G3_MISSING_VOCAB_WORDS.txt',out.unregisteredUnique.map(x=>x.word).join('\n')+'\n');
+          fs.writeFileSync('V11_BATCH14_G3_FUTURE_VOCAB_WORDS.txt',out.futureUnique.map(x=>x.word).join('\n')+'\n');
           console.log(`g3_missing_unique unregistered=${out.unregisteredUniqueCount} future=${out.futureUniqueCount}`);
           NODE
       - name: Persist G3 master and actuals
@@ -62,7 +64,7 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          for f in v11_batch14_g3_body_draft.json V11_BATCH14_G3_DRAFT_AUDIT.json V11_BATCH14_G3_CHRONOLOGY_STATUS.txt V11_BATCH14_G3_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH14_G3_GRAMMAR_CANDIDATE_REPORT.json V11_BATCH14_G3_GRAMMAR_CHRONOLOGY_REPORT.json V11_BATCH14_G3_MISSING_VOCAB_UNIQUE.json; do
+          for f in v11_batch14_g3_body_draft.json V11_BATCH14_G3_DRAFT_AUDIT.json V11_BATCH14_G3_CHRONOLOGY_STATUS.txt V11_BATCH14_G3_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH14_G3_GRAMMAR_CANDIDATE_REPORT.json V11_BATCH14_G3_GRAMMAR_CHRONOLOGY_REPORT.json V11_BATCH14_G3_MISSING_VOCAB_UNIQUE.json V11_BATCH14_G3_MISSING_VOCAB_WORDS.txt V11_BATCH14_G3_FUTURE_VOCAB_WORDS.txt; do
             [ -f "$f" ] && git add "$f"
           done
           if ! git diff --cached --quiet; then
