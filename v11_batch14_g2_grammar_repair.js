@@ -9,8 +9,7 @@ rep('V11-B14-G2-003','the same number of students used the station','the station
 rep('V11-B14-G2-005','Older students used either method easily','Either method worked well for older students','上級生はどちらでも簡単に使えました','上級生にはどちらの方法も使いやすいものでした');
 rep('V11-B14-G2-005','for students who wanted more detail','for anyone wanting more detail','詳しく知りたい生徒のために','詳しく知りたい人のために');
 rep('V11-B14-G2-007','Ryo interviewed six students who had lost items.','Ryo interviewed six students about things they had lost.','リョウが物をなくしたことのある6人に話を聞くと','リョウが6人の生徒に、なくした物について話を聞くと');
-rep('V11-B14-G2-010','Visitors misread a campus map because its top does not match the direction they face; students test a rotated version.','Visitors misread a campus map. Its top does not match the direction they face, so students test a rotated version.',null,null);
-rep('V11-B14-G2-010','The map was correct, so volunteers first planned to add arrows.','The map was correct. Volunteers first planned to add arrows.','地図は正しかったので、ボランティアは最初、矢印を増やそうと考えました。','地図は正しいものでした。ボランティアは最初、矢印を増やそうと考えました。');
+rep('V11-B14-G2-011','The class kept the setup because it gave everyone a clear first step.','The setup gave everyone a clear first step, so the class kept it.','クラスは、全員に明確な最初の一歩を与えるため、この準備時間を続けることにしました。','この準備時間は全員に明確な最初の一歩を与えたので、クラスは続けることにしました。');
 rep('V11-B14-G2-012','the needs of the receiving group might change','the needs of the receiving group could change','受け取る側の必要な物が変わるかもしれない','受け取る側の必要な物が変わる可能性がある');
 rep('V11-B14-G2-012','two small pictures showing items that could not be accepted','two small pictures showing unacceptable items','受け取れない物を示す小さな絵を二つ','受け取れない物を示す小さな絵を二つ');
 for(const p of d.passages)p.humanSemanticReview='B14_G2_HUMAN_REVIEW_R5_GRAMMAR_CHRONOLOGY_SYNC';
