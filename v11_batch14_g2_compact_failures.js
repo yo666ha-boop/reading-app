@@ -1,0 +1,11 @@
+'use strict';
+const fs=require('fs');
+const v=JSON.parse(fs.readFileSync('V11_BATCH14_G2_VOCAB_CHRONOLOGY_REPORT.json','utf8'));
+const g=JSON.parse(fs.readFileSync('V11_BATCH14_G2_GRAMMAR_CHRONOLOGY_REPORT.json','utf8'));
+const uniq=a=>[...new Set(a)].sort();
+const u=uniq((v.unresolved||[]).map(x=>x.word));
+const f=uniq((v.future||[]).map(x=>x.word));
+const lines=[`unregistered_unique=${u.length}`,u.join(' '),`future_unique=${f.length}`,f.join(' '),`grammar_unresolved_occurrences=${g.unresolvedOccurrences||0}`];
+for(const x of (g.unresolved||[])) lines.push(`${x.textbook}|G${x.grade}|${x.section}|${x.feature}|${x.occurrences}|${(x.samples||[]).map(s=>s.match).join(' / ')}`);
+fs.writeFileSync('V11_BATCH14_G2_COMPACT_FAILURES.txt',lines.join('\n')+'\n');
+console.log(lines.join('\n'));
