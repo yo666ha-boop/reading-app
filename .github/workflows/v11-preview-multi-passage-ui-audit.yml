@@ -29,15 +29,35 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: v11-1000passage-easy-notes
+          ref: ${{ github.sha }}
           fetch-depth: 0
+
+      - name: Check this run is still the latest branch HEAD
+        id: latest
+        shell: bash
+        run: |
+          set -euo pipefail
+          latest=$(git ls-remote origin refs/heads/v11-1000passage-easy-notes | awk '{print $1}')
+          echo "latest_sha=$latest"
+          echo "run_sha=${GITHUB_SHA}"
+          if [ "$latest" = "$GITHUB_SHA" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "STALE_RUN_SKIP latest=$latest run=${GITHUB_SHA}"
+          fi
+
       - uses: actions/setup-node@v4
+        if: steps.latest.outputs.run == 'true'
         with:
           node-version: '20'
-      - run: npm install --no-save playwright@1.55.0
-      - run: npx playwright install --with-deps chromium webkit
+      - if: steps.latest.outputs.run == 'true'
+        run: npm install --no-save playwright@1.55.0
+      - if: steps.latest.outputs.run == 'true'
+        run: npx playwright install --with-deps chromium webkit
 
       - name: Audit published v11-preview learned-range and Word count UI
+        if: steps.latest.outputs.run == 'true'
         id: range_audit
         shell: bash
         run: |
@@ -51,6 +71,7 @@ jobs:
           exit 0
 
       - name: Audit published v11-preview six-case multi-passage A/B synchronization
+        if: steps.latest.outputs.run == 'true'
         id: multi_audit
         shell: bash
         run: |
@@ -64,7 +85,7 @@ jobs:
           exit 0
 
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: steps.latest.outputs.run == 'true' && always()
         with:
           name: v11-preview-strict-public-ui-audits
           path: |
@@ -72,14 +93,14 @@ jobs:
             V11_PREVIEW_MULTI_PASSAGE_UI_AUDIT.json
 
       - name: Persist audit results on work branch
-        if: always()
+        if: steps.latest.outputs.run == 'true' && always()
         shell: bash
         run: |
           set -euo pipefail
           cp V11_PREVIEW_RANGE_WORDCOUNT_UI_AUDIT.json /tmp/V11_PREVIEW_RANGE_WORDCOUNT_UI_AUDIT.json
           cp V11_PREVIEW_MULTI_PASSAGE_UI_AUDIT.json /tmp/V11_PREVIEW_MULTI_PASSAGE_UI_AUDIT.json
-          git reset --hard HEAD
-          git pull --rebase origin v11-1000passage-easy-notes
+          git fetch origin v11-1000passage-easy-notes
+          git checkout -B v11-1000passage-easy-notes origin/v11-1000passage-easy-notes
           cp /tmp/V11_PREVIEW_RANGE_WORDCOUNT_UI_AUDIT.json V11_PREVIEW_RANGE_WORDCOUNT_UI_AUDIT.json
           cp /tmp/V11_PREVIEW_MULTI_PASSAGE_UI_AUDIT.json V11_PREVIEW_MULTI_PASSAGE_UI_AUDIT.json
           git config user.name 'github-actions[bot]'
@@ -93,6 +114,7 @@ jobs:
           fi
 
       - name: Enforce public preview gates
+        if: steps.latest.outputs.run == 'true'
         shell: bash
         run: |
           range_code=$(cat /tmp/v11_preview_range_wordcount_ui_audit_exit_code)
@@ -101,3 +123,4 @@ jobs:
             echo "Public v11 strict UI audits failed: range=$range_code multi=$multi_code"
             exit 1
           fi
+          echo "PUBLIC_V11_STRICT_UI_PASS source_sha=${GITHUB_SHA}"
