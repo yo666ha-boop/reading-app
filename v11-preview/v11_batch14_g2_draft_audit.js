@@ -12,7 +12,7 @@ for(const p of draft.passages){
   const spec=plan.passages.find(x=>x.id===p.id);
   if(!spec){failures.push(`${p.id}: absent from plan`);continue;}
   if(p.title!==spec.title||p.anchor!==spec.anchor||p.tier!==spec.tier) failures.push(`${p.id}: plan mismatch`);
-  const words=wc(p.body); const lo=p.tier==='LONG'?135:90, hi=p.tier==='LONG'?165:125;
+  const words=wc(p.body); const lo=p.tier==='LONG'?170:115, hi=p.tier==='LONG'?210:155;
   if(words<lo||words>hi) failures.push(`${p.id}: words=${words} expected ${lo}-${hi}`);
   if(!p.fullTranslation||p.fullTranslation.length<80) failures.push(`${p.id}: translation missing/short`);
   if(!String(p.humanSemanticReview||'').startsWith('B14_G2_HUMAN_REVIEW_')) failures.push(`${p.id}: semantic review marker`);
@@ -20,7 +20,7 @@ for(const p of draft.passages){
   if(sent<6) failures.push(`${p.id}: too few sentences ${sent}`);
   rows.push({id:p.id,tier:p.tier,words,sentences:sent,review:p.humanSemanticReview});
 }
-const out={batch:'V11-B14',grade:2,passages:draft.passages.length,registered:false,officialTotal:818,rows,failures,finalPass:failures.length===0};
+const out={batch:'V11-B14',grade:2,passages:draft.passages.length,registered:false,officialTotal:818,wordCountPolicy:{STANDARD:'115-155',LONG:'170-210'},rows,failures,finalPass:failures.length===0};
 fs.writeFileSync('V11_BATCH14_G2_DRAFT_AUDIT.json',JSON.stringify(out,null,2)+'\n');
 console.log(JSON.stringify(out,null,2));
 if(!out.finalPass) process.exit(1);
