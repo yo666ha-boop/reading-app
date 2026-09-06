@@ -5,6 +5,7 @@ on:
     paths:
       - 'v11_batch14_g2_body_draft.json'
       - 'v11_batch14_g2_wordcount_repair.js'
+      - 'v11_batch14_g2_reuse_gloss_repair.js'
       - 'v11_batch14_g2_draft_audit.js'
       - 'v11_batch14_g2_chronology_audit.js'
       - 'v11_batch14_g2_compact_failures.js'
@@ -27,6 +28,9 @@ jobs:
       - name: Apply Batch14 G2 wordcount-policy repair
         id: repair
         run: node v11_batch14_g2_wordcount_repair.js
+      - name: Reuse existing canonical Japanese glosses
+        id: gloss
+        run: node v11_batch14_g2_reuse_gloss_repair.js
       - name: Run Batch14 G2 draft audit
         id: draft
         continue-on-error: true
@@ -43,13 +47,13 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          for f in v11_batch14_g2_body_draft.json V11_BATCH14_G2_DRAFT_AUDIT.json V11_BATCH14_G2_CHRONOLOGY_STATUS.txt V11_BATCH14_G2_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH14_G2_GRAMMAR_CANDIDATE_REPORT.json V11_BATCH14_G2_GRAMMAR_CHRONOLOGY_REPORT.json V11_BATCH14_G2_COMPACT_FAILURES.txt; do
+          for f in v11_batch14_g2_body_draft.json V11_BATCH14_G2_DRAFT_AUDIT.json V11_BATCH14_G2_CHRONOLOGY_STATUS.txt V11_BATCH14_G2_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH14_G2_GRAMMAR_CANDIDATE_REPORT.json V11_BATCH14_G2_GRAMMAR_CHRONOLOGY_REPORT.json V11_BATCH14_G2_COMPACT_FAILURES.txt V11_BATCH14_G2_MISSING_GLOSSES.txt; do
             [ -f "$f" ] && git add "$f"
           done
           if ! git diff --cached --quiet; then
-            git commit -m 'v11: persist Batch14 G2 repaired draft and actuals'
+            git commit -m 'v11: persist Batch14 G2 chronology repairs and actuals'
             git push origin HEAD:v11-1000passage-easy-notes
           fi
       - name: Enforce G2 gates
-        if: steps.repair.outcome != 'success' || steps.draft.outcome != 'success' || steps.chronology.outcome != 'success'
+        if: steps.repair.outcome != 'success' || steps.gloss.outcome != 'success' || steps.draft.outcome != 'success' || steps.chronology.outcome != 'success'
         run: exit 1
