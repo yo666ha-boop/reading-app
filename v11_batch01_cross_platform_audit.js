@@ -8,7 +8,7 @@ async function ready(page,label){
   const r=await page.goto('http://127.0.0.1:8000/index.html?cross='+label+'-'+Date.now(),{waitUntil:'domcontentloaded',timeout:90000});
   assert(r&&r.ok(),label+' HTTP');
   await page.waitForFunction(()=>window.V10_RUNTIME_LOAD_PROGRESS==='complete',{timeout:120000});
-  await page.waitForFunction(()=>window.V11_BATCH01_LOADED===true&&window.__V11_MULTI_PASSAGE_UI_INSTALLED===true&&window.V11_BATCH01_GRAMMAR_REPAIR_STATE&&window.V11_BATCH01_GRAMMAR_REPAIR_STATE.applied===true,{timeout:60000});
+  await page.waitForFunction(()=>window.V11_BATCH01_LOADED===true&&window.__V11_MULTI_PASSAGE_UI_INSTALLED===true&&window.V11_BATCH01_GRAMMAR_REPAIR_STATE&&window.V11_BATCH01_GRAMMAR_REPAIR_STATE.applied===true&&window.V11_BASE_QUESTION_GATE_SYNC_STATE&&window.V11_BASE_QUESTION_GATE_SYNC_STATE.applied===true,{timeout:60000});
   return errors;
 }
 async function selectPassage(page,id){
@@ -17,8 +17,8 @@ async function selectPassage(page,id){
   const majors=await page.locator('#major option').evaluateAll(os=>os.map(o=>o.value)); let found=false;
   for(const m of majors){await page.selectOption('#major',m); await page.waitForTimeout(15); const secs=await page.locator('#section option').evaluateAll(os=>os.map(o=>o.value)); if(secs.includes(x.section)){found=true;break;}}
   assert(found,id+' section missing '+x.section); await page.selectOption('#section',x.section); await page.waitForTimeout(20);
-  const idx=await page.locator('#v11PassageVariant option').evaluateAll((os,title)=>os.findIndex(o=>o.textContent.includes(title)),x.title); assert(idx>=1,id+' variant missing');
-  await page.selectOption('#v11PassageVariant',String(idx)); await page.evaluate(()=>window.render()); await page.waitForTimeout(15);
+  const option=await page.locator('#v11PassageVariant option').evaluateAll((os,title)=>{const o=os.find(o=>o.textContent.includes(title));return o?{value:o.value,label:o.textContent}:null},x.title); assert(option&&option.value,id+' variant missing');
+  await page.selectOption('#v11PassageVariant',option.value); await page.evaluate(()=>window.render()); await page.waitForTimeout(15);
   assert((await page.evaluate(()=>window.choose().id))===id,id+' choose mismatch');
   assert((await page.locator('#passage h2').innerText())===x.title,id+' title mismatch');
   assert((await page.locator('#questions .q').count())===5,id+' A count');
@@ -47,7 +47,6 @@ async function printAudit(){
     const reps=await page.evaluate(()=>{const seen=new Set(),out=[];for(const p of window.V11_BATCH01_PASSAGES){const k=p.textbook+'|'+p.grade+'|'+p.section;if(!seen.has(k)){seen.add(k);out.push(p.id);}}return out;});
     fs.mkdirSync('/tmp/v11-a4',{recursive:true});
     for(const id of reps){
-      // Print CSS hides selectors, so explicitly return to screen media before selecting the next passage.
       await page.emulateMedia({media:'screen'});
       await selectPassage(page,id);
       await page.emulateMedia({media:'print'});
@@ -57,7 +56,7 @@ async function printAudit(){
       await page.addStyleTag({content:'@media print{#answers{display:none!important}#audit{display:none!important}}'});
       const student=teacher.replace('-teacher.pdf','-student.pdf'); await page.pdf({path:student,format:'A4',printBackground:true,preferCSSPageSize:false}); assert(fs.statSync(student).size>5000,id+' student pdf too small');
       out.push({id,teacherBytes:fs.statSync(teacher).size,studentBytes:fs.statSync(student).size});
-      await page.emulateMedia({media:'screen'}); await page.reload({waitUntil:'domcontentloaded'}); await page.waitForFunction(()=>window.V11_BATCH01_LOADED===true,{timeout:60000});
+      await page.emulateMedia({media:'screen'}); await page.reload({waitUntil:'domcontentloaded'}); await page.waitForFunction(()=>window.V11_BATCH01_LOADED===true&&window.V11_BASE_QUESTION_GATE_SYNC_STATE&&window.V11_BASE_QUESTION_GATE_SYNC_STATE.applied===true,{timeout:60000});
     }
     assert(errors.length===0,'print runtime errors '+errors.join(' | '));
     return {representativeSections:reps.length,files:out.length*2,details:out};
