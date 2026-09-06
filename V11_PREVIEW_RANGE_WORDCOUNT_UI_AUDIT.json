@@ -1,7 +1,11 @@
 {
   "previewUrl": "https://yo666ha-boop.github.io/reading-app/v11-preview/",
-  "expectedSourceSha": "0fde8750a0177a80f0cd57a82727f2dd128ffed8",
-  "previewSource": "branch=v11-1000passage-easy-notes\nsource_sha=0fde8750a0177a80f0cd57a82727f2dd128ffed8\npublished_at_utc=2026-09-06T00:22:08Z\nexpected_registered_total=818\nbootstrap_entry=v11_batch01_passages_001_050.js+v11_batch01_uniqueness_repair.js+v11_batch01_grammar_repair.js\npurpose=WORKING_PREVIEW_NOT_PRODUCTION_RELEASE",
+  "expectedSourceSha": "f69c1de76ea34fa356c3135bd5c047d32a37a210",
+  "previewSource": "branch=v11-1000passage-easy-notes\nsource_sha=f69c1de76ea34fa356c3135bd5c047d32a37a210\npublished_at_utc=2026-09-06T01:58:26Z\nexpected_registered_total=818\nbootstrap_entry=v11_batch01_passages_001_050.js+v11_batch01_uniqueness_repair.js+v11_batch01_grammar_repair.js\npurpose=WORKING_PREVIEW_NOT_PRODUCTION_RELEASE",
+  "contracts": {
+    "v11Extra": "A/B exactly 5; evidence/evidenceJp exact selected-content membership",
+    "legacyV10Base": "existing A/B contract (minimum 4); all fields and evidence membership; rendered A/B/evidence/evidenceJp/reason synchronization"
+  },
   "chromium": {
     "name": "chromium",
     "results": [
@@ -97,7 +101,7 @@
         "extraPassages": 650,
         "lastAdded": 50,
         "source": "register",
-        "updatedAt": "2026-09-06T00:23:24.159Z"
+        "updatedAt": "2026-09-06T01:59:40.932Z"
       },
       "ui": {
         "version": "20260905-v11-selected-section-003-visible-switch",
@@ -324,27 +328,14 @@
           "追加｜Unit 6-4｜419 words｜The Summer Event Schedule, Heat Alert, Shade Map, Water Stations, and Shuttle Times"
         ],
         "source": "render",
-        "refreshedAt": "2026-09-06T00:26:36.166Z",
+        "refreshedAt": "2026-09-06T02:02:52.938Z",
         "position": 1,
-        "renderedAt": "2026-09-06T00:26:36.166Z"
+        "renderedAt": "2026-09-06T02:02:52.938Z"
       }
     },
     "pageErrors": [],
-    "failures": [
-      "chromium PROGRAM 10-2 basic V10-SS-G1-P10-2-001: B count=4",
-      "chromium PROGRAM 10-2 basic V10-SS-G1-P10-2-001: B[3] evidenceJp not in selected translation",
-      "chromium Unit 10-2 basic V10-NH-G1-U10-2-001: A[0] evidenceJp not in selected translation",
-      "chromium Unit 10-2 basic V10-NH-G1-U10-2-001: A[2] evidenceJp not in selected translation",
-      "chromium Unit 10-2 basic V10-NH-G1-U10-2-001: A[4] evidenceJp not in selected translation",
-      "chromium Unit 10-2 basic V10-NH-G1-U10-2-001: B count=4",
-      "chromium Unit 10-2 basic V10-NH-G1-U10-2-001: B[0] evidenceJp not in selected translation",
-      "chromium Unit 10-2 basic V10-NH-G1-U10-2-001: B[3] evidenceJp not in selected translation",
-      "chromium PROGRAM 8-3 basic V10-SS-G2-P8-3-001: B count=4",
-      "chromium Unit 7-4 basic V10-NH-G2-U7-4-001: B count=4",
-      "chromium PROGRAM 7-3 basic V10-SS-G3-P7-3-001: B count=4",
-      "chromium Unit 6-4 basic V10-NH-G3-U6-4-001: B count=4"
-    ],
-    "pass": false
+    "failures": [],
+    "pass": true
   },
   "webkit": {
     "name": "webkit",
@@ -441,7 +432,7 @@
         "extraPassages": 650,
         "lastAdded": 50,
         "source": "register",
-        "updatedAt": "2026-09-06T00:26:59.439Z"
+        "updatedAt": "2026-09-06T02:03:11.597Z"
       },
       "ui": {
         "version": "20260905-v11-selected-section-003-visible-switch",
@@ -668,28 +659,15 @@
           "追加｜Unit 6-4｜419 words｜The Summer Event Schedule, Heat Alert, Shade Map, Water Stations, and Shuttle Times"
         ],
         "source": "render",
-        "refreshedAt": "2026-09-06T00:30:12.333Z",
+        "refreshedAt": "2026-09-06T02:06:24.730Z",
         "position": 1,
-        "renderedAt": "2026-09-06T00:30:12.335Z"
+        "renderedAt": "2026-09-06T02:06:24.730Z"
       }
     },
     "pageErrors": [],
-    "failures": [
-      "webkit PROGRAM 10-2 basic V10-SS-G1-P10-2-001: B count=4",
-      "webkit PROGRAM 10-2 basic V10-SS-G1-P10-2-001: B[3] evidenceJp not in selected translation",
-      "webkit Unit 10-2 basic V10-NH-G1-U10-2-001: A[0] evidenceJp not in selected translation",
-      "webkit Unit 10-2 basic V10-NH-G1-U10-2-001: A[2] evidenceJp not in selected translation",
-      "webkit Unit 10-2 basic V10-NH-G1-U10-2-001: A[4] evidenceJp not in selected translation",
-      "webkit Unit 10-2 basic V10-NH-G1-U10-2-001: B count=4",
-      "webkit Unit 10-2 basic V10-NH-G1-U10-2-001: B[0] evidenceJp not in selected translation",
-      "webkit Unit 10-2 basic V10-NH-G1-U10-2-001: B[3] evidenceJp not in selected translation",
-      "webkit PROGRAM 8-3 basic V10-SS-G2-P8-3-001: B count=4",
-      "webkit Unit 7-4 basic V10-NH-G2-U7-4-001: B count=4",
-      "webkit PROGRAM 7-3 basic V10-SS-G3-P7-3-001: B count=4",
-      "webkit Unit 6-4 basic V10-NH-G3-U6-4-001: B count=4"
-    ],
-    "pass": false
+    "failures": [],
+    "pass": true
   },
-  "finalPass": false,
-  "createdAt": "2026-09-06T00:30:12.667Z"
+  "finalPass": true,
+  "createdAt": "2026-09-06T02:06:25.000Z"
 }
