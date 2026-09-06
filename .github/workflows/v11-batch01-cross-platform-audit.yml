@@ -17,7 +17,7 @@ permissions:
   contents: write
 concurrency:
   group: v11-batch01-cross-platform-audit
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -25,15 +25,33 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: v11-1000passage-easy-notes
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Check this run is still the latest branch HEAD
+        id: latest
+        shell: bash
+        run: |
+          set -euo pipefail
+          latest=$(git ls-remote origin refs/heads/v11-1000passage-easy-notes | awk '{print $1}')
+          echo "latest_sha=$latest"
+          echo "run_sha=${GITHUB_SHA}"
+          if [ "$latest" = "$GITHUB_SHA" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "STALE_RUN_SKIP latest=$latest run=${GITHUB_SHA}"
+          fi
       - uses: actions/setup-node@v4
+        if: steps.latest.outputs.run == 'true'
         with:
           node-version: '20'
       - name: Install browsers
+        if: steps.latest.outputs.run == 'true'
         run: |
           npm install --no-save --no-package-lock playwright@1.55.0
           npx playwright install --with-deps chromium webkit
       - name: Run PC iPhone and A4 audit
+        if: steps.latest.outputs.run == 'true'
         shell: bash
         run: |
           python3 -m http.server 8000 >/tmp/v11-cross-http.log 2>&1 &
@@ -50,11 +68,15 @@ jobs:
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add V11_BATCH01_CROSS_PLATFORM_AUDIT.txt
           git commit -m 'v11: record Batch01 PC iPhone A4 audit [skip ci]' || true
-          git pull --rebase origin v11-1000passage-easy-notes || true
+          git fetch origin v11-1000passage-easy-notes
+          git checkout -B persist origin/v11-1000passage-easy-notes
+          git checkout HEAD@{1} -- V11_BATCH01_CROSS_PLATFORM_AUDIT.txt || true
+          git add V11_BATCH01_CROSS_PLATFORM_AUDIT.txt
+          git commit -m 'v11: record Batch01 PC iPhone A4 audit [skip ci]' || true
           git push origin HEAD:v11-1000passage-easy-notes || true
           exit $code
       - name: Upload A4 evidence
-        if: always()
+        if: steps.latest.outputs.run == 'true' && always()
         uses: actions/upload-artifact@v4
         with:
           name: v11-batch01-a4-evidence
