@@ -38,6 +38,16 @@ async function inspect(page){
     return {id:p&&p.id,section:p&&p.section,title:p&&p.title,wordFilter:!!document.getElementById('v11WordCountFilter'),opts,meta:(document.getElementById('v11PassageSourceMeta')||{}).textContent||'',master:(document.getElementById('masterCount')||{}).textContent||'',passage:(document.getElementById('passage')||{}).textContent||'',slash:(document.getElementById('slash')||{}).textContent||'',questions:(document.getElementById('questions')||{}).textContent||'',answers:(document.getElementById('answers')||{}).textContent||'',sentences:p&&p.sentences||[],fullTranslation:p&&p.fullTranslation||'',slashRows:p&&p.slashRows||[],qA:p&&p.questions||[],qB:(p&&Array.isArray(p.questionSetB)?p.questionSetB:sectionMeta.questionSetB)||[],notes:p&&p.notes||[],supportNotes:p&&p.supportNotes||[],supportState:window.V11_EASY_SUPPORT_LAST_RENDER||null,supportChecked:supportBtn&&supportBtn.getAttribute('aria-checked'),words:p?((p.sentences||[]).join(' ').match(/[A-Za-z0-9]+(?:['’-][A-Za-z0-9]+)*/g)||[]).length:0,ui:window.V11_MULTI_PASSAGE_UI_STATE||null};
   });
 }
+async function showQuestionSet(page,label){
+  const btn=page.locator('#altSetBtn');
+  const before=norm(await btn.textContent());
+  const currentIsA=before.includes('別問題セットB');
+  const wantA=label==='A';
+  if((wantA&&!currentIsA)||(!wantA&&currentIsA)){await btn.click();await page.waitForTimeout(120);}
+  const after=norm(await btn.textContent());
+  const nowIsA=after.includes('別問題セットB');
+  if((wantA&&!nowIsA)||(!wantA&&nowIsA))throw Error(`question-set toggle failed wanted=${label} button=${after}`);
+}
 async function verifySync(page,x,name,section,kind,failures){
   const prefix=`${name} ${section} ${kind} ${x.id||'NO-ID'}`;
   need(x.section===section,`${prefix}: section=${x.section}`,failures);
@@ -56,13 +66,16 @@ async function verifySync(page,x,name,section,kind,failures){
       need(norm((x.sentences||[]).join(' ')).includes(norm(q.evidence)),`${prefix}: ${label}[${i}] evidence not in selected passage`,failures);
       need(norm(x.fullTranslation).includes(norm(q.evidenceJp)),`${prefix}: ${label}[${i}] evidenceJp not in selected translation`,failures);
     }
+    await showQuestionSet(page,label);
+    const rendered=await inspect(page);
     if(arr&&arr[0]){
-      need(norm(x.questions).includes(qtext(arr[0].prompt)),`${prefix}: ${label} prompt not rendered`,failures);
-      need(norm(x.answers).includes(norm(arr[0].evidence)),`${prefix}: ${label} evidence not rendered`,failures);
-      need(norm(x.answers).includes(norm(arr[0].evidenceJp)),`${prefix}: ${label} evidenceJp not rendered`,failures);
-      need(norm(x.answers).includes(norm(arr[0].reason)),`${prefix}: ${label} reason not rendered`,failures);
+      need(norm(rendered.questions).includes(qtext(arr[0].prompt)),`${prefix}: ${label} prompt not rendered`,failures);
+      need(norm(rendered.answers).includes(norm(arr[0].evidence)),`${prefix}: ${label} evidence not rendered`,failures);
+      need(norm(rendered.answers).includes(norm(arr[0].evidenceJp)),`${prefix}: ${label} evidenceJp not rendered`,failures);
+      need(norm(rendered.answers).includes(norm(arr[0].reason)),`${prefix}: ${label} reason not rendered`,failures);
     }
   }
+  await showQuestionSet(page,'A');
   const btn=page.locator('#v11WordSupportBtn');
   if((await btn.getAttribute('aria-checked'))!=='true'){await btn.click();await page.waitForTimeout(120);}
   const on=await inspect(page);
