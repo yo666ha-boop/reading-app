@@ -1,0 +1,51 @@
+name: v11 Batch14 G3 authoring audit
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch14_g3_body_draft_part*.json'
+      - 'v11_batch14_g3_merge_parts.js'
+      - 'v11_batch14_g3_draft_audit.js'
+      - 'v11_batch14_g3_chronology_audit.js'
+      - '.github/workflows/v11-batch14-g3-authoring-audit.yml'
+  workflow_dispatch:
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-save --package-lock=false jsdom@24
+      - name: Merge G3 parts
+        id: merge
+        run: node v11_batch14_g3_merge_parts.js
+      - name: Run G3 draft audit
+        id: draft
+        continue-on-error: true
+        run: node v11_batch14_g3_draft_audit.js
+      - name: Run G3 chronology audit
+        id: chronology
+        continue-on-error: true
+        run: node v11_batch14_g3_chronology_audit.js
+      - name: Persist G3 master and actuals
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          for f in v11_batch14_g3_body_draft.json V11_BATCH14_G3_DRAFT_AUDIT.json V11_BATCH14_G3_CHRONOLOGY_STATUS.txt V11_BATCH14_G3_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH14_G3_GRAMMAR_CANDIDATE_REPORT.json V11_BATCH14_G3_GRAMMAR_CHRONOLOGY_REPORT.json; do
+            [ -f "$f" ] && git add "$f"
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m 'v11: persist Batch14 G3 authoring actuals'
+            git push origin HEAD:v11-1000passage-easy-notes
+          fi
+      - name: Enforce G3 gates
+        if: steps.merge.outcome != 'success' || steps.draft.outcome != 'success' || steps.chronology.outcome != 'success'
+        run: exit 1
