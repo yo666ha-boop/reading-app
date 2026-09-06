@@ -16,7 +16,6 @@ const qtext=s=>norm(String(s||'').replace(/^\d+\.\s*/,''));
 function need(c,m,f){if(!c)f.push(m)}
 function bandFor(n){if(n<=99)return'lt100';if(n<=129)return'100-129';if(n<=159)return'130-159';if(n<=199)return'160-199';return'200plus'}
 function inBand(n,b){return b==='lt100'?n<=99:b==='100-129'?n>=100&&n<=129:b==='130-159'?n>=130&&n<=159:b==='160-199'?n>=160&&n<=199:n>=200}
-function isLegacyBase(kind,x){return kind==='basic'&&/^V10-/.test(String(x&&x.id||''))}
 async function waitSource(request){
   const end=Date.now()+240000;let last='';
   while(Date.now()<end){
@@ -56,13 +55,12 @@ async function showQuestionSet(page,label){
 }
 async function verifySync(page,x,name,section,kind,failures){
   const prefix=`${name} ${section} ${kind} ${x.id||'NO-ID'}`;
-  const legacyBase=isLegacyBase(kind,x);
   need(x.section===section,`${prefix}: section=${x.section}`,failures);
   need(x.sentences.length>0&&norm(x.passage).includes(norm(x.sentences[0])),`${prefix}: passage body not synced`,failures);
   need(!!x.fullTranslation&&norm(x.passage).includes(norm(x.fullTranslation)),`${prefix}: full translation not synced`,failures);
   need(x.slashRows[0]&&norm(x.slash).includes(norm(x.slashRows[0].en))&&norm(x.slash).includes(norm(x.slashRows[0].jp)),`${prefix}: slash not synced`,failures);
   for(const [label,arr] of [['A',x.qA],['B',x.qB]]){
-    need(Array.isArray(arr)&&(legacyBase?arr.length>=4:arr.length===5),`${prefix}: ${label} count=${arr&&arr.length}`,failures);
+    need(Array.isArray(arr)&&arr.length===5,`${prefix}: ${label} count=${arr&&arr.length}`,failures);
     for(let i=0;i<(arr||[]).length;i++){
       const q=arr[i]||{};
       need(!!q.prompt,`${prefix}: ${label}[${i}] prompt missing`,failures);
@@ -71,7 +69,7 @@ async function verifySync(page,x,name,section,kind,failures){
       need(!!q.evidenceJp,`${prefix}: ${label}[${i}] evidenceJp missing`,failures);
       need(!!q.reason,`${prefix}: ${label}[${i}] reason missing`,failures);
       need(norm((x.sentences||[]).join(' ')).includes(norm(q.evidence)),`${prefix}: ${label}[${i}] evidence not in selected passage`,failures);
-      if(!legacyBase)need(norm(x.fullTranslation).includes(norm(q.evidenceJp)),`${prefix}: ${label}[${i}] evidenceJp not in selected translation`,failures);
+      need(norm(x.fullTranslation).includes(norm(q.evidenceJp)),`${prefix}: ${label}[${i}] evidenceJp not in selected translation`,failures);
     }
     const switched=await showQuestionSet(page,label);
     need(switched,`${prefix}: could not render question set ${label}`,failures);
@@ -135,4 +133,4 @@ async function auditEngine(browserType,name){
   }
   const runtime=await page.evaluate(()=>({multi:window.V11_MULTI_PASSAGE_STATE||null,ui:window.V11_MULTI_PASSAGE_UI_STATE||null}));need(runtime.multi&&runtime.multi.extraPassages>=650,`${name}: extras=${runtime.multi&&runtime.multi.extraPassages}`,failures);need(pageErrors.length===0,`${name}: page errors ${pageErrors.join(' | ')}`,failures);await browser.close();return{name,results,runtime,pageErrors,failures,pass:failures.length===0};
 }
-(async()=>{const b=await chromium.launch();const c=await b.newContext();const source=await waitSource(c.request);await b.close();const chromiumResult=await auditEngine(chromium,'chromium');const webkitResult=await auditEngine(webkit,'webkit');const report={previewUrl:PREVIEW_URL,expectedSourceSha:EXPECTED_SHA,previewSource:source.trim(),contracts:{v11Extra:'A/B exactly 5; evidence/evidenceJp exact selected-content membership',legacyV10Base:'existing A/B contract (minimum 4); all fields and evidence membership; rendered A/B/evidence/evidenceJp/reason synchronization'},chromium:chromiumResult,webkit:webkitResult,finalPass:chromiumResult.pass&&webkitResult.pass,createdAt:new Date().toISOString()};fs.writeFileSync('V11_PREVIEW_RANGE_WORDCOUNT_UI_AUDIT.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));if(!report.finalPass)process.exit(1)})().catch(e=>{const report={previewUrl:PREVIEW_URL,expectedSourceSha:EXPECTED_SHA,fatal:String(e&&e.stack||e),finalPass:false,createdAt:new Date().toISOString()};fs.writeFileSync('V11_PREVIEW_RANGE_WORDCOUNT_UI_AUDIT.json',JSON.stringify(report,null,2));console.error(report.fatal);process.exit(1)});
+(async()=>{const b=await chromium.launch();const c=await b.newContext();const source=await waitSource(c.request);await b.close();const chromiumResult=await auditEngine(chromium,'chromium');const webkitResult=await auditEngine(webkit,'webkit');const report={previewUrl:PREVIEW_URL,expectedSourceSha:EXPECTED_SHA,previewSource:source.trim(),contracts:{allSelectedPassages:'A/B exactly 5; evidence/evidenceJp exact selected-content membership; rendered A/B/evidence/evidenceJp/reason synchronization'},chromium:chromiumResult,webkit:webkitResult,finalPass:chromiumResult.pass&&webkitResult.pass,createdAt:new Date().toISOString()};fs.writeFileSync('V11_PREVIEW_RANGE_WORDCOUNT_UI_AUDIT.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));if(!report.finalPass)process.exit(1)})().catch(e=>{const report={previewUrl:PREVIEW_URL,expectedSourceSha:EXPECTED_SHA,fatal:String(e&&e.stack||e),finalPass:false,createdAt:new Date().toISOString()};fs.writeFileSync('V11_PREVIEW_RANGE_WORDCOUNT_UI_AUDIT.json',JSON.stringify(report,null,2));console.error(report.fatal);process.exit(1)});
