@@ -34,12 +34,35 @@ jobs:
         id: chronology
         continue-on-error: true
         run: node v11_batch14_g3_chronology_audit.js
+      - name: Summarize G3 missing vocab
+        if: always()
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const p='V11_BATCH14_G3_VOCAB_CHRONOLOGY_REPORT.json';
+          if(!fs.existsSync(p)) process.exit(0);
+          const r=JSON.parse(fs.readFileSync(p,'utf8'));
+          function compact(rows){
+            const m=new Map();
+            for(const x of rows||[]){
+              const w=String(x.word||'').toLowerCase();
+              if(!w)continue;
+              if(!m.has(w))m.set(w,{word:w,count:0,passages:new Set(),books:new Set(),sections:new Set(),intro:x.intro||null,base:x.base||null});
+              const y=m.get(w); y.count++; y.passages.add(x.id); y.books.add(x.book); y.sections.add(x.section); if(!y.intro&&x.intro)y.intro=x.intro;if(!y.base&&x.base)y.base=x.base;
+            }
+            return [...m.values()].map(x=>({...x,passages:[...x.passages],books:[...x.books],sections:[...x.sections]})).sort((a,b)=>a.word.localeCompare(b.word));
+          }
+          const out={generatedAt:new Date().toISOString(),unregisteredOccurrences:r.unregisteredOccurrences,futureVocabLeakOccurrences:r.futureVocabLeakOccurrences,unregisteredUnique:compact(r.unresolved),futureUnique:compact(r.future)};
+          out.unregisteredUniqueCount=out.unregisteredUnique.length; out.futureUniqueCount=out.futureUnique.length;
+          fs.writeFileSync('V11_BATCH14_G3_MISSING_VOCAB_UNIQUE.json',JSON.stringify(out,null,2)+'\n');
+          console.log(`g3_missing_unique unregistered=${out.unregisteredUniqueCount} future=${out.futureUniqueCount}`);
+          NODE
       - name: Persist G3 master and actuals
         if: always()
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          for f in v11_batch14_g3_body_draft.json V11_BATCH14_G3_DRAFT_AUDIT.json V11_BATCH14_G3_CHRONOLOGY_STATUS.txt V11_BATCH14_G3_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH14_G3_GRAMMAR_CANDIDATE_REPORT.json V11_BATCH14_G3_GRAMMAR_CHRONOLOGY_REPORT.json; do
+          for f in v11_batch14_g3_body_draft.json V11_BATCH14_G3_DRAFT_AUDIT.json V11_BATCH14_G3_CHRONOLOGY_STATUS.txt V11_BATCH14_G3_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH14_G3_GRAMMAR_CANDIDATE_REPORT.json V11_BATCH14_G3_GRAMMAR_CHRONOLOGY_REPORT.json V11_BATCH14_G3_MISSING_VOCAB_UNIQUE.json; do
             [ -f "$f" ] && git add "$f"
           done
           if ! git diff --cached --quiet; then
