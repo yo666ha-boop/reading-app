@@ -1,24 +1,7 @@
-checked_at_utc=2026-09-06T01:53:55Z
-source_sha=6297b3d89de0dff9f333284df9f82c601a5bb09a
+checked_at_utc=2026-09-06T01:59:01Z
+source_sha=34bd6d4feb8505de48f0ada281a4355536923af7
 result=FAIL
-V11_BATCH01_PC_IPHONE_A4_FAIL page.selectOption: Timeout 30000ms exceeded.
-Call log:
-  - waiting for locator('#v11PassageVariant')
-    - locator resolved to <select aria-label="長文候補" id="v11PassageVariant">…</select>
-  - attempting select option action
-    2 × waiting for element to be visible and enabled
-      - did not find some options
-    - retrying select option action
-    - waiting 20ms
-    2 × waiting for element to be visible and enabled
-      - did not find some options
-    - retrying select option action
-      - waiting 100ms
-    59 × waiting for element to be visible and enabled
-       - did not find some options
-     - retrying select option action
-       - waiting 500ms
-
-    at selectPassage (/home/runner/work/reading-app/reading-app/v11_batch01_cross_platform_audit.js:21:14)
-    at async auditEngine (/home/runner/work/reading-app/reading-app/v11_batch01_cross_platform_audit.js:38:26)
-    at async /home/runner/work/reading-app/reading-app/v11_batch01_cross_platform_audit.js:66:21
+V11_BATCH01_PC_IPHONE_A4_FAIL page.waitForFunction: Timeout 30000ms exceeded.
+    at ready (/home/runner/work/reading-app/reading-app/v11_batch01_cross_platform_audit.js:11:14)
+    at async auditEngine (/home/runner/work/reading-app/reading-app/v11_batch01_cross_platform_audit.js:36:54)
+    at async /home/runner/work/reading-app/reading-app/v11_batch01_cross_platform_audit.js:65:21
