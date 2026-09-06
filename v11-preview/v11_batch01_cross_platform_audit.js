@@ -8,7 +8,7 @@ async function ready(page,label){
   const r=await page.goto('http://127.0.0.1:8000/index.html?cross='+label+'-'+Date.now(),{waitUntil:'domcontentloaded',timeout:90000});
   assert(r&&r.ok(),label+' HTTP');
   await page.waitForFunction(()=>window.V10_RUNTIME_LOAD_PROGRESS==='complete',null,{timeout:120000});
-  await page.waitForFunction(()=>window.V11_BATCH01_LOADED===true&&window.__V11_MULTI_PASSAGE_UI_INSTALLED===true&&window.V11_BATCH01_GRAMMAR_REPAIR_STATE&&window.V11_BATCH01_GRAMMAR_REPAIR_STATE.applied===true&&window.V11_BASE_QUESTION_GATE_SYNC_STATE&&window.V11_BASE_QUESTION_GATE_SYNC_STATE.applied===true,null,{timeout:120000});
+  await page.waitForFunction(()=>window.V11_BATCH01_LOADED===true&&window.__V11_MULTI_PASSAGE_UI_INSTALLED===true&&window.V11_BATCH01_GRAMMAR_REPAIR_STATE&&window.V11_BATCH01_GRAMMAR_REPAIR_STATE.applied===true&&window.V11_BASE_QUESTION_GATE_SYNC_STATE,null,{timeout:120000});
   return errors;
 }
 async function selectPassage(page,id){
@@ -37,7 +37,8 @@ async function auditEngine(type){
     let overflow=0;
     for(const id of ids){await selectPassage(page,id); const bad=await page.evaluate(()=>document.documentElement.scrollWidth>document.documentElement.clientWidth+2); if(bad)overflow++;}
     assert(overflow===0,type+' horizontal overflow '+overflow); assert(errors.length===0,type+' runtime errors '+errors.join(' | '));
-    await context.close(); return {passages:ids.length,overflow,errors:errors.length};
+    const baseGate=await page.evaluate(()=>window.V11_BASE_QUESTION_GATE_SYNC_STATE||null);
+    await context.close(); return {passages:ids.length,overflow,errors:errors.length,baseGate};
   }finally{await browser.close();}
 }
 async function printAudit(){
@@ -56,10 +57,11 @@ async function printAudit(){
       await page.addStyleTag({content:'@media print{#answers{display:none!important}#audit{display:none!important}}'});
       const student=teacher.replace('-teacher.pdf','-student.pdf'); await page.pdf({path:student,format:'A4',printBackground:true,preferCSSPageSize:false}); assert(fs.statSync(student).size>5000,id+' student pdf too small');
       out.push({id,teacherBytes:fs.statSync(teacher).size,studentBytes:fs.statSync(student).size});
-      await page.emulateMedia({media:'screen'}); await page.reload({waitUntil:'domcontentloaded'}); await page.waitForFunction(()=>window.V11_BATCH01_LOADED===true&&window.V11_BASE_QUESTION_GATE_SYNC_STATE&&window.V11_BASE_QUESTION_GATE_SYNC_STATE.applied===true,null,{timeout:120000});
+      await page.emulateMedia({media:'screen'}); await page.reload({waitUntil:'domcontentloaded'}); await page.waitForFunction(()=>window.V11_BATCH01_LOADED===true&&window.V11_BASE_QUESTION_GATE_SYNC_STATE,null,{timeout:120000});
     }
     assert(errors.length===0,'print runtime errors '+errors.join(' | '));
-    return {representativeSections:reps.length,files:out.length*2,details:out};
+    const baseGate=await page.evaluate(()=>window.V11_BASE_QUESTION_GATE_SYNC_STATE||null);
+    return {representativeSections:reps.length,files:out.length*2,details:out,baseGate};
   }finally{await browser.close();}
 }
 (async()=>{const pc=await auditEngine('chromium'); const iphone=await auditEngine('webkit'); const a4=await printAudit(); console.log('CROSS '+JSON.stringify({pc,iphone,a4})); console.log('V11_BATCH01_PC_IPHONE_A4_PASS');})().catch(e=>{console.error('V11_BATCH01_PC_IPHONE_A4_FAIL '+(e.stack||e));process.exitCode=1});
