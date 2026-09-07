@@ -3,7 +3,7 @@
   "officialBefore": 818,
   "targetAfterFullGates": 868,
   "registered": false,
-  "status": "ASSEMBLED_CHRONOLOGY_PASS_SLASH_HUMAN_IN_PROGRESS_QUESTIONS_40_DONE",
+  "status": "ASSEMBLED_CHRONOLOGY_PASS_SLASH_HUMAN_IN_PROGRESS_QUESTIONS_50_DONE",
   "chronologyAllGradesPass": true,
   "passages": [
     {
@@ -3212,7 +3212,123 @@
           "修理場所を避けて進む線でした。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "DETAIL",
+          "prompt": "1. 青い線はどこから始まっていましたか。",
+          "answer": "正面玄関。",
+          "evidence": "It started at the front door but did not go toward the usual office.",
+          "evidenceJp": "線は正面玄関から始まっていましたが、いつもの事務室の方向には向かっていませんでした。",
+          "reason": "青い線の出発点が直接示されています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "2. ミオが最初に青い線を不思議に思ったのはなぜですか。",
+          "answer": "いつもの事務室の方向へ向かっていなかったから。",
+          "evidence": "It started at the front door but did not go toward the usual office. She thought, “Is this line here by mistake?”",
+          "evidenceJp": "線は正面玄関から始まっていましたが、いつもの事務室の方向には向かっていませんでした。ミオは「これは間違いかな」と思いました。",
+          "reason": "普段の方向と違ったため、間違いだと疑っています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "3. 表示には中央ホールについて何と書かれていましたか。",
+          "answer": "修理中。",
+          "evidence": "The main hall is under repair.",
+          "evidenceJp": "中央ホールは修理中です。",
+          "reason": "迂回の理由が直接示されています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "4. 青い線が会議室への別の入口へ続いていたのはなぜですか。",
+          "answer": "修理場所を避けるため。",
+          "evidence": "It went around the repair area.",
+          "evidenceJp": "修理場所を避けて進む線でした。",
+          "reason": "線の役割が修理場所を迂回することだと説明されています。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 本文の内容に合うものを選びなさい。",
+          "choices": [
+            "A. 青い線は事務室へ向かっていた。",
+            "B. 中央ホールは修理中だった。",
+            "C. ミオは表示を見なかった。",
+            "D. 来校者は青い線を使えなかった。"
+          ],
+          "answer": "B. 中央ホールは修理中だった。",
+          "evidence": "The main hall is under repair.",
+          "evidenceJp": "中央ホールは修理中です。",
+          "reason": "本文の表示内容と一致します。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "GIST",
+          "prompt": "6. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 青い線を消した話",
+            "B. 一時的な案内の意味を理解して来校者にも教えた話",
+            "C. 会議室を修理した話",
+            "D. 事務室を移した話"
+          ],
+          "answer": "B. 一時的な案内の意味を理解して来校者にも教えた話",
+          "evidence": "Mio showed them the blue line and the sign.",
+          "evidenceJp": "ミオは青い線と表示を案内しました。",
+          "reason": "ミオが案内の意味を理解し、他の人にも伝える流れが中心です。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "7. ミオが来校者に青い線と表示の両方を見せた理由として最も適切なものはどれですか。",
+          "answer": "行き方だけでなく、その理由も分かるようにするため。",
+          "evidence": "Mio showed them the blue line and the sign.",
+          "evidenceJp": "ミオは青い線と表示を案内しました。",
+          "reason": "線は経路、表示は修理中という理由を示します。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "8. “temporary guide” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 一時的な案内",
+            "B. 永久的な壁",
+            "C. 修理道具",
+            "D. 学校の規則"
+          ],
+          "answer": "A. 一時的な案内",
+          "evidence": "The line looked strange at first, but it was a temporary guide.",
+          "evidenceJp": "その線は最初は不思議に見えましたが、一時的な案内でした。",
+          "reason": "文脈上、修理中だけ使う案内を指します。"
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "9. 『青い線は、中央ホールの（　）を避けて会議室へ行くための案内だった。』に入る語句を選びなさい。",
+          "choices": [
+            "A. 修理場所",
+            "B. 図書室",
+            "C. 駐車場",
+            "D. 体育館"
+          ],
+          "answer": "A. 修理場所",
+          "evidence": "It went around the repair area.",
+          "evidenceJp": "修理場所を避けて進む線でした。",
+          "reason": "青い線の役割を直接まとめた文です。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から学べることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 普段と違う案内には理由がある場合がある",
+            "B. 青い線は必ず間違いである",
+            "C. 表示は読まなくてよい",
+            "D. 来校者には説明しなくてよい"
+          ],
+          "answer": "A. 普段と違う案内には理由がある場合がある",
+          "evidence": "The line looked strange at first, but it was a temporary guide.",
+          "evidenceJp": "その線は最初は不思議に見えましたが、一時的な案内でした。",
+          "reason": "最初は変に見えても、修理という合理的な理由がありました。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_HUMAN_QA_R2_20260907"
     },
     {
       "id": "V11-B14-G1-016",
