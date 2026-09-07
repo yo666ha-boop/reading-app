@@ -113,7 +113,7 @@
       "tier": "STANDARD",
       "body": "On Monday, the class received the same festival message twice. One copy came from the student council list, and another came from the class event list. Some students thought the second message included new information, so they read both carefully. Aya compared the two messages and found that every detail was the same. She asked the teachers managing the lists. They learned that both lists included all second-year students. Before the next event, the class chose one list for general notices and kept the other only for messages about class jobs. They also added a short line saying where each message came from. The next notice arrived only once, and students could understand its purpose immediately. A small change made communication clearer.",
       "fullTranslation": "月曜日、クラスに同じ文化祭のお知らせが二度届きました。一通は生徒会の配信リストから、もう一通はクラス行事のリストからでした。二通目には新しい情報があると思った生徒もいたので、両方を注意して読みました。アヤが二つを比べると、内容はすべて同じでした。そこで、リストを管理している先生たちに尋ねました。調べると、どちらのリストにも2年生全員が入っていることが分かりました。次の行事の前に、一般のお知らせには一つのリストだけを使い、もう一つはクラスの係の連絡専用にしました。また、各メッセージがどこから来たかを示す短い一文も加えました。次のお知らせは一度だけ届き、生徒たちは目的をすぐ理解できました。小さな変更で連絡が分かりやすくなりました。",
-      "humanSemanticReview": "B14_G2_HUMAN_REVIEW_R5_GRAMMAR_CHRONOLOGY_SYNC",
+      "humanSemanticReview": "B14_G2_HUMAN_REVIEW_R5_GRAMMAR_CHRONOLOGY_SYNC_NOTE_R1",
       "notes": [
         {
           "kind": "unlearned_local_required",
@@ -128,7 +128,9 @@
         {
           "kind": "unlearned_local_required",
           "english": "notices",
-          "japanese": "気づく（三単現）"
+          "japanese": "お知らせ・通知（複数形）",
+          "semanticRepair": "B14_NOTE_SEMANTIC_REPAIR_R1",
+          "semanticRepairReason": "notices is a plural noun in general notices, not the verb notices."
         },
         {
           "kind": "unlearned_local_required",
