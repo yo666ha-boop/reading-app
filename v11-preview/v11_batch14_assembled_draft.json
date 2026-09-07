@@ -3,7 +3,7 @@
   "officialBefore": 818,
   "targetAfterFullGates": 868,
   "registered": false,
-  "status": "ASSEMBLED_CHRONOLOGY_PASS_SLASH_HUMAN_IN_PROGRESS_QUESTIONS_20_DONE",
+  "status": "ASSEMBLED_CHRONOLOGY_PASS_SLASH_HUMAN_IN_PROGRESS_QUESTIONS_40_DONE",
   "chronologyAllGradesPass": true,
   "passages": [
     {
@@ -2583,7 +2583,117 @@
           "これで作品と記録の名前が同じになりました。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "DETAIL",
+          "prompt": "1. 絵の右下に何がありましたか。",
+          "answer": "小さな星。",
+          "evidence": "She noticed a tiny star in the lower right corner.",
+          "evidenceJp": "絵の右下に小さな星があることに気づき、",
+          "reason": "作者を確かめる最初の手がかりです。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "2. エミがすぐに名前を書かなかったのはなぜですか。",
+          "answer": "根拠なしに作者名を書きたくなかったから。",
+          "evidence": "Emi did not want to write a name without evidence.",
+          "evidenceJp": "エミは根拠なしに名前を書きたくありませんでした。",
+          "reason": "判断前に証拠を確認しようとしたことが直接示されています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "3. 古い作品ファイルで何が分かりましたか。",
+          "answer": "同じ星のある3枚の絵はすべてケンの作品だった。",
+          "evidence": "In an older class folder, she found three pictures with the same star. All three belonged to Ken.",
+          "evidenceJp": "以前の作品ファイルを見ると、同じ星のある絵が三枚あり、すべてケンの作品でした。",
+          "reason": "星印とケンを結び付ける根拠です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "4. 絵の裏の日付を確認したのはなぜですか。",
+          "answer": "その絵がケンのグループの週のものか確かめるため。",
+          "evidence": "She also checked the date on the back of the new picture. It matched Ken's group week for that theme.",
+          "evidenceJp": "さらに新しい絵の裏の日付を確認すると、そのテーマのケンのグループの週と一致しました。",
+          "reason": "日付が二つ目の確認材料になっています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "5. エミが新しい名札を作る前にケン本人にも確認した理由は何ですか。",
+          "answer": "星印と日付だけで決めず、本人の答えでも確かめるため。",
+          "evidence": "Emi showed the picture to Ken before she made a new card. Ken smiled and said it was his.",
+          "evidenceJp": "エミは新しい名札を作る前に、その絵をケンに見せました。ケンは笑って自分の作品だと言い、",
+          "reason": "複数の根拠をそろえてから判断しています。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "REASON",
+          "prompt": "6. ケンが名前を書き忘れた理由は何ですか。",
+          "answer": "授業の終わりにベルが鳴ったから。",
+          "evidence": "He forgot to write his name because the bell rang at the end of class.",
+          "evidenceJp": "授業の終わりにベルが鳴ったので名前を書くのを忘れたと話しました。",
+          "reason": "because以下が理由を直接示します。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "7. 本文の内容に合うものを選びなさい。",
+          "choices": [
+            "A. 星印だけで作者を決めた。",
+            "B. 日付は確認しなかった。",
+            "C. ケン本人にも確認した。",
+            "D. 先生が先に作者名を書いた。"
+          ],
+          "answer": "C. ケン本人にも確認した。",
+          "evidence": "Emi showed the picture to Ken before she made a new card.",
+          "evidenceJp": "エミは新しい名札を作る前に、その絵をケンに見せました。",
+          "reason": "本人確認を行ったことが本文に明記されています。"
+        },
+        {
+          "type": "GIST",
+          "prompt": "8. この話の中心内容はどれですか。",
+          "choices": [
+            "A. 展示を中止した話",
+            "B. 複数の手がかりで作者を確かめた話",
+            "C. 星の絵を描いた話",
+            "D. 名札をなくした話"
+          ],
+          "answer": "B. 複数の手がかりで作者を確かめた話",
+          "evidence": "Emi added the card only after the symbol, the date, and Ken's answer agreed.",
+          "evidenceJp": "エミは記号、日付、ケンの答えが一致してから名札を付けました。",
+          "reason": "星・日付・本人回答の一致が物語の要点です。"
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "9. 『エミは（　）が一致してから名札を付けた。』に入るものを選びなさい。",
+          "choices": [
+            "A. 星印・日付・ケンの答え",
+            "B. 色・大きさ・値段",
+            "C. 先生・友達・家族",
+            "D. 時刻・天気・場所"
+          ],
+          "answer": "A. 星印・日付・ケンの答え",
+          "evidence": "Emi added the card only after the symbol, the date, and Ken's answer agreed.",
+          "evidenceJp": "エミは記号、日付、ケンの答えが一致してから名札を付けました。",
+          "reason": "本文のまとめにあたる文そのものです。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. エミの行動から学べることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 一つの情報だけですぐ決める",
+            "B. 根拠を複数確認してから判断する",
+            "C. 分からないときは名前を書かないままにする",
+            "D. 本人には聞かない"
+          ],
+          "answer": "B. 根拠を複数確認してから判断する",
+          "evidence": "Emi added the card only after the symbol, the date, and Ken's answer agreed.",
+          "evidenceJp": "エミは記号、日付、ケンの答えが一致してから名札を付けました。",
+          "reason": "複数情報を照合してから判断しています。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_HUMAN_QA_R1_20260907"
     },
     {
       "id": "V11-B14-G1-014",
@@ -2774,7 +2884,117 @@
           "札と一覧を確認し、自分で鍵を試しませんでした。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "DETAIL",
+          "prompt": "1. 鍵の札には何番と書かれていましたか。",
+          "answer": "4番。",
+          "evidence": "The key had a yellow tag with the number 4.",
+          "evidenceJp": "鍵には4番と書かれた黄色い札が付いていました。",
+          "reason": "鍵の識別情報が直接示されています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "2. ダイチが近くのドアで鍵を試さなかったのはなぜですか。",
+          "answer": "その鍵に合うドアが分からなかったから。",
+          "evidence": "He did not try it in nearby doors. He did not know the right door for the key.",
+          "evidenceJp": "近くのドアで試すことはしませんでした。その鍵に合うドアが分からなかったからです。",
+          "reason": "試さなかった理由が続く文で説明されています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "3. ダイチは鍵をどこへ持っていきましたか。",
+          "answer": "職員室。",
+          "evidence": "Instead, he took it to the staff room.",
+          "evidenceJp": "代わりに職員室へ持っていくと、",
+          "reason": "鍵を安全に確認してもらう場所です。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "4. 4番の鍵は何の鍵でしたか。",
+          "answer": "美術室の予備の鍵。",
+          "evidence": "Number 4 was the spare key for the art room.",
+          "evidenceJp": "4番は美術室の予備の鍵でした。",
+          "reason": "鍵一覧で確認した結果です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "5. 美術の先生の確認が重要だったのはなぜですか。",
+          "answer": "実際に予備の鍵が一つなくなっていたことを確かめられたから。",
+          "evidence": "The art teacher was still in the building and confirmed that one spare key was missing.",
+          "evidenceJp": "美術の先生はまだ校内にいて、予備の鍵が一つ見当たらないことを確認しました。",
+          "reason": "鍵一覧だけでなく実際の不足も一致しました。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "6. 本文の内容に合うものを選びなさい。",
+          "choices": [
+            "A. ダイチは自分で全部のドアを試した。",
+            "B. 先生は鍵一覧を確認した。",
+            "C. 鍵には番号がなかった。",
+            "D. 美術の先生は校内にいなかった。"
+          ],
+          "answer": "B. 先生は鍵一覧を確認した。",
+          "evidence": "A teacher checked the school key list.",
+          "evidenceJp": "先生が学校の鍵一覧を確認しました。",
+          "reason": "本文にそのまま書かれています。"
+        },
+        {
+          "type": "GIST",
+          "prompt": "7. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 見つけた鍵を安全に確認して正しい持ち主へ渡した話",
+            "B. 美術室のドアを開けた話",
+            "C. 鍵をなくした話",
+            "D. 靴箱を直した話"
+          ],
+          "answer": "A. 見つけた鍵を安全に確認して正しい持ち主へ渡した話",
+          "evidence": "He checked the tag and the list, and he did not test the key himself.",
+          "evidenceJp": "札と一覧を確認し、自分で鍵を試しませんでした。",
+          "reason": "安全に確認して扱ったことが話全体の中心です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "8. ダイチが『よかった』と思ったのはなぜだと考えられますか。",
+          "answer": "鍵を自分で試さず、正しく美術の先生に渡せたから。",
+          "evidence": "Daichi gave the key to the teacher. He was glad.",
+          "evidenceJp": "ダイチはその先生に鍵を渡しました。ダイチはよかったと思いました。",
+          "reason": "適切な相手に渡した直後に安心しています。"
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "9. 要約の空所に入るものを選びなさい。『ダイチは黄色い札の4番を手がかりにし、（　）で確認して美術室の予備鍵だと分かった。』",
+          "choices": [
+            "A. 学校の鍵一覧",
+            "B. 地図",
+            "C. 時刻表",
+            "D. 座席表"
+          ],
+          "answer": "A. 学校の鍵一覧",
+          "evidence": "A teacher checked the school key list. Number 4 was the spare key for the art room.",
+          "evidenceJp": "先生が学校の鍵一覧を確認しました。4番は美術室の予備の鍵でした。",
+          "reason": "番号と一覧を照合して特定しています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から分かる適切な行動はどれですか。",
+          "choices": [
+            "A. 分からない鍵は近くのドアで試す",
+            "B. 拾った鍵は安全な場所で情報を確認してもらう",
+            "C. 番号は見ない",
+            "D. 自分で持ち帰る"
+          ],
+          "answer": "B. 拾った鍵は安全な場所で情報を確認してもらう",
+          "evidence": "Instead, he took it to the staff room.",
+          "evidenceJp": "代わりに職員室へ持っていくと、",
+          "reason": "ダイチは自分で試さず職員室で確認してもらっています。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_HUMAN_QA_R1_20260907"
     },
     {
       "id": "V11-B14-G1-015",
