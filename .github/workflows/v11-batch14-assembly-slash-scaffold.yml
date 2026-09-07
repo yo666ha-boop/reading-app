@@ -1,0 +1,50 @@
+name: v11 Batch14 assembly slash scaffold
+
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch14_g1_body_draft.json'
+      - 'v11_batch14_g2_body_draft.json'
+      - 'v11_batch14_g3_body_draft.json'
+      - 'V11_BATCH14_G1_CHRONOLOGY_STATUS.txt'
+      - 'V11_BATCH14_G2_CHRONOLOGY_STATUS.txt'
+      - 'V11_BATCH14_G3_CHRONOLOGY_STATUS.txt'
+      - 'v11_batch14_note_semantic_repair_r1.js'
+      - 'v11_batch14_assemble_and_slash_scaffold.js'
+      - '.github/workflows/v11-batch14-assembly-slash-scaffold.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Repair contextual glosses
+        run: node v11_batch14_note_semantic_repair_r1.js
+      - name: Assemble Batch14 and build slash scaffold
+        run: node v11_batch14_assemble_and_slash_scaffold.js
+      - name: Persist generated actuals
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add v11_batch14_g1_body_draft.json v11_batch14_g2_body_draft.json V11_BATCH14_NOTE_SEMANTIC_REPAIR_R1.json v11_batch14_assembled_draft.json V11_BATCH14_ASSEMBLY_SLASH_SCAFFOLD.json
+          if git diff --cached --quiet; then
+            echo 'No generated changes to persist.'
+            exit 0
+          fi
+          git commit -m 'audit: persist Batch14 assembly and slash scaffold'
+          for n in 1 2 3; do
+            git pull --rebase origin v11-1000passage-easy-notes && git push origin HEAD:v11-1000passage-easy-notes && exit 0
+            sleep 2
+          done
+          exit 1
