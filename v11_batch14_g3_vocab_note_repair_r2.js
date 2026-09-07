@@ -1,0 +1,258 @@
+'use strict';
+const fs=require('fs');
+const PARTS=[1,2,3,4].map(n=>`v11_batch14_g3_body_draft_part${n}.json`);
+const targets=new Set(['V11_BATCH14_G3_MISSING_VOCAB_WORDS.txt','V11_BATCH14_G3_FUTURE_VOCAB_WORDS.txt'].flatMap(f=>fs.existsSync(f)?fs.readFileSync(f,'utf8').split(/\r?\n/).map(x=>x.trim().toLowerCase()).filter(Boolean):[]));
+const glossText=`
+month|月
+monthly|毎月の・月ごとの
+morning|朝
+museum|博物館
+music|音楽
+nature|自然
+neatly|きちんと
+neighborhood|近所・地域
+newly|新しく
+newspaper|新聞
+ninety|90・九十
+north|北
+notice|お知らせ・注意書き
+noticed|気づいた
+nurse's|看護師の
+object|物体・物
+objects|物体・物
+observation|観察
+observations|観察・観察結果
+observed|観察した
+offered|申し出た・提供した
+opposite|反対の・向かい側の
+optional|任意の
+outdoor|屋外の
+outlets|コンセント・出口
+overall|全体として
+overwatered|水をやりすぎた
+page|ページ
+paint|塗料・塗る
+participated|参加した
+path|道
+pattern|傾向・型
+patterns|傾向・型
+percent|パーセント
+perfectly|完全に・正確に
+performers|演者・出演者
+period|期間・時限
+periods|期間・時限
+planners|計画を立てる人
+playground|運動場
+possibility|可能性
+practice|練習・実践
+practiced|練習した
+predicted|予測した
+prefer|～のほうを好む
+presence|いること・存在
+present|現在の・その場にいる
+pretending|ふりをすること
+prevent|防ぐ
+previous|以前の
+priority|優先事項
+procedure|手順
+prohibited|禁止された
+project|計画・課題
+promise|約束
+promised|約束した
+proposal|提案
+proven|証明された
+publication|出版物・発行
+publishing|出版・公開
+quantities|数量
+quickly|すばやく
+quotations|引用文
+quote|引用する・引用
+rain|雨
+rainy|雨の
+rather|むしろ
+readers|読者
+real|実際の・本当の
+reasonable|妥当な・理にかなった
+recommendation|提案・勧告
+record|記録
+recorded|記録した
+records|記録
+red|赤い
+regularly|定期的に
+relying|頼ること
+remained|残った
+remaining|残っている
+reopen|再開する
+reopened|再開した
+repair|修理・修理する
+repaired|修理した
+repairing|修理すること
+repairs|修理
+repeated|繰り返した
+replace|取り替える
+replaced|取り替えた
+replacements|交換品・代わりのもの
+replacing|取り替えること
+reporters|記者
+require|必要とする
+required|必要な・求められた
+reserve|予備・取っておく
+reserved|確保された
+residents|住民
+respondents|回答者
+responding|対応すること
+response|反応・回答
+responses|反応・回答
+reviewing|見直すこと
+revised|修正した
+rewrote|書き直した
+risk|危険・リスク
+river|川
+riverside|川沿い
+route|経路
+row|列
+rows|列
+safety|安全
+sample|見本・標本
+satisfied|満足した
+schedule|予定表・時刻表
+scheduled|予定された
+schedules|予定表・時刻表
+science|科学
+screws|ねじ
+season|季節
+seat|座席
+section|部分・区間
+secure|安全な・固定する
+seemed|～のように思えた
+senior|年上の・上級生
+sense|意味・感覚
+separate|分ける・別々の
+separated|分けられた
+separately|別々に
+separating|分けること
+seven|7・七
+shade|日陰・陰
+shaded|日陰になった・陰をつけた
+sheet|用紙
+sheets|用紙
+similar|似た
+simple|簡単な
+simply|単に
+site|場所・現場
+six|6・六
+sixty|60・六十
+slightly|少し
+smooth|滑らかな
+social|社会の
+soil|土
+source|情報源・出典
+space|空間・余白
+split|分ける・割る
+start|始める・開始
+starting|始めること・開始する
+statement|文・記述・声明
+station|駅
+step|段階・一歩
+stop|止める・停留所
+stopped|止めた・止まった
+storage|保管・貯蔵
+storm|嵐
+storms|嵐
+strong|強い
+strongest|最も強い
+structures|構造物・構造
+suggestion|提案
+sunny|晴れた
+survey|調査
+surveyed|調査した
+symbol|記号
+tank|タンク・容器
+teenagers|10代の若者
+temporarily|一時的に
+test|試験・試す
+tested|試した
+testing|試すこと
+thirty|30・三十
+though|～だけれども
+thought|考えた・考え
+thrown|投げられた・捨てられた
+timetable|時刻表
+together|一緒に
+town|町
+tracing|たどること
+translation|翻訳
+transport|交通・輸送
+treated|扱った・処理した
+treating|扱うこと・処理すること
+tree|木
+trees|木
+trial|試行・試験
+trunk|幹
+twelve|12・十二
+twenty|20・二十
+typhoon|台風
+uncertainty|不確かさ
+unfair|不公平な
+uninterested|関心のない
+until|～まで
+unusual|普通でない
+upstairs|階上に
+used|使った・使われた
+useless|役に立たない
+user|利用者
+using|使うこと
+usually|たいてい
+valuable|価値のある
+version|版
+versions|版
+view|見方・眺め
+visible|見える
+visitor|訪問者・来場者
+visitors|訪問者・来場者
+volunteer|ボランティア・志願者
+volunteers|ボランティア・志願者
+walkers|歩行者
+warehouse|倉庫
+warning|警告
+weather|天気
+week|週
+weekly|毎週の
+weeks|週
+west|西
+wheel|車輪
+without|～なしで
+witness|目撃者
+wooden|木製の
+workable|実行可能な
+yen|円
+youth|若者
+yui|ユイ（人名）
+`;
+const gloss=new Map();
+for(const raw of glossText.trim().split(/\n/)){
+  const line=raw.trim(); if(!line)continue;
+  const i=line.indexOf('|'); if(i<1)throw Error('bad gloss row: '+line);
+  const en=line.slice(0,i).trim().toLowerCase(),jp=line.slice(i+1).trim();
+  if(!jp||/[A-Za-z]{3}/.test(jp))throw Error('invalid Japanese gloss: '+en+'='+jp);
+  gloss.set(en,jp);
+}
+const missing=[...targets].filter(w=>!gloss.has(w));
+if(missing.length)throw Error('R2 gloss coverage incomplete: '+missing.join(','));
+function tokens(s){return new Set((String(s||'').replace(/[’]/g,"'").match(/[A-Za-z]+(?:'[A-Za-z]+)*/g)||[]).map(x=>x.toLowerCase()));}
+let passages=0,added=0;const covered=new Set();
+for(const file of PARTS){
+  const doc=JSON.parse(fs.readFileSync(file,'utf8'));
+  if(doc.registered!==false||doc.officialTotal!==818||!Array.isArray(doc.passages))throw Error('G3 part invariant '+file);
+  let changed=false;
+  for(const p of doc.passages){
+    passages++;
+    const bodyWords=tokens(p.body); p.notes=Array.isArray(p.notes)?p.notes:[];
+    const existing=new Set(p.notes.filter(n=>n&&n.kind==='unlearned_local_required').flatMap(n=>[...tokens(n.english)]));
+    for(const w of targets){if(!bodyWords.has(w)||existing.has(w))continue;p.notes.push({kind:'unlearned_local_required',english:w,japanese:gloss.get(w),scope:'passage-only-unlearned',basis:'Batch14 G3 chronology repair R2: retained because the word is necessary for the passage meaning; formal Japanese gloss supplied locally.'});existing.add(w);covered.add(w);added++;changed=true;}
+    if(changed)p.vocabNoteRepair='B14_G3_REQUIRED_LOCAL_GLOSS_REPAIR_R2_COMPLETE_SET';
+  }
+  if(changed)fs.writeFileSync(file,JSON.stringify(doc,null,2)+'\n');
+}
+console.log(JSON.stringify({passages,targetWords:targets.size,glossDefinitions:gloss.size,notesAdded:added,coveredTargetWords:covered.size,uncoveredTargets:[...targets].filter(w=>!covered.has(w))},null,2));
+if(targets.size&&covered.size!==targets.size)throw Error('R2 target not found in passage body: '+[...targets].filter(w=>!covered.has(w)).join(','));
