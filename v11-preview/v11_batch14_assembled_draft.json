@@ -3,7 +3,7 @@
   "officialBefore": 818,
   "targetAfterFullGates": 868,
   "registered": false,
-  "status": "ASSEMBLED_CHRONOLOGY_PASS_SLASH_HUMAN_IN_PROGRESS_QUESTIONS_PENDING",
+  "status": "ASSEMBLED_CHRONOLOGY_PASS_SLASH_HUMAN_IN_PROGRESS_QUESTIONS_20_DONE",
   "chronologyAllGradesPass": true,
   "passages": [
     {
@@ -1908,7 +1908,123 @@
           "その空席には別の役目があったのです。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "REASON",
+          "prompt": "1. ユナが最初に心配したのはなぜですか。",
+          "answer": "12番の席だけ空いていて、だれか一人に席がないかもしれないと思ったから。",
+          "evidence": "Every student's name was on the list, but Seat 12 was empty. / Maybe one student had no seat.",
+          "evidenceJp": "生徒全員の名前がありましたが、12番の席だけ空いていました。だれか一人に席がないのかもしれないと思いました。",
+          "reason": "空席を見て、座れない生徒がいる可能性を考えたことが直接示されています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 12番の席の横には何と書かれていましたか。",
+          "answer": "Camera box.",
+          "evidence": "Then she saw a small note beside Seat 12: ‘Camera box.’",
+          "evidenceJp": "しかし12番の横には「カメラ箱」と小さく書かれていました。",
+          "reason": "12番の席の用途を示すメモの内容がそのまま根拠です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. 先生がカメラ箱を席に置きたかったのはなぜですか。",
+          "answer": "通路に置きたくなかったから。",
+          "evidence": "The class had a large box for two school cameras, and the teacher did not want it in the aisle.",
+          "evidenceJp": "クラスには学校のカメラ二台を入れる大きな箱があり、先生は通路に置きたくなかったのです。",
+          "reason": "カメラ箱を通路に置かないために空席を使ったことが分かります。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "4. ユナが名前をもう一度数えた目的として最も適切なものは何ですか。",
+          "answer": "本当に席のない生徒がいるのか確かめるため。",
+          "evidence": "Yuna counted the names again. All thirty students had seats, and Seat 12 was the only place without a name.",
+          "evidenceJp": "ユナがもう一度名前を数えると、30人全員に席があり、名前のない場所は12番だけでした。",
+          "reason": "再確認の結果、全員に席があると分かったため、そのための確認だったと判断できます。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 本文の内容に合うものを選びなさい。",
+          "choices": [
+            "A. 12番の席には生徒の名前が書かれていた。",
+            "B. カメラ箱は通路に置く予定だった。",
+            "C. 30人全員に席があった。",
+            "D. ユナは座席表を確認しなかった。"
+          ],
+          "answer": "C. 30人全員に席があった。",
+          "evidence": "All thirty students had seats, and Seat 12 was the only place without a name.",
+          "evidenceJp": "ユナがもう一度名前を数えると、30人全員に席があり、名前のない場所は12番だけでした。",
+          "reason": "本文に30人全員に席があったと明記されています。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "6. “No student is missing.” の missing に最も近い意味はどれですか。",
+          "choices": [
+            "A. 迷子になっている",
+            "B. いない・抜けている",
+            "C. 遅れている",
+            "D. 忘れている"
+          ],
+          "answer": "B. いない・抜けている",
+          "evidence": "She said to her friend, “No student is missing.”",
+          "evidenceJp": "ユナは友達に「生徒は誰も抜けていないよ」と言いました。",
+          "reason": "全員に席があることを確認した直後なので、missing は「いない・抜けている」の意味です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. “The empty seat had a job of its own.” とはどういうことですか。",
+          "answer": "12番の席は生徒用ではなく、カメラ箱を置く役目があったということ。",
+          "evidence": "Then she saw a small note beside Seat 12: ‘Camera box.’ / The empty seat had a job of its own.",
+          "evidenceJp": "しかし12番の横には「カメラ箱」と小さく書かれていました。その空席には別の役目があったのです。",
+          "reason": "空席がカメラ箱用だったことを指しています。"
+        },
+        {
+          "type": "GIST",
+          "prompt": "8. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. ユナがバスに乗り遅れた話",
+            "B. 空席の理由を確認して誤解を解いた話",
+            "C. カメラをなくした話",
+            "D. 座席を交換した話"
+          ],
+          "answer": "B. 空席の理由を確認して誤解を解いた話",
+          "evidence": "Yuna counted the names again. All thirty students had seats, and Seat 12 was the only place without a name.",
+          "evidenceJp": "ユナがもう一度名前を数えると、30人全員に席があり、名前のない場所は12番だけでした。",
+          "reason": "空席を見て心配した後、確認して理由を理解する流れが話の中心です。"
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "9. 要約の空所に入る内容として最も適切なものを選びなさい。『ユナは12番の空席を見て心配したが、（　）ので、生徒が抜けていないと分かった。』",
+          "choices": [
+            "A. 名前をもう一度数え、メモも確認した",
+            "B. 先生に席を増やしてもらった",
+            "C. カメラを通路に置いた",
+            "D. 旅行を中止した"
+          ],
+          "answer": "A. 名前をもう一度数え、メモも確認した",
+          "evidence": "Then she saw a small note beside Seat 12: ‘Camera box.’ / Yuna counted the names again.",
+          "evidenceJp": "しかし12番の横には「カメラ箱」と小さく書かれていました。ユナがもう一度名前を数えると、30人全員に席があり、名前のない場所は12番だけでした。",
+          "reason": "メモと人数の再確認の二つが誤解を解く材料になっています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から分かるユナの行動の特徴として最も適切なものはどれですか。",
+          "choices": [
+            "A. 見た目だけで決める",
+            "B. 心配しても確認せずに帰る",
+            "C. 情報を確認してから結論を出す",
+            "D. 友達の言葉だけを信じる"
+          ],
+          "answer": "C. 情報を確認してから結論を出す",
+          "evidence": "Yuna counted the names again.",
+          "evidenceJp": "ユナがもう一度名前を数えると、30人全員に席があり、名前のない場所は12番だけでした。",
+          "reason": "不安を感じた後に再確認して判断しているためです。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_HUMAN_QA_R1_20260907"
     },
     {
       "id": "V11-B14-G1-012",
@@ -2091,7 +2207,129 @@
           "表示を読み、大きさだけで大きい投入口を選びませんでした。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "DETAIL",
+          "prompt": "1. 青い矢印は何を指していましたか。",
+          "answer": "細い投入口。",
+          "evidence": "A blue arrow pointed to a narrow opening, and a gray arrow pointed to a larger opening.",
+          "evidenceJp": "一つの箱の側面には二つの矢印があり、青い矢印は細い投入口、灰色の矢印は大きな投入口を指していました。",
+          "reason": "青い矢印の向きが本文に直接書かれています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "2. シュンが青い投入口を使ったのはなぜですか。",
+          "answer": "持っていたものが平らなプリントだったから。",
+          "evidence": "His papers were flat worksheets, so he used the blue opening.",
+          "evidenceJp": "持っていたのは平らなプリントだったので、青い投入口を使いました。",
+          "reason": "持っていた紙の種類と青い投入口の表示が一致していたためです。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "3. 箱の表示について本文の内容に合うものを選びなさい。",
+          "choices": [
+            "A. 青い側は紙コップ用だった。",
+            "B. 灰色の側は平らな紙用だった。",
+            "C. 青い側は平らな紙用だった。",
+            "D. 二つの投入口に説明はなかった。"
+          ],
+          "answer": "C. 青い側は平らな紙用だった。",
+          "evidence": "The blue side said ‘flat paper,’ and the gray side said ‘paper cups.’",
+          "evidenceJp": "しかし矢印の下の言葉を読むと、青い側には「平らな紙」、灰色の側には「紙コップ」と書かれていました。",
+          "reason": "表示内容がそのまま根拠です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "4. 先生の言葉から、紙コップについて何が分かりますか。",
+          "answer": "平らな紙とは別の処理が必要だということ。",
+          "evidence": "Later, a teacher said, “Paper cups need a different process.”",
+          "evidenceJp": "後で先生が「紙コップには別の処理が必要です」と言いました。",
+          "reason": "先生が紙コップには異なる処理が必要だと説明しています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "5. シュンが最初に間違えそうになった理由として最も適切なものはどれですか。",
+          "choices": [
+            "A. 矢印を見なかったから",
+            "B. どちらの投入口も紙用だと思ったから",
+            "C. 紙コップを持っていたから",
+            "D. 箱が一つしかなかったから"
+          ],
+          "answer": "B. どちらの投入口も紙用だと思ったから",
+          "evidence": "Shun first thought both openings were for paper.",
+          "evidenceJp": "シュンは最初、どちらも紙を入れる場所だと思いました。",
+          "reason": "最初の思い込みが本文に明記されています。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "GIST",
+          "prompt": "6. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 大きい投入口ほど便利だという話",
+            "B. 表示を読んで正しい分別方法を選んだ話",
+            "C. リサイクル箱を新しく作った話",
+            "D. 紙コップを捨てた話"
+          ],
+          "answer": "B. 表示を読んで正しい分別方法を選んだ話",
+          "evidence": "He read the words under the arrows. / His papers were flat worksheets, so he used the blue opening.",
+          "evidenceJp": "しかし矢印の下の言葉を読むと、青い側には「平らな紙」、灰色の側には「紙コップ」と書かれていました。持っていたのは平らなプリントだったので、青い投入口を使いました。",
+          "reason": "表示確認によって正しい投入口を選ぶことが話の中心です。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "7. “process” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 方法・処理",
+            "B. 色",
+            "C. 大きさ",
+            "D. 矢印"
+          ],
+          "answer": "A. 方法・処理",
+          "evidence": "Later, a teacher said, “Paper cups need a different process.”",
+          "evidenceJp": "後で先生が「紙コップには別の処理が必要です」と言いました。",
+          "reason": "紙コップには別の扱い方が必要だという文脈なので「処理・方法」が適切です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "8. シュンが『よかった』と思ったのはなぜですか。",
+          "answer": "表示を読んで、持っていた平らなプリントを正しい投入口に入れられたから。",
+          "evidence": "His papers were flat worksheets, so he used the blue opening. / Shun was glad.",
+          "evidenceJp": "持っていたのは平らなプリントだったので、青い投入口を使いました。シュンはよかったと思いました。",
+          "reason": "正しい分別ができた直後に安心しているためです。"
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "9. 要約の空所に入るものを選びなさい。『シュンは投入口の大きさだけで決めず、（　）を読んで青い投入口を選んだ。』",
+          "choices": [
+            "A. 先生の名前",
+            "B. 矢印の下の言葉",
+            "C. 箱の値段",
+            "D. 時計"
+          ],
+          "answer": "B. 矢印の下の言葉",
+          "evidence": "He read the words under the arrows.",
+          "evidenceJp": "しかし矢印の下の言葉を読むと、青い側には「平らな紙」、灰色の側には「紙コップ」と書かれていました。",
+          "reason": "選択の前に確認した情報が直接示されています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から学べることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 大きい方を選べばよい",
+            "B. 表示や説明を確認して判断することが大切",
+            "C. 紙はすべて同じ方法で処理する",
+            "D. 矢印は見なくてよい"
+          ],
+          "answer": "B. 表示や説明を確認して判断することが大切",
+          "evidence": "He read the words and did not use the larger opening only for its size.",
+          "evidenceJp": "表示を読み、大きさだけで大きい投入口を選びませんでした。",
+          "reason": "大きさではなく表示を確認して判断したことが結論として示されています。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_HUMAN_QA_R1_20260907"
     },
     {
       "id": "V11-B14-G1-013",
