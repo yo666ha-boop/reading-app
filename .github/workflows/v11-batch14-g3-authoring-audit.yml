@@ -5,6 +5,7 @@ on:
     paths:
       - 'v11_batch14_g3_body_draft_part*.json'
       - 'v11_batch14_g3_grammar_semantic_repair.js'
+      - 'v11_batch14_g3_vocab_note_repair.js'
       - 'v11_batch14_g3_merge_parts.js'
       - 'v11_batch14_g3_draft_audit.js'
       - 'v11_batch14_g3_chronology_audit.js'
@@ -27,6 +28,9 @@ jobs:
       - name: Repair G3 chronology grammar leaks with synced translations
         id: grammar_repair
         run: node v11_batch14_g3_grammar_semantic_repair.js
+      - name: Add formal required-local glosses for current G3 vocab leaks
+        id: vocab_repair
+        run: node v11_batch14_g3_vocab_note_repair.js
       - name: Merge G3 parts
         id: merge
         run: node v11_batch14_g3_merge_parts.js
@@ -76,5 +80,5 @@ jobs:
             git push origin HEAD:v11-1000passage-easy-notes
           fi
       - name: Enforce G3 gates
-        if: steps.grammar_repair.outcome != 'success' || steps.merge.outcome != 'success' || steps.draft.outcome != 'success' || steps.chronology.outcome != 'success'
+        if: steps.grammar_repair.outcome != 'success' || steps.vocab_repair.outcome != 'success' || steps.merge.outcome != 'success' || steps.draft.outcome != 'success' || steps.chronology.outcome != 'success'
         run: exit 1
