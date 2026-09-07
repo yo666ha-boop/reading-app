@@ -1,0 +1,41 @@
+{
+  "batch":"V11-B14",
+  "officialTotal":818,
+  "registered":false,
+  "review":"B14_QUESTION_HUMAN_R5",
+  "questionRewrites":{
+    "V11-B14-G2-003":{
+      "A":[
+        {"type":"GIST","prompt":"1. この話の中心内容として最も適切なものはどれですか。","choices":["A. 給水機を新しい機械に交換した話","B. 列が遅い原因を調べ、周りの配置を直した話","C. 体育館の練習を中止した話","D. 水筒の数を減らした話"],"answer":"B. 列が遅い原因を調べ、周りの配置を直した話","evidence":"Careful observation showed that the space around it, not the machine, caused most of the delay.","evidenceJp":"丁寧に観察すると、遅れの主な原因は機械ではなく周りの空間だと分かりました。","reason":"機械そのものではなく周辺配置が原因だと調査で確かめ、配置を変更したことが話の中心です。"},
+        {"type":"REASON","prompt":"2. 保健委員会がすぐに給水機の交換を求めなかったのはなぜですか。","answer":"本当に機械が遅いのかを先に確かめようとしたから。","evidence":"The health committee decided to check before making that request.","evidenceJp":"保健委員会は、その要望を出す前に確かめることにしました。","reason":"交換要求の前に原因を調べる判断が直接示されています。"},
+        {"type":"DETAIL","prompt":"3. 10本の水筒を満たす時間を測って分かったことは何ですか。","answer":"機械そのものは毎回ほぼ同じ速さで動いていたこと。","evidence":"The machine itself worked at almost the same speed each time.","evidenceJp":"10本の水筒を満たす時間を測ると、機械そのものの速さは毎回ほぼ同じでした。","reason":"計測によって機械の速度が安定していると確認できました。"},
+        {"type":"REASON","prompt":"4. 生徒が給水機の前で待ちやすくなっていた主な理由は何ですか。","answer":"荷物用の机が給水機のすぐ横にあり、生徒同士が動きを妨げていたから。","evidence":"A small table for bags stood directly beside the station, so students had to turn and wait for one another before they could leave.","evidenceJp":"荷物を置く小さな机が給水機のすぐ横にあり、生徒は向きを変えたり、前の人が動くのを待ったりしなければなりませんでした。","reason":"机の位置によって人の流れが詰まっていたことが具体的に説明されています。"},
+        {"type":"CONTENT_MATCH","prompt":"5. 本文の内容に合うものを選びなさい。","choices":["A. 委員会は給水機をすぐ交換した。","B. 机を2メートル離し、待つ場所を別に示した。","C. 翌日は給水機を使う生徒が減った。","D. 二人の生徒は水の出る速さを問題だと答えた。"],"answer":"B. 机を2メートル離し、待つ場所を別に示した。","evidence":"The committee moved the table two meters away and marked a separate place for waiting.","evidenceJp":"委員会は机を2メートル離し、待つ場所を別に示しました。","reason":"委員会が行った具体的な改善が本文に明記されています。"}
+      ],
+      "B":[
+        {"type":"INFERENCE","prompt":"6. 翌日に同じ人数を給水機が利用したのに列が速く進んだことから、何が分かりますか。","answer":"混雑の主因は利用人数や機械の速さではなく、周りの配置だったこと。","evidence":"The next afternoon, the station served the same number of students, but the line moved much faster.","evidenceJp":"翌日の午後、給水機を使った人数は同じでしたが、列はずっと速く進みました。","reason":"人数が同じでも配置変更後に列が改善したため、配置が重要な原因だったと判断できます。"},
+        {"type":"REASON","prompt":"7. 委員会が二人の生徒にも話を聞いたのは何のためですか。","answer":"計測や観察だけでなく、生徒がどこで遅く感じるかも確かめるため。","evidence":"Before moving anything, they also asked two students to describe where the line felt slow.","evidenceJp":"何かを動かす前に、さらに2人の生徒に、列のどこで遅く感じるかを説明してもらいました。","reason":"利用者の感じ方を別の根拠として確認しています。"},
+        {"type":"CONTENT_MATCH","prompt":"8. 二人の生徒の答えは計測結果とどのような関係でしたか。","choices":["A. 完全に反対だった","B. 関係がなかった","C. 机の横の狭さを指し、計測結果と一致した","D. 機械の故障を示した"],"answer":"C. 机の横の狭さを指し、計測結果と一致した","evidence":"Both pointed to the narrow space beside the table, not to the water flow. This matched the timing results and gave the committee another reason to test the layout first.","evidenceJp":"二人とも水の出る速さではなく、机の横の狭い場所を指しました。この意見は計測結果とも一致し、まず配置を試す理由がさらに増えました。","reason":"生徒の意見と時間計測が同じ原因を示しています。"},
+        {"type":"SUMMARY_FILL","prompt":"9. 要約の空所に入るものを選びなさい。『委員会は機械の交換前に調べ、（　）を変えることで列を改善した。』","choices":["A. 体育館の場所","B. 周りの机と待つ場所の配置","C. 水筒の大きさ","D. 練習時間"],"answer":"B. 周りの机と待つ場所の配置","evidence":"The committee moved the table two meters away and marked a separate place for waiting.","evidenceJp":"委員会は机を2メートル離し、待つ場所を別に示しました。","reason":"原因確認後に実際に変更した内容を要約しています。"},
+        {"type":"INFERENCE","prompt":"10. この話から学べる調べ方として最も適切なものはどれですか。","choices":["A. 最初の予想だけで高価な物を交換する","B. 一つの数字だけで決める","C. 計測・観察・利用者の意見を組み合わせて原因を確かめる","D. 問題があっても何も変えない"],"answer":"C. 計測・観察・利用者の意見を組み合わせて原因を確かめる","evidence":"This matched the timing results and gave the committee another reason to test the layout first.","evidenceJp":"この意見は計測結果とも一致し、まず配置を試す理由がさらに増えました。","reason":"複数の種類の根拠を照合してから改善策を選んでいます。"}
+      ]
+    },
+    "V11-B14-G2-004":{
+      "A":[
+        {"type":"DETAIL","prompt":"1. 美術部は最初、ポスターをどこに貼りましたか。","answer":"階段近くの壁の低い位置。","evidence":"They placed it low on a wall near the stairs because the colors looked bright there.","evidenceJp":"色が明るく見えるので、階段近くの壁の低い位置に貼りました。","reason":"最初の掲示場所が直接示されています。"},
+        {"type":"REASON","prompt":"2. 昼休みに部屋へ入る生徒が少なかった原因としてユウトが確認したことは何ですか。","answer":"かばんや生徒が壁の下を隠し、離れた場所から部名を読めなかったこと。","evidence":"Yuto stood in the crowded hallway to see why. Bags and students blocked the lower wall, and he could not read the club name from several meters away.","evidenceJp":"ユウトが混んだ廊下に立って理由を確かめると、かばんや生徒が壁の下の部分を隠し、数メートル離れると部名を読めませんでした。","reason":"低い掲示位置が混雑時に見えなくなることを実際の廊下で確認しています。"},
+        {"type":"DETAIL","prompt":"3. 部員たちはポスターの位置を比べるために何人の生徒へ協力を頼みましたか。","answer":"10人。","evidence":"They asked ten students to walk from the stairs and say when they noticed it.","evidenceJp":"10人の生徒に階段から歩いてもらい、いつ気付くかを尋ねました。","reason":"位置テストの参加人数が本文に明記されています。"},
+        {"type":"CONTENT_MATCH","prompt":"4. ポスターが最も早く気付かれやすかった位置はどこですか。","choices":["A. 階段近くの低い位置","B. 角の近くの目の高さ","C. 床の上","D. 部屋の中だけ"],"answer":"B. 角の近くの目の高さ","evidence":"More students saw it early when it was at eye level near the corner.","evidenceJp":"角の近くの目の高さに置いたとき、より多くの生徒が早く気付きました。","reason":"比較テストで最も早く見つけられた位置です。"},
+        {"type":"REASON","prompt":"5. 美術部が大きなポスターを印刷しなかったのはなぜですか。","answer":"同じポスターでも見やすい位置へ移せば改善できると分かったから。","evidence":"The club moved the poster there instead of printing a larger one.","evidenceJp":"大きなポスターを印刷する代わりに、そこへ移しました。","reason":"サイズ変更ではなく位置変更を選んだことが示されています。"}
+      ],
+      "B":[
+        {"type":"GIST","prompt":"6. この話の中心内容として最も適切なものはどれですか。","choices":["A. ポスターの色を変えた話","B. 見えにくい原因を調べ、掲示位置をテストして改善した話","C. 美術部の部屋を移した話","D. 昼休みを長くした話"],"answer":"B. 見えにくい原因を調べ、掲示位置をテストして改善した話","evidence":"The members tested the same poster in two higher places.","evidenceJp":"部員たちは同じポスターを二つの高い位置で試しました。","reason":"原因確認後、同じポスターの位置を比較して改善した流れが中心です。"},
+        {"type":"INFERENCE","prompt":"7. 最初の掲示場所を決めたとき、美術部が十分に考えていなかった点は何ですか。","answer":"混雑した廊下で実際に生徒からポスターが見えるかどうか。","evidence":"They placed it low on a wall near the stairs because the colors looked bright there. / Bags and students blocked the lower wall, and he could not read the club name from several meters away.","evidenceJp":"色が明るく見えるので、階段近くの壁の低い位置に貼りました。ユウトが混んだ廊下に立って理由を確かめると、かばんや生徒が壁の下の部分を隠し、数メートル離れると部名を読めませんでした。","reason":"色の見え方を重視した一方、実際の通行状況での視認性を確認していませんでした。"},
+        {"type":"REASON","prompt":"8. 10人に階段から歩いてもらったテストの目的は何ですか。","answer":"どの掲示位置なら通行する生徒が早くポスターに気付くか比べるため。","evidence":"They asked ten students to walk from the stairs and say when they noticed it.","evidenceJp":"10人の生徒に階段から歩いてもらい、いつ気付くかを尋ねました。","reason":"実際の動線で気付くタイミングを比較しています。"},
+        {"type":"SUMMARY_FILL","prompt":"9. 要約の空所に入るものを選びなさい。『美術部はポスターを大きくする前に、（　）を変えて見つけやすさを確かめた。』","choices":["A. 掲示する高さと場所","B. 部員の人数","C. 階段の数","D. 昼休みの時間"],"answer":"A. 掲示する高さと場所","evidence":"The members tested the same poster in two higher places.","evidenceJp":"部員たちは同じポスターを二つの高い位置で試しました。","reason":"同じポスターを別の高さ・場所で試したことを要約しています。"},
+        {"type":"INFERENCE","prompt":"10. 翌日に来場者が増えたことは、部員たちのテストについて何を示していますか。","answer":"ポスターの位置を変える方法が実際の案内改善につながったこと。","evidence":"The next day, more visitors found the room.","evidenceJp":"翌日は、より多くの来場者が部屋を見つけました。","reason":"変更後に実際の来場結果が改善しているためです。"}
+      ]
+    }
+  },
+  "next":"Merge R4 slash repairs and R5 questions into assembled; validate evidence/evidenceJp fail-closed; continue G2-005."
+}
