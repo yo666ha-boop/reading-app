@@ -1,0 +1,71 @@
+{
+  "id": "V11-B14-G2-010",
+  "set": "B",
+  "review": "B14_QUESTION_HUMAN_R6",
+  "questions": [
+    {
+      "type": "SUMMARY_FILL",
+      "prompt": "6. 『班は地図を来校者の（　）に合わせることで、案内を分かりやすくした。』に入るものを選びなさい。",
+      "choices": [
+        "A. 見え方",
+        "B. 年齢",
+        "C. 身長",
+        "D. 名前"
+      ],
+      "answer": "A. 見え方",
+      "evidence": "The team kept a small north mark but used the visitor's view as the main direction.",
+      "evidenceJp": "班は小さな北の印を残しましたが、主な向きは来校者から見える方向に合わせました。",
+      "reason": "地図の主な向きを利用者視点に合わせたことを示しています。"
+    },
+    {
+      "type": "CONTEXT_WORD",
+      "prompt": "7. “rotated” に最も近い意味はどれですか。",
+      "choices": [
+        "A. 回転させた",
+        "B. 拡大した",
+        "C. 隠した",
+        "D. 消した"
+      ],
+      "answer": "A. 回転させた",
+      "evidence": "The team printed a test copy rotated to match the view from the gate.",
+      "evidenceJp": "班は、門から見える向きに合わせて回転させた試作地図を印刷しました。",
+      "reason": "地図の向きを変える操作を表しています。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "8. 新しい地図でも小さな北の印を残した理由として最も適切なものはどれですか。",
+      "answer": "来校者の見え方を主にしながら、方角の基準も分かるようにするため。",
+      "evidence": "The team kept a small north mark but used the visitor's view as the main direction.",
+      "evidenceJp": "班は小さな北の印を残しましたが、主な向きは来校者から見える方向に合わせました。",
+      "reason": "利用者視点と方角情報の両方を残す設計になっています。"
+    },
+    {
+      "type": "MATERIAL_LINK",
+      "prompt": "9. 最初の5人の観察と、試作地図を使った次の5人の結果を組み合わせると何が分かりますか。",
+      "choices": [
+        "A. 地図の向きを利用者に合わせると道を選びやすくなる",
+        "B. 人数を増やすと地図が不要になる",
+        "C. 北の印は必ず混乱を増やす",
+        "D. 理科室の場所を変える必要がある"
+      ],
+      "answer": "A. 地図の向きを利用者に合わせると道を選びやすくなる",
+      "evidence": "Sora watched five visitors use it. / They asked five more visitors to find the science room. Four chose the correct path without help.",
+      "evidenceJp": "ソラは5人の来校者が地図を使う様子を観察しました。 / 別の5人の来校者に理科室を探してもらいました。4人は助けなしで正しい道を選びました。",
+      "reason": "改善前の観察と改善後の結果を比較すると、回転させた地図の効果が分かります。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "10. この話から学べる案内表示の改善方法として最も適切なものはどれですか。",
+      "choices": [
+        "A. 情報を増やす前に、利用者がどの向きから見るかも確かめる",
+        "B. 地図は必ず北を上にする",
+        "C. 矢印は多いほどよい",
+        "D. 利用者の行動は観察しない"
+      ],
+      "answer": "A. 情報を増やす前に、利用者がどの向きから見るかも確かめる",
+      "evidence": "Sora watched five visitors use it. / Rotating the map worked better than adding many arrows.",
+      "evidenceJp": "ソラは5人の来校者が地図を使う様子を観察しました。 / 矢印を増やすより、地図を回転させる方が効果的でした。",
+      "reason": "実際の利用者の見方を観察し、情報量より表示方向を改善したことが結論です。"
+    }
+  ]
+}
