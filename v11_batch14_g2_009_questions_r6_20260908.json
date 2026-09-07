@@ -1,0 +1,118 @@
+{
+  "id": "V11-B14-G2-009",
+  "review": "B14_QUESTION_HUMAN_R6",
+  "A": [
+    {
+      "type": "GIST",
+      "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+      "choices": [
+        "A. 列の人数だけを見て店を選ぶ方法をすすめた話",
+        "B. 待ち時間の原因を調べ、表示と準備方法を改善した話",
+        "C. B店を閉店した話",
+        "D. A店の列を短くするため人数制限をした話"
+      ],
+      "answer": "B. 待ち時間の原因を調べ、表示と準備方法を改善した話",
+      "evidence": "They counted people in each line every five minutes and also measured the time from ordering to receiving food. / The team put a small sign at both stands showing the usual preparation time. They also prepared part of Stand B's snack before the busiest period.",
+      "evidenceJp": "5分ごとに各列の人数を数え、注文してから受け取るまでの時間も測りました。 / チームは両方の店に、通常の調理時間を示す小さな表示を置きました。また、混雑する時間の前にB店の調理の一部を準備しました。",
+      "reason": "列の人数だけでなく実際の処理時間を測り、その結果を使って改善したことが話の中心です。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "2. B店の列が短く見えても待ち時間が長くなったのはなぜですか。",
+      "answer": "注文後におやつを温める必要があり、1件に約90秒かかったから。",
+      "evidence": "Stand B often had only seven people, yet each order took nearly ninety seconds because one snack had to be heated after the order.",
+      "evidenceJp": "B店は7人ほどしかいないことが多いのに、注文後におやつを温める必要があり、1件に約90秒かかっていました。",
+      "reason": "人数が少なくても1件あたりの処理時間が長いことが直接の原因です。"
+    },
+    {
+      "type": "DETAIL",
+      "prompt": "3. A店では1件の注文に約何秒かかっていましたか。",
+      "answer": "約40秒。",
+      "evidence": "Stand A usually had twelve people waiting, but each order took about forty seconds.",
+      "evidenceJp": "A店にはふつう12人ほど並んでいましたが、1件の注文は約40秒で終わりました。",
+      "reason": "A店の処理時間が数値で示されています。"
+    },
+    {
+      "type": "CONTENT_MATCH",
+      "prompt": "4. 本文の内容に合うものを選びなさい。",
+      "choices": [
+        "A. B店はいつもA店より人数が多かった。",
+        "B. チームは列の人数だけを測った。",
+        "C. 両店に通常の調理時間を示す表示を置いた。",
+        "D. B店では準備方法を変えなかった。"
+      ],
+      "answer": "C. 両店に通常の調理時間を示す表示を置いた。",
+      "evidence": "The team put a small sign at both stands showing the usual preparation time.",
+      "evidenceJp": "チームは両方の店に、通常の調理時間を示す小さな表示を置きました。",
+      "reason": "改善策として両店に表示を置いたことが本文に明記されています。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "5. 来場者が列の長さだけで店を選ぶと、どんな判断ミスをしやすいと考えられますか。",
+      "answer": "人数が少ない列なら必ず早いと思い込み、実際には長く待つ店を選ぶこと。",
+      "evidence": "Visitors kept choosing Stand B because its line looked shorter. However, some of them later said they had waited longer there.",
+      "evidenceJp": "来場者は、列が短く見えるB店をよく選びました。しかし後になって、そこでの方が長く待ったと言う人がいました。",
+      "reason": "見た目の列の長さと実際の待ち時間が一致していなかったためです。"
+    }
+  ],
+  "B": [
+    {
+      "type": "SUMMARY_FILL",
+      "prompt": "6. 『列の（　）だけでは本当の待ち時間を判断できなかった。』に入るものを選びなさい。",
+      "choices": [
+        "A. 長さ",
+        "B. 色",
+        "C. 名前",
+        "D. 場所"
+      ],
+      "answer": "A. 長さ",
+      "evidence": "Line length alone had hidden the real cause.",
+      "evidenceJp": "列の長さだけでは、本当の原因が隠れていたのです。",
+      "reason": "本文の結論をそのまま要約しています。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "7. チームが最後の1時間にも再確認したのはなぜですか。",
+      "answer": "変更の効果が一度だけのものではないか確かめるため。",
+      "evidence": "The team checked again during the final hour to see whether the change only worked once.",
+      "evidenceJp": "チームは、変更が一度だけうまくいったのではないかを確かめるため、最後の1時間にも再確認しました。",
+      "reason": "改善後の結果が繰り返し確認できるかを見るためです。"
+    },
+    {
+      "type": "MATERIAL_LINK",
+      "prompt": "8. 『列の人数』と『1件の注文にかかる時間』の両方を測った意味として最も適切なものはどれですか。",
+      "choices": [
+        "A. 見た目と実際の待ち時間の違いを説明するため",
+        "B. おやつの値段を決めるため",
+        "C. 店の人気順を決めるため",
+        "D. 来場者数を減らすため"
+      ],
+      "answer": "A. 見た目と実際の待ち時間の違いを説明するため",
+      "evidence": "They counted people in each line every five minutes and also measured the time from ordering to receiving food.",
+      "evidenceJp": "5分ごとに各列の人数を数え、注文してから受け取るまでの時間も測りました。",
+      "reason": "二つの指標を組み合わせることで、列の短さだけでは分からない処理速度を比較できます。"
+    },
+    {
+      "type": "CONTEXT_WORD",
+      "prompt": "9. “preparation time” に最も近い意味はどれですか。",
+      "choices": [
+        "A. 調理や準備にかかる時間",
+        "B. 列に並ぶ人数",
+        "C. 店まで歩く時間",
+        "D. 学校祭の開催時間"
+      ],
+      "answer": "A. 調理や準備にかかる時間",
+      "evidence": "The team put a small sign at both stands showing the usual preparation time.",
+      "evidenceJp": "チームは両方の店に、通常の調理時間を示す小さな表示を置きました。",
+      "reason": "食品を受け取る前の準備時間を示す文脈です。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "10. 二度目の確認がチームの説明を支えたと言えるのはなぜですか。",
+      "answer": "改善後もB店の人数は少ないままだったのに、待ち時間は表示した時間に近づいていたから。",
+      "evidence": "Stand B still had fewer people in line than Stand A, but its waiting time was now close to the time shown on the sign. The second check supported their explanation.",
+      "evidenceJp": "B店の列の人数はA店より少ないままでしたが、待ち時間は表示した時間に近くなっていました。二度目の確認でも、チームの説明が確かめられました。",
+      "reason": "改善が一時的でなく、原因と対策の関係が再確認されたためです。"
+    }
+  ]
+}
