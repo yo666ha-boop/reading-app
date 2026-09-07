@@ -1,0 +1,59 @@
+{
+  "id": "V11-B14-G2-010",
+  "set": "A",
+  "review": "B14_QUESTION_HUMAN_R6",
+  "questions": [
+    {
+      "type": "GIST",
+      "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+      "choices": [
+        "A. 地図に矢印をたくさん追加した話",
+        "B. 来校者の向きに合わせて地図を回転させ、道案内を改善した話",
+        "C. 理科室を移動した話",
+        "D. 北の印を消した話"
+      ],
+      "answer": "B. 来校者の向きに合わせて地図を回転させ、道案内を改善した話",
+      "evidence": "The team printed a test copy rotated to match the view from the gate. / Rotating the map worked better than adding many arrows.",
+      "evidenceJp": "班は、門から見える向きに合わせて回転させた試作地図を印刷しました。 / 矢印を増やすより、地図を回転させる方が効果的でした。",
+      "reason": "利用者の視点に地図の向きを合わせる改善が話の中心です。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "2. 正しい地図なのに来校者が反対方向へ歩くことがあったのはなぜですか。",
+      "answer": "地図の上が北を示している一方、門に立つ人は南を向いていて、紙の左右と体の左右が一致しなかったから。",
+      "evidence": "The top of the map showed north, but people at the gate were facing south. Some turned left on the paper and then turned left with their bodies, although those directions were different.",
+      "evidenceJp": "地図の上は北を示していましたが、門に立つ人たちは南を向いていました。紙の上で左へ曲がり、そのまま体でも左へ曲がる人がいましたが、その二つは違う方向でした。",
+      "reason": "地図の向きと利用者が向いている方向のずれが混乱の原因です。"
+    },
+    {
+      "type": "DETAIL",
+      "prompt": "3. 試作地図を使った別の5人のうち、助けなしで正しい道を選んだのは何人ですか。",
+      "answer": "4人。",
+      "evidence": "Four chose the correct path without help.",
+      "evidenceJp": "4人は助けなしで正しい道を選びました。",
+      "reason": "試作地図の結果が人数で示されています。"
+    },
+    {
+      "type": "CONTENT_MATCH",
+      "prompt": "4. 本文の内容に合うものを選びなさい。",
+      "choices": [
+        "A. 班は北の印を完全に消した。",
+        "B. 最初から地図の向きを変える予定だった。",
+        "C. 試作地図は門から見える向きに合わせた。",
+        "D. 5人全員が助けを必要とした。"
+      ],
+      "answer": "C. 試作地図は門から見える向きに合わせた。",
+      "evidence": "The team printed a test copy rotated to match the view from the gate.",
+      "evidenceJp": "班は、門から見える向きに合わせて回転させた試作地図を印刷しました。",
+      "reason": "試作地図の変更点が直接書かれています。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "5. ボランティアが最初に考えた『矢印を増やす』だけでは十分でないと考えられるのはなぜですか。",
+      "answer": "問題の中心が情報不足ではなく、地図の向きと利用者の向きのずれだったから。",
+      "evidence": "The map was correct, so volunteers first planned to add arrows. / Rotating the map worked better than adding many arrows.",
+      "evidenceJp": "地図は正しかったので、ボランティアは最初、矢印を増やそうと考えました。 / 矢印を増やすより、地図を回転させる方が効果的でした。",
+      "reason": "矢印の数よりも表示方向そのものを変える方が有効だったためです。"
+    }
+  ]
+}
