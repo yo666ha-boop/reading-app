@@ -1,0 +1,49 @@
+{
+  "id": "V11-B14-G3-016",
+  "set": "B-part1",
+  "authoring": "B14_G3_HUMAN_R26_20260909",
+  "questionSetB": [
+    {
+      "type": "SUMMARY_FILL",
+      "prompt": "6. 『クラスは、2年間を通して同じ木だと確認できるものだけで（　）を計算した。』に入るものはどれですか。",
+      "choices": [
+        "A. 成長量",
+        "B. 雨量",
+        "C. 木の価格",
+        "D. 通りの長さ"
+      ],
+      "answer": "A. 成長量",
+      "evidence": "It calculated growth only for the trees that could be followed across both years.",
+      "evidenceJp": "成長量は、2年間を通して同じ木だと確認できるものだけで計算しました。",
+      "reason": "比較対象を限定してから成長量を求めています。"
+    },
+    {
+      "type": "CONTEXT_WORD",
+      "prompt": "7. 最終文の “continuous record” に最も近い意味はどれですか。",
+      "choices": [
+        "A. 同じ対象を続けて記録したもの",
+        "B. 一日だけの記録",
+        "C. 住所一覧",
+        "D. 天気予報"
+      ],
+      "answer": "A. 同じ対象を続けて記録したもの",
+      "evidence": "By checking identity before comparing measurements, the students avoided treating two different trees as one continuous record.",
+      "evidenceJp": "測定値を比べる前に木の同一性を確認したことで、異なる二本の木を一つの連続した記録として扱う誤りを避けられました。",
+      "reason": "別の二本を同じ一本の継続記録として扱う誤りを指しています。"
+    },
+    {
+      "type": "MATERIAL_LINK",
+      "prompt": "8. 市の担当者の説明と識別番号の変化を合わせると、古い表の木の一部が現在の一覧にない理由は何だと分かりますか。",
+      "choices": [
+        "A. 嵐の後に傷んだ木が撤去され、新しい木が植えられたから",
+        "B. 記録の形式が変わったから",
+        "C. 通りの名前が変わったから",
+        "D. 高さを測らなかったから"
+      ],
+      "answer": "A. 嵐の後に傷んだ木が撤去され、新しい木が植えられたから",
+      "evidence": "A city worker explained that damaged trees had been removed after a storm and new trees had been planted nearby.",
+      "evidenceJp": "市の担当者によると、嵐の後に傷んだ木を撤去し、その近くへ新しい木を植えたとのことでした。",
+      "reason": "番号の消失・追加と、木の撤去・植え替えの説明が対応しています。"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "V11-B14-G3-016",
+  "set": "B-part2",
+  "authoring": "B14_G3_HUMAN_R26_20260909",
+  "questionSetB": [
+    {
+      "type": "SENTENCE_INSERTION",
+      "prompt": "9. 『The class separated trees with matching identification numbers from replacements.』の後に続く内容として最も適切なものはどれですか。",
+      "choices": [
+        "A. 同じ木だと追跡できるものだけで成長量を計算した",
+        "B. すべての新しい木を古い木として扱った",
+        "C. 識別番号をすべて削除した",
+        "D. 成長量の計算をやめた"
+      ],
+      "answer": "A. 同じ木だと追跡できるものだけで成長量を計算した",
+      "evidence": "It calculated growth only for the trees that could be followed across both years.",
+      "evidenceJp": "成長量は、2年間を通して同じ木だと確認できるものだけで計算しました。",
+      "reason": "置き換えられた木を分離した後、同一個体だけを比較対象にする流れだからです。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "10. 撤去された木と新しく植えた木も報告に書きながら、成長量の計算とは別の項目にした理由として最も適切なものはどれですか。",
+      "choices": [
+        "A. 重要な情報ではあるが、同じ木の2年間の成長比較には使えないから",
+        "B. 木の情報は本文に書けないから",
+        "C. 新しい木には高さがないから",
+        "D. 古い表が読めなかったから"
+      ],
+      "answer": "A. 重要な情報ではあるが、同じ木の2年間の成長比較には使えないから",
+      "evidence": "The report still mentioned the removed and newly planted trees, but in a different section.",
+      "evidenceJp": "撤去された木と新しく植えた木についても報告には書きましたが、別の項目にしました。",
+      "reason": "情報自体は残しつつ、継続比較の対象とは区別する必要があるためです。"
+    }
+  ]
+}
