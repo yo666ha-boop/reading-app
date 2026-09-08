@@ -1,0 +1,78 @@
+{
+  "id": "V11-B14-G3-016",
+  "title": "The Tree Record from Two Years",
+  "set": "A",
+  "authoring": "B14_G3_HUMAN_R26_20260909",
+  "questions": [
+    {
+      "type": "GIST",
+      "prompt": "1. この長文の中心内容として最も適切なものはどれですか。",
+      "choices": [
+        "A. 木の高さだけで成長を判断した話",
+        "B. 2年分の木の記録を比べる前に識別番号を確認し、別の木を同じ木として扱う誤りを防いだ話",
+        "C. 嵐で木をすべて切った話",
+        "D. 新しい木だけを測定した話"
+      ],
+      "answer": "B. 2年分の木の記録を比べる前に識別番号を確認し、別の木を同じ木として扱う誤りを防いだ話",
+      "evidence": "By checking identity before comparing measurements, the students avoided treating two different trees as one continuous record.",
+      "evidenceJp": "測定値を比べる前に木の同一性を確認したことで、異なる二本の木を一つの連続した記録として扱う誤りを避けられました。",
+      "reason": "記録比較で最も重要だった確認作業と、その効果がまとめられています。"
+    },
+    {
+      "type": "DETAIL",
+      "prompt": "2. ケンタが識別番号を確認したとき、古い表と現在の一覧にはどんな違いがありましたか。",
+      "choices": [
+        "A. 古い番号が3つなくなり、新しい番号が3つ増えていた",
+        "B. すべて同じ番号だった",
+        "C. 新しい番号だけが10個増えた",
+        "D. 番号は一つも書かれていなかった"
+      ],
+      "answer": "A. 古い番号が3つなくなり、新しい番号が3つ増えていた",
+      "evidence": "Three numbers from the old table were missing, and three new numbers appeared in the current list.",
+      "evidenceJp": "古い表の番号が三つなくなり、現在の一覧には新しい番号が三つ増えていました。",
+      "reason": "古い木と新しい木が入れ替わっている可能性を示す手がかりです。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "3. 古い場所のすぐ近くにある新しい木を、そのまま古い木と比較してはいけないのはなぜですか。",
+      "choices": [
+        "A. 別の木なのに異常に大きく成長したように見えるから",
+        "B. 木の高さを測れないから",
+        "C. 地図に場所が書かれていないから",
+        "D. 新しい木には番号がないから"
+      ],
+      "answer": "A. 別の木なのに異常に大きく成長したように見えるから",
+      "evidence": "One new tree stood only two meters from an old location, so comparing those two rows would falsely look like unusual growth.",
+      "evidenceJp": "新しい木の一つは古い場所から2メートルしか離れていなかったため、その二つの行を比べると、実際には別の木なのに異常に大きく成長したように見えてしまいます。",
+      "reason": "場所が近いだけでは同じ木とは限らず、誤った成長量になるためです。"
+    },
+    {
+      "type": "CONTENT_MATCH",
+      "prompt": "4. クラスが成長量を計算した対象として正しいものはどれですか。",
+      "choices": [
+        "A. 2年間で同じ識別番号を確認できた木",
+        "B. 新しく植えた木だけ",
+        "C. 撤去された木だけ",
+        "D. すべての行を場所だけで対応させた木"
+      ],
+      "answer": "A. 2年間で同じ識別番号を確認できた木",
+      "evidence": "It calculated growth only for the trees that could be followed across both years.",
+      "evidenceJp": "成長量は、2年間を通して同じ木だと確認できるものだけで計算しました。",
+      "reason": "同じ個体だと追跡できる木だけを比較対象にしています。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "5. この長文から学べるデータ比較の考え方として最も適切なものはどれですか。",
+      "choices": [
+        "A. 数値を比べる前に、比較している対象が本当に同一か確認する",
+        "B. 場所が近ければ同じ対象と考える",
+        "C. 新しい記録だけ見ればよい",
+        "D. 異なる対象でも数値が似ていれば同一と考える"
+      ],
+      "answer": "A. 数値を比べる前に、比較している対象が本当に同一か確認する",
+      "evidence": "By checking identity before comparing measurements, the students avoided treating two different trees as one continuous record.",
+      "evidenceJp": "測定値を比べる前に木の同一性を確認したことで、異なる二本の木を一つの連続した記録として扱う誤りを避けられました。",
+      "reason": "測定値の比較より先に、対象の同一性確認が必要だと示しています。"
+    }
+  ]
+}
