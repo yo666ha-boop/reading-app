@@ -1,0 +1,71 @@
+{
+  "batch": "V11-B14",
+  "status": "G3_HUMAN_AUTHORING_R21_PART_B",
+  "id": "V11-B14-G3-010",
+  "B": [
+    {
+      "type": "SUMMARY_FILL",
+      "prompt": "6. 本文の内容に合うように、まとめの空欄に入る組み合わせとして最も適切なものはどれですか。『新聞部は80％という数字を調べ、（　①　）と（　②　）が広まった文で変えられていたことを確認した。』",
+      "choices": [
+        "A. ①対象となる集団 ②期間",
+        "B. ①記事の題名 ②写真",
+        "C. ①質問者 ②場所",
+        "D. ①数字 ②学校名"
+      ],
+      "answer": "A. ①対象となる集団 ②期間",
+      "evidence": "The famous sentence had changed both the group and the time period.",
+      "evidenceJp": "有名になった文は、対象となる集団と期間の両方を変えていました。",
+      "reason": "広まった文と元資料の差はgroupとtime periodの二点です。"
+    },
+    {
+      "type": "CONTENT_MATCH",
+      "prompt": "7. 80％という数字について、本文が示していることとして正しいものはどれですか。",
+      "choices": [
+        "A. 数字そのものが完全に作られたものだった。",
+        "B. 数字は元資料にあったが、対象と期間を広げて紹介されていた。",
+        "C. 数字は毎月の全10代調査から出た。",
+        "D. 数字の出典は最後まで見つからなかった。"
+      ],
+      "answer": "B. 数字は元資料にあったが、対象と期間を広げて紹介されていた。",
+      "evidence": "Tracing the number to its source made the statement less dramatic but much more accurate.",
+      "evidenceJp": "数字を出典までたどることで、表現の強さは少し弱くなりましたが、ずっと正確になりました。",
+      "reason": "数字を捨てるのではなく、元資料に即して正確な表現へ直したことが中心です。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "8. 出典を確認した後の表現が『less dramatic but much more accurate』になったのはなぜですか。",
+      "answer": "全10代・毎月という強い一般化をやめ、学校のボランティア部員・過去3か月に少なくとも一度という元資料の条件に合わせたから。",
+      "evidence": "The survey had been given only to members of school volunteer clubs. The question asked about joining at least one activity during the previous three months.",
+      "evidenceJp": "調査対象は学校のボランティア部員だけで、過去3か月に少なくとも一度活動へ参加したかを尋ねました。",
+      "reason": "元資料の対象と期間をそのまま反映すると、表現は控えめになりますが正確になります。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "9. この話から、数字を記事で使うときに最も大切だと考えられることはどれですか。",
+      "choices": [
+        "A. 数字が大きければそのまま使うこと",
+        "B. 出典の対象・質問内容・期間まで確認すること",
+        "C. 数字を必ず別の数字に変えること",
+        "D. 反対意見を入れないこと"
+      ],
+      "answer": "B. 出典の対象・質問内容・期間まで確認すること",
+      "evidence": "The famous sentence had changed both the group and the time period.",
+      "evidenceJp": "有名になった文は、対象となる集団と期間の両方を変えていました。",
+      "reason": "誤解の原因が対象と期間の変化だったため、数字だけでなく調査条件まで確かめる必要があります。"
+    },
+    {
+      "type": "MATERIAL_LINK",
+      "prompt": "10. 元調査から言える範囲を最も正確に表しているものはどれですか。",
+      "choices": [
+        "A. 地元の10代の80％が毎月活動している。",
+        "B. 地元の10代の80％は活動に関心がない。",
+        "C. 調査された学校ボランティア部員のうち80％が、過去3か月に少なくとも一度活動に参加した。",
+        "D. すべての学校で毎月80％が活動している。"
+      ],
+      "answer": "C. 調査された学校ボランティア部員のうち80％が、過去3か月に少なくとも一度活動に参加した。",
+      "evidence": "The survey had been given only to members of school volunteer clubs. The question asked about joining at least one activity during the previous three months.",
+      "evidenceJp": "調査対象は学校のボランティア部員だけで、過去3か月に少なくとも一度活動へ参加したかを尋ねました。",
+      "reason": "元資料が直接支えている対象と期間だけに限定した表現です。"
+    }
+  ]
+}
