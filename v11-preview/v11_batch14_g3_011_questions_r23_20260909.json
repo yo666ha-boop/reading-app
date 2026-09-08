@@ -1,0 +1,138 @@
+{
+  "batch": "V11-B14",
+  "status": "G3_HUMAN_AUTHORING_R23",
+  "sourceAssembledSha": "a473d689a8167fc547a488ecf7581dfb9b5ce990",
+  "id": "V11-B14-G3-011",
+  "A": [
+    {
+      "type": "GIST",
+      "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+      "choices": [
+        "A. すべての区画に同じ量の水を与える規則を作った話",
+        "B. 日当たりなどの条件と土の記録を比べ、二つの水やり予定を目安として作った話",
+        "C. 水タンクを二つに増やした話",
+        "D. 日陰の区画への水やりをやめた話"
+      ],
+      "answer": "B. 日当たりなどの条件と土の記録を比べ、二つの水やり予定を目安として作った話",
+      "evidence": "The students recommended keeping the two schedules as a guide, not as an automatic rule.",
+      "evidenceJp": "生徒たちは二つの予定を、自動的に従う規則ではなく目安として残すよう提案しました。",
+      "reason": "本文全体は、条件と記録を基に水やりを調整し、固定規則ではなく目安として運用する流れです。"
+    },
+    {
+      "type": "DETAIL",
+      "prompt": "2. 最初の週の3日目までに、日なたと日陰の区画ではどんな違いが見られましたか。",
+      "answer": "日なたの4区画は夕方前に乾き、日陰の3区画では翌朝も土が湿っていた。",
+      "evidence": "By the third day, four sunny beds were dry before evening, while three shaded beds still had wet soil the next morning.",
+      "evidenceJp": "3日目までに、日当たりのよい4区画は夕方前に乾いていましたが、日陰の3区画では翌朝も土が湿っていました。",
+      "reason": "同じ量を与えたときに、条件の違いで土の状態が分かれたことを示す具体例です。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "3. 生徒たちが日なたのすべての区画の水をすぐ二倍にしなかったのはなぜですか。",
+      "answer": "植物の種類や土が完全に同じではなかったから。",
+      "evidence": "The students did not immediately double the water for every sunny bed because plant type and soil were not identical.",
+      "evidenceJp": "ただし植物の種類や土が完全に同じではないため、日なたのすべての区画の水をすぐ二倍にはしませんでした。",
+      "reason": "日当たりだけを原因と決めず、ほかの条件差も考慮したためです。"
+    },
+    {
+      "type": "CONTENT_MATCH",
+      "prompt": "4. 2週目の日陰の区画への水やりとして本文に合うものはどれですか。",
+      "choices": [
+        "A. 朝に一度水をやり、土の確認で必要な場合だけ追加した。",
+        "B. 朝夕必ず同じ量を二回与えた。",
+        "C. 夕方だけ水をやった。",
+        "D. 日なたとまったく同じ予定にした。"
+      ],
+      "answer": "A. 朝に一度水をやり、土の確認で必要な場合だけ追加した。",
+      "evidence": "Shaded beds received one morning watering, followed by an extra amount only when the soil check showed it was needed.",
+      "evidenceJp": "日陰の区画は朝に一度水をやり、その後は土の確認で必要と分かった場合だけ追加します。",
+      "reason": "日陰では固定的に追加せず、土の状態を見て必要時だけ増やす設計でした。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "5. 生徒たちが毎週日曜日に記録を見直すよう提案した目的として最も適切なものはどれですか。",
+      "choices": [
+        "A. 季節によって水やりの傾向が変わっていないか確かめるため",
+        "B. 毎週すべての区画を植え替えるため",
+        "C. 水タンクの大きさを測るため",
+        "D. 記録を捨てる日を決めるため"
+      ],
+      "answer": "A. 季節によって水やりの傾向が変わっていないか確かめるため",
+      "evidence": "They also suggested reviewing the log every Sunday so residents could see whether the pattern was changing with the season.",
+      "evidenceJp": "また、季節とともに傾向が変わっていないか分かるよう、毎週日曜日に記録を見直すことも提案しました。",
+      "reason": "予定を固定化せず、季節変化に応じて見直すための提案です。"
+    }
+  ],
+  "B": [
+    {
+      "type": "SUMMARY_FILL",
+      "prompt": "6. 本文の内容に合うように、まとめの空欄に入るものとして最も適切なのはどれですか。『同じ量を与えるより、（　）を記録して条件に応じて水やりを変える方が、乾きすぎと水のやりすぎを減らした。』",
+      "choices": [
+        "A. 水の量と水やり前の土の状態",
+        "B. 区画の名前だけ",
+        "C. 利用者の人数だけ",
+        "D. 毎日の気温だけ"
+      ],
+      "answer": "A. 水の量と水やり前の土の状態",
+      "evidence": "Gardeners recorded both the amount of water and whether the soil was dry, damp, or wet before watering.",
+      "evidenceJp": "利用者は、水の量だけでなく、水やり前の土が「乾いている・少し湿っている・湿っている」のどれかも記録しました。",
+      "reason": "2週目は量だけでなく、給水前の土の状態も記録して判断材料にしました。"
+    },
+    {
+      "type": "CONTEXT_WORD",
+      "prompt": "7. “guide” に最も近い意味はどれですか。",
+      "choices": [
+        "A. 目安",
+        "B. 罰則",
+        "C. 容器",
+        "D. 記憶"
+      ],
+      "answer": "A. 目安",
+      "evidence": "The students recommended keeping the two schedules as a guide, not as an automatic rule.",
+      "evidenceJp": "生徒たちは二つの予定を、自動的に従う規則ではなく目安として残すよう提案しました。",
+      "reason": "ここでは絶対的な規則ではなく、判断の基準として使うものを指します。"
+    },
+    {
+      "type": "MATERIAL_LINK",
+      "prompt": "8. 1週目と2週目の結果を比べると、最も適切に言えることはどれですか。",
+      "choices": [
+        "A. 条件に応じた予定にすると、極端に乾く区画と水を与えすぎる区画の両方が減った。",
+        "B. 2週目はすべての区画が完全に同じ土の状態になった。",
+        "C. 日陰の区画はすべて乾いた。",
+        "D. 日なたの区画には水を与えなくなった。"
+      ],
+      "answer": "A. 条件に応じた予定にすると、極端に乾く区画と水を与えすぎる区画の両方が減った。",
+      "evidence": "At the end of the week, fewer beds reached either extreme.",
+      "evidenceJp": "週の終わりには、極端に乾く区画も、極端に水が多い区画も減りました。",
+      "reason": "2週目の調整後、乾きすぎと過剰な水やりの両方が減っています。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "9. 二つの予定を「automatic rule」にしなかった理由として本文に合うものはどれですか。",
+      "choices": [
+        "A. 新しく植えた区画や雨の日には別の判断が必要になることがあるから",
+        "B. 利用者が記録を読めないから",
+        "C. 水タンクが毎日空になるから",
+        "D. 日陰の区画がなくなったから"
+      ],
+      "answer": "A. 新しく植えた区画や雨の日には別の判断が必要になることがあるから",
+      "evidence": "A newly planted bed or a rainy day could require a different choice.",
+      "evidenceJp": "植えたばかりの区画や雨の日なら、別の判断が必要になることがあります。",
+      "reason": "条件が変われば最適な水やりも変わるため、予定は固定規則ではありません。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "10. 最後の段落から分かる「fair plan」の考え方として最も適切なのはどれですか。",
+      "choices": [
+        "A. 全員に必ず同じ量を与えること",
+        "B. 同じ目標を持ちながら、異なる条件には異なる対応をすること",
+        "C. 日なたの区画だけを優先すること",
+        "D. 毎週予定を大きく変えること"
+      ],
+      "answer": "B. 同じ目標を持ちながら、異なる条件には異なる対応をすること",
+      "evidence": "A fair plan could use the same goal—healthy plants with less wasted water—while responding to different conditions.",
+      "evidenceJp": "健康な植物を育て、水の無駄を減らすという同じ目標を持ちながら、異なる条件に応じるのが公平な計画だと説明しました。",
+      "reason": "公平さを「同量」ではなく「同じ目標に向けて条件差へ応じること」と捉えています。"
+    }
+  ]
+}
