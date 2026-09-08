@@ -1,0 +1,88 @@
+{
+  "id": "V11-B14-G2-008",
+  "title": "The Club Video without Captions",
+  "questionsA": [
+    {
+      "type": "GIST",
+      "prompt": "この話の中心内容として最も適切なものはどれですか。",
+      "answer": "実際に使う騒がしい場所で動画を試し、字幕を追加して伝わりやすくした話",
+      "evidence": "The test showed a problem that was invisible in the quiet editing room.",
+      "evidenceJp": "静かな編集室では見えなかった問題が、実際の場所でのテストによって分かりました。",
+      "reason": "静かな編集室では見えなかった問題を実地テストで発見したことが中心です。"
+    },
+    {
+      "type": "DETAIL",
+      "prompt": "食堂で最初の動画を見た生徒に起きた問題は何ですか。",
+      "answer": "ナレーションの大切な名前を聞き逃した",
+      "evidence": "The room was noisy, and several students missed important names in the narration.",
+      "evidenceJp": "室内は騒がしく、何人かはナレーションに出てくる大切な名前を聞き逃しました。",
+      "reason": "騒音のため重要情報が伝わりにくくなっていました。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "画面に重要な言葉を出すとよいという意見が出たのはなぜですか。",
+      "answer": "話す速度が速いときにも内容を追いやすくなるから",
+      "evidence": "One student said that key words on the screen would also help when a speaker talked quickly.",
+      "evidenceJp": "また、話す速度が速いときは重要な言葉が画面に出ると助かる、という意見もありました。",
+      "reason": "音声だけでは取りこぼす場面を補うためです。"
+    },
+    {
+      "type": "CONTENT_MATCH",
+      "prompt": "クラブが字幕を付けた情報は何ですか。",
+      "answer": "部名・活動日・大切な案内",
+      "evidence": "It added short captions for club names, meeting days, and important instructions.",
+      "evidenceJp": "部名、活動日、大切な案内に短い字幕を加えました。",
+      "reason": "追加した字幕の対象が明記されています。"
+    },
+    {
+      "type": "DETAIL",
+      "prompt": "クラブは動画を撮り直しましたか。",
+      "answer": "いいえ、撮り直さず字幕を加えた",
+      "evidence": "The club did not record the video again.",
+      "evidenceJp": "部員は動画を撮り直さず、",
+      "reason": "再撮影ではなく編集で改善しました。"
+    }
+  ],
+  "questionsB": [
+    {
+      "type": "SUMMARY_FILL",
+      "prompt": "要約の空所に入るものを選びなさい。『改善後は（　）に短い字幕を加えた。』",
+      "answer": "部名・活動日・大切な案内",
+      "evidence": "It added short captions for club names, meeting days, and important instructions.",
+      "evidenceJp": "部名、活動日、大切な案内に短い字幕を加えました。",
+      "reason": "主要情報を文字でも示しました。"
+    },
+    {
+      "type": "MATERIAL_LINK",
+      "prompt": "新しい動画の効果を確かめるために何をしましたか。",
+      "answer": "同じ食堂で再び見せ、三つの質問への正答を比べた",
+      "evidence": "This time, more students answered three simple questions correctly.",
+      "evidenceJp": "三つの簡単な質問に正しく答えられる生徒が増えました。",
+      "reason": "同じ環境で理解度の変化を確かめました。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "同じ食堂で再テストした理由として最も適切なものは何ですか。",
+      "answer": "騒がしさという同じ条件で字幕の効果を比べるため",
+      "evidence": "The members tested the new version in the same cafeteria.",
+      "evidenceJp": "同じ食堂で新しい版を試すと、",
+      "reason": "条件をそろえることで変更の効果を見やすくできます。"
+    },
+    {
+      "type": "CONTENT_MATCH",
+      "prompt": "改善後に確認できた結果はどれですか。",
+      "answer": "三つの質問に正しく答える生徒が増えた",
+      "evidence": "This time, more students answered three simple questions correctly.",
+      "evidenceJp": "三つの簡単な質問に正しく答えられる生徒が増えました。",
+      "reason": "理解度が上がった結果が示されています。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "この話から、制作物の確認で大切だと分かることは何ですか。",
+      "answer": "実際に使われる環境でも試すこと",
+      "evidence": "The test showed a problem that was invisible in the quiet editing room.",
+      "evidenceJp": "静かな編集室では見えなかった問題が、実際の場所でのテストによって分かりました。",
+      "reason": "編集室では見えない問題が使用場所で初めて分かりました。"
+    }
+  ]
+}
