@@ -1,0 +1,138 @@
+{
+  "batch": "V11-B14",
+  "status": "G3_HUMAN_AUTHORING_R24",
+  "sourceAssembledSha": "a473d689a8167fc547a488ecf7581dfb9b5ce990",
+  "id": "V11-B14-G3-012",
+  "A": [
+    {
+      "type": "GIST",
+      "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+      "choices": [
+        "A. 自信のある目撃者の話をそのまま採用した話",
+        "B. 二つの証言を直接見たことと推測に分け、不確かな点を不確かなまま報告した話",
+        "C. 防犯カメラだけで事故原因を断定した話",
+        "D. 自転車事故の罰則を決めた話"
+      ],
+      "answer": "B. 二つの証言を直接見たことと推測に分け、不確かな点を不確かなまま報告した話",
+      "evidence": "By separating observations from assumptions, the committee could report uncertainty instead of turning two incomplete accounts into one false certainty.",
+      "evidenceJp": "観察したことと推測を分けることで、二つの不完全な証言を一つの誤った確信に変えるのではなく、不確かな点を不確かなまま報告できました。",
+      "reason": "本文の中心は、証言の確実な部分と推測を分けて報告することです。"
+    },
+    {
+      "type": "DETAIL",
+      "prompt": "2. 一人目の目撃者が実際に見ていなかったことは何ですか。",
+      "answer": "自転車の前輪が縁石に触れるところ。",
+      "evidence": "The first witness had seen the bicycle moving quickly compared with nearby walkers, but had not seen the front wheel touch the curb.",
+      "evidenceJp": "一人目は、自転車が近くの歩行者より速く動いていたのは見ていましたが、前輪が縁石に触れるところは見ていませんでした。",
+      "reason": "速く動いていたことは観察済みですが、縁石との接触は未確認でした。"
+    },
+    {
+      "type": "DETAIL",
+      "prompt": "3. 二人目の目撃者が直接確認できたことはどれですか。",
+      "choices": [
+        "A. かばんが自転車より先に落ちた瞬間",
+        "B. 事故後、地面にかばんがあったこと",
+        "C. 前輪が縁石に当たったこと",
+        "D. 乗っていた人が転ぶ前に止まったこと"
+      ],
+      "answer": "B. 事故後、地面にかばんがあったこと",
+      "evidence": "The second had seen a bag on the ground after the fall, but had not actually seen it drop before the bicycle turned.",
+      "evidenceJp": "二人目は、事故後に地面にかばんがあるのを見ましたが、自転車が曲がる前にかばんが落ちる瞬間を実際に見たわけではありません。",
+      "reason": "見たのは事故後のかばんで、落下の順序は直接観察していません。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "4. 委員会が自信ありげに聞こえる証言だけを選ばなかったのはなぜですか。",
+      "answer": "話し方の自信ではなく、直接確認できた事実と推測を分けて正確に報告するため。",
+      "evidence": "A safety committee wanted to describe the incident in a report without choosing a story simply because one sounded more confident.",
+      "evidenceJp": "安全委員会は、自信ありげに聞こえる方を選ぶのではなく、出来事を正確に報告書へ書きたいと考えました。",
+      "reason": "確信の強さと事実の確かさは同じではないためです。"
+    },
+    {
+      "type": "CONTENT_MATCH",
+      "prompt": "5. カメラ映像について本文に合うものはどれですか。",
+      "choices": [
+        "A. 転倒が始まる瞬間を完全に写していた。",
+        "B. 乗っていた人が急に曲がる様子は写っていたが、転倒開始時は視界が遮られていた。",
+        "C. かばんが落ちる瞬間だけを写していた。",
+        "D. カメラ映像は存在しなかった。"
+      ],
+      "answer": "B. 乗っていた人が急に曲がる様子は写っていたが、転倒開始時は視界が遮られていた。",
+      "evidence": "A nearby camera showed the rider turning suddenly, but the view was blocked at the moment the fall began.",
+      "evidenceJp": "近くのカメラには乗っていた人が急に曲がる様子が写っていましたが、転倒が始まった瞬間は視界が遮られていました。",
+      "reason": "映像にも確認できる部分と確認できない部分がありました。"
+    }
+  ],
+  "B": [
+    {
+      "type": "SUMMARY_FILL",
+      "prompt": "6. 本文の内容に合うように、まとめの空欄に入る組み合わせとして最も適切なものはどれですか。『報告書は（　①　）を確認済み事実として示し、速度・縁石・かばんは（　②　）として扱った。』",
+      "choices": [
+        "A. ①自転車が動き急に曲がり、そばにかばんがあったこと ②可能性のある説明",
+        "B. ①縁石への接触 ②確認済み事実",
+        "C. ①かばんの落下順序 ②証明済み原因",
+        "D. ①自信のある証言 ②唯一の事実"
+      ],
+      "answer": "A. ①自転車が動き急に曲がり、そばにかばんがあったこと ②可能性のある説明",
+      "evidence": "It described speed, the curb, and the falling bag as possible explanations rather than proven causes.",
+      "evidenceJp": "速度、縁石、落ちたかばんについては、証明された原因ではなく可能性のある説明として扱いました。",
+      "reason": "原因を断定せず、確認済み事実と可能性を分けています。"
+    },
+    {
+      "type": "CONTEXT_WORD",
+      "prompt": "7. “uncertainty” に最も近い意味はどれですか。",
+      "choices": [
+        "A. 不確かさ",
+        "B. 速さ",
+        "C. 確認済みの原因",
+        "D. 強い自信"
+      ],
+      "answer": "A. 不確かさ",
+      "evidence": "By separating observations from assumptions, the committee could report uncertainty instead of turning two incomplete accounts into one false certainty.",
+      "evidenceJp": "観察したことと推測を分けることで、二つの不完全な証言を一つの誤った確信に変えるのではなく、不確かな点を不確かなまま報告できました。",
+      "reason": "ここでは、原因を断定できない部分が残っている状態を表します。"
+    },
+    {
+      "type": "MATERIAL_LINK",
+      "prompt": "8. 二人の証言とカメラ映像を合わせて最も確実に言えることはどれですか。",
+      "choices": [
+        "A. 縁石が転倒の原因だった。",
+        "B. かばんが先に落ちたことが原因だった。",
+        "C. 自転車は動いていて急に曲がり、そばにかばんが見つかったが、原因は断定できない。",
+        "D. 速度は事故と無関係だった。"
+      ],
+      "answer": "C. 自転車は動いていて急に曲がり、そばにかばんが見つかったが、原因は断定できない。",
+      "evidence": "The report therefore listed confirmed facts: the bicycle was moving, it turned suddenly, and a bag was found beside it.",
+      "evidenceJp": "そこで報告書には、確認できた事実として「自転車は動いていた」「急に曲がった」「そばにかばんが見つかった」と記しました。",
+      "reason": "三つは複数資料から確認できましたが、原因までは証明されていません。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "9. 速度・縁石・かばんを「proven causes」としなかった理由として最も適切なのはどれですか。",
+      "choices": [
+        "A. どの資料もそれらを原因として直接確認していない部分があったから",
+        "B. 委員会が原因を知りたくなかったから",
+        "C. カメラが壊れていたから",
+        "D. 目撃者が一人しかいなかったから"
+      ],
+      "answer": "A. どの資料もそれらを原因として直接確認していない部分があったから",
+      "evidence": "It described speed, the curb, and the falling bag as possible explanations rather than proven causes.",
+      "evidenceJp": "速度、縁石、落ちたかばんについては、証明された原因ではなく可能性のある説明として扱いました。",
+      "reason": "観察できた事実と、そこから推測した原因を分ける必要があったためです。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "10. この話から、複数の証言を扱うときに重要だと分かることはどれですか。",
+      "choices": [
+        "A. 最も自信のある人の話を採用する。",
+        "B. 共通する事実と推測を分け、分からない部分は断定しない。",
+        "C. 証言が違えば両方とも無視する。",
+        "D. 一つの話にまとめるため不足部分を補う。"
+      ],
+      "answer": "B. 共通する事実と推測を分け、分からない部分は断定しない。",
+      "evidence": "The committee asked each witness to separate what was directly seen from what was assumed.",
+      "evidenceJp": "委員会は、それぞれの目撃者に、直接見たことと推測したことを分けてもらいました。",
+      "reason": "本文の手順そのものが、証言を評価する基本方針を示しています。"
+    }
+  ]
+}
