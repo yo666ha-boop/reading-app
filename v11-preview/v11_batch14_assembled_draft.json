@@ -3,7 +3,7 @@
   "officialBefore": 818,
   "targetAfterFullGates": 868,
   "registered": false,
-  "status": "ASSEMBLED_G2_17_OF_17_AB_FAILCLOSED_REPAIR_R1",
+  "status": "ASSEMBLED_G2_PASS_G1_001_006_AB_COMPLETE",
   "chronologyAllGradesPass": true,
   "passages": [
     {
@@ -100,49 +100,165 @@
         {
           "english": "It rained before school on Tuesday.",
           "japanese": "火曜日、登校前に雨が降りました。",
-          "humanReview": "PENDING_BATCH14_SLASH_HUMAN"
+          "humanReview": "B14_SLASH_HUMAN_R13"
         },
         {
           "english": "At the entrance, Mina saw two black umbrellas in the same stand.",
           "japanese": "玄関でミナは、同じ傘立てに黒い傘が二本あるのを見つけました。",
-          "humanReview": "PENDING_BATCH14_SLASH_HUMAN"
+          "humanReview": "B14_SLASH_HUMAN_R13"
         },
         {
           "english": "She needed her class umbrella for an outdoor lesson.",
           "japanese": "ミナは、屋外授業で自分のクラスが使う傘を必要としていました。",
-          "humanReview": "PENDING_BATCH14_SLASH_HUMAN"
+          "humanReview": "B14_SLASH_HUMAN_R13"
         },
         {
           "english": "One umbrella had a small blue tag, but the other had no tag.",
           "japanese": "一方の傘には小さな青い札がありましたが、もう一方には札がありませんでした。",
-          "humanReview": "PENDING_BATCH14_SLASH_HUMAN"
+          "humanReview": "B14_SLASH_HUMAN_R13"
         },
         {
           "english": "Mina checked the lending list near the door.",
           "japanese": "ミナはドアの近くの貸出表を確認しました。",
-          "humanReview": "PENDING_BATCH14_SLASH_HUMAN"
+          "humanReview": "B14_SLASH_HUMAN_R13"
         },
         {
           "english": "The list said, ‘Class 1-2: black umbrella, blue tag.’",
           "japanese": "表には「1年2組：黒い傘、青い札」と書かれていました。",
-          "humanReview": "PENDING_BATCH14_SLASH_HUMAN"
+          "humanReview": "B14_SLASH_HUMAN_R13"
         },
         {
           "english": "She also saw 1-2 on the back of the tag.",
           "japanese": "札の裏にも1-2と書かれていました。",
-          "humanReview": "PENDING_BATCH14_SLASH_HUMAN"
+          "humanReview": "B14_SLASH_HUMAN_R13"
         },
         {
           "english": "Mina took that umbrella and left the other one there.",
           "japanese": "ミナはその傘を取り、もう一本はそこに残しました。",
-          "humanReview": "PENDING_BATCH14_SLASH_HUMAN"
+          "humanReview": "B14_SLASH_HUMAN_R13"
         },
         {
           "english": "She used the list and the tag, so she did not take another class's umbrella.",
           "japanese": "表と札の両方を確かめたので、別のクラスの傘を持っていかずにすみました。",
-          "humanReview": "PENDING_BATCH14_SLASH_HUMAN"
+          "humanReview": "B14_SLASH_HUMAN_R13"
         }
-      ]
+      ],
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 傘を二本持ち帰った話",
+            "B. ミナが表と札を確認して自分のクラスの傘を選んだ話",
+            "C. 雨がやんだ話",
+            "D. 傘立てを移した話"
+          ],
+          "answer": "B. ミナが表と札を確認して自分のクラスの傘を選んだ話",
+          "evidence": "She used the list and the tag, so she did not take another class's umbrella.",
+          "evidenceJp": "表と札の両方を確かめたので、別のクラスの傘を持っていかずにすみました。",
+          "reason": "二つの情報を照合して正しく選んだことが中心です。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 二本の黒い傘の違いは何でしたか。",
+          "answer": "一方に小さな青い札があり、もう一方には札がなかった。",
+          "evidence": "One umbrella had a small blue tag, but the other had no tag.",
+          "evidenceJp": "一方の傘には小さな青い札がありましたが、もう一方には札がありませんでした。",
+          "reason": "見分ける最初の手がかりです。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "3. 貸出表には1年2組の傘について何と書かれていましたか。",
+          "answer": "黒い傘、青い札。",
+          "evidence": "The list said, ‘Class 1-2: black umbrella, blue tag.’",
+          "evidenceJp": "表には「1年2組：黒い傘、青い札」と書かれていました。",
+          "reason": "貸出表の記載が直接示されています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "4. ミナが札の裏も確認したのはなぜですか。",
+          "answer": "青い札の傘が本当に1年2組のものか確かめるため。",
+          "evidence": "She also saw 1-2 on the back of the tag.",
+          "evidenceJp": "札の裏にも1-2と書かれていました。",
+          "reason": "表だけでなく札の番号でも一致を確認しています。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 本文の内容に合うものを選びなさい。",
+          "choices": [
+            "A. ミナは札のない傘を持っていった。",
+            "B. 二本とも持っていった。",
+            "C. ミナは青い札のある傘を持っていった。",
+            "D. 貸出表を見なかった。"
+          ],
+          "answer": "C. ミナは青い札のある傘を持っていった。",
+          "evidence": "Mina took that umbrella and left the other one there.",
+          "evidenceJp": "ミナはその傘を取り、もう一本はそこに残しました。",
+          "reason": "表と札が一致した傘を選びました。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『ミナは貸出表と（　）を確認して傘を選んだ。』に入るものはどれですか。",
+          "choices": [
+            "A. 青い札",
+            "B. 天気予報",
+            "C. 教室の時計",
+            "D. 靴箱"
+          ],
+          "answer": "A. 青い札",
+          "evidence": "She used the list and the tag, so she did not take another class's umbrella.",
+          "evidenceJp": "表と札の両方を確かめたので、別のクラスの傘を持っていかずにすみました。",
+          "reason": "二つの確認材料を要約しています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. 色と形だけでは傘を選ばなかったのはなぜですか。",
+          "answer": "黒い傘が二本あり、見た目だけでは区別できなかったから。",
+          "evidence": "At the entrance, Mina saw two black umbrellas in the same stand.",
+          "evidenceJp": "玄関でミナは、同じ傘立てに黒い傘が二本あるのを見つけました。",
+          "reason": "同じ色の傘が複数あったためです。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "8. “tag” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 傘立て",
+            "B. 札",
+            "C. 表",
+            "D. 雨"
+          ],
+          "answer": "B. 札",
+          "evidence": "One umbrella had a small blue tag, but the other had no tag.",
+          "evidenceJp": "一方の傘には小さな青い札がありましたが、もう一方には札がありませんでした。",
+          "reason": "傘を識別する札を指しています。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. 貸出表と札の情報を合わせると何が分かりましたか。",
+          "answer": "青い札の付いた黒い傘が1年2組のものだと分かった。",
+          "evidence": "The list said, ‘Class 1-2: black umbrella, blue tag.’ / She also saw 1-2 on the back of the tag.",
+          "evidenceJp": "表には「1年2組：黒い傘、青い札」と書かれていました。 / 札の裏にも1-2と書かれていました。",
+          "reason": "二つの独立した情報が同じ傘を示しています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から学べることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 最初に見た物を選ぶとよい。",
+            "B. 似た物が複数あるときは、複数の手がかりを確かめるとよい。",
+            "C. 表は見なくてよい。",
+            "D. 札がなくても同じである。"
+          ],
+          "answer": "B. 似た物が複数あるときは、複数の手がかりを確かめるとよい。",
+          "evidence": "She used the list and the tag, so she did not take another class's umbrella.",
+          "evidenceJp": "表と札の両方を確かめたので、別のクラスの傘を持っていかずにすみました。",
+          "reason": "確認を重ねることで間違いを防いでいます。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_G1_HUMAN_R13_20260908"
     },
     {
       "id": "V11-B14-G1-002",
@@ -261,7 +377,53 @@
           "japanese": "選ぶ"
         }
       ],
-      "slashRows": [],
+      "slashRows": [
+        {
+          "english": "After music class, Ren found a small note under a music stand.",
+          "japanese": "音楽の授業の後、レンは譜面台の下に小さなメモを見つけました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "It said, ‘Practice in Room 3 at four.’",
+          "japanese": "そこには「4時に第3室で練習」と書かれていました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "There were two school bands, so Ren did not know the right group for the note.",
+          "japanese": "学校には二つの音楽グループがあったので、レンにはどちらのグループのメモか分かりませんでした。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "He looked at the room schedule on the wall.",
+          "japanese": "壁の部屋予定表を見ると、",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "The brass band used Room 3 at four, and the guitar club used it at five.",
+          "japanese": "吹奏楽部は4時に第3室を使い、ギター部は5時に使うことが分かりました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "Ren carried the note to the brass band teacher.",
+          "japanese": "レンはメモを吹奏楽部の先生に届けました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "The teacher thanked him and put the note on the band's board.",
+          "japanese": "先生は礼を言い、メモを部の掲示板に貼りました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "Ren did not guess from the room alone.",
+          "japanese": "レンは部屋だけで決めつけず、",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "He checked the time too, and that helped him choose the right group.",
+          "japanese": "時間も確認したので、正しいグループを選べました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        }
+      ],
       "slashBoundaryDraft": {
         "englishSentences": [
           "After music class, Ren found a small note under a music stand.",
@@ -284,7 +446,123 @@
           "レンは部屋だけで決めつけず、時間も確認したので、正しいグループを選べました。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. メモを書き直した話",
+            "B. レンが部屋と時間を照合してメモの正しい届け先を見つけた話",
+            "C. ギター部をやめた話",
+            "D. 第3室を掃除した話"
+          ],
+          "answer": "B. レンが部屋と時間を照合してメモの正しい届け先を見つけた話",
+          "evidence": "He checked the time too, and that helped him choose the right group.",
+          "evidenceJp": "時間も確認したので、正しいグループを選べました。",
+          "reason": "部屋だけでなく時間も使って判断したことが中心です。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. メモには何と書かれていましたか。",
+          "answer": "4時に第3室で練習。",
+          "evidence": "It said, ‘Practice in Room 3 at four.’",
+          "evidenceJp": "そこには「4時に第3室で練習」と書かれていました。",
+          "reason": "メモの内容が直接示されています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. レンがすぐに届け先を決められなかったのはなぜですか。",
+          "answer": "学校に二つの音楽グループがあったから。",
+          "evidence": "There were two school bands, so Ren did not know the right group for the note.",
+          "evidenceJp": "学校には二つの音楽グループがあったので、レンにはどちらのグループのメモか分かりませんでした。",
+          "reason": "候補が二つあったためです。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "4. 第3室を4時に使うのはどのグループでしたか。",
+          "answer": "吹奏楽部。",
+          "evidence": "The brass band used Room 3 at four, and the guitar club used it at five.",
+          "evidenceJp": "吹奏楽部は4時に第3室を使い、ギター部は5時に使うことが分かりました。",
+          "reason": "予定表から特定できます。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 本文の内容に合うものを選びなさい。",
+          "choices": [
+            "A. レンはギター部の先生に届けた。",
+            "B. メモを捨てた。",
+            "C. レンはメモを吹奏楽部の先生に届けた。",
+            "D. 予定表を見なかった。"
+          ],
+          "answer": "C. レンはメモを吹奏楽部の先生に届けた。",
+          "evidence": "Ren carried the note to the brass band teacher.",
+          "evidenceJp": "レンはメモを吹奏楽部の先生に届けました。",
+          "reason": "正しい届け先が直接書かれています。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『レンは第3室という場所だけでなく、（　）も確認した。』に入るものはどれですか。",
+          "choices": [
+            "A. 時間",
+            "B. 天気",
+            "C. 色",
+            "D. 値段"
+          ],
+          "answer": "A. 時間",
+          "evidence": "He checked the time too, and that helped him choose the right group.",
+          "evidenceJp": "時間も確認したので、正しいグループを選べました。",
+          "reason": "判断に追加した手がかりです。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. 部屋だけで決めると間違う可能性があったのはなぜですか。",
+          "answer": "二つのグループが同じ第3室を別の時間に使っていたから。",
+          "evidence": "The brass band used Room 3 at four, and the guitar club used it at five.",
+          "evidenceJp": "吹奏楽部は4時に第3室を使い、ギター部は5時に使うことが分かりました。",
+          "reason": "場所だけでは両方に当てはまるためです。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "8. “schedule” に最も近い意味はどれですか。",
+          "choices": [
+            "A. メモ",
+            "B. 予定表",
+            "C. 楽器",
+            "D. 掲示板"
+          ],
+          "answer": "B. 予定表",
+          "evidence": "He looked at the room schedule on the wall.",
+          "evidenceJp": "壁の部屋予定表を見ると、",
+          "reason": "部屋を使う時間を示す表です。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. メモと部屋予定表を合わせると何が分かりましたか。",
+          "answer": "4時の第3室は吹奏楽部なので、メモは吹奏楽部向けだと分かった。",
+          "evidence": "It said, ‘Practice in Room 3 at four.’ / The brass band used Room 3 at four, and the guitar club used it at five.",
+          "evidenceJp": "そこには「4時に第3室で練習」と書かれていました。 / 吹奏楽部は4時に第3室を使い、ギター部は5時に使うことが分かりました。",
+          "reason": "時間と場所を照合して届け先を特定しています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から学べることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 部屋名だけで決めればよい。",
+            "B. 一つの手がかりだけでなく、時間など別の情報も確認するとよい。",
+            "C. メモは読まなくてよい。",
+            "D. 予定表は使わない方がよい。"
+          ],
+          "answer": "B. 一つの手がかりだけでなく、時間など別の情報も確認するとよい。",
+          "evidence": "Ren did not guess from the room alone.",
+          "evidenceJp": "レンは部屋だけで決めつけず、",
+          "reason": "決めつけず追加情報を確認しています。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_G1_HUMAN_R13_20260908"
     },
     {
       "id": "V11-B14-G1-003",
@@ -361,7 +639,53 @@
           "japanese": "残した／去った"
         }
       ],
-      "slashRows": [],
+      "slashRows": [
+        {
+          "english": "At lunch, Saki saw two green bags on a table.",
+          "japanese": "昼食の時間、サキはテーブルの上に緑色の袋が二つあるのを見つけました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "One was hers, but both bags looked almost the same.",
+          "japanese": "一つは自分のものでしたが、二つはほとんど同じに見えました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "She first looked for her name, but the labels only showed the letters S.K. and S.M.",
+          "japanese": "最初に名前を探しましたが、札にはS.K.とS.M.という文字しかありませんでした。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "Then Saki remembered the food card in her bag.",
+          "japanese": "そこでサキは、自分の袋に食べ物についてのカードが入っていることを思い出しました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "Her card had a red circle.",
+          "japanese": "そのカードには赤い丸が付いていました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "She did not eat one kind of nut.",
+          "japanese": "サキはある種類のナッツを食べませんでした。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "She carefully opened only the small outside pocket of the S.K. bag and saw the red card.",
+          "japanese": "S.K.の袋の小さな外ポケットだけを注意して開けると、赤いカードが見えました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "She knew the bag was hers.",
+          "japanese": "サキはその袋が自分のものだと分かりました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "She left the S.M. bag closed and said, “Your bag is here,” to her friend.",
+          "japanese": "S.M.の袋は開けず、友達に「あなたの袋はここだよ」と言いました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        }
+      ],
       "slashBoundaryDraft": {
         "englishSentences": [
           "At lunch, Saki saw two green bags on a table.",
@@ -390,7 +714,123 @@
           "の袋は開けず、友達に「あなたの袋はここだよ」と言いました。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 袋を新しく買った話",
+            "B. サキが赤いカードを手がかりに自分の袋を確かめた話",
+            "C. 友達の袋を開けた話",
+            "D. ナッツを食べた話"
+          ],
+          "answer": "B. サキが赤いカードを手がかりに自分の袋を確かめた話",
+          "evidence": "She knew the bag was hers.",
+          "evidenceJp": "サキはその袋が自分のものだと分かりました。",
+          "reason": "似た袋の中から自分のものを確認する話です。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 二つの袋はどんな見た目でしたか。",
+          "answer": "どちらも緑色で、ほとんど同じに見えた。",
+          "evidence": "One was hers, but both bags looked almost the same.",
+          "evidenceJp": "一つは自分のものでしたが、二つはほとんど同じに見えました。",
+          "reason": "外見だけでは区別しにくかったことが示されています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "3. 札にはどんな文字がありましたか。",
+          "answer": "S.K.とS.M.。",
+          "evidence": "She first looked for her name, but the labels only showed the letters S.K. and S.M.",
+          "evidenceJp": "最初に名前を探しましたが、札にはS.K.とS.M.という文字しかありませんでした。",
+          "reason": "札の情報が直接書かれています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "4. サキが食べ物カードを思い出したのはなぜですか。",
+          "answer": "自分の袋を見分ける追加の手がかりになるから。",
+          "evidence": "Then Saki remembered the food card in her bag.",
+          "evidenceJp": "そこでサキは、自分の袋に食べ物についてのカードが入っていることを思い出しました。",
+          "reason": "名前だけでは確定できず別の手がかりを使っています。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 本文の内容に合うものを選びなさい。",
+          "choices": [
+            "A. S.M.の袋を全部開けた。",
+            "B. 赤いカードはなかった。",
+            "C. S.K.の袋の外ポケットに赤いカードがあった。",
+            "D. 二つの袋を持っていった。"
+          ],
+          "answer": "C. S.K.の袋の外ポケットに赤いカードがあった。",
+          "evidence": "She carefully opened only the small outside pocket of the S.K. bag and saw the red card.",
+          "evidenceJp": "S.K.の袋の小さな外ポケットだけを注意して開けると、赤いカードが見えました。",
+          "reason": "確認した場所と結果が直接示されています。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『サキはS.K.の袋の外ポケットに（　）を見つけ、自分の袋だと分かった。』に入るものはどれですか。",
+          "choices": [
+            "A. 赤いカード",
+            "B. 青い札",
+            "C. ボール",
+            "D. 地図"
+          ],
+          "answer": "A. 赤いカード",
+          "evidence": "She carefully opened only the small outside pocket of the S.K. bag and saw the red card.",
+          "evidenceJp": "S.K.の袋の小さな外ポケットだけを注意して開けると、赤いカードが見えました。",
+          "reason": "自分の袋を確定する手がかりです。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. サキがS.M.の袋を開けなかったのはなぜだと考えられますか。",
+          "answer": "S.K.の袋が自分のものだと確認できたので、友達の袋を開ける必要がなかったから。",
+          "evidence": "She knew the bag was hers.",
+          "evidenceJp": "サキはその袋が自分のものだと分かりました。",
+          "reason": "確認後は他人の袋に触れる必要がありません。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "8. “labels” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 袋",
+            "B. 札",
+            "C. カード",
+            "D. テーブル"
+          ],
+          "answer": "B. 札",
+          "evidence": "She first looked for her name, but the labels only showed the letters S.K. and S.M.",
+          "evidenceJp": "最初に名前を探しましたが、札にはS.K.とS.M.という文字しかありませんでした。",
+          "reason": "袋を識別する札を指します。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. イニシャルと赤いカードの二つの情報を使うことで何ができましたか。",
+          "answer": "自分の袋をより確実に特定できた。",
+          "evidence": "She first looked for her name, but the labels only showed the letters S.K. and S.M. / She carefully opened only the small outside pocket of the S.K. bag and saw the red card.",
+          "evidenceJp": "最初に名前を探しましたが、札にはS.K.とS.M.という文字しかありませんでした。 / S.K.の袋の小さな外ポケットだけを注意して開けると、赤いカードが見えました。",
+          "reason": "一つの情報では不十分だったため、別の特徴で確認しています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. サキの行動から分かることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 両方の袋を全部調べた。",
+            "B. 他人の物を必要以上に開けず、必要最小限の確認をした。",
+            "C. 友達の袋を持ち帰った。",
+            "D. ラベルを無視した。"
+          ],
+          "answer": "B. 他人の物を必要以上に開けず、必要最小限の確認をした。",
+          "evidence": "She left the S.M. bag closed and said, “Your bag is here,” to her friend.",
+          "evidenceJp": "S.M.の袋は開けず、友達に「あなたの袋はここだよ」と言いました。",
+          "reason": "自分の袋を確認した後、友達の袋は開けませんでした。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_G1_HUMAN_R13_20260908"
     },
     {
       "id": "V11-B14-G1-004",
@@ -577,7 +1017,78 @@
           "japanese": "理由"
         }
       ],
-      "slashRows": [],
+      "slashRows": [
+        {
+          "english": "During the lunch break, Kota went to the library and saw wet footprints near a window.",
+          "japanese": "昼休み、コウタは図書室へ行き、窓の近くにぬれた足跡があるのを見つけました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "A student was standing there with a book, so Kota first thought the student brought water inside.",
+          "japanese": "そこには本を持った生徒が立っていたので、コウタは最初、その生徒が水を中へ持ち込んだのだと思いました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "He did not say anything.",
+          "japanese": "しかし何も言わず、",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "He looked around and found a yellow cleaning sign behind a shelf.",
+          "japanese": "周りを見ました。すると棚の後ろに黄色い清掃中の表示があり、",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "Then he saw a cloth and a small bucket near the window.",
+          "japanese": "窓の近くには布と小さなバケツもありました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "The librarian came back.",
+          "japanese": "司書が戻ってきました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "She said rain came through the open window that morning.",
+          "japanese": "司書は、その朝、開いていた窓から雨が入ったと言いました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "She cleaned most of the floor, but the corner was still wet.",
+          "japanese": "床のほとんどは掃除しましたが、隅はまだぬれていました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "The student was only waiting for the floor to dry.",
+          "japanese": "その生徒は床が乾くのを待っていただけでした。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "Kota was glad.",
+          "japanese": "コウタはほっとしました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "He checked the area first and did not blame anyone.",
+          "japanese": "先に周りを確認し、誰かを責めずにすみました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "He helped move one chair away from the wet place.",
+          "japanese": "そして、ぬれた場所から椅子を一脚動かすのを手伝いました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "Before leaving, Kota noticed that the footprints stopped beside the cloth, not at the student’s shoes.",
+          "japanese": "帰る前、コウタは足跡がその生徒の靴のところではなく布のそばで途切れていることにも気づきました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "That was one more reason to wait for an explanation.",
+          "japanese": "それも、すぐ決めつけず説明を待つべき理由の一つでした。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        }
+      ],
       "slashBoundaryDraft": {
         "englishSentences": [
           "During the lunch break, Kota went to the library and saw wet footprints near a window.",
@@ -611,7 +1122,117 @@
           "それも、すぐ決めつけず説明を待つべき理由の一つでした。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 生徒をすぐ注意した話",
+            "B. コウタがすぐに人を責めず、周囲を確認して本当の原因を知った話",
+            "C. 図書室を閉めた話",
+            "D. 窓を壊した話"
+          ],
+          "answer": "B. コウタがすぐに人を責めず、周囲を確認して本当の原因を知った話",
+          "evidence": "He checked the area first and did not blame anyone.",
+          "evidenceJp": "先に周りを確認し、誰かを責めずにすみました。",
+          "reason": "思い込みを確かめ直したことが中心です。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. コウタが最初にその生徒を疑った理由は何ですか。",
+          "answer": "ぬれた足跡の近くに本を持った生徒が立っていたから。",
+          "evidence": "A student was standing there with a book, so Kota first thought the student brought water inside.",
+          "evidenceJp": "そこには本を持った生徒が立っていたので、コウタは最初、その生徒が水を中へ持ち込んだのだと思いました。",
+          "reason": "最初の印象が直接書かれています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "3. 周りを見て見つけた物は何ですか。",
+          "answer": "黄色い清掃中の表示、布、小さなバケツ。",
+          "evidence": "Then he saw a cloth and a small bucket near the window.",
+          "evidenceJp": "窓の近くには布と小さなバケツもありました。",
+          "reason": "清掃の手がかりが示されています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "4. 床がぬれていた本当の理由は何でしたか。",
+          "answer": "朝、開いていた窓から雨が入ったから。",
+          "evidence": "She said rain came through the open window that morning.",
+          "evidenceJp": "司書は、その朝、開いていた窓から雨が入ったと言いました。",
+          "reason": "司書が原因を説明しています。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 本文の内容に合うものを選びなさい。",
+          "choices": [
+            "A. 生徒が水をこぼした。",
+            "B. コウタはすぐ生徒を責めた。",
+            "C. その生徒は床が乾くのを待っていただけだった。",
+            "D. 司書は何も説明しなかった。"
+          ],
+          "answer": "C. その生徒は床が乾くのを待っていただけだった。",
+          "evidence": "The student was only waiting for the floor to dry.",
+          "evidenceJp": "その生徒は床が乾くのを待っていただけでした。",
+          "reason": "生徒の実際の行動です。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『コウタは周囲の（　）を確認してから判断した。』に入るものとして最も適切なのはどれですか。",
+          "choices": [
+            "A. 清掃の表示や道具",
+            "B. 時計だけ",
+            "C. 本の題名",
+            "D. 窓の色"
+          ],
+          "answer": "A. 清掃の表示や道具",
+          "evidence": "He looked around and found a yellow cleaning sign behind a shelf.",
+          "evidenceJp": "周りを見ました。すると棚の後ろに黄色い清掃中の表示があり、",
+          "reason": "清掃中を示す手がかりを見つけています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. コウタがほっとしたのはなぜですか。",
+          "answer": "自分が疑った生徒が原因ではなかったと分かったから。",
+          "evidence": "Kota was glad.",
+          "evidenceJp": "コウタはほっとしました。",
+          "reason": "説明を聞いて誤解が解けた直後の反応です。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "8. 清掃中の表示・布・バケツ・司書の説明を合わせると何が分かりますか。",
+          "answer": "床のぬれは清掃と雨によるもので、生徒が水を持ち込んだのではないと分かる。",
+          "evidence": "She said rain came through the open window that morning.",
+          "evidenceJp": "司書は、その朝、開いていた窓から雨が入ったと言いました。",
+          "reason": "複数の手がかりが同じ原因を示しています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "9. 帰る前にコウタがさらに気付いたことは何ですか。",
+          "answer": "足跡が生徒の靴ではなく布のそばで途切れていたこと。",
+          "evidence": "Before leaving, Kota noticed that the footprints stopped beside the cloth, not at the student’s shoes.",
+          "evidenceJp": "帰る前、コウタは足跡がその生徒の靴のところではなく布のそばで途切れていることにも気づきました。",
+          "reason": "生徒を疑わない追加の根拠です。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から学べることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 近くにいる人をすぐ責める。",
+            "B. 最初の見た目だけで決めつけず、周りの証拠と説明を確かめる。",
+            "C. 表示は見ない。",
+            "D. 説明を待たない。"
+          ],
+          "answer": "B. 最初の見た目だけで決めつけず、周りの証拠と説明を確かめる。",
+          "evidence": "That was one more reason to wait for an explanation.",
+          "evidenceJp": "それも、すぐ決めつけず説明を待つべき理由の一つでした。",
+          "reason": "物語の教訓が直接示されています。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_G1_HUMAN_R13_20260908"
     },
     {
       "id": "V11-B14-G1-005",
@@ -703,7 +1324,63 @@
           "japanese": "はっきりした"
         }
       ],
-      "slashRows": [],
+      "slashRows": [
+        {
+          "english": "Aya's volleyball team had practice after school.",
+          "japanese": "アヤのバレーボールチームは放課後に練習がありました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "In the gym, she found two new volleyballs beside the wall.",
+          "japanese": "体育館で、壁のそばに新しいバレーボールが二つありました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "They were the same color and size.",
+          "japanese": "色も大きさも同じでした。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "Aya did not want to use another team's ball.",
+          "japanese": "アヤは別のチームのボールを使いたくありませんでした。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "She checked the small number on each ball.",
+          "japanese": "それぞれのボールの小さな番号を見ると、",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "One said 14 and the other said 18.",
+          "japanese": "一つは14、もう一つは18でした。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "Then she looked at the practice chart.",
+          "japanese": "次に練習表を見ると、",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "Her team had Ball 18 on Tuesday, and another team had Ball 14.",
+          "japanese": "火曜日は自分のチームが18番、別のチームが14番を使うことになっていました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "Aya took Ball 18 to her team.",
+          "japanese": "アヤは18番を自分のチームへ持っていきました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "Later, the other team came and found Ball 14 in the same place.",
+          "japanese": "後で別のチームが来ると、14番は同じ場所に残っていました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "The number and the chart made the choice clear.",
+          "japanese": "番号と表を確認したので、正しく選べました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        }
+      ],
       "slashBoundaryDraft": {
         "englishSentences": [
           "Aya's volleyball team had practice after school.",
@@ -730,7 +1407,123 @@
           "番号と表を確認したので、正しく選べました。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. ボールを買った話",
+            "B. アヤが番号と練習表を確認して自分のチームのボールを選んだ話",
+            "C. 練習を休んだ話",
+            "D. ボールをなくした話"
+          ],
+          "answer": "B. アヤが番号と練習表を確認して自分のチームのボールを選んだ話",
+          "evidence": "The number and the chart made the choice clear.",
+          "evidenceJp": "番号と表を確認したので、正しく選べました。",
+          "reason": "二つの情報でボールを特定しています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 二つのボールは見た目でどうでしたか。",
+          "answer": "色も大きさも同じだった。",
+          "evidence": "They were the same color and size.",
+          "evidenceJp": "色も大きさも同じでした。",
+          "reason": "見た目だけでは区別できない理由です。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "3. 二つのボールの番号は何番でしたか。",
+          "answer": "14番と18番。",
+          "evidence": "One said 14 and the other said 18.",
+          "evidenceJp": "一つは14、もう一つは18でした。",
+          "reason": "識別番号が直接示されています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "4. 火曜日にアヤのチームが使うボールは何番でしたか。",
+          "answer": "18番。",
+          "evidence": "Her team had Ball 18 on Tuesday, and another team had Ball 14.",
+          "evidenceJp": "火曜日は自分のチームが18番、別のチームが14番を使うことになっていました。",
+          "reason": "練習表の記載です。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 本文の内容に合うものを選びなさい。",
+          "choices": [
+            "A. 14番を持っていった。",
+            "B. 二つとも持っていった。",
+            "C. アヤは18番を持っていった。",
+            "D. 番号を見なかった。"
+          ],
+          "answer": "C. アヤは18番を持っていった。",
+          "evidence": "Aya took Ball 18 to her team.",
+          "evidenceJp": "アヤは18番を自分のチームへ持っていきました。",
+          "reason": "正しく選んだ結果です。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『アヤはボールの番号と（　）を確認した。』に入るものはどれですか。",
+          "choices": [
+            "A. 練習表",
+            "B. 座席表",
+            "C. 天気予報",
+            "D. 地図"
+          ],
+          "answer": "A. 練習表",
+          "evidence": "Then she looked at the practice chart.",
+          "evidenceJp": "次に練習表を見ると、",
+          "reason": "番号の意味を確認するための表です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. ボールの色と大きさだけで決めなかったのはなぜですか。",
+          "answer": "二つとも同じ色と大きさだったから。",
+          "evidence": "They were the same color and size.",
+          "evidenceJp": "色も大きさも同じでした。",
+          "reason": "外見では区別できませんでした。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "8. “chart” に最も近い意味はどれですか。",
+          "choices": [
+            "A. ボール",
+            "B. 表",
+            "C. 壁",
+            "D. 練習"
+          ],
+          "answer": "B. 表",
+          "evidence": "Then she looked at the practice chart.",
+          "evidenceJp": "次に練習表を見ると、",
+          "reason": "チームごとの使用番号を示す表です。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. ボール番号と練習表を合わせると何が分かりましたか。",
+          "answer": "18番がアヤのチーム用で、14番が別チーム用だと分かった。",
+          "evidence": "Her team had Ball 18 on Tuesday, and another team had Ball 14.",
+          "evidenceJp": "火曜日は自分のチームが18番、別のチームが14番を使うことになっていました。",
+          "reason": "番号と割当を対応させています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から学べることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 見た目だけで決める。",
+            "B. 見た目が同じ物は、番号や表など客観的な情報で確認するとよい。",
+            "C. 二つとも使う。",
+            "D. 番号を無視する。"
+          ],
+          "answer": "B. 見た目が同じ物は、番号や表など客観的な情報で確認するとよい。",
+          "evidence": "The number and the chart made the choice clear.",
+          "evidenceJp": "番号と表を確認したので、正しく選べました。",
+          "reason": "客観的な識別情報で間違いを防いでいます。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_G1_HUMAN_R13_20260908"
     },
     {
       "id": "V11-B14-G1-006",
@@ -842,7 +1635,58 @@
           "japanese": "確認"
         }
       ],
-      "slashRows": [],
+      "slashRows": [
+        {
+          "english": "Haru's class grew three kinds of plants by the classroom window.",
+          "japanese": "ハルのクラスは教室の窓辺で三種類の植物を育てていました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "On Friday, one name marker fell out of a pot.",
+          "japanese": "金曜日、一つの鉢から名前の札が抜け落ちました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "Haru found the marker on the floor, but the right pot was not clear.",
+          "japanese": "ハルは床で札を見つけましたが、どの鉢に戻すべきかはっきりしませんでした。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "He looked at the planting map in the class notebook.",
+          "japanese": "クラスのノートにある植え付け図を見ると、",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "The middle pot had the word ‘basil.’",
+          "japanese": "真ん中の鉢には「バジル」という言葉がありました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "Then he compared the leaves with a picture from Monday.",
+          "japanese": "さらに月曜日の写真と葉を比べると、",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "The middle plant had the same round leaves as the basil in the picture.",
+          "japanese": "真ん中の植物には写真のバジルと同じ丸い葉がありました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "Haru put the marker into that pot.",
+          "japanese": "ハルはその鉢に札を戻しました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "He showed the map and the picture to his teacher.",
+          "japanese": "図と写真を先生に見せました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        },
+        {
+          "english": "The teacher said, “Good check.”",
+          "japanese": "先生は「よく確かめたね」と言いました。",
+          "humanReview": "B14_SLASH_HUMAN_R13"
+        }
+      ],
       "slashBoundaryDraft": {
         "englishSentences": [
           "Haru's class grew three kinds of plants by the classroom window.",
@@ -867,7 +1711,117 @@
           "先生は「よく確かめたね」と言いました。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 植物を捨てた話",
+            "B. ハルが植え付け図と写真を使って札を正しい鉢に戻した話",
+            "C. 新しい鉢を買った話",
+            "D. 写真を撮り直した話"
+          ],
+          "answer": "B. ハルが植え付け図と写真を使って札を正しい鉢に戻した話",
+          "evidence": "He showed the map and the picture to his teacher.",
+          "evidenceJp": "図と写真を先生に見せました。",
+          "reason": "二つの資料を使って確認したことが中心です。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 何が鉢から抜け落ちましたか。",
+          "answer": "名前の札。",
+          "evidence": "On Friday, one name marker fell out of a pot.",
+          "evidenceJp": "金曜日、一つの鉢から名前の札が抜け落ちました。",
+          "reason": "問題の始まりです。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "3. 植え付け図では真ん中の鉢は何でしたか。",
+          "answer": "バジル。",
+          "evidence": "The middle pot had the word ‘basil.’",
+          "evidenceJp": "真ん中の鉢には「バジル」という言葉がありました。",
+          "reason": "図から得た情報です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "4. ハルが月曜日の写真とも比べたのはなぜですか。",
+          "answer": "植え付け図だけでなく葉の形でも確かめるため。",
+          "evidence": "Then he compared the leaves with a picture from Monday.",
+          "evidenceJp": "さらに月曜日の写真と葉を比べると、",
+          "reason": "別の証拠でも一致を確認しています。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 本文の内容に合うものを選びなさい。",
+          "choices": [
+            "A. 真ん中の植物は葉がなかった。",
+            "B. 植え付け図には名前がなかった。",
+            "C. 真ん中の植物には写真のバジルと同じ丸い葉があった。",
+            "D. ハルは先生に何も見せなかった。"
+          ],
+          "answer": "C. 真ん中の植物には写真のバジルと同じ丸い葉があった。",
+          "evidence": "The middle plant had the same round leaves as the basil in the picture.",
+          "evidenceJp": "真ん中の植物には写真のバジルと同じ丸い葉がありました。",
+          "reason": "写真との一致が直接示されています。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『ハルは植え付け図と（　）を照らし合わせた。』に入るものはどれですか。",
+          "choices": [
+            "A. 月曜日の写真",
+            "B. 天気予報",
+            "C. 教室の時計",
+            "D. 部屋予定表"
+          ],
+          "answer": "A. 月曜日の写真",
+          "evidence": "Then he compared the leaves with a picture from Monday.",
+          "evidenceJp": "さらに月曜日の写真と葉を比べると、",
+          "reason": "二つ目の確認資料です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. 植え付け図と写真の両方を使う利点は何ですか。",
+          "answer": "名前の配置と葉の特徴の二つが一致するか確かめられること。",
+          "evidence": "The middle plant had the same round leaves as the basil in the picture.",
+          "evidenceJp": "真ん中の植物には写真のバジルと同じ丸い葉がありました。",
+          "reason": "異なる種類の情報を照合できます。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "8. “marker” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 鉢",
+            "B. 札",
+            "C. 葉",
+            "D. 写真"
+          ],
+          "answer": "B. 札",
+          "evidence": "On Friday, one name marker fell out of a pot.",
+          "evidenceJp": "金曜日、一つの鉢から名前の札が抜け落ちました。",
+          "reason": "植物名を示す札を指しています。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. 植え付け図と葉の写真を合わせると何が分かりましたか。",
+          "answer": "真ん中の鉢がバジルである可能性が高いと分かった。",
+          "evidence": "The middle pot had the word ‘basil.’ / The middle plant had the same round leaves as the basil in the picture.",
+          "evidenceJp": "真ん中の鉢には「バジル」という言葉がありました。 / 真ん中の植物には写真のバジルと同じ丸い葉がありました。",
+          "reason": "位置と見た目の両方が一致しています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. 先生の「よく確かめたね」という言葉から何が分かりますか。",
+          "answer": "ハルが一つの手がかりだけで決めず、丁寧に確認したことが評価された。",
+          "evidence": "The teacher said, “Good check.”",
+          "evidenceJp": "先生は「よく確かめたね」と言いました。",
+          "reason": "先生は確認の仕方をほめています。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_G1_HUMAN_R13_20260908"
     },
     {
       "id": "V11-B14-G1-007",
