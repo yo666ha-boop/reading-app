@@ -1,0 +1,50 @@
+{
+  "id": "V11-B14-G3-015",
+  "title": "The Headline before the Evidence",
+  "set": "A-part1",
+  "authoring": "B14_G3_HUMAN_R25_20260909",
+  "questions": [
+    {
+      "type": "GIST",
+      "prompt": "1. この長文の中心内容として最も適切なものはどれですか。",
+      "choices": [
+        "A. 62％という数字だけで全校生徒の意見を断定してよいという話",
+        "B. 調査対象の偏りを確認し、見出しを証拠に合う表現へ修正した話",
+        "C. 部活動をすべて昼休みに行うことにした話",
+        "D. アンケートを中止して記事を出さなかった話"
+      ],
+      "answer": "B. 調査対象の偏りを確認し、見出しを証拠に合う表現へ修正した話",
+      "evidence": "The revised version made the sample visible to readers and left room for a better question later.",
+      "evidenceJp": "修正版では読者に調査対象が見えるようになり、後でより良い問いを調べる余地も残しました。",
+      "reason": "調査結果から言える範囲を適切に示すことが主題だからです。"
+    },
+    {
+      "type": "DETAIL",
+      "prompt": "2. 最初の調査に回答した32人のうち、昼休みに練習する部活動のメンバーは何人でしたか。",
+      "choices": [
+        "A. 8人",
+        "B. 24人",
+        "C. 32人",
+        "D. 62人"
+      ],
+      "answer": "B. 24人",
+      "evidence": "Only thirty-two students had answered, and twenty-four of them were members of clubs that practiced during lunch.",
+      "evidenceJp": "公開前にエミが回答表を詳しく見ると、回答したのは32人だけで、そのうち24人は昼休みに練習する部活動のメンバーでした。",
+      "reason": "回答者の構成を示す重要な情報です。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "3. 最初の見出しが問題だったのはなぜですか。",
+      "choices": [
+        "A. 調査結果と逆だったから",
+        "B. 学校全体を代表していない調査なのに、全生徒の意見のように見せていたから",
+        "C. 見出しが長すぎたから",
+        "D. 回答率が100％だったから"
+      ],
+      "answer": "B. 学校全体を代表していない調査なのに、全生徒の意見のように見せていたから",
+      "evidence": "The survey had been shared through a club leaders' message group, not with the whole school.",
+      "evidenceJp": "アンケートは学校全体ではなく、部長たちの連絡グループを通して配られていました。",
+      "reason": "回答者が全校から均等に集まったわけではないためです。"
+    }
+  ]
+}
