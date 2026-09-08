@@ -1,0 +1,239 @@
+{
+  "batch": "V11-B14",
+  "status": "G3_HUMAN_AUTHORING_R16",
+  "sourceAssembledSha": "a473d689a8167fc547a488ecf7581dfb9b5ce990",
+  "questionRewrites": {
+    "V11-B14-G3-004": {
+      "A": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 公園の開園を早めた話",
+            "B. 古い発言に日付と現在の予定を加え、誤解を防いだ話",
+            "C. インタビューを削除した話",
+            "D. 工事を中止した話"
+          ],
+          "answer": "B. 古い発言に日付と現在の予定を加え、誤解を防いだ話",
+          "evidence": "By adding one missing date, the newspaper avoided making an old expectation sound like a current promise.",
+          "evidenceJp": "一つの欠けた日付を加えることで、昔の予想を現在の約束のように見せることを避けられました。",
+          "reason": "古い引用を現在の情報のように見せないための修正が中心です。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 問題のインタビューはいつ録音されたものでしたか。",
+          "answer": "1年半前。",
+          "evidence": "It was from eighteen months earlier.",
+          "evidenceJp": "それは1年半前のものでした。",
+          "reason": "引用の時期が直接示されています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. 記者が引用を削除しなかったのはなぜですか。",
+          "answer": "その発言が当時の計画を示す資料として意味があったから。",
+          "evidence": "The reporter did not delete the quote because it still showed what planners had expected at that time.",
+          "evidenceJp": "記者は、その発言が当時の計画を示していることには意味があるため、削除しませんでした。",
+          "reason": "古い発言にも歴史的な文脈上の価値がありました。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "4. インタビュー後、工事には何が起きましたか。",
+          "answer": "二度遅れた。",
+          "evidence": "Since then, construction had been delayed twice, and the current city page listed a different opening season.",
+          "evidenceJp": "その後、工事は二度遅れ、現在の市のページには別の開園時期が書かれていました。",
+          "reason": "古い予定と現在予定が異なる理由です。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 記事の修正として本文に合うものはどれですか。",
+          "choices": [
+            "A. 引用を完全に削除した。",
+            "B. 古い予定だけを書いた。",
+            "C. インタビューの日付と現在の予定を示した。",
+            "D. 市のページを無視した。"
+          ],
+          "answer": "C. インタビューの日付と現在の予定を示した。",
+          "evidence": "Instead, the article identified the interview date and added the current schedule in the next sentence.",
+          "evidenceJp": "その代わり、インタビューの日付を示し、次の文に現在の予定を加えました。",
+          "reason": "新旧情報の文脈を両方示しています。"
+        }
+      ],
+      "B": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『古い発言に（　）を加えることで、現在の約束のような誤解を避けた。』に入るものはどれですか。",
+          "choices": [
+            "A. 日付",
+            "B. 写真",
+            "C. 値段",
+            "D. 地図"
+          ],
+          "answer": "A. 日付",
+          "evidence": "By adding one missing date, the newspaper avoided making an old expectation sound like a current promise.",
+          "evidenceJp": "一つの欠けた日付を加えることで、昔の予想を現在の約束のように見せることを避けられました。",
+          "reason": "時点情報が意味の解釈を変えます。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "7. “context” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 背景・文脈",
+            "B. 速度",
+            "C. 場所",
+            "D. 人数"
+          ],
+          "answer": "A. 背景・文脈",
+          "evidence": "That context mattered.",
+          "evidenceJp": "その背景は重要でした。",
+          "reason": "引用がいつの発言かという背景を指します。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "8. ほかの二つの引用の日付も確認したのはなぜですか。",
+          "answer": "時期によって引用の意味が変わる可能性があったから。",
+          "evidence": "The team also checked two other quotations whose timing might affect their meaning.",
+          "evidenceJp": "チームは、時期によって意味が変わる可能性のあるほかの二つの引用も確認しましたが、そちらの日付は明確でした。",
+          "reason": "同じ問題が他の引用にもないか確認しています。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. 古いインタビューと現在の市のページを両方示す意味は何ですか。",
+          "answer": "当時の期待と現在の予定を区別して読者に示せる。",
+          "evidence": "Since then, construction had been delayed twice, and the current city page listed a different opening season.",
+          "evidenceJp": "その後、工事は二度遅れ、現在の市のページには別の開園時期が書かれていました。",
+          "reason": "時間の異なる二つの情報を混同しないためです。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から情報発信で重要だと分かることはどれですか。",
+          "choices": [
+            "A. 強い引用なら日付は不要。",
+            "B. 発言は内容だけでなく、いつの情報かも確認する。",
+            "C. 古い情報は必ず削除する。",
+            "D. 現在情報は示さない。"
+          ],
+          "answer": "B. 発言は内容だけでなく、いつの情報かも確認する。",
+          "evidence": "By adding one missing date, the newspaper avoided making an old expectation sound like a current promise.",
+          "evidenceJp": "一つの欠けた日付を加えることで、昔の予想を現在の約束のように見せることを避けられました。",
+          "reason": "日付が欠けると事実関係の印象が変わるためです。"
+        }
+      ]
+    },
+    "V11-B14-G3-005": {
+      "A": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 鳥の数を増やした話",
+            "B. 条件をそろえて再調査し、最初の差を時刻だけで説明しなかった話",
+            "C. 朝の調査だけを採用した話",
+            "D. 南側の道を閉鎖した話"
+          ],
+          "answer": "B. 条件をそろえて再調査し、最初の差を時刻だけで説明しなかった話",
+          "evidence": "The students could not conclude that time had no effect, but they also could not claim that it explained the first large gap.",
+          "evidenceJp": "時間がまったく影響しないとは言えませんが、最初の大きな差を時間だけで説明することもできません。",
+          "reason": "複数条件を統制して慎重に結論を出しています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 最初の二つの調査では鳥は何羽ずつ数えられましたか。",
+          "answer": "火曜朝42羽、木曜夕方26羽。",
+          "evidence": "On Tuesday morning, one team counted forty-two small birds. On Thursday evening, another team counted only twenty-six.",
+          "evidenceJp": "火曜日の朝、一つの班は小鳥を42羽数えました。木曜日の夕方、別の班は26羽しか数えませんでした。",
+          "reason": "最初の差の大きさを示しています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. ミカが『時間が原因』とすぐ決めなかったのはなぜですか。",
+          "answer": "道・天候・調査時間の長さも違っていたから。",
+          "evidence": "She compared the survey sheets and found three other differences.",
+          "evidenceJp": "調査用紙を比べると、ほかにも三つの違いがありました。",
+          "reason": "時刻以外にも条件差がありました。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "4. 再調査ではどんな条件をそろえましたか。",
+          "answer": "両班が同じ北側の道を30分間使った。",
+          "evidence": "Both teams used the same north path for thirty minutes.",
+          "evidenceJp": "今度は両方の班が同じ北側の道を30分間使いました。",
+          "reason": "比較を公平にするための統制です。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 再調査の結果として本文に合うものはどれですか。",
+          "choices": [
+            "A. 朝36羽、夕方32羽だった。",
+            "B. 朝42羽、夕方10羽だった。",
+            "C. 朝と夕方が同数だった。",
+            "D. 夕方の方が20羽多かった。"
+          ],
+          "answer": "A. 朝36羽、夕方32羽だった。",
+          "evidence": "The morning count was thirty-six and the evening count was thirty-two, a much smaller difference than before.",
+          "evidenceJp": "朝は36羽、夕方は32羽で、前回より差はかなり小さくなりました。",
+          "reason": "条件をそろえた後の結果です。"
+        }
+      ],
+      "B": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『最初の大きな差は、時刻だけでなく（　）などの条件差もあった。』に最も適切なものはどれですか。",
+          "choices": [
+            "A. 天候や道",
+            "B. 鳥の名前",
+            "C. 生徒の学年",
+            "D. 公園の入場料"
+          ],
+          "answer": "A. 天候や道",
+          "evidence": "In their report, they listed time, weather, route, and counting area as factors that had changed.",
+          "evidenceJp": "報告書には、時刻、天候、道、観察範囲を変化した条件として書きました。",
+          "reason": "報告書で条件差を明示しています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. 四つの結果をすべて報告書に載せたのはなぜですか。",
+          "answer": "最初の考えに都合のよい数字だけを選ばないため。",
+          "evidence": "They included all four counts instead of choosing only the numbers that supported their first idea.",
+          "evidenceJp": "最初の考えに合う数字だけを選ばず、四つの結果をすべて示しました。",
+          "reason": "選択的なデータ利用を避けています。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "8. “comparable” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 比べられる",
+            "B. 隠れている",
+            "C. 数えられない",
+            "D. 危険な"
+          ],
+          "answer": "A. 比べられる",
+          "evidence": "The club learned that two measurements can look comparable while being taken under conditions that are not actually the same.",
+          "evidenceJp": "二つの測定値が比べられそうに見えても、実際には同じ条件で得られていないことがあると学びました。",
+          "reason": "測定値同士を比較できそうに見えるという意味です。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. 最初の調査と再調査を比べると何が言えますか。",
+          "answer": "条件をそろえると朝夕の差が小さくなり、最初の差を時刻だけの影響とは言えなくなった。",
+          "evidence": "The morning count was thirty-six and the evening count was thirty-two, a much smaller difference than before.",
+          "evidenceJp": "朝は36羽、夕方は32羽で、前回より差はかなり小さくなりました。",
+          "reason": "再調査で時刻以外の条件をそろえています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から調査で重要だと分かることはどれですか。",
+          "choices": [
+            "A. 数字が違えば原因は一つに決める。",
+            "B. 比較する条件をそろえ、変わった要因を明示する。",
+            "C. 最初の仮説に合う結果だけ使う。",
+            "D. 再調査は不要。"
+          ],
+          "answer": "B. 比較する条件をそろえ、変わった要因を明示する。",
+          "evidence": "The club learned that two measurements can look comparable while being taken under conditions that are not actually the same.",
+          "evidenceJp": "二つの測定値が比べられそうに見えても、実際には同じ条件で得られていないことがあると学びました。",
+          "reason": "公平な比較には条件確認が必要です。"
+        }
+      ]
+    }
+  }
+}
