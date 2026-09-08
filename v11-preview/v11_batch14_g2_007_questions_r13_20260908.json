@@ -1,0 +1,88 @@
+{
+  "id": "V11-B14-G2-007",
+  "title": "Why the Lost-and-Found Box Stayed Full",
+  "questionsA": [
+    {
+      "type": "GIST",
+      "prompt": "この話の中心内容として最も適切なものはどれですか。",
+      "answer": "落とし物一覧の情報を具体的にし、持ち主へ返りやすくした話",
+      "evidence": "Better information worked better than reminders alone.",
+      "evidenceJp": "注意を繰り返すだけより、情報を良くする方が効果的でした。",
+      "reason": "注意を増やすより情報の質を上げる方が有効だったことが結論です。"
+    },
+    {
+      "type": "DETAIL",
+      "prompt": "最初の一覧が使いにくかった理由は何ですか。",
+      "answer": "『小さい袋』『青い物』など説明があいまいだったから",
+      "evidence": "It included words such as ‘small bag’ or ‘blue object,’ but several things matched them.",
+      "evidenceJp": "「小さい袋」「青い物」などの表現では、当てはまる物がいくつもあったのです。",
+      "reason": "同じ説明に当てはまる物が複数ありました。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "リョウが6人の生徒に話を聞いたのはなぜですか。",
+      "answer": "落とし物が返らない理由を知るため",
+      "evidence": "Ryo interviewed six students about things they had lost.",
+      "evidenceJp": "リョウが6人の生徒に、なくした物について話を聞くと、",
+      "reason": "実際に物をなくした生徒の使いにくさを調べるためです。"
+    },
+    {
+      "type": "CONTENT_MATCH",
+      "prompt": "新しい記録カードに書くようにした三つの情報は何ですか。",
+      "answer": "拾った場所・特徴一つ・日付",
+      "evidence": "Staff now wrote where an item was found, one special feature, and the date.",
+      "evidenceJp": "拾った場所、特徴を一つ、日付を書くようにしました。",
+      "reason": "改善後の記録項目が列挙されています。"
+    },
+    {
+      "type": "DETAIL",
+      "prompt": "新しい一覧を使った後、箱はどうなりましたか。",
+      "answer": "返却が増えて空きができた",
+      "evidence": "More items were returned, and the box finally had space.",
+      "evidenceJp": "返却される物が増え、箱にはようやく空きができました。",
+      "reason": "改善の直接的な結果です。"
+    }
+  ],
+  "questionsB": [
+    {
+      "type": "SUMMARY_FILL",
+      "prompt": "要約の空所に入るものを選びなさい。『生徒会は落とし物の説明を（　）にした。』",
+      "answer": "より具体的",
+      "evidence": "For example, ‘blue pencil case with a white star, found by the gym on May 12’ was clear.",
+      "evidenceJp": "たとえば「白い星の付いた青い筆箱、5月12日に体育館前で発見」とすれば分かりやすくなります。",
+      "reason": "具体例が新しい説明方法を示しています。"
+    },
+    {
+      "type": "CONTEXT_WORD",
+      "prompt": "本文の feature に最も近い意味はどれですか。",
+      "answer": "特徴",
+      "evidence": "Staff now wrote where an item was found, one special feature, and the date.",
+      "evidenceJp": "拾った場所、特徴を一つ、日付を書くようにしました。",
+      "reason": "落とし物を見分けるために記録する情報です。"
+    },
+    {
+      "type": "MATERIAL_LINK",
+      "prompt": "改善後の記録例に含まれている情報は何ですか。",
+      "answer": "色と特徴、見つかった場所、日付",
+      "evidence": "For example, ‘blue pencil case with a white star, found by the gym on May 12’ was clear.",
+      "evidenceJp": "たとえば「白い星の付いた青い筆箱、5月12日に体育館前で発見」とすれば分かりやすくなります。",
+      "reason": "具体例に識別情報がまとめられています。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "毎週一覧を出すだけでは不十分だった理由は何ですか。",
+      "answer": "一覧の説明があいまいで自分の物か判断しにくかったから",
+      "evidence": "It included words such as ‘small bag’ or ‘blue object,’ but several things matched them.",
+      "evidenceJp": "「小さい袋」「青い物」などの表現では、当てはまる物がいくつもあったのです。",
+      "reason": "問題は通知回数ではなく情報の具体性でした。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "『注意を繰り返すだけより情報を良くする方が効果的』といえる根拠は何ですか。",
+      "answer": "新しい詳細を使った後に返却される物が増えたから",
+      "evidence": "More items were returned, and the box finally had space.",
+      "evidenceJp": "返却される物が増え、箱にはようやく空きができました。",
+      "reason": "改善後の結果がその判断を支えます。"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "id": "V11-B14-G2-002",
+  "title": "A Message That Arrived Twice",
+  "slashRows": [
+    {
+      "english": "On Monday, the class received the same festival message twice.",
+      "japanese": "月曜日、クラスに同じ文化祭のお知らせが二度届きました。",
+      "humanReview": "B14_SLASH_HUMAN_R13"
+    },
+    {
+      "english": "One copy came from the student council list, and another came from the class event list.",
+      "japanese": "一通は生徒会の配信リストから、もう一通はクラス行事のリストからでした。",
+      "humanReview": "B14_SLASH_HUMAN_R13"
+    },
+    {
+      "english": "Some students thought the second message included new information, so they read both carefully.",
+      "japanese": "二通目には新しい情報があると思った生徒もいたので、両方を注意して読みました。",
+      "humanReview": "B14_SLASH_HUMAN_R13"
+    },
+    {
+      "english": "Aya compared the two messages and found that every detail was the same.",
+      "japanese": "アヤが二つを比べると、内容はすべて同じでした。",
+      "humanReview": "B14_SLASH_HUMAN_R13"
+    },
+    {
+      "english": "She asked the teachers managing the lists.",
+      "japanese": "そこで、リストを管理している先生たちに尋ねました。",
+      "humanReview": "B14_SLASH_HUMAN_R13"
+    },
+    {
+      "english": "They learned that both lists included all second-year students.",
+      "japanese": "調べると、どちらのリストにも2年生全員が入っていることが分かりました。",
+      "humanReview": "B14_SLASH_HUMAN_R13"
+    },
+    {
+      "english": "Before the next event, the class chose one list for general notices and kept the other only for messages about class jobs.",
+      "japanese": "次の行事の前に、一般のお知らせには一つのリストだけを使い、もう一つはクラスの係の連絡専用にしました。",
+      "humanReview": "B14_SLASH_HUMAN_R13"
+    },
+    {
+      "english": "They also added a short line saying where each message came from.",
+      "japanese": "また、各メッセージがどこから来たかを示す短い一文も加えました。",
+      "humanReview": "B14_SLASH_HUMAN_R13"
+    },
+    {
+      "english": "The next notice arrived only once, and students could understand its purpose immediately.",
+      "japanese": "次のお知らせは一度だけ届き、生徒たちは目的をすぐ理解できました。",
+      "humanReview": "B14_SLASH_HUMAN_R13"
+    },
+    {
+      "english": "A small change made communication clearer.",
+      "japanese": "小さな変更で連絡が分かりやすくなりました。",
+      "humanReview": "B14_SLASH_HUMAN_R13"
+    }
+  ],
+  "questionsA": [
+    {
+      "type": "GIST",
+      "prompt": "この話の中心内容として最も適切なものはどれですか。",
+      "answer": "重複して届く連絡の原因を調べ、配信リストの使い分けを明確にした話",
+      "evidence": "A small change made communication clearer.",
+      "evidenceJp": "小さな変更で連絡が分かりやすくなりました。",
+      "reason": "小さな運用変更で連絡が分かりやすくなったことが結論です。"
+    },
+    {
+      "type": "DETAIL",
+      "prompt": "同じお知らせが二度届いた直接の理由は何でしたか。",
+      "answer": "生徒会リストとクラス行事リストの両方に2年生全員が入っていたから",
+      "evidence": "They learned that both lists included all second-year students.",
+      "evidenceJp": "調べると、どちらのリストにも2年生全員が入っていることが分かりました。",
+      "reason": "二つのリストの対象が重なっていたことが原因です。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "生徒たちが二通とも注意して読んだのはなぜですか。",
+      "answer": "二通目には新しい情報があると思ったから",
+      "evidence": "Some students thought the second message included new information, so they read both carefully.",
+      "evidenceJp": "二通目には新しい情報があると思った生徒もいたので、両方を注意して読みました。",
+      "reason": "同じ内容だと分かる前は、二通目に追加情報がある可能性を考えたためです。"
+    },
+    {
+      "type": "CONTENT_MATCH",
+      "prompt": "次の行事から、一般のお知らせにはどのリストを使うことにしましたか。",
+      "answer": "一つのリストだけ",
+      "evidence": "Before the next event, the class chose one list for general notices and kept the other only for messages about class jobs.",
+      "evidenceJp": "次の行事の前に、一般のお知らせには一つのリストだけを使い、もう一つはクラスの係の連絡専用にしました。",
+      "reason": "一般連絡とクラス係連絡の用途を分けました。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "各メッセージに送信元を示す一文を加えた目的は何だと考えられますか。",
+      "answer": "連絡の目的や出所をすぐ判断できるようにするため",
+      "evidence": "They also added a short line saying where each message came from.",
+      "evidenceJp": "また、各メッセージがどこから来たかを示す短い一文も加えました。",
+      "reason": "送信元が明示されると、受け手が連絡の種類を区別しやすくなります。"
+    }
+  ],
+  "questionsB": [
+    {
+      "type": "SUMMARY_FILL",
+      "prompt": "要約の空所に入るものを選びなさい。『アヤが二通を比べると、内容は（　）だった。』",
+      "answer": "すべて同じ",
+      "evidence": "Aya compared the two messages and found that every detail was the same.",
+      "evidenceJp": "アヤが二つを比べると、内容はすべて同じでした。",
+      "reason": "重複送信だと判断した根拠です。"
+    },
+    {
+      "type": "CONTEXT_WORD",
+      "prompt": "本文の purpose に最も近い意味はどれですか。",
+      "answer": "目的",
+      "evidence": "The next notice arrived only once, and students could understand its purpose immediately.",
+      "evidenceJp": "次のお知らせは一度だけ届き、生徒たちは目的をすぐ理解できました。",
+      "reason": "次のお知らせが何のためのものかすぐ分かった、という文脈です。"
+    },
+    {
+      "type": "MATERIAL_LINK",
+      "prompt": "二つの配信リストを調べた結果、分かったことは何ですか。",
+      "answer": "どちらにも2年生全員が入っていたこと",
+      "evidence": "They learned that both lists included all second-year students.",
+      "evidenceJp": "調べると、どちらのリストにも2年生全員が入っていることが分かりました。",
+      "reason": "重複の仕組みを説明する調査結果です。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "もう一つのリストを完全に削除せず残したのはなぜですか。",
+      "answer": "クラスの係の連絡には使うため",
+      "evidence": "Before the next event, the class chose one list for general notices and kept the other only for messages about class jobs.",
+      "evidenceJp": "次の行事の前に、一般のお知らせには一つのリストだけを使い、もう一つはクラスの係の連絡専用にしました。",
+      "reason": "用途を分けて重複を防ぎつつ必要な連絡手段は残しました。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "この改善で最も重視されたことは何ですか。",
+      "answer": "連絡を一度だけ届け、用途を分かりやすくすること",
+      "evidence": "The next notice arrived only once, and students could understand its purpose immediately.",
+      "evidenceJp": "次のお知らせは一度だけ届き、生徒たちは目的をすぐ理解できました。",
+      "reason": "次の通知が一度だけ届き、目的もすぐ理解できたことが成果です。"
+    }
+  ]
+}
