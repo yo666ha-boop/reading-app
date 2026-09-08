@@ -1,0 +1,78 @@
+{
+  "id": "V11-B14-G3-014",
+  "title": "The Evacuation Center Supply Choice",
+  "set": "A",
+  "authoring": "B14_G3_HUMAN_R24_20260909",
+  "questions": [
+    {
+      "type": "GIST",
+      "prompt": "1. この長文の中心内容として最も適切なものはどれですか。",
+      "choices": [
+        "A. すべての物資を半分ずつ運ぶのが最善だと決めた話",
+        "B. 人数・天候・保管場所など複数の条件を使って避難所への物資配分を考えた話",
+        "C. 倉庫の物資をすべて別の町へ送った話",
+        "D. 避難所を開かないことにした話"
+      ],
+      "answer": "B. 人数・天候・保管場所など複数の条件を使って避難所への物資配分を考えた話",
+      "evidence": "It considered expected people, night-time risk, storage space, room function, and the possibility that transport would stop.",
+      "evidenceJp": "予想される人数、夜の危険、保管場所、部屋の役割、交通が止まる可能性を一緒に考えました。",
+      "reason": "単純な等分ではなく、複数資料を使って優先順位を決めたことが本文全体の中心だからです。"
+    },
+    {
+      "type": "MATERIAL_LINK",
+      "prompt": "2. 物資一覧・部屋の地図・天気予報表を合わせて考えると、マット60枚と毛布80枚を先にすべて運ぶ理由として最も適切なものはどれですか。",
+      "choices": [
+        "A. 鍵付き教室に十分な空きがあったから",
+        "B. 夜間は追加輸送できない可能性があり、休むための物資が必要だから",
+        "C. 他の避難所では使えないから",
+        "D. 数を半分にしやすかったから"
+      ],
+      "answer": "B. 夜間は追加輸送できない可能性があり、休むための物資が必要だから",
+      "evidence": "All sixty mats and all eighty blankets would go first because the storm could prevent another trip during the night.",
+      "evidenceJp": "夜間に嵐で追加の輸送ができなくなる可能性があるため、マット60枚と毛布80枚はすべて先に運びます。",
+      "reason": "天候による輸送停止リスクと避難者の休息需要を結び付けた判断です。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "3. 『すべての物資を半分ずつ運ぶ』最初の案が採用されなかった理由として正しいものはどれですか。",
+      "choices": [
+        "A. マットは不足し、衛生用品は保管場所を使いすぎる可能性があったから",
+        "B. 水と食事がまったくなかったから",
+        "C. 体育館が使えなかったから",
+        "D. 倉庫が閉鎖されていたから"
+      ],
+      "answer": "A. マットは不足し、衛生用品は保管場所を使いすぎる可能性があったから",
+      "evidence": "Half of the folding mats would not be enough if most evacuees needed a dry place to rest, while half of the hygiene boxes would use valuable storage even though not all of them were needed immediately.",
+      "evidenceJp": "避難者の多くが乾いた場所で休む必要があるなら、折り畳みマットの半分では足りません。一方、衛生用品の箱を半分運ぶと、すぐにはすべて必要でないのに大切な保管場所を多く使います。",
+      "reason": "同じ割合で分けても、物資ごとの必要性と保管条件が異なるためです。"
+    },
+    {
+      "type": "CONTENT_MATCH",
+      "prompt": "4. 本文の内容に合うものを選びなさい。",
+      "choices": [
+        "A. ランプ12個をすべて学校に運んだ",
+        "B. 衛生用品10箱をすべて体育館に置いた",
+        "C. ランプ6個を各部屋に分け、残りは他の避難所用に倉庫へ残した",
+        "D. 薬に関係する機器を体育館の中央に置いた"
+      ],
+      "answer": "C. ランプ6個を各部屋に分け、残りは他の避難所用に倉庫へ残した",
+      "evidence": "Six lamps would be placed in different rooms, with the remaining lamps kept at the warehouse for other shelters.",
+      "evidenceJp": "ランプは6個を各部屋に分け、残りは別の避難所のため倉庫に残します。",
+      "reason": "ランプの配分方法が本文に直接示されています。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "5. チームが数量を『fixed answer』ではなく『first plan』としたことから分かる考え方はどれですか。",
+      "choices": [
+        "A. 状況が変われば数量を再検討する必要がある",
+        "B. 一度決めた数量は絶対に変えない",
+        "C. 資料は使わず担当者の勘だけで決める",
+        "D. 避難者数は計画に関係しない"
+      ],
+      "answer": "A. 状況が変われば数量を再検討する必要がある",
+      "evidence": "If more evacuees arrived before 9:00 p.m., the numbers would have to be checked again.",
+      "evidenceJp": "午後9時より前に予想以上の避難者が来れば、もう一度数量を確認する必要があります。",
+      "reason": "計画は条件に応じて更新される暫定的なものだと分かります。"
+    }
+  ]
+}
