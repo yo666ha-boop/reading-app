@@ -1,0 +1,88 @@
+{
+  "id": "V11-B14-G2-005",
+  "title": "Two Ways to Borrow a Tablet",
+  "questionsA": [
+    {
+      "type": "GIST",
+      "prompt": "この話の中心内容として最も適切なものはどれですか。",
+      "answer": "二つの案内方法の良い部分を組み合わせ、初めての利用者にも分かりやすくした話",
+      "evidence": "After the change, fewer users needed help, while both borrowing methods stayed available.",
+      "evidenceJp": "変更後、助けを求める利用者が減り、二つの借り方も残せました。",
+      "reason": "変更後に助けを求める人が減り、二つの方法も残せたことが結論です。"
+    },
+    {
+      "type": "DETAIL",
+      "prompt": "文章カードの問題は何でしたか。",
+      "answer": "端末番号の場所を示す前に『端末番号』という言葉を使っていたこと",
+      "evidence": "The written card used ‘device number’ before showing where that number was.",
+      "evidenceJp": "文章のカードは「端末番号」という言葉を、その番号の場所を示す前に使っていました。",
+      "reason": "初めての利用者が迷う具体的な原因でした。"
+    },
+    {
+      "type": "DETAIL",
+      "prompt": "オンライン案内の問題は何でしたか。",
+      "answer": "返却ルールが最後のページに隠れていたこと",
+      "evidence": "The online guide showed the number first but hid the return rule on its last page.",
+      "evidenceJp": "一方、オンライン案内は番号を最初に示していましたが、返却の決まりが最後のページにありました。",
+      "reason": "必要な情報の位置が悪かったことが示されています。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "委員会が二つの方法の良い部分を組み合わせたのはなぜですか。",
+      "answer": "初めての利用者が同じ質問を繰り返していたから",
+      "evidence": "Either method worked well for older students, but many first-time users asked the same questions.",
+      "evidenceJp": "上級生にはどちらの方法も使いやすいものでしたが、初めての利用者の多くは同じ質問をしていました。",
+      "reason": "既存のどちらか一方だけでは初回利用者に十分分かりやすくなかったためです。"
+    },
+    {
+      "type": "CONTENT_MATCH",
+      "prompt": "新しいカードに入れたものとして正しい組み合わせはどれですか。",
+      "answer": "写真1枚・短い3手順・明確な返却ルール",
+      "evidence": "A new card used one photo, three short steps, and one clear return rule.",
+      "evidenceJp": "新しいカードでは写真一枚、三つの短い手順、一つの明確な返却ルールを使いました。",
+      "reason": "新カードの構成が本文に明記されています。"
+    }
+  ],
+  "questionsB": [
+    {
+      "type": "SUMMARY_FILL",
+      "prompt": "要約の空所に入るものを選びなさい。『詳しい説明を見たい人のために（　）も残した。』",
+      "answer": "QRコード",
+      "evidence": "A QR code remained for anyone wanting more detail.",
+      "evidenceJp": "詳しく知りたい人のためにQRコードも残しました。",
+      "reason": "簡潔なカードと詳細案内を両立させました。"
+    },
+    {
+      "type": "CONTEXT_WORD",
+      "prompt": "本文の first-time users に最も近い意味はどれですか。",
+      "answer": "初めて利用する人",
+      "evidence": "Either method worked well for older students, but many first-time users asked the same questions.",
+      "evidenceJp": "上級生にはどちらの方法も使いやすいものでしたが、初めての利用者の多くは同じ質問をしていました。",
+      "reason": "初回利用者が同じ質問をしていた場面です。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "新しいカードで写真を使った利点として最も考えられるものは何ですか。",
+      "answer": "端末番号などの場所を視覚的に分かりやすく示せること",
+      "evidence": "A new card used one photo, three short steps, and one clear return rule.",
+      "evidenceJp": "新しいカードでは写真一枚、三つの短い手順、一つの明確な返却ルールを使いました。",
+      "reason": "文章だけで場所を説明する弱点を補う構成です。"
+    },
+    {
+      "type": "MATERIAL_LINK",
+      "prompt": "変更の効果を示す本文中の結果は何ですか。",
+      "answer": "助けを求める利用者が減ったこと",
+      "evidence": "After the change, fewer users needed help, while both borrowing methods stayed available.",
+      "evidenceJp": "変更後、助けを求める利用者が減り、二つの借り方も残せました。",
+      "reason": "改善後の利用状況が効果を示しています。"
+    },
+    {
+      "type": "CONTENT_MATCH",
+      "prompt": "委員会は二つの借り方をどうしましたか。",
+      "answer": "どちらも利用できるよう残した",
+      "evidence": "After the change, fewer users needed help, while both borrowing methods stayed available.",
+      "evidenceJp": "変更後、助けを求める利用者が減り、二つの借り方も残せました。",
+      "reason": "一方を廃止せず、両方を維持したことが明示されています。"
+    }
+  ]
+}
