@@ -1,0 +1,88 @@
+{
+  "id": "V11-B14-G2-006",
+  "title": "The Ramp Route after Rain",
+  "questionsA": [
+    {
+      "type": "GIST",
+      "prompt": "この話の中心内容として最も適切なものはどれですか。",
+      "answer": "距離だけでなく雨天時の安全性も調べ、天気に応じた経路案内に直した話",
+      "evidence": "That way, visitors could understand why the rainy-day recommendation was different and could choose with the weather in mind.",
+      "evidenceJp": "そうすれば、雨の日のおすすめがなぜ違うのか来校者が理解し、天気を考えて選べます。",
+      "reason": "来校者が天気を考えて選べるようにしたことが結論です。"
+    },
+    {
+      "type": "DETAIL",
+      "prompt": "最初の案でAルートを良い道とした理由は何ですか。",
+      "answer": "30メートル短かったから",
+      "evidence": "Route A was thirty meters shorter, so the first draft called it the better route.",
+      "evidenceJp": "Aルートは30メートル短かったため、最初の案ではこちらを良い道としていました。",
+      "reason": "初案は距離だけを基準にしていました。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "ミキが雨の後に両ルートを歩くことを提案したのはなぜですか。",
+      "answer": "印刷前に雨天時の実際の状態を確かめるため",
+      "evidence": "Before printing the guide, Miki suggested walking both routes after rain.",
+      "evidenceJp": "印刷前に、ミキが雨の後に両方を歩いてみようと提案しました。",
+      "reason": "案内を出す前に条件を変えて確認しようとしました。"
+    },
+    {
+      "type": "CONTENT_MATCH",
+      "prompt": "雨の日のAルートにはどんな問題がありましたか。",
+      "answer": "水が残り、一部が滑りやすかった",
+      "evidence": "Water stayed there, and one part was slippery.",
+      "evidenceJp": "そこには水が残り、一部が滑りやすくなっていました。",
+      "reason": "Aルートの安全上の問題が直接示されています。"
+    },
+    {
+      "type": "DETAIL",
+      "prompt": "BルートはAルートより時間がどれくらい長くかかりましたか。",
+      "answer": "2分",
+      "evidence": "Route B took only two minutes longer.",
+      "evidenceJp": "Bは2分長いだけでした。",
+      "reason": "時間差はわずか2分でした。"
+    }
+  ],
+  "questionsB": [
+    {
+      "type": "SUMMARY_FILL",
+      "prompt": "要約の空所に入るものを選びなさい。『雨の日には（　）をすすめる案内に変えた。』",
+      "answer": "Bルート",
+      "evidence": "They changed the guide to recommend Route B on rainy days and added a note about Route A for dry weather.",
+      "evidenceJp": "そこで案内を変え、雨の日はBをすすめ、乾いた日にはAも使えるという注意を加えました。",
+      "reason": "雨天時の推奨ルート変更を問う要約です。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "チームがAを『悪い道』と決めつけなかったのはなぜですか。",
+      "answer": "乾いた日には使えるため",
+      "evidence": "They changed the guide to recommend Route B on rainy days and added a note about Route A for dry weather.",
+      "evidenceJp": "そこで案内を変え、雨の日はBをすすめ、乾いた日にはAも使えるという注意を加えました。",
+      "reason": "天候によって適した道が変わるため、Aにも利用条件があります。"
+    },
+    {
+      "type": "CONTENT_MATCH",
+      "prompt": "Bルートの特徴として正しいものはどれですか。",
+      "answer": "屋根のある通路と緩やかなざらざらしたスロープがある",
+      "evidence": "Route B was longer, but it had a covered path and a gentle ramp with a rough surface.",
+      "evidenceJp": "Bルートは長いものの、屋根のある通路と、表面がざらざらした緩やかなスロープがありました。",
+      "reason": "Bルートの雨天時の利点が示されています。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "案内に両方の結果を書いたのはなぜですか。",
+      "answer": "来校者が雨天時のおすすめが違う理由を理解して選べるようにするため",
+      "evidence": "That way, visitors could understand why the rainy-day recommendation was different and could choose with the weather in mind.",
+      "evidenceJp": "そうすれば、雨の日のおすすめがなぜ違うのか来校者が理解し、天気を考えて選べます。",
+      "reason": "情報を一方的に単純化せず、判断材料を示すためです。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "この話から分かる案内作りで大切な考えは何ですか。",
+      "answer": "一つの条件だけでなく利用時の状況も確かめること",
+      "evidence": "The shortest route was not always the safest or most useful one.",
+      "evidenceJp": "最短の道が、いつも最も安全で便利とは限りませんでした。",
+      "reason": "最短が常に最も安全・便利とは限らないと本文が示しています。"
+    }
+  ]
+}
