@@ -8861,61 +8861,43 @@
       "questionsA": [
         {
           "type": "GIST",
-          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
-          "choices": [
-            "A. 天気情報を一日一回だけ書くことにした話",
-            "B. 二つの時間基準が混ざっていた天気表示を、一つの基準にそろえた話",
-            "C. 玄関の時計を取り外した話",
-            "D. 雨の日の活動をすべて中止した話"
-          ],
-          "answer": "B. 二つの時間基準が混ざっていた天気表示を、一つの基準にそろえた話",
-          "evidence": "The board was mixing two time systems. / After that, both parts of the board showed the same update time.",
-          "evidenceJp": "掲示板は二つの時間基準を混ぜていました。 / その後、掲示板の二つの欄は同じ更新時刻を示すようになりました。",
-          "reason": "問題の発見から、更新時刻を統一する改善までが本文全体の中心です。"
+          "prompt": "この話の中心内容として最も適切なものはどれですか。",
+          "answer": "話し合い前に短い静かな準備時間を入れ、開始を速くした話",
+          "evidence": "The setup gave everyone a clear first step, so the class kept it.",
+          "evidenceJp": "この準備時間は全員に明確な最初の一歩を与えたので、クラスは続けることにしました。",
+          "reason": "短い準備時間を試し、開始が速くなったため継続したことが中心です。"
         },
         {
           "type": "DETAIL",
-          "prompt": "2. 天気表示の上の欄と下の欄は、それぞれ何を使っていましたか。",
-          "answer": "上の欄は最新の自動データ、下の欄は朝に印刷した予報。",
-          "evidence": "The top section used the latest automatic data, but the lower section used a printed forecast from early morning.",
-          "evidenceJp": "上の欄は最新の自動データを使っていましたが、下の欄は早朝に印刷した予報を使っていました。",
-          "reason": "二つの欄で情報の更新時点が違っていたことが直接示されています。"
+          "prompt": "静かな準備時間に、生徒全員がしたことは何ですか。",
+          "answer": "課題を読み、道具を準備し、考えを一つ書いた",
+          "evidence": "During those three minutes, everyone read the task, prepared materials, and wrote one idea alone.",
+          "evidenceJp": "その3分間に、全員が課題を読み、道具を準備し、一人で考えを一つ書きました。",
+          "reason": "3分間に行った準備が直接示されています。"
         },
         {
           "type": "REASON",
-          "prompt": "3. 生徒がどちらの情報を信じればよいか分からなくなったのはなぜですか。",
-          "answer": "二つの欄に違う更新時刻の情報が並んでいたから。",
-          "evidence": "Students saw two different update times and did not know which information to trust.",
-          "evidenceJp": "生徒たちは二つの異なる更新時刻を見て、どちらの情報を信じればよいか分かりませんでした。",
-          "reason": "混乱の原因が本文に明記されています。"
+          "prompt": "クラスが4回の授業でこの方法を試したのはなぜですか。",
+          "answer": "静かな時間が本当に無駄か確かめるため",
+          "evidence": "Some students thought silence would waste time, so the class tested it for four lessons.",
+          "evidenceJp": "黙る時間は無駄だと思う生徒もいたので、4回の授業で試しました。",
+          "reason": "静かな時間への疑問があったためです。"
         },
         {
           "type": "CONTENT_MATCH",
-          "prompt": "4. 委員会が行った改善として本文に合うものを選びなさい。",
-          "choices": [
-            "A. 下の欄を毎時間手書きした。",
-            "B. 上の欄だけを残した。",
-            "C. 両方の欄が同じ更新時刻を示すようにした。",
-            "D. 更新時刻を表示しないようにした。"
-          ],
-          "answer": "C. 両方の欄が同じ更新時刻を示すようにした。",
-          "evidence": "After that, both parts of the board showed the same update time.",
-          "evidenceJp": "その後、掲示板の二つの欄は同じ更新時刻を示すようになりました。",
-          "reason": "改善後の状態が直接書かれています。"
+          "prompt": "試す前と後の開始時間について正しいものはどれですか。",
+          "answer": "約6分から約4分になった",
+          "evidence": "With the quiet setup, they usually started in four minutes, including the silent time.",
+          "evidenceJp": "静かな準備をすると、その時間を含めても通常4分で始められました。",
+          "reason": "導入後は静かな時間込みで約4分です。"
         },
         {
           "type": "INFERENCE",
-          "prompt": "5. 更新時刻を表示することが重要なのはなぜだと考えられますか。",
-          "choices": [
-            "A. 情報がいつのものか判断できるから",
-            "B. 掲示板を大きく見せられるから",
-            "C. 時計を使わなくてよくなるから",
-            "D. 天気を変えられるから"
-          ],
-          "answer": "A. 情報がいつのものか判断できるから",
-          "evidence": "Students saw two different update times and did not know which information to trust.",
-          "evidenceJp": "生徒たちは二つの異なる更新時刻を見て、どちらの情報を信じればよいか分かりませんでした。",
-          "reason": "情報の新しさを判断できないことが混乱につながったためです。"
+          "prompt": "静かな準備時間が話し合いにもたらした利点は何ですか。",
+          "answer": "全員が考えを持って話し合いに入れた",
+          "evidence": "Students also entered the discussion with an idea ready.",
+          "evidenceJp": "また、考えを一つ用意した状態で話し合いに入れました。",
+          "reason": "準備時間で一人一つ考えを書くためです。"
         }
       ],
       "questionAuthoringA": {
@@ -8926,67 +8908,43 @@
       "questionsB": [
         {
           "type": "SUMMARY_FILL",
-          "prompt": "6. 要約の空所に入るものを選びなさい。『委員会は、天気表示の二つの欄で（　）をそろえた。』",
-          "choices": [
-            "A. 更新時刻",
-            "B. 文字数",
-            "C. 生徒数",
-            "D. 場所"
-          ],
-          "answer": "A. 更新時刻",
-          "evidence": "After that, both parts of the board showed the same update time.",
-          "evidenceJp": "その後、掲示板の二つの欄は同じ更新時刻を示すようになりました。",
-          "reason": "改善の中心をそのまま要約しています。"
+          "prompt": "要約の空所に入るものを選びなさい。『クラスは話し合い前に（　）の静かな準備時間を試した。』",
+          "answer": "3分間",
+          "evidence": "The teacher suggested a three-minute quiet setup before discussion.",
+          "evidenceJp": "先生は話し合いの前に3分間の静かな準備時間を提案しました。",
+          "reason": "導入した準備時間の長さを問う要約です。"
         },
         {
           "type": "CONTEXT_WORD",
-          "prompt": "7. 本文中の “trust” に最も近い意味はどれですか。",
-          "choices": [
-            "A. 信じる",
-            "B. 印刷する",
-            "C. 消す",
-            "D. 測る"
-          ],
-          "answer": "A. 信じる",
-          "evidence": "Students saw two different update times and did not know which information to trust.",
-          "evidenceJp": "生徒たちは二つの異なる更新時刻を見て、どちらの情報を信じればよいか分かりませんでした。",
-          "reason": "どちらの情報を正しいものとして受け取るか、という文脈です。"
-        },
-        {
-          "type": "REASON",
-          "prompt": "8. 委員会が表示方法そのものを確認した理由として最も適切なものはどれですか。",
-          "answer": "天気データ自体ではなく、異なる時刻の情報を一緒に見せていることが混乱の原因だったから。",
-          "evidence": "The board was mixing two time systems.",
-          "evidenceJp": "掲示板は二つの時間基準を混ぜていました。",
-          "reason": "問題は情報の内容だけでなく、更新基準の不統一にありました。"
+          "prompt": "本文の setup に最も近い意味はどれですか。",
+          "answer": "準備",
+          "evidence": "The teacher suggested a three-minute quiet setup before discussion.",
+          "evidenceJp": "先生は話し合いの前に3分間の静かな準備時間を提案しました。",
+          "reason": "本文では話し合い前の準備時間を指します。"
         },
         {
           "type": "MATERIAL_LINK",
-          "prompt": "9. 上の欄と下の欄を比べて分かった問題として最も適切なものはどれですか。",
-          "choices": [
-            "A. どちらにも天気情報がなかった",
-            "B. 情報の更新時点が一致していなかった",
-            "C. 両方とも早朝の情報だけだった",
-            "D. 両方とも自動更新だった"
-          ],
-          "answer": "B. 情報の更新時点が一致していなかった",
-          "evidence": "The top section used the latest automatic data, but the lower section used a printed forecast from early morning.",
-          "evidenceJp": "上の欄は最新の自動データを使っていましたが、下の欄は早朝に印刷した予報を使っていました。",
-          "reason": "二つの情報源を結び付けると、更新時点のずれが問題だと分かります。"
+          "prompt": "開始までの時間を比べるため、クラスが記録したものは何ですか。",
+          "answer": "各班が実際の話し合いを始めた時刻",
+          "evidence": "The class recorded when each group began real discussion.",
+          "evidenceJp": "クラスは各班が実際の話し合いを始めた時刻を記録しました。",
+          "reason": "方法の効果を時間で比較するための記録です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3分間の静かな時間を含めても、方法が時間短縮になったといえるのはなぜですか。",
+          "answer": "通常4分で話し合いを始められたから",
+          "evidence": "With the quiet setup, they usually started in four minutes, including the silent time.",
+          "evidenceJp": "静かな準備をすると、その時間を含めても通常4分で始められました。",
+          "reason": "静かな3分を含む総時間でも以前の約6分より短いからです。"
         },
         {
           "type": "INFERENCE",
-          "prompt": "10. この話から学べる情報提示の考え方として最も適切なものはどれですか。",
-          "choices": [
-            "A. 同じ画面なら異なる時刻の情報を混ぜてもよい",
-            "B. 情報の基準や更新時点をそろえ、利用者が比較しやすくする",
-            "C. 新しい情報ほど表示時刻を隠す",
-            "D. 自動データは使わない"
-          ],
-          "answer": "B. 情報の基準や更新時点をそろえ、利用者が比較しやすくする",
-          "evidence": "The board was mixing two time systems. / After that, both parts of the board showed the same update time.",
-          "evidenceJp": "掲示板は二つの時間基準を混ぜていました。 / その後、掲示板の二つの欄は同じ更新時刻を示すようになりました。",
-          "reason": "不統一が混乱を生み、統一によって改善した流れから導けます。"
+          "prompt": "クラスがこの方法を続けることにした最大の理由は何ですか。",
+          "answer": "最初に何をすればよいか全員に明確になったから",
+          "evidence": "The setup gave everyone a clear first step, so the class kept it.",
+          "evidenceJp": "この準備時間は全員に明確な最初の一歩を与えたので、クラスは続けることにしました。",
+          "reason": "本文の結論が継続理由を直接示しています。"
         }
       ],
       "questionAuthoringB": {
@@ -18075,6 +18033,8 @@
       "G2-007",
       "G2-008"
     ],
-    "note": "Only durable, readback-verified overlays merged. No partial registration."
+    "note": "Only durable, readback-verified overlays merged. No partial registration.",
+    "updatedJST": "2026-09-08T18:58:00+09:00",
+    "g2_011_repair": "MERGED_EXACT_EVIDENCE_PASS"
   }
 }
