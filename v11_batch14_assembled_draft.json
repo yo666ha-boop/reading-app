@@ -3,7 +3,7 @@
   "officialBefore": 818,
   "targetAfterFullGates": 868,
   "registered": false,
-  "status": "ASSEMBLED_G1_G2_AB_FAILCLOSED_PASS_PENDING_G3",
+  "status": "ASSEMBLED_G1_G2_PASS_G3_001_003_AB_COMPLETE",
   "chronologyAllGradesPass": true,
   "passages": [
     {
@@ -13103,7 +13103,123 @@
           "japanese": "また、将来のボランティアが結果を比べ、新しい方法を採用した理由を理解できるよう、以前の手順も記録に残しました。",
           "humanReview": "PENDING_BATCH14_SLASH_HUMAN"
         }
-      ]
+      ],
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 非常用食品をすべて配った話",
+            "B. 冷凍庫の記録を使い、非常用備蓄を保ちながら食品廃棄を減らした話",
+            "C. 寄付を止めた話",
+            "D. 冷凍庫を買い替えた話"
+          ],
+          "answer": "B. 冷凍庫の記録を使い、非常用備蓄を保ちながら食品廃棄を減らした話",
+          "evidence": "They used the same records more carefully to balance immediate needs and future emergencies.",
+          "evidenceJp": "同じ記録をより注意深く使い、今必要な支援と将来の非常時の両方を考えたのです。",
+          "reason": "安全備蓄を減らさず運用を改善したことが中心です。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 冷凍庫の記録には何が書かれていましたか。",
+          "answer": "日付、食品の種類、個数、「週用」か「非常用」か。",
+          "evidence": "The log recorded the date, food type, number of packs, and whether each pack was marked ‘weekly’ or ‘emergency.’",
+          "evidenceJp": "記録には日付、食品の種類、個数、「週用」か「非常用」かが書かれていました。",
+          "reason": "記録項目が直接示されています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. 古い週用品が残りやすかったのはなぜですか。",
+          "answer": "新しい寄付品が古い物の前に置かれ、新しい物から取られていたから。",
+          "evidence": "First, new weekly donations were often placed in front of older ones, so volunteers took the newest packs first.",
+          "evidenceJp": "第一に、新しい週用の寄付品が古い物の前に置かれることが多く、ボランティアは新しい物から取っていました。",
+          "reason": "古い物が後ろに残る仕組みでした。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "4. 非常用食品を毎週確認することにしたのはなぜですか。",
+          "answer": "月1回では期限が近い物を見落とすことがあったから。",
+          "evidence": "Second, emergency stock was checked only once a month, so volunteers sometimes missed items that were close to their dates.",
+          "evidenceJp": "第二に、非常用備蓄は月に一度しか確認されなかったため、ボランティアは期限が近い物を見落とすことがありました。",
+          "reason": "確認頻度が低いことが問題でした。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 6週間後について本文に合うものはどれですか。",
+          "choices": [
+            "A. 非常用備蓄をなくした。",
+            "B. 寄付をすべて断った。",
+            "C. 必要な非常用量を保ちながら、捨てる食事が減った。",
+            "D. 冷凍庫を空にした。"
+          ],
+          "answer": "C. 必要な非常用量を保ちながら、捨てる食事が減った。",
+          "evidence": "After six weeks, the freezer still held the required emergency amount, but fewer meals were thrown away.",
+          "evidenceJp": "6週間後、必要な非常用の量は保たれたまま、捨てる食事は減りました。",
+          "reason": "改善結果が直接示されています。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『古い週用品は（　）へ置き、先に使いやすくした。』に入るものはどれですか。",
+          "choices": [
+            "A. 印を付けた手前のかご",
+            "B. 非常用棚の奥",
+            "C. 別の建物",
+            "D. ごみ箱"
+          ],
+          "answer": "A. 印を付けた手前のかご",
+          "evidence": "Older weekly packs would be placed in a clearly marked front basket.",
+          "evidenceJp": "古い週用の品を、はっきり印を付けた手前のかごへ置きます。",
+          "reason": "古い物を先に使いやすくする変更です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. 同じ種類の寄付を追加で受ける前に週用品の数を書く目的は何ですか。",
+          "answer": "すでに十分ある食品を重ねて受け、余らせるのを防ぐため。",
+          "evidence": "Finally, the center would write the number of available weekly packs on a small board before accepting extra donations of the same kind.",
+          "evidenceJp": "さらに、同じ種類の寄付を追加で受ける前に、利用できる週用品の数を小さなボードに書くことにしました。",
+          "reason": "在庫を見て寄付量を調整するためです。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "8. “emergency stock” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 毎週すぐ配る食品",
+            "B. 非常用備蓄",
+            "C. 廃棄予定品",
+            "D. 新しい寄付だけ"
+          ],
+          "answer": "B. 非常用備蓄",
+          "evidence": "Part of the food was for families who needed help that week, and part was emergency stock for storms.",
+          "evidenceJp": "一部はその週に支援を必要とする家庭のため、残りは嵐などに備える非常用の備蓄でした。",
+          "reason": "将来の災害に備えて残す食品です。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. 『安全備蓄を守ること』と『廃棄を減らすこと』を両立できた理由は何ですか。",
+          "answer": "期限や在庫を記録で管理し、近日期限品を新しい物と入れ替えたから。",
+          "evidence": "Emergency food would still be protected, but volunteers would check its dates every week and replace near-date packs with newer ones.",
+          "evidenceJp": "非常用の食品は引き続き確保しますが、日付は毎週確認し、期限が近い物を新しい物と入れ替えます。",
+          "reason": "量を減らさず中身を入れ替える運用です。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. 以前の手順も記録に残した理由として最も適切なものはどれですか。",
+          "choices": [
+            "A. 古い方法へ必ず戻すため。",
+            "B. 将来のボランティアが新旧の結果を比較し、変更理由を理解できるようにするため。",
+            "C. 記録を増やすだけのため。",
+            "D. 寄付者に見せないため。"
+          ],
+          "answer": "B. 将来のボランティアが新旧の結果を比較し、変更理由を理解できるようにするため。",
+          "evidence": "The center kept the old procedure in the file too, so future volunteers could compare the results and understand why the new system had been adopted.",
+          "evidenceJp": "また、将来のボランティアが結果を比べ、新しい方法を採用した理由を理解できるよう、以前の手順も記録に残しました。",
+          "reason": "変更の根拠を後から検証できるようにしています。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_G3_HUMAN_R15_20260908"
     },
     {
       "id": "V11-B14-G3-002",
@@ -13368,7 +13484,123 @@
           "japanese": "チームは、ほとんどの言葉が正しくても、一つの条件が消えるだけで安全上の規則の意味が変わることを学びました。",
           "humanReview": "PENDING_BATCH14_SLASH_HUMAN"
         }
-      ]
+      ],
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 模型を撤去した話",
+            "B. 翻訳で抜けた安全条件を見つけ、意味が一致するよう修正した話",
+            "C. 英語版を削除した話",
+            "D. 展示を中止した話"
+          ],
+          "answer": "B. 翻訳で抜けた安全条件を見つけ、意味が一致するよう修正した話",
+          "evidence": "The team learned that a translation can contain almost all the right words and still change a safety rule if one condition disappears.",
+          "evidenceJp": "チームは、ほとんどの言葉が正しくても、一つの条件が消えるだけで安全上の規則の意味が変わることを学びました。",
+          "reason": "一つの条件欠落が安全規則を変えることが主題です。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 英語版で模型に触れてよい条件は何でしたか。",
+          "answer": "職員がいるときだけ。",
+          "evidence": "The English notice said visitors could touch the model only when a staff member was present.",
+          "evidenceJp": "英語の案内には、職員がいるときに限って来館者が模型に触れられると書かれていました。",
+          "reason": "条件が直接示されています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "3. 日本語版では何が抜けていましたか。",
+          "answer": "職員がいるときだけ、という条件。",
+          "evidence": "The Japanese version, however, simply said that visitors could touch the model.",
+          "evidenceJp": "しかし日本語版には、来館者が模型に触れられるとだけ書かれていました。",
+          "reason": "許可条件が消えていました。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "4. その条件が安全上重要だったのはなぜですか。",
+          "answer": "実演中に模型の一部が熱くなるから。",
+          "evidence": "The educator explained that the condition was important because one part of the model became hot during demonstrations.",
+          "evidenceJp": "担当者は、実演中に模型の一部が熱くなるため、その条件は重要だと説明しました。",
+          "reason": "安全条件の理由です。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 修正後の確認として行ったことはどれですか。",
+          "choices": [
+            "A. 英語版だけを印刷した。",
+            "B. 条件を削除した。",
+            "C. 別の生徒が日本語版だけを読み、触れてよい時を正しく説明した。",
+            "D. 他の規則は確認しなかった。"
+          ],
+          "answer": "C. 別の生徒が日本語版だけを読み、触れてよい時を正しく説明した。",
+          "evidence": "Before the notice was printed, another student read only the Japanese version and correctly explained when touching was allowed.",
+          "evidenceJp": "印刷前に別の生徒が日本語版だけを読み、いつ触れてよいかを正しく説明できました。",
+          "reason": "翻訳だけで条件が伝わることを確認しています。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『一つの（　）が抜けるだけで、安全規則の意味が変わることがある。』に入るものはどれですか。",
+          "choices": [
+            "A. 条件",
+            "B. 写真",
+            "C. 色",
+            "D. 名前"
+          ],
+          "answer": "A. 条件",
+          "evidence": "The team learned that a translation can contain almost all the right words and still change a safety rule if one condition disappears.",
+          "evidenceJp": "チームは、ほとんどの言葉が正しくても、一つの条件が消えるだけで安全上の規則の意味が変わることを学びました。",
+          "reason": "物語の結論です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. チームがほかの五つの規則も一行ずつ確認したのはなぜですか。",
+          "answer": "見た目が似ていても、ほかにも意味の抜けがある可能性を決めつけず確認するため。",
+          "evidence": "They also checked the other five rules line by line, rather than assuming that the rest were correct because they looked similar.",
+          "evidenceJp": "また、残りも似ているから正しいと決めつけず、ほかの五つの規則を一行ずつ確認しました。",
+          "reason": "一つの発見後に全体を検証しています。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "8. “intentional” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 危険な",
+            "B. 意図的な",
+            "C. 古い",
+            "D. 長い"
+          ],
+          "answer": "B. 意図的な",
+          "evidence": "Yui first wondered whether the shorter translation was intentional.",
+          "evidenceJp": "ユイは最初、短い訳が意図的なものかもしれないと考えました。",
+          "reason": "偶然の欠落か意図した短縮かを考えています。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. 古い案内と担当者への確認を組み合わせた目的は何ですか。",
+          "answer": "短い日本語訳が本当に正しい意味か、別の資料と専門家の説明で確認するため。",
+          "evidence": "She compared it with an older notice and then asked the museum educator.",
+          "evidenceJp": "以前の案内と比べ、博物館の担当者にも尋ねました。",
+          "reason": "複数の根拠で翻訳意図を確かめています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から翻訳確認で特に重要だと分かることはどれですか。",
+          "choices": [
+            "A. 短い訳ほどよい。",
+            "B. 単語が合っているかだけでなく、条件・例外・範囲が保たれているか確認すること。",
+            "C. 一文だけ確認すれば十分。",
+            "D. 日本語版は不要。"
+          ],
+          "answer": "B. 単語が合っているかだけでなく、条件・例外・範囲が保たれているか確認すること。",
+          "evidence": "The team learned that a translation can contain almost all the right words and still change a safety rule if one condition disappears.",
+          "evidenceJp": "チームは、ほとんどの言葉が正しくても、一つの条件が消えるだけで安全上の規則の意味が変わることを学びました。",
+          "reason": "語の一致だけでは意味の一致を保証できません。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_G3_HUMAN_R15_20260908"
     },
     {
       "id": "V11-B14-G3-003",
@@ -13888,7 +14120,123 @@
           "japanese": "地図、到着時刻、交通時刻表を結び付け、それぞれの状況に合った安全な選択ができるようにしました。",
           "humanReview": "PENDING_BATCH14_SLASH_HUMAN"
         }
-      ]
+      ],
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 西側ルートだけを使わせた話",
+            "B. 通行止め時間・地図・バス時刻を組み合わせ、来場者ごとに選べる案内を作った話",
+            "C. 祭りを延期した話",
+            "D. バスを増便した話"
+          ],
+          "answer": "B. 通行止め時間・地図・バス時刻を組み合わせ、来場者ごとに選べる案内を作った話",
+          "evidence": "It connected the map, the time of arrival, and the transport schedule so visitors could make a safe choice for their own situation.",
+          "evidenceJp": "地図、到着時刻、交通時刻表を結び付け、それぞれの状況に合った安全な選択ができるようにしました。",
+          "reason": "一つの固定ルートではなく条件別の選択肢を作っています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 東側の道が閉鎖される時間はいつですか。",
+          "answer": "午前8時30分から11時30分まで。",
+          "evidence": "The construction table said the east path between Bridge A and Gate 2 would be closed from 8:30 a.m. to 11:30 a.m.",
+          "evidenceJp": "工事表には、A橋から第2ゲートまでの東側の道が午前8時30分から11時30分まで閉鎖されるとありました。",
+          "reason": "閉鎖時間が直接示されています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "3. 通常の東側ルートと西側徒歩ルートの距離はそれぞれ何キロですか。",
+          "answer": "東側1.2キロ、西側1.7キロ。",
+          "evidence": "The route map showed that the normal east path was 1.2 kilometers, the west walking route was 1.7 kilometers, and a third route used a bus from the station to Library Stop followed by a 0.5-kilometer walk.",
+          "evidenceJp": "地図によると、通常の東側ルートは1.2キロ、西側の徒歩ルートは1.7キロ、三つ目は駅から図書館前までバスに乗り、そこから0.5キロ歩くルートです。",
+          "reason": "距離比較の基礎情報です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "4. 9時到着の家族に9時10分のバスが向いているのはなぜですか。",
+          "answer": "小さな子どもと長い西側ルートを歩かずにすむから。",
+          "evidence": "A family arriving at 9:00 with a small child could take the 9:10 bus and avoid the longer west walk.",
+          "evidenceJp": "9時に小さな子どもと到着する家族は9時10分のバスに乗れば、西側を長く歩かずにすみます。",
+          "reason": "家族の状況とバス時刻を合わせています。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 正午に到着する来場者について本文に合うものはどれですか。",
+          "choices": [
+            "A. 西側しか使えない。",
+            "B. バスを必ず待つ。",
+            "C. 再開した東側ルートを使え、それが最短の徒歩ルートになる。",
+            "D. 自転車で東側を通る。"
+          ],
+          "answer": "C. 再開した東側ルートを使え、それが最短の徒歩ルートになる。",
+          "evidence": "A visitor arriving at noon could use the reopened east path, which was again the shortest walking route.",
+          "evidenceJp": "正午に到着する人は、再開した東側ルートを使え、それが再び最短の徒歩ルートになります。",
+          "reason": "閉鎖終了後の条件です。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『11時30分までは西側かバス、11時30分以降は歩行者なら（　）も使える。』に入るものはどれですか。",
+          "choices": [
+            "A. 東側の道",
+            "B. 工事区間",
+            "C. 自転車専用道",
+            "D. 橋の上"
+          ],
+          "answer": "A. 東側の道",
+          "evidence": "Under it, the team added a simple choice: before 11:30, use the west walk or check the next bus; after 11:30, walkers may use the east path again.",
+          "evidenceJp": "その下に、「11時30分までは西側を歩くか次のバスを確認する。11時30分以降は歩行者は東側も利用できる」という簡単な選択を示しました。",
+          "reason": "完成案内の条件分岐です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. 10時15分到着の徒歩グループが西側を歩く方がよい例とされたのはなぜですか。",
+          "answer": "次のバスを25分待つより、すぐ歩き始められるから。",
+          "evidence": "A walking club arriving at 10:15 could use the west route immediately instead of waiting twenty-five minutes for the next bus.",
+          "evidenceJp": "10時15分に到着する徒歩グループなら、次のバスを25分待つより、すぐ西側ルートを歩けます。",
+          "reason": "待ち時間との比較です。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "8. 自転車の禁止表示を午後2時まで残した理由は何ですか。",
+          "answer": "東側の道が11時30分に再開しても、自転車は禁止が午後2時まで続くから。",
+          "evidence": "After 11:30, the path would reopen, but bicycles would still be prohibited until 2:00 p.m.",
+          "evidenceJp": "11時30分以降は再開しますが、自転車は午後2時まで通れません。",
+          "reason": "歩行者の再開時刻と自転車の規則が異なります。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "9. チームが『一つの道がいつでも最善』と書かなかった理由として最も適切なものはどれですか。",
+          "choices": [
+            "A. 地図が間違っていたから。",
+            "B. 到着時刻や同行者、バス時刻などで最適な選択が変わるから。",
+            "C. 西側が閉鎖されたから。",
+            "D. バスが運休したから。"
+          ],
+          "answer": "B. 到着時刻や同行者、バス時刻などで最適な選択が変わるから。",
+          "evidence": "These examples showed why one fixed instruction would not help everyone.",
+          "evidenceJp": "この例から、一つの固定した指示では全員の役に立たないことが分かりました。",
+          "reason": "来場者条件によって選択が変わります。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "10. この案内板が三つの資料を結び付けた意味として最も適切なものはどれですか。",
+          "choices": [
+            "A. 全員を同じ道へ送る。",
+            "B. 距離だけでなく、閉鎖時間と交通時刻も同時に考えて安全な選択を可能にした。",
+            "C. バスだけを勧める。",
+            "D. 自転車利用を増やす。"
+          ],
+          "answer": "B. 距離だけでなく、閉鎖時間と交通時刻も同時に考えて安全な選択を可能にした。",
+          "evidence": "It connected the map, the time of arrival, and the transport schedule so visitors could make a safe choice for their own situation.",
+          "evidenceJp": "地図、到着時刻、交通時刻表を結び付け、それぞれの状況に合った安全な選択ができるようにしました。",
+          "reason": "複数資料統合の目的が明記されています。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_G3_HUMAN_R15_20260908"
     },
     {
       "id": "V11-B14-G3-004",
