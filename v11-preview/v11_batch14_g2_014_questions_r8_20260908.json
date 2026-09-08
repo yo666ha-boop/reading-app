@@ -1,0 +1,140 @@
+{
+  "batch": "V11-B14",
+  "passageId": "V11-B14-G2-014",
+  "title": "A Practice Schedule with No Break",
+  "status": "draft-question-authoring",
+  "sourceAssembledSha": "4ae58ebac1d53163d825cc3047385e6ff8dd1c0b",
+  "bodyChanged": false,
+  "questionsA": [
+    {
+      "type": "GIST",
+      "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+      "choices": [
+        "A. 練習時間を90分から40分に短くした話",
+        "B. 休憩を入れながら総練習時間を保ち、後半のミスを減らした話",
+        "C. バスケットボール部が試合を中止した話",
+        "D. すべての練習メニューを一つにした話"
+      ],
+      "answer": "B. 休憩を入れながら総練習時間を保ち、後半のミスを減らした話",
+      "evidence": "The team tested a five-minute break after forty minutes. It kept the total practice time the same by shortening repeated instructions.",
+      "evidenceJp": "そこで40分後に5分休む方法を試しました。繰り返していた説明を短くし、総練習時間は変えませんでした。",
+      "reason": "休憩導入と時間配分の改善によって後半の質が上がったことが中心です。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "2. 最初の予定に休憩がなかったのはなぜですか。",
+      "answer": "キャプテンが1分も無駄にせず、すべての時間を使いたいと考えたから。",
+      "evidence": "The schedule had three drills with no break because the captain wanted to use every minute.",
+      "evidenceJp": "キャプテンは1分も無駄にしたくなかったため、三つの練習メニューの間に休憩を入れませんでした。",
+      "reason": "because以下が休憩を入れなかった理由です。"
+    },
+    {
+      "type": "DETAIL",
+      "prompt": "3. 休憩を入れる前、練習の後半では何が起きていましたか。",
+      "choices": [
+        "A. ミスが増えた。",
+        "B. 練習時間が短くなった。",
+        "C. 選手が全員帰った。",
+        "D. 得点が必ず上がった。"
+      ],
+      "answer": "A. ミスが増えた。",
+      "evidence": "The first drill received strong scores, but mistakes increased later.",
+      "evidenceJp": "最初のメニューの評価は高かったものの、後になるとミスが増えました。",
+      "reason": "後半の問題点が直接示されています。"
+    },
+    {
+      "type": "CONTENT_MATCH",
+      "prompt": "4. 選手たちが必要だと言った時間の使い方として本文に合うものはどれですか。",
+      "choices": [
+        "A. 水を飲み、次の目標を確認する。",
+        "B. 家に帰る。",
+        "C. 試合映像を見る。",
+        "D. 追加のランニングをする。"
+      ],
+      "answer": "A. 水を飲み、次の目標を確認する。",
+      "evidence": "Several players said they needed a moment to drink water and check the next goal.",
+      "evidenceJp": "何人かの選手は、水を飲み、次の目標を確認する短い時間が必要だと言いました。",
+      "reason": "選手の要望がそのまま根拠です。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "5. 休憩を入れても総練習時間が変わらなかったことから、何が分かりますか。",
+      "choices": [
+        "A. 休憩時間は練習外に追加された。",
+        "B. 繰り返し説明を短くすることで時間を作った。",
+        "C. 90分より長く練習した。",
+        "D. 練習メニューを一つ削除した。"
+      ],
+      "answer": "B. 繰り返し説明を短くすることで時間を作った。",
+      "evidence": "It kept the total practice time the same by shortening repeated instructions.",
+      "evidenceJp": "繰り返していた説明を短くし、総練習時間は変えませんでした。",
+      "reason": "休憩分の時間をどこから生み出したかが本文に明記されています。"
+    }
+  ],
+  "questionsB": [
+    {
+      "type": "SUMMARY_FILL",
+      "prompt": "6. 要約の空所に入るものを選びなさい。『チームは40分後に5分休み、（　）ことで全体時間を変えなかった。』",
+      "choices": [
+        "A. 練習を一つ削る",
+        "B. 繰り返し説明を短くする",
+        "C. 試合を延期する",
+        "D. 休憩中も走る"
+      ],
+      "answer": "B. 繰り返し説明を短くする",
+      "evidence": "It kept the total practice time the same by shortening repeated instructions.",
+      "evidenceJp": "繰り返していた説明を短くし、総練習時間は変えませんでした。",
+      "reason": "時間配分改善の要点をまとめています。"
+    },
+    {
+      "type": "CONTEXT_WORD",
+      "prompt": "7. 本文中の “rate” に最も近い意味はどれですか。",
+      "choices": [
+        "A. 評価する",
+        "B. 走る",
+        "C. 数える",
+        "D. 休む"
+      ],
+      "answer": "A. 評価する",
+      "evidence": "the coach asked players to rate each drill.",
+      "evidenceJp": "コーチは選手に各メニューを評価してもらいました。",
+      "reason": "各メニューについて点や評価を付ける文脈です。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "8. コーチが各練習メニューを評価してもらったのはなぜだと考えられますか。",
+      "answer": "練習のどの部分で質が落ちているかを確かめるため。",
+      "evidence": "The first drill received strong scores, but mistakes increased later.",
+      "evidenceJp": "最初のメニューの評価は高かったものの、後になるとミスが増えました。",
+      "reason": "評価結果によって前半と後半の違いが見えるようになっています。"
+    },
+    {
+      "type": "MATERIAL_LINK",
+      "prompt": "9. 「後半でミスが増えたこと」と「5分休憩後にミスが減ったこと」を結び付けると、最も適切に言えることはどれですか。",
+      "choices": [
+        "A. 短い休憩が後半の集中や準備に役立った可能性がある。",
+        "B. 休憩は必ず練習を長くする。",
+        "C. 最初のメニューは不要だった。",
+        "D. 選手は水を飲まなくてもよかった。"
+      ],
+      "answer": "A. 短い休憩が後半の集中や準備に役立った可能性がある。",
+      "evidence": "In the next two practices, later drills had fewer simple mistakes.",
+      "evidenceJp": "次の2回では、後半の単純なミスが減りました。",
+      "reason": "改善前後の結果を比較すると、短い休憩が後半の質向上に関係したと推測できます。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "10. キャプテンが最後に学んだこととして最も適切なものはどれですか。",
+      "choices": [
+        "A. 動いている時間が多いほど必ず練習は良い。",
+        "B. すべての分を動きに使うことと、練習全体を有効に使うことは同じではない。",
+        "C. 休憩は長ければ長いほどよい。",
+        "D. 練習時間は短いほどよい。"
+      ],
+      "answer": "B. すべての分を動きに使うことと、練習全体を有効に使うことは同じではない。",
+      "evidence": "The captain learned that using every minute for movement did not always mean using the whole practice well for everyone.",
+      "evidenceJp": "キャプテンは、すべての時間を動くことに使うことが、必ずしも全員にとって練習全体を上手に使うことではないと学びました。",
+      "reason": "本文最後の結論を言い換えたものです。"
+    }
+  ]
+}
