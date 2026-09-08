@@ -3,7 +3,7 @@
   "officialBefore": 818,
   "targetAfterFullGates": 868,
   "registered": false,
-  "status": "ASSEMBLED_G2_DURABLE_RECOVERY_12_OF_17_PLUS_G1_011_015",
+  "status": "ASSEMBLED_G2_17_OF_17_AB_COMPLETE_PENDING_FAILCLOSED",
   "chronologyAllGradesPass": true,
   "passages": [
     {
@@ -4329,7 +4329,123 @@
           "japanese": "小さな変更で連絡が分かりやすくなりました。",
           "humanReview": "PENDING_BATCH14_SLASH_HUMAN"
         }
-      ]
+      ],
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. お知らせを長くした話",
+            "B. 重複する配信の原因を調べ、リストの役割を整理した話",
+            "C. 文化祭を中止した話",
+            "D. 配信リストを増やした話"
+          ],
+          "answer": "B. 重複する配信の原因を調べ、リストの役割を整理した話",
+          "evidence": "A small change made communication clearer.",
+          "evidenceJp": "小さな変更で連絡が分かりやすくなりました。",
+          "reason": "重複の原因を確認し、配信方法を整理して改善したことが中心です。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 同じお知らせが届いた二つの送信元はどこですか。",
+          "answer": "生徒会の配信リストとクラス行事のリスト。",
+          "evidence": "One copy came from the student council list, and another came from the class event list.",
+          "evidenceJp": "一通は生徒会の配信リストから、もう一通はクラス行事のリストからでした。",
+          "reason": "二つの送信元が直接書かれています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. 一部の生徒が二通とも注意して読んだのはなぜですか。",
+          "answer": "二通目に新しい情報があると思ったから。",
+          "evidence": "Some students thought the second message included new information, so they read both carefully.",
+          "evidenceJp": "二通目には新しい情報があると思った生徒もいたので、両方を注意して読みました。",
+          "reason": "同じ内容だと分かる前は、新情報があると考えたためです。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "4. アヤが二つのメッセージを比べて分かったことは何ですか。",
+          "answer": "すべての内容が同じだったこと。",
+          "evidence": "Aya compared the two messages and found that every detail was the same.",
+          "evidenceJp": "アヤが二つを比べると、内容はすべて同じでした。",
+          "reason": "重複であることを確認した場面です。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 改善後の運用として本文に合うものはどれですか。",
+          "choices": [
+            "A. 両方で一般連絡を送った。",
+            "B. 両方のリストを削除した。",
+            "C. 一つを一般連絡、もう一つをクラスの係連絡専用にした。",
+            "D. 先生だけに送るようにした。"
+          ],
+          "answer": "C. 一つを一般連絡、もう一つをクラスの係連絡専用にした。",
+          "evidence": "Before the next event, the class chose one list for general notices and kept the other only for messages about class jobs.",
+          "evidenceJp": "次の行事の前に、一般のお知らせには一つのリストだけを使い、もう一つはクラスの係の連絡専用にしました。",
+          "reason": "二つのリストの役割を分けました。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "REASON",
+          "prompt": "6. 同じお知らせが二度届いた原因は何ですか。",
+          "answer": "どちらのリストにも2年生全員が入っていたから。",
+          "evidence": "They learned that both lists included all second-year students.",
+          "evidenceJp": "調べると、どちらのリストにも2年生全員が入っていることが分かりました。",
+          "reason": "配信対象が重複していたためです。"
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "7. 『クラスは重複を防ぐため、二つのリストの（　）を分けた。』に入るものはどれですか。",
+          "choices": [
+            "A. 役割",
+            "B. 色",
+            "C. 長さ",
+            "D. 人数"
+          ],
+          "answer": "A. 役割",
+          "evidence": "Before the next event, the class chose one list for general notices and kept the other only for messages about class jobs.",
+          "evidenceJp": "次の行事の前に、一般のお知らせには一つのリストだけを使い、もう一つはクラスの係の連絡専用にしました。",
+          "reason": "一般連絡と係連絡に用途を分けています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "8. 各メッセージに送信元を示す短い一文を加えた目的は何ですか。",
+          "answer": "メッセージの目的を分かりやすくするため。",
+          "evidence": "The next notice arrived only once, and students could understand its purpose immediately.",
+          "evidenceJp": "次のお知らせは一度だけ届き、生徒たちは目的をすぐ理解できました。",
+          "reason": "変更後に目的をすぐ理解できるようになったためです。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "9. “purpose” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 目的",
+            "B. 場所",
+            "C. 人数",
+            "D. 時刻"
+          ],
+          "answer": "A. 目的",
+          "evidence": "The next notice arrived only once, and students could understand its purpose immediately.",
+          "evidenceJp": "次のお知らせは一度だけ届き、生徒たちは目的をすぐ理解できました。",
+          "reason": "お知らせが何のためのものかという意味です。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から学べることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 同じ情報は何度も送るほどよい。",
+            "B. 連絡経路の重なりを調べ、役割を整理すると分かりやすくなる。",
+            "C. リストは多いほどよい。",
+            "D. 原因を調べずに削除すればよい。"
+          ],
+          "answer": "B. 連絡経路の重なりを調べ、役割を整理すると分かりやすくなる。",
+          "evidence": "A small change made communication clearer.",
+          "evidenceJp": "小さな変更で連絡が分かりやすくなりました。",
+          "reason": "小さな運用変更で重複と分かりにくさが改善しました。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_HUMAN_RECOVERY_FULL_G2_20260908"
     },
     {
       "id": "V11-B14-G2-003",
@@ -5364,57 +5480,57 @@
         {
           "english": "The school library offered two ways to borrow a tablet.",
           "japanese": "学校の図書室には、タブレットを借りる方法が二つありました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "One card showed four written steps.",
-          "japanese": "一つのカードには四つの手順が文章で書かれ、もう一つには案内を開くQRコードがありました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "一つのカードには四つの手順が文章で書かれ、",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "Another had a QR code that opened a guide.",
-          "japanese": "上級生にはどちらの方法も使いやすいものでしたが、初めての利用者の多くは同じ質問をしていました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "もう一つには案内を開くQRコードがありました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "Either method worked well for older students, but many first-time users asked the same questions.",
-          "japanese": "ナナが様子を見ると問題に気付きました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "上級生にはどちらの方法も使いやすいものでしたが、初めての利用者の多くは同じ質問をしていました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "Nana watched them and noticed a problem.",
-          "japanese": "文章のカードは「端末番号」という言葉を、その番号の場所を示す前に使っていました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "ナナが様子を見ると問題に気付きました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "The written card used ‘device number’ before showing where that number was.",
-          "japanese": "一方、オンライン案内は番号を最初に示していましたが、返却の決まりが最後のページにありました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "文章のカードは「端末番号」という言葉を、その番号の場所を示す前に使っていました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "The online guide showed the number first but hid the return rule on its last page.",
-          "japanese": "委員会は良い部分を組み合わせました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "一方、オンライン案内は番号を最初に示していましたが、返却の決まりが最後のページにありました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "The committee combined the useful parts.",
-          "japanese": "新しいカードでは写真一枚、三つの短い手順、一つの明確な返却ルールを使いました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "委員会は良い部分を組み合わせました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "A new card used one photo, three short steps, and one clear return rule.",
-          "japanese": "詳しく知りたい人のためにQRコードも残しました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "新しいカードでは写真一枚、三つの短い手順、一つの明確な返却ルールを使いました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "A QR code remained for anyone wanting more detail.",
-          "japanese": "変更後、助けを求める利用者が減り、二つの借り方も残せました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "詳しく知りたい人のためにQRコードも残しました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "After the change, fewer users needed help, while both borrowing methods stayed available.",
-          "japanese": "",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "変更後、助けを求める利用者が減り、二つの借り方も残せました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         }
       ],
       "slashBoundaryDraft": {
@@ -5444,7 +5560,123 @@
           "変更後、助けを求める利用者が減り、二つの借り方も残せました。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. タブレットの貸出をやめた話",
+            "B. 二つの案内方法の良い点を組み合わせて借り方を分かりやすくした話",
+            "C. QRコードだけにした話",
+            "D. 上級生だけに貸した話"
+          ],
+          "answer": "B. 二つの案内方法の良い点を組み合わせて借り方を分かりやすくした話",
+          "evidence": "The committee combined the useful parts.",
+          "evidenceJp": "委員会は良い部分を組み合わせました。",
+          "reason": "二つの案内を比較し、良い部分を統合しています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 文章のカードの問題点は何ですか。",
+          "answer": "「端末番号」という言葉を、番号の場所を示す前に使っていたこと。",
+          "evidence": "The written card used ‘device number’ before showing where that number was.",
+          "evidenceJp": "文章のカードは「端末番号」という言葉を、その番号の場所を示す前に使っていました。",
+          "reason": "初めての利用者には語の意味が分かりにくい順序でした。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "3. オンライン案内の問題点は何ですか。",
+          "answer": "返却の決まりが最後のページに隠れていたこと。",
+          "evidence": "The online guide showed the number first but hid the return rule on its last page.",
+          "evidenceJp": "一方、オンライン案内は番号を最初に示していましたが、返却の決まりが最後のページにありました。",
+          "reason": "必要な返却情報が見つけにくい位置でした。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "4. 新しいカードについて本文に合うものはどれですか。",
+          "choices": [
+            "A. 写真は使わなかった。",
+            "B. 四つの長い手順だけを残した。",
+            "C. 写真一枚、三つの短い手順、一つの明確な返却ルールを使った。",
+            "D. QRコードを消した。"
+          ],
+          "answer": "C. 写真一枚、三つの短い手順、一つの明確な返却ルールを使った。",
+          "evidence": "A new card used one photo, three short steps, and one clear return rule.",
+          "evidenceJp": "新しいカードでは写真一枚、三つの短い手順、一つの明確な返却ルールを使いました。",
+          "reason": "新しいカードの構成が直接書かれています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "5. QRコードを残したのはなぜですか。",
+          "answer": "もっと詳しい情報を知りたい人のため。",
+          "evidence": "A QR code remained for anyone wanting more detail.",
+          "evidenceJp": "詳しく知りたい人のためにQRコードも残しました。",
+          "reason": "短いカードと詳しい案内を両立させています。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "INFERENCE",
+          "prompt": "6. 初めての利用者が同じ質問を多くしたことから何が分かりますか。",
+          "answer": "案内の出し方に共通の分かりにくさがあったこと。",
+          "evidence": "Either method worked well for older students, but many first-time users asked the same questions.",
+          "evidenceJp": "上級生にはどちらの方法も使いやすいものでしたが、初めての利用者の多くは同じ質問をしていました。",
+          "reason": "特定の人だけでなく複数の初回利用者が同じ点で困っています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. 委員会が一方の方法だけを残さなかったのはなぜだと考えられますか。",
+          "answer": "二つの方法それぞれに役立つ部分があったから。",
+          "evidence": "The committee combined the useful parts.",
+          "evidenceJp": "委員会は良い部分を組み合わせました。",
+          "reason": "一方を捨てず長所を統合しています。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "8. “available” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 利用できる",
+            "B. 壊れている",
+            "C. 隠れている",
+            "D. 遅れている"
+          ],
+          "answer": "A. 利用できる",
+          "evidence": "After the change, fewer users needed help, while both borrowing methods stayed available.",
+          "evidenceJp": "変更後、助けを求める利用者が減り、二つの借り方も残せました。",
+          "reason": "二つの方法が引き続き使える文脈です。"
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "9. 『委員会は二つの案内の良い点を合わせ、（　）を減らした。』に入るものはどれですか。",
+          "choices": [
+            "A. 助けを求める利用者",
+            "B. タブレットの台数",
+            "C. 図書室の席",
+            "D. 上級生"
+          ],
+          "answer": "A. 助けを求める利用者",
+          "evidence": "After the change, fewer users needed help, while both borrowing methods stayed available.",
+          "evidenceJp": "変更後、助けを求める利用者が減り、二つの借り方も残せました。",
+          "reason": "改善後の結果です。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から学べる改善方法として最も適切なものはどれですか。",
+          "choices": [
+            "A. 一つの方法をすぐ捨てる。",
+            "B. 利用者の困り方を見て、それぞれの方法の長所を組み合わせる。",
+            "C. 詳しい案内を全部隠す。",
+            "D. 初めての利用者を対象外にする。"
+          ],
+          "answer": "B. 利用者の困り方を見て、それぞれの方法の長所を組み合わせる。",
+          "evidence": "Nana watched them and noticed a problem.",
+          "evidenceJp": "ナナが様子を見ると問題に気付きました。",
+          "reason": "実際の利用者観察を出発点に改善しています。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_HUMAN_RECOVERY_FULL_G2_20260908"
     },
     {
       "id": "V11-B14-G2-006",
@@ -5635,72 +5867,72 @@
         {
           "english": "The student council was preparing a guide for visitors who used wheelchairs.",
           "japanese": "生徒会は、車いすを使う来校者向けの案内を準備していました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "Two routes led from the school gate to the hall.",
           "japanese": "校門からホールへは二つの道がありました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "Route A was thirty meters shorter, so the first draft called it the better route.",
           "japanese": "Aルートは30メートル短かったため、最初の案ではこちらを良い道としていました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "Before printing the guide, Miki suggested walking both routes after rain.",
           "japanese": "印刷前に、ミキが雨の後に両方を歩いてみようと提案しました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "The next wet morning, the team checked them with a teacher.",
           "japanese": "次の雨の朝、チームは先生と一緒に確認しました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "Route A crossed a smooth stone area near the garden.",
           "japanese": "Aルートは庭の近くの滑らかな石の場所を通ります。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "Water stayed there, and one part was slippery.",
           "japanese": "そこには水が残り、一部が滑りやすくなっていました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "Route B was longer, but it had a covered path and a gentle ramp with a rough surface.",
           "japanese": "Bルートは長いものの、屋根のある通路と、表面がざらざらした緩やかなスロープがありました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "The team also timed both routes.",
-          "japanese": "両方の時間も測ると、Bは2分長いだけでした。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "両方の時間も測ると、",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "Route B took only two minutes longer.",
-          "japanese": "そこで案内を変え、雨の日はBをすすめ、乾いた日にはAも使えるという注意を加えました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "Bは2分長いだけでした。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "They changed the guide to recommend Route B on rainy days and added a note about Route A for dry weather.",
-          "japanese": "最短の道が、いつも最も安全で便利とは限りませんでした。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "そこで案内を変え、雨の日はBをすすめ、乾いた日にはAも使えるという注意を加えました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "The shortest route was not always the safest or most useful one.",
-          "japanese": "チームは一方を良い道、もう一方を悪い道と決めつけず、両方の結果を案内に書きました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "最短の道が、いつも最も安全で便利とは限りませんでした。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "The team wrote both results in the guide instead of calling one route good and the other bad.",
-          "japanese": "そうすれば、雨の日のおすすめがなぜ違うのか来校者が理解し、天気を考えて選べます。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "チームは一方を良い道、もう一方を悪い道と決めつけず、両方の結果を案内に書きました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "That way, visitors could understand why the rainy-day recommendation was different and could choose with the weather in mind.",
-          "japanese": "",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "そうすれば、雨の日のおすすめがなぜ違うのか来校者が理解し、天気を考えて選べます。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         }
       ],
       "slashBoundaryDraft": {
@@ -5736,7 +5968,123 @@
           "そうすれば、雨の日のおすすめがなぜ違うのか来校者が理解し、天気を考えて選べます。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 最短ルートだけを紹介した話",
+            "B. 雨の日の安全性まで調べて来校者向け案内を改善した話",
+            "C. 校門を移した話",
+            "D. すべての来校者に同じ道だけを使わせた話"
+          ],
+          "answer": "B. 雨の日の安全性まで調べて来校者向け案内を改善した話",
+          "evidence": "They changed the guide to recommend Route B on rainy days and added a note about Route A for dry weather.",
+          "evidenceJp": "そこで案内を変え、雨の日はBをすすめ、乾いた日にはAも使えるという注意を加えました。",
+          "reason": "距離だけでなく天候時の安全性を反映して案内を変えています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "2. 最初の案でAルートが良いとされたのはなぜですか。",
+          "answer": "Bより30メートル短かったから。",
+          "evidence": "Route A was thirty meters shorter, so the first draft called it the better route.",
+          "evidenceJp": "Aルートは30メートル短かったため、最初の案ではこちらを良い道としていました。",
+          "reason": "最初は距離の短さで判断していました。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. ミキが雨の後に両方を歩くことを提案した意味は何ですか。",
+          "answer": "乾いた時だけでは分からない安全性を確かめるため。",
+          "evidence": "Before printing the guide, Miki suggested walking both routes after rain.",
+          "evidenceJp": "印刷前に、ミキが雨の後に両方を歩いてみようと提案しました。",
+          "reason": "雨天条件での実地確認を提案しています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "4. 雨の後のAルートにはどんな問題がありましたか。",
+          "answer": "水が残り、一部が滑りやすかったこと。",
+          "evidence": "Water stayed there, and one part was slippery.",
+          "evidenceJp": "そこには水が残り、一部が滑りやすくなっていました。",
+          "reason": "Aルートの具体的な危険です。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. Bルートについて本文に合うものはどれですか。",
+          "choices": [
+            "A. Aより30メートル短かった。",
+            "B. 雨の日には使えなかった。",
+            "C. 屋根のある通路と緩やかなスロープがあった。",
+            "D. Aより20分長くかかった。"
+          ],
+          "answer": "C. 屋根のある通路と緩やかなスロープがあった。",
+          "evidence": "Route B was longer, but it had a covered path and a gentle ramp with a rough surface.",
+          "evidenceJp": "Bルートは長いものの、屋根のある通路と、表面がざらざらした緩やかなスロープがありました。",
+          "reason": "Bルートの特徴が直接示されています。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "INFERENCE",
+          "prompt": "6. Bルートが2分長いだけだったことは判断にどう影響しましたか。",
+          "answer": "少し時間が増えても、雨の日の安全性を優先しやすくなった。",
+          "evidence": "Route B took only two minutes longer.",
+          "evidenceJp": "Bは2分長いだけでした。",
+          "reason": "時間差が小さいため安全性との比較でBを選びやすくなります。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. 案内でAルートも残したのはなぜですか。",
+          "answer": "乾いた日にはAも使えるから。",
+          "evidence": "They changed the guide to recommend Route B on rainy days and added a note about Route A for dry weather.",
+          "evidenceJp": "そこで案内を変え、雨の日はBをすすめ、乾いた日にはAも使えるという注意を加えました。",
+          "reason": "天候によって適切なルートが変わるためです。"
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "8. 『最短の道が、いつも（　）とは限らない。』に入るものはどれですか。",
+          "choices": [
+            "A. 最も安全で便利",
+            "B. 最も明るい",
+            "C. 最も新しい",
+            "D. 最も混雑している"
+          ],
+          "answer": "A. 最も安全で便利",
+          "evidence": "The shortest route was not always the safest or most useful one.",
+          "evidenceJp": "最短の道が、いつも最も安全で便利とは限りませんでした。",
+          "reason": "本文の結論です。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. AとBの両方の結果を案内に書いた目的として最も適切なものはどれですか。",
+          "choices": [
+            "A. どちらが常に正しいか決めるため。",
+            "B. 来校者が天気を考えて選べるようにするため。",
+            "C. 距離を隠すため。",
+            "D. 雨の日の案内をなくすため。"
+          ],
+          "answer": "B. 来校者が天気を考えて選べるようにするため。",
+          "evidence": "That way, visitors could understand why the rainy-day recommendation was different and could choose with the weather in mind.",
+          "evidenceJp": "そうすれば、雨の日のおすすめがなぜ違うのか来校者が理解し、天気を考えて選べます。",
+          "reason": "条件付きの推薦理由を理解して選択できるようにしています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から学べる判断方法として最も適切なものはどれですか。",
+          "choices": [
+            "A. 距離だけで決める。",
+            "B. 距離だけでなく、安全性・時間・天候を合わせて考える。",
+            "C. 雨の日も乾いた日も必ず同じ道にする。",
+            "D. 実際に歩いて確かめない。"
+          ],
+          "answer": "B. 距離だけでなく、安全性・時間・天候を合わせて考える。",
+          "evidence": "The shortest route was not always the safest or most useful one.",
+          "evidenceJp": "最短の道が、いつも最も安全で便利とは限りませんでした。",
+          "reason": "一つの条件だけでなく複数条件を考える必要を示しています。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_HUMAN_RECOVERY_FULL_G2_20260908"
     },
     {
       "id": "V11-B14-G2-007",
@@ -5902,57 +6250,57 @@
         {
           "english": "The lost-and-found box near the office stayed full for weeks.",
           "japanese": "職員室近くの落とし物箱は、何週間もいっぱいのままでした。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "Every Friday, the student council posted a list, but few owners came.",
           "japanese": "毎週金曜日、生徒会は一覧を出していましたが、持ち主はほとんど来ませんでした。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "Ryo interviewed six students about things they had lost.",
-          "japanese": "リョウが6人の生徒に、なくした物について話を聞くと、一覧が使いにくいと言われました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "リョウが6人の生徒に、なくした物について話を聞くと、",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "They said the list was hard to use.",
-          "japanese": "「小さい袋」「青い物」などの表現では、当てはまる物がいくつもあったのです。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "一覧が使いにくいと言われました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "It included words such as ‘small bag’ or ‘blue object,’ but several things matched them.",
-          "japanese": "生徒会は記録カードを変えました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "「小さい袋」「青い物」などの表現では、当てはまる物がいくつもあったのです。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "The council changed the recording card.",
-          "japanese": "拾った場所、特徴を一つ、日付を書くようにしました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "生徒会は記録カードを変えました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "Staff now wrote where an item was found, one special feature, and the date.",
-          "japanese": "たとえば「白い星の付いた青い筆箱、5月12日に体育館前で発見」とすれば分かりやすくなります。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "拾った場所、特徴を一つ、日付を書くようにしました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "For example, ‘blue pencil case with a white star, found by the gym on May 12’ was clear.",
-          "japanese": "次の2回の一覧には新しい情報を使いました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "たとえば「白い星の付いた青い筆箱、5月12日に体育館前で発見」とすれば分かりやすくなります。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "The next two lists used the new details.",
-          "japanese": "返却される物が増え、箱にはようやく空きができました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "次の2回の一覧には新しい情報を使いました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "More items were returned, and the box finally had space.",
-          "japanese": "注意を繰り返すだけより、情報を良くする方が効果的でした。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "返却される物が増え、箱にはようやく空きができました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "Better information worked better than reminders alone.",
-          "japanese": "",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "注意を繰り返すだけより、情報を良くする方が効果的でした。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         }
       ],
       "slashBoundaryDraft": {
@@ -5982,7 +6330,129 @@
           "注意を繰り返すだけより、情報を良くする方が効果的でした。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 落とし物箱を大きくした話",
+            "B. 落とし物一覧の情報を具体的にして返却を増やした話",
+            "C. 毎日の放送を増やした話",
+            "D. 落とし物を処分した話"
+          ],
+          "answer": "B. 落とし物一覧の情報を具体的にして返却を増やした話",
+          "evidence": "Better information worked better than reminders alone.",
+          "evidenceJp": "注意を繰り返すだけより、情報を良くする方が効果的でした。",
+          "reason": "一覧の情報改善が返却増加につながっています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. リョウは何人の生徒に話を聞きましたか。",
+          "answer": "6人。",
+          "evidence": "Ryo interviewed six students about things they had lost.",
+          "evidenceJp": "リョウが6人の生徒に、なくした物について話を聞くと、",
+          "reason": "人数が直接示されています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. 以前の一覧が使いにくかったのはなぜですか。",
+          "answer": "「小さい袋」「青い物」など、複数の物に当てはまる表現だったから。",
+          "evidence": "It included words such as ‘small bag’ or ‘blue object,’ but several things matched them.",
+          "evidenceJp": "「小さい袋」「青い物」などの表現では、当てはまる物がいくつもあったのです。",
+          "reason": "特徴が曖昧で自分の物か判断しにくかったためです。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "4. 新しい記録カードに書くようにした情報は何ですか。",
+          "answer": "拾った場所、特徴一つ、日付。",
+          "evidence": "Staff now wrote where an item was found, one special feature, and the date.",
+          "evidenceJp": "拾った場所、特徴を一つ、日付を書くようにしました。",
+          "reason": "新しい記録項目が直接書かれています。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 改善後について本文に合うものはどれですか。",
+          "choices": [
+            "A. 一覧を出すのをやめた。",
+            "B. 箱をもう一つ増やした。",
+            "C. 返却される物が増え、箱に空きができた。",
+            "D. 落とし物の説明を短くした。"
+          ],
+          "answer": "C. 返却される物が増え、箱に空きができた。",
+          "evidence": "More items were returned, and the box finally had space.",
+          "evidenceJp": "返却される物が増え、箱にはようやく空きができました。",
+          "reason": "改善後の結果です。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "REASON",
+          "prompt": "6. 「白い星の付いた青い筆箱」という例が分かりやすいのはなぜですか。",
+          "answer": "色だけでなく特別な特徴と場所・日付まで分かるから。",
+          "evidence": "For example, ‘blue pencil case with a white star, found by the gym on May 12’ was clear.",
+          "evidenceJp": "たとえば「白い星の付いた青い筆箱、5月12日に体育館前で発見」とすれば分かりやすくなります。",
+          "reason": "他の物と区別しやすい情報が増えています。"
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "7. 『生徒会は落とし物の一覧に、場所・特徴・（　）を加えた。』に入るものはどれですか。",
+          "choices": [
+            "A. 日付",
+            "B. 値段",
+            "C. 持ち主の住所",
+            "D. 教科"
+          ],
+          "answer": "A. 日付",
+          "evidence": "Staff now wrote where an item was found, one special feature, and the date.",
+          "evidenceJp": "拾った場所、特徴を一つ、日付を書くようにしました。",
+          "reason": "新しい三つの情報の一つです。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "8. “feature” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 名前",
+            "B. 特徴",
+            "C. 料金",
+            "D. 規則"
+          ],
+          "answer": "B. 特徴",
+          "evidence": "Staff now wrote where an item was found, one special feature, and the date.",
+          "evidenceJp": "拾った場所、特徴を一つ、日付を書くようにしました。",
+          "reason": "物を見分けるための特徴を指しています。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. 以前の一覧と新しい一覧の違いとして最も重要なのはどれですか。",
+          "choices": [
+            "A. 新しい一覧は毎日出した。",
+            "B. 新しい一覧は持ち物を区別できる具体的な情報が多い。",
+            "C. 新しい一覧は文字を少なくした。",
+            "D. 新しい一覧には日付がなかった。"
+          ],
+          "answer": "B. 新しい一覧は持ち物を区別できる具体的な情報が多い。",
+          "evidence": "The next two lists used the new details.",
+          "evidenceJp": "次の2回の一覧には新しい情報を使いました。",
+          "reason": "具体的な詳細を加えたことが改善点です。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から学べることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 一覧は短いほどよい。",
+            "B. 注意を繰り返すだけでなく、相手が判断できる情報を具体的にすることが大切。",
+            "C. 落とし物は箱を増やせば解決する。",
+            "D. 利用者に話を聞く必要はない。"
+          ],
+          "answer": "B. 注意を繰り返すだけでなく、相手が判断できる情報を具体的にすることが大切。",
+          "evidence": "Better information worked better than reminders alone.",
+          "evidenceJp": "注意を繰り返すだけより、情報を良くする方が効果的でした。",
+          "reason": "結論をそのまま一般化できます。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_HUMAN_RECOVERY_FULL_G2_20260908"
     },
     {
       "id": "V11-B14-G2-008",
@@ -6108,52 +6578,52 @@
         {
           "english": "The media club made a two-minute video to introduce school activities.",
           "japanese": "放送・メディア部は、学校の活動を紹介する2分間の動画を作りました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "During editing, the members checked the music and pictures many times.",
           "japanese": "編集のとき、部員は音楽や画像を何度も確認しました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "Before publishing it, they showed it to students in the cafeteria at lunch.",
           "japanese": "公開前に、昼食中の食堂で生徒たちに見てもらいました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "The room was noisy, and several students missed important names in the narration.",
           "japanese": "室内は騒がしく、何人かはナレーションに出てくる大切な名前を聞き逃しました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "One student said that key words on the screen would also help when a speaker talked quickly.",
           "japanese": "また、話す速度が速いときは重要な言葉が画面に出ると助かる、という意見もありました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "The club did not record the video again.",
-          "japanese": "部員は動画を撮り直さず、部名、活動日、大切な案内に短い字幕を加えました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "部員は動画を撮り直さず、",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "It added short captions for club names, meeting days, and important instructions.",
-          "japanese": "同じ食堂で新しい版を試すと、三つの簡単な質問に正しく答えられる生徒が増えました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "部名、活動日、大切な案内に短い字幕を加えました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "The members tested the new version in the same cafeteria.",
-          "japanese": "静かな編集室では見えなかった問題が、実際の場所でのテストによって分かりました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "同じ食堂で新しい版を試すと、",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "This time, more students answered three simple questions correctly.",
-          "japanese": "",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "三つの簡単な質問に正しく答えられる生徒が増えました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         },
         {
           "english": "The test showed a problem that was invisible in the quiet editing room.",
-          "japanese": "",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "静かな編集室では見えなかった問題が、実際の場所でのテストによって分かりました。",
+          "humanReview": "B14_SLASH_HUMAN_R12"
         }
       ],
       "slashBoundaryDraft": {
@@ -6180,7 +6650,129 @@
           "静かな編集室では見えなかった問題が、実際の場所でのテストによって分かりました。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 動画を長くした話",
+            "B. 実際の騒がしい場所で動画を試し、字幕を加えて分かりやすくした話",
+            "C. 音楽を削除した話",
+            "D. 食堂で動画制作を始めた話"
+          ],
+          "answer": "B. 実際の騒がしい場所で動画を試し、字幕を加えて分かりやすくした話",
+          "evidence": "The test showed a problem that was invisible in the quiet editing room.",
+          "evidenceJp": "静かな編集室では見えなかった問題が、実際の場所でのテストによって分かりました。",
+          "reason": "実利用環境で問題を見つけて改善しています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 最初の食堂テストで何が起きましたか。",
+          "answer": "何人かの生徒がナレーションの大切な名前を聞き逃した。",
+          "evidence": "The room was noisy, and several students missed important names in the narration.",
+          "evidenceJp": "室内は騒がしく、何人かはナレーションに出てくる大切な名前を聞き逃しました。",
+          "reason": "騒音下での理解不足が直接示されています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. 画面に重要な言葉を出すとよいという意見が出たのはなぜですか。",
+          "answer": "話す速度が速いときにも内容を理解しやすくなるから。",
+          "evidence": "One student said that key words on the screen would also help when a speaker talked quickly.",
+          "evidenceJp": "また、話す速度が速いときは重要な言葉が画面に出ると助かる、という意見もありました。",
+          "reason": "音声だけでは取りにくい情報を文字で補えます。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "4. 部員はどんな内容に字幕を加えましたか。",
+          "answer": "部名、活動日、大切な案内。",
+          "evidence": "It added short captions for club names, meeting days, and important instructions.",
+          "evidenceJp": "部名、活動日、大切な案内に短い字幕を加えました。",
+          "reason": "字幕の対象が直接示されています。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 改善後の結果として本文に合うものはどれですか。",
+          "choices": [
+            "A. 動画を撮り直した。",
+            "B. 食堂でのテストをやめた。",
+            "C. 三つの簡単な質問に正しく答える生徒が増えた。",
+            "D. 字幕を削除した。"
+          ],
+          "answer": "C. 三つの簡単な質問に正しく答える生徒が増えた。",
+          "evidence": "This time, more students answered three simple questions correctly.",
+          "evidenceJp": "三つの簡単な質問に正しく答えられる生徒が増えました。",
+          "reason": "新しい版の理解度が上がった結果です。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "INFERENCE",
+          "prompt": "6. 部員が動画を撮り直さず字幕を追加したことから何が分かりますか。",
+          "answer": "元の映像を生かしながら、情報の受け取りやすさを改善した。",
+          "evidence": "The club did not record the video again.",
+          "evidenceJp": "部員は動画を撮り直さず、",
+          "reason": "大きく作り直さず必要部分を補いました。"
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "7. 『静かな編集室では見えなかった問題は、（　）でのテストで分かった。』に入るものはどれですか。",
+          "choices": [
+            "A. 昼食中の食堂",
+            "B. 静かな図書室",
+            "C. 職員室",
+            "D. 体育館の倉庫"
+          ],
+          "answer": "A. 昼食中の食堂",
+          "evidence": "Before publishing it, they showed it to students in the cafeteria at lunch.",
+          "evidenceJp": "公開前に、昼食中の食堂で生徒たちに見てもらいました。",
+          "reason": "実際の利用環境を表します。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "8. “captions” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 写真",
+            "B. 字幕",
+            "C. 座席",
+            "D. 音楽"
+          ],
+          "answer": "B. 字幕",
+          "evidence": "It added short captions for club names, meeting days, and important instructions.",
+          "evidenceJp": "部名、活動日、大切な案内に短い字幕を加えました。",
+          "reason": "音声情報を画面上の文字で補うものです。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. 最初の食堂テストと2回目の食堂テストを比べて分かることはどれですか。",
+          "choices": [
+            "A. 騒音が完全になくなった。",
+            "B. 字幕追加後は内容理解が改善した。",
+            "C. 動画時間が2倍になった。",
+            "D. 質問数が減った。"
+          ],
+          "answer": "B. 字幕追加後は内容理解が改善した。",
+          "evidence": "This time, more students answered three simple questions correctly.",
+          "evidenceJp": "三つの簡単な質問に正しく答えられる生徒が増えました。",
+          "reason": "同じ場所で再テストし、改善後の理解度が上がっています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から学べることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 編集室で確認すれば十分。",
+            "B. 制作環境だけでなく、実際に使われる環境で試すことが重要。",
+            "C. 字幕は常に不要。",
+            "D. 音声だけを大きくすればよい。"
+          ],
+          "answer": "B. 制作環境だけでなく、実際に使われる環境で試すことが重要。",
+          "evidence": "The test showed a problem that was invisible in the quiet editing room.",
+          "evidenceJp": "静かな編集室では見えなかった問題が、実際の場所でのテストによって分かりました。",
+          "reason": "実環境テストの重要性が結論です。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_HUMAN_RECOVERY_FULL_G2_20260908"
     },
     {
       "id": "V11-B14-G2-009",
