@@ -1,0 +1,187 @@
+{
+  "batch": "V11-B14",
+  "passageId": "V11-B14-G2-013",
+  "title": "The Door That Looked Closed",
+  "status": "slash-repair-and-question-authoring",
+  "sourceAssembledSha": "4ae58ebac1d53163d825cc3047385e6ff8dd1c0b",
+  "bodyChanged": false,
+  "slashRows": [
+    {
+      "english": "A meeting room at the community center had a glass door.",
+      "japanese": "地域センターの会議室にはガラスのドアがありました。",
+      "humanReview": "B14_G2_013_SLASH_HUMAN_R8"
+    },
+    {
+      "english": "During an open event, several visitors looked through it and walked away even though the room was open.",
+      "japanese": "公開行事の日、部屋は開いているのに、何人もの来場者が中を見てそのまま離れていきました。",
+      "humanReview": "B14_G2_013_SLASH_HUMAN_R8"
+    },
+    {
+      "english": "A sign said, ‘Please close this door after entering.’",
+      "japanese": "表示には「入った後はこのドアを閉めてください」と書かれていました。",
+      "humanReview": "B14_G2_013_SLASH_HUMAN_R8"
+    },
+    {
+      "english": "From a distance, people noticed only the large word ‘close.’",
+      "japanese": "遠くからは大きな「閉める」という言葉だけが目立っていました。",
+      "humanReview": "B14_G2_013_SLASH_HUMAN_R8"
+    },
+    {
+      "english": "Student volunteers tested a clearer sign: ‘OPEN — Please enter. Close the door behind you.’",
+      "japanese": "学生ボランティアは「開室中―お入りください。入った後にドアを閉めてください」という、より明確な表示を試しました。",
+      "humanReview": "B14_G2_013_SLASH_HUMAN_R8"
+    },
+    {
+      "english": "They placed ‘OPEN’ at eye level and moved the smaller instruction below it.",
+      "japanese": "「開室中」を目の高さに置き、細かな指示をその下にしました。",
+      "humanReview": "B14_G2_013_SLASH_HUMAN_R8"
+    },
+    {
+      "english": "During the next hour, the door remained closed as required, but visitors entered without asking whether the room was available.",
+      "japanese": "次の1時間、必要どおりドアは閉まったままでしたが、来場者は部屋が使えるか尋ねずに入ってきました。",
+      "humanReview": "B14_G2_013_SLASH_HUMAN_R8"
+    },
+    {
+      "english": "The problem was not the glass door or the rule.",
+      "japanese": "問題はガラスのドアでも決まりでもありませんでした。",
+      "humanReview": "B14_G2_013_SLASH_HUMAN_R8"
+    },
+    {
+      "english": "The order and size of the words had given the wrong first message.",
+      "japanese": "言葉の順番と大きさが最初に誤った印象を与えていたのです。",
+      "humanReview": "B14_G2_013_SLASH_HUMAN_R8"
+    }
+  ],
+  "questionsA": [
+    {
+      "type": "GIST",
+      "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+      "choices": [
+        "A. ガラスのドアを木のドアに替えた話",
+        "B. 表示の言葉の順番と大きさを変えて、来場者の誤解を減らした話",
+        "C. 会議室を閉鎖した話",
+        "D. ドアを開けたままにする決まりへ変えた話"
+      ],
+      "answer": "B. 表示の言葉の順番と大きさを変えて、来場者の誤解を減らした話",
+      "evidence": "The order and size of the words had given the wrong first message.",
+      "evidenceJp": "言葉の順番と大きさが最初に誤った印象を与えていたのです。",
+      "reason": "問題の原因を表示の見せ方に特定し、改善して来場者の行動が変わったことが中心です。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "2. 最初の表示を見た来場者が部屋から離れていったのはなぜですか。",
+      "answer": "遠くからは大きな「close」という語だけが目立ち、部屋が閉まっているように受け取ったから。",
+      "evidence": "From a distance, people noticed only the large word ‘close.’",
+      "evidenceJp": "遠くからは大きな「閉める」という言葉だけが目立っていました。",
+      "reason": "来場者が最初に受け取った情報が「閉める」だったことが誤解の直接原因です。"
+    },
+    {
+      "type": "DETAIL",
+      "prompt": "3. 最初の表示には何と書かれていましたか。",
+      "choices": [
+        "A. OPEN — Please enter.",
+        "B. Please close this door after entering.",
+        "C. Do not use this room.",
+        "D. Keep this door open."
+      ],
+      "answer": "B. Please close this door after entering.",
+      "evidence": "A sign said, ‘Please close this door after entering.’",
+      "evidenceJp": "表示には「入った後はこのドアを閉めてください」と書かれていました。",
+      "reason": "最初の表示文が本文にそのまま示されています。"
+    },
+    {
+      "type": "CONTENT_MATCH",
+      "prompt": "4. 新しい表示について本文に合うものを選びなさい。",
+      "choices": [
+        "A. 「OPEN」を小さく下に置いた。",
+        "B. 「close」だけを大きくした。",
+        "C. 「OPEN」を目の高さに置き、細かな指示をその下にした。",
+        "D. ドアを開けたままにするよう指示した。"
+      ],
+      "answer": "C. 「OPEN」を目の高さに置き、細かな指示をその下にした。",
+      "evidence": "They placed ‘OPEN’ at eye level and moved the smaller instruction below it.",
+      "evidenceJp": "「開室中」を目の高さに置き、細かな指示をその下にしました。",
+      "reason": "新しい表示の配置が直接書かれています。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "5. 改善後もドアが閉まったままだったことから、何が分かりますか。",
+      "choices": [
+        "A. 元の「入った後は閉める」という決まり自体は守れるものだった。",
+        "B. 来場者は表示を全く読まなかった。",
+        "C. 会議室は本当は使えなかった。",
+        "D. ガラスのドアが壊れていた。"
+      ],
+      "answer": "A. 元の「入った後は閉める」という決まり自体は守れるものだった。",
+      "evidence": "During the next hour, the door remained closed as required, but visitors entered without asking whether the room was available.",
+      "evidenceJp": "次の1時間、必要どおりドアは閉まったままでしたが、来場者は部屋が使えるか尋ねずに入ってきました。",
+      "reason": "表示を改善してもドアを閉める行動は維持されたため、問題は決まりではなく伝え方だったと分かります。"
+    }
+  ],
+  "questionsB": [
+    {
+      "type": "SUMMARY_FILL",
+      "prompt": "6. 要約の空所に入るものを選びなさい。『ボランティアは、最初に伝わる内容を変えるため、（　）を目の高さに置いた。』",
+      "choices": [
+        "A. CLOSE",
+        "B. OPEN",
+        "C. GLASS",
+        "D. RULE"
+      ],
+      "answer": "B. OPEN",
+      "evidence": "They placed ‘OPEN’ at eye level and moved the smaller instruction below it.",
+      "evidenceJp": "「開室中」を目の高さに置き、細かな指示をその下にしました。",
+      "reason": "新しい表示で最優先して見せた語を問う要約問題です。"
+    },
+    {
+      "type": "CONTEXT_WORD",
+      "prompt": "7. 本文中の “available” に最も近い意味はどれですか。",
+      "choices": [
+        "A. 利用できる",
+        "B. 壊れている",
+        "C. 混雑している",
+        "D. 予約された"
+      ],
+      "answer": "A. 利用できる",
+      "evidence": "visitors entered without asking whether the room was available.",
+      "evidenceJp": "来場者は部屋が使えるか尋ねずに入ってきました。",
+      "reason": "部屋に入ってよいか・使えるかを尋ねる文脈なので「利用できる」が適切です。"
+    },
+    {
+      "type": "REASON",
+      "prompt": "8. 「OPEN」を目の高さに置いたのはなぜですか。",
+      "answer": "来場者が最初に部屋が開いていることを分かるようにするため。",
+      "evidence": "They placed ‘OPEN’ at eye level and moved the smaller instruction below it.",
+      "evidenceJp": "「開室中」を目の高さに置き、細かな指示をその下にしました。",
+      "reason": "遠くから最初に見える情報が誤解を生んでいたため、利用可を先に伝える配置へ変えています。"
+    },
+    {
+      "type": "MATERIAL_LINK",
+      "prompt": "9. 改善前と改善後の来場者の行動を比べると、表示変更の効果として最も適切なものはどれですか。",
+      "choices": [
+        "A. 来場者が部屋を避けるようになった。",
+        "B. 来場者は入室できるか尋ねずに入り、同時にドアを閉める決まりも守られた。",
+        "C. ドアを開けたままにする人が増えた。",
+        "D. 会議室を利用する人がいなくなった。"
+      ],
+      "answer": "B. 来場者は入室できるか尋ねずに入り、同時にドアを閉める決まりも守られた。",
+      "evidence": "During the next hour, the door remained closed as required, but visitors entered without asking whether the room was available.",
+      "evidenceJp": "次の1時間、必要どおりドアは閉まったままでしたが、来場者は部屋が使えるか尋ねずに入ってきました。",
+      "reason": "利用可の理解とドアを閉めるルールの両立が改善後の成果です。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "10. この話から、案内表示を作るときに重要だと考えられることはどれですか。",
+      "choices": [
+        "A. すべての文字を同じ大きさにすること",
+        "B. 最も重要な最初のメッセージを目立たせ、その後に細かな指示を示すこと",
+        "C. 指示は一語だけにすること",
+        "D. ルールがある場所では「OPEN」と書かないこと"
+      ],
+      "answer": "B. 最も重要な最初のメッセージを目立たせ、その後に細かな指示を示すこと",
+      "evidence": "The order and size of the words had given the wrong first message.",
+      "evidenceJp": "言葉の順番と大きさが最初に誤った印象を与えていたのです。",
+      "reason": "本文は内容そのものではなく、情報の優先順位と見せ方が理解を左右したと示しています。"
+    }
+  ]
+}
