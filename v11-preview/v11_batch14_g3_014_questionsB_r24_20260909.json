@@ -1,0 +1,78 @@
+{
+  "id": "V11-B14-G3-014",
+  "title": "The Evacuation Center Supply Choice",
+  "set": "B",
+  "authoring": "B14_G3_HUMAN_R24_20260909",
+  "questionSetB": [
+    {
+      "type": "SUMMARY_FILL",
+      "prompt": "6. 『この計画は、物資を同じ割合に分けるのではなく、（　）などを考えて決めた。』に入る内容として最も適切なものはどれですか。",
+      "choices": [
+        "A. 予想人数・夜の危険・保管場所・部屋の役割",
+        "B. 生徒の好き嫌いだけ",
+        "C. 倉庫の色",
+        "D. 学校の授業時間だけ"
+      ],
+      "answer": "A. 予想人数・夜の危険・保管場所・部屋の役割",
+      "evidence": "It considered expected people, night-time risk, storage space, room function, and the possibility that transport would stop.",
+      "evidenceJp": "予想される人数、夜の危険、保管場所、部屋の役割、交通が止まる可能性を一緒に考えました。",
+      "reason": "最終段落で、数量判断に使った条件が列挙されています。"
+    },
+    {
+      "type": "PHRASE_FILL",
+      "prompt": "7. 薬に関係する機器はどこに置く計画でしたか。",
+      "choices": [
+        "A. 鍵のない体育館",
+        "B. コンセントのある保健室",
+        "C. 倉庫の外",
+        "D. 入口の廊下"
+      ],
+      "answer": "B. コンセントのある保健室",
+      "evidence": "Four hygiene boxes would go into the locked classroom cabinets, and medicine-related equipment would be placed in the nurse's room near power outlets.",
+      "evidenceJp": "衛生用品は4箱を鍵付きの教室棚へ入れ、薬に関係する機器はコンセントのある保健室に置きます。",
+      "reason": "部屋の機能に合わせて置き場所を選んでいます。"
+    },
+    {
+      "type": "SENTENCE_INSERTION",
+      "prompt": "8. 『They made a priority plan.』の直後に続く内容として最も適切なものはどれですか。",
+      "choices": [
+        "A. 夜間の追加輸送リスクを考え、マットと毛布をすべて先に運ぶ",
+        "B. すべての物資を半分ずつ運ぶことに戻す",
+        "C. 水だけを運び、他はすべて残す",
+        "D. 何も運ばず翌朝まで待つ"
+      ],
+      "answer": "A. 夜間の追加輸送リスクを考え、マットと毛布をすべて先に運ぶ",
+      "evidence": "All sixty mats and all eighty blankets would go first because the storm could prevent another trip during the night.",
+      "evidenceJp": "夜間に嵐で追加の輸送ができなくなる可能性があるため、マット60枚と毛布80枚はすべて先に運びます。",
+      "reason": "優先順位を決めた直後に、最優先の物資とその理由が示されています。"
+    },
+    {
+      "type": "MATERIAL_LINK",
+      "prompt": "9. 予報表の情報が物資計画に最も直接影響した点はどれですか。",
+      "choices": [
+        "A. 午後9時から午前2時ごろまで強風で追加配送が難しくなる可能性",
+        "B. 翌日は必ず晴れるという情報",
+        "C. 台風がすでに完全に去ったという情報",
+        "D. 気温が急上昇するという情報"
+      ],
+      "answer": "A. 午後9時から午前2時ごろまで強風で追加配送が難しくなる可能性",
+      "evidence": "A second delivery from the warehouse could not be promised during that period.",
+      "evidenceJp": "その間に倉庫から二度目の配送ができる保証はありません。",
+      "reason": "夜間の輸送不能リスクが、先に運ぶ物資量を増やす判断につながっています。"
+    },
+    {
+      "type": "INFERENCE",
+      "prompt": "10. このチームの判断方法から学べることとして最も適切なものはどれですか。",
+      "choices": [
+        "A. 数量は常に均等配分すればよい",
+        "B. 複数の資料と条件を照合し、必要に応じて計画を更新することが大切である",
+        "C. 一つの資料だけを見れば十分である",
+        "D. 物資の種類は考えなくてよい"
+      ],
+      "answer": "B. 複数の資料と条件を照合し、必要に応じて計画を更新することが大切である",
+      "evidence": "They also marked the quantities as a first plan, not a fixed answer.",
+      "evidenceJp": "また、数量は固定した答えではなく最初の計画だと明記しました。",
+      "reason": "状況に応じて再評価する前提で、複数条件から優先順位を決めているためです。"
+    }
+  ]
+}
