@@ -3,7 +3,7 @@
   "officialBefore": 818,
   "targetAfterFullGates": 868,
   "registered": false,
-  "status": "ASSEMBLED_G2_PASS_G1_001_006_AB_COMPLETE",
+  "status": "ASSEMBLED_G1_G2_34_OF_34_AB_COMPLETE_PENDING_G1_FAILCLOSED",
   "chronologyAllGradesPass": true,
   "passages": [
     {
@@ -1972,57 +1972,67 @@
         {
           "english": "Nao heard a small bell in the hallway just after lunch.",
           "japanese": "ナオは昼食のすぐ後、廊下で小さなベルの音を聞きました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "It was not the usual school bell, and no one in her class moved.",
           "japanese": "いつもの学校のベルではなく、クラスの誰も動きませんでした。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "She wondered where the sound came from.",
           "japanese": "ナオはどこから聞こえたのだろうと思いました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "At 1:05, she heard it again near the library.",
           "japanese": "1時5分、図書室の近くでまた音がしました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Nao looked at a notice beside the library door.",
-          "japanese": "図書室のドアの横の掲示には「読書週間の本の返却：1時〜1時15分」とありました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "ナオは図書室のドアの横の掲示を見ました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
-          "english": "It said, “Reading Week book return: 1:00-1:15.” It also said, “Ring the small desk bell when the return box is full.” Nao then saw two students carrying books to the desk.",
+          "english": "It said, “Reading Week book return: 1:00-1:15.”",
+          "japanese": "そこには「読書週間の本の返却：1時〜1時15分」とありました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
+        },
+        {
+          "english": "It also said, “Ring the small desk bell when the return box is full.”",
           "japanese": "さらに「返却箱がいっぱいになったら小さな卓上ベルを鳴らしてください」と書かれていました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
+        },
+        {
+          "english": "Nao then saw two students carrying books to the desk.",
+          "japanese": "ナオは本を机へ運ぶ二人の生徒も見ました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "She understood that the sound was not an emergency signal.",
-          "japanese": "ナオは本を机へ運ぶ二人の生徒も見ました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "それで、その音が緊急の合図ではないと分かりました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "She returned her own book and helped the librarian place an empty box beside the desk.",
-          "japanese": "それで、その音が緊急の合図ではないと分かりました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "自分の本を返し、司書が空の箱を机のそばに置くのを手伝いました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "The time, the notice, and the students' actions all explained the bell.",
-          "japanese": "自分の本を返し、司書が空の箱を机のそばに置くのを手伝いました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "時間、掲示、生徒たちの行動がすべてベルの理由を示していました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "The empty box arrived, and the bell stopped.",
-          "japanese": "時間、掲示、生徒たちの行動がすべてベルの理由を示していました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "空の箱が届くとベルは止まりました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "This matched the notice exactly.",
-          "japanese": "空の箱が届くとベルは止まりました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "この様子も掲示の説明とぴったり合っていました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         }
       ],
       "slashBoundaryDraft": {
@@ -2056,7 +2066,123 @@
           "この様子も掲示の説明とぴったり合っていました。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 緊急ベルが鳴った話",
+            "B. ナオが時間・掲示・生徒の行動から小さなベルの意味を理解した話",
+            "C. 図書室が閉まった話",
+            "D. 学校のベルを直した話"
+          ],
+          "answer": "B. ナオが時間・掲示・生徒の行動から小さなベルの意味を理解した話",
+          "evidence": "The time, the notice, and the students' actions all explained the bell.",
+          "evidenceJp": "時間、掲示、生徒たちの行動がすべてベルの理由を示していました。",
+          "reason": "複数の手がかりからベルの意味を特定したことが中心です。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. ナオが図書室近くでベルを再び聞いたのは何時でしたか。",
+          "answer": "1時5分。",
+          "evidence": "At 1:05, she heard it again near the library.",
+          "evidenceJp": "1時5分、図書室の近くでまた音がしました。",
+          "reason": "時刻が直接示されています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "3. 掲示には返却箱がいっぱいになったとき何をするよう書かれていましたか。",
+          "answer": "小さな卓上ベルを鳴らす。",
+          "evidence": "It also said, “Ring the small desk bell when the return box is full.”",
+          "evidenceJp": "さらに「返却箱がいっぱいになったら小さな卓上ベルを鳴らしてください」と書かれていました。",
+          "reason": "掲示の指示です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "4. ナオがベルを緊急の合図ではないと分かったのはなぜですか。",
+          "answer": "掲示の内容と、本を運ぶ生徒たちの行動が一致していたから。",
+          "evidence": "Nao then saw two students carrying books to the desk. / She understood that the sound was not an emergency signal.",
+          "evidenceJp": "ナオは本を机へ運ぶ二人の生徒も見ました。 / それで、その音が緊急の合図ではないと分かりました。",
+          "reason": "状況と掲示が同じ説明を示しています。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 本文の内容に合うものを選びなさい。",
+          "choices": [
+            "A. ベルは一日中鳴り続けた。",
+            "B. ナオは図書室を離れた。",
+            "C. 空の箱が届くとベルは止まった。",
+            "D. 緊急放送が始まった。"
+          ],
+          "answer": "C. 空の箱が届くとベルは止まった。",
+          "evidence": "The empty box arrived, and the bell stopped.",
+          "evidenceJp": "空の箱が届くとベルは止まりました。",
+          "reason": "掲示の説明と一致する結果です。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『ベルは、返却箱が（　）ことを知らせるために鳴らされていた。』に入るものはどれですか。",
+          "choices": [
+            "A. いっぱいになった",
+            "B. 空になった",
+            "C. 壊れた",
+            "D. 移動した"
+          ],
+          "answer": "A. いっぱいになった",
+          "evidence": "It also said, “Ring the small desk bell when the return box is full.”",
+          "evidenceJp": "さらに「返却箱がいっぱいになったら小さな卓上ベルを鳴らしてください」と書かれていました。",
+          "reason": "ベルを鳴らす条件が直接示されています。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "7. “emergency signal” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 読書時間",
+            "B. 緊急の合図",
+            "C. 返却表",
+            "D. 授業開始"
+          ],
+          "answer": "B. 緊急の合図",
+          "evidence": "She understood that the sound was not an emergency signal.",
+          "evidenceJp": "それで、その音が緊急の合図ではないと分かりました。",
+          "reason": "文脈そのものです。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "8. 1時5分という時刻と掲示の返却時間を合わせると何が分かりますか。",
+          "answer": "ベルが本の返却時間中に鳴っていたこと。",
+          "evidence": "At 1:05, she heard it again near the library. / It said, “Reading Week book return: 1:00-1:15.”",
+          "evidenceJp": "1時5分、図書室の近くでまた音がしました。 / そこには「読書週間の本の返却：1時〜1時15分」とありました。",
+          "reason": "時刻が掲示の時間帯の中にあります。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "9. ナオが司書を手伝って空箱を置いたのはなぜですか。",
+          "answer": "返却箱がいっぱいになった状況を解消するため。",
+          "evidence": "She returned her own book and helped the librarian place an empty box beside the desk.",
+          "evidenceJp": "自分の本を返し、司書が空の箱を机のそばに置くのを手伝いました。",
+          "reason": "ベルの原因に対応する行動です。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から学べることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 不明な音はすぐ緊急だと考える。",
+            "B. 不明な合図は、時間・掲示・周囲の行動を合わせて確かめるとよい。",
+            "C. 掲示は読まない。",
+            "D. 時刻は関係ない。"
+          ],
+          "answer": "B. 不明な合図は、時間・掲示・周囲の行動を合わせて確かめるとよい。",
+          "evidence": "The time, the notice, and the students' actions all explained the bell.",
+          "evidenceJp": "時間、掲示、生徒たちの行動がすべてベルの理由を示していました。",
+          "reason": "複数情報を合わせる判断方法が示されています。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_G1_HUMAN_R14_20260908"
     },
     {
       "id": "V11-B14-G1-008",
@@ -2145,44 +2271,54 @@
       ],
       "slashRows": [
         {
-          "english": "The teacher said to Riku, “Please give out these English worksheets.” He found two piles on the teacher's desk.",
+          "english": "The teacher said to Riku, “Please give out these English worksheets.”",
           "japanese": "先生はリクに「この英語のプリントを配ってください」と言いました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
+        },
+        {
+          "english": "He found two piles on the teacher's desk.",
+          "japanese": "先生の机には二つの束がありました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "The first pile started on page 32, but the second started on page 34.",
-          "japanese": "先生の机には二つの束がありました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "一つ目は32ページから、二つ目は34ページから始まっていました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Both had the same lesson title.",
-          "japanese": "一つ目は32ページから、二つ目は34ページから始まっていました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "どちらにも同じ授業名が書かれていました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Riku almost mixed the piles together.",
-          "japanese": "どちらにも同じ授業名が書かれていました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "リクは危うく二つを混ぜそうになりました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Then he looked at the board.",
-          "japanese": "リクは危うく二つを混ぜそうになりましたが、黒板には「今日：32〜33ページ。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "そこで黒板を見ました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
-          "english": "On the board, he saw, ‘Today: pages 32-33.",
-          "japanese": "次の授業：34〜35ページ」とありました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "english": "On the board, he saw, ‘Today: pages 32-33. Next class: pages 34-35.’",
+          "japanese": "黒板には「今日：32〜33ページ。次の授業：34〜35ページ」とありました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
-          "english": "Next class: pages 34-35.’ Riku gave his classmates the first pile and left the second pile on the desk.",
+          "english": "Riku gave his classmates the first pile and left the second pile on the desk.",
           "japanese": "リクは一つ目の束をクラスのみんなに配り、二つ目は机に残しました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
-          "english": "The teacher came in and said, “Thank you for checking.” A small page number stopped a simple mistake.",
+          "english": "The teacher came in and said, “Thank you for checking.”",
           "japanese": "先生は教室に来て、「確認してくれてありがとう」と言いました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
+        },
+        {
+          "english": "A small page number stopped a simple mistake.",
+          "japanese": "小さなページ番号のおかげで、簡単な間違いを防げました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         }
       ],
       "slashBoundaryDraft": {
@@ -2211,7 +2347,123 @@
           "小さなページ番号のおかげで、簡単な間違いを防げました。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. プリントを作り直した話",
+            "B. リクがページ番号と黒板を確認して正しいプリントを配った話",
+            "C. 授業を休んだ話",
+            "D. 黒板を消した話"
+          ],
+          "answer": "B. リクがページ番号と黒板を確認して正しいプリントを配った話",
+          "evidence": "A small page number stopped a simple mistake.",
+          "evidenceJp": "小さなページ番号のおかげで、簡単な間違いを防げました。",
+          "reason": "似た束をページ番号で区別したことが中心です。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 一つ目と二つ目の束は何ページから始まっていましたか。",
+          "answer": "一つ目は32ページ、二つ目は34ページ。",
+          "evidence": "The first pile started on page 32, but the second started on page 34.",
+          "evidenceJp": "一つ目は32ページから、二つ目は34ページから始まっていました。",
+          "reason": "ページ番号が直接示されています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. リクが二つの束を混ぜそうになったのはなぜですか。",
+          "answer": "どちらにも同じ授業名が書かれていたから。",
+          "evidence": "Both had the same lesson title.",
+          "evidenceJp": "どちらにも同じ授業名が書かれていました。",
+          "reason": "見出しだけでは区別しにくかったためです。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "4. 黒板には今日使うページとして何と書かれていましたか。",
+          "answer": "32〜33ページ。",
+          "evidence": "On the board, he saw, ‘Today: pages 32-33. Next class: pages 34-35.’",
+          "evidenceJp": "黒板には「今日：32〜33ページ。次の授業：34〜35ページ」とありました。",
+          "reason": "今日の範囲が直接示されています。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 本文の内容に合うものを選びなさい。",
+          "choices": [
+            "A. 34ページの束を配った。",
+            "B. 二つの束を混ぜた。",
+            "C. リクは32ページから始まる束を配った。",
+            "D. 黒板を見なかった。"
+          ],
+          "answer": "C. リクは32ページから始まる束を配った。",
+          "evidence": "Riku gave his classmates the first pile and left the second pile on the desk.",
+          "evidenceJp": "リクは一つ目の束をクラスのみんなに配り、二つ目は机に残しました。",
+          "reason": "一つ目が今日の32〜33ページ用です。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『リクは同じ授業名の二つの束を、（　）で見分けた。』に入るものはどれですか。",
+          "choices": [
+            "A. ページ番号と黒板の予定",
+            "B. 紙の色",
+            "C. 先生の席",
+            "D. 天気"
+          ],
+          "answer": "A. ページ番号と黒板の予定",
+          "evidence": "On the board, he saw, ‘Today: pages 32-33. Next class: pages 34-35.’",
+          "evidenceJp": "黒板には「今日：32〜33ページ。次の授業：34〜35ページ」とありました。",
+          "reason": "ページ番号と授業予定を照合しています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. 二つ目の束を机に残したのはなぜですか。",
+          "answer": "次の授業で使う34〜35ページの束だったから。",
+          "evidence": "On the board, he saw, ‘Today: pages 32-33. Next class: pages 34-35.’",
+          "evidenceJp": "黒板には「今日：32〜33ページ。次の授業：34〜35ページ」とありました。",
+          "reason": "次回用だと確認できたためです。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "8. “pile” に最も近い意味はどれですか。",
+          "choices": [
+            "A. ページ",
+            "B. 束",
+            "C. 黒板",
+            "D. 授業"
+          ],
+          "answer": "B. 束",
+          "evidence": "He found two piles on the teacher's desk.",
+          "evidenceJp": "先生の机には二つの束がありました。",
+          "reason": "プリントのまとまりを指しています。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. プリントの開始ページと黒板の情報を合わせると何が分かりましたか。",
+          "answer": "32ページからの束が今日用、34ページからの束が次回用だと分かった。",
+          "evidence": "The first pile started on page 32, but the second started on page 34. / On the board, he saw, ‘Today: pages 32-33. Next class: pages 34-35.’",
+          "evidenceJp": "一つ目は32ページから、二つ目は34ページから始まっていました。 / 黒板には「今日：32〜33ページ。次の授業：34〜35ページ」とありました。",
+          "reason": "二つの情報が対応します。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から学べることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 同じタイトルなら混ぜてよい。",
+            "B. 見た目が似た資料でも、細かな番号や予定を確認すると間違いを防げる。",
+            "C. ページ番号は不要。",
+            "D. 黒板は見ない方がよい。"
+          ],
+          "answer": "B. 見た目が似た資料でも、細かな番号や予定を確認すると間違いを防げる。",
+          "evidence": "A small page number stopped a simple mistake.",
+          "evidenceJp": "小さなページ番号のおかげで、簡単な間違いを防げました。",
+          "reason": "細部確認の効果が結論です。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_G1_HUMAN_R14_20260908"
     },
     {
       "id": "V11-B14-G1-009",
@@ -2332,47 +2584,47 @@
         {
           "english": "Mei found a white cap beside the school garden after club time.",
           "japanese": "部活動の後、メイは学校の花壇のそばで白い帽子を見つけました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Three students worked there that day.",
           "japanese": "その日は三人の生徒がそこで作業していました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "The cap had no name inside, but it had a small green leaf badge.",
           "japanese": "帽子の内側に名前はありませんでしたが、小さな緑の葉のバッジが付いていました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Mei checked the gardening duty list.",
-          "japanese": "メイが園芸当番表を確認すると、三人のうち一人だけがグリーンクラブのメンバーで、そのクラブでは同じ葉のバッジを使っていました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "メイは園芸当番表を確認しました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Only one of the three students was in the Green Club, and members of that club used the same leaf badge.",
-          "japanese": "メイは適当な教室へ持っていかず、クラブ室へ帽子を届けました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "三人のうち一人だけがグリーンクラブのメンバーで、そのクラブでは同じ葉のバッジを使っていました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Mei took the cap to the club room instead of putting it in a random classroom.",
-          "japanese": "そこにいた生徒が帽子を見て持ち主に連絡しました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "メイは適当な教室へ持っていかず、クラブ室へ帽子を届けました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "A student there recognized it and called its owner.",
-          "japanese": "メイはうれしく思いました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "そこにいた生徒が帽子を見て持ち主に連絡しました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Mei was happy.",
-          "japanese": "バッジと当番表の両方を使って確かめました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "メイはうれしく思いました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "She used the badge and the duty list together.",
-          "japanese": "",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "バッジと当番表の両方を使って確かめました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         }
       ],
       "slashBoundaryDraft": {
@@ -2398,7 +2650,117 @@
           "バッジと当番表の両方を使って確かめました。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 帽子を自分で使った話",
+            "B. メイがバッジと当番表から帽子の持ち主につながる場所を判断した話",
+            "C. 花壇を掃除した話",
+            "D. 帽子に名前を書いた話"
+          ],
+          "answer": "B. メイがバッジと当番表から帽子の持ち主につながる場所を判断した話",
+          "evidence": "She used the badge and the duty list together.",
+          "evidenceJp": "バッジと当番表の両方を使って確かめました。",
+          "reason": "二つの手がかりを合わせて判断しています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 帽子にはどんな印が付いていましたか。",
+          "answer": "小さな緑の葉のバッジ。",
+          "evidence": "The cap had no name inside, but it had a small green leaf badge.",
+          "evidenceJp": "帽子の内側に名前はありませんでしたが、小さな緑の葉のバッジが付いていました。",
+          "reason": "重要な識別情報です。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "3. その日花壇で作業した生徒は何人でしたか。",
+          "answer": "3人。",
+          "evidence": "Three students worked there that day.",
+          "evidenceJp": "その日は三人の生徒がそこで作業していました。",
+          "reason": "人数が直接示されています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "4. グリーンクラブが手がかりになったのはなぜですか。",
+          "answer": "メンバーが同じ葉のバッジを使っていたから。",
+          "evidence": "Only one of the three students was in the Green Club, and members of that club used the same leaf badge.",
+          "evidenceJp": "三人のうち一人だけがグリーンクラブのメンバーで、そのクラブでは同じ葉のバッジを使っていました。",
+          "reason": "帽子の印とクラブの印が一致しました。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. メイは帽子をどこへ持っていきましたか。",
+          "answer": "グリーンクラブのクラブ室。",
+          "evidence": "Mei took the cap to the club room instead of putting it in a random classroom.",
+          "evidenceJp": "メイは適当な教室へ持っていかず、クラブ室へ帽子を届けました。",
+          "reason": "判断後の行動です。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『メイは葉のバッジと（　）を使って確かめた。』に入るものはどれですか。",
+          "choices": [
+            "A. 園芸当番表",
+            "B. 座席表",
+            "C. 時計",
+            "D. 地図"
+          ],
+          "answer": "A. 園芸当番表",
+          "evidence": "She used the badge and the duty list together.",
+          "evidenceJp": "バッジと当番表の両方を使って確かめました。",
+          "reason": "確認材料の二つ目です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. メイが適当な教室に帽子を置かなかったのはなぜだと考えられますか。",
+          "answer": "手がかりからグリーンクラブとの関係を確認できたから。",
+          "evidence": "Mei took the cap to the club room instead of putting it in a random classroom.",
+          "evidenceJp": "メイは適当な教室へ持っていかず、クラブ室へ帽子を届けました。",
+          "reason": "根拠のある場所へ届けています。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "8. “badge” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 帽子",
+            "B. バッジ・印",
+            "C. 花壇",
+            "D. 名簿"
+          ],
+          "answer": "B. バッジ・印",
+          "evidence": "The cap had no name inside, but it had a small green leaf badge.",
+          "evidenceJp": "帽子の内側に名前はありませんでしたが、小さな緑の葉のバッジが付いていました。",
+          "reason": "所属を示す印として使われています。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. 当番表と葉のバッジを合わせると何が分かりましたか。",
+          "answer": "作業した3人のうちグリーンクラブの一人が持ち主候補だと絞れた。",
+          "evidence": "Only one of the three students was in the Green Club, and members of that club used the same leaf badge.",
+          "evidenceJp": "三人のうち一人だけがグリーンクラブのメンバーで、そのクラブでは同じ葉のバッジを使っていました。",
+          "reason": "所属情報と印が一致しています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から学べることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 名前がなければ捨てる。",
+            "B. 名前がなくても、場所・所属・印など複数の情報を組み合わせて探せる。",
+            "C. 一番近い教室に置く。",
+            "D. バッジは無視する。"
+          ],
+          "answer": "B. 名前がなくても、場所・所属・印など複数の情報を組み合わせて探せる。",
+          "evidence": "She used the badge and the duty list together.",
+          "evidenceJp": "バッジと当番表の両方を使って確かめました。",
+          "reason": "複数情報を組み合わせる方法が示されています。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_G1_HUMAN_R14_20260908"
     },
     {
       "id": "V11-B14-G1-010",
@@ -2579,72 +2941,77 @@
         {
           "english": "Toma came to school for a Saturday activity.",
           "japanese": "トウマは土曜日の活動のため学校へ来ました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "The classroom clock showed 8:40, but his phone showed 8:30.",
           "japanese": "教室の時計は8時40分を示していましたが、スマートフォンは8時30分でした。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "He thought the clock was broken.",
           "japanese": "トウマは時計が壊れていると思いました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Before changing it, he checked the clock in the hall.",
-          "japanese": "直す前に廊下の時計を確認すると、そちらも8時40分でした。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "直す前に廊下の時計を確認すると、",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "It also showed 8:40.",
-          "japanese": "そこで活動掲示板のメモを読むと、「今日の行事では、第2室と第3室の時計を10分進めています。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "そちらも8時40分でした。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Then Toma read a note on the activity board.",
-          "japanese": "各グループが到着する前に準備してください」とありました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "そこで活動掲示板のメモを読みました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
-          "english": "It said, ‘For today's event, the clocks in Rooms 2 and 3 are ten minutes ahead.",
+          "english": "It said, ‘For today's event, the clocks in Rooms 2 and 3 are ten minutes ahead. Please be ready before each group arrives.’",
+          "japanese": "「今日の行事では、第2室と第3室の時計を10分進めています。各グループが到着する前に準備してください」とありました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
+        },
+        {
+          "english": "The first visitors were coming at 9:00.",
           "japanese": "最初の来訪者は9時に来る予定でした。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
-        },
-        {
-          "english": "Please be ready before each group arrives.’ The first visitors were coming at 9:00.",
-          "japanese": "トウマは理由が分かりました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Toma understood the reason.",
-          "japanese": "時計はわざと10分進んでいました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "トウマは理由が分かりました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "The clocks were ten minutes fast on purpose.",
-          "japanese": "生徒スタッフは早めに準備しました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "時計はわざと10分進んでいました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "The student staff got ready early.",
-          "japanese": "トウマは時計をそのままにしました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "生徒スタッフは早めに準備しました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "He left the clock alone.",
-          "japanese": "スマートフォンが8時50分になったとき、部屋の時計は9時を示し、生徒スタッフはすでにドアで準備できていました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "トウマは時計をそのままにしました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "At 8:50 on his phone, the room clock showed 9:00, and the student staff were already ready at the door.",
-          "japanese": "そのメモには「ドアを開ける前に、本当の時刻を自分のスマートフォンで確認してください」とも書かれていました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "スマートフォンが8時50分になったとき、部屋の時計は9時を示し、生徒スタッフはすでにドアで準備できていました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
-          "english": "The note also said, “Check your own phones for the real time before you open the doors.” That detail showed that the faster clocks were only a preparation tool, not the official event time.",
+          "english": "The note also said, “Check your own phones for the real time before you open the doors.”",
+          "japanese": "そのメモには「ドアを開ける前に、本当の時刻を自分のスマートフォンで確認してください」とも書かれていました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
+        },
+        {
+          "english": "That detail showed that the faster clocks were only a preparation tool, not the official event time.",
           "japanese": "この説明から、進めた時計は準備のための道具であって、行事の正式な時刻ではないことも分かりました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         }
       ],
       "slashBoundaryDraft": {
@@ -2683,7 +3050,123 @@
           "この説明から、進めた時計は準備のための道具であって、行事の正式な時刻ではないことも分かりました。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 時計を修理した話",
+            "B. トウマが時計が10分進んでいる理由を掲示で確認した話",
+            "C. 行事が中止になった話",
+            "D. スマートフォンをなくした話"
+          ],
+          "answer": "B. トウマが時計が10分進んでいる理由を掲示で確認した話",
+          "evidence": "The clocks were ten minutes fast on purpose.",
+          "evidenceJp": "時計はわざと10分進んでいました。",
+          "reason": "故障ではなく意図的な設定だと理解する話です。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 教室の時計とスマートフォンはそれぞれ何時を示していましたか。",
+          "answer": "教室8時40分、スマートフォン8時30分。",
+          "evidence": "The classroom clock showed 8:40, but his phone showed 8:30.",
+          "evidenceJp": "教室の時計は8時40分を示していましたが、スマートフォンは8時30分でした。",
+          "reason": "10分の差が直接示されています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. トウマがすぐ時計を直さなかったのはなぜですか。",
+          "answer": "廊下の時計や掲示を確認してから判断したから。",
+          "evidence": "Before changing it, he checked the clock in the hall.",
+          "evidenceJp": "直す前に廊下の時計を確認すると、",
+          "reason": "変更前に追加確認をしています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "4. 掲示では第2室と第3室の時計を何分進めると書かれていましたか。",
+          "answer": "10分。",
+          "evidence": "It said, ‘For today's event, the clocks in Rooms 2 and 3 are ten minutes ahead. Please be ready before each group arrives.’",
+          "evidenceJp": "「今日の行事では、第2室と第3室の時計を10分進めています。各グループが到着する前に準備してください」とありました。",
+          "reason": "設定が直接示されています。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 本文の内容に合うものを選びなさい。",
+          "choices": [
+            "A. 時計は故障していた。",
+            "B. 進めた時計が正式時刻だった。",
+            "C. 進めた時計は準備のための道具だった。",
+            "D. スマートフォンも10分進んでいた。"
+          ],
+          "answer": "C. 進めた時計は準備のための道具だった。",
+          "evidence": "That detail showed that the faster clocks were only a preparation tool, not the official event time.",
+          "evidenceJp": "この説明から、進めた時計は準備のための道具であって、行事の正式な時刻ではないことも分かりました。",
+          "reason": "時計の目的が明記されています。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『時計を10分進めた目的は、生徒スタッフが（　）準備できるようにすることだった。』に入るものはどれですか。",
+          "choices": [
+            "A. 早めに",
+            "B. 遅れて",
+            "C. 一人で",
+            "D. 夜に"
+          ],
+          "answer": "A. 早めに",
+          "evidence": "The student staff got ready early.",
+          "evidenceJp": "生徒スタッフは早めに準備しました。",
+          "reason": "時計設定の目的が行動に現れています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. 本当の時刻はスマートフォンで確認するよう書かれていたのはなぜですか。",
+          "answer": "部屋の時計は正式時刻ではなく準備用に10分進めていたから。",
+          "evidence": "The note also said, “Check your own phones for the real time before you open the doors.”",
+          "evidenceJp": "そのメモには「ドアを開ける前に、本当の時刻を自分のスマートフォンで確認してください」とも書かれていました。",
+          "reason": "準備用時計と正式時刻を区別するためです。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "8. スマートフォン8時50分・部屋時計9時00分という結果は何を示していますか。",
+          "answer": "部屋時計が意図どおり10分進んでいたこと。",
+          "evidence": "At 8:50 on his phone, the room clock showed 9:00, and the student staff were already ready at the door.",
+          "evidenceJp": "スマートフォンが8時50分になったとき、部屋の時計は9時を示し、生徒スタッフはすでにドアで準備できていました。",
+          "reason": "掲示の10分差と一致しています。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "9. “on purpose” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 偶然に",
+            "B. わざと・意図的に",
+            "C. ゆっくり",
+            "D. 間違って"
+          ],
+          "answer": "B. わざと・意図的に",
+          "evidence": "The clocks were ten minutes fast on purpose.",
+          "evidenceJp": "時計はわざと10分進んでいました。",
+          "reason": "故障ではなく意図した設定という意味です。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から学べることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 時刻が違えばすぐ直す。",
+            "B. おかしいように見える設定でも、変更前に周囲の情報や説明を確認するとよい。",
+            "C. 掲示は読まない。",
+            "D. スマートフォンは使わない。"
+          ],
+          "answer": "B. おかしいように見える設定でも、変更前に周囲の情報や説明を確認するとよい。",
+          "evidence": "Before changing it, he checked the clock in the hall.",
+          "evidenceJp": "直す前に廊下の時計を確認すると、",
+          "reason": "すぐ直さず確認したことで意図を理解できました。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_G1_HUMAN_R14_20260908"
     },
     {
       "id": "V11-B14-G1-011",
@@ -4423,62 +4906,67 @@
         {
           "english": "Kenta was helping with a small book display in the library.",
           "japanese": "ケンタは図書室の小さな本の展示を手伝っていました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "On Wednesday, he saw one display book on the normal shelf.",
           "japanese": "水曜日、展示していた本の一冊が普通の棚にあるのを見つけました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "He thought, “Is the display over?” and started to move the other books too.",
-          "japanese": "ケンタは「展示は終わったのかな」と思い、ほかの本も動かそうとしましたが、展示の横のカードを確認すると、金曜日まで続くと書かれていました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "ケンタは「展示は終わったのかな」と思い、ほかの本も動かそうとしましたが、",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Then he checked the card beside the display.",
-          "japanese": "さらに、その本の中の返却票を見ると、ある生徒が展示開始前に借り、今朝返したことが分かりました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "展示の横のカードを確認すると、",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "It said the display would continue until Friday.",
-          "japanese": "ケンタは本を動かす前に、その返却票を司書に見せました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "金曜日まで続くと書かれていました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Kenta also looked at the return slip inside the missing book.",
-          "japanese": "司書は日付を確認して、「その生徒が間違えたのね」と言いました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "さらに、その本の中の返却票を見ると、",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "A student borrowed it before the display began and returned it that morning.",
-          "japanese": "その生徒は、その本が今は特別な展示台に置かれる本だと知りませんでした。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "ある生徒が展示開始前に借り、今朝返したことが分かりました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Kenta showed the slip to the librarian before he moved the book.",
-          "japanese": "ケンタが司書に伝えると、二人で本を展示へ戻しました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "ケンタは本を動かす前に、その返却票を司書に見せました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
-          "english": "She checked the date and said, “The student made a mistake.” The student did not know that the book now belonged on the special table.",
-          "japanese": "ほかの本はそのままにしました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "english": "She checked the date and said, “The student made a mistake.”",
+          "japanese": "司書は日付を確認して、「その生徒が間違えたのね」と言いました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
+        },
+        {
+          "english": "The student did not know that the book now belonged on the special table.",
+          "japanese": "その生徒は、その本が今は特別な展示台に置かれる本だと知りませんでした。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Kenta told the librarian, and they put the book back on the display.",
-          "japanese": "行事カードと返却票の両方を確かめたことで、一冊だけ早く移動していた理由が分かりました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "ケンタが司書に伝えると、二人で本を展示へ戻しました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "He left the other books where they were.",
-          "japanese": "",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "ほかの本はそのままにしました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Checking both the event card and the return slip showed him why one book had moved early.",
-          "japanese": "",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "行事カードと返却票の両方を確かめたことで、一冊だけ早く移動していた理由が分かりました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         }
       ],
       "slashBoundaryDraft": {
@@ -4511,7 +4999,123 @@
           "行事カードと返却票の両方を確かめたことで、一冊だけ早く移動していた理由が分かりました。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 展示を水曜日に終えた話",
+            "B. ケンタが展示カードと返却票を確認し、一冊だけ普通棚にあった理由を突き止めた話",
+            "C. 本を全部普通棚に戻した話",
+            "D. 返却票を捨てた話"
+          ],
+          "answer": "B. ケンタが展示カードと返却票を確認し、一冊だけ普通棚にあった理由を突き止めた話",
+          "evidence": "Checking both the event card and the return slip showed him why one book had moved early.",
+          "evidenceJp": "行事カードと返却票の両方を確かめたことで、一冊だけ早く移動していた理由が分かりました。",
+          "reason": "二つの記録から理由を確認しています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 展示カードには展示がいつまで続くと書かれていましたか。",
+          "answer": "金曜日まで。",
+          "evidence": "It said the display would continue until Friday.",
+          "evidenceJp": "金曜日まで続くと書かれていました。",
+          "reason": "展示終了日が直接示されています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. ケンタがほかの本も動かすのをやめたのはなぜですか。",
+          "answer": "展示がまだ金曜日まで続くと分かったから。",
+          "evidence": "Then he checked the card beside the display. / It said the display would continue until Friday.",
+          "evidenceJp": "展示の横のカードを確認すると、 / 金曜日まで続くと書かれていました。",
+          "reason": "最初の「展示終了」という考えが誤りだと分かりました。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "4. 返却票から何が分かりましたか。",
+          "answer": "その本は展示開始前に借りられ、その朝返されたこと。",
+          "evidence": "A student borrowed it before the display began and returned it that morning.",
+          "evidenceJp": "ある生徒が展示開始前に借り、今朝返したことが分かりました。",
+          "reason": "本が普通棚へ戻った経緯の手がかりです。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 本文の内容に合うものを選びなさい。",
+          "choices": [
+            "A. 展示を中止した。",
+            "B. ほかの本も全部普通棚へ戻した。",
+            "C. ケンタと司書は本を展示へ戻した。",
+            "D. 日付を確認しなかった。"
+          ],
+          "answer": "C. ケンタと司書は本を展示へ戻した。",
+          "evidence": "Kenta told the librarian, and they put the book back on the display.",
+          "evidenceJp": "ケンタが司書に伝えると、二人で本を展示へ戻しました。",
+          "reason": "確認後の対応です。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『一冊だけ普通棚にあった理由を知るため、ケンタは展示カードと（　）を確認した。』に入るものはどれですか。",
+          "choices": [
+            "A. 返却票",
+            "B. 座席表",
+            "C. 地図",
+            "D. 時計"
+          ],
+          "answer": "A. 返却票",
+          "evidence": "Kenta also looked at the return slip inside the missing book.",
+          "evidenceJp": "さらに、その本の中の返却票を見ると、",
+          "reason": "二つ目の記録です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. その生徒が本を普通棚へ返したのはなぜですか。",
+          "answer": "その本が今は特別な展示台に置かれる本だと知らなかったから。",
+          "evidence": "The student did not know that the book now belonged on the special table.",
+          "evidenceJp": "その生徒は、その本が今は特別な展示台に置かれる本だと知りませんでした。",
+          "reason": "返却場所を間違えた理由です。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "8. “return slip” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 展示カード",
+            "B. 返却票",
+            "C. 本棚",
+            "D. 表紙"
+          ],
+          "answer": "B. 返却票",
+          "evidence": "Kenta also looked at the return slip inside the missing book.",
+          "evidenceJp": "さらに、その本の中の返却票を見ると、",
+          "reason": "貸出・返却情報を確認する票です。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. 展示カードと返却票を合わせると何が分かりましたか。",
+          "answer": "展示は続いており、その本だけが返却時の間違いで普通棚に置かれたと分かった。",
+          "evidence": "It said the display would continue until Friday. / A student borrowed it before the display began and returned it that morning.",
+          "evidenceJp": "金曜日まで続くと書かれていました。 / ある生徒が展示開始前に借り、今朝返したことが分かりました。",
+          "reason": "展示期間と返却履歴を合わせて原因を説明できます。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. ケンタの行動から学べることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 一冊動いていたら全部動かす。",
+            "B. 一つの変化だけで全体が変わったと決めず、記録を確認して原因を調べる。",
+            "C. 返却票は見ない。",
+            "D. 展示カードを無視する。"
+          ],
+          "answer": "B. 一つの変化だけで全体が変わったと決めず、記録を確認して原因を調べる。",
+          "evidence": "He left the other books where they were.",
+          "evidenceJp": "ほかの本はそのままにしました。",
+          "reason": "確認によって全体を動かす必要がないと分かりました。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_G1_HUMAN_R14_20260908"
     },
     {
       "id": "V11-B14-G1-017",
@@ -4642,47 +5246,52 @@
         {
           "english": "Rina met a visitor near the school entrance.",
           "japanese": "リナは学校の玄関近くで来校者に会いました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "The visitor wanted to find the nurse's room.",
           "japanese": "その人は保健室を探していました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Rina opened a school map, but two rooms near the center had similar shapes.",
           "japanese": "リナが校内地図を開くと、中央近くに形の似た部屋が二つありました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "One had a small star beside it.",
           "japanese": "一方には小さな星印が付いていました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Rina checked the map legend.",
-          "japanese": "地図の凡例を確認すると、星は「健康・応急手当」を表し、もう一方の部屋には事務室を示す四角い印がありました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "リナは地図の凡例を確認しました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
-          "english": "The star meant ‘health and first aid.’ The other room had a square mark for the office.",
-          "japanese": "リナは玄関から星印までの道をたどり、来校者と一緒に歩きました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "english": "The star meant ‘health and first aid.’",
+          "japanese": "星は「健康・応急手当」を表していました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
+        },
+        {
+          "english": "The other room had a square mark for the office.",
+          "japanese": "もう一方の部屋には事務室を示す四角い印がありました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "Rina followed the path from the entrance to the star and walked with the visitor.",
-          "japanese": "二人は先に事務室へ行くことなく保健室に着きました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "リナは玄関から星印までの道をたどり、来校者と一緒に歩きました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "They reached the nurse's room without going into the office first.",
-          "japanese": "小さな記号と凡例のおかげで、地図の意味がはっきりしました。",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "二人は先に事務室へ行くことなく保健室に着きました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         },
         {
           "english": "The small symbol and the legend made the map clear.",
-          "japanese": "",
-          "humanReview": "B14_SLASH_HUMAN_R2"
+          "japanese": "小さな記号と凡例のおかげで、地図の意味がはっきりしました。",
+          "humanReview": "B14_SLASH_HUMAN_R14"
         }
       ],
       "slashBoundaryDraft": {
@@ -4709,7 +5318,117 @@
           "小さな記号と凡例のおかげで、地図の意味がはっきりしました。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 地図を作り直した話",
+            "B. リナが地図の記号と凡例を使って来校者を保健室へ案内した話",
+            "C. 事務室へ案内した話",
+            "D. 星印を消した話"
+          ],
+          "answer": "B. リナが地図の記号と凡例を使って来校者を保健室へ案内した話",
+          "evidence": "The small symbol and the legend made the map clear.",
+          "evidenceJp": "小さな記号と凡例のおかげで、地図の意味がはっきりしました。",
+          "reason": "記号の意味を確認して目的地を見つけています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 来校者はどこを探していましたか。",
+          "answer": "保健室。",
+          "evidence": "The visitor wanted to find the nurse's room.",
+          "evidenceJp": "その人は保健室を探していました。",
+          "reason": "目的地が直接示されています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "3. 保健室を見分ける手がかりになった印は何ですか。",
+          "answer": "小さな星印。",
+          "evidence": "One had a small star beside it.",
+          "evidenceJp": "一方には小さな星印が付いていました。",
+          "reason": "似た部屋を区別する印です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "4. リナが凡例を確認したのはなぜですか。",
+          "answer": "星や四角の記号が何を表すか確かめるため。",
+          "evidence": "Rina checked the map legend.",
+          "evidenceJp": "リナは地図の凡例を確認しました。",
+          "reason": "記号の意味を知るための行動です。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 事務室はどんな印で示されていましたか。",
+          "answer": "四角い印。",
+          "evidence": "The other room had a square mark for the office.",
+          "evidenceJp": "もう一方の部屋には事務室を示す四角い印がありました。",
+          "reason": "別の部屋の記号が直接示されています。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『リナは地図の凡例で星印が（　）を表すと確認した。』に入るものはどれですか。",
+          "choices": [
+            "A. 健康・応急手当",
+            "B. 事務室",
+            "C. 図書室",
+            "D. 体育館"
+          ],
+          "answer": "A. 健康・応急手当",
+          "evidence": "The star meant ‘health and first aid.’",
+          "evidenceJp": "星は「健康・応急手当」を表していました。",
+          "reason": "星印の意味です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. 二人が先に事務室へ行かずにすんだのはなぜですか。",
+          "answer": "記号と凡例で保健室を正しく特定できたから。",
+          "evidence": "They reached the nurse's room without going into the office first.",
+          "evidenceJp": "二人は先に事務室へ行くことなく保健室に着きました。",
+          "reason": "似た部屋を正しく区別できました。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "8. “legend” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 地図の記号の説明",
+            "B. 学校の歴史",
+            "C. 教室の名前",
+            "D. 来校者名簿"
+          ],
+          "answer": "A. 地図の記号の説明",
+          "evidence": "Rina checked the map legend.",
+          "evidenceJp": "リナは地図の凡例を確認しました。",
+          "reason": "記号の意味を示す凡例です。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. 星印と凡例を合わせると何が分かりましたか。",
+          "answer": "星印の部屋が保健室だと判断できた。",
+          "evidence": "The star meant ‘health and first aid.’",
+          "evidenceJp": "星は「健康・応急手当」を表していました。",
+          "reason": "記号の意味から目的地を特定できます。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から学べることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 形だけで決める。",
+            "B. 地図で似た場所があるときは、記号だけでなく凡例も確認するとよい。",
+            "C. 凡例は見なくてよい。",
+            "D. まず事務室へ行けばよい。"
+          ],
+          "answer": "B. 地図で似た場所があるときは、記号だけでなく凡例も確認するとよい。",
+          "evidence": "The small symbol and the legend made the map clear.",
+          "evidenceJp": "小さな記号と凡例のおかげで、地図の意味がはっきりしました。",
+          "reason": "記号と説明を組み合わせる重要性が示されています。"
+        }
+      ],
+      "manualQuestionAudit": true,
+      "questionAuthoring": "B14_G1_HUMAN_R14_20260908"
     },
     {
       "id": "V11-B14-G2-001",
