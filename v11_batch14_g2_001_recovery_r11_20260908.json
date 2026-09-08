@@ -1,0 +1,142 @@
+{
+  "batch": "V11-B14",
+  "formalRegistered": 818,
+  "partialRegistration": false,
+  "status": "G2_RECOVERY_R11_PART1",
+  "questionRewrites": {
+    "V11-B14-G2-001": {
+      "A": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 図書室の窓を増やした話",
+            "B. 時間帯による利用状況を調べ、表示の置き場所を変えた話",
+            "C. 放課後の部活動を禁止した話",
+            "D. 図書室の席をすべて奥へ移した話"
+          ],
+          "answer": "B. 時間帯による利用状況を調べ、表示の置き場所を変えた話",
+          "evidence": "The committee learned that the best place for a sign can change with time.",
+          "evidenceJp": "委員会は、表示に最適な場所は時間によって変わることを学びました。",
+          "reason": "調査結果に合わせて表示場所を時間帯別に変えたことが中心です。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 朝に窓側の席が多く使われた理由は何ですか。",
+          "answer": "光がよく入ったから。",
+          "evidence": "In the morning, most students sat near the windows because the light was good.",
+          "evidenceJp": "朝は、光がよく入るので多くの生徒が窓の近くに座っていました。",
+          "reason": "朝の窓側利用の理由が直接書かれています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. 委員会が表示をすべて窓側に置く計画を変えたのはなぜですか。",
+          "answer": "放課後は窓側が騒がしく、調査で別の静かな場所が必要だと分かったから。",
+          "evidence": "After school, those seats were often noisy because club members met near the entrance. The committee had planned to put all the ‘Quiet Study’ signs by the windows. However, the survey showed a different need.",
+          "evidenceJp": "放課後は、入口の近くで部活動の生徒が集まるため、その席はよくにぎやかになりました。委員会は当初、「静かに学習」の表示をすべて窓側に置く予定でした。しかし調査から別の必要が分かりました。",
+          "reason": "計画ではなく実際の時間帯別利用を根拠に変更したからです。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "4. 本文の内容と合うものはどれですか。",
+          "choices": [
+            "A. 朝も放課後も窓側が最も静かだった",
+            "B. 委員会は調査せず表示を移した",
+            "C. 放課後用に二つの表示を奥の机へ移した",
+            "D. 3日後には静かな場所を選ぶ生徒が減った"
+          ],
+          "answer": "C. 放課後用に二つの表示を奥の机へ移した",
+          "evidence": "They moved two signs to the back tables for after-school users and left one sign near the windows for the morning.",
+          "evidenceJp": "放課後の利用者のために表示を二つ奥の机へ移し、朝のために一つだけ窓側に残しました。",
+          "reason": "表示の移動内容と一致します。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "5. 委員会の調査方法から分かることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 一度だけ数えれば十分だと考えた",
+            "B. 時間帯を分けて利用状況を比べた",
+            "C. 生徒の意見だけで決めた",
+            "D. 窓側を使わないようにした"
+          ],
+          "answer": "B. 時間帯を分けて利用状況を比べた",
+          "evidence": "For one week, Mei and Koki counted how many seats were used before school and after school.",
+          "evidenceJp": "1週間、メイとコウキは登校前と放課後に、どの席がどれくらい使われているかを数えました。",
+          "reason": "朝と放課後を分けて測定しているためです。"
+        }
+      ],
+      "B": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "1. 要約の空欄に入る内容として最も適切なものはどれですか。「委員会は席の利用を時間帯別に調べ、（　）。」",
+          "choices": [
+            "A. すべての表示を窓側に置いた",
+            "B. 朝と放課後で表示の場所を分けた",
+            "C. 窓側の席を閉鎖した",
+            "D. 調査をやめた"
+          ],
+          "answer": "B. 朝と放課後で表示の場所を分けた",
+          "evidence": "They moved two signs to the back tables for after-school users and left one sign near the windows for the morning.",
+          "evidenceJp": "放課後の利用者のために表示を二つ奥の机へ移し、朝のために一つだけ窓側に残しました。",
+          "reason": "調査後の主要な改善内容です。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "2. “a different need” が指す内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 朝の窓側だけに表示を増やす必要",
+            "B. 放課後の静かな場所にも表示を置く必要",
+            "C. 入口を閉める必要",
+            "D. 部活動をなくす必要"
+          ],
+          "answer": "B. 放課後の静かな場所にも表示を置く必要",
+          "evidence": "However, the survey showed a different need. They moved two signs to the back tables for after-school users",
+          "evidenceJp": "しかし調査から別の必要が分かりました。放課後の利用者のために表示を二つ奥の机へ移し",
+          "reason": "直後の対応から意味を特定できます。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. 3日後にもう一度数えた目的として最も自然なものはどれですか。",
+          "choices": [
+            "A. 表示変更の効果を確かめるため",
+            "B. 窓の数を数えるため",
+            "C. 部員数を調べるため",
+            "D. 図書室を閉めるため"
+          ],
+          "answer": "A. 表示変更の効果を確かめるため",
+          "evidence": "A second count three days later showed that more students chose the quiet area.",
+          "evidenceJp": "3日後にもう一度数えると、静かな場所を選ぶ生徒が増えていました。",
+          "reason": "変更後の利用変化を再測定しているためです。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "4. 朝用の表示と放課後用の表示を分ける判断に最も関係する情報はどれですか。",
+          "choices": [
+            "A. 本の貸出数",
+            "B. 時間帯ごとの席の利用と騒音",
+            "C. 窓の大きさ",
+            "D. 先生の人数"
+          ],
+          "answer": "B. 時間帯ごとの席の利用と騒音",
+          "evidence": "In the morning, most students sat near the windows because the light was good. After school, those seats were often noisy because club members met near the entrance.",
+          "evidenceJp": "朝は、光がよく入るので多くの生徒が窓の近くに座っていました。放課後は、入口の近くで部活動の生徒が集まるため、その席はよくにぎやかになりました。",
+          "reason": "時間帯で条件が変わることが配置変更の根拠です。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "5. この話から得られる考え方として最も適切なものはどれですか。",
+          "choices": [
+            "A. 一度決めた場所は変えない方がよい",
+            "B. 実際の使われ方を測ると、よりよい配置が見つかることがある",
+            "C. 表示は多いほど必ずよい",
+            "D. 朝の情報だけで放課後も判断できる"
+          ],
+          "answer": "B. 実際の使われ方を測ると、よりよい配置が見つかることがある",
+          "evidence": "A second count three days later showed that more students chose the quiet area. The committee learned that the best place for a sign can change with time.",
+          "evidenceJp": "3日後にもう一度数えると、静かな場所を選ぶ生徒が増えていました。委員会は、表示に最適な場所は時間によって変わることを学びました。",
+          "reason": "測定と再確認により改善できたことから推測できます。"
+        }
+      ]
+    }
+  }
+}
