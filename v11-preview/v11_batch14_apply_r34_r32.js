@@ -8,8 +8,8 @@ const data = JSON.parse(fs.readFileSync(assembledPath, "utf8"));
 const maps = JSON.parse(fs.readFileSync(mapsPath, "utf8"));
 const r32 = JSON.parse(fs.readFileSync(r32Path, "utf8"));
 
-function combine(arr, spec) {
-  return spec.split("+").map(x => arr[Number(x) - 1]).join(" ");
+function combine(arr, spec, joiner = " ") {
+  return spec.split("+").map(x => arr[Number(x) - 1]).join(joiner);
 }
 
 let slashFixed = 0;
@@ -23,8 +23,8 @@ for (const p of data.passages) {
     p.slashRows = mp.map(pair => {
       const [e, j] = pair.split(":");
       return {
-        english: combine(es, e),
-        japanese: combine(js, j),
+        english: combine(es, e, " "),
+        japanese: combine(js, j, ""),
         humanReview: "B14_SLASH_HUMAN_R34_20260909"
       };
     });
