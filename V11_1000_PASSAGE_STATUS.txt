@@ -34,3 +34,7 @@ batch13_preview_publish=PASS run=33787675869 source_sha=20e5f6b622a0bb8c53379036
 batch13_registration=ALL_50_REGISTERED_TOGETHER_AFTER_FULL_FINAL_GATES
 release_to_main=NO_UNTIL_1000_AND_FINAL_RELEASE_GATES_PASS
 next_step=Start Batch14 from current branch HEAD and latest Drive 00/99. Build 50 distinct unregistered passages (818->868 candidate) from current v7 textbook chronology and latest Yamaguchi profile; human-read every passage first, synchronize fullTranslation/slashRows/A+B questions/answers/evidence/evidenceJp/reasons, then run chronology, notes/support, duplicate, Chromium/WebKit, A4 and persistent-runtime gates. Keep Batch14 registered=false until every gate passes.
+
+
+batch14_candidate_runtime=PASS candidate_total=868 registered=false pc=50 webkit_iphone=50 cross_prior=650 duplicate=0 near_duplicate=0 a4_files=12 source_head=3b64a8870670ebc7d2cc2473e9efbf863083f7ae
+batch14_next_step=Create final Batch14 runtime registration chain from current assembled actual; atomic 818->868 only after persistent runtime PASS. No partial registration.
