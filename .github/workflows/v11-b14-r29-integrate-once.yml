@@ -1,0 +1,56 @@
+name: v11 Batch14 R29 integrate once
+
+on:
+  push:
+    branches:
+      - v11-1000passage-easy-notes
+    paths:
+      - '.github/workflows/v11-b14-r29-integrate-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current branch
+        uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run R29 integrator
+        run: node v11_batch14_integrate_question_overlays_r29_20260909.js
+      - name: Verify Batch14 question integration
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const j = JSON.parse(fs.readFileSync('v11_batch14_assembled_draft.json','utf8'));
+          const ps = j.passages || [];
+          for (let n=4;n<=16;n++) {
+            const id=`v11_b14_g3_${String(n).padStart(3,'0')}`;
+            const p=ps.find(x=>x.id===id);
+            if(!p) throw new Error(`missing ${id}`);
+            if((p.questionsA||[]).length!==5 || (p.questionsB||[]).length!==5) throw new Error(`A/B count fail ${id}`);
+            for(const q of [...p.questionsA,...p.questionsB]){
+              if(!q.answer || !q.reason || !q.evidence || !q.evidenceJp) throw new Error(`missing field ${id} ${q.id}`);
+              if(!p.body.includes(q.evidence)) throw new Error(`evidence exact fail ${id} ${q.id}`);
+              if(!p.fullTranslation.includes(q.evidenceJp)) throw new Error(`evidenceJp exact fail ${id} ${q.id}`);
+            }
+          }
+          console.log('G3-004..016 A5/B5 exact PASS');
+          NODE
+      - name: Commit assembled only
+        run: |
+          if git diff --quiet -- v11_batch14_assembled_draft.json; then
+            echo 'No assembled changes'; exit 0
+          fi
+          git config user.name 'chatgpt-batch14-worker'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add v11_batch14_assembled_draft.json
+          git commit -m 'Batch14: integrate G3-004-016 questions into assembled'
+          git push origin HEAD:v11-1000passage-easy-notes
