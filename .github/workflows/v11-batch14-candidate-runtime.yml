@@ -1,0 +1,56 @@
+name: v11 batch14 candidate runtime
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch13_candidate_runtime_audit.js'
+      - '.github/workflows/v11-batch14-candidate-runtime.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: v11-batch14-candidate-runtime
+  cancel-in-progress: true
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install browsers
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium webkit
+      - name: Run Batch14 candidate gates
+        shell: bash
+        run: |
+          set +e
+          python3 -m http.server 8000 >/tmp/v11-b14-http.log 2>&1 &
+          srv=$!
+          sleep 2
+          node v11_batch13_candidate_runtime_audit.js > /tmp/v11-b14-runtime.txt 2>&1
+          code=$?
+          kill $srv || true
+          if grep -q 'V11_BATCH14_CANDIDATE_868_PASS' /tmp/v11-b14-runtime.txt && [ "$code" -eq 0 ]; then
+            result='V11_BATCH14_CANDIDATE_868_PASS'
+          else
+            result='V11_BATCH14_CANDIDATE_RUNTIME_FAIL'
+          fi
+          {
+            echo "checked_at_utc=$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+            echo "source_sha=${GITHUB_SHA}"
+            echo "result=$result"
+            cat /tmp/v11-b14-runtime.txt
+            echo '--- http log ---'
+            cat /tmp/v11-b14-http.log
+          } > V11_BATCH14_RUNTIME_RESULT.txt
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add V11_BATCH14_RUNTIME_RESULT.txt
+          git commit -m 'Record Batch14 runtime gate [skip ci]' || true
+          git push origin HEAD:v11-1000passage-easy-notes || true
+          cat V11_BATCH14_RUNTIME_RESULT.txt
+          test "$result" = 'V11_BATCH14_CANDIDATE_868_PASS'
