@@ -1,37 +1,9 @@
-{
-  "generatedAt": "2026-09-03T17:59:35.081Z",
-  "persistentBefore": 768,
-  "candidateTotal": 818,
-  "registered": false,
-  "candidateOnly": true,
-  "pc": {
-    "passages": 50,
-    "overflow": 0,
-    "errors": 0,
-    "normalNotes": 1393,
-    "supportNotes": 556,
-    "total": 818
-  },
-  "iphone": {
-    "passages": 50,
-    "overflow": 0,
-    "errors": 0,
-    "normalNotes": 1393,
-    "supportNotes": 556,
-    "total": 818
-  },
-  "cross": {
-    "extra": 650,
-    "b13": 50,
-    "dupIds": [],
-    "dupBodies": [],
-    "near": [],
-    "pass": true
-  },
-  "a4": {
-    "representativeSections": 6,
-    "files": 12
-  },
-  "finalPass": true
-}
-V11_BATCH13_CANDIDATE_818_PASS
+page.evaluate: Error: v11 passage V11-B14-G1-001 missing sentences
+    at validatePassage (http://127.0.0.1:8000/v11_multi_passage_architecture.js?v=20260827-v11-005:15:29)
+    at register (http://127.0.0.1:8000/v11_multi_passage_architecture.js?v=20260827-v11-005:32:7)
+    at eval (eval at evaluate (:291:30), <anonymous>:1:53)
+    at UtilityScript.evaluate (<anonymous>:293:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at inject (/home/runner/work/reading-app/reading-app/v11_batch13_candidate_runtime_audit.js:8:48)
+    at engine (/home/runner/work/reading-app/reading-app/v11_batch13_candidate_runtime_audit.js:10:64)
+    at async /home/runner/work/reading-app/reading-app/v11_batch13_candidate_runtime_audit.js:13:21
