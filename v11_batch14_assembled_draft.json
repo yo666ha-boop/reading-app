@@ -14516,7 +14516,121 @@
           "その背景は重要でした。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 公園の開園を早めた話",
+            "B. 古い発言に日付と現在の予定を加え、誤解を防いだ話",
+            "C. インタビューを削除した話",
+            "D. 工事を中止した話"
+          ],
+          "answer": "B. 古い発言に日付と現在の予定を加え、誤解を防いだ話",
+          "evidence": "By adding one missing date, the newspaper avoided making an old expectation sound like a current promise.",
+          "evidenceJp": "一つの欠けた日付を加えることで、昔の予想を現在の約束のように見せることを避けられました。",
+          "reason": "古い引用を現在の情報のように見せないための修正が中心です。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 問題のインタビューはいつ録音されたものでしたか。",
+          "answer": "1年半前。",
+          "evidence": "It was from eighteen months earlier.",
+          "evidenceJp": "それは1年半前のものでした。",
+          "reason": "引用の時期が直接示されています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. 記者が引用を削除しなかったのはなぜですか。",
+          "answer": "その発言が当時の計画を示す資料として意味があったから。",
+          "evidence": "The reporter did not delete the quote because it still showed what planners had expected at that time.",
+          "evidenceJp": "記者は、その発言が当時の計画を示していることには意味があるため、削除しませんでした。",
+          "reason": "古い発言にも歴史的な文脈上の価値がありました。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "4. インタビュー後、工事には何が起きましたか。",
+          "answer": "二度遅れた。",
+          "evidence": "Since then, construction had been delayed twice, and the current city page listed a different opening season.",
+          "evidenceJp": "その後、工事は二度遅れ、現在の市のページには別の開園時期が書かれていました。",
+          "reason": "古い予定と現在予定が異なる理由です。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 記事の修正として本文に合うものはどれですか。",
+          "choices": [
+            "A. 引用を完全に削除した。",
+            "B. 古い予定だけを書いた。",
+            "C. インタビューの日付と現在の予定を示した。",
+            "D. 市のページを無視した。"
+          ],
+          "answer": "C. インタビューの日付と現在の予定を示した。",
+          "evidence": "Instead, the article identified the interview date and added the current schedule in the next sentence.",
+          "evidenceJp": "その代わり、インタビューの日付を示し、次の文に現在の予定を加えました。",
+          "reason": "新旧情報の文脈を両方示しています。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『古い発言に（　）を加えることで、現在の約束のような誤解を避けた。』に入るものはどれですか。",
+          "choices": [
+            "A. 日付",
+            "B. 写真",
+            "C. 値段",
+            "D. 地図"
+          ],
+          "answer": "A. 日付",
+          "evidence": "By adding one missing date, the newspaper avoided making an old expectation sound like a current promise.",
+          "evidenceJp": "一つの欠けた日付を加えることで、昔の予想を現在の約束のように見せることを避けられました。",
+          "reason": "時点情報が意味の解釈を変えます。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "7. “context” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 背景・文脈",
+            "B. 速度",
+            "C. 場所",
+            "D. 人数"
+          ],
+          "answer": "A. 背景・文脈",
+          "evidence": "That context mattered.",
+          "evidenceJp": "その背景は重要でした。",
+          "reason": "引用がいつの発言かという背景を指します。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "8. ほかの二つの引用の日付も確認したのはなぜですか。",
+          "answer": "時期によって引用の意味が変わる可能性があったから。",
+          "evidence": "The team also checked two other quotations whose timing might affect their meaning.",
+          "evidenceJp": "チームは、時期によって意味が変わる可能性のあるほかの二つの引用も確認しましたが、そちらの日付は明確でした。",
+          "reason": "同じ問題が他の引用にもないか確認しています。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. 古いインタビューと現在の市のページを両方示す意味は何ですか。",
+          "answer": "当時の期待と現在の予定を区別して読者に示せる。",
+          "evidence": "Since then, construction had been delayed twice, and the current city page listed a different opening season.",
+          "evidenceJp": "その後、工事は二度遅れ、現在の市のページには別の開園時期が書かれていました。",
+          "reason": "時間の異なる二つの情報を混同しないためです。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から情報発信で重要だと分かることはどれですか。",
+          "choices": [
+            "A. 強い引用なら日付は不要。",
+            "B. 発言は内容だけでなく、いつの情報かも確認する。",
+            "C. 古い情報は必ず削除する。",
+            "D. 現在情報は示さない。"
+          ],
+          "answer": "B. 発言は内容だけでなく、いつの情報かも確認する。",
+          "evidence": "By adding one missing date, the newspaper avoided making an old expectation sound like a current promise.",
+          "evidenceJp": "一つの欠けた日付を加えることで、昔の予想を現在の約束のように見せることを避けられました。",
+          "reason": "日付が欠けると事実関係の印象が変わるためです。"
+        }
+      ]
     },
     {
       "id": "V11-B14-G3-005",
@@ -14941,6 +15055,120 @@
           "english": "The club learned that two measurements can look comparable while being taken under conditions that are not actually the same.",
           "japanese": "二つの測定値が比べられそうに見えても、実際には同じ条件で得られていないことがあると学びました。",
           "humanReview": "PENDING_BATCH14_SLASH_HUMAN"
+        }
+      ],
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 鳥の数を増やした話",
+            "B. 条件をそろえて再調査し、最初の差を時刻だけで説明しなかった話",
+            "C. 朝の調査だけを採用した話",
+            "D. 南側の道を閉鎖した話"
+          ],
+          "answer": "B. 条件をそろえて再調査し、最初の差を時刻だけで説明しなかった話",
+          "evidence": "The students could not conclude that time had no effect, but they also could not claim that it explained the first large gap.",
+          "evidenceJp": "時間がまったく影響しないとは言えませんが、最初の大きな差を時間だけで説明することもできません。",
+          "reason": "複数条件を統制して慎重に結論を出しています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 最初の二つの調査では鳥は何羽ずつ数えられましたか。",
+          "answer": "火曜朝42羽、木曜夕方26羽。",
+          "evidence": "On Tuesday morning, one team counted forty-two small birds. On Thursday evening, another team counted only twenty-six.",
+          "evidenceJp": "火曜日の朝、一つの班は小鳥を42羽数えました。木曜日の夕方、別の班は26羽しか数えませんでした。",
+          "reason": "最初の差の大きさを示しています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. ミカが『時間が原因』とすぐ決めなかったのはなぜですか。",
+          "answer": "道・天候・調査時間の長さも違っていたから。",
+          "evidence": "She compared the survey sheets and found three other differences.",
+          "evidenceJp": "調査用紙を比べると、ほかにも三つの違いがありました。",
+          "reason": "時刻以外にも条件差がありました。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "4. 再調査ではどんな条件をそろえましたか。",
+          "answer": "両班が同じ北側の道を30分間使った。",
+          "evidence": "Both teams used the same north path for thirty minutes.",
+          "evidenceJp": "今度は両方の班が同じ北側の道を30分間使いました。",
+          "reason": "比較を公平にするための統制です。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. 再調査の結果として本文に合うものはどれですか。",
+          "choices": [
+            "A. 朝36羽、夕方32羽だった。",
+            "B. 朝42羽、夕方10羽だった。",
+            "C. 朝と夕方が同数だった。",
+            "D. 夕方の方が20羽多かった。"
+          ],
+          "answer": "A. 朝36羽、夕方32羽だった。",
+          "evidence": "The morning count was thirty-six and the evening count was thirty-two, a much smaller difference than before.",
+          "evidenceJp": "朝は36羽、夕方は32羽で、前回より差はかなり小さくなりました。",
+          "reason": "条件をそろえた後の結果です。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『最初の大きな差は、時刻だけでなく（　）などの条件差もあった。』に最も適切なものはどれですか。",
+          "choices": [
+            "A. 天候や道",
+            "B. 鳥の名前",
+            "C. 生徒の学年",
+            "D. 公園の入場料"
+          ],
+          "answer": "A. 天候や道",
+          "evidence": "In their report, they listed time, weather, route, and counting area as factors that had changed.",
+          "evidenceJp": "報告書には、時刻、天候、道、観察範囲を変化した条件として書きました。",
+          "reason": "報告書で条件差を明示しています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "7. 四つの結果をすべて報告書に載せたのはなぜですか。",
+          "answer": "最初の考えに都合のよい数字だけを選ばないため。",
+          "evidence": "They included all four counts instead of choosing only the numbers that supported their first idea.",
+          "evidenceJp": "最初の考えに合う数字だけを選ばず、四つの結果をすべて示しました。",
+          "reason": "選択的なデータ利用を避けています。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "8. “comparable” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 比べられる",
+            "B. 隠れている",
+            "C. 数えられない",
+            "D. 危険な"
+          ],
+          "answer": "A. 比べられる",
+          "evidence": "The club learned that two measurements can look comparable while being taken under conditions that are not actually the same.",
+          "evidenceJp": "二つの測定値が比べられそうに見えても、実際には同じ条件で得られていないことがあると学びました。",
+          "reason": "測定値同士を比較できそうに見えるという意味です。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. 最初の調査と再調査を比べると何が言えますか。",
+          "answer": "条件をそろえると朝夕の差が小さくなり、最初の差を時刻だけの影響とは言えなくなった。",
+          "evidence": "The morning count was thirty-six and the evening count was thirty-two, a much smaller difference than before.",
+          "evidenceJp": "朝は36羽、夕方は32羽で、前回より差はかなり小さくなりました。",
+          "reason": "再調査で時刻以外の条件をそろえています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から調査で重要だと分かることはどれですか。",
+          "choices": [
+            "A. 数字が違えば原因は一つに決める。",
+            "B. 比較する条件をそろえ、変わった要因を明示する。",
+            "C. 最初の仮説に合う結果だけ使う。",
+            "D. 再調査は不要。"
+          ],
+          "answer": "B. 比較する条件をそろえ、変わった要因を明示する。",
+          "evidence": "The club learned that two measurements can look comparable while being taken under conditions that are not actually the same.",
+          "evidenceJp": "二つの測定値が比べられそうに見えても、実際には同じ条件で得られていないことがあると学びました。",
+          "reason": "公平な比較には条件確認が必要です。"
         }
       ]
     },
@@ -15383,7 +15611,145 @@
           "三つの資料を結び付けることで、44人全員が一つの単純な順路を通れるふりをせず、実行可能な予定を作ることができました。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 44人全員が同じ順路を通れるように規則を変えた話",
+            "B. 三つの資料を照合し、定員・開始時刻・移動時間を満たす見学計画を作った話",
+            "C. 特別展示室の定員を増やした話",
+            "D. 昼食の予約を取り消した話"
+          ],
+          "answer": "B. 三つの資料を照合し、定員・開始時刻・移動時間を満たす見学計画を作った話",
+          "evidence": "By linking the three materials, the team found a workable schedule without pretending that one simple route could fit all forty-four visitors.",
+          "evidenceJp": "三つの資料を結び付けることで、44人全員が一つの単純な順路を通れるふりをせず、実行可能な予定を作ることができました。",
+          "reason": "複数資料の条件を同時に満たす計画づくりが本文の中心です。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "2. 最初の案で11時20分の特別展示室が不可能だった理由として正しいものはどれですか。",
+          "choices": [
+            "A. 特別展示室は10時に閉まるから",
+            "B. 44人で入ろうとしたが定員が20人だから",
+            "C. 特別展示室は1階にないから",
+            "D. 昼食が11時20分からだから"
+          ],
+          "answer": "B. 44人で入ろうとしたが定員が20人だから",
+          "evidence": "That final step was impossible because forty-four people could not enter a room with capacity twenty.",
+          "evidenceJp": "しかし最後は不可能です。定員20人の部屋に44人は入れません。",
+          "reason": "定員表と最初の行程を結び付けると不可能な理由が分かります。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. 三班に分ける案も採用できなかったのはなぜですか。",
+          "answer": "同じ開始時刻に予約部屋へ入れる学校団体は二つまでだったから。",
+          "evidence": "Three groups could not all start a reserved room at 10:00.",
+          "evidenceJp": "10時に三班すべてが予約部屋へ入ることはできません。",
+          "reason": "時間指定入場の規則が三班同時開始を許していません。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "4. 修正版の11時20分について本文に合うものはどれですか。",
+          "choices": [
+            "A. A班22人全員が特別展示室に入り、B班は自由展示を見た。",
+            "B. A班の20人が特別展示室に入り、残り6人は自由展示を見て、B班はくらしの部屋へ入った。",
+            "C. A班とB班の44人全員が特別展示室に入った。",
+            "D. A班は産業の部屋、B班は特別展示室に入った。"
+          ],
+          "answer": "B. A班の20人が特別展示室に入り、残り6人は自由展示を見て、B班はくらしの部屋へ入った。",
+          "evidence": "At 11:20, Group A split temporarily: eighteen students and two adults entered the Special Gallery, while the remaining four students and two adults visited a free exhibit nearby. Group B used Local Life at 11:20.",
+          "evidenceJp": "11時20分、A班は一時的に分かれ、生徒18人と大人2人が特別展示室へ入り、残りの生徒4人と大人2人は近くの自由見学展示を見ます。B班は11時20分にくらしの部屋へ入ります。",
+          "reason": "人数と部屋の割当を本文通りに整理する問題です。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "5. 修正版が完全に同じ行程ではないのに採用された理由として最も適切なものはどれですか。",
+          "choices": [
+            "A. 全員が同時に同じ部屋へ入ることより、必要な規則を守りつつ主要展示を見られることを優先したから",
+            "B. 生徒の半数が特別展示室を見なくてよかったから",
+            "C. 定員の規則を無視できることが分かったから",
+            "D. 昼食時刻を自由に変更できたから"
+          ],
+          "answer": "A. 全員が同時に同じ部屋へ入ることより、必要な規則を守りつつ主要展示を見られることを優先したから",
+          "evidence": "The revised plan was not perfectly equal, but it satisfied every capacity and starting-time rule.",
+          "evidenceJp": "修正版は完全に同じ行程ではありませんが、すべての定員と開始時刻の規則を満たします。",
+          "reason": "完全に同じ行程より、制約を守って全員の見学機会を確保することを優先しています。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『三つの資料を結び付け、（　）をすべて満たす予定に直した。』に入る内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 定員・開始時刻・移動と昼食時刻",
+            "B. 写真・天気・入場料",
+            "C. 生徒の得点・座席・持ち物",
+            "D. 展示物の人気順位だけ"
+          ],
+          "answer": "A. 定員・開始時刻・移動と昼食時刻",
+          "evidence": "The revised plan was not perfectly equal, but it satisfied every capacity and starting-time rule. It also gave the class time to return downstairs and reach lunch by 12:10.",
+          "evidenceJp": "修正版は完全に同じ行程ではありませんが、すべての定員と開始時刻の規則を満たします。また、クラスには階下へ戻って12時10分までに昼食場所へ着く時間も残ります。",
+          "reason": "計画が満たすべき複数条件を要約しています。"
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "prompt": "7. 次の文を入れるのに最も自然なのはどこですか。『This solved the capacity problem without creating a third starting group.』",
+          "choices": [
+            "A. 三班に分ける案を考える前",
+            "B. 『So the students kept two groups but changed the order.』の直後",
+            "C. 昼食予約の説明の直前",
+            "D. 最後のまとめの後"
+          ],
+          "answer": "B. 『So the students kept two groups but changed the order.』の直後",
+          "evidence": "So the students kept two groups but changed the order.",
+          "evidenceJp": "そこで二班のまま、順序を変えました。",
+          "reason": "二班を維持して順序を変える解決策を受ける文なので、この直後が自然です。"
+        },
+        {
+          "type": "PHRASE_FILL",
+          "prompt": "8. 本文の “room order may differ” が表す内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 見る部屋そのものが生徒ごとに違う",
+            "B. 見る順番は違っても、全員が同じ主要展示を見る",
+            "C. 一部の生徒は展示を見ない",
+            "D. 部屋の定員を自由に変える"
+          ],
+          "answer": "B. 見る順番は違っても、全員が同じ主要展示を見る",
+          "evidence": "The students wrote one note beside the plan: room order may differ, but every student will see the same three main exhibits.",
+          "evidenceJp": "生徒たちは計画の横に「部屋を見る順番は違っても、全員が同じ三つの主要展示を見る」と書きました。",
+          "reason": "本文がその意味を直後に明示しています。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. B班が10時40分に特別展示室へ入る計画が成り立つために、館内図から確認すべき情報はどれですか。",
+          "choices": [
+            "A. 特別展示室が上階にあり、1階の部屋から約7分で移動できること",
+            "B. 特別展示室の壁の色",
+            "C. 昼食会場の座席数",
+            "D. 博物館の開館年"
+          ],
+          "answer": "A. 特別展示室が上階にあり、1階の部屋から約7分で移動できること",
+          "evidence": "The Special Gallery was upstairs, and walking there from either first-floor room took about seven minutes.",
+          "evidenceJp": "特別展示室は上階にあり、どちらの1階の部屋からも歩いて約7分かかります。",
+          "reason": "10時の見学後に10時40分の予約へ間に合うかは移動時間で判断します。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から計画を立てるときに大切だと分かることはどれですか。",
+          "choices": [
+            "A. 一つの資料だけで早く決める",
+            "B. 全員に完全に同じ行程を強制する",
+            "C. 複数の制約を照合し、必要なら一部の順序や動きを調整する",
+            "D. 条件に合わない場合は規則を無視する"
+          ],
+          "answer": "C. 複数の制約を照合し、必要なら一部の順序や動きを調整する",
+          "evidence": "By linking the three materials, the team found a workable schedule without pretending that one simple route could fit all forty-four visitors.",
+          "evidenceJp": "三つの資料を結び付けることで、44人全員が一つの単純な順路を通れるふりをせず、実行可能な予定を作ることができました。",
+          "reason": "複数条件を統合して現実的な案を作る姿勢が示されています。"
+        }
+      ]
     },
     {
       "id": "V11-B14-G3-007",
@@ -15614,6 +15980,132 @@
           "english": "The smaller picture had not been false, but it had removed information that changed the meaning of the scene.",
           "japanese": "小さい写真そのものが偽物だったわけではありませんが、場面の意味を変える情報が取り除かれていました。",
           "humanReview": "PENDING_BATCH14_SLASH_HUMAN"
+        }
+      ],
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 体育祭の競走で不正が見つかった話",
+            "B. 切り取られた写真だけで判断せず、元画像と撮影時刻を確認して説明を直した話",
+            "C. 新聞部が写真を使うのをやめた話",
+            "D. 走者が本番の競走を欠席した話"
+          ],
+          "answer": "B. 切り取られた写真だけで判断せず、元画像と撮影時刻を確認して説明を直した話",
+          "evidence": "The smaller picture had not been false, but it had removed information that changed the meaning of the scene.",
+          "evidenceJp": "小さい写真そのものが偽物だったわけではありませんが、場面の意味を変える情報が取り除かれていました。",
+          "reason": "写真自体は偽物でなくても、切り取りで失われた情報により意味が変わるため、元画像を確認したことが主題です。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 切り取られた写真を見た生徒は、最初にどのような説明を書きましたか。",
+          "answer": "その走者が本番の競走でみんなより先に走り始めたという説明。",
+          "evidence": "A student wrote a caption saying that the runner had begun before everyone else during the race.",
+          "evidenceJp": "ある生徒は、本番の競走でその走者がみんなより先に走り始めたという説明を書きました。",
+          "reason": "最初の解釈が本文に直接示されています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. ハナが元の写真を確認したことで、最初の説明が適切でないと分かったのはなぜですか。",
+          "answer": "元画像には先生の赤い旗と「練習開始」のボードが写り、撮影も本番の20分前だったから。",
+          "evidence": "The wider image showed a teacher holding a red flag and a board that said ‘Practice Start.’ The camera time also showed that the picture had been taken twenty minutes before the real race.",
+          "evidenceJp": "広い範囲が写った元画像には、赤い旗を持つ先生と「練習開始」と書かれたボードがありました。撮影時刻を確認すると、本番の競走より20分前でした。",
+          "reason": "元画像と時刻情報の両方が、写真が本番ではなく練習中の場面だと示しています。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "4. 写真が撮られたときの実際の状況として本文に合うものはどれですか。",
+          "choices": [
+            "A. 走者が本番で早く走り始め、他の生徒が抗議していた。",
+            "B. 走者が一人でコースを確認し、他の生徒は指示を待っていた。",
+            "C. 先生が競走を中止し、全員が帰った。",
+            "D. 他の生徒はすでにゴールしていた。"
+          ],
+          "answer": "B. 走者が一人でコースを確認し、他の生徒は指示を待っていた。",
+          "evidence": "The runner was testing the course alone while the other students waited for instructions.",
+          "evidenceJp": "その走者は一人でコースを確認し、ほかの生徒は指示を待っていたのです。",
+          "reason": "元画像の文脈を確認した後に分かった実際の状況です。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "5. 新聞部が今後の写真利用ルールを追加した理由として最も適切なものはどれですか。",
+          "choices": [
+            "A. どんな写真も必ず全体を掲載するため",
+            "B. 切り取りで見えなくなった情報が出来事の意味を変える場合があるため",
+            "C. 撮影時刻を写真から削除するため",
+            "D. 説明文を短くするため"
+          ],
+          "answer": "B. 切り取りで見えなくなった情報が出来事の意味を変える場合があるため",
+          "evidence": "It also added a rule for future photo work: when cropping changes who or what can be seen, reporters should check the original image before deciding what happened.",
+          "evidenceJp": "また、今後の写真利用について「切り取りによって見える人物や物が変わる場合、何が起きたか判断する前に元画像を確認する」という決まりを加えました。",
+          "reason": "切り取りによる文脈欠落を防ぐための再発防止ルールです。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『新聞部は、切り取られた写真だけでなく（　）も確認し、説明文を直した。』に入る内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 元画像と撮影時刻",
+            "B. 生徒の成績と出席表",
+            "C. 天気予報だけ",
+            "D. 観客の人数だけ"
+          ],
+          "answer": "A. 元画像と撮影時刻",
+          "evidence": "Before publishing it, Hana asked for the original photo. The wider image showed a teacher holding a red flag and a board that said ‘Practice Start.’ The camera time also showed that the picture had been taken twenty minutes before the real race.",
+          "evidenceJp": "掲載前にハナは元の写真を見せてもらいました。広い範囲が写った元画像には、赤い旗を持つ先生と「練習開始」と書かれたボードがありました。撮影時刻を確認すると、本番の競走より20分前でした。",
+          "reason": "元画像と撮影時刻が最初の解釈を修正する決め手でした。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "7. 本文の “cropped image” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 切り取って一部だけを見せた画像",
+            "B. 色をすべて消した画像",
+            "C. 音声だけの記録",
+            "D. 手書きの地図"
+          ],
+          "answer": "A. 切り取って一部だけを見せた画像",
+          "evidence": "The cropped image showed one runner far ahead while the others were standing near the starting line.",
+          "evidenceJp": "切り取られた写真には、一人の走者がずっと前にいて、ほかの生徒はスタート地点の近くに立っている様子が写っていました。",
+          "reason": "後で元画像の広い範囲と比較しているため、一部を切り取った画像を指します。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "8. 「Practice Start」のボードと撮影時刻を組み合わせると、何が分かりますか。",
+          "answer": "写真は本番の競走ではなく、その20分前の練習確認の場面だったこと。",
+          "evidence": "The camera time also showed that the picture had been taken twenty minutes before the real race.",
+          "evidenceJp": "撮影時刻を確認すると、本番の競走より20分前でした。",
+          "reason": "ボードが練習中であることを、撮影時刻が本番前であることを示し、二つの情報が同じ結論を支えます。"
+        },
+        {
+          "type": "PHRASE_FILL",
+          "prompt": "9. 本文の “not an unfair start” が表す内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 本番で不公平に早くスタートした場面ではない",
+            "B. スタート地点が使えなかった",
+            "C. 競走が中止になった",
+            "D. 写真が偽物だった"
+          ],
+          "answer": "A. 本番で不公平に早くスタートした場面ではない",
+          "evidence": "The newspaper changed the caption to explain that the photo showed a practice check, not an unfair start.",
+          "evidenceJp": "新聞は説明文を変え、不公平なスタートではなく練習確認の場面だと示しました。",
+          "reason": "元画像の確認により、最初の「先に走り始めた」という解釈を訂正しています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から、写真を資料として使うときに重要だと分かることはどれですか。",
+          "choices": [
+            "A. 写っている部分だけで出来事を断定する",
+            "B. 写真は必ず事実全体を示すので確認は不要",
+            "C. 切り取りで失われた文脈がないか、元画像や時刻など周辺情報を確認する",
+            "D. 説明文は写真を見る前に決める"
+          ],
+          "answer": "C. 切り取りで失われた文脈がないか、元画像や時刻など周辺情報を確認する",
+          "evidence": "The smaller picture had not been false, but it had removed information that changed the meaning of the scene.",
+          "evidenceJp": "小さい写真そのものが偽物だったわけではありませんが、場面の意味を変える情報が取り除かれていました。",
+          "reason": "一部分だけでは誤解が生じるため、文脈を補う情報確認が必要だと示されています。"
         }
       ]
     },
@@ -16159,6 +16651,138 @@
           "japanese": "費用、予想される使用年数、安全性、場所、実際の利用状況を、ベンチごとに考える必要があるのです。",
           "humanReview": "PENDING_BATCH14_SLASH_HUMAN"
         }
+      ],
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 公園の三台すべてを新品に替える計画を立てた話",
+            "B. 各ベンチの費用・耐用年数・安全性・利用状況を比べ、修理と交換を分けて提案した話",
+            "C. ベンチをすべて撤去する話",
+            "D. 木陰の木を切る話"
+          ],
+          "answer": "B. 各ベンチの費用・耐用年数・安全性・利用状況を比べ、修理と交換を分けて提案した話",
+          "evidence": "The students explained that ‘repair’ and ‘replace’ were not competing answers for the whole park. Cost, expected life, safety, location, and actual use had to be considered for each bench separately.",
+          "evidenceJp": "生徒たちは、「修理」と「交換」は公園全体に対する二者択一の答えではないと説明しました。費用、予想される使用年数、安全性、場所、実際の利用状況を、ベンチごとに考える必要があるのです。",
+          "reason": "全体を一つの方法で処理せず、ベンチごとに条件を比較して判断したことが中心です。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "2. Aベンチを修理する判断を支える情報の組み合わせとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 修理8,000円・枠組みが丈夫・約4年延長・利用が多い",
+            "B. 修理22,000円・脚に深い傷み・利用2回",
+            "C. 新品30,000円・倉庫の裏・利用が少ない",
+            "D. 修理4,000円・ねじ2本・木陰の希望"
+          ],
+          "answer": "A. 修理8,000円・枠組みが丈夫・約4年延長・利用が多い",
+          "evidence": "Bench A had one damaged board, but its frame was strong. Repairing it would cost 8,000 yen and was expected to add about four years of use.",
+          "evidenceJp": "Aベンチは板が一枚傷んでいましたが、枠組みは丈夫でした。修理費は8,000円で、およそ4年間使える期間が延びる見込みです。",
+          "reason": "低い修理費、強い構造、延長できる使用年数に加えて、遊び場そばでよく使われていることが修理を支持します。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. Cベンチを修理しないことにした主な理由は何ですか。",
+          "answer": "修理費が22,000円と高いのに、延ばせる使用期間が約1年しか見込めなかったから。",
+          "evidence": "Repairing it would cost 22,000 yen and might add only one year.",
+          "evidenceJp": "修理には22,000円かかり、延ばせる期間は1年ほどかもしれません。",
+          "reason": "新品30,000円に近い費用をかけても長く使えないため、修理の効率が低いと判断できます。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "4. 生徒たちの観察結果として本文に合うものはどれですか。",
+          "choices": [
+            "A. Aはほとんど使われず、Cが最も人気だった。",
+            "B. Bは高齢の利用者に人気で、Cは観察中に二回しか使われなかった。",
+            "C. 三台とも同じ回数使われた。",
+            "D. Cは遊び場のそばで大人によく使われた。"
+          ],
+          "answer": "B. Bは高齢の利用者に人気で、Cは観察中に二回しか使われなかった。",
+          "evidence": "Bench B was near the walking path and was popular with older visitors. Bench C was behind a storage building and was used only twice during the observation.",
+          "evidenceJp": "Bは散歩道の近くで、高齢の利用者に人気でした。Cは倉庫の裏にあり、観察中に使われたのは二回だけでした。",
+          "reason": "配置と実際の利用状況が直接示されています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "5. Cの代わりの新品を同じ場所ではなく木陰の近くに置く案が合理的なのはなぜですか。",
+          "choices": [
+            "A. Cの場所の利用が少なく、来園者から木陰の近くに座席を求める声があったから",
+            "B. 木陰ではベンチが壊れないから",
+            "C. 新品の価格が木陰では安くなるから",
+            "D. 倉庫を移動する予定だから"
+          ],
+          "answer": "A. Cの場所の利用が少なく、来園者から木陰の近くに座席を求める声があったから",
+          "evidence": "However, several visitors had asked for a seat near a large shade tree on the opposite side of the park.",
+          "evidenceJp": "しかし、複数の来園者が公園の反対側にある大きな木陰の近くに座る場所を求めていました。",
+          "reason": "低利用地点へ機械的に置き換えるより、実際の需要がある場所へ配置する方が利用価値を高められます。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『AとBは（　）ため修理し、Cは高い修理費の割に長く使えないため撤去する。』に入る内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 構造が健全で、日常的に使われている",
+            "B. 新品より高価である",
+            "C. 倉庫の裏にある",
+            "D. 観察で二回だけ使われた"
+          ],
+          "answer": "A. 構造が健全で、日常的に使われている",
+          "evidence": "A and B would be repaired because their structures were sound and people used them regularly.",
+          "evidenceJp": "AとBは構造が健全で日常的に使われているため修理します。",
+          "reason": "最終提案でA・Bを修理する理由が直接示されています。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "7. 本文の “sound” が “their structures were sound” で表す意味として最も適切なものはどれですか。",
+          "choices": [
+            "A. 音が大きい",
+            "B. 構造がしっかりしている",
+            "C. 新品である",
+            "D. 色が明るい"
+          ],
+          "answer": "B. 構造がしっかりしている",
+          "evidence": "A and B would be repaired because their structures were sound and people used them regularly.",
+          "evidenceJp": "AとBは構造が健全で日常的に使われているため修理します。",
+          "reason": "修理して使い続けられる構造状態を表しています。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "8. Cベンチについて「同じ場所で新品に替える」案から「木陰へ新品を置く」案へ変わったのは、どの情報を追加で考えたからですか。",
+          "answer": "Cの場所での実際の利用が少なく、来園者が反対側の木陰に座席を求めていたという観察・意見。",
+          "evidence": "Bench C was behind a storage building and was used only twice during the observation. At first, the group thought replacing C in the same place would complete the project neatly. However, several visitors had asked for a seat near a large shade tree on the opposite side of the park.",
+          "evidenceJp": "Cは倉庫の裏にあり、観察中に使われたのは二回だけでした。最初、生徒たちはCを同じ場所で新品に替えれば、計画全体がすっきり終わると考えました。しかし、複数の来園者が公園の反対側にある大きな木陰の近くに座る場所を求めていました。",
+          "reason": "物の状態だけでなく、場所ごとの需要を組み合わせて配置を変えています。"
+        },
+        {
+          "type": "PHRASE_FILL",
+          "prompt": "9. 本文の “not competing answers for the whole park” が表す考えとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 公園全体で修理か交換のどちらか一方に統一する必要はない",
+            "B. 修理と交換は同じ意味である",
+            "C. すべて新品にする必要がある",
+            "D. 費用だけで決めるべきである"
+          ],
+          "answer": "A. 公園全体で修理か交換のどちらか一方に統一する必要はない",
+          "evidence": "The students explained that ‘repair’ and ‘replace’ were not competing answers for the whole park.",
+          "evidenceJp": "生徒たちは、「修理」と「交換」は公園全体に対する二者択一の答えではないと説明しました。",
+          "reason": "各ベンチを別々の条件で判断するという最終結論を表しています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から設備の更新を考えるときに重要だと分かることはどれですか。",
+          "choices": [
+            "A. 見た目がきれいなら点検しない",
+            "B. 全設備に同じ対応をする",
+            "C. 費用だけでなく耐用年数・安全性・場所・実際の利用を個別に比較する",
+            "D. 利用者の意見は考慮しない"
+          ],
+          "answer": "C. 費用だけでなく耐用年数・安全性・場所・実際の利用を個別に比較する",
+          "evidence": "Cost, expected life, safety, location, and actual use had to be considered for each bench separately.",
+          "evidenceJp": "費用、予想される使用年数、安全性、場所、実際の利用状況を、ベンチごとに考える必要があるのです。",
+          "reason": "最終文が判断に必要な複数の基準を明示しています。"
+        }
       ]
     },
     {
@@ -16665,7 +17289,133 @@
           "一つずつ資料を見るのではなく、資料を一組として読む方が、より安全な予定を作れるのです。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 暑さのため祭りを中止した話",
+            "B. 予報・地図・会場定員・出演者条件を組み合わせて、発表ごとに安全な予定へ組み直した話",
+            "C. すべての発表を地域ホールへ移した話",
+            "D. メインステージを閉鎖した話"
+          ],
+          "answer": "B. 予報・地図・会場定員・出演者条件を組み合わせて、発表ごとに安全な予定へ組み直した話",
+          "evidence": "Their plan showed a different idea: use the forecast together with shade, room capacity, audience size, and the needs of performers.",
+          "evidenceJp": "計画が示したのは別の考え方です。予報だけでなく、日陰、部屋の定員、観客数、出演者の必要を一緒に使います。",
+          "reason": "一つの資料や一律の移動ではなく、複数資料を統合して各発表を調整したことが主題です。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "2. 正午以降のすべての催しをホールへ移す案が実行できなかった理由はどれですか。",
+          "choices": [
+            "A. ホールに冷房がなかったから",
+            "B. ホールは120人までで、地域音楽ステージには通常250人以上集まるから",
+            "C. ホールが午後から閉まるから",
+            "D. 学校バンドが400人を超えるから"
+          ],
+          "answer": "B. ホールは120人までで、地域音楽ステージには通常250人以上集まるから",
+          "evidence": "That plan failed because the hall was too small for the local music show, which usually attracted more than 250 visitors.",
+          "evidenceJp": "しかし、地域音楽ステージには通常250人以上が集まるため、ホールでは小さすぎました。",
+          "reason": "会場定員と観客数を組み合わせると、一律の屋内移動が不可能だと分かります。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. 学校バンドを11時30分に小ステージへ移したのはなぜですか。",
+          "answer": "その時刻には木のそばの小ステージの待機場所の大部分が日陰になるから。",
+          "evidence": "The school band could use the tree-side stage, where shade covered most of the waiting area by 11:30.",
+          "evidenceJp": "学校バンドは11時30分には待機場所の大部分が日陰になる木のそばのステージを使えます。",
+          "reason": "発表時刻と地図上の日陰条件を合わせた判断です。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "4. 修正版の予定として本文に合うものはどれですか。",
+          "choices": [
+            "A. 子どものダンスはホールへ移した。",
+            "B. 地域音楽ステージは12時40分のままにした。",
+            "C. 高齢者ダンスは12時50分に屋内へ移した。",
+            "D. 1時30分に新しい発表を追加した。"
+          ],
+          "answer": "C. 高齢者ダンスは12時50分に屋内へ移した。",
+          "evidence": "The senior dance moved indoors at 12:50.",
+          "evidenceJp": "高齢者ダンスは12時50分に屋内へ移しました。",
+          "reason": "修正版での変更が直接示されています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "5. 地域音楽ステージを12時40分から2時10分へ移した理由として最も適切なものはどれですか。",
+          "choices": [
+            "A. 2時10分ならホールに入れるから",
+            "B. 大人数を収容できるメインステージを使いながら、気温が下がり始める時間へずらすため",
+            "C. 出演者が朝しか来られないから",
+            "D. 木陰の小ステージが400人入れるから"
+          ],
+          "answer": "B. 大人数を収容できるメインステージを使いながら、気温が下がり始める時間へずらすため",
+          "evidence": "The local music show remained on the main stage but moved from 12:40 to 2:10, when the forecast was beginning to fall.",
+          "evidenceJp": "地域音楽ステージはメインステージのままですが、12時40分から、気温が下がり始める予報の午後2時10分へ移しました。",
+          "reason": "観客数による会場制約を守りつつ、予報上の暑さを避ける調整です。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『修正版では、発表ごとに（　）を組み合わせて場所と時刻を決めた。』に入る内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 予報・日陰・定員・観客数・出演者の必要",
+            "B. 写真・料金・広告",
+            "C. 生徒の成績だけ",
+            "D. 元の時刻表だけ"
+          ],
+          "answer": "A. 予報・日陰・定員・観客数・出演者の必要",
+          "evidence": "Their plan showed a different idea: use the forecast together with shade, room capacity, audience size, and the needs of performers.",
+          "evidenceJp": "計画が示したのは別の考え方です。予報だけでなく、日陰、部屋の定員、観客数、出演者の必要を一緒に使います。",
+          "reason": "最終段落が安全な計画に必要な資料の組み合わせをまとめています。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "7. 本文の “capacity” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 会場に入れる人数の上限",
+            "B. 発表の長さ",
+            "C. 気温の高さ",
+            "D. 木の本数"
+          ],
+          "answer": "A. 会場に入れる人数の上限",
+          "evidence": "The hall could hold only 120 people, while the main stage area could hold more than 400.",
+          "evidenceJp": "ホールは120人までしか入れませんが、メインステージ周辺には400人以上入れます。",
+          "reason": "本文では各会場が収容できる人数として示されています。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "8. 1時30分ごろに20分間の空き時間を作った判断から分かることはどれですか。",
+          "answer": "元の時刻表を埋めることを優先せず、最も暑い時間帯に不要な屋外活動を増やさないようにした。",
+          "evidence": "The committee also added free-water points and a twenty-minute open break around 1:30 so no group had to fill that period simply because the original schedule had used it.",
+          "evidenceJp": "また、無料の給水場所を設け、午後1時30分ごろに20分間の空き時間を作りました。元の予定でその時間が埋まっていたからというだけで、無理に別の発表を入れないためです。",
+          "reason": "元の予定を機械的に維持せず、安全上必要なら空白を作る判断です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "9. 生徒たちが「新しい計画で暑さの危険がすべてなくなる」と言わなかったのはなぜですか。",
+          "answer": "天気は変わる可能性があり、当日の朝に実際の状態を確認する必要があるから。",
+          "evidence": "Weather could change, and real conditions still needed to be checked that morning.",
+          "evidenceJp": "天気は変わる可能性があり、当日の朝に実際の状態を確認する必要があります。",
+          "reason": "予報を使っても、当日の実測確認が必要だと認めています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から複数資料を使う計画づくりで重要だと分かることはどれですか。",
+          "choices": [
+            "A. 一つの表だけで全員に同じ変更をする",
+            "B. 各資料を別々に見て、最後に一つだけ選ぶ",
+            "C. 予報・地図・定員・利用者条件を関連付けて、対象ごとに違う判断をする",
+            "D. 元の予定はどんな条件でも変えない"
+          ],
+          "answer": "C. 予報・地図・定員・利用者条件を関連付けて、対象ごとに違う判断をする",
+          "evidence": "A schedule was safer when the materials were read as one set instead of one table at a time.",
+          "evidenceJp": "一つずつ資料を見るのではなく、資料を一組として読む方が、より安全な予定を作れるのです。",
+          "reason": "複数資料を一組として関連付けることが物語の結論です。"
+        }
+      ]
     },
     {
       "id": "V11-B14-G3-010",
@@ -16917,7 +17667,139 @@
           "数字を出典までたどることで、表現の強さは少し弱くなりましたが、ずっと正確になりました。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 10代の活動を否定した話",
+            "B. 80％という数字の元資料をたどり、対象と期間を正しく直した話",
+            "C. 市の報告書を削除した話",
+            "D. 新しい調査をした話"
+          ],
+          "answer": "B. 80％という数字の元資料をたどり、対象と期間を正しく直した話",
+          "evidence": "Tracing the number to its source made the statement less dramatic but much more accurate.",
+          "evidenceJp": "数字を出典までたどることで、表現の強さは少し弱くなりましたが、ずっと正確になりました。",
+          "reason": "本文全体は出典確認によって数字の意味を正確にする過程を扱っています。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "2. 元の市の報告書について本文に合うものはどれですか。",
+          "choices": [
+            "A. 地元の10代全員を対象に毎月の活動を尋ねた。",
+            "B. 学校のボランティア部員だけを対象に、過去3か月で少なくとも一度参加したかを尋ねた。",
+            "C. 大人だけを対象にした。",
+            "D. SNS利用者だけを対象にした。"
+          ],
+          "answer": "B. 学校のボランティア部員だけを対象に、過去3か月で少なくとも一度参加したかを尋ねた。",
+          "evidence": "The report did contain the number 80 percent, but the survey had been given only to members of school volunteer clubs. The question asked about joining at least one activity during the previous three months.",
+          "evidenceJp": "そこには確かに80％という数字がありましたが、調査対象は学校のボランティア部に所属する人だけでした。また質問は、過去3か月に少なくとも一度活動へ参加した経験についてのものでした。",
+          "reason": "対象集団と質問期間が明示されています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. 新聞部が『地元の10代の80％が毎月活動している』と書かなかったのはなぜですか。",
+          "answer": "元資料は学校のボランティア部員だけを対象にし、過去3か月に少なくとも一度の参加を尋ねたもので、全10代や毎月の参加を示していなかったから。",
+          "evidence": "The famous sentence had changed both the group and the time period.",
+          "evidenceJp": "有名になった文は、対象となる集団と期間の両方を変えていたのです。",
+          "reason": "元資料から一般化できる範囲を超えていたためです。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "4. 新聞部が『だから10代は活動に関心がない』とも結論づけなかった理由はどれですか。",
+          "choices": [
+            "A. 報告書に数字がなかったから",
+            "B. その報告書だけでは地元の10代全体について判断できないから",
+            "C. 記事をやめたから",
+            "D. 80％が完全な誤りだったから"
+          ],
+          "answer": "B. その報告書だけでは地元の10代全体について判断できないから",
+          "evidence": "The report could not answer that larger question.",
+          "evidenceJp": "その報告書だけでは、より大きなその問いには答えられません。",
+          "reason": "限られた調査から逆方向の大きな結論を出すことも避けています。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "5. 元資料と広まった文の違いを正しく表すものはどれですか。",
+          "choices": [
+            "A. 部員→全10代、3か月に一度以上→毎月",
+            "B. 全10代→部員、毎月→毎日",
+            "C. 大人→中学生、1年→1週間",
+            "D. 対象も期間も同じ"
+          ],
+          "answer": "A. 部員→全10代、3か月に一度以上→毎月",
+          "evidence": "The famous sentence had changed both the group and the time period.",
+          "evidenceJp": "有名になった文は、対象となる集団と期間の両方を変えていたのです。",
+          "reason": "資料間の差を対象と期間の二つで整理します。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 本文の内容に合うように、まとめの空欄に入る組み合わせとして最も適切なものはどれですか。『新聞部は80％という数字を調べ、（　①　）と（　②　）が広まった文で変えられていたことを確認した。』",
+          "choices": [
+            "A. ①対象となる集団 ②期間",
+            "B. ①記事の題名 ②写真",
+            "C. ①質問者 ②場所",
+            "D. ①数字 ②学校名"
+          ],
+          "answer": "A. ①対象となる集団 ②期間",
+          "evidence": "The famous sentence had changed both the group and the time period.",
+          "evidenceJp": "有名になった文は、対象となる集団と期間の両方を変えていたのです。",
+          "reason": "広まった文と元資料の差はgroupとtime periodの二点です。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "7. 80％という数字について、本文が示していることとして正しいものはどれですか。",
+          "choices": [
+            "A. 数字そのものが完全に作られたものだった。",
+            "B. 数字は元資料にあったが、対象と期間を広げて紹介されていた。",
+            "C. 数字は毎月の全10代調査から出た。",
+            "D. 数字の出典は最後まで見つからなかった。"
+          ],
+          "answer": "B. 数字は元資料にあったが、対象と期間を広げて紹介されていた。",
+          "evidence": "Tracing the number to its source made the statement less dramatic but much more accurate.",
+          "evidenceJp": "数字を出典までたどることで、表現の強さは少し弱くなりましたが、ずっと正確になりました。",
+          "reason": "数字を捨てるのではなく、元資料に即して正確な表現へ直したことが中心です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "8. 出典を確認した後の表現が『less dramatic but much more accurate』になったのはなぜですか。",
+          "answer": "全10代・毎月という強い一般化をやめ、学校のボランティア部員・過去3か月に少なくとも一度という元資料の条件に合わせたから。",
+          "evidence": "The report did contain the number 80 percent, but the survey had been given only to members of school volunteer clubs. The question asked about joining at least one activity during the previous three months.",
+          "evidenceJp": "そこには確かに80％という数字がありましたが、調査対象は学校のボランティア部に所属する人だけでした。また質問は、過去3か月に少なくとも一度活動へ参加した経験についてのものでした。",
+          "reason": "元資料の対象と期間をそのまま反映すると、表現は控えめになりますが正確になります。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "9. この話から、数字を記事で使うときに最も大切だと考えられることはどれですか。",
+          "choices": [
+            "A. 数字が大きければそのまま使うこと",
+            "B. 出典の対象・質問内容・期間まで確認すること",
+            "C. 数字を必ず別の数字に変えること",
+            "D. 反対意見を入れないこと"
+          ],
+          "answer": "B. 出典の対象・質問内容・期間まで確認すること",
+          "evidence": "The famous sentence had changed both the group and the time period.",
+          "evidenceJp": "有名になった文は、対象となる集団と期間の両方を変えていたのです。",
+          "reason": "誤解の原因が対象と期間の変化だったため、数字だけでなく調査条件まで確かめる必要があります。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "10. 元調査から言える範囲を最も正確に表しているものはどれですか。",
+          "choices": [
+            "A. 地元の10代の80％が毎月活動している。",
+            "B. 地元の10代の80％は活動に関心がない。",
+            "C. 調査された学校ボランティア部員のうち80％が、過去3か月に少なくとも一度活動に参加した。",
+            "D. すべての学校で毎月80％が活動している。"
+          ],
+          "answer": "C. 調査された学校ボランティア部員のうち80％が、過去3か月に少なくとも一度活動に参加した。",
+          "evidence": "The report did contain the number 80 percent, but the survey had been given only to members of school volunteer clubs. The question asked about joining at least one activity during the previous three months.",
+          "evidenceJp": "そこには確かに80％という数字がありましたが、調査対象は学校のボランティア部に所属する人だけでした。また質問は、過去3か月に少なくとも一度活動へ参加した経験についてのものでした。",
+          "reason": "元資料が直接支えている対象と期間だけに限定した表現です。"
+        }
+      ]
     },
     {
       "id": "V11-B14-G3-011",
@@ -17316,7 +18198,139 @@
           "健康な植物を育て、水の無駄を減らすという同じ目標を持ちながら、異なる条件に応じるのが公平な計画だと説明しました。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. すべての区画に同じ量の水を与える規則を作った話",
+            "B. 日当たりなどの条件と土の記録を比べ、二つの水やり予定を目安として作った話",
+            "C. 水タンクを二つに増やした話",
+            "D. 日陰の区画への水やりをやめた話"
+          ],
+          "answer": "B. 日当たりなどの条件と土の記録を比べ、二つの水やり予定を目安として作った話",
+          "evidence": "The students recommended keeping the two schedules as a guide, not as an automatic rule.",
+          "evidenceJp": "生徒たちは二つの予定を、自動的に従う規則ではなく目安として残すよう提案しました。",
+          "reason": "本文全体は、条件と記録を基に水やりを調整し、固定規則ではなく目安として運用する流れです。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 最初の週の3日目までに、日なたと日陰の区画ではどんな違いが見られましたか。",
+          "answer": "日なたの4区画は夕方前に乾き、日陰の3区画では翌朝も土が湿っていた。",
+          "evidence": "By the third day, four sunny beds were dry before evening, while three shaded beds still had wet soil the next morning.",
+          "evidenceJp": "3日目までに、日当たりのよい4区画は夕方前に乾いていましたが、日陰の3区画では翌朝も土が湿っていました。",
+          "reason": "同じ量を与えたときに、条件の違いで土の状態が分かれたことを示す具体例です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. 生徒たちが日なたのすべての区画の水をすぐ二倍にしなかったのはなぜですか。",
+          "answer": "植物の種類や土が完全に同じではなかったから。",
+          "evidence": "The students did not immediately double the water for every sunny bed because plant type and soil were not identical.",
+          "evidenceJp": "ただし植物の種類や土が完全に同じではないため、日なたのすべての区画の水をすぐ二倍にはしませんでした。",
+          "reason": "日当たりだけを原因と決めず、ほかの条件差も考慮したためです。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "4. 2週目の日陰の区画への水やりとして本文に合うものはどれですか。",
+          "choices": [
+            "A. 朝に一度水をやり、土の確認で必要な場合だけ追加した。",
+            "B. 朝夕必ず同じ量を二回与えた。",
+            "C. 夕方だけ水をやった。",
+            "D. 日なたとまったく同じ予定にした。"
+          ],
+          "answer": "A. 朝に一度水をやり、土の確認で必要な場合だけ追加した。",
+          "evidence": "Shaded beds received one morning watering, followed by an extra amount only when the soil check showed it was needed.",
+          "evidenceJp": "日陰の区画は朝に一度水をやり、その後は土の確認で必要と分かった場合だけ追加します。",
+          "reason": "日陰では固定的に追加せず、土の状態を見て必要時だけ増やす設計でした。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "5. 生徒たちが毎週日曜日に記録を見直すよう提案した目的として最も適切なものはどれですか。",
+          "choices": [
+            "A. 季節によって水やりの傾向が変わっていないか確かめるため",
+            "B. 毎週すべての区画を植え替えるため",
+            "C. 水タンクの大きさを測るため",
+            "D. 記録を捨てる日を決めるため"
+          ],
+          "answer": "A. 季節によって水やりの傾向が変わっていないか確かめるため",
+          "evidence": "They also suggested reviewing the log every Sunday so residents could see whether the pattern was changing with the season.",
+          "evidenceJp": "また、季節とともに傾向が変わっていないか分かるよう、毎週日曜日に記録を見直すことも提案しました。",
+          "reason": "予定を固定化せず、季節変化に応じて見直すための提案です。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 本文の内容に合うように、まとめの空欄に入るものとして最も適切なのはどれですか。『同じ量を与えるより、（　）を記録して条件に応じて水やりを変える方が、乾きすぎと水のやりすぎを減らした。』",
+          "choices": [
+            "A. 水の量と水やり前の土の状態",
+            "B. 区画の名前だけ",
+            "C. 利用者の人数だけ",
+            "D. 毎日の気温だけ"
+          ],
+          "answer": "A. 水の量と水やり前の土の状態",
+          "evidence": "Gardeners recorded both the amount of water and whether the soil was dry, damp, or wet before watering.",
+          "evidenceJp": "利用者は、水の量だけでなく、水やり前の土が「乾いている・少し湿っている・湿っている」のどれかも記録しました。",
+          "reason": "2週目は量だけでなく、給水前の土の状態も記録して判断材料にしました。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "7. “guide” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 目安",
+            "B. 罰則",
+            "C. 容器",
+            "D. 記憶"
+          ],
+          "answer": "A. 目安",
+          "evidence": "The students recommended keeping the two schedules as a guide, not as an automatic rule.",
+          "evidenceJp": "生徒たちは二つの予定を、自動的に従う規則ではなく目安として残すよう提案しました。",
+          "reason": "ここでは絶対的な規則ではなく、判断の基準として使うものを指します。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "8. 1週目と2週目の結果を比べると、最も適切に言えることはどれですか。",
+          "choices": [
+            "A. 条件に応じた予定にすると、極端に乾く区画と水を与えすぎる区画の両方が減った。",
+            "B. 2週目はすべての区画が完全に同じ土の状態になった。",
+            "C. 日陰の区画はすべて乾いた。",
+            "D. 日なたの区画には水を与えなくなった。"
+          ],
+          "answer": "A. 条件に応じた予定にすると、極端に乾く区画と水を与えすぎる区画の両方が減った。",
+          "evidence": "At the end of the week, fewer beds reached either extreme.",
+          "evidenceJp": "週の終わりには、極端に乾く区画も、極端に水が多い区画も減りました。",
+          "reason": "2週目の調整後、乾きすぎと過剰な水やりの両方が減っています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "9. 二つの予定を「automatic rule」にしなかった理由として本文に合うものはどれですか。",
+          "choices": [
+            "A. 新しく植えた区画や雨の日には別の判断が必要になることがあるから",
+            "B. 利用者が記録を読めないから",
+            "C. 水タンクが毎日空になるから",
+            "D. 日陰の区画がなくなったから"
+          ],
+          "answer": "A. 新しく植えた区画や雨の日には別の判断が必要になることがあるから",
+          "evidence": "A newly planted bed or a rainy day could require a different choice.",
+          "evidenceJp": "植えたばかりの区画や雨の日なら、別の判断が必要になることがあります。",
+          "reason": "条件が変われば最適な水やりも変わるため、予定は固定規則ではありません。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. 最後の段落から分かる「fair plan」の考え方として最も適切なのはどれですか。",
+          "choices": [
+            "A. 全員に必ず同じ量を与えること",
+            "B. 同じ目標を持ちながら、異なる条件には異なる対応をすること",
+            "C. 日なたの区画だけを優先すること",
+            "D. 毎週予定を大きく変えること"
+          ],
+          "answer": "B. 同じ目標を持ちながら、異なる条件には異なる対応をすること",
+          "evidence": "A fair plan could use the same goal—healthy plants with less wasted water—while responding to different conditions.",
+          "evidenceJp": "健康な植物を育て、水の無駄を減らすという同じ目標を持ちながら、異なる条件に応じるのが公平な計画だと説明しました。",
+          "reason": "公平さを「同量」ではなく「同じ目標に向けて条件差へ応じること」と捉えています。"
+        }
+      ]
     },
     {
       "id": "V11-B14-G3-012",
@@ -17609,7 +18623,139 @@
           "観察したことと推測を分けることで、二つの不完全な証言を一つの誤った確信に変えるのではなく、不確かな点を不確かなまま報告できました。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 自信のある目撃者の話をそのまま採用した話",
+            "B. 二つの証言を直接見たことと推測に分け、不確かな点を不確かなまま報告した話",
+            "C. 防犯カメラだけで事故原因を断定した話",
+            "D. 自転車事故の罰則を決めた話"
+          ],
+          "answer": "B. 二つの証言を直接見たことと推測に分け、不確かな点を不確かなまま報告した話",
+          "evidence": "By separating observations from assumptions, the committee could report uncertainty instead of turning two incomplete accounts into one false certainty.",
+          "evidenceJp": "観察したことと推測を分けることで、二つの不完全な証言を一つの誤った確信に変えるのではなく、不確かな点を不確かなまま報告できました。",
+          "reason": "本文の中心は、証言の確実な部分と推測を分けて報告することです。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 一人目の目撃者が実際に見ていなかったことは何ですか。",
+          "answer": "自転車の前輪が縁石に触れるところ。",
+          "evidence": "The first witness had seen the bicycle moving quickly compared with nearby walkers, but had not seen the front wheel touch the curb.",
+          "evidenceJp": "一人目は、自転車が近くの歩行者より速く動いていたのは見ていましたが、前輪が縁石に触れるところは見ていませんでした。",
+          "reason": "速く動いていたことは観察済みですが、縁石との接触は未確認でした。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "3. 二人目の目撃者が直接確認できたことはどれですか。",
+          "choices": [
+            "A. かばんが自転車より先に落ちた瞬間",
+            "B. 事故後、地面にかばんがあったこと",
+            "C. 前輪が縁石に当たったこと",
+            "D. 乗っていた人が転ぶ前に止まったこと"
+          ],
+          "answer": "B. 事故後、地面にかばんがあったこと",
+          "evidence": "The second had seen a bag on the ground after the fall, but had not actually seen it drop before the bicycle turned.",
+          "evidenceJp": "二人目は、事故後に地面にかばんがあるのを見ましたが、自転車が曲がる前にかばんが落ちる瞬間を実際に見たわけではありません。",
+          "reason": "見たのは事故後のかばんで、落下の順序は直接観察していません。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "4. 委員会が自信ありげに聞こえる証言だけを選ばなかったのはなぜですか。",
+          "answer": "話し方の自信ではなく、直接確認できた事実と推測を分けて正確に報告するため。",
+          "evidence": "A safety committee wanted to describe the incident in a report without choosing a story simply because one sounded more confident.",
+          "evidenceJp": "安全委員会は、自信ありげに聞こえる方を選ぶのではなく、出来事を正確に報告書へ書きたいと考えました。",
+          "reason": "確信の強さと事実の確かさは同じではないためです。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "5. カメラ映像について本文に合うものはどれですか。",
+          "choices": [
+            "A. 転倒が始まる瞬間を完全に写していた。",
+            "B. 乗っていた人が急に曲がる様子は写っていたが、転倒開始時は視界が遮られていた。",
+            "C. かばんが落ちる瞬間だけを写していた。",
+            "D. カメラ映像は存在しなかった。"
+          ],
+          "answer": "B. 乗っていた人が急に曲がる様子は写っていたが、転倒開始時は視界が遮られていた。",
+          "evidence": "A nearby camera showed the rider turning suddenly, but the view was blocked at the moment the fall began.",
+          "evidenceJp": "近くのカメラには乗っていた人が急に曲がる様子が写っていましたが、転倒が始まった瞬間は視界が遮られていました。",
+          "reason": "映像にも確認できる部分と確認できない部分がありました。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 本文の内容に合うように、まとめの空欄に入る組み合わせとして最も適切なものはどれですか。『報告書は（　①　）を確認済み事実として示し、速度・縁石・かばんは（　②　）として扱った。』",
+          "choices": [
+            "A. ①自転車が動き急に曲がり、そばにかばんがあったこと ②可能性のある説明",
+            "B. ①縁石への接触 ②確認済み事実",
+            "C. ①かばんの落下順序 ②証明済み原因",
+            "D. ①自信のある証言 ②唯一の事実"
+          ],
+          "answer": "A. ①自転車が動き急に曲がり、そばにかばんがあったこと ②可能性のある説明",
+          "evidence": "It described speed, the curb, and the falling bag as possible explanations rather than proven causes.",
+          "evidenceJp": "速度、縁石、落ちたかばんについては、証明された原因ではなく可能性のある説明として扱いました。",
+          "reason": "原因を断定せず、確認済み事実と可能性を分けています。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "7. “uncertainty” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 不確かさ",
+            "B. 速さ",
+            "C. 確認済みの原因",
+            "D. 強い自信"
+          ],
+          "answer": "A. 不確かさ",
+          "evidence": "By separating observations from assumptions, the committee could report uncertainty instead of turning two incomplete accounts into one false certainty.",
+          "evidenceJp": "観察したことと推測を分けることで、二つの不完全な証言を一つの誤った確信に変えるのではなく、不確かな点を不確かなまま報告できました。",
+          "reason": "ここでは、原因を断定できない部分が残っている状態を表します。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "8. 二人の証言とカメラ映像を合わせて最も確実に言えることはどれですか。",
+          "choices": [
+            "A. 縁石が転倒の原因だった。",
+            "B. かばんが先に落ちたことが原因だった。",
+            "C. 自転車は動いていて急に曲がり、そばにかばんが見つかったが、原因は断定できない。",
+            "D. 速度は事故と無関係だった。"
+          ],
+          "answer": "C. 自転車は動いていて急に曲がり、そばにかばんが見つかったが、原因は断定できない。",
+          "evidence": "The report therefore listed confirmed facts: the bicycle was moving, it turned suddenly, and a bag was found beside it.",
+          "evidenceJp": "そこで報告書には、確認できた事実として「自転車は動いていた」「急に曲がった」「そばにかばんが見つかった」と記しました。",
+          "reason": "三つは複数資料から確認できましたが、原因までは証明されていません。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "9. 速度・縁石・かばんを「proven causes」としなかった理由として最も適切なのはどれですか。",
+          "choices": [
+            "A. どの資料もそれらを原因として直接確認していない部分があったから",
+            "B. 委員会が原因を知りたくなかったから",
+            "C. カメラが壊れていたから",
+            "D. 目撃者が一人しかいなかったから"
+          ],
+          "answer": "A. どの資料もそれらを原因として直接確認していない部分があったから",
+          "evidence": "It described speed, the curb, and the falling bag as possible explanations rather than proven causes.",
+          "evidenceJp": "速度、縁石、落ちたかばんについては、証明された原因ではなく可能性のある説明として扱いました。",
+          "reason": "観察できた事実と、そこから推測した原因を分ける必要があったためです。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. この話から、複数の証言を扱うときに重要だと分かることはどれですか。",
+          "choices": [
+            "A. 最も自信のある人の話を採用する。",
+            "B. 共通する事実と推測を分け、分からない部分は断定しない。",
+            "C. 証言が違えば両方とも無視する。",
+            "D. 一つの話にまとめるため不足部分を補う。"
+          ],
+          "answer": "B. 共通する事実と推測を分け、分からない部分は断定しない。",
+          "evidence": "The committee asked each witness to separate what was directly seen from what was assumed.",
+          "evidenceJp": "委員会は、それぞれの目撃者に、直接見たことと推測したことを分けてもらいました。",
+          "reason": "本文の手順そのものが、証言を評価する基本方針を示しています。"
+        }
+      ]
     },
     {
       "id": "V11-B14-G3-013",
@@ -17859,7 +19005,151 @@
           "最も使いやすい案は、話のつながりを保ちながら、詳しく聞きたい人と短く聞きたい人の両方に選択肢を与えるものでした。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この長文の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 音声ガイドは必ず短い方がよいという実験結果",
+            "B. 二つの音声ガイドを比べ、それぞれの長所を組み合わせる案を考えた話",
+            "C. 博物館の展示物をすべて画面表示に変えた話",
+            "D. 生徒が音声ガイドを使わずに見学した話"
+          ],
+          "answer": "B. 二つの音声ガイドを比べ、それぞれの長所を組み合わせる案を考えた話",
+          "evidence": "The best guide could combine continuity with choices for visitors who wanted more or less detail.",
+          "evidenceJp": "最も使いやすい案は、話のつながりを保ちながら、詳しく聞きたい人と短く聞きたい人の両方に選択肢を与えるものでした。",
+          "reason": "AとBの結果を比べ、どちらか一方ではなく長所を組み合わせる結論に進んでいるためです。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. Version B は、同じ情報をどのように提示しましたか。",
+          "choices": [
+            "A. 各部屋の最初に一つの長い説明として流した",
+            "B. 個々の展示物のそばで聞ける短い音声に分けた",
+            "C. すべて文章だけで画面に出した",
+            "D. 生徒ごとに内容を変えた"
+          ],
+          "answer": "B. 個々の展示物のそばで聞ける短い音声に分けた",
+          "evidence": "Version B divided the same information into shorter tracks beside individual objects.",
+          "evidenceJp": "B版は同じ情報を短い音声に分け、個々の展示物のそばで聞けるようにしていました。",
+          "reason": "B版の提示方法が本文に直接説明されています。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. 記憶を確かめる質問で『はっきりした勝者はない』と判断されたのはなぜですか。",
+          "choices": [
+            "A. AもBも何も覚えられなかったから",
+            "B. 日付はBがやや良く、全体の話はAが良かったから",
+            "C. Aだけを試した生徒が多かったから",
+            "D. 記憶の質問を実施しなかったから"
+          ],
+          "answer": "B. 日付はBがやや良く、全体の話はAが良かったから",
+          "evidence": "The memory questions showed no clear winner: students remembered dates slightly better with B, while they explained the overall story better after A.",
+          "evidenceJp": "記憶を確かめる質問では、はっきりした勝者はありませんでした。日付はB版の方が少しよく覚えられていましたが、全体の話はA版の後の方がうまく説明できました。",
+          "reason": "評価項目によってAとBの優位が分かれたため、単純に一方を勝者にできませんでした。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "4. Version A について本文の内容に合うものを選びなさい。",
+          "choices": [
+            "A. 多くの生徒が話の流れは自然だと感じたが、長い音声を最後まで聞かなかった生徒もいた",
+            "B. 全員が最後まで聞き、欠点はなかった",
+            "C. 日付だけを短い音声で説明した",
+            "D. 展示物ごとに独立した音声へ分けられていた"
+          ],
+          "answer": "A. 多くの生徒が話の流れは自然だと感じたが、長い音声を最後まで聞かなかった生徒もいた",
+          "evidence": "Most students said Version A sounded smooth, but several stopped listening before the long track ended.",
+          "evidenceJp": "多くの生徒はA版の話の流れが自然だと言いましたが、長い音声が終わる前に聞くのをやめた人もいました。",
+          "reason": "A版の長所と弱点の両方がこの一文に示されています。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "5. 実験結果を踏まえて、生徒チームが提案した組み合わせとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 各部屋の短い全体説明＋必要に応じて聞く展示物ごとの音声",
+            "B. すべてを一つの長い音声にする",
+            "C. 音声を全部なくして日付だけ表示する",
+            "D. A版とB版を日ごとに交互に使う"
+          ],
+          "answer": "A. 各部屋の短い全体説明＋必要に応じて聞く展示物ごとの音声",
+          "evidence": "Instead, it suggested a short opening story for each room, followed by optional object tracks.",
+          "evidenceJp": "代わりに、各部屋の最初に短い全体説明を置き、その後に必要に応じて聞ける展示物ごとの音声を付ける案を出しました。",
+          "reason": "A版の『つながり』とB版の『短く選べること』を組み合わせた提案です。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『生徒チームは、各部屋の最初に（　）を置き、その後に展示物ごとの音声を付ける案を出した。』に入る最も適切なものはどれですか。",
+          "choices": [
+            "A. 長い一つの説明",
+            "B. 短い全体説明",
+            "C. 無音の時間",
+            "D. すべての日付一覧"
+          ],
+          "answer": "B. 短い全体説明",
+          "evidence": "Instead, it suggested a short opening story for each room, followed by optional object tracks.",
+          "evidenceJp": "代わりに、各部屋の最初に短い全体説明を置き、その後に必要に応じて聞ける展示物ごとの音声を付ける案を出しました。",
+          "reason": "提案の前半部分を要約しています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "7. 本文から考えて、『shorter』だけでは『better』と決められない最大の理由は何ですか。",
+          "choices": [
+            "A. 短い音声は必ず内容が間違っているから",
+            "B. B版は最後まで聞かれやすい一方、話のつながりが弱いと感じる生徒もいたから",
+            "C. A版には日付が一つもなかったから",
+            "D. 生徒がB版を試していなかったから"
+          ],
+          "answer": "B. B版は最後まで聞かれやすい一方、話のつながりが弱いと感じる生徒もいたから",
+          "evidence": "With Version B, more tracks were completed, although some students felt the story was less connected.",
+          "evidenceJp": "B版では最後まで聞かれた音声が増えましたが、話全体のつながりが弱いと感じた生徒もいました。",
+          "reason": "短さには利点がある一方で、内容のつながりという別の評価軸では弱点があったためです。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "8. 最終文の “continuity” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 話のつながり",
+            "B. 音量",
+            "C. 展示物の数",
+            "D. 入館料"
+          ],
+          "answer": "A. 話のつながり",
+          "evidence": "The best guide could combine continuity with choices for visitors who wanted more or less detail.",
+          "evidenceJp": "最も使いやすい案は、話のつながりを保ちながら、詳しく聞きたい人と短く聞きたい人の両方に選択肢を与えるものでした。",
+          "reason": "ここでは、全体の話が自然につながって聞こえる性質を指しています。"
+        },
+        {
+          "type": "PHRASE_FILL",
+          "prompt": "9. 生徒チームの提案を補うものとして、本文では重要な日付をどこに示す案が出ていますか。",
+          "choices": [
+            "A. 床",
+            "B. 画面",
+            "C. 入り口の外",
+            "D. 音声ガイドの箱の裏"
+          ],
+          "answer": "B. 画面",
+          "evidence": "Important dates could also appear on the screen.",
+          "evidenceJp": "重要な日付は画面にも表示できます。",
+          "reason": "B版で比較的よく覚えられた日付情報を、音声以外でも補える案です。"
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "prompt": "10. “The student team did not recommend deleting either design.” の直後に続く内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. そこで、どちらの版も使わないことにした。",
+            "B. 代わりに、短い全体説明の後に必要に応じて聞く展示物ごとの音声を置く案を出した。",
+            "C. A版だけを全館で使うことにした。",
+            "D. B版だけを残し、日付の質問をやめた。"
+          ],
+          "answer": "B. 代わりに、短い全体説明の後に必要に応じて聞く展示物ごとの音声を置く案を出した。",
+          "evidence": "Instead, it suggested a short opening story for each room, followed by optional object tracks.",
+          "evidenceJp": "代わりに、各部屋の最初に短い全体説明を置き、その後に必要に応じて聞ける展示物ごとの音声を付ける案を出しました。",
+          "reason": "二者択一ではなく、両方の長所を組み合わせる提案へ話が進むためです。"
+        }
+      ]
     },
     {
       "id": "V11-B14-G3-014",
@@ -18473,7 +19763,151 @@
           "午後9時より前に予想以上の避難者が来れば、もう一度数量を確認する必要があります。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この長文の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. すべての物資を半分ずつ運ぶのが最善だと決めた話",
+            "B. 人数・天候・保管場所など複数の条件を使って避難所への物資配分を考えた話",
+            "C. 倉庫の物資をすべて別の町へ送った話",
+            "D. 避難所を開かないことにした話"
+          ],
+          "answer": "B. 人数・天候・保管場所など複数の条件を使って避難所への物資配分を考えた話",
+          "evidence": "It considered expected people, night-time risk, storage space, room function, and the possibility that transport would stop.",
+          "evidenceJp": "予想される人数、夜の危険、保管場所、部屋の役割、交通が止まる可能性を一緒に考えました。",
+          "reason": "単純な等分ではなく、複数資料を使って優先順位を決めたことが本文全体の中心だからです。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "2. 物資一覧・部屋の地図・天気予報表を合わせて考えると、マット60枚と毛布80枚を先にすべて運ぶ理由として最も適切なものはどれですか。",
+          "choices": [
+            "A. 鍵付き教室に十分な空きがあったから",
+            "B. 夜間は追加輸送できない可能性があり、休むための物資が必要だから",
+            "C. 他の避難所では使えないから",
+            "D. 数を半分にしやすかったから"
+          ],
+          "answer": "B. 夜間は追加輸送できない可能性があり、休むための物資が必要だから",
+          "evidence": "All sixty mats and all eighty blankets would go first because the storm could prevent another trip during the night.",
+          "evidenceJp": "夜間に嵐で追加の輸送ができなくなる可能性があるため、マット60枚と毛布80枚はすべて先に運びます。",
+          "reason": "天候による輸送停止リスクと避難者の休息需要を結び付けた判断です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. 『すべての物資を半分ずつ運ぶ』最初の案が採用されなかった理由として正しいものはどれですか。",
+          "choices": [
+            "A. マットは不足し、衛生用品は保管場所を使いすぎる可能性があったから",
+            "B. 水と食事がまったくなかったから",
+            "C. 体育館が使えなかったから",
+            "D. 倉庫が閉鎖されていたから"
+          ],
+          "answer": "A. マットは不足し、衛生用品は保管場所を使いすぎる可能性があったから",
+          "evidence": "Half of the folding mats would not be enough if most evacuees needed a dry place to rest, while half of the hygiene boxes would use valuable storage even though not all of them were needed immediately.",
+          "evidenceJp": "避難者の多くが乾いた場所で休む必要があるなら、折り畳みマットの半分では足りません。一方、衛生用品の箱を半分運ぶと、すぐにはすべて必要でないのに大切な保管場所を多く使います。",
+          "reason": "同じ割合で分けても、物資ごとの必要性と保管条件が異なるためです。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "4. 本文の内容に合うものを選びなさい。",
+          "choices": [
+            "A. ランプ12個をすべて学校に運んだ",
+            "B. 衛生用品10箱をすべて体育館に置いた",
+            "C. ランプ6個を各部屋に分け、残りは他の避難所用に倉庫へ残した",
+            "D. 薬に関係する機器を体育館の中央に置いた"
+          ],
+          "answer": "C. ランプ6個を各部屋に分け、残りは他の避難所用に倉庫へ残した",
+          "evidence": "Six lamps would be placed in different rooms, with the remaining lamps kept at the warehouse for other shelters.",
+          "evidenceJp": "ランプは6個を各部屋に分け、残りは別の避難所のため倉庫に残します。",
+          "reason": "ランプの配分方法が本文に直接示されています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "5. チームが数量を『fixed answer』ではなく『first plan』としたことから分かる考え方はどれですか。",
+          "choices": [
+            "A. 状況が変われば数量を再検討する必要がある",
+            "B. 一度決めた数量は絶対に変えない",
+            "C. 資料は使わず担当者の勘だけで決める",
+            "D. 避難者数は計画に関係しない"
+          ],
+          "answer": "A. 状況が変われば数量を再検討する必要がある",
+          "evidence": "If more evacuees arrived before 9:00 p.m., the numbers would have to be checked again.",
+          "evidenceJp": "午後9時より前に予想以上の避難者が来れば、もう一度数量を確認する必要があります。",
+          "reason": "計画は条件に応じて更新される暫定的なものだと分かります。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『この計画は、物資を同じ割合に分けるのではなく、（　）などを考えて決めた。』に入る内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 予想人数・夜の危険・保管場所・部屋の役割",
+            "B. 生徒の好き嫌いだけ",
+            "C. 倉庫の色",
+            "D. 学校の授業時間だけ"
+          ],
+          "answer": "A. 予想人数・夜の危険・保管場所・部屋の役割",
+          "evidence": "It considered expected people, night-time risk, storage space, room function, and the possibility that transport would stop.",
+          "evidenceJp": "予想される人数、夜の危険、保管場所、部屋の役割、交通が止まる可能性を一緒に考えました。",
+          "reason": "最終段落で、数量判断に使った条件が列挙されています。"
+        },
+        {
+          "type": "PHRASE_FILL",
+          "prompt": "7. 薬に関係する機器はどこに置く計画でしたか。",
+          "choices": [
+            "A. 鍵のない体育館",
+            "B. コンセントのある保健室",
+            "C. 倉庫の外",
+            "D. 入口の廊下"
+          ],
+          "answer": "B. コンセントのある保健室",
+          "evidence": "Four hygiene boxes would go into the locked classroom cabinets, and medicine-related equipment would be placed in the nurse's room near power outlets.",
+          "evidenceJp": "衛生用品は4箱を鍵付きの教室棚へ入れ、薬に関係する機器はコンセントのある保健室に置きます。",
+          "reason": "部屋の機能に合わせて置き場所を選んでいます。"
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "prompt": "8. 『They made a priority plan.』の直後に続く内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 夜間の追加輸送リスクを考え、マットと毛布をすべて先に運ぶ",
+            "B. すべての物資を半分ずつ運ぶことに戻す",
+            "C. 水だけを運び、他はすべて残す",
+            "D. 何も運ばず翌朝まで待つ"
+          ],
+          "answer": "A. 夜間の追加輸送リスクを考え、マットと毛布をすべて先に運ぶ",
+          "evidence": "All sixty mats and all eighty blankets would go first because the storm could prevent another trip during the night.",
+          "evidenceJp": "夜間に嵐で追加の輸送ができなくなる可能性があるため、マット60枚と毛布80枚はすべて先に運びます。",
+          "reason": "優先順位を決めた直後に、最優先の物資とその理由が示されています。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. 予報表の情報が物資計画に最も直接影響した点はどれですか。",
+          "choices": [
+            "A. 午後9時から午前2時ごろまで強風で追加配送が難しくなる可能性",
+            "B. 翌日は必ず晴れるという情報",
+            "C. 台風がすでに完全に去ったという情報",
+            "D. 気温が急上昇するという情報"
+          ],
+          "answer": "A. 午後9時から午前2時ごろまで強風で追加配送が難しくなる可能性",
+          "evidence": "A second delivery from the warehouse could not be promised during that period.",
+          "evidenceJp": "その間に倉庫から二度目の配送ができる保証はありません。",
+          "reason": "夜間の輸送不能リスクが、先に運ぶ物資量を増やす判断につながっています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "10. このチームの判断方法から学べることとして最も適切なものはどれですか。",
+          "choices": [
+            "A. 数量は常に均等配分すればよい",
+            "B. 複数の資料と条件を照合し、必要に応じて計画を更新することが大切である",
+            "C. 一つの資料だけを見れば十分である",
+            "D. 物資の種類は考えなくてよい"
+          ],
+          "answer": "B. 複数の資料と条件を照合し、必要に応じて計画を更新することが大切である",
+          "evidence": "They also marked the quantities as a first plan, not a fixed answer.",
+          "evidenceJp": "また、数量は固定した答えではなく最初の計画だと明記しました。",
+          "reason": "状況に応じて再評価する前提で、複数条件から優先順位を決めているためです。"
+        }
+      ]
     },
     {
       "id": "V11-B14-G3-015",
@@ -18773,7 +20207,151 @@
           "修正版では読者に調査対象が見えるようになり、後でより良い問いを調べる余地も残しました。"
         ],
         "humanReview": "PENDING_BATCH14_BOUNDARY_HUMAN"
-      }
+      },
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この長文の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 62％という数字だけで全校生徒の意見を断定してよいという話",
+            "B. 調査対象の偏りを確認し、見出しを証拠に合う表現へ修正した話",
+            "C. 部活動をすべて昼休みに行うことにした話",
+            "D. アンケートを中止して記事を出さなかった話"
+          ],
+          "answer": "B. 調査対象の偏りを確認し、見出しを証拠に合う表現へ修正した話",
+          "evidence": "The revised version made the sample visible to readers and left room for a better question later.",
+          "evidenceJp": "修正版では読者に調査対象が見えるようになり、後でより良い問いを調べる余地も残しました。",
+          "reason": "調査結果から言える範囲を適切に示すことが主題だからです。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. 最初の調査に回答した32人のうち、昼休みに練習する部活動のメンバーは何人でしたか。",
+          "choices": [
+            "A. 8人",
+            "B. 24人",
+            "C. 32人",
+            "D. 62人"
+          ],
+          "answer": "B. 24人",
+          "evidence": "Only thirty-two students had answered, and twenty-four of them were members of clubs that practiced during lunch.",
+          "evidenceJp": "公開前にエミが回答表を詳しく見ると、回答したのは32人だけで、そのうち24人は昼休みに練習する部活動のメンバーでした。",
+          "reason": "回答者の構成を示す重要な情報です。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. 最初の見出しが問題だったのはなぜですか。",
+          "choices": [
+            "A. 調査結果と逆だったから",
+            "B. 学校全体を代表していない調査なのに、全生徒の意見のように見せていたから",
+            "C. 見出しが長すぎたから",
+            "D. 回答率が100％だったから"
+          ],
+          "answer": "B. 学校全体を代表していない調査なのに、全生徒の意見のように見せていたから",
+          "evidence": "The survey had been shared through a club leaders' message group, not with the whole school.",
+          "evidenceJp": "アンケートは学校全体ではなく、部長たちの連絡グループを通して配られていました。",
+          "reason": "回答者が全校から均等に集まったわけではないためです。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "4. 編集者が修正版の記事に加えた情報として正しいものはどれですか。",
+          "choices": [
+            "A. アンケートの配布方法と回答数",
+            "B. 生徒全員の名前",
+            "C. 昼休みのメニュー",
+            "D. 部活動の成績"
+          ],
+          "answer": "A. アンケートの配布方法と回答数",
+          "evidence": "In the article, they explained how the survey had been distributed and listed the number of responses.",
+          "evidenceJp": "記事には、アンケートをどのように配ったかと回答数も書きました。",
+          "reason": "読者が調査の範囲を判断できるようにする情報です。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "5. 編集者が二度目の調査を複数の学級で行おうとした理由として最も適切なものはどれですか。",
+          "choices": [
+            "A. 全校生徒について述べる前に、より広い調査対象から情報を集めるため",
+            "B. 最初の調査結果を消すため",
+            "C. 部活動の生徒だけをさらに増やすため",
+            "D. 62％という数字を必ず上げるため"
+          ],
+          "answer": "A. 全校生徒について述べる前に、より広い調査対象から情報を集めるため",
+          "evidence": "They also planned a second survey using several homerooms before making a statement about all students.",
+          "evidenceJp": "また、全校生徒について述べる前に、いくつかの学級を使って二度目の調査を行うことにしました。",
+          "reason": "より代表性のある調査にしてから全体について述べるためです。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『最初の見出しは短く力強かったが、（　）。』に入る内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 証拠から言える範囲を超えていた",
+            "B. 回答数を正確に示していた",
+            "C. 学校全体の調査に基づいていた",
+            "D. 部活動の生徒を除いていた"
+          ],
+          "answer": "A. 証拠から言える範囲を超えていた",
+          "evidence": "The first headline was shorter and stronger, but it went beyond the evidence.",
+          "evidenceJp": "最初の見出しは短く力強いものでしたが、証拠から言える範囲を超えていました。",
+          "reason": "本文最後の評価をそのまま要約しています。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "7. 最終文の “sample” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 調査対象となった回答者の集まり",
+            "B. 昼休みの時間割",
+            "C. 部活動の練習場所",
+            "D. 記事の見出し"
+          ],
+          "answer": "A. 調査対象となった回答者の集まり",
+          "evidence": "The revised version made the sample visible to readers and left room for a better question later.",
+          "evidenceJp": "修正版では読者に調査対象が見えるようになり、後でより良い問いを調べる余地も残しました。",
+          "reason": "ここでは調査結果のもとになった回答者集団を指しています。"
+        },
+        {
+          "type": "PHRASE_FILL",
+          "prompt": "8. 修正後の見出しでは、誰が長い昼休みを好むと表現されましたか。",
+          "choices": [
+            "A. 全校生徒",
+            "B. 部活動向け調査の回答者の多く",
+            "C. 教員全員",
+            "D. 保護者"
+          ],
+          "answer": "B. 部活動向け調査の回答者の多く",
+          "evidence": "The editors replaced the headline with ‘Many Club Survey Respondents Prefer a Longer Lunch Break.’",
+          "evidenceJp": "編集者たちは見出しを「部活動向け調査の回答者の多くが、長い昼休みを希望」に変えました。",
+          "reason": "調査対象を見出しの中で明示する修正です。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "9. 『62％が長い昼休みを選んだ』という数字だけでは全校生徒の意見と断定できない理由として最も適切なものはどれですか。",
+          "choices": [
+            "A. 回答者が32人で、その多くが昼休みに練習する部活動の生徒だったから",
+            "B. 62％は50％より小さいから",
+            "C. 回答者が全員教員だったから",
+            "D. 調査に選択肢がなかったから"
+          ],
+          "answer": "A. 回答者が32人で、その多くが昼休みに練習する部活動の生徒だったから",
+          "evidence": "Only thirty-two students had answered, and twenty-four of them were members of clubs that practiced during lunch.",
+          "evidenceJp": "公開前にエミが回答表を詳しく見ると、回答したのは32人だけで、そのうち24人は昼休みに練習する部活動のメンバーでした。",
+          "reason": "数値を見るだけでなく、誰が回答したかを合わせて考える必要があるためです。"
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "prompt": "10. 『That did not make the answers useless, but it changed what the results could show.』の後に続く内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 調査対象を明示する見出しへ修正した",
+            "B. そのまま全校生徒の意見として公開した",
+            "C. 回答をすべて削除した",
+            "D. 昼休みをすぐ延長した"
+          ],
+          "answer": "A. 調査対象を明示する見出しへ修正した",
+          "evidence": "The editors replaced the headline with ‘Many Club Survey Respondents Prefer a Longer Lunch Break.’",
+          "evidenceJp": "編集者たちは見出しを「部活動向け調査の回答者の多くが、長い昼休みを希望」に変えました。",
+          "reason": "調査自体を無効扱いせず、言える範囲に合わせて表現を狭めています。"
+        }
+      ]
     },
     {
       "id": "V11-B14-G3-016",
@@ -19072,6 +20650,150 @@
           "english": "By checking identity before comparing measurements, the students avoided treating two different trees as one continuous record.",
           "japanese": "測定値を比べる前に木の同一性を確認したことで、異なる二本の木を一つの連続した記録として扱う誤りを避けられました。",
           "humanReview": "PENDING_BATCH14_SLASH_HUMAN"
+        }
+      ],
+      "questions": [
+        {
+          "type": "GIST",
+          "prompt": "1. この長文の中心内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 木の高さだけで成長を判断した話",
+            "B. 2年分の木の記録を比べる前に識別番号を確認し、別の木を同じ木として扱う誤りを防いだ話",
+            "C. 嵐で木をすべて切った話",
+            "D. 新しい木だけを測定した話"
+          ],
+          "answer": "B. 2年分の木の記録を比べる前に識別番号を確認し、別の木を同じ木として扱う誤りを防いだ話",
+          "evidence": "By checking identity before comparing measurements, the students avoided treating two different trees as one continuous record.",
+          "evidenceJp": "測定値を比べる前に木の同一性を確認したことで、異なる二本の木を一つの連続した記録として扱う誤りを避けられました。",
+          "reason": "記録比較で最も重要だった確認作業と、その効果がまとめられています。"
+        },
+        {
+          "type": "DETAIL",
+          "prompt": "2. ケンタが識別番号を確認したとき、古い表と現在の一覧にはどんな違いがありましたか。",
+          "choices": [
+            "A. 古い番号が3つなくなり、新しい番号が3つ増えていた",
+            "B. すべて同じ番号だった",
+            "C. 新しい番号だけが10個増えた",
+            "D. 番号は一つも書かれていなかった"
+          ],
+          "answer": "A. 古い番号が3つなくなり、新しい番号が3つ増えていた",
+          "evidence": "Three numbers from the old table were missing, and three new numbers appeared in the current list.",
+          "evidenceJp": "古い表の番号が三つなくなり、現在の一覧には新しい番号が三つ増えていました。",
+          "reason": "古い木と新しい木が入れ替わっている可能性を示す手がかりです。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "3. 古い場所のすぐ近くにある新しい木を、そのまま古い木と比較してはいけないのはなぜですか。",
+          "choices": [
+            "A. 別の木なのに異常に大きく成長したように見えるから",
+            "B. 木の高さを測れないから",
+            "C. 地図に場所が書かれていないから",
+            "D. 新しい木には番号がないから"
+          ],
+          "answer": "A. 別の木なのに異常に大きく成長したように見えるから",
+          "evidence": "One new tree stood only two meters from an old location, so comparing those two rows would falsely look like unusual growth.",
+          "evidenceJp": "新しい木の一つは古い場所から2メートルしか離れていなかったため、その二つの行を比べると、実際には別の木なのに異常に大きく成長したように見えてしまいます。",
+          "reason": "場所が近いだけでは同じ木とは限らず、誤った成長量になるためです。"
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "prompt": "4. クラスが成長量を計算した対象として正しいものはどれですか。",
+          "choices": [
+            "A. 2年間で同じ識別番号を確認できた木",
+            "B. 新しく植えた木だけ",
+            "C. 撤去された木だけ",
+            "D. すべての行を場所だけで対応させた木"
+          ],
+          "answer": "A. 2年間で同じ識別番号を確認できた木",
+          "evidence": "It calculated growth only for the trees that could be followed across both years.",
+          "evidenceJp": "成長量は、2年間を通して同じ木だと確認できるものだけで計算しました。",
+          "reason": "同じ個体だと追跡できる木だけを比較対象にしています。"
+        },
+        {
+          "type": "INFERENCE",
+          "prompt": "5. この長文から学べるデータ比較の考え方として最も適切なものはどれですか。",
+          "choices": [
+            "A. 数値を比べる前に、比較している対象が本当に同一か確認する",
+            "B. 場所が近ければ同じ対象と考える",
+            "C. 新しい記録だけ見ればよい",
+            "D. 異なる対象でも数値が似ていれば同一と考える"
+          ],
+          "answer": "A. 数値を比べる前に、比較している対象が本当に同一か確認する",
+          "evidence": "By checking identity before comparing measurements, the students avoided treating two different trees as one continuous record.",
+          "evidenceJp": "測定値を比べる前に木の同一性を確認したことで、異なる二本の木を一つの連続した記録として扱う誤りを避けられました。",
+          "reason": "測定値の比較より先に、対象の同一性確認が必要だと示しています。"
+        }
+      ],
+      "questionSetB": [
+        {
+          "type": "SUMMARY_FILL",
+          "prompt": "6. 『クラスは、2年間を通して同じ木だと確認できるものだけで（　）を計算した。』に入るものはどれですか。",
+          "choices": [
+            "A. 成長量",
+            "B. 雨量",
+            "C. 木の価格",
+            "D. 通りの長さ"
+          ],
+          "answer": "A. 成長量",
+          "evidence": "It calculated growth only for the trees that could be followed across both years.",
+          "evidenceJp": "成長量は、2年間を通して同じ木だと確認できるものだけで計算しました。",
+          "reason": "比較対象を限定してから成長量を求めています。"
+        },
+        {
+          "type": "CONTEXT_WORD",
+          "prompt": "7. 最終文の “continuous record” に最も近い意味はどれですか。",
+          "choices": [
+            "A. 同じ対象を続けて記録したもの",
+            "B. 一日だけの記録",
+            "C. 住所一覧",
+            "D. 天気予報"
+          ],
+          "answer": "A. 同じ対象を続けて記録したもの",
+          "evidence": "By checking identity before comparing measurements, the students avoided treating two different trees as one continuous record.",
+          "evidenceJp": "測定値を比べる前に木の同一性を確認したことで、異なる二本の木を一つの連続した記録として扱う誤りを避けられました。",
+          "reason": "別の二本を同じ一本の継続記録として扱う誤りを指しています。"
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "prompt": "8. 市の担当者の説明と識別番号の変化を合わせると、古い表の木の一部が現在の一覧にない理由は何だと分かりますか。",
+          "choices": [
+            "A. 嵐の後に傷んだ木が撤去され、新しい木が植えられたから",
+            "B. 記録の形式が変わったから",
+            "C. 通りの名前が変わったから",
+            "D. 高さを測らなかったから"
+          ],
+          "answer": "A. 嵐の後に傷んだ木が撤去され、新しい木が植えられたから",
+          "evidence": "A city worker explained that damaged trees had been removed after a storm and new trees had been planted nearby.",
+          "evidenceJp": "市の担当者によると、嵐の後に傷んだ木を撤去し、その近くへ新しい木を植えたとのことでした。",
+          "reason": "番号の消失・追加と、木の撤去・植え替えの説明が対応しています。"
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "prompt": "9. 『The class separated trees with matching identification numbers from replacements.』の後に続く内容として最も適切なものはどれですか。",
+          "choices": [
+            "A. 同じ木だと追跡できるものだけで成長量を計算した",
+            "B. すべての新しい木を古い木として扱った",
+            "C. 識別番号をすべて削除した",
+            "D. 成長量の計算をやめた"
+          ],
+          "answer": "A. 同じ木だと追跡できるものだけで成長量を計算した",
+          "evidence": "It calculated growth only for the trees that could be followed across both years.",
+          "evidenceJp": "成長量は、2年間を通して同じ木だと確認できるものだけで計算しました。",
+          "reason": "置き換えられた木を分離した後、同一個体だけを比較対象にする流れだからです。"
+        },
+        {
+          "type": "REASON",
+          "prompt": "10. 撤去された木と新しく植えた木も報告に書きながら、成長量の計算とは別の項目にした理由として最も適切なものはどれですか。",
+          "choices": [
+            "A. 重要な情報ではあるが、同じ木の2年間の成長比較には使えないから",
+            "B. 木の情報は本文に書けないから",
+            "C. 新しい木には高さがないから",
+            "D. 古い表が読めなかったから"
+          ],
+          "answer": "A. 重要な情報ではあるが、同じ木の2年間の成長比較には使えないから",
+          "evidence": "The report still mentioned the removed and newly planted trees, but in a different section.",
+          "evidenceJp": "撤去された木と新しく植えた木についても報告には書きましたが、別の項目にしました。",
+          "reason": "情報自体は残しつつ、継続比較の対象とは区別する必要があるためです。"
         }
       ]
     }
