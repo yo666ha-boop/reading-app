@@ -10,7 +10,7 @@ on:
 permissions:
   contents: write
 
-# rerun-marker: r36-finalize-assembled-20260910-0022
+# rerun-marker: r37-slash-exact-diagnostic-20260910
 jobs:
   finalize-assembled:
     runs-on: ubuntu-latest
@@ -48,8 +48,10 @@ jobs:
             }
             const rows=p.slashRows||[];
             if(!rows.length||rows.some(r=>!r.english||!r.japanese)){slashBad++; console.error('SLASHFIELD',p.id,rows.length); continue;}
-            for(const r of rows){
-              if(!p.body.includes(r.english)||!p.fullTranslation.includes(r.japanese)){slashBad++; console.error('SLASHEXACT',p.id); break;}
+            for(let i=0;i<rows.length;i++){
+              const r=rows[i];
+              const eok=p.body.includes(r.english), jok=p.fullTranslation.includes(r.japanese);
+              if(!eok||!jok){slashBad++; console.error('SLASHEXACT',JSON.stringify({id:p.id,row:i+1,eok,jok,english:r.english,japanese:r.japanese})); break;}
             }
             if(compact(rows.map(r=>r.english).join(' '))!==compact(p.body)||compact(rows.map(r=>r.japanese).join(''))!==compact(p.fullTranslation)){
               slashCoverageBad++; console.error('SLASHCOVERAGE',p.id);
@@ -68,9 +70,7 @@ jobs:
           NODE
       - name: Commit assembled and core checkpoint
         run: |
-          if git diff --quiet -- v11_batch14_assembled_draft.json v11_batch14_core_gate_r37_20260910.json; then
-            echo 'No changes'; exit 0
-          fi
+          if git diff --quiet -- v11_batch14_assembled_draft.json v11_batch14_core_gate_r37_20260910.json; then echo 'No changes'; exit 0; fi
           git config user.name 'chatgpt-batch14-worker'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add v11_batch14_assembled_draft.json v11_batch14_core_gate_r37_20260910.json
