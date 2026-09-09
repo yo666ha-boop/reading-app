@@ -32,11 +32,13 @@ jobs:
           const j = JSON.parse(fs.readFileSync('v11_batch14_assembled_draft.json','utf8'));
           const ps = j.passages || [];
           for (let n=4;n<=16;n++) {
-            const id=`v11_b14_g3_${String(n).padStart(3,'0')}`;
+            const id=`V11-B14-G3-${String(n).padStart(3,'0')}`;
             const p=ps.find(x=>x.id===id);
             if(!p) throw new Error(`missing ${id}`);
-            if((p.questionsA||[]).length!==5 || (p.questionsB||[]).length!==5) throw new Error(`A/B count fail ${id}`);
-            for(const q of [...p.questionsA,...p.questionsB]){
+            const A=p.questions||[];
+            const B=p.questionSetB||[];
+            if(A.length!==5 || B.length!==5) throw new Error(`A/B count fail ${id}: ${A.length}/${B.length}`);
+            for(const q of [...A,...B]){
               if(!q.answer || !q.reason || !q.evidence || !q.evidenceJp) throw new Error(`missing field ${id} ${q.id}`);
               if(!p.body.includes(q.evidence)) throw new Error(`evidence exact fail ${id} ${q.id}`);
               if(!p.fullTranslation.includes(q.evidenceJp)) throw new Error(`evidenceJp exact fail ${id} ${q.id}`);
