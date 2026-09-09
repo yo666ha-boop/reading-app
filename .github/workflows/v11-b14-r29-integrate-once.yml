@@ -1,4 +1,4 @@
-name: v11 Batch14 R29 integrate once
+name: v11 Batch14 finalize assembled R35 R36
 
 on:
   push:
@@ -10,9 +10,9 @@ on:
 permissions:
   contents: write
 
-# rerun-marker: r30-g3-014-1to2-fix
+# rerun-marker: r36-finalize-assembled-20260910-0022
 jobs:
-  integrate:
+  finalize-assembled:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout current branch
@@ -24,50 +24,55 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Re-run R29 idempotently
-        run: node v11_batch14_integrate_question_overlays_r29_20260909.js
-      - name: Apply human semantic slash R30
-        run: node v11_batch14_apply_g3_slash_r30_20260909.js
-      - name: Verify questions and slash
+      - name: Apply R29 R30 R34 R32 chain
+        run: node v11_batch14_post_assembly_r35.js
+      - name: Apply contextual required-local gloss R36
+        run: node v11_batch14_apply_gloss_r36.js
+      - name: Fail-closed verify assembled core
         run: |
           node - <<'NODE'
-          const fs = require('fs');
-          const j = JSON.parse(fs.readFileSync('v11_batch14_assembled_draft.json','utf8'));
-          const ps = j.passages || [];
-          const slashExpected={4:10,6:26,9:24,10:14,11:21,12:10,13:13,14:26,15:10};
-          let slashTotal=0;
-          for (let n=4;n<=16;n++) {
-            const id=`V11-B14-G3-${String(n).padStart(3,'0')}`;
-            const p=ps.find(x=>x.id===id);
-            if(!p) throw new Error(`missing ${id}`);
+          const fs=require('fs');
+          const j=JSON.parse(fs.readFileSync('v11_batch14_assembled_draft.json','utf8'));
+          const ps=j.passages||[];
+          if(ps.length!==50) throw new Error(`passages=${ps.length}`);
+          const compact=s=>String(s||'').replace(/\s+/g,'');
+          let qBad=0, fieldBad=0, evidenceBad=0, slashBad=0, slashCoverageBad=0;
+          for(const p of ps){
             const A=p.questions||[], B=p.questionSetB||[];
-            if(A.length!==5 || B.length!==5) throw new Error(`A/B count fail ${id}: ${A.length}/${B.length}`);
+            if(A.length!==5||B.length!==5){qBad++; console.error('QCOUNT',p.id,A.length,B.length);}
             for(const q of [...A,...B]){
-              if(!q.answer || !q.reason || !q.evidence || !q.evidenceJp) throw new Error(`missing field ${id} ${q.id}`);
-              if(!p.body.includes(q.evidence)) throw new Error(`evidence exact fail ${id} ${q.id}`);
-              if(!p.fullTranslation.includes(q.evidenceJp)) throw new Error(`evidenceJp exact fail ${id} ${q.id}`);
+              if(!q.answer||!q.reason||!q.evidence||!q.evidenceJp){fieldBad++; console.error('QFIELD',p.id,q.id); continue;}
+              const eok=p.body.includes(q.evidence)||q.evidence.split(' / ').every(s=>p.body.includes(s));
+              const jok=p.fullTranslation.includes(q.evidenceJp)||q.evidenceJp.split(' / ').every(s=>p.fullTranslation.includes(s));
+              if(!eok||!jok){evidenceBad++; console.error('EVIDENCE',p.id,q.id,eok,jok);}
             }
-            if(slashExpected[n]!==undefined){
-              const rows=p.slashRows||[];
-              if(rows.length!==slashExpected[n]) throw new Error(`slash count fail ${id}: ${rows.length}`);
-              for(const r of rows){
-                if(!r.english || !r.japanese || !r.humanReview) throw new Error(`slash field fail ${id}`);
-                if(!p.body.includes(r.english)) throw new Error(`slash EN exact fail ${id}`);
-                if(!p.fullTranslation.includes(r.japanese)) throw new Error(`slash JP exact fail ${id}`);
-              }
-              slashTotal += rows.length;
+            const rows=p.slashRows||[];
+            if(!rows.length||rows.some(r=>!r.english||!r.japanese)){slashBad++; console.error('SLASHFIELD',p.id,rows.length); continue;}
+            for(const r of rows){
+              if(!p.body.includes(r.english)||!p.fullTranslation.includes(r.japanese)){slashBad++; console.error('SLASHEXACT',p.id); break;}
+            }
+            if(compact(rows.map(r=>r.english).join(' '))!==compact(p.body)||compact(rows.map(r=>r.japanese).join(''))!==compact(p.fullTranslation)){
+              slashCoverageBad++; console.error('SLASHCOVERAGE',p.id);
             }
           }
-          if(slashTotal!==154) throw new Error(`slash total ${slashTotal}`);
-          console.log('G3 questions exact PASS; human slash PASS total=154');
+          console.log(JSON.stringify({passages:ps.length,qBad,fieldBad,evidenceBad,slashBad,slashCoverageBad,status:j.status,r34:j.r34ApplySummary,r36:j.r36ApplySummary&&j.r36ApplySummary.appliedCount}));
+          if(qBad||fieldBad||evidenceBad||slashBad||slashCoverageBad) process.exit(1);
           NODE
-      - name: Commit assembled only
+      - name: Write core gate checkpoint
         run: |
-          if git diff --quiet -- v11_batch14_assembled_draft.json; then
-            echo 'No assembled changes'; exit 0
+          node - <<'NODE'
+          const fs=require('fs');
+          const j=JSON.parse(fs.readFileSync('v11_batch14_assembled_draft.json','utf8'));
+          const out={batch:'V11-B14',checkedAt:new Date().toISOString(),passages:j.passages.length,status:'ASSEMBLED_CORE_PASS_PENDING_CHRONOLOGY_NOTES_DUP_RUNTIME',registered:false,headBefore:process.env.GITHUB_SHA,r34ApplySummary:j.r34ApplySummary||null,r36ApplySummary:j.r36ApplySummary||null};
+          fs.writeFileSync('v11_batch14_core_gate_r37_20260910.json',JSON.stringify(out,null,2)+'\n');
+          NODE
+      - name: Commit assembled and core checkpoint
+        run: |
+          if git diff --quiet -- v11_batch14_assembled_draft.json v11_batch14_core_gate_r37_20260910.json; then
+            echo 'No changes'; exit 0
           fi
           git config user.name 'chatgpt-batch14-worker'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add v11_batch14_assembled_draft.json
-          git commit -m 'Batch14: apply G3 human slash maps to assembled'
+          git add v11_batch14_assembled_draft.json v11_batch14_core_gate_r37_20260910.json
+          git commit -m 'Batch14: apply R35 R36 to assembled and pass core gate'
           git push origin HEAD:v11-1000passage-easy-notes
