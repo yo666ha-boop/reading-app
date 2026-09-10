@@ -9,7 +9,21 @@ async function open(type){
   page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
   const r=await page.goto('http://127.0.0.1:8000/index.html?b14persistent='+type+'-'+Date.now(),{waitUntil:'domcontentloaded',timeout:90000});
   ok(r&&r.ok(),type+' HTTP');
-  await page.waitForFunction(()=>window.V11_BATCH14_LOADED===true&&window.V11_BATCH14_REGISTERED===true&&window.V11_BATCH14_STATE&&window.V11_BATCH14_STATE.registered===true&&window.V11_BATCH14_STATE.totalWithBaseline===868&&Object.values(window.V11_EXTRA_PASSAGES||{}).flat().length===700,null,{timeout:180000,polling:250});
+  await page.waitForTimeout(8000);
+  const probe=await page.evaluate(()=>({
+    b13Loaded:window.V11_BATCH13_LOADED,
+    b13State:window.V11_BATCH13_STATE||null,
+    b14BootstrapStarted:window.V11_BATCH14_BOOTSTRAP_STARTED,
+    b14Passages:Array.isArray(window.V11_BATCH14_PASSAGES)?window.V11_BATCH14_PASSAGES.length:null,
+    b14Loaded:window.V11_BATCH14_LOADED,
+    b14Registered:window.V11_BATCH14_REGISTERED,
+    b14State:window.V11_BATCH14_STATE||null,
+    extra:Object.values(window.V11_EXTRA_PASSAGES||{}).flat().length
+  }));
+  console.log('B14_PROBE '+type+' '+JSON.stringify(probe));
+  if(!(probe.b14Loaded===true&&probe.b14Registered===true&&probe.b14State&&probe.b14State.registered===true&&probe.b14State.totalWithBaseline===868&&probe.extra===700)){
+    throw new Error('Batch14 persistent state invalid '+type+' probe='+JSON.stringify(probe)+' errors='+JSON.stringify(errors));
+  }
   return{browser,context,page,errors};
 }
 async function engine(type){
