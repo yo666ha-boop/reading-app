@@ -1,0 +1,37 @@
+name: v11 Batch15 body rerun after R6
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - '.github/workflows/v11-batch15-body-rerun-after-r6.yml'
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run current Batch15 body gate
+        id: gate
+        continue-on-error: true
+        run: node v11_batch15_body_gate.js
+      - name: Persist current body gate
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add V11_BATCH15_BODY_GATE.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'audit(v11): refresh Batch15 body gate after chronology repairs'
+            git pull --rebase origin v11-1000passage-easy-notes
+            git push origin HEAD:v11-1000passage-easy-notes
+          fi
+      - name: Fail closed if body gate fails
+        if: steps.gate.outcome == 'failure'
+        run: exit 1
