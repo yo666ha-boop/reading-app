@@ -28,10 +28,9 @@ async function engine(type){
       const majors=await c.page.locator('#major option').evaluateAll(os=>os.map(o=>o.value)); let found=false;
       for(const m of majors){ await c.page.selectOption('#major',m); const secs=await c.page.locator('#section option').evaluateAll(os=>os.map(o=>o.value)); if(secs.includes(x.section)){found=true;break} }
       ok(found,id+' section'); await c.page.selectOption('#section',x.section);
-      const idx=await c.page.evaluate(id=>{const p=window.V11_BATCH14_PASSAGES.find(p=>p.id===id),a=window.V11_EXTRA_PASSAGES[[p.textbook,String(p.grade),p.section].join('|')]||[];return a.findIndex(q=>q.id===id)+1},id); ok(idx>0,id+' variant');
       const options=await c.page.locator('#v11PassageVariant option').evaluateAll(os=>os.map(o=>({value:o.value,text:o.textContent})));
-      if(!options.some(o=>o.value===String(idx))) throw new Error('VARIANT_MAP '+type+' '+id+' book='+x.textbook+' grade='+x.grade+' section='+x.section+' idx='+idx+' options='+JSON.stringify(options));
-      await c.page.selectOption('#v11PassageVariant',String(idx)); await c.page.evaluate(()=>window.render()); ok((await c.page.locator('#questions .q').count())===5,id+' A');
+      if(!options.some(o=>o.value===String(id))) throw new Error('VARIANT_MAP '+type+' '+id+' book='+x.textbook+' grade='+x.grade+' section='+x.section+' options='+JSON.stringify(options));
+      await c.page.selectOption('#v11PassageVariant',String(id)); await c.page.evaluate(()=>window.render()); ok((await c.page.locator('#questions .q').count())===5,id+' A');
       const b=c.page.locator('#altSetBtn'); if(await b.count()){await b.click();ok((await c.page.locator('#questions .q').count())===5,id+' B')}
       if(await c.page.evaluate(()=>document.documentElement.scrollWidth>document.documentElement.clientWidth+2))overflow++;
     }
