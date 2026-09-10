@@ -33,7 +33,8 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add V11_BATCH15_BODY_GATE.json
           if ! git diff --cached --quiet; then
-            git commit -m 'audit(v11): persist Batch15 body gate report'
+            git commit -m 'audit(v11): persist Batch15 body gate report after R2'
+            git pull --rebase origin v11-1000passage-easy-notes
             git push origin HEAD:v11-1000passage-easy-notes
           fi
       - name: Upload gate output
