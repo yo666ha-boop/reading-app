@@ -1,0 +1,29 @@
+name: v11 Batch15 Body Gate
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch15_authoring_plan.json'
+      - 'v11_batch15_g1_body_draft.json'
+      - 'v11_batch15_g2_body_draft.json'
+      - 'v11_batch15_g3_body_draft.json'
+      - 'v11_batch15_body_gate.js'
+      - '.github/workflows/v11-batch15-body-gate.yml'
+  workflow_dispatch:
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run fail-closed Batch15 body gate
+        run: node v11_batch15_body_gate.js
+      - name: Upload gate output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v11-batch15-body-gate
+          path: V11_BATCH15_BODY_GATE.json
+          if-no-files-found: error
