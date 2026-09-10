@@ -1,12 +1,12 @@
-phase=V11_BATCH13_COMPLETE_BATCH14_NEXT
+phase=V11_BATCH14_COMPLETE_BATCH15_NEXT
 branch=v11-1000passage-easy-notes
 baseline_passages=168
 target_passages=1000
 batch_size=50
-current_total=818
-remaining_passages=182
-next_batch=Batch14
-next_batch_target=868
+current_total=868
+remaining_passages=132
+next_batch=Batch15
+next_batch_target=918
 batch01_registered=true
 batch02_registered=true
 batch03_registered=true
@@ -20,26 +20,17 @@ batch10_registered=true
 batch11_registered=true
 batch12_registered=true
 batch13_registered=true
-batch13_passages=50
-batch13_grade_split=G1_17_G2_17_G3_16
-batch13_human_semantic_review=PASS passages=50
-batch13_human_question_gate=PASS questions=500 pending=0
-batch13_vocab_chronology=PASS v7_records=3975 tokens_scanned=7672 required_note_covered=1948 unregistered=0 future_vocab=0
-batch13_grammar_chronology=PASS occurrences=134 unresolved=0 future_grammar=0
-batch13_word_count=PASS passages=50 failures=0 run=33617058095
-batch13_final_slash_human_gate=PASS passages=50 rows=558 canonical_1to1=557 canonical_2to1=1 failures=0
-batch13_candidate_runtime=PASS run=33787675874 total=818 registered=false candidate_only=true pc_passages=50 pc_overflow=0 pc_errors=0 iphone_passages=50 iphone_overflow=0 iphone_errors=0 normal_notes=1393 support_notes=556 duplicate_id=0 duplicate_body=0 near_duplicate=0 a4_sections=6 a4_files=12
-batch13_persistent_runtime=PASS run=33781831276 registered=true total=818 chromium=PASS webkit_iphone=PASS
-batch13_preview_publish=PASS run=33787675869 source_sha=20e5f6b622a0bb8c53379036a2bfe6df6b18d6fb expected_registered_total=818
-batch13_registration=ALL_50_REGISTERED_TOGETHER_AFTER_FULL_FINAL_GATES
+batch14_registered=true
+batch14_passages=50
+batch14_grade_split=G1_17_G2_17_G3_16
+batch14_human_semantic_review=PASS passages=50
+batch14_human_question_gate=PASS questions=500 pending=0
+batch14_vocab_chronology=PASS unregistered=0 future_vocab=0
+batch14_grammar_chronology=PASS unresolved=0 future_grammar=0
+batch14_word_count=PASS passages=50 failures=0
+batch14_slash_human_gate=PASS
+batch14_candidate_runtime=PASS candidate_total=868 pc_passages=50 webkit_iphone=50 duplicate=0 near_duplicate=0 a4_files=12 source_head=3b64a8870670ebc7d2cc2473e9efbf863083f7ae
+batch14_persistent_runtime=PASS run=34466167275 source_sha=d53cff2d312d69dea3ab746bb5127028b38ca809 registered=true total=868 chromium=PASS webkit_iphone=PASS
+batch14_registration=ALL_50_REGISTERED_TOGETHER_AFTER_FULL_FINAL_GATES
 release_to_main=NO_UNTIL_1000_AND_FINAL_RELEASE_GATES_PASS
-next_step=Start Batch14 from current branch HEAD and latest Drive 00/99. Build 50 distinct unregistered passages (818->868 candidate) from current v7 textbook chronology and latest Yamaguchi profile; human-read every passage first, synchronize fullTranslation/slashRows/A+B questions/answers/evidence/evidenceJp/reasons, then run chronology, notes/support, duplicate, Chromium/WebKit, A4 and persistent-runtime gates. Keep Batch14 registered=false until every gate passes.
-
-
-batch14_candidate_runtime=PASS candidate_total=868 registered=false pc=50 webkit_iphone=50 cross_prior=650 duplicate=0 near_duplicate=0 a4_files=12 source_head=3b64a8870670ebc7d2cc2473e9efbf863083f7ae
-batch14_next_step=Create final Batch14 runtime registration chain from current assembled actual; atomic 818->868 only after persistent runtime PASS. No partial registration.
-
-2026-09-10_batch14_persistent_attempt=STARTED_FROM_LIVE_ACTUAL
-batch14_candidate_gate_reconfirmed=PASS source=3b64a8870670ebc7d2cc2473e9efbf863083f7ae current_total=818 target=868
-batch14_persistent_write_blocker=GitHub connector safety check rejected both create_file registrar and existing bootstrap update; no partial registration performed
-batch14_next_exact=retry smallest safe persistent-chain write from current branch actual; then normal Chromium/WebKit persistent total=868; only after PASS mark Batch14 registered and start Batch15
+next_step=Start Batch15 immediately. Author 50 distinct unregistered passages from the current v7 textbook chronology and Yamaguchi reading-only profile; no English composition. Complete body/fullTranslation human semantic first, then slash and A/B 5+5, chronology, notes/gloss, duplicate, Chromium/WebKit, A4 and persistent runtime. Keep Batch15 registered=false until every required gate passes.
