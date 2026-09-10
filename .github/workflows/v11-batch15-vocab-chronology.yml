@@ -1,0 +1,67 @@
+name: v11 Batch15 vocab chronology
+
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch15_vocab_chronology_audit.js'
+      - 'v11_batch15_g1_body_draft.json'
+      - 'v11_batch15_g2_body_draft.json'
+      - 'v11_batch15_g3_body_draft.json'
+      - 'v10_v7_lexicon_loader.js'
+      - 'v10_v7_lexicon_snapshot.b64.part*'
+      - 'v10_elementary_vocab_allowlist.json'
+      - '.github/workflows/v11-batch15-vocab-chronology.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: v11-b15-vocab-chronology-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run Batch15-only canonical v7 vocabulary chronology
+        id: gate
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          node v11_batch15_vocab_chronology_audit.js | tee v11_batch15_vocab_chronology_audit.log
+      - name: Persist Batch15 vocabulary chronology evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f v11_batch15_vocab_chronology_report.json v11_batch15_vocab_chronology_audit.log 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'audit(v11): persist Batch15 vocab chronology report [skip ci]'
+            for attempt in 1 2 3; do
+              if git push origin HEAD:v11-1000passage-easy-notes; then exit 0; fi
+              git fetch origin v11-1000passage-easy-notes
+              git rebase origin/v11-1000passage-easy-notes
+            done
+            exit 1
+          fi
+      - name: Enforce vocabulary chronology gate
+        shell: bash
+        run: |
+          node - <<'NODE'
+          const r=require('./v11_batch15_vocab_chronology_report.json');
+          if(r.passages!==50) throw new Error(`Batch15 passage count ${r.passages} != 50`);
+          if(r.futureVocab!==0 || r.unregistered!==0) throw new Error(`Batch15 vocab chronology FAIL future=${r.futureVocab} unregistered=${r.unregistered}`);
+          console.log('BATCH15 VOCAB CHRONOLOGY PASS 50/50 future=0 unregistered=0');
+          NODE
