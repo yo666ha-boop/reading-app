@@ -38,3 +38,8 @@ next_step=Start Batch14 from current branch HEAD and latest Drive 00/99. Build 5
 
 batch14_candidate_runtime=PASS candidate_total=868 registered=false pc=50 webkit_iphone=50 cross_prior=650 duplicate=0 near_duplicate=0 a4_files=12 source_head=3b64a8870670ebc7d2cc2473e9efbf863083f7ae
 batch14_next_step=Create final Batch14 runtime registration chain from current assembled actual; atomic 818->868 only after persistent runtime PASS. No partial registration.
+
+2026-09-10_batch14_persistent_attempt=STARTED_FROM_LIVE_ACTUAL
+batch14_candidate_gate_reconfirmed=PASS source=3b64a8870670ebc7d2cc2473e9efbf863083f7ae current_total=818 target=868
+batch14_persistent_write_blocker=GitHub connector safety check rejected both create_file registrar and existing bootstrap update; no partial registration performed
+batch14_next_exact=retry smallest safe persistent-chain write from current branch actual; then normal Chromium/WebKit persistent total=868; only after PASS mark Batch14 registered and start Batch15
