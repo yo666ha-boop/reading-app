@@ -22,6 +22,8 @@ async function engine(type){
     ok(ids.length===50,type+' b14 count'); ok(new Set(ids).size===50,type+' b14 unique ids'); let overflow=0;
     for(const id of ids){
       const x=await c.page.evaluate(id=>window.V11_BATCH14_PASSAGES.find(p=>p.id===id),id);
+      const textbookOptions=await c.page.locator('#textbook option').evaluateAll(os=>os.map(o=>({value:o.value,text:o.textContent})));
+      if(!textbookOptions.some(o=>o.value===String(x.textbook))) throw new Error('TEXTBOOK_MAP '+type+' '+id+' textbook='+x.textbook+' options='+JSON.stringify(textbookOptions));
       await c.page.selectOption('#textbook',x.textbook); await c.page.selectOption('#grade',String(x.grade));
       const majors=await c.page.locator('#major option').evaluateAll(os=>os.map(o=>o.value)); let found=false;
       for(const m of majors){ await c.page.selectOption('#major',m); const secs=await c.page.locator('#section option').evaluateAll(os=>os.map(o=>o.value)); if(secs.includes(x.section)){found=true;break} }
@@ -37,4 +39,4 @@ async function engine(type){
     return{passages:50,overflow,errors:c.errors.length,total:await c.page.evaluate(()=>window.V11_BATCH14_STATE.totalWithBaseline),extra:await c.page.evaluate(()=>Object.values(window.V11_EXTRA_PASSAGES||{}).flat().length)};
   } finally {await Promise.allSettled([c.context.close(),c.browser.close()])}
 }
-(async()=>{const pc=await engine('chromium'),iphone=await engine('webkit');const out={generatedAt:new Date().toISOString(),registered:true,total:868,extra:700,batch14:50,pc,iphone,finalPass:true};fs.writeFileSync('V11_BATCH14_PERSISTENT_RUNTIME_AUDIT.json',JSON.stringify(out,null,2)+'\n');console.log(JSON.stringify(out,null,2));console.log('V11_BATCH14_PERSISTENT_868_PASS')})().catch(e=>{console.error(e.stack||e);process.exit(1)});
+(async()=>{const pc=await engine('chromium'),iphone=await engine('webkit');const out={generatedAt:new Date().toISOString(),registered:true,total:868,extra:700,batch14:50,pc,iphone,finalPass:true};fs.writeFileSync('V11_BATCH14_PERSISTENT_RUNTIME_AUDIT.json',JSON.stringify(out,null,2)+'\n');console.log(JSON.stringify(out,null,2));console.log('V11_BATCH14_PERSISTENT_868_PASS')})().catch(e=>{const failure={generatedAt:new Date().toISOString(),finalPass:false,error:String(e&&e.stack||e)};fs.writeFileSync('V11_BATCH14_PERSISTENT_RUNTIME_FAILURE.json',JSON.stringify(failure,null,2)+'\n');console.error(failure.error);process.exit(1)});
