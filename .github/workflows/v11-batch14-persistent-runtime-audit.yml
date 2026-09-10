@@ -24,7 +24,7 @@ jobs:
       - name: Serve app
         run: python3 -m http.server 8000 >/tmp/b14-persistent-server.log 2>&1 &
       - name: Audit persistent 868 runtime
-        run: node v11_batch14_persistent_runtime_audit.js
+        run: node v11_batch14_persistent_runtime_audit.js > /tmp/b14-persistent-audit.log 2>&1
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -33,3 +33,4 @@ jobs:
             V11_BATCH14_PERSISTENT_RUNTIME_AUDIT.json
             V11_BATCH14_PERSISTENT_RUNTIME_FAILURE.json
             /tmp/b14-persistent-server.log
+            /tmp/b14-persistent-audit.log
