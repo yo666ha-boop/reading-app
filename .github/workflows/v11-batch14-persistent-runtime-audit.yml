@@ -1,17 +1,11 @@
 name: v11 Batch14 Persistent Runtime Audit
 on:
   push:
-    branches: [v11-1000passage-easy-notes]
-    paths:
-      - 'v11_batch14_register.js'
-      - 'v11_batch14_persistent_runtime_audit.js'
-      - 'v11_batch13_bootstrap.js'
-      - '.github/workflows/v11-batch14-persistent-runtime-audit.yml'
+    branches: [v11-b14-persistent-run-20260910]
   workflow_dispatch:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -19,14 +13,5 @@ jobs:
           node-version: '20'
       - run: npm install --no-save --no-package-lock playwright@1.55.0
       - run: npx playwright install --with-deps chromium webkit
-      - name: Serve app
-        run: python3 -m http.server 8000 >/tmp/b14-persistent-server.log 2>&1 &
-      - name: Audit persistent 868 runtime
-        run: node v11_batch14_persistent_runtime_audit.js
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: v11-batch14-persistent-runtime-audit
-          path: |
-            V11_BATCH14_PERSISTENT_RUNTIME_AUDIT.json
-            /tmp/b14-persistent-server.log
+      - run: python3 -m http.server 8000 >/tmp/b14-persistent-server.log 2>&1 &
+      - run: node v11_batch14_persistent_runtime_audit.js
