@@ -33,6 +33,7 @@ jobs:
         run: node v11_batch15_expand_body_r2.js
       - name: Commit updated body and translations
         run: |
+          git restore v11_batch15_expand_body_r2.js
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add v11_batch15_g2_body_draft.json v11_batch15_g3_body_draft.json
