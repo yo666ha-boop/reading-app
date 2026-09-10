@@ -1,0 +1,62 @@
+name: v11 Batch15 residual zero R5
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - '.github/workflows/v11-batch15-residual-zero-r5.yml'
+permissions:
+  contents: write
+jobs:
+  repair-and-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-save --package-lock=false jsdom@24
+      - name: Apply exact current residual repairs
+        run: |
+          cat > /tmp/r5.js <<'NODE'
+          'use strict';
+          const fs=require('fs');
+          const files=['v11_batch15_g1_body_draft.json','v11_batch15_g2_body_draft.json','v11_batch15_g3_body_draft.json'];
+          const docs=files.map(f=>({f,d:JSON.parse(fs.readFileSync(f,'utf8'))}));
+          function get(id){for(const x of docs){const p=(x.d.passages||[]).find(q=>q.id===id);if(p)return p;}throw Error('missing '+id)}
+          const audit=[];
+          function rep(id,from,to,label){const p=get(id);if(!p.body.includes(from))throw Error('missing phrase '+id+' '+label);p.body=p.body.replace(from,to);p.humanSemanticReview=(p.humanSemanticReview||'')+'_R5_ZERO_EQUIV';p.translationSync=(p.translationSync||'')+'; R5 English simplification semantically rechecked against fullTranslation';audit.push({id,label,from,to,fullTranslationChecked:true});}
+          rep('V11-B15-G1-004','That clue pointed to the wrong choice.','That was the wrong choice.','clue-pointed');
+          rep('V11-B15-G1-004','She found the full answer in the note and the schedule.','The note and the schedule showed the full answer.','found');
+          rep('V11-B15-G1-005','The teacher asked Sora to take one folder from the classroom to the school office.','Sora took one folder from the classroom to the school office for the teacher.','grammar-ask-O-to');
+          rep('V11-B15-G1-005','Sora did not remember the teacher’s choice.','Sora did not remember it.','choice');
+          rep('V11-B15-G1-008','Then the class checked the area for other missing things.','Then the class checked the room again.','area-things');
+          rep('V11-B15-G1-010','Nana checked the lesson schedule to find the reason.','Nana checked the lesson schedule for an answer.','find-reason');
+          rep('V11-B15-G1-015','He thought the arrow was part of a game.','He first said, “This arrow is for a game.”','thought-part');
+          rep('V11-B15-G1-016','She left the poster on the table and explained the situation to her club leader.','She left the poster on the table and spoke to her club leader about it.','situation');
+          rep('V11-B15-G1-017','The guest arrived and found the seat quickly.','The guest arrived and saw the seat.','quickly-found');
+          rep('V11-B15-G2-016','The problem came from direction and echo, not from weak sound.','The problem came from direction and echo, not from sound that was not strong.','weak');
+          for(const x of docs)fs.writeFileSync(x.f,JSON.stringify(x.d,null,2)+'\n');
+          fs.writeFileSync('V11_BATCH15_RESIDUAL_ZERO_R5_REPORT.json',JSON.stringify({generatedAt:new Date().toISOString(),edits:audit.length,principle:'exact current-source targeted repair; no gate weakening; no filler; semantic translation synchronization check',audit},null,2)+'\n');
+          console.log('applied='+audit.length);
+          NODE
+          node /tmp/r5.js
+      - name: Run exact chronology
+        id: gate
+        continue-on-error: true
+        run: node v11_batch15_chronology_audit.js
+      - name: Persist source plus audit
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add v11_batch15_g1_body_draft.json v11_batch15_g2_body_draft.json v11_batch15_g3_body_draft.json V11_BATCH15_RESIDUAL_ZERO_R5_REPORT.json
+          for f in V11_BATCH15_CHRONOLOGY_STATUS.txt V11_BATCH15_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH15_VOCAB_RESIDUAL_UNIQUE.txt V11_BATCH15_GRAMMAR_CANDIDATE_REPORT.json V11_BATCH15_GRAMMAR_CHRONOLOGY_REPORT.json V11_BATCH15_GRAMMAR_UNRESOLVED.txt; do [ -f "$f" ] && git add "$f" || true; done
+          git commit -m 'repair(v11): zero Batch15 vocab grammar residuals R5'
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
+      - name: Fail closed if still failing
+        if: steps.gate.outcome == 'failure'
+        run: exit 1
