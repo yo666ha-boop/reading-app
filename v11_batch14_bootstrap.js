@@ -8,6 +8,7 @@
 
   var BOOKS = [
     {prefix:'New Horizon ', runtime:'ニューホライズン', anchor:'New Horizon'},
+    {prefix:'NH ', runtime:'ニューホライズン', anchor:'New Horizon'},
     {prefix:'Sunshine ', runtime:'サンシャイン', anchor:'Sunshine'},
     {prefix:'Here We Go! ', runtime:'Here We Go!', anchor:'Here We Go!'},
     {prefix:'Here We Go ', runtime:'Here We Go!', anchor:'Here We Go!'},
