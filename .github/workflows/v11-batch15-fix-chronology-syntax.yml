@@ -1,0 +1,37 @@
+name: v11 Batch15 fix chronology syntax
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - '.github/workflows/v11-batch15-fix-chronology-syntax.yml'
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - name: Restore missing brace only
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('v11_batch15_chronology_audit.js')
+          s=p.read_text()
+          old="if(g===2&&n===7&&k===1)r=2;return at(`U${n}`,r)}}throw Error"
+          new="if(g===2&&n===7&&k===1)r=2;}return at(`U${n}`,r)}}throw Error"
+          if old not in s:
+              raise SystemExit('target syntax fragment not found')
+          p.write_text(s.replace(old,new,1))
+          PY
+          node --check v11_batch15_chronology_audit.js
+      - name: Commit minimal syntax repair
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add v11_batch15_chronology_audit.js
+          git commit -m 'fix(v11): restore Batch15 chronology syntax brace'
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
