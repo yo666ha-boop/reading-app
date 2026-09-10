@@ -4,7 +4,8 @@
   window.V11_BATCH14_BOOTSTRAP_STARTED = true;
   fetch('./v11_batch14_assembled_draft.json', {cache:'no-store'})
     .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
-    .then(function(batch){
+    .then(function(payload){
+      var batch=Array.isArray(payload)?payload:(payload&&Array.isArray(payload.passages)?payload.passages:null);
       if (!Array.isArray(batch) || batch.length !== 50) throw new Error('Batch14 must contain exactly 50 passages');
       window.V11_BATCH14_PASSAGES = batch;
       var s=document.createElement('script');
