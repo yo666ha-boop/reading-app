@@ -1,0 +1,62 @@
+name: v11 Batch15 reuse verified glosses
+
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch15_reuse_verified_glosses.js'
+      - '.github/workflows/v11-batch15-reuse-verified-glosses.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: v11-b15-reuse-glosses-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Reuse verified Batch1-14 Japanese glosses in Batch15
+        shell: bash
+        run: node v11_batch15_reuse_verified_glosses.js | tee v11_batch15_verified_gloss_reuse.log
+      - name: Rerun Batch15-only vocabulary chronology after reuse
+        id: audit
+        continue-on-error: true
+        shell: bash
+        run: node v11_batch15_vocab_chronology_audit.js | tee v11_batch15_vocab_chronology_audit.log
+      - name: Persist repaired drafts and evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f v11_batch15_g1_body_draft.json v11_batch15_g2_body_draft.json v11_batch15_g3_body_draft.json v11_batch15_verified_gloss_reuse_report.json v11_batch15_verified_gloss_reuse.log v11_batch15_vocab_chronology_report.json v11_batch15_vocab_chronology_audit.log
+          if ! git diff --cached --quiet; then
+            git commit -m 'repair(v11): reuse verified glosses in Batch15 and rerun vocab gate [skip ci]'
+            for attempt in 1 2 3; do
+              if git push origin HEAD:v11-1000passage-easy-notes; then exit 0; fi
+              git fetch origin v11-1000passage-easy-notes
+              git rebase origin/v11-1000passage-easy-notes
+            done
+            exit 1
+          fi
+      - name: Report residual only
+        if: always()
+        shell: bash
+        run: |
+          node - <<'NODE'
+          const r=require('./v11_batch15_vocab_chronology_report.json');
+          console.log(JSON.stringify({passages:r.passages,futureVocab:r.futureVocab,unregistered:r.unregistered,uniqueViolations:r.uniqueViolations,pass:r.pass},null,2));
+          NODE
