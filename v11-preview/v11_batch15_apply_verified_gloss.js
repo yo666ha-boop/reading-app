@@ -11,6 +11,7 @@ function addCanon(e,jp,source){e=norm(e);jp=String(jp||'').trim();if(e&&goodJp(j
 function loadWindowMap(path,key){if(!fs.existsSync(path))return;const sandbox={window:{}};vm.createContext(sandbox);vm.runInContext(fs.readFileSync(path,'utf8'),sandbox,{filename:path});for(const [e,jp] of Object.entries(sandbox.window[key]||{}))addCanon(e,jp,path);}
 loadWindowMap('v11_batch09_prior_final_gloss.js','V11_BATCH09_PRIOR_FINAL_GLOSS');
 loadWindowMap('v11_batch09_verified_gloss_base.js','V11_BATCH09_VERIFIED_GLOSS_BASE');
+loadWindowMap('v11_batch06_canonical_gloss.js','V11_BATCH06_CANONICAL_GLOSS');
 for(const p of (prior.passages||prior||[]))for(const n of (p.notes||[])){
   if(!n||n.kind!=='unlearned_local_required')continue;
   addCanon(n.english,n.japanese,'v11_batch14_assembled_draft.json');
@@ -27,7 +28,7 @@ for(const file of files){const j=JSON.parse(fs.readFileSync(file,'utf8'));for(co
     if(jp){matched++;p.notes.push({kind:'unlearned_local_required',english:x.word,japanese:jp,scope:'passage-only-unlearned',basis:`Batch15 chronology repair: reused verified canonical Japanese gloss from ${src}${base!==x.word?' via base '+base:''}; retained because necessary for passage meaning.`});have.add(x.word);added++;}
     else residual.push({id:p.id,word:x.word,kind:(report.future||[]).some(y=>y.id===p.id&&y.word===x.word)?'FUTURE_V7':'UNREGISTERED'});
   }
-}j.status=String(j.status||'').replace(/(?:_VERIFIED_GLOSS_REPAIR(?:_R\d+)*)+$/,'')+'_VERIFIED_GLOSS_REPAIR_R3';fs.writeFileSync(file,JSON.stringify(j,null,2)+'\n');}
+}j.status=String(j.status||'').replace(/(?:_VERIFIED_GLOSS_REPAIR(?:_R\d+)*)+$/,'')+'_VERIFIED_GLOSS_REPAIR_R4';fs.writeFileSync(file,JSON.stringify(j,null,2)+'\n');}
 const uniqueResidual=[...new Map(residual.map(x=>[x.id+'|'+x.word,x])).values()];
 fs.writeFileSync('V11_BATCH15_VERIFIED_GLOSS_REPAIR.json',JSON.stringify({generatedAt:new Date().toISOString(),canonicalEntries:canon.size,violationPairs:need.size,added,matched,residualPairs:uniqueResidual.length,residual:uniqueResidual},null,2)+'\n');
-console.log(`Batch15 verified gloss repair R3 canonical=${canon.size} need=${need.size} added=${added} residual=${uniqueResidual.length}`);
+console.log(`Batch15 verified gloss repair R4 canonical=${canon.size} need=${need.size} added=${added} residual=${uniqueResidual.length}`);
