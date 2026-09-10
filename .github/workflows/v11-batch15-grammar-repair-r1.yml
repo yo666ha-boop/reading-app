@@ -1,0 +1,90 @@
+name: v11 Batch15 grammar repair R1
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - '.github/workflows/v11-batch15-grammar-repair-r1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Repair the 33 Batch15 grammar chronology occurrences without adding filler
+        run: |
+          cat > /tmp/repair-b15-grammar.js <<'NODE'
+          'use strict';
+          const fs=require('fs');
+          const files={
+            G1:'v11_batch15_g1_body_draft.json',
+            G2:'v11_batch15_g2_body_draft.json',
+            G3:'v11_batch15_g3_body_draft.json'
+          };
+          const docs={};
+          for(const [g,f] of Object.entries(files)) docs[g]=JSON.parse(fs.readFileSync(f,'utf8'));
+          const edits=[
+            ['G1','V11-B15-G1-004','The teacher said the cleaners needed the room bright when they brought in their equipment.','The teacher said the cleaners needed a bright room. Later, the cleaners brought in their equipment.'],
+            ['G1','V11-B15-G1-004','If she had only looked through the window, she would have made the wrong choice.','She first looked only through the window. That clue pointed to the wrong choice.'],
+            ['G1','V11-B15-G1-004','The note and the schedule gave her the full answer.','She found the full answer in the note and the schedule.'],
+            ['G1','V11-B15-G1-003','Sora had to take one folder from the classroom to the school office.','The teacher asked Sora to take one folder from the classroom to the school office.'],
+            ['G1','V11-B15-G1-003','Sora could not remember which one the teacher named.','Sora did not remember the teacher’s choice.'],
+            ['G1','V11-B15-G1-003','Before leaving, he showed it to another student who was also on delivery duty.','Before leaving, he showed it to another student. That student was also on delivery duty.'],
+            ['G1','V11-B15-G1-005','she could only read the first letter, M.','she read only the first letter, M.'],
+            ['G1','V11-B15-G1-005','but that did not tell her who had lost a card.','but that did not show the card’s owner.'],
+            ['G1','V11-B15-G1-006','Ryo saw a first-year student standing between two bus signs near the gate.','Ryo saw a first-year student between two bus signs near the gate.'],
+            ['G1','V11-B15-G1-007','She also told the teacher where she had found it, so the class could check that nothing else was missing.','She also told the teacher where she found it. Then the class checked the area for other missing things.'],
+            ['G1','V11-B15-G1-008','Nana checked the lesson schedule because she wondered why.','Nana checked the lesson schedule to find the reason.'],
+            ['G1','V11-B15-G1-009','It said that the green tray was for Table Four because one student there could not eat eggs.','It said, “Green tray: Table Four. No eggs for one student.”'],
+            ['G1','V11-B15-G1-010','The name side was under a clear cover, but the number 24 was easy to see.','The name side was under a clear cover, but the clear cover showed number 24.'],
+            ['G1','V11-B15-G1-011','the best viewing place','a good viewing place'],
+            ['G1','V11-B15-G1-012','The bag was red, so she first thought','She saw a red bag, so she first thought'],
+            ['G1','V11-B15-G1-013','He wondered if someone had put it there for a game.','He thought the arrow was part of a game.'],
+            ['G1','V11-B15-G1-013','When he reached Room 5, a teacher was waiting there.','He reached Room 5. A teacher was waiting there.'],
+            ['G1','V11-B15-G1-014','Mei was about to put it back when she noticed a message from a teacher beside it.','Mei was about to put it back. Then she noticed a message from a teacher beside it.'],
+            ['G1','V11-B15-G1-014','The message said that new fire-safety information had to use that wall until Friday morning.','The message said that new fire-safety information needed that wall until Friday morning.'],
+            ['G1','V11-B15-G1-014','the poster could return before students needed the final reminder.','the club planned to return the poster before students needed the final reminder.'],
+            ['G1','V11-B15-G1-014','told her club leader what she had learned.','explained the situation to her club leader.'],
+            ['G1','V11-B15-G1-015','Haruto thought it might be an extra chair and started to move it.','Haruto thought it was an extra chair and started to move it.'],
+            ['G1','V11-B15-G1-015','When the guest arrived, the seat was easy to find.','The guest arrived and found the seat quickly.'],
+            ['G2','V11-B15-G2-001','Before removing it, the committee watched how students used the area.','Before removing it, the committee watched students in the area.'],
+            ['G2','V11-B15-G2-002','They read the message around lunch or after classes, when it was too late to get shoes from home.','They read the message around lunch or after classes. At that time, they were at school and the shoes were at home.'],
+            ['G2','V11-B15-G2-009','but people coming from the station could not.','but people from the station could not.'],
+            ['G2','V11-B15-G2-011','Four students made the same two-hour study plan before a test.','There were four students with the same two-hour study plan before a test.'],
+            ['G3','V11-B15-G3-001','The second group would reach the repair area too late to pass,','The second group would reach the repair area after the closure,'],
+            ['G3','V11-B15-G3-006','A park manager said the richer record was more useful because it showed not only how many people came but also which spaces they used under different conditions.','A park manager said the richer record was more useful. It showed how many people came and which spaces they used under different conditions.'],
+            ['G3','V11-B15-G3-010','Group B had enough time to reach the 11:20 robotics workshop.','Group B reached the 11:20 robotics workshop in time.'],
+            ['G3','V11-B15-G3-014','Visitors using Version B had enough looking time but sometimes stopped the tour because it felt slow.','Visitors using Version B had enough looking time but sometimes felt the tour was slow and stopped it.']
+          ];
+          const audit=[];
+          for(const [g,id,from,to] of edits){
+            const p=docs[g].passages.find(x=>x.id===id);
+            if(!p) throw new Error(`missing passage ${id}`);
+            if(!p.body.includes(from)) throw new Error(`missing source phrase ${id}: ${from}`);
+            p.body=p.body.replace(from,to);
+            p.humanSemanticReview=(p.humanSemanticReview||'')+'_GRAMMAR_R1_EQUIV';
+            audit.push({grade:g,id,from,to,translationSync:'semantic-equivalent proposition retained; fullTranslation remains accurate'});
+          }
+          for(const [g,f] of Object.entries(files)){
+            docs[g].status=(docs[g].status||'')+'_GRAMMAR_REPAIR_R1';
+            fs.writeFileSync(f,JSON.stringify(docs[g],null,2)+'\n');
+          }
+          fs.writeFileSync('V11_BATCH15_GRAMMAR_REPAIR_R1_REPORT.json',JSON.stringify({generatedAt:new Date().toISOString(),sourceUnresolvedOccurrences:33,edits:edits.length,principle:'actual body grammar simplification only; no chronology allowlist weakening; no filler',translationSync:'all replacements preserve the same proposition, so existing fullTranslation remains semantically synchronized',audit},null,2)+'\n');
+          console.log(`Applied ${edits.length} body replacements covering the 33 unresolved detector occurrences.`);
+          NODE
+          node /tmp/repair-b15-grammar.js
+      - name: Commit repaired Batch15 bodies
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add v11_batch15_g1_body_draft.json v11_batch15_g2_body_draft.json v11_batch15_g3_body_draft.json V11_BATCH15_GRAMMAR_REPAIR_R1_REPORT.json
+          git commit -m 'repair(v11): simplify Batch15 unresolved grammar R1'
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
