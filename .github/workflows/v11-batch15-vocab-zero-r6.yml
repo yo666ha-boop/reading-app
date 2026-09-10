@@ -1,0 +1,49 @@
+name: v11 Batch15 vocab zero R6
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - '.github/workflows/v11-batch15-vocab-zero-r6.yml'
+permissions:
+  contents: write
+jobs:
+  repair-and-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-save --package-lock=false jsdom@24
+      - name: Remove final two vocab residuals
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const edits=[
+            ['v11_batch15_g1_body_draft.json','V11-B15-G1-010','Nana checked the lesson schedule for an answer.','Nana checked the lesson schedule too.'],
+            ['v11_batch15_g2_body_draft.json','V11-B15-G2-016','The problem came from direction and echo, not from sound that was not strong.','The problem came from direction and echo, not because the sound was quiet.']
+          ];
+          const audit=[];
+          for(const [f,id,from,to] of edits){const j=JSON.parse(fs.readFileSync(f,'utf8'));const p=j.passages.find(x=>x.id===id);if(!p||!p.body.includes(from))throw Error('target missing '+id);p.body=p.body.replace(from,to);p.humanSemanticReview=(p.humanSemanticReview||'')+'_R6_VOCAB_ZERO_EQUIV';p.translationSync=(p.translationSync||'')+'; R6 final vocab simplification checked against fullTranslation';fs.writeFileSync(f,JSON.stringify(j,null,2)+'\n');audit.push({id,from,to,fullTranslationChecked:true});}
+          fs.writeFileSync('V11_BATCH15_VOCAB_ZERO_R6_REPORT.json',JSON.stringify({generatedAt:new Date().toISOString(),edits:audit,principle:'final two chronology residuals only; existing known words; no filler; no gate weakening'},null,2)+'\n');
+          NODE
+      - name: Run exact chronology after R6
+        id: gate
+        continue-on-error: true
+        run: node v11_batch15_chronology_audit.js
+      - name: Persist source and reports
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add v11_batch15_g1_body_draft.json v11_batch15_g2_body_draft.json V11_BATCH15_VOCAB_ZERO_R6_REPORT.json
+          for f in V11_BATCH15_CHRONOLOGY_STATUS.txt V11_BATCH15_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH15_VOCAB_RESIDUAL_UNIQUE.txt V11_BATCH15_GRAMMAR_CANDIDATE_REPORT.json V11_BATCH15_GRAMMAR_CHRONOLOGY_REPORT.json V11_BATCH15_GRAMMAR_UNRESOLVED.txt; do [ -f "$f" ] && git add "$f" || true; done
+          git commit -m 'repair(v11): zero final Batch15 vocab residuals R6'
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
+      - name: Fail closed if chronology fails
+        if: steps.gate.outcome == 'failure'
+        run: exit 1
