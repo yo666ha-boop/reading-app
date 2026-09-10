@@ -1,37 +1,19 @@
 {
-  "generatedAt": "2026-09-10T18:06:01.933Z",
+  "generatedAt": "2026-09-10T18:09:52.045Z",
   "detectorVersion": "3.1-v11-b15-body+gate-fp3+v7supp",
   "passages": 50,
-  "detectedFeatureTypes": 22,
-  "detectedOccurrences": 104,
+  "detectedFeatureTypes": 21,
+  "detectedOccurrences": 103,
   "falsePositiveOccurrencesRemoved": 1,
   "resolvedOccurrences": 103,
   "priorGradeCarryForwardOccurrences": 62,
-  "unresolvedOccurrences": 1,
+  "unresolvedOccurrences": 0,
   "futureGrammarLeak": 0,
-  "sectionChronologyComplete": false,
-  "finalPass": false,
+  "sectionChronologyComplete": true,
+  "finalPass": true,
   "rule": "Fail closed after bounded structural false-positive removal, including canonical-v7 lexical -ing nouns; exact official evidence plus bounded canonical-v7 exact/conservative boundaries only. Exact earlier-grade introductions carry forward. Unit/program-level evidence remains unresolved.",
   "future": [],
-  "unresolved": [
-    {
-      "textbook": "サンシャイン",
-      "grade": "1",
-      "section": "PROGRAM 10-2",
-      "feature": "ASK_TELL_WANT_O_TO",
-      "occurrences": 1,
-      "evidenceStatus": "NO_EVIDENCE_BOUNDARY",
-      "coarseBoundary": null,
-      "introducedGrade": null,
-      "samples": [
-        {
-          "where": "body",
-          "text": "The teacher asked Sora to take one folder from the classroom to the school office. On the teacher's table, there were two gray folders. One had a blue tab and one had an orange tab. Sora did not remember the teacher's choice. He checked the delivery list beside the door. It said, “Office: blue tab. Library: orange tab.” Sora took the blue folder. Before leaving, he showed it to another student. That student was also on delivery duty. They checked the list together. The folder reached the office, and the orange one stayed for the library.",
-          "match": "asked Sora to take"
-        }
-      ]
-    }
-  ],
+  "unresolved": [],
   "resolved": [
     {
       "textbook": "ニューホライズン",
