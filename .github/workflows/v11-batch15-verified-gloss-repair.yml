@@ -1,0 +1,32 @@
+name: v11 Batch15 verified gloss repair
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch15_apply_verified_gloss.js'
+      - '.github/workflows/v11-batch15-verified-gloss-repair.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Apply only verified Batch14 canonical glosses
+        run: node v11_batch15_apply_verified_gloss.js
+      - name: Commit repaired Batch15 drafts and residual report
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add v11_batch15_g1_body_draft.json v11_batch15_g2_body_draft.json v11_batch15_g3_body_draft.json V11_BATCH15_VERIFIED_GLOSS_REPAIR.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'repair(v11): apply verified canonical glosses to Batch15'
+            git pull --rebase origin v11-1000passage-easy-notes
+            git push origin HEAD:v11-1000passage-easy-notes
+          fi
