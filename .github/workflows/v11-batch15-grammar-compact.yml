@@ -1,0 +1,28 @@
+name: v11 Batch15 grammar compact
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch15_grammar_compact.js'
+      - '.github/workflows/v11-batch15-grammar-compact.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  compact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node v11_batch15_grammar_compact.js
+      - run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add V11_BATCH15_GRAMMAR_UNRESOLVED_COMPACT.json V11_BATCH15_GRAMMAR_UNRESOLVED_COMPACT.txt
+          git commit -m 'audit(v11): persist Batch15 grammar unresolved compact'
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
