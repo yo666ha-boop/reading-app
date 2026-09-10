@@ -1,0 +1,30 @@
+name: v11 Batch15 grammar repair R2
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - '.github/workflows/v11-batch15-grammar-repair-r2.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Apply Batch15 grammar repair R2
+        run: node v11_batch15_grammar_repair_r2.js
+      - name: Commit repair and trigger chronology gate
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add v11_batch15_g1_body_draft.json v11_batch15_g2_body_draft.json v11_batch15_g3_body_draft.json V11_BATCH15_GRAMMAR_REPAIR_R2_REPORT.json
+          git commit -m 'repair(v11): simplify Batch15 unresolved grammar R2'
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
