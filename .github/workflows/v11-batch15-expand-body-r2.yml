@@ -18,6 +18,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Repair script quote and syntax-check
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('v11_batch15_expand_body_r2.js')
+          s=p.read_text()
+          s=s.replace("Room B's sink", "Room B\\'s sink")
+          p.write_text(s)
+          PY
+          node --check v11_batch15_expand_body_r2.js
       - name: Apply substantive synchronized expansions
         run: node v11_batch15_expand_body_r2.js
       - name: Commit updated body and translations
@@ -27,5 +37,6 @@ jobs:
           git add v11_batch15_g2_body_draft.json v11_batch15_g3_body_draft.json
           if ! git diff --cached --quiet; then
             git commit -m 'author(v11): expand Batch15 G2/G3 bodies and translations R2'
+            git pull --rebase origin v11-1000passage-easy-notes
             git push origin HEAD:v11-1000passage-easy-notes
           fi
