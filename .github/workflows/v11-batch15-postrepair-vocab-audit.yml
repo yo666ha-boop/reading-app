@@ -18,18 +18,29 @@ jobs:
         with:
           node-version: '20'
       - run: npm install --no-save --package-lock=false jsdom@24
-      - name: Run current Batch15 chronology and force postrepair snapshot
+      - name: Run current Batch15 chronology far enough to generate vocab truth
         continue-on-error: true
+        run: node v11_batch15_chronology_audit.js
+      - name: Force independent vocab snapshot from generated report
         run: |
-          node v11_batch15_chronology_audit.js
-          true
-      - name: Force copy current outputs under immutable postrepair names
-        run: |
-          cp V11_BATCH15_CHRONOLOGY_STATUS.txt V11_BATCH15_POSTREPAIR_STATUS.txt
+          test -f V11_BATCH15_VOCAB_CHRONOLOGY_REPORT.json
           cp V11_BATCH15_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH15_POSTREPAIR_VOCAB_REPORT.json
-          cp V11_BATCH15_VOCAB_RESIDUAL_UNIQUE.txt V11_BATCH15_POSTREPAIR_VOCAB_RESIDUAL_UNIQUE.txt
-          printf '\nsource_head=%s\n' "$(git rev-parse HEAD)" >> V11_BATCH15_POSTREPAIR_STATUS.txt
-      - name: Persist postrepair truth
+          node - <<'NODE'
+          const fs=require('fs');
+          const r=JSON.parse(fs.readFileSync('V11_BATCH15_VOCAB_CHRONOLOGY_REPORT.json','utf8'));
+          const all=[...(r.unresolved||[]).map(x=>({...x,kind:'UNREGISTERED'})),...(r.future||[]).map(x=>({...x,kind:'FUTURE_V7'}))];
+          const by=new Map();
+          for(const x of all){const k=x.kind+'|'+x.word;const z=by.get(k)||{kind:x.kind,word:x.word,occ:0,ids:new Set()};z.occ++;z.ids.add(x.id);by.set(k,z)}
+          const rows=[...by.values()].sort((a,b)=>b.occ-a.occ||a.word.localeCompare(b.word));
+          fs.writeFileSync('V11_BATCH15_POSTREPAIR_VOCAB_RESIDUAL_UNIQUE.txt',rows.map(z=>`${z.kind}\t${z.word}\tocc=${z.occ}\tpassages=${[...z.ids].join(',')}`).join('\n')+'\n');
+          fs.writeFileSync('V11_BATCH15_POSTREPAIR_STATUS.txt',[
+            `batch15_passages=${r.passages}/50`,`registered=false`,`official_total=868`,`v7_records=${r.sourceRecords}`,
+            `vocab_tokens_scanned=${r.tokensScanned}`,`required_note_covered=${r.requiredNoteCoveredOccurrences}`,
+            `vocab_unregistered=${r.unregisteredOccurrences}`,`vocab_future_leak=${r.futureVocabLeakOccurrences}`,
+            `vocab_chronology=${r.finalPass?'PASS':'FAIL'}`,`unique_residual_words=${rows.length}`,`source_head=${process.env.GITHUB_SHA}`
+          ].join('\n')+'\n');
+          NODE
+      - name: Persist postrepair vocab truth
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
