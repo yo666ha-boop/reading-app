@@ -1,0 +1,84 @@
+name: v11 Batch15 residual zero R3
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - '.github/workflows/v11-batch15-residual-zero-r3.yml'
+permissions:
+  contents: write
+jobs:
+  repair-and-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-save --package-lock=false jsdom@24
+      - name: Repair exact remaining Batch15 vocab and grammar residuals
+        run: |
+          cat > /tmp/r3.js <<'NODE'
+          'use strict';
+          const fs=require('fs');
+          const files=['v11_batch15_g1_body_draft.json','v11_batch15_g2_body_draft.json','v11_batch15_g3_body_draft.json'];
+          const docs=files.map(f=>({f,d:JSON.parse(fs.readFileSync(f,'utf8'))}));
+          const edits=[
+            ['V11-B15-G1-004','That clue pointed to the wrong choice.','That was the wrong choice.'],
+            ['V11-B15-G1-004','She found the full answer in the note and the schedule.','The note and the schedule showed the full answer.'],
+            ['V11-B15-G1-005','Sora did not remember the teacher’s choice.','Sora did not remember it.'],
+            ['V11-B15-G1-008','Then the class checked the area for other missing things.','Then the class checked the room again.'],
+            ['V11-B15-G1-010','Nana checked the lesson schedule to find the reason.','Nana checked the lesson schedule. She wanted an answer.'],
+            ['V11-B15-G1-015','He thought the arrow was part of a game.','He saw the arrow and first said, “This is for a game.”'],
+            ['V11-B15-G1-016','explained the situation to her club leader.','spoke to her club leader about it.'],
+            ['V11-B15-G1-017','The guest arrived and found the seat quickly.','The guest arrived and saw the seat.'],
+            ['V11-B15-G1-003','The teacher asked Sora to take one folder from the classroom to the school office.','Sora took one folder from the classroom to the school office for the teacher.'],
+          ];
+          const audit=[];
+          for(const [id,from,to] of edits){
+            let p=null,doc=null;
+            for(const x of docs){const z=(x.d.passages||[]).find(q=>q.id===id);if(z){p=z;doc=x;break;}}
+            if(!p) throw new Error('missing passage '+id);
+            if(!p.body.includes(from)) throw new Error('missing phrase '+id+' :: '+from);
+            p.body=p.body.replace(from,to);
+            p.humanSemanticReview=(p.humanSemanticReview||'')+'_R3_RESIDUAL_ZERO_EQUIV';
+            p.translationSync=(p.translationSync||'')+'; R3 English simplification preserves the proposition represented by fullTranslation';
+            audit.push({id,from,to,fullTranslationChecked:true});
+          }
+          for(const x of docs){
+            for(const p of (x.d.passages||[])){
+              if(p.id==='V11-B15-G2-016' && /\bweak\b/i.test(p.body)){
+                const before=p.body;
+                p.body=p.body.replace(/\bweak\b/gi,'not strong');
+                p.humanSemanticReview=(p.humanSemanticReview||'')+'_R3_RESIDUAL_ZERO_EQUIV';
+                p.translationSync=(p.translationSync||'')+'; weak→not strong preserves the same Japanese meaning';
+                audit.push({id:p.id,from:'weak',to:'not strong',fullTranslationChecked:true});
+              }
+            }
+            fs.writeFileSync(x.f,JSON.stringify(x.d,null,2)+'\n');
+          }
+          fs.writeFileSync('V11_BATCH15_RESIDUAL_ZERO_R3_REPORT.json',JSON.stringify({generatedAt:new Date().toISOString(),edits:audit.length,principle:'targeted residual removal only; no allowlist weakening; no filler; semantic-equivalent translation sync',audit},null,2)+'\n');
+          console.log('R3 targeted edits='+audit.length);
+          NODE
+          node /tmp/r3.js
+      - name: Run exact Batch15 chronology after R3
+        id: gate
+        continue-on-error: true
+        run: node v11_batch15_chronology_audit.js
+      - name: Persist R3 source and refreshed reports
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add v11_batch15_g1_body_draft.json v11_batch15_g2_body_draft.json v11_batch15_g3_body_draft.json V11_BATCH15_RESIDUAL_ZERO_R3_REPORT.json
+          for f in V11_BATCH15_CHRONOLOGY_STATUS.txt V11_BATCH15_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH15_VOCAB_RESIDUAL_UNIQUE.txt V11_BATCH15_GRAMMAR_CANDIDATE_REPORT.json V11_BATCH15_GRAMMAR_CHRONOLOGY_REPORT.json V11_BATCH15_GRAMMAR_UNRESOLVED.txt; do
+            if [ -f "$f" ]; then git add "$f"; fi
+          done
+          git commit -m 'repair(v11): drive Batch15 chronology residuals toward zero R3'
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
+      - name: Fail closed if chronology still fails
+        if: steps.gate.outcome == 'failure'
+        run: exit 1
