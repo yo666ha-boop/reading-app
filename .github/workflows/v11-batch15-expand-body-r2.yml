@@ -18,13 +18,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Repair authoring script quote literals and syntax-check
+      - name: Repair authoring script literals and syntax-check
         run: |
           python - <<'PY'
           from pathlib import Path
           p=Path('v11_batch15_expand_body_r2.js')
           s=p.read_text()
           s=s.replace("a person's health", "a person\\'s health")
+          s=s.replace('current人数', 'current room totals')
           p.write_text(s)
           PY
           node --check v11_batch15_expand_body_r2.js
