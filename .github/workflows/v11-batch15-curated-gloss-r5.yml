@@ -1,0 +1,30 @@
+name: v11 Batch15 curated gloss R5
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch15_curated_required_gloss_r5.js'
+      - '.github/workflows/v11-batch15-curated-gloss-r5.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Apply explicit Japanese required-local glosses
+        run: node v11_batch15_curated_required_gloss_r5.js
+      - name: Commit repaired drafts
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add v11_batch15_g1_body_draft.json v11_batch15_g2_body_draft.json v11_batch15_g3_body_draft.json V11_BATCH15_CURATED_GLOSS_R5_REPORT.json
+          git commit -m 'repair(v11): apply Batch15 curated required gloss R5'
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
