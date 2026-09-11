@@ -8,6 +8,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: v11-batch15-browser-gate
+  cancel-in-progress: true
 jobs:
   browser-gate:
     runs-on: ubuntu-latest
