@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G3-014",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"What was the main goal of the students' shelter plan?","answer":"To place people safely while balancing room capacity, access, quiet, useful facilities, family size, and delivery timing.","evidence":"The room choices balanced access, quiet, useful facilities, family size, and delivery timing rather than giving every special group the room with the most obvious feature.","evidenceJp":"分かりやすい設備だけで部屋を決めず、移動しやすさ、静けさ、設備、家族人数、物資到着時刻を合わせて考えた計画です。","reason":"The plan was designed around several constraints at once, not a single feature of each room."},
+      {"type":"REASON","prompt":"Why were the six people using mobility aids and the twelve older adults placed in Room A?","answer":"Because Room A had the easiest route from the entrance.","evidence":"The planning students placed the six people using mobility aids and twelve older adults in Room A because it had the easiest entrance route.","evidenceJp":"計画を担当した生徒たちは、入口までの道が最も使いやすいA室に、移動補助具を使う6人と高齢者12人を配置しました。","reason":"Easy access was especially important for people whose movement could be difficult."},
+      {"type":"CONTENT_MATCH","prompt":"Why could all twenty-four people in families with small children not use Room B?","answer":"Because Room B held only twenty people.","evidence":"The twenty-four people in families with small children could not fit in Room B, even though its sink was useful.","evidenceJp":"小さな子どものいる24人は、流しが便利でも定員20人のB室には全員入りません。","reason":"The sink was useful, but the room's capacity was smaller than the family group's total size."},
+      {"type":"INFERENCE","prompt":"What does the test with four additional adults show about the plan?","answer":"It had enough unused capacity to handle a small increase in arrivals without moving the families.","evidence":"Rooms A and B still had enough unused capacity for them without moving the families.","evidenceJp":"A室とB室にはまだ空きがあり、家族を移動させなくても受け入れられます。","reason":"A flexible shelter plan should still work when the number of people changes slightly."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: The students made the shelter plan flexible by checking both room capacity and possible ____.","answer":"disruptions","evidence":"By checking both capacity and possible disruptions, they made the shelter plan flexible rather than merely fitting everyone into the rooms once.","evidenceJp":"定員だけでなく起こり得る変更も確認したことで、一度全員を入れるだけではない柔軟な避難計画になりました。","reason":"The final sentence directly states that possible disruptions were checked in addition to capacity."}
+    ],
+    "B":[
+      {"type":"DETAIL","prompt":"What two kinds of supplies were scheduled to arrive at 6:30 p.m.?","answer":"Baby supplies and extra floor mats.","evidence":"Water and blankets would arrive at 5:00 p.m., while baby supplies and extra floor mats would arrive at 6:30.","evidenceJp":"水と毛布は午後5時、乳幼児用品と追加の床用マットは6時30分です。","reason":"The second delivery contained the baby supplies and extra mats."},
+      {"type":"MATERIAL_LINK","prompt":"Which room feature was intentionally kept available for baby care after the second delivery?","answer":"The space near Room B's sink.","evidence":"The students reserved space near Room B's sink for baby-care use after the 6:30 delivery.","evidenceJp":"6時30分の物資到着後に乳幼児の世話ができるよう、B室の流し近くには場所を確保しました。","reason":"The room's sink was useful for baby care, so nearby space was reserved rather than filling it completely."},
+      {"type":"CONTENT_MATCH","prompt":"What would volunteers need to do if the 6:30 delivery was delayed?","answer":"Keep a small emergency set from supplies already available.","evidence":"Baby-care space near the sink would still be available, but volunteers would need to keep a small emergency set from existing supplies.","evidenceJp":"流し近くの乳幼児用スペースは使えますが、それまでのために既存物資から少量の緊急用品を確保する必要があります。","reason":"A delay would affect supplies, not the physical baby-care space itself."},
+      {"type":"REASON","prompt":"Why did the entrance map prohibit boxes along the wide route to Room A?","answer":"To keep the access route clear for people using Room A.","evidence":"The entrance map marked a wide route to Room A and prohibited boxes from being stored along it.","evidenceJp":"入口地図にはA室までの広い通路を示し、その通路には箱を置かないようにしました。","reason":"Keeping the route free of boxes protected the easy-access purpose of Room A."},
+      {"type":"GIST","prompt":"Which statement best describes the final shelter assignments?","answer":"They were a starting plan that could be changed if people's health or mobility needs changed.","evidence":"The final plan was not permanent; students wrote that assignments should change if a person's health or mobility needs changed.","evidenceJp":"この部屋割りは固定ではなく、体調や移動上の必要が変われば変更すると記しました。","reason":"The students treated the assignments as adaptable rather than fixed once and for all."}
+    ]
+  }
+}
