@@ -1,0 +1,19 @@
+{
+  "batch":"V11-B15","gate":"questions-human","status":"PARTIAL_AUTHORING","registered":false,"officialTotal":868,"passageId":"V11-B15-G1-006","questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"What is the main idea of the passage?","answer":"Hina used the green star in a class photo to identify the owner of a wet name card.","evidence":"In the photo, one student had the same green star on her name card.","evidenceJp":"写真では、一人の生徒の名札に同じ緑の星が付いていました。","reason":"The green star gave Hina the clue that the damaged printed name could not provide."},
+      {"type":"DETAIL","prompt":"What part of the printed name could Hina read?","answer":"Only the first letter, M.","evidence":"The printed name was wet, and she read only the first letter, M.","evidenceJp":"印刷された名前はぬれていて、最初のMしか読めませんでした。","reason":"The wet card hid most of the name."},
+      {"type":"REASON","prompt":"Why did the seating chart not solve the problem?","answer":"Because three students in the class had names beginning with M.","evidence":"Three students in the class had names beginning with M.","evidenceJp":"クラスにはMで始まる名前の生徒が三人いました。","reason":"The first letter alone was not enough to identify one student."},
+      {"type":"CONTENT_MATCH","prompt":"Which statement is true?","answer":"The name card had the same green star as one shown in the class photo.","evidence":"In the photo, one student had the same green star on her name card.","evidenceJp":"写真では、一人の生徒の名札に同じ緑の星が付いていました。","reason":"This clue connected the found card with Miki."},
+      {"type":"PHRASE_FILL","prompt":"Complete the sentence: Hina returned the card to ____.","answer":"Miki","evidence":"Hina checked the star and returned the card to Miki.","evidenceJp":"ヒナは星を確かめて、ミキに名札を返しました。","reason":"Miki was identified as the owner."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"What can we infer about why the green star was useful?","answer":"It was a unique clue that could distinguish Miki from the other students whose names began with M.","evidence":"In the photo, one student had the same green star on her name card.","evidenceJp":"写真では、一人の生徒の名札に同じ緑の星が付いていました。","reason":"The star narrowed the possibilities to one matching student."},
+      {"type":"DETAIL","prompt":"Where did Hina find the card?","answer":"On the floor near the classroom sink.","evidence":"Hina found a name card on the floor near the classroom sink.","evidenceJp":"ヒナは教室の流しの近くの床で名札を見つけました。","reason":"The location is stated in the opening sentence."},
+      {"type":"CONTEXT_WORD","prompt":"In this passage, what does 'owner' mean?","answer":"The person the name card belongs to.","evidence":"The seating chart did not show the card’s owner.","evidenceJp":"座席表だけでは誰が名札をなくしたのか分かりませんでした。","reason":"The owner is the student whose name card it is."},
+      {"type":"REASON","prompt":"Why did Miki say she had dropped the card?","answer":"She had dropped it while washing her hands.","evidence":"Miki smiled and said she had dropped it while washing her hands.","evidenceJp":"ミキは笑って、手を洗ったときに落としたのだと言いました。","reason":"This explains why the card was found near the sink."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: Because the printed name was wet, Hina used the class ____ as another source of information.","answer":"photo","evidence":"Then she remembered the class photo on the wall.","evidenceJp":"そこで壁のクラス写真を思い出しました。","reason":"The class photo provided the identifying green-star clue."}
+    ]
+  }
+}
