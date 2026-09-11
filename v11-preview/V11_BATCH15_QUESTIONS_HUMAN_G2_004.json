@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G2-004",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"What was the real cause of the long line at the festival cafe?","answer":"Customers could not see the menu early enough to choose before reaching the counter.","evidence":"She saw that people could not read the menu until they reached the front because the line itself blocked the board.","evidenceJp":"しかしエミが10分間客の様子を観察すると、列そのものがメニューを隠し、先頭に来るまで読めないことに気づきました。","reason":"The workers were ready, but customers delayed ordering because the information was visible too late."},
+      {"type":"DETAIL","prompt":"What did the class first plan to do about the long line?","answer":"Add another worker.","evidence":"The class first planned to add another worker.","evidenceJp":"クラスは最初、係を一人増やそうと考えました。","reason":"The class initially assumed the delay came from insufficient staffing."},
+      {"type":"REASON","prompt":"Why did moving a menu copy to the entrance help?","answer":"Customers could decide what to order while waiting instead of waiting until they reached the counter.","evidence":"Customers decided while they waited, and the line moved more smoothly.","evidenceJp":"客は待っている間に選べるようになり、列はよりスムーズに進みました。","reason":"The change moved decision-making earlier in the process."},
+      {"type":"CONTENT_MATCH","prompt":"Did the cafe need an extra worker after changing the menu location?","answer":"No.","evidence":"No extra worker was needed.","evidenceJp":"係を増やす必要はありませんでした。","reason":"Improving access to information solved the delay without increasing staff."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: The class solved the delay by changing where ____ appeared.","answer":"information","evidence":"The class solved the delay by changing where information appeared.","evidenceJp":"情報を見せる場所を変えることで遅れを解決したのです。","reason":"The key intervention was relocating the menu information, not adding labor."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"Why did Emi watch customers before the class added another worker?","answer":"To find out where the delay actually occurred instead of assuming the workers were the problem.","evidence":"Then Emi watched customers for ten minutes.","evidenceJp":"しかしエミが10分間客の様子を観察すると、列そのものがメニューを隠し、先頭に来るまで読めないことに気づきました。","reason":"Observation revealed that customers, not workers, were waiting to make choices."},
+      {"type":"DETAIL","prompt":"When did many customers begin choosing a drink before the change?","answer":"Only after a worker asked for their order.","evidence":"Many customers began choosing only after the worker asked for an order.","evidenceJp":"多くの客は係に注文を聞かれてから初めて選び始めていました。","reason":"This late decision point slowed the line at the counter."},
+      {"type":"CONTENT_MATCH","prompt":"What did the class find when it measured the line again at the next busy hour?","answer":"Customers were reaching the counter with their orders already chosen.","evidence":"They measured the line again at the next busy hour and found that customers reached the counter with an order already chosen.","evidenceJp":"次の混雑時間にも列を測ると、多くの客が注文を決めた状態でカウンターへ着くようになっていました。","reason":"The follow-up measurement showed that the menu move changed customer behavior as intended."},
+      {"type":"CONTEXT_WORD","prompt":"What does 'blocked' mean when the passage says the line blocked the board?","answer":"Prevented people behind the line from seeing the menu board clearly.","evidence":"She saw that people could not read the menu until they reached the front because the line itself blocked the board.","evidenceJp":"しかしエミが10分間客の様子を観察すると、列そのものがメニューを隠し、先頭に来るまで読めないことに気づきました。","reason":"The people in the line physically interfered with visibility of the menu."},
+      {"type":"GIST","prompt":"What general lesson can be learned from the cafe's solution?","answer":"A process can become faster by placing needed information where people can use it before they reach the decision point.","evidence":"Customers decided while they waited, and the line moved more smoothly.","evidenceJp":"客は待っている間に選べるようになり、列はよりスムーズに進みました。","reason":"Earlier access to the menu removed waiting at the counter without requiring more staff."}
+    ]
+  }
+}
