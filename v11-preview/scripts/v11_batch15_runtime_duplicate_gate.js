@@ -14,7 +14,8 @@ function batch15(){const m=new Map();for(const f of fs.readdirSync('.').filter(x
   await page.waitForFunction(()=>window.V11_MULTI_PASSAGE_STATE&&window.V11_MULTI_PASSAGE_STATE.extraPassages>=700,{timeout:120000});
   const rt=await page.evaluate(()=>{
     const b=p=>{if(!p)return'';if(typeof p.body==='string')return p.body;if(typeof p.passage==='string')return p.passage;if(typeof p.text==='string')return p.text;if(Array.isArray(p.sentences))return p.sentences.join(' ');return''};
-    const base=[],seen=new Set();for(const [g,tbs] of Object.entries(window.DATASETS||{}))for(const [tb,secs] of Object.entries(tbs||{}))for(const [sec,p] of Object.entries(secs||{})){if(!p)continue;const id=String(p.id||`${g}|${tb}|${sec}`),txt=b(p);if(txt&&!seen.has(id)){seen.add(id);base.push({id:`BASE:${id}`,body:txt})}}
+    const datasets=(typeof DATASETS!=='undefined'&&DATASETS)||{};
+    const base=[],seen=new Set();for(const [g,tbs] of Object.entries(datasets))for(const [tb,secs] of Object.entries(tbs||{}))for(const [sec,p] of Object.entries(secs||{})){if(!p)continue;const id=String(p.id||`${g}|${tb}|${sec}`),txt=b(p);if(txt&&!seen.has(id)){seen.add(id);base.push({id:`BASE:${id}`,body:txt})}}
     const extra=[];for(const arr of Object.values(window.V11_EXTRA_PASSAGES||{}))for(const p of (Array.isArray(arr)?arr:[])){const txt=b(p);if(p&&p.id&&txt)extra.push({id:String(p.id),body:txt})}
     return {base,extra,state:window.V11_MULTI_PASSAGE_STATE};
   });
