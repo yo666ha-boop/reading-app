@@ -2,6 +2,9 @@ name: v11 Batch15 A4 persistent gate
 on:
   push:
     branches: [v11-1000passage-easy-notes]
+    paths-ignore:
+      - 'V11_BATCH15_BROWSER_GATE_REPORT.json'
+      - 'V11_BATCH15_A4_PERSISTENT_GATE_REPORT.json'
   workflow_dispatch:
 permissions:
   contents: write
