@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G1-016",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"Why did Mei decide not to put the music-event poster back on Thursday?","answer":"Because the teacher's message explained that the wall was needed for fire-safety information until Friday morning.","evidence":"The message said that new fire-safety information needed that wall until Friday morning.","evidenceJp":"そこには、新しい防火のお知らせを金曜日の朝までその壁に掲示する必要があると書かれていました。","reason":"The poster had been removed intentionally so another important school notice could use the same space first."},
+      {"type":"DETAIL","prompt":"When would the music event begin?","answer":"After lunch on Friday.","evidence":"The music event would start after lunch on Friday, so the club planned to return the poster before students needed the final reminder.","evidenceJp":"音楽行事は金曜日の昼食後に始まるので、最後のお知らせが必要になる前にポスターを戻せます。","reason":"The event timing showed that the poster could be returned after the safety notice came down."},
+      {"type":"REASON","prompt":"Why did Mei initially think the poster had been removed too early?","answer":"Because the event was still scheduled for Friday.","evidence":"The event was on Friday, so she thought someone had removed the poster too early.","evidenceJp":"行事は金曜日なので、誰かが早く外しすぎたのだと思いました。","reason":"Without the teacher's message, removing a reminder before the event looked like a mistake."},
+      {"type":"CONTENT_MATCH","prompt":"What did Mei do after understanding why the poster was on the table?","answer":"She left it there and told her club leader about the situation.","evidence":"She left the poster on the table and spoke to her club leader about it.","evidenceJp":"メイはポスターをテーブルに置いたまま、分かったことを部のリーダーへ伝えました。","reason":"She followed the temporary wall-use plan instead of changing it herself."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: Two school activities needed the same wall at different times, and the teacher's message explained the ____.","answer":"order","evidence":"Two school activities needed the same wall at different times, and the teacher's message explained the order.","evidenceJp":"二つの学校活動が別々の時間に同じ壁を必要としていて、先生のメッセージが順番を説明していました。","reason":"The message clarified which notice needed the wall first and when the poster could return."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"What would have been the problem if Mei had immediately put the music poster back?","answer":"She might have covered or displaced the fire-safety information that needed the wall first.","evidence":"The message said that new fire-safety information needed that wall until Friday morning.","evidenceJp":"そこには、新しい防火のお知らせを金曜日の朝までその壁に掲示する必要があると書かれていました。","reason":"The wall had a temporary safety purpose that took priority until Friday morning."},
+      {"type":"DETAIL","prompt":"Where did Mei find the removed poster?","answer":"Carefully placed on a nearby table.","evidence":"She found it carefully placed on a table nearby.","evidenceJp":"近くのテーブルに丁寧に置かれているポスターを見つけ、戻そうとしましたが、その横に先生からのメッセージがあることに気づきました。","reason":"The careful placement suggested the poster had not simply been thrown away."},
+      {"type":"CONTENT_MATCH","prompt":"What happened on Friday morning?","answer":"The safety notice was removed and the club put the music-event poster back in the same place.","evidence":"On Friday morning, the safety notice came down, and the club put the event poster back in the same place.","evidenceJp":"金曜日の朝、防火のお知らせが外され、部員たちは同じ場所へ行事のポスターを戻しました。","reason":"This followed the order explained in the teacher's message."},
+      {"type":"CONTEXT_WORD","prompt":"What does 'order' mean in the final sentence?","answer":"The sequence in which the two notices should use the wall.","evidence":"Two school activities needed the same wall at different times, and the teacher's message explained the order.","evidenceJp":"二つの学校活動が別々の時間に同じ壁を必要としていて、先生のメッセージが順番を説明していました。","reason":"Here 'order' refers to timing and sequence, not a command or purchase."},
+      {"type":"GIST","prompt":"What lesson did Mei learn?","answer":"An action that looks like a mistake may be part of a schedule, so check messages and timing before changing it.","evidence":"Mei understood that taking the poster down was not a mistake.","evidenceJp":"ポスターを外したのは間違いではなかったのです。","reason":"Checking the teacher's message and calendar revealed the planned reason for the temporary change."}
+    ]
+  }
+}
