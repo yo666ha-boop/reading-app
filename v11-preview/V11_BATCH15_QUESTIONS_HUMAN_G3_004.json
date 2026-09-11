@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G3-004",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"What problem did the students find in the draft newspaper article?","answer":"A shortened quote made the baker seem to reject paper bags more broadly than he actually did.","evidence":"The first draft had kept only the beginning and changed the impression of the interview.","evidenceJp":"最初の下書きは前半だけを残し、インタビューの印象を変えていました。","reason":"Removing the second half erased the condition that explained when most customers accepted paper bags."},
+      {"type":"DETAIL","prompt":"What concern did some customers have about paper bags?","answer":"They worried that paper bags would get wet on rainy days.","evidence":"Some customers do not want paper bags on rainy days because they worry about water, but most accept them when we explain the new covers.","evidenceJp":"雨の日はぬれることを心配して紙袋を望まないお客さんもいますが、新しいカバーについて説明すると、多くの人は受け入れてくれます。","reason":"The original recording gives the weather-related concern directly."},
+      {"type":"REASON","prompt":"Why did the team listen to the original recording?","answer":"Because a student remembered that the baker's answer had been longer than the quote in the draft.","evidence":"The statement sounded clear, but one student remembered a longer answer. The team listened to the original recording.","evidenceJp":"はっきりした発言に見えましたが、一人の生徒はもっと長い答えだったと覚えていました。チームが元の録音を聞くと、","reason":"The student's memory created a reason to verify whether the shortened quote represented the full answer."},
+      {"type":"CONTENT_MATCH","prompt":"How did the students correct the article?","answer":"They replaced the short quote with a summary that included both the concern and the condition for accepting paper bags.","evidence":"The students replaced the short quote with a summary that included both the concern and the condition under which customers accepted paper bags.","evidenceJp":"生徒たちは短い引用をやめ、心配の内容と紙袋を受け入れる条件の両方を含む要約に直しました。","reason":"The revised summary restored both sides of the baker's actual statement."},
+      {"type":"INFERENCE","prompt":"Why was the corrected article less dramatic but more accurate?","answer":"It no longer used a simple negative quote and instead showed the baker's more qualified explanation.","evidence":"The correction made the article less dramatic but more accurate.","evidenceJp":"修正後の記事は派手さは減りましたが、より正確になりました。","reason":"The full context was less striking than the shortened quote, but it represented the interview more faithfully."}
+    ],
+    "B":[
+      {"type":"DETAIL","prompt":"What extra information did the students save beside their notes?","answer":"The recording time.","evidence":"They also saved the recording time beside their notes.","evidenceJp":"またメモの横に録音時刻も残しました。","reason":"The time marker made it easier to return to the original source when checking wording."},
+      {"type":"CONTEXT_WORD","prompt":"In the passage, what does “the condition” refer to in the corrected summary?","answer":"The situation in which customers accepted paper bags after the new covers were explained.","evidence":"The students replaced the short quote with a summary that included both the concern and the condition under which customers accepted paper bags.","evidenceJp":"生徒たちは短い引用をやめ、心配の内容と紙袋を受け入れる条件の両方を含む要約に直しました。","reason":"The condition is the circumstance that changes customers' response to paper bags."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: To avoid changing an interviewee's meaning, the newspaper team checked shortened wording against the original ____.","answer":"recording","evidence":"The team listened to the original recording.","evidenceJp":"チームが元の録音を聞くと、","reason":"The recording was the primary source used to verify what the baker actually said."},
+      {"type":"REASON","prompt":"Why did the editor ask writers to label notes as direct quote, summary, or background fact?","answer":"So they could see more easily when shortened wording needed to be checked against the recording.","evidence":"That small change made it easier to see when shortened wording needed to be checked against the recording before publication.","evidenceJp":"この小さな変更で、短くした表現を公開前に録音と照合すべき場所が分かりやすくなりました。","reason":"The labels clarified the source and status of each note, helping writers know when verification was necessary."},
+      {"type":"GIST","prompt":"What broader lesson did the newspaper team learn from this correction?","answer":"Shortening a source can change its meaning, so quotes and summaries must preserve important context.","evidence":"The first draft had kept only the beginning and changed the impression of the interview.","evidenceJp":"最初の下書きは前半だけを残し、インタビューの印象を変えていました。","reason":"The incident shows why editing for brevity must not remove information that changes the speaker's intended message."}
+    ]
+  }
+}
