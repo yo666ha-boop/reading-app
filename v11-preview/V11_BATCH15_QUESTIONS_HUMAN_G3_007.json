@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G3-007",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"What problem did the student team discover with the first cropped photo?","answer":"It could make readers think the recycling event was disorganized because it hid the volunteers who were sorting the bags.","evidence":"In the corner, volunteers were sorting the bags into labeled groups, but that part had disappeared from the crop.","evidenceJp":"写真の隅ではボランティアが袋を表示ごとに仕分けていましたが、その部分が切り取りで消えていました。","reason":"The crop removed important context, so readers could form a misleading impression from the remaining image."},
+      {"type":"REASON","prompt":"Why did the students choose a wider crop?","answer":"Because it showed both the waiting bags and the sorting work that explained why the area looked crowded.","evidence":"They selected a wider crop that included both the waiting bags and the sorting table.","evidenceJp":"そこで待っている袋と仕分け台の両方が入る広い切り取りに変えました。","reason":"The wider image preserved the busy scene while restoring the missing context."},
+      {"type":"CONTENT_MATCH","prompt":"How did the caption change after the team reviewed the original photo?","answer":"It changed from a caption about bags piling up to one about volunteers sorting donations.","evidence":"The caption was also changed from “Bags pile up at the event” to “Volunteers sort a busy group of donations.”","evidenceJp":"説明文も「行事で袋が積み上がる」から「ボランティアが多くの寄付品を仕分ける」へ変更しました。","reason":"The revised caption matched the fuller meaning of the wider image."},
+      {"type":"INFERENCE","prompt":"What does the passage suggest about editing photographs for news or school reports?","answer":"Editors should keep enough context so a crop does not change the meaning of what actually happened.","evidence":"The team realized that the smaller image could give readers the wrong idea about what was happening.","evidenceJp":"小さくした写真だけでは、何が起きているかについて読者に間違った印象を与える可能性があると気づきました。","reason":"The central lesson is that visual editing can distort meaning when important context is removed."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: The students replaced the narrow crop with a wider one because the wider image showed both the crowd and the ____.","answer":"sorting work","evidence":"The new version still showed the crowd but also showed the work that explained it.","evidenceJp":"新しい写真も混雑は示しますが、その理由となる作業も同時に見せています。","reason":"The missing sorting work was the context needed to explain the crowded appearance."}
+    ],
+    "B":[
+      {"type":"DETAIL","prompt":"What did another student do before the photo was published?","answer":"The student opened the original photo.","evidence":"Before publishing, another student opened the original photo.","evidenceJp":"公開前に別の生徒が元の写真を開きました。","reason":"Checking the uncropped source revealed the missing sorting activity."},
+      {"type":"REASON","prompt":"Why did the team show both photo versions to six classmates?","answer":"To see how people interpreted each image without being influenced by the intended caption.","evidence":"Before choosing the new crop, the students showed both versions to six classmates without revealing the intended caption.","evidenceJp":"新しい切り取りを決める前に、意図した説明文を見せず二つの写真を6人のクラスメートに見てもらいました。","reason":"The comparison tested the effect of the image itself on viewers' impressions."},
+      {"type":"CONTENT_MATCH","prompt":"How did classmates react differently to the narrow and wider images?","answer":"Several called the narrow image unmanaged, while the wider image made them notice the sorting work.","evidence":"Several described the narrow image as “unmanaged,” while the wider image led them to mention sorting work.","evidenceJp":"狭い写真では「管理されていない」と表現する人が何人もいましたが、広い写真では仕分け作業について話す人が増えました。","reason":"The different reactions showed that the crop changed the message viewers received."},
+      {"type":"CONTEXT_WORD","prompt":"In the passage, what does “crop” mean?","answer":"A selected part of a photograph after cutting away the rest.","evidence":"The cropped image showed several bags on the ground and made the area look disorganized.","evidenceJp":"切り取った写真には地面に置かれた袋がいくつも写り、会場が整理されていないように見えました。","reason":"The surrounding sentences describe removing part of the original photo and choosing a wider version later."},
+      {"type":"GIST","prompt":"What finally supported the team's decision to change the photo?","answer":"Classmates interpreted the wider image more accurately because they noticed the sorting work.","evidence":"That response supported the change.","evidenceJp":"この反応も変更を裏づけました。","reason":"The classmates' responses provided direct evidence that the wider crop communicated the event more fairly."}
+    ]
+  }
+}
