@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G1-017",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"Why did Haruto return the chair to its marked place?","answer":"Because the map key showed that the blue dot meant it was a visitor seat near the door.","evidence":"A blue dot meant “visitor seat.” The chair was for a guest who needed to sit near the door.","evidenceJp":"青い点は「来客用の席」という意味でした。そのいすはドアの近くに座る必要がある来客のためのものでした。","reason":"The map key showed that the chair was deliberately reserved, not extra."},
+      {"type":"DETAIL","prompt":"Why did Haruto first think the chair was extra?","answer":"Because the seating map had a blue dot on it but no name beside it.","evidence":"One chair had a blue dot on the seating map, but there was no name beside it.","evidenceJp":"座席図では一つのいすに青い点が付いていましたが、横に名前はありませんでした。","reason":"Without reading the key, the unnamed chair looked unassigned."},
+      {"type":"REASON","prompt":"Why did Haruto check the map key?","answer":"To learn what the blue dot meant before moving the chair.","evidence":"Then he checked the map key in the corner. A blue dot meant “visitor seat.”","evidenceJp":"そこで図の隅にある記号の説明を確認しました。青い点は「来客用の席」という意味でした。","reason":"The key explained the symbol that Haruto had initially misunderstood."},
+      {"type":"CONTENT_MATCH","prompt":"What did Haruto move after returning the visitor chair?","answer":"A different empty chair.","evidence":"Haruto returned it to the marked place and moved a different empty chair instead.","evidenceJp":"ハルトは印の場所へ戻し、代わりに別の空いたいすを動かしました。","reason":"He adjusted the seating without removing the reserved visitor seat."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: The small map ____ stopped Haruto from changing an important part of the seating plan.","answer":"key","evidence":"The small map key stopped Haruto from changing an important part of the seating plan.","evidenceJp":"小さな記号の説明を確認したことで、大切な座席計画を変えずにすみました。","reason":"The key defined the blue-dot symbol and corrected Haruto's assumption."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"Why was the chair placed near the door rather than anywhere in the hall?","answer":"A guest specifically needed a seat near the door.","evidence":"The chair was for a guest who needed to sit near the door.","evidenceJp":"そのいすはドアの近くに座る必要がある来客のためのものでした。","reason":"Its location was part of the visitor's seating requirement, not an accidental placement."},
+      {"type":"DETAIL","prompt":"What happened when the guest arrived?","answer":"The guest saw the prepared seat.","evidence":"The guest arrived and saw the seat.","evidenceJp":"来客が到着したとき、その席はすぐ見つかりました。","reason":"Because Haruto restored the chair, the intended visitor seat remained available."},
+      {"type":"CONTENT_MATCH","prompt":"What did the blue dot mean according to the map key?","answer":"Visitor seat.","evidence":"A blue dot meant “visitor seat.”","evidenceJp":"青い点は「来客用の席」という意味でした。","reason":"The key directly defines the symbol."},
+      {"type":"CONTEXT_WORD","prompt":"What does 'extra chair' mean in this passage?","answer":"A chair Haruto thought was not assigned or needed for a specific person.","evidence":"Haruto thought it was an extra chair and started to move it.","evidenceJp":"ハルトは予備のいすだと思い、動かし始めました。","reason":"Haruto believed the chair could be moved because he had not yet understood the blue-dot symbol."},
+      {"type":"GIST","prompt":"What lesson does Haruto's experience show?","answer":"Check symbols and their key before changing a plan that may contain information not written as names.","evidence":"The small map key stopped Haruto from changing an important part of the seating plan.","evidenceJp":"小さな記号の説明を確認したことで、大切な座席計画を変えずにすみました。","reason":"A small legend supplied the information needed to understand the reserved seat correctly."}
+    ]
+  }
+}
