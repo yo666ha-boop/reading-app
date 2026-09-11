@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G3-008",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"What was the main purpose of the students' study of the three bicycle racks?","answer":"To decide what action each rack needed by considering use, location, cost, and the cause of its problem.","evidence":"Use, location, cost, and the cause of each problem led to different choices.","evidenceJp":"利用状況、場所、費用、問題の原因によって別々の選択になりました。","reason":"The students did not use one simple rule; they matched each decision to the actual conditions."},
+      {"type":"DETAIL","prompt":"Why did the students recommend repairing Rack A instead of replacing it?","answer":"Because it was widely used and the repair cost was much lower than the replacement cost.","evidence":"A maintenance company estimated that repairing Rack A would cost much less than replacing it.","evidenceJp":"管理会社の見積もりでは、Aを修理する費用は交換よりずっと安く、Cを少し高い場所へ移す費用は小さな修理より高いものの、新しい置き場を買うより安くなります。","reason":"A repair solved the actual safety problem without the unnecessary cost of a new rack."},
+      {"type":"REASON","prompt":"Why was Rack B kept in its original place?","answer":"Because users valued its convenient position beside the main entrance, especially during evening meetings.","evidence":"Rack B filled briefly during evening meetings, which explained why users valued its position despite the lower average.","evidenceJp":"Bは平均利用数が少なくても夕方の会合時には一時的に埋まり、入口近くの場所が評価される理由が分かりました。","reason":"The time-of-day data showed that the lower daily average did not mean the rack's location lacked value."},
+      {"type":"INFERENCE","prompt":"What did the students infer from bicycles being attached to a fence on higher ground near Rack C?","answer":"People still wanted bicycle parking there, but they avoided Rack C because its location became wet.","evidence":"For Rack C, they observed where riders parked when puddles formed and found several bicycles attached to a fence on higher ground.","evidenceJp":"Cの周囲に水たまりができる日は、利用者が高い場所のフェンスに自転車を止めていることも確認しました。","reason":"The riders' alternative parking showed demand was present even when Rack C itself was not used."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: Rack A was repaired, Rack B was kept, and Rack C was ____.","answer":"moved to higher ground","evidence":"The students recommended repairing Rack A, keeping Rack B as it was, and moving Rack C.","evidenceJp":"生徒たちはAを修理し、Bはそのまま残し、Cは移動するよう提案しました。","reason":"The three different actions summarize the mixed plan."}
+    ],
+    "B":[
+      {"type":"CONTENT_MATCH","prompt":"Which statement best matches the six-month follow-up?","answer":"Rack C was used more often after being moved, and Rack A remained safe after repair.","evidence":"Six months later, Rack C was used more often in its drier location, while Rack A remained safe after repair.","evidenceJp":"半年後、乾いた場所へ移したCの利用は増え、Aも修理後安全に使われていました。","reason":"The follow-up showed that both the repair and the relocation worked as intended."},
+      {"type":"REASON","prompt":"Why did the students count empty spaces at different times of day?","answer":"Because one daily average could hide short periods when a rack was heavily used.","evidence":"The students also counted empty spaces at different times instead of relying on one daily average.","evidenceJp":"生徒たちは一日の平均だけでなく、時間帯ごとの空きも数えました。","reason":"Time-specific observations revealed usage patterns that the average alone could miss."},
+      {"type":"CONTENT_MATCH","prompt":"What happened after Rack C was moved?","answer":"Bicycles that had been attached to the higher-ground fence shifted to the rack.","evidence":"After moving Rack C, those bicycles shifted to the rack.","evidenceJp":"Cを移動すると、それらの自転車が置き場を使うようになりました。","reason":"The move removed the wet-location problem and changed where riders parked."},
+      {"type":"INFERENCE","prompt":"What does the passage suggest about making maintenance decisions?","answer":"Decisions should be based on the cause and use pattern of each problem, not only on age or appearance.","evidence":"They did not rank the racks only by age or appearance.","evidenceJp":"年数や見た目だけで順位を付けたのではありません。","reason":"The successful mixed plan came from considering several kinds of evidence for each rack."},
+      {"type":"GIST","prompt":"Why does the passage call the final recommendation a mixed plan?","answer":"Because the students chose three different actions—repair, keep, and move—according to each rack's actual situation.","evidence":"The mixed plan used the budget where it solved an actual problem.","evidenceJp":"限られた予算を実際の問題解決に使う計画になりました。","reason":"A single solution for every rack would have ignored important differences in use, cost, and location."}
+    ]
+  }
+}
