@@ -39,4 +39,5 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add V11_BATCH15_BROWSER_GATE_REPORT.json
           git diff --cached --quiet || git commit -m 'audit(v11): persist Batch15 browser gate'
-          git push
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
