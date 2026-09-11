@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G1-002",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"What is the main idea of the passage?","answer":"Yuki read the instructions and put his homework in the correct box.","evidence":"Yuki looked at his paper again and chose the red box.","evidenceJp":"ユキはもう一度自分の紙を見て、赤い箱を選びました。","reason":"The passage shows how reading the board helped Yuki make the right choice."},
+      {"type":"DETAIL","prompt":"What did the red clip mean?","answer":"Late homework.","evidence":"They said, “Red clip: late homework. White clip: today's homework.”","evidenceJp":"そこには「赤いクリップ：遅れて出す宿題、白いクリップ：今日の宿題」とありました。","reason":"The board directly explained the meaning of the red clip."},
+      {"type":"REASON","prompt":"Why did Yuki choose the red box?","answer":"Because his homework was from the day before.","evidence":"Yuki came to school with homework from the day before.","evidenceJp":"ユキは前日の宿題を持って学校へ来ました。","reason":"The red box was for late homework, so it matched his paper."},
+      {"type":"CONTENT_MATCH","prompt":"Which statement is true?","answer":"Yuki almost used the first box he saw before reading the board.","evidence":"Yuki almost put his paper in the first box he saw. Then he read the instructions on the board.","evidenceJp":"ユキは最初に目に入った箱へ紙を入れそうになりましたが、黒板の説明を読みました。","reason":"This exactly follows the order of events in the passage."},
+      {"type":"PHRASE_FILL","prompt":"Complete the sentence: Yuki read the board ____ putting the paper away.","answer":"before","evidence":"Yuki was glad that he read the board before putting the paper away.","evidenceJp":"ユキは、紙を入れる前に黒板を読んでよかったと思いました。","reason":"The word expresses the sequence stated in the final sentence."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"What can we infer about the two homework boxes?","answer":"They were meant for different kinds of homework.","evidence":"They said, “Red clip: late homework. White clip: today's homework.”","evidenceJp":"そこには「赤いクリップ：遅れて出す宿題、白いクリップ：今日の宿題」とありました。","reason":"Each clip color identified a different category of homework."},
+      {"type":"DETAIL","prompt":"What color clip was on the box for today's homework?","answer":"White.","evidence":"White clip: today's homework.","evidenceJp":"白いクリップ：今日の宿題。","reason":"The instruction board gave the color directly."},
+      {"type":"CONTEXT_WORD","prompt":"In the passage, what does 'late homework' mean?","answer":"Homework handed in after the expected day.","evidence":"Yuki came to school with homework from the day before.","evidenceJp":"ユキは前日の宿題を持って学校へ来ました。","reason":"His work was from the previous day, so it belonged in the late-homework box."},
+      {"type":"REASON","prompt":"Why could the teacher find Yuki's work quickly later?","answer":"Because Yuki put it in the correct red box.","evidence":"Later, the teacher found his work quickly.","evidenceJp":"あとで先生はその宿題をすぐに見つけられました。","reason":"Sorting it into the correct box made the work easy to locate."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: Yuki avoided a mistake by reading the ____ on the board before choosing a box.","answer":"instructions","evidence":"Then he read the instructions on the board.","evidenceJp":"しかし、黒板の説明を読みました。","reason":"The instructions told him how to choose between the two boxes."}
+    ]
+  }
+}
