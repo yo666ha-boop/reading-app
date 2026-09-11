@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G1-014",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"How did Akari discover who the bell belonged to?","answer":"She checked the number on the bell against the equipment list and found that number 12 belonged to the dance club.","evidence":"Number 12 was a dance club bell used in one song.","evidenceJp":"アカリが体育館の壁の用具一覧を確認すると、12番はダンス部が一曲で使うベルでした。","reason":"The numbered equipment list was stronger evidence than the color of a nearby bag."},
+      {"type":"DETAIL","prompt":"Why did Akari first think the bell belonged to the cheer group?","answer":"Because she found it beside a red bag.","evidence":"She saw a red bag, so she first thought the bell belonged to the red-team cheer group.","evidenceJp":"かばんが赤かったので、最初は赤組の応援グループの物だと思いました。","reason":"The bag color gave Akari an initial but unreliable association."},
+      {"type":"REASON","prompt":"Why did Akari check the equipment list?","answer":"Because she noticed a number on the bell that could identify it more reliably.","evidence":"Then she saw a number on the bell. Akari checked the equipment list on the gym wall.","evidenceJp":"するとベルに番号があるのを見つけました。アカリが体育館の壁の用具一覧を確認すると、12番はダンス部が一曲で使うベルでした。","reason":"The number could be matched with an official list rather than guessed from nearby objects."},
+      {"type":"CONTENT_MATCH","prompt":"What did the equipment list show about the cheer group?","answer":"The cheer group did not have bells on its list.","evidence":"The cheer group did not have bells on its list.","evidenceJp":"応援グループの一覧にはベルがありませんでした。","reason":"This ruled out Akari's first guess."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: The bag color was only a nearby clue, while the bell's number and the equipment ____ identified its owner.","answer":"list","evidence":"The bag color was only a nearby clue; the number and list gave the answer.","evidenceJp":"かばんの色は近くにあっただけの手がかりで、番号と一覧が答えを示しました。","reason":"The final sentence directly contrasts the weak clue with the reliable evidence."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"What mistake might Akari have made if she had relied only on the red bag?","answer":"She might have returned the dance club bell to the cheer group.","evidence":"Number 12 was a dance club bell used in one song.","evidenceJp":"アカリが体育館の壁の用具一覧を確認すると、12番はダンス部が一曲で使うベルでした。","reason":"The nearby red bag suggested the wrong group, while the number showed the actual owner."},
+      {"type":"DETAIL","prompt":"Who received the bell from Akari?","answer":"The dance club leader.","evidence":"Akari took the bell to the dance club leader and explained where she found it.","evidenceJp":"アカリはベルをダンス部のリーダーへ持っていき、見つけた場所を説明しました。","reason":"The list had identified the bell as dance club equipment."},
+      {"type":"CONTENT_MATCH","prompt":"What was the dance club leader doing before Akari returned the bell?","answer":"The leader had been looking for it.","evidence":"The leader had been looking for it.","evidenceJp":"リーダーはちょうど探していました。","reason":"This confirms the bell was missing from the dance club."},
+      {"type":"CONTEXT_WORD","prompt":"What does 'nearby clue' mean in the final sentence?","answer":"Information that seemed relevant only because it was physically close to the bell.","evidence":"The bag color was only a nearby clue; the number and list gave the answer.","evidenceJp":"かばんの色は近くにあっただけの手がかりで、番号と一覧が答えを示しました。","reason":"The red bag was beside the bell but did not actually prove ownership."},
+      {"type":"GIST","prompt":"What lesson does Akari's experience show?","answer":"Use identifying information and records instead of assuming an object belongs to whatever is nearby.","evidence":"The bag color was only a nearby clue; the number and list gave the answer.","evidenceJp":"かばんの色は近くにあっただけの手がかりで、番号と一覧が答えを示しました。","reason":"The story contrasts a quick visual guess with a checked identification."}
+    ]
+  }
+}
