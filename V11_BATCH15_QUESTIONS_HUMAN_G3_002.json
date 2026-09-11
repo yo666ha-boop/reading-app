@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G3-002",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"What was the main problem with the English safety notice?","answer":"It added the word “all,” making the rule stricter than the Japanese original.","evidence":"The word “all” had been added during an earlier rewrite. It made the English rule stricter than the original and could confuse people waiting outside the work area.","evidenceJp":"「all」という語が以前の書き直しで加わり、英語の規則が原文より厳しくなっていました。そのため作業区域の外で待つ人まで混乱する可能性がありました。","reason":"The central issue was not grammar or style but a change in the scope of the safety condition."},
+      {"type":"DETAIL","prompt":"Who actually had to wear protective glasses according to the Japanese original?","answer":"Visitors who entered the marked work area.","evidence":"The Japanese original, however, required glasses only for visitors who entered the marked work area.","evidenceJp":"しかし日本語の原文では、印の付いた作業区域へ入る来訪者だけが対象でした。","reason":"The original rule limited the requirement to visitors entering the marked area."},
+      {"type":"REASON","prompt":"Why could the added word confuse people waiting outside the work area?","answer":"Because the English notice appeared to require glasses for every visitor, even outside the marked area.","evidence":"It made the English rule stricter than the original and could confuse people waiting outside the work area.","evidenceJp":"英語の規則が原文より厳しくなっていました。そのため作業区域の外で待つ人まで混乱する可能性がありました。","reason":"The added word expanded the rule beyond the location stated in the original."},
+      {"type":"CONTENT_MATCH","prompt":"How did the students verify the corrected notice?","answer":"They checked the teacher's official rule and had another student read both language versions independently.","evidence":"The students checked the teacher's official rule and changed the English notice to match it. They also asked another student to read both versions independently.","evidenceJp":"生徒たちは先生の正式な規則を確認し、英語掲示を原文と同じ条件に直しました。さらに別の生徒に二つの版をそれぞれ読んでもらいました。","reason":"They used both the official source and an independent reader to confirm that the correction preserved the intended condition."},
+      {"type":"INFERENCE","prompt":"What lesson about translation can be inferred from this case?","answer":"A small familiar word can change who a rule applies to, so conditions must be checked carefully.","evidence":"The group learned that adding a familiar word can still change the meaning of a safety message.","evidenceJp":"よく知っている一語を足すだけでも、安全案内の意味が変わることを学びました。","reason":"The example shows that even an ordinary word can alter the scope of an important instruction."}
+    ],
+    "B":[
+      {"type":"DETAIL","prompt":"What did the team put in a separate review column?","answer":"Conditions such as “in the work area.”","evidence":"To prevent the same problem later, the team marked conditions such as “in the work area” in a separate review column.","evidenceJp":"同じ問題を防ぐため、チームは「作業区域内」のような条件を別の確認欄に記録することにしました。","reason":"The review column was specifically created to preserve condition phrases that determine the scope of a rule."},
+      {"type":"REASON","prompt":"Why did translators have to check the review column before approving a sentence?","answer":"To make sure important conditions from the original rule were preserved.","evidence":"Translators had to check that column before approving a sentence.","evidenceJp":"翻訳担当者は文を承認する前にその欄も確認します。","reason":"The new check was introduced after a condition had been changed during rewriting, so its purpose was to prevent the same meaning shift."},
+      {"type":"CONTENT_MATCH","prompt":"What was true of the final Japanese and English notices?","answer":"They expressed the same condition even though their word order did not have to be identical.","evidence":"The final pair gave the same condition in both languages.","evidenceJp":"最終版では両言語が同じ条件を示しました。","reason":"The goal was equivalent meaning, not identical sentence structure."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: The team improved its translation process by checking important ____ separately before approval.","answer":"conditions","evidence":"To prevent the same problem later, the team marked conditions such as “in the work area” in a separate review column.","evidenceJp":"同じ問題を防ぐため、チームは「作業区域内」のような条件を別の確認欄に記録することにしました。","reason":"The added review step focused on condition phrases that could change who or where a rule applied."},
+      {"type":"GIST","prompt":"Why did the teacher prefer the new review method?","answer":"It kept the rule's exact condition while allowing natural differences in word order between the two languages.","evidence":"The teacher preferred this method because it protected the exact rule without forcing both languages to use identical word order.","evidenceJp":"先生は、両言語の語順を同じにしなくても規則の正確な条件を守れるとして、この方法を評価しました。","reason":"The method balanced accuracy of meaning with natural expression in each language."}
+    ]
+  }
+}
