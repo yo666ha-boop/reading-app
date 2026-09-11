@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G1-012",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"How did Rina use the number 24 to help return the library card?","answer":"She matched number 24 with Daiki on the shelf list, then gave the card to the librarian for final confirmation.","evidence":"Number 24 belonged to Daiki.","evidenceJp":"24番はダイキの番号でした。","reason":"The number identified a likely owner, while the librarian provided a safe final check."},
+      {"type":"DETAIL","prompt":"Why could Rina not easily read the name on the card?","answer":"Because the name side was under a clear cover.","evidence":"The name side was under a clear cover, but the clear cover showed number 24.","evidenceJp":"名前の面は透明なカバーの下で見えにくくなっていましたが、24という番号はよく見えました。","reason":"The cover made the name hard to see, so the visible number became the useful clue."},
+      {"type":"REASON","prompt":"Why did Rina check the shelf list?","answer":"To find which student was connected with number 24.","evidence":"Each student had a numbered place for returned books. Number 24 belonged to Daiki.","evidenceJp":"返却した本を置く場所には、生徒ごとの番号が付いていました。24番はダイキの番号でした。","reason":"The shelf list linked the visible number on the card to a student's assigned number."},
+      {"type":"CONTENT_MATCH","prompt":"What did Rina do instead of putting the card directly in Daiki's bag?","answer":"She gave it to the librarian and explained what she had checked.","evidence":"She gave it to the librarian and explained what she had checked.","evidenceJp":"リナはカードを勝手に彼のかばんへ入れず、司書に渡して自分が確認したことを説明しました。","reason":"Rina treated the number as a clue rather than as final proof of ownership."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: Rina used the visible number as a clue, but asked the ____ to complete the return safely.","answer":"librarian","evidence":"She gave it to the librarian and explained what she had checked.","evidenceJp":"リナはカードを勝手に彼のかばんへ入れず、司書に渡して自分が確認したことを説明しました。","reason":"The librarian was the adult who could contact Daiki and verify the card."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"Why was number 24 useful but not enough by itself?","answer":"It pointed to Daiki, but Daiki still needed to confirm that the card was actually his.","evidence":"The librarian called Daiki, and he confirmed the card was his.","evidenceJp":"司書がダイキを呼ぶと、本人が自分のカードだと確認しました。","reason":"The story distinguishes a helpful clue from final confirmation by the owner."},
+      {"type":"DETAIL","prompt":"Where did Rina find the library card?","answer":"Between two books after reading time.","evidence":"Rina found a library card between two books after reading time.","evidenceJp":"読書の時間の後、リナは二冊の本の間に図書カードを見つけました。","reason":"The opening sentence states where and when she found it."},
+      {"type":"CONTENT_MATCH","prompt":"How was ownership finally confirmed?","answer":"The librarian called Daiki, and Daiki said the card was his.","evidence":"The librarian called Daiki, and he confirmed the card was his.","evidenceJp":"司書がダイキを呼ぶと、本人が自分のカードだと確認しました。","reason":"This was the final check after Rina used the shelf number as a clue."},
+      {"type":"CONTEXT_WORD","prompt":"What does 'clue' mean in the final sentence?","answer":"A piece of information that helped Rina identify the likely owner.","evidence":"Rina used the number as a clue but still asked an adult to finish the return safely.","evidenceJp":"リナは番号を手がかりにしましたが、安全に返す最後の確認は大人に頼みました。","reason":"The number helped narrow down the owner but did not replace confirmation."},
+      {"type":"GIST","prompt":"What lesson does Rina's action show?","answer":"Use available information carefully, but seek proper confirmation before returning someone else's property.","evidence":"Rina used the number as a clue but still asked an adult to finish the return safely.","evidenceJp":"リナは番号を手がかりにしましたが、安全に返す最後の確認は大人に頼みました。","reason":"Rina combines independent checking with a responsible final handoff to an adult."}
+    ]
+  }
+}
