@@ -1,0 +1,26 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G3-001",
+  "reviewedPassages":1,
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"Why did the pantry keep Refrigerator B instead of replacing it?","answer":"The records pointed to the delivery routine, and a technician found no mechanical problem.","evidence":"A technician still checked the refrigerator and found no mechanical problem.","evidenceJp":"技術者も冷蔵庫を確認し、機械の故障はないと判断しました。","reason":"The refrigerator itself was checked and found to be working, so changing the routine was more appropriate than replacing the equipment."},
+      {"type":"REASON","prompt":"Why did many temperature rises happen between 4:00 and 4:30 p.m.?","answer":"Several boxes were delivered then, and the door stayed open while volunteers sorted food.","evidence":"Most rises happened between 4:00 and 4:30 p.m., when several boxes were delivered and the door stayed open while volunteers sorted food.","evidenceJp":"温度上昇の多くは午後4時から4時30分に起き、その時間には複数の箱が届き、ボランティアが食品を仕分ける間、扉が開いたままになっていました。","reason":"The passage directly links the rises to large deliveries and a longer door-open period."},
+      {"type":"CONTENT_MATCH","prompt":"What did the students change in the new delivery process?","answer":"They sorted boxes on a table first and opened the refrigerator only when items were ready to go inside.","evidence":"The students tested a new process: boxes were sorted on a table first, and the refrigerator door was opened only when items were ready to be placed inside.","evidenceJp":"生徒たちは、まずテーブル上で箱を仕分け、入れる準備ができた食品だけをまとめて冷蔵庫へ入れる方法を試しました。","reason":"The new procedure reduced unnecessary door-open time by preparing items before opening the refrigerator."},
+      {"type":"INFERENCE","prompt":"What do the stable temperatures on days without a large delivery suggest?","answer":"The short temperature rises were probably connected to the delivery routine rather than a constant refrigerator failure.","evidence":"On days without a large delivery, the temperature remained stable.","evidenceJp":"大きな配送がない日は温度が安定していました。","reason":"If the refrigerator stayed stable when large deliveries did not occur, the delivery process is a stronger explanation than a continuous mechanical problem."},
+      {"type":"CONTEXT_WORD","prompt":"In “It was usually less than two minutes,” what does “It” refer to?","answer":"The amount of time the refrigerator door remained open on ordinary days.","evidence":"The students also compared how long the door remained open on ordinary days. It was usually less than two minutes, but large-delivery days averaged nearly nine minutes.","evidenceJp":"生徒たちは通常の日に扉が開いている時間も比べました。普段は2分未満でしたが、大きな配送の日は平均約9分でした。","reason":"The pronoun refers to the immediately preceding measure: door-open time on ordinary days."}
+    ],
+    "B":[
+      {"type":"DETAIL","prompt":"How did door-open time differ between ordinary days and large-delivery days?","answer":"It was usually under two minutes on ordinary days but nearly nine minutes on large-delivery days.","evidence":"It was usually less than two minutes, but large-delivery days averaged nearly nine minutes.","evidenceJp":"普段は2分未満でしたが、大きな配送の日は平均約9分でした。","reason":"The passage gives both times directly for comparison."},
+      {"type":"RESULT","prompt":"What happened after the students tested the new process?","answer":"The next week's temperature rises were smaller and shorter.","evidence":"The next week's log showed smaller and shorter temperature rises.","evidenceJp":"次の一週間の記録では温度上昇が小さく、時間も短くなりました。","reason":"This is the direct result reported after changing the delivery process."},
+      {"type":"REASON","prompt":"Why did the students place a rolling cart beside the sorting table?","answer":"So chilled items could be grouped together before the refrigerator door was opened.","evidence":"They placed a rolling cart beside the sorting table so chilled items could be grouped together before the door opened.","evidenceJp":"そこで仕分け台の横に移動式ワゴンを置き、冷蔵品をまとめてから扉を開けられるようにしました。","reason":"Grouping chilled items first helped shorten each door opening."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: By comparing temperature records with actual work, the students decided to change ____ rather than replace working equipment.","answer":"the delivery routine","evidence":"The pantry kept the refrigerator but changed its delivery routine.","evidenceJp":"配布所は冷蔵庫を使い続け、配送時の作業方法を変えました。","reason":"The central change was procedural: the pantry kept the refrigerator and changed how deliveries were handled."},
+      {"type":"GIST","prompt":"Why did the pantry continue keeping the log after changing the routine?","answer":"So it could check again if the temperature pattern changed later.","evidence":"The pantry added the new routine to its volunteer guide and kept the log in case the pattern changed later.","evidenceJp":"配布所は新しい手順をボランティア用案内に加え、今後傾向が変わった場合に確認できるよう記録も続けました。","reason":"The log remained useful for future monitoring even after the immediate problem improved."}
+    ]
+  }
+}
