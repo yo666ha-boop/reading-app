@@ -1,4 +1,5 @@
 'use strict';
+// 2026-09-11 gate refresh: rerun R8 after current Batch15 question completion.
 const fs=require('fs');
 const targets={
   'v11_batch15_g1_body_draft.json':{'V11-B15-G1-003':{thanked:'感謝した'}},
