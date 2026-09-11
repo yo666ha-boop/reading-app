@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G1-015",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"Why did Kenta follow the yellow arrow even though it pointed away from the usual classroom route?","answer":"Because the wall sign explained that the arrows led students to Room 5 for the health check.","evidence":"The sign said, “Health check today. Follow the yellow arrows to Room 5.”","evidenceJp":"矢印に従う前に壁の掲示を読むと、「今日は健康診断です。黄色い矢印に従って第5室へ」とありました。","reason":"The sign showed that the unusual route was temporary and connected to a school activity."},
+      {"type":"DETAIL","prompt":"What did Kenta first think the arrow was for?","answer":"A game.","evidence":"He first said, “This arrow is for a game.”","evidenceJp":"誰かが遊びのために置いたのかと思いました。","reason":"Before reading the sign, Kenta misunderstood the purpose of the arrow."},
+      {"type":"REASON","prompt":"Why did the health-check route use a quieter hallway?","answer":"To keep students away from another class while they went to Room 5.","evidence":"The route used a quieter hallway and kept students away from another class.","evidenceJp":"その道は静かな廊下を使い、別の授業をしている生徒たちの近くを通らないようになっていました。","reason":"The temporary route reduced disturbance to another class."},
+      {"type":"CONTENT_MATCH","prompt":"What did Kenta find when he reached Room 5?","answer":"A teacher was waiting there.","evidence":"He reached Room 5. A teacher was waiting there.","evidenceJp":"第5室に着くと先生が待っていました。","reason":"The waiting teacher confirmed that Kenta had followed the correct route."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: The temporary arrow made sense after Kenta read the ____.","answer":"sign","evidence":"The temporary arrow made sense after Kenta read the sign.","evidenceJp":"掲示を読んだことで、一時的な矢印の意味が分かりました。","reason":"The sign supplied the missing explanation for the unusual direction."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"What might have happened if Kenta had ignored the yellow arrow and used the normal route?","answer":"He might have missed the health-check route or disturbed another class.","evidence":"The route used a quieter hallway and kept students away from another class.","evidenceJp":"その道は静かな廊下を使い、別の授業をしている生徒たちの近くを通らないようになっていました。","reason":"The temporary route had been chosen for a specific school purpose."},
+      {"type":"DETAIL","prompt":"When was Kenta's health check?","answer":"After lunch.","evidence":"Kenta had a health check after lunch, so he followed the arrow.","evidenceJp":"ケンタも昼食後に健康診断を受けるので、矢印に従いました。","reason":"That timing made the arrow's instruction relevant to Kenta."},
+      {"type":"CONTENT_MATCH","prompt":"Which direction did the arrow point compared with Kenta's usual route?","answer":"Away from the usual route to the classrooms.","evidence":"It pointed away from the usual route to the classrooms.","evidenceJp":"それは普段の教室への道とは違う方向を指していました。","reason":"The unusual direction is what first made Kenta question the arrow."},
+      {"type":"CONTEXT_WORD","prompt":"What does 'temporary' mean in the final sentence?","answer":"Used only for a limited time or special situation.","evidence":"The temporary arrow made sense after Kenta read the sign.","evidenceJp":"掲示を読んだことで、一時的な矢印の意味が分かりました。","reason":"The arrow was there for that day's health check rather than as a permanent route marker."},
+      {"type":"GIST","prompt":"What lesson does Kenta's experience suggest?","answer":"Read the explanation before dismissing an unfamiliar direction or sign as meaningless.","evidence":"Before following it, he read a sign on the wall.","evidenceJp":"矢印に従う前に壁の掲示を読むと、「今日は健康診断です。黄色い矢印に従って第5室へ」とありました。","reason":"Reading first changed Kenta's understanding and led him to the correct destination."}
+    ]
+  }
+}
