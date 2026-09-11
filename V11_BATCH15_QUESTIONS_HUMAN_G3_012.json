@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G3-012",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"What was the committee's main lesson from the lost-bag case?","answer":"They needed to separate confirmed observations from guesses before deciding who had moved the bag.","evidence":"The committee separated direct observations from guesses.","evidenceJp":"委員会は直接見たことと推測を分けました。","reason":"The case shows that different accounts should be checked against confirmed evidence before making an accusation."},
+      {"type":"REASON","prompt":"Why did the 1:18 photo weaken the suspicion about the tall person?","answer":"Because it showed that the missing bag was still on the bench shortly before Student B's report about a tall person carrying a dark bag away.","evidence":"They checked a photo taken at 1:18 and saw the missing bag still on the bench.","evidenceJp":"1時18分に撮られた写真を確認すると、なくなったかばんはまだベンチにありました。","reason":"The photo provided direct time-stamped evidence that did not support treating Student B's description as proof that the missing bag had been taken."},
+      {"type":"CONTENT_MATCH","prompt":"Where was the missing bag eventually found?","answer":"At the information desk, where a staff member had moved it for safety.","evidence":"Later, the owner found it at the information desk, where a staff member had moved it for safety.","evidenceJp":"後で持ち主は案内所でかばんを見つけました。安全のため職員が移していたのです。","reason":"This is the confirmed explanation for why the bag was no longer on the bench."},
+      {"type":"INFERENCE","prompt":"Why was Student B's description useful but insufficient by itself?","answer":"It offered a possible lead, but Student B had not seen the bench and could not confirm that the dark bag was the missing one.","evidence":"Others pointed out that Student B had not seen the bench and could not identify the bag.","evidenceJp":"しかしBはベンチそのものを見ておらず、そのかばんが同じ物だと確認できていないという意見も出ました。","reason":"A description can guide checking, but it cannot establish identity when the observer did not confirm the object itself."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: The committee avoided an unsupported accusation by building a careful ____ from confirmed observations.","answer":"timeline","evidence":"The careful timeline prevented an unsupported accusation.","evidenceJp":"時系列を丁寧に確認したことで、根拠のない非難を避けられました。","reason":"The confirmed sequence of events was the key method used to test the competing accounts."}
+    ],
+    "B":[
+      {"type":"DETAIL","prompt":"What did Student A report seeing at 1:10?","answer":"The bag on the bench.","evidence":"Student A said she saw the bag on the bench at 1:10.","evidenceJp":"Aは1時10分にベンチの上にかばんを見たと言いました。","reason":"Student A's statement gives one confirmed time point in the sequence."},
+      {"type":"CONTENT_MATCH","prompt":"What did the committee write in separate columns?","answer":"Confirmed times in one column and uncertain descriptions in another.","evidence":"The committee wrote the confirmed times in one column and uncertain descriptions in another.","evidenceJp":"委員会は確認できた時刻を一つの欄へ、確かでない人物や物の特徴を別の欄へ書きました。","reason":"The two-column format visibly separated stronger evidence from uncertain information."},
+      {"type":"CONTEXT_WORD","prompt":"In the passage, what does 'leads' mean in the statement that height and bag color were useful leads?","answer":"Clues worth checking, but not proof of identity.","evidence":"This made it clear that height and bag color were useful leads but not proof of identity.","evidenceJp":"背の高さやかばんの色は手がかりにはなっても、本人や物を特定する証拠ではないと明確になりました。","reason":"The contrast with 'not proof' shows that leads are clues that guide further investigation rather than final evidence."},
+      {"type":"REASON","prompt":"Why did staff later use the same reporting format for other lost-property cases?","answer":"Because the format helped distinguish confirmed facts from uncertain descriptions and reduced unsupported conclusions.","evidence":"Staff members later adopted the same format for other lost-property reports.","evidenceJp":"職員も後の落とし物報告で同じ形式を使うようになりました。","reason":"The successful method was useful beyond this single case, so staff applied it to later reports."},
+      {"type":"GIST","prompt":"Which statement best describes how the committee improved its decision making?","answer":"It checked the accounts against time-stamped evidence and treated uncertain descriptions as clues rather than proof.","evidence":"They checked a photo taken at 1:18 and saw the missing bag still on the bench.","evidenceJp":"1時18分に撮られた写真を確認すると、なくなったかばんはまだベンチにありました。","reason":"The committee moved from a quick assumption to a decision based on confirmed evidence and careful classification of uncertainty."}
+    ]
+  }
+}
