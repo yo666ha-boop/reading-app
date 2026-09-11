@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G3-013",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"What problem was Version C designed to solve?","answer":"It was designed to give visitors enough time to look without making the audio tour feel unnecessarily slow.","evidence":"The team created Version C with short pauses only after important descriptions and before visitors moved to the next object.","evidenceJp":"チームは、重要な説明の後と次の展示へ移る前だけ短い間を入れたC版を作りました。","reason":"Version C combined the strengths of the faster and slower versions by placing pauses only where viewing time was useful."},
+      {"type":"REASON","prompt":"Why did some visitors stop Version B before the end?","answer":"Because its long pauses after every sentence made the tour feel too slow.","evidence":"Visitors using Version B had enough looking time but sometimes felt the tour was slow and stopped it.","evidenceJp":"B版では見る時間は十分でしたが、遅く感じて途中でやめる人がいました。","reason":"The extra viewing time helped, but pauses after every sentence reduced the tour's comfortable pace."},
+      {"type":"CONTENT_MATCH","prompt":"What did the team change when it made Version C?","answer":"It changed where pauses were placed, not the historical information itself.","evidence":"The team did not remove historical information; it changed when listeners were given time to look.","evidenceJp":"歴史情報を削ったのではなく、見る時間を与える位置を変えたのです。","reason":"The passage explicitly distinguishes changing the timing from cutting content."},
+      {"type":"INFERENCE","prompt":"Why was it useful to test Version C with both younger and older visitors?","answer":"To check whether the improved completion result worked across age groups rather than only for one group.","evidence":"Younger and older visitors preferred slightly different speeds, but both groups completed Version C more often than Version B.","evidenceJp":"若い来館者と年齢の高い来館者では好む速さに少し差がありましたが、どちらもB版よりC版を最後まで聞く割合が高くなりました。","reason":"The age comparison showed that Version C's advantage was not limited to visitors with one speed preference."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: Version C improved the tour by placing short pauses at ____ moments instead of after every sentence.","answer":"important","evidence":"The team created Version C with short pauses only after important descriptions and before visitors moved to the next object.","evidenceJp":"チームは、重要な説明の後と次の展示へ移る前だけ短い間を入れたC版を作りました。","reason":"Selective pauses preserved viewing time while avoiding the excessive delay of Version B."}
+    ],
+    "B":[
+      {"type":"DETAIL","prompt":"What was one complaint from visitors who used Version A?","answer":"They needed more time to look at the objects.","evidence":"Visitors using Version A often finished, but some said they needed more time to look at objects.","evidenceJp":"A版を使った来館者は最後まで聞く人が多い一方、展示を見る時間がもっと欲しいという声がありました。","reason":"Version A moved quickly enough to finish but did not always leave enough observation time."},
+      {"type":"CONTENT_MATCH","prompt":"What result did the new test of Version C show?","answer":"More visitors completed the tour and said the pace felt comfortable.","evidence":"In a new test, more visitors completed the tour and reported that the pace felt comfortable.","evidenceJp":"新しいテストでは最後まで聞く人が増え、進み方がちょうどよいという感想も増えました。","reason":"The new test directly measured both completion and visitor impressions of the pacing."},
+      {"type":"CONTEXT_WORD","prompt":"In this passage, what does 'pace' refer to?","answer":"The speed and timing with which the audio tour moved through its information and pauses.","evidence":"In a new test, more visitors completed the tour and reported that the pace felt comfortable.","evidenceJp":"新しいテストでは最後まで聞く人が増え、進み方がちょうどよいという感想も増えました。","reason":"The surrounding comparison is about how quickly information was delivered and where pauses were placed."},
+      {"type":"REASON","prompt":"Why did the museum add a pause-button reminder even after choosing one main version?","answer":"Because individual visitors still differed in preferred speed and some might want extra viewing time.","evidence":"The museum therefore kept one main version and added a pause button reminder at the start for anyone who wanted extra viewing time.","evidenceJp":"そこで博物館は基本版を一つにし、もっと見る時間が欲しい人のため開始時に一時停止ボタンの案内を加えました。","reason":"The reminder kept the main tour simple while letting visitors adjust viewing time for themselves."},
+      {"type":"GIST","prompt":"Which statement best describes the museum's final approach?","answer":"Use one balanced audio version and let visitors add extra pauses themselves when needed.","evidence":"The museum therefore kept one main version and added a pause button reminder at the start for anyone who wanted extra viewing time.","evidenceJp":"そこで博物館は基本版を一つにし、もっと見る時間が欲しい人のため開始時に一時停止ボタンの案内を加えました。","reason":"The final design balanced a common default with flexibility for individual viewing preferences."}
+    ]
+  }
+}
