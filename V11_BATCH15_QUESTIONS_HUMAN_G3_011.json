@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G3-011",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"What did the students conclude about the two garden beds?","answer":"The beds had different light conditions and strengths, so planting should be matched to each bed instead of assuming the soil in Bed B was poor.","evidence":"By comparing several records, they found that the two beds had different strengths and adjusted planting to match them.","evidenceJp":"複数の記録を比べ、それぞれの区画の強みに合う植え方へ変えたのです。","reason":"The passage emphasizes diagnosis from multiple records rather than blaming the soil from tomato yield alone."},
+      {"type":"REASON","prompt":"Why did the students question the idea of replacing the soil in Bed B?","answer":"Because soil tests were similar in both beds, while sunlight records showed that Bed B received more afternoon shade.","evidence":"The soil tests from both beds were similar, but the sunlight records were not.","evidenceJp":"二つの区画の土壌検査は似ていましたが、日当たりの記録は違いました。","reason":"The evidence pointed to light conditions, not soil quality, as the more likely cause of the lower tomato harvest."},
+      {"type":"CONTENT_MATCH","prompt":"What planting change did the group propose for Bed B?","answer":"Use most of it for vegetables that need less direct sun, while keeping a small tomato test.","evidence":"The group proposed planting more tomatoes in Bed A and using Bed B for vegetables that could grow with less direct sun. They also planned one small tomato test in Bed B rather than removing tomatoes completely.","evidenceJp":"そこでAにはトマトを増やし、Bには直射日光が少なくても育つ野菜を多く植える案を出しました。ただしBからトマトを完全になくさず、小さな試験区画を残しました。","reason":"The plan used the shaded bed more appropriately without giving up the chance to keep testing tomatoes there."},
+      {"type":"INFERENCE","prompt":"Why did the students keep a small tomato test in Bed B?","answer":"To continue checking how tomatoes performed under the shaded conditions instead of making an all-or-nothing decision.","evidence":"They also planned one small tomato test in Bed B rather than removing tomatoes completely.","evidenceJp":"ただしBからトマトを完全になくさず、小さな試験区画を残しました。","reason":"A small test preserved evidence for future decisions while most of the bed was used for crops better suited to shade."},
+      {"type":"MATERIAL_LINK","prompt":"Which record most strongly supported the idea that shade, rather than poor soil, was the main difference between the beds?","answer":"The sunlight record showing that Bed B was shaded for part of the afternoon while Bed A received several more hours of direct sun.","evidence":"A new building cast shade over Bed B for part of the afternoon, while Bed A received direct sun for several more hours.","evidenceJp":"新しい建物の影でBは午後の一部が日陰になり、Aは数時間長く直射日光を受けていました。","reason":"This record identifies a clear environmental difference even though the soil tests were similar."}
+    ],
+    "B":[
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: The students compared soil, sunlight, growth, and harvest records before changing the ____ plan.","answer":"planting","evidence":"By comparing several records, they found that the two beds had different strengths and adjusted planting to match them.","evidenceJp":"複数の記録を比べ、それぞれの区画の強みに合う植え方へ変えたのです。","reason":"The evidence was used to decide what to plant in each bed."},
+      {"type":"DETAIL","prompt":"How much more tomato production did Bed A have compared with Bed B at first?","answer":"Almost twice as much.","evidence":"Bed A produced almost twice as many as Bed B.","evidenceJp":"A区画はBのほぼ二倍収穫できました。","reason":"This difference first caused volunteers to suspect a problem in Bed B."},
+      {"type":"REASON","prompt":"Why did the volunteers use the same tomato variety in the Bed B test?","answer":"So differences between tomato varieties would not confuse the comparison between the beds.","evidence":"They used the same tomato variety in the small Bed B test, so a different variety would not confuse the comparison.","evidenceJp":"Bの小さな試験区画でも同じ品種のトマトを使い、品種差が比較を乱さないようにしました。","reason":"Keeping the variety constant made the comparison fairer."},
+      {"type":"CONTENT_MATCH","prompt":"What happened in the next season after the planting plan changed?","answer":"The total harvest from the two beds increased.","evidence":"The next season, total harvest from the two beds increased.","evidenceJp":"次の季節には二つの区画全体の収穫量が増えました。","reason":"The follow-up result supported the revised use of the two beds."},
+      {"type":"GIST","prompt":"What broader lesson does the garden case illustrate?","answer":"A weak result in one measure should not be treated as proof of a single cause when other records can reveal a different explanation.","evidence":"The students did not treat lower tomato production as proof of poor soil.","evidenceJp":"トマトの収穫が少ないことを、すぐ土が悪い証拠とは考えませんでした。","reason":"The students improved the plan by comparing several kinds of evidence before deciding what the real problem was."}
+    ]
+  }
+}
