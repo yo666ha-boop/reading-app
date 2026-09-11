@@ -1,0 +1,32 @@
+name: v11 Batch15 notes gate
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch15_notes_gate.js'
+  workflow_dispatch:
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - run: git pull --rebase origin v11-1000passage-easy-notes
+      - name: Run Batch15 notes gate
+        run: node v11_batch15_notes_gate.js
+      - name: Persist Batch15 notes gate
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add V11_BATCH15_NOTES_GATE_REPORT.json V11_BATCH15_NOTES_GATE_STATUS.txt || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'audit(v11): persist Batch15 notes gate'
+            git push origin HEAD:v11-1000passage-easy-notes
+          fi
