@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G1-013",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"Why did Yuma decide not to move the unusual chair?","answer":"Because the note and afternoon plan showed that the chair had been placed there for art class.","evidence":"Art was the first lesson, and the note asked students not to move the marked chair.","evidenceJp":"最初の授業は美術で、印の付いたいすを動かさないよう書かれていました。","reason":"The information showed that the chair's unusual position was intentional rather than a joke."},
+      {"type":"DETAIL","prompt":"What would the art class draw?","answer":"The old tree outside the west window.","evidence":"It said that the art class would draw the old tree outside the west window.","evidenceJp":"そこには、美術の授業で西側の窓の外にある古い木を描くと書かれていました。","reason":"The tree explains why a chair was positioned toward that window."},
+      {"type":"REASON","prompt":"Why did Yuma initially want to put the chair back?","answer":"Because he thought it had been moved as a joke and it was in a walking space.","evidence":"He thought someone had moved it as a joke. The chair was in a walking space, so Yuma wanted to put it back at once.","evidenceJp":"誰かがいたずらで動かしたのだと思いました。いすは通る場所にあったので、ユウマはすぐ戻そうとしました。","reason":"Before checking the note, the chair looked misplaced and inconvenient."},
+      {"type":"CONTENT_MATCH","prompt":"What clue on the chair matched the teacher's note?","answer":"A small piece of tape under the chair.","evidence":"A small piece of tape under the chair matched the mark on the note.","evidenceJp":"いすの下の小さなテープはメモの印と同じでした。","reason":"The matching mark confirmed that this was the chair mentioned in the instruction."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: Yuma checked the note and class plan before ____ the chair.","answer":"moving","evidence":"He checked before changing it.","evidenceJp":"変える前に確認したのです。","reason":"The central lesson is to check the purpose of an unusual arrangement before altering it."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"What might have happened if Yuma had moved the chair back immediately?","answer":"The art teacher would have lost the prepared viewing place for showing students the tree.","evidence":"During art class, the teacher used that chair to show students a good viewing place.","evidenceJp":"美術の授業では、先生がそのいすを使って木がよく見える場所を生徒に示しました。","reason":"The chair's position was part of the lesson setup, so moving it would have undone the preparation."},
+      {"type":"DETAIL","prompt":"What did Yuma move instead of the marked chair?","answer":"His own bag.","evidence":"Yuma left it where it was and moved his own bag away from the walking space.","evidenceJp":"ユウマはいすをそのままにし、自分のかばんを通路から移しました。","reason":"He kept the planned chair position while removing another obstacle from the walking area."},
+      {"type":"CONTENT_MATCH","prompt":"What happened to the chair after art class?","answer":"It was returned to its desk.","evidence":"After the lesson, the chair went back to its desk.","evidenceJp":"授業後、いすは元の机へ戻されました。","reason":"The temporary arrangement ended after it had served its purpose."},
+      {"type":"CONTEXT_WORD","prompt":"What does 'unusual' mean in the final part of the passage?","answer":"Different from what is normally expected in the room.","evidence":"Yuma learned that something unusual in a room can have a clear purpose.","evidenceJp":"教室の中で変わって見える物にも、はっきりした目的があることをユウマは学びました。","reason":"The chair looked out of place because it faced the window instead of the board."},
+      {"type":"GIST","prompt":"What lesson did Yuma learn?","answer":"Something that looks out of place may have a planned purpose, so check before changing it.","evidence":"Yuma learned that something unusual in a room can have a clear purpose. He checked before changing it.","evidenceJp":"教室の中で変わって見える物にも、はっきりした目的があることをユウマは学びました。変える前に確認したのです。","reason":"The story shows that checking context prevented Yuma from undoing a useful preparation."}
+    ]
+  }
+}
