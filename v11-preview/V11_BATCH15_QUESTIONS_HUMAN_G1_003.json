@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G1-003",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"What is the main idea of this passage?","answer":"Ken checked the class numbers to find the correct pair of indoor shoes.","evidence":"Checking the class number solved the problem without any guessing.","evidenceJp":"クラス番号を確認したので、当てずっぽうにせず問題を解決できました。","reason":"The passage centers on Ken using the written class numbers instead of guessing."},
+      {"type":"DETAIL","prompt":"Where did Ken find the two pairs of shoes?","answer":"Beside the stage.","evidence":"Ken found two pairs of white indoor shoes beside the stage.","evidenceJp":"ケンは舞台のそばに白い上履きが二足あるのを見つけました。","reason":"The location is stated in the first sentence."},
+      {"type":"REASON","prompt":"Why did Ken check the numbers inside the shoes?","answer":"Because the two pairs looked the same from the front.","evidence":"The two pairs looked the same from the front.","evidenceJp":"二足は前から見ると同じに見えました。","reason":"The outside appearance was not enough to identify his pair."},
+      {"type":"CONTENT_MATCH","prompt":"Which statement is true?","answer":"One pair was marked 1-1 and the other was marked 1-4.","evidence":"One pair had 1-1, and the other had 1-4.","evidenceJp":"一足には1-1、もう一足には1-4とありました。","reason":"This directly matches the class numbers written in the shoes."},
+      {"type":"PHRASE_FILL","prompt":"Complete the sentence: Ken was in Class ____.","answer":"1-4","evidence":"Ken was in Class 1-4.","evidenceJp":"ケンは1年4組です。","reason":"His own class number identified which pair was his."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"Why did Ken not need to try on the shoes?","answer":"The class numbers inside gave enough information to identify them.","evidence":"He turned them around and checked the numbers written inside.","evidenceJp":"向きを変えて内側に書かれた番号を確認しました。","reason":"The written numbers solved the identification problem without trying either pair."},
+      {"type":"DETAIL","prompt":"What did Ken do with the pair marked 1-1?","answer":"He put it near the Class 1-1 bags.","evidence":"He took the second pair and put the first pair near the Class 1-1 bags.","evidenceJp":"二足目を取り、一足目は1年1組のかばんの近くへ置きました。","reason":"This describes what he did after identifying both pairs."},
+      {"type":"CONTEXT_WORD","prompt":"In this passage, what does 'guessing' mean?","answer":"Choosing without enough evidence or certainty.","evidence":"Checking the class number solved the problem without any guessing.","evidenceJp":"クラス番号を確認したので、当てずっぽうにせず問題を解決できました。","reason":"Ken avoided making a choice based only on appearance."},
+      {"type":"REASON","prompt":"Why did a classmate thank Ken later?","answer":"Because Ken placed the other pair near the correct class's bags.","evidence":"He took the second pair and put the first pair near the Class 1-1 bags. A classmate thanked him later.","evidenceJp":"二足目を取り、一足目は1年1組のかばんの近くへ置きました。あとでクラスメートがお礼を言いました。","reason":"Ken helped the other owner find the remaining pair."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: Ken identified his shoes by checking the ____ written inside them.","answer":"class numbers","evidence":"He turned them around and checked the numbers written inside.","evidenceJp":"向きを変えて内側に書かれた番号を確認しました。","reason":"The numbers distinguished two otherwise similar pairs."}
+    ]
+  }
+}
