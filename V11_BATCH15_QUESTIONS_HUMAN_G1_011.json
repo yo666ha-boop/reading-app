@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G1-011",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"Why was the green mark important to Koki?","answer":"It showed that the tray was the special lunch for Table Four.","evidence":"It said, “Green tray: Table Four. No eggs for one student.”","evidenceJp":"給食ワゴンの横のメモを見ると、4番テーブルの一人の生徒は卵を食べられないため、緑のトレーは4番テーブル用だとありました。","reason":"The teacher's note connected the green mark with the correct table and the student's food need."},
+      {"type":"DETAIL","prompt":"What food condition was written in the note?","answer":"One student at Table Four could not have eggs.","evidence":"It said, “Green tray: Table Four. No eggs for one student.”","evidenceJp":"給食ワゴンの横のメモを見ると、4番テーブルの一人の生徒は卵を食べられないため、緑のトレーは4番テーブル用だとありました。","reason":"The note explained why the green tray had to go to Table Four."},
+      {"type":"REASON","prompt":"Why did Koki stop before putting the tray on the nearest table?","answer":"Because he remembered the teacher's food note and needed to check it first.","evidence":"He almost put it on the nearest table, but he remembered a food note from the teacher.","evidenceJp":"いちばん近いテーブルへ置きそうになりましたが、先生からの食べ物についてのメモを思い出しました。","reason":"The special mark could indicate an important food requirement, so guessing by distance would be unsafe."},
+      {"type":"CONTENT_MATCH","prompt":"What was different about the other lunch trays?","answer":"They did not have a green mark.","evidence":"The other trays had no green mark.","evidenceJp":"ほかのトレーには緑の印はありませんでした。","reason":"The green mark distinguished the special tray from the others."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: Koki checked the teacher's ____ before deciding where the green tray belonged.","answer":"note","evidence":"Koki checked the note beside the lunch cart.","evidenceJp":"給食ワゴンの横のメモを見ると、4番テーブルの一人の生徒は卵を食べられないため、緑のトレーは4番テーブル用だとありました。","reason":"The note gave the table number and the food restriction."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"Why was it helpful that Koki did not announce the student's special lunch to everyone?","answer":"He could meet the student's food need without making the student stand out.","evidence":"By checking the note, Koki gave the special lunch to the right person without calling attention to the student in front of everyone.","evidenceJp":"メモを確認したので、みんなの前でその生徒を目立たせることなく、特別な給食を正しい人へ渡せました。","reason":"The passage presents correct delivery and privacy as two benefits of Koki's careful check."},
+      {"type":"DETAIL","prompt":"Where did Koki carry the green tray?","answer":"To Table Four.","evidence":"Koki carried the tray to Table Four and told the student about the mark.","evidenceJp":"コウキはそのトレーを4番テーブルへ運び、印についてその生徒に伝えました。","reason":"The note identified Table Four as the correct destination."},
+      {"type":"REASON","prompt":"Why was checking the note more important than simply choosing the closest table?","answer":"Because the tray was connected to a student's food restriction, not to where the nearest table was.","evidence":"It said, “Green tray: Table Four. No eggs for one student.”","evidenceJp":"給食ワゴンの横のメモを見ると、4番テーブルの一人の生徒は卵を食べられないため、緑のトレーは4番テーブル用だとありました。","reason":"The correct table depended on the teacher's information about the special meal."},
+      {"type":"CONTEXT_WORD","prompt":"What does 'calling attention to' mean in the final sentence?","answer":"Making other people notice the student in a way that could make the student stand out.","evidence":"By checking the note, Koki gave the special lunch to the right person without calling attention to the student in front of everyone.","evidenceJp":"メモを確認したので、みんなの前でその生徒を目立たせることなく、特別な給食を正しい人へ渡せました。","reason":"The Japanese translation expresses the idea as not making the student conspicuous in front of everyone."},
+      {"type":"GIST","prompt":"What does the story show about careful checking?","answer":"It can help someone follow an important instruction correctly while also respecting another person.","evidence":"By checking the note, Koki gave the special lunch to the right person without calling attention to the student in front of everyone.","evidenceJp":"メモを確認したので、みんなの前でその生徒を目立たせることなく、特別な給食を正しい人へ渡せました。","reason":"Koki's check prevented a food mistake and avoided unnecessary attention."}
+    ]
+  }
+}
