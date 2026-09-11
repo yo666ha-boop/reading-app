@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G1-009",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"How did Taichi decide where to return the towel?","answer":"He checked the duty chart and learned that the relay team used white towels.","evidence":"The chart said that the relay team used white towels that day, while the ball team used blue ones.","evidenceJp":"用具室の近くにある運動会の係表を確認すると、その日はリレーチームが白いタオルを使い、ボールのチームは青いタオルを使うとありました。","reason":"The towel had no name, so the chart's color information identified the correct team."},
+      {"type":"DETAIL","prompt":"Why did Taichi not immediately take the towel to one of the teams?","answer":"Because the towel had no name and two teams had practiced on the field.","evidence":"The towel had no name, so he did not carry it to either team.","evidenceJp":"タオルには名前がなかったので、どちらかのチームへすぐ持っていくことはしませんでした。","reason":"Without a name, Taichi needed another clue before choosing a team."},
+      {"type":"CONTENT_MATCH","prompt":"What color towel did the ball team use that day?","answer":"Blue.","evidence":"The chart said that the relay team used white towels that day, while the ball team used blue ones.","evidenceJp":"用具室の近くにある運動会の係表を確認すると、その日はリレーチームが白いタオルを使い、ボールのチームは青いタオルを使うとありました。","reason":"The chart contrasts the relay team's white towels with the ball team's blue towels."},
+      {"type":"REASON","prompt":"Why did Taichi tell the teacher where he found the towel?","answer":"He wanted the teacher to know where the lost item had been found while returning it to the likely team.","evidence":"Taichi took the towel to the relay team's basket and told the teacher where he found it.","evidenceJp":"タイチは白いタオルをリレーチームのかごへ持っていき、見つけた場所を先生に伝えました。","reason":"Reporting the location made his return process clear instead of simply leaving the towel without explanation."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: Taichi used the towel's color and the duty ____ to decide where it belonged.","answer":"chart","evidence":"He checked the sports-day duty chart near the equipment room.","evidenceJp":"用具室の近くにある運動会の係表を確認すると、その日はリレーチームが白いタオルを使い、ボールのチームは青いタオルを使うとありました。","reason":"The chart provided the team-color information that Taichi needed."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"What problem might have occurred if Taichi had guessed which team owned the towel?","answer":"He might have put it with the wrong team and made it harder for the owner to find.","evidence":"Two teams had practiced on the field.","evidenceJp":"二つのチームが運動場で練習していました。","reason":"Because either team could have left the towel, guessing without checking could send it to the wrong place."},
+      {"type":"DETAIL","prompt":"Where did Taichi put the towel after checking the chart?","answer":"In the relay team's basket.","evidence":"Taichi took the towel to the relay team's basket and told the teacher where he found it.","evidenceJp":"タイチは白いタオルをリレーチームのかごへ持っていき、見つけた場所を先生に伝えました。","reason":"The chart showed that the relay team used white towels."},
+      {"type":"CONTENT_MATCH","prompt":"What happened a few minutes after Taichi returned the towel?","answer":"A student came back for it.","evidence":"A student came back for it a few minutes later.","evidenceJp":"数分後、一人の生徒が取りに戻ってきました。","reason":"This event confirms that returning the towel to the relay team's basket helped its owner find it."},
+      {"type":"CONTEXT_WORD","prompt":"In the final sentence, what does 'saved' mean?","answer":"Prevented the student from having to spend time searching everywhere.","evidence":"Taichi's small check saved the student from searching around the whole field.","evidenceJp":"タイチが少し確認したことで、その生徒は運動場中を探さずにすみました。","reason":"Here 'saved' describes avoiding unnecessary searching, not storing something."},
+      {"type":"GIST","prompt":"What lesson does Taichi's action show?","answer":"A small check of reliable information can prevent a much larger search or mistake.","evidence":"Taichi's small check saved the student from searching around the whole field.","evidenceJp":"タイチが少し確認したことで、その生徒は運動場中を探さずにすみました。","reason":"The passage contrasts Taichi's brief check with the much larger effort the owner otherwise might have needed."}
+    ]
+  }
+}
