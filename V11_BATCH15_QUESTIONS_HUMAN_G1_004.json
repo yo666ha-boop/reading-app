@@ -1,0 +1,19 @@
+{
+  "batch":"V11-B15","gate":"questions-human","status":"PARTIAL_AUTHORING","registered":false,"officialTotal":868,"passageId":"V11-B15-G1-004","questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"What is the main idea of the passage?","answer":"Maya learned that checking written information was better than judging from one quick look.","evidence":"The note and the schedule showed the full answer.","evidenceJp":"紙と予定表の両方で事情が分かりました。","reason":"The passage contrasts Maya's first guess with the fuller information from the note and schedule."},
+      {"type":"DETAIL","prompt":"What did the note on the door say?","answer":"The cleaning team would use Room Two from four thirty.","evidence":"It said that the cleaning team would use Room Two from four thirty.","evidenceJp":"そこには、4時30分から清掃チームが第2教室を使うと書かれていました。","reason":"The note directly explained the planned use of the room."},
+      {"type":"REASON","prompt":"Why did Maya leave the light on?","answer":"Because the cleaning team would arrive soon and needed a bright room.","evidence":"The teacher said the cleaners needed a bright room.","evidenceJp":"先生は、清掃の人たちが道具を運び入れるとき教室を明るくしておく必要があると説明しました。","reason":"Keeping the light on prepared the room for the cleaners."},
+      {"type":"CONTENT_MATCH","prompt":"Which statement is true?","answer":"There was no club activity in Room Two that evening.","evidence":"The room had no club activity that evening, but the cleaning time started in ten minutes.","evidenceJp":"その夕方は部活動の利用はありませんでしたが、清掃開始まであと10分でした。","reason":"This matches the club schedule Maya checked."},
+      {"type":"PHRASE_FILL","prompt":"Complete the sentence: Maya first thought someone ____ the light.","answer":"forgot","evidence":"She first thought someone forgot the light.","evidenceJp":"最初は誰かが消し忘れたと思いました。","reason":"This states her first assumption before she read the note."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"Why was looking only through the window not enough?","answer":"Because the room looked unused even though cleaners were about to come.","evidence":"She first looked only through the window. That was the wrong choice.","evidenceJp":"窓から中を見るだけなら、間違った判断をしていたでしょう。","reason":"The visible scene did not reveal the scheduled cleaning use."},
+      {"type":"DETAIL","prompt":"How soon would cleaning begin when Maya checked the schedule?","answer":"In ten minutes.","evidence":"The cleaning time started in ten minutes.","evidenceJp":"清掃開始まであと10分でした。","reason":"The schedule showed that the cleaning team was due very soon."},
+      {"type":"CONTEXT_WORD","prompt":"In this passage, what does 'schedule' mean?","answer":"A plan showing when activities happen.","evidence":"Maya checked the club schedule on the wall too.","evidenceJp":"マヤは壁の部活動予定表も確認しました。","reason":"The schedule listed whether the room had planned activities."},
+      {"type":"REASON","prompt":"Why did Maya go to find the teacher?","answer":"She wanted to confirm why the light should stay on.","evidence":"She left the light on and went to find the teacher.","evidenceJp":"マヤは明かりを消さず、先生を探しに行きました。","reason":"After reading the note and schedule, she sought confirmation instead of acting on her first guess."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: Maya understood the room by checking both the note and the ____.","answer":"schedule","evidence":"The note and the schedule showed the full answer.","evidenceJp":"紙と予定表の両方で事情が分かりました。","reason":"These two sources together explained why the room was ready before the cleaners arrived."}
+    ]
+  }
+}
