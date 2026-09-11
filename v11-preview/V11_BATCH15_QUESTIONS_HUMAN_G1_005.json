@@ -1,0 +1,19 @@
+{
+  "batch":"V11-B15","gate":"questions-human","status":"PARTIAL_AUTHORING","registered":false,"officialTotal":868,"passageId":"V11-B15-G1-005","questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"What is the main idea of the passage?","answer":"Sora used the delivery list and another student's check to choose the correct folder.","evidence":"They checked the list together.","evidenceJp":"二人で一覧を確認しました。","reason":"The passage shows Sora confirming the destination instead of guessing."},
+      {"type":"DETAIL","prompt":"What color tab was on the folder for the office?","answer":"Blue.","evidence":"It said, “Office: blue tab. Library: orange tab.”","evidenceJp":"そこには「事務室：青、図書室：オレンジ」とありました。","reason":"The delivery list directly linked the office with the blue tab."},
+      {"type":"REASON","prompt":"Why did Sora check the delivery list?","answer":"Because he could not remember which folder the teacher wanted sent to the office.","evidence":"Sora did not remember it. He checked the delivery list beside the door.","evidenceJp":"先生がどちらと言ったか、ソラは思い出せませんでした。そこでドアのそばの配達一覧を確認しました。","reason":"The list gave him the missing destination information."},
+      {"type":"CONTENT_MATCH","prompt":"Which statement is true?","answer":"The orange-tab folder was for the library.","evidence":"Library: orange tab.","evidenceJp":"図書室：オレンジ。","reason":"This is stated directly on the delivery list."},
+      {"type":"PHRASE_FILL","prompt":"Complete the sentence: Before leaving, Sora showed the folder to ____.","answer":"another student","evidence":"Before leaving, he showed it to another student.","evidenceJp":"出る前に、同じ配達係の生徒にも見せました。","reason":"Sora added a second check before delivery."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"What can we infer about Sora's decision-making?","answer":"He preferred confirming information to relying on memory alone.","evidence":"They checked the list together.","evidenceJp":"二人で一覧を確認しました。","reason":"He used both the written list and another student's confirmation."},
+      {"type":"DETAIL","prompt":"Where was the delivery list?","answer":"Beside the door.","evidence":"He checked the delivery list beside the door.","evidenceJp":"ドアのそばの配達一覧を確認しました。","reason":"The location is given directly in the passage."},
+      {"type":"CONTEXT_WORD","prompt":"In this passage, what does 'delivery duty' mean?","answer":"The job of taking items to their correct places.","evidence":"That student was also on delivery duty.","evidenceJp":"その生徒も同じ配達係でした。","reason":"The student helped confirm which folder should be delivered where."},
+      {"type":"REASON","prompt":"Why did the orange folder stay behind?","answer":"Because it was for the library, not the office.","evidence":"The folder reached the office, and the orange one stayed for the library.","evidenceJp":"青いファイルは事務室へ届き、オレンジのものは図書室用に残りました。","reason":"Only the blue-tab folder matched the office destination."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: Sora chose the blue folder after checking the ____.","answer":"delivery list","evidence":"He checked the delivery list beside the door.","evidenceJp":"ドアのそばの配達一覧を確認しました。","reason":"The list was the written source that identified the correct folder."}
+    ]
+  }
+}
