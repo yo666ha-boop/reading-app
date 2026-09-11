@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G3-005",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"Why did the two student groups originally reach different conclusions about Sakura Park?","answer":"They observed the park at different times, in different weather, and in different areas.","evidence":"The difference came from when and where they had observed the park.","evidenceJp":"違いは、観察した時間と場所から生まれていました。","reason":"Both groups used the same counting method, so the observation conditions explained the different results."},
+      {"type":"DETAIL","prompt":"What did Group A see during its first survey?","answer":"Many families near the playground on a sunny Saturday afternoon.","evidence":"Group A visited on a sunny Saturday afternoon and counted many families near the playground.","evidenceJp":"A班は晴れた土曜日の午後に訪れ、遊具の近くに多くの家族を数えました。","reason":"The passage directly states Group A's time, weather, location, and main users."},
+      {"type":"CONTENT_MATCH","prompt":"How did the students broaden the second round of observation?","answer":"They surveyed four time periods and counted the playground, pond path, and open field separately.","evidence":"To obtain a broader picture, the students returned four times: weekday morning, weekday afternoon, weekend morning, and weekend afternoon. They counted users in the playground, pond path, and open field separately.","evidenceJp":"より広い様子を知るため、生徒たちは平日朝・平日午後・休日朝・休日午後の四回、公園へ戻りました。そして遊具、池の道、広場を分けて人数を記録しました。","reason":"The new design expanded both time coverage and spatial coverage."},
+      {"type":"INFERENCE","prompt":"What did the combined results show about the park?","answer":"Different groups used different parts of the park at different times, so no single short survey represented all park use.","evidence":"The combined results showed that the park served different groups at different times.","evidenceJp":"まとめた結果から、公園は時間によって異なる人々に使われていると分かりました。","reason":"The broader survey revealed patterns that neither original one-time observation could show alone."},
+      {"type":"REASON","prompt":"Why did the students avoid choosing one of the first surveys as the correct one?","answer":"Because both groups had counted correctly under different observation conditions.","evidence":"Instead of choosing one survey as correct, the students explained the conditions behind both.","evidenceJp":"一方の調査だけを正しいとせず、両方の結果が生まれた条件を説明しました。","reason":"The conflict came from sampling conditions, not from one group's counting error."}
+    ],
+    "B":[
+      {"type":"DETAIL","prompt":"What pattern did the combined survey find near the playground?","answer":"Families were common there on weekends.","evidence":"Families were common near the playground on weekends, while walkers used the pond path more steadily through the week.","evidenceJp":"休日には遊具近くに家族が多く、池の道は一週間を通して歩く人が比較的安定していました。","reason":"This was one of the location-and-time patterns found after the broader survey."},
+      {"type":"REASON","prompt":"Why did the students record the weather beside each count?","answer":"So they would not mistake weather effects for simple weekday-versus-weekend differences.","evidence":"This helped them avoid treating every difference as a weekday-versus-weekend effect. They included the weather beside each count in the final table.","evidenceJp":"この結果から、すべての差を平日と休日だけの違いとは考えないようにしました。最終表では各人数の横に天候も記し、","reason":"Light rain changed weekend afternoon use, showing that day type alone could not explain every difference."},
+      {"type":"CONTENT_MATCH","prompt":"What happened during light rain on a weekend afternoon?","answer":"Overall park use dropped, but several regular walkers still used the pond path.","evidence":"Weekend afternoon use dropped during light rain, while the pond path still had several regular walkers.","evidenceJp":"休日の午後でも弱い雨の日は利用者が減りましたが、池の道にはいつものように歩く人が何人かいました。","reason":"The passage contrasts the drop in general use with continued use of the pond path."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the recommendation: Before changing park facilities, collect data across several ____ and keep observation categories consistent.","answer":"time periods","evidence":"Their final report recommended collecting data across several time periods before changing park facilities.","evidenceJp":"最終報告では、公園設備を変える前に複数の時間帯でデータを集めることを勧めました。","reason":"The original disagreement arose because the first surveys each covered only one limited time and condition."},
+      {"type":"GIST","prompt":"Why did the park manager find the richer record more useful?","answer":"It showed both how many people came and which spaces they used under different conditions.","evidence":"A park manager said the richer record was more useful. It showed how many people came and which spaces they used under different conditions.","evidenceJp":"公園管理者は、人数だけでなく異なる条件でどの場所が使われたか分かるため、この詳しい記録の方が役立つと話しました。","reason":"The expanded data gave information about both quantity and patterns of space use, which is more useful for facility decisions."}
+    ]
+  }
+}
