@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G2-001",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"What did the committee discover about the poorly used library return box?","answer":"The box itself was not in the wrong place; students often failed to notice it because the sign was hidden.","evidence":"The problem was not the location of the box but the way students saw it.","evidenceJp":"問題は箱の場所ではなく、生徒からどう見えるかでした。","reason":"Moving the sign rather than the box increased returns, showing visibility was the main issue."},
+      {"type":"DETAIL","prompt":"What was hiding the sign near the library box?","answer":"A tall plant.","evidence":"They found that many students walked past the library box without noticing it because a tall plant covered the sign.","evidenceJp":"すると、背の高い植物が表示を隠していたため、多くの生徒が箱に気づかず通り過ぎていると分かりました。","reason":"The plant blocked the visual cue that told students about the return box."},
+      {"type":"REASON","prompt":"Why did the committee observe students before removing the library box?","answer":"They wanted to understand why students were not using it before deciding that the box was unnecessary.","evidence":"Before removing it, the committee watched students in the area.","evidenceJp":"しかし撤去する前に、委員会は生徒たちがその場所をどう使うか観察しました。","reason":"Observation let them test whether low use came from the box's location or another cause."},
+      {"type":"CONTENT_MATCH","prompt":"What change did the students make to the sign?","answer":"They moved it above the plant and added an arrow.","evidence":"The students moved the sign above the plant and added an arrow.","evidenceJp":"生徒たちは表示を植物より高い位置へ移し、矢印も付けました。","reason":"The change made the return box easier to notice without relocating it."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: After the sign became easier to see, the number of returned bottles at the library box ____.","answer":"doubled","evidence":"During the next week, the number of returned bottles there doubled.","evidenceJp":"次の一週間で、その場所の返却本数は二倍になりました。","reason":"The increase provided evidence that visibility affected use."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"Why did the committee keep the box in the same location during the change?","answer":"So they could see whether improving visibility alone would change student behavior.","evidence":"The problem was not the location of the box but the way students saw it.","evidenceJp":"問題は箱の場所ではなく、生徒からどう見えるかでした。","reason":"Changing only the sign made it easier to connect the later increase to visibility rather than a new box location."},
+      {"type":"DETAIL","prompt":"How many students did the committee ask to point to the box before and after the change?","answer":"Five students.","evidence":"They also asked five students to point to the box before and after the change.","evidenceJp":"さらに変更の前後で5人の生徒に箱の場所を指してもらうと、表示を移した後は気づける生徒が4人増えました。","reason":"The five-student check gave an additional measure of whether the box became easier to notice."},
+      {"type":"CONTENT_MATCH","prompt":"What additional result supported the idea that the new sign was easier to notice?","answer":"Four more students could identify the box after the sign was moved.","evidence":"Four more students noticed it after the sign was moved.","evidenceJp":"さらに変更の前後で5人の生徒に箱の場所を指してもらうと、表示を移した後は気づける生徒が4人増えました。","reason":"The pointing test supported the bottle-return result with direct evidence about visibility."},
+      {"type":"CONTEXT_WORD","prompt":"What does 'unnecessary' mean when some students described the library box that way?","answer":"Not needed or not useful enough to keep.","evidence":"Some students said the library box was unnecessary.","evidenceJp":"図書室の箱は必要ないという生徒もいました。","reason":"They were suggesting removal because the box appeared to receive very few bottles."},
+      {"type":"GIST","prompt":"What general lesson does the survey demonstrate?","answer":"Before removing something that seems unused, investigate whether people can notice and understand how to use it.","evidence":"Before removing it, the committee watched students in the area.","evidenceJp":"しかし撤去する前に、委員会は生徒たちがその場所をどう使うか観察しました。","reason":"The investigation revealed a fixable visibility problem that would have been missed by judging only the first week's totals."}
+    ]
+  }
+}
