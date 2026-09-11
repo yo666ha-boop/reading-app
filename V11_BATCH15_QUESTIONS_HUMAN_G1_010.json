@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G1-010",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"Why did Nana finally leave the classroom door open?","answer":"Because she learned that keeping it open was part of the plan to bring fresh air into the room before science class.","evidence":"The teacher wanted fresh air in the room before students arrived.","evidenceJp":"先生は生徒が来る前に新しい空気を教室へ入れておきたかったのです。","reason":"The open door had a planned purpose connected to the next science activity."},
+      {"type":"DETAIL","prompt":"What did the notice beside the door say?","answer":"To keep the door open from 12:30 to 1:00.","evidence":"It said, “Please keep this door open from 12:30 to 1:00.”","evidenceJp":"そこには「12時30分から1時まではこのドアを開けておいてください」とありました。","reason":"The notice gave the exact time period for leaving the door open."},
+      {"type":"REASON","prompt":"Why did Nana check the lesson schedule after reading the notice?","answer":"She wanted to understand why the door needed to stay open.","evidence":"Nana checked the lesson schedule too.","evidenceJp":"ナナは理由が気になり、授業予定も確認しました。","reason":"The schedule helped explain the purpose behind the unusual instruction on a cold day."},
+      {"type":"CONTENT_MATCH","prompt":"What was special about the next science activity?","answer":"It used a safe but strong-smelling liquid.","evidence":"The next class was a science activity that used a safe but strong-smelling liquid.","evidenceJp":"次の授業は、強いにおいのする安全な液体を使う理科の活動でした。","reason":"The strong smell explains why the teacher wanted fresh air before students entered."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: Nana first planned to close the door, but reading the notice and schedule changed her ____.","answer":"decision","evidence":"Reading the notice before acting changed her decision.","evidenceJp":"行動する前に掲示を読んだことで判断が変わりました。","reason":"The new information showed that the open door was intentional, not a mistake."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"Why did Nana initially think closing the door would help?","answer":"Because it was cold and she thought the empty classroom would become too cold.","evidence":"It was a cold day, and she thought the room would become too cold.","evidenceJp":"寒い日だったので、教室が冷えすぎると思いました。","reason":"Before reading the notice, she saw the open door mainly as a temperature problem."},
+      {"type":"DETAIL","prompt":"What else did Nana do after deciding to leave the door open?","answer":"She moved a chair that was blocking part of the doorway.","evidence":"Nana left the door open and moved a chair that was blocking part of the doorway.","evidenceJp":"ナナはドアを開けたままにし、出入口を少しふさいでいたいすを移動しました。","reason":"She followed the ventilation plan while also making the doorway easier to use."},
+      {"type":"CONTENT_MATCH","prompt":"How did the science teacher respond at one o'clock?","answer":"The teacher thanked Nana for following the notice.","evidence":"At one o'clock, the science teacher came and thanked her for following the notice.","evidenceJp":"1時になると理科の先生が来て、掲示どおりにしてくれたことを感謝しました。","reason":"The teacher's response confirms that Nana's final choice matched the intended plan."},
+      {"type":"CONTEXT_WORD","prompt":"What does 'caught her eye' mean in the passage?","answer":"The notice attracted Nana's attention.","evidence":"She started to close the door, but a notice beside the handle caught her eye.","evidenceJp":"ドアを閉め始めましたが、取っ手の横の掲示が目に入りました。","reason":"The phrase means that Nana noticed the sign before finishing her action."},
+      {"type":"GIST","prompt":"What broader lesson does Nana learn?","answer":"Check the reason or instructions before changing something that may be part of a plan.","evidence":"Nana had wanted to help by closing the door, but she learned that the open door was also part of a plan.","evidenceJp":"ナナはドアを閉めることが手助けになると思っていましたが、開けておくことも計画の一部だと分かりました。","reason":"Her good intention would have worked against the plan if she had acted without checking."}
+    ]
+  }
+}
