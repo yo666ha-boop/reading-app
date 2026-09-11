@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G1-007",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"Why did Ryo need to check more than the word 'East' on the bus signs?","answer":"Because both signs included East but led to different places.","evidence":"The student wanted the bus to East Station, but both signs had the word East on them.","evidenceJp":"その生徒は東駅へ行くバスに乗りたかったのですが、どちらの案内にも「東」という言葉がありました。","reason":"The shared word alone could not identify the correct bus."},
+      {"type":"DETAIL","prompt":"What route and departure time did the sheet give for the bus to East Station?","answer":"Route 8 at 4:20.","evidence":"It said that the 4:20 bus to East Station was Route 8.","evidenceJp":"そこには、4時20分発の東駅行きは8番だとありました。","reason":"The departure sheet directly matched East Station with Route 8 and the 4:20 time."},
+      {"type":"CONTENT_MATCH","prompt":"Which statement correctly describes Route 5?","answer":"It went to East Park at 4:25.","evidence":"Route 5 went to East Park at 4:25.","evidenceJp":"5番は4時25分発で東公園へ行きます。","reason":"The passage distinguishes Route 5 from the East Station bus by both destination and time."},
+      {"type":"REASON","prompt":"Why did Ryo stay with the student until the bus arrived?","answer":"He wanted to make sure the student safely got on the correct bus.","evidence":"Ryo stayed until the student got on.","evidenceJp":"リョウはその生徒が乗るまで一緒にいました。","reason":"Staying until boarding completed the safe guidance instead of leaving after only pointing out the line."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: Ryo solved the problem by checking the route number, the full destination name, and the ____.","answer":"departure time","evidence":"The route number, full place name, and departure time all helped him give safe directions.","evidenceJp":"路線番号、行き先の完全な名前、出発時刻の三つが、安全に案内する助けになりました。","reason":"These were the three pieces of information Ryo used to distinguish the correct bus."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"What would have been risky about choosing a bus only because its sign contained 'East'?","answer":"The student might have taken the bus to East Park instead of East Station.","evidence":"Route 5 went to East Park at 4:25.","evidenceJp":"5番は4時25分発で東公園へ行きます。","reason":"Both routes included East in the destination, so using only that shared word could lead to the wrong place."},
+      {"type":"DETAIL","prompt":"What did Ryo check when he did not know the correct route number?","answer":"The departure sheet attached to the gate.","evidence":"He did not know the correct number, so he checked the departure sheet attached to the gate.","evidenceJp":"正しい番号が分からなかったので、校門に付けられた出発表を確認しました。","reason":"The sheet provided the missing route and time information."},
+      {"type":"CONTENT_MATCH","prompt":"What happened after Ryo and the student moved to the Route 8 line?","answer":"A bus marked 'East Station' arrived.","evidence":"Soon a bus arrived with “East Station” on the front.","evidenceJp":"まもなく前面に「東駅」と表示されたバスが来ました。","reason":"The arriving bus confirmed that they had chosen the correct line."},
+      {"type":"CONTEXT_WORD","prompt":"In the passage, what does 'familiar' mean in 'one familiar word on a sign'?","answer":"A word that Ryo already knew or recognized.","evidence":"He learned that one familiar word on a sign was not enough.","evidenceJp":"案内の中の知っている一語だけでは十分ではないと分かりました。","reason":"The lesson is that recognizing one known word is not enough when several signs share it."},
+      {"type":"GIST","prompt":"What lesson did Ryo learn from helping the student?","answer":"Safe directions require checking several matching details, not relying on one familiar word.","evidence":"The route number, full place name, and departure time all helped him give safe directions.","evidenceJp":"路線番号、行き先の完全な名前、出発時刻の三つが、安全に案内する助けになりました。","reason":"The story ends by contrasting one familiar word with the three details that correctly identified the bus."}
+    ]
+  }
+}
