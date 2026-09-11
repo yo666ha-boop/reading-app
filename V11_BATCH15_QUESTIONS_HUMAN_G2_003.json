@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G2-003",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"Why was Route B better during busy class changes even though it was longer?","answer":"Because it was wider, so students could keep moving instead of stopping at the narrow corner on Route A.","evidence":"Route B was longer but wider, and students could keep walking.","evidenceJp":"Bルートは長いものの幅が広く、生徒は歩き続けられました。","reason":"The wider route reduced the stopping caused by people meeting from two directions."},
+      {"type":"DETAIL","prompt":"About how much shorter was Route A?","answer":"About thirty meters.","evidence":"Route A was shorter by about thirty meters, so many students believed it was faster.","evidenceJp":"Aルートは約30メートル短かったため、多くの生徒はそちらが速いと思っていました。","reason":"The shorter distance was why many students initially expected Route A to be faster."},
+      {"type":"REASON","prompt":"Why did students often stop on Route A during class changes?","answer":"Because people coming from two directions met at a narrow corner near the stairs.","evidence":"People from two directions met there and often stopped.","evidenceJp":"二方向から来た人がそこで出会い、よく止まっていました。","reason":"The narrow corner created congestion that offset Route A's shorter distance."},
+      {"type":"CONTENT_MATCH","prompt":"When was Route A actually faster?","answer":"When the halls were empty.","evidence":"When the halls were empty, Route A was faster.","evidenceJp":"廊下が空いているときはAルートの方が速く着きました。","reason":"Without crowding, the shorter distance gave Route A an advantage."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: The test showed that ____ alone did not decide travel time.","answer":"distance","evidence":"The test showed that distance alone did not decide travel time.","evidenceJp":"調査から、距離だけでは移動時間は決まらないと分かりました。","reason":"Crowding and route width also affected how quickly students could move."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"Why did the school recommend different routes for busy and quiet times instead of banning Route A?","answer":"Because Route A was still useful when the hall was quiet, while Route B worked better during crowding.","evidence":"The school posted a suggestion: use Route B during class changes and Route A when the hall is quiet.","evidenceJp":"学校は全員にAルートを使わないよう命じるのではなく、「授業の移動時はB、静かな時間はAを使う」という提案を掲示しました。","reason":"The test showed that the best route depended on conditions rather than one route always being better."},
+      {"type":"DETAIL","prompt":"What additional measure did the team use besides timing the routes?","answer":"They counted how many students reached the classroom within four minutes.","evidence":"The team also counted how many students reached the classroom within four minutes.","evidenceJp":"チームは4分以内に教室へ着いた人数も数えました。","reason":"This gave another way to compare route performance during busy periods."},
+      {"type":"CONTENT_MATCH","prompt":"What happened when teachers repeated the test on a rainy day?","answer":"Route B still moved more steadily.","evidence":"Route B still moved more steadily, which supported the recommendation.","evidenceJp":"それでもBルートの流れは安定しており、提案を裏づける結果になりました。","reason":"The repeated test supported the same conclusion under heavier indoor traffic."},
+      {"type":"REASON","prompt":"Why was the rainy-day test useful?","answer":"Because more students stayed inside, allowing the school to see whether Route B still worked under heavier hallway use.","evidence":"Teachers then repeated the timing test on a rainy day, when more students stayed inside.","evidenceJp":"先生たちは、生徒が廊下に多く残る雨の日にも時間を測り直しました。","reason":"Repeating the test under different conditions checked whether the recommendation was reliable."},
+      {"type":"GIST","prompt":"What broader lesson does this route test show?","answer":"The shortest route is not always the fastest when movement conditions such as width and crowding are considered.","evidence":"The test showed that distance alone did not decide travel time.","evidenceJp":"調査から、距離だけでは移動時間は決まらないと分かりました。","reason":"Route performance changed depending on congestion, not just distance."}
+    ]
+  }
+}
