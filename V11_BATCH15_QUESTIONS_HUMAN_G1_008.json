@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G1-008",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"How did Miku decide which group the science box belonged to?","answer":"She matched the moon sticker on the box with the moon mark for Group B on the experiment list.","evidence":"The list showed a sun mark for Group A, a moon mark for Group B, and a star mark for Group C.","evidenceJp":"一覧にはA班は太陽、B班は月、C班は星の印とありました。","reason":"The moon mark connected the found box to Group B."},
+      {"type":"DETAIL","prompt":"What was inside the box Miku found?","answer":"Two magnets and a piece of string.","evidence":"It held two magnets and a piece of string.","evidenceJp":"中には磁石が二つとひもが一本入っていました。","reason":"The passage states the contents immediately after Miku finds the box."},
+      {"type":"REASON","prompt":"Why did Miku check the experiment list instead of choosing a group immediately?","answer":"Because three groups had used similar boxes.","evidence":"Three groups had used similar boxes, so Miku checked the experiment list on the board.","evidenceJp":"三つの班が似た箱を使っていたので、ミクは黒板の実験一覧を確認しました。","reason":"The boxes looked similar, so she needed another clue to identify the owner."},
+      {"type":"CONTENT_MATCH","prompt":"What did the students in Group B do after Miku brought them the box?","answer":"They counted the magnets and thanked her.","evidence":"The students there counted the magnets and thanked her.","evidenceJp":"班の生徒たちは磁石の数を確かめて、お礼を言いました。","reason":"Their response shows that Miku had brought the box to the correct group."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: Miku used the sticker and the experiment ____ to identify the correct group.","answer":"list","evidence":"Three groups had used similar boxes, so Miku checked the experiment list on the board.","evidenceJp":"三つの班が似た箱を使っていたので、ミクは黒板の実験一覧を確認しました。","reason":"The experiment list explained which symbol belonged to each group."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"Why was the moon sticker especially useful?","answer":"It provided a clue that could be matched with the symbol assigned to Group B.","evidence":"A moon sticker was on the lid.","evidenceJp":"ふたには月のシールが付いていました。","reason":"The experiment list later shows that the moon symbol belonged to Group B."},
+      {"type":"DETAIL","prompt":"Where did Miku take the box after checking the list?","answer":"To Group B's table.","evidence":"Miku carried the box to Group B's table.","evidenceJp":"ミクは箱をB班の机へ運びました。","reason":"The moon mark on the list identified Group B as the destination."},
+      {"type":"CONTENT_MATCH","prompt":"Which group was connected with the star mark?","answer":"Group C.","evidence":"The list showed a sun mark for Group A, a moon mark for Group B, and a star mark for Group C.","evidenceJp":"一覧にはA班は太陽、B班は月、C班は星の印とありました。","reason":"The list directly assigns the star mark to Group C."},
+      {"type":"REASON","prompt":"Why did Miku also tell the teacher where she found the box?","answer":"So the class could check whether anything else was missing.","evidence":"She also told the teacher where she found it. Then the class checked the room again.","evidenceJp":"ミクは先生にも見つけた場所を伝えたので、ほかに不足している物がないかクラスで確認できました。","reason":"Reporting the location led to a broader check of the room for missing materials."},
+      {"type":"GIST","prompt":"What is the main idea of the passage?","answer":"Miku used a visible clue and a class record to return science materials to the correct group.","evidence":"Three groups had used similar boxes, so Miku checked the experiment list on the board.","evidenceJp":"三つの班が似た箱を使っていたので、ミクは黒板の実験一覧を確認しました。","reason":"The key action is checking reliable information instead of guessing from similar-looking boxes."}
+    ]
+  }
+}
