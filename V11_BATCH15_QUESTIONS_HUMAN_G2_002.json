@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G2-002",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"What change most reduced the number of club members who forgot their shoes?","answer":"Sending the same reminder at eight o'clock the night before instead of seven in the morning.","evidence":"The club changed the reminder to eight o'clock the night before. During the following week, only one member forgot the shoes.","evidenceJp":"部は連絡を前日の夜8時へ変更しました。次の一週間、靴を忘れたのは一人だけでした。","reason":"The club changed the timing while keeping the message itself the same, and forgetting decreased."},
+      {"type":"DETAIL","prompt":"When did most members actually read the morning reminder?","answer":"Around lunch or after classes.","evidence":"They read the message around lunch or after classes.","evidenceJp":"多くの部員は登校前にはスマートフォンを見ず、昼ごろや授業後に読んでいました。","reason":"By then the members were already at school and could not easily get the shoes from home."},
+      {"type":"REASON","prompt":"Why did the seven-o'clock morning reminder often fail?","answer":"Because most members did not read it before school, and when they did read it the shoes were still at home.","evidence":"At that time, they were at school and the shoes were at home.","evidenceJp":"その時間では家から靴を持ってくるには遅すぎます。","reason":"A reminder only helps if it arrives and is read while the student can still act on it."},
+      {"type":"CONTENT_MATCH","prompt":"What did club members record for five days?","answer":"The time when they opened the reminder.","evidence":"For five days, members recorded the time they opened the reminder.","evidenceJp":"五日間、部員は連絡を開いた時刻を記録しました。","reason":"The records showed when the reminder was actually being seen."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: The club learned that the ____ of the reminder mattered more than adding more words.","answer":"timing","evidence":"The timing mattered more than adding more words.","evidenceJp":"言葉を増やすことより、送る時刻の方が重要だったのです。","reason":"The successful change was when the same message was sent, not its length."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"Why did the club keep the wording of the reminder unchanged during the test?","answer":"To make a fair comparison and isolate the effect of changing the sending time.","evidence":"The club kept the message itself unchanged during the test, so they could compare the effect of timing fairly.","evidenceJp":"比較を公平にするため、テスト中は連絡文そのものを変えず、送る時刻だけを変えました。","reason":"If both wording and timing changed, the club could not tell which change caused the improvement."},
+      {"type":"DETAIL","prompt":"What time did the club choose for the new reminder?","answer":"Eight o'clock the night before.","evidence":"The club changed the reminder to eight o'clock the night before.","evidenceJp":"部は連絡を前日の夜8時へ変更しました。","reason":"That gave members a chance to prepare the shoes while they were still at home."},
+      {"type":"CONTENT_MATCH","prompt":"How many members forgot the shoes during the week after the timing change?","answer":"Only one member.","evidence":"During the following week, only one member forgot the shoes.","evidenceJp":"次の一週間、靴を忘れたのは一人だけでした。","reason":"This result showed a large improvement compared with the earlier problem involving several members."},
+      {"type":"REASON","prompt":"Why did one student suggest checking when members read the reminders?","answer":"Because the problem might be when the message was seen rather than how short the message was.","evidence":"The club leader thought the messages were too short, but one student suggested checking when members actually read them.","evidenceJp":"部長は連絡文が短すぎると思いましたが、一人の生徒が、実際に何時に読まれているか調べようと提案しました。","reason":"The suggestion tested an alternative explanation instead of assuming that message length was the cause."},
+      {"type":"GIST","prompt":"What broader lesson can be drawn from the club's test?","answer":"Information is more useful when it reaches people at a time when they can still act on it.","evidence":"At that time, they were at school and the shoes were at home.","evidenceJp":"その時間では家から靴を持ってくるには遅すぎます。","reason":"The same reminder became more effective simply by being delivered before the members needed to leave home."}
+    ]
+  }
+}
