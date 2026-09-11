@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G3-015",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"Why did the newspaper club change its original headline?","answer":"Because the original headline claimed an effect for everyone that the survey evidence did not support.","evidence":"The revised headline was less dramatic, yet it matched the evidence instead of claiming a result for every student.","evidenceJp":"新しい見出しは派手さは減りましたが、すべての生徒について言い切るのではなく、証拠と一致する内容になりました。","reason":"The club changed the claim so that it matched the actual limits of the survey."},
+      {"type":"DETAIL","prompt":"Who answered the survey?","answer":"Forty students who were regular users of the new study room.","evidence":"Only forty students had answered, and all of them were regular users of the new room.","evidenceJp":"回答したのは40人だけで、全員が新しい部屋を普段から使う生徒でした。","reason":"The sample was limited to regular users rather than the whole school."},
+      {"type":"REASON","prompt":"Why was it inaccurate to say the study space improved learning for everyone?","answer":"Because the survey excluded students who studied elsewhere and measured reported concentration rather than test scores.","evidence":"The survey did not include students who studied elsewhere, and it measured reported concentration rather than test scores.","evidenceJp":"別の場所で勉強する生徒は含まれておらず、測ったのもテスト点ではなく本人が感じた集中度でした。","reason":"The participants and the thing measured were both narrower than the original headline suggested."},
+      {"type":"CONTENT_MATCH","prompt":"What part of the article stayed after the headline was revised?","answer":"The graph stayed in the article.","evidence":"The graph stayed in the article, but the text explained who had answered and what had been measured.","evidenceJp":"グラフは記事に残しましたが、誰が答え、何を測ったかも説明しました。","reason":"The club kept the evidence but added context so readers could interpret it correctly."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: The club made the article more accurate by matching the headline to the survey's ____.","answer":"evidence","evidence":"The revised headline was less dramatic, yet it matched the evidence instead of claiming a result for every student.","evidenceJp":"新しい見出しは派手さは減りましたが、すべての生徒について言い切るのではなく、証拠と一致する内容になりました。","reason":"The central revision was to make the claim no broader than the evidence allowed."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"What problem could occur if readers saw only the original headline and graph?","answer":"They might wrongly think the survey proved that the new room improved learning for every student.","evidence":"The revised headline was less dramatic, yet it matched the evidence instead of claiming a result for every student.","evidenceJp":"新しい見出しは派手さは減りましたが、すべての生徒について言い切るのではなく、証拠と一致する内容になりました。","reason":"Without the survey limits, readers could generalize a result from regular users to the whole school."},
+      {"type":"CONTEXT_WORD","prompt":"In this passage, what does 'respondents' mean?","answer":"The people who answered the survey.","evidence":"The article also linked the graph title directly to the survey question and stated the number of respondents.","evidenceJp":"記事ではグラフの題名もアンケート質問に直接対応させ、回答者数も示しました。","reason":"The surrounding sentences discuss the forty students who answered the survey."},
+      {"type":"REASON","prompt":"Why did the article state the number of respondents?","answer":"So readers could see how limited the survey sample was.","evidence":"The article also linked the graph title directly to the survey question and stated the number of respondents.","evidenceJp":"記事ではグラフの題名もアンケート質問に直接対応させ、回答者数も示しました。","reason":"Giving the sample size helps readers judge how far the result can reasonably be generalized."},
+      {"type":"CONTENT_MATCH","prompt":"What did the survey actually measure?","answer":"Students' reported concentration.","evidence":"The survey did not include students who studied elsewhere, and it measured reported concentration rather than test scores.","evidenceJp":"別の場所で勉強する生徒は含まれておらず、測ったのもテスト点ではなく本人が感じた集中度でした。","reason":"The passage clearly distinguishes reported concentration from objective test-score improvement."},
+      {"type":"GIST","prompt":"What lesson about reporting data does the passage show?","answer":"A claim should identify who was studied and what was actually measured instead of making a broader statement than the data support.","evidence":"Readers could then see the difference between a report about regular users and a claim about the whole school.","evidenceJp":"これにより、常用者についての報告と学校全体についての主張の違いを読者が確認できるようになりました。","reason":"The article became more trustworthy when it separated the actual sample result from a claim about everyone."}
+    ]
+  }
+}
