@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G3-010",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"What did Aya discover about the statement that seventy percent of students prefer digital books?","answer":"The percentage came from a much narrower question about carrying several textbooks, so the original statement was too broad.","evidence":"The survey did not ask whether students preferred digital books in general.","evidenceJp":"この調査は、普段から電子書籍の方が好きかどうかを尋ねたものではありません。","reason":"The main issue was not the percentage itself but that the claim extended beyond what the survey question actually asked."},
+      {"type":"CONTENT_MATCH","prompt":"What had the original survey asked students?","answer":"Whether, when carrying three or more textbooks, they would prefer a digital version for at least one book.","evidence":"She found that the actual question had been, ‘When carrying three or more textbooks, would you prefer a digital version for at least one book?’","evidenceJp":"実際の質問は『教科書を3冊以上持ち運ぶとき、少なくとも1冊を電子版にしたいですか』でした。","reason":"This exact wording defines the situation to which the seventy-percent result applies."},
+      {"type":"REASON","prompt":"Why did the club narrow the wording in its presentation?","answer":"Because the original wording claimed a general preference, while the survey only measured a choice in a specific situation.","evidence":"The percentage remained the same, but the claim became narrower and matched the question that produced the number.","evidenceJp":"数字は同じでも、主張を狭くして、数字を生んだ質問と一致させました。","reason":"The club corrected the interpretation rather than changing the data."},
+      {"type":"INFERENCE","prompt":"Why was it useful to add the original survey question below the graph?","answer":"It let readers see the context of the percentage and judge whether the claim matched the question.","evidence":"The club added the original survey question below the graph so readers could judge the number themselves.","evidenceJp":"部はグラフの下に元の質問文も載せ、読者自身が数字の意味を判断できるようにしました。","reason":"Showing the question gives readers the missing context needed to interpret the percentage fairly."},
+      {"type":"CONTEXT_WORD","prompt":"In this passage, what does the word ‘narrower’ mean in the sentence about the corrected claim?","answer":"More limited and specific.","evidence":"The percentage remained the same, but the claim became narrower and matched the question that produced the number.","evidenceJp":"数字は同じでも、主張を狭くして、数字を生んだ質問と一致させました。","reason":"The revised claim applies only to the situation described in the survey rather than to digital-book preference in general."}
+    ],
+    "B":[
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: A percentage should be interpreted together with the ____ that produced it.","answer":"question","evidence":"Aya learned that a number cannot be understood fully without knowing what was asked.","evidenceJp":"数字を十分理解するには、何を尋ねたのかを知る必要があるとアヤは学びました。","reason":"The whole passage shows that the wording of a survey question controls what a percentage can reasonably claim."},
+      {"type":"DETAIL","prompt":"What percentage of students answered yes to the original survey question?","answer":"Seventy percent.","evidence":"Seventy percent had answered yes.","evidenceJp":"70パーセントが『はい』と答えていました。","reason":"This is the survey result that was repeated in the poster and presentation."},
+      {"type":"CONTENT_MATCH","prompt":"How did the club rewrite its claim?","answer":"It said that many students wanted a digital option when carrying several textbooks.","evidence":"The club changed its presentation to say that many students wanted a digital option when carrying several textbooks.","evidenceJp":"部は発表を『複数の教科書を運ぶとき、電子版の選択肢を望む生徒が多い』と直しました。","reason":"The new wording matches the situation actually measured by the survey."},
+      {"type":"REASON","prompt":"Why did the club stop using the word ‘prefer’ by itself?","answer":"Because it could falsely suggest a general preference even when the choice depended on a specific situation.","evidence":"They also stopped using the word ‘prefer’ by itself when a choice depended on a particular situation.","evidenceJp":"また、特定の状況での選択を示すときは『好む』という言葉だけで一般化しないことにしました。","reason":"The word was too broad unless the situation behind the choice was stated."},
+      {"type":"GIST","prompt":"Which lesson best summarizes Aya’s investigation?","answer":"Numbers should not be separated from the questions and conditions that created them.","evidence":"Aya learned that a number cannot be understood fully without knowing what was asked.","evidenceJp":"数字を十分理解するには、何を尋ねたのかを知る必要があるとアヤは学びました。","reason":"The corrected presentation demonstrates that context is essential for interpreting survey statistics."}
+    ]
+  }
+}
