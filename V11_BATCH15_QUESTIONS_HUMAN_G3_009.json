@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G3-009",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"What was the main challenge in making the market schedule?","answer":"The organizers had to match changing weather with event sizes and the times when covered spaces were available.","evidence":"By matching weather, capacity, and room availability, the organizers created a schedule that could change safely without cancelling the whole market.","evidenceJp":"天気、定員、場所が使える時刻を合わせることで、市場全体を中止せず安全に変更できる計画になりました。","reason":"The passage centers on balancing weather, capacity, and room availability rather than moving every event indoors."},
+      {"type":"MATERIAL_LINK","prompt":"Why was the craft activity moved to 10:15 in the hall?","answer":"Because the craft needed forty seats, and the hall became usable after some market tables were cleared.","evidence":"They moved the craft activity to 10:15 in the hall after some tables were cleared.","evidenceJp":"工作は一部の売り場を片づけた後の10時15分にホールで行うことにしました。","reason":"The smaller tent could not hold forty people, while the hall could be used once part of the market setup was cleared."},
+      {"type":"REASON","prompt":"Why was the 1:00 food talk moved to the small tent?","answer":"Its expected audience fit the tent, and heavier rain was likely by that time.","evidence":"The 1:00 food talk moved to the small tent because its expected audience fit the space and heavier rain was likely.","evidenceJp":"午後1時の話は、人数が入る小テントへ移しました。その時間は強い雨の可能性が高いからです。","reason":"The decision matched both the audience size and the weather forecast."},
+      {"type":"CONTENT_MATCH","prompt":"What were visitors told to check at 10:45?","answer":"They were told to check the board for the final decision about the music performance.","evidence":"The final notice explained the changes and asked visitors to check the board at 10:45 for the music decision.","evidenceJp":"最終案内には変更点を示し、音楽については10時45分の掲示で最終確認するよう伝えました。","reason":"The music location depended on the weather at that time, so the board carried the final decision."},
+      {"type":"INFERENCE","prompt":"Why was the hall a practical backup for the 11:00 music performance?","answer":"By then the hall could hold the expected seventy visitors and was no longer fully occupied by market tables.","evidence":"A volunteer counted available hall seats after the market tables were reduced, confirming that seventy visitors could enter without blocking exits.","evidenceJp":"市場の机を減らした後のホールの利用可能席も数え、70人が非常口をふさがず入れることを確認しました。","reason":"The backup was only practical because the hall had enough safe space after the market-table area was reduced."}
+    ],
+    "B":[
+      {"type":"DETAIL","prompt":"When did the forecast show heavier rain beginning?","answer":"After 12:30.","evidence":"The weather forecast showed light rain before 10:00, a dry period from 10:00 to noon, and heavier rain after 12:30.","evidenceJp":"天気予報は10時前に弱い雨、10時から正午までは雨がやみ、12時30分以降は強めの雨を示していました。","reason":"The forecast timing explains why later events needed covered locations."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: The final plan matched weather, capacity, and ____ availability.","answer":"room","evidence":"By matching weather, capacity, and room availability, the organizers created a schedule that could change safely without cancelling the whole market.","evidenceJp":"天気、定員、場所が使える時刻を合わせることで、市場全体を中止せず安全に変更できる計画になりました。","reason":"These three constraints summarize the planning method used throughout the passage."},
+      {"type":"REASON","prompt":"Why did the team prepare decision rules before the event?","answer":"So they would not have to rely on a last-minute guess if the weather changed.","evidence":"The team also prepared decision rules instead of relying on a last-minute guess.","evidenceJp":"チームは直前の勘だけに頼らず、判断ルールも準備しました。","reason":"The rules gave the staff a clear response to different weather conditions."},
+      {"type":"CONTENT_MATCH","prompt":"What would staff do if heavier rain arrived early before the music performance?","answer":"They would move chairs into the hall and delay the start by ten minutes.","evidence":"If heavier rain arrived early, staff would move chairs into the hall and delay the start by ten minutes.","evidenceJp":"強い雨が早く来れば、係がホールへいすを移し、開始を10分遅らせます。","reason":"This was the prepared indoor backup procedure for an early weather change."},
+      {"type":"GIST","prompt":"What did the organizers decide about using this plan in the future?","answer":"They kept the weather-and-capacity table as a model, but planned to replace the forecast numbers with current information each time.","evidence":"They saved the weather-and-capacity table as a model for future outdoor events, while noting that new forecasts must always replace the old numbers.","evidenceJp":"主催者は天気と定員を組み合わせた表を次回の屋外行事の参考として保存しましたが、予報数値は毎回最新情報へ置き換える必要があることも記しました。","reason":"The method was reusable, but the actual weather data could not simply be copied from one event to another."}
+    ]
+  }
+}
