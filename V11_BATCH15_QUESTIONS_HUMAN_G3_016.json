@@ -1,0 +1,25 @@
+{
+  "batch":"V11-B15",
+  "gate":"questions-human",
+  "status":"PARTIAL_AUTHORING",
+  "registered":false,
+  "officialTotal":868,
+  "passageId":"V11-B15-G3-016",
+  "questionCount":10,
+  "sets":{
+    "A":[
+      {"type":"GIST","prompt":"Why did the students decide that the spring and autumn records could not be compared directly?","answer":"Because the samples were taken under different weather and time conditions.","evidence":"The spring sample had been taken the morning after heavy rain, while the autumn sample came after five dry days.","evidenceJp":"春の採水は大雨の翌朝で、秋は雨が降らない日が五日続いた後でした。","reason":"Different recent rainfall conditions could change the stream before the samples were taken."},
+      {"type":"DETAIL","prompt":"What additional difference did the students notice besides the recent weather?","answer":"The sampling times were different.","evidence":"The sampling times were also different.","evidenceJp":"採水時刻も違っていました。","reason":"Time of sampling was another condition that needed to be considered."},
+      {"type":"REASON","prompt":"Why could heavy rain affect the water-quality comparison?","answer":"Because rain could carry soil and other material into the stream.","evidence":"Rain could carry soil and other material into the stream, so the two measurements were not directly comparable.","evidenceJp":"雨は土やほかの物を小川へ運ぶ可能性があるため、二つをそのまま比べることはできません。","reason":"Rain could change the stream temporarily, making one measurement different for reasons unrelated to long-term improvement."},
+      {"type":"CONTENT_MATCH","prompt":"What did the students do before making a stronger conclusion?","answer":"They collected another sample after similar dry weather and at the same time of day as the autumn test.","evidence":"The students collected another sample after similar dry weather and at the same time of day as the autumn test.","evidenceJp":"生徒たちは秋の調査と同じような乾いた天候の後、同じ時刻にもう一度採水しました。","reason":"They tried to make the sampling conditions more comparable before interpreting the result."},
+      {"type":"SUMMARY_FILL","prompt":"Complete the summary: The first spring-autumn comparison was judged ____ because the measurement conditions did not match.","answer":"inconclusive","evidence":"Their report said the first comparison was inconclusive and explained what conditions needed to match before judging long-term change.","evidenceJp":"最初の比較だけでは結論を出せないと報告し、長期的な変化を判断するにはどの条件をそろえる必要があるか説明しました。","reason":"The students could not tell whether the difference represented a real long-term change from the first two samples alone."}
+    ],
+    "B":[
+      {"type":"INFERENCE","prompt":"What did the new sample suggest about the autumn result?","answer":"It suggested that similar dry-weather conditions could produce a result close to the autumn record.","evidence":"The new result was closer to the autumn record.","evidenceJp":"新しい結果は秋の記録に近くなりました。","reason":"The closer result after matching weather and time conditions showed that conditions mattered to the comparison."},
+      {"type":"CONTENT_MATCH","prompt":"How did the students plan to make future sampling more consistent?","answer":"They planned to sample on the first Friday of each month at the same hour and record recent rainfall.","evidence":"The group scheduled future sampling for the first Friday of each month at the same hour and planned to record recent rainfall beside every result.","evidenceJp":"グループは今後、毎月最初の金曜日の同じ時刻に採水し、各結果の横に直前の降雨量も記録することにしました。","reason":"A regular schedule plus rainfall records would make later comparisons easier to interpret."},
+      {"type":"CONTEXT_WORD","prompt":"In this passage, what does 'inconclusive' mean?","answer":"Not strong enough to support a clear conclusion.","evidence":"Their report said the first comparison was inconclusive and explained what conditions needed to match before judging long-term change.","evidenceJp":"最初の比較だけでは結論を出せないと報告し、長期的な変化を判断するにはどの条件をそろえる必要があるか説明しました。","reason":"The word describes a comparison that cannot yet justify a firm judgment."},
+      {"type":"REASON","prompt":"Why did the group plan to record recent rainfall beside every result?","answer":"Because rainfall could affect stream conditions and needed to be considered when comparing results over time.","evidence":"Rain could carry soil and other material into the stream, so the two measurements were not directly comparable.","evidenceJp":"雨は土やほかの物を小川へ運ぶ可能性があるため、二つをそのまま比べることはできません。","reason":"Recording rainfall gives context that helps explain whether a change may be caused by weather rather than a long-term trend."},
+      {"type":"GIST","prompt":"What principle guided the students' final monitoring plan?","answer":"Make important measurement conditions as consistent as possible and record remaining factors that could affect interpretation.","evidence":"They noted that matching conditions would not remove every difference, but it would make changes easier to interpret.","evidenceJp":"条件をそろえてもすべての違いがなくなるわけではありませんが、変化の意味を判断しやすくなると考えました。","reason":"The students did not expect perfect control, but they improved the reliability of future comparisons."}
+    ]
+  }
+}
