@@ -1,0 +1,84 @@
+{
+  "project": "mikami-math-problem-bank",
+  "stage": "APP1323_EXACT_TRUE_BYTE_TRANSFER_GIT_DATA_BLOB_CHANNEL_PROVEN_PARTIAL",
+  "recorded_at_jst": "2026-09-12T18:33:00+09:00",
+  "branch": "math-problem-bank-bootstrap",
+  "source": {
+    "html_bytes": 6819806,
+    "html_sha256": "47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521",
+    "brotli_q11_bytes": 3923915,
+    "brotli_q11_sha256": "8f78b6dc4e26b5349d9a6dedc7b6d6efad931c7ed3da58d0767ce6b8d36dc003",
+    "base64_chars_total": 5231888
+  },
+  "official_progress": {
+    "start_offset_before_this_continue_run": 790000,
+    "final_durable_offset": 825000,
+    "advanced_chars": 35000,
+    "next_offset": 825000,
+    "remaining_chars": 4406888,
+    "checkpoint_commit_before_evidence": "7731b7718588fe7718e8c8d5d3f17d3478e43e82"
+  },
+  "official_transfer_gates": [
+    {"end_offset":797000,"transfer_progress_run_id":34685321736,"conclusion":"success"},
+    {"end_offset":804000,"promote_run_id":34685545182,"transfer_progress_run_id":34685576995,"conclusion":"success"},
+    {"end_offset":811000,"promote_run_id":34685758625,"transfer_progress_run_id":34685795076,"conclusion":"success"},
+    {"end_offset":818000,"promote_run_id":34685897219,"transfer_progress_run_id":34685929926,"conclusion":"success"},
+    {"end_offset":825000,"promote_run_id":34686098409,"transfer_progress_run_id":34686128957,"conclusion":"success"}
+  ],
+  "latest_bulk_segment": {
+    "file": "101.txt",
+    "start": 818000,
+    "end": 825000,
+    "chars": 7000,
+    "git_blob_sha1": "7ac64a6975242b515ab1a0704b435fbf10de2532"
+  },
+  "sha_bound_micro1k": {
+    "804000_811000": [
+      "2776adea8a359fbba0e4d1fa3bc5eb87a2d285ec",
+      "e12c06e82581100d3d7c3b822e19f3118db6c988",
+      "5a18ae70af8011de74d3349abbb48f40fdf785a6",
+      "3fca68b3dec05a7dafaf64b3a0a9ceeae569edd5",
+      "af81db152270e2fd2100a9f90c2ba50fa6cd511c",
+      "3910583113809e155b7f614befbae3100391315a",
+      "8eeba98469a655e7639c1bcaa6f6454615af92ee"
+    ],
+    "811000_818000": [
+      "a369c4114ff023906103308bad53bab4dcb23d79",
+      "915169e4183c20df3961b3393dbc7c40dc02104d",
+      "3fad11b08a28998e6f907a6c4dd75d1b9f9b3e91",
+      "1623a6082e8bbdabe5aba9cf23891073b867ddb9",
+      "954b5be2a53494b665162ee94dcfd1152948415b",
+      "027f51147262883f605360953a02e0315db0ea1e",
+      "81315c30f453365d3991046f7b7b5993ffa9f57c"
+    ],
+    "818000_825000": [
+      "cbe052454ce65fd0d1d197278809ffce542a82d4",
+      "4ff110faa495d517c1d1877f7e30395b04c8b6a9",
+      "b03cd2d3c29189f23dda33dbb6d0cbec2861aba4",
+      "f938462594f57c7b167bb2b43f9398f34c822016",
+      "9768b3d956e92b255fb8fe97b805d9dd556995d9",
+      "ed61cc41eef9ff156e565dc5ae6307b80d94f84d",
+      "f66ce6669c22404ee6b62885963221229c35d5b6"
+    ]
+  },
+  "no_credit_events": [
+    {
+      "range": "804000-805000",
+      "result": "FIRST_DETACHED_CREATE_BLOB_SHA_MISMATCH_NO_CREDIT",
+      "resolution": "REGENERATED_AND_RETRIED; EXPECTED_SHA_MATCHED; ONLY_MATCHING_BLOB_BRANCH_ATTACHED"
+    },
+    {
+      "workflow": "Math Exact1323 Micro1k Progress",
+      "result": "STALE_MANIFEST_FAILURE_NON_AUTHORITATIVE_NO_RELEASE_IMPACT"
+    },
+    {
+      "workflow": "math-wire-post-canonical-expansion",
+      "result": "UNRELATED_FAILURE_NOT_TRANSFER_CREDIT"
+    }
+  ],
+  "release_credit": false,
+  "main_touched": false,
+  "publication_ready": false,
+  "physical_fire": "PENDING",
+  "vercel_true_exact_remote_bytes": "PENDING"
+}
