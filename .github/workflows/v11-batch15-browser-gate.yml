@@ -32,12 +32,13 @@ jobs:
           sleep 2
       - name: Run Chromium WebKit iPhone gate
         run: node scripts/v11_batch15_browser_gate.js
-      - name: Persist PASS report
-        if: success()
+      - name: Persist gate report
+        if: always()
         run: |
+          test -f V11_BATCH15_BROWSER_GATE_REPORT.json || exit 0
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add V11_BATCH15_BROWSER_GATE_REPORT.json
-          git diff --cached --quiet || git commit -m 'audit(v11): persist Batch15 browser gate'
+          git diff --cached --quiet || git commit -m 'audit(v11): persist Batch15 browser gate report'
           git pull --rebase origin v11-1000passage-easy-notes
           git push origin HEAD:v11-1000passage-easy-notes
