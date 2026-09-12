@@ -1,12 +1,12 @@
-phase=V11_BATCH14_COMPLETE_BATCH15_NEXT
+phase=V11_BATCH15_COMPLETE_BATCH16_NEXT
 branch=v11-1000passage-easy-notes
 baseline_passages=168
 target_passages=1000
 batch_size=50
-current_total=868
-remaining_passages=132
-next_batch=Batch15
-next_batch_target=918
+current_total=918
+remaining_passages=82
+next_batch=Batch16
+next_batch_target=968
 batch01_registered=true
 batch02_registered=true
 batch03_registered=true
@@ -21,16 +21,19 @@ batch11_registered=true
 batch12_registered=true
 batch13_registered=true
 batch14_registered=true
-batch14_passages=50
-batch14_grade_split=G1_17_G2_17_G3_16
-batch14_human_semantic_review=PASS passages=50
-batch14_human_question_gate=PASS questions=500 pending=0
-batch14_vocab_chronology=PASS unregistered=0 future_vocab=0
-batch14_grammar_chronology=PASS unresolved=0 future_grammar=0
-batch14_word_count=PASS passages=50 failures=0
-batch14_slash_human_gate=PASS
-batch14_candidate_runtime=PASS candidate_total=868 pc_passages=50 webkit_iphone=50 duplicate=0 near_duplicate=0 a4_files=12 source_head=3b64a8870670ebc7d2cc2473e9efbf863083f7ae
-batch14_persistent_runtime=PASS run=34466167275 source_sha=d53cff2d312d69dea3ab746bb5127028b38ca809 registered=true total=868 chromium=PASS webkit_iphone=PASS
-batch14_registration=ALL_50_REGISTERED_TOGETHER_AFTER_FULL_FINAL_GATES
+batch15_registered=true
+batch15_passages=50
+batch15_grade_split=G1_17_G2_17_G3_16
+batch15_human_semantic_review=PASS passages=50
+batch15_human_question_gate=PASS questions=500 pending=0
+batch15_vocab_chronology=PASS unregistered=0 future_vocab=0
+batch15_grammar_chronology=PASS unresolved=0 future_grammar=0
+batch15_word_count=PASS passages=50 failures=0
+batch15_slash_human_gate=PASS
+batch15_duplicate_gate=PASS exact_duplicate=0 near_duplicate=0
+batch15_browser_runtime=PASS chromium=PASS webkit=PASS iphone_webkit=PASS passages=50
+batch15_a4_student_teacher=PASS
+batch15_persistent_runtime=PASS
+batch15_registration=ALL_50_REGISTERED_TOGETHER_AFTER_FULL_FINAL_GATES
 release_to_main=NO_UNTIL_1000_AND_FINAL_RELEASE_GATES_PASS
-next_step=Start Batch15 immediately. Author 50 distinct unregistered passages from the current v7 textbook chronology and Yamaguchi reading-only profile; no English composition. Complete body/fullTranslation human semantic first, then slash and A/B 5+5, chronology, notes/gloss, duplicate, Chromium/WebKit, A4 and persistent runtime. Keep Batch15 registered=false until every required gate passes.
+next_step=Start Batch16 immediately. Author 50 distinct unregistered passages from the current v7 textbook chronology and Yamaguchi reading-only profile; no English composition. Complete body/fullTranslation human semantic first, then slash and A/B 5+5, chronology, notes/gloss, duplicate, Chromium/WebKit, A4 and persistent runtime. Keep Batch16 registered=false until every required gate passes.
