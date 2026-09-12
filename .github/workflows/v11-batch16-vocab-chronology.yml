@@ -1,0 +1,52 @@
+name: v11 Batch16 vocab chronology
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_batch16_vocab_chronology_audit.js'
+      - 'V11_BATCH16_BODY_TRANSLATION_DRAFT_*.json'
+      - '.github/workflows/v11-batch16-vocab-chronology.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: v11-b16-vocab-chronology-${{ github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run formal Batch16 v7 vocabulary chronology
+        id: gate
+        continue-on-error: true
+        run: node v11_batch16_vocab_chronology_audit.js | tee V11_BATCH16_VOCAB_CHRONOLOGY_AUDIT.log
+      - name: Persist report
+        if: always()
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f V11_BATCH16_VOCAB_CHRONOLOGY_REPORT.json V11_BATCH16_VOCAB_CHRONOLOGY_AUDIT.log 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'audit(v11): persist Batch16 vocab chronology [skip ci]'
+            for attempt in 1 2 3; do
+              if git push origin HEAD:v11-1000passage-easy-notes; then exit 0; fi
+              git fetch origin v11-1000passage-easy-notes
+              git rebase origin/v11-1000passage-easy-notes
+            done
+            exit 1
+          fi
+      - name: Enforce current gate
+        run: |
+          node - <<'NODE'
+          const r=require('./V11_BATCH16_VOCAB_CHRONOLOGY_REPORT.json');
+          if(r.passages!==50) throw new Error(`Batch16 passage count ${r.passages} != 50`);
+          if(r.futureVocab!==0 || r.unregistered!==0) throw new Error(`Batch16 vocab chronology requires repair future=${r.futureVocab} unregistered=${r.unregistered}`);
+          NODE
