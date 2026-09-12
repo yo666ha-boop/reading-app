@@ -1,0 +1,15 @@
+/home/runner/work/reading-app/reading-app/scripts/v11_batch15_browser_gate.js:29
+function slashRowsFor(id){const rec=slashes.get(id);if(!rec)throw new Error(`${id} missing human slash artifact`);const s=rec.o;if(Array.isArray(s.slashRows)&&s.slashRows.length)return s.slashRows.map(r=>({en:String(r.en||r.english||'').trim(),jp:String(r.jp||r.japanese||'').trim(),humanReview:r.humanReview||'B15_HUMAN_SLASH_PASS',alignmentShape:r.alignmentShape||'1:1'}));const en=String(s.bodySlash||'').split(' / ').map(x=>x.trim()).filter(Boolean),jp=String(s.translationSlash||'').split(' / ').map(x=>x.trim()).filter(Boolean);if(en.length!==jp.length||!en.length)throw new Error(`${id} slash count mismatch ${en.length}/${jp.length}`);return en.map((x,i)=>({en:x,jp:jp[i],humanReview:'B15_HUMAN_SLASH_PASS',alignmentShape:'1:1'}));}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ^
+
+Error: V11-B15-G1-010 slash count mismatch 29/28
+    at slashRowsFor (/home/runner/work/reading-app/reading-app/scripts/v11_batch15_browser_gate.js:29:578)
+    at /home/runner/work/reading-app/reading-app/scripts/v11_batch15_browser_gate.js:31:93
+    at Array.map (<anonymous>)
+    at Object.<anonymous> (/home/runner/work/reading-app/reading-app/scripts/v11_batch15_browser_gate.js:31:21)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at Module.require (node:internal/modules/cjs/loader:1289:19)
+    at require (node:internal/modules/helpers:182:18)
