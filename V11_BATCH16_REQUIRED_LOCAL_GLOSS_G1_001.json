@@ -6,21 +6,32 @@
   "gate": "v7_vocab_chronology",
   "resolutionPolicy": "Keep a necessary not-yet-learned word only with an explicit Japanese required-local gloss; do not count it as resolved until the formal Batch16 audit consumes this map.",
   "requiredLocal": [
-    {"word":"corner","gloss":"隅、角","sourceKind":"FUTURE_V7_LEAK"},
+    {"word":"corner","gloss":"一角、隅","sourceKind":"FUTURE_V7_LEAK"},
     {"word":"shelves","gloss":"棚（複数）","sourceKind":"UNREGISTERED_V7"},
     {"word":"quiet","gloss":"静かな","sourceKind":"UNREGISTERED_V7"},
-    {"word":"natural","gloss":"自然な","sourceKind":"FUTURE_V7_LEAK"},
+    {"word":"natural","gloss":"自然の","sourceKind":"FUTURE_V7_LEAK"},
     {"word":"carry","gloss":"運ぶ","sourceKind":"FUTURE_V7_LEAK"},
     {"word":"several","gloss":"いくつかの","sourceKind":"FUTURE_V7_LEAK"},
-    {"word":"across","gloss":"～を横切って、向こう側へ","sourceKind":"UNREGISTERED_V7"},
-    {"word":"moved","base":"move","gloss":"動かした、移した","sourceKind":"FUTURE_V7_LEAK"}
+    {"word":"across","gloss":"向こう側まで、横切って","sourceKind":"UNREGISTERED_V7"},
+    {"word":"moved","base":"move","gloss":"移した","sourceKind":"FUTURE_V7_LEAK"},
+    {"word":"shelf","gloss":"棚","sourceKind":"UNREGISTERED_V7"},
+    {"word":"added","base":"add","gloss":"加えた、置き加えた","sourceKind":"FUTURE_V7_LEAK"},
+    {"word":"noticed","gloss":"気づいた","sourceKind":"UNREGISTERED_V7"},
+    {"word":"returned","base":"return","gloss":"戻した、返した","sourceKind":"FUTURE_V7_LEAK"},
+    {"word":"quickly","gloss":"より早く、すばやく","sourceKind":"UNREGISTERED_V7"},
+    {"word":"nearby","gloss":"近くに、近くの","sourceKind":"FUTURE_V7_LEAK"},
+    {"word":"change","gloss":"変更、変化","sourceKind":"FUTURE_V7_LEAK"},
+    {"word":"whole","gloss":"全体の","sourceKind":"UNREGISTERED_V7"},
+    {"word":"space","gloss":"空間、場所","sourceKind":"UNREGISTERED_V7"},
+    {"word":"easier","gloss":"より使いやすい、より簡単な","sourceKind":"UNREGISTERED_V7"}
   ],
   "qualityChecks": {
     "japaneseGlossOnly": true,
     "englishAsJapaneseGloss": false,
     "bodyChanged": false,
     "fullTranslationSyncRequired": false,
-    "questionsSyncRequired": false
+    "questionsSyncRequired": false,
+    "allCurrentG1001VocabViolationsMapped": true
   },
-  "status": "PARTIAL_RESOLUTION_NOT_YET_GATE_PASS"
+  "status": "G1_001_MAP_COMPLETE_AWAITING_FORMAL_AUDIT_CONSUMPTION"
 }
