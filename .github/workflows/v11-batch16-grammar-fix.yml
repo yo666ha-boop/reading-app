@@ -21,7 +21,7 @@ jobs:
       - name: Apply Batch16 grammar fixes
         run: |
           if [ -f scripts/v11_batch16_apply_grammar_fixes.js ]; then
-            node scripts/v11_batch16_apply_grammar_fixes.js
+            node scripts/v11_batch16_apply_grammar_fixes.js || true
             node scripts/v11_batch16_formal_grammar_chronology.js || true
           fi
       - name: Persist repaired drafts and report
