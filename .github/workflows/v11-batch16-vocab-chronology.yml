@@ -5,6 +5,7 @@ on:
     paths:
       - 'v11_batch16_vocab_chronology_audit.js'
       - 'V11_BATCH16_BODY_TRANSLATION_DRAFT_*.json'
+      - 'V11_BATCH16_REQUIRED_LOCAL_GLOSS_*.json'
       - '.github/workflows/v11-batch16-vocab-chronology.yml'
   workflow_dispatch:
 permissions:
