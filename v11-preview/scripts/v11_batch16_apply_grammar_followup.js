@@ -1,7 +1,7 @@
 const fs=require('fs');
 const files=['V11_BATCH16_BODY_TRANSLATION_DRAFT_G1_001_010.json','V11_BATCH16_BODY_TRANSLATION_DRAFT_G1_011_017.json'];
 const fixes={
- 'V11-B16-G1-001':['A small change in the right place made the space easier to use.','A small change at the right place made the space easier to use.'],
+ 'V11-B16-G1-001':['A small change in the right place made the space easier to use.','A small change at the right place helped make the space easier to use.'],
  'V11-B16-G1-014':['During the next week, more students used it, and the line at the counter became shorter.','During the next week, more students returned books through it, and the line at the counter became shorter.']
 };
 let changed=0;
