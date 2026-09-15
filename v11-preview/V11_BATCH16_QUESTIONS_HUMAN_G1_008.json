@@ -1,0 +1,30 @@
+{
+  "batch":"V11-B16",
+  "stage":"human_question_authoring",
+  "registered":false,
+  "officialTotal":918,
+  "range":"G1-008",
+  "passages":1,
+  "questionsPerPassage":10,
+  "humanAuthored":true,
+  "items":[
+    {
+      "id":"V11-B16-G1-008",
+      "title":"Saving Art Paper",
+      "A":[
+        {"type":"GIST","question":"What is the main lesson of the passage?","answer":"Leftover material can be reused when people identify a clear purpose for it.","evidence":"Material that seemed useless became useful when its possible purpose was clear.","evidenceJp":"使い道がはっきりすると、役に立たないように見えた材料も利用できるようになりました。","reason":"The final sentence states the broader lesson of the club's change."},
+        {"type":"REASON","question":"Why did one student sort the leftover pieces by size?","answer":"To see whether pieces that were too small for posters could still be useful for other jobs.","evidence":"One student collected the pieces for two weeks and sorted them by size. She found that many were wide enough for title cards and price signs used at school events.","evidenceJp":"ある生徒が二週間その紙を集め、大きさごとに分けました。すると、多くの紙が学校行事で使う見出しカードや値段表示には十分な幅があることが分かりました。","reason":"Sorting revealed which smaller pieces matched other practical uses."},
+        {"type":"CONTENT_MATCH","question":"Which statement is true according to the passage?","answer":"Club members began looking in the size boxes before using a new sheet of colored paper.","evidence":"Members began checking the boxes before taking a new sheet.","evidenceJp":"部員たちは新しい紙を取る前に箱を確認するようになりました。","reason":"This change in behavior is directly stated."},
+        {"type":"INFERENCE","question":"Why did the club buy less colored paper the next month?","answer":"Members reused suitable leftover pieces instead of always taking a new large sheet.","evidence":"Members began checking the boxes before taking a new sheet. The club bought less colored paper the next month.","evidenceJp":"部員たちは新しい紙を取る前に箱を確認するようになりました。次の月、部が買う色紙は少なくなりました。","reason":"The sequence shows that checking and reusing leftovers reduced the need for new sheets."},
+        {"type":"DETAIL","question":"What two school-event uses did the student find for many leftover pieces?","answer":"Title cards and price signs.","evidence":"She found that many were wide enough for title cards and price signs used at school events.","evidenceJp":"すると、多くの紙が学校行事で使う見出しカードや値段表示には十分な幅があることが分かりました。","reason":"Both uses are named in the same sentence."}
+      ],
+      "B":[
+        {"type":"CONTEXT_WORD","question":"In the passage, what does “them” in “Members usually threw them away” refer to?","answer":"The narrow pieces of colored paper left after making posters.","evidence":"At the end of each month, many narrow pieces were left. Members usually threw them away.","evidenceJp":"毎月の終わりには、細長い紙がたくさん残りました。ポスター一枚には小さすぎるため、部員たちは普段それを捨てていました。","reason":"The pronoun refers to the narrow leftover pieces mentioned immediately before it."},
+        {"type":"PHRASE_FILL","question":"Complete the idea: The club made reuse easier by putting leftover paper into three boxes ____.","answer":"labeled by size","evidence":"The club placed three boxes beside the cutting table and labeled them by size.","evidenceJp":"部は作業台の横に三つの箱を置き、大きさを表示しました。","reason":"The labels let members quickly find pieces suited to a particular purpose."},
+        {"type":"SUMMARY_FILL","question":"Complete the summary: The club reduced paper purchases by finding new uses for leftovers and making them ____ before a new sheet was taken.","answer":"easy to check by size","evidence":"The club placed three boxes beside the cutting table and labeled them by size. Members began checking the boxes before taking a new sheet.","evidenceJp":"部は作業台の横に三つの箱を置き、大きさを表示しました。部員たちは新しい紙を取る前に箱を確認するようになりました。","reason":"The boxes turned a vague pile of scraps into an organized reusable supply."},
+        {"type":"SENTENCE_INSERTION","question":"Where would this sentence fit best: “This showed that the pieces were not useless just because they could not make a full poster.”","answer":"After the sentence about title cards and price signs.","evidence":"She found that many were wide enough for title cards and price signs used at school events. The club placed three boxes beside the cutting table and labeled them by size.","evidenceJp":"すると、多くの紙が学校行事で使う見出しカードや値段表示には十分な幅があることが分かりました。部は作業台の横に三つの箱を置き、大きさを表示しました。","reason":"The sentence explains the meaning of the discovery before the passage moves to the storage solution."},
+        {"type":"INFERENCE","question":"What problem would most likely return if the three labeled boxes were removed?","answer":"Members might again overlook useful leftover pieces and take new sheets instead.","evidence":"Members began checking the boxes before taking a new sheet.","evidenceJp":"部員たちは新しい紙を取る前に箱を確認するようになりました。","reason":"The boxes supported the new habit of checking reusable material before using fresh paper."}
+      ]
+    }
+  ]
+}
