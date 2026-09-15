@@ -1,4 +1,5 @@
 const fs=require('fs');
+// Batch16 authoring gate: preserve body exactly; slash only at existing sentence boundaries.
 const files=['V11_BATCH16_BODY_TRANSLATION_DRAFT_G1_001_010.json','V11_BATCH16_BODY_TRANSLATION_DRAFT_G1_011_017.json','V11_BATCH16_BODY_TRANSLATION_DRAFT_G2_001_009.json','V11_BATCH16_BODY_TRANSLATION_DRAFT_G2_010_017.json','V11_BATCH16_BODY_TRANSLATION_DRAFT_G3_001_008.json','V11_BATCH16_BODY_TRANSLATION_DRAFT_G3_009_016.json'];
 const splitSentences=s=>String(s||'').trim().match(/[^.!?]+[.!?]+(?:[”"']|$)?|[^.!?]+$/g)?.map(x=>x.trim()).filter(Boolean)||[];
 const wordCount=s=>(String(s||'').match(/[A-Za-z]+(?:['’][A-Za-z]+)*/g)||[]).length;
