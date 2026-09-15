@@ -1,0 +1,30 @@
+{
+  "batch":"V11-B16",
+  "stage":"human_question_authoring",
+  "registered":false,
+  "officialTotal":918,
+  "range":"G1-010",
+  "passages":1,
+  "questionsPerPassage":10,
+  "humanAuthored":true,
+  "items":[
+    {
+      "id":"V11-B16-G1-010",
+      "title":"Returning Sports Equipment",
+      "A":[
+        {"type":"GIST","question":"What is the main lesson of the passage?","answer":"A clear storage system can solve repeated mistakes better than giving the same reminder again and again.","evidence":"The students did not need more reminders. They needed a clear storage system during use.","evidenceJp":"生徒たちに必要だったのは、より多くの注意ではありませんでした。実際に使っているときに分かりやすい収納の仕組みが必要だったのです。","reason":"The final two sentences directly contrast reminders with the solution that worked."},
+        {"type":"REASON","question":"Why did the class change the labels in the storage room?","answer":"The old labels were small and too high for students to see easily while carrying equipment.","evidence":"One class checked the storage room and found that the labels were small and placed high on the shelves. Students did not see them well with equipment in their hands.","evidenceJp":"あるクラスが倉庫を調べると、表示が小さく、棚の高い位置に付いていることが分かりました。用具を持ちながらでは、生徒たちは表示を簡単に見ることができませんでした。","reason":"The class found a visibility problem, so it made the information easier to see during actual use."},
+        {"type":"CONTENT_MATCH","question":"Which statement is true according to the passage?","answer":"The class used larger labels with simple pictures and placed them at eye level.","evidence":"The class made larger labels with simple pictures and put them at eye level.","evidenceJp":"そこで簡単な絵を入れた大きな表示を作り、目の高さに付けました。","reason":"This is one of the specific improvements described in the passage."},
+        {"type":"INFERENCE","question":"Why did reminders alone fail to solve the problem?","answer":"Students still could not easily tell where equipment belonged while they were carrying it.","evidence":"Teachers reminded students to return everything, but the problem continued. One class checked the storage room and found that the labels were small and placed high on the shelves.","evidenceJp":"先生たちはすべて元に戻すよう生徒に注意していましたが、問題は続きました。あるクラスが倉庫を調べると、表示が小さく、棚の高い位置に付いていることが分かりました。","reason":"The passage shows that the obstacle was unclear storage information rather than lack of reminders."},
+        {"type":"DETAIL","question":"What extra guide did the class add for each type of ball?","answer":"One marked empty space for each type.","evidence":"They also marked one empty space for each type of ball.","evidenceJp":"また、ボールの種類ごとに置く場所を一つずつ示しました。","reason":"The passage directly states this part of the storage system."}
+      ],
+      "B":[
+        {"type":"CONTEXT_WORD","question":"In “but the problem continued,” what problem is being discussed?","answer":"Balls and cones were still being left in the wrong places after P.E. classes.","evidence":"After P.E. classes, balls and cones were sometimes left in the wrong places. Teachers reminded students to return everything, but the problem continued.","evidenceJp":"体育の授業の後、ボールやコーンが間違った場所に置かれることがありました。先生たちはすべて元に戻すよう生徒に注意していましたが、問題は続きました。","reason":"The phrase refers back to the misplaced equipment described immediately before it."},
+        {"type":"SUMMARY_FILL","question":"Complete the summary: The class improved the storage room by making labels easier to see and by giving each ball type ____.","answer":"a clearly marked space","evidence":"They also marked one empty space for each type of ball.","evidenceJp":"また、ボールの種類ごとに置く場所を一つずつ示しました。","reason":"This detail completes the two-part storage improvement."},
+        {"type":"PHRASE_FILL","question":"Complete the idea: The labels were moved to ____ so students could see them more easily.","answer":"eye level","evidence":"The class made larger labels with simple pictures and put them at eye level.","evidenceJp":"そこで簡単な絵を入れた大きな表示を作り、目の高さに付けました。","reason":"The new position directly addressed the visibility problem."},
+        {"type":"SENTENCE_INSERTION","question":"Where would this sentence fit best: “This made it hard to follow the rule even when students remembered it.”","answer":"After the sentence saying students could not see the labels well with equipment in their hands.","evidence":"Students did not see them well with equipment in their hands. The class made larger labels with simple pictures and put them at eye level.","evidenceJp":"用具を持ちながらでは、生徒たちは表示を簡単に見ることができませんでした。そこで簡単な絵を入れた大きな表示を作り、目の高さに付けました。","reason":"The sentence explains the effect of the visibility problem before the passage presents the solution."},
+        {"type":"INFERENCE","question":"What result would best show that the new system was working?","answer":"Fewer pieces of equipment would be found in the wrong places after class.","evidence":"During the next two weeks, fewer items were left in the wrong place.","evidenceJp":"次の二週間、間違った場所に残される用具は減りました。","reason":"This is the actual outcome the passage uses to judge the new storage system."}
+      ]
+    }
+  ]
+}
