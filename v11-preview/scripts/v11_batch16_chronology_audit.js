@@ -1,13 +1,12 @@
 const fs=require('fs');
-const files=['V11_BATCH16_BODY_TRANSLATION_DRAFT_G1_001_010.json','V11_BATCH16_BODY_TRANSLATION_DRAFT_G1_011_017.json','V11_BATCH16_BODY_TRANSLATION_DRAFT_G2_001_008.json','V11_BATCH16_BODY_TRANSLATION_DRAFT_G2_009_017.json','V11_BATCH16_BODY_TRANSLATION_DRAFT_G3_001_008.json','V11_BATCH16_BODY_TRANSLATION_DRAFT_G3_009_016.json'];
+const files=['V11_BATCH16_BODY_TRANSLATION_DRAFT_G1_001_010.json','V11_BATCH16_BODY_TRANSLATION_DRAFT_G1_011_017.json','V11_BATCH16_BODY_TRANSLATION_DRAFT_G2_001_009.json','V11_BATCH16_BODY_TRANSLATION_DRAFT_G2_010_017.json','V11_BATCH16_BODY_TRANSLATION_DRAFT_G3_001_008.json','V11_BATCH16_BODY_TRANSLATION_DRAFT_G3_009_016.json'];
 const items=files.flatMap(f=>JSON.parse(fs.readFileSync(f,'utf8')).items);
 if(items.length!==50) throw new Error(`Batch16 item count ${items.length}/50`);
 const ids=new Set(items.map(x=>x.id)); if(ids.size!==50) throw new Error(`Batch16 unique ids ${ids.size}/50`);
 const badShape=items.filter(x=>!String(x.body||'').trim()||!String(x.fullTranslation||'').trim()).map(x=>x.id);
 
-// Explicit required-local maps are now consumed by this Batch16 preflight.
-// This prevents already-reviewed Japanese glosses from being repeatedly raised as candidates,
-// while deliberately NOT promoting this preflight to the formal canonical-v7 gate.
+// Explicit required-local maps are consumed by this Batch16 preflight.
+// This remains a preflight only; formal canonical-v7 chronology is a separate gate.
 const requiredLocalById=new Map();
 for(const f of fs.readdirSync('.')){
   if(!/^V11_BATCH16_REQUIRED_LOCAL_GLOSS_G[123]_\d{3}\.json$/.test(f)) continue;
