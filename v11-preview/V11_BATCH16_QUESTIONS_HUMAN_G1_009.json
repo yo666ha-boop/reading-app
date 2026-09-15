@@ -1,0 +1,30 @@
+{
+  "batch":"V11-B16",
+  "stage":"human_question_authoring",
+  "registered":false,
+  "officialTotal":918,
+  "range":"G1-009",
+  "passages":1,
+  "questionsPerPassage":10,
+  "humanAuthored":true,
+  "items":[
+    {
+      "id":"V11-B16-G1-009",
+      "title":"The Bus Stop Survey",
+      "A":[
+        {"type":"GIST","question":"What is the main idea of the passage?","answer":"Observing how a place is actually used can reveal a better solution than simply making equipment bigger.","evidence":"The survey showed that location mattered more than size.","evidenceJp":"この調査から、大きさより場所の方が重要だったことが分かりました。","reason":"The final sentence summarizes why moving the existing bench worked better than replacing it with a larger one."},
+        {"type":"REASON","question":"Why did the students visit the bus stop at different times?","answer":"To find out whether conditions at the stop changed during the day and affected use of the bench.","evidence":"Before doing that, students in a local study class visited the stop at different times. They noticed that the bench was in direct sunlight from noon until late afternoon.","evidenceJp":"その前に、地域学習の授業の生徒たちが時間を変えてバス停を訪れました。正午から夕方遅くまで、ベンチに直接日光が当たっていることに気づきました。","reason":"Visiting at different times let them compare sunlight and usage conditions."},
+        {"type":"CONTENT_MATCH","question":"Which statement is true according to the passage?","answer":"The town moved the existing bench under a roof instead of buying a larger bench.","evidence":"Instead of buying a larger bench, the town moved the existing bench a short distance under a roof.","evidenceJp":"町は大きなベンチを買う代わりに、今あるベンチを屋根の下へ少し移動しました。","reason":"This is the action the town took after receiving the students' notes."},
+        {"type":"INFERENCE","question":"What evidence suggested that the bench itself was not too small?","answer":"People used it more in the morning when the nearby building gave it shade.","evidence":"In the morning, the building beside it made shade, and many people sat there.","evidenceJp":"隣の建物によって日陰になる朝には、人々がよく利用していました。","reason":"If people used the same bench when it was shaded, size was less likely to be the main problem."},
+        {"type":"DETAIL","question":"When was the bench in direct sunlight?","answer":"From noon until late afternoon.","evidence":"They noticed that the bench was in direct sunlight from noon until late afternoon.","evidenceJp":"正午から夕方遅くまで、ベンチに直接日光が当たっていることに気づきました。","reason":"The time period is directly stated."}
+      ],
+      "B":[
+        {"type":"CONTEXT_WORD","question":"In “Before doing that,” what does “that” refer to?","answer":"Replacing the bench with a larger one.","evidence":"The town planned to replace the bench with a larger one. Before doing that, students in a local study class visited the stop at different times.","evidenceJp":"町はそのベンチをもっと大きなものに替える計画を立てました。その前に、地域学習の授業の生徒たちが時間を変えてバス停を訪れました。","reason":"The phrase points back to the town's planned replacement."},
+        {"type":"SUMMARY_FILL","question":"Complete the summary: The class discovered that the main problem was not bench size but ____ during hot parts of the day.","answer":"its sunny location","evidence":"They noticed that the bench was in direct sunlight from noon until late afternoon.","evidenceJp":"正午から夕方遅くまで、ベンチに直接日光が当たっていることに気づきました。","reason":"The observation explains why people avoided the bench in summer afternoons."},
+        {"type":"PHRASE_FILL","question":"Complete the idea: After receiving the students' notes, the town improved the stop by ____ the bench rather than replacing it.","answer":"moving","evidence":"Instead of buying a larger bench, the town moved the existing bench a short distance under a roof.","evidenceJp":"町は大きなベンチを買う代わりに、今あるベンチを屋根の下へ少し移動しました。","reason":"The passage contrasts moving the same bench with buying a larger one."},
+        {"type":"SENTENCE_INSERTION","question":"Where would this sentence fit best: “That difference gave the students an important clue about the real problem.”","answer":"After the sentence saying that many people used the bench in the morning shade.","evidence":"In the morning, the building beside it made shade, and many people sat there. The class shared its notes with the town.","evidenceJp":"隣の建物によって日陰になる朝には、人々がよく利用していました。生徒たちは記録を町に伝えました。","reason":"The inserted sentence interprets the morning-versus-afternoon observation before the class reports its findings."},
+        {"type":"INFERENCE","question":"If another bus stop has an unused bench that is shaded all day, what should investigators do before copying this solution?","answer":"Observe that stop to find its own cause instead of assuming location is the problem.","evidence":"Before doing that, students in a local study class visited the stop at different times.","evidenceJp":"その前に、地域学習の授業の生徒たちが時間を変えてバス停を訪れました。","reason":"The passage's method is to investigate actual conditions before deciding on a solution."}
+      ]
+    }
+  ]
+}
