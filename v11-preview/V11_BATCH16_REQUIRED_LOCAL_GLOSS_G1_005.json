@@ -4,29 +4,124 @@
   "registered": false,
   "officialTotal": 918,
   "gate": "v7_vocab_chronology",
-  "resolutionPolicy": "Keep a necessary not-yet-learned word only with an explicit Japanese required-local gloss; formal Batch16 audit validates and consumes this map.",
+  "resolutionPolicy": "Necessary not-yet-learned or canonical-v7-unregistered words are retained only with explicit Japanese required-local glosses; formal Batch16 audit consumes this map.",
   "requiredLocal": [
-    {"word":"stood","gloss":"立っていた","sourceKind":"FUTURE_V7_LEAK"},
-    {"word":"line","gloss":"列、並び","sourceKind":"FUTURE_V7_LEAK"},
-    {"word":"bread","gloss":"パン","sourceKind":"UNREGISTERED_V7"},
-    {"word":"sold","gloss":"売った、売られた","sourceKind":"FUTURE_V7_LEAK"},
-    {"word":"decided","base":"decide","gloss":"決めた","sourceKind":"FUTURE_V7_LEAK"},
-    {"word":"council","gloss":"協議会、評議会","sourceKind":"UNREGISTERED_V7"},
-    {"word":"found","gloss":"見つけた、分かった","sourceKind":"FUTURE_V7_LEAK"},
-    {"word":"already","gloss":"すでに、もう","sourceKind":"FUTURE_V7_LEAK"},
-    {"word":"reaching","base":"reach","gloss":"届くこと、到達すること","sourceKind":"FUTURE_V7_LEAK"},
-    {"word":"put","gloss":"置いた、入れた","sourceKind":"FUTURE_V7_LEAK"},
-    {"word":"entrance","gloss":"入口、入り口","sourceKind":"UNREGISTERED_V7"},
-    {"word":"lines","base":"line","gloss":"列、並び","sourceKind":"FUTURE_V7_LEAK"},
-    {"word":"choose","gloss":"選ぶ","sourceKind":"FUTURE_V7_LEAK"},
-    {"word":"reached","base":"reach","gloss":"着いた、達した","sourceKind":"FUTURE_V7_LEAK"},
-    {"word":"total","gloss":"合計、全体の","sourceKind":"UNREGISTERED_V7"},
-    {"word":"change","gloss":"変える、変化","sourceKind":"FUTURE_V7_LEAK"},
-    {"word":"better","gloss":"よりよい、もっとよく","sourceKind":"FUTURE_V7_LEAK"},
-    {"word":"information","gloss":"情報","sourceKind":"FUTURE_V7_LEAK"},
-    {"word":"space","gloss":"場所、空間","sourceKind":"UNREGISTERED_V7"},
-    {"word":"smoothly","gloss":"円滑に、順調に","sourceKind":"UNREGISTERED_V7"}
+    {
+      "word": "stood",
+      "gloss": "立っていた",
+      "sourceKind": "FUTURE_V7_LEAK"
+    },
+    {
+      "word": "line",
+      "gloss": "列、並び",
+      "sourceKind": "FUTURE_V7_LEAK"
+    },
+    {
+      "word": "bread",
+      "gloss": "パン",
+      "sourceKind": "UNREGISTERED_V7"
+    },
+    {
+      "word": "sold",
+      "gloss": "売った、売られた",
+      "sourceKind": "FUTURE_V7_LEAK"
+    },
+    {
+      "word": "decided",
+      "base": "decide",
+      "gloss": "決めた",
+      "sourceKind": "FUTURE_V7_LEAK"
+    },
+    {
+      "word": "council",
+      "gloss": "協議会、評議会",
+      "sourceKind": "UNREGISTERED_V7"
+    },
+    {
+      "word": "found",
+      "gloss": "見つけた、分かった",
+      "sourceKind": "FUTURE_V7_LEAK"
+    },
+    {
+      "word": "already",
+      "gloss": "すでに、もう",
+      "sourceKind": "FUTURE_V7_LEAK"
+    },
+    {
+      "word": "reaching",
+      "base": "reach",
+      "gloss": "届くこと、到達すること",
+      "sourceKind": "FUTURE_V7_LEAK"
+    },
+    {
+      "word": "put",
+      "gloss": "置いた、入れた",
+      "sourceKind": "FUTURE_V7_LEAK"
+    },
+    {
+      "word": "entrance",
+      "gloss": "入口、入り口",
+      "sourceKind": "UNREGISTERED_V7"
+    },
+    {
+      "word": "lines",
+      "base": "line",
+      "gloss": "列、並び",
+      "sourceKind": "FUTURE_V7_LEAK"
+    },
+    {
+      "word": "choose",
+      "gloss": "選ぶ",
+      "sourceKind": "FUTURE_V7_LEAK"
+    },
+    {
+      "word": "reached",
+      "base": "reach",
+      "gloss": "着いた、達した",
+      "sourceKind": "FUTURE_V7_LEAK"
+    },
+    {
+      "word": "total",
+      "gloss": "合計、全体の",
+      "sourceKind": "UNREGISTERED_V7"
+    },
+    {
+      "word": "change",
+      "gloss": "変える、変化",
+      "sourceKind": "FUTURE_V7_LEAK"
+    },
+    {
+      "word": "better",
+      "gloss": "よりよい、もっとよく",
+      "sourceKind": "FUTURE_V7_LEAK"
+    },
+    {
+      "word": "information",
+      "gloss": "情報",
+      "sourceKind": "FUTURE_V7_LEAK"
+    },
+    {
+      "word": "space",
+      "gloss": "場所、空間",
+      "sourceKind": "UNREGISTERED_V7"
+    },
+    {
+      "word": "smoothly",
+      "gloss": "円滑に、順調に",
+      "sourceKind": "UNREGISTERED_V7"
+    },
+    {
+      "word": "chose",
+      "gloss": "選んだ",
+      "sourceKind": "FUTURE_V7_LEAK"
+    }
   ],
-  "qualityChecks": {"japaneseGlossOnly":true,"englishAsJapaneseGloss":false,"bodyChanged":false,"fullTranslationSyncRequired":false,"questionsSyncRequired":false},
-  "status": "G1_005_MAP_CREATED_AWAITING_FRESH_FORMAL_AUDIT"
+  "qualityChecks": {
+    "japaneseGlossOnly": true,
+    "englishAsJapaneseGloss": false,
+    "bodyChanged": false,
+    "fullTranslationSyncRequired": false,
+    "questionsSyncRequired": false
+  },
+  "status": "RESIDUALS_CLOSED_AWAITING_FRESH_FORMAL_AUDIT"
 }
