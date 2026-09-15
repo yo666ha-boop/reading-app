@@ -1,0 +1,30 @@
+{
+  "batch":"V11-B16",
+  "stage":"human_question_authoring",
+  "registered":false,
+  "officialTotal":918,
+  "range":"G1-007",
+  "passages":1,
+  "questionsPerPassage":10,
+  "humanAuthored":true,
+  "items":[
+    {
+      "id":"V11-B16-G1-007",
+      "title":"A Map for New Students",
+      "A":[
+        {"type":"GIST","question":"What is the main idea of the passage?","answer":"Directions are most useful when they are placed where people have a difficult choice to make.","evidence":"The students learned that useful directions help at a place with a hard choice.","evidenceJp":"生徒たちは、分かりにくい選択をする場所に案内があると役立つことを学びました。","reason":"The final sentence states the lesson learned from the students' test."},
+        {"type":"DETAIL","question":"Where did the school already have a map?","answer":"Near the main entrance.","evidence":"The school already had a map near the main entrance, so teachers were surprised.","evidenceJp":"学校にはすでに正面玄関の近くに地図がありました。","reason":"The location of the existing map is directly stated."},
+        {"type":"REASON","question":"Why did the second-year students walk the route with new students?","answer":"To find where and why the new students were getting lost.","evidence":"A group of second-year students walked the route with three new students. They learned that the problem was not the whole map.","evidenceJp":"二年生のグループは三人の新入生と一緒に道順を歩き、問題が地図全体ではないと分かりました。","reason":"Walking the actual route let them observe the specific point that caused confusion."},
+        {"type":"INFERENCE","question":"Why was the map near the main entrance not enough to solve the problem?","answer":"The confusing point was later on the route, where two hallways looked similar and there was no music-room sign.","evidence":"At one corner, two hallways looked almost the same, and there was no sign for the music room.","evidenceJp":"ある角では二つの廊下がほとんど同じように見え、音楽室への表示がありませんでした。","reason":"The existing map did not give help at the exact place where students had to choose between similar hallways."},
+        {"type":"CONTENT_MATCH","question":"Which statement is true?","answer":"After an arrow and a room name were added, the next new students reached the music room without help.","evidence":"The group added one arrow at that corner and a small room name near the stairs. The next group of new students reached the room without help.","evidenceJp":"その角に矢印を一つ、階段近くに小さな部屋名を加えると、次の新入生たちは助けなしで音楽室に着きました。","reason":"The passage directly reports the change and its result."}
+      ],
+      "B":[
+        {"type":"CONTEXT_WORD","question":"In the passage, what does “the problem” in “the problem was not the whole map” refer to?","answer":"The reason new students got lost on the way to the music room.","evidence":"New students sometimes got lost between the gym and the music room... They learned that the problem was not the whole map.","evidenceJp":"「問題」は、新入生が体育館から音楽室へ行く途中で迷う原因を指します。","reason":"The phrase refers back to the difficulty the students were investigating."},
+        {"type":"PHRASE_FILL","question":"Complete the idea: The students found the key trouble spot by ____ with three new students.","answer":"walking the route","evidence":"A group of second-year students walked the route with three new students.","evidenceJp":"二年生のグループは三人の新入生と一緒にその道順を歩きました。","reason":"This action let them identify the confusing corner."},
+        {"type":"SUMMARY_FILL","question":"Complete the summary: Instead of changing the whole map, the group added signs at ____.","answer":"the confusing corner and near the stairs","evidence":"The group added one arrow at that corner and a small room name near the stairs.","evidenceJp":"グループはその角に矢印を一つ、階段の近くに小さな部屋名を加えました。","reason":"The summary captures the targeted solution rather than a full redesign."},
+        {"type":"SENTENCE_INSERTION","question":"Where would this sentence fit best: “That observation showed them exactly where extra information was needed.”","answer":"After the sentence saying that the two hallways looked almost the same and there was no sign for the music room.","evidence":"At one corner, two hallways looked almost the same, and there was no sign for the music room. The group added one arrow at that corner...","evidenceJp":"二つの廊下が似ていて音楽室の表示がないと分かった文の後に、実際の改善策が続きます。","reason":"The inserted sentence naturally connects the observed problem to the targeted solution."},
+        {"type":"MATERIAL_LINK","question":"Suppose a route diagram marks only one confusing fork between the gym and the music room. Which improvement would best match the passage?","answer":"Place a clear music-room arrow at that fork.","evidence":"At one corner, two hallways looked almost the same, and there was no sign for the music room. The group added one arrow at that corner.","evidenceJp":"二つの廊下が似ていた角に音楽室への矢印を置く改善が本文と一致します。","reason":"The passage supports adding information at the exact decision point rather than adding unnecessary signs everywhere."}
+      ]
+    }
+  ]
+}
