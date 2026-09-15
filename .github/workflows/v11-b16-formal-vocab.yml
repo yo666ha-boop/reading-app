@@ -5,6 +5,7 @@ on:
     branches: [v11-1000passage-easy-notes]
     paths:
       - 'scripts/v11_batch16_formal_vocab_chronology.js'
+      - 'scripts/v11_batch16_vocab_residual_to_required_local.js'
       - 'V11_BATCH16_BODY_TRANSLATION_DRAFT_G*.json'
       - 'V11_BATCH16_REQUIRED_LOCAL_GLOSS_G*.json'
       - '.github/workflows/v11-b16-formal-vocab.yml'
@@ -21,20 +22,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Run formal canonical-v7 vocab gate
+      - name: Convert known residuals to explicit Japanese required-local notes
+        run: node scripts/v11_batch16_vocab_residual_to_required_local.js
+      - name: Run fresh formal canonical-v7 vocab gate
         run: node scripts/v11_batch16_formal_vocab_chronology.js
-      - name: Persist report
+      - name: Persist notes and report
         if: always()
         run: |
-          if [ -f V11_BATCH16_FORMAL_VOCAB_CHRONOLOGY_REPORT.json ]; then
-            git config user.name github-actions[bot]
-            git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-            git add V11_BATCH16_FORMAL_VOCAB_CHRONOLOGY_REPORT.json
-            if ! git diff --cached --quiet; then
-              git commit -m 'audit(v11): persist Batch16 formal vocab chronology'
-              for i in 1 2 3; do
-                git pull --rebase origin v11-1000passage-easy-notes && git push origin HEAD:v11-1000passage-easy-notes && break
-                sleep 3
-              done
-            fi
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add V11_BATCH16_REQUIRED_LOCAL_GLOSS_G*.json V11_BATCH16_FORMAL_VOCAB_CHRONOLOGY_REPORT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'audit(v11): close and persist Batch16 vocab residuals'
+            for i in 1 2 3; do
+              git pull --rebase origin v11-1000passage-easy-notes && git push origin HEAD:v11-1000passage-easy-notes && break
+              sleep 3
+            done
           fi
