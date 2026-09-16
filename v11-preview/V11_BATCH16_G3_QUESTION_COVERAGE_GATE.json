@@ -1,0 +1,22 @@
+{
+  "batch": 16,
+  "group": "G3",
+  "checkedAtJst": "2026-09-17T03:00:00+09:00",
+  "branch": "v11-1000passage-easy-notes",
+  "formalCountBeforeBatch16": 918,
+  "required": {
+    "passages": 16,
+    "questionsPerPassage": 10,
+    "split": "A5+B5",
+    "requiredFields": ["answer", "evidence", "evidenceJp", "reason"]
+  },
+  "actual": {
+    "G3-001..004": {"status": "MISSING_QUESTION_ARTIFACT"},
+    "G3-005..008": {"status": "MISSING_QUESTION_ARTIFACT"},
+    "G3-009..012": {"status": "PRESENT", "artifact": "V11_BATCH16_G3_QUESTIONS_HUMAN_009_012.json"},
+    "G3-013..016": {"status": "PRESENT", "artifact": "V11_BATCH16_G3_QUESTIONS_HUMAN_013_016.json"}
+  },
+  "gate": "FAIL",
+  "reason": "Only 8/16 G3 passages currently have branch-visible human question artifacts. Do not advance to notes or atomic registration until G3-001..008 A/B questions are authored and validated.",
+  "nextExactStart": "Fetch the canonical G3-001..008 passage drafts from the branch, author A/B 5+5 questions per passage with answer/evidence/evidenceJp/reason, then rerun this coverage gate."
+}
