@@ -1,0 +1,46 @@
+name: v11 Batch16 A4 persistent gate
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths-ignore:
+      - 'V11_BATCH16_BROWSER_GATE_REPORT.json'
+      - 'V11_BATCH16_A4_PERSISTENT_GATE_REPORT.json'
+      - 'V11_BATCH16_DUPLICATE_GATE_REPORT.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: v11-batch16-a4-persistent-gate
+  cancel-in-progress: true
+jobs:
+  a4-persistent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Chromium
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Start static server
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/v11-b16-http.log 2>&1 &
+          sleep 2
+      - name: Build and run Batch16 A4 student teacher and persistent runtime gate
+        run: |
+          sed -e 's/V11_BATCH15/V11_BATCH16/g' -e 's/V11-B15/V11-B16/g' -e 's/Batch15/Batch16/g' -e 's/B15_/B16_/g' scripts/v11_batch15_a4_persistent_gate.js > /tmp/v11_batch16_a4_persistent_gate.js
+          node /tmp/v11_batch16_a4_persistent_gate.js
+      - name: Persist PASS report
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add V11_BATCH16_A4_PERSISTENT_GATE_REPORT.json
+          git diff --cached --quiet || git commit -m 'audit(v11): persist Batch16 A4 persistent gate'
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
