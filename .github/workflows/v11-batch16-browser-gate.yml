@@ -32,11 +32,12 @@ jobs:
           sleep 2
       - name: Build and run Batch16 Chromium WebKit iPhone gate
         run: |
-          sed -e 's/V11_BATCH15/V11_BATCH16/g' -e 's/V11-B15/V11-B16/g' -e 's/Batch15/Batch16/g' -e 's/B15_/B16_/g' scripts/v11_batch15_browser_gate.js > /tmp/v11_batch16_browser_gate.js
-          node -e "const fs=require('fs'); process.on('uncaughtException',e=>{fs.writeFileSync('V11_BATCH16_BROWSER_GATE_PREFLIGHT_ERROR.txt',String(e&&e.stack||e)+'\n'); process.exit(1)}); require('/tmp/v11_batch16_browser_gate.js')"
+          sed -e 's/V11_BATCH15/V11_BATCH16/g' -e 's/V11-B15/V11-B16/g' -e 's/Batch15/Batch16/g' -e 's/B15_/B16_/g' scripts/v11_batch15_browser_gate.js > scripts/v11_batch16_browser_gate.generated.js
+          node -e "const fs=require('fs'); process.on('uncaughtException',e=>{fs.writeFileSync('V11_BATCH16_BROWSER_GATE_PREFLIGHT_ERROR.txt',String(e&&e.stack||e)+'\n'); process.exit(1)}); require('./scripts/v11_batch16_browser_gate.generated.js')"
       - name: Persist gate report
         if: always()
         run: |
+          rm -f scripts/v11_batch16_browser_gate.generated.js
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           test -f V11_BATCH16_BROWSER_GATE_REPORT.json && git add V11_BATCH16_BROWSER_GATE_REPORT.json || true
