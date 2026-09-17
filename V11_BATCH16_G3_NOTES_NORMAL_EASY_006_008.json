@@ -1,0 +1,69 @@
+{
+  "batch":"V11-B16",
+  "stage":"normal_easy_notes_authoring",
+  "registered":false,
+  "officialTotal":918,
+  "range":"G3-006..G3-008",
+  "items":[
+    {
+      "id":"V11-B16-G3-006",
+      "normalNotes":[
+        {"expression":"electrical inspection","jp":"電気設備の点検"},
+        {"expression":"be unavailable","jp":"利用できない"},
+        {"expression":"setup time","jp":"準備時間"},
+        {"expression":"room capacity","jp":"教室の収容人数"},
+        {"expression":"time availability","jp":"利用できる時間帯"}
+      ],
+      "easyNotes":[
+        {"expression":"committee","jp":"委員会"},
+        {"expression":"participant","jp":"参加者"},
+        {"expression":"shift the science show to 2:00","jp":"科学ショーを2時開始へ変更する"}
+      ],
+      "requiredLocalCandidates":[
+        {"expression":"electrical inspection","jp":"電気設備の点検","reason":"B教室が一時利用できない理由を理解するために必要"},
+        {"expression":"room capacity","jp":"教室の収容人数","reason":"定員問題と時間問題を分ける本文の中心概念"}
+      ]
+    },
+    {
+      "id":"V11-B16-G3-007",
+      "normalNotes":[
+        {"expression":"wetland","jp":"湿地"},
+        {"expression":"shorebirds","jp":"水辺で生活する小型の鳥"},
+        {"expression":"herons","jp":"サギ類"},
+        {"expression":"shallow water","jp":"浅い水辺"},
+        {"expression":"separate what ... from what ...","jp":"…と…を区別する"}
+      ],
+      "easyNotes":[
+        {"expression":"at sunrise","jp":"日の出のころに"},
+        {"expression":"near sunset","jp":"日没近くに"},
+        {"expression":"observation","jp":"観察結果"}
+      ],
+      "requiredLocalCandidates":[
+        {"expression":"shorebirds","jp":"水辺で生活する小型の鳥","reason":"時間帯による鳥の違いを理解するために必要"},
+        {"expression":"herons","jp":"サギ類","reason":"夕方に観察された鳥を特定するために必要"}
+      ]
+    },
+    {
+      "id":"V11-B16-G3-008",
+      "normalNotes":[
+        {"expression":"emergency guide","jp":"緊急時の案内"},
+        {"expression":"practice drill","jp":"避難訓練"},
+        {"expression":"service road","jp":"作業用の道路"},
+        {"expression":"main entrance","jp":"正面入口"},
+        {"expression":"shared knowledge","jp":"共通して持っている知識"}
+      ],
+      "easyNotes":[
+        {"expression":"gather","jp":"集まる"},
+        {"expression":"north side","jp":"北側"},
+        {"expression":"outdoor sign","jp":"屋外の表示"}
+      ],
+      "requiredLocalCandidates":[
+        {"expression":"practice drill","jp":"避難訓練","reason":"指示の問題が発見された場面を理解するために必要"},
+        {"expression":"service road","jp":"作業用の道路","reason":"訪問者が誤って向かった場所を理解するために必要"}
+      ]
+    }
+  ],
+  "quality":{"englishAsJapaneseGloss":0,"blankGloss":0,"notesStatus":"AUTHORED_NEEDS_V7_CHRONOLOGY_CHECK"},
+  "source":"V11_BATCH16_BODY_TRANSLATION_DRAFT_G3_001_008.json canonical G3-006..008",
+  "next":"G3-014..016 normal/easy notes; then v7 chronology and required-local reconciliation"
+}
