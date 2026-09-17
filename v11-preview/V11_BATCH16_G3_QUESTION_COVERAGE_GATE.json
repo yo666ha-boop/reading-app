@@ -1,7 +1,7 @@
 {
   "batch": 16,
   "group": "G3",
-  "checkedAtJst": "2026-09-17T03:00:00+09:00",
+  "checkedAtJst": "2026-09-17T12:57:00+09:00",
   "branch": "v11-1000passage-easy-notes",
   "formalCountBeforeBatch16": 918,
   "required": {
@@ -11,12 +11,12 @@
     "requiredFields": ["answer", "evidence", "evidenceJp", "reason"]
   },
   "actual": {
-    "G3-001..004": {"status": "MISSING_QUESTION_ARTIFACT"},
-    "G3-005..008": {"status": "MISSING_QUESTION_ARTIFACT"},
-    "G3-009..012": {"status": "PRESENT", "artifact": "V11_BATCH16_G3_QUESTIONS_HUMAN_009_012.json"},
-    "G3-013..016": {"status": "PRESENT", "artifact": "V11_BATCH16_G3_QUESTIONS_HUMAN_013_016.json"}
+    "G3-001..004": {"status": "PRESENT", "artifact": "V11_BATCH16_G3_QUESTIONS_HUMAN_001_004.json", "coverage": "4/4 passages, A5+B5 each"},
+    "G3-005..008": {"status": "PRESENT_WITH_G3_005_REFERENCE", "artifact": "V11_BATCH16_G3_QUESTIONS_HUMAN_005_008.json", "coverage": "G3-006..008 A5+B5 each; G3-005 marked COMPLETE_PREVIOUSLY_VERIFIED and must be resolved to its full preserved question payload before final question gate PASS"},
+    "G3-009..012": {"status": "PRESENT", "artifact": "V11_BATCH16_G3_QUESTIONS_HUMAN_009_012.json", "coverage": "4/4 passages, A5+B5 each"},
+    "G3-013..016": {"status": "PRESENT", "artifact": "V11_BATCH16_G3_QUESTIONS_HUMAN_013_016.json", "coverage": "4/4 passages, A5+B5 each"}
   },
-  "gate": "FAIL",
-  "reason": "Only 8/16 G3 passages currently have branch-visible human question artifacts. Do not advance to notes or atomic registration until G3-001..008 A/B questions are authored and validated.",
-  "nextExactStart": "Fetch the canonical G3-001..008 passage drafts from the branch, author A/B 5+5 questions per passage with answer/evidence/evidenceJp/reason, then rerun this coverage gate."
+  "gate": "FAIL_ONE_PAYLOAD_RESOLUTION",
+  "reason": "The prior stale gate incorrectly reported G3-001..008 as missing. Branch-visible artifacts now cover G3-001..004 and G3-006..016 with A/B question payloads. G3-005 is represented only by COMPLETE_PREVIOUSLY_VERIFIED in the combined 005..008 artifact, so its full preserved A/B payload must be located/read back or restored before declaring the 160-question coverage/evidence gate PASS.",
+  "nextExactStart": "Locate/read back the preserved full G3-005 A5+B5 payload without rewriting canonical text. Then validate all 16 passages for A5+B5 plus answer/evidence/evidenceJp/reason; if PASS, advance immediately to normal/easy notes and remaining Batch16 gates. Do not atomically register until every required Batch16 gate passes."
 }
