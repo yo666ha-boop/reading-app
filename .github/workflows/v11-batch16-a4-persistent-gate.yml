@@ -33,8 +33,9 @@ jobs:
           sleep 2
       - name: Build and run Batch16 A4 student teacher and persistent runtime gate
         run: |
-          sed -e 's/V11_BATCH15/V11_BATCH16/g' -e 's/V11-B15/V11-B16/g' -e 's/Batch15/Batch16/g' -e 's/B15_/B16_/g' scripts/v11_batch15_a4_persistent_gate.js > /tmp/v11_batch16_a4_persistent_gate.js
-          node /tmp/v11_batch16_a4_persistent_gate.js
+          sed -e 's/V11_BATCH15/V11_BATCH16/g' -e 's/V11-B15/V11-B16/g' -e 's/Batch15/Batch16/g' -e 's/B15_/B16_/g' scripts/v11_batch15_a4_persistent_gate.js > scripts/v11_batch16_a4_persistent_gate.generated.js
+          node scripts/v11_batch16_a4_persistent_gate.generated.js
+          rm scripts/v11_batch16_a4_persistent_gate.generated.js
       - name: Persist PASS report
         if: success()
         run: |
