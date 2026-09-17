@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-17T19:58:00.659Z",
+  "generatedAt": "2026-09-17T20:59:23.841Z",
   "batch": "V11-B15",
   "candidatePassages": 50,
   "candidateInjected": true,
@@ -47,7 +47,7 @@
           "extraPassages": 750,
           "lastAdded": 50,
           "source": "register",
-          "updatedAt": "2026-09-17T19:58:04.292Z"
+          "updatedAt": "2026-09-17T20:59:27.613Z"
         }
       },
       "title": "長文読解問題作成アプリ v10 stage2",
@@ -60,17 +60,17 @@
       "errors": []
     },
     "webkit": {
-      "pass": false,
+      "pass": true,
       "httpStatus": 200,
       "registration": {
         "ok": true,
         "ret": {
           "version": "20260905-v11-selected-section-003-visible-switch",
           "groups": 6,
-          "extraPassages": 450,
+          "extraPassages": 750,
           "lastAdded": 50,
           "source": "register",
-          "updatedAt": "2026-09-17T19:58:11.905Z"
+          "updatedAt": "2026-09-17T20:59:37.088Z"
         }
       },
       "title": "長文読解問題作成アプリ v10 stage2",
@@ -80,13 +80,31 @@
       "hasPassage": true,
       "hasQuestions": true,
       "hasGrade": true,
-      "errors": [
-        "pageerror:Batch09 runtime totals invalid {\"version\":\"20260905-v11-selected-section-003-visible-switch\",\"groups\":6,\"extraPassages\":500,\"lastAdded\":50,\"source\":\"register\",\"updatedAt\":\"2026-09-17T19:58:11.975Z\"}",
-        "console:Error: Batch09 registration did not complete",
-        "pageerror:Error: Batch09 registration did not complete"
-      ]
+      "errors": []
+    },
+    "iphone-webkit": {
+      "pass": true,
+      "httpStatus": 200,
+      "registration": {
+        "ok": true,
+        "ret": {
+          "version": "20260905-v11-selected-section-003-visible-switch",
+          "groups": 6,
+          "extraPassages": 750,
+          "lastAdded": 50,
+          "source": "register",
+          "updatedAt": "2026-09-17T20:59:42.764Z"
+        }
+      },
+      "title": "長文読解問題作成アプリ v10 stage2",
+      "bodyChars": 738,
+      "ready": "complete",
+      "hasRegister": true,
+      "hasPassage": true,
+      "hasQuestions": true,
+      "hasGrade": true,
+      "errors": []
     }
   },
-  "finalPass": false,
-  "error": "Error: webkit failed: {\"pass\":false,\"httpStatus\":200,\"registration\":{\"ok\":true,\"ret\":{\"version\":\"20260905-v11-selected-section-003-visible-switch\",\"groups\":6,\"extraPassages\":450,\"lastAdded\":50,\"source\":\"register\",\"updatedAt\":\"2026-09-17T19:58:11.905Z\"}},\"title\":\"長文読解問題作成アプリ v10 stage2\",\"bodyChars\":738,\"ready\":\"complete\",\"hasRegister\":true,\"hasPassage\":true,\"hasQuestions\":true,\"hasGrade\":true,\"errors\":[\"pageerror:Batch09 runtime totals invalid {\\\"version\\\":\\\"20260905-v11-selected-section-003-visible-switch\\\",\\\"groups\\\":6,\\\"extraPassages\\\":500,\\\"lastAdded\\\":50,\\\"source\\\":\\\"register\\\",\\\"updatedAt\\\":\\\"2026-09-17T19:58:11.975Z\\\"}\",\"console:Error: Batch09 registration did not complete\",\"pageerror:Error: Batch09 registration did not complete\"]}\n    at run (/home/runner/work/reading-app/reading-app/scripts/v11_batch15_browser_gate.js:33:1536)\n    at async /home/runner/work/reading-app/reading-app/scripts/v11_batch15_browser_gate.js:34:47"
+  "finalPass": true
 }
