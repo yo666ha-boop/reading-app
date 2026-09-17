@@ -1,22 +1,14 @@
 {
-  "batch": 16,
-  "group": "G3",
-  "checkedAtJst": "2026-09-17T12:57:00+09:00",
-  "branch": "v11-1000passage-easy-notes",
-  "formalCountBeforeBatch16": 918,
-  "required": {
-    "passages": 16,
-    "questionsPerPassage": 10,
-    "split": "A5+B5",
-    "requiredFields": ["answer", "evidence", "evidenceJp", "reason"]
+  "batch":16,"group":"G3","checkedAtJst":"2026-09-17T13:08:00+09:00","branch":"v11-1000passage-easy-notes","formalCountBeforeBatch16":918,
+  "required":{"passages":16,"questionsPerPassage":10,"split":"A5+B5","requiredFields":["answer","evidence","evidenceJp","reason"]},
+  "actual":{
+    "G3-001..004":{"status":"PRESENT","artifact":"V11_BATCH16_G3_QUESTIONS_HUMAN_001_004.json","coverage":"A5+B5 each"},
+    "G3-005":{"status":"PRESENT_RESTORED_FROM_VERIFIED_COMMIT","artifact":"V11_BATCH16_G3_QUESTIONS_HUMAN_005_PRESERVED.json","sourceCommit":"9e095d5bd4b8306e9518ebdebce1233232ce88c0","coverage":"A5+B5"},
+    "G3-006..008":{"status":"PRESENT","artifact":"V11_BATCH16_G3_QUESTIONS_HUMAN_005_008.json","coverage":"A5+B5 each"},
+    "G3-009..012":{"status":"PRESENT","artifact":"V11_BATCH16_G3_QUESTIONS_HUMAN_009_012.json","coverage":"A5+B5 each"},
+    "G3-013..016":{"status":"PRESENT","artifact":"V11_BATCH16_G3_QUESTIONS_HUMAN_013_016.json","coverage":"A5+B5 each"}
   },
-  "actual": {
-    "G3-001..004": {"status": "PRESENT", "artifact": "V11_BATCH16_G3_QUESTIONS_HUMAN_001_004.json", "coverage": "4/4 passages, A5+B5 each"},
-    "G3-005..008": {"status": "PRESENT_WITH_G3_005_REFERENCE", "artifact": "V11_BATCH16_G3_QUESTIONS_HUMAN_005_008.json", "coverage": "G3-006..008 A5+B5 each; G3-005 marked COMPLETE_PREVIOUSLY_VERIFIED and must be resolved to its full preserved question payload before final question gate PASS"},
-    "G3-009..012": {"status": "PRESENT", "artifact": "V11_BATCH16_G3_QUESTIONS_HUMAN_009_012.json", "coverage": "4/4 passages, A5+B5 each"},
-    "G3-013..016": {"status": "PRESENT", "artifact": "V11_BATCH16_G3_QUESTIONS_HUMAN_013_016.json", "coverage": "4/4 passages, A5+B5 each"}
-  },
-  "gate": "FAIL_ONE_PAYLOAD_RESOLUTION",
-  "reason": "The prior stale gate incorrectly reported G3-001..008 as missing. Branch-visible artifacts now cover G3-001..004 and G3-006..016 with A/B question payloads. G3-005 is represented only by COMPLETE_PREVIOUSLY_VERIFIED in the combined 005..008 artifact, so its full preserved A/B payload must be located/read back or restored before declaring the 160-question coverage/evidence gate PASS.",
-  "nextExactStart": "Locate/read back the preserved full G3-005 A5+B5 payload without rewriting canonical text. Then validate all 16 passages for A5+B5 plus answer/evidence/evidenceJp/reason; if PASS, advance immediately to normal/easy notes and remaining Batch16 gates. Do not atomically register until every required Batch16 gate passes."
+  "gate":"PASS_QUESTION_PAYLOAD_COVERAGE",
+  "validation":"All 16 G3 passage IDs now have branch-visible A5+B5 question payloads. The recovered G3-005 payload was read directly from commit 9e095d5... and restored without changing canonical passage text. Required answer/evidence/evidenceJp/reason fields are present in the recovered payload and branch-visible question artifacts.",
+  "nextExactStart":"Advance immediately to Batch16 normal/easy notes and required-local gloss validation, then remaining batch-local gates. Keep formal total 918 until every Batch16 required gate passes; only then atomically register 50."
 }
