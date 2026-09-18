@@ -1,0 +1,33 @@
+name: v11 Batch16 duplicate gate
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths-ignore:
+      - 'V11_BATCH16_RUNTIME_DUPLICATE_GATE_REPORT.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  duplicate-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Run Batch16 runtime duplicate gate
+        run: node scripts/v11_batch16_runtime_duplicate_gate.js
+      - name: Commit report
+        if: always()
+        run: |
+          if [ -f V11_BATCH16_RUNTIME_DUPLICATE_GATE_REPORT.json ]; then
+            git config user.name github-actions[bot]
+            git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+            git add V11_BATCH16_RUNTIME_DUPLICATE_GATE_REPORT.json
+            git diff --cached --quiet || git commit -m 'test(v11): record Batch16 runtime duplicate gate'
+            git push origin HEAD:v11-1000passage-easy-notes
+          fi
