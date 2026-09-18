@@ -1,0 +1,62 @@
+name: v11 Batch16 browser gate R2
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths-ignore:
+      - 'V11_BATCH16_BROWSER_GATE_REPORT.json'
+      - 'V11_BATCH16_BROWSER_GATE_PREFLIGHT_ERROR.txt'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: v11-batch16-browser-gate-r2
+  cancel-in-progress: true
+jobs:
+  browser-gate-r2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium webkit
+      - name: Start static server
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/v11-b16-http.log 2>&1 &
+          sleep 2
+      - name: Build and run Batch16 Chromium WebKit iPhone gate
+        run: |
+          sed -e 's/V11_BATCH15/V11_BATCH16/g' -e 's/V11-B15/V11-B16/g' -e 's/Batch15/Batch16/g' -e 's/B15_/B16_/g' scripts/v11_batch15_browser_gate.js > scripts/v11_batch16_browser_gate.generated.js
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('scripts/v11_batch16_browser_gate.generated.js')
+          s=p.read_text()
+          old="  const raw=String(p.anchor||'').trim();"
+          new="""  const explicit=String(p.anchor||p.curriculumAnchor||p.textbookAnchor||((p.textbook&&p.unit)?`${p.textbook} ${p.unit}`:'')||'').trim();
+  const seq=Number((/-(\\d{3})$/.exec(id)||[])[1]||0);
+  const gradeMatch=/^V11-B16-G([123])-\\d{3}$/.exec(id);
+  const canonicalAnchors={1:['Sunshine PROGRAM 10-2','NH Unit 10-2'],2:['Sunshine PROGRAM 8-3','NH Unit 7-4'],3:['Sunshine PROGRAM 7-3','NH Unit 6-4']};
+  const raw=explicit||((gradeMatch&&seq)?canonicalAnchors[Number(gradeMatch[1])][(seq-1)%2]:'');"""
+          if old not in s:
+              raise SystemExit('anchor normalization target not found')
+          p.write_text(s.replace(old,new,1))
+          PY
+          rm -f V11_BATCH16_BROWSER_GATE_PREFLIGHT_ERROR.txt
+          node -e "const fs=require('fs'); process.on('uncaughtException',e=>{fs.writeFileSync('V11_BATCH16_BROWSER_GATE_PREFLIGHT_ERROR.txt',String(e&&e.stack||e)+'\n'); process.exit(1)}); require('./scripts/v11_batch16_browser_gate.generated.js')"
+      - name: Persist gate report
+        if: always()
+        run: |
+          rm -f scripts/v11_batch16_browser_gate.generated.js
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          test -f V11_BATCH16_BROWSER_GATE_REPORT.json && git add V11_BATCH16_BROWSER_GATE_REPORT.json || true
+          test -f V11_BATCH16_BROWSER_GATE_PREFLIGHT_ERROR.txt && git add V11_BATCH16_BROWSER_GATE_PREFLIGHT_ERROR.txt || true
+          git diff --cached --quiet || git commit -m 'audit(v11): persist Batch16 browser gate R2 diagnostics'
+          git pull --rebase origin v11-1000passage-easy-notes
+          git push origin HEAD:v11-1000passage-easy-notes
