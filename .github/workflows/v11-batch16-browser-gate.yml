@@ -37,12 +37,11 @@ jobs:
           from pathlib import Path
           p=Path('scripts/v11_batch16_browser_gate.generated.js')
           s=p.read_text()
-          old="  const raw=String(p.anchor||'').trim();"
-          new="""  const explicit=String(p.anchor||p.curriculumAnchor||p.textbookAnchor||((p.textbook&&p.unit)?`${p.textbook} ${p.unit}`:'')||'').trim();
-  const seq=Number((/-(\\d{3})$/.exec(id)||[])[1]||0);
+          old="  const a=p.anchor;"
+          new="""  const seq=Number((/-(\\d{3})$/.exec(id)||[])[1]||0);
   const gradeMatch=/^V11-B16-G([123])-\\d{3}$/.exec(id);
-  const canonicalAnchors={1:['Sunshine PROGRAM 10-2','NH Unit 10-2'],2:['Sunshine PROGRAM 8-3','NH Unit 7-4'],3:['Sunshine PROGRAM 7-3','NH Unit 6-4']};
-  const raw=explicit||((gradeMatch&&seq)?canonicalAnchors[Number(gradeMatch[1])][(seq-1)%2]:'');"""
+  const canonicalAnchors={1:[{textbook:'Sunshine',grade:1,unit:'PROGRAM 10-2'},{textbook:'New Horizon',grade:1,unit:'Unit 10-2'}],2:[{textbook:'Sunshine',grade:2,unit:'PROGRAM 8-3'},{textbook:'New Horizon',grade:2,unit:'Unit 7-4'}],3:[{textbook:'Sunshine',grade:3,unit:'PROGRAM 7-3'},{textbook:'New Horizon',grade:3,unit:'Unit 6-4'}]};
+  const a=p.anchor||((gradeMatch&&seq)?canonicalAnchors[Number(gradeMatch[1])][(seq-1)%2]:null);"""
           if old not in s:
               raise SystemExit('anchor normalization target not found')
           p.write_text(s.replace(old,new,1))
