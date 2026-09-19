@@ -1,24 +1,33 @@
 {
-  "generatedAt": "2026-09-19T06:57:10.639Z",
+  "generatedAt": "2026-09-19T06:59:11.016Z",
   "candidate": 50,
   "baseline": 168,
-  "registeredExtra": 700,
-  "prior": 868,
+  "registeredExtra": 750,
+  "prior": 918,
   "threshold": 0.9,
   "prerequisites": {
     "batch16Exactly50": true,
     "baselineExactly168": true,
-    "priorExactly918": false
+    "priorExactly918": true,
+    "batch15PersistentRegistered": true
   },
   "exactDuplicates": [],
   "nearDuplicates": [],
   "runtimeState": {
     "version": "20260905-v11-selected-section-003-visible-switch",
     "groups": 6,
-    "extraPassages": 700,
+    "extraPassages": 750,
     "lastAdded": 50,
     "source": "register",
-    "updatedAt": "2026-09-19T06:57:07.443Z"
+    "updatedAt": "2026-09-19T06:59:06.873Z"
   },
-  "finalPass": false
+  "batch15Persistent": {
+    "version": "20260919-b15-persistent-r2",
+    "registered": true,
+    "batch15Passages": 50,
+    "extraPassages": 750,
+    "totalWithBaseline": 918
+  },
+  "batch15Error": null,
+  "finalPass": true
 }
