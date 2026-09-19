@@ -6,6 +6,7 @@ on:
       - 'V11_BATCH15_BROWSER_GATE_REPORT.json'
       - 'V11_BATCH15_BROWSER_GATE_PREFLIGHT_ERROR.txt'
       - 'V11_BATCH15_A4_PERSISTENT_GATE_REPORT.json'
+      - 'V11_BATCH15_RUNTIME_CANDIDATE.json'
   workflow_dispatch:
 permissions:
   contents: write
@@ -23,6 +24,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Export verified Batch15 runtime candidate
+        run: node scripts/v11_batch15_export_runtime_candidate.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
       - name: Install Playwright
         run: |
           npm install --no-save playwright@1.55.0
@@ -34,13 +40,14 @@ jobs:
       - name: Run Chromium WebKit iPhone gate
         run: |
           node -e "const fs=require('fs'); process.on('uncaughtException',e=>{fs.writeFileSync('V11_BATCH15_BROWSER_GATE_PREFLIGHT_ERROR.txt',String(e&&e.stack||e)+'\n'); process.exit(1)}); require('./scripts/v11_batch15_browser_gate.js')"
-      - name: Persist gate report
+      - name: Persist gate report and runtime candidate
         if: always()
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          test -f V11_BATCH15_RUNTIME_CANDIDATE.json && git add V11_BATCH15_RUNTIME_CANDIDATE.json || true
           test -f V11_BATCH15_BROWSER_GATE_REPORT.json && git add V11_BATCH15_BROWSER_GATE_REPORT.json || true
           test -f V11_BATCH15_BROWSER_GATE_PREFLIGHT_ERROR.txt && git add V11_BATCH15_BROWSER_GATE_PREFLIGHT_ERROR.txt || true
-          git diff --cached --quiet || git commit -m 'audit(v11): persist Batch15 browser gate diagnostics'
+          git diff --cached --quiet || git commit -m 'audit(v11): persist Batch15 runtime candidate and browser diagnostics'
           git pull --rebase origin v11-1000passage-easy-notes
           git push origin HEAD:v11-1000passage-easy-notes
