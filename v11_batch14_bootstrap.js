@@ -68,6 +68,14 @@
     });
   }
 
+  function loadBatch15(){
+    if(window.V11_BATCH15_BOOTSTRAP_STARTED) return;
+    var n=document.createElement('script');
+    n.src='./v11_batch15_bootstrap.js';
+    n.onerror=function(){ console.error('[v11 batch15] bootstrap load failed'); window.V11_BATCH15_PERSISTENT_REGISTERED=false; };
+    document.head.appendChild(n);
+  }
+
   fetch('./v11_batch14_assembled_draft.json', {cache:'no-store'})
     .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
     .then(function(payload){
@@ -78,7 +86,7 @@
       window.V11_BATCH14_PASSAGES = batch;
       var s=document.createElement('script');
       s.src='./v11_batch14_register.js';
-      s.onload=function(){ window.dispatchEvent(new Event('v11-passages-updated')); };
+      s.onload=function(){ window.dispatchEvent(new Event('v11-passages-updated')); loadBatch15(); };
       s.onerror=function(){ console.error('[v11 batch14] registrar load failed'); window.V11_BATCH14_REGISTERED=false; };
       document.head.appendChild(s);
     })
