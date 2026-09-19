@@ -16,14 +16,22 @@ for(const f of filesUnder().filter(f=>f.endsWith('.json')&&!/V11_BATCH15_BROWSER
 });}
 const ids=[...bodies.keys()].sort();if(ids.length!==50)throw new Error(`Batch15 body count ${ids.length} != 50`);
 function anchorMeta(p,id){
-  const raw=String(p.anchor||'').trim();
   const idm=/^V11-B15-G([123])-\d{3}$/.exec(id);if(!idm)throw new Error(`${id} invalid id`);const grade=idm[1];
-  let book=null,section=null;
+  const a=p.anchor;
+  if(a&&typeof a==='object'&&!Array.isArray(a)){
+    const rawBook=String(a.textbook||a.book||a.series||'').trim();
+    const rawGrade=String(a.grade||grade).replace(/^G/i,'').trim();
+    const rawSection=String(a.unit||a.section||a.program||a.code||'').trim();
+    if(rawGrade&&rawGrade!==grade)throw new Error(`${id} anchor grade mismatch ${JSON.stringify(a)}`);
+    const book=/^(New\s*Horizon|NH|ニューホライズン)$/i.test(rawBook.replace(/\s+/g,' '))?'NH':(/^(Sunshine|SS|サンシャイン)$/i.test(rawBook)?'SS':null);
+    if(book&&rawSection)return{textbook:book==='NH'?'ニューホライズン':'サンシャイン',anchor:{textbook:book==='NH'?'New Horizon':'Sunshine',grade:Number(grade),unit:rawSection},grade,section:rawSection};
+  }
+  const raw=String(a||'').trim();let book=null,section=null;
   let m=/^(NH|SS)-G([123])-(.+)$/.exec(raw);
   if(m){if(m[2]!==grade)throw new Error(`${id} anchor grade mismatch ${raw}`);book=m[1];const code=m[3];section=code;if(/^U\d/.test(code))section='Unit '+code.slice(1);else if(/^P\d/.test(code))section='PROGRAM '+code.slice(1);}
   if(!book){m=/^(New\s*Horizon|NH|Sunshine|SS)\s+(Unit|PROGRAM)\s+(.+)$/i.exec(raw);if(m){book=/^(New\s*Horizon|NH)$/i.test(m[1].replace(/\s+/g,' '))?'NH':'SS';section=(m[2].toUpperCase()==='PROGRAM'?'PROGRAM':'Unit')+' '+m[3].trim();}}
   if(!book){m=/^(ニューホライズン|サンシャイン)\s+(Unit|PROGRAM)\s+(.+)$/i.exec(raw);if(m){book=m[1]==='ニューホライズン'?'NH':'SS';section=(m[2].toUpperCase()==='PROGRAM'?'PROGRAM':'Unit')+' '+m[3].trim();}}
-  if(!book||!section)throw new Error(`${id} unsupported anchor ${raw}`);
+  if(!book||!section)throw new Error(`${id} unsupported anchor ${typeof a==='object'?JSON.stringify(a):raw}`);
   return{textbook:book==='NH'?'ニューホライズン':'サンシャイン',anchor:{textbook:book==='NH'?'New Horizon':'Sunshine',grade:Number(grade),unit:section},grade,section};
 }
 function slashRowsFor(id){const rec=slashes.get(id);if(!rec)throw new Error(`${id} missing human slash artifact`);const s=rec.o;if(Array.isArray(s.slashRows)&&s.slashRows.length)return s.slashRows.map(r=>({en:String(r.en||r.english||'').trim(),jp:String(r.jp||r.japanese||'').trim(),humanReview:r.humanReview||'B15_HUMAN_SLASH_PASS',alignmentShape:r.alignmentShape||'1:1'}));const en=String(s.bodySlash||'').split(' / ').map(x=>x.trim()).filter(Boolean),jp=String(s.translationSlash||'').split(' / ').map(x=>x.trim()).filter(Boolean);if(en.length!==jp.length||!en.length)throw new Error(`${id} slash count mismatch ${en.length}/${jp.length}; source=${rec.source}; bodySlash=${JSON.stringify(s.bodySlash)}; translationSlash=${JSON.stringify(s.translationSlash)}`);return en.map((x,i)=>({en:x,jp:jp[i],humanReview:'B15_HUMAN_SLASH_PASS',alignmentShape:'1:1'}));}
