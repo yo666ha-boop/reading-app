@@ -30,7 +30,7 @@
       var extra = Array.isArray(st.extraPassages) ? st.extraPassages.length : Number(st.extraPassages||0);
       if (extra !== 750) throw new Error('Batch15 persistent extraPassages expected 750, got '+extra);
       window.V11_BATCH15_PERSISTENT_REGISTERED = true;
-      window.V11_BATCH15_BOOTSTRAP_STATE = {version:'20260919-b15-persistent', registered:true, batch15Passages:50, extraPassages:750, totalWithBaseline:918};
+      window.V11_BATCH15_BOOTSTRAP_STATE = {version:'20260919-b15-persistent-r2', registered:true, batch15Passages:50, extraPassages:750, totalWithBaseline:918};
       if (typeof window.render === 'function') window.render();
       window.dispatchEvent(new Event('v11-passages-updated'));
     })
