@@ -33,21 +33,8 @@ jobs:
       - name: Build and run Batch16 Chromium WebKit iPhone gate
         run: |
           sed -e 's/V11_BATCH15/V11_BATCH16/g' -e 's/V11-B15/V11-B16/g' -e 's/Batch15/Batch16/g' -e 's/B15_/B16_/g' scripts/v11_batch15_browser_gate.js > scripts/v11_batch16_browser_gate.generated.js
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('scripts/v11_batch16_browser_gate.generated.js')
-          s=p.read_text()
-          old="  const a=p.anchor;"
-          new="""  const seq=Number((/-(\\d{3})$/.exec(id)||[])[1]||0);
-  const gradeMatch=/^V11-B16-G([123])-\\d{3}$/.exec(id);
-  const canonicalAnchors={1:[{textbook:'Sunshine',grade:1,unit:'PROGRAM 10-2'},{textbook:'New Horizon',grade:1,unit:'Unit 10-2'}],2:[{textbook:'Sunshine',grade:2,unit:'PROGRAM 8-3'},{textbook:'New Horizon',grade:2,unit:'Unit 7-4'}],3:[{textbook:'Sunshine',grade:3,unit:'PROGRAM 7-3'},{textbook:'New Horizon',grade:3,unit:'Unit 6-4'}]};
-  const a=p.anchor||((gradeMatch&&seq)?canonicalAnchors[Number(gradeMatch[1])][(seq-1)%2]:null);"""
-          if old not in s:
-              raise SystemExit('anchor normalization target not found')
-          p.write_text(s.replace(old,new,1))
-          PY
           rm -f V11_BATCH16_BROWSER_GATE_PREFLIGHT_ERROR.txt
-          node -e "const fs=require('fs'); process.on('uncaughtException',e=>{fs.writeFileSync('V11_BATCH16_BROWSER_GATE_PREFLIGHT_ERROR.txt',String(e&&e.stack||e)+'\n'); process.exit(1)}); require('./scripts/v11_batch16_browser_gate.generated.js')"
+          node -e "const fs=require('fs'); process.on('uncaughtException',e=>{fs.writeFileSync('V11_BATCH16_BROWSER_GATE_PREFLIGHT_ERROR.txt',String(e&&e.stack||e)+'\\n'); process.exit(1)}); require('./scripts/v11_batch16_browser_gate.generated.js')"
       - name: Persist gate report
         if: always()
         run: |
