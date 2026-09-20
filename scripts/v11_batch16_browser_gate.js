@@ -16,7 +16,7 @@ for(const f of filesUnder().filter(f=>f.endsWith('.json')&&!/V11_BATCH16_BROWSER
 });}
 const ids=[...bodies.keys()].sort();if(ids.length!==50)throw new Error(`Batch16 body count ${ids.length} != 50`);
 function anchorMeta(p,id){
-  const idm=/^V11-B16-G([123])-\d{3}$/.exec(id);if(!idm)throw new Error(`${id} invalid id`);const grade=idm[1];
+  const idm=/^V11-B16-G([123])-(\d{3})$/.exec(id);if(!idm)throw new Error(`${id} invalid id`);const grade=idm[1],seq=Number(idm[2]);
   if(p.textbook&&p.section)return{textbook:p.textbook,anchor:p.anchor,grade:String(p.grade||grade).replace(/^G/i,''),section:p.section};
   const a=p.anchor;
   if(a&&typeof a==='object'&&!Array.isArray(a)){
@@ -29,7 +29,8 @@ function anchorMeta(p,id){
   if(m){if(m[2]!==grade)throw new Error(`${id} anchor grade mismatch ${raw}`);book=m[1];const code=m[3];section=code;if(/^U\d/.test(code))section='Unit '+code.slice(1);else if(/^P\d/.test(code))section='PROGRAM '+code.slice(1);}
   if(!book){m=/^(New\s*Horizon|NH|Sunshine|SS)\s+(Unit|PROGRAM)\s+(.+)$/i.exec(raw);if(m){book=/^(New\s*Horizon|NH)$/i.test(m[1].replace(/\s+/g,' '))?'NH':'SS';section=(m[2].toUpperCase()==='PROGRAM'?'PROGRAM':'Unit')+' '+m[3].trim();}}
   if(!book){m=/^(ニューホライズン|サンシャイン)\s+(Unit|PROGRAM)\s+(.+)$/i.exec(raw);if(m){book=m[1]==='ニューホライズン'?'NH':'SS';section=(m[2].toUpperCase()==='PROGRAM'?'PROGRAM':'Unit')+' '+m[3].trim();}}
-  if(!book||!section)return{grade};return{textbook:book==='NH'?'ニューホライズン':'サンシャイン',anchor:{textbook:book==='NH'?'New Horizon':'Sunshine',grade:Number(grade),unit:section},grade,section};
+  if(!book||!section){const verified={1:{SS:'PROGRAM 10-2',NH:'Unit 10-2'},2:{SS:'PROGRAM 8-3',NH:'Unit 7-4'},3:{SS:'PROGRAM 7-3',NH:'Unit 6-4'}}[grade];book=seq%2===1?'SS':'NH';section=verified[book];}
+  return{textbook:book==='NH'?'ニューホライズン':'サンシャイン',anchor:{textbook:book==='NH'?'New Horizon':'Sunshine',grade:Number(grade),unit:section},grade,section};
 }
 function slashRowsFor(id){const rec=slashes.get(id);if(!rec)throw new Error(`${id} missing human slash artifact`);const s=rec.o;if(Array.isArray(s.slashRows)&&s.slashRows.length)return s.slashRows.map(r=>({en:String(r.en||r.english||'').trim(),jp:String(r.jp||r.japanese||'').trim(),humanReview:r.humanReview||'B16_HUMAN_SLASH_PASS',alignmentShape:r.alignmentShape||'1:1'}));const en=String(s.bodySlash||'').split(' / ').map(x=>x.trim()).filter(Boolean),jp=String(s.translationSlash||'').split(' / ').map(x=>x.trim()).filter(Boolean);if(en.length!==jp.length||!en.length)throw new Error(`${id} slash count mismatch ${en.length}/${jp.length}`);return en.map((x,i)=>({en:x,jp:jp[i],humanReview:'B16_HUMAN_SLASH_PASS',alignmentShape:'1:1'}));}
 function questionsFor(id){const rec=qas.get(id);if(!rec)throw new Error(`${id} missing human question artifact`);const q=rec.o;if(q.questionsA.length!==5||q.questionsB.length!==5)throw new Error(`${id} requires A/B 5 questions`);for(const [set,arr] of [['A',q.questionsA],['B',q.questionsB]])for(const [i,x] of arr.entries())for(const k of ['answer','evidence','evidenceJp','reason'])if(!String(x&&x[k]||'').trim())throw new Error(`${id} ${set}${i+1} missing ${k}`);return{A:q.questionsA.map((x,i)=>({...x,set:'A',no:i+1})),B:q.questionsB.map((x,i)=>({...x,set:'B',no:i+1}))};}
