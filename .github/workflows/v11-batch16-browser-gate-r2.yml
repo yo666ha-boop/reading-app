@@ -30,34 +30,23 @@ jobs:
         run: |
           python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/v11-b16-http.log 2>&1 &
           sleep 2
-      - name: Build and run Batch16 Chromium WebKit iPhone gate
+      - name: Run Batch16 Chromium WebKit iPhone gate
         run: |
-          # Generate Batch16 directly from the current Batch15 browser gate, then adapt only
-          # the metadata contract that intentionally differs in Batch16.
-          sed -e 's/V11_BATCH15/V11_BATCH16/g' -e 's/V11-B15/V11-B16/g' -e 's/Batch15/Batch16/g' -e 's/B15_/B16_/g' scripts/v11_batch15_browser_gate.js > scripts/v11_batch16_browser_gate.generated.js
-          # Batch16 is explicitly grade-targeted (not textbook-section-bound), matching its
-          # formal chronology gate. Preserve any real structured anchor if present, but when
-          # no section anchor exists return grade-only metadata instead of inventing one.
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('scripts/v11_batch16_browser_gate.generated.js')
-          s=p.read_text()
-          old="  if(!book||!section)throw new Error(`${id} unsupported anchor ${typeof a==='object'?JSON.stringify(a):raw}`);"
-          new="  if(!book||!section)return{grade};"
-          if old not in s:
-              raise SystemExit('Batch16 grade-targeted anchor adaptation target not found')
-          p.write_text(s.replace(old,new,1))
-          PY
           rm -f V11_BATCH16_BROWSER_GATE_PREFLIGHT_ERROR.txt
-          node -e "const fs=require('fs'); process.on('uncaughtException',e=>{fs.writeFileSync('V11_BATCH16_BROWSER_GATE_PREFLIGHT_ERROR.txt',String(e&&e.stack||e)+'\n'); process.exit(1)}); require('./scripts/v11_batch16_browser_gate.generated.js')"
-      - name: Persist gate report
+          node -e "const fs=require('fs'); process.on('uncaughtException',e=>{fs.writeFileSync('V11_BATCH16_BROWSER_GATE_PREFLIGHT_ERROR.txt',String(e&&e.stack||e)+'\\n'); console.error(e); process.exit(1)}); require('./scripts/v11_batch16_browser_gate.js')"
+      - name: Persist gate diagnostics
         if: always()
+        continue-on-error: true
         run: |
-          rm -f scripts/v11_batch16_browser_gate.generated.js
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          test -f V11_BATCH16_BROWSER_GATE_REPORT.json && git add V11_BATCH16_BROWSER_GATE_REPORT.json || true
-          test -f V11_BATCH16_BROWSER_GATE_PREFLIGHT_ERROR.txt && git add V11_BATCH16_BROWSER_GATE_PREFLIGHT_ERROR.txt || true
-          git diff --cached --quiet || git commit -m 'audit(v11): persist Batch16 browser gate R2 diagnostics'
-          git pull --rebase origin v11-1000passage-easy-notes
-          git push origin HEAD:v11-1000passage-easy-notes
+          git add -A -- V11_BATCH16_BROWSER_GATE_REPORT.json V11_BATCH16_BROWSER_GATE_PREFLIGHT_ERROR.txt || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'audit(v11): persist Batch16 browser gate R2 diagnostics'
+            for n in 1 2 3; do
+              git pull --rebase origin v11-1000passage-easy-notes && git push origin HEAD:v11-1000passage-easy-notes && exit 0
+              git rebase --abort || true
+              sleep $((n*2))
+            done
+            exit 1
+          fi
