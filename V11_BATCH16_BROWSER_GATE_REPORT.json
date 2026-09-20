@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-09-20T07:46:41.668Z",
+  "batch": "V11-B16",
+  "candidatePassages": 50,
+  "candidateInjected": true,
+  "assembly": {
+    "body": 50,
+    "slash": 50,
+    "questions": 50
+  },
+  "candidateFirst": {
+    "id": "V11-B16-G1-001",
+    "bodySource": "V11_BATCH16_BODY_TRANSLATION_DRAFT_G1_001_010.json",
+    "slashSource": "V11_BATCH16_SLASH_HUMAN_G1_001_006_20260920.json",
+    "questionSource": "V11_BATCH16_QUESTIONS_HUMAN_G1_ALL_NORMALIZED.json",
+    "keys": [
+      "batch",
+      "body",
+      "finalHumanQuestionReview",
+      "finalSlashHumanReview",
+      "fullTranslation",
+      "grade",
+      "id",
+      "questionSetB",
+      "questions",
+      "registered",
+      "sentences",
+      "slash",
+      "slashRows",
+      "title",
+      "wordCount"
+    ]
+  },
+  "browsers": {
+    "chromium": {
+      "pass": false,
+      "httpStatus": 200,
+      "registration": {
+        "ok": false,
+        "error": "Error: v11 passage V11-B16-G1-001 missing textbook,section\n    at validatePassage (http://127.0.0.1:4173/v11_multi_passage_architecture.js?v=20260827-v11-005:15:29)\n    at register (http://127.0.0.1:4173/v11_multi_passage_architecture.js?v=20260827-v11-005:32:7)\n    at eval (eval at evaluate (:291:30), <anonymous>:1:131)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+      },
+      "title": "長文読解問題作成アプリ v10 stage2",
+      "bodyChars": 1106,
+      "ready": "complete",
+      "hasRegister": true,
+      "hasPassage": true,
+      "hasQuestions": true,
+      "hasGrade": true,
+      "errors": []
+    }
+  },
+  "finalPass": false,
+  "error": "Error: chromium failed: {\"pass\":false,\"httpStatus\":200,\"registration\":{\"ok\":false,\"error\":\"Error: v11 passage V11-B16-G1-001 missing textbook,section\\n    at validatePassage (http://127.0.0.1:4173/v11_multi_passage_architecture.js?v=20260827-v11-005:15:29)\\n    at register (http://127.0.0.1:4173/v11_multi_passage_architecture.js?v=20260827-v11-005:32:7)\\n    at eval (eval at evaluate (:291:30), <anonymous>:1:131)\\n    at UtilityScript.evaluate (<anonymous>:293:16)\\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\"},\"title\":\"長文読解問題作成アプリ v10 stage2\",\"bodyChars\":1106,\"ready\":\"complete\",\"hasRegister\":true,\"hasPassage\":true,\"hasQuestions\":true,\"hasGrade\":true,\"errors\":[]}\n    at run (/home/runner/work/reading-app/reading-app/scripts/v11_batch16_browser_gate.js:41:1536)\n    at async /home/runner/work/reading-app/reading-app/scripts/v11_batch16_browser_gate.js:42:16"
+}
