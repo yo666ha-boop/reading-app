@@ -1,10 +1,10 @@
-/home/runner/work/reading-app/reading-app/scripts/v11_batch16_browser_gate.generated.js:34
-  if(!book||!section)throw new Error(`${id} unsupported anchor ${typeof a==='object'?JSON.stringify(a):raw}`);
-                     ^
+/home/runner/work/reading-app/reading-app/scripts/v11_batch16_browser_gate.generated.js:38
+function questionsFor(id){const rec=qas.get(id);if(!rec)throw new Error(`${id} missing human question artifact`);const q=rec.o;if(q.questionsA.length!==5||q.questionsB.length!==5)throw new Error(`${id} requires A/B 5 questions`);for(const [set,arr] of [['A',q.questionsA],['B',q.questionsB]])for(const [i,x] of arr.entries())for(const k of ['answer','evidence','evidenceJp','reason'])if(!String(x&&x[k]||'').trim())throw new Error(`${id} ${set}${i+1} missing ${k}`);return{A:q.questionsA.map((x,i)=>({...x,set:'A',no:i+1})),B:q.questionsB.map((x,i)=>({...x,set:'B',no:i+1}))};}
+                                                                                                                                                                                                                                                                                                                                                                                                                               ^
 
-Error: V11-B16-G1-001 unsupported anchor 
-    at anchorMeta (/home/runner/work/reading-app/reading-app/scripts/v11_batch16_browser_gate.generated.js:34:28)
-    at /home/runner/work/reading-app/reading-app/scripts/v11_batch16_browser_gate.generated.js:39:63
+Error: V11-B16-G3-009 A4 missing answer
+    at questionsFor (/home/runner/work/reading-app/reading-app/scripts/v11_batch16_browser_gate.generated.js:38:422)
+    at /home/runner/work/reading-app/reading-app/scripts/v11_batch16_browser_gate.generated.js:39:113
     at Array.map (<anonymous>)
     at Object.<anonymous> (/home/runner/work/reading-app/reading-app/scripts/v11_batch16_browser_gate.generated.js:39:21)
     at Module._compile (node:internal/modules/cjs/loader:1521:14)
