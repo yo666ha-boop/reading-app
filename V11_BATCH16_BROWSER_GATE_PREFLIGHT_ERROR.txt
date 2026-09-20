@@ -1,10 +1,10 @@
-/home/runner/work/reading-app/reading-app/scripts/v11_batch16_browser_gate.generated.js:34
-  if(!book||!section)throw new Error(`${id} unsupported anchor ${typeof a==='object'?JSON.stringify(a):raw}`);
-                     ^
+/home/runner/work/reading-app/reading-app/scripts/v11_batch16_browser_gate.generated.js:37
+function slashRowsFor(id){const rec=slashes.get(id);if(!rec)throw new Error(`${id} missing human slash artifact`);const s=rec.o;if(Array.isArray(s.slashRows)&&s.slashRows.length)return s.slashRows.map(r=>({en:String(r.en||r.english||'').trim(),jp:String(r.jp||r.japanese||'').trim(),humanReview:r.humanReview||'B16_HUMAN_SLASH_PASS',alignmentShape:r.alignmentShape||'1:1'}));const en=String(s.bodySlash||'').split(' / ').map(x=>x.trim()).filter(Boolean),jp=String(s.translationSlash||'').split(' / ').map(x=>x.trim()).filter(Boolean);if(en.length!==jp.length||!en.length)throw new Error(`${id} slash count mismatch ${en.length}/${jp.length}; source=${rec.source}; bodySlash=${JSON.stringify(s.bodySlash)}; translationSlash=${JSON.stringify(s.translationSlash)}`);return en.map((x,i)=>({en:x,jp:jp[i],humanReview:'B16_HUMAN_SLASH_PASS',alignmentShape:'1:1'}));}
+                                                            ^
 
-Error: V11-B16-G1-001 unsupported anchor 
-    at anchorMeta (/home/runner/work/reading-app/reading-app/scripts/v11_batch16_browser_gate.generated.js:34:28)
-    at /home/runner/work/reading-app/reading-app/scripts/v11_batch16_browser_gate.generated.js:39:63
+Error: V11-B16-G1-001 missing human slash artifact
+    at slashRowsFor (/home/runner/work/reading-app/reading-app/scripts/v11_batch16_browser_gate.generated.js:37:67)
+    at /home/runner/work/reading-app/reading-app/scripts/v11_batch16_browser_gate.generated.js:39:93
     at Array.map (<anonymous>)
     at Object.<anonymous> (/home/runner/work/reading-app/reading-app/scripts/v11_batch16_browser_gate.generated.js:39:21)
     at Module._compile (node:internal/modules/cjs/loader:1521:14)
