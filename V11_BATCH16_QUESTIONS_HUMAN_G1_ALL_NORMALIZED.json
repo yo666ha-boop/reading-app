@@ -1,0 +1,1541 @@
+{
+  "batch": "V11-B16",
+  "stage": "human_question_authoring_normalized",
+  "registered": false,
+  "range": "G1-001..G1-017",
+  "passages": 17,
+  "questionsPerPassage": 10,
+  "humanAuthored": true,
+  "items": [
+    {
+      "id": "V11-B16-G1-001",
+      "title": "The Quiet Corner",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main idea of the passage?",
+          "answer": "A small change based on students' needs made the library corner easier to use.",
+          "evidence": "A small change at the right place helped make the space easier to use.",
+          "evidenceJp": "適切な場所での小さな変更が、その空間を使いやすくしました。",
+          "reason": "The final sentence summarizes both the action and its result."
+        },
+        {
+          "type": "DETAIL",
+          "question": "What did many students want in a reading place?",
+          "answer": "A quiet place with natural light and books nearby.",
+          "evidence": "Many said they wanted a quiet place with natural light, but they did not want to carry several books across the room.",
+          "evidenceJp": "多くの生徒は自然光の入る静かな場所を望み、何冊もの本を部屋の反対側まで運びたくないと答えました。",
+          "reason": "This sentence directly states the students' needs."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the group move a shelf closer to the windows?",
+          "answer": "To make popular books easier to reach from the quiet reading corner.",
+          "evidence": "We moved one shelf of popular books closer to the windows and added two small tables.",
+          "evidenceJp": "人気の本の棚を一つ窓の近くへ移し、小さな机を二つ置きました。",
+          "reason": "The move responds to the students' wish not to carry books across the room."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "What can we infer about the corner before the change?",
+          "answer": "Its location was pleasant, but it was inconvenient for getting books.",
+          "evidence": "Few students sat there. The tables were far from the book shelves.",
+          "evidenceJp": "そこに座る生徒は少なく、机は本棚から離れていました。",
+          "reason": "Low use plus distance from books indicates inconvenience rather than a lack of space."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "Which statement is true?",
+          "answer": "More students used the corner after the shelf and tables were moved.",
+          "evidence": "During the next week, more students came to the corner.",
+          "evidenceJp": "次の一週間、その一角を使う生徒が増えました。",
+          "reason": "The passage directly reports increased use after the change."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "In the passage, what does “nearby” describe?",
+          "answer": "The shelf being close to the reading corner.",
+          "evidence": "they returned books more quickly because the shelf was nearby",
+          "evidenceJp": "本棚が近かったので、生徒たちは本をより早く戻しました。",
+          "reason": "The word explains why returning books became easier."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: The group changed the library after asking students ____.",
+          "answer": "where they liked to read",
+          "evidence": "our library group asked students where they liked to read",
+          "evidenceJp": "図書委員のグループは、生徒たちがどこで読書をしたいか尋ねました。",
+          "reason": "The phrase identifies the information collected before the change."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The group first learned students' needs, then moved a shelf and tables, and finally found that the corner ____.",
+          "answer": "was used by more students",
+          "evidence": "During the next week, more students came to the corner.",
+          "evidenceJp": "次の一週間、その一角を使う生徒が増えました。",
+          "reason": "This is the central observed result."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would this sentence fit best: “The group decided to solve both problems at once.”",
+          "answer": "Before the sentence beginning “We moved one shelf...”",
+          "evidence": "Many said they wanted a quiet place with natural light... We moved one shelf...",
+          "evidenceJp": "生徒の希望を述べた文の後に、実際の変更が続きます。",
+          "reason": "The inserted sentence naturally links the identified needs to the action."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If a use chart showed 5 students before the change and 14 after it, what would it support?",
+          "answer": "The change made the corner more attractive or convenient to students.",
+          "evidence": "more students came to the corner",
+          "evidenceJp": "その一角を使う生徒が増えました。",
+          "reason": "The chart would give numerical support to the passage's reported increase."
+        }
+      ],
+      "finalHumanQuestionReview": true,
+      "source": "V11_BATCH16_QUESTIONS_DRAFT_G1_001_006.json"
+    },
+    {
+      "id": "V11-B16-G1-002",
+      "title": "A Better Meeting Time",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What did the science club learn?",
+          "answer": "A schedule should match members' real responsibilities.",
+          "evidence": "It needed a starting time that matched the students' real schedule.",
+          "evidenceJp": "生徒たちの実際の予定に合う開始時刻が必要でした。",
+          "reason": "The last sentence states the lesson of the passage."
+        },
+        {
+          "type": "DETAIL",
+          "question": "When did many late students finish cleaning?",
+          "answer": "At four twenty-five.",
+          "evidence": "many late students finished cleaning at four twenty-five",
+          "evidenceJp": "遅れていた生徒の多くは4時25分に掃除を終えていました。",
+          "reason": "The time is directly stated."
+        },
+        {
+          "type": "REASON",
+          "question": "Why were some members often late?",
+          "answer": "They had to clean their classrooms before the meeting.",
+          "evidence": "They cleaned their classrooms first.",
+          "evidenceJp": "彼らは先に教室を掃除していました。",
+          "reason": "Cleaning ended only five minutes before the original meeting time."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why was the leader's first idea about careless students probably wrong?",
+          "answer": "The lateness had a clear schedule-related cause.",
+          "evidence": "Then she checked the cleaning schedules of all members.",
+          "evidenceJp": "その後、彼女は全員の掃除予定を確認しました。",
+          "reason": "The schedules showed that lateness was linked to duties, not simple carelessness."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "Which change did the club make?",
+          "answer": "It started ten minutes later and shortened the opening talk.",
+          "evidence": "The club moved its meeting to four forty and shortened the opening talk.",
+          "evidenceJp": "会合を4時40分開始にし、最初の説明を短くしました。",
+          "reason": "Both changes are explicitly stated."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “After that” refer to?",
+          "answer": "After the meeting time and opening talk were changed.",
+          "evidence": "The club moved its meeting to four forty and shortened the opening talk. After that...",
+          "evidenceJp": "開始時刻を変え、最初の説明を短くした後のことです。",
+          "reason": "The phrase points back to the immediately preceding changes."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the sentence: The leader changed her view after she ____.",
+          "answer": "checked the cleaning schedules",
+          "evidence": "Then she checked the cleaning schedules of all members.",
+          "evidenceJp": "彼女は全員の掃除当番の予定を確認しました。",
+          "reason": "That check revealed the actual cause of lateness."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The club solved frequent lateness by changing the meeting time instead of ____.",
+          "answer": "making the meeting longer",
+          "evidence": "The club did not need a longer meeting.",
+          "evidenceJp": "会合を長くする必要はありませんでした。",
+          "reason": "The contrast is a key conclusion."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “The numbers changed her understanding of the problem.” fit best?",
+          "answer": "After the sentence about students finishing cleaning at four twenty-five.",
+          "evidence": "She found that many late students finished cleaning at four twenty-five.",
+          "evidenceJp": "多くの遅刻する生徒が4時25分に掃除を終えると分かった後です。",
+          "reason": "The sentence comments on the evidence before the solution is introduced."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "A table shows cleaning ends at 4:25 and the old meeting begins at 4:30. What does it explain?",
+          "answer": "Why the old start time was difficult for some members.",
+          "evidence": "many late students finished cleaning at four twenty-five",
+          "evidenceJp": "遅れていた生徒の多くは4時25分に掃除を終えていました。",
+          "reason": "Only five minutes remained between duties and the meeting."
+        }
+      ],
+      "finalHumanQuestionReview": true,
+      "source": "V11_BATCH16_QUESTIONS_DRAFT_G1_001_006.json"
+    },
+    {
+      "id": "V11-B16-G1-003",
+      "title": "The Two Water Bottles",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What helped Mika choose a better bottle size?",
+          "answer": "Measuring how much water she actually drank.",
+          "evidence": "Measuring her actual use helped her choose a better size.",
+          "evidenceJp": "実際の使用量を測ったことで、よりよい大きさを選べました。",
+          "reason": "The final sentence directly states the main lesson."
+        },
+        {
+          "type": "DETAIL",
+          "question": "How much of the large bottle did Mika usually drink?",
+          "answer": "About half.",
+          "evidence": "she usually drank about half of the large bottle",
+          "evidenceJp": "普段は大きな水筒の半分ほど飲んでいました。",
+          "reason": "The amount is directly stated."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did Mika first prefer the large bottle?",
+          "answer": "She was afraid of running out of water.",
+          "evidence": "She did not want to run out of water.",
+          "evidenceJp": "水がなくなることを心配していました。",
+          "reason": "This explains why she thought the large bottle was safer."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "What did Mika learn about her earlier choice?",
+          "answer": "The large bottle was more than she usually needed.",
+          "evidence": "she usually drank about half of the large bottle",
+          "evidenceJp": "普段は大きな水筒の半分ほどしか飲んでいませんでした。",
+          "reason": "Using only half shows the original size was unnecessarily large for normal practice."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What happened after Mika changed bottles?",
+          "answer": "Her bag was lighter and she still had enough water.",
+          "evidence": "Her bag became lighter, and she still had enough water.",
+          "evidenceJp": "かばんは軽くなり、それでも水は十分にありました。",
+          "reason": "Both outcomes are directly stated."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “it” refer to in “took much of it home”?",
+          "answer": "The water in the large bottle.",
+          "evidence": "a large water bottle... she often took much of it home",
+          "evidenceJp": "大きな水筒の水を多く家へ持ち帰っていました。",
+          "reason": "The context is the unused water remaining in the bottle."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: Mika collected information for one week by writing down ____.",
+          "answer": "how much she drank",
+          "evidence": "she wrote down how much she drank",
+          "evidenceJp": "どれくらい水を飲んだか記録しました。",
+          "reason": "This was the measurement used for her decision."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: Mika replaced a large bottle with a smaller one and used ____ when necessary.",
+          "answer": "the school fountain",
+          "evidence": "used the fountain once during practice",
+          "evidenceJp": "練習中に一度、学校の給水場所を使いました。",
+          "reason": "The fountain made the smaller bottle practical."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “Now she had evidence instead of only a feeling.” fit best?",
+          "answer": "After the sentence saying she usually drank about half of the large bottle.",
+          "evidence": "She learned that she usually drank about half of the large bottle.",
+          "evidenceJp": "普段飲む量が大きな水筒の半分ほどだと分かった後です。",
+          "reason": "The sentence interprets the measured result before her next choice."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If a record shows 500 mL used from a 1,000 mL bottle each day, what conclusion matches the passage?",
+          "answer": "A smaller bottle plus one refill could meet Mika's needs.",
+          "evidence": "she brought a smaller bottle and used the fountain once",
+          "evidenceJp": "小さな水筒を持ち、給水場所を一度使いました。",
+          "reason": "The usage data supports reducing carried water while keeping refill access."
+        }
+      ],
+      "finalHumanQuestionReview": true,
+      "source": "V11_BATCH16_QUESTIONS_DRAFT_G1_001_006.json"
+    },
+    {
+      "id": "V11-B16-G1-004",
+      "title": "Signs at the Garden",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main lesson of the garden sign problem?",
+          "answer": "Finding the real cause can lead to a simple, efficient solution.",
+          "evidence": "The simple test saved paper and time.",
+          "evidenceJp": "この簡単な実験によって、紙と時間を節約できました。",
+          "reason": "The solution came from testing the cause instead of replacing everything."
+        },
+        {
+          "type": "DETAIL",
+          "question": "Where did water enter the sign covers?",
+          "answer": "Through the open tops.",
+          "evidence": "water entered through the open tops of the plastic covers",
+          "evidenceJp": "プラスチックのカバーの開いている上側から水が入りました。",
+          "reason": "The source of the problem is directly stated."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the teacher suggest checking the old signs first?",
+          "answer": "To find why they had failed before making new ones.",
+          "evidence": "checking why the old signs had failed before making new ones",
+          "evidenceJp": "新しいものを作る前に、なぜ古い表示がだめになったのか確認しました。",
+          "reason": "The suggestion aimed to identify the cause before spending materials."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why were larger paper signs unnecessary?",
+          "answer": "Size was not the cause of the problem; water entering the covers was.",
+          "evidence": "They kept the same sign size and changed only how they put the covers.",
+          "evidenceJp": "表示の大きさはそのままにして、カバーの置き方だけを変えました。",
+          "reason": "Keeping the same size and succeeding shows size was not the key issue."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "How did the students test their new idea?",
+          "answer": "They turned the covers downward and tested them with water.",
+          "evidence": "They turned the covers downward and tested them with water.",
+          "evidenceJp": "カバーを下向きにし、水をかけて試しました。",
+          "reason": "The testing method is stated directly."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “them” refer to in “tested them with water”?",
+          "answer": "The covers after they were turned downward.",
+          "evidence": "They turned the covers downward and tested them with water.",
+          "evidenceJp": "下向きにしたカバーを水で試しました。",
+          "reason": "The nearest plural object being tested is the covers."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: Before making new signs, the students checked ____.",
+          "answer": "why the old signs had failed",
+          "evidence": "checking why the old signs had failed",
+          "evidenceJp": "なぜ古い表示がだめになったのか確認しました。",
+          "reason": "This investigation led to the successful solution."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: Instead of changing sign size, the students changed ____.",
+          "answer": "the direction of the covers",
+          "evidence": "They turned the covers downward",
+          "evidenceJp": "カバーを下向きにしました。",
+          "reason": "This was the effective change."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “That discovery changed their plan.” fit best?",
+          "answer": "After the sentence explaining where water entered the covers.",
+          "evidence": "water entered through the open tops of the plastic covers",
+          "evidenceJp": "水がカバーの上側から入ると分かった後です。",
+          "reason": "The discovery directly causes the next action of turning the covers."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "A test table shows ‘opening up: wet’ and ‘opening down: dry.’ What does it support?",
+          "answer": "Turning the covers downward solved the rain problem.",
+          "evidence": "The writing stayed dry.",
+          "evidenceJp": "文字はぬれませんでした。",
+          "reason": "The test result directly supports the chosen cover direction."
+        }
+      ],
+      "finalHumanQuestionReview": true,
+      "source": "V11_BATCH16_QUESTIONS_DRAFT_G1_001_006.json"
+    },
+    {
+      "id": "V11-B16-G1-005",
+      "title": "The Lunch Line",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "How did the student council shorten the lunch line wait?",
+          "answer": "It gave students information earlier and separated the line by choice.",
+          "evidence": "The council put pictures of both kinds near the entrance and made two short lines at the table.",
+          "evidenceJp": "入口近くに二種類の写真を置き、机では二つの短い列を作りました。",
+          "reason": "These two changes are the core solution."
+        },
+        {
+          "type": "DETAIL",
+          "question": "How long did the council watch the line?",
+          "answer": "For three days.",
+          "evidence": "The student council watched the line for three days.",
+          "evidenceJp": "生徒会は三日間その列を観察しました。",
+          "reason": "The observation period is directly stated."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did students often have to wait at the table?",
+          "answer": "Other students were deciding which bread to buy there.",
+          "evidence": "students often waited while others decided which one to buy",
+          "evidenceJp": "ほかの生徒がどちらを買うか決める間、待つことがよくありました。",
+          "reason": "Decision time at the table slowed the single line."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did pictures near the entrance help?",
+          "answer": "They let students make their choice before reaching the table.",
+          "evidence": "Students chose a line before they reached the front.",
+          "evidenceJp": "生徒は前まで行く前に並ぶ列を選びました。",
+          "reason": "Earlier information moved the decision away from the service point."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What did not change after the new system?",
+          "answer": "The total number of students.",
+          "evidence": "The total number of students did not change",
+          "evidenceJp": "生徒の総数は変わりませんでした。",
+          "reason": "The passage contrasts unchanged demand with shorter waiting time."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “both kinds” refer to?",
+          "answer": "The two kinds of bread.",
+          "evidence": "Two kinds of bread... pictures of both kinds",
+          "evidenceJp": "二種類のパンと、その両方の写真を指します。",
+          "reason": "The phrase points back to the two bread choices."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: Observation showed many students already knew ____ before reaching the table.",
+          "answer": "what they wanted",
+          "evidence": "many students already knew what they wanted before reaching the table",
+          "evidenceJp": "多くの生徒は机に着く前から何を買いたいか分かっていました。",
+          "reason": "This finding supported giving choice information earlier."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The council did not reduce the number of buyers; it reduced ____.",
+          "answer": "the waiting time",
+          "evidence": "the waiting time became shorter",
+          "evidenceJp": "待ち時間は短くなりました。",
+          "reason": "This is the measured improvement."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “So the council focused on when students made their choice.” fit best?",
+          "answer": "After the sentence saying many students already knew what they wanted.",
+          "evidence": "many students already knew what they wanted before reaching the table",
+          "evidenceJp": "多くの生徒が前もって選択を決めていたと分かった後です。",
+          "reason": "The sentence links the observation to the new layout."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If average waiting time fell from 8 minutes to 4 minutes while buyers stayed at 120, what would it show?",
+          "answer": "The new information and line system improved efficiency without reducing demand.",
+          "evidence": "The total number of students did not change, but the waiting time became shorter.",
+          "evidenceJp": "生徒数は変わらず、待ち時間だけが短くなりました。",
+          "reason": "The data matches the passage's stated comparison."
+        }
+      ],
+      "finalHumanQuestionReview": true,
+      "source": "V11_BATCH16_QUESTIONS_DRAFT_G1_001_006.json"
+    },
+    {
+      "id": "V11-B16-G1-006",
+      "title": "Morning Practice",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What change helped Ken improve without practicing longer?",
+          "answer": "He practiced the difficult part first, when he was less tired.",
+          "evidence": "He changed the order of his evening practice and continued to work on the difficult part first.",
+          "evidenceJp": "夜の練習の順番を変え、難しい部分を最初に練習し続けました。",
+          "reason": "The passage contrasts changing order with adding time."
+        },
+        {
+          "type": "DETAIL",
+          "question": "How long did Ken practice each evening?",
+          "answer": "Thirty minutes.",
+          "evidence": "Ken practiced the piano for thirty minutes every evening.",
+          "evidenceJp": "ケンは毎晩30分ピアノを練習しました。",
+          "reason": "The duration is directly stated."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did Ken first think he needed longer practice?",
+          "answer": "He kept making the same mistakes near the end of practice.",
+          "evidence": "he often made the same mistakes near the end of practice. He thought he needed to practice longer.",
+          "evidenceJp": "練習の終わり近くで同じ間違いをよくしたため、もっと長く練習する必要があると思いました。",
+          "reason": "The second sentence gives the problem that led to his first idea."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "What factor besides total practice time affected Ken's performance?",
+          "answer": "How tired he was when practicing the difficult part.",
+          "evidence": "He noticed fewer mistakes on days he was not tired.",
+          "evidenceJp": "疲れていない日の方が間違いが少ないことに気づきました。",
+          "reason": "The result links performance to tiredness."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What stayed the same during Ken's experiment?",
+          "answer": "His total evening practice time stayed at thirty minutes.",
+          "evidence": "Ken kept the total practice time at thirty minutes.",
+          "evidenceJp": "ケンは練習時間の合計を30分のままにしました。",
+          "reason": "The passage explicitly controls total practice time."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “the same part” refer to?",
+          "answer": "The difficult part of the song.",
+          "evidence": "Try the difficult part first... he also tried the same part",
+          "evidenceJp": "「同じ部分」は曲の難しい部分を指します。",
+          "reason": "The phrase refers back to the teacher's suggested target."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: Ken discovered that he made fewer mistakes when he ____.",
+          "answer": "was not tired",
+          "evidence": "He noticed fewer mistakes on days he was not tired.",
+          "evidenceJp": "疲れていない日は間違いが少ないと気づきました。",
+          "reason": "This observation explains why changing order worked."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: Ken improved his practice by changing its ____ rather than its length.",
+          "answer": "order",
+          "evidence": "He changed the order of his evening practice",
+          "evidenceJp": "夜の練習の順番を変えました。",
+          "reason": "Order, not duration, was the successful variable."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “This gave him a clue about the real problem.” fit best?",
+          "answer": "After the sentence saying he noticed fewer mistakes when not tired.",
+          "evidence": "He noticed fewer mistakes on days he was not tired.",
+          "evidenceJp": "疲れていない日に間違いが少ないと気づいた後です。",
+          "reason": "The observation is the clue that motivates changing the practice order."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "A record shows 2 mistakes at the start of practice and 7 near the end. What idea would it support?",
+          "answer": "Working on the difficult part earlier may be more effective.",
+          "evidence": "he often made the same mistakes near the end of practice",
+          "evidenceJp": "練習の終わり近くで同じ間違いをよくしていました。",
+          "reason": "The data would support the passage's link between later practice and more mistakes."
+        }
+      ],
+      "finalHumanQuestionReview": true,
+      "source": "V11_BATCH16_QUESTIONS_DRAFT_G1_001_006.json"
+    },
+    {
+      "id": "V11-B16-G1-007",
+      "title": "A Map for New Students",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main idea of the passage?",
+          "answer": "Directions are most useful when they are placed where people have a difficult choice to make.",
+          "evidence": "The students learned that useful directions help at a place with a hard choice.",
+          "evidenceJp": "生徒たちは、分かりにくい選択をする場所に案内があると役立つことを学びました。",
+          "reason": "The final sentence states the lesson learned from the students' test."
+        },
+        {
+          "type": "DETAIL",
+          "question": "Where did the school already have a map?",
+          "answer": "Near the main entrance.",
+          "evidence": "The school already had a map near the main entrance, so teachers were surprised.",
+          "evidenceJp": "学校にはすでに正面玄関の近くに地図がありました。",
+          "reason": "The location of the existing map is directly stated."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the second-year students walk the route with new students?",
+          "answer": "To find where and why the new students were getting lost.",
+          "evidence": "A group of second-year students walked the route with three new students. They learned that the problem was not the whole map.",
+          "evidenceJp": "二年生のグループは三人の新入生と一緒に道順を歩き、問題が地図全体ではないと分かりました。",
+          "reason": "Walking the actual route let them observe the specific point that caused confusion."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why was the map near the main entrance not enough to solve the problem?",
+          "answer": "The confusing point was later on the route, where two hallways looked similar and there was no music-room sign.",
+          "evidence": "At one corner, two hallways looked almost the same, and there was no sign for the music room.",
+          "evidenceJp": "ある角では二つの廊下がほとんど同じように見え、音楽室への表示がありませんでした。",
+          "reason": "The existing map did not give help at the exact place where students had to choose between similar hallways."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "Which statement is true?",
+          "answer": "After an arrow and a room name were added, the next new students reached the music room without help.",
+          "evidence": "The group added one arrow at that corner and a small room name near the stairs. The next group of new students reached the room without help.",
+          "evidenceJp": "その角に矢印を一つ、階段近くに小さな部屋名を加えると、次の新入生たちは助けなしで音楽室に着きました。",
+          "reason": "The passage directly reports the change and its result."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "In the passage, what does “the problem” in “the problem was not the whole map” refer to?",
+          "answer": "The reason new students got lost on the way to the music room.",
+          "evidence": "New students sometimes got lost between the gym and the music room... They learned that the problem was not the whole map.",
+          "evidenceJp": "「問題」は、新入生が体育館から音楽室へ行く途中で迷う原因を指します。",
+          "reason": "The phrase refers back to the difficulty the students were investigating."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: The students found the key trouble spot by ____ with three new students.",
+          "answer": "walking the route",
+          "evidence": "A group of second-year students walked the route with three new students.",
+          "evidenceJp": "二年生のグループは三人の新入生と一緒にその道順を歩きました。",
+          "reason": "This action let them identify the confusing corner."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: Instead of changing the whole map, the group added signs at ____.",
+          "answer": "the confusing corner and near the stairs",
+          "evidence": "The group added one arrow at that corner and a small room name near the stairs.",
+          "evidenceJp": "グループはその角に矢印を一つ、階段の近くに小さな部屋名を加えました。",
+          "reason": "The summary captures the targeted solution rather than a full redesign."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would this sentence fit best: “That observation showed them exactly where extra information was needed.”",
+          "answer": "After the sentence saying that the two hallways looked almost the same and there was no sign for the music room.",
+          "evidence": "At one corner, two hallways looked almost the same, and there was no sign for the music room. The group added one arrow at that corner...",
+          "evidenceJp": "二つの廊下が似ていて音楽室の表示がないと分かった文の後に、実際の改善策が続きます。",
+          "reason": "The inserted sentence naturally connects the observed problem to the targeted solution."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "Suppose a route diagram marks only one confusing fork between the gym and the music room. Which improvement would best match the passage?",
+          "answer": "Place a clear music-room arrow at that fork.",
+          "evidence": "At one corner, two hallways looked almost the same, and there was no sign for the music room. The group added one arrow at that corner.",
+          "evidenceJp": "二つの廊下が似ていた角に音楽室への矢印を置く改善が本文と一致します。",
+          "reason": "The passage supports adding information at the exact decision point rather than adding unnecessary signs everywhere."
+        }
+      ],
+      "finalHumanQuestionReview": true,
+      "source": "V11_BATCH16_QUESTIONS_HUMAN_G1_007.json"
+    },
+    {
+      "id": "V11-B16-G1-008",
+      "title": "Saving Art Paper",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main lesson of the passage?",
+          "answer": "Leftover material can be reused when people identify a clear purpose for it.",
+          "evidence": "Material that seemed useless became useful when its possible purpose was clear.",
+          "evidenceJp": "使い道がはっきりすると、役に立たないように見えた材料も利用できるようになりました。",
+          "reason": "The final sentence states the broader lesson of the club's change."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did one student sort the leftover pieces by size?",
+          "answer": "To see whether pieces that were too small for posters could still be useful for other jobs.",
+          "evidence": "One student collected the pieces for two weeks and sorted them by size. She found that many were wide enough for title cards and price signs used at school events.",
+          "evidenceJp": "ある生徒が二週間その紙を集め、大きさごとに分けました。すると、多くの紙が学校行事で使う見出しカードや値段表示には十分な幅があることが分かりました。",
+          "reason": "Sorting revealed which smaller pieces matched other practical uses."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "Which statement is true according to the passage?",
+          "answer": "Club members began looking in the size boxes before using a new sheet of colored paper.",
+          "evidence": "Members began checking the boxes before taking a new sheet.",
+          "evidenceJp": "部員たちは新しい紙を取る前に箱を確認するようになりました。",
+          "reason": "This change in behavior is directly stated."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did the club buy less colored paper the next month?",
+          "answer": "Members reused suitable leftover pieces instead of always taking a new large sheet.",
+          "evidence": "Members began checking the boxes before taking a new sheet. The club bought less colored paper the next month.",
+          "evidenceJp": "部員たちは新しい紙を取る前に箱を確認するようになりました。次の月、部が買う色紙は少なくなりました。",
+          "reason": "The sequence shows that checking and reusing leftovers reduced the need for new sheets."
+        },
+        {
+          "type": "DETAIL",
+          "question": "What two school-event uses did the student find for many leftover pieces?",
+          "answer": "Title cards and price signs.",
+          "evidence": "She found that many were wide enough for title cards and price signs used at school events.",
+          "evidenceJp": "すると、多くの紙が学校行事で使う見出しカードや値段表示には十分な幅があることが分かりました。",
+          "reason": "Both uses are named in the same sentence."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "In the passage, what does “them” in “Members usually threw them away” refer to?",
+          "answer": "The narrow pieces of colored paper left after making posters.",
+          "evidence": "At the end of each month, many narrow pieces were left. Members usually threw them away.",
+          "evidenceJp": "毎月の終わりには、細長い紙がたくさん残りました。ポスター一枚には小さすぎるため、部員たちは普段それを捨てていました。",
+          "reason": "The pronoun refers to the narrow leftover pieces mentioned immediately before it."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: The club made reuse easier by putting leftover paper into three boxes ____.",
+          "answer": "labeled by size",
+          "evidence": "The club placed three boxes beside the cutting table and labeled them by size.",
+          "evidenceJp": "部は作業台の横に三つの箱を置き、大きさを表示しました。",
+          "reason": "The labels let members quickly find pieces suited to a particular purpose."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The club reduced paper purchases by finding new uses for leftovers and making them ____ before a new sheet was taken.",
+          "answer": "easy to check by size",
+          "evidence": "The club placed three boxes beside the cutting table and labeled them by size. Members began checking the boxes before taking a new sheet.",
+          "evidenceJp": "部は作業台の横に三つの箱を置き、大きさを表示しました。部員たちは新しい紙を取る前に箱を確認するようになりました。",
+          "reason": "The boxes turned a vague pile of scraps into an organized reusable supply."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would this sentence fit best: “This showed that the pieces were not useless just because they could not make a full poster.”",
+          "answer": "After the sentence about title cards and price signs.",
+          "evidence": "She found that many were wide enough for title cards and price signs used at school events. The club placed three boxes beside the cutting table and labeled them by size.",
+          "evidenceJp": "すると、多くの紙が学校行事で使う見出しカードや値段表示には十分な幅があることが分かりました。部は作業台の横に三つの箱を置き、大きさを表示しました。",
+          "reason": "The sentence explains the meaning of the discovery before the passage moves to the storage solution."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "What problem would most likely return if the three labeled boxes were removed?",
+          "answer": "Members might again overlook useful leftover pieces and take new sheets instead.",
+          "evidence": "Members began checking the boxes before taking a new sheet.",
+          "evidenceJp": "部員たちは新しい紙を取る前に箱を確認するようになりました。",
+          "reason": "The boxes supported the new habit of checking reusable material before using fresh paper."
+        }
+      ],
+      "finalHumanQuestionReview": true,
+      "source": "V11_BATCH16_QUESTIONS_HUMAN_G1_008.json"
+    },
+    {
+      "id": "V11-B16-G1-009",
+      "title": "The Bus Stop Survey",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main idea of the passage?",
+          "answer": "Observing how a place is actually used can reveal a better solution than simply making equipment bigger.",
+          "evidence": "The survey showed that location mattered more than size.",
+          "evidenceJp": "この調査から、大きさより場所の方が重要だったことが分かりました。",
+          "reason": "The final sentence summarizes why moving the existing bench worked better than replacing it with a larger one."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the students visit the bus stop at different times?",
+          "answer": "To find out whether conditions at the stop changed during the day and affected use of the bench.",
+          "evidence": "Before doing that, students in a local study class visited the stop at different times. They noticed that the bench was in direct sunlight from noon until late afternoon.",
+          "evidenceJp": "その前に、地域学習の授業の生徒たちが時間を変えてバス停を訪れました。正午から夕方遅くまで、ベンチに直接日光が当たっていることに気づきました。",
+          "reason": "Visiting at different times let them compare sunlight and usage conditions."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "Which statement is true according to the passage?",
+          "answer": "The town moved the existing bench under a roof instead of buying a larger bench.",
+          "evidence": "Instead of buying a larger bench, the town moved the existing bench a short distance under a roof.",
+          "evidenceJp": "町は大きなベンチを買う代わりに、今あるベンチを屋根の下へ少し移動しました。",
+          "reason": "This is the action the town took after receiving the students' notes."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "What evidence suggested that the bench itself was not too small?",
+          "answer": "People used it more in the morning when the nearby building gave it shade.",
+          "evidence": "In the morning, the building beside it made shade, and many people sat there.",
+          "evidenceJp": "隣の建物によって日陰になる朝には、人々がよく利用していました。",
+          "reason": "If people used the same bench when it was shaded, size was less likely to be the main problem."
+        },
+        {
+          "type": "DETAIL",
+          "question": "When was the bench in direct sunlight?",
+          "answer": "From noon until late afternoon.",
+          "evidence": "They noticed that the bench was in direct sunlight from noon until late afternoon.",
+          "evidenceJp": "正午から夕方遅くまで、ベンチに直接日光が当たっていることに気づきました。",
+          "reason": "The time period is directly stated."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "In “Before doing that,” what does “that” refer to?",
+          "answer": "Replacing the bench with a larger one.",
+          "evidence": "The town planned to replace the bench with a larger one. Before doing that, students in a local study class visited the stop at different times.",
+          "evidenceJp": "町はそのベンチをもっと大きなものに替える計画を立てました。その前に、地域学習の授業の生徒たちが時間を変えてバス停を訪れました。",
+          "reason": "The phrase points back to the town's planned replacement."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The class discovered that the main problem was not bench size but ____ during hot parts of the day.",
+          "answer": "its sunny location",
+          "evidence": "They noticed that the bench was in direct sunlight from noon until late afternoon.",
+          "evidenceJp": "正午から夕方遅くまで、ベンチに直接日光が当たっていることに気づきました。",
+          "reason": "The observation explains why people avoided the bench in summer afternoons."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: After receiving the students' notes, the town improved the stop by ____ the bench rather than replacing it.",
+          "answer": "moving",
+          "evidence": "Instead of buying a larger bench, the town moved the existing bench a short distance under a roof.",
+          "evidenceJp": "町は大きなベンチを買う代わりに、今あるベンチを屋根の下へ少し移動しました。",
+          "reason": "The passage contrasts moving the same bench with buying a larger one."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would this sentence fit best: “That difference gave the students an important clue about the real problem.”",
+          "answer": "After the sentence saying that many people used the bench in the morning shade.",
+          "evidence": "In the morning, the building beside it made shade, and many people sat there. The class shared its notes with the town.",
+          "evidenceJp": "隣の建物によって日陰になる朝には、人々がよく利用していました。生徒たちは記録を町に伝えました。",
+          "reason": "The inserted sentence interprets the morning-versus-afternoon observation before the class reports its findings."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "If another bus stop has an unused bench that is shaded all day, what should investigators do before copying this solution?",
+          "answer": "Observe that stop to find its own cause instead of assuming location is the problem.",
+          "evidence": "Before doing that, students in a local study class visited the stop at different times.",
+          "evidenceJp": "その前に、地域学習の授業の生徒たちが時間を変えてバス停を訪れました。",
+          "reason": "The passage's method is to investigate actual conditions before deciding on a solution."
+        }
+      ],
+      "finalHumanQuestionReview": true,
+      "source": "V11_BATCH16_QUESTIONS_HUMAN_G1_009.json"
+    },
+    {
+      "id": "V11-B16-G1-010",
+      "title": "Returning Sports Equipment",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main lesson of the passage?",
+          "answer": "A clear storage system can solve repeated mistakes better than giving the same reminder again and again.",
+          "evidence": "The students did not need more reminders. They needed a clear storage system during use.",
+          "evidenceJp": "生徒たちに必要だったのは、より多くの注意ではありませんでした。実際に使っているときに分かりやすい収納の仕組みが必要だったのです。",
+          "reason": "The final two sentences directly contrast reminders with the solution that worked."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the class change the labels in the storage room?",
+          "answer": "The old labels were small and too high for students to see easily while carrying equipment.",
+          "evidence": "One class checked the storage room and found that the labels were small and placed high on the shelves. Students did not see them well with equipment in their hands.",
+          "evidenceJp": "あるクラスが倉庫を調べると、表示が小さく、棚の高い位置に付いていることが分かりました。用具を持ちながらでは、生徒たちは表示を簡単に見ることができませんでした。",
+          "reason": "The class found a visibility problem, so it made the information easier to see during actual use."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "Which statement is true according to the passage?",
+          "answer": "The class used larger labels with simple pictures and placed them at eye level.",
+          "evidence": "The class made larger labels with simple pictures and put them at eye level.",
+          "evidenceJp": "そこで簡単な絵を入れた大きな表示を作り、目の高さに付けました。",
+          "reason": "This is one of the specific improvements described in the passage."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did reminders alone fail to solve the problem?",
+          "answer": "Students still could not easily tell where equipment belonged while they were carrying it.",
+          "evidence": "Teachers reminded students to return everything, but the problem continued. One class checked the storage room and found that the labels were small and placed high on the shelves.",
+          "evidenceJp": "先生たちはすべて元に戻すよう生徒に注意していましたが、問題は続きました。あるクラスが倉庫を調べると、表示が小さく、棚の高い位置に付いていることが分かりました。",
+          "reason": "The passage shows that the obstacle was unclear storage information rather than lack of reminders."
+        },
+        {
+          "type": "DETAIL",
+          "question": "What extra guide did the class add for each type of ball?",
+          "answer": "One marked empty space for each type.",
+          "evidence": "They also marked one empty space for each type of ball.",
+          "evidenceJp": "また、ボールの種類ごとに置く場所を一つずつ示しました。",
+          "reason": "The passage directly states this part of the storage system."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "In “but the problem continued,” what problem is being discussed?",
+          "answer": "Balls and cones were still being left in the wrong places after P.E. classes.",
+          "evidence": "After P.E. classes, balls and cones were sometimes left in the wrong places. Teachers reminded students to return everything, but the problem continued.",
+          "evidenceJp": "体育の授業の後、ボールやコーンが間違った場所に置かれることがありました。先生たちはすべて元に戻すよう生徒に注意していましたが、問題は続きました。",
+          "reason": "The phrase refers back to the misplaced equipment described immediately before it."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The class improved the storage room by making labels easier to see and by giving each ball type ____.",
+          "answer": "a clearly marked space",
+          "evidence": "They also marked one empty space for each type of ball.",
+          "evidenceJp": "また、ボールの種類ごとに置く場所を一つずつ示しました。",
+          "reason": "This detail completes the two-part storage improvement."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: The labels were moved to ____ so students could see them more easily.",
+          "answer": "eye level",
+          "evidence": "The class made larger labels with simple pictures and put them at eye level.",
+          "evidenceJp": "そこで簡単な絵を入れた大きな表示を作り、目の高さに付けました。",
+          "reason": "The new position directly addressed the visibility problem."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would this sentence fit best: “This made it hard to follow the rule even when students remembered it.”",
+          "answer": "After the sentence saying students could not see the labels well with equipment in their hands.",
+          "evidence": "Students did not see them well with equipment in their hands. The class made larger labels with simple pictures and put them at eye level.",
+          "evidenceJp": "用具を持ちながらでは、生徒たちは表示を簡単に見ることができませんでした。そこで簡単な絵を入れた大きな表示を作り、目の高さに付けました。",
+          "reason": "The sentence explains the effect of the visibility problem before the passage presents the solution."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "What result would best show that the new system was working?",
+          "answer": "Fewer pieces of equipment would be found in the wrong places after class.",
+          "evidence": "During the next two weeks, fewer items were left in the wrong place.",
+          "evidenceJp": "次の二週間、間違った場所に残される用具は減りました。",
+          "reason": "This is the actual outcome the passage uses to judge the new storage system."
+        }
+      ],
+      "finalHumanQuestionReview": true,
+      "source": "V11_BATCH16_QUESTIONS_HUMAN_G1_010.json"
+    },
+    {
+      "id": "V11-B16-G1-011",
+      "title": "The Umbrella Shelf",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main lesson of the passage?",
+          "answer": "Making the storage place clearer solved the umbrella problem without adding a tag to every umbrella.",
+          "evidence": "A clearer place helped more. A new tag for every item was not needed.",
+          "evidenceJp": "すべての傘に新しい札を付けるより、置き場所を分かりやすくする方が役立ったのです。",
+          "reason": "The ending directly contrasts a clearer storage place with the original tagging idea."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the student council watch the shelf before buying numbered tags?",
+          "answer": "To learn what was actually causing students to take the wrong umbrellas before spending money.",
+          "evidence": "Before spending money, it watched the shelf for three rainy days.",
+          "evidenceJp": "お金を使う前に、雨の日を三日間観察して、生徒が傘立てをどう使うか調べました。",
+          "reason": "The observation was done specifically before committing to the proposed purchase."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "Which statement is true according to the passage?",
+          "answer": "The council divided the umbrella shelf into three class areas and added large class signs.",
+          "evidence": "The council divided the shelf into three areas by class and added large class signs above them.",
+          "evidenceJp": "そこで傘立てを学級ごとの三つの区域に分け、その上に大きな学級表示を付けました。",
+          "reason": "This is the specific solution described in the passage."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did dividing the shelf by class reduce the number of missing umbrellas?",
+          "answer": "It reduced the crowded mixing of similar umbrellas and gave students a clearer place to return them.",
+          "evidence": "Umbrellas were in one crowded row. The council divided the shelf into three areas by class and added large class signs above them.",
+          "evidenceJp": "間違いの多くは、傘が一つの混んだ列に置かれているために起きていました。そこで傘立てを学級ごとの三つの区域に分け、その上に大きな学級表示を付けました。",
+          "reason": "The new arrangement directly addressed the crowded single-row condition linked to mistakes."
+        },
+        {
+          "type": "DETAIL",
+          "question": "For how many rainy days did the council observe the shelf?",
+          "answer": "Three rainy days.",
+          "evidence": "Before spending money, it watched the shelf for three rainy days.",
+          "evidenceJp": "お金を使う前に、雨の日を三日間観察して、生徒が傘立てをどう使うか調べました。",
+          "reason": "The observation period is explicitly stated."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "In “Students sometimes took the wrong one,” what does “one” refer to?",
+          "answer": "An umbrella.",
+          "evidence": "Students sometimes took the wrong one because many umbrellas looked alike.",
+          "evidenceJp": "似た傘が多いため、生徒が間違った傘を持っていくこともありました。",
+          "reason": "The previous sentence introduces wet umbrellas, so “one” refers to an umbrella."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The council first considered tags, but observation showed that the bigger problem was ____.",
+          "answer": "a crowded single row of umbrellas",
+          "evidence": "Many mistakes happened. Umbrellas were in one crowded row.",
+          "evidenceJp": "間違いの多くは、傘が一つの混んだ列に置かれているために起きていました。",
+          "reason": "The observation changed the diagnosis from individual identification to storage organization."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: After the shelf was divided by class, students put umbrellas in ____ after they arrived.",
+          "answer": "the correct area",
+          "evidence": "Students put umbrellas in the correct area after they arrived.",
+          "evidenceJp": "生徒は登校すると正しい区域に傘を置くようになりました。",
+          "reason": "The answer is directly stated as the new return behavior."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would this sentence fit best: “That pattern suggested the shelf arrangement, not the umbrellas themselves, was the main cause.”",
+          "answer": "After the passage explains that umbrellas were in one crowded row.",
+          "evidence": "Many mistakes happened. Umbrellas were in one crowded row. The council divided the shelf into three areas by class and added large class signs above them.",
+          "evidenceJp": "間違いの多くは、傘が一つの混んだ列に置かれているために起きていました。そこで傘立てを学級ごとの三つの区域に分け、その上に大きな学級表示を付けました。",
+          "reason": "The sentence explains the observation immediately before the passage moves to the organizational solution."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "What would be the best first step if mistakes began increasing again?",
+          "answer": "Observe how students are using the shelf before buying new equipment.",
+          "evidence": "Before spending money, it watched the shelf for three rainy days.",
+          "evidenceJp": "お金を使う前に、雨の日を三日間観察して、生徒が傘立てをどう使うか調べました。",
+          "reason": "The successful approach in the passage was to investigate actual use before spending money."
+        }
+      ],
+      "finalHumanQuestionReview": true,
+      "source": "V11_BATCH16_QUESTIONS_HUMAN_G1_011.json"
+    },
+    {
+      "id": "V11-B16-G1-012",
+      "title": "The Missing Practice Balls",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main idea of the passage?",
+          "answer": "The tennis club's problem came from returning balls to many places, not mainly from losing balls.",
+          "evidence": "The problem was not mainly losing balls. The problem came from how the club put the balls back.",
+          "evidenceJp": "主な問題はボールをなくすことではなく、集め方にありました。",
+          "reason": "The ending states the real cause after the club tested its first assumption."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did two students count the balls before and after practice?",
+          "answer": "To check whether the club was actually losing many balls during practice.",
+          "evidence": "One afternoon, two students counted the balls before and after practice. The number was almost the same, but many balls were in different bags.",
+          "evidenceJp": "ある日の午後、二人の生徒が練習の前後にボールを数えました。数はほとんど同じでしたが、多くのボールが別々の袋に入っていました。",
+          "reason": "Comparing the two counts tested the club members' belief that balls were being lost."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "Which statement is true according to the passage?",
+          "answer": "Players had been returning balls to the nearest bag instead of one main basket.",
+          "evidence": "Each pair of players had returned balls to the nearest bag instead of the club's main basket.",
+          "evidenceJp": "各ペアが、部の中心のかごではなく、一番近い袋にボールを戻していたのです。",
+          "reason": "This behavior explains why the balls were hard to find even though most were still present."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did one bright basket beside the gate make practice start on time?",
+          "answer": "It gave everyone one obvious return place, so the balls were easier to count and find.",
+          "evidence": "The club put one bright basket beside the gate and asked everyone to return balls there. A week later, practice started on time because counting and finding the balls was simple.",
+          "evidenceJp": "そこで部は門のそばに目立つかごを一つ置き、全員にそこへ返すよう頼みました。一週間後には、ボールを数えたり見つけたりしやすくなり、練習を時間どおり始められました。",
+          "reason": "The single visible return point removed the scattered-bag problem."
+        },
+        {
+          "type": "DETAIL",
+          "question": "Where did the club put the new bright basket?",
+          "answer": "Beside the gate.",
+          "evidence": "The club put one bright basket beside the gate and asked everyone to return balls there.",
+          "evidenceJp": "そこで部は門のそばに目立つかごを一つ置き、全員にそこへ返すよう頼みました。",
+          "reason": "The location is directly stated."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "In “The number was almost the same,” what does “the number” mean?",
+          "answer": "The number of balls counted before and after practice.",
+          "evidence": "One afternoon, two students counted the balls before and after practice. The number was almost the same, but many balls were in different bags.",
+          "evidenceJp": "ある日の午後、二人の生徒が練習の前後にボールを数えました。数はほとんど同じでしたが、多くのボールが別々の袋に入っていました。",
+          "reason": "The phrase refers to the ball counts in the preceding sentence."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The club first suspected lost balls, but counting showed that the balls were mostly ____.",
+          "answer": "still there but spread among different bags",
+          "evidence": "The number was almost the same, but many balls were in different bags.",
+          "evidenceJp": "数はほとんど同じでしたが、多くのボールが別々の袋に入っていました。",
+          "reason": "The count changed the club's understanding of the problem."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: The new system asked everyone to return the balls to ____.",
+          "answer": "one bright basket beside the gate",
+          "evidence": "The club put one bright basket beside the gate and asked everyone to return balls there.",
+          "evidenceJp": "そこで部は門のそばに目立つかごを一つ置き、全員にそこへ返すよう頼みました。",
+          "reason": "A single return point is the central change in the solution."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would this sentence fit best: “That result made the club question its first explanation.”",
+          "answer": "After the sentence saying the number of balls was almost the same but many were in different bags.",
+          "evidence": "The number was almost the same, but many balls were in different bags. Each pair of players had returned balls to the nearest bag instead of the club's main basket.",
+          "evidenceJp": "数はほとんど同じでしたが、多くのボールが別々の袋に入っていました。各ペアが、部の中心のかごではなく、一番近い袋にボールを戻していたのです。",
+          "reason": "The inserted sentence links the surprising count to the discovery of the real return-pattern problem."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "If the club added more bags without changing the return rule, what would most likely happen?",
+          "answer": "The balls could become even more spread out and still be hard to find quickly.",
+          "evidence": "Each pair of players had returned balls to the nearest bag instead of the club's main basket.",
+          "evidenceJp": "各ペアが、部の中心のかごではなく、一番近い袋にボールを戻していたのです。",
+          "reason": "The difficulty came from multiple return locations, so adding more of them would not address the cause."
+        }
+      ],
+      "finalHumanQuestionReview": true,
+      "source": "V11_BATCH16_QUESTIONS_HUMAN_G1_012.json"
+    },
+    {
+      "id": "V11-B16-G1-013",
+      "title": "A Cooler Classroom",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main lesson of the passage?",
+          "answer": "Changing the room conditions first can solve a heat problem without immediately using more electricity.",
+          "evidence": "They learned that changing the room conditions helped before they used more electricity.",
+          "evidenceJp": "より多くの電気を使う前に、部屋の条件を変える方法が役立つと学びました。",
+          "reason": "The final sentence states the broader lesson from the classroom test."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the teacher tell the students to check the room first?",
+          "answer": "To find a cause of the heat before lowering the air-conditioner setting.",
+          "evidence": "Students wanted to lower the temperature setting. Their teacher said, “Check the room first.” They noticed that strong afternoon sunlight came through two large windows.",
+          "evidenceJp": "生徒たちは設定温度を下げたいと考えました。先生はまず教室の様子を確かめるよう言いました。すると、午後の強い日差しが二つの大きな窓から入っていることに気づきました。",
+          "reason": "Checking the room revealed strong sunlight as a condition they could change."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "Which statement is true according to the passage?",
+          "answer": "The students kept the same air-conditioner setting while closing the curtains on the two sunny windows.",
+          "evidence": "The next day, they closed the curtains on only those windows before lunch and kept the same air-conditioner setting.",
+          "evidenceJp": "次の日、昼食前にその二つの窓だけカーテンを閉め、エアコンの設定は変えませんでした。",
+          "reason": "This controlled change let the class test the effect of blocking sunlight."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did the class repeat the test for three days?",
+          "answer": "To check whether the cooler result happened consistently rather than only once.",
+          "evidence": "They repeated the test for three days and got the same result.",
+          "evidenceJp": "三日間同じ実験をすると、結果も同じでした。",
+          "reason": "Repeating the test strengthens the evidence that the curtain change caused the improvement."
+        },
+        {
+          "type": "DETAIL",
+          "question": "What entered the classroom through two large windows?",
+          "answer": "Strong afternoon sunlight.",
+          "evidence": "They noticed that strong afternoon sunlight came through two large windows.",
+          "evidenceJp": "すると、午後の強い日差しが二つの大きな窓から入っていることに気づきました。",
+          "reason": "The cause they observed is directly stated."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "In “only those windows,” what does “those windows” refer to?",
+          "answer": "The two large windows that let in strong afternoon sunlight.",
+          "evidence": "They noticed that strong afternoon sunlight came through two large windows. The next day, they closed the curtains on only those windows before lunch and kept the same air-conditioner setting.",
+          "evidenceJp": "すると、午後の強い日差しが二つの大きな窓から入っていることに気づきました。次の日、昼食前にその二つの窓だけカーテンを閉め、エアコンの設定は変えませんでした。",
+          "reason": "The phrase points back to the two windows identified in the preceding sentence."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: Instead of first lowering the air-conditioner setting, the class tested whether blocking ____ would make the room cooler.",
+          "answer": "strong afternoon sunlight",
+          "evidence": "They noticed that strong afternoon sunlight came through two large windows.",
+          "evidenceJp": "すると、午後の強い日差しが二つの大きな窓から入っていることに気づきました。",
+          "reason": "Sunlight was the room condition the students changed in their test."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: The class decided to close the curtains during ____ and open them again later.",
+          "answer": "the hottest hours",
+          "evidence": "The class decided to close the curtains during the hottest hours and open them again later.",
+          "evidenceJp": "そこで一番暑い時間だけカーテンを閉め、後でまた開けることにしました。",
+          "reason": "The phrase states the final routine chosen after the repeated test."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would this sentence fit best: “This let them test one possible cause without changing the amount of cooling.”",
+          "answer": "After the sentence about closing the two curtains while keeping the same air-conditioner setting.",
+          "evidence": "The next day, they closed the curtains on only those windows before lunch and kept the same air-conditioner setting. The room felt cooler in the afternoon.",
+          "evidenceJp": "次の日、昼食前にその二つの窓だけカーテンを閉め、エアコンの設定は変えませんでした。午後の教室は前より涼しく感じられました。",
+          "reason": "The inserted sentence explains the logic of the controlled test immediately before its result."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did the students not simply keep the curtains closed all day?",
+          "answer": "They only needed them closed during the hottest, sunniest period and could open them again later.",
+          "evidence": "The class decided to close the curtains during the hottest hours and open them again later.",
+          "evidenceJp": "そこで一番暑い時間だけカーテンを閉め、後でまた開けることにしました。",
+          "reason": "Their final routine was targeted to the period when the sunlight caused the heat problem."
+        }
+      ],
+      "finalHumanQuestionReview": true,
+      "source": "V11_BATCH16_QUESTIONS_HUMAN_G1_013.json"
+    },
+    {
+      "id": "V11-B16-G1-014",
+      "title": "The Library Return Box",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main lesson of the passage?",
+          "answer": "The return box worked better after its purpose was made clear, so replacing the box was unnecessary.",
+          "evidence": "The box had been large enough; its purpose had not been clear enough.",
+          "evidenceJp": "箱の大きさは十分でしたが、目的の示し方が十分ではなかったのです。",
+          "reason": "The ending identifies unclear communication, not box size, as the real problem."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the library helpers watch students for several days?",
+          "answer": "To find out why students were not using the return box before replacing it.",
+          "evidence": "A librarian thought the box was too small. Two library helpers watched students for several days.",
+          "evidenceJp": "司書は、箱が小さすぎるのかもしれないと考えました。二人の図書委員が数日間、生徒の様子を観察しました。",
+          "reason": "The observation tested the librarian's first explanation of the problem."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "Which statement is true according to the passage?",
+          "answer": "The helpers moved the return sign to the front and added a picture of a book going into the box.",
+          "evidence": "The helpers moved the sign to the front and added a simple picture showing a book inside the box.",
+          "evidenceJp": "委員たちは案内を正面へ移し、本を箱へ入れる簡単な絵も加えました。",
+          "reason": "These were the two changes made to clarify the box's purpose."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did the line at the counter become shorter after the sign was changed?",
+          "answer": "More students understood that they could return books through the box instead of going to the counter.",
+          "evidence": "During the next week, more students returned books through it, and the line at the counter became shorter.",
+          "evidenceJp": "次の週には利用する生徒が増え、カウンターの列も短くなりました。",
+          "reason": "Greater use of the return box reduced the number of students needing the counter."
+        },
+        {
+          "type": "DETAIL",
+          "question": "Where had the old sign been placed?",
+          "answer": "On the side of the box facing the wall.",
+          "evidence": "They learned that some first-time users did not know the box was for returned books because its sign was on the side facing the wall.",
+          "evidenceJp": "初めて使う人の中には、その箱が返却用だと分からない人がいることが分かりました。案内が壁側の面についていたからです。",
+          "reason": "The passage directly identifies the poor sign location."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "In “more students returned books through it,” what does “it” refer to?",
+          "answer": "The library return box.",
+          "evidence": "They did not replace the box. During the next week, more students returned books through it, and the line at the counter became shorter.",
+          "evidenceJp": "箱自体は交換しませんでした。次の週には利用する生徒が増え、カウンターの列も短くなりました。",
+          "reason": "The pronoun refers to the unchanged return box mentioned immediately before it."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The helpers discovered that the box was large enough, but new users could not easily understand ____.",
+          "answer": "what the box was for",
+          "evidence": "They learned that some first-time users did not know the box was for returned books because its sign was on the side facing the wall.",
+          "evidenceJp": "初めて使う人の中には、その箱が返却用だと分からない人がいることが分かりました。案内が壁側の面についていたからです。",
+          "reason": "The core problem was communicating the box's purpose."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: The helpers made the return box easier to understand by moving the sign to ____.",
+          "answer": "the front",
+          "evidence": "The helpers moved the sign to the front and added a simple picture showing a book inside the box.",
+          "evidenceJp": "委員たちは案内を正面へ移し、本を箱へ入れる簡単な絵も加えました。",
+          "reason": "The new sign position made the message visible to approaching users."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would this sentence fit best: “The problem was therefore one of visibility and meaning, not capacity.”",
+          "answer": "After the sentence explaining that the sign faced the wall.",
+          "evidence": "They learned that some first-time users did not know the box was for returned books because its sign was on the side facing the wall. The helpers moved the sign to the front and added a simple picture showing a book inside the box.",
+          "evidenceJp": "初めて使う人の中には、その箱が返却用だと分からない人がいることが分かりました。案内が壁側の面についていたからです。委員たちは案内を正面へ移し、本を箱へ入れる簡単な絵も加えました。",
+          "reason": "The sentence interprets the observation before the passage presents the communication-focused solution."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "What should the library check first if first-time users again stop using the box?",
+          "answer": "Whether the box's purpose is still clearly visible and understandable to them.",
+          "evidence": "The box had been large enough; its purpose had not been clear enough.",
+          "evidenceJp": "箱の大きさは十分でしたが、目的の示し方が十分ではなかったのです。",
+          "reason": "The passage shows that clarity of purpose was the key factor affecting use."
+        }
+      ],
+      "finalHumanQuestionReview": true,
+      "source": "V11_BATCH16_QUESTIONS_HUMAN_G1_014.json"
+    },
+    {
+      "id": "V11-B16-G1-015",
+      "title": "Two Ways to Study Words",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main idea of the passage?",
+          "answer": "Self-testing felt harder than rereading, but it helped Aya remember more and see what she truly knew.",
+          "evidence": "The harder practice felt slower, but it showed her which words she truly knew.",
+          "evidenceJp": "難しい練習は遅く感じましたが、本当に覚えている単語がどれか分かりました。",
+          "reason": "The ending summarizes why Aya changed how she studied."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did Aya try covering the Japanese meanings and changing the word order?",
+          "answer": "Her usual repeated reading did not help her keep all the words until the next day.",
+          "evidence": "She remembered many words that evening, but she forgot several by the next day. Her friend suggested covering the Japanese meanings and testing herself in a different order.",
+          "evidenceJp": "その夜には多くの単語を覚えられましたが、次の日にはいくつか忘れていました。友達から、日本語の意味を隠して順番を変えながら自分でテストしてみるよう勧められました。",
+          "reason": "The forgetting problem led directly to the suggestion of self-testing."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "Which statement is true according to the passage?",
+          "answer": "Aya made more mistakes at first on self-test nights but remembered more words the next afternoon.",
+          "evidence": "On those test nights, she made more mistakes at first, but she remembered more words the next afternoon.",
+          "evidenceJp": "自分でテストした夜は最初の間違いが多かったのですが、次の日の午後にはより多くの単語を覚えていました。",
+          "reason": "The sentence directly compares the immediate difficulty with the later result."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did Aya keep a quick review of the list instead of completely stopping it?",
+          "answer": "She found the list useful for brief review but chose to spend more time on the method that better tested memory.",
+          "evidence": "She began using the list for a quick review and spent much of her time on short self-tests.",
+          "evidenceJp": "そこで一覧は短い復習に使い、勉強時間の多くを小さな自己テストに使うようになりました。",
+          "reason": "Her final routine combines both methods but gives more time to self-testing."
+        },
+        {
+          "type": "DETAIL",
+          "question": "How many English words did Aya study each night?",
+          "answer": "Ten words.",
+          "evidence": "Aya studied ten English words every night.",
+          "evidenceJp": "アヤは毎晩、英単語を十個勉強していました。",
+          "reason": "The number is directly stated at the start."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "In “those test nights,” what kind of nights does “those” refer to?",
+          "answer": "Nights when Aya tested herself with the meanings covered and the words in a different order.",
+          "evidence": "Her friend suggested covering the Japanese meanings and testing herself in a different order. Aya tried both methods for one week. On those test nights, she made more mistakes at first, but she remembered more words the next afternoon.",
+          "evidenceJp": "友達から、日本語の意味を隠して順番を変えながら自分でテストしてみるよう勧められました。アヤは一週間、両方の方法を試しました。自分でテストした夜は最初の間違いが多かったのですが、次の日の午後にはより多くの単語を覚えていました。",
+          "reason": "The phrase points back to the self-testing method described just before it."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: Rereading felt easier, but self-testing gave Aya better information about ____.",
+          "answer": "which words she truly knew",
+          "evidence": "The harder practice felt slower, but it showed her which words she truly knew.",
+          "evidenceJp": "難しい練習は遅く感じましたが、本当に覚えている単語がどれか分かりました。",
+          "reason": "Self-testing exposed gaps that simple rereading could hide."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: Aya changed her routine so that much of her study time was spent on ____.",
+          "answer": "short self-tests",
+          "evidence": "She began using the list for a quick review and spent much of her time on short self-tests.",
+          "evidenceJp": "そこで一覧は短い復習に使い、勉強時間の多くを小さな自己テストに使うようになりました。",
+          "reason": "This phrase describes the study method she adopted after the comparison."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would this sentence fit best: “The extra difficulty did not mean the new method was worse.”",
+          "answer": "After the sentence saying Aya made more mistakes at first but remembered more the next afternoon.",
+          "evidence": "On those test nights, she made more mistakes at first, but she remembered more words the next afternoon. She began using the list for a quick review and spent much of her time on short self-tests.",
+          "evidenceJp": "自分でテストした夜は最初の間違いが多かったのですが、次の日の午後にはより多くの単語を覚えていました。そこで一覧は短い復習に使い、勉強時間の多くを小さな自己テストに使うようになりました。",
+          "reason": "The inserted sentence explains why the initial errors did not stop Aya from adopting self-testing."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Which result would best support Aya's final choice of study method?",
+          "answer": "Remembering more words the following day even if practice feels harder at first.",
+          "evidence": "On those test nights, she made more mistakes at first, but she remembered more words the next afternoon.",
+          "evidenceJp": "自分でテストした夜は最初の間違いが多かったのですが、次の日の午後にはより多くの単語を覚えていました。",
+          "reason": "Her decision was based on later retention, not on how easy practice felt in the moment."
+        }
+      ],
+      "finalHumanQuestionReview": true,
+      "source": "V11_BATCH16_QUESTIONS_HUMAN_G1_015.json"
+    },
+    {
+      "id": "V11-B16-G1-016",
+      "title": "The Crowded Shoe Area",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main lesson of the passage?",
+          "answer": "The crowded hallway was improved by moving the longer shoe-tying activity away from the shelves instead of rebuilding the area.",
+          "evidence": "The hallway became easier to use without changing the shelves or the building.",
+          "evidenceJp": "棚や建物を変えなくても、通路は使いやすくなりました。",
+          "reason": "The ending shows that changing how the space was used solved the problem without structural changes."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the students watch the shoe area before moving a shelf?",
+          "answer": "To understand what was actually causing people to block the hallway before making a heavy change.",
+          "evidence": "Before moving anything heavy, students watched the area for two afternoons.",
+          "evidenceJp": "重いものを動かす前に、生徒たちは二日間その場所を観察しました。",
+          "reason": "The observation was meant to test whether moving the shelf was really necessary."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "Which statement is true according to the passage?",
+          "answer": "Students used the shelves only briefly but often stayed there longer to tie their shoes.",
+          "evidence": "They saw that many people needed only a few seconds at the shelf, but then stayed in the same place to tie their shoes.",
+          "evidenceJp": "多くの人は棚では数秒しか必要としていませんが、その場所に残って靴ひもを結んでいることが分かりました。",
+          "reason": "This observation explains why the space became blocked."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why were benches placed a few steps away instead of directly in front of the shelves?",
+          "answer": "So students could leave the shelf area quickly and tie their shoes without blocking people who needed to pass.",
+          "evidence": "The school put two small benches a few steps away. Students took their shoes, moved to a bench, and tied them there.",
+          "evidenceJp": "そこで学校は数歩離れた場所に小さなベンチを二つ置きました。生徒は靴を取るとベンチへ移動し、そこで靴ひもを結ぶようになりました。",
+          "reason": "The benches separated the longer activity from the narrow shelf area."
+        },
+        {
+          "type": "DETAIL",
+          "question": "For how many afternoons did students observe the area?",
+          "answer": "Two afternoons.",
+          "evidence": "Before moving anything heavy, students watched the area for two afternoons.",
+          "evidenceJp": "重いものを動かす前に、生徒たちは二日間その場所を観察しました。",
+          "reason": "The observation period is directly stated."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "In “tied them there,” what does “there” refer to?",
+          "answer": "At one of the small benches a few steps away from the shelves.",
+          "evidence": "The school put two small benches a few steps away. Students took their shoes, moved to a bench, and tied them there.",
+          "evidenceJp": "そこで学校は数歩離れた場所に小さなベンチを二つ置きました。生徒は靴を取るとベンチへ移動し、そこで靴ひもを結ぶようになりました。",
+          "reason": "The location word points back to the bench."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: Observation showed that the shelves themselves were not the main problem; students were blocking the area while ____.",
+          "answer": "tying their shoes",
+          "evidence": "They saw that many people needed only a few seconds at the shelf, but then stayed in the same place to tie their shoes.",
+          "evidenceJp": "多くの人は棚では数秒しか必要としていませんが、その場所に残って靴ひもを結んでいることが分かりました。",
+          "reason": "The longer shoe-tying activity caused the blockage after students had already taken their shoes."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: The school solved the crowding by putting two small benches ____.",
+          "answer": "a few steps away",
+          "evidence": "The school put two small benches a few steps away.",
+          "evidenceJp": "そこで学校は数歩離れた場所に小さなベンチを二つ置きました。",
+          "reason": "The distance moved the slow activity away from the passing area."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would this sentence fit best: “The observation showed that the delay happened after students had already taken their shoes.”",
+          "answer": "After the sentence explaining that students stayed by the shelf to tie their shoes.",
+          "evidence": "They saw that many people needed only a few seconds at the shelf, but then stayed in the same place to tie their shoes. The school put two small benches a few steps away.",
+          "evidenceJp": "多くの人は棚では数秒しか必要としていませんが、その場所に残って靴ひもを結んでいることが分かりました。そこで学校は数歩離れた場所に小さなベンチを二つ置きました。",
+          "reason": "The sentence interprets the observation immediately before the bench solution."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "What would probably happen if students began tying their shoes in front of the shelves again?",
+          "answer": "The passage area would likely become crowded again even though the benches still existed.",
+          "evidence": "Students often stopped in front of the shelves to change shoes, so others had no room to pass.",
+          "evidenceJp": "生徒が棚の前で靴を履き替えるため、ほかの人が通れないことがよくありました。",
+          "reason": "The original crowding came from people remaining in front of the shelves, so repeating that behavior would recreate the problem."
+        }
+      ],
+      "finalHumanQuestionReview": true,
+      "source": "V11_BATCH16_QUESTIONS_HUMAN_G1_016.json"
+    },
+    {
+      "id": "V11-B16-G1-017",
+      "title": "The Light Left On",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main lesson of the passage?",
+          "answer": "A task worked better when it was assigned to whoever was actually last in the room rather than to one fixed student.",
+          "evidence": "A task connected to the last person worked well. A task connected to one fixed student did not.",
+          "evidenceJp": "一人の決まった生徒に仕事を任せるより、最後に出る人に結びつける方がうまくいったのです。",
+          "reason": "The final contrast explains why the new rule succeeded."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the first rule sometimes fail?",
+          "answer": "The student nearest the door was not always the last person in the classroom.",
+          "evidence": "It failed after an early exit for club activities. The class checked its schedule and found that different students were last in the room on different days.",
+          "evidenceJp": "うまくいく日もありましたが、その生徒が部活動のため早く教室を出る日は失敗しました。予定を確認すると、最後まで教室にいる生徒は日によって違うことが分かりました。",
+          "reason": "The fixed student's schedule did not always match the moment when the light needed to be turned off."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "Which statement is true according to the passage?",
+          "answer": "The last person leaving turned off the light and changed a card from “on” to “checked.”",
+          "evidence": "The last person leaving turned off the light and moved the card from “on” to “checked.”",
+          "evidenceJp": "最後に出る人が電気を消し、カードを「点灯中」から「確認済み」へ動かします。",
+          "reason": "This sentence states the new procedure directly."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why was the check card useful in addition to the new rule?",
+          "answer": "It gave a visible sign that the last person had completed the task.",
+          "evidence": "They placed a small check card beside the door. The last person leaving turned off the light and moved the card from “on” to “checked.”",
+          "evidenceJp": "そこでドアのそばに小さな確認カードを置きました。最後に出る人が電気を消し、カードを「点灯中」から「確認済み」へ動かします。",
+          "reason": "Changing the card records that the light has been checked rather than relying only on memory."
+        },
+        {
+          "type": "DETAIL",
+          "question": "For how long was the light never left on after the new system began?",
+          "answer": "Two weeks.",
+          "evidence": "For two weeks, the light was not left on once.",
+          "evidenceJp": "二週間、一度も電気がついたままになりませんでした。",
+          "reason": "The successful test period is directly stated."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "In “This worked on some days,” what does “This” refer to?",
+          "answer": "The rule that the student nearest the door would always turn off the light.",
+          "evidence": "The class first decided that the student nearest the door always turned it off. This worked on some days.",
+          "evidenceJp": "クラスでは最初、ドアに一番近い生徒がいつも消すことにしました。うまくいく日もありましたが、その生徒が部活動のため早く教室を出る日は失敗しました。",
+          "reason": "“This” points back to the first fixed-student rule."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The class replaced a rule based on one student's seat with a rule based on ____.",
+          "answer": "who was last to leave the room",
+          "evidence": "The class checked its schedule and found that different students were last in the room on different days. The last person leaving turned off the light and moved the card from “on” to “checked.”",
+          "evidenceJp": "予定を確認すると、最後まで教室にいる生徒は日によって違うことが分かりました。そこでドアのそばに小さな確認カードを置きました。最後に出る人が電気を消し、カードを「点灯中」から「確認済み」へ動かします。",
+          "reason": "The new responsibility follows the actual last person rather than a fixed student."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: After turning off the light, the last person moved the card from “on” to ____.",
+          "answer": "“checked”",
+          "evidence": "The last person leaving turned off the light and moved the card from “on” to “checked.”",
+          "evidenceJp": "最後に出る人が電気を消し、カードを「点灯中」から「確認済み」へ動かします。",
+          "reason": "The card's final state is stated explicitly."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would this sentence fit best: “That meant the responsibility could not depend on the same person every day.”",
+          "answer": "After the sentence saying different students were last in the room on different days.",
+          "evidence": "The class checked its schedule and found that different students were last in the room on different days. They placed a small check card beside the door.",
+          "evidenceJp": "予定を確認すると、最後まで教室にいる生徒は日によって違うことが分かりました。そこでドアのそばに小さな確認カードを置きました。",
+          "reason": "The inserted sentence explains the scheduling discovery before the passage introduces the new system."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why would the new rule still work on a day when students left early for club activities?",
+          "answer": "Whoever actually left last would have the responsibility, even if the usual student left earlier.",
+          "evidence": "The last person leaving turned off the light and moved the card from “on” to “checked.”",
+          "evidenceJp": "最後に出る人が電気を消し、カードを「点灯中」から「確認済み」へ動かします。",
+          "reason": "The new rule is tied to the actual final event, so it adapts to schedule changes."
+        }
+      ],
+      "finalHumanQuestionReview": true,
+      "source": "V11_BATCH16_QUESTIONS_HUMAN_G1_017.json"
+    }
+  ]
+}
