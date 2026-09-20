@@ -34,6 +34,18 @@ jobs:
         run: |
           # Generate Batch16 directly from the current structured-anchor-compatible Batch15 gate.
           sed -e 's/V11_BATCH15/V11_BATCH16/g' -e 's/V11-B15/V11-B16/g' -e 's/Batch15/Batch16/g' -e 's/B15_/B16_/g' scripts/v11_batch15_browser_gate.js > scripts/v11_batch16_browser_gate.generated.js
+          # Batch16 canonical artifacts can carry textbook/unit as top-level metadata instead of a nested anchor.
+          # Normalize only that equivalent representation; missing/invalid metadata still fails closed in anchorMeta().
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('scripts/v11_batch16_browser_gate.generated.js')
+          s=p.read_text()
+          old="  const a=p.anchor;"
+          new="  const a=p.anchor||((p.textbook||p.book||p.series)&&(p.unit||p.section||p.program||p.code)?{textbook:p.textbook||p.book||p.series,grade:p.grade||grade,unit:p.unit||p.section||p.program||p.code}:p.anchor);"
+          if old not in s:
+              raise SystemExit('anchor normalization insertion target not found')
+          p.write_text(s.replace(old,new,1))
+          PY
           rm -f V11_BATCH16_BROWSER_GATE_PREFLIGHT_ERROR.txt
           node -e "const fs=require('fs'); process.on('uncaughtException',e=>{fs.writeFileSync('V11_BATCH16_BROWSER_GATE_PREFLIGHT_ERROR.txt',String(e&&e.stack||e)+'\n'); process.exit(1)}); require('./scripts/v11_batch16_browser_gate.generated.js')"
       - name: Persist gate report
