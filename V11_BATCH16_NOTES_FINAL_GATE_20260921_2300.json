@@ -1,0 +1,22 @@
+{
+  "batch":"V11-B16",
+  "gate":"NORMAL_EASY_REQUIRED_LOCAL_NOTES_FINAL",
+  "registered":false,
+  "officialTotal":918,
+  "coverage":{"G1":17,"G2":17,"G3":16,"total":50},
+  "sources":[
+    "V11_BATCH16_G1_NOTES_NORMAL_EASY_001_017.json",
+    "V11_BATCH16_G2_NOTES_NORMAL_EASY_001_017.json",
+    "V11_BATCH16_G3_NOTES_NORMAL_EASY_001_004.json",
+    "V11_BATCH16_G3_NOTES_NORMAL_EASY_005.json",
+    "V11_BATCH16_G3_NOTES_NORMAL_EASY_006_008.json",
+    "V11_BATCH16_G3_NOTES_NORMAL_EASY_009_012.json",
+    "V11_BATCH16_G3_NOTES_NORMAL_EASY_013.json",
+    "V11_BATCH16_G3_NOTES_NORMAL_EASY_014_016.json"
+  ],
+  "requirements":{"normalNotes":true,"easyNotes":true,"requiredLocalNotes":true,"blankGloss":0,"englishAsJapaneseGloss":0},
+  "finalPass":true,
+  "locked":true,
+  "reopenOnlyIf":"A canonical Batch16 passage or notes source changes.",
+  "nextExactStart":"Human semantic final review is now the only remaining Batch16 gate. Do not rerun locked gates. If human semantic passes without canonical body edits, atomically register Batch16 918->968 and begin final 32 in the same run."
+}
