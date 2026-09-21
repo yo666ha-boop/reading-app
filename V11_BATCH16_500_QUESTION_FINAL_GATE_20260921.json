@@ -1,0 +1,23 @@
+{
+  "batch": "V11-B16",
+  "gate": "A_B_500_QUESTION_FINAL_PAYLOAD",
+  "registered": false,
+  "officialTotal": 918,
+  "passages": 50,
+  "questionsPerPassage": 10,
+  "totalQuestions": 500,
+  "split": "A5+B5",
+  "requiredFields": ["answer", "evidence", "evidenceJp", "reason"],
+  "sources": [
+    {"artifact":"V11_BATCH16_QUESTIONS_HUMAN_G1_ALL_NORMALIZED.json","range":"G1-001..017","passages":17,"questions":170,"humanAuthored":true,"finalHumanQuestionReview":true},
+    {"artifact":"V11_BATCH16_QUESTIONS_HUMAN_G2_ALL_NORMALIZED.json","range":"G2-001..017","passages":17,"questions":170,"humanAuthored":true,"finalHumanQuestionReview":true},
+    {"artifact":"V11_BATCH16_QUESTIONS_HUMAN_G3_ALL_NORMALIZED.json","range":"G3-001..016","passages":16,"questions":160,"humanAuthored":true,"finalHumanQuestionReview":true}
+  ],
+  "coverage": {"G1":17,"G2":17,"G3":16,"total":50},
+  "questionCount": {"G1":170,"G2":170,"G3":160,"total":500},
+  "normalization": "Existing human-authored payloads only; no generated filler and no question text weakened for this gate.",
+  "finalPass": true,
+  "locked": true,
+  "reopenOnlyIf": "A source question artifact or canonical passage text changes.",
+  "nextExactStart": "Do not rerun browser/duplicate/A4/persistent/vocab/formal-grammar/slash-wordcount/500-question payload gates. Continue Batch16 human semantic review and normal/easy notes coverage; atomically register 918->968 only after every remaining required gate passes."
+}
