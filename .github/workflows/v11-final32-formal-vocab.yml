@@ -1,0 +1,38 @@
+name: v11 FINAL32 formal vocab chronology
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'scripts/v11_final32_formal_vocab_chronology.js'
+      - 'V11_FINAL32_BODY_TRANSLATION_DRAFT_*.json'
+      - 'V11_FINAL32_REQUIRED_LOCAL_GLOSS_*.json'
+      - '.github/workflows/v11-final32-formal-vocab.yml'
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: v11-1000passage-easy-notes}
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - name: Run fail-closed FINAL32 formal vocab chronology
+        run: |
+          set +e
+          node scripts/v11_final32_formal_vocab_chronology.js
+          code=$?
+          test -f V11_FINAL32_FORMAL_VOCAB_CHRONOLOGY_REPORT.json
+          echo "audit_exit=$code" >> "$GITHUB_ENV"
+          exit 0
+      - name: Persist formal report
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add V11_FINAL32_FORMAL_VOCAB_CHRONOLOGY_REPORT.json
+          if git diff --cached --quiet; then echo 'No report change'; else git commit -m 'audit(v11): persist FINAL32 formal vocab chronology report [skip ci]'; git push origin HEAD:v11-1000passage-easy-notes; fi
+      - name: Enforce formal gate
+        run: |
+          node - <<'NODE'
+          const r=require('./V11_FINAL32_FORMAL_VOCAB_CHRONOLOGY_REPORT.json'); console.log(JSON.stringify({passages:r.passages,unregistered:r.unregisteredOccurrences,future:r.futureVocabLeakOccurrences,finalPass:r.finalPass})); if(!r.finalPass)process.exit(2);
+          NODE
