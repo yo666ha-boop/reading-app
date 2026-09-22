@@ -12,4 +12,5 @@ src=src.replace(/const files=\[[^;]+;/s,`const files=['${virtual}'];`)
  .replace("batch:'V11-B16'","batch:'V11-FINAL32'")
  .replace(/Batch16 passages/g,'FINAL32 passages')
  .replace("'V11_BATCH16_FORMAL_VOCAB_CHRONOLOGY_REPORT.json'","'V11_FINAL32_FORMAL_VOCAB_CHRONOLOGY_REPORT.json'");
-try{vm.runInThisContext(src,{filename:'generated-final32-vocab-gate.js'});}finally{try{fs.unlinkSync(virtual)}catch{}}
+const sandbox={require,console,process,Buffer,setTimeout,clearTimeout};
+try{vm.runInNewContext(src,sandbox,{filename:__dirname+'/generated-final32-vocab-gate.js'});}finally{try{fs.unlinkSync(virtual)}catch{}}
