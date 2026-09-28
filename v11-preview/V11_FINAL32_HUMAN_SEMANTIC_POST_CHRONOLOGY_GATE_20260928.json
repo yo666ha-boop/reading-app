@@ -1,0 +1,38 @@
+{
+  "batch": "V11-FINAL32",
+  "gate": "HUMAN_SEMANTIC_POST_CHRONOLOGY_REPAIR",
+  "officialTotal": 968,
+  "registered": false,
+  "passages": 32,
+  "priorHumanSemanticGate": "V11_FINAL32_HUMAN_SEMANTIC_FINAL_GATE_20260922.json",
+  "chronologyRepairsReviewed": 16,
+  "changedIds": [
+    "V11-F32-G1-001",
+    "V11-F32-G1-002",
+    "V11-F32-G1-003",
+    "V11-F32-G1-004",
+    "V11-F32-G1-005",
+    "V11-F32-G1-006",
+    "V11-F32-G1-007",
+    "V11-F32-G1-008",
+    "V11-F32-G1-009",
+    "V11-F32-G1-010",
+    "V11-F32-G1-011",
+    "V11-F32-G2-001",
+    "V11-F32-G2-002",
+    "V11-F32-G2-006",
+    "V11-F32-G2-007",
+    "V11-F32-G2-009"
+  ],
+  "checks": {
+    "bodyFullTranslationSemantic": "PASS",
+    "chronologyRepairMeaningPreserved": "PASS",
+    "bodySlashExactAfterJoin": "PASS_32_OF_32",
+    "missingFullTranslation": 0,
+    "fillerIntroduced": false,
+    "questionEvidenceSyncRequired": false
+  },
+  "result": "PASS",
+  "locked": true,
+  "next": "Close fresh FINAL32 vocab chronology at 0/0, then author A/B five questions each with answer/evidence/evidenceJp/reason."
+}
