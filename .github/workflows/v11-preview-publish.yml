@@ -83,12 +83,16 @@ jobs:
           test -f public/v11-preview/v11_batch11_bootstrap.js
           test -f public/v11-preview/v11_batch12_bootstrap.js
           test -f public/v11-preview/v11_batch13_bootstrap.js
+          test -f public/v11-preview/v11_batch14_bootstrap.js
+          test -f public/v11-preview/v11_batch15_bootstrap.js
+          test -f public/v11-preview/v11_batch16_runtime_bundle.js
+          test -f public/v11-preview/v11_batch16_register.js
           cat > public/v11-preview/PREVIEW_SOURCE.txt <<EOF
           branch=v11-1000passage-easy-notes
           source_sha=${GITHUB_SHA}
           published_at_utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-          expected_registered_total=818
-          bootstrap_entry=v11_batch01_passages_001_050.js+v11_batch01_uniqueness_repair.js+v11_batch01_grammar_repair.js
+          expected_registered_total=968
+          bootstrap_entry=batch01_chain_through_batch16
           purpose=WORKING_PREVIEW_NOT_PRODUCTION_RELEASE
           EOF
 
