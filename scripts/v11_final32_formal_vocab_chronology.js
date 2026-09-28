@@ -11,6 +11,7 @@ src=src.replace(/const files=\[[^;]+;/s,`const files=['${virtual}'];`)
  .replace(/\^V11_BATCH16_REQUIRED_LOCAL_GLOSS_G\[123\]_\\d\{3\}\\\.json\$/,'^V11_FINAL32_REQUIRED_LOCAL_GLOSS_G[123]_\\d{3}\\.json$')
  .replace("batch:'V11-B16'","batch:'V11-FINAL32'")
  .replace(/Batch16 passages/g,'FINAL32 passages')
+ .replace(/ps\.length===50/g,'ps.length===32')
  .replace("'V11_BATCH16_FORMAL_VOCAB_CHRONOLOGY_REPORT.json'","'V11_FINAL32_FORMAL_VOCAB_CHRONOLOGY_REPORT.json'");
 const sandbox={require,console,process,Buffer,setTimeout,clearTimeout};
 try{vm.runInNewContext(src,sandbox,{filename:__dirname+'/generated-final32-vocab-gate.js'});}finally{try{fs.unlinkSync(virtual)}catch{}}
