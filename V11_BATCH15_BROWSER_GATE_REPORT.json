@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T10:58:42.660Z",
+  "generatedAt": "2026-09-28T11:08:47.837Z",
   "batch": "V11-B15",
   "candidatePassages": 50,
   "candidateInjected": true,
@@ -47,7 +47,7 @@
           "extraPassages": 800,
           "lastAdded": 0,
           "source": "register",
-          "updatedAt": "2026-09-28T10:58:45.780Z"
+          "updatedAt": "2026-09-28T11:08:52.931Z"
         }
       },
       "title": "長文読解問題作成アプリ v10 stage2",
@@ -60,17 +60,17 @@
       "errors": []
     },
     "webkit": {
-      "pass": true,
+      "pass": false,
       "httpStatus": 200,
       "registration": {
         "ok": true,
         "ret": {
           "version": "20260905-v11-selected-section-003-visible-switch",
           "groups": 6,
-          "extraPassages": 800,
-          "lastAdded": 0,
+          "extraPassages": 500,
+          "lastAdded": 50,
           "source": "register",
-          "updatedAt": "2026-09-28T10:58:51.378Z"
+          "updatedAt": "2026-09-28T11:09:02.162Z"
         }
       },
       "title": "長文読解問題作成アプリ v10 stage2",
@@ -80,31 +80,15 @@
       "hasPassage": true,
       "hasQuestions": true,
       "hasGrade": true,
-      "errors": []
-    },
-    "iphone-webkit": {
-      "pass": true,
-      "httpStatus": 200,
-      "registration": {
-        "ok": true,
-        "ret": {
-          "version": "20260905-v11-selected-section-003-visible-switch",
-          "groups": 6,
-          "extraPassages": 800,
-          "lastAdded": 0,
-          "source": "register",
-          "updatedAt": "2026-09-28T10:58:55.908Z"
-        }
-      },
-      "title": "長文読解問題作成アプリ v10 stage2",
-      "bodyChars": 738,
-      "ready": "complete",
-      "hasRegister": true,
-      "hasPassage": true,
-      "hasQuestions": true,
-      "hasGrade": true,
-      "errors": []
+      "errors": [
+        "pageerror:Batch10 runtime totals invalid {\"version\":\"20260905-v11-selected-section-003-visible-switch\",\"groups\":6,\"extraPassages\":550,\"lastAdded\":50,\"source\":\"register\",\"updatedAt\":\"2026-09-28T11:09:02.274Z\"}",
+        "console:Error: Batch10 registration did not complete",
+        "pageerror:Error: Batch10 registration did not complete",
+        "console:Error: @http://127.0.0.1:4173/v11_batch10_bootstrap.js:14:46",
+        "pageerror:Error: @http://127.0.0.1:4173/v11_batch10_bootstrap.js:14:46"
+      ]
     }
   },
-  "finalPass": true
+  "finalPass": false,
+  "error": "Error: webkit failed: {\"pass\":false,\"httpStatus\":200,\"registration\":{\"ok\":true,\"ret\":{\"version\":\"20260905-v11-selected-section-003-visible-switch\",\"groups\":6,\"extraPassages\":500,\"lastAdded\":50,\"source\":\"register\",\"updatedAt\":\"2026-09-28T11:09:02.162Z\"}},\"title\":\"長文読解問題作成アプリ v10 stage2\",\"bodyChars\":738,\"ready\":\"complete\",\"hasRegister\":true,\"hasPassage\":true,\"hasQuestions\":true,\"hasGrade\":true,\"errors\":[\"pageerror:Batch10 runtime totals invalid {\\\"version\\\":\\\"20260905-v11-selected-section-003-visible-switch\\\",\\\"groups\\\":6,\\\"extraPassages\\\":550,\\\"lastAdded\\\":50,\\\"source\\\":\\\"register\\\",\\\"updatedAt\\\":\\\"2026-09-28T11:09:02.274Z\\\"}\",\"console:Error: Batch10 registration did not complete\",\"pageerror:Error: Batch10 registration did not complete\",\"console:Error: @http://127.0.0.1:4173/v11_batch10_bootstrap.js:14:46\",\"pageerror:Error: @http://127.0.0.1:4173/v11_batch10_bootstrap.js:14:46\"]}\n    at run (/home/runner/work/reading-app/reading-app/scripts/v11_batch15_browser_gate.js:41:1536)\n    at async /home/runner/work/reading-app/reading-app/scripts/v11_batch15_browser_gate.js:42:47"
 }
