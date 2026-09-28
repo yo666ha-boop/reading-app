@@ -1,0 +1,49 @@
+name: v11 Preview 968 Smoke
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'scripts/v11_preview_968_smoke.js'
+      - '.github/workflows/v11-preview-968-smoke.yml'
+      - 'v11_batch15_bootstrap.js'
+      - 'v11_batch16_runtime_bundle.js'
+      - 'v11_batch16_register.js'
+      - '.github/workflows/v11-preview-publish.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: v11-preview-968-smoke
+  cancel-in-progress: true
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-save playwright@1.55.0
+      - run: npx playwright install --with-deps chromium
+      - name: Verify public preview really exposes registered 968
+        run: |
+          EXPECTED_SOURCE_SHA="${GITHUB_SHA}" \
+          V11_PREVIEW_URL="https://yo666ha-boop.github.io/reading-app/v11-preview/" \
+          node scripts/v11_preview_968_smoke.js
+      - name: Persist smoke report
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add V11_PREVIEW_968_SMOKE_REPORT.json || true
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'audit(v11): persist public preview 968 smoke [skip ci]'
+          for n in 1 2 3; do
+            git pull --rebase origin v11-1000passage-easy-notes && git push origin HEAD:v11-1000passage-easy-notes && exit 0
+            git rebase --abort || true
+            sleep $((n*2))
+          done
+          exit 1
