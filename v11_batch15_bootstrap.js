@@ -10,6 +10,21 @@
     console.error('[v11 batch15] bootstrap failed', msg);
   }
 
+  function loadBatch16(){
+    if(window.V11_BATCH16_BOOTSTRAP_STARTED||window.V11_BATCH16_LOADED)return;
+    window.V11_BATCH16_BOOTSTRAP_STARTED=true;
+    var b=document.createElement('script');
+    b.src='./v11_batch16_runtime_bundle.js';
+    b.onload=function(){
+      var r=document.createElement('script');
+      r.src='./v11_batch16_register.js';
+      r.onerror=function(){window.V11_BATCH16_BOOTSTRAP_ERROR='registrar load failed';console.error('[v11 batch16] registrar load failed');};
+      document.head.appendChild(r);
+    };
+    b.onerror=function(){window.V11_BATCH16_BOOTSTRAP_ERROR='runtime bundle load failed';console.error('[v11 batch16] runtime bundle load failed');};
+    document.head.appendChild(b);
+  }
+
   fetch('./V11_BATCH15_RUNTIME_CANDIDATE.json', {cache:'no-store'})
     .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
     .then(function(payload){
@@ -33,6 +48,7 @@
       window.V11_BATCH15_BOOTSTRAP_STATE = {version:'20260919-b15-persistent-r2', registered:true, batch15Passages:50, extraPassages:750, totalWithBaseline:918};
       if (typeof window.render === 'function') window.render();
       window.dispatchEvent(new Event('v11-passages-updated'));
+      loadBatch16();
     })
     .catch(function(e){ fail(e&&e.stack||e); });
 })();
