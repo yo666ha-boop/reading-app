@@ -99,6 +99,89 @@ repairEvidence('V11-B16-G1-007','B',1,
  ['New students sometimes got lost between the gym and the music room.','They learned that the problem was not the whole map.'],
  ['新入生は体育館から音楽室へ行く途中で迷うことがありました。','問題は地図全体ではないと分かりました。']);
 
+/* EVIDENCE_REPAIR_PART2: exact current-body evidence for the remaining final-release mismatches. */
+repairEvidence('V11-B16-G1-017','B',2,
+ ['The class checked its schedule and found that different students were last in the room on different days.','The last person leaving turned off the light and moved the card from “on” to “checked.”'],
+ ['予定を確認すると、最後まで教室にいる生徒は日によって違うことが分かりました。','最後に出る人が電気を消し、カードを「点灯中」から「確認済み」へ動かします。']);
+repairEvidence('V11-B14-G1-002','B',4,
+ ['It said, ‘Practice in Room 3 at four.’','The brass band used Room 3 at four, and the guitar club used it at five.'],
+ ['そこには「4時に第3室で練習」と書かれていました。','吹奏楽部は4時に第3室を使い、ギター部は5時に使うことが分かりました。']);
+repairEvidence('V11-B14-G1-006','B',4,
+ ['The middle pot had the word ‘basil.’','The middle plant had the same round leaves as the basil in the picture.'],
+ ['真ん中の鉢には「バジル」という言葉がありました。','真ん中の植物には写真のバジルと同じ丸い葉がありました。']);
+repairEvidence('V11-B14-G1-008','B',4,
+ ['The first pile started on page 32, but the second started on page 34.','On the board, he saw, ‘Today: pages 32-33. Next class: pages 34-35.’'],
+ ['一つ目は32ページから、二つ目は34ページから始まっていました。','黒板には「今日：32〜33ページ。次の授業：34〜35ページ」とありました。']);
+repairEvidence('V11-B14-G1-012','B',1,
+ ['He read the words under the arrows.','His papers were flat worksheets, so he used the blue opening.'],
+ ['矢印の下の言葉を読みました。','持っていたのは平らなプリントだったので、青い投入口を使いました。']);
+repairEvidence('V11-B14-G1-012','B',3,
+ ['His papers were flat worksheets, so he used the blue opening.','Shun was glad.'],
+ ['持っていたのは平らなプリントだったので、青い投入口を使いました。','シュンはよかったと思いました。']);
+repairEvidence('V11-B14-G1-016','B',4,
+ ['It said the display would continue until Friday.','A student borrowed it before the display began and returned it that morning.'],
+ ['金曜日まで続くと書かれていました。','ある生徒が展示開始前に借り、今朝返したことが分かりました。']);
+repairEvidence('V11-B15-G1-006','B',3,
+ 'Hina looked at the seating chart, but that did not show the card’s owner.',
+ 'ヒナは座席表を見ましたが、それだけでは名札の持ち主は分かりませんでした。');
+repairEvidence('V11-B16-G1-006','B',1,
+ ['His teacher said, “Try the difficult part first for one week.”','In the morning on Saturday, he also tried the same part before breakfast.'],
+ ['先生は「一週間、難しい部分を最初に練習してみて」と言いました。','土曜日の朝には、朝食前に同じ部分を練習しました。']);
+repairEvidence('V11-B14-G2-009','A',1,
+ ['They counted people in each line every five minutes and also measured the time from ordering to receiving food.','The team put a small sign at both stands showing the usual preparation time.','They also prepared part of Stand B\'s snack before the busiest period.'],
+ ['5分ごとに各列の人数を数え、注文してから受け取るまでの時間も測りました。','チームは両方の店に、通常の調理時間を示す小さな表示を置きました。','また、混雑する時間の前にB店の調理の一部を準備しました。']);
+repairEvidence('V11-B14-G2-017','B',2,
+ ['When six first-year students tested the form, three stopped at that question.','In a second test, all six students reached the end.'],
+ ['1年生6人に試してもらうと、3人がその質問で止まりました。','2回目のテストでは6人全員が最後まで答えました。']);
+repairEvidence('V11-B14-G2-017','B',4,
+ ['Changing the order did not remove important thinking.','Later questions gave short information before asking about future choices.'],
+ ['順番を変えたことは、大切な思考をなくしたのではありません。','後の質問では短い情報を示してから、将来の選択を尋ねました。']);
+repairEvidence('V11-B16-G2-009','B',1,
+ ['A sports center sometimes closed its outdoor court after heavy rain.','The center began posting the same notice on its website as soon as a decision was made and kept the indoor board as well.'],
+ ['スポーツセンターでは、大雨の後に屋外コートを閉鎖することがありました。','センターは、決定したらすぐウェブサイトにも同じ案内を出し、館内の掲示も残しました。']);
+repairEvidence('V11-B16-G2-013','B',5,
+ ['After everyone had spoken once, the discussion became free.','The rule did not reduce strong opinions; it created a fair starting point for them.'],
+ ['全員が一度話した後は自由な話し合いにしました。','このルールは強い意見を減らしたのではなく、全員に公平な出発点を作りました。']);
+repairEvidence('V11-B14-G2-004','B',2,
+ ['They placed it low on a wall near the stairs because the colors looked bright there.','Bags and students blocked the lower wall, and he could not read the club name from several meters away.'],
+ ['色が明るく見えるので、階段近くの壁の低い位置に貼りました。','かばんや生徒が壁の下の部分を隠し、数メートル離れると部名を読めませんでした。']);
+repairEvidence('V11-B14-G2-010','A',1,
+ ['The team printed a test copy rotated to match the view from the gate.','Rotating the map worked better than adding many arrows.'],
+ ['班は門から見える向きに合わせて回転させた試作地図を印刷しました。','矢印を増やすより、地図を回転させる方が効果的でした。']);
+repairEvidence('V11-B14-G2-010','A',5,
+ ['The map was correct, so volunteers first planned to add arrows.','Rotating the map worked better than adding many arrows.'],
+ ['地図は正しかったので、ボランティアは最初、矢印を増やそうと考えました。','矢印を増やすより、地図を回転させる方が効果的でした。']);
+repairEvidence('V11-B14-G2-010','B',4,
+ ['Sora watched five visitors use it.','They asked five more visitors to find the science room.','Four chose the correct path without help.'],
+ ['ソラが5人の利用の様子を観察しました。','別の5人に理科室を探してもらいました。','4人が助けなしで正しい道を選びました。']);
+repairEvidence('V11-B14-G2-010','B',5,
+ ['Sora watched five visitors use it.','Rotating the map worked better than adding many arrows.'],
+ ['ソラが5人の利用の様子を観察しました。','矢印を増やすより、地図を回転させる方が効果的でした。']);
+repairEvidence('V11-B14-G2-016','A',5,
+ ['The school did not leave the fire door open.','The solution kept the safety rule and fixed the problem.'],
+ ['学校は防火扉を開けたままにはしませんでした。','解決策は安全の決まりを守りながら問題を直しました。']);
+repairEvidence('V11-B16-G2-010','A',4,
+ ['The Japanese text described the place correctly but hid the action inside a long sentence.','Nothing important was removed.'],
+ ['日本語は場所を正しく説明していましたが、行動の指示が長い文の中に隠れていました。','大切な情報は削っていません。']);
+repairEvidence('V11-B16-G3-011','A',4,
+ ['Another pointed out that the new oven had never been used for this recipe.','They also decided to prepare only twelve cakes before opening and make more if sales were strong.'],
+ ['別の生徒は、新しいオーブンではこのレシピをまだ試していないと指摘しました。','開店前には12個だけ作り、売れ行きがよければ追加することにしました。']);
+repairEvidence('V11-B16-G3-011','B',4,
+ ['Their recipe used 200 milliliters of milk for one cake, and they expected to sell eighteen cakes.','The group baked one test cake first and found that the oven dried the cake slightly, so they increased the milk to 220 milliliters for each later cake.'],
+ ['レシピでは1個につき200ミリリットルの牛乳を使い、18個売れると予想していました。','試作すると少し乾いたため、その後は1個につき220ミリリットルへ増やしました。']);
+repairEvidence('V11-B10-G3-016','B',5,
+ 'The organizers learned that winter safety must combine venue capacity, opening hours, transport seats, updated permission, and a cancellation rule.',
+ '主催者は、冬の安全には会場定員、開館時間、交通座席、更新した許可、中止基準を組み合わせる必要があると学びました。');
+repairEvidence('V11-B16-G3-006','A',4,
+ ['Rather than moving every event, the committee shifted the science show to 2:00, kept its room, and used the inspection period as setup time.','The craft and music schedules remained unchanged.'],
+ ['すべての行事を動かさず、科学ショーだけを2時へ変更し教室はそのままにしました。','工作と音楽の予定は変えませんでした。']);
+repairEvidence('V11-B16-G3-006','B',2,
+ ['Room A held 30 people, Room B held 45, and the hall held 90.','A short science show expected 40 but used equipment that had to stay indoors.','Then the committee learned that Room B would be unavailable from 1:00 to 1:40 for an electrical inspection.'],
+ ['A教室は30人、B教室は45人、ホールは90人収容できました。','科学ショーは40人を予定し、機材は屋内に置く必要がありました。','B教室は電気点検のため1時から1時40分まで使えないと分かりました。']);
+repairEvidence('V11-B16-G3-008','B',1,
+ ['Local students knew that this meant the open field on the north side, but visiting students who read the English guide could not tell which side was meant.','The original instruction had seemed obvious only because local students shared knowledge that visitors did not have.'],
+ ['地元生徒は北側広場だと知っていましたが、英語案内を読む訪問生徒にはどちら側か分かりませんでした。','元の案内が明白に見えたのは、地元生徒だけが訪問者にはない知識を共有していたからです。']);
+
 /* YAMAGUCHI_EXPLICIT_CONTRACT_REPAIR: normalize legacy question types to the active reading-only taxonomy. */
 replaceQ('V11-B13-G3-003','B',4,{questionType:'CONTEXT_WORD',type:'CONTEXT_WORD',prompt:"In the sentence 'The 8:10 bus required more waiting but made the arrival time more reliable,' what does reliable mean here?",answer:'more dependable or less likely to be delayed',evidence:'The 8:10 bus required more waiting but made the arrival time more reliable.',evidenceJp:'8時10分のバスは待ち時間が長い代わりに到着時刻が安定します。',reason:'文脈上、reliable は到着時刻の確実性が高いことを表します。'});
 replaceQ('V11-B14-G3-003','B',3,{questionType:'CONTEXT_WORD',type:'CONTEXT_WORD',prompt:"What does prohibited mean in 'bicycles would still be prohibited until 2:00 p.m.'?",answer:'not allowed',evidence:'After 11:30, the path would reopen, but bicycles would still be prohibited until 2:00 p.m.',evidenceJp:'11時30分以降は再開しますが、自転車は午後2時まで通れません。',reason:'prohibited はその時間まで自転車の通行が許可されないことを表します。'});
