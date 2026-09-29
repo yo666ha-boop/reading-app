@@ -1,0 +1,534 @@
+{
+  "batch": "V11-FINAL32",
+  "stage": "human_question_authoring",
+  "registered": false,
+  "officialTotal": 968,
+  "range": "G2-001..G2-006",
+  "passages": 6,
+  "questionsPerPassage": 10,
+  "humanAuthored": true,
+  "items": [
+    {
+      "id": "V11-F32-G2-001",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main idea of the passage?",
+          "answer": "The committee reduced bus-stop crowding by changing when students arrived instead of changing the bus.",
+          "evidence": "Crowding decreased without changing the bus itself.",
+          "evidenceJp": "バス自体を変えなくても混雑は減りました。",
+          "reason": "The final sentence states that timing changes solved the problem without a larger bus."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the committee record waiting students every five minutes?",
+          "answer": "It wanted to learn when the crowding actually happened before asking for a larger bus.",
+          "evidence": "Before making the request, they recorded the number of waiting students every five minutes for a week.",
+          "evidenceJp": "その前に、一週間、五分ごとに待っている生徒の人数を記録しました。",
+          "reason": "The recording was done before the request so the committee could identify the real pattern."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What did the chart show?",
+          "answer": "The stop was crowded mainly for about ten minutes after club activities ended.",
+          "evidence": "The chart showed that the stop was crowded mainly during a ten-minute period just after club activities ended.",
+          "evidenceJp": "グラフを見ると、混雑は主に部活動が終わった直後の十分間に集中していました。",
+          "reason": "The sentence gives the main time pattern directly."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did two clubs shift cleanup by five minutes?",
+          "answer": "To spread students' arrival times at the bus stop.",
+          "evidence": "The total number of students did not change, but they reached the stop at slightly different times.",
+          "evidenceJp": "生徒の総数は変わりませんでしたが、バス停へ着く時刻が少し分かれました。",
+          "reason": "The shift changed timing rather than the number of students."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The committee first considered a larger bus, but the data showed that the real issue was ____.",
+          "answer": "a short period when too many students arrived together",
+          "evidence": "The chart showed that the stop was crowded mainly during a ten-minute period just after club activities ended.",
+          "evidenceJp": "グラフを見ると、混雑は主に部活動が終わった直後の十分間に集中していました。",
+          "reason": "The chart identified a timing concentration rather than a constant capacity problem."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “shifted” mean in the passage?",
+          "answer": "Moved the cleanup time slightly later.",
+          "evidence": "two clubs shifted their cleanup by five minutes",
+          "evidenceJp": "二つの部が片付けの時刻を五分ずらしました。",
+          "reason": "The phrase explains that the clubs changed the timing by five minutes."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: Some students left five minutes later and ____.",
+          "answer": "usually found plenty of space",
+          "evidence": "Some students left five minutes later and usually found plenty of space.",
+          "evidenceJp": "一部の生徒は五分遅く出て、たいてい十分な場所を確保できました。",
+          "reason": "This is the observed effect of leaving later."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If a line graph peaked for only ten minutes after clubs ended, what would it support?",
+          "answer": "The crowding was concentrated in a short time window.",
+          "evidence": "The chart showed that the stop was crowded mainly during a ten-minute period just after club activities ended.",
+          "evidenceJp": "グラフを見ると、混雑は主に部活動が終わった直後の十分間に集中していました。",
+          "reason": "A short peak would match the recorded pattern."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “The problem was timing, not the total number of riders.” fit best?",
+          "answer": "Before the sentence saying the total number of students did not change.",
+          "evidence": "The total number of students did not change, but they reached the stop at slightly different times.",
+          "evidenceJp": "生徒の総数は変わりませんでしたが、バス停へ着く時刻が少し分かれました。",
+          "reason": "The inserted sentence summarizes why a timing adjustment worked."
+        },
+        {
+          "type": "REASON",
+          "question": "Why was a larger bus not necessary in the final solution?",
+          "answer": "Changing arrival times reduced crowding even with the same bus.",
+          "evidence": "Crowding decreased without changing the bus itself.",
+          "evidenceJp": "バス自体を変えなくても混雑は減りました。",
+          "reason": "The passage explicitly says the bus itself was unchanged."
+        }
+      ]
+    },
+    {
+      "id": "V11-F32-G2-002",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main lesson of the poster test?",
+          "answer": "Testing a message with real readers can reveal exactly what is unclear.",
+          "evidence": "A short test with real readers showed exactly which part of the message needed to be clearer.",
+          "evidenceJp": "実際の読み手で簡単に試したことで、どこを分かりやすくする必要があるか正確に分かりました。",
+          "reason": "The final sentence states the lesson."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did students misunderstand the first poster?",
+          "answer": "They confused the concert date with the ticket deadline.",
+          "evidence": "The first poster showed the concert date in large letters, but several students thought that was also the deadline for buying tickets.",
+          "evidenceJp": "最初のポスターにはコンサートの日付が大きく書かれていましたが、何人かの生徒はそれをチケット購入の締切日でもあると思いました。",
+          "reason": "The sentence identifies the exact misunderstanding."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "How did the club revise the two dates?",
+          "answer": "It labeled Friday as the ticket deadline and Sunday as the concert in separate boxes.",
+          "evidence": "The club then placed the words “Ticket deadline” beside Friday and “Concert” beside Sunday, using separate boxes.",
+          "evidenceJp": "そこで金曜日の横に「チケット締切」、日曜日の横に「コンサート」と書き、別々の枠に入れました。",
+          "reason": "Both labels and the separate-box design are stated directly."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did the club show the poster for only five seconds?",
+          "answer": "It wanted to see what readers understood quickly at first glance.",
+          "evidence": "members asked ten students to look at the poster for five seconds and say what they understood",
+          "evidenceJp": "十人の生徒へポスターを五秒だけ見せ、分かったことを答えてもらいました。",
+          "reason": "A very short viewing checks immediate understanding."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: After six students confused the dates, the club ____.",
+          "answer": "separated and labeled the two dates more clearly",
+          "evidence": "The club then placed the words “Ticket deadline” beside Friday and “Concert” beside Sunday, using separate boxes.",
+          "evidenceJp": "そこで金曜日の横に「チケット締切」、日曜日の横に「コンサート」と書き、別々の枠に入れました。",
+          "reason": "That revision directly addressed the confusion."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “deadline” mean here?",
+          "answer": "The last date for buying tickets.",
+          "evidence": "several students thought that was also the deadline for buying tickets",
+          "evidenceJp": "何人かの生徒はそれをチケット購入の締切日でもあると思いました。",
+          "reason": "The context identifies it as the final buying date."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the result: In the second quick test, ____.",
+          "answer": "all ten students understood the schedule",
+          "evidence": "In a second quick test, all ten students understood the schedule.",
+          "evidenceJp": "二回目の短いテストでは十人全員が予定を正しく理解しました。",
+          "reason": "The sentence states the second-test result."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If a table showed 6/10 confused before the revision and 0/10 after it, what would it support?",
+          "answer": "The clearer labels and separate boxes improved understanding.",
+          "evidence": "In a second quick test, all ten students understood the schedule.",
+          "evidenceJp": "二回目の短いテストでは十人全員が予定を正しく理解しました。",
+          "reason": "The before-and-after numbers would show the improvement."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “The problem was not a lack of information but how the dates were presented.” fit best?",
+          "answer": "After the sentence saying six students confused the two dates.",
+          "evidence": "Six confused the two dates.",
+          "evidenceJp": "六人が二つの日付を混同しました。",
+          "reason": "It interprets the test result immediately before the redesign."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did the club avoid adding a long explanation?",
+          "answer": "A simpler visual distinction was enough to solve the confusion.",
+          "evidence": "The club considered a long explanation. Instead, members asked ten students to look at the poster for five seconds and say what they understood.",
+          "evidenceJp": "部では長い説明を加える案も考えましたが、代わりに十人の生徒へポスターを五秒だけ見せ、分かったことを答えてもらいました。",
+          "reason": "The later successful revision shows the issue could be fixed more simply."
+        }
+      ]
+    },
+    {
+      "id": "V11-F32-G2-003",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What did Haruto learn about difficult reading?",
+          "answer": "The time of day affected how well he could handle the same material.",
+          "evidence": "His books did not become easier, but his reading became more accurate because he matched the harder task with a time when he could concentrate better.",
+          "evidenceJp": "本が易しくなったわけではありませんが、集中しやすい時間に難しい課題を合わせたことで、より正確に読めるようになりました。",
+          "reason": "The conclusion connects performance with timing rather than easier books."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did Haruto first think he needed easier books?",
+          "answer": "Difficult passages felt especially hard near bedtime.",
+          "evidence": "Haruto read English for twenty minutes every night, but difficult passages often felt harder near bedtime.",
+          "evidenceJp": "ハルトは毎晩二十分英語を読んでいましたが、難しい長文は寝る前になると特に難しく感じました。",
+          "reason": "The difficulty he felt at night led to that assumption."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What did Haruto compare on Saturday?",
+          "answer": "He read halves of the same passage at two different times.",
+          "evidence": "On Saturday, Haruto read half after lunch and half just before bed.",
+          "evidenceJp": "土曜日、ハルトは半分を昼食後、残りを寝る直前に読み、分からない表現へ印を付けました。",
+          "reason": "Using the same passage helped compare timing."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "What did fewer marks in the afternoon section suggest?",
+          "answer": "Haruto understood the passage better in the afternoon.",
+          "evidence": "The afternoon section had fewer marks, even though the vocabulary level was similar.",
+          "evidenceJp": "語彙の難しさはほぼ同じなのに、午後に読んだ部分の印は少なくなりました。",
+          "reason": "Marks showed unfamiliar expressions, so fewer marks indicate easier processing."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: Haruto kept the same books but moved ____ to the afternoon.",
+          "answer": "difficult reading",
+          "evidence": "For the next week, he moved difficult reading to the afternoon and kept short review work for the evening.",
+          "evidenceJp": "次の一週間は難しい読解を午後に移し、夜には短い復習をしました。",
+          "reason": "This was the practical change he made."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “assumed” mean here?",
+          "answer": "Believed something before testing it.",
+          "evidence": "He assumed that he needed easier books.",
+          "evidenceJp": "もっと易しい本が必要だと思っていました。",
+          "reason": "The later test showed that his first belief was not the whole explanation."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: Haruto kept ____ for the evening.",
+          "answer": "short review work",
+          "evidence": "For the next week, he moved difficult reading to the afternoon and kept short review work for the evening.",
+          "evidenceJp": "次の一週間は難しい読解を午後に移し、夜には短い復習をしました。",
+          "reason": "The sentence contrasts afternoon and evening tasks."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If a chart showed fewer unfamiliar-expression marks after lunch than before bed, what would it support?",
+          "answer": "Haruto processed the same-level reading better in the afternoon.",
+          "evidence": "The afternoon section had fewer marks, even though the vocabulary level was similar.",
+          "evidenceJp": "語彙の難しさはほぼ同じなのに、午後に読んだ部分の印は少なくなりました。",
+          "reason": "The chart would visualize the same comparison."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “This let him test time of day without changing the text itself.” fit best?",
+          "answer": "After the sentence about reading half after lunch and half before bed.",
+          "evidence": "On Saturday, Haruto read half after lunch and half just before bed.",
+          "evidenceJp": "土曜日、ハルトは半分を昼食後、残りを寝る直前に読み、分からない表現へ印を付けました。",
+          "reason": "It explains why the same-passage comparison was useful."
+        },
+        {
+          "type": "REASON",
+          "question": "Why was changing the books unnecessary?",
+          "answer": "His performance improved by changing the time for difficult reading.",
+          "evidence": "His books did not become easier, but his reading became more accurate",
+          "evidenceJp": "本が易しくなったわけではありませんが、より正確に読めるようになりました。",
+          "reason": "The improvement occurred without easier material."
+        }
+      ]
+    },
+    {
+      "id": "V11-F32-G2-004",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What did the museum learn from changing the worksheet?",
+          "answer": "Fewer, better questions encouraged deeper observation and discussion.",
+          "evidence": "Reducing the number of questions did not reduce learning; changing the task encouraged students to use the exhibits as evidence rather than as places to copy words.",
+          "evidenceJp": "問題数を減らしても学びは減らず、課題の形を変えたことで、展示を言葉を写す場所ではなく根拠として使うようになりました。",
+          "reason": "The conclusion directly states the learning effect."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the museum change the original worksheet?",
+          "answer": "Some students rushed through exhibits just to find answers.",
+          "evidence": "During a trial visit, teachers noticed that some students rushed from case to case just to find answers.",
+          "evidenceJp": "試験的な見学では、答えを探すためだけに展示ケースからケースへ急いで移動する生徒がいることに先生たちは気づきました。",
+          "reason": "That behavior showed the original format was encouraging shallow searching."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What was different about the new question cards?",
+          "answer": "There were only five per group, and some required comparing objects from different displays.",
+          "evidence": "Each group received only five question cards, and several cards asked students to compare objects from different displays.",
+          "evidenceJp": "各グループには五枚だけ質問カードを渡し、その中には別々の展示物を比べる問題も入れました。",
+          "reason": "The sentence states both changes."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why could groups choose their own order?",
+          "answer": "The task no longer depended on following the exhibits one by one for answers.",
+          "evidence": "Groups could choose the order in which they explored the room.",
+          "evidenceJp": "グループは部屋を回る順番を自由に選べました。",
+          "reason": "The new questions encouraged broader comparison rather than copying in sequence."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The museum changed from fifteen ordered questions to ____.",
+          "answer": "five flexible question cards that encouraged comparison",
+          "evidence": "Each group received only five question cards, and several cards asked students to compare objects from different displays.",
+          "evidenceJp": "各グループには五枚だけ質問カードを渡し、その中には別々の展示物を比べる問題も入れました。",
+          "reason": "This captures the central redesign."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “evidence” mean in the last sentence?",
+          "answer": "Information from the exhibits used to support answers or ideas.",
+          "evidence": "changing the task encouraged students to use the exhibits as evidence rather than as places to copy words",
+          "evidenceJp": "課題の形を変えたことで、展示を言葉を写す場所ではなく根拠として使うようになりました。",
+          "reason": "The exhibits became support for thinking rather than sources for copied text."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the result: Students spent longer discussing what they saw and ____.",
+          "answer": "still visited every major exhibit",
+          "evidence": "Students spent longer discussing what they saw and still visited every major exhibit.",
+          "evidenceJp": "生徒は見たものについて話し合う時間が増え、それでも主要な展示はすべて見ました。",
+          "reason": "The sentence shows deeper discussion did not reduce coverage."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If observation notes became longer after the new cards were introduced, what would that support?",
+          "answer": "The new task encouraged closer attention to exhibits.",
+          "evidence": "The museum wanted students to observe more carefully, so staff tested a different format with one class.",
+          "evidenceJp": "博物館はもっと注意深く観察してほしいと考え、一クラスで別の形式を試しました。",
+          "reason": "Longer observation notes would fit the intended change."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “The staff wanted students to think across displays, not race through them.” fit best?",
+          "answer": "Before the sentence describing the five question cards.",
+          "evidence": "Each group received only five question cards, and several cards asked students to compare objects from different displays.",
+          "evidenceJp": "各グループには五枚だけ質問カードを渡し、その中には別々の展示物を比べる問題も入れました。",
+          "reason": "It explains the purpose of the redesigned cards."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did reducing the number of questions not reduce learning?",
+          "answer": "The remaining questions required more meaningful observation and comparison.",
+          "evidence": "Reducing the number of questions did not reduce learning; changing the task encouraged students to use the exhibits as evidence rather than as places to copy words.",
+          "evidenceJp": "問題数を減らしても学びは減らず、課題の形を変えたことで、展示を言葉を写す場所ではなく根拠として使うようになりました。",
+          "reason": "Question quality changed how students interacted with the exhibits."
+        }
+      ]
+    },
+    {
+      "id": "V11-F32-G2-005",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the passage mainly about?",
+          "answer": "Checking bicycle counts under different weather conditions prevented a misleading conclusion.",
+          "evidence": "Collecting an extra condition prevented one convenient number from becoming a misleading general claim.",
+          "evidenceJp": "別の条件でも調べたことで、一つの都合のよい数字を誤解を招く一般論にしてしまうことを防げました。",
+          "reason": "The last sentence states the main lesson."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the teacher question the first Tuesday count?",
+          "answer": "One day might not represent normal traffic.",
+          "evidence": "A teacher asked whether one day represented normal traffic.",
+          "evidenceJp": "先生は、一日だけで普段の交通を表せるのか尋ねました。",
+          "reason": "The teacher challenged the representativeness of a single observation."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What happened on the rainy Thursday?",
+          "answer": "The bicycle count was less than half the other two counts.",
+          "evidence": "The rainy-day number was less than half the other two.",
+          "evidenceJp": "雨の日の人数は、ほかの二日の半分未満でした。",
+          "reason": "The sentence states the numerical relationship."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did students report the weather with each count?",
+          "answer": "Weather strongly affected bicycle use, so the numbers needed context.",
+          "evidence": "They concluded that bicycle use was common in dry weather but changed greatly when it rained.",
+          "evidenceJp": "乾いた天気では自転車利用が多いものの、雨が降ると大きく変わると結論づけました。",
+          "reason": "Weather explained much of the difference among counts."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: Instead of using one sunny-day number, the group ____.",
+          "answer": "compared counts from sunny and rainy conditions",
+          "evidence": "The group repeated the count on Thursday, when it rained heavily, and on the following sunny Monday.",
+          "evidenceJp": "グループは大雨の木曜日と、その次の晴れた月曜日にも数えました。",
+          "reason": "The extra days provided contrasting conditions."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “misleading” mean here?",
+          "answer": "Likely to give people the wrong general idea.",
+          "evidence": "one convenient number from becoming a misleading general claim",
+          "evidenceJp": "一つの都合のよい数字を誤解を招く一般論にしてしまうこと",
+          "reason": "A single number would have hidden the weather effect."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: Students reported the weather with each count and ____.",
+          "answer": "described the difference",
+          "evidence": "students reported the weather with each count and described the difference",
+          "evidenceJp": "それぞれの人数と天気を一緒に示し、違いを説明しました。",
+          "reason": "This explains how they presented the data responsibly."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If a bar chart showed 80 riders on sunny days and 30 on the rainy day, what would it support?",
+          "answer": "Bicycle use dropped sharply in rain.",
+          "evidence": "The rainy-day number was less than half the other two.",
+          "evidenceJp": "雨の日の人数は、ほかの二日の半分未満でした。",
+          "reason": "Those values match the relationship described."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “The first number was real, but it was not enough by itself.” fit best?",
+          "answer": "After the teacher asks whether one day represented normal traffic.",
+          "evidence": "A teacher asked whether one day represented normal traffic.",
+          "evidenceJp": "先生は、一日だけで普段の交通を表せるのか尋ねました。",
+          "reason": "It explains why the group needed more observations."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the group avoid simply averaging the three counts?",
+          "answer": "An unexplained average would hide the effect of weather.",
+          "evidence": "Instead of averaging all three without explanation, students reported the weather with each count and described the difference.",
+          "evidenceJp": "三日分を説明なしで平均する代わりに、それぞれの人数と天気を一緒に示し、違いを説明しました。",
+          "reason": "They wanted readers to see why the values differed."
+        }
+      ]
+    },
+    {
+      "id": "V11-F32-G2-006",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What did the school discover about the shortage of large sports shoes?",
+          "answer": "It was partly caused by poor return tracking, not only by too few shoes.",
+          "evidence": "The shortage had been partly a tracking problem, not simply a lack of shoes.",
+          "evidenceJp": "不足の一部は靴の数ではなく、返却状況を把握する方法の問題だったのです。",
+          "reason": "The final sentence states the main finding."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did teachers think more large pairs might be needed?",
+          "answer": "The largest sizes were often unavailable.",
+          "evidence": "Teachers noticed that the largest sizes were often unavailable, so they considered buying more large pairs.",
+          "evidenceJp": "先生たちは大きいサイズがよく貸出中になることに気づき、追加購入を考えました。",
+          "reason": "Unavailability suggested a shortage at first."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What did the borrowing record reveal?",
+          "answer": "Many large shoes were returned to the gym box instead of the office storage shelf.",
+          "evidence": "The record showed that large shoes were borrowed frequently, but many were returned to a box in the gym instead of the storage shelf near the office.",
+          "evidenceJp": "大きい靴は確かによく借りられていましたが、多くは職員室近くの保管棚ではなく体育館の箱へ返されていました。",
+          "reason": "The record showed why shoes appeared unavailable."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did teachers sometimes think shoes were still in use?",
+          "answer": "Returned shoes were in the wrong place and had not reached the storage shelf.",
+          "evidence": "As a result, teachers sometimes thought the shoes were still in use.",
+          "evidenceJp": "そのため、先生たちはまだ使用中だと思うことがありました。",
+          "reason": "The previous sentence explains that returned shoes remained in the gym box."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The school improved availability by adding a return basket and ____.",
+          "answer": "moving returned shoes to the shelf twice a day",
+          "evidence": "The school added a return basket beside the gym exit and moved returned shoes to the shelf twice a day.",
+          "evidenceJp": "学校は体育館出口の横に返却かごを置き、一日二回、返された靴を保管棚へ移しました。",
+          "reason": "Those two changes fixed the return flow."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “tracking” mean in the last sentence?",
+          "answer": "Keeping accurate information about where borrowed and returned shoes were.",
+          "evidence": "The shortage had been partly a tracking problem, not simply a lack of shoes.",
+          "evidenceJp": "不足の一部は靴の数ではなく、返却状況を把握する方法の問題だったのです。",
+          "reason": "The problem was knowing whether returned shoes were available."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the result: After two weeks, large sizes were ____.",
+          "answer": "usually available",
+          "evidence": "After two weeks, large sizes were usually available.",
+          "evidenceJp": "二週間後には、大きいサイズもたいてい利用できるようになりました。",
+          "reason": "This sentence gives the outcome."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If a return log showed many shoes in the gym box but few on the office shelf, what would it support?",
+          "answer": "The apparent shortage was partly caused by the return process.",
+          "evidence": "many were returned to a box in the gym instead of the storage shelf near the office",
+          "evidenceJp": "多くは職員室近くの保管棚ではなく体育館の箱へ返されていました。",
+          "reason": "The log would show shoes existed but were not back in the official storage location."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “Before spending money, the school needed to check where the shoes were going.” fit best?",
+          "answer": "Before the sentence about the student helper checking the borrowing record.",
+          "evidence": "Before ordering them, a student helper checked the borrowing record.",
+          "evidenceJp": "注文する前に、生徒の手伝い係が貸出記録を確認しました。",
+          "reason": "It introduces the decision to investigate before buying."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the school delay buying more shoes?",
+          "answer": "It first checked whether the shortage was real or caused by the return system.",
+          "evidence": "Before ordering them, a student helper checked the borrowing record.",
+          "evidenceJp": "注文する前に、生徒の手伝い係が貸出記録を確認しました。",
+          "reason": "The school investigated the process before purchasing more pairs."
+        }
+      ]
+    }
+  ]
+}
