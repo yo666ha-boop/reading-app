@@ -20,7 +20,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
   if(expectedSourceSha&&!source.includes('source_sha='+expectedSourceSha))throw new Error('preview source did not reach '+expectedSourceSha+'; got '+source);
   if(!source.includes('expected_registered_total=1000'))throw new Error('preview metadata not 1000: '+source);
   await page.reload({waitUntil:'domcontentloaded',timeout:60000});
-  await page.waitForFunction(()=>window.V11_FINAL32_REGISTERED===true&&window.V11_FINAL_RELEASE_READING_ONLY_APPLIED===true&&window.V11_MULTI_PASSAGE_STATE&&Number(window.V11_MULTI_PASSAGE_STATE.extraPassages)===832,{timeout:120000});
+  await page.waitForFunction(()=>window.V11_FINAL32_REGISTERED===true&&window.V11_FINAL_RELEASE_READING_ONLY_APPLIED===true&&window.V11_YAMAGUCHI_100_READY===true&&window.V11_MULTI_PASSAGE_STATE&&Number(window.V11_MULTI_PASSAGE_STATE.extraPassages)===832,{timeout:120000});
   const runtime=await page.evaluate(()=>{
     const all=Object.values(window.V11_EXTRA_PASSAGES||{}).flat();
     const f=all.filter(p=>/^V11-F32-G[123]-\d{3}$/.test(String(p&&p.id||'')));
@@ -32,6 +32,8 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
       final32Count:f.length,
       final32Unique:new Set(f.map(p=>p.id)).size,
       readingOnlyState:window.V11_FINAL_RELEASE_READING_ONLY_STATE||null,
+      yamaguchi100:window.V11_YAMAGUCHI_100_STATE||null,
+      yamaguchiCount:all.filter(p=>p&&p.yamaguchiStyle===true).length,
       composition:(()=>{
         const bad=[];
         for(const p of all){
@@ -61,7 +63,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
     questionsText:document.querySelector('#questions')?.innerText||'',
     answersText:document.querySelector('#answers')?.innerText||''
   }));
-  const pass=Number(runtime.multi&&runtime.multi.extraPassages)===832&&Number(runtime.final32State&&runtime.final32State.totalWithBaseline)===1000&&runtime.final32Registered===true&&Number(runtime.final32RegisteredCount)===32&&runtime.final32Count===32&&runtime.final32Unique===32&&runtime.readingOnlyState&&runtime.composition.length===0&&runtime.replacements.every(x=>x.type==='SUMMARY_FILL'&&!x.bodyHasWriting&&!x.translationHasWriting)&&runtime.first&&runtime.first.questions===5&&runtime.first.questionSetB===5&&runtime.first.slashRows>0&&runtime.first.notes>0&&runtime.first.supportNotes>0&&runtime.first.requiredLocal>0&&rendered.selectedId==='V11-F32-G1-001'&&rendered.passageText.includes('The Umbrella Stand')&&rendered.questionsText.length>100&&rendered.answersText.length>100&&errors.length===0;
+  const pass=Number(runtime.multi&&runtime.multi.extraPassages)===832&&Number(runtime.final32State&&runtime.final32State.totalWithBaseline)===1000&&runtime.final32Registered===true&&Number(runtime.final32RegisteredCount)===32&&runtime.final32Count===32&&runtime.final32Unique===32&&runtime.readingOnlyState&&runtime.yamaguchi100&&runtime.yamaguchiCount===100&&runtime.composition.length===0&&runtime.replacements.every(x=>x.type==='SUMMARY_FILL'&&!x.bodyHasWriting&&!x.translationHasWriting)&&runtime.first&&runtime.first.questions===5&&runtime.first.questionSetB===5&&runtime.first.slashRows>0&&runtime.first.notes>0&&runtime.first.supportNotes>0&&runtime.first.requiredLocal>0&&rendered.selectedId==='V11-F32-G1-001'&&rendered.passageText.includes('The Umbrella Stand')&&rendered.questionsText.length>100&&rendered.answersText.length>100&&errors.length===0;
   Object.assign(report,{source,runtime,rendered:{selectedId:rendered.selectedId,optionCount:rendered.optionCount,passageHasTitle:rendered.passageText.includes('The Umbrella Stand'),questionsChars:rendered.questionsText.length,answersChars:rendered.answersText.length},errors,pass});
  }catch(e){report.error=String(e&&e.stack||e);}
  finally{await browser.close();}

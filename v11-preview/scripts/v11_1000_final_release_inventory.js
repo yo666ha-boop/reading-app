@@ -12,7 +12,7 @@ function counts(rows,key){const o={};for(const r of rows){const v=String(r[key]?
   const errors=[];page.on('pageerror',e=>errors.push('page:'+e.message));page.on('console',m=>{if(m.type()==='error')errors.push('console:'+m.text())});
   const r=await page.goto(URL,{waitUntil:'domcontentloaded',timeout:120000});
   if(!r||!r.ok())throw new Error('HTTP '+(r&&r.status()));
-  await page.waitForFunction(()=>window.V11_FINAL32_REGISTERED===true&&window.V11_FINAL_RELEASE_READING_ONLY_APPLIED===true&&window.V11_MULTI_PASSAGE_STATE&&Number(window.V11_MULTI_PASSAGE_STATE.extraPassages)===832,{timeout:150000});
+  await page.waitForFunction(()=>window.V11_FINAL32_REGISTERED===true&&window.V11_FINAL_RELEASE_READING_ONLY_APPLIED===true&&window.V11_YAMAGUCHI_100_READY===true&&window.V11_MULTI_PASSAGE_STATE&&Number(window.V11_MULTI_PASSAGE_STATE.extraPassages)===832,{timeout:150000});
   const data=await page.evaluate(()=>{
    const body=p=>{if(!p)return'';if(typeof p.body==='string')return p.body;if(typeof p.passage==='string')return p.passage;if(typeof p.text==='string')return p.text;if(Array.isArray(p.sentences))return p.sentences.join(' ');return''};
    const base=[];const ds=(typeof DATASETS!=='undefined'&&DATASETS)||{};
