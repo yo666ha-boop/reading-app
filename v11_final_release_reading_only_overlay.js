@@ -11,6 +11,17 @@ function replaceB5(id,q){
  p.questionSetB[4]=q; if(Array.isArray(p.questionsB)&&p.questionsB.length===5)p.questionsB[4]=q;
  log.replacedQuestions.push(id);
 }
+function repairEvidence(id,set,no,evidence,evidenceJp){
+ const p=byId.get(id); if(!p)throw new Error('evidence repair missing '+id);
+ const arr=set==='A'?p.questions:p.questionSetB;
+ if(!Array.isArray(arr)||!arr[no-1])throw new Error(id+' '+set+no+' missing question');
+ arr[no-1].evidence=evidence;
+ arr[no-1].evidenceJp=evidenceJp;
+ if(set==='B'&&Array.isArray(p.questionsB)&&p.questionsB[no-1]){
+   p.questionsB[no-1].evidence=evidence;
+   p.questionsB[no-1].evidenceJp=evidenceJp;
+ }
+}
 function replaceQ(id,set,no,q){
  const p=byId.get(id); if(!p)throw new Error('reading-only overlay missing '+id);
  const arr=set==='A'?p.questions:p.questionSetB;
@@ -58,6 +69,35 @@ replaceB5('V11-B13-G3-014',{
  evidenceJp:'警報の時間、Field Aに日陰と給水場所がないこと、活動時刻、シャトル時刻を合わせると、二つのソーラーカー回は今回のクラス訪問には適しにくかったのです。',
  reason:'本文の最終判断を構成する四つの条件を統合して読む要約補充です。'
 });
+
+/* EVIDENCE_REPAIR_PART1: replace slash/ellipsis shorthand with exact current-body evidence. */
+repairEvidence('V11-B14-G1-003','B',4,
+ ['She first looked for her name, but the labels only showed the letters S.K. and S.M.','She carefully opened only the small outside pocket of the S.K. bag and saw the red card.'],
+ ['最初に名前を探しましたが、札にはS.K.とS.M.という文字しかありませんでした。','S.K.の袋の小さな外ポケットだけを注意して開けると、赤いカードが見えました。']);
+repairEvidence('V11-B14-G1-007','B',3,
+ ['At 1:05, she heard it again near the library.','It said, “Reading Week book return: 1:00-1:15.”'],
+ ['1時5分、図書室の近くでまた音がしました。','掲示には「読書週間の本の返却：1時〜1時15分」とありました。']);
+repairEvidence('V11-B14-G1-011','A',1,
+ ["Every student's name was on the list, but Seat 12 was empty.",'Maybe one student had no seat.'],
+ ['生徒全員の名前がありましたが、12番の席だけ空いていました。','だれか一人に席がないのかもしれないと思いました。']);
+repairEvidence('V11-B14-G1-011','B',2,
+ ["Then she saw a small note beside Seat 12: ‘Camera box.’",'The empty seat had a job of its own.'],
+ ['しかし12番の横には「カメラ箱」と小さく書かれていました。','その空席には別の役目があったのです。']);
+repairEvidence('V11-B14-G1-011','B',4,
+ ["Then she saw a small note beside Seat 12: ‘Camera box.’",'Yuna counted the names again.'],
+ ['しかし12番の横には「カメラ箱」と小さく書かれていました。','ユナがもう一度名前を数えました。']);
+repairEvidence('V11-B16-G1-001','B',4,
+ ['Many said they wanted a quiet place with natural light, but they did not want to carry several books across the room.','We moved one shelf of popular books closer to the windows and added two small tables.'],
+ ['多くの生徒は自然光のある静かな場所を望んでいましたが、何冊もの本を部屋の反対側まで運びたくはありませんでした。','人気の本の棚を一つ窓の近くへ移し、小さな机を二つ加えました。']);
+repairEvidence('V11-B16-G1-003','B',1,
+ 'Mika brought a large water bottle to practice every day, but she often took much of it home.',
+ 'ミカは毎日練習に大きな水筒を持って行きましたが、その水の多くを家へ持ち帰っていました。');
+repairEvidence('V11-B16-G1-005','B',1,
+ ['Two kinds of bread were sold at the same table, and students often waited while others decided which one to buy.','The council put pictures of both kinds near the entrance and made two short lines at the table.'],
+ ['同じ机で二種類のパンを売っていて、ほかの生徒がどちらを買うか決める間、待つことがよくありました。','生徒会は入口近くに両方のパンの写真を置き、机では二つの短い列を作りました。']);
+repairEvidence('V11-B16-G1-007','B',1,
+ ['New students sometimes got lost between the gym and the music room.','They learned that the problem was not the whole map.'],
+ ['新入生は体育館から音楽室へ行く途中で迷うことがありました。','問題は地図全体ではないと分かりました。']);
 
 /* YAMAGUCHI_EXPLICIT_CONTRACT_REPAIR: normalize legacy question types to the active reading-only taxonomy. */
 replaceQ('V11-B13-G3-003','B',4,{questionType:'CONTEXT_WORD',type:'CONTEXT_WORD',prompt:"In the sentence 'The 8:10 bus required more waiting but made the arrival time more reliable,' what does reliable mean here?",answer:'more dependable or less likely to be delayed',evidence:'The 8:10 bus required more waiting but made the arrival time more reliable.',evidenceJp:'8時10分のバスは待ち時間が長い代わりに到着時刻が安定します。',reason:'文脈上、reliable は到着時刻の確実性が高いことを表します。'});
