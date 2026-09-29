@@ -1,0 +1,1858 @@
+{
+  "V11-B13-G3-003": {
+    "id": "V11-B13-G3-003",
+    "body": "Mika was helping her grandfather plan a visit to a community clinic in another town. He no longer drove long distances, so he wanted to travel by public transport. At first, Mika looked only at the clinic's reception time and chose the 8:45 community bus. According to the normal timetable, that bus reached the clinic stop at 9:15, so it seemed early enough. Then she noticed a road-work notice beside the timetable. From 9:00 a.m. to 11:00 a.m., buses using Hill Road could be delayed by about fifteen minutes. Both morning community buses used Hill Road. If the 8:45 bus had the full delay, it might reach the clinic stop at about 9:30. The clinic accepted patients until 10:00, so that was still possible, but Mika checked the rest of the plan instead of stopping there.\n\nHer grandfather's visit usually took about fifty minutes after reception. The clinic was a ten-minute walk from Central Station. The return trains left at 10:42, 11:22, and 12:02. Mika realized that arriving around 9:30, completing reception, spending about fifty minutes at the clinic, and walking to the station could make the 10:42 train too uncertain. The 11:22 train was safer.\n\nThere was also an earlier 8:10 bus. It normally reached the clinic stop at 8:40, before the road-work period began. The clinic building opened at 8:50 and reception began at 9:00. Her grandfather did not mind waiting ten minutes outside and another ten minutes inside. Mika compared the two choices with him. The 8:10 bus required more waiting but made the arrival time more reliable. The 8:45 bus required less waiting but could be delayed and would make the earliest return train especially difficult. They chose the 8:10 bus and planned to use the 10:42 train only if the visit finished early; otherwise they would take the 11:22 train.\n\nMika wrote both return trains on a card for her grandfather. She did not call the later bus impossible. Instead, she chose the earlier bus because the road-work notice reduced the certainty of the later plan, and she kept a second return option so one slow appointment would not ruin the whole trip.",
+    "fullTranslation": "ミカは、別の町にある地域診療所へ行く祖父の計画を手伝っていました。祖父はもう長距離運転をしないため、公共交通機関で行きたいと考えていました。最初、ミカは診療所の受付時間だけを見て、8時45分の地域バスを選びました。通常時刻表ではそのバスは9時15分に診療所前へ着くため、十分早く見えました。ところが時刻表の横に道路工事のお知らせがありました。午前9時から11時までHill Roadを通るバスは約15分遅れる可能性がありました。朝の地域バスは2本ともHill Roadを通ります。8時45分のバスが15分すべて遅れると、到着は9時30分ごろです。診療所の受付は10時までなので間に合う可能性はありましたが、ミカはそこで判断を止めず、その後の予定も確認しました。\n\n祖父の診察は受付後だいたい50分かかります。診療所からCentral Stationまでは徒歩10分です。帰りの列車は10時42分、11時22分、12時02分に出ます。9時30分ごろ到着し、受付を済ませ、約50分診療所にいて駅まで10分歩くと、10時42分の列車に乗る計画は不確かだとミカは気づきました。11時22分の方が安全です。\n\nもっと早い8時10分のバスもありました。通常は8時40分に診療所前へ着き、道路工事の時間帯が始まる前です。診療所の建物は8時50分に開き、受付は9時から始まります。祖父は外で10分、その後中で10分待つことを気にしませんでした。ミカは祖父と二つの案を比べました。8時10分のバスは待ち時間が長い代わりに到着時刻が安定します。8時45分のバスは待ち時間が短い一方、遅れる可能性があり、特に一番早い帰りの列車には乗りにくくなります。二人は8時10分のバスを選び、診察が早く終われば10時42分、そうでなければ11時22分の列車を使うことにしました。\n\nミカは祖父のカードに帰りの列車を二つ書きました。遅い方のバスを「不可能」と決めつけたのではありません。道路工事のお知らせによって計画の確実さが下がるため早いバスを選び、診察が長引いても旅行全体が崩れないよう帰りにも第二の選択肢を残したのです。",
+    "questions": [
+      {
+        "set": "A",
+        "no": 1,
+        "type": "MATERIAL_LINK",
+        "prompt": "If the 8:45 bus had the full road-work delay, about what time could it reach the clinic stop?",
+        "answer": "About 9:30.",
+        "evidence": "If the 8:45 bus had the full delay, it might reach the clinic stop at about 9:30.",
+        "evidenceJp": "8時45分のバスが15分すべて遅れると、到着は9時30分ごろです。",
+        "reason": "時刻表9:15＋最大15分遅延。"
+      },
+      {
+        "set": "A",
+        "no": 2,
+        "type": "REASON",
+        "prompt": "Why did Mika keep checking the plan even though a 9:30 arrival was before reception closed?",
+        "answer": "The later clinic visit and walk could make the 10:42 return train uncertain.",
+        "evidence": "The clinic accepted patients until 10:00, so that was still possible, but Mika checked the rest of the plan instead of stopping there.",
+        "evidenceJp": "診療所の受付は10時までなので間に合う可能性はありましたが、ミカはそこで判断を止めず、その後の予定も確認しました。",
+        "reason": "到着可否だけでなく帰路まで評価した。"
+      },
+      {
+        "set": "A",
+        "no": 3,
+        "type": "MATERIAL_LINK",
+        "prompt": "Why was the 8:10 bus more reliable with respect to the road work?",
+        "answer": "It normally arrived at 8:40, before the 9:00 road-work period began.",
+        "evidence": "It normally reached the clinic stop at 8:40, before the road-work period began.",
+        "evidenceJp": "通常は8時40分に診療所前へ着き、道路工事の時間帯が始まる前です。",
+        "reason": "資料の工事時間9:00開始と照合する。"
+      },
+      {
+        "set": "A",
+        "no": 4,
+        "type": "INFERENCE",
+        "prompt": "Why did Mika write two possible return trains on the card?",
+        "answer": "A slower appointment would not force the whole trip to fail.",
+        "evidence": "Mika wrote both return trains on a card for her grandfather.",
+        "evidenceJp": "ミカは祖父のカードに帰りの列車を二つ書きました。",
+        "reason": "本文末のバックアップ計画から推論できる。"
+      },
+      {
+        "set": "A",
+        "no": 5,
+        "type": "GIST",
+        "prompt": "What principle guided Mika's final choice?",
+        "answer": "She preferred a plan with more reliable timing and a backup rather than the plan with the least waiting.",
+        "evidence": "Instead, she chose the earlier bus because the road-work notice reduced the certainty of the later plan, and she kept a second return option so one slow appointment would not ruin the whole trip.",
+        "evidenceJp": "道路工事のお知らせによって計画の確実さが下がるため早いバスを選び、診察が長引いても旅行全体が崩れないよう帰りにも第二の選択肢を残したのです。",
+        "reason": "最終判断の要約。"
+      },
+      {
+        "set": "B",
+        "no": 1,
+        "type": "CONTENT_MATCH",
+        "prompt": "How long did the grandfather's clinic visit usually take after reception?",
+        "answer": "About fifty minutes.",
+        "evidence": "Her grandfather's visit usually took about fifty minutes after reception.",
+        "evidenceJp": "祖父の診察は受付後だいたい50分かかります。",
+        "reason": "所要時間。"
+      },
+      {
+        "set": "B",
+        "no": 2,
+        "type": "SUMMARY_FILL",
+        "prompt": "Complete the summary: The 8:10 bus required more waiting, but it made the arrival time ____.",
+        "answer": "more reliable",
+        "evidence": "The 8:10 bus required more waiting but made the arrival time more reliable.",
+        "evidenceJp": "8時10分のバスは待ち時間が長い代わりに到着時刻が安定します。",
+        "reason": "二案比較。"
+      },
+      {
+        "set": "B",
+        "no": 3,
+        "type": "REASON",
+        "prompt": "Why was the 11:22 train safer than the 10:42 train after a delayed 8:45 bus?",
+        "answer": "It allowed more time for reception, the fifty-minute visit, and the ten-minute walk.",
+        "evidence": "The 11:22 train was safer.",
+        "evidenceJp": "11時22分の方が安全です。",
+        "reason": "直前の時間計算に基づく。"
+      },
+      {
+        "set": "B",
+        "no": 4,
+        "type": "MATERIAL_LINK",
+        "prompt": "How long would the grandfather wait before reception if the 8:10 bus arrived normally?",
+        "answer": "Twenty minutes in total: ten minutes outside and ten minutes inside.",
+        "evidence": "Her grandfather did not mind waiting ten minutes outside and another ten minutes inside.",
+        "evidenceJp": "祖父は外で10分、その後中で10分待つことを気にしませんでした。",
+        "reason": "8:40到着、8:50開館、9:00受付開始。"
+      },
+      {
+        "set": "B",
+        "no": 5,
+        "type": "INFERENCE",
+        "prompt": "Why did Mika not describe the 8:45 bus as impossible?",
+        "answer": "Even with the full delay it could still arrive before reception closed; it was simply less reliable for the whole trip.",
+        "evidence": "She did not call the later bus impossible.",
+        "evidenceJp": "遅い方のバスを「不可能」と決めつけたのではありません。",
+        "reason": "可能性と確実性を区別している。"
+      }
+    ]
+  },
+  "V11-B14-G3-003": {
+    "id": "V11-B14-G3-003",
+    "body": "The city planned a weekend river festival, and a junior-high volunteer team was asked to prepare a route guide for visitors arriving at Midori Station. Usually, the shortest walk from the station to the festival field followed the east river path. However, part of that path would be closed for bridge repairs on Saturday morning. The first draft of the guide simply told everyone to use the west path instead. Rina thought that advice was safe but not complete because visitors would arrive at different times and some would come by bus.\n\nThe team gathered three pieces of information. The route map showed that the normal east path was 1.2 kilometers, the west walking route was 1.7 kilometers, and a third route used a bus from the station to Library Stop followed by a 0.5-kilometer walk. The construction table said the east path between Bridge A and Gate 2 would be closed from 8:30 a.m. to 11:30 a.m. After 11:30, the path would reopen, but bicycles would still be prohibited until 2:00 p.m. The bus schedule showed departures from Midori Station at 8:40, 9:10, 9:40, 10:40, and 11:40. The ride to Library Stop took eight minutes.\n\nThe team tested three example visitors. A family arriving at 9:00 with a small child could take the 9:10 bus and avoid the longer west walk. A walking club arriving at 10:15 could use the west route immediately instead of waiting twenty-five minutes for the next bus. A visitor arriving at noon could use the reopened east path, which was again the shortest walking route. These examples showed why one fixed instruction would not help everyone.\n\nThe final board began with a clear warning about the 8:30–11:30 closure. Under it, the team added a simple choice: before 11:30, use the west walk or check the next bus; after 11:30, walkers may use the east path again. A bicycle symbol remained crossed out until 2:00. The board did not claim that one route was always best. It connected the map, the time of arrival, and the transport schedule so visitors could make a safe choice for their own situation.",
+    "fullTranslation": "市では週末に川沿いの祭りを開く予定で、中学生のボランティアチームが、みどり駅に到着する来場者向けの道案内を作ることになりました。通常、駅から会場まで最も短い徒歩ルートは川の東側の道です。しかし土曜日の朝は、橋の工事のためその一部が通行止めになります。最初の案では、全員に西側の道を使うよう案内していました。リナは、それは安全ではあるものの、来場時刻も違い、バスを使う人もいるため十分ではないと考えました。\n\nチームは三つの資料を集めました。地図によると、通常の東側ルートは1.2キロ、西側の徒歩ルートは1.7キロ、三つ目は駅から図書館前までバスに乗り、そこから0.5キロ歩くルートです。工事表には、A橋から第2ゲートまでの東側の道が午前8時30分から11時30分まで閉鎖されるとありました。11時30分以降は再開しますが、自転車は午後2時まで通れません。バス時刻表には、みどり駅発が8時40分、9時10分、9時40分、10時40分、11時40分とあり、図書館前まで8分かかります。\n\nチームは三つの来場例を考えました。9時に小さな子どもと到着する家族は9時10分のバスに乗れば、西側を長く歩かずにすみます。10時15分に到着する徒歩グループなら、次のバスを25分待つより、すぐ西側ルートを歩けます。正午に到着する人は、再開した東側ルートを使え、それが再び最短の徒歩ルートになります。この例から、一つの固定した指示では全員の役に立たないことが分かりました。\n\n完成した案内板では、最初に8時30分から11時30分までの閉鎖をはっきり示しました。その下に、「11時30分までは西側を歩くか次のバスを確認する。11時30分以降は歩行者は東側も利用できる」という簡単な選択を示しました。自転車の印は午後2時まで禁止表示のままです。案内板は、どれか一つの道がいつでも最善だとは言いません。地図、到着時刻、交通時刻表を結び付け、それぞれの状況に合った安全な選択ができるようにしました。",
+    "questions": [
+      {
+        "set": "A",
+        "no": 1,
+        "type": "GIST",
+        "prompt": "1. この話の中心内容として最も適切なものはどれですか。",
+        "choices": [
+          "A. 西側ルートだけを使わせた話",
+          "B. 通行止め時間・地図・バス時刻を組み合わせ、来場者ごとに選べる案内を作った話",
+          "C. 祭りを延期した話",
+          "D. バスを増便した話"
+        ],
+        "answer": "B. 通行止め時間・地図・バス時刻を組み合わせ、来場者ごとに選べる案内を作った話",
+        "evidence": "It connected the map, the time of arrival, and the transport schedule so visitors could make a safe choice for their own situation.",
+        "evidenceJp": "地図、到着時刻、交通時刻表を結び付け、それぞれの状況に合った安全な選択ができるようにしました。",
+        "reason": "一つの固定ルートではなく条件別の選択肢を作っています。"
+      },
+      {
+        "set": "A",
+        "no": 2,
+        "type": "DETAIL",
+        "prompt": "2. 東側の道が閉鎖される時間はいつですか。",
+        "answer": "午前8時30分から11時30分まで。",
+        "evidence": "The construction table said the east path between Bridge A and Gate 2 would be closed from 8:30 a.m. to 11:30 a.m.",
+        "evidenceJp": "工事表には、A橋から第2ゲートまでの東側の道が午前8時30分から11時30分まで閉鎖されるとありました。",
+        "reason": "閉鎖時間が直接示されています。"
+      },
+      {
+        "set": "A",
+        "no": 3,
+        "type": "DETAIL",
+        "prompt": "3. 通常の東側ルートと西側徒歩ルートの距離はそれぞれ何キロですか。",
+        "answer": "東側1.2キロ、西側1.7キロ。",
+        "evidence": "The route map showed that the normal east path was 1.2 kilometers, the west walking route was 1.7 kilometers, and a third route used a bus from the station to Library Stop followed by a 0.5-kilometer walk.",
+        "evidenceJp": "地図によると、通常の東側ルートは1.2キロ、西側の徒歩ルートは1.7キロ、三つ目は駅から図書館前までバスに乗り、そこから0.5キロ歩くルートです。",
+        "reason": "距離比較の基礎情報です。"
+      },
+      {
+        "set": "A",
+        "no": 4,
+        "type": "REASON",
+        "prompt": "4. 9時到着の家族に9時10分のバスが向いているのはなぜですか。",
+        "answer": "小さな子どもと長い西側ルートを歩かずにすむから。",
+        "evidence": "A family arriving at 9:00 with a small child could take the 9:10 bus and avoid the longer west walk.",
+        "evidenceJp": "9時に小さな子どもと到着する家族は9時10分のバスに乗れば、西側を長く歩かずにすみます。",
+        "reason": "家族の状況とバス時刻を合わせています。"
+      },
+      {
+        "set": "A",
+        "no": 5,
+        "type": "CONTENT_MATCH",
+        "prompt": "5. 正午に到着する来場者について本文に合うものはどれですか。",
+        "choices": [
+          "A. 西側しか使えない。",
+          "B. バスを必ず待つ。",
+          "C. 再開した東側ルートを使え、それが最短の徒歩ルートになる。",
+          "D. 自転車で東側を通る。"
+        ],
+        "answer": "C. 再開した東側ルートを使え、それが最短の徒歩ルートになる。",
+        "evidence": "A visitor arriving at noon could use the reopened east path, which was again the shortest walking route.",
+        "evidenceJp": "正午に到着する人は、再開した東側ルートを使え、それが再び最短の徒歩ルートになります。",
+        "reason": "閉鎖終了後の条件です。"
+      },
+      {
+        "set": "B",
+        "no": 1,
+        "type": "SUMMARY_FILL",
+        "prompt": "6. 『11時30分までは西側かバス、11時30分以降は歩行者なら（　）も使える。』に入るものはどれですか。",
+        "choices": [
+          "A. 東側の道",
+          "B. 工事区間",
+          "C. 自転車専用道",
+          "D. 橋の上"
+        ],
+        "answer": "A. 東側の道",
+        "evidence": "Under it, the team added a simple choice: before 11:30, use the west walk or check the next bus; after 11:30, walkers may use the east path again.",
+        "evidenceJp": "その下に、「11時30分までは西側を歩くか次のバスを確認する。11時30分以降は歩行者は東側も利用できる」という簡単な選択を示しました。",
+        "reason": "完成案内の条件分岐です。"
+      },
+      {
+        "set": "B",
+        "no": 2,
+        "type": "REASON",
+        "prompt": "7. 10時15分到着の徒歩グループが西側を歩く方がよい例とされたのはなぜですか。",
+        "answer": "次のバスを25分待つより、すぐ歩き始められるから。",
+        "evidence": "A walking club arriving at 10:15 could use the west route immediately instead of waiting twenty-five minutes for the next bus.",
+        "evidenceJp": "10時15分に到着する徒歩グループなら、次のバスを25分待つより、すぐ西側ルートを歩けます。",
+        "reason": "待ち時間との比較です。"
+      },
+      {
+        "set": "B",
+        "no": 3,
+        "type": "MATERIAL_LINK",
+        "prompt": "8. 自転車の禁止表示を午後2時まで残した理由は何ですか。",
+        "answer": "東側の道が11時30分に再開しても、自転車は禁止が午後2時まで続くから。",
+        "evidence": "After 11:30, the path would reopen, but bicycles would still be prohibited until 2:00 p.m.",
+        "evidenceJp": "11時30分以降は再開しますが、自転車は午後2時まで通れません。",
+        "reason": "歩行者の再開時刻と自転車の規則が異なります。"
+      },
+      {
+        "set": "B",
+        "no": 4,
+        "type": "INFERENCE",
+        "prompt": "9. チームが『一つの道がいつでも最善』と書かなかった理由として最も適切なものはどれですか。",
+        "choices": [
+          "A. 地図が間違っていたから。",
+          "B. 到着時刻や同行者、バス時刻などで最適な選択が変わるから。",
+          "C. 西側が閉鎖されたから。",
+          "D. バスが運休したから。"
+        ],
+        "answer": "B. 到着時刻や同行者、バス時刻などで最適な選択が変わるから。",
+        "evidence": "These examples showed why one fixed instruction would not help everyone.",
+        "evidenceJp": "この例から、一つの固定した指示では全員の役に立たないことが分かりました。",
+        "reason": "来場者条件によって選択が変わります。"
+      },
+      {
+        "set": "B",
+        "no": 5,
+        "type": "MATERIAL_LINK",
+        "prompt": "10. この案内板が三つの資料を結び付けた意味として最も適切なものはどれですか。",
+        "choices": [
+          "A. 全員を同じ道へ送る。",
+          "B. 距離だけでなく、閉鎖時間と交通時刻も同時に考えて安全な選択を可能にした。",
+          "C. バスだけを勧める。",
+          "D. 自転車利用を増やす。"
+        ],
+        "answer": "B. 距離だけでなく、閉鎖時間と交通時刻も同時に考えて安全な選択を可能にした。",
+        "evidence": "It connected the map, the time of arrival, and the transport schedule so visitors could make a safe choice for their own situation.",
+        "evidenceJp": "地図、到着時刻、交通時刻表を結び付け、それぞれの状況に合った安全な選択ができるようにしました。",
+        "reason": "複数資料統合の目的が明記されています。"
+      }
+    ]
+  },
+  "V11-B15-G3-009": {
+    "id": "V11-B15-G3-009",
+    "body": "A community market planned outdoor activities from 9:00 a.m. to 2:00 p.m. The weather forecast showed light rain before 10:00, a dry period from 10:00 to noon, and heavier rain after 12:30. The site map had two covered areas: a small tent for thirty people and a large hall for eighty. A children's craft activity needed forty seats and was scheduled for 9:30. A music performance expected seventy visitors at 11:00, and a local food talk for twenty-five people was planned at 1:00. Organizers could not simply move every event indoors because the hall was being used for market tables until 10:30. They moved the craft activity to 10:15 in the hall after some tables were cleared. The 11:00 music performance stayed outdoors during the dry period, with the hall ready as a backup. The 1:00 food talk moved to the small tent because its expected audience fit the space and heavier rain was likely. The final notice explained the changes and asked visitors to check the board at 10:45 for the music decision. By matching weather, capacity, and room availability, the organizers created a schedule that could change safely without cancelling the whole market. The team also prepared decision rules instead of relying on a last-minute guess. If rain at 10:45 was only light and radar showed the dry period continuing, the music performance would stay outside. If heavier rain arrived early, staff would move chairs into the hall and delay the start by ten minutes. A volunteer counted available hall seats after the market tables were reduced, confirming that seventy visitors could enter without blocking exits. For the craft activity, families registered at the information desk so organizers knew whether the forty-seat estimate remained reasonable. The small tent was reserved for the food talk from 12:40, leaving twenty minutes for setup before the speaker began. Signs at the entrance used the same activity names and times as the printed program, reducing confusion when a location changed. After the market, organizers compared attendance with the revised schedule and found that no activity had to be cancelled. They saved the weather-and-capacity table as a model for future outdoor events, while noting that new forecasts must always replace the old numbers.",
+    "fullTranslation": "地域市場では午前9時から午後2時まで屋外活動を計画していました。天気予報は10時前に弱い雨、10時から正午までは雨がやみ、12時30分以降は強めの雨を示していました。会場には屋根のある場所が二つあり、小さなテントは30人、大きなホールは80人入れます。子ども向け工作は40席必要で9時30分開始、音楽演奏は70人ほどを見込み11時、地域の食についての話は25人で午後1時の予定でした。ホールは10時30分まで市場の売り場に使われるため、すべてを単純に室内へ移すことはできません。工作は一部の売り場を片づけた後の10時15分にホールで行うことにしました。11時の音楽演奏は雨のない時間に屋外で予定どおり行い、必要ならホールへ移れるよう準備しました。午後1時の話は、人数が入る小テントへ移しました。その時間は強い雨の可能性が高いからです。最終案内には変更点を示し、音楽については10時45分の掲示で最終確認するよう伝えました。天気、定員、場所が使える時刻を合わせることで、市場全体を中止せず安全に変更できる計画になりました。 チームは直前の勘だけに頼らず、判断ルールも準備しました。10時45分の雨が弱く、雨雲情報でも雨のない時間が続くなら音楽演奏は屋外で行います。強い雨が早く来れば、係がホールへいすを移し、開始を10分遅らせます。市場の机を減らした後のホールの利用可能席も数え、70人が非常口をふさがず入れることを確認しました。工作については案内所で家族の参加を受け付け、40席という見込みが妥当か確認できるようにしました。小テントは12時40分から食の話のために確保し、講師開始前に20分の準備時間を取りました。入口の案内は印刷プログラムと同じ活動名と時刻を使い、場所が変わっても混乱しにくくしました。行事後に参加者数と変更後の予定を比べると、中止になった活動はありませんでした。主催者は天気と定員を組み合わせた表を次回の屋外行事の参考として保存しましたが、予報数値は毎回最新情報へ置き換える必要があることも記しました。",
+    "questions": [
+      {
+        "set": "A",
+        "no": 1,
+        "type": "GIST",
+        "prompt": "What was the main challenge in making the market schedule?",
+        "answer": "The organizers had to match changing weather with event sizes and the times when covered spaces were available.",
+        "evidence": "By matching weather, capacity, and room availability, the organizers created a schedule that could change safely without cancelling the whole market.",
+        "evidenceJp": "天気、定員、場所が使える時刻を合わせることで、市場全体を中止せず安全に変更できる計画になりました。",
+        "reason": "The passage centers on balancing weather, capacity, and room availability rather than moving every event indoors."
+      },
+      {
+        "set": "A",
+        "no": 2,
+        "type": "MATERIAL_LINK",
+        "prompt": "Why was the craft activity moved to 10:15 in the hall?",
+        "answer": "Because the craft needed forty seats, and the hall became usable after some market tables were cleared.",
+        "evidence": "They moved the craft activity to 10:15 in the hall after some tables were cleared.",
+        "evidenceJp": "工作は一部の売り場を片づけた後の10時15分にホールで行うことにしました。",
+        "reason": "The smaller tent could not hold forty people, while the hall could be used once part of the market setup was cleared."
+      },
+      {
+        "set": "A",
+        "no": 3,
+        "type": "REASON",
+        "prompt": "Why was the 1:00 food talk moved to the small tent?",
+        "answer": "Its expected audience fit the tent, and heavier rain was likely by that time.",
+        "evidence": "The 1:00 food talk moved to the small tent because its expected audience fit the space and heavier rain was likely.",
+        "evidenceJp": "午後1時の話は、人数が入る小テントへ移しました。その時間は強い雨の可能性が高いからです。",
+        "reason": "The decision matched both the audience size and the weather forecast."
+      },
+      {
+        "set": "A",
+        "no": 4,
+        "type": "CONTENT_MATCH",
+        "prompt": "What were visitors told to check at 10:45?",
+        "answer": "They were told to check the board for the final decision about the music performance.",
+        "evidence": "The final notice explained the changes and asked visitors to check the board at 10:45 for the music decision.",
+        "evidenceJp": "最終案内には変更点を示し、音楽については10時45分の掲示で最終確認するよう伝えました。",
+        "reason": "The music location depended on the weather at that time, so the board carried the final decision."
+      },
+      {
+        "set": "A",
+        "no": 5,
+        "type": "INFERENCE",
+        "prompt": "Why was the hall a practical backup for the 11:00 music performance?",
+        "answer": "By then the hall could hold the expected seventy visitors and was no longer fully occupied by market tables.",
+        "evidence": "A volunteer counted available hall seats after the market tables were reduced, confirming that seventy visitors could enter without blocking exits.",
+        "evidenceJp": "市場の机を減らした後のホールの利用可能席も数え、70人が非常口をふさがず入れることを確認しました。",
+        "reason": "The backup was only practical because the hall had enough safe space after the market-table area was reduced."
+      },
+      {
+        "set": "B",
+        "no": 1,
+        "type": "DETAIL",
+        "prompt": "When did the forecast show heavier rain beginning?",
+        "answer": "After 12:30.",
+        "evidence": "The weather forecast showed light rain before 10:00, a dry period from 10:00 to noon, and heavier rain after 12:30.",
+        "evidenceJp": "天気予報は10時前に弱い雨、10時から正午までは雨がやみ、12時30分以降は強めの雨を示していました。",
+        "reason": "The forecast timing explains why later events needed covered locations."
+      },
+      {
+        "set": "B",
+        "no": 2,
+        "type": "SUMMARY_FILL",
+        "prompt": "Complete the summary: The final plan matched weather, capacity, and ____ availability.",
+        "answer": "room",
+        "evidence": "By matching weather, capacity, and room availability, the organizers created a schedule that could change safely without cancelling the whole market.",
+        "evidenceJp": "天気、定員、場所が使える時刻を合わせることで、市場全体を中止せず安全に変更できる計画になりました。",
+        "reason": "These three constraints summarize the planning method used throughout the passage."
+      },
+      {
+        "set": "B",
+        "no": 3,
+        "type": "REASON",
+        "prompt": "Why did the team prepare decision rules before the event?",
+        "answer": "So they would not have to rely on a last-minute guess if the weather changed.",
+        "evidence": "The team also prepared decision rules instead of relying on a last-minute guess.",
+        "evidenceJp": "チームは直前の勘だけに頼らず、判断ルールも準備しました。",
+        "reason": "The rules gave the staff a clear response to different weather conditions."
+      },
+      {
+        "set": "B",
+        "no": 4,
+        "type": "CONTENT_MATCH",
+        "prompt": "What would staff do if heavier rain arrived early before the music performance?",
+        "answer": "They would move chairs into the hall and delay the start by ten minutes.",
+        "evidence": "If heavier rain arrived early, staff would move chairs into the hall and delay the start by ten minutes.",
+        "evidenceJp": "強い雨が早く来れば、係がホールへいすを移し、開始を10分遅らせます。",
+        "reason": "This was the prepared indoor backup procedure for an early weather change."
+      },
+      {
+        "set": "B",
+        "no": 5,
+        "type": "GIST",
+        "prompt": "What did the organizers decide about using this plan in the future?",
+        "answer": "They kept the weather-and-capacity table as a model, but planned to replace the forecast numbers with current information each time.",
+        "evidence": "They saved the weather-and-capacity table as a model for future outdoor events, while noting that new forecasts must always replace the old numbers.",
+        "evidenceJp": "主催者は天気と定員を組み合わせた表を次回の屋外行事の参考として保存しましたが、予報数値は毎回最新情報へ置き換える必要があることも記しました。",
+        "reason": "The method was reusable, but the actual weather data could not simply be copied from one event to another."
+      }
+    ]
+  },
+  "V11-B10-G3-004": {
+    "id": "V11-B10-G3-004",
+    "fullTranslation": "四人の生徒が土曜日に市の芸術祭へ行く計画を立てました。一つの体験講座に参加し、生徒ギャラリーを見て、三時半までに駅へ戻りたいと考えました。四人とも未経験だったため、最初は粘土講座を選びました。講座表では粘土は十一時十分開始で六十分間でした。チケット規則では予約者は開始十分前までに受付を済ませる必要がありました。グループのシャトルは九時五十五分に会場入口へ着くため、時間は十分に見えました。しかし地図では、チケット会場は入口から徒歩八分、粘土教室はさらに十二分でした。一人の生徒は講座の受付前にギャラリーを見ることを提案しました。ギャラリーは教室からさらに六分なので、往復で十二分余計にかかります。グループは、すべての移動が最短時間どおりであることに頼る予定は使わないと決めました。さらに正午前は一人一枚の講座チケットだけという規則にも気づきました。そのため、午前に二つ目の講座を入れる時間を考えず粘土講座一つに集中できました。入口から直接チケット会場へ行き、その後粘土教室へ向かうことにしました。二つの移動が合計五分余計にかかっても、十一時の受付締切より前に教室へ着けます。粘土講座は十二時十分ごろ終わります。ギャラリーは十二時半以降無料になるため、二十分待てば入場料を節約できます。その時間を、会場を二度横切るのでなく教室近くで昼食に使いました。十二時半にギャラリーへ六分歩き、一時間余り見学しました。帰りのシャトルは会場入口を三時十分に出ます。急がず入口へ歩けるよう、二時四十五分にチケット会場で集合することにしました。各自の紙の予定表にシャトル番号と入口の場所も書きました。当日は混雑した道で数分遅れましたが、予定に余裕があり対応できました。四人は粘土講座とギャラリー見学を終え、三時十分のシャトルに乗りました。シャトルは三時半に駅へ着き、最終の時間条件を満たしました。グループは、実行できる予定には開始時刻、規則、徒歩時間、少しの余裕を組み合わせる必要があると学びました。",
+    "questions": [
+      {
+        "set": "A",
+        "no": 1,
+        "questionType": "GIST",
+        "prompt": "「The Art Festival, Workshop Timetable, Shuttle Map, and Ticket Rules」で、本文と資料を使って、四人がこの芸術祭で実現しようとした条件を答えなさい。",
+        "answer": "一つの体験講座に参加し、生徒ギャラリーを見て、三時半までに駅へ戻りたいと考えました。",
+        "evidence": "They wanted to join one workshop, see a student gallery, and return to the station by three thirty.",
+        "evidenceJp": "一つの体験講座に参加し、生徒ギャラリーを見て、三時半までに駅へ戻りたいと考えました。",
+        "reason": "本文と資料を使う目的・条件を確認します。"
+      },
+      {
+        "set": "A",
+        "no": 2,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "「The Art Festival, Workshop Timetable, Shuttle Map, and Ticket Rules」で、粘土講座の開始時刻と受付規則を合わせると、特に確認すべき受付条件は何ですか。",
+        "answer": "チケット規則では予約者は開始十分前までに受付を済ませる必要がありました。",
+        "evidence": "The ticket rule said a reserved visitor had to check in ten minutes before a workshop began.",
+        "evidenceJp": "チケット規則では予約者は開始十分前までに受付を済ませる必要がありました。",
+        "reason": "本文中の数値・時刻と資料条件を対応させる問題です。"
+      },
+      {
+        "set": "A",
+        "no": 3,
+        "questionType": "REASON",
+        "prompt": "「The Art Festival, Workshop Timetable, Shuttle Map, and Ticket Rules」で、最初の移動案をそのまま使わないと決めた理由を本文に即して答えなさい。",
+        "answer": "グループは、すべての移動が最短時間どおりであることに頼る予定は使わないと決めました。",
+        "evidence": "The group decided not to use a schedule that depended on every walk taking exactly the minimum time.",
+        "evidenceJp": "グループは、すべての移動が最短時間どおりであることに頼る予定は使わないと決めました。",
+        "reason": "最初の案を見直す直接の制約が根拠です。"
+      },
+      {
+        "set": "A",
+        "no": 4,
+        "questionType": "CONTENT_MATCH",
+        "prompt": "「The Art Festival, Workshop Timetable, Shuttle Map, and Ticket Rules」で、ギャラリーの入場時刻について、資料から判断して利用した条件を答えなさい。",
+        "answer": "ギャラリーは十二時半以降無料になるため、二十分待てば入場料を節約できます。",
+        "evidence": "The gallery rule said entry became free after twelve thirty, so waiting twenty minutes would save the group’s gallery fee.",
+        "evidenceJp": "ギャラリーは十二時半以降無料になるため、二十分待てば入場料を節約できます。",
+        "reason": "資料確認後の具体的な変更・対応が根拠です。"
+      },
+      {
+        "set": "A",
+        "no": 5,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "「The Art Festival, Workshop Timetable, Shuttle Map, and Ticket Rules」で、帰りの計画で基準となったシャトルの時刻を答えなさい。",
+        "answer": "帰りのシャトルは会場入口を三時十分に出ます。",
+        "evidence": "Their return shuttle left the festival gate at three ten.",
+        "evidenceJp": "帰りのシャトルは会場入口を三時十分に出ます。",
+        "reason": "本文中の数値・時刻と資料条件を対応させる問題です。"
+      },
+      {
+        "set": "B",
+        "no": 1,
+        "questionType": "SUMMARY_FILL",
+        "prompt": "「The Art Festival, Workshop Timetable, Shuttle Map, and Ticket Rules」で、資料確認後、入口から講座へ向かう基本の移動順をどのように直しましたか。",
+        "answer": "入口から直接チケット会場へ行き、その後粘土教室へ向かうことにしました。",
+        "evidence": "They planned to go directly from the gate to the ticket hall, then to the clay studio.",
+        "evidenceJp": "入口から直接チケット会場へ行き、その後粘土教室へ向かうことにしました。",
+        "reason": "資料確認後の計画の流れをまとめます。"
+      },
+      {
+        "set": "B",
+        "no": 2,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "「The Art Festival, Workshop Timetable, Shuttle Map, and Ticket Rules」で、徒歩時間に少し遅れが出ても受付に間に合うと判断した根拠を答えなさい。",
+        "answer": "二つの移動が合計五分余計にかかっても、十一時の受付締切より前に教室へ着けます。",
+        "evidence": "Even if those walks took five extra minutes in total, they would still reach the studio before the eleven o’clock check-in limit.",
+        "evidenceJp": "二つの移動が合計五分余計にかかっても、十一時の受付締切より前に教室へ着けます。",
+        "reason": "資料の数値・時刻と本文の行動を結び付けます。"
+      },
+      {
+        "set": "B",
+        "no": 3,
+        "questionType": "EVIDENCE",
+        "prompt": "「The Art Festival, Workshop Timetable, Shuttle Map, and Ticket Rules」で、帰りに慌てないため、何時にどこへ集合することにしましたか。",
+        "answer": "急がず入口へ歩けるよう、二時四十五分にチケット会場で集合することにしました。",
+        "evidence": "The students set a two forty-five meeting time at the ticket hall so they could walk to the gate without rushing.",
+        "evidenceJp": "急がず入口へ歩けるよう、二時四十五分にチケット会場で集合することにしました。",
+        "reason": "判断を支えた具体的条件・結果が根拠です。"
+      },
+      {
+        "set": "B",
+        "no": 4,
+        "questionType": "RESULT",
+        "prompt": "「The Art Festival, Workshop Timetable, Shuttle Map, and Ticket Rules」で、最終的に三時半までに駅へ戻る条件を満たせたことが分かる結果を答えなさい。",
+        "answer": "シャトルは三時半に駅へ着き、最終の時間条件を満たしました。",
+        "evidence": "The shuttle reached the station at three thirty, exactly meeting their final deadline.",
+        "evidenceJp": "シャトルは三時半に駅へ着き、最終の時間条件を満たしました。",
+        "reason": "最終的に条件を満たした結果を確認します。"
+      },
+      {
+        "set": "B",
+        "no": 5,
+        "questionType": "GIST",
+        "prompt": "「The Art Festival, Workshop Timetable, Shuttle Map, and Ticket Rules」で、この文章から、時刻表・規則・徒歩時間を組み合わせて計画するときの学びを答えなさい。",
+        "answer": "グループは、実行できる予定には開始時刻、規則、徒歩時間、少しの余裕を組み合わせる必要があると学びました。",
+        "evidence": "The group learned that a workable itinerary must combine start times, rules, walking time, and a small safety margin.",
+        "evidenceJp": "グループは、実行できる予定には開始時刻、規則、徒歩時間、少しの余裕を組み合わせる必要があると学びました。",
+        "reason": "本文末が複数資料を使った学びをまとめています。"
+      }
+    ]
+  },
+  "V11-B10-G3-008": {
+    "id": "V11-B10-G3-008",
+    "fullTranslation": "科学部は生徒二十四人と先生四人で海岸清掃を計画しました。各班がごみを集めつつ、満潮時の岩場を避けたいと考えました。潮位表では干潮が八時四十分、満潮が二時二十五分でした。学校からのバスは八時二十分に港へ着きます。地図は海岸を港近くのA、岩場のB、砂丘道沿いのCに分けていました。Bの注記には、干潮の前後だけ入るべきだとありました。最初、A、Cの順に行き、Bは昼食後に残す計画でした。先生の一人が、潮に左右される唯一のBを後回しにするのは潮の変化を無視していると指摘しました。到着時刻と干潮時刻を比べると、よい時間帯を使えると分かりました。港で十分の安全説明後、監督付き班は潮がまだ低いうちにBへ行けます。そこで二班が最初にBを担当し、ほかの班はAから始める順序に変えました。岩場へ行く各班には先生が携帯電話と救急袋を持って同行しました。印の先にごみが見えても濡れた岩を登らないよう生徒へ伝えました。十時半までにB班は港へ戻り、その後は新しい班を岩場へ入れませんでした。その後、各班はAとCの砂丘道を交代で担当しました。Cは九時から二時まで開いているため、Bほど早く始める必要はありませんでした。帰りのバスは十二時四十五分と、より遅い三時二十分がありました。予定した区域は正午前に終えられるため、十二時四十五分のバスを選びました。遅いバスでは必要な作業を増やさず、潮が上がる海岸での滞在時間だけが増えます。十一時四十五分、全員が港へ集まり、生徒、袋、集めたごみを数えました。班の帰りが遅い場合に備え、バス停へ向かう前に十五分の余裕を残しました。全班が時間どおりそろい、満潮よりかなり前に海岸を離れました。後の報告では、区域の近さではなく潮の条件から順序を決めたと説明しました。海岸が一日中同じ状態だと考えず、三区域すべてからごみを集められました。科学部は、安全な野外活動には自然の時刻、交通、区域、監督、予想外の遅れへの余裕を組み合わせる必要があると学びました。",
+    "questions": [
+      {
+        "set": "A",
+        "no": 1,
+        "questionType": "GIST",
+        "prompt": "「The Coastal Cleanup, Tide Chart, Bus Schedule, and Collection Zones」で、本文と資料を使って、海岸清掃で同時に満たそうとした安全上の条件を答えなさい。",
+        "answer": "各班がごみを集めつつ、満潮時の岩場を避けたいと考えました。",
+        "evidence": "They wanted every team to collect litter while avoiding the rocky shore when the tide was high.",
+        "evidenceJp": "各班がごみを集めつつ、満潮時の岩場を避けたいと考えました。",
+        "reason": "本文と資料を使う目的・条件を確認します。"
+      },
+      {
+        "set": "A",
+        "no": 2,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "「The Coastal Cleanup, Tide Chart, Bus Schedule, and Collection Zones」で、潮位表で、岩場の作業順を決める基準になった時刻情報を答えなさい。",
+        "answer": "潮位表では干潮が八時四十分、満潮が二時二十五分でした。",
+        "evidence": "The tide chart showed low tide at eight forty and high tide at two twenty-five.",
+        "evidenceJp": "潮位表では干潮が八時四十分、満潮が二時二十五分でした。",
+        "reason": "本文中の数値・時刻と資料条件を対応させる問題です。"
+      },
+      {
+        "set": "A",
+        "no": 3,
+        "questionType": "REASON",
+        "prompt": "「The Coastal Cleanup, Tide Chart, Bus Schedule, and Collection Zones」で、A、CのあとにBへ行く最初の順序を見直した理由を答えなさい。",
+        "answer": "先生の一人が、潮に左右される唯一のBを後回しにするのは潮の変化を無視していると指摘しました。",
+        "evidence": "One teacher pointed out that this order ignored the changing tide even though B was the only tide-dependent zone.",
+        "evidenceJp": "先生の一人が、潮に左右される唯一のBを後回しにするのは潮の変化を無視していると指摘しました。",
+        "reason": "最初の案を見直す直接の制約が根拠です。"
+      },
+      {
+        "set": "A",
+        "no": 4,
+        "questionType": "CONTENT_MATCH",
+        "prompt": "「The Coastal Cleanup, Tide Chart, Bus Schedule, and Collection Zones」で、潮位条件を考えて、Zone Bの作業順をどのように変更しましたか。",
+        "answer": "そこで二班が最初にBを担当し、ほかの班はAから始める順序に変えました。",
+        "evidence": "The club changed the order so two teams handled Zone B first while the other teams began in Zone A.",
+        "evidenceJp": "そこで二班が最初にBを担当し、ほかの班はAから始める順序に変えました。",
+        "reason": "資料確認後の具体的な変更・対応が根拠です。"
+      },
+      {
+        "set": "A",
+        "no": 5,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "「The Coastal Cleanup, Tide Chart, Bus Schedule, and Collection Zones」で、帰りのバスを選ぶとき、全作業との関係でどの便を選んだか答えなさい。",
+        "answer": "予定した区域は正午前に終えられるため、十二時四十五分のバスを選びました。",
+        "evidence": "The group chose the twelve forty-five bus because all planned zones could be completed before noon.",
+        "evidenceJp": "予定した区域は正午前に終えられるため、十二時四十五分のバスを選びました。",
+        "reason": "本文中の数値・時刻と資料条件を対応させる問題です。"
+      },
+      {
+        "set": "B",
+        "no": 1,
+        "questionType": "SUMMARY_FILL",
+        "prompt": "「The Coastal Cleanup, Tide Chart, Bus Schedule, and Collection Zones」で、岩場での作業を長引かせないため、Zone Bについて何時ごろまでに行った対応を答えなさい。",
+        "answer": "十時半までにB班は港へ戻り、その後は新しい班を岩場へ入れませんでした。",
+        "evidence": "By ten thirty, the Zone B teams had returned to the harbor and no new group entered the rocks.",
+        "evidenceJp": "十時半までにB班は港へ戻り、その後は新しい班を岩場へ入れませんでした。",
+        "reason": "資料確認後の計画の流れをまとめます。"
+      },
+      {
+        "set": "B",
+        "no": 2,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "「The Coastal Cleanup, Tide Chart, Bus Schedule, and Collection Zones」で、Zone CがZone Bほど早く始めなくてよいと判断できた利用時間の条件を答えなさい。",
+        "answer": "Cは九時から二時まで開いているため、Bほど早く始める必要はありませんでした。",
+        "evidence": "Zone C was open from nine to two, so it did not require the same early start as Zone B.",
+        "evidenceJp": "Cは九時から二時まで開いているため、Bほど早く始める必要はありませんでした。",
+        "reason": "資料の数値・時刻と本文の行動を結び付けます。"
+      },
+      {
+        "set": "B",
+        "no": 3,
+        "questionType": "EVIDENCE",
+        "prompt": "「The Coastal Cleanup, Tide Chart, Bus Schedule, and Collection Zones」で、遅い帰り便を使わなかった理由を、潮の変化と作業内容に結び付けて答えなさい。",
+        "answer": "遅いバスでは必要な作業を増やさず、潮が上がる海岸での滞在時間だけが増えます。",
+        "evidence": "Using the later bus would add time near the coast as the tide continued to rise without adding a necessary task.",
+        "evidenceJp": "遅いバスでは必要な作業を増やさず、潮が上がる海岸での滞在時間だけが増えます。",
+        "reason": "判断を支えた具体的条件・結果が根拠です。"
+      },
+      {
+        "set": "B",
+        "no": 4,
+        "questionType": "RESULT",
+        "prompt": "「The Coastal Cleanup, Tide Chart, Bus Schedule, and Collection Zones」で、最終的に安全な時間内に全員がそろったことが分かる結果を答えなさい。",
+        "answer": "全班が時間どおりそろい、満潮よりかなり前に海岸を離れました。",
+        "evidence": "All teams were present on time, and the group left the coast well before high tide.",
+        "evidenceJp": "全班が時間どおりそろい、満潮よりかなり前に海岸を離れました。",
+        "reason": "最終的に条件を満たした結果を確認します。"
+      },
+      {
+        "set": "B",
+        "no": 5,
+        "questionType": "GIST",
+        "prompt": "「The Coastal Cleanup, Tide Chart, Bus Schedule, and Collection Zones」で、この文章から、潮位・交通・区域・監督を組み合わせる野外活動の学びを答えなさい。",
+        "answer": "科学部は、安全な野外活動には自然の時刻、交通、区域、監督、予想外の遅れへの余裕を組み合わせる必要があると学びました。",
+        "evidence": "The club learned that safe fieldwork combines environmental timing, transport, zones, supervision, and extra time for unexpected delay.",
+        "evidenceJp": "科学部は、安全な野外活動には自然の時刻、交通、区域、監督、予想外の遅れへの余裕を組み合わせる必要があると学びました。",
+        "reason": "本文末が複数資料を使った学びをまとめています。"
+      }
+    ]
+  },
+  "V11-B10-G3-012": {
+    "id": "V11-B10-G3-012",
+    "fullTranslation": "生徒グループが市立図書館の三つの午後行事でボランティアをしました。登録した来場者を案内しつつ、各部屋を安全定員以内に保つ必要がありました。予定表では一時にAホールで作家講演、二時にC室で本の修理、三時十分にB室で物語教室でした。定員表ではAホール八十人、C室十六人、B室二十四人でした。申込表には講演六十八人、修理十六人、物語教室二十人が登録されていました。最初、建物全体は満員でないのでどの行事も空きがあると案内する予定でした。司書は、定員は各部屋ごとに適用されると説明しました。そのためAホールには十二席あっても、修理教室はすでに満員でした。ボランティアは開場前に本の修理を「受付終了」と表示しました。別の部屋の空席を移さず、キャンセル待ち名簿を作りました。移動時間図ではAホールからC室九分、C室からB室七分でした。一人の生徒は一時四十分まで講演を手伝い、二時から修理参加者を案内したいと考えました。講演は四十分なので、修理開始まで十一分しかありません。九分歩くと、終了の遅れ、混雑、キャンセル待ち確認の余裕がほとんどありません。そこでC室の近くにいる別のボランティアを修理受付に割り当てました。Aホールの生徒は最後まで残り、図書館内を急ぐのでなく一般来場者の案内をしました。一時五十五分、修理の予約者一人が電話でキャンセルしました。キャンセル待ち一番の人は近くにいて二時前にC室へ着けるため、その席を案内しました。物語教室には四席あり、当日参加者が登録できました。修理は二時五十分に終わり、B室まで七分なので三時十分まで十分時間がありました。物語教室にも登録した修理参加者とボランティア二人が一緒に移動しました。三時前に到着し、司書が部屋の人数を確認する時間もありました。どの部屋も定員を超えず、一つの行事の空席を別行事の空席とは扱いませんでした。最終の案内メモには各行事の定員、申込状況、移動時間を並べて書きました。生徒たちは、安全な行事案内には部屋ごとの定員、移動時間、現在の申込状況を結びつける必要があると学びました。",
+    "questions": [
+      {
+        "set": "A",
+        "no": 1,
+        "questionType": "GIST",
+        "prompt": "「The Library Event, Room Capacities, Sign-Up Table, and Walking Times」で、本文と資料を使って、ボランティアが各行事で守る必要があった中心条件を答えなさい。",
+        "answer": "登録した来場者を案内しつつ、各部屋を安全定員以内に保つ必要がありました。",
+        "evidence": "They needed to guide registered visitors while keeping every room within its safe capacity.",
+        "evidenceJp": "登録した来場者を案内しつつ、各部屋を安全定員以内に保つ必要がありました。",
+        "reason": "本文と資料を使う目的・条件を確認します。"
+      },
+      {
+        "set": "A",
+        "no": 2,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "「The Library Event, Room Capacities, Sign-Up Table, and Walking Times」で、申込数と部屋定員を比べたとき、本の修理教室について分かったことを答えなさい。",
+        "answer": "そのためAホールには十二席あっても、修理教室はすでに満員でした。",
+        "evidence": "That meant the repair workshop was already full even though Hall A had twelve seats.",
+        "evidenceJp": "そのためAホールには十二席あっても、修理教室はすでに満員でした。",
+        "reason": "本文中の数値・時刻と資料条件を対応させる問題です。"
+      },
+      {
+        "set": "A",
+        "no": 3,
+        "questionType": "REASON",
+        "prompt": "「The Library Event, Room Capacities, Sign-Up Table, and Walking Times」で、作家講演後に同じ生徒が修理受付へ移動する案に余裕が少ない理由を答えなさい。",
+        "answer": "九分歩くと、終了の遅れ、混雑、キャンセル待ち確認の余裕がほとんどありません。",
+        "evidence": "A nine-minute walk left almost no time for a delayed ending, a crowded hallway, or waiting-list checks.",
+        "evidenceJp": "九分歩くと、終了の遅れ、混雑、キャンセル待ち確認の余裕がほとんどありません。",
+        "reason": "最初の案を見直す直接の制約が根拠です。"
+      },
+      {
+        "set": "A",
+        "no": 4,
+        "questionType": "CONTENT_MATCH",
+        "prompt": "「The Library Event, Room Capacities, Sign-Up Table, and Walking Times」で、その移動問題を避けるため、修理受付の担当をどのように変更しましたか。",
+        "answer": "そこでC室の近くにいる別のボランティアを修理受付に割り当てました。",
+        "evidence": "The team assigned a different volunteer already near Room C to handle repair check-in.",
+        "evidenceJp": "そこでC室の近くにいる別のボランティアを修理受付に割り当てました。",
+        "reason": "資料確認後の具体的な変更・対応が根拠です。"
+      },
+      {
+        "set": "A",
+        "no": 5,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "「The Library Event, Room Capacities, Sign-Up Table, and Walking Times」で、物語教室の申込数と定員を合わせると、当日参加についてどのように判断できましたか。",
+        "answer": "物語教室には四席あり、当日参加者が登録できました。",
+        "evidence": "The story lab still had four open places, so walk-in visitors could register for it.",
+        "evidenceJp": "物語教室には四席あり、当日参加者が登録できました。",
+        "reason": "本文中の数値・時刻と資料条件を対応させる問題です。"
+      },
+      {
+        "set": "B",
+        "no": 1,
+        "questionType": "SUMMARY_FILL",
+        "prompt": "「The Library Event, Room Capacities, Sign-Up Table, and Walking Times」で、満員の修理教室で、別室の空席を流用せずに行った対応を答えなさい。",
+        "answer": "別の部屋の空席を移さず、キャンセル待ち名簿を作りました。",
+        "evidence": "They kept a waiting list instead of transferring unused seats from another room.",
+        "evidenceJp": "別の部屋の空席を移さず、キャンセル待ち名簿を作りました。",
+        "reason": "資料確認後の計画の流れをまとめます。"
+      },
+      {
+        "set": "B",
+        "no": 2,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "「The Library Event, Room Capacities, Sign-Up Table, and Walking Times」で、一時五十五分のキャンセル後、空いた一席をどのように扱いましたか。",
+        "answer": "キャンセル待ち一番の人は近くにいて二時前にC室へ着けるため、その席を案内しました。",
+        "evidence": "The first person on the waiting list was nearby and could reach Room C before two, so she received the place.",
+        "evidenceJp": "キャンセル待ち一番の人は近くにいて二時前にC室へ着けるため、その席を案内しました。",
+        "reason": "資料の数値・時刻と本文の行動を結び付けます。"
+      },
+      {
+        "set": "B",
+        "no": 3,
+        "questionType": "EVIDENCE",
+        "prompt": "「The Library Event, Room Capacities, Sign-Up Table, and Walking Times」で、修理教室終了後、物語教室へ移動する時間が足りると分かる条件を答えなさい。",
+        "answer": "修理は二時五十分に終わり、B室まで七分なので三時十分まで十分時間がありました。",
+        "evidence": "After repair ended at two fifty, the seven-minute walk to Room B left enough time before three ten.",
+        "evidenceJp": "修理は二時五十分に終わり、B室まで七分なので三時十分まで十分時間がありました。",
+        "reason": "判断を支えた具体的条件・結果が根拠です。"
+      },
+      {
+        "set": "B",
+        "no": 4,
+        "questionType": "RESULT",
+        "prompt": "「The Library Event, Room Capacities, Sign-Up Table, and Walking Times」で、最終的に定員管理が正しくできたことが分かる結果を答えなさい。",
+        "answer": "どの部屋も定員を超えず、一つの行事の空席を別行事の空席とは扱いませんでした。",
+        "evidence": "No room exceeded capacity, and space in one program was never treated as space in another.",
+        "evidenceJp": "どの部屋も定員を超えず、一つの行事の空席を別行事の空席とは扱いませんでした。",
+        "reason": "最終的に条件を満たした結果を確認します。"
+      },
+      {
+        "set": "B",
+        "no": 5,
+        "questionType": "GIST",
+        "prompt": "「The Library Event, Room Capacities, Sign-Up Table, and Walking Times」で、この文章から、部屋定員・申込状況・移動時間を組み合わせる案内の学びを答えなさい。",
+        "answer": "生徒たちは、安全な行事案内には部屋ごとの定員、移動時間、現在の申込状況を結びつける必要があると学びました。",
+        "evidence": "The students learned that safe event guidance links room limits with travel time and current registration.",
+        "evidenceJp": "生徒たちは、安全な行事案内には部屋ごとの定員、移動時間、現在の申込状況を結びつける必要があると学びました。",
+        "reason": "本文末が複数資料を使った学びをまとめています。"
+      }
+    ]
+  },
+  "V11-B10-G3-016": {
+    "id": "V11-B10-G3-016",
+    "fullTranslation": "中学校は生徒七十二人、先生八人、来賓十八人の冬の地域行事を計画しました。元の計画では午前十時から午後三時まで屋外広場を使う予定でした。行事の二日前、予報は九時小雪、正午大雪の可能性、三時強風へ変わりました。主催者は、傘だけでは移動や寒さへの危険を解決できないと判断しました。すぐ中止せず、三つの屋内会場を検討しました。市民ホールは百二十人入れますが、利用できるのは二時半まででした。スポーツセンターは八十人で五時まで、図書館の部屋は三十五人でした。全体は九十八人なので、全員を一つの部屋へ入れられるのは市民ホールだけでした。最初の屋内案は三時終了のままで、ホールの終了時刻を越えていました。主催者は全体活動を一時四十五分までに終えるよう短縮しました。これで上着、人数確認、順序ある退場に四十五分使えます。交通にも問題があり、学校のバス二台は各四十五席で合計九十席だけでした。主催者は誰が自家用車を使えるか推測せず、申込書を確認しました。十二人の生徒はホール近くに住み、通常天候なら現地集合の許可がありました。今回は雪予報なので、学校はその家庭へ再確認しました。七家庭は現地送迎を希望し、五家庭は道路が滑りそうなのでバスを希望しました。それでも九十一人が座席を必要とし、二台の定員より一人多い状態でした。八人乗りの学校車が空いており、職員移動用に認められていました。交通担当は、資格のある職員運転手と冬用タイヤを確認しました。最終交通案は二台のバスと学校車を使い、乗車名簿を決めました。家庭には出発時刻、乗る車、当日朝の連絡先を送りました。学校は朝六時半に天候確認を行い、道路に重大な警報が出れば中止する基準を設けました。当日朝は小雪のままだったため修正案で移動し、天候悪化前に行事を終えました。主催者は、冬の安全には会場定員、開館時間、交通座席、更新した許可、中止基準を組み合わせる必要があると学びました。",
+    "questions": [
+      {
+        "set": "A",
+        "no": 1,
+        "questionType": "GIST",
+        "prompt": "「The Winter Event, Snow Forecast, Indoor Venues, and Bus Capacity」で、本文と資料を使って、元の冬行事計画で予定していた時間帯と場所を答えなさい。",
+        "answer": "元の計画では午前十時から午後三時まで屋外広場を使う予定でした。",
+        "evidence": "The original plan used an outdoor plaza from ten in the morning until three in the afternoon.",
+        "evidenceJp": "元の計画では午前十時から午後三時まで屋外広場を使う予定でした。",
+        "reason": "本文と資料を使う目的・条件を確認します。"
+      },
+      {
+        "set": "A",
+        "no": 2,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "「The Winter Event, Snow Forecast, Indoor Venues, and Bus Capacity」で、参加者総数と各会場の定員を比べた結果、全員が一室に入れる会場について分かったことを答えなさい。",
+        "answer": "全体は九十八人なので、全員を一つの部屋へ入れられるのは市民ホールだけでした。",
+        "evidence": "The total group was ninety-eight, so the Civic Hall was the only single room large enough for everyone.",
+        "evidenceJp": "全体は九十八人なので、全員を一つの部屋へ入れられるのは市民ホールだけでした。",
+        "reason": "本文中の数値・時刻と資料条件を対応させる問題です。"
+      },
+      {
+        "set": "A",
+        "no": 3,
+        "questionType": "REASON",
+        "prompt": "「The Winter Event, Snow Forecast, Indoor Venues, and Bus Capacity」で、最初の屋内案をそのまま使えなかった開館時間上の問題を答えなさい。",
+        "answer": "最初の屋内案は三時終了のままで、ホールの終了時刻を越えていました。",
+        "evidence": "The first indoor draft still ended at three, after the hall closed.",
+        "evidenceJp": "最初の屋内案は三時終了のままで、ホールの終了時刻を越えていました。",
+        "reason": "最初の案を見直す直接の制約が根拠です。"
+      },
+      {
+        "set": "A",
+        "no": 4,
+        "questionType": "CONTENT_MATCH",
+        "prompt": "「The Winter Event, Snow Forecast, Indoor Venues, and Bus Capacity」で、家庭へ再確認した後も、バス座席数について残った不足を答えなさい。",
+        "answer": "それでも九十一人が座席を必要とし、二台の定員より一人多い状態でした。",
+        "evidence": "That still left ninety-one people needing seats, one more than the buses could carry.",
+        "evidenceJp": "それでも九十一人が座席を必要とし、二台の定員より一人多い状態でした。",
+        "reason": "資料確認後の具体的な変更・対応が根拠です。"
+      },
+      {
+        "set": "A",
+        "no": 5,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "「The Winter Event, Snow Forecast, Indoor Venues, and Bus Capacity」で、座席不足を解決するため、最終的にどの車両構成を使うことにしましたか。",
+        "answer": "最終交通案は二台のバスと学校車を使い、乗車名簿を決めました。",
+        "evidence": "The final plan used both buses plus the van, with assigned passenger lists.",
+        "evidenceJp": "最終交通案は二台のバスと学校車を使い、乗車名簿を決めました。",
+        "reason": "本文中の数値・時刻と資料条件を対応させる問題です。"
+      },
+      {
+        "set": "B",
+        "no": 1,
+        "questionType": "SUMMARY_FILL",
+        "prompt": "「The Winter Event, Snow Forecast, Indoor Venues, and Bus Capacity」で、市民ホールの閉館前に安全に退場するため、行事終了後にどれだけの時間を確保しましたか。",
+        "answer": "これで上着、人数確認、順序ある退場に四十五分使えます。",
+        "evidence": "That left forty-five minutes for coats, attendance checks, and organized departure.",
+        "evidenceJp": "これで上着、人数確認、順序ある退場に四十五分使えます。",
+        "reason": "資料確認後の計画の流れをまとめます。"
+      },
+      {
+        "set": "B",
+        "no": 2,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "「The Winter Event, Snow Forecast, Indoor Venues, and Bus Capacity」で、当日朝の天候悪化に備えて設定した確認時刻と中止基準について答えなさい。",
+        "answer": "学校は朝六時半に天候確認を行い、道路に重大な警報が出れば中止する基準を設けました。",
+        "evidence": "The school set a six thirty weather check and a cancellation rule for severe road warnings.",
+        "evidenceJp": "学校は朝六時半に天候確認を行い、道路に重大な警報が出れば中止する基準を設けました。",
+        "reason": "資料の数値・時刻と本文の行動を結び付けます。"
+      },
+      {
+        "set": "B",
+        "no": 3,
+        "questionType": "EVIDENCE",
+        "prompt": "「The Winter Event, Snow Forecast, Indoor Venues, and Bus Capacity」で、実施当日の天候と、修正版の計画でどのように終えられたかを答えなさい。",
+        "answer": "当日朝は小雪のままだったため修正案で移動し、天候悪化前に行事を終えました。",
+        "evidence": "On event day, snow stayed light in the morning, so the group used the revised plan and finished before conditions worsened.",
+        "evidenceJp": "当日朝は小雪のままだったため修正案で移動し、天候悪化前に行事を終えました。",
+        "reason": "判断を支えた具体的条件・結果が根拠です。"
+      },
+      {
+        "set": "B",
+        "no": 4,
+        "questionType": "RESULT",
+        "prompt": "「The Winter Event, Snow Forecast, Indoor Venues, and Bus Capacity」で、この文章から、冬の行事で会場・交通・天候を組み合わせるときの学びを答えなさい。",
+        "answer": "主催者は、冬の安全には会場定員、開館時間、交通座席、更新した許可、中止基準を組み合わせる必要があると学びました。",
+        "evidence": "The organizers learned that winter safety must combine venue capacity, opening hours, transport seats, updated permission, and a cancellation rule.",
+        "evidenceJp": "主催者は、冬の安全には会場定員、開館時間、交通座席、更新した許可、中止基準を組み合わせる必要があると学びました。",
+        "reason": "最終的に条件を満たした結果を確認します。"
+      },
+      {
+        "set": "B",
+        "no": 5,
+        "questionType": "SUMMARY_FILL",
+        "type": "SUMMARY_FILL",
+        "prompt": "Complete the summary: Winter-event safety required an indoor venue plus capacity, opening hours, transport seats, updated permission, and a ____.",
+        "answer": "cancellation rule",
+        "evidence": "The organizers learned that moving indoors is only one part of winter safety; capacity, opening hours, transport seats, updated permission, and a cancellation rule must also fit together.",
+        "evidenceJp": "主催者は、屋内化だけが冬の安全対策ではなく、定員、開館時間、交通座席、更新した許可、中止基準も組み合わせる必要があると学びました。",
+        "reason": "最終文に示された複数条件を統合して読む要約補充です。"
+      }
+    ]
+  },
+  "V11-B11-G3-012": {
+    "id": "V11-B11-G3-012",
+    "fullTranslation": "学校の農業部は土曜日に三つの地域市場へ野菜箱を届ける計画を立てました。確定注文を満たしつつ、保冷庫の安全容量を超えて冷蔵野菜を運ばない必要がありました。収穫表では七時半までにトマト四十箱、レタス二十八箱、ニンジン三十二箱が準備できます。市場Aはトマト十二、レタス八、ニンジン十箱、市場Bは十五、十、八箱、市場Cは十、八、十二箱を注文しました。注文合計はトマト三十七、レタス二十六、ニンジン三十箱で、収穫量はすべてを満たせます。しかしレタスは冷蔵が必要で、車の保冷庫は一度に十八箱まででした。経路表では学校からAまで二十分、AからBへ十五分、BからCへ二十五分でした。時間規則ではレタスは学校の保冷庫を出て六十分以内に市場へ着く必要がありました。最初、生徒たちはレタス二十六箱を全部積み、A、B、Cを一度で回る予定でした。しかし二十六箱は保冷庫容量十八箱を超えるため、その案は成立しませんでした。AとBのレタスを合わせるとちょうど十八箱なので、それを一緒に積む案を考えました。学校出発からAは二十分、Bは三十五分で、どちらも六十分以内です。Bへ届けた後、車は学校へ戻りC用の冷蔵八箱を受け取ることにしました。Bから学校へ戻る別の直通路は二十五分、学校からCへ直接は三十分でした。つまりCのレタスは二回目に学校を出て三十分後に着き、規則内に収まります。C用のトマトとニンジンは屋根付き積込所で待機できました。次に開場時刻を確認すると、Aは八時半、Bは九時、Cは十時でした。八時十分に出るとAへ八時半、Bへ八時四十五分で、Bの開場十五分前です。出発を八時二十五分に変えるとAへ八時四十五分、Bへ九時で、レタスはどちらも三十五分以内です。Bで荷下ろし後、学校へ戻りCの注文を積み、短い数量確認後に再出発しました。Cへは十時過ぎに到着し市場は開場済みで、冷蔵箱は学校の保冷庫を出て三十分を超えませんでした。すべての注文が書面と一致し、二回配送は収穫量、保冷容量、経路、時間条件を満たしました。部は、数量、保管、移動時間、開場規則を一緒に確認すると学びました。",
+    "questions": [
+      {
+        "set": "A",
+        "no": 1,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "三市場の注文合計は収穫量で満たせますか。トマト・レタス・ニンジンについて答えなさい。",
+        "answer": "満たせる。注文は37・26・30箱で、収穫は40・28・32箱。",
+        "evidence": [
+          "The harvest table listed forty boxes of tomatoes, twenty-eight boxes of lettuce, and thirty-two boxes of carrots ready by seven thirty.",
+          "The orders totaled thirty-seven tomato, twenty-six lettuce, and thirty carrot boxes, so the harvest could cover every confirmed order."
+        ],
+        "evidenceJp": [
+          "収穫表では七時半までにトマト四十箱、レタス二十八箱、ニンジン三十二箱が準備できます。",
+          "注文合計はトマト三十七、レタス二十六、ニンジン三十箱で、収穫量はすべてを満たせます。"
+        ],
+        "reason": "各品目の収穫と注文合計を比較します。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      },
+      {
+        "set": "A",
+        "no": 2,
+        "questionType": "REASON",
+        "prompt": "レタス26箱を一度に積んでA→B→Cと回る最初の案が成立しなかったのはなぜですか。",
+        "answer": "車のレタス用保冷庫は一度に18箱までで、26箱は容量を超えるから。",
+        "evidence": [
+          "However, lettuce had to stay chilled, and the van cooler held only eighteen lettuce boxes at one time.",
+          "At first, students planned to load all twenty-six lettuce boxes and visit A, B, then C in one trip.",
+          "That plan failed immediately because twenty-six exceeded the van cooler's capacity of eighteen."
+        ],
+        "evidenceJp": [
+          "しかしレタスは冷蔵が必要で、車の保冷庫は一度に十八箱まででした。",
+          "最初、生徒たちはレタス二十六箱を全部積み、A、B、Cを一度で回る予定でした。",
+          "しかし二十六箱は保冷庫容量十八箱を超えるため、その案は成立しませんでした。"
+        ],
+        "reason": "時間以前に容量条件を満たしません。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      },
+      {
+        "set": "A",
+        "no": 3,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "AとBのレタスを一緒に積むと何箱で、保冷容量に収まりますか。",
+        "answer": "8＋10＝18箱で、容量18箱ちょうどに収まる。",
+        "evidence": [
+          "Market A ordered twelve tomato, eight lettuce, and ten carrot boxes; Market B ordered fifteen, ten, and eight; Market C ordered ten, eight, and twelve.",
+          "However, lettuce had to stay chilled, and the van cooler held only eighteen lettuce boxes at one time.",
+          "They considered loading A and B lettuce together, which required exactly eighteen boxes."
+        ],
+        "evidenceJp": [
+          "市場Aはトマト十二、レタス八、ニンジン十箱、市場Bは十五、十、八箱、市場Cは十、八、十二箱を注文しました。",
+          "しかしレタスは冷蔵が必要で、車の保冷庫は一度に十八箱まででした。",
+          "AとBのレタスを合わせるとちょうど十八箱なので、それを一緒に積む案を考えました。"
+        ],
+        "reason": "注文数と容量を照合します。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      },
+      {
+        "set": "A",
+        "no": 4,
+        "questionType": "RESULT",
+        "prompt": "出発を8時25分に変えるとAとBには何時に着きますか。",
+        "answer": "Aに8時45分、Bに9時。",
+        "evidence": "The club changed departure to eight twenty-five, reaching A at eight forty-five and B at nine, while keeping both lettuce deliveries within thirty-five minutes.",
+        "evidenceJp": "出発を八時二十五分に変えるとAへ八時四十五分、Bへ九時で、レタスはどちらも三十五分以内です。",
+        "reason": "開場時刻と移動時間を満たす修正です。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      },
+      {
+        "set": "A",
+        "no": 5,
+        "questionType": "SUMMARY_FILL",
+        "prompt": "B配送後はいったん学校へ戻り、C用レタス8箱を積み直して、学校からCへ【　】分で届けました。",
+        "answer": "30。",
+        "evidence": [
+          "After delivering to B, the van would return to school to collect Market C's eight chilled boxes.",
+          "A different direct road from B back to school took twenty-five minutes, and school to C directly took thirty minutes.",
+          "That meant C's lettuce could leave school on the second trip and arrive thirty minutes later, safely inside the rule."
+        ],
+        "evidenceJp": [
+          "Bへ届けた後、車は学校へ戻りC用の冷蔵八箱を受け取ることにしました。",
+          "Bから学校へ戻る別の直通路は二十五分、学校からCへ直接は三十分でした。",
+          "つまりCのレタスは二回目に学校を出て三十分後に着き、規則内に収まります。"
+        ],
+        "reason": "第二便の冷蔵時間です。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      },
+      {
+        "set": "B",
+        "no": 1,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "8時10分出発案でB配送に問題があったのは何ですか。",
+        "answer": "Aに8時30分、Bに8時45分着となり、Bの開場9時より15分早すぎること。",
+        "evidence": [
+          "Students checked market opening times next: A opened at eight thirty, B at nine, and C at ten.",
+          "Leaving school at eight ten would reach A at eight thirty and B at eight forty-five, fifteen minutes before B opened."
+        ],
+        "evidenceJp": [
+          "次に開場時刻を確認すると、Aは八時半、Bは九時、Cは十時でした。",
+          "八時十分に出るとAへ八時半、Bへ八時四十五分で、Bの開場十五分前です。"
+        ],
+        "reason": "経路時間だけでなく開場時刻を見ます。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      },
+      {
+        "set": "B",
+        "no": 2,
+        "questionType": "EVIDENCE",
+        "prompt": "AとBのレタスが60分以内という規則を満たす根拠を答えなさい。",
+        "answer": "学校出発からAは20分、Bは35分で到着し、どちらも60分以内だから。",
+        "evidence": "The van could reach A in twenty minutes and B thirty-five minutes after leaving school, both inside the sixty-minute rule.",
+        "evidenceJp": "学校出発からAは二十分、Bは三十五分で、どちらも六十分以内です。",
+        "reason": "冷蔵時間規則との直接比較です。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      },
+      {
+        "set": "B",
+        "no": 3,
+        "questionType": "DETAIL",
+        "prompt": "C用のトマトとニンジンは第二便までどこに置けましたか。",
+        "answer": "屋根付き積込所。",
+        "evidence": "Tomatoes and carrots for C could wait in the covered loading area.",
+        "evidenceJp": "C用のトマトとニンジンは屋根付き積込所で待機できました。",
+        "reason": "冷蔵不要品の待機場所です。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      },
+      {
+        "set": "B",
+        "no": 4,
+        "questionType": "INFERENCE",
+        "prompt": "配送計画で数量だけを先に満たしても不十分なのはなぜですか。",
+        "answer": "保冷容量、60分以内の冷蔵時間、各市場の開場時刻、経路時間も同時に満たす必要があるから。",
+        "evidence": [
+          "However, lettuce had to stay chilled, and the van cooler held only eighteen lettuce boxes at one time.",
+          "A time rule said all lettuce must reach a market within sixty minutes after leaving the school cooler.",
+          "Students checked market opening times next: A opened at eight thirty, B at nine, and C at ten.",
+          "The club learned to check quantity, storage, travel time, and opening rules together."
+        ],
+        "evidenceJp": [
+          "しかしレタスは冷蔵が必要で、車の保冷庫は一度に十八箱まででした。",
+          "時間規則ではレタスは学校の保冷庫を出て六十分以内に市場へ着く必要がありました。",
+          "次に開場時刻を確認すると、Aは八時半、Bは九時、Cは十時でした。",
+          "部は、数量、保管、移動時間、開場規則を一緒に確認すると学びました。"
+        ],
+        "reason": "複数制約の統合から推論します。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      },
+      {
+        "set": "B",
+        "no": 5,
+        "questionType": "GIST",
+        "prompt": "最終的な二便計画が成立した理由をまとめなさい。",
+        "answer": "収穫量内で注文を満たし、18箱の保冷容量を超えず、各レタスを60分以内に届け、開場後に到着する時刻へ調整したから。",
+        "evidence": [
+          "The orders totaled thirty-seven tomato, twenty-six lettuce, and thirty carrot boxes, so the harvest could cover every confirmed order.",
+          "However, lettuce had to stay chilled, and the van cooler held only eighteen lettuce boxes at one time.",
+          "The van could reach A in twenty minutes and B thirty-five minutes after leaving school, both inside the sixty-minute rule.",
+          "That meant C's lettuce could leave school on the second trip and arrive thirty minutes later, safely inside the rule.",
+          "The club changed departure to eight twenty-five, reaching A at eight forty-five and B at nine, while keeping both lettuce deliveries within thirty-five minutes.",
+          "It reached C after ten, so the market was already open and no chilled box had spent more than thirty minutes outside the school cooler.",
+          "Every order matched the written sheet, and the two-trip plan stayed within harvest, cooler, route, and time limits.",
+          "The club learned to check quantity, storage, travel time, and opening rules together."
+        ],
+        "evidenceJp": [
+          "注文合計はトマト三十七、レタス二十六、ニンジン三十箱で、収穫量はすべてを満たせます。",
+          "しかしレタスは冷蔵が必要で、車の保冷庫は一度に十八箱まででした。",
+          "学校出発からAは二十分、Bは三十五分で、どちらも六十分以内です。",
+          "つまりCのレタスは二回目に学校を出て三十分後に着き、規則内に収まります。",
+          "出発を八時二十五分に変えるとAへ八時四十五分、Bへ九時で、レタスはどちらも三十五分以内です。",
+          "Cへは十時過ぎに到着し市場は開場済みで、冷蔵箱は学校の保冷庫を出て三十分を超えませんでした。",
+          "すべての注文が書面と一致し、二回配送は収穫量、保冷容量、経路、時間条件を満たしました。",
+          "部は、数量、保管、移動時間、開場規則を一緒に確認すると学びました。"
+        ],
+        "reason": "数量・容量・時間・開場条件を統合します。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      }
+    ]
+  },
+  "V11-B11-G3-004": {
+    "id": "V11-B11-G3-004",
+    "fullTranslation": "地域の学校は非常に強い雨のときの集合場所を選ぶ計画演習を行いました。クラスは生徒四十人と先生四人を学校から一覧にある一つの地域施設へ移す必要がありました。地図には東橋と丘橋という二つの川の横断地点がありました。現在の案内は川をレベル3とし、経路表ではそのレベルで東橋は利用不可となっていました。集合場所は定員五十人の地域ホール、三十八人の図書館別館、八十人の丘体育館でした。徒歩時間は東橋経由の地域ホール十二分、図書館別館二十二分、丘橋経由の丘体育館二十八分でした。最初、何人かは最短で四十四人を収容できる地域ホールを選びました。しかし経路表と結びつけると、その場所へ必要な橋が利用できないと分かりました。図書館別館は川を渡りませんが、クラス全体には六人分定員が足りませんでした。演習規則では、別の職員指示がない限りクラスは一緒に行動するとされていました。そのためレベル3で経路と定員の両方を満たす一覧先は丘体育館だけでした。生徒が丘橋の注記を見ると、川がレベル4になれば利用状況を再確認すると分かりました。徒歩が二十八分あるため、先生は出発直前に情報をもう一度確認することにしました。最新情報もレベル3だったため、丘体育館を計画上の目的地としました。出発前に経路状況が変わった場合に備え、学校内の待機場所も決めました。一台の携帯や一人だけに頼らないよう、四人の生徒リーダーが紙の地図を持ちました。練習歩行中、予定経路の脇道一本が倒れた枝で塞がれていました。地図には約三分追加で丘橋経路へ戻れる平行道路がありました。先生はその記載された迂回路を使い、班を別方向へ分けずクラスを一緒に保ちました。グループは三十一分で丘体育館へ着き、元の二十八分に迂回三分を加えた時間と一致しました。振り返りでは、地域ホールは経路条件、図書館別館は定員条件を満たさないと説明しました。丘体育館は現在のレベル3情報に基づく判断であり、すべての状況で固定の答えではないとも記しました。クラスは、実行できる経路計画には最新情報、経路利用状況、定員、徒歩時間、明確な代替案を結びつける必要があると学びました。",
+    "questions": [
+      {
+        "set": "A",
+        "no": 1,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "川がLevel 3のとき、地域ホールが44人を収容できても選べないのはなぜですか。",
+        "answer": "地域ホールへ行くために必要なEast BridgeがLevel 3では利用不可だから。",
+        "evidence": [
+          "The current notice placed the river at Level 3, and the route table marked East Bridge unavailable at that level.",
+          "At first, several students selected Community Hall because it was shortest and large enough for forty-four people.",
+          "When they linked that choice to the route table, they saw that its required bridge was not available."
+        ],
+        "evidenceJp": [
+          "現在の案内は川をレベル3とし、経路表ではそのレベルで東橋は利用不可となっていました。",
+          "最初、何人かは最短で四十四人を収容できる地域ホールを選びました。",
+          "しかし経路表と結びつけると、その場所へ必要な橋が利用できないと分かりました。"
+        ],
+        "reason": "定員だけでなく経路条件を資料と結びつけます。",
+        "questionReview": "B11_R11_HUMAN_REVIEW"
+      },
+      {
+        "set": "A",
+        "no": 2,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "図書館別館が集合先になれない理由を、人数と定員で答えなさい。",
+        "answer": "クラスは44人だが図書館別館の定員は38人で、6人分足りないから。",
+        "evidence": [
+          "The class had to move forty students and four teachers from the school to one listed community center.",
+          "Three meeting places were listed: Community Hall for fifty people, Library Annex for thirty-eight, and Hill Gym for eighty.",
+          "The Library Annex did not need a river crossing, but its capacity was six places too small for the whole class group."
+        ],
+        "evidenceJp": [
+          "クラスは生徒四十人と先生四人を学校から一覧にある一つの地域施設へ移す必要がありました。",
+          "集合場所は定員五十人の地域ホール、三十八人の図書館別館、八十人の丘体育館でした。",
+          "図書館別館は川を渡りませんが、クラス全体には六人分定員が足りませんでした。"
+        ],
+        "reason": "groupSizeとcapacityを照合します。",
+        "questionReview": "B11_R11_HUMAN_REVIEW"
+      },
+      {
+        "set": "A",
+        "no": 3,
+        "questionType": "CONTENT_MATCH",
+        "prompt": "Level 3で経路と定員の両方を満たす一覧先はどこでしたか。",
+        "answer": "Hill Gym。",
+        "evidence": "Hill Gym was therefore the only listed place meeting both route and capacity conditions at Level 3.",
+        "evidenceJp": "そのためレベル3で経路と定員の両方を満たす一覧先は丘体育館だけでした。",
+        "reason": "他二候補を除いた結論です。",
+        "questionReview": "B11_R11_HUMAN_REVIEW"
+      },
+      {
+        "set": "A",
+        "no": 4,
+        "questionType": "REASON",
+        "prompt": "Hill Gymへ出発する直前に情報をもう一度確認することにしたのはなぜですか。",
+        "answer": "徒歩28分かかり、川がLevel 4になればHill Bridgeの状況を再確認する必要があったから。",
+        "evidence": [
+          "Students checked the Hill Bridge note and found that its status would be reviewed if the river moved to Level 4.",
+          "Because the walk was twenty-eight minutes, the teacher added another information check immediately before departure."
+        ],
+        "evidenceJp": [
+          "生徒が丘橋の注記を見ると、川がレベル4になれば利用状況を再確認すると分かりました。",
+          "徒歩が二十八分あるため、先生は出発直前に情報をもう一度確認することにしました。"
+        ],
+        "reason": "移動中の状況変化を考慮しています。",
+        "questionReview": "B11_R11_HUMAN_REVIEW"
+      },
+      {
+        "set": "A",
+        "no": 5,
+        "questionType": "RESULT",
+        "prompt": "練習歩行中に脇道が倒木で塞がれたとき、どう対応しましたか。",
+        "answer": "地図にある平行道路の迂回路を使い、クラスを分けず一緒に移動した。",
+        "evidence": [
+          "During the practice walk, a fallen branch blocked one side street on the planned route.",
+          "The map showed a parallel street that returned to the Hill Bridge route after adding about three minutes.",
+          "Teachers used that marked detour and kept the class together rather than sending separate groups in different directions."
+        ],
+        "evidenceJp": [
+          "練習歩行中、予定経路の脇道一本が倒れた枝で塞がれていました。",
+          "地図には約三分追加で丘橋経路へ戻れる平行道路がありました。",
+          "先生はその記載された迂回路を使い、班を別方向へ分けずクラスを一緒に保ちました。"
+        ],
+        "reason": "事前に確認できる代替経路を使いました。",
+        "questionReview": "B11_R11_HUMAN_REVIEW"
+      },
+      {
+        "set": "B",
+        "no": 1,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "元の28分に約3分の迂回を加えた場合、実際の到着31分は資料上の見積りと一致しますか。",
+        "answer": "一致する。28分＋約3分＝31分。",
+        "evidence": [
+          "The map showed a parallel street that returned to the Hill Bridge route after adding about three minutes.",
+          "The group reached Hill Gym in thirty-one minutes, matching the original twenty-eight-minute estimate plus the detour."
+        ],
+        "evidenceJp": [
+          "地図には約三分追加で丘橋経路へ戻れる平行道路がありました。",
+          "グループは三十一分で丘体育館へ着き、元の二十八分に迂回三分を加えた時間と一致しました。"
+        ],
+        "reason": "数値が本文と資料で一致します。",
+        "questionReview": "B11_R11_HUMAN_REVIEW"
+      },
+      {
+        "set": "B",
+        "no": 2,
+        "questionType": "PHRASE_FILL",
+        "prompt": "Hill Bridgeは川がLevel【　】になれば利用状況を再確認する注記でした。",
+        "answer": "4。",
+        "evidence": "Students checked the Hill Bridge note and found that its status would be reviewed if the river moved to Level 4.",
+        "evidenceJp": "生徒が丘橋の注記を見ると、川がレベル4になれば利用状況を再確認すると分かりました。",
+        "reason": "経路状況の更新条件です。",
+        "questionReview": "B11_R11_HUMAN_REVIEW"
+      },
+      {
+        "set": "B",
+        "no": 3,
+        "questionType": "DETAIL",
+        "prompt": "一台の携帯や一人だけに頼らないため、何人の生徒リーダーが紙地図を持ちましたか。",
+        "answer": "4人。",
+        "evidence": "Four student leaders carried paper maps so the group would not depend on one phone or one person.",
+        "evidenceJp": "一台の携帯や一人だけに頼らないよう、四人の生徒リーダーが紙の地図を持ちました。",
+        "reason": "情報手段の冗長性を確認します。",
+        "questionReview": "B11_R11_HUMAN_REVIEW"
+      },
+      {
+        "set": "B",
+        "no": 4,
+        "questionType": "INFERENCE",
+        "prompt": "学校内の待機場所を決めたことにはどんな意味がありますか。",
+        "answer": "出発直前に川や橋の状況が変わっても、危険な経路へ進まず全員で次の指示を待てる。",
+        "evidence": [
+          "Because the walk was twenty-eight minutes, the teacher added another information check immediately before departure.",
+          "The class also marked an indoor waiting point at school in case the route status changed before they left."
+        ],
+        "evidenceJp": [
+          "徒歩が二十八分あるため、先生は出発直前に情報をもう一度確認することにしました。",
+          "出発前に経路状況が変わった場合に備え、学校内の待機場所も決めました。"
+        ],
+        "reason": "状況変化への代替行動から推論します。",
+        "questionReview": "B11_R11_HUMAN_REVIEW"
+      },
+      {
+        "set": "B",
+        "no": 5,
+        "questionType": "GIST",
+        "prompt": "この避難計画で、一つの条件だけで目的地を選べない理由をまとめなさい。",
+        "answer": "最新の川情報、橋の利用可否、44人を収容できる定員、徒歩時間、迂回路を同時に満たす必要があるから。",
+        "evidence": [
+          "The current notice placed the river at Level 3, and the route table marked East Bridge unavailable at that level.",
+          "Three meeting places were listed: Community Hall for fifty people, Library Annex for thirty-eight, and Hill Gym for eighty.",
+          "Walking times were twelve minutes to Community Hall by East Bridge, twenty-two minutes to the Library Annex, and twenty-eight minutes to Hill Gym by Hill Bridge.",
+          "Hill Gym was therefore the only listed place meeting both route and capacity conditions at Level 3.",
+          "Because the walk was twenty-eight minutes, the teacher added another information check immediately before departure.",
+          "The map showed a parallel street that returned to the Hill Bridge route after adding about three minutes.",
+          "The class learned that a workable route plan must connect current information, route availability, capacity, walking time, and a clear alternative."
+        ],
+        "evidenceJp": [
+          "現在の案内は川をレベル3とし、経路表ではそのレベルで東橋は利用不可となっていました。",
+          "集合場所は定員五十人の地域ホール、三十八人の図書館別館、八十人の丘体育館でした。",
+          "徒歩時間は東橋経由の地域ホール十二分、図書館別館二十二分、丘橋経由の丘体育館二十八分でした。",
+          "そのためレベル3で経路と定員の両方を満たす一覧先は丘体育館だけでした。",
+          "徒歩が二十八分あるため、先生は出発直前に情報をもう一度確認することにしました。",
+          "地図には約三分追加で丘橋経路へ戻れる平行道路がありました。",
+          "クラスは、実行できる経路計画には最新情報、経路利用状況、定員、徒歩時間、明確な代替案を結びつける必要があると学びました。"
+        ],
+        "reason": "資料条件を統合して判断する問題です。",
+        "questionReview": "B11_R11_HUMAN_REVIEW"
+      }
+    ]
+  },
+  "V11-B11-G3-016": {
+    "id": "V11-B11-G3-016",
+    "fullTranslation": "中学校は午前九時から午後二時半まで屋外試合を行う夏の運動会を計画しました。行事二日前、予報は学校の予想より高い気温を示しました。暑さ指数表は九時29、十一時32、一時35、二時34でした。学校の指針では31を超えると休憩を増やし、35以上では激しい屋外活動を別の時刻や場所へ移すことになっていました。校庭図では西側に大きな体育館入口の日陰、東側に小さな木陰がありました。給水所Aは体育館横、Bは校庭中央、Cは東門横でした。元の競技表では長距離走が一時、サッカー決勝が一時四十分でした。最初、主催者は予定を変えず給水の声かけだけ増やそうとしました。計画班は、一時に指数が35になればそれだけでは書かれた指針を守れないと気づきました。長距離走を、追加休憩基準より低い予報の九時二十分へ移しました。開会プログラムを少し短くし、選手が早まった競技の前にも準備時間を取れるようにしました。サッカー決勝は両チームに午前試合もあり、時刻移動が難しい競技でした。一時の実測指数が35以上なら、体育館で屋内技能決勝を行う案を用意しました。体育館は両チームと役員には十分ですが、全観客は入りませんでした。追加の観客が競技区域外から見られるよう、大きな日陰の西入口に中継画面を置きました。日陰図では中央の給水所Bは正午ごろ近くに日陰がありませんでした。直射日光を避け座って飲めるよう、Bへ仮設テントとベンチを移しました。各チームは試合後ごとに予定された給水休憩を取り、先生は涼しい休憩室を使った生徒を簡単に記録しました。十二時半の実測は34だったため、低強度の屋外活動は追加休憩付きで続きました。一時にはちょうど35となり、激しい屋外活動について準備した変更を実施しました。サッカー決勝は屋内技能形式へ変え、その後のリレーはより涼しい練習日へ移しました。家庭には、変更が実測指数と学校指針に基づくと伝えました。最終報告は予定変更、日陰、給水休憩、その後休んだ三人も記録しました。修正版が機能しただけで、学校はその日を危険ゼロとはしませんでした。生徒たちは、実測の暑さ、活動強度、日陰、給水、時刻、変更基準を組み合わせると学びました。",
+    "questions": [
+      {
+        "set": "A",
+        "no": 1,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "暑さ指数が13時に35になったとき、学校の指針では激しい屋外活動をどう扱う必要がありましたか。",
+        "answer": "別の時刻または場所へ移す必要があった。",
+        "evidence": [
+          "A heat-index table listed 29 at nine, 32 at eleven, 35 at one, and 34 at two.",
+          "The school guideline called for extra breaks above 31 and moving hard outdoor activities to another time or place at 35 or higher."
+        ],
+        "evidenceJp": [
+          "暑さ指数表は九時29、十一時32、一時35、二時34でした。",
+          "学校の指針では31を超えると休憩を増やし、35以上では激しい屋外活動を別の時刻や場所へ移すことになっていました。"
+        ],
+        "reason": "35以上の明示ルールです。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      },
+      {
+        "set": "A",
+        "no": 2,
+        "questionType": "REASON",
+        "prompt": "長距離走を13時から9時20分へ移したのはなぜですか。",
+        "answer": "13時の予報指数35では激しい屋外活動を移す必要があり、9時台は追加休憩基準31より低い予報だったから。",
+        "evidence": [
+          "A heat-index table listed 29 at nine, 32 at eleven, 35 at one, and 34 at two.",
+          "The original match table placed long-distance running at one and the soccer final at one forty.",
+          "The planning team noticed that this would not follow the written guideline if the index reached 35 at one.",
+          "They moved long-distance running to nine twenty, when the forecast value was still below the extra-break level."
+        ],
+        "evidenceJp": [
+          "暑さ指数表は九時29、十一時32、一時35、二時34でした。",
+          "元の競技表では長距離走が一時、サッカー決勝が一時四十分でした。",
+          "計画班は、一時に指数が35になればそれだけでは書かれた指針を守れないと気づきました。",
+          "長距離走を、追加休憩基準より低い予報の九時二十分へ移しました。"
+        ],
+        "reason": "競技強度と時刻別指数を照合しました。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      },
+      {
+        "set": "A",
+        "no": 3,
+        "questionType": "CONTENT_MATCH",
+        "prompt": "13時の実測指数が35以上の場合に備え、サッカー決勝にはどんな代替案を用意しましたか。",
+        "answer": "体育館で行う屋内技能決勝。",
+        "evidence": "Organizers prepared an indoor skills final in the gym if the one-o'clock measured index reached 35 or above.",
+        "evidenceJp": "一時の実測指数が35以上なら、体育館で屋内技能決勝を行う案を用意しました。",
+        "reason": "移動困難な競技の事前代替案です。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      },
+      {
+        "set": "A",
+        "no": 4,
+        "questionType": "RESULT",
+        "prompt": "当日13時に指数がちょうど35になったとき、実際にどう変更しましたか。",
+        "answer": "サッカー決勝を屋内技能形式へ変更し、その後のリレーをより涼しい練習日へ移した。",
+        "evidence": [
+          "At one, the index reached 35 exactly, so the prepared change for hard outdoor activities was used.",
+          "The soccer final changed to the indoor skills format, while a relay planned for later was moved to a cooler practice day."
+        ],
+        "evidenceJp": [
+          "一時にはちょうど35となり、激しい屋外活動について準備した変更を実施しました。",
+          "サッカー決勝は屋内技能形式へ変え、その後のリレーはより涼しい練習日へ移しました。"
+        ],
+        "reason": "実測値がルール閾値に達して計画変更を実行しました。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      },
+      {
+        "set": "A",
+        "no": 5,
+        "questionType": "SUMMARY_FILL",
+        "prompt": "中央の給水所Bには正午ごろ日陰がなかったため、【　】。",
+        "answer": "仮設テントとベンチを移した。",
+        "evidence": [
+          "The shade map also showed that Station B in the center field had no nearby cover at midday.",
+          "A temporary canopy and benches were moved to Station B so students could drink while seated out of direct sun."
+        ],
+        "evidenceJp": [
+          "日陰図では中央の給水所Bは正午ごろ近くに日陰がありませんでした。",
+          "直射日光を避け座って飲めるよう、Bへ仮設テントとベンチを移しました。"
+        ],
+        "reason": "給水と休憩環境を改善しました。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      },
+      {
+        "set": "B",
+        "no": 1,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "12時30分の実測指数34では、なぜ低強度の屋外活動を続けられましたか。",
+        "answer": "35以上で激しい活動を移す基準には達しておらず、31超なので追加休憩を入れて低強度活動を続けたから。",
+        "evidence": [
+          "The school guideline called for extra breaks above 31 and moving hard outdoor activities to another time or place at 35 or higher.",
+          "At twelve thirty, the measured index was 34, so low-intensity outdoor activities continued with the added breaks."
+        ],
+        "evidenceJp": [
+          "学校の指針では31を超えると休憩を増やし、35以上では激しい屋外活動を別の時刻や場所へ移すことになっていました。",
+          "十二時半の実測は34だったため、低強度の屋外活動は追加休憩付きで続きました。"
+        ],
+        "reason": "二つの閾値を区別します。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      },
+      {
+        "set": "B",
+        "no": 2,
+        "questionType": "EVIDENCE",
+        "prompt": "サッカー決勝の屋内案で全観客を体育館内へ入れられなかったとき、どう対応しましたか。",
+        "answer": "体育館は両チームと役員分のみだったため、大きな日陰の西入口に中継画面を置いた。",
+        "evidence": [
+          "The gym had enough space for both teams and officials but not for every spectator.",
+          "A live screen was placed at the large shaded west entrance so additional spectators could watch from outside the playing area."
+        ],
+        "evidenceJp": [
+          "体育館は両チームと役員には十分ですが、全観客は入りませんでした。",
+          "追加の観客が競技区域外から見られるよう、大きな日陰の西入口に中継画面を置きました。"
+        ],
+        "reason": "収容条件と日陰を組み合わせました。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      },
+      {
+        "set": "B",
+        "no": 3,
+        "questionType": "DETAIL",
+        "prompt": "各チームにはどのタイミングで給水休憩を設定しましたか。",
+        "answer": "各試合の後。",
+        "evidence": "Each team received a scheduled water break after every match, and teachers kept a simple record of students using the cool rest room.",
+        "evidenceJp": "各チームは試合後ごとに予定された給水休憩を取り、先生は涼しい休憩室を使った生徒を簡単に記録しました。",
+        "reason": "給水運用の具体的ルールです。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      },
+      {
+        "set": "B",
+        "no": 4,
+        "questionType": "INFERENCE",
+        "prompt": "修正版が予定どおり機能しても「危険が全くなかった」と表現しなかったのはなぜですか。",
+        "answer": "暑さによる危険は残り、実際に3人がその後の行事を休む選択もしており、対策成功がリスクゼロを意味しないから。",
+        "evidence": [
+          "The final report recorded schedule changes, shade, water breaks, and three students who rested for the rest of the event.",
+          "The school did not call the day risk-free just because the revised plan worked."
+        ],
+        "evidenceJp": [
+          "最終報告は予定変更、日陰、給水休憩、その後休んだ三人も記録しました。",
+          "修正版が機能しただけで、学校はその日を危険ゼロとはしませんでした。"
+        ],
+        "reason": "結果を過大評価しない姿勢です。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      },
+      {
+        "set": "B",
+        "no": 5,
+        "questionType": "GIST",
+        "prompt": "暑い日の学校行事を安全に運営するため、この話が示す条件をまとめなさい。",
+        "answer": "実測暑さ指数と活動強度を基準に時刻・場所を変更し、日陰と給水を確保し、閾値に達したら代替計画へ切り替えること。",
+        "evidence": [
+          "A heat-index table listed 29 at nine, 32 at eleven, 35 at one, and 34 at two.",
+          "The school guideline called for extra breaks above 31 and moving hard outdoor activities to another time or place at 35 or higher.",
+          "They moved long-distance running to nine twenty, when the forecast value was still below the extra-break level.",
+          "Organizers prepared an indoor skills final in the gym if the one-o'clock measured index reached 35 or above.",
+          "A temporary canopy and benches were moved to Station B so students could drink while seated out of direct sun.",
+          "Each team received a scheduled water break after every match, and teachers kept a simple record of students using the cool rest room.",
+          "At one, the index reached 35 exactly, so the prepared change for hard outdoor activities was used.",
+          "Students learned to combine measured heat, activity level, shade, water, timing, and a change rule."
+        ],
+        "evidenceJp": [
+          "暑さ指数表は九時29、十一時32、一時35、二時34でした。",
+          "学校の指針では31を超えると休憩を増やし、35以上では激しい屋外活動を別の時刻や場所へ移すことになっていました。",
+          "長距離走を、追加休憩基準より低い予報の九時二十分へ移しました。",
+          "一時の実測指数が35以上なら、体育館で屋内技能決勝を行う案を用意しました。",
+          "直射日光を避け座って飲めるよう、Bへ仮設テントとベンチを移しました。",
+          "各チームは試合後ごとに予定された給水休憩を取り、先生は涼しい休憩室を使った生徒を簡単に記録しました。",
+          "一時にはちょうど35となり、激しい屋外活動について準備した変更を実施しました。",
+          "生徒たちは、実測の暑さ、活動強度、日陰、給水、時刻、変更基準を組み合わせると学びました。"
+        ],
+        "reason": "資料・設備・変更ルールを統合します。",
+        "questionReview": "B11_R13_HUMAN_REVIEW"
+      }
+    ]
+  },
+  "V11-B12-G3-004": {
+    "id": "V11-B12-G3-004",
+    "body": "The health club at Midori High School planned a visit to a small island clinic. The students wanted to interview a nurse about emergency care in places with few medical workers. Four students and their teacher would travel from the city station, use the ferry, spend about ninety minutes at the clinic, and return to school the same day. At first, they chose the 10:20 ferry because it allowed everyone to meet after the morning homeroom. When Aya checked the clinic information, however, she noticed that reception ended at noon and new patients were accepted only until 11:30. Their interview was not a medical appointment, but the clinic had asked visitors to arrive before the busy final hour so staff could guide them safely. The 10:20 ferry reached the island at 10:55, leaving little time before 11:30. Aya then compared the earlier ferry, the weather notice, and the return buses. The 8:10 ferry arrived at 8:45, so the group could walk to the clinic and begin around 9:15. After about ninety minutes, they could finish around 10:45, eat lunch near the port, and take the 13:40 ferry back. That ferry reached the city harbor at 14:15, leaving twenty minutes before the 14:35 bus. The later 15:30 ferry seemed convenient too, but the weather notice warned of strong winds after 14:00 and said that sailing might be canceled. The group did not want a plan that depended on the most uncertain ferry of the day. They therefore asked the school for permission to leave before regular homeroom and chose the 8:10 ferry and the 13:40 return. Their final plan was less convenient in the morning, but it respected clinic operations and reduced weather risk. The students also wrote a backup rule: if the morning ferry was canceled, they would postpone the visit rather than arrive late and pressure the clinic staff. The timetable did not provide one answer by itself. A workable choice appeared only after they connected travel time, clinic conditions, weather risk, and the return bus. Before sending the plan, Aya and the teacher checked the four pieces of information again. Every time in the plan still worked.",
+    "fullTranslation": "緑高校の保健部は、小さな島の診療所を訪問する計画を立てました。医療従事者の少ない地域での救急対応について看護師へインタビューするためです。生徒4人と先生は市内の駅から出発し、フェリーで島へ渡り、診療所で約90分過ごして、その日のうちに学校へ戻る予定でした。最初は朝のホームルーム後に集合できる10時20分のフェリーを選びました。しかしアヤが診療所の情報を確認すると、受付は正午までで、新しい患者の受付は11時30分までだと分かりました。インタビューは診察ではありませんが、診療所からは安全に案内できるよう忙しい最後の時間帯より前に来てほしいと言われていました。10時20分の便は10時55分に島へ着くため、11時30分までほとんど余裕がありません。そこでアヤは早い便、天気予報、帰りのバスを比べました。8時10分の便なら8時45分に到着し、歩いて診療所へ行けば9時15分ごろに始められます。約90分のインタビューを10時45分ごろに終え、港近くで昼食を取り、13時40分の便で戻れます。その便は14時15分に市の港へ着き、14時35分のバスまで20分あります。15時30分の便も便利に見えましたが、14時以降は強風が予想され、欠航の可能性がありました。一日の中で最も不確かな便に頼る計画にはしたくありませんでした。そこで学校に通常のホームルーム前に出発する許可を求め、8時10分の往路と13時40分の復路を選びました。朝は不便になりましたが、診療所の運営を尊重し、天候リスクも減らせます。さらに、朝の便が欠航した場合は遅れて診療所へ行くのではなく訪問を延期するという予備ルールも決めました。一つの時刻表だけでは答えは出ませんでした。移動時間、診療所の条件、天候、帰りのバスを結びつけて初めて実行可能な計画になりました。計画を提出する前に、アヤと先生は四つの情報をもう一度確認しました。計画に入れた時刻はすべて問題なく使えました。",
+    "questions": [
+      {
+        "set": "A",
+        "no": 1,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "10時20分のフェリーを使うと、診療所側が避けてほしい時間帯まで余裕が少ないのはなぜですか。",
+        "answer": "島着が10時55分で、診療所の新規患者受付終了11時30分まで35分しかないからです。",
+        "evidence": "The 10:20 ferry reached the island at 10:55, leaving little time before 11:30.",
+        "evidenceJp": "10時20分の便は10時55分に島へ着くため、11時30分までほとんど余裕がありません。",
+        "reason": "フェリー到着時刻と診療所条件を結び付ける資料統合問題です。",
+        "humanReview": "HUMAN_REVIEW_R11"
+      },
+      {
+        "set": "A",
+        "no": 2,
+        "questionType": "CONTENT_MATCH",
+        "prompt": "8時10分のフェリーを選ぶと、診療所での活動と帰路をどのように組めますか。",
+        "answer": "8時45分に島へ着き、9時15分ごろに始め、約90分後の10時45分ごろに終えて、昼食後13時40分の便で戻れます。",
+        "evidence": "The 8:10 ferry arrived at 8:45, so the group could walk to the clinic and begin around 9:15. After about ninety minutes, they could finish around 10:45, eat lunch near the port, and take the 13:40 ferry back.",
+        "evidenceJp": "8時10分の便なら8時45分に到着し、歩いて診療所へ行けば9時15分ごろに始められます。約90分のインタビューを10時45分ごろに終え、港近くで昼食を取り、13時40分の便で戻れます。",
+        "reason": "往路・約90分の訪問・復路を、修正後の9時15分開始と10時45分終了で一続きに確認します。",
+        "humanReview": "HUMAN_REVIEW_R11_SEMANTIC_SYNC"
+      },
+      {
+        "set": "A",
+        "no": 3,
+        "questionType": "REASON",
+        "prompt": "15時30分の帰りのフェリーを主案にしなかったのはなぜですか。",
+        "answer": "14時以降に強風が予想され、その便は欠航する可能性があったからです。",
+        "evidence": "The later 15:30 ferry seemed convenient too, but the weather notice warned of strong winds after 14:00 and said that sailing might be canceled.",
+        "evidenceJp": "15時30分の便も便利に見えましたが、14時以降は強風が予想され、欠航の可能性がありました。",
+        "reason": "時刻表の便利さだけでなく天候リスクを評価した判断です。",
+        "humanReview": "HUMAN_REVIEW_R11"
+      },
+      {
+        "set": "A",
+        "no": 4,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "13時40分のフェリーで港へ戻った場合、14時35分のバスに乗れると判断できる根拠は何ですか。",
+        "answer": "フェリーが14時15分に港へ着くため、14時35分のバスまで20分あるからです。",
+        "evidence": "That ferry reached the city harbor at 14:15, leaving twenty minutes before the 14:35 bus.",
+        "evidenceJp": "その便は14時15分に市の港へ着き、14時35分のバスまで20分あります。",
+        "reason": "13時40分便の到着14時15分と、14時35分発の帰りバスの20分差を資料と本文の両方から確認します。",
+        "humanReview": "HUMAN_REVIEW_R11_SEMANTIC_SYNC"
+      },
+      {
+        "set": "A",
+        "no": 5,
+        "questionType": "GIST",
+        "prompt": "最終計画で8時10分往路・13時40分復路を選んだ中心的な理由は何ですか。",
+        "answer": "朝の便利さより、診療所の運営条件を守り、午後の強風による欠航リスクを避けることを優先したからです。",
+        "evidence": "Their final plan was less convenient in the morning, but it respected clinic operations and reduced weather risk.",
+        "evidenceJp": "朝は不便になりましたが、診療所の運営を尊重し、天候リスクも減らせます。",
+        "reason": "複数資料を統合した最終判断をまとめます。",
+        "humanReview": "HUMAN_REVIEW_R11"
+      },
+      {
+        "set": "B",
+        "no": 1,
+        "questionType": "INFERENCE",
+        "prompt": "10時20分便で訪問し、予定より診療所到着が遅れた場合、どんな問題が起こり得ますか。",
+        "answer": "診療所の忙しい最後の時間帯に近づき、職員に案内の負担をかける可能性があります。",
+        "evidence": "Their interview was not a medical appointment, but the clinic had asked visitors to arrive before the busy final hour so staff could guide them safely.",
+        "evidenceJp": "インタビューは診察ではありませんが、診療所からは安全に案内できるよう忙しい最後の時間帯より前に来てほしいと言われていました。",
+        "reason": "診療所側の依頼から無理な到着時刻のリスクを推論します。",
+        "humanReview": "HUMAN_REVIEW_R11"
+      },
+      {
+        "set": "B",
+        "no": 2,
+        "questionType": "SUMMARY_FILL",
+        "prompt": "「10時20分便を選ぶ→診療所条件を確認→天候と帰路も比較→（　）」の（　）を答えなさい。",
+        "answer": "学校へ早出の許可を求め、8時10分便と13時40分便を選ぶ。",
+        "evidence": "They therefore asked the school for permission to leave before regular homeroom and chose the 8:10 ferry and the 13:40 return.",
+        "evidenceJp": "そこで学校に通常のホームルーム前に出発する許可を求め、8時10分の往路と13時40分の復路を選びました。",
+        "reason": "比較後の最終行動を要約します。",
+        "humanReview": "HUMAN_REVIEW_R11"
+      },
+      {
+        "set": "B",
+        "no": 3,
+        "questionType": "MATERIAL_LINK",
+        "prompt": "朝の8時10分便が欠航した場合、グループはどうするルールにしましたか。",
+        "answer": "遅れて訪問するのではなく、その日の訪問を延期します。",
+        "evidence": "The students also wrote a backup rule: if the morning ferry was canceled, they would postpone the visit rather than arrive late and pressure the clinic staff.",
+        "evidenceJp": "さらに、朝の便が欠航した場合は遅れて診療所へ行くのではなく訪問を延期するという予備ルールも決めました。",
+        "reason": "不確実な交通に対するバックアップ条件を確認します。",
+        "humanReview": "HUMAN_REVIEW_R11"
+      },
+      {
+        "set": "B",
+        "no": 4,
+        "questionType": "CONTENT_MATCH",
+        "prompt": "この計画で同時に考慮した四つの情報分野を答えなさい。",
+        "answer": "移動時間、診療所の条件、天候リスク、帰りのバスです。",
+        "evidence": "A workable choice appeared only after they connected travel time, clinic conditions, weather risk, and the return bus.",
+        "evidenceJp": "一つの時刻表だけでは答えは出ませんでした。移動時間、診療所の条件、天候、帰りのバスを結びつけて初めて実行可能な計画になりました。",
+        "reason": "本文末で明示された資料統合の四要素です。",
+        "humanReview": "HUMAN_REVIEW_R11_SEMANTIC_SYNC"
+      },
+      {
+        "set": "B",
+        "no": 5,
+        "questionType": "GIST",
+        "prompt": "この資料問題で、一つの時刻表だけを見て答えを決めてはいけないのはなぜですか。",
+        "answer": "移動可能でも診療所の受入条件や強風による欠航、帰りのバス接続を満たさない可能性があるからです。",
+        "evidence": "The timetable did not provide one answer by itself. A workable choice appeared only after they connected travel time, clinic conditions, weather risk, and the return bus.",
+        "evidenceJp": "一つの時刻表だけでは答えは出ませんでした。移動時間、診療所の条件、天候、帰りのバスを結びつけて初めて実行可能な計画になりました。",
+        "reason": "資料統合型問題の中心原理を説明します。",
+        "humanReview": "HUMAN_REVIEW_R11_SEMANTIC_SYNC"
+      }
+    ]
+  },
+  "V11-B13-G3-006": {
+    "id": "V11-B13-G3-006",
+    "body": "During heavy rain, Haruto's family received an alert telling people near the river to prepare to move to an evacuation center. Haruto lived with his mother, his grandmother, and a small dog. His grandmother could walk slowly with a cane, but long distances were difficult for her. The family first considered Center A because it was only 600 meters from home. The map, however, showed a steep outdoor path for the final 150 meters. Center B was 1.4 kilometers away, but a city bus stopped directly in front of it.\n\nHaruto then checked the pet rules. Center A allowed pets only in outdoor cages beside the parking area. Center B had a covered pet room in a separate part of the building. The family could not leave the dog at home during the river alert. A rain notice also said that stronger rain was expected after 6:30 p.m. The current time was 5:35.\n\nThe emergency bus list showed two buses from the neighborhood stop to Center B, at 5:55 and 6:25. The trip normally took twenty minutes, and the city asked residents who needed slower movement to use the earlier bus if possible. Haruto's mother asked, 'Should we walk to Center A immediately? It is closer.' Haruto compared the whole route, not only the distance. His grandmother would have to walk uphill outside near the end of the route, and the dog would stay in an outdoor cage while the rain became stronger.\n\nThey decided to take the 5:55 bus to Center B. The neighborhood stop was a five-minute walk from their house, so they could reach it with time to spare. The bus arrived at Center B at 6:15, before the stronger rain was expected. Volunteers helped Haruto's grandmother enter through a step-free door, and the dog went to the covered pet room.\n\nThe family did not choose Center B because it was farther or newer. They chose it because the bus reduced walking, the entrance worked for Haruto's grandmother, the covered pet room met the dog's needs, and the earlier bus arrived before the forecast became worse. The map, pet rules, bus times, and weather notice all mattered to the same decision.",
+    "fullTranslation": "強い雨の中、川の近くに住む人へ避難所への移動準備を求める警報が出ました。ハルトは母、祖母、小型犬と暮らしています。祖母はつえを使ってゆっくり歩けますが、長い距離は大変です。家族は最初、家から600メートルしか離れていないA避難所を考えました。しかし地図を見ると最後の150メートルは屋外の急な坂道でした。B避難所は1.4キロ離れていますが、市のバスが建物のすぐ前に停まります。\n\nハルトはペットのルールも確認しました。A避難所では駐車場横の屋外ケージだけでペットを受け入れます。B避難所には建物の別の場所に屋根付きのペット室があります。川の警報が出ている間、家族は犬を家に残せません。雨のお知らせでは午後6時30分以降、さらに強い雨が予想されていました。現在時刻は5時35分です。\n\n緊急バス一覧には、地域の停留所からB避難所へ行くバスが5時55分と6時25分にありました。通常20分かかり、市はゆっくり移動する必要がある住民には可能なら早い便を使うよう求めていました。母は「近いA避難所へすぐ歩く方がよいのではない？」と尋ねました。さらに「そちらの方が近いでしょう」と言いました。ハルトは距離だけでなく経路全体を比べました。祖母は最後に屋外の坂を歩かなければならず、犬は雨が強くなる中で屋外ケージにいることになります。\n\n家族は5時55分のバスでB避難所へ行くことにしました。家から地域の停留所までは徒歩5分なので余裕を持って着けます。バスは6時15分にB避難所へ到着し、強い雨が予想される時刻より前でした。ボランティアが祖母を段差のない入口から案内し、犬は屋根付きのペット室へ入りました。\n\n家族がB避難所を選んだのは、遠いからでも新しいからでもありません。バスで歩く距離を減らせること、祖母が使いやすい入口があること、屋根付きペット室が犬に合うこと、早いバスなら天候悪化前に到着できることが理由でした。地図、ペット規則、バス時刻、天気のお知らせのすべてが一つの判断に必要だったのです。",
+    "questions": [
+      {
+        "set": "A",
+        "no": 1,
+        "type": "MATERIAL_LINK",
+        "prompt": "Which evacuation center was closer to Haruto's home?",
+        "answer": "Center A, at 600 meters.",
+        "evidence": "The family first considered Center A because it was only 600 meters from home.",
+        "evidenceJp": "家族は最初、家から600メートルしか離れていないA避難所を考えました。",
+        "reason": "資料の距離条件。"
+      },
+      {
+        "set": "A",
+        "no": 2,
+        "type": "REASON",
+        "prompt": "Why was the shorter route to Center A not automatically safer for Haruto's grandmother?",
+        "answer": "Its last 150 meters were a steep outdoor path, which was difficult for her slow walking with a cane.",
+        "evidence": "The map, however, showed a steep outdoor path for the final 150 meters.",
+        "evidenceJp": "しかし地図を見ると最後の150メートルは屋外の急な坂道でした。",
+        "reason": "距離だけでなく経路条件を見る。"
+      },
+      {
+        "set": "A",
+        "no": 3,
+        "type": "MATERIAL_LINK",
+        "prompt": "What pet-related advantage did Center B have?",
+        "answer": "It had a covered pet room inside a separate part of the building.",
+        "evidence": "Center B had a covered pet room in a separate part of the building.",
+        "evidenceJp": "B避難所には建物の別の場所に屋根付きのペット室があります。",
+        "reason": "資料のペット条件。"
+      },
+      {
+        "set": "A",
+        "no": 4,
+        "type": "INFERENCE",
+        "prompt": "Why was the 5:55 bus preferable to the 6:25 bus?",
+        "answer": "It arrived at 6:15, before stronger rain was expected after 6:30, and reduced risk for a slow-moving family member.",
+        "evidence": "The bus arrived at Center B at 6:15, before the stronger rain was expected.",
+        "evidenceJp": "バスは6時15分にB避難所へ到着し、強い雨が予想される時刻より前でした。",
+        "reason": "バス時刻と天候を統合する。"
+      },
+      {
+        "set": "A",
+        "no": 5,
+        "type": "GIST",
+        "prompt": "Why did the family choose Center B even though it was farther away?",
+        "answer": "Its bus access, step-free entrance, covered pet room, and earlier safe arrival matched the family's needs better.",
+        "evidence": "They chose it because the bus reduced walking, the entrance worked for Haruto's grandmother, the covered pet room met the dog's needs, and the earlier bus arrived before the forecast became worse.",
+        "evidenceJp": "バスで歩く距離を減らせること、祖母が使いやすい入口があること、屋根付きペット室が犬に合うこと、早いバスなら天候悪化前に到着できることが理由でした。",
+        "reason": "複数資料を統合した最終判断。"
+      },
+      {
+        "set": "B",
+        "no": 1,
+        "type": "CONTENT_MATCH",
+        "prompt": "What time was it when the family was making the decision?",
+        "answer": "5:35 p.m.",
+        "evidence": "The current time was 5:35.",
+        "evidenceJp": "現在時刻は5時35分です。",
+        "reason": "現在時刻。"
+      },
+      {
+        "set": "B",
+        "no": 2,
+        "type": "SUMMARY_FILL",
+        "prompt": "Complete the summary: From home to the neighborhood bus stop was a ____ walk.",
+        "answer": "five-minute",
+        "evidence": "The neighborhood stop was a five-minute walk from their house, so they could reach it with time to spare.",
+        "evidenceJp": "家から地域の停留所までは徒歩5分なので余裕を持って着けます。",
+        "reason": "乗車余裕の根拠。"
+      },
+      {
+        "set": "B",
+        "no": 3,
+        "type": "REASON",
+        "prompt": "Why did Haruto compare the whole route instead of only the center distances?",
+        "answer": "Distance alone ignored the steep path, grandmother's mobility, pet conditions, bus access, and worsening rain.",
+        "evidence": "Haruto compared the whole route, not only the distance.",
+        "evidenceJp": "ハルトは距離だけでなく経路全体を比べました。",
+        "reason": "判断軸を広げた理由。"
+      },
+      {
+        "set": "B",
+        "no": 4,
+        "type": "MATERIAL_LINK",
+        "prompt": "What time would the later emergency bus reach Center B?",
+        "answer": "6:45 p.m.",
+        "evidence": "The emergency bus list showed two buses from the neighborhood stop to Center B, at 5:55 and 6:25. The trip normally took twenty minutes, and the city asked residents who needed slower movement to use the earlier bus if possible.",
+        "evidenceJp": "緊急バス一覧には、地域の停留所からB避難所へ行くバスが5時55分と6時25分にありました。通常20分かかり、市はゆっくり移動する必要がある住民には可能なら早い便を使うよう求めていました。",
+        "reason": "6:25＋20分。"
+      },
+      {
+        "set": "B",
+        "no": 5,
+        "type": "INFERENCE",
+        "prompt": "Why would choosing Center A just because it was closer ignore an important trade-off?",
+        "answer": "It reduced distance but increased outdoor uphill walking and left the dog outside as rain strengthened.",
+        "evidence": "His grandmother would have to walk uphill outside near the end of the route, and the dog would stay in an outdoor cage while the rain became stronger.",
+        "evidenceJp": "祖母は最後に屋外の坂を歩かなければならず、犬は雨が強くなる中で屋外ケージにいることになります。",
+        "reason": "近さ以外の負担を比較する。"
+      }
+    ]
+  },
+  "V11-B13-G3-014": {
+    "id": "V11-B13-G3-014",
+    "body": "Nao's class planned to visit a summer science event in a large riverside park. The event had three activities the class wanted to compare: a solar-car demonstration, a river-insect talk, and a short outdoor experiment. Two days before the visit, the city issued a heat notice predicting the highest risk between 12:30 and 3:00 p.m. The teachers decided that students could still attend, but outdoor time during that period should be limited and every group needed a clear water and shade plan.\n\nNao studied the event map. The solar-car demonstration was in Open Field A at 12:40 and 2:10. The field had no permanent shade. The river-insect talk was in a covered pavilion at 1:20 and 2:40. The outdoor experiment was beside Garden C at 11:50 and 1:50. Garden C had a shaded rest area fifty meters away. Water stations were beside the entrance, the pavilion, and Garden C, but there was no water station in Open Field A.\n\nThe class shuttle arrived at 11:25. Return shuttles left at 2:20 and 3:20. Nao's group first wanted the 12:40 solar-car demonstration because it fit neatly between the experiment and the talk. However, that would place them in an unshaded field shortly after the high-risk period began. The later 2:10 demonstration was also during the high-risk period and ended too close to the 2:20 shuttle. Choosing it would almost require the 3:20 return.\n\nThe group changed its priorities. They attended the 11:50 outdoor experiment before the highest-risk period, rested and drank water at Garden C, then moved to the covered pavilion for the 1:20 river-insect talk. They skipped the solar-car demonstration and used the shaded pavilion area for a teacher-led explanation of the display information instead. After another water stop, they took the 2:20 shuttle home.\n\nSome students were disappointed because the solar cars were exciting. Nao explained that the plan was not based on heat alone. The time of the warning, the lack of shade and water at Field A, the activity times, and the shuttle schedule all made the two solar-car options less suitable for this class visit. The group still completed two science activities and returned before the hottest part of the afternoon was over.",
+    "fullTranslation": "ナオのクラスは大きな川沿い公園で開かれる夏の科学イベントへ行く計画を立てました。比べたい活動は、ソーラーカー実演、川の昆虫についての話、短い屋外実験の三つです。訪問2日前、市は午後12時30分から3時まで危険度が最も高いという暑さのお知らせを出しました。先生たちは参加自体は可能と判断しましたが、その時間帯の屋外活動を短くし、各グループが水分と日陰の計画を持つことにしました。\n\nナオは地図を調べました。ソーラーカー実演はOpen Field Aで12時40分と2時10分に行われます。Field Aには常設の日陰がありません。川の昆虫の話は屋根付きパビリオンで1時20分と2時40分。屋外実験はGarden Cの横で11時50分と1時50分です。Garden Cには50メートル先に日陰の休憩場所があります。給水場所は入口、パビリオン、Garden Cのそばにありますが、Open Field Aにはありません。\n\nクラスのシャトルは11時25分に到着しました。帰りのシャトルは2時20分と3時20分です。ナオのグループは最初、実験と昆虫の話の間にきれいに入る12時40分のソーラーカー実演を希望しました。しかし危険度の高い時間が始まった直後に日陰のない場所へ行くことになります。2時10分の回も危険時間帯で、終了が2時20分のシャトルに近すぎます。それを選ぶと、ほぼ3時20分便を使う必要があります。\n\nそこで優先順位を変えました。最も危険な時間帯より前の11時50分に屋外実験へ参加し、Garden Cで休んで水を飲み、その後屋根付きパビリオンで1時20分の昆虫の話を聞きました。ソーラーカー実演は見送って、日陰のパビリオン周辺で先生から展示情報について説明を受けました。もう一度水を飲み、2時20分のシャトルで帰りました。\n\nソーラーカーを楽しみにしていた生徒もいました。ナオは、判断が単に「暑いから」ではないと説明しました。警報の時間、Field Aに日陰と給水場所がないこと、活動時刻、シャトル時刻を合わせると、二つのソーラーカー回は今回のクラス訪問には適しにくかったのです。それでも二つの科学活動を終え、午後の最も暑い時間帯が終わる前に帰ることができました。",
+    "questions": [
+      {
+        "set": "A",
+        "no": 1,
+        "type": "MATERIAL_LINK",
+        "prompt": "During what time did the city predict the highest heat risk?",
+        "answer": "From 12:30 to 3:00 p.m.",
+        "evidence": "Two days before the visit, the city issued a heat notice predicting the highest risk between 12:30 and 3:00 p.m.",
+        "evidenceJp": "訪問2日前、市は午後12時30分から3時まで危険度が最も高いという暑さのお知らせを出しました。",
+        "reason": "暑さ資料。"
+      },
+      {
+        "set": "A",
+        "no": 2,
+        "type": "MATERIAL_LINK",
+        "prompt": "Why was the 12:40 solar-car demonstration a poor choice for this class?",
+        "answer": "It was in an unshaded field with no water station just after the highest-risk period began.",
+        "evidence": "However, that would place them in an unshaded field shortly after the high-risk period began.",
+        "evidenceJp": "しかし危険度の高い時間が始まった直後に日陰のない場所へ行くことになります。",
+        "reason": "時刻・日陰・給水条件を統合。"
+      },
+      {
+        "set": "A",
+        "no": 3,
+        "type": "REASON",
+        "prompt": "Why was the 2:10 solar-car demonstration also unsuitable?",
+        "answer": "It was during the high-risk period and ended too close to the 2:20 shuttle, making the 3:20 return likely.",
+        "evidence": "The later 2:10 demonstration was also during the high-risk period and ended too close to the 2:20 shuttle.",
+        "evidenceJp": "2時10分の回も危険時間帯で、終了が2時20分のシャトルに近すぎます。それを選ぶと、ほぼ3時20分便を使う必要があります。",
+        "reason": "暑さと帰路を同時評価。"
+      },
+      {
+        "set": "A",
+        "no": 4,
+        "type": "CONTENT_MATCH",
+        "prompt": "Which two science activities did the group actually complete?",
+        "answer": "The 11:50 outdoor experiment and the 1:20 river-insect talk.",
+        "evidence": "They attended the 11:50 outdoor experiment before the highest-risk period, rested and drank water at Garden C, then moved to the covered pavilion for the 1:20 river-insect talk.",
+        "evidenceJp": "最も危険な時間帯より前の11時50分に屋外実験へ参加し、Garden Cで休んで水を飲み、その後屋根付きパビリオンで1時20分の昆虫の話を聞きました。",
+        "reason": "実行した二活動。"
+      },
+      {
+        "set": "A",
+        "no": 5,
+        "type": "GIST",
+        "prompt": "Why did the class skip the solar-car demonstration?",
+        "answer": "The heat-risk timing, lack of shade and water at Field A, activity times, and shuttle schedule together made both options unsuitable.",
+        "evidence": "The time of the warning, the lack of shade and water at Field A, the activity times, and the shuttle schedule all made the two solar-car options less suitable for this class visit.",
+        "evidenceJp": "警報の時間、Field Aに日陰と給水場所がないこと、活動時刻、シャトル時刻を合わせると、二つのソーラーカー回は今回のクラス訪問には適しにくかったのです。",
+        "reason": "資料統合の最終判断。"
+      },
+      {
+        "set": "B",
+        "no": 1,
+        "type": "CONTENT_MATCH",
+        "prompt": "Where could the group find both shade and water near the outdoor experiment?",
+        "answer": "At Garden C, with a shaded rest area 50 meters away and water beside Garden C.",
+        "evidence": "Garden C had a shaded rest area fifty meters away. Water stations were beside the entrance, the pavilion, and Garden C, but there was no water station in Open Field A.",
+        "evidenceJp": "Garden Cには50メートル先に日陰の休憩場所があります。給水場所は入口、パビリオン、Garden Cのそばにありますが、Open Field Aにはありません。",
+        "reason": "地図条件。"
+      },
+      {
+        "set": "B",
+        "no": 2,
+        "type": "SUMMARY_FILL",
+        "prompt": "Complete the summary: The group took the ____ shuttle home after another water stop.",
+        "answer": "2:20",
+        "evidence": "After another water stop, they took the 2:20 shuttle home.",
+        "evidenceJp": "もう一度水を飲み、2時20分のシャトルで帰りました。",
+        "reason": "最終帰路。"
+      },
+      {
+        "set": "B",
+        "no": 3,
+        "type": "INFERENCE",
+        "prompt": "Why did the group not choose the 2:40 river-insect talk?",
+        "answer": "Using the 1:20 talk allowed them to finish activities and take the earlier 2:20 shuttle instead of remaining through the hotter period.",
+        "evidence": "They attended the 11:50 outdoor experiment before the highest-risk period, rested and drank water at Garden C, then moved to the covered pavilion for the 1:20 river-insect talk.",
+        "evidenceJp": "最も危険な時間帯より前の11時50分に屋外実験へ参加し、Garden Cで休んで水を飲み、その後屋根付きパビリオンで1時20分の昆虫の話を聞きました。",
+        "reason": "全体行程から妥当な推論。"
+      },
+      {
+        "set": "B",
+        "no": 4,
+        "type": "MATERIAL_LINK",
+        "prompt": "Which activity site had no permanent shade and no water station?",
+        "answer": "Open Field A, the solar-car demonstration site.",
+        "evidence": "The field had no permanent shade.",
+        "evidenceJp": "ソーラーカー実演はOpen Field Aで12時40分と2時10分に行われます。Field Aには常設の日陰がありません。",
+        "reason": "地図と活動場所を照合。"
+      },
+      {
+        "set": "B",
+        "no": 5,
+        "questionType": "SUMMARY_FILL",
+        "type": "SUMMARY_FILL",
+        "prompt": "Complete the summary: The solar-car options were less suitable because the group had to combine heat-warning time, shade and water, activity times, and the ____.",
+        "answer": "shuttle schedule",
+        "evidence": "The time of the warning, the lack of shade and water at Field A, the activity times, and the shuttle schedule all made the two solar-car options less suitable for this class visit.",
+        "evidenceJp": "警報の時間、Field Aに日陰と給水場所がないこと、活動時刻、シャトル時刻を合わせると、二つのソーラーカー回は今回のクラス訪問には適しにくかったのです。",
+        "reason": "本文の最終判断を構成する四つの条件を統合して読む要約補充です。"
+      }
+    ]
+  },
+  "V11-B15-G3-006": {
+    "id": "V11-B15-G3-006",
+    "body": "A class of fifty-four students planned a visit to a science center. They would arrive at 10:00 and leave at 12:30. The center offered a robotics workshop at 10:20 and 11:20. The workshop room held eighteen students. A planetarium show began at 10:30 and 11:30, and its room held thirty-six. The class was divided into three groups of eighteen. Group A could attend robotics at 10:20 while Groups B and C watched the 10:30 planetarium show together. At 11:20, Group B could attend robotics. Group A would use the exhibition floor, and Group C would remain there until the 11:30 planetarium show was no longer useful for the whole group because only thirty minutes would remain before departure. The students changed the plan: Group C attended robotics at 11:20 instead of Group B, while Group B used the exhibition floor. Group C had already seen the 10:30 planetarium show with Group B, so this created a conflict. They checked the schedule again and realized only two robotics sessions were available, so not all three groups could take robotics. The final plan gave robotics to Groups A and B and the planetarium to all students in two rotations, while Group C used an interactive lab instead of robotics. The class chose a plan that respected capacities and accepted that every group could not do every activity. The class then built a timetable for every twenty-minute block. From 10:00 to 10:20, all groups received orientation. Group A entered robotics at 10:20, while Groups B and C went to the 10:30 planetarium. After that show, Group B reached the 11:20 robotics workshop in time. Group C moved to the interactive lab, where eighteen students fit comfortably. Group A used the exhibition floor after robotics. At 11:30, Group A joined other visitors in the planetarium because enough seats remained, while Groups B and C continued activities they had not yet completed. The teacher checked walking time between rooms and required a ten-minute movement margin, so no group was scheduled in two distant places back-to-back. The final chart used three colors, one for each group, and showed meeting points as well as activity times. Students accepted that Group C would not do robotics because trying to force all three groups into two workshops would violate the room capacity. Instead, the interactive lab gave that group a hands-on activity of similar length. Everyone returned to the entrance by 12:20, leaving ten minutes for attendance before departure.",
+    "fullTranslation": "54人のクラスが科学館見学を計画しました。10時に到着し、12時30分に出発します。科学館ではロボット教室が10時20分と11時20分にあり、教室の定員は18人です。プラネタリウムは10時30分と11時30分に始まり、定員は36人です。クラスは18人ずつ三班に分かれました。A班が10時20分のロボット教室へ行き、その間B班とC班の36人が10時30分のプラネタリウムを見ることはできます。11時20分にはB班がロボット教室へ行けます。A班は展示フロアを利用し、C班も展示を続ける案を考えましたが、11時30分のプラネタリウムを全員のために使うには出発まで30分しか残りません。生徒たちは別案も検討しましたが、日程を再確認するとロボット教室は二回しかなく、三班すべてが参加することはできないと分かりました。最終的にA班とB班がロボット教室を利用し、プラネタリウムは二回に分けて全員が見るようにし、C班はロボットの代わりに体験実験室を使う計画にしました。定員と時刻を守り、全班がすべての活動をできるわけではないことを受け入れた計画です。 クラスは次に20分ごとの詳しい予定表を作りました。10時から10時20分までは全班が説明を受けます。A班は10時20分のロボット教室へ入り、B班とC班は10時30分のプラネタリウムへ行きます。上映後、B班には11時20分のロボット教室へ移動する時間があります。C班は18人が十分入れる体験実験室へ移動します。A班はロボット教室の後に展示フロアを利用します。11時30分には空席があるプラネタリウムへA班が入り、B班とC班はまだ行っていない活動を続けます。先生は部屋間の移動時間も確認し、10分の移動余裕を必ず取るようにしたため、離れた場所を連続して予定する班はありません。最終表では三班を別々の色で示し、活動時刻だけでなく集合場所も書きました。二回しかないロボット教室へ三班すべてを無理に入れると定員違反になるため、C班が参加しないことを受け入れました。その代わり、同程度の時間の体験実験を行います。全員が12時20分までに入口へ戻り、出発前に10分間出席確認できる計画になりました。",
+    "questions": [
+      {
+        "set": "A",
+        "no": 1,
+        "type": "GIST",
+        "prompt": "What was the main difficulty in planning the science-center visit?",
+        "answer": "The class had three groups but only two robotics sessions, so the schedule had to respect activity capacities and accept that not every group could do robotics.",
+        "evidence": "They checked the schedule again and realized only two robotics sessions were available, so not all three groups could take robotics.",
+        "evidenceJp": "日程を再確認するとロボット教室は二回しかなく、三班すべてが参加することはできないと分かりました。",
+        "reason": "The key constraint was the mismatch between three groups and only two robotics opportunities."
+      },
+      {
+        "set": "A",
+        "no": 2,
+        "type": "MATERIAL_LINK",
+        "prompt": "Using the capacity information, why could Groups B and C watch the 10:30 planetarium show together?",
+        "answer": "Each group had eighteen students, so B and C together made thirty-six, exactly the planetarium capacity.",
+        "evidence": "Group A could attend robotics at 10:20 while Groups B and C watched the 10:30 planetarium show together.",
+        "evidenceJp": "A班が10時20分のロボット教室へ行き、その間B班とC班の36人が10時30分のプラネタリウムを見ることはできます。",
+        "reason": "The material states that each group has eighteen students and the planetarium holds thirty-six."
+      },
+      {
+        "set": "A",
+        "no": 3,
+        "type": "REASON",
+        "prompt": "Why did the final plan give the interactive lab to Group C instead of robotics?",
+        "answer": "Because only two robotics sessions were available for three groups, and the lab offered a hands-on activity that fit Group C.",
+        "evidence": "The final plan gave robotics to Groups A and B and the planetarium to all students in two rotations, while Group C used an interactive lab instead of robotics.",
+        "evidenceJp": "最終的にA班とB班がロボット教室を利用し、プラネタリウムは二回に分けて全員が見るようにし、C班はロボットの代わりに体験実験室を使う計画にしました。",
+        "reason": "The alternative activity solved the capacity conflict without forcing an impossible third robotics session."
+      },
+      {
+        "set": "A",
+        "no": 4,
+        "type": "CONTENT_MATCH",
+        "prompt": "What did the teacher require when checking movement between rooms?",
+        "answer": "A ten-minute movement margin, so groups were not scheduled in distant places back-to-back.",
+        "evidence": "The teacher checked walking time between rooms and required a ten-minute movement margin, so no group was scheduled in two distant places back-to-back.",
+        "evidenceJp": "先生は部屋間の移動時間も確認し、10分の移動余裕を必ず取るようにしたため、離れた場所を連続して予定する班はありません。",
+        "reason": "Travel time was treated as a real scheduling constraint, not ignored between activities."
+      },
+      {
+        "set": "A",
+        "no": 5,
+        "type": "INFERENCE",
+        "prompt": "Why was it reasonable for Group C to accept missing robotics?",
+        "answer": "The alternative lab provided a similar hands-on activity, while forcing all three groups into robotics would break the room-capacity rule.",
+        "evidence": "Students accepted that Group C would not do robotics because trying to force all three groups into two workshops would violate the room capacity. Instead, the interactive lab gave that group a hands-on activity of similar length.",
+        "evidenceJp": "二回しかないロボット教室へ三班すべてを無理に入れると定員違反になるため、C班が参加しないことを受け入れました。その代わり、同程度の時間の体験実験を行います。",
+        "reason": "The final choice balanced fairness with the center's actual limits instead of pretending every activity could fit everyone."
+      },
+      {
+        "set": "B",
+        "no": 1,
+        "type": "MATERIAL_LINK",
+        "prompt": "Which group attended robotics at 11:20 in the final plan?",
+        "answer": "Group B.",
+        "evidence": "After that show, Group B reached the 11:20 robotics workshop in time.",
+        "evidenceJp": "上映後、B班には11時20分のロボット教室へ移動する時間があります。",
+        "reason": "The detailed timetable confirms that Group B used the second robotics session."
+      },
+      {
+        "set": "B",
+        "no": 2,
+        "type": "DETAIL",
+        "prompt": "What did all groups do from 10:00 to 10:20?",
+        "answer": "They received orientation.",
+        "evidence": "From 10:00 to 10:20, all groups received orientation.",
+        "evidenceJp": "10時から10時20分までは全班が説明を受けます。",
+        "reason": "This is the first shared activity in the final timetable."
+      },
+      {
+        "set": "B",
+        "no": 3,
+        "type": "SUMMARY_FILL",
+        "prompt": "Complete the summary: The final schedule respected room capacities, included travel margins, and returned everyone to the entrance by ____.",
+        "answer": "12:20",
+        "evidence": "Everyone returned to the entrance by 12:20, leaving ten minutes for attendance before departure.",
+        "evidenceJp": "全員が12時20分までに入口へ戻り、出発前に10分間出席確認できる計画になりました。",
+        "reason": "The return time preserves the final ten minutes before the 12:30 departure."
+      },
+      {
+        "set": "B",
+        "no": 4,
+        "type": "CONTENT_MATCH",
+        "prompt": "Why did the final chart use three colors and show meeting points?",
+        "answer": "To make each group's schedule and movement plan easy to follow.",
+        "evidence": "The final chart used three colors, one for each group, and showed meeting points as well as activity times.",
+        "evidenceJp": "最終表では三班を別々の色で示し、活動時刻だけでなく集合場所も書きました。",
+        "reason": "Color-coding and meeting points reduce confusion in a schedule with several groups moving through different activities."
+      },
+      {
+        "set": "B",
+        "no": 5,
+        "type": "GIST",
+        "prompt": "What planning principle does the passage emphasize?",
+        "answer": "A good group schedule must respect real limits such as capacity, time, and movement rather than forcing every group into every activity.",
+        "evidence": "The class chose a plan that respected capacities and accepted that every group could not do every activity.",
+        "evidenceJp": "定員と時刻を守り、全班がすべての活動をできるわけではないことを受け入れた計画です。",
+        "reason": "The final plan succeeds by working within constraints instead of ignoring them."
+      }
+    ]
+  },
+  "V11-B15-G3-014": {
+    "id": "V11-B15-G3-014",
+    "body": "After a large storm warning, a community center prepared three rooms as a temporary shelter. Room A held forty people and was closest to the entrance. Room B held twenty and had a sink. Room C held thirty and was the quietest room. Four family groups were expected: twelve older adults, eight families with small children totaling twenty-four people, ten adults who needed no special support, and six people who used mobility aids. Supplies would arrive in two deliveries. Water and blankets would arrive at 5:00 p.m., while baby supplies and extra floor mats would arrive at 6:30. The planning students placed the six people using mobility aids and twelve older adults in Room A because it had the easiest entrance route. The twenty-four people in families with small children could not fit in Room B, even though its sink was useful. They used Room C for most of those families and placed four people from that group in Room B with the ten other adults. The students reserved space near Room B's sink for baby-care use after the 6:30 delivery. Their plan also kept each room below capacity and left a clear path to the entrance. The room choices balanced access, quiet, useful facilities, family size, and delivery timing rather than giving every special group the room with the most obvious feature. The students then tested the room plan against two changes. First, they assumed four additional adults might arrive after 6:00. Rooms A and B still had enough unused capacity for them without moving the families. Second, they considered what would happen if the 6:30 delivery was delayed. Baby-care space near the sink would still be available, but volunteers would need to keep a small emergency set from existing supplies. The entrance map marked a wide route to Room A and prohibited boxes from being stored along it. Room C received a quiet-area sign because young children might sleep there, while louder information announcements were made near Rooms A and B. Each room leader received a list showing current room totals, free spaces, and the location of water after the first delivery. The final plan was not permanent; students wrote that assignments should change if a person's health or mobility needs changed. By checking both capacity and possible disruptions, they made the shelter plan flexible rather than merely fitting everyone into the rooms once.",
+    "fullTranslation": "大きな嵐の警報を受け、地域センターは三つの部屋を一時避難所として準備しました。A室は40人で入口に最も近く、B室は20人で流しがあり、C室は30人で最も静かな部屋です。避難予定は、高齢者12人、小さな子どものいる家族計24人、特別な支援を必要としない大人10人、移動補助具を使う6人でした。物資は二回に分けて届きます。水と毛布は午後5時、乳幼児用品と追加の床用マットは6時30分です。計画を担当した生徒たちは、入口までの道が最も使いやすいA室に、移動補助具を使う6人と高齢者12人を配置しました。小さな子どものいる24人は、流しが便利でも定員20人のB室には全員入りません。そのため多くをC室へ入れ、そのグループの4人を、ほかの大人10人とともにB室へ配置しました。6時30分の物資到着後に乳幼児の世話ができるよう、B室の流し近くには場所を確保しました。どの部屋も定員を超えず、入口への通路も空けました。分かりやすい設備だけで部屋を決めず、移動しやすさ、静けさ、設備、家族人数、物資到着時刻を合わせて考えた計画です。 生徒たちはさらに二つの変化を想定して部屋割りを確かめました。まず午後6時以降に大人が4人追加で来る場合を考えました。A室とB室にはまだ空きがあり、家族を移動させなくても受け入れられます。次に6時30分の配送が遅れる場合も検討しました。流し近くの乳幼児用スペースは使えますが、それまでのために既存物資から少量の緊急用品を確保する必要があります。入口地図にはA室までの広い通路を示し、その通路には箱を置かないようにしました。C室には小さな子どもが眠る可能性を考えて静かな区域の表示を出し、大きな情報放送はA室とB室の近くで行います。各部屋の担当者には現在人数、空き人数、最初の配送後の水の場所を示す一覧を渡しました。この部屋割りは固定ではなく、体調や移動上の必要が変われば変更すると記しました。定員だけでなく起こり得る変更も確認したことで、一度全員を入れるだけではない柔軟な避難計画になりました。",
+    "questions": [
+      {
+        "set": "A",
+        "no": 1,
+        "type": "GIST",
+        "prompt": "What was the main goal of the students' shelter plan?",
+        "answer": "To place people safely while balancing room capacity, access, quiet, useful facilities, family size, and delivery timing.",
+        "evidence": "The room choices balanced access, quiet, useful facilities, family size, and delivery timing rather than giving every special group the room with the most obvious feature.",
+        "evidenceJp": "分かりやすい設備だけで部屋を決めず、移動しやすさ、静けさ、設備、家族人数、物資到着時刻を合わせて考えた計画です。",
+        "reason": "The plan was designed around several constraints at once, not a single feature of each room."
+      },
+      {
+        "set": "A",
+        "no": 2,
+        "type": "REASON",
+        "prompt": "Why were the six people using mobility aids and the twelve older adults placed in Room A?",
+        "answer": "Because Room A had the easiest route from the entrance.",
+        "evidence": "The planning students placed the six people using mobility aids and twelve older adults in Room A because it had the easiest entrance route.",
+        "evidenceJp": "計画を担当した生徒たちは、入口までの道が最も使いやすいA室に、移動補助具を使う6人と高齢者12人を配置しました。",
+        "reason": "Easy access was especially important for people whose movement could be difficult."
+      },
+      {
+        "set": "A",
+        "no": 3,
+        "type": "CONTENT_MATCH",
+        "prompt": "Why could all twenty-four people in families with small children not use Room B?",
+        "answer": "Because Room B held only twenty people.",
+        "evidence": "The twenty-four people in families with small children could not fit in Room B, even though its sink was useful.",
+        "evidenceJp": "小さな子どものいる24人は、流しが便利でも定員20人のB室には全員入りません。",
+        "reason": "The sink was useful, but the room's capacity was smaller than the family group's total size."
+      },
+      {
+        "set": "A",
+        "no": 4,
+        "type": "INFERENCE",
+        "prompt": "What does the test with four additional adults show about the plan?",
+        "answer": "It had enough unused capacity to handle a small increase in arrivals without moving the families.",
+        "evidence": "Rooms A and B still had enough unused capacity for them without moving the families.",
+        "evidenceJp": "A室とB室にはまだ空きがあり、家族を移動させなくても受け入れられます。",
+        "reason": "A flexible shelter plan should still work when the number of people changes slightly."
+      },
+      {
+        "set": "A",
+        "no": 5,
+        "type": "SUMMARY_FILL",
+        "prompt": "Complete the summary: The students made the shelter plan flexible by checking both room capacity and possible ____.",
+        "answer": "disruptions",
+        "evidence": "By checking both capacity and possible disruptions, they made the shelter plan flexible rather than merely fitting everyone into the rooms once.",
+        "evidenceJp": "定員だけでなく起こり得る変更も確認したことで、一度全員を入れるだけではない柔軟な避難計画になりました。",
+        "reason": "The final sentence directly states that possible disruptions were checked in addition to capacity."
+      },
+      {
+        "set": "B",
+        "no": 1,
+        "type": "DETAIL",
+        "prompt": "What two kinds of supplies were scheduled to arrive at 6:30 p.m.?",
+        "answer": "Baby supplies and extra floor mats.",
+        "evidence": "Water and blankets would arrive at 5:00 p.m., while baby supplies and extra floor mats would arrive at 6:30.",
+        "evidenceJp": "水と毛布は午後5時、乳幼児用品と追加の床用マットは6時30分です。",
+        "reason": "The second delivery contained the baby supplies and extra mats."
+      },
+      {
+        "set": "B",
+        "no": 2,
+        "type": "MATERIAL_LINK",
+        "prompt": "Which room feature was intentionally kept available for baby care after the second delivery?",
+        "answer": "The space near Room B's sink.",
+        "evidence": "The students reserved space near Room B's sink for baby-care use after the 6:30 delivery.",
+        "evidenceJp": "6時30分の物資到着後に乳幼児の世話ができるよう、B室の流し近くには場所を確保しました。",
+        "reason": "The room's sink was useful for baby care, so nearby space was reserved rather than filling it completely."
+      },
+      {
+        "set": "B",
+        "no": 3,
+        "type": "CONTENT_MATCH",
+        "prompt": "What would volunteers need to do if the 6:30 delivery was delayed?",
+        "answer": "Keep a small emergency set from supplies already available.",
+        "evidence": "Baby-care space near the sink would still be available, but volunteers would need to keep a small emergency set from existing supplies.",
+        "evidenceJp": "流し近くの乳幼児用スペースは使えますが、それまでのために既存物資から少量の緊急用品を確保する必要があります。",
+        "reason": "A delay would affect supplies, not the physical baby-care space itself."
+      },
+      {
+        "set": "B",
+        "no": 4,
+        "type": "REASON",
+        "prompt": "Why did the entrance map prohibit boxes along the wide route to Room A?",
+        "answer": "To keep the access route clear for people using Room A.",
+        "evidence": "The entrance map marked a wide route to Room A and prohibited boxes from being stored along it.",
+        "evidenceJp": "入口地図にはA室までの広い通路を示し、その通路には箱を置かないようにしました。",
+        "reason": "Keeping the route free of boxes protected the easy-access purpose of Room A."
+      },
+      {
+        "set": "B",
+        "no": 5,
+        "type": "GIST",
+        "prompt": "Which statement best describes the final shelter assignments?",
+        "answer": "They were a starting plan that could be changed if people's health or mobility needs changed.",
+        "evidence": "The final plan was not permanent; students wrote that assignments should change if a person's health or mobility needs changed.",
+        "evidenceJp": "この部屋割りは固定ではなく、体調や移動上の必要が変われば変更すると記しました。",
+        "reason": "The students treated the assignments as adaptable rather than fixed once and for all."
+      }
+    ]
+  }
+}
