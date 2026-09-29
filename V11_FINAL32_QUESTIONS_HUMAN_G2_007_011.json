@@ -1,0 +1,447 @@
+{
+  "batch": "V11-FINAL32",
+  "stage": "human_question_authoring",
+  "registered": false,
+  "officialTotal": 968,
+  "range": "G2-007..G2-011",
+  "passages": 5,
+  "questionsPerPassage": 10,
+  "humanAuthored": true,
+  "items": [
+    {
+      "id": "V11-F32-G2-007",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What made the revised festival map more useful?",
+          "answer": "It showed walking time as well as distance, matching the decision visitors needed to make.",
+          "evidence": "It became more useful by expressing information in a form connected to the decision people needed to make.",
+          "evidenceJp": "人が判断するときに必要な形で情報を示したことで、より使いやすくなったのです。",
+          "reason": "The final sentence explains why the new information format helped."
+        },
+        {
+          "type": "REASON",
+          "question": "Why was distance alone not enough for visitors?",
+          "answer": "Visitors needed to know whether they had enough time to reach events.",
+          "evidence": "The students realized that distance alone did not answer the visitors' practical question.",
+          "evidenceJp": "生徒たちは、距離だけでは訪問者が実際に知りたいことへ答えられないと気づきました。",
+          "reason": "Their practical concern was travel time, not only meters."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "How did students create the walking-time information?",
+          "answer": "They walked the main routes at a normal pace and recorded approximate times.",
+          "evidence": "They walked the main routes at a normal pace and added approximate walking times beside the distances.",
+          "evidenceJp": "主要な道を普通の速さで歩き、距離の横におよその徒歩時間を加えました。",
+          "reason": "The sentence states the method directly."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did the steep route show a time range instead of one exact time?",
+          "answer": "Walking time on the hill could reasonably vary.",
+          "evidence": "For a steep route, they gave a range rather than one exact time.",
+          "evidenceJp": "坂道では一つの正確な時刻ではなく幅を示しました。",
+          "reason": "A range acknowledges realistic variation on a difficult route."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The first map answered “How far?”; the revised map also answered ____.",
+          "answer": "“How long will it take to walk?”",
+          "evidence": "During a trial, several visitors still asked, “Do we have enough time to walk from the station to an event?”",
+          "evidenceJp": "しかし試しに使ってもらうと、「駅から行事会場まで歩いて間に合いますか」と尋ねる人が何人もいました。",
+          "reason": "That question shows the missing information was time."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “approximate” mean here?",
+          "answer": "Close to the real amount but not exact.",
+          "evidence": "added approximate walking times beside the distances",
+          "evidenceJp": "距離の横におよその徒歩時間を加えました。",
+          "reason": "The map gives useful estimated times rather than exact seconds."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the comparison: Visitors could compare a five-minute flat route with ____.",
+          "answer": "an eight-to-ten-minute hill route",
+          "evidence": "Visitors could then compare a five-minute flat route with an eight-to-ten-minute hill route.",
+          "evidenceJp": "訪問者は、平らな五分の道と、坂を含む八〜十分の道を比べられるようになりました。",
+          "reason": "The sentence gives the two route options."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If a map showed 400 m / 5 min for one route and 350 m / 8–10 min for another, what idea would it support?",
+          "answer": "A shorter distance does not always mean a shorter walking time.",
+          "evidence": "Visitors could then compare a five-minute flat route with an eight-to-ten-minute hill route.",
+          "evidenceJp": "訪問者は、平らな五分の道と、坂を含む八〜十分の道を比べられるようになりました。",
+          "reason": "The comparison helps visitors judge routes using time, not distance alone."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “The visitors needed information they could use for scheduling.” fit best?",
+          "answer": "After the sentence saying distance alone did not answer the practical question.",
+          "evidence": "The students realized that distance alone did not answer the visitors' practical question.",
+          "evidenceJp": "生徒たちは、距離だけでは訪問者が実際に知りたいことへ答えられないと気づきました。",
+          "reason": "It explains why walking times were added next."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did adding more decimal numbers not solve the original problem?",
+          "answer": "Greater numerical precision still would not tell visitors the walking time they needed.",
+          "evidence": "The map did not become more accurate by adding more decimal numbers.",
+          "evidenceJp": "小数を増やしたから地図が役立ったのではありません。",
+          "reason": "The useful improvement came from changing the type of information, not adding precision."
+        }
+      ]
+    },
+    {
+      "id": "V11-F32-G2-008",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What solution did the class adopt?",
+          "answer": "It used short ventilation breaks to balance fresh air and comfortable temperature.",
+          "evidence": "The class adopted short ventilation breaks instead of leaving every window open.",
+          "evidenceJp": "クラスでは窓をずっと開ける代わりに、短い換気時間を取り入れました。",
+          "reason": "This sentence states the final solution."
+        },
+        {
+          "type": "REASON",
+          "question": "Why was leaving every window open a problem in winter?",
+          "answer": "The area near the windows became uncomfortable.",
+          "evidence": "In winter, however, that made the room uncomfortable near the windows.",
+          "evidenceJp": "しかし冬には、窓の近くが寒くなり不快でした。",
+          "reason": "The sentence gives the drawback directly."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What evidence did students collect?",
+          "answer": "They measured temperature and recorded how the room felt before and after ventilation breaks.",
+          "evidence": "Students measured temperature at the front and back of the room and recorded how the room felt before and after short ventilation breaks.",
+          "evidenceJp": "生徒たちは教室の前後で気温を測り、短い換気の前後で部屋がどう感じられるか記録しました。",
+          "reason": "The sentence names both kinds of evidence."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why were opposite windows opened for only three minutes?",
+          "answer": "A short cross-room airflow refreshed the room without making it cold for long.",
+          "evidence": "They found that opening opposite windows for three minutes between activities refreshed the room without lowering the temperature for long.",
+          "evidenceJp": "活動の合間に向かい合う窓を三分間開けると、気温を長く下げずに空気を入れ替えられることが分かりました。",
+          "reason": "The method balanced air quality and temperature."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The class stopped treating fresh air as the only goal and instead ____.",
+          "answer": "balanced fresh air with comfortable temperature",
+          "evidence": "The solution came from balancing two needs—fresh air and comfortable temperature—rather than treating one of them as the only goal.",
+          "evidenceJp": "一方だけを唯一の目標にせず、新鮮な空気と快適な温度という二つの必要を両立させたことで解決できました。",
+          "reason": "The final sentence states the two needs."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “ventilation” mean in this passage?",
+          "answer": "Bringing fresh air into the classroom by opening windows.",
+          "evidence": "recorded how the room felt before and after short ventilation breaks",
+          "evidenceJp": "短い換気の前後で部屋がどう感じられるか記録しました。",
+          "reason": "The later sentence describes opening windows during those breaks."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the finding: Opening opposite windows for three minutes ____.",
+          "answer": "refreshed the room without lowering the temperature for long",
+          "evidence": "They found that opening opposite windows for three minutes between activities refreshed the room without lowering the temperature for long.",
+          "evidenceJp": "活動の合間に向かい合う窓を三分間開けると、気温を長く下げずに空気を入れ替えられることが分かりました。",
+          "reason": "This is the measured benefit of the short breaks."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If a graph showed temperature dropping only briefly during three-minute ventilation, what would it support?",
+          "answer": "Short ventilation could refresh the room without keeping it cold.",
+          "evidence": "They found that opening opposite windows for three minutes between activities refreshed the room without lowering the temperature for long.",
+          "evidenceJp": "活動の合間に向かい合う窓を三分間開けると、気温を長く下げずに空気を入れ替えられることが分かりました。",
+          "reason": "The graph would support the observed trade-off."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “The class needed evidence about both air and comfort.” fit best?",
+          "answer": "After the science teacher suggests collecting evidence.",
+          "evidence": "The science teacher suggested collecting simple evidence before choosing one rule.",
+          "evidenceJp": "理科の先生は、一つの決まりを選ぶ前に簡単な根拠を集めることを提案しました。",
+          "reason": "It explains what the students then measured."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did the teacher avoid choosing one rule immediately?",
+          "answer": "The class had two competing needs and needed data to balance them.",
+          "evidence": "The solution came from balancing two needs—fresh air and comfortable temperature—rather than treating one of them as the only goal.",
+          "evidenceJp": "一方だけを唯一の目標にせず、新鮮な空気と快適な温度という二つの必要を両立させたことで解決できました。",
+          "reason": "A single fixed rule might favor only one need."
+        }
+      ]
+    },
+    {
+      "id": "V11-F32-G2-009",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What improved borrowing from the recommendation shelf?",
+          "answer": "Adding short cards that connected books with readers' interests.",
+          "evidence": "Past popularity had helped choose the books, but visitors still needed information that connected each book to their own interests.",
+          "evidenceJp": "過去の人気は本を選ぶ助けになりましたが、利用者にはその本と自分の興味を結び付ける情報も必要だったのです。",
+          "reason": "The conclusion explains the missing link between selection and reader interest."
+        },
+        {
+          "type": "REASON",
+          "question": "Why were some recommended books still rarely touched?",
+          "answer": "Younger readers could not easily judge their fit from the covers alone.",
+          "evidence": "A student group interviewed visitors and learned that younger readers could not easily tell which books suited their interests from the covers alone.",
+          "evidenceJp": "生徒グループが利用者に聞くと、年下の読者は表紙だけでは自分の興味に合う本か分かりにくいことが分かりました。",
+          "reason": "The interviews identified the information gap."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What did the short cards say?",
+          "answer": "They gave interest-based clues such as mysteries or a true animal story.",
+          "evidence": "The group added short cards saying things such as “for readers who like mysteries” or “a true story about animals.”",
+          "evidenceJp": "そこで「ミステリーが好きな人へ」「動物についての実話」などの短いカードを付けました。",
+          "reason": "The sentence provides examples of the labels."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why was past borrowing data not enough by itself?",
+          "answer": "Popularity did not tell each visitor why a particular book might interest them.",
+          "evidence": "Past popularity had helped choose the books, but visitors still needed information that connected each book to their own interests.",
+          "evidenceJp": "過去の人気は本を選ぶ助けになりましたが、利用者にはその本と自分の興味を結び付ける情報も必要だったのです。",
+          "reason": "Selection data and reader-facing guidance served different purposes."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The library first selected books by past loans, then added ____.",
+          "answer": "interest-based recommendation cards",
+          "evidence": "The group added short cards saying things such as “for readers who like mysteries” or “a true story about animals.”",
+          "evidenceJp": "そこで「ミステリーが好きな人へ」「動物についての実話」などの短いカードを付けました。",
+          "reason": "That was the key change after the interviews."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “suited” mean in this passage?",
+          "answer": "Matched or fit their interests.",
+          "evidence": "younger readers could not easily tell which books suited their interests",
+          "evidenceJp": "年下の読者は表紙だけでは自分の興味に合う本か分かりにくい",
+          "reason": "The word refers to whether a book matches what a reader likes."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the result: Borrowing increased for ____.",
+          "answer": "several previously ignored books",
+          "evidence": "Borrowing increased for several previously ignored books.",
+          "evidenceJp": "それまで見過ごされていた本のいくつかで貸出が増えました。",
+          "reason": "The sentence states the outcome."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If borrowing rose mainly for books that received interest cards, what would it support?",
+          "answer": "The added descriptions helped readers connect books with their interests.",
+          "evidence": "Past popularity had helped choose the books, but visitors still needed information that connected each book to their own interests.",
+          "evidenceJp": "過去の人気は本を選ぶ助けになりましたが、利用者にはその本と自分の興味を結び付ける情報も必要だったのです。",
+          "reason": "The change would link better guidance with increased borrowing."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “The shelf needed a bridge between data and individual readers.” fit best?",
+          "answer": "After the interview finding about covers not showing enough.",
+          "evidence": "A student group interviewed visitors and learned that younger readers could not easily tell which books suited their interests from the covers alone.",
+          "evidenceJp": "生徒グループが利用者に聞くと、年下の読者は表紙だけでは自分の興味に合う本か分かりにくいことが分かりました。",
+          "reason": "It leads naturally to adding the short cards."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the student group interview visitors?",
+          "answer": "To understand why the recommendation shelf was not attracting readers.",
+          "evidence": "After a month, some displayed books were still rarely touched. A student group interviewed visitors",
+          "evidenceJp": "一か月たってもほとんど手に取られない本がありました。生徒グループが利用者に聞くと",
+          "reason": "The interviews followed the weak response to the display."
+        }
+      ]
+    },
+    {
+      "id": "V11-F32-G2-010",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What changed the volleyball team's understanding of its lost points?",
+          "answer": "Recording how each lost point began showed communication problems were more common than missed serves.",
+          "evidence": "Recording the beginning of each problem changed the team's attention from the most noticeable mistake to the more common cause.",
+          "evidenceJp": "問題の始まりを記録したことで、目立つミスではなく、より多く起きている原因へ注意を向けられました。",
+          "reason": "The conclusion explains how the records changed the team's focus."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the coach ask students to record each lost point?",
+          "answer": "To identify the actual causes instead of relying on first impressions.",
+          "evidence": "The coach asked two students to record how each lost point began.",
+          "evidenceJp": "コーチは二人の生徒に、それぞれの失点がどのように始まったか記録するよう頼みました。",
+          "reason": "The records provided evidence about how points were lost."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What did the notes show about missed serves?",
+          "answer": "Only a few lost points followed missed serves.",
+          "evidence": "After three matches, the notes showed that only a few points followed missed serves.",
+          "evidenceJp": "三試合分を見ると、サーブミスの直後の失点は少数でした。",
+          "reason": "The sentence states the result directly."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did the team keep serving practice?",
+          "answer": "Serving still mattered, even though it was not the main cause of lost points.",
+          "evidence": "The team kept its serving practice but added a short communication drill",
+          "evidenceJp": "チームはサーブ練習を続けながら、早くはっきり声を出す短い連携練習も加えました。",
+          "reason": "Keeping both practices shows serving remained useful while communication needed more attention."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The team first blamed serving, but records pointed more strongly to ____.",
+          "answer": "communication between players",
+          "evidence": "Many more came after players called for the same ball or left a space because nobody called.",
+          "evidenceJp": "それより多かったのは、二人が同じボールを取ろうと声を出したり、誰も声を出さず空いた場所へボールが落ちたりした場合でした。",
+          "reason": "Both examples are communication failures."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “noticeable” mean here?",
+          "answer": "Easy to see or remember.",
+          "evidence": "the most noticeable mistake",
+          "evidenceJp": "目立つミス",
+          "reason": "Missed serves stood out even though they were not the most common cause."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the result: In the next match, ____.",
+          "answer": "fewer balls fell between players",
+          "evidence": "In the next match, fewer balls fell between players.",
+          "evidenceJp": "次の試合では選手の間に落ちるボールが減りました。",
+          "reason": "The sentence states the result after communication practice."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If a tally showed 3 serve-related losses and 12 communication-related losses, what would it support?",
+          "answer": "Communication errors were a more common cause than missed serves.",
+          "evidence": "Many more came after players called for the same ball or left a space because nobody called.",
+          "evidenceJp": "それより多かったのは、二人が同じボールを取ろうと声を出したり、誰も声を出さず空いた場所へボールが落ちたりした場合でした。",
+          "reason": "The tally would quantify the pattern described."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “The first explanation was memorable, but the records told a different story.” fit best?",
+          "answer": "After the sentence saying only a few points followed missed serves.",
+          "evidence": "After three matches, the notes showed that only a few points followed missed serves.",
+          "evidenceJp": "三試合分を見ると、サーブミスの直後の失点は少数でした。",
+          "reason": "It marks the shift from first impression to evidence."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the communication drill require early, clear calls?",
+          "answer": "Players were losing points when two people went for the same ball or nobody called.",
+          "evidence": "Many more came after players called for the same ball or left a space because nobody called.",
+          "evidenceJp": "それより多かったのは、二人が同じボールを取ろうと声を出したり、誰も声を出さず空いた場所へボールが落ちたりした場合でした。",
+          "reason": "Clear calls directly address both communication problems."
+        }
+      ]
+    },
+    {
+      "id": "V11-F32-G2-011",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What improved the sandwich estimate?",
+          "answer": "The group combined past sales data with current festival conditions and advance demand.",
+          "evidence": "Using old data together with current conditions reduced both the risk of running out and the risk of large leftovers.",
+          "evidenceJp": "過去のデータと現在の条件を一緒に使ったことで、売り切れと大量の売れ残りの両方の危険を減らせました。",
+          "reason": "The final sentence states the forecasting lesson."
+        },
+        {
+          "type": "REASON",
+          "question": "Why was last year's total of 120 not enough for this year's plan?",
+          "answer": "This year's festival was shorter and another class was also selling lunch food.",
+          "evidence": "One member noticed that this year's festival would end an hour earlier and that another class was also selling lunch food.",
+          "evidenceJp": "しかし一人が、今年は学校祭が一時間早く終わり、別のクラスも昼食向けの食べ物を売ることに気づきました。",
+          "reason": "Those changed conditions could reduce demand."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "How did the group collect current information?",
+          "answer": "It sold advance tickets for two days and asked buyers when they expected to eat.",
+          "evidence": "the group sold advance tickets for two days and asked buyers when they expected to eat",
+          "evidenceJp": "二日間前売り券を販売し、購入者には何時ごろ食べる予定か尋ねました。",
+          "reason": "The sentence states the data collection method."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did the group prepare ninety first and keep ingredients for twenty more?",
+          "answer": "It wanted flexibility if actual demand was higher than the initial estimate.",
+          "evidence": "The group prepared ninety sandwiches first and kept ingredients ready for twenty more.",
+          "evidenceJp": "最初に90個作り、さらに20個作れる材料を準備しました。",
+          "reason": "The extra ingredients created a buffer without forcing the group to make all sandwiches in advance."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The group replaced a one-number forecast with a plan based on past sales, current conditions, and ____.",
+          "answer": "advance-ticket demand",
+          "evidence": "The results suggested strong demand around noon but a smaller total than last year.",
+          "evidenceJp": "結果から、正午ごろの需要は強いものの、全体では前年より少なくなりそうだと分かりました。",
+          "reason": "Those results came from the advance-ticket survey."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “leftovers” mean in the final sentence?",
+          "answer": "Sandwiches that were made but not sold.",
+          "evidence": "the risk of large leftovers",
+          "evidenceJp": "大量の売れ残りの危険",
+          "reason": "In a food-sale plan, leftovers are unsold prepared food."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the outcome: They sold almost all ninety and ____.",
+          "answer": "made ten additional sandwiches",
+          "evidence": "They sold almost all ninety and made ten additional sandwiches.",
+          "evidenceJp": "90個はほぼ売れ、その後10個を追加しました。",
+          "reason": "The sentence shows how the flexible plan worked."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If advance tickets predicted about 90 buyers, what would that support?",
+          "answer": "Preparing fewer than last year's 120 at first was reasonable.",
+          "evidence": "The results suggested strong demand around noon but a smaller total than last year.",
+          "evidenceJp": "結果から、正午ごろの需要は強いものの、全体では前年より少なくなりそうだと分かりました。",
+          "reason": "The estimate would reflect this year's lower expected total."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “The group needed a plan that could adjust after sales began.” fit best?",
+          "answer": "Before the sentence about preparing ninety and keeping ingredients for twenty more.",
+          "evidence": "The group prepared ninety sandwiches first and kept ingredients ready for twenty more.",
+          "evidenceJp": "最初に90個作り、さらに20個作れる材料を準備しました。",
+          "reason": "The inserted sentence explains the flexible preparation strategy."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why was the advance-ticket information better than last year's total alone?",
+          "answer": "It reflected this year's buyers and this year's conditions.",
+          "evidence": "Instead of using last year's total alone, the group sold advance tickets for two days and asked buyers when they expected to eat.",
+          "evidenceJp": "前年の合計だけを使わず、二日間前売り券を販売し、購入者には何時ごろ食べる予定か尋ねました。",
+          "reason": "The new information was current rather than historical only."
+        }
+      ]
+    }
+  ]
+}
