@@ -1,0 +1,65 @@
+name: v11 1000 final release inventory
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'scripts/v11_1000_final_release_inventory.js'
+      - '.github/workflows/v11-1000-final-release-inventory.yml'
+      - 'v11_*bootstrap.js'
+      - 'v11_*register.js'
+      - 'v11_*runtime_bundle.js'
+      - 'v11_batch*_*.js'
+      - 'V11_FINAL32_*.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: v11-1000-final-release-inventory
+  cancel-in-progress: true
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-save playwright@1.55.0
+      - run: npx playwright install --with-deps chromium
+      - name: Start local persistent runtime
+        run: |
+          python3 -m http.server 4175 --bind 127.0.0.1 >/tmp/v11-1000-final-http.log 2>&1 &
+          sleep 2
+      - name: Inventory full 1000 runtime
+        run: |
+          set +e
+          V11_LOCAL_URL="http://127.0.0.1:4175/index.html" node scripts/v11_1000_final_release_inventory.js
+          code=$?
+          echo "audit_exit=$code" >> "$GITHUB_ENV"
+          test -f V11_1000_FINAL_RELEASE_INVENTORY.json
+          exit 0
+      - name: Persist inventory
+        run: |
+          cp V11_1000_FINAL_RELEASE_INVENTORY.json /tmp/V11_1000_FINAL_RELEASE_INVENTORY.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for n in 1 2 3; do
+            git fetch origin v11-1000passage-easy-notes
+            git reset --hard origin/v11-1000passage-easy-notes
+            cp /tmp/V11_1000_FINAL_RELEASE_INVENTORY.json V11_1000_FINAL_RELEASE_INVENTORY.json
+            git add V11_1000_FINAL_RELEASE_INVENTORY.json
+            if git diff --cached --quiet; then break; fi
+            git commit -m 'audit(v11): persist 1000 final release inventory [skip ci]'
+            git push origin HEAD:v11-1000passage-easy-notes && break
+            sleep $((n*2))
+          done
+      - name: Enforce hard invariants
+        run: |
+          node - <<'NODE'
+          const r=require('./V11_1000_FINAL_RELEASE_INVENTORY.json');
+          console.log(JSON.stringify({runtime:r.runtime,hardFailures:r.hardFailures,warnings:r.warnings,composition:r.composition&&r.composition.count,yamaguchi:r.yamaguchiInventory&&r.yamaguchiInventory.count}));
+          if(!r.finalHardPass)process.exit(2);
+          NODE
