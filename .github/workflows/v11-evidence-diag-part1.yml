@@ -1,0 +1,41 @@
+name: v11 evidence diag part1
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'scripts/v11_evidence_diag_part1.js'
+      - '.github/workflows/v11-evidence-diag-part1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: v11-1000passage-easy-notes}
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - run: npm install --no-save playwright@1.55.0
+      - run: npx playwright install --with-deps chromium
+      - run: |
+          python3 -m http.server 4181 --bind 127.0.0.1 >/tmp/v11-ev1.log 2>&1 &
+          sleep 2
+          URL="http://127.0.0.1:4181/index.html" node scripts/v11_evidence_diag_part1.js
+      - name: Persist
+        run: |
+          cp V11_EVIDENCE_DIAG_PART1.json /tmp/V11_EVIDENCE_DIAG_PART1.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for n in 1 2 3; do
+            git fetch origin v11-1000passage-easy-notes
+            git reset --hard origin/v11-1000passage-easy-notes
+            cp /tmp/V11_EVIDENCE_DIAG_PART1.json V11_EVIDENCE_DIAG_PART1.json
+            git add V11_EVIDENCE_DIAG_PART1.json
+            git diff --cached --quiet && exit 0
+            git commit -m 'audit(v11): persist evidence diag part1 [skip ci]'
+            git push origin HEAD:v11-1000passage-easy-notes && exit 0
+            sleep $((n*2))
+          done
+          exit 1
