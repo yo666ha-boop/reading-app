@@ -1,0 +1,61 @@
+name: v11 FINAL32 notes build and gate
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'scripts/v11_final32_notes_build_and_gate.js'
+      - 'V11_FINAL32_BODY_TRANSLATION_DRAFT_*.json'
+      - 'V11_FINAL32_REQUIRED_LOCAL_GLOSS_*.json'
+      - 'V11_FINAL32_FORMAL_VOCAB_CHRONOLOGY_REPORT.json'
+      - '.github/workflows/v11-final32-notes-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: v11-final32-notes-gate
+  cancel-in-progress: true
+jobs:
+  build-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Build and audit FINAL32 notes
+        run: |
+          set +e
+          node scripts/v11_final32_notes_build_and_gate.js
+          code=$?
+          echo "audit_exit=$code" >> "$GITHUB_ENV"
+          test -f V11_FINAL32_G1_NOTES_NORMAL_EASY.json
+          test -f V11_FINAL32_G2_NOTES_NORMAL_EASY.json
+          test -f V11_FINAL32_G3_NOTES_NORMAL_EASY.json
+          test -f V11_FINAL32_NOTES_FINAL_GATE.json
+          exit 0
+      - name: Persist notes artifacts
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add V11_FINAL32_G1_NOTES_NORMAL_EASY.json V11_FINAL32_G2_NOTES_NORMAL_EASY.json V11_FINAL32_G3_NOTES_NORMAL_EASY.json V11_FINAL32_NOTES_FINAL_GATE.json
+          if git diff --cached --quiet; then
+            echo 'No notes changes'
+          else
+            git commit -m 'audit(v11): persist FINAL32 notes and gate [skip ci]'
+            for n in 1 2 3; do
+              git pull --rebase origin v11-1000passage-easy-notes && git push origin HEAD:v11-1000passage-easy-notes && exit 0
+              git rebase --abort || true
+              sleep $((n*2))
+            done
+            exit 1
+          fi
+      - name: Enforce notes gate
+        run: |
+          node - <<'NODE'
+          const r=require('./V11_FINAL32_NOTES_FINAL_GATE.json');
+          console.log(JSON.stringify({coverage:r.coverage,requirements:r.requirements,failures:r.failures.length,finalPass:r.finalPass}));
+          if(!r.finalPass)process.exit(2);
+          NODE
