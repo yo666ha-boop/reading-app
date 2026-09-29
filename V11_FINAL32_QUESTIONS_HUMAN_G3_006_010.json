@@ -1,0 +1,447 @@
+{
+  "batch": "V11-FINAL32",
+  "stage": "human_question_authoring",
+  "registered": false,
+  "officialTotal": 968,
+  "range": "G3-006..G3-010",
+  "passages": 5,
+  "questionsPerPassage": 10,
+  "humanAuthored": true,
+  "items": [
+    {
+      "id": "V11-F32-G3-006",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What did the safety team learn from timing the evacuation route?",
+          "answer": "The delay came from traffic flow at a narrow stairway, not from students walking too slowly.",
+          "evidence": "By measuring where time was actually lost, the team improved the flow without encouraging unsafe speed during an emergency.",
+          "evidenceJp": "実際にどこで時間を失っているか測ったことで、緊急時に危険な速歩きを促さず、人の流れを改善できました。",
+          "reason": "The conclusion shows that locating the delay led to a safer solution."
+        },
+        {
+          "type": "REASON",
+          "question": "Why was the first explanation about slow walking rejected?",
+          "answer": "The class's walking speed was similar to that of other classes.",
+          "evidence": "Walking speed was similar to that of other classes.",
+          "evidenceJp": "歩く速さはほかのクラスとほぼ同じでした。",
+          "reason": "The timing evidence did not support slow walking as the main cause."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "Where did the actual delay occur?",
+          "answer": "At a narrow stairway where students from two floors met.",
+          "evidence": "The delay occurred at a narrow stairway where this class met students coming from another floor.",
+          "evidenceJp": "遅れは狭い階段で起きており、そのクラスと別の階から来る生徒が重なっていました。",
+          "reason": "The sentence identifies the bottleneck directly."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did one floor wait thirty seconds before entering the stairs?",
+          "answer": "To reduce the number of students reaching the narrow stairway at the same time.",
+          "evidence": "The school tested a revised plan in which one floor waited thirty seconds before entering the stairs and used a second exit when it was clear.",
+          "evidenceJp": "学校は、一つの階が階段へ入るのを30秒待ち、空いていれば第二出口も使う計画を試しました。",
+          "reason": "The revised timing separated groups and reduced the bottleneck."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The school improved evacuation time by changing route timing and using ____.",
+          "answer": "a second exit when it was clear",
+          "evidence": "The school tested a revised plan in which one floor waited thirty seconds before entering the stairs and used a second exit when it was clear.",
+          "evidenceJp": "学校は、一つの階が階段へ入るのを30秒待ち、空いていれば第二出口も使う計画を試しました。",
+          "reason": "These were the two changes in the revised plan."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “flow” mean in the final sentence?",
+          "answer": "The movement of people through the evacuation route.",
+          "evidence": "the team improved the flow without encouraging unsafe speed during an emergency",
+          "evidenceJp": "緊急時に危険な速歩きを促さず、人の流れを改善できました。",
+          "reason": "The passage is about how groups moved through stairs and exits."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the result: The next drill finished faster even though ____.",
+          "answer": "nobody was told to walk more quickly",
+          "evidence": "The next drill finished faster even though nobody was told to walk more quickly.",
+          "evidenceJp": "次の訓練では、誰にも速く歩くよう求めなかったのに終了が早まりました。",
+          "reason": "This shows the improvement came from organization rather than speed."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If a timing chart showed a long pause at the stairway but normal walking times elsewhere, what would it support?",
+          "answer": "The stairway interaction was the true bottleneck.",
+          "evidence": "The delay occurred at a narrow stairway where this class met students coming from another floor.",
+          "evidenceJp": "遅れは狭い階段で起きており、そのクラスと別の階から来る生徒が重なっていました。",
+          "reason": "The chart would locate the delay at the same section."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “Walking faster would not remove the conflict at the stairs.” fit best?",
+          "answer": "After the sentence saying walking speed was similar to other classes.",
+          "evidence": "Walking speed was similar to that of other classes.",
+          "evidenceJp": "歩く速さはほかのクラスとほぼ同じでした。",
+          "reason": "It explains why the team looked for another cause."
+        },
+        {
+          "type": "REASON",
+          "question": "Why was encouraging students to move faster a poor solution?",
+          "answer": "It could be unsafe and would not address the stairway bottleneck.",
+          "evidence": "By measuring where time was actually lost, the team improved the flow without encouraging unsafe speed during an emergency.",
+          "evidenceJp": "実際にどこで時間を失っているか測ったことで、緊急時に危険な速歩きを促さず、人の流れを改善できました。",
+          "reason": "The safer solution changed flow instead of pushing speed."
+        }
+      ]
+    },
+    {
+      "id": "V11-F32-G3-007",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main lesson of the passage?",
+          "answer": "A quotation can be technically true but misleading if its original context is removed.",
+          "evidence": "A memorable sentence can be true in its original setting and still become misleading when that setting is removed.",
+          "evidenceJp": "印象的な一文も、元の文脈では正しくても、その文脈を外すと誤解を招くことがあります。",
+          "reason": "The final sentence states the central lesson."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the editor listen to the full recording?",
+          "answer": "The short quote seemed strong enough for a headline, so the editor needed to check its full context before publishing.",
+          "evidence": "Before publishing it, the editor listened to the full recording.",
+          "evidenceJp": "しかし掲載前に編集担当が録音全体を聞き直しました。",
+          "reason": "Reviewing the recording checked whether the memorable quote represented the speaker's whole meaning."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What did the resident actually mean?",
+          "answer": "Her morning exercise group did not want more benches in the sunny center; they preferred shade near existing seats.",
+          "evidence": "The resident had actually said that nobody in her morning exercise group wanted more benches in the sunny center of the park; they preferred shade near the existing seats.",
+          "evidenceJp": "実際には、その住民は朝の運動グループの誰も日当たりのよい公園中央にベンチを増やしてほしくないと言っており、今ある席の近くに日陰がほしいと話していました。",
+          "reason": "The full recording narrowed the quote to a specific group and location."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why would the headline “Nobody wants more benches” have been misleading?",
+          "answer": "Other residents wanted additional benches in another part of the park.",
+          "evidence": "Other interviewees wanted additional benches near the playground.",
+          "evidenceJp": "一方、別の人たちは遊び場近くにベンチを増やしてほしいと答えていました。",
+          "reason": "The headline would wrongly generalize one group's view to everyone."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The newspaper kept the resident's concern but ____.",
+          "answer": "quoted the complete idea and summarized requests by location",
+          "evidence": "The newspaper kept the resident's concern but quoted the complete idea and summarized the different requests by location.",
+          "evidenceJp": "新聞はその住民の懸念を残しつつ、考え全体が分かる形で引用し、場所ごとに異なる希望をまとめました。",
+          "reason": "This describes the final editorial approach."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “setting” mean in the final sentence?",
+          "answer": "The original context in which the statement was made.",
+          "evidence": "when that setting is removed",
+          "evidenceJp": "その文脈を外すと",
+          "reason": "The passage shows that location, group, and surrounding explanation formed the quote's context."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the contrast: The final article was less dramatic than the first headline, yet ____.",
+          "answer": "it gave readers a more accurate picture",
+          "evidence": "The final article was less dramatic than the first headline, yet it gave readers a more accurate picture.",
+          "evidenceJp": "最終記事は最初の見出しほど劇的ではありませんでしたが、より正確な状況を伝えました。",
+          "reason": "The sentence contrasts drama with accuracy."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If a park map showed one request near the playground and another near existing seats, what would it support?",
+          "answer": "Residents' preferences differed by location.",
+          "evidence": "The newspaper kept the resident's concern but quoted the complete idea and summarized the different requests by location.",
+          "evidenceJp": "新聞はその住民の懸念を残しつつ、考え全体が分かる形で引用し、場所ごとに異なる希望をまとめました。",
+          "reason": "A map would make the location-based differences visible."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “The short quotation removed both the group and the location from the speaker's meaning.” fit best?",
+          "answer": "After the sentence explaining what the resident actually said.",
+          "evidence": "The resident had actually said that nobody in her morning exercise group wanted more benches in the sunny center of the park; they preferred shade near the existing seats.",
+          "evidenceJp": "実際には、その住民は朝の運動グループの誰も日当たりのよい公園中央にベンチを増やしてほしくないと言っており、今ある席の近くに日陰がほしいと話していました。",
+          "reason": "It explains exactly what the headline would have stripped away."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did the newspaper accept a less dramatic final article?",
+          "answer": "Accuracy and context were more important than a striking headline.",
+          "evidence": "The final article was less dramatic than the first headline, yet it gave readers a more accurate picture.",
+          "evidenceJp": "最終記事は最初の見出しほど劇的ではありませんでしたが、より正確な状況を伝えました。",
+          "reason": "The revised article traded drama for a truer representation."
+        }
+      ]
+    },
+    {
+      "id": "V11-F32-G3-008",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What reduced the water-fountain queue?",
+          "answer": "Separating non-drinking tasks from bottle filling reduced congestion at the fountain.",
+          "evidence": "The fountain line became much shorter.",
+          "evidenceJp": "給水器の列は大幅に短くなりました。",
+          "reason": "The line shortened after washing and cooling tasks were moved to a separate table."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did students question the plan to rent another fountain?",
+          "answer": "They noticed many people in line were using the fountain for tasks other than filling bottles.",
+          "evidence": "Students observing the line noticed that many people were not filling bottles; they were waiting to wash cups or cool wet towels.",
+          "evidenceJp": "列を観察していた生徒たちは、多くの人が水筒に水を入れるためではなく、コップを洗ったり、ぬらしたタオルを冷やしたりするために待っていることに気づきました。",
+          "reason": "The queue combined several different uses, so capacity was not the only issue."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What did the students learn by timing different uses?",
+          "answer": "Bottle filling was usually quick, while washing took much longer.",
+          "evidence": "The students timed different uses and found that bottle filling was usually quick, while washing took much longer.",
+          "evidenceJp": "用途ごとの時間を測ると、水筒への給水はたいてい短く、洗う作業の方がずっと長くかかりました。",
+          "reason": "The sentence gives the timing comparison directly."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did a separate washing table shorten the fountain line?",
+          "answer": "Long washing tasks no longer blocked people who only needed drinking water.",
+          "evidence": "For the afternoon session, organizers placed a large water container and a washing basin at a separate table for non-drinking uses.",
+          "evidenceJp": "午後の部では、飲用以外の用途向けに大きな水容器と洗い用のたらいを別の机に置きました。",
+          "reason": "Separating slower tasks removed them from the fountain queue."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The original queue looked like one problem, but observation showed it combined ____.",
+          "answer": "several different needs",
+          "evidence": "separating tasks first showed that the original queue combined several different needs",
+          "evidenceJp": "まず作業を分けたことで、元の列には異なる必要が混ざっていたと分かりました。",
+          "reason": "The conclusion explains why task separation worked."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “queue” mean in the passage?",
+          "answer": "A line of people waiting to use the fountain.",
+          "evidence": "the original queue combined several different needs",
+          "evidenceJp": "元の列には異なる必要が混ざっていた",
+          "reason": "The story begins with a long line at the fountain."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the setup: Organizers placed a large water container and ____ at a separate table.",
+          "answer": "a washing basin",
+          "evidence": "organizers placed a large water container and a washing basin at a separate table for non-drinking uses",
+          "evidenceJp": "飲用以外の用途向けに大きな水容器と洗い用のたらいを別の机に置きました。",
+          "reason": "These were the two items added for non-drinking tasks."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If a timing table showed 20 seconds for bottle filling and 90 seconds for washing, what would it support?",
+          "answer": "Washing occupied the fountain much longer than bottle filling.",
+          "evidence": "bottle filling was usually quick, while washing took much longer",
+          "evidenceJp": "水筒への給水はたいてい短く、洗う作業の方がずっと長くかかりました。",
+          "reason": "The numbers would illustrate the observed difference."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “Before adding equipment, the organizers needed to know what people were actually doing.” fit best?",
+          "answer": "After the students notice people washing cups and cooling towels.",
+          "evidence": "Students observing the line noticed that many people were not filling bottles; they were waiting to wash cups or cool wet towels.",
+          "evidenceJp": "列を観察していた生徒たちは、多くの人が水筒に水を入れるためではなく、コップを洗ったり、ぬらしたタオルを冷やしたりするために待っていることに気づきました。",
+          "reason": "That observation motivates timing and separating the tasks."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why might a second fountain still be useful at a larger event?",
+          "answer": "Even after tasks are separated, a much larger number of people could create true drinking-water capacity limits.",
+          "evidence": "A second fountain might still help at a larger event",
+          "evidenceJp": "より大きな行事なら二台目も役立つかもしれません",
+          "reason": "The passage does not reject more capacity in every situation; it first fixes the mixed-task problem."
+        }
+      ]
+    },
+    {
+      "id": "V11-F32-G3-009",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main lesson of the science experiment?",
+          "answer": "Repeating a test with better controls can separate the effect being studied from unnoticed differences.",
+          "evidence": "Repeating the experiment did not weaken their work; it helped separate the effect they wanted to study from an unnoticed difference in the surroundings.",
+          "evidenceJp": "実験を繰り返したことは研究を弱めたのではなく、調べたい効果と周囲の気づかなかった違いを分ける助けになりました。",
+          "reason": "The final sentence states the value of repetition and control."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the group repeat the first test?",
+          "answer": "The dark bottle had been closer to a wall that reflected afternoon sunlight.",
+          "evidence": "one student noticed that the dark bottle had stood closer to a wall that reflected afternoon sunlight",
+          "evidenceJp": "一人の生徒が、黒いボトルは午後の日光を反射する壁の近くに置かれていたことに気づきました。",
+          "reason": "The bottle position could have caused part of the temperature difference."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "How did the group improve the repeated test?",
+          "answer": "They switched bottle positions each time and started with equal water temperatures.",
+          "evidence": "They repeated the test for three days, switching the bottle positions each time and starting with equal water temperatures.",
+          "evidenceJp": "そこで三日間テストを繰り返し、毎回ボトルの位置を入れ替え、同じ水温から始めました。",
+          "reason": "The sentence states both control improvements."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "What did the smaller difference in the repeated tests suggest?",
+          "answer": "Dark covering had some effect, but the first test had exaggerated it because of another factor.",
+          "evidence": "The dark covering still produced a small difference, but it was much less dramatic than the first result.",
+          "evidenceJp": "黒い覆いの方が少し高温になる傾向は残りましたが、初日の差ほど大きくありませんでした。",
+          "reason": "A remaining but smaller effect means both the cover and the original placement mattered."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The students did not hide the first test; they included it and ____.",
+          "answer": "explained the improved method",
+          "evidence": "In their report, students included the first test and explained the improved method.",
+          "evidenceJp": "レポートには最初の実験も載せ、改善した方法を説明しました。",
+          "reason": "This shows transparent reporting of the correction."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “surroundings” mean in the final sentence?",
+          "answer": "Conditions around the experiment, such as the nearby reflective wall.",
+          "evidence": "an unnoticed difference in the surroundings",
+          "evidenceJp": "周囲の気づかなかった違い",
+          "reason": "The wall position was an environmental difference around the bottles."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the first result: The dark-covered bottle became ____.",
+          "answer": "noticeably warmer than the light-covered bottle",
+          "evidence": "the dark-covered bottle became noticeably warmer than the light-covered bottle",
+          "evidenceJp": "黒い紙で覆ったボトルは明るい紙のボトルよりはっきり高温になりました。",
+          "reason": "This was the dramatic result that prompted the initial conclusion."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If repeated-test results clustered close together while day one was much higher, what would that support?",
+          "answer": "The first day's extra difference was probably influenced by an uncontrolled condition.",
+          "evidence": "The dark covering still produced a small difference, but it was much less dramatic than the first result.",
+          "evidenceJp": "黒い覆いの方が少し高温になる傾向は残りましたが、初日の差ほど大きくありませんでした。",
+          "reason": "The pattern would show the first test was unusually large."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “The position of the bottles had become a second variable.” fit best?",
+          "answer": "After the sentence about the dark bottle standing near the reflective wall.",
+          "evidence": "one student noticed that the dark bottle had stood closer to a wall that reflected afternoon sunlight",
+          "evidenceJp": "一人の生徒が、黒いボトルは午後の日光を反射する壁の近くに置かれていたことに気づきました。",
+          "reason": "It identifies why the original comparison was not fully controlled."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did repeating the experiment strengthen rather than weaken the report?",
+          "answer": "It showed the students had tested an alternative explanation and improved the method.",
+          "evidence": "Repeating the experiment did not weaken their work; it helped separate the effect they wanted to study from an unnoticed difference in the surroundings.",
+          "evidenceJp": "実験を繰り返したことは研究を弱めたのではなく、調べたい効果と周囲の気づかなかった違いを分ける助けになりました。",
+          "reason": "The repeat made the conclusion more trustworthy."
+        }
+      ]
+    },
+    {
+      "id": "V11-F32-G3-010",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What did the class learn about building a reliable schedule?",
+          "answer": "Printed times must be checked together with the real movement needed between them.",
+          "evidence": "A schedule is not reliable simply because each printed time fits; the spaces and actions between those times also have to fit real people.",
+          "evidenceJp": "印刷された時刻が数字上つながるだけでは、予定が確実とは言えません。その時刻と時刻の間に人が実際に行う移動や行動も収まる必要があります。",
+          "reason": "The final sentence states the scheduling principle."
+        },
+        {
+          "type": "REASON",
+          "question": "Why was the fastest train connection risky?",
+          "answer": "It arrived only six minutes before the bus, and the platform and bus stop were on opposite sides of the station with stairs between them.",
+          "evidence": "A student checked the station map and learned that the train platform and bus stop were on opposite sides of the station, with stairs between them.",
+          "evidenceJp": "ある生徒が駅構内図を確認すると、電車のホームとバス停は駅の反対側にあり、途中に階段もあることが分かりました。",
+          "reason": "The map revealed walking time that the timetable alone did not show."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What was the cost of choosing the earlier train?",
+          "answer": "The class had to leave school twelve minutes sooner.",
+          "evidence": "It required leaving school twelve minutes sooner but gave enough time to walk through the station",
+          "evidenceJp": "それなら学校を12分早く出る必要がありますが、駅を歩く時間が十分あり",
+          "reason": "The sentence states the trade-off directly."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did the earlier train make the museum reservation safer?",
+          "answer": "It provided enough walking time and a buffer for a small train delay.",
+          "evidence": "It required leaving school twelve minutes sooner but gave enough time to walk through the station and still reach the reserved museum entry if the train was a few minutes late.",
+          "evidenceJp": "それなら学校を12分早く出る必要がありますが、駅を歩く時間が十分あり、電車が数分遅れても博物館の予約時刻に間に合います。",
+          "reason": "The added time protected both the transfer and reservation."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The first plan used the fastest train because the timetable said the connection was possible, but the final plan used ____.",
+          "answer": "the train that arrived eighteen minutes earlier",
+          "evidence": "The class compared a second train that arrived eighteen minutes earlier.",
+          "evidenceJp": "クラスは18分早く着く別の電車と比べました。",
+          "reason": "That train offered a more realistic connection."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “connection” mean in the passage?",
+          "answer": "The transfer from the train to the bus.",
+          "evidence": "According to the timetable, the connection was possible",
+          "evidenceJp": "時刻表だけなら乗り継げる",
+          "reason": "The schedule combines a train arrival with a bus departure."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the station detail: The platform and bus stop were on ____.",
+          "answer": "opposite sides of the station",
+          "evidence": "the train platform and bus stop were on opposite sides of the station",
+          "evidenceJp": "電車のホームとバス停は駅の反対側にあり",
+          "reason": "This distance made the six-minute transfer risky."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If a station map showed stairs and a long cross-station walk, what would it support?",
+          "answer": "The timetable's six-minute transfer was less practical than it looked.",
+          "evidence": "A student checked the station map and learned that the train platform and bus stop were on opposite sides of the station, with stairs between them.",
+          "evidenceJp": "ある生徒が駅構内図を確認すると、電車のホームとバス停は駅の反対側にあり、途中に階段もあることが分かりました。",
+          "reason": "The map adds the physical movement missing from the timetable."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “The timetable described times, but not the work of moving between them.” fit best?",
+          "answer": "After the sentence saying the timetable made the connection look possible.",
+          "evidence": "According to the timetable, the connection was possible, so the first plan used it.",
+          "evidenceJp": "時刻表だけなら乗り継げるため、最初の案ではその電車を使いました。",
+          "reason": "It introduces why the station map was checked next."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the class choose to leave school earlier?",
+          "answer": "The extra margin made the whole chain of train, bus, and museum reservation more reliable.",
+          "evidence": "It required leaving school twelve minutes sooner but gave enough time to walk through the station and still reach the reserved museum entry if the train was a few minutes late.",
+          "evidenceJp": "それなら学校を12分早く出る必要がありますが、駅を歩く時間が十分あり、電車が数分遅れても博物館の予約時刻に間に合います。",
+          "reason": "The earlier departure created a practical buffer."
+        }
+      ]
+    }
+  ]
+}
