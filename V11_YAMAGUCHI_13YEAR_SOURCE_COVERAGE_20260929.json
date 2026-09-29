@@ -1,0 +1,105 @@
+{
+  "project": "V11 Yamaguchi entrance exam historical release audit",
+  "date": "2026-09-29",
+  "auditWindow": {
+    "startYear": 2014,
+    "endYear": 2026,
+    "years": 13
+  },
+  "copyrightPolicy": "Do not copy/store exam passage text. Audit only source availability, page structure, reading operations, task taxonomy, and metadata.",
+  "authoritativeAppSpec": "V11_YAMAGUCHI_ENTRANCE_EXAM_READING_SPEC.md",
+  "readingOnly": true,
+  "freeWritingAllowed": false,
+  "sources": [
+    {
+      "years": [
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "provider": "ReseMom Yamaguchi public-high-school exam archive",
+      "url": "https://resemom.jp/pages/public-highschool-exam/35yamaguchi/index.html",
+      "provenance": "states problems/answers are based on prefectural board of education information"
+    },
+    {
+      "years": [
+        2025
+      ],
+      "provider": "tys / TBS NEWS DIG",
+      "url": "https://newsdig.tbs.co.jp/articles/-/1767650",
+      "provenance": "published Yamaguchi 2025 English problem/answer image set"
+    },
+    {
+      "years": [
+        2026
+      ],
+      "provider": "tys / TBS NEWS DIG",
+      "url": "https://newsdig.tbs.co.jp/articles/-/2507925",
+      "provenance": "published Yamaguchi 2026 English problem/answer image set"
+    }
+  ],
+  "sourceCoverage": {
+    "expectedYears": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "coveredYears": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "missingYears": [],
+    "pass": true
+  },
+  "structuralReview": {
+    "previouslyDocumentedYears": [
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "remainingYears": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021
+    ],
+    "status": "IN_PROGRESS",
+    "pass": false,
+    "next": "Review only reading-task structure for 2014-2021; do not reproduce copyrighted passage text."
+  }
+}
