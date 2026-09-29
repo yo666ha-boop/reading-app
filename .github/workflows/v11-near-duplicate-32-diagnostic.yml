@@ -1,0 +1,42 @@
+name: v11 near duplicate 32 diagnostic
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'scripts/v11_near_duplicate_32_diagnostic.js'
+      - '.github/workflows/v11-near-duplicate-32-diagnostic.yml'
+      - 'V11_1000_FINAL_RELEASE_INVENTORY.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: v11-1000passage-easy-notes}
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - run: npm install --no-save playwright@1.55.0
+      - run: npx playwright install --with-deps chromium
+      - run: |
+          python3 -m http.server 4183 --bind 127.0.0.1 >/tmp/v11-near32.log 2>&1 &
+          sleep 2
+          URL="http://127.0.0.1:4183/index.html" node scripts/v11_near_duplicate_32_diagnostic.js
+      - name: Persist
+        run: |
+          cp V11_NEAR_DUPLICATE_32_DIAGNOSTIC.json /tmp/V11_NEAR_DUPLICATE_32_DIAGNOSTIC.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for n in 1 2 3; do
+            git fetch origin v11-1000passage-easy-notes
+            git reset --hard origin/v11-1000passage-easy-notes
+            cp /tmp/V11_NEAR_DUPLICATE_32_DIAGNOSTIC.json V11_NEAR_DUPLICATE_32_DIAGNOSTIC.json
+            git add V11_NEAR_DUPLICATE_32_DIAGNOSTIC.json
+            git diff --cached --quiet && exit 0
+            git commit -m 'audit(v11): persist near duplicate diagnostics [skip ci]'
+            git push origin HEAD:v11-1000passage-easy-notes && exit 0
+            sleep $((n*2))
+          done
+          exit 1
