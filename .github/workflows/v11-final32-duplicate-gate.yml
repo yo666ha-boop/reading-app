@@ -1,0 +1,60 @@
+name: v11 FINAL32 runtime duplicate gate
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'V11_FINAL32_BODY_TRANSLATION_DRAFT_*.json'
+      - 'scripts/v11_final32_runtime_duplicate_gate.js'
+      - '.github/workflows/v11-final32-duplicate-gate.yml'
+      - 'v11_batch16_runtime_bundle.js'
+      - 'v11_batch16_register.js'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: v11-final32-runtime-duplicate
+  cancel-in-progress: true
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-save playwright@1.55.0
+      - run: npx playwright install --with-deps chromium
+      - name: Run FINAL32 duplicate gate against registered 968
+        run: |
+          set +e
+          node scripts/v11_final32_runtime_duplicate_gate.js
+          code=$?
+          echo "audit_exit=$code" >> "$GITHUB_ENV"
+          test -f V11_FINAL32_RUNTIME_DUPLICATE_GATE_REPORT.json
+          exit 0
+      - name: Persist report
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add V11_FINAL32_RUNTIME_DUPLICATE_GATE_REPORT.json
+          if git diff --cached --quiet; then
+            echo 'No report change'
+          else
+            git commit -m 'audit(v11): persist FINAL32 runtime duplicate report [skip ci]'
+            for n in 1 2 3; do
+              git pull --rebase origin v11-1000passage-easy-notes && git push origin HEAD:v11-1000passage-easy-notes && exit 0
+              git rebase --abort || true
+              sleep $((n*2))
+            done
+            exit 1
+          fi
+      - name: Enforce gate
+        run: |
+          node - <<'NODE'
+          const r=require('./V11_FINAL32_RUNTIME_DUPLICATE_GATE_REPORT.json');
+          console.log(JSON.stringify({candidate:r.candidate,prior:r.prior,exact:r.exactDuplicates.length,near:r.nearDuplicates.length,finalPass:r.finalPass}));
+          if(!r.finalPass)process.exit(2);
+          NODE
