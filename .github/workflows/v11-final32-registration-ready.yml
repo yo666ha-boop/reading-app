@@ -1,0 +1,63 @@
+name: v11 FINAL32 registration ready gate
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'V11_FINAL32_HUMAN_SEMANTIC_FINAL_GATE_20260929.json'
+      - 'V11_FINAL32_FORMAL_GRAMMAR_CHRONOLOGY_REPORT.json'
+      - 'V11_FINAL32_FORMAL_VOCAB_CHRONOLOGY_REPORT.json'
+      - 'V11_FINAL32_320_QUESTION_FINAL_GATE.json'
+      - 'V11_FINAL32_NOTES_FINAL_GATE.json'
+      - 'V11_FINAL32_SLASH_WORDCOUNT_REPORT.json'
+      - 'V11_FINAL32_RUNTIME_DUPLICATE_GATE_REPORT.json'
+      - 'V11_FINAL32_BROWSER_A4_PERSISTENT_GATE_REPORT.json'
+      - 'scripts/v11_final32_registration_ready_gate.js'
+      - '.github/workflows/v11-final32-registration-ready.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: v11-final32-registration-ready
+  cancel-in-progress: true
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Evaluate all FINAL32 gates
+        run: |
+          set +e
+          node scripts/v11_final32_registration_ready_gate.js
+          code=$?
+          echo "audit_exit=$code" >> "$GITHUB_ENV"
+          test -f V11_FINAL32_REGISTRATION_READY_GATE.json
+          exit 0
+      - name: Persist ready report
+        run: |
+          cp V11_FINAL32_REGISTRATION_READY_GATE.json /tmp/V11_FINAL32_REGISTRATION_READY_GATE.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for n in 1 2 3; do
+            git fetch origin v11-1000passage-easy-notes
+            git reset --hard origin/v11-1000passage-easy-notes
+            cp /tmp/V11_FINAL32_REGISTRATION_READY_GATE.json V11_FINAL32_REGISTRATION_READY_GATE.json
+            git add V11_FINAL32_REGISTRATION_READY_GATE.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m 'audit(v11): persist FINAL32 registration-ready gate [skip ci]'
+            git push origin HEAD:v11-1000passage-easy-notes && exit 0
+            sleep $((n*2))
+          done
+          exit 1
+      - name: Enforce ready gate
+        run: |
+          node - <<'NODE'
+          const r=require('./V11_FINAL32_REGISTRATION_READY_GATE.json');
+          console.log(JSON.stringify({body32:r.body32,checks:r.checks,failures:r.failures,finalPass:r.finalPass}));
+          if(!r.finalPass)process.exit(2);
+          NODE
