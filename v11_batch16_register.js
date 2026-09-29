@@ -14,4 +14,10 @@ window.V11_BATCH16_REGISTERED=true;
 window.V11_BATCH16_REGISTERED_COUNT=50;
 window.V11_BATCH16_LOADED=true;
 console.log('[v11 batch16] registered 50 passages atomically; total',totalWithBaseline);
+if(!window.V11_FINAL32_BOOTSTRAP_STARTED&&!window.V11_FINAL32_REGISTERED){
+  const s=document.createElement('script');
+  s.src='./v11_final32_bootstrap.js';
+  s.onerror=function(){window.V11_FINAL32_BOOTSTRAP_ERROR='bootstrap load failed';console.error('[v11 FINAL32] bootstrap load failed');};
+  document.head.appendChild(s);
+}
 })();

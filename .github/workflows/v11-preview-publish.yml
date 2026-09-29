@@ -87,12 +87,18 @@ jobs:
           test -f public/v11-preview/v11_batch15_bootstrap.js
           test -f public/v11-preview/v11_batch16_runtime_bundle.js
           test -f public/v11-preview/v11_batch16_register.js
+          test -f public/v11-preview/v11_final32_runtime_bundle.js
+          test -f public/v11-preview/v11_final32_register.js
+          test -f public/v11-preview/v11_final32_bootstrap.js
+          test -f public/v11-preview/V11_FINAL32_320_QUESTION_FINAL_GATE.json
+          test -f public/v11-preview/V11_FINAL32_NOTES_FINAL_GATE.json
+          test -f public/v11-preview/V11_FINAL32_BROWSER_A4_PERSISTENT_GATE_REPORT.json
           cat > public/v11-preview/PREVIEW_SOURCE.txt <<EOF
           branch=v11-1000passage-easy-notes
           source_sha=${GITHUB_SHA}
           published_at_utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-          expected_registered_total=968
-          bootstrap_entry=batch01_chain_through_batch16
+          expected_registered_total=1000
+          bootstrap_entry=batch01_chain_through_final32
           purpose=WORKING_PREVIEW_NOT_PRODUCTION_RELEASE
           EOF
 
