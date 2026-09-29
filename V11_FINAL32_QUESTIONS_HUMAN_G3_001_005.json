@@ -1,0 +1,447 @@
+{
+  "batch": "V11-FINAL32",
+  "stage": "human_question_authoring",
+  "registered": false,
+  "officialTotal": 968,
+  "range": "G3-001..G3-005",
+  "passages": 5,
+  "questionsPerPassage": 10,
+  "humanAuthored": true,
+  "items": [
+    {
+      "id": "V11-F32-G3-001",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main idea of the passage?",
+          "answer": "The town improved its river-trail warning by linking it to actual ground and water conditions instead of rainfall alone.",
+          "evidence": "The new system connected the warning to the condition people actually faced instead of treating every rainy day as equally dangerous.",
+          "evidenceJp": "新しい仕組みは、すべての雨の日を同じ危険度として扱うのではなく、実際に歩く人が直面する状態と警告を結び付けました。",
+          "reason": "The final sentence states how the warning system became more precise."
+        },
+        {
+          "type": "REASON",
+          "question": "Why was a fixed rainfall amount not enough to decide whether the trail was unsafe?",
+          "answer": "Risk also depended on whether the ground had already been wet for several days.",
+          "evidence": "They found that the risky section depended not only on total rain but also on whether the ground had already been wet for several days.",
+          "evidenceJp": "すると、危険になるかどうかは雨の総量だけでなく、その前の数日間に地面がすでにぬれていたかにも左右されることが分かりました。",
+          "reason": "The students found a second condition that affected risk."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What did the students compare?",
+          "answer": "They compared rainfall records with photographs of the trail taken the next morning.",
+          "evidence": "Local students compared rainfall records with photographs of the trail taken the next morning.",
+          "evidenceJp": "地域の生徒たちは雨量記録と翌朝に撮った遊歩道の写真を比べました。",
+          "reason": "The sentence states the two sources of evidence directly."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did the town keep staff checks after storms?",
+          "answer": "The marker and sign improved guidance, but direct inspection was still useful for safety.",
+          "evidence": "Staff still checked the trail after storms.",
+          "evidenceJp": "嵐の後には職員による確認も続けました。",
+          "reason": "Keeping inspections shows the new system supplemented rather than replaced human safety checks."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The town moved from a rain-total rule to a system using a water-level marker, an alternate-route sign, and ____.",
+          "answer": "staff checks after storms",
+          "evidence": "Staff still checked the trail after storms.",
+          "evidenceJp": "嵐の後には職員による確認も続けました。",
+          "reason": "This was the remaining safety measure in the final system."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “alternate route” mean here?",
+          "answer": "A different path walkers should use when the low section is unsafe.",
+          "evidence": "added a sign explaining when walkers should use an alternate route",
+          "evidenceJp": "どの状態なら別ルートを使うべきか説明する標識を加えました。",
+          "reason": "The sign directs walkers to another route under risky conditions."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the idea: The risky section depended on total rain and ____.",
+          "answer": "whether the ground had already been wet for several days",
+          "evidence": "the risky section depended not only on total rain but also on whether the ground had already been wet for several days",
+          "evidenceJp": "危険になるかどうかは雨の総量だけでなく、その前の数日間に地面がすでにぬれていたかにも左右される",
+          "reason": "The sentence gives both conditions."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If two days had the same rainfall but different water levels at the low section, what would that support?",
+          "answer": "Rainfall alone did not fully predict trail risk.",
+          "evidence": "They found that the risky section depended not only on total rain but also on whether the ground had already been wet for several days.",
+          "evidenceJp": "すると、危険になるかどうかは雨の総量だけでなく、その前の数日間に地面がすでにぬれていたかにも左右されることが分かりました。",
+          "reason": "Different water levels under equal rainfall would show the effect of prior ground conditions."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “The same amount of rain did not always create the same trail condition.” fit best?",
+          "answer": "After the sentence explaining the role of already-wet ground.",
+          "evidence": "They found that the risky section depended not only on total rain but also on whether the ground had already been wet for several days.",
+          "evidenceJp": "すると、危険になるかどうかは雨の総量だけでなく、その前の数日間に地面がすでにぬれていたかにも左右されることが分かりました。",
+          "reason": "The inserted sentence restates the implication before the new warning system is introduced."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why was closing the entire trail after every heavy rain inefficient?",
+          "answer": "Only one section became risky, and risk depended on more than rainfall total.",
+          "evidence": "A walking trail beside a river was popular with families, but one section sometimes became unsafe after heavy rain.",
+          "evidenceJp": "川沿いの遊歩道は家族に人気でしたが、大雨の後には一部が危険になることがありました。",
+          "reason": "The problem was localized and conditional, so a full closure could be broader than necessary."
+        }
+      ]
+    },
+    {
+      "id": "V11-F32-G3-002",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What is the main lesson of the survey?",
+          "answer": "A large number of responses is not enough unless the sample represents the people whose opinions matter.",
+          "evidence": "A large number of answers was useful only after checking whose voices were represented.",
+          "evidenceJp": "回答数が多いだけでなく、誰の声が含まれているか確かめて初めて役立つ結果になるのです。",
+          "reason": "The final sentence states the central lesson about representation."
+        },
+        {
+          "type": "REASON",
+          "question": "Why were first-year students underrepresented in the first survey?",
+          "answer": "The form was shared mainly through club leaders, and many first-year students had not joined clubs yet.",
+          "evidence": "Very few first-year students had answered because the form had mainly been shared through club leaders, and many first-year students had not joined clubs yet.",
+          "evidenceJp": "フォームは主に部活動の代表を通じて共有されており、まだ部活動に入っていない一年生が多かったため、一年生の回答が非常に少ないことが分かりました。",
+          "reason": "The distribution method missed many first-year students."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What did the council do after finding the missing group?",
+          "answer": "It visited first-year homerooms and collected additional responses with the same questions.",
+          "evidence": "It visited first-year homerooms and collected an additional set of responses using the same questions.",
+          "evidenceJp": "生徒会は最初の調査を捨てず、一年生の各クラスを訪れ、同じ質問で追加回答を集めました。",
+          "reason": "The sentence states how the sample was corrected."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did the preferred closing time become slightly earlier after the second stage?",
+          "answer": "Adding more first-year voices changed the balance of preferences.",
+          "evidence": "Support for longer hours remained, but the preferred closing time became slightly earlier.",
+          "evidenceJp": "開館延長への支持は残りましたが、希望する閉館時刻は少し早くなりました。",
+          "reason": "The new group affected the preferred detail even though overall support remained."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The first survey had many responses, but the council checked ____ before presenting the result.",
+          "answer": "who the respondents were compared with the school population",
+          "evidence": "Before presenting the result, one student compared the respondents with the school enrollment list.",
+          "evidenceJp": "結果を発表する前に、ある生徒が回答者と全校の在籍状況を比べました。",
+          "reason": "That comparison revealed the sampling problem."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “represented” mean in the last sentence?",
+          "answer": "Included fairly in the survey responses.",
+          "evidence": "whose voices were represented",
+          "evidenceJp": "誰の声が含まれているか",
+          "reason": "The passage is about whether different student groups were included in the results."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the result: Support for longer hours remained, but ____.",
+          "answer": "the preferred closing time became slightly earlier",
+          "evidence": "Support for longer hours remained, but the preferred closing time became slightly earlier.",
+          "evidenceJp": "開館延長への支持は残りましたが、希望する閉館時刻は少し早くなりました。",
+          "reason": "The sentence shows what changed after the added sample."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If a pie chart showed almost no first-year responses in stage one, what would it support?",
+          "answer": "The first survey sample was unbalanced.",
+          "evidence": "Very few first-year students had answered",
+          "evidenceJp": "一年生の回答が非常に少ないことが分かりました。",
+          "reason": "The chart would visualize the missing-group problem."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “The council had many answers, but not yet a balanced picture.” fit best?",
+          "answer": "After the sentence about comparing respondents with the enrollment list.",
+          "evidence": "Before presenting the result, one student compared the respondents with the school enrollment list.",
+          "evidenceJp": "結果を発表する前に、ある生徒が回答者と全校の在籍状況を比べました。",
+          "reason": "It introduces the reason for checking first-year participation."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the council keep the same questions for the additional survey?",
+          "answer": "It needed the new responses to be comparable with the first survey.",
+          "evidence": "collected an additional set of responses using the same questions",
+          "evidenceJp": "同じ質問で追加回答を集めました。",
+          "reason": "Using identical questions makes the two sets more directly comparable."
+        }
+      ]
+    },
+    {
+      "id": "V11-F32-G3-003",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What changed the environmental club's interpretation of Monday's high electricity use?",
+          "answer": "Adding temperature and heating context showed that much of the increase came from cold weather, not wasteful behavior.",
+          "evidence": "By adding context, the club could encourage conservation without blaming behavior for a change that had another major cause.",
+          "evidenceJp": "背景情報を加えたことで、別の大きな原因による変化を行動のせいにせず、省エネを呼びかけられるようになりました。",
+          "reason": "The conclusion explains why context changed the interpretation."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the teacher ask the club to examine the day's conditions?",
+          "answer": "The unusually high number might have a cause other than students wasting energy.",
+          "evidence": "A teacher asked them to examine the day's conditions first.",
+          "evidenceJp": "先生はまずその日の条件を調べるよう求めました。",
+          "reason": "The request challenged the club's immediate conclusion."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What unusual condition occurred that morning?",
+          "answer": "It was unusually cold, so heaters started earlier in many rooms.",
+          "evidence": "The morning had been unusually cold, so heaters had started earlier in many rooms.",
+          "evidenceJp": "その朝は特に寒く、多くの教室で暖房が早くから使われていました。",
+          "reason": "The sentence identifies the major contextual factor."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did the club compare days with similar temperatures?",
+          "answer": "To separate the effect of cold weather from other electricity use.",
+          "evidence": "The club separated heating use from other electricity where records allowed it and compared several days with similar temperatures.",
+          "evidenceJp": "記録で分けられる範囲で暖房分とその他の電力を分け、気温が似た複数の日を比較しました。",
+          "reason": "Comparable temperatures reduce weather as a competing explanation."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The final display added ____ beside the energy total.",
+          "answer": "temperature",
+          "evidence": "The final display included temperature beside the energy total.",
+          "evidenceJp": "最終的な表示には電力合計の横に気温も載せました。",
+          "reason": "This was the context added to the public display."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “context” mean in the final sentence?",
+          "answer": "Background information needed to interpret the energy number correctly.",
+          "evidence": "By adding context, the club could encourage conservation without blaming behavior for a change that had another major cause.",
+          "evidenceJp": "背景情報を加えたことで、別の大きな原因による変化を行動のせいにせず、省エネを呼びかけられるようになりました。",
+          "reason": "Temperature and heating conditions explain how to read the total."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the finding: The dramatic Monday increase was mostly related to ____.",
+          "answer": "heating",
+          "evidence": "the dramatic Monday increase was mostly related to heating",
+          "evidenceJp": "月曜日の大きな増加は主に暖房によるものでした。",
+          "reason": "The sentence identifies the main cause."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If a graph showed electricity rising on the coldest mornings, what would it support?",
+          "answer": "Heating demand contributed strongly to higher electricity use.",
+          "evidence": "The morning had been unusually cold, so heaters had started earlier in many rooms.",
+          "evidenceJp": "その朝は特に寒く、多くの教室で暖房が早くから使われていました。",
+          "reason": "The relationship would support the weather explanation."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “A high total did not automatically prove careless behavior.” fit best?",
+          "answer": "After the teacher asks the club to examine the day's conditions.",
+          "evidence": "A teacher asked them to examine the day's conditions first.",
+          "evidenceJp": "先生はまずその日の条件を調べるよう求めました。",
+          "reason": "It explains why the group investigated weather before blaming students."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did the club still discuss unnecessary lighting?",
+          "answer": "Some opportunities for conservation remained even after the heating effect was separated.",
+          "evidence": "They still found opportunities to reduce unnecessary lighting",
+          "evidenceJp": "不要な照明を減らせる余地は残っていました",
+          "reason": "The weather explanation did not mean all electricity use was unavoidable."
+        }
+      ]
+    },
+    {
+      "id": "V11-F32-G3-004",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What did the students learn about useful translation?",
+          "answer": "A translation should preserve meaning while reorganizing information for readers who lack the original background.",
+          "evidence": "The students learned that faithful translation requires preserving meaning, but useful communication may also require reorganizing information for readers who do not share the original background knowledge.",
+          "evidenceJp": "意味を保つことは翻訳に必要ですが、背景知識を共有しない読者へ伝えるには情報の整理も必要だと学びました。",
+          "reason": "The final sentence states the translation principle directly."
+        },
+        {
+          "type": "REASON",
+          "question": "Why was the first English version hard for trial readers to understand?",
+          "answer": "It contained accurate details but did not show why the site mattered.",
+          "evidence": "The information was accurate, but trial readers understood the individual words without seeing why the place mattered.",
+          "evidenceJp": "情報は正確でしたが、試しに読んだ人たちは個々の単語を理解できても、なぜその場所が重要なのか分かりませんでした。",
+          "reason": "Accuracy at the word level did not create meaningful context."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What did the students ask the local historian?",
+          "answer": "Which facts were essential for a first-time visitor.",
+          "evidence": "They kept the official names in a small reference box but rewrote the main guide around three questions: what happened there, why it affected the town, and what visitors could still see today.",
+          "evidenceJp": "正式名称は小さな参考欄に残し、本文は「そこで何が起きたか」「町にどんな影響を与えたか」「今も何を見ることができるか」という三つの問いを中心に組み直しました。",
+          "reason": "The rewritten guide reflects the essential information identified for new visitors."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why were official names moved to a small reference box?",
+          "answer": "They were worth preserving but should not dominate the main explanation for first-time readers.",
+          "evidence": "They kept the official names in a small reference box but rewrote the main guide around three questions",
+          "evidenceJp": "正式名称は小さな参考欄に残し、本文は三つの問いを中心に組み直しました。",
+          "reason": "The structure keeps formal details available while prioritizing meaning."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The second version organized the guide around what happened, why it mattered, and ____.",
+          "answer": "what visitors could still see today",
+          "evidence": "what happened there, why it affected the town, and what visitors could still see today",
+          "evidenceJp": "「そこで何が起きたか」「町にどんな影響を与えたか」「今も何を見ることができるか」",
+          "reason": "These are the three organizing questions."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “faithful” mean in the final sentence?",
+          "answer": "Accurate to the original meaning.",
+          "evidence": "faithful translation requires preserving meaning",
+          "evidenceJp": "意味を保つことは翻訳に必要",
+          "reason": "The phrase itself defines faithful translation as preserving meaning."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the result: A second group of readers could ____.",
+          "answer": "explain the site's importance after reading",
+          "evidence": "A second group of readers could explain the site's importance after reading.",
+          "evidenceJp": "二回目の読者は、読後に史跡の重要性を説明できました。",
+          "reason": "This shows the revised guide communicated the significance better."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If reader feedback showed high word understanding but low understanding of the site's importance in version one, what would it support?",
+          "answer": "Literal accuracy alone did not make the guide effective for the audience.",
+          "evidence": "The information was accurate, but trial readers understood the individual words without seeing why the place mattered.",
+          "evidenceJp": "情報は正確でしたが、試しに読んだ人たちは個々の単語を理解できても、なぜその場所が重要なのか分かりませんでした。",
+          "reason": "The feedback would match the exact problem described."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “The readers needed a clearer story, not simply more official terms.” fit best?",
+          "answer": "After the sentence describing the first trial readers' difficulty.",
+          "evidence": "The information was accurate, but trial readers understood the individual words without seeing why the place mattered.",
+          "evidenceJp": "情報は正確でしたが、試しに読んだ人たちは個々の単語を理解できても、なぜその場所が重要なのか分かりませんでした。",
+          "reason": "It explains why the students consulted a historian and reorganized the guide."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did the students interview a historian?",
+          "answer": "They needed help identifying the facts a first-time visitor most needed.",
+          "evidence": "The students interviewed a local historian and asked which facts were essential for a first-time visitor.",
+          "evidenceJp": "生徒たちは地域の歴史家に話を聞き、初めて訪れる人に欠かせない事実を尋ねました。",
+          "reason": "The historian helped prioritize information for the target audience."
+        }
+      ]
+    },
+    {
+      "id": "V11-F32-G3-005",
+      "questionsA": [
+        {
+          "type": "GIST",
+          "question": "What did the garden trial show?",
+          "answer": "Water savings depended on both the amount supplied and how well the soil kept moisture.",
+          "evidence": "Testing alternatives side by side showed that saving water depended not only on how much was supplied but also on how quickly the soil lost it.",
+          "evidenceJp": "並べて比較したことで、節水は与える水の量だけでなく、土からどれだけ速く水が失われるかにも関係すると分かりました。",
+          "reason": "The last sentence states the main finding."
+        },
+        {
+          "type": "REASON",
+          "question": "Why did students divide the plants into three plots?",
+          "answer": "They wanted to compare different watering and soil-covering methods under similar conditions.",
+          "evidence": "Rather than changing the whole garden at once, students divided eighteen similar plants into three plots.",
+          "evidenceJp": "菜園全体を一度に変えず、似た状態の18株を三つの区画に分けました。",
+          "reason": "Separate similar groups allow side-by-side testing."
+        },
+        {
+          "type": "CONTENT_MATCH",
+          "question": "What were the three treatments?",
+          "answer": "Usual watering, less water, and less water plus a leaf covering.",
+          "evidence": "One received the usual watering, one received less water, and one received less water plus a leaf covering.",
+          "evidenceJp": "一つは従来どおり、二つ目は水を少なくし、三つ目は水を少なくした上で葉で土を覆いました。",
+          "reason": "The sentence lists all three conditions."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why was the low-water-only plot not adopted?",
+          "answer": "It dried too quickly during hot days.",
+          "evidence": "The low-water plot dried too quickly during hot days",
+          "evidenceJp": "水だけ減らした区画は暑い日に乾きすぎました",
+          "reason": "The method saved water but did not maintain adequate moisture."
+        },
+        {
+          "type": "SUMMARY_FILL",
+          "question": "Complete the summary: The covered plot used less water but stayed close to the usual plot in moisture and ____.",
+          "answer": "tomato production",
+          "evidence": "the covered plot stayed closer to the usual plot and produced a similar number of tomatoes",
+          "evidenceJp": "葉で覆った区画は従来区画に近い状態を保ち、トマトの数もほぼ同じでした。",
+          "reason": "The result included both moisture and fruit outcome."
+        }
+      ],
+      "questionsB": [
+        {
+          "type": "CONTEXT_WORD",
+          "question": "What does “evaporation” mean in this passage?",
+          "answer": "Water leaving the soil into the air.",
+          "evidence": "covering the soil with dry leaves to slow evaporation",
+          "evidenceJp": "乾いた葉で土を覆い蒸発を遅らせる",
+          "reason": "The leaf cover was meant to keep water from leaving the soil quickly."
+        },
+        {
+          "type": "PHRASE_FILL",
+          "question": "Complete the measurements: Students measured soil moisture and ____.",
+          "answer": "counted healthy fruit for four weeks",
+          "evidence": "They measured soil moisture and counted healthy fruit for four weeks.",
+          "evidenceJp": "四週間、土の水分と健康な実の数を記録しました。",
+          "reason": "The sentence states the two outcomes measured."
+        },
+        {
+          "type": "MATERIAL_LINK",
+          "question": "If a graph showed similar tomato counts for the usual and covered plots but much lower soil moisture in the low-water-only plot, what would it support?",
+          "answer": "Leaf covering helped conserve moisture while maintaining production.",
+          "evidence": "the covered plot stayed closer to the usual plot and produced a similar number of tomatoes",
+          "evidenceJp": "葉で覆った区画は従来区画に近い状態を保ち、トマトの数もほぼ同じでした。",
+          "reason": "The graph would match the successful treatment described."
+        },
+        {
+          "type": "SENTENCE_INSERTION",
+          "question": "Where would “The students wanted to test the ideas before risking the whole garden.” fit best?",
+          "answer": "Before the sentence about dividing eighteen plants into three plots.",
+          "evidence": "Rather than changing the whole garden at once, students divided eighteen similar plants into three plots.",
+          "evidenceJp": "菜園全体を一度に変えず、似た状態の18株を三つの区画に分けました。",
+          "reason": "It explains why a small controlled trial was used."
+        },
+        {
+          "type": "INFERENCE",
+          "question": "Why did the school adopt the covering method gradually?",
+          "answer": "The trial showed it was promising, but gradual adoption allowed the school to apply the tested method carefully.",
+          "evidence": "The school adopted the covering method gradually.",
+          "evidenceJp": "学校は土を覆う方法を段階的に取り入れました。",
+          "reason": "A gradual rollout is consistent with evidence-based change after a limited trial."
+        }
+      ]
+    }
+  ]
+}
