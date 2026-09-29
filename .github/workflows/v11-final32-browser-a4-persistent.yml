@@ -1,0 +1,65 @@
+name: v11 FINAL32 browser A4 persistent candidate gate
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'v11_final32_runtime_bundle.js'
+      - 'V11_FINAL32_QUESTIONS_HUMAN_*.json'
+      - 'V11_FINAL32_*_NOTES_NORMAL_EASY.json'
+      - 'V11_FINAL32_REQUIRED_LOCAL_GLOSS_*.json'
+      - 'scripts/v11_final32_browser_a4_persistent_gate.js'
+      - '.github/workflows/v11-final32-browser-a4-persistent.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: v11-final32-browser-a4-persistent
+  cancel-in-progress: true
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-save playwright@1.55.0
+      - run: npx playwright install --with-deps chromium webkit
+      - name: Start static server
+        run: |
+          python3 -m http.server 4174 --bind 127.0.0.1 > /tmp/v11-final32-http.log 2>&1 &
+          sleep 2
+      - name: Run FINAL32 Chromium WebKit iPhone A4 persistent candidate gate
+        run: |
+          set +e
+          V11_LOCAL_URL="http://127.0.0.1:4174/index.html" node scripts/v11_final32_browser_a4_persistent_gate.js
+          code=$?
+          echo "audit_exit=$code" >> "$GITHUB_ENV"
+          test -f V11_FINAL32_BROWSER_A4_PERSISTENT_GATE_REPORT.json
+          exit 0
+      - name: Persist report
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add V11_FINAL32_BROWSER_A4_PERSISTENT_GATE_REPORT.json
+          if git diff --cached --quiet; then
+            echo 'No report change'
+          else
+            git commit -m 'audit(v11): persist FINAL32 browser A4 persistent gate [skip ci]'
+            for n in 1 2 3; do
+              git pull --rebase origin v11-1000passage-easy-notes && git push origin HEAD:v11-1000passage-easy-notes && exit 0
+              git rebase --abort || true
+              sleep $((n*2))
+            done
+            exit 1
+          fi
+      - name: Enforce gate
+        run: |
+          node - <<'NODE'
+          const r=require('./V11_FINAL32_BROWSER_A4_PERSISTENT_GATE_REPORT.json');
+          console.log(JSON.stringify({browsers:r.browsers,a4:r.a4,persistent:r.persistent&&r.persistent.pass,finalPass:r.finalPass}));
+          if(!r.finalPass)process.exit(2);
+          NODE
