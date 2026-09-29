@@ -14,4 +14,10 @@ window.V11_FINAL32_REGISTERED=true;
 window.V11_FINAL32_REGISTERED_COUNT=32;
 window.V11_FINAL32_LOADED=true;
 console.log('[v11 final32] registered 32 passages atomically; total',totalWithBaseline);
+if(!window.V11_FINAL_RELEASE_READING_ONLY_APPLIED){
+  const s=document.createElement('script');
+  s.src='./v11_final_release_reading_only_overlay.js';
+  s.onerror=function(){window.V11_FINAL_RELEASE_READING_ONLY_ERROR='overlay load failed';console.error('[v11 final release] reading-only overlay load failed');};
+  document.head.appendChild(s);
+}
 })();
