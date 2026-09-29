@@ -11,6 +11,25 @@ function replaceB5(id,q){
  p.questionSetB[4]=q; if(Array.isArray(p.questionsB)&&p.questionsB.length===5)p.questionsB[4]=q;
  log.replacedQuestions.push(id);
 }
+function appendDistinct(id,en,jp,prompt,answer,note){
+ const p=byId.get(id); if(!p)throw new Error('distinctness repair missing '+id);
+ if(String(p.body||'').includes(en))return;
+ p.body=(String(p.body||'').trim()+' '+en).trim();
+ p.fullTranslation=(String(p.fullTranslation||'').trim()+(String(p.fullTranslation||'').trim()?' ':'')+jp).trim();
+ if(typeof p.slash==='string')p.slash=(p.slash.trim()+(p.slash.trim()?' / ':'')+en).trim();
+ if(Array.isArray(p.sentences))p.sentences.push(en);
+ if(Array.isArray(p.slashRows))p.slashRows.push({en,jp,humanReview:'FINAL_RELEASE_DISTINCTNESS_SYNC',alignmentShape:'1:1'});
+ const q={questionType:'CONTENT_MATCH',type:'CONTENT_MATCH',set:'B',no:5,prompt,answer,evidence:en,evidenceJp:jp,reason:'追加した本文固有の内容を直接確認する読解問題です。'};
+ if(!Array.isArray(p.questionSetB)||p.questionSetB.length!==5)throw new Error(id+' B set invalid for distinctness sync');
+ p.questionSetB[4]=q;
+ if(Array.isArray(p.questionsB)&&p.questionsB.length===5)p.questionsB[4]=q;
+ if(note&&note.english&&note.japanese){
+   if(!Array.isArray(p.requiredLocal))p.requiredLocal=[];
+   if(!p.requiredLocal.some(x=>String(x.english||x.word||'').toLowerCase()===note.english.toLowerCase()))p.requiredLocal.push({english:note.english,japanese:note.japanese,kind:'unlearned_local_required',source:'final-release distinctness repair'});
+   if(!Array.isArray(p.notes))p.notes=[];
+   if(!p.notes.some(x=>String(x.english||x.expression||'').toLowerCase()===note.english.toLowerCase()))p.notes.push({english:note.english,japanese:note.japanese,source:'final-release distinctness repair'});
+ }
+}
 function repairEvidence(id,set,no,evidence,evidenceJp){
  const p=byId.get(id); if(!p)throw new Error('evidence repair missing '+id);
  const arr=set==='A'?p.questions:p.questionSetB;
@@ -69,6 +88,26 @@ replaceB5('V11-B13-G3-014',{
  evidenceJp:'警報の時間、Field Aに日陰と給水場所がないこと、活動時刻、シャトル時刻を合わせると、二つのソーラーカー回は今回のクラス訪問には適しにくかったのです。',
  reason:'本文の最終判断を構成する四つの条件を統合して読む要約補充です。'
 });
+
+/* DISTINCTNESS_REPAIR_32_PAIRS: substantive one-sentence extensions, synchronized with translation/slash and B5 reading questions. */
+appendDistinct('V11-SS-G1-P10-2-002','On Sunday, we ate lunch in a small park before the show.','日曜日、私たちは上映前に小さな公園で昼食を食べました。','What did we do before the show on Sunday?','We ate lunch in a small park.');
+appendDistinct('V11-SS-G1-P10-2-003','My sister called me after dinner and asked about the story.','姉が夕食後に電話をして、物語について尋ねました。','Who called after dinner?','My sister.');
+appendDistinct('V11-SS-G1-P10-2-007','At the station, we met our teacher and showed her the tickets.','駅で先生に会い、チケットを見せました。','What did we show our teacher at the station?','The tickets.');
+appendDistinct('V11-SS-G1-P10-2-005','A red poster near the door showed the next music event.','ドアの近くの赤いポスターには、次の音楽イベントが書かれていました。','What did the red poster show?','The next music event.');
+appendDistinct('V11-SS-G1-P10-2-006','The rain started later, so my father drove us home.','その後雨が降り始めたので、父が車で私たちを家まで送ってくれました。','Why did my father drive us home?','Because the rain started.');
+appendDistinct('V11-NH-G1-U10-2-002','The contest was in spring, and our class wore blue shirts on stage.','そのコンクールは春にあり、私たちのクラスは舞台で青いシャツを着ました。','What did our class wear on stage?','Blue shirts.');
+appendDistinct('V11-NH-G1-U10-2-003','My mother kept the program in a box beside the album.','母はプログラムをアルバムの横の箱にしまっていました。','Where did my mother keep the program?','In a box beside the album.');
+appendDistinct('V11-NH-G1-U10-2-004','We wrote the contest date under the picture with a green pen.','私たちは緑のペンで写真の下にコンクールの日付を書きました。','What did we write under the picture?','The contest date.');
+appendDistinct('V11-NH-G1-U10-2-005','One photo showed our music teacher standing near the piano.','一枚の写真には、音楽の先生がピアノの近くに立っている様子が写っていました。','Who was standing near the piano in one photo?','Our music teacher.');
+appendDistinct('V11-NH-G1-U10-2-006','I sent a copy of the picture to my cousin in Osaka.','私は写真のコピーを大阪にいるいとこへ送りました。','Who received a copy of the picture?','My cousin in Osaka.',{english:'cousin',japanese:'いとこ'});
+appendDistinct('V11-NH-G2-U7-4-005','Visitors now carry reusable bags and take empty bottles back to town.','今では訪問者は再利用できる袋を持ち、空のボトルを町まで持ち帰ります。','What do visitors take back to town?','Empty bottles.',{english:'reusable',japanese:'再利用できる'});
+appendDistinct('V11-NH-G2-U7-4-007','A volunteer group placed wooden signs beside two narrow paths.','ボランティアのグループは、二つの狭い道のそばに木の案内板を置きました。','What did the volunteer group place beside the paths?','Wooden signs.',{english:'wooden',japanese:'木製の'});
+appendDistinct('V11-NH-G3-U6-4-002','Our class compared coffee beans, shirts, and phones from three countries.','私たちのクラスは三か国のコーヒー豆、シャツ、携帯電話を比べました。','What three kinds of products did the class compare?','Coffee beans, shirts, and phones.',{english:'coffee beans',japanese:'コーヒー豆'});
+appendDistinct('V11-NH-G3-U6-4-003','A graph showed how one port connected farmers with city shops.','グラフは一つの港が農家と町の店をどのようにつないでいるかを示しました。','What did the graph connect through one port?','Farmers and city shops.',{english:'port',japanese:'港'});
+appendDistinct('V11-NH-G3-U6-4-006','We interviewed a store owner about prices after a storm.','私たちは嵐の後の価格について店主にインタビューしました。','What did we ask the store owner about?','Prices after a storm.',{english:'prices',japanese:'価格'});
+appendDistinct('V11-SS-G2-P8-3-002','We also painted the wooden pieces and sold them at the school fair.','私たちは木の小片にも色を塗り、学校のバザーで売りました。','Where did we sell the painted wooden pieces?','At the school fair.',{english:'school fair',japanese:'学校のバザー'});
+appendDistinct('V11-SS-G2-P8-3-004','One group made key holders from wood for the library volunteers.','あるグループは図書館のボランティアのために木でキーホルダーを作りました。','What did one group make from wood?','Key holders.',{english:'key holders',japanese:'キーホルダー'});
+appendDistinct('V11-SS-G2-P8-3-005','The art teacher saved the remaining pieces for a winter workshop.','美術の先生は残った小片を冬のワークショップのために取っておきました。','Why did the art teacher save the remaining pieces?','For a winter workshop.',{english:'workshop',japanese:'体験教室'});
 
 /* EVIDENCE_REPAIR_PART1: replace slash/ellipsis shorthand with exact current-body evidence. */
 repairEvidence('V11-B14-G1-003','B',4,
