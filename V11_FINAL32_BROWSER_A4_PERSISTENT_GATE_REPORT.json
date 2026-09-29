@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T02:57:57.855Z",
+  "generatedAt": "2026-09-29T03:00:14.170Z",
   "batch": "V11-FINAL32",
   "registered": false,
   "officialTotal": 968,
@@ -13,7 +13,7 @@
           "extraPassages": 832,
           "lastAdded": 32,
           "source": "register",
-          "updatedAt": "2026-09-29T02:58:00.666Z"
+          "updatedAt": "2026-09-29T03:00:16.877Z"
         },
         "count": 32,
         "unique": 32
@@ -52,7 +52,7 @@
           "extraPassages": 832,
           "lastAdded": 32,
           "source": "register",
-          "updatedAt": "2026-09-29T02:58:06.591Z"
+          "updatedAt": "2026-09-29T03:00:25.872Z"
         },
         "count": 32,
         "unique": 32
@@ -91,7 +91,7 @@
           "extraPassages": 832,
           "lastAdded": 32,
           "source": "register",
-          "updatedAt": "2026-09-29T02:58:12.284Z"
+          "updatedAt": "2026-09-29T03:00:30.965Z"
         },
         "count": 32,
         "unique": 32
@@ -124,15 +124,59 @@
   },
   "a4": {
     "student": {
-      "passages": 0,
+      "passages": 32,
       "failures": []
     },
     "teacher": {
-      "passages": 0,
+      "passages": 32,
       "failures": []
     }
   },
-  "persistent": null,
-  "finalPass": false,
-  "error": "page.selectOption: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('#textbook')\n    - locator resolved to <select id=\"textbook\">…</select>\n  - attempting select option action\n    2 × waiting for element to be visible and enabled\n      - element is not visible\n    - retrying select option action\n    - waiting 20ms\n    2 × waiting for element to be visible and enabled\n      - element is not visible\n    - retrying select option action\n      - waiting 100ms\n    59 × waiting for element to be visible and enabled\n       - element is not visible\n     - retrying select option action\n       - waiting 500ms\n\n    at choose (/home/runner/work/reading-app/reading-app/scripts/v11_final32_browser_a4_persistent_gate.js:16:30)\n    at chromiumA4AndPersistent (/home/runner/work/reading-app/reading-app/scripts/v11_final32_browser_a4_persistent_gate.js:24:29)\n    at async /home/runner/work/reading-app/reading-app/scripts/v11_final32_browser_a4_persistent_gate.js:29:250"
+  "persistent": {
+    "pass": true,
+    "reloads": 2,
+    "localStorage": true,
+    "states": [
+      {
+        "registration": {
+          "st": {
+            "version": "20260905-v11-selected-section-003-visible-switch",
+            "groups": 6,
+            "extraPassages": 832,
+            "lastAdded": 32,
+            "source": "register",
+            "updatedAt": "2026-09-29T03:00:48.509Z"
+          },
+          "count": 32,
+          "unique": 32
+        },
+        "state": {
+          "probe": "ok",
+          "ready": "complete",
+          "extra": 832
+        }
+      },
+      {
+        "registration": {
+          "st": {
+            "version": "20260905-v11-selected-section-003-visible-switch",
+            "groups": 6,
+            "extraPassages": 832,
+            "lastAdded": 32,
+            "source": "register",
+            "updatedAt": "2026-09-29T03:00:50.208Z"
+          },
+          "count": 32,
+          "unique": 32
+        },
+        "state": {
+          "probe": "ok",
+          "ready": "complete",
+          "extra": 832
+        }
+      }
+    ],
+    "errors": []
+  },
+  "finalPass": true
 }
