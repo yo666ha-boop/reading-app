@@ -1,0 +1,52 @@
+name: v11 Yamaguchi 100 candidate audit
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'scripts/v11_yamaguchi_100_candidate_audit.js'
+      - '.github/workflows/v11-yamaguchi-100-candidate-audit.yml'
+      - 'v11_final_release_reading_only_overlay.js'
+      - 'v11_final32_register.js'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: v11-1000passage-easy-notes}
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - run: npm install --no-save playwright@1.55.0
+      - run: npx playwright install --with-deps chromium
+      - run: |
+          python3 -m http.server 4177 --bind 127.0.0.1 >/tmp/v11-y100.log 2>&1 &
+          sleep 2
+      - name: Audit qualifying Yamaguchi-style candidates
+        run: |
+          set +e
+          V11_LOCAL_URL="http://127.0.0.1:4177/index.html" node scripts/v11_yamaguchi_100_candidate_audit.js
+          code=$?
+          echo "audit_exit=$code" >> "$GITHUB_ENV"
+          test -f V11_YAMAGUCHI_100_CANDIDATE_AUDIT.json
+          exit 0
+      - name: Persist report safely
+        run: |
+          cp V11_YAMAGUCHI_100_CANDIDATE_AUDIT.json /tmp/V11_YAMAGUCHI_100_CANDIDATE_AUDIT.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for n in 1 2 3; do
+            git fetch origin v11-1000passage-easy-notes
+            git reset --hard origin/v11-1000passage-easy-notes
+            cp /tmp/V11_YAMAGUCHI_100_CANDIDATE_AUDIT.json V11_YAMAGUCHI_100_CANDIDATE_AUDIT.json
+            git add V11_YAMAGUCHI_100_CANDIDATE_AUDIT.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m 'audit(v11): persist Yamaguchi 100 candidate audit [skip ci]'
+            git push origin HEAD:v11-1000passage-easy-notes && exit 0
+            sleep $((n*2))
+          done
+          exit 1
+      - name: Enforce candidate availability
+        run: node -e "const r=require('./V11_YAMAGUCHI_100_CANDIDATE_AUDIT.json'); if(!r.pass)process.exit(2)"
