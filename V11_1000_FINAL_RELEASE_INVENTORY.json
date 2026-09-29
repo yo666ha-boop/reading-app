@@ -1,10 +1,9 @@
 {
-  "generatedAt": "2026-09-29T07:42:57.390Z",
+  "generatedAt": "2026-09-29T07:44:12.341Z",
   "source": "local persistent runtime",
   "hardFailures": [
-    "same-section near duplicates >=.85 77",
-    "v11 question contract failures 153",
-    "composition/free-writing items 16"
+    "same-section near duplicates >=.90 32",
+    "v11 question contract failures 36"
   ],
   "warnings": [
     "ACTIVE_SPEC expects exactly 100 Yamaguchi-style passages; detected 36"
@@ -20,7 +19,7 @@
       "extraPassages": 832,
       "lastAdded": 32,
       "source": "register",
-      "updatedAt": "2026-09-29T07:42:59.589Z"
+      "updatedAt": "2026-09-29T07:44:14.287Z"
     },
     "final32": {
       "version": "20260929-final32-atomic-r1",
@@ -28,7 +27,7 @@
       "extraPassages": 832,
       "lastAdded": 32,
       "source": "register",
-      "updatedAt": "2026-09-29T07:42:59.589Z",
+      "updatedAt": "2026-09-29T07:44:14.287Z",
       "totalWithBaseline": 1000,
       "final32Passages": 32,
       "registered": true
@@ -65,12 +64,7 @@
   "global": {
     "duplicateIds": [],
     "duplicateBodies": [],
-    "nearDuplicatesSameSection85": [
-      {
-        "a": "V11-SS-G1-P10-2-002",
-        "b": "V11-SS-G1-P10-2-003",
-        "score": 0.8529
-      },
+    "nearDuplicatesSameSection90": [
       {
         "a": "V11-SS-G1-P10-2-002",
         "b": "V11-SS-G1-P10-2-004",
@@ -95,16 +89,6 @@
         "a": "V11-SS-G1-P10-2-002",
         "b": "V11-SS-G1-P10-2-008",
         "score": 0.9375
-      },
-      {
-        "a": "V11-SS-G1-P10-2-002",
-        "b": "V11-SS-G1-P10-2-009",
-        "score": 0.8788
-      },
-      {
-        "a": "V11-SS-G1-P10-2-003",
-        "b": "V11-SS-G1-P10-2-004",
-        "score": 0.8571
       },
       {
         "a": "V11-SS-G1-P10-2-003",
@@ -133,43 +117,13 @@
       },
       {
         "a": "V11-SS-G1-P10-2-004",
-        "b": "V11-SS-G1-P10-2-005",
-        "score": 0.8824
-      },
-      {
-        "a": "V11-SS-G1-P10-2-004",
-        "b": "V11-SS-G1-P10-2-006",
-        "score": 0.8824
-      },
-      {
-        "a": "V11-SS-G1-P10-2-004",
         "b": "V11-SS-G1-P10-2-007",
         "score": 0.9412
-      },
-      {
-        "a": "V11-SS-G1-P10-2-004",
-        "b": "V11-SS-G1-P10-2-008",
-        "score": 0.8824
-      },
-      {
-        "a": "V11-SS-G1-P10-2-004",
-        "b": "V11-SS-G1-P10-2-009",
-        "score": 0.8824
-      },
-      {
-        "a": "V11-SS-G1-P10-2-005",
-        "b": "V11-SS-G1-P10-2-006",
-        "score": 0.8788
       },
       {
         "a": "V11-SS-G1-P10-2-005",
         "b": "V11-SS-G1-P10-2-007",
         "score": 0.9394
-      },
-      {
-        "a": "V11-SS-G1-P10-2-005",
-        "b": "V11-SS-G1-P10-2-008",
-        "score": 0.8788
       },
       {
         "a": "V11-SS-G1-P10-2-005",
@@ -178,28 +132,13 @@
       },
       {
         "a": "V11-SS-G1-P10-2-006",
-        "b": "V11-SS-G1-P10-2-007",
-        "score": 0.8824
-      },
-      {
-        "a": "V11-SS-G1-P10-2-006",
         "b": "V11-SS-G1-P10-2-008",
         "score": 1
       },
       {
         "a": "V11-SS-G1-P10-2-007",
-        "b": "V11-SS-G1-P10-2-008",
-        "score": 0.8824
-      },
-      {
-        "a": "V11-SS-G1-P10-2-007",
         "b": "V11-SS-G1-P10-2-009",
         "score": 0.9394
-      },
-      {
-        "a": "V11-NH-G1-U10-2-002",
-        "b": "V11-NH-G1-U10-2-003",
-        "score": 0.8571
       },
       {
         "a": "V11-NH-G1-U10-2-002",
@@ -217,19 +156,9 @@
         "score": 0.9
       },
       {
-        "a": "V11-NH-G1-U10-2-002",
-        "b": "V11-NH-G1-U10-2-008",
-        "score": 0.881
-      },
-      {
         "a": "V11-NH-G1-U10-2-003",
         "b": "V11-NH-G1-U10-2-006",
         "score": 0.9524
-      },
-      {
-        "a": "V11-NH-G1-U10-2-003",
-        "b": "V11-NH-G1-U10-2-007",
-        "score": 0.8571
       },
       {
         "a": "V11-NH-G1-U10-2-003",
@@ -243,16 +172,6 @@
       },
       {
         "a": "V11-NH-G1-U10-2-005",
-        "b": "V11-NH-G1-U10-2-006",
-        "score": 0.8864
-      },
-      {
-        "a": "V11-NH-G1-U10-2-005",
-        "b": "V11-NH-G1-U10-2-008",
-        "score": 0.8636
-      },
-      {
-        "a": "V11-NH-G1-U10-2-005",
         "b": "V11-NH-G1-U10-2-009",
         "score": 0.9524
       },
@@ -262,64 +181,9 @@
         "score": 0.9762
       },
       {
-        "a": "V11-NH-G1-U10-2-006",
-        "b": "V11-NH-G1-U10-2-009",
-        "score": 0.8864
-      },
-      {
-        "a": "V11-NH-G1-U10-2-008",
-        "b": "V11-NH-G1-U10-2-009",
-        "score": 0.8636
-      },
-      {
-        "a": "V10-SS-G2-P8-3-001",
-        "b": "V11-SS-G2-P8-3-002",
-        "score": 0.8776
-      },
-      {
-        "a": "V11-SS-G2-P8-3-002",
-        "b": "V11-SS-G2-P8-3-004",
-        "score": 0.898
-      },
-      {
-        "a": "V11-SS-G2-P8-3-002",
-        "b": "V11-SS-G2-P8-3-005",
-        "score": 0.8571
-      },
-      {
         "a": "V11-SS-G2-P8-3-002",
         "b": "V11-SS-G2-P8-3-006",
         "score": 0.9167
-      },
-      {
-        "a": "V11-SS-G2-P8-3-002",
-        "b": "V11-SS-G2-P8-3-008",
-        "score": 0.898
-      },
-      {
-        "a": "V11-SS-G2-P8-3-002",
-        "b": "V11-SS-G2-P8-3-009",
-        "score": 0.8776
-      },
-      {
-        "a": "V11-SS-G2-P8-3-003",
-        "b": "V11-SS-G2-P8-3-005",
-        "score": 0.8667
-      },
-      {
-        "a": "V11-SS-G2-P8-3-003",
-        "b": "V11-SS-G2-P8-3-007",
-        "score": 0.8864
-      },
-      {
-        "a": "V11-SS-G2-P8-3-003",
-        "b": "V11-SS-G2-P8-3-009",
-        "score": 0.8889
-      },
-      {
-        "a": "V11-SS-G2-P8-3-004",
-        "b": "V11-SS-G2-P8-3-006",
-        "score": 0.8571
       },
       {
         "a": "V11-SS-G2-P8-3-004",
@@ -332,31 +196,6 @@
         "score": 0.9778
       },
       {
-        "a": "V11-SS-G2-P8-3-006",
-        "b": "V11-SS-G2-P8-3-008",
-        "score": 0.8571
-      },
-      {
-        "a": "V11-SS-G2-P8-3-008",
-        "b": "V11-SS-G2-P8-3-009",
-        "score": 0.8571
-      },
-      {
-        "a": "V11-NH-G2-U7-4-002",
-        "b": "V11-NH-G2-U7-4-009",
-        "score": 0.8868
-      },
-      {
-        "a": "V11-NH-G2-U7-4-003",
-        "b": "V11-NH-G2-U7-4-006",
-        "score": 0.8824
-      },
-      {
-        "a": "V11-NH-G2-U7-4-004",
-        "b": "V11-NH-G2-U7-4-009",
-        "score": 0.8679
-      },
-      {
         "a": "V11-NH-G2-U7-4-005",
         "b": "V11-NH-G2-U7-4-007",
         "score": 0.9038
@@ -367,44 +206,9 @@
         "score": 0.9423
       },
       {
-        "a": "V11-NH-G2-U7-4-005",
-        "b": "V11-NH-G2-U7-4-009",
-        "score": 0.8679
-      },
-      {
         "a": "V11-NH-G2-U7-4-007",
         "b": "V11-NH-G2-U7-4-008",
         "score": 0.9615
-      },
-      {
-        "a": "V11-SS-G3-P7-3-002",
-        "b": "V11-SS-G3-P7-3-009",
-        "score": 0.875
-      },
-      {
-        "a": "V11-SS-G3-P7-3-005",
-        "b": "V11-SS-G3-P7-3-009",
-        "score": 0.8571
-      },
-      {
-        "a": "V11-SS-G3-P7-3-006",
-        "b": "V11-SS-G3-P7-3-007",
-        "score": 0.8772
-      },
-      {
-        "a": "V11-SS-G3-P7-3-006",
-        "b": "V11-SS-G3-P7-3-010",
-        "score": 0.8545
-      },
-      {
-        "a": "V11-NH-G3-U6-4-002",
-        "b": "V11-NH-G3-U6-4-003",
-        "score": 0.875
-      },
-      {
-        "a": "V11-NH-G3-U6-4-002",
-        "b": "V11-NH-G3-U6-4-005",
-        "score": 0.8958
       },
       {
         "a": "V11-NH-G3-U6-4-002",
@@ -417,36 +221,6 @@
         "score": 0.9556
       },
       {
-        "a": "V11-NH-G3-U6-4-003",
-        "b": "V11-NH-G3-U6-4-008",
-        "score": 0.8776
-      },
-      {
-        "a": "V11-NH-G3-U6-4-004",
-        "b": "V11-NH-G3-U6-4-006",
-        "score": 0.8571
-      },
-      {
-        "a": "V11-NH-G3-U6-4-004",
-        "b": "V11-NH-G3-U6-4-009",
-        "score": 0.8936
-      },
-      {
-        "a": "V11-NH-G3-U6-4-005",
-        "b": "V11-NH-G3-U6-4-006",
-        "score": 0.898
-      },
-      {
-        "a": "V11-NH-G3-U6-4-005",
-        "b": "V11-NH-G3-U6-4-008",
-        "score": 0.898
-      },
-      {
-        "a": "V11-NH-G3-U6-4-005",
-        "b": "V11-NH-G3-U6-4-010",
-        "score": 0.8627
-      },
-      {
         "a": "V11-NH-G3-U6-4-006",
         "b": "V11-NH-G3-U6-4-010",
         "score": 0.9231
@@ -457,23 +231,6 @@
     "passages": 832,
     "totalQuestions": 8320,
     "failures": [
-      "V11-B11-G1-001 B4 evidence not body substring",
-      "V11-B11-G1-001 B5 evidence not body substring",
-      "V11-B11-G1-003 B4 evidence not body substring",
-      "V11-B11-G1-003 B5 evidence not body substring",
-      "V11-B11-G1-005 A1 evidence not body substring",
-      "V11-B11-G1-005 B1 evidence not body substring",
-      "V11-B11-G1-005 B5 evidence not body substring",
-      "V11-B11-G1-007 B5 evidence not body substring",
-      "V11-B11-G1-009 B5 evidence not body substring",
-      "V11-B11-G1-011 A2 evidence not body substring",
-      "V11-B11-G1-011 B5 evidence not body substring",
-      "V11-B11-G1-013 A2 evidence not body substring",
-      "V11-B11-G1-013 B1 evidence not body substring",
-      "V11-B11-G1-013 B4 evidence not body substring",
-      "V11-B11-G1-015 B5 evidence not body substring",
-      "V11-B11-G1-017 B4 evidence not body substring",
-      "V11-B11-G1-017 B5 evidence not body substring",
       "V11-B14-G1-003 B4 evidence not body substring",
       "V11-B14-G1-007 B3 evidence not body substring",
       "V11-B14-G1-011 A1 evidence not body substring",
@@ -484,28 +241,6 @@
       "V11-B16-G1-005 B1 evidence not body substring",
       "V11-B16-G1-007 B1 evidence not body substring",
       "V11-B16-G1-017 B2 evidence not body substring",
-      "V11-B11-G1-004 A2 evidence not body substring",
-      "V11-B11-G1-004 B4 evidence not body substring",
-      "V11-B11-G1-004 B5 evidence not body substring",
-      "V11-B11-G1-006 A2 evidence not body substring",
-      "V11-B11-G1-006 B1 evidence not body substring",
-      "V11-B11-G1-006 B4 evidence not body substring",
-      "V11-B11-G1-006 B5 evidence not body substring",
-      "V11-B11-G1-008 A2 evidence not body substring",
-      "V11-B11-G1-008 B5 evidence not body substring",
-      "V11-B11-G1-010 B1 evidence not body substring",
-      "V11-B11-G1-010 B4 evidence not body substring",
-      "V11-B11-G1-010 B5 evidence not body substring",
-      "V11-B11-G1-012 A2 evidence not body substring",
-      "V11-B11-G1-012 B1 evidence not body substring",
-      "V11-B11-G1-012 B4 evidence not body substring",
-      "V11-B11-G1-012 B5 evidence not body substring",
-      "V11-B11-G1-014 A2 evidence not body substring",
-      "V11-B11-G1-014 A5 evidence not body substring",
-      "V11-B11-G1-014 B1 evidence not body substring",
-      "V11-B11-G1-014 B5 evidence not body substring",
-      "V11-B11-G1-016 B4 evidence not body substring",
-      "V11-B11-G1-016 B5 evidence not body substring",
       "V11-B14-G1-002 B4 evidence not body substring",
       "V11-B14-G1-006 B4 evidence not body substring",
       "V11-B14-G1-008 B4 evidence not body substring",
@@ -514,39 +249,11 @@
       "V11-B14-G1-016 B4 evidence not body substring",
       "V11-B15-G1-006 B3 evidence not body substring",
       "V11-B16-G1-006 B1 evidence not body substring",
-      "V11-B11-G2-001 A2 evidence not body substring",
-      "V11-B11-G2-001 B1 evidence not body substring",
-      "V11-B11-G2-001 B5 evidence not body substring",
-      "V11-B11-G2-005 B4 evidence not body substring",
-      "V11-B11-G2-005 B5 evidence not body substring",
-      "V11-B11-G2-007 B4 evidence not body substring",
-      "V11-B11-G2-007 B5 evidence not body substring",
-      "V11-B11-G2-009 B4 evidence not body substring",
-      "V11-B11-G2-009 B5 evidence not body substring",
-      "V11-B11-G2-011 B4 evidence not body substring",
-      "V11-B11-G2-011 B5 evidence not body substring",
-      "V11-B11-G2-013 B4 evidence not body substring",
-      "V11-B11-G2-013 B5 evidence not body substring",
-      "V11-B11-G2-015 B5 evidence not body substring",
-      "V11-B11-G2-017 B4 evidence not body substring",
       "V11-B14-G2-009 A1 evidence not body substring",
       "V11-B14-G2-017 B2 evidence not body substring",
       "V11-B14-G2-017 B4 evidence not body substring",
       "V11-B16-G2-009 B1 evidence not body substring",
       "V11-B16-G2-013 B5 evidence not body substring",
-      "V11-B11-G2-002 B4 evidence not body substring",
-      "V11-B11-G2-002 B5 evidence not body substring",
-      "V11-B11-G2-004 B4 evidence not body substring",
-      "V11-B11-G2-004 B5 evidence not body substring",
-      "V11-B11-G2-006 B5 evidence not body substring",
-      "V11-B11-G2-008 B5 evidence not body substring",
-      "V11-B11-G2-010 B1 evidence not body substring",
-      "V11-B11-G2-010 B5 evidence not body substring",
-      "V11-B11-G2-012 B2 evidence not body substring",
-      "V11-B11-G2-012 B5 evidence not body substring",
-      "V11-B11-G2-014 B4 evidence not body substring",
-      "V11-B11-G2-014 B5 evidence not body substring",
-      "V11-B11-G2-016 B5 evidence not body substring",
       "V11-B14-G2-004 B2 evidence not body substring",
       "V11-B14-G2-010 A1 evidence not body substring",
       "V11-B14-G2-010 A5 evidence not body substring",
@@ -554,59 +261,9 @@
       "V11-B14-G2-010 B5 evidence not body substring",
       "V11-B14-G2-016 A5 evidence not body substring",
       "V11-B16-G2-010 A4 evidence not body substring",
-      "V11-B07-G3-005 B1 evidence not body substring",
-      "V11-B07-G3-011 B5 evidence not body substring",
-      "V11-B07-G3-003 B1 evidence not body substring",
-      "V11-B07-G3-009 B1 evidence not body substring",
-      "V11-B11-G3-001 B4 evidence not body substring",
-      "V11-B11-G3-001 B5 evidence not body substring",
-      "V11-B11-G3-003 B1 evidence not body substring",
-      "V11-B11-G3-003 B5 evidence not body substring",
-      "V11-B11-G3-005 B4 evidence not body substring",
-      "V11-B11-G3-005 B5 evidence not body substring",
-      "V11-B11-G3-007 B4 evidence not body substring",
-      "V11-B11-G3-007 B5 evidence not body substring",
-      "V11-B11-G3-009 B4 evidence not body substring",
-      "V11-B11-G3-009 B5 evidence not body substring",
-      "V11-B11-G3-011 B4 evidence not body substring",
-      "V11-B11-G3-011 B5 evidence not body substring",
-      "V11-B11-G3-013 B4 evidence not body substring",
-      "V11-B11-G3-013 B5 evidence not body substring",
-      "V11-B11-G3-015 B1 evidence not body substring",
-      "V11-B11-G3-015 B4 evidence not body substring",
-      "V11-B11-G3-015 B5 evidence not body substring",
       "V11-B16-G3-011 A4 evidence not body substring",
       "V11-B16-G3-011 B4 evidence not body substring",
-      "V11-B07-G3-010 A3 evidence not body substring",
-      "V11-B07-G3-008 A3 evidence not body substring",
-      "V11-B07-G3-006 B5 evidence not body substring",
-      "V11-B07-G3-014 B1 evidence not body substring",
-      "V11-B11-G3-002 A2 evidence not body substring",
-      "V11-B11-G3-002 B4 evidence not body substring",
-      "V11-B11-G3-002 B5 evidence not body substring",
-      "V11-B11-G3-006 B4 evidence not body substring",
-      "V11-B11-G3-006 B5 evidence not body substring",
-      "V11-B11-G3-010 B4 evidence not body substring",
-      "V11-B11-G3-010 B5 evidence not body substring",
-      "V11-B11-G3-014 B4 evidence not body substring",
-      "V11-B11-G3-014 B5 evidence not body substring",
-      "V11-B11-G3-008 A3 evidence not body substring",
-      "V11-B11-G3-008 A4 evidence not body substring",
-      "V11-B11-G3-008 B3 evidence not body substring",
-      "V11-B11-G3-008 B5 evidence not body substring",
-      "V11-B11-G3-012 A1 evidence not body substring",
-      "V11-B11-G3-012 A2 evidence not body substring",
-      "V11-B11-G3-012 A3 evidence not body substring",
-      "V11-B11-G3-012 B4 evidence not body substring",
-      "V11-B11-G3-012 B5 evidence not body substring",
-      "V11-B11-G3-004 A1 evidence not body substring",
-      "V11-B11-G3-004 A2 evidence not body substring",
-      "V11-B11-G3-004 B1 evidence not body substring",
-      "V11-B11-G3-004 B4 evidence not body substring",
-      "V11-B11-G3-004 B5 evidence not body substring",
-      "V11-B11-G3-016 A2 evidence not body substring",
-      "V11-B11-G3-016 B1 evidence not body substring",
-      "V11-B11-G3-016 B5 evidence not body substring",
+      "V11-B10-G3-016 B5 evidence not body substring",
       "V11-B16-G3-006 A4 evidence not body substring",
       "V11-B16-G3-006 B2 evidence not body substring",
       "V11-B16-G3-008 B1 evidence not body substring"
@@ -620,130 +277,16 @@
       "INFERENCE": 605,
       "SENTENCE_INSERTION": 121,
       "CONTEXT_WORD": 313,
-      "SUMMARY_FILL": 531,
+      "SUMMARY_FILL": 534,
       "PHRASE_FILL": 291,
       "RESULT": 101,
       "EVIDENCE": 98,
-      "MATERIAL_LINK": 174,
-      "FREE_WRITE_20_30": 3
+      "MATERIAL_LINK": 174
     }
   },
   "composition": {
-    "count": 16,
-    "items": [
-      {
-        "id": "V11-B07-G3-003",
-        "set": "passage",
-        "no": 0,
-        "type": "freeWriteField",
-        "prompt": "古い資料と新しい資料を比べるとき、あなたなら何を確認しますか。20～30語の英語で書きなさい。"
-      },
-      {
-        "id": "V11-B07-G3-009",
-        "set": "passage",
-        "no": 0,
-        "type": "freeWriteField",
-        "prompt": "二人の人が同じ出来事を違って覚えているとき、あなたならどうしますか。20～30語の英語で書きなさい。"
-      },
-      {
-        "id": "V11-B08-G3-003",
-        "set": "passage",
-        "no": 0,
-        "type": "freeWriteField",
-        "prompt": "あなたなら二つの推奨経路のどちらを選ぶか、本文と資料を根拠に英語20～30語で書きなさい。"
-      },
-      {
-        "id": "V11-B08-G3-009",
-        "set": "passage",
-        "no": 0,
-        "type": "freeWriteField",
-        "prompt": "住民へ二種類の地図をどう説明するか、本文を根拠に英語20～30語で書きなさい。"
-      },
-      {
-        "id": "V11-B07-G3-006",
-        "set": "passage",
-        "no": 0,
-        "type": "freeWriteField",
-        "prompt": "学校で大切な連絡を全員に届けるため、どんな方法がよいと思いますか。20～30語の英語で書きなさい。"
-      },
-      {
-        "id": "V11-B07-G3-014",
-        "set": "passage",
-        "no": 0,
-        "type": "freeWriteField",
-        "prompt": "学校でアンケートをするとき、偏りを減らすために何をしますか。20～30語の英語で書きなさい。"
-      },
-      {
-        "id": "V11-B08-G3-006",
-        "set": "passage",
-        "no": 0,
-        "type": "freeWriteField",
-        "prompt": "夕方の行事責任者ならどの避難経路を選ぶか、資料と本文を根拠に英語20～30語で書きなさい。"
-      },
-      {
-        "id": "V11-B08-G3-014",
-        "set": "passage",
-        "no": 0,
-        "type": "freeWriteField",
-        "prompt": "安全と帰宅時刻の両方を考えた練習案を、本文と資料を根拠に英語20～30語で書きなさい。"
-      },
-      {
-        "id": "V11-B09-G3-016",
-        "set": "B",
-        "no": 5,
-        "type": "FREE_WRITE_20_30",
-        "prompt": "本文と資料を参考に、暑さの中で安全な避難先を選ぶための提案を英語20〜30語で書きなさい。"
-      },
-      {
-        "id": "V11-B10-G3-016",
-        "set": "B",
-        "no": 5,
-        "type": "FREE_WRITE_20_30",
-        "prompt": "本文と資料を参考に、冬の行事を安全に運営するための提案を英語20〜30語で書きなさい。"
-      },
-      {
-        "id": "V11-B11-G3-016",
-        "set": "passage",
-        "no": 0,
-        "type": "freeWriteField",
-        "prompt": "本文と資料を参考に、暑い日の学校行事を安全に行うための提案を英語20〜30語で書きなさい。"
-      },
-      {
-        "id": "V11-B12-G3-008",
-        "set": "passage",
-        "no": 0,
-        "type": "freeWriteField",
-        "prompt": "If a family event has an access problem, what should organizers do? Write 20-30 English words."
-      },
-      {
-        "id": "V11-B12-G3-012",
-        "set": "passage",
-        "no": 0,
-        "type": "freeWriteField",
-        "prompt": "In 20-30 English words, explain why a volunteer schedule should follow the same rules for every worker."
-      },
-      {
-        "id": "V11-B12-G3-016",
-        "set": "passage",
-        "no": 0,
-        "type": "freeWriteField",
-        "prompt": "In 20-30 English words, explain one reason the revised winter-event plan is safer than the original plan."
-      },
-      {
-        "id": "V11-B13-G3-014",
-        "set": "B",
-        "no": 5,
-        "type": "FREE_WRITE_20_30",
-        "prompt": "Write 20–30 English words recommending one plan for another class visiting on a hot day, with a reason from the schedule or map."
-      },
-      {
-        "id": "V11-B13-G3-014",
-        "set": "passage",
-        "no": 0,
-        "type": "freeWriteField",
-        "prompt": ""
-      }
-    ]
+    "count": 0,
+    "items": []
   },
   "yamaguchiInventory": {
     "count": 36,
@@ -767,9 +310,8 @@
       "INFERENCE": 37,
       "SENTENCE_INSERTION": 6,
       "CONTEXT_WORD": 18,
-      "SUMMARY_FILL": 35,
+      "SUMMARY_FILL": 38,
       "PHRASE_FILL": 15,
-      "FREE_WRITE_20_30": 3,
       "EVIDENCE": 6,
       "RESULT": 8
     },
@@ -1167,7 +709,7 @@
           "SUMMARY_FILL",
           "CONTEXT_WORD",
           "PHRASE_FILL",
-          "FREE_WRITE_20_30"
+          "SUMMARY_FILL"
         ]
       },
       {
@@ -1255,7 +797,7 @@
           "MATERIAL_LINK",
           "EVIDENCE",
           "RESULT",
-          "FREE_WRITE_20_30"
+          "SUMMARY_FILL"
         ]
       },
       {
@@ -1463,7 +1005,7 @@
         "tier": "",
         "batch": "V11-B13",
         "examStyle": "",
-        "wordCount": 394,
+        "wordCount": 361,
         "hasMaterial": false,
         "questionTypes": [
           "MATERIAL_LINK",
@@ -1475,7 +1017,7 @@
           "SUMMARY_FILL",
           "INFERENCE",
           "MATERIAL_LINK",
-          "FREE_WRITE_20_30"
+          "SUMMARY_FILL"
         ]
       },
       {
