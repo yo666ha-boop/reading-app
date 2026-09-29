@@ -4,7 +4,7 @@ const wordCount=s=>(String(s||'').match(/[A-Za-z]+(?:['’][A-Za-z]+)*/g)||[]).l
 const failures=[],rows=[];
 for(const f of files)for(const p of JSON.parse(fs.readFileSync(f,'utf8')).items||[]){
  const body=String(p.body||'').trim(),slash=String(p.slash||'').trim(),wc=wordCount(body);
- const rebuilt=slash.replace(/ \/ /g,'');
+ const rebuilt=slash.replace(/ \/ /g,' ');
  if(!body)failures.push(p.id+' empty body');
  if(!slash)failures.push(p.id+' empty slash');
  if(rebuilt!==body)failures.push(p.id+' slash reconstruction mismatch');
