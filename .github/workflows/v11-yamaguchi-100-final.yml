@@ -1,0 +1,51 @@
+name: v11 Yamaguchi 100 final gate
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'V11_YAMAGUCHI_100_SUBSET_20260929.json'
+      - 'v11_yamaguchi_100_subset_overlay.js'
+      - 'v11_final_release_reading_only_overlay.js'
+      - 'scripts/v11_yamaguchi_100_final_gate.js'
+      - '.github/workflows/v11-yamaguchi-100-final.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: v11-1000passage-easy-notes}
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - run: npm install --no-save playwright@1.55.0
+      - run: npx playwright install --with-deps chromium
+      - run: |
+          python3 -m http.server 4180 --bind 127.0.0.1 >/tmp/v11-y100-final.log 2>&1 &
+          sleep 2
+          set +e
+          V11_LOCAL_URL="http://127.0.0.1:4180/index.html" node scripts/v11_yamaguchi_100_final_gate.js
+          code=$?
+          echo "audit_exit=$code" >> "$GITHUB_ENV"
+          test -f V11_YAMAGUCHI_100_FINAL_GATE.json
+          exit 0
+      - name: Persist
+        run: |
+          cp V11_YAMAGUCHI_100_FINAL_GATE.json /tmp/V11_YAMAGUCHI_100_FINAL_GATE.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for n in 1 2 3; do
+            git fetch origin v11-1000passage-easy-notes
+            git reset --hard origin/v11-1000passage-easy-notes
+            cp /tmp/V11_YAMAGUCHI_100_FINAL_GATE.json V11_YAMAGUCHI_100_FINAL_GATE.json
+            git add V11_YAMAGUCHI_100_FINAL_GATE.json
+            git diff --cached --quiet && exit 0
+            git commit -m 'audit(v11): persist Yamaguchi100 final gate [skip ci]'
+            git push origin HEAD:v11-1000passage-easy-notes && exit 0
+            sleep $((n*2))
+          done
+          exit 1
+      - name: Enforce
+        run: node -e "const r=require('./V11_YAMAGUCHI_100_FINAL_GATE.json'); if(!r.pass)process.exit(2)"
