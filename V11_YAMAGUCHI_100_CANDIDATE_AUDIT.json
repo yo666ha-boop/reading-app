@@ -1,646 +1,30 @@
 {
-  "generatedAt": "2026-09-29T07:45:47.115Z",
-  "pass": false,
+  "generatedAt": "2026-09-29T07:52:34.710Z",
+  "pass": true,
   "grade3Count": 268,
   "explicitCount": 36,
-  "qualifyingCount": 130,
-  "qualifyingExplicitCount": 21,
-  "explicitFailCount": 15,
+  "qualifyingCount": 145,
+  "qualifyingExplicitCount": 36,
+  "explicitFailCount": 0,
   "additionalQualifyingCount": 109,
   "byBatchQualifying": {
     "B07": 16,
     "B08": 16,
     "B09": 16,
-    "B10": 12,
-    "B11": 13,
-    "B12": 15,
-    "B13": 13,
-    "B14": 14,
-    "B15": 9,
+    "B10": 16,
+    "B11": 16,
+    "B12": 16,
+    "B13": 16,
+    "B14": 15,
+    "B15": 12,
     "B16": 6
   },
   "byTierQualifying": {
     "STANDARD": 76,
     "LONG": 32,
-    "EXAM_STAMINA": 22
+    "EXAM_STAMINA": 37
   },
-  "explicitFail": [
-    {
-      "id": "V11-B13-G3-003",
-      "batch": "B13",
-      "wordCount": 342,
-      "lengthTier": "EXAM_STAMINA",
-      "explicit": true,
-      "qualifying": false,
-      "types": [
-        "MATERIAL_LINK",
-        "REASON",
-        "MATERIAL_LINK",
-        "INFERENCE",
-        "GIST",
-        "CONTENT_MATCH",
-        "SUMMARY_FILL",
-        "REASON",
-        "MATERIAL_LINK",
-        "INFERENCE"
-      ],
-      "distinctTypes": [
-        "MATERIAL_LINK",
-        "REASON",
-        "INFERENCE",
-        "GIST",
-        "CONTENT_MATCH",
-        "SUMMARY_FILL"
-      ],
-      "checks": {
-        "tenQuestions": true,
-        "noComposition": true,
-        "wordCountGrade3": true,
-        "distinct6": true,
-        "contentMatch": true,
-        "insertionOrSummary": true,
-        "contextOrPhrase": false,
-        "reasonOrInference": true,
-        "materialIfPresent": true
-      },
-      "hasMaterial": false
-    },
-    {
-      "id": "V11-B14-G3-003",
-      "batch": "B14",
-      "wordCount": 340,
-      "lengthTier": "EXAM_STAMINA",
-      "explicit": true,
-      "qualifying": false,
-      "types": [
-        "GIST",
-        "DETAIL",
-        "DETAIL",
-        "REASON",
-        "CONTENT_MATCH",
-        "SUMMARY_FILL",
-        "REASON",
-        "MATERIAL_LINK",
-        "INFERENCE",
-        "MATERIAL_LINK"
-      ],
-      "distinctTypes": [
-        "GIST",
-        "DETAIL",
-        "REASON",
-        "CONTENT_MATCH",
-        "SUMMARY_FILL",
-        "MATERIAL_LINK",
-        "INFERENCE"
-      ],
-      "checks": {
-        "tenQuestions": true,
-        "noComposition": true,
-        "wordCountGrade3": true,
-        "distinct6": true,
-        "contentMatch": true,
-        "insertionOrSummary": true,
-        "contextOrPhrase": false,
-        "reasonOrInference": true,
-        "materialIfPresent": true
-      },
-      "hasMaterial": false
-    },
-    {
-      "id": "V11-B15-G3-009",
-      "batch": "B15",
-      "wordCount": 362,
-      "lengthTier": "EXAM_STAMINA",
-      "explicit": true,
-      "qualifying": false,
-      "types": [
-        "GIST",
-        "MATERIAL_LINK",
-        "REASON",
-        "CONTENT_MATCH",
-        "INFERENCE",
-        "DETAIL",
-        "SUMMARY_FILL",
-        "REASON",
-        "CONTENT_MATCH",
-        "GIST"
-      ],
-      "distinctTypes": [
-        "GIST",
-        "MATERIAL_LINK",
-        "REASON",
-        "CONTENT_MATCH",
-        "INFERENCE",
-        "DETAIL",
-        "SUMMARY_FILL"
-      ],
-      "checks": {
-        "tenQuestions": true,
-        "noComposition": true,
-        "wordCountGrade3": true,
-        "distinct6": true,
-        "contentMatch": true,
-        "insertionOrSummary": true,
-        "contextOrPhrase": false,
-        "reasonOrInference": true,
-        "materialIfPresent": true
-      },
-      "hasMaterial": false
-    },
-    {
-      "id": "V11-B10-G3-004",
-      "batch": "B10",
-      "wordCount": 414,
-      "lengthTier": "EXAM_STAMINA",
-      "explicit": true,
-      "qualifying": false,
-      "types": [
-        "GIST",
-        "MATERIAL_LINK",
-        "REASON",
-        "CONTENT_MATCH",
-        "MATERIAL_LINK",
-        "SUMMARY_FILL",
-        "MATERIAL_LINK",
-        "EVIDENCE",
-        "RESULT",
-        "GIST"
-      ],
-      "distinctTypes": [
-        "GIST",
-        "MATERIAL_LINK",
-        "REASON",
-        "CONTENT_MATCH",
-        "SUMMARY_FILL",
-        "EVIDENCE",
-        "RESULT"
-      ],
-      "checks": {
-        "tenQuestions": true,
-        "noComposition": true,
-        "wordCountGrade3": true,
-        "distinct6": true,
-        "contentMatch": true,
-        "insertionOrSummary": true,
-        "contextOrPhrase": false,
-        "reasonOrInference": true,
-        "materialIfPresent": true
-      },
-      "hasMaterial": true
-    },
-    {
-      "id": "V11-B10-G3-008",
-      "batch": "B10",
-      "wordCount": 441,
-      "lengthTier": "EXAM_STAMINA",
-      "explicit": true,
-      "qualifying": false,
-      "types": [
-        "GIST",
-        "MATERIAL_LINK",
-        "REASON",
-        "CONTENT_MATCH",
-        "MATERIAL_LINK",
-        "SUMMARY_FILL",
-        "MATERIAL_LINK",
-        "EVIDENCE",
-        "RESULT",
-        "GIST"
-      ],
-      "distinctTypes": [
-        "GIST",
-        "MATERIAL_LINK",
-        "REASON",
-        "CONTENT_MATCH",
-        "SUMMARY_FILL",
-        "EVIDENCE",
-        "RESULT"
-      ],
-      "checks": {
-        "tenQuestions": true,
-        "noComposition": true,
-        "wordCountGrade3": true,
-        "distinct6": true,
-        "contentMatch": true,
-        "insertionOrSummary": true,
-        "contextOrPhrase": false,
-        "reasonOrInference": true,
-        "materialIfPresent": true
-      },
-      "hasMaterial": true
-    },
-    {
-      "id": "V11-B10-G3-012",
-      "batch": "B10",
-      "wordCount": 409,
-      "lengthTier": "EXAM_STAMINA",
-      "explicit": true,
-      "qualifying": false,
-      "types": [
-        "GIST",
-        "MATERIAL_LINK",
-        "REASON",
-        "CONTENT_MATCH",
-        "MATERIAL_LINK",
-        "SUMMARY_FILL",
-        "MATERIAL_LINK",
-        "EVIDENCE",
-        "RESULT",
-        "GIST"
-      ],
-      "distinctTypes": [
-        "GIST",
-        "MATERIAL_LINK",
-        "REASON",
-        "CONTENT_MATCH",
-        "SUMMARY_FILL",
-        "EVIDENCE",
-        "RESULT"
-      ],
-      "checks": {
-        "tenQuestions": true,
-        "noComposition": true,
-        "wordCountGrade3": true,
-        "distinct6": true,
-        "contentMatch": true,
-        "insertionOrSummary": true,
-        "contextOrPhrase": false,
-        "reasonOrInference": true,
-        "materialIfPresent": true
-      },
-      "hasMaterial": true
-    },
-    {
-      "id": "V11-B10-G3-016",
-      "batch": "B10",
-      "wordCount": 361,
-      "lengthTier": "EXAM_STAMINA",
-      "explicit": true,
-      "qualifying": false,
-      "types": [
-        "GIST",
-        "MATERIAL_LINK",
-        "REASON",
-        "CONTENT_MATCH",
-        "MATERIAL_LINK",
-        "SUMMARY_FILL",
-        "MATERIAL_LINK",
-        "EVIDENCE",
-        "RESULT",
-        "SUMMARY_FILL"
-      ],
-      "distinctTypes": [
-        "GIST",
-        "MATERIAL_LINK",
-        "REASON",
-        "CONTENT_MATCH",
-        "SUMMARY_FILL",
-        "EVIDENCE",
-        "RESULT"
-      ],
-      "checks": {
-        "tenQuestions": true,
-        "noComposition": true,
-        "wordCountGrade3": true,
-        "distinct6": true,
-        "contentMatch": true,
-        "insertionOrSummary": true,
-        "contextOrPhrase": false,
-        "reasonOrInference": true,
-        "materialIfPresent": true
-      },
-      "hasMaterial": true
-    },
-    {
-      "id": "V11-B11-G3-012",
-      "batch": "B11",
-      "wordCount": 443,
-      "lengthTier": "EXAM_STAMINA",
-      "explicit": true,
-      "qualifying": false,
-      "types": [
-        "MATERIAL_LINK",
-        "REASON",
-        "MATERIAL_LINK",
-        "RESULT",
-        "SUMMARY_FILL",
-        "MATERIAL_LINK",
-        "EVIDENCE",
-        "DETAIL",
-        "INFERENCE",
-        "GIST"
-      ],
-      "distinctTypes": [
-        "MATERIAL_LINK",
-        "REASON",
-        "RESULT",
-        "SUMMARY_FILL",
-        "EVIDENCE",
-        "DETAIL",
-        "INFERENCE",
-        "GIST"
-      ],
-      "checks": {
-        "tenQuestions": true,
-        "noComposition": true,
-        "wordCountGrade3": true,
-        "distinct6": true,
-        "contentMatch": false,
-        "insertionOrSummary": true,
-        "contextOrPhrase": false,
-        "reasonOrInference": true,
-        "materialIfPresent": true
-      },
-      "hasMaterial": true
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "batch": "B11",
-      "wordCount": 418,
-      "lengthTier": "EXAM_STAMINA",
-      "explicit": true,
-      "qualifying": false,
-      "types": [
-        "MATERIAL_LINK",
-        "MATERIAL_LINK",
-        "CONTENT_MATCH",
-        "REASON",
-        "RESULT",
-        "MATERIAL_LINK",
-        "PHRASE_FILL",
-        "DETAIL",
-        "INFERENCE",
-        "GIST"
-      ],
-      "distinctTypes": [
-        "MATERIAL_LINK",
-        "CONTENT_MATCH",
-        "REASON",
-        "RESULT",
-        "PHRASE_FILL",
-        "DETAIL",
-        "INFERENCE",
-        "GIST"
-      ],
-      "checks": {
-        "tenQuestions": true,
-        "noComposition": true,
-        "wordCountGrade3": true,
-        "distinct6": true,
-        "contentMatch": true,
-        "insertionOrSummary": false,
-        "contextOrPhrase": true,
-        "reasonOrInference": true,
-        "materialIfPresent": true
-      },
-      "hasMaterial": true
-    },
-    {
-      "id": "V11-B11-G3-016",
-      "batch": "B11",
-      "wordCount": 446,
-      "lengthTier": "EXAM_STAMINA",
-      "explicit": true,
-      "qualifying": false,
-      "types": [
-        "MATERIAL_LINK",
-        "REASON",
-        "CONTENT_MATCH",
-        "RESULT",
-        "SUMMARY_FILL",
-        "MATERIAL_LINK",
-        "EVIDENCE",
-        "DETAIL",
-        "INFERENCE",
-        "GIST"
-      ],
-      "distinctTypes": [
-        "MATERIAL_LINK",
-        "REASON",
-        "CONTENT_MATCH",
-        "RESULT",
-        "SUMMARY_FILL",
-        "EVIDENCE",
-        "DETAIL",
-        "INFERENCE",
-        "GIST"
-      ],
-      "checks": {
-        "tenQuestions": true,
-        "noComposition": true,
-        "wordCountGrade3": true,
-        "distinct6": true,
-        "contentMatch": true,
-        "insertionOrSummary": true,
-        "contextOrPhrase": false,
-        "reasonOrInference": true,
-        "materialIfPresent": true
-      },
-      "hasMaterial": true
-    },
-    {
-      "id": "V11-B12-G3-004",
-      "batch": "B12",
-      "wordCount": 343,
-      "lengthTier": "EXAM_STAMINA",
-      "explicit": true,
-      "qualifying": false,
-      "types": [
-        "MATERIAL_LINK",
-        "CONTENT_MATCH",
-        "REASON",
-        "MATERIAL_LINK",
-        "GIST",
-        "INFERENCE",
-        "SUMMARY_FILL",
-        "MATERIAL_LINK",
-        "CONTENT_MATCH",
-        "GIST"
-      ],
-      "distinctTypes": [
-        "MATERIAL_LINK",
-        "CONTENT_MATCH",
-        "REASON",
-        "GIST",
-        "INFERENCE",
-        "SUMMARY_FILL"
-      ],
-      "checks": {
-        "tenQuestions": true,
-        "noComposition": true,
-        "wordCountGrade3": true,
-        "distinct6": true,
-        "contentMatch": true,
-        "insertionOrSummary": true,
-        "contextOrPhrase": false,
-        "reasonOrInference": true,
-        "materialIfPresent": true
-      },
-      "hasMaterial": false
-    },
-    {
-      "id": "V11-B13-G3-006",
-      "batch": "B13",
-      "wordCount": 358,
-      "lengthTier": "EXAM_STAMINA",
-      "explicit": true,
-      "qualifying": false,
-      "types": [
-        "MATERIAL_LINK",
-        "REASON",
-        "MATERIAL_LINK",
-        "INFERENCE",
-        "GIST",
-        "CONTENT_MATCH",
-        "SUMMARY_FILL",
-        "REASON",
-        "MATERIAL_LINK",
-        "INFERENCE"
-      ],
-      "distinctTypes": [
-        "MATERIAL_LINK",
-        "REASON",
-        "INFERENCE",
-        "GIST",
-        "CONTENT_MATCH",
-        "SUMMARY_FILL"
-      ],
-      "checks": {
-        "tenQuestions": true,
-        "noComposition": true,
-        "wordCountGrade3": true,
-        "distinct6": true,
-        "contentMatch": true,
-        "insertionOrSummary": true,
-        "contextOrPhrase": false,
-        "reasonOrInference": true,
-        "materialIfPresent": true
-      },
-      "hasMaterial": false
-    },
-    {
-      "id": "V11-B13-G3-014",
-      "batch": "B13",
-      "wordCount": 361,
-      "lengthTier": "EXAM_STAMINA",
-      "explicit": true,
-      "qualifying": false,
-      "types": [
-        "MATERIAL_LINK",
-        "MATERIAL_LINK",
-        "REASON",
-        "CONTENT_MATCH",
-        "GIST",
-        "CONTENT_MATCH",
-        "SUMMARY_FILL",
-        "INFERENCE",
-        "MATERIAL_LINK",
-        "SUMMARY_FILL"
-      ],
-      "distinctTypes": [
-        "MATERIAL_LINK",
-        "REASON",
-        "CONTENT_MATCH",
-        "GIST",
-        "SUMMARY_FILL",
-        "INFERENCE"
-      ],
-      "checks": {
-        "tenQuestions": true,
-        "noComposition": true,
-        "wordCountGrade3": true,
-        "distinct6": true,
-        "contentMatch": true,
-        "insertionOrSummary": true,
-        "contextOrPhrase": false,
-        "reasonOrInference": true,
-        "materialIfPresent": true
-      },
-      "hasMaterial": false
-    },
-    {
-      "id": "V11-B15-G3-006",
-      "batch": "B15",
-      "wordCount": 398,
-      "lengthTier": "EXAM_STAMINA",
-      "explicit": true,
-      "qualifying": false,
-      "types": [
-        "GIST",
-        "MATERIAL_LINK",
-        "REASON",
-        "CONTENT_MATCH",
-        "INFERENCE",
-        "MATERIAL_LINK",
-        "DETAIL",
-        "SUMMARY_FILL",
-        "CONTENT_MATCH",
-        "GIST"
-      ],
-      "distinctTypes": [
-        "GIST",
-        "MATERIAL_LINK",
-        "REASON",
-        "CONTENT_MATCH",
-        "INFERENCE",
-        "DETAIL",
-        "SUMMARY_FILL"
-      ],
-      "checks": {
-        "tenQuestions": true,
-        "noComposition": true,
-        "wordCountGrade3": true,
-        "distinct6": true,
-        "contentMatch": true,
-        "insertionOrSummary": true,
-        "contextOrPhrase": false,
-        "reasonOrInference": true,
-        "materialIfPresent": true
-      },
-      "hasMaterial": false
-    },
-    {
-      "id": "V11-B15-G3-014",
-      "batch": "B15",
-      "wordCount": 397,
-      "lengthTier": "EXAM_STAMINA",
-      "explicit": true,
-      "qualifying": false,
-      "types": [
-        "GIST",
-        "REASON",
-        "CONTENT_MATCH",
-        "INFERENCE",
-        "SUMMARY_FILL",
-        "DETAIL",
-        "MATERIAL_LINK",
-        "CONTENT_MATCH",
-        "REASON",
-        "GIST"
-      ],
-      "distinctTypes": [
-        "GIST",
-        "REASON",
-        "CONTENT_MATCH",
-        "INFERENCE",
-        "SUMMARY_FILL",
-        "DETAIL",
-        "MATERIAL_LINK"
-      ],
-      "checks": {
-        "tenQuestions": true,
-        "noComposition": true,
-        "wordCountGrade3": true,
-        "distinct6": true,
-        "contentMatch": true,
-        "insertionOrSummary": true,
-        "contextOrPhrase": false,
-        "reasonOrInference": true,
-        "materialIfPresent": true
-      },
-      "hasMaterial": false
-    }
-  ],
+  "explicitFail": [],
   "additionalQualifying": [
     {
       "id": "V11-B07-G3-005",
@@ -9065,7 +8449,7 @@
       "wordCount": 342,
       "lengthTier": "EXAM_STAMINA",
       "explicit": true,
-      "qualifying": false,
+      "qualifying": true,
       "types": [
         "MATERIAL_LINK",
         "REASON",
@@ -9075,7 +8459,7 @@
         "CONTENT_MATCH",
         "SUMMARY_FILL",
         "REASON",
-        "MATERIAL_LINK",
+        "CONTEXT_WORD",
         "INFERENCE"
       ],
       "distinctTypes": [
@@ -9084,7 +8468,8 @@
         "INFERENCE",
         "GIST",
         "CONTENT_MATCH",
-        "SUMMARY_FILL"
+        "SUMMARY_FILL",
+        "CONTEXT_WORD"
       ],
       "checks": {
         "tenQuestions": true,
@@ -9093,7 +8478,7 @@
         "distinct6": true,
         "contentMatch": true,
         "insertionOrSummary": true,
-        "contextOrPhrase": false,
+        "contextOrPhrase": true,
         "reasonOrInference": true,
         "materialIfPresent": true
       },
@@ -9188,7 +8573,7 @@
       "wordCount": 340,
       "lengthTier": "EXAM_STAMINA",
       "explicit": true,
-      "qualifying": false,
+      "qualifying": true,
       "types": [
         "GIST",
         "DETAIL",
@@ -9197,7 +8582,7 @@
         "CONTENT_MATCH",
         "SUMMARY_FILL",
         "REASON",
-        "MATERIAL_LINK",
+        "CONTEXT_WORD",
         "INFERENCE",
         "MATERIAL_LINK"
       ],
@@ -9207,8 +8592,9 @@
         "REASON",
         "CONTENT_MATCH",
         "SUMMARY_FILL",
-        "MATERIAL_LINK",
-        "INFERENCE"
+        "CONTEXT_WORD",
+        "INFERENCE",
+        "MATERIAL_LINK"
       ],
       "checks": {
         "tenQuestions": true,
@@ -9217,7 +8603,7 @@
         "distinct6": true,
         "contentMatch": true,
         "insertionOrSummary": true,
-        "contextOrPhrase": false,
+        "contextOrPhrase": true,
         "reasonOrInference": true,
         "materialIfPresent": true
       },
@@ -9649,14 +9035,14 @@
       "wordCount": 362,
       "lengthTier": "EXAM_STAMINA",
       "explicit": true,
-      "qualifying": false,
+      "qualifying": true,
       "types": [
         "GIST",
         "MATERIAL_LINK",
         "REASON",
         "CONTENT_MATCH",
         "INFERENCE",
-        "DETAIL",
+        "CONTEXT_WORD",
         "SUMMARY_FILL",
         "REASON",
         "CONTENT_MATCH",
@@ -9668,7 +9054,7 @@
         "REASON",
         "CONTENT_MATCH",
         "INFERENCE",
-        "DETAIL",
+        "CONTEXT_WORD",
         "SUMMARY_FILL"
       ],
       "checks": {
@@ -9678,7 +9064,7 @@
         "distinct6": true,
         "contentMatch": true,
         "insertionOrSummary": true,
-        "contextOrPhrase": false,
+        "contextOrPhrase": true,
         "reasonOrInference": true,
         "materialIfPresent": true
       },
@@ -13026,7 +12412,7 @@
       "wordCount": 414,
       "lengthTier": "EXAM_STAMINA",
       "explicit": true,
-      "qualifying": false,
+      "qualifying": true,
       "types": [
         "GIST",
         "MATERIAL_LINK",
@@ -13035,7 +12421,7 @@
         "MATERIAL_LINK",
         "SUMMARY_FILL",
         "MATERIAL_LINK",
-        "EVIDENCE",
+        "PHRASE_FILL",
         "RESULT",
         "GIST"
       ],
@@ -13045,7 +12431,7 @@
         "REASON",
         "CONTENT_MATCH",
         "SUMMARY_FILL",
-        "EVIDENCE",
+        "PHRASE_FILL",
         "RESULT"
       ],
       "checks": {
@@ -13055,7 +12441,7 @@
         "distinct6": true,
         "contentMatch": true,
         "insertionOrSummary": true,
-        "contextOrPhrase": false,
+        "contextOrPhrase": true,
         "reasonOrInference": true,
         "materialIfPresent": true
       },
@@ -13109,7 +12495,7 @@
       "wordCount": 441,
       "lengthTier": "EXAM_STAMINA",
       "explicit": true,
-      "qualifying": false,
+      "qualifying": true,
       "types": [
         "GIST",
         "MATERIAL_LINK",
@@ -13118,7 +12504,7 @@
         "MATERIAL_LINK",
         "SUMMARY_FILL",
         "MATERIAL_LINK",
-        "EVIDENCE",
+        "PHRASE_FILL",
         "RESULT",
         "GIST"
       ],
@@ -13128,7 +12514,7 @@
         "REASON",
         "CONTENT_MATCH",
         "SUMMARY_FILL",
-        "EVIDENCE",
+        "PHRASE_FILL",
         "RESULT"
       ],
       "checks": {
@@ -13138,7 +12524,7 @@
         "distinct6": true,
         "contentMatch": true,
         "insertionOrSummary": true,
-        "contextOrPhrase": false,
+        "contextOrPhrase": true,
         "reasonOrInference": true,
         "materialIfPresent": true
       },
@@ -13192,7 +12578,7 @@
       "wordCount": 409,
       "lengthTier": "EXAM_STAMINA",
       "explicit": true,
-      "qualifying": false,
+      "qualifying": true,
       "types": [
         "GIST",
         "MATERIAL_LINK",
@@ -13201,7 +12587,7 @@
         "MATERIAL_LINK",
         "SUMMARY_FILL",
         "MATERIAL_LINK",
-        "EVIDENCE",
+        "PHRASE_FILL",
         "RESULT",
         "GIST"
       ],
@@ -13211,7 +12597,7 @@
         "REASON",
         "CONTENT_MATCH",
         "SUMMARY_FILL",
-        "EVIDENCE",
+        "PHRASE_FILL",
         "RESULT"
       ],
       "checks": {
@@ -13221,7 +12607,7 @@
         "distinct6": true,
         "contentMatch": true,
         "insertionOrSummary": true,
-        "contextOrPhrase": false,
+        "contextOrPhrase": true,
         "reasonOrInference": true,
         "materialIfPresent": true
       },
@@ -13275,7 +12661,7 @@
       "wordCount": 361,
       "lengthTier": "EXAM_STAMINA",
       "explicit": true,
-      "qualifying": false,
+      "qualifying": true,
       "types": [
         "GIST",
         "MATERIAL_LINK",
@@ -13284,7 +12670,7 @@
         "MATERIAL_LINK",
         "SUMMARY_FILL",
         "MATERIAL_LINK",
-        "EVIDENCE",
+        "PHRASE_FILL",
         "RESULT",
         "SUMMARY_FILL"
       ],
@@ -13294,7 +12680,7 @@
         "REASON",
         "CONTENT_MATCH",
         "SUMMARY_FILL",
-        "EVIDENCE",
+        "PHRASE_FILL",
         "RESULT"
       ],
       "checks": {
@@ -13304,7 +12690,7 @@
         "distinct6": true,
         "contentMatch": true,
         "insertionOrSummary": true,
-        "contextOrPhrase": false,
+        "contextOrPhrase": true,
         "reasonOrInference": true,
         "materialIfPresent": true
       },
@@ -13530,55 +12916,13 @@
       "wordCount": 443,
       "lengthTier": "EXAM_STAMINA",
       "explicit": true,
-      "qualifying": false,
+      "qualifying": true,
       "types": [
         "MATERIAL_LINK",
         "REASON",
-        "MATERIAL_LINK",
-        "RESULT",
-        "SUMMARY_FILL",
-        "MATERIAL_LINK",
-        "EVIDENCE",
-        "DETAIL",
-        "INFERENCE",
-        "GIST"
-      ],
-      "distinctTypes": [
-        "MATERIAL_LINK",
-        "REASON",
-        "RESULT",
-        "SUMMARY_FILL",
-        "EVIDENCE",
-        "DETAIL",
-        "INFERENCE",
-        "GIST"
-      ],
-      "checks": {
-        "tenQuestions": true,
-        "noComposition": true,
-        "wordCountGrade3": true,
-        "distinct6": true,
-        "contentMatch": false,
-        "insertionOrSummary": true,
-        "contextOrPhrase": false,
-        "reasonOrInference": true,
-        "materialIfPresent": true
-      },
-      "hasMaterial": true
-    },
-    {
-      "id": "V11-B11-G3-004",
-      "batch": "B11",
-      "wordCount": 418,
-      "lengthTier": "EXAM_STAMINA",
-      "explicit": true,
-      "qualifying": false,
-      "types": [
-        "MATERIAL_LINK",
         "MATERIAL_LINK",
         "CONTENT_MATCH",
-        "REASON",
-        "RESULT",
+        "SUMMARY_FILL",
         "MATERIAL_LINK",
         "PHRASE_FILL",
         "DETAIL",
@@ -13587,9 +12931,9 @@
       ],
       "distinctTypes": [
         "MATERIAL_LINK",
-        "CONTENT_MATCH",
         "REASON",
-        "RESULT",
+        "CONTENT_MATCH",
+        "SUMMARY_FILL",
         "PHRASE_FILL",
         "DETAIL",
         "INFERENCE",
@@ -13601,7 +12945,49 @@
         "wordCountGrade3": true,
         "distinct6": true,
         "contentMatch": true,
-        "insertionOrSummary": false,
+        "insertionOrSummary": true,
+        "contextOrPhrase": true,
+        "reasonOrInference": true,
+        "materialIfPresent": true
+      },
+      "hasMaterial": true
+    },
+    {
+      "id": "V11-B11-G3-004",
+      "batch": "B11",
+      "wordCount": 418,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "qualifying": true,
+      "types": [
+        "MATERIAL_LINK",
+        "MATERIAL_LINK",
+        "CONTENT_MATCH",
+        "REASON",
+        "SUMMARY_FILL",
+        "MATERIAL_LINK",
+        "PHRASE_FILL",
+        "DETAIL",
+        "INFERENCE",
+        "GIST"
+      ],
+      "distinctTypes": [
+        "MATERIAL_LINK",
+        "CONTENT_MATCH",
+        "REASON",
+        "SUMMARY_FILL",
+        "PHRASE_FILL",
+        "DETAIL",
+        "INFERENCE",
+        "GIST"
+      ],
+      "checks": {
+        "tenQuestions": true,
+        "noComposition": true,
+        "wordCountGrade3": true,
+        "distinct6": true,
+        "contentMatch": true,
+        "insertionOrSummary": true,
         "contextOrPhrase": true,
         "reasonOrInference": true,
         "materialIfPresent": true
@@ -13614,7 +13000,7 @@
       "wordCount": 446,
       "lengthTier": "EXAM_STAMINA",
       "explicit": true,
-      "qualifying": false,
+      "qualifying": true,
       "types": [
         "MATERIAL_LINK",
         "REASON",
@@ -13622,7 +13008,7 @@
         "RESULT",
         "SUMMARY_FILL",
         "MATERIAL_LINK",
-        "EVIDENCE",
+        "PHRASE_FILL",
         "DETAIL",
         "INFERENCE",
         "GIST"
@@ -13633,7 +13019,7 @@
         "CONTENT_MATCH",
         "RESULT",
         "SUMMARY_FILL",
-        "EVIDENCE",
+        "PHRASE_FILL",
         "DETAIL",
         "INFERENCE",
         "GIST"
@@ -13645,7 +13031,7 @@
         "distinct6": true,
         "contentMatch": true,
         "insertionOrSummary": true,
-        "contextOrPhrase": false,
+        "contextOrPhrase": true,
         "reasonOrInference": true,
         "materialIfPresent": true
       },
@@ -13698,7 +13084,7 @@
       "wordCount": 343,
       "lengthTier": "EXAM_STAMINA",
       "explicit": true,
-      "qualifying": false,
+      "qualifying": true,
       "types": [
         "MATERIAL_LINK",
         "CONTENT_MATCH",
@@ -13707,7 +13093,7 @@
         "GIST",
         "INFERENCE",
         "SUMMARY_FILL",
-        "MATERIAL_LINK",
+        "PHRASE_FILL",
         "CONTENT_MATCH",
         "GIST"
       ],
@@ -13717,7 +13103,8 @@
         "REASON",
         "GIST",
         "INFERENCE",
-        "SUMMARY_FILL"
+        "SUMMARY_FILL",
+        "PHRASE_FILL"
       ],
       "checks": {
         "tenQuestions": true,
@@ -13726,7 +13113,7 @@
         "distinct6": true,
         "contentMatch": true,
         "insertionOrSummary": true,
-        "contextOrPhrase": false,
+        "contextOrPhrase": true,
         "reasonOrInference": true,
         "materialIfPresent": true
       },
@@ -14233,7 +13620,7 @@
       "wordCount": 358,
       "lengthTier": "EXAM_STAMINA",
       "explicit": true,
-      "qualifying": false,
+      "qualifying": true,
       "types": [
         "MATERIAL_LINK",
         "REASON",
@@ -14243,7 +13630,7 @@
         "CONTENT_MATCH",
         "SUMMARY_FILL",
         "REASON",
-        "MATERIAL_LINK",
+        "PHRASE_FILL",
         "INFERENCE"
       ],
       "distinctTypes": [
@@ -14252,7 +13639,8 @@
         "INFERENCE",
         "GIST",
         "CONTENT_MATCH",
-        "SUMMARY_FILL"
+        "SUMMARY_FILL",
+        "PHRASE_FILL"
       ],
       "checks": {
         "tenQuestions": true,
@@ -14261,7 +13649,7 @@
         "distinct6": true,
         "contentMatch": true,
         "insertionOrSummary": true,
-        "contextOrPhrase": false,
+        "contextOrPhrase": true,
         "reasonOrInference": true,
         "materialIfPresent": true
       },
@@ -14273,7 +13661,7 @@
       "wordCount": 361,
       "lengthTier": "EXAM_STAMINA",
       "explicit": true,
-      "qualifying": false,
+      "qualifying": true,
       "types": [
         "MATERIAL_LINK",
         "MATERIAL_LINK",
@@ -14283,7 +13671,7 @@
         "CONTENT_MATCH",
         "SUMMARY_FILL",
         "INFERENCE",
-        "MATERIAL_LINK",
+        "PHRASE_FILL",
         "SUMMARY_FILL"
       ],
       "distinctTypes": [
@@ -14292,7 +13680,8 @@
         "CONTENT_MATCH",
         "GIST",
         "SUMMARY_FILL",
-        "INFERENCE"
+        "INFERENCE",
+        "PHRASE_FILL"
       ],
       "checks": {
         "tenQuestions": true,
@@ -14301,7 +13690,7 @@
         "distinct6": true,
         "contentMatch": true,
         "insertionOrSummary": true,
-        "contextOrPhrase": false,
+        "contextOrPhrase": true,
         "reasonOrInference": true,
         "materialIfPresent": true
       },
@@ -14729,7 +14118,7 @@
       "wordCount": 398,
       "lengthTier": "EXAM_STAMINA",
       "explicit": true,
-      "qualifying": false,
+      "qualifying": true,
       "types": [
         "GIST",
         "MATERIAL_LINK",
@@ -14737,7 +14126,7 @@
         "CONTENT_MATCH",
         "INFERENCE",
         "MATERIAL_LINK",
-        "DETAIL",
+        "CONTEXT_WORD",
         "SUMMARY_FILL",
         "CONTENT_MATCH",
         "GIST"
@@ -14748,7 +14137,7 @@
         "REASON",
         "CONTENT_MATCH",
         "INFERENCE",
-        "DETAIL",
+        "CONTEXT_WORD",
         "SUMMARY_FILL"
       ],
       "checks": {
@@ -14758,7 +14147,7 @@
         "distinct6": true,
         "contentMatch": true,
         "insertionOrSummary": true,
-        "contextOrPhrase": false,
+        "contextOrPhrase": true,
         "reasonOrInference": true,
         "materialIfPresent": true
       },
@@ -14892,14 +14281,14 @@
       "wordCount": 397,
       "lengthTier": "EXAM_STAMINA",
       "explicit": true,
-      "qualifying": false,
+      "qualifying": true,
       "types": [
         "GIST",
         "REASON",
         "CONTENT_MATCH",
         "INFERENCE",
         "SUMMARY_FILL",
-        "DETAIL",
+        "CONTEXT_WORD",
         "MATERIAL_LINK",
         "CONTENT_MATCH",
         "REASON",
@@ -14911,7 +14300,7 @@
         "CONTENT_MATCH",
         "INFERENCE",
         "SUMMARY_FILL",
-        "DETAIL",
+        "CONTEXT_WORD",
         "MATERIAL_LINK"
       ],
       "checks": {
@@ -14921,7 +14310,7 @@
         "distinct6": true,
         "contentMatch": true,
         "insertionOrSummary": true,
-        "contextOrPhrase": false,
+        "contextOrPhrase": true,
         "reasonOrInference": true,
         "materialIfPresent": true
       },
