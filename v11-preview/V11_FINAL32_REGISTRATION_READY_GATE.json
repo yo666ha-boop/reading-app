@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-09-29T02:59:06.449Z",
+  "batch": "V11-FINAL32",
+  "officialTotalBefore": 968,
+  "targetTotal": 1000,
+  "atomicCount": 32,
+  "registered": false,
+  "body32": true,
+  "checks": {
+    "human": {
+      "exists": true,
+      "pass": true,
+      "file": "V11_FINAL32_HUMAN_SEMANTIC_FINAL_GATE_20260929.json"
+    },
+    "grammar": {
+      "exists": true,
+      "pass": true,
+      "file": "V11_FINAL32_FORMAL_GRAMMAR_CHRONOLOGY_REPORT.json"
+    },
+    "vocab": {
+      "exists": true,
+      "pass": true,
+      "file": "V11_FINAL32_FORMAL_VOCAB_CHRONOLOGY_REPORT.json"
+    },
+    "questions": {
+      "exists": true,
+      "pass": true,
+      "file": "V11_FINAL32_320_QUESTION_FINAL_GATE.json"
+    },
+    "notes": {
+      "exists": true,
+      "pass": true,
+      "file": "V11_FINAL32_NOTES_FINAL_GATE.json"
+    },
+    "slashWordCount": {
+      "exists": true,
+      "pass": true,
+      "file": "V11_FINAL32_SLASH_WORDCOUNT_REPORT.json"
+    },
+    "duplicate": {
+      "exists": true,
+      "pass": true,
+      "file": "V11_FINAL32_RUNTIME_DUPLICATE_GATE_REPORT.json"
+    },
+    "browserA4Persistent": {
+      "exists": true,
+      "pass": false,
+      "file": "V11_FINAL32_BROWSER_A4_PERSISTENT_GATE_REPORT.json"
+    }
+  },
+  "failures": [
+    "browserA4Persistent not PASS"
+  ],
+  "finalPass": false,
+  "next": "Fix only failed FINAL32 gates; do not register."
+}
