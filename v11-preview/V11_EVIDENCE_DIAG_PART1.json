@@ -1,0 +1,110 @@
+[
+  {
+    "id": "V11-B14-G1-003",
+    "set": "B",
+    "no": 4,
+    "body": "At lunch, Saki saw two green bags on a table. One was hers, but both bags looked almost the same. She first looked for her name, but the labels only showed the letters S.K. and S.M. Then Saki remembered the food card in her bag. Her card had a red circle. She did not eat one kind of nut. She carefully opened only the small outside pocket of the S.K. bag and saw the red card. She knew the bag was hers. She left the S.M. bag closed and said, “Your bag is here,” to her friend.",
+    "prompt": "9. イニシャルと赤いカードの二つの情報を使うことで何ができましたか。",
+    "type": "MATERIAL_LINK",
+    "evidence": "She first looked for her name, but the labels only showed the letters S.K. and S.M. / She carefully opened only the small outside pocket of the S.K. bag and saw the red card.",
+    "evidenceJp": "最初に名前を探しましたが、札にはS.K.とS.M.という文字しかありませんでした。 / S.K.の袋の小さな外ポケットだけを注意して開けると、赤いカードが見えました。",
+    "answer": "自分の袋をより確実に特定できた。",
+    "reason": "一つの情報では不十分だったため、別の特徴で確認しています。"
+  },
+  {
+    "id": "V11-B14-G1-007",
+    "set": "B",
+    "no": 3,
+    "body": "Nao heard a small bell in the hallway just after lunch. It was not the usual school bell, and no one in her class moved. She wondered where the sound came from. At 1:05, she heard it again near the library. Nao looked at a notice beside the library door. It said, “Reading Week book return: 1:00-1:15.” It also said, “Ring the small desk bell when the return box is full.” Nao then saw two students carrying books to the desk. She understood that the sound was not an emergency signal. She returned her own book and helped the librarian place an empty box beside the desk. The time, the notice, and the students' actions all explained the bell. The empty box arrived, and the bell stopped. This matched the notice exactly. Nao then saw the time again.",
+    "prompt": "8. 1時5分という時刻と掲示の返却時間を合わせると何が分かりますか。",
+    "type": "MATERIAL_LINK",
+    "evidence": "At 1:05, she heard it again near the library. / It said, “Reading Week book return: 1:00-1:15.”",
+    "evidenceJp": "1時5分、図書室の近くでまた音がしました。 / 図書室のドアの横の掲示には「読書週間の本の返却：1時〜1時15分」とありました。",
+    "answer": "ベルが本の返却時間中に鳴っていたこと。",
+    "reason": "時刻が掲示の時間帯の中にあります。"
+  },
+  {
+    "id": "V11-B14-G1-011",
+    "set": "A",
+    "no": 1,
+    "body": "Yuna checked the bus list before a class trip. Every student's name was on the list, but Seat 12 was empty. She worried. Maybe one student had no seat. Then she saw a small note beside Seat 12: ‘Camera box.’ The class had a large box for two school cameras, and the teacher did not want it in the aisle. Yuna counted the names again. All thirty students had seats, and Seat 12 was the only place without a name. She said to her friend, “No student is missing.” The empty seat had a job of its own.",
+    "prompt": "1. ユナが最初に心配したのはなぜですか。",
+    "type": "REASON",
+    "evidence": "Every student's name was on the list, but Seat 12 was empty. / Maybe one student had no seat.",
+    "evidenceJp": "生徒全員の名前がありましたが、12番の席だけ空いていました。 / だれか一人に席がないのかもしれないと思いました。",
+    "answer": "12番の席だけ空いていて、だれか一人に席がないかもしれないと思ったから。",
+    "reason": "空席を見て、座れない生徒がいる可能性を考えたことが直接示されています。"
+  },
+  {
+    "id": "V11-B14-G1-011",
+    "set": "B",
+    "no": 2,
+    "body": "Yuna checked the bus list before a class trip. Every student's name was on the list, but Seat 12 was empty. She worried. Maybe one student had no seat. Then she saw a small note beside Seat 12: ‘Camera box.’ The class had a large box for two school cameras, and the teacher did not want it in the aisle. Yuna counted the names again. All thirty students had seats, and Seat 12 was the only place without a name. She said to her friend, “No student is missing.” The empty seat had a job of its own.",
+    "prompt": "7. “The empty seat had a job of its own.” とはどういうことですか。",
+    "type": "REASON",
+    "evidence": "Then she saw a small note beside Seat 12: ‘Camera box.’ / The empty seat had a job of its own.",
+    "evidenceJp": "しかし12番の横には「カメラ箱」と小さく書かれていました。 / その空席には別の役目があったのです。",
+    "answer": "12番の席は生徒用ではなく、カメラ箱を置く役目があったということ。",
+    "reason": "空席がカメラ箱用だったことを指しています。"
+  },
+  {
+    "id": "V11-B14-G1-011",
+    "set": "B",
+    "no": 4,
+    "body": "Yuna checked the bus list before a class trip. Every student's name was on the list, but Seat 12 was empty. She worried. Maybe one student had no seat. Then she saw a small note beside Seat 12: ‘Camera box.’ The class had a large box for two school cameras, and the teacher did not want it in the aisle. Yuna counted the names again. All thirty students had seats, and Seat 12 was the only place without a name. She said to her friend, “No student is missing.” The empty seat had a job of its own.",
+    "prompt": "9. 要約の空所に入る内容として最も適切なものを選びなさい。『ユナは12番の空席を見て心配したが、（　）ので、生徒が抜けていないと分かった。』",
+    "type": "SUMMARY_FILL",
+    "evidence": "Then she saw a small note beside Seat 12: ‘Camera box.’ / Yuna counted the names again.",
+    "evidenceJp": "しかし12番の横には「カメラ箱」と小さく書かれていました。 / ユナがもう一度名前を数えると、30人全員に席があり、名前のない場所は12番だけでした。",
+    "answer": "A. 名前をもう一度数え、メモも確認した",
+    "reason": "メモと人数の再確認の二つが誤解を解く材料になっています。"
+  },
+  {
+    "id": "V11-B16-G1-001",
+    "set": "B",
+    "no": 4,
+    "body": "Our school library had a small corner near the windows. Few students sat there. The tables were far from the book shelves. One day, our library group asked students where they liked to read. Many said they wanted a quiet place with natural light, but they did not want to carry several books across the room. We moved one shelf of popular books closer to the windows and added two small tables. During the next week, more students came to the corner. We also noticed that they returned books more quickly because the shelf was nearby. We did not change the whole library. A small change at the right place helped make the space easier to use.",
+    "prompt": "Where would this sentence fit best: “The group decided to solve both problems at once.”",
+    "type": "SENTENCE_INSERTION",
+    "evidence": "Many said they wanted a quiet place with natural light... We moved one shelf...",
+    "evidenceJp": "生徒の希望を述べた文の後に、実際の変更が続きます。",
+    "answer": "Before the sentence beginning “We moved one shelf...”",
+    "reason": "The inserted sentence naturally links the identified needs to the action."
+  },
+  {
+    "id": "V11-B16-G1-003",
+    "set": "B",
+    "no": 1,
+    "body": "Mika brought a large water bottle to practice every day, but she often took much of it home. Her friend used a smaller bottle and filled it again at the school fountain. Mika first thought a large bottle was safer. She did not want to run out of water. For one week, she wrote down how much she drank. She learned that she usually drank about half of the large bottle. The next week, she brought a smaller bottle and used the fountain once during practice. Her bag became lighter, and she still had enough water. Measuring her actual use helped her choose a better size.",
+    "prompt": "What does “it” refer to in “took much of it home”?",
+    "type": "CONTEXT_WORD",
+    "evidence": "a large water bottle... she often took much of it home",
+    "evidenceJp": "大きな水筒の水を多く家へ持ち帰っていました。",
+    "answer": "The water in the large bottle.",
+    "reason": "The context is the unused water remaining in the bottle."
+  },
+  {
+    "id": "V11-B16-G1-005",
+    "set": "B",
+    "no": 1,
+    "body": "At lunch, many students stood in one long line for bread. Two kinds of bread were sold at the same table, and students often waited while others decided which one to buy. The student council watched the line for three days. It found that many students already knew what they wanted before reaching the table. The council put pictures of both kinds near the entrance and made two short lines at the table. Students chose a line before they reached the front. The total number of students did not change, but the waiting time became shorter. Better information helped the same space work more smoothly.",
+    "prompt": "What does “both kinds” refer to?",
+    "type": "CONTEXT_WORD",
+    "evidence": "Two kinds of bread... pictures of both kinds",
+    "evidenceJp": "二種類のパンと、その両方の写真を指します。",
+    "answer": "The two kinds of bread.",
+    "reason": "The phrase points back to the two bread choices."
+  },
+  {
+    "id": "V11-B16-G1-007",
+    "set": "B",
+    "no": 1,
+    "body": "New students sometimes got lost between the gym and the music room. The school already had a map near the main entrance, so teachers were surprised. A group of second-year students walked the route with three new students. They learned that the problem was not the whole map. At one corner, two hallways looked almost the same, and there was no sign for the music room. The group added one arrow at that corner and a small room name near the stairs. The next group of new students reached the room without help. The students learned that useful directions help at a place with a hard choice.",
+    "prompt": "In the passage, what does “the problem” in “the problem was not the whole map” refer to?",
+    "type": "CONTEXT_WORD",
+    "evidence": "New students sometimes got lost between the gym and the music room... They learned that the problem was not the whole map.",
+    "evidenceJp": "「問題」は、新入生が体育館から音楽室へ行く途中で迷う原因を指します。",
+    "answer": "The reason new students got lost on the way to the music room.",
+    "reason": "The phrase refers back to the difficulty the students were investigating."
+  }
+]
