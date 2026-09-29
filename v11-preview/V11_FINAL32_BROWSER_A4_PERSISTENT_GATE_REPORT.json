@@ -1,15 +1,125 @@
 {
-  "generatedAt": "2026-09-29T02:55:00.554Z",
+  "generatedAt": "2026-09-29T02:57:57.855Z",
   "batch": "V11-FINAL32",
   "registered": false,
   "officialTotal": 968,
   "browsers": {
     "chromium": {
-      "pass": false,
-      "error": "page.waitForFunction: Timeout 30000ms exceeded.\n    at register (/home/runner/work/reading-app/reading-app/scripts/v11_final32_browser_a4_persistent_gate.js:10:13)\n    at async browserCase (/home/runner/work/reading-app/reading-app/scripts/v11_final32_browser_a4_persistent_gate.js:20:341)\n    at async /home/runner/work/reading-app/reading-app/scripts/v11_final32_browser_a4_persistent_gate.js:29:16",
-      "errors": [
-        "page:FINAL32 slash JP alignment invalid V11-F32-G2-002 en=8 jp=7"
-      ]
+      "pass": true,
+      "registration": {
+        "st": {
+          "version": "20260905-v11-selected-section-003-visible-switch",
+          "groups": 6,
+          "extraPassages": 832,
+          "lastAdded": 32,
+          "source": "register",
+          "updatedAt": "2026-09-29T02:58:00.666Z"
+        },
+        "count": 32,
+        "unique": 32
+      },
+      "rendered": [
+        {
+          "id": "V11-F32-G1-001",
+          "selectedId": "V11-F32-G1-001",
+          "passage": 1178,
+          "questions": 292,
+          "answers": 1234
+        },
+        {
+          "id": "V11-F32-G2-001",
+          "selectedId": "V11-F32-G2-001",
+          "passage": 1284,
+          "questions": 314,
+          "answers": 1464
+        },
+        {
+          "id": "V11-F32-G3-001",
+          "selectedId": "V11-F32-G3-001",
+          "passage": 1486,
+          "questions": 355,
+          "answers": 1459
+        }
+      ],
+      "errors": []
+    },
+    "webkit": {
+      "pass": true,
+      "registration": {
+        "st": {
+          "version": "20260905-v11-selected-section-003-visible-switch",
+          "groups": 6,
+          "extraPassages": 832,
+          "lastAdded": 32,
+          "source": "register",
+          "updatedAt": "2026-09-29T02:58:06.591Z"
+        },
+        "count": 32,
+        "unique": 32
+      },
+      "rendered": [
+        {
+          "id": "V11-F32-G1-001",
+          "selectedId": "V11-F32-G1-001",
+          "passage": 1180,
+          "questions": 292,
+          "answers": 1244
+        },
+        {
+          "id": "V11-F32-G2-001",
+          "selectedId": "V11-F32-G2-001",
+          "passage": 1286,
+          "questions": 314,
+          "answers": 1474
+        },
+        {
+          "id": "V11-F32-G3-001",
+          "selectedId": "V11-F32-G3-001",
+          "passage": 1488,
+          "questions": 355,
+          "answers": 1469
+        }
+      ],
+      "errors": []
+    },
+    "iphone-webkit": {
+      "pass": true,
+      "registration": {
+        "st": {
+          "version": "20260905-v11-selected-section-003-visible-switch",
+          "groups": 6,
+          "extraPassages": 832,
+          "lastAdded": 32,
+          "source": "register",
+          "updatedAt": "2026-09-29T02:58:12.284Z"
+        },
+        "count": 32,
+        "unique": 32
+      },
+      "rendered": [
+        {
+          "id": "V11-F32-G1-001",
+          "selectedId": "V11-F32-G1-001",
+          "passage": 1180,
+          "questions": 292,
+          "answers": 1244
+        },
+        {
+          "id": "V11-F32-G2-001",
+          "selectedId": "V11-F32-G2-001",
+          "passage": 1286,
+          "questions": 314,
+          "answers": 1474
+        },
+        {
+          "id": "V11-F32-G3-001",
+          "selectedId": "V11-F32-G3-001",
+          "passage": 1488,
+          "questions": 355,
+          "answers": 1469
+        }
+      ],
+      "errors": []
     }
   },
   "a4": {
@@ -24,5 +134,5 @@
   },
   "persistent": null,
   "finalPass": false,
-  "error": "page.waitForFunction: Timeout 30000ms exceeded.\n    at register (/home/runner/work/reading-app/reading-app/scripts/v11_final32_browser_a4_persistent_gate.js:10:13)\n    at async browserCase (/home/runner/work/reading-app/reading-app/scripts/v11_final32_browser_a4_persistent_gate.js:20:341)\n    at async /home/runner/work/reading-app/reading-app/scripts/v11_final32_browser_a4_persistent_gate.js:29:16"
+  "error": "page.selectOption: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('#textbook')\n    - locator resolved to <select id=\"textbook\">…</select>\n  - attempting select option action\n    2 × waiting for element to be visible and enabled\n      - element is not visible\n    - retrying select option action\n    - waiting 20ms\n    2 × waiting for element to be visible and enabled\n      - element is not visible\n    - retrying select option action\n      - waiting 100ms\n    59 × waiting for element to be visible and enabled\n       - element is not visible\n     - retrying select option action\n       - waiting 500ms\n\n    at choose (/home/runner/work/reading-app/reading-app/scripts/v11_final32_browser_a4_persistent_gate.js:16:30)\n    at chromiumA4AndPersistent (/home/runner/work/reading-app/reading-app/scripts/v11_final32_browser_a4_persistent_gate.js:24:29)\n    at async /home/runner/work/reading-app/reading-app/scripts/v11_final32_browser_a4_persistent_gate.js:29:250"
 }
