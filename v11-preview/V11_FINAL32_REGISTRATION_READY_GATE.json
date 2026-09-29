@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T02:59:56.635Z",
+  "generatedAt": "2026-09-29T03:02:25.202Z",
   "batch": "V11-FINAL32",
   "officialTotalBefore": 968,
   "targetTotal": 1000,
@@ -44,13 +44,11 @@
     },
     "browserA4Persistent": {
       "exists": true,
-      "pass": false,
+      "pass": true,
       "file": "V11_FINAL32_BROWSER_A4_PERSISTENT_GATE_REPORT.json"
     }
   },
-  "failures": [
-    "browserA4Persistent not PASS"
-  ],
-  "finalPass": false,
-  "next": "Fix only failed FINAL32 gates; do not register."
+  "failures": [],
+  "finalPass": true,
+  "next": "Load v11_final32_runtime_bundle.js then v11_final32_register.js through the persistent chain; verify total 1000."
 }
