@@ -1,13 +1,11 @@
 {
-  "generatedAt": "2026-09-29T07:44:12.341Z",
+  "generatedAt": "2026-09-29T07:56:26.112Z",
   "source": "local persistent runtime",
   "hardFailures": [
     "same-section near duplicates >=.90 32",
     "v11 question contract failures 36"
   ],
-  "warnings": [
-    "ACTIVE_SPEC expects exactly 100 Yamaguchi-style passages; detected 36"
-  ],
+  "warnings": [],
   "finalHardPass": false,
   "runtime": {
     "base": 168,
@@ -19,7 +17,7 @@
       "extraPassages": 832,
       "lastAdded": 32,
       "source": "register",
-      "updatedAt": "2026-09-29T07:44:14.287Z"
+      "updatedAt": "2026-09-29T07:56:29.069Z"
     },
     "final32": {
       "version": "20260929-final32-atomic-r1",
@@ -27,7 +25,7 @@
       "extraPassages": 832,
       "lastAdded": 32,
       "source": "register",
-      "updatedAt": "2026-09-29T07:44:14.287Z",
+      "updatedAt": "2026-09-29T07:56:29.069Z",
       "totalWithBaseline": 1000,
       "final32Passages": 32,
       "registered": true
@@ -271,17 +269,17 @@
     "typeCounts": {
       "(blank)": 3000,
       "GIST": 770,
-      "DETAIL": 738,
+      "DETAIL": 735,
       "REASON": 707,
-      "CONTENT_MATCH": 868,
+      "CONTENT_MATCH": 869,
       "INFERENCE": 605,
       "SENTENCE_INSERTION": 121,
-      "CONTEXT_WORD": 313,
-      "SUMMARY_FILL": 534,
-      "PHRASE_FILL": 291,
-      "RESULT": 101,
-      "EVIDENCE": 98,
-      "MATERIAL_LINK": 174
+      "CONTEXT_WORD": 318,
+      "SUMMARY_FILL": 535,
+      "PHRASE_FILL": 300,
+      "RESULT": 99,
+      "EVIDENCE": 92,
+      "MATERIAL_LINK": 169
     }
   },
   "composition": {
@@ -289,33 +287,122 @@
     "items": []
   },
   "yamaguchiInventory": {
-    "count": 36,
+    "count": 100,
     "byBatch": {
-      "B07": 4,
-      "B08": 4,
-      "B13": 4,
-      "B14": 4,
-      "B15": 4,
-      "B09": 4,
-      "B10": 4,
-      "B11": 4,
-      "B12": 4
+      "B07": 10,
+      "B08": 11,
+      "B09": 11,
+      "B10": 11,
+      "B11": 11,
+      "B12": 11,
+      "B13": 11,
+      "B14": 10,
+      "B15": 8,
+      "B16": 6
     },
     "questionTypes": {
-      "GIST": 50,
-      "DETAIL": 17,
-      "REASON": 43,
-      "MATERIAL_LINK": 77,
-      "CONTENT_MATCH": 45,
-      "INFERENCE": 37,
-      "SENTENCE_INSERTION": 6,
-      "CONTEXT_WORD": 18,
-      "SUMMARY_FILL": 38,
-      "PHRASE_FILL": 15,
-      "EVIDENCE": 6,
-      "RESULT": 8
+      "GIST": 146,
+      "DETAIL": 102,
+      "REASON": 128,
+      "CONTENT_MATCH": 158,
+      "INFERENCE": 107,
+      "SENTENCE_INSERTION": 14,
+      "CONTEXT_WORD": 59,
+      "SUMMARY_FILL": 103,
+      "MATERIAL_LINK": 87,
+      "PHRASE_FILL": 61,
+      "RESULT": 21,
+      "EVIDENCE": 14
     },
     "rows": [
+      {
+        "id": "V11-B07-G3-007",
+        "level": "STANDARD",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B07-STANDARD-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 221,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "INFERENCE",
+          "SENTENCE_INSERTION",
+          "CONTEXT_WORD",
+          "SUMMARY_FILL",
+          "CONTENT_MATCH"
+        ]
+      },
+      {
+        "id": "V11-B07-G3-015",
+        "level": "STANDARD",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B07-STANDARD-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 215,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "INFERENCE",
+          "SENTENCE_INSERTION",
+          "CONTEXT_WORD",
+          "SUMMARY_FILL",
+          "CONTENT_MATCH"
+        ]
+      },
+      {
+        "id": "V11-B07-G3-001",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B07-LONG-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 301,
+        "hasMaterial": true,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "MATERIAL_LINK",
+          "INFERENCE",
+          "SENTENCE_INSERTION",
+          "CONTEXT_WORD",
+          "SUMMARY_FILL",
+          "CONTENT_MATCH"
+        ]
+      },
+      {
+        "id": "V11-B07-G3-013",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B07-LONG-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 315,
+        "hasMaterial": true,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "MATERIAL_LINK",
+          "INFERENCE",
+          "SENTENCE_INSERTION",
+          "CONTEXT_WORD",
+          "SUMMARY_FILL",
+          "CONTENT_MATCH"
+        ]
+      },
       {
         "id": "V11-B07-G3-003",
         "level": "ENTRANCE_EXAM",
@@ -383,6 +470,50 @@
         ]
       },
       {
+        "id": "V11-B08-G3-005",
+        "level": "STANDARD",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B08-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 202,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "PHRASE_FILL",
+          "CONTENT_MATCH",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B08-G3-007",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B08-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 241,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "PHRASE_FILL",
+          "CONTENT_MATCH",
+          "GIST"
+        ]
+      },
+      {
         "id": "V11-B08-G3-009",
         "level": "YAMAGUCHI_EXAM",
         "genre": "reading",
@@ -405,6 +536,380 @@
         ]
       },
       {
+        "id": "V11-B08-G3-011",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B08-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 267,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "PHRASE_FILL",
+          "CONTENT_MATCH",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B08-G3-015",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B08-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 246,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "PHRASE_FILL",
+          "CONTENT_MATCH",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B09-G3-001",
+        "level": "STANDARD",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B09-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 181,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "PHRASE_FILL",
+          "CONTENT_MATCH",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B09-G3-003",
+        "level": "STANDARD",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B09-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 178,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "PHRASE_FILL",
+          "CONTENT_MATCH",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B09-G3-011",
+        "level": "STANDARD",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B09-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 180,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "PHRASE_FILL",
+          "CONTENT_MATCH",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B10-G3-003",
+        "level": "STANDARD",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B10-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 200,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "RESULT",
+          "SUMMARY_FILL",
+          "EVIDENCE",
+          "CONTENT_MATCH",
+          "PHRASE_FILL",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B10-G3-013",
+        "level": "STANDARD",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B10-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 207,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "RESULT",
+          "SUMMARY_FILL",
+          "EVIDENCE",
+          "CONTENT_MATCH",
+          "PHRASE_FILL",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B10-G3-015",
+        "level": "STANDARD",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B10-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 200,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "RESULT",
+          "SUMMARY_FILL",
+          "EVIDENCE",
+          "CONTENT_MATCH",
+          "PHRASE_FILL",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B11-G3-009",
+        "level": "STANDARD",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B11-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 198,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "RESULT",
+          "SUMMARY_FILL",
+          "EVIDENCE",
+          "PHRASE_FILL",
+          "DETAIL",
+          "INFERENCE",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B11-G3-013",
+        "level": "STANDARD",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B11-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 202,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "RESULT",
+          "SUMMARY_FILL",
+          "EVIDENCE",
+          "PHRASE_FILL",
+          "DETAIL",
+          "INFERENCE",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B11-G3-015",
+        "level": "STANDARD",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B11-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 195,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "RESULT",
+          "SUMMARY_FILL",
+          "EVIDENCE",
+          "PHRASE_FILL",
+          "DETAIL",
+          "INFERENCE",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B12-G3-005",
+        "level": "STANDARD",
+        "genre": "",
+        "tier": "",
+        "batch": "V11-B12",
+        "examStyle": "",
+        "wordCount": 176,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "GIST",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "CONTEXT_WORD",
+          "CONTENT_MATCH",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B12-G3-007",
+        "level": "STANDARD",
+        "genre": "",
+        "tier": "",
+        "batch": "V11-B12",
+        "examStyle": "",
+        "wordCount": 171,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "GIST",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "CONTEXT_WORD",
+          "CONTENT_MATCH",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B12-G3-011",
+        "level": "STANDARD",
+        "genre": "",
+        "tier": "",
+        "batch": "V11-B12",
+        "examStyle": "",
+        "wordCount": 164,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "CONTENT_MATCH",
+          "REASON",
+          "DETAIL",
+          "GIST",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "CONTEXT_WORD",
+          "CONTENT_MATCH",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B13-G3-001",
+        "level": "STANDARD",
+        "genre": "",
+        "tier": "",
+        "batch": "V11-B13",
+        "examStyle": "",
+        "wordCount": 157,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "GIST",
+          "CONTEXT_WORD",
+          "SUMMARY_FILL",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE"
+        ]
+      },
+      {
+        "id": "V11-B13-G3-011",
+        "level": "STANDARD",
+        "genre": "",
+        "tier": "",
+        "batch": "V11-B13",
+        "examStyle": "",
+        "wordCount": 158,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "CONTENT_MATCH",
+          "REASON",
+          "INFERENCE",
+          "GIST",
+          "CONTEXT_WORD",
+          "SUMMARY_FILL",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE"
+        ]
+      },
+      {
+        "id": "V11-B13-G3-013",
+        "level": "STANDARD",
+        "genre": "",
+        "tier": "",
+        "batch": "V11-B13",
+        "examStyle": "",
+        "wordCount": 159,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "GIST",
+          "CONTEXT_WORD",
+          "SUMMARY_FILL",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE"
+        ]
+      },
+      {
         "id": "V11-B13-G3-003",
         "level": "YAMAGUCHI_EXAM",
         "genre": "",
@@ -422,7 +927,7 @@
           "CONTENT_MATCH",
           "SUMMARY_FILL",
           "REASON",
-          "MATERIAL_LINK",
+          "CONTEXT_WORD",
           "INFERENCE"
         ]
       },
@@ -449,6 +954,28 @@
         ]
       },
       {
+        "id": "V11-B14-G3-001",
+        "level": "",
+        "genre": "",
+        "tier": "LONG",
+        "batch": "V11-B14",
+        "examStyle": "",
+        "wordCount": 252,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "REASON",
+          "CONTENT_MATCH",
+          "SUMMARY_FILL",
+          "REASON",
+          "CONTEXT_WORD",
+          "MATERIAL_LINK",
+          "INFERENCE"
+        ]
+      },
+      {
         "id": "V11-B14-G3-003",
         "level": "",
         "genre": "",
@@ -465,9 +992,31 @@
           "CONTENT_MATCH",
           "SUMMARY_FILL",
           "REASON",
-          "MATERIAL_LINK",
+          "CONTEXT_WORD",
           "INFERENCE",
           "MATERIAL_LINK"
+        ]
+      },
+      {
+        "id": "V11-B14-G3-005",
+        "level": "",
+        "genre": "",
+        "tier": "LONG",
+        "batch": "V11-B14",
+        "examStyle": "",
+        "wordCount": 248,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "DETAIL",
+          "CONTENT_MATCH",
+          "SUMMARY_FILL",
+          "REASON",
+          "CONTEXT_WORD",
+          "MATERIAL_LINK",
+          "INFERENCE"
         ]
       },
       {
@@ -490,6 +1039,94 @@
           "MATERIAL_LINK",
           "REASON",
           "INFERENCE"
+        ]
+      },
+      {
+        "id": "V11-B14-G3-011",
+        "level": "",
+        "genre": "",
+        "tier": "LONG",
+        "batch": "V11-B14",
+        "examStyle": "",
+        "wordCount": 317,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "CONTEXT_WORD",
+          "MATERIAL_LINK",
+          "REASON",
+          "INFERENCE"
+        ]
+      },
+      {
+        "id": "V11-B14-G3-013",
+        "level": "",
+        "genre": "",
+        "tier": "STANDARD",
+        "batch": "V11-B14",
+        "examStyle": "",
+        "wordCount": 177,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "MATERIAL_LINK",
+          "SUMMARY_FILL",
+          "INFERENCE",
+          "CONTEXT_WORD",
+          "PHRASE_FILL",
+          "SENTENCE_INSERTION"
+        ]
+      },
+      {
+        "id": "V11-B14-G3-015",
+        "level": "",
+        "genre": "",
+        "tier": "STANDARD",
+        "batch": "V11-B14",
+        "examStyle": "",
+        "wordCount": 169,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "CONTEXT_WORD",
+          "PHRASE_FILL",
+          "MATERIAL_LINK",
+          "SENTENCE_INSERTION"
+        ]
+      },
+      {
+        "id": "V11-B15-G3-001",
+        "level": "",
+        "genre": "",
+        "tier": "LONG",
+        "batch": "V11-B15",
+        "examStyle": "",
+        "wordCount": 260,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "CONTEXT_WORD",
+          "DETAIL",
+          "RESULT",
+          "REASON",
+          "SUMMARY_FILL",
+          "GIST"
         ]
       },
       {
@@ -529,11 +1166,143 @@
           "REASON",
           "CONTENT_MATCH",
           "INFERENCE",
-          "DETAIL",
+          "CONTEXT_WORD",
           "SUMMARY_FILL",
           "REASON",
           "CONTENT_MATCH",
           "GIST"
+        ]
+      },
+      {
+        "id": "V11-B15-G3-013",
+        "level": "",
+        "genre": "",
+        "tier": "STANDARD",
+        "batch": "V11-B15",
+        "examStyle": "",
+        "wordCount": 170,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "DETAIL",
+          "CONTENT_MATCH",
+          "CONTEXT_WORD",
+          "REASON",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B16-G3-003",
+        "level": "",
+        "genre": "report",
+        "tier": "",
+        "batch": "V11-B16",
+        "examStyle": "",
+        "wordCount": 151,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "CONTEXT_WORD",
+          "PHRASE_FILL",
+          "REASON",
+          "INFERENCE",
+          "MATERIAL_LINK"
+        ]
+      },
+      {
+        "id": "V11-B16-G3-005",
+        "level": "",
+        "genre": "report",
+        "tier": "",
+        "batch": "V11-B16",
+        "examStyle": "",
+        "wordCount": 150,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "CONTEXT_WORD",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "PHRASE_FILL"
+        ]
+      },
+      {
+        "id": "V11-B16-G3-015",
+        "level": "",
+        "genre": "report",
+        "tier": "",
+        "batch": "V11-B16",
+        "examStyle": "",
+        "wordCount": 153,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "CONTEXT_WORD",
+          "MATERIAL_LINK",
+          "REASON",
+          "CONTENT_MATCH",
+          "PHRASE_FILL"
+        ]
+      },
+      {
+        "id": "V11-B07-G3-016",
+        "level": "STANDARD",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B07-STANDARD-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 228,
+        "hasMaterial": true,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "MATERIAL_LINK",
+          "INFERENCE",
+          "SENTENCE_INSERTION",
+          "CONTEXT_WORD",
+          "SUMMARY_FILL",
+          "CONTENT_MATCH"
+        ]
+      },
+      {
+        "id": "V11-B07-G3-004",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B07-LONG-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 327,
+        "hasMaterial": true,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "MATERIAL_LINK",
+          "INFERENCE",
+          "SENTENCE_INSERTION",
+          "CONTEXT_WORD",
+          "SUMMARY_FILL",
+          "CONTENT_MATCH"
         ]
       },
       {
@@ -581,6 +1350,50 @@
         ]
       },
       {
+        "id": "V11-B08-G3-002",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B08-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 263,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "PHRASE_FILL",
+          "CONTENT_MATCH",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B08-G3-004",
+        "level": "STANDARD",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B08-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 195,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "PHRASE_FILL",
+          "CONTENT_MATCH",
+          "GIST"
+        ]
+      },
+      {
         "id": "V11-B08-G3-006",
         "level": "YAMAGUCHI_EXAM",
         "genre": "reading",
@@ -599,6 +1412,28 @@
           "SUMMARY_FILL",
           "CONTEXT_WORD",
           "PHRASE_FILL",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B08-G3-012",
+        "level": "STANDARD",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B08-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 190,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "PHRASE_FILL",
+          "CONTENT_MATCH",
           "GIST"
         ]
       },
@@ -625,6 +1460,28 @@
         ]
       },
       {
+        "id": "V11-B09-G3-002",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B09-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 305,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "PHRASE_FILL",
+          "CONTENT_MATCH",
+          "GIST"
+        ]
+      },
+      {
         "id": "V11-B09-G3-004",
         "level": "YAMAGUCHI_EXAM",
         "genre": "reading",
@@ -643,6 +1500,28 @@
           "SUMMARY_FILL",
           "CONTEXT_WORD",
           "PHRASE_FILL",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B09-G3-006",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B09-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 286,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "PHRASE_FILL",
+          "CONTENT_MATCH",
           "GIST"
         ]
       },
@@ -669,6 +1548,28 @@
         ]
       },
       {
+        "id": "V11-B09-G3-010",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B09-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 319,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "PHRASE_FILL",
+          "CONTENT_MATCH",
+          "GIST"
+        ]
+      },
+      {
         "id": "V11-B09-G3-012",
         "level": "YAMAGUCHI_EXAM",
         "genre": "reading",
@@ -687,6 +1588,28 @@
           "SUMMARY_FILL",
           "CONTEXT_WORD",
           "PHRASE_FILL",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B09-G3-014",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B09-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 313,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "PHRASE_FILL",
+          "CONTENT_MATCH",
           "GIST"
         ]
       },
@@ -713,6 +1636,28 @@
         ]
       },
       {
+        "id": "V11-B10-G3-002",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B10-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 327,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "RESULT",
+          "SUMMARY_FILL",
+          "EVIDENCE",
+          "CONTENT_MATCH",
+          "PHRASE_FILL",
+          "GIST"
+        ]
+      },
+      {
         "id": "V11-B10-G3-004",
         "level": "YAMAGUCHI_EXAM",
         "genre": "reading",
@@ -729,8 +1674,30 @@
           "MATERIAL_LINK",
           "SUMMARY_FILL",
           "MATERIAL_LINK",
-          "EVIDENCE",
+          "PHRASE_FILL",
           "RESULT",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B10-G3-006",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B10-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 317,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "RESULT",
+          "SUMMARY_FILL",
+          "EVIDENCE",
+          "CONTENT_MATCH",
+          "PHRASE_FILL",
           "GIST"
         ]
       },
@@ -751,8 +1718,30 @@
           "MATERIAL_LINK",
           "SUMMARY_FILL",
           "MATERIAL_LINK",
-          "EVIDENCE",
+          "PHRASE_FILL",
           "RESULT",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B10-G3-010",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B10-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 323,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "RESULT",
+          "SUMMARY_FILL",
+          "EVIDENCE",
+          "CONTENT_MATCH",
+          "PHRASE_FILL",
           "GIST"
         ]
       },
@@ -773,8 +1762,30 @@
           "MATERIAL_LINK",
           "SUMMARY_FILL",
           "MATERIAL_LINK",
-          "EVIDENCE",
+          "PHRASE_FILL",
           "RESULT",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B10-G3-014",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B10-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 312,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "RESULT",
+          "SUMMARY_FILL",
+          "EVIDENCE",
+          "CONTENT_MATCH",
+          "PHRASE_FILL",
           "GIST"
         ]
       },
@@ -795,9 +1806,97 @@
           "MATERIAL_LINK",
           "SUMMARY_FILL",
           "MATERIAL_LINK",
-          "EVIDENCE",
+          "PHRASE_FILL",
           "RESULT",
           "SUMMARY_FILL"
+        ]
+      },
+      {
+        "id": "V11-B11-G3-002",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B11-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 329,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "RESULT",
+          "SUMMARY_FILL",
+          "EVIDENCE",
+          "PHRASE_FILL",
+          "DETAIL",
+          "INFERENCE",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B11-G3-006",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B11-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 325,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "RESULT",
+          "SUMMARY_FILL",
+          "EVIDENCE",
+          "PHRASE_FILL",
+          "DETAIL",
+          "INFERENCE",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B11-G3-010",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B11-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 323,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "RESULT",
+          "SUMMARY_FILL",
+          "EVIDENCE",
+          "PHRASE_FILL",
+          "DETAIL",
+          "INFERENCE",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B11-G3-014",
+        "level": "LONG",
+        "genre": "reading",
+        "tier": "",
+        "batch": "V11-B11-G3-DRAFT-20260829",
+        "examStyle": "",
+        "wordCount": 326,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "RESULT",
+          "SUMMARY_FILL",
+          "EVIDENCE",
+          "PHRASE_FILL",
+          "DETAIL",
+          "INFERENCE",
+          "GIST"
         ]
       },
       {
@@ -835,10 +1934,10 @@
           "MATERIAL_LINK",
           "REASON",
           "MATERIAL_LINK",
-          "RESULT",
+          "CONTENT_MATCH",
           "SUMMARY_FILL",
           "MATERIAL_LINK",
-          "EVIDENCE",
+          "PHRASE_FILL",
           "DETAIL",
           "INFERENCE",
           "GIST"
@@ -858,7 +1957,7 @@
           "MATERIAL_LINK",
           "CONTENT_MATCH",
           "REASON",
-          "RESULT",
+          "SUMMARY_FILL",
           "MATERIAL_LINK",
           "PHRASE_FILL",
           "DETAIL",
@@ -882,9 +1981,31 @@
           "RESULT",
           "SUMMARY_FILL",
           "MATERIAL_LINK",
-          "EVIDENCE",
+          "PHRASE_FILL",
           "DETAIL",
           "INFERENCE",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B12-G3-002",
+        "level": "LONG",
+        "genre": "",
+        "tier": "",
+        "batch": "V11-B12",
+        "examStyle": "",
+        "wordCount": 245,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "CONTENT_MATCH",
+          "REASON",
+          "DETAIL",
+          "GIST",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "CONTEXT_WORD",
+          "CONTENT_MATCH",
           "GIST"
         ]
       },
@@ -905,7 +2026,29 @@
           "GIST",
           "INFERENCE",
           "SUMMARY_FILL",
-          "MATERIAL_LINK",
+          "PHRASE_FILL",
+          "CONTENT_MATCH",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B12-G3-006",
+        "level": "LONG",
+        "genre": "",
+        "tier": "",
+        "batch": "V11-B12",
+        "examStyle": "",
+        "wordCount": 255,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "GIST",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "CONTEXT_WORD",
           "CONTENT_MATCH",
           "GIST"
         ]
@@ -933,6 +2076,28 @@
         ]
       },
       {
+        "id": "V11-B12-G3-010",
+        "level": "LONG",
+        "genre": "",
+        "tier": "",
+        "batch": "V11-B12",
+        "examStyle": "",
+        "wordCount": 250,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "GIST",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "CONTEXT_WORD",
+          "CONTENT_MATCH",
+          "GIST"
+        ]
+      },
+      {
         "id": "V11-B12-G3-012",
         "level": "YAMAGUCHI_EXAM",
         "genre": "",
@@ -952,6 +2117,28 @@
           "CONTEXT_WORD",
           "PHRASE_FILL",
           "MATERIAL_LINK"
+        ]
+      },
+      {
+        "id": "V11-B12-G3-014",
+        "level": "LONG",
+        "genre": "",
+        "tier": "",
+        "batch": "V11-B12",
+        "examStyle": "",
+        "wordCount": 259,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "DETAIL",
+          "GIST",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "CONTEXT_WORD",
+          "CONTENT_MATCH",
+          "GIST"
         ]
       },
       {
@@ -977,6 +2164,94 @@
         ]
       },
       {
+        "id": "V11-B13-G3-002",
+        "level": "LONG",
+        "genre": "",
+        "tier": "",
+        "batch": "V11-B13",
+        "examStyle": "",
+        "wordCount": 251,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "CONTENT_MATCH",
+          "REASON",
+          "INFERENCE",
+          "GIST",
+          "CONTEXT_WORD",
+          "SUMMARY_FILL",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE"
+        ]
+      },
+      {
+        "id": "V11-B13-G3-008",
+        "level": "LONG",
+        "genre": "",
+        "tier": "",
+        "batch": "V11-B13",
+        "examStyle": "",
+        "wordCount": 254,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "GIST",
+          "CONTEXT_WORD",
+          "SUMMARY_FILL",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE"
+        ]
+      },
+      {
+        "id": "V11-B13-G3-012",
+        "level": "LONG",
+        "genre": "",
+        "tier": "",
+        "batch": "V11-B13",
+        "examStyle": "",
+        "wordCount": 249,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "GIST",
+          "CONTEXT_WORD",
+          "SUMMARY_FILL",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE"
+        ]
+      },
+      {
+        "id": "V11-B13-G3-016",
+        "level": "LONG",
+        "genre": "",
+        "tier": "",
+        "batch": "V11-B13",
+        "examStyle": "",
+        "wordCount": 260,
+        "hasMaterial": false,
+        "questionTypes": [
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "GIST",
+          "CONTEXT_WORD",
+          "SUMMARY_FILL",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE"
+        ]
+      },
+      {
         "id": "V11-B13-G3-006",
         "level": "YAMAGUCHI_EXAM",
         "genre": "",
@@ -994,7 +2269,7 @@
           "CONTENT_MATCH",
           "SUMMARY_FILL",
           "REASON",
-          "MATERIAL_LINK",
+          "PHRASE_FILL",
           "INFERENCE"
         ]
       },
@@ -1016,7 +2291,7 @@
           "CONTENT_MATCH",
           "SUMMARY_FILL",
           "INFERENCE",
-          "MATERIAL_LINK",
+          "PHRASE_FILL",
           "SUMMARY_FILL"
         ]
       },
@@ -1039,6 +2314,28 @@
           "SENTENCE_INSERTION",
           "PHRASE_FILL",
           "MATERIAL_LINK",
+          "INFERENCE"
+        ]
+      },
+      {
+        "id": "V11-B14-G3-008",
+        "level": "",
+        "genre": "",
+        "tier": "LONG",
+        "batch": "V11-B14",
+        "examStyle": "",
+        "wordCount": 296,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "MATERIAL_LINK",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "CONTEXT_WORD",
+          "MATERIAL_LINK",
+          "PHRASE_FILL",
           "INFERENCE"
         ]
       },
@@ -1080,9 +2377,31 @@
           "CONTENT_MATCH",
           "INFERENCE",
           "MATERIAL_LINK",
-          "DETAIL",
+          "CONTEXT_WORD",
           "SUMMARY_FILL",
           "CONTENT_MATCH",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B15-G3-012",
+        "level": "",
+        "genre": "",
+        "tier": "STANDARD",
+        "batch": "V11-B15",
+        "examStyle": "",
+        "wordCount": 170,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "DETAIL",
+          "CONTENT_MATCH",
+          "CONTEXT_WORD",
+          "REASON",
           "GIST"
         ]
       },
@@ -1101,11 +2420,99 @@
           "CONTENT_MATCH",
           "INFERENCE",
           "SUMMARY_FILL",
-          "DETAIL",
+          "CONTEXT_WORD",
           "MATERIAL_LINK",
           "CONTENT_MATCH",
           "REASON",
           "GIST"
+        ]
+      },
+      {
+        "id": "V11-B15-G3-016",
+        "level": "",
+        "genre": "",
+        "tier": "STANDARD",
+        "batch": "V11-B15",
+        "examStyle": "",
+        "wordCount": 183,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "DETAIL",
+          "REASON",
+          "CONTENT_MATCH",
+          "SUMMARY_FILL",
+          "INFERENCE",
+          "CONTENT_MATCH",
+          "CONTEXT_WORD",
+          "REASON",
+          "GIST"
+        ]
+      },
+      {
+        "id": "V11-B16-G3-004",
+        "level": "",
+        "genre": "report",
+        "tier": "",
+        "batch": "V11-B16",
+        "examStyle": "",
+        "wordCount": 154,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "CONTEXT_WORD",
+          "PHRASE_FILL",
+          "REASON",
+          "INFERENCE",
+          "MATERIAL_LINK"
+        ]
+      },
+      {
+        "id": "V11-B16-G3-006",
+        "level": "",
+        "genre": "report",
+        "tier": "",
+        "batch": "V11-B16",
+        "examStyle": "",
+        "wordCount": 150,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "CONTEXT_WORD",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "PHRASE_FILL"
+        ]
+      },
+      {
+        "id": "V11-B16-G3-014",
+        "level": "",
+        "genre": "report",
+        "tier": "",
+        "batch": "V11-B16",
+        "examStyle": "",
+        "wordCount": 164,
+        "hasMaterial": false,
+        "questionTypes": [
+          "GIST",
+          "REASON",
+          "CONTENT_MATCH",
+          "INFERENCE",
+          "SUMMARY_FILL",
+          "CONTEXT_WORD",
+          "MATERIAL_LINK",
+          "REASON",
+          "CONTENT_MATCH",
+          "PHRASE_FILL"
         ]
       }
     ]
