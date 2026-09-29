@@ -81,4 +81,10 @@ if(typeof window.render==='function')window.render();
 window.V11_FINAL_RELEASE_READING_ONLY_STATE={version:'20260929-reading-only-r1',passages:all.length,...log};
 window.V11_FINAL_RELEASE_READING_ONLY_APPLIED=true;
 window.dispatchEvent(new Event('v11-passages-updated'));
+if(!window.V11_YAMAGUCHI_100_READY){
+  const y=document.createElement('script');
+  y.src='./v11_yamaguchi_100_subset_overlay.js';
+  y.onerror=function(){window.V11_YAMAGUCHI_100_ERROR='subset overlay load failed';console.error('[v11 Yamaguchi100] subset overlay load failed');};
+  document.head.appendChild(y);
+}
 })();
