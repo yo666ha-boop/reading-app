@@ -1,0 +1,56 @@
+name: v11 FINAL32 slash word-count gate
+on:
+  push:
+    branches: [v11-1000passage-easy-notes]
+    paths:
+      - 'V11_FINAL32_BODY_TRANSLATION_DRAFT_*.json'
+      - 'scripts/v11_final32_slash_wordcount_gate.js'
+      - '.github/workflows/v11-final32-slash-wordcount.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: v11-final32-slash-wordcount
+  cancel-in-progress: true
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v11-1000passage-easy-notes
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run FINAL32 slash word-count gate
+        run: |
+          set +e
+          node scripts/v11_final32_slash_wordcount_gate.js
+          code=$?
+          echo "audit_exit=$code" >> "$GITHUB_ENV"
+          test -f V11_FINAL32_SLASH_WORDCOUNT_REPORT.json
+          exit 0
+      - name: Persist report
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add V11_FINAL32_SLASH_WORDCOUNT_REPORT.json
+          if git diff --cached --quiet; then
+            echo 'No report change'
+          else
+            git commit -m 'audit(v11): persist FINAL32 slash word-count report [skip ci]'
+            for n in 1 2 3; do
+              git pull --rebase origin v11-1000passage-easy-notes && git push origin HEAD:v11-1000passage-easy-notes && exit 0
+              git rebase --abort || true
+              sleep $((n*2))
+            done
+            exit 1
+          fi
+      - name: Enforce gate
+        run: |
+          node - <<'NODE'
+          const r=require('./V11_FINAL32_SLASH_WORDCOUNT_REPORT.json');
+          console.log(JSON.stringify({passages:r.passages,min:r.minWordCount,max:r.maxWordCount,failures:r.failures.length,finalPass:r.finalPass}));
+          if(!r.finalPass)process.exit(2);
+          NODE
