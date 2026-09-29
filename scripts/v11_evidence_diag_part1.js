@@ -1,0 +1,6 @@
+const fs=require('fs');const {chromium}=require('playwright');
+const target=[
+['V11-B14-G1-003','B',4],['V11-B14-G1-007','B',3],['V11-B14-G1-011','A',1],['V11-B14-G1-011','B',2],['V11-B14-G1-011','B',4],
+['V11-B16-G1-001','B',4],['V11-B16-G1-003','B',1],['V11-B16-G1-005','B',1],['V11-B16-G1-007','B',1]
+];
+(async()=>{const b=await chromium.launch({headless:true});const out=[];try{const p=await b.newPage();await p.goto(process.env.URL||'http://127.0.0.1:4181/index.html',{waitUntil:'domcontentloaded',timeout:120000});await p.waitForFunction(()=>window.V11_YAMAGUCHI_100_READY===true&&Number(window.V11_MULTI_PASSAGE_STATE&&window.V11_MULTI_PASSAGE_STATE.extraPassages)===832,{timeout:150000});const rows=await p.evaluate(target=>{const all=Object.values(window.V11_EXTRA_PASSAGES||{}).flat(),m=new Map(all.map(x=>[x.id,x]));return target.map(([id,set,no])=>{const x=m.get(id),q=(set==='A'?x.questions:x.questionSetB)[no-1];return{id,set,no,body:typeof x.body==='string'?x.body:x.sentences.join(' '),prompt:q.prompt||q.question,type:q.questionType||q.type,evidence:q.evidence,evidenceJp:q.evidenceJp,answer:q.answer,reason:q.reason};});},target);out.push(...rows);}finally{await b.close()}fs.writeFileSync('V11_EVIDENCE_DIAG_PART1.json',JSON.stringify(out,null,2)+'\n');})();
