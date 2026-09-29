@@ -1,0 +1,1922 @@
+{
+  "version": "20260929-y100-r1",
+  "status": "FIXED_SUBSET_CANDIDATE",
+  "count": 100,
+  "selectionPolicy": {
+    "explicitExam": "include all 36 existing qualifying YAMAGUCHI_EXAM passages",
+    "long": "include all 32 additional qualifying LONG passages",
+    "standard": "include 32 additional qualifying STANDARD passages using fixed batch quotas and priority for material integration, type diversity, then word count",
+    "standardQuota": {
+      "B07": 3,
+      "B08": 3,
+      "B09": 3,
+      "B10": 3,
+      "B11": 3,
+      "B12": 3,
+      "B13": 3,
+      "B14": 2,
+      "B15": 3,
+      "B16": 6
+    }
+  },
+  "distribution": {
+    "byTier": {
+      "EXAM_STAMINA": 36,
+      "LONG": 32,
+      "STANDARD": 32
+    },
+    "byBatch": {
+      "B07": 10,
+      "B08": 11,
+      "B13": 11,
+      "B14": 10,
+      "B15": 8,
+      "B09": 11,
+      "B10": 11,
+      "B11": 11,
+      "B12": 11,
+      "B16": 6
+    }
+  },
+  "ids": [
+    "V11-B07-G3-003",
+    "V11-B07-G3-009",
+    "V11-B08-G3-003",
+    "V11-B08-G3-009",
+    "V11-B13-G3-003",
+    "V11-B13-G3-009",
+    "V11-B14-G3-003",
+    "V11-B14-G3-009",
+    "V11-B15-G3-003",
+    "V11-B15-G3-009",
+    "V11-B07-G3-006",
+    "V11-B07-G3-014",
+    "V11-B08-G3-006",
+    "V11-B08-G3-014",
+    "V11-B09-G3-004",
+    "V11-B09-G3-008",
+    "V11-B09-G3-012",
+    "V11-B09-G3-016",
+    "V11-B10-G3-004",
+    "V11-B10-G3-008",
+    "V11-B10-G3-012",
+    "V11-B10-G3-016",
+    "V11-B11-G3-008",
+    "V11-B11-G3-012",
+    "V11-B11-G3-004",
+    "V11-B11-G3-016",
+    "V11-B12-G3-004",
+    "V11-B12-G3-008",
+    "V11-B12-G3-012",
+    "V11-B12-G3-016",
+    "V11-B13-G3-006",
+    "V11-B13-G3-014",
+    "V11-B14-G3-006",
+    "V11-B14-G3-014",
+    "V11-B15-G3-006",
+    "V11-B15-G3-014",
+    "V11-B07-G3-001",
+    "V11-B07-G3-013",
+    "V11-B08-G3-007",
+    "V11-B08-G3-011",
+    "V11-B08-G3-015",
+    "V11-B14-G3-001",
+    "V11-B14-G3-005",
+    "V11-B14-G3-011",
+    "V11-B15-G3-001",
+    "V11-B07-G3-004",
+    "V11-B08-G3-002",
+    "V11-B09-G3-002",
+    "V11-B09-G3-006",
+    "V11-B09-G3-010",
+    "V11-B09-G3-014",
+    "V11-B10-G3-002",
+    "V11-B10-G3-006",
+    "V11-B10-G3-010",
+    "V11-B10-G3-014",
+    "V11-B11-G3-002",
+    "V11-B11-G3-006",
+    "V11-B11-G3-010",
+    "V11-B11-G3-014",
+    "V11-B12-G3-002",
+    "V11-B12-G3-006",
+    "V11-B12-G3-010",
+    "V11-B12-G3-014",
+    "V11-B13-G3-002",
+    "V11-B13-G3-008",
+    "V11-B13-G3-012",
+    "V11-B13-G3-016",
+    "V11-B14-G3-008",
+    "V11-B07-G3-016",
+    "V11-B07-G3-007",
+    "V11-B07-G3-015",
+    "V11-B08-G3-005",
+    "V11-B08-G3-004",
+    "V11-B08-G3-012",
+    "V11-B09-G3-001",
+    "V11-B09-G3-011",
+    "V11-B09-G3-003",
+    "V11-B10-G3-013",
+    "V11-B10-G3-003",
+    "V11-B10-G3-015",
+    "V11-B11-G3-013",
+    "V11-B11-G3-009",
+    "V11-B11-G3-015",
+    "V11-B12-G3-005",
+    "V11-B12-G3-007",
+    "V11-B12-G3-011",
+    "V11-B13-G3-013",
+    "V11-B13-G3-011",
+    "V11-B13-G3-001",
+    "V11-B14-G3-013",
+    "V11-B14-G3-015",
+    "V11-B15-G3-016",
+    "V11-B15-G3-012",
+    "V11-B15-G3-013",
+    "V11-B16-G3-014",
+    "V11-B16-G3-004",
+    "V11-B16-G3-015",
+    "V11-B16-G3-003",
+    "V11-B16-G3-005",
+    "V11-B16-G3-006"
+  ],
+  "rows": [
+    {
+      "id": "V11-B07-G3-003",
+      "batch": "B07",
+      "wordCount": 358,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "MATERIAL_LINK",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SENTENCE_INSERTION",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B07-G3-009",
+      "batch": "B07",
+      "wordCount": 368,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "MATERIAL_LINK",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SENTENCE_INSERTION",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B08-G3-003",
+      "batch": "B08",
+      "wordCount": 349,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "MATERIAL_LINK",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B08-G3-009",
+      "batch": "B08",
+      "wordCount": 362,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "MATERIAL_LINK",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B13-G3-003",
+      "batch": "B13",
+      "wordCount": 342,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "MATERIAL_LINK",
+        "REASON",
+        "INFERENCE",
+        "GIST",
+        "CONTENT_MATCH",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD"
+      ]
+    },
+    {
+      "id": "V11-B13-G3-009",
+      "batch": "B13",
+      "wordCount": 384,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "GIST",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL",
+        "INFERENCE"
+      ]
+    },
+    {
+      "id": "V11-B14-G3-003",
+      "batch": "B14",
+      "wordCount": 340,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "INFERENCE",
+        "MATERIAL_LINK"
+      ]
+    },
+    {
+      "id": "V11-B14-G3-009",
+      "batch": "B14",
+      "wordCount": 384,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD"
+      ]
+    },
+    {
+      "id": "V11-B15-G3-003",
+      "batch": "B15",
+      "wordCount": 352,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B15-G3-009",
+      "batch": "B15",
+      "wordCount": 362,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B07-G3-006",
+      "batch": "B07",
+      "wordCount": 359,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SENTENCE_INSERTION",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B07-G3-014",
+      "batch": "B07",
+      "wordCount": 362,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "MATERIAL_LINK",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SENTENCE_INSERTION",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B08-G3-006",
+      "batch": "B08",
+      "wordCount": 350,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "MATERIAL_LINK",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B08-G3-014",
+      "batch": "B08",
+      "wordCount": 350,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "MATERIAL_LINK",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B09-G3-004",
+      "batch": "B09",
+      "wordCount": 437,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "GIST",
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B09-G3-008",
+      "batch": "B09",
+      "wordCount": 400,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "GIST",
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B09-G3-012",
+      "batch": "B09",
+      "wordCount": 377,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "GIST",
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B09-G3-016",
+      "batch": "B09",
+      "wordCount": 429,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "GIST",
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B10-G3-004",
+      "batch": "B10",
+      "wordCount": 414,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "GIST",
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "SUMMARY_FILL",
+        "PHRASE_FILL",
+        "RESULT"
+      ]
+    },
+    {
+      "id": "V11-B10-G3-008",
+      "batch": "B10",
+      "wordCount": 441,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "GIST",
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "SUMMARY_FILL",
+        "PHRASE_FILL",
+        "RESULT"
+      ]
+    },
+    {
+      "id": "V11-B10-G3-012",
+      "batch": "B10",
+      "wordCount": 409,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "GIST",
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "SUMMARY_FILL",
+        "PHRASE_FILL",
+        "RESULT"
+      ]
+    },
+    {
+      "id": "V11-B10-G3-016",
+      "batch": "B10",
+      "wordCount": 361,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "GIST",
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "SUMMARY_FILL",
+        "PHRASE_FILL",
+        "RESULT"
+      ]
+    },
+    {
+      "id": "V11-B11-G3-008",
+      "batch": "B11",
+      "wordCount": 438,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "MATERIAL_LINK",
+        "CONTENT_MATCH",
+        "RESULT",
+        "SUMMARY_FILL",
+        "PHRASE_FILL",
+        "DETAIL",
+        "INFERENCE",
+        "GIST"
+      ]
+    },
+    {
+      "id": "V11-B11-G3-012",
+      "batch": "B11",
+      "wordCount": 443,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "SUMMARY_FILL",
+        "PHRASE_FILL",
+        "DETAIL",
+        "INFERENCE",
+        "GIST"
+      ]
+    },
+    {
+      "id": "V11-B11-G3-004",
+      "batch": "B11",
+      "wordCount": 418,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "MATERIAL_LINK",
+        "CONTENT_MATCH",
+        "REASON",
+        "SUMMARY_FILL",
+        "PHRASE_FILL",
+        "DETAIL",
+        "INFERENCE",
+        "GIST"
+      ]
+    },
+    {
+      "id": "V11-B11-G3-016",
+      "batch": "B11",
+      "wordCount": 446,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "RESULT",
+        "SUMMARY_FILL",
+        "PHRASE_FILL",
+        "DETAIL",
+        "INFERENCE",
+        "GIST"
+      ]
+    },
+    {
+      "id": "V11-B12-G3-004",
+      "batch": "B12",
+      "wordCount": 343,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "MATERIAL_LINK",
+        "CONTENT_MATCH",
+        "REASON",
+        "GIST",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B12-G3-008",
+      "batch": "B12",
+      "wordCount": 345,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "MATERIAL_LINK",
+        "CONTENT_MATCH",
+        "REASON",
+        "GIST",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B12-G3-012",
+      "batch": "B12",
+      "wordCount": 364,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "GIST",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B12-G3-016",
+      "batch": "B12",
+      "wordCount": 354,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "MATERIAL_LINK",
+        "CONTENT_MATCH",
+        "REASON",
+        "GIST",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B13-G3-006",
+      "batch": "B13",
+      "wordCount": 358,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "MATERIAL_LINK",
+        "REASON",
+        "INFERENCE",
+        "GIST",
+        "CONTENT_MATCH",
+        "SUMMARY_FILL",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B13-G3-014",
+      "batch": "B13",
+      "wordCount": 361,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "GIST",
+        "SUMMARY_FILL",
+        "INFERENCE",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B14-G3-006",
+      "batch": "B14",
+      "wordCount": 407,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "SENTENCE_INSERTION",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B14-G3-014",
+      "batch": "B14",
+      "wordCount": 421,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "PHRASE_FILL",
+        "SENTENCE_INSERTION"
+      ]
+    },
+    {
+      "id": "V11-B15-G3-006",
+      "batch": "B15",
+      "wordCount": 398,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B15-G3-014",
+      "batch": "B15",
+      "wordCount": 397,
+      "lengthTier": "EXAM_STAMINA",
+      "explicit": true,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "MATERIAL_LINK"
+      ]
+    },
+    {
+      "id": "V11-B07-G3-001",
+      "batch": "B07",
+      "wordCount": 301,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "MATERIAL_LINK",
+        "INFERENCE",
+        "SENTENCE_INSERTION",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B07-G3-013",
+      "batch": "B07",
+      "wordCount": 315,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "MATERIAL_LINK",
+        "INFERENCE",
+        "SENTENCE_INSERTION",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B08-G3-007",
+      "batch": "B08",
+      "wordCount": 241,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B08-G3-011",
+      "batch": "B08",
+      "wordCount": 267,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B08-G3-015",
+      "batch": "B08",
+      "wordCount": 246,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B14-G3-001",
+      "batch": "B14",
+      "wordCount": 252,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "MATERIAL_LINK",
+        "INFERENCE"
+      ]
+    },
+    {
+      "id": "V11-B14-G3-005",
+      "batch": "B14",
+      "wordCount": 248,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "MATERIAL_LINK",
+        "INFERENCE"
+      ]
+    },
+    {
+      "id": "V11-B14-G3-011",
+      "batch": "B14",
+      "wordCount": 317,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "MATERIAL_LINK"
+      ]
+    },
+    {
+      "id": "V11-B15-G3-001",
+      "batch": "B15",
+      "wordCount": 260,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "CONTEXT_WORD",
+        "DETAIL",
+        "RESULT",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B07-G3-004",
+      "batch": "B07",
+      "wordCount": 327,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "MATERIAL_LINK",
+        "INFERENCE",
+        "SENTENCE_INSERTION",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B08-G3-002",
+      "batch": "B08",
+      "wordCount": 263,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B09-G3-002",
+      "batch": "B09",
+      "wordCount": 305,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B09-G3-006",
+      "batch": "B09",
+      "wordCount": 286,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B09-G3-010",
+      "batch": "B09",
+      "wordCount": 319,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B09-G3-014",
+      "batch": "B09",
+      "wordCount": 313,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B10-G3-002",
+      "batch": "B10",
+      "wordCount": 327,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "RESULT",
+        "SUMMARY_FILL",
+        "EVIDENCE",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B10-G3-006",
+      "batch": "B10",
+      "wordCount": 317,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "RESULT",
+        "SUMMARY_FILL",
+        "EVIDENCE",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B10-G3-010",
+      "batch": "B10",
+      "wordCount": 323,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "RESULT",
+        "SUMMARY_FILL",
+        "EVIDENCE",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B10-G3-014",
+      "batch": "B10",
+      "wordCount": 312,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "RESULT",
+        "SUMMARY_FILL",
+        "EVIDENCE",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B11-G3-002",
+      "batch": "B11",
+      "wordCount": 329,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "RESULT",
+        "SUMMARY_FILL",
+        "EVIDENCE",
+        "PHRASE_FILL",
+        "INFERENCE",
+        "GIST"
+      ]
+    },
+    {
+      "id": "V11-B11-G3-006",
+      "batch": "B11",
+      "wordCount": 325,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "RESULT",
+        "SUMMARY_FILL",
+        "EVIDENCE",
+        "PHRASE_FILL",
+        "INFERENCE",
+        "GIST"
+      ]
+    },
+    {
+      "id": "V11-B11-G3-010",
+      "batch": "B11",
+      "wordCount": 323,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "RESULT",
+        "SUMMARY_FILL",
+        "EVIDENCE",
+        "PHRASE_FILL",
+        "INFERENCE",
+        "GIST"
+      ]
+    },
+    {
+      "id": "V11-B11-G3-014",
+      "batch": "B11",
+      "wordCount": 326,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "RESULT",
+        "SUMMARY_FILL",
+        "EVIDENCE",
+        "PHRASE_FILL",
+        "INFERENCE",
+        "GIST"
+      ]
+    },
+    {
+      "id": "V11-B12-G3-002",
+      "batch": "B12",
+      "wordCount": 245,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "CONTENT_MATCH",
+        "REASON",
+        "GIST",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD"
+      ]
+    },
+    {
+      "id": "V11-B12-G3-006",
+      "batch": "B12",
+      "wordCount": 255,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "GIST",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD"
+      ]
+    },
+    {
+      "id": "V11-B12-G3-010",
+      "batch": "B12",
+      "wordCount": 250,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "GIST",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD"
+      ]
+    },
+    {
+      "id": "V11-B12-G3-014",
+      "batch": "B12",
+      "wordCount": 259,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "GIST",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD"
+      ]
+    },
+    {
+      "id": "V11-B13-G3-002",
+      "batch": "B13",
+      "wordCount": 251,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "CONTENT_MATCH",
+        "REASON",
+        "INFERENCE",
+        "GIST",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B13-G3-008",
+      "batch": "B13",
+      "wordCount": 254,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "GIST",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B13-G3-012",
+      "batch": "B13",
+      "wordCount": 249,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "GIST",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B13-G3-016",
+      "batch": "B13",
+      "wordCount": 260,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "GIST",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B14-G3-008",
+      "batch": "B14",
+      "wordCount": 296,
+      "lengthTier": "LONG",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "MATERIAL_LINK",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B07-G3-016",
+      "batch": "B07",
+      "wordCount": 228,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": true,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "MATERIAL_LINK",
+        "INFERENCE",
+        "SENTENCE_INSERTION",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B07-G3-007",
+      "batch": "B07",
+      "wordCount": 221,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SENTENCE_INSERTION",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B07-G3-015",
+      "batch": "B07",
+      "wordCount": 215,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SENTENCE_INSERTION",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B08-G3-005",
+      "batch": "B08",
+      "wordCount": 202,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B08-G3-004",
+      "batch": "B08",
+      "wordCount": 195,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B08-G3-012",
+      "batch": "B08",
+      "wordCount": 190,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B09-G3-001",
+      "batch": "B09",
+      "wordCount": 181,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B09-G3-011",
+      "batch": "B09",
+      "wordCount": 180,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B09-G3-003",
+      "batch": "B09",
+      "wordCount": 178,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B10-G3-013",
+      "batch": "B10",
+      "wordCount": 207,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "RESULT",
+        "SUMMARY_FILL",
+        "EVIDENCE",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B10-G3-003",
+      "batch": "B10",
+      "wordCount": 200,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "RESULT",
+        "SUMMARY_FILL",
+        "EVIDENCE",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B10-G3-015",
+      "batch": "B10",
+      "wordCount": 200,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "RESULT",
+        "SUMMARY_FILL",
+        "EVIDENCE",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B11-G3-013",
+      "batch": "B11",
+      "wordCount": 202,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "RESULT",
+        "SUMMARY_FILL",
+        "EVIDENCE",
+        "PHRASE_FILL",
+        "INFERENCE",
+        "GIST"
+      ]
+    },
+    {
+      "id": "V11-B11-G3-009",
+      "batch": "B11",
+      "wordCount": 198,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "RESULT",
+        "SUMMARY_FILL",
+        "EVIDENCE",
+        "PHRASE_FILL",
+        "INFERENCE",
+        "GIST"
+      ]
+    },
+    {
+      "id": "V11-B11-G3-015",
+      "batch": "B11",
+      "wordCount": 195,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "RESULT",
+        "SUMMARY_FILL",
+        "EVIDENCE",
+        "PHRASE_FILL",
+        "INFERENCE",
+        "GIST"
+      ]
+    },
+    {
+      "id": "V11-B12-G3-005",
+      "batch": "B12",
+      "wordCount": 176,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "GIST",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD"
+      ]
+    },
+    {
+      "id": "V11-B12-G3-007",
+      "batch": "B12",
+      "wordCount": 171,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "GIST",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD"
+      ]
+    },
+    {
+      "id": "V11-B12-G3-011",
+      "batch": "B12",
+      "wordCount": 164,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "CONTENT_MATCH",
+        "REASON",
+        "GIST",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD"
+      ]
+    },
+    {
+      "id": "V11-B13-G3-013",
+      "batch": "B13",
+      "wordCount": 159,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "GIST",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B13-G3-011",
+      "batch": "B13",
+      "wordCount": 158,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "CONTENT_MATCH",
+        "REASON",
+        "INFERENCE",
+        "GIST",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B13-G3-001",
+      "batch": "B13",
+      "wordCount": 157,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "GIST",
+        "CONTEXT_WORD",
+        "SUMMARY_FILL"
+      ]
+    },
+    {
+      "id": "V11-B14-G3-013",
+      "batch": "B14",
+      "wordCount": 177,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "MATERIAL_LINK",
+        "SUMMARY_FILL",
+        "INFERENCE",
+        "CONTEXT_WORD",
+        "PHRASE_FILL",
+        "SENTENCE_INSERTION"
+      ]
+    },
+    {
+      "id": "V11-B14-G3-015",
+      "batch": "B14",
+      "wordCount": 169,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "PHRASE_FILL",
+        "MATERIAL_LINK",
+        "SENTENCE_INSERTION"
+      ]
+    },
+    {
+      "id": "V11-B15-G3-016",
+      "batch": "B15",
+      "wordCount": 183,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "DETAIL",
+        "REASON",
+        "CONTENT_MATCH",
+        "SUMMARY_FILL",
+        "INFERENCE",
+        "CONTEXT_WORD"
+      ]
+    },
+    {
+      "id": "V11-B15-G3-012",
+      "batch": "B15",
+      "wordCount": 170,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "DETAIL",
+        "CONTEXT_WORD"
+      ]
+    },
+    {
+      "id": "V11-B15-G3-013",
+      "batch": "B15",
+      "wordCount": 170,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "DETAIL",
+        "CONTEXT_WORD"
+      ]
+    },
+    {
+      "id": "V11-B16-G3-014",
+      "batch": "B16",
+      "wordCount": 164,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "MATERIAL_LINK",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B16-G3-004",
+      "batch": "B16",
+      "wordCount": 154,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "PHRASE_FILL",
+        "MATERIAL_LINK"
+      ]
+    },
+    {
+      "id": "V11-B16-G3-015",
+      "batch": "B16",
+      "wordCount": 153,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "MATERIAL_LINK",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B16-G3-003",
+      "batch": "B16",
+      "wordCount": 151,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "PHRASE_FILL",
+        "MATERIAL_LINK"
+      ]
+    },
+    {
+      "id": "V11-B16-G3-005",
+      "batch": "B16",
+      "wordCount": 150,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "PHRASE_FILL"
+      ]
+    },
+    {
+      "id": "V11-B16-G3-006",
+      "batch": "B16",
+      "wordCount": 150,
+      "lengthTier": "STANDARD",
+      "explicit": false,
+      "hasMaterial": false,
+      "distinctTypes": [
+        "GIST",
+        "REASON",
+        "CONTENT_MATCH",
+        "INFERENCE",
+        "SUMMARY_FILL",
+        "CONTEXT_WORD",
+        "PHRASE_FILL"
+      ]
+    }
+  ]
+}
