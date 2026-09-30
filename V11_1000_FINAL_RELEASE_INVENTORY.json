@@ -1,24 +1,10 @@
 {
-  "generatedAt": "2026-09-30T22:34:30.932Z",
+  "generatedAt": "2026-09-30T22:38:29.107Z",
   "source": "local persistent runtime",
-  "hardFailures": [
-    "v11 question contract failures 1"
-  ],
+  "hardFailures": [],
   "warnings": [],
-  "finalHardPass": false,
-  "v11QuestionContractDiagnostics": [
-    {
-      "id": "V11-B15-G3-006",
-      "set": "A",
-      "no": 1,
-      "evidence": "They checked the schedule again and realized only two robotics sessions were available, so not all three groups could take robotics.",
-      "bodyLength": 2273,
-      "bodyHead": "A class of fifty-four students planned a visit to a science center. They would arrive at 10:00 and leave at 12:30. The center offered a robotics workshop at 10:20 and 11:20. The workshop room held eighteen students. A planetarium show began at 10:30 and 11:30, and its room held thirty-six. The class was divided into three groups of eighteen. Group A could attend robotics at 10:20 while Groups B and C watched the 10:30 planetarium show together. At 11:20, Group B could attend robotics. Group A would use the exhibition floor, and Group C would remain there until the 11:30 planetarium show was no longer useful for the whole group because only thirty minutes would remain before departure. The students changed the plan, then checked the schedule again and realized only two robotics sessions were available. Not all three groups could take robotics. The final plan gave robotics to Groups A and ",
-      "bodyHasEvidence": false,
-      "normalizedEvidence": "they checked the schedule again and realized only two robotics sessions were available so not all three groups could take robotics",
-      "normalizedBodyHead": "a class of fifty four students planned a visit to a science center they would arrive at 10 00 and leave at 12 30 the center offered a robotics workshop at 10 20 and 11 20 the workshop room held eighteen students a planetarium show began at 10 30 and 11 30 and its room held thirty six the class was divided into three groups of eighteen group a could attend robotics at 10 20 while groups b and c watched the 10 30 planetarium show together at 11 20 group b could attend robotics group a would use the exhibition floor and group c would remain there until the 11 30 planetarium show was no longer useful for the whole group because only thirty minutes would remain before departure the students changed the plan then checked the schedule again and realized only two robotics sessions were available not all three groups could take robotics the final plan gave robotics to groups a and b and the planetarium to all students in two rotations while group c used an interactive lab instead of robotics the class chose a plan that respected capacities and accepted that every group could not do every acti"
-    }
-  ],
+  "finalHardPass": true,
+  "v11QuestionContractDiagnostics": [],
   "runtime": {
     "base": 168,
     "extra": 832,
@@ -29,7 +15,7 @@
       "extraPassages": 832,
       "lastAdded": 32,
       "source": "register",
-      "updatedAt": "2026-09-30T22:34:33.343Z"
+      "updatedAt": "2026-09-30T22:38:31.369Z"
     },
     "final32": {
       "version": "20260929-final32-atomic-r1",
@@ -37,7 +23,7 @@
       "extraPassages": 832,
       "lastAdded": 32,
       "source": "register",
-      "updatedAt": "2026-09-30T22:34:33.343Z",
+      "updatedAt": "2026-09-30T22:38:31.369Z",
       "totalWithBaseline": 1000,
       "final32Passages": 32,
       "registered": true
@@ -79,9 +65,7 @@
   "v11QuestionContract": {
     "passages": 832,
     "totalQuestions": 8320,
-    "failures": [
-      "V11-B15-G3-006 A1 evidence not body substring"
-    ],
+    "failures": [],
     "typeCounts": {
       "(blank)": 2982,
       "CONTENT_MATCH": 887,
