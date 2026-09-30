@@ -17,6 +17,11 @@ for(const f of filesUnder().filter(f=>f.endsWith('.json')&&!/V11_BATCH15_BROWSER
 const ids=[...bodies.keys()].sort();if(ids.length!==50)throw new Error(`Batch15 body count ${ids.length} != 50`);
 function anchorMeta(p,id){
   const idm=/^V11-B15-G([123])-\d{3}$/.exec(id);if(!idm)throw new Error(`${id} invalid id`);const grade=idm[1];
+  if(id.includes('-B16-')){
+    const seq=Number(id.slice(-3)),book=seq%2===1?'SS':'NH';
+    const section=grade==='1'?(book==='SS'?'PROGRAM 10-2':'Unit 10-2'):grade==='2'?(book==='SS'?'PROGRAM 8-3':'Unit 7-4'):(book==='SS'?'PROGRAM 7-3':'Unit 6-4');
+    return{textbook:book==='NH'?'ニューホライズン':'サンシャイン',anchor:{textbook:book==='NH'?'New Horizon':'Sunshine',grade:Number(grade),unit:section},grade,section};
+  }
   const a=p.anchor;
   if(a&&typeof a==='object'&&!Array.isArray(a)){
     const rawBook=String(a.textbook||a.book||a.series||'').trim();
