@@ -239,6 +239,9 @@ replaceQ('V11-B13-G3-014','B',4,{questionType:'PHRASE_FILL',type:'PHRASE_FILL',p
 replaceQ('V11-B15-G3-006','B',2,{questionType:'CONTEXT_WORD',type:'CONTEXT_WORD',prompt:"What does orientation mean in 'all groups received orientation'?",answer:'an introductory explanation before the activities',evidence:'From 10:00 to 10:20, all groups received orientation.',evidenceJp:'10時から10時20分までは全班が説明を受けます。',reason:'ここでorientationは活動前の説明・案内を指します。'});
 replaceQ('V11-B15-G3-014','B',1,{questionType:'CONTEXT_WORD',type:'CONTEXT_WORD',prompt:"What does scheduled mean in 'were scheduled to arrive at 6:30'?",answer:'planned to arrive at that time',evidence:'Water and blankets would arrive at 5:00 p.m., while baby supplies and extra floor mats would arrive at 6:30.',evidenceJp:'水と毛布は午後5時、乳幼児用品と追加の床用マットは6時30分です。',reason:'scheduledはその時刻に届く予定であることを表します。'});
 
+repairEvidence('V11-B15-G3-006','A',1,
+ ['The students changed the plan, then checked the schedule again and realized only two robotics sessions were available.','Not all three groups could take robotics.'],
+ ['生徒たちは別案も検討し、日程を再確認すると、ロボット教室は二回しかないと分かりました。','三班すべてが参加することはできません。']);
 if(typeof window.render==='function')window.render();
 window.V11_FINAL_RELEASE_READING_ONLY_STATE={version:'20260929-reading-only-r1',passages:all.length,...log};
 window.V11_FINAL_RELEASE_READING_ONLY_APPLIED=true;
