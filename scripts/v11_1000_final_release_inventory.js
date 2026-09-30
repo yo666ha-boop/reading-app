@@ -24,7 +24,8 @@ function counts(rows,key){const o={};for(const r of rows){const v=String(r[key]?
   for(const p of all){if(ids.has(p.id))dupIds.push([ids.get(p.id),p.id]);else ids.set(p.id,p.id);const b=norm(p.body);if(!b)report.hardFailures.push('empty body '+p.id);else if(bodies.has(b))dupBodies.push([bodies.get(b),p.id]);else bodies.set(b,p.id)}
   const near=[];const groups={};for(const p of all){const k=[p.textbook,p.grade,p.section].join('|');(groups[k]??=[]).push(p)}
   for(const arr of Object.values(groups))for(let i=0;i<arr.length;i++)for(let j=i+1;j<arr.length;j++){const s=jac(arr[i].body,arr[j].body);if(s>=.90)near.push({a:arr[i].id,b:arr[j].id,score:+s.toFixed(4)})}
-  const qFailures=[],typeCounts={},composition=[];\n  report.v11QuestionContractDiagnostics=[];
+  const qFailures=[],typeCounts={},composition=[];
+  report.v11QuestionContractDiagnostics=[];
   for(const p of data.extra){
    if((p.questions||[]).length!==5||(p.questionSetB||[]).length!==5)qFailures.push(p.id+' A/B '+(p.questions||[]).length+'/'+(p.questionSetB||[]).length);
    for(const [set,qs] of [['A',p.questions||[]],['B',p.questionSetB||[]]])for(let i=0;i<qs.length;i++){
