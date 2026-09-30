@@ -24,7 +24,7 @@ function counts(rows,key){const o={};for(const r of rows){const v=String(r[key]?
   for(const p of all){if(ids.has(p.id))dupIds.push([ids.get(p.id),p.id]);else ids.set(p.id,p.id);const b=norm(p.body);if(!b)report.hardFailures.push('empty body '+p.id);else if(bodies.has(b))dupBodies.push([bodies.get(b),p.id]);else bodies.set(b,p.id)}
   const near=[];const groups={};for(const p of all){const k=[p.textbook,p.grade,p.section].join('|');(groups[k]??=[]).push(p)}
   for(const arr of Object.values(groups))for(let i=0;i<arr.length;i++)for(let j=i+1;j<arr.length;j++){const s=jac(arr[i].body,arr[j].body);if(s>=.90)near.push({a:arr[i].id,b:arr[j].id,score:+s.toFixed(4)})}
-  const qFailures=[],typeCounts={},composition=[];
+  const qFailures=[],typeCounts={},composition=[];\n  report.v11QuestionContractDiagnostics=[];
   for(const p of data.extra){
    if((p.questions||[]).length!==5||(p.questionSetB||[]).length!==5)qFailures.push(p.id+' A/B '+(p.questions||[]).length+'/'+(p.questionSetB||[]).length);
    for(const [set,qs] of [['A',p.questions||[]],['B',p.questionSetB||[]]])for(let i=0;i<qs.length;i++){
@@ -33,7 +33,10 @@ function counts(rows,key){const o={};for(const r of rows){const v=String(r[key]?
     for(const k of ['answer','evidence','evidenceJp','reason'])if(!String(q[k]||'').trim())qFailures.push(p.id+' '+set+(i+1)+' missing '+k);
     if(!prompt.trim())qFailures.push(p.id+' '+set+(i+1)+' missing prompt');
     const evs=Array.isArray(q.evidence)?q.evidence.map(String):[String(q.evidence||'')];
-    for(const ev of evs.filter(Boolean)) if(!norm(p.body).includes(norm(ev)))qFailures.push(p.id+' '+set+(i+1)+' evidence not body substring');
+    for(const ev of evs.filter(Boolean)) if(!norm(p.body).includes(norm(ev))){
+      qFailures.push(p.id+' '+set+(i+1)+' evidence not body substring');
+      if(report.v11QuestionContractDiagnostics.length<40)report.v11QuestionContractDiagnostics.push({id:p.id,set,no:i+1,evidence:ev.slice(0,400),bodyLength:p.body.length,bodyHead:p.body.slice(0,900),bodyHasEvidence:p.body.includes(ev),normalizedEvidence:norm(ev),normalizedBodyHead:norm(p.body).slice(0,1100)});
+    }
     const low=(prompt+' '+type).toLowerCase();
     if(/free[_ -]?write|composition|英作文|20.?30.?語|write\s+(?:about|an?|your|in\s+english)/i.test(low))composition.push({id:p.id,set,no:i+1,type,prompt});
    }
