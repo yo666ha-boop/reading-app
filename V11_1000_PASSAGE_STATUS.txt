@@ -1,4 +1,4 @@
-phase=V11_1000_COMPLETE_FINAL_RELEASE_GATE_PENDING
+phase=V11_1000_COMPLETE_PUBLIC_PREVIEW_VERIFIED
 branch=v11-1000passage-easy-notes
 baseline_passages=168
 target_passages=1000
@@ -7,25 +7,21 @@ remaining_passages=0
 final32_registered=true
 final32_passages=32
 final32_grade_split=G1_11_G2_11_G3_10
-final32_human_semantic=PASS passages=32
-final32_vocab_chronology=PASS unregistered=0 future_vocab=0
-final32_grammar_chronology=PASS unresolved=0 future_grammar=0
-final32_questions=PASS questions=320 A5_B5_each
-final32_notes=PASS passages=32 blank_gloss=0 english_as_japanese_gloss=0
-final32_slash_word_count=PASS passages=32
-final32_duplicate_gate=PASS exact_duplicate=0 near_duplicate=0
-final32_browser_runtime=PASS chromium=PASS webkit=PASS iphone_webkit=PASS
-final32_a4_student=PASS passages=32
-final32_a4_teacher=PASS passages=32
-final32_persistent_runtime=PASS reloads=2
 final32_registration=ALL_32_REGISTERED_TOGETHER_AFTER_FULL_FINAL_GATES
-final32_runtime_bundle=v11_final32_runtime_bundle.js
-final32_registrar=v11_final32_register.js
-final32_bootstrap=v11_final32_bootstrap.js
-persistent_chain_commit=587d1a66a421b93ed2ccac6abb20707faef1e6bb
-public_preview_source=e16b92a4519b3719ff9f0123846c80b9bdc3e2c2
-public_preview_1000_smoke=PASS
-public_preview_extra_passages=832
-public_preview_total_with_baseline=1000
-release_to_main=NO_UNTIL_FINAL_RELEASE_GATES_PASS
-next_step=Begin post-1000 final release gate: full-period/public-preview/historical audits, release verification, and only then mark final release complete.
+post_1000_final_inventory=PASS total=1000 hard_failures=0 question_contract_failures=0 composition=0
+post_1000_duplicate_audit=PASS exact=0 near=0
+post_1000_browser_a4_persistent=PASS batch15=batch16 chromium=PASS webkit=PASS iphone=PASS student_A4=PASS teacher_A4=PASS reloads=2
+yamaguchi_100_candidate_audit=PASS
+yamaguchi_100_final_gate=PASS
+public_preview_url=https://yo666ha-boop.github.io/reading-app/v11-preview/
+public_preview_status=LIVE_1000_PASSAGES
+public_preview_source_sha=3e66b7dd16476133d7d3ff7a63b98359b9e9b1e7
+public_preview_publish_workflow=36788154656_SUCCESS
+public_preview_purpose=WORKING_PREVIEW_NOT_PRODUCTION_RELEASE
+default_branch=main
+production_root_release=NOT_SWITCHED
+main_integration=DEFERRED_PENDING_INTEGRATION_STRATEGY
+work_branch_ahead_of_main=3015
+main_ahead_of_work_branch=689
+integration_note=Do not merge this divergent branch directly into main; keep the verified public preview live while selecting a safe release integration path.
+next_step=Choose whether to keep v11-preview as the finished public app or prepare a selective production integration into main.
