@@ -140,4 +140,19 @@ jobs:
             exit 0
           fi
           git commit -m 'math: promote QA-passed storage restore fix to isolated app index'
-          git push origin HEAD:math-problem-bank-bootstrap
+          # Branch may have unrelated new commits while browsers are running.
+          # Rebase only this one-file QA-passed commit. Never force-push.
+          for attempt in 1 2 3 4; do
+            git fetch origin math-problem-bank-bootstrap
+            if ! git rebase origin/math-problem-bank-bootstrap; then
+              git rebase --abort || true
+              echo 'BRANCH_CONFLICT_ABORT_NO_WRITE'
+              exit 2
+            fi
+            if git push origin HEAD:math-problem-bank-bootstrap; then
+              echo 'ISOLATED_INDEX_PROMOTION_SUCCESS'
+              exit 0
+            fi
+          done
+          echo 'ISOLATED_INDEX_PROMOTION_RETRY_EXHAUSTED'
+          exit 1
