@@ -78,6 +78,10 @@ jobs:
           if '<script src="v11_unit_supplemental_wave3_20261114.js"></script>' not in s:
               s = s.replace('</body></html>', '<script src="v11_unit_supplemental_wave3_20261114.js"></script>\n</body></html>')
           s = s.replace('src="v11_unit_supplemental_wave3_20261114.js"', f'src="v11_unit_supplemental_wave3_20261114.js?v={sha}"')
+          # Reviewed Wave4 will load only after the earlier independent supplements.
+          if '<script src="v11_unit_supplemental_wave4_20261114.js"></script>' not in s:
+              s = s.replace('</body></html>', '<script src="v11_unit_supplemental_wave4_20261114.js"></script>\n</body></html>')
+          s = s.replace('src="v11_unit_supplemental_wave4_20261114.js"', f'src="v11_unit_supplemental_wave4_20261114.js?v={sha}"')
           p.write_text(s, encoding='utf-8')
           PY
           grep -q 'v11_multi_passage_architecture.js?v=' public/v11-preview/index.html
@@ -91,6 +95,8 @@ jobs:
           test -f public/v11-preview/v11_unit_supplemental_wave2_20261114.js
           grep -q 'v11_unit_supplemental_wave3_20261114.js' public/v11-preview/index.html
           test -f public/v11-preview/v11_unit_supplemental_wave3_20261114.js
+          grep -q 'v11_unit_supplemental_wave4_20261114.js' public/v11-preview/index.html
+          test -f public/v11-preview/v11_unit_supplemental_wave4_20261114.js
           test -f public/v11-preview/v11_multi_passage_architecture.js
           test -f public/v11-preview/v11_candidate_list_ui.js
           test -f public/v11-preview/v11_easy_support_notes.js
