@@ -34,6 +34,27 @@ const baselines={
  'ニューホライズン|3|Unit 1-2':['v10_data_newhorizon_g3_unit0_1.js','V10_PASSAGES_G3_NH']
 };
 const cmp=s=>String(s).replace(/\s*\/\s*/g,' ').replace(/\s+/g,' ').trim();
+
+const canonicalNewWordSentinels={
+ 'サンシャイン|1|PROGRAM 1-1':/\b(friendly|kind|student)\b/i,
+ 'サンシャイン|1|PROGRAM 1-2':/\bfan\b/i,
+ 'ニューホライズン|1|Unit 1-1':/\b(club|join|South Africa)\b/i,
+ 'ニューホライズン|1|Unit 1-2':/\b(rugby|often|watch)\b/i,
+ 'サンシャイン|2|PROGRAM 1-2':/\b(will|worried|text)\b/i,
+ 'サンシャイン|2|PROGRAM 1-3':/\b(overseas|quiz|maybe)\b/i,
+ 'ニューホライズン|2|Unit 1-1':/\b(airport|flight|going to)\b/i,
+ 'ニューホライズン|2|Unit 1-2':/\b(seafood|reservation|excited)\b/i,
+ 'サンシャイン|3|PROGRAM 1-2':/\b(eel|homemade|marathon)\b/i,
+ 'サンシャイン|3|PROGRAM 1-3':/\b(portion|eaten|twice)\b/i,
+ 'ニューホライズン|3|Unit 1-1':/\b(been to|once|twice)\b/i,
+ 'ニューホライズン|3|Unit 1-2':/\b(regional|fashion|haven.t)\b/i
+};
+const futureWordBlockers={
+ 'ニューホライズン|1|Unit 1-1':/\bfriends?\b/i,
+ 'ニューホライズン|2|Unit 1-1':/\bexcited\b/i,
+ 'サンシャイン|3|PROGRAM 1-2':/\bportions?\b/i
+};
+
 const ids=new Set(),bodies=new Set();
 for(const p of supplements){
  const key=[p.textbook,p.grade,p.section].join('|');
@@ -53,6 +74,9 @@ for(const p of supplements){
  assert.equal(p.curriculumGate,'PENDING_FINAL_V7_CANONICAL_REVIEW');
  assert.ok(!ids.has(p.id));ids.add(p.id);
  const body=p.sentences.join(' ');
+ assert.ok(canonicalNewWordSentinels[key]?.test(body),'No relevant UNIT target vocabulary in '+p.id);
+ assert.ok(!futureWordBlockers[key]?.test(body),'Known future-UNIT word in '+p.id);
+
  assert.ok(!bodies.has(body));bodies.add(body);
  assert.notEqual(body,baseline.sentences.join(' '),'Must be original supplement');
  const shared=p.sentences.filter(sentence=>baseline.sentences.includes(sentence));
