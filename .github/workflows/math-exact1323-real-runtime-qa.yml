@@ -8,6 +8,7 @@ on:
       - 'math-bank/public-origin/index.html'
       - 'math-bank/public-origin/index1323-exact.html'
       - 'math-bank/app/test_exact1323_live_origin.cjs'
+      - 'math-bank/app/build_exact1323_persistence_candidate.py'
   workflow_dispatch:
 
 permissions:
@@ -66,10 +67,12 @@ jobs:
           else
             npx playwright install --with-deps "${{ matrix.browser }}"
           fi
-      - name: Launch local HTTP exact runtime
+      - name: Build byte-constrained corrected runtime candidate
+        run: python3 math-bank/app/build_exact1323_persistence_candidate.py
+      - name: Launch local HTTP corrected runtime candidate
         run: |
           set -euo pipefail
-          nohup python3 -m http.server 8765 --bind 127.0.0.1 --directory math-bank/public-origin >/tmp/math1323-http.log 2>&1 &
+          nohup python3 -m http.server 8765 --bind 127.0.0.1 --directory math-bank/qa-candidate >/tmp/math1323-http.log 2>&1 &
           for i in $(seq 1 30); do
             if curl -fsSI http://127.0.0.1:8765/ >/dev/null; then exit 0; fi
             sleep 1
