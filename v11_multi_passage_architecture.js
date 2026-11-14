@@ -62,6 +62,20 @@
       const pattern=document.getElementById('pattern'); const pf=pattern&&pattern.closest('.field'); if(pf)row.insertBefore(wordField,pf);else row.appendChild(wordField);
     }
     const wordFilter=document.getElementById('v11WordCountFilter');
+    // UNIT can be used as an exact scope for test preparation or as a ceiling
+    // for cumulative practice; the latter stays the default.
+    let scopeField=document.getElementById('v11UnitScopeField');
+    if(!scopeField){
+      scopeField=document.createElement('div');scopeField.className='field';scopeField.id='v11UnitScopeField';
+      scopeField.innerHTML='<label>長文の対象範囲</label><select id="v11UnitScope" aria-label="出題するUNITの範囲">'+
+       '<option value="studied-through">習ったUNITまで</option><option value="current-unit">選択したUNITだけ</option></select>';
+      const target=document.getElementById('section'),box=target&&target.closest('.field');
+      if(box)row.insertBefore(scopeField,box.nextSibling);else row.appendChild(scopeField);
+    }
+    const patternSelector=document.getElementById('pattern');
+    if(patternSelector&&!Array.from(patternSelector.options).some(o=>o.value==='story')){
+      const option=document.createElement('option');option.value='story';option.textContent='物語';patternSelector.appendChild(option);
+    }
 
     let candidateField=document.getElementById('v11PassageVariantField');
     if(!candidateField){
@@ -93,10 +107,11 @@
       // The section selector is a curriculum ceiling, not an exact-match filter.
       // Object keys are assembled in verified textbook order by the v10 data loaders.
       const target=sec&&sec.value||'', last=all.indexOf(target);
-      const eligible=last<0?[]:all.slice(0,last+1);
+      const mode=document.getElementById('v11UnitScope')?.value==='current-unit'?'current-unit':'studied-through';
+      const eligible=last<0?[]:mode==='current-unit'?[target]:all.slice(0,last+1);
       window.V11_UNIT_RANGE_STATE={textbook:document.getElementById('textbook').value,
         grade:String(document.getElementById('grade').value),targetSection:target,
-        eligibleSections:eligible.slice(),mode:'studied-through',futureSectionsExcluded:all.slice(last+1)};
+        eligibleSections:eligible.slice(),mode,futureSectionsExcluded:all.slice(last+1)};
       return eligible;
     }
     function matchesWord(p){
@@ -105,7 +120,7 @@
     }
     function matchesPattern(p,k,source){
       const el=document.getElementById('pattern'), wanted=el?String(el.value||'all'):'all'; if(wanted==='all')return true;
-      let genre=source==='extra'?String(p&&p.genre||''):'';
+      let genre=source!=='base'?String(p&&p.genre||''):'';
       if(!genre){try{genre=String((baseMetaFor(k)||{}).genre||'')}catch(_){}}
       return genre===wanted;
     }
@@ -136,7 +151,7 @@
       select.innerHTML=records.map(r=>'<option value="'+esc(String(r.passage.id||''))+'">'+esc(label(r))+'</option>').join('');
       select.value=selectedId; select.disabled=records.length<=1;
       const r=selectedRecord(), idx=r?records.indexOf(r):-1;
-      if(inline)inline.textContent=records.length?('該当 '+records.length+'題。本文を選ぶか「次の本文」で切り替えできます。'):'この条件に合う長文はありません。';
+      if(inline)inline.textContent=records.length?('該当 '+records.length+'題（'+(document.getElementById('v11UnitScope')?.value==='current-unit'?'このUNITだけ':'習ったUNITまで')+'）。本文を選ぶか「次の本文」で切り替えできます。'):'この条件に合う長文はありません。';
       if(pos)pos.textContent=records.length?((idx+1)+' / '+records.length+'題'):'0 / 0題';
       if(prevBtn)prevBtn.disabled=records.length<=1; if(nextBtn)nextBtn.disabled=records.length<=1;
       const p=r&&r.passage; setGlobals(p);
@@ -193,7 +208,7 @@
     if(prevBtn)prevBtn.addEventListener('click',()=>move(-1));
     if(nextBtn)nextBtn.addEventListener('click',()=>move(1));
 
-    ['textbook','grade','major','section','pattern'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('change',()=>setTimeout(()=>{selectedId='';try{setIndex=0}catch(_){};refreshOptions(true);window.render()},0))});
+    ['textbook','grade','major','section','pattern','v11UnitScope'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('change',()=>setTimeout(()=>{selectedId='';try{setIndex=0}catch(_){};refreshOptions(true);window.render()},0))});
     window.addEventListener('v11:passages-registered',()=>setTimeout(()=>{refreshOptions(false);window.render()},0));
     window.V11_SYNC_PASSAGE_VARIANT_UI=function(opts){opts=opts||{};if(opts.preserveSelection===false)selectedId='';const p=refreshOptions(opts.preserveSelection===false);if(opts.render)window.render();return p};
 
