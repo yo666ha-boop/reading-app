@@ -204,7 +204,9 @@ for(const p of passages){
   for(const q of p.questions.concat(p.questionSetB)){
     if(!p.sentences.includes(q.evidence))throw new Error('Question evidence not in passage '+p.id);
   }
-  const k=[p.textbook,p.grade,p.section].join('|');
+  const k=typeof window.V11_PASSAGE_REGISTRY_KEY==='function'
+    ?window.V11_PASSAGE_REGISTRY_KEY(p)
+    :[p.textbook,String(p.grade),String(p.section).replace(/^(program|unit)\s*/i,m=>m.trim().toUpperCase()+' ')].join('|');
   if(!registry[k])registry[k]=[];
   registry[k].push(p);keys.add(k);
 }
