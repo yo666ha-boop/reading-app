@@ -1,4 +1,4 @@
-name: v11 UNIT supplemental curriculum scope QA (18 passages)
+name: v11 UNIT supplemental curriculum scope QA (24 passages)
 on:
   push:
     branches:
@@ -8,6 +8,7 @@ on:
       - 'v11_unit_supplemental_20261114.js'
       - 'v11_unit_supplemental_wave2_20261114.js'
       - 'v11_unit_supplemental_wave3_20261114.js'
+      - 'v11_unit_supplemental_wave4_20261114.js'
       - 'scripts/v11_unit_supplemental_audit.cjs'
       - 'scripts/v11_unit_browser_smoke.cjs'
       - 'scripts/v11_unit_coverage_inventory.cjs'
@@ -20,6 +21,7 @@ on:
       - 'v11_unit_supplemental_20261114.js'
       - 'v11_unit_supplemental_wave2_20261114.js'
       - 'v11_unit_supplemental_wave3_20261114.js'
+      - 'v11_unit_supplemental_wave4_20261114.js'
       - 'scripts/v11_unit_supplemental_audit.cjs'
       - 'scripts/v11_unit_browser_smoke.cjs'
       - 'scripts/v11_unit_coverage_inventory.cjs'
@@ -46,9 +48,9 @@ jobs:
         run: |
           python3 -m http.server 4177 --bind 127.0.0.1 >/tmp/v11-unit-http.log 2>&1 &
           sleep 2
-      - name: Chromium 18 UNIT checkpoints and six-course integration smoke
+      - name: Chromium 24 UNIT checkpoints and six-course integration smoke
         run: node scripts/v11_unit_browser_smoke.cjs
-      - name: Inventory actual UNIT coverage of 1000+18 candidate texts
+      - name: Inventory actual UNIT coverage of 1000+24 candidate texts
         run: node scripts/v11_unit_coverage_inventory.cjs
       - name: Preserve UNIT-by-UNIT coverage report
         uses: actions/upload-artifact@v4
