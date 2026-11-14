@@ -4,9 +4,9 @@
 The 1000-item v11 runtime is made of 168 verified base passages and 832 later-batch passages. The 832 extras were registered in only six late sections (one section for each textbook × grade), so early and middle UNIT/PROGRAM choices did not get the expected reading variety. Prior v11 selector used the **selected section only** despite labeling the selector “小単元上限”.
 
 ## Changes in this branch (not yet released)
-- `v11_multi_passage_architecture.js` treats the selected section as the upper limit and includes all preceding sections in the same grade/textbook source ordering; excludes future sections.
+- `v11_multi_passage_architecture.js` provides **two selectable modes**: studied-through cumulative UNIT scope (default) and exact selected UNIT only. Both exclude future sections. An explicit Story genre is now selectable.
 - Supplements are held outside `V11_EXTRA_PASSAGES` under `V11_UNIT_SUPPLEMENTAL_PASSAGES`. This preserves the exact 168+832=1000 core gates in Batch15, Batch16 and FINAL32.
-- `v11_unit_supplemental_20261114.js` adds six **candidate** original reading texts, one in each course, with 60 A/B evidence-linked questions and 74 aligned slash/translation rows.
+- `v11_unit_supplemental_20261114.js` and `v11_unit_supplemental_wave2_20261114.js` add **12 candidate texts** across 12 different early sections in all six tracks: 120 A/B evidence-linked questions and 146 aligned slash/translation rows.
 - The corresponding source section IDs were found in the audited v10 baseline. This is *not* equivalent to the final direct v7 `単語マスター` / formal grammar gate; candidate status remains pending until that independent cross-check.
 - `v11-preview-publish.yml` is updated to inject the new script only after it is integrated into the protected v11 work branch. This feature branch does not change the public v11-preview and must not directly merge into main.
 
@@ -26,12 +26,19 @@ The 1000-item v11 runtime is made of 168 verified base passages and 832 later-ba
 4. Check duplicates and near duplicates against the full 1000 body corpus, and inspect narrative naturalness, slash meaning and A/B answer appropriateness manually before approval.
 5. Only after passing these gates change `curriculumGate` to `VERIFIED_V7_CANONICAL`, merge to v11 source, and verify new preview deployment. Never fast-forward/merge the divergent v11 branch into main.
 
+## Verified full-corpus coverage (2026-11-14)
+- Full persistent browser inventory: base 168 + core extras 832 + review-only supplemental candidates 12 = **1012 total candidates**, without altering the frozen 1000.
+- **168 school UNIT/PROGRAM sections** across six grade/textbook tracks; **150 still have fewer than two readings**. At least 150 more *approved* texts are needed to give every section a second passage.
+- A stronger three-readings-per-section goal (introductory, standard, applied) currently requires at least **312 further approved passages**; this number is derived from the actual full inventory and excludes the six late-unit groups that already exceed the target.
+- Coverage QA includes 12 selected UNIT checkpoints, cumulative and exact UNIT scopes, genre filter, A/B switch, future-UNIT blocking, and full 1000+12 inventory output. Report is saved as a GitHub Actions artifact (`V11_UNIT_COVERAGE_REPORT_20261114.json`).
+- V7 direct reference and known future-word revisions are documented in `V11_UNIT_V7_ALIGNMENT_20261114.md`. Unit 1-1 NH G1 "friend", Unit 1-1 NH G2 "excited", and Sunshine G3 PROGRAM 1-2 "portion" were removed from candidate passages because of later-UNIT vocabulary risk.
+
 ## Expansion target
-Keep all 1000 frozen passages. Add **at least two independent vetted passages to every under-covered unit** after authoring and verification, starting with early/middle sections of each of six course tracks. Base sections are at least 168 across the six course tracks, so a 2-per-section target implies at least 336 sectional additions (less overlap only where a section is already covered). Track coverage by unit, not merely by total passage count. Short pre-grammar units should use level-appropriate shorter passages rather than artificial 100-word padding.
+Keep the 1000 original passages frozen. First reach **at least two verified passages per UNIT** (150 more needed beyond the current 12 drafts), then work toward **at least three distinct reading experiences per UNIT** (312 more needed from the current 1012-candidate snapshot). Prioritize the 150 still-undercovered early/middle sections and enforce full vocabulary and grammar chronology before approval. Short pre-grammar units should use natural short texts, not forced 100-word padding.
 
 ## Current status
 - Core: 1000 verified items, unchanged.
-- UNIT supplement authored: 6 candidates, original code saved.
-- Automated structural/unit scope QA: **PASS**. Node covers 6 exact section IDs, 60 question-evidence links, 74 slash rows, no future-unit leak or excess full-sentence reuse. Chromium covers all 6 course/UNIT selector cases and A/B selection. Final run 43560195802: SUCCESS (2026-11-14 JST).
+- UNIT supplement authored: **12 candidates**, original source code and A/B question evidence saved.
+- Automated structural/unit QA: **PASS** for 12 exact section IDs, 120 question evidence links, 146 slash rows, no known future-unit leak, and baseline sentence reuse bound. Chromium verifies six tracks and 12 UNIT checkpoints, A/B selection, exact/current UNIT, cumulative scope, story genre. Full inventory run 43560900652: SUCCESS (2026-11-14 JST).
 - Canonical v7 master targeted unit lists were retrieved for all six target sections; full token-by-token vocabulary plus grammar approval: **not yet granted**.
 - Production and public preview: unchanged until explicit integration and full smoke test.
