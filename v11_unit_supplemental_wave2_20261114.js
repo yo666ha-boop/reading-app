@@ -40,7 +40,7 @@ const rows=[
  meta:['V11-UNIT-NH-G1-U1-2-002','ニューホライズン','1','Unit 1-2','A Rugby Fan and a Soccer Player'],
  text:[
  ['I like rugby.','私はラグビーが好きです。','I like / rugby.','私は好きです / ラグビーが'],
- ['My friend likes soccer.','私の友達はサッカーが好きです。','My friend likes / soccer.','友達は好きです / サッカーが'],
+ ['My friend is from Japan.','私の友達は日本出身です。','My friend is from / Japan.','私の友達は〜出身です / 日本'],
  ['I often watch rugby with my friends.','私はよく友達とラグビーを見ます。','I often watch / rugby / with my friends.','私はよく見ます / ラグビーを / 友達と'],
  ['I am a rugby fan.','私はラグビーファンです。','I am / a rugby fan.','私は〜です / ラグビーファン'],
  ['Do you watch rugby?','あなたはラグビーを見ますか。','Do you watch / rugby?','あなたは見ますか / ラグビーを'],
@@ -60,7 +60,7 @@ const rows=[
  [7,'5. 話し手が友達とするスポーツは何ですか。英語で答えなさい。','soccer','play の目的語です。']
  ],
  B:[
- [1,'1. 友達が好きなスポーツは何ですか。英語で答えなさい。','soccer','likes の後ろを確認します。'],
+ [1,'1. 友達はどこの国の出身ですか。英語で答えなさい。','Japan','from の後ろの国名を確認します。'],
  [4,'2. 話し手は何を見るかと質問されていますか。英語で答えなさい。','rugby','watch の目的語を読みます。'],
  [5,'3. 話し手はラグビーを見ますか。Yes / No で答えなさい。','Yes','Yes, I do. と返答しています。'],
  [8,'4. 友達は何のファンですか。英語で答えなさい。','soccer','soccer fan とあります。'],
