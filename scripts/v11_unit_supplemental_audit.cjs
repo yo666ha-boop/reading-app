@@ -65,7 +65,13 @@ const canonicalNewWordSentinels={
 const futureWordBlockers={
  'ニューホライズン|1|Unit 1-1':/\bfriends?\b/i,
  'ニューホライズン|2|Unit 1-1':/\bexcited\b/i,
- 'サンシャイン|3|PROGRAM 1-2':/\bportions?\b/i
+ 'サンシャイン|3|PROGRAM 1-2':/\bportions?\b/i,
+ 'サンシャイン|1|PROGRAM 1-3':/\b(picture|watch|artist)\b/i,
+ 'ニューホライズン|1|Unit 1-3':/\b(she's|he's|team)\b/i,
+ 'サンシャイン|2|PROGRAM 2-1':/\b(coach|believe|university)\b/i,
+ 'ニューホライズン|2|Unit 1-3':/\b(culture|painting|surprised)\b/i,
+ 'サンシャイン|3|PROGRAM 2-1':/\b(since|habit|concentrate)\b/i,
+ 'ニューホライズン|3|Unit 1-3':/\b(scroll|roots|influence|technique)\b/i
 };
 
 const ids=new Set(),bodies=new Set();
