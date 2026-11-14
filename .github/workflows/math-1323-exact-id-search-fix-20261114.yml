@@ -1,0 +1,53 @@
+name: Math 1323 exact-ID search fix (isolated)
+on:
+  push:
+    branches:
+      - math-problem-bank-bootstrap
+    paths:
+      - math-bank/app/patch_exact_id_search_1323.py
+permissions:
+  contents: write
+concurrency:
+  group: math-1323-exact-id-fix
+  cancel-in-progress: false
+jobs:
+  isolated-search-fix:
+    if: github.repository == 'yo666ha-boop/reading-app'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b163ceea73d27597364c9af683
+        with:
+          ref: math-problem-bank-bootstrap
+          persist-credentials: true
+          fetch-depth: 1
+      - name: Guard original SHA and apply 99-byte deterministic patch
+        run: python math-bank/app/patch_exact_id_search_1323.py
+      - name: Syntax check embedded script and exact hash
+        shell: bash
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'),crypto=require('crypto'),vm=require('vm');
+          const path='math-bank/public-origin/index.html';
+          const b=fs.readFileSync(path);
+          const got=crypto.createHash('sha256').update(b).digest('hex');
+          const expected='8f367f2778b4ce6490fecebd067f82d14d082c7de084ca5061388240b2989cdb';
+          if(got!==expected)throw Error('SHA256 mismatch '+got);
+          const s=b.toString('utf8'),start=s.indexOf('<script>'),end=s.lastIndexOf('</script>');
+          if(start<0||end<start)throw Error('inline script missing');
+          new vm.Script(s.slice(start+8,end));
+          if(!s.includes('exactId!==null?r.id===exactId'))throw Error('exact ID guard missing');
+          console.log('PASS syntax, exact SHA256',got);
+          NODE
+          git diff --check
+      - name: Commit only math isolated index (keep source exact immutable)
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- math-bank/public-origin/index.html
+          if git diff --cached --quiet; then
+            echo 'NO_CHANGE already patched'
+          else
+            git commit -m 'math: fix exact ID search returning related variants'
+            git push origin HEAD:math-problem-bank-bootstrap
+          fi
