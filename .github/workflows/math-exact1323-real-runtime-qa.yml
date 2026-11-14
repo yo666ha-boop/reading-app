@@ -1,0 +1,93 @@
+name: Math Exact1323 Real Runtime QA
+
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - '.github/workflows/math-exact1323-real-runtime-qa.yml'
+      - 'math-bank/public-origin/index.html'
+      - 'math-bank/public-origin/index1323-exact.html'
+      - 'math-bank/app/test_exact1323_live_origin.cjs'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: math-exact1323-real-runtime-qa
+  cancel-in-progress: false
+
+jobs:
+  exact-byte-identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Confirm exact source identity and HTML embed
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,re
+          root=Path('math-bank/public-origin')
+          first=(root/'index.html').read_bytes()
+          twin=(root/'index1323-exact.html').read_bytes()
+          expected='47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521'
+          assert len(first)==6819806, ('bytes',len(first))
+          assert hashlib.sha256(first).hexdigest()==expected, 'source SHA256'
+          assert first==twin, 'source twin mismatch'
+          html=first.decode('utf-8')
+          assert 'const EMBEDDED_RECORDS=' in html, 'embedded records absent'
+          assert '1323実データゲート' in html, 'real data gate absent'
+          assets=len(re.findall(r'data:image/[^;]+;base64,',html))
+          assert assets==282, ('assets',assets)
+          assert '<TOOL_ARGUMENT_TOO_LARGE>' not in html
+          print('PASS exact source bytes=6819806 sha256='+expected+' embedded_data=present assets=282')
+          PY
+
+  real-runtime-browser:
+    needs: exact-byte-identity
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit, fire-emulation]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser engine
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0
+          if [ "${{ matrix.browser }}" = "fire-emulation" ]; then
+            npx playwright install --with-deps chromium
+          else
+            npx playwright install --with-deps "${{ matrix.browser }}"
+          fi
+      - name: Launch local HTTP exact runtime
+        run: |
+          set -euo pipefail
+          nohup python3 -m http.server 8765 --bind 127.0.0.1 --directory math-bank/public-origin >/tmp/math1323-http.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsSI http://127.0.0.1:8765/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/math1323-http.log
+          exit 1
+      - name: Verify actual app filters, 1323 data, reload, print, A4 and errors
+        env:
+          BROWSER: ${{ matrix.browser }}
+          BASE_URL: http://127.0.0.1:8765/
+        run: node math-bank/app/test_exact1323_live_origin.cjs
+
+  release-policy:
+    needs: [exact-byte-identity, real-runtime-browser]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Keep strict release and physical Fire gate separate
+        run: |
+          echo 'Cross-browser engines tested: Chromium, Firefox, WebKit (iPhone viewport), Fire/Silk emulation.'
+          echo 'Real physical Fire device is NOT tested here.'
+          echo 'Do NOT set PUBLICATION_READY=true based on this CI workflow alone.'
