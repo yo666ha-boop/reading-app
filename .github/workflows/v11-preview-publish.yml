@@ -66,6 +66,9 @@ jobs:
           s = s.replace('src="v11_multi_passage_architecture.js"', f'src="v11_multi_passage_architecture.js?v={sha}"')
           s = s.replace('src="v11_candidate_list_ui.js"', f'src="v11_candidate_list_ui.js?v={sha}"')
           s = s.replace('src="v11_easy_support_notes.js"', f'src="v11_easy_support_notes.js?v={sha}"')
+          # Supplemental UNIT texts are independent of the frozen 1000-item registry.
+          if '<script src="v11_unit_supplemental_20261114.js"></script>' not in s:
+              s = s.replace('</body></html>', '<script src="v11_unit_supplemental_20261114.js"></script>\n</body></html>')
           p.write_text(s, encoding='utf-8')
           PY
           grep -q 'v11_multi_passage_architecture.js?v=' public/v11-preview/index.html
@@ -73,6 +76,8 @@ jobs:
           grep -q 'v11_batch01_passages_001_050.js' public/v11-preview/index.html
           grep -q 'v11_batch01_uniqueness_repair.js' public/v11-preview/index.html
           grep -q 'v11_batch01_grammar_repair.js' public/v11-preview/index.html
+          grep -q 'v11_unit_supplemental_20261114.js' public/v11-preview/index.html
+          test -f public/v11-preview/v11_unit_supplemental_20261114.js
           test -f public/v11-preview/v11_multi_passage_architecture.js
           test -f public/v11-preview/v11_candidate_list_ui.js
           test -f public/v11-preview/v11_easy_support_notes.js
