@@ -15,7 +15,13 @@ const cases=[
  {textbook:'サンシャイン',grade:'2',major:'PROGRAM 1',section:'PROGRAM 1-3',id:'V11-UNIT-SS-G2-P1-3-002'},
  {textbook:'ニューホライズン',grade:'2',major:'Unit 1',section:'Unit 1-2',id:'V11-UNIT-NH-G2-U1-2-002'},
  {textbook:'サンシャイン',grade:'3',major:'PROGRAM 1',section:'PROGRAM 1-3',id:'V11-UNIT-SS-G3-P1-3-002'},
- {textbook:'ニューホライズン',grade:'3',major:'Unit 1',section:'Unit 1-2',id:'V11-UNIT-NH-G3-U1-2-002'}
+ {textbook:'ニューホライズン',grade:'3',major:'Unit 1',section:'Unit 1-2',id:'V11-UNIT-NH-G3-U1-2-002'},
+ {textbook:'サンシャイン',grade:'1',major:'PROGRAM 1',section:'PROGRAM 1-3',id:'V11-UNIT-SS-G1-P1-3-003'},
+ {textbook:'ニューホライズン',grade:'1',major:'Unit 1',section:'Unit 1-3',id:'V11-UNIT-NH-G1-U1-3-003'},
+ {textbook:'サンシャイン',grade:'2',major:'PROGRAM 2',section:'PROGRAM 2-1',id:'V11-UNIT-SS-G2-P2-1-003'},
+ {textbook:'ニューホライズン',grade:'2',major:'Unit 1',section:'Unit 1-3',id:'V11-UNIT-NH-G2-U1-3-003'},
+ {textbook:'サンシャイン',grade:'3',major:'PROGRAM 2',section:'PROGRAM 2-1',id:'V11-UNIT-SS-G3-P2-1-003'},
+ {textbook:'ニューホライズン',grade:'3',major:'Unit 1',section:'Unit 1-3',id:'V11-UNIT-NH-G3-U1-3-003'}
 ];
 (async()=>{
  const browser=await chromium.launch({headless:true});
@@ -27,7 +33,8 @@ const cases=[
  await page.addScriptTag({url:origin+'/v11_candidate_list_ui.js'});
  await page.addScriptTag({url:origin+'/v11_unit_supplemental_20261114.js'});
  await page.addScriptTag({url:origin+'/v11_unit_supplemental_wave2_20261114.js'});
- await page.waitForFunction(()=>window.V11_UNIT_SUPPLEMENTAL_STATE?.count===12);
+ await page.addScriptTag({url:origin+'/v11_unit_supplemental_wave3_20261114.js'});
+ await page.waitForFunction(()=>window.V11_UNIT_SUPPLEMENTAL_STATE?.count===18);
  assert.equal(await page.locator('#v11PassageVariant').count(),1);
  let checked=0;
  for(const c of cases){
