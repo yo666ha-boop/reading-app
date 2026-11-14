@@ -15,6 +15,8 @@ assert.equal(window.V11_MULTI_PASSAGE_STATE.extraPassages,before,'supplements mu
 assert.equal(window.V11_UNIT_SUPPLEMENTAL_STATE.count,6);
 assert.equal(window.V11_UNIT_SUPPLEMENTAL_STATE.sections,6);
 const supplements=Object.values(window.V11_UNIT_SUPPLEMENTAL_PASSAGES).flat();
+for(const p of supplements)assert.ok((window.V11_UNIT_SUPPLEMENTAL_PASSAGES[window.V11_PASSAGE_REGISTRY_KEY(p)]||[]).some(v=>v.id===p.id),
+  'normalized section key lost '+p.id);
 assert.equal(supplements.length,6);
 const baselines={
  'サンシャイン|1|PROGRAM 1-1':['v10_data_sunshine_g1_program1.js','V10_PASSAGES'],
@@ -77,7 +79,7 @@ for(const p of supplements){
  const document={getElementById:id=>({value:values[id]})};
  const localWindow={V11_UNIT_SUPPLEMENTAL_PASSAGES:window.V11_UNIT_SUPPLEMENTAL_PASSAGES};
  const env={window:localWindow,document,dataset:()=>base,registry:{},seen:new Set(),
-  keyOf:o=>[o.textbook,o.grade,o.section].join('|'),
+  keyOf:o=>[o.textbook,String(o.grade),String(o.section).replace(/^(program|unit)\s*/i,m=>m.trim().toUpperCase()+' ')].join('|'),
   wordCount:()=>100,matchesWord:()=>true,matchesPattern:()=>true};
  const scope=vm.runInNewContext('('+rangeDefinition+')',env);
  env.rangeKeys=scope;
