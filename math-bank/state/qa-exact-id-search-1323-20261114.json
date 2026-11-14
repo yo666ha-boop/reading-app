@@ -1,6 +1,6 @@
 {
   "project": "みかみ塾 数学問題プリント作成アプリ",
-  "recorded_at_jst": "2026-11-14T14:36:47+09:00",
+  "recorded_at_jst": "2026-11-14T14:46:01+09:00",
   "source_repository": "yo666ha-boop/reading-app",
   "branch": "math-problem-bank-bootstrap",
   "target": "isolated 1323 real records",
@@ -75,7 +75,7 @@
   },
   "identified_bug": "Searching full question ID matched multiple records (including related/generated variants) because only substring match was implemented.",
   "patch": "When search text exactly matches an existing record ID, match that ID only; otherwise preserve keyword/substring search; existing grade/book/kind filters remain in effect.",
-  "status": "ISOLATED_PREVIEW_VALIDATED_16_OF_16_AND_ALL_1323_EXACT_IDS_CI_PASS",
+  "status": "ISOLATED_PREVIEW_READY_AND_16_16_BROWSER_ALL1323_IDS_66_MATH_AND_LEGACY_AUDIT_PASSED",
   "release_note": "Production not changed. Original 1323 exact source and main untouched. Physical Amazon Fire device verification pending; independently recomputing all mathematical answers and future variant expansion are not implied by these software tests.",
   "immutable_source": {
     "path": "math-bank/public-origin/index1323-exact.html",
@@ -111,5 +111,46 @@
     "Physical Fire actual device smoke test before strict release",
     "Review Grade/Unit taxonomy naming and question-answer mathematics independently of embedded audit flags",
     "Only expand variants from reverified canonical source questions"
-  ]
+  ],
+  "legacy_browser_ci_repaired": {
+    "workflow": ".github/workflows/math-problem-bank-audit.yml",
+    "root_cause": "Playwright 1.55.0 cannot install browsers on default Ubuntu 26.04 runners",
+    "fix": "Set only browser-regression job runs-on to ubuntu-24.04; leave all other jobs and strict-release gates intact",
+    "run_id": 43562964528,
+    "conclusion": "success",
+    "jobs_completed_successfully": [
+      "inventory-and-classify",
+      "app-shell-and-data-gate",
+      "browser-regression",
+      "actions-artifact-recovery-scan",
+      "strict-release-after-browser",
+      "record-ci-result"
+    ],
+    "job_failures": 0,
+    "legacy_workflow_status": "PASS",
+    "caveat": "Other older workflows such as math-wire-post-canonical-expansion have separate failures and were not modified."
+  },
+  "authoritative_drive_readback_reference": {
+    "name": "mikami_math_1323_singlefile_exactbytes_20260901T1910JST.html",
+    "drive_file_id": "1l29gpomqPrEEqWCnlCuZH1BiZSw5lg4y",
+    "bytes": 6819806,
+    "sha256": "47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521",
+    "matches_immutable_github_original": true
+  },
+  "educational_content_report": {
+    "path": "math-bank/state/app1323-content-gaps-and-independent-66-arithmetic-20261114.json",
+    "all_grade_difficulty_unknown": 1323,
+    "originals_have_source_filename_based_major": 1271,
+    "independently_recalculated_safe_basic_numeric": 66,
+    "recomputation_match": 66,
+    "remainder_originals_not_recomputed": 1205,
+    "do_not_claim_full_answer_verification": true
+  },
+  "ci_status_summary": {
+    "isolated_final_preview_live_qa": "PASS 16/16",
+    "isolated_all_ids_search_ci": "PASS 1323/1323",
+    "independent_basic_arithmetic_ci": "PASS 66/66",
+    "legacy_math_problem_bank_audit": "PASS",
+    "other_legacy_math_wire_expansion": "HAS_FAILURES_OUTSIDE_THIS_PATCH"
+  }
 }
