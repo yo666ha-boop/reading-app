@@ -25,20 +25,20 @@ make(['V11-UNIT-SS-G1-P1-1-001','サンシャイン','1','PROGRAM 1-1','Hana and
 ["I'm a junior high school student.",'私は中学生です。',"I'm / a junior high school student.",'私は〜です / 中学生'],
 ['My friend is Ken.','私の友達はケンです。','My friend is / Ken.','私の友達は〜です / ケン'],
 ['Ken is friendly.','ケンは人なつっこいです。','Ken is / friendly.','ケンは〜です / 人なつっこい'],
-['My teacher is kind.','私の先生は親切です。','My teacher is / kind.','私の先生は〜です / 親切な'],
+['My teacher is friendly and kind.','私の先生は親しみやすく親切です。','My teacher is / friendly and kind.','私の先生は〜です / 親しみやすく親切な'],
 ['I like music.','私は音楽が好きです。','I like / music.','私は好きです / 音楽が'],
-['I play the trumpet.','私はトランペットを演奏します。','I play / the trumpet.','私は演奏します / トランペットを'],
-['I practice every Wednesday.','私は毎週水曜日に練習します。','I practice / every Wednesday.','私は練習します / 毎週水曜日に'],
-['I like basketball, too.','私はバスケットボールも好きです。','I like / basketball, too.','私は好きです / バスケットボールも'],
+['I play the trumpet at school.','私は学校でトランペットを演奏します。','I play / the trumpet / at school.','私は演奏します / トランペットを / 学校で'],
+['Every Wednesday, I practice the trumpet.','毎週水曜日に私はトランペットを練習します。','Every Wednesday, / I practice / the trumpet.','毎週水曜日に / 私は練習します / トランペットを'],
+['I like basketball at school, too.','私は学校でのバスケットボールも好きです。','I like / basketball / at school, too.','私は好きです / バスケットボールが / 学校でも'],
 ['Ken is not shy.','ケンは恥ずかしがりではありません。','Ken is not / shy.','ケンは〜ではありません / 恥ずかしがり'],
-['My school is really great.','私の学校は本当にすばらしいです。','My school is / really great.','私の学校は〜です / 本当にすばらしい']
+['I really like my school.','私は自分の学校が本当に好きです。','I really like / my school.','私は本当に好きです / 自分の学校が']
 ],
 [
 [1,'1. 話し手の名前を英語で答えなさい。','Hana','自己紹介で名前を述べています。'],
 [4,'2. ケンはどのような人ですか。本文から英語で答えなさい。','friendly','ケンを表す形容詞です。'],
 [5,'3. 先生はどのような人ですか。本文から英語で答えなさい。','kind','先生を説明している語です。'],
 [7,'4. 話し手が演奏する楽器を英語で答えなさい。','the trumpet','play の後ろを確認します。'],
-[8,'5. 話し手はいつ練習しますか。英語で答えなさい。','every Wednesday','practice の後ろに時を表す語句があります。']
+[8,'5. 話し手はいつ練習しますか。英語で答えなさい。','Every Wednesday','文頭に練習する曜日が書かれています。']
 ],
 [
 [2,'1. ハナは何の生徒ですか。本文から英語で答えなさい。','a junior high school student','自己紹介で学校段階を説明しています。'],
