@@ -69,6 +69,7 @@ jobs:
           # Supplemental UNIT texts are independent of the frozen 1000-item registry.
           if '<script src="v11_unit_supplemental_20261114.js"></script>' not in s:
               s = s.replace('</body></html>', '<script src="v11_unit_supplemental_20261114.js"></script>\n</body></html>')
+          s = s.replace('src="v11_unit_supplemental_20261114.js"', f'src="v11_unit_supplemental_20261114.js?v={sha}"')
           p.write_text(s, encoding='utf-8')
           PY
           grep -q 'v11_multi_passage_architecture.js?v=' public/v11-preview/index.html
