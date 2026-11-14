@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Guarded 1323-question isolated math-app exact ID search fix.
 
-Only math-bank/public-origin/index.html is changed. The original
+Only math-bank/public-origin/index.html is changed. Pinned checkout SHA verified. The original
 index1323-exact.html, main branch and production deploy are untouched.
 """
 from __future__ import annotations
