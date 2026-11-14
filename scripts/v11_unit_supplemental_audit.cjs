@@ -11,20 +11,27 @@ const ctx={window,console,setTimeout:()=>0,CustomEvent:class{},Event:class{}};
 vm.runInNewContext(arch,ctx,{filename:'v11_multi_passage_architecture.js'});
 const before=window.V11_MULTI_PASSAGE_STATE.extraPassages;
 vm.runInNewContext(source,ctx,{filename:'v11_unit_supplemental_20261114.js'});
+vm.runInNewContext(read('v11_unit_supplemental_wave2_20261114.js'),ctx,{filename:'v11_unit_supplemental_wave2_20261114.js'});
 assert.equal(window.V11_MULTI_PASSAGE_STATE.extraPassages,before,'supplements must not affect frozen core registry');
-assert.equal(window.V11_UNIT_SUPPLEMENTAL_STATE.count,6);
-assert.equal(window.V11_UNIT_SUPPLEMENTAL_STATE.sections,6);
+assert.equal(window.V11_UNIT_SUPPLEMENTAL_STATE.count,12);
+assert.equal(window.V11_UNIT_SUPPLEMENTAL_STATE.sections,12);
 const supplements=Object.values(window.V11_UNIT_SUPPLEMENTAL_PASSAGES).flat();
 for(const p of supplements)assert.ok((window.V11_UNIT_SUPPLEMENTAL_PASSAGES[window.V11_PASSAGE_REGISTRY_KEY(p)]||[]).some(v=>v.id===p.id),
   'normalized section key lost '+p.id);
-assert.equal(supplements.length,6);
+assert.equal(supplements.length,12);
 const baselines={
  'サンシャイン|1|PROGRAM 1-1':['v10_data_sunshine_g1_program1.js','V10_PASSAGES'],
  'ニューホライズン|1|Unit 1-1':['v10_data_newhorizon_g1.js','V10_PASSAGES'],
  'サンシャイン|2|PROGRAM 1-2':['v10_data_sunshine_g2_program1.js','V10_PASSAGES_G2_SS'],
  'ニューホライズン|2|Unit 1-1':['v10_data_newhorizon_g2_unit0_1.js','V10_PASSAGES_G2_NH'],
  'サンシャイン|3|PROGRAM 1-2':['v10_data_sunshine_g3_program1.js','V10_PASSAGES_G3_SS'],
- 'ニューホライズン|3|Unit 1-1':['v10_data_newhorizon_g3_unit0_1.js','V10_PASSAGES_G3_NH']
+ 'ニューホライズン|3|Unit 1-1':['v10_data_newhorizon_g3_unit0_1.js','V10_PASSAGES_G3_NH'],
+ 'サンシャイン|1|PROGRAM 1-2':['v10_data_sunshine_g1_program1.js','V10_PASSAGES'],
+ 'ニューホライズン|1|Unit 1-2':['v10_data_newhorizon_g1_unit1_2.js','V10_PASSAGES'],
+ 'サンシャイン|2|PROGRAM 1-3':['v10_data_sunshine_g2_program1.js','V10_PASSAGES_G2_SS'],
+ 'ニューホライズン|2|Unit 1-2':['v10_data_newhorizon_g2_unit0_1.js','V10_PASSAGES_G2_NH'],
+ 'サンシャイン|3|PROGRAM 1-3':['v10_data_sunshine_g3_program1.js','V10_PASSAGES_G3_SS'],
+ 'ニューホライズン|3|Unit 1-2':['v10_data_newhorizon_g3_unit0_1.js','V10_PASSAGES_G3_NH']
 };
 const cmp=s=>String(s).replace(/\s*\/\s*/g,' ').replace(/\s+/g,' ').trim();
 const ids=new Set(),bodies=new Set();
@@ -96,7 +103,7 @@ for(const p of supplements){
  assert.ok(records.some(r=>r.passage.id==='BASE'),'current base item missing');
  assert.ok(!records.some(r=>r.passage.id==='FUTURE'),'future passage leaked '+p.id);
 }
-console.log('PASS unit supplementary '+supplements.length+' texts / 6 verified baseline section IDs');
+console.log('PASS unit supplementary '+supplements.length+' texts / 12 verified baseline section IDs');
 console.log('PASS '+(supplements.length*10)+' questions with exact passage evidence and '+supplements.reduce((n,p)=>n+p.sentences.length,0)+' slash rows');
-console.log('PASS cumulative scope: studied-through includes previous and excludes future, six course checkpoints');
+console.log('PASS cumulative scope: studied-through includes previous and excludes future, 12 UNIT checkpoints');
 console.log('PASS frozen core count unchanged ('+before+'); new passages remain in separate registry');
