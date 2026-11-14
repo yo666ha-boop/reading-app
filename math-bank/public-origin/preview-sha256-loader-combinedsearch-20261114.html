@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>みかみ塾 数学問題プリント作成アプリ | 検証版</title>
+<style>body{font-family:system-ui,"Noto Sans JP",sans-serif;background:#f3f5f7;color:#182334;margin:0;min-height:100vh;display:grid;place-items:center}main{max-width:550px;margin:16px;padding:30px;background:#fff;border-radius:16px;border:1px solid #dde3e9}h1{font-size:21px}p{line-height:1.8}.error{color:#a12323;white-space:pre-wrap}</style>
+</head><body>
+<main><h1>みかみ塾 数学問題プリント作成アプリ</h1>
+<p id="status" role="status">原問題1,271問・類題52問・画像282点を検証して読み込んでいます。</p>
+</main>
+<script>
+(async function(){
+  const source="https://raw.githubusercontent.com/yo666ha-boop/reading-app/f0be6dbfab113ed1558bd46ba80e2e2e88575a33/math-bank/public-origin/index.html";
+  const expectedLength=6819914;
+  const expectedSha256="64f4f2294c373b19922da7ec470a16860ccd4e8db854cbab15fb5122c53e09a6";
+  try {
+    const response=await fetch(source,{cache:"force-cache"});
+    if(!response.ok)throw new Error("原本取得 HTTP "+response.status);
+    const buffer=await response.arrayBuffer();
+    if(buffer.byteLength!==expectedLength)throw new Error("原本サイズ不一致 "+buffer.byteLength);
+    const digest=await crypto.subtle.digest("SHA-256",buffer);
+    const hex=Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,"0")).join("");
+    if(hex!==expectedSha256)throw new Error("原本SHA256不一致。読み込みを中止しました。");
+    const html=new TextDecoder("utf-8",{fatal:true}).decode(buffer);
+    if(!html.includes("1323実データゲート")||!html.includes("exactId!=null?r.id===exactId"))throw new Error("アプリ本体の識別に失敗しました。");
+    document.open();
+    document.write(html);
+    document.close();
+  } catch(error) {
+    const el=document.getElementById("status");
+    el.className="error";
+    el.textContent="安全確認のためアプリの起動を中止しました。\n"+String(error)+"\nネット接続を確認して再読み込みしてください。";
+    console.error("MATH1323_LOADER_GATE_FAILED",error);
+  }
+})();
+</script></body></html>
