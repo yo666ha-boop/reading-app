@@ -1,0 +1,88 @@
+{
+  "project": "みかみ塾 数学問題プリント作成アプリ",
+  "recorded_at_jst": "2026-11-14T14:42:50+09:00",
+  "repo": "yo666ha-boop/reading-app",
+  "branch": "math-problem-bank-bootstrap",
+  "source": {
+    "path": "math-bank/public-origin/index.html",
+    "sha256": "64f4f2294c373b19922da7ec470a16860ccd4e8db854cbab15fb5122c53e09a6",
+    "original_immutable_unchanged": true
+  },
+  "educational_content": {
+    "original_questions": 1271,
+    "verified_variants": 52,
+    "total": 1323,
+    "original_books": {
+      "Winpass": 717,
+      "実力錬成": 237,
+      "Standard": 317
+    },
+    "by_grade_with_variants": {
+      "1": 808,
+      "2": 214,
+      "3": 301
+    },
+    "question_formats": {
+      "free_response": 812,
+      "figure_response": 395,
+      "graphical_response": 64
+    },
+    "original_difficulty_unknown": 1271,
+    "variant_difficulty_unknown": 52,
+    "structural_source_filename_as_unit_major": 1271,
+    "source_filename_based_unit_count": 140,
+    "structural_skill_categories": 38,
+    "variant_grade_distribution": {
+      "3": 52
+    },
+    "variant_distinct_parent_questions": 26,
+    "short_question_review_leads": 7,
+    "short_answer_count_under_two_chars": 83,
+    "short_answers_are_not_errors_by_themselves": true,
+    "placeholder_question_count": 0,
+    "placeholder_answer_count": 0,
+    "duplicated_record_ids": 0,
+    "orphan_variant_parent_count": 0,
+    "figure_reference_errors": 0
+  },
+  "independently_recalculated": {
+    "scope": "Only questions with unambiguous standalone basic arithmetic, explicit 計算をしなさい instruction, and integer/decimal numeric answers. Circled subquestion numbers were stripped before parsing; ambiguous OCR fractions, radicals, powers, algebraic variables, or nonnumerical answers were excluded.",
+    "considered_originals": 1271,
+    "independently_evaluable": 66,
+    "matching_original_answers": 66,
+    "discrepancies": 0,
+    "other_questions_outside_scope": 1088,
+    "unsupported_or_ambiguous_expression": 116,
+    "unsupported_answer_or_ambiguous_numeric": 1,
+    "remaining_originals_not_independently_verified": 1205,
+    "no_text_or_answer_modified": true
+  },
+  "ci": {
+    "workflow": ".github/workflows/math-1323-singlefile-regression-20261114.yml",
+    "run_id": 43562844284,
+    "job_id": 132350125649,
+    "status": "success",
+    "checks": [
+      "All 1323 full-ID searches and keyword/partial fallback",
+      "282 image refs and original immutable SHA",
+      "66 exact basic numeric answers independently recomputed"
+    ]
+  },
+  "findings": [
+    "The app software tests pass, but practical curriculum categorization is not finished because all difficulty values are unknown and major unit labels currently represent source document IDs.",
+    "The 52 generated variants cover only Grade 3 and 26 parent questions; broader variants require independent correctness checks.",
+    "Numeric answer validation covers 66 of 1271 originals, not all source questions. Do not imply that remaining 1205 have been recomputed."
+  ],
+  "next_actions": [
+    "Build curriculum unit mapping from actual source documents; preserve original labels separately, and quarantine uncertain mappings.",
+    "Audit original questions and answers using source documents/images; do not accept verification flags as proof.",
+    "Expand verified safe variants gradually after the source and computation checks, preserving parent relationships.",
+    "Perform physical Amazon Fire device verification before production release."
+  ],
+  "release": {
+    "status": "isolated_preview_only",
+    "live_preview": "https://mikami-math-1323-isolated-plo4s1lhx-yo666ha-7357s-projects.vercel.app/",
+    "deployment": "dpl_GUdWtUGjFym5ztDxvLzvh96G4VvB",
+    "production_modified": false
+  }
+}
