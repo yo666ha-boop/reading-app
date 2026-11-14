@@ -18,16 +18,16 @@ rows:[
 ['I like math, too.','私は数学も好きです。','I like / math, too.','私は好きです / 数学も'],
 ['My teacher is polite and kind.','先生は礼儀正しく親切です。','My teacher is / polite and kind.','先生は〜です / 礼儀正しく親切な'],
 ['My friend is good at P.E.','友達は体育が得意です。','My friend is good at / P.E.','友達は得意です / 体育が'],
-['We are fans of movies.','私たちは映画のファンです。','We are / fans / of movies.','私たちは〜です / ファン / 映画の'],
+['I am a fan of sports movies.','私はスポーツ映画のファンです。','I am / a fan / of sports movies.','私は〜です / ファン / スポーツ映画の'],
 ['This city is nice.','この街はすてきです。','This city is / nice.','この街は〜です / すてきな'],
-['Our class is great.','私たちのクラスはすばらしいです。','Our class is / great.','私たちのクラスは〜です / すばらしい']
+['This class is great.','このクラスはすばらしいです。','This class is / great.','このクラスは〜です / すばらしい']
 ],
 A:[
 [0,'1. 話し手は何を紹介していますか。英語で答えなさい。','my new class','This is に続く名詞です。'],
 [2,'2. 話し手はどんな性格ですか。英語で答えなさい。','quiet','be 動詞の後ろの性格表現です。'],
 [4,'3. 話し手がとても好きな教科は何ですか。英語で答えなさい。','science','like の目的語です。'],
 [7,'4. 先生はどのような人ですか。英語で答えなさい。','polite and kind','先生を説明する2語の表現です。'],
-[9,'5. 何のファンですか。英語で答えなさい。','movies','fans of の後ろにあります。']],
+[9,'5. 何のファンですか。英語で答えなさい。','sports movies','fan of の後ろにあります。']],
 B:[
 [1,'1. 話し手が暮らす場所を本文から英語で答えなさい。','this city','in に続く場所です。'],
 [3,'2. 物静かであるほか、どんな性格ですか。英語で答えなさい。','cheerful','too を含む文にあります。'],
@@ -67,18 +67,18 @@ B:[
 {
 meta:['V11-UNIT-SS-G2-P2-1-003','サンシャイン','2','PROGRAM 2-1','Baseball for Everyone'],
 rows:[
-['I heard about a baseball project in Africa.','私はアフリカの野球の取り組みについて聞きました。','I heard about / a baseball project / in Africa.','私は聞きました / 野球の取り組みについて / アフリカの'],
+['I heard about a new sports project in Africa.','私はアフリカの新しいスポーツの取り組みについて聞きました。','I heard about / a new sports project / in Africa.','私は聞きました / 新しいスポーツの取り組みについて / アフリカの'],
 ['A school in the city has a new project.','街の学校には新しい取り組みがあります。','A school in the city / has / a new project.','街の学校には / あります / 新しい取り組みが'],
 ['The project can promote baseball.','その取り組みは野球を広めることができます。','The project / can promote / baseball.','その取り組みは / 広められます / 野球を'],
 ['Many children are interested in the game.','多くの子どもたちはその競技に興味があります。','Many children / are interested in / the game.','多くの子どもたちは / 興味があります / その競技に'],
 ['One person is very passionate about baseball.','ある人は野球にとても情熱を持っています。','One person / is very passionate / about baseball.','ある人は / とても情熱的です / 野球について'],
 ['The work is sometimes difficult.','その活動はときどき大変です。','The work is / sometimes difficult.','その活動は〜です / ときどき大変な'],
 ['Games take place at the local park.','試合は地元の公園で行われます。','Games take place / at the local park.','試合が行われます / 地元の公園で'],
-['The project has a long history.','その取り組みには長い歴史があります。','The project has / a long history.','その取り組みにはあります / 長い歴史が'],
+['Its history is important to the children.','その歴史は子どもたちにとって重要です。','Its history is / important / to the children.','その歴史は〜です / 重要な / 子どもたちにとって'],
 ['We should help the children.','私たちは子どもたちを助けるべきです。','We should help / the children.','私たちは助けるべきです / 子どもたちを'],
 ['My friend can root for the team.','友達はそのチームを応援できます。','My friend can root for / the team.','友達は応援できます / そのチームを'],
-['I hope the project will be successful.','その取り組みが成功することを願っています。','I hope / the project will be / successful.','私は願っています / その取り組みが〜になることを / 成功した'],
-['Baseball can bring people together.','野球は人々を結びつけられます。','Baseball can bring / people together.','野球は結びつけられます / 人々を']
+['We hope this project will be successful.','私たちはこの取り組みの成功を願っています。','We hope / this project will be / successful.','私たちは願っています / この取り組みが〜になることを / 成功した'],
+['People can enjoy baseball together.','人々は一緒に野球を楽しめます。','People can enjoy / baseball together.','人々は楽しめます / 野球を一緒に']
 ],
 A:[
 [0,'1. 話し手はどこの野球の取り組みについて聞きましたか。英語で答えなさい。','Africa','in に続く場所です。'],
@@ -90,7 +90,7 @@ B:[
 [1,'1. 街の学校は何を持っていますか。英語で答えなさい。','a new project','has の目的語です。'],
 [4,'2. その人はどのような人ですか。英語で答えなさい。','very passionate','be 動詞の後ろの説明です。'],
 [5,'3. 活動は時々どうですか。英語で答えなさい。','difficult','形容詞を抜き出します。'],
-[7,'4. その取り組みには何がありますか。英語で答えなさい。','a long history','has の後ろです。'],
+[7,'4. 子どもたちにとって大切なものは何ですか。英語で答えなさい。','Its history','主語がその歴史を指します。'],
 [9,'5. 友達は何を応援できますか。英語で答えなさい。','the team','root for の後ろです。']]
 },
 {
@@ -101,25 +101,25 @@ rows:[
 ['One language was Chinese.','一つの言語は中国語でした。','One language was / Chinese.','一つの言語は〜でした / 中国語'],
 ['The other language was English.','もう一つの言語は英語でした。','The other language was / English.','もう一つの言語は〜でした / 英語'],
 ['My friend found a large sign near the shop.','友達はお店の近くで大きな看板を見つけました。','My friend found / a large sign / near the shop.','友達は見つけました / 大きな看板を / お店の近くで'],
-['The sign was two meters tall.','その看板は高さ2メートルでした。','The sign was / two meters tall.','その看板は〜でした / 高さ2メートル'],
-['We tried to communicate with the shop staff.','私たちは店員と意思疎通しようとしました。','We tried to communicate / with the shop staff.','私たちは意思疎通しようとしました / 店員と'],
-['For example, I used a short English question.','たとえば、私は短い英語の質問を使いました。','For example, / I used / a short English question.','たとえば / 私は使いました / 短い英語の質問を'],
-['My friend used a different word.','友達は別の言葉を使いました。','My friend used / a different word.','友達は使いました / 別の言葉を'],
+['A sign near the shop was two meters tall.','お店の近くの看板は高さ2メートルでした。','A sign near the shop was / two meters tall.','お店の近くの看板は〜でした / 高さ2メートル'],
+['The shop staff and I tried to communicate.','店員と私は意思疎通しようとしました。','The shop staff and I / tried to communicate.','店員と私は / 意思疎通しようとしました'],
+['For example, my first question was in English.','たとえば、最初の質問は英語でした。','For example, / my first question was / in English.','たとえば / 私の最初の質問は〜でした / 英語で'],
+['My friend tried a different word.','友達は別の言葉を試しました。','My friend tried / a different word.','友達は試しました / 別の言葉を'],
 ['The small card was one dollar.','その小さなカードは1ドルでした。','The small card was / one dollar.','その小さなカードは〜でした / 1ドル'],
-['We found a good way to communicate.','私たちは意思疎通する良い方法を見つけました。','We found / a good way / to communicate.','私たちは見つけました / 良い方法を / 意思疎通するための'],
-['I like learning about languages.','私は言語について学ぶことが好きです。','I like / learning about languages.','私は好きです / 言語について学ぶことが']
+['We found a new way to use two languages.','私たちは2つの言語を使う新しい方法を見つけました。','We found / a new way / to use two languages.','私たちは見つけました / 新しい方法を / 2つの言語を使うための'],
+['I like English and Chinese.','私は英語と中国語が好きです。','I like / English and Chinese.','私は好きです / 英語と中国語が']
 ],
 A:[
 [0,'1. 話し手はどこでカードを見つけましたか。英語で答えなさい。','at a shop','場所を表す部分です。'],
 [1,'2. カードにはいくつの言語がありましたか。英語で答えなさい。','two','言語の数です。'],
 [2,'3. カードに書かれた言語の一つは何ですか。英語で答えなさい。','Chinese','一つ目の言語を示します。'],
 [5,'4. 看板の高さは何メートルでしたか。英語で答えなさい。','two meters','長さを表す部分です。'],
-[6,'5. 誰と意思疎通しようとしましたか。英語で答えなさい。','the shop staff','with の後ろです。']],
+[6,'5. 誰と意思疎通しようとしましたか。英語で答えなさい。','The shop staff','主語に店員が含まれています。']],
 B:[
 [3,'1. もう一つの言語は何ですか。英語で答えなさい。','English','other language の後ろです。'],
 [4,'2. 友達は何を見つけましたか。英語で答えなさい。','a large sign','found の目的語です。'],
-[7,'3. たとえば話し手は何を使いましたか。英語で答えなさい。','a short English question','used の目的語です。'],
-[8,'4. 友達はどんな言葉を使いましたか。英語で答えなさい。','a different word','used の目的語です。'],
+[7,'3. 最初の質問は何語でしたか。英語で答えなさい。','English','in の後ろに言語が書かれています。'],
+[8,'4. 友達はどんな言葉を試しましたか。英語で答えなさい。','a different word','tried の目的語です。'],
 [9,'5. 小さなカードはいくらでしたか。英語で答えなさい。','one dollar','値段を表しています。']]
 },
 {
