@@ -72,8 +72,29 @@ const cases=[
  await page.waitForFunction(()=>window.V11_UNIT_RANGE_STATE?.targetSection==='Unit 0');
  let ids=await page.locator('#v11PassageVariant option').evaluateAll(o=>o.map(x=>x.value));
  assert.ok(!ids.includes('V11-UNIT-NH-G1-U1-1-001'),'Future unit leaked into Unit 0');
+ // Exact-section mode is useful for school tests and cannot leak previous units.
+ await page.selectOption('#major',{label:'Unit 1'});
+ await page.selectOption('#section',{label:'Unit 1-2'});
+ await page.selectOption('#v11UnitScope','current-unit');
+ await page.waitForFunction(()=>window.V11_UNIT_RANGE_STATE?.mode==='current-unit'&&
+    window.V11_UNIT_RANGE_STATE?.targetSection==='Unit 1-2');
+ let exactIds=await page.locator('#v11PassageVariant option').evaluateAll(o=>o.map(x=>x.value));
+ assert.ok(exactIds.includes('V11-UNIT-NH-G1-U1-2-002'),'Missing Unit1-2 Wave2');
+ assert.ok(!exactIds.includes('V11-UNIT-NH-G1-U1-1-001'),'Exact Unit1-2 contains previous Unit1-1 text');
+ assert.ok(!exactIds.includes('V10-NH-G1-U0-001'),'Exact Unit1-2 contains Unit0 base text');
+ await page.selectOption('#pattern','story');
+ await page.waitForFunction(()=>Array.from(document.querySelectorAll('#v11PassageVariant option'))
+   .some(o=>o.value==='V11-UNIT-NH-G1-U1-2-002'));
+ let genreIds=await page.locator('#v11PassageVariant option').evaluateAll(o=>o.map(x=>x.value));
+ assert.ok(genreIds.includes('V11-UNIT-NH-G1-U1-2-002'),'Story genre omits supplemental text');
+ await page.selectOption('#pattern','all');
+ await page.selectOption('#v11UnitScope','studied-through');
+ await page.waitForFunction(()=>window.V11_UNIT_RANGE_STATE?.mode==='studied-through'&&
+    window.V11_UNIT_RANGE_STATE?.eligibleSections?.includes('Unit 0'));
+ let cumulative=await page.locator('#v11PassageVariant option').evaluateAll(o=>o.map(x=>x.value));
+ assert.ok(cumulative.includes('V10-NH-G1-U0-001'),'Cumulative mode must include Unit0');
  assert.ok(ids.length>0,'No earlier passage');
  assert.equal(errors.length,0,errors.join('\n'));
- console.log('PASS Chromium UI '+checked+' UNIT checkpoints across 6 courses, A/B switching, no future-UNIT leak');
+ console.log('PASS Chromium UI '+checked+' UNIT checkpoints across 6 courses, A/B switching, exact and cumulative scopes, story filter, no future-UNIT leak');
  await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});
