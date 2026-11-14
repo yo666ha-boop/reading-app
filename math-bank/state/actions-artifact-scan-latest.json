@@ -5,24 +5,546 @@
   "expected_sha256": "eb93279a52dd49191612a52ac0df2df2fdd865c8975d815547daa126b4398175",
   "required_paired_audit": "MATHBANK_FINAL_AUDIT_V2.json",
   "created_since": "2026-08-19T00:00:00Z",
-  "all_artifacts_seen": 907,
-  "candidate_artifacts": 907,
-  "reused_verified_artifacts": 636,
-  "downloaded_artifacts_this_run": 271,
+  "all_artifacts_seen": 925,
+  "candidate_artifacts": 925,
+  "reused_verified_artifacts": 907,
+  "downloaded_artifacts_this_run": 18,
   "canonical_hits": 0,
   "audit_name_hits": 0,
   "valid_audit_hits": 0,
   "paired_recovery_hits": 0,
   "recovery_hint_hits": 0,
   "download_failures": 0,
-  "all_members_sha256_checked": 2172,
-  "all_member_bytes_hashed": 188151707,
+  "all_members_sha256_checked": 2191,
+  "all_member_bytes_hashed": 188611358,
   "zip_signature_members": 0,
   "oversize_members_skipped": 0,
   "scan_complete": true,
   "canonical_absence_proven": true,
   "listing_errors": [],
   "artifacts": [
+    {
+      "artifact_id": 14100506400,
+      "name": "math-browser-regression-diagnostics",
+      "size_in_bytes": 1009,
+      "created_at": "2026-11-14T05:26:25Z",
+      "updated_at": "2026-11-14T05:26:25Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 43561521425,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "math-problem-bank-bootstrap",
+        "head_sha": "c63aad997dfd9ff084d0b17221b3a1d4865b5b42"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 2,
+        "members_sha256_checked": 2,
+        "member_bytes_hashed": 2610,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1009
+    },
+    {
+      "artifact_id": 14099424868,
+      "name": "v11-unit-coverage-report",
+      "size_in_bytes": 1545,
+      "created_at": "2026-11-14T05:26:15Z",
+      "updated_at": "2026-11-14T05:26:15Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 43561465860,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "work/english-reading-unit-expansion-20261114",
+        "head_sha": "e23b0aa84015e6af3511371e340d8794e9b27b19"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 28307,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1545
+    },
+    {
+      "artifact_id": 14100317326,
+      "name": "v11-unit-coverage-report",
+      "size_in_bytes": 1545,
+      "created_at": "2026-11-14T05:25:31Z",
+      "updated_at": "2026-11-14T05:25:31Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 43561404424,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "work/english-reading-unit-expansion-20261114",
+        "head_sha": "05998531fcb3c0d3c4337548f6354a91067ff638"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 28307,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1545
+    },
+    {
+      "artifact_id": 14100800890,
+      "name": "v11-unit-coverage-report",
+      "size_in_bytes": 1545,
+      "created_at": "2026-11-14T05:25:26Z",
+      "updated_at": "2026-11-14T05:25:26Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 43561400182,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "work/english-reading-unit-expansion-20261114",
+        "head_sha": "05998531fcb3c0d3c4337548f6354a91067ff638"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 28307,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1545
+    },
+    {
+      "artifact_id": 14099254869,
+      "name": "v11-unit-coverage-report",
+      "size_in_bytes": 1270,
+      "created_at": "2026-11-14T05:24:29Z",
+      "updated_at": "2026-11-14T05:24:29Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 43561328748,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "work/english-reading-unit-expansion-20261114",
+        "head_sha": "45138b441e1a94b36c1b843195000fa358d03b4c"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 26580,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1270
+    },
+    {
+      "artifact_id": 14100516298,
+      "name": "v11-unit-coverage-report",
+      "size_in_bytes": 1269,
+      "created_at": "2026-11-14T05:24:24Z",
+      "updated_at": "2026-11-14T05:24:24Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 43561324618,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "work/english-reading-unit-expansion-20261114",
+        "head_sha": "45138b441e1a94b36c1b843195000fa358d03b4c"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 26580,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1269
+    },
+    {
+      "artifact_id": 14100945470,
+      "name": "v11-unit-coverage-report",
+      "size_in_bytes": 1269,
+      "created_at": "2026-11-14T05:24:05Z",
+      "updated_at": "2026-11-14T05:24:05Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 43561292212,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "work/english-reading-unit-expansion-20261114",
+        "head_sha": "d6c8c4998e4ce0f2c9b167f56581e49b9396fafa"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 26580,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1269
+    },
+    {
+      "artifact_id": 14100242534,
+      "name": "v11-unit-coverage-report",
+      "size_in_bytes": 1270,
+      "created_at": "2026-11-14T05:24:01Z",
+      "updated_at": "2026-11-14T05:24:01Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 43561288472,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "work/english-reading-unit-expansion-20261114",
+        "head_sha": "d6c8c4998e4ce0f2c9b167f56581e49b9396fafa"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 26580,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1270
+    },
+    {
+      "artifact_id": 14100550244,
+      "name": "v11-unit-coverage-report",
+      "size_in_bytes": 1269,
+      "created_at": "2026-11-14T05:22:32Z",
+      "updated_at": "2026-11-14T05:22:32Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 43561144042,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "work/english-reading-unit-expansion-20261114",
+        "head_sha": "da7a89e43fd40e49133a02111fed92ead8145073"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 26580,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1269
+    },
+    {
+      "artifact_id": 14100371384,
+      "name": "v11-unit-coverage-report",
+      "size_in_bytes": 1269,
+      "created_at": "2026-11-14T05:22:32Z",
+      "updated_at": "2026-11-14T05:22:32Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 43561165941,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "work/english-reading-unit-expansion-20261114",
+        "head_sha": "c443786509b4dddc1c1a9251e6f40a79ad73aad7"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 26580,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1269
+    },
+    {
+      "artifact_id": 14100565124,
+      "name": "v11-unit-coverage-report",
+      "size_in_bytes": 1269,
+      "created_at": "2026-11-14T05:22:28Z",
+      "updated_at": "2026-11-14T05:22:28Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 43561161873,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "work/english-reading-unit-expansion-20261114",
+        "head_sha": "c443786509b4dddc1c1a9251e6f40a79ad73aad7"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 26580,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1269
+    },
+    {
+      "artifact_id": 14099893546,
+      "name": "v11-unit-coverage-report",
+      "size_in_bytes": 1269,
+      "created_at": "2026-11-14T05:22:13Z",
+      "updated_at": "2026-11-14T05:22:13Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 43561127874,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "work/english-reading-unit-expansion-20261114",
+        "head_sha": "419a93f1c040b9fa0ad70f573dba3f5fb859dc83"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 26580,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1269
+    },
+    {
+      "artifact_id": 14100705411,
+      "name": "v11-unit-coverage-report",
+      "size_in_bytes": 1269,
+      "created_at": "2026-11-14T05:22:04Z",
+      "updated_at": "2026-11-14T05:22:04Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 43561138680,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "work/english-reading-unit-expansion-20261114",
+        "head_sha": "da7a89e43fd40e49133a02111fed92ead8145073"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 26580,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1269
+    },
+    {
+      "artifact_id": 14100192905,
+      "name": "v11-unit-coverage-report",
+      "size_in_bytes": 1270,
+      "created_at": "2026-11-14T05:21:48Z",
+      "updated_at": "2026-11-14T05:21:48Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 43561106005,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "work/english-reading-unit-expansion-20261114",
+        "head_sha": "95a115c1f02a7fec327ec84e6328de10a6ea44b3"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 26580,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1270
+    },
+    {
+      "artifact_id": 14099429315,
+      "name": "v11-unit-coverage-report",
+      "size_in_bytes": 1269,
+      "created_at": "2026-11-14T05:21:36Z",
+      "updated_at": "2026-11-14T05:21:36Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 43561100844,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "work/english-reading-unit-expansion-20261114",
+        "head_sha": "95a115c1f02a7fec327ec84e6328de10a6ea44b3"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 26580,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1269
+    },
+    {
+      "artifact_id": 14099893300,
+      "name": "v11-unit-coverage-report",
+      "size_in_bytes": 1269,
+      "created_at": "2026-11-14T05:19:54Z",
+      "updated_at": "2026-11-14T05:19:54Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 43560948368,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "work/english-reading-unit-expansion-20261114",
+        "head_sha": "84e2718e5291e5e977c1f763c24d5c71db5ea315"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 26580,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1269
+    },
+    {
+      "artifact_id": 14099979968,
+      "name": "v11-unit-coverage-report",
+      "size_in_bytes": 1270,
+      "created_at": "2026-11-14T05:19:31Z",
+      "updated_at": "2026-11-14T05:19:31Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 43560900652,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "work/english-reading-unit-expansion-20261114",
+        "head_sha": "c3897fefbad8ac31ba3588326e6c251d47e881f8"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 26580,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1270
+    },
+    {
+      "artifact_id": 14100540211,
+      "name": "v11-unit-coverage-report",
+      "size_in_bytes": 1269,
+      "created_at": "2026-11-14T05:19:12Z",
+      "updated_at": "2026-11-14T05:19:12Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 43560896657,
+        "repository_id": 1211918933,
+        "head_repository_id": 1211918933,
+        "head_branch": "work/english-reading-unit-expansion-20261114",
+        "head_sha": "c3897fefbad8ac31ba3588326e6c251d47e881f8"
+      },
+      "downloaded": true,
+      "interesting_members": [],
+      "canonical_sha_hits": [],
+      "valid_final_audit_hits": [],
+      "paired_recovery_eligible": false,
+      "member_scan_metrics": {
+        "members_seen": 1,
+        "members_sha256_checked": 1,
+        "member_bytes_hashed": 26580,
+        "zip_signature_members": 0,
+        "oversize_members_skipped": 0
+      },
+      "errors": [],
+      "archive_download_bytes": 1269
+    },
     {
       "artifact_id": 14098764095,
       "name": "math-browser-regression-diagnostics",
@@ -26328,6 +26850,6 @@
     }
   ],
   "recovered_files": [],
-  "completed_at_utc": "2026-11-14T04:47:33.263328+00:00",
+  "completed_at_utc": "2026-11-14T05:26:52.652536+00:00",
   "policy": "Artifact results are reused only when artifact id, size, and updated_at match exactly, the previous download completed without errors, and the artifact was not pair-eligible. New or changed artifacts are downloaded and every member under the size cap is SHA-256 checked. Any 403/timeout/download/listing failure makes the scan incomplete and is never absence evidence. Exact immutable SHA plus one unambiguous valid final audit from the same artifact remains required; no reconstruction."
 }
