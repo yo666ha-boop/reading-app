@@ -28,7 +28,20 @@ const cases=[
   await page.selectOption('#grade',c.grade);
   await page.selectOption('#major',{label:c.major});
   await page.selectOption('#section',{label:c.section});
-  await page.waitForFunction(id=>Array.from(document.querySelectorAll('#v11PassageVariant option')).some(x=>x.value===id),c.id,{timeout:12000});
+  try {
+   await page.waitForFunction(id=>Array.from(document.querySelectorAll('#v11PassageVariant option')).some(x=>x.value===id),c.id,{timeout:4000});
+  } catch(e) {
+   const diag=await page.evaluate(()=>({
+     inputs:Object.fromEntries(['textbook','grade','major','section'].map(k=>[k,document.getElementById(k)?.value])),
+     sectionOptions:Array.from(document.getElementById('section')?.options||[]).map(x=>x.value),
+     candidateOptions:Array.from(document.getElementById('v11PassageVariant')?.options||[]).map(x=>x.value),
+     multi:window.V11_MULTI_PASSAGE_STATE,
+     unit:window.V11_UNIT_SUPPLEMENTAL_STATE,
+     range:window.V11_UNIT_RANGE_STATE,
+     ui:window.V11_MULTI_PASSAGE_UI_STATE
+   }));
+   throw new Error('UNIT candidate not visible: '+c.id+' debug='+JSON.stringify(diag)+' pageErrors='+errors.join('; '));
+  }
   let state=await page.evaluate(()=>({range:window.V11_UNIT_RANGE_STATE,ui:window.V11_MULTI_PASSAGE_UI_STATE}));
   assert.equal(state.range.targetSection,c.section);
   assert.equal(state.range.mode,'studied-through');
