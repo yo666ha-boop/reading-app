@@ -16,7 +16,7 @@ const rows=[
  ['I like my school in Australia.','私はオーストラリアの学校が好きです。','I like / my school / in Australia.','私は好きです / 自分の学校が / オーストラリアの'],
  ['My teacher is kind.','私の先生は親切です。','My teacher is / kind.','私の先生は〜です / 親切な'],
  ['My teacher is from Japan.','私の先生は日本出身です。','My teacher is from / Japan.','私の先生は〜出身です / 日本'],
- ['I like Japan, too.','私は日本も好きです。','I like / Japan, too.','私は好きです / 日本も'],
+ ['I am a fan of Japanese music.','私は日本の音楽のファンです。','I am / a fan / of Japanese music.','私は〜です / ファン / 日本の音楽の'],
  ['Australia is really nice.','オーストラリアは本当にすてきです。','Australia is / really nice.','オーストラリアは〜です / 本当にすてきな'],
  ['My school is great.','私の学校はすばらしいです。','My school is / great.','私の学校は〜です / すばらしい'],
  ['Goodbye.','さようなら。','Goodbye.','さようなら']
@@ -32,7 +32,7 @@ const rows=[
  [2,'1. 話し手は日本出身ですか。Yes / No で答えなさい。','No','not from Japan とあります。'],
  [4,'2. 友達はどのような人ですか。英語で答えなさい。','friendly','be 動詞の後ろで友達を説明しています。'],
  [5,'3. 話し手はどこの学校が好きですか。英語で答えなさい。','Australia','in に続く国名です。'],
- [8,'4. 日本も好きですか。Yes / No で答えなさい。','Yes','I like Japan, too. とあります。'],
+ [8,'4. 話し手は何のファンですか。英語で答えなさい。','Japanese music','fan of の後ろにあります。'],
  [9,'5. オーストラリアをどのように感じていますか。英語で答えなさい。','really nice','is の後ろの説明です。']
  ]
 },
@@ -171,7 +171,7 @@ const rows=[
  ['I ask, "Have you ever been to Osaka?"','私は「大阪に行ったことがありますか」と尋ねます。','I ask, / "Have you ever been / to Osaka?"','私は尋ねます / 大阪に行ったことがありますか'],
  ['He says, "Yes, twice."','彼は「はい、二度あります」と言います。','He says, / "Yes, twice."','彼は言います / はい、二度あります'],
  ['He shows us a picture of the regional style.','彼はその地方のスタイルの写真を見せます。','He shows / us / a picture of the regional style.','彼は見せます / 私たちに / 地方のスタイルの写真を'],
- ['I have never seen that style before.','私はそのスタイルを以前見たことがありません。','I have never seen / that style / before.','私は一度も見たことがありません / そのスタイルを / 以前に'],
+ ['I haven’t seen that style before.','私はそのスタイルを以前見たことがありません。','I haven’t seen / that style / before.','私は見たことがありません / そのスタイルを / 以前に'],
  ['The picture is colorful and interesting.','その写真は色鮮やかでおもしろいです。','The picture is / colorful and interesting.','その写真は〜です / 色鮮やかでおもしろい'],
  ['We talk about fashion at school.','私たちは学校でファッションについて話します。','We talk about / fashion / at school.','私たちは話します / ファッションについて / 学校で'],
  ['I want to learn more about Japan.','私は日本についてもっと学びたいです。','I want to learn / more about Japan.','私はもっと学びたいです / 日本について']
@@ -187,7 +187,7 @@ const rows=[
  [1,'1. 訪問者は何が好きですか。英語で答えなさい。','Japanese fashion','likes の後ろです。'],
  [5,'2. 話し手はどこに行ったことがあるか質問していますか。英語で答えなさい。','Osaka','Have you ever been to の目的地です。'],
  [6,'3. 訪問者は大阪に何度行ったことがありますか。英語で答えなさい。','twice','回数を表しています。'],
- [8,'4. 話し手はそのスタイルを以前見たことがありますか。Yes / No で答えなさい。','No','never seen とあります。'],
+ [8,'4. 話し手はそのスタイルを以前見たことがありますか。Yes / No で答えなさい。','No','haven’t seen とあります。'],
  [9,'5. 写真はどのようなものですか。英語で答えなさい。','colorful and interesting','is の後ろです。']
  ]
 }
