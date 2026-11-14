@@ -48,6 +48,9 @@ for(const p of supplements){
  const body=p.sentences.join(' ');
  assert.ok(!bodies.has(body));bodies.add(body);
  assert.notEqual(body,baseline.sentences.join(' '),'Must be original supplement');
+ const shared=p.sentences.filter(sentence=>baseline.sentences.includes(sentence));
+ assert.ok(shared.length/p.sentences.length<=0.4,
+   p.id+' reuses too many full baseline sentences ('+shared.length+'/'+p.sentences.length+')');
  for(let i=0;i<p.sentences.length;i++){
   assert.equal(cmp(p.slashRows[i].en),cmp(p.sentences[i]),p.id+' mismatch at slash '+i);
   assert.ok(p.slashRows[i].jp&&p.slashRows[i].jp.length>1);
