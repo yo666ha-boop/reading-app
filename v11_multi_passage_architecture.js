@@ -89,9 +89,15 @@
       try{return (DATASETS[String(document.getElementById('grade').value)]||{})[document.getElementById('textbook').value]||{}}catch(_){return{}}
     }
     function rangeKeys(){
-      const ds=dataset(); const all=Object.keys(ds); const sec=document.getElementById('section');
-      if(!sec||!sec.value)return [];
-      return all.includes(sec.value)?[sec.value]:[];
+      const ds=dataset(), all=Object.keys(ds), sec=document.getElementById('section');
+      // The section selector is a curriculum ceiling, not an exact-match filter.
+      // Object keys are assembled in verified textbook order by the v10 data loaders.
+      const target=sec&&sec.value||'', last=all.indexOf(target);
+      const eligible=last<0?[]:all.slice(0,last+1);
+      window.V11_UNIT_RANGE_STATE={textbook:document.getElementById('textbook').value,
+        grade:String(document.getElementById('grade').value),targetSection:target,
+        eligibleSections:eligible.slice(),mode:'studied-through',futureSectionsExcluded:all.slice(last+1)};
+      return eligible;
     }
     function matchesWord(p){
       const n=wordCount(p),m=wordFilter?wordFilter.value:'all';
@@ -110,10 +116,14 @@
         if(b&&matchesWord(b)&&matchesPattern(b,k,'base')){const id=String(b.id||'');if(!seen.has(id)){seen.add(id);out.push({passage:b,source:'base',section:k})}}
         const extras=registry[keyOf({textbook,grade,section:k})]||[];
         for(const p of extras){if(!p||!matchesWord(p)||!matchesPattern(p,k,'extra'))continue;const id=String(p.id||'');if(id&&seen.has(id))continue;if(id)seen.add(id);out.push({passage:p,source:'extra',section:k})}
+        // Supplemental unit-specific texts stay outside the frozen 1000-passage
+        // registry. Batch15/16/FINAL32 exact-count integrity gates must remain intact.
+        const supplemental=(window.V11_UNIT_SUPPLEMENTAL_PASSAGES||{})[keyOf({textbook,grade,section:k})]||[];
+        for(const p of supplemental){if(!p||!matchesWord(p)||!matchesPattern(p,k,'extra'))continue;const id=String(p.id||'');if(!id||seen.has(id))continue;seen.add(id);out.push({passage:p,source:'supplement',section:k})}
       }
       return out;
     }
-    function label(r){const p=r.passage||{};return (r.source==='extra'?'追加':'基本')+'｜'+(r.section||p.section||'')+'｜'+wordCount(p)+' words｜'+(p.title||p.id||'')}
+    function label(r){const p=r.passage||{};return (r.source==='base'?'基本':r.source==='supplement'?'UNIT追加':'追加')+'｜'+(r.section||p.section||'')+'｜'+wordCount(p)+' words｜'+(p.title||p.id||'')}
     function selectedRecord(){return records.find(r=>String(r.passage&&r.passage.id||'')===selectedId)||records[0]||null}
     function setGlobals(p){
       if(!p)return;
@@ -146,7 +156,7 @@
     window.metaFor=function(sec){
       const r=selectedRecord(); if(!r)return baseMetaFor(sec)||{};
       const p=r.passage, base=baseMetaFor(r.section)||{};
-      if(r.source==='extra')return {...base,genre:p.genre||base.genre||'report',questionSetB:Array.isArray(p.questionSetB)?p.questionSetB:[]};
+      if(r.source!=='base')return {...base,genre:p.genre||base.genre||'report',questionSetB:Array.isArray(p.questionSetB)?p.questionSetB:[]};
       return base;
     };
 
@@ -155,7 +165,7 @@
       const mc=document.getElementById('masterCount'); if(mc)mc.textContent='該当長文 '+records.length+'題 / 選択中 '+wordCount(p)+' words / '+p.section;
       const panel=document.getElementById('passage'); if(panel){
         let m=document.getElementById('v11PassageSourceMeta'); if(!m){m=document.createElement('div');m.id='v11PassageSourceMeta';m.className='meta';m.style.margin='6px 0 10px';const en=panel.querySelector('.en');if(en)panel.insertBefore(m,en);else panel.appendChild(m)}
-        m.innerHTML='<span class="badge">'+(r.source==='extra'?'追加本文':'基本本文')+'</span> '+wordCount(p)+' words / '+esc(p.section||'')+' / '+esc(p.id||'');
+        m.innerHTML='<span class="badge">'+(r.source==='base'?'基本本文':r.source==='supplement'?'UNIT追加本文':'追加本文')+'</span> '+wordCount(p)+' words / '+esc(p.section||'')+' / '+esc(p.id||'');
       }
       const idx=records.indexOf(r); if(pos)pos.textContent=(idx+1)+' / '+records.length+'題';
       window.V11_MULTI_PASSAGE_UI_STATE={...(window.V11_MULTI_PASSAGE_UI_STATE||{}),selectedId:p.id,selectedWords:wordCount(p),position:idx+1,optionCount:records.length,wordFilter:wordFilter?wordFilter.value:'all',source:'render',renderedAt:new Date().toISOString()};
