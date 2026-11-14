@@ -9,6 +9,7 @@ on:
       - 'v11_unit_supplemental_wave2_20261114.js'
       - 'scripts/v11_unit_supplemental_audit.cjs'
       - 'scripts/v11_unit_browser_smoke.cjs'
+      - 'scripts/v11_unit_coverage_inventory.cjs'
       - '.github/workflows/v11-unit-supplemental-audit.yml'
   pull_request:
     branches:
@@ -19,6 +20,7 @@ on:
       - 'v11_unit_supplemental_wave2_20261114.js'
       - 'scripts/v11_unit_supplemental_audit.cjs'
       - 'scripts/v11_unit_browser_smoke.cjs'
+      - 'scripts/v11_unit_coverage_inventory.cjs'
       - '.github/workflows/v11-unit-supplemental-audit.yml'
   workflow_dispatch:
 permissions:
@@ -44,3 +46,11 @@ jobs:
           sleep 2
       - name: Chromium 12 UNIT checkpoints and six-course integration smoke
         run: node scripts/v11_unit_browser_smoke.cjs
+      - name: Inventory actual UNIT coverage of 1000+12 candidate texts
+        run: node scripts/v11_unit_coverage_inventory.cjs
+      - name: Preserve UNIT-by-UNIT coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: v11-unit-coverage-report
+          path: V11_UNIT_COVERAGE_REPORT_20261114.json
+          if-no-files-found: error
