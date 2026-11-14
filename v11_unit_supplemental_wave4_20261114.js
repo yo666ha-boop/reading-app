@@ -41,7 +41,7 @@ rows:[
 ['She is on our team.','彼女は私たちのチームにいます。','She is on / our team.','彼女は所属しています / 私たちのチームに'],
 ["She's very cool.",'彼女はとてもかっこいいです。',"She's / very cool.",'彼女は〜です / とてもかっこいい'],
 ['She is good at tennis.','彼女はテニスが得意です。','She is good at / tennis.','彼女は得意です / テニスが'],
-['This is Ken, too.','こちらはケンでもあります。','This is / Ken, too.','こちらは〜です / ケンも'],
+['This is Ken.','こちらはケンです。','This is / Ken.','こちらは〜です / ケン'],
 ['He is from America.','彼はアメリカ出身です。','He is from / America.','彼は〜出身です / アメリカ'],
 ["He's on the team.",'彼もチームに所属しています。',"He's on / the team.",'彼は所属しています / チームに'],
 ['He is a good student.','彼はよい生徒です。','He is / a good student.','彼は〜です / よい生徒'],
@@ -67,7 +67,7 @@ meta:['V11-UNIT-SS-G2-P2-2-004','サンシャイン','2','PROGRAM 2-2','A Sports
 rows:[
 ['Our school has a new sports day.','私たちの学校には新しいスポーツの日があります。','Our school has / a new sports day.','私たちの学校にはあります / 新しいスポーツの日が'],
 ['A national program helps our school.','全国的なプログラムが私たちの学校を支えています。','A national program helps / our school.','全国的なプログラムが支えています / 私たちの学校を'],
-['The coach is from a university.','コーチは大学から来ています。','The coach is from / a university.','そのコーチは〜出身です / 大学'],
+['The coach works at a university.','コーチは大学で働いています。','The coach works / at a university.','そのコーチは働いています / 大学で'],
 ['The coach believes in peace.','コーチは平和を信じています。','The coach believes in / peace.','コーチは信じています / 平和を'],
 ['I believe sports can create peace.','私はスポーツが平和を生み出せると信じています。','I believe / sports can create / peace.','私は信じています / スポーツは生み出せると / 平和を'],
 ['When children play, they smile.','子どもたちは遊ぶと笑顔になります。','When children play, / they smile.','子どもたちは遊ぶと / 笑顔になります'],
@@ -81,7 +81,7 @@ rows:[
 A:[
 [0,'1. 学校で新しく始まるものは何ですか。英語で答えなさい。','a new sports day','has の目的語です。'],
 [1,'2. 何が学校を支えていますか。英語で答えなさい。','A national program','主語を答えます。'],
-[2,'3. コーチはどこから来ていますか。英語で答えなさい。','a university','from の後ろです。'],
+[2,'3. コーチはどこで働いていますか。英語で答えなさい。','a university','works at の後ろです。'],
 [3,'4. コーチは何を信じていますか。英語で答えなさい。','peace','believes in の後ろです。'],
 [4,'5. スポーツは何を生み出せますか。英語で答えなさい。','peace','create の目的語です。']],
 B:[
