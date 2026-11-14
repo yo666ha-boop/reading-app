@@ -1,17 +1,17 @@
 {
   "project": "みかみ塾 数学問題プリント作成アプリ",
-  "recorded_at_jst": "2026-11-14T14:24:14+09:00",
+  "recorded_at_jst": "2026-11-14T14:36:47+09:00",
   "source_repository": "yo666ha-boop/reading-app",
   "branch": "math-problem-bank-bootstrap",
   "target": "isolated 1323 real records",
   "original_sha256": "4c2cfb56763e7cdc27055ddb2e3ab9ee075d9926a8656b18884f82524038aca9",
-  "candidate_sha256": "8f367f2778b4ce6490fecebd067f82d14d082c7de084ca5061388240b2989cdb",
+  "candidate_sha256": "64f4f2294c373b19922da7ec470a16860ccd4e8db854cbab15fb5122c53e09a6",
   "original_bytes": 6819816,
-  "candidate_bytes": 6819915,
-  "diff_bytes": 99,
+  "candidate_bytes": 6819914,
+  "diff_bytes": 98,
   "original_immutable_path": "math-bank/public-origin/index1323-exact.html",
   "local_qa_engine": "Edge 2026 headless, isolated profile (learning PC DESKTOP-I4MAGD9)",
-  "local_qa": "PASS 15/15",
+  "local_qa": "PASS 16/16",
   "results": {
     "total": 1323,
     "original": 1271,
@@ -51,10 +51,65 @@
     "mobile_width_px": 390,
     "mobile_scroll_width_px": 390,
     "js_runtime_exceptions": 0,
-    "console_http_errors_local": 0
+    "console_http_errors_local": 0,
+    "exact_id_searches_ci": 1323,
+    "local_browser_cases": 16,
+    "remote_browser_cases": 16,
+    "keyword_hits": {
+      "Winpass": 769,
+      "Standard": 317
+    },
+    "keyword_and_partial_id_search": "PASS",
+    "final_live_image_decoding": {
+      "distinct": 282,
+      "decoded": 282,
+      "failed": 0
+    },
+    "real_live_browser_exceptions": 0,
+    "live_http_404": [
+      {
+        "url_path": "/favicon.ico",
+        "significance": "noncritical browser tab icon request; app data and scripts load"
+      }
+    ]
   },
   "identified_bug": "Searching full question ID matched multiple records (including related/generated variants) because only substring match was implemented.",
   "patch": "When search text exactly matches an existing record ID, match that ID only; otherwise preserve keyword/substring search; existing grade/book/kind filters remain in effect.",
-  "status": "local candidate QA complete; GitHub isolated patch and remote preview confirmation pending",
-  "release_note": "Do not touch main, immutable exact source, or production. Physical Fire hardware test still required for strict public release."
+  "status": "ISOLATED_PREVIEW_VALIDATED_16_OF_16_AND_ALL_1323_EXACT_IDS_CI_PASS",
+  "release_note": "Production not changed. Original 1323 exact source and main untouched. Physical Amazon Fire device verification pending; independently recomputing all mathematical answers and future variant expansion are not implied by these software tests.",
+  "immutable_source": {
+    "path": "math-bank/public-origin/index1323-exact.html",
+    "sha256": "47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521",
+    "git_blob_sha": "16d047ad74f0cf32541ac48b88ceb1bb5735ef82",
+    "unchanged": true
+  },
+  "fixed_bugs": [
+    "Exact question IDs formerly substring-matched related generated variants; fixed by exact-ID priority.",
+    "First fix used exactId!==null and inadvertently blocked normal keyword search for undefined; changed to exactId!=null, restoring keyword and partial ID searches."
+  ],
+  "remote_qa": "PASS 16/16",
+  "targeted_ci": {
+    "all_1323_id_searches": "PASS",
+    "keyword_search": "PASS",
+    "partial_id_search": "PASS",
+    "run_id": 43562253426,
+    "job_id": 132348295735,
+    "conclusion": "success",
+    "workflow": ".github/workflows/math-1323-singlefile-regression-20261114.yml"
+  },
+  "preview": {
+    "status": "READY",
+    "deployment_id": "dpl_GUdWtUGjFym5ztDxvLzvh96G4VvB",
+    "project_id": "prj_klR6v3xfehqPFqb2BPwZaaoy9m3A",
+    "url": "https://mikami-math-1323-isolated-plo4s1lhx-yo666ha-7357s-projects.vercel.app/",
+    "http_status": 200,
+    "source_commit_pinned": "f0be6dbfab113ed1558bd46ba80e2e2e88575a33",
+    "bytes_sha256_verified": true,
+    "protected_preview": true
+  },
+  "continuation": [
+    "Physical Fire actual device smoke test before strict release",
+    "Review Grade/Unit taxonomy naming and question-answer mathematics independently of embedded audit flags",
+    "Only expand variants from reverified canonical source questions"
+  ]
 }
