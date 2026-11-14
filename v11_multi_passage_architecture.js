@@ -167,6 +167,12 @@
         let m=document.getElementById('v11PassageSourceMeta'); if(!m){m=document.createElement('div');m.id='v11PassageSourceMeta';m.className='meta';m.style.margin='6px 0 10px';const en=panel.querySelector('.en');if(en)panel.insertBefore(m,en);else panel.appendChild(m)}
         m.innerHTML='<span class="badge">'+(r.source==='base'?'基本本文':r.source==='supplement'?'UNIT追加本文':'追加本文')+'</span> '+wordCount(p)+' words / '+esc(p.section||'')+' / '+esc(p.id||'');
       }
+      if(r.source==='supplement' && p.curriculumGate!=='VERIFIED_V7_CANONICAL'){
+        const audit=document.getElementById('audit'),badge=audit&&audit.querySelector('.badge');
+        if(badge){badge.textContent='UNIT追加・原本照合待ち';badge.style.background='#fef3c7';badge.style.color='#92400e';}
+        const gate=document.getElementById('gate');
+        if(gate)gate.innerHTML='<span class="warn">UNIT追加候補：語彙・文法の正本照合が未完了です。</span>';
+      }
       const idx=records.indexOf(r); if(pos)pos.textContent=(idx+1)+' / '+records.length+'題';
       window.V11_MULTI_PASSAGE_UI_STATE={...(window.V11_MULTI_PASSAGE_UI_STATE||{}),selectedId:p.id,selectedWords:wordCount(p),position:idx+1,optionCount:records.length,wordFilter:wordFilter?wordFilter.value:'all',source:'render',renderedAt:new Date().toISOString()};
     }
