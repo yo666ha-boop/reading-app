@@ -1,0 +1,86 @@
+name: Math Exact1323 Raw5 Exact Source Reassembly
+on:
+  push:
+    branches: [math-problem-bank-bootstrap]
+    paths:
+      - 'math-bank/transfer/app1323-exact-raw5/**'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: math-exact1323-raw5-reassembly
+  cancel-in-progress: false
+jobs:
+  exact-reassembly:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate all five Git blobs and reconstruct exact source
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,re,datetime
+          folder=Path('math-bank/transfer/app1323-exact-raw5')
+          manifest=json.loads((folder/'manifest.json').read_text(encoding='utf-8'))
+          assert len(manifest['parts'])==5
+          assert manifest['total_bytes']==6819806
+          chunks=[]; pos=0
+          for i,e in enumerate(manifest['parts'],1):
+              p=folder/e['file']
+              b=p.read_bytes()
+              assert e['file']==f'{i:02d}.part',(i,e['file'])
+              assert e['start']==pos,(i,pos,e['start'])
+              assert len(b)==e['length'],(i,len(b),e['length'])
+              assert hashlib.sha256(b).hexdigest()==e['sha256'],(i,'SHA256')
+              blob_sha=hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()
+              assert blob_sha==e['git_blob_sha1'],(i,'gitSHA')
+              assert e['end']==pos+len(b),(i,'end')
+              pos=e['end']
+              chunks.append(b)
+          body=b''.join(chunks)
+          assert len(body)==6819806,(len(body),'bytes')
+          expected='47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521'
+          assert hashlib.sha256(body).hexdigest()==expected,'source_sha256'
+          s=body.decode('utf-8')
+          assert 'const EMBEDDED_RECORDS=' in s
+          assert '1323実データゲート' in s
+          assert len(re.findall(r'data:image/[^;]+;base64,',s))==282
+          dest=Path('math-bank/public-origin/index1323-exact.html')
+          dest.parent.mkdir(parents=True,exist_ok=True)
+          dest.write_bytes(body)
+          proof={'project':'みかみ塾 数学問題バンク／数学アプリ再構築',
+                 'recorded_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                 'raw5_manifest_path':str(folder/'manifest.json'),
+                 'parts':len(chunks),'bytes':len(body),'sha256':expected,
+                 'exact_source':'math-bank/public-origin/index1323-exact.html',
+                 'static_gate':'PASS','publish_ready':False,'main_touched':False}
+          proof_path=Path('math-bank/state/app1323-raw5-exact-source-reassembly.json')
+          proof_path.write_text(json.dumps(proof,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('EXACT_SOURCE_SHA256_PASS',len(body),expected)
+          PY
+      - name: Commit exact HTML on isolated branch only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add math-bank/public-origin/index1323-exact.html math-bank/state/app1323-raw5-exact-source-reassembly.json
+          if git diff --cached --quiet; then
+            echo 'ALREADY_COMMITTED'
+            exit 0
+          fi
+          git commit -m 'math: restore exact 1323 HTML from 5 SHA-bound source parts'
+          for attempt in 1 2 3; do
+            git fetch origin math-problem-bank-bootstrap
+            git rebase origin/math-problem-bank-bootstrap
+            if git push origin HEAD:math-problem-bank-bootstrap; then
+              echo 'EXACT_HTML_DURABLE_PUSH_SUCCESS'
+              exit 0
+            fi
+          done
+          echo 'EXACT_HTML_PUSH_FAILED'
+          exit 1
