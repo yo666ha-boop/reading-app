@@ -15,7 +15,7 @@ jobs:
     if: github.repository == 'yo666ha-boop/reading-app'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@11bd71901bbe5b163ceea73d27597364c9af683
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           ref: math-problem-bank-bootstrap
           persist-credentials: true
