@@ -32,5 +32,6 @@ Keep all 1000 frozen passages. Add **at least two independent vetted passages to
 ## Current status
 - Core: 1000 verified items, unchanged.
 - UNIT supplement authored: 6 candidates, original code saved.
-- v7 direct vocabulary/grammar full approval: **not yet granted**.
+- Automated structural/unit scope QA: **PASS**. Node covers 6 exact section IDs, 60 question-evidence links, 74 slash rows, no future-unit leak or excess full-sentence reuse. Chromium covers all 6 course/UNIT selector cases and A/B selection. Final run 43560195802: SUCCESS (2026-11-14 JST).
+- Canonical v7 master targeted unit lists were retrieved for all six target sections; full token-by-token vocabulary plus grammar approval: **not yet granted**.
 - Production and public preview: unchanged until explicit integration and full smoke test.
