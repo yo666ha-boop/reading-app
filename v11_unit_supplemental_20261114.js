@@ -54,7 +54,7 @@ make(['V11-UNIT-NH-G1-U1-1-001','ニューホライズン','1','Unit 1-1','Aoi M
 ["I'm twelve.",'私は12歳です。',"I'm / twelve.",'私は〜です / 12歳'],
 ["I'm from Japan.",'私は日本出身です。',"I'm from / Japan.",'私は〜出身です / 日本'],
 ['I love tennis.','私はテニスが大好きです。','I love / tennis.','私は大好きです / テニスが'],
-['My friend is Leo.','私の友達はレオです。','My friend is / Leo.','私の友達は〜です / レオ'],
+['Leo is twelve, too.','レオも12歳です。','Leo is / twelve, too.','レオも〜です / 12歳'],
 ['Leo is from South Africa.','レオは南アフリカ共和国出身です。','Leo is from / South Africa.','レオは〜出身です / 南アフリカ共和国'],
 ['Do you like tennis?','テニスは好きですか。','Do you like / tennis?','あなたは好きですか / テニスが'],
 ['Yes, I do.','はい、好きです。','Yes, / I do.','はい / 好きです'],
@@ -70,7 +70,7 @@ make(['V11-UNIT-NH-G1-U1-1-001','ニューホライズン','1','Unit 1-1','Aoi M
 [9,'5. 話し手は何部に入りたいですか。英語で答えなさい。','the tennis club','join の目的語です。']
 ],
 [
-[5,'1. 話し手の友達の名前は何ですか。英語で答えなさい。','Leo','My friend is の後ろです。'],
+[5,'1. レオは何歳ですか。英語で答えなさい。','twelve','is の後ろに年齢が書かれています。'],
 [6,'2. レオはどこの国の出身ですか。英語で答えなさい。','South Africa','from の後ろの国名です。'],
 [7,'3. 相手に何の好みを尋ねていますか。英語で答えなさい。','tennis','like の目的語です。'],
 [8,'4. テニスは好きですか。本文の返答に合わせ Yes / No で答えなさい。','Yes','Yes, I do. と答えています。'],
@@ -118,7 +118,7 @@ make(['V11-UNIT-NH-G2-U1-1-001','ニューホライズン','2','Unit 1-1','Our F
 ['Mei is going to show me around the city.','メイが街を案内してくれる予定です。','Mei is going to show / me / around the city.','メイは案内する予定です / 私を / 街のあちこちで'],
 ['I want to see the local park.','私は地元の公園を見たいです。','I want to see / the local park.','私は見たいです / 地元の公園を'],
 ['I am going to write about the trip.','私は旅行について書く予定です。','I am going to write / about the trip.','私は書く予定です / その旅行について'],
-['My friend is excited, too.','友達もわくわくしています。','My friend is / excited, too.','友達も〜です / わくわくした'],
+['My friend wants to walk with me, too.','友達も私と一緒に歩きたいと思っています。','My friend wants to walk / with me, too.','友達も歩きたいと思っています / 私と一緒に'],
 ['We are going to leave the airport soon.','私たちはまもなく空港を出発する予定です。','We are going to leave / the airport / soon.','私たちは出発する予定です / 空港を / まもなく'],
 ['Our holiday is going to start soon.','私たちの休日はまもなく始まる予定です。','Our holiday is going to start / soon.','私たちの休日は始まる予定です / まもなく']
 ],
@@ -143,7 +143,7 @@ make(['V11-UNIT-SS-G3-P1-2-001','サンシャイン','3','PROGRAM 1-2','A Quiet 
 ['I meet my friend after the marathon.','私はマラソンのあと友達に会います。','I meet / my friend / after the marathon.','私は会います / 友達に / マラソンのあと'],
 ['There is a homemade bento on the table.','テーブルの上に手作りのお弁当があります。','There is / a homemade bento / on the table.','あります / 手作りのお弁当が / テーブルの上に'],
 ['The bento has eel in it.','そのお弁当にはウナギが入っています。','The bento has / eel / in it.','そのお弁当には入っています / ウナギが / その中に'],
-['I eat a small portion of eel.','私はウナギを少し食べます。','I eat / a small portion / of eel.','私は食べます / 少しの量を / ウナギの'],
+['I eat some eel.','私はウナギを少し食べます。','I eat / some eel.','私は食べます / 少しのウナギを'],
 ['My friend eats the homemade food, too.','友達も手作りの食べ物を食べます。','My friend eats / the homemade food, too.','友達も食べます / 手作りの食べ物を'],
 ['There is a musical instrument in the next room.','隣の部屋に楽器があります。','There is / a musical instrument / in the next room.','あります / 楽器が / 隣の部屋に'],
 ['I hear the instrument.','私はその楽器の音を聞きます。','I hear / the instrument.','私は聞きます / その楽器の音を'],
