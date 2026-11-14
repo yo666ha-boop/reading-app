@@ -1,0 +1,23 @@
+name: Math 1323 single-file regression (isolated)
+on:
+  push:
+    branches:
+      - math-problem-bank-bootstrap
+    paths:
+      - math-bank/app/qa_1323_singlefile.cjs
+      - math-bank/public-origin/index.html
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-real-data:
+    if: github.repository == 'yo666ha-boop/reading-app'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: math-problem-bank-bootstrap
+          persist-credentials: false
+      - name: Run exact 1323 data, figures and all-ID search regression
+        run: node math-bank/app/qa_1323_singlefile.cjs
