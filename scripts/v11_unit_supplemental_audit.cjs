@@ -12,13 +12,14 @@ vm.runInNewContext(arch,ctx,{filename:'v11_multi_passage_architecture.js'});
 const before=window.V11_MULTI_PASSAGE_STATE.extraPassages;
 vm.runInNewContext(source,ctx,{filename:'v11_unit_supplemental_20261114.js'});
 vm.runInNewContext(read('v11_unit_supplemental_wave2_20261114.js'),ctx,{filename:'v11_unit_supplemental_wave2_20261114.js'});
+vm.runInNewContext(read('v11_unit_supplemental_wave3_20261114.js'),ctx,{filename:'v11_unit_supplemental_wave3_20261114.js'});
 assert.equal(window.V11_MULTI_PASSAGE_STATE.extraPassages,before,'supplements must not affect frozen core registry');
-assert.equal(window.V11_UNIT_SUPPLEMENTAL_STATE.count,12);
-assert.equal(window.V11_UNIT_SUPPLEMENTAL_STATE.sections,12);
+assert.equal(window.V11_UNIT_SUPPLEMENTAL_STATE.count,18);
+assert.equal(window.V11_UNIT_SUPPLEMENTAL_STATE.sections,18);
 const supplements=Object.values(window.V11_UNIT_SUPPLEMENTAL_PASSAGES).flat();
 for(const p of supplements)assert.ok((window.V11_UNIT_SUPPLEMENTAL_PASSAGES[window.V11_PASSAGE_REGISTRY_KEY(p)]||[]).some(v=>v.id===p.id),
   'normalized section key lost '+p.id);
-assert.equal(supplements.length,12);
+assert.equal(supplements.length,18);
 const baselines={
  'サンシャイン|1|PROGRAM 1-1':['v10_data_sunshine_g1_program1.js','V10_PASSAGES'],
  'ニューホライズン|1|Unit 1-1':['v10_data_newhorizon_g1.js','V10_PASSAGES'],
@@ -31,7 +32,13 @@ const baselines={
  'サンシャイン|2|PROGRAM 1-3':['v10_data_sunshine_g2_program1.js','V10_PASSAGES_G2_SS'],
  'ニューホライズン|2|Unit 1-2':['v10_data_newhorizon_g2_unit0_1.js','V10_PASSAGES_G2_NH'],
  'サンシャイン|3|PROGRAM 1-3':['v10_data_sunshine_g3_program1.js','V10_PASSAGES_G3_SS'],
- 'ニューホライズン|3|Unit 1-2':['v10_data_newhorizon_g3_unit0_1.js','V10_PASSAGES_G3_NH']
+ 'ニューホライズン|3|Unit 1-2':['v10_data_newhorizon_g3_unit0_1.js','V10_PASSAGES_G3_NH'],
+ 'サンシャイン|1|PROGRAM 1-3':['v10_data_sunshine_g1_program1.js','V10_PASSAGES'],
+ 'ニューホライズン|1|Unit 1-3':['v10_data_newhorizon_g1_unit1_3.js','V10_PASSAGES'],
+ 'サンシャイン|2|PROGRAM 2-1':['v10_data_sunshine_g2_program2.js','V10_PASSAGES_G2_SS'],
+ 'ニューホライズン|2|Unit 1-3':['v10_data_newhorizon_g2_unit0_1.js','V10_PASSAGES_G2_NH'],
+ 'サンシャイン|3|PROGRAM 2-1':['v10_data_sunshine_g3_program2.js','V10_PASSAGES_G3_SS'],
+ 'ニューホライズン|3|Unit 1-3':['v10_data_newhorizon_g3_unit0_1.js','V10_PASSAGES_G3_NH']
 };
 const cmp=s=>String(s).replace(/\s*\/\s*/g,' ').replace(/\s+/g,' ').trim();
 
@@ -47,7 +54,13 @@ const canonicalNewWordSentinels={
  'サンシャイン|3|PROGRAM 1-2':/\b(eel|homemade|marathon)\b/i,
  'サンシャイン|3|PROGRAM 1-3':/\b(portion|eaten|twice)\b/i,
  'ニューホライズン|3|Unit 1-1':/\b(been to|once|twice)\b/i,
- 'ニューホライズン|3|Unit 1-2':/\b(regional|fashion|haven.t)\b/i
+ 'ニューホライズン|3|Unit 1-2':/\b(regional|fashion|haven.t)\b/i,
+ 'サンシャイン|1|PROGRAM 1-3':/\b(quiet|cheerful|science)\b/i,
+ 'ニューホライズン|1|Unit 1-3':/\b(art|draw|comics)\b/i,
+ 'サンシャイン|2|PROGRAM 2-1':/\b(heard|promote|project)\b/i,
+ 'ニューホライズン|2|Unit 1-3':/\b(Chinese|communicate|dollar)\b/i,
+ 'サンシャイン|3|PROGRAM 2-1':/\b(already|regular|health)\b/i,
+ 'ニューホライズン|3|Unit 1-3':/\b(animation|adventure|quality)\b/i
 };
 const futureWordBlockers={
  'ニューホライズン|1|Unit 1-1':/\bfriends?\b/i,
@@ -135,7 +148,7 @@ for(const p of supplements){
  assert.ok(!exactRecords.some(r=>r.passage.id==='PREVIOUS'),'exact UNIT leaked earlier section '+p.id);
  assert.ok(!exactRecords.some(r=>r.passage.id==='FUTURE'),'exact UNIT leaked future '+p.id);
 }
-console.log('PASS unit supplementary '+supplements.length+' texts / 12 verified baseline section IDs');
+console.log('PASS unit supplementary '+supplements.length+' texts / 18 verified baseline section IDs');
 console.log('PASS '+(supplements.length*10)+' questions with exact passage evidence and '+supplements.reduce((n,p)=>n+p.sentences.length,0)+' slash rows');
-console.log('PASS cumulative/exact UNIT scope: cumulative includes previous, exact excludes previous, neither leaks future (12 checkpoints)');
+console.log('PASS cumulative/exact UNIT scope: cumulative includes previous, exact excludes previous, neither leaks future (18 checkpoints)');
 console.log('PASS frozen core count unchanged ('+before+'); new passages remain in separate registry');
