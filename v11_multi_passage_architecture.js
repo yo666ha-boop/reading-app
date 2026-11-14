@@ -62,6 +62,20 @@
       const pattern=document.getElementById('pattern'); const pf=pattern&&pattern.closest('.field'); if(pf)row.insertBefore(wordField,pf);else row.appendChild(wordField);
     }
     const wordFilter=document.getElementById('v11WordCountFilter');
+    // UNIT can be used as an exact scope for test preparation or as a ceiling
+    // for cumulative practice; the latter stays the default.
+    let scopeField=document.getElementById('v11UnitScopeField');
+    if(!scopeField){
+      scopeField=document.createElement('div');scopeField.className='field';scopeField.id='v11UnitScopeField';
+      scopeField.innerHTML='<label>長文の対象範囲</label><select id="v11UnitScope" aria-label="出題するUNITの範囲">'+
+       '<option value="studied-through">習ったUNITまで</option><option value="current-unit">選択したUNITだけ</option></select>';
+      const target=document.getElementById('section'),box=target&&target.closest('.field');
+      if(box)row.insertBefore(scopeField,box.nextSibling);else row.appendChild(scopeField);
+    }
+    const patternSelector=document.getElementById('pattern');
+    if(patternSelector&&!Array.from(patternSelector.options).some(o=>o.value==='story')){
+      const option=document.createElement('option');option.value='story';option.textContent='物語';patternSelector.appendChild(option);
+    }
 
     let candidateField=document.getElementById('v11PassageVariantField');
     if(!candidateField){
@@ -89,9 +103,16 @@
       try{return (DATASETS[String(document.getElementById('grade').value)]||{})[document.getElementById('textbook').value]||{}}catch(_){return{}}
     }
     function rangeKeys(){
-      const ds=dataset(); const all=Object.keys(ds); const sec=document.getElementById('section');
-      if(!sec||!sec.value)return [];
-      return all.includes(sec.value)?[sec.value]:[];
+      const ds=dataset(), all=Object.keys(ds), sec=document.getElementById('section');
+      // The section selector is a curriculum ceiling, not an exact-match filter.
+      // Object keys are assembled in verified textbook order by the v10 data loaders.
+      const target=sec&&sec.value||'', last=all.indexOf(target);
+      const mode=document.getElementById('v11UnitScope')?.value==='current-unit'?'current-unit':'studied-through';
+      const eligible=last<0?[]:mode==='current-unit'?[target]:all.slice(0,last+1);
+      window.V11_UNIT_RANGE_STATE={textbook:document.getElementById('textbook').value,
+        grade:String(document.getElementById('grade').value),targetSection:target,
+        eligibleSections:eligible.slice(),mode,futureSectionsExcluded:all.slice(last+1)};
+      return eligible;
     }
     function matchesWord(p){
       const n=wordCount(p),m=wordFilter?wordFilter.value:'all';
@@ -99,7 +120,7 @@
     }
     function matchesPattern(p,k,source){
       const el=document.getElementById('pattern'), wanted=el?String(el.value||'all'):'all'; if(wanted==='all')return true;
-      let genre=source==='extra'?String(p&&p.genre||''):'';
+      let genre=source!=='base'?String(p&&p.genre||''):'';
       if(!genre){try{genre=String((baseMetaFor(k)||{}).genre||'')}catch(_){}}
       return genre===wanted;
     }
@@ -110,10 +131,14 @@
         if(b&&matchesWord(b)&&matchesPattern(b,k,'base')){const id=String(b.id||'');if(!seen.has(id)){seen.add(id);out.push({passage:b,source:'base',section:k})}}
         const extras=registry[keyOf({textbook,grade,section:k})]||[];
         for(const p of extras){if(!p||!matchesWord(p)||!matchesPattern(p,k,'extra'))continue;const id=String(p.id||'');if(id&&seen.has(id))continue;if(id)seen.add(id);out.push({passage:p,source:'extra',section:k})}
+        // Supplemental unit-specific texts stay outside the frozen 1000-passage
+        // registry. Batch15/16/FINAL32 exact-count integrity gates must remain intact.
+        const supplemental=(window.V11_UNIT_SUPPLEMENTAL_PASSAGES||{})[keyOf({textbook,grade,section:k})]||[];
+        for(const p of supplemental){if(!p||!matchesWord(p)||!matchesPattern(p,k,'extra'))continue;const id=String(p.id||'');if(!id||seen.has(id))continue;seen.add(id);out.push({passage:p,source:'supplement',section:k})}
       }
       return out;
     }
-    function label(r){const p=r.passage||{};return (r.source==='extra'?'追加':'基本')+'｜'+(r.section||p.section||'')+'｜'+wordCount(p)+' words｜'+(p.title||p.id||'')}
+    function label(r){const p=r.passage||{};return (r.source==='base'?'基本':r.source==='supplement'?'UNIT追加':'追加')+'｜'+(r.section||p.section||'')+'｜'+wordCount(p)+' words｜'+(p.title||p.id||'')}
     function selectedRecord(){return records.find(r=>String(r.passage&&r.passage.id||'')===selectedId)||records[0]||null}
     function setGlobals(p){
       if(!p)return;
@@ -126,7 +151,7 @@
       select.innerHTML=records.map(r=>'<option value="'+esc(String(r.passage.id||''))+'">'+esc(label(r))+'</option>').join('');
       select.value=selectedId; select.disabled=records.length<=1;
       const r=selectedRecord(), idx=r?records.indexOf(r):-1;
-      if(inline)inline.textContent=records.length?('該当 '+records.length+'題。本文を選ぶか「次の本文」で切り替えできます。'):'この条件に合う長文はありません。';
+      if(inline)inline.textContent=records.length?('該当 '+records.length+'題（'+(document.getElementById('v11UnitScope')?.value==='current-unit'?'このUNITだけ':'習ったUNITまで')+'）。本文を選ぶか「次の本文」で切り替えできます。'):'この条件に合う長文はありません。';
       if(pos)pos.textContent=records.length?((idx+1)+' / '+records.length+'題'):'0 / 0題';
       if(prevBtn)prevBtn.disabled=records.length<=1; if(nextBtn)nextBtn.disabled=records.length<=1;
       const p=r&&r.passage; setGlobals(p);
@@ -146,7 +171,7 @@
     window.metaFor=function(sec){
       const r=selectedRecord(); if(!r)return baseMetaFor(sec)||{};
       const p=r.passage, base=baseMetaFor(r.section)||{};
-      if(r.source==='extra')return {...base,genre:p.genre||base.genre||'report',questionSetB:Array.isArray(p.questionSetB)?p.questionSetB:[]};
+      if(r.source!=='base')return {...base,genre:p.genre||base.genre||'report',questionSetB:Array.isArray(p.questionSetB)?p.questionSetB:[]};
       return base;
     };
 
@@ -155,7 +180,13 @@
       const mc=document.getElementById('masterCount'); if(mc)mc.textContent='該当長文 '+records.length+'題 / 選択中 '+wordCount(p)+' words / '+p.section;
       const panel=document.getElementById('passage'); if(panel){
         let m=document.getElementById('v11PassageSourceMeta'); if(!m){m=document.createElement('div');m.id='v11PassageSourceMeta';m.className='meta';m.style.margin='6px 0 10px';const en=panel.querySelector('.en');if(en)panel.insertBefore(m,en);else panel.appendChild(m)}
-        m.innerHTML='<span class="badge">'+(r.source==='extra'?'追加本文':'基本本文')+'</span> '+wordCount(p)+' words / '+esc(p.section||'')+' / '+esc(p.id||'');
+        m.innerHTML='<span class="badge">'+(r.source==='base'?'基本本文':r.source==='supplement'?'UNIT追加本文':'追加本文')+'</span> '+wordCount(p)+' words / '+esc(p.section||'')+' / '+esc(p.id||'');
+      }
+      if(r.source==='supplement' && p.curriculumGate!=='VERIFIED_V7_CANONICAL'){
+        const audit=document.getElementById('audit'),badge=audit&&audit.querySelector('.badge');
+        if(badge){badge.textContent='UNIT追加・原本照合待ち';badge.style.background='#fef3c7';badge.style.color='#92400e';}
+        const gate=document.getElementById('gate');
+        if(gate)gate.innerHTML='<span class="warn">UNIT追加候補：語彙・文法の正本照合が未完了です。</span>';
       }
       const idx=records.indexOf(r); if(pos)pos.textContent=(idx+1)+' / '+records.length+'題';
       window.V11_MULTI_PASSAGE_UI_STATE={...(window.V11_MULTI_PASSAGE_UI_STATE||{}),selectedId:p.id,selectedWords:wordCount(p),position:idx+1,optionCount:records.length,wordFilter:wordFilter?wordFilter.value:'all',source:'render',renderedAt:new Date().toISOString()};
@@ -177,7 +208,7 @@
     if(prevBtn)prevBtn.addEventListener('click',()=>move(-1));
     if(nextBtn)nextBtn.addEventListener('click',()=>move(1));
 
-    ['textbook','grade','major','section','pattern'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('change',()=>setTimeout(()=>{selectedId='';try{setIndex=0}catch(_){};refreshOptions(true);window.render()},0))});
+    ['textbook','grade','major','section','pattern','v11UnitScope'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('change',()=>setTimeout(()=>{selectedId='';try{setIndex=0}catch(_){};refreshOptions(true);window.render()},0))});
     window.addEventListener('v11:passages-registered',()=>setTimeout(()=>{refreshOptions(false);window.render()},0));
     window.V11_SYNC_PASSAGE_VARIANT_UI=function(opts){opts=opts||{};if(opts.preserveSelection===false)selectedId='';const p=refreshOptions(opts.preserveSelection===false);if(opts.render)window.render();return p};
 

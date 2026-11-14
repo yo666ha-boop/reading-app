@@ -25,7 +25,7 @@
     list.addEventListener('click',e=>{const b=e.target.closest('button[data-id]');if(!b)return;select.value=b.dataset.id;select.dispatchEvent(new Event('change',{bubbles:true}));setTimeout(render,0)});
     select.addEventListener('change',()=>setTimeout(render,0));
     const observer=new MutationObserver(()=>render());observer.observe(select,{childList:true,subtree:true});
-    ['textbook','grade','major','section','pattern','v11WordCountFilter'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('change',()=>setTimeout(render,60))});
+    ['textbook','grade','major','section','pattern','v11WordCountFilter','v11UnitScope'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('change',()=>setTimeout(render,60))});
     const prev=document.getElementById('v11PrevPassageBtn'),next=document.getElementById('v11NextPassageBtn');if(prev)prev.addEventListener('click',()=>setTimeout(render,0));if(next)next.addEventListener('click',()=>setTimeout(render,0));
     render();
   }
