@@ -1,4 +1,4 @@
-name: v11 UNIT supplemental curriculum scope QA
+name: v11 UNIT supplemental curriculum scope QA (12 passages)
 on:
   push:
     branches:
@@ -6,6 +6,7 @@ on:
     paths:
       - 'v11_multi_passage_architecture.js'
       - 'v11_unit_supplemental_20261114.js'
+      - 'v11_unit_supplemental_wave2_20261114.js'
       - 'scripts/v11_unit_supplemental_audit.cjs'
       - 'scripts/v11_unit_browser_smoke.cjs'
       - '.github/workflows/v11-unit-supplemental-audit.yml'
@@ -15,6 +16,7 @@ on:
     paths:
       - 'v11_multi_passage_architecture.js'
       - 'v11_unit_supplemental_20261114.js'
+      - 'v11_unit_supplemental_wave2_20261114.js'
       - 'scripts/v11_unit_supplemental_audit.cjs'
       - 'scripts/v11_unit_browser_smoke.cjs'
       - '.github/workflows/v11-unit-supplemental-audit.yml'
@@ -40,5 +42,5 @@ jobs:
         run: |
           python3 -m http.server 4177 --bind 127.0.0.1 >/tmp/v11-unit-http.log 2>&1 &
           sleep 2
-      - name: Chromium six-course UNIT integration smoke
+      - name: Chromium 12 UNIT checkpoints and six-course integration smoke
         run: node scripts/v11_unit_browser_smoke.cjs
