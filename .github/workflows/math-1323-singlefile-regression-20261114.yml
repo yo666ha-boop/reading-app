@@ -5,6 +5,7 @@ on:
       - math-problem-bank-bootstrap
     paths:
       - math-bank/app/qa_1323_singlefile.cjs
+      - math-bank/app/qa_1323_numeric_answers.cjs
       - math-bank/public-origin/index.html
   workflow_dispatch:
 permissions:
@@ -21,3 +22,5 @@ jobs:
           persist-credentials: false
       - name: Run exact 1323 data, figures and all-ID search regression
         run: node math-bank/app/qa_1323_singlefile.cjs
+      - name: Independently re-evaluate strict numeric answer subset
+        run: node math-bank/app/qa_1323_numeric_answers.cjs
