@@ -38,22 +38,22 @@ B:[
 {
 meta:['V11-UNIT-NH-G1-U1-3-003','ニューホライズン','1','Unit 1-3','Comics in the Art Club'],
 rows:[
-['I am in the art club.','私は美術部に入っています。','I am in / the art club.','私は所属しています / 美術部に'],
-['I draw comics.','私は漫画を描きます。','I draw / comics.','私は描きます / 漫画を'],
-['I like anime, too.','私はアニメも好きです。','I like / anime, too.','私は好きです / アニメも'],
-['My friend is an anime fan.','私の友達はアニメのファンです。','My friend is / an anime fan.','友達は〜です / アニメのファン'],
-['Do you like comics?','漫画は好きですか。','Do you like / comics?','あなたは好きですか / 漫画が'],
-['Yes, I do.','はい、好きです。','Yes, / I do.','はい / 好きです'],
-['Do you draw comics, too?','あなたも漫画を描きますか。','Do you draw / comics, too?','あなたも描きますか / 漫画を'],
-['No, I do not.','いいえ、描きません。','No, / I do not.','いいえ / 描きません'],
-['I take swimming lessons.','私は水泳のレッスンを受けています。','I take / swimming lessons.','私は受けています / 水泳のレッスンを'],
-['How about you?','あなたはどうですか。','How about / you?','どうですか / あなたは'],
-['I draw comics at school, too.','私も学校で漫画を描きます。','I draw / comics / at school, too.','私は描きます / 漫画を / 学校でも'],
-['Wow! That is great.','わあ、それはすごいですね。','Wow! / That is / great.','わあ / それは〜です / すばらしい']
+['Mika: I am in the art club.','ミカ：「私は美術部に入っています。」','Mika: / I am in / the art club.','私は所属しています / 美術部に'],
+['Mika: I draw comics.','ミカ：「私は漫画を描きます。」','Mika: / I draw / comics.','私は描きます / 漫画を'],
+['Mika: I like anime, too.','ミカ：「私はアニメも好きです。」','Mika: / I like / anime, too.','私は好きです / アニメも'],
+['Mika: My friend is an anime fan.','ミカ：「私の友達はアニメのファンです。」','Mika: / My friend is / an anime fan.','友達は〜です / アニメのファン'],
+['Mika: Do you like comics?','ミカ：「漫画は好きですか。」','Mika: / Do you like / comics?','あなたは好きですか / 漫画が'],
+['Ken: Yes, I do.','ケン：「はい、好きです。」','Ken: / Yes, / I do.','はい / 好きです'],
+['Mika: Do you draw comics, too?','ミカ：「あなたも漫画を描きますか。」','Mika: / Do you draw / comics, too?','あなたも描きますか / 漫画を'],
+['Ken: No, I do not.','ケン：「いいえ、描きません。」','Ken: / No, / I do not.','いいえ / 描きません'],
+['Ken: I take swimming lessons.','ケン：「私は水泳のレッスンを受けています。」','Ken: / I take / swimming lessons.','私は受けています / 水泳のレッスンを'],
+['Ken: How about you?','ケン：「あなたはどうですか。」','Ken: / How about / you?','どうですか / あなたは'],
+['Mika: I draw comics at school, too.','ミカ：「私も学校で漫画を描きます。」','Mika: / I draw / comics / at school, too.','私は描きます / 漫画を / 学校でも'],
+['Ken: Wow! That is great.','ケン：「わあ、それはすごいですね。」','Ken: / Wow! / That is / great.','わあ / それは〜です / すばらしい'],
 ],
 A:[
-[0,'1. 話し手は何部に入っていますか。英語で答えなさい。','the art club','in の後ろに部活動が書かれています。'],
-[1,'2. 話し手は何を描きますか。英語で答えなさい。','comics','draw の目的語です。'],
+[0,'1. ミカは何部に入っていますか。英語で答えなさい。','the art club','in の後ろに部活動が書かれています。'],
+[1,'2. ミカは何を描きますか。英語で答えなさい。','comics','draw の目的語です。'],
 [2,'3. 漫画以外で好きなものは何ですか。英語で答えなさい。','anime','like の目的語を読みます。'],
 [3,'4. 友達は何のファンですか。英語で答えなさい。','anime','fan の前の語です。'],
 [8,'5. 水泳についてどんな活動をしていますか。英語で答えなさい。','swimming lessons','take の目的語です。']],
@@ -62,7 +62,7 @@ B:[
 [5,'2. 漫画が好きだという返事は Yes / No のどちらですか。','Yes','Yes, I do. と答えています。'],
 [6,'3. 何を描くかと相手に尋ねていますか。英語で答えなさい。','comics','draw の後ろです。'],
 [7,'4. 相手は漫画を描きますか。Yes / No で答えなさい。','No','No, I do not. と答えています。'],
-[10,'5. 最後の話し手はどこで漫画を描きますか。英語で答えなさい。','at school','場所を示す部分です。']]
+[10,'5. ミカはどこで漫画を描きますか。英語で答えなさい。','at school','場所を示す部分です。']]
 },
 {
 meta:['V11-UNIT-SS-G2-P2-1-003','サンシャイン','2','PROGRAM 2-1','Baseball for Everyone'],
