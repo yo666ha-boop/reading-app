@@ -9,7 +9,13 @@ const cases=[
  {textbook:'サンシャイン',grade:'2',major:'PROGRAM 1',section:'PROGRAM 1-2',id:'V11-UNIT-SS-G2-P1-2-001'},
  {textbook:'ニューホライズン',grade:'2',major:'Unit 1',section:'Unit 1-1',id:'V11-UNIT-NH-G2-U1-1-001'},
  {textbook:'サンシャイン',grade:'3',major:'PROGRAM 1',section:'PROGRAM 1-2',id:'V11-UNIT-SS-G3-P1-2-001'},
- {textbook:'ニューホライズン',grade:'3',major:'Unit 1',section:'Unit 1-1',id:'V11-UNIT-NH-G3-U1-1-001'}
+ {textbook:'ニューホライズン',grade:'3',major:'Unit 1',section:'Unit 1-1',id:'V11-UNIT-NH-G3-U1-1-001'},
+ {textbook:'サンシャイン',grade:'1',major:'PROGRAM 1',section:'PROGRAM 1-2',id:'V11-UNIT-SS-G1-P1-2-002'},
+ {textbook:'ニューホライズン',grade:'1',major:'Unit 1',section:'Unit 1-2',id:'V11-UNIT-NH-G1-U1-2-002'},
+ {textbook:'サンシャイン',grade:'2',major:'PROGRAM 1',section:'PROGRAM 1-3',id:'V11-UNIT-SS-G2-P1-3-002'},
+ {textbook:'ニューホライズン',grade:'2',major:'Unit 1',section:'Unit 1-2',id:'V11-UNIT-NH-G2-U1-2-002'},
+ {textbook:'サンシャイン',grade:'3',major:'PROGRAM 1',section:'PROGRAM 1-3',id:'V11-UNIT-SS-G3-P1-3-002'},
+ {textbook:'ニューホライズン',grade:'3',major:'Unit 1',section:'Unit 1-2',id:'V11-UNIT-NH-G3-U1-2-002'}
 ];
 (async()=>{
  const browser=await chromium.launch({headless:true});
@@ -20,7 +26,8 @@ const cases=[
  await page.addScriptTag({url:origin+'/v11_multi_passage_architecture.js'});
  await page.addScriptTag({url:origin+'/v11_candidate_list_ui.js'});
  await page.addScriptTag({url:origin+'/v11_unit_supplemental_20261114.js'});
- await page.waitForFunction(()=>window.V11_UNIT_SUPPLEMENTAL_STATE?.count===6);
+ await page.addScriptTag({url:origin+'/v11_unit_supplemental_wave2_20261114.js'});
+ await page.waitForFunction(()=>window.V11_UNIT_SUPPLEMENTAL_STATE?.count===12);
  assert.equal(await page.locator('#v11PassageVariant').count(),1);
  let checked=0;
  for(const c of cases){
@@ -67,6 +74,6 @@ const cases=[
  assert.ok(!ids.includes('V11-UNIT-NH-G1-U1-1-001'),'Future unit leaked into Unit 0');
  assert.ok(ids.length>0,'No earlier passage');
  assert.equal(errors.length,0,errors.join('\n'));
- console.log('PASS Chromium UI '+checked+' course/UNIT checkpoints, A/B switching, no future-UNIT leak');
+ console.log('PASS Chromium UI '+checked+' UNIT checkpoints across 6 courses, A/B switching, no future-UNIT leak');
  await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});
