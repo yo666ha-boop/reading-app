@@ -9,6 +9,7 @@ on:
       - 'math-bank/public-origin/index1323-exact.html'
       - 'math-bank/app/test_exact1323_live_origin.cjs'
       - 'math-bank/app/build_exact1323_persistence_candidate.py'
+      - 'math-bank/app/index1323.html'
   workflow_dispatch:
 
 permissions:
@@ -33,9 +34,14 @@ jobs:
           first=(root/'index.html').read_bytes()
           twin=(root/'index1323-exact.html').read_bytes()
           expected='47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521'
-          assert len(first)==6819806, ('bytes',len(first))
-          assert hashlib.sha256(first).hexdigest()==expected, 'source SHA256'
-          assert first==twin, 'source twin mismatch'
+          assert len(twin)==6819806, ('bytes',len(twin))
+          assert hashlib.sha256(twin).hexdigest()==expected, 'immutable source SHA256'
+          import sys
+          sys.path.insert(0,'math-bank/app')
+          from build_exact1323_persistence_candidate import ORIGINAL,FIXED
+          assert twin.count(ORIGINAL)==1, 'restore() original contract'
+          patched=twin.replace(ORIGINAL,FIXED,1)
+          assert first in (twin,patched), 'public entry differs from exact or tested minimal patch'
           html=first.decode('utf-8')
           assert 'const EMBEDDED_RECORDS=' in html, 'embedded records absent'
           assert '1323実データゲート' in html, 'real data gate absent'
@@ -94,3 +100,44 @@ jobs:
           echo 'Cross-browser engines tested: Chromium, Firefox, WebKit (iPhone viewport), Fire/Silk emulation.'
           echo 'Real physical Fire device is NOT tested here.'
           echo 'Do NOT set PUBLICATION_READY=true based on this CI workflow alone.'
+
+  promote-tested-candidate:
+    needs: [exact-byte-identity, real-runtime-browser, release-policy]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Rebuild and verify exactly the candidate tested in all four engines
+        run: |
+          set -euo pipefail
+          python3 math-bank/app/build_exact1323_persistence_candidate.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          original=Path('math-bank/public-origin/index1323-exact.html').read_bytes()
+          candidate=Path('math-bank/qa-candidate/index.html').read_bytes()
+          live=Path('math-bank/public-origin/index.html')
+          before=live.read_bytes()
+          assert before in (original,candidate), 'unexpected live entry mutation'
+          assert candidate != original
+          assert hashlib.sha256(original).hexdigest()=='47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521'
+          live.write_bytes(candidate)
+          print('isolated_branch_candidate_sha256',hashlib.sha256(candidate).hexdigest())
+          print('original_unchanged',True)
+          print('PUBLICATION_READY',False)
+          PY
+      - name: Commit only isolated app entry after full QA PASS
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add math-bank/public-origin/index.html
+          if git diff --cached --quiet; then
+            echo 'already_patched_no_commit'
+            exit 0
+          fi
+          git commit -m 'math: promote QA-passed storage restore fix to isolated app index'
+          git push origin HEAD:math-problem-bank-bootstrap
