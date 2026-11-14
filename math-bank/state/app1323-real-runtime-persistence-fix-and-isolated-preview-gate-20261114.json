@@ -1,0 +1,58 @@
+{
+  "project": "mikami-math-problem-bank",
+  "recorded_at_jst": "2026-11-14T13:40:00+09:00",
+  "isolated_repository": "yo666ha-boop/reading-app",
+  "branch": "math-problem-bank-bootstrap",
+  "source_original": {
+    "path": "math-bank/public-origin/index1323-exact.html",
+    "bytes": 6819806,
+    "sha256": "47893e010514fffa44d45dac3832cf502aee075345b1ecdf378f69d764b32521",
+    "git_blob_sha1": "16d047ad74f0cf32541ac48b88ceb1bb5735ef82",
+    "unchanged": true
+  },
+  "qa_passed_isolated_entry": {
+    "path": "math-bank/public-origin/index.html",
+    "bytes": 6819816,
+    "sha256": "4c2cfb56763e7cdc27055ddb2e3ab9ee075d9926a8656b18884f82524038aca9",
+    "git_blob_sha1": "0ff971af279a78cf42e5badee29e1badaf780f81",
+    "commit_sha": "17023d12a96c5ec3ad3b535e31135040cb097674",
+    "correction": "Restore dynamic select options before restoring values from localStorage",
+    "patch_bytes_added": 10,
+    "records": 1323,
+    "originals": 1271,
+    "variants": 52,
+    "embedded_images": 282
+  },
+  "tests": {
+    "full_candidate_pass_workflow_run": 43556890207,
+    "promotion_gate_full_pass_workflow_run": 43557240884,
+    "exact_bytes_source_identity": "PASS",
+    "chromium": "PASS",
+    "firefox": "PASS",
+    "webkit_iphone_engine_emulation": "PASS_NOT_PHYSICAL_IPHONE",
+    "fire_silk_emulation": "PASS_NOT_PHYSICAL_FIRE",
+    "localStorage_settings_reload": "PASS",
+    "standard_filter_317": "PASS",
+    "variant_filter_52": "PASS",
+    "original_filter_1271": "PASS",
+    "pdf_A4_chromium": "PASS",
+    "browser_error_counts": "ZERO",
+    "images_rendered_in_test": "PASS"
+  },
+  "remote_deployment": {
+    "target_project_id": "prj_klR6v3xfehqPFqb2BPwZaaoy9m3A",
+    "preview_attempt_id": "dpl_CbEK2AXDzqG82dtheJYWUHqWCx25",
+    "preview_attempt_status": "ERROR",
+    "error_code": "git_info_fail",
+    "context": "Vercel team Git-linked project list empty; existing isolated project not linked to repository",
+    "remote_byte_identity": "NOT_VERIFIED"
+  },
+  "release": {
+    "main_touched": false,
+    "physical_fire": "PENDING",
+    "strict_release": "PENDING",
+    "public_isolated_verification": "PENDING",
+    "publication_ready": false
+  },
+  "next_start": "Keep validated isolated index and original immutable. Connect existing isolated Vercel project to correct GitHub repository (do not create duplicate or overwrite main), then deploy QA-passed isolated branch and perform remote SHA/body and physical Fire gates."
+}
