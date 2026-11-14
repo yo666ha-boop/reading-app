@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   exact-byte-identity:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
@@ -46,7 +46,7 @@ jobs:
 
   real-runtime-browser:
     needs: exact-byte-identity
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
     strategy:
       fail-fast: false
@@ -84,7 +84,7 @@ jobs:
 
   release-policy:
     needs: [exact-byte-identity, real-runtime-browser]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Keep strict release and physical Fire gate separate
         run: |
