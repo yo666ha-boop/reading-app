@@ -20,7 +20,7 @@ jobs:
           ref: math-problem-bank-bootstrap
           persist-credentials: true
           fetch-depth: 1
-      - name: Guard original SHA and apply 99-byte deterministic patch
+      - name: Apply guarded exact-ID and keyword fallback patches
         run: python math-bank/app/patch_exact_id_search_1323.py
       - name: Syntax check embedded script and exact hash
         shell: bash
@@ -30,12 +30,12 @@ jobs:
           const path='math-bank/public-origin/index.html';
           const b=fs.readFileSync(path);
           const got=crypto.createHash('sha256').update(b).digest('hex');
-          const expected='8f367f2778b4ce6490fecebd067f82d14d082c7de084ca5061388240b2989cdb';
+          const expected='64f4f2294c373b19922da7ec470a16860ccd4e8db854cbab15fb5122c53e09a6';
           if(got!==expected)throw Error('SHA256 mismatch '+got);
           const s=b.toString('utf8'),start=s.indexOf('<script>'),end=s.lastIndexOf('</script>');
           if(start<0||end<start)throw Error('inline script missing');
           new vm.Script(s.slice(start+8,end));
-          if(!s.includes('exactId!==null?r.id===exactId'))throw Error('exact ID guard missing');
+          if(!s.includes('exactId!=null?r.id===exactId'))throw Error('exact ID guard missing');
           console.log('PASS syntax, exact SHA256',got);
           NODE
           git diff --check
@@ -48,6 +48,6 @@ jobs:
           if git diff --cached --quiet; then
             echo 'NO_CHANGE already patched'
           else
-            git commit -m 'math: fix exact ID search returning related variants'
+            git commit -m 'math: fix exact ID and preserve keyword search'
             git push origin HEAD:math-problem-bank-bootstrap
           fi
