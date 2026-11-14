@@ -102,8 +102,16 @@ for(const p of supplements){
  assert.ok(records.some(r=>r.passage.id==='PREVIOUS'),'earlier base item missing');
  assert.ok(records.some(r=>r.passage.id==='BASE'),'current base item missing');
  assert.ok(!records.some(r=>r.passage.id==='FUTURE'),'future passage leaked '+p.id);
+ values.v11UnitScope='current-unit';
+ const exact=Array.from(scope());
+ assert.deepEqual(exact,[target],'exact UNIT must not include previous lessons');
+ assert.equal(localWindow.V11_UNIT_RANGE_STATE.mode,'current-unit');
+ const exactRecords=build();
+ assert.ok(exactRecords.some(r=>r.passage.id===p.id),'selected UNIT omitted '+p.id);
+ assert.ok(!exactRecords.some(r=>r.passage.id==='PREVIOUS'),'exact UNIT leaked earlier section '+p.id);
+ assert.ok(!exactRecords.some(r=>r.passage.id==='FUTURE'),'exact UNIT leaked future '+p.id);
 }
 console.log('PASS unit supplementary '+supplements.length+' texts / 12 verified baseline section IDs');
 console.log('PASS '+(supplements.length*10)+' questions with exact passage evidence and '+supplements.reduce((n,p)=>n+p.sentences.length,0)+' slash rows');
-console.log('PASS cumulative scope: studied-through includes previous and excludes future, 12 UNIT checkpoints');
+console.log('PASS cumulative/exact UNIT scope: cumulative includes previous, exact excludes previous, neither leaks future (12 checkpoints)');
 console.log('PASS frozen core count unchanged ('+before+'); new passages remain in separate registry');
