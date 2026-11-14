@@ -6,12 +6,13 @@ const origin=process.env.READING_APP_URL||'http://127.0.0.1:4177';
  page.on('pageerror',e=>errors.push(e.message));
  await page.goto(origin+'/index.html',{waitUntil:'load'});
  await page.waitForFunction(()=>window.V11_MULTI_PASSAGE_STATE?.extraPassages===832,null,{timeout:50000});
- if(!(await page.evaluate(()=>window.V11_UNIT_SUPPLEMENTAL_STATE?.count===18))){
+ if(!(await page.evaluate(()=>window.V11_UNIT_SUPPLEMENTAL_STATE?.count===24))){
   await page.addScriptTag({url:origin+'/v11_unit_supplemental_20261114.js'});
   await page.addScriptTag({url:origin+'/v11_unit_supplemental_wave2_20261114.js'});
   await page.addScriptTag({url:origin+'/v11_unit_supplemental_wave3_20261114.js'});
+  await page.addScriptTag({url:origin+'/v11_unit_supplemental_wave4_20261114.js'});
  }
- await page.waitForFunction(()=>window.V11_UNIT_SUPPLEMENTAL_STATE?.count===18,null,{timeout:5000});
+ await page.waitForFunction(()=>window.V11_UNIT_SUPPLEMENTAL_STATE?.count===24,null,{timeout:5000});
  const report=await page.evaluate(()=>{
   const registry=window.V11_EXTRA_PASSAGES||{},supp=window.V11_UNIT_SUPPLEMENTAL_PASSAGES||{},ds=DATASETS,items=[];
   const norm=s=>String(s).normalize('NFKC').trim().replace(/\s+/g,' ').replace(/\s*-\s*/g,'-').replace(/^(program|unit)\s*/i,m=>m.trim().toUpperCase()+' ');
@@ -56,7 +57,7 @@ const origin=process.env.READING_APP_URL||'http://127.0.0.1:4177';
     nearest.push({id:p.id,nearestCoreId:top.id,jaccard5:top.jaccard5});
   }
 
-  return {generatedAt:new Date().toISOString(),source:'full v11 persistent runtime plus supplementary Wave1+2+3',
+  return {generatedAt:new Date().toISOString(),source:'full v11 persistent runtime plus supplementary Wave1+2+3+4',
     core:{base:all.reduce((n,s)=>n+s.base,0),extra:all.reduce((n,s)=>n+s.extra,0)},
     supplementary:all.reduce((n,s)=>n+s.supplementary,0),allCandidates:all.reduce((n,s)=>n+s.total,0),
     courseCount:items.length,sectionCount:all.length,fewerThan2:all.filter(s=>s.total<2).length,
@@ -67,10 +68,10 @@ const origin=process.env.READING_APP_URL||'http://127.0.0.1:4177';
  assert.equal(errors.length,0,errors.join('\n'));
  assert.equal(report.core.base,168,'Frozen base inventory differs');
  assert.equal(report.core.extra,832,'Frozen extra inventory differs');
- assert.equal(report.supplementary,18,'Supplemental inventory differs');
- assert.equal(report.allCandidates,1018,'Total 1000+18 mismatch');
+ assert.equal(report.supplementary,24,'Supplemental inventory differs');
+ assert.equal(report.allCandidates,1024,'Total 1000+24 mismatch');
  assert.equal(report.courseCount,6);
- assert.equal(report.sectionsWithSupplement,18);
+ assert.equal(report.sectionsWithSupplement,24);
  assert.equal(report.newVsCoreSimilarity.comparedCore,1000,'Core corpus for duplicate check is incomplete');
  assert.equal(report.newVsCoreSimilarity.exact,0,'Supplement duplicates a core passage');
  assert.equal(report.newVsCoreSimilarity.near90,0,'Supplement is at least 90% similar by 5-gram Jaccard');
