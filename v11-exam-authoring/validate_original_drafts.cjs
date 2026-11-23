@@ -10,11 +10,15 @@ for(const f of files){
  const errors=[],warn=[];
  const normalize=s=>String(s||'').replace(/\s+/g,' ').trim();
  const sentenceSet=new Set((d.sentences||[]).map(normalize));
+ const passage=(d.sentences||[]).join(' ');
+ const punctuationErrors=(d.sentences||[]).map((s,i)=>/[.!?][\"']?$/.test(String(s).trim())?null:i+1).filter(Boolean);
  const sentenceIndex=new Map((d.sentences||[]).map((s,i)=>[normalize(s),i]));
  const check=(ok,msg)=>{if(!ok)errors.push(msg)};
  const words=(d.sentences||[]).join(' ').trim().split(/\s+/).filter(Boolean).length;
  check(words>=400&&words<=450,'word count outside 400–450: '+words);
  check(words===d.wordCount,'stored wordCount mismatch: '+d.wordCount+' vs '+words);
+ check(punctuationErrors.length===0,'sentences without terminal punctuation: '+punctuationErrors.join(','));
+ check(!/\b(?:write an essay|write a paragraph|your opinion in english)\b/i.test(JSON.stringify(d.questions||[])+' '+JSON.stringify(d.questionSetB||[])),'free writing prompt detected');
  check(Array.isArray(d.sentences)&&d.sentences.length>=15,'missing coherent sentence sequence');
  const jp=(d.fullTranslation||'').split(/\r?\n/).filter(Boolean);
  check(jp.length===d.sentences.length,'full translation sentence count mismatch');
@@ -41,7 +45,7 @@ for(const f of files){
  check(types.has('REASON')||types.has('INFERENCE'),'reason/inference missing');
  for(const [i,q] of all.entries()){
    for(const k of ['questionType','prompt','answer','evidence','evidenceJp','reason'])check(typeof q[k]==='string'&&q[k].trim(),'question '+(i+1)+' missing '+k);
-   if(q.evidence && !sentenceSet.has(normalize(q.evidence)))warn.push('Question '+(i+1)+' evidence is not one exact source sentence; verify multi-sentence evidence manually');
+   if(q.evidence && !sentenceSet.has(normalize(q.evidence)))errors.push('Question '+(i+1)+' evidence is not one exact source sentence; require explicit source-aligned evidence');
    const ix=sentenceIndex.get(normalize(q.evidence));
    if(ix!==undefined && normalize(q.evidenceJp)!==normalize(jp[ix]))errors.push('question '+(i+1)+' evidenceJp differs from fullTranslation sentence '+(ix+1));
    if(q.questionType==='MATERIAL_LINK')check(typeof q.materialEvidence==='string'&&q.materialEvidence.trim(),'material question '+(i+1)+' missing materialEvidence');
