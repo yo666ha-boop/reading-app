@@ -72,7 +72,7 @@
       state({registered, error:manifestError});
       return;
     }
-    if(!manifest||registered<EXACT_BATCH_COUNT){
+    if(!manifest){
       lastStatus='LOADING';
       status.textContent='読み込み中：追加長文 '+registered+'/'+EXACT_BATCH_COUNT+'題。すべてのデータが揃うまで選択できません。';
       sel.innerHTML='';sel.disabled=true;open.disabled=true;
@@ -84,7 +84,8 @@
     const missing=rows.filter(r=>!byId.has(r.id)).map(r=>r.id);
     const exam=rows.filter(r=>r.lengthTier==='EXAM_STAMINA'&&r.explicit===true);
     const lengthMismatch=rows.filter(r=>byId.has(r.id)&&wc(byId.get(r.id))!==r.wordCount).map(r=>({id:r.id,stored:r.wordCount,actual:wc(byId.get(r.id))}));
-    if(rows.length!==100||ids.size!==100||exam.length!==36||missing.length){
+    const allLoaded=registered>=EXACT_BATCH_COUNT;
+    if(rows.length!==100||ids.size!==100||exam.length!==36||(allLoaded&&missing.length)){
       lastStatus='FAIL_CLOSED';
       status.textContent='入試データが一致しません。100題='+rows.length+'、本番型='+exam.length+'、未登録='+missing.length+'。誤った教材を表示しないため停止しています。';
       sel.innerHTML='';sel.disabled=true;open.disabled=true;
@@ -92,21 +93,22 @@
       return;
     }
     const base=mode==='exam'?exam:rows;
-    const filtered=base.map(r=>({row:r,p:byId.get(r.id)})).filter(x=>wc(x.p)>=minWords);
+    const available=base.filter(r=>byId.has(r.id));
+    const filtered=available.map(r=>({row:r,p:byId.get(r.id)})).filter(x=>wc(x.p)>=minWords);
     if(!selectedId||!filtered.some(x=>x.row.id===selectedId))selectedId=filtered.length?filtered[0].row.id:'';
     sel.innerHTML=filtered.map((x,i)=>{
       const tier=x.row.lengthTier==='EXAM_STAMINA'?'本番型':x.row.lengthTier==='LONG'?'長文練習':'基礎・標準';
       return '<option value="'+esc(x.row.id)+'">'+(i+1)+'. '+wc(x.p)+'語｜'+tier+'｜'+esc(x.p.title||x.row.id)+'</option>';
     }).join('');
     sel.value=selectedId;sel.disabled=!filtered.length;open.disabled=!filtered.length;
-    const long400=base.filter(r=>wc(byId.get(r.id))>=400).length;
-    status.textContent=(mode==='exam'?'入試本番型':'入試準備')+'：'+filtered.length+'題を選択可能（元の候補 '+base.length+'題、400語以上 '+long400+'題）。'+(lengthMismatch.length?'※旧集計と実本文の語数に '+lengthMismatch.length+'題の差があります。表示は実本文を優先します。':'');
-    lastStatus='READY';
+    const long400=available.filter(r=>wc(byId.get(r.id))>=400).length;
+    status.textContent=(mode==='exam'?'入試本番型':'入試準備')+'：'+filtered.length+'題を選択可能（読込済み '+available.length+'/'+base.length+'題、400語以上 '+long400+'題）。'+(allLoaded?'':'全データを読込中 '+registered+'/'+EXACT_BATCH_COUNT+'題。読込済みの問題は先に利用できます。')+(lengthMismatch.length?'※旧集計と実本文の語数に '+lengthMismatch.length+'題の差があります。表示は実本文を優先します。':'');
+    lastStatus=allLoaded?'READY':(available.length?'PARTIAL_READY':'LOADING');
     state({registered, rows:rows.length, exam:exam.length, prep:rows.length,
-      matching:filtered.length, over400:long400, lengthMismatch, missing:[], selectedId});
+      matching:filtered.length, over400:long400, lengthMismatch, missing, available:available.length, selectedId});
   }
   function openSelected(){
-    if(lastStatus!=='READY'||!selectedId||!manifest)return;
+    if((lastStatus!=='READY'&&lastStatus!=='PARTIAL_READY')||!selectedId||!manifest)return;
     const p=indexPassages().get(selectedId);
     if(!p)return;
     try{
