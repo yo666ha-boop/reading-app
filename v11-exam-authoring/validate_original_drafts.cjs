@@ -3,11 +3,13 @@
 const fs=require('node:fs');
 const path=require('node:path');
 const base=path.resolve(__dirname,'..');
-const files=process.argv.slice(2).length?process.argv.slice(2):['001_water_stations_original_draft.json'];
+const files=process.argv.slice(2).length?process.argv.slice(2):['v11-exam-authoring/001_water_stations_original_draft.json'];
 let failed=false;
 for(const f of files){
  const p=path.resolve(base,f),d=JSON.parse(fs.readFileSync(p,'utf8'));
  const errors=[],warn=[];
+ const normalize=s=>String(s||'').replace(/\s+/g,' ').trim();
+ const sentenceSet=new Set((d.sentences||[]).map(normalize));
  const check=(ok,msg)=>{if(!ok)errors.push(msg)};
  const words=(d.sentences||[]).join(' ').trim().split(/\s+/).filter(Boolean).length;
  check(words>=400&&words<=450,'word count outside 400–450: '+words);
@@ -33,6 +35,8 @@ for(const f of files){
  check(types.has('REASON')||types.has('INFERENCE'),'reason/inference missing');
  for(const [i,q] of all.entries()){
    for(const k of ['questionType','prompt','answer','evidence','evidenceJp','reason'])check(typeof q[k]==='string'&&q[k].trim(),'question '+(i+1)+' missing '+k);
+   if(q.evidence && !sentenceSet.has(normalize(q.evidence)))warn.push('Question '+(i+1)+' evidence is not one exact source sentence; verify multi-sentence evidence manually');
+   if(q.questionType==='MATERIAL_LINK')check(typeof q.materialEvidence==='string'&&q.materialEvidence.trim(),'material question '+(i+1)+' missing materialEvidence');
  }
  check(!/freeWrite|composition|essayTask/i.test(JSON.stringify(d)),'composition field detected');
  warn.push('NOT TESTED: NH/SS v7 lexical and grammar chronology');
