@@ -57,3 +57,8 @@
 - GitHubに `v11-exam-authoring/validate_original_drafts.cjs` を新規実装（commit `0461c35a31ddbef4ce3ed05e4b6d3eb38df3e086`）。英文400–450語、保存語数、全文訳の文数、英日slashのブロック数と英文復元一致、A/B各5問、6種以上・必須設問分類、根拠欄、作文項目の静的チェックを実装。構造合格と公開承認は分離し、公開承認は常にfalseとする。
 - 今回のゲートはGitHubに保存済みだが、Node実行・CI・Chromium/WebKit/iPhone/A4は未実行。実行済みと誤記しない。次は `node v11-exam-authoring/validate_original_drafts.cjs` を実行してエラー修正、v7原本照合、YE-002原文制作。
 - 公開本番型36題、新作下書き1/24、全品質合格0/24、未制作23/24、公開追加0/24。mainと本番rootは無変更。
+
+## 2026-11-23 18:53 JST〜｜検査器の実修正
+- main QA・仕様・100題subsetを再取得。仕様・subsetの実パスは `v11-preview/` 内であると確認。main最新確認commit `b40c653f4f6a713fd80df9f8e1572422d2877082`。
+- 既存検査器のデフォルト入力がリポジトリrootからの相対パスになっておらず、指定なし実行で下書きを開けない不具合を修正。さらに根拠英文の原文一致を警告し、資料統合問題の `materialEvidence` 欠落をエラーにする。保存commit `3c43037f8689182ba5ed9ef96691a8ad21409237`、読み戻し確認済み。
+- Node実行・公開ブラウザ実測・v7照合はこのrunでは未実行。前回QAの最終安定値は本番型36、400語以上15。新作下書き1、品質合格0、未制作23、公開追加0を維持。次は検査器実行とYE-002全文制作。root v10/mainは未変更。
