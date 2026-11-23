@@ -188,3 +188,11 @@
 - 今回Node実行・公開ブラウザ再試験・新作YE-020〜024制作は未実施。したがって構造PASSも正式品質PASSも新規宣言しない。新作下書き19/24、未制作5、正式品質合格0、公開追加0、公開入試本番型36（前回確認値）。
 - 次：Nodeで全19題の両監査器を実行し、検出エラーを修正。YE-020以降を複数題実制作。v7/semantic/重複/WebKit/iPhone/A4/公開表示を監査して全PASS後のみ公開。main/root v10・既存1000題には書込なし。
 - 終了JST：2026-11-24 05:5x（概算）。
+
+
+## 2026-11-24 06:54 JST〜｜19題横断実行ゲート追加（未実行）
+- main QA/spec/subset、独立branch backlog/両validator、Google Drive引継ぎを再取得。仕様とsubsetの正本は `v11-preview/` 配下。独立branchの番号付き下書きファイル一覧をGitHub Contents APIから取得し、19件存在を確認。
+- `v11-exam-authoring/crosscheck_19_drafts_20261124.cjs` を新規作成（commit fb73dedec5672307ef3648d8f1bc6cdd57623c6d）、GitHub読み戻し文字列一致。19題全件を対象に、400–450語、文/訳/slash、A/B各5、6分類、英文根拠/根拠訳、下書き保護、本文重複を実行時に検査する追加ゲート。
+- 研究PCのNode v24.22.0稼働を確認したが、遠隔PowerShell実行コマンドの引用符展開エラーで全19題の実検査は未完。**Node PASS未宣言**。次はコマンド修正のうえ全件実行し、検出不一致を直す。公開ブラウザ・WebKit/iPhone/A4、v7/semantic、新作YE-020〜024も未完。
+- 公開入試型36、下書き19/24、未制作5、正式品質合格0、公開追加0。main/root v10/既存1000題は変更なし。
+- 開始JST 06:54、終了JST 07時台（確定時刻未取得）。
