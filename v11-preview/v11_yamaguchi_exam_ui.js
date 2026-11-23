@@ -53,7 +53,7 @@
       '</div>'+
       '<div id="v11ExamStatus" class="muted" style="margin-top:10px" role="status">入試用データを読み込み中です。</div>'+
       '<div class="controlbar"><button type="button" class="primary" id="v11ExamOpen" disabled>選んだ長文を開く</button></div>'+
-      '<p class="muted" style="margin-top:9px">本番型は340〜446語の36題（うち400語以上は12題）。入試準備100題には150〜329語の64題も含まれます。実際の県入試過去問の転載ではなく、形式に合わせたオリジナル教材です。</p>';
+      '<p class="muted" style="margin-top:9px">入試準備100題には短めの基礎練習も含まれます。語数は実際の英文を再計算して表示します。実際の県入試過去問の転載ではなく、形式に合わせたオリジナル教材です。</p>';
     header.insertAdjacentElement('afterend',panel);
     $('v11ExamMode').addEventListener('change',()=>{mode=$('v11ExamMode').value;selectedId='';render()});
     $('v11ExamMinWords').addEventListener('change',()=>{minWords=Number($('v11ExamMinWords').value)||0;selectedId='';render()});
@@ -83,6 +83,7 @@
     const byId=indexPassages(), ids=new Set(rows.map(r=>r.id));
     const missing=rows.filter(r=>!byId.has(r.id)).map(r=>r.id);
     const exam=rows.filter(r=>r.lengthTier==='EXAM_STAMINA'&&r.explicit===true);
+    const lengthMismatch=rows.filter(r=>byId.has(r.id)&&wc(byId.get(r.id))!==r.wordCount).map(r=>({id:r.id,stored:r.wordCount,actual:wc(byId.get(r.id))}));
     if(rows.length!==100||ids.size!==100||exam.length!==36||missing.length){
       lastStatus='FAIL_CLOSED';
       status.textContent='入試データが一致しません。100題='+rows.length+'、本番型='+exam.length+'、未登録='+missing.length+'。誤った教材を表示しないため停止しています。';
@@ -99,10 +100,10 @@
     }).join('');
     sel.value=selectedId;sel.disabled=!filtered.length;open.disabled=!filtered.length;
     const long400=base.filter(r=>wc(byId.get(r.id))>=400).length;
-    status.textContent=(mode==='exam'?'入試本番型':'入試準備')+'：'+filtered.length+'題を選択可能（元の候補 '+base.length+'題、400語以上 '+long400+'題）。';
+    status.textContent=(mode==='exam'?'入試本番型':'入試準備')+'：'+filtered.length+'題を選択可能（元の候補 '+base.length+'題、400語以上 '+long400+'題）。'+(lengthMismatch.length?'※旧集計と実本文の語数に '+lengthMismatch.length+'題の差があります。表示は実本文を優先します。':'');
     lastStatus='READY';
     state({registered, rows:rows.length, exam:exam.length, prep:rows.length,
-      matching:filtered.length, over400:long400, missing:[], selectedId});
+      matching:filtered.length, over400:long400, lengthMismatch, missing:[], selectedId});
   }
   function openSelected(){
     if(lastStatus!=='READY'||!selectedId||!manifest)return;
