@@ -11,7 +11,10 @@ if(!files.length){console.error('NO_DRAFTS_FOUND: refusing an empty PASS');proce
 console.error('DRAFT_GATE_INPUTS='+files.length+'; publication approval is never granted');
 let failed=false;
 for(const f of files){
- const p=path.resolve(base,f);\n let d;\n try { d=JSON.parse(fs.readFileSync(p,'utf8')); } catch(e) { console.log(JSON.stringify({file:f,structuralPass:false,publicationApproved:false,errors:['Cannot parse draft: '+e.message]}));failed=true;continue; }\n if(!d || !Array.isArray(d.sentences) || !Array.isArray(d.questions) || !Array.isArray(d.questionSetB) || !Array.isArray(d.slashRows)) { console.log(JSON.stringify({file:f,structuralPass:false,publicationApproved:false,errors:['Invalid required arrays: sentences/questions/questionSetB/slashRows']}));failed=true;continue; }
+ const p=path.resolve(base,f);
+ let d;
+ try { d=JSON.parse(fs.readFileSync(p,'utf8')); } catch(e) { console.log(JSON.stringify({file:f,structuralPass:false,publicationApproved:false,errors:['Cannot parse draft: '+e.message]}));failed=true;continue; }
+ if(!d || !Array.isArray(d.sentences) || !Array.isArray(d.questions) || !Array.isArray(d.questionSetB) || !Array.isArray(d.slashRows)) { console.log(JSON.stringify({file:f,structuralPass:false,publicationApproved:false,errors:['Invalid required arrays: sentences/questions/questionSetB/slashRows']}));failed=true;continue; }
  const errors=[],warn=[];
  const normalize=s=>String(s||'').replace(/\s+/g,' ').trim();
  const sentenceSet=new Set((d.sentences||[]).map(normalize));
