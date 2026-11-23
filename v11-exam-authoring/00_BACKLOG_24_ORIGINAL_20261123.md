@@ -14,7 +14,7 @@
 
 ## 制作予定（テーマは重複監査が通るまでは仮説）
 - [x] YE-001｜給水所の設置と調査標本の偏り／日陰・バリアフリー・営業時間｜445語｜A/B各5問・訳・25文slash・資料証拠｜状態=下書き保存済み／v7・意味・印刷・ブラウザ品質未合格、公開未登録
-- [x] YE-002｜地域バスの経路変更と乗継時刻／時刻表・注意書きの照合｜449語・英文25文・全文訳25文・資料表｜状態=部分下書き保存／slash・A/B各5問は未制作、品質未合格・公開未登録
+- [x] YE-002｜地域バスの経路変更と乗継時刻／時刻表・注意書きの照合｜449語・英文25文・全文訳25文・英日slash25行・A/B各5問（9種類）・資料表｜状態=教材下書き保存／v7・semantic・ブラウザ・印刷未合格、公開未登録
 - [ ] YE-003｜博物館の音声案内改善／複数利用者の異なる意見｜400–450語｜A/B各5問・訳・slash・資料証拠｜状態=未作成
 - [ ] YE-004｜学校の太陽光実験／天候データと結論の限界｜400–450語｜A/B各5問・訳・slash・資料証拠｜状態=未作成
 - [ ] YE-005｜図書館のイベント予約／定員・曜日・希望条件の組合せ｜400–450語｜A/B各5問・訳・slash・資料証拠｜状態=未作成
@@ -79,3 +79,9 @@
 - **未完を明記**：slashRows・A/B各5問は未制作。構造validatorをこの状態で通していない。NH/SS v7・semantic・重複・Chromium/WebKit・iPhone・A4・公開UIの新規実監査も未実施。新作下書き2/24（YE-002は部分下書き）、正式合格0/24、残り新作22/24、公開本番型36題・公開追加0。
 - 次回：YE-002の文ごと多分割slash英日とA/B10問（根拠・根拠訳・理由）を実制作しvalidatorを実行。公開v11-previewの最終ロード後400語フィルタ・A/B・slashをChromium/WebKit/iPhone/A4で再検証。全ゲート前は公開禁止。main/root v10無変更。
 - 終了JST：21:5x（GitHub/Drive保存後の確定時刻は別途記録）。
+
+## 2026-11-23 22:50 JST〜｜YE-002英日slash・設問実制作
+- mainのQA、v11-preview内spec/subset、作業branch backlog・YE-002・YE-001/validator、Drive引継ぎを再取得。root直下のspec/subsetは404、正しいパスはv11-preview配下。
+- YE-002 449語・25文の全訳に対応する多分割slashRows25行と、A/B各5問（DETAIL/MATERIAL_LINK/REASON/CONTENT_MATCH/INFERENCE/SENTENCE_INSERTION/SUMMARY_FILL/CONTEXT_WORD/GIST、9種）をGitHub下書きに実保存。教材commit `649b00dbf949aeaf0df8454b1fe09831156dfb56`、読み戻し文字列一致。
+- 重要：英語slashは英文復元可能な区切りを機械的に配置した初稿であり、意味単位・日本語ブロックの人間監査は未完。Node実行、v7、semantic、Chromium/WebKit/iPhone/A4、公開再監査も未完。構造PASS/公開承認を宣言しない。
+- 公開36、新作下書き2/24、正式品質合格0/24、未制作22/24、公開追加0/24。次はYE-002の意味単位slash再編集、Node実行、YE-001/002の根拠・v7・ブラウザ監査。main/root v10変更なし。
