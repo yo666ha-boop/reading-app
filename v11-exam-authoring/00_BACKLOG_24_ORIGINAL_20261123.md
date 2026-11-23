@@ -143,3 +143,8 @@
 - YE-019『A Welcome Map That Works』418語・21文、駅からの案内図と利用者テスト、commit f6f2319d7d2f45a1193c9c8d9649e4c56b9d2098。
 - 5題とも原創長文・自然な全文訳・意味単位の英日slash（全句3以上）・A/B各5問・9種類・数字/資料表を含み、独立branchへ実保存。Windows Node24でYE-001〜019の全19題を現行validatorで再検査、EXIT0・構造PASS19/19、error0。
 - 品質合格/公開追加は0。前回の公開対象は36、旧1000題/本番root v10/mainは変更なし。未制作5題、残るv7/意味/注/新作WebKit/iPhone/A4の全門監査を突破するまで未承認下書きを公開扱いしない。
+
+## 2026-11-24 00:58 JST〜｜読解分類と英作文禁止の品質ゲート追加
+- main QA/spec/subset（正しいパスはv11-preview配下）、独立ブランチbacklog/validator、Drive進捗マスターを再取得。開始backlog blob ea895bc6fc1b1a4c0fe3669be5c80787a0af92f3。
+- 仕様の読解10分類以外のquestionTypeを構造不合格にする検査、設問文の日本語『英作文』『自由英作』『英文で書く/答える』および追加英語作文指示の拒否を検査器へ実装。validator commit 812bbbcc1efaaecc6ab85509e2e8527d4bc820bc。既存のDRAFT限定・公開承認falseを維持。
+- 新作下書き19/24、未制作5/24、最終品質合格0/24、公開追加0/24、公開本番型36題を維持。今回Node実行・公開実ブラウザ/WebKit/iPhone/A4・v7全文監査は未実施でPASS宣言しない。次はYE-020〜024の制作と全下書きの新ゲート実行。main/root v10・既存1000題は変更しない。
