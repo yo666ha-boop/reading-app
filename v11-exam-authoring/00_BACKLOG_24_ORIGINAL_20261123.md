@@ -172,3 +172,11 @@
 - 現在の既知状態：新作下書き19/24、未制作5、最終品質合格0、公開追加0、公開本番型36。main/root v10/既存1000題は変更しない。
 - 次：`node v11-exam-authoring/validate_original_drafts.cjs` を作業branchの全ファイルがある実行環境で起動し、結果を保存。YE-020〜024の制作、公開ブラウザとv7/semantic/重複/印刷ゲートへ進む。
 - 終了JST：2026-11-24 03:5x（記録時点）。
+
+
+## 2026-11-24 04:59 JST開始｜独立監査器のA/B対象漏れ修正
+- main QA/spec/subset、独立branch backlog/validator/監査器、Drive引継ぎマスターを再取得。spec/subsetは `v11-preview/` 配下。
+- 独立監査器は従来 `questions` のA5問しか読まず、B5問を全く監査せずに10問不足と誤判定する重大なスキーマ不一致があった。`questions` + `questionSetB` を統合し各5問を必須化、証拠訳と全文訳の照合を追加。修正commit `7290b59d89fdd2748ebb53c84748ebd6b8f31f21`、GitHub読み戻し一致。
+- Nodeでの全19題実行、公開Chrome/WebKit/iPhone/A4実測、YE-020〜024の制作、v7/semantic/重複監査は今回未実施。構造PASSも正式品質合格も新たに宣言しない。
+- 下書き19/24、未制作5、正式品質合格0、公開追加0、公開本番型36。次は実環境Nodeで両検査器を全19題に実行しエラー修正、YE-020〜024制作。main/root v10・既存1000題は無変更。
+- 終了JST：2026-11-24 05:0x（記録時点）。
