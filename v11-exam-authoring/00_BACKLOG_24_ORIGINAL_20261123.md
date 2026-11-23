@@ -148,3 +148,11 @@
 - main QA/spec/subset（正しいパスはv11-preview配下）、独立ブランチbacklog/validator、Drive進捗マスターを再取得。開始backlog blob ea895bc6fc1b1a4c0fe3669be5c80787a0af92f3。
 - 仕様の読解10分類以外のquestionTypeを構造不合格にする検査、設問文の日本語『英作文』『自由英作』『英文で書く/答える』および追加英語作文指示の拒否を検査器へ実装。validator commit 812bbbcc1efaaecc6ab85509e2e8527d4bc820bc。既存のDRAFT限定・公開承認falseを維持。
 - 新作下書き19/24、未制作5/24、最終品質合格0/24、公開追加0/24、公開本番型36題を維持。今回Node実行・公開実ブラウザ/WebKit/iPhone/A4・v7全文監査は未実施でPASS宣言しない。次はYE-020〜024の制作と全下書きの新ゲート実行。main/root v10・既存1000題は変更しない。
+
+
+## 2026-11-24 01:54 JST〜｜独立整合監査スクリプト追加
+- mainの公開QA、v11-preview内のspecと100題subset、作業branch backlog、Drive進捗マスターを再取得。19題下書き・未制作5題・正式合格0・公開36題を起点にした。
+- `v11-exam-authoring/audit_draft_alignment_independent.cjs` を独立branchに新設（commit e2a58df50633cd7d22868526b4cb0bc93aae6265）。全下書きJSONを自動列挙し、本文重複、全文訳行数、slash英語復元・英日ブロック数、10問、根拠文と本文の一致、根拠訳・理由の欠落、誤承認を検出する補助検査を実装。
+- **このrunでNode実行・実ブラウザ検証は未実施。** この新検査器のPASSは未宣言。既存validatorとのデータスキーマ互換性を実行で確認してから品質判定する。v7・semantic・WebKit/iPhone/A4も未承認。
+- 新作下書き19/24、未制作5/24、正式品質合格0/24、公開追加0/24、公開本番型36。main/root v10/既存1000題は変更なし。
+- 次の地点：新検査器を実行して誤検知を修正、YE-020〜024の本文・全訳・slash・A/Bを制作、全品質ゲート実施。終了記録はGitHub保存時点。
