@@ -3,7 +3,12 @@
 const fs=require('node:fs');
 const path=require('node:path');
 const base=path.resolve(__dirname,'..');
-const files=process.argv.slice(2).length?process.argv.slice(2):['v11-exam-authoring/001_water_stations_original_draft.json'];
+// With no explicit paths, audit every numbered draft instead of silently checking only YE-001.
+const draftDir=path.join(base,'v11-exam-authoring');
+const discovered=fs.readdirSync(draftDir).filter(name=>/^\d{3}_.+_original_draft\.json$/.test(name)).sort().map(name=>path.posix.join('v11-exam-authoring',name));
+const files=process.argv.slice(2).length?process.argv.slice(2):discovered;
+if(!files.length){console.error('NO_DRAFTS_FOUND: refusing an empty PASS');process.exit(1);}
+console.error('DRAFT_GATE_INPUTS='+files.length+'; publication approval is never granted');
 let failed=false;
 for(const f of files){
  const p=path.resolve(base,f),d=JSON.parse(fs.readFileSync(p,'utf8'));
