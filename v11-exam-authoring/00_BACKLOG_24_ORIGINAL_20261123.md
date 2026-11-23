@@ -163,3 +163,12 @@
 - 独立監査器の異常データ耐性を実修正。`sentences` / `slashRows` が配列でない場合のクラッシュ回避、下書きID重複・本文完全重複、空のslashブロック、根拠英文欠落の検出を追加。GitHub commit `8519368da8c0466af4f5a6c8694ac5d27bb23db1`、保存後の全文読み戻し一致。
 - 今回はNode実行、公開ブラウザ再試験、YE-020〜024の新規制作、v7/semantic/WebKit/iPhone/A4は未実施。追加監査器v2のPASSは未宣言。下書き19/24、未制作5、正式品質合格0、公開追加0、公開本番型36のまま。main/root v10/既存1000題は変更なし。
 - 次：Nodeで独立監査器v2と既存validatorを全19題に実行して修正、YE-020〜024の制作、公開v11の全832件安定ロード後の語数/A/B/slash/スマホ/A4/WebKit検証。終了記録はGitHub/Drive保存後。
+
+
+## 2026-11-24 03:49 JST開始｜構造監査の対象漏れ修正
+- mainの公開QA/spec/subset（spec/subsetはv11-preview内）、独立branch backlog/validator、Drive進捗マスターを再取得。公開QAの最終安定実測は36題、400語以上15題。公開ブラウザの今回再実測は未実施。
+- `validate_original_drafts.cjs` の引数省略時にYE-001だけを検査してしまう対象漏れを修正。`v11-exam-authoring` 内の番号付き `*_original_draft.json` を全件自動列挙し、0件なら失敗、対象数をstderrに表示する。commit `7edd348a85f88db1dff5e65a442f591f8bff71ad`、GitHub読み戻し一致。
+- Node実行・全19題の検査結果・v7/semantic/Chromium/WebKit/iPhone/A4・新作YE-020〜024制作は今回未実施。**修正しただけでPASSを宣言しない**。
+- 現在の既知状態：新作下書き19/24、未制作5、最終品質合格0、公開追加0、公開本番型36。main/root v10/既存1000題は変更しない。
+- 次：`node v11-exam-authoring/validate_original_drafts.cjs` を作業branchの全ファイルがある実行環境で起動し、結果を保存。YE-020〜024の制作、公開ブラウザとv7/semantic/重複/印刷ゲートへ進む。
+- 終了JST：2026-11-24 03:5x（記録時点）。
