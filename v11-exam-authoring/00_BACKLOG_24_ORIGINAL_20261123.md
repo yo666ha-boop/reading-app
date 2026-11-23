@@ -52,3 +52,8 @@
 
 ## 引継ぎ規則
 毎runでこの一覧の状態、作業ブランチHEAD、残題数、検査結果を更新し、GitHub読み戻し後に次の題へ進む。進捗確認だけで終了しない。公開版への登録は全gate後。
+
+## 2026-11-23 17:52–18:00 JST｜構造品質ゲート実装
+- GitHubに `v11-exam-authoring/validate_original_drafts.cjs` を新規実装（commit `0461c35a31ddbef4ce3ed05e4b6d3eb38df3e086`）。英文400–450語、保存語数、全文訳の文数、英日slashのブロック数と英文復元一致、A/B各5問、6種以上・必須設問分類、根拠欄、作文項目の静的チェックを実装。構造合格と公開承認は分離し、公開承認は常にfalseとする。
+- 今回のゲートはGitHubに保存済みだが、Node実行・CI・Chromium/WebKit/iPhone/A4は未実行。実行済みと誤記しない。次は `node v11-exam-authoring/validate_original_drafts.cjs` を実行してエラー修正、v7原本照合、YE-002原文制作。
+- 公開本番型36題、新作下書き1/24、全品質合格0/24、未制作23/24、公開追加0/24。mainと本番rootは無変更。
