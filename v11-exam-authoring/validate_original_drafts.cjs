@@ -10,6 +10,7 @@ for(const f of files){
  const errors=[],warn=[];
  const normalize=s=>String(s||'').replace(/\s+/g,' ').trim();
  const sentenceSet=new Set((d.sentences||[]).map(normalize));
+ const sentenceIndex=new Map((d.sentences||[]).map((s,i)=>[normalize(s),i]));
  const check=(ok,msg)=>{if(!ok)errors.push(msg)};
  const words=(d.sentences||[]).join(' ').trim().split(/\s+/).filter(Boolean).length;
  check(words>=400&&words<=450,'word count outside 400–450: '+words);
@@ -20,13 +21,18 @@ for(const f of files){
  check(d.slashRows?.length===d.sentences?.length,'slashRows count mismatch');
  (d.slashRows||[]).forEach((r,i)=>{
    const en=r.en?.split(/\s*\/\s*/)||[],ja=r.jp?.split(/\s*\/\s*/)||[];
-   check(en.length>=2&&en.length===ja.length,'slash segment mismatch at sentence '+(i+1));
+   check(en.length>=3&&en.length===ja.length,'slash segment mismatch at sentence '+(i+1));
    const norm=s=>s.replace(/[^a-z0-9]/gi,'').toLowerCase();
    check(norm(en.join(' '))===norm(d.sentences[i]||''),'slash English differs from source at '+(i+1));
  });
  check(d.questions?.length===5,'A must have 5 questions');
  check(d.questionSetB?.length===5,'B must have 5 questions');
  const all=[...(d.questions||[]),...(d.questionSetB||[])];
+ check(d.isOriginal===true,'originality declaration missing');
+ check(d.status?.startsWith('DRAFT'),'draft must remain explicitly DRAFT');
+ check(Array.isArray(d.materials?.rows)&&d.materials.rows.length>=2,'source material table missing');
+ check(new Set(all.map(q=>normalize(q.prompt).toLowerCase())).size===all.length,'duplicate question prompts');
+ check(new Set((d.sentences||[]).map(s=>normalize(s).toLowerCase())).size===d.sentences.length,'duplicate source sentences');
  const types=new Set(all.map(q=>q.questionType));
  check(types.size>=6,'fewer than six distinct question types');
  check(types.has('CONTENT_MATCH'),'CONTENT_MATCH missing');
@@ -36,6 +42,8 @@ for(const f of files){
  for(const [i,q] of all.entries()){
    for(const k of ['questionType','prompt','answer','evidence','evidenceJp','reason'])check(typeof q[k]==='string'&&q[k].trim(),'question '+(i+1)+' missing '+k);
    if(q.evidence && !sentenceSet.has(normalize(q.evidence)))warn.push('Question '+(i+1)+' evidence is not one exact source sentence; verify multi-sentence evidence manually');
+   const ix=sentenceIndex.get(normalize(q.evidence));
+   if(ix!==undefined && normalize(q.evidenceJp)!==normalize(jp[ix]))errors.push('question '+(i+1)+' evidenceJp differs from fullTranslation sentence '+(ix+1));
    if(q.questionType==='MATERIAL_LINK')check(typeof q.materialEvidence==='string'&&q.materialEvidence.trim(),'material question '+(i+1)+' missing materialEvidence');
  }
  check(!/freeWrite|composition|essayTask/i.test(JSON.stringify(d)),'composition field detected');
