@@ -32,7 +32,8 @@ for(const f of files){
  check(jp.length===d.sentences.length,'full translation sentence count mismatch');
  check(d.slashRows?.length===d.sentences?.length,'slashRows count mismatch');
  (d.slashRows||[]).forEach((r,i)=>{
-   const en=r.en?.split(/\s*\/\s*/)||[],ja=r.jp?.split(/\s*\/\s*/)||[];
+   const en=typeof r?.en==='string'?r.en.split(/\s*\/\s*/):[],ja=typeof r?.jp==='string'?r.jp.split(/\s*\/\s*/):[];
+   check(en.every(x=>x.trim())&&ja.every(x=>x.trim()),'empty English/Japanese slash block at sentence '+(i+1));
    check(en.length>=3&&en.length===ja.length,'slash segment mismatch at sentence '+(i+1));
    const norm=s=>s.replace(/[^a-z0-9]/gi,'').toLowerCase();
    check(norm(en.join(' '))===norm(d.sentences[i]||''),'slash English differs from source at '+(i+1));
