@@ -37,6 +37,9 @@ for(const f of files){
  check(Array.isArray(d.materials?.rows)&&d.materials.rows.length>=2,'source material table missing');
  check(new Set(all.map(q=>normalize(q.prompt).toLowerCase())).size===all.length,'duplicate question prompts');
  check(new Set((d.sentences||[]).map(s=>normalize(s).toLowerCase())).size===d.sentences.length,'duplicate source sentences');
+ const allowedTypes=new Set(['DETAIL','GIST','REASON','INFERENCE','SENTENCE_INSERTION','CONTENT_MATCH','CONTEXT_WORD','PHRASE_FILL','SUMMARY_FILL','MATERIAL_LINK']);
+ all.forEach((q,i)=>check(allowedTypes.has(q.questionType),'question '+(i+1)+' has unknown reading questionType: '+q.questionType));
+ check(all.every(q=>!/(?:英作文|自由英作|英文で(?:書|答)|write (?:your|an|a) (?:own|essay|paragraph|sentence))/i.test(String(q.prompt||''))),'writing instruction in question prompt');
  const types=new Set(all.map(q=>q.questionType));
  check(types.size>=6,'fewer than six distinct question types');
  check(types.has('CONTENT_MATCH'),'CONTENT_MATCH missing');
