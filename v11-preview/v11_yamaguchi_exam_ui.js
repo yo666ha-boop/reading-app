@@ -150,8 +150,16 @@
     }catch(e){manifestError=String(e&&e.message||e)}
     render();
   }
-  window.addEventListener('v11:passages-registered',()=>setTimeout(render,0));
-  window.addEventListener('load',render);
+  window.addEventListener('v11:passages-registered',(ev)=>{
+    setTimeout(render,0);
+    // Later runtime repair files may replace earlier passage text after registration.
+    // Recount from final, live sentences after all 832 additional passages have loaded.
+    if((ev&&ev.detail&&ev.detail.extraPassages)>=EXACT_BATCH_COUNT){
+      setTimeout(render,1500);
+      setTimeout(render,5000);
+    }
+  });
+  window.addEventListener('load',()=>{render();setTimeout(render,2000);setTimeout(render,6000)});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initPanel,{once:true});
   else initPanel();
   loadManifest();

@@ -1,5 +1,5 @@
 {
-  "version": "20261123-y100-live-runtime-recount-r3",
+  "version": "20261123-y100-final-loaded-runtime-r4",
   "status": "FIXED_SUBSET_CANDIDATE",
   "count": 100,
   "selectionPolicy": {
@@ -731,7 +731,7 @@
     {
       "id": "V11-B13-G3-014",
       "batch": "B13",
-      "wordCount": 419,
+      "wordCount": 385,
       "lengthTier": "EXAM_STAMINA",
       "explicit": true,
       "hasMaterial": false,
@@ -745,7 +745,8 @@
         "PHRASE_FILL"
       ],
       "originalWordCount_20260929": 361,
-      "postPublishWordCount_Previous": 385
+      "postPublishWordCount_Previous": 385,
+      "transientWordCountDuringRegistration": 419
     },
     {
       "id": "V11-B14-G3-006",
@@ -1999,12 +2000,12 @@
       "originalWordCount_20260929": 150
     }
   ],
-  "wordCountSource": "2026-11-23 GitHub Pages published runtime passages.sentences, verified desktop and mobile",
+  "wordCountSource": "2026-11-23 after full 832/832 passages and delayed runtime repairs complete; same tokenizer as passage display",
   "wordCountRecount": {
     "checkedPassages": 100,
-    "updatedPassages": 80,
+    "updatedPassages": 79,
     "registeredV11Passages": 1000,
-    "source": "GitHub Pages current live browser runtime",
-    "note": "Original 2026-09-29 counts preserved, plus post-publication B13-G3-014 385->419 after GitHub Pages rebuilt preview. Runtime texts and IDs unchanged."
+    "source": "GitHub Pages post-load stable browser runtime",
+    "note": "A further late runtime passage replacement was detected for B13-G3-014; stable text 385 words, transient text 419 words; final manifest records stable source. Earlier count revisions were provisional."
   }
 }
