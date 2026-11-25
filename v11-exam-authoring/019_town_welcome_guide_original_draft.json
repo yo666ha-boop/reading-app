@@ -192,11 +192,23 @@
   "questionSetB": [
     {
       "questionType": "SENTENCE_INSERTION",
-      "prompt": "Where should 'This showed that another part of the guide needed improvement.' be inserted: after sentence 4, 10, 15, or 20?",
+      "prompt": "Where should 'This mistake showed that the description of the bakery was not clear enough.' be inserted: after sentence 4, 10, 15, or 20?",
       "answer": "After sentence 15.",
       "evidence": "Four visitors followed the route correctly, but one turned too early after mistaking a small shop for the bakery.",
       "evidenceJp": "四人は正しい道をたどりましたが、一人は小さな店をパン屋と間違えて早く曲がってしまいました。",
-      "reason": "五人の実地検証のうち一人が間違った直後。"
+      "reason": "15文目の小さな店をパン屋と間違えた出来事をThis mistakeが指し、16文目のパン屋の番地と目印の追加へつながる。",
+      "supportingEvidence": [
+        {
+          "sentenceNumber": 15,
+          "en": "Four visitors followed the route correctly, but one turned too early after mistaking a small shop for the bakery.",
+          "jp": "四人は正しい道をたどりましたが、一人は小さな店をパン屋と間違えて早く曲がってしまいました。"
+        },
+        {
+          "sentenceNumber": 16,
+          "en": "We added the bakery's street number and a second landmark near the corner to make the turn easier to recognize.",
+          "jp": "そこでパン屋の番地と角の近くの別の目印を加え、曲がる位置を分かりやすくしました。"
+        }
+      ]
     },
     {
       "questionType": "SUMMARY_FILL",
@@ -220,8 +232,20 @@
       "answer": "Six minutes.",
       "evidence": "The cultural center was eight minutes away past a large bakery, while the museum required twelve minutes.",
       "evidenceJp": "文化センターまでは大きなパン屋を過ぎて徒歩八分、博物館までは十二分でした。",
-      "reason": "12−6=6。",
-      "materialEvidence": "Museum 12 min, park 6 min, difference 6"
+      "reason": "9文目の博物館12分、10文目の公園6分と表を照合する。12−6=6分。",
+      "materialEvidence": "Museum 12 min, park 6 min, difference 6",
+      "supportingEvidence": [
+        {
+          "sentenceNumber": 9,
+          "en": "The cultural center was eight minutes away past a large bakery, while the museum required twelve minutes.",
+          "jp": "文化センターまでは大きなパン屋を過ぎて徒歩八分、博物館までは十二分でした。"
+        },
+        {
+          "sentenceNumber": 10,
+          "en": "The park was only six minutes from the station, but reaching its north entrance required stairs while the south entrance had a level path.",
+          "jp": "公園までは駅から六分でしたが、北入口には階段があり、南入口には段差のない道がありました。"
+        }
+      ]
     },
     {
       "questionType": "GIST",
